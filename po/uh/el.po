@@ -7,33 +7,36 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2013-10-19 11:48+0200\n"
-"Last-Translator: Efstathios Iosifidis <iefstathios@gmail.com>\n"
-"Language-Team: Greek <http://hosted.weblate.org/projects/uh/uh/el/>\n"
+"PO-Revision-Date: 2015-12-22 00:54+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/uh/uh/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.8-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Η εφαρμογή Άγνωστοι Ορίζοντες τερματίστηκε απρόοπτα."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "Λυπούμαστε πολύ γι αυτό και θα θέλαμε να διορθώσουμε το παρακάτω λάθος."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
+"Για να γίνει αυτό ,χρειαζόμαστε τις πληροφορίες απο το αρχείο καταγραφής:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"Παρακαλώ δώστε το σε μας μέσω IRC ή μέσω του forum ,και για τα δύο δεστε http"
+"://unknown-horizons.org ."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -42,6 +45,7 @@ msgstr "Σφάλμα: Η βιβλιοθήκη \"PyYAML\" δεν βρέθηκε."
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr ""
+"PyYAML (μια απαιτουμενη βιβλιοθήκη) λείπει και χρειάζεται να εγκαταστηθεί."
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
@@ -54,10 +58,12 @@ msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Οι χρηστες λειτουργικού συστήματος Linux μπορούν να το βρούν χρησιμοποιώντας "
+"το package manager που έχει ονομα \"pyyaml\" or \"python-yaml\"."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Ευχαριστούμε που χρησιμοποιήσατε το Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -66,53 +72,53 @@ msgstr ""
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:53
 msgid "Save map"
-msgstr ""
+msgstr "Αποθήκευση χάρτη"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "Φόρτωση χάρτη"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr ""
+msgstr "Ρυθμίσεις"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Εξοδος συντάκτη"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Διαλεξτε μέγεθος βούρτσας:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Διαλέξτε πεδίο:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(δεξί κλίκ για να σταματήσει)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr ""
+msgstr "Έναρξη παιχνιδιού"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Χρειάζεται να ιδρύσεις εναν οικισμό πριν την κατασκευη κτηρίων!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "επέλεξε το πλοίο σου και πλησίασε την ακτη με δεξί κλίκ."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -120,20 +126,20 @@ msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr ""
+msgstr "Χτίσε (Κατασκεύασε)"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr ""
+msgstr "Τρέχοντα κόστη:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Σχετικά κτήρια"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr ""
+msgstr "κάτοικοι"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
@@ -158,12 +164,12 @@ msgstr ""
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Zoom in"
-msgstr ""
+msgstr "μεγέθυνση"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Zoom out"
-msgstr ""
+msgstr "σμικρυνση"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
@@ -182,7 +188,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr ""
+msgstr "Διπλωματία"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
@@ -191,29 +197,29 @@ msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr ""
+msgstr "Αλλαγη ονόματος"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr ""
+msgstr "παλαιο ονομα:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr ""
+msgstr "εισαγαγετε το νεο ονομα:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr ""
+msgstr "καταχώρηση νεου ονοματος"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr ""
+msgstr "εισαγωγη μυνηματος:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -228,13 +234,15 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr ""
+msgstr "Τρέχοντα κόστη"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
+"Για να κατασκευάσετε σκάφος, click on one of the class tabs, επιλεξτε το "
+"επιθυμητο πλοιο και οριστικοποιηστε την διαταγη."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -245,27 +253,27 @@ msgstr ""
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr ""
+msgstr "παυση"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr ""
+msgstr "συνεχιση"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr ""
+msgstr "πρόοδος κατασκευής:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr ""
+msgstr "ποροι still needed:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr ""
+msgstr "Ακυρωση κατασκευης:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
@@ -280,17 +288,17 @@ msgstr ""
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr ""
+msgstr "σύμμαχος"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr ""
+msgstr "ουδέτερος"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr ""
+msgstr "εχθρος"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:10
@@ -311,7 +319,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Απογραφή οικισμου"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
@@ -323,12 +331,12 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr ""
+msgstr "πληρωμενοι φοροι"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr ""
+msgstr "φοροι:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
