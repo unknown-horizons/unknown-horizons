@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
 "PO-Revision-Date: 2015-12-22 00:39+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
 "Language-Team: Chinese (China) "
 "<https://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -842,9 +842,8 @@ msgid "Choose a map:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
-#, fuzzy
 msgid "Choose a saved game's map:"
-msgstr "没有已保存的游戏"
+msgstr "选择已保存的游戏"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 #, fuzzy
@@ -852,32 +851,28 @@ msgid "Select map source"
 msgstr "选择一个资源："
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
-#, fuzzy
 msgid "Create new map"
-msgstr "保存地图"
+msgstr "制造新地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
 msgstr "加载已有地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
-#, fuzzy
 msgid "Load saved game's map"
-msgstr "没有已保存的游戏"
+msgstr "加载已保存地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
-#, fuzzy
 msgid "Start editor"
-msgstr "启航"
+msgstr "启动编辑器"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
 msgstr "返回"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "教育"
+msgstr "行动"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
