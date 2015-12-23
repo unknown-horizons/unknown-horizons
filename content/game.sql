@@ -185,7 +185,7 @@ INSERT INTO "related_buildings" VALUES(20, 39, 0);
 INSERT INTO "related_buildings" VALUES(20, 40, 1);
 INSERT INTO "related_buildings" VALUES(20, 46, 1);
 INSERT INTO "related_buildings" VALUES(20, 49, 1);
--- INSERT INTO "related_buildings" VALUES(20, 60, 1);
+INSERT INTO "related_buildings" VALUES(20, 60, 1);
 INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
 INSERT INTO "related_buildings" VALUES(45,  3, 0);

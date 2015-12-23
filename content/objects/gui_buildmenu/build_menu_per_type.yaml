@@ -101,7 +101,7 @@ tab5:
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
 #  - # empty
-#  - BUILDINGS.BARRACKS
+  - BUILDINGS.BARRACKS
 
 #tab6:
 #- icon: icons/tabwidget/buildmenu/class/aesthetics
