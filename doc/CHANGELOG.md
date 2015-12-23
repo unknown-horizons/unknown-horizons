@@ -41,6 +41,7 @@ New files and features
  - added barracks
  - added cannon production
  - added cattlerun
+ - added brewery to the game (not final yet)
  
 ### User Interface
 

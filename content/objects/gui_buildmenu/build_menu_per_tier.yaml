@@ -43,6 +43,9 @@ tab2:
 tab3:
 - icon: icons/tabwidget/buildmenu/tier/tier3
 -
+  - _ Companies
+  - BUILDINGS.BREWERY
+-
   - _ Mining
   - BUILDINGS.MINE
   - BUILDINGS.SMELTERY
