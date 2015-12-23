@@ -40,6 +40,7 @@ New files and features
  - replaced the load/unload icon on the trade ship widget
  - added barracks
  - added cannon production
+ - added cattlerun
  
 ### User Interface
 
