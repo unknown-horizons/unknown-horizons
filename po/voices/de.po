@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2015-01-22 13:09+0200\n"
-"Last-Translator: Wuzzy <almikes@aol.com>\n"
+"PO-Revision-Date: 2015-12-22 00:26+0000\n"
+"Last-Translator: Stefan <nxxs@inbox.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -29,23 +29,23 @@ msgstr "Eure Einwohner werden sich auf dieser Insel sicher wohl fühlen."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr "Ihr könnt dieses Stück Land von nun an Euer Eigen nennen."
+msgstr "Dieses Land könnt Ihr nun Euer Eigen nennen."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr "Diese Region gehört jetzt zu unserer Fahne."
+msgstr "Diese Region gehört nun Uns!"
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr "Das Stück Erde ist nun unseres."
+msgstr "Dieses Lande gehört nun uns."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr "Ein anderer Spieler hat eine Insel besiedelt."
+msgstr "Ein Spieler hat eine Insel besiedelt."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
-msgstr "Ein Spieler entwickelt eine neue Siedlung."
+msgstr "Ein Spieler hat eine Siedlung gegründet."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
@@ -53,17 +53,17 @@ msgstr "Einer unserer Mitspieler hat eine Siedlung gegründet."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr "Einer unserer Rivalen scheint eine Siedlung gegründet zu haben."
+msgstr "Es scheint so als ob ein Gegner eine Siedlung gegründet hat."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
 msgstr ""
-"Wir wurden informiert, dass einer unserer Rivalen sich neues Land unter den "
-"Nagel gerissen hat."
+"Wir wurden in Kenntnis gesetzt, das sich unser Gegner neues Gebiet "
+"angeeignet hat"
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr "Man sagt einer unser Gegner hat sich ausgebreitet."
+msgstr "Es scheint so als ob sich einer unserer Gegner ausgebreitet hat."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
@@ -102,11 +102,15 @@ msgstr "Sollen wir wirklich unseren Rivalen als neuen Nachbarn akzeptieren?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr "Ein Kontrahent besiedelt Eurem Grund und Boden!"
+msgstr ""
+"Ein Kontrahent besiedelt Eurem Grund und Boden!\n"
+"Ein Feind siedelt auf unserem Land"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
-msgstr "Einer unserer Verbündeten scheint dringend unser Land zu benötigen."
+msgstr ""
+"Einer unserer Verbündeten scheint dringend unser Land zu benötigen.\n"
+"Einer unserer Verbündeten scheint dringend dein Land zu benötigen."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
@@ -118,7 +122,7 @@ msgstr "Unser Verbündeter siedelt auf einer unserer Inseln."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr "Ihr benötigt mehr Ressourcen, um dies zu bauen."
+msgstr "Für dieses Bauvorhaben benötigt Ihr mehr Ressourcen."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."

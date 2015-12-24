@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2014-10-10 23:58+0200\n"
-"Last-Translator: Xosé Calvo <xosecalvo@gmail.com>\n"
+"PO-Revision-Date: 2015-12-22 00:49+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/uh/uh/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -379,7 +379,7 @@ msgstr "feliz"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Número de casas con esta felicidade."
+msgstr "Número de casas con esta felicidade"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -570,7 +570,7 @@ msgstr "Saldo:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "Amosar recursos producidos neste asentamento."
+msgstr "Amosar recursos producidos neste asentamento"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:16
 #: content/gui/xml/ingame/templates/overview_productionline.xml:14
@@ -678,7 +678,7 @@ msgstr "Envía as mensaxes da conversa a todos os xogadores."
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Escribe a túa mensaxe."
+msgstr "Escribe a túa mensaxe"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -733,7 +733,7 @@ msgstr "Cartos"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Tesouraría actual do xogador, máis ingresos futuros esperados."
+msgstr "Tesouraría actual do xogador, máis ingresos futuros esperados"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -744,7 +744,7 @@ msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
 "Valor da terra aproveitábel, é dicir, a cantidade de terra que pode "
-"empregarse para a construción."
+"empregarse para a construción"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -756,7 +756,7 @@ msgid ""
 "settlement(s)"
 msgstr ""
 "Valor dos recursos xerados de todas as fontes posíbeis dos asentamentos do "
-"xogador."
+"xogador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
@@ -764,7 +764,7 @@ msgstr "Edificios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Valor dos edificios dos asentamentos do xogador."
+msgstr "Valor dos edificios dos asentamentos do xogador"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -779,7 +779,7 @@ msgid ""
 "buildings and overall happiness"
 msgstr ""
 "Valor que denota o progreso dos asentamentos en cuestión de habitantes, "
-"edificios e felicidade xeral."
+"edificios e felicidade xeral"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -787,14 +787,14 @@ msgstr "Unidades"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Valor de todas as unidades do xogador."
+msgstr "Valor de todas as unidades do xogador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
-"O valor total de todas as entradas individuais ou, para acurtar, a "
-"«puntuación total do xogador»."
+"O valor total de todas as entradas individuais ou, para acurtar, a «"
+"puntuación total do xogador»"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -1241,7 +1241,7 @@ msgstr "Desprazarse ata o bordo do mapa:"
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Se mover a vista cando o punteiro do rato se achega ao bordo do mapa."
+msgstr "Se mover a vista cando o punteiro do rato se achega ao bordo do mapa"
 
 #: content/gui/xml/mainmenu/settings.xml:85
 msgid "Cursor centered zoom:"
@@ -1264,11 +1264,11 @@ msgstr "Premer o botón central do rato:"
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 "Activa esta opción para que ao arrastrar premendo o botón central do rato, "
-"se desprace a vista."
+"se desprace a vista"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
-msgstr "O valor predeterminado da configuración do sistema é 0."
+msgstr "O valor predeterminado da configuración do sistema é 0"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Mouse sensitivity:"
@@ -1304,7 +1304,7 @@ msgstr "Rotar o minimapa xunto co mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Se rotar tamén o minimapa ao rotar o mapa normal."
+msgstr "Se rotar tamén o minimapa ao rotar o mapa normal"
 
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "Uninterrupted building:"
@@ -1314,7 +1314,7 @@ msgstr "Construción continua:"
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 "Activa esta opción para non saír do modo de construción despois de construír "
-"un edificio."
+"un edificio"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Auto-unload ship:"
@@ -1322,7 +1322,7 @@ msgstr "Descargar o barco automaticamente:"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "Se descargar o barco tras fundar un asentamento."
+msgstr "Se descargar o barco tras fundar un asentamento"
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
@@ -1345,8 +1345,7 @@ msgstr "Indicadores da produción:"
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
-"Se amosar as iconas dos recursos sobre os edificios cando rematan a "
-"produción."
+"Se amosar as iconas dos recursos sobre os edificios cando rematan a produción"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
@@ -1362,7 +1361,7 @@ msgstr "Escolle un tipo de cita:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr "O tipo de cita para amosar mentres se carga unha partida."
+msgstr "O tipo de cita para amosar mentres se carga unha partida"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
@@ -1370,7 +1369,7 @@ msgstr "Rede"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr "Se escoller o valor 0, usarase o valor predeterminado do encamiñador."
+msgstr "Se escoller o valor 0, usarase o valor predeterminado do encamiñador"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
@@ -1394,7 +1393,7 @@ msgstr "Partidas gardadas:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr "Contrasinal da partida, necesaria para unirse."
+msgstr "Contrasinal da partida, necesaria para unirse"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Cancel"
@@ -1730,7 +1729,7 @@ msgstr "Sepultando tesouros…"
 
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Unable to find pyenet"
-msgstr "Non é posíbel atopar pyenet."
+msgstr "Non é posíbel atopar pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid ""
@@ -1827,7 +1826,7 @@ msgstr ""
 "dunha mesma partida deben usar a mesma versión do xogo. O mellor para "
 "solucionalo é que todos os xogadores actualicen a súa versión do xogo á "
 "última. Versión da partida: {game_version}; versión do xogo instalada "
-"localmente: {own_version}."
+"localmente: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:272
 msgid "Password of the game"
@@ -1860,7 +1859,7 @@ msgstr "Escribe a túa mensaxe"
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
 msgid "Click here to change your name and/or color"
-msgstr "Preme aquí para cambiar de nome ou de cor."
+msgstr "Preme aquí para cambiar de nome ou de cor"
 
 #: horizons/gui/modules/multiplayermenu.py:515
 #, python-brace-format
@@ -1870,49 +1869,49 @@ msgstr "Botar a {player}"
 #: horizons/gui/modules/multiplayermenu.py:582
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr "{player} uniuse á partida."
+msgstr "{player} uniuse á partida"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr "{player} marchou da partida."
+msgstr "{player} marchou da partida"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 msgid "You are now ready"
-msgstr "Xa estás listo."
+msgstr "Xa estás listo"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 msgid "You are not ready anymore"
-msgstr "Deixaches de estar listo."
+msgstr "Deixaches de estar listo"
 
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr "{player} está listo."
+msgstr "{player} está listo"
 
 #: horizons/gui/modules/multiplayermenu.py:598
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr "{player} deixou de estar listo."
+msgstr "{player} deixou de estar listo"
 
 #: horizons/gui/modules/multiplayermenu.py:602
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr "O teu nome pasou a ser «{new_name}»."
+msgstr "O teu nome pasou a ser «{new_name}»"
 
 #: horizons/gui/modules/multiplayermenu.py:604
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr "{player} cambiou o seu nome a «{new_name}»."
+msgstr "{player} cambiou o seu nome a «{new_name}»"
 
 #: horizons/gui/modules/multiplayermenu.py:608
 msgid "You changed your color"
-msgstr "Cambiaches de cor."
+msgstr "Cambiaches de cor"
 
 #: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr "{player} cambiou de cor."
+msgstr "{player} cambiou de cor"
 
 #: horizons/gui/modules/multiplayermenu.py:614
 msgid "Kicked"
@@ -1920,12 +1919,12 @@ msgstr "Expulsado"
 
 #: horizons/gui/modules/multiplayermenu.py:614
 msgid "You have been kicked from the game by creator"
-msgstr "O creador da partida expulsoute."
+msgstr "O creador da partida expulsoute"
 
 #: horizons/gui/modules/multiplayermenu.py:617
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr "O creador da partida expulsou a {player}."
+msgstr "O creador da partida expulsou a {player}"
 
 #: horizons/gui/modules/pausemenu.py:88
 msgid "Are you sure you want to abort the running session?"
@@ -2162,7 +2161,7 @@ msgstr "Construír {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "Preme H para retirar este consello."
+msgstr "Preme H para retirar este consello"
 
 #: horizons/gui/mousetools/tearingtool.py:112
 #, fuzzy
@@ -2287,7 +2286,7 @@ msgstr "Este é o nivel máis alto no que se pode xogar de momento!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:198
 msgid "Don't allow upgrades"
-msgstr "Non permitir avanzar."
+msgstr "Non permitir avanzar"
 
 #: horizons/gui/tabs/mainsquaretabs.py:201
 msgid "Allow upgrades"
@@ -2334,7 +2333,7 @@ msgstr "Mercar ou vender"
 
 #: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "Demasiado lonxe do almacén máis próximo co que se pode comerciar."
+msgstr "Demasiado lonxe do almacén máis próximo co que se pode comerciar"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
@@ -2475,7 +2474,7 @@ msgstr "Descargando do barco"
 
 #: horizons/gui/widgets/routeconfig.py:380
 msgid "You are not allowed to trade with this player"
-msgstr "Non podes comerciar con este xogador."
+msgstr "Non podes comerciar con este xogador"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
@@ -3205,7 +3204,7 @@ msgstr "Agricultura"
 
 #: horizons/main.py:397
 msgid "Failed to start/load the game"
-msgstr "Non foi posíbel comezar ou cargar a partida."
+msgstr "Non foi posíbel comezar ou cargar a partida"
 
 #: horizons/main.py:398
 msgid "The game you selected could not be started."
@@ -3219,7 +3218,7 @@ msgstr ""
 
 #: horizons/main.py:518
 msgid "No quicksaves found"
-msgstr "Non se atoparon partidas gardadas con gardado rápido."
+msgstr "Non se atoparon partidas gardadas con gardado rápido"
 
 #: horizons/main.py:519
 msgid "You need to quicksave before you can quickload."
@@ -3229,7 +3228,7 @@ msgstr ""
 
 #: horizons/main.py:649
 msgid "Logging enabled"
-msgstr "Activouse o historial."
+msgstr "Activouse o historial"
 
 #: horizons/main.py:650
 #, python-brace-format
@@ -3262,7 +3261,7 @@ msgstr "Imposíbel"
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
 "A funcionalidade de gardar e cargar partidas de varios xogadores non está "
-"lista aínda."
+"lista aínda"
 
 #: horizons/mpsession.py:103
 msgid ""
@@ -3270,7 +3269,7 @@ msgid ""
 "characters: _ . -"
 msgstr ""
 "A ruta do ficheiro só pode conter letras, números, espazos, barras baixas "
-"(«_»), puntos («.») e guións («-»)."
+"(«_»), puntos («.») e guións («-»)"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
@@ -3419,7 +3418,7 @@ msgstr "Este edificio debe estar parcialmente en terra firme."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr "Os habitantes están afectados pola peste negra."
+msgstr "Os habitantes están afectados pola peste negra"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3929,7 +3928,7 @@ msgstr "canón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Os habitantes deste edificio están afectados pola peste negra."
+msgstr "Os habitantes deste edificio están afectados pola peste negra"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format

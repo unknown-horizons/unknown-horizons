@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-07-07 14:58+0200\n"
-"Last-Translator: Karar Al-Remahy <alremahykarar@ymail.com>\n"
+"PO-Revision-Date: 2015-12-22 00:56+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -728,7 +728,7 @@ msgstr "Pengar"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Spelarens nuvarande statskassa + intäkter förväntade inom snar framtid"
+msgstr "Spelarens konto och snart förväntade inkomst"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -1256,7 +1256,7 @@ msgstr "Flytta kartan med mushjulet:"
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
-"När aktiverad, kan du hålla ner mitten musknappen för att flytta kameran."
+"När aktiverad, kan du hålla ner mitten musknappen för att flytta kameran"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
@@ -3965,10 +3965,10 @@ msgid "The inhabitants of this building are infected by the Black Death!"
 msgstr "Lagret är fullt i den här byggnaden."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "A new ship by the name of {name} has been created."
 msgid "A new ship by the name of {name} has been created."
-msgstr "Ett nytt skepp har skapats."
+msgstr "Ett nytt skepp med namnet {name} har skapats."
 
 #. This is a database entry: the name of a resource
 #, fuzzy

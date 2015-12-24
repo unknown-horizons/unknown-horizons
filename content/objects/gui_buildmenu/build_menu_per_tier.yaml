@@ -64,8 +64,8 @@ tab3:
   - _ Services
   - BUILDINGS.TAVERN
   - BUILDINGS.DOCTOR
+  - BUILDINGS.BREWERY
 #  - # empty slot
-
 
 tab4:
 - icon: icons/tabwidget/buildmenu/tier/tier4
