@@ -24,4 +24,4 @@ components:
         slot_sizes: {RES.HOP_PLANTS: 1}
 actionsets:
   TIER.CITIZENS:
-    as_2x2:
+    as_3x3:
