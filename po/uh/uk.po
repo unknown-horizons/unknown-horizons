@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-04 12:52+0000\n"
+"PO-Revision-Date: 2015-12-27 10:00+0000\n"
 "Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/uh/uh/uk/>\n"
 "Language: uk\n"
@@ -2141,15 +2141,15 @@ msgstr "Знищити усі будівлі"
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr ""
+msgstr "Це знищить всі будівлі, які виходять за межі поселення."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s додаткова будівля буде знищена."
+msgstr[1] "%s додаткові будівлі будуть знищені"
+msgstr[2] "%s додаткових будівель буде знищено"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2271,7 +2271,7 @@ msgstr "Огляд виробництва"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Заповнити ділянку {how_many} деревами"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2743,10 +2743,9 @@ msgstr "Спостережний пнкт"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Захищає ваше поселення."
+msgstr "Розширює ділянку під поселення."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2880,10 +2879,9 @@ msgstr "Хатина - сховище"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Розширює ринок і забезпечує збирачами податків."
+msgstr "Розширює ринок, ділянку під поселення і забезпечує збирачами податків."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -2997,17 +2995,15 @@ msgstr "Склад"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Зброя"
+msgstr "Зброярня"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Виробляє інструменти із заліза."
+msgstr "Виробляє зброю із заліза."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3032,7 +3028,7 @@ msgstr "Перемелює кукурудзу у борошно."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Виноробня"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3884,7 +3880,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "меч"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
