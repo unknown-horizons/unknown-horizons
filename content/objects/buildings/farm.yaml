@@ -80,6 +80,11 @@ components:
         - [RES.HONEYCOMBS, 1]
         consumes:
         - [RES.ALVEARIES, -1]
+      HOPS:
+        produces:
+        - [RES.HOPS, 1]
+        consumes:
+        - [RES.HOP_PLANTS, -1]
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {
@@ -95,6 +100,7 @@ components:
             RES.COCOA_BEANS: 6, RES.COCOA: 6,
             RES.VINES: 6, RES.GRAPES: 6,
             RES.ALVEARIES: 6, RES.HONEYCOMBS: 6,
+            RES.HOP_PLANTS: 6, RES.HOPS: 6,
             }
 - CollectingComponent:
     collectors:
