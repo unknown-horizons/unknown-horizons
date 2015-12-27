@@ -401,7 +401,7 @@ class SavegameUpgrader(object):
 
 		# [(object id, old prod line id, new prod line id)]
 		changes = [
-			(68, 1842760585, TODO),
+			(68, 1842760585, 2105680898),
 		]
 		for obj_type, old_prod_line, new_prod_line in changes:
 			for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
