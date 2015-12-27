@@ -85,7 +85,12 @@ tab4:
   - _ Military
   - BUILDINGS.WEAPONSMITH
   - BUILDINGS.CANNONFOUNDRY
-  - BUILDINGS.BARRACKS
+  - BUILDINGS.BARRACKS 
+
+-
+  - _ test
+  - BUILDINGS.HOP_FIELD
+
 
 meta:
   unlocking_strategy: tab_per_tier

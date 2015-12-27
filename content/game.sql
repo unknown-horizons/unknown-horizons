@@ -188,6 +188,7 @@ INSERT INTO "related_buildings" VALUES(20, 49, 1);
 INSERT INTO "related_buildings" VALUES(20, 60, 1);
 INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
+--INSERT INTO "related_buildings" VALUES(20, 69, 1); out of space
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
 CREATE TABLE "tile_set" (
@@ -273,7 +274,7 @@ INSERT INTO "resource" VALUES(50, 'coal deposit',    0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(53, 'cocoa beans',     2,     0,    1);
-INSERT INTO "resource" VALUES(54, 'cocoa',           2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(54, 'cocoa',           2.5,   0,    0);
 INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(56, 'candles',        10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(57, 'vines',           2,     0,    1); 
@@ -308,9 +309,10 @@ INSERT INTO "resource" VALUES(85, 'indigo plants' ,  2,     0,    0); -- unused 
 INSERT INTO "resource" VALUES(86, 'indigo',          5,     0,    0); -- unused
 INSERT INTO "resource" VALUES(87, 'garments',       20,     0,    0); -- unused
 INSERT INTO "resource" VALUES(88, 'perfume',        20,     0,    0); -- unused
-INSERT INTO "resource" VALUES(89, 'hop plants',      2,     0,    0); -- unused -- (bines)
+INSERT INTO "resource" VALUES(89, 'hop plants',      2,     0,    0);
 --                            id   name            value  trade  show_inv
-INSERT INTO "resource" VALUES(90, 'hops',            2.5,   0,    0); -- unused -- (dried cones)
+INSERT INTO "resource" VALUES(90, 'hops',            2.5,   0,    1);
+INSERT INTO "resource" VALUES(91, 'beer',            6.5,   1,    1);
 -- vegetables, fruit, hemp, ropes
 -- almonds, almond milk
 -- hides, leather, shoes, saddles

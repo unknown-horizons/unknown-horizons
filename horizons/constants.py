@@ -72,7 +72,7 @@ class VERSION:
 	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 74
+	SAVEGAMEREVISION = 75
 	SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
 
 	@staticmethod
@@ -178,6 +178,7 @@ class BUILDINGS:
 	CANNONFOUNDRY    = 67
 	
 	BREWERY          = 68
+	HOP_FIELD        = 69
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -293,9 +294,10 @@ class RES:
 	INDIGO           = GOLD # 86
 	GARMENTS         = GOLD # 87
 	PERFUME          = GOLD # 88
-	HOP_PLANTS       = GOLD # 89
-	HOPS             = GOLD # 90
-	# 91-99 reserved for services
+	HOP_PLANTS       = 89
+	HOPS             = 90
+	BEER             = 91
+	# 92-99 reserved for services
 	REPRESENTATION   = GOLD # 92
 	SOCIETY          = GOLD # 93
 	FAITH_2          = GOLD # 94
@@ -304,7 +306,7 @@ class RES:
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
 	FIRE             = 99
-	# 91-99 reserved for services
+	# 92-99 reserved for services
 
 class WEAPONS:
 	CANNON = RES.CANNON
