@@ -36,7 +36,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Kui sul on ettepanekuid selle juhendi parendamiseks või kui sa leidsid mõne vea, siis palun anna meile teada.'
   - '
 
     Tiimiga ühenduse võtmiseks külasta saiti www.unknown-horizons.org.'
@@ -45,7 +45,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - [Headline, 'ÜLESANNE: LOO KOLOONIA']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - Su laev on merel, lastiks vahendid, mida vajad uue koloonia rajamiseks.
   - Laeva liigutamiseks vali ta vasakklõpsuga ja tee paremklõps kohal, kuhu laev peaks seilama.
   - Ranniku läheduses muutub ülevaates nupp "Ehita koloonia" aktiivseks.
   - - Gallery
@@ -655,4 +655,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 174 translated messages, 12 untranslated messages.
+  translation_status: 176 translated messages, 10 untranslated messages.
