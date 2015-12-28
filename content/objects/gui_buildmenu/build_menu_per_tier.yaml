@@ -14,7 +14,7 @@ tab1:
 - # third row
   - _ Companies
   - BUILDINGS.LUMBERJACK
-  - BUILDINGS.TREE
+#  - BUILDINGS.TREE
   - BUILDINGS.HUNTER
   - BUILDINGS.FISHER
 
@@ -82,15 +82,13 @@ tab4:
   - BUILDINGS.VINEYARD
   - BUILDINGS.ALVEARIES
 -
+  - _ Fields
+  - BUILDINGS.HOP_FIELD
+-
   - _ Military
   - BUILDINGS.WEAPONSMITH
   - BUILDINGS.CANNONFOUNDRY
   - BUILDINGS.BARRACKS 
-
--
-  - _ test
-  - BUILDINGS.HOP_FIELD
-
 
 meta:
   unlocking_strategy: tab_per_tier
