@@ -3,7 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
-| 2016.1 | 74 |
+| 2015.1 | 75 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
 | 2013.2 | 71 |
@@ -41,14 +41,16 @@ New files and features
  - added barracks
  - added cannon production
  - added cattlerun
- - added brewery to the game (not final yet)
+ - added brewery to the game
+ - added pioneers warehouse graphics
+ - added hops field (only with placeholder grafics)
  
 ### User Interface
 
 Fixed bugs and usability problems
  - 85d4ff4 Fix signal fire text being hidden for some longer translations.
  - #2305 No message when reassigning the same key in the settings.
- - removed fileds from build menu. fields are now buildable from the farm interface
+ - small clean up on build menu
  
 ### Codebase
 
