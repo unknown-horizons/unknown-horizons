@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 2
 size_y: 2
 inhabitants: 2
-tooltip_text: _ brewery.
+tooltip_text: _ Consumes hops. Produces Beer.
 tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 4}
 components:
