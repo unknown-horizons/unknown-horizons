@@ -38,3 +38,5 @@ actionsets:
     as_warehouse_pioneers0:
   TIER.SETTLERS:
     as_warehouse_settler0:
+  TIER.CITIZENS:
+    as_warehouse_citizens0:

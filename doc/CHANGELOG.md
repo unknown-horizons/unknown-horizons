@@ -42,7 +42,7 @@ New files and features
  - added cannon production
  - added cattlerun
  - added brewery to the game
- - added pioneers warehouse graphics
+ - added pioneers and citizens warehouse graphics
  - added hops field (only with placeholder grafics)
  
 ### User Interface
