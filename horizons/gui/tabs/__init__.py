@@ -47,6 +47,8 @@ from buildrelatedtab import BuildRelatedTab
 from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
 
+from groundunitbuildertabs import GroundunitbuilderTab, GroundunitbuilderSelectTab
+
 def resolve_tab(tabclass_name):
 	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
 	return getattr(sys.modules[__name__], tabclass_name)

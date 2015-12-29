@@ -34,6 +34,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
+from boatbuildertabs import UnitbuilderTabBase, ProducerOverviewTabBase
 
 class GroundunitbuilderTab(UnitbuilderTabBase):
 	widget = 'groundunitbuilder.xml'
@@ -55,11 +56,11 @@ class GroundunitbuilderSelectTab(ProducerOverviewTabBase):
 	widget = 'groundunitbuilder_showcase.xml'
 
 	def init_widget(self):
-		super(groundunitbuilderSelectTab, self).init_widget()
+		super(GroundunitbuilderSelectTab, self).init_widget()
 		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
-		for i, (ship, prodline) in enumerate(self.ships):
+		for i, (groundunit, prodline) in enumerate(self.groundunits):
 			showcase = self.build_groundunit_info(i, groundunit, prodline)
 			showcases.addChild(showcase)
 
@@ -78,7 +79,7 @@ class GroundunitbuilderSelectTab(ProducerOverviewTabBase):
 
 		# if not buildable, this returns string with reason why to be displayed as helptext
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
-		ship_unbuildable = False
+		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
 			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))
 			button.capture(Callback(self.start_production, prodline))
@@ -113,15 +114,12 @@ class GroundunitbuilderSelectTab(ProducerOverviewTabBase):
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
-class GroundunitSoldiersTab(GroundunitSelectTab):
+class GroundunitSoldiersTab(GroundunitbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/trade'
-	helptext = _lazy("Trade boats")
+	helptext = _lazy("Swordman")
 
-	ships = [
-		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
-		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
-		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
-		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
+	groundunits = [
+		(UNITS.SWORDSMAN, PRODUCTIONLINES.SWORDSMAN),
 	]
 
 # these tabs additionally request functions for:
@@ -135,7 +133,7 @@ class GroundunitbuilderConfirmTab(ProducerOverviewTabBase):
 	helptext = _lazy("Confirm order")
 
 	def init_widget(self):
-		super(BoatbuilderConfirmTab, self).init_widget()
+		super(GroundunitbuilderConfirmTab, self).init_widget()
 		events = { 'create_unit': self.start_production }
 		self.widget.mapEvents(events)
 
