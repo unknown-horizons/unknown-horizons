@@ -81,7 +81,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 </HBox>
 
 <HBox name="credits_patchers" position="185,45" padding="10">
-	<VBox max_size="310,500" min_size="310,500">
+	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
 		<Label text="Patchers" name="headline" />
 		<hr />
 		<VBox> <Label text="2009" name="headline" />
@@ -113,8 +114,6 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="mayanks43 (Campaign system)" />
 			</VBox>
 		</VBox>
-	</VBox>
-	<VBox max_size="310,500" min_size="310,500">
 		<VBox> <Label text="2011.2" name="headline" />
 			<VBox name="box">
 				<Label text="mtfk (Voice internationalization)" />
@@ -123,6 +122,10 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="sient (Minimap rectangle)" />
 			</VBox>
 		</VBox>
+	</VBox>
+	</ScrollArea>
+	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
 		<VBox> <Label text="2012" name="headline" />
 			<VBox name="box">
 				<Label text="enno4uh (Mac build support)" />
@@ -156,6 +159,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
+	</ScrollArea>
 </HBox>
 
 <HBox name="credits_translators" position="185,45" padding="10">
