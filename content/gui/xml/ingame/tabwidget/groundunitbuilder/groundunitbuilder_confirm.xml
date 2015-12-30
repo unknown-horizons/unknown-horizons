@@ -57,7 +57,7 @@
 
 	<Container position="60,380" size="240,100">
 		<!--Confirm task-->
-		<Label position="30,10" name="BB_confirm_build_label" text="Build ship:" />
+		<Label position="30,10" name="BB_confirm_build_label" text="Build groundunit:" />
 		<OkButton position="100,0" helptext="Build this groundunit!" name="create_unit" />
 	</Container>-->
 </Container>

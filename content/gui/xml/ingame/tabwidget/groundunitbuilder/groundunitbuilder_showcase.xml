@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Trade boats tab -->
+<!-- groununit tab -->
 <Container  size="260,550" name="groundunitbuilder_showcase">
 <TabBG amount="8" />
 

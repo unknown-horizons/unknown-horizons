@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 2
 size_y: 2
 inhabitants: 2
-tooltip_text: _ brewery.
+tooltip_text: _ Consumes hops. Produces Beer.
 tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 4}
 components:
@@ -18,15 +18,15 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      LIQUOR:
+      BEER:
         produces:
-        - [RES.LIQUOR, 1]
+        - [RES.BEER, 1]
         consumes:
-        - [RES.SUGAR, -1]
+        - [RES.HOPS, -1]
         time: 12
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.SUGAR: 6, RES.LIQUOR: 6}
+        slot_sizes: {RES.HOPS: 6, RES.BEER: 6}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

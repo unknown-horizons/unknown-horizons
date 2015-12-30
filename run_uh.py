@@ -46,7 +46,8 @@ import traceback
 import platform
 
 # NOTE: do NOT import anything from horizons.* into global scope
-# this will break any run_uh imports from other locations (e.g. _get_version())
+# this will break any run_uh imports from other locations
+# (e.g. _get_version())
 
 
 def exit_with_error(title, message):
@@ -67,9 +68,13 @@ def exit_with_error(title, message):
 
 
 def check_python_version():
-    # python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
+    """
+    python up to version 2.6.1 returns an int.
+    http://bugs.python.org/issue5561
+    """
     if platform.python_version_tuple()[0] not in (2, '2'):
-        exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
+        exit_with_error('Unsupported Python version',
+                        'Python 2 is required to run Unknown Horizons.')
 
 
 check_python_version()
@@ -86,9 +91,10 @@ logfile = None
 def get_content_dir_parent_path():
     """
     Return the path to the parent of the content dir.
-    This is usually just the dir the run_uh.py is in but on some Linux installation
-    scenarios the horizons dir, the content dir, and run_uh.py are all in different
-    locations.
+    This is usually just the dir the run_uh.py is in.
+    But on some Linux installation scenarios the horizons dir,
+    the content dir, and run_uh.py
+    are all in different locations.
     """
 
     options = []
@@ -98,28 +104,32 @@ def get_content_dir_parent_path():
     # Unknown Horizons.app/Contents/Resources/contents
     options.append(os.path.join(os.getcwd()))
     # Try often-used paths on Linux.
-    for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
+    for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games',
+                 '/usr/local/share'):
         options.append(os.path.join(path, 'unknown-horizons'))
 
     for path in options:
         content_path = os.path.join(path, 'content')
         if os.path.exists(content_path):
             return path
-    raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
+    raise RuntimeError('Unable to find the path to the Unknown Horizons'
+                       ' content dir.')
 
 
 def create_user_dirs():
     """Creates the userdir and subdirs. Includes from horizons."""
     from horizons.constants import PATHS
-    for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
+    for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR,
+                      PATHS.SCREENSHOT_DIR):
         if not os.path.isdir(directory):
             os.makedirs(directory)
 
 
 def excepthook_creator(outfilename):
     """Returns an excepthook function to replace sys.excepthook.
-    The returned function does the same as the default, except it also prints the traceback
-    to a file.
+    The returned function does the same as the default,
+    except it also prints the traceback to a file.
+
     @param outfilename: a filename to append traceback to"""
     def excepthook(exception_type, value, tb):
         f = open(outfilename, 'a')
@@ -128,10 +138,13 @@ def excepthook_creator(outfilename):
         print('')
         print(_('Unknown Horizons has crashed.'))
         print('')
-        print(_('We are very sorry for this and want to fix the underlying error.'))
-        print(_('In order to do this, we need the information from the logfile:'))
+        print(_('We are very sorry for this and want to fix'
+                ' the underlying error.'))
+        print(_('In order to do this, we need the information'
+                ' from the logfile:'))
         print(outfilename)
-        print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
+        print(_('Please give it to us via IRC or our forum, for both see'
+                ' http://unknown-horizons.org .'))
     return excepthook
 
 
@@ -148,7 +161,8 @@ def exithandler(exitcode, signum, frame):
 
 
 def setup_streams():
-    """Ignore output to stderr and stdout if writing to them is not possible."""
+    """Ignore output to stderr and stdout if writing to them is not possible.
+    """
     if sys.__stderr__.fileno() < 0:
         sys.stderr = open(os.devnull, 'w')
     if sys.__stdout__.fileno() < 0:
@@ -187,7 +201,8 @@ def main():
         headline = _('Error: Unable to find required library "PyYAML".')
         msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
             _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
-            _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
+            _('Linux users should find it using their package manager'
+              ' under the name "pyyaml" or "python-yaml".')
         exit_with_error(headline, msg)
 
     # Start UH.

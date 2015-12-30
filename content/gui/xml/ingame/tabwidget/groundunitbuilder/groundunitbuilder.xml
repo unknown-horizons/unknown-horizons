@@ -18,7 +18,7 @@
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
 	<Container position="25,150" size="260,150" name="container_inactive">
 		<Label position="0,15" name="UB_howto_build_lbl" wrap_text="1" max_size="200,150" min_size="200,150"
-		       text="To build a boat, click on one of the class tabs, select the desired groundunit and confirm the order." />
+		       text="To build a groundunit, click on one of the class tabs, select the desired groundunit and confirm the order." />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN BUILDING -->

@@ -88,4 +88,5 @@ if __name__ == '__main__':
 
     from tests.gui import GuiTestPlugin
     from tests.utils import ReRunInfoPlugin
-    nose.run(defaultTest='tests', addplugins=[GuiTestPlugin(), ReRunInfoPlugin()])
+    nose.run(defaultTest='tests', addplugins=[GuiTestPlugin(),
+                                              ReRunInfoPlugin()])
