@@ -36,7 +36,7 @@ from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
 from boatbuildertabs import UnitbuilderTabBase, ProducerOverviewTabBase
 
-class GroundunitbuilderTab(UnitbuilderTabBase):
+class GroundUnitbuilderTab(UnitbuilderTabBase):
 	widget = 'groundunitbuilder.xml'
 	helptext = _lazy("Groundunit builder overview")
 
@@ -52,11 +52,11 @@ class GroundunitbuilderTab(UnitbuilderTabBase):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
-class GroundunitbuilderSelectTab(ProducerOverviewTabBase):
+class GroundUnitbuilderSelectTab(ProducerOverviewTabBase):
 	widget = 'groundunitbuilder_showcase.xml'
 
 	def init_widget(self):
-		super(GroundunitbuilderSelectTab, self).init_widget()
+		super(GroundUnitbuilderSelectTab, self).init_widget()
 		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
@@ -71,8 +71,8 @@ class GroundunitbuilderSelectTab(ProducerOverviewTabBase):
 		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
 		widget.addChild(bg_icon)
 
-		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
-		helptext = self.instance.session.db.get_groundunit_tooltip(ship)
+		image = 'content/gui/images/objects/groundunit/76/{unit_id}.png'.format(unit_id=groundunit)
+		helptext = self.instance.session.db.get_groundunit_tooltip(groundunit)
 		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
@@ -114,7 +114,7 @@ class GroundunitbuilderSelectTab(ProducerOverviewTabBase):
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
-class GroundunitSoldiersTab(GroundunitbuilderSelectTab):
+class GroundUnitSoldiersTab(GroundUnitbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/trade'
 	helptext = _lazy("Swordman")
 
@@ -128,12 +128,12 @@ class GroundunitSoldiersTab(GroundunitbuilderSelectTab):
 # * check: mark those ship's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
 
-class GroundunitbuilderConfirmTab(ProducerOverviewTabBase):
+class GroundUnitbuilderConfirmTab(ProducerOverviewTabBase):
 	widget = 'groundunit_confirm.xml'
 	helptext = _lazy("Confirm order")
 
 	def init_widget(self):
-		super(GroundunitbuilderConfirmTab, self).init_widget()
+		super(GroundUnitbuilderConfirmTab, self).init_widget()
 		events = { 'create_unit': self.start_production }
 		self.widget.mapEvents(events)
 
