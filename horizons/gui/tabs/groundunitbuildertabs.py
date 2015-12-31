@@ -34,7 +34,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
-from boatbuildertabs import UnitbuilderTabBase, ProducerOverviewTabBase
+from unitbuildertabs import UnitbuilderTabBase, ProducerOverviewTabBase
 
 class GroundUnitbuilderTab(UnitbuilderTabBase):
 	widget = 'groundunitbuilder.xml'
@@ -78,7 +78,7 @@ class GroundUnitbuilderSelectTab(ProducerOverviewTabBase):
 		widget.addChild(unit_icon)
 
 		# if not buildable, this returns string with reason why to be displayed as helptext
-		#ship_unbuildable = self.is_ship_unbuildable(ship)
+		#groundunit_unbuildable = self.is_groundunit_unbuildable(ship)
 		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
 			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))

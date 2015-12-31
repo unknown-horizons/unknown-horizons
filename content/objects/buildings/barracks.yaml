@@ -14,7 +14,7 @@ components:
 - SelectableComponent:
     type: building
     tabs: [GroundUnitbuilderTab]
-#    tabs: [GroundUnitbuilderTab, GroundUnitbuilderSelectTab, GroundUnitSoldiersTab]
+#    tabs: [GroundUnitbuilderTab, GroundUnitSoldiersTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - UnitProducerComponent:
