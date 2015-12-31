@@ -45,7 +45,7 @@ class GroundUnitbuilderTab(UnitbuilderTabBase):
 
 # this tab additionally requests functions for:
 # * decide: show [start view] = nothing but info text, look up the xml, or [building status view]
-# * get: currently built ship: name / image / upgrades
+# * get: currently built groundunit: name / image / upgrades
 # * resources still needed:
 #	(a) which ones? three most important (image, name)
 #	(b) how many? sort by amount, display (amount, overall amount needed of them, image)
@@ -78,7 +78,7 @@ class GroundUnitbuilderSelectTab(ProducerOverviewTabBase):
 		widget.addChild(unit_icon)
 
 		# if not buildable, this returns string with reason why to be displayed as helptext
-		#groundunit_unbuildable = self.is_groundunit_unbuildable(ship)
+		#groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
 		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
 			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))
@@ -124,8 +124,8 @@ class GroundUnitSoldiersTab(GroundUnitbuilderSelectTab):
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
-#	need to provide information about the selected ship (which of the 4 buttons clicked)
-# * check: mark those ship's buttons as unbuildable (close graphics) which do not meet the specified requirements.
+#	need to provide information about the selected groundunit (which of the 4 buttons clicked)
+# * check: mark those groundunit's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
 
 class GroundUnitbuilderConfirmTab(ProducerOverviewTabBase):
@@ -141,11 +141,11 @@ class GroundUnitbuilderConfirmTab(ProducerOverviewTabBase):
 		AddProduction(self.producer, 15).execute(self.instance.session)
 
 # this "tab" additionally requests functions for:
-# * get: currently ordered ship: name / image / type (fisher/trade/war)
-# * => get: currently ordered ship: description text / costs / available upgrades
+# * get: currently ordered groundunit: name / image / type (fisher/trade/war)
+# * => get: currently ordered groundunit: description text / costs / available upgrades
 #						(fisher/trade/war, builder level)
 # * if resource icons not hardcoded: resource icons, sort them by amount
-# UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs (get, add, display)
-# * def start_production(self):  <<< actually start to produce the selected ship unit with the selected upgrades
+# UPGRADES: * checkboxes * check for groundunit builder level (+ research) * add. costs (get, add, display)
+# * def start_production(self):  <<< actually start to produce the selected groundunit unit with the selected upgrades
 #	(use inventory or go collect resources, switch focus to overview tab).
 #	IMPORTANT: lock this button until unit is actually produced (no queue!)
