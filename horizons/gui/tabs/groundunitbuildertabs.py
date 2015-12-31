@@ -41,7 +41,7 @@ class GroundUnitbuilderTab(UnitbuilderTabBase):
 	helptext = _lazy("Groundunit builder overview")
 
 	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
-	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/ships/116/{type_id}.png"
+	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/{type_id}.png"
 
 # this tab additionally requests functions for:
 # * decide: show [start view] = nothing but info text, look up the xml, or [building status view]
