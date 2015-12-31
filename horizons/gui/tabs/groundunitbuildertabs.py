@@ -115,7 +115,7 @@ class GroundUnitbuilderSelectTab(ProducerOverviewTabBase):
 		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
 class GroundUnitSoldiersTab(GroundUnitbuilderSelectTab):
-	icon_path = 'icons/tabwidget/boatbuilder/trade'
+	icon_path = 'icons/tabwidget/groundunitbuilder/swordman'
 	helptext = _lazy("Swordman")
 
 	groundunits = [

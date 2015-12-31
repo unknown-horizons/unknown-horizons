@@ -278,6 +278,9 @@ class UhDbAccessor(DbReader):
 		except KeyError: # Component not found, ignore this part
 			pass
 		return u'\\n'.join(helptexts)
+		
+	def get_groundunit_tooltip(self, groundunit_id):
+		pass #TODO
 
 
 def read_savegame_template(db):
