@@ -148,19 +148,6 @@ class AnimalCollector(BuildingCollector):
 			Scheduler().add_new_object(self.job.object.search_job, self.job.object,
 			                           GAME_SPEED.TICKS_PER_SECOND)
 
-
-class FarmAnimalCollector(AnimalCollector):
-	def get_animals_in_range(self, reslist=None):
-		"""Returns animals from buildings in range"""
-		reach = RadiusRect(self.home_building.position, self.home_building.radius)
-		# don't consider res when searching for buildings, since only their animals are
-		# the actual providers
-		buildings = self.home_building.island.get_providers_in_range(reach)
-		animal_lists = (building.animals for building in buildings if hasattr(building, 'animals'))
-		# use overloaded + for lists here in sum
-		return sum(animal_lists, [])
-
-
 class HunterCollector(AnimalCollector):
 	kill_animal = True
 
@@ -172,5 +159,4 @@ class HunterCollector(AnimalCollector):
 
 
 decorators.bind_all(AnimalCollector)
-decorators.bind_all(FarmAnimalCollector)
 decorators.bind_all(HunterCollector)

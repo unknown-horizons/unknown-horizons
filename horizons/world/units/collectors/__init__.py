@@ -20,5 +20,5 @@
 # ###################################################
 
 from buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
-from animalcollector import AnimalCollector, HunterCollector, FarmAnimalCollector
+from animalcollector import AnimalCollector, HunterCollector
 from collector import Collector, Job, JobList
