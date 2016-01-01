@@ -13,8 +13,7 @@ buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 6, RES.TOOLS: 4, RES.BRICKS: 8}
 components:
 - SelectableComponent:
     type: building
-    tabs: [BarracksTab]
-#    tabs: [BarracksTab, BarracksSwordmanTab]
+    tabs: [BarracksTab, BarracksSwordmanTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - UnitProducerComponent:
@@ -25,7 +24,7 @@ components:
         - [RES.GOLD, -500]
         - [RES.SWORD, -1]
         time: 60
-      SWORDSMAN:
+      1062345232:
         produces:
         - [UNITS.SWORDSMAN, 1]
         consumes:

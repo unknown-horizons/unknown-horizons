@@ -99,7 +99,7 @@ class BarracksTabBase(ProducerOverviewTabBase):
 		produced_unit_id = production_line.get_produced_units().keys()[0]
 		
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-		container_active.findChild(name="headline_UB_built_groundunit_label").text = _(name)
+		#container_active.findChild(name="headline_UB_built_groundunit_label").text = _(name)
 		
 		self.update_groundunit_icon(container_active, produced_unit_id)
 
@@ -142,7 +142,7 @@ class BarracksTabBase(ProducerOverviewTabBase):
 	def update_groundunit_icon(self, container_active, produced_unit_id):
 		"""Update the icon displaying the ship that is being built."""
 		ship_icon = container_active.findChild(name="UB_cur_groundunit_icon")
-		ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
+		#ship_icon.helptext = self.instance.session.db.get_groundunit_tooltip(produced_unit_id)
 		ship_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
 
 	def update_queue(self, container_active):
