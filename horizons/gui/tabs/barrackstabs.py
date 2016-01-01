@@ -34,7 +34,14 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
-from unitbuildertabs import ProducerOverviewTabBase
+
+class ProducerOverviewTabBase(OverviewTab):
+	"""Base class for tabs displaying producer data."""
+	
+	@property
+	def producer(self):
+		"""The current instance's Producer compontent."""
+		return self.instance.get_component(Producer)
 
 class BarracksTabBase(ProducerOverviewTabBase):
 	"""Tab Baseclass that can be used by unit builders."""

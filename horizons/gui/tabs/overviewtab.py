@@ -111,7 +111,14 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
 
-
+#added from old groundunittabs.py
+#class GroundUnitOverviewTab(OverviewTab):
+#	widget = 'overview_war_groundunit.xml'
+#	helptext = _lazy("Groundunit overview")
+#
+#	def init_widget(self):
+#		super(GroundUnitOverviewTab, self).init_widget()
+		
 class GenericOverviewTab(OverviewTab):
 	"""Name and running costs."""
 	widget = 'overview_generic.xml'
