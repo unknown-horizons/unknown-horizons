@@ -13,8 +13,8 @@ buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 6, RES.TOOLS: 4, RES.BRICKS: 8}
 components:
 - SelectableComponent:
     type: building
-    tabs: [GroundUnitbuilderTab]
-#    tabs: [GroundUnitbuilderTab, GroundUnitSoldiersTab]
+#    tabs: [BarracksTab]
+    tabs: [BarracksTab, BarracksSwordmanTab, BoatbuilderTradeTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - UnitProducerComponent:

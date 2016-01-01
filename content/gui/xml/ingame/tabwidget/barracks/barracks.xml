@@ -30,8 +30,8 @@
 		<HBox name="queue_container" position="0,18" />
 		<Label name="headline_UB_groundunit_label" position="0,63" />
 		<Icon image="content/gui/images/background/square_120.png" position="0,85"
-			name="UB_cur_ship_bg" />
-		<Icon name="UB_cur_ship_icon" position="2,87" />
+			name="UB_cur_groundunit_bg" />
+		<Icon name="UB_cur_groundunit_icon" position="2,87" />
 		<VBox position="125,95" name="UB_upgrades_box" />
 
 		<!-- one of those button gets removed at runtime -->

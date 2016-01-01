@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!-- groununit tab -->
-<Container  size="260,550" name="groundunitbuilder_showcase">
+<!-- barracks tab -->
+<Container  size="260,550" name="barracks_showcase">
 <TabBG amount="8" />
 
 	<Container position="0,70" size="260,80">

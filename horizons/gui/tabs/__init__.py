@@ -47,8 +47,8 @@ from buildrelatedtab import BuildRelatedTab
 from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
 
-from groundunitbuildertabs import GroundUnitbuilderTab, GroundUnitbuilderSelectTab, \
-						GroundUnitSoldiersTab, GroundUnitbuilderConfirmTab
+from barrackstabs import BarracksTab, BarracksSelectTab, \
+						BarracksSwordmanTab, BarracksConfirmTab
 
 def resolve_tab(tabclass_name):
 	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
