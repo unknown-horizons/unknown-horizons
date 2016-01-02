@@ -94,14 +94,14 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		needed_res_container = self.widget.findChild(name="UB_needed_resources_container")
 		self.update_needed_resources(needed_res_container)
 
-		# Set built ship info
+		# Set built unit info
 		production_line = self.producer._get_production(production_lines[0])
 		produced_unit_id = production_line.get_produced_units().keys()[0]
 		
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-		container_active.findChild(name="headline_UB_builtship_label").text = _(name)
+		container_active.findChild(name="headline_UB_builtunit_label").text = _(name)
 		
-		self.update_ship_icon(container_active, produced_unit_id)
+		self.update_unit_icon(container_active, produced_unit_id)
 
 		upgrades_box = container_active.findChild(name="UB_upgrades_box")
 		upgrades_box.removeAllChildren()
@@ -139,11 +139,11 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		cancel_cb = Callback(CancelCurrentProduction(self.producer).execute, self.instance.session)
 		cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
-	def update_ship_icon(self, container_active, produced_unit_id):
-		"""Update the icon displaying the ship that is being built."""
-		ship_icon = container_active.findChild(name="UB_cur_ship_icon")
-		ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
-		ship_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
+	def update_unit_icon(self, container_active, produced_unit_id):
+		"""Update the icon displaying the unit that is being built."""
+		unit_icon = container_active.findChild(name="UB_cur_unit_icon")
+		unit_icon.helptext = self.instance.session.db.get_unit_tooltip(produced_unit_id)
+		unit_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
 
 	def update_queue(self, container_active):
 		""" Update the queue display"""
@@ -224,7 +224,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
-		helptext = self.instance.session.db.get_ship_tooltip(ship)
+		helptext = self.instance.session.db.get_unit_tooltip(ship)
 		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)

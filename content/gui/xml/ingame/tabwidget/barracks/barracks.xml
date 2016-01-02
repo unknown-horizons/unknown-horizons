@@ -28,10 +28,10 @@
 		<Label name="UB_current_order" text="Currently building:"
 			comment="Information about the groundunit currently under construction at the groundunit builder" />
 		<HBox name="queue_container" position="0,18" />
-		<Label name="headline_UB_groundunit_label" position="0,63" />
+		<Label name="headline_UB_builtunit_label" position="0,63" />
 		<Icon image="content/gui/images/background/square_120.png" position="0,85"
 			name="UB_cur_groundunit_bg" />
-		<Icon name="UB_cur_groundunit_icon" position="2,87" />
+		<Icon name="UB_cur_unit_icon" position="2,87" />
 		<VBox position="125,95" name="UB_upgrades_box" />
 
 		<!-- one of those button gets removed at runtime -->

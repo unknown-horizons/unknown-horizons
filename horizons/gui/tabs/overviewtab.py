@@ -92,9 +92,9 @@ class OverviewTab(TabInterface):
 	def init_stance_widget(self):
 		"""Call this for tabs with stances."""
 		stance_widget = self.widget.findChild(name='stance')
-		stance_widget.init(self.instance)
-		self.add_remove_listener(stance_widget.remove)
-
+		if stance_widget is not None:
+			stance_widget.init(self.instance)
+			self.add_remove_listener(stance_widget.remove)
 
 class GroundUnitOverviewTab(OverviewTab):
 	widget = 'overview_groundunit.xml'

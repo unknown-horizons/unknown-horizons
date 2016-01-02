@@ -255,13 +255,13 @@ class UhDbAccessor(DbReader):
 		"""Returns the name of a unit type identified by its type"""
 		return Entities.units[type_id].name
 
-	def get_ship_tooltip(self, ship_id):
-		"""Tries to identify ship properties to display as tooltip.
+	def get_unit_tooltip(self, unit_id):
+		"""Tries to identify unit properties to display as tooltip.
 		#TODO Should be extended later to also include movement speed, etc."""
 		helptexts = [] # collects all information we will find
-		ship = Entities.units[ship_id]
+		unit = Entities.units[unit_id]
 		try:
-			comp = ship.get_component_template('StorageComponent')
+			comp = unit.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
 			# Ship storage properties
 			helptext = _('{slotnum} slots, {limit}t')
@@ -271,16 +271,13 @@ class UhDbAccessor(DbReader):
 		except KeyError: # Component not found, ignore this part
 			pass
 		try:
-			comp = ship.get_component_template('HealthComponent')
+			comp = unit.get_component_template('HealthComponent')
 			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
 		except KeyError: # Component not found, ignore this part
 			pass
 		return u'\\n'.join(helptexts)
-		
-	def get_groundunit_tooltip(self, groundunit_id):
-		pass #TODO
 
 
 def read_savegame_template(db):

@@ -36,9 +36,10 @@ from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
-from boatbuildertabs import BoatbuilderTab, BoatbuilderFisherTab, \
-						BoatbuilderTradeTab, BoatbuilderWar1Tab, \
-						BoatbuilderWar2Tab, BoatbuilderConfirmTab
+from boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, BoatbuilderTab, \
+                                                BoatbuilderFisherTab, BoatbuilderTradeTab, \
+                                                BoatbuilderWar1Tab, BoatbuilderWar2Tab, \
+                                                BoatbuilderConfirmTab
 from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
 						MainSquareSettlersTab, MainSquareCitizensTab
