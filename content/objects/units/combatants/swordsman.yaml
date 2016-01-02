@@ -7,10 +7,11 @@ components:
 - SelectableComponent:
     type: ship
     tabs: [GroundUnitOverviewTab]
+    enemy_tabs: [EnemyShipOverviewTab,]
 - HealthComponent:
    maxhealth: 444
 - CommandableComponent
-
+- ShipNameComponent
 actionsets:
  TIER.SAILORS:
    as_hunterunit0:
