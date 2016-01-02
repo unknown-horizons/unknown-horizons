@@ -19,21 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 from operator import itemgetter
 
-from fife.extensions.pychan.widgets import Icon, HBox, Label, Container
+from fife.extensions.pychan.widgets import Icon, Label, Container
 
-from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
-from horizons.engine import Fife
-from horizons.gui.tabs import OverviewTab, ProducerOverviewTabBase, UnitbuilderTabBase
+from horizons.command.production import AddProduction
+from horizons.gui.tabs import ProducerOverviewTabBase, UnitbuilderTabBase
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.i18n import _lazy
-from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
-from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
-from horizons.world.production.producer import Producer
+from horizons.constants import PRODUCTIONLINES, RES, UNITS
 
 class BarracksTab(UnitbuilderTabBase):
 	widget = 'barracks.xml'
