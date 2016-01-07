@@ -5,13 +5,13 @@ radius: 1
 velocity: 12.0
 components:
 - SelectableComponent:
-    type: ship
+    type: unit
     tabs: [GroundUnitOverviewTab]
     enemy_tabs: [EnemyShipOverviewTab,]
 - HealthComponent:
    maxhealth: 444
 - CommandableComponent
-- ShipNameComponent
+- SoldierNameComponent
 actionsets:
  TIER.SAILORS:
    as_hunterunit0:

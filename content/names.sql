@@ -89,11 +89,15 @@ INSERT INTO "citynames" VALUES('Port la Riqueza',1,0,'en');
 
 CREATE TABLE "groundunitnames" (
 	"name" TEXT NOT NULL,
+	"for_soldier" BOOL NOT NULL DEFAULT ('0'),
+	"for_inhabitant" BOOL NOT NULL DEFAULT ('0'),
 	"locale" TEXT NOT NULL DEFAULT ('en')
 );
-INSERT INTO "groundunitnames" VALUES('Robin Hood','en');
-INSERT INTO "groundunitnames" VALUES('Klaus Stoertebeker','de');
-INSERT INTO "groundunitnames" VALUES('Blackbeard','en');
+INSERT INTO "groundunitnames" VALUES('Robin Hood',1,0,'en');
+INSERT INTO "groundunitnames" VALUES('Klaus Stoertebeker',1,0,'de');
+INSERT INTO "groundunitnames" VALUES('Blackbeard',1,0,'en');
+INSERT INTO "groundunitnames" VALUES('Aelfwine Sawyer',0,1,'en');
+INSERT INTO "groundunitnames" VALUES('Osbert Skelton',0,1,'en');
 
 CREATE TABLE "shipnames" (
 	"name" TEXT NOT NULL,
