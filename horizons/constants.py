@@ -103,7 +103,7 @@ class UNITS:
 	FRIGATE              = 1000020
 
 	DISASTER_RECOVERY_COLLECTOR = 1000022
-	
+
 	SWORDSMAN            = 1000023
 
 	# players will be spawned with an instance of this
@@ -177,11 +177,13 @@ class BUILDINGS:
 
 	WEAPONSMITH      = 66
 	CANNONFOUNDRY    = 67
-	
+
 	BREWERY          = 68
 	HOP_FIELD        = 69
-	
+
 	STONE_DEPOSIT    = 70
+
+	BARRIER	         = 71
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
