@@ -126,3 +126,6 @@ class Path(ComponentHolder):
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""
 	layer = LAYERS.FIELDS
+
+class Barrier(BasicBuilding, BuildableLine):
+	"""Buildable barriers."""
