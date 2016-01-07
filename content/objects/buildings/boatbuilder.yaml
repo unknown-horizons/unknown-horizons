@@ -1,6 +1,6 @@
 id: BUILDINGS.BOAT_BUILDER
 name: _ Boat Builder
-baseclass: boatbuilder.BoatBuilder
+baseclass: unitproduction.BoatBuilder
 radius: 10
 cost: 25
 cost_inactive: 10

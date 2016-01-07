@@ -25,6 +25,15 @@ from buildable import BuildableSingleOnOcean
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.component.storagecomponent import StorageComponent
 
+class Barracks(BuildingResourceHandler, BasicBuilding):
+
+	def __init__(self, **kwargs):
+		super(Barracks, self).__init__(**kwargs)
+
+	def initialize(self, **kwargs):
+		super(Barracks, self).initialize(**kwargs)
+		self.get_component(StorageComponent).inventory.limit = 5
+
 class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
 
 	def __init__(self, **kwargs):

@@ -1,6 +1,6 @@
 id: BUILDINGS.BARRACKS
 name: _ Barracks
-baseclass: production.ProductionBuilding
+baseclass: unitproduction.Barracks
 radius: 6
 cost: 25
 cost_inactive: 10
