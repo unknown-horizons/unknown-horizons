@@ -16,7 +16,7 @@ components:
     tabs: [BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar2Tab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- UnitProducerComponent:
+- ShipProducerComponent:
     productionlines:
       15:
         produces:

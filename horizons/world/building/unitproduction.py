@@ -21,11 +21,11 @@
 
 
 from building import BasicBuilding
-from buildable import BuildableSingleOnOcean
+from buildable import BuildableSingle, BuildableSingleOnOcean
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.component.storagecomponent import StorageComponent
 
-class Barracks(BuildingResourceHandler, BasicBuilding):
+class Barracks(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(Barracks, self).__init__(**kwargs)

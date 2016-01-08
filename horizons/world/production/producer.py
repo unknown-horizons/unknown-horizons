@@ -552,7 +552,7 @@ class QueueProducer(Producer):
 		self.instance._changed()
 
 
-class UnitProducer(QueueProducer):
+class ShipProducer(QueueProducer):
 	"""Uses queues to produce naval units"""
 
 	production_class = UnitProduction
@@ -571,7 +571,7 @@ class UnitProducer(QueueProducer):
 
 	def on_queue_element_finished(self, production):
 		self.__create_unit()
-		super(UnitProducer, self).on_queue_element_finished(production)
+		super(ShipProducer, self).on_queue_element_finished(production)
 
 	def __create_unit(self):
 		"""Create the produced unit now."""
@@ -581,9 +581,9 @@ class UnitProducer(QueueProducer):
 			self.on_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(amount):
-					self.__place_unit(unit)
+					self._place_unit(unit)
 
-	def __place_unit(self, unit):
+	def _place_unit(self, unit):
 		radius = 1
 		found_tile = False
 		# search for free water tile, and increase search radius if none is found
@@ -598,14 +598,34 @@ class UnitProducer(QueueProducer):
 					u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 					# Fire a message indicating that the ship has been created
 					name = u.get_component(NamedComponent).name
-					self.session.ingame_gui.message_widget.add(string_id='NEW_UNIT', point=point,
+					self.session.ingame_gui.message_widget.add(string_id='NEW_SHIP', point=point,
 					                                           message_dict={'name' : name})
 					found_tile = True
 					break
 			radius += 1
 
+class GroundUnitProducer(ShipProducer):
+	"""Uses queues to produce groundunits"""
+
+	def _place_unit(self, unit):
+		radius = 1
+		found_tile = False
+		while not found_tile:
+			# search for a free tile around the building
+			for tile in self.instance.island.get_surrounding_tiles(self.instance.position.center, radius):
+				point = Point(tile.x, tile.y)
+				if not (tile.is_water or tile.blocked) and (tile.x, tile.y) not in self.session.world.ground_unit_map:
+					u = CreateUnit(self.instance.owner.worldid, unit, tile.x, tile.y)(issuer=self.instance.owner)
+					# Fire a message indicating that the ship has been created
+					name = u.get_component(NamedComponent).name
+					self.session.ingame_gui.message_widget.add(string_id='NEW_SOLDIER', point=point,
+						                                   message_dict={'name' : name})
+					found_tile = True
+					break
+			radius += 1
 
 decorators.bind_all(Producer)
 decorators.bind_all(MineProducer)
 decorators.bind_all(QueueProducer)
-decorators.bind_all(UnitProducer)
+decorators.bind_all(ShipProducer)
+decorators.bind_all(GroundUnitProducer)

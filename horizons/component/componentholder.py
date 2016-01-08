@@ -36,7 +36,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 
-from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
+from horizons.world.production.producer import Producer, QueueProducer, GroundUnitProducer, ShipProducer
 
 
 class ComponentHolder(object):
@@ -85,7 +85,8 @@ class ComponentHolder(object):
 	    'RestrictedPickup': RestrictedPickup,
 	    'SelectableComponent': SelectableComponent,
 	    'TradePostComponent': TradePostComponent,
-	    'UnitProducerComponent': UnitProducer,
+	    'ShipProducerComponent': ShipProducer,
+	    'GroundUnitProducerComponent': GroundUnitProducer,
 	}
 
 	def __init__(self, *args, **kwargs):
