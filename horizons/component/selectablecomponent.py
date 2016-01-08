@@ -55,7 +55,7 @@ class SelectableComponent(Component):
 		TYPES = { 'building' : SelectableBuildingComponent,
 		          'unit'     : SelectableUnitComponent,
 		          'ship'     : SelectableShipComponent,
-		          'fisher' 	 : SelectableFisherComponent, }
+		          'fisher'   : SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
 		return TYPES[ t ]( **arguments )
