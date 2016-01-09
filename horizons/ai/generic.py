@@ -24,7 +24,7 @@ import weakref
 from horizons.world.player import Player
 from horizons.scheduler import Scheduler
 from horizons.ext.enum import Enum
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.util.python.callback import Callback
 from horizons.constants import GAME_SPEED
 

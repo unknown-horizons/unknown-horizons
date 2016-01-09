@@ -33,10 +33,7 @@ from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
 from horizons.component.componentholder import ComponentHolder
 from horizons.world.units import UnitClass
-
-class MoveNotPossible(Exception):
-	"""Gets thrown when the unit should move some where, but there is no possible path"""
-	pass
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 class MovingObject(ComponentHolder, ConcreteObject):
 	"""This class provides moving functionality and is to be inherited by Unit.

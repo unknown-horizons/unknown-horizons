@@ -27,7 +27,7 @@ from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 class ChaseShipsAndAttack(FleetMission):
 	"""

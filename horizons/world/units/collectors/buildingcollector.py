@@ -29,7 +29,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.world.units.collectors.collector import Collector, JobList, Job
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent

@@ -26,7 +26,7 @@ from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Annulus, Point
 from horizons.util.worldobject import WorldObject
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \

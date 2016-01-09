@@ -36,7 +36,7 @@ from horizons.constants import BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class BehaviorComponent(object):

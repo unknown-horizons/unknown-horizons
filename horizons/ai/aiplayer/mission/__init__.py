@@ -21,7 +21,7 @@
 
 import logging
 
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject

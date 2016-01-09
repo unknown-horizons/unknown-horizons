@@ -24,7 +24,7 @@ from horizons.ext.enum import Enum
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class ScoutingMission(FleetMission):

@@ -29,7 +29,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.command.unit import CreateUnit
 from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job
 from horizons.constants import RES, WILD_ANIMAL
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.resourcehandler import ResourceHandler
 
