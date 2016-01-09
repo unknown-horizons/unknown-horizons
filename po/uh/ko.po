@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2014-08-08 12:44+0200\n"
-"Last-Translator: cho bkwon <chobkwon@gmail.com>\n"
+"PO-Revision-Date: 2016-01-09 05:29+0000\n"
+"Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -311,10 +311,9 @@ msgid "Capacity utilization"
 msgstr "가동률"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "이 배의 이름을 변경 하려면 클릭 하십시오"
+msgstr "이 지상 유닛의 이름을 변경 하려면 클릭 하십시오"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -499,10 +498,9 @@ msgid "Configure trading route"
 msgstr "무역 경로 구성"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(모든 자원을 잃습니다.)"
+msgstr "모든 자원을 폐기"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1537,16 +1535,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "다른 플레이어가 없기 때문에 외교를 할 수 없습니다."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "실행중인 세션을 종료하시겠습니까?"
+msgstr "이 객체들을 삭제 하시겠습니까?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "항목 삭제"
+msgstr "삭제"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1555,10 +1551,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} 타일"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "원하는 키를 누르십시오"
+msgstr "키를 누르십시오…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2116,22 +2111,21 @@ msgid "Press H to remove this hint"
 msgstr "이 힌트를 삭제하려면 H를 누르세요"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "관련된 건물"
+msgstr "모든 건물 파괴"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr ""
+msgstr "이 정착 범위를 벗어나는 모든 건물을 파괴 됩니다."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
+msgstr[0] "%s 추가 건물이 파괴됩니다."
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2214,10 +2208,9 @@ msgid "Warehouse overview"
 msgstr "창고 개요"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "유닛 요약"
+msgstr "지상유닛 요약"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2255,7 +2248,7 @@ msgstr "생산 요약"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "{how_many} 그루의 나무를 범위에 채움"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2722,10 +2715,9 @@ msgstr "전망대"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "정착지를 방어."
+msgstr "정착지 범위를 확장합니다."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2859,10 +2851,9 @@ msgstr "저장소 오두막"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "재고를 확장하고 수집을 제공합니다."
+msgstr "재고를 확장하고 수집가를 제공합니다."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -2976,17 +2967,15 @@ msgstr "창고"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "무기"
+msgstr "무기 제작소"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "철 없이 도구 제작."
+msgstr "철에서 무기를 생산."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3011,7 +3000,7 @@ msgstr "곡물을 밀가루로 빻기."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "양조장"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3859,7 +3848,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "칼"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
