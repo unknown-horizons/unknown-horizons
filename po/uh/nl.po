@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-22 00:40+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2016-01-10 16:33+0000\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -316,10 +316,9 @@ msgid "Capacity utilization"
 msgstr "Verbruiksstatistieken"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Klik om de naam van dit schip te wijzigen"
+msgstr "Klik om de naam van dit grondeenheid te wijzigen"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -506,10 +505,9 @@ msgid "Configure trading route"
 msgstr "Stel handelsroute in"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(U verliest alle grondstoffen)"
+msgstr "Alle grondstoffen verwijderen"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1345,7 +1343,7 @@ msgstr "Scroll vertraging:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr "Kies een kaart:"
+msgstr "Kies een citaat:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
@@ -1562,16 +1560,14 @@ msgstr "Diplomatie is niet mogelijk omdat er geen andere spelers zijn."
 
 # ook u aangepast
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Weet u zeker dat u de actieve sessie wilt stoppen?"
+msgstr "Weet u zeker dat u deze objecten wilt verwijderen?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Item verwijderen"
+msgstr "Verwijderen"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1580,10 +1576,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} tegels"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Gewenste toets indrukken"
+msgstr "Toets indrukken…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2155,23 +2150,24 @@ msgid "Press H to remove this hint"
 msgstr "Druk H om deze hint te verwijderen"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Vernietig gebouw"
+msgstr "Alle gebouwen vernielen"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Hiermee worden alle gebouwen vernield die zich buiten de "
+"nederzettingsgrenzen bevinden."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s extra gebouw wordt vernield."
+msgstr[1] "%s extra gebouwen worden vernield"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2254,10 +2250,9 @@ msgid "Warehouse overview"
 msgstr "Pakhuisoverzicht"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "Eenhedenoverzicht"
+msgstr "Grondeenheden-overzicht"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2295,7 +2290,7 @@ msgstr "Productieoverzicht"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Vul bereik met {how_many} bomen"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2772,10 +2767,9 @@ msgstr "Uitkijkpost"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Verdedigt je nederzetting."
+msgstr "Vergroot de nederzettingsgrenzen."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2910,10 +2904,11 @@ msgstr "Opslaghut"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Vergroot voorraadruimte en levert verzamelaars."
+msgstr ""
+"Vergroot voorraadruimte, vergroot nederzettingsgrenzen en levert "
+"verzamelaars."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3028,17 +3023,15 @@ msgstr "Pakhuis"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Wapens"
+msgstr "Wapensmit"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Maakt werktuigen uit ijzer."
+msgstr "Maakt wapens van ijzer."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3063,7 +3056,7 @@ msgstr "Vermaalt mais tot bloem."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Wijnmakerij"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3919,7 +3912,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "zwaard"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
