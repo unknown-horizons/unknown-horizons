@@ -407,6 +407,13 @@ class SavegameUpgrader(object):
 			for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
 				db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?", new_prod_line, obj, old_prod_line)
 
+	def _upgrade_to_rev76(self, db):
+		#needed for commint: b0471afd48a0034150580e8fa00533f9ccae2a9b (Split unit production into ship & groundunit)
+		old = 'NEW_UNIT'
+		new = 'NEW_SHIP'
+		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
+		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
+
 
 	def _upgrade(self):
 		# fix import loop
@@ -477,6 +484,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev74(db)
 			if rev < 75:
 				self._upgrade_to_rev75(db)
+			if rev < 76:
+				self._upgrade_to_rev76(db)
 
 			db('COMMIT')
 			db.close()
