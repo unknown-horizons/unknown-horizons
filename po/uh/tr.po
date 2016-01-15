@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-01-15 02:26+0000\n"
+"PO-Revision-Date: 2016-01-15 02:54+0000\n"
 "Last-Translator: kenan akgün <kenanakgun@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -1334,7 +1334,7 @@ msgstr "Kaydırma gecikmesi:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr "Alıntı türü seçin:"
+msgstr "bir mesaj türünü Seçin:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
@@ -1604,7 +1604,7 @@ msgstr "Birden fazla bina yerleştirmek için 'SHIFT' tuşuna basınız."
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Şimdilik yalnızca ilk {tier} aşama oynanabilir."
+msgstr "Şimdilik yalnızca ilk {tier} aşamalar oynanabilir."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
@@ -1612,7 +1612,7 @@ msgstr "Oyunu 'P' tuşu ile durdurabilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Farenin sol tuşuna basarak yolları sürükleyebilirsiniz."
+msgstr "Farenin sol tuşuna basarak yolları inşa edebilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
@@ -1654,7 +1654,7 @@ msgstr "Karışık"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr "Motor başlatılıyor…"
+msgstr "Başlangıç motoru…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
@@ -2144,8 +2144,8 @@ msgstr "Bu yerleşim aralığının dışında kalan tüm binalar yok olacak."
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] "ek bina yıkılacak."
-msgstr[1] "ek binalar yıkılacak"
+msgstr[0] "%s ek binayı yık.."
+msgstr[1] "%s ek binaları yık"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2646,7 +2646,7 @@ msgstr "Domuz Ağılı"
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:182
 msgid "Raises pigs. Needs a farm."
-msgstr "Domuz yetiştirir. Çiftlik gerektirir."
+msgstr "Domuz yetiştirmek için. Çiftlik gerektirir."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
@@ -2797,7 +2797,7 @@ msgstr "Her çeşit pasta türü üretir."
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
-msgstr "İbadet Çadırı"
+msgstr "kilise"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
@@ -3304,7 +3304,7 @@ msgstr "Tarayıcınızda bir sayfa açıldı."
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr "{slotnum} yer, {limit}t"
+msgstr "{slotnum} yerler, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
