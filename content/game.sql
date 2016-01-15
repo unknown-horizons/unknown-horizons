@@ -192,7 +192,7 @@ INSERT INTO "related_buildings" VALUES(20, 49, 1);
 INSERT INTO "related_buildings" VALUES(20, 60, 1);
 INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
---INSERT INTO "related_buildings" VALUES(20, 69, 1); out of space
+--INSERT INTO "related_buildings" VALUES(20, 69, 1); --out of space
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
 CREATE TABLE "tile_set" (
