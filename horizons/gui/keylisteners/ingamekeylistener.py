@@ -36,11 +36,11 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
 		# Used to sum up the keyboard autoscrolling
 		self.key_scroll = [0, 0]
-		self.upKeyPressed = False
-		self.downKeyPressed = False
-		self.leftKeyPressed = False
-		self.rightKeyPressed = False
-		self.keyScrollSpeed = 25
+		self.up_key_pressed = False
+		self.down_key_pressed = False
+		self.left_key_pressed = False
+		self.right_key_pressed = False
+		self.key_scroll_speed = 25
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
@@ -49,14 +49,14 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def updateAutoscroll(self):
 		self.key_scroll = [0, 0]
-		if self.upKeyPressed:
-			self.key_scroll[1] -= self.keyScrollSpeed;
-		if self.downKeyPressed:
-			self.key_scroll[1] += self.keyScrollSpeed;
-		if self.leftKeyPressed:
-			self.key_scroll[0] -= self.keyScrollSpeed;
-		if self.rightKeyPressed:
-			self.key_scroll[0] += self.keyScrollSpeed;
+		if self.up_key_pressed:
+			self.key_scroll[1] -= self.key_scroll_speed;
+		if self.down_key_pressed:
+			self.key_scroll[1] += self.key_scroll_speed;
+		if self.left_key_pressed:
+			self.key_scroll[0] -= self.key_scroll_speed;
+		if self.right_key_pressed:
+			self.key_scroll[0] += self.key_scroll_speed;
 
 		self.session.view.autoscroll_keys(*self.key_scroll)
 
@@ -67,13 +67,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		_Actions = KeyConfig._Actions
 
 		if action == _Actions.UP:
-			self.upKeyPressed = True
+			self.up_key_pressed = True
 		if action == _Actions.DOWN:
-			self.downKeyPressed = True
+			self.down_key_pressed = True
 		if action == _Actions.LEFT:
-			self.leftKeyPressed = True
+			self.left_key_pressed = True
 		if action == _Actions.RIGHT:
-			self.rightKeyPressed = True
+			self.right_key_pressed = True
 
 		self.updateAutoscroll()
 
@@ -87,12 +87,12 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 
 		if action == _Actions.UP:
-			self.upKeyPressed = False
+			self.up_key_pressed = False
 		if action == _Actions.DOWN:
-			self.downKeyPressed = False
+			self.down_key_pressed = False
 		if action == _Actions.LEFT:
-			self.leftKeyPressed = False
+			self.left_key_pressed = False
 		if action == _Actions.RIGHT:
-			self.rightKeyPressed = False
+			self.right_key_pressed = False
 		
 		self.updateAutoscroll()
