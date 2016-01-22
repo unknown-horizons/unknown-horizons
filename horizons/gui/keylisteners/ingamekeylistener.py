@@ -34,14 +34,31 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		assert isinstance(session, Session)
 		self.session = session
 		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
-		self.keys_pressed = []
 		# Used to sum up the keyboard autoscrolling
 		self.key_scroll = [0, 0]
+		self.upKeyPressed = False
+		self.downKeyPressed = False
+		self.leftKeyPressed = False
+		self.rightKeyPressed = False
+		self.keyScrollSpeed = 25
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		self.session = None
 		super(IngameKeyListener, self).end()
+
+	def updateAutoscroll(self):
+		self.key_scroll = [0, 0]
+		if self.upKeyPressed:
+			self.key_scroll[1] -= self.keyScrollSpeed;
+		if self.downKeyPressed:
+			self.key_scroll[1] += self.keyScrollSpeed;
+		if self.leftKeyPressed:
+			self.key_scroll[0] -= self.keyScrollSpeed;
+		if self.rightKeyPressed:
+			self.key_scroll[0] += self.keyScrollSpeed;
+
+		self.session.view.autoscroll_keys(*self.key_scroll)
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
@@ -49,21 +66,16 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 		_Actions = KeyConfig._Actions
 
-		was_pressed = keyval in self.keys_pressed
-		if not was_pressed:
-			self.keys_pressed.append(keyval)
-			if action == _Actions.LEFT:
-				self.key_scroll[0] -= 25
-			if action == _Actions.RIGHT:
-				self.key_scroll[0] += 25
-			if action == _Actions.UP:
-				self.key_scroll[1] -= 25
-			if action == _Actions.DOWN:
-				self.key_scroll[1] += 25
+		if action == _Actions.UP:
+			self.upKeyPressed = True
+		if action == _Actions.DOWN:
+			self.downKeyPressed = True
+		if action == _Actions.LEFT:
+			self.leftKeyPressed = True
+		if action == _Actions.RIGHT:
+			self.rightKeyPressed = True
 
-		# We scrolled, do autoscroll
-		if self.key_scroll[0] != 0 or self.key_scroll[1] != 0:
-			self.session.view.autoscroll_keys(*self.key_scroll)
+		self.updateAutoscroll()
 
 		if self.session.ingame_gui.on_key_press(action, evt):
 			evt.consume() # prevent other listeners from being called
@@ -72,14 +84,15 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		keyval = evt.getKey().getValue()
 		_Actions = KeyConfig._Actions
 		action = KeyConfig().translate(evt)
-		try:
-			self.keys_pressed.remove(keyval)
-		except Exception:
-			return
-		stop_horizontal = action in (_Actions.LEFT, _Actions.RIGHT)
-		stop_vertical = action in (_Actions.UP, _Actions.DOWN)
-		if stop_horizontal:
-			self.key_scroll[0] = 0
-		elif stop_vertical:
-			self.key_scroll[1] = 0
-		self.session.view.autoscroll_keys(*self.key_scroll)
+
+
+		if action == _Actions.UP:
+			self.upKeyPressed = False
+		if action == _Actions.DOWN:
+			self.downKeyPressed = False
+		if action == _Actions.LEFT:
+			self.leftKeyPressed = False
+		if action == _Actions.RIGHT:
+			self.rightKeyPressed = False
+		
+		self.updateAutoscroll()
