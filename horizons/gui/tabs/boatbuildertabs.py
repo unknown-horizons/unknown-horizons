@@ -157,7 +157,23 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		            place=place_in_queue+1)
 			# people don't count properly, always starting at 1..
 			icon_name = "queue_elem_"+str(place_in_queue)
-			icon = Icon(name=icon_name, image=image, helptext=helptext)
+			
+			try:
+				icon = Icon(name=icon_name, image=image, helptext=helptext)
+			except RuntimeError,e:
+				# It's possible that this error was raised from a missing thumbnail asset,
+				# so we check against that now and use a fallback thumbnail instead
+			
+				# TODO string matching for runtime errors is nightmare fuel
+				# Better: Replace RuntimeError in fife with a more precise error class if possible
+				# and only catch that class here
+				if e.message.startswith('_[NotFound]_ , Something was searched, but not found :: content/gui/icons/thumbnails/'):
+					# actually load the fallback unit image
+					image = self.__class__.UNIT_THUMBNAIL.format(type_id="unknown_unit")
+					icon = Icon(name=icon_name, image=image, helptext=helptext)
+				else:
+					raise
+			
 			rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
 		                                self.instance.session)
 			icon.capture(rm_from_queue_cb, event_name="mouseClicked")
