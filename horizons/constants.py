@@ -634,6 +634,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"el"    : (u'Ελληνικά', u'Greek'),
 	"fi"    : (u'Suomi', u'Finnish'),
 	"fr"    : (u'Français', u'French'),
+	"frp"   : (u'Francoprovençâl', u'Franco-Provencal'),
 	"ga"    : (u'Gaeilge', u'Irish'),
 	"gl"    : (u'Galego', u'Galician'),
 	"hi"    : (u'मानक हिन्दी', u'Hindi'),
