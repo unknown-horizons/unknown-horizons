@@ -628,6 +628,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"da"    : (u'Danske', u'Danish'),
 	"de"    : (u'Deutsch', u'German'),
 	"en"    : (u'English', u'English'),
+	"eo"    : (u'Esperanto', u'Esperanto'),
 	"es"    : (u'Español', u'Spanish'),
 	"et"    : (u'Eesti', u'Estonian'),
 	"el"    : (u'Ελληνικά', u'Greek'),
