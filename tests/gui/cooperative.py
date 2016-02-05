@@ -23,10 +23,10 @@ import sys
 from collections import deque
 
 try:
-	import greenlet
+    import greenlet
 except ImportError:
-	print 'The greenlet package is needed to run the UH gui tests.'
-	sys.exit(1)
+    print 'The greenlet package is needed to run the UH gui tests.'
+    sys.exit(1)
 
 
 _scheduled = deque()
@@ -34,53 +34,54 @@ _current = greenlet.getcurrent()
 
 
 class Tasklet(greenlet.greenlet):
-	"""Wrapper around greenlet.
+    """Wrapper around greenlet.
 
-	Let's you add callbacks when the greenlet finished and wait for it to finish.
-	"""
-	def __init__(self, *args, **kwargs):
-		super(Tasklet, self).__init__(*args, **kwargs)
-		self.links = []
+    Let's you add callbacks when the greenlet finished
+    and wait for it to finish.
+    """
+    def __init__(self, *args, **kwargs):
+        super(Tasklet, self).__init__(*args, **kwargs)
+        self.links = []
 
-	def link(self, func):
-		"""Call func once this greenlet finished execution."""
-		self.links.append(func)
+    def link(self, func):
+        """Call func once this greenlet finished execution."""
+        self.links.append(func)
 
-	def join(self):
-		"""Blocks until this greenlet finished execution."""
+    def join(self):
+        """Blocks until this greenlet finished execution."""
 
-		# little hack because we don't have Python3's nonlocal
-		class Flag(object):
-			running = True
+        # little hack because we don't have Python3's nonlocal
+        class Flag(object):
+            running = True
 
-		def stop(_):
-			Flag.running = False
+        def stop(_):
+            Flag.running = False
 
-		self.link(stop)
+        self.link(stop)
 
-		while Flag.running:
-			schedule()
+        while Flag.running:
+            schedule()
 
 
 def spawn(func, *args, **kwargs):
-	"""Schedule a new function to run."""
-	g = Tasklet(func)
-	_scheduled.append((g, args, kwargs))
-	return g
+    """Schedule a new function to run."""
+    g = Tasklet(func)
+    _scheduled.append((g, args, kwargs))
+    return g
 
 
 def schedule():
-	global _scheduled
-	global _current
+    global _scheduled
+    global _current
 
-	if not _current.dead:
-		_scheduled.append((_current, [], {}))
-	else:
-		[l(_current) for l in _current.links]
+    if not _current.dead:
+        _scheduled.append((_current, [], {}))
+    else:
+        [l(_current) for l in _current.links]
 
-	while _scheduled:
-		g, args, kwargs = _scheduled.popleft()
+    while _scheduled:
+        g, args, kwargs = _scheduled.popleft()
 
-		_current = g
-		g.switch(*args, **kwargs)
-		break
+        _current = g
+        g.switch(*args, **kwargs)
+        break
