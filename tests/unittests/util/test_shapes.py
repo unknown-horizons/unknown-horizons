@@ -53,5 +53,6 @@ class TestPathfinding(unittest.TestCase):
         self.assertFalse(c1 == c2)
         self.assertTrue(c1 != c2)
         self.assertNotEqual(c1, c2)
-        self.assertEqual(c1.get_coordinates(), [(-1, 0), (0, -1), (0, 0), (0, 1), (1, 0)])
+        self.assertEqual(c1.get_coordinates(), [(-1, 0), (0, -1), (0, 0),
+                                                (0, 1), (1, 0)])
         self.assertEqual(c3.get_coordinates(), [(0, 0)])

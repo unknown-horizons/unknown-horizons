@@ -30,30 +30,47 @@ class TestCodeFormat(unittest.TestCase):
     def test_pep8_conformance(self):
         """Test that code conform to PEP8."""
         pep8style = pep8.StyleGuide(quiet=False)
-        result = pep8style.check_files(['run_tests.py',
-                                        'run_server.py',
-                                        'run_uh.py',
-                                        'setup.py',
-                                        'setup_mac.py',
-                                        'stage_build_mac.py',
-                                        ])
+        result = pep8style.check_files(
+            ['run_tests.py',
+             'run_server.py',
+             'run_uh.py',
+             'setup.py',
+             'setup_mac.py',
+             'stage_build_mac.py',
+             ])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_pep8_dir_tests(self):
         """Test that code conform to PEP8."""
         pep8style = pep8.StyleGuide(quiet=False)
-        result = pep8style.check_files(['tests/__init__.py',
-                                        'tests/utils.py',
-                                        'tests/unittests/__init__.py',
-                                        'tests/unittests/test_messages.py',
-                                        'tests/unittests/test_network.py',
-                                        'tests/unittests/test_pep8.py',
-                                        'tests/unittests/test_scheduler.py',
-                                        'tests/unittests/test_timer.py',
-                                        'tests/gui/__init__.py',
-                                        'tests/gui/cooperative.py',
-                                        ])
+        result = pep8style.check_files(
+            ['tests/__init__.py',
+             'tests/utils.py',
+             'tests/unittests/__init__.py',
+             'tests/unittests/test_messages.py',
+             'tests/unittests/test_network.py',
+             'tests/unittests/test_pep8.py',
+             'tests/unittests/test_scheduler.py',
+             'tests/unittests/test_timer.py',
+             'tests/unittests/gui/__init__.py',
+             'tests/unittests/gui/test_window_manager.py',
+             'tests/unittests/misc/test_paths.py',
+             'tests/unittests/util/__init__.py',
+             'tests/unittests/util/test_color.py',
+             'tests/unittests/util/test_registry.py',
+             'tests/unittests/util/test_shapes.py',
+             'tests/unittests/world/__init__.py',
+             'tests/unittests/world/buildability/__init__.py',
+             'tests/unittests/world/component/__init__.py',
+             'tests/unittests/world/production/__init__.py',
+             'tests/unittests/world/production/test_productionline.py',
+             'tests/unittests/world/units/__init__.py',
+             'tests/unittests/world/units/collectors/__init__.py',
+             'tests/unittests/world/units/collectors/test_collector.py',
+             'tests/gui/__init__.py',
+             'tests/gui/cooperative.py',
+             ])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 

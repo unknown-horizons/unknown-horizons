@@ -32,45 +32,40 @@ from horizons.savegamemanager import SavegameManager
 
 
 class TestPaths(TestCase):
-	odd_characters = u"u\xfc\xdf\xfau"
+    odd_characters = u"u\xfc\xdf\xfau"
 
-	def test_normal(self):
+    def test_normal(self):
 
-		create_user_dirs()
+        create_user_dirs()
 
-	def test_special_character(self):
-		"""Make paths have special characters and check some basic operations"""
+    def test_special_character(self):
+        """Make paths have special characters and check some basic operations
+        """
 
-		outer = tempfile.mkdtemp( self.__class__.odd_characters )
-		inner = unicode(os.path.join(outer, self.__class__.odd_characters))
-		inner2 = unicode(os.path.join(outer, self.__class__.odd_characters+u"2"))
+        outer = tempfile.mkdtemp(self.__class__.odd_characters)
+        inner = unicode(os.path.join(outer, self.__class__.odd_characters))
+        inner2 = unicode(os.path.join(outer,
+                                      self.__class__.odd_characters+u"2"))
 
-		PATHS.USER_DIR = inner
+        PATHS.USER_DIR = inner
 
-		create_user_dirs()
+        create_user_dirs()
 
-		scenario_file = os.listdir(SavegameManager.scenarios_dir)[0]
-		shutil.copy(os.path.join(SavegameManager.scenarios_dir, scenario_file),
-		            inner)
+        scenario_file = os.listdir(SavegameManager.scenarios_dir)[0]
+        shutil.copy(os.path.join(SavegameManager.scenarios_dir, scenario_file),
+                    inner)
 
-		SavegameManager.scenarios_dir = inner
-		SavegameManager.autosave_dir = inner2
-		SavegameManager.init()
+        SavegameManager.scenarios_dir = inner
+        SavegameManager.autosave_dir = inner2
+        SavegameManager.init()
 
-		# try to read scenario files
-		SavegameManager.get_available_scenarios()
+        # try to read scenario files
+        SavegameManager.get_available_scenarios()
 
-		os.remove(os.path.join(inner, scenario_file))
+        os.remove(os.path.join(inner, scenario_file))
 
-		SavegameManager.create_autosave_filename()
+        SavegameManager.create_autosave_filename()
 
-		os.rmdir(inner)
-		os.rmdir(inner2)
-		os.rmdir(outer)
-
-
-
-
-
-
-
+        os.rmdir(inner)
+        os.rmdir(inner2)
+        os.rmdir(outer)
