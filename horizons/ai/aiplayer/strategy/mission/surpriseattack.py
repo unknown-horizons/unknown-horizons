@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
 
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.util.python import decorators
 
 

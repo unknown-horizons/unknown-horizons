@@ -7,21 +7,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2014-02-04 19:55+0200\n"
-"Last-Translator: Pyry Karapalo <pyry.karapalo@gmail.com>\n"
-"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh-server/fi/>\n"
+"PO-Revision-Date: 2016-01-10 02:17+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh-server/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Vanha tai muuten tukematon yhteystapa. Tarkista, onko pelistä saatavilla "
-"uudempaa versiota."
+"uudempaa versiota"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
@@ -39,15 +40,15 @@ msgstr "Olet ylittänyt paketti kohtaisen koon."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Tuntematon tai vioittunut paketti. Ole hyvä ja tarkista peli versiosi."
+msgstr "Tuntematon tai vioittunut paketti. Ole hyvä ja tarkista peli versiosi"
 
 #: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
-msgstr "Viallinen tai tuntematon istunto."
+msgstr "Viallinen tai tuntematon istunto"
 
 #: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
-msgstr "Et voi liittyä peliin ollessasi toisessa pelissä."
+msgstr "Et voi liittyä peliin ollessasi toisessa pelissä"
 
 #: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
@@ -55,7 +56,7 @@ msgstr "Peli on tuntematon tai se käyttää eri peliversiota"
 
 #: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
-msgstr "Peli on jo alkanut, eikä siihen oteta lisää pelaajia."
+msgstr "Peli on jo alkanut, eikä siihen oteta lisää pelaajia"
 
 #: horizons/network/server.py:404
 msgid "Game is full"

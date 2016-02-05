@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2015 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -63,54 +63,56 @@ get_neutral_function = BehaviorDiplomatic.get_neutral_function
 
 
 def diplomacy_graph():
-    header = "Diplomacy function"
-    x_label = "relationship_score"
-    y_label = "probability"
+	header = "Diplomacy function"
+	x_label = "relationship_score"
+	y_label = "probability"
 
-    # define functions here to plot them.
-    # Second parameter is color
-    upper_boundary = DiplomacySettings.upper_boundary
+	# define functions here to plot them.
+	# Second parameter is color
+	upper_boundary = DiplomacySettings.upper_boundary
 
-    parameter_sets = (
+	parameter_sets = (
 
-        ("BehaviorGood.allied_player", DiplomacySettings.Good.parameters_allied),
-        ("BehaviorGood.neutral_player", DiplomacySettings.Good.parameters_neutral),
-        ("BehaviorGood.hostile_player", DiplomacySettings.Good.parameters_hostile),
+		("BehaviorGood.allied_player", DiplomacySettings.Good.parameters_allied),
+		("BehaviorGood.neutral_player", DiplomacySettings.Good.parameters_neutral),
+		("BehaviorGood.hostile_player", DiplomacySettings.Good.parameters_hostile),
 
-        ("BehaviorNeutral.allied_player", DiplomacySettings.Neutral.parameters_hostile),
-        ("BehaviorNeutral.neutral_player", DiplomacySettings.Neutral.parameters_neutral),
-        ("BehaviorNeutral.hostile_player", DiplomacySettings.Neutral.parameters_hostile),
+		("BehaviorNeutral.allied_player", DiplomacySettings.Neutral.parameters_hostile),
+		("BehaviorNeutral.neutral_player", DiplomacySettings.Neutral.parameters_neutral),
+		("BehaviorNeutral.hostile_player", DiplomacySettings.Neutral.parameters_hostile),
 
-        ("BehaviorEvil.allied_player", DiplomacySettings.Evil.parameters_hostile),
-        ("BehaviorEvil.neutral_player", DiplomacySettings.Evil.parameters_neutral),
-        ("BehaviorEvil.hostile_player", DiplomacySettings.Evil.parameters_hostile),
-    )
+		("BehaviorEvil.allied_player", DiplomacySettings.Evil.parameters_hostile),
+		("BehaviorEvil.neutral_player", DiplomacySettings.Evil.parameters_neutral),
+		("BehaviorEvil.hostile_player", DiplomacySettings.Evil.parameters_hostile),
 
-    for parameter_name, parameters in parameter_sets:
+	)
 
-        # always print upper boundary
-        x = [-10, 10]
-        y = [upper_boundary] * 2
-        pylab.plot(x, y, color='y', marker=None)
 
-        functions = []
-        if 'enemy' in parameters:
-            functions.append((get_enemy_function(**parameters['enemy']), 'r'))
-        if 'ally' in parameters:
-            functions.append((get_ally_function(**parameters['ally']), 'g'))
-        if 'neutral' in parameters:
-            functions.append((get_neutral_function(**parameters['neutral']), 'b'))
+	for parameter_name, parameters in parameter_sets:
 
-        for f, c in functions:
-            gen = [(x / 10.0, f(x / 10.0)) for x in xrange(-100, 100)]
-            x = [item[0] for item in gen]
-            y = [item[1] for item in gen]
-            pylab.plot(x, y, color=c, marker=None)
-            pylab.xlabel(x_label)
-            pylab.ylabel(y_label)
-            pylab.title(parameter_name)
-            pylab.grid(True)
-        pylab.show()
+		# always print upper boundary
+		x = [-10, 10]
+		y = [upper_boundary]*2
+		pylab.plot (x,y,color='y', marker=None)
 
-if(__name__ == "__main__"):
-    diplomacy_graph()
+		functions = []
+		if 'enemy' in parameters:
+			functions.append((get_enemy_function(**parameters['enemy']),'r'))
+		if 'ally' in parameters:
+			functions.append((get_ally_function(**parameters['ally']), 'g'))
+		if 'neutral' in parameters:
+			functions.append((get_neutral_function(**parameters['neutral']), 'b'))
+
+		for f, c in functions:
+			gen = [(x/10.0, f(x/10.0)) for x in xrange(-100, 100) ]
+			x = [item[0] for item in gen]
+			y = [item[1] for item in gen]
+			pylab.plot(x,y, color=c,marker=None)
+			pylab.xlabel(x_label)
+			pylab.ylabel(y_label)
+			pylab.title(parameter_name)
+			pylab.grid(True)
+		pylab.show()
+
+if(__name__=="__main__"):
+	diplomacy_graph()

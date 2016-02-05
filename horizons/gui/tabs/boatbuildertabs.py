@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -96,14 +96,14 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		needed_res_container = self.widget.findChild(name="UB_needed_resources_container")
 		self.update_needed_resources(needed_res_container)
 
-		# Set built ship info
+		# Set built unit info
 		production_line = self.producer._get_production(production_lines[0])
 		produced_unit_id = production_line.get_produced_units().keys()[0]
 		
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-		container_active.findChild(name="headline_UB_builtship_label").text = _(name)
+		container_active.findChild(name="headline_UB_builtunit_label").text = _(name)
 		
-		self.update_ship_icon(container_active, produced_unit_id)
+		self.update_unit_icon(container_active, produced_unit_id)
 
 		upgrades_box = container_active.findChild(name="UB_upgrades_box")
 		upgrades_box.removeAllChildren()
@@ -143,11 +143,11 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		cancel_cb = Callback(CancelCurrentProduction(self.producer).execute, self.instance.session)
 		cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
-	def update_ship_icon(self, container_active, produced_unit_id):
-		"""Update the icon displaying the ship that is being built."""
-		ship_icon = container_active.findChild(name="UB_cur_ship_icon")
-		ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
-		ship_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
+	def update_unit_icon(self, container_active, produced_unit_id):
+		"""Update the icon displaying the unit that is being built."""
+		unit_icon = container_active.findChild(name="UB_cur_unit_icon")
+		unit_icon.helptext = self.instance.session.db.get_unit_tooltip(produced_unit_id)
+		unit_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
 
 	def update_queue(self, container_active):
 		""" Update the queue display"""
@@ -161,7 +161,23 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		            place=place_in_queue+1)
 			# people don't count properly, always starting at 1..
 			icon_name = "queue_elem_"+str(place_in_queue)
-			icon = Icon(name=icon_name, image=image, helptext=helptext)
+			
+			try:
+				icon = Icon(name=icon_name, image=image, helptext=helptext)
+			except RuntimeError,e:
+				# It's possible that this error was raised from a missing thumbnail asset,
+				# so we check against that now and use a fallback thumbnail instead
+			
+				# TODO string matching for runtime errors is nightmare fuel
+				# Better: Replace RuntimeError in fife with a more precise error class if possible
+				# and only catch that class here
+				if e.message.startswith('_[NotFound]_ , Something was searched, but not found :: content/gui/icons/thumbnails/'):
+					# actually load the fallback unit image
+					image = self.__class__.UNIT_THUMBNAIL.format(type_id="unknown_unit")
+					icon = Icon(name=icon_name, image=image, helptext=helptext)
+				else:
+					raise
+			
 			rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
 		                                self.instance.session)
 			icon.capture(rm_from_queue_cb, event_name="mouseClicked")
@@ -228,8 +244,8 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
-		helptext = self.instance.session.db.get_ship_tooltip(ship)
-		unit_icon = Icon(image=image, name='icon_%s' % index, position=(2, 2),
+		helptext = self.instance.session.db.get_unit_tooltip(ship)
+		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 

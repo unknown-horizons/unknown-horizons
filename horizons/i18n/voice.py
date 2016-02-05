@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -59,7 +59,9 @@ class Speech:
 	ROUTE_DISABLED = None
 	MOVE_OUTSIDE_OF_WORLD = None
 	MOVE_INVALID_LOCATION = None
-	NEW_UNIT = None
+	NEW_SHIP = None
+	NEW_SOLDIER = None
+	NEW_INHABITANT = None
 	YOU_LOST = None
 	BUILDING_ON_FIRE = None
 	BUILDING_INFECTED_BY_BLACK_DEATH = None

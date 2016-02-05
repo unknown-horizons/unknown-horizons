@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -110,4 +110,5 @@ class ReRunInfoPlugin(Plugin):
 	def addOutputToErr(self, ev, output):
 		if isinstance(ev, Exception):
 			ev = unicode(ev)
+		print(ev)
 		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -23,6 +23,7 @@ import logging
 
 from horizons.component import Component
 from horizons.util.shapes import Circle, Point
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class CommandableComponent(Component):
@@ -38,7 +39,6 @@ class CommandableComponent(Component):
 		super(CommandableComponent, self).__init__()
 
 	def go(self, x, y):
-		from horizons.world.units.movingobject import MoveNotPossible
 		"""Moves the unit.
 		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
 		x = int(round(x))

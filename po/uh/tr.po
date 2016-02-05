@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-01-08 20:09+0200\n"
-"Last-Translator: Burak Yavuz <hitowerdigit@hotmail.com>\n"
+"PO-Revision-Date: 2016-01-15 02:54+0000\n"
+"Last-Translator: kenan akgün <kenanakgun@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -311,10 +311,9 @@ msgid "Capacity utilization"
 msgstr "Kapasite kullanımı"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Bu geminin adını değiştirmek için tıklayın"
+msgstr "Bu adı değiştirmek için tıklayın"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -497,10 +496,9 @@ msgid "Configure trading route"
 msgstr "Ticaret rotasını yapılandır"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(tüm kaynaklar kaybedilir)"
+msgstr "tüm kaynaklar kaybedilir"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1336,7 +1334,7 @@ msgstr "Kaydırma gecikmesi:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr "Alıntı türü seçin:"
+msgstr "bir mesaj türünü Seçin:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
@@ -1551,16 +1549,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Başka oyuncular olmadığı için diplomasi yapılamaz."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Bu oturumu kapatmak istediğinizden emin misiniz?"
+msgstr "Bu nesneleri silmek istediğinizden emin misiniz?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Girdiyi sil"
+msgstr "sil"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1569,10 +1565,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} karo"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "İstenen tuşa basın"
+msgstr "tuşuna basın…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -1609,7 +1604,7 @@ msgstr "Birden fazla bina yerleştirmek için 'SHIFT' tuşuna basınız."
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Şimdilik yalnızca ilk {tier} aşama oynanabilir."
+msgstr "Şimdilik yalnızca ilk {tier} aşamalar oynanabilir."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
@@ -1617,7 +1612,7 @@ msgstr "Oyunu 'P' tuşu ile durdurabilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Farenin sol tuşuna basarak yolları sürükleyebilirsiniz."
+msgstr "Farenin sol tuşuna basarak yolları inşa edebilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
@@ -1659,7 +1654,7 @@ msgstr "Karışık"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr "Motor başlatılıyor…"
+msgstr "Başlangıç motoru…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
@@ -2135,23 +2130,22 @@ msgid "Press H to remove this hint"
 msgstr "Bu ipucunu kaldırmak için H tuşuna basınız"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "İlgili binalar"
+msgstr "tüm binaları yık"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr ""
+msgstr "Bu yerleşim aralığının dışında kalan tüm binalar yok olacak."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ek binayı yık.."
+msgstr[1] "%s ek binaları yık"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2234,10 +2228,9 @@ msgid "Warehouse overview"
 msgstr "Depo genel gönünümü"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "Birim genel görünümü"
+msgstr "birimlere genel bakış"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2275,7 +2268,7 @@ msgstr "Üretim genel görünümü"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Dolgu {how_many} ağaçların aralığı"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2653,7 +2646,7 @@ msgstr "Domuz Ağılı"
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:182
 msgid "Raises pigs. Needs a farm."
-msgstr "Domuz yetiştirir. Çiftlik gerektirir."
+msgstr "Domuz yetiştirmek için. Çiftlik gerektirir."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
@@ -2747,10 +2740,9 @@ msgstr "Gözetleme Kulesi"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Köyünüzü korur."
+msgstr "Yerleşim aralığını genişletir."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2805,7 +2797,7 @@ msgstr "Her çeşit pasta türü üretir."
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
-msgstr "İbadet Çadırı"
+msgstr "kilise"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
@@ -2884,10 +2876,11 @@ msgstr "Ambar Kulübesi"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Depo kapasitesini arttırır, toplayıcılar sağlar."
+msgstr ""
+"Depo kapasitesini arttırır, yerleşim aralığı genişletir ve toplayıcılar "
+"sağlar."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3001,17 +2994,15 @@ msgstr "Ambar"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Silahlar"
+msgstr "Silahçı"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Demirden araçlar üretir."
+msgstr "Demir silah üreten."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3036,7 +3027,7 @@ msgstr "Mısırı una eler."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "şaraphane"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3313,7 +3304,7 @@ msgstr "Tarayıcınızda bir sayfa açıldı."
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr "{slotnum} yer, {limit}t"
+msgstr "{slotnum} yerler, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
@@ -3879,7 +3870,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "kılıç"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"

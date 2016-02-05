@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,11 +32,7 @@ from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
 from horizons.component.componentholder import ComponentHolder
 from horizons.world.units import UnitClass
-
-
-class MoveNotPossible(Exception):
-	"""Gets thrown when the unit should move some where, but there is no possible path"""
-	pass
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class MovingObject(ComponentHolder, ConcreteObject):

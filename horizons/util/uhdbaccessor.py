@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -242,13 +242,13 @@ class UhDbAccessor(DbReader):
 		"""Returns the name of a unit type identified by its type"""
 		return Entities.units[type_id].name
 
-	def get_ship_tooltip(self, ship_id):
-		"""Tries to identify ship properties to display as tooltip.
-		# TODO Should be extended later to also include movement speed, etc."""
-		helptexts = []  # collects all information we will find
-		ship = Entities.units[ship_id]
+	def get_unit_tooltip(self, unit_id):
+		"""Tries to identify unit properties to display as tooltip.
+		#TODO Should be extended later to also include movement speed, etc."""
+		helptexts = [] # collects all information we will find
+		unit = Entities.units[unit_id]
 		try:
-			comp = ship.get_component_template('StorageComponent')
+			comp = unit.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
 			# Ship storage properties
 			helptext = _('{slotnum} slots, {limit}t')
@@ -258,7 +258,7 @@ class UhDbAccessor(DbReader):
 		except KeyError:  # Component not found, ignore this part
 			pass
 		try:
-			comp = ship.get_component_template('HealthComponent')
+			comp = unit.get_component_template('HealthComponent')
 			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)

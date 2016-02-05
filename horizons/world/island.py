@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -378,9 +378,8 @@ class Island(BuildingOwner, WorldObject):
 		if building.settlement is not None:
 			if building.id in BUILDINGS.EXPAND_RANGE:
 				self.remove_settlement(building)
-			else:
-				building.settlement.remove_building(building)
-				assert building not in building.settlement.buildings
+			building.settlement.remove_building(building)
+			assert building not in building.settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:
