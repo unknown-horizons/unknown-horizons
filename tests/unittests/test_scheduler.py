@@ -90,7 +90,8 @@ class TestScheduler(TestCase):
         self.scheduler.tick(Scheduler.FIRST_TICK_ID)
         self.assertFalse(self.callback.called)
 
-        self.scheduler.tick(Scheduler.FIRST_TICK_ID + 1)  # callback called here
+        self.scheduler.tick(Scheduler.FIRST_TICK_ID + 1)
+        # callback called here
         self.callback.reset_mock()
 
         self.scheduler.tick(Scheduler.FIRST_TICK_ID + 2)
@@ -154,7 +155,8 @@ class TestScheduler(TestCase):
     def test_add_periodic_callback_run_every_other_tick_3_times(self):
         self.scheduler.before_ticking()
         self.scheduler.tick(Scheduler.FIRST_TICK_ID)
-        self.scheduler.add_new_object(self.callback, None, run_in=1, loops=3, loop_interval=2)
+        self.scheduler.add_new_object(self.callback, None, run_in=1, loops=3,
+                                      loop_interval=2)
 
         for i in xrange(Scheduler.FIRST_TICK_ID + 1, 7):
             self.scheduler.tick(i)
@@ -203,20 +205,27 @@ class TestScheduler(TestCase):
         self.scheduler.before_ticking()
         instance = Mock()
         self.scheduler.add_new_object(self.callback, instance, run_in=2)
-        self.assertEqual(2, self.scheduler.get_remaining_ticks(instance, self.callback))
+        self.assertEqual(2, self.scheduler.get_remaining_ticks(instance,
+                                                               self.callback))
 
         self.scheduler.tick(Scheduler.FIRST_TICK_ID)
-        self.assertEqual(1, self.scheduler.get_remaining_ticks(instance, self.callback))
+        self.assertEqual(1, self.scheduler.get_remaining_ticks(instance,
+                                                               self.callback))
 
     def test_get_remaining_tick_periodic_callback(self):
         self.scheduler.before_ticking()
         instance = Mock()
-        self.scheduler.add_new_object(self.callback, instance, run_in=1, loops=2, loop_interval=3)
-        self.assertEqual(1, self.scheduler.get_remaining_ticks(instance, self.callback))
+        self.scheduler.add_new_object(self.callback, instance, run_in=1,
+                                      loops=2, loop_interval=3)
+        self.assertEqual(1, self.scheduler.get_remaining_ticks(instance,
+                                                               self.callback))
 
         self.scheduler.tick(Scheduler.FIRST_TICK_ID)  # first time fired
-        self.assertEqual(3, self.scheduler.get_remaining_ticks(instance, self.callback))
+        self.assertEqual(3, self.scheduler.get_remaining_ticks(instance,
+                                                               self.callback))
         self.scheduler.tick(Scheduler.FIRST_TICK_ID + 1)
-        self.assertEqual(2, self.scheduler.get_remaining_ticks(instance, self.callback))
+        self.assertEqual(2, self.scheduler.get_remaining_ticks(instance,
+                                                               self.callback))
         self.scheduler.tick(Scheduler.FIRST_TICK_ID + 2)
-        self.assertEqual(1, self.scheduler.get_remaining_ticks(instance, self.callback))
+        self.assertEqual(1, self.scheduler.get_remaining_ticks(instance,
+                                                               self.callback))

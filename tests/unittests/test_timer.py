@@ -107,7 +107,9 @@ class TestTimer(TestCase):
         self.clock.return_value = self.TIME_START + (3.0 * self.TIME_TICK)
         self.callback.reset_mock()
         self.timer.check_tick()
-        expected = [((self.TICK_START + 1,),), ((self.TICK_START + 2,),), ((self.TICK_START + 3,),)]
+        expected = [((self.TICK_START + 1,),),
+                    ((self.TICK_START + 2,),),
+                    ((self.TICK_START + 3,),)]
         self.assertEquals(expected, self.callback.call_args_list)
 
     def test_paused_pump_then_no_ticks(self):
@@ -152,7 +154,8 @@ class TestTimer(TestCase):
         self.clock.return_value = self.TIME_START + (
             1.01 * self.TIME_TICK) + Timer.ACCEPTABLE_TICK_DELAY
         self.timer.check_tick()
-        self.assertTrue(self.callback.called)  # some number of ticks depending on tick delay
+        self.assertTrue(self.callback.called)
+        # some number of ticks depending on tick delay
         self.callback.reset_mock()
 
         # will tick once after defer timeout

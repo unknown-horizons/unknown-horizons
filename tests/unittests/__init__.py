@@ -33,7 +33,8 @@ class TestCase(unittest.TestCase):
         self.db = horizons.main._create_main_db()
 
         # Truncate all tables. We don't want to rely on existing data.
-        for (table_name, ) in self.db("SELECT name FROM sqlite_master WHERE type = 'table'"):
+        for (table_name, ) in self.db(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"):
             self.db('DELETE FROM %s' % table_name)
 
         horizons.globals.db = self.db

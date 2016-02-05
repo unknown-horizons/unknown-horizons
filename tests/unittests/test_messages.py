@@ -91,7 +91,8 @@ class TestMessageBus(unittest.TestCase):
         self.assert_called_once_with(self.cb, Message, sender=self)
         self.cb.reset_mock()
 
-        # after unsubscribing locally, all subscriptions should be gone, cb not called
+        # after unsubscribing locally, all subscriptions should be gone,
+        # cb not called
         Message.unsubscribe(self.cb, sender=self)
         ExampleMessage.broadcast(self)
         Message.broadcast(self)
