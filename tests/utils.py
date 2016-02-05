@@ -109,9 +109,9 @@ class ReRunInfoPlugin(Plugin):
         return self.formatError(test, err)
 
     def addOutputToErr(self, ev, output):
-        if isinstance(ev, Exception):
-            ev = unicode(ev, errors='ignore')
-        else:
+        try:
             ev = unicode(ev, 'utf-8', errors='ignore')
+        except TypeError:
+            ev = u''
 
         return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
