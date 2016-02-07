@@ -21,4 +21,4 @@ components:
 - HealthComponent: {maxhealth: 200}
 actionsets:
   TIER.SAILORS:
-    as_lookout0: #TODO replace placeholder 1x1
+    as_wall: #TODO replace placeholder 1x1
