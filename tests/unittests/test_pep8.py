@@ -79,7 +79,8 @@ class TestCodeFormat(unittest.TestCase):
     def test_pep8_os_walk(self):
         """Test that code conform to PEP8. all .py files"""
         check_files = []
-        for root, dirs, files in os.walk(os.path.dirname(sys.argv[0])):
+        for root, dirs, files in os.walk(os.path.join(
+                os.path.dirname(__file__), '..', '..')):
             for file in files:
                 if file.endswith(".py"):
                     check_files.append(os.path.join(root, file))
@@ -87,6 +88,7 @@ class TestCodeFormat(unittest.TestCase):
         result = pep8style.check_files(check_files)
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
+        self.assertEqual(check_files[0], '')
 
 
 if __name__ == '__main__':

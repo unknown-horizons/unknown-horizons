@@ -23,9 +23,11 @@
 from collections import OrderedDict
 
 
-sections = ['UH-Team', 'Patchers', 'Translators', 'Packagers', 'Special Thanks']
+sections = ['UH-Team', 'Patchers', 'Translators', 'Packagers',
+            'Special Thanks']
 section_widgets = {s: 'credits_' + s.lower() for s in sections}
-section_widgets.update({'UH-Team': 'credits_team', 'Special Thanks': 'credits_thanks'})
+section_widgets.update({'UH-Team': 'credits_team',
+                        'Special Thanks': 'credits_thanks'})
 
 # Whether to add ScrollAreas around the page
 huge_pages = ['Translators']
@@ -51,9 +53,9 @@ FOOTER = ur'''
 
 </Container>'''
 
-XML_MESS = [  # (search, replace) list of stuff we need to replace before writing xml manually
-    ('&', '&amp;'),
-]
+# (search, replace) list of stuff we need to replace
+# before writing xml manually
+XML_MESS = [('&', '&amp;'),]
 
 
 def write(f, level, text, newline=True):
@@ -130,7 +132,8 @@ def write_page(heading, content):
         if heading in huge_pages:
             write(f, 1, u'</ScrollArea>')
 
-    write(f, 0, u'\n<HBox name="%s" position="185,45" padding="10">' % section_widgets[heading])
+    write(f, 0, u'\n<HBox name="%s" position="185,45" padding="10">'
+          % section_widgets[heading])
 
     write_page_header()
 

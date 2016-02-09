@@ -72,13 +72,17 @@ def setup_paths():
         language = dirname.split(os.path.sep)[-1]
     else:
         language = language_path
-        language_path = PO_INPUT_PATH.format(scenario=scenario, language=language)
+        language_path = PO_INPUT_PATH.format(scenario=scenario,
+                                             language=language)
 
-    yaml_output = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario, language=language)
-    msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '%s.mo' % scenario
+    yaml_output = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario,
+                                   language=language)
+    msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT,
+                                       language=language) + '%s.mo' % scenario
 
     # If path for compiled translations does not exist yet, create it
-    subprocess.call(['mkdir', '-p', MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language)])
+    subprocess.call(['mkdir', '-p', MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT,
+                                                       language=language)])
 
     return (path_prefix,
             scenario, scenario_path,
@@ -91,8 +95,9 @@ def setup_gettext(scenario, language):
         translation = gettext.translation(scenario, MO_OUTPUT, [language])
     except IOError:
         # IOError: [Errno 2] No translation file found for domain
-        print('No compiled translation for domain `%s` and language `%s` in `%s`. '
-              'Exiting.' % (scenario, language, MO_OUTPUT))
+        print('No compiled translation for domain `%s` and '
+              'language `%s` in `%s`. Exiting.' % (scenario, language,
+                                                   MO_OUTPUT))
         sys.exit(1)
     else:
         translation.install(unicode=True)
@@ -113,8 +118,8 @@ def compile_scenario_po(output_mo):
         ], stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError:
         # TODO handle
-        print('Error while compiling translation `%s`, probably malformed `.po`. '
-              'Exiting.' % input_po)
+        print('Error while compiling translation `%s`, probably malformed '
+              '`.po`. Exiting.' % input_po)
         sys.exit(1)
     else:
         return stats
@@ -168,7 +173,8 @@ def write_translated_yaml(fileish, where, metadata, generator):
             all_events.append(event)
 
         # allow_unicode: Without this, would dump '\xF6' instead of 'ö'.
-        # width: Default width would wrap at ~80 chars, not matching the english sources
+        # width: Default width would wrap at ~80 chars,
+        #  not matching the english sources
         dumpster = yaml.safe_dump(all_events, allow_unicode=True, width=1000)
         # Manually indent since we manually keep anchors
         # (pyyaml would rename and otherwise mess with them)
@@ -194,7 +200,8 @@ def write_translated_yaml(fileish, where, metadata, generator):
         # All of this is dumped to file when we encounter a 'metadata:' line
         # while manually parsing the original scenario line-by-line. Ugly.
         m = {'metadata': translated_metadata}
-        dumped = yaml.safe_dump(m, allow_unicode=True, width=1000, default_flow_style=False)
+        dumped = yaml.safe_dump(m, allow_unicode=True, width=1000,
+                                default_flow_style=False)
         where.write(dumped)
 
     where.write('''\
@@ -211,7 +218,8 @@ def write_translated_yaml(fileish, where, metadata, generator):
     sections = [[]]
     # Copy everything looking like a header (lines before the first anchor)
     seen_start_anchor = False
-    # Copy everything after `logbook-data` (scenario conditions/actions, metadata)
+    # Copy everything after `logbook-data`
+    #  (scenario conditions/actions, metadata)
     copy_again = False
 
     for line in fileish:
@@ -227,16 +235,19 @@ def write_translated_yaml(fileish, where, metadata, generator):
             # If this is our first anchor, stop just copying lines
             # and enter translation mode instead (seen_start_anchor)
             anchors.append(line)
-            preprint(sections[-1], anchors[-1], just_copy=not seen_start_anchor)
+            preprint(sections[-1], anchors[-1],
+                     just_copy=not seen_start_anchor)
             sections.append([])
 
             if not seen_start_anchor:
                 seen_start_anchor = True
 
         elif line.startswith('events:'):
-            # Only try to translate logbook-data. This ends logbook-data section.
+            # Only try to translate logbook-data.
+            #  This ends logbook-data section.
             anchors.append(line)
-            preprint(sections[-1], anchors[-1], just_copy=not seen_start_anchor)
+            preprint(sections[-1], anchors[-1],
+                     just_copy=not seen_start_anchor)
             sections.append([])
 
             # Thus, abort and only copy from here on
@@ -247,8 +258,8 @@ def write_translated_yaml(fileish, where, metadata, generator):
 
 
 def main():
-    (path_prefix, scenario, scenario_path, language, language_path, yaml_output,
-        msgfmt_output) = setup_paths()
+    (path_prefix, scenario, scenario_path, language, language_path,
+         yaml_output, msgfmt_output) = setup_paths()
     # This writes .mo files in the *scenario* domain, so setup_gettext needs
     # to come afterwards!
     tl_status = compile_scenario_po(msgfmt_output)
@@ -270,9 +281,10 @@ def main():
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print 'Usage: {0} scenario_translation_file'.format(os.path.basename(__file__))
-        print '\tscenario_translation_file: `po/scenarios/sv/tutorial.po`'
-        print 'Run from main UH directory!'
+        print('Usage: {0} scenario_translation_file'
+              .format(os.path.basename(__file__)))
+        print('\tscenario_translation_file: `po/scenarios/sv/tutorial.po`')
+        print('Run from main UH directory!')
         sys.exit(1)
     else:
         main()
