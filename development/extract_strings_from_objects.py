@@ -69,7 +69,8 @@ HEADER = '''\
 #          You need to update it to see changes to strings in-game.
 #          DO NOT MANUALLY UPDATE THIS FILE (by editing strings).
 #          The script to generate .pot templates calls the following:
-# ./development/extract_strings_from_objects.py  horizons/i18n/objecttranslations.py
+# ./development/extract_strings_from_objects.py
+#      horizons/i18n/objecttranslations.py
 #
 # NOTE: In string-freeze mode (shortly before releases, usually
 #       announced in a meeting), updates to this file must not happen
@@ -115,48 +116,56 @@ from yaml import SafeLoader as Loader
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS
 
+
 # cannot import parse_token from horizons.util.yamlcache here!
-#TODO Make sure to keep both in sync and/or fix the import trouble!
+# TODO Make sure to keep both in sync and/or fix the import trouble!
 def parse_token(token, token_klass):
     """Helper function that tries to parse a constant name.
     Does not do error detection, but passes unparseable stuff through.
     Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
     @param token_klass: "TIER", "RES", "UNITS" or "BUILDINGS"
     """
-    classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+    classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS,
+               'BUILDINGS': BUILDINGS}
 
     if not isinstance(token, basestring):
-        return token # probably numeric already
+        return token  # probably numeric already
     if not token.startswith(token_klass):
         return token
     try:
-        return getattr( classes[token_klass], token.split(".", 2)[1])
-    except AttributeError as e: # token not defined here
+        return getattr(classes[token_klass], token.split(".", 2)[1])
+    except AttributeError as e:  # token not defined here
         err = "This means that you either have to add an entry in horizons/constants.py "\
               "in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
-        raise Exception( str(e) + "\n\n" + err +"\n" )
+        raise Exception(str(e) + "\n\n" + err + "\n")
+
 
 def list_all_files():
     result = []
     for folder in locations_to_translate:
         for directory, subdirs, files in os.walk(folder):
             for filename in files:
-                if filename.endswith('.yaml') and filename not in files_to_skip:
+                if filename.endswith('.yaml') and filename\
+                        not in files_to_skip:
                     result.append(os.path.join(directory, filename))
     return sorted(result)
+
 
 def content_from_file(filename):
     parsed = load(file(filename, 'r'), Loader=Loader)
     object_strings = []
     if not parsed:
         return ''
+
     def add_line(value, component, sep, key, filename):
         if value.startswith('_ '):
             text = '_("{value}")'.format(value=value[2:])
             component = component + sep + str(parse_token(key, 'TIER'))
-            filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
-            comment = '%s of %s' %(component, filename)
-            object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
+            filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].\
+                replace('/', ':')
+            comment = '%s of %s' % (component, filename)
+            object_strings.append('# %s' % comment + ROWINDENT +
+                                  '%-30s: %s' % (('"%s"') % component, text))
 
     for component, value in parsed.iteritems():
         if isinstance(value, basestring):
@@ -165,12 +174,13 @@ def content_from_file(filename):
             for key, subvalue in value.iteritems():
                 if isinstance(subvalue, basestring):
                     add_line(subvalue, component, "_", str(key), filename)
-        elif isinstance(value, list): # build menu definitions
+        elif isinstance(value, list):  # build menu definitions
             for attrlist in value:
                 if isinstance(attrlist, dict):
                     for key, subvalue in attrlist.iteritems():
                         if isinstance(subvalue, basestring):
-                            add_line(subvalue, component, "_", str(key), filename)
+                            add_line(subvalue, component, "_", str(key),
+                                     filename)
                 else:
                     for subvalue in attrlist:
                         if isinstance(subvalue, basestring):
@@ -180,7 +190,8 @@ def content_from_file(filename):
 
     if strings:
         return ('\n\t"%s" : {' % filename) + \
-               (ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
+               (ROWINDENT + '%s,' % (','+ROWINDENT)
+                .join(strings)) + ROWINDENT + '},'
     else:
         return ''
 

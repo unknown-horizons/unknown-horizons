@@ -20,7 +20,6 @@
 # ###################################################
 
 import unittest
-
 import horizons.globals
 import horizons.main
 

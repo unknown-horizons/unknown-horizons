@@ -23,6 +23,8 @@
 
 import unittest
 import pep8
+import os
+import sys
 
 
 class TestCodeFormat(unittest.TestCase):
@@ -42,7 +44,7 @@ class TestCodeFormat(unittest.TestCase):
                          "Found code style errors (and warnings).")
 
     def test_pep8_dir_tests(self):
-        """Test that code conform to PEP8."""
+        """Test that code conform to PEP8. tests files"""
         pep8style = pep8.StyleGuide(quiet=False)
         result = pep8style.check_files(
             ['tests/__init__.py',
@@ -71,6 +73,18 @@ class TestCodeFormat(unittest.TestCase):
              'tests/gui/__init__.py',
              'tests/gui/cooperative.py',
              ])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+    def test_pep8_os_walk(self):
+        """Test that code conform to PEP8. all .py files"""
+        check_files = []
+        for root, dirs, files in os.walk(os.path.dirname(sys.argv[0])):
+            for file in files:
+                if file.endswith(".py"):
+                    check_files.append(os.path.join(root, file))
+        pep8style = pep8.StyleGuide(quiet=False)
+        result = pep8style.check_files(check_files)
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
