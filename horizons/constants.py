@@ -35,50 +35,50 @@ possible and instead import the proper classes of this file.
 
 # Versioning
 class VERSION:
-	def _get_git_version():
-		"""Function gets latest revision of the working copy.
-		It only works in git repositories, and is actually a hack.
-		"""
-		try:
-			from run_uh import get_content_dir_parent_path
-			uh_path = get_content_dir_parent_path()
-			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
-			if os.path.exists(git_head_path):
-				head = open(git_head_path).readline().strip().partition(' ')
-				if head[2]:
-					head_file = os.path.join(uh_path, '.git', head[2])
-				else:
-					head_file = git_head_path
-				if os.path.exists(head_file):
-					return unicode(open(head_file).readline().strip()[0:7])
-		#if there is no .git directory then check for gitversion.txt
-		except ImportError:
-			try:
-				return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
-			except IOError:
-				return u"<unknown>"
+    def _get_git_version():
+        """Function gets latest revision of the working copy.
+        It only works in git repositories, and is actually a hack.
+        """
+        try:
+            from run_uh import get_content_dir_parent_path
+            uh_path = get_content_dir_parent_path()
+            git_head_path = os.path.join(uh_path, '.git', 'HEAD')
+            if os.path.exists(git_head_path):
+                head = open(git_head_path).readline().strip().partition(' ')
+                if head[2]:
+                    head_file = os.path.join(uh_path, '.git', head[2])
+                else:
+                    head_file = git_head_path
+                if os.path.exists(head_file):
+                    return unicode(open(head_file).readline().strip()[0:7])
+        #if there is no .git directory then check for gitversion.txt
+        except ImportError:
+            try:
+                return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
+            except IOError:
+                return u"<unknown>"
 
-		return u"<unknown>"
+        return u"<unknown>"
 
-	RELEASE_NAME    = "Unknown Horizons %s"
-	RELEASE_VERSION = _get_git_version()
-	# change for release:
-	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2013.3'
+    RELEASE_NAME    = "Unknown Horizons %s"
+    RELEASE_VERSION = _get_git_version()
+    # change for release:
+    IS_DEV_VERSION = True
+    #RELEASE_VERSION = u'2013.3'
 
-	REQUIRED_FIFE_MAJOR_VERSION = 0
-	REQUIRED_FIFE_MINOR_VERSION = 3
-	REQUIRED_FIFE_PATCH_VERSION = 4
+    REQUIRED_FIFE_MAJOR_VERSION = 0
+    REQUIRED_FIFE_MINOR_VERSION = 3
+    REQUIRED_FIFE_PATCH_VERSION = 4
 
-	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
+    REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
-	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 76
-	SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
+    ## +=1 this if you changed the savegame "api"
+    SAVEGAMEREVISION = 76
+    SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
 
-	@staticmethod
-	def string():
-		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
+    @staticmethod
+    def string():
+        return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
 
 
 ## WORLD
@@ -407,12 +407,12 @@ class PRODUCTION:
 
 
 class PRODUCTIONLINES:
-	HUKER = 15
-	FISHING_BOAT = None # will get added later
-	FRIGATE = 58
-	TREES = 256812226
-	WOOL = 1654557398
-	SWORDSMAN = 1062345232
+    HUKER = 15
+    FISHING_BOAT = None # will get added later
+    FRIGATE = 58
+    TREES = 256812226
+    WOOL = 1654557398
+    SWORDSMAN = 1062345232
 
 
 # GAME-RELATED, BALANCING VALUES
@@ -652,51 +652,51 @@ class _LanguageNameDict(dict):
 
 
 LANGUAGENAMES = _LanguageNameDict({
-	""      : (u'System default', u''),
-	"af"    : (u'Afrikaans', u'Afrikaans'),
-	"bg"    : (u'Български', u'Bulgarian'),
-	"ca"    : (u'Català', u'Catalan'),
-	'ca@valencia' : (u'Català de València', u'Catalan (Valencia)'),
-	"cs"    : (u'Čeština', u'Czech'),
-	"da"    : (u'Danske', u'Danish'),
-	"de"    : (u'Deutsch', u'German'),
-	"en"    : (u'English', u'English'),
-	"eo"    : (u'Esperanto', u'Esperanto'),
-	"es"    : (u'Español', u'Spanish'),
-	"et"    : (u'Eesti', u'Estonian'),
-	"el"    : (u'Ελληνικά', u'Greek'),
-	"fi"    : (u'Suomi', u'Finnish'),
-	"fr"    : (u'Français', u'French'),
-	"frp"   : (u'Francoprovençâl', u'Franco-Provencal'),
-	"ga"    : (u'Gaeilge', u'Irish'),
-	"gl"    : (u'Galego', u'Galician'),
-	"hi"    : (u'मानक हिन्दी', u'Hindi'),
-	"hr"    : (u'Hrvatski', u'Croatian'),
-	"hu"    : (u'Magyar', u'Hungarian'),
-	"id"    : (u'Bahasa Indonesia', u'Indonesian'),
-	"it"    : (u'Italiano', u'Italian'),
-	"ja"    : (u'日本語', u'Japanese'),
-	"ko"    : (u'한국말/조선말', u'Korean'),
-	"lt"    : (u'Lietuvių', u'Lithuanian'),
-	"lv"    : (u'Latviešu', u'Latvian'),
-	"ml"    : (u'മലയാളം', u'Malayalam'),
-	"nb"    : (u'Bokmål', u'Norwegian'),
-	"nl"    : (u'Nederlands', u'Dutch'),
-	"pl"    : (u'Polski', u'Polish'),
-	"pt_BR" : (u'Português Br.', u'Brazilian Portuguese'),
-	"pt"    : (u'Português', u'Portuguese'),
-	"ro"    : (u'Română', u'Romanian'),
-	"ru"    : (u'Русский', u'Russian'),
-	"sl"    : (u'Slovenski', u'Slovenian'),
-	"sr"    : (u'Cрпски', u'Serbian'),
-	"sv"    : (u'Svenska', u'Swedish'),
-	"th"    : (u'ภาษาไทย', u'Thai'),
-	"tr"    : (u'Türkçe', u'Turkish'),
-	"uk"    : (u'Українська', u'Ukrainian'),
-	"vi"    : (u'Tiếng Việt', u'Vietnamese'),
-	"zh_CN" : (u'简化字', u'Simplified Chinese'),
-	"zh_TW" : (u'繁體字', u'Traditional Chinese'),
-	"zu"    : (u'IsiZulu', u'Zulu'),
+    ""      : (u'System default', u''),
+    "af"    : (u'Afrikaans', u'Afrikaans'),
+    "bg"    : (u'Български', u'Bulgarian'),
+    "ca"    : (u'Català', u'Catalan'),
+    'ca@valencia' : (u'Català de València', u'Catalan (Valencia)'),
+    "cs"    : (u'Čeština', u'Czech'),
+    "da"    : (u'Danske', u'Danish'),
+    "de"    : (u'Deutsch', u'German'),
+    "en"    : (u'English', u'English'),
+    "eo"    : (u'Esperanto', u'Esperanto'),
+    "es"    : (u'Español', u'Spanish'),
+    "et"    : (u'Eesti', u'Estonian'),
+    "el"    : (u'Ελληνικά', u'Greek'),
+    "fi"    : (u'Suomi', u'Finnish'),
+    "fr"    : (u'Français', u'French'),
+    "frp"   : (u'Francoprovençâl', u'Franco-Provencal'),
+    "ga"    : (u'Gaeilge', u'Irish'),
+    "gl"    : (u'Galego', u'Galician'),
+    "hi"    : (u'मानक हिन्दी', u'Hindi'),
+    "hr"    : (u'Hrvatski', u'Croatian'),
+    "hu"    : (u'Magyar', u'Hungarian'),
+    "id"    : (u'Bahasa Indonesia', u'Indonesian'),
+    "it"    : (u'Italiano', u'Italian'),
+    "ja"    : (u'日本語', u'Japanese'),
+    "ko"    : (u'한국말/조선말', u'Korean'),
+    "lt"    : (u'Lietuvių', u'Lithuanian'),
+    "lv"    : (u'Latviešu', u'Latvian'),
+    "ml"    : (u'മലയാളം', u'Malayalam'),
+    "nb"    : (u'Bokmål', u'Norwegian'),
+    "nl"    : (u'Nederlands', u'Dutch'),
+    "pl"    : (u'Polski', u'Polish'),
+    "pt_BR" : (u'Português Br.', u'Brazilian Portuguese'),
+    "pt"    : (u'Português', u'Portuguese'),
+    "ro"    : (u'Română', u'Romanian'),
+    "ru"    : (u'Русский', u'Russian'),
+    "sl"    : (u'Slovenski', u'Slovenian'),
+    "sr"    : (u'Cрпски', u'Serbian'),
+    "sv"    : (u'Svenska', u'Swedish'),
+    "th"    : (u'ภาษาไทย', u'Thai'),
+    "tr"    : (u'Türkçe', u'Turkish'),
+    "uk"    : (u'Українська', u'Ukrainian'),
+    "vi"    : (u'Tiếng Việt', u'Vietnamese'),
+    "zh_CN" : (u'简化字', u'Simplified Chinese'),
+    "zh_TW" : (u'繁體字', u'Traditional Chinese'),
+    "zu"    : (u'IsiZulu', u'Zulu'),
 })
 
 FONTDEFS = {
