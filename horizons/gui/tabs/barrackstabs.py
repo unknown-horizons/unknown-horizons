@@ -32,11 +32,11 @@ from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS
 
 class BarracksTab(UnitbuilderTabBase):
-	widget = 'barracks.xml'
-	helptext = _lazy("Barracks overview")
+    widget = 'barracks.xml'
+    helptext = _lazy("Barracks overview")
 
-	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
-	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/{type_id}.png"
+    UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
+    UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/{type_id}.png"
 
 # this tab additionally requests functions for:
 # * decide: show [start view] = nothing but info text, look up the xml, or [building status view]
@@ -48,74 +48,74 @@ class BarracksTab(UnitbuilderTabBase):
 # * abort building process: delete task, remove all resources, display [start view] again
 
 class BarracksSelectTab(ProducerOverviewTabBase):
-	widget = 'barracks_showcase.xml'
+    widget = 'barracks_showcase.xml'
 
-	def init_widget(self):
-		super(BarracksSelectTab, self).init_widget()
-		self.widget.findChild(name='headline').text = self.helptext
+    def init_widget(self):
+        super(BarracksSelectTab, self).init_widget()
+        self.widget.findChild(name='headline').text = self.helptext
 
-		showcases = self.widget.findChild(name='showcases')
-		for i, (groundunit, prodline) in enumerate(self.groundunits):
-			showcase = self.build_groundunit_info(i, groundunit, prodline)
-			showcases.addChild(showcase)
+        showcases = self.widget.findChild(name='showcases')
+        for i, (groundunit, prodline) in enumerate(self.groundunits):
+            showcase = self.build_groundunit_info(i, groundunit, prodline)
+            showcases.addChild(showcase)
 
-	def build_groundunit_info(self, index, groundunit, prodline):
-		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
-		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
-		widget.addChild(bg_icon)
+    def build_groundunit_info(self, index, groundunit, prodline):
+        size = (260, 90)
+        widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+                           min_size=size, max_size=size, size=size)
+        bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+        widget.addChild(bg_icon)
 
-		image = 'content/gui/images/objects/groundunit/76/{unit_id}.png'.format(unit_id=groundunit)
-		helptext = self.instance.session.db.get_unit_tooltip(groundunit)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
-		                 helptext=helptext)
-		widget.addChild(unit_icon)
+        image = 'content/gui/images/objects/groundunit/76/{unit_id}.png'.format(unit_id=groundunit)
+        helptext = self.instance.session.db.get_unit_tooltip(groundunit)
+        unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+                         helptext=helptext)
+        widget.addChild(unit_icon)
 
-		# if not buildable, this returns string with reason why to be displayed as helptext
-		#groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
-		groundunit_unbuildable = False
-		if not groundunit_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))
-			button.capture(Callback(self.start_production, prodline))
-		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
-			helptext=groundunit_unbuildable)
+        # if not buildable, this returns string with reason why to be displayed as helptext
+        #groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
+        groundunit_unbuildable = False
+        if not groundunit_unbuildable:
+            button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))
+            button.capture(Callback(self.start_production, prodline))
+        else:
+            button = CancelButton(position=(60, 50), name='ok_%s'%index,
+            helptext=groundunit_unbuildable)
 
-		widget.addChild(button)
+        widget.addChild(button)
 
-		# Get production line info
-		production = self.producer.create_production_line(prodline)
-		# consumed == negative, reverse to sort in *ascending* order:
-		costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
-		for i, (res, amount) in enumerate(costs):
-			xoffset = 103 + (i  % 2) * 55
-			yoffset =  20 + (i // 2) * 20
-			icon = create_resource_icon(res, self.instance.session.db)
-			icon.max_size = icon.min_size = icon.size = (16, 16)
-			icon.position = (xoffset, yoffset)
-			label = Label(name='cost_%s_%s' % (index, i))
-			if res == RES.GOLD:
-				label.text = unicode(-amount)
-			else:
-				label.text = u'{amount:02}t'.format(amount=-amount)
-			label.position = (22 + xoffset, yoffset)
-			widget.addChild(icon)
-			widget.addChild(label)
-		return widget
+        # Get production line info
+        production = self.producer.create_production_line(prodline)
+        # consumed == negative, reverse to sort in *ascending* order:
+        costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
+        for i, (res, amount) in enumerate(costs):
+            xoffset = 103 + (i  % 2) * 55
+            yoffset =  20 + (i // 2) * 20
+            icon = create_resource_icon(res, self.instance.session.db)
+            icon.max_size = icon.min_size = icon.size = (16, 16)
+            icon.position = (xoffset, yoffset)
+            label = Label(name='cost_%s_%s' % (index, i))
+            if res == RES.GOLD:
+                label.text = unicode(-amount)
+            else:
+                label.text = u'{amount:02}t'.format(amount=-amount)
+            label.position = (22 + xoffset, yoffset)
+            widget.addChild(icon)
+            widget.addChild(label)
+        return widget
 
-	def start_production(self, prod_line_id):
-		AddProduction(self.producer, prod_line_id).execute(self.instance.session)
-		# show overview tab
-		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
+    def start_production(self, prod_line_id):
+        AddProduction(self.producer, prod_line_id).execute(self.instance.session)
+        # show overview tab
+        self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
 class BarracksSwordmanTab(BarracksSelectTab):
-	icon_path = 'icons/tabwidget/barracks/swordman'
-	helptext = _lazy("Swordman")
+    icon_path = 'icons/tabwidget/barracks/swordman'
+    helptext = _lazy("Swordman")
 
-	groundunits = [
-		(UNITS.SWORDSMAN, PRODUCTIONLINES.SWORDSMAN),
-	]
+    groundunits = [
+        (UNITS.SWORDSMAN, PRODUCTIONLINES.SWORDSMAN),
+    ]
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
@@ -124,16 +124,16 @@ class BarracksSwordmanTab(BarracksSelectTab):
 #	the tooltips contain this info as well.
 
 class BarracksConfirmTab(ProducerOverviewTabBase):
-	widget = 'barracks_confirm.xml'
-	helptext = _lazy("Confirm order")
+    widget = 'barracks_confirm.xml'
+    helptext = _lazy("Confirm order")
 
-	def init_widget(self):
-		super(BarracksConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
-		self.widget.mapEvents(events)
+    def init_widget(self):
+        super(BarracksConfirmTab, self).init_widget()
+        events = { 'create_unit': self.start_production }
+        self.widget.mapEvents(events)
 
-	def start_production(self):
-		AddProduction(self.producer, 15).execute(self.instance.session)
+    def start_production(self):
+        AddProduction(self.producer, 15).execute(self.instance.session)
 
 # this "tab" additionally requests functions for:
 # * get: currently ordered groundunit: name / image / type (fisher/trade/war)

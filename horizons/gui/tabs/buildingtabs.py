@@ -29,40 +29,40 @@ from horizons.component.depositcomponent import DepositComponent
 
 
 class TowerOverviewTab(OverviewTab):  # defensive tower
-	widget = 'overview_tower.xml'
-	helptext = _lazy("Tower overview")
+    widget = 'overview_tower.xml'
+    helptext = _lazy("Tower overview")
 
-	def init_widget(self):
-		super(TowerOverviewTab, self).init_widget()
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(
-			NamedComponent).name
+    def init_widget(self):
+        super(TowerOverviewTab, self).init_widget()
+        self.widget.findChild(name="headline").text = self.instance.settlement.get_component(
+            NamedComponent).name
 
 
 class SignalFireOverviewTab(OverviewTab):
-	widget = 'overview_signalfire.xml'
-	helptext = _lazy("Overview")
+    widget = 'overview_signalfire.xml'
+    helptext = _lazy("Overview")
 
-	def init_widget(self):
-		super(SignalFireOverviewTab, self).init_widget()
-		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
-		action_gfx = action_set.items()[0][1]
-		image = action_gfx[45].keys()[0]
-		self.widget.findChild(name="building_image").image = image
+    def init_widget(self):
+        super(SignalFireOverviewTab, self).init_widget()
+        action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
+        action_gfx = action_set.items()[0][1]
+        image = action_gfx[45].keys()[0]
+        self.widget.findChild(name="building_image").image = image
 
 
 class ResourceDepositOverviewTab(OverviewTab):
-	widget = 'overview_resourcedeposit.xml'
+    widget = 'overview_resourcedeposit.xml'
 
-	def init_widget(self):
-		super(ResourceDepositOverviewTab, self).init_widget()
-		# display range starts 0, not min_amount, else it looks like there's nothing in it
-		# when parts of the ore have been mined already
-		resources = self.instance.get_component(DepositComponent).get_res_ranges()
-		amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
-		self.widget.child_finder("inventory").init(self.instance.session.db,
-			self.instance.get_component(StorageComponent).inventory,
-			ordinal=amounts)
+    def init_widget(self):
+        super(ResourceDepositOverviewTab, self).init_widget()
+        # display range starts 0, not min_amount, else it looks like there's nothing in it
+        # when parts of the ore have been mined already
+        resources = self.instance.get_component(DepositComponent).get_res_ranges()
+        amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
+        self.widget.child_finder("inventory").init(self.instance.session.db,
+            self.instance.get_component(StorageComponent).inventory,
+            ordinal=amounts)
 
-	def refresh(self):
-		super(ResourceDepositOverviewTab, self).refresh()
-		self.widget.child_finder("inventory").update()
+    def refresh(self):
+        super(ResourceDepositOverviewTab, self).refresh()
+        self.widget.child_finder("inventory").update()

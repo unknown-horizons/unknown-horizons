@@ -34,298 +34,298 @@ from horizons.ext.enum import Enum
 
 
 class InvalidBuildMenuFileFormat(Exception):
-	pass
+    pass
 
 
 class BuildTab(TabInterface):
-	"""
-	Layout data is defined in image_data and text_data.
-	Columns in the tabs are enumerated as follows:
-	  01  11  21  31
-	  02  12  22  32
-	  03  13  23  33
-	  04  14  24  34
-	Boxes and Labels have the same number as their left upper icon.
-	Check buildtab.xml for details. Icons without image are transparent.
-	"""
-	lazy_loading = True
-	widget = 'buildtab.xml'
+    """
+    Layout data is defined in image_data and text_data.
+    Columns in the tabs are enumerated as follows:
+      01  11  21  31
+      02  12  22  32
+      03  13  23  33
+      04  14  24  34
+    Boxes and Labels have the same number as their left upper icon.
+    Check buildtab.xml for details. Icons without image are transparent.
+    """
+    lazy_loading = True
+    widget = 'buildtab.xml'
 
-	MAX_ROWS = 4
-	MAX_COLS = 4
+    MAX_ROWS = 4
+    MAX_COLS = 4
 
-	build_menus = [
-		"content/objects/gui_buildmenu/build_menu_per_tier.yaml",
-		"content/objects/gui_buildmenu/build_menu_per_type.yaml"
-	]
+    build_menus = [
+        "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
+        "content/objects/gui_buildmenu/build_menu_per_type.yaml"
+    ]
 
-	build_menu_config_per_tier = build_menus[0]
-	build_menu_config_per_type = build_menus[1]
+    build_menu_config_per_tier = build_menus[0]
+    build_menu_config_per_type = build_menus[1]
 
-	default_build_menu_config = build_menu_config_per_tier
+    default_build_menu_config = build_menu_config_per_tier
 
-	cur_build_menu_config = default_build_menu_config
+    cur_build_menu_config = default_build_menu_config
 
-	# NOTE: check for occurrences of this when adding one, you might want to
-	#       add respective code there as well
-	unlocking_strategies = Enum(
-		"tab_per_tier",  # 1 tab per tier
-		"single_per_tier"  # each single building unlocked if tier is unlocked
-	)
+    # NOTE: check for occurrences of this when adding one, you might want to
+    #       add respective code there as well
+    unlocking_strategies = Enum(
+        "tab_per_tier",  # 1 tab per tier
+        "single_per_tier"  # each single building unlocked if tier is unlocked
+    )
 
-	last_active_build_tab = None
+    last_active_build_tab = None
 
-	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy, build_menu_config):
-		"""
-		@param tabindex: position of tab
-		@param data: data directly from yaml specifying the contents of this tab
-		@param build_callback: called on clicks
-		@param unlocking_strategy: element of unlocking_strategies
-		@param build_menu_config: entry of build_menus where this definition originates from
-		"""
-		icon_path = None
-		helptext = None
-		headline = None
-		rows = []
-		for entry in data:
-			if isinstance(entry, dict):
-				# this is one key-value pair, e.g. "- icon: img/foo.png"
-				if len(entry) != 1:
-					raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: %s" % entry)
-				key, value = entry.items()[0]
-				if key == "icon":
-					icon_path = value
-				elif key == "helptext":
-					helptext = value[2:] if value.startswith('_ ') else value
-				elif key == "headline":
-					headline = value[2:] if value.startswith('_ ') else value
-				else:
-					raise InvalidBuildMenuFileFormat(
-						"Invalid key: %s\nMust be either icon, helptext or headline." % key)
-			elif isinstance(entry, list):
-				# this is a line of data
-				rows.append(entry)  # parse later on demand
-			else:
-				raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
+    def __init__(self, session, tabindex, data, build_callback, unlocking_strategy, build_menu_config):
+        """
+        @param tabindex: position of tab
+        @param data: data directly from yaml specifying the contents of this tab
+        @param build_callback: called on clicks
+        @param unlocking_strategy: element of unlocking_strategies
+        @param build_menu_config: entry of build_menus where this definition originates from
+        """
+        icon_path = None
+        helptext = None
+        headline = None
+        rows = []
+        for entry in data:
+            if isinstance(entry, dict):
+                # this is one key-value pair, e.g. "- icon: img/foo.png"
+                if len(entry) != 1:
+                    raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: %s" % entry)
+                key, value = entry.items()[0]
+                if key == "icon":
+                    icon_path = value
+                elif key == "helptext":
+                    helptext = value[2:] if value.startswith('_ ') else value
+                elif key == "headline":
+                    headline = value[2:] if value.startswith('_ ') else value
+                else:
+                    raise InvalidBuildMenuFileFormat(
+                        "Invalid key: %s\nMust be either icon, helptext or headline." % key)
+            elif isinstance(entry, list):
+                # this is a line of data
+                rows.append(entry)  # parse later on demand
+            else:
+                raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
 
-		if not icon_path:
-			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
+        if not icon_path:
+            raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
 
-		self.session = session
-		self.tabindex = tabindex
-		self.build_callback = build_callback
-		self.unlocking_strategy = unlocking_strategy
-		if self.unlocking_strategy != self.__class__.unlocking_strategies.tab_per_tier:
-			if not helptext and not headline:
-				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
-		self.row_definitions = rows
-		self.headline = _(headline) if headline else headline  # don't translate None
-		self.helptext = _(helptext) if helptext else self.headline
+        self.session = session
+        self.tabindex = tabindex
+        self.build_callback = build_callback
+        self.unlocking_strategy = unlocking_strategy
+        if self.unlocking_strategy != self.__class__.unlocking_strategies.tab_per_tier:
+            if not helptext and not headline:
+                raise InvalidBuildMenuFileFormat("helptext definition is missing.")
+        self.row_definitions = rows
+        self.headline = _(headline) if headline else headline  # don't translate None
+        self.helptext = _(helptext) if helptext else self.headline
 
-		# get build style
-		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
+        # get build style
+        saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
+        self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
 
-		super(BuildTab, self).__init__(icon_path=icon_path)
+        super(BuildTab, self).__init__(icon_path=icon_path)
 
-	@classmethod
-	def get_saved_buildstyle(cls):
-		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		return cls.build_menus[saved_build_style]
+    @classmethod
+    def get_saved_buildstyle(cls):
+        saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
+        return cls.build_menus[saved_build_style]
 
-	def init_widget(self):
-		self.__current_settlement = None
-		headline_lbl = self.widget.child_finder('headline')
-		if self.headline:  # prefer specific headline
-			headline_lbl.text = self.headline
-		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
-			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
+    def init_widget(self):
+        self.__current_settlement = None
+        headline_lbl = self.widget.child_finder('headline')
+        if self.headline:  # prefer specific headline
+            headline_lbl.text = self.headline
+        elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
+            headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
 
-	def set_content(self):
-		"""Parses self.row_definitions and sets the content accordingly"""
-		settlement = LastActivePlayerSettlementManager().get()
+    def set_content(self):
+        """Parses self.row_definitions and sets the content accordingly"""
+        settlement = LastActivePlayerSettlementManager().get()
 
-		def _set_entry(button, icon, building_id):
-			"""Configure a single build menu button"""
-			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_tier and \
-			   self.get_building_tiers()[building_id] > self.session.world.player.settler_level:
-				return
+        def _set_entry(button, icon, building_id):
+            """Configure a single build menu button"""
+            if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_tier and \
+               self.get_building_tiers()[building_id] > self.session.world.player.settler_level:
+                return
 
-			building = Entities.buildings[building_id]
-			button.helptext = building.get_tooltip()
+            building = Entities.buildings[building_id]
+            button.helptext = building.get_tooltip()
 
-			# Add necessary resources to tooltip text.
-			# tooltip.py will then place icons from this information.
-			required_resources = ''
-			for resource_id, amount_needed in sorted(building.costs.items()):
-				required_resources += ' %s:%s' % (resource_id, amount_needed)
-			required_text = '[[Buildmenu%s]]' % (required_resources)
-			button.helptext = required_text + button.helptext
+            # Add necessary resources to tooltip text.
+            # tooltip.py will then place icons from this information.
+            required_resources = ''
+            for resource_id, amount_needed in sorted(building.costs.items()):
+                required_resources += ' %s:%s' % (resource_id, amount_needed)
+            required_text = '[[Buildmenu%s]]' % (required_resources)
+            button.helptext = required_text + button.helptext
 
-			enough_res = False  # don't show building by default
-			if settlement is not None:  # settlement is None when the mouse has left the settlement
-				res_overview = self.session.ingame_gui.resource_overview
-				show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
-				button.mapEvents({
-					button.name + "/mouseEntered/buildtab": show_costs,
-					button.name + "/mouseExited/buildtab": res_overview.close_construction_mode
-				})
+            enough_res = False  # don't show building by default
+            if settlement is not None:  # settlement is None when the mouse has left the settlement
+                res_overview = self.session.ingame_gui.resource_overview
+                show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
+                button.mapEvents({
+                    button.name + "/mouseEntered/buildtab": show_costs,
+                    button.name + "/mouseExited/buildtab": res_overview.close_construction_mode
+                })
 
-				(enough_res, missing_res) = Build.check_resources({},
-					building.costs, settlement.owner, [settlement])
-			# Check whether to disable build menu icon (not enough res available).
-			if enough_res:
-				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
-				button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
-			else:
-				icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
-				button.path = "icons/buildmenu/greyscale/{id:03d}".format(id=building_id)
+                (enough_res, missing_res) = Build.check_resources({},
+                    building.costs, settlement.owner, [settlement])
+            # Check whether to disable build menu icon (not enough res available).
+            if enough_res:
+                icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
+                button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
+            else:
+                icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
+                button.path = "icons/buildmenu/greyscale/{id:03d}".format(id=building_id)
 
-			button.capture(Callback(self.build_callback, building_id))
+            button.capture(Callback(self.build_callback, building_id))
 
-		for row_num, row in enumerate(self.row_definitions):
-			# we have integers for building types, strings for headlines above slots and None as empty slots
-			column = -1  # can't use enumerate, not always incremented
-			for entry in row:
-				column += 1
-				position = (10 * column) + (row_num + 1)  # legacy code, first row is 1, 11, 21
-				if entry is None:
-					continue
-				elif (column + 1) > self.MAX_COLS:
-					# out of 4x4 bounds
-					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
-					err += " Max. column amount in current layout is %s." % self.MAX_COLS
-					raise InvalidBuildMenuFileFormat(err)
-				elif row_num > self.MAX_ROWS:
-					# out of 4x4 bounds
-					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
-					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
-					raise InvalidBuildMenuFileFormat(err)
-				elif isinstance(entry, basestring):
-					column -= 1  # a headline does not take away a slot
-					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
-					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
-				elif isinstance(entry, int):
-					button = self.widget.child_finder('button_{position:02d}'.format(position=position))
-					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
-					_set_entry(button, icon, entry)
-				else:
-					raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
+        for row_num, row in enumerate(self.row_definitions):
+            # we have integers for building types, strings for headlines above slots and None as empty slots
+            column = -1  # can't use enumerate, not always incremented
+            for entry in row:
+                column += 1
+                position = (10 * column) + (row_num + 1)  # legacy code, first row is 1, 11, 21
+                if entry is None:
+                    continue
+                elif (column + 1) > self.MAX_COLS:
+                    # out of 4x4 bounds
+                    err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
+                    err += " Max. column amount in current layout is %s." % self.MAX_COLS
+                    raise InvalidBuildMenuFileFormat(err)
+                elif row_num > self.MAX_ROWS:
+                    # out of 4x4 bounds
+                    err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
+                    err += " Max. row amount in current layout is %s." % self.MAX_ROWS
+                    raise InvalidBuildMenuFileFormat(err)
+                elif isinstance(entry, basestring):
+                    column -= 1  # a headline does not take away a slot
+                    lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
+                    lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
+                elif isinstance(entry, int):
+                    button = self.widget.child_finder('button_{position:02d}'.format(position=position))
+                    icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
+                    _set_entry(button, icon, entry)
+                else:
+                    raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
 
-	def refresh(self):
-		self.set_content()
+    def refresh(self):
+        self.set_content()
 
-	def on_settlement_change(self, message):
-		if message.settlement is not None:
-			# only react to new actual settlements, else we have no res source
-			self.refresh()
+    def on_settlement_change(self, message):
+        if message.settlement is not None:
+            # only react to new actual settlements, else we have no res source
+            self.refresh()
 
-	def __remove_changelisteners(self):
-		NewPlayerSettlementHovered.discard(self.on_settlement_change)
-		if self.__current_settlement is not None:
-			inventory = self.__current_settlement.get_component(StorageComponent).inventory
-			inventory.discard_change_listener(self.refresh)
+    def __remove_changelisteners(self):
+        NewPlayerSettlementHovered.discard(self.on_settlement_change)
+        if self.__current_settlement is not None:
+            inventory = self.__current_settlement.get_component(StorageComponent).inventory
+            inventory.discard_change_listener(self.refresh)
 
-	def __add_changelisteners(self):
-		NewPlayerSettlementHovered.subscribe(self.on_settlement_change)
-		if self.__current_settlement is not None:
-			inventory = self.__current_settlement.get_component(StorageComponent).inventory
-			if not inventory.has_change_listener(self.refresh):
-				inventory.add_change_listener(self.refresh)
+    def __add_changelisteners(self):
+        NewPlayerSettlementHovered.subscribe(self.on_settlement_change)
+        if self.__current_settlement is not None:
+            inventory = self.__current_settlement.get_component(StorageComponent).inventory
+            if not inventory.has_change_listener(self.refresh):
+                inventory.add_change_listener(self.refresh)
 
-	def show(self):
-		self.__remove_changelisteners()
-		self.__current_settlement = LastActivePlayerSettlementManager().get()
-		self.__add_changelisteners()
-		self.__class__.last_active_build_tab = self.tabindex
-		super(BuildTab, self).show()
+    def show(self):
+        self.__remove_changelisteners()
+        self.__current_settlement = LastActivePlayerSettlementManager().get()
+        self.__add_changelisteners()
+        self.__class__.last_active_build_tab = self.tabindex
+        super(BuildTab, self).show()
 
-		button = self.widget.child_finder("switch_build_menu_config_button")
-		self._set_switch_layout_button_image(button)
-		button.capture(self._switch_build_menu_config)
+        button = self.widget.child_finder("switch_build_menu_config_button")
+        self._set_switch_layout_button_image(button)
+        button.capture(self._switch_build_menu_config)
 
-	def hide(self):
-		self.__remove_changelisteners()
-		super(BuildTab, self).hide()
+    def hide(self):
+        self.__remove_changelisteners()
+        super(BuildTab, self).hide()
 
-	def _set_switch_layout_button_image(self, button):
-		image_path = "content/gui/icons/tabwidget/buildmenu/"
-		if self.__class__.cur_build_menu_config is self.build_menu_config_per_type:
-			button.up_image = image_path + "tier.png"
-		else:
-			button.up_image = image_path + "class.png"
-		self.switch_layout_button_needs_update = False
+    def _set_switch_layout_button_image(self, button):
+        image_path = "content/gui/icons/tabwidget/buildmenu/"
+        if self.__class__.cur_build_menu_config is self.build_menu_config_per_type:
+            button.up_image = image_path + "tier.png"
+        else:
+            button.up_image = image_path + "class.png"
+        self.switch_layout_button_needs_update = False
 
-	def _switch_build_menu_config(self):
-		"""Sets next build menu config and recreates the gui"""
-		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
-		new_index = (cur_index + 1) % len(self.__class__.build_menus)
-		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
+    def _switch_build_menu_config(self):
+        """Sets next build menu config and recreates the gui"""
+        cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
+        new_index = (cur_index + 1) % len(self.__class__.build_menus)
+        self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
 
-		# after switch set active tab to first
-		self.__class__.last_active_build_tab = 0
-		self.session.ingame_gui.show_build_menu(update=True)
+        # after switch set active tab to first
+        self.__class__.last_active_build_tab = 0
+        self.session.ingame_gui.show_build_menu(update=True)
 
-		# save build style
-		horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
-		horizons.globals.fife.save_settings()
+        # save build style
+        horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
+        horizons.globals.fife.save_settings()
 
-	@classmethod
-	def create_tabs(cls, session, build_callback):
-		"""Create according to current build menu config
-		@param build_callback: function to call to enable build mode, has to take building type parameter
-		"""
-		source = cls.get_saved_buildstyle()
-		# parse
-		data = YamlCache.get_file(source, game_data=True)
-		if 'meta' not in data:
-			raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
-		metadata = data['meta']
-		if 'unlocking_strategy' not in metadata:
-			raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
-		try:
-			unlocking_strategy = cls.unlocking_strategies.get_item_for_string(metadata['unlocking_strategy'])
-		except KeyError:
-			raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
+    @classmethod
+    def create_tabs(cls, session, build_callback):
+        """Create according to current build menu config
+        @param build_callback: function to call to enable build mode, has to take building type parameter
+        """
+        source = cls.get_saved_buildstyle()
+        # parse
+        data = YamlCache.get_file(source, game_data=True)
+        if 'meta' not in data:
+            raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
+        metadata = data['meta']
+        if 'unlocking_strategy' not in metadata:
+            raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
+        try:
+            unlocking_strategy = cls.unlocking_strategies.get_item_for_string(metadata['unlocking_strategy'])
+        except KeyError:
+            raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
 
-		# create tab instances
-		tabs = []
-		for tab, tabdata in sorted(data.iteritems()):
-			if tab == "meta":
-				continue  # not a tab
+        # create tab instances
+        tabs = []
+        for tab, tabdata in sorted(data.iteritems()):
+            if tab == "meta":
+                continue  # not a tab
 
-			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(
-				tabs) > session.world.player.settler_level:
-				break
+            if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(
+                tabs) > session.world.player.settler_level:
+                break
 
-			try:
-				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
-				tabs.append(tab)
-			except Exception as e:
-				to_add = "\nThis error happened in %s of %s ." % (tab, source)
-				e.args = (e.args[0] + to_add,) + e.args[1:]
-				e.message = (e.message + to_add)
-				raise
+            try:
+                tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
+                tabs.append(tab)
+            except Exception as e:
+                to_add = "\nThis error happened in %s of %s ." % (tab, source)
+                e.args = (e.args[0] + to_add,) + e.args[1:]
+                e.message = (e.message + to_add)
+                raise
 
-		return tabs
+        return tabs
 
-	@classmethod
-	@decorators.cachedfunction
-	def get_building_tiers(cls):
-		"""Returns a dictionary mapping building type ids to their tiers
-		@return cached dictionary (don't modify)"""
-		building_tiers = {}
-		data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
-		tier = -1
-		for tab, tabdata in sorted(data.iteritems()):
-			if tab == "meta":
-				continue  # not a tab
+    @classmethod
+    @decorators.cachedfunction
+    def get_building_tiers(cls):
+        """Returns a dictionary mapping building type ids to their tiers
+        @return cached dictionary (don't modify)"""
+        building_tiers = {}
+        data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
+        tier = -1
+        for tab, tabdata in sorted(data.iteritems()):
+            if tab == "meta":
+                continue  # not a tab
 
-			tier += 1
+            tier += 1
 
-			for row in tabdata:
-				if isinstance(row, list):  # actual content
-					for entry in row:
-						if isinstance(entry, int):  # actual building button
-							building_tiers[entry] = tier
-		return building_tiers
+            for row in tabdata:
+                if isinstance(row, list):  # actual content
+                    for entry in row:
+                        if isinstance(entry, int):  # actual building button
+                            building_tiers[entry] = tier
+        return building_tiers

@@ -35,8 +35,6 @@ possible and instead import the proper classes of this file.
 
 # Versioning
 class VERSION:
-
-    @staticmethod
     def _get_git_version():
         """Function gets latest revision of the working copy.
         It only works in git repositories, and is actually a hack.
