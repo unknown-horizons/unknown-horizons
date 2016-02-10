@@ -47,7 +47,8 @@ def get_gui_files_map():
             if not f.endswith('.xml'):
                 continue
             if f in xml_files:
-                raise Exception('Another file by the name {name} already exists. '
+                raise Exception('Another file by the name {name} '
+                                'already exists. '
                                 'Please use unique names!'.format(name=f))
             xml_files[f] = os.path.join(root, f)
     return xml_files
@@ -81,14 +82,16 @@ def get_widget_xml(filename):
 
 
 def load_uh_widget(filename, style=None, center_widget=False):
-    """Loads a pychan widget from an xml file and applies uh-specific modifications
+    """Loads a pychan widget from an xml file
+    and applies uh-specific modifications
     """
     # load widget
     try:
         widget = loadXML(StringIO(get_widget_xml(filename)))
     except (IOError, ValueError) as error:
         log = logging.getLogger('gui')
-        log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
+        log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s',
+                  filename, error)
         raise
 
     # translate
@@ -110,9 +113,12 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 @decorators.cachedfunction
 def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
-    """Returns path of a resource icon or placeholder path, if icon does not exist.
+    """Returns path of a resource icon or placeholder path,
+    if icon does not exist.
+
     @param res: resource id. Pass 'placeholder' to get placeholder path.
-    @param full_path: whether to return full icon path or a stub path suitable for ImageButton path=
+    @param full_path: whether to return full icon path or a stub path suitable
+                      for ImageButton path=
     """
     icon_path = 'content/gui/icons/resources/{size}/'.format(size=size)
     if greyscale:
@@ -140,7 +146,8 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 
 
 def create_resource_icon(res_id, db):
-    """Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
+    """Creates a pychan Icon for a resource.
+    Helptext is set to name of *res_id*.
     @param res_id: resource id
     @param db: dbreader for main db"""
     widget = Icon(image=get_res_icon_path(res_id))
@@ -149,15 +156,20 @@ def create_resource_icon(res_id, db):
 
 
 def create_resource_selection_dialog(on_click, inventory, db,
-        widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
+        widget='select_trade_resource.xml', res_filter=None,
+        amount_per_line=None):
     """Returns a container containing resource icons.
     @param on_click: called with resource id as parameter on clicks
     @param inventory: to determine fill status of resource slots
     @param db: main db instance
-    @param widget: which xml file to use as a template. Default: tabwidget. Required
-                   since the resource bar also uses this code (no tabs there though).
-    @param res_filter: callback to decide which icons to use. Default: show all
-    @param amount_per_line: how many resource icons per line. Default: try to fit layout
+    @param widget: which xml file to use as a template.
+                   Default: tabwidget. Required
+                   since the resource bar also uses this code
+                   (no tabs there though).
+    @param res_filter: callback to decide which icons to use.
+                       Default: show all
+    @param amount_per_line: how many resource icons per line.
+                            Default: try to fit layout
     """
     from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
     dummy_icon_path = "icons/resources/none_gray"
@@ -169,8 +181,8 @@ def create_resource_selection_dialog(on_click, inventory, db,
     button_width = cell_size[0]
     vbox = dlg.findChild(name="resources")
     amount_per_line = amount_per_line or vbox.width // button_width
-    # Add the zero element to the beginning that allows to remove the currently
-    # sold/bought resource:
+    # Add the zero element to the beginning that allows to remove
+    #  the currently sold/bought resource:
     resources = [0] + db.get_res(only_tradeable=True)
     current_hbox = HBox(name="hbox_0", padding=0)
     index = 1
@@ -184,22 +196,27 @@ def create_resource_selection_dialog(on_click, inventory, db,
 
         # create button (dummy one or real one)
         if res_id == 0 or inventory is None:
-            reset_button = ImageButton(max_size=icon_size, name="resource_icon_00")
+            reset_button = ImageButton(max_size=icon_size,
+                                       name="resource_icon_00")
             reset_button.path = dummy_icon_path
 
             button = Container(size=cell_size)
-            # add the "No Resource" image to the container, positioned in the top left
+            # add the "No Resource" image to the container,
+            # positioned in the top left
             button.addChild(reset_button)
-            # capture a mouse click on the container. It's possible to click on the
-            # image itself or into the empty area (below or to the right of the image)
+            # capture a mouse click on the container.
+            # It's possible to click on the
+            # image itself or into the empty area
+            #  (below or to the right of the image)
             button.capture(cb, event_name="mouseClicked")
             button.name = "resource_%d" % res_id
         else:
             amount = inventory[res_id]
-            filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
-            button = ImageFillStatusButton.init_for_res(db, res_id,
-                                                        amount=amount, filled=filled, uncached=True,
-                                                        use_inactive_icon=False, showprice=True)
+            filled = int(float(inventory[res_id]) / float(inventory.get_limit(
+                res_id)) * 100.0)
+            button = ImageFillStatusButton.init_for_res(
+                db, res_id, amount=amount, filled=filled, uncached=True,
+                use_inactive_icon=False, showprice=True)
             button.button.capture(cb)
             button.button.name = "resource_%d" % res_id
 

@@ -36,11 +36,11 @@ class KeyConfig(object):
     __metaclass__ = Singleton
 
     _Actions = Enum('LEFT', 'RIGHT', 'UP', 'DOWN',
-                    'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE',
-                    'ZOOM_IN', 'ZOOM_OUT',
+                    'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN',
+                    'PAUSE', 'ZOOM_IN', 'ZOOM_OUT',
                     'BUILD_TOOL', 'DESTROY_TOOL', 'ROAD_TOOL', 'PIPETTE',
-                    'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW',
-                    'LOGBOOK', 'CHAT',
+                    'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW',
+                    'SHIPS_OVERVIEW', 'LOGBOOK', 'CHAT',
                     'QUICKSAVE', 'QUICKLOAD', 'ESCAPE',
                     'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT',
                     'HEALTH_BAR', 'SHOW_SELECTED', 'REMOVE_SELECTED',
@@ -95,20 +95,20 @@ class KeyConfig(object):
     def get_keys_by_name(self):
         def is_available(key):
             special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
-                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+                            'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
             return (key.startswith(tuple(ascii_uppercase)) and
-                not key.startswith(special_keys))
+                    not key.startswith(special_keys))
         return dict((k, v) for k, v in fife.Key.__dict__.iteritems()
-            if is_available(k))
+                    if is_available(k))
 
     def get_keys_by_value(self):
         def is_available(key):
             special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
-                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+                            'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
             return (key.startswith(tuple(ascii_uppercase)) and
-                not key.startswith(special_keys))
+                    not key.startswith(special_keys))
         return dict((v, k) for k, v in fife.Key.__dict__.iteritems()
-            if is_available(k))
+                    if is_available(k))
 
     def get_keyval_to_actionid_map(self):
         return self.keyval_action_mappings
@@ -124,7 +124,8 @@ class KeyConfig(object):
         return [str(x) for x in self._Actions]
 
     def get_bindable_actions_by_name(self):
-        """Returns a list of the names of the actions which can be binded in the hotkeys interface"""
+        """Returns a list of the names of the actions which can be binded
+        in the hotkeys interface"""
         actions = [str(x) for x in self._Actions]
         unbindable_actions = ['DEBUG', 'ESCAPE']
         for action in unbindable_actions:

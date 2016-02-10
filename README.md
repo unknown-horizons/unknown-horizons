@@ -22,6 +22,7 @@
 ```
 [![Build Status](https://travis-ci.org/MarkusHackspacher/unknown-horizons.svg)](https://travis-ci.org/MarkusHackspacher/unknown-horizons)
 [![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)](https://hosted.weblate.org/engage/uh/?utm_source=widget)
+[![Code Issues](https://www.quantifiedcode.com/api/v1/project/dfb8434844b0481d9328975c88c8d703/badge.svg)](https://www.quantifiedcode.com/app/project/dfb8434844b0481d9328975c88c8d703)
 
 Unknown Horizons is a 2D realtime strategy simulation with an
 emphasis on economy and city building. Expand your small

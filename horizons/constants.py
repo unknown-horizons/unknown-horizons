@@ -35,6 +35,8 @@ possible and instead import the proper classes of this file.
 
 # Versioning
 class VERSION:
+
+    @staticmethod
     def _get_git_version():
         """Function gets latest revision of the working copy.
         It only works in git repositories, and is actually a hack.
@@ -64,7 +66,7 @@ class VERSION:
     RELEASE_VERSION = _get_git_version()
     # change for release:
     IS_DEV_VERSION = True
-    #RELEASE_VERSION = u'2013.3'
+    # RELEASE_VERSION = u'2013.3'
 
     REQUIRED_FIFE_MAJOR_VERSION = 0
     REQUIRED_FIFE_MINOR_VERSION = 3
@@ -72,7 +74,7 @@ class VERSION:
 
     REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
-    ## +=1 this if you changed the savegame "api"
+    # +=1 this if you changed the savegame "api"
     SAVEGAMEREVISION = 76
     SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
 
