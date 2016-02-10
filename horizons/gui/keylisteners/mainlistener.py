@@ -35,67 +35,68 @@ from horizons.constants import PATHS
 
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
-	"""MainListener Class to process events of main window"""
+    """MainListener Class to process events of main window"""
 
-	def __init__(self, gui):
-		super(MainListener, self).__init__()
-		self.gui = gui
-		fife.IKeyListener.__init__(self)
-		horizons.globals.fife.eventmanager.addKeyListener(self)
-		fife.ICommandListener.__init__(self)
-		horizons.globals.fife.eventmanager.addCommandListener(self)
+    def __init__(self, gui):
+        super(MainListener, self).__init__()
+        self.gui = gui
+        fife.IKeyListener.__init__(self)
+        horizons.globals.fife.eventmanager.addKeyListener(self)
+        fife.ICommandListener.__init__(self)
+        horizons.globals.fife.eventmanager.addCommandListener(self)
 
-	def end(self):
-		horizons.globals.fife.eventmanager.removeKeyListener(self)
-		super(MainListener, self).end()
+    def end(self):
+        horizons.globals.fife.eventmanager.removeKeyListener(self)
+        super(MainListener, self).end()
 
-	def keyPressed(self, evt):
-		if evt.isConsumed():
-			return
+    def keyPressed(self, evt):
+        if evt.isConsumed():
+            return
 
-		action = KeyConfig().translate(evt)
-		_Actions = KeyConfig._Actions
-		keyval = evt.getKey().getValue()
+        action = KeyConfig().translate(evt)
+        _Actions = KeyConfig._Actions
+        keyval = evt.getKey().getValue()
 
-		key_event_handled = True
+        key_event_handled = True
 
-		if action == _Actions.ESCAPE:
-			self.gui.on_escape()
-		elif keyval == fife.Key.ENTER:
-			self.gui.on_return()
-		elif action == _Actions.CONSOLE:
-			self.gui.fps_display.toggle()
-		elif action == _Actions.HELP:
-			self.gui.on_help()
-		elif action == _Actions.SCREENSHOT:
-			# save the screenshot into a temporary file because fife doesn't support unicode paths
-			temp_handle, temp_path = tempfile.mkstemp()
-			os.close(temp_handle)
-			horizons.globals.fife.engine.getRenderBackend().captureScreen(temp_path)
+        if action == _Actions.ESCAPE:
+            self.gui.on_escape()
+        elif keyval == fife.Key.ENTER:
+            self.gui.on_return()
+        elif action == _Actions.CONSOLE:
+            self.gui.fps_display.toggle()
+        elif action == _Actions.HELP:
+            self.gui.on_help()
+        elif action == _Actions.SCREENSHOT:
+            # save the screenshot into a temporary file because fife
+            # doesn't support unicode paths
+            temp_handle, temp_path = tempfile.mkstemp()
+            os.close(temp_handle)
+            horizons.globals.fife.engine.getRenderBackend().captureScreen(temp_path)
 
-			# move the screenshot into the final location
-			filename = datetime.datetime.now().isoformat('.').replace(":", "-") + ".png"
-			final_path = os.path.join(PATHS.SCREENSHOT_DIR, filename)
-			shutil.move(temp_path, final_path)
+            # move the screenshot into the final location
+            filename = datetime.datetime.now().isoformat('.').replace(":", "-") + ".png"
+            final_path = os.path.join(PATHS.SCREENSHOT_DIR, filename)
+            shutil.move(temp_path, final_path)
 
-			# ingame message if there is a session and it is fully initialized:
-			# pressing S on loading screen finds a session but no gui usually.
-			session = horizons.main._modules.session
-			if session and hasattr(session, 'ingame_gui'):
-				session.ingame_gui.message_widget.add('SCREENSHOT',
-				                                      message_dict={'file': final_path})
-		elif action == _Actions.QUICKLOAD:
-			horizons.main._load_last_quicksave()
-		else:
-			key_event_handled = False  # nope, nothing triggered
+            # ingame message if there is a session and it is fully initialized:
+            # pressing S on loading screen finds a session but no gui usually.
+            session = horizons.main._modules.session
+            if session and hasattr(session, 'ingame_gui'):
+                session.ingame_gui.message_widget.add(
+                    'SCREENSHOT', message_dict={'file': final_path})
+        elif action == _Actions.QUICKLOAD:
+            horizons.main._load_last_quicksave()
+        else:
+            key_event_handled = False  # nope, nothing triggered
 
-		if key_event_handled:
-			evt.consume()  # prevent other listeners from being called
+        if key_event_handled:
+            evt.consume()  # prevent other listeners from being called
 
-	def keyReleased(self, evt):
-		pass
+    def keyReleased(self, evt):
+        pass
 
-	def onCommand(self, command):
-		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.quit()
-			command.consume()
+    def onCommand(self, command):
+        if command.getCommandType() == fife.CMD_QUIT_GAME:
+            horizons.main.quit()
+            command.consume()

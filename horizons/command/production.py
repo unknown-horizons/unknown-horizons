@@ -29,7 +29,8 @@ class ToggleActive(GenericComponentCommand):
         self._production = None if production is None else production.prod_id
 
     def __call__(self, issuer):
-        # NOTE: special call method, cause production must be saved as id, not as Production obj
+        # NOTE: special call method, cause production must be saved as id,
+        # not as Production obj
         obj = self._get_object().get_component_by_name(self.component_name)
 
         if self._production is not None:
@@ -46,7 +47,8 @@ GenericComponentCommand.allow_network(ToggleActive)
 class AddProduction(GenericComponentCommand):
     """Add a production to a producer"""
     def __init__(self, producer, production_line_id):
-        super(AddProduction, self).__init__(producer, "add_production_by_id", production_line_id)
+        super(AddProduction, self).__init__(producer, "add_production_by_id",
+                                            production_line_id)
 
 GenericComponentCommand.allow_network(AddProduction)
 
@@ -54,7 +56,8 @@ GenericComponentCommand.allow_network(AddProduction)
 class RemoveFromQueue(GenericComponentCommand):
     """Remove a production line id from a queueproducer's queue"""
     def __init__(self, producer, production_line_id):
-        super(RemoveFromQueue, self).__init__(producer, "remove_from_queue", production_line_id)
+        super(RemoveFromQueue, self).__init__(producer, "remove_from_queue",
+                                              production_line_id)
 
 GenericComponentCommand.allow_network(RemoveFromQueue)
 
@@ -63,6 +66,7 @@ class CancelCurrentProduction(GenericComponentCommand):
     """Cancel the current production of a queueproducer.
     Makes it proceed to the next one."""
     def __init__(self, producer):
-        super(CancelCurrentProduction, self).__init__(producer, "cancel_current_production")
+        super(CancelCurrentProduction,
+              self).__init__(producer, "cancel_current_production")
 
 GenericCommand.allow_network(CancelCurrentProduction)

@@ -35,17 +35,20 @@ from horizons.component.storagecomponent import StorageComponent
 
 class Build(Command):
     """Command class that builds an object."""
-    def __init__(self, building, x, y, island, rotation=45, ship=None, ownerless=False,
-                 settlement=None, tearset=None, data=None, action_set_id=None):
+    def __init__(self, building, x, y, island, rotation=45, ship=None,
+                 ownerless=False, settlement=None,
+                 tearset=None, data=None, action_set_id=None):
         """Create the command
-        @param building: building class that is to be built or the id of the building class.
+        @param building: building class that is to be built
+         or the id of the building class.
         @param x, y: int coordinates where the object is to be built.
         @param ship: ship instance
         @param island: BuildingOwner instance. Might be Island or World.
         @param settlement: settlement worldid or None
         @param tearset: set of worldids of objs to tear before building
         @param data: data required for building construction
-        @param action_set_id: use this particular action set, don't choose at random
+        @param action_set_id: use this particular action set,
+         don't choose at random
         """
         if hasattr(building, 'id'):
             self.building_class = building.id
@@ -67,20 +70,23 @@ class Build(Command):
         """Execute the command
         @param issuer: the issuer (player, owner of building) of the command
         """
-        self.log.debug("Build: building type %s at (%s,%s)", self.building_class, self.x, self.y)
+        self.log.debug("Build: building type %s at (%s,%s)",
+                       self.building_class, self.x, self.y)
 
         island = WorldObject.get_object_by_id(self.island)
-        # slightly ugly workaround to retrieve world and session instance via pseudo-singleton
+        # slightly ugly workaround to retrieve world and session instance
+        # via pseudo-singleton
         session = island.session
 
         # check once agaion. needed for MP because of the execution delay.
         buildable_class = Entities.buildings[self.building_class]
-        build_position = buildable_class.check_build(session, Point(self.x, self.y),
-                                                     rotation=self.rotation,
-                                                     check_settlement=issuer is not None,
-                                                     ship=WorldObject.get_object_by_id(self.ship)
-                                                     if self.ship is not None else None,
-                                                     issuer=issuer)
+        build_position = buildable_class.check_build(
+            session, Point(self.x, self.y),
+            rotation=self.rotation,
+            check_settlement=issuer is not None,
+            ship=WorldObject.get_object_by_id(self.ship)
+            if self.ship is not None else None,
+            issuer=issuer)
 
         # it's possible that the build check requires different actions now,
         # so update our data

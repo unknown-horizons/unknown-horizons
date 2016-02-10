@@ -81,7 +81,8 @@ class TestPartialBinaryBuildabilityCache(TestCase):
         self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2)]))
 
         bc.add_area([(2, 3)])
-        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2), (1, 3), (2, 3)]))
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2),
+                                         (1, 3), (2, 3)]))
 
         bc.remove_area([(2, 3)])
         self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2)]))
@@ -101,7 +102,8 @@ class TestPartialBinaryBuildabilityCache(TestCase):
         self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1)]))
 
         bc.add_area([(2, 1)])
-        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)]))
+        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1),
+                                     (2, 0), (2, 1)]))
 
         bc.add_area([(3, 2)])
         self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 0),
@@ -126,9 +128,12 @@ class TestPartialBinaryBuildabilityCache(TestCase):
         return res
 
     def test_convenience_get_coords_list(self):
-        self.assertEquals(self._get_coords_set(1, 1, 2, 1), set([(0, 1), (1, 1)]))
-        self.assertEquals(self._get_coords_set(1, 1, 1, 2), set([(1, 0), (1, 1)]))
-        self.assertEquals(self._get_coords_set(1, 1, 2, 2), set([(0, 0), (0, 1), (1, 0), (1, 1)]))
+        self.assertEquals(self._get_coords_set(1, 1, 2, 1),
+                          set([(0, 1), (1, 1)]))
+        self.assertEquals(self._get_coords_set(1, 1, 1, 2),
+                          set([(1, 0), (1, 1)]))
+        self.assertEquals(self._get_coords_set(1, 1, 2, 2),
+                          set([(0, 0), (0, 1), (1, 0), (1, 1)]))
 
     def test_r6x6(self):
         bc = self.buildability_cache
