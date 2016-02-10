@@ -32,55 +32,55 @@ translated_widgets = {}
 
 
 def translate_widget(untranslated, filename):
-	"""
-	Load widget translations from guitranslations.py file.
-	Its entries look like {element_name: (attribute, translation)}.
-	The translation is not applied to inactive widgets.
-	Check update_all_translations for the application.
-	"""
-	global translated_widgets
-	if filename in translations.text_translations:
-		for entry in translations.text_translations[filename].iteritems():
-			widget = untranslated.findChild(name=entry[0][0])
-			if widget is not None:
-				replace_attribute(widget, entry[0][1], entry[1])
-				widget.adaptLayout()
-	else:
-		log.debug('No translation key in i18n.guitranslations for file %s', filename)
+    """
+    Load widget translations from guitranslations.py file.
+    Its entries look like {element_name: (attribute, translation)}.
+    The translation is not applied to inactive widgets.
+    Check update_all_translations for the application.
+    """
+    global translated_widgets
+    if filename in translations.text_translations:
+        for entry in translations.text_translations[filename].iteritems():
+            widget = untranslated.findChild(name=entry[0][0])
+            if widget is not None:
+                replace_attribute(widget, entry[0][1], entry[1])
+                widget.adaptLayout()
+    else:
+        log.debug('No translation key in i18n.guitranslations for file %s', filename)
 
-	# save as weakref for updates to translations
-	translated_widgets[filename] = weakref.ref(untranslated)
+    # save as weakref for updates to translations
+    translated_widgets[filename] = weakref.ref(untranslated)
 
-	return untranslated
+    return untranslated
 
 
 def replace_attribute(widget, attribute, text):
-	if hasattr(widget, attribute):
-		setattr(widget, attribute, text)
-	else:
-		log.warning("Could not replace attribute %s in widget %s", attribute, widget)
+    if hasattr(widget, attribute):
+        setattr(widget, attribute, text)
+    else:
+        log.warning("Could not replace attribute %s in widget %s", attribute, widget)
 
 
 def update_translations(message):
-	global translated_widgets
-	translations.set_translations()
+    global translated_widgets
+    translations.set_translations()
 
-	for (filename, widget) in translated_widgets.iteritems():
-		widget = widget()  # resolve weakref
-		if not widget:
-			continue
-		all_widgets = translations.text_translations.get(filename, {})
-		for (element_name, attribute), translation in all_widgets.iteritems():
-			element = widget.findChild(name=element_name)
-			if element is None:
-				# something hidden by pychan currently, we cannot find it
-				log.debug('Could not find element `%s` in widget `%s` - '
-				          'assuming it is hidden', element_name, widget)
-				continue
-			replace_attribute(element, attribute, translation)
-			# NOTE pychan + reloading font = ???
-			element.font = element.font
-		widget.adaptLayout()
+    for (filename, widget) in translated_widgets.iteritems():
+        widget = widget()  # resolve weakref
+        if not widget:
+            continue
+        all_widgets = translations.text_translations.get(filename, {})
+        for (element_name, attribute), translation in all_widgets.iteritems():
+            element = widget.findChild(name=element_name)
+            if element is None:
+                # something hidden by pychan currently, we cannot find it
+                log.debug('Could not find element `%s` in widget `%s` - '
+                          'assuming it is hidden', element_name, widget)
+                continue
+            replace_attribute(element, attribute, translation)
+            # NOTE pychan + reloading font = ???
+            element.font = element.font
+        widget.adaptLayout()
 
 
 LanguageChanged.subscribe(update_translations)

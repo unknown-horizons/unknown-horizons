@@ -84,6 +84,6 @@ class TestCodeFormat(unittest.TestCase):
                 if file.endswith(".py"):
                     check_files.append(os.path.join(root, file))
         pep8style = pep8.StyleGuide(quiet=False)
-        result = pep8style.check_files(check_files[:20])
+        result = pep8style.check_files(check_files[:30])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")

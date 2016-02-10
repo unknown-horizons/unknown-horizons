@@ -24,84 +24,84 @@ from horizons.savegamemanager import SavegameManager
 
 
 class SaveCommand(Command):
-	"""Used to init a save, which will happen at all network machines.
-	Only reasonable in multiplayer games."""
-	def __init__(self, name):
-		self.name = name
+    """Used to init a save, which will happen at all network machines.
+    Only reasonable in multiplayer games."""
+    def __init__(self, name):
+        self.name = name
 
-	def __call__(self, issuer):
-		session = issuer.session
-		try:
-			path = SavegameManager.create_multiplayersave_filename(self.name)
-		except RuntimeError as e:
-			headline = _("Invalid filename")
-			msg = _("Received an invalid filename for a save command.")
-			session.ingame_gui.open_error_popup(headline, msg, unicode(e))
-			return
+    def __call__(self, issuer):
+        session = issuer.session
+        try:
+            path = SavegameManager.create_multiplayersave_filename(self.name)
+        except RuntimeError as e:
+            headline = _("Invalid filename")
+            msg = _("Received an invalid filename for a save command.")
+            session.ingame_gui.open_error_popup(headline, msg, unicode(e))
+            return
 
-		self.log.debug("SaveCommand: save to %s", path)
+        self.log.debug("SaveCommand: save to %s", path)
 
-		success = session._do_save(path)
-		if success:
-			# TODO: distinguish auto/quick/normal
-			session.ingame_gui.message_widget.add('SAVED_GAME')
-		else:
-			session.ingame_gui.open_popup(_('Error'), _('Failed to save.'))
+        success = session._do_save(path)
+        if success:
+            # TODO: distinguish auto/quick/normal
+            session.ingame_gui.message_widget.add('SAVED_GAME')
+        else:
+            session.ingame_gui.open_popup(_('Error'), _('Failed to save.'))
 
 Command.allow_network(SaveCommand)
 
 
 class SpeedUpCommand(Command):
-	"""Used to change the game speed"""
+    """Used to change the game speed"""
 
-	def __call__(self, issuer):
-		session = issuer.session
-		session.speed_up()
+    def __call__(self, issuer):
+        session = issuer.session
+        session.speed_up()
 
 Command.allow_network(SpeedUpCommand)
 
 
 class SpeedDownCommand(Command):
-	"""Used to change the game speed"""
+    """Used to change the game speed"""
 
-	def __call__(self, issuer):
-		session = issuer.session
-		session.speed_down()
+    def __call__(self, issuer):
+        session = issuer.session
+        session.speed_down()
 
 Command.allow_network(SpeedDownCommand)
 
 
 class TogglePauseCommand(Command):
-	"""Used to change the game speed"""
+    """Used to change the game speed"""
 
-	def __call__(self, issuer):
-		session = issuer.session
-		session.ingame_gui.toggle_pause()
+    def __call__(self, issuer):
+        session = issuer.session
+        session.ingame_gui.toggle_pause()
 
 Command.allow_network(TogglePauseCommand)
 
 
 class _SpeedCommand(Command):
 
-	def __init__(self, suggestion=False):
-		self.suggestion = suggestion
+    def __init__(self, suggestion=False):
+        self.suggestion = suggestion
 
 
 class UnPauseCommand(_SpeedCommand):
-	"""Used to change the game speed"""
+    """Used to change the game speed"""
 
-	def __call__(self, issuer):
-		session = issuer.session
-		session.speed_unpause(self.suggestion)
+    def __call__(self, issuer):
+        session = issuer.session
+        session.speed_unpause(self.suggestion)
 
 Command.allow_network(UnPauseCommand)
 
 
 class PauseCommand(_SpeedCommand):
-	"""Used to change the game speed"""
+    """Used to change the game speed"""
 
-	def __call__(self, issuer):
-		session = issuer.session
-		session.speed_pause(self.suggestion)
+    def __call__(self, issuer):
+        session = issuer.session
+        session.speed_pause(self.suggestion)
 
 Command.allow_network(PauseCommand)

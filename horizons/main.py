@@ -441,7 +441,8 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True,
     # get random seed for game
     uuid = game.uuid
     random = sum([int(uuid[i: i + 2], 16) for i in range(0, len(uuid), 2)])
-    _modules.session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
+    _modules.session = MPSession(horizons.globals.db, NetworkInterface(),
+                                 rng_seed=random)
 
     # NOTE: this data passing is only temporary, maybe use a player class/struct
     if game.is_savegame:
@@ -449,8 +450,8 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True,
     else:
         map_file = SavegameManager.get_map(game.map_name)
 
-    options = StartGameOptions.create_start_multiplayer(map_file, game.get_player_list(),
-                            not game.is_savegame)
+    options = StartGameOptions.create_start_multiplayer(
+        map_file, game.get_player_list(), not game.is_savegame)
     _modules.session.load(options)
 
 
@@ -463,7 +464,8 @@ def start_multiplayer(game):
 
 
 def _start_map(map_name, ai_players=0, is_scenario=False,
-               pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
+               pirate_enabled=True, trader_enabled=True, force_player_id=None,
+               is_map=False):
     """Start a map specified by user
     @param map_name: name of map or path to map
     @return: bool, whether loading succeeded"""
@@ -482,14 +484,16 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
 
 
 def _start_random_map(ai_players, seed=None, force_player_id=None):
-    options = StartGameOptions.create_start_random_map(ai_players, seed, force_player_id)
+    options = StartGameOptions.create_start_random_map(ai_players, seed,
+                                                       force_player_id)
     start_singleplayer(options)
     return True
 
 
 def _load_cmd_map(savegame, ai_players, force_player_id=None):
     """Load a map specified by user.
-    @param savegame: either the displayname of a savegame or a path to a savegame
+    @param savegame: either the displayname of a savegame
+     or a path to a savegame
     @return: bool, whether loading succeeded"""
     # first check for partial or exact matches in the normal savegame list
     savegames = SavegameManager.get_saves()
@@ -503,7 +507,9 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 
 
 def _find_matching_map(name_or_path, savegames):
-    """*name_or_path* is either a map/savegame name or path to a map/savegame file."""
+    """*name_or_path* is either a map/savegame name or path to
+    a map/savegame file.
+    """
     game_language = horizons.globals.fife.get_locale()
     # now we have "_en.yaml" which is set to language_extension variable
     language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension

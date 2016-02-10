@@ -48,7 +48,8 @@ class View(ChangeListener):
         cellgrid.setXShift(0)
         cellgrid.setYShift(0)
 
-        using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
+        using_opengl = horizons.globals.fife.engine.getRenderBackend(
+            ).getName() == "OpenGL"
 
         self.layers = []
         for layer_id in xrange(LAYERS.NUM):
@@ -64,13 +65,15 @@ class View(ChangeListener):
         self.map.finalizeCellCaches()
 
         # Make sure layer can't change size on layer.createInstance
-        # This is necessary because otherwise ship movement on the map edges would
-        # keep changing the units' layer size.
+        # This is necessary because otherwise ship movement on the map
+        #  edges would keep changing the units' layer size.
         for layer in self.layers:
             if layer.getCellCache():
                 layer.getCellCache().setStaticSize(True)
 
-        rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
+        rect = fife.Rect(
+            0, 0,
+            horizons.globals.fife.engine_settings.getScreenWidth(),
             horizons.globals.fife.engine_settings.getScreenHeight())
         self.cam = self.map.addCamera("main", self.layers[-1], rect)
         self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
@@ -80,16 +83,19 @@ class View(ChangeListener):
 
         self.cam.resetRenderers()
         self.renderer = {}
-        for r in ('InstanceRenderer', 'GridRenderer',
-                'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer',
-                'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
+        for r in ('InstanceRenderer', 'GridRenderer', 'CellSelectionRenderer',
+                 'BlockingInfoRenderer', 'FloatingTextRenderer',
+                 'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
             self.renderer[r] = getattr(fife, r).getInstance(
                 self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
             self.renderer[r].clearActiveLayers()
-            self.renderer[r].setEnabled(r in ('InstanceRenderer', 'GenericRenderer'))
+            self.renderer[r].setEnabled(r in ('InstanceRenderer',
+                                              'GenericRenderer'))
         self.renderer['InstanceRenderer'].activateAllLayers(self.map)
-        self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
-        self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])
+        self.renderer['GenericRenderer'].addActiveLayer(
+            self.layers[LAYERS.OBJECTS])
+        self.renderer['GridRenderer'].addActiveLayer(
+            self.layers[LAYERS.GROUND])
 
         # Setup autoscroll
         horizons.globals.fife.pump.append(self.do_autoscroll)
@@ -104,7 +110,8 @@ class View(ChangeListener):
 
     def center(self, x, y):
         """Sets the camera position
-        @param center: tuple with x and y coordinate (float or int) of tile to center
+        @param center: tuple with x and y coordinate (float or int)
+         of tile to center
         """
         loc = self.cam.getLocationRef()
         pos = loc.getExactLayerCoordinatesRef()
