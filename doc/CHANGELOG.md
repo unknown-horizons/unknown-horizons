@@ -18,7 +18,7 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2015-12-31: Milestone 2015.1
+2016-04-31: Milestone 2016.1
 ----------------------------
 changelog date: Dec 09/15
 
@@ -43,7 +43,22 @@ New files and features
  - added cattlerun
  - added brewery to the game
  - added pioneers and citizens warehouse graphics
- - added hops field (only with placeholder grafics)
+ - added hop field
+ - added citizens warehouse
+ - added new mainsquare for tier4
+ - added happiness resource icon
+ - added grass ressource icon
+ - added shiny new female gfx
+ - added grain ressource icon
+ - added fire actionset and ressource icon
+ - added beer ressource icon
+ - replaced cacao and cacaobeans ressource placeholder icons
+ - added alvearies and corn ressource icon and replaced the placeholder
+ - added vines and grapes ressource gui icons
+ - added wild animal food icon
+ - added acorn ressource icon
+ - added happiness icons
+ - added warehouse building icon
  
 ### User Interface
 
@@ -68,6 +83,9 @@ Fixed crashes and inconsistencies
  - #2308 Fix memory leak in the Tabwidget handling (pinkfloyda).
  - #2306 Non-hotkey settings reset if not saved.
  - #2263 Don't load savegame with nonexisting map file.
+ - #2349 Click on Main Square cause a crash
+ - #2350 Fixed bug where keyboard scrolling hanged from time to time
+ - #2352 Fix crash on missing thumbnails in unit queue
  
 
 New team members with this release, Annotations
@@ -75,6 +93,7 @@ New team members with this release, Annotations
  - We accepted pull requests or patches by:
      pinkfloyda
      Gladius1
+     martingeiger
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
    
