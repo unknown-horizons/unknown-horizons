@@ -27,8 +27,10 @@ from tests.gui import gui_test
 #
 # It accepts either one of these arguments:
 #
-# 	use_dev_map=True		- Game launches with --start-dev-map (no main menu)
-# 	use_fixture='name'		- Game launches with --load-game=tests/gui/ingame/fixtures/name.sqlite
+# 	use_dev_map=True		- Game launches with --start-dev-map
+#                             (no main menu)
+# 	use_fixture='name'		- Game launches with
+#                           --load-game=tests/gui/ingame/fixtures/name.sqlite
 # 	ai_players=1			- Game launches with --ai-players=1
 # 	timeout=3				- Game will be killed after 3 seconds
 #
@@ -37,7 +39,8 @@ def test_example(gui):
     """
     Documented example test.
 
-    Every gui test has to accept one argument, an instance of `tests.gui.GuiHelper`.
+    Every gui test has to accept one argument, an instance of
+    `tests.gui.GuiHelper`.
     """
 
     gui.disable_autoscroll()
@@ -53,8 +56,8 @@ def test_example(gui):
     assert gold_label.text == '' # will upate only later
 
     # All commands above run sequentially, neither the engine nor the timer
-    # will be run. If you need the game to run for some time (or have to wait for
-    # something to happen), make multiple gui.run() calls.
+    # will be run. If you need the game to run for some time (or have to wait
+    # for something to happen), make multiple gui.run() calls.
 
     # Game will run for 2 seconds
     gui.run(seconds=2)
@@ -64,19 +67,26 @@ def test_example(gui):
         gui.run()
     """
 
-    # When you call `gui.run()` the engine is allowed to run, therefore updating the display.
-    # You can also interact with the game as normal, but please don't mess with the test. :)
+    # When you call `gui.run()` the engine is allowed to run, therefore
+    # updating the display. You can also interact with the game as normal,
+    # but please don't mess with the test. :)
     #
-    # TIP: You can watch the test in slow-motion if you insert these waits between
-    # interactions.
+    # TIP: You can watch the test in slow-motion if you insert these waits
+    # between interactions.
 
     # Open game menu
     gui.trigger('mainhud', 'gameMenuButton')
 
-    # gui.trigger accepts both a string (container name), or a object returned by gui.find
+    # gui.trigger accepts both a string (container name), or a object returned
+    # by gui.find
 
     # Cancel current game
     def dialog():
+        """dialog
+
+        Returns:
+
+        """
         gui.trigger('popup_window', 'okButton')
 
     # Dialog handling has to be done by a separate generator.
@@ -88,9 +98,9 @@ def test_example(gui):
     # Back at the main menu
     assert gui.find(name='menu')
 
-    # If a test returns None (either implicitly or explicitly) the game will exit, return
-    # something else and it will continue to run. Useful if you want to check your test's
-    # action.
+    # If a test returns None (either implicitly or explicitly) the game will
+    # exit, return something else and it will continue to run. Useful if you
+    # want to check your test's action.
 
     # TODO not yet supported, use gui.run(2**10)
     #return 1

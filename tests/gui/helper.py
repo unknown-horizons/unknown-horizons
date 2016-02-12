@@ -104,7 +104,8 @@ class CursorToolsPatch(object):
     """
     def __init__(self):
         def patched_world_location_from_event(self, evt):
-            """Typically we expect a Mock MouseEvent, genereated by `_make_mouse_event`.
+            """Typically we expect a Mock MouseEvent, genereated by
+            `_make_mouse_event`.
 
             However NavigationTool keeps track of the last event position, which is
             an instance of fife.ScreenPoint.
@@ -120,9 +121,15 @@ class CursorToolsPatch(object):
 
             return Point(x, y)
 
-        self.patch1 = mock.patch('horizons.gui.mousetools.CursorTool.get_world_location', patched_world_location_from_event)
-        self.patch2 = mock.patch('horizons.gui.mousetools.CursorTool.get_exact_world_location', patched_world_location_from_event)
-        self.patch3 = mock.patch('horizons.gui.mousetools.TileLayingTool.get_world_location', patched_world_location_from_event)
+        self.patch1 = mock.patch(
+            'horizons.gui.mousetools.CursorTool.get_world_location',
+            patched_world_location_from_event)
+        self.patch2 = mock.patch(
+            'horizons.gui.mousetools.CursorTool.get_exact_world_location',
+            patched_world_location_from_event)
+        self.patch3 = mock.patch(
+            'horizons.gui.mousetools.TileLayingTool.get_world_location',
+            patched_world_location_from_event)
 
         NavigationTool._orig_get_hover_instances = NavigationTool.get_hover_instances
 
@@ -131,18 +138,22 @@ class CursorToolsPatch(object):
         self.patch2.start()
         self.patch3.start()
 
-        # this makes selecting buildings by clicking on them possible. without this, get_hover_instances receives an event with map
-        # coordinates, and will not find the correct building (if any). to fix this, we're converting the coordinates back to screen space
+        # this makes selecting buildings by clicking on them possible. without this,
+        #  get_hover_instances receives an event with map
+        # coordinates, and will not find the correct building (if any). to fix this,
+        #  we're converting the coordinates back to screen space
         # and can avoid changing any other code
         def deco(func):
             def wrapped(self, evt, *args, **kwargs):
-                screen_point = self.session.view.cam.toScreenCoordinates(fife.ExactModelCoordinate(evt.getX(), evt.getY()))
+                screen_point = self.session.view.cam.toScreenCoordinates(
+                    fife.ExactModelCoordinate(evt.getX(), evt.getY()))
                 evt = mock.Mock()
                 evt.getX.return_value = screen_point.x
                 evt.getY.return_value = screen_point.y
                 return func(self, evt, *args, **kwargs)
             return wrapped
-        NavigationTool.get_hover_instances = deco(NavigationTool.get_hover_instances)
+        NavigationTool.get_hover_instances = deco(
+            NavigationTool.get_hover_instances)
 
     def disable(self):
         self.patch1.stop()
@@ -229,8 +240,9 @@ class GuiHelper(object):
     def find(self, name):
         """Find a widget by name.
 
-        `name` can consist of multiple widget names separated by a slash. In this
-        case, this is interpreted as a path to the widget with the last name.
+        `name` can consist of multiple widget names separated by a slash.
+        In this case, this is interpreted as a path to the widget
+        with the last name.
         This is necessary when multiple widgets exist with the same name.
 
         Example:
@@ -238,8 +250,8 @@ class GuiHelper(object):
             gui.find('menu/button')
             # look for a widget 'menu' with a descendant named 'button'
 
-        Recursively searches through all widgets. Some widgets will be extended
-        with helper functions to allow easier interaction in tests.
+        Recursively searches through all widgets. Some widgets will be
+        extended with helper functions to allow easier interaction in tests.
         """
         match = self._find(name)
 
@@ -278,9 +290,12 @@ class GuiHelper(object):
                 self.value = float(value)
 
                 # try two possible event group names
-                # TODO find out why some sliders use 'stepslider' and others 'default'
-                if not gui_helper._trigger_widget_callback(self, can_fail=True):
-                    gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
+                # TODO find out why some sliders use 'stepslider'
+                # and others 'default'
+                if not gui_helper._trigger_widget_callback(self,
+                                                           can_fail=True):
+                    gui_helper._trigger_widget_callback(
+                        self, group_name="stepslider", can_fail=True)
 
             match.slide = types.MethodType(slide, match, match.__class__)
 
@@ -329,7 +344,9 @@ class GuiHelper(object):
 
         self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
 
-    def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False, mouse=None):
+    def _trigger_widget_callback(self, widget, event_name="action",
+                                 group_name="default", can_fail=False,
+                                 mouse=None):
         """Call callbacks for the given widget."""
         # Check if this widget has any event callbacks at all
         try:
@@ -347,8 +364,8 @@ class GuiHelper(object):
             except KeyError:
                 raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
                                 event_name, group_name, widget.name))
-        # Treat action and mouseClicked as the same event. If a callback is not registered
-        # for one, try the other
+        # Treat action and mouseClicked as the same event. If a callback is
+        # not registered for one, try the other
         else:
             callback = callbacks.get(event_name)
             if not callback:
@@ -366,7 +383,8 @@ class GuiHelper(object):
 
     @contextlib.contextmanager
     def handler(self, func):
-        """Temporarily install another gui handler, e.g. to handle a dialog."""
+        """Temporarily install another gui handler, e.g. to handle a dialog.
+        """
         g = cooperative.spawn(func)
         yield
         g.join()
@@ -374,9 +392,9 @@ class GuiHelper(object):
     def select(self, objects):
         """Select all objects in the given list.
 
-        Note, this is not the same process as selection with a mouse. For example
-        selecting a ship will not result in the display of its healthbar, but the
-        corresponding tab will be shown.
+        Note, this is not the same process as selection with a mouse.
+        For example selecting a ship will not result in the display of its
+        healthbar, but the corresponding tab will be shown.
         """
         self.session.selected_instances = set(objects)
         self.cursor.apply_select()
@@ -415,9 +433,9 @@ class GuiHelper(object):
 
     def cursor_click(self, x, y, button, shift=False, ctrl=False):
         # NOTE `self.run()` is a fix for gui tests with fife rev 4060+
-        # it is not known why this helps, but perhaps it's not that unreasonable
-        # to give the engine some time in between events (even if we trigger the
-        # mousetools directly)
+        # it is not known why this helps, but perhaps it's not that
+        # unreasonable to give the engine some time in between events
+        # (even if we trigger the mousetools directly)
 
         self.cursor_move(x, y)
         self.run()
@@ -428,8 +446,8 @@ class GuiHelper(object):
     def cursor_multi_click(self, *coords):
         """Do multiple clicks in succession.
 
-        Shift is hold to enable non-stop build and after the last coord it will be
-        cancelled with a right click.
+        Shift is hold to enable non-stop build and after the last coord it
+        will be cancelled with a right click.
         """
         for (x, y) in coords:
             self.cursor_click(x, y, 'left', shift=True)
@@ -474,7 +492,8 @@ class GuiHelper(object):
     def run(self, seconds=0):
         """Provide a nice way to run the game for some time.
 
-        Despite its name, this method will run the *game simulation* for X seconds.
+        Despite its name, this method will run the *game simulation*
+        for X seconds.
         When the game is paused, the timer continues once the game unpauses.
         """
 
@@ -488,7 +507,8 @@ class GuiHelper(object):
             def stop():
                 Flag.running = False
 
-            # Scheduler only exists inside games, use ExtScheduler in the mainmenu
+            # Scheduler only exists inside games, use ExtScheduler in the
+            # mainmenu
             if Scheduler():
                 ticks = Scheduler().get_ticks(seconds)
                 Scheduler().add_new_object(stop, None, run_in=ticks)
@@ -500,14 +520,16 @@ class GuiHelper(object):
 
     def disable_autoscroll(self):
         """
-        NavigationTool.mouseMoved is using the 'real' mouse position in the window to
-        check if it is near the borders and initiates auto scroll. However, we are
-        sending events with map coordinates, so a location at (0, 2) would trigger
-        scrolling. Disable autoscroll by replacing view.autoscroll with a NOP.
+        NavigationTool.mouseMoved is using the 'real' mouse position in the
+        window to check if it is near the borders and initiates auto scroll.
+        However, we are sending events with map coordinates, so a location
+        at (0, 2) would trigger scrolling. Disable autoscroll by replacing
+        view.autoscroll with a NOP.
         """
         if hasattr(self.session, 'view'):
             # try to disable only if we're ingame already
-            # Tests starting in the menu need to do call `disable_autoscroll()` explicitly
+            # Tests starting in the menu need to do
+            # call `disable_autoscroll()` explicitly
             self.session.view.autoscroll = mock.Mock()
 
     def speed_up(self):
@@ -521,7 +543,8 @@ class GuiHelper(object):
             self.session.speed_set(GAME_SPEED.TICKS_PER_SECOND)
 
     def debug(self):
-        """Call this to stop the test from running and be able to interact with game."""
+        """Call this to stop the test from running and be able to interact
+        with game."""
         self.cursor_map_coords.disable()
         self.speed_default()
         self.run(2**20)
