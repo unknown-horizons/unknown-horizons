@@ -28,11 +28,9 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
 
-
-
 @gui_test(use_fixture='ai_settlement', timeout=60)
 def test_trade(gui):
-    """
+    """test trade
     """
 
     ship = get_player_ship(gui.session)
@@ -42,7 +40,7 @@ def test_trade(gui):
     world = gui.session.world
     for player in world.players:
         if player is not ship.owner:
-            world.diplomacy.add_ally_pair( ship.owner, player )
+            world.diplomacy.add_ally_pair(ship.owner, player)
 
     # move ship near foreign warehouse and wait for it to arrive
     move_ship(gui, ship, (68, 23))
@@ -80,14 +78,16 @@ def test_trade(gui):
 
     # the ai has to want more boards
     trade_post = settlement.get_component(TradePostComponent)
-    assert settlement_inv[RES.BOARDS] < trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
+    assert settlement_inv[RES.BOARDS] < trade_post.slots[trade_post.buy_list[
+        RES.BOARDS]].limit
 
     # transfer 50 t of boards
     gui.trigger('buy_sell_goods', 'size_5')
     gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
     # now it has enough
-    assert settlement_inv[RES.BOARDS] == trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
+    assert settlement_inv[RES.BOARDS] == trade_post.slots[trade_post.buy_list[
+        RES.BOARDS]].limit
 
     old_ship_value = ship_inv[RES.BOARDS]
 
@@ -107,7 +107,8 @@ def test_trade(gui):
 
     # test sell now, give settlement something to sell
     SetTradeSlot(trade_post, 2, RES.ALVEARIES, True, 5)(settlement.owner)
-    settlement.get_component(StorageComponent).inventory.alter(RES.ALVEARIES, 10)
+    settlement.get_component(StorageComponent).inventory.alter(RES.ALVEARIES,
+                                                               10)
 
     # this gives us 5 alevaries
     assert ship_inv[RES.ALVEARIES] == 0
@@ -115,7 +116,7 @@ def test_trade(gui):
     gui.trigger('buy_sell_goods', 'size_1')
     gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
 
-    print ship_inv[RES.ALVEARIES]
+    print(ship_inv[RES.ALVEARIES])
     assert ship_inv[RES.ALVEARIES] == 1
     assert settlement_inv[RES.ALVEARIES] == 9
 

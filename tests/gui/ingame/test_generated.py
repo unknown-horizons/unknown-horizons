@@ -68,7 +68,7 @@ def test_build_a_settlement(gui):
     gui.cursor_click(55, 5, 'left')
     gui.cursor_click(56, 5, 'left')
     gui.cursor_click(57, 5, 'left')
-    gui.cursor_click(54, 7, 'right')	# cancel
+    gui.cursor_click(54, 7, 'right')  # cancel
 
     # Build lumberjack
     gui.trigger('tab', 'button_03')
@@ -89,7 +89,7 @@ def test_build_a_settlement(gui):
     gui.cursor_click(57, 10, 'left')
     gui.cursor_click(57, 11, 'left')
     gui.cursor_click(57, 12, 'left')
-    gui.cursor_click(57, 13, 'right')	# cancel
+    gui.cursor_click(57, 13, 'right')  # cancel
 
     # Build a tent
     gui.trigger('tab', 'button_01')
@@ -125,14 +125,15 @@ def test_buildingtool(gui):
 
     def build_at(target):
         # build while moving around cursor beforehand
-        OFFSETS = [ 0, 1, -1, 2, -2, 5, -5, 20, -20 ] # don't add more, takes long enough already
+        OFFSETS = [0, 1, -1, 2, -2, 5, -5, 20, -20]
+        # don't add more, takes long enough already
         for off_x, off_y in itertools.product( OFFSETS, repeat=2 ):
             # will trigger preview_build of BuildingTool
-            gui.cursor_move( target[0]+off_x, target[1]+off_y )
+            gui.cursor_move(target[0]+off_x, target[1]+off_y)
         gui.cursor_click(target[0], target[1], 'left')
 
     # Place warehouse
-    build_at( (56, 3) )
+    build_at((56, 3))
     assert gui.session.world.settlements
 
     # Select buildmenu
@@ -142,33 +143,33 @@ def test_buildingtool(gui):
     gui.trigger('tab', 'button_33')
 
     # Place fisher
-    build_at( (52, 3) )
+    build_at((52, 3))
 
 
     # Build lumberjack
     gui.trigger('tab', 'button_03')
-    build_at( (52, 6) )
+    build_at((52, 6))
 
     # Build main square
     gui.trigger('tab', 'button_02')
-    build_at( (53, 11) )
+    build_at((53, 11))
 
     # Select path
     gui.trigger('tab', 'button_21')
 
     # Build some paths
     for i in xrange(6, 13):
-        build_at( (57, i) )
+        build_at((57, i))
     gui.cursor_click(54, 7, 'right') # cancel
 
     # Build a tent
     gui.trigger('tab', 'button_01')
-    build_at( (58, 7) )
+    build_at((58, 7))
 
     # Select pavilion (tent highlights)
     gui.trigger('tab', 'button_12')
-    build_at( (58, 5) )
+    build_at((58, 5))
 
     # Build a tent (pavilion highlights)
     gui.trigger('tab', 'button_01')
-    build_at( (58, 9) )
+    build_at((58, 9))

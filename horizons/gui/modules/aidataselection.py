@@ -26,35 +26,35 @@ from horizons.gui.util import load_uh_widget
 
 
 class AIDataSelection(object):
-	"""Subwidget for selecting AI settings."""
+    """Subwidget for selecting AI settings."""
 
-	def __init__(self):
-		self.gui = load_uh_widget('aidataselection.xml')
+    def __init__(self):
+        self.gui = load_uh_widget('aidataselection.xml')
 
-		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(
-			MULTIPLAYER.MAX_PLAYER_COUNT)]})
-		self.gui.distributeData({
-			'ai_players': int(horizons.globals.fife.get_uh_setting("AIPlayers"))
-		})
+        self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(
+            MULTIPLAYER.MAX_PLAYER_COUNT)]})
+        self.gui.distributeData({
+            'ai_players': int(horizons.globals.fife.get_uh_setting("AIPlayers"))
+        })
 
-		# FIXME
-		# pychan raises an RuntimeError if you attempt to hide a child in a container
-		# that is already hidden (or does not exist). Work around by tracking the
-		# state of the widget. The initial state depends on the parent widget.
-		self.hidden = False
+        # FIXME
+        # pychan raises an RuntimeError if you attempt to hide a child in a container
+        # that is already hidden (or does not exist). Work around by tracking the
+        # state of the widget. The initial state depends on the parent widget.
+        self.hidden = False
 
-	def get_ai_players(self):
-		"""Returns the number that was entered by the user"""
-		return self.gui.collectData('ai_players')
+    def get_ai_players(self):
+        """Returns the number that was entered by the user"""
+        return self.gui.collectData('ai_players')
 
-	def show(self):
-		self.gui.parent.showChild(self.gui)
-		self.hidden = False
+    def show(self):
+        self.gui.parent.showChild(self.gui)
+        self.hidden = False
 
-	def hide(self):
-		if not self.hidden:
-			self.gui.parent.hideChild(self.gui)
-			self.hidden = True
+    def hide(self):
+        if not self.hidden:
+            self.gui.parent.hideChild(self.gui)
+            self.hidden = True
 
-	def get_widget(self):
-		return self.gui
+    def get_widget(self):
+        return self.gui

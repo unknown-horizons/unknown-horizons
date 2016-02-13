@@ -71,8 +71,8 @@ def test_ticket_1368(gui):
 
 @gui_test(use_fixture='ai_settlement', timeout=60)
 def test_ticket_1369(gui):
-    """
-    Ship tab closed when moving away from another player's warehouse after trading.
+    """Ship tab closed when moving away from another player's warehouse
+    after trading.
     """
 
     ship = get_player_ship(gui.session)
@@ -82,7 +82,7 @@ def test_ticket_1369(gui):
     world = gui.session.world
     for player in world.players:
         if player is not ship.owner:
-            world.diplomacy.add_ally_pair( ship.owner, player )
+            world.diplomacy.add_ally_pair(ship.owner, player)
 
     # move ship near foreign warehouse and wait for it to arrive
     move_ship(gui, ship, (68, 23))
@@ -97,24 +97,24 @@ def test_ticket_1369(gui):
     move_ship(gui, ship, (77, 17))
 
     # trade widget should not be visible anymore
-# For now, the trade widget will stay visible.
-#	assert gui.find(name='buy_sell_goods') is None
+    # For now, the trade widget will stay visible.
+    # assert gui.find(name='buy_sell_goods') is None
 
     # but the ship overview should be
     assert gui.find(name='buy_sell_goods')
-#	assert gui.find(name='overview_trade_ship')
+    # assert gui.find(name='overview_trade_ship')
 
 
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1362(gui):
-    """
-    Saving a game, loading it again and attempting to save it again will crash.
+    """Saving a game, loading it again and attempting to save
+    it again will crash.
     """
 
-    gui.press_key(gui.Key.F5)	# quicksave
+    gui.press_key(gui.Key.F5)  # quicksave
     gui.run(seconds=2)
 
-    gui.press_key(gui.Key.F9)	# quickload
+    gui.press_key(gui.Key.F9)  # quickload
     while gui.find(name='loadingscreen'):
         gui.run()
 
@@ -226,7 +226,7 @@ def test_ticket_1520(gui):
     gui.cursor_press_button(13, 11, 'left')
 
     # remove tent
-    Tear( ground_map[(7, 9)].object ).execute(gui.session)
+    Tear(ground_map[(7, 9)].object).execute(gui.session)
 
     # release mouse button, finish build
     gui.cursor_release_button(13, 11, 'left')
@@ -321,9 +321,10 @@ def test_ticket_1848(gui):
 
 @gui_test(use_dev_map=True)
 def test_ticket_1948(gui):
-    """Triggers a crash that happens when building a storage tent on the border of the settlement"""
-    # Units cannot be selected right now, you need to do it this way. This is almost
-    # the same as selecting it with the mouse
+    """Triggers a crash that happens when building a storage tent
+    on the border of the settlement"""
+    # Units cannot be selected right now, you need to do it this way.
+    # This is almost the same as selecting it with the mouse
     ship = get_player_ship(gui.session)
     gui.select([ship])
     found_settlement(gui, (59, 1), (56, 3))

@@ -31,7 +31,8 @@ from tests.gui.helper import get_player_ship, found_settlement
 
 @gui_test(additional_cmdline=['--start-map', 'mp-dev'])
 def test_traderoute(gui):
-    """Check that a ship's route is configured correctly after setting it up using the GUI."""
+    """Check that a ship's route is configured correctly after setting it up
+    using the GUI."""
 
     ship = get_player_ship(gui.session)
     gui.select([ship])
@@ -43,7 +44,8 @@ def test_traderoute(gui):
     # Click the trade button
     gui.trigger('overview_trade_ship', 'trade')
 
-    # Get the default amount (50 t, which is more than all available) of everything
+    # Get the default amount (50 t, which is more than all available)
+    # of everything
     gui.trigger('buy_sell_goods', 'inventory_entry_0')
     gui.trigger('buy_sell_goods', 'inventory_entry_1')
     gui.trigger('buy_sell_goods', 'inventory_entry_2')
@@ -75,8 +77,10 @@ def test_traderoute(gui):
     event.map_coords = 28, 22
     route_widget.on_map_click(event, False)
 
-    # Set the resources to be loaded from settlement on the left and the amount
-    gui.trigger('configure_route/container_1/slot_0', 'button', mouse='left') # Select the second warehouse's first slot
+    # Set the resources to be loaded from settlement on the left and
+    # the amount
+    gui.trigger('configure_route/container_1/slot_0', 'button', mouse='left')
+    # Select the second warehouse's first slot
     gui.trigger('configure_route', 'resource_%d' % RES.FOOD)
     gui.find('configure_route/container_1/slot_0/slider').slide(120)
 

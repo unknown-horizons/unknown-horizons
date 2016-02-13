@@ -31,6 +31,7 @@ from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS
 
+
 class BarracksTab(UnitbuilderTabBase):
     widget = 'barracks.xml'
     helptext = _lazy("Barracks overview")
