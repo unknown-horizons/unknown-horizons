@@ -31,88 +31,88 @@ import mock
 from tests.game import settle, game_test
 
 def assert_called_with_icon(cb, icon):
-	assert cb.called
-	# the first and only parameter is the message send
-	assert cb.call_args[0][0].icon.__class__ == icon
+    assert cb.called
+    # the first and only parameter is the message send
+    assert cb.call_args[0][0].icon.__class__ == icon
 
 
 @game_test()
 def test_addstatusicon_queue_emptied(session, player):
-	AddStatusIcon.clear()
+    AddStatusIcon.clear()
 
-	assert not AddStatusIcon.queue_len()
+    assert not AddStatusIcon.queue_len()
 
 
 @game_test()
 def test_productivity_low(session, player):
-	settlement, island = settle(session)
+    settlement, island = settle(session)
 
-	Build(BUILDINGS.CHARCOAL_BURNER, 30, 30, island, settlement=settlement)(player)
+    Build(BUILDINGS.CHARCOAL_BURNER, 30, 30, island, settlement=settlement)(player)
 
-	cb = mock.Mock()
-	AddStatusIcon.subscribe(cb)
+    cb = mock.Mock()
+    AddStatusIcon.subscribe(cb)
 
-	# Not yet low
-	assert not cb.called
+    # Not yet low
+    assert not cb.called
 
-	session.run(seconds=60)
+    session.run(seconds=60)
 
-	# Now low
-	assert_called_with_icon(cb, ProductivityLowStatus)
+    # Now low
+    assert_called_with_icon(cb, ProductivityLowStatus)
 
 
 @game_test()
 def test_settler_unhappy(session, player):
-	settlement, island = settle(session)
+    settlement, island = settle(session)
 
-	cb = mock.Mock()
-	AddStatusIcon.subscribe(cb)
+    cb = mock.Mock()
+    AddStatusIcon.subscribe(cb)
 
-	settler = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(player)
+    settler = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(player)
 
-	# certainly not unhappy
-	assert settler.happiness > 0.45
-	assert not cb.called
+    # certainly not unhappy
+    assert settler.happiness > 0.45
+    assert not cb.called
 
-	# make it unhappy
-	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, -settler.happiness)
-	assert settler.happiness < 0.1
-	assert_called_with_icon(cb, SettlerUnhappyStatus)
+    # make it unhappy
+    settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, -settler.happiness)
+    assert settler.happiness < 0.1
+    assert_called_with_icon(cb, SettlerUnhappyStatus)
 
 
 @game_test()
 def test_decommissioned(session, player):
-	settlement, island = settle(session)
+    settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 
-	cb = mock.Mock()
-	AddStatusIcon.subscribe(cb)
+    cb = mock.Mock()
+    AddStatusIcon.subscribe(cb)
 
-	assert not cb.called
+    assert not cb.called
 
-	ToggleActive(lj.get_component(Producer))(player)
+    ToggleActive(lj.get_component(Producer))(player)
 
-	assert_called_with_icon(cb, DecommissionedStatus)
+    assert_called_with_icon(cb, DecommissionedStatus)
 
 
 @game_test()
 def test_inventory_full(session, player):
-	settlement, island = settle(session)
+    settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 
-	cb = mock.Mock()
-	AddStatusIcon.subscribe(cb)
+    cb = mock.Mock()
+    AddStatusIcon.subscribe(cb)
 
-	# Not full
-	assert not cb.called
+    # Not full
+    assert not cb.called
 
-	inv = lj.get_component(StorageComponent).inventory
-	res = RES.BOARDS
-	inv.alter(res, inv.get_free_space_for( res ) )
+    inv = lj.get_component(StorageComponent).inventory
+    res = RES.BOARDS
+    inv.alter(res, inv.get_free_space_for( res ) )
 
-	session.run(seconds=1)
+    session.run(seconds=1)
 
-	# Full
-	assert_called_with_icon(cb, InventoryFullStatus)
+    # Full
+    assert_called_with_icon(cb, InventoryFullStatus)

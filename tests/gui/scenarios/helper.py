@@ -28,34 +28,34 @@ settler_level_greater = CONDITIONS.get('settler_level_greater')
 
 
 def assert_win(gui):
-	"""Returns once the scenario was won."""
-	while True:
-		if getattr(gui.session, '_scenariotest_won', False):
-			break
-		gui.run()
+    """Returns once the scenario was won."""
+    while True:
+        if getattr(gui.session, '_scenariotest_won', False):
+            break
+        gui.run()
 
 
 def assert_defeat(gui):
-	"""Returns once the scenario was lost."""
-	while True:
-		if getattr(gui.session, '_scenariotest_lose', False):
-			break
-		gui.run()
+    """Returns once the scenario was lost."""
+    while True:
+        if getattr(gui.session, '_scenariotest_lose', False):
+            break
+        gui.run()
 
 
 def assert_goal_reached(gui, goal):
-	"""Returns once a certain goal was reached."""
-	while True:
-		if (hasattr(gui.session, '_scenariotest_goals') and
-			gui.session._scenariotest_goals and
-			gui.session._scenariotest_goals[-1] == goal):
-			break
-		gui.run()
+    """Returns once a certain goal was reached."""
+    while True:
+        if (hasattr(gui.session, '_scenariotest_goals') and
+            gui.session._scenariotest_goals and
+            gui.session._scenariotest_goals[-1] == goal):
+            break
+        gui.run()
 
 
 def wait_and_close_logbook(gui):
-	"""Wait for the logbook to show and close it immediately."""
-	while not gui.find('captains_log'):
-		gui.run()
+    """Wait for the logbook to show and close it immediately."""
+    while not gui.find('captains_log'):
+        gui.run()
 
-	gui.trigger('captains_log', 'okButton')
+    gui.trigger('captains_log', 'okButton')

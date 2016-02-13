@@ -27,87 +27,87 @@ from tests.gui.helper import get_player_ship
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_change_name(gui):
-	"""Rename a ship."""
+    """Rename a ship."""
 
-	ship = get_player_ship(gui.session)
-	old_name = ship.get_component(NamedComponent).name
+    ship = get_player_ship(gui.session)
+    old_name = ship.get_component(NamedComponent).name
 
-	assert not gui.find(name='change_name_dialog_window')
-	gui.select([ship])
+    assert not gui.find(name='change_name_dialog_window')
+    gui.select([ship])
 
-	def rename():
-		gui.find('new_name').write('Dagobert')
-		assert gui.find(name='change_name_dialog_window')
-		gui.trigger('change_name_dialog_window', 'okButton')
+    def rename():
+        gui.find('new_name').write('Dagobert')
+        assert gui.find(name='change_name_dialog_window')
+        gui.trigger('change_name_dialog_window', 'okButton')
 
-	with gui.handler(rename):
-		gui.trigger('overview_trade_ship', 'name')
+    with gui.handler(rename):
+        gui.trigger('overview_trade_ship', 'name')
 
-	assert not gui.find(name='change_name_dialog_window')
-	new_name = ship.get_component(NamedComponent).name
-	assert old_name != new_name
-	assert new_name == 'Dagobert'
+    assert not gui.find(name='change_name_dialog_window')
+    new_name = ship.get_component(NamedComponent).name
+    assert old_name != new_name
+    assert new_name == 'Dagobert'
 
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_change_name_empty_not_allowed(gui):
-	"""Make sure an object's name can't be changed to some empty string.
+    """Make sure an object's name can't be changed to some empty string.
 
-	See issue #1978.
-	"""
-	ship = get_player_ship(gui.session)
-	old_name = ship.get_component(NamedComponent).name
+    See issue #1978.
+    """
+    ship = get_player_ship(gui.session)
+    old_name = ship.get_component(NamedComponent).name
 
-	gui.select([ship])
+    gui.select([ship])
 
-	# try empty name
-	def rename_empty():
-		gui.find('new_name').write('')
-		gui.trigger('change_name_dialog_window', 'okButton')
+    # try empty name
+    def rename_empty():
+        gui.find('new_name').write('')
+        gui.trigger('change_name_dialog_window', 'okButton')
 
-	with gui.handler(rename_empty):
-		gui.trigger('overview_trade_ship', 'name')
+    with gui.handler(rename_empty):
+        gui.trigger('overview_trade_ship', 'name')
 
-	new_name = ship.get_component(NamedComponent).name
-	assert old_name == new_name
+    new_name = ship.get_component(NamedComponent).name
+    assert old_name == new_name
 
-	# try name with just spaces
-	def rename_spaces():
-		gui.find('new_name').write('   ')
-		gui.trigger('change_name_dialog_window', 'okButton')
+    # try name with just spaces
+    def rename_spaces():
+        gui.find('new_name').write('   ')
+        gui.trigger('change_name_dialog_window', 'okButton')
 
-	with gui.handler(rename_spaces):
-		gui.trigger('overview_trade_ship', 'name')
+    with gui.handler(rename_spaces):
+        gui.trigger('overview_trade_ship', 'name')
 
-	new_name = ship.get_component(NamedComponent).name
-	assert old_name == new_name
+    new_name = ship.get_component(NamedComponent).name
+    assert old_name == new_name
 
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_chat(gui):
-	"""Opens chat dialog.
+    """Opens chat dialog.
 
-	NOTE: Doesn't test if anything was send, just checking that nothing
-	crashes.
-	"""
+    NOTE: Doesn't test if anything was send, just checking that nothing
+    crashes.
+    """
 
-	assert not gui.find(name='chat_dialog_window')
+    assert not gui.find(name='chat_dialog_window')
 
-	def func1():
-		assert gui.find(name='chat_dialog_window')
-		gui.trigger('chat_dialog_window', 'cancelButton')
+    def func1():
+        assert gui.find(name='chat_dialog_window')
+        gui.trigger('chat_dialog_window', 'cancelButton')
 
-	with gui.handler(func1):
-		gui.press_key(gui.Key.C)
+    with gui.handler(func1):
+        gui.press_key(gui.Key.C)
 
-	assert not gui.find(name='chat_dialog_window')
+    assert not gui.find(name='chat_dialog_window')
 
-	def func2():
-		assert gui.find(name='chat_dialog_window')
-		gui.find('msg').write('Hello World')
-		gui.trigger('chat_dialog_window', 'okButton')
+    def func2():
+        assert gui.find(name='chat_dialog_window')
+        gui.find('msg').write('Hello World')
+        gui.trigger('chat_dialog_window', 'okButton')
 
-	with gui.handler(func2):
-		gui.press_key(gui.Key.C)
+    with gui.handler(func2):
+        gui.press_key(gui.Key.C)
 
-	assert not gui.find(name='chat_dialog_window')
+    assert not gui.find(name='chat_dialog_window')

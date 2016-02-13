@@ -32,95 +32,95 @@ from horizons.constants import RES
 
 @gui_test(use_fixture='ai_settlement', timeout=60)
 def test_trade(gui):
-	"""
-	"""
+    """
+    """
 
-	ship = get_player_ship(gui.session)
-	gui.select([ship])
+    ship = get_player_ship(gui.session)
+    gui.select([ship])
 
-	# ally players so they can trade
-	world = gui.session.world
-	for player in world.players:
-		if player is not ship.owner:
-			world.diplomacy.add_ally_pair( ship.owner, player )
+    # ally players so they can trade
+    world = gui.session.world
+    for player in world.players:
+        if player is not ship.owner:
+            world.diplomacy.add_ally_pair( ship.owner, player )
 
-	# move ship near foreign warehouse and wait for it to arrive
-	move_ship(gui, ship, (68, 23))
+    # move ship near foreign warehouse and wait for it to arrive
+    move_ship(gui, ship, (68, 23))
 
-	# click trade button
-	gui.trigger('overview_trade_ship', 'trade')
+    # click trade button
+    gui.trigger('overview_trade_ship', 'trade')
 
-	# trade widget visible
-	assert gui.find(name='buy_sell_goods')
+    # trade widget visible
+    assert gui.find(name='buy_sell_goods')
 
-	ship_inv = ship.get_component(StorageComponent).inventory
-	settlement = gui.session.world.islands[0].settlements[0]
-	settlement_inv = settlement.get_component(StorageComponent).inventory
+    ship_inv = ship.get_component(StorageComponent).inventory
+    settlement = gui.session.world.islands[0].settlements[0]
+    settlement_inv = settlement.get_component(StorageComponent).inventory
 
-	# transfer 1 t
-	gui.trigger('buy_sell_goods', 'size_1')
+    # transfer 1 t
+    gui.trigger('buy_sell_goods', 'size_1')
 
-	old_ship_value = ship_inv[RES.BOARDS]
-	old_settlement_value = settlement_inv[RES.BOARDS]
+    old_ship_value = ship_inv[RES.BOARDS]
+    old_settlement_value = settlement_inv[RES.BOARDS]
 
-	# of boards (will be bought)
-	gui.trigger('buy_sell_goods', 'inventory_entry_0')
+    # of boards (will be bought)
+    gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
-	assert old_settlement_value + 1 == settlement_inv[RES.BOARDS]
-	assert old_ship_value - 1 == ship_inv[RES.BOARDS]
+    assert old_settlement_value + 1 == settlement_inv[RES.BOARDS]
+    assert old_ship_value - 1 == ship_inv[RES.BOARDS]
 
-	old_ship_value = ship_inv[RES.CANNON]
-	old_settlement_value = settlement_inv[RES.CANNON]
+    old_ship_value = ship_inv[RES.CANNON]
+    old_settlement_value = settlement_inv[RES.CANNON]
 
-	# now cannons (won't be bought)
-	gui.trigger('buy_sell_goods', 'inventory_entry_3')
+    # now cannons (won't be bought)
+    gui.trigger('buy_sell_goods', 'inventory_entry_3')
 
-	assert old_settlement_value == settlement_inv[RES.CANNON]
-	assert old_ship_value == ship_inv[RES.CANNON]
+    assert old_settlement_value == settlement_inv[RES.CANNON]
+    assert old_ship_value == ship_inv[RES.CANNON]
 
-	# the ai has to want more boards
-	trade_post = settlement.get_component(TradePostComponent)
-	assert settlement_inv[RES.BOARDS] < trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
+    # the ai has to want more boards
+    trade_post = settlement.get_component(TradePostComponent)
+    assert settlement_inv[RES.BOARDS] < trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
 
-	# transfer 50 t of boards
-	gui.trigger('buy_sell_goods', 'size_5')
-	gui.trigger('buy_sell_goods', 'inventory_entry_0')
+    # transfer 50 t of boards
+    gui.trigger('buy_sell_goods', 'size_5')
+    gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
-	# now it has enough
-	assert settlement_inv[RES.BOARDS] == trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
+    # now it has enough
+    assert settlement_inv[RES.BOARDS] == trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
 
-	old_ship_value = ship_inv[RES.BOARDS]
+    old_ship_value = ship_inv[RES.BOARDS]
 
-	# so another click won't do anything
-	gui.trigger('buy_sell_goods', 'inventory_entry_0')
+    # so another click won't do anything
+    gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
-	assert old_ship_value == ship_inv[RES.BOARDS]
+    assert old_ship_value == ship_inv[RES.BOARDS]
 
-	# no matter how small the amount
-	gui.trigger('buy_sell_goods', 'size_1')
-	gui.trigger('buy_sell_goods', 'inventory_entry_0')
+    # no matter how small the amount
+    gui.trigger('buy_sell_goods', 'size_1')
+    gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
-	assert old_ship_value == ship_inv[RES.BOARDS]
+    assert old_ship_value == ship_inv[RES.BOARDS]
 
-	# make room on ship inventory
-	ship_inv.alter(RES.BOARDS, - ship_inv[RES.BOARDS])
+    # make room on ship inventory
+    ship_inv.alter(RES.BOARDS, - ship_inv[RES.BOARDS])
 
-	# test sell now, give settlement something to sell
-	SetTradeSlot(trade_post, 2, RES.ALVEARIES, True, 5)(settlement.owner)
-	settlement.get_component(StorageComponent).inventory.alter(RES.ALVEARIES, 10)
+    # test sell now, give settlement something to sell
+    SetTradeSlot(trade_post, 2, RES.ALVEARIES, True, 5)(settlement.owner)
+    settlement.get_component(StorageComponent).inventory.alter(RES.ALVEARIES, 10)
 
-	# this gives us 5 alevaries
-	assert ship_inv[RES.ALVEARIES] == 0
-	# first transfer one
-	gui.trigger('buy_sell_goods', 'size_1')
-	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
+    # this gives us 5 alevaries
+    assert ship_inv[RES.ALVEARIES] == 0
+    # first transfer one
+    gui.trigger('buy_sell_goods', 'size_1')
+    gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
 
-	print ship_inv[RES.ALVEARIES]
-	assert ship_inv[RES.ALVEARIES] == 1
-	assert settlement_inv[RES.ALVEARIES] == 9
+    print ship_inv[RES.ALVEARIES]
+    assert ship_inv[RES.ALVEARIES] == 1
+    assert settlement_inv[RES.ALVEARIES] == 9
 
-	# now transfer 5, should actually transfer 4
-	gui.trigger('buy_sell_goods', 'size_2')
-	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
-	assert ship_inv[RES.ALVEARIES] == 5
-	assert settlement_inv[RES.ALVEARIES] == 5
+    # now transfer 5, should actually transfer 4
+    gui.trigger('buy_sell_goods', 'size_2')
+    gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
+    assert ship_inv[RES.ALVEARIES] == 5
+    assert settlement_inv[RES.ALVEARIES] == 5
