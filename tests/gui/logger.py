@@ -60,7 +60,8 @@ class GuiHooks(object):
     def _setup_widget_events(self):
         """Capture events on widgets.
 
-        We log events by wrapping callbacks before they are registered at a widget.
+        We log events by wrapping callbacks before they are registered
+        at a widget.
         """
         log = self.logger.new_widget_event
 
@@ -70,17 +71,18 @@ class GuiHooks(object):
                 func(self, *args, **kwargs)
 
                 def callback(event, widget):
-                    # this can be a no-op because we're patching addEvent below, which
-                    # handles the logging
+                    # this can be a no-op because we're patching addEvent
+                    # below, which handles the logging
                     pass
 
-                # Provide a default callback for listboxes. Some will never have a
-                # callback installed because their selection is just read later.
+                # Provide a default callback for listboxes. Some will never
+                # have a callback installed because their selection is just
+                # read later.
                 # But we depend on event callbacks to detect events.
                 if isinstance(self.widget_ref(), widgets.ListBox):
                     self.capture('action', callback, 'default')
-                # We can't detect keypresses on textfields yet, but at least capture
-                # the event when we select the widget
+                # We can't detect keypresses on textfields yet, but at least
+                # capture the event when we select the widget
                 elif isinstance(self.widget_ref(), widgets.TextField):
                     self.capture('mouseClicked', callback, 'default')
 
@@ -97,12 +99,14 @@ class GuiHooks(object):
 
                 def new_callback(event, widget):
                     """
-                    pychan will pass the callback event and widget keyword arguments if expected.
-                    We do not know if callback expected these, so we use tools.applyOnlySuitable -
-                    which is what pychan does.
+                    pychan will pass the callback event and widget keyword
+                    arguments if expected.
+                    We do not know if callback expected these, so we use
+                    tools.applyOnlySuitable - which is what pychan does.
                     """
                     log(widget, event_name, group_name)
-                    return tools.applyOnlySuitable(callback, event=event, widget=widget)
+                    return tools.applyOnlySuitable(callback, event=event,
+                                                   widget=widget)
 
                 return func(self, event_name, new_callback, group_name)
 
@@ -160,11 +164,15 @@ class GuiHooks(object):
 
         # no mouseMoved support yet
         targets = {
-            mousetools.BuildingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
-            mousetools.SelectionTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
-            mousetools.TearingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
+            mousetools.BuildingTool: ('mousePressed', 'mouseReleased',
+                                      'mouseDragged', ),
+            mousetools.SelectionTool: ('mousePressed', 'mouseReleased',
+                                       'mouseDragged', ),
+            mousetools.TearingTool: ('mousePressed', 'mouseReleased',
+                                     'mouseDragged', ),
             mousetools.PipetteTool: ('mousePressed', ),
-            mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
+            mousetools.TileLayingTool: ('mousePressed', 'mouseReleased',
+                                        'mouseDragged', ),
         }
 
         for tool, events in targets.items():
@@ -202,14 +210,15 @@ class TestCodeGenerator(object):
         self._dialog_active = False
         self._dialog_opener = []	# the code that triggered the dialog
 
-        # The generator will not print out new code immediately, because the event might
-        # have triggered a dialog (and we don't know yet). Therefore we need to store it
-        # until we either receive a new event or know that a dialog was opened.
+        # The generator will not print out new code immediately, because the
+        # event might have triggered a dialog (and we don't know yet).
+        # Therefore we need to store it until we either receive
+        # a new event or know that a dialog was opened.
         self._last_command = []
         self._handler_count = 1
 
-        # Keep track of the last slider event. When moving the slider, many events are
-        # emitted. We will generate code for the last value.
+        # Keep track of the last slider event. When moving the slider, many
+        # events are emitted. We will generate code for the last value.
         self._last_slider_event = None
 
     def _add(self, code):
@@ -232,8 +241,8 @@ class TestCodeGenerator(object):
         """
         Walk up the tree to find the container the given widget is in.
 
-        Returns the container and a path of widget names collected when traversing
-        the tree.
+        Returns the container and a path of widget names collected when
+        traversing the tree.
         """
         path = [widget.name]
         while widget.parent:
@@ -253,25 +262,28 @@ class TestCodeGenerator(object):
             print '# FIXME this container needs a name to identify it!'
             print '# Path: %s' % path
         elif event_name == 'action' and group_name == 'action_listener':
-            # this is a custom event defined in engine.pychan_util to play click sounds
-            # for widgets
+            # this is a custom event defined in engine.pychan_util to play
+            # click sounds for widgets
             pass
         else:
             log.debug('# %s' % path)
             code = None
 
-            # Emit code for the last slider that was manipulated, but only if the current
-            # event is from a different widget. This is a work around to avoid generating
-            # lots of code for every small mouse move.
+            # Emit code for the last slider that was manipulated, but only if
+            # the current event is from a different widget. This is a work
+            # around to avoid generating lots of code
+            # for every small mouse move.
             if self._last_slider_event:
                 w = self._last_slider_event
                 if w.name != widget.name:
-                    self._add(["gui.find('%s').slide(%f)" % (w.name, w.value), ""])
+                    self._add(["gui.find('%s').slide(%f)" % (w.name,
+                                                             w.value), ""])
                     self._last_slider_event = None
 
             if isinstance(widget, widgets.ListBox):
                 selection = widget.items[widget.selected]
-                code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
+                code = "gui.find('%s').select(u'%s')" % (widget.name,
+                                                         selection)
             elif isinstance(widget, widgets.TextField):
                 code = "gui.find('%s').write(TODO)" % widget.name
             elif isinstance(widget, widgets.Slider):
@@ -279,11 +291,17 @@ class TestCodeGenerator(object):
             else:
                 if group_name == 'default':
                     if event_name in ('action', 'mouseClicked'):
-                        code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+                        code = "gui.trigger('%s', '%s')" % (container.name,
+                                                            widget.name)
                     else:
-                        code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+                        code = "gui.trigger('%s', '%s/%s')" % (container.name,
+                                                               widget.name,
+                                                               event_name)
                 else:
-                    code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+                    code = "gui.trigger('%s', '%s/%s/%s')" % (container.name,
+                                                              widget.name,
+                                                              event_name,
+                                                              group_name)
 
             if code:
                 self._add([code, ''])
@@ -308,7 +326,8 @@ class TestCodeGenerator(object):
 
     def new_mousetool_event(self, tool_name, event_name, x, y, button):
         """
-        Prints out debug information for all captured events. Tries to detect mouse clicks
+        Prints out debug information for all captured events.
+        Tries to detect mouse clicks
         (button pressed and released after) and emit test code for those.
         """
         if event_name == 'mouseReleased':
@@ -327,16 +346,17 @@ class TestCodeGenerator(object):
         elif event_name == 'mousePressed':
             self._mousetool_events.append((event_name, x, y, button))
         elif event_name == 'mouseDragged':
-            # TODO for now we ignore these events, if the position between mousePressed
-            # and mouseReleased changed, we assume the mouse was moved and generate a
-            # drage event
+            # TODO for now we ignore these events, if the position between
+            # mousePressed and mouseReleased changed, we assume the mouse was
+            # moved and generate a drage event
             pass
         else:
             raise Exception("Event '%s' not supported." % event_name)
 
         # Output debug information, no test code yet
         if button:
-            log.debug("# %s.%s(%d, %d, '%s')" % (tool_name, event_name, x, y, button))
+            log.debug("# %s.%s(%d, %d, '%s')" % (tool_name, event_name, x, y,
+                                                 button))
         else:
             log.debug("# %s.%s(%d, %d)" % (tool_name, event_name, x, y))
 
@@ -354,9 +374,9 @@ class TestCodeGenerator(object):
 
     def dialog_closed(self):
         """
-        Emits code like this when the dialog was closed. `func` is the handler code
-        that is started in `dialog_opened` and will contain all events in the dialog's
-        lifetime.
+        Emits code like this when the dialog was closed. `func` is the handler
+        code that is started in `dialog_opened` and will contain all events in
+        the dialog's lifetime.
 
             with gui.handler(func):
                 # code that triggered the dialog

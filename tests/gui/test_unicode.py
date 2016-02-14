@@ -29,6 +29,7 @@ from tests.gui import gui_test
 
 USER_DIR = None
 
+
 def setup():
     global USER_DIR
     USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ')
@@ -50,7 +51,8 @@ dummy.__original__ = dummy
 
 
 def test_user_dir_contains_non_ascii():
-    # NOTE we have to create the test this way because if it were defined globally,
+    # NOTE we have to create the test this way
+    # because if it were defined globally,
     # USER_DIR would not be defined yet at the time the decorator is evaluated
     yield gui_test(timeout=60, use_dev_map=True, _user_dir=USER_DIR)(dummy)
 test_user_dir_contains_non_ascii.gui = True

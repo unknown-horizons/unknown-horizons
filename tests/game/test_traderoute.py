@@ -49,14 +49,14 @@ def test_traderoute_basic(s):
     assert food_inv[RES.FOOD] > 0
     assert wood_inv[RES.BOARDS] > 0
 
-    while food_inv[RES.BOARDS] == 0: # first ensure wood to food
+    while food_inv[RES.BOARDS] == 0:  # first ensure wood to food
         s.run()
-    while wood_inv[RES.FOOD] == 0: # traderoute also goes other way around
+    while wood_inv[RES.FOOD] == 0:  # traderoute also goes other way around
         s.run()
 
-    while food_inv.get_free_space_for(RES.BOARDS) > 0: # also fill up
+    while food_inv.get_free_space_for(RES.BOARDS) > 0:  # also fill up
         s.run()
-    while wood_inv.get_free_space_for(RES.FOOD) > 0: # also fill up
+    while wood_inv.get_free_space_for(RES.FOOD) > 0:  # also fill up
         s.run()
 
     # when the whiles pass, it is ensured that traderoutes somewhat work

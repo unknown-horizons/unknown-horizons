@@ -107,8 +107,8 @@ class CursorToolsPatch(object):
             """Typically we expect a Mock MouseEvent, genereated by
             `_make_mouse_event`.
 
-            However NavigationTool keeps track of the last event position, which is
-            an instance of fife.ScreenPoint.
+            However NavigationTool keeps track of the last event position,
+            which is an instance of fife.ScreenPoint.
             """
             try:
                 # fife.MouseEvent
@@ -131,16 +131,18 @@ class CursorToolsPatch(object):
             'horizons.gui.mousetools.TileLayingTool.get_world_location',
             patched_world_location_from_event)
 
-        NavigationTool._orig_get_hover_instances = NavigationTool.get_hover_instances
+        NavigationTool._orig_get_hover_instances = \
+            NavigationTool.get_hover_instances
 
     def enable(self):
         self.patch1.start()
         self.patch2.start()
         self.patch3.start()
 
-        # this makes selecting buildings by clicking on them possible. without this,
-        #  get_hover_instances receives an event with map
-        # coordinates, and will not find the correct building (if any). to fix this,
+        # this makes selecting buildings by clicking on them possible.
+        # without this, get_hover_instances receives an event with map
+        # coordinates, and will not find the correct building (if any).
+        # to fix this,
         #  we're converting the coordinates back to screen space
         # and can avoid changing any other code
         def deco(func):
@@ -160,7 +162,8 @@ class CursorToolsPatch(object):
         self.patch2.stop()
         self.patch3.stop()
 
-        NavigationTool.get_hover_instances = NavigationTool._orig_get_hover_instances
+        NavigationTool.get_hover_instances = \
+            NavigationTool._orig_get_hover_instances
 
 
 class GuiHelper(object):
@@ -220,17 +223,19 @@ class GuiHelper(object):
                 w = widgets.popleft()
                 seen.add(w)
                 if w.name == name:
-                    # When there are still names left in the path, continue our search
-                    # in the children of the matched widget
+                    # When there are still names left in the path, continue
+                    # our search in the children of the matched widget
                     if path_components:
-                        widgets = deque([x for x in self._get_children(w) if x not in seen])
+                        widgets = deque([x for x in self._get_children(w) if
+                                         x not in seen])
                         break
                     else:
                         # We're done!
                         match = w
                         break
                 else:
-                    widgets.extend([x for x in self._get_children(w) if x not in seen])
+                    widgets.extend([x for x in self._get_children(w) if
+                                    x not in seen])
 
             if match:
                 break
@@ -342,7 +347,8 @@ class GuiHelper(object):
             raise Exception("'%s' contains no widget with the name '%s'" % (
                                 root.name, widget_name))
 
-        self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
+        self._trigger_widget_callback(widget, event_name, group_name,
+                                      mouse=mouse)
 
     def _trigger_widget_callback(self, widget, event_name="action",
                                  group_name="default", can_fail=False,
@@ -369,10 +375,12 @@ class GuiHelper(object):
         else:
             callback = callbacks.get(event_name)
             if not callback:
-                callback = callbacks.get(event_name == 'action' and 'mouseClicked' or 'action')
+                callback = callbacks.get(event_name == 'action' and
+                                         'mouseClicked' or 'action')
 
             if not callback:
-                raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '%s'" % (
+                raise Exception("No callback for event 'action' or '"
+                                "mouseClicked' registered for widget '%s'" % (
                                 group_name, widget.name))
 
         kwargs = {'widget': widget}
@@ -426,10 +434,12 @@ class GuiHelper(object):
             self.session.view.center(x, y)
 
     def cursor_press_button(self, x, y, button, shift=False, ctrl=False):
-        self.cursor.mousePressed(self._make_mouse_event(x, y, button, shift, ctrl))
+        self.cursor.mousePressed(self._make_mouse_event(x, y, button, shift,
+                                                        ctrl))
 
     def cursor_release_button(self, x, y, button, shift=False, ctrl=False):
-        self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift, ctrl))
+        self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift,
+                                                         ctrl))
 
     def cursor_click(self, x, y, button, shift=False, ctrl=False):
         # NOTE `self.run()` is a fix for gui tests with fife rev 4060+

@@ -28,6 +28,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
 
+
 @gui_test(use_fixture='ai_settlement', timeout=60)
 def test_trade(gui):
     """test trade

@@ -129,7 +129,8 @@ def test_ticket_1830(gui):
 
     # Check if Main-Production is still just Huker and is paused.
     assert len(producer.get_productions()) == 1
-    assert producer.get_productions()[0].get_produced_units()[UNITS.HUKER_SHIP] == 1
+    assert producer.get_productions()[0].get_produced_units()[
+        UNITS.HUKER_SHIP] == 1
     assert producer.get_productions()[0]._state == PRODUCTION.STATES.paused
 
     # One entry (Frigate) in queue

@@ -73,8 +73,8 @@ def test_weaver(s, p):
 @game_test()
 def test_distillery(s, p):
     """
-    Distillery produces liquor out of sugar. A farm will collect raw sugar from a
-    sugar field and produce sugar.
+    Distillery produces liquor out of sugar. A farm will collect raw sugar
+    from a sugar field and produce sugar.
     """
     settlement, island = settle(s)
 

@@ -45,7 +45,7 @@ def test_blackdeath_destroy(s):
     residential_buildings = len(
         settlement.buildings_by_id[BUILDINGS.RESIDENTIAL])
     assert residential_buildings > \
-           BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
+        BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
 
     while not dis_man._active_disaster:
         dis_man.run() # try to seed until we have the black death
@@ -56,4 +56,3 @@ def test_blackdeath_destroy(s):
     # it's not defined how bad the black death is,
     # but some inhabitants should die
     assert settlement.inhabitants < inhabitants_before
-

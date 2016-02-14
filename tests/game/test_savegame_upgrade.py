@@ -21,6 +21,7 @@
 
 from tests.game import game_test
 
+
 # FIXTURE is a savegame revision 49
 @game_test(use_fixture='savegame-rev-49')
 def test_upgrade(s):

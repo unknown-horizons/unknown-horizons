@@ -68,10 +68,12 @@ def test_found_settlement(gui):
     gui.cursor_click(55, 15, 'left')
     gui.trigger('tab_base', '0')
     assert gui.find('tab_account')
-    collectors = storage.get_component(CollectingComponent).get_local_collectors()
+    collectors = storage.get_component(
+        CollectingComponent).get_local_collectors()
 
     while True:
-        if any(collector.state is Collector.states.moving_to_target for collector in collectors):
+        if any(collector.state is Collector.states.moving_to_target for
+               collector in collectors):
             break
         gui.run()
 

@@ -53,6 +53,7 @@ def test_settler_level(s, p):
     # should have leveled up
     assert settler.level == level + 1
 
+
 @game_test()
 def test_deny_upgrade_permissions_special(s, p):
     """

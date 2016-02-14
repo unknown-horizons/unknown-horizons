@@ -28,7 +28,7 @@ import mock
 
 import horizons.globals
 import horizons.main
-import horizons.world	# needs to be imported before session
+import horizons.world  # needs to be imported before session
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
@@ -43,10 +43,12 @@ from tests import RANDOM_SEED
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
-TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fixtures')
+TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)),
+                                 'fixtures')
 
 
 db = None
+
 
 def setup_package():
     """
@@ -220,7 +222,7 @@ def saveload(session):
     assert session.save(savegamename=filename)
     session.end(keep_map=True)
     game_session = load_session(filename)
-    Scheduler().before_ticking() # late init finish (not ticking already)
+    Scheduler().before_ticking()  # late init finish (not ticking already)
     return game_session
 
 
@@ -278,7 +280,6 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True,
                     # Therefore only use failsafe cleanup:
                 finally:
                     SPTestSession.cleanup()
-
 
                 timelimit.stop()
         return wrapped

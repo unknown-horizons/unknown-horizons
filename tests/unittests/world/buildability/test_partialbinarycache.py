@@ -21,7 +21,8 @@
 
 from tests.unittests import TestCase
 
-from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
+from horizons.world.buildability.partialbinarycache import \
+    PartialBinaryBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
 
@@ -40,7 +41,8 @@ class TestPartialBinaryBuildabilityCache(TestCase):
             for y in xrange(10):
                 coords_list.append((x, y))
         self.terrain_cache = MockTerrainBuildabilityCache(coords_list)
-        self.buildability_cache = PartialBinaryBuildabilityCache(self.terrain_cache)
+        self.buildability_cache = PartialBinaryBuildabilityCache(
+            self.terrain_cache)
 
     def test_horizontal_row2(self):
         bc = self.buildability_cache

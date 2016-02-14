@@ -54,11 +54,12 @@ def test_selectmultitab(gui):
     assert gui.find('tab_base') is None
 
     player = gui.session.world.player
+
     def create_ship(type):
         return CreateUnit(
             player.worldid, type,
-            *gui.session.world.get_random_possible_ship_position().to_tuple())\
-            (issuer=player)
+            *gui.session.world.get_random_possible_ship_position().
+                to_tuple())(issuer=player)
 
     ships = [create_ship(UNITS.FRIGATE), create_ship(UNITS.FRIGATE)]
     gui.select(ships)
@@ -115,17 +116,17 @@ def test_selection_groups(gui):
     # check group again
     gui.press_key(gui.Key.NUM_2)
     assert len(gui.session.selected_instances) == 1 and \
-           iter(gui.session.selected_instances).next() is ship
+        iter(gui.session.selected_instances).next() is ship
 
     # now other one
     gui.press_key(gui.Key.NUM_3)
     assert len(gui.session.selected_instances) == 1 and \
-           iter(gui.session.selected_instances).next() is wh
+        iter(gui.session.selected_instances).next() is wh
 
     # check group still once again
     gui.press_key(gui.Key.NUM_2)
     assert len(gui.session.selected_instances) == 1 and \
-           iter(gui.session.selected_instances).next() is ship
+        iter(gui.session.selected_instances).next() is ship
 
     # no group
     gui.press_key(gui.Key.NUM_0)

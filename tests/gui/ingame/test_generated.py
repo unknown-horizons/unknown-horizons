@@ -127,7 +127,7 @@ def test_buildingtool(gui):
         # build while moving around cursor beforehand
         OFFSETS = [0, 1, -1, 2, -2, 5, -5, 20, -20]
         # don't add more, takes long enough already
-        for off_x, off_y in itertools.product( OFFSETS, repeat=2 ):
+        for off_x, off_y in itertools.product(OFFSETS, repeat=2):
             # will trigger preview_build of BuildingTool
             gui.cursor_move(target[0]+off_x, target[1]+off_y)
         gui.cursor_click(target[0], target[1], 'left')
@@ -145,7 +145,6 @@ def test_buildingtool(gui):
     # Place fisher
     build_at((52, 3))
 
-
     # Build lumberjack
     gui.trigger('tab', 'button_03')
     build_at((52, 6))
@@ -160,7 +159,7 @@ def test_buildingtool(gui):
     # Build some paths
     for i in xrange(6, 13):
         build_at((57, i))
-    gui.cursor_click(54, 7, 'right') # cancel
+    gui.cursor_click(54, 7, 'right')  # cancel
 
     # Build a tent
     gui.trigger('tab', 'button_01')

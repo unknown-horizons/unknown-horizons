@@ -45,7 +45,7 @@ def test_fire_destroy(s):
     old_num = len(settlement.buildings_by_id[BUILDINGS.RESIDENTIAL])
 
     while not dis_man._active_disaster:
-        dis_man.run() # try to seed until we have a fire
+        dis_man.run()  # try to seed until we have a fire
 
     # wait until fire is over
     while dis_man._active_disaster:
@@ -73,7 +73,7 @@ def test_fire_station(s):
     inv.alter(RES.BRICKS, 10)
 
     # second lj is the pos we need
-    lj = settlement.buildings_by_id[ BUILDINGS.LUMBERJACK ][1]
+    lj = settlement.buildings_by_id[BUILDINGS.LUMBERJACK][1]
     pos = lj.position.origin
     owner = lj.owner
     island = lj.island
@@ -85,9 +85,9 @@ def test_fire_station(s):
     assert settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
     old_num = len(settlement.buildings_by_id[BUILDINGS.RESIDENTIAL])
 
-    for i in xrange(5): # 5 fires
+    for i in xrange(5):  # 5 fires
         while not dis_man._active_disaster:
-            dis_man.run() # try to seed until we have a fire
+            dis_man.run()  # try to seed until we have a fire
 
         # wait until fire is over
         while dis_man._active_disaster:

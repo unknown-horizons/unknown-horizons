@@ -25,18 +25,18 @@ from horizons.scenario import ACTIONS
 # Patch scenario actions for easier detection
 
 def do_win(session):
-	session._scenariotest_won = True
+    session._scenariotest_won = True
 
 
 def do_lose(session):
-	session._scenariotest_lose = True
+    session._scenariotest_lose = True
 
 
 def goal_reached(session, goal):
-	if hasattr(session, '_scenariotest_goals'):
-		session._scenariotest_goals.append(goal)
-	else:
-		session._scenariotest_goals = [goal]
+    if hasattr(session, '_scenariotest_goals'):
+        session._scenariotest_goals.append(goal)
+    else:
+        session._scenariotest_goals = [goal]
 
 
 # We replace the code object on the original functions because replacing all

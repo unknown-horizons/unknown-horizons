@@ -24,8 +24,10 @@ from nose.plugins.skip import SkipTest
 from horizons.util.color import Color
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
-from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
-from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair,\
+    AddAllyPair
+from horizons.command.uioptions import EquipWeaponFromInventory,\
+    UnequipWeaponToInventory
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
@@ -78,7 +80,7 @@ def test_noncombat_units(s, p):
     assert health(s0) == max_health(s0)
     assert health(s1) == max_health(s1)
 
-    assert len(s.world.ships) == 3 # trader also has a ship
+    assert len(s.world.ships) == 3  # trader also has a ship
     Attack(s0, s1).execute(s)
 
     s.run(seconds=60)
@@ -99,14 +101,14 @@ def test_equip(s, p):
     (p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
     assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 0
-    assert s0.get_weapon_storage()[ WEAPONS.CANNON ] == \
-           WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
+    assert s0.get_weapon_storage()[WEAPONS.CANNON] == \
+        WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 
     # we don't have swords
     not_equip = EquipWeaponFromInventory(s0, WEAPONS.SWORD, 1).execute(s)
     assert not_equip == 1
     assert s0.get_component(StorageComponent).inventory[WEAPONS.SWORD] == 0
-    assert s0.get_weapon_storage()[ WEAPONS.SWORD ] == 0
+    assert s0.get_weapon_storage()[WEAPONS.SWORD] == 0
 
     # test equip
     s0.get_component(StorageComponent).inventory.alter(WEAPONS.CANNON, 2)
@@ -117,7 +119,7 @@ def test_equip(s, p):
 
     assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 1
     assert s0.get_weapon_storage()[WEAPONS.CANNON] == \
-           WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 1
+        WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 1
 
     # too many
     not_equip = EquipWeaponFromInventory(s0, WEAPONS.CANNON, 2).execute(s)
@@ -125,7 +127,7 @@ def test_equip(s, p):
     assert not_equip == 1
     assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 0
     assert s0.get_weapon_storage()[WEAPONS.CANNON] == \
-           WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 2
+        WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 2
 
     # no swords
     not_equip = UnequipWeaponToInventory(s0, WEAPONS.SWORD, 2).execute(s)
@@ -135,7 +137,7 @@ def test_equip(s, p):
     assert not_equip == 0
     assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 2
     assert s0.get_weapon_storage()[WEAPONS.CANNON] == \
-           WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
+        WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 
     not_equip = UnequipWeaponToInventory(
         s0, WEAPONS.CANNON,
@@ -143,7 +145,7 @@ def test_equip(s, p):
     assert not_equip == 0
 
     assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == \
-           2 + WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
+        2 + WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
     assert s0.get_weapon_storage()[WEAPONS.CANNON] == 0
 
 
@@ -247,6 +249,7 @@ def test_unfair(s, p):
     assert health(s0_1) > 0
 
 # TODO: stances
+
 
 @game_test(manual_session=True)
 def test_combat_save_load():
