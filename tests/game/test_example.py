@@ -40,7 +40,8 @@ def test_example(s, p):
     assert farm
 
     # Pause the production, we want to start it explicitly later.
-    production = farm.get_component(Producer)._get_production(PRODUCTIONLINES.WOOL)
+    production = farm.get_component(Producer)._get_production(
+        PRODUCTIONLINES.WOOL)
     production.pause()
 
     # Farm has no raw wool or wool.
@@ -63,9 +64,8 @@ def test_example(s, p):
 
     assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
 
-    # Resume the production, let the game run for a second. The farm should have
-    # produced wool now.
+    # Resume the production, let the game run for a second. The farm should
+    # have produced wool now.
     production.pause(pause=False)
     s.run(seconds=1)
     assert farm.get_component(StorageComponent).inventory[RES.WOOL]
-

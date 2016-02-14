@@ -26,13 +26,15 @@ from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, PRODUCTION
 
 from tests.game import settle, game_test
 
+
 @game_test()
 def test_basic_wood_production(session, player):
     """This is a fairly detailed test of the simple wood production"""
 
     settlement, island = settle(session)
 
-    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island,
+               settlement=settlement)(player)
     assert lj.id == BUILDINGS.LUMBERJACK
 
     storage = lj.get_component(StorageComponent)
@@ -49,7 +51,8 @@ def test_basic_wood_production(session, player):
 
     # Check if the production finished listener is called
     production_finished = [False]
-    production.add_production_finished_listener(lambda _: production_finished.__setitem__(0, True))
+    production.add_production_finished_listener(
+        lambda _: production_finished.__setitem__(0, True))
 
     assert producer.is_active()
 
@@ -93,11 +96,13 @@ def test_basic_wood_production(session, player):
     assert production_finished[0]
 
     # Fillup storage
-    storage.inventory.alter(RES.BOARDS, storage.inventory.get_limit(RES.BOARDS))
+    storage.inventory.alter(
+        RES.BOARDS, storage.inventory.get_limit(RES.BOARDS))
 
     # Cannot produce because inventory full
     assert producer._get_current_state() == PRODUCTION.STATES.inventory_full
 
     # Empty inventory, wait again
-    storage.inventory.alter(RES.BOARDS, -storage.inventory.get_limit(RES.BOARDS))
+    storage.inventory.alter(RES.BOARDS,
+                            -storage.inventory.get_limit(RES.BOARDS))
     assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res

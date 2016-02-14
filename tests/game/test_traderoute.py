@@ -38,8 +38,10 @@ def test_traderoute_basic(s):
     # 2 settlements, one produces food, the other one boards
     # a traderoute is there to exchange the res
 
-    has_food = settlements[0] if 'food' in settlements[0].get_component(NamedComponent).name else settlements[1]
-    has_wood = settlements[0] if settlements[0] != has_food else settlements[1]
+    has_food = settlements[0] if 'food' in \
+        settlements[0].get_component(NamedComponent).name else settlements[1]
+    has_wood = settlements[0] if settlements[0] != has_food else \
+        settlements[1]
 
     food_inv = has_food.get_component(StorageComponent).inventory
     wood_inv = has_wood.get_component(StorageComponent).inventory

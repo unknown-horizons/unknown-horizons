@@ -37,7 +37,8 @@ from tests.game.test_farm import _build_farm
 @game_test()
 def test_ticket_979(s, p):
     settlement, island = settle(s)
-    storage_collectors = settlement.warehouse.get_component(CollectingComponent).get_local_collectors()
+    storage_collectors = settlement.warehouse.get_component(
+        CollectingComponent).get_local_collectors()
 
     farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
 
@@ -47,7 +48,9 @@ def test_ticket_979(s, p):
 
     # Depending on auto unloading (which we aren't interested in here),
     # the settlement inventory may already be full of food: dispose of it
-    settlement.get_component(StorageComponent).inventory.alter(RES.FOOD, -settlement.get_component(StorageComponent).inventory[RES.FOOD])
+    settlement.get_component(StorageComponent).inventory.alter(
+        RES.FOOD,
+        -settlement.get_component(StorageComponent).inventory[RES.FOOD])
     assert settlement.get_component(StorageComponent).inventory[RES.FOOD] == 0
 
     # Build a road, connecting farm and warehouse
@@ -78,7 +81,8 @@ def test_ticket_1016(s, p):
     torn_down = False
     while not torn_down:
         s.run(seconds=1)
-        for col in farm.get_component(CollectingComponent)._CollectingComponent__collectors:
+        for col in farm.get_component(
+                CollectingComponent)._CollectingComponent__collectors:
             if col.job:
                 Tear(col.job.object)(p)
                 Tear(farm)(p)
@@ -93,7 +97,8 @@ def test_ticket_1005(s, p):
     settlement, island = settle(s)
     assert len(s.world.ships) == 2
 
-    builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
+    builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island,
+                    settlement=settlement)(p)
     builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 5)
     builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 4)
     builder.get_component(Producer).add_production_by_id(15)
@@ -108,26 +113,36 @@ def test_ticket_1232(s, p):
     settlement, island = settle(s)
     assert len(s.world.ships) == 2
 
-    boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
-    boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 10)
-    boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 8)
+    boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island,
+                         settlement=settlement)(p)
+    boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE,
+                                                                 10)
+    boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS,
+                                                                 8)
     assert isinstance(boat_builder.get_component(Producer), QueueProducer)
 
     production_finished = [False]
-    boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
-    production1 = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
-    production1.add_production_finished_listener(lambda _: production_finished.__setitem__(0, True))
+    boat_builder.get_component(Producer).add_production_by_id(
+        PRODUCTIONLINES.HUKER)
+    production1 = boat_builder.get_component(Producer)._get_production(
+        PRODUCTIONLINES.HUKER)
+    production1.add_production_finished_listener(
+        lambda _: production_finished.__setitem__(0, True))
     assert boat_builder.get_component(Producer).is_active()
     while not production_finished[0]:
         s.run(ticks=1)
     assert not boat_builder.get_component(Producer).is_active()
     assert len(s.world.ships) == 3
     # Make sure enough res are available
-    boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 10)
-    boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 8)
-    boat_builder.get_component(StorageComponent).inventory.alter(RES.TOOLS, 5)
+    boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE,
+                                                                 10)
+    boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS,
+                                                                 8)
+    boat_builder.get_component(StorageComponent).inventory.alter(RES.TOOLS,
+                                                                 5)
 
-    boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
+    boat_builder.get_component(Producer).add_production_by_id(
+        PRODUCTIONLINES.HUKER)
     assert boat_builder.get_component(Producer).is_active()
     s.run(seconds=130)
     assert not boat_builder.get_component(Producer).is_active()
@@ -157,11 +172,13 @@ def test_ticket_1427():
     session, player = new_session()
     settlement, island = settle(session)
 
-    boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(player)
+    boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island,
+                         settlement=settlement)(player)
     worldid = boat_builder.worldid
 
     # Make sure no boards are available
-    settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, -1000)
+    settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS,
+                                                               -1000)
 
     bb_storage = boat_builder.get_component(StorageComponent)
 
@@ -196,7 +213,8 @@ def test_ticket_1427():
     session = saveload(session)
     loadedbb = WorldObject.get_object_by_id(worldid)
 
-    production_loaded = loadedbb.get_component(Producer)._productions[PRODUCTIONLINES.HUKER]
+    production_loaded = loadedbb.get_component(
+        Producer)._productions[PRODUCTIONLINES.HUKER]
     production_line_loaded = production_loaded._prod_line
 
     # Make sure everything is loaded correctly
@@ -205,7 +223,9 @@ def test_ticket_1427():
     assert expected_production == production_line_loaded.production
     assert expected_progress == production_loaded.progress
 
-    # if you don't let the session run for a bit then collectors won't be fully initialized and can't be killed => another test will fail in session.end()
+    # if you don't let the session run for a bit then collectors won't be
+    # fully initialized and can't be killed => another test will fail in
+    # session.end()
     session.run(seconds=1)
     session.end()
 
@@ -220,8 +240,8 @@ def test_ticket_1523(s, p):
     s.run(seconds=60)
     assert farm.get_component(StorageComponent).inventory[RES.FOOD]
 
-
-    assert isinstance(farm.get_component(Producer)._Producer__utilization, FieldUtilization)
+    assert isinstance(farm.get_component(Producer)._Producer__utilization,
+                      FieldUtilization)
     # Should be 0.5
     assert not farm.get_component(Producer).capacity_utilization_below(0.4)
     assert farm.get_component(Producer).capacity_utilization > 0.4

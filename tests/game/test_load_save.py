@@ -48,7 +48,8 @@ def test_load_inactive_production():
     session, player = new_session()
     settlement, island = settle(session)
 
-    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island,
+               settlement=settlement)(player)
     # Set lumberjack to inactive
     lj.get_component(Producer).set_active(active=False)
     worldid = lj.worldid
@@ -76,7 +77,8 @@ def create_lumberjack_production_session():
 
     for x in [29, 30, 31, 32]:
         Build(BUILDINGS.TREE, x, 29, island, settlement=settlement,)(player)
-    building = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+    building = Build(BUILDINGS.LUMBERJACK, 30, 30, island,
+                     settlement=settlement)(player)
     production = building.get_component(Producer).get_productions()[0]
 
     # wait for the lumberjack to start producing
@@ -92,7 +94,9 @@ def create_lumberjack_production_session():
 
 @game_test(manual_session=True)
 def test_load_producing_production_fast():
-    """Create a saved game with a producing production, load it, and try to save again very fast."""
+    """Create a saved game with a producing production, load it,
+    and try to save again very fast.
+    """
     session = create_lumberjack_production_session()
     session.run(ticks=2)
 
@@ -105,7 +109,9 @@ def test_load_producing_production_fast():
 
 @game_test(manual_session=True)
 def test_load_producing_production_slow():
-    """Create a saved game with a producing production, load it, and try to save again in a few seconds."""
+    """Create a saved game with a producing production,
+    load it, and try to save again in a few seconds.
+    """
     session = create_lumberjack_production_session()
     session.run(ticks=100)
 
@@ -124,13 +130,15 @@ def test_hunter_save_load():
 
     # setup hunter, trees (to keep animals close) and animals
 
-    hunter = Build(BUILDINGS.HUNTER, 30, 30, island, settlement=settlement)(player)
+    hunter = Build(BUILDINGS.HUNTER, 30, 30, island,
+                   settlement=settlement)(player)
     hunter_worldid = hunter.worldid
     del hunter # invalid after save/load
 
     for x in xrange(27, 29):
         for y in xrange(25, 28):
-            assert Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(player)
+            assert Build(BUILDINGS.TREE, x, y, island,
+                         settlement=settlement)(player)
 
     CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 27, 27)(issuer=None)
     CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 28, 27)(issuer=None)
@@ -138,13 +146,18 @@ def test_hunter_save_load():
 
     def get_hunter_collector(session):
         hunter = WorldObject.get_object_by_id(hunter_worldid)
-        return hunter.get_component(CollectingComponent)._CollectingComponent__collectors[0]
+        return hunter.get_component(
+            CollectingComponent)._CollectingComponent__collectors[0]
 
     def await_transition(session, collector, old_state, new_state):
-        assert collector.state == old_state, "expected old state %s, got %s" % (old_state, collector.state)
+        assert collector.state == old_state,\
+            "expected old state {0}, got {1}".format(old_state,
+                                                     collector.state)
         while collector.state == old_state:
             session.run(seconds=1)
-        assert collector.state == new_state, "expected new state %s, got %s" % (old_state, collector.state)
+        assert collector.state == new_state,\
+            "expected new state {0}, got {1}".format(old_state,
+                                                     collector.state)
 
 
     sequence = [
@@ -183,10 +196,12 @@ def test_settler_save_load():
     # 3) build main square
     # -> settler won't load properly and not use the resources and die
 
-    settler = Build(BUILDINGS.RESIDENTIAL, 25, 22, island, settlement=settlement)(player)
+    settler = Build(BUILDINGS.RESIDENTIAL, 25, 22, island,
+                    settlement=settlement)(player)
     assert settler
 
-    main_square = Build(BUILDINGS.MAIN_SQUARE, 23, 24, island, settlement=settlement)(player)
+    main_square = Build(BUILDINGS.MAIN_SQUARE, 23, 24, island,
+                        settlement=settlement)(player)
     assert main_square
     main_square.get_component(StorageComponent).inventory.alter(RES.FOOD, 100)
 
@@ -230,7 +245,8 @@ def test_settler_level_save_load(s, p):
         session, player = new_session()
         settlement, island = settle(s)
 
-        settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
+        settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island,
+                        settlement=settlement)(p)
         settler.level += test_level
         settler_worldid = settler.worldid
 

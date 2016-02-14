@@ -28,5 +28,3 @@ def test_upgrade(s):
     Simply let's do nothing except loading the fixture
     """
     pass
-
-

@@ -39,11 +39,13 @@ def test_blackdeath_destroy(s):
     # need this so that disaster  can break out
     s.world.player.settler_level = 4
 
-    assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
+    assert settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
     inhabitants_before = settlement.inhabitants
 
-    residential_buildings = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
-    assert residential_buildings > BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
+    residential_buildings = len(
+        settlement.buildings_by_id[BUILDINGS.RESIDENTIAL])
+    assert residential_buildings > \
+           BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
 
     while not dis_man._active_disaster:
         dis_man.run() # try to seed until we have the black death
@@ -51,6 +53,7 @@ def test_blackdeath_destroy(s):
     # wait until the black death has done some damage
     s.run(seconds=50)
 
-    # it's not defined how bad the black death is, but some inhabitants should die
+    # it's not defined how bad the black death is,
+    # but some inhabitants should die
     assert settlement.inhabitants < inhabitants_before
 

@@ -36,8 +36,8 @@ from horizons.component.storagecomponent import StorageComponent
 
 def create_map():
     """
-    Create a map with a square island (20x20) at position (20, 20) and return the path
-    to the database file.
+    Create a map with a square island (20x20) at position (20, 20) and
+     return the path to the database file.
     """
 
     tiles = []
@@ -65,19 +65,22 @@ def create_map():
 
 def new_settlement(session, pos=Point(30, 20)):
     """
-    Creates a settlement at the given position. It returns the settlement and the island
-    where it was created on, to avoid making function-baed tests too verbose.
+    Creates a settlement at the given position. It returns the settlement and
+    the island where it was created on, to avoid making function-baed tests
+    too verbose.
     """
     island = session.world.get_island(pos)
     assert island, "No island found at %s" % pos
     player = session.world.player
 
     ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
-    for res, amount in session.db("SELECT resource, amount FROM start_resources"):
+    for res, amount in session.db(
+            "SELECT resource, amount FROM start_resources"):
         ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-    building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island, ship=ship)(player)
-    assert building, "Could not build warehouse at %s" % pos
+    building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island,
+                     ship=ship)(player)
+    assert building, "Could not build warehouse at {}".format(pos)
 
     return (building.settlement, island)
 

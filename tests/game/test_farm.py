@@ -43,8 +43,10 @@ def _build_farm(x, y, field_type, island, settlement, owner):
     for (x_off, y_off) in product([-3, 3], repeat=2):
         fx = x + x_off
         fy = x + y_off
-        field = Build(field_type, fx, fy, island, settlement=settlement)(owner)
-        assert field, "Failed to build a field (%d) at (%d, %d)" % (field_type, x, y)
+        field = Build(field_type, fx, fy, island,
+                      settlement=settlement)(owner)
+        assert field, \
+            "Failed to build a field (%d) at (%d, %d)" % (field_type, x, y)
 
     return farm
 
@@ -52,8 +54,8 @@ def _build_farm(x, y, field_type, island, settlement, owner):
 @game_test()
 def test_weaver(s, p):
     """
-    A weaver produces textiles from wool. A pasture provides lamb wool for a farm,
-    which it converts to wool for the weaver.
+    A weaver produces textiles from wool. A pasture provides lamb wool
+    for a farm, which it converts to wool for the weaver.
     """
     settlement, island = settle(s)
 
@@ -63,7 +65,7 @@ def test_weaver(s, p):
     assert weaver
     assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] == 0
 
-    s.run(seconds=60)	# pasture 30s, farm 1s, weaver 12s
+    s.run(seconds=60)  # pasture 30s, farm 1s, weaver 12s
 
     assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE]
 
@@ -78,11 +80,13 @@ def test_distillery(s, p):
 
     _build_farm(30, 30, BUILDINGS.SUGARCANE_FIELD, island, settlement, p)
 
-    distillery = Build(BUILDINGS.DISTILLERY, 27, 30, island, settlement=settlement)(p)
+    distillery = Build(BUILDINGS.DISTILLERY, 27, 30, island,
+                       settlement=settlement)(p)
     assert distillery
-    assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR] == 0
+    assert distillery.get_component(
+        StorageComponent).inventory[RES.LIQUOR] == 0
 
-    s.run(seconds=60)	# sugarfield 30s, farm 1s, distillery 12s
+    s.run(seconds=60)  # sugarfield 30s, farm 1s, distillery 12s
 
     assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR]
 
@@ -98,6 +102,6 @@ def test_potato_field(s, p):
     assert farm.get_component(StorageComponent).inventory[RES.FOOD] == 0
     assert farm.get_component(StorageComponent).inventory[RES.POTATOES] == 0
 
-    s.run(seconds=60)	# potato field 26s, farm 1s
+    s.run(seconds=60)  # potato field 26s, farm 1s
 
     assert farm.get_component(StorageComponent).inventory[RES.FOOD]

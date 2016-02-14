@@ -26,6 +26,7 @@ from horizons.command.uioptions import SetSettlementUpgradePermissions
 
 from tests.game import game_test, settle
 
+
 @game_test()
 def test_settler_level(s, p):
     """
@@ -33,7 +34,8 @@ def test_settler_level(s, p):
     """
     settlement, island = settle(s)
 
-    settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
+    settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island,
+                    settlement=settlement)(p)
 
     # make it happy
     inv = settler.get_component(StorageComponent).inventory
@@ -59,7 +61,8 @@ def test_deny_upgrade_permissions_special(s, p):
     """
     settlement, island = settle(s)
 
-    settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
+    settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island,
+                    settlement=settlement)(p)
 
     # make it happy
     inv = settler.get_component(StorageComponent).inventory
@@ -91,5 +94,6 @@ def test_deny_upgrade_permissions_special(s, p):
     assert settler._upgrade_production is None
 
     # Make sure forbidding upgrades works
-    SetSettlementUpgradePermissions(settlement, TIER.SAILORS, False).execute(s)
+    SetSettlementUpgradePermissions(settlement, TIER.SAILORS,
+                                    False).execute(s)
     assert settler.level == TIER.SAILORS

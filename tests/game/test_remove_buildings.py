@@ -37,39 +37,48 @@ from tests.game import settle, game_test, RANDOM_SEED
 def test_removal():
     rng = random.Random(RANDOM_SEED)
     for i in range(10):
-        yield remove, rng.randint(1, 200), rng.randint(1, 200), rng.randint(0, 8)
+        yield remove, rng.randint(1, 200), rng.randint(1, 200),\
+              rng.randint(0, 8)
 
 
 @game_test()
 def remove(s, p, before_ticks, after_ticks, tear_index):
     """
-    Place a couple of buildings and tear down one randomly, run a while afterwards.
+    Place a couple of buildings and tear down one randomly,
+    run a while afterwards.
     Called by test_removal with different parameters.
     """
     settlement, island = settle(s)
-    settlement.warehouse.get_component(StorageComponent).inventory.adjust_limit(sys.maxint)
+    settlement.warehouse.get_component(
+        StorageComponent).inventory.adjust_limit(sys.maxint)
 
     # Plant trees
     for (x, y) in product(range(23, 38), repeat=2):
         if s.random.randint(0, 1) == 1:
-            tree = Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(p)
+            tree = Build(BUILDINGS.TREE, x, y, island,
+                         settlement=settlement)(p)
             assert tree
             tree.get_component(Producer).finish_production_now()
 
-    jack = Build(BUILDINGS.LUMBERJACK, 25, 30, island, settlement=settlement)(p)
+    jack = Build(BUILDINGS.LUMBERJACK, 25, 30, island,
+                 settlement=settlement)(p)
     assert jack
-    jack = Build(BUILDINGS.LUMBERJACK, 35, 30, island, settlement=settlement)(p)
+    jack = Build(BUILDINGS.LUMBERJACK, 35, 30, island,
+                 settlement=settlement)(p)
     assert jack
 
     # Throw some fish into the water
     for x in (25, 30, 35):
-        school = Build(BUILDINGS.FISH_DEPOSIT, x, 18, s.world, ownerless=True)(None)
+        school = Build(BUILDINGS.FISH_DEPOSIT, x, 18, s.world,
+                       ownerless=True)(None)
         assert school
         school.get_component(Producer).finish_production_now()
 
-    fisherman = Build(BUILDINGS.FISHER, 25, 20, island, settlement=settlement)(p)
+    fisherman = Build(BUILDINGS.FISHER, 25, 20, island,
+                      settlement=settlement)(p)
     assert fisherman
-    fisherman = Build(BUILDINGS.FISHER, 35, 20, island, settlement=settlement)(p)
+    fisherman = Build(BUILDINGS.FISHER, 35, 20, island,
+                      settlement=settlement)(p)
     assert fisherman
 
     # Some wild animals in the forest
@@ -89,16 +98,21 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
     assert Build(BUILDINGS.PASTURE, 26, 37, island, settlement=settlement)(p)
 
     # Build roads
-    for (start, dest) in [(Point(27, 30), Point(30, 23)), (Point(32, 23), Point(35, 29)),
-                          (Point(25, 22), Point(30, 23)), (Point(32, 23), Point(35, 22)),
-                          (Point(30, 34), Point(32, 25)), (Point(26, 32), Point(27, 30))]:
-        path = RoadPathFinder()(island.path_nodes.nodes, start.to_tuple(), dest.to_tuple())
+    for (start, dest) in [(Point(27, 30), Point(30, 23)), (Point(32, 23),
+                                                           Point(35, 29)),
+                          (Point(25, 22), Point(30, 23)), (Point(32, 23),
+                                                           Point(35, 22)),
+                          (Point(30, 34), Point(32, 25)), (Point(26, 32),
+                                                           Point(27, 30))]:
+        path = RoadPathFinder()(island.path_nodes.nodes, start.to_tuple(),
+                                dest.to_tuple())
         assert path
         for (x, y) in path:
             Build(BUILDINGS.TRAIL, x, y, island, settlement=settlement)(p)
 
     s.run(seconds=before_ticks)
     # Tear down a random building that is not a trail or tree.
-    target = [b for b in settlement.buildings if b.id not in (BUILDINGS.TRAIL, BUILDINGS.TREE)][tear_index]
+    target = [b for b in settlement.buildings if b.id not in (
+        BUILDINGS.TRAIL, BUILDINGS.TREE)][tear_index]
     Tear(target)(p)
     s.run(seconds=after_ticks)
