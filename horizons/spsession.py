@@ -64,15 +64,19 @@ class SPSession(Session):
             self.ingame_gui.message_widget.add('QUICKSAVE')
         else:
             headline = _("Failed to quicksave.")
-            descr = _("An error happened during quicksave.") + u"\n" + _("Your game has not been saved.")
-            advice = _("If this error happens again, please contact the development team: "
-                       "{website}").format(website="http://unknown-horizons.org/support/")
+            descr = _("An error happened during quicksave.") + u"\n" +\
+                    _("Your game has not been saved.")
+            advice = _("If this error happens again, please contact the"
+                       " development team: {website}")\
+                .format(website="http://unknown-horizons.org/support/")
             self.ingame_gui.open_error_popup(headline, descr, advice)
 
     def save(self, savegamename=None):
         """Saves a game
-        @param savegamename: string with the full path of the savegame file or None to let user pick one
-        @return: bool, whether no error happened (user aborting dialog means success)
+        @param savegamename: string with the full path of the savegame file
+                             or None to let user pick one
+        @return: bool, whether no error happened (user aborting dialog means
+                 success)
         """
         if savegamename is None:
             savegamename = self.ingame_gui.show_select_savegame(mode='save')

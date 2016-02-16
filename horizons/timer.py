@@ -29,19 +29,22 @@ from horizons.scheduler import Scheduler
 
 class Timer(LivingObject):
     """
-    The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
-    this is especially important for multiplayer, to allow synchronous play.
+    The Timer class manages game-ticks, every tick executes a set of functions
+    in its call lists, this is especially important for multiplayer,
+    to allow synchronous play.
     """
     TEST_PASS, TEST_SKIP = xrange(0, 2)
 
     ACCEPTABLE_TICK_DELAY = 0.2  # sec
     DEFER_TICK_ON_DELAY_BY = 0.4  # sec
 
-    def __init__(self, tick_next_id=Scheduler.FIRST_TICK_ID, freeze_protection=False):
+    def __init__(self, tick_next_id=Scheduler.FIRST_TICK_ID,
+                 freeze_protection=False):
         """
         NOTE: timer will not start until activate() is called
         @param tick_next_id: int next tick id
-        @param freeze_protection: whether to check for tick delay and strech time in case (breaks mp)
+        @param freeze_protection: whether to check for tick delay and strech
+                                  time in case (breaks mp)
         """
         super(Timer, self).__init__()
         self._freeze_protection = freeze_protection
@@ -92,7 +95,8 @@ class Timer(LivingObject):
         return int(round(seconds * GAME_SPEED.TICKS_PER_SECOND))
 
     def check_tick(self):
-        """check_tick is called by the engines _pump function to signal a frame idle."""
+        """check_tick is called by the engines _pump function to signal
+        a frame idle."""
         if self.ticks_per_second == 0:
             return
         while time.time() >= self.tick_next_time and (
@@ -102,7 +106,9 @@ class Timer(LivingObject):
                 if r == self.TEST_SKIP:
                     # If a callback changed the speed to zero, we have to exit
                     if self.ticks_per_second != 0:
-                        self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+                        self.tick_next_time = (
+                            self.tick_next_time or
+                            time.time()) + 1.0 /self.ticks_per_second
                     return
             if self._freeze_protection and self.tick_next_time:
                 # stretch time if we're too slow
@@ -115,4 +121,5 @@ class Timer(LivingObject):
             if self.ticks_per_second == 0:
                 # If a callback changed the speed to zero, we have to exit
                 return
-            self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+            self.tick_next_time = (self.tick_next_time or
+                                   time.time()) + 1.0 / self.ticks_per_second

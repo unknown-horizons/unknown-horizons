@@ -54,7 +54,8 @@ class VERSION:
         #if there is no .git directory then check for gitversion.txt
         except ImportError:
             try:
-                return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
+                return unicode(open(os.path.join("content", "packages",
+                                                 "gitversion.txt")).read())
             except IOError:
                 return u"<unknown>"
 
@@ -70,7 +71,9 @@ class VERSION:
     REQUIRED_FIFE_MINOR_VERSION = 3
     REQUIRED_FIFE_PATCH_VERSION = 4
 
-    REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
+    REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION,
+                             REQUIRED_FIFE_MINOR_VERSION,
+                             REQUIRED_FIFE_PATCH_VERSION)
 
     # +=1 this if you changed the savegame "api"
     SAVEGAMEREVISION = 76
@@ -188,9 +191,11 @@ class BUILDINGS:
     TRANSPARENCY_VALUE = 180
 
     class ACTION:
-        # data for calculating gfx for paths.
-        # think: animation contains key, if there is a path at offset value
-        # you need to sort this before iterating via sorted, since order is important here.
+        """data for calculating gfx for paths.
+        think: animation contains key, if there is a path at offset value
+        you need to sort this before iterating via sorted, since order
+        is important here.
+        """
         action_offset_dict = {
             # Direct connections
             'a': (0, -1),
@@ -205,7 +210,9 @@ class BUILDINGS:
         }
 
     class BUILD:
-        MAX_BUILDING_SHIP_DISTANCE = 5  # max distance ship-building when building from ship
+        """max distance ship-building when building from ship
+        """
+        MAX_BUILDING_SHIP_DISTANCE = 5
 
 
 class RES:
@@ -399,11 +406,13 @@ class VIEW:
 # to most important
 class PRODUCTION:
     # ./development/print_db_data.py lines
-    STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing', 'paused', 'done')
+    STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing',
+                  'paused', 'done')
     # NOTE: 'done' is only for SingleUseProductions
     # NOTE: 'none' is not used by an actual production, just for a producer
     STATISTICAL_WINDOW = 1000
-# How many latest ticks are relevant for keeping track of how busy a production is
+# How many latest ticks are relevant for keeping track of how busy
+# a production is
 
 
 class PRODUCTIONLINES:
@@ -417,17 +426,20 @@ class PRODUCTIONLINES:
 
 # GAME-RELATED, BALANCING VALUES
 class GAME:
-    # seconds: duration of a "month" (running costs and taxes are paid in this interval)
+    """seconds: duration of a "month" (running costs and taxes are paid
+    in this interval)"""
     INGAME_TICK_INTERVAL = 30
 
     WORLD_WORLDID = 0  # worldid of World object
-    MAX_TICKS = None  # exit after on tick MAX_TICKS (disabled by setting to None)
+    MAX_TICKS = None
+    # exit after on tick MAX_TICKS (disabled by setting to None)
 
 
 # Map related constants
 class MAP:
     PADDING = 10  # extra usable water around the map edges
-    BORDER = 30  # extra unusable water around the padding (to keep the black void at bay)
+    BORDER = 30
+    # extra unusable water around the padding (to keep the black void at bay)
 
 
 class GUI:
@@ -444,15 +456,21 @@ class EDITOR:
 
 # Messagewidget and Logbook
 class MESSAGES:
-    CUSTOM_MSG_SHOW_DELAY = 6  # delay between messages when passing more than one
-    CUSTOM_MSG_VISIBLE_FOR = 90  # after this time the msg gets removed from screen
-    LOGBOOK_DEFAULT_DELAY = 1  # delay between condition fulfilled and logbook popping up
+    CUSTOM_MSG_SHOW_DELAY = 6
+    # delay between messages when passing more than one
+    CUSTOM_MSG_VISIBLE_FOR = 90
+    # after this time the msg gets removed from screen
+    LOGBOOK_DEFAULT_DELAY = 1
+    # delay between condition fulfilled and logbook popping up
 
 
-# AI values read from the command line; use the values below unless overridden by the CLI or the GUI
+# AI values read from the command line; use the values below
+# unless overridden by the CLI or the GUI
 class AI:
-    HIGHLIGHT_PLANS = False  # whether to show the AI players' plans on the map
-    HIGHLIGHT_COMBAT = False  # whether to show the AI players' combat ranges around each unit
+    HIGHLIGHT_PLANS = False
+    # whether to show the AI players' plans on the map
+    HIGHLIGHT_COMBAT = False
+    # whether to show the AI players' combat ranges around each unit
     HUMAN_AI = False  # whether the human player is controlled by the AI
 
 
@@ -461,11 +479,14 @@ class TRADER:  # check resource values: ./development/print_db_data.py res
     SETTLEMENTS_PER_SHIP = 2  # the settlement : ship ratio
     PRICE_MODIFIER_BUY = 1.0  # buy for x times the resource value
     PRICE_MODIFIER_SELL = 1.0  # sell for x times the resource value
-    TRADING_DURATION = 4  # seconds that trader stays at warehouse to simulate (un)loading
+    TRADING_DURATION = 4
+    # seconds that trader stays at warehouse to simulate (un)loading
 
-    BUSINESS_SENSE = 50  # chance in percent to be sent to a warehouse instead of random spot
+    BUSINESS_SENSE = 50
+    # chance in percent to be sent to a warehouse instead of random spot
 
-    BUY_AMOUNT_MIN = 2  # amount range to buy/sell from settlement per resource
+    BUY_AMOUNT_MIN = 2
+    # amount range to buy/sell from settlement per resource
     BUY_AMOUNT_MAX = 10
     SELL_AMOUNT_MIN = 2
     SELL_AMOUNT_MAX = 10
@@ -494,17 +515,25 @@ class SETTLER:
 
 class WILD_ANIMAL:
     HEALTH_INIT_VALUE = 50  # animals start with this value
-    HEALTH_INCREASE_ON_FEEDING = 8  # health increases by this value on feeding
-    HEALTH_DECREASE_ON_NO_JOB = 20  # health decreases by this value when they have no food
-    HEALTH_LEVEL_TO_REPRODUCE = 75  # this level has to be reached for reproducing
-    POPULATION_LIMIT = 15  # minimum number of trees per animal to allow reproducing
-    FOOD_AVAILABLE_ON_START = 0.5  # probability that a tree has wild animal food in the beginning
-    POPULATION_INIT_RATIO = 15  # every N-th tree gets an animal in the beginning
+    HEALTH_INCREASE_ON_FEEDING = 8
+    # health increases by this value on feeding
+    HEALTH_DECREASE_ON_NO_JOB = 20
+    # health decreases by this value when they have no food
+    HEALTH_LEVEL_TO_REPRODUCE = 75
+    # this level has to be reached for reproducing
+    POPULATION_LIMIT = 15
+    # minimum number of trees per animal to allow reproducing
+    FOOD_AVAILABLE_ON_START = 0.5
+    # probability that a tree has wild animal food in the beginning
+    POPULATION_INIT_RATIO = 15
+    # every N-th tree gets an animal in the beginning
 
 
 class COLLECTORS:
-    DEFAULT_WORK_DURATION = 16  # how many ticks collectors pretend to work at target
-    DEFAULT_WAIT_TICKS = 32  # how long collectors wait before again looking for a job
+    DEFAULT_WORK_DURATION = 16
+    # how many ticks collectors pretend to work at target
+    DEFAULT_WAIT_TICKS = 32
+    # how long collectors wait before again looking for a job
     DEFAULT_STORAGE_SIZE = 8
     STATISTICAL_WINDOW = 1000
 # How many latest ticks are relevant for calculating how busy a collector is
@@ -570,8 +599,10 @@ class PATHS:
     USER_MAPS_DIR = os.path.join(USER_DIR, "maps")
     USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
     SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
-    DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
-    MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
+    DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images",
+                                            "logos", "uh_32.png")
+    MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons",
+                                        "Icon.icns")
     ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
 
     # paths relative to uh dir
@@ -631,7 +662,8 @@ class NETWORK:
     # change port to 2022 for development server updated after UH commits
     SERVER_PORT = 2002
     CLIENT_ADDRESS = None
-    UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
+    UPDATE_FILE_URL = \
+        "http://updates.unknown-horizons.org/current_version.php"
 
 
 # TRANSLATIONS
