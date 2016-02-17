@@ -23,36 +23,36 @@ from horizons.util.python import decorators
 
 
 class DifficultySettings(object):
-	EASY_LEVEL = 0
-	DEFAULT_LEVEL = 1
+    EASY_LEVEL = 0
+    DEFAULT_LEVEL = 1
 
-	levels = {}
+    levels = {}
 
-	@classmethod
-	def get_settings(cls, level):
-		if level not in cls.levels:
-			return None
-		return cls.levels[level](level)
+    @classmethod
+    def get_settings(cls, level):
+        if level not in cls.levels:
+            return None
+        return cls.levels[level](level)
 
-	@classmethod
-	def register_levels(cls):
-		cls.levels[cls.EASY_LEVEL] = EasySettings
-		cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
+    @classmethod
+    def register_levels(cls):
+        cls.levels[cls.EASY_LEVEL] = EasySettings
+        cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
 
 
 class DifficultyClass(object):
-	def __init__(self, level):
-		self.level = level
+    def __init__(self, level):
+        self.level = level
 
 
 class DefaultSettings(DifficultyClass):
-	extra_happiness_constant = 0
-	happiness_multiplier = 1
-	tax_multiplier = 1
+    extra_happiness_constant = 0
+    happiness_multiplier = 1
+    tax_multiplier = 1
 
 
 class EasySettings(DefaultSettings):
-	tax_multiplier = 1.5
+    tax_multiplier = 1.5
 
 DifficultySettings.register_levels()
 

@@ -208,7 +208,7 @@ class TestCodeGenerator(object):
         self._mousetool_events = []
 
         self._dialog_active = False
-        self._dialog_opener = []	# the code that triggered the dialog
+        self._dialog_opener = []  # the code that triggered the dialog
 
         # The generator will not print out new code immediately, because the
         # event might have triggered a dialog (and we don't know yet).

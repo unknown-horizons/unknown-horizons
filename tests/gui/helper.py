@@ -281,7 +281,7 @@ class GuiHelper(object):
             def write(self, text):
                 """Change text inside a textfield."""
                 self.text = unicode(text)
-                return self # return self to allow chaining
+                return self  # return self to allow chaining
 
             def enter(self):
                 """Trigger callback as if ENTER was pressed."""
@@ -360,16 +360,19 @@ class GuiHelper(object):
         except KeyError:
             if can_fail:
                 return False
-            raise Exception("No callbacks for event group '%s' for event '%s'" % (
-                            group_name, widget.name))
+            raise Exception(
+                "No callbacks for event group '{0}' for event '{1}'".format(
+                    group_name, widget.name))
 
         # Unusual events are handled normally
         if event_name not in ('action', 'mouseClicked'):
             try:
                 callback = callbacks[event_name]
             except KeyError:
-                raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
-                                event_name, group_name, widget.name))
+                raise Exception("No callback for event '{0}/{1}' registered"
+                                " for widget '{2}'".format(event_name,
+                                                           group_name,
+                                                           widget.name))
         # Treat action and mouseClicked as the same event. If a callback is
         # not registered for one, try the other
         else:
@@ -380,8 +383,9 @@ class GuiHelper(object):
 
             if not callback:
                 raise Exception("No callback for event 'action' or '"
-                                "mouseClicked' registered for widget '%s'" % (
-                                group_name, widget.name))
+                                "mouseClicked' in group '{0}' registered"
+                                " for widget '{1}'".format(group_name,
+                                                           widget.name))
 
         kwargs = {'widget': widget}
         if mouse:

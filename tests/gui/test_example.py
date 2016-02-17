@@ -53,7 +53,7 @@ def test_example(gui):
     # Hopefully we're ingame now
     assert gui.active_widgets
     gold_label = gui.find(name='gold_available')
-    assert gold_label.text == '' # will upate only later
+    assert gold_label.text == ''   # will upate only later
 
     # All commands above run sequentially, neither the engine nor the timer
     # will be run. If you need the game to run for some time (or have to wait
@@ -103,4 +103,4 @@ def test_example(gui):
     # want to check your test's action.
 
     # TODO not yet supported, use gui.run(2**10)
-    #return 1
+    # return 1

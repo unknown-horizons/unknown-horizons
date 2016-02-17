@@ -39,231 +39,231 @@ SERVER_TIMEOUT = 5000
 
 
 class Connection(object):
-	"""Low-level interface to enet.
+    """Low-level interface to enet.
 
-	Handles sending and receiving packets.
-	"""
-	log = logging.getLogger("network")
+    Handles sending and receiving packets.
+    """
+    log = logging.getLogger("network")
 
-	def __init__(self, process_async_packet, server_address, client_address=None):
-		try:
-			if client_address:
-				client_address = enet.Address(*client_address)
+    def __init__(self, process_async_packet, server_address, client_address=None):
+        try:
+            if client_address:
+                client_address = enet.Address(*client_address)
 
-			self.host = enet.Host(client_address, MAX_PEERS, 0, 0, 0)
-		except (IOError, MemoryError):
-			# these exceptions do not provide any information.
-			raise network.NetworkException("Unable to create network structure."
-			                               "Maybe invalid or irresolvable client address.")
+            self.host = enet.Host(client_address, MAX_PEERS, 0, 0, 0)
+        except (IOError, MemoryError):
+            # these exceptions do not provide any information.
+            raise network.NetworkException("Unable to create network structure."
+                                           "Maybe invalid or irresolvable client address.")
 
-		self.server_address_parameters = server_address
-		self.server_address = None
-		self.server_peer = None
-		self.packetqueue = []
-		self.process_async_packet = process_async_packet
+        self.server_address_parameters = server_address
+        self.server_address = None
+        self.server_peer = None
+        self.packetqueue = []
+        self.process_async_packet = process_async_packet
 
-	# Connection setup / keepalive
+    # Connection setup / keepalive
 
-	@property
-	def is_connected(self):
-		return self.server_peer is not None
+    @property
+    def is_connected(self):
+        return self.server_peer is not None
 
-	def connect(self):
-		"""Connect to master server.
+    def connect(self):
+        """Connect to master server.
 
-		After this, you can use `send_packet` and `receive_packet` to communicate
-		with the server.
-		"""
-		if self.is_connected:
-			raise network.AlreadyConnected("We are already connected to a server")
+        After this, you can use `send_packet` and `receive_packet` to communicate
+        with the server.
+        """
+        if self.is_connected:
+            raise network.AlreadyConnected("We are already connected to a server")
 
-		self.log.debug("[CONNECT] to server %s" % (self.server_address))
-		try:
-			if self.server_address is None:
-				# can only construct address now, as it resolves the target and requires internet connection
-				self.server_address = enet.Address(*self.server_address_parameters)
-			self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
-		except (IOError, MemoryError):
-			raise network.NetworkException(_("Unable to connect to server.") + u" " +
-			                               _("Maybe invalid or irresolvable server address."))
+        self.log.debug("[CONNECT] to server %s" % (self.server_address))
+        try:
+            if self.server_address is None:
+                # can only construct address now, as it resolves the target and requires internet connection
+                self.server_address = enet.Address(*self.server_address_parameters)
+            self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
+        except (IOError, MemoryError):
+            raise network.NetworkException(_("Unable to connect to server.") + u" " +
+                                           _("Maybe invalid or irresolvable server address."))
 
-		event = self.host.service(SERVER_TIMEOUT)
-		if event.type != enet.EVENT_TYPE_CONNECT:
-			self._reset()
-			raise network.UnableToConnect(_("Unable to connect to server."))
+        event = self.host.service(SERVER_TIMEOUT)
+        if event.type != enet.EVENT_TYPE_CONNECT:
+            self._reset()
+            raise network.UnableToConnect(_("Unable to connect to server."))
 
-	def disconnect(self, server_may_disconnect=False):
-		"""End connection to master server.
+    def disconnect(self, server_may_disconnect=False):
+        """End connection to master server.
 
-		This function should _never_ throw an exception.
-		"""
-		if not self.is_connected:
-			return
+        This function should _never_ throw an exception.
+        """
+        if not self.is_connected:
+            return
 
-		if self.server_peer.state == enet.PEER_STATE_DISCONNECTED:
-			self._reset()
-			return
+        if self.server_peer.state == enet.PEER_STATE_DISCONNECTED:
+            self._reset()
+            return
 
-		try:
-			# wait for a disconnect event or empty event
-			if server_may_disconnect:
-				while True:
-					event = self.host.service(SERVER_TIMEOUT)
-					if event.type == enet.EVENT_TYPE_DISCONNECT:
-						break
-					elif event.type == enet.EVENT_TYPE_NONE:
-						break
+        try:
+            # wait for a disconnect event or empty event
+            if server_may_disconnect:
+                while True:
+                    event = self.host.service(SERVER_TIMEOUT)
+                    if event.type == enet.EVENT_TYPE_DISCONNECT:
+                        break
+                    elif event.type == enet.EVENT_TYPE_NONE:
+                        break
 
-			# disconnect from server if we're still connected
-			if self.server_peer.state != enet.PEER_STATE_DISCONNECTED:
-				self.server_peer.disconnect()
-				while True:
-					event = self.host.service(SERVER_TIMEOUT)
-					if event.type == enet.EVENT_TYPE_DISCONNECT:
-						break
-					elif event.type == enet.EVENT_TYPE_NONE:
-						raise IOError("No packet from server")
-		except IOError:
-			self.log.debug("[DISCONNECT] Error while disconnecting from server."
-				" Maybe server isn't answering any more")
+            # disconnect from server if we're still connected
+            if self.server_peer.state != enet.PEER_STATE_DISCONNECTED:
+                self.server_peer.disconnect()
+                while True:
+                    event = self.host.service(SERVER_TIMEOUT)
+                    if event.type == enet.EVENT_TYPE_DISCONNECT:
+                        break
+                    elif event.type == enet.EVENT_TYPE_NONE:
+                        raise IOError("No packet from server")
+        except IOError:
+            self.log.debug("[DISCONNECT] Error while disconnecting from server."
+                " Maybe server isn't answering any more")
 
-		self._reset()
-		self.log.debug("[DISCONNECT] done")
+        self._reset()
+        self.log.debug("[DISCONNECT] done")
 
-	def ping(self):
-		"""Handle incoming packets.
+    def ping(self):
+        """Handle incoming packets.
 
-		Enet doesn't need to send pings. Call this regularly. Incoming packets can be
-		handled by process_async_packet, otherwise will be added to a queue.
-		"""
-		if not self.is_connected:
-			raise network.NotConnected()
+        Enet doesn't need to send pings. Call this regularly. Incoming packets can be
+        handled by process_async_packet, otherwise will be added to a queue.
+        """
+        if not self.is_connected:
+            raise network.NotConnected()
 
-		packet = self._receive(0)
-		if packet is not None:
-			if not self.process_async_packet(packet):
-				self.packetqueue.append(packet)
-			return True
+        packet = self._receive(0)
+        if packet is not None:
+            if not self.process_async_packet(packet):
+                self.packetqueue.append(packet)
+            return True
 
-		return False
+        return False
 
-	# Send / Receive
+    # Send / Receive
 
-	def send_packet(self, packet):
-		"""Send a packet to the server.
+    def send_packet(self, packet):
+        """Send a packet to the server.
 
-		packet has to be a subclass of `horizons.network.packets.packet`.
-		"""
-		if self.server_peer is None:
-			raise network.NotConnected()
+        packet has to be a subclass of `horizons.network.packets.packet`.
+        """
+        if self.server_peer is None:
+            raise network.NotConnected()
 
-		packet = enet.Packet(packet.serialize(), enet.PACKET_FLAG_RELIABLE)
-		self.server_peer.send(0, packet)
+        packet = enet.Packet(packet.serialize(), enet.PACKET_FLAG_RELIABLE)
+        self.server_peer.send(0, packet)
 
-	def receive_packet(self, packet_type=None, timeout=SERVER_TIMEOUT):
-		"""Return the first received packet.
+    def receive_packet(self, packet_type=None, timeout=SERVER_TIMEOUT):
+        """Return the first received packet.
 
-		If packet_type is given, only a packet of that type will be returned.
-		"""
+        If packet_type is given, only a packet of that type will be returned.
+        """
 
-		if self.packetqueue:
-			if packet_type is None:
-				return self.packetqueue.pop(0)
+        if self.packetqueue:
+            if packet_type is None:
+                return self.packetqueue.pop(0)
 
-			for p in self.packetqueue:
-				if not isinstance(p[1], packet_type):
-					continue
-				self.packetqueue.remove(p)
-				return p
+            for p in self.packetqueue:
+                if not isinstance(p[1], packet_type):
+                    continue
+                self.packetqueue.remove(p)
+                return p
 
-		if packet_type is None:
-			return self._receive(timeout)
+        if packet_type is None:
+            return self._receive(timeout)
 
-		start = time.time()
-		timeleft = timeout
-		while timeleft > 0:
-			packet = self._receive(timeleft)
-			# packet type is None -> return whatever we received
-			if packet_type is None:
-				return packet
-			# otherwise only process non-None packets
-			if packet is not None:
-				if isinstance(packet[1], packet_type):
-					return packet
-				if not self.process_async_packet(packet):
-					self.packetqueue.append(packet)
-			timeleft -= time.time() - start
-		raise network.FatalError("No reply from server")
+        start = time.time()
+        timeleft = timeout
+        while timeleft > 0:
+            packet = self._receive(timeleft)
+            # packet type is None -> return whatever we received
+            if packet_type is None:
+                return packet
+            # otherwise only process non-None packets
+            if packet is not None:
+                if isinstance(packet[1], packet_type):
+                    return packet
+                if not self.process_async_packet(packet):
+                    self.packetqueue.append(packet)
+            timeleft -= time.time() - start
+        raise network.FatalError("No reply from server")
 
-	def _receive_event(self, timeout=SERVER_TIMEOUT):
-		"""Receives next event of type NONE or RECEIVE."""
-		if self.server_peer is None:
-			raise network.NotConnected()
-		try:
-			event = self.host.service(timeout)
+    def _receive_event(self, timeout=SERVER_TIMEOUT):
+        """Receives next event of type NONE or RECEIVE."""
+        if self.server_peer is None:
+            raise network.NotConnected()
+        try:
+            event = self.host.service(timeout)
 
-			if event.type == enet.EVENT_TYPE_NONE:
-				return None
-			elif event.type == enet.EVENT_TYPE_DISCONNECT:
-				self._reset()
-				self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
-				raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
-			elif event.type == enet.EVENT_TYPE_CONNECT:
-				self._reset()
-				self.log.warning("Unexpected connection from %s" % (event.peer.address))
-				raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
+            if event.type == enet.EVENT_TYPE_NONE:
+                return None
+            elif event.type == enet.EVENT_TYPE_DISCONNECT:
+                self._reset()
+                self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
+                raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
+            elif event.type == enet.EVENT_TYPE_CONNECT:
+                self._reset()
+                self.log.warning("Unexpected connection from %s" % (event.peer.address))
+                raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
 
-			return event
-		except IOError as e:
-			raise network.FatalError(e)
+            return event
+        except IOError as e:
+            raise network.FatalError(e)
 
-	def _receive(self, timeout=SERVER_TIMEOUT):
-		"""Receive event and return unpacked packet."""
-		try:
-			event = self._receive_event(timeout)
-			if event is None or event.type != enet.EVENT_TYPE_RECEIVE:
-				return None
+    def _receive(self, timeout=SERVER_TIMEOUT):
+        """Receive event and return unpacked packet."""
+        try:
+            event = self._receive_event(timeout)
+            if event is None or event.type != enet.EVENT_TYPE_RECEIVE:
+                return None
 
-			packet = packets.unserialize(event.packet.data)
-		except Exception as e:
-			try:
-				event
-			except NameError:
-				pass
-			else:
-				self.log.error("Unknown packet from %s!" % (event.peer.address))
-			errstr = "Pickle/Security: %s" % (e)
-			print "[FATAL] %s" % (errstr)  # print that even when no logger is enabled!
-			self.log.error("[FATAL] %s" % (errstr))
-			self.disconnect()
-			raise network.FatalError(errstr)
+            packet = packets.unserialize(event.packet.data)
+        except Exception as e:
+            try:
+                event
+            except NameError:
+                pass
+            else:
+                self.log.error("Unknown packet from %s!" % (event.peer.address))
+            errstr = "Pickle/Security: %s" % (e)
+            print "[FATAL] %s" % (errstr)  # print that even when no logger is enabled!
+            self.log.error("[FATAL] %s" % (errstr))
+            self.disconnect()
+            raise network.FatalError(errstr)
 
-		if isinstance(packet, packets.cmd_error):
-			# handle special errors here
-			# FIXME: it's better to pass that to the interface,
-			# but our ui error handler currently can't handle that
+        if isinstance(packet, packets.cmd_error):
+            # handle special errors here
+            # FIXME: it's better to pass that to the interface,
+            # but our ui error handler currently can't handle that
 
-			# the game got terminated by the client
-			"""
-			# TODO
-			if packet.type == ErrorType.TerminateGame:
-				game = self.game
-				# this will destroy self.game
-				self.leavegame(stealth=True)
-				self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
-				return None
-			"""
-			raise network.CommandError(packet.errorstr)
-		elif isinstance(packet, packets.cmd_fatalerror):
-			self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
-			self.disconnect(server_may_disconnect=True)
-			raise network.FatalError(packet.errorstr)
+            # the game got terminated by the client
+            """
+            # TODO
+            if packet.type == ErrorType.TerminateGame:
+                game = self.game
+                # this will destroy self.game
+                self.leavegame(stealth=True)
+                self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
+                return None
+            """
+            raise network.CommandError(packet.errorstr)
+        elif isinstance(packet, packets.cmd_fatalerror):
+            self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
+            self.disconnect(server_may_disconnect=True)
+            raise network.FatalError(packet.errorstr)
 
-		return [event.peer, packet]
+        return [event.peer, packet]
 
-	def _reset(self):
-		self.log.debug("[RESET]")
-		if self.is_connected:
-			self.server_peer.reset()
-			self.server_peer = None
-		self.host.flush()
+    def _reset(self):
+        self.log.debug("[RESET]")
+        if self.is_connected:
+            self.server_peer.reset()
+            self.server_peer = None
+        self.host.flush()

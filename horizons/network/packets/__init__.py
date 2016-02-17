@@ -24,9 +24,9 @@ import inspect
 import sys
 
 try:
-	from cStringIO import StringIO
+    from cStringIO import StringIO
 except ImportError:
-	from StringIO import StringIO
+    from StringIO import StringIO
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -35,128 +35,128 @@ __version__ = '0.1'
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
-	'client': {},
-	'server': {},
+    'client': {},
+    'server': {},
 }
 
 
 class SafeUnpickler(object):
-	"""
-	NOTE: this is a security related method and may lead to
-	execution of arbritary code if used in a wrong way
+    """
+    NOTE: this is a security related method and may lead to
+    execution of arbritary code if used in a wrong way
 
-	pickle encodes modules and classes using their name. during "unpickling"
-	pickle imports the modules and creates instances of these classes again.
-	knowing this an attacker could easily create a paket "tricking" pickle
-	to load and execute an instance of dangerous classes/methods/commands.
-	this is not an exploit but by design!
-	e.g. python -c 'import pickle; pickle.loads("cos\nsystem\n(S\"ls ~\"\ntR.")'
+    pickle encodes modules and classes using their name. during "unpickling"
+    pickle imports the modules and creates instances of these classes again.
+    knowing this an attacker could easily create a paket "tricking" pickle
+    to load and execute an instance of dangerous classes/methods/commands.
+    this is not an exploit but by design!
+    e.g. python -c 'import pickle; pickle.loads("cos\nsystem\n(S\"ls ~\"\ntR.")'
 
-	In order to make pickle safer we build a whitelist of modules and classes
-	which pickle will check during "unpickling". Please note that we aren't
-	100% sure if there is still a way to execute arbitrary code.
+    In order to make pickle safer we build a whitelist of modules and classes
+    which pickle will check during "unpickling". Please note that we aren't
+    100% sure if there is still a way to execute arbitrary code.
 
-	References:
-	- http://docs.python.org/library/pickle.html
-	- http://nadiana.com/python-pickle-insecure
-	"""
-	@classmethod
-	def add(self, origin, klass):
-		global PICKLE_SAFE
-		module = klass.__module__
-		name = klass.__name__
-		if (module == self.__module__ and name == self.__name__):
-			raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
-		types = ['client', 'server'] if origin == 'common' else [origin]
-		for origin in types:
-			if module not in PICKLE_SAFE[origin]:
-				PICKLE_SAFE[origin][module] = set()
-			if name not in PICKLE_SAFE[origin][module]:
-				PICKLE_SAFE[origin][module].add(name)
+    References:
+    - http://docs.python.org/library/pickle.html
+    - http://nadiana.com/python-pickle-insecure
+    """
+    @classmethod
+    def add(self, origin, klass):
+        global PICKLE_SAFE
+        module = klass.__module__
+        name = klass.__name__
+        if (module == self.__module__ and name == self.__name__):
+            raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
+        types = ['client', 'server'] if origin == 'common' else [origin]
+        for origin in types:
+            if module not in PICKLE_SAFE[origin]:
+                PICKLE_SAFE[origin][module] = set()
+            if name not in PICKLE_SAFE[origin][module]:
+                PICKLE_SAFE[origin][module].add(name)
 
-	@classmethod
-	def set_mode(self, client=True):
-		global PICKLE_RECIEVE_FROM
-		if client:
-			PICKLE_RECIEVE_FROM = 'server'
-		else:
-			PICKLE_RECIEVE_FROM = 'client'
+    @classmethod
+    def set_mode(self, client=True):
+        global PICKLE_RECIEVE_FROM
+        if client:
+            PICKLE_RECIEVE_FROM = 'server'
+        else:
+            PICKLE_RECIEVE_FROM = 'client'
 
-	@classmethod
-	def find_class(self, module, name):
-		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
-		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")'
-				% (module, name))
-		__import__(module)
-		mod = sys.modules[module]
-		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")'
-				% (name, module))
-		klass = getattr(mod, name)
-		return klass
+    @classmethod
+    def find_class(self, module, name):
+        global PICKLE_SAFE, PICKLE_RECIEVE_FROM
+        if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
+            raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")'
+                % (module, name))
+        __import__(module)
+        mod = sys.modules[module]
+        if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
+            raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")'
+                % (name, module))
+        klass = getattr(mod, name)
+        return klass
 
-	@classmethod
-	def loads(self, str):
-		file = StringIO(str)
-		obj = cPickle.Unpickler(file)
-		obj.find_global = self.find_class
-		return obj.load()
+    @classmethod
+    def loads(self, str):
+        file = StringIO(str)
+        obj = cPickle.Unpickler(file)
+        obj.find_global = self.find_class
+        return obj.load()
 
 
 class packet(object):
-	maxpacketsize = 0
+    maxpacketsize = 0
 
-	def __init__(self):
-		"""ctor"""
+    def __init__(self):
+        """ctor"""
 
-	@staticmethod
-	def validate(pkt, protocol):
-		return True
+    @staticmethod
+    def validate(pkt, protocol):
+        return True
 
-	def serialize(self):
-		return cPickle.dumps(self, PICKLE_PROTOCOL)
+    def serialize(self):
+        return cPickle.dumps(self, PICKLE_PROTOCOL)
 
 
 class cmd_ok(packet):
-	"""simple ok message"""
+    """simple ok message"""
 
 SafeUnpickler.add('common', cmd_ok)
 
 
 class cmd_error(packet):
-	def __init__(self, errorstr, _type=0):
-		self.errorstr = errorstr
-		self.type = _type
+    def __init__(self, errorstr, _type=0):
+        self.errorstr = errorstr
+        self.type = _type
 
-	@staticmethod
-	def validate(pkt, protocol):
-		if not isinstance(pkt.errorstr, str):
-			raise NetworkException("Invalid datatype: errorstr")
-		if not isinstance(pkt.type, int):
-			raise NetworkException("Invalid datatype: type")
+    @staticmethod
+    def validate(pkt, protocol):
+        if not isinstance(pkt.errorstr, str):
+            raise NetworkException("Invalid datatype: errorstr")
+        if not isinstance(pkt.type, int):
+            raise NetworkException("Invalid datatype: type")
 
 SafeUnpickler.add('common', cmd_error)
 
 
 class cmd_fatalerror(packet):
-	def __init__(self, errorstr):
-		self.errorstr = errorstr
+    def __init__(self, errorstr):
+        self.errorstr = errorstr
 
-	@staticmethod
-	def validate(pkt, protocol):
-		if not isinstance(pkt.errorstr, str):
-			raise NetworkException("Invalid datatype: errorstr")
+    @staticmethod
+    def validate(pkt, protocol):
+        if not isinstance(pkt.errorstr, str):
+            raise NetworkException("Invalid datatype: errorstr")
 
 SafeUnpickler.add('common', cmd_fatalerror)
 
 
 def unserialize(data, validate=False, protocol=0):
-	mypacket = SafeUnpickler.loads(data)
-	if validate:
-		if not inspect.isfunction(mypacket.validate):
-			raise NetworkException("Attempt to override packet.validate()")
-		if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
-			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
-		mypacket.__class__.validate(mypacket, protocol)
-	return mypacket
+    mypacket = SafeUnpickler.loads(data)
+    if validate:
+        if not inspect.isfunction(mypacket.validate):
+            raise NetworkException("Attempt to override packet.validate()")
+        if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
+            raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
+        mypacket.__class__.validate(mypacket, protocol)
+    return mypacket

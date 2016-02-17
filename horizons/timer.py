@@ -100,7 +100,8 @@ class Timer(LivingObject):
         if self.ticks_per_second == 0:
             return
         while time.time() >= self.tick_next_time and (
-            GAME.MAX_TICKS is None or self.tick_next_id <= GAME.MAX_TICKS):
+                        GAME.MAX_TICKS is None or
+                        self.tick_next_id <= GAME.MAX_TICKS):
             for f in self.tick_func_test:
                 r = f(self.tick_next_id)
                 if r == self.TEST_SKIP:
@@ -108,7 +109,7 @@ class Timer(LivingObject):
                     if self.ticks_per_second != 0:
                         self.tick_next_time = (
                             self.tick_next_time or
-                            time.time()) + 1.0 /self.ticks_per_second
+                            time.time()) + 1.0 / self.ticks_per_second
                     return
             if self._freeze_protection and self.tick_next_time:
                 # stretch time if we're too slow

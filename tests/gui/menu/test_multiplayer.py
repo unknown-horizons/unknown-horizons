@@ -37,7 +37,8 @@ _master_server = None
 def start_server():
     global _master_server
     args = [sys.executable, "run_server.py", "-h", "localhost", "-p", "2002"]
-    _master_server = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    _master_server = subprocess.Popen(args, stdout=subprocess.PIPE,
+                                      stderr=subprocess.PIPE)
 
 
 def stop_server():
@@ -45,7 +46,9 @@ def stop_server():
     _master_server.terminate()
 
 
-mpmenu_test = functools.partial(gui_test, additional_cmdline=["--mp-master", "localhost:2002"])
+mpmenu_test = functools.partial(gui_test,
+                                additional_cmdline=["--mp-master",
+                                                    "localhost:2002"])
 
 
 @with_setup(start_server, stop_server)
@@ -70,7 +73,8 @@ def test_games_list(gui):
 @with_setup(start_server, stop_server)
 @mpmenu_test()
 def test_create_game(gui):
-    """Create a game, join the lobby, change player details, send chat message."""
+    """Create a game, join the lobby, change player details,
+    send chat message."""
     gui.trigger('menu', 'multi_button')
 
     games = NetworkInterface().get_active_games()
@@ -89,13 +93,15 @@ def test_create_game(gui):
     gui.find('chatTextField').write(u'Text').enter()
 
     # change player color (click on color)
-    gui.trigger('multiplayer_gamelobby', 'pcolor_' + NetworkInterface().get_client_name())
+    gui.trigger('multiplayer_gamelobby', 'pcolor_' +
+                NetworkInterface().get_client_name())
     gui.trigger('set_player_details_dialog_window', 'cyan')
     gui.trigger('set_player_details_dialog_window', 'okButton')
 
     gui.run(1)
     # change player name (click on name)
-    gui.trigger('multiplayer_gamelobby', 'pname_' + NetworkInterface().get_client_name())
+    gui.trigger('multiplayer_gamelobby', 'pname_' +
+                NetworkInterface().get_client_name())
     gui.find('playername').write(u'Darkwing')
     gui.trigger('set_player_details_dialog_window', 'okButton')
 

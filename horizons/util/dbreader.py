@@ -26,49 +26,49 @@ from horizons.util.python import decorators
 
 
 class DbReader(object):
-	"""Class that handles connections to sqlite databases
-	@param file: str containing the database file."""
-	def __init__(self, dbfile):
-		self.db_path = dbfile
-		self.connection = sqlite3.connect(dbfile)
-		self.connection.isolation_level = None
+    """Class that handles connections to sqlite databases
+    @param file: str containing the database file."""
+    def __init__(self, dbfile):
+        self.db_path = dbfile
+        self.connection = sqlite3.connect(dbfile)
+        self.connection.isolation_level = None
 
-		def regexp(expr, item):
-			r = re.compile(expr)
-			return r.match(item) is not None
-		self.connection.create_function("regexp", 2, regexp)
-		self.cur = self.connection.cursor()
+        def regexp(expr, item):
+            r = re.compile(expr)
+            return r.match(item) is not None
+        self.connection.create_function("regexp", 2, regexp)
+        self.cur = self.connection.cursor()
 
-	@decorators.make_constants()
-	def __call__(self, command, *args):
-		"""Executes a sql command.
-		@param command: str containing the raw sql command, with ? as placeholders for values
-		(eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
-		@param args: tuple containing the values to add into the command.
-		"""
-		assert not command.endswith(";")
-		command = '%s;' % command
-		self.cur.execute(command, args)
-		return self.cur.fetchall()
+    @decorators.make_constants()
+    def __call__(self, command, *args):
+        """Executes a sql command.
+        @param command: str containing the raw sql command, with ? as placeholders for values
+        (eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
+        @param args: tuple containing the values to add into the command.
+        """
+        assert not command.endswith(";")
+        command = '%s;' % command
+        self.cur.execute(command, args)
+        return self.cur.fetchall()
 
-	@decorators.cachedmethod
-	def cached_query(self, command, *args):
-		"""Executes a sql command and saves its result in a dict.
-		@params, return: same as in __call__"""
-		return self(command, *args)
+    @decorators.cachedmethod
+    def cached_query(self, command, *args):
+        """Executes a sql command and saves its result in a dict.
+        @params, return: same as in __call__"""
+        return self(command, *args)
 
-	def execute_many(self, command, parameters):
-		"""Executes a sql command for each sequence or mapping
-		found in parameters.
-		@param command: same as in __call__
-		@param parameters: sequence or iterator"""
-		return self.cur.executemany(command, parameters)
+    def execute_many(self, command, parameters):
+        """Executes a sql command for each sequence or mapping
+        found in parameters.
+        @param command: same as in __call__
+        @param parameters: sequence or iterator"""
+        return self.cur.executemany(command, parameters)
 
-	def execute_script(self, script):
-		"""Executes a multiline script.
-		@param script: multiline str containing an sql script."""
-		return self.cur.executescript(script)
+    def execute_script(self, script):
+        """Executes a multiline script.
+        @param script: multiline str containing an sql script."""
+        return self.cur.executescript(script)
 
-	def close(self):
-		"""Closes the db"""
-		self.connection.close()
+    def close(self):
+        """Closes the db"""
+        self.connection.close()

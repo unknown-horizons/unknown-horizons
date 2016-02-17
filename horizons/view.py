@@ -134,16 +134,21 @@ class View(ChangeListener):
             self.time_last_autoscroll = time.time()
             return
         t = time.time()
-        speed_factor = GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll)
-        self.scroll(speed_factor * (self._autoscroll[0] + self._autoscroll_keys[0]),
-                    speed_factor * (self._autoscroll[1] + self._autoscroll_keys[1]))
+        speed_factor = GAME_SPEED.TICKS_PER_SECOND * (t - self.
+                                                      time_last_autoscroll)
+        self.scroll(speed_factor * (self._autoscroll[0] +
+                                    self._autoscroll_keys[0]),
+                    speed_factor * (self._autoscroll[1] +
+                                    self._autoscroll_keys[1]))
         self.time_last_autoscroll = t
         self._changed()
 
     def scroll(self, x, y):
         """Moves the camera across the screen
-        @param x: int representing the amount of pixels to scroll in x direction
-        @param y: int representing the amount of pixels to scroll in y direction
+        @param x: int representing the amount of pixels to scroll
+                  in x direction
+        @param y: int representing the amount of pixels to scroll
+                  in y direction
         """
         loc = self.cam.getLocation()
         pos = loc.getExactLayerCoordinatesRef()
@@ -178,19 +183,23 @@ class View(ChangeListener):
             if emitter is not None:
                 emitter.setPosition(pos.x, pos.y, 1)
         if horizons.globals.fife.get_fife_setting("PlaySounds"):
-            horizons.globals.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+            horizons.globals.fife.sound.soundmanager.setListenerPosition(
+                pos.x, pos.y, 1)
         self._changed()
 
     def _prepare_zoom_to_cursor(self, zoom):
-        """Change the camera's position to accommodation zooming to the specified setting."""
+        """Change the camera's position to accommodation zooming
+        to the specified setting."""
         def middle(click_coord, scale, length):
             mid = length / 2.0
             return int(round(mid - (click_coord - mid) * (scale - 1)))
 
         scale = self.cam.getZoom() / zoom
         x, y = horizons.globals.fife.cursor.getPosition()
-        new_x = middle(x, scale, horizons.globals.fife.engine_settings.getScreenWidth())
-        new_y = middle(y, scale, horizons.globals.fife.engine_settings.getScreenHeight())
+        new_x = middle(x, scale, horizons.globals.fife.engine_settings.
+                       getScreenWidth())
+        new_y = middle(y, scale, horizons.globals.fife.engine_settings.
+                       getScreenHeight())
         screen_point = fife.ScreenPoint(new_x, new_y)
         map_point = self.cam.toMapCoordinates(screen_point, False)
         self.center(map_point.x, map_point.y)
@@ -234,20 +243,25 @@ class View(ChangeListener):
         """Returns the coords of what is displayed on the screen as Rect"""
         coords = self.cam.getLocationRef().getLayerCoordinates()
         cell_dim = self.cam.getCellImageDimensions()
-        width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
-        width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
+        width_x = horizons.globals.fife.engine_settings.\
+                      getScreenWidth() // cell_dim.x + 1
+        width_y = horizons.globals.fife.engine_settings.\
+                      getScreenHeight() // cell_dim.y + 1
         screen_width_as_coords = (width_x // self.zoom, width_y // self.zoom)
-        return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0] // 2),
-                                               coords.y - (screen_width_as_coords[1] // 2),
-                                               *screen_width_as_coords)
+        return Rect.init_from_topleft_and_size(
+            coords.x - (screen_width_as_coords[0] // 2),
+            coords.y - (screen_width_as_coords[1] // 2),
+            *screen_width_as_coords)
 
     def save(self, db):
         loc = self.cam.getLocation().getExactLayerCoordinates()
-        db("INSERT INTO view(zoom, rotation, location_x, location_y) VALUES(?, ?, ?, ?)",
+        db("INSERT INTO view(zoom, rotation, location_x, location_y) "
+           "VALUES(?, ?, ?, ?)",
              self.cam.getZoom(), self.cam.getRotation(), loc.x, loc.y)
 
     def load(self, db, world):
-        # NOTE: this is no class function, since view is initiated before loading
+        # NOTE: this is no class function, since view is initiated
+        # before loading
         self.world = world
         res = db("SELECT zoom, rotation, location_x, location_y FROM view")
         if not res:
@@ -260,7 +274,8 @@ class View(ChangeListener):
 
     def resize_layers(self, db):
         """Resize layers to the size required by the entire map."""
-        min_x, min_y, max_x, max_y = db("SELECT min(x), min(y), max(x), max(y) FROM ground")[0]
+        min_x, min_y, max_x, max_y = db("SELECT min(x), min(y), max(x), "
+                                        "max(y) FROM ground")[0]
         if min_x is None:
             # this happens on the empty maps that are created for the editor
             min_x, min_y, max_x, max_y = (0, 0, 0, 0)
@@ -272,8 +287,10 @@ class View(ChangeListener):
         for layer_id, layer in enumerate(self.layers):
             if not layer.getCellCache():
                 continue
-            assert layer_id != LAYERS.WATER, \
-                'Water layer would need special treatment (see previous version)'
+            assert layer_id != LAYERS.WATER,\
+                'Water layer would need special treatment' \
+                ' (see previous version)'
 
-            rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
+            rect = fife.Rect(min_x, min_y, max_x - min_x + 1,
+                             max_y - min_y + 1)
             layer.getCellCache().setSize(rect)
