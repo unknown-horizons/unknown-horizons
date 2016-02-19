@@ -50,7 +50,8 @@ class SafeUnpickler(object):
     knowing this an attacker could easily create a paket "tricking" pickle
     to load and execute an instance of dangerous classes/methods/commands.
     this is not an exploit but by design!
-    e.g. python -c 'import pickle; pickle.loads("cos\nsystem\n(S\"ls ~\"\ntR.")'
+    e.g.:
+    python -c 'import pickle; pickle.loads("cos\nsystem\n(S\"ls ~\"\ntR.")'
 
     In order to make pickle safer we build a whitelist of modules and classes
     which pickle will check during "unpickling". Please note that we aren't
@@ -66,7 +67,8 @@ class SafeUnpickler(object):
         module = klass.__module__
         name = klass.__name__
         if (module == self.__module__ and name == self.__name__):
-            raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
+            raise RuntimeError(
+                "Adding SafeUnpickler to the pickle whitelist is not allowed")
         types = ['client', 'server'] if origin == 'common' else [origin]
         for origin in types:
             if module not in PICKLE_SAFE[origin]:
@@ -86,13 +88,15 @@ class SafeUnpickler(object):
     def find_class(self, module, name):
         global PICKLE_SAFE, PICKLE_RECIEVE_FROM
         if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-            raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")'
-                % (module, name))
+            raise cPickle.UnpicklingError(
+                'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
+                format(module, name))
         __import__(module)
         mod = sys.modules[module]
         if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-            raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")'
-                % (name, module))
+            raise cPickle.UnpicklingError(
+                'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
+                format(name, module))
         klass = getattr(mod, name)
         return klass
 
@@ -156,7 +160,9 @@ def unserialize(data, validate=False, protocol=0):
     if validate:
         if not inspect.isfunction(mypacket.validate):
             raise NetworkException("Attempt to override packet.validate()")
-        if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
-            raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
+        if mypacket.__class__.maxpacketsize > 0 and (len(data) > mypacket.
+                                                    __class__.maxpacketsize):
+            raise PacketTooLarge("packet={0}, length={1})".
+                                 format(mypacket.__class__.__name__, len(data)))
         mypacket.__class__.validate(mypacket, protocol)
     return mypacket
