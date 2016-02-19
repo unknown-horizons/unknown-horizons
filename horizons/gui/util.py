@@ -130,9 +130,11 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 
     try:
         Icon(image=icon_path)
-    except RuntimeError:  # ImageManager: image not found, use placeholder or die
+    except RuntimeError:
+        # ImageManager: image not found, use placeholder or die
         if res == 'placeholder':
-            raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
+            raise Exception('Image not found: {icon_path}'.
+                            format(icon_path=icon_path))
         else:
             log = logging.getLogger('gui')
             log.warning('Image not found: %s', icon_path)
@@ -155,7 +157,8 @@ def create_resource_icon(res_id, db):
     return widget
 
 
-def create_resource_selection_dialog(on_click, inventory, db,
+def create_resource_selection_dialog(
+        on_click, inventory, db,
         widget='select_trade_resource.xml', res_filter=None,
         amount_per_line=None):
     """Returns a container containing resource icons.
@@ -171,7 +174,8 @@ def create_resource_selection_dialog(on_click, inventory, db,
     @param amount_per_line: how many resource icons per line.
                             Default: try to fit layout
     """
-    from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+    from horizons.gui.widgets.imagefillstatusbutton import \
+        ImageFillStatusButton
     dummy_icon_path = "icons/resources/none_gray"
 
     dlg = load_uh_widget(widget)
