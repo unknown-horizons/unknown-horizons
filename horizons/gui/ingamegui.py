@@ -44,8 +44,11 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover, GuiCancelAction)
+from horizons.messaging import (TabWidgetChanged, SpeedChanged,
+                                NewDisaster, MineEmpty,
+                                NewSettlement, PlayerLevelUpgrade,
+                                ZoomChanged, GuiAction, GuiHover,
+                                GuiCancelAction)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -120,9 +123,11 @@ class IngameGui(LivingObject):
 
         self.mainhud.mapEvents({'zoomIn': self.session.view.zoom_in,
             'zoomOut': self.session.view.zoom_out,
-            'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right,
+            'rotateRight': Callback.ChainedCallbacks(
+                self.session.view.rotate_right,
                 self.minimap.rotate_right),
-            'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+            'rotateLeft': Callback.ChainedCallbacks(
+                self.session.view.rotate_left, self.minimap.rotate_left),
             'speedUp': speed_up,
             'speedDown': speed_down,
             'destroy_tool': self.toggle_destroy_tool,
@@ -163,7 +168,8 @@ class IngameGui(LivingObject):
         self._display_speed(self.session.timer.ticks_per_second)
 
     def end(self):
-        # unsubscribe early, to avoid messages coming in while we're shutting down
+        # unsubscribe early, to avoid messages coming in
+        # while we're shutting down
         SpeedChanged.unsubscribe(self._on_speed_changed)
         NewDisaster.unsubscribe(self._on_new_disaster)
         NewSettlement.unsubscribe(self._on_new_settlement)
@@ -219,7 +225,8 @@ class IngameGui(LivingObject):
         self.windows.toggle(self.help_dialog)
 
     def minimap_to_front(self):
-        """Make sure the full right top gui is visible and not covered by some dialog"""
+        """Make sure the full right top gui is visible and
+        not covered by some dialog"""
         self.mainhud.hide()
         self.mainhud.show()
 
@@ -243,7 +250,8 @@ class IngameGui(LivingObject):
 
     def show_build_menu(self, update=False):
         """
-        @param update: set when build possibilities change (e.g. after inhabitant tier upgrade)
+        @param update: set when build possibilities change
+                       (e.g. after inhabitant tier upgrade)
         """
         # check if build menu is already shown
         if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
@@ -256,8 +264,10 @@ class IngameGui(LivingObject):
         self.deselect_all()
 
         if not any(settlement.owner.is_local_player for settlement in self.session.world.settlements):
-            # player has not built any settlements yet. Accessing the build menu at such a point
-            # indicates a mistake in the mental model of the user. Display a hint.
+            # player has not built any settlements yet. Accessing
+            # the build menu at such a point
+            # indicates a mistake in the mental model of the user.
+            # Display a hint.
             tab = TabWidget(self, tabs=[TabInterface(widget="buildtab_no_settlement.xml")])
         else:
             btabs = BuildTab.create_tabs(self.session, self._build)
@@ -273,7 +283,8 @@ class IngameGui(LivingObject):
     def _build(self, building_id, unit=None):
         """Calls the games buildingtool class for the building_id.
         @param building_id: int with the building id that is to be built.
-        @param unit: weakref to the unit, that builds (e.g. ship for warehouse)"""
+        @param unit: weakref to the unit, that builds
+                     (e.g. ship for warehouse)"""
         self.hide_menu()
         self.deselect_all()
         cls = Entities.buildings[building_id]
@@ -336,7 +347,8 @@ class IngameGui(LivingObject):
         # Store user defined unit selection groups (Ctrl+number)
         for (number, group) in enumerate(self.session.selection_groups):
             for instance in group:
-                db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
+                db("INSERT INTO selected (`group`, id) VALUES (?, ?)",
+                   number, instance.worldid)
 
     def load(self, db):
         self.message_widget.load(db)
@@ -369,8 +381,9 @@ class IngameGui(LivingObject):
 
             data = {'player1': player1, 'player2': player2}
 
-            string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
-                                                              new=new_state.upper())
+            string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(
+                old=old_state.upper(),
+                new=new_state.upper())
             self.message_widget.add(string_id=string_id, message_dict=data)
 
         self.session.world.diplomacy.add_diplomacy_status_changed_listener(notify_change)
@@ -386,9 +399,11 @@ class IngameGui(LivingObject):
         if len(self.session.selected_instances) == 1:
             tabname = db("SELECT value FROM metadata WHERE name = ?",
                          'selected_tab')[0][0]
-            # This can still be None due to old savegames not storing the information
+            # This can still be None due to old savegames
+            # not storing the information
             tabclass = None if tabname is None else resolve_tab(tabname)
-            obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
+            obj.get_component(SelectableComponent).show_menu(
+                jump_to_tabclass=tabclass)
         elif self.session.selected_instances:
             self.show_multi_select_tab(self.session.selected_instances)
 
@@ -470,7 +485,8 @@ class IngameGui(LivingObject):
             self.toggle_destroy_tool()
         elif action == _Actions.REMOVE_SELECTED:
             message = _(u"Are you sure you want to delete these objects?")
-            if self.windows.open_popup(_(u"Delete"), message, show_cancel_button=True):
+            if self.windows.open_popup(_(u"Delete"), message,
+                                       show_cancel_button=True):
                 self.session.remove_selected()
             else:
                 self.deselect_all()
@@ -531,7 +547,8 @@ class IngameGui(LivingObject):
             self.session.world.toggle_health_for_all_health_instances()
         elif action == _Actions.SHOW_SELECTED:
             if self.session.selected_instances:
-                # Scroll to first one, we can never guarantee to display all selected units.
+                # Scroll to first one, we can never guarantee to display
+                # all selected units.
                 instance = iter(self.session.selected_instances).next()
                 self.session.view.center(* instance.position.center.to_tuple())
                 for instance in self.session.selected_instances:
@@ -569,7 +586,8 @@ class IngameGui(LivingObject):
             self.set_cursor('selection')
             # Apply new selection.
             for instance in self.session.selection_groups[num]:
-                instance.get_component(SelectableComponent).select(reset_cam=True)
+                instance.get_component(SelectableComponent).select(
+                    reset_cam=True)
             # Assign copy since it will be randomly changed in selection code.
             # The unit group itself should only be changed on Ctrl events.
             self.session.selected_instances = self.session.selection_groups[num].copy()
@@ -594,7 +612,8 @@ class IngameGui(LivingObject):
         Further arguments are passed to the mouse tool constructor."""
         self.cursor.remove()
         self.current_cursor = which
-        klass = {'default': mousetools.SelectionTool,
+        klass = {
+            'default': mousetools.SelectionTool,
             'selection': mousetools.SelectionTool,
             'tearing': mousetools.TearingTool,
             'pipette': mousetools.PipetteTool,
@@ -621,15 +640,19 @@ class IngameGui(LivingObject):
 
     def _on_new_disaster(self, message):
         """Called when a building is 'infected' with a disaster."""
-        if message.building.owner.is_local_player and len(message.disaster._affected_buildings) == 1:
+        if message.building.owner.is_local_player and len(
+                message.disaster._affected_buildings) == 1:
             pos = message.building.position.center
-            self.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
+            self.message_widget.add(
+                point=pos,
+                string_id=message.disaster_class.NOTIFICATION_TYPE)
 
     def _on_new_settlement(self, message):
         player = message.settlement.owner
         self.message_widget.add(string_id='NEW_SETTLEMENT',
-            point=message.warehouse_position,
-            message_dict={'player': player.name}, play_sound=player.is_local_player)
+                                point=message.warehouse_position,
+                                message_dict={'player': player.name},
+                                play_sound=player.is_local_player)
 
     def _on_player_level_upgrade(self, message):
         """Called when a player's population reaches a new level."""
@@ -638,9 +661,8 @@ class IngameGui(LivingObject):
 
         # show notification
         self.message_widget.add(point=message.building.position.center,
-            string_id='SETTLER_LEVEL_UP',
-            message_dict={'level': message.level + 1}
-        )
+                                string_id='SETTLER_LEVEL_UP',
+                                message_dict={'level': message.level + 1})
 
         # update build menu to show new buildings
         menu = self.get_cur_menu()
@@ -648,7 +670,8 @@ class IngameGui(LivingObject):
             self.show_build_menu(update=True)
 
     def _on_mine_empty(self, message):
-        self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')
+        self.message_widget.add(point=message.mine.position.center,
+                                string_id='MINE_EMPTY')
 
     def _on_gui_click_action(self, msg):
         """Make a sound when a button is clicked"""
