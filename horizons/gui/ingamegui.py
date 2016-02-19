@@ -49,11 +49,13 @@ from horizons.messaging import (TabWidgetChanged, SpeedChanged,
                                 NewSettlement, PlayerLevelUpgrade,
                                 ZoomChanged, GuiAction, GuiHover,
                                 GuiCancelAction)
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
+from horizons.util.lastactiveplayersettlementmanager import \
+    LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
+from horizons.world.managers.productionfinishediconmanager import \
+    ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
 
 
@@ -94,17 +96,20 @@ class IngameGui(LivingObject):
 
         self.chat_dialog = ChatDialog(self.windows, self.session)
         self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
-        self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=False)
+        self.pausemenu = PauseMenu(self.session, self, self.windows,
+                                   in_editor_mode=False)
         self.help_dialog = HelpDialog(self.windows)
 
         # Icon manager
-        self.status_icon_manager = StatusIconManager(renderer=self.session.view.
-            renderer['GenericRenderer'], layer=self.session.view.layers[LAYERS.OBJECTS])
-        self.production_finished_icon_manager = ProductionFinishedIconManager(renderer=self
-            .session.view.renderer['GenericRenderer'], layer=self.session.view.layers[LAYERS.OBJECTS])
+        self.status_icon_manager = StatusIconManager(
+            renderer=self.session.view.renderer['GenericRenderer'],
+            layer=self.session.view.layers[LAYERS.OBJECTS])
+        self.production_finished_icon_manager = ProductionFinishedIconManager(
+            renderer=self.session.view.renderer['GenericRenderer'],
+            layer=self.session.view.layers[LAYERS.OBJECTS])
 
-        # 'minimap' is the guichan gui around the actual minimap, which is saved
-        # in self.minimap
+        # 'minimap' is the guichan gui around the actual minimap,
+        # which is saved in self.minimap
         self.mainhud = load_uh_widget('minimap.xml')
         self.mainhud.position_technique = "right:top"
 
@@ -121,7 +126,8 @@ class IngameGui(LivingObject):
         def speed_down():
             SpeedDownCommand().execute(self.session)
 
-        self.mainhud.mapEvents({'zoomIn': self.session.view.zoom_in,
+        self.mainhud.mapEvents({
+            'zoomIn': self.session.view.zoom_in,
             'zoomOut': self.session.view.zoom_out,
             'rotateRight': Callback.ChainedCallbacks(
                 self.session.view.rotate_right,
@@ -140,7 +146,8 @@ class IngameGui(LivingObject):
         GuiHover.subscribe(self._on_gui_hover_action)
         GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
-        hotkey_replacements = {'rotateRight': 'ROTATE_RIGHT',
+        hotkey_replacements = {
+            'rotateRight': 'ROTATE_RIGHT',
             'rotateLeft': 'ROTATE_LEFT',
             'speedUp': 'SPEED_UP',
             'speedDown': 'SPEED_DOWN',
@@ -177,7 +184,8 @@ class IngameGui(LivingObject):
         MineEmpty.unsubscribe(self._on_mine_empty)
         ZoomChanged.unsubscribe(self._update_zoom)
 
-        self.mainhud.mapEvents({'zoomIn': None,
+        self.mainhud.mapEvents({
+            'zoomIn': None,
             'zoomOut': None,
             'rotateRight': None,
             'rotateLeft': None,
@@ -237,7 +245,8 @@ class IngameGui(LivingObject):
             return
 
         if not DiplomacyTab.is_useable(self.session.world):
-            self.windows.open_popup(_("No diplomacy possible"),
+            self.windows.open_popup(
+                _("No diplomacy possible"),
                 _("Cannot do diplomacy as there are no other players."))
             return
 
@@ -245,7 +254,8 @@ class IngameGui(LivingObject):
         self.show_menu(tab)
 
     def show_multi_select_tab(self, instances):
-        tab = TabWidget(self, tabs=[SelectMultiTab(instances)], name='select_multi')
+        tab = TabWidget(self, tabs=[SelectMultiTab(instances)],
+                        name='select_multi')
         self.show_menu(tab)
 
     def show_build_menu(self, update=False):
@@ -254,7 +264,8 @@ class IngameGui(LivingObject):
                        (e.g. after inhabitant tier upgrade)
         """
         # check if build menu is already shown
-        if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
+        if hasattr(self.get_cur_menu(), 'name') and
+                   self.get_cur_menu().name == "build_menu_tab_widget":
             self.hide_menu()
 
             if not update:  # this was only a toggle call, don't reshow
@@ -263,16 +274,19 @@ class IngameGui(LivingObject):
         self.set_cursor()  # set default cursor for build menu
         self.deselect_all()
 
-        if not any(settlement.owner.is_local_player for settlement in self.session.world.settlements):
+        if not any(settlement.owner.is_local_player for
+                   settlement in self.session.world.settlements):
             # player has not built any settlements yet. Accessing
             # the build menu at such a point
             # indicates a mistake in the mental model of the user.
             # Display a hint.
-            tab = TabWidget(self, tabs=[TabInterface(widget="buildtab_no_settlement.xml")])
+            tab = TabWidget(
+                self,
+                tabs=[TabInterface(widget="buildtab_no_settlement.xml")])
         else:
             btabs = BuildTab.create_tabs(self.session, self._build)
             tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget",
-                active_tab=BuildTab.last_active_build_tab)
+                            active_tab=BuildTab.last_active_build_tab)
         self.show_menu(tab)
 
     def deselect_all(self):
@@ -293,8 +307,8 @@ class IngameGui(LivingObject):
         self.set_cursor('building', cls, None if unit is None else unit())
 
     def toggle_road_tool(self):
-        if (not isinstance(self.cursor, mousetools.BuildingTool)
-                or self.cursor._class.id != BUILDINGS.TRAIL):
+        if (not isinstance(self.cursor, mousetools.BuildingTool) or
+                self.cursor._class.id != BUILDINGS.TRAIL):
             self._build(BUILDINGS.TRAIL)
         else:
             self.set_cursor()
@@ -309,13 +323,15 @@ class IngameGui(LivingObject):
         """
         if self._old_menu is not None:
             if hasattr(self._old_menu, "remove_remove_listener"):
-                self._old_menu.remove_remove_listener(Callback(self.show_menu, None))
+                self._old_menu.remove_remove_listener(Callback(
+                    self.show_menu, None))
             self._old_menu.hide()
 
         self._old_menu = menu
         if self._old_menu is not None:
             if hasattr(self._old_menu, "add_remove_listener"):
-                self._old_menu.add_remove_listener(Callback(self.show_menu, None))
+                self._old_menu.add_remove_listener(Callback(self.show_menu,
+                                                            None))
             self._old_menu.show()
             self.minimap_to_front()
 
@@ -334,15 +350,18 @@ class IngameGui(LivingObject):
     def save_selection(self, db):
         # Store instances that are selected right now.
         for instance in self.session.selected_instances:
-            db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
+            db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)",
+               instance.worldid)
 
-        # If a single instance is selected, also store the currently displayed tab.
+        # If a single instance is selected, also store the currently
+        # displayed tab.
         # (Else, upon restoring, we display a multi-selection tab.)
         tabname = None
         if len(self.session.selected_instances) == 1:
             tabclass = self.get_cur_menu().current_tab
             tabname = tabclass.__class__.__name__
-        db("INSERT INTO metadata (name, value) VALUES (?, ?)", 'selected_tab', tabname)
+        db("INSERT INTO metadata (name, value) VALUES (?, ?)", 
+           'selected_tab', tabname)
 
         # Store user defined unit selection groups (Ctrl+number)
         for (number, group) in enumerate(self.session.selection_groups):
@@ -357,7 +376,8 @@ class IngameGui(LivingObject):
 
         if self.session.is_game_loaded():
             LastActivePlayerSettlementManager().load(db)
-            cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
+            cur_settlement = LastActivePlayerSettlementManager(). \
+                get_current_settlement()
             self.cityinfo.set_settlement(cur_settlement)
 
         self.minimap.draw()  # update minimap to new world
@@ -386,11 +406,13 @@ class IngameGui(LivingObject):
                 new=new_state.upper())
             self.message_widget.add(string_id=string_id, message_dict=data)
 
-        self.session.world.diplomacy.add_diplomacy_status_changed_listener(notify_change)
+        self.session.world.diplomacy.add_diplomacy_status_changed_listener(
+            notify_change)
 
     def load_selection(self, db):
         # Re-select old selected instance
-        for (instance_id, ) in db("SELECT id FROM selected WHERE `group` IS NULL"):
+        for (instance_id, ) in db(
+                "SELECT id FROM selected WHERE `group` IS NULL"):
             obj = WorldObject.get_object_by_id(instance_id)
             self.session.selected_instances.add(obj)
             obj.get_component(SelectableComponent).select()
@@ -409,7 +431,8 @@ class IngameGui(LivingObject):
 
         # Load user defined unit selection groups (Ctrl+number)
         for (num, group) in enumerate(self.session.selection_groups):
-            for (instance_id, ) in db("SELECT id FROM selected WHERE `group` = ?", num):
+            for (instance_id, ) in db(
+                    "SELECT id FROM selected WHERE `group` = ?", num):
                 obj = WorldObject.get_object_by_id(instance_id)
                 group.add(obj)
 
@@ -552,7 +575,8 @@ class IngameGui(LivingObject):
                 instance = iter(self.session.selected_instances).next()
                 self.session.view.center(* instance.position.center.to_tuple())
                 for instance in self.session.selected_instances:
-                    if hasattr(instance, "path") and instance.owner.is_local_player:
+                    if hasattr(instance, "path") and \
+                            instance.owner.is_local_player:
                         self.minimap.show_unit_path(instance)
         elif action == _Actions.HELP:
             self.toggle_help()
@@ -590,7 +614,8 @@ class IngameGui(LivingObject):
                     reset_cam=True)
             # Assign copy since it will be randomly changed in selection code.
             # The unit group itself should only be changed on Ctrl events.
-            self.session.selected_instances = self.session.selection_groups[num].copy()
+            self.session.selected_instances = \
+                self.session.selection_groups[num].copy()
             # Show correct tabs depending on what's selected.
             if self.session.selected_instances:
                 self.cursor.apply_select()
