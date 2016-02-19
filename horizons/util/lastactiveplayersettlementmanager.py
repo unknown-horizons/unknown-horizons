@@ -24,7 +24,8 @@ import weakref
 from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
+from horizons.messaging import NewPlayerSettlementHovered,\
+    HoverSettlementChanged, NewSettlement
 
 
 def resolve_weakref(ref):
@@ -72,22 +73,29 @@ class LastActivePlayerSettlementManager(object):
 
     def save(self, db):
         if self._last_player_settlement is not None:
-            db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "PLAYER",
-                self._last_player_settlement().worldid)
+            db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)",
+               "PLAYER",
+               self._last_player_settlement().worldid)
         if self._cur_settlement is not None:
-            db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "ANY",
-                self._cur_settlement().worldid)
+            db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)",
+               "ANY",
+               self._cur_settlement().worldid)
 
-        db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG",
-            self._last_player_settlement_hovered_was_none)
+        db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)",
+           "LAST_NONE_FLAG",
+           self._last_player_settlement_hovered_was_none)
 
     def load(self, db):
-        data = db('SELECT value FROM last_active_settlement WHERE type = "PLAYER"')
+        data = db('SELECT value FROM last_active_settlement WHERE '
+                  'type = "PLAYER"')
         self._last_player_settlement = weakref.ref(
             WorldObject.get_object_by_id(data[0][0])) if data else None
-        data = db('SELECT value FROM last_active_settlement WHERE type = "ANY"')
-        self._cur_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
-        data = db('SELECT value FROM last_active_settlement WHERE type = "LAST_NONE_FLAG"')
+        data = db('SELECT value FROM last_active_settlement WHERE '
+                  'type = "ANY"')
+        self._cur_settlement = weakref.ref(WorldObject.get_object_by_id(
+            data[0][0])) if data else None
+        data = db('SELECT value FROM last_active_settlement WHERE '
+                  'type = "LAST_NONE_FLAG"')
         self._last_player_settlement_hovered_was_none = bool(data[0][0])
 
     def remove(self):
@@ -100,8 +108,8 @@ class LastActivePlayerSettlementManager(object):
         """Update to new world position. Sets internal state
         to new settlement or no settlement
         @param current: some kind of position coords with x- and y-values"""
-        settlement = self.session.world.get_settlement(Point(int(round(current.x)),
-            int(round(current.y))))
+        settlement = self.session.world.get_settlement(
+            Point(int(round(current.x)), int(round(current.y))))
 
         # check if it's a new settlement independent of player
         if resolve_weakref(self._cur_settlement) is not settlement:
@@ -115,19 +123,24 @@ class LastActivePlayerSettlementManager(object):
         need_msg = False
         # check if actual last player settlement is a new one
         if new_player_settlement is not None and \
-           resolve_weakref(self._last_player_settlement) is not resolve_weakref(new_player_settlement):
+                resolve_weakref(self._last_player_settlement) is\
+                not resolve_weakref(new_player_settlement):
             self._last_player_settlement = new_player_settlement
             need_msg = True
 
         # check if we changed to or from None
         # this doesn't change the last settlement, but we need a message
-        if (new_player_settlement is None and not self._last_player_settlement_hovered_was_none) or \
-           (new_player_settlement is not None and self._last_player_settlement_hovered_was_none):
+        if (new_player_settlement is None and
+                not self._last_player_settlement_hovered_was_none) or \
+           (new_player_settlement is not None and
+                self._last_player_settlement_hovered_was_none):
             need_msg = True
 
         if need_msg:
-            NewPlayerSettlementHovered.broadcast(self, resolve_weakref(new_player_settlement))
-        self._last_player_settlement_hovered_was_none = (new_player_settlement is None)
+            NewPlayerSettlementHovered.broadcast(self, resolve_weakref(
+                new_player_settlement))
+        self._last_player_settlement_hovered_was_none = (new_player_settlement
+                                                         is None)
 
     def get(self, get_current_pos=False):
         """The last settlement belonging to the player the mouse

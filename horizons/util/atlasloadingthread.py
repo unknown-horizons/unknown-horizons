@@ -39,9 +39,11 @@ class AtlasLoadingThread(threading.Thread):
     def run(self):
         self.lock.acquire()
         horizons_path = os.path.dirname(horizons.__file__)
-        args = [sys.executable, os.path.join(horizons_path, 'engine', 'generate_atlases.py'),
+        args = [sys.executable, os.path.join(horizons_path, 'engine',
+                                             'generate_atlases.py'),
                 str(horizons.globals.fife.get_uh_setting('MaxAtlasSize'))]
-        atlas_generator = subprocess.Popen(args, stdout=None, stderr=subprocess.STDOUT)
+        atlas_generator = subprocess.Popen(args, stdout=None,
+                                           stderr=subprocess.STDOUT)
         atlas_generator.wait()
         assert atlas_generator.returncode is not None
         if atlas_generator.returncode != 0:

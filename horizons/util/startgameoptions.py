@@ -51,11 +51,14 @@ class StartGameOptions(object):
         self.is_editor = False
 
     def init_new_world(self, session):
-        # NOTE: this must be sorted before iteration, cause there is no defined order for
-        #       iterating a dict, and it must happen in the same order for mp games.
+        # NOTE: this must be sorted before iteration, cause there is
+        #        no defined order for iterating a dict, and it must happen
+        #        in the same order for mp games.
         for i in sorted(self._get_player_list(), key=itemgetter('id')):
             session.world.setup_player(i['id'], i['name'], i['color'],
-                i['clientid'] if self.is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
+                                       i['clientid'] if self.is_multiplayer
+                                       else None, i['local'],
+                                       i['ai'], i['difficulty'])
         session.world.set_forced_player(self.force_player_id)
         center = session.world.init_new_world(self.trader_enabled,
                                               self.pirate_enabled,
@@ -72,25 +75,29 @@ class StartGameOptions(object):
             return self._player_list
 
         # for now just make it a bit easier for the AI
-        difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
+        difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL,
+                            True: DifficultySettings.EASY_LEVEL}
 
         players = []
         players.append({
             'id': 1,
             'name': self.player_name,
-            'color': Color[1] if self.player_color is None else self.player_color,
+            'color': Color[1] if self.player_color is None else
+            self.player_color,
             'local': True,
             'ai': self.human_ai,
             'difficulty': difficulty_level[bool(self.human_ai)],
         })
 
-        # add AI players with a distinct color; if none can be found then use black
+        # add AI players with a distinct color; if none can be found
+        # then use black
         for num in xrange(self.ai_players):
             color = Color[COLORS.BLACK]  # if none can be found then be black
             for possible_color in Color:
                 if possible_color == Color[COLORS.BLACK]:
                     continue  # black is used by the trader and the pirate
-                used = any(possible_color == player['color'] for player in players)
+                used = any(possible_color == player['color'] for
+                           player in players)
                 if not used:
                     color = possible_color
                     break

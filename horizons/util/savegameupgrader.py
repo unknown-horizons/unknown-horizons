@@ -441,7 +441,8 @@ class SavegameUpgrader(object):
                 db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?", new_prod_line, obj, old_prod_line)
 
     def _upgrade_to_rev76(self, db):
-        #needed for commint: b0471afd48a0034150580e8fa00533f9ccae2a9b (Split unit production into ship & groundunit)
+        # needed for commint: b0471afd48a0034150580e8fa00533f9ccae2a9b
+        # (Split unit production into ship & groundunit)
         old = 'NEW_UNIT'
         new = 'NEW_SHIP'
         db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
@@ -457,8 +458,9 @@ class SavegameUpgrader(object):
             if not SavegameUpgrader.can_upgrade(rev):
                 raise SavegameTooOld(revision=rev)
 
-            self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
-                             (rev, VERSION.SAVEGAMEREVISION))
+            self.log.warning('Discovered old savegame file, auto-upgrading: '
+                             '{0} -> {1}'.format(rev,
+                                                 VERSION.SAVEGAMEREVISION))
             db = DbReader(self.final_path)
             db('BEGIN TRANSACTION')
 
@@ -524,7 +526,8 @@ class SavegameUpgrader(object):
 
     @classmethod
     def can_upgrade(cls, from_savegame_version):
-        """Checks whether a savegame can be upgraded from the current version"""
+        """Checks whether a savegame can be upgraded from the current version
+        """
         if from_savegame_version >= VERSION.SAVEGAME_LEAST_UPGRADABLE_REVISION:
             return True
         else:
@@ -534,7 +537,9 @@ class SavegameUpgrader(object):
         """Return the path to the up-to-date version of the saved game."""
         if self.final_path is None:
             self.using_temp = True
-            handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
+            handle, self.final_path = tempfile.mkstemp(
+                prefix='uh-savegame.' + os.path.basename(os.path.splitext(
+                    self.original_path)[0]) + '.', suffix='.sqlite')
             os.close(handle)
             shutil.copyfile(self.original_path, self.final_path)
             self._upgrade()
