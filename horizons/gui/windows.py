@@ -43,8 +43,8 @@ class Window(object):
     def open(self, **kwargs):
         """Open the window.
 
-        After this call, the window should be visible. If you decide to not show
-        the window here (e.g. an error occurred), you'll need to call
+        After this call, the window should be visible. If you decide to not
+        show the window here (e.g. an error occurred), you'll need to call
         `self._windows.close()` to remove the window from the manager.
 
         You may override this method in a subclass if you need to do stuff when
@@ -63,20 +63,21 @@ class Window(object):
     def hide(self):
         """Hide the window.
 
-        After this call, the window should not be visible anymore. However, it remains
-        in the stack of open windows and will be visible once it becomes the topmost
-        window again.
+        After this call, the window should not be visible anymore. However,
+        it remains in the stack of open windows and will be visible once
+         it becomes the topmost window again.
 
-        You should *never* call this directly in your code, other than in `close()`
-        when you overwrote it in your subclass.
+        You should *never* call this directly in your code, other than
+        in `close()` when you overwrote it in your subclass.
         """
         raise NotImplementedError
 
     def close(self):
         """Closes the window.
 
-        You should *never* call this directly in your code. Use `self._windows.close()`
-        to ask the WindowManager to remove the window instead.
+        You should *never* call this directly in your code.
+        Use `self._windows.close()` to ask the WindowManager to remove
+        the window instead.
 
         You may override this method in a subclass if you need to do stuff when
         a window is closed.
@@ -136,22 +137,24 @@ class Dialog(Window):
     def prepare(self, **kwargs):
         """Setup the dialog gui.
 
-        The widget has to be stored in `self._gui`. If you want to abort the dialog
-        here return False.
+        The widget has to be stored in `self._gui`.
+        If you want to abort the dialog here return False.
         """
         raise NotImplementedError
 
     def act(self, retval):
         """Do something after dialog is closed.
 
-        If you want to show the dialog again, you need to do that explicitly, e.g. with:
+        If you want to show the dialog again, you need to do that
+        explicitly, e.g. with:
 
             self._windows.open(self)
         """
         return retval
 
     def show(self, **kwargs):
-        # if the dialog is already running but has been hidden, just show the widget
+        """ if the dialog is already running but has been hidden,
+        just show the widget"""
         if self._hidden:
             self._hidden = False
             if self.modal:
@@ -235,14 +238,17 @@ class Dialog(Window):
         return horizons.globals.fife.loop()
 
     @classmethod
-    def create_from_widget(cls, dlg, bind, event_map=None, modal=False, focus=None):
+    def create_from_widget(cls, dlg, bind, event_map=None, modal=False,
+                           focus=None):
         """Shows any pychan dialog.
 
         @param dlg: dialog that is to be shown
-        @param bind: events that make the dialog return + return values {'ok': True, 'cancel': False}
-        @param event_map: dictionary with callbacks for buttons. See pychan docu:
-        pychan.widget.mapEvents()
-        @param modal: Whether to block user interaction while displaying the dialog
+        @param bind: events that make the dialog return +
+                     return values {'ok': True, 'cancel': False}
+        @param event_map: dictionary with callbacks for buttons.
+                          See pychan docu: pychan.widget.mapEvents()
+        @param modal: Whether to block user interaction while displaying
+                      the dialog
         @param focus: Which child widget should take focus
         """
 
@@ -264,7 +270,8 @@ class Popup(Dialog):
     """Displays a popup with the specified text"""
     modal = True
 
-    def __init__(self, windows, windowtitle, message, show_cancel_button=False, size=0):
+    def __init__(self, windows, windowtitle, message,
+                 show_cancel_button=False, size=0):
         self.windowtitle = windowtitle
         self.message = message
         self.show_cancel_button = show_cancel_button
@@ -325,7 +332,8 @@ class WindowManager(object):
             self._windows[-1].show()
 
     def toggle(self, window, **kwargs):
-        """Hide window if is currently visible (and on top), show it otherwise."""
+        """Hide window if is currently visible (and on top),
+        show it otherwise."""
         if self._windows and self._windows[-1] == window:
             self.close()
         else:
@@ -370,8 +378,8 @@ class WindowManager(object):
         if not self._windows:
             return
 
-        # because we only show one window at a time, it is enough to hide the
-        # top-most window
+        # because we only show one window at a time, it is enough
+        # to hide the top-most window
         self._windows[-1].hide()
 
     def show_all(self):
@@ -379,11 +387,12 @@ class WindowManager(object):
         if not self._windows:
             return
 
-        # because we only show one window at a time, it is enough to show the
-        # most recently added window
+        # because we only show one window at a time, it is enough
+        # to show the most recently added window
         self._windows[-1].show()
 
-    def open_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+    def open_popup(self, windowtitle, message,
+                   show_cancel_button=False, size=0):
         """
         @param windowtitle: the title of the popup
         @param message: the text displayed in the popup
@@ -393,12 +402,15 @@ class WindowManager(object):
         window = Popup(self, windowtitle, message, show_cancel_button, size)
         return self.open(window)
 
-    def open_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
+    def open_error_popup(self, windowtitle, description, advice=None,
+                         details=None, _first=True):
         """Displays a popup containing an error message.
-        @param windowtitle: title of popup, will be auto-prefixed with "Error: "
+        @param windowtitle: title of popup, will be auto-prefixed
+                            with "Error: "
         @param description: string to tell the user what happened
         @param advice: how the user might be able to fix the problem
-        @param details: technical details, relevant for debugging but not for the user
+        @param details: technical details, relevant for debugging
+                        but not for the user
         @param _first: Don't touch this.
 
         Guide for writing good error messages:
@@ -411,16 +423,19 @@ class WindowManager(object):
         if details:
             msg += _("Details: {error_details}").format(error_details=details)
         try:
-            self.open_popup(_("Error: {error_message}").format(error_message=windowtitle), msg)
+            self.open_popup(_("Error: {error_message}").
+                            format(error_message=windowtitle), msg)
         except SystemExit:  # user really wants us to die
             raise
         except:
-            # could be another game error, try to be persistent in showing the error message
-            # else the game would be gone without the user being able to read the message.
+            # could be another game error, try to be persistent in showing
+            # the error message else the game would be gone without
+            # the user being able to read the message.
             if _first:
                 traceback.print_exc()
                 log = logging.getLogger('gui.windows')
                 log.error('Exception while showing error, retrying once more.')
-                return self.open_error_popup(windowtitle, description, advice, details, _first=False)
+                return self.open_error_popup(windowtitle, description, advice,
+                                             details, _first=False)
             else:
                 raise  # it persists, we have to die.
