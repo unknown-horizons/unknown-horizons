@@ -28,7 +28,8 @@ from horizons import network
 from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging.simplemessagebus import SimpleMessageBus
-from horizons.network import CommandError, NetworkException, FatalError, packets
+from horizons.network import (CommandError, NetworkException, FatalError,
+                              packets)
 from horizons.network.common import Game
 from horizons.network.connection import Connection
 from horizons.util.color import Color
@@ -49,7 +50,8 @@ class ClientData(object):
         self.version = VERSION.RELEASE_VERSION
 
         try:
-            self.id = uuid.UUID(horizons.globals.fife.get_uh_setting("ClientID")).hex
+            self.id = uuid.UUID(horizons.globals.fife.get_uh_setting(
+                "ClientID")).hex
         except (ValueError, TypeError):
             # We need a new client id
             client_id = uuid.uuid4()
@@ -72,7 +74,8 @@ class NetworkInterface(object):
         self.capabilities = None
         self._game = None
 
-        message_types = ('lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
+        message_types = (
+            'lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
             'lobbygame_terminate', 'lobbygame_toggleready',
             'lobbygame_changename', 'lobbygame_kick',
             'lobbygame_changecolor', 'lobbygame_state',
@@ -88,7 +91,8 @@ class NetworkInterface(object):
         # create a game_details_changed callback
         for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
                 'lobbygame_changecolor', 'lobbygame_toggleready'):
-            self.subscribe(t, lambda *a, **b: self.broadcast("game_details_changed"))
+            self.subscribe(t, lambda *a, **b: self.broadcast(
+                "game_details_changed"))
 
         self.subscribe("lobbygame_starts", self._on_lobbygame_starts)
         self.subscribe('lobbygame_changename', self._on_change_name)
@@ -107,12 +111,14 @@ class NetworkInterface(object):
         """Initialize connection object. Does not connect to the server."""
         server_address = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
         client_address = None
-        client_port = parse_port(horizons.globals.fife.get_uh_setting("NetworkPort"))
+        client_port = parse_port(horizons.globals.fife.get_uh_setting(
+            "NetworkPort"))
 
         if NETWORK.CLIENT_ADDRESS is not None and client_port > 0:
             client_address = [NETWORK.CLIENT_ADDRESS, client_port]
         try:
-            self._connection = Connection(self.process_async_packet, server_address, client_address)
+            self._connection = Connection(self.process_async_packet,
+                                          server_address, client_address)
         except NetworkException as e:
             raise RuntimeError(e)
 
@@ -128,7 +134,8 @@ class NetworkInterface(object):
             self._connection.connect()
 
             # wait for session id
-            packet = self._connection.receive_packet(packets.server.cmd_session)
+            packet = self._connection.receive_packet(
+                packets.server.cmd_session)
 
             self.sid = packet[1].sid
             self.capabilities = packet[1].capabilities
@@ -155,14 +162,16 @@ class NetworkInterface(object):
     def network_data_changed(self):
         """Call in case constants like client address or client port changed.
 
-        @throws RuntimeError in case of invalid data or an NetworkException forwarded from connect
+        @throws RuntimeError in case of invalid data or an
+        NetworkException forwarded from connect
         """
         if self.is_connected:
             self.disconnect()
         self._setup_client()
 
     def _set_client_language(self):
-        lang = LANGUAGENAMES.get_by_value(horizons.globals.fife.get_uh_setting("Language"))
+        lang = LANGUAGENAMES.get_by_value(
+            horizons.globals.fife.get_uh_setting("Language"))
         if lang:
             return self.set_props({'lang': lang})
 
@@ -201,11 +210,14 @@ class NetworkInterface(object):
             return False
         return True
 
-    def creategame(self, mapname, maxplayers, gamename, maphash="", password=""):
-        self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s", mapname, maphash, maxplayers, gamename)
+    def creategame(self, mapname, maxplayers, gamename, maphash="",
+                   password=""):
+        self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s",
+                       mapname, maphash, maxplayers, gamename)
         try:
             self._assert_connection()
-            self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
+            self.log.debug("[CREATE] mapname={0} maxplayers={1}".
+                format(mapname, maxplayers))
             self.send_packet(packets.client.cmd_creategame(
                 clientver=self._client_data.version,
                 clientid=self._client_data.id,
@@ -217,7 +229,8 @@ class NetworkInterface(object):
                 maphash=maphash,
                 password=password
             ))
-            packet = self._connection.receive_packet(packets.server.data_gamestate)
+            packet = self._connection.receive_packet(
+                packets.server.data_gamestate)
             game = self._game = packet[1].game
         except NetworkException as e:
             self._handle_exception(e)
@@ -235,9 +248,11 @@ class NetworkInterface(object):
                 except CommandError as e:
                     self.log.debug("NetworkInterface: failed to join")
                     if 'name' in e.message:
-                        self.change_name(self._client_data.name + unicode(i), save=False)
+                        self.change_name(
+                            self._client_data.name + unicode(i), save=False)
                     elif 'color' in e.message:
-                        self.change_color(self._client_data.color + i, save=False)
+                        self.change_color(self._client_data.color + i,
+                                          save=False)
                     else:
                         raise
                 i += 1
@@ -295,14 +310,16 @@ class NetworkInterface(object):
             self.log.debug("[LIST]")
             version = self._client_data.version
             self.send_packet(packets.client.cmd_listgames(version))
-            packet = self._connection.receive_packet(packets.server.data_gameslist)
+            packet = self._connection.receive_packet(
+                packets.server.data_gameslist)
             games = packet[1].games
         except NetworkException as e:
             fatal = self._handle_exception(e)
             return [] if not fatal else None
         for game in games:
             ret_mp_games.append(self.game2mpgame(game))
-            self.log.debug("NetworkInterface: found active game %s", game.mapname)
+            self.log.debug("NetworkInterface: found active game {}".
+                format(game.mapname))
         return ret_mp_games
 
     def toggle_ready(self):
@@ -363,7 +380,8 @@ class NetworkInterface(object):
             self._handle_exception(e)
 
     def _on_change_color(self, game, plold, plnew, myself):
-        self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
+        self.log.debug("[ONCHANGECOLOR] {0}: {1} -> {2}".format(
+            plnew.name, plold.color, plnew.color))
         if myself:
             self._client_data.color = plnew.color
 
@@ -371,7 +389,8 @@ class NetworkInterface(object):
 
     def receive_all(self):
         """
-        Returns list of all packets, that have arrived until now (since the last call)
+        Returns list of all packets, that have arrived until now
+        (since the last call)
         @return: list of packets
         """
         try:
@@ -407,7 +426,8 @@ class NetworkInterface(object):
             # ignore packet if we are not a game lobby
             if self._game is None:
                 return True
-            self.broadcast("lobbygame_chat", self._game, packet[1].playername, packet[1].chatmsg)
+            self.broadcast("lobbygame_chat", self._game,
+                           packet[1].playername, packet[1].chatmsg)
         elif isinstance(packet[1], packets.server.data_gamestate):
             # ignore packet if we are not a game lobby
             if self._game is None:
@@ -425,11 +445,14 @@ class NetworkInterface(object):
                         found = pold
                         myself = (pnew.sid == self.sid)
                         if pnew.name != pold.name:
-                            self.broadcast("lobbygame_changename", self._game, pold, pnew, myself)
+                            self.broadcast("lobbygame_changename", self._game,
+                                           pold, pnew, myself)
                         if pnew.color != pold.color:
-                            self.broadcast("lobbygame_changecolor", self._game, pold, pnew, myself)
+                            self.broadcast("lobbygame_changecolor", self._game,
+                                           pold, pnew, myself)
                         if pnew.ready != pold.ready:
-                            self.broadcast("lobbygame_toggleready", self._game, pold, pnew, myself)
+                            self.broadcast("lobbygame_toggleready", self._game,
+                                           pold, pnew, myself)
                         break
                 if found is None:
                     self.broadcast("lobbygame_join", self._game, pnew)
@@ -536,4 +559,5 @@ class MPGame(object):
         return ret_players
 
     def __str__(self):
-        return "%s (%d/%d)" % (self.map_name, self.player_count, self.player_limit)
+        return "{0} ({1}/{2})".format(self.map_name, self.player_count,
+                                      self.player_limit)
