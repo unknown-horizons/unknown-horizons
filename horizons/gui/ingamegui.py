@@ -264,8 +264,8 @@ class IngameGui(LivingObject):
                        (e.g. after inhabitant tier upgrade)
         """
         # check if build menu is already shown
-        if hasattr(self.get_cur_menu(), 'name') and
-                   self.get_cur_menu().name == "build_menu_tab_widget":
+        if hasattr(self.get_cur_menu(), 'name') and \
+                self.get_cur_menu().name == "build_menu_tab_widget":
             self.hide_menu()
 
             if not update:  # this was only a toggle call, don't reshow
