@@ -83,7 +83,8 @@ class ExtScheduler(object):
 
     def add_object(self, obj):
         """Adds a new CallbackObject instance to the callbacks list
-        @param object: CallbackObject type object, containing all necessary information
+        @param object: CallbackObject type object, containing all necessary
+                       information
         """
         if obj.loops > 0:
             obj.loops -= 1
@@ -121,7 +122,8 @@ class ExtScheduler(object):
         @param callback: the function to remove
         """
         for tup in self.schedule:
-            if tup[1].class_instance is instance and tup[1].callback == callback:
+            if tup[1].class_instance is instance and \
+                            tup[1].callback == callback:
                 # don't destroy heap
                 tup[1] = self.__class__.NOOP
 

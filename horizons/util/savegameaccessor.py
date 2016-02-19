@@ -69,19 +69,23 @@ class SavegameAccessor(DbReader):
             game_identifier = self.upgrader.get_path()
             super(SavegameAccessor, self).__init__(dbfile=game_identifier)
 
-            map_name_data = self('SELECT value FROM metadata WHERE name = ?', 'map_name')
+            map_name_data = self(
+                'SELECT value FROM metadata WHERE name = ?', 'map_name')
             if not map_name_data:
                 is_random_map = True
-                random_island_sequence = self('SELECT value FROM metadata WHERE name = ?',
+                random_island_sequence = self(
+                    'SELECT value FROM metadata WHERE name = ?',
                     'random_island_sequence')[0][0].split(' ')
             else:
                 map_name = map_name_data[0][0]
                 if map_name.startswith('USER_MAPS_DIR:'):
-                    self._map_path = PATHS.USER_MAPS_DIR + map_name[len('USER_MAPS_DIR:'):]
+                    self._map_path = PATHS.USER_MAPS_DIR + map_name[len(
+                        'USER_MAPS_DIR:'):]
                 elif os.path.isabs(map_name):
                     self._map_path = map_name
                 else:
-                    self._map_path = SavegameManager.get_filename_from_map_name(map_name)
+                    self._map_path = \
+                        SavegameManager.get_filename_from_map_name(map_name)
 
         if is_random_map:
             handle, self._temp_path2 = tempfile.mkstemp()
@@ -94,16 +98,18 @@ class SavegameAccessor(DbReader):
             random_map_db.close()
             self._map_path = self._temp_path2
 
-            self('INSERT INTO metadata VALUES(?, ?)', 'random_island_sequence',
-                ' '.join(random_island_sequence))
+            self('INSERT INTO metadata VALUES(?, ?)',
+                 'random_island_sequence',
+                 ' '.join(random_island_sequence))
 
         if options is not None:
             if options.map_padding is not None:
-                self("INSERT INTO map_properties VALUES(?, ?)", 'padding', options.map_padding)
+                self("INSERT INTO map_properties VALUES(?, ?)", 'padding',
+                     options.map_padding)
 
         if not os.path.exists(self._map_path):
-            raise MapFileNotFound("Map file " + unicode(self._map_path) + " not found!")
-
+            raise MapFileNotFound("Map file " + unicode(self._map_path) +
+                                  " not found!")
 
         self('ATTACH ? AS map_file', self._map_path)
         if is_random_map:
@@ -111,10 +117,13 @@ class SavegameAccessor(DbReader):
         elif os.path.isabs(self._map_path):
             self.map_name = self._map_path
         else:
-            self.map_name = SavegameManager.get_savegamename_from_filename(self._map_path)
+            self.map_name = SavegameManager.get_savegamename_from_filename(
+                self._map_path)
 
-        map_padding = self("SELECT value FROM map_properties WHERE name = 'padding'")
-        self.map_padding = int(map_padding[0][0]) if map_padding else MAP.PADDING
+        map_padding = self("SELECT value FROM map_properties WHERE "
+                           "name = 'padding'")
+        self.map_padding = int(
+            map_padding[0][0]) if map_padding else MAP.PADDING
 
         self._load_building()
         self._load_settlement()
@@ -142,7 +151,8 @@ class SavegameAccessor(DbReader):
 
     def _load_building(self):
         self._building = {}
-        for row in self("SELECT rowid, x, y, location, rotation, level FROM building"):
+        for row in self("SELECT rowid, x, y, location, rotation, level FROM "
+                        "building"):
             self._building[int(row[0])] = row[1:]
 
     def get_building_row(self, worldid):
@@ -166,7 +176,8 @@ class SavegameAccessor(DbReader):
 
     def _load_concrete_object(self):
         self._concrete_object = {}
-        for row in self("SELECT id, action_runtime, action_set_id FROM concrete_object"):
+        for row in self("SELECT id, action_runtime, action_set_id FROM "
+                        "concrete_object"):
             self._concrete_object[int(row[0])] = int(row[1]), row[2]
 
     def get_concrete_object_data(self, worldid):
@@ -176,8 +187,9 @@ class SavegameAccessor(DbReader):
         self._productions_by_worldid = {}
         self._production_lines_by_owner = {}
         self._productions_by_id_and_owner = {}
-        db_data = self("SELECT rowid, state, owner, prod_line_id, remaining_ticks, _pause_old_state,"
-            " creation_tick FROM production")
+        db_data = self("SELECT rowid, state, owner, prod_line_id, "
+                       "remaining_ticks, _pause_old_state,"
+                       " creation_tick FROM production")
         for row in db_data:
             rowid = int(row[0])
             data = row[1:]
@@ -197,9 +209,13 @@ class SavegameAccessor(DbReader):
             self._production_lines_by_owner[owner].append
 
         self._production_state_history = defaultdict(deque)
-        for object_id, production_id, tick, state in self("SELECT object_id, production, tick, state"
-                " FROM production_state_history ORDER BY object_id, production, tick"):
-            self._production_state_history[int(object_id), int(production_id)].append((tick, state))
+        for object_id, production_id, tick, state in self(
+                "SELECT object_id, production, tick, state FROM "
+                "production_state_history ORDER BY object_id, production, "
+                "tick"):
+            self._production_state_history[int(object_id),
+                                           int(production_id)].append((tick,
+                                                                       state))
 
     def get_production_by_id_and_owner(self, id, ownerid):
         # owner means worldid of entity
@@ -248,16 +264,21 @@ class SavegameAccessor(DbReader):
 
     def _load_building_collector(self):
         self._building_collector = {}
-        for row in self("SELECT rowid, home_building, creation_tick FROM building_collector"):
-            self._building_collector[int(row[0])] = (int(row[1]) if row[1] is not None else None, row[2])
+        for row in self("SELECT rowid, home_building, creation_tick FROM "
+                        "building_collector"):
+            self._building_collector[int(row[0])] = (
+                int(row[1]) if row[1] is not None else None, row[2])
 
         self._building_collector_job_history = defaultdict(deque)
-        for collector_id, tick, utilization in self("SELECT collector, tick, utilisation "
-                "FROM building_collector_job_history ORDER BY collector, tick"):
-            self._building_collector_job_history[int(collector_id)].append((tick, utilization))
+        for collector_id, tick, utilization in self(
+                "SELECT collector, tick, utilisation FROM "
+                "building_collector_job_history ORDER BY collector, tick"):
+            self._building_collector_job_history[int(collector_id)].append(
+                (tick, utilization))
 
     def get_building_collectors_data(self, worldid):
-        """Returns (id of the building collector's home or None otherwise, creation_tick)"""
+        """Returns (id of the building collector's home or None otherwise,
+        creation_tick)"""
         return self._building_collector.get(int(worldid))
 
     def get_building_collector_job_history(self, worldid):
@@ -265,7 +286,8 @@ class SavegameAccessor(DbReader):
 
     def _load_production_line(self):
         self._production_line = {}
-        for row in self("SELECT for_worldid, type, res, amount FROM production_line"):
+        for row in self("SELECT for_worldid, type, res, amount FROM "
+                        "production_line"):
             id = int(row[0])
             if id not in self._production_line:
                 self._production_line[id] = []
@@ -312,8 +334,8 @@ class SavegameAccessor(DbReader):
     @classmethod
     def get_players_num(cls, savegamefile):
         """Return number of regular human and ai players"""
-        return DbReader(savegamefile)("SELECT count(rowid) FROM player"
-            " WHERE is_trader = 0 AND is_pirate = 0")[0][0]
+        return DbReader(savegamefile)("SELECT count(rowid) FROM player WHERE "
+                                      "is_trader = 0 AND is_pirate = 0")[0][0]
 
     @classmethod
     def get_hash(cls, savegamefile):

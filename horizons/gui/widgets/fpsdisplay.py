@@ -28,44 +28,44 @@ from horizons.gui.widgets.container import AutoResizeContainer
 
 
 class FPSDisplay(AutoResizeContainer):
-	"""Display the frames per second.
+    """Display the frames per second.
 
-	Updates once a second if visible.
-	"""
+    Updates once a second if visible.
+    """
 
-	def __init__(self):
-		super(FPSDisplay, self).__init__()
+    def __init__(self):
+        super(FPSDisplay, self).__init__()
 
-		self._label = Label(text=u"- - -")
-		self.addChild(self._label)
-		self.stylize('menu')
-		self.position_technique = "left:bottom"
+        self._label = Label(text=u"- - -")
+        self.addChild(self._label)
+        self.stylize('menu')
+        self.position_technique = "left:bottom"
 
-		self._timemanager = horizons.globals.fife.engine.getTimeManager()
+        self._timemanager = horizons.globals.fife.engine.getTimeManager()
 
-	def _update(self):
-		fps = 1000 / self._timemanager.getAverageFrameTime()
-		self._label.text = u"FPS: %.1f" % fps
-		self.resizeToContent()
-		self.toggle()  # hide and show again to fix position (pychan...)
-		self.toggle()
+    def _update(self):
+        fps = 1000 / self._timemanager.getAverageFrameTime()
+        self._label.text = u"FPS: %.1f" % fps
+        self.resizeToContent()
+        self.toggle()  # hide and show again to fix position (pychan...)
+        self.toggle()
 
-	def show(self):
-		ExtScheduler().add_new_object(self._update, self, loops=-1)
-		return super(FPSDisplay, self).show()
+    def show(self):
+        ExtScheduler().add_new_object(self._update, self, loops=-1)
+        return super(FPSDisplay, self).show()
 
-	def hide(self):
-		ExtScheduler().rem_call(self, self._update)
-		return super(FPSDisplay, self).hide()
+    def hide(self):
+        ExtScheduler().rem_call(self, self._update)
+        return super(FPSDisplay, self).hide()
 
-	def toggle(self):
-		if (Fife.getVersion() <= (0, 3, 5)):
-			if self._visible:
-				self.hide()
-			else:
-				self.show()
-		else:
-			if self.isSetVisible():
-				self.hide()
-			else:
-				self.show()
+    def toggle(self):
+        if (Fife.getVersion() <= (0, 3, 5)):
+            if self._visible:
+                self.hide()
+            else:
+                self.show()
+        else:
+            if self.isSetVisible():
+                self.hide()
+            else:
+                self.show()

@@ -153,4 +153,3 @@ class TabWidget(object):
         """Hides current tab and this widget"""
         self.current_tab.hide()
         self.widget.hide()
-

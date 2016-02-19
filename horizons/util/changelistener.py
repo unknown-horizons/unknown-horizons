@@ -45,8 +45,9 @@ class ChangeListener(object):
         self.__listeners = WeakMethodList()
         self.__remove_listeners = WeakMethodList()
         # number of event calls
-        # if any event is triggered increase the number, after all callbacks are executed decrease it
-        # if it reaches 0 it means that in the current object all event callbacks were executed
+        # if any event is triggered increase the number, after all callbacks
+        # are executed decrease it  if it reaches 0 it means that
+        # in the current object all event callbacks were executed
         self.__event_call_number = 0
         self.__hard_remove = True
 
@@ -74,8 +75,10 @@ class ChangeListener(object):
                 try:
                     listener()
                 except ReferenceError as e:
-                    # listener object is dead, don't crash since it doesn't need updates now anyway
-                    self.log.warning('The dead are listening to %s: %s', self, e)
+                    # listener object is dead, don't crash since it doesn't
+                    # need updates now anyway
+                    self.log.warning('The dead are listening to %s: %s',
+                                     self, e)
                     traceback.print_stack()
 
         self.__event_call_number -= 1
@@ -85,7 +88,8 @@ class ChangeListener(object):
             listener_list[:] = [l for l in listener_list if l]
 
     # Normal change listener
-    def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
+    def add_change_listener(self, listener, call_listener_now=False,
+                            no_duplicates=False):
         assert callable(listener)
         if not no_duplicates or listener not in self.__listeners:
             self.__listeners.append(listener)
@@ -140,10 +144,13 @@ class ChangeListener(object):
         self.__listeners = None
         self.__remove_listeners = None
 
-""" Class decorator that adds methods for listening for certain events to a class.
-These methods get added automatically (eventname is the name you pass to the decorator):
+"""Class decorator that adds methods for listening for certain events
+to a class.
+These methods get added automatically (eventname is the name
+you pass to the decorator):
 - add_eventname_listener(listener):
-    Adds listener callback. This function must take the object as first parameter plus
+    Adds listener callback. This function must take the object
+        as first parameter plus
         any parameter that might be provided additionally to on_eventname.
 - remove_eventname_listener(listener);
     Removes a listener previously added.
@@ -195,7 +202,8 @@ def metaChangeListenerDecorator(event_name):
             setattr(self, event_call_number, call_number)
             if getattr(self, event_call_number) == 0:
                 setattr(self, hard_remove_event, True)
-                setattr(self, list_name, [l for l in getattr(self, list_name) if l])
+                setattr(self, list_name,
+                        [l for l in getattr(self, list_name) if l])
 
         # add methods to class
         setattr(clas, "add_" + event_name + "_listener", add)
@@ -208,11 +216,12 @@ def metaChangeListenerDecorator(event_name):
         old_new = clas.__new__
 
         def new(cls, *args, **kwargs):
-            # this is a proposed way of calling the "old" new:
-            # obj = super(cls, cls).__new__(cls)
-            # which results in endless recursion, if you construct an instance of a class,
-            # that inherits from a base class on which the decorator has been applied.
-            # therefore, this workaround is used:
+            """this is a proposed way of calling the "old" new:
+            obj = super(cls, cls).__new__(cls)
+            which results in endless recursion, if you construct an instance
+            of a class, that inherits from a base class on which the decorator
+            has been applied. therefore, this workaround is used:
+            """
             obj = old_new(cls)
             setattr(obj, list_name, [])
             setattr(obj, event_call_number, 0)

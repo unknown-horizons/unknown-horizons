@@ -34,11 +34,12 @@ class UhDbAccessor(DbReader):
     to keep all the sql code in a central place, to make it reusable and
     maintainable.
 
-    It should be used as a utility to remove data access code from places where
-    it doesn't belong, such as game logic.
+    It should be used as a utility to remove data access code from places
+    where it doesn't belong, such as game logic.
 
-    Due to historic reasons, sql code is spread over the game code; for now, it is left at
-    places, that are data access routines (e.g. unit/building class)."""
+    Due to historic reasons, sql code is spread over the game code; for now,
+    it is left at places, that are data access routines
+    (e.g. unit/building class)."""
 
     def __init__(self, dbfile):
         super(UhDbAccessor, self).__init__(dbfile=dbfile)
@@ -51,7 +52,8 @@ class UhDbAccessor(DbReader):
     def get_res_name(self, id):
         """Returns the translated name for a specific resource id.
         @param id: int resource's id, of which the name is returned """
-        name = self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
+        name = self.cached_query("SELECT name FROM resource WHERE id = ?",
+                                 id)[0][0]
         return _(name)
 
     def get_res_inventory_display(self, id):
@@ -62,7 +64,8 @@ class UhDbAccessor(DbReader):
         """Returns the resource's value
         @param id: resource id
         @return: float value"""
-        return self.cached_query("SELECT value FROM resource WHERE id = ?", id)[0][0]
+        return self.cached_query("SELECT value FROM resource WHERE id = ?",
+                                 id)[0][0]
 
     def get_res(self, only_tradeable=False, only_inventory=False):
         """Returns a list of all resources.
@@ -83,9 +86,8 @@ class UhDbAccessor(DbReader):
         Returns the soundfile to the related sound name.
         @param sound: string, key in table sounds_special
         """
-        sql = 'SELECT file FROM sounds \
-               INNER JOIN sounds_special ON sounds.id = sounds_special.sound AND \
-               sounds_special.type = ?'
+        sql = 'SELECT file FROM sounds INNER JOIN sounds_special ' \
+              'ON sounds.id = sounds_special.sound AND sounds_special.type = ?'
         return self.cached_query(sql, soundname)[0][0]
 
     # Building table
@@ -95,17 +97,19 @@ class UhDbAccessor(DbReader):
         @param building_class_id: class of building, int
         @return list of building class ids
         """
-        sql = "SELECT related_building FROM related_buildings WHERE building = ?"
+        sql = "SELECT related_building FROM related_buildings WHERE " \
+              "building = ?"
         return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
     @decorators.cachedmethod
     def get_related_building_ids_for_menu(self, building_class_id):
-        """Returns list of building ids related to building_class_id, which should
-        be shown in the build_related menu.
+        """Returns list of building ids related to building_class_id,
+        which should be shown in the build_related menu.
         @param building_class_id: class of building, int
         @return list of building class ids
         """
-        sql = "SELECT related_building FROM related_buildings WHERE building = ? and show_in_menu = 1"
+        sql = "SELECT related_building FROM related_buildings WHERE " \
+              "building = ? and show_in_menu = 1"
         return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
     @decorators.cachedmethod
@@ -114,7 +118,8 @@ class UhDbAccessor(DbReader):
         @param building_class_id: class of building, int
         @return list of building class ids
         """
-        sql = "SELECT building FROM related_buildings WHERE related_building = ?"
+        sql = "SELECT building FROM related_buildings WHERE " \
+              "related_building = ?"
         return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
     @decorators.cachedmethod
@@ -175,7 +180,8 @@ class UhDbAccessor(DbReader):
         return self.cached_query(sql, level)[0][0]
 
     def get_tier_inhabitants_max(self, level):
-        """Returns the upper limit of inhabitants per house for a specific tier.
+        """Returns the upper limit of inhabitants per house
+        for a specific tier.
         Inhabitants will try to increase their tier upon exceeding this value.
         @param level: int - which tier
         """
@@ -183,7 +189,8 @@ class UhDbAccessor(DbReader):
         return self.cached_query(sql, level)[0][0]
 
     def get_tier_inhabitants_min(self, level):
-        """Returns the lower limit of inhabitants per house for a specific tier.
+        """Returns the lower limit of inhabitants per house for
+        a specific tier.
         This limit coincides with the max. amount of the previous tier.
         Inhabitants will decrease their tier after falling below.
         @param level: int - which tier
@@ -195,22 +202,27 @@ class UhDbAccessor(DbReader):
             return self.cached_query(sql, level - 1)[0][0]
 
     def get_upper_happiness_limit(self):
-        sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"
+        sql = "SELECT value FROM balance_values WHERE " \
+              "name='happiness_inhabitants_increase_requirement'"
         return self.cached_query(sql)[0][0]
 
     def get_lower_happiness_limit(self):
-        sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_decrease_limit'"
+        sql = "SELECT value FROM balance_values WHERE " \
+              "name='happiness_inhabitants_decrease_limit'"
         return self.cached_query(sql)[0][0]
 
     # Misc
     def get_player_start_res(self):
-        """Returns resources, that players should get at startup as dict: { res : amount }"""
-        start_res = self.cached_query("SELECT resource, amount FROM player_start_res")
+        """Returns resources, that players should get at startup as dict:
+        { res : amount }"""
+        start_res = self.cached_query(
+            "SELECT resource, amount FROM player_start_res")
         return dict(start_res)
 
     @decorators.cachedmethod
     def get_storage_building_capacity(self, storage_type):
-        """Returns the amount that a storage building can store of every resource.
+        """Returns the amount that a storage building can store
+        of every resource.
         @param storage_type: building class id"""
         sql = "SELECT size FROM storage_building_capacity WHERE type = ?"
         return self.cached_query(sql, storage_type)[0][0]
@@ -226,16 +238,19 @@ class UhDbAccessor(DbReader):
     def get_translucent_buildings(self):
         """Returns building types that should become translucent on demand"""
         # use set because of quick contains check
-        return frozenset(id for (id, b) in Entities.buildings.iteritems() if b.translucent)
+        return frozenset(id for (id, b) in Entities.buildings.iteritems() if
+                         b.translucent)
 
     # Weapon table
     def get_weapon_stackable(self, weapon_id):
         """Returns True if the weapon is stackable, False otherwise."""
-        return self.cached_query("SELECT stackable FROM weapon WHERE id = ?", weapon_id)[0][0]
+        return self.cached_query(
+            "SELECT stackable FROM weapon WHERE id = ?", weapon_id)[0][0]
 
     def get_weapon_attack_radius(self, weapon_id):
         """Returns weapon's attack radius modifier."""
-        return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
+        return self.cached_query(
+            "SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
 
     # Units
     def get_unit_type_name(self, type_id):
@@ -245,7 +260,7 @@ class UhDbAccessor(DbReader):
     def get_unit_tooltip(self, unit_id):
         """Tries to identify unit properties to display as tooltip.
         #TODO Should be extended later to also include movement speed, etc."""
-        helptexts = [] # collects all information we will find
+        helptexts = []  # collects all information we will find
         unit = Entities.units[unit_id]
         try:
             comp = unit.get_component_template('StorageComponent')
@@ -253,7 +268,7 @@ class UhDbAccessor(DbReader):
             # Ship storage properties
             helptext = _('{slotnum} slots, {limit}t')
             helptext = helptext.format(slotnum=storage['slotnum'],
-                limit=storage['limit'])
+                                       limit=storage['limit'])
             helptexts.append(helptext)
         except KeyError:  # Component not found, ignore this part
             pass

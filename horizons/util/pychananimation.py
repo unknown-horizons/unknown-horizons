@@ -31,7 +31,8 @@ class PychanAnimation(object):
 
     def __init__(self, icon, directory):
         self.icon = icon
-        files = [os.path.join(directory, filename)
+        files = [
+            os.path.join(directory, filename)
             for filename in os.listdir(directory)
             if filename.endswith('.png')]
 
@@ -47,7 +48,8 @@ class PychanAnimation(object):
         """
         self.interval = interval
         self._next()
-        ExtScheduler().add_new_object(self._next, self, run_in=interval, loops=loops)
+        ExtScheduler().add_new_object(self._next, self, run_in=interval,
+                                      loops=loops)
 
     def stop(self):
         """Stops the animation (leaves current image)"""

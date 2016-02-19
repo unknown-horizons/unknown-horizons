@@ -35,59 +35,59 @@ from horizons.gui.widgets.imagebutton import OkButton
 
 
 class ProductionOverview(StatsWidget, Window):
-	"""
-	Widget that shows every produced resource in this game.
+    """
+    Widget that shows every produced resource in this game.
 
-	Implementation based on https://github.com/unknown-horizons/unknown-horizons/issues/749 .
-	"""
+    Implementation based on https://github.com/unknown-horizons/unknown-horizons/issues/749 .
+    """
 
-	widget_file_name = 'island_production.xml'
+    widget_file_name = 'island_production.xml'
 
-	def __init__(self, windows, settlement):
-		StatsWidget.__init__(self, settlement.session, center_widget=True)
-		Window.__init__(self, windows)
+    def __init__(self, windows, settlement):
+        StatsWidget.__init__(self, settlement.session, center_widget=True)
+        Window.__init__(self, windows)
 
-		self.settlement = settlement
-		self.db = self.settlement.session.db
-		Scheduler().add_new_object(Callback(self._refresh_tick), self,
-			run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
+        self.settlement = settlement
+        self.db = self.settlement.session.db
+        Scheduler().add_new_object(Callback(self._refresh_tick), self,
+            run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
-	def _init_gui(self):
-		super(ProductionOverview, self)._init_gui()
-		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+    def _init_gui(self):
+        super(ProductionOverview, self)._init_gui()
+        self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
-	def refresh(self):
-		super(ProductionOverview, self).refresh()
-		name = self.settlement.get_component(NamedComponent).name
-		text = _('Production overview of {settlement}').format(settlement=name)
-		self._gui.findChild(name='headline').text = text
+    def refresh(self):
+        super(ProductionOverview, self).refresh()
+        name = self.settlement.get_component(NamedComponent).name
+        text = _('Production overview of {settlement}').format(settlement=name)
+        self._gui.findChild(name='headline').text = text
 
-		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
-		for resource_id, amount in data:
-			self._add_line_to_gui(resource_id, amount)
-		self._content_vbox.adaptLayout()
+        data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+        for resource_id, amount in data:
+            self._add_line_to_gui(resource_id, amount)
+        self._content_vbox.adaptLayout()
 
-	def _add_line_to_gui(self, resource_id, amount):
-		displayed = self.db.get_res_inventory_display(resource_id)
-		if not displayed:
-			return
-		res_name = self.db.get_res_name(resource_id)
+    def _add_line_to_gui(self, resource_id, amount):
+        displayed = self.db.get_res_inventory_display(resource_id)
+        if not displayed:
+            return
+        res_name = self.db.get_res_name(resource_id)
 
-		icon = create_resource_icon(resource_id, self.db)
-		icon.name = 'icon_%s' % resource_id
-		icon.max_size = icon.min_size = icon.size = (20, 20)
+        icon = create_resource_icon(resource_id, self.db)
+        icon.name = 'icon_%s' % resource_id
+        icon.max_size = icon.min_size = icon.size = (20, 20)
 
-		label = widgets.Label(name='resource_%s' % resource_id)
-		label.text = res_name
-		label.min_size = (100, 20)
+        label = widgets.Label(name='resource_%s' % resource_id)
+        label.text = res_name
+        label.min_size = (100, 20)
 
-		amount_label = widgets.Label(name='produced_sum_%s' % resource_id)
-		amount_label.text = unicode(amount)
+        amount_label = widgets.Label(name='produced_sum_%s' % resource_id)
+        amount_label.text = unicode(amount)
 
-		hbox = widgets.HBox()
-		hbox.addChild(icon)
-		hbox.addChild(label)
-		hbox.addChild(amount_label)
-		self._content_vbox.addChild(hbox)
+        hbox = widgets.HBox()
+        hbox.addChild(icon)
+        hbox.addChild(label)
+        hbox.addChild(amount_label)
+        self._content_vbox.addChild(hbox)
 
 decorators.bind_all(ProductionOverview)

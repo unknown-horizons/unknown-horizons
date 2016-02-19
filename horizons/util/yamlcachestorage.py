@@ -73,7 +73,8 @@ class YamlCacheStorage(object):
                 self._data = data[1]
             finally:
                 file.close()
-            self.log.debug('%s._reload(): successfully loaded cache from disk', self)
+            self.log.debug(
+                '%s._reload(): successfully loaded cache from disk', self)
         else:
             self._clear()
 
@@ -94,8 +95,9 @@ class YamlCacheStorage(object):
             # Ignore all exceptions because loading the cache from disk
             # is not critical.
             e = unicode(str(e), errors='replace')
-            cls.log.warning("Warning: Failed to open %s as cache: %s\nThis warning is expected when"
-                " upgrading from old versions.\n" % (filename, e))
+            cls.log.warning("Warning: Failed to open {0} as cache: {1}\nThis "
+                            "warning is expected when upgrading from "
+                            "old versions.\n".format(filename, e))
             obj._clear()
         return obj
 
@@ -111,7 +113,8 @@ class YamlCacheStorage(object):
         except Exception as e:
             # Ignore all exceptions because saving the cache on disk
             # is not critical.
-            self.log.warning("Warning: Unable to save cache into %s: %s" % (self._filename, unicode(e)))
+            self.log.warning("Warning: Unable to save cache into {0}: {1}".
+                             format(self._filename, unicode(e)))
 
     def close(self):
         """Write the file to disk if possible and then invalidate

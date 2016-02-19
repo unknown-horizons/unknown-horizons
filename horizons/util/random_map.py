@@ -29,12 +29,12 @@ from horizons.util.shapes import Circle, Point, Rect
 from horizons.constants import GROUND
 
 # this is how a random island id looks like (used for creation)
-_random_island_id_template = ("random:${creation_method}:${width}:${height}:${seed}:"
-    "${island_x}:${island_y}")
+_random_island_id_template = ("random:${creation_method}:${width}:${height}:"
+                              "${seed}:${island_x}:${island_y}")
 
 # you can check for a random island id with this:
-_random_island_id_regexp = (r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+):([\-]?[0-9]+):"
-    "([\-]?[0-9]+)$")
+_random_island_id_regexp = (r"^random:([0-9]+):([0-9]+):([0-9]+):"
+                            r"([\-]?[0-9]+):([\-]?[0-9]+):([\-]?[0-9]+)$")
 
 
 def create_random_island(map_db, island_id, id_string):
@@ -45,8 +45,10 @@ def create_random_island(map_db, island_id, id_string):
     """
     match_obj = re.match(_random_island_id_regexp, id_string)
     assert match_obj
-    creation_method, width, height, seed, island_x, island_y = [long(i) for i in match_obj.groups()]
-    assert creation_method == 2, 'The only supported island creation method is 2.'
+    creation_method, width, height, seed, island_x, island_y = [
+        long(i) for i in match_obj.groups()]
+    assert creation_method == 2, 'The only supported island creation ' \
+                                 'method is 2.'
 
     rand = random.Random(seed)
     map_set = set()
@@ -70,7 +72,8 @@ def create_random_island(map_db, island_id, id_string):
             else:
                 x = rand.randint(0, width)
                 y = rand.randint(0, height)
-            shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
+            shape = Rect.init_from_topleft_and_size(
+                x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
         else:
             # use a circle such that the radius is determined by shape_id
             radius = shape_id
@@ -78,7 +81,8 @@ def create_random_island(map_db, island_id, id_string):
                 x = rand.randint(-radius * 3 // 2, width + radius * 3 // 2)
                 y = rand.randint(-radius * 3 // 2, height + radius * 3 // 2)
                 shape = Circle(Point(x, y), shape_id)
-            elif width - radius - 4 >= radius + 3 and height - radius - 4 >= radius + 3:
+            elif (width - radius - 4 >= radius + 3 and
+                    height - radius - 4 >= radius + 3):
                 x = rand.randint(radius + 3, width - radius - 4)
                 y = rand.randint(radius + 3, height - radius - 4)
                 shape = Circle(Point(x, y), shape_id)
@@ -96,18 +100,21 @@ def create_random_island(map_db, island_id, id_string):
     # add grass tiles
     for x, y in map_set:
         map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)",
-            island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
+               island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
 
     def fill_tiny_spaces(tile):
         """Fills 1 tile gulfs and straits with the specified tile
         @param tile: ground tile to fill with
         """
 
-        all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1),
+                         (1, -1), (1, 0), (1, 1)]
         neighbors = [(-1, 0), (0, -1), (0, 1), (1, 0)]
         corners = [(-1, -1), (-1, 1)]
-        knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
-        bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
+        knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2),
+                        (1, 2), (2, -1), (2, 1)]
+        bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3,
+                           (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
 
         edge_set = copy.copy(map_set)
         reduce_edge_set = True
@@ -178,14 +185,15 @@ def create_random_island(map_db, island_id, id_string):
                     y3 = y + 2 * y_offset
                     if (x2, y2) not in map_set and (x3, y3) in map_set:
                         to_fill.add((x2, y2))
-                    elif (x2, y2) in map_set and (x2, y) not in map_set and (x, y2) not in map_set:
+                    elif (x2, y2) in map_set and (x2, y) not in map_set and (
+                            x, y2) not in map_set:
                         to_fill.add((x2, y))
 
             if to_fill:
                 for x, y in to_fill:
                     map_set.add((x, y))
                     map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)",
-                        island_id, island_x + x, island_y + y, *tile)
+                           island_id, island_x + x, island_y + y, *tile)
 
                 old_size = len(edge_set)
                 edge_set = edge_set.difference(to_ignore).union(to_fill)
@@ -269,7 +277,7 @@ def create_random_island(map_db, island_id, id_string):
 
         assert tile
         map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)",
-            island_id, island_x + x, island_y + y, *tile)
+               island_id, island_x + x, island_y + y, *tile)
     map_set = map_set.union(outline)
 
     # add sand to shallow water tiles
@@ -324,7 +332,7 @@ def create_random_island(map_db, island_id, id_string):
 
         assert tile
         map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)",
-            island_id, island_x + x, island_y + y, *tile)
+               island_id, island_x + x, island_y + y, *tile)
     map_set = map_set.union(outline)
 
     # add shallow water to deep water tiles
@@ -379,7 +387,7 @@ def create_random_island(map_db, island_id, id_string):
 
         assert tile
         map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)",
-            island_id, island_x + x, island_y + y, *tile)
+               island_id, island_x + x, island_y + y, *tile)
 
     map_db("COMMIT")
 
@@ -389,10 +397,11 @@ def _simplify_seed(seed):
     Return the simplified seed value. The goal of this is to make it easier
     for users to convey the seeds orally.
 
-    This function also makes sure its return value fits into a 32bit integer. That is
-    necessary because otherwise the hash of the value could be different between
-    32 and 64 bit python interpreters. That would cause a map with seed X to be different
-    depending on the platform which we don't want to happen.
+    This function also makes sure its return value fits into a 32bit integer.
+    That is necessary because otherwise the hash of the value could be
+    different between 32 and 64 bit python interpreters. That would cause
+    a map with seed X to be different depending on the platform which we don't
+    want to happen.
     """
 
     seed = str(seed).lower().strip()
@@ -402,7 +411,7 @@ def _simplify_seed(seed):
 
 
 def generate_random_map(seed, map_size, water_percent, max_island_size,
-        preferred_island_size, island_size_deviation):
+                        preferred_island_size, island_size_deviation):
     """
     Generates a random map.
 
@@ -416,9 +425,12 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
     """
     max_island_size = min(max_island_size, map_size)
     rand = random.Random(_simplify_seed(seed))
-    min_island_size = 20  # minimum chosen island side length (the real size my be smaller)
-    min_island_separation = 3 + map_size // 100  # minimum distance between two islands
-    max_island_side_coefficient = 4  # maximum value of island's max(side length) / min(side length)
+    min_island_size = 20
+    # minimum chosen island side length (the real size my be smaller)
+    min_island_separation = 3 + map_size // 100
+    # minimum distance between two islands
+    max_island_side_coefficient = 4
+    # maximum value of island's max(side length) / min(side length)
 
     islands = []
     estimated_land = 0
@@ -427,11 +439,14 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
     trial_number = 0
     while trial_number < 100:
         trial_number += 1
-        width = max(min_island_size, min(max_island_size,
-            int(round(rand.gauss(preferred_island_size, island_size_deviation)))))
-        side_coefficient = min(1 + abs(rand.gauss(0, 0.2)), max_island_side_coefficient)
-        side_coefficient = side_coefficient if rand.randint(0, 1) else 1.0 / side_coefficient
-        height = max(min_island_size, min(max_island_size, int(round(width * side_coefficient))))
+        width = max(min_island_size, min(max_island_size, int(round(
+            rand.gauss(preferred_island_size, island_size_deviation)))))
+        side_coefficient = min(1 + abs(rand.gauss(0, 0.2)),
+                               max_island_side_coefficient)
+        side_coefficient = side_coefficient if rand.randint(
+            0, 1) else 1.0 / side_coefficient
+        height = max(min_island_size, min(max_island_size, int(round(
+            width * side_coefficient))))
         size = width * height
         if estimated_land + size > max_land_amount:
             continue
@@ -456,24 +471,30 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
     if len(islands) > 1:
         min_top = min(rect.top for rect in islands)
         rect = rand.choice([rect for rect in islands if rect.top == min_top])
-        islands[islands.index(rect)] = Rect.init_from_borders(rect.left, rect.top - min_top,
+        islands[islands.index(rect)] = Rect.init_from_borders(
+            rect.left, rect.top - min_top,
             rect.right, rect.bottom - min_top)
 
         max_bottom = max(rect.bottom for rect in islands)
-        rect = rand.choice([rect for rect in islands if rect.bottom == max_bottom])
+        rect = rand.choice([rect for rect in islands if
+                            rect.bottom == max_bottom])
         shift = map_size - max_bottom - 1
-        islands[islands.index(rect)] = Rect.init_from_borders(rect.left, rect.top + shift,
+        islands[islands.index(rect)] = Rect.init_from_borders(
+            rect.left, rect.top + shift,
             rect.right, rect.bottom + shift)
 
         min_left = min(rect.left for rect in islands)
         rect = rand.choice([rect for rect in islands if rect.left == min_left])
-        islands[islands.index(rect)] = Rect.init_from_borders(rect.left - min_left, rect.top,
+        islands[islands.index(rect)] = Rect.init_from_borders(
+            rect.left - min_left, rect.top,
             rect.right - min_left, rect.bottom)
 
         max_right = max(rect.right for rect in islands)
-        rect = rand.choice([rect for rect in islands if rect.right == max_right])
+        rect = rand.choice([rect for rect in islands if
+                            rect.right == max_right])
         shift = map_size - max_right - 1
-        islands[islands.index(rect)] = Rect.init_from_borders(rect.left + shift, rect.top,
+        islands[islands.index(rect)] = Rect.init_from_borders(
+            rect.left + shift, rect.top,
             rect.right + shift, rect.bottom)
 
     island_strings = []
@@ -481,9 +502,11 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
         # The bounds must be platform independent to make sure the same maps
         # are generated on all platforms.
         island_seed = rand.randint(-2147483648, 2147483647)
-        island_params = {'creation_method': 2, 'seed': island_seed, 'width': rect.width,
-                         'height': rect.height, 'island_x': rect.left, 'island_y': rect.top}
-        island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
+        island_params = {'creation_method': 2, 'seed': island_seed,
+                         'width': rect.width, 'height': rect.height,
+                         'island_x': rect.left, 'island_y': rect.top}
+        island_string = string.Template(
+            _random_island_id_template).safe_substitute(island_params)
         island_strings.append(island_string)
     return island_strings
 
@@ -491,7 +514,8 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 def generate_random_seed(seed):
     rand = random.Random(seed)
     if rand.randint(0, 1) == 0:
-        # generate a random string of 1-5 letters a-z with a dash if there are 4 or more letters
+        # generate a random string of 1-5 letters a-z with a dash
+        # if there are 4 or more letters
         seq = ''
         for i in xrange(rand.randint(1, 5)):
             seq += chr(97 + rand.randint(0, 25))
@@ -506,11 +530,13 @@ def generate_random_seed(seed):
             # generate a five digit integer
             return unicode(rand.randint(10000, 99999))
         else:
-            # generate a sequence of 2 or 3 dash separated fields of integers 10-9999
+            # generate a sequence of 2 or 3 dash separated fields of
+            # integers 10-9999
             parts = []
             for i in xrange(fields):
                 power = rand.randint(1, 3)
-                parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
+                parts.append(str(rand.randint(10 ** power, 10 ** (
+                    power + 1) - 1)))
             return unicode('-'.join(parts))
 
 
@@ -526,5 +552,6 @@ def generate_map_from_seed(seed):
 
 
 def generate_huge_map_from_seed(seed):
-    """Same as generate_map_from_seed, but making it as big as it is still reasonable"""
+    """Same as generate_map_from_seed, but making it as big as it is still
+    reasonable"""
     return generate_random_map(seed, 250, 20, 70, 70, 5)

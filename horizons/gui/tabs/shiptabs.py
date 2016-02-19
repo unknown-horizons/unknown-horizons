@@ -109,13 +109,16 @@ class ShipOverviewTab(OverviewTab):
                 _("Cannot equip trade ship with weapons"),
                 _("It is not possible to equip a trade ship with weapons.")
             ))
-        self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons,
+        self.widget.findChild(name='inventory').apply_to_buttons(
+            click_on_cannons,
             lambda b: b.res_id == WEAPONS.CANNON)
 
     def refresh(self):
         events = {
             # show rename when you click on name
-            'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
+            'name': Callback(
+                self.instance.session.ingame_gui.show_change_name_dialog,
+                self.instance),
             'configure_route/mouseClicked': Callback(self._configure_route),
         }
 
@@ -139,7 +142,8 @@ class FightingShipOverviewTab(ShipOverviewTab):
         super(FightingShipOverviewTab, self).init_widget()
         # Create weapon inventory, needed only in gui for inventory widget.
         self.weapon_inventory = self.instance.get_weapon_storage()
-        self.widget.findChild(name='weapon_inventory').init(self.instance.session.db,
+        self.widget.findChild(name='weapon_inventory').init(
+            self.instance.session.db,
             self.weapon_inventory)
 
     def _refresh_combat(self):
@@ -151,19 +155,21 @@ class FightingShipOverviewTab(ShipOverviewTab):
             button.button.helptext = _("Unequip weapon")
             button.button.capture(Callback(self.unequip_weapon, button.res_id))
 
-        self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip,
-            lambda b: b.res_id == WEAPONS.CANNON)
-        self.widget.findChild(name='inventory').apply_to_buttons(apply_equip,
-            lambda b: b.res_id == WEAPONS.CANNON)
+        self.widget.findChild(name='weapon_inventory').apply_to_buttons(
+            apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
+        self.widget.findChild(name='inventory').apply_to_buttons(
+            apply_equip, lambda b: b.res_id == WEAPONS.CANNON)
 
     def equip_weapon(self, weapon_id):
-        if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+        if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(
+                self.instance.session) == 0:
             self.weapon_inventory.alter(weapon_id, 1)
         self.widget.child_finder('weapon_inventory').update()
         self.refresh()
 
     def unequip_weapon(self, weapon_id):
-        if UnequipWeaponToInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
+        if UnequipWeaponToInventory(self.instance, weapon_id, 1).execute(
+                self.instance.session) == 0:
             self.weapon_inventory.alter(weapon_id, -1)
         self.widget.child_finder('weapon_inventory').update()
         self.refresh()

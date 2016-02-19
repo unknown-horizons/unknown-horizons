@@ -26,30 +26,30 @@ from horizons.constants import RES
 
 
 class TradeHistoryItem(Container):
-	"""Widget that shows the last few trades that have taken place in the settlement."""
+    """Widget that shows the last few trades that have taken place in the settlement."""
 
-	def __init__(self, player, resource_id, amount, gold, **kwargs):
-		super(TradeHistoryItem, self).__init__(**kwargs)
-		self.widget = load_uh_widget('trade_history_item.xml')
-		self.addChild(self.widget)
+    def __init__(self, player, resource_id, amount, gold, **kwargs):
+        super(TradeHistoryItem, self).__init__(**kwargs)
+        self.widget = load_uh_widget('trade_history_item.xml')
+        self.addChild(self.widget)
 
-		self.findChild(name='player_emblem').background_color = player.color
-		self.findChild(name='player_name').text = player.name
+        self.findChild(name='player_emblem').background_color = player.color
+        self.findChild(name='player_name').text = player.name
 
-		gold_amount_label = self.findChild(name='gold_amount')
-		gold_amount_label.text = u'{gold:+5d}'.format(gold=gold)
+        gold_amount_label = self.findChild(name='gold_amount')
+        gold_amount_label.text = u'{gold:+5d}'.format(gold=gold)
 
-		gold_icon = self.findChild(name='gold_icon')
-		gold_icon.image = get_res_icon_path(RES.GOLD)
-		gold_icon.max_size = gold_icon.min_size = gold_icon.size = (16, 16)
-		gold_icon.helptext = player.session.db.get_res_name(RES.GOLD)
+        gold_icon = self.findChild(name='gold_icon')
+        gold_icon.image = get_res_icon_path(RES.GOLD)
+        gold_icon.max_size = gold_icon.min_size = gold_icon.size = (16, 16)
+        gold_icon.helptext = player.session.db.get_res_name(RES.GOLD)
 
-		resource_amount_label = self.findChild(name='resource_amount')
-		resource_amount_label.text = u'{amount:+5d}'.format(amount=amount)
+        resource_amount_label = self.findChild(name='resource_amount')
+        resource_amount_label.text = u'{amount:+5d}'.format(amount=amount)
 
-		resource_icon = self.findChild(name='resource_icon')
-		resource_icon.image = get_res_icon_path(resource_id)
-		resource_icon.max_size = resource_icon.min_size = resource_icon.size = (16, 16)
-		resource_icon.helptext = player.session.db.get_res_name(resource_id)
+        resource_icon = self.findChild(name='resource_icon')
+        resource_icon.image = get_res_icon_path(resource_id)
+        resource_icon.max_size = resource_icon.min_size = resource_icon.size = (16, 16)
+        resource_icon.helptext = player.session.db.get_res_name(resource_id)
 
-		self.size = self.widget.size
+        self.size = self.widget.size

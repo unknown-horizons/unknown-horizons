@@ -36,7 +36,8 @@ except ImportError:
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
     return self.construct_scalar(node)
-SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
+SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode',
+                           construct_yaml_str)
 SafeLoader.add_constructor(u'tag:yaml.org,2002:str', construct_yaml_str)
 
 
@@ -46,7 +47,8 @@ def parse_token(token, token_klass):
     Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
     @param token_klass: "TIER", "RES", "UNITS" or "BUILDINGS"
     """
-    classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+    classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS,
+               'BUILDINGS': BUILDINGS}
 
     if not isinstance(token, basestring):
         # Probably numeric already
@@ -57,14 +59,15 @@ def parse_token(token, token_klass):
     try:
         return getattr(classes[token_klass], token.split(".", 2)[1])
     except AttributeError as e:  # token not defined here
-        err = ("This means that you either have to add an entry in horizons/constants.py "
-            "in the class %s for %s,\nor %s is actually a typo."
-            % (token_klass, token, token))
+        err = ("This means that you either have to add an entry in horizons"
+               "/constants.py in the class {0} for {1},\nor {2} is actually "
+               "a typo.".format(token_klass, token, token))
         raise Exception(str(e) + "\n\n" + err + "\n")
 
 
 def convert_game_data(data):
-    """Translates convenience symbols into actual game data usable by machines"""
+    """Translates convenience symbols into actual game data usable by machines
+    """
     if isinstance(data, dict):
         return dict([convert_game_data(i) for i in data.iteritems()])
     elif isinstance(data, (tuple, list)):
@@ -96,14 +99,16 @@ class YamlCache(object):
 
     @classmethod
     def load_yaml_data(self, string_or_stream):
-        """Use this instead of yaml.load everywhere in uh in case get_file isn't useable"""
+        """Use this instead of yaml.load everywhere in uh in case get_file
+        isn't useable"""
         return yaml.load(string_or_stream, Loader=SafeLoader)
 
     @classmethod
     def get_file(cls, filename, game_data=False):
         """Get contents of a yaml file
         @param filename: path to the file
-        @param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
+        @param game_data: Whether this file contains data like
+                          BUILDINGS.LUMBERJACK to resolve
         """
 
         # calc the hash
@@ -115,7 +120,8 @@ class YamlCache(object):
         if cls.cache is None:
             cls._open_cache()
 
-        yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
+        yaml_file_in_cache = (filename in cls.cache and
+                              cls.cache[filename][0] == h)
         if not yaml_file_in_cache:
             data = cls.load_yaml_data(f)
             if game_data:  # need to convert some values
@@ -146,7 +152,8 @@ class YamlCache(object):
 
     @classmethod
     def _do_sync(cls):
-        """Only write to disc once in a while, it's too slow when done every time"""
+        """Only write to disc once in a while, it's too slow when done
+        every time"""
         cls.lock.acquire()
         cls.sync_scheduled = False
         cls.cache.sync()

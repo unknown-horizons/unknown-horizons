@@ -290,34 +290,42 @@ class SavegameUpgrader(object):
             ' FROM ai_pirate p, unit u WHERE u.owner = p.rowid')
 
         # save pirate routine mission
-        db('CREATE TABLE "ai_mission_pirate_routine" ("target_point_x" INTEGER NOT NULL,'
-            ' "target_point_y" INTEGER NOT NULL )')
+        db('CREATE TABLE "ai_mission_pirate_routine" ("target_point_x" '
+            'INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL )')
 
     def _upgrade_to_rev64(self, db):
-        db("INSERT INTO metadata VALUES (?, ?)", "max_tier_notification", False)
+        db("INSERT INTO metadata VALUES (?, ?)", "max_tier_notification",
+           False)
 
     def _upgrade_to_rev65(self, db):
-        island_path = db("SELECT file FROM island ORDER BY file LIMIT 1")[0][0]
+        island_path = db("SELECT file FROM island ORDER BY file LIMIT 1"
+                         )[0][0]
         map_names = {
             'content/islands/bay_and_lake.sqlite': 'development',
-            'content/islands/fightForRes_island_0_169.sqlite': 'fight-for-res',
+            'content/islands/fightForRes_island_0_169.sqlite':
+                'fight-for-res',
             'content/islands/full_house_island_0_25.sqlite': 'full-house',
             'content/islands/mp-dev_island_0_0.sqlite': 'mp-dev',
             'content/islands/quattro_island_0_19.sqlite': 'quattro',
             'content/islands/rouver_island_0_0.sqlite': 'rouver',
-            'content/islands/singularity40_island_0_0.sqlite': 'singularity40',
+            'content/islands/singularity40_island_0_0.sqlite':
+                'singularity40',
             'content/islands/tiny.sqlite': 'test-map-tiny',
             'content/islands/triple_island_0_74.sqlite': 'triple'
         }
         if island_path in map_names:
-            db('INSERT INTO metadata VALUES (?, ?)', 'map_name', map_names[island_path])
+            db('INSERT INTO metadata VALUES (?, ?)', 'map_name',
+               map_names[island_path])
             return
 
         # random map
         island_strings = []
-        for island_x, island_y, island_string in db('SELECT x, y, file FROM island ORDER BY rowid'):
-            island_strings.append(island_string + ':%d:%d' % (island_x, island_y))
-        db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence', ' '.join(island_strings))
+        for island_x, island_y, island_string in db(
+                'SELECT x, y, file FROM island ORDER BY rowid'):
+            island_strings.append(island_string + ':{0}:{1}'.format(island_x,
+                                                                    island_y))
+        db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence',
+           ' '.join(island_strings))
 
     def _upgrade_to_rev66(self, db):
         db("DELETE FROM metadata WHERE name='max_tier_notification'")
@@ -325,55 +333,66 @@ class SavegameUpgrader(object):
         db("UPDATE player SET max_tier_notification = 0")
 
     def _upgrade_to_rev67(self, db):
-        db('CREATE TABLE "trade_slots" ("trade_post" INT NOT NULL, "slot_id" INT NOT NULL,'
-            ' "resource_id" INT NOT NULL, "selling" BOOL NOT NULL, "trade_limit" INT NOT NULL)')
-        for trade_post, in db("SELECT DISTINCT object FROM (SELECT object FROM trade_sell"
+        db('CREATE TABLE "trade_slots" ("trade_post" INT NOT NULL, '
+           '"slot_id" INT NOT NULL, "resource_id" INT NOT NULL, '
+           '"selling" BOOL NOT NULL, "trade_limit" INT NOT NULL)')
+        for trade_post, in db(
+                "SELECT DISTINCT object FROM (SELECT object FROM trade_sell"
                 " UNION SELECT object FROM trade_buy) ORDER BY object"):
             slot_id = 0
             for table in ['trade_buy', 'trade_sell']:
-                for resource_id, limit in db("SELECT resource, trade_limit FROM "
-                        + table + " WHERE object = ? ORDER BY object, resource", trade_post):
+                for resource_id, limit in db(
+                        "SELECT resource, trade_limit FROM " + table +
+                        " WHERE object = ? ORDER BY object, resource",
+                        trade_post):
                     db("INSERT INTO trade_slots VALUES(?, ?, ?, ?, ?)",
-                        trade_post, slot_id, resource_id, table == 'trade_sell', limit)
+                       trade_post, slot_id, resource_id,
+                       table == 'trade_sell', limit)
                     slot_id += 1
 
     def _upgrade_to_rev68(self, db):
         settlement_founding_missions = []
         db_result = db("SELECT rowid, land_manager, ship, warehouse_builder,"
-            " state FROM ai_mission_found_settlement")
-        for (worldid, land_manager_id, ship_id, builder_id, state) in db_result:
-            x, y = db("SELECT x, y FROM ai_builder WHERE rowid = ?", builder_id)[0]
-            settlement_founding_missions.append((worldid, land_manager_id, ship_id, x, y, state))
+                       " state FROM ai_mission_found_settlement")
+        for (worldid, land_manager_id, ship_id,
+             builder_id, state) in db_result:
+            x, y = db("SELECT x, y FROM ai_builder WHERE rowid = ?",
+                      builder_id)[0]
+            settlement_founding_missions.append((worldid, land_manager_id,
+                                                 ship_id, x, y, state))
 
         db("DROP TABLE ai_mission_found_settlement")
-        db('CREATE TABLE "ai_mission_found_settlement" ("land_manager" INT NOT NULL, "ship"'
-            ' INT NOT NULL, "x" INT NOT NULL, "y" INT NOT NULL, "state" INT NOT NULL)')
+        db('CREATE TABLE "ai_mission_found_settlement" ("land_manager" INT '
+           'NOT NULL, "ship" INT NOT NULL, "x" INT NOT NULL, "y" '
+           'INT NOT NULL, "state" INT NOT NULL)')
 
         for row in settlement_founding_missions:
-            db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship,"
-                " x, y, state) VALUES(?, ?, ?, ?, ?, ?)", *row)
+            db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, "
+               "ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)", *row)
 
     def _upgrade_to_rev69(self, db):
         settlement_map = {}
         for data in db("SELECT rowid, data FROM settlement_tiles"):
             settlement_id = int(data[0])
-            coords_list = [tuple(raw_coords) for raw_coords in json.loads(data[1])]
+            coords_list = [tuple(raw_coords) for raw_coords in json.loads(
+                data[1])]
             # json saves tuples as list
             for coords in coords_list:
                 settlement_map[coords] = settlement_id
         db("DELETE FROM settlement_tiles")
 
         for (worldid, building_id, x, y, location_id) in db(
-            "SELECT rowid, type, x, y, location FROM building WHERE type = ? OR type = ?",
-            BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+                "SELECT rowid, type, x, y, location FROM building WHERE "
+                "type = ? OR type = ?",
+                BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
             worldid = int(worldid)
             building_id = int(building_id)
             origin_coords = (int(x), int(y))
             location_id = int(location_id)
 
             settlement_ids = set()
-            position = Rect.init_from_topleft_and_size_tuples(origin_coords,
-                Entities.buildings[building_id].size)
+            position = Rect.init_from_topleft_and_size_tuples(
+                origin_coords, Entities.buildings[building_id].size)
             for coords in position.tuple_iter():
                 if coords in settlement_map:
                     settlement_ids.add(settlement_map[coords])
@@ -385,7 +404,8 @@ class SavegameUpgrader(object):
                 for coords in position.tuple_iter():
                     settlement_map[coords] = settlement_id
                 if location_id != settlement_id:
-                    db("UPDATE building SET location = ? WHERE rowid = ?", settlement_id, worldid)
+                    db("UPDATE building SET location = ? WHERE rowid = ?",
+                       settlement_id, worldid)
 
         # save the new settlement tiles data
         ground_map = defaultdict(list)
@@ -394,12 +414,15 @@ class SavegameUpgrader(object):
 
         for (settlement_id, coords_list) in ground_map.iteritems():
             data = json.dumps(coords_list)
-            db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", settlement_id, data)
+            db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)",
+               settlement_id, data)
 
     def _upgrade_to_rev70(self, db):
         db('CREATE TABLE "fish_data" ("last_usage_tick" INT NOT NULL)')
-        for row in db("SELECT rowid FROM building WHERE type = ?", BUILDINGS.FISH_DEPOSIT):
-            db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", row[0], -1000000)
+        for row in db("SELECT rowid FROM building WHERE type = ?",
+                      BUILDINGS.FISH_DEPOSIT):
+            db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)",
+               row[0], -1000000)
 
     def _upgrade_to_rev71(self, db):
         old = 'MAX_INCR_REACHED'
@@ -415,7 +438,8 @@ class SavegameUpgrader(object):
         # Attempt to fix up corrupt yaml dumped into scenario savegames (#2164)
         key = 'scenario_events'
         try:
-            yaml_data = db("SELECT name, value FROM metadata WHERE name = ?", key)[0][1]
+            yaml_data = db("SELECT name, value FROM metadata WHERE name = ?",
+                           key)[0][1]
         except IndexError:
             # Not a scenario, nothing to repair
             return
@@ -437,8 +461,10 @@ class SavegameUpgrader(object):
             (68, 1842760585, 2105680898),
         ]
         for obj_type, old_prod_line, new_prod_line in changes:
-            for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
-                db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?", new_prod_line, obj, old_prod_line)
+            for (obj, ) in db("SELECT rowid FROM building WHERE type = ?",
+                              obj_type):
+                db("UPDATE production SET prod_line_id = ? WHERE owner = ? "
+                   "and prod_line_id = ?", new_prod_line, obj, old_prod_line)
 
     def _upgrade_to_rev76(self, db):
         # needed for commint: b0471afd48a0034150580e8fa00533f9ccae2a9b
@@ -454,7 +480,7 @@ class SavegameUpgrader(object):
         metadata = SavegameManager.get_metadata(self.original_path)
         rev = metadata['savegamerev']
 
-        if rev < VERSION.SAVEGAMEREVISION :
+        if rev < VERSION.SAVEGAMEREVISION:
             if not SavegameUpgrader.can_upgrade(rev):
                 raise SavegameTooOld(revision=rev)
 

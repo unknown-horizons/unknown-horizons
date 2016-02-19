@@ -136,16 +136,20 @@ class _Tooltip(object):
             for spec in buildmenu_icons[0].split():
                 (res_id, amount) = spec.split(':')
                 label = Label(text=amount + '  ')
-                icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
-                # For compatibility with FIFE 0.3.5 and older, also set min/max.
+                icon = Icon(image=get_res_icon_path(int(res_id)), size=(16,
+                                                                        16))
+                # For compatibility with FIFE 0.3.5 and older,
+                # also set min/max.
                 icon.max_size = icon.min_size = (16, 16)
                 hbox.addChildren(icon, label)
             hbox.adaptLayout()
-            # Now display the 16x16px "required resources" icons in the last line.
+            # Now display the 16x16px "required resources" icons
+            # in the last line.
             self.gui.addChild(hbox)
 
         # HACK: wrap tooltip text
-        # This looks better than splitting into several lines and joining them.
+        # This looks better than splitting into several lines
+        # and joining them.
         # It works because replace_whitespace in `fill` defaults to True.
         replaced = replaced.replace(r'\n', self.CHARS_PER_LINE * ' ')
         replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')

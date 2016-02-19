@@ -51,7 +51,7 @@ class VERSION:
                     head_file = git_head_path
                 if os.path.exists(head_file):
                     return unicode(open(head_file).readline().strip()[0:7])
-        #if there is no .git directory then check for gitversion.txt
+        # if there is no .git directory then check for gitversion.txt
         except ImportError:
             try:
                 return unicode(open(os.path.join("content", "packages",
@@ -61,7 +61,7 @@ class VERSION:
 
         return u"<unknown>"
 
-    RELEASE_NAME    = "Unknown Horizons %s"
+    RELEASE_NAME = "Unknown Horizons %s"
     RELEASE_VERSION = _get_git_version()
     # change for release:
     IS_DEV_VERSION = True
@@ -84,7 +84,7 @@ class VERSION:
         return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
 
 
-## WORLD
+# WORLD
 class UNITS:
     # ./development/print_db_data.py unit
     HUKER_SHIP = 1000001
@@ -417,7 +417,7 @@ class PRODUCTION:
 
 class PRODUCTIONLINES:
     HUKER = 15
-    FISHING_BOAT = None # will get added later
+    FISHING_BOAT = None  # will get added later
     FRIGATE = 58
     TREES = 256812226
     WOOL = 1654557398

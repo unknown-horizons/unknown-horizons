@@ -27,8 +27,8 @@ class BuildingIndexer(object):
     Indexes a subset of the buildings on an island to improve nearby building
     lookup performance.
 
-    Used to answer queries of the form 'I am at (x, y), where is the closest / random
-    building that provides resource X in my range'.
+    Used to answer queries of the form 'I am at (x, y), where is
+    the closest / random building that provides resource X in my range'.
     """
 
     def __init__(self, radius, coords_list, random=None, buildings=None):
@@ -66,11 +66,13 @@ class BuildingIndexer(object):
         @param initial: can be set on first call as optimization
         """
         for building in self._remove_set:
-            for coords in building.position.get_radius_coordinates(self.radius, include_self=True):
+            for coords in building.position.get_radius_coordinates(
+                    self.radius, include_self=True):
                 try:
                     index = self._map[coords]
                 except KeyError:
-                    continue  # should be faster than contains check, since usually True
+                    continue
+                    # should be faster than contains check, since usually True
                 index._remove_set.add(building)
                 index._add_set.discard(building)
                 index._changed = True
@@ -78,11 +80,13 @@ class BuildingIndexer(object):
         if not add_buildings:
             add_buildings = self._add_set
         for building in add_buildings:
-            for coords in building.position.get_radius_coordinates(self.radius, include_self=True):
+            for coords in building.position.get_radius_coordinates(
+                    self.radius, include_self=True):
                 try:
                     index = self._map[coords]
                 except KeyError:
-                    continue  # should be faster than contains check, since usually True
+                    continue
+                    # should be faster than contains check, since usually True
                 if not initial:
                     index._remove_set.discard(building)
                 index._add_set.add(building)
@@ -106,7 +110,8 @@ class BuildingIndexer(object):
     def get_random_building_in_range(self, coords):
         """
         Returns a random building in range or None if one doesn't exist
-        Don't use this for user interactions unless you want to break multiplayer
+        Don't use this for user interactions unless you want to break
+        multiplayer
         @param coords: tuple, the point around which to get the building
         """
         if coords in self._map:
@@ -167,7 +172,8 @@ class BuildingIndex(object):
             if y_diff < 0:
                 y_diff = 0
 
-            new_list.append((x_diff * x_diff + y_diff * y_diff, top, bottom, left, right, building))
+            new_list.append((x_diff * x_diff + y_diff * y_diff, top, bottom,
+                             left, right, building))
 
         self._list = new_list
         self._list.sort()

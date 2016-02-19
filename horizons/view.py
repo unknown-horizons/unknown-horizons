@@ -84,8 +84,8 @@ class View(ChangeListener):
         self.cam.resetRenderers()
         self.renderer = {}
         for r in ('InstanceRenderer', 'GridRenderer', 'CellSelectionRenderer',
-                 'BlockingInfoRenderer', 'FloatingTextRenderer',
-                 'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
+                  'BlockingInfoRenderer', 'FloatingTextRenderer',
+                  'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
             self.renderer[r] = getattr(fife, r).getInstance(
                 self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
             self.renderer[r].clearActiveLayers()
@@ -156,14 +156,14 @@ class View(ChangeListener):
 
         if x != 0:
             new_angle = math.pi * self.cam.getRotation() / 180.0
-            zoom_factor = (self.cam.getZoom() * cell_dim.x *
-                horizons.globals.fife.get_uh_setting('ScrollSpeed'))
+            zoom_factor = (self.cam.getZoom() * cell_dim.x * horizons.
+                           globals.fife.get_uh_setting('ScrollSpeed'))
             pos.x += x * math.cos(new_angle) / zoom_factor
             pos.y += x * math.sin(new_angle) / zoom_factor
         if y != 0:
             new_angle = math.pi * self.cam.getRotation() / -180.0
-            zoom_factor = (self.cam.getZoom() * cell_dim.y *
-                horizons.globals.fife.get_uh_setting('ScrollSpeed'))
+            zoom_factor = (self.cam.getZoom() * cell_dim.y * horizons.
+                           globals.fife.get_uh_setting('ScrollSpeed'))
             pos.x += y * math.sin(new_angle) / zoom_factor
             pos.y += y * math.cos(new_angle) / zoom_factor
 
@@ -243,10 +243,10 @@ class View(ChangeListener):
         """Returns the coords of what is displayed on the screen as Rect"""
         coords = self.cam.getLocationRef().getLayerCoordinates()
         cell_dim = self.cam.getCellImageDimensions()
-        width_x = horizons.globals.fife.engine_settings.\
-                      getScreenWidth() // cell_dim.x + 1
-        width_y = horizons.globals.fife.engine_settings.\
-                      getScreenHeight() // cell_dim.y + 1
+        width_x = horizons.globals.fife.engine_settings.getScreenWidth() // \
+            cell_dim.x + 1
+        width_y = horizons.globals.fife.engine_settings.getScreenHeight() // \
+            cell_dim.y + 1
         screen_width_as_coords = (width_x // self.zoom, width_y // self.zoom)
         return Rect.init_from_topleft_and_size(
             coords.x - (screen_width_as_coords[0] // 2),
@@ -256,8 +256,8 @@ class View(ChangeListener):
     def save(self, db):
         loc = self.cam.getLocation().getExactLayerCoordinates()
         db("INSERT INTO view(zoom, rotation, location_x, location_y) "
-           "VALUES(?, ?, ?, ?)",
-             self.cam.getZoom(), self.cam.getRotation(), loc.x, loc.y)
+           "VALUES(?, ?, ?, ?)", self.cam.getZoom(), self.cam.getRotation(),
+           loc.x, loc.y)
 
     def load(self, db, world):
         # NOTE: this is no class function, since view is initiated

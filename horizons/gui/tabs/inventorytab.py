@@ -35,7 +35,8 @@ class InventoryTab(TabInterface):
         super(InventoryTab, self).__init__()
 
     def init_widget(self):
-        self.widget.child_finder('inventory').init(self.instance.session.db,
+        self.widget.child_finder('inventory').init(
+            self.instance.session.db,
             self.instance.get_component(StorageComponent).inventory)
 
     def refresh(self):
