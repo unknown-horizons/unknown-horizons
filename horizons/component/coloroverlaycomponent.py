@@ -35,7 +35,8 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
 class ColorOverlayComponent(Component):
-    """Change parts of graphics dynamically on runtime ("color overlays" in FIFE terminology).
+    """Change parts of graphics dynamically on runtime
+    ("color overlays" in FIFE terminology).
 
     Supports multiple overlay sets for the same instance, and also
     supports changing more than one color in the same overlay set.
@@ -52,14 +53,16 @@ class ColorOverlayComponent(Component):
     the current action to an animation overlay at precisely depth 0.
 
     Directives to change colors look like this (for every action):
-    - [z_order, overlay action name, color to be replaced, target color to draw]
+    - [z_order, overlay action name, color to be replaced,
+       target color to draw]
 
     When in doubt, use 0 as z_order.
-    The overlay action name is the folder located next to other actions (e.g. idle).
-    Color to be replaced: List with three (rgb) or four (rgba) int elements.
-        In particular, [80, 0, 0] and [80, 0, 0, 128] are different colors!
-    Target color to draw: As above, or string interpreted as attribute of instance.
-        To access player colors, you can usually employ "owner.color".
+    The overlay action name is the folder located next to other actions
+    (e.g. idle). Color to be replaced: List with three (rgb) or four (rgba)
+    int elements. In particular, [80, 0, 0] and [80, 0, 0, 128]
+    are different colors!
+    Target color to draw: As above, or string interpreted as attribute
+    of instance. To access player colors, you can usually employ "owner.color".
 
     All in all, a multi-color replacement could look like this example:
 
@@ -74,9 +77,11 @@ class ColorOverlayComponent(Component):
 
     # multiple single-overlay example (usually not what you want):
     #	idle:
-    #		# color magenta area in player color (needs animation overlay at order 1)
+    #		# color magenta area in player color
+            (needs animation overlay at order 1)
     #		- [1, color1_idle, [255, 0, 255], [owner.color, 64]]
-    #		# also color some other teal area in blue (needs animation overlay at order 2)
+    #		# also color some other teal area in blue (
+                needs animation overlay at order 2)
     #		- [2, color2_idle, [0, 255, 255], [0, 0, 255, 128]]
     """
     NAME = "coloroverlay"
@@ -114,8 +119,8 @@ class ColorOverlayComponent(Component):
             overlays = self.overlays[self.action_set][message.action]
         except KeyError:
             self.log.warning(
-                'No color overlay defined for action set `%s` and action `%s`. '
-                'Consider using `null` overlays for this action.',
+                'No color overlay defined for action set `%s` and action `%s`.'
+                ' Consider using `null` overlays for this action.',
                 self.action_set, message.action)
             return
 
@@ -128,12 +133,13 @@ class ColorOverlayComponent(Component):
             except (TypeError, NotImplementedError):
                 color_attribute, alpha = to_color
                 color = attrgetter(color_attribute)(self.instance)
-                if isinstance(color, UtilColor) or isinstance(color, fife.Color):
+                if isinstance(color, UtilColor) or isinstance(color,
+                                                              fife.Color):
                     fife_to = fife.Color(color.r, color.g, color.b, alpha)
                 else:
                     raise TypeError('Unknown color `%s` as attribute `%s`: '
-                        'Expected either fife.Color or horizons.util.Color.'
-                        % (color, to_color))
+                                    'Expected either fife.Color or '
+                                    'horizons.util.Color.' % (color, to_color))
             self.change_color(z_order, fife_from, fife_to)
 
     def add_overlay(self, overlay_name, z_order):
@@ -166,11 +172,13 @@ class ColorOverlayComponent(Component):
                 except TypeError:
                     # not using atlases
                     frame_length = frame_data
-                pic = horizons.globals.fife.animationloader.load_image(frame_img, self.action_set, overlay_name, rotation)
+                pic = horizons.globals.fife.animationloader.load_image(
+                    frame_img, self.action_set, overlay_name, rotation)
                 frame_milliseconds = int(frame_length * 1000)
                 ov_anim.addFrame(pic, frame_milliseconds)
             overlay = fife.OverlayColors(ov_anim)
-            self.fife_instance.addColorOverlay(self.identifier, rotation, z_order, overlay)
+            self.fife_instance.addColorOverlay(self.identifier, rotation,
+                                               z_order, overlay)
 
     def change_color(self, z_order, from_color, to_color):
         """Changes color of *from_color*ed area to *to_color*.
@@ -178,15 +186,18 @@ class ColorOverlayComponent(Component):
         color parameters: fife.Color objects
         """
         for rotation in self.current_overlays[z_order]:
-            overlay = self.fife_instance.getColorOverlay(self.identifier, rotation, z_order)
+            overlay = self.fife_instance.getColorOverlay(self.identifier,
+                                                         rotation, z_order)
             overlay.changeColor(from_color, to_color)
 
     def remove_overlay(self):
-        """Removes color overlay recoloring the *color*-colored area from fife instance.
+        """Removes color overlay recoloring the *color*-colored area
+        from fife instance.
         """
         for z_order, overlay_set in self.current_overlays.iteritems():
             for rotation in overlay_set:
-                self.fife_instance.removeColorOverlay(self.identifier, rotation, z_order)
+                self.fife_instance.removeColorOverlay(self.identifier,
+                                                      rotation, z_order)
 
     def load(self, db, worldid):
         super(ColorOverlayComponent, self).load(db, worldid)
@@ -198,7 +209,8 @@ class ColorOverlayComponent(Component):
         super(ColorOverlayComponent, self).remove()
 
 
-# If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
+# If "old" FIFE version is detected (i.e. one without overlay support),
+# silently disable.
 if not hasattr(fife, 'OverlayColors'):
     class ColorOverlayComponent(Component):
 

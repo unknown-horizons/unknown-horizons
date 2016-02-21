@@ -28,10 +28,12 @@ from horizons.extscheduler import ExtScheduler
 
 
 class AmbientSoundComponent(Component):
-    """Support for playing ambient sounds, such as animal noise or collector sounds.
+    """Support for playing ambient sounds, such as animal noise or
+    collector sounds.
     """
     AMBIENT_SOUND_INTERVAL = 20  # interval between two plays
-    AMBIENT_SOUND_INTERVAL_VARIANCE = [0, 15]  # a number of this interval is added to the one above
+    AMBIENT_SOUND_INTERVAL_VARIANCE = [0, 15]
+    # a number of this interval is added to the one above
 
     NAME = "ambientsound"
 
@@ -48,17 +50,23 @@ class AmbientSoundComponent(Component):
 
     def __create_emitter(self, gain):
         if horizons.globals.fife.get_fife_setting("PlaySounds"):
-            self.__emitter = horizons.globals.fife.sound.soundmanager.createEmitter()
-            self.__emitter.setGain(horizons.globals.fife.get_uh_setting("VolumeEffects") * gain)
-            horizons.globals.fife.sound.emitter['ambient'].append(self.__emitter)
+            self.__emitter = \
+                horizons.globals.fife.sound.soundmanager.createEmitter()
+            self.__emitter.setGain(horizons.globals.fife.get_uh_setting(
+                "VolumeEffects") * gain)
+            horizons.globals.fife.sound.emitter['ambient'].append(
+                self.__emitter)
 
     def _init_playing(self):
-        if hasattr(self.instance.owner, "is_local_player") and self.instance.owner.is_local_player:
+        if hasattr(self.instance.owner, "is_local_player") and \
+                self.instance.owner.is_local_player:
             # don't use session random, this is player dependent
             play_every = self.__class__.AMBIENT_SOUND_INTERVAL + \
-                random.randint(* self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE)
+                random.randint(*
+                               self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE)
             for soundfile in self.soundfiles:
-                # TODO remove str() -- http://github.com/fifengine/fifengine/issues/701
+                # TODO remove str()
+                #  -- http://github.com/fifengine/fifengine/issues/701
                 self.play_ambient(str(soundfile), loop_interval=play_every,
                                   position=self.instance.position.center)
 
@@ -77,8 +85,10 @@ class AmbientSoundComponent(Component):
         self.stop_sound()
         self.__emitter = None
 
-    def play_ambient(self, soundfile, loop_interval=None, position=None, gain=10):
-        """Starts playing an ambient sound. On looping, it will also play right now.
+    def play_ambient(self, soundfile, loop_interval=None, position=None,
+                     gain=10):
+        """Starts playing an ambient sound. On looping,
+        it will also play right now.
         Default: play sound once
         @param soundfile: path to audio file
         @param loop_interval: delay between two plays, None means no looping,
@@ -97,14 +107,18 @@ class AmbientSoundComponent(Component):
             else:
                 self.__emitter.setRolloff(0)  # reset to default
 
-            # TODO remove str() -- http://github.com/fifengine/fifengine/issues/701
-            self.__emitter.setSoundClip(horizons.globals.fife.sound.soundclipmanager.load(str(soundfile)))
+            # TODO remove str()
+            #  -- http://github.com/fifengine/fifengine/issues/701
+            self.__emitter.setSoundClip(horizons.globals.fife.sound.
+                                        soundclipmanager.load(str(soundfile)))
 
             if loop_interval == 0:
                 self.__emitter.setLooping(True)
             elif loop_interval is not None:
-                duration = loop_interval + (float(self.__emitter.getDuration()) / 1000)  # from millisec
-                ExtScheduler().add_new_object(self.__emitter.play, self, duration, -1)
+                duration = loop_interval + (float(
+                    self.__emitter.getDuration()) / 1000)  # from millisec
+                ExtScheduler().add_new_object(self.__emitter.play,
+                                              self, duration, -1)
 
             self.__emitter.play()
 
@@ -124,7 +138,8 @@ class AmbientSoundComponent(Component):
         """
         if horizons.globals.fife.get_fife_setting("PlaySounds"):
             a = AmbientSoundComponent()
-            # TODO remove str() -- http://github.com/fifengine/fifengine/issues/701
+            # TODO remove str()
+            #  -- http://github.com/fifengine/fifengine/issues/701
             soundfile = horizons.globals.db.get_sound_file(str(sound))
             a.play_ambient(soundfile, position=position, gain=gain)
             horizons.globals.fife.sound.emitter['ambient'].remove(a.__emitter)

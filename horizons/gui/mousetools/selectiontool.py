@@ -37,18 +37,21 @@ class SelectionTool(NavigationTool):
 
     def __init__(self, session):
         super(SelectionTool, self).__init__(session)
-        self.deselect_at_end = True  # Set this to deselect selections while exiting SelectionTool
+        self.deselect_at_end = True
+        # Set this to deselect selections while exiting SelectionTool
 
     def remove(self):
         # Deselect if needed while exiting
         if self.deselect_at_end:
-            selectables = self.filter_selectable(self.session.selected_instances)
+            selectables = self.filter_selectable(
+                self.session.selected_instances)
             for i in self.filter_component(SelectableComponent, selectables):
                 i.deselect()
         super(SelectionTool, self).remove()
 
     def is_selectable(self, entity):
-        # also enemy entities are selectable, but the selection representation will differ
+        # also enemy entities are selectable,
+        #  but the selection representation will differ
         return entity.has_component(SelectableComponent)
 
     def filter_component(self, component, instances):
@@ -66,7 +69,8 @@ class SelectionTool(NavigationTool):
             instance.owner.is_local_player
 
     def filter_owner(self, instances):
-        """Only keep instances belonging to the user. This is used for multiselection"""
+        """Only keep instances belonging to the user.
+        This is used for multiselection"""
         return [i for i in instances if self.is_owned_by_player(i)]
 
     def fife_instance_to_uh_instance(self, instance):
@@ -80,11 +84,14 @@ class SelectionTool(NavigationTool):
             return None
 
     def mouseDragged(self, evt):
-        if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
+        if evt.getButton() == fife.MouseEvent.LEFT and hasattr(
+                self, 'select_begin'):
             x, y = self.select_begin
             xx, yy = evt.getX(), evt.getY()
-            do_multi = ((x - xx) ** 2 + (y - yy) ** 2) >= 10  # from 3px (3*3 + 1)
-            self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
+            do_multi = ((x - xx) ** 2 + (y - yy) ** 2) >= 10
+            # from 3px (3*3 + 1)
+            self.session.view.renderer['GenericRenderer'].removeAll(
+                self.__class__._SELECTION_RECTANGLE_NAME)
             if do_multi:
                 # draw a rectangle
                 xmin, xmax = min(x, xx), max(x, xx)
@@ -106,15 +113,18 @@ class SelectionTool(NavigationTool):
                 False)  # False for accurate
 
             # get selection components
-            instances = (self.fife_instance_to_uh_instance(i) for i in instances)
+            instances = (self.fife_instance_to_uh_instance(i) for
+                         i in instances)
             instances = [i for i in instances if i is not None]
 
             # We only consider selectable items when dragging a selection box.
             instances = self.filter_selectable(instances)
 
-            # If there is at least one player unit, we don't select any enemies.
+            # If there is at least one player unit,
+            #  we don't select any enemies.
             # This applies to both buildings and ships.
-            if any((self.is_owned_by_player(instance) for instance in instances)):
+            if any((self.is_owned_by_player(instance) for
+                    instance in instances)):
                 instances = self.filter_owner(instances)
 
             self._update_selection(instances, do_multi)
@@ -127,10 +137,12 @@ class SelectionTool(NavigationTool):
         evt.consume()
 
     def mouseReleased(self, evt):
-        if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
+        if evt.getButton() == fife.MouseEvent.LEFT and hasattr(
+                self, 'select_begin'):
             self.apply_select()
             del self.select_begin, self.select_old
-            self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
+            self.session.view.renderer['GenericRenderer'].removeAll(
+                self.__class__._SELECTION_RECTANGLE_NAME)
         elif evt.getButton() == fife.MouseEvent.RIGHT:
             pass
         else:
@@ -141,8 +153,10 @@ class SelectionTool(NavigationTool):
     def apply_select(self):
         """
         Called when selected instances changes. (Shows their menu)
-        Does not do anything when nothing is selected, i.e. doesn't hide their menu.
-        If one of the selected instances can attack, switch mousetool to AttackingTool.
+        Does not do anything when nothing is selected,
+         i.e. doesn't hide their menu.
+        If one of the selected instances can attack,
+         switch mousetool to AttackingTool.
         """
         if self.session.world.health_visible_for_all_health_instances:
             self.session.world.toggle_health_for_all_health_instances()
@@ -150,21 +164,25 @@ class SelectionTool(NavigationTool):
         if len(selected) == 0:
             return
         if len(selected) == 1:
-            iter(selected).next().get_component(SelectableComponent).show_menu()
+            iter(selected).next().get_component(
+                SelectableComponent).show_menu()
         else:
             self.session.ingame_gui.show_multi_select_tab(selected)
 
         # local import to prevent cycle
         from horizons.gui.mousetools.attackingtool import AttackingTool
-        # change session cursor to attacking tool if selected instances can attack
+        # change session cursor to attacking tool
+        #  if selected instances can attack
         found_military = any(hasattr(i, 'attack') and i.owner.is_local_player
                              for i in selected)
         # Handover to AttackingTool without deselecting
         self.deselect_at_end = not found_military
 
-        if found_military and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
+        if found_military and not isinstance(self.session.ingame_gui.cursor,
+                                             AttackingTool):
             self.session.ingame_gui.set_cursor('attacking')
-        if not found_military and isinstance(self.session.ingame_gui.cursor, AttackingTool):
+        if not found_military and isinstance(self.session.ingame_gui.cursor,
+                                             AttackingTool):
             self.session.ingame_gui.set_cursor('default')
 
     def mousePressed(self, evt):
@@ -173,20 +191,25 @@ class SelectionTool(NavigationTool):
             return
         elif evt.getButton() == fife.MouseEvent.LEFT:
             if self.session.selected_instances is None:
-                # this is a very odd corner case, it should only happen after the session has been ended
+                # this is a very odd corner case, it should only happen
+                # after the session has been ended
                 # we can't allow to just let it crash however
-                self.log.error('Error: selected_instances is None. Please report this!')
+                self.log.error('Error: selected_instances is None. '
+                               'Please report this!')
                 traceback.print_stack()
-                self.log.error('Error: selected_instances is None. Please report this!')
+                self.log.error('Error: selected_instances is None. '
+                               'Please report this!')
                 return
             instances = self.get_hover_instances(evt)
             self.select_old = frozenset(
-                self.session.selected_instances) if evt.isControlPressed() else frozenset()
+                self.session.selected_instances) if \
+                evt.isControlPressed() else frozenset()
 
             instances = filter(self.is_selectable, instances)
-            # On single click, only one building should be selected from the hover_instances.
-            # The if is for [] and [single_item] cases (they crashed).
-            # It acts as user would expect: instances[0] selects buildings in front first.
+            # On single click, only one building should be selected from the
+            # hover_instances. The if is for [] and [single_item] cases
+            # (they crashed). It acts as user would expect: instances[0]
+            # selects buildings in front first.
             instances = instances if len(instances) <= 1 else [instances[0]]
 
             self._update_selection(instances)
@@ -197,7 +220,8 @@ class SelectionTool(NavigationTool):
             target_mapcoord = self.get_exact_world_location(evt)
             for i in self.session.selected_instances:
                 if i.movable:
-                    Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
+                    Act(i, target_mapcoord.x,
+                        target_mapcoord.y).execute(self.session)
         else:
             super(SelectionTool, self).mousePressed(evt)
             return
@@ -206,8 +230,8 @@ class SelectionTool(NavigationTool):
     def _draw_rect_line(self, start, end):
         renderer = self.session.view.renderer['GenericRenderer']
         renderer.addLine(self.__class__._SELECTION_RECTANGLE_NAME,
-            fife.RendererNode(start), fife.RendererNode(end),
-            200, 200, 200)
+                         fife.RendererNode(start), fife.RendererNode(end),
+                         200, 200, 200)
 
     def _update_selection(self, instances, do_multi=False):
         """
@@ -230,11 +254,13 @@ class SelectionTool(NavigationTool):
                 instances = user_instances
             else:
                 instances = [iter(instances).next()]
-        selectable = frozenset(self.filter_component(SelectableComponent, instances))
+        selectable = frozenset(self.filter_component(SelectableComponent,
+                                                     instances))
 
         # apply changes
         selected_components = set(self.filter_component(SelectableComponent,
-            self.filter_selectable(self.session.selected_instances)))
+                                  self.filter_selectable(
+                                      self.session.selected_instances)))
         for sel_comp in selected_components - selectable:
             sel_comp.deselect()
         for sel_comp in selectable - selected_components:

@@ -29,8 +29,8 @@ def find_enet_module():
 
     We do not raise any errors here, because we still allow clients to play the
     singleplayer.
-    If code requires the enet module, it should check if horizons.network.enet is
-    not None.
+    If code requires the enet module, it should check
+    if horizons.network.enet is not None.
     """
 
     # Try to find installed version first
@@ -81,7 +81,8 @@ def find_enet_module():
 enet = find_enet_module()
 
 # during pyenets move to cpython they renamed a few constants...
-if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DISCONNECT'):
+if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(
+        enet, 'PEER_STATE_DISCONNECT'):
     enet.PEER_STATE_DISCONNECTED = enet.PEER_STATE_DISCONNECT
 
 

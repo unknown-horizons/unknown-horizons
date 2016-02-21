@@ -45,10 +45,12 @@ FUN_QUOTES = {
         "patience is a virtue \n(barra)",
         "you must really, really love to test \n(portal 2)",
         "here be bugs",
-        "strength is the capacity to break a chocolate bar into four pieces with your bare hands"
-        " - and then eat just one of the pieces",
-        "If one does not know to which port one is sailing, no wind is favorable",
-        "The pessimist complains about the wind; \nthe optimist expects it to change;"
+        "strength is the capacity to break a chocolate bar into four pieces "
+        "with your bare hands - and then eat just one of the pieces",
+        "If one does not know to which port one is sailing,"
+        " no wind is favorable",
+        "The pessimist complains about the wind; \nthe optimist expects "
+        "it to change;"
         " \nthe realist adjusts the sails",
         "Travel beyond the horizon and discover unknown worlds!",
         u"War… war never changes",
@@ -69,16 +71,18 @@ GAMEPLAY_TIPS = {
         _lazy("You can pause the game with 'P'."),
         _lazy("You can drag roads by holding the left mouse button."),
         _lazy("You can build multiple buildings by holding the 'SHIFT' key."),
-        _lazy("You can increase the happiness of your inhabitants by lowering the taxes."),
-        _lazy("Build fire stations and doctors to protect your inhabitants from fire and disease."),
+        _lazy("You can increase the happiness of your inhabitants by "
+              "lowering the taxes."),
+        _lazy("Build fire stations and doctors to protect your inhabitants "
+              "from fire and disease."),
         _lazy("Build storage tents to increase your storage capacity."),
         _lazy("Make sure every house is in range of a marketplace."),
         _lazy("Press 'T' to make trees transparent.")
     ]
 }
 
-# This are the options you can select in the Settings what type of quotes should be
-# displayed during load
+# This are the options you can select in the Settings what type of quotes
+# should be displayed during load
 QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _lazy("Mixed"))
 
 
@@ -98,7 +102,8 @@ def get_random_quote():
 
 
 stage_text = {
-    # translators: these are descriptions of the current task while loading a game
+    # translators: these are descriptions of the current task
+    #  while loading a game
     'session_create_world': _lazy(u'Starting engine…'),
     'session_index_fish': _lazy(u'Catching fish…'),
     'session_load_gui': _lazy(u'Drawing user interface…'),

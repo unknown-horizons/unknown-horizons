@@ -45,7 +45,8 @@ class Connection(object):
     """
     log = logging.getLogger("network")
 
-    def __init__(self, process_async_packet, server_address, client_address=None):
+    def __init__(self, process_async_packet, server_address,
+                 client_address=None):
         try:
             if client_address:
                 client_address = enet.Address(*client_address)
@@ -53,8 +54,9 @@ class Connection(object):
             self.host = enet.Host(client_address, MAX_PEERS, 0, 0, 0)
         except (IOError, MemoryError):
             # these exceptions do not provide any information.
-            raise network.NetworkException("Unable to create network structure."
-                                           "Maybe invalid or irresolvable client address.")
+            raise network.NetworkException(
+                "Unable to create network structure."
+                "Maybe invalid or irresolvable client address.")
 
         self.server_address_parameters = server_address
         self.server_address = None
@@ -71,21 +73,26 @@ class Connection(object):
     def connect(self):
         """Connect to master server.
 
-        After this, you can use `send_packet` and `receive_packet` to communicate
-        with the server.
+        After this, you can use `send_packet` and `receive_packet`
+        to communicate with the server.
         """
         if self.is_connected:
-            raise network.AlreadyConnected("We are already connected to a server")
+            raise network.AlreadyConnected(
+                "We are already connected to a server")
 
         self.log.debug("[CONNECT] to server %s" % (self.server_address))
         try:
             if self.server_address is None:
-                # can only construct address now, as it resolves the target and requires internet connection
-                self.server_address = enet.Address(*self.server_address_parameters)
-            self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
+                # can only construct address now, as it resolves the target
+                # and requires internet connection
+                self.server_address = enet.Address(
+                    *self.server_address_parameters)
+            self.server_peer = self.host.connect(self.server_address, 1,
+                                                 SERVER_PROTOCOL)
         except (IOError, MemoryError):
-            raise network.NetworkException(_("Unable to connect to server.") + u" " +
-                                           _("Maybe invalid or irresolvable server address."))
+            raise network.NetworkException(
+                _("Unable to connect to server.") + u" " +
+                _("Maybe invalid or irresolvable server address."))
 
         event = self.host.service(SERVER_TIMEOUT)
         if event.type != enet.EVENT_TYPE_CONNECT:
@@ -124,8 +131,8 @@ class Connection(object):
                     elif event.type == enet.EVENT_TYPE_NONE:
                         raise IOError("No packet from server")
         except IOError:
-            self.log.debug("[DISCONNECT] Error while disconnecting from server."
-                " Maybe server isn't answering any more")
+            self.log.debug("[DISCONNECT] Error while disconnecting from "
+                           "server. Maybe server isn't answering any more")
 
         self._reset()
         self.log.debug("[DISCONNECT] done")
@@ -133,8 +140,9 @@ class Connection(object):
     def ping(self):
         """Handle incoming packets.
 
-        Enet doesn't need to send pings. Call this regularly. Incoming packets can be
-        handled by process_async_packet, otherwise will be added to a queue.
+        Enet doesn't need to send pings. Call this regularly.
+        Incoming packets can be handled by process_async_packet,
+        otherwise will be added to a queue.
         """
         if not self.is_connected:
             raise network.NotConnected()
@@ -206,12 +214,16 @@ class Connection(object):
                 return None
             elif event.type == enet.EVENT_TYPE_DISCONNECT:
                 self._reset()
-                self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
-                raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
+                self.log.warning("Unexpected disconnect from %s" %
+                                 (event.peer.address))
+                raise network.CommandError("Unexpected disconnect from %s" %
+                                           (event.peer.address))
             elif event.type == enet.EVENT_TYPE_CONNECT:
                 self._reset()
-                self.log.warning("Unexpected connection from %s" % (event.peer.address))
-                raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
+                self.log.warning("Unexpected connection from %s" %
+                                 (event.peer.address))
+                raise network.CommandError("Unexpected connection from %s" %
+                                           (event.peer.address))
 
             return event
         except IOError as e:
@@ -231,9 +243,11 @@ class Connection(object):
             except NameError:
                 pass
             else:
-                self.log.error("Unknown packet from %s!" % (event.peer.address))
+                self.log.error("Unknown packet from {}!".
+                               format(event.peer.address))
             errstr = "Pickle/Security: %s" % (e)
-            print "[FATAL] %s" % (errstr)  # print that even when no logger is enabled!
+            print("[FATAL] %s" % (errstr))
+            # print that even when no logger is enabled!
             self.log.error("[FATAL] %s" % (errstr))
             self.disconnect()
             raise network.FatalError(errstr)
@@ -250,7 +264,8 @@ class Connection(object):
                 game = self.game
                 # this will destroy self.game
                 self.leavegame(stealth=True)
-                self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
+                self.call_callbacks("lobbygame_terminate", game,
+                                    packet.errorstr)
                 return None
             """
             raise network.CommandError(packet.errorstr)

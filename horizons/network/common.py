@@ -109,14 +109,16 @@ class Player(object):
 
     def __str__(self):
         if self.name:
-            return "Player(addr=%s;proto=%d;name=%s)" % (self.address, self.protocol, self.name)
+            return "Player(addr=%s;proto=%d;name=%s)" % (self.address,
+                                                         self.protocol,
+                                                         self.name)
         else:
             return "Player(addr=%s;proto=%d)" % (self.address, self.protocol)
 
     def join(self, game, packet):
         """ assigns player data sent by create/join-command to the player """
-        assert (isinstance(packet, packets.client.cmd_creategame)
-                or isinstance(packet, packets.client.cmd_joingame))
+        assert (isinstance(packet, packets.client.cmd_creategame) or
+                isinstance(packet, packets.client.cmd_joingame))
         self.game = game
         self.version = packet.clientversion
         self.name = packet.playername
@@ -165,8 +167,8 @@ class Game(object):
     # for pickle: return only relevant data to the player
     def __getstate__(self):
         # NOTE: don't return _ANY_ private data here as these object
-        # will be used to build the public game list. if really necessary remove
-        # the private data in packets.data_gameslist.addgame
+        # will be used to build the public game list. if really necessary
+        # remove the private data in packets.data_gameslist.addgame
         # NOTE: this classes are used on the client too, so beware of
         # datatype changes
         state = self.__dict__.copy()
@@ -232,8 +234,9 @@ class Game(object):
         self.playercnt = 0
 
     def __str__(self):
-        return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (self.uuid,
-            self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
+        return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (
+            self.uuid, self.maxplayers, self.playercnt, self.has_password(),
+            Game.State(self.state))
 
 packets.SafeUnpickler.add('server', Game)
 

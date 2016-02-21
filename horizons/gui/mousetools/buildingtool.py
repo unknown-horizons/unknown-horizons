@@ -185,8 +185,9 @@ class BuildingTool(NavigationTool):
         # If the current buildings has related buildings, also show other
         # buildings of this class. You usually don't want overlapping ranges
         # of e.g. lumberjacks.
-        if self._class.id in self.session.db.get_buildings_with_related_buildings() and \
-           self._class.id != BUILDINGS.RESIDENTIAL:
+        if self._class.id in \
+                self.session.db.get_buildings_with_related_buildings() and \
+                self._class.id != BUILDINGS.RESIDENTIAL:
             # TODO: generalize settler class exclusion,
             # e.g. when refactoring it into components
 
@@ -210,7 +211,8 @@ class BuildingTool(NavigationTool):
         else:  # we don't need to check all
             # duplicates filtered later
             buildings_to_select = [tile.object for tile in tiles_to_check if
-                tile.object is not None and tile.object.id in related]
+                                   tile.object is not None and
+                                   tile.object.id in related]
             for tile in tiles_to_check:
                 # check if we need to recolor the tiles
                 if tile in self._related_buildings_selected_tiles:
@@ -251,7 +253,7 @@ class BuildingTool(NavigationTool):
         self._related_buildings.discard(message.sender)
         self._transparencified_instances = \
             set(i for i in self._transparencified_instances if
-            i() is not None and int(i().getId()) != message.worldid)
+                i() is not None and int(i().getId()) != message.worldid)
         check_building = lambda b: b.worldid != message.worldid
         self._highlighted_buildings = set(
             tup for tup in self._highlighted_buildings if
@@ -264,7 +266,7 @@ class BuildingTool(NavigationTool):
             self.__class__.gui = load_uh_widget("place_building.xml")
             self.__class__.gui.position_technique = "right-1:top+157"
         self.__class__.gui.mapEvents({"rotate_left": self.rotate_left,
-            "rotate_right": self.rotate_right})
+                                     "rotate_right": self.rotate_right})
         # set translated building name in gui
         self.__class__.gui.findChild(
             name='headline').text = _('Build {building}').format(
@@ -320,7 +322,7 @@ class BuildingTool(NavigationTool):
         gui_x, gui_y = self.__class__.gui.size
         icon_x, icon_y = building_icon.size
         building_icon.position = (gui_x // 2 - icon_x // 2,
-            gui_y // 2 - icon_y // 2 - 70)
+                                  gui_y // 2 - icon_y // 2 - 70)
         self.__class__.gui.adaptLayout()
 
     def preview_build(self, point1, point2, force=False):
@@ -369,14 +371,12 @@ class BuildingTool(NavigationTool):
                 continue  # Tree/ironmine that is not buildable, don't preview
             else:
                 fife_instance, action_set_id = \
-                    self._class.getInstance(self.session,
-                                            building.position.origin.x,
-                                            building.position.origin.y,
-                                            rotation=building.rotation,
-                                            action=building.action,
-                                            level=level,
-                                            action_set_id=
-                                            self.buildings_action_set_ids[i])
+                    self._class.getInstance(
+                        self.session, building.position.origin.x,
+                        building.position.origin.y,
+                        rotation=building.rotation,
+                        action=building.action, level=level,
+                        action_set_id=self.buildings_action_set_ids[i])
                 self.buildings_fife_instances[building] = fife_instance
                 # remember action sets per order of occurrence
                 # (this is far from good when building lines,
@@ -387,7 +387,7 @@ class BuildingTool(NavigationTool):
             settlement = self.session.world.get_settlement(
                 building.position.origin)
             if settlement is not None and\
-                            settlement.owner != self.session.world.player:
+                    settlement.owner != self.session.world.player:
                 settlement = None
                 # no fraternizing with the enemy, else there would be peace
 
@@ -403,8 +403,9 @@ class BuildingTool(NavigationTool):
                 self.session.world.player, [settlement, self.ship])
             if building.buildable and not enough_res:
                 # make building red
-                self.renderer.addColored(self.buildings_fife_instances[building],
-                                         *self.not_buildable_color)
+                self.renderer.addColored(
+                    self.buildings_fife_instances[building],
+                    *self.not_buildable_color)
                 building.buildable = False
                 # set missing info for gui
                 self.buildings_missing_resources[building] = missing_res
@@ -437,10 +438,11 @@ class BuildingTool(NavigationTool):
             self.renderer.removeColored(
                 self.buildings_fife_instances[building])
             self.renderer.addOutlined(self.buildings_fife_instances[building],
-                self.buildable_color[0], self.buildable_color[1],
-                self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
-                GFX.BUILDING_OUTLINE_THRESHOLD
-            )
+                                      self.buildable_color[0],
+                                      self.buildable_color[1],
+                                      self.buildable_color[2],
+                                      GFX.BUILDING_OUTLINE_WIDTH,
+                                      GFX.BUILDING_OUTLINE_THRESHOLD)
 
         else:  # not buildable
             # must remove other highlight, fife does not support both
@@ -469,7 +471,8 @@ class BuildingTool(NavigationTool):
             related = frozenset(self.session.db.get_related_building_ids(
                 self._class.id))
             for tile in settlement.get_tiles_in_radius(building.position,
-              self._class.radius, include_self=True):
+                                                       self._class.radius,
+                                                       include_self=True):
                 obj = tile.object
                 if (obj is not None) and (obj.id in related) and (
                             obj not in self._highlighted_buildings):
@@ -631,14 +634,16 @@ class BuildingTool(NavigationTool):
                     if (now - BuildingTool._last_road_built[-3]) < 1.2:
                         self.session.ingame_gui.message_widget.add(
                             'DRAG_ROADS_HINT')
-                        # don't display hint multiple times at the same build situation
+                        # don't display hint multiple times at the same build
+                        #  situation
                         BuildingTool._last_road_built = []
-                    BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
+                    BuildingTool._last_road_built = \
+                        BuildingTool._last_road_built[-3:]
 
             # check how to continue: either build again or escape
             shift = evt.isShiftPressed() or\
-                    horizons.globals.fife.get_uh_setting(
-                        'UninterruptedBuilding')
+                horizons.globals.fife.get_uh_setting(
+                    'UninterruptedBuilding')
             if ((shift and not self._class.id == BUILDINGS.WAREHOUSE) or not
                     found_buildable or self._class.class_package == 'path'):
                 # build once more
@@ -858,7 +863,7 @@ class ShipBuildingToolLogic(object):
                         buildable_tiles_add(tile)
                         # check that there is no other player's settlement
                         if tile.settlement is None or \
-                                        tile.settlement.owner == player:
+                                tile.settlement.owner == player:
                             building_tool._color_buildable_tile(tile)
 
     def on_escape(self, session):

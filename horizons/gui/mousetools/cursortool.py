@@ -93,8 +93,9 @@ class CursorTool(fife.IMouseListener):
               -0.49  -1.49   1.00       1.00               1.0
         Error: 0.50  -0.50   1.00       2.00               1.0
 
-        This error would result in fields at position 0 to be smaller than the others,
-        because both sides (-0.5 and 0.5) would be wrongly assigned to the other fields.
+        This error would result in fields at position 0 to be smaller than
+        the others, because both sides (-0.5 and 0.5) would be wrongly
+        assigned to the other fields.
 
         @return Point with int coordinates"""
         return Point(roundhalfplus(map_x), roundhalfplus(map_y))

@@ -37,7 +37,7 @@ class cmd_creategame(packet):
     password = ""
 
     def __init__(self, clientver, clientid, playername, playercolor,
-            gamename, mapname, maxplayers, maphash="", password=""):
+                 gamename, mapname, maxplayers, maphash="", password=""):
         self.clientversion = clientver
         self.clientid = clientid
         self.playername = playername
@@ -84,7 +84,8 @@ class cmd_creategame(packet):
         if not isinstance(pkt.mapname, unicode):
             raise NetworkException("Invalid datatype: mapname")
         if not pkt.mapname:
-            raise SoftNetworkException("You can't run a game with an empty mapname")
+            raise SoftNetworkException(
+                "You can't run a game with an empty mapname")
 
         if not isinstance(pkt.maxplayers, int):
             raise NetworkException("Invalid datatype: maxplayers")
@@ -134,7 +135,8 @@ class cmd_joingame(packet):
     password = ""
     fetch = False
 
-    def __init__(self, uuid, clientver, clientid, playername, playercolor, password="", fetch=False):
+    def __init__(self, uuid, clientver, clientid, playername, playercolor,
+                 password="", fetch=False):
         self.uuid = uuid
         self.clientversion = clientver
         self.clientid = clientid

@@ -37,113 +37,113 @@ from horizons.util.python.callback import Callback
 
 
 class WorldEditor(object):
-	def __init__(self, world):
-		super(WorldEditor, self).__init__()
-		self.world = world
-		self.session = world.session
-		self.intermediate_map = IntermediateMap(world)
-		self._remove_unnecessary_objects()
-		self._center_view()
+    def __init__(self, world):
+        super(WorldEditor, self).__init__()
+        self.world = world
+        self.session = world.session
+        self.intermediate_map = IntermediateMap(world)
+        self._remove_unnecessary_objects()
+        self._center_view()
 
-		self.brush_size = EDITOR.DEFAULT_BRUSH_SIZE
+        self.brush_size = EDITOR.DEFAULT_BRUSH_SIZE
 
-		self._tile_delete_set = set()
+        self._tile_delete_set = set()
 
-		self.log = logging.getLogger("gui")
+        self.log = logging.getLogger("gui")
 
-	def _remove_unnecessary_objects(self):
-		# Delete all ships.
-		for ship in (ship for ship in self.world.ships):
-			RemoveUnit(ship).execute(self.session)
+    def _remove_unnecessary_objects(self):
+        # Delete all ships.
+        for ship in (ship for ship in self.world.ships):
+            RemoveUnit(ship).execute(self.session)
 
-	def _center_view(self):
-		min_x = min(zip(*self.world.full_map.keys())[0])
-		max_x = max(zip(*self.world.full_map.keys())[0])
-		min_y = min(zip(*self.world.full_map.keys())[1])
-		max_y = max(zip(*self.world.full_map.keys())[1])
-		self.session.view.center((min_x + max_x) // 2, (min_y + max_y) // 2)
+    def _center_view(self):
+        min_x = min(zip(*self.world.full_map.keys())[0])
+        max_x = max(zip(*self.world.full_map.keys())[0])
+        min_y = min(zip(*self.world.full_map.keys())[1])
+        max_y = max(zip(*self.world.full_map.keys())[1])
+        self.session.view.center((min_x + max_x) // 2, (min_y + max_y) // 2)
 
-	def _iter_islands(self):
-		ground = {}
-		for coords, tile in self.world.full_map.iteritems():
-			if tile.id <= 0:
-				continue
-			ground[coords] = None
+    def _iter_islands(self):
+        ground = {}
+        for coords, tile in self.world.full_map.iteritems():
+            if tile.id <= 0:
+                continue
+            ground[coords] = None
 
-		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
-		n = 0
-		for coords in sorted(ground.iterkeys()):
-			if ground[coords] is not None:
-				continue
+        n = 0
+        for coords in sorted(ground.iterkeys()):
+            if ground[coords] is not None:
+                continue
 
-			coords_list = [coords]
-			ground[coords] = n
-			queue = deque([coords])
-			while queue:
-				x, y = queue.popleft()
-				for dx, dy in moves:
-					coords2 = (x + dx, y + dy)
-					if coords2 in ground and ground[coords2] is None:
-						ground[coords2] = n
-						queue.append(coords2)
-						coords_list.append(coords2)
-			yield (n, coords_list)
-			n += 1
+            coords_list = [coords]
+            ground[coords] = n
+            queue = deque([coords])
+            while queue:
+                x, y = queue.popleft()
+                for dx, dy in moves:
+                    coords2 = (x + dx, y + dy)
+                    if coords2 in ground and ground[coords2] is None:
+                        ground[coords2] = n
+                        queue.append(coords2)
+                        coords_list.append(coords2)
+            yield (n, coords_list)
+            n += 1
 
-	def save_map(self, path, prefix):
-		map_file = os.path.join(path, prefix + '.sqlite')
-		if os.path.exists(map_file):
-			os.unlink(map_file)  # the process relies on having an empty file
+    def save_map(self, path, prefix):
+        map_file = os.path.join(path, prefix + '.sqlite')
+        if os.path.exists(map_file):
+            os.unlink(map_file)  # the process relies on having an empty file
 
-		db = DbReader(map_file)
-		with open('content/map-template.sql') as map_template:
-			db.execute_script(map_template.read())
+        db = DbReader(map_file)
+        with open('content/map-template.sql') as map_template:
+            db.execute_script(map_template.read())
 
-		save_successful = True
-		try:
-			db('BEGIN')
-			for island_id, coords_list in self._iter_islands():
-				for x, y in coords_list:
-					tile = self.world.full_map[(x, y)]
-					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)',
-						island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
-			db('COMMIT')
-		except sqlite3.Error as e:
-			self.log.debug('Error: {error}'.format(error=e.args[0]))
-			save_successful = False
-		finally:
-			db.close()
+        save_successful = True
+        try:
+            db('BEGIN')
+            for island_id, coords_list in self._iter_islands():
+                for x, y in coords_list:
+                    tile = self.world.full_map[(x, y)]
+                    db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)',
+                        island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
+            db('COMMIT')
+        except sqlite3.Error as e:
+            self.log.debug('Error: {error}'.format(error=e.args[0]))
+            save_successful = False
+        finally:
+            db.close()
 
-		return save_successful
+        return save_successful
 
-	def _delete_tile_instance(self, old_tile):
-		self._tile_delete_set.remove(old_tile)
-		instance = old_tile._instance
-		layer = instance.getLocation().getLayer()
-		layer.deleteInstance(instance)
-		old_tile._instance = None
+    def _delete_tile_instance(self, old_tile):
+        self._tile_delete_set.remove(old_tile)
+        instance = old_tile._instance
+        layer = instance.getLocation().getLayer()
+        layer.deleteInstance(instance)
+        old_tile._instance = None
 
-	def set_tile(self, coords, tile_details):
-		if coords not in self.world.full_map:
-			return
+    def set_tile(self, coords, tile_details):
+        if coords not in self.world.full_map:
+            return
 
-		old_tile = self.world.full_map[coords]
-		if (old_tile and old_tile.id != -1 and old_tile._instance
-				and old_tile not in self._tile_delete_set):
-			if (old_tile.id, old_tile.shape, old_tile.rotation + 45) == tile_details:
-				return
-			self._tile_delete_set.add(old_tile)
-			Scheduler().add_new_object(Callback(self._delete_tile_instance, old_tile), self, run_in=0)
+        old_tile = self.world.full_map[coords]
+        if (old_tile and old_tile.id != -1 and old_tile._instance
+                and old_tile not in self._tile_delete_set):
+            if (old_tile.id, old_tile.shape, old_tile.rotation + 45) == tile_details:
+                return
+            self._tile_delete_set.add(old_tile)
+            Scheduler().add_new_object(Callback(self._delete_tile_instance, old_tile), self, run_in=0)
 
-		(ground_id, shape, rotation) = tile_details
-		if ground_id != 0:
-			ground = Entities.grounds['%d-%s' % (ground_id, shape)](self.session, *coords)
-			ground.act(rotation)
-			self.world.full_map[coords] = ground
-		else:
-			self.world.full_map[coords] = self.world.fake_tile_map[coords]
-		Minimap.update(coords)
+        (ground_id, shape, rotation) = tile_details
+        if ground_id != 0:
+            ground = Entities.grounds['%d-%s' % (ground_id, shape)](self.session, *coords)
+            ground.act(rotation)
+            self.world.full_map[coords] = ground
+        else:
+            self.world.full_map[coords] = self.world.fake_tile_map[coords]
+        Minimap.update(coords)
 
-		# update cam, that's necessary because of the static layer WATER
-		self.session.view.cam.refresh()
+        # update cam, that's necessary because of the static layer WATER
+        self.session.view.cam.refresh()

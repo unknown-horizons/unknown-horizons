@@ -33,8 +33,8 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
 class InventoryOverlayComponent(Component):
-    """Display different additional graphics ("animation overlays" in FIFE terminology)
-    depending on inventory status of a building or unit.
+    """Display different additional graphics ("animation overlays"
+    in FIFE terminology) depending on inventory status of a building or unit.
     """
     NAME = "inventoryoverlay"
     DEPENDENCIES = ['StorageComponent']
@@ -44,7 +44,8 @@ class InventoryOverlayComponent(Component):
         super(InventoryOverlayComponent, self).__init__()
         self.overlays = overlays or {}
 
-        # Stores {resource_id: amount that is currently used as overlay, or None if no overlay}
+        # Stores {resource_id: amount that is currently used as overlay,
+        #  or None if no overlay}
         self.current_overlays = defaultdict(lambda: None)
 
     @property
@@ -63,16 +64,21 @@ class InventoryOverlayComponent(Component):
 
     def initialize(self):
         super(InventoryOverlayComponent, self).initialize()
-        InstanceInventoryUpdated.subscribe(self.inventory_changed, sender=self.instance)
+        InstanceInventoryUpdated.subscribe(self.inventory_changed,
+                                           sender=self.instance)
 
     def add_overlay(self, overlay_set, z_order=10):
-        """Creates animation overlay from action set *overlay_set* and adds it to fife instance.
+        """Creates animation overlay from action set *overlay_set* and
+        adds it to fife instance.
 
-        @param overlay_set: action set with images to be used as animation overlay
-        @param z_order: the (numerical) drawing order identifier. Usually res_id.
+        @param overlay_set: action set with images to be used
+                            as animation overlay
+        @param z_order: the (numerical) drawing order identifier.
+                        Usually res_id.
         """
         if not self.fife_instance.isAnimationOverlay(self.identifier):
-            # parameter True: also convert color overlays attached to base frame(s) into animation
+            # parameter True: also convert color overlays attached
+            #  to base frame(s) into animation
             self.fife_instance.convertToOverlays(self.identifier, True)
 
         for rotation, frames in overlay_set.iteritems():
@@ -86,17 +92,21 @@ class InventoryOverlayComponent(Component):
                 pic = horizons.globals.fife.imagemanager.load(frame_img)
                 frame_milliseconds = int(frame_length * 1000)
                 ov_anim.addFrame(pic, frame_milliseconds)
-            self.fife_instance.addAnimationOverlay(self.identifier, rotation, z_order, ov_anim)
+            self.fife_instance.addAnimationOverlay(self.identifier, rotation,
+                                                   z_order, ov_anim)
 
     def remove_overlay(self, res_id):
-        """Removes animation overlay associated with resource *res_id* from fife instance.
+        """Removes animation overlay associated with
+        resource *res_id* from fife instance.
 
-        We use *res_id* as z-order identifier, which removeAnimationOverlay actually asks for.
+        We use *res_id* as z-order identifier,
+         which removeAnimationOverlay actually asks for.
         """
         self.current_overlays[res_id] = None
         # TODO remove hardcoded rotations, use action set keys (of which set?)
         for rotation in range(45, 360, 90):
-            self.fife_instance.removeAnimationOverlay(self.identifier, rotation, res_id)
+            self.fife_instance.removeAnimationOverlay(self.identifier,
+                                                      rotation, res_id)
 
     def inventory_changed(self, message):
         """A changelistener notified the StorageComponent of this instance.
@@ -110,17 +120,21 @@ class InventoryOverlayComponent(Component):
     def update_overlay(self, res_id, new_amount):
         """Called when inventory amount of one resource changes.
 
-        Looks for a fitting animation overlay based on the new inventory amount for that resource.
-        If that overlay is different from the currently displayed one, removes the old overlay for
-        that resource and adds a new one based on what fits *new_amount* best.
+        Looks for a fitting animation overlay based on
+        the new inventory amount for that resource.
+        If that overlay is different from the currently displayed one,
+        removes the old overlay for that resource and adds a new one based
+        on what fits *new_amount* best.
         """
         try:
-            overlay_order = self.overlays[self.action_set][self.instance._action][res_id]
+            overlay_order = self.overlays[self.action_set][
+                self.instance._action][res_id]
         except KeyError:
             self.log.warning(
-                'No overlays defined for resource `%s`, action `%s` and action set `%s`. '
-                'Consider using `null` overlays for amount 0 in this action set.',
-                res_id, self.instance._action, self.action_set)
+                'No overlays defined for resource `%s`, action `%s` and '
+                'action set `%s`. Consider using `null` overlays for amount '
+                '0 in this action set.', res_id, self.instance._action,
+                self.action_set)
             self.current_overlays[res_id] = None
             return
 
@@ -137,7 +151,8 @@ class InventoryOverlayComponent(Component):
         for (amount, overlay_name) in sorted(overlay_order, reverse=True):
 
             if amount > new_amount:
-                # This `if` drops defined-but-too-large candidates (i.e. case `5` in above example).
+                # This `if` drops defined-but-too-large candidates
+                #  (i.e. case `5` in above example).
                 continue
 
             if amount == self.current_overlays[res_id]:
@@ -145,7 +160,8 @@ class InventoryOverlayComponent(Component):
                 return
 
             if overlay_name is None:
-                # Empty overlay, only display base action set (i.e. case `0` in above example)
+                # Empty overlay, only display base action set
+                #  (i.e. case `0` in above example)
                 self.remove_overlay(res_id)
                 return
 
@@ -170,25 +186,29 @@ class InventoryOverlayComponent(Component):
     def remove(self):
         """Removes all animation overlays from the fife instance.
 
-        Also converts the animation overlay on drawing order 0 (i.e. the old base image)
+        Also converts the animation overlay on drawing order 0
+        (i.e. the old base image)
         back to a plain "action set" in UH terminology.
         """
-        InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
+        InstanceInventoryUpdated.unsubscribe(self.inventory_changed,
+                                             sender=self.instance)
 
         for (res_id, overlay) in self.current_overlays.iteritems():
             if overlay is not None:
                 self.remove_overlay(res_id)
 
-        # remove base image "overlay" that we did `convertToOverlays` in `initialize`
+        # remove base image "overlay" that we did `convertToOverlays`
+        #  in `initialize`
         # Note that this gets us back the actual base image as not-an-overlay.
-        # In particular, no animation overlays can be added unless `convertToOverlays`
-        # is called again.
+        # In particular, no animation overlays can be added unless
+        # `convertToOverlays` is called again.
         self.remove_overlay(0)
 
         super(InventoryOverlayComponent, self).remove()
 
 
-# If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
+# If "old" FIFE version is detected (i.e. one without overlay support),
+#  silently disable.
 if not hasattr(fife, 'AnimationOverlayMap'):
     class InventoryOverlayComponent(Component):
 

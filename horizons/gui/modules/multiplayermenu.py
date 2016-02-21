@@ -57,7 +57,8 @@ class MultiplayerMenu(Window):
 
         self._gui.findChild(name='gamelist').capture(self._update_game_details)
         self._playerdata = PlayerDataSelection()
-        self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
+        self._gui.findChild(name="playerdataselectioncontainer").addChild(
+            self._playerdata.get_widget())
 
         # to track if the menu window is opened or not.
         self._is_open = False
@@ -102,8 +103,10 @@ class MultiplayerMenu(Window):
         NetworkInterface().unsubscribe("error", self._on_error)
         self._is_open = False
 
-        # the window is also closed when a game starts, don't disconnect in that case
-        if NetworkInterface().is_connected and not NetworkInterface().is_joined:
+        # the window is also closed when a game starts,
+        #  don't disconnect in that case
+        if NetworkInterface().is_connected and not \
+                NetworkInterface().is_joined:
             NetworkInterface().disconnect()
 
     def on_return(self):
@@ -111,8 +114,9 @@ class MultiplayerMenu(Window):
 
     def _check_connection(self):
         """
-        Check if all dependencies for multiplayer games are met and we can connect to
-        the master server. If any dependency is not met, the window is closed.
+        Check if all dependencies for multiplayer games are met and we can
+        connect to the master server. If any dependency is not met,
+        The window is closed.
         """
         # It is important to close this window before showing the error popup.
         # Otherwise closing the popup will trigger `show` again, a new attempt
@@ -123,7 +127,8 @@ class MultiplayerMenu(Window):
             headline = _("Unable to find pyenet")
             descr = _('The multiplayer feature requires the library "pyenet", '
                       "which could not be found on your system.")
-            advice = _("Linux users: Try to install pyenet through your package manager.")
+            advice = _("Linux users: Try to install pyenet through your "
+                       "package manager.")
             self._windows.open_error_popup(headline, descr, advice)
             return False
 
@@ -133,9 +138,12 @@ class MultiplayerMenu(Window):
             except RuntimeError as e:
                 self._windows.close()
                 headline = _("Failed to initialize networking.")
-                descr = _("Network features could not be initialized with the current configuration.")
-                advice = _("Check the settings you specified in the network section.")
-                self._windows.open_error_popup(headline, descr, advice, unicode(e))
+                descr = _("Network features could not be initialized with the "
+                          "current configuration.")
+                advice = _("Check the settings you specified in the network "
+                           "section.")
+                self._windows.open_error_popup(headline, descr, advice,
+                                               unicode(e))
                 return False
 
         if not NetworkInterface().is_connected:
@@ -145,9 +153,11 @@ class MultiplayerMenu(Window):
                 self._windows.close()
                 headline = _("Fatal Network Error")
                 descr = _("Could not connect to master server.")
-                advice = _("Please check your Internet connection. If it is fine, "
+                advice = _("Please check your Internet connection."
+                           " If it is fine, "
                            "it means our master server is temporarily down.")
-                self._windows.open_error_popup(headline, descr, advice, unicode(err))
+                self._windows.open_error_popup(headline, descr, advice,
+                                               unicode(err))
                 return False
 
         if NetworkInterface().is_joined:
@@ -162,16 +172,19 @@ class MultiplayerMenu(Window):
         if not fatal:
             self._windows.open_popup(_("Error"), unicode(exception))
         else:
-            self._windows.open_popup(_("Fatal Network Error"),
+            self._windows.open_popup(
+                _("Fatal Network Error"),
                 _("Something went wrong with the network:") + u'\n' +
                 unicode(exception))
-            # FIXME: this shouldn't be necessary, the main menu window is still somewhere
-            # in the stack and we just need to get rid of all MP related windows
+            # FIXME: this shouldn't be necessary, the main menu window
+            # is still somewhere in the stack and we just need to get rid of
+            #  all MP related windows
             self._mainmenu.show_main()
 
     def _display_game_name(self, game):
         same_version = game.version == NetworkInterface().get_clientversion()
-        template = u"{password}{gamename}: {name} ({players}, {limit}){version}"
+        template = u"{password}{gamename}: {name} ({players}," \
+                   u" {limit}){version}"
         return template.format(
             password="(Password!) " if game.has_password else "",
             name=game.map_name,
@@ -207,10 +220,12 @@ class MultiplayerMenu(Window):
         except IndexError:
             return
 
-        self._gui.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
-        self._gui.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
-        self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(
-            game_creator=game.creator)
+        self._gui.findChild(name="game_map").text = _(
+            "Map: {map_name}").format(map_name=game.map_name)
+        self._gui.findChild(name="game_name").text = _(
+            "Name: {game_name}").format(game_name=game.name)
+        self._gui.findChild(name="game_creator").text = _(
+            "Creator: {game_creator}").format(game_creator=game.creator)
         self._gui.findChild(name="game_playersnum").text = _(
             "Players: {player_amount}/{player_limit}").format(
             player_amount=game.player_count,
@@ -232,13 +247,14 @@ class MultiplayerMenu(Window):
             return
 
         if game.version != NetworkInterface().get_clientversion():
-            self._windows.open_popup(_("Wrong version"),
-                _("The game's version differs from your version. "
-                "Every player in a multiplayer game must use the same version. "
-                "This can be fixed by every player updating to the latest version. "
-                "Game version: {game_version} Your version: {own_version}").format(
-                game_version=game.version,
-                own_version=NetworkInterface().get_clientversion()))
+            self._windows.open_popup(
+                _("Wrong version"),
+                _("The game's version differs from your version. Every player"
+                  " in a multiplayer game must use the same version. This can"
+                  " be fixed by every player updating to the latest version. "
+                  "Game version: {game_version} Your version: {own_version}").
+                format(game_version=game.version,
+                       own_version=NetworkInterface().get_clientversion()))
             return
 
         NetworkInterface().change_name(self._playerdata.get_player_name())

@@ -90,7 +90,7 @@ class NetworkInterface(object):
 
         # create a game_details_changed callback
         for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
-                'lobbygame_changecolor', 'lobbygame_toggleready'):
+                  'lobbygame_changecolor', 'lobbygame_toggleready'):
             self.subscribe(t, lambda *a, **b: self.broadcast(
                 "game_details_changed"))
 
@@ -217,7 +217,7 @@ class NetworkInterface(object):
         try:
             self._assert_connection()
             self.log.debug("[CREATE] mapname={0} maxplayers={1}".
-                format(mapname, maxplayers))
+                           format(mapname, maxplayers))
             self.send_packet(packets.client.cmd_creategame(
                 clientver=self._client_data.version,
                 clientid=self._client_data.id,
@@ -319,7 +319,7 @@ class NetworkInterface(object):
         for game in games:
             ret_mp_games.append(self.game2mpgame(game))
             self.log.debug("NetworkInterface: found active game {}".
-                format(game.mapname))
+                           format(game.mapname))
         return ret_mp_games
 
     def toggle_ready(self):

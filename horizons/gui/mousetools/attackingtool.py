@@ -31,7 +31,8 @@ from horizons.gui.mousetools.selectiontool import SelectionTool
 class AttackingTool(SelectionTool):
     """
     This will be used when attacking units are selected
-    it will have to respond on right click and change cursor image when hovering enemy units
+    it will have to respond on right click and
+    change cursor image when hovering enemy units
     """
 
     send_hover_instances_update = False
@@ -47,15 +48,18 @@ class AttackingTool(SelectionTool):
             target = self._get_attackable_instance(evt)
 
             if target:
-                if not self.session.world.diplomacy.are_enemies(self.session.world.player, target.owner):
-                    AddEnemyPair(self.session.world.player, target.owner).execute(self.session)
+                if not self.session.world.diplomacy.are_enemies(
+                        self.session.world.player, target.owner):
+                    AddEnemyPair(self.session.world.player,
+                                 target.owner).execute(self.session)
                 for i in self.session.selected_instances:
                     if hasattr(i, 'attack'):
                         Attack(i, target).execute(self.session)
             else:
                 for i in self.session.selected_instances:
                     if i.movable:
-                        Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
+                        Act(i, target_mapcoord.x,
+                            target_mapcoord.y).execute(self.session)
             evt.consume()
         else:
             self.deselect_at_end = False
@@ -86,8 +90,9 @@ class AttackingTool(SelectionTool):
                 continue
 
             # Check diplomacy state between local player and instance owner.
-            if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
-                and not evt.isShiftPressed():
+            if not self.session.world.diplomacy.are_enemies(
+                    local_player, instance.owner) and not\
+                    evt.isShiftPressed():
                 continue
             if instance.has_component(HealthComponent):
                 target = instance
