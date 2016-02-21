@@ -40,7 +40,8 @@ class GenericAI(Player):
 
     def __init(self):
         self.ships = weakref.WeakValueDictionary()
-        # {ship : state}. used as list of ships and structure to know their state
+        # {ship : state}. used as list of ships and structure
+        #  to know their state
 
     def _load(self, db, worldid):
         super(GenericAI, self)._load(db, worldid)
@@ -54,13 +55,15 @@ class GenericAI(Player):
         @param ship: Ship instance that is to be used."""
         # find random position
         point = self.session.world.get_random_possible_ship_position()
-        self.log.debug("%s %s: moving to random location %d, %d", self.__class__.__name__, self.worldid,
-            point.x, point.y)
+        self.log.debug("%s %s: moving to random location %d, %d",
+                       self.__class__.__name__, self.worldid,
+                       point.x, point.y)
         # move ship there:
         try:
             ship.move(point, Callback(self.ship_idle, ship))
         except MoveNotPossible:
-            self.log.info("%s %s: ship blocked", self.__class__.__name__, self.worldid)
+            self.log.info("%s %s: ship blocked", self.__class__.__name__,
+                          self.worldid)
             # retry moving ship in 2 secs
             Scheduler().add_new_object(Callback(self.ship_idle, ship), self,
                                        GAME_SPEED.TICKS_PER_SECOND * 2)
@@ -70,7 +73,8 @@ class GenericAI(Player):
     def ship_idle(self, ship):
         """Called if a ship is idle. Sends ship to a random place.
         @param ship: ship instance"""
-        self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.worldid)
+        self.log.debug("%s %s: idle, moving to random location",
+                       self.__class__.__name__, self.worldid)
         Scheduler().add_new_object(Callback(self.send_ship, ship), self)
 
     def end(self):

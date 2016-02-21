@@ -32,7 +32,8 @@ from horizons.component.storagecomponent import StorageComponent
 
 
 class SettlementFounder(object):
-    """This class handles the settlement founding activities of an AI player."""
+    """This class handles the settlement founding activities of an AI player.
+    """
 
     log = logging.getLogger("ai.aiplayer.settlement_founder")
 
@@ -42,7 +43,8 @@ class SettlementFounder(object):
         self.session = owner.session
         self.world = owner.world
         self.personality = owner.personality_manager.get('SettlementFounder')
-        self.__island_value_cache = {}  # {island_id: (last_change_id, value), ...}
+        self.__island_value_cache = {}
+        # {island_id: (last_change_id, value), ...}
 
     def _evaluate_island(self, island):
         """Return (flat land, utility value) of the given island."""
@@ -53,8 +55,8 @@ class SettlementFounder(object):
                     for resource_id, amount in deposit.get_component(StorageComponent).inventory.itercontents():
                         resources[resource_id] += amount
 
-        # calculate the value of the island by taking into account the available land,
-        # resources, and number of enemy settlements
+        # calculate the value of the island by taking into account the
+        # available land, resources, and number of enemy settlements
         value = island.available_flat_land
         value += min(resources[RES.RAW_CLAY],
             self.personality.max_raw_clay) * self.personality.raw_clay_importance
@@ -66,7 +68,8 @@ class SettlementFounder(object):
             value -= self.personality.no_raw_iron_penalty
         value -= len(island.settlements) * self.personality.enemy_settlement_penalty
 
-        # take into the distance to our old warehouses and the other players' islands
+        # take into the distance to our old warehouses and
+        #  the other players' islands
         for settlement in self.world.settlements:
             if settlement.owner is self.owner:
                 value += self.personality.compact_empire_importance / float(island.position.distance(
@@ -79,7 +82,8 @@ class SettlementFounder(object):
         return (island.available_flat_land, max(2, int(value)))
 
     def _get_available_islands(self, min_land):
-        """Return a list of available islands in the form [(value, island), ...]."""
+        """Return a list of available islands
+         in the form [(value, island), ...]."""
         options = []
         for island in self.owner.world.islands:
             if island.worldid not in self.owner.islands:
@@ -99,7 +103,8 @@ class SettlementFounder(object):
             return None
         total_value = sum(zip(*options)[0])
 
-        # choose a random big enough island with probability proportional to its value
+        # choose a random big enough island with probability proportional
+        #  to its value
         choice = self.session.random.randint(0, total_value - 1)
         for (land, island) in options:
             if choice <= land:
@@ -116,7 +121,8 @@ class SettlementFounder(object):
             self.owner.report_failure))
 
     def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
-        """Returns a boolean showing whether we have enough resources to found a new settlement."""
+        """Returns a boolean showing whether we have enough resources to found
+        a new settlement."""
         if self.owner.get_component(StorageComponent).inventory[RES.GOLD] < min_money:
             return False
 
@@ -136,7 +142,8 @@ class SettlementFounder(object):
         return True
 
     def have_starting_resources(self, ship, settlement):
-        """Returns a boolean showing whether we have enough resources to found a new normal settlement."""
+        """Returns a boolean showing whether we have enough resources to found
+        a new normal settlement."""
         return self._have_settlement_starting_resources(ship, settlement,
                                                         self.personality.min_new_island_gold,
                                                         {RES.BOARDS: self.personality.min_new_island_boards,
@@ -144,20 +151,23 @@ class SettlementFounder(object):
                                                         RES.TOOLS: self.personality.min_new_island_tools})
 
     def have_feeder_island_starting_resources(self, ship, settlement):
-        """Returns a boolean showing whether we have enough resources to found a new feeder island."""
+        """Returns a boolean showing whether we have enough resources to found
+        a new feeder island."""
         return self._have_settlement_starting_resources(ship, settlement,
                                                         self.personality.min_new_feeder_island_gold,
                                                         {RES.BOARDS: self.personality.min_new_island_boards,
                                                         RES.TOOLS: self.personality.min_new_island_tools})
 
-    def _prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
+    def _prepare_foundation_ship(self, settlement_manager, ship,
+                                 feeder_island):
         """Start a mission to load the settlement foundation resources on the
         given ship from the specified settlement."""
         self.owner.start_mission(PrepareFoundationShip(settlement_manager, ship, feeder_island,
             self.owner.report_success, self.owner.report_failure))
 
     def _want_another_village(self):
-        """Return a boolean showing whether we want to start another settlement with a village."""
+        """Return a boolean showing whether we want to start another
+        settlement with a village."""
         # avoid having more than one developing island with a village at a time
         for settlement_manager in self.owner.settlement_managers:
             if not settlement_manager.feeder_island and not settlement_manager.can_provide_resources():
@@ -165,7 +175,8 @@ class SettlementFounder(object):
         return True
 
     def tick(self):
-        """Found a new settlement or prepare a foundation ship if possible and required."""
+        """Found a new settlement or prepare a foundation ship
+        if possible and required."""
         ship = None
         for possible_ship, state in self.owner.ships.iteritems():
             if state is self.owner.shipStates.idle:
@@ -229,7 +240,8 @@ class SettlementFounder(object):
         return bool(self._get_available_islands(self.personality.min_feeder_island_area))
 
     def found_feeder_island(self):
-        """Call this function to let the player know that a new feeder island is needed."""
+        """Call this function to let the player know that
+        a new feeder island is needed."""
         if self.can_found_feeder_island():
             self.owner.need_feeder_island = True
 

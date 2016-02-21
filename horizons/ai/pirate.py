@@ -39,11 +39,12 @@ from horizons.component.selectablecomponent import SelectableComponent
 
 
 class Pirate(GenericAI):
-    """A pirate ship moving randomly around. If another ship comes into the reach
-    of it, it will be followed for a short time."""
+    """A pirate ship moving randomly around. If another ship comes into
+    the reach of it, it will be followed for a short time."""
 
     # TODO: Move on_a_mission to GenericAI
-    shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission', 'chasing_ship', 'going_home')
+    shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission',
+                                   'chasing_ship', 'going_home')
 
     log = logging.getLogger("ai.pirate")
     regular_player = False
@@ -60,20 +61,25 @@ class Pirate(GenericAI):
         super(Pirate, self).__init__(session, id, name, color, **kwargs)
 
         # choose a random water tile on the coast and call it home
-        self.home_point = self.session.world.get_random_possible_coastal_ship_position()
+        self.home_point = \
+            self.session.world.get_random_possible_coastal_ship_position()
         # random sea tile if costal tile not found. Empty map?
         if not self.home_point:
-            self.home_point = self.session.world.get_random_possible_ship_position()
-        self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y,
-            self.home_radius)
+            self.home_point = \
+                self.session.world.get_random_possible_ship_position()
+        self.log.debug("Pirate: home at (%d, %d), radius %d",
+                       self.home_point.x, self.home_point.y,
+                       self.home_radius)
         self.__init()
 
         # create a ship and place it randomly (temporary hack)
         for i in xrange(self.ship_count):
             self.create_ship_at_random_position()
 
-        Scheduler().add_new_object(Callback(self.tick), self, 1, -1, self.tick_interval)
-        Scheduler().add_new_object(Callback(self.tick_long), self, 1, -1, self.tick_long_interval)
+        Scheduler().add_new_object(Callback(self.tick), self, 1, -1,
+                                   self.tick_interval)
+        Scheduler().add_new_object(Callback(self.tick_long), self, 1, -1,
+                                   self.tick_long_interval)
 
     def __init(self):
         self.world = self.session.world
@@ -87,7 +93,9 @@ class Pirate(GenericAI):
         lowest_distance = None
         nearest_ship = None
         for ship in base_ship.find_nearby_ships():
-            if isinstance(ship, (PirateShip, TradeShip)) or not ship.has_component(SelectableComponent):
+            if isinstance(ship, (
+                    PirateShip, TradeShip)) or not ship.has_component(
+                    SelectableComponent):
                 continue  # don't attack these ships
             distance = base_ship.position.distance(ship.position)
             if lowest_distance is None or distance < lowest_distance:
@@ -110,7 +118,7 @@ class Pirate(GenericAI):
     def create_ship_at_random_position(self):
         point = self.session.world.get_random_possible_ship_position()
         ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x,
-            point.y)(issuer=self.session.world.player)
+                          point.y)(issuer=self.session.world.player)
         self.ships[ship] = self.shipStates.idle
         self.combat_manager.add_new_unit(ship)
 
@@ -121,21 +129,24 @@ class Pirate(GenericAI):
     def save(self, db):
         super(Pirate, self).save(db)
         db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.worldid)
-        db("INSERT INTO pirate_home_point(x, y) VALUES(?, ?)", self.home_point.x, self.home_point.y)
+        db("INSERT INTO pirate_home_point(x, y) VALUES(?, ?)",
+           self.home_point.x, self.home_point.y)
 
         current_callback = Callback(self.tick)
         calls = Scheduler().get_classinst_calls(self, current_callback)
-        assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+        assert len(calls) == 1, "got %s calls for saving %s: %s" % (
+            len(calls), current_callback, calls)
         remaining_ticks = max(calls.values()[0], 1)
 
         current_callback_long = Callback(self.tick_long)
         calls = Scheduler().get_classinst_calls(self, current_callback_long)
-        assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls),
-            current_callback_long, calls)
+        assert len(calls) == 1, "got %s calls for saving %s: %s" % (
+            len(calls), current_callback_long, calls)
         remaining_ticks_long = max(calls.values()[0], 1)
 
-        db("INSERT INTO ai_pirate(rowid, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?)",
-            self.worldid, remaining_ticks, remaining_ticks_long)
+        db("INSERT INTO ai_pirate(rowid, remaining_ticks, "
+           "remaining_ticks_long) VALUES(?, ?, ?)",
+           self.worldid, remaining_ticks, remaining_ticks_long)
 
         for ship in self.ships:
             ship_state = self.ships[ship]
@@ -158,23 +169,29 @@ class Pirate(GenericAI):
         super(Pirate, self)._load(db, worldid)
         self.__init()
 
-        remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
-        Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks, -1, self.tick_interval)
-
-        remaining_ticks_long, = db("SELECT remaining_ticks_long FROM ai_pirate WHERE rowid = ?",
+        remaining_ticks, = db(
+            "SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?",
             worldid)[0]
-        Scheduler().add_new_object(Callback(self.tick_long), self, remaining_ticks_long, -1,
-            self.tick_interval)
+        Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks,
+                                   -1, self.tick_interval)
+
+        remaining_ticks_long, = db(
+            "SELECT remaining_ticks_long FROM ai_pirate WHERE rowid = ?",
+            worldid)[0]
+        Scheduler().add_new_object(Callback(self.tick_long), self,
+                                   remaining_ticks_long, -1,
+                                   self.tick_interval)
 
         home = db("SELECT x, y FROM pirate_home_point")[0]
         self.home_point = Point(home[0], home[1])
 
-        self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y,
-            self.home_radius)
+        self.log.debug("Pirate: home at (%d, %d), radius %d",
+                       self.home_point.x, self.home_point.y,
+                       self.home_radius)
 
     def finish_loading(self, db):
-        # load ships one by one from db (ship instances themselves are loaded already, but
-        # we have to use them here)
+        """load ships one by one from db (ship instances themselves are loaded
+        already, but we have to use them here)"""
 
         for ship_id, state_id in db("SELECT rowid, state FROM pirate_ships"):
             state = self.shipStates[state_id]
@@ -194,7 +211,8 @@ class Pirate(GenericAI):
         self.behavior_manager = BehaviorManager.load(db, self)
 
     def remove_unit(self, unit):
-        """Called when a ship which is owned by the pirate is removed or killed."""
+        """Called when a ship which is owned by the pirate is removed
+        or killed."""
         del self.ships[unit]
         self.combat_manager.remove_unit(unit)
         self.unit_manager.remove_unit(unit)
