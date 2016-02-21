@@ -29,12 +29,13 @@ from horizons.constants import ACTION_SETS
 
 
 class GeneralLoader(object):
-    """The ActionSetLoader loads action sets from a directory tree. The directories loaded
-    begin with 'as_' to tell tell the loader that they are an action set. directory
-    structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png
+    """The ActionSetLoader loads action sets from a directory tree.
+    The directories loaded begin with 'as_' to tell tell the loader that they
+    are an action set. directory structure is
+    as follows: <action_set>/<action>/<rotation>/<framenumber>.png
     for example that would be: fisher1/work/90/0.png
-    Note that all directories except for the rotation dir, all dirs have to be empty and
-    must not include additional action sets.
+    Note that all directories except for the rotation dir, all dirs
+    have to be empty and must not include additional action sets.
     """
 
     log = logging.getLogger("util.loaders.loader")
@@ -47,8 +48,10 @@ class GeneralLoader(object):
         @return: dict of 'file: anim_end' items
         """
         files = glob.glob(os.path.join(directory, "*.png"))
-        # Make sure entries are in the correct order: 'zz1.png' < '2.png' < '09.png'
-        files.sort(key=lambda f: int(re.search(r'\d+', os.path.basename(f)).group()))
+        # Make sure entries are in the correct order:
+        # 'zz1.png' < '2.png' < '09.png'
+        files.sort(key=lambda f: int(re.search(
+            r'\d+', os.path.basename(f)).group()))
 
         anim_length = {}  # dict containing 'file: anim_end' items
         for i, filename in enumerate(files, start=1):
@@ -60,7 +63,8 @@ class GeneralLoader(object):
         """Loads the rotations + files for a specific action
         @param directory: directory to load files from. Example:
                          'content/gfx/units/lumberjack/'
-        @return: dict of 'rotation: filedict' items. See _load_files for example.
+        @return: dict of 'rotation: filedict' items.
+                 See _load_files for example.
         """
         dirs = cls._action_set_directories(directory)
 
@@ -75,10 +79,12 @@ class GeneralLoader(object):
         rotations = {}
         for dirname in dirs:
             try:
-                rotations[int(dirname)] = cls._load_files(os.path.join(directory, dirname), time)
+                rotations[int(dirname)] = cls._load_files(os.path.join(
+                    directory, dirname), time)
             except Exception as e:
-                raise Exception("Failed to load action sets from %s with time %s: %s" %
-                             (os.path.join(directory, dirname), time, e))
+                raise Exception("Failed to load action sets from %s "
+                                "with time %s: %s" %
+                                (os.path.join(directory, dirname), time, e))
         return rotations
 
     @classmethod
@@ -86,7 +92,8 @@ class GeneralLoader(object):
         """Loads the actions + rotations + files for a specific action
         @param directory: directory to load files from. Example:
                          'content/gfx/units/lumberjack/'
-        @return: dict of 'action: rotationdict' items. See _load_rotation for example.
+        @return: dict of 'action: rotationdict' items.
+                 See _load_rotation for example.
         """
         dirs = cls._action_set_directories(directory)
         actions = {}
@@ -95,7 +102,8 @@ class GeneralLoader(object):
             if os.path.isdir(basedir):
                 actions[dirname] = cls._load_rotation(basedir)
                 if 'streets' in directory:
-                    actions.update(cls._load_mirrored_roads(dirname, actions[dirname]))
+                    actions.update(cls._load_mirrored_roads(dirname,
+                                                            actions[dirname]))
         return actions
 
     @classmethod
@@ -142,4 +150,4 @@ class GeneralLoader(object):
         """
         junk = set(('.DS_Store', ))
         return [d for d in os.listdir(directory)
-            if d not in junk]
+                if d not in junk]

@@ -24,12 +24,14 @@ from fife.extensions.pychan.widgets.common import IntAttr
 
 
 class TilingBackground(object):
-    """The TilingBackground is a shortcut for several Icons combined to one group.
-    It usually serves as auxiliary widget if a tiling background image is desired,
-    but the layout also requires some kind of border around those tiling panels.
+    """The TilingBackground is a shortcut for several Icons combined
+    to one group. It usually serves as auxiliary widget if a tiling background
+    image is desired, but the layout also requires some kind of border around
+    those tiling panels.
     Default attributes are set in the widgets inheriting from TilingBackground.
     """
-    def __init__(self, amount, base_path, start_img, tiles_img, final_img, **kwargs):
+    def __init__(self, amount, base_path, start_img, tiles_img, final_img,
+                 **kwargs):
         super(TilingBackground, self).__init__()
         # Note: Don't set the tile amount in the constructor,
         # as it will not layout correctly, blame pychan for it :-)
@@ -52,7 +54,8 @@ class TilingBackground(object):
         for i in xrange(self.amount):
             mid = Icon(image=self.tiles_img, name=self.name + str(i + 1))
             self.addChild(mid)
-        self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount + 1)))
+        self.addChild(Icon(image=self.final_img, name=self.name + str(
+            self.amount + 1)))
 
     amount = property(_get_tile_amount, _set_tile_amount)
 
@@ -61,11 +64,11 @@ class TooltipBG(VBox, TilingBackground):
     """Not usable from xml!"""
     def __init__(self, **kwargs):
         VBox.__init__(self, name='tooltip_background', padding=0)
-        TilingBackground.__init__(self,
-            amount=0,
+        TilingBackground.__init__(
+            self, amount=0,
             base_path="content/gui/images/background/widgets/tooltip_bg_",
-            start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
-            **kwargs)
+            start_img="top.png", tiles_img="middle.png",
+            final_img="bottom.png", **kwargs)
 
 
 class TabBG(VBox, TilingBackground):
@@ -77,8 +80,8 @@ class TabBG(VBox, TilingBackground):
 
     def __init__(self, **kwargs):
         VBox.__init__(self, name='tab_background_icons', padding=0)
-        TilingBackground.__init__(self,
-            amount=0,
+        TilingBackground.__init__(
+            self, amount=0,
             base_path="content/gui/images/tabwidget/main_bg_",
             start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
             **kwargs)
@@ -94,8 +97,8 @@ class TilingHBox(HBox, TilingBackground):
 
     def __init__(self, **kwargs):
         HBox.__init__(self, name='city_info_background', padding=0)
-        TilingBackground.__init__(self,
-            amount=0,
+        TilingBackground.__init__(
+            self, amount=0,
             base_path="content/gui/images/background/widgets/cityinfo_",
             start_img="left.png", tiles_img="fill.png", final_img="right.png",
             **kwargs)
@@ -103,4 +106,5 @@ class TilingHBox(HBox, TilingBackground):
 
 class hr(Icon):
     def __init__(self, **kwargs):
-        super(hr, self).__init__(image="content/gui/images/background/hr.png", **kwargs)
+        super(hr, self).__init__(image="content/gui/images/background/hr.png",
+                                 **kwargs)

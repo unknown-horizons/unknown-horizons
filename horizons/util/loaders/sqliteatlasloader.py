@@ -27,22 +27,26 @@ from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
 class SQLiteAtlasLoader(object):
-    """Loads atlases and appropriate action sets from a JSON file and a SQLite database.
+    """Loads atlases and appropriate action sets from a JSON file
+    and a SQLite database.
     """
     def __init__(self):
         self.atlaslib = []
 
         # TODO: There's something wrong with ground entities if atlas.sql
-        # is loaded only here, for now it's added to DB_FILES (empty file if no atlases are used)
+        # is loaded only here, for now it's added to DB_FILES
+        # (empty file if no atlases are used)
 
-        self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+        self.atlases = horizons.globals.db(
+            "SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
         self.inited = False
 
     def init(self):
         """Used to lazy init the loader"""
         for (atlas,) in self.atlases:
             # print 'creating', atlas
-            # cast explicit to str because the imagemanager is not able to handle unicode strings
+            # cast explicit to str because the imagemanager is not able
+            # to handle unicode strings
             img = horizons.globals.fife.imagemanager.create(str(atlas))
             self.atlaslib.append(img)
         self.inited = True
@@ -50,12 +54,15 @@ class SQLiteAtlasLoader(object):
     def loadResource(self, location):
         """
         @param location: String with the location. See below for details:
-        Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
+        Location format: <animation_id>:<command>:<params>
+        (e.g.: "123:shift:left-16, bottom-8)
         Available commands:
         - shift:
-        Shift the image using the params left, right, center, middle for x shifting and
+        Shift the image using the params left, right, center,
+        middle for x shifting and
         y-shifting with the params: top, bottom, center, middle.
-        A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
+        A param looks like this: "param_x(+/-)value, param_y(+/-)value"
+        (e.g.: left-16, bottom+8)
         - cut:
         # TODO: complete documentation
         """
@@ -72,10 +79,12 @@ class SQLiteAtlasLoader(object):
         loader = self._get_loader(actionset)
 
         frame_start, frame_end = 0.0, 0.0
-        for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+        for file in sorted(loader.get_sets()[actionset][action][int(
+                rotation)].iterkeys()):
             entry = loader.get_sets()[actionset][action][int(rotation)][file]
-            # we don't need to load images at this point to query for its parameters
-            # such as width and height because we can get those from json file
+            # we don't need to load images at this point to query
+            # for its parameters such as width and height
+            # because we can get those from json file
             xpos, ypos, width, height = entry[2:]
 
             if horizons.globals.fife.imagemanager.exists(file):
@@ -110,7 +119,8 @@ class SQLiteAtlasLoader(object):
                     img.setYShift(y)
 
             frame_end = entry[0]
-            ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
+            ani.addFrame(img, max(1, int((float(frame_end) -
+                                          frame_start) * 1000)))
             frame_start = float(frame_end)
         ani.setActionFrame(0)
         return ani
@@ -129,8 +139,9 @@ class SQLiteAtlasLoader(object):
             self.init()
         loader = self._get_loader(actionset)
         entry = loader.get_sets()[actionset][action][int(rotation)][file]
-        # we don't need to load images at this point to query for its parameters
-        # such as width and height because we can get those from json file
+        # we don't need to load images at this point to query
+        # for its parameters such as width and height because
+        # we can get those from json file
         xpos, ypos, width, height = entry[2:]
 
         if horizons.globals.fife.imagemanager.exists(file):

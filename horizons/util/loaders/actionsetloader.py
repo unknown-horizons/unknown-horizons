@@ -29,12 +29,13 @@ from horizons.util.loaders.jsondecoder import JsonDecoder
 
 
 class ActionSetLoader(object):
-    """The ActionSetLoader loads action sets from a directory tree. The directories loaded
-    begin with 'as_' to tell tell the loader that they are an action set. directory
-    structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png
+    """The ActionSetLoader loads action sets from a directory tree.
+    The directories loaded begin with 'as_' to tell tell the loader that they
+    are an action set. directory structure is as follows:
+    <action_set>/<action>/<rotation>/<framenumber>.png
     for example that would be: fisher1/work/90/0.png
-    Note that all directories except for the rotation dir, all dirs have to be empty and
-    must not include additional action sets.
+    Note that all directories except for the rotation dir, all dirs have to
+    be empty and must not include additional action sets.
     """
 
     log = logging.getLogger("util.loaders.actionsetloader")

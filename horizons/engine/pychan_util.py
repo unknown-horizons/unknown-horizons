@@ -44,12 +44,14 @@ class RenameImageButton(ImageButton):
 
 
 def handle_gcn_exception(e, msg=None):
-    """Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
+    """Called for RuntimeErrors after gcn::exceptions
+    that smell like guichan bugs.
     @param e: RuntimeError (python, not pychan)
     @param msg: additional info as string
     """
     traceback.print_stack()
-    print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
+    print('Caught RuntimeError on gui interaction, assuming irrelevant '
+          'gcn::exception.')
     if msg:
         print msg
 
@@ -75,13 +77,16 @@ def init_pychan():
     # register custom widgets
     from horizons.gui.widgets.inventory import Inventory
     from horizons.gui.widgets.buysellinventory import BuySellInventory
-    from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+    from horizons.gui.widgets.imagefillstatusbutton import \
+        ImageFillStatusButton
     from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
     # additionally, ImageButton is imported from widgets.imagebutton above
-    from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
+    from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton,\
+        MainmenuButton, OkButton
     from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
     from horizons.gui.widgets.stepslider import StepSlider
-    from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
+    from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget,\
+        WeaponStorageWidget
     from horizons.gui.widgets.container import AutoResizeContainer
     from horizons.gui.widgets.tooltip import _Tooltip
 
@@ -109,7 +114,8 @@ def init_pychan():
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
                 try:
-                    # only apply usable args, else it would crash when called through fife timers
+                    # only apply usable args, else it would crash when called
+                    # through fife timers
                     pychan.tools.applyOnlySuitable(func, *args, **kwargs)
                 except RuntimeError as e:
                     handle_gcn_exception(e)
@@ -139,16 +145,19 @@ def init_pychan():
 
         widget.__init__ = add_tooltip_init(widget.__init__)
 
-        # these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
-        # see #1597 and #1647
-        widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+        # these sometimes fail with "No focushandler set (did you add
+        # the widget to the gui?)." see #1597 and #1647
+        widget.requestFocus = catch_gcn_exception_decorator(
+            widget.requestFocus)
 
-    # FIXME hack pychan's text2gui function, it does an isinstance check that breaks
+    # FIXME hack pychan's text2gui function,
+    # it does an isinstance check that breaks
     # the lazy string from horizons.i18n. we should be passing unicode to
     # widgets all the time, therefore we don't need the additional check.
     def text2gui(text):
         unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
-        return text.encode("utf8", *unicodePolicy).replace("\t", " " * 4).replace("[br]", "\n")
+        return text.encode("utf8", *unicodePolicy).replace(
+            "\t", " " * 4).replace("[br]", "\n")
 
     pychan.widgets.textfield.text2gui = text2gui
     pychan.widgets.basictextwidget.text2gui = text2gui
@@ -170,7 +179,8 @@ def setup_cursor_change_on_hover():
         horizons.globals.fife.set_cursor_image("default")
 
     def make_cursor_change_on_hover_class(cls):
-        # this can't be a regular class since vanilla TextFields should have it by default
+        """this can't be a regular class since vanilla TextFields
+        should have it by default"""
         def disable_cursor_change_on_hover(self):
             self.mapEvents({
                 self.name + '/mouseEntered/cursor': None,
@@ -208,16 +218,19 @@ def setup_cursor_change_on_hover():
 
 
 def setup_trigger_signals_on_action():
-    """Make sure that every widget sends a signal when an action event occurs"""
+    """Make sure that every widget sends a signal
+    when an action event occurs"""
     def make_action_trigger_a_signal(cls):
         def add_action_triggers_a_signal(func):
             @functools.wraps(func)
             def wrapper(self, *args, **kwargs):
                 func(self, *args, **kwargs)
                 if cls._getName(self) == "cancelButton":
-                    self.capture(Callback(GuiCancelAction.broadcast, self), "action", "action_listener")
+                    self.capture(Callback(GuiCancelAction.broadcast, self),
+                                 "action", "action_listener")
                 else:
-                    self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
+                    self.capture(Callback(GuiAction.broadcast, self),
+                                 "action", "action_listener")
             return wrapper
 
         cls.__init__ = add_action_triggers_a_signal(cls.__init__)
@@ -226,13 +239,15 @@ def setup_trigger_signals_on_action():
 
 
 def setup_trigger_signals_on_hover():
-    """Make sure that the widgets specified below send a signal when a mouseOver event occurs"""
+    """Make sure that the widgets specified below send a signal
+    when a mouseOver event occurs"""
     def make_hover_trigger_a_signal(cls):
         def add_hover_triggers_a_signal(func):
             @functools.wraps(func)
             def wrapper(self, *args, **kwargs):
                 func(self, *args, **kwargs)
-                self.capture(Callback(GuiHover.broadcast, self), "mouseEntered", "action_listener")
+                self.capture(Callback(GuiHover.broadcast, self),
+                             "mouseEntered", "action_listener")
             return wrapper
 
         cls.__init__ = add_hover_triggers_a_signal(cls.__init__)

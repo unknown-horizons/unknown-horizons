@@ -69,7 +69,8 @@ class SelectSavegameDialog(Dialog):
                 w.parent.hideChild(w)
 
         w = self._gui.findChild(name='enter_filename')
-        if self._mode in ('save', 'editor-save'):  # only show enter_filename on save
+        if self._mode in ('save', 'editor-save'):
+            # only show enter_filename on save
             w.parent.showChild(w)
         else:
             if (Fife.getVersion() >= (0, 4, 0)):
@@ -84,7 +85,9 @@ class SelectSavegameDialog(Dialog):
         if self._mode == 'load':
             self._map_files, self._map_file_display = SavegameManager.get_saves()
             if not self._map_files:
-                self._windows.open_popup(_("No saved games"), _("There are no saved games to load."))
+                self._windows.open_popup(
+                    _("No saved games"),
+                    _("There are no saved games to load."))
                 return False
         elif self._mode == 'save':
             self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
@@ -95,22 +98,29 @@ class SelectSavegameDialog(Dialog):
         if self._mode == 'load':
             self._gui.distributeData({'savegamelist': 0})
 
-        self._cb = self._create_show_savegame_details(self._gui, self._map_files, 'savegamelist')
+        self._cb = self._create_show_savegame_details(self._gui,
+                                                      self._map_files,
+                                                      'savegamelist')
         if self._mode in ('save', 'editor-save'):
             def selected_changed():
-                """Fills in the name of the savegame in the textbox when selected in the list"""
-                if self._gui.collectData('savegamelist') == -1:  # set blank if nothing is selected
+                """Fills in the name of the savegame in the textbox
+                when selected in the list"""
+                if self._gui.collectData('savegamelist') == -1:
+                    # set blank if nothing is selected
                     self._gui.findChild(name="savegamefile").text = u""
                 else:
-                    savegamefile = self._map_file_display[self._gui.collectData('savegamelist')]
+                    savegamefile = self._map_file_display[
+                        self._gui.collectData('savegamelist')]
                     self._gui.distributeData({'savegamefile': savegamefile})
 
             self._cb = Callback.ChainedCallbacks(self._cb, selected_changed)
 
         self._cb()  # Refresh data on start
         self._gui.mapEvents({'savegamelist/action': self._cb})
-        self._gui.findChild(name="savegamelist").capture(self._cb, event_name="keyPressed")
-        self._gui.findChild(name="savegamelist").capture(self.check_double_click,
+        self._gui.findChild(name="savegamelist").capture(
+            self._cb, event_name="keyPressed")
+        self._gui.findChild(name="savegamelist").capture(
+            self.check_double_click,
             event_name="mousePressed")
 
         self.return_events = {
@@ -166,7 +176,7 @@ class SelectSavegameDialog(Dialog):
                 message += u"\n" + _('Overwrite it?')
                 # keep the pop-up non-modal because otherwise it is double-modal (#1876)
                 if not self._windows.open_popup(_("Confirmation for overwriting"),
-                        message, show_cancel_button=True):
+                                                  message, show_cancel_button=True):
                     return self._windows.open(self)
 
         elif self._mode == 'load':  # return selected item from list
@@ -271,12 +281,14 @@ class SelectSavegameDialog(Dialog):
         selected_file = map_files[selected_item]
         message = _("Do you really want to delete the savegame '{name}'?").format(
             name=SavegameManager.get_savegamename_from_filename(selected_file))
-        if self._windows.open_popup(_("Confirm deletion"), message, show_cancel_button=True):
+        if self._windows.open_popup(_("Confirm deletion"), message,
+                                    show_cancel_button=True):
             try:
                 os.unlink(selected_file)
                 return True
             except:
-                self._windows.open_popup(_("Error!"), _("Failed to delete savefile!"))
+                self._windows.open_popup(_("Error!"),
+                                         _("Failed to delete savefile!"))
                 return False
         else:  # player cancelled deletion
             return False

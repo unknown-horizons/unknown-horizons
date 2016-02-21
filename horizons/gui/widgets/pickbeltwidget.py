@@ -37,7 +37,8 @@ class PickBeltWidget(object):
         self.page_widgets = {}
         self.widget = load_uh_widget(self.widget_xml, center_widget=True)
 
-        # Lists holding pickbelt ImageButtons, placed to the left/right of the book
+        # Lists holding pickbelt ImageButtons,
+        # placed to the left/right of the book
         self.buttons = {'left': [], 'right': []}
 
         for i, (name, text) in enumerate(self.sections):
@@ -51,7 +52,8 @@ class PickBeltWidget(object):
                 pickbelt.path = 'images/background/pickbelt_%s' % side
                 pickbelt.font = "pickbelt"
 
-                pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
+                pickbelt.capture(Callback(self.update_view, i),
+                                 event_name="mouseClicked")
 
                 start_x, start_y = self.pickbelt_start_pos
                 pickbelt.position = (start_x + 5 * i, start_y + 70 * i)
@@ -76,7 +78,8 @@ class PickBeltWidget(object):
             for belt in belts:
                 belt.show()
         split = number + 1
-        for belt in self.buttons['left'][split:] + self.buttons['right'][:split]:
+        for belt in self.buttons['left'][split:] + self.buttons[
+                                                       'right'][:split]:
             belt.hide()
 
 
@@ -102,7 +105,8 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
         for listbox in self.widget.findChildren(name='translators'):
             listbox.background_color = NOTHING
 
-        self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+        self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(
+            self._windows.close)
 
     def show(self):
         self.widget.show()

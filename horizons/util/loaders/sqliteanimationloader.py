@@ -35,12 +35,15 @@ class SQLiteAnimationLoader(object):
     def loadResource(self, location):
         """
         @param location: String with the location. See below for details:
-        Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
+        Location format: <animation_id>:<command>:<params>
+                         (e.g.: "123:shift:left-16, bottom-8)
         Available commands:
         - shift:
-        Shift the image using the params left, right, center, middle for x shifting and
+        Shift the image using the params left, right, center,
+        middle for x shifting and
         y-shifting with the params: top, bottom, center, middle.
-        A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
+        A param looks like this: "param_x(+/-)value, param_y(+/-)value"
+        (e.g.: left-16, bottom+8)
         - cut:
         # TODO: complete documentation
         """
@@ -55,8 +58,10 @@ class SQLiteAnimationLoader(object):
 
         ani = fife.Animation.createAnimation()
         frame_start, frame_end = 0.0, 0.0
-        for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
-            frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
+        for file in sorted(loader.get_sets()[actionset][action][int(
+                rotation)].iterkeys()):
+            frame_end = loader.get_sets()[actionset][action][int(
+                rotation)][file]
             img = horizons.globals.fife.imagemanager.load(file)
             for command, arg in commands:
                 if command == 'shift':
@@ -82,7 +87,8 @@ class SQLiteAnimationLoader(object):
                     img.setXShift(x)
                     img.setYShift(y)
 
-            ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
+            ani.addFrame(img, max(1, int((float(frame_end) -
+                                          frame_start) * 1000)))
             frame_start = float(frame_end)
         ani.setActionFrame(0)
         return ani

@@ -37,7 +37,8 @@ class StatsWidget(object):
         self.center_widget = center_widget
         self._initialized = False
         self._hiding_widget = False
-        # True if and only if the widget is currently in the process of being hidden
+        # True if and only if the widget is currently in the process
+        # of being hidden
 
     def refresh(self):
         self._clear_entries()
@@ -49,7 +50,7 @@ class StatsWidget(object):
     def show(self):
         run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND
         ExtScheduler().add_new_object(Callback(self._refresh_tick),
-            self, run_in=run_in, loops=-1)
+                                      self, run_in=run_in, loops=-1)
         if not self._initialized:
             self._initialized = True
             self._init_gui()
@@ -78,7 +79,8 @@ class StatsWidget(object):
             self.refresh()
 
     def _init_gui(self):
-        self._gui = load_uh_widget(self.widget_file_name, center_widget=self.center_widget)
+        self._gui = load_uh_widget(self.widget_file_name,
+                                   center_widget=self.center_widget)
         if not self.center_widget:
             self._gui.position_technique = 'center+20:center+25'
         self._content_vbox = self._gui.findChild(name='content_vbox')

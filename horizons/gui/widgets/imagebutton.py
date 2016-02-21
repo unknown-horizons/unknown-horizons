@@ -44,13 +44,15 @@ class ImageButton(FifeImageButton):
     Setting to inactive will change *all* images (up, down and hover) to the
     inactive image. If you set it active again, everything will be reset.
     """
-    ATTRIBUTES = FifeImageButton.ATTRIBUTES + [Attr('path'), Attr('inactive_image')]
+    ATTRIBUTES = FifeImageButton.ATTRIBUTES + [Attr('path'),
+                                               Attr('inactive_image')]
     IMAGE = "content/gui/{path}{{mode}}.png"
     # These two constants are used to describe the toggle state of the widget.
     ACTIVE = 0
     INACTIVE = 1
 
-    def __init__(self, path='', inactive_image=None, is_focusable=False, **kwargs):
+    def __init__(self, path='', inactive_image=None, is_focusable=False,
+                 **kwargs):
         super(ImageButton, self).__init__(is_focusable=is_focusable, **kwargs)
         self.old_images = (None, None, None)
         if path:
@@ -84,7 +86,8 @@ class ImageButton(FifeImageButton):
             return
         # store old images to be reloaded when button is set active again
         self.old_images = (self.up_image, self.down_image, self.hover_image)
-        self.up_image = self.down_image = self.hover_image = self.inactive_image
+        self.up_image = self.down_image = self.hover_image = \
+            self.inactive_image
         self.state = self.INACTIVE
 
     @property
@@ -100,18 +103,18 @@ class ImageButton(FifeImageButton):
         try:
             self.up_image = image_path.format(mode='')
         except RuntimeError:
-            # RuntimeError: _[NotFound]_ , Something was searched, but not found
+            # RuntimeError: _[NotFound]_, Something was searched, but not found
             # TODO Temporarily try to find _u for the tabwidget
             self.up_image = image_path.format(mode='_u')
         try:
             self.hover_image = image_path.format(mode='_h')
         except RuntimeError:
             # By default, guichan/pychan will set hover_image to be the same as
-            # up_image even if it is not explicitly set here (the following line
-            # just reading `pass` instead of setting hover_image to up_image).
-            # This however is stored internally in a way that would segfault FIFE
-            # when trying to restore images from self.old_images that were set
-            # like that implicitly (see #2000).
+            # up_image even if it is not explicitly set here (the following
+            # line just reading `pass` instead of setting hover_image to
+            # up_image). This however is stored internally in a way that would
+            # segfault FIFE when trying to restore images from self.old_images
+            # that were set like that implicitly (see #2000).
             self.hover_image = self.up_image
         try:
             self.down_image = image_path.format(mode='_d')
@@ -125,12 +128,15 @@ class ImageButton(FifeImageButton):
         # set inactive_image to the path that worked, if there is any.
         try:
             image = image_path.format(mode='_bw')
-            Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
+            Icon(image=image).hide()
+            # hide will remove Icon from widgets of pychan.internals.manager
             self.inactive_image = image
         except RuntimeError:
             try:
                 image = image_path.format(mode='_gr')
-                Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
+                Icon(image=image).hide()
+                # hide will remove Icon from widgets
+                # of pychan.internals.manager
                 self.inactive_image = image
             except RuntimeError:
                 self.inactive_image = self.up_image

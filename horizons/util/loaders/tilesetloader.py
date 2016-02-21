@@ -30,12 +30,13 @@ from horizons.util.loaders.jsondecoder import JsonDecoder
 
 
 class TileSetLoader(object):
-    """The TileSetLoader loads tile sets from a directory tree. The directories loaded
-    begin with 'ts_' to tell tell the loader that they are an action set. directory
-    structure is as follows: <tile_set>/<rotation>/<framenumber>.png
+    """The TileSetLoader loads tile sets from a directory tree.
+    The directories loaded begin with 'ts_' to tell tell the loader that they
+    are an action set. directory structure is
+    as follows: <tile_set>/<rotation>/<framenumber>.png
     for example that would be: ts_shallow/90/0.png
-    Note that all directories except for the rotation dir, all dirs have to be empty and
-    must not include additional tile sets.
+    Note that all directories except for the rotation dir, all dirs have to be
+    empty and must not include additional tile sets.
     """
 
     log = logging.getLogger("util.loaders.tilesetloader")

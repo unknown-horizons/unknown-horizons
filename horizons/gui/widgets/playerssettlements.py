@@ -37,18 +37,24 @@ class PlayersSettlements(StatsWidget):
 
     def refresh(self):
         super(PlayersSettlements, self).refresh()
-        self._gui.findChild(name='headline').text = _("Settlements of {player}").format(
+        self._gui.findChild(name='headline').text = _(
+            "Settlements of {player}").format(
             player=self.session.world.player.name)
 
         sequence_number = 0
         events = {}
-        for settlement in sorted(self.session.world.settlements, key=lambda settlement: (
-            settlement.get_component(NamedComponent).name, settlement.worldid)):
+        for settlement in sorted(self.session.world.settlements,
+                                 key=lambda settlement: (
+                settlement.get_component(NamedComponent).name,
+                settlement.worldid)):
             if settlement.owner is self.session.world.player:
                 sequence_number += 1
-                name_label, rename_icon = self._add_line_to_gui(settlement, sequence_number)
-                events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_settlement, settlement)
-                cb = Callback(self.session.ingame_gui.show_change_name_dialog, settlement)
+                name_label, rename_icon = self._add_line_to_gui(
+                    settlement, sequence_number)
+                events['%s/mouseClicked' % name_label.name] = Callback(
+                    self._go_to_settlement, settlement)
+                cb = Callback(self.session.ingame_gui.show_change_name_dialog,
+                              settlement)
                 events['%s/mouseClicked' % rename_icon.name] = cb
         self._gui.mapEvents(events)
         self._add_summary_line_to_gui()
@@ -85,9 +91,11 @@ class PlayersSettlements(StatsWidget):
         self._content_vbox.addChild(hbox)
 
     def _add_line_to_gui(self, settlement, sequence_number):
-        sequence_number_label = widgets.Label(name='sequence_number_%d' % settlement.worldid)
+        sequence_number_label = widgets.Label(name='sequence_number_%d' %
+                                              settlement.worldid)
         sequence_number_label.text = unicode(sequence_number)
-        sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
+        sequence_number_label.min_size = \
+            sequence_number_label.max_size = (15, 20)
 
         name = widgets.Label(name='name_%d' % settlement.worldid)
         name.text = settlement.get_component(NamedComponent).name
@@ -99,8 +107,12 @@ class PlayersSettlements(StatsWidget):
         rename_icon.helptext = _("Click to change the name of your settlement")
         rename_icon.max_size = (20, 20)  # (width, height)
 
-        self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
-            settlement.inhabitants, settlement.cumulative_taxes, settlement.cumulative_running_costs)
+        self._add_generic_line_to_gui(settlement.worldid,
+                                      [sequence_number_label,
+                                       name, rename_icon],
+                                      settlement.inhabitants,
+                                      settlement.cumulative_taxes,
+                                      settlement.cumulative_running_costs)
         return name, rename_icon
 
     def _add_summary_line_to_gui(self):
@@ -114,12 +126,14 @@ class PlayersSettlements(StatsWidget):
                 costs += settlement.cumulative_running_costs
 
         sequence_number_label = widgets.Label(name='sequence_number_total')
-        sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
+        sequence_number_label.min_size = sequence_number_label.max_size = (15,
+                                                                           20)
 
         name = widgets.Label(name='name_total')
         name.text = _('Total')
         name.min_size = name.max_size = (200, 20)
 
-        self._add_generic_line_to_gui(0, [sequence_number_label, name], people, tax, costs)
+        self._add_generic_line_to_gui(0, [sequence_number_label, name],
+                                      people, tax, costs)
 
 decorators.bind_all(PlayersSettlements)

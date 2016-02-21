@@ -27,7 +27,8 @@ class AutoResizeContainer(Container):
     """A regular pychan container, that implements resizeToContent"""
 
     def resizeToContent(self):
-        """resizeToContent for unlayouted containers. Sets size to smallest box"""
+        """resizeToContent for unlayouted containers.
+        Sets size to smallest box"""
         for child in self.children:
             child.adaptLayout()  # recalc values for children
 

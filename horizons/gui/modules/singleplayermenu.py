@@ -31,7 +31,8 @@ import tempfile
 import horizons.globals
 import horizons.main
 
-from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
+from horizons.world import load_raw_world
+# FIXME placing this import at the end results in a cycle
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -64,8 +65,10 @@ class SingleplayerMenu(Window):
 
         self._playerdata = PlayerDataSelection()
         self._aidata = AIDataSelection()
-        self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
-        self._gui.findChild(name="aidataselectioncontainer").addChild(self._aidata.get_widget())
+        self._gui.findChild(name="playerdataselectioncontainer").addChild(
+            self._playerdata.get_widget())
+        self._gui.findChild(name="aidataselectioncontainer").addChild(
+            self._aidata.get_widget())
 
     def hide(self):
         # Save the player-data on hide so that other menus gets updated data
@@ -92,12 +95,14 @@ class SingleplayerMenu(Window):
         # remove old widget
         if self._mode:
             self._mode.end()
-            self._gui.findChild(name="right_side_box").removeChild(self._mode.get_widget())
+            self._gui.findChild(name="right_side_box").removeChild(
+                self._mode.get_widget())
 
         self._mode = modes[mode](self._windows, self, self._aidata)
         self._mode.show()
 
-        self._gui.findChild(name="right_side_box").addChild(self._mode.get_widget())
+        self._gui.findChild(name="right_side_box").addChild(
+            self._mode.get_widget())
         self._gui.show()
 
     def act(self):
@@ -106,7 +111,8 @@ class SingleplayerMenu(Window):
         player_name = self._playerdata.get_player_name()
 
         if not player_name:
-            self._windows.open_popup(_("Invalid player name"), _("You entered an invalid playername."))
+            self._windows.open_popup(_("Invalid player name"),
+                                     _("You entered an invalid playername."))
             return
 
         horizons.globals.fife.set_uh_setting("Nickname", player_name)
@@ -137,7 +143,8 @@ class GameSettingsWidget(object):
             def on_box_toggle(setting, setting_save_name):
                 """Called whenever the checkbox is toggled"""
                 box = self._gui.findChild(name=setting)
-                horizons.globals.fife.set_uh_setting(setting_save_name, box.marked)
+                horizons.globals.fife.set_uh_setting(setting_save_name,
+                                                     box.marked)
                 horizons.globals.fife.save_settings()
 
             def toggle(setting, setting_save_name):
@@ -145,26 +152,34 @@ class GameSettingsWidget(object):
                 box = self._gui.findChild(name=setting)
                 box.marked = not box.marked
 
-            self._gui.findChild(name=setting).capture(Callback(on_box_toggle, setting, setting_save_name))
-            self._gui.findChild(name=setting).marked = horizons.globals.fife.get_uh_setting(
-                setting_save_name)
-            self._gui.findChild(name=u'lbl_' + setting).capture(Callback(toggle, setting, setting_save_name))
+            self._gui.findChild(name=setting).capture(Callback(
+                on_box_toggle, setting, setting_save_name))
+            self._gui.findChild(name=setting).marked = \
+                horizons.globals.fife.get_uh_setting(setting_save_name)
+            self._gui.findChild(name=u'lbl_' + setting).capture(Callback(
+                toggle, setting, setting_save_name))
 
-        resource_density_slider = self._gui.findChild(name='resource_density_slider')
+        resource_density_slider = self._gui.findChild(
+            name='resource_density_slider')
 
         def on_resource_density_slider_change():
-            self._gui.findChild(name='resource_density_lbl').text = _('Resource density:') + u' ' + \
-                unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
-            horizons.globals.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
+            self._gui.findChild(name='resource_density_lbl').text = \
+                _('Resource density:') + u' ' + unicode(
+                    self.resource_densities[int(
+                        resource_density_slider.value)]) + u'x'
+            horizons.globals.fife.set_uh_setting("MapResourceDensity",
+                                                 resource_density_slider.value)
             horizons.globals.fife.save_settings()
         resource_density_slider.capture(on_resource_density_slider_change)
-        resource_density_slider.value = horizons.globals.fife.get_uh_setting("MapResourceDensity")
+        resource_density_slider.value = horizons.globals.fife.get_uh_setting(
+            "MapResourceDensity")
 
         on_resource_density_slider_change()
 
     @property
     def natural_resource_multiplier(self):
-        return self.resource_densities[int(self._gui.findChild(name='resource_density_slider').value)]
+        return self.resource_densities[int(self._gui.findChild(
+            name='resource_density_slider').value)]
 
     @property
     def free_trader(self):
@@ -222,7 +237,8 @@ class RandomMapWidget(object):
         options.trader_enabled = self._game_settings.free_trader
         options.pirate_enabled = self._game_settings.pirates
         options.disasters_enabled = self._game_settings.disasters
-        options.natural_resource_multiplier = self._game_settings.natural_resource_multiplier
+        options.natural_resource_multiplier = \
+            self._game_settings.natural_resource_multiplier
         horizons.main.start_singleplayer(options)
 
     def show(self):
@@ -232,24 +248,31 @@ class RandomMapWidget(object):
 
         parameters = (
             ('map_size', self.map_sizes, _('Map size:'), 'RandomMapSize'),
-            ('water_percent', self.water_percents, _('Water:'), 'RandomMapWaterPercent'),
-            ('max_island_size', self.island_sizes, _('Max island size:'), 'RandomMapMaxIslandSize'),
-            ('preferred_island_size', self.island_sizes, _('Preferred island size:'),
-            'RandomMapPreferredIslandSize'),
-            ('island_size_deviation', self.island_size_deviations, _('Island size deviation:'),
-            'RandomMapIslandSizeDeviation'),
-        )
+            ('water_percent', self.water_percents, _('Water:'),
+             'RandomMapWaterPercent'),
+            ('max_island_size', self.island_sizes, _('Max island size:'),
+             'RandomMapMaxIslandSize'),
+            ('preferred_island_size', self.island_sizes,
+             _('Preferred island size:'),
+             'RandomMapPreferredIslandSize'),
+            ('island_size_deviation', self.island_size_deviations,
+             _('Island size deviation:'),
+             'RandomMapIslandSizeDeviation'), )
 
         for param, __, __, setting_name in parameters:
-            self._map_parameters[param] = horizons.globals.fife.get_uh_setting(setting_name)
+            self._map_parameters[param] = horizons.globals.fife.get_uh_setting(
+                setting_name)
 
         def make_on_change(param, values, text, setting_name):
-            # When a slider is changed, update the value displayed in the label, save the value
+            # When a slider is changed, update the value displayed
+            # in the label, save the value
             # in the settings and store the value in self._map_parameters
             def on_change():
                 slider = self._gui.findChild(name=param + '_slider')
-                self._gui.findChild(name=param + '_lbl').text = text + u' ' + unicode(values[int(slider.value)])
-                horizons.globals.fife.set_uh_setting(setting_name, slider.value)
+                self._gui.findChild(name=param + '_lbl').text = \
+                    text + u' ' + unicode(values[int(slider.value)])
+                horizons.globals.fife.set_uh_setting(setting_name,
+                                                     slider.value)
                 horizons.globals.fife.save_settings()
                 self._on_random_parameter_changed()
                 self._map_parameters[param] = values[int(slider.value)]
@@ -262,7 +285,8 @@ class RandomMapWidget(object):
             slider.value = horizons.globals.fife.get_uh_setting(setting_name)
             on_change()
 
-        self._gui.findChild(name='game_settings_box').addChild(self._game_settings.get_widget())
+        self._gui.findChild(name='game_settings_box').addChild(
+            self._game_settings.get_widget())
         self._game_settings.show()
         self._aidata.show()
 
@@ -296,20 +320,24 @@ class RandomMapWidget(object):
         self._last_map_parameters = current_parameters
 
         if self._preview_process:
-            self._preview_process.kill()  # process exists, therefore up is scheduled already
+            self._preview_process.kill()
+            # process exists, therefore up is scheduled already
 
         # launch process in background to calculate minimap data
         minimap_icon = self._gui.findChild(name='map_preview_minimap')
-        params = json.dumps(((minimap_icon.width, minimap_icon.height), current_parameters))
+        params = json.dumps(((minimap_icon.width, minimap_icon.height),
+                             current_parameters))
 
         args = [sys.executable, sys.argv[0], "--generate-minimap", params]
         # We're running UH in a new process, make sure fife is setup correctly
         if horizons.main.command_line_arguments.fife_path:
-            args.extend(["--fife-path", horizons.main.command_line_arguments.fife_path])
+            args.extend(["--fife-path",
+                         horizons.main.command_line_arguments.fife_path])
 
         handle, self._preview_output = tempfile.mkstemp()
         os.close(handle)
-        self._preview_process = subprocess.Popen(args=args, stdout=open(self._preview_output, "w"))
+        self._preview_process = subprocess.Popen(args=args, stdout=open(
+            self._preview_output, "w"))
         self._set_map_preview_status(u"Generating preview…")
 
         ExtScheduler().add_new_object(self._poll_preview_process, self, 0.5)
@@ -317,8 +345,8 @@ class RandomMapWidget(object):
     def _poll_preview_process(self):
         """This will be called regularly to see if the process ended.
 
-        If the process has not yet finished, schedule a new callback to this function.
-        Otherwise use the data to update the minimap.
+        If the process has not yet finished, schedule a new callback to
+        this function. Otherwise use the data to update the minimap.
         """
         if not self._preview_process:
             return
@@ -326,11 +354,13 @@ class RandomMapWidget(object):
         self._preview_process.poll()
 
         if self._preview_process.returncode is None:  # not finished
-            ExtScheduler().add_new_object(self._poll_preview_process, self, 0.1)
+            ExtScheduler().add_new_object(self._poll_preview_process, self,
+                                          0.1)
             return
         elif self._preview_process.returncode != 0:
             self._preview_process = None
-            self._set_map_preview_status(u"An unknown error occurred while generating the map preview")
+            self._set_map_preview_status(u"An unknown error occurred while "
+                                         u"generating the map preview")
             return
 
         with open(self._preview_output, 'r') as f:
@@ -390,7 +420,8 @@ class FreeMapsWidget(object):
         options.trader_enabled = self._game_settings.free_trader
         options.pirate_enabled = self._game_settings.pirates
         options.disasters_enabled = self._game_settings.disasters
-        options.natural_resource_multiplier = self._game_settings.natural_resource_multiplier
+        options.natural_resource_multiplier = \
+            self._game_settings.natural_resource_multiplier
         horizons.main.start_singleplayer(options)
 
     def show(self):
@@ -404,16 +435,19 @@ class FreeMapsWidget(object):
             self._gui.distributeData({'maplist': 0})
             self._update_map_infos()
 
-        self._gui.findChild(name='game_settings_box').addChild(self._game_settings.get_widget())
+        self._gui.findChild(name='game_settings_box').addChild(
+            self._game_settings.get_widget())
         self._game_settings.show()
         self._aidata.show()
 
     def _update_map_infos(self):
         map_file = self._get_selected_map()
 
-        number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
+        number_of_players = SavegameManager.get_recommended_number_of_players(
+            map_file)
         lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-        lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
+        lbl.text = _("Recommended number of players: {number}").format(
+            number=number_of_players)
 
         self._update_map_preview(map_file)
 
@@ -487,14 +521,17 @@ class ScenarioMapWidget(object):
         self._gui.distributeInitialData({'maplist': self.maps_display})
         self._gui.distributeData({'maplist': 0})
 
-        # add all locales to lang list, select current locale as default and sort
-        scenario_langs = list(set(l for s in self._scenarios.values() for l, filename in s))
+        # add all locales to lang list, select current locale
+        # as default and sort
+        scenario_langs = list(set(
+            l for s in self._scenarios.values() for l, filename in s))
         lang_list = self._gui.findChild(name="uni_langlist")
         lang_list.items = sorted([LANGUAGENAMES[l] for l in scenario_langs])
 
         cur_locale = horizons.globals.fife.get_locale()
         if LANGUAGENAMES[cur_locale] in lang_list.items:
-            lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
+            lang_list.selected = lang_list.items.index(
+                LANGUAGENAMES[cur_locale])
         else:
             lang_list.selected = 0
 
@@ -539,7 +576,8 @@ class ScenarioMapWidget(object):
         self._update_scenario_translation_infos(translated_scenario)
 
     def _guess_suitable_default_locale(self, scenario):
-        """Attempts to guess a reasonable localized scenario to preselect in SP menu.
+        """Attempts to guess a reasonable localized scenario
+        to preselect in SP menu.
 
         If no filename was found so far for our scenario:
          1. Try harder to find locale of user
@@ -548,7 +586,8 @@ class ScenarioMapWidget(object):
         """
         try:
             default_locale, default_encoding = locale.getdefaultlocale()
-        except ValueError:  # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
+        except ValueError:
+            # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
             default_locale = 'en'
 
         possibilities = [
@@ -564,7 +603,8 @@ class ScenarioMapWidget(object):
                 return self._find_map_filename(scenario, lang)
 
     def _update_scenario_translation_infos(self, scenario):
-        """Fill in translation infos of selected scenario to translation label."""
+        """Fill in translation infos of selected scenario to translation label.
+        """
         try:
             metadata = ScenarioEventHandler.get_metadata_from_file(scenario)
         except InvalidScenarioFileFormat as e:
@@ -576,13 +616,15 @@ class ScenarioMapWidget(object):
         lbl.text = translation_status
 
         lbl = self._gui.findChild(name="uni_map_difficulty")
-        lbl.text = _("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
+        lbl.text = _("Difficulty: {difficulty}").format(
+            difficulty=metadata['difficulty'])
 
         lbl = self._gui.findChild(name="uni_map_author")
         lbl.text = _("Author: {author}").format(author=metadata['author'])
 
         lbl = self._gui.findChild(name="uni_map_desc")
-        lbl.text = _("Description: {desc}").format(desc=metadata['description'])
+        lbl.text = _("Description: {desc}").format(
+            desc=metadata['description'])
 
     def _find_map_filename(self, scenario_name, target_locale):
         """Finds the given map's filename with its locale."""
@@ -604,7 +646,8 @@ class ScenarioMapWidget(object):
 
 
 def generate_random_minimap(size, parameters):
-    """Called as subprocess, calculates minimap data and passes it via string via stdout"""
+    """Called as subprocess, calculates minimap data and passes it
+    via string via stdout"""
     # called as standalone basically, so init everything we need
     from horizons.entities import Entities
     from horizons.ext.dummy import Dummy
@@ -615,9 +658,10 @@ def generate_random_minimap(size, parameters):
         # Usually the minimap generator uses single tile files, but in release
         # mode these are not available. Therefor we have to hackenable atlases
         # for the minimap generation in this case. This forces the game to use
-        # the correct imageloader
+        # the correct imageloader.
         # In normal dev mode + enabled atlases we ignore this and just continue
-        # to use single tile files instead of atlases for the minimap generation.
+        # to use single tile files instead of atlases
+        # for the minimap generation.
         # These are always available in dev checkouts
         PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
