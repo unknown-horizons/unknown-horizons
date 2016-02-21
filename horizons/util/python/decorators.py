@@ -42,14 +42,16 @@ class cachedfunction(object):
         try:
             return self.cache[(args, kwargs_tuple)]
         except KeyError:
-            self.cache[(args, kwargs_tuple)] = value = self.func(*args, **kwargs)
+            self.cache[(args, kwargs_tuple)] = value = self.func(*args,
+                                                                 **kwargs)
             return value
         except TypeError:
             assert False, "Supplied invalid argument to cache decorator"
 
 
 class cachedmethod(object):
-    """Same as cachedfunction, but works also for methods. Results are saved per instance"""
+    """Same as cachedfunction, but works also for methods.
+    Results are saved per instance"""
     def __init__(self, func):
         self.cache = {}
         self.func = func
@@ -67,7 +69,8 @@ class cachedmethod(object):
         try:
             return self.cache[(instance, args, kwargs_tuple)]
         except KeyError:
-            self.cache[(instance, args, kwargs_tuple)] = value = self.func(instance, *args, **kwargs)
+            self.cache[(instance, args, kwargs_tuple)] = value = self.func(
+                instance, *args, **kwargs)
             return value
         except TypeError:
             assert False, "Supplied invalid argument to cache decorator"
@@ -75,7 +78,8 @@ class cachedmethod(object):
 
 def temporary_cachedmethod(timeout):
     """
-    Same as cachedproperty, but cached values only remain valid for a certain duration
+    Same as cachedproperty, but cached values only remain valid
+    for a certain duration
     @param timeout: number of seconds to cache the value for
     """
     class _temporary_cachedmethod(cachedmethod):
@@ -97,7 +101,8 @@ def temporary_cachedmethod(timeout):
             else:
                 self.cache_dates[key] = time.time()  # new entry
 
-            return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
+            return super(_temporary_cachedmethod, self).__call__(*args,
+                                                                 **kwargs)
 
     return functools.partial(_temporary_cachedmethod, timeout=timeout)
 
@@ -203,12 +208,14 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
             print "new folded constant:", value
 
     codestr = ''.join(map(chr, newcode))
-    codeobj = type(co)(co.co_argcount, co.co_nlocals, co.co_stacksize,
+    codeobj = type(co)(
+        co.co_argcount, co.co_nlocals, co.co_stacksize,
         co.co_flags, codestr, tuple(newconsts), co.co_names,
         co.co_varnames, co.co_filename, co.co_name,
         co.co_firstlineno, co.co_lnotab, co.co_freevars,
         co.co_cellvars)
-    return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults, f.func_closure)
+    return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults,
+                   f.func_closure)
 
 _make_constants = _make_constants(_make_constants)  # optimize thyself!
 
@@ -222,8 +229,9 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 
     """
 
-    # Ignore gettext functions. At the beginning these point to a NullTranslation
-    # object, they change when a language is activated.
+    # Ignore gettext functions. At the beginning
+    # these point to a NullTranslation object,
+    # they change when a language is activated.
     stoplist = stoplist or []
     stoplist.extend(['_', 'N_'])
 
@@ -256,9 +264,11 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
     return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
 
 
-# cachedproperty taken from http://code.activestate.com/recipes/576563-cached-property/
+# cachedproperty taken from
+# http://code.activestate.com/recipes/576563-cached-property/
 # Licensed under MIT
-# A cached property is a read-only property that is calculated on demand and automatically cached.
+# A cached property is a read-only property that
+# is calculated on demand and automatically cached.
 # If the value has already been calculated, the cached value is returned.
 
 def cachedproperty(f):

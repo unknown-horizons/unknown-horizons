@@ -46,8 +46,9 @@ class Registry(type):
         setattr(cls, 'registry', {})
 
     def register(cls, **kwargs):
-        """Returns a decorator to register functions, all arguments are passed through
-        to `register_function`. You can use that to allow registeration under a different name
+        """Returns a decorator to register functions, all arguments
+        are passed through to `register_function`.
+        You can use that to allow registeration under a different name
         for example.
         """
         def deco(func):
@@ -56,10 +57,11 @@ class Registry(type):
         return deco
 
     def register_function(cls, func, **kwargs):
-        """Function that actually handles the registration. You need to implement this
-        yourself.
+        """Function that actually handles the registration.
+        You need to implement this yourself.
 
-        For `get` to work, you want to add the function to the `registry` dictionary
+        For `get` to work, you want to add
+        the function to the `registry` dictionary
         under the same name that will be used to look it up later.
         """
         raise NotImplementedError

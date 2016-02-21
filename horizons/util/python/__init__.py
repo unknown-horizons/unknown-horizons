@@ -61,7 +61,8 @@ def map_balance(value, n, m):
     """
     Maps balance value defined in codomain of [1/n, n] for n >= 1,
     into linear balance (codomain of [-m, m]),
-    having 1.0 as equal point for n-based balance, and 0.0 as equal point for linear balance.
+    having 1.0 as equal point for n-based balance,
+    and 0.0 as equal point for linear balance.
 
     @param value: value to be mapped
     @type value: float

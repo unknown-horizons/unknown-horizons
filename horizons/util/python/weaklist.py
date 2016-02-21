@@ -99,7 +99,8 @@ class WeakList(list):
         return weakref.ref(item, self.__remove_ref)
 
     def __iter_over_weakref(self, iterable):
-        """For a given iterable, return an iterable generator over all weakref"""
+        """For a given iterable, return an iterable generator over all weakref
+        """
         return (self.__new_weakref(i) for i in iterable)
 
     def __remove_ref(self, ref):

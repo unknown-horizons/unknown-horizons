@@ -38,7 +38,8 @@ class BuySellInventory(Inventory):
     where Inventory has True.
     """
     def __init__(self, display_legend=False, **kwargs):
-        super(BuySellInventory, self).__init__(display_legend=display_legend, **kwargs)
+        super(BuySellInventory, self).__init__(display_legend=display_legend,
+                                               **kwargs)
 
     def init(self, db, inventory, limits, selling):
         if self.init_needed(inventory, limits, selling):
@@ -66,8 +67,10 @@ class BuySellInventory(Inventory):
 
             # check if this res should be displayed
             button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
-                                                        filled=0, uncached=self.uncached)
-            button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index)  # for tests
+                                                        filled=0,
+                                                        uncached=self.uncached)
+            button.button.name = "buy_sell_inventory_%s_entry_%s" % (
+                self._selling, index)  # for tests
             current_hbox.addChild(button)
 
             if index % self.items_per_line == self.items_per_line - 1:

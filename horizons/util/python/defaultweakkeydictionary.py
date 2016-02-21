@@ -20,7 +20,8 @@
 # ###################################################
 
 """
-DefaultWeakKeyDictionary - Works as a regular WeakKeyDictionary but supports default values.
+DefaultWeakKeyDictionary - Works as a regular WeakKeyDictionary
+but supports default values.
 Note: Default feature works slightly different than collections.defaultdict
 
 Usage:
@@ -41,7 +42,8 @@ class DefaultWeakKeyDictionary(WeakKeyDictionary):
     """
     def __init__(self, default_function):
         WeakKeyDictionary.__init__(self)
-        assert default_function is not None, "Default function must be provided"
+        assert default_function is not None, \
+            "Default function must be provided"
         self.default_function = default_function
 
     def __getitem__(self, item):

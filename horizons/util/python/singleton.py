@@ -23,7 +23,8 @@
 Warning:
     A Singleton is to some extend the OOP-version of a global variable.
     The Singleton pattern has many downsides.
-    Please make sure that this is really the best solution before using this code!
+    Please make sure that this is really the best solution
+    before using this code!
 '''
 
 
@@ -54,4 +55,5 @@ class ManualConstructionSingleton(Singleton):
         return self.instance
 
     def create_instance(self, *args, **kwargs):
-        self.instance = super(ManualConstructionSingleton, self).__call__(*args, **kwargs)
+        self.instance = super(ManualConstructionSingleton,
+                              self).__call__(*args, **kwargs)

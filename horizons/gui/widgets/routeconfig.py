@@ -35,7 +35,8 @@ from horizons.command.uioptions import RouteConfigCommand
 from horizons.command.unit import CreateRoute
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
+from horizons.gui.util import create_resource_selection_dialog,\
+    get_res_icon_path
 from horizons.scheduler import Scheduler
 from horizons.manager import MPManager
 
@@ -64,8 +65,10 @@ class RouteConfig(Window):
         if not hasattr(instance, 'route'):
             CreateRoute(instance).execute(self.session)
 
-        # We must make sure that the createRoute command has successfully finished, even in network games.
-        Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY + 2)
+        # We must make sure that the createRoute command has
+        # successfully finished, even in network games.
+        Scheduler().add_new_object(self._init_gui, self,
+                                   run_in=MPManager.EXECUTIONDELAY + 2)
 
     @property
     def session(self):
@@ -77,9 +80,11 @@ class RouteConfig(Window):
         self.minimap.draw()
         self._gui.show()
 
-        self.instance.add_remove_listener(self.on_instance_removed, no_duplicates=True)
-        self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True,
-            call_listener_now=True)
+        self.instance.add_remove_listener(self.on_instance_removed,
+                                          no_duplicates=True)
+        self.instance.route.add_change_listener(self.on_route_change,
+                                                no_duplicates=True,
+                                                call_listener_now=True)
 
     def hide(self):
         self.minimap.disable()
@@ -88,8 +93,10 @@ class RouteConfig(Window):
         self.instance.discard_remove_listener(self.on_instance_removed)
         self.instance.route.discard_remove_listener(self.on_route_change)
 
-        # make sure user knows that it's not enabled (if it appears to be complete)
-        if not self.instance.route.enabled and self.instance.route.can_enable():
+        # make sure user knows that it's not enabled
+        # (if it appears to be complete)
+        if not self.instance.route.enabled and \
+                self.instance.route.can_enable():
             self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
 
     def on_instance_removed(self):
@@ -117,7 +124,8 @@ class RouteConfig(Window):
         else:
             self.instance.session.ingame_gui.open_popup(
                 _("Need at least two settlements"),
-                _("You need at least two different settlements in your route."))
+                _("You need at least two different settlements in your "
+                  "route."))
 
     def stop_route(self):
         self._route_cmd("disable")
@@ -143,10 +151,12 @@ class RouteConfig(Window):
         self._gui.adaptLayout()
 
     def _check_no_entries_label(self):
-        """Update hint informing about how to add waypoints. Only visible when there are none."""
+        """Update hint informing about how to add waypoints.
+        Only visible when there are none."""
         name = "no_entries_hint"
         if not self.instance.route.waypoints:
-            lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
+            lbl = widgets.Label(
+                name=name, text=_("Click on a settlement to add a waypoint!"))
             self._gui.findChild(name="left_vbox").addChild(lbl)
         else:
             lbl = self._gui.findChild(name=name)
@@ -169,7 +179,8 @@ class RouteConfig(Window):
         elif direction == 'down':
             new_pos = position + 1
         else:
-            assert False, 'Direction for `move_entry` is neither "up" nor "down".'
+            assert False, 'Direction for `move_entry` is neither "up" ' \
+                          'nor "down".'
 
         vbox = self._gui.findChild(name="left_vbox")
 
@@ -219,7 +230,8 @@ class RouteConfig(Window):
         self._route_cmd("add_to_resource_list", position, res_id, amount)
         slot.adaptLayout()
 
-    def add_resource(self, res_id, slot=None, entry=None, has_value=False, value=0):
+    def add_resource(self, res_id, slot=None, entry=None, has_value=False,
+                     value=0):
         button = slot.findChild(name="button")
         position = self.widgets.index(entry)
         # Remove old resource from waypoints.
@@ -228,7 +240,8 @@ class RouteConfig(Window):
             self._route_cmd("remove_from_resource_list", position, res)
 
         icon = self.icon_for_resource[res_id]
-        button.up_image, button.down_image, button.hover_image = icon, icon, icon
+        button.up_image, button.down_image, button.hover_image = \
+            icon, icon, icon
         button.max_size = button.min_size = button.size = (32, 32)
 
         # Hide the resource menu.
@@ -272,7 +285,8 @@ class RouteConfig(Window):
                 self.hide_resource_menu()
             else:
                 # remove the load/unload order
-                self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
+                self.add_resource(slot=widget.parent, res_id=0,
+                                  entry=widget.parent.parent)
 
     def show_resource_menu(self, slot, entry):
         position = self.widgets.index(entry)
@@ -282,12 +296,16 @@ class RouteConfig(Window):
 
         on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
         settlement = entry.settlement()
-        inventory = settlement.get_component(StorageComponent).inventory if settlement else None
+        inventory = settlement.get_component(StorageComponent).inventory if \
+            settlement else None
         widget = 'traderoute_resource_selection.xml'
 
         def res_filter(res_id):
-            same_icon = slot.findChild(name='button').up_image.source == self.icon_for_resource[res_id]
-            already_listed = res_id in self.instance.route.waypoints[position]['resource_list']
+            same_icon = slot.findChild(
+                name='button').up_image.source == self.icon_for_resource[
+                res_id]
+            already_listed = res_id in self.instance.route.waypoints[
+                position]['resource_list']
             return not (same_icon or already_listed)
 
         dlg = create_resource_selection_dialog(
@@ -331,7 +349,8 @@ class RouteConfig(Window):
                 self.toggle_load_unload, slot, entry))
 
             button = slot.findChild(name="button")
-            button.capture(self.handle_resource_click, event_name='mouseClicked')
+            button.capture(self.handle_resource_click,
+                           event_name='mouseClicked')
             button.up_image = self.dummy_icon_path
             button.down_image = self.dummy_icon_path
             button.hover_image = self.dummy_icon_path
@@ -430,8 +449,8 @@ class RouteConfig(Window):
         self.minimap = Minimap(icon, session=self.session,
                                world=self.session.world,
                                view=self.session.view,
-                               targetrenderer=
-                               horizons.globals.fife.targetrenderer,
+                               targetrenderer=horizons.globals.fife.
+                               targetrenderer,
                                imagemanager=horizons.globals.fife.imagemanager,
                                cam_border=False,
                                use_rotation=False,

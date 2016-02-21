@@ -58,23 +58,27 @@ class ImageFillStatusButton(Container):
         """Inites the button to display the icons for res
         @param db: dbreader to get info about res icon.
         @param res: resource id
-        @param amount: int amount of res (used to decide inactiveness and as text)
+        @param amount: int amount of res (used to decide inactiveness
+                       and as text)
         @param filled: percent of fill status (values are ints in [0, 100])
         @param use_inactive_icon: whether to use inactive icon if amount == 0
         @param uncached: force no cache. see __init__()
         @return: ImageFillStatusButton instance"""
         greyscale = use_inactive_icon and amount == 0
-        path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale, full_path=False)
+        path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale,
+                                 full_path=False)
 
         if showprice:
             value = db.get_res_value(res)
             if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
-                helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res),
+                helptext = _('{resource_name}: {price} gold').format(
+                    resource_name=db.get_res_name(res),
                     price=db.get_res_value(res))
             else:
                 buyprice = value * TRADER.PRICE_MODIFIER_BUY
                 sellprice = value * TRADER.PRICE_MODIFIER_SELL
-                helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+                helptext = (u'{resource_name}[br]'.format(
+                    resource_name=db.get_res_name(res))
                             + _('buy for {buyprice} gold').format(buyprice=buyprice)
                             + u'[br]'
                             + _('sell for {sellprice} gold').format(sellprice=sellprice))

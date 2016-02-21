@@ -50,9 +50,10 @@ class ConsumerBuildingPathNodes(PathNodes):
         super(ConsumerBuildingPathNodes, self).__init__()
         ground_map = consumerbuilding.island.ground_map
         self.nodes = {}
-        for coords in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius,
-                include_self=False):
-            if coords in ground_map and 'coastline' not in ground_map[coords].classes:
+        for coords in consumerbuilding.position.get_radius_coordinates(
+                consumerbuilding.radius, include_self=False):
+            if coords in ground_map and 'coastline' not in \
+                    ground_map[coords].classes:
                 self.nodes[coords] = self.NODE_DEFAULT_SPEED
 
 

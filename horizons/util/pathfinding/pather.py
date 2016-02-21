@@ -30,8 +30,8 @@ from horizons.util.pathfinding.pathfinding import FindPath
 
 """
 In this file, you will find an interface to the pathfinding algorithm.
-We just call this interface Pather. It is used by unit to hide implementation details
-of the pathfinding algorithm.
+We just call this interface Pather. It is used by unit to hide
+implementation details of the pathfinding algorithm.
 """
 
 
@@ -40,11 +40,13 @@ class AbstractPather(object):
     Use only subclasses!"""
     log = logging.getLogger("world.pathfinding")
 
-    def __init__(self, unit, move_diagonal, session, make_target_walkable=True):
+    def __init__(self, unit, move_diagonal, session,
+                 make_target_walkable=True):
         """
         @param unit: instance of unit, to which the pather belongs
         @param move_diagonal: whether the unit may walk diagonally
-        @param make_target_walkable: whether we should assume, that we can walk on
+        @param make_target_walkable: whether we should assume, that
+                                     we can walk on
                                      the tiles that make up the target
         """
         self.session = session
@@ -80,7 +82,8 @@ class AbstractPather(object):
         return (point in self._get_blocked_coords())
 
     def _get_position(self):
-        """Returns current position considering movement status and being in a building"""
+        """Returns current position considering movement status and
+        being in a building"""
         source = self.unit.position
         if self.unit.is_moving() and self.path:
             # we are moving, use next step as source
@@ -92,15 +95,19 @@ class AbstractPather(object):
                 source = building
         return source
 
-    def calc_path(self, destination, destination_in_building=False, check_only=False,
-                  source=None):
+    def calc_path(self, destination, destination_in_building=False,
+                  check_only=False, source=None):
         """Calculates a path to destination
         @param destination: a destination supported by pathfinding
-        @param destination_in_building: bool, whether destination is in a building.
-                                        this makes the unit "enter the building"
+        @param destination_in_building: bool, whether destination
+                                        is in a building.
+                                        this makes the unit
+                                        "enter the building"
         @param check_only: if True the path isn't saved
-        @param source: use this as source of movement instead of self.unit.position
-        @return: True iff movement is possible or the path if check_only==True"""
+        @param source: use this as source of movement instead
+                       of self.unit.position
+        @return: True iff movement is possible or the path if check_only==True
+        """
         # calculate our source
         if source is None:
             source = self._get_position()
@@ -134,7 +141,8 @@ class AbstractPather(object):
             self.unit.show()  # make sure unit is displayed
         else:
             self.cur = -1
-        self.source_in_building = hasattr(source, 'is_building') and source.is_building
+        self.source_in_building = hasattr(
+            source, 'is_building') and source.is_building
         self.destination_in_building = destination_in_building
 
     def get_next_step(self):
@@ -154,14 +162,18 @@ class AbstractPather(object):
             # path is suddenly blocked, find another path
             self.cur -= 1  # reset, since move is not possible
             # try to calculate another path
-            if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
+            if not self.calc_path(Point(*self.path[-1]),
+                                  self.destination_in_building):
                 self.log.info("tile suddenly %s %s blocked for %s %s",
-                    self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.worldid)
-                # no other path can be found. since the problem cannot be fixed here,
+                              self.path[self.cur][0], self.path[self.cur][1],
+                              self.unit, self.unit.worldid)
+                # no other path can be found.
+                # since the problem cannot be fixed here,
                 # we raise an exception
                 raise PathBlockedError
 
-        # check if we have to change visibility because of entering or leaving a building
+        # check if we have to change visibility because
+        # of entering or leaving a building
         if self.destination_in_building and self.cur == len(self.path) - 1:
             self.destination_in_building = False
             self.unit.hide()
@@ -190,7 +202,8 @@ class AbstractPather(object):
         # current position is calculated on loading through unit position
         if self.path:
             for step in xrange(len(self.path)):
-                db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)",
+                db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) "
+                   "VALUES(?, ?, ?, ?)",
                     unitid, step, self.path[step][0], self.path[step][1])
 
     def load(self, db, worldid):
@@ -213,8 +226,9 @@ class AbstractPather(object):
 class ShipPather(AbstractPather):
     """Pather for ships (units that move on water tiles)"""
     def __init__(self, unit, *args, **kwargs):
-        super(ShipPather, self).__init__(unit, move_diagonal=True, make_target_walkable=False,
-                        *args, **kwargs)
+        super(ShipPather, self).__init__(unit, move_diagonal=True,
+                                         make_target_walkable=False,
+                                         *args, **kwargs)
 
     def _get_path_nodes(self):
         return self.session.world.water
@@ -237,17 +251,22 @@ class BuildingCollectorPather(AbstractPather):
     """Pather for collectors, that move freely (without depending on roads)
     within the radius of their home building such as farm animals."""
     def __init__(self, unit, *args, **kwargs):
-        super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True, *args, **kwargs)
+        super(BuildingCollectorPather, self).__init__(unit,
+                                                      move_diagonal=True,
+                                                      *args, **kwargs)
 
     def _get_path_nodes(self):
         from horizons.component.collectingcomponent import CollectingComponent
-        return self.unit.home_building.get_component(CollectingComponent).path_nodes.nodes
+        return self.unit.home_building.get_component(
+            CollectingComponent).path_nodes.nodes
 
 
 class RoadPather(AbstractPather):
-    """Pather for collectors, that depend on roads (e.g. the one used for the warehouse)"""
+    """Pather for collectors, that depend on roads
+    (e.g. the one used for the warehouse)"""
     def __init__(self, unit, *args, **kwargs):
-        super(RoadPather, self).__init__(unit, move_diagonal=False, *args, **kwargs)
+        super(RoadPather, self).__init__(unit, move_diagonal=False,
+                                         *args, **kwargs)
         self.island = self.session.world.get_island(unit.position)
 
     def _get_path_nodes(self):
@@ -259,10 +278,12 @@ class SoldierPather(AbstractPather):
     Their path list is maintained by IslandPathNodes"""
     def __init__(self, unit, *args, **kwargs):
         super(SoldierPather, self).__init__(unit, move_diagonal=True,
-                                            make_target_walkable=False, *args, **kwargs)
+                                            make_target_walkable=False,
+                                            *args, **kwargs)
 
     def _get_path_nodes(self):
-        # island might change (e.g. when transported via ship), so reload every time
+        """island might change (e.g. when transported via ship),
+        # so reload every time"""
         island = self.session.world.get_island(self.unit.position)
         return island.path_nodes.nodes
 
@@ -270,14 +291,15 @@ class SoldierPather(AbstractPather):
         return self.session.world.ground_unit_map
 
     def _check_for_obstacles(self, point):
-        # retrieve island, island of soldier may change at any time
+        """retrieve island, island of soldier may change at any time"""
         island = self.session.world.get_island(self.unit.position)
         path_blocked = not island.path_nodes.is_walkable(self.path[self.cur])
         if path_blocked:
-            # update list in island, so that new path calculations consider this obstacle
+            # update list in island,
+            # so that new path calculations consider this obstacle
             island.path_nodes.reset_tile_walkability(point)
-            self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1],
-                self.unit, self.unit.worldid)
+            self.log.debug("tile %s %s blocked for %s %s on island", point[0],
+                           point[1], self.unit, self.unit.worldid)
             return path_blocked
         else:
             # also check in super class
