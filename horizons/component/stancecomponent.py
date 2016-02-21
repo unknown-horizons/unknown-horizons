@@ -30,9 +30,9 @@ class StanceComponent(Component):
     """
     Class to be inherited for all unit stances
     It has methods defined for specific instance states
-    The default methods are defined that the instance only listens to user commands
-    If a state different from user_attack or user_move is passed, it stops any action
-    and switches to idle.
+    The default methods are defined that the instance only listens
+    to user commands If a state different from user_attack or user_move
+    is passed, it stops any action and switches to idle.
 
     NOTE:
     This does not use stance inheritance as intended, but multiple stance
@@ -55,18 +55,24 @@ class StanceComponent(Component):
         }
 
     def initialize(self):
-        # change state to 'user_attack' when the user issues attack via right click
-        self.instance.add_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
-        # change state to 'user_move' when the user issues movement via right click
+        """change state to 'user_attack' when the user issues attack
+        via right click"""
+        self.instance.add_user_attack_issued_listener(Callback(
+            self.set_state, 'user_attack'))
+        # change state to 'user_move' when the user issues movement
+        # via right click
         try:
-            self.instance.add_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+            self.instance.add_user_move_issued_listener(Callback(
+                self.set_state, 'user_move'))
         except AttributeError:
             pass  # temporary workaround to make it work for towers
 
     def remove(self):
-        self.instance.remove_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
+        self.instance.remove_user_attack_issued_listener(Callback(
+            self.set_state, 'user_attack'))
         try:
-            self.instance.remove_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+            self.instance.remove_user_move_issued_listener(Callback(
+                self.set_state, 'user_move'))
         except AttributeError:
             pass  # temporary workaround to make it work for towers
         super(StanceComponent, self).remove()
@@ -92,21 +98,24 @@ class StanceComponent(Component):
 
     def act_user_attack(self):
         """
-        Method executed when the instance is trying to attack a target selected by the user
+        Method executed when the instance is trying to attack a target
+        selected by the user
         """
         if not self.instance.is_attacking():
             self.state = 'idle'
 
     def act_user_move(self):
         """
-        Method executed when the instance is moving to a location selected by the user
+        Method executed when the instance is moving to a location selected
+        by the user
         """
         if not self.instance.is_moving():
             self.state = 'idle'
 
     def act_move_back(self):
         """
-        Method executed when the instance is moving back to it's default location
+        Method executed when the instance is moving back
+        to it's default location
         """
         self.instance.stop()
         self.state = 'idle'
@@ -128,12 +137,16 @@ class StanceComponent(Component):
 
 class LimitedMoveStance(StanceComponent):
     """
-    Stance that attacks any unit in stance range and follows it with limited move space
+    Stance that attacks any unit in stance range and follows
+    it with limited move space
     This is inherited by Aggressive and Hold Ground stances
     In adition to StanceComponent it has the following attributes:
-        stance_radius - int with the radius in which instance shold look for target
-        move_range - int with the radius in which instance shold move when attacking it
-    It also keeps track of the return position in which the unit should return when stopped attacking
+        stance_radius - int with the radius in which instance shold look
+                        for target
+        move_range - int with the radius in which instance shold move
+                     when attacking it
+    It also keeps track of the return position in which
+    the unit should return when stopped attacking
     """
 
     def __init__(self):
@@ -175,7 +188,8 @@ class LimitedMoveStance(StanceComponent):
 
     def act_move_back(self):
         """
-        When moving back try to find target. If found, attack it and drop movement
+        When moving back try to find target. If found, attack it
+        and drop movement
         """
         target = self.get_target(self.stance_radius + self.instance._max_range)
         if target:
@@ -188,12 +202,14 @@ class LimitedMoveStance(StanceComponent):
         """
         Check if target still exists or if unit exited the hold ground area
         """
-        if not Circle(self.return_position, self.move_range).contains(self.instance.position.center) or \
-            not self.instance.is_attacking():
+        if not Circle(self.return_position, self.move_range).contains(
+                self.instance.position.center) or \
+                not self.instance.is_attacking():
             try:
                 self.instance.move(self.return_position)
             except MoveNotPossible:
-                self.instance.move(Circle(self.return_position, self.stance_radius))
+                self.instance.move(Circle(self.return_position,
+                                          self.stance_radius))
             self.state = 'move_back'
 
     def get_target(self, radius):
@@ -202,12 +218,14 @@ class LimitedMoveStance(StanceComponent):
         """
         enemies = [u for u in self.session.world.get_health_instances(
             self.instance.position.center, radius)
-            if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
+            if self.session.world.diplomacy.are_enemies(u.owner,
+                                                        self.instance.owner)]
 
         if not enemies:
             return None
 
-        return min(enemies, key=lambda e: self.instance.position.distance(e.position))
+        return min(enemies,
+                   key=lambda e: self.instance.position.distance(e.position))
 
 
 class AggressiveStance(LimitedMoveStance):
@@ -275,7 +293,8 @@ class FleeStance(StanceComponent):
         if unit:
             try:
                 distance = unit._max_range + self.lookout_distance
-                self.instance.move(Annulus(unit.position.center, distance, distance + 2))
+                self.instance.move(Annulus(unit.position.center, distance,
+                                           distance + 2))
                 self.state = 'flee'
             except MoveNotPossible:
                 pass
@@ -293,15 +312,17 @@ class FleeStance(StanceComponent):
         """
         Gets the closest unit that can fire to instance
         """
-        enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center,
-            self.lookout_distance)
-            if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)
-            and hasattr(u, '_max_range')]
+        enemies = [
+            u for u in self.session.world.get_health_instances(
+                self.instance.position.center, self.lookout_distance)
+            if self.session.world.diplomacy.are_enemies(
+                u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
         if not enemies:
             return None
 
-        sort_order = lambda e: self.instance.position.distance(e.position) + e._max_range
+        sort_order = lambda e: self.instance.position.distance(e.position) + \
+            e._max_range
         return min(enemies, key=sort_order)
 
 

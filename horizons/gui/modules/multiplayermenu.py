@@ -273,7 +273,8 @@ class PasswordInput(Popup):
     def __init__(self, windows):
         title = _('Password of the game')
         text = _('Enter password:')
-        super(PasswordInput, self).__init__(windows, title, text, show_cancel_button=True)
+        super(PasswordInput, self).__init__(windows, title, text,
+                                            show_cancel_button=True)
 
     def prepare(self, **kwargs):
         super(PasswordInput, self).prepare(**kwargs)
@@ -336,17 +337,20 @@ class CreateGame(Window):
     def act(self):
         mapindex = self._gui.collectData('maplist')
         mapname = self._maps_display[mapindex]
-        maxplayers = self._gui.collectData('playerlimit') + 2  # 1 is the first entry
+        maxplayers = self._gui.collectData('playerlimit') + 2
+        # 1 is the first entry
         gamename = self._gui.collectData('gamename')
         password = self._gui.collectData('password')
         maphash = ""
 
         password = hashlib.sha1(password).hexdigest() if password != "" else ""
-        game = NetworkInterface().creategame(mapname, maxplayers, gamename, maphash, password)
+        game = NetworkInterface().creategame(mapname, maxplayers, gamename,
+                                             maphash, password)
         if game:
-            # FIXME When canceling the lobby, I'd like the player to return to the main mp
-            # menu, and not see the 'create game' again. We need to close this window, however,
-            # this will trigger the display of the main gui, which will part the game in
+            # FIXME When canceling the lobby, I'd like the player to return to
+            # the main mp menu, and not see the 'create game' again.
+            # We need to close this window, however, this will trigger
+            # the display of the main gui, which will part the game in
             # `MultiplayerMenu._check_connection`
             # self._windows.close()
             window = GameLobby(self._windows)
@@ -355,10 +359,12 @@ class CreateGame(Window):
     def _update_infos(self):
         index = self._gui.collectData('maplist')
         mapfile = self._files[index]
-        number_of_players = SavegameManager.get_recommended_number_of_players(mapfile)
+        number_of_players = SavegameManager.get_recommended_number_of_players(
+            mapfile)
 
         lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-        lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
+        lbl.text = _("Recommended number of players: {number}").format(
+            number=number_of_players)
 
         self._update_map_preview(mapfile)
 
@@ -414,8 +420,8 @@ class GameLobby(Window):
     def _cancel(self):
         """When the lobby is cancelled, close the window and leave the game.
 
-        We can't do this in `close`, because the window will be closed when a game starts
-        as well, and we don't want to leave the game then.
+        We can't do this in `close`, because the window will be closed when
+        a game starts as well, and we don't want to leave the game then.
         """
         self._windows.close()
         NetworkInterface().leavegame()
@@ -426,14 +432,22 @@ class GameLobby(Window):
     def close(self):
         self.hide()
 
-        NetworkInterface().unsubscribe("lobbygame_chat", self._on_chat_message)
-        NetworkInterface().unsubscribe("lobbygame_join", self._on_player_joined)
-        NetworkInterface().unsubscribe("lobbygame_leave", self._on_player_left)
-        NetworkInterface().unsubscribe("lobbygame_kick", self._on_player_kicked)
-        NetworkInterface().unsubscribe("lobbygame_changename", self._on_player_changed_name)
-        NetworkInterface().unsubscribe("lobbygame_changecolor", self._on_player_changed_color)
-        NetworkInterface().unsubscribe("lobbygame_toggleready", self._on_player_toggled_ready)
-        NetworkInterface().unsubscribe("game_details_changed", self._update_game_details)
+        NetworkInterface().unsubscribe("lobbygame_chat",
+                                       self._on_chat_message)
+        NetworkInterface().unsubscribe("lobbygame_join",
+                                       self._on_player_joined)
+        NetworkInterface().unsubscribe("lobbygame_leave",
+                                       self._on_player_left)
+        NetworkInterface().unsubscribe("lobbygame_kick",
+                                       self._on_player_kicked)
+        NetworkInterface().unsubscribe("lobbygame_changename",
+                                       self._on_player_changed_name)
+        NetworkInterface().unsubscribe("lobbygame_changecolor",
+                                       self._on_player_changed_color)
+        NetworkInterface().unsubscribe("lobbygame_toggleready",
+                                       self._on_player_toggled_ready)
+        NetworkInterface().unsubscribe("game_details_changed",
+                                       self._update_game_details)
         NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
 
     def show(self):
@@ -453,10 +467,14 @@ class GameLobby(Window):
         NetworkInterface().subscribe("lobbygame_join", self._on_player_joined)
         NetworkInterface().subscribe("lobbygame_leave", self._on_player_left)
         NetworkInterface().subscribe("lobbygame_kick", self._on_player_kicked)
-        NetworkInterface().subscribe("lobbygame_changename", self._on_player_changed_name)
-        NetworkInterface().subscribe("lobbygame_changecolor", self._on_player_changed_color)
-        NetworkInterface().subscribe("lobbygame_toggleready", self._on_player_toggled_ready)
-        NetworkInterface().subscribe("game_details_changed", self._update_game_details)
+        NetworkInterface().subscribe("lobbygame_changename",
+                                     self._on_player_changed_name)
+        NetworkInterface().subscribe("lobbygame_changecolor",
+                                     self._on_player_changed_color)
+        NetworkInterface().subscribe("lobbygame_toggleready",
+                                     self._on_player_toggled_ready)
+        NetworkInterface().subscribe("game_details_changed",
+                                     self._update_game_details)
 
         self._gui.show()
 
@@ -467,10 +485,12 @@ class GameLobby(Window):
         """Set map name and other misc data"""
         game = NetworkInterface().get_game()
 
-        self._gui.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
-        self._gui.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
-        self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(
-            game_creator=game.creator)
+        self._gui.findChild(name="game_map").text = _(
+            "Map: {map_name}").format(map_name=game.map_name)
+        self._gui.findChild(name="game_name").text = _(
+            "Name: {game_name}").format(game_name=game.name)
+        self._gui.findChild(name="game_creator").text = _(
+            "Creator: {game_creator}").format(game_creator=game.creator)
         self._gui.findChild(name="game_playersnum").text = _(
             "Players: {player_amount}/{player_limit}").format(
             player_amount=game.player_count,
@@ -495,7 +515,8 @@ class GameLobby(Window):
             pname.min_size = pname.max_size = (130, 15)
 
             if name == NetworkInterface().get_client_name():
-                pname.capture(Callback(self._show_change_player_details_popup, game))
+                pname.capture(Callback(self._show_change_player_details_popup,
+                                       game))
 
             pcolor = Label(name="pcolor_%s" % name, text=u"   ")
             pcolor.helptext = _("Click here to change your name and/or color")
@@ -503,7 +524,8 @@ class GameLobby(Window):
             pcolor.min_size = pcolor.max_size = (15, 15)
 
             if name == NetworkInterface().get_client_name():
-                pcolor.capture(Callback(self._show_change_player_details_popup, game))
+                pcolor.capture(Callback(self._show_change_player_details_popup,
+                                        game))
 
             pstatus = Label(name="pstatus_%s" % name)
             pstatus.text = "\t\t\t" + player['status']
@@ -514,7 +536,8 @@ class GameLobby(Window):
             hbox = HBox()
             hbox.addChildren(pname, pcolor, pstatus)
 
-            if NetworkInterface().get_client_name() == game.creator and name != game.creator:
+            if NetworkInterface().get_client_name() == game.creator and \
+                    name != game.creator:
                 pkick = CancelButton(name="pkick_%s" % name)
                 pkick.helptext = _("Kick {player}").format(player=name)
                 pkick.capture(Callback(NetworkInterface().kick, player['sid']))
@@ -532,7 +555,8 @@ class GameLobby(Window):
     def _show_change_player_details_popup(self, game):
         """Shows a dialog where the player can change its name and/or color"""
 
-        assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()
+        assigned = [p["color"] for p in
+                    NetworkInterface().get_game().get_player_list()
                     if p["name"] != NetworkInterface().get_client_name()]
         unused_colors = set(Color) - set(assigned)
 
@@ -541,7 +565,8 @@ class GameLobby(Window):
         playerdata.set_color(NetworkInterface().get_client_color())
 
         dialog = load_uh_widget('set_player_details.xml')
-        dialog.findChild(name="playerdataselectioncontainer").addChild(playerdata.get_widget())
+        dialog.findChild(name="playerdataselectioncontainer").addChild(
+            playerdata.get_widget())
 
         def _change_playerdata():
             NetworkInterface().change_name(playerdata.get_player_name())
@@ -562,7 +587,8 @@ class GameLobby(Window):
     # Functions for handling events on the left side (chat)
 
     def _send_chat_message(self):
-        """Sends a chat message. Called when user presses enter in the input field"""
+        """Sends a chat message. Called when user presses enter
+        in the input field"""
         msg = self._gui.findChild(name="chatTextField").text
         if msg:
             self._gui.findChild(name="chatTextField").text = u""
@@ -583,10 +609,12 @@ class GameLobby(Window):
         self._print_event(player + ": " + msg, wrap="")
 
     def _on_player_joined(self, game, player):
-        self._print_event(_("{player} has joined the game").format(player=player.name))
+        self._print_event(_("{player} has joined the game").format(
+            player=player.name))
 
     def _on_player_left(self, game, player):
-        self._print_event(_("{player} has left the game").format(player=player.name))
+        self._print_event(_("{player} has left the game").format(
+            player=player.name))
 
     def _on_player_toggled_ready(self, game, plold, plnew, myself):
         self._update_players_box(NetworkInterface().get_game())
@@ -597,26 +625,34 @@ class GameLobby(Window):
                 self._print_event(_("You are not ready anymore"))
         else:
             if plnew.ready:
-                self._print_event(_("{player} is now ready").format(player=plnew.name))
+                self._print_event(_("{player} is now ready").format(
+                    player=plnew.name))
             else:
-                self._print_event(_("{player} not ready anymore").format(player=plnew.name))
+                self._print_event(_("{player} not ready anymore").format(
+                    player=plnew.name))
 
     def _on_player_changed_name(self, game, plold, plnew, myself):
         if myself:
-            self._print_event(_("You are now known as {new_name}").format(new_name=plnew.name))
+            self._print_event(_("You are now known as {new_name}").format(
+                new_name=plnew.name))
         else:
-            self._print_event(_("{player} is now known as {new_name}").format(player=plold.name,
+            self._print_event(_("{player} is now known as {new_name}").format(
+                player=plold.name,
                 new_name=plnew.name))
 
     def _on_player_changed_color(self, game, plold, plnew, myself):
         if myself:
             self._print_event(_("You changed your color"))
         else:
-            self._print_event(_("{player} changed their color").format(player=plnew.name))
+            self._print_event(_("{player} changed their color").format(
+                player=plnew.name))
 
     def _on_player_kicked(self, game, player, myself):
         if myself:
-            self._windows.open_popup(_("Kicked"), _("You have been kicked from the game by creator"))
+            self._windows.open_popup(
+                _("Kicked"),
+                _("You have been kicked from the game by creator"))
             self._windows.close()
         else:
-            self._print_event(_("{player} got kicked by creator").format(player=player.name))
+            self._print_event(_("{player} got kicked by creator").format(
+                player=player.name))

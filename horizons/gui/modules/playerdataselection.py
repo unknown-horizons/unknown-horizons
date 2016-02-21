@@ -65,7 +65,8 @@ class PlayerDataSelection(object):
         def playertextfield_clicked():
             if playertextfield.text == 'Unnamed Traveler':
                 playertextfield.text = ""
-        playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
+        playertextfield.capture(playertextfield_clicked,
+                                event_name='mouseClicked')
 
         self.gui.mapEvents(events)
         self.update_data()
@@ -82,7 +83,8 @@ class PlayerDataSelection(object):
             # http://forum.unknown-horizons.org/viewtopic.php?t=6927
             # Reset that setting to 1 if the problem occurs.
             self.selected_color = Color[1]
-        self.gui.findChild(name='selectedcolor').background_color = self.selected_color
+        self.gui.findChild(
+            name='selectedcolor').background_color = self.selected_color
 
     def set_player_name(self, playername):
         """Updates the player name"""
@@ -108,6 +110,8 @@ class PlayerDataSelection(object):
 
     def save_settings(self):
         """Stores the current player_name and color into settings"""
-        horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())
-        horizons.globals.fife.set_uh_setting("ColorID", self.get_player_color().id)
+        horizons.globals.fife.set_uh_setting("Nickname",
+                                             self.get_player_name())
+        horizons.globals.fife.set_uh_setting("ColorID",
+                                             self.get_player_color().id)
         horizons.globals.fife.save_settings()

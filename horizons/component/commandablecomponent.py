@@ -40,7 +40,8 @@ class CommandableComponent(Component):
 
     def go(self, x, y):
         """Moves the unit.
-        This is called when a unit is selected and the right mouse button is pressed outside the unit"""
+        This is called when a unit is selected and the right mouse button
+        is pressed outside the unit"""
         x = int(round(x))
         y = int(round(y))
         move_target = Point(x, y)
@@ -51,7 +52,8 @@ class CommandableComponent(Component):
             # find a near tile to move to
             surrounding = Circle(move_target, radius=1)
             move_target = None
-            # try with smaller circles, increase radius if smaller circle isn't reachable
+            # try with smaller circles, increase radius if smaller circle
+            # isn't reachable
             while surrounding.radius < 5:
                 try:
                     self.instance.move(surrounding)
@@ -62,12 +64,15 @@ class CommandableComponent(Component):
                 move_target = self.instance.get_move_target()
                 break
         if self.instance.owner.is_local_player:
-            self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
+            self.instance.session.ingame_gui.minimap.show_unit_path(
+                self.instance)
         if move_target is None:  # can't move
             if not self.instance.owner.is_local_player:
                 return
-            if self.session.world.get_tile(Point(x, y)) is None:  # not even in world
+            if self.session.world.get_tile(Point(x, y)) is None:
+                # not even in world
                 string_id = "MOVE_OUTSIDE_OF_WORLD"
             else:  # in world, but still unreachable
                 string_id = "MOVE_INVALID_LOCATION"
-            self.session.ingame_gui.message_widget.add(point=Point(x, y), string_id=string_id)
+            self.session.ingame_gui.message_widget.add(point=Point(x, y),
+                                                       string_id=string_id)

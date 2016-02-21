@@ -28,15 +28,18 @@ from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.depositcomponent import DepositComponent
 from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
-from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
-from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, \
-     ShipNameComponent, PirateShipNameComponent, SoldierNameComponent, InhabitantNameComponent
+from horizons.component.inventoryoverlaycomponent import \
+    InventoryOverlayComponent
+from horizons.component.namedcomponent import NamedComponent, \
+    SettlementNameComponent, ShipNameComponent, PirateShipNameComponent, \
+    SoldierNameComponent, InhabitantNameComponent
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 
-from horizons.world.production.producer import Producer, QueueProducer, GroundUnitProducer, ShipProducer
+from horizons.world.production.producer import Producer, QueueProducer, \
+    GroundUnitProducer, ShipProducer
 
 
 class ComponentHolder(object):
@@ -45,22 +48,24 @@ class ComponentHolder(object):
     It can be inherited by all objects that can hold components
 
     TUTORIAL:
-    I can't explain component-oriented architecture to you here, but I can give you
-    an overview of how we use it:
+    I can't explain component-oriented architecture to you here,
+    but I can give you an overview of how we use it:
     Instead of putting all different features of entities into single classes,
     as is common in OOP, each feature is put into a component. This should
-    increase the encapsulation, and it's easier if an object consists of 15 independent
-    building blocks than if it were 15 classes, where many override the same function call
+    increase the encapsulation, and it's easier if an object consists of 15
+    independent building blocks than if it were 15 classes,
+    where many override the same function call
     and fight about who gets called first.
     Check class_mapping for a complete list of the different components we use.
 
-    The components are stored in a dict, where the key is their name (a string).
-    This is necessary so objects can be defined as a collection of their components in
-    human readable format. This is done via yaml files in content/objects in our case.
-    You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
-    it looks like.
+    The components are stored in a dict, where the key is their name
+    (a string). This is necessary so objects can be defined as a collection
+    of their components in human readable format. This is done via yaml files
+    in content/objects in our case. You could check out e.g.
+    content/objects/buildings/lumberjackcamp.yaml to see what it looks like.
 
-    This class manages the components; it stores them and makes them accessible.
+    This class manages the components;
+    it stores them and makes them accessible.
     Check out the actual component class in horizons/component/__init__.py.
     """
 
@@ -94,12 +99,13 @@ class ComponentHolder(object):
         self.components = {}
 
     def initialize(self, **kwargs):
-        """Has to be called every time a componentholder is created. This is not
-        in __init__() because we need to make sure that all other sub/parent classes
-        have been inited, for example the ConcreteObject class. This is to ensure
-        that all member variables of sub/parent classes are correctly set when we
-        init the components. If someday all code is moved to components, this will
-        not be necessary any more."""
+        """Has to be called every time a componentholder is created.
+        This is not in __init__() because we need to make sure that all
+        other sub/parent classes have been inited, for example the
+        ConcreteObject class. This is to ensure that all member variables
+        of sub/parent classes are correctly set when we init
+        the components. If someday all code is moved to components,
+        This will not be necessary any more."""
         for component in self.__create_components():
             self.add_component(component)
 
@@ -109,7 +115,8 @@ class ComponentHolder(object):
             for entry in self.component_templates:
                 if isinstance(entry, dict):
                     for key, value in entry.iteritems():
-                        # TODO: try to pass read-only data to get_instance, since it's usually
+                        # TODO: try to pass read-only data to get_instance,
+                        # since it's usually
                         # cached and changes would apply to all instances
                         # dict views of python2.7 could be a start.
                         component = self.class_mapping[key].get_instance(value)
@@ -141,7 +148,8 @@ class ComponentHolder(object):
 
     def add_component(self, component):
         """
-        Adds new component to holder and sets the instance attribute on the component
+        Adds new component to holder and sets the instance attribute
+        on the component
         @param component: a component instance that is to be added
             all components will have the init only with instance attribute
         """
@@ -180,4 +188,6 @@ class ComponentHolder(object):
                 for key, value in entry.iteritems():
                     if cls.class_mapping[key] == component or key == component:
                         return value
-        raise KeyError("This class does not contain a component with name: {0}".format(component))
+        raise KeyError(
+            "This class does not contain a component with name: {0}".
+            format(component))

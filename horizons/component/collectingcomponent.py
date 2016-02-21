@@ -63,8 +63,8 @@ class CollectingComponent(Component):
         """Creates a collector and adds it to this building.
         @param collector_class: unit class of collector to create
         """
-        collector = entities.Entities.units[collector_class](self.instance,
-            session=self.session, owner=self.instance.owner)
+        collector = entities.Entities.units[collector_class](
+            self.instance, session=self.session, owner=self.instance.owner)
         collector.initialize()
 
     def remove(self):
@@ -84,9 +84,10 @@ class CollectingComponent(Component):
     def save(self, db):
         super(CollectingComponent, self).save(db)
         for collector in self.__collectors:
-            # collectors, that are ship (e.g. fisher ship) are viewed as independent
-            # units, and therefore managed by world. This is justified, since they survive
-            # the removal of their assigned fisher hut, and therefore require their own
+            # collectors, that are ship (e.g. fisher ship) are viewed
+            # as independent units, and therefore managed by world.
+            # This is justified, since they survive the removal of their
+            # assigned fisher hut, and therefore require their own
             # saving mechanism
             if not collector.is_ship:
                 collector.save(db)

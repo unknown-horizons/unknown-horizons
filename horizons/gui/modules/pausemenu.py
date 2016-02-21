@@ -86,7 +86,8 @@ class PauseMenu(Window):
 
     def _do_quit(self):
         message = _("Are you sure you want to abort the running session?")
-        if self._windows.open_popup(_("Quit Session"), message, show_cancel_button=True):
+        if self._windows.open_popup(_("Quit Session"), message,
+                                    show_cancel_button=True):
             self._session.quit()
 
     def _save_game(self):

@@ -37,7 +37,8 @@ class HealthComponent(Component):
 
     def __init__(self, maxhealth):
         super(HealthComponent, self).__init__()
-        assert maxhealth is not None, "Can not add HealthComponent without maxhealth!"
+        assert maxhealth is not None, "Can not add HealthComponent without " \
+                                      "maxhealth!"
         self.max_health = float(maxhealth) if maxhealth is not None else None
 
     def initialize(self):
@@ -49,7 +50,8 @@ class HealthComponent(Component):
         self.add_damage_dealt_listener(self.redraw_health)
 
     def save(self, db):
-        db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
+        db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)",
+           self.instance.worldid, self.health)
 
     def load(self, db, worldid):
         self.health = db.get_health(worldid)
@@ -62,12 +64,13 @@ class HealthComponent(Component):
         self.health -= scaling_factor * damage
         self.health = max(self.health, 0.0)  # don't go below 0
         self.log.debug("dealing damage %s to %s; new health: %s",
-            scaling_factor * damage, self.instance, self.health)
+                       scaling_factor * damage, self.instance, self.health)
         self.on_damage_dealt()
 
     def check_if_alive(self, caller=None):
         if self.health <= 0:
-            self.log.debug("Unit %s dies, health: %s", self.instance, self.health)
+            self.log.debug("Unit %s dies, health: %s", self.instance,
+                           self.health)
             self.instance.remove()
 
     def redraw_health(self, caller=None):

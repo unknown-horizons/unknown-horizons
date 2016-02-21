@@ -27,9 +27,10 @@ from horizons.entities import Entities
 class FieldBuilder(Component):
     """
     Component for production buildings. It adds a hook `fill_range` to fill the
-    building range with a specified 1x1 field. The usual buildability constraints
-    for that field apply. `fill_range` will only succeed if the cost for filling
-    the entire range can be paid - there is no automated partial construction.
+    building range with a specified 1x1 field. The usual buildability
+    constraints for that field apply. `fill_range` will only succeed if
+    the cost for filling the entire range can be paid - there is
+    no automated partial construction.
     For GUI purposes, some more information is exposed:
     - how many fields would be built at once
     - total resource cost
@@ -55,7 +56,8 @@ class FieldBuilder(Component):
                                      [self.instance.settlement])
 
     def coords_in_range(self):
-        where = self.instance.position.get_radius_coordinates(self.instance.radius)
+        where = self.instance.position.get_radius_coordinates(
+            self.instance.radius)
         for coords in where:
             tile = self.instance.island.get_tile_tuple(coords)
             if tile is None or tile.object is not None:

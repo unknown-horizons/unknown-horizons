@@ -37,7 +37,8 @@ from horizons.util.python.callback import Callback
 
 
 class Setting(object):
-    def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
+    def __init__(self, module, name, widget_name, initial_data=None,
+                 restart=False, callback=None):
         self.module = module
         self.name = name
         self.widget_name = widget_name
@@ -79,36 +80,46 @@ class SettingsDialog(PickBeltWidget, Window):
         UH = SETTINGS.UH_MODULE
 
         def get_resolutions():
-            return get_screen_resolutions(self._settings.get(FIFE, 'ScreenResolution'))
+            return get_screen_resolutions(self._settings.get(
+                FIFE, 'ScreenResolution'))
 
         self._options = [
             # Graphics/Sound/Input
-            Setting(FIFE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
+            Setting(FIFE, 'ScreenResolution', 'screen_resolution',
+                    get_resolutions, restart=True),
             Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
-            Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
+            Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True,
+                    callback=self._on_FrameLimit_changed),
 
-            Setting(UH, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
-            Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
-            Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
+            Setting(UH, 'VolumeMusic', 'volume_music',
+                    callback=self._on_VolumeMusic_changed),
+            Setting(UH, 'VolumeEffects', 'volume_effects',
+                    callback=self._on_VolumeEffects_changed),
+            Setting(FIFE, 'PlaySounds', 'enable_sound',
+                    callback=self._on_PlaySounds_changed),
             Setting(UH, 'EdgeScrolling', 'edgescrolling'),
             Setting(UH, 'CursorCenteredZoom', 'cursor_centered_zoom'),
             Setting(UH, 'MiddleMousePan', 'middle_mouse_pan'),
-            Setting(FIFE, 'MouseSensitivity', 'mousesensitivity', restart=True),
+            Setting(FIFE, 'MouseSensitivity', 'mousesensitivity',
+                    restart=True),
 
             # Game
             Setting(UH, 'AutosaveInterval', 'autosaveinterval'),
             Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount'),
             Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount'),
-            Setting(UH, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
+            Setting(UH, 'Language', 'uni_language', language_names,
+                    callback=self._on_Language_changed),
 
             Setting(UH, 'MinimapRotation', 'minimaprotation'),
             Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
             Setting(UH, 'AutoUnload', 'auto_unload'),
-            Setting(UH, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
+            Setting(UH, 'DebugLog', 'debug_log',
+                    callback=self._on_DebugLog_changed),
             Setting(UH, 'ShowResourceIcons', 'show_resource_icons'),
             Setting(UH, 'ScrollSpeed', 'scrollspeed'),
             Setting(UH, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
-            Setting(UH, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
+            Setting(UH, 'NetworkPort', 'network_port',
+                    callback=self._on_NetworkPort_changed),
         ]
 
         self._fill_widgets()
@@ -128,12 +139,14 @@ class SettingsDialog(PickBeltWidget, Window):
 
     def show_restart_popup(self):
         headline = _("Restart required")
-        message = _("Some of your changes require a restart of Unknown Horizons.")
+        message = _("Some of your changes require a restart of "
+                    "Unknown Horizons.")
         self._windows.open_popup(headline, message)
 
     def set_defaults(self):
         title = _("Restore default settings")
-        msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
+        msg = _("Restoring the default settings will delete all changes to "
+                "the settings you made so far.") + \
             u" " + _("Do you want to continue?")
 
         if self._windows.open_popup(title, msg, show_cancel_button=True):
@@ -241,7 +254,8 @@ class SettingsDialog(PickBeltWidget, Window):
     def _on_FrameLimit_changed(self, old, new):
         # handling value 0 for framelimit to disable limiter
         if new == 0:
-            self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', False)
+            self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled',
+                               False)
         else:
             self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', True)
 
@@ -253,8 +267,10 @@ class SettingsDialog(PickBeltWidget, Window):
             parse_port(new)
         except ValueError:
             headline = _("Invalid network port")
-            descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
-            advice = _("Please check the port you entered and make sure it is in the specified range.")
+            descr = _("The port you specified is not valid. It must be "
+                      "a number between 1 and 65535.")
+            advice = _("Please check the port you entered and make sure it "
+                       "is in the specified range.")
             self._windows.open_error_popup(headline, descr, advice)
             # reset value and reshow settings dlg
             self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', u"0")
@@ -266,15 +282,19 @@ class SettingsDialog(PickBeltWidget, Window):
                 NetworkInterface().network_data_changed()
             except Exception as e:
                 headline = _("Failed to apply new network settings.")
-                descr = _("Network features could not be initialized with the current configuration.")
-                advice = _("Check the settings you specified in the network section.")
+                descr = _("Network features could not be initialized with "
+                          "the current configuration.")
+                advice = _("Check the settings you specified in the network "
+                           "section.")
                 if 0 < parse_port(new) < 1024:
-                    # i18n This is advice for players seeing a network error with the current config
-                    advice += u" " + \
-                        _("Low port numbers sometimes require special access privileges,"
-                        " try 0 or a number greater than 1024.")
+                    # i18n This is advice for players seeing a network error
+                    # with the current config
+                    advice += u" " + _("Low port numbers sometimes require "
+                                       "special access privileges, try 0 or "
+                                       "a number greater than 1024.")
                 details = unicode(e)
-                self._windows.open_error_popup(headline, descr, advice, details)
+                self._windows.open_error_popup(headline, descr, advice,
+                                               details)
 
     def _on_Language_changed(self, old, new):
         language = LANGUAGENAMES.get_by_value(new)
@@ -285,7 +305,8 @@ class SettingsDialog(PickBeltWidget, Window):
 
 
 def get_screen_resolutions(selected_default):
-    """Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
+    """Create an instance of fife.DeviceCaps and compile
+    a list of possible resolutions.
 
     NOTE: This call only works if the engine is inited.
     """

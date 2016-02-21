@@ -42,7 +42,8 @@ class StorageComponent(Component):
         'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
         'PositiveTotalNumSlotsStorage': PositiveTotalNumSlotsStorage,
         'SlotsStorage': PositiveSizedSpecializedStorage,
-        'SettlementStorage': SettlementStorage  # pseudo storage meaning to share settlement storage
+        'SettlementStorage': SettlementStorage
+        # pseudo storage meaning to share settlement storage
     }
 
     def __init__(self, inventory):
@@ -50,12 +51,14 @@ class StorageComponent(Component):
         self.inventory = inventory
 
         # SettlementStorage is used as flag to signal using another inventory
-        self.has_own_inventory = not isinstance(self.inventory, SettlementStorage)
+        self.has_own_inventory = not isinstance(self.inventory,
+                                                SettlementStorage)
 
     def initialize(self):
         # NOTE: also called on load (initialize usually isn't)
         if not self.has_own_inventory:
-            self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
+            self.inventory = self.instance.settlement.get_component(
+                StorageComponent).inventory
         self.inventory.add_change_listener(self.something_changed)
 
     def remove(self):
@@ -85,7 +88,8 @@ class StorageComponent(Component):
         Masks the message sender to be `self.instance` rather than self because
         that is what we are interested in, usually.
         """
-        InstanceInventoryUpdated.broadcast(self.instance, self.inventory._storage)
+        InstanceInventoryUpdated.broadcast(self.instance,
+                                           self.inventory._storage)
 
     @classmethod
     def get_instance(cls, arguments):
