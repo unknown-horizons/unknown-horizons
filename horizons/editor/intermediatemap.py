@@ -127,7 +127,8 @@ class IntermediateMap(object):
             self._set_tiles(coords_list, new_type)
 
     def _get_surrounding_coords(self, current_coords_list):
-        all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1),
+                         (1, 0), (1, 1)]
         current_coords_set = set(current_coords_list)
         result = set()
         for x, y in current_coords_list:
@@ -144,7 +145,8 @@ class IntermediateMap(object):
             self._update_intermediate_coords(coords, new_type)
 
         for _ in xrange(3):
-            surrounding_coords_list = self._get_surrounding_coords(last_coords_list)
+            surrounding_coords_list = self._get_surrounding_coords(
+                last_coords_list)
             for coords2 in surrounding_coords_list:
                 if coords2 not in self._map:
                     continue
@@ -158,7 +160,8 @@ class IntermediateMap(object):
 
                     suitable = True
                     for updated_coords in last_coords_list:
-                        if abs(updated_coords[0] - coords2[0]) > 1 or abs(updated_coords[1] - coords2[1]) > 1:
+                        if abs(updated_coords[0] - coords2[0]) > 1 or abs(
+                                updated_coords[1] - coords2[1]) > 1:
                             continue
                         if abs(self._map[updated_coords] - new_type2) > 1:
                             suitable = False

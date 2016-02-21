@@ -27,189 +27,189 @@ from horizons.entities import Entities
 
 
 class BuildingEvaluator(object):
-	"""Class representing a set of instructions for building
-	a building complex along with its value."""
+    """Class representing a set of instructions for building
+    a building complex along with its value."""
 
-	log = logging.getLogger("ai.aiplayer.buildingevaluator")
-	need_collector_connection = True
-	record_plan_change = True
+    log = logging.getLogger("ai.aiplayer.buildingevaluator")
+    need_collector_connection = True
+    record_plan_change = True
 
-	__slots__ = ('area_builder', 'builder', 'value')
+    __slots__ = ('area_builder', 'builder', 'value')
 
-	def __init__(self, area_builder, builder, value):
-		"""
-		@param area_builder: the relevant AreaBuilder instance
-		@param builder: Builder instance
-		@param value: the value of the evaluator (bigger is better)
-		"""
+    def __init__(self, area_builder, builder, value):
+        """
+        @param area_builder: the relevant AreaBuilder instance
+        @param builder: Builder instance
+        @param value: the value of the evaluator (bigger is better)
+        """
 
-		self.area_builder = area_builder
-		self.builder = builder
-		self.value = value
+        self.area_builder = area_builder
+        self.builder = builder
+        self.value = value
 
-	@classmethod
-	def _weighted_distance(cls, main_component, other_components, none_value):
-		"""
-		Return the weights sum of the component distances with the specified weights.
+    @classmethod
+    def _weighted_distance(cls, main_component, other_components, none_value):
+        """
+        Return the weights sum of the component distances with the specified weights.
 
-		@param main_component: value of the main component
-		@param other_components: list[(weight, value), ...]
-		where weight is a float and value is either None or a float
-		@param none_value: the penalty for None in place of a component value
-		"""
+        @param main_component: value of the main component
+        @param other_components: list[(weight, value), ...]
+        where weight is a float and value is either None or a float
+        @param none_value: the penalty for None in place of a component value
+        """
 
-		others = 0.0
-		for weight, value in other_components:
-			others += weight
-		result = (1 - others) * (main_component if main_component is not None else none_value)
-		for weight, value in other_components:
-			if value is None:
-				result += weight * none_value
-			else:
-				result += weight * value
-		return result
+        others = 0.0
+        for weight, value in other_components:
+            others += weight
+        result = (1 - others) * (main_component if main_component is not None else none_value)
+        for weight, value in other_components:
+            if value is None:
+                result += weight * none_value
+            else:
+                result += weight * value
+        return result
 
-	@classmethod
-	def _distance_to_nearest_building(cls, area_builder, builder, building_id):
-		"""
-		Return the shortest distance to a building of type building_id that is in range of the builder.
+    @classmethod
+    def _distance_to_nearest_building(cls, area_builder, builder, building_id):
+        """
+        Return the shortest distance to a building of type building_id that is in range of the builder.
 
-		@param area_builder: AreaBuilder instance
-		@param builder: Builder instance
-		@param building_id: the building type id of the building to which the distance should be measured
-		"""
+        @param area_builder: AreaBuilder instance
+        @param builder: Builder instance
+        @param building_id: the building type id of the building to which the distance should be measured
+        """
 
-		shortest_distance = None
-		for building in area_builder.settlement.buildings_by_id.get(building_id, []):
-			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[builder.building_id].radius:
-				shortest_distance = distance if shortest_distance is None \
-					or distance < shortest_distance else shortest_distance
-		return shortest_distance
+        shortest_distance = None
+        for building in area_builder.settlement.buildings_by_id.get(building_id, []):
+            distance = builder.position.distance(building.position)
+            if distance <= Entities.buildings[builder.building_id].radius:
+                shortest_distance = distance if shortest_distance is None \
+                    or distance < shortest_distance else shortest_distance
+        return shortest_distance
 
-	@classmethod
-	def _distance_to_nearest_collector(cls, production_builder, builder, must_be_in_range=True):
-		"""
-		Return the shortest distance to a collector that (usually) has to be in range of the builder.
+    @classmethod
+    def _distance_to_nearest_collector(cls, production_builder, builder, must_be_in_range=True):
+        """
+        Return the shortest distance to a collector that (usually) has to be in range of the builder.
 
-		@param production_builder: ProductionBuilder instance
-		@param builder: Builder instance
-		@param must_be_in_range: whether the building has to be in range of the builder
-		"""
+        @param production_builder: ProductionBuilder instance
+        @param builder: Builder instance
+        @param must_be_in_range: whether the building has to be in range of the builder
+        """
 
-		shortest_distance = None
-		for building in production_builder.collector_buildings:
-			distance = builder.position.distance(building.position)
-			if not must_be_in_range or distance <= Entities.buildings[builder.building_id].radius:
-				shortest_distance = distance if shortest_distance is None \
-					or distance < shortest_distance else shortest_distance
-		return shortest_distance
+        shortest_distance = None
+        for building in production_builder.collector_buildings:
+            distance = builder.position.distance(building.position)
+            if not must_be_in_range or distance <= Entities.buildings[builder.building_id].radius:
+                shortest_distance = distance if shortest_distance is None \
+                    or distance < shortest_distance else shortest_distance
+        return shortest_distance
 
-	@classmethod
-	def _get_outline_coords_list(cls, coords_list):
-		"""Return the list of coordinates that share sides the given coordinates list."""
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		if not isinstance(coords_list, set):
-			coords_list = set(coords_list)
+    @classmethod
+    def _get_outline_coords_list(cls, coords_list):
+        """Return the list of coordinates that share sides the given coordinates list."""
+        moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+        if not isinstance(coords_list, set):
+            coords_list = set(coords_list)
 
-		result = set()
-		for x, y in coords_list:
-			for dx, dy in moves:
-				coords = (x + dx, y + dy)
-				if coords not in coords_list:
-					result.add(coords)
-		return result
+        result = set()
+        for x, y in coords_list:
+            for dx, dy in moves:
+                coords = (x + dx, y + dy)
+                if coords not in coords_list:
+                    result.add(coords)
+        return result
 
-	@classmethod
-	def _get_alignment_from_outline(cls, area_builder, outline_coords_list):
-		"""Return an alignment value given the list of coordinates that form the outline of a shape."""
-		personality = area_builder.owner.personality_manager.get('BuildingEvaluator')
-		alignment = 0
-		for coords in outline_coords_list:
-			if coords in area_builder.land_manager.roads:
-				alignment += personality.alignment_road
-			elif coords in area_builder.plan:
-				purpose = area_builder.plan[coords][0]
-				if purpose != BUILDING_PURPOSE.NONE:
-					alignment += personality.alignment_production_building
-			elif coords in area_builder.settlement.ground_map:
-				object = area_builder.settlement.ground_map[coords].object
-				if object is not None and not object.buildable_upon:
-					alignment += personality.alignment_other_building
-			else:
-				alignment += personality.alignment_edge
-		return alignment
+    @classmethod
+    def _get_alignment_from_outline(cls, area_builder, outline_coords_list):
+        """Return an alignment value given the list of coordinates that form the outline of a shape."""
+        personality = area_builder.owner.personality_manager.get('BuildingEvaluator')
+        alignment = 0
+        for coords in outline_coords_list:
+            if coords in area_builder.land_manager.roads:
+                alignment += personality.alignment_road
+            elif coords in area_builder.plan:
+                purpose = area_builder.plan[coords][0]
+                if purpose != BUILDING_PURPOSE.NONE:
+                    alignment += personality.alignment_production_building
+            elif coords in area_builder.settlement.ground_map:
+                object = area_builder.settlement.ground_map[coords].object
+                if object is not None and not object.buildable_upon:
+                    alignment += personality.alignment_other_building
+            else:
+                alignment += personality.alignment_edge
+        return alignment
 
-	@classmethod
-	def _get_alignment(cls, area_builder, coords_list):
-		"""Return an alignment value based on the outline of the given coordinates list."""
-		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
+    @classmethod
+    def _get_alignment(cls, area_builder, coords_list):
+        """Return an alignment value based on the outline of the given coordinates list."""
+        return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
 
-	def __cmp__(self, other):
-		"""Objects of this class should never be compared to ensure
-		deterministic ordering and good performance."""
-		raise NotImplementedError()
+    def __cmp__(self, other):
+        """Objects of this class should never be compared to ensure
+        deterministic ordering and good performance."""
+        raise NotImplementedError()
 
-	@property
-	def purpose(self):
-		"""Return the BUILDING_PURPOSE constant relevant to the builder."""
-		raise NotImplementedError('This function has to be overridden.')
+    @property
+    def purpose(self):
+        """Return the BUILDING_PURPOSE constant relevant to the builder."""
+        raise NotImplementedError('This function has to be overridden.')
 
-	def have_resources(self):
-		"""Return None if the builder is unreachable by road,
-		False if there are not enough resources, and True otherwise."""
-		# check without road first because the road is unlikely to be
-		# the problem and pathfinding isn't cheap
-		if not self.builder.have_resources(self.area_builder.land_manager):
-			return False
-		if not self.need_collector_connection:
-			return True  # skip the road cost test for buildings that don't need one
-		road_cost = self.area_builder.get_road_connection_cost(self.builder)
-		if road_cost is None:
-			return None
-		return self.builder.have_resources(self.area_builder.land_manager, extra_resources=road_cost)
+    def have_resources(self):
+        """Return None if the builder is unreachable by road,
+        False if there are not enough resources, and True otherwise."""
+        # check without road first because the road is unlikely to be
+        # the problem and pathfinding isn't cheap
+        if not self.builder.have_resources(self.area_builder.land_manager):
+            return False
+        if not self.need_collector_connection:
+            return True  # skip the road cost test for buildings that don't need one
+        road_cost = self.area_builder.get_road_connection_cost(self.builder)
+        if road_cost is None:
+            return None
+        return self.builder.have_resources(self.area_builder.land_manager, extra_resources=road_cost)
 
-	def _register_builder_position(self):
-		self.area_builder.register_change_list(list(self.builder.position.tuple_iter()),
-			BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.register_change_list([self.builder.position.origin.to_tuple()],
-			self.purpose, None)
+    def _register_builder_position(self):
+        self.area_builder.register_change_list(list(self.builder.position.tuple_iter()),
+            BUILDING_PURPOSE.RESERVED, None)
+        self.area_builder.register_change_list([self.builder.position.origin.to_tuple()],
+            self.purpose, None)
 
-	def execute(self):
-		"""Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
-		resource_check = self.have_resources()
-		if resource_check is None:
-			self.log.debug('%s, unable to reach by road', self)
-			return (BUILD_RESULT.IMPOSSIBLE, None)
-		elif not resource_check:
-			return (BUILD_RESULT.NEED_RESOURCES, None)
-		if self.need_collector_connection:
-			assert self.area_builder.build_road_connection(self.builder)
+    def execute(self):
+        """Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
+        resource_check = self.have_resources()
+        if resource_check is None:
+            self.log.debug('%s, unable to reach by road', self)
+            return (BUILD_RESULT.IMPOSSIBLE, None)
+        elif not resource_check:
+            return (BUILD_RESULT.NEED_RESOURCES, None)
+        if self.need_collector_connection:
+            assert self.area_builder.build_road_connection(self.builder)
 
-		building = self.builder.execute(self.area_builder.land_manager)
-		if not building:
-			self.log.debug('%s, unknown error', self)
-			return (BUILD_RESULT.UNKNOWN_ERROR, None)
+        building = self.builder.execute(self.area_builder.land_manager)
+        if not building:
+            self.log.debug('%s, unknown error', self)
+            return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
-		if self.record_plan_change:
-			self._register_builder_position()
-		return (BUILD_RESULT.OK, building)
+        if self.record_plan_change:
+            self._register_builder_position()
+        return (BUILD_RESULT.OK, building)
 
-	def __str__(self):
-		point = self.builder.position.origin
-		return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
+    def __str__(self):
+        point = self.builder.position.origin
+        return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
 
-	@classmethod
-	def get_best_evaluator(cls, evaluators):
-		if not evaluators:
-			return None
+    @classmethod
+    def get_best_evaluator(cls, evaluators):
+        if not evaluators:
+            return None
 
-		best_index = 0
-		best_value = evaluators[0].value
-		for i in xrange(1, len(evaluators)):
-			if evaluators[i].value > best_value:
-				best_index = i
-				best_value = evaluators[i].value
-		return evaluators[best_index]
+        best_index = 0
+        best_value = evaluators[0].value
+        for i in xrange(1, len(evaluators)):
+            if evaluators[i].value > best_value:
+                best_index = i
+                best_value = evaluators[i].value
+        return evaluators[best_index]
 
 decorators.bind_all(BuildingEvaluator)

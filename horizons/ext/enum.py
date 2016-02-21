@@ -56,9 +56,9 @@ __date__ = "2009-08-26"
 _copyright_year_latest = __date__.split('-')[0]
 _copyright_year_range = _copyright_year_begin
 if _copyright_year_latest > _copyright_year_begin:
-	_copyright_year_range += "–%(_copyright_year_latest)s" % vars()
+    _copyright_year_range += "–%(_copyright_year_latest)s" % vars()
 __copyright__ = ("Copyright © %(_copyright_year_range)s"
-	" %(__author_name__)s") % vars()
+    " %(__author_name__)s") % vars()
 __license__ = "Choice of GPL or Python license"
 
 __url__ = "http://pypi.python.org/pypi/enum/"
@@ -66,176 +66,176 @@ __version__ = "0.4.4"
 
 
 class EnumException(Exception):
-	""" Base class for all exceptions in this module. """
+    """ Base class for all exceptions in this module. """
 
-	def __init__(self, *args, **kwargs):
-		if self.__class__ is EnumException:
-			class_name = self.__class__.__name__
-			raise NotImplementedError("%(class_name)s is an abstract base class" % vars())
-		super(EnumException, self).__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        if self.__class__ is EnumException:
+            class_name = self.__class__.__name__
+            raise NotImplementedError("%(class_name)s is an abstract base class" % vars())
+        super(EnumException, self).__init__(*args, **kwargs)
 
 
 class EnumEmptyError(AssertionError, EnumException):
-	""" Raised when attempting to create an empty enumeration. """
+    """ Raised when attempting to create an empty enumeration. """
 
-	def __str__(self):
-		return "Enumerations cannot be empty"
+    def __str__(self):
+        return "Enumerations cannot be empty"
 
 
 class EnumBadKeyError(TypeError, EnumException):
-	""" Raised when creating an Enum with non-string keys. """
+    """ Raised when creating an Enum with non-string keys. """
 
-	def __init__(self, key):
-		self.key = key
+    def __init__(self, key):
+        self.key = key
 
-	def __str__(self):
-		return "Enumeration keys must be strings: %(key)r" % vars(self)
+    def __str__(self):
+        return "Enumeration keys must be strings: %(key)r" % vars(self)
 
 
 class EnumImmutableError(TypeError, EnumException):
-	""" Raised when attempting to modify an Enum. """
+    """ Raised when attempting to modify an Enum. """
 
-	def __init__(self, *args):
-		self.args = args
+    def __init__(self, *args):
+        self.args = args
 
-	def __str__(self):
-		return "Enumeration does not allow modification"
+    def __str__(self):
+        return "Enumeration does not allow modification"
 
 
 def _comparator(func):
-	""" Decorator for EnumValue rich comparison methods. """
-	def comparator_wrapper(self, other):
-		try:
-			assert self.enumtype == other.enumtype
-			result = func(self.index, other.index)
-		except (AssertionError, AttributeError):
-			result = NotImplemented
+    """ Decorator for EnumValue rich comparison methods. """
+    def comparator_wrapper(self, other):
+        try:
+            assert self.enumtype == other.enumtype
+            result = func(self.index, other.index)
+        except (AssertionError, AttributeError):
+            result = NotImplemented
 
-		return result
-	comparator_wrapper.__name__ = func.__name__
-	comparator_wrapper.__doc__ = getattr(float, func.__name__).__doc__
-	return comparator_wrapper
+        return result
+    comparator_wrapper.__name__ = func.__name__
+    comparator_wrapper.__doc__ = getattr(float, func.__name__).__doc__
+    return comparator_wrapper
 
 
 class EnumValue(object):
-	""" A specific value of an enumerated type. """
+    """ A specific value of an enumerated type. """
 
-	def __init__(self, enumtype, index, key):
-		""" Set up a new instance. """
-		self._enumtype = enumtype
-		self._index = index
-		self._key = key
+    def __init__(self, enumtype, index, key):
+        """ Set up a new instance. """
+        self._enumtype = enumtype
+        self._index = index
+        self._key = key
 
-	@property
-	def enumtype(self):
-		return self._enumtype
+    @property
+    def enumtype(self):
+        return self._enumtype
 
-	@property
-	def key(self):
-		return self._key
+    @property
+    def key(self):
+        return self._key
 
-	def __str__(self):
-		return str(self.key)
+    def __str__(self):
+        return str(self.key)
 
-	@property
-	def index(self):
-		return self._index
+    @property
+    def index(self):
+        return self._index
 
-	def __repr__(self):
-		return "EnumValue(%(_enumtype)r, %(_index)r, %(_key)r)" % vars(self)
+    def __repr__(self):
+        return "EnumValue(%(_enumtype)r, %(_index)r, %(_key)r)" % vars(self)
 
-	def __hash__(self):
-		return hash(self._index)
+    def __hash__(self):
+        return hash(self._index)
 
-	@_comparator
-	def __eq__(self, other):
-		return (self == other)
+    @_comparator
+    def __eq__(self, other):
+        return (self == other)
 
-	@_comparator
-	def __ne__(self, other):
-		return (self != other)
+    @_comparator
+    def __ne__(self, other):
+        return (self != other)
 
-	@_comparator
-	def __lt__(self, other):
-		return (self < other)
+    @_comparator
+    def __lt__(self, other):
+        return (self < other)
 
-	@_comparator
-	def __le__(self, other):
-		return (self <= other)
+    @_comparator
+    def __le__(self, other):
+        return (self <= other)
 
-	@_comparator
-	def __gt__(self, other):
-		return (self > other)
+    @_comparator
+    def __gt__(self, other):
+        return (self > other)
 
-	@_comparator
-	def __ge__(self, other):
-		return (self >= other)
+    @_comparator
+    def __ge__(self, other):
+        return (self >= other)
 
 
 class Enum(object):
-	""" Enumerated type. """
+    """ Enumerated type. """
 
-	def __init__(self, *keys, **kwargs):
-		""" Create an enumeration instance. """
+    def __init__(self, *keys, **kwargs):
+        """ Create an enumeration instance. """
 
-		value_type = kwargs.get('value_type', EnumValue)
+        value_type = kwargs.get('value_type', EnumValue)
 
-		if not keys:
-			raise EnumEmptyError()
+        if not keys:
+            raise EnumEmptyError()
 
-		keys = tuple(keys)
-		values = [None] * len(keys)
+        keys = tuple(keys)
+        values = [None] * len(keys)
 
-		for i, key in enumerate(keys):
-			value = value_type(self, i, key)
-			values[i] = value
-			try:
-				super(Enum, self).__setattr__(key, value)
-			except TypeError:
-				raise EnumBadKeyError(key)
+        for i, key in enumerate(keys):
+            value = value_type(self, i, key)
+            values[i] = value
+            try:
+                super(Enum, self).__setattr__(key, value)
+            except TypeError:
+                raise EnumBadKeyError(key)
 
-		self.__dict__['_keys'] = keys
-		self.__dict__['_values'] = values
+        self.__dict__['_keys'] = keys
+        self.__dict__['_values'] = values
 
-	@classmethod
-	def get_extended(cls, base_enum, *keys, **kwargs):
-		keys = base_enum._keys + keys
-		return cls(*keys, **kwargs)
+    @classmethod
+    def get_extended(cls, base_enum, *keys, **kwargs):
+        keys = base_enum._keys + keys
+        return cls(*keys, **kwargs)
 
-	def __setattr__(self, name, value):
-		raise EnumImmutableError(name)
+    def __setattr__(self, name, value):
+        raise EnumImmutableError(name)
 
-	def __delattr__(self, name):
-		raise EnumImmutableError(name)
+    def __delattr__(self, name):
+        raise EnumImmutableError(name)
 
-	def __len__(self):
-		return len(self._values)
+    def __len__(self):
+        return len(self._values)
 
-	def __getitem__(self, index):
-		return self._values[index]
+    def __getitem__(self, index):
+        return self._values[index]
 
-	def __setitem__(self, index, value):
-		raise EnumImmutableError(index)
+    def __setitem__(self, index, value):
+        raise EnumImmutableError(index)
 
-	def __delitem__(self, index):
-		raise EnumImmutableError(index)
+    def __delitem__(self, index):
+        raise EnumImmutableError(index)
 
-	def __iter__(self):
-		return iter(self._values)
+    def __iter__(self):
+        return iter(self._values)
 
-	def __contains__(self, value):
-		is_member = False
-		if isinstance(value, basestring):
-			is_member = (value in self._keys)
-		else:
-			is_member = (value in self._values)
-		return is_member
+    def __contains__(self, value):
+        is_member = False
+        if isinstance(value, basestring):
+            is_member = (value in self._keys)
+        else:
+            is_member = (value in self._values)
+        return is_member
 
-	def get_item_for_string(self, key):
-		"""Get an enum value for a string
-		@throws KeyError on key not found"""
-		try:
-			index = self._keys.index(key)
-		except ValueError:
-			raise KeyError  # keyerror is more natural here, since the value is a key
-		return self[index]
+    def get_item_for_string(self, key):
+        """Get an enum value for a string
+        @throws KeyError on key not found"""
+        try:
+            index = self._keys.index(key)
+        except ValueError:
+            raise KeyError  # keyerror is more natural here, since the value is a key
+        return self[index]

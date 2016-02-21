@@ -118,11 +118,11 @@ class TearingTool(NavigationTool):
 
             title = _("Destroy all buildings")
             msg = _("This will destroy all the buildings that fall outside of"
-                " the settlement range.")
+                    " the settlement range.")
             msg += u"\n\n"
             msg += N_("%s additional building will be destroyed.",
-                "%s additional buildings will be destroyed",
-                buildings_to_destroy) % buildings_to_destroy
+                      "%s additional buildings will be destroyed",
+                      buildings_to_destroy) % buildings_to_destroy
             return building.session.ingame_gui.open_popup(
                 title, msg, show_cancel_button=True)
 

@@ -39,17 +39,19 @@ class InvalidScenarioFileFormat(Exception):
 
 class ScenarioEventHandler(LivingObject):
     """Handles event, that make up a scenario. See wiki.
-    An instance of this class is bound to a set of events. On a new scenario, you need a new instance.
+    An instance of this class is bound to a set of events. On a new scenario,
+    you need a new instance.
 
     Scenarios consist of condition-action events.
-    When all conditions of an event become true, the action is executed and the event is
-    removed from the scenario. All events only happen once.
+    When all conditions of an event become true, the action is executed and
+    the event is removed from the scenario. All events only happen once.
 
-    Whenever the game state changes in a way, that can change the truth value of a condition,
-    the event handler must be notified. It will then check all relevant events.
-    It is imperative for this notification to always be triggered, else the scenario gets stuck.
-    For conditions, where this approach doesn't make sense (e.g. too frequent changes),
-    a periodic check can be used.
+    Whenever the game state changes in a way, that can change the truth value
+    of a condition, the event handler must be notified. It will then check all
+    relevant events. It is imperative for this notification to always
+    be triggered, else the scenario gets stuck.
+    For conditions, where this approach doesn't make sense (e.g. too frequent
+    changes), a periodic check can be used.
 
     Save/load works by dumping all info into a yaml string in the savegame,
     which is loaded just like normal scenarios are loaded.
@@ -80,10 +82,12 @@ class ScenarioEventHandler(LivingObject):
         self.sleep_ticks_remaining = 0
 
     def start(self):
-        # Add the check_events method to the scheduler to be checked every few seconds
+        """Add the check_events method to the scheduler to be checked every
+        few seconds"""
         self.check_events("game_started")
         Scheduler().add_new_object(self._scheduled_check, self,
-                                   run_in=Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL),
+                                   run_in=Scheduler().get_ticks(
+                                       self.CHECK_CONDITIONS_INTERVAL),
                                    loops=-1)
 
     def sleep(self, ticks):
@@ -108,7 +112,8 @@ class ScenarioEventHandler(LivingObject):
 
     def save(self, db):
         if self.inited:  # only save in case we have data applied
-            db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
+            db("INSERT INTO metadata(name, value) VALUES(?, ?)",
+               "scenario_events", self.to_yaml())
         for key, value in self._scenario_variables.iteritems():
             db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key,
                json.dumps(value))
@@ -116,22 +121,24 @@ class ScenarioEventHandler(LivingObject):
     def load(self, db):
         for key, value in db("SELECT key, value FROM scenario_variables"):
             self._scenario_variables[key] = json.loads(value)
-        data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
+        data = db("SELECT value FROM metadata WHERE name = ?",
+                  "scenario_events")
         if not data:
             return  # nothing to load
         self._apply_data(self._parse_yaml(data[0][0]))
 
     def schedule_check(self, condition):
-        """Let check_events run in one tick for condition. Useful for lag prevetion if time is a
-        critical factor, e.g. when the user has to wait for a function to return.."""
+        """Let check_events run in one tick for condition.
+        Useful for lag prevetion if time is a critical factor,
+        e.g. when the user has to wait for a function to return.."""
         if self.session.world.inited:  # don't check while loading
             Scheduler().add_new_object(Callback(self.check_events, condition),
-                self, run_in=self.sleep_ticks_remaining)
+                                       self, run_in=self.sleep_ticks_remaining)
 
     def schedule_action(self, action):
         if self.sleep_ticks_remaining > 0:
             Scheduler().add_new_object(Callback(action, self.session),
-                self, run_in=self.sleep_ticks_remaining)
+                                       self, run_in=self.sleep_ticks_remaining)
         else:
             action(self.session)
 
@@ -182,7 +189,8 @@ class ScenarioEventHandler(LivingObject):
     def _parse_yaml(string_or_stream):
         try:
             return YamlCache.load_yaml_data(string_or_stream)
-        except Exception as e:  # catch anything yaml or functions that yaml calls might throw
+        except Exception as e:
+            # catch anything yaml or functions that yaml calls might throw
             raise InvalidScenarioFileFormat(str(e))
 
     @classmethod
@@ -209,22 +217,23 @@ class ScenarioEventHandler(LivingObject):
     def _remove_event(self, event):
         assert isinstance(event, _Event)
         for cond in event.conditions:
-            # we have to use discard here, since cond.cond_type might be the same
-            # for multiple conditions of event
+            # we have to use discard here, since cond.cond_type might be
+            # the same for multiple conditions of event
             self._event_conditions[cond.cond_type].discard(event)
         self._events.remove(event)
 
     def to_yaml(self):
         """Returns yaml representation of current state of self.
-        Another object of this type, constructed with the return value of this function, has
-        to result in the very same object."""
+        Another object of this type, constructed with the return value of this
+        function, has to result in the very same object."""
         # every data except events are static, so reuse old data
         data = copy.deepcopy(self._data)
         del data['events']
         yaml_code = dump_dict_to_yaml(data)
         # remove last } so we can add stuff
         yaml_code = yaml_code.rsplit(u'}\n', 1)[0]
-        yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
+        yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for
+                                                      event in self._events)
         return yaml_code
 
 
@@ -262,7 +271,7 @@ class _Event(object):
         """Returns yaml representation of self"""
         return '{ actions: [ %s ] , conditions: [ %s ]  }' % \
             (', '.join(action.to_yaml() for action in self.actions),
-            ', '.join(cond.to_yaml() for cond in self.conditions))
+             ', '.join(cond.to_yaml() for cond in self.conditions))
 
 
 class _Action(object):
@@ -273,11 +282,13 @@ class _Action(object):
         try:
             self.action_type = action_dict['type']
         except KeyError:
-            raise InvalidScenarioFileFormat('Encountered action without type\n' + str(action_dict))
+            raise InvalidScenarioFileFormat(
+                'Encountered action without type\n' + str(action_dict))
         try:
             self.callback = ACTIONS.get(self.action_type)
         except KeyError:
-            raise InvalidScenarioFileFormat('Found invalid action type: %s' % self.action_type)
+            raise InvalidScenarioFileFormat(
+                'Found invalid action type: %s' % self.action_type)
 
         self.arguments = action_dict.get('arguments', [])
 
@@ -301,11 +312,13 @@ class _Condition(object):
         try:
             self.cond_type = cond_dict['type']
         except KeyError:
-            raise InvalidScenarioFileFormat("Encountered condition without type\n" + str(cond_dict))
+            raise InvalidScenarioFileFormat(
+                "Encountered condition without type\n" + str(cond_dict))
         try:
             self.callback = CONDITIONS.get(self.cond_type)
         except KeyError:
-            raise InvalidScenarioFileFormat('Found invalid condition type: %s' % self.cond_type)
+            raise InvalidScenarioFileFormat(
+                'Found invalid condition type: %s' % self.cond_type)
 
         self.arguments = cond_dict.get('arguments', [])
 
@@ -323,7 +336,9 @@ class _Condition(object):
 def dump_dict_to_yaml(data):
     """Wrapper for dumping yaml data using common parameters"""
     # NOTE: the line below used to end with this: .replace('\n', '')
-    # which broke formatting of logbook messages, of course. Revert in case of problems.
+    # which broke formatting of logbook messages, of course. Revert in case
+    # of problems.
 
-    # default_flow_style: makes use of short list notation without newlines (required here)
+    # default_flow_style: makes use of short list notation without newlines
+    # (required here)
     return yaml.safe_dump(data, line_break='\n', default_flow_style=True)

@@ -26,48 +26,48 @@ from horizons.util.python import decorators
 
 
 class PersonalityManager(object):
-	"""This class handles the loading of personality data for the AI players."""
+    """This class handles the loading of personality data for the AI players."""
 
-	log = logging.getLogger("ai.aiplayer.personality_manager")
+    log = logging.getLogger("ai.aiplayer.personality_manager")
 
-	def __init__(self, player):
-		self.player = player
-		self._personality = player.session.random.choice(self.available_personalities)
-		self.log.info('%s assigned personality %s', player, self._personality.__name__)
+    def __init__(self, player):
+        self.player = player
+        self._personality = player.session.random.choice(self.available_personalities)
+        self.log.info('%s assigned personality %s', player, self._personality.__name__)
 
-	def save(self, db):
-		db("INSERT INTO ai_personality_manager(rowid, personality) VALUES(?, ?)", self.player.worldid,
-			self._personality.__module__ + '.' + self._personality.__name__)
+    def save(self, db):
+        db("INSERT INTO ai_personality_manager(rowid, personality) VALUES(?, ?)", self.player.worldid,
+            self._personality.__module__ + '.' + self._personality.__name__)
 
-	def _load(self, db, player):
-		self.player = player
-		self._personality = None
-		personality = db("SELECT personality FROM ai_personality_manager WHERE rowid = ?",
-			player.worldid)[0][0]
-		for personality_class in self.available_personalities:
-			if personality == personality_class.__module__ + '.' + personality_class.__name__:
-				self._personality = personality_class
-		if self._personality is None:
-			self.log.debug('%s had invalid personality %s', self.player, personality)
-			self._personality = self.player.session.random.choice(self.available_personalities)
-		self.log.info('%s loaded with personality %s', self.player, self._personality.__name__)
+    def _load(self, db, player):
+        self.player = player
+        self._personality = None
+        personality = db("SELECT personality FROM ai_personality_manager WHERE rowid = ?",
+            player.worldid)[0][0]
+        for personality_class in self.available_personalities:
+            if personality == personality_class.__module__ + '.' + personality_class.__name__:
+                self._personality = personality_class
+        if self._personality is None:
+            self.log.debug('%s had invalid personality %s', self.player, personality)
+            self._personality = self.player.session.random.choice(self.available_personalities)
+        self.log.info('%s loaded with personality %s', self.player, self._personality.__name__)
 
-	@classmethod
-	def load(cls, db, player):
-		self = cls.__new__(cls)
-		self._load(db, player)
-		return self
+    @classmethod
+    def load(cls, db, player):
+        self = cls.__new__(cls)
+        self._load(db, player)
+        return self
 
-	def get(self, name):
-		"""Return a class that contains the relevant personality constants."""
-		return getattr(self._personality, name)
+    def get(self, name):
+        """Return a class that contains the relevant personality constants."""
+        return getattr(self._personality, name)
 
-	available_personalities = []  # [personality class, ...]
+    available_personalities = []  # [personality class, ...]
 
-	@classmethod
-	def prepare_personalities_list(cls):
-		cls.available_personalities.append(DefaultPersonality)
-		cls.available_personalities.append(OtherPersonality)
+    @classmethod
+    def prepare_personalities_list(cls):
+        cls.available_personalities.append(DefaultPersonality)
+        cls.available_personalities.append(OtherPersonality)
 
 PersonalityManager.prepare_personalities_list()
 

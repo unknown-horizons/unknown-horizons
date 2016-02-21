@@ -33,7 +33,8 @@ from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import WindowManager
 from horizons.messaging import ZoomChanged
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
+from horizons.util.lastactiveplayersettlementmanager import \
+    LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
@@ -64,7 +65,8 @@ class IngameGui(LivingObject):
 
         icon = self.mainhud.findChild(name="minimap")
         self.minimap = Minimap(icon,
-                               targetrenderer=horizons.globals.fife.targetrenderer,
+                               targetrenderer=horizons.globals.fife.
+                               targetrenderer,
                                imagemanager=horizons.globals.fife.imagemanager,
                                session=self.session,
                                view=self.session.view)
@@ -72,10 +74,10 @@ class IngameGui(LivingObject):
         self.mainhud.mapEvents({
             'zoomIn': self.session.view.zoom_in,
             'zoomOut': self.session.view.zoom_out,
-            'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right,
-                self.minimap.rotate_right),
-            'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left,
-                self.minimap.rotate_left),
+            'rotateRight': Callback.ChainedCallbacks(
+                self.session.view.rotate_right, self.minimap.rotate_right),
+            'rotateLeft': Callback.ChainedCallbacks(
+                self.session.view.rotate_left, self.minimap.rotate_left),
             'gameMenuButton': self.toggle_pause,
         })
 
@@ -83,12 +85,14 @@ class IngameGui(LivingObject):
         ZoomChanged.subscribe(self._update_zoom)
 
         # Hide unnecessary buttons in hud
-        for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
+        for widget in ("build", "speedUp", "speedDown", "destroy_tool",
+                       "diplomacyButton", "logbook"):
             self.mainhud.findChild(name=widget).hide()
 
         self.windows = WindowManager()
         self.message_widget = MessageWidget(self.session)
-        self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
+        self.pausemenu = PauseMenu(self.session, self, self.windows,
+                                   in_editor_mode=True)
         self.help_dialog = HelpDialog(self.windows)
 
     def end(self):
@@ -136,11 +140,13 @@ class IngameGui(LivingObject):
 
     def setup(self):
         """Called after the world editor was initialized."""
-        self._settings_tab = TabWidget(self, tabs=[SettingsTab(self.session.world_editor, self)])
+        self._settings_tab = TabWidget(self, tabs=[SettingsTab(
+            self.session.world_editor, self)])
         self._settings_tab.show()
 
     def minimap_to_front(self):
-        """Make sure the full right top gui is visible and not covered by some dialog"""
+        """Make sure the full right top gui is visible and
+        not covered by some dialog"""
         self.mainhud.hide()
         self.mainhud.show()
 
@@ -227,7 +233,8 @@ class SettingsTab(TabInterface):
             image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
 
     def _get_tile_image(self, tile):
-        # TODO TileLayingTool does almost the same thing, perhaps put this in a better place
+        # TODO TileLayingTool does almost the same thing, perhaps put this
+        # in a better place
         tile_sets = TileSetLoader.get_sets()
 
         ground_id, action_id, rotation = tile
@@ -241,9 +248,11 @@ class SettingsTab(TabInterface):
           'box': 'content/gui/icons/ship/smallbutton.png',
         }
 
-        b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+        b = self.widget.findChild(name='size_%d' %
+                                  self._world_editor.brush_size)
         b.up_image = images['box']
 
         self._world_editor.brush_size = size
-        b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+        b = self.widget.findChild(name='size_%d' %
+                                  self._world_editor.brush_size)
         b.up_image = images['box_highlighted']
