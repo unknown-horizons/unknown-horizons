@@ -81,7 +81,8 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
     """Returns path to the fontdef file for a locale. Unifont is default."""
     fontdef_file = FONTDEFS.get(locale, 'unifont')
-    return os.path.join('content', 'fonts', u'{0}.fontdef'.format(fontdef_file))
+    return os.path.join('content', 'fonts',
+                        u'{0}.fontdef'.format(fontdef_file))
 
 
 def change_language(language=None):
@@ -96,26 +97,32 @@ def change_language(language=None):
             # English is not shipped as .mo file, thus if English is
             # selected we use NullTranslations to get English output.
             fallback = (language == 'en')
-            trans = gettext.translation('unknown-horizons', find_available_languages()[language],
-                                        languages=[language], fallback=fallback)
+            trans = gettext.translation('unknown-horizons',
+                                        find_available_languages()[language],
+                                        languages=[language],
+                                        fallback=fallback)
             trans.install(unicode=True, names=['ngettext', ])
         except (IOError, KeyError, ValueError) as err:
-            # KeyError can happen with a settings file written to by more than one UH
-            # installation (one that has compiled language files and one that hasn't)
-            # ValueError can be raised by gettext if for instance the plural forms are
-            # corrupted.
-            log.warning("Configured language %s could not be loaded.", language)
+            # KeyError can happen with a settings file written to by more than
+            # one UH installation (one that has compiled language files
+            # and one that hasn't) ValueError can be raised by gettext
+            # if for instance the plural forms are corrupted.
+            log.warning("Configured language %s could not be loaded.",
+                        language)
             log.warning("Error: %s", err)
             log.warning("Continuing with English as fallback.")
             horizons.globals.fife.set_uh_setting('Language', LANGUAGENAMES[''])
             return change_language()  # recurse
     else:
         # default locale
-        if platform.system() == "Windows":  # win doesn't set the language variable by default
+        if platform.system() == "Windows":
+            # win doesn't set the language variable by default
             os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
-        gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext', ])
+        gettext.install('unknown-horizons', 'content/lang', unicode=True,
+                        names=['ngettext', ])
 
-    # expose the plural-aware translate function as builtin N_ (gettext does the same to _)
+    # expose the plural-aware translate function
+    # as builtin N_ (gettext does the same to _)
     import __builtin__
     __builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
 

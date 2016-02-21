@@ -41,7 +41,8 @@ class Settings(object):
         self._settings_template_serializer = SimpleXMLSerializer()
         self._settings_template_serializer.load(settings_template_file)
         if not hasattr(self._settings_template_serializer, 'getModuleName'):
-            # Renamed after 0.3.5: https://github.com/fifengine/fifengine/issues/819.
+            # Renamed after 0.3.5:
+            # https://github.com/fifengine/fifengine/issues/819.
             new_api = self._settings_template_serializer.getModuleNameList
             self._settings_template_serializer.getModuleName = new_api
         self.upgrade_settings()
@@ -73,8 +74,10 @@ class Settings(object):
         self._settings_serializer.set(module, name, value, {})
 
     def get_module_settings(self, module):
-        self._module_settings[module] = self._settings_serializer.getAllSettings(module)
-        self._module_settings_template[module] = self._settings_template_serializer.getAllSettings(module)
+        self._module_settings[module] = \
+            self._settings_serializer.getAllSettings(module)
+        self._module_settings_template[module] = \
+            self._settings_template_serializer.getAllSettings(module)
         for name, value in self._module_settings_template[module].iteritems():
             if name not in self._module_settings[module]:
                 self._module_settings[module][name] = value
@@ -93,8 +96,10 @@ class Settings(object):
 
     def set_defaults(self):
         for module in self._settings_template_serializer.getModuleName():
-            for setting_name in self._settings_template_serializer.getAllSettings(module):
-                value = self._settings_template_serializer.get(module, setting_name)
+            for setting_name in self._settings_template_serializer.\
+                    getAllSettings(module):
+                value = self._settings_template_serializer.get(module,
+                                                               setting_name)
                 self.set(module, setting_name, value)
         self.save()
 
@@ -102,18 +107,23 @@ class Settings(object):
         """Upgrades the settings to a newer version necessary."""
         # if the settings file doesn't exist, force an update with
         # settings version 1 as default value
-        current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION, 1)
-        template_version = self._settings_template_serializer.get(SETTINGS.META_MODULE,
-            self.SETTINGS_VERSION)
+        current_version = self.get(SETTINGS.META_MODULE,
+                                   self.SETTINGS_VERSION, 1)
+        template_version = self._settings_template_serializer.get(
+            SETTINGS.META_MODULE, self.SETTINGS_VERSION)
         if current_version != template_version:
             print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
                   (current_version, template_version)
             for module in self._settings_template_serializer.getModuleName():
-                for setting_name in self._settings_template_serializer.getAllSettings(module):
-                    default_value = self._settings_template_serializer.get(module, setting_name)
-                    if self.get(module, setting_name, default=default_value) is default_value:
+                for setting_name in self._settings_template_serializer.\
+                        getAllSettings(module):
+                    default_value = self._settings_template_serializer.get(
+                        module, setting_name)
+                    if self.get(module, setting_name,
+                                default=default_value) is default_value:
                         self.set(module, setting_name, default_value)
-            self.set(SETTINGS.META_MODULE, self.SETTINGS_VERSION, template_version)
+            self.set(SETTINGS.META_MODULE, self.SETTINGS_VERSION,
+                     template_version)
             self.save()
 
     # settings

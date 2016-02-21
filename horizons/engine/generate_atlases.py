@@ -39,9 +39,11 @@ except:
 # add paths for Mac Os X app container (Unknown Horizons.app)
 app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')
 if os.path.exists(app_python_lib_path):
-    # horizons path: Unknown Horizons.app/Contents/Resources/lib/python2.7/horizons
+    # horizons path:
+    # Unknown Horizons.app/Contents/Resources/lib/python2.7/horizons
     sys.path.append(app_python_lib_path)
-    # PIL path: Unknown Horizons.app/Contents/Resources/lib/python2.7/lib-dynload/PIL
+    # PIL path:
+    # Unknown Horizons.app/Contents/Resources/lib/python2.7/lib-dynload/PIL
     sys.path.append(os.path.join(app_python_lib_path, 'lib-dynload'))
 
 try:
@@ -55,7 +57,8 @@ except ImportError:
 # make sure os.path.getmtime returns ints
 os.stat_float_times(False)
 
-# make this script work both when started inside development and in the uh root dir
+# make this script work both when started inside development
+# and in the uh root dir
 if not os.path.exists('content'):
     os.chdir('..')
 assert os.path.exists('content'), 'Content dir not found.'
@@ -104,7 +107,8 @@ class AtlasBook(object):
         """Return true if and only if the image was added."""
         if self.cur_x + w <= self.max_size and self.cur_y + h <= self.max_size:
             # add to the end of the current row
-            self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h, os.path.getmtime(path))
+            self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h,
+                                             os.path.getmtime(path))
             self.cur_x += w
             self.cur_h = max(self.cur_h, h)
             return True
@@ -114,7 +118,8 @@ class AtlasBook(object):
             self.cur_x = w
             self.cur_y += self.cur_h
             self.cur_h = h
-            self.location[path] = AtlasEntry(0, self.cur_y, w, h, os.path.getmtime(path))
+            self.location[path] = AtlasEntry(0, self.cur_y, w, h,
+                                             os.path.getmtime(path))
             return True
 
         # unable to fit in the given space with the current algorithm
@@ -126,7 +131,8 @@ class AtlasBook(object):
             # Make sure atlas directory is available
             os.mkdir(PATHS.ATLAS_FILES_DIR)
 
-        im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
+        im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255,
+                                                                255))
 
         # place the sub-images in the right places
         for path, entry in self.location.iteritems():
@@ -153,7 +159,8 @@ class ImageSetManager(object):
         for set_id in initial_data:
             for action_id in initial_data[set_id]:
                 for rotation in sorted(initial_data[set_id][action_id]):
-                    for path in sorted(initial_data[set_id][action_id][rotation]):
+                    for path in sorted(initial_data[set_id][action_id][
+                                       rotation]):
                         self.files.append(path)
 
     def _add_entry(self, set_id, action_id, rotation, path, row):
@@ -163,18 +170,21 @@ class ImageSetManager(object):
             self._data[set_id][action_id] = {}
         if rotation not in self._data[set_id][action_id]:
             self._data[set_id][action_id][rotation] = {}
-        self._data[set_id][action_id][rotation][path.replace(os.sep, '/')] = row
+        self._data[set_id][action_id][rotation][path.replace(os.sep,
+                                                             '/')] = row
 
     def save(self, generator):
         for set_id in self._initial_data:
             for action_id in self._initial_data[set_id]:
                 for rotation in sorted(self._initial_data[set_id][action_id]):
-                    for path in sorted(self._initial_data[set_id][action_id][rotation]):
+                    for path in sorted(
+                            self._initial_data[set_id][action_id][rotation]):
                         book = generator.atlas_book_lookup[path]
                         book_entry = book.location[path]
 
                         row = []
-                        row.append(self._initial_data[set_id][action_id][rotation][path])
+                        row.append(self._initial_data[set_id][action_id][
+                                       rotation][path])
                         row.append(book.id)
                         row.append(book_entry.x)
                         row.append(book_entry.y)
@@ -200,8 +210,10 @@ class AtlasGenerator(object):
 
     def _init_sets(self):
         self.sets = []
-        self.sets.append(ImageSetManager(TileSetLoader.get_sets(), PATHS.TILE_SETS_JSON_FILE))
-        self.sets.append(ImageSetManager(ActionSetLoader.get_sets(), PATHS.ACTION_SETS_JSON_FILE))
+        self.sets.append(ImageSetManager(TileSetLoader.get_sets(),
+                                         PATHS.TILE_SETS_JSON_FILE))
+        self.sets.append(ImageSetManager(ActionSetLoader.get_sets(),
+                                         PATHS.ACTION_SETS_JSON_FILE))
 
     def _save_sets(self):
         for set in self.sets:
@@ -218,10 +230,12 @@ class AtlasGenerator(object):
 
     def save(self):
         with open(PATHS.ATLAS_DB_PATH, 'wb') as atlas_db_file:
-            atlas_db_file.write("CREATE TABLE atlas('atlas_id'"
-                " INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
+            atlas_db_file.write(
+                "CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, "
+                "'atlas_path' TEXT NOT NULL);\n")
             for book in self.books:
-                atlas_db_file.write("INSERT INTO atlas VALUES(%d, '%s');\n" % (book.id, book.path))
+                atlas_db_file.write("INSERT INTO atlas VALUES(%d, '%s');\n" % (
+                    book.id, book.path))
 
         self._save_sets()
         self._save_books(self.books)
@@ -287,7 +301,8 @@ class AtlasGenerator(object):
         recreate_all = False
         if len(set(paths)) != len(self.atlas_book_lookup):
             recreate_all = True
-            self.log.info("The old number of images (%d) doesn't match the new (%d)",
+            self.log.info("The old number of images (%d)"
+                          " doesn't match the new (%d)",
                           len(self.atlas_book_lookup), len(set(paths)))
 
         recreate_books = set()
@@ -329,14 +344,16 @@ class AtlasGenerator(object):
             self._update_selected_books(recreate_books)
             self._save_metadata()
         else:
-            # the sets have to always be saved because the tm_N files are not otherwise taken into account
+            # the sets have to always be saved because the tm_N files
+            # are not otherwise taken into account
             self._save_sets()
         return True
 
     def __getstate__(self):
         # avoid saving self.sets
-        return {'version': self.version, 'max_size': self.max_size, 'books': self.books,
-                'num_books': self.num_books, 'atlas_book_lookup': self.atlas_book_lookup}
+        return {'version': self.version, 'max_size': self.max_size,
+                'books': self.books, 'num_books': self.num_books,
+                'atlas_book_lookup': self.atlas_book_lookup}
 
     def _save_metadata(self):
         self.log.info('Saving metadata')
@@ -379,11 +396,13 @@ class AtlasGenerator(object):
             data = pickle.load(file)
 
             if data.version != cls.current_version:
-                cls.log.info('Old metadata version %d (current %d)', data.version, cls.current_version)
+                cls.log.info('Old metadata version %d (current %d)',
+                             data.version, cls.current_version)
                 return None
 
             if data.max_size != max_size:
-                cls.log.info('The desired max_size has changed from %d to %d', data.max_size, max_size)
+                cls.log.info('The desired max_size has changed from %d to %d',
+                             data.max_size, max_size)
                 return None
 
             cls.log.info('Successfully loaded the metadata cache')

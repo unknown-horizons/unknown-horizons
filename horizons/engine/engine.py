@@ -43,7 +43,8 @@ class Fife(object):
     def __init__(self):
         self.pump = []
 
-        self._setting = Settings(PATHS.USER_CONFIG_FILE, PATHS.SETTINGS_TEMPLATE_FILE)
+        self._setting = Settings(PATHS.USER_CONFIG_FILE,
+                                 PATHS.SETTINGS_TEMPLATE_FILE)
         self.engine = fife.Engine()
         self.engine_settings = self.engine.getSettings()
 
@@ -68,65 +69,87 @@ class Fife(object):
         self.engine_settings = self.engine.getSettings()
 
         self.engine_settings.setDefaultFontPath(self._finalSetting['Font'])
-        self.engine_settings.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
-        self.engine_settings.setInitialVolume(self._finalSetting['InitialVolume'])
-        self.engine_settings.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
-        self.engine_settings.setGLCompressImages(self._finalSetting['GLCompressImages'])
-        self.engine_settings.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
+        self.engine_settings.setBitsPerPixel(
+            self._finalSetting['BitsPerPixel'])
+        self.engine_settings.setInitialVolume(
+            self._finalSetting['InitialVolume'])
+        self.engine_settings.setSDLRemoveFakeAlpha(
+            self._finalSetting['SDLRemoveFakeAlpha'])
+        self.engine_settings.setGLCompressImages(
+            self._finalSetting['GLCompressImages'])
+        self.engine_settings.setGLUseFramebuffer(
+            self._finalSetting['GLUseFramebuffer'])
         self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 
         # introduced in fife 0.4.0
         if self.getVersion >= (0, 4, 0):
-            self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
-            self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
+            self.engine_settings.setGLUseMonochrome(
+                self._finalSetting['GLUseMonochrome'])
+            self.engine_settings.setGLUseMipmapping(
+                self._finalSetting['GLUseMipmapping'])
             if self._finalSetting['GLTextureFiltering'] == 'None':
-                self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_NONE)
+                self.engine_settings.setGLTextureFiltering(
+                    fife.TEXTURE_FILTER_NONE)
             elif self._finalSetting['GLTextureFiltering'] == 'Bilinear':
-                self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_BILINEAR)
+                self.engine_settings.setGLTextureFiltering(
+                    fife.TEXTURE_FILTER_BILINEAR)
             elif self._finalSetting['GLTextureFiltering'] == 'Trilinear':
-                self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_TRILINEAR)
+                self.engine_settings.setGLTextureFiltering(
+                    fife.TEXTURE_FILTER_TRILINEAR)
             elif self._finalSetting['GLTextureFiltering'] == 'Anisotropic':
-                self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_ANISOTROPIC)
-            self.engine_settings.setGLUseDepthBuffer(self._finalSetting['GLUseDepthBuffer'])
-            self.engine_settings.setGLAlphaTestValue(self._finalSetting['GLAlphaTestValue'])
+                self.engine_settings.setGLTextureFiltering(
+                    fife.TEXTURE_FILTER_ANISOTROPIC)
+            self.engine_settings.setGLUseDepthBuffer(
+                self._finalSetting['GLUseDepthBuffer'])
+            self.engine_settings.setGLAlphaTestValue(
+                self._finalSetting['GLAlphaTestValue'])
 
         (width, height) = self._finalSetting['ScreenResolution'].split('x')
         self.engine_settings.setScreenWidth(int(width))
         self.engine_settings.setScreenHeight(int(height))
-        self.engine_settings.setRenderBackend(self._finalSetting['RenderBackend'])
+        self.engine_settings.setRenderBackend(
+            self._finalSetting['RenderBackend'])
         self.engine_settings.setFullScreen(self._finalSetting['FullScreen'])
         self.engine_settings.setLightingModel(self._finalSetting['Lighting'])
 
         try:
-            self.engine_settings.setColorKeyEnabled(self._finalSetting['ColorKeyEnabled'])
+            self.engine_settings.setColorKeyEnabled(
+                self._finalSetting['ColorKeyEnabled'])
         except:
             pass
 
         try:
             self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],
-                self._finalSetting['ColorKey'][1], self._finalSetting['ColorKey'][2])
+                                             self._finalSetting['ColorKey'][1],
+                                             self._finalSetting['ColorKey'][2])
         except:
             pass
 
         try:
-            self.engine_settings.setWindowTitle(self._finalSetting['WindowTitle'])
-            self.engine_settings.setWindowIcon(self._finalSetting['WindowIcon'])
+            self.engine_settings.setWindowTitle(
+                self._finalSetting['WindowTitle'])
+            self.engine_settings.setWindowIcon(
+                self._finalSetting['WindowIcon'])
         except:
             pass
 
         try:
-            self.engine_settings.setFrameLimitEnabled(self._finalSetting['FrameLimitEnabled'])
-            self.engine_settings.setFrameLimit(self._finalSetting['FrameLimit'])
+            self.engine_settings.setFrameLimitEnabled(
+                self._finalSetting['FrameLimitEnabled'])
+            self.engine_settings.setFrameLimit(
+                self._finalSetting['FrameLimit'])
         except:
             pass
 
         try:
-            self.engine_settings.setMouseSensitivity(self._finalSetting['MouseSensitivity'])
+            self.engine_settings.setMouseSensitivity(
+                self._finalSetting['MouseSensitivity'])
         except:
             pass
 
         try:
-            self.engine_settings.setMouseAccelerationEnabled(self._finalSetting['MouseAcceleration'])
+            self.engine_settings.setMouseAccelerationEnabled(
+                self._finalSetting['MouseAcceleration'])
         except:
             pass
 
@@ -134,15 +157,19 @@ class Fife(object):
         """Initialize the LogManager."""
 
         # If desired, log to the console and/or the log file.
-        log_to_prompt = self._setting.get(SETTINGS.FIFE_MODULE, "LogToPrompt", False)
-        log_to_file = self._setting.get(SETTINGS.FIFE_MODULE, "LogToFile", False)
-        self._log = fifelog.LogManager(self.engine, log_to_prompt, log_to_file)
+        log_to_prompt = self._setting.get(SETTINGS.FIFE_MODULE,
+                                          "LogToPrompt", False)
+        log_to_file = self._setting.get(SETTINGS.FIFE_MODULE,
+                                        "LogToFile", False)
+        self._log = fifelog.LogManager(self.engine, log_to_prompt,
+                                       log_to_file)
 
         log_level = self._setting.get(SETTINGS.FIFE_MODULE, "LogLevelFilter",
                                       fife.LogManager.LEVEL_DEBUG)
         self._log.setLevelFilter(log_level)
 
-        logmodules = self._setting.get(SETTINGS.FIFE_MODULE, "LogModules", ["controller"])
+        logmodules = self._setting.get(SETTINGS.FIFE_MODULE, "LogModules",
+                                       ["controller"])
         if logmodules:
             self._log.setVisibleModules(*logmodules)
 
@@ -166,7 +193,8 @@ class Fife(object):
             'pipette': 'content/gui/images/cursors/cursor_pipette.png',
             'rename': 'content/gui/images/cursors/cursor_rename.png',
         }
-        self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in cursor_images.iteritems())
+        self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in
+                                  cursor_images.iteritems())
         self.cursor.set(self.cursor_images['default'])
 
         # Init pychan.
@@ -212,9 +240,11 @@ class Fife(object):
         return self._setting.get_module_settings(SETTINGS.KEY_MODULE)
 
     def get_keys_for_action(self, action, default=False):
-        """Returns list of current hotkeys for *action* or its default hotkeys."""
+        """Returns list of current hotkeys for *action* or its default hotkeys.
+        """
         if default:
-            keys = self._setting.get_module_template_settings(SETTINGS.KEY_MODULE).get(action)
+            keys = self._setting.get_module_template_settings(
+                SETTINGS.KEY_MODULE).get(action)
         else:
             keys = self._setting.get(SETTINGS.KEY_MODULE, action)
         return keys
@@ -253,7 +283,8 @@ class Fife(object):
 
     def play_sound(self, emitter, soundfile):
         """Plays a soundfile on the given emitter.
-        @param emitter: string with the emitters name in horizons.globals.fife.sound.emitter
+        @param emitter: string with the emitters name
+                        in horizons.globals.fife.sound.emitter
         that is to play the sound
         @param soundfile: string containing the path to the soundfile"""
         self.sound.play_sound(emitter, soundfile)
@@ -268,8 +299,10 @@ class Fife(object):
             return default_locale.split('_')[0]
         except (ValueError, AttributeError):
             # OS X sometimes returns 'UTF-8' as locale, which is a ValueError.
-            # If no locale is set at all, the split will fail, which is an AttributeError.
-            # Use 'EN' as fallback in both cases since we cannot reasonably detect the locale.
+            # If no locale is set at all, the split will fail,
+            # which is an AttributeError.
+            # Use 'EN' as fallback in both cases since we cannot reasonably
+            # detect the locale.
             return "en"
 
     def run(self):
@@ -309,7 +342,8 @@ class Fife(object):
 
     @classmethod
     def getVersion(cls):
-        """Returns a tuple (Major, Minor, Patch) version of the current running Fife."""
+        """Returns a tuple (Major, Minor, Patch) version
+        of the current running Fife."""
         try:
             return (fife.getMajor(), fife.getMinor(), fife.getPatch())
         except AttributeError:

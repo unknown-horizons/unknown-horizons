@@ -38,7 +38,8 @@ class DepositComponent(Component):
         else:
             iterator = self.get_random_res_amounts
         for res, amount in iterator():
-            self.instance.get_component(StorageComponent).inventory.alter(res, amount)
+            self.instance.get_component(StorageComponent).inventory.alter(
+                res, amount)
 
     @cachedmethod
     def get_res_ranges(self):
@@ -48,7 +49,8 @@ class DepositComponent(Component):
                 for res, data in self.resources.iteritems())
 
     def get_random_res_amounts(self):
-        """Generator for tuples (res_id, rand_amount) for each resource that the deposit
+        """Generator for tuples (res_id, rand_amount)
+        for each resource that the deposit
         can contain (as defined in the object file)."""
         return ((res, self.session.random.randint(min_amount, max_amount))
                 for res, min_amount, max_amount in self.get_res_ranges())

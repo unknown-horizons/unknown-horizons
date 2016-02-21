@@ -33,7 +33,8 @@ class HelpDialog(Window):
         super(HelpDialog, self).__init__(windows)
 
         self.widget = load_uh_widget('help.xml')
-        self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+        self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(
+            self._windows.close)
         self.widget.findChild(name='headline').text = GAMEPLAY_TIPS['name']
         tip_box = self.widget.findChild(name='tip_box')
         size = {'max_size': (300, 60), 'min_size': (300, 20)}

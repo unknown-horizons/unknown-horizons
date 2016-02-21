@@ -23,16 +23,16 @@ from horizons.component import Component
 
 
 class RestrictedPickup(Component):
-	""" Handles pickup location restrictions per whitelist.
-	Treats something as allowed (not restricted) if contained
-	in the whitelist *allowed*. If this is specified but empty,
-	everything is considered forbidden.
-	"""
-	NAME = 'restricted'
+    """ Handles pickup location restrictions per whitelist.
+    Treats something as allowed (not restricted) if contained
+    in the whitelist *allowed*. If this is specified but empty,
+    everything is considered forbidden.
+    """
+    NAME = 'restricted'
 
-	def __init__(self, allowed=None):
-		super(RestrictedPickup, self).__init__()
-		self.allowed = allowed or []
+    def __init__(self, allowed=None):
+        super(RestrictedPickup, self).__init__()
+        self.allowed = allowed or []
 
-	def pickup_allowed_at(self, target_class):
-		return target_class in self.allowed
+    def pickup_allowed_at(self, target_class):
+        return target_class in self.allowed

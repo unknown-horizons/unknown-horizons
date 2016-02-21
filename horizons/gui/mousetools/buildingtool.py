@@ -32,7 +32,8 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.command.building import Build
-from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
+from horizons.component.selectablecomponent import \
+    SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.sounds import PlaySound
 from horizons.gui.util import load_uh_widget
@@ -196,7 +197,8 @@ class BuildingTool(NavigationTool):
 
         renderer = self.session.view.renderer['InstanceRenderer']
         if tiles_to_check is None or new_buildings:  # first run, check all
-            buildings_to_select = [buildings_to_select
+            buildings_to_select = [
+                buildings_to_select
                 for settlement in self.session.world.settlements
                 if settlement.owner.is_local_player
                 for bid in related

@@ -86,13 +86,16 @@ class Sound(object):
 
         self.soundclipmanager = self.engine.engine.getSoundClipManager()
         self.emitter['bgsound'] = self.soundmanager.createEmitter()
-        self.emitter['bgsound'].setGain(self.engine.get_uh_setting("VolumeMusic"))
+        self.emitter['bgsound'].setGain(self.engine.get_uh_setting(
+            "VolumeMusic"))
         self.emitter['bgsound'].setLooping(False)
         self.emitter['effects'] = self.soundmanager.createEmitter()
-        self.emitter['effects'].setGain(self.engine.get_uh_setting("VolumeEffects"))
+        self.emitter['effects'].setGain(self.engine.get_uh_setting(
+            "VolumeEffects"))
         self.emitter['effects'].setLooping(False)
         self.emitter['speech'] = self.soundmanager.createEmitter()
-        self.emitter['speech'].setGain(self.engine.get_uh_setting("VolumeEffects"))
+        self.emitter['speech'].setGain(self.engine.get_uh_setting(
+            "VolumeEffects"))
         self.emitter['speech'].setLooping(False)
 
         # Start background music:
@@ -114,10 +117,12 @@ class Sound(object):
     def check_music(self, refresh_playlist=False, play_menu_tracks=False):
         """Used as callback to check if music is still running or if we have
         to load the next song.
-        @param refresh_playlist: Whether to update the playlist type (menu, ingame).
+        @param refresh_playlist: Whether to update the playlist type
+                                (menu, ingame).
         refresh_playlist should e.g. be set when loading happens,
         after which we no longer want to play menu music.
-        The current track, however, will still finish playing before choosing a new track.
+        The current track, however, will still finish playing
+        before choosing a new track.
         @param play_menu_tracks: Whether to start the playlist with menu music.
         Only works with refresh_playlist=True.
         """
@@ -129,20 +134,25 @@ class Sound(object):
             else:
                 self.music = None  # Cannot play any tracks if there are none
 
-        self._new_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
-        self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+        self._new_byte_pos = self.emitter['bgsound'].getCursor(
+            fife.SD_BYTE_POS)
+        self._new_smpl_pos = self.emitter['bgsound'].getCursor(
+            fife.SD_SAMPLE_POS)
         # TODO find cleaner way to check for this:
         # check whether last track has finished:
-        if (self.music is not None
-            and self._new_byte_pos == self._old_byte_pos
-            and self._new_smpl_pos == self._old_smpl_pos):
+        if (self.music is not None and
+                self._new_byte_pos == self._old_byte_pos and
+                self._new_smpl_pos == self._old_smpl_pos):
             # choose random new track, but not one we played very recently
-            track = random.choice([m for m in self.music if m not in self.last_tracks])
+            track = random.choice([m for m in self.music if m not in
+                                   self.last_tracks])
             self.play_sound('bgsound', track)
             self.last_tracks.append(track)
 
-        self._old_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
-        self._old_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+        self._old_byte_pos = self.emitter['bgsound'].getCursor(
+            fife.SD_BYTE_POS)
+        self._old_smpl_pos = self.emitter['bgsound'].getCursor(
+            fife.SD_SAMPLE_POS)
 
     def play_sound(self, emitter, soundfile):
         """Plays a soundfile on the given emitter.
@@ -162,21 +172,25 @@ class Sound(object):
 
     def set_volume_emitter(self, emitter, volume):
         """Sets the volume on the emitter specified by emitter_name.
-        @param emitter: string with the emitters name, used as key for the self.emitter dict
-        @param volume: double which volume the emitter is to be set to range[0, 1]
+        @param emitter: string with the emitters name,
+                        used as key for the self.emitter dict
+        @param volume: double which volume the emitter
+                       is to be set to range[0, 1]
         """
         if self.engine.get_fife_setting("PlaySounds"):
             self.emitter[emitter].setGain(volume)
 
     def set_volume_bgmusic(self, volume):
         """Sets the volume for the backgroundmusic.
-        @param volume: double which volume the emitter is to be set to range[0, 1]
+        @param volume: double which volume the emitter
+                       is to be set to range[0, 1]
         """
         self.set_volume_emitter('bgsound', volume)
 
     def set_volume_effects(self, volume):
         """Sets the volume for the effects, speech and ambient sounds.
-        @param volume: double which volume the emitter is to be set to range[0, 1]
+        @param volume: double which volume the emitter
+                       is to be set to range[0, 1]
         """
         self.set_volume_emitter('effects', volume)
         self.set_volume_emitter('speech', volume)

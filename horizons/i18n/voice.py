@@ -32,7 +32,8 @@ Internationalization for speech|voice files
 
 
 class Speech:
-    """Definition of category names, those names are the name of directory where speech should be"""
+    """Definition of category names, those names are the name of directory
+    where speech should be"""
     CHAT = None
     NEW_SETTLEMENT = "new_settlement"
     NEW_WORLD = "new_world"
@@ -84,7 +85,8 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
     lang = horizons.globals.fife.get_locale()
     path = prepare_path(lang, category_name, variation_id, speaker_id)
     if path is None:
-        path = prepare_path(DEFAULT_LANG, category_name, DEFAULT_VARIATION, DEFAULT_SPEAKER)
+        path = prepare_path(DEFAULT_LANG, category_name, DEFAULT_VARIATION,
+                            DEFAULT_SPEAKER)
     return path
 
 
@@ -113,11 +115,13 @@ def get_file_path(dir_name, var_id):
 
 
 def get_dir_path(lang, category_name, spkr_id):
-    return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(category_name))
+    return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id),
+                        str(category_name))
 
 
 def count_variations(dir_name):
-    return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name, file))])
+    return len([file for file in os.listdir(dir_name) if os.path.isfile(
+        os.path.join(dir_name, file))])
 
 
 def eval_category_name(category):
