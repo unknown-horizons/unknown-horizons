@@ -38,7 +38,8 @@ class Point(Shape):
 
     @property
     def center(self):
-        """Returns the center of the point (this makes Point interface more coherent with Rect).
+        """Returns the center of the point
+        (this makes Point interface more coherent with Rect).
         """
         return self
 

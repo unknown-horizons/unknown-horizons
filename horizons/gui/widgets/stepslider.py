@@ -26,18 +26,22 @@ from fife.extensions.pychan.widgets import Slider
 class StepSlider(Slider):
 
     def __init__(self, *args, **kwargs):
-        """The StepSlider automatically snaps the steps suggested by stepsize."""
-        self.__callbacks_by_group = {}  # super init calls capture, so we need this here
+        """The StepSlider automatically snaps the steps suggested by stepsize.
+        """
+        self.__callbacks_by_group = {}
+        # super init calls capture, so we need this here
 
         super(StepSlider, self).__init__(*args, **kwargs)
 
         self.__last_step_value = None
-        # for recognizing new steps, self.value is overwritten in the base class sometimes
+        # for recognizing new steps, self.value is overwritten
+        # in the base class sometimes
         self.capture(None)
 
     def capture(self, callback, event_name="action", group_name="default"):
         if event_name == "action":
-            super(StepSlider, self).capture(self.__update, event_name, group_name="stepslider")
+            super(StepSlider, self).capture(self.__update, event_name,
+                                            group_name="stepslider")
             self.__callbacks_by_group[group_name] = callback
         else:
             super(StepSlider, self).capture(callback, event_name, group_name)
@@ -46,6 +50,7 @@ class StepSlider(Slider):
         value = round(self.value / self.step_length) * self.step_length
         if value != self.__last_step_value:
             self.__last_step_value = value
-            self.value = value  # has be overwritten before this has been called
+            self.value = value
+            # has be overwritten before this has been called
             for callback in self.__callbacks_by_group.itervalues():
                 callback()

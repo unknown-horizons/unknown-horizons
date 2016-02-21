@@ -37,6 +37,7 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.yamlcache import YamlCache
 
+
 class SavegameTooOld(Exception):
     def __init__(self, msg=None, revision=None):
         if msg is None:
@@ -45,8 +46,10 @@ class SavegameTooOld(Exception):
             msg += " Revision: " + str(revision)
         super(SavegameTooOld, self).__init__(msg)
 
+
 class SavegameUpgrader(object):
-    """The class that prepares saved games to be loaded by the current version."""
+    """The class that prepares saved games
+    to be loaded by the current version."""
 
     log = logging.getLogger("util.savegameupgrader")
 
@@ -57,32 +60,40 @@ class SavegameUpgrader(object):
         self.final_path = None
 
     def _upgrade_to_rev49(self, db):
-        db('CREATE TABLE "resource_overview_bar" (object INTEGER NOT NULL, position'
-            ' INTEGER NOT NULL, resource INTEGER NOT NULL)')
+        db('CREATE TABLE "resource_overview_bar" (object INTEGER NOT NULL, '
+           'position INTEGER NOT NULL, resource INTEGER NOT NULL)')
 
     def _upgrade_to_rev50(self, db):
-        db('UPDATE stance set stance = "hold_ground_stance" where stance = "hold_ground"')
+        db('UPDATE stance set stance = "hold_ground_stance" where '
+           'stance = "hold_ground"')
         db('UPDATE stance set stance = "none_stance" where stance = "none"')
-        db('UPDATE stance set stance = "flee_stance" where stance = "flee_stance"')
-        db('UPDATE stance set stance = "aggressive_stance" where stance = "aggressive"')
+        db('UPDATE stance set stance = "flee_stance" where '
+           'stance = "flee_stance"')
+        db('UPDATE stance set stance = "aggressive_stance" where '
+           'stance = "aggressive"')
 
     def _upgrade_to_rev51(self, db):
-        # add fire slot to settlers. Use direct numbers since only these work and they must never change.
-        for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?", 3):
-            db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)",
-               settler_id, 42, 1)
+        """add fire slot to settlers. Use direct numbers since only these work
+        and they must never change."""
+        for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?",
+                                 3):
+            db("INSERT INTO storage_slot_limit(object, slot, value) VALUES"
+               "(?, ?, ?)", settler_id, 42, 1)
 
     def _upgrade_to_rev52(self, db):
         # create empty disaster tables
         db('CREATE TABLE "disaster" ( type STRING NOT NULL, settlement'
-            ' INTEGER NOT NULL, remaining_ticks_expand INTEGER NOT NULL)')
-        db('CREATE TABLE "fire_disaster" ( disaster INTEGER NOT NULL, building'
-            ' INTEGER NOT NULL, remaining_ticks_havoc INTEGER NOT NULL )')
-        db('CREATE TABLE "disaster_manager" ( remaining_ticks INTEGER NOT NULL )')
+           ' INTEGER NOT NULL, remaining_ticks_expand INTEGER NOT NULL)')
+        db('CREATE TABLE "fire_disaster" ( disaster INTEGER NOT NULL, '
+           'building INTEGER NOT NULL, remaining_ticks_havoc INTEGER '
+           'NOT NULL )')
+        db('CREATE TABLE "disaster_manager" ( remaining_ticks INTEGER NOT '
+           'NULL )')
         db('INSERT INTO "disaster_manager" VALUES(1)')
 
     def _upgrade_to_rev53(self, db):
-        # convert old logbook (heading, message) tuples to new syntax, modify logbook table layout
+        """convert old logbook (heading, message) tuples to new syntax,
+        modify logbook table layout"""
         old_entries = db("SELECT heading, message FROM logbook")
         db('DROP TABLE logbook')
         db('CREATE TABLE logbook ( widgets STRING )')
@@ -96,58 +107,70 @@ class SavegameUpgrader(object):
         db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(widgets))
 
     def _upgrade_to_rev54(self, db):
-        for (settlement,) in db("SELECT DISTINCT settlement FROM settlement_level_properties"
-                " WHERE level = ?", 0):
-            db("INSERT INTO settlement_level_properties VALUES(?, 3, 0, 1)", settlement)
+        for (settlement,) in db("SELECT DISTINCT settlement FROM settlement_"
+                                "level_properties WHERE level = ?", 0):
+            db("INSERT INTO settlement_level_properties VALUES(?, 3, 0, 1)",
+               settlement)
 
     def _upgrade_to_rev55(self, db):
-        # The upgrade system has been mishandled, this upgrade tries to fix
-        # as much as possible. It's partly brute force and might not work every
-        # time, however the savegames are in an undefined state, so recovery is hard
-
+        """The upgrade system has been mishandled, this upgrade tries to fix
+        as much as possible. It's partly brute force and might not work every
+        time, however the savegames are in an undefined state,
+        so recovery is hard
+        """
         # make anything inflamable, the code should be able to handle it
         for (obj, ) in db("SELECT rowid FROM building where type != 8"):
-            db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
-               obj, 99, 1)
+            db("INSERT INTO storage_slot_limit (object, slot, value) VALUES "
+               "(?, ?, ?)", obj, 99, 1)
 
         # make farm be able to store grain and stuff
         for (obj, ) in db("SELECT rowid FROM building where type = 20"):
-            db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
-               obj, 43, 6)
-            db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
-               obj, 42, 6)
+            db("INSERT INTO storage_slot_limit (object, slot, value) VALUES "
+               "(?, ?, ?)", obj, 43, 6)
+            db("INSERT INTO storage_slot_limit (object, slot, value) VALUES "
+               "(?, ?, ?)", obj, 42, 6)
 
     def _upgrade_to_rev56(self, db):
-        db('CREATE TABLE "last_active_settlement" ( type STRING NOT NULL, value INTEGER NOT NULL )')
-        db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", False)
+        db('CREATE TABLE "last_active_settlement" ( type STRING NOT NULL, '
+           'value INTEGER NOT NULL )')
+        db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)",
+           "LAST_NONE_FLAG", False)
 
     def _upgrade_to_rev57(self, db):
         """Change storage of scenario variables from pickle to json."""
         import pickle
-        db.connection.text_factory = str  # need to read as str, utf-8 chokes on binary pickle
+        db.connection.text_factory = str
+        # need to read as str, utf-8 chokes on binary pickle
 
         for key, value in db("SELECT key, value FROM scenario_variables"):
             value = pickle.loads(value)
             value = json.dumps(value)
-            db("UPDATE scenario_variables SET value = ? WHERE key = ?", value, key)
+            db("UPDATE scenario_variables SET value = ? WHERE key = ?", value,
+               key)
 
     def _upgrade_to_rev58(self, db):
         # multiple resources for collector jobs
-        data = [i for i in db("SELECT rowid, object, resource, amount FROM collector_job")]
+        data = [i for i in db("SELECT rowid, object, resource, amount "
+                              "FROM collector_job")]
         db("DROP TABLE  collector_job")
-        db("CREATE TABLE `collector_job` (`collector` INTEGER, `object` INTEGER DEFAULT NULL,"
-            " `resource` INTEGER DEFAULT NULL, `amount` INTEGER DEFAULT NULL)")
+        db("CREATE TABLE `collector_job` (`collector` INTEGER, `object` "
+           "INTEGER DEFAULT NULL, `resource` INTEGER DEFAULT NULL, "
+            "`amount` INTEGER DEFAULT NULL)")
         for row in data:
-            db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)", *row)
+            db("INSERT INTO collector_job(collector, object, resource, "
+               "amount) VALUES(?, ?, ?, ?)", *row)
 
     def _upgrade_to_rev59(self, db):
         # action set id save/load
         try:
-            db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING DEFAULT NULL")
-            # None is not a valid value, but it's hard to determine valid ones here,
-            # so as an exception, we let the loading code handle it (in ConcreteObject.load)
+            db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING "
+               "DEFAULT NULL")
+            # None is not a valid value, but it's hard to determine valid
+            # ones here, so as an exception, we let the loading code handle it
+            # (in ConcreteObject.load)
         except OperationalError:
-            # Some scenario maps had concrete_object updated with 8b3cb4bae1067e
+            # Some scenario maps had concrete_object updated
+            # with 8b3cb4bae1067e
             pass
 
     def _upgrade_to_rev60(self, db):
@@ -192,102 +215,118 @@ class SavegameUpgrader(object):
             (5, 13, 1056282634),
         ]
         for obj_type, old_prod_line, new_prod_line in changes:
-            for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
-                db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?",
-                    new_prod_line, obj, old_prod_line)
+            for (obj, ) in db("SELECT rowid FROM building WHERE type = ?",
+                              obj_type):
+                db("UPDATE production SET prod_line_id = ? WHERE owner = ? "
+                   "and prod_line_id = ?", new_prod_line, obj, old_prod_line)
 
     def _upgrade_to_rev61(self, db):
         from horizons.world.building.settler import SettlerUpgradeData
 
         # settler upgrade lines used to be the same for several levels
-        for (settler, level) in db("SELECT rowid, level FROM building WHERE type = 3"):
+        for (settler, level) in db("SELECT rowid, level FROM building WHERE "
+                                   "type = 3"):
             # if settler == 100268:import pdb ; pdb.set_trace()
             # the id used to always be 35
-            db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = 35",
-                SettlerUpgradeData.get_production_line_id(level + 1), settler)
+            db("UPDATE production SET prod_line_id = ? WHERE owner = ? and "
+               "prod_line_id = 35",
+               SettlerUpgradeData.get_production_line_id(level + 1), settler)
 
     def _upgrade_to_rev62(self, db):
         # added a message parameter to the logbook which needs to be saved
         db("CREATE TABLE IF NOT EXISTS logbook_messages ( message STRING )")
 
     def _upgrade_to_rev63(self, db):
-        """ Due to miscommunication, the savegame revision 62 was not changed in
-        savegames after updates to 63. To keep savegames functional that have a
-        revision of 62 stored but where the upgrade to 63 was executed, we assume
-        that this has to happen for savegames of revision <62 unless CREATEing tables
-        raises an OperationalError, which indicates that they already exist and thus
-        this upgrade routine should also work for savegames with odd upgrade paths:
-        There may have been branches storing revision 63 in savegames after all.
+        """ Due to miscommunication, the savegame revision 62 was not changed
+        in savegames after updates to 63. To keep savegames functional that
+        have a revision of 62 stored but where the upgrade to 63 was executed,
+        we assume that this has to happen for savegames of revision <62 unless
+        CREATEing tables raises an OperationalError, which indicates that they
+        already exist and thus this upgrade routine should also work
+        for savegames with odd upgrade paths: There may have been
+        branches storing revision 63 in savegames after all.
         """
         # adds a table for pirate's 'tick' callback
         try:
-            db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL DEFAULT 1)")
+            db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL "
+               "DEFAULT 1)")
         except OperationalError:
             return
         db("INSERT INTO ai_pirate (rowid, remaining_ticks) SELECT p.rowid, 1"
             " FROM player p WHERE p.is_pirate")
         # added flag to aiplayer for fighting ships request
-        db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
+        db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER "
+           "NOT NULL DEFAULT 1")
 
         # update stance for every pirate player ship
-        db('INSERT INTO stance (worldid, stance, state) SELECT u.rowid, "none_stance", "idle"'
-            ' FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1')
+        db('INSERT INTO stance (worldid, stance, state) SELECT u.rowid, '
+           '"none_stance", "idle" FROM unit u, player p WHERE '
+           'u.owner=p.rowid AND p.is_pirate=1')
 
         # update ai_player with long callback function column
-        db("ALTER TABLE ai_player ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
+        db("ALTER TABLE ai_player ADD COLUMN remaining_ticks_long INTEGER "
+           "NOT NULL DEFAULT 1")
 
         # update ai_pirate with long callback function column
-        db("ALTER TABLE ai_pirate ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
+        db("ALTER TABLE ai_pirate ADD COLUMN remaining_ticks_long INTEGER "
+           "NOT NULL DEFAULT 1")
 
         # Combat missions below:
         # Abstract FleetMission data
-        db('CREATE TABLE "ai_fleet_mission" ( "owner_id" INTEGER NOT NULL , "fleet_id"'
-            ' INTEGER NOT NULL , "state_id" INTEGER NOT NULL, "combat_phase" BOOL NOT NULL )')
+        db('CREATE TABLE "ai_fleet_mission" ( "owner_id" INTEGER NOT NULL , '
+           '"fleet_id" INTEGER NOT NULL , "state_id" INTEGER NOT NULL, '
+           '"combat_phase" BOOL NOT NULL )')
         # ScoutingMission
-        db('CREATE TABLE "ai_scouting_mission" ("owner" INTEGER NOT NULL , "ship" INTEGER NOT NULL ,'
-            ' "starting_point_x" INTEGER NOT NULL, '
-            ' "starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL,'
-            ' "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL )')
+        db('CREATE TABLE "ai_scouting_mission" ("owner" INTEGER NOT NULL , '
+           '"ship" INTEGER NOT NULL , "starting_point_x" INTEGER NOT NULL, '
+           ' "starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER '
+           'NOT NULL, "target_point_y" INTEGER NOT NULL, "state" '
+           'INTEGER NOT NULL )')
         # SurpriseAttack
-        db('CREATE TABLE "ai_mission_surprise_attack" ("enemy_player_id" INTEGER NOT NULL,'
-            ' "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL,'
-            ' "target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL,'
-            ' "return_point_y" INTEGER NOT NULL )')
+        db('CREATE TABLE "ai_mission_surprise_attack" ("enemy_player_id"'
+           ' INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, '
+           '"target_point_y" INTEGER NOT NULL, "target_point_radius" INTEGER '
+           'NOT NULL, "return_point_x" INTEGER NOT NULL,'
+           ' "return_point_y" INTEGER NOT NULL )')
         # ChaseShipsAndAttack
-        db('CREATE TABLE "ai_mission_chase_ships_and_attack" ("target_ship_id" INTEGER NOT NULL )')
+        db('CREATE TABLE "ai_mission_chase_ships_and_attack" '
+           '("target_ship_id" INTEGER NOT NULL )')
 
         # BehaviorManager
-        db('CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, "profile_token"'
-            ' INTEGER NOT NULL)')
+        db('CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, '
+           '"profile_token" INTEGER NOT NULL)')
 
         # No previous token was present, choose anything really
-        db('INSERT INTO ai_behavior_manager (owner_id, profile_token) SELECT p.rowid, 42 FROM player p')
+        db('INSERT INTO ai_behavior_manager (owner_id, profile_token) SELECT '
+           'p.rowid, 42 FROM player p')
 
         # Locks for Conditions being resolved by StrategyManager
-        db('CREATE TABLE "ai_condition_lock" ("owner_id" INTEGER NOT NULL, "condition"'
-            ' TEXT NOT NULL, "mission_id" INTEGER NOT NULL)')
+        db('CREATE TABLE "ai_condition_lock" ("owner_id" INTEGER NOT NULL, '
+           '"condition" TEXT NOT NULL, "mission_id" INTEGER NOT NULL)')
 
         # Fleets
-        db('CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL,'
-            ' "state_id" INTEGER NOT NULL, "dest_x" '
-            'INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE)')
+        db('CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" '
+           'INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" '
+           'INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE)')
 
         # ships per given fleet
-        db('CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL,'
-            ' "state_id" INTEGER NOT NULL)')
+        db('CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL,'
+           ' "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL)')
 
         # CombatManager's ship states
-        db('CREATE TABLE "ai_combat_ship" ( "owner_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL,'
-            ' "state_id" INTEGER NOT NULL )')
+        db('CREATE TABLE "ai_combat_ship" ( "owner_id" INTEGER NOT NULL, '
+           '"ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL )')
 
         # Set CombatManager's state of ship to idle
-        db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) SELECT p.rowid, u.rowid, 0'
-            ' FROM player p, unit u WHERE u.owner = p.rowid AND u.type=? and p.client_id="AIPlayer"',
+        db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) SELECT '
+           'p.rowid, u.rowid, 0 FROM player p, unit u WHERE '
+           'u.owner = p.rowid AND u.type=? and p.client_id="AIPlayer"',
             UNITS.FRIGATE)
 
         # Same for pirate ships
-        db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) SELECT p.rowid, u.rowid, 0'
-            ' FROM ai_pirate p, unit u WHERE u.owner = p.rowid')
+        db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) '
+           'SELECT p.rowid, u.rowid, 0'
+           ' FROM ai_pirate p, unit u WHERE u.owner = p.rowid')
 
         # save pirate routine mission
         db('CREATE TABLE "ai_mission_pirate_routine" ("target_point_x" '

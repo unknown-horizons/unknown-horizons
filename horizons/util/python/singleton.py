@@ -21,37 +21,37 @@
 
 '''
 Warning:
-	A Singleton is to some extend the OOP-version of a global variable.
-	The Singleton pattern has many downsides.
-	Please make sure that this is really the best solution before using this code!
+    A Singleton is to some extend the OOP-version of a global variable.
+    The Singleton pattern has many downsides.
+    Please make sure that this is really the best solution before using this code!
 '''
 
 
 class Singleton(type):
-	"""Traditional Singleton design pattern.
+    """Traditional Singleton design pattern.
 
-	USAGE:
-	class MyClass(object):
-		__metaclass__ = Singleton
-	"""
-	def __init__(self, name, bases, dict):
-		super(Singleton, self).__init__(name, bases, dict)
-		self.instance = None
+    USAGE:
+    class MyClass(object):
+        __metaclass__ = Singleton
+    """
+    def __init__(self, name, bases, dict):
+        super(Singleton, self).__init__(name, bases, dict)
+        self.instance = None
 
-	def __call__(self, *args, **kwargs):
-		if self.instance is None:
-			self.instance = super(Singleton, self).__call__(*args, **kwargs)
-		return self.instance
+    def __call__(self, *args, **kwargs):
+        if self.instance is None:
+            self.instance = super(Singleton, self).__call__(*args, **kwargs)
+        return self.instance
 
-	def destroy_instance(self):
-		self.instance = None
+    def destroy_instance(self):
+        self.instance = None
 
 
 class ManualConstructionSingleton(Singleton):
-	"""Same as Singleton, but Class() never creates an instance.
-	Only create_instance() does."""
-	def __call__(self):
-		return self.instance
+    """Same as Singleton, but Class() never creates an instance.
+    Only create_instance() does."""
+    def __call__(self):
+        return self.instance
 
-	def create_instance(self, *args, **kwargs):
-		self.instance = super(ManualConstructionSingleton, self).__call__(*args, **kwargs)
+    def create_instance(self, *args, **kwargs):
+        self.instance = super(ManualConstructionSingleton, self).__call__(*args, **kwargs)

@@ -561,7 +561,8 @@ class ResourceOverviewBar(object):
         self.redraw()
 
     def _on_res_slot_click(self, widget, event):
-        """Called when you click on a resource slot in the bar (not the selection dialog)"""
+        """Called when you click on a resource slot in the bar
+        (not the selection dialog)"""
         # TODO let KeyConfig handle this instead of hardcoding rmb
         if event.getButton() == fife.MouseEvent.RIGHT:
             self._set_resource_slot(widget.num, 0)
@@ -581,7 +582,8 @@ class ResourceOverviewBar(object):
         self.stats_gui.show()
 
         ExtScheduler().add_new_object(self._update_stats, self,
-            run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
+                                      run_in=Player.STATS_UPDATE_INTERVAL,
+                                      loops=-1)
 
     def _update_stats(self):
         """Fills in (refreshes) numeric values in expanded stats area."""
@@ -609,14 +611,15 @@ class ResourceOverviewBar(object):
         self.stats_gui = load_uh_widget(self.__class__.STATS_GUI_FILE)
         self.stats_gui.child_finder = PychanChildFinder(self.stats_gui)
         self.stats_gui.position = (reference_icon.x + self.gold_gui.x,
-            reference_icon.y + self.gold_gui.y)
+                                   reference_icon.y + self.gold_gui.y)
         self.stats_gui.mapEvents({
             'resbar_stats_container/mouseClicked/stats': self._toggle_stats,
         })
 
         # This list must correspond to `figures` in _update_stats
         images = [
-            ("content/gui/images/resbar_stats/expense.png", _("Running costs")),
+            ("content/gui/images/resbar_stats/expense.png",
+             _("Running costs")),
             ("content/gui/images/resbar_stats/income.png", _("Taxes")),
             ("content/gui/images/resbar_stats/buy.png", _("Buy expenses")),
             ("content/gui/images/resbar_stats/sell.png", _("Sell income")),
@@ -629,7 +632,8 @@ class ResourceOverviewBar(object):
             box = HBox(padding=0, min_size=(70, 0))
             box.name = "resbar_stats_line_%s" % num
             box.helptext = helptext
-            # TODO Fix icon size; looks like not 16x16 a surprising amount of times.
+            # TODO Fix icon size; looks like not 16x16
+            # a surprising amount of times.
             box.addChild(Icon(image=image))
             box.addSpacer(Spacer())
             box.addChild(Label(name="resbar_stats_entry_%s" % num))
@@ -647,7 +651,8 @@ class ResourceOverviewBar(object):
     def _get_res_background_icon_position(self):
         # currently unused since always 0
         # can be used for relative positioning of labels
-        # old formula: label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
+        # old formula: label.position = (icon.position[0] -
+        # label.size[0]/2 + xoffset, yoffset)
         gui = load_uh_widget(self.__class__.ENTRY_GUI_FILE)
         icon = gui.findChild(name="background_icon")
         return icon.position

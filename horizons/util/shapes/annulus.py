@@ -39,11 +39,12 @@ class Annulus(Shape):
 
     def contains(self, point):
         assert isinstance(point, Point)
-        return self.min_radius <= point.distance(self.center) <= self.max_radius
+        return self.min_radius <= point.distance(
+            self.center) <= self.max_radius
 
     def __str__(self):
-        return "Annulus(center=%s,min_radius=%s,max_radius=%s)" % (self.center,
-            self.min_radius, self.max_radius)
+        return "Annulus(center={0},min_radius={1},max_radius={2})".format(
+            self.center, self.min_radius, self.max_radius)
 
     def __eq__(self, other):
         try:
@@ -60,9 +61,12 @@ class Annulus(Shape):
         return hash((self.center, self.min_radius, self.max_radius))
 
     def tuple_iter(self):
-        for x in xrange(self.center.x - self.max_radius, self.center.x + self.max_radius + 1):
-            for y in xrange(self.center.y - self.max_radius, self.center.y + self.max_radius + 1):
-                if self.min_radius <= self.center.distance((x, y)) <= self.max_radius:
+        for x in xrange(self.center.x - self.max_radius,
+                        self.center.x + self.max_radius + 1):
+            for y in xrange(self.center.y - self.max_radius,
+                            self.center.y + self.max_radius + 1):
+                if self.min_radius <= self.center.distance((
+                        x, y)) <= self.max_radius:
                     yield (x, y)
 
 bind_all(Annulus)

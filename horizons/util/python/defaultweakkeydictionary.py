@@ -36,15 +36,15 @@ from weakref import WeakKeyDictionary
 
 
 class DefaultWeakKeyDictionary(WeakKeyDictionary):
-	"""
-	WeakKeyDictionary with specified default value.
-	"""
-	def __init__(self, default_function):
-		WeakKeyDictionary.__init__(self)
-		assert default_function is not None, "Default function must be provided"
-		self.default_function = default_function
+    """
+    WeakKeyDictionary with specified default value.
+    """
+    def __init__(self, default_function):
+        WeakKeyDictionary.__init__(self)
+        assert default_function is not None, "Default function must be provided"
+        self.default_function = default_function
 
-	def __getitem__(self, item):
-		if item not in self.items():
-			return self.default_function(item)
-		return WeakKeyDictionary.__getitem__(self, item)
+    def __getitem__(self, item):
+        if item not in self.items():
+            return self.default_function(item)
+        return WeakKeyDictionary.__getitem__(self, item)

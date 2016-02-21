@@ -27,7 +27,8 @@ from horizons.messaging.messagebus import MessageBus
 
 
 class SimpleMessageBus(object):
-    """Manages registration and calling of callbacks when events (strings) occur.
+    """Manages registration and calling of callbacks
+    when events (strings) occur.
 
     Example:
 
@@ -45,7 +46,8 @@ class SimpleMessageBus(object):
         if type not in self._message_types:
             raise TypeError("Unsupported type")
         if callback in self._callbacks[type]:
-            raise Exception("Callback %s already subscribed to %s" % (callback, type))
+            raise Exception("Callback {0} already subscribed to {1}".
+                            format(callback, type))
 
         self._callbacks[type].append(callback)
 

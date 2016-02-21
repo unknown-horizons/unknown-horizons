@@ -52,10 +52,10 @@ class _Tooltip(object):
             self.name + '/mouseExited/tooltip': self.hide_tooltip,
             self.name + '/mouseMoved/tooltip': self.position_tooltip,
 
-            # TIP: the mousePressed event is especially useful when such as click
-            # will trigger this tooltip's parent widget to be hidden (or destroyed),
-            # which hides this tooltip first before hides the parent widget.
-            # Otherwise the tooltip will show forever.
+            # TIP: the mousePressed event is especially useful when such
+            # as click will trigger this tooltip's parent widget to be hidden
+            # (or destroyed), which hides this tooltip first before hides the
+            # parent widget. Otherwise the tooltip will show forever.
             self.name + '/mousePressed/tooltip': self.hide_tooltip,
 
             # TODO: not sure if below are useful or not
@@ -78,7 +78,8 @@ class _Tooltip(object):
         """
         # TODO: think about nicer way of handling the polymorphism here,
         # e.g. a position_tooltip_event and a position_tooltip_tuple
-        where = event  # fife forces this to be called event, but here it can also be a tuple
+        where = event
+        # fife forces this to be called event, but here it can also be a tuple
         if isinstance(where, tuple):
             x, y = where
         else:
@@ -92,12 +93,13 @@ class _Tooltip(object):
 
         widget_position = self.getAbsolutePos()
 
-        # Sometimes, we get invalid events from pychan, it is probably related to changing the
-        # gui when the mouse hovers on gui elements.
-        # Random tests have given evidence to believe that pychan indicates invalid events
-        # by setting the top container's position to 0, 0.
-        # Since this position is currently unused, it can serve as invalid flag,
-        # and dropping these events seems to lead to the desired placements
+        # Sometimes, we get invalid events from pychan, it is probably related
+        # to changing the gui when the mouse hovers on gui elements.
+        # Random tests have given evidence to believe that pychan indicates
+        # invalid events by setting the top container's position to 0, 0.
+        # Since this position is currently unused, it can serve as invalid
+        # flag, and dropping these events seems
+        # to lead to the desired placements
         def get_top(w):
             return get_top(w.parent) if w.parent else w
         top_pos = get_top(self).position
@@ -113,7 +115,6 @@ class _Tooltip(object):
         self.gui.x = widget_position[0] + offset
         if not self.tooltip_shown:
             self.show_tooltip()
-            # ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
             self.tooltip_shown = True
 
     def show_tooltip(self):
@@ -164,8 +165,8 @@ class _Tooltip(object):
 
         # NOTE: the below code in this method is a hack to resolve #2227
         # cannot find a better way to fix it, cause in fife.pychan, it seems
-        # if a widget gets hidden or removed, the children of that widget are not
-        # hidden or removed properly (at least in Python code)
+        # if a widget gets hidden or removed, the children of that widget
+        # are not hidden or removed properly (at least in Python code)
 
         # update topmost_widget every time the tooltip is shown
         # this is to dismiss the tooltip later, see _check_hover_alive
@@ -174,9 +175,11 @@ class _Tooltip(object):
             self.topmost_widget = target_widget
             target_widget = target_widget.parent
 
-        # add an event to constantly check whether the hovered widget is still there
+        # add an event to constantly check whether the hovered widget
+        # is still there
         # if this is no longer there, dismiss the tooltip widget
-        ExtScheduler().add_new_object(self._check_hover_alive, self, run_in=0.5, loops=-1)
+        ExtScheduler().add_new_object(self._check_hover_alive, self,
+                                      run_in=0.5, loops=-1)
 
     def _check_hover_alive(self):
         target_widget = self

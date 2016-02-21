@@ -27,9 +27,10 @@ from horizons.messaging.messagebus import MessageBus
 
 
 class QueuingMessageBus(MessageBus):
-    """The QueuingMessageBus class is used to send Message instances from a sender to
-    one or multiple recipients, with the additional property that messages will
-    be saved to a queue if no callback is subscribed at the time they are sent."""
+    """The QueuingMessageBus class is used to send Message instances from
+    a sender to one or multiple recipients, with the additional property
+    that messages will be saved to a queue if no callback is subscribed at
+    the time they are sent."""
 
     def __init__(self):
         MessageBus.__init__(self)
@@ -55,7 +56,8 @@ class QueuingMessageBus(MessageBus):
         pair = (messagetype, message.sender)
 
         # check if the message will go anywhere, if not, then queue it
-        if not len(self.global_receivers[messagetype]) and not len(self.local_receivers[pair]):
+        if not len(self.global_receivers[messagetype]) and not len(
+                self.local_receivers[pair]):
             self.message_queue[messagetype].append(message)
         else:
             MessageBus.broadcast(self, message)

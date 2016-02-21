@@ -40,7 +40,8 @@ class StanceWidget(Container):
     def init(self, instance):
         self.instance = instance
         self.toggle_stance()
-        events = dict((i.NAME, Callback(self.set_stance, i)) for i in DEFAULT_STANCES)
+        events = dict((i.NAME, Callback(self.set_stance,
+                                        i)) for i in DEFAULT_STANCES)
         self.mapEvents(events)
 
     def beforeShow(self):
@@ -89,9 +90,10 @@ class HealthWidget(Container):
         health_component = self.instance.get_component(HealthComponent)
         max_health = int(health_component.max_health)
         health = int(health_component.health)
-        self.findChild(name='health_label').text = "{health}/{max_health}".format(health=health,
-            max_health=max_health)
-        self.findChild(name='health_bar').progress = int(health * 100. / max_health)
+        self.findChild(name='health_label').text = "{health}/{max_health}"\
+            .format(health=health, max_health=max_health)
+        self.findChild(name='health_bar').progress = int(
+            health * 100. / max_health)
 
     def remove(self, caller=None):
         health_component = self.instance.get_component(HealthComponent)
@@ -118,8 +120,10 @@ class WeaponStorageWidget(HBox):
                 weapons_added = True
                 icon_image = get_res_icon_path(weapon, 24)
                 weapon_name = self.instance.session.db.get_res_name(weapon)
-                # You usually do not need to change anything here when translating
-                helptext = _('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
+                # You usually do not need to change anything here
+                # when translating
+                helptext = _('{weapon}: {amount}').format(weapon=weapon_name,
+                                                          amount=amount)
                 icon = Icon(image=icon_image, helptext=helptext)
                 self.addChild(icon)
         if not weapons_added:

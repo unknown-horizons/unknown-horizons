@@ -25,12 +25,12 @@ from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
 class Message(object):
     """Message class for the MessageBus. Every Message that is supposed to be
-    sent through the MessageBus has to subclass this base class, to ensure proper
-    setting of base attributes and inheriting the interface.
+    sent through the MessageBus has to subclass this base class, to ensure
+    proper setting of base attributes and inheriting the interface.
 
     The first argument in each message is always a reference to the sender,
-    additional expected arguments are defined on the class-level attribute `arguments`,
-    these will be stored on the instance.
+    additional expected arguments are defined on the class-level
+    attribute `arguments`, these will be stored on the instance.
     """
     arguments = tuple()
     bus = MessageBus
@@ -38,20 +38,24 @@ class Message(object):
     def __init__(self, sender, *args):
         self.sender = sender
         if len(self.arguments) != len(args):
-            raise Exception('Unexpected number of arguments. Expected %d, received %d' % (
-                len(self.arguments), len(args)))
+            raise Exception(
+                'Unexpected number of arguments. Expected {0}, received {1}'
+                .format(len(self.arguments), len(args)))
 
         for arg, value in zip(self.arguments, args):
             setattr(self, arg, value)
 
     @classmethod
     def subscribe(cls, callback, sender=None):
-        """Register a callback to be called whenever a message of this type is send.
+        """Register a callback to be called whenever a message
+        of this type is send.
 
-        callback - Callable that receives an instance of a message as only argument.
+        callback - Callable that receives an instance
+                   of a message as only argument.
 
-        sender	-	If specified, the callback receives only messages that originated
-                    from sender. By default, all messages are received.
+        sender	-	If specified, the callback receives only messages that
+                    originated from sender.
+                    By default, all messages are received.
 
         Example:
 
@@ -68,15 +72,19 @@ class Message(object):
 
     @classmethod
     def unsubscribe(cls, callback, sender=None):
-        """Stop your subscription of this message type for the specified callback.
+        """Stop your subscription of this message type
+        for the specified callback.
 
-        callback -	Callable that receives an instance of a message as only argument.
+        callback -	Callable that receives an instance
+                    of a message as only argument.
                     The same you've been using with `Message.subscribe`.
 
-        sender	-	If specified, the subscription will only be stopped for messages
+        sender	-	If specified, the subscription will
+                    only be stopped for messages
                     from this sender. By default, all subscriptions are ended.
 
-        Note: There has to be a subscription, otherwise an error will be raised.
+        Note: There has to be a subscription,
+              otherwise an error will be raised.
 
         Example:
 
@@ -105,8 +113,9 @@ class Message(object):
     def broadcast(cls, *args):
         """Send a message that is initialized with `args`.
 
-        The first argument is always a sender, the number of arguments has to be
-        N + 1, with N being the number of arguments defined on the message class.
+        The first argument is always a sender, the number of arguments
+        has to be N + 1, with N being the number of arguments defined
+        on the message class.
 
         Example:
 
@@ -119,8 +128,9 @@ class Message(object):
 
 
 class QueuingMessage(Message):
-    """QueuingMessage class for the QueuingMessageBus. Every Message that is supposed to be
-    sent through the QueuingMessageBus has to subclass this subclass.
+    """QueuingMessage class for the QueuingMessageBus. Every Message that is
+    supposed to be sent through the QueuingMessageBus has to subclass
+    this subclass.
     """
     bus = QueuingMessageBus
 
@@ -167,7 +177,8 @@ class SettlerInhabitantsChanged(Message):
 
 
 class ResourceBarResize(Message):
-    """Signals a change in resource bar size (not slot changes, but number of slot changes)."""
+    """Signals a change in resource bar size (not slot changes,
+    but number of slot changes)."""
     pass
 
 
@@ -177,8 +188,8 @@ class UpgradePermissionsChanged(Message):
 
 
 class SettlementRangeChanged(Message):
-    """Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
-    Sent by a Settlement."""
+    """Called on grow and perhaps shrink once that's implemented.
+    Used by buildingtool. Sent by a Settlement."""
     arguments = (
         'changed_tiles',  # Actual tile objects
     )
@@ -216,7 +227,8 @@ class NewSettlement(Message):
 
 class HoverInstancesChanged(Message):
     """Sent when hovering over a different set of instances.
-    Not sent on every mouse move but with a bit of delay to be able to do more extensive
+    Not sent on every mouse move but with a bit of delay to be able to
+    do more extensive
     computation without risk of delays."""
     arguments = ('instances', )
 
@@ -227,7 +239,8 @@ class NewDisaster(Message):
 
 
 class TabWidgetChanged(Message):
-    """Sent when the ingamegui displays a different set of tabs, i.e. the tabwidget is exchanged.
+    """Sent when the ingamegui displays a different set of tabs,
+    i.e. the tabwidget is exchanged.
     The tabs are not necessarily different from the old ones."""
     pass
 
@@ -248,7 +261,8 @@ class GuiHover(Message):
 
 
 class ResourceProduced(Message):
-    """Sent when a production building finished the production of a resource."""
+    """Sent when a production building finished the production of a resource.
+    """
     arguments = ('caller', 'produced_resources', )
 
 

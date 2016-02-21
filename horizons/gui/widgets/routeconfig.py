@@ -290,19 +290,22 @@ class RouteConfig(Window):
             already_listed = res_id in self.instance.route.waypoints[position]['resource_list']
             return not (same_icon or already_listed)
 
-        dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
-            db=self.session.db, widget=widget, amount_per_line=6, res_filter=res_filter)
+        dlg = create_resource_selection_dialog(
+            on_click=on_click, inventory=inventory, db=self.session.db,
+            widget=widget, amount_per_line=6, res_filter=res_filter)
 
         self._gui.findChild(name="traderoute_resources").addChild(dlg)
         self._gui.adaptLayout()
         self._resource_selection_area_layout_hack_fix()
 
     def _resource_selection_area_layout_hack_fix(self):
-        # no one knows why this is necessary, but sometimes we need to set the values anew
+        """no one knows why this is necessary, but sometimes we need
+        to set the values anew"""
         vbox = self._gui.findChild(name="traderoute_resources")
         scrollarea = vbox.findChild(name="resources_scrollarea")
         if scrollarea:
-            scrollarea.max_width = scrollarea.width = vbox.max_width = vbox.width = 320
+            scrollarea.max_width = scrollarea.width = 320
+            vbox.max_width = vbox.width = 320
 
     def hide_resource_menu(self):
         self.resource_menu_shown = False
@@ -321,9 +324,11 @@ class RouteConfig(Window):
 
             slider = slot.findChild(name="slider")
             slider.scale_start = 0.0
-            slider.scale_end = float(self.instance.get_component(StorageComponent).inventory.limit)
+            slider.scale_end = float(self.instance.get_component(
+                StorageComponent).inventory.limit)
 
-            slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
+            slot.findChild(name="buysell").capture(Callback(
+                self.toggle_load_unload, slot, entry))
 
             button = slot.findChild(name="button")
             button.capture(self.handle_resource_click, event_name='mouseClicked')
@@ -348,7 +353,8 @@ class RouteConfig(Window):
         self.widgets.append(entry)
 
         settlement_name_label = entry.findChild(name="warehouse_name")
-        settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
+        settlement_name_label.text = warehouse.settlement.get_component(
+            NamedComponent).name
         player_name_label = entry.findChild(name="player_name")
         player_name_label.text = warehouse.owner.name
 
@@ -367,7 +373,8 @@ class RouteConfig(Window):
             index += 1
 
         entry.mapEvents({
-            'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
+            'delete_warehouse/mouseClicked': Callback(self.remove_entry,
+                                                      entry),
             'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
             'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
         })
@@ -375,9 +382,11 @@ class RouteConfig(Window):
 
     def append_warehouse(self, warehouse):
         """Add a warehouse to the list on the left side.
-        @param warehouse: Set to add a specific one, else the selected one gets added.
+        @param warehouse: Set to add a specific one,
+                          else the selected one gets added.
         """
-        if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
+        if not self.session.world.diplomacy.can_trade(
+                self.session.world.player, warehouse.owner):
             self.session.ingame_gui.message_widget.add_custom(
                 _("You are not allowed to trade with this player"))
             return
@@ -421,7 +430,8 @@ class RouteConfig(Window):
         self.minimap = Minimap(icon, session=self.session,
                                world=self.session.world,
                                view=self.session.view,
-                               targetrenderer=horizons.globals.fife.targetrenderer,
+                               targetrenderer=
+                               horizons.globals.fife.targetrenderer,
                                imagemanager=horizons.globals.fife.imagemanager,
                                cam_border=False,
                                use_rotation=False,
@@ -448,14 +458,16 @@ class RouteConfig(Window):
         wait_at_unload_box.marked = self.instance.route.wait_at_unload
 
         def toggle_wait_at_unload():
-            self._route_cmd("set_wait_at_unload", not self.instance.route.wait_at_unload)
+            self._route_cmd("set_wait_at_unload",
+                            not self.instance.route.wait_at_unload)
         wait_at_unload_box.capture(toggle_wait_at_unload)
 
         wait_at_load_box = self._gui.findChild(name="wait_at_load")
         wait_at_load_box.marked = self.instance.route.wait_at_load
 
         def toggle_wait_at_load():
-            self._route_cmd("set_wait_at_load", not self.instance.route.wait_at_load)
+            self._route_cmd("set_wait_at_load",
+                            not self.instance.route.wait_at_load)
         wait_at_load_box.capture(toggle_wait_at_load)
 
         self._gui.mapEvents({
@@ -464,5 +476,7 @@ class RouteConfig(Window):
         })
 
     def _route_cmd(self, method, *args, **kwargs):
-        """Convenience method for calling a method on instance.route via command (mp-safe)"""
-        RouteConfigCommand(self.instance, method, *args, **kwargs).execute(self.session)
+        """Convenience method for calling a method on instance.route
+        via command (mp-safe)"""
+        RouteConfigCommand(self.instance, method, *args, **kwargs).execute(
+            self.session)

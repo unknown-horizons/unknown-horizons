@@ -73,10 +73,14 @@ class Circle(Shape):
                     yield (x, y)
 
     def get_border_coordinates(self, bordersize=1):
-        """Returns only coordinates at the border. Very naive implementation"""
-        for x in xrange(self.center.x - self.radius, self.center.x + self.radius + 1):
-            for y in xrange(self.center.y - self.radius, self.center.y + self.radius + 1):
-                if (self.radius - bordersize) <= self.center.distance((x, y)) <= self.radius:
+        """Returns only coordinates at the border. Very naive implementation
+        """
+        for x in xrange(self.center.x - self.radius,
+                        self.center.x + self.radius + 1):
+            for y in xrange(self.center.y - self.radius,
+                            self.center.y + self.radius + 1):
+                if (self.radius - bordersize) <= self.center.distance(
+                        (x, y)) <= self.radius:
                     yield (x, y)
 
 bind_all(Circle)

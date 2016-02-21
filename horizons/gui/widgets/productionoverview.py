@@ -38,7 +38,8 @@ class ProductionOverview(StatsWidget, Window):
     """
     Widget that shows every produced resource in this game.
 
-    Implementation based on https://github.com/unknown-horizons/unknown-horizons/issues/749 .
+    Implementation based on
+    https://github.com/unknown-horizons/unknown-horizons/issues/749 .
     """
 
     widget_file_name = 'island_production.xml'
@@ -50,11 +51,13 @@ class ProductionOverview(StatsWidget, Window):
         self.settlement = settlement
         self.db = self.settlement.session.db
         Scheduler().add_new_object(Callback(self._refresh_tick), self,
-            run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
+                                   run_in=GAME_SPEED.TICKS_PER_SECOND,
+                                   loops=-1)
 
     def _init_gui(self):
         super(ProductionOverview, self)._init_gui()
-        self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+        self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(
+            self._windows.close)
 
     def refresh(self):
         super(ProductionOverview, self).refresh()
@@ -62,7 +65,8 @@ class ProductionOverview(StatsWidget, Window):
         text = _('Production overview of {settlement}').format(settlement=name)
         self._gui.findChild(name='headline').text = text
 
-        data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+        data = sorted(self.settlement.produced_res.items(), key=itemgetter(1),
+                      reverse=True)
         for resource_id, amount in data:
             self._add_line_to_gui(resource_id, amount)
         self._content_vbox.adaptLayout()

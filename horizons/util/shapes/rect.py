@@ -28,22 +28,22 @@ class Rect(Shape):
     __slots__ = ('top', 'left', 'right', 'bottom', 'origin')
 
     def __init__(self, *args):
-        if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1],
-                Point):  # args: edge1, edge2
+        if len(args) == 2 and isinstance(args[0], Point) and isinstance(
+                args[1], Point):  # args: edge1, edge2
             self.top = min(args[0].y, args[1].y)
             self.left = min(args[0].x, args[1].x)
             self.right = max(args[0].x, args[1].x)
             self.bottom = max(args[0].y, args[1].y)
-        elif len(args) == 3 and isinstance(args[0], Point) and isinstance(args[1],
-                int) and isinstance(args[2], int):
+        elif len(args) == 3 and isinstance(args[0], Point) and isinstance(
+                args[1], int) and isinstance(args[2], int):
             # args: position, width, height
             self.top = args[0].y
             self.left = args[0].x
             self.right = self.left + args[1]
             self.bottom = self.top + args[2]
-        elif len(args) == 4 and isinstance(args[0], int) and isinstance(args[1],
-                int) and isinstance(args[2],
-                int) and isinstance(args[3], int):
+        elif len(args) == 4 and isinstance(args[0], int) and isinstance(
+                args[1], int) and isinstance(
+                args[2], int) and isinstance(args[3], int):
             self.top = min(args[1], args[3])
             self.left = min(args[0], args[2])
             self.right = max(args[0], args[2])
@@ -52,7 +52,8 @@ class Rect(Shape):
         else:
             assert False
 
-        # Convenience attributes (can be used to make code more easy to read/understand)
+        # Convenience attributes (can be used to make code more easy
+        # to read/understand)
         self.origin = Point(self.left, self.top)
 
     # NAMED CONSTRUCTORS:
@@ -111,24 +112,29 @@ class Rect(Shape):
         return self.right - self.left + 1
 
     def copy(self):
-        return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
+        return Rect.init_from_borders(self.left, self.top, self.right,
+                                      self.bottom)
 
     def get_radius_coordinates(self, radius, include_self=False):
         """Returns list of all coordinates (as tuples), that are in the radius
         This is a generator.
         @param include_self: whether to include coords in self"""
-        # NOTE: this function has to be very fast, since it's blocking on building select
-        #       therefore, the distance_to_tuple function is inlined manually.
+        # NOTE: this function has to be very fast, since it's blocking
+        #       on building select therefore, the distance_to_tuple function
+        #       is inlined manually.
         """
         ALGORITHM:
         Idea:
-        calculate the borders of the shape for every line (y-axis) to the left and the right
-        and fill it up later.
+        calculate the borders of the shape for every line (y-axis) to the left
+        and the right and fill it up later.
         The borders are calculated this way:
-        Take a corner (here we use top right) and calculate a quarter of a circle (top right quarter).
+        Take a corner (here we use top right) and calculate a quarter of a
+        circle (top right quarter).
         This can be mirrored to every other corner.
-        Then there is only the space exactly above, below and left and right to the rect left.
-        Here, since we only got along one axis, we know that the border coords are right + radius, etc.
+        Then there is only the space exactly above, below and left and right
+        to the rect left.
+        Here, since we only got along one axis, we know that the border coords
+        are right + radius, etc.
         q.e.d. ;)
         """
         borders = {}
@@ -145,12 +151,15 @@ class Rect(Shape):
 
         x = radius
         radius_squared = radius ** 2
-        # calculate border for line y (y = 0 and y = radius are special cases handled above)
+        # calculate border for line y
+        # (y = 0 and y = radius are special cases handled above)
         for y in xrange(1, radius):
             test_val = radius_squared - y ** 2
-            # TODO: check if it's possible if x is decreased more than once here.
+            # TODO: check if it's possible if x is decreased more
+            # than once here.
             # if not, change the while to an if
-            while (x ** 2) > test_val:  # this is equivalent to  x^2 + y^2 > radius^2
+            while (x ** 2) > test_val:
+                # this is equivalent to  x^2 + y^2 > radius^2
                 x -= 1
 
             # both sides are symmetrical, since it's a rect
@@ -160,7 +169,8 @@ class Rect(Shape):
         if not include_self:
             self_coords = frozenset(self.get_coordinates())
             for y, x_range in borders.iteritems():
-                if self.top <= y <= self.bottom:  # we have to sort out the self_coords here
+                if self.top <= y <= self.bottom:
+                    # we have to sort out the self_coords here
                     for x in xrange(x_range[0], x_range[1] + 1):
                         t = (x, y)
                         if t not in self_coords:
@@ -176,8 +186,10 @@ class Rect(Shape):
     @property
     def center(self):
         """Returns the center point of the rect.
-        Implemented with integer division, which means the upper left is preferred."""
-        return Point((self.right + self.left) // 2, (self.bottom + self.top) // 2)
+        Implemented with integer division, which means the upper left
+        is preferred."""
+        return Point((self.right + self.left) // 2,
+                     (self.bottom + self.top) // 2)
 
     def __contains__(self, point):
         return self.contains(point)
@@ -187,20 +199,26 @@ class Rect(Shape):
         @param point: Point that is checked to be in this rect
         @return: Returns whether the Point point is in this rect (self).
         """
-        return (self.left <= point.x <= self.right) and (self.top <= point.y <= self.bottom)
+        return (self.left <= point.x <= self.right) and (
+            self.top <= point.y <= self.bottom)
 
     def contains_without_border(self, point):
         """Same as contains, see iter_without_border for difference"""
-        return (self.left <= point.x < self.right) and (self.top <= point.y < self.bottom)
+        return (self.left <= point.x < self.right) and (
+            self.top <= point.y < self.bottom)
 
     def contains_tuple(self, tup):
-        """Same as contains, but takes a tuple (x, y) as parameter (overloaded function)"""
-        return (self.left <= tup[0] <= self.right) and (self.top <= tup[1] <= self.bottom)
+        """Same as contains, but takes a tuple (x, y) as parameter
+        (overloaded function)"""
+        return (self.left <= tup[0] <= self.right) and (
+            self.top <= tup[1] <= self.bottom)
 
     def intersect(self, rect):
-        """ Returns a rect that is the intersection of this rect and the rect parameter.
+        """ Returns a rect that is the intersection of this rect
+        and the rect parameter.
         @param rect: Rect that will be intersected with this rect.
-        @return: A Rect which is the intersection of self and rect or None if the intersection is empty.
+        @return: A Rect which is the intersection of self and rect or None
+                if the intersection is empty.
         """
         if not self.intersects(rect):
             return None
@@ -212,18 +230,20 @@ class Rect(Shape):
         @param rect: Rect that will be intersected with this rect.
         @return: A bool.
         """
-        return not (rect.right < self.left or self.right < rect.left
-                    or rect.bottom < self.top or self.bottom < rect.top)
+        return not (rect.right < self.left or self.right < rect.left or
+                    rect.bottom < self.top or self.bottom < rect.top)
 
     def get_corners(self):
-        """Returns corners of rect in this order: topleft topright bottomright bottomleft
+        """Returns corners of rect in this order:
+        topleft topright bottomright bottomleft
         @return: tuple of coord-tuples"""
         return ((self.left, self.top), (self.right, self.top),
-            (self.right, self.bottom), (self.left, self.bottom))
+                (self.right, self.bottom), (self.left, self.bottom))
 
     def get_surrounding(self, include_corners=True):
         """Returns neighboring coords of the rect.
-        @param include_corners: whether to also move diagonally from the rect corners"""
+        @param include_corners: whether to also move diagonally from
+                                the rect corners"""
         # top and bottom
         surrounding_top = self.top - 1
         surrounding_bottom = self.bottom + 1
@@ -244,13 +264,14 @@ class Rect(Shape):
             yield (self.right + 1, self.bottom + 1)
 
     def __str__(self):
-        return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.left, self.top, self.width, self.height)
+        return "Rect(o:({0},{1}),w:{2},h:{3})".format(self.left, self.top,
+                                                      self.width, self.height)
 
     def __eq__(self, other):
         if not isinstance(other, Rect):
             return False
-        return (self.top == other.top and self.left == other.left
-                and self.right == other.right and self.bottom == other.bottom)
+        return (self.top == other.top and self.left == other.left and
+                self.right == other.right and self.bottom == other.bottom)
 
     def __ne__(self, other):
         return not self.__eq__(other)

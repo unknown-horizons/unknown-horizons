@@ -100,14 +100,17 @@ class Entities(object):
                 full_file = root + "/" + filename
                 result = YamlCache.get_file(full_file, game_data=True)
                 if result is None:  # discard empty yaml files
-                    print "Empty yaml file {file} found, not loading!".format(file=full_file)
+                    print ("Empty yaml file {file} found, not loading!".
+                           format(file=full_file))
                     continue
 
                 result['yaml_file'] = full_file
 
                 building_id = int(result['id'])
                 cls.buildings.create_on_access(building_id,
-                    Callback(BuildingClass, db=db, id=building_id, yaml_data=result))
+                                               Callback(BuildingClass, db=db,
+                                                        id=building_id,
+                                                        yaml_data=result))
                 # NOTE: The current system now requires all building data to be loaded
                 if load_now or True:
                     cls.buildings[building_id]

@@ -41,12 +41,14 @@ class MessageBus(object):
 
     def subscribe_globally(self, messagetype, callback):
         """Register for a certain message type.
-        @param callback: Callback methode, needs to take 1 parameter: the message"""
+        @param callback: Callback methode,
+                         needs to take 1 parameter: the message"""
         self.global_receivers[messagetype].append(callback)
 
     def subscribe_locally(self, messagetype, instance, callback):
         """Register for a certain message type from a specific instance.
-        @param callback: Callback methode, needs to take 1 parameter: the message"""
+        @param callback: Callback methode,
+                         needs to take 1 parameter: the message"""
         pair = (messagetype, instance)
         self.local_receivers[pair].append(callback)
 
@@ -65,7 +67,8 @@ class MessageBus(object):
 
     def discard_locally(self, messagetype, instance, callback):
         pair = (messagetype, instance)
-        if pair in self.local_receivers and callback in self.local_receivers[pair]:
+        if pair in self.local_receivers and callback in self.local_receivers[
+                pair]:
             self.unsubscribe_locally(messagetype, instance, callback)
 
     def broadcast(self, message):
@@ -85,12 +88,16 @@ class MessageBus(object):
         # there shouldn't be anything left now, warn if there is
         for messagetype, cb_list in self.global_receivers.iteritems():
             if cb_list:
-                self.log.debug("MessageBus: leftover global receivers {cb} for {messagetype}".
-                    format(cb=[str(i) for i in cb_list], messagetype=messagetype))
+                self.log.debug(
+                    "MessageBus: leftover global receivers {cb} for"
+                    " {messagetype}".format(cb=[str(i) for i in cb_list],
+                                            messagetype=messagetype))
         for messagetype, cb_list in self.local_receivers.iteritems():
             if cb_list:
-                self.log.debug("MessageBus: leftover local receivers {cb} for {messagetype}".
-                    format(cb=[str(i) for i in cb_list], messagetype=messagetype))
+                self.log.debug(
+                    "MessageBus: leftover local receivers {cb} for "
+                    "{messagetype}".format(cb=[str(i) for i in cb_list],
+                                           messagetype=messagetype))
 
         # suicide, next instance will be created on demand
         self.__class__.destroy_instance()

@@ -27,7 +27,8 @@ class WeakMethod(object):
     def __init__(self, function):
         assert callable(function)
 
-        if isinstance(function, types.MethodType) and function.im_self is not None:
+        if isinstance(function, types.MethodType) and \
+                function.im_self is not None:
             self.function = function.im_func
             self.instance = weakref.ref(function.im_self)
         else:
@@ -40,14 +41,17 @@ class WeakMethod(object):
         elif self.instance() is not None:
             return self.function(self.instance(), *args, **kwargs)
         else:
-            raise ReferenceError("Instance: %s  Function: %s  Function from module: %s" %
-                (self.instance(), self.function, self.function.__module__))
+            raise ReferenceError(
+                "Instance: {0}  Function: {1}  Function from module: {2}".
+                format(self.instance(), self.function,
+                       self.function.__module__))
 
     def __eq__(self, other):
         if isinstance(other, WeakMethod):
             if self.function != other.function:
                 return False
-            # check also if either instance is None or else if instances are equal
+            # check also if either instance is None or else
+            # if instances are equal
             if self.instance is None:
                 return other.instance is None
             else:

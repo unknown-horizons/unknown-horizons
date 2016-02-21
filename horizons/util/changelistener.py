@@ -28,11 +28,14 @@ from horizons.util.python.weakmethodlist import WeakMethodList
 
 class ChangeListener(object):
     """Trivial ChangeListener.
-    The object that changes and the object that listens have to inherit from this class.
+    The object that changes and the object that listens have to inherit
+    from this class.
     An object calls _changed every time something has changed, obviously.
-    This function calls every Callback, that has been registered to listen for a change.
+    This function calls every Callback, that has been registered to listen
+    for a change.
     NOTE: ChangeListeners aren't saved, they have to be reregistered on load
-    NOTE: RemoveListeners must not access the object, as it is in progress of being destroyed.
+    NOTE: RemoveListeners must not access the object, as it is in progress
+          of being destroyed.
     """
 
     log = logging.getLogger('changelistener')
@@ -61,12 +64,14 @@ class ChangeListener(object):
                 listener_list[listener_list.index(listener)] = None
         except ValueError as e:  # nicer error:
             raise ValueError(str(e) +
-                             "\nTried to remove: " + str(listener) + "\nat " + str(self) +
-                             "\nList: " + str([str(i) for i in listener_list]))
+                             "\nTried to remove: " + str(listener) +
+                             "\nat " + str(self) + "\nList: " +
+                             str([str(i) for i in listener_list]))
 
     def __call_listeners(self, listener_list):
-        # instead of removing from list, switch the listener in position to None
-        # this way, iteration won't be affected while listeners may modify the list
+        # instead of removing from list, switch the listener in position
+        # to None this way, iteration won't be affected while listeners may
+        # modify the list
         self.__hard_remove = False
         # increase the event call number
         self.__event_call_number += 1

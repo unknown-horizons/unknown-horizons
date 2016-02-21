@@ -37,7 +37,7 @@ class PlayersOverview(StatsWidget):
     def refresh(self):
         super(PlayersOverview, self).refresh()
         for player in sorted(self.session.world.players, key=lambda player: (
-            -player.get_latest_stats().total_score, player.worldid)):
+                -player.get_latest_stats().total_score, player.worldid)):
             self._add_line_to_gui(player)
         self._content_vbox.adaptLayout()
 
@@ -60,11 +60,13 @@ class PlayersOverview(StatsWidget):
         land_score.text = unicode(stats.land_score)
         land_score.min_size = (50, 20)
 
-        resource_score = widgets.Label(name='resource_score_%d' % player.worldid)
+        resource_score = widgets.Label(
+            name='resource_score_%d' % player.worldid)
         resource_score.text = unicode(stats.resource_score)
         resource_score.min_size = (90, 20)
 
-        building_score = widgets.Label(name='building_score_%d' % player.worldid)
+        building_score = widgets.Label(
+            name='building_score_%d' % player.worldid)
         building_score.text = unicode(stats.building_score)
         building_score.min_size = (70, 20)
 

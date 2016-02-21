@@ -54,9 +54,10 @@ class ColorMeta(type):
 
 class Color(object):
     """Class for saving a color.
-    Colors are saved in 32 bit rgb-format with an alpha value (for transparency).
-    32bit mean that each of the for values can only occupy 8 bit, i.e. the value is between
-    0 and 255.
+    Colors are saved in 32 bit rgb-format with an alpha value
+    (for transparency).
+    32bit mean that each of the for values can only occupy 8 bit,
+    i.e. the value is between 0 and 255.
 
     Attributes:
      r, g, b, a: Color values + Alpha
@@ -80,7 +81,8 @@ class Color(object):
             self.name = None
 
     def to_tuple(self):
-        """Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""
+        """Returns color as (r, g, b)-tuple, where each value
+        is between 0 and 255"""
         return (self.r, self.g, self.b)
 
     @property

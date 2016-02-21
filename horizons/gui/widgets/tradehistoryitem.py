@@ -26,7 +26,8 @@ from horizons.constants import RES
 
 
 class TradeHistoryItem(Container):
-    """Widget that shows the last few trades that have taken place in the settlement."""
+    """Widget that shows the last few trades
+     that have taken place in the settlement."""
 
     def __init__(self, player, resource_id, amount, gold, **kwargs):
         super(TradeHistoryItem, self).__init__(**kwargs)
@@ -49,7 +50,8 @@ class TradeHistoryItem(Container):
 
         resource_icon = self.findChild(name='resource_icon')
         resource_icon.image = get_res_icon_path(resource_id)
-        resource_icon.max_size = resource_icon.min_size = resource_icon.size = (16, 16)
+        resource_icon.max_size = \
+            resource_icon.min_size = resource_icon.size = (16, 16)
         resource_icon.helptext = player.session.db.get_res_name(resource_id)
 
         self.size = self.widget.size

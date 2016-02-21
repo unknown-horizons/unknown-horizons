@@ -27,13 +27,15 @@ class WeakMethodList(list):
 
     def __init__(self, callbacks=None):
         """
-        @param callbacks: None, a function, a list of functions, or a tuple of functions
+        @param callbacks: None, a function, a list of functions,
+                          or a tuple of functions
         """
         super(WeakMethodList, self).__init__()
         self.append(callbacks)
 
     def append(self, callback):
-        """Just like list.append, except it can also handle lists and discards None-values"""
+        """Just like list.append, except it can also handle lists
+        and discards None-values"""
         if callback is None:
             pass
         elif callable(callback):
