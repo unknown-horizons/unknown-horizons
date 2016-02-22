@@ -34,8 +34,9 @@ class Scheduler(LivingObject):
     Master of time.
 
     TODO:
-    - Refactor to use a data structure that is suitable for iteration (ticking) as well as
-      searching/deleting by instance, possibly also by callback.
+    - Refactor to use a data structure that is suitable
+      for iteration (ticking) as well as searching/deleting by instance,
+      possibly also by callback.
       Suggestion: { tick -> { instance -> [callback] }} (basically a k-d tree)
 
 
@@ -45,7 +46,8 @@ class Scheduler(LivingObject):
 
     log = logging.getLogger("scheduler")
 
-    # the tick with this id is actually executed, and no tick with a smaller number can occur
+    # the tick with this id is actually executed, and no tick with a smaller
+    #  number can occur
     FIRST_TICK_ID = 0
 
     def __init__(self, timer):
@@ -54,7 +56,8 @@ class Scheduler(LivingObject):
         """
         super(Scheduler, self).__init__()
         self.schedule = {}
-        self.additional_cur_tick_schedule = []  # jobs to be executed at the same tick they were added
+        self.additional_cur_tick_schedule = []
+        # jobs to be executed at the same tick they were added
         self.calls_by_instance = {}  # for get_classinst_calls
         self.cur_tick = self.__class__.FIRST_TICK_ID - 1  # before ticking
         self.timer = timer
@@ -79,15 +82,18 @@ class Scheduler(LivingObject):
             return
 
         if self.cur_tick in self.schedule:
-            self.log.debug("Scheduler: tick %s, cbs: %s", self.cur_tick, len(self.schedule[self.cur_tick]))
+            self.log.debug("Scheduler: tick %s, cbs: %s", self.cur_tick,
+                           len(self.schedule[self.cur_tick]))
 
-            # use iteration method that works in case the list is altered during iteration
-            # this can happen for e.g. rem_all_classinst_calls
+            # use iteration method that works in case the list is altered
+            # during iteration this can happen for e.g. rem_all_classinst_calls
             cur_schedule = self.schedule[self.cur_tick]
             while cur_schedule:
                 callback = cur_schedule.popleft()
-                # TODO: some system-level unit tests fail if this list is not processed in the correct order
-                #       (i.e. if e.g. pop() was used here). This is an indication of invalid assumptions
+                # TODO: some system-level unit tests fail if this list
+                #        is not processed in the correct order
+                #       (i.e. if e.g. pop() was used here).
+                #       This is an indication of invalid assumptions
                 #       in the program and should be fixed.
 
                 if hasattr(callback, "invalid"):
@@ -100,14 +106,16 @@ class Scheduler(LivingObject):
                     self.add_object(callback, readd=True)
                 else:  # gone for good
                     if callback.class_instance in self.calls_by_instance:
-                        # this can already be removed by e.g. rem_all_classinst_calls
+                        # this can already be removed
+                        #  by e.g. rem_all_classinst_calls
                         if callback.finish_callback is not None:
                             callback.finish_callback()
 
                         try:
                             self.calls_by_instance[callback.class_instance].remove(callback)
                         except ValueError:
-                            pass  # also the callback can be deleted by e.g. rem_call
+                            pass
+                            # also the callback can be deleted by e.g. rem_call
             del self.schedule[self.cur_tick]
 
             self.log.debug("Scheduler: finished tick %s", self.cur_tick)
@@ -119,9 +127,10 @@ class Scheduler(LivingObject):
 
     def before_ticking(self):
         """Called after game load and before game has started.
-        Callbacks with run_in=0 are used as generic "do this as soon as the current context
-        is finished". If this is done during load, it is supposed to mean tick -1, since it
-        does not belong to the first tick. This method simulates this.
+        Callbacks with run_in=0 are used as generic "do this as soon as the
+        current context is finished". If this is done during load, it is
+        supposed to mean tick -1, since it does not belong to
+        the first tick. This method simulates this.
         """
         self._run_additional_jobs()
 

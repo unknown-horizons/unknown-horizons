@@ -39,17 +39,22 @@ class VillageBuilder(AreaBuilder):
     An object of this class manages the village area of a settlement.
 
     Important attributes:
-    * plan: a dictionary of the form {(x, y): (purpose, (section, seq_no)), ...} where
-        purpose is one of the BUILDING_PURPOSE constants, section is the sequence number
-        of the village section and seq_no is the sequence number of a residence or None
-        if it is another type of building. The plan is created in the beginning and
-        changed only when land is lost.
-    * special_building_assignments: {BUILDING_PURPOSE constant: {village producer coordinates:
-    [residence coordinates, ...]}}
-    * tent_queue: deque([(x, y), ...]) of remaining residence spots in the right order
+    * plan: a dictionary of the form {(x, y):
+        (purpose, (section, seq_no)), ...} where purpose is one of the
+        BUILDING_PURPOSE constants, section is the sequence number
+        of the village section and seq_no is the sequence number of
+        a residence or None if it is another type of building. The plan is
+        created in the beginning and changed only when land is lost.
+    * special_building_assignments: {BUILDING_PURPOSE constant:
+                                    {village producer coordinates:
+                                    [residence coordinates, ...]}}
+    * tent_queue: deque([(x, y), ...]) of remaining residence spots
+                in the right order
     * num_sections: number of sections in the area
-    * current_section: 1-based number of the section that is being filled with residences
-    * roads_built: boolean showing whether all planned roads in the area have been built
+    * current_section: 1-based number of the section that is being
+                       filled with residences
+    * roads_built: boolean showing whether all planned roads
+                   in the area have been built
     """
 
     log = logging.getLogger("ai.aiplayer")
@@ -73,18 +78,20 @@ class VillageBuilder(AreaBuilder):
 
     def save(self, db):
         super(VillageBuilder, self).save(db)
-        db("INSERT INTO ai_village_builder(rowid, settlement_manager, num_sections,"
-            " current_section) VALUES(?, ?, ?, ?)",
-            self.worldid, self.settlement_manager.worldid, self.num_sections, self.current_section)
+        db("INSERT INTO ai_village_builder(rowid, settlement_manager, "
+           "num_sections, current_section) VALUES(?, ?, ?, ?)",
+           self.worldid, self.settlement_manager.worldid, self.num_sections,
+           self.current_section)
 
-        db_query = ('INSERT INTO ai_village_builder_plan(village_builder, x, y,'
-            ' purpose, section, seq_no) VALUES(?, ?, ?, ?, ?, ?)')
+        db_query = ('INSERT INTO ai_village_builder_plan(village_builder, '
+            'x, y, purpose, section, seq_no) VALUES(?, ?, ?, ?, ?, ?)')
         for (x, y), (purpose, (section, seq_no)) in self.plan.iteritems():
             db(db_query, self.worldid, x, y, purpose, section, seq_no)
 
     def _load(self, db, settlement_manager):
-        db_result = db("SELECT rowid, num_sections, current_section FROM ai_village_builder"
-            " WHERE settlement_manager = ?", settlement_manager.worldid)
+        db_result = db("SELECT rowid, num_sections, current_section FROM "
+            "ai_village_builder WHERE settlement_manager = ?",
+            settlement_manager.worldid)
         worldid, self.num_sections, self.current_section = db_result[0]
         super(VillageBuilder, self)._load(db, settlement_manager, worldid)
         self.__init(settlement_manager)
@@ -117,9 +124,10 @@ class VillageBuilder(AreaBuilder):
 
         The algorithm:
         * find a way to cut the village area into rectangular section_plans
-        * each section gets a plan with a main square, roads, and residence locations
-        * the plan is stitched together and other village buildings are by replacing some
-            of the residences
+        * each section gets a plan with a main square, roads,
+            and residence locations
+        * the plan is stitched together and other village buildings are by
+            replacing some of the residences
         """
 
         xs = set([x for (x, _) in self.land_manager.village])
@@ -127,8 +135,10 @@ class VillageBuilder(AreaBuilder):
 
         width = max(xs) - min(xs) + 1
         height = max(ys) - min(ys) + 1
-        horizontal_sections = int(math.ceil(float(width) / self.personality.max_village_section_size))
-        vertical_sections = int(math.ceil(float(height) / self.personality.max_village_section_size))
+        horizontal_sections = int(math.ceil(float(
+            width) / self.personality.max_village_section_size))
+        vertical_sections = int(math.ceil(float(
+            height) / self.personality.max_village_section_size))
 
         section_plans = []  # [{(x, y): BUILDING_PURPOSE constant, ...}, ...]
         vertical_roads = set()  # set([x, ...])
@@ -149,8 +159,10 @@ class VillageBuilder(AreaBuilder):
                 right_road = j + 1 < horizontal_sections
                 max_x = min(max(xs), start_x + section_width)
                 current_width = max_x - start_x + 1
-                section_coords_set_list.append(self._get_village_section_coordinates(start_x,
-                    start_y, current_width - right_road, current_height - bottom_road))
+                section_coords_set_list.append(
+                    self._get_village_section_coordinates(
+                    start_x, start_y, current_width - right_road,
+                    current_height - bottom_road))
                 start_x += current_width
                 if i == 0 and right_road:
                     vertical_roads.add(start_x - 1)
@@ -168,12 +180,15 @@ class VillageBuilder(AreaBuilder):
 
     def _stitch_sections_together(self, section_plans, vertical_roads, horizontal_roads):
         """
-        Complete creating the plan by stitching the sections together and creating the tent queue.
+        Complete creating the plan by stitching the sections together
+         and creating the tent queue.
 
         @param section_plans: list of section plans in the format [{(x, y):
             BUILDING_PURPOSE constant, ...}, ...]
-        @param vertical_roads: vertical roads between the sections in the form set([x, ...])
-        @param horizontal_roads: horizontal roads between the sections in the form set([y, ...])
+        @param vertical_roads: vertical roads between the sections
+                               in the form set([x, ...])
+        @param horizontal_roads: horizontal roads between the sections
+                                 in the form set([y, ...])
         """
 
         self.plan = {}
@@ -210,7 +225,8 @@ class VillageBuilder(AreaBuilder):
     @classmethod
     def _remove_unreachable_roads(cls, section_plan, main_square):
         """
-        Remove the roads that can't be reached by starting from the main square.
+        Remove the roads that can't be reached by starting
+         from the main square.
 
         @param section_plan: {(x, y): BUILDING_PURPOSE constant, ...}
         @param main_square: Rect representing the position of the main square
@@ -243,8 +259,8 @@ class VillageBuilder(AreaBuilder):
             section_plan[coords] = BUILDING_PURPOSE.NONE
 
     def _get_possible_building_positions(self, section_coords_set, size):
-        """Return {(x, y): Rect, ...} that contains every size x size potential building location
-        where only the provided coordinates are legal."""
+        """Return {(x, y): Rect, ...} that contains every size x size potential
+        building location where only the provided coordinates are legal."""
         result = {}
         for (x, y) in sorted(section_coords_set):
             ok = True
@@ -257,24 +273,31 @@ class VillageBuilder(AreaBuilder):
                 if not ok:
                     break
             if ok:
-                result[(x, y)] = Rect.init_from_topleft_and_size_tuples((x, y), size)
+                result[(x, y)] = Rect.init_from_topleft_and_size_tuples(
+                    (x, y), size)
         return result
 
-    def _create_section_plan(self, section_coords_set, vertical_roads, horizontal_roads):
+    def _create_section_plan(self, section_coords_set, vertical_roads,
+                             horizontal_roads):
         """
-        Create the section plan that contains the main square, roads, and residence positions.
+        Create the section plan that contains the main square, roads,
+         and residence positions.
 
         The algorithm is as follows:
         * place the main square
         * form a road grid to support the tents
-        * choose the best one by preferring the one with more residence locations and less
-            unreachable / blocked / parallel side by side roads.
+        * choose the best one by preferring the one with more residence
+            locations and less unreachable / blocked / parallel side
+            by side roads.
 
         @param section_plans: list of section plans in the format [{(x, y):
             BUILDING_PURPOSE constant, ...}, ...]
-        @param vertical_roads: vertical roads between the sections in the form set([x, ...])
-        @param horizontal_roads: horizontal roads between the sections in the form set([y, ...])
-        @return: (number of residences in the plan, the plan in the form {(x, y):
+        @param vertical_roads: vertical roads between the sections
+                               in the form set([x, ...])
+        @param horizontal_roads: horizontal roads between the sections
+                                 in the form set([y, ...])
+        @return: (number of residences in the plan, the plan
+                 in the form {(x, y):
             BUILDING_PURPOSE constant}
         """
 
@@ -282,7 +305,8 @@ class VillageBuilder(AreaBuilder):
         best_tents = 0
         best_value = -1
         tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
-        road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
+        road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1),
+                            (1, 2), (2, 0), (2, 1)]
         tent_radius_sq = Entities.buildings[BUILDINGS.RESIDENTIAL].radius ** 2
 
         xs = set(x for (x, _) in section_coords_set)
@@ -403,7 +427,8 @@ class VillageBuilder(AreaBuilder):
     def _optimize_section_plan(self, section_plan):
         """Try to fit more residences into the grid."""
         # calculate distance from the main square to every tile
-        road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
+        road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1),
+                            (1, 2), (2, 0), (2, 1)]
         tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
         moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
         distance = {}
@@ -411,7 +436,8 @@ class VillageBuilder(AreaBuilder):
 
         for coords, purpose in sorted(section_plan.iteritems()):
             if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
-                for coords in self._get_position(coords, BUILDINGS.MAIN_SQUARE).tuple_iter():
+                for coords in self._get_position(
+                        coords, BUILDINGS.MAIN_SQUARE).tuple_iter():
                     distance[coords] = 0
                     queue.append(coords)
 
@@ -466,7 +492,8 @@ class VillageBuilder(AreaBuilder):
         """Return the area that remains unused after creating the plan."""
         not_needed = []
         for coords in self.land_manager.village:
-            if coords not in self.plan or self.plan[coords][0] == BUILDING_PURPOSE.NONE:
+            if coords not in self.plan or self.plan[
+                    coords][0] == BUILDING_PURPOSE.NONE:
                 not_needed.append(coords)
         for coords in not_needed:
             # if the warehouse is (partly) in the village area then it needs
@@ -477,45 +504,59 @@ class VillageBuilder(AreaBuilder):
 
     @classmethod
     def _get_position(cls, coords, building_id):
-        """Return the position Rect of a building of the given type at the given position."""
-        return Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[building_id].size)
+        """Return the position Rect of a building of the given type at
+        the given position."""
+        return Rect.init_from_topleft_and_size_tuples(
+            coords, Entities.buildings[building_id].size)
 
     def _get_sorted_building_positions(self, building_purpose):
         """Return a list of sorted building positions in the form [Rect, ...]."""
         building_id = BUILDING_PURPOSE.purpose_to_building[building_purpose]
-        return sorted(self._get_position(coords, building_id) for coords, (purpose,
-            _) in self.plan.iteritems() if purpose == building_purpose)
+        return sorted(self._get_position(coords, building_id) for coords, (
+            purpose, _) in self.plan.iteritems() if
+                      purpose == building_purpose)
 
     def _replace_planned_residence(self, new_purpose, max_buildings, capacity):
         """
-        Replace up to max_buildings residence spots with buildings of purpose new_purpose.
+        Replace up to max_buildings residence spots with buildings of purpose
+        new_purpose.
 
-        This function is used to amend the existing plan with village producers such as
-        pavilions, schools, and taverns. The goal is to place as few of them as needed
-        while still covering the maximum number of residences.
+        This function is used to amend the existing plan with village producers
+        such as pavilions, schools, and taverns. The goal is to place as few of
+        them as needed while still covering the maximum number of residences.
 
         @param new_purpose: the BUILDING_PURPOSE constant of the new buildings
         @param max_buildings: maximum number of residences to replace
-        @param capacity: maximum number of residences one of the new buildings can service
+        @param capacity: maximum number of residences one of the new buildings
+                         can service
         """
 
         distance_rect_rect_sq = distances.distance_rect_rect_sq
         distance_rect_tuple = distances.distance_rect_tuple
         tent_range_sq = Entities.buildings[BUILDINGS.RESIDENTIAL].radius ** 2
-        planned_tents = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
+        planned_tents = self._get_sorted_building_positions(
+            BUILDING_PURPOSE.RESIDENCE)
 
         possible_positions = copy.copy(planned_tents)
         if new_purpose == BUILDING_PURPOSE.TAVERN:
-            # filter out the positions that are too far from the main squares and the warehouse
+            # filter out the positions that are too far from the main squares
+            #  and the warehouse
             tavern_radius_sq = Entities.buildings[BUILDINGS.TAVERN].radius ** 2
-            storage_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.MAIN_SQUARE)
-            storage_positions.append(self.settlement_manager.settlement.warehouse.position)
-            possible_positions = [rect for rect in possible_positions if any(distance_rect_rect_sq(rect,
-                storage_rect) <= tavern_radius_sq for storage_rect in storage_positions)]
+            storage_positions = self._get_sorted_building_positions(
+                BUILDING_PURPOSE.MAIN_SQUARE)
+            storage_positions.append(self.settlement_manager.settlement.
+                                     warehouse.position)
+            possible_positions = [rect for rect in possible_positions if any(
+                distance_rect_rect_sq(rect, storage_rect) <=
+                tavern_radius_sq for
+                storage_rect in storage_positions)]
 
-        num_kept = int(min(len(possible_positions), max(self.personality.min_coverage_building_options,
-            len(possible_positions) * self.personality.coverage_building_option_ratio)))
-        possible_positions = self.session.random.sample(possible_positions, num_kept)
+        num_kept = int(min(len(possible_positions),
+                           max(self.personality.min_coverage_building_options,
+                           len(possible_positions) * self.personality.
+                           coverage_building_option_ratio)))
+        possible_positions = self.session.random.sample(possible_positions,
+                                                        num_kept)
 
         def get_centroid(planned, blocked):
             total_x, total_y = 0, 0
@@ -532,7 +573,8 @@ class VillageBuilder(AreaBuilder):
             positions = []
             for position in planned_tents:
                 if position not in blocked:
-                    positions.append((distance_rect_tuple(position, centroid), position))
+                    positions.append((distance_rect_tuple(position, centroid),
+                                      position))
             positions.sort(reverse=True)
             return positions
 
@@ -543,11 +585,13 @@ class VillageBuilder(AreaBuilder):
             best_pos = None
 
             for replaced_pos in possible_positions:
-                positions = get_centroid_distance_pairs(planned_tents, set([replaced_pos]))
+                positions = get_centroid_distance_pairs(planned_tents,
+                                                        set([replaced_pos]))
                 score = 0
                 in_range = 0
                 for distance_to_centroid, position in positions:
-                    if in_range < capacity and distance_rect_rect_sq(replaced_pos, position) <= tent_range_sq:
+                    if in_range < capacity and distance_rect_rect_sq(
+                            replaced_pos, position) <= tent_range_sq:
                         in_range += 1
                     else:
                         score += distance_to_centroid
@@ -556,9 +600,11 @@ class VillageBuilder(AreaBuilder):
                     best_pos = replaced_pos
 
             in_range = 0
-            positions = zip(*get_centroid_distance_pairs(planned_tents, set([best_pos])))[1]
+            positions = zip(*get_centroid_distance_pairs(planned_tents,
+                                                         set([best_pos])))[1]
             for position in positions:
-                if in_range < capacity and distance_rect_rect_sq(best_pos, position) <= tent_range_sq:
+                if in_range < capacity and distance_rect_rect_sq(
+                        best_pos, position) <= tent_range_sq:
                     planned_tents.remove(position)
                     in_range += 1
             if not in_range:
@@ -566,83 +612,109 @@ class VillageBuilder(AreaBuilder):
 
             possible_positions.remove(best_pos)
             coords = best_pos.origin.to_tuple()
-            self.register_change_list([coords], new_purpose, (self.plan[coords][1][0], None))
+            self.register_change_list([coords], new_purpose, (
+                self.plan[coords][1][0], None))
 
     def _reserve_special_village_building_spots(self):
         """Replace residence spots with special village buildings such
         as pavilions, schools, taverns, doctors and fire stations."""
-        num_other_buildings = 0  # the maximum number of each village producer that should be placed
+        num_other_buildings = 0
+        # the maximum number of each village producer that should be placed
         residences = len(self.tent_queue)
         while residences > 0:
             num_other_buildings += 3
-            residences -= 3 + self.personality.normal_coverage_building_capacity
+            residences -= 3 + \
+                self.personality.normal_coverage_building_capacity
 
-        self._replace_planned_residence(BUILDING_PURPOSE.PAVILION, num_other_buildings,
+        self._replace_planned_residence(
+            BUILDING_PURPOSE.PAVILION, num_other_buildings,
             self.personality.max_coverage_building_capacity)
-        self._replace_planned_residence(BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings,
+        self._replace_planned_residence(
+            BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings,
             self.personality.max_coverage_building_capacity)
-        self._replace_planned_residence(BUILDING_PURPOSE.TAVERN, num_other_buildings,
+        self._replace_planned_residence(
+            BUILDING_PURPOSE.TAVERN, num_other_buildings,
             self.personality.max_coverage_building_capacity)
 
-        num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings)
-            // self.personality.normal_fire_station_capacity)))
-        self._replace_planned_residence(BUILDING_PURPOSE.FIRE_STATION, num_fire_stations,
+        num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 *
+                                                    num_other_buildings) //
+                                             self.personality.
+                                             normal_fire_station_capacity)))
+        self._replace_planned_residence(
+            BUILDING_PURPOSE.FIRE_STATION, num_fire_stations,
             self.personality.max_fire_station_capacity)
 
-        num_doctors = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings)
-            // self.personality.normal_doctor_capacity)))
+        num_doctors = max(0, int(round(0.5 + (len(self.tent_queue) - 3 *
+                                              num_other_buildings) //
+                                       self.personality.
+                                       normal_doctor_capacity)))
         self._replace_planned_residence(BUILDING_PURPOSE.DOCTOR, num_doctors,
-            self.personality.max_doctor_capacity)
+                                        self.personality.max_doctor_capacity)
 
         self._create_special_village_building_assignments()
 
     def _create_special_village_building_assignments(self):
         """
-        Create an assignment of residence spots to special village building spots.
+        Create an assignment of residence spots to special village
+        building spots.
 
-        This is useful for deciding which of the special village buildings would be most useful.
+        This is useful for deciding which of the special village buildings
+        would be most useful.
         """
 
         distance_rect_rect = distances.distance_rect_rect
         self.special_building_assignments = {}
-        # {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
-        residence_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
+        # {BUILDING_PURPOSE constant: {village producer coordinates:
+        #  [residence coordinates, ...]}}
+        residence_positions = self._get_sorted_building_positions(
+            BUILDING_PURPOSE.RESIDENCE)
 
         building_types = []
-        for purpose in [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL,
+        for purpose in [
+                BUILDING_PURPOSE.PAVILION,
+                BUILDING_PURPOSE.VILLAGE_SCHOOL,
                 BUILDING_PURPOSE.TAVERN]:
-            building_types.append((purpose, Entities.buildings[BUILDINGS.RESIDENTIAL].radius,
+            building_types.append((
+                purpose, Entities.buildings[BUILDINGS.RESIDENTIAL].radius,
                 self.personality.max_coverage_building_capacity))
-        building_types.append((BUILDING_PURPOSE.FIRE_STATION,
+        building_types.append((
+            BUILDING_PURPOSE.FIRE_STATION,
             Entities.buildings[BUILDINGS.FIRE_STATION].radius,
             self.personality.max_fire_station_capacity))
-        building_types.append((BUILDING_PURPOSE.DOCTOR, Entities.buildings[BUILDINGS.DOCTOR].radius,
-            self.personality.max_doctor_capacity))
+        building_types.append((BUILDING_PURPOSE.DOCTOR,
+                               Entities.buildings[BUILDINGS.DOCTOR].radius,
+                               self.personality.max_doctor_capacity))
 
         for purpose, range, max_capacity in building_types:
-            producer_positions = sorted(self._get_position(coords,
-                  BUILDING_PURPOSE.get_building(purpose)) for coords, (pos_purpose,
-                  _) in self.plan.iteritems() if pos_purpose == purpose)
+            producer_positions = sorted(self._get_position(
+                coords, BUILDING_PURPOSE.get_building(purpose)) for coords,
+                (pos_purpose, _) in self.plan.iteritems() if
+                pos_purpose == purpose)
             self.special_building_assignments[purpose] = {}
             for producer_position in producer_positions:
-                self.special_building_assignments[purpose][producer_position.origin.to_tuple()] = []
+                self.special_building_assignments[
+                    purpose][producer_position.origin.to_tuple()] = []
 
             options = []
             for producer_position in producer_positions:
                 for position in residence_positions:
                     distance = distance_rect_rect(producer_position, position)
                     if distance <= range:
-                        options.append((distance, producer_position.origin.to_tuple(), position.origin.to_tuple()))
+                        options.append((distance,
+                                        producer_position.origin.to_tuple(),
+                                        position.origin.to_tuple()))
             options.sort(reverse=True)
 
             assigned_residence_coords = set()
             for _, producer_coords, residence_coords in options:
                 if residence_coords in assigned_residence_coords:
                     continue
-                if len(self.special_building_assignments[purpose][producer_coords]) >= max_capacity:
+                if len(self.special_building_assignments[
+                        purpose][producer_coords]) >= max_capacity:
                     continue
                 assigned_residence_coords.add(residence_coords)
-                self.special_building_assignments[purpose][producer_coords].append(residence_coords)
+                self.special_building_assignments[
+                    purpose][producer_coords].append(residence_coords)
 
     def _create_tent_queue(self, section_plan):
         """
@@ -650,11 +722,12 @@ class VillageBuilder(AreaBuilder):
         save the result in the tent queue.
 
         The algorithm:
-        * split the residences of the section into blocks where a block is formed of all
-            residence spots that share sides
+        * split the residences of the section into blocks where a block
+            is formed of all residence spots that share sides
         * calculate the distance from the main square to the block
-        * form the final sequence by sorting the blocks by distance to the main square and
-            by sorting the residences of a block by their coordinates
+        * form the final sequence by sorting the blocks by distance to the
+            main square and by sorting the residences of a block by
+            their coordinates
 
         @return: {(x, y): residence sequence number}
         """
@@ -681,8 +754,8 @@ class VillageBuilder(AreaBuilder):
                     coords = (x + dx, y + dy)
                     if coords not in section_plan or coords in explored:
                         continue
-                    if (section_plan[coords] == BUILDING_PURPOSE.RESIDENCE
-                            or section_plan[coords] == BUILDING_PURPOSE.RESERVED):
+                    if (section_plan[coords] == BUILDING_PURPOSE.RESIDENCE or
+                            section_plan[coords] == BUILDING_PURPOSE.RESERVED):
                         explored.add(coords)
                         queue.append(coords)
                         if section_plan[coords] == BUILDING_PURPOSE.RESIDENCE:
@@ -709,12 +782,14 @@ class VillageBuilder(AreaBuilder):
         return result
 
     def _recreate_tent_queue(self, removal_location=None):
-        """Recreate the tent queue making sure that the possibly removed location is missing."""
+        """Recreate the tent queue making sure that the possibly removed
+        location is missing."""
         queue = []
         for coords, (purpose, (_, seq_no)) in self.plan.iteritems():
             if purpose == BUILDING_PURPOSE.RESIDENCE:
                 object = self.island.ground_map[coords].object
-                if object is None or object.id != BUILDINGS.RESIDENTIAL or removal_location == coords:
+                if object is None or object.id != BUILDINGS.RESIDENTIAL or \
+                        removal_location == coords:
                     queue.append((seq_no, coords))
         if queue:
             self.tent_queue = deque(zip(*sorted(queue))[1])
@@ -722,10 +797,12 @@ class VillageBuilder(AreaBuilder):
             self.tent_queue = deque()
 
     def build_roads(self):
-        """Try to build all roads in the village area, record the result in the field roads_built."""
+        """Try to build all roads in the village area, record the result in
+        the field roads_built."""
         all_built = True
         for coords, (purpose, (section, _)) in sorted(self.plan.iteritems()):
-            if section > self.current_section or coords not in self.settlement.ground_map:
+            if section > self.current_section or coords not in \
+                    self.settlement.ground_map:
                 all_built = False
                 continue
             if purpose != BUILDING_PURPOSE.ROAD:
@@ -736,7 +813,8 @@ class VillageBuilder(AreaBuilder):
             if not self.have_resources(BUILDINGS.TRAIL):
                 all_built = False
                 break
-            assert BasicBuilder(BUILDINGS.TRAIL, coords, 0).execute(self.land_manager)
+            assert BasicBuilder(BUILDINGS.TRAIL,
+                                coords, 0).execute(self.land_manager)
         self.roads_built = all_built
 
     def build_tent(self, coords=None):
@@ -744,8 +822,9 @@ class VillageBuilder(AreaBuilder):
         if not self.tent_queue:
             return BUILD_RESULT.IMPOSSIBLE
 
-        # can_trigger_next_section is used to start building the next section when the old one is done
-        # if a tent is built just to extend the area then that can't trigger the next section
+        # can_trigger_next_section is used to start building the next section
+        # when the old one is done if a tent is built just to extend the area
+        # then that can't trigger the next section
         # TODO: handle extension tents nicer than just letting them die
         can_trigger_next_section = False
         if coords is None:
@@ -767,7 +846,8 @@ class VillageBuilder(AreaBuilder):
         if ok and not owned_by_other:
             if not self.have_resources(BUILDINGS.RESIDENTIAL):
                 return BUILD_RESULT.NEED_RESOURCES
-            assert BasicBuilder(BUILDINGS.RESIDENTIAL, (x, y), 0).execute(self.land_manager)
+            assert BasicBuilder(BUILDINGS.RESIDENTIAL, (x, y),
+                                0).execute(self.land_manager)
 
         if ok or owned_by_other:
             if self.tent_queue[0] == coords:
@@ -778,18 +858,22 @@ class VillageBuilder(AreaBuilder):
                         del self.tent_queue[i]
                         break
             if owned_by_other:
-                self.log.debug('%s tent position owned by other player at (%d, %d)', self, x, y)
+                self.log.debug('%s tent position owned by other player'
+                               ' at (%d, %d)', self, x, y)
                 return BUILD_RESULT.IMPOSSIBLE
 
         if not ok:
             # need to extends the area, it is not owned by another player
-            self.log.debug('%s tent position not owned by the player at (%d, %d),'
-                ' extending settlement area instead', self, x, y)
-            return self.extend_settlement(Rect.init_from_topleft_and_size(x, y, size[0], size[1]))
+            self.log.debug('%s tent position not owned by the player '
+                           'at (%d, %d),'
+                           ' extending settlement area instead', self, x, y)
+            return self.extend_settlement(Rect.init_from_topleft_and_size(
+                x, y, size[0], size[1]))
 
         if not self.roads_built:
             self.build_roads()
-        if can_trigger_next_section and self.plan[coords][1][0] > self.current_section:
+        if can_trigger_next_section and self.plan[
+                coords][1][0] > self.current_section:
             self.current_section = self.plan[coords][1][0]
         return BUILD_RESULT.OK
 
@@ -801,8 +885,8 @@ class VillageBuilder(AreaBuilder):
         * remove the lost area from the village and road areas
         * remove village sections with impossible main squares
         * remove all planned buildings that are now impossible
-        * TODO: if the village area takes too much of the total area then remove
-        / reduce the remaining sections
+        * TODO: if the village area takes too much of the total area
+          then remove / reduce the remaining sections
         """
 
         # remove village sections with impossible main squares
@@ -811,20 +895,23 @@ class VillageBuilder(AreaBuilder):
             if purpose != BUILDING_PURPOSE.MAIN_SQUARE:
                 continue
             possible = True
-            for main_square_coords in self._get_position(coords, BUILDINGS.MAIN_SQUARE).tuple_iter():
+            for main_square_coords in self._get_position(
+                    coords, BUILDINGS.MAIN_SQUARE).tuple_iter():
                 if main_square_coords not in self.land_manager.village:
                     possible = False
                     break
             if not possible:
-                # impossible to build the main square because a part of the area is owned by
-                # another player: remove the whole section
+                # impossible to build the main square because a part of the
+                # area is owned by another player: remove the whole section
                 removed_sections.add(section)
 
         removed_coords_list = []
         for coords, (purpose, (section, _)) in self.plan.iteritems():
-            if purpose == BUILDING_PURPOSE.RESERVED or purpose == BUILDING_PURPOSE.NONE:
+            if purpose == BUILDING_PURPOSE.RESERVED or purpose == \
+                    BUILDING_PURPOSE.NONE:
                 continue
-            position = self._get_position(coords, BUILDING_PURPOSE.get_building(purpose))
+            position = self._get_position(
+                coords, BUILDING_PURPOSE.get_building(purpose))
             building = self.settlement.ground_map[coords].object \
                 if coords in self.settlement.ground_map else None
 
@@ -840,7 +927,8 @@ class VillageBuilder(AreaBuilder):
                 for building_coords in position.tuple_iter():
                     removed_coords_list.append(building_coords)
             else:
-                # remove the planned village buildings that are no longer possible
+                # remove the planned village buildings that are
+                #  no longer possible
                 if purpose == BUILDING_PURPOSE.ROAD:
                     if coords not in self.land_manager.village:
                         removed_coords_list.append(coords)
@@ -866,7 +954,8 @@ class VillageBuilder(AreaBuilder):
         super(VillageBuilder, self).handle_lost_area(coords_list)
 
     def remove_building(self, building):
-        """Called when a building is removed from the area (the building still exists during the call)."""
+        """Called when a building is removed from the area
+        (the building still exists during the call)."""
         if building.id == BUILDINGS.RESIDENTIAL:
             self._recreate_tent_queue(building.position.origin.to_tuple())
 
@@ -897,7 +986,8 @@ class VillageBuilder(AreaBuilder):
             renderer.addColored(tile._instance, *color)
 
     def __str__(self):
-        return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(
-            self, 'worldid') else 'none')
+        return '%s VillageBuilder(%s)' % (self.settlement_manager,
+                                          self.worldid if
+                                          hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(VillageBuilder)

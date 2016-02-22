@@ -111,7 +111,8 @@ class Entities(object):
                                                Callback(BuildingClass, db=db,
                                                         id=building_id,
                                                         yaml_data=result))
-                # NOTE: The current system now requires all building data to be loaded
+                # NOTE: The current system now requires all building data
+                #  to be loaded
                 if load_now or True:
                     cls.buildings[building_id]
 
@@ -129,6 +130,8 @@ class Entities(object):
                 full_file = os.path.join(root, filename)
                 result = YamlCache.get_file(full_file, game_data=True)
                 unit_id = int(result['id'])
-                cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
+                cls.units.create_on_access(unit_id, Callback(UnitClass,
+                                                             id=unit_id,
+                                                             yaml_data=result))
                 if load_now:
                     cls.units[unit_id]

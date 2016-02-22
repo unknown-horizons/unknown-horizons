@@ -178,10 +178,13 @@ class MPManager(LivingObject):
             if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
                 self.log.error("MPManager: Hash values generated in tick {} are not equal"
                     .format(tick - self.HASHDELAY))
-                # if this is reached, we are screwed. Something went wrong in the simulation,
-                # but we don't know what. Stop the game.
-                msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
-                    _("We are very sorry and hope to have this bug fixed in a future version.")
+                # if this is reached, we are screwed. Something went wrong in
+                # the simulation, but we don't know what. Stop the game.
+                msg = _("The games have run out of sync. This indicates"
+                        " an unknown internal error, the game cannot "
+                        "continue.") + "\n" + \
+                      _("We are very sorry and hope to have this bug fixed"
+                        " in a future version.")
                 self.session.ingame_gui.open_error_popup('Out of sync', msg)
 
     def hash_value_diff(self, player1, hash1, player2, hash2):

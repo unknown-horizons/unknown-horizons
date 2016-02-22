@@ -50,7 +50,8 @@ class BuildingEvaluator(object):
     @classmethod
     def _weighted_distance(cls, main_component, other_components, none_value):
         """
-        Return the weights sum of the component distances with the specified weights.
+        Return the weights sum of the component distances with
+        the specified weights.
 
         @param main_component: value of the main component
         @param other_components: list[(weight, value), ...]
@@ -61,7 +62,8 @@ class BuildingEvaluator(object):
         others = 0.0
         for weight, value in other_components:
             others += weight
-        result = (1 - others) * (main_component if main_component is not None else none_value)
+        result = (1 - others) * (main_component if main_component is not
+                                                   None else none_value)
         for weight, value in other_components:
             if value is None:
                 result += weight * none_value
@@ -72,11 +74,13 @@ class BuildingEvaluator(object):
     @classmethod
     def _distance_to_nearest_building(cls, area_builder, builder, building_id):
         """
-        Return the shortest distance to a building of type building_id that is in range of the builder.
+        Return the shortest distance to a building of type building_id that
+        is in range of the builder.
 
         @param area_builder: AreaBuilder instance
         @param builder: Builder instance
-        @param building_id: the building type id of the building to which the distance should be measured
+        @param building_id: the building type id of the building to which the
+                            distance should be measured
         """
 
         shortest_distance = None
@@ -88,13 +92,16 @@ class BuildingEvaluator(object):
         return shortest_distance
 
     @classmethod
-    def _distance_to_nearest_collector(cls, production_builder, builder, must_be_in_range=True):
+    def _distance_to_nearest_collector(cls, production_builder, builder,
+                                       must_be_in_range=True):
         """
-        Return the shortest distance to a collector that (usually) has to be in range of the builder.
+        Return the shortest distance to a collector that (usually) has to be
+         in range of the builder.
 
         @param production_builder: ProductionBuilder instance
         @param builder: Builder instance
-        @param must_be_in_range: whether the building has to be in range of the builder
+        @param must_be_in_range: whether the building has to be in range
+                                 of the builder
         """
 
         shortest_distance = None
@@ -107,7 +114,8 @@ class BuildingEvaluator(object):
 
     @classmethod
     def _get_outline_coords_list(cls, coords_list):
-        """Return the list of coordinates that share sides the given coordinates list."""
+        """Return the list of coordinates that share sides the given
+        coordinates list."""
         moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
         if not isinstance(coords_list, set):
             coords_list = set(coords_list)
@@ -122,7 +130,8 @@ class BuildingEvaluator(object):
 
     @classmethod
     def _get_alignment_from_outline(cls, area_builder, outline_coords_list):
-        """Return an alignment value given the list of coordinates that form the outline of a shape."""
+        """Return an alignment value given the list of coordinates that form
+        the outline of a shape."""
         personality = area_builder.owner.personality_manager.get('BuildingEvaluator')
         alignment = 0
         for coords in outline_coords_list:
@@ -142,8 +151,10 @@ class BuildingEvaluator(object):
 
     @classmethod
     def _get_alignment(cls, area_builder, coords_list):
-        """Return an alignment value based on the outline of the given coordinates list."""
-        return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
+        """Return an alignment value based on the outline of the given
+        coordinates list."""
+        return cls._get_alignment_from_outline(
+            area_builder, cls._get_outline_coords_list(coords_list))
 
     def __cmp__(self, other):
         """Objects of this class should never be compared to ensure
@@ -163,7 +174,8 @@ class BuildingEvaluator(object):
         if not self.builder.have_resources(self.area_builder.land_manager):
             return False
         if not self.need_collector_connection:
-            return True  # skip the road cost test for buildings that don't need one
+            return True
+            # skip the road cost test for buildings that don't need one
         road_cost = self.area_builder.get_road_connection_cost(self.builder)
         if road_cost is None:
             return None
@@ -176,7 +188,8 @@ class BuildingEvaluator(object):
             self.purpose, None)
 
     def execute(self):
-        """Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
+        """Build the specified building complex.
+        Return (BUILD_RESULT constant, building object)."""
         resource_check = self.have_resources()
         if resource_check is None:
             self.log.debug('%s, unable to reach by road', self)
@@ -197,7 +210,8 @@ class BuildingEvaluator(object):
 
     def __str__(self):
         point = self.builder.position.origin
-        return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
+        return '%s at %d, %d with value %f' % (self.__class__.__name__,
+                                               point.x, point.y, self.value)
 
     @classmethod
     def get_best_evaluator(cls, evaluators):

@@ -37,33 +37,43 @@ from horizons.component.namedcomponent import NamedComponent
 
 class TradeManager(WorldObject):
     """
-    An object of this class manages the continuous domestic resource import process of one settlement.
+    An object of this class manages the continuous domestic resource
+     import process of one settlement.
 
-    This class keeps track of how much of each resource it is importing, what the purpose
-    of each import request is, and organizes the missions to transport the resources
-    from the producing settlements to the one it is managing.
+    This class keeps track of how much of each resource it is importing, what
+    the purpose of each import request is, and organizes the missions
+    to transport the resources from the producing settlements to the one it
+    is managing.
 
     The process for determining how much can be imported:
-    * find out how much of each resource every other settlement can export, reserve all of it
-    * run the settlement's production capacity reserve process which tries to use the local
-        capacity as much as possible and if that isn't enough then ask this object for
-        more: these requests get approved if we can import the required amount
-    * finalize the amount and source of the imported resources, release the remaining
-        amount to let the trade managers of other settlements do their work
+    * find out how much of each resource every other settlement can export,
+      reserve all of it
+    * run the settlement's production capacity reserve process which tries
+        to use the local capacity as much as possible and if that isn't enough
+        then ask this object for more: these requests get approved if we can
+        import the required amount
+    * finalize the amount and source of the imported resources, release the
+        remaining amount to let the trade managers of other settlements do
+        their work
 
     The process for actually getting the resources
     For this example settlement A imports from settlement B
-    * TradeManager of A reserves production at the ResourceManager of B as described above
-    * ResourceManager of B keeps track of how much resources it is producing for A
-    * TradeManager of A sends a ship to B to pick up some resources (a DomesticTrade mission)
-    * the ship arrives at the warehouse of B and calls A's TradeManager.load_resources
+    * TradeManager of A reserves production at the ResourceManager of B as
+      described above
+    * ResourceManager of B keeps track of how much resources it is producing
+      for A
+    * TradeManager of A sends a ship to B to pick up some resources
+      (a DomesticTrade mission)
+    * the ship arrives at the warehouse of B and calls A's
+        TradeManager.load_resources
         which loads the ship and adjusts the data of B's ResourceManager
     * the ship arrives at the warehouse of A and unloads the resources
     """
 
     log = logging.getLogger("ai.aiplayer.trademanager")
 
-    # resources that can be produced on another island and transported to where they are needed
+    # resources that can be produced on another island and transported
+    #  to where they are needed
     legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS,
         RES.SALT, RES.MEDICAL_HERBS]
 
@@ -75,7 +85,8 @@ class TradeManager(WorldObject):
         self.settlement_manager = settlement_manager
         self.owner = settlement_manager.owner
         self.data = {}  # resource_id: SingleResourceTradeManager
-        self.ships_sent = defaultdict(int)  # {settlement_manager_id: num_sent, ...}
+        self.ships_sent = defaultdict(int)
+        # {settlement_manager_id: num_sent, ...}
 
     def save(self, db):
         super(TradeManager, self).save(db)
@@ -90,7 +101,8 @@ class TradeManager(WorldObject):
         self.__init(settlement_manager)
         for db_row in db("SELECT rowid, resource_id FROM ai_single_resource_trade_manager"
                 " WHERE trade_manager = ?", worldid):
-            self.data[db_row[1]] = SingleResourceTradeManager.load(db, settlement_manager, db_row[0])
+            self.data[db_row[1]] = SingleResourceTradeManager.load(
+                db, settlement_manager, db_row[0])
         super(TradeManager, self).load(db, worldid)
 
     @classmethod
@@ -112,11 +124,13 @@ class TradeManager(WorldObject):
             resource_manager.finalize_requests()
 
     def request_quota_change(self, quota_holder, resource_id, amount):
-        """Request that the quota of quota_holder be changed to the given amount."""
+        """Request that the quota of quota_holder be changed
+        to the given amount."""
         if resource_id not in self.legal_resources:
             return
         if resource_id not in self.data:
-            self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
+            self.data[resource_id] = SingleResourceTradeManager(
+                self.settlement_manager, resource_id)
         self.data[resource_id].request_quota_change(quota_holder, amount)
 
     def get_quota(self, quota_holder, resource_id):
@@ -124,7 +138,8 @@ class TradeManager(WorldObject):
         if resource_id not in self.legal_resources:
             return 0.0
         if resource_id not in self.data:
-            self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
+            self.data[resource_id] = SingleResourceTradeManager(
+                self.settlement_manager, resource_id)
         return self.data[resource_id].get_quota(quota_holder)
 
     def get_total_import(self, resource_id):
@@ -132,7 +147,8 @@ class TradeManager(WorldObject):
         if resource_id not in self.legal_resources:
             return 0.0
         if resource_id not in self.data:
-            self.data[resource_id] = SingleResourceTradeManager(self.settlement_manager, resource_id)
+            self.data[resource_id] = SingleResourceTradeManager(
+                self.settlement_manager, resource_id)
         return self.data[resource_id].get_total_import()
 
     def load_resources(self, mission):
@@ -160,10 +176,12 @@ class TradeManager(WorldObject):
             if actual_amount <= 0:
                 continue  # TODO: consider unloading the resources if there is more than needed
             any_transferred = True
-            self.log.info('Transfer %d of %d to %s for a journey from %s to %s,'
-                ' total amount %d', actual_amount,
-                resource_id, ship, self.settlement_manager.settlement.get_component(NamedComponent).name,
-                destination_settlement_manager.settlement.get_component(NamedComponent).name, amount)
+            self.log.info('Transfer %d of %d to %s for a journey from %s '
+                          'to %s, total amount %d', actual_amount,
+                          resource_id, ship, self.settlement_manager.
+                          settlement.get_component(NamedComponent).name,
+                          destination_settlement_manager.settlement.
+                          get_component(NamedComponent).name, amount)
             old_amount = self.settlement_manager.settlement.get_component(
                 StorageComponent).inventory[resource_id]
             mission.move_resource(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
