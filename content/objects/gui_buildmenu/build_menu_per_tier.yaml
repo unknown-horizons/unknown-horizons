@@ -84,6 +84,8 @@ tab4:
 -
   - _ Fields
   - BUILDINGS.HOP_FIELD
+  - BUILDINGS.STONE_PIT #ToDo
+  - BUILDINGS.STONEMASON #ToDo
 -
   - _ Military
   - BUILDINGS.WEAPONSMITH
