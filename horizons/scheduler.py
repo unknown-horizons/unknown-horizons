@@ -112,7 +112,8 @@ class Scheduler(LivingObject):
                             callback.finish_callback()
 
                         try:
-                            self.calls_by_instance[callback.class_instance].remove(callback)
+                            self.calls_by_instance[
+                                callback.class_instance].remove(callback)
                         except ValueError:
                             pass
                             # also the callback can be deleted by e.g. rem_call

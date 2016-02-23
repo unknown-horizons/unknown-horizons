@@ -93,7 +93,8 @@ class TearingTool(NavigationTool):
                     # we're hovering over a building, but none is selected,
                     # so this tear action isn't allowed
                     warehouses = [b for b in self._hovering_over if
-                        b.id == BUILDINGS.WAREHOUSE and b.owner.is_local_player]
+                                  b.id == BUILDINGS.WAREHOUSE and
+                                  b.owner.is_local_player]
                     if warehouses:
                         # tried to tear a warehouse, this is especially
                         #  non-tearable

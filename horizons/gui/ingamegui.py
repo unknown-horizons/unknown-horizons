@@ -115,7 +115,8 @@ class IngameGui(LivingObject):
 
         icon = self.mainhud.findChild(name="minimap")
         self.minimap = Minimap(icon,
-                               targetrenderer=horizons.globals.fife.targetrenderer,
+                               targetrenderer=horizons.globals.fife.
+                               targetrenderer,
                                imagemanager=horizons.globals.fife.imagemanager,
                                session=self.session,
                                view=self.session.view)
@@ -360,7 +361,7 @@ class IngameGui(LivingObject):
         if len(self.session.selected_instances) == 1:
             tabclass = self.get_cur_menu().current_tab
             tabname = tabclass.__class__.__name__
-        db("INSERT INTO metadata (name, value) VALUES (?, ?)", 
+        db("INSERT INTO metadata (name, value) VALUES (?, ?)",
            'selected_tab', tabname)
 
         # Store user defined unit selection groups (Ctrl+number)

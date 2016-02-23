@@ -339,8 +339,10 @@ class MPPacket(object):
 
 class CommandPacket(MPPacket):
     """Packet to be sent from every player to every player every tick.
-    Contains list of packets to be executed as well as the designated execution time.
-    Also acts as ping (game will stop if a packet for a certain tick hasn't arrived)"""
+    Contains list of packets to be executed as well as the designated
+     execution time.
+    Also acts as ping (game will stop if a packet for a certain
+     tick hasn't arrived)"""
     def __init__(self, tick, player_id, commandlist):
         super(CommandPacket, self).__init__(tick, player_id)
         self.commandlist = commandlist
