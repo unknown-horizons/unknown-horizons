@@ -89,35 +89,42 @@ class ResourceManager(WorldObject):
 
     def save(self, db):
         super(ResourceManager, self).save(db)
-        db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)",
-            self.worldid, self.settlement_manager.worldid)
+        db("INSERT INTO ai_resource_manager(rowid, settlement_manager) "
+           "VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
         for resource_manager in self._data.itervalues():
             resource_manager.save(db, self.worldid)
         for settlement_manager_id, reserved_storage in \
                 self.trade_storage.iteritems():
             for resource_id, amount in reserved_storage.iteritems():
                 if amount > 1e-9:
-                    db("INSERT INTO ai_resource_manager_trade_storage(resource_manager,"
-                        " settlement_manager, resource, amount) VALUES(?, ?, ?, ?)",
-                        self.worldid, settlement_manager_id, resource_id, amount)
+                    db("INSERT INTO ai_resource_manager_trade_storage("
+                       "resource_manager, settlement_manager, resource, "
+                       "amount) VALUES(?, ?, ?, ?)",
+                       self.worldid, settlement_manager_id,
+                       resource_id, amount)
         for resource_id, amount in self.resource_requirements.iteritems():
-            db("INSERT INTO ai_resource_manager_requirement(resource_manager, resource, amount)"
-                " VALUES(?, ?, ?)", self.worldid, resource_id, amount)
+            db("INSERT INTO ai_resource_manager_requirement(resource_manager, "
+               "resource, amount) VALUES(?, ?, ?)",
+               self.worldid, resource_id, amount)
 
     def _load(self, db, settlement_manager):
-        worldid = db("SELECT rowid FROM ai_resource_manager WHERE settlement_manager = ?",
-            settlement_manager.worldid)[0][0]
+        worldid = db("SELECT rowid FROM ai_resource_manager WHERE "
+                     "settlement_manager = ?",
+                     settlement_manager.worldid)[0][0]
         super(ResourceManager, self).load(db, worldid)
         self.__init(settlement_manager)
         for db_row in db("SELECT rowid, resource_id, building_id FROM"
-                " ai_single_resource_manager WHERE resource_manager = ?", worldid):
-            self._data[(db_row[1], db_row[2])] = SingleResourceManager.load(db,
-                settlement_manager, db_row[0])
+                         " ai_single_resource_manager WHERE "
+                         "resource_manager = ?", worldid):
+            self._data[(db_row[1], db_row[2])] = SingleResourceManager.load(
+                db, settlement_manager, db_row[0])
         for db_row in db("SELECT settlement_manager, resource, amount FROM "
-                "ai_resource_manager_trade_storage WHERE resource_manager = ?", worldid):
+                         "ai_resource_manager_trade_storage WHERE "
+                         "resource_manager = ?", worldid):
             self.trade_storage[db_row[0]][db_row[1]] = db_row[2]
-        for db_row in db("SELECT resource, amount FROM ai_resource_manager_requirement"
-                " WHERE resource_manager = ?", worldid):
+        for db_row in db("SELECT resource, amount FROM "
+                         "ai_resource_manager_requirement"
+                         " WHERE resource_manager = ?", worldid):
             self.resource_requirements[db_row[0]] = db_row[1]
 
     @classmethod
@@ -131,19 +138,25 @@ class ResourceManager(WorldObject):
         it impossible to produce the resource."""
         options = []
         if resource_id in resource_producer:
-            for production_line, abstract_building in resource_producer[resource_id]:
+            for production_line, abstract_building in resource_producer[
+                    resource_id]:
                 possible = True
                 sources = []
-                for consumed_resource, amount in production_line.consumed_res.iteritems():
-                    next_production_ratio = abs(
-                        production_ratio * amount / production_line.produced_res[resource_id])
-                    subtree = self._get_chain(consumed_resource, resource_producer, next_production_ratio)
+                for consumed_resource, amount in \
+                        production_line.consumed_res.iteritems():
+                    next_production_ratio = abs(production_ratio * amount /
+                                                production_line.produced_res
+                                                [resource_id])
+                    subtree = self._get_chain(consumed_resource,
+                                              resource_producer,
+                                              next_production_ratio)
                     if not subtree:
                         possible = False
                         break
                     sources.append(subtree)
                 if possible:
-                    options.append(SimpleProductionChainSubtree(self, resource_id, production_line,
+                    options.append(SimpleProductionChainSubtree(
+                        self, resource_id, production_line,
                         abstract_building, sources, production_ratio))
         if not options:
             return None
@@ -154,10 +167,12 @@ class ResourceManager(WorldObject):
         to produce the resource."""
         resource_producer = {}
         for abstract_building in AbstractBuilding.buildings.itervalues():
-            for resource, production_line in abstract_building.lines.iteritems():
+            for resource, production_line in \
+                    abstract_building.lines.iteritems():
                 if resource not in resource_producer:
                     resource_producer[resource] = []
-                resource_producer[resource].append((production_line, abstract_building))
+                resource_producer[resource].append((production_line,
+                                                    abstract_building))
         chain = self._get_chain(resource_id, resource_producer, 1.0)
         chain.assign_identifier('')
         return chain
@@ -168,7 +183,8 @@ class ResourceManager(WorldObject):
         for resource_manager in self._data.itervalues():
             resource_manager.refresh()
 
-    def request_quota_change(self, quota_holder, priority, resource_id, building_id, amount):
+    def request_quota_change(self, quota_holder, priority, resource_id,
+                             building_id, amount):
         """
         Request that the quota of quota_holder be changed to the given amount
         for the specific resource/building pair.
@@ -186,7 +202,8 @@ class ResourceManager(WorldObject):
 
         key = (resource_id, building_id)
         if key not in self._data:
-            self._data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
+            self._data[key] = SingleResourceManager(self.settlement_manager,
+                                                    resource_id, building_id)
         self._data[key].request_quota_change(quota_holder, priority, amount)
 
     def get_quota(self, quota_holder, resource_id, building_id):
@@ -194,20 +211,26 @@ class ResourceManager(WorldObject):
         of building that should produce it."""
         key = (resource_id, building_id)
         if key not in self._data:
-            self._data[key] = SingleResourceManager(self.settlement_manager, resource_id, building_id)
+            self._data[key] = SingleResourceManager(self.settlement_manager,
+                                                    resource_id, building_id)
         return self._data[key].get_quota(quota_holder)
 
-    def request_deep_quota_change(self, quota_holder, priority, resource_id, amount):
+    def request_deep_quota_change(self, quota_holder, priority, resource_id,
+                                  amount):
         """Request that the quota of quota_holder be changed to the given
         amount recursively."""
         if resource_id not in self._chain:
             self._chain[resource_id] = self._make_chain(resource_id)
-        actual_amount = self._chain[resource_id].request_quota_change(quota_holder, amount, priority)
+        actual_amount = self._chain[resource_id].request_quota_change(
+            quota_holder, amount, priority)
         if not priority:
-            self._low_priority_requests[(quota_holder, resource_id)] = actual_amount
+            self._low_priority_requests[(quota_holder,
+                                         resource_id)] = actual_amount
         if actual_amount + 1e-9 < amount:
             # release excess production that can't be used
-            self._chain[resource_id].request_quota_change(quota_holder, actual_amount, priority)
+            self._chain[resource_id].request_quota_change(quota_holder,
+                                                          actual_amount,
+                                                          priority)
         return actual_amount
 
     def get_deep_quota(self, quota_holder, resource_id):
@@ -219,17 +242,23 @@ class ResourceManager(WorldObject):
     def replay_deep_low_priority_requests(self):
         """Retry adding low priority quota requests.
         This is required to make the feeder island mechanism work."""
-        for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
-            self.request_deep_quota_change(quota_holder, False, resource_id, amount)
+        for (quota_holder, resource_id), amount in \
+                self._low_priority_requests.iteritems():
+            self.request_deep_quota_change(quota_holder, False, resource_id,
+                                           amount)
 
     def record_expected_exportable_production(self, ticks):
         """Record the amount of production that should be transferred to
         other islands."""
-        for (quota_holder, resource_id), amount in self._low_priority_requests.iteritems():
+        for (quota_holder, resource_id), amount in \
+                self._low_priority_requests.iteritems():
             if quota_holder not in self._settlement_manager_id:
-                self._settlement_manager_id[quota_holder] = WorldObject.get_object_by_id(
-                    int(quota_holder[1:].split(',')[0])).settlement_manager.worldid
-            self.trade_storage[self._settlement_manager_id[quota_holder]][resource_id] += ticks * amount
+                self._settlement_manager_id[quota_holder] = \
+                    WorldObject.get_object_by_id(int(
+                        quota_holder[1:].split(',')[0])).\
+                    settlement_manager.worldid
+            self.trade_storage[self._settlement_manager_id[
+                quota_holder]][resource_id] += ticks * amount
 
     def get_total_export(self, resource_id):
         """Return the total amount of the given resource being (logically)
@@ -255,18 +284,25 @@ class ResourceManager(WorldObject):
         the settlement inventory."""
         if resource_id in [RES.TOOLS, RES.BOARDS]:
             return self.personality.default_resource_requirement
-        elif resource_id == RES.CANNON and self.settlement_manager.settlement.count_buildings(BUILDINGS.BOAT_BUILDER) \
-            and self.settlement_manager.settlement.owner.need_more_combat_ships:
+        elif resource_id == RES.CANNON and \
+                self.settlement_manager.settlement.count_buildings(
+                    BUILDINGS.BOAT_BUILDER) and \
+                self.settlement_manager.settlement.\
+                owner.need_more_combat_ships:
             return self.personality.default_cannon_requirement
-        elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS:
+        elif self.settlement_manager.feeder_island and \
+                resource_id == RES.BRICKS:
             return self.personality.default_feeder_island_brick_requirement \
                 if self.settlement_manager.owner.settler_level > 0 else 0
-        elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD:
+        elif not self.settlement_manager.feeder_island and \
+                resource_id == RES.FOOD:
             return self.personality.default_food_requirement
         return 0
 
     def get_unit_building_costs(self, resource_id):
-        return 0  # TODO: take into account all the resources that are needed to build units
+        return 0
+        # TODO: take into account all the resources that are needed
+        #  to build units
 
     def get_required_upgrade_resources(self, resource_id, upgrade_limit):
         """Return the amount of resource still needed to upgrade at most
@@ -274,7 +310,8 @@ class ResourceManager(WorldObject):
         limit_left = upgrade_limit
         needed = 0
         for residence in \
-            self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
+                self.settlement_manager.settlement.buildings_by_id.get(
+                    BUILDINGS.RESIDENTIAL, []):
             if limit_left <= 0:
                 break
             production = residence._upgrade_production
@@ -282,9 +319,11 @@ class ResourceManager(WorldObject):
                 continue
             for res, amount in production.get_consumed_resources().iteritems():
                 if res == resource_id and \
-                    residence.get_component(StorageComponent).inventory[resource_id] < abs(amount):
+                        residence.get_component(StorageComponent).inventory[
+                        resource_id] < abs(amount):
                     # TODO: take into account the residence's collector
-                    needed += abs(amount) - residence.get_component(StorageComponent).inventory[resource_id]
+                    needed += abs(amount) - residence.get_component(
+                        StorageComponent).inventory[resource_id]
                     limit_left -= 1
         return needed
 
@@ -295,43 +334,50 @@ class ResourceManager(WorldObject):
         """Return the amount of resource that should be in
         the settlement inventory to provide for all needs."""
         currently_reserved = self.get_total_trade_storage(resource_id)
-        future_reserve = int(math.ceil(self.get_total_export(resource_id)
-            * self.personality.reserve_time))
+        future_reserve = int(math.ceil(self.get_total_export(resource_id) *
+                                       self.personality.reserve_time))
         current_usage = int(math.ceil(
-            self.settlement_manager.get_resource_production_requirement(resource_id)
-            * self.personality.reserve_time))
+            self.settlement_manager.get_resource_production_requirement(
+                resource_id) * self.personality.reserve_time))
         unit_building_costs = self.get_unit_building_costs(resource_id)
-        upgrade_costs = self.get_required_upgrade_resources(resource_id,
-            self.personality.max_upgraded_houses)
+        upgrade_costs = self.get_required_upgrade_resources(
+            resource_id, self.personality.max_upgraded_houses)
         building_costs = self.get_required_building_resources(resource_id)
 
         total_needed = currently_reserved + future_reserve + current_usage + \
             unit_building_costs + upgrade_costs + building_costs
-        return max(total_needed, self.get_default_resource_requirement(resource_id))
+        return max(total_needed, self.get_default_resource_requirement(
+            resource_id))
 
     def manager_buysell(self):
         """Calculate the required inventory levels and make buy/sell decisions
         based on that."""
-        managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE,
-            RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT, RES.CANNON, RES.MEDICAL_HERBS]
+        managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD,
+                             RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS,
+                             RES.SALT, RES.CANNON, RES.MEDICAL_HERBS]
         settlement = self.settlement_manager.settlement
         assert isinstance(settlement, Settlement)
         inventory = settlement.get_component(StorageComponent).inventory
         session = self.settlement_manager.session
-        gold = self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD]
+        gold = self.settlement_manager.owner.get_component(
+            StorageComponent).inventory[RES.GOLD]
 
         buy_sell_list = []
         # [(importance (lower is better), resource_id, limit, sell), ...]
         for resource_id in managed_resources:
-            current_requirement = self.get_current_resource_requirement(resource_id)
+            current_requirement = self.get_current_resource_requirement(
+                resource_id)
             self.resource_requirements[resource_id] = current_requirement
-            max_buy = int(round(current_requirement * self.personality.buy_threshold))
+            max_buy = int(round(current_requirement *
+                                self.personality.buy_threshold))
             # when to stop buying
-            if 0 < current_requirement <= self.personality.low_requirement_threshold:
+            if 0 < current_requirement <= \
+                    self.personality.low_requirement_threshold:
                 # avoid not buying resources when very little is needed
                 #  in the first place
                 max_buy = current_requirement
-            min_sell = int(round(current_requirement * self.personality.sell_threshold))
+            min_sell = int(round(current_requirement *
+                                 self.personality.sell_threshold))
             # when to start selling
 
             if inventory[resource_id] < max_buy:
@@ -340,21 +386,32 @@ class ResourceManager(WorldObject):
                 # have 10, need 30, max_buy 20, importance 0.288
                 # have 19, need 30, max_buy 20, importance 0.578
                 # have 66, need 100, max_buy 67, importance 0.610
-                importance = inventory[resource_id] / float(current_requirement + 1) - math.log(max_buy
-                    + 10) / 100
+                importance = inventory[resource_id] / float(
+                    current_requirement + 1) - math.log(max_buy + 10) / 100
                 buy_sell_list.append((importance, resource_id, max_buy, False))
             elif inventory[resource_id] > min_sell:
-                price = int(session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
-                # have 50, need 30, min_sell 40, gold 5000, price 15, importance 0.08625
-                # have 100, need 30, min_sell 40, gold 5000, price 15, importance 0.02464
-                # have 50, need 30, min_sell 40, gold 0, price 15, importance 0.05341
-                # have 50, need 20, min_sell 27, gold 5000, price 15, importance 0.07717
-                # have 28, need 20, min_sell 27, gold 5000, price 15, importance 0.23150
-                # have 28, need 20, min_sell 27, gold 0, price 15, importance 0.14335
-                # have 50, need 30, min_sell 40, gold 10000000, price 15, importance 0.16248
-                # have 40, need 30, min_sell 40, gold 5000, price 30, importance 0.04452
-                importance = 100.0 / (inventory[resource_id] - min_sell + 10) / (current_requirement
-                    + 1) * math.log(gold + 200) / (price + 1)
+                price = int(session.db.get_res_value(resource_id) *
+                            TRADER.PRICE_MODIFIER_BUY)
+                # have 50, need 30, min_sell 40, gold 5000, price 15,
+                #  importance 0.08625
+                # have 100, need 30, min_sell 40, gold 5000, price 15,
+                #  importance 0.02464
+                # have 50, need 30, min_sell 40, gold 0, price 15,
+                #  importance 0.05341
+                # have 50, need 20, min_sell 27, gold 5000, price 15,
+                #  importance 0.07717
+                # have 28, need 20, min_sell 27, gold 5000, price 15,
+                #  importance 0.23150
+                # have 28, need 20, min_sell 27, gold 0, price 15,
+                #  importance 0.14335
+                # have 50, need 30, min_sell 40, gold 10000000, price 15,
+                #  importance 0.16248
+                # have 40, need 30, min_sell 40, gold 5000, price 30,
+                #  importance 0.04452
+                importance = 100.0 / (
+                    inventory[resource_id] - min_sell + 10) / (
+                    current_requirement + 1) * math.log(gold + 200) / (price +
+                                                                       1)
                 buy_sell_list.append((importance, resource_id, min_sell, True))
         if not buy_sell_list:
             return  # nothing to buy nor sell
@@ -372,29 +429,39 @@ class ResourceManager(WorldObject):
         # clear all slots we will no longer be needing
         for resource_id in managed_resources:
             if resource_id in bought_sold_resources:
-                sell = buy_sell_list[bought_sold_resources.index(resource_id)][3]
+                sell = buy_sell_list[
+                    bought_sold_resources.index(resource_id)][3]
                 if sell and resource_id in buy_list:
-                    ClearTradeSlot(trade_post, buy_list[resource_id]).execute(session)
+                    ClearTradeSlot(trade_post,
+                                   buy_list[resource_id]).execute(session)
                 elif not sell and resource_id in sell_list:
-                    ClearTradeSlot(trade_post, sell_list[resource_id]).execute(session)
+                    ClearTradeSlot(trade_post,
+                                   sell_list[resource_id]).execute(session)
             else:
                 if resource_id in buy_list:
-                    ClearTradeSlot(trade_post, buy_list[resource_id]).execute(session)
+                    ClearTradeSlot(trade_post,
+                                   buy_list[resource_id]).execute(session)
                 elif resource_id in sell_list:
-                    ClearTradeSlot(trade_post, sell_list[resource_id]).execute(session)
+                    ClearTradeSlot(trade_post,
+                                   sell_list[resource_id]).execute(session)
 
         # add any new offers
         for resource_id in managed_resources:
             if resource_id in bought_sold_resources:
-                limit, sell = buy_sell_list[bought_sold_resources.index(resource_id)][2:]
-                if sell and (resource_id
-                        not in sell_list or trade_slots[sell_list[resource_id]].limit != limit):
-                    SetTradeSlot(trade_post, trade_post.get_free_slot(resource_id),
-                        resource_id, True, limit).execute(session)
-                elif not sell and (resource_id
-                        not in buy_list or trade_slots[buy_list[resource_id]].limit != limit):
-                    SetTradeSlot(trade_post, trade_post.get_free_slot(resource_id),
-                        resource_id, False, limit).execute(session)
+                limit, sell = buy_sell_list[bought_sold_resources.index(
+                    resource_id)][2:]
+                if sell and (resource_id not in sell_list or
+                             trade_slots[sell_list[resource_id]].
+                             limit != limit):
+                    SetTradeSlot(trade_post,
+                                 trade_post.get_free_slot(resource_id),
+                                 resource_id, True, limit).execute(session)
+                elif not sell and (resource_id not in buy_list or
+                                   trade_slots[buy_list[resource_id]].
+                                   limit != limit):
+                    SetTradeSlot(trade_post,
+                                 trade_post.get_free_slot(resource_id),
+                                 resource_id, False, limit).execute(session)
 
     def finish_tick(self):
         """Clear data used during a single tick."""
@@ -404,7 +471,8 @@ class ResourceManager(WorldObject):
         if not hasattr(self, "settlement_manager"):
             return 'UninitializedResourceManager'
         result = 'ResourceManager(%s, %d)' % (
-            self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
+            self.settlement_manager.settlement.get_component(
+                NamedComponent).name, self.worldid)
         for resource_manager in self._data.itervalues():
             res = resource_manager.resource_id
             if res not in [RES.FOOD, RES.TEXTILE, RES.BRICKS]:
@@ -440,23 +508,28 @@ class SingleResourceManager(WorldObject):
 
     def save(self, db, resource_manager_id):
         super(SingleResourceManager, self).save(db)
-        db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id,"
-            " low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)",
-            self.worldid, resource_manager_id, self.resource_id, self.building_id,
-            self.low_priority, self.available, self.total)
+        db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, "
+           "resource_id, building_id, low_priority, available, total) "
+           "VALUES(?, ?, ?, ?, ?, ?, ?)", self.worldid, resource_manager_id,
+           self.resource_id, self.building_id, self.low_priority,
+           self.available, self.total)
         for identifier, (quota, priority) in self.quotas.iteritems():
-            db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager,"
-                " identifier, quota, priority) VALUES(?, ?, ?, ?)", self.worldid, identifier, quota, priority)
+            db("INSERT INTO ai_single_resource_manager_quota("
+               "single_resource_manager, identifier, quota, priority) VALUES"
+               "(?, ?, ?, ?)", self.worldid, identifier, quota, priority)
 
     def _load(self, db, settlement_manager, worldid):
         super(SingleResourceManager, self).load(db, worldid)
-        (resource_id, building_id, self.low_priority, self.available, self.total) = \
-            db("SELECT resource_id, building_id, low_priority, available, total"
+        (resource_id, building_id, self.low_priority,
+         self.available, self.total) = db(
+            "SELECT resource_id, building_id, low_priority, available, total"
             " FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
         self.__init(settlement_manager, resource_id, building_id)
 
-        for (identifier, quota, priority) in db("SELECT identifier, quota, priority"
-                " FROM ai_single_resource_manager_quota WHERE single_resource_manager = ?", worldid):
+        for (identifier, quota, priority) in db(
+                "SELECT identifier, quota, priority FROM "
+                "ai_single_resource_manager_quota WHERE "
+                "single_resource_manager = ?", worldid):
             self.quotas[identifier] = (quota, priority)
 
     @classmethod
@@ -470,9 +543,11 @@ class SingleResourceManager(WorldObject):
         buildings of this type."""
         if self.resource_id in self.virtual_resources:
             return self.virtual_production
-        buildings = self.settlement_manager.settlement.buildings_by_id.get(self.building_id, [])
-        return sum(AbstractBuilding.buildings[building.id].get_production_level(building,
-            self.resource_id) for building in buildings)
+        buildings = self.settlement_manager.settlement.buildings_by_id.get(
+            self.building_id, [])
+        return sum(AbstractBuilding.buildings[building.id].
+                   get_production_level(building,
+                   self.resource_id) for building in buildings)
 
     def refresh(self):
         """Adjust the quotas to take into account the current production
@@ -484,26 +559,31 @@ class SingleResourceManager(WorldObject):
         else:
             # unable to honor current quota assignments
             self.available = 0.0
-            if currently_used - self.total <= self.low_priority and self.low_priority > self.epsilon:
+            if currently_used - self.total <= self.low_priority and \
+                    self.low_priority > self.epsilon:
                 # the problem can be solved by reducing low priority quotas
-                new_low_priority = max(0.0, self.low_priority - (currently_used - self.total))
-                multiplier = 0.0 if new_low_priority < self.epsilon else new_low_priority / self.low_priority
+                new_low_priority = max(0.0, self.low_priority -
+                                       (currently_used - self.total))
+                multiplier = 0.0 if new_low_priority < self.epsilon else \
+                    new_low_priority / self.low_priority
                 assert 0.0 <= multiplier < 1.0
                 for quota_holder, (quota, priority) in self.quotas.iteritems():
                     if quota > self.epsilon and not priority:
-                        self.quotas[quota_holder] = (quota * multiplier, priority)
+                        self.quotas[quota_holder] = (quota * multiplier,
+                                                     priority)
                     elif not priority:
                         self.quotas[quota_holder] = (0.0, priority)
                 self.low_priority = new_low_priority
             elif currently_used > self.total + self.epsilon:
                 # decreasing all high priority quotas equally, removing low
                 #  priority quotas completely
-                multiplier = 0.0 if self.total < self.epsilon else self.total / (
-                    currently_used - self.low_priority)
+                multiplier = 0.0 if self.total < self.epsilon else \
+                    self.total / (currently_used - self.low_priority)
                 assert 0.0 <= multiplier < 1.0
                 for quota_holder, (quota, priority) in self.quotas.iteritems():
                     if quota > self.epsilon and priority:
-                        self.quotas[quota_holder] = (quota * multiplier, priority)
+                        self.quotas[quota_holder] = (quota * multiplier,
+                                                     priority)
                     else:
                         self.quotas[quota_holder] = (0.0, priority)
                 self.low_priority = 0.0
@@ -545,21 +625,25 @@ class SingleResourceManager(WorldObject):
             # lower the amount of reserved production
             change = self.quotas[quota_holder][0] - amount
             self.available += change
-            self.quotas[quota_holder] = (self.quotas[quota_holder][0] - change, priority)
+            self.quotas[quota_holder] = (self.quotas[quota_holder][0] - change,
+                                         priority)
             if not priority:
                 self.low_priority -= change
         else:
-            if (priority and self.available < (amount - self.quotas[quota_holder][0])
-                    and self.low_priority > self.epsilon):
-                # can't get the full requested amount but can get more by reusing
-                # some of the low priority quotas
-                new_low_priority = max(0.0,
-                    self.low_priority - (amount - self.quotas[quota_holder][0] - self.available))
-                multiplier = 0.0 if new_low_priority < self.epsilon else new_low_priority / self.low_priority
+            if (priority and self.available < (amount - self.quotas[
+                    quota_holder][0]) and self.low_priority > self.epsilon):
+                # can't get the full requested amount but can get more by
+                # reusing some of the low priority quotas
+                new_low_priority = max(0.0, self.low_priority - (
+                    amount - self.quotas[quota_holder][0] - self.available))
+                multiplier = 0.0 if new_low_priority < self.epsilon else \
+                    new_low_priority / self.low_priority
                 assert 0.0 <= multiplier < 1.0
-                for other_quota_holder, (quota, other_priority) in self.quotas.iteritems():
+                for other_quota_holder, (quota, other_priority) in \
+                        self.quotas.iteritems():
                     if quota > self.epsilon and not other_priority:
-                        self.quotas[other_quota_holder] = (quota * multiplier, other_priority)
+                        self.quotas[other_quota_holder] = (quota * multiplier,
+                                                           other_priority)
                     elif not other_priority:
                         self.quotas[other_quota_holder] = (0.0, other_priority)
                 self.available += self.low_priority - new_low_priority
@@ -568,7 +652,8 @@ class SingleResourceManager(WorldObject):
             # raise the amount of reserved production as much as possible
             change = min(amount - self.quotas[quota_holder][0], self.available)
             self.available -= change
-            self.quotas[quota_holder] = (self.quotas[quota_holder][0] + change, priority)
+            self.quotas[quota_holder] = (self.quotas[quota_holder][0] + change,
+                                         priority)
             if not priority:
                 self.low_priority += change
 
@@ -582,11 +667,11 @@ class SingleResourceManager(WorldObject):
     def __str__(self):
         if not hasattr(self, "resource_id"):
             return 'UninitializedSingleResourceManager'
-        result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id,
-            self.available, self.total, self.low_priority)
+        result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (
+            self.resource_id, self.available, self.total, self.low_priority)
         for quota_holder, (quota, priority) in self.quotas.iteritems():
-            result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '',
-                quota, quota_holder)
+            result += '\n  %squota assignment %.5f to %s' % (
+                'priority ' if priority else '', quota, quota_holder)
         return result
 
 
@@ -611,8 +696,8 @@ class SimpleProductionChainSubtreeChoice(object):
         amount that can be reserved."""
         total_reserved = 0.0
         for option in self.options:
-            total_reserved += option.request_quota_change(quota_holder, max(0.0,
-                amount - total_reserved), priority)
+            total_reserved += option.request_quota_change(quota_holder, max(
+                0.0, amount - total_reserved), priority)
         return total_reserved
 
     def get_quota(self, quota_holder):
