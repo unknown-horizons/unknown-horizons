@@ -124,7 +124,8 @@ class Scheduler(LivingObject):
         # run jobs added in the loop above
         self._run_additional_jobs()
 
-        assert (not self.schedule) or self.schedule.iterkeys().next() > self.cur_tick
+        assert (not self.schedule) or\
+            self.schedule.iterkeys().next() >self.cur_tick
 
     def before_ticking(self):
         """Called after game load and before game has started.
@@ -194,7 +195,8 @@ class Scheduler(LivingObject):
         return removed_objs
 
     def rem_all_classinst_calls(self, class_instance):
-        """Removes all callbacks from the scheduler that belong to the class instance class_inst."""
+        """Removes all callbacks from the scheduler that belong to
+        the class instance class_inst."""
         """
         for key in self.schedule:
             callback_objects = self.schedule[key]
@@ -204,7 +206,8 @@ class Scheduler(LivingObject):
         """
         if class_instance in self.calls_by_instance:
             for callback_obj in self.calls_by_instance[class_instance]:
-                callback_obj.invalid = True  # don't remove, finding them all takes too long
+                callback_obj.invalid = True
+                # don't remove, finding them all takes too long
             del self.calls_by_instance[class_instance]
 
         # filter additional callbacks as well
@@ -230,7 +233,8 @@ class Scheduler(LivingObject):
                     removed_calls += 1
 
         test = 0
-        if removed_calls > 0:  # there also must be calls in the calls_by_instance dict
+        if removed_calls > 0:
+            # there also must be calls in the calls_by_instance dict
             for i in xrange(len(self.calls_by_instance[instance]) - 1, -1, -1):
                 obj = self.calls_by_instance[instance][i]
                 if obj.callback == callback:
@@ -241,10 +245,11 @@ class Scheduler(LivingObject):
                 del self.calls_by_instance[instance]
 
         for i in xrange(len(self.additional_cur_tick_schedule) - 1, -1, -1):
-            if self.additional_cur_tick_schedule[i].class_instance is instance and \
-                self.additional_cur_tick_schedule[i].callback == callback:
-                    del callback_objects[i]
-                    removed_calls += 1
+            if self.additional_cur_tick_schedule[i].class_instance is\
+                    instance and self.additional_cur_tick_schedule[i].\
+                    callback == callback:
+                del callback_objects[i]
+                removed_calls += 1
 
         return removed_calls
 

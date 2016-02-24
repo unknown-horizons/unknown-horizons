@@ -88,8 +88,8 @@ class ConditionSharingSettlement(Condition):
             return None
 
     def get_identifier(self, **environment):
-        return super(ConditionSharingSettlement, self).get_identifier(**environment) \
-            + str(environment['player'].worldid)
+        return super(ConditionSharingSettlement, self).get_identifier(
+            **environment) + str(environment['player'].worldid)
 
 
 class ConditionHostile(Condition):

@@ -74,8 +74,8 @@ class TradeManager(WorldObject):
 
     # resources that can be produced on another island and transported
     #  to where they are needed
-    legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS,
-        RES.SALT, RES.MEDICAL_HERBS]
+    legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS,
+                       RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]
 
     def __init__(self, settlement_manager):
         super(TradeManager, self).__init__()
