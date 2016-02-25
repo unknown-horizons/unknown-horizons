@@ -63,7 +63,7 @@ class BuildingEvaluator(object):
         for weight, value in other_components:
             others += weight
         result = (1 - others) * (main_component if main_component is not
-                                                   None else none_value)
+                                 None else none_value)
         for weight, value in other_components:
             if value is None:
                 result += weight * none_value
@@ -84,7 +84,8 @@ class BuildingEvaluator(object):
         """
 
         shortest_distance = None
-        for building in area_builder.settlement.buildings_by_id.get(building_id, []):
+        for building in area_builder.settlement.buildings_by_id.get(
+                building_id, []):
             distance = builder.position.distance(building.position)
             if distance <= Entities.buildings[builder.building_id].radius:
                 shortest_distance = distance if shortest_distance is None \
@@ -107,7 +108,8 @@ class BuildingEvaluator(object):
         shortest_distance = None
         for building in production_builder.collector_buildings:
             distance = builder.position.distance(building.position)
-            if not must_be_in_range or distance <= Entities.buildings[builder.building_id].radius:
+            if not must_be_in_range or distance <= Entities.buildings[
+                    builder.building_id].radius:
                 shortest_distance = distance if shortest_distance is None \
                     or distance < shortest_distance else shortest_distance
         return shortest_distance
@@ -132,7 +134,8 @@ class BuildingEvaluator(object):
     def _get_alignment_from_outline(cls, area_builder, outline_coords_list):
         """Return an alignment value given the list of coordinates that form
         the outline of a shape."""
-        personality = area_builder.owner.personality_manager.get('BuildingEvaluator')
+        personality = area_builder.owner.personality_manager.get(
+            'BuildingEvaluator')
         alignment = 0
         for coords in outline_coords_list:
             if coords in area_builder.land_manager.roads:
@@ -179,12 +182,15 @@ class BuildingEvaluator(object):
         road_cost = self.area_builder.get_road_connection_cost(self.builder)
         if road_cost is None:
             return None
-        return self.builder.have_resources(self.area_builder.land_manager, extra_resources=road_cost)
+        return self.builder.have_resources(self.area_builder.land_manager,
+                                           extra_resources=road_cost)
 
     def _register_builder_position(self):
-        self.area_builder.register_change_list(list(self.builder.position.tuple_iter()),
+        self.area_builder.register_change_list(
+            list(self.builder.position.tuple_iter()),
             BUILDING_PURPOSE.RESERVED, None)
-        self.area_builder.register_change_list([self.builder.position.origin.to_tuple()],
+        self.area_builder.register_change_list(
+            [self.builder.position.origin.to_tuple()],
             self.purpose, None)
 
     def execute(self):

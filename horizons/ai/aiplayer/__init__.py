@@ -47,7 +47,8 @@ from internationaltrademanager import InternationalTradeManager
 from settlementfounder import SettlementFounder
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
-# all subclasses of AbstractBuilding have to be imported here to register the available buildings
+# all subclasses of AbstractBuilding have to be imported here to register
+#  the available buildings
 from building import AbstractBuilding
 from building.farm import AbstractFarm, FarmEvaluator
 from building.field import AbstractField
@@ -95,8 +96,10 @@ class AIPlayer(GenericAI):
     tick_interval = 32
     tick_long_interval = 128
 
-    def __init__(self, session, id, name, color, clientid, difficulty_level, **kwargs):
-        super(AIPlayer, self).__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
+    def __init__(self, session, id, name, color, clientid, difficulty_level,
+                 **kwargs):
+        super(AIPlayer, self).__init__(session, id, name, color, clientid,
+                                       difficulty_level, **kwargs)
         self.need_more_ships = False
         self.need_more_combat_ships = True
         self.need_feeder_island = False
@@ -116,17 +119,20 @@ class AIPlayer(GenericAI):
         run_in = self.tick_interval * position // ai_players + 1
         Scheduler().add_new_object(Callback(self.tick), self, run_in=run_in)
         run_in = self.tick_long_interval * position // ai_players + 1
-        Scheduler().add_new_object(Callback(self.tick_long), self, run_in=run_in)
+        Scheduler().add_new_object(Callback(self.tick_long), self,
+                                   run_in=run_in)
 
     def finish_init(self):
-        # initialize the things that couldn't be initialized before because of the loading order
+        """initialize the things that couldn't be initialized before because
+        of the loading order"""
         self.refresh_ships()
         self.start()
 
     def refresh_ships(self):
         """ called when a new ship is added to the fleet """
         for ship in self.world.ships:
-            if ship.owner == self and ship.has_component(SelectableComponent) and ship not in self.ships:
+            if ship.owner == self and ship.has_component(
+                    SelectableComponent) and ship not in self.ships:
                 self.log.info('%s Added %s to the fleet', self, ship)
                 self.ships[ship] = self.shipStates.idle
                 if isinstance(ship, MovingWeaponHolder):
@@ -137,7 +143,9 @@ class AIPlayer(GenericAI):
         self.need_more_combat_ships = False
 
     def __init(self):
-        self._enabled = True  # whether this player is enabled (currently disabled at the end of the game)
+        self._enabled = True
+        # whether this player is enabled (currently disabled
+        #  at the end of the game)
         self.world = self.session.world
         self.islands = {}
         self.settlement_managers = []
@@ -198,23 +206,26 @@ class AIPlayer(GenericAI):
         super(AIPlayer, self).save(db)
 
         # save the player
-        db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?", self.worldid)
+        db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?",
+           self.worldid)
 
         current_callback = Callback(self.tick)
         calls = Scheduler().get_classinst_calls(self, current_callback)
-        assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+        assert len(calls) == 1, "got %s calls for saving %s: %s" % (
+            len(calls), current_callback, calls)
         remaining_ticks = max(calls.values()[0], 1)
 
         current_callback_long = Callback(self.tick_long)
         calls = Scheduler().get_classinst_calls(self, current_callback_long)
-        assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls),
-            current_callback_long, calls)
+        assert len(calls) == 1, "got %s calls for saving %s: %s" % (
+            len(calls), current_callback_long, calls)
         remaining_ticks_long = max(calls.values()[0], 1)
 
-        db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island,"
-            " remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
-            self.worldid, self.need_more_ships, self.need_more_combat_ships,
-            self.need_feeder_island, remaining_ticks, remaining_ticks_long)
+        db("INSERT INTO ai_player(rowid, need_more_ships, "
+           "need_more_combat_ships, need_feeder_island,"
+           " remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
+           self.worldid, self.need_more_ships, self.need_more_combat_ships,
+           self.need_feeder_island, remaining_ticks, remaining_ticks_long)
 
         # save the ships
         for ship, state in self.ships.iteritems():
@@ -253,11 +264,16 @@ class AIPlayer(GenericAI):
         self.personality_manager = PersonalityManager.load(db, self)
         self.__init()
 
-        self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
-            db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks,"
-            " remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
-        Scheduler().add_new_object(Callback(self.tick), self, run_in=remaining_ticks)
-        Scheduler().add_new_object(Callback(self.tick_long), self, run_in=remaining_ticks_long)
+        self.need_more_ships, self.need_more_combat_ships, \
+            self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
+            db("SELECT need_more_ships, need_more_combat_ships, "
+               "need_feeder_island, remaining_ticks,"
+               " remaining_ticks_long FROM ai_player WHERE rowid = ?",
+               worldid)[0]
+        Scheduler().add_new_object(Callback(self.tick), self,
+                                   run_in=remaining_ticks)
+        Scheduler().add_new_object(Callback(self.tick_long), self,
+                                   run_in=remaining_ticks_long)
 
     def finish_loading(self, db):
         """ This is called separately because most objects are loaded after
@@ -265,7 +281,8 @@ class AIPlayer(GenericAI):
 
         # load the ships
 
-        for ship_id, state_id in db("SELECT rowid, state FROM ai_ship WHERE owner = ?", self.worldid):
+        for ship_id, state_id in db("SELECT rowid, state FROM ai_ship "
+                                    "WHERE owner = ?", self.worldid):
             ship = WorldObject.get_object_by_id(ship_id)
             self.ships[ship] = self.shipStates[state_id]
 
@@ -282,51 +299,61 @@ class AIPlayer(GenericAI):
         self.behavior_manager = BehaviorManager.load(db, self)
 
         # load the land managers
-        for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):
+        for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE "
+                             "owner = ?", self.worldid):
             land_manager = LandManager.load(db, self, worldid)
             self.islands[land_manager.island.worldid] = land_manager
 
         # load the settlement managers and settlement foundation missions
         for land_manager in self.islands.itervalues():
-            db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?",
-                land_manager.worldid)
+            db_result = db("SELECT rowid FROM ai_settlement_manager WHERE "
+                           "land_manager = ?", land_manager.worldid)
             if db_result:
-                settlement_manager = SettlementManager.load(db, self, db_result[0][0])
+                settlement_manager = SettlementManager.load(db, self,
+                                                            db_result[0][0])
                 self.settlement_managers.append(settlement_manager)
                 self._settlement_manager_by_settlement_id[
                     settlement_manager.settlement.worldid] = settlement_manager
 
                 # load the foundation ship preparing missions
-                db_result = db("SELECT rowid FROM ai_mission_prepare_foundation_ship"
-                    " WHERE settlement_manager = ?", settlement_manager.worldid)
+                db_result = db("SELECT rowid FROM "
+                               "ai_mission_prepare_foundation_ship"
+                               " WHERE settlement_manager = ?",
+                               settlement_manager.worldid)
                 for (mission_id,) in db_result:
                     self.missions.add(PrepareFoundationShip.load(
                         db, mission_id, self.report_success,
                         self.report_failure))
             else:
-                mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?",
-                    land_manager.worldid)[0][0]
+                mission_id = db("SELECT rowid FROM "
+                                "ai_mission_found_settlement WHERE "
+                                "land_manager = ?",
+                                land_manager.worldid)[0][0]
                 self.missions.add(FoundSettlement.load(
                     db, mission_id, self.report_success, self.report_failure))
 
         for settlement_manager in self.settlement_managers:
             # load the domestic trade missions
-            db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE source_settlement_manager = ?",
-                settlement_manager.worldid)
+            db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE "
+                           "source_settlement_manager = ?",
+                           settlement_manager.worldid)
             for (mission_id,) in db_result:
                 self.missions.add(DomesticTrade.load(
                     db, mission_id, self.report_success, self.report_failure))
 
             # load the special domestic trade missions
-            db_result = db("SELECT rowid FROM ai_mission_special_domestic_trade WHERE"
-                " source_settlement_manager = ?", settlement_manager.worldid)
+            db_result = db("SELECT rowid FROM "
+                           "ai_mission_special_domestic_trade WHERE"
+                           " source_settlement_manager = ?",
+                           settlement_manager.worldid)
             for (mission_id,) in db_result:
                 self.missions.add(SpecialDomesticTrade.load(
                     db, mission_id, self.report_success, self.report_failure))
 
             # load the international trade missions
-            db_result = db("SELECT rowid FROM ai_mission_international_trade WHERE settlement_manager = ?",
-                settlement_manager.worldid)
+            db_result = db("SELECT rowid FROM ai_mission_international_trade "
+                           "WHERE settlement_manager = ?",
+                           settlement_manager.worldid)
             for (mission_id,) in db_result:
                 self.missions.add(InternationalTrade.load(
                     db, mission_id, self.report_success, self.report_failure))

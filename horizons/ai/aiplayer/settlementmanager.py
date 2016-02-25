@@ -119,7 +119,8 @@ class SettlementManager(WorldObject):
         self.island = self.land_manager.island
         self.settlement = self.land_manager.settlement
         self.feeder_island = land_manager.feeder_island
-        self.personality = self.owner.personality_manager.get('SettlementManager')
+        self.personality = self.owner.personality_manager.get(
+            'SettlementManager')
 
         # create a production chain for every building material, settler
         # consumed resource, and resources that have to be imported from
@@ -174,8 +175,8 @@ class SettlementManager(WorldObject):
 
     def save(self, db):
         super(SettlementManager, self).save(db)
-        db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)",
-            self.worldid, self.land_manager.worldid)
+        db("INSERT INTO ai_settlement_manager(rowid, land_manager) "
+           "VALUES(?, ?)", self.worldid, self.land_manager.worldid)
 
         self.village_builder.save(db)
         self.production_builder.save(db)
@@ -193,7 +194,8 @@ class SettlementManager(WorldObject):
         super(SettlementManager, self).load(db, worldid)
 
         # load the main part
-        land_manager_id = db("SELECT land_manager FROM ai_settlement_manager WHERE rowid = ?",
+        land_manager_id = db(
+            "SELECT land_manager FROM ai_settlement_manager WHERE rowid = ?",
             worldid)[0][0]
         land_manager = WorldObject.get_object_by_id(land_manager_id)
 
@@ -223,36 +225,50 @@ class SettlementManager(WorldObject):
 
     def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes,
                                    settler_taxes, citizen_taxes,
-            sailor_upgrades, pioneer_upgrades, settler_upgrades):
+                                   sailor_upgrades, pioneer_upgrades,
+                                   settler_upgrades):
         """Set new tax settings and building permissions."""
         if abs(self.settlement.tax_settings[TIER.SAILORS] - sailor_taxes) > 1e-9:
             self.log.info("%s set sailors' taxes from %.1f to %.1f", self,
-                self.settlement.tax_settings[TIER.SAILORS], sailor_taxes)
-            SetTaxSetting(self.settlement, TIER.SAILORS, sailor_taxes).execute(self.land_manager.session)
+                          self.settlement.tax_settings[TIER.SAILORS],
+                          sailor_taxes)
+            SetTaxSetting(self.settlement, TIER.SAILORS,
+                          sailor_taxes).execute(self.land_manager.session)
         if abs(self.settlement.tax_settings[TIER.PIONEERS] - pioneer_taxes) > 1e-9:
             self.log.info("%s set pioneers' taxes from %.1f to %.1f", self,
-                self.settlement.tax_settings[TIER.PIONEERS], pioneer_taxes)
-            SetTaxSetting(self.settlement, TIER.PIONEERS, pioneer_taxes).execute(self.land_manager.session)
+                          self.settlement.tax_settings[TIER.PIONEERS],
+                          pioneer_taxes)
+            SetTaxSetting(self.settlement, TIER.PIONEERS,
+                          pioneer_taxes).execute(self.land_manager.session)
         if abs(self.settlement.tax_settings[TIER.SETTLERS] - settler_taxes) > 1e-9:
             self.log.info("%s set settlers' taxes from %.1f to %.1f", self,
-                self.settlement.tax_settings[TIER.SETTLERS], settler_taxes)
-            SetTaxSetting(self.settlement, TIER.SETTLERS, settler_taxes).execute(self.land_manager.session)
+                          self.settlement.tax_settings[TIER.SETTLERS],
+                          settler_taxes)
+            SetTaxSetting(self.settlement, TIER.SETTLERS,
+                          settler_taxes).execute(self.land_manager.session)
         if abs(self.settlement.tax_settings[TIER.CITIZENS] - citizen_taxes) > 1e-9:
             self.log.info("%s set citizens' taxes from %.1f to %.1f", self,
-                self.settlement.tax_settings[TIER.CITIZENS], citizen_taxes)
+                          self.settlement.tax_settings[TIER.CITIZENS],
+                          citizen_taxes)
             SetTaxSetting(self.settlement, TIER.CITIZENS,
-                citizen_taxes).execute(self.land_manager.session)
+                          citizen_taxes).execute(self.land_manager.session)
         if self.settlement.upgrade_permissions[TIER.SAILORS] != sailor_upgrades:
-            self.log.info('%s set sailor upgrade permissions to %s', self, sailor_upgrades)
-            SetSettlementUpgradePermissions(self.settlement, TIER.SAILORS,
+            self.log.info('%s set sailor upgrade permissions to %s',
+                          self, sailor_upgrades)
+            SetSettlementUpgradePermissions(
+                self.settlement, TIER.SAILORS,
                 sailor_upgrades).execute(self.land_manager.session)
         if self.settlement.upgrade_permissions[TIER.PIONEERS] != pioneer_upgrades:
-            self.log.info('%s set pioneer upgrade permissions to %s', self, pioneer_upgrades)
-            SetSettlementUpgradePermissions(self.settlement, TIER.PIONEERS,
+            self.log.info('%s set pioneer upgrade permissions to %s',
+                          self, pioneer_upgrades)
+            SetSettlementUpgradePermissions(
+                self.settlement, TIER.PIONEERS,
                 pioneer_upgrades).execute(self.land_manager.session)
         if self.settlement.upgrade_permissions[TIER.SETTLERS] != settler_upgrades:
-            self.log.info('%s set settler upgrade permissions to %s', self, settler_upgrades)
-            SetSettlementUpgradePermissions(self.settlement, TIER.SETTLERS,
+            self.log.info('%s set settler upgrade permissions to %s',
+                          self, settler_upgrades)
+            SetSettlementUpgradePermissions(
+                self.settlement, TIER.SETTLERS,
                 settler_upgrades).execute(self.land_manager.session)
 
     def _set_taxes_and_permissions_prefix(self, prefix):
@@ -262,11 +278,16 @@ class SettlementManager(WorldObject):
         pioneer_taxes = getattr(self.personality, '%s_pioneer_taxes' % prefix)
         settler_taxes = getattr(self.personality, '%s_settler_taxes' % prefix)
         citizen_taxes = getattr(self.personality, '%s_citizen_taxes' % prefix)
-        sailor_upgrades = getattr(self.personality, '%s_sailor_upgrades' % prefix)
-        pioneer_upgrades = getattr(self.personality, '%s_pioneer_upgrades' % prefix)
-        settler_upgrades = getattr(self.personality, '%s_settler_upgrades' % prefix)
-        self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes,
-            sailor_upgrades, pioneer_upgrades, settler_upgrades)
+        sailor_upgrades = getattr(self.personality,
+                                  '%s_sailor_upgrades' % prefix)
+        pioneer_upgrades = getattr(self.personality,
+                                   '%s_pioneer_upgrades' % prefix)
+        settler_upgrades = getattr(self.personality,
+                                   '%s_settler_upgrades' % prefix)
+        self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes,
+                                        settler_taxes, citizen_taxes,
+                                        sailor_upgrades, pioneer_upgrades,
+                                        settler_upgrades)
 
     def can_provide_resources(self):
         """Return a boolean showing whether this settlement is complete enough
@@ -274,18 +295,21 @@ class SettlementManager(WorldObject):
         if self.village_builder.tent_queue:
             return False
         settler_houses = 0
-        residences = self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, [])
+        residences = self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL,
+                                                         [])
         for building in residences:
             if building.level >= TIER.SETTLERS:
                 settler_houses += 1
-        if settler_houses > len(residences) * self.personality.new_settlement_settler_ratio:
+        if settler_houses > len(
+                residences) * self.personality.new_settlement_settler_ratio:
             return True
         return False
 
     def get_resource_production(self, resource_id):
         """Return the current production capacity (including import)
         per tick of the given resource."""
-        # as long as there are enough collectors it is correct to calculate it this way
+        # as long as there are enough collectors it is correct to calculate
+        #  it this way
         if resource_id == RES.LIQUOR and not self.feeder_island:
             # normal settlements go straight for get-together so their separate
             #  liquor production is zero.
@@ -294,35 +318,44 @@ class SettlementManager(WorldObject):
             return self.get_resource_production(RES.GET_TOGETHER) * \
                 self.production_chain[RES.GET_TOGETHER].get_ratio(RES.LIQUOR)
         else:
-            return self.production_chain[resource_id].get_final_production_level()
+            return self.production_chain[
+                resource_id].get_final_production_level()
 
     def get_resource_production_requirement(self, resource_id):
         """Return the amount of resource per tick the settlement needs."""
-        if (resource_id not in self.__resident_resource_usage_cache
-                or self.__resident_resource_usage_cache[resource_id][0] != Scheduler().cur_tick):
+        if (resource_id not in self.__resident_resource_usage_cache or
+                self.__resident_resource_usage_cache[resource_id][0] !=
+                Scheduler().cur_tick):
             total = 0
             if resource_id == RES.BRICKS:
-                total = self.personality.dummy_bricks_requirement if self.owner.settler_level > 0 else 0
+                total = self.personality.dummy_bricks_requirement if \
+                    self.owner.settler_level > 0 else 0
                 # dummy value to cause bricks production to be built
             elif resource_id == RES.BOARDS:
                 total = self.personality.dummy_boards_requirement
                 # dummy value to cause boards production to be built
             elif resource_id == RES.TOOLS:
-                total = self.personality.dummy_tools_requirement if self.owner.settler_level > 1 else 0
+                total = self.personality.dummy_tools_requirement if \
+                    self.owner.settler_level > 1 else 0
                 # dummy value to cause tools production to be built
             elif resource_id == RES.LIQUOR:
-                total = self.production_chain[RES.GET_TOGETHER].get_ratio(RES.LIQUOR) \
-                    * self.get_resource_production_requirement(RES.GET_TOGETHER)
+                total = self.production_chain[RES.GET_TOGETHER].get_ratio(
+                    RES.LIQUOR) * self.get_resource_production_requirement(
+                    RES.GET_TOGETHER)
             else:
-                for residence in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
-                    for production in residence.get_component(Producer).get_productions():
+                for residence in self.settlement.buildings_by_id.get(
+                        BUILDINGS.RESIDENTIAL, []):
+                    for production in residence.get_component(
+                            Producer).get_productions():
                         production_line = production._prod_line
                         if resource_id in production_line.consumed_res:
                             # subtract because the amount will be negative
-                            total -= float(production_line.consumed_res[resource_id]) / production_line.time \
+                            total -= float(production_line.consumed_res[
+                                resource_id]) / production_line.time \
                                 / GAME_SPEED.TICKS_PER_SECOND
 
-            self.__resident_resource_usage_cache[resource_id] = (Scheduler().cur_tick, total)
+            self.__resident_resource_usage_cache[resource_id] = (
+                Scheduler().cur_tick, total)
         return self.__resident_resource_usage_cache[resource_id][1]
 
     def _manual_upgrade(self, level, limit):
@@ -338,21 +371,26 @@ class SettlementManager(WorldObject):
         """
 
         num_upgrading = 0
-        for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
+        for building in self.settlement.buildings_by_id.get(
+                BUILDINGS.RESIDENTIAL, []):
             if building.level == level:
                 upgrade_production = building._upgrade_production
-                if upgrade_production is not None and not upgrade_production.is_paused():
+                if upgrade_production is not None and not \
+                        upgrade_production.is_paused():
                     num_upgrading += 1
                     if num_upgrading >= limit:
                         return False
 
         upgraded_any = False
-        for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
+        for building in self.settlement.buildings_by_id.get(
+                BUILDINGS.RESIDENTIAL, []):
             if building.level == level:
                 upgrade_production = building._upgrade_production
-                if upgrade_production is not None and upgrade_production.is_paused():
+                if upgrade_production is not None and \
+                        upgrade_production.is_paused():
                     ToggleActive(building.get_component(Producer),
-                        upgrade_production).execute(self.land_manager.session)
+                                 upgrade_production).execute(
+                        self.land_manager.session)
                     num_upgrading += 1
                     upgraded_any = True
                     if num_upgrading >= limit:
@@ -373,19 +411,27 @@ class SettlementManager(WorldObject):
         for settlement_manager in self.owner.settlement_managers:
             usage = settlement_manager.get_resource_production_requirement(
                 resource_id) * self.personality.production_level_multiplier
-            production = settlement_manager.get_resource_production(resource_id)
-            resource_import = settlement_manager.trade_manager.get_total_import(resource_id)
-            resource_export = settlement_manager.resource_manager.get_total_export(resource_id)
+            production = settlement_manager.get_resource_production(
+                resource_id)
+            resource_import = \
+                settlement_manager.trade_manager.get_total_import(resource_id)
+            resource_export = \
+                settlement_manager.resource_manager.get_total_export(
+                    resource_id)
             total += usage
             if settlement_manager is not self:
                 total -= production + resource_export - resource_import
         return max(0.0, total)
 
     def _start_feeder_tick(self):
-        self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD))
-        self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE))
-        self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR))
-        self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT))
+        self.log.info('%s food requirement %.5f', self,
+                      self.get_ideal_production_level(RES.FOOD))
+        self.log.info('%s textile requirement %.5f', self,
+                      self.get_ideal_production_level(RES.TEXTILE))
+        self.log.info('%s liquor requirement %.5f', self,
+                      self.get_ideal_production_level(RES.LIQUOR))
+        self.log.info('%s salt requirement %.5f', self,
+                      self.get_ideal_production_level(RES.SALT))
         self.log.info('%s tobacco products requirement %.5f', self,
                       self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
         self.log.info('%s medical herbs requirement %.5f', self,

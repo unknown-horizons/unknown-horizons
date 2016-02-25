@@ -37,7 +37,7 @@ class RoadPlanner(object):
     """
 
     def __call__(self, personality, source, destination, destination_beacon, path_nodes,
-            blocked_coords=None):
+                 blocked_coords=None):
         """
         Return the path from the source to the destination or None if it is impossible.
 
