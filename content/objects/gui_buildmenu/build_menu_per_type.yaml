@@ -83,12 +83,14 @@ tab4:
 -
   - _ Mining
   - BUILDINGS.CLAY_PIT
-  - BUILDINGS.BRICKYARD
   - BUILDINGS.MINE
-  - BUILDINGS.SMELTERY
+  - BUILDINGS.STONE_PIT
 -
   - _ Workshops
   - BUILDINGS.TOOLMAKER
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.SMELTERY
+  - BUILDINGS.STONEMASON
 
 tab5:
 - icon: icons/tabwidget/buildmenu/class/military
