@@ -44,18 +44,20 @@ class OverviewTab(TabInterface):
             else:
                 player_color = 'no_player'
             emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
-            self.widget.child_finder('player_emblem').image = emblem % player_color
+            self.widget.child_finder(
+                'player_emblem').image = emblem % player_color
 
         if self.__class__.has_stance:
             self.init_stance_widget()
 
     def refresh(self):
         if (hasattr(self.instance, 'name') or self.instance.has_component(
-            NamedComponent)) and self.widget.child_finder('name'):
+                NamedComponent)) and self.widget.child_finder('name'):
             name_widget = self.widget.child_finder('name')
             # Named objects can't be translated.
             if self.instance.has_component(NamedComponent):
-                name_widget.text = self.instance.get_component(NamedComponent).name
+                name_widget.text = self.instance.get_component(
+                    NamedComponent).name
             else:
                 name_widget.text = _(self.instance.name)
 
@@ -73,18 +75,22 @@ class OverviewTab(TabInterface):
         if not self.instance.has_remove_listener(self.on_instance_removed):
             self.instance.add_remove_listener(self.on_instance_removed)
         if hasattr(self.instance, 'settlement') and \
-           self.instance.settlement is not None and \
-           not self.instance.settlement.has_change_listener(self._schedule_refresh):
+                self.instance.settlement is not None and not \
+                self.instance.settlement.has_change_listener(
+                    self._schedule_refresh):
             # listen for settlement name changes displayed as tab headlines
-            self.instance.settlement.add_change_listener(self._schedule_refresh)
+            self.instance.settlement.add_change_listener(
+                self._schedule_refresh)
 
     def hide(self):
         super(OverviewTab, self).hide()
         if self.instance is not None:
             self.instance.discard_change_listener(self.refresh)
             self.instance.discard_remove_listener(self.on_instance_removed)
-        if hasattr(self.instance, 'settlement') and self.instance.settlement is not None:
-            self.instance.settlement.discard_change_listener(self._schedule_refresh)
+        if hasattr(self.instance,
+                   'settlement') and self.instance.settlement is not None:
+            self.instance.settlement.discard_change_listener(
+                self._schedule_refresh)
 
     def on_instance_removed(self):
         self.on_remove()
@@ -96,6 +102,7 @@ class OverviewTab(TabInterface):
         if stance_widget is not None:
             stance_widget.init(self.instance)
             self.add_remove_listener(stance_widget.remove)
+
 
 class GroundUnitOverviewTab(OverviewTab):
     widget = 'overview_groundunit.xml'
@@ -112,13 +119,6 @@ class GroundUnitOverviewTab(OverviewTab):
         weapon_storage_widget.init(self.instance)
         self.add_remove_listener(weapon_storage_widget.remove)
 
-#added from old groundunittabs.py
-#class GroundUnitOverviewTab(OverviewTab):
-#	widget = 'overview_war_groundunit.xml'
-#	helptext = _lazy("Groundunit overview")
-#
-#	def init_widget(self):
-#		super(GroundUnitOverviewTab, self).init_widget()
 
 class GenericOverviewTab(OverviewTab):
     """Name and running costs."""
