@@ -18,12 +18,12 @@ components:
 - HealthComponent: {maxhealth: 10}
 - DepositComponent:
     resources:
-      RES.RAW_STONE:
+      RES.STONE_DEPOSIT:
         min_amount: 750
         max_amount: 1250
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.RAW_STONE: 1000000}
+        slot_sizes: {RES.STONE_DEPOSIT: 1000000}
 actionsets:
   TIER.NATURE:
     as_2x2:
