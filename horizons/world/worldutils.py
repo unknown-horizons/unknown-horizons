@@ -120,8 +120,10 @@ def add_resource_deposits(world, resource_multiplier):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT]
 	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
+	StoneDeposit = Entities.buildings[BUILDINGS.STONE_DEPOSIT]
 	clay_deposit_locations = []
 	mountain_locations = []
+	stone_deposit_locations = []
 
 	def get_valid_locations(usable_part, island, width, height):
 		"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
@@ -207,11 +209,23 @@ def add_resource_deposits(world, resource_multiplier):
 		local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
 		num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
 		place_objects(local_mountain_locations, num_local_mountains, Mountain)
+		
+		# place the local stone deposits
+		local_stone_deposit_locations = get_valid_locations(usable_part, island, *StoneDeposit.size)
+		stone_deposit_locations.extend(local_stone_deposit_locations)
+		local_stone_deposits_base = 0.3 + len(local_clay_deposit_locations) ** 0.7 / 60.0
+		num_local_stone_deposits = int(max(0, resource_multiplier * min(3, local_stone_deposits_base + abs(world.session.random.gauss(0, 0.7)))))
+		place_objects(local_stone_deposit_locations, num_local_stone_deposits, StoneDeposit)
 
 	# place some extra clay deposits
 	extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
 	num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_clay_base + abs(world.session.random.gauss(0, 1))))))
 	place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
+	
+	# place some extra stone deposits
+	extra_stone_base = len(stone_deposit_locations) ** 0.8 / 400.0
+	num_extra_stone_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_stone_base + abs(world.session.random.gauss(0, 1))))))
+	place_objects(stone_deposit_locations, num_extra_stone_deposits, StoneDeposit)
 
 	# place some extra mountains
 	extra_mountains_base = len(mountain_locations) ** 0.8 / 700.0
