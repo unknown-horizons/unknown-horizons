@@ -213,7 +213,7 @@ def add_resource_deposits(world, resource_multiplier):
 		# place the local stone deposits
 		local_stone_deposit_locations = get_valid_locations(usable_part, island, *StoneDeposit.size)
 		stone_deposit_locations.extend(local_stone_deposit_locations)
-		local_stone_deposits_base = 0.3 + len(local_clay_deposit_locations) ** 0.7 / 60.0
+		local_stone_deposits_base = 0.3 + len(local_stone_deposit_locations) ** 0.7 / 60.0
 		num_local_stone_deposits = int(max(0, resource_multiplier * min(3, local_stone_deposits_base + abs(world.session.random.gauss(0, 0.7)))))
 		place_objects(local_stone_deposit_locations, num_local_stone_deposits, StoneDeposit)
 
