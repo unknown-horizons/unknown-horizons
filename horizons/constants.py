@@ -179,6 +179,8 @@ class BUILDINGS:
 	
 	BREWERY          = 68
 	HOP_FIELD        = 69
+	
+	STONE_DEPOSIT    = 70
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -307,6 +309,7 @@ class RES:
 	BLACKDEATH       = 98
 	FIRE             = 99
 	# 92-99 reserved for services
+	RAW_STONE        = 100
 
 class WEAPONS:
 	CANNON = RES.CANNON
