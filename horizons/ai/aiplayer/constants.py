@@ -71,7 +71,15 @@ class BUILDING_PURPOSE:
 	FIRE_STATION = 31
 	DOCTOR = 32
 	HERBARY = 33
-
+	#STONE_PIT = 34
+	#STONEMASON = 35
+	ALVEARIES = 36
+	COCOA_FIELD = 37
+	CORN_FIELD = 38
+	HOP_FIELD = 39
+	SPICE_FIELD = 40
+	VINEYARD = 41
+	CATTLE_RUN = 42
 	purpose_to_building = {}
 	building_to_purpose = {}
 
@@ -108,6 +116,15 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.FIRE_STATION] = BUILDINGS.FIRE_STATION
 		cls.purpose_to_building[cls.DOCTOR] = BUILDINGS.DOCTOR
 		cls.purpose_to_building[cls.HERBARY] = BUILDINGS.HERBARY
+		#cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
+		#cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONE_MANSON
+		cls.purpose_to_building[cls.ALVEARIES] = BUILDINGS.ALVEARIES
+		cls.purpose_to_building[cls.COCOA_FIELD] = BUILDINGS.COCOA_FIELD
+		cls.purpose_to_building[cls.CORN_FIELD] = BUILDINGS.CORN_FIELD
+		cls.purpose_to_building[cls.HOP_FIELD] = BUILDINGS.HOP_FIELD
+		cls.purpose_to_building[cls.SPICE_FIELD] = BUILDINGS.SPICE_FIELD
+		cls.purpose_to_building[cls.VINEYARD] = BUILDINGS.VINEYARD
+		cls.purpose_to_building[cls.CATTLE_RUN] = BUILDINGS.CATTLE_RUN
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose
