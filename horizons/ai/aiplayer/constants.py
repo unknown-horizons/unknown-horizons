@@ -111,7 +111,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.DOCTOR] = BUILDINGS.DOCTOR
 		cls.purpose_to_building[cls.HERBARY] = BUILDINGS.HERBARY
 		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
-		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONE_MANSON
+		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONEMASON
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose

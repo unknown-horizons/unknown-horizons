@@ -50,7 +50,7 @@ class StonemasonEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('StonemasonEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.STONEMASON].radius * personality.distance_penalty
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.stone_pit_distance_importance, distance_to_stone_pit), distance_penalty)
+		distance = cls._weighted_distance(distance_to_collector, [(personality.stone_pit_distance_importance, distance_to_stone_pit)], distance_penalty)
 		value = float(Entities.buildings[BUILDINGS.STONEMASON].radius) / distance + alignment * personality.alignment_importance
 		return StonemasonEvaluator(area_builder, builder, value)
 
@@ -61,4 +61,4 @@ class StonemasonEvaluator(BuildingEvaluator):
 AbstractStonemason.register_buildings()
 
 decorators.bind_all(AbstractStonemason)
-decorators.bind_all(StonemasonEvaluatorEvaluator)
+decorators.bind_all(StonemasonEvaluator)
