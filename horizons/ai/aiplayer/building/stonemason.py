@@ -58,7 +58,7 @@ class StonemasonEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.STONE_PIT
 
-AbstractToolmaker.register_buildings()
+AbstractStonemason.register_buildings()
 
 decorators.bind_all(AbstractStonemason)
 decorators.bind_all(StonemasonEvaluatorEvaluator)

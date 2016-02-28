@@ -39,7 +39,7 @@ class AbstractStonePit(AbstractBuilding):
 
 	@property
 	def evaluator_class(self):
-		return ClayPitEvaluator
+		return StonePitEvaluator
 
 	@classmethod
 	def register_buildings(cls):
@@ -57,7 +57,7 @@ class StonePitEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.STONE_PIT
 
-AbstractClayPit.register_buildings()
+AbstractStonePit.register_buildings()
 
 decorators.bind_all(AbstractStonePit)
 decorators.bind_all(StonePitEvaluator)
