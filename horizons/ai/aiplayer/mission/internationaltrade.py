@@ -116,30 +116,40 @@ class InternationalTrade(ShipMission):
                       self.sold_resource, self.bought_resource, self.ship)
 
     def _move_to_my_settlement(self):
-        self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position,
+        self._move_to_warehouse_area(
+            self.settlement_manager.settlement.warehouse.position,
             Callback(self._reached_my_settlement),
             Callback(self._move_to_my_settlement),
-            'Unable to move to my settlement (%s)'
-            % self.settlement_manager.settlement.get_component(NamedComponent).name)
+            'Unable to move to my settlement (%s)' %
+            self.settlement_manager.settlement.get_component
+            (NamedComponent).name)
 
     def _get_max_sellable_amount(self, available_amount):
-        if self.sold_resource not in self.settlement.get_component(TradePostComponent).buy_list:
+        if self.sold_resource not in self.settlement.get_component(
+                TradePostComponent).buy_list:
             return 0
-        if (self.settlement.get_component(TradePostComponent).buy_list[self.sold_resource]
-                >= self.settlement.get_component(StorageComponent).inventory[self.sold_resource]):
+        if (self.settlement.get_component(TradePostComponent).buy_list[
+                self.sold_resource] >= self.settlement.get_component(
+                StorageComponent).inventory[self.sold_resource]):
             return 0
         if available_amount <= 0:
             return 0
-        price = int(self.owner.session.db.get_res_value(self.sold_resource) * TRADER.PRICE_MODIFIER_SELL)
-        return min(self.settlement.get_component(StorageComponent).inventory[self.sold_resource]
-            - self.settlement.get_component(TradePostComponent).buy_list[self.sold_resource],
-            self.settlement.owner.get_component(
-            StorageComponent).inventory[RES.GOLD] // price, available_amount)
+        price = int(self.owner.session.db.get_res_value
+                    (self.sold_resource) * TRADER.PRICE_MODIFIER_SELL)
+        return min(self.settlement.get_component(StorageComponent).
+                   inventory[self.sold_resource] -
+                   self.settlement.get_component(TradePostComponent).
+                   buy_list[self.sold_resource],
+                   self.settlement.owner.get_component(StorageComponent).
+                   inventory[RES.GOLD] // price, available_amount)
 
     def _reached_my_settlement(self):
         self.log.info('%s reached my warehouse area (%s)', self,
-            self.settlement_manager.settlement.get_component(NamedComponent).name)
-        available_amount = max(0, self.settlement_manager.settlement.get_component(StorageComponent)
+                      self.settlement_manager.settlement.get_component(
+                          NamedComponent).name)
+        available_amount = max(
+            0,
+            self.settlement_manager.settlement.get_component(StorageComponent)
             .inventory[self.sold_resource] - self.settlement_manager.
             resource_manager.resource_requirements[self.sold_resource])
         sellable_amount = self._get_max_sellable_amount(available_amount)
@@ -150,35 +160,44 @@ class InternationalTrade(ShipMission):
                 return
         else:
             self.move_resource(self.ship, self.settlement_manager.settlement,
-                self.sold_resource, -sellable_amount)
+                               self.sold_resource, -sellable_amount)
             self.log.info('%s loaded resources', self)
         self.state = self.missionStates.moving_to_other_settlement
         self._move_to_other_settlement()
 
     def _move_to_other_settlement(self):
-        self._move_to_warehouse_area(self.settlement.warehouse.position,
+        self._move_to_warehouse_area(
+            self.settlement.warehouse.position,
             Callback(self._reached_other_settlement),
-            Callback(self._move_to_other_settlement), 'Unable to move to the other settlement ({})'
+            Callback(self._move_to_other_settlement),
+            'Unable to move to the other settlement ({})'
             .format(self.settlement.get_component(NamedComponent).name))
 
     def _get_max_buyable_amount(self):
         if self.bought_resource is None:
             return 0
-        if self.bought_resource not in self.settlement.get_component(TradePostComponent).sell_list:
+        if self.bought_resource not in self.settlement.get_component(
+                TradePostComponent).sell_list:
             return 0
-        if (self.settlement.get_component(TradePostComponent).sell_list[self.bought_resource]
-                >= self.settlement.get_component(StorageComponent).inventory[self.bought_resource]):
+        if (self.settlement.get_component(TradePostComponent).sell_list[
+                self.bought_resource] >= self.settlement.get_component(
+                StorageComponent).inventory[self.bought_resource]):
             return 0
-        needed_amount = self.settlement_manager.resource_manager.resource_requirements[self.bought_resource] - \
+        needed_amount = self.settlement_manager.resource_manager. \
+            resource_requirements[self.bought_resource] - \
             self.settlement_manager.settlement.get_component(
-            StorageComponent).inventory[self.bought_resource]
+                StorageComponent).inventory[self.bought_resource]
         if needed_amount <= 0:
             return 0
-        price = int(self.owner.session.db.get_res_value(self.bought_resource) * TRADER.PRICE_MODIFIER_BUY)
-        return min(self.settlement.get_component(StorageComponent).inventory[self.bought_resource]
-            - self.settlement.get_component(TradePostComponent).sell_list[self.bought_resource],
-            self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD] // price,
-                needed_amount)
+        price = int(self.owner.session.db.get_res_value(
+            self.bought_resource) * TRADER.PRICE_MODIFIER_BUY)
+        return min(self.settlement.get_component(
+            StorageComponent).inventory[self.bought_resource] -
+            self.settlement.get_component(TradePostComponent).
+            sell_list[self.bought_resource],
+            self.settlement_manager.owner.get_component(
+                StorageComponent).inventory[RES.GOLD] // price,
+            needed_amount)
 
     def _reached_other_settlement(self):
         self.log.info('%s reached the other warehouse area (%s)', self,

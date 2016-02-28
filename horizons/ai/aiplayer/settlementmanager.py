@@ -252,19 +252,22 @@ class SettlementManager(WorldObject):
                           citizen_taxes)
             SetTaxSetting(self.settlement, TIER.CITIZENS,
                           citizen_taxes).execute(self.land_manager.session)
-        if self.settlement.upgrade_permissions[TIER.SAILORS] != sailor_upgrades:
+        if self.settlement.upgrade_permissions[
+                TIER.SAILORS] != sailor_upgrades:
             self.log.info('%s set sailor upgrade permissions to %s',
                           self, sailor_upgrades)
             SetSettlementUpgradePermissions(
                 self.settlement, TIER.SAILORS,
                 sailor_upgrades).execute(self.land_manager.session)
-        if self.settlement.upgrade_permissions[TIER.PIONEERS] != pioneer_upgrades:
+        if self.settlement.upgrade_permissions[
+                TIER.PIONEERS] != pioneer_upgrades:
             self.log.info('%s set pioneer upgrade permissions to %s',
                           self, pioneer_upgrades)
             SetSettlementUpgradePermissions(
                 self.settlement, TIER.PIONEERS,
                 pioneer_upgrades).execute(self.land_manager.session)
-        if self.settlement.upgrade_permissions[TIER.SETTLERS] != settler_upgrades:
+        if self.settlement.upgrade_permissions[
+                TIER.SETTLERS] != settler_upgrades:
             self.log.info('%s set settler upgrade permissions to %s',
                           self, settler_upgrades)
             SetSettlementUpgradePermissions(
