@@ -82,7 +82,7 @@ class BUILDING_PURPOSE:
 	SPICE_FIELD = 40
 	VINEYARD = 41
 	CATTLE_RUN = 42
-
+	#PASTRY_SHOP = 43
 	purpose_to_building = {} # type: Dict[int, int]
 	building_to_purpose = {} # type: Dict[int, int]
 
@@ -128,6 +128,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.SPICE_FIELD] = BUILDINGS.SPICE_FIELD
 		cls.purpose_to_building[cls.VINEYARD] = BUILDINGS.VINEYARD
 		cls.purpose_to_building[cls.CATTLE_RUN] = BUILDINGS.CATTLE_RUN
+		#cls.purpose_to_building[cls.PASTRY_SHOP] = BUILDINGS.PASTRY_SHOP
 
 		for purpose, building_id in cls.purpose_to_building.items():
 			cls.building_to_purpose[building_id] = purpose
