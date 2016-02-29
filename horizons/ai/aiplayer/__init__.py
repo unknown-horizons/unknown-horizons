@@ -83,6 +83,9 @@ from .specialdomestictrademanager import SpecialDomesticTradeManager
 from .unitbuilder import UnitBuilder=
 
 #from building.pastryshop import AbstractPastryShop
+from building.bakery import AbstractBakery
+from building.blender import AbstractBlender
+from building.windmill import AbstractWindmill
 
 
 
