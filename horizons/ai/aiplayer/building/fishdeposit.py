@@ -25,22 +25,22 @@ from horizons.util.python import decorators
 
 
 class AbstractFishDeposit(AbstractBuilding):
-	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-		""" You don't actually build fish deposits """
-		return 0
+    def get_expected_cost(self, resource_id, production_needed, settlement_manager):
+        """ You don't actually build fish deposits """
+        return 0
 
-	@property
-	def directly_buildable(self):
-		""" You don't actually build fish deposits """
-		return False
+    @property
+    def directly_buildable(self):
+        """ You don't actually build fish deposits """
+        return False
 
-	@property
-	def ignore_production(self):
-		return True
+    @property
+    def ignore_production(self):
+        return True
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.FISH_DEPOSIT] = cls
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.FISH_DEPOSIT] = cls
 
 AbstractFishDeposit.register_buildings()
 

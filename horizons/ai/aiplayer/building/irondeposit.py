@@ -25,13 +25,13 @@ from horizons.util.python import decorators
 
 
 class AbstractIronDeposit(AbstractFakeResourceDeposit):
-	@classmethod
-	def get_higher_level_building_id(cls):
-		return BUILDINGS.MINE
+    @classmethod
+    def get_higher_level_building_id(cls):
+        return BUILDINGS.MINE
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.MOUNTAIN] = cls
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.MOUNTAIN] = cls
 
 AbstractIronDeposit.register_buildings()
 

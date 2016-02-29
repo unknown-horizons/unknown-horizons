@@ -93,7 +93,8 @@ class BUILDING_PURPOSE:
         cls.purpose_to_building[cls.BRICKYARD] = BUILDINGS.BRICKYARD
         cls.purpose_to_building[cls.PASTURE] = BUILDINGS.PASTURE
         cls.purpose_to_building[cls.WEAVER] = BUILDINGS.WEAVER
-        cls.purpose_to_building[cls.SUGARCANE_FIELD] = BUILDINGS.SUGARCANE_FIELD
+        cls.purpose_to_building[
+            cls.SUGARCANE_FIELD] = BUILDINGS.SUGARCANE_FIELD
         cls.purpose_to_building[cls.DISTILLERY] = BUILDINGS.DISTILLERY
         cls.purpose_to_building[cls.MAIN_SQUARE] = BUILDINGS.MAIN_SQUARE
         cls.purpose_to_building[cls.RESIDENCE] = BUILDINGS.RESIDENTIAL
@@ -103,7 +104,8 @@ class BUILDING_PURPOSE:
         cls.purpose_to_building[cls.MINE] = BUILDINGS.MINE
         cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY
         cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER
-        cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER
+        cls.purpose_to_building[
+            cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER
         cls.purpose_to_building[cls.BOAT_BUILDER] = BUILDINGS.BOAT_BUILDER
         cls.purpose_to_building[cls.SIGNAL_FIRE] = BUILDINGS.SIGNAL_FIRE
         cls.purpose_to_building[cls.TOBACCO_FIELD] = BUILDINGS.TOBACCO_FIELD

@@ -29,8 +29,8 @@ from horizons.ai.aiplayer.resourcemanager import ResourceManager
 from horizons.ai.aiplayer.trademanager import TradeManager
 
 from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
-from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, \
-    MountainCoverageGoal
+from horizons.ai.aiplayer.goal.depositcoverage import \
+    ClayDepositCoverageGoal, MountainCoverageGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import \
     EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, \
@@ -228,25 +228,29 @@ class SettlementManager(WorldObject):
                                    sailor_upgrades, pioneer_upgrades,
                                    settler_upgrades):
         """Set new tax settings and building permissions."""
-        if abs(self.settlement.tax_settings[TIER.SAILORS] - sailor_taxes) > 1e-9:
+        if abs(self.settlement.tax_settings[TIER.SAILORS] -
+                sailor_taxes) > 1e-9:
             self.log.info("%s set sailors' taxes from %.1f to %.1f", self,
                           self.settlement.tax_settings[TIER.SAILORS],
                           sailor_taxes)
             SetTaxSetting(self.settlement, TIER.SAILORS,
                           sailor_taxes).execute(self.land_manager.session)
-        if abs(self.settlement.tax_settings[TIER.PIONEERS] - pioneer_taxes) > 1e-9:
+        if abs(self.settlement.tax_settings[TIER.PIONEERS] -
+                pioneer_taxes) > 1e-9:
             self.log.info("%s set pioneers' taxes from %.1f to %.1f", self,
                           self.settlement.tax_settings[TIER.PIONEERS],
                           pioneer_taxes)
             SetTaxSetting(self.settlement, TIER.PIONEERS,
                           pioneer_taxes).execute(self.land_manager.session)
-        if abs(self.settlement.tax_settings[TIER.SETTLERS] - settler_taxes) > 1e-9:
+        if abs(self.settlement.tax_settings[TIER.SETTLERS] -
+                settler_taxes) > 1e-9:
             self.log.info("%s set settlers' taxes from %.1f to %.1f", self,
                           self.settlement.tax_settings[TIER.SETTLERS],
                           settler_taxes)
             SetTaxSetting(self.settlement, TIER.SETTLERS,
                           settler_taxes).execute(self.land_manager.session)
-        if abs(self.settlement.tax_settings[TIER.CITIZENS] - citizen_taxes) > 1e-9:
+        if abs(self.settlement.tax_settings[TIER.CITIZENS] -
+                citizen_taxes) > 1e-9:
             self.log.info("%s set citizens' taxes from %.1f to %.1f", self,
                           self.settlement.tax_settings[TIER.CITIZENS],
                           citizen_taxes)

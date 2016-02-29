@@ -29,50 +29,50 @@ from horizons.entities import Entities
 
 
 class AbstractTobacconist(AbstractBuilding):
-	@property
-	def evaluator_class(self):
-		return TobacconistEvaluator
+    @property
+    def evaluator_class(self):
+        return TobacconistEvaluator
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.TOBACCONIST] = cls
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.TOBACCONIST] = cls
 
 
 class TobacconistEvaluator(BuildingEvaluator):
-	@classmethod
-	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.TOBACCONIST, (x, y), orientation)
+    @classmethod
+    def create(cls, area_builder, x, y, orientation):
+        builder = BasicBuilder.create(BUILDINGS.TOBACCONIST, (x, y), orientation)
 
-		distance_to_farm = None
-		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM, []):
-			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[BUILDINGS.TOBACCONIST].radius:
-				tobacco_producer = False
-				for provider in building.get_providers():
-					if isinstance(provider, Entities.buildings[BUILDINGS.TOBACCO_FIELD]):
-						tobacco_producer = True
-						break
-				if tobacco_producer:
-					distance_to_farm = distance \
-						if distance_to_farm is None or distance < distance_to_farm else distance_to_farm
+        distance_to_farm = None
+        for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM, []):
+            distance = builder.position.distance(building.position)
+            if distance <= Entities.buildings[BUILDINGS.TOBACCONIST].radius:
+                tobacco_producer = False
+                for provider in building.get_providers():
+                    if isinstance(provider, Entities.buildings[BUILDINGS.TOBACCO_FIELD]):
+                        tobacco_producer = True
+                        break
+                if tobacco_producer:
+                    distance_to_farm = distance \
+                        if distance_to_farm is None or distance < distance_to_farm else distance_to_farm
 
-		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
-		if distance_to_collector is None:
-			return None  # require tobacconists to have a collector building in range
+        distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
+        if distance_to_collector is None:
+            return None  # require tobacconists to have a collector building in range
 
-		personality = area_builder.owner.personality_manager.get('TobacconistEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.TOBACCONIST].radius * personality.distance_penalty
+        personality = area_builder.owner.personality_manager.get('TobacconistEvaluator')
+        distance_penalty = Entities.buildings[BUILDINGS.TOBACCONIST].radius * personality.distance_penalty
 
-		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-		distance = cls._weighted_distance(distance_to_collector,
-			[(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
-		value = (float(Entities.buildings[BUILDINGS.TOBACCONIST].radius) / distance + alignment
-			* personality.alignment_importance)
-		return TobacconistEvaluator(area_builder, builder, value)
+        alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+        distance = cls._weighted_distance(distance_to_collector,
+            [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
+        value = (float(Entities.buildings[BUILDINGS.TOBACCONIST].radius) / distance + alignment
+            * personality.alignment_importance)
+        return TobacconistEvaluator(area_builder, builder, value)
 
-	@property
-	def purpose(self):
-		return BUILDING_PURPOSE.TOBACCONIST
+    @property
+    def purpose(self):
+        return BUILDING_PURPOSE.TOBACCONIST
 
 AbstractTobacconist.register_buildings()
 
