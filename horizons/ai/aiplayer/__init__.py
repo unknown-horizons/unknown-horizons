@@ -73,6 +73,9 @@ from building.signalfire import AbstractSignalFire
 from building.tobacconist import AbstractTobacconist
 from building.saltponds import AbstractSaltPonds
 #from building.pastryshop import AbstractPastryShop
+from building.bakery import AbstractBakery
+from building.blender import AbstractBlender
+from building.windmill import AbstractWindmill
 
 from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal

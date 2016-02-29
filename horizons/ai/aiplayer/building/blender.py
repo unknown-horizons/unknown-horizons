@@ -27,40 +27,40 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
-class AbstractBakery(AbstractBuilding):
+class AbstractBlender(AbstractBuilding):
 	@property
 	def evaluator_class(self):
-		return BakeryEvaluator
+		return BlenderEvaluator
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.BAKERY] = cls
+		cls._available_buildings[BUILDINGS.BLENDER] = cls
 
-class BakeryEvaluator(BuildingEvaluator):
+class BlenderEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.BAKERY, (x, y), orientation)
+		builder = BasicBuilder.create(BUILDINGS.BLENDER, (x, y), orientation)
 		
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
 			return None
 
-		distance_to_windmill = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.WINDMILL)
+		distance_to_farm = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.FARM)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 
-		personality = area_builder.owner.personality_manager.get('BakeryEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.BAKERY].radius * personality.distance_penalty
+		personality = area_builder.owner.personality_manager.get('BlenderEvaluator')
+		distance_penalty = Entities.buildings[BUILDINGS.BLENDER].radius * personality.distance_penalty
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_windmill)],
+		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_farm)],
 			distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.BAKERY].radius) / distance + alignment * personality.alignment_importance
-		return BakeryEvaluator(area_builder, builder, value)
+		value = float(Entities.buildings[BUILDINGS.BLENDER].radius) / distance + alignment * personality.alignment_importance
+		return BlenderEvaluator(area_builder, builder, value)
 
 	@property
 	def purpose(self):
-		return BUILDING_PURPOSE.BAKERY
+		return BUILDING_PURPOSE.BLENDER
 
-AbstractBakery.register_buildings()
+AbstractBlender.register_buildings()
 
-decorators.bind_all(AbstractBakery)
-decorators.bind_all(BakeryEvaluator)
+decorators.bind_all(AbstractBlender)
+decorators.bind_all(BlenderEvaluator)
