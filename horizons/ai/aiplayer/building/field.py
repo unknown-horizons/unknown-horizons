@@ -109,6 +109,13 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD] = cls
 		cls._available_buildings[BUILDINGS.TOBACCO_FIELD] = cls
 		cls._available_buildings[BUILDINGS.HERBARY] = cls
+		cls._available_buildings[BUILDINGS.ALVEARIES] = cls
+		cls._available_buildings[BUILDINGS.COCOA_FIELD] = cls
+		cls._available_buildings[BUILDINGS.CORN_FIELD] = cls
+		cls._available_buildings[BUILDINGS.HOP_FIELD] = cls
+		cls._available_buildings[BUILDINGS.SPICE_FIELD] = cls
+		cls._available_buildings[BUILDINGS.VINEYARD] = cls
+		cls._available_buildings[BUILDINGS.CATTLE_RUN] = cls
 
 AbstractField.register_buildings()
 

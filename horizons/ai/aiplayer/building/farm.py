@@ -163,6 +163,13 @@ class AbstractFarm(AbstractBuilding):
 			RES.SUGAR:          BUILDING_PURPOSE.SUGARCANE_FIELD,
 			RES.TOBACCO_LEAVES: BUILDING_PURPOSE.TOBACCO_FIELD,
 			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+			RES.HONEYCOMBS:     BUILDING_PURPOSE.ALVEARIES,
+			RES.COCOA:          BUILDING_PURPOSE.COCOA_FIELD,
+			RES.CORN:           BUILDING_PURPOSE.CORN_FIELD,
+			RES.HOPS:           BUILDING_PURPOSE.HOP_FIELD,
+			RES.SPICES:         BUILDING_PURPOSE.SPICE_FIELD,
+			RES.GRAPES:         BUILDING_PURPOSE.VINEYARD,
+			RES.CATTLE:         BUILDING_PURPOSE.CATTLE_RUN,
 		}.get(resource_id)
 
 	def get_evaluators(self, settlement_manager, resource_id):
@@ -414,6 +421,13 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			BUILDING_PURPOSE.SUGARCANE_FIELD: BUILDINGS.SUGARCANE_FIELD,
 			BUILDING_PURPOSE.TOBACCO_FIELD:   BUILDINGS.TOBACCO_FIELD,
 			BUILDING_PURPOSE.HERBARY:         BUILDINGS.HERBARY,
+			BUILDING_PURPOSE.ALVEARIES:       BUILDINGS.ALVEARIES,
+			BUILDING_PURPOSE.COCOA_FIELD:     BUILDINGS.COCOA_FIELD,
+			BUILDING_PURPOSE.CORN_FIELD:      BUILDINGS.CORN_FIELD,
+			BUILDING_PURPOSE.HOP_FIELD:       BUILDINGS.HOP_FIELD,
+			BUILDING_PURPOSE.SPICE_FIELD:     BUILDINGS.SPICE_FIELD,
+			BUILDING_PURPOSE.VINEYARD:        BUILDINGS.VINEYARD,
+			BUILDING_PURPOSE.CATTLE_RUN:      BUILDINGS.CATTLE_RUN,
 		}.get(new_field_purpose)
 
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
@@ -423,6 +437,13 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.add_sugarcane_field_value,
 			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.add_tobacco_field_value,
 			BUILDING_PURPOSE.HERBARY:         personality.add_herbary_field_value,
+			BUILDING_PURPOSE.ALVEARIES:       personality.add_alvearies_value,
+			BUILDING_PURPOSE.COCOA_FIELD:     personality.add_cocoa_field_value,
+			BUILDING_PURPOSE.CORN_FIELD:      personality.add_corn_field_value,
+			BUILDING_PURPOSE.HOP_FIELD:       personality.add_hop_field_value,
+			BUILDING_PURPOSE.SPICE_FIELD:     personality.add_spice_field_value,
+			BUILDING_PURPOSE.VINEYARD:        personality.add_vineyard_value,
+			BUILDING_PURPOSE.CATTLE_RUN:      personality.add_cattle_run_value,
 		}.get(new_field_purpose, 0)
 
 		old_field_purpose = area_builder.plan[(x, y)][0]
@@ -432,6 +453,13 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.remove_unused_sugarcane_field_penalty,
 			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.remove_unused_tobacco_field_penalty,
 			BUILDING_PURPOSE.HERBARY:         personality.remove_unused_herbary_field_penalty,
+			BUILDING_PURPOSE.ALVEARIES:       personality.remove_unused_alvearies_penalty,
+			BUILDING_PURPOSE.COCOA_FIELD:     personality.remove_unused_cocoa_field_penalty,
+			BUILDING_PURPOSE.CORN_FIELD:      personality.remove_unused_corn_field_penalty,
+			BUILDING_PURPOSE.HOP_FIELD:       personality.remove_unused_hop_field_penalty,
+			BUILDING_PURPOSE.SPICE_FIELD:     personality.remove_unused_spice_field_penalty,
+			BUILDING_PURPOSE.VINEYARD:        personality.remove_unused_vineyard_penalty,
+			BUILDING_PURPOSE.CATTLE_RUN:      personality.remove_unused_cattle_run_penalty,
 		}.get(old_field_purpose, 0)
 
 		builder = BasicBuilder.create(building_id, (x, y), 0)
