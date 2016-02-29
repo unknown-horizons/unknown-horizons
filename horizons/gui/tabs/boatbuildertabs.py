@@ -24,7 +24,8 @@ from operator import itemgetter
 
 from fife.extensions.pychan.widgets import Icon, HBox, Label, Container
 
-from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
+from horizons.command.production import AddProduction, RemoveFromQueue, \
+    CancelCurrentProduction
 from horizons.engine import Fife
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
@@ -50,7 +51,8 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
     def show(self):
         super(UnitbuilderTabBase, self).show()
         Scheduler().add_new_object(Callback(self.refresh), self,
-            run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
+                                   run_in=GAME_SPEED.TICKS_PER_SECOND,
+                                   loops=-1)
 
     def hide(self):
         super(UnitbuilderTabBase, self).hide()
@@ -62,21 +64,28 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
         main_container = self.widget.findChild(name="UB_main_tab")
         container_active = main_container.findChild(name="container_active")
-        container_inactive = main_container.findChild(name="container_inactive")
-        progress_container = main_container.findChild(name="UB_progress_container")
+        container_inactive = main_container.findChild(
+            name="container_inactive")
+        progress_container = main_container.findChild(
+            name="UB_progress_container")
         cancel_container = main_container.findChild(name="UB_cancel_container")
 
-        # a Unitbuilder is considered active here if it builds sth, no matter if it's paused
+        # a Unitbuilder is considered active here if it builds sth,
+        #  no matter if it's paused
         production_lines = self.producer.get_production_lines()
         if len(production_lines) > 0:
-            self.show_production_is_active_container(container_active, container_inactive,
-                                                     progress_container, cancel_container, production_lines)
+            self.show_production_is_active_container(
+                container_active, container_inactive,
+                progress_container, cancel_container, production_lines)
         else:
-            self.show_production_is_inactive_container(container_inactive, progress_container,
-                                                       cancel_container, container_active)
+            self.show_production_is_inactive_container(
+                container_inactive, progress_container,
+                cancel_container, container_active)
         self.widget.adaptLayout()
 
-    def show_production_is_active_container(self, container_active, container_inactive, progress_container, cancel_container, production_lines):
+    def show_production_is_active_container(
+            self, container_active, container_inactive, progress_container,
+            cancel_container, production_lines):
         """Show the container containing the active production."""
         container_active.parent.showChild(container_active)
         if (Fife.getVersion() >= (0, 4, 0)):
@@ -85,15 +94,20 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
             if not container_inactive in container_inactive.parent.hidden_children:
                 container_inactive.parent.hideChild(container_inactive)
 
-        self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
+        self.update_production_is_active_container(
+            progress_container, container_active,
+            cancel_container, production_lines)
 
-    def update_production_is_active_container(self, progress_container, container_active, cancel_container, production_lines):
+    def update_production_is_active_container(
+            self, progress_container, container_active, cancel_container,
+            production_lines):
         """Update the active production container."""
         self.update_progress(progress_container)
         self.update_queue(container_active)
         self.update_buttons(container_active, cancel_container)
 
-        needed_res_container = self.widget.findChild(name="UB_needed_resources_container")
+        needed_res_container = self.widget.findChild(
+            name="UB_needed_resources_container")
         self.update_needed_resources(needed_res_container)
 
         # Set built unit info
@@ -101,17 +115,19 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
         produced_unit_id = production_line.get_produced_units().keys()[0]
 
         name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-        container_active.findChild(name="headline_UB_builtunit_label").text = _(name)
+        container_active.findChild(
+            name="headline_UB_builtunit_label").text = _(name)
 
         self.update_unit_icon(container_active, produced_unit_id)
 
         upgrades_box = container_active.findChild(name="UB_upgrades_box")
         upgrades_box.removeAllChildren()
 
-    def show_production_is_inactive_container(self, container_inactive, progress_container,
+    def show_production_is_inactive_container(
+            self, container_inactive, progress_container,
             cancel_container, container_active):
-        """Hides all information on progress etc, and displays something to signal
-        that the production is inactive."""
+        """Hides all information on progress etc, and displays
+        something to signal that the production is inactive."""
         container_inactive.parent.showChild(container_inactive)
         for w in (container_active, progress_container, cancel_container):
             if (Fife.getVersion() >= (0, 4, 0)):
@@ -121,9 +137,12 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
                     w.parent.hideChild(w)
 
     def update_buttons(self, container_active, cancel_container):
-        """Show the correct active and inactive buttons, update cancel button"""
-        button_active = container_active.findChild(name="toggle_active_active")
-        button_inactive = container_active.findChild(name="toggle_active_inactive")
+        """Show the correct active and inactive buttons,
+        update cancel button"""
+        button_active = container_active.findChild(
+            name="toggle_active_active")
+        button_inactive = container_active.findChild(
+            name="toggle_active_inactive")
         to_active = not self.producer.is_active()
 
         if not to_active: # swap what we want to show and hide
@@ -140,14 +159,17 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
         cancel_container.parent.showChild(cancel_container)
         cancel_button = self.widget.findChild(name="UB_cancel_button")
-        cancel_cb = Callback(CancelCurrentProduction(self.producer).execute, self.instance.session)
+        cancel_cb = Callback(CancelCurrentProduction(self.producer).execute,
+                             self.instance.session)
         cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
     def update_unit_icon(self, container_active, produced_unit_id):
         """Update the icon displaying the unit that is being built."""
         unit_icon = container_active.findChild(name="UB_cur_unit_icon")
-        unit_icon.helptext = self.instance.session.db.get_unit_tooltip(produced_unit_id)
-        unit_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
+        unit_icon.helptext = self.instance.session.db.get_unit_tooltip(
+            produced_unit_id)
+        unit_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(
+            type_id=produced_unit_id)
 
     def update_queue(self, container_active):
         """ Update the queue display"""
@@ -169,7 +191,8 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
                 # so we check against that now and use a fallback thumbnail instead
 
                 # TODO string matching for runtime errors is nightmare fuel
-                # Better: Replace RuntimeError in fife with a more precise error class if possible
+                # Better: Replace RuntimeError in fife with
+                # a more precise error class if possible
                 # and only catch that class here
                 if e.message.startswith('_[NotFound]_ , Something was searched, but not found :: content/gui/icons/thumbnails/'):
                     # actually load the fallback unit image
@@ -209,20 +232,25 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
         progress_perc.text = u'{progress}%'.format(progress=progress)
 
 class BoatbuilderTab(UnitbuilderTabBase):
+    """this tab additionally requests functions for:
+    * decide: show [start view] = nothing but info text, look up the xml,
+    or [building status view]
+    * get: currently built ship: name / image / upgrades
+    * resources still needed:
+      (a) which ones? three most important (image, name)
+      (b) how many? sort by amount, display (amount,
+          overall amount needed of them, image)
+    * pause production (keep order and "running" running costs [...]
+      but collect no new resources)
+    * abort building process: delete task, remove all resources,
+      display [start view] again
+    """
     widget = 'boatbuilder.xml'
     helptext = _lazy("Boat builder overview")
 
     UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
     UNIT_PREVIEW_IMAGE = "content/gui/images/objects/ships/116/{type_id}.png"
 
-# this tab additionally requests functions for:
-# * decide: show [start view] = nothing but info text, look up the xml, or [building status view]
-# * get: currently built ship: name / image / upgrades
-# * resources still needed:
-# (a) which ones? three most important (image, name)
-# (b) how many? sort by amount, display (amount, overall amount needed of them, image)
-# * pause production (keep order and "running" running costs [...] but collect no new resources)
-# * abort building process: delete task, remove all resources, display [start view] again
 
 class BoatbuilderSelectTab(ProducerOverviewTabBase):
     widget = 'boatbuilder_showcase.xml'
@@ -240,12 +268,13 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
         size = (260, 90)
         widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
                            min_size=size, max_size=size, size=size)
-        bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s' % index)
+        bg_icon = Icon(image='content/gui/images/background/square_80.png',
+                       name='bg_%s' % index)
         widget.addChild(bg_icon)
 
         image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
         helptext = self.instance.session.db.get_unit_tooltip(ship)
-        unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+        unit_icon = Icon(image=image, name='icon_%s' % index, position=(2, 2),
                          helptext=helptext)
         widget.addChild(unit_icon)
 
@@ -324,6 +353,14 @@ class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
+    """these tabs additionally request functions for:
+    * goto: show [confirm view] tab (not accessible via tab button in the end)
+    need to provide information about the selected ship
+    (which of the 4 buttons clicked)
+    * check: mark those ship's buttons as unbuildable (close graphics)
+    which do not meet the specified requirements.
+   the tooltips contain this info as well.
+    """
     icon_path = 'icons/tabwidget/boatbuilder/war2'
     helptext = _lazy("War ships")
 
@@ -334,15 +371,21 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
         (UNITS.FRIGATE, PRODUCTIONLINES.FRIGATE),
     ]
 
-# these tabs additionally request functions for:
-# * goto: show [confirm view] tab (not accessible via tab button in the end)
-# need to provide information about the selected ship (which of the 4 buttons clicked)
-# * check: mark those ship's buttons as unbuildable (close graphics)
-# which do not meet the specified requirements.
-# the tooltips contain this info as well.
-
 
 class BoatbuilderConfirmTab(ProducerOverviewTabBase):
+    """this "tab" additionally requests functions for:
+    * get: currently ordered ship: name / image / type (fisher/trade/war)
+    * => get: currently ordered ship: description text / costs /
+              available upgrades
+         (fisher/trade/war, builder level)
+    * if resource icons not hardcoded: resource icons, sort them by amount
+    UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs
+      (get, add, display)
+    * def start_production(self):  <<< actually start to produce the
+    selected ship unit with the selected upgrades
+    (use inventory or go collect resources, switch focus to overview tab).
+    IMPORTANT: lock this button until unit is actually produced (no queue!)
+    """
     widget = 'boatbuilder_confirm.xml'
     helptext = _lazy("Confirm order")
 
@@ -353,15 +396,3 @@ class BoatbuilderConfirmTab(ProducerOverviewTabBase):
 
     def start_production(self):
         AddProduction(self.producer, 15).execute(self.instance.session)
-
-# this "tab" additionally requests functions for:
-# * get: currently ordered ship: name / image / type (fisher/trade/war)
-# * => get: currently ordered ship: description text / costs / available upgrades
-# (fisher/trade/war, builder level)
-# * if resource icons not hardcoded: resource icons, sort them by amount
-# UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs
-# (get, add, display)
-# * def start_production(self):  <<< actually start to produce the
-# selected ship unit with the selected upgrades
-# (use inventory or go collect resources, switch focus to overview tab).
-# IMPORTANT: lock this button until unit is actually produced (no queue!)
