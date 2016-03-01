@@ -1,22 +1,25 @@
 <?xml version="1.0"?>
-<Container size="250,350" name="overview_barrier">
-<TabBG amount="4" />
+<!-- Overview tab -->
+<Container  size="250,300">
+<TabBG amount="3" />
 
-	<AutoResizeContainer position="0,70">
-		<!-- Name of building -->
+	<Container position="0,70" size="600,400">
+
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
-			<Label name='name' />
+			<Label name="name" />
 		</HBox>
 
 		<hr position="20,30" />
-
-		<!-- Picture -->
-		<Icon name="building_image" position="15,40" />
-
-		<Label name="barrier_description_lbl" position="75,80"
-			text="barrier repleace me"
-			wrap_text="1" max_size="175,300" />
-		<HealthWidget name="health" position="90,45" />
-	</AutoResizeContainer>
+		<VBox position="22,50">
+			<HBox>
+				<!-- Picture -->
+				<Icon name="building_image" />
+				<Label name="barrier_description_lbl"
+					text="Provides security for your settlement."
+					wrap_text="1" max_size="200,200" />
+			</HBox>
+			<HealthWidget name="health" />
+		</VBox>
+	</Container>
 </Container>
