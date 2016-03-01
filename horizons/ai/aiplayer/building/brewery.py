@@ -30,7 +30,7 @@ from horizons.util.python import decorators
 class AbstractBrewery(AbstractBuilding):
 	@property
 	def evaluator_class(self):
-		return BlenderBrewery
+		return BreweryEvaluator
 
 	@classmethod
 	def register_buildings(cls):

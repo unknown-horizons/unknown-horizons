@@ -77,6 +77,7 @@ from building.bakery import AbstractBakery
 from building.blender import AbstractBlender
 from building.windmill import AbstractWindmill
 from building.brewery import AbstractBrewery
+from building.butchery import AbstractButchery
 
 from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal

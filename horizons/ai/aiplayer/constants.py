@@ -85,6 +85,7 @@ class BUILDING_PURPOSE:
 	BLENDER = 45
 	WINDMILL = 46
 	BREWERY = 47
+	BUTCHERY = 48
 	purpose_to_building = {}
 	building_to_purpose = {}
 
@@ -135,6 +136,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.BLENDER] = BUILDINGS.BLENDER
 		cls.purpose_to_building[cls.WINDMILL] = BUILDINGS.WINDMILL
 		cls.purpose_to_building[cls.BREWERY] = BUILDINGS.BREWERY
+		cls.purpose_to_building[cls.BUTCHERY] = BUILDINGS.BUTCHERY
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose
