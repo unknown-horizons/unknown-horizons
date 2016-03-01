@@ -23,41 +23,44 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.util.python import decorators
 
-class AbstractClayPit(AbstractBuilding):
-	def iter_potential_locations(self, settlement_manager):
-		building_class = Entities.buildings[BUILDINGS.CLAY_PIT]
-		for building in settlement_manager.settlement.buildings_by_id.get(BUILDINGS.CLAY_DEPOSIT, []):
-			if building.get_component(StorageComponent).inventory[RES.RAW_CLAY]:
-				coords = building.position.origin.to_tuple()
-				if coords in settlement_manager.production_builder.simple_collector_area_cache.cache[building_class.size]:
-					yield (coords[0], coords[1], 0)
-
+class AbstractBrewery(AbstractBuilding):
 	@property
 	def evaluator_class(self):
-		return ClayPitEvaluator
+		return BlenderBrewery
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.CLAY_PIT] = cls
+		cls._available_buildings[BUILDINGS.BREWERY] = cls
 
-class ClayPitEvaluator(BuildingEvaluator):
+class BreweryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.CLAY_PIT, (x, y), orientation)
-		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder, False)
-		value = 1.0 / (distance_to_collector + 1)
-		return ClayPitEvaluator(area_builder, builder, value)
+		builder = BasicBuilder.create(BUILDINGS.BREWERY, (x, y), orientation)
+		
+		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
+		if distance_to_collector is None:
+			return None
+
+		distance_to_farm = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.FARM)
+		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+
+		personality = area_builder.owner.personality_manager.get('BreweryEvaluator')
+		distance_penalty = Entities.buildings[BUILDINGS.BREWERY].radius * personality.distance_penalty
+
+		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)],
+			distance_penalty)
+		value = float(Entities.buildings[BUILDINGS.BREWERY].radius) / distance + alignment * personality.alignment_importance
+		return BreweryEvaluator(area_builder, builder, value)
 
 	@property
 	def purpose(self):
-		return BUILDING_PURPOSE.CLAY_PIT
+		return BUILDING_PURPOSE.BREWERY
 
-AbstractClayPit.register_buildings()
+AbstractBrewery.register_buildings()
 
-decorators.bind_all(AbstractClayPit)
-decorators.bind_all(ClayPitEvaluator)
+decorators.bind_all(AbstractBrewery)
+decorators.bind_all(BreweryEvaluator)

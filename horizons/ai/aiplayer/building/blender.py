@@ -24,8 +24,8 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
 
 class AbstractBlender(AbstractBuilding):
 	@property
@@ -51,7 +51,7 @@ class BlenderEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('BlenderEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.BLENDER].radius * personality.distance_penalty
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_farm)],
+		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)],
 			distance_penalty)
 		value = float(Entities.buildings[BUILDINGS.BLENDER].radius) / distance + alignment * personality.alignment_importance
 		return BlenderEvaluator(area_builder, builder, value)
