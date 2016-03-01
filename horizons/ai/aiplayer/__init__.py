@@ -92,6 +92,7 @@ from building.cannonfoundry import AbstractCannonfoundry
 #from building.hunter import AbstractHunter
 from building.winery import AbstractWinery
 #from building.woodentower import AbstractWoodenTower
+from building.weaponsmith import AbstractWeaponsmith
 
 
 
