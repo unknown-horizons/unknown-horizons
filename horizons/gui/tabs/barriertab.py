@@ -35,7 +35,7 @@ class BarrierOverviewTab(OverviewTab):
 	def init_widget(self):
 		super(BarrierOverviewTab, self).init_widget()
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
-		action_gfx = action_set.items()[0][1]
+		action_gfx = action_set.get('single', 'abcd')
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
 		health_widget = self.widget.findChild(name='health')
