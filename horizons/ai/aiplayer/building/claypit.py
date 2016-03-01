@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
+from horizons.util.python import decorators
 
 
 class AbstractClayPit(AbstractBuilding):
