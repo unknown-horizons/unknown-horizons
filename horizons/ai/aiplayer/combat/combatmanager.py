@@ -330,8 +330,10 @@ class CombatManager(object):
         """
         Basically do 3 things:
         1. Handle combat for missions that explicitly request for it.
-        2. Check whether any of current missions may want to be interrupted to resolve potential
-            combat that was not planned (e.g. hostile ships nearby fleet on a mission)
+        2. Check whether any of current missions may want to be
+            interrupted to resolve potential
+            combat that was not planned
+            (e.g. hostile ships nearby fleet on a mission)
         3. Handle combat for ships currently not used in any mission.
         """
         # handle fleets that explicitly request to be in combat
@@ -360,12 +362,15 @@ class CombatManager(object):
 
 class PirateCombatManager(CombatManager):
     """
-    Pirate player requires slightly different handling of combat, thus it gets his own CombatManager.
-    Pirate player is able to use standard BehaviorComponents in it's BehaviorManager.
+    Pirate player requires slightly different handling of combat,
+    thus it gets his own CombatManager.
+    Pirate player is able to use standard BehaviorComponents
+    in it's BehaviorManager.
     """
     log = logging.getLogger("ai.aiplayer.piratecombatmanager")
 
-    shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')
+    shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship',
+                                   'going_home')
 
     def __init__(self, owner):
         super(PirateCombatManager, self).__init__(owner)
@@ -378,30 +383,39 @@ class PirateCombatManager(CombatManager):
         fleet = mission.fleet
 
         ship_group = fleet.get_ships()
-        ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships,
-            self.shipStates.idle)))
+        ship_group = self.unit_manager.filter_ships(
+            ship_group, (filters.ship_state(self.ships, self.shipStates.idle)))
 
         if not ship_group:
             mission.abort_mission()
 
-        ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
-        ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
-        fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
-        working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
+        ships_around = self.unit_manager.find_ships_near_group(
+            ship_group, self.combat_range)
+        ships_around = self.unit_manager.filter_ships(ships_around,
+                                                      (filters.hostile(), ))
+        fighting_ships = self.unit_manager.filter_ships(ships_around,
+                                                        (filters.fighting(), ))
+        working_ships = self.unit_manager.filter_ships(ships_around,
+                                                       (filters.working(), ))
 
         environment = {'ship_group': ship_group}
 
         # begin combat if it's still unresolved
         if fighting_ships:
             environment['enemies'] = fighting_ships
-            environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
-            self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name,
-                fighting_ships[0].owner.name, environment['power_balance'])
-            self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+            environment['power_balance'] = UnitManager.calculate_power_balance(
+                ship_group, fighting_ships)
+            self.log.debug("Player: %s vs Player: %s -> power_balance:%s",
+                           self.owner.name,
+                           fighting_ships[0].owner.name,
+                           environment['power_balance'])
+            self.owner.behavior_manager.request_action(
+                BehaviorManager.action_types.offensive,
                 'fighting_ships_in_sight', **environment)
         elif working_ships:
             environment['enemies'] = working_ships
-            self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+            self.owner.behavior_manager.request_action(
+                BehaviorManager.action_types.offensive,
                 'working_ships_in_sight', **environment)
         else:
             # no one else is around to fight -> continue mission
@@ -413,7 +427,8 @@ class PirateCombatManager(CombatManager):
         """
         filters = self.unit_manager.filtering_rules
 
-        # test first whether requesting for combat is of any use (any ships nearby)
+        # test first whether requesting for combat is of any use
+        #  (any ships nearby)
         ship_group = mission.fleet.get_ships()
         ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships,
             self.shipStates.idle)))
@@ -440,7 +455,8 @@ class PirateCombatManager(CombatManager):
         rules = (filters.not_in_fleet, filters.pirate, filters.ship_state(self.ships,
             self.shipStates.idle))
         for ship in self.unit_manager.get_ships(rules):
-            # Turn into one-ship group, since reasoning is based around groups of ships
+            # Turn into one-ship group, since reasoning is based
+            #  around groups of ships
             ship_group = [ship, ]
 
             ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)

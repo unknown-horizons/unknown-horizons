@@ -101,7 +101,8 @@ class Fleet(WorldObject):
     def _load(self, worldid, owner, db, destroy_callback):
         super(Fleet, self).load(db, worldid)
         self.owner = owner
-        state_id, dest_x, dest_y, radius, ratio = db("SELECT state_id, dest_x, dest_y, radius, ratio FROM"
+        state_id, dest_x, dest_y, radius, ratio = db(
+            "SELECT state_id, dest_x, dest_y, radius, ratio FROM"
             " fleet WHERE fleet_id = ?", worldid)[0]
 
         if radius:  # Circle
@@ -186,7 +187,7 @@ class Fleet(WorldObject):
         Called when a single ship reaches destination.
         """
         self.log.debug("Fleet %s, Ship %s reached the destination", self.worldid,
-            ship.get_component(NamedComponent).name)
+                       ship.get_component(NamedComponent).name)
         self._ships[ship] = self.shipStates.reached
         if self._was_target_reached():
             self._fleet_reached()
@@ -204,24 +205,28 @@ class Fleet(WorldObject):
             self.callback()
 
     def _move_ship(self, ship, destination, callback):
-        # retry ad infinitum. Not the most elegant solution but will do for a while.
-        # Idea: mark ship as "blocked" through state and check whether they all are near the destination
+        # retry ad infinitum. Not the most elegant solution
+        #  but will do for a while.
+        # Idea: mark ship as "blocked" through state and check
+        #  whether they all are near the destination
         # anyway
         # 1. If they don't make them sail again.
         # 2. If they do, assume they reached the spot.
         try:
-            ship.move(destination, callback=callback, blocked_callback=Callback(self._move_ship,
-                ship, destination, callback))
+            ship.move(destination, callback=callback,
+                      blocked_callback=Callback(self._move_ship,
+                                                ship, destination, callback))
             self._ships[ship] = self.shipStates.moving
         except MoveNotPossible:
             self._ships[ship] = self.shipStates.blocked
             if not self._was_target_reached():
-                Scheduler().add_new_object(Callback(self._retry_moving_blocked_ships), self,
+                Scheduler().add_new_object(Callback(
+                    self._retry_moving_blocked_ships), self,
                     run_in=self.RETRY_BLOCKED_TICKS)
 
     def _get_circle_size(self):
-        """
-        Destination circle size for movement calls that involve more than one ship.
+        """Destination circle size for movement calls that involve
+        more than one ship.
         """
         return 10
         # return min(self.size(), 5)
@@ -230,14 +235,16 @@ class Fleet(WorldObject):
         if self.state != self.fleetStates.moving:
             return
 
-        for ship in filter(lambda ship: self._ships[ship] == self.shipStates.blocked, self.get_ships()):
-            self._move_ship(ship, self.destination, Callback(self._ship_reached, ship))
+        for ship in filter(lambda ship: self._ships[ship] ==
+                           self.shipStates.blocked, self.get_ships()):
+            self._move_ship(ship, self.destination, Callback(
+                self._ship_reached, ship))
 
     def move(self, destination, callback=None, ratio=1.0):
         """
         Move fleet to a destination.
-        @param ratio: what percentage of ships has to reach destination in order for
-        the move to be considered done:
+        @param ratio: what percentage of ships has to reach destination
+                      in order for the move to be considered done:
             0.0 - None (not really useful, executes the callback right away)
             0.0001 - effectively ANY ship
             1.0 - ALL of the ships
@@ -246,7 +253,8 @@ class Fleet(WorldObject):
         """
         assert self.size() > 0, "ordered to move a fleet consisting of 0 ships"
 
-        # it's ok to specify single point for a destination only when there's only one ship in a fleet
+        # it's ok to specify single point for a destination only
+        #  when there's only one ship in a fleet
         if isinstance(destination, Point) and self.size() > 1:
             destination = Circle(destination, self._get_circle_size())
 
@@ -259,17 +267,19 @@ class Fleet(WorldObject):
         # This is a good place to do something fancier later like preserving
         # ship formation instead sailing to the same point
         for ship in self._ships.keys():
-            self._move_ship(ship, destination, Callback(self._ship_reached, ship))
+            self._move_ship(ship, destination, Callback(self._ship_reached,
+                                                        ship))
 
     def size(self):
         return len(self._ships)
 
     def __str__(self):
         if hasattr(self, '_ships'):
-            ships_str = ("\n   " + "\n   ".join(["%s (fleet state:%s)"
-                % (ship.get_component(NamedComponent).name,
+            ships_str = ("\n   " + "\n   ".join(["%s (fleet state:%s)" % (
+                ship.get_component(NamedComponent).name,
                 self._ships[ship]) for ship in self._ships.keys()]))
         else:
             ships_str = 'N/A'
-        return "Fleet: %s , state: %s, ships:%s" % (self.worldid, (self.state if hasattr(self,
-            'state') else 'unknown state'), ships_str)
+        return "Fleet: %s , state: %s, ships:%s" % (
+            self.worldid, (self.state if hasattr(self, 'state') else
+                           'unknown state'), ships_str)

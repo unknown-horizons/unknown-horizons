@@ -32,7 +32,8 @@ class AbstractTree(AbstractBuilding):
 
     @property
     def ignore_production(self):
-        # TODO: improve the code so the actual lumberjack production can be calculated
+        # TODO: improve the code so the actual lumberjack production
+        #  can be calculated
         return True
 
     @classmethod
