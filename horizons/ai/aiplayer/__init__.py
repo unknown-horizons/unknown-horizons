@@ -88,6 +88,7 @@ from building.blender import AbstractBlender
 from building.windmill import AbstractWindmill
 from building.brewery import AbstractBrewery
 from building.butchery import AbstractButchery
+from building.cannonfoundry import AbstractCannonfoundry
 
 
 

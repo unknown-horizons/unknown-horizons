@@ -88,6 +88,7 @@ class BUILDING_PURPOSE:
 	WINDMILL = 46
 	BREWERY = 47
 	BUTCHERY = 48
+	CANNONFOUNDRY = 49
 	purpose_to_building = {}
 	building_to_purpose = {}
 
@@ -139,6 +140,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.WINDMILL] = BUILDINGS.WINDMILL
 		cls.purpose_to_building[cls.BREWERY] = BUILDINGS.BREWERY
 		cls.purpose_to_building[cls.BUTCHERY] = BUILDINGS.BUTCHERY
+		cls.purpose_to_building[cls.CANNONFOUNDRY] = BUILDINGS.CANNONFOUNDRY
 
 		for purpose, building_id in cls.purpose_to_building.items():
 			cls.building_to_purpose[building_id] = purpose
