@@ -24,22 +24,22 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
 
-class AbstractWindmill(AbstractBuilding):
+class AbstractButchery(AbstractBuilding):
 	@property
 	def evaluator_class(self):
-		return WindmillEvaluator
+		return ButcheryEvaluator
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.WINDMILL] = cls
+		cls._available_buildings[BUILDINGS.BUTCHERY] = cls
 
-class WindmillEvaluator(BuildingEvaluator):
+class ButcheryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.WINDMILL, (x, y), orientation)
+		builder = BasicBuilder.create(BUILDINGS.BUTCHERY, (x, y), orientation)
 		
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
@@ -48,19 +48,19 @@ class WindmillEvaluator(BuildingEvaluator):
 		distance_to_farm = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.FARM)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 
-		personality = area_builder.owner.personality_manager.get('WindmillEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.WINDMILL].radius * personality.distance_penalty
+		personality = area_builder.owner.personality_manager.get('ButcheryEvaluator')
+		distance_penalty = Entities.buildings[BUILDINGS.BUTCHERY].radius * personality.distance_penalty
 
 		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)],
 			distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.WINDMILL].radius) / distance + alignment * personality.alignment_importance
-		return WindmillEvaluator(area_builder, builder, value)
+		value = float(Entities.buildings[BUILDINGS.BUTCHERY].radius) / distance + alignment * personality.alignment_importance
+		return ButcheryEvaluator(area_builder, builder, value)
 
 	@property
 	def purpose(self):
-		return BUILDING_PURPOSE.WINDMILL
+		return BUILDING_PURPOSE.BUTCHERY
 
-AbstractWindmill.register_buildings()
+AbstractButchery.register_buildings()
 
-decorators.bind_all(AbstractWindmill)
-decorators.bind_all(WindmillEvaluator)
+decorators.bind_all(AbstractButchery)
+decorators.bind_all(ButcheryEvaluator)
