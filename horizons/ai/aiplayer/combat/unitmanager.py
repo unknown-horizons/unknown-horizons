@@ -32,8 +32,7 @@ from horizons.world.units.pirateship import PirateShip
 
 
 class UnitManager(object):
-    """
-    UnitManager objects is responsible for handling units in game.
+    """UnitManager objects is responsible for handling units in game.
     1.Grouping combat ships into easy to handle fleets,
     2.Ship filtering.
     3.Distributing ships for missions when requested by other managers.
@@ -87,7 +86,8 @@ class UnitManager(object):
 
     def _load(self, db, owner):
         self.__init(owner)
-        fleets_id = db("SELECT fleet_id from fleet where owner_id = ?", self.owner.worldid)
+        fleets_id = db("SELECT fleet_id from fleet where owner_id = ?",
+                       self.owner.worldid)
         for (fleet_id,) in fleets_id:
             fleet = Fleet.load(fleet_id, owner, db)
             self.fleets.add(fleet)
@@ -197,7 +197,8 @@ class UnitManager(object):
 
     @classmethod
     def get_lowest_hp_ship(cls, ship_group):
-        return min(ship_group, key=lambda ship: ship.get_component(HealthComponent).health)
+        return min(ship_group, key=lambda ship: ship.get_component(
+            HealthComponent).health)
 
     @classmethod
     def get_closest_ships_for_each(cls, ship_group, enemies):
@@ -211,7 +212,8 @@ class UnitManager(object):
         # TODO: make faster than o(n^2)
         closest = []
         for ship in ship_group:
-            distances = ((e, ship.position.distance(e.position)) for e in enemies)
+            distances = ((e, ship.position.distance(e.position)) for e in
+                         enemies)
             closest.append((ship, min(distances, key=itemgetter(1))[0]))
         return closest
 
@@ -240,15 +242,19 @@ class UnitManager(object):
         @rtype: float
         """
 
-        assert ship_group, "Request to calculate balance with 0 ships in ship_group"
-        assert enemy_ship_group, "Request to calculate balance with 0 ships in enemy_ship_group"
+        assert ship_group, "Request to calculate balance with 0 ships " \
+                           "in ship_group"
+        assert enemy_ship_group, "Request to calculate balance with 0 ships " \
+                                 "in enemy_ship_group"
 
         # dps_multiplier - 4vs2 ships equal 2 times more DPS.
         # Multiply that factor when calculating power balance.
         dps_multiplier = len(ship_group) / float(len(enemy_ship_group))
 
-        self_hp = float(sum((ship.get_component(HealthComponent).health for ship in ship_group)))
-        enemy_hp = float(sum((ship.get_component(HealthComponent).health for ship in enemy_ship_group)))
+        self_hp = float(sum((ship.get_component(HealthComponent).health for
+                             ship in ship_group)))
+        enemy_hp = float(sum((ship.get_component(HealthComponent).health for
+                              ship in enemy_ship_group)))
 
         return (self_hp / enemy_hp) * dps_multiplier
 
@@ -264,10 +270,10 @@ class UnitManager(object):
         @rtype: float
         """
         positions = [ship.position for ship in ship_group]
-        bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions,
-            key=lambda position: position.y).y)
-        top_right = Point(max(positions, key=lambda position: position.x).x, max(positions,
-            key=lambda position: position.y).y)
+        bottom_left = Point(min(positions, key=lambda position: position.x).x,
+                            min(positions, key=lambda position: position.y).y)
+        top_right = Point(max(positions, key=lambda position: position.x).x,
+                          max(positions, key=lambda position: position.y).y)
         diagonal = bottom_left.distance(top_right)
         return diagonal
 
@@ -279,14 +285,15 @@ class UnitManager(object):
             #  in most cases anyway
             other_ships_set |= set(self.filter_ships(
                 nearby_ships, [self._not_owned_rule(),
-                self._selectable_rule()]))
+                               self._selectable_rule()]))
         return list(other_ships_set)
 
     def tick(self):
         self.check_for_dead_fleets()
 
     def get_player_islands(self, player):
-        return [settlement.island for settlement in self.session.world.settlements
+        return [settlement.island for settlement in
+                self.session.world.settlements
                 if settlement.owner == player]
 
     def get_player_ships(self, player):

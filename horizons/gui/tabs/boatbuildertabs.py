@@ -186,7 +186,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
             try:
                 icon = Icon(name=icon_name, image=image, helptext=helptext)
-            except RuntimeError,e:
+            except RuntimeError, e:
                 # It's possible that this error was raised from a missing thumbnail asset,
                 # so we check against that now and use a fallback thumbnail instead
 
@@ -194,7 +194,9 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
                 # Better: Replace RuntimeError in fife with
                 # a more precise error class if possible
                 # and only catch that class here
-                if e.message.startswith('_[NotFound]_ , Something was searched, but not found :: content/gui/icons/thumbnails/'):
+                if e.message.startswith('_[NotFound]_ , Something was '
+                                        'searched, but not found :: '
+                                        'content/gui/icons/thumbnails/'):
                     # actually load the fallback unit image
                     image = self.__class__.UNIT_THUMBNAIL.format(type_id="unknown_unit")
                     icon = Icon(name=icon_name, image=image, helptext=helptext)
@@ -204,7 +206,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
             rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
                                         self.instance.session)
             icon.capture(rm_from_queue_cb, event_name="mouseClicked")
-            queue_container.addChild( icon )
+            queue_container.addChild(icon)
 
     def update_needed_resources(self, needed_res_container):
         """ Update needed resources """
@@ -230,6 +232,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
         self.widget.findChild(name='progress').progress = progress
         progress_perc = self.widget.findChild(name='UB_progress_perc')
         progress_perc.text = u'{progress}%'.format(progress=progress)
+
 
 class BoatbuilderTab(UnitbuilderTabBase):
     """this tab additionally requests functions for:
@@ -278,15 +281,17 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
                          helptext=helptext)
         widget.addChild(unit_icon)
 
-        # if not buildable, this returns string with reason why to be displayed as helptext
+        # if not buildable, this returns string with reason why to be
+        #  displayed as helptext
         # ship_unbuildable = self.is_ship_unbuildable(ship)
         ship_unbuildable = False
         if not ship_unbuildable:
-            button = OkButton(position=(60, 50), name='ok_%s' % index, helptext=_('Build this ship!'))
+            button = OkButton(position=(60, 50), name='ok_%s' % index,
+                              helptext=_('Build this ship!'))
             button.capture(Callback(self.start_production, prodline))
         else:
             button = CancelButton(position=(60, 50), name='ok_%s' % index,
-            helptext=ship_unbuildable)
+                                  helptext=ship_unbuildable)
 
         widget.addChild(button)
 

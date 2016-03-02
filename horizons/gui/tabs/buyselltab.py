@@ -176,26 +176,30 @@ class BuySellTab(TabInterface):
             self.resources.hide()
             self.show()
             if resource_id != 0:  # new res
-                self._set_hint(_("Set to buy or sell by clicking on that label,"
-                    " then adjust the amount via the slider to the right."))
+                self._set_hint(_("Set to buy or sell by clicking on that "
+                                 "label, then adjust the amount via the "
+                                 "slider to the right."))
             else:
                 self._set_hint(u"")
             keep_hint = True
         slot = self.slot_widgets[slot_id]
         slider = slot.findChild(name="slider")
 
-        if value is None:  # use current slider value if player provided no input
+        if value is None:
+            # use current slider value if player provided no input
             value = int(slider.value)
         else:  # set slider to value entered by the player
             slider.value = float(value)
 
         if slot.action == "sell":
-            if slot.res is not None:  # slot has been in use before, delete old value
+            if slot.res is not None:
+                # slot has been in use before, delete old value
                 self.clear_slot(slot_id)
             if resource_id != 0:
                 self.set_slot_info(slot.id, resource_id, True, value)
         elif slot.action == "buy":
-            if slot.res is not None:  # slot has been in use before, delete old value
+            if slot.res is not None:
+                # slot has been in use before, delete old value
                 self.clear_slot(slot_id)
             if resource_id != 0:
                 self.set_slot_info(slot.id, resource_id, False, value)
@@ -232,14 +236,16 @@ class BuySellTab(TabInterface):
             inventory = self.trade_post.get_inventory()
             filled = (100 * inventory[resource_id]) // inventory.get_limit(resource_id)
             fillbar.position = (icon.width - fillbar.width - 1,
-                icon.height - int(icon.height * filled))
-            # reuse code from toggle to finish setup (must switch state before, it will reset it)
+                                icon.height - int(icon.height * filled))
+            # reuse code from toggle to finish setup
+            # (must switch state before, it will reset it)
             slot.action = "sell" if slot.action == "buy" else "buy"
             self.toggle_buysell(slot_id, keep_hint=keep_hint)
         slot.adaptLayout()
 
     def toggle_buysell(self, slot_id, keep_hint=False):
-        """Switches modes of individual resource slots between 'buy' and 'sell'."""
+        """Switches modes of individual resource slots between
+        'buy' and 'sell'."""
         slot_widget = self.slot_widgets[slot_id]
         limit = int(slot_widget.findChild(name="slider").value)
         if slot_widget.action == "buy":
@@ -260,8 +266,9 @@ class BuySellTab(TabInterface):
 
     def set_slot_info(self, slot_id, resource_id, selling, limit):
         assert resource_id is not None
-        self.log.debug("BuySellTab: setting slot %d to resource %d, selling=%s, limit %d",
-            slot_id, resource_id, selling, limit)
+        self.log.debug("BuySellTab: setting slot %d to resource %d, "
+                       "selling=%s, limit %d", slot_id, resource_id, selling,
+                       limit)
         self.slot_widgets[slot_id].action = "sell" if selling else "buy"
         if self.inited:
             SetTradeSlot(self.trade_post, slot_id, resource_id, selling, limit).execute(self.session)
@@ -325,7 +332,7 @@ class BuySellTab(TabInterface):
             price *= TRADER.PRICE_MODIFIER_SELL
         elif action == "sell":
             hint = _("Will sell {resource_name} for {price} gold/t"
-                " whenever more than {limit}t are available.")
+                     " whenever more than {limit}t are available.")
             price *= TRADER.PRICE_MODIFIER_BUY
 
         hint = hint.format(limit=unicode(limit),

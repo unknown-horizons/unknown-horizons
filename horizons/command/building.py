@@ -234,18 +234,21 @@ class Tear(Command):
                 other_range_buildings.append(building)
         other_range_buildings.remove(building_to_remove)
 
-        # Calculate which coordinates are in the new settlement and which are not
+        # Calculate which coordinates are in the new settlement
+        #  and which are not
         new_settlement_coords = set()
         for building in other_range_buildings:
-            range_coords = list(building.position.get_radius_coordinates(building.radius, include_self=True))
+            range_coords = list(building.position.get_radius_coordinates(
+                building.radius, include_self=True))
             new_settlement_coords.update(range_coords)
-        obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(new_settlement_coords)
+        obsolete_settlement_coords = set(
+            settlement.ground_map.keys()).difference(new_settlement_coords)
 
         # Find the buildings that need to be destroyed
         buildings_to_destroy = []
         for building in settlement.buildings:
             if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT,
-                    BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
+                               BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
                 continue
             if building.position == position:
                 continue

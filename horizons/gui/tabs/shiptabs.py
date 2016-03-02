@@ -52,17 +52,19 @@ class ShipOverviewTab(OverviewTab):
 
     def _refresh_found_settlement_button(self, events):
         island_without_player_settlement_found = False
-        helptext = _("The ship needs to be close to an island to found a settlement.")
-        for island in self.instance.session.world.get_islands_in_radius(self.instance.position,
-                self.instance.radius):
-            if not any(settlement.owner.is_local_player for settlement in island.settlements):
+        helptext = _("The ship needs to be close to an island to found a "
+                     "settlement.")
+        for island in self.instance.session.world.get_islands_in_radius(
+                self.instance.position, self.instance.radius):
+            if not any(settlement.owner.is_local_player for settlement in
+                       island.settlements):
                 island_without_player_settlement_found = True
             else:
                 helptext = _("You already have a settlement on this island.")
 
         if island_without_player_settlement_found:
-            events['found_settlement'] = Callback(self.instance.session.ingame_gui._build,
-                BUILDINGS.WAREHOUSE,
+            events['found_settlement'] = Callback(
+                self.instance.session.ingame_gui._build, BUILDINGS.WAREHOUSE,
                 weakref.ref(self.instance))
             self.widget.child_finder('found_settlement_bg').set_active()
             self.widget.child_finder('found_settlement').set_active()
@@ -73,9 +75,9 @@ class ShipOverviewTab(OverviewTab):
             self.widget.child_finder('found_settlement').set_inactive()
             self.widget.child_finder('found_settlement').helptext = helptext
 
-        cb = Callback(self.instance.session.ingame_gui.resource_overview.set_construction_mode,
-            self.instance,
-            Entities.buildings[BUILDINGS.WAREHOUSE].costs)
+        cb = Callback(self.instance.session.ingame_gui.resource_overview.
+                      set_construction_mode, self.instance,
+                      Entities.buildings[BUILDINGS.WAREHOUSE].costs)
         events['found_settlement/mouseEntered'] = cb
 
         cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)

@@ -50,6 +50,7 @@ from selectmultitab import SelectMultiTab
 from barrackstabs import BarracksTab, BarracksSelectTab, \
                         BarracksSwordmanTab, BarracksConfirmTab
 
+
 def resolve_tab(tabclass_name):
     """Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
     return getattr(sys.modules[__name__], tabclass_name)

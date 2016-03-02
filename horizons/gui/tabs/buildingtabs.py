@@ -59,7 +59,8 @@ class ResourceDepositOverviewTab(OverviewTab):
         # when parts of the ore have been mined already
         resources = self.instance.get_component(DepositComponent).get_res_ranges()
         amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
-        self.widget.child_finder("inventory").init(self.instance.session.db,
+        self.widget.child_finder("inventory").init(
+            self.instance.session.db,
             self.instance.get_component(StorageComponent).inventory,
             ordinal=amounts)
 

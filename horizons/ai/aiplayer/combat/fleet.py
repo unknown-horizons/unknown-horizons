@@ -33,9 +33,8 @@ from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class Fleet(WorldObject):
-    """
-    Fleet object is responsible for moving a group of ship around the map in an ordered manner,
-    that is:
+    """Fleet object is responsible for moving a group of ship around
+    the map in an ordered manner, that is:
     1. provide a single move callback for a fleet as a whole,
     2. resolve self-blocks in a group of ships
     3. resolve MoveNotPossible exceptions.
@@ -66,7 +65,8 @@ class Fleet(WorldObject):
         self._ships = WeakKeyDictionary()
         for ship in ships:
             self._ships[ship] = self.shipStates.idle
-            # TODO: @below, this caused errors on one occasion but I was not able to reproduce it.
+            # TODO: @below, this caused errors on one occasion but
+            #  I was not able to reproduce it.
             ship.add_remove_listener(Callback(self._lost_ship, ship))
         self.state = self.fleetStates.idle
         self.destroy_callback = destroy_callback
@@ -75,27 +75,33 @@ class Fleet(WorldObject):
         super(Fleet, self).save(db)
         # save the fleet
         # save destination if fleet is moving somewhere
-        db("INSERT INTO fleet (fleet_id, owner_id, state_id) VALUES(?, ?, ?)", self.worldid,
-            self.owner.worldid, self.state.index)
+        db("INSERT INTO fleet (fleet_id, owner_id, state_id) VALUES(?, ?, ?)",
+           self.worldid, self.owner.worldid, self.state.index)
 
-        if self.state == self.fleetStates.moving and hasattr(self, 'destination'):
+        if self.state == self.fleetStates.moving and hasattr(self,
+                                                             'destination'):
             if isinstance(self.destination, Point):
                 x, y = self.destination.x, self.destination.y
-                db("UPDATE fleet SET dest_x = ?, dest_y = ? WHERE fleet_id = ?", x, y, self.worldid)
+                db("UPDATE fleet SET dest_x = ?, dest_y = ? WHERE fleet_id "
+                   "= ?", x, y, self.worldid)
             elif isinstance(self.destination, Circle):
-                x, y, radius = self.destination.center.x, self.destination.center.y, self.destination.radius
-                db("UPDATE fleet SET dest_x = ?, dest_y = ?, radius = ? WHERE fleet_id = ?",
-                    x, y, radius, self.worldid)
+                x, y, radius = self.destination.center.x, \
+                               self.destination.center.y, \
+                               self.destination.radius
+                db("UPDATE fleet SET dest_x = ?, dest_y = ?, radius = ? "
+                   "WHERE fleet_id = ?", x, y, radius, self.worldid)
             else:
-                assert False, "destination is neither a Circle nor a Point: %s" \
-                    % self.destination.__class__.__name__
+                assert False, "destination is neither a Circle nor a Point:" \
+                              " %s" % self.destination.__class__.__name__
 
         if hasattr(self, "ratio"):
-            db("UPDATE fleet SET ratio = ? WHERE fleet_id = ?", self.ratio, self.worldid)
+            db("UPDATE fleet SET ratio = ? WHERE fleet_id = ?",
+               self.ratio, self.worldid)
 
         # save ships
         for ship in self.get_ships():
-            db("INSERT INTO fleet_ship (ship_id, fleet_id, state_id) VALUES(?, ?, ?)",
+            db("INSERT INTO fleet_ship (ship_id, fleet_id, state_id) "
+               "VALUES(?, ?, ?)",
                ship.worldid, self.worldid, self._ships[ship].index)
 
     def _load(self, worldid, owner, db, destroy_callback):
@@ -115,9 +121,11 @@ class Fleet(WorldObject):
         if ratio:
             self.ratio = ratio
 
-        ships_states = [(WorldObject.get_object_by_id(ship_id), self.shipStates[ship_state_id])
+        ships_states = [(WorldObject.get_object_by_id(ship_id),
+                         self.shipStates[ship_state_id])
                         for ship_id, ship_state_id
-                        in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
+                        in db("SELECT ship_id, state_id FROM fleet_ship "
+                              "WHERE fleet_id = ?", worldid)]
         ships = [item[0] for item in ships_states]
 
         self.__init(ships, destroy_callback)
@@ -151,8 +159,10 @@ class Fleet(WorldObject):
 
     def _lost_ship(self, ship):
         """
-        Used when fleet was on the move and one of the ships was killed during that.
-        This way fleet has to check whether the target point was reached.
+        Used when fleet was on the move and one of the ships was
+        killed during that.
+        This way fleet has to check whether
+        the target point was reached.
         """
         if ship in self._ships:
             del self._ships[ship]
@@ -163,7 +173,8 @@ class Fleet(WorldObject):
 
     def _get_ship_states_count(self):
         """
-        Returns Counter about how many ships are in state idle, moving, reached.
+        Returns Counter about how many ships are in state idle,
+        moving, reached.
         """
         counter = defaultdict(int)
         for value in self._ships.values():
@@ -176,9 +187,11 @@ class Fleet(WorldObject):
         """
         state_counts = self._get_ship_states_count()
 
-        # below: include blocked ships as "reached" as well since there's not much more left to do,
+        # below: include blocked ships as "reached" as well since
+        # there's not much more left to do,
         # and it's better than freezing the whole fleet
-        reached = state_counts[self.shipStates.reached] + state_counts[self.shipStates.blocked]
+        reached = state_counts[self.shipStates.reached] + state_counts[
+            self.shipStates.blocked]
         total = len(self._ships)
         return self.ratio <= float(reached) / total
 
@@ -186,7 +199,8 @@ class Fleet(WorldObject):
         """
         Called when a single ship reaches destination.
         """
-        self.log.debug("Fleet %s, Ship %s reached the destination", self.worldid,
+        self.log.debug("Fleet %s, Ship %s reached the destination",
+                       self.worldid,
                        ship.get_component(NamedComponent).name)
         self._ships[ship] = self.shipStates.reached
         if self._was_target_reached():
