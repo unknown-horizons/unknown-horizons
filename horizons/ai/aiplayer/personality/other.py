@@ -26,11 +26,16 @@ class OtherPersonality(DefaultPersonality):
     """This personality makes the AI build larger settlements."""
 
     class LandManager(DefaultPersonality.LandManager):
-        village_area_small = DefaultPersonality.LandManager.village_area_small * 2
-        # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
+        village_area_small = \
+            DefaultPersonality.LandManager.village_area_small * 2
+        # use this fraction of the area for the village if <= 1600 tiles
+        #  are available for the settlement
         village_area_40 = DefaultPersonality.LandManager.village_area_40 * 2
-        # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
+        # use this fraction of the area for the village if <= 2500 tiles
+        #  are available for the settlement
         village_area_50 = DefaultPersonality.LandManager.village_area_50 * 2
-        # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
+        # use this fraction of the area for the village if <= 3600 tiles
+        #  are available for the settlement
         village_area_60 = DefaultPersonality.LandManager.village_area_60 * 2
-        # use this fraction of the area for the village if > 3600 tiles are available for the settlement
+        # use this fraction of the area for the village if > 3600 tiles
+        #  are available for the settlement

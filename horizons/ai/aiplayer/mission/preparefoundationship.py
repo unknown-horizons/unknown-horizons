@@ -73,8 +73,10 @@ class PrepareFoundationShip(ShipMission):
                                                 (db_result[1]))
 
         if self.state == self.missionStates.moving:
-            self.ship.add_move_callback(Callback(self._reached_destination_area))
-            self.ship.add_blocked_callback(Callback(self._move_to_destination_area))
+            self.ship.add_move_callback(Callback(
+                self._reached_destination_area))
+            self.ship.add_blocked_callback(Callback(
+                self._move_to_destination_area))
         else:
             assert False, 'invalid state'
 
@@ -111,15 +113,18 @@ class PrepareFoundationShip(ShipMission):
 
         success = False
         if self.feeder_island:
-            success = self.settlement_manager.owner.settlement_founder.have_feeder_island_starting_resources(
-                self.ship, None)
+            success = self.settlement_manager.owner.settlement_founder.\
+                have_feeder_island_starting_resources(
+                     self.ship, None)
             if success:
-                self.report_success('Transferred enough feeder island foundation resources to the ship')
+                self.report_success('Transferred enough feeder island '
+                                    'foundation resources to the ship')
         else:
             success = self.settlement_manager.owner.settlement_founder.\
                 have_starting_resources(self.ship, None)
             if success:
-                self.report_success('Transferred enough foundation resources to the ship')
+                self.report_success('Transferred enough foundation resources '
+                                    'to the ship')
         if not success:
             self.report_failure('Not enough foundation resources available')
 

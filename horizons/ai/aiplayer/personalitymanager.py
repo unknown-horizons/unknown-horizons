@@ -21,7 +21,8 @@
 
 import logging
 
-from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
+from horizons.ai.aiplayer.personality import DefaultPersonality,\
+    OtherPersonality
 from horizons.util.python import decorators
 
 
@@ -49,7 +50,8 @@ class PersonalityManager(object):
         personality = db("SELECT personality FROM ai_personality_manager "
                          "WHERE rowid = ?", player.worldid)[0][0]
         for personality_class in self.available_personalities:
-            if personality == personality_class.__module__ + '.' + personality_class.__name__:
+            if personality == personality_class.__module__ + '.' +\
+                    personality_class.__name__:
                 self._personality = personality_class
         if self._personality is None:
             self.log.debug('%s had invalid personality %s', self.player,

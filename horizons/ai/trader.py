@@ -180,10 +180,13 @@ class Trader(GenericAI):
     def send_ship_random_warehouse(self, ship, warehouse=None):
         """Sends a ship to a random warehouse on the map
         @param ship: Ship instance that is to be used
-        @param warehouse: warehouse instance to move to. Random one is selected on None."""
-        self.log.debug("Trader %s ship %s moving to warehouse (random=%s)", self.worldid, ship.worldid,
+        @param warehouse: warehouse instance to move to. Random one
+                          is selected on None."""
+        self.log.debug("Trader %s ship %s moving to warehouse (random=%s)",
+                       self.worldid, ship.worldid,
                        (warehouse is None))
-        # TODO maybe this kind of list should be saved somewhere, as this is pretty performance intense
+        # TODO maybe this kind of list should be saved somewhere,
+        #  as this is pretty performance intense
         warehouses = self.session.world.get_warehouses()
         # Remove all warehouses that are not safe to visit
         warehouses = filter(self.is_warehouse_safe, warehouses)
@@ -191,7 +194,8 @@ class Trader(GenericAI):
             self.send_ship_random(ship)
         else:  # select a warehouse
             if warehouse is None:
-                self.warehouse[ship.worldid] = self.session.random.choice(warehouses)
+                self.warehouse[ship.worldid] = self.session.random.choice(
+                    warehouses)
             else:
                 self.warehouse[ship.worldid] = warehouse
             try:  # try to find a possible position near the warehouse
@@ -233,11 +237,14 @@ class Trader(GenericAI):
         # NOTE: must be sorted for mp games (same order everywhere)
         for res in sorted(trade_comp.sell_list.iterkeys()):
             # select a random amount to buy from the settlement
-            amount = self.session.random.randint(TRADER.BUY_AMOUNT_MIN, TRADER.BUY_AMOUNT_MAX)
+            amount = self.session.random.randint(TRADER.BUY_AMOUNT_MIN,
+                                                 TRADER.BUY_AMOUNT_MAX)
             # try to buy all, else try smaller pieces
             for try_amount in xrange(amount, 0, -1):
-                price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * try_amount)
-                trade_successful = trade_comp.sell(res, try_amount, price, self.worldid)
+                price = int(self.session.db.get_res_value(res) *
+                            TRADER.PRICE_MODIFIER_BUY * try_amount)
+                trade_successful = trade_comp.sell(res, try_amount, price,
+                                                   self.worldid)
                 self.log.debug("Trader %s: offered buy %s tons of res %s, "
                                "success: %s", self.worldid, try_amount, res,
                                trade_successful)
@@ -245,22 +252,29 @@ class Trader(GenericAI):
                     break
 
         del self.warehouse[ship.worldid]
-        # wait a few seconds before going on to simulate loading/unloading process
+        """wait a few seconds before going on
+        to simulate loading/unloading process"""
         Scheduler().add_new_object(Callback(self.ship_idle, ship), self,
-                                   Scheduler().get_ticks(TRADER.TRADING_DURATION))
+                                   Scheduler().get_ticks(
+                                       TRADER.TRADING_DURATION))
         self.ships[ship] = self.shipStates.reached_warehouse
 
     def ship_idle(self, ship):
-        """Called if a ship is idle. Sends ship to either a random place or warehouse.
+        """Called if a ship is idle. Sends ship to either
+        a random place or warehouse.
         Probability for 'random warehouse' in percent: TRADER.BUSINESS_SENSE.
         @param ship: ship instance"""
         if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE:
             # delay one tick, to allow old movement calls to completely finish
-            self.log.debug("Trader %s ship %s: idle, moving to random warehouse", self.worldid, ship.worldid)
-            Scheduler().add_new_object(Callback(self.send_ship_random_warehouse, ship), self, run_in=0)
+            self.log.debug("Trader %s ship %s: idle, moving to random "
+                           "warehouse", self.worldid, ship.worldid)
+            Scheduler().add_new_object(Callback(
+                self.send_ship_random_warehouse, ship), self, run_in=0)
         else:
-            self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
-            Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)
+            self.log.debug("Trader %s ship %s: idle, moving to random "
+                           "location", self.worldid, ship.worldid)
+            Scheduler().add_new_object(Callback(self.send_ship_random, ship),
+                                       self, run_in=0)
 
     def end(self):
         super(Trader, self).end()

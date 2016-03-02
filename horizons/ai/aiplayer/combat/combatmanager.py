@@ -31,14 +31,15 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
-from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
+from horizons.util.python.defaultweakkeydictionary import \
+    DefaultWeakKeyDictionary
 from horizons.util.worldobject import WorldObject
 
 
 class CombatManager(object):
-    """
-    CombatManager object is responsible for handling close combat in game.
-    It scans the environment (lookout) and requests certain actions from behavior
+    """CombatManager object is responsible for handling close combat
+    in game. It scans the environment (lookout) and requests certain
+    actions from behavior
     """
     log = logging.getLogger("ai.aiplayer.combat.combatmanager")
 
@@ -59,7 +60,8 @@ class CombatManager(object):
         self.session = owner.session
 
         # Dictionary of ship => shipState
-        self.ships = DefaultWeakKeyDictionary(lambda ship: self.shipStates.idle)
+        self.ships = DefaultWeakKeyDictionary(lambda ship:
+                                              self.shipStates.idle)
 
     @classmethod
     def close_range(cls, ship):
@@ -77,7 +79,8 @@ class CombatManager(object):
 
     def save(self, db):
         for ship, state in self.ships.iteritems():
-            db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)",
+            db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) "
+               "VALUES (?, ?, ?)",
                 self.owner.worldid, ship.worldid, state.index)
 
     def set_ship_state(self, ship, state):
@@ -115,33 +118,40 @@ class CombatManager(object):
 
             # add move callbacks corresponding to given state
             if state == self.shipStates.moving:
-                ship.add_move_callback(Callback(BehaviorMoveCallback._arrived, ship))
+                ship.add_move_callback(Callback(BehaviorMoveCallback._arrived,
+                                                ship))
 
             self.add_new_unit(ship, state)
 
     # DISPLAY-RELATED FUNCTIONS
     def _init_fake_tile(self):
-        """Sets the _fake_tile_obj class variable with a ready to use fife object.
+        """Sets the _fake_tile_obj class variable with a ready
+        to use fife object.
         To create a new fake tile, use _add_fake_tile()"""
-        # use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
+        # use fixed SelectableBuildingComponent here, to make sure
+        #  subclasses also read the same variable
         if not hasattr(CombatManager, "_fake_range_tile_obj"):
             # create object to create instances from
-            CombatManager._fake_range_tile_obj = horizons.globals.fife.engine.getModel().createObject(
-                '_fake_range_tile_obj', 'ground')
+            CombatManager._fake_range_tile_obj = horizons.globals.fife.\
+                engine.getModel().createObject(
+                    '_fake_range_tile_obj', 'ground')
             fife.ObjectVisual.create(CombatManager._fake_range_tile_obj)
 
             img_path = 'content/gfx/fake_water.png'
             img = horizons.globals.fife.imagemanager.load(img_path)
             for rotation in [45, 135, 225, 315]:
-                CombatManager._fake_range_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
+                CombatManager._fake_range_tile_obj.get2dGfxVisual().\
+                    addStaticImage(rotation, img.getHandle())
         if not hasattr(self, '_selected_fake_tiles'):
             self._selected_fake_tiles = []
         if not hasattr(self, '_selected_tiles'):
             self._selected_tiles = []
 
     def _add_fake_tile(self, x, y, layer, renderer, color):
-        """Adds a fake tile to the position. Requires 'self._fake_tile_obj' to be set."""
-        inst = layer.createInstance(CombatManager._fake_range_tile_obj, fife.ModelCoordinate(x, y, 0), "")
+        """Adds a fake tile to the position.
+        Requires 'self._fake_tile_obj' to be set."""
+        inst = layer.createInstance(CombatManager._fake_range_tile_obj,
+                                    fife.ModelCoordinate(x, y, 0), "")
         fife.InstanceVisual.create(inst)
         self._selected_fake_tiles.append(inst)
         renderer.addColored(inst, *color)
@@ -168,7 +178,8 @@ class CombatManager(object):
         layer = self.session.world.session.view.layers[LAYERS.FIELDS]
         for point in points:
             tup = (point.x, point.y)
-            island_tile = [island for island in self.session.world.islands if island.get_tile_tuple(tup)]
+            island_tile = [island for island in self.session.world.islands
+                           if island.get_tile_tuple(tup)]
             if island_tile:
                 tile = island_tile[0].get_tile_tuple(tup)
                 self._add_tile(tile, renderer, color)
@@ -177,7 +188,8 @@ class CombatManager(object):
 
     def _highlight_circle(self, position, radius, color):
         points = set(self.session.world.get_points_in_radius(position, radius))
-        points2 = set(self.session.world.get_points_in_radius(position, radius - 1))
+        points2 = set(self.session.world.get_points_in_radius(position,
+                                                              radius - 1))
         self._highlight_points(list(points - points2), color)
 
     def display(self):
@@ -199,10 +211,14 @@ class CombatManager(object):
         for ship, state in self.ships.iteritems():
             range = self.combat_range
             self._highlight_circle(ship.position, range, combat_range_color)
-            self._highlight_circle(ship.position, self.close_range(ship), close_range_color)
-            self._highlight_circle(ship.position, self.fallback_range(ship), fallback_range_color)
-            self._highlight_circle(ship.position, ship._max_range, attack_range_color)
-            self._highlight_circle(ship.position, ship._min_range, attack_range_color)
+            self._highlight_circle(ship.position, self.close_range(ship),
+                                   close_range_color)
+            self._highlight_circle(ship.position, self.fallback_range(ship),
+                                   fallback_range_color)
+            self._highlight_circle(ship.position, ship._max_range,
+                                   attack_range_color)
+            self._highlight_circle(ship.position, ship._min_range,
+                                   attack_range_color)
             self._highlight_points([ship.position], center_point_color)
 
     def handle_mission_combat(self, mission):
@@ -219,18 +235,24 @@ class CombatManager(object):
         if not ship_group:
             mission.abort_mission()
 
-        ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
-        ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
-        pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate, ))
-        fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
-        working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
+        ships_around = self.unit_manager.find_ships_near_group(
+            ship_group, self.combat_range)
+        ships_around = self.unit_manager.filter_ships(
+            ships_around, (filters.hostile(), ))
+        pirate_ships = self.unit_manager.filter_ships(
+            ships_around, (filters.pirate, ))
+        fighting_ships = self.unit_manager.filter_ships(
+            ships_around, (filters.fighting(), ))
+        working_ships = self.unit_manager.filter_ships(
+            ships_around, (filters.working(), ))
 
         environment = {'ship_group': ship_group}
 
         # begin combat if it's still unresolved
         if fighting_ships:
             environment['enemies'] = fighting_ships
-            environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
+            environment['power_balance'] = UnitManager.\
+                calculate_power_balance(ship_group, fighting_ships)
             self.log.debug("Player: %s vs Player: %s -> power_balance:%s",
                            self.owner.name,
                            fighting_ships[0].owner.name,
@@ -240,7 +262,8 @@ class CombatManager(object):
                 'fighting_ships_in_sight', **environment)
         elif pirate_ships:
             environment['enemies'] = pirate_ships
-            environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
+            environment['power_balance'] = UnitManager.\
+                calculate_power_balance(ship_group, pirate_ships)
             self.log.debug("Player: %s vs Player: %s -> power_balance:%s",
                            self.owner.name,
                            pirate_ships[0].owner.name,
@@ -263,29 +286,38 @@ class CombatManager(object):
         """
         filters = self.unit_manager.filtering_rules
 
-        # test first whether requesting for combat is of any use (any ships nearby)
+        # test first whether requesting for combat is of any use
+        #  (any ships nearby)
         ship_group = mission.fleet.get_ships()
 
         # filter out ships that are already doing a combat move
         ship_group = self.unit_manager.filter_ships(ship_group, (
             filters.ship_state(self.ships, self.shipStates.idle)))
-        ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
-        ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
-        pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate, ))
-        fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
-        working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
+        ships_around = self.unit_manager.find_ships_near_group(
+            ship_group, self.combat_range)
+        ships_around = self.unit_manager.filter_ships(
+            ships_around, (filters.hostile()))
+        pirate_ships = self.unit_manager.filter_ships(
+            ships_around, (filters.pirate, ))
+        fighting_ships = self.unit_manager.filter_ships(
+            ships_around, (filters.fighting(), ))
+        working_ships = self.unit_manager.filter_ships(
+            ships_around, (filters.working(), ))
 
         if fighting_ships:
             environment = {'enemies': fighting_ships}
-            if self.owner.strategy_manager.request_to_pause_mission(mission, **environment):
+            if self.owner.strategy_manager.request_to_pause_mission(
+                    mission, **environment):
                 self.handle_mission_combat(mission)
         elif pirate_ships:
             environment = {'enemies': pirate_ships}
-            if self.owner.strategy_manager.request_to_pause_mission(mission, **environment):
+            if self.owner.strategy_manager.request_to_pause_mission(
+                    mission, **environment):
                 self.handle_mission_combat(mission)
         elif working_ships:
             environment = {'enemies': working_ships}
-            if self.owner.strategy_manager.request_to_pause_mission(mission, **environment):
+            if self.owner.strategy_manager.request_to_pause_mission(
+                    mission, **environment):
                 self.handle_mission_combat(mission)
 
     def handle_casual_combat(self):
@@ -298,20 +330,27 @@ class CombatManager(object):
         rules = (filters.not_in_fleet, filters.fighting(),
                  filters.ship_state(self.ships, self.shipStates.idle))
         for ship in self.unit_manager.get_ships(rules):
-            # Turn into one-ship group, since reasoning is based around groups of ships
+            # Turn into one-ship group, since reasoning
+            #  is based around groups of ships
             ship_group = [ship, ]
-            # TODO: create artificial groups by dividing ships that are nearby into groups based on
-            # their distance.
-            # This may end up being costly, so postpone until we have more cpu resources to spare.
+            # TODO: create artificial groups by dividing ships that are
+            #  nearby into groups based on their distance.
+            # This may end up being costly, so postpone until we have
+            #  more cpu resources to spare.
 
-            ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
-            pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate, ))
-            fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
-            working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
+            ships_around = self.unit_manager.find_ships_near_group(
+                ship_group, self.combat_range)
+            pirate_ships = self.unit_manager.filter_ships(
+                ships_around, (filters.pirate, ))
+            fighting_ships = self.unit_manager.filter_ships(
+                ships_around, (filters.fighting(), ))
+            working_ships = self.unit_manager.filter_ships(
+                ships_around, (filters.working(), ))
             environment = {'ship_group': ship_group}
             if fighting_ships:
                 environment['enemies'] = fighting_ships
-                environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
+                environment['power_balance'] = UnitManager.\
+                    calculate_power_balance(ship_group, fighting_ships)
                 self.log.debug("Player: %s vs Player: %s -> power_balance:%s",
                                self.owner.name,
                                fighting_ships[0].owner.name,
@@ -321,7 +360,8 @@ class CombatManager(object):
                     'fighting_ships_in_sight', **environment)
             elif pirate_ships:
                 environment['enemies'] = pirate_ships
-                environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
+                environment['power_balance'] = UnitManager.\
+                    calculate_power_balance(ship_group, pirate_ships)
                 self.log.debug("Player: %s vs Player: %s -> power_balance:%s",
                                self.owner.name,
                                pirate_ships[0].owner.name,
