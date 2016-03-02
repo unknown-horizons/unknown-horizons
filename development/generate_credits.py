@@ -30,7 +30,7 @@ section_widgets.update({'UH-Team': 'credits_team',
                         'Special Thanks': 'credits_thanks'})
 
 # Whether to add ScrollAreas around the page
-huge_pages = ['Translators']
+huge_pages = ['UH-Team', 'Patchers', 'Translators']
 
 INPUT = 'doc/AUTHORS.md'
 OUTPUT = 'content/gui/xml/mainmenu/credits.xml'
