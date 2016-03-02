@@ -128,8 +128,6 @@ class InventoryOverlayComponent(Component):
 			self.current_overlays[res_id] = None
 			return
 
-		all_action_sets = ActionSetLoader.get_sets()
-
 		# We use max(0, new_amount) restricted to what exists in overlay_order.
 		# E.g. for
 		#   new_amount = 3
@@ -154,7 +152,7 @@ class InventoryOverlayComponent(Component):
 				return
 
 			try:
-				overlay_set = all_action_sets[self.action_set][overlay_name]
+				overlay_set = ActionSetLoader.get_set(self.action_set)[overlay_name]
 			except KeyError:
 				self.log.warning(
 					'Could not find overlay action set defined for object '

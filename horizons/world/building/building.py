@@ -286,15 +286,15 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			action_set_id = cls.get_random_action_set(level=level)
 		fife.InstanceVisual.create(instance)
 
-		action_sets = ActionSetLoader.get_sets()
-		if not action in action_sets[action_set_id]:
-			if 'idle' in action_sets[action_set_id]:
+		action_set = ActionSetLoader.get_set(action_set_id)
+		if not action in action_set:
+			if 'idle' in action_set:
 				action = 'idle'
-			elif 'idle_full' in action_sets[action_set_id]:
+			elif 'idle_full' in action_set:
 				action = 'idle_full'
 			else:
 				# set first action
-				action = action_sets[action_set_id].keys()[0]
+				action = action_set.keys()[0]
 
 		if (Fife.getVersion() >= (0, 3, 6)):
 			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)

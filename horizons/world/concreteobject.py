@@ -123,7 +123,7 @@ class ConcreteObject(WorldObject):
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
 		@param action: animation id as string"""
-		return (action in ActionSetLoader.get_sets()[self._action_set_id])
+		return (action in ActionSetLoader.get_set(self._action_set_id))
 
 	def remove(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)

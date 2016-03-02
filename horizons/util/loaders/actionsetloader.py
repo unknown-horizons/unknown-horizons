@@ -70,3 +70,13 @@ class ActionSetLoader(object):
 		if not cls._loaded:
 			cls.load()
 		return cls.action_sets
+
+	@classmethod
+	def get_set(cls, action_set_name):
+		"""
+		@param action_set_name: The name of the action_set.
+		@return None if action_set is not found.
+		"""
+		if not cls._loaded:
+			cls.load()
+		return cls.action_sets.get(action_set_name)

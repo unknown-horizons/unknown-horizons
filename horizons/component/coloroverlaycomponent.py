@@ -147,9 +147,8 @@ class ColorOverlayComponent(Component):
 			# parameter False: do not convert color overlays attached to base
 			self.fife_instance.convertToOverlays(self.identifier, False)
 
-		all_action_sets = ActionSetLoader.get_sets()
 		try:
-			overlay_set = all_action_sets[self.action_set][overlay_name]
+			overlay_set = ActionSetLoader.get_set(self.action_set)[overlay_name]
 		except KeyError:
 			self.log.warning(
 				'Could not find overlay action set `%s` defined for object '
