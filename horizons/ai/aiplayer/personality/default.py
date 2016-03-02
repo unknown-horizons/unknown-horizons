@@ -494,11 +494,25 @@ class DefaultPersonality:
 		add_sugarcane_field_value = 3.5 # the value of adding a sugarcane field
 		add_tobacco_field_value = 3.5 # the value of adding a tobacco field
 		add_herbary_field_value = 3.5 # the value of adding a herbary
+		add_alvearies_value = 3.5 # ToDo
+		add_cocoa_field_value = 3.5 # ToDo
+		add_corn_field_value = 3.5 # ToDo
+		add_hop_field_value = 3.5 # ToDo
+		add_spice_field_value = 3.5 # ToDo
+		add_vineyard_value = 3.5 # ToDo
+		add_cattle_run_value = 3.5 # ToDo
 		remove_unused_potato_field_penalty = 0 # the penalty for removing an unused potato field
 		remove_unused_pasture_penalty = 1 # the penalty for removing an unused pasture
 		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused sugarcane field
 		remove_unused_tobacco_field_penalty = 1.5 # the penalty for removing an unused tobacco field
 		remove_unused_herbary_field_penalty = 1.5 # the penalty for removing an unused herbary
+		remove_unused_alvearies_penalty = 1.5 # ToDo
+		remove_unused_cocoa_field_penalty = 1.5 # ToDo
+		remove_unused_corn_field_penalty = 1.5 # ToDo
+		remove_unused_hop_field_penalty = 1.5 # ToDo
+		remove_unused_spice_field_penalty = 1.5 # ToDo
+		remove_unused_vineyard_penalty = 1.5 # ToDo
+		remove_unused_cattle_run_penalty = 1.5 # ToDo
 
 	class FireStationGoal:
 		enabled = True
