@@ -91,7 +91,7 @@ class ConcreteObject(WorldObject):
 
 	def act(self, action, facing_loc=None, repeating=False, force_restart=True):
 		"""
-		@param repeating: maps to fife, currently broken: http://github.com/fifengine/fifengine/issues/708
+		@param repeating: maps to fife instance method actRepeat or actOnce
 		@param force_restart: whether to always restart, even if action is already displayed
 		"""
 		if not self.has_action(action):
