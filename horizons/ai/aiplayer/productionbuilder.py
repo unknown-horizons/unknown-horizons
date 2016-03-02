@@ -239,6 +239,13 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.SUGARCANE_FIELD: deque(),
 			BUILDING_PURPOSE.TOBACCO_FIELD: deque(),
 			BUILDING_PURPOSE.HERBARY: deque(),
+			BUILDING_PURPOSE.ALVEARIES: deque(),
+			BUILDING_PURPOSE.COCOA_FIELD: deque(),
+			BUILDING_PURPOSE.CORN_FIELD: deque(),
+			BUILDING_PURPOSE.HOP_FIELD: deque(),
+			BUILDING_PURPOSE.SPICE_FIELD: deque(),
+			BUILDING_PURPOSE.VINEYARD: deque(),
+			BUILDING_PURPOSE.CATTLE_RUN: deque(),
 		}
 
 		for coords, (purpose, _) in sorted(self.plan.iteritems()):
@@ -280,6 +287,13 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.SALT_PONDS:      (153, 217, 234),
 			BUILDING_PURPOSE.HERBARY:         ( 64, 200,   0),
 			BUILDING_PURPOSE.RESERVED:        (  0,   0, 128),
+			#BUILDING_PURPOSE.ALVEARIES:       (todo),
+			#BUILDING_PURPOSE.COCOA_FIELD:     (todo),
+			#BUILDING_PURPOSE.CORN_FIELD:      (todo),
+			#BUILDING_PURPOSE.HOP_FIELD:       (todo),
+			#BUILDING_PURPOSE.SPICE_FIELD:     (todo),
+			#BUILDING_PURPOSE.VINEYARD:        (todo),
+			#BUILDING_PURPOSE.CATTLE_RUN:      (todo),
 		}
 
 		misc_color = (0, 255, 255)
