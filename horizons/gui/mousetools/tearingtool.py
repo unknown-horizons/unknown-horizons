@@ -41,7 +41,8 @@ class TearingTool(NavigationTool):
 
     def __init__(self, session):
         super(TearingTool, self).__init__(session)
-        self._transparent_instances = set()  # fife instances modified for transparency
+        self._transparent_instances = set()
+        # fife instances modified for transparency
         self.coords = None
         self.selected = WeakList()
         self.oldedges = None
@@ -85,8 +86,10 @@ class TearingTool(NavigationTool):
             self._mark(self.coords, coords)
             selection_list_copy = [building for building in self.selected]
             for building in selection_list_copy:
-                self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
-                if (building.id not in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+                self.session.view.renderer['InstanceRenderer'].removeColored(
+                    building._instance)
+                if (building.id not in BUILDINGS.EXPAND_RANGE) or \
+                        self.confirm_ranged_delete(building):
                     Tear(building).execute(self.session)
             else:
                 if self._hovering_over:

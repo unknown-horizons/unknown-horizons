@@ -81,7 +81,8 @@ class TileLayingTool(NavigationTool):
         self.update_coloring(evt)
 
     def _place_tile(self, coords):
-        brush = Circle(Point(*coords), self.session.world_editor.brush_size - 1)
+        brush = Circle(Point(*coords),
+                       self.session.world_editor.brush_size - 1)
         self.session.world_editor.intermediate_map.set_south_east_corner(
             brush.tuple_iter(), self._tile_details)
 

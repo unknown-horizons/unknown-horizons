@@ -12,11 +12,6 @@ modify entries, comments or metadata, etc. or create new po files from scratch.
 :func:`~polib.mofile` convenience functions.
 """
 
-__author__ = 'David Jean Louis <izimobil@gmail.com>'
-__version__ = '1.0.3'
-__all__ = ['pofile', 'POFile', 'POEntry', 'mofile', 'MOFile', 'MOEntry',
-           'default_encoding', 'escape', 'unescape', 'detect_encoding', ]
-
 import array
 import codecs
 import os
@@ -24,6 +19,11 @@ import re
 import struct
 import sys
 import textwrap
+
+__author__ = 'David Jean Louis <izimobil@gmail.com>'
+__version__ = '1.0.3'
+__all__ = ['pofile', 'POFile', 'POEntry', 'mofile', 'MOFile', 'MOEntry',
+           'default_encoding', 'escape', 'unescape', 'detect_encoding', ]
 
 
 # the default encoding to use when encoding cannot be detected

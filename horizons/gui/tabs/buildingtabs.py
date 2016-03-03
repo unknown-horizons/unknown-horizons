@@ -34,8 +34,8 @@ class TowerOverviewTab(OverviewTab):  # defensive tower
 
     def init_widget(self):
         super(TowerOverviewTab, self).init_widget()
-        self.widget.findChild(name="headline").text = self.instance.settlement.get_component(
-            NamedComponent).name
+        self.widget.findChild(name="headline").text = \
+            self.instance.settlement.get_component(NamedComponent).name
 
 
 class SignalFireOverviewTab(OverviewTab):
@@ -55,10 +55,12 @@ class ResourceDepositOverviewTab(OverviewTab):
 
     def init_widget(self):
         super(ResourceDepositOverviewTab, self).init_widget()
-        # display range starts 0, not min_amount, else it looks like there's nothing in it
-        # when parts of the ore have been mined already
-        resources = self.instance.get_component(DepositComponent).get_res_ranges()
-        amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
+        # display range starts 0, not min_amount, else it looks like
+        # there's nothing in it when parts of the ore have been mined already
+        resources = self.instance.get_component(
+            DepositComponent).get_res_ranges()
+        amounts = dict((res, (0, max_amount)) for res, min_,
+                       max_amount in resources)
         self.widget.child_finder("inventory").init(
             self.instance.session.db,
             self.instance.get_component(StorageComponent).inventory,

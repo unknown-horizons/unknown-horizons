@@ -45,6 +45,7 @@ class ProducerOverviewTabBase(OverviewTab):
         """The current instance's Producer compontent."""
         return self.instance.get_component(Producer)
 
+
 class UnitbuilderTabBase(ProducerOverviewTabBase):
     """Tab Baseclass that can be used by unit builders."""
 
@@ -91,7 +92,8 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
         if (Fife.getVersion() >= (0, 4, 0)):
             container_inactive.parent.hideChild(container_inactive)
         else:
-            if not container_inactive in container_inactive.parent.hidden_children:
+            if container_inactive not in \
+                    container_inactive.parent.hidden_children:
                 container_inactive.parent.hideChild(container_inactive)
 
         self.update_production_is_active_container(
@@ -133,7 +135,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
             if (Fife.getVersion() >= (0, 4, 0)):
                 w.parent.hideChild(w)
             else:
-                if not w in w.parent.hidden_children:
+                if w not in w.parent.hidden_children:
                     w.parent.hideChild(w)
 
     def update_buttons(self, container_active, cancel_container):
@@ -145,12 +147,12 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
             name="toggle_active_inactive")
         to_active = not self.producer.is_active()
 
-        if not to_active: # swap what we want to show and hide
+        if not to_active:  # swap what we want to show and hide
             button_active, button_inactive = button_inactive, button_active
         if (Fife.getVersion() >= (0, 4, 0)):
             button_active.parent.hideChild(button_active)
         else:
-            if not button_active in button_active.parent.hidden_children:
+            if button_active not in button_active.parent.hidden_children:
                 button_active.parent.hideChild(button_active)
         button_inactive.parent.showChild(button_inactive)
 
@@ -179,7 +181,8 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
         for place_in_queue, unit_type in enumerate(queue):
             image = self.__class__.UNIT_THUMBNAIL.format(type_id=unit_type)
             helptext = _("{ship} (place in queue: {place})").format(
-                    ship=self.instance.session.db.get_unit_type_name(unit_type),
+                    ship=self.instance.session.db.get_unit_type_name(
+                        unit_type),
                     place=place_in_queue+1)
             # people don't count properly, always starting at 1..
             icon_name = "queue_elem_"+str(place_in_queue)
@@ -187,8 +190,10 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
             try:
                 icon = Icon(name=icon_name, image=image, helptext=helptext)
             except RuntimeError, e:
-                # It's possible that this error was raised from a missing thumbnail asset,
-                # so we check against that now and use a fallback thumbnail instead
+                # It's possible that this error was raised from
+                #  a missing thumbnail asset,
+                # so we check against that now and use a fallback
+                #  thumbnail instead
 
                 # TODO string matching for runtime errors is nightmare fuel
                 # Better: Replace RuntimeError in fife with
@@ -198,13 +203,14 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
                                         'searched, but not found :: '
                                         'content/gui/icons/thumbnails/'):
                     # actually load the fallback unit image
-                    image = self.__class__.UNIT_THUMBNAIL.format(type_id="unknown_unit")
+                    image = self.__class__.UNIT_THUMBNAIL.format(
+                        type_id="unknown_unit")
                     icon = Icon(name=icon_name, image=image, helptext=helptext)
                 else:
                     raise
 
-            rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
-                                        self.instance.session)
+            rm_from_queue_cb = Callback(RemoveFromQueue(
+                self.producer, place_in_queue).execute, self.instance.session)
             icon.capture(rm_from_queue_cb, event_name="mouseClicked")
             queue_container.addChild(icon)
 
@@ -212,9 +218,12 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
         """ Update needed resources """
         production = self.producer.get_productions()[0]
         needed_res = production.get_consumed_resources()
-        # Now sort! -amount is the positive value, drop unnecessary res (amount 0)
-        needed_res = dict((res, -amount) for res, amount in needed_res.iteritems() if amount < 0)
-        needed_res = sorted(needed_res.iteritems(), key=itemgetter(1), reverse=True)
+        # Now sort! -amount is the positive value,
+        #  drop unnecessary res (amount 0)
+        needed_res = dict((res, -amount) for res, amount in
+                          needed_res.iteritems() if amount < 0)
+        needed_res = sorted(needed_res.iteritems(), key=itemgetter(1),
+                            reverse=True)
         needed_res_container.removeAllChildren()
         for i, (res, amount) in enumerate(needed_res):
             icon = create_resource_icon(res, self.instance.session.db)
@@ -269,13 +278,15 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
     def build_ship_info(self, index, ship, prodline):
         size = (260, 90)
-        widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
+        widget = Container(name='showcase_%s' % index,
+                           position=(0, 20 + index * 90),
                            min_size=size, max_size=size, size=size)
         bg_icon = Icon(image='content/gui/images/background/square_80.png',
                        name='bg_%s' % index)
         widget.addChild(bg_icon)
 
-        image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
+        image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(
+            unit_id=ship)
         helptext = self.instance.session.db.get_unit_tooltip(ship)
         unit_icon = Icon(image=image, name='icon_%s' % index, position=(2, 2),
                          helptext=helptext)
@@ -316,7 +327,8 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
         return widget
 
     def start_production(self, prod_line_id):
-        AddProduction(self.producer, prod_line_id).execute(self.instance.session)
+        AddProduction(self.producer, prod_line_id).execute(
+            self.instance.session)
         # show overview tab
         self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
@@ -384,8 +396,8 @@ class BoatbuilderConfirmTab(ProducerOverviewTabBase):
               available upgrades
          (fisher/trade/war, builder level)
     * if resource icons not hardcoded: resource icons, sort them by amount
-    UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs
-      (get, add, display)
+    UPGRADES: * checkboxes * check for boat builder level
+     (+ research) * add. costs (get, add, display)
     * def start_production(self):  <<< actually start to produce the
     selected ship unit with the selected upgrades
     (use inventory or go collect resources, switch focus to overview tab).

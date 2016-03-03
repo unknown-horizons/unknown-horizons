@@ -23,7 +23,8 @@
 import weakref
 
 from horizons.constants import BUILDINGS, WEAPONS
-from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.command.uioptions import EquipWeaponFromInventory, \
+    UnequipWeaponToInventory
 from horizons.entities import Entities
 from horizons.gui.tabs import OverviewTab, TradeTab
 from horizons.gui.widgets.routeconfig import RouteConfig
@@ -41,7 +42,8 @@ class ShipOverviewTab(OverviewTab):
     def init_widget(self):
         super(ShipOverviewTab, self).init_widget()
         self.ship_inv = self.instance.get_component(StorageComponent).inventory
-        self.widget.child_finder('inventory').init(self.instance.session.db, self.ship_inv)
+        self.widget.child_finder('inventory').init(self.instance.session.db,
+                                                   self.ship_inv)
 
         # FIXME having to access the WindowManager this way is pretty ugly
         self._windows = self.instance.session.ingame_gui.windows
@@ -68,7 +70,8 @@ class ShipOverviewTab(OverviewTab):
                 weakref.ref(self.instance))
             self.widget.child_finder('found_settlement_bg').set_active()
             self.widget.child_finder('found_settlement').set_active()
-            self.widget.child_finder('found_settlement').helptext = _("Build settlement")
+            self.widget.child_finder('found_settlement').helptext = _(
+                "Build settlement")
         else:
             events['found_settlement'] = None
             self.widget.child_finder('found_settlement_bg').set_inactive()
@@ -80,8 +83,10 @@ class ShipOverviewTab(OverviewTab):
                       Entities.buildings[BUILDINGS.WAREHOUSE].costs)
         events['found_settlement/mouseEntered'] = cb
 
-        cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)
-        cb2 = Callback(self.widget.child_finder('found_settlement').hide_tooltip)
+        cb1 = Callback(self.instance.session.ingame_gui.resource_overview.
+                       close_construction_mode)
+        cb2 = Callback(self.widget.child_finder('found_settlement').
+                       hide_tooltip)
         # TODO the tooltip should actually hide on its own. Ticket #1096
         cb = Callback.ChainedCallbacks(cb1, cb2)
         events['found_settlement/mouseExited'] = cb
@@ -94,7 +99,8 @@ class ShipOverviewTab(OverviewTab):
                 helptext = _('Load/Unload')
             else:
                 helptext = _('Buy/Sell')
-            events['trade'] = Callback(self.instance.get_component(SelectableComponent).show_menu, TradeTab)
+            events['trade'] = Callback(self.instance.get_component(
+                SelectableComponent).show_menu, TradeTab)
             self.widget.findChild(name='trade_bg').set_active()
             self.widget.findChild(name='trade').set_active()
             self.widget.findChild(name='trade').helptext = helptext
@@ -102,7 +108,8 @@ class ShipOverviewTab(OverviewTab):
             events['trade'] = None
             self.widget.findChild(name='trade_bg').set_inactive()
             self.widget.findChild(name='trade').set_inactive()
-            self.widget.findChild(name='trade').helptext = _('Too far from the nearest tradeable warehouse')
+            self.widget.findChild(name='trade').helptext = _(
+                'Too far from the nearest tradeable warehouse')
 
     def _refresh_combat(self):  # no combat
         def click_on_cannons(button):

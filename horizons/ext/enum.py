@@ -71,7 +71,8 @@ class EnumException(Exception):
     def __init__(self, *args, **kwargs):
         if self.__class__ is EnumException:
             class_name = self.__class__.__name__
-            raise NotImplementedError("%(class_name)s is an abstract base class" % vars())
+            raise NotImplementedError("%(class_name)s is an abstract base "
+                                      "class" % vars())
         super(EnumException, self).__init__(*args, **kwargs)
 
 
@@ -237,5 +238,6 @@ class Enum(object):
         try:
             index = self._keys.index(key)
         except ValueError:
-            raise KeyError  # keyerror is more natural here, since the value is a key
+            raise KeyError
+            # keyerror is more natural here, since the value is a key
         return self[index]

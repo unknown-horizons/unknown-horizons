@@ -62,7 +62,8 @@ class SelectMultiTab(TabInterface):
             if hasattr(i, 'stance'):
                 self.stance_unit_number += 1
             self.instances.append(i)
-            if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
+            if not i.has_remove_listener(Callback(self.on_instance_removed,
+                                                  i)):
                 i.add_remove_listener(Callback(self.on_instance_removed, i))
             self.type_number[i.id] += 1
 
@@ -81,21 +82,22 @@ class SelectMultiTab(TabInterface):
             self.column_number = 0
             self.row_number += 1
         if self.row_number >= 3:
-            # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-            # This crashes when more than 2 rows are needed.
+            # TODO: This crashes when more than 2 rows are needed.
             # There just aren't any hboxes in the xml.
-            # TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+
             self.row_number = 2
             return
         self.column_number += 1
-        self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
+        self.widget.findChild(name="hbox_%s" % self.row_number).addChild(
+            entry.widget)
         self.entries.append(entry)
 
     def draw_selected_units_widget(self):
         self.entries = []
         self.row_number = 0
         self.column_number = 0
-        # if only one type of units is selected draw individual widgets for selected units
+        # if only one type of units is selected draw individual
+        #  widgets for selected units
         if len(self.type_number) == 1:
             for instance in self.instances:
                 self.add_entry(UnitEntry([instance], False))
@@ -115,7 +117,8 @@ class SelectMultiTab(TabInterface):
     def schedule_unit_widget_refresh(self):
         if not self._scheduled_refresh:
             self._scheduled_refresh = True
-            Scheduler().add_new_object(self.refresh_unit_widget, self, run_in=0)
+            Scheduler().add_new_object(self.refresh_unit_widget, self,
+                                       run_in=0)
 
     def refresh_unit_widget(self):
         if self.instances:
@@ -133,7 +136,8 @@ class SelectMultiTab(TabInterface):
             self.stance_unit_number -= 1
 
         self.instances.remove(instance)
-        instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
+        instance.discard_remove_listener(Callback(self.on_instance_removed,
+                                                  instance))
 
         if self.widget.isVisible():
             if len(self.instances) < 2:
@@ -141,7 +145,8 @@ class SelectMultiTab(TabInterface):
                 instance.session.ingame_gui.hide_menu()
                 # if one unit remains, show its menu
                 if len(self.instances) == 1:
-                    self.instances[0].get_component(SelectableComponent).show_menu()
+                    self.instances[0].get_component(
+                        SelectableComponent).show_menu()
                 return
 
         self.type_number[instance.id] -= 1
@@ -161,7 +166,8 @@ class SelectMultiTab(TabInterface):
         stance_widget = load_uh_widget('stancewidget.xml')
         self.widget.findChild(name='stance').addChild(stance_widget)
         self.toggle_stance()
-        events = dict((i.NAME, Callback(self.set_stance, i)) for i in DEFAULT_STANCES)
+        events = dict((i.NAME, Callback(self.set_stance,
+                                        i)) for i in DEFAULT_STANCES)
         self.widget.mapEvents(events)
 
     def hide_stance_widget(self):

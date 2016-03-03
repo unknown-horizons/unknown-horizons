@@ -26,7 +26,8 @@ from tradetab import TradeTab
 from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
     TowerOverviewTab
-from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
+from enemybuildingtabs import EnemyBuildingOverviewTab, \
+    EnemyWarehouseOverviewTab
 from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
     SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
@@ -35,10 +36,9 @@ from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
-from boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, BoatbuilderTab, \
-                                                BoatbuilderFisherTab, BoatbuilderTradeTab, \
-                                                BoatbuilderWar1Tab, BoatbuilderWar2Tab, \
-                                                BoatbuilderConfirmTab
+from boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, \
+    BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
+    BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
     MainSquareSailorsTab, MainSquarePioneersTab, \
     MainSquareSettlersTab, MainSquareCitizensTab
@@ -52,5 +52,6 @@ from barrackstabs import BarracksTab, BarracksSelectTab, \
 
 
 def resolve_tab(tabclass_name):
-    """Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
+    """Converts a string like 'DiplomacyTab' to the respective
+    class DiplomacyTab."""
     return getattr(sys.modules[__name__], tabclass_name)

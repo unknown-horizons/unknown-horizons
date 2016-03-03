@@ -49,7 +49,8 @@ class BarracksTab(UnitbuilderTabBase):
     helptext = _lazy("Barracks overview")
 
     UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
-    UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/{type_id}.png"
+    UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/" \
+                         "{type_id}.png"
 
 
 class BarracksSelectTab(ProducerOverviewTabBase):
@@ -66,13 +67,15 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 
     def build_groundunit_info(self, index, groundunit, prodline):
         size = (260, 90)
-        widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
+        widget = Container(name='showcase_%s' % index,
+                           position=(0, 20 + index * 90),
                            min_size=size, max_size=size, size=size)
         bg_icon = Icon(image='content/gui/images/background/square_80.png',
                        name='bg_%s' % index)
         widget.addChild(bg_icon)
 
-        image = 'content/gui/images/objects/groundunit/76/{unit_id}.png'.format(unit_id=groundunit)
+        image = 'content/gui/images/objects/groundunit/76/' \
+                '{unit_id}.png'.format(unit_id=groundunit)
         helptext = self.instance.session.db.get_unit_tooltip(groundunit)
         unit_icon = Icon(image=image, name='icon_%s' % index, position=(2, 2),
                          helptext=helptext)
@@ -113,7 +116,8 @@ class BarracksSelectTab(ProducerOverviewTabBase):
         return widget
 
     def start_production(self, prod_line_id):
-        AddProduction(self.producer, prod_line_id).execute(self.instance.session)
+        AddProduction(self.producer, prod_line_id).execute(
+            self.instance.session)
         # show overview tab
         self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
@@ -136,9 +140,12 @@ class BarracksSwordmanTab(BarracksSelectTab):
 
 class BarracksConfirmTab(ProducerOverviewTabBase):
     """this "tab" additionally requests functions for:
-    * get: currently ordered groundunit: name / image / type (fisher/trade/war)
-    * => get: currently ordered groundunit: description text / costs / available upgrades
-                                            (fisher/trade/war, builder level)
+    * get: currently ordered groundunit: name / image / type
+                                         (fisher/trade/war)
+    * => get: currently ordered groundunit: description text / costs /
+                                            available upgrades
+                                            (fisher/trade/war,
+                                             builder level)
     * if resource icons not hardcoded: resource icons, sort them by amount
     UPGRADES: * checkboxes * check for groundunit builder level (+ research)
     * add. costs (get, add, display)
