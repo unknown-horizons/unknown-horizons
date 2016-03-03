@@ -205,7 +205,7 @@ class UnitEntry(object):
         i = instances[0]
         if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
             # A building. Generate dynamic thumbnail from its action set.
-            imgs = ActionSetLoader.get_sets()[i._action_set_id].items()[0][1]
+            imgs = ActionSetLoader.get_set(i._action_set_id).items()[0][1]
             thumbnail = imgs[45].keys()[0]
         else:
             # Units use manually created thumbnails because those need to be
@@ -213,17 +213,13 @@ class UnitEntry(object):
             thumbnail = self.get_unit_thumbnail(i.id)
         self.widget.findChild(name="unit_button").up_image = thumbnail
         if show_number:
-            self.widget.findChild(name="instance_number").text = unicode(
-                len(self.instances))
-        # only two callbacks are needed so drop
-        #  unwanted changelistener inheritance
+            self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
+        # only two callbacks are needed so drop unwanted changelistener inheritance
         for i in instances:
-            if not i.has_remove_listener(Callback(
-                    self.on_instance_removed, i)):
+            if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
                 i.add_remove_listener(Callback(self.on_instance_removed, i))
             health_component = i.get_component(HealthComponent)
-            if not health_component.has_damage_dealt_listener(
-                    self.draw_health):
+            if not health_component.has_damage_dealt_listener(self.draw_health):
                 health_component.add_damage_dealt_listener(self.draw_health)
         self.draw_health()
 
@@ -240,15 +236,13 @@ class UnitEntry(object):
 
     def on_instance_removed(self, instance):
         self.instances.remove(instance)
-        instance.discard_remove_listener(Callback(self.on_instance_removed,
-                                                  instance))
+        instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
         health_component = instance.get_component(HealthComponent)
         if health_component.has_damage_dealt_listener(self.draw_health):
             health_component.remove_damage_dealt_listener(self.draw_health)
 
         if self.instances:
-            self.widget.findChild(name="instance_number").text = unicode(
-                len(self.instances))
+            self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
 
     def draw_health(self, caller=None):
         health = 0
@@ -260,16 +254,14 @@ class UnitEntry(object):
         health_ratio = float(health) / max_health
         container = self.widget.findChild(name="main_container")
         health_bar = self.widget.findChild(name="health")
-        health_bar.position = (health_bar.position[0],
-                               int((1 - health_ratio) * container.height))
+        health_bar.position = (health_bar.position[0], int((1 - health_ratio) * container.height))
 
     def remove(self):
         """
         Clears all the listeners in instances
         """
         for instance in self.instances:
-            instance.discard_remove_listener(Callback(self.on_instance_removed,
-                                                      instance))
+            instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
             health_component = instance.get_component(HealthComponent)
             if health_component.has_damage_dealt_listener(self.draw_health):
                 health_component.remove_damage_dealt_listener(self.draw_health)

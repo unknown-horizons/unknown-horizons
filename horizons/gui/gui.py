@@ -47,7 +47,7 @@ class MainMenu(Window):
 
         self._gui = load_uh_widget('mainmenu.xml', 'menu')
         self._gui.mapEvents({
-                            'single_button': lambda: self._windows.open(gui.singleplayermenu),
+            'single_button': lambda: self._windows.open(gui.singleplayermenu),
             'single_label': lambda: self._windows.open(gui.singleplayermenu),
             'multi_button': lambda: self._windows.open(gui.multiplayermenu),
             'multi_label': lambda: self._windows.open(gui.multiplayermenu),

@@ -82,8 +82,8 @@ class TestCodeFormat(unittest.TestCase):
                 os.path.dirname(__file__), '..', '..')):
             for file in files:
                 if file.endswith(".py") and not (
-                        'cmdlineoptions.py'  in file or
-                        'translations.py'  in file):
+                        'cmdlineoptions.py' in file or
+                        'translations.py' in file):
                     check_files.append(os.path.join(root, file))
         pep8style = pep8.StyleGuide(quiet=False)
         result = pep8style.check_files(check_files[:260])

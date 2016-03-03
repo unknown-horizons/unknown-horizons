@@ -55,7 +55,9 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 
         buying_inventory = self.widget.findChild(name='buying_inventory')
         buying_inventory.init(self.instance.session.db,
-            settlement.get_component(StorageComponent).inventory,
-            settlement.get_component(TradePostComponent).buy_list, False)
+                              settlement.get_component(
+                                  StorageComponent).inventory,
+                              settlement.get_component(
+                                  TradePostComponent).buy_list, False)
 
         super(EnemyWarehouseOverviewTab, self).refresh()
