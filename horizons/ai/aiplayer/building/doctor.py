@@ -29,11 +29,13 @@ from horizons.util.python import decorators
 
 class AbstractDoctor(AbstractBuilding):
     def iter_potential_locations(self, settlement_manager):
-        spots_in_settlement = settlement_manager.settlement.buildability_cache.cache[(2, 2)]
+        spots_in_settlement = settlement_manager.settlement \
+            .buildability_cache.cache[(2, 2)]
         village_builder = settlement_manager.village_builder
-        for coords in village_builder.special_building_assignments[BUILDING_PURPOSE.DOCTOR].iterkeys():
-            if (coords not in spots_in_settlement or village_builder.plan[coords][1][0]
-                    > village_builder.current_section):
+        for coords in village_builder.special_building_assignments[
+                BUILDING_PURPOSE.DOCTOR].iterkeys():
+            if (coords not in spots_in_settlement or village_builder.plan[
+                    coords][1][0] > village_builder.current_section):
                 continue
             object = settlement_manager.settlement.ground_map[coords].object
             if object is None or object.buildable_upon:
@@ -63,15 +65,17 @@ class DoctorEvaluator(BuildingEvaluator):
         village_builder = settlement_manager.village_builder
         builder = BasicBuilder.create(BUILDINGS.DOCTOR, (x, y), orientation)
 
-        assigned_residences = village_builder.special_building_assignments[BUILDING_PURPOSE.DOCTOR][(x,
-            y)]
+        assigned_residences = village_builder.special_building_assignments[
+            BUILDING_PURPOSE.DOCTOR][(x, y)]
         total = len(assigned_residences)
         not_serviced = 0
         for residence_coords in assigned_residences:
-            if village_builder.plan[residence_coords][0] == BUILDING_PURPOSE.RESIDENCE:
+            if village_builder.plan[
+                    residence_coords][0] == BUILDING_PURPOSE.RESIDENCE:
                 not_serviced += 1
 
-        if (not_serviced <= 0 or not_serviced < total * settlement_manager.owner.personality_manager
+        if (not_serviced <= 0 or not_serviced < total * settlement_manager
+                .owner.personality_manager
                 .get('AbstractDoctor').fraction_of_assigned_residences_built):
             return None
 

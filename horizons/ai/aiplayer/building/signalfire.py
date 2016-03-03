@@ -30,12 +30,16 @@ from horizons.entities import Entities
 
 class AbstractSignalFire(AbstractBuilding):
     @classmethod
-    def _get_buildability_intersection(cls, settlement_manager, size, terrain_type,
-            need_collector_connection):
-        coords_set = super(AbstractSignalFire, cls)._get_buildability_intersection(settlement_manager,
+    def _get_buildability_intersection(cls, settlement_manager, size,
+                                       terrain_type,
+                                       need_collector_connection):
+        coords_set = super(AbstractSignalFire,
+                           cls)._get_buildability_intersection(
+            settlement_manager,
             size, terrain_type, need_collector_connection)
         radius = Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius
-        return coords_set.intersection(set(settlement_manager.settlement.warehouse.
+        return coords_set.intersection(set(
+            settlement_manager.settlement.warehouse.
             position.get_radius_coordinates(radius)))
 
     @property
@@ -57,16 +61,19 @@ class SignalFireEvaluator(BuildingEvaluator):
 
     @classmethod
     def create(cls, area_builder, x, y, orientation):
-        builder = BasicBuilder.create(BUILDINGS.SIGNAL_FIRE, (x, y), orientation)
+        builder = BasicBuilder.create(BUILDINGS.SIGNAL_FIRE, (x, y),
+                                      orientation)
 
         sea_area = 0
-        for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE]
-                .radius):
+        for coords in builder.position.get_radius_coordinates(
+                Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius):
             if coords in area_builder.session.world.water:
                 sea_area += 1
 
-        personality = area_builder.owner.personality_manager.get('SignalFireEvaluator')
-        alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+        personality = area_builder.owner.personality_manager.get(
+            'SignalFireEvaluator')
+        alignment = cls._get_alignment(area_builder,
+                                       builder.position.tuple_iter())
         value = sea_area + alignment * personality.alignment_importance
         return SignalFireEvaluator(area_builder, builder, value)
 
