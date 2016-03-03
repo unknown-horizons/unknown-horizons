@@ -28,8 +28,8 @@ from horizons.ai.aiplayer.goal.depositcoverage import (
 from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import (
-	FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal, FeederTextileGoal,
-	FeederTobaccoProductsGoal)
+	FeederBeerGoal, FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal,
+	FeederTextileGoal, FeederTobaccoProductsGoal)
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
@@ -108,7 +108,7 @@ class SettlementManager(WorldObject):
 		self.production_chain = {}
 		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
-						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]:
+						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.BEER]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialize caches
@@ -127,6 +127,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederFoodGoal(self))
 			self._goals.append(FeederTextileGoal(self))
 			self._goals.append(FeederLiquorGoal(self))
+			self._goals.append(FeederBeerGoal(self))
 			self._goals.append(FeederSaltGoal(self))
 			self._goals.append(FeederTobaccoProductsGoal(self))
 			self._goals.append(FeederMedicalProductsGoal(self))
@@ -342,6 +343,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD))
 		self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE))
 		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR))
+		self.log.info('%s beer requirement %.5f', self, self.get_ideal_production_level(RES.BEER))
 		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT))
 		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
 		self.log.info('%s medical herbs requirement %.5f', self, self.get_ideal_production_level(RES.MEDICAL_HERBS))
