@@ -40,8 +40,10 @@ class AbstractSaltPonds(AbstractBuilding):
 class SaltPondsEvaluator(BuildingEvaluator):
     @classmethod
     def create(cls, area_builder, x, y, orientation):
-        builder = BasicBuilder.create(BUILDINGS.SALT_PONDS, (x, y), orientation)
-        alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+        builder = BasicBuilder.create(BUILDINGS.SALT_PONDS, (x, y),
+                                      orientation)
+        alignment = cls._get_alignment(area_builder,
+                                       builder.position.tuple_iter())
         return SaltPondsEvaluator(area_builder, builder, alignment)
 
     @property

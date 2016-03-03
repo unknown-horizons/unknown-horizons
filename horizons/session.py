@@ -277,7 +277,7 @@ class Session(LivingObject):
         self.world = World(self)
         # Load horizons.world module (check horizons/world/__init__.py)
         self.world._init(savegame_db, options.force_player_id,
-            disasters_enabled=options.disasters_enabled)
+                         disasters_enabled=options.disasters_enabled)
         self.view.load(savegame_db, self.world)  # load view
         if not self.is_game_loaded():
             options.init_new_world(self)

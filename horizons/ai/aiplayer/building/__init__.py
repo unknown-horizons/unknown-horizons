@@ -33,10 +33,12 @@ from horizons.world.production.producer import Producer
 
 class AbstractBuilding(object):
     """
-    An object of this class tells the AI how to build a specific type of building.
+    An object of this class tells the AI how to build a specific type
+    of building.
 
-    Instances of the subclasses are used by production chains to discover the set of
-    buildings necessary to produce the right amount of resources.
+    Instances of the subclasses are used by production chains
+    to discover the set of buildings necessary to produce the
+    right amount of resources.
     """
 
     log = logging.getLogger("ai.aiplayer.building")
@@ -72,7 +74,8 @@ class AbstractBuilding(object):
 
     @classmethod
     def load_all(cls, db):
-        """Fill the cls.buildings dict so the registered buildings can be used."""
+        """Fill the cls.buildings dict so the registered buildings
+        can be used."""
         if cls.__loaded:
             return
 
@@ -145,15 +148,17 @@ class AbstractBuilding(object):
             size, *caches)
 
     def iter_potential_locations(self, settlement_manager):
-        """Iterate over possible locations of the building in the given settlement
-        in the form of (x, y, orientation)."""
+        """Iterate over possible locations of the building in the
+        given settlement in the form of (x, y, orientation)."""
         need_collector_connection = self.evaluator_class.need_collector_connection
-        for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, self.size,
+        for (x, y) in sorted(self._get_buildability_intersection(
+                settlement_manager, self.size,
                 self.terrain_type, need_collector_connection)):
             yield (x, y, 0)
         if self.width != self.height:
-            for (x, y) in sorted(self._get_buildability_intersection(settlement_manager,
-                    (self.height, self.width), self.terrain_type, need_collector_connection)):
+            for (x, y) in sorted(self._get_buildability_intersection(
+                    settlement_manager, (self.height, self.width),
+                    self.terrain_type, need_collector_connection)):
                 yield (x, y, 1)
 
     @property
@@ -163,13 +168,15 @@ class AbstractBuilding(object):
 
     @property
     def directly_buildable(self):
-        """Return a boolean showing whether the build function of this subclass
-        can be used to build a building of this type."""
+        """Return a boolean showing whether the build function
+        of this subclass can be used to build a building of this type.
+        """
         return True
 
     @property
     def coverage_building(self):
-        """Return a boolean showing whether buildings of this type may need to be built
+        """Return a boolean showing whether buildings
+        of this type may need to be built
         even when the production capacity has been reached."""
         return False
 
@@ -181,35 +188,43 @@ class AbstractBuilding(object):
 
     @property
     def producer_building(self):
-        """Return a boolean showing whether this building is supposed to have usable production lines."""
+        """Return a boolean showing whether this building
+        is supposed to have usable production lines."""
         return True
 
     def get_evaluators(self, settlement_manager, resource_id):
-        """Return a list of every BuildingEvaluator for this building type in the given settlement."""
+        """Return a list of every BuildingEvaluator for
+        this building type in the given settlement."""
         options = []  # [BuildingEvaluator, ...]
-        for x, y, orientation in self.iter_potential_locations(settlement_manager):
-            evaluator = self.evaluator_class.create(settlement_manager.production_builder, x, y, orientation)
+        for x, y, orientation in self.iter_potential_locations(
+                settlement_manager):
+            evaluator = self.evaluator_class.create(
+                settlement_manager.production_builder, x, y, orientation)
             if evaluator is not None:
                 options.append(evaluator)
         return options
 
     def build(self, settlement_manager, resource_id):
-        """Try to build the best possible instance of this building in the given settlement.
+        """Try to build the best possible instance of
+        this building in the given settlement.
         Returns (BUILD_RESULT constant, building instance)."""
         if not self.have_resources(settlement_manager):
             return (BUILD_RESULT.NEED_RESOURCES, None)
 
-        for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id),
+        for evaluator in sorted(self.get_evaluators(
+                settlement_manager, resource_id),
                 key=operator.attrgetter('value'), reverse=True):
             result = evaluator.execute()
             if result[0] != BUILD_RESULT.IMPOSSIBLE:
                 return result
-        self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__,
-            settlement_manager, resource_id if resource_id else -1)
+        self.log.debug('%s.build(%s, %d): no possible evaluators',
+                       self.__class__.__name__,
+                       settlement_manager, resource_id if resource_id else -1)
         return (BUILD_RESULT.IMPOSSIBLE, None)
 
     def need_to_build_more_buildings(self, settlement_manager, resource_id):
-        """Return a boolean showing whether another instance of the building should be built right
+        """Return a boolean showing whether another instance
+        of the building should be built right
         now regardless of the production capacity."""
         return False
 

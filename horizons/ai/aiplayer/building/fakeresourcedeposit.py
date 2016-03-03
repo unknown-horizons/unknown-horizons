@@ -28,7 +28,8 @@ from horizons.world.production.producer import Producer
 
 class AbstractFakeResourceDeposit(AbstractBuilding):
     def __init__(self, building_id, name, settler_level):
-        super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level)
+        super(AbstractFakeResourceDeposit, self).__init__(building_id,
+                                                          name, settler_level)
         self.lines = {}  # output_resource_id: ProductionLine
         self.__init_production_lines()
 
@@ -37,30 +38,35 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
         raise NotImplementedError('This function has to be overridden.')
 
     def __init_production_lines(self):
-        production_lines = self._get_producer_building().get_component_template(
-            Producer)['productionlines']
+        production_lines = \
+            self._get_producer_building().get_component_template(
+                Producer)['productionlines']
         for key, value in production_lines.iteritems():
             production_line = ProductionLine(key, value)
             production_line.id = None
             production_line.production = {}
             production_line.produced_res = {}
-            for resource_id, amount in production_line.consumed_res.iteritems():
+            for resource_id, amount in \
+                    production_line.consumed_res.iteritems():
                 production_line.production[resource_id] = -amount
                 production_line.produced_res[resource_id] = -amount
             production_line.consumed_res = {}
-            self.lines[production_line.produced_res.keys()[0]] = production_line
+            self.lines[production_line.produced_res.keys()[0]] = \
+                production_line
 
     def _get_producer_building(self):
         return Entities.buildings[self.get_higher_level_building_id()]
 
     @classmethod
     def load(cls, db, building_id):
-        # load the higher level building data because resource deposits don't actually produce anything
+        """load the higher level building data because resource
+        deposits don't actually produce anything"""
         name = cls._load_name(db, building_id)
         settler_level = cls._load_settler_level(building_id)
         return cls(building_id, name, settler_level)
 
-    def get_expected_cost(self, resource_id, production_needed, settlement_manager):
+    def get_expected_cost(self, resource_id, production_needed,
+                          settlement_manager):
         """ you don't actually build resource deposits """
         return 0
 

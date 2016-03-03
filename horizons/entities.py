@@ -76,10 +76,13 @@ class Entities(object):
         tile_sets = TileSetLoader.get_sets()
         cls.grounds = _EntitiesLazyDict()
         for (ground_id,) in db("SELECT ground_id FROM tile_set"):
-            tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", ground_id)[0][0]
+            tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?",
+                             ground_id)[0][0]
             for shape in tile_sets[tile_set_id].iterkeys():
                 cls_name = '%d-%s' % (ground_id, shape)
-                cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
+                cls.grounds.create_on_access(cls_name, Callback(GroundClass,
+                                                                db, ground_id,
+                                                                shape))
                 if load_now:
                     cls.grounds[cls_name]
         cls.grounds['-1-special'] = GroundClass(db, -1, 'special')
@@ -98,15 +101,18 @@ class Entities(object):
                 # This is needed for dict lookups! Do not convert to os.join!
                 full_file = root + "/" + filename
                 result = YamlCache.get_file(full_file, game_data=True)
-                if result is None: # discard empty yaml files
-                    print "Empty yaml file {file} found, not loading!".format(file=full_file)
+                if result is None:  # discard empty yaml files
+                    print("Empty yaml file {file} found, not loading!".format(
+                        file=full_file))
                     continue
 
                 result['yaml_file'] = full_file
 
                 building_id = int(result['id'])
-                cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_data=result))
-                # NOTE: The current system now requires all building data to be loaded
+                cls.buildings.create_on_access(building_id, Callback(
+                    BuildingClass, db=db, id=building_id, yaml_data=result))
+                # NOTE: The current system now requires all building data
+                #  to be loaded
                 if load_now or True:
                     cls.buildings[building_id]
 
@@ -124,6 +130,7 @@ class Entities(object):
                 full_file = os.path.join(root, filename)
                 result = YamlCache.get_file(full_file, game_data=True)
                 unit_id = int(result['id'])
-                cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
+                cls.units.create_on_access(unit_id, Callback(
+                    UnitClass, id=unit_id, yaml_data=result))
                 if load_now:
                     cls.units[unit_id]
