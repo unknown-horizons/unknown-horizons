@@ -74,6 +74,13 @@ class FeederLiquorGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'LiquorGoal'
 
+class FeederBeerGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederLiquorGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
+
+	def get_personality_name(self):
+		return 'LiquorGoal'
+
 	@property
 	def can_be_activated(self):
 		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
@@ -111,6 +118,7 @@ decorators.bind_all(FeederChainGoal)
 decorators.bind_all(FeederFoodGoal)
 decorators.bind_all(FeederTextileGoal)
 decorators.bind_all(FeederLiquorGoal)
+decorators.bind_all(FeederBeerGoal)
 decorators.bind_all(FeederTobaccoProductsGoal)
 decorators.bind_all(FeederMedicalProductsGoal)
 decorators.bind_all(FeederSaltGoal)
