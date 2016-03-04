@@ -25,18 +25,18 @@ from horizons.util.python import decorators
 
 
 class TradingShipGoal(SettlementGoal):
-	def get_personality_name(self):
-		return 'TradingShipGoal'
+    def get_personality_name(self):
+        return 'TradingShipGoal'
 
-	@property
-	def active(self):
-		return super(TradingShipGoal, self).active \
-			and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
-			and self.owner.need_more_ships \
-			and not self.owner.unit_builder.num_ships_being_built
+    @property
+    def active(self):
+        return super(TradingShipGoal, self).active \
+            and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
+            and self.owner.need_more_ships \
+            and not self.owner.unit_builder.num_ships_being_built
 
-	def execute(self):
-		self.settlement_manager.log.info('%s start building a ship', self)
-		self.owner.unit_builder.build_ship()
+    def execute(self):
+        self.settlement_manager.log.info('%s start building a ship', self)
+        self.owner.unit_builder.build_ship()
 
 decorators.bind_all(TradingShipGoal)

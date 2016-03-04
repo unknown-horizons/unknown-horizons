@@ -26,18 +26,18 @@ from horizons.util.python import decorators
 
 
 class BoatBuilderGoal(SettlementGoal):
-	def get_personality_name(self):
-		return 'BoatBuilderGoal'
+    def get_personality_name(self):
+        return 'BoatBuilderGoal'
 
-	@property
-	def active(self):
-		return super(BoatBuilderGoal, self).active \
-			and not self.owner.count_buildings(BUILDINGS.BOAT_BUILDER)
+    @property
+    def active(self):
+        return super(BoatBuilderGoal, self).active \
+            and not self.owner.count_buildings(BUILDINGS.BOAT_BUILDER)
 
-	def execute(self):
-		result = AbstractBuilding.buildings[BUILDINGS.BOAT_BUILDER].build(
-			self.settlement_manager, None)[0]
-		self._log_generic_build_result(result, 'boat builder')
-		return self._translate_build_result(result)
+    def execute(self):
+        result = AbstractBuilding.buildings[BUILDINGS.BOAT_BUILDER].build(
+            self.settlement_manager, None)[0]
+        self._log_generic_build_result(result, 'boat builder')
+        return self._translate_build_result(result)
 
 decorators.bind_all(BoatBuilderGoal)

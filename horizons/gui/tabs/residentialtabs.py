@@ -60,7 +60,8 @@ class SettlerOverviewTab(OverviewTab):
                          message.level)
         taxes = self.instance.settlement.tax_settings[self.instance.level]
         self.widget.child_finder('tax_val_label').text = unicode(taxes)
-        imgs = ActionSetLoader.get_set(self.instance._action_set_id).items()[0][1]
+        imgs = ActionSetLoader.get_set(
+            self.instance._action_set_id).items()[0][1]
         self.widget.findChild(name="building_image").image = imgs[45].keys()[0]
 
     def show(self):

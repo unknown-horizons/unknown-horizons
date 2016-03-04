@@ -42,11 +42,13 @@ class TabInterface(object):
     to set the button_image_{up,down,hover} variables.
 
     Use the refresh() method to implement any redrawing of the widget. The
-    TabWidget will call this method based on callbacks. If you set any callbacks
+    TabWidget will call this method based on callbacks.
+    If you set any callbacks
     yourself, make sure you get them removed when the widget is deleted.
 
     @param widget: Filename of widget to load.
-    @param icon_path: Where to look for ImageButton icons. Note: this is a `path` attribute!
+    @param icon_path: Where to look for ImageButton icons.
+                      Note: this is a `path` attribute!
     """
 
     # Whether to load the tab only when it's shown.
@@ -64,12 +66,14 @@ class TabInterface(object):
     widget = None
     icon_path = 'images/tabwidget/tab'
 
-    scheduled_update_delay = 0.4  # seconds, update after this time when an update is scheduled
+    scheduled_update_delay = 0.4
+    # seconds, update after this time when an update is scheduled
 
     def __init__(self, widget=None, icon_path=None, **kwargs):
         """
-        @param widget: filename of a widget. Set this to None if you create your
-                widget in `get_widget`.
+        @param widget: filename of a widget.
+                       Set this to None if you create your
+                       widget in `get_widget`.
         """
         super(TabInterface, self).__init__()
         if widget or self.__class__.widget:
@@ -81,12 +85,16 @@ class TabInterface(object):
             self.widget = None
 
         # Regular `image` paths for Icon
-        self.button_background_image = 'content/gui/images/tabwidget/tab_dark.png'
-        self.button_background_image_active = 'content/gui/images/tabwidget/tab_active_xxl.png'
+        self.button_background_image = \
+            'content/gui/images/tabwidget/tab_dark.png'
+        self.button_background_image_active = \
+            'content/gui/images/tabwidget/tab_active_xxl.png'
 
-        # `path` attribute for ImageButton, i.e. without 'content/gui/' and '.png'
+        # `path` attribute for ImageButton, i.e. without 'content/gui/'
+        #  and '.png'
         self.path = icon_path or self.__class__.icon_path
-        # the active tab image has no special down or hover images, so this works with `path` too
+        # the active tab image has no special down or hover images,
+        #  so this works with `path` too
         self.path_active = self.path + '_a'
 
         self._refresh_scheduled = False
@@ -140,29 +148,37 @@ class TabInterface(object):
         pass
 
     def _schedule_refresh(self):
-        """Schedule a refresh soon, dropping all other refresh request, that appear until then.
-        This saves a lot of CPU time, if you have a huge island, or play on high speed."""
+        """Schedule a refresh soon, dropping all other refresh request,
+        that appear until then.
+        This saves a lot of CPU time, if you have a huge island,
+        or play on high speed."""
         if not self._refresh_scheduled:
             self._refresh_scheduled = True
 
             def unset_flag():
-                # set the flag here and not in refresh() since we can't be sure whether
-                # refresh() of this class will be reached or a subclass will not call super()
+                # set the flag here and not in refresh() since we can't
+                #  be sure whether
+                # refresh() of this class will be reached or a subclass
+                #  will not call super()
                 self._refresh_scheduled = False
-            ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.refresh),
-                                          self, run_in=self.__class__.scheduled_update_delay)
+            ExtScheduler().add_new_object(Callback.ChainedCallbacks(
+                unset_flag, self.refresh), self,
+                run_in=self.__class__.scheduled_update_delay)
 
     @classmethod
     def shown_for(cls, instance):
         """Method for fine-grained control of which tabs to show.
-        @return: whether this tab should really be shown for this instance"""
+        @return: whether this tab should really be shown
+                 for this instance"""
         return True
 
     def ensure_loaded(self):
         """Called when a tab is shown, acts as hook for lazy loading"""
-        if self.__class__.lazy_loading and not hasattr(self, "_lazy_loading_loaded"):
+        if self.__class__.lazy_loading and not hasattr(
+                self, "_lazy_loading_loaded"):
             self._setup_widget()
-            self._lazy_loading_loaded = True # this is to prevent more setups if called multiple times
+            self._lazy_loading_loaded = True
+            # this is to prevent more setups if called multiple times
 
     def _get_position(self):
         self.ensure_loaded()

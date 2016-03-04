@@ -68,7 +68,6 @@ class InventoryOverlayComponent(Component):
         InstanceInventoryUpdated.subscribe(self.inventory_changed,
                                            sender=self.instance)
 
-
     def add_overlay(self, overlay_set, z_order=10):
         """Creates animation overlay from action set *overlay_set*
         and adds it to fife instance.
@@ -107,7 +106,8 @@ class InventoryOverlayComponent(Component):
         self.current_overlays[res_id] = None
         # TODO remove hardcoded rotations, use action set keys (of which set?)
         for rotation in range(45, 360, 90):
-            self.fife_instance.removeAnimationOverlay(self.identifier, rotation, res_id)
+            self.fife_instance.removeAnimationOverlay(self.identifier,
+                                                      rotation, res_id)
 
     def inventory_changed(self, message):
         """A changelistener notified the StorageComponent of this instance.
@@ -129,11 +129,13 @@ class InventoryOverlayComponent(Component):
         fits *new_amount* best.
         """
         try:
-            overlay_order = self.overlays[self.action_set][self.instance._action][res_id]
+            overlay_order = self.overlays[self.action_set][
+                self.instance._action][res_id]
         except KeyError:
             self.log.warning(
-                'No overlays defined for resource `%s`, action `%s` and action set `%s`. '
-                'Consider using `null` overlays for amount 0 in this action set.',
+                'No overlays defined for resource `%s`, action `%s` and '
+                'action set `%s`. Consider using `null` overlays for amount '
+                '0 in this action set.',
                 res_id, self.instance._action, self.action_set)
             self.current_overlays[res_id] = None
             return
@@ -149,7 +151,8 @@ class InventoryOverlayComponent(Component):
         for (amount, overlay_name) in sorted(overlay_order, reverse=True):
 
             if amount > new_amount:
-                # This `if` drops defined-but-too-large candidates (i.e. case `5` in above example).
+                # This `if` drops defined-but-too-large candidates
+                #  (i.e. case `5` in above example).
                 continue
 
             if amount == self.current_overlays[res_id]:
@@ -157,12 +160,14 @@ class InventoryOverlayComponent(Component):
                 return
 
             if overlay_name is None:
-                # Empty overlay, only display base action set (i.e. case `0` in above example)
+                # Empty overlay, only display base action set
+                #  (i.e. case `0` in above example)
                 self.remove_overlay(res_id)
                 return
 
             try:
-                overlay_set = ActionSetLoader.get_set(self.action_set)[overlay_name]
+                overlay_set = ActionSetLoader.get_set(self.action_set)[
+                    overlay_name]
             except KeyError:
                 self.log.warning(
                     'Could not find overlay action set defined for object '
@@ -182,19 +187,22 @@ class InventoryOverlayComponent(Component):
     def remove(self):
         """Removes all animation overlays from the fife instance.
 
-        Also converts the animation overlay on drawing order 0 (i.e. the old base image)
+        Also converts the animation overlay on drawing order 0
+        (i.e. the old base image)
         back to a plain "action set" in UH terminology.
         """
-        InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
+        InstanceInventoryUpdated.unsubscribe(self.inventory_changed,
+                                             sender=self.instance)
 
         for (res_id, overlay) in self.current_overlays.iteritems():
             if overlay is not None:
                 self.remove_overlay(res_id)
 
-        # remove base image "overlay" that we did `convertToOverlays` in `initialize`
+        # remove base image "overlay" that we did `convertToOverlays`
+        # in `initialize`
         # Note that this gets us back the actual base image as not-an-overlay.
-        # In particular, no animation overlays can be added unless `convertToOverlays`
-        # is called again.
+        # In particular, no animation overlays can be added
+        # unless `convertToOverlays` is called again.
         self.remove_overlay(0)
 
         super(InventoryOverlayComponent, self).remove()

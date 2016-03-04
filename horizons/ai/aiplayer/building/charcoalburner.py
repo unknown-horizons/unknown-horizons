@@ -41,26 +41,35 @@ class AbstractCharcoalBurner(AbstractBuilding):
 class CharcoalBurnerEvaluator(BuildingEvaluator):
     @classmethod
     def create(cls, area_builder, x, y, orientation):
-        builder = BasicBuilder.create(BUILDINGS.CHARCOAL_BURNER, (x, y), orientation)
+        builder = BasicBuilder.create(BUILDINGS.CHARCOAL_BURNER,
+                                      (x, y), orientation)
 
-        distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
+        distance_to_collector = cls._distance_to_nearest_collector(
+            area_builder, builder)
         if distance_to_collector is None:
             return None
 
-        personality = area_builder.owner.personality_manager.get('CharcoalBurnerEvaluator')
-        distance_penalty = Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius \
-            * personality.distance_penalty
+        personality = area_builder.owner.personality_manager.get(
+            'CharcoalBurnerEvaluator')
+        distance_penalty = Entities.buildings[
+            BUILDINGS.CHARCOAL_BURNER].radius * personality.distance_penalty
 
-        distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.MINE)
-        distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder,
+        distance_to_iron_mine = cls._distance_to_nearest_building(
+            area_builder, builder, BUILDINGS.MINE)
+        distance_to_lumberjack = cls._distance_to_nearest_building(
+            area_builder, builder,
             BUILDINGS.LUMBERJACK)
-        alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+        alignment = cls._get_alignment(area_builder,
+                                       builder.position.tuple_iter())
 
-        distance = cls._weighted_distance(distance_to_collector, [(
-            personality.lumberjack_distance_importance, distance_to_lumberjack),
-            (personality.iron_mine_distance_importance, distance_to_iron_mine)], distance_penalty)
-        value = float(Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius) / distance + alignment \
-            * personality.alignment_importance
+        distance = cls._weighted_distance(
+            distance_to_collector, [(
+                personality.lumberjack_distance_importance,
+                distance_to_lumberjack),
+                (personality.iron_mine_distance_importance,
+                 distance_to_iron_mine)], distance_penalty)
+        value = float(Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius) / \
+            distance + alignment * personality.alignment_importance
         return CharcoalBurnerEvaluator(area_builder, builder, value)
 
     @property

@@ -26,32 +26,32 @@ from horizons.component.storagecomponent import StorageComponent
 
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
-	def get_personality_name(self):
-		return 'StorageSpaceGoal'
+    def get_personality_name(self):
+        return 'StorageSpaceGoal'
 
-	def _need_more_storage(self):
-		limit = self.settlement.get_component(StorageComponent).inventory.get_limit(RES.FOOD)
-		if limit >= self.personality.max_required_storage_space:
-			return False
-		important_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR]
-		for resource_id in important_resources:
-			if (self.settlement.get_component(StorageComponent).inventory[resource_id]
-					+ self.personality.full_storage_threshold >= limit):
-				return True
-		return False
+    def _need_more_storage(self):
+        limit = self.settlement.get_component(StorageComponent).inventory.get_limit(RES.FOOD)
+        if limit >= self.personality.max_required_storage_space:
+            return False
+        important_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR]
+        for resource_id in important_resources:
+            if (self.settlement.get_component(StorageComponent).inventory[resource_id]
+                    + self.personality.full_storage_threshold >= limit):
+                return True
+        return False
 
-	def update(self):
-		if self._need_more_storage():
-			super(StorageSpaceGoal, self).update()
-			if not self._is_active:
-				self._is_active = True
-				self._problematic_buildings = self.production_builder.production_buildings
-		else:
-			self._is_active = False
+    def update(self):
+        if self._need_more_storage():
+            super(StorageSpaceGoal, self).update()
+            if not self._is_active:
+                self._is_active = True
+                self._problematic_buildings = self.production_builder.production_buildings
+        else:
+            self._is_active = False
 
-	def execute(self):
-		result = self._build_extra_storage()
-		self._log_generic_build_result(result, 'storage space provider')
-		return self._translate_build_result(result)
+    def execute(self):
+        result = self._build_extra_storage()
+        self._log_generic_build_result(result, 'storage space provider')
+        return self._translate_build_result(result)
 
 decorators.bind_all(StorageSpaceGoal)

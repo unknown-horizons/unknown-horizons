@@ -28,48 +28,48 @@ from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class BehaviorMoveCallback:
-	"""
-	Container class for general purpose ship moves and move callbacks.
-	"""
-	log = logging.getLogger('ai.aiplayer.combat.movecallbacks')
+    """
+    Container class for general purpose ship moves and move callbacks.
+    """
+    log = logging.getLogger('ai.aiplayer.combat.movecallbacks')
 
-	@classmethod
-	def _get_annulus(cls, position, range, range_delta):
-		return Annulus(position, max(0, range - range_delta), range + range_delta)
+    @classmethod
+    def _get_annulus(cls, position, range, range_delta):
+        return Annulus(position, max(0, range - range_delta), range + range_delta)
 
-	@classmethod
-	def _arrived(cls, ship):
-		combat_manager = ship.owner.combat_manager
-		combat_manager.set_ship_state(ship, combat_manager.shipStates.idle)
-		cls.log.debug("%s: _arrived: Ship %s arrived at target", cls.__name__,
-			ship.get_component(NamedComponent).name)
+    @classmethod
+    def _arrived(cls, ship):
+        combat_manager = ship.owner.combat_manager
+        combat_manager.set_ship_state(ship, combat_manager.shipStates.idle)
+        cls.log.debug("%s: _arrived: Ship %s arrived at target", cls.__name__,
+            ship.get_component(NamedComponent).name)
 
-	@classmethod
-	def maintain_distance_and_attack(cls, ship, enemy, range, range_delta=1):
-		"""
-		Attacks given target if possible and adjust ship position to keep given range.
-		"""
-		combat_manager = ship.owner.combat_manager
+    @classmethod
+    def maintain_distance_and_attack(cls, ship, enemy, range, range_delta=1):
+        """
+        Attacks given target if possible and adjust ship position to keep given range.
+        """
+        combat_manager = ship.owner.combat_manager
 
-		distance = ship.position.distance(enemy.position)
-		cls.log.debug("maintain_distance_and_attack: Ship: %s, Enemy: %s,"
-			" distance: %s, range: %s, range_delta: %s",
-			ship.get_component(NamedComponent).name,
-			enemy.get_component(NamedComponent).name, distance, range, range_delta)
+        distance = ship.position.distance(enemy.position)
+        cls.log.debug("maintain_distance_and_attack: Ship: %s, Enemy: %s,"
+            " distance: %s, range: %s, range_delta: %s",
+            ship.get_component(NamedComponent).name,
+            enemy.get_component(NamedComponent).name, distance, range, range_delta)
 
-		if ship.can_attack_position(enemy.position):
-			ship.attack(enemy)  # attack ship if close enough to fire
-			cls.log.debug("%s: maintain_distance_and_attack: Attack: %s -> %s", cls.__name__,
-				ship.get_component(NamedComponent).name, enemy.get_component(NamedComponent).name)
+        if ship.can_attack_position(enemy.position):
+            ship.attack(enemy)  # attack ship if close enough to fire
+            cls.log.debug("%s: maintain_distance_and_attack: Attack: %s -> %s", cls.__name__,
+                ship.get_component(NamedComponent).name, enemy.get_component(NamedComponent).name)
 
-		# calculate distance between each ship and adjust distance
-		if abs(distance - range) > range_delta:
-			try:
-				target = cls._get_annulus(enemy.position, range, range_delta)
-				ship.move(target, callback=Callback(cls._arrived, ship))
+        # calculate distance between each ship and adjust distance
+        if abs(distance - range) > range_delta:
+            try:
+                target = cls._get_annulus(enemy.position, range, range_delta)
+                ship.move(target, callback=Callback(cls._arrived, ship))
 
-				# set state to moving since we don't attack during that
-				combat_manager.set_ship_state(ship, combat_manager.shipStates.moving)
-				cls.log.debug("%s: maintain_distance_and_attack: Moving towards the target", cls.__name__)
-			except MoveNotPossible:
-				cls.log.debug("%s: maintain_distance_and_attack: Move was not possible", cls.__name__)
+                # set state to moving since we don't attack during that
+                combat_manager.set_ship_state(ship, combat_manager.shipStates.moving)
+                cls.log.debug("%s: maintain_distance_and_attack: Moving towards the target", cls.__name__)
+            except MoveNotPossible:
+                cls.log.debug("%s: maintain_distance_and_attack: Move was not possible", cls.__name__)

@@ -59,15 +59,18 @@ class AbstractBuilding(object):
 
     __loaded = False
     buildings = {}  # building_id: AbstractBuilding instance
-    _available_buildings = {}  # building_id: subclass of AbstractBuilding
+    _available_buildings = {}
+    # building_id: subclass of AbstractBuilding
 
     def __init_production_lines(self):
-        production_lines = self._get_producer_building().get_component_template(
-            Producer)['productionlines']
+        production_lines = self._get_producer_building() \
+            .get_component_template(
+                Producer)['productionlines']
         for key, value in production_lines.iteritems():
             production_line = ProductionLine(key, value)
             assert len(production_line.produced_res) == 1
-            self.lines[production_line.produced_res.keys()[0]] = production_line
+            self.lines[production_line.produced_res.keys()[0]] = \
+                production_line
 
     def _get_producer_building(self):
         return Entities.buildings[self.id]
@@ -98,21 +101,28 @@ class AbstractBuilding(object):
         return cls(building_id, name, settler_level)
 
     monthly_gold_cost = 50
-    resource_cost = {RES.GOLD: 1, RES.BOARDS: 20, RES.BRICKS: 45, RES.TOOLS: 50}
+    resource_cost = {RES.GOLD: 1, RES.BOARDS: 20,
+                     RES.BRICKS: 45, RES.TOOLS: 50}
 
     def get_expected_building_cost(self):
-        """Return a value representing the utility cost of building the building."""
+        """Return a value representing the utility cost of building
+        the building."""
         total = 0
-        for resource_id, amount in Entities.buildings[self.id].costs.iteritems():
+        for resource_id, amount in Entities.buildings[
+                self.id].costs.iteritems():
             total += self.resource_cost[resource_id] * amount
-        total += self.monthly_gold_cost * Entities.buildings[self.id].running_costs
+        total += self.monthly_gold_cost * Entities.buildings[
+            self.id].running_costs
         return total
 
-    def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-        """Return a value representing the utility cost of building enough buildings
-        to produced the given amount of resource per tick."""
-        buildings_needed = math.ceil(max(0.0, production_needed
-            / self.get_expected_production_level(resource_id)))
+    def get_expected_cost(self, resource_id, production_needed,
+                          settlement_manager):
+        """Return a value representing the utility cost of building
+        enough buildings to produced the given amount of resource
+        per tick."""
+        buildings_needed = math.ceil(max(
+            0.0, production_needed,
+            self.get_expected_production_level(resource_id)))
         return buildings_needed * self.get_expected_building_cost()
 
     def get_expected_production_level(self, resource_id):
@@ -121,36 +131,43 @@ class AbstractBuilding(object):
         if resource_id not in self.lines:
             return None
         line = self.lines[resource_id]
-        return line.produced_res[resource_id] / float(line.time) / GAME_SPEED.TICKS_PER_SECOND
+        return line.produced_res[resource_id] / float(
+            line.time) / GAME_SPEED.TICKS_PER_SECOND
 
     def get_production_level(self, building, resource_id):
-        """Return the actual production capacity of a single building of this type
-        producing the given resource."""
-        # most buildings can get away with reporting the expected production level
+        """Return the actual production capacity of a single building
+        of this type producing the given resource."""
+        # most buildings can get away with reporting
+        #  the expected production level
         return self.get_expected_production_level(resource_id)
 
     def have_resources(self, settlement_manager):
-        """Return a boolean showing whether the given settlement has enough resources
-        to build a building of this type."""
-        return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement],
+        """Return a boolean showing whether the given settlement
+        has enough resources to build a building of this type."""
+        return Entities.buildings[self.id].have_resources(
+            [settlement_manager.land_manager.settlement],
             settlement_manager.owner)
 
     @classmethod
-    def _get_buildability_intersection(cls, settlement_manager, size, terrain_type,
-            need_collector_connection):
-        # Note that this is explicitly using the production_builder. This means that this
-        # code can never be used to construct anything outside the production area.
+    def _get_buildability_intersection(cls, settlement_manager,
+                                       size, terrain_type,
+                                       need_collector_connection):
+        """Note that this is explicitly using the production_builder.
+        This means that this code can never be used to construct
+        anything outside the production area."""
         caches = (settlement_manager.production_builder.buildability_cache,
-            settlement_manager.settlement.buildability_cache)
+                  settlement_manager.settlement.buildability_cache)
         if need_collector_connection:
-            caches += (settlement_manager.production_builder.simple_collector_area_cache, )
-        return settlement_manager.island.terrain_cache.get_buildability_intersection(terrain_type,
-            size, *caches)
+            caches += (settlement_manager.production_builder
+                       .simple_collector_area_cache, )
+        return settlement_manager.island.terrain_cache\
+            .get_buildability_intersection(terrain_type, size, *caches)
 
     def iter_potential_locations(self, settlement_manager):
         """Iterate over possible locations of the building in the
         given settlement in the form of (x, y, orientation)."""
-        need_collector_connection = self.evaluator_class.need_collector_connection
+        need_collector_connection = \
+            self.evaluator_class.need_collector_connection
         for (x, y) in sorted(self._get_buildability_intersection(
                 settlement_manager, self.size,
                 self.terrain_type, need_collector_connection)):

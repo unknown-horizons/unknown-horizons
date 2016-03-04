@@ -46,16 +46,22 @@ class AbstractBoatBuilder(AbstractBuilding):
 class BoatBuilderEvaluator(BuildingEvaluator):
     @classmethod
     def create(cls, area_builder, x, y, orientation):
-        builder = BasicBuilder.create(BUILDINGS.BOAT_BUILDER, (x, y), orientation)
+        builder = BasicBuilder.create(BUILDINGS.BOAT_BUILDER, (x, y),
+                                      orientation)
 
-        distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
+        distance_to_collector = cls._distance_to_nearest_collector(
+            area_builder, builder)
         if distance_to_collector is None:
-            return None  # require boat builders to have a collector building in range
+            return None
+            # require boat builders to have a collector building in range
 
-        personality = area_builder.owner.personality_manager.get('BoatBuilderEvaluator')
-        alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-        value = float(Entities.buildings[BUILDINGS.BOAT_BUILDER].radius) / distance_to_collector \
-            + alignment * personality.alignment_importance
+        personality = area_builder.owner.personality_manager.get(
+            'BoatBuilderEvaluator')
+        alignment = cls._get_alignment(area_builder,
+                                       builder.position.tuple_iter())
+        value = float(Entities.buildings[BUILDINGS.BOAT_BUILDER].radius) / \
+            distance_to_collector + alignment * \
+            personality.alignment_importance
         return BoatBuilderEvaluator(area_builder, builder, value)
 
     @property
