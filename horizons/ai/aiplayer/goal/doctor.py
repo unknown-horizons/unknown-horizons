@@ -41,13 +41,15 @@ class DoctorGoal(SettlementGoal):
     def update(self):
         super(DoctorGoal, self).update()
         if self.can_be_activated:
-            self._is_active = any(AbstractBuilding.buildings[BUILDINGS.DOCTOR].
+            self._is_active = any(
+                AbstractBuilding.buildings[BUILDINGS.DOCTOR].
                 iter_potential_locations(self.settlement_manager))
         else:
             self._is_active = False
 
     def execute(self):
-        result = AbstractBuilding.buildings[BUILDINGS.DOCTOR].build(self.settlement_manager, None)[0]
+        result = AbstractBuilding.buildings[BUILDINGS.DOCTOR].build(
+            self.settlement_manager, None)[0]
         self._log_generic_build_result(result, 'doctor')
         return self._translate_build_result(result)
 

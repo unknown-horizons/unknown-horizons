@@ -24,7 +24,8 @@ class DiplomacySettings:
     upper_boundary = 5.0
 
     class Evil:
-        # negative weights favors opposite balance, e.g. enemy is stronger => higher relationship_score
+        """negative weights favors opposite balance,
+        e.g. enemy is stronger => higher relationship_score"""
         weights = {
             'power': -0.6,
             'wealth': -0.3,
@@ -33,7 +34,8 @@ class DiplomacySettings:
 
         parameters_hostile = {
             'neutral': {'mid': 0.0, 'root': 2.0, 'peek': 0.2},
-            # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
+            # parabola with the center at 0.0, of root at 2.0
+            #  and -2.0. Peek at 0.5 (on Y axis)
             'ally': {'root': 7.0, },
         }
         parameters_neutral = {
@@ -42,7 +44,8 @@ class DiplomacySettings:
         }
         parameters_allied = {
             'neutral': {'mid': -2.0, 'root': -0.5, 'peek': 0.2, },
-            # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
+            # parabola with the center at -2.0, of root at -0.5
+            #  (the other at -3.5). Peek at 0.2 (on Y axis)
             'enemy': {'root': -3.5, },
             # smaller chance to go straight from allied to hostile
         }
