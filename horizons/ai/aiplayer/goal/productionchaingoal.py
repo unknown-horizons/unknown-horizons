@@ -164,7 +164,8 @@ class CannonGoal(ProductionChainGoal):
 		super(CannonGoal, self).__init__(settlement_manager, RES.CANNON, 'cannon producer')
 
 	def get_personality_name(self):
-		return 'BeerGoal'
+		return 'CannonGoal'
+
 decorators.bind_all(ProductionChainGoal)
 decorators.bind_all(FaithGoal)
 decorators.bind_all(TextileGoal)
