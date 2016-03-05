@@ -79,10 +79,10 @@ class FeederLiquorGoal(FeederChainGoal):
 
 class FeederBeerGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederLiquorGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
+		super(FeederBeerGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
 
 	def get_personality_name(self):
-		return 'LiquorGoal'
+		return 'BeerGoal'
 
 	@property
 	def can_be_activated(self):
