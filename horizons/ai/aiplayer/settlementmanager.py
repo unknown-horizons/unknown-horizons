@@ -28,13 +28,13 @@ from horizons.ai.aiplayer.goal.depositcoverage import (
 from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import (
-	FeederBeerGoal, FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal,
-	FeederTextileGoal, FeederTobaccoProductsGoal)
+	FeederBeerGoal, FeederCannonGoal, FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal,
+	FeederSaltGoal, FeederTextileGoal, FeederTobaccoProductsGoal)
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import (
-	BeerGoal, BoardsGoal, BricksGoal, CommunityGoal, EducationGoal, FaithGoal, FoodGoal,
+	BeerGoal, BoardsGoal, BricksGoal, CannonGoal, CommunityGoal, EducationGoal, FaithGoal, FoodGoal,
 	GetTogetherGoal, MedicalHerbsProductsGoal, SaltGoal, TextileGoal, TobaccoProductsGoal, ToolsGoal)
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
@@ -108,7 +108,7 @@ class SettlementManager(WorldObject):
 		self.production_chain = {}
 		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
-						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.BEER]:
+						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.BEER, RES.CANNON]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialize caches
@@ -131,6 +131,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederSaltGoal(self))
 			self._goals.append(FeederTobaccoProductsGoal(self))
 			self._goals.append(FeederMedicalProductsGoal(self))
+			self._goals.append(FeederCannonGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
@@ -153,6 +154,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(DoctorGoal(self))
 			self._goals.append(MedicalHerbsProductsGoal(self))
 			self._goals.append(BeerGoal(self))
+			self._goals.append(CannonGoal(self))
 
 	def save(self, db):
 		super().save(db)
@@ -349,6 +351,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
 		self.log.info('%s medical herbs requirement %.5f', self, self.get_ideal_production_level(RES.MEDICAL_HERBS))
 		self.log.info('%s beer requirement %.5f', self, self.get_ideal_production_level(RES.BEER))
+		self.log.info('%s cannon requirement %.5f', self, self.get_ideal_production_level(RES.CANNON))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -373,6 +376,8 @@ class SettlementManager(WorldObject):
 			self.get_resource_production_requirement(RES.MEDICAL_HERBS))
 		self.log.info('%s beer production %.5f / %.5f', self, self.get_resource_production(RES.BEER),
 			self.get_resource_production_requirement(RES.BEER))
+		self.log.info('%s cannon production %.5f / %.5f', self, self.get_resource_production(RES.CANNON),
+			self.get_resource_production_requirement(RES.CANNON))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
