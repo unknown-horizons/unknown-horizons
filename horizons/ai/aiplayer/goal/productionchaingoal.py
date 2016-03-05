@@ -156,6 +156,9 @@ class BeerGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
 		super(BeerGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
 
+	def get_personality_name(self):
+		return 'BeerGoal'
+
 decorators.bind_all(ProductionChainGoal)
 decorators.bind_all(FaithGoal)
 decorators.bind_all(TextileGoal)

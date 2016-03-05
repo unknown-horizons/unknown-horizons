@@ -39,7 +39,7 @@ from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
 	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal, \
-	SaltGoal, MedicalHerbsProductsGoal
+	SaltGoal, MedicalHerbsProductsGoal, BeerGoal
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal
@@ -151,6 +151,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(FireStationGoal(self))
 			self._goals.append(DoctorGoal(self))
 			self._goals.append(MedicalHerbsProductsGoal(self))
+			self._goals.append(BeerGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -338,6 +339,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT))
 		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
 		self.log.info('%s medical herbs requirement %.5f', self, self.get_ideal_production_level(RES.MEDICAL_HERBS))
+		self.log.info('%s beer requirement %.5f', self, self.get_ideal_production_level(RES.BEER))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -360,6 +362,8 @@ class SettlementManager(WorldObject):
 			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS))
 		self.log.info('%s medical herbs production %.5f / %.5f', self, self.get_resource_production(RES.MEDICAL_HERBS),
 			self.get_resource_production_requirement(RES.MEDICAL_HERBS))
+		self.log.info('%s beer production %.5f / %.5f', self, self.get_resource_production(RES.BEER),
+			self.get_resource_production_requirement(RES.BEER))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
