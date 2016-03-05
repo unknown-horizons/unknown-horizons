@@ -258,7 +258,7 @@ class ResourceManager(WorldObject):
 	def manager_buysell(self):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
 		managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT, RES.CANNON, RES.MEDICAL_HERBS,
-							RES.BEER]
+							RES.BEER, RES.CANNON]
 		settlement = self.settlement_manager.settlement
 		assert isinstance(settlement, Settlement)
 		inventory = settlement.get_component(StorageComponent).inventory
