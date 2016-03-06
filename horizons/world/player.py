@@ -34,7 +34,8 @@ from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import SettlerUpdate, PlayerInventoryUpdated, PlayerLevelUpgrade
+from horizons.messaging import SettlerUpdate, PlayerInventoryUpdated, \
+    PlayerLevelUpgrade
 from horizons.component.tradepostcomponent import TradePostComponent
 
 
@@ -43,10 +44,12 @@ class Player(ComponentHolder, WorldObject):
 
     STATS_UPDATE_INTERVAL = 3  # seconds
 
-    regular_player = True  # either a human player or a normal AI player (not trader or pirate)
+    regular_player = True
+    # either a human player or a normal AI player (not trader or pirate)
     component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
 
-    def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
+    def __init__(self, session, worldid, name, color, clientid=None,
+                 difficulty_level=None):
         """
         @param session: Session instance
         @param worldid: player's worldid
@@ -65,16 +68,19 @@ class Player(ComponentHolder, WorldObject):
         super(Player, self).initialize()
         if inventory:
             for res, value in inventory.iteritems():
-                self.get_component(StorageComponent).inventory.alter(res, value)
+                self.get_component(StorageComponent).inventory.alter(res,
+                                                                     value)
 
-    def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
+    def __init(self, name, color, clientid, difficulty_level,
+               max_tier_notification, settlerlevel=0):
         assert isinstance(color, Color)
         assert isinstance(name, basestring) and name
         try:
             self.name = unicode(name)
         except UnicodeDecodeError:
             # WORKAROUND: this line should be the only unicode conversion here.
-            # however, if unicode() gets a parameter, it will fail if the string is already unicode.
+            # however, if unicode() gets a parameter,
+            #  it will fail if the string is already unicode.
             self.name = unicode(name, errors='ignore')
         self.color = color
         self.clientid = clientid
@@ -92,16 +98,17 @@ class Player(ComponentHolder, WorldObject):
         return self is self.session.world.player
 
     def get_latest_stats(self):
-        if (self._stats is None
-                or self._stats.collection_tick + PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick):
+        if (self._stats is None or self._stats.collection_tick +
+                PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick):
             self._stats = PlayerStats(self)
         return self._stats
 
     @property
     def settlements(self):
-        """Calculate settlements dynamically to save having a redundant list here"""
+        """Calculate settlements dynamically to save having
+        a redundant list here"""
         return [settlement for settlement in self.session.world.settlements if
-            settlement.owner == self]
+                settlement.owner == self]
 
     def save(self, db):
         super(Player, self).save(db)
@@ -109,12 +116,13 @@ class Player(ComponentHolder, WorldObject):
         if self.clientid is not None or self is self.session.world.player:
             client_id = self.clientid
         db("INSERT INTO player"
-            " (rowid, name, color, client_id, settler_level,"
-            " difficulty_level, max_tier_notification)"
-            " VALUES(?, ?, ?, ?, ?, ?, ?)",
-            self.worldid, self.name, self.color.id, client_id, self.settler_level,
-            self.difficulty.level if self.difficulty is not None else None,
-            self.max_tier_notification)
+           " (rowid, name, color, client_id, settler_level,"
+           " difficulty_level, max_tier_notification)"
+           " VALUES(?, ?, ?, ?, ?, ?, ?)",
+           self.worldid, self.name, self.color.id, client_id,
+           self.settler_level,
+           self.difficulty.level if self.difficulty is not None else None,
+           self.max_tier_notification)
 
     @classmethod
     def load(cls, session, db, worldid):
@@ -128,11 +136,13 @@ class Player(ComponentHolder, WorldObject):
         Player instance, which is used e.g. in Trader.load"""
         super(Player, self).load(db, worldid)
 
-        color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
-            "SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
-            " FROM player WHERE rowid = ?", worldid)[0]
+        color, name, client_id, settlerlevel, difficulty_level, \
+            max_tier_notification = db(
+                 "SELECT color, name, client_id, settler_level, "
+                 "difficulty_level, max_tier_notification"
+                 " FROM player WHERE rowid = ?", worldid)[0]
         self.__init(name, Color[color], client_id, difficulty_level,
-            max_tier_notification, settlerlevel=settlerlevel)
+                    max_tier_notification, settlerlevel=settlerlevel)
 
     def notify_settler_reached_level(self, message):
         """Settler calls this to notify the player."""
@@ -140,7 +150,8 @@ class Player(ComponentHolder, WorldObject):
             return
         if message.level > self.settler_level:
             self.settler_level = message.level
-            self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
+            self.session.scenario_eventhandler.check_events(
+                CONDITIONS.settler_level_greater)
             for settlement in self.settlements:
                 settlement.level_upgrade(self.settler_level)
             self._changed()

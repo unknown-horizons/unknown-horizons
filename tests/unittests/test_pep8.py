@@ -86,6 +86,6 @@ class TestCodeFormat(unittest.TestCase):
                         'translations.py' in file):
                     check_files.append(os.path.join(root, file))
         pep8style = pep8.StyleGuide(quiet=False)
-        result = pep8style.check_files(check_files[:300])
+        result = pep8style.check_files(check_files[:310])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")

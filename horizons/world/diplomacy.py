@@ -28,14 +28,17 @@ class Diplomacy(object):
     Diplomacy class
     handles diplomacy between players
     two players can be allies, neutral or enemies
-        allies: set of (a, b) tuples of player instances meaning a and b are allies
-                 for making the relationship symmetrical a has a lower worldid than b
-        enemies: set of (a, b) tuples of player instances meaning a and b are enemies
-        if to players are not allies nore enemies, they are neutral
+        allies: set of (a, b) tuples of player instances meaning
+                 a and b are allies for making the relationship
+                symmetrical a has a lower worldid than b
+        enemies: set of (a, b) tuples of player instances meaning
+                 a and b are enemies if to players are not allies
+                more enemies, they are neutral
 
         for listeners that are not Callback instances, the arguments must be:
             caller, old_state, new_state, a, b
-            old_state and new_state are a strings that can be 'ally', 'neutral' or 'enemy'
+            old_state and new_state are a strings that can
+            be 'ally', 'neutral' or 'enemy'
             a is first player
             b is second player
     """
@@ -51,7 +54,8 @@ class Diplomacy(object):
         old_state = self._get_state_string(tup)
         self.remove_enemy_pair(a, b)
         self.allies.add(tup)
-        self.on_diplomacy_status_changed(old_state=old_state, new_state='ally', a=a, b=b)
+        self.on_diplomacy_status_changed(old_state=old_state,
+                                         new_state='ally', a=a, b=b)
 
     def add_enemy_pair(self, a, b):
         tup = make_tup(a, b)
@@ -60,7 +64,8 @@ class Diplomacy(object):
         old_state = self._get_state_string(tup)
         self.remove_ally_pair(a, b)
         self.enemies.add(tup)
-        self.on_diplomacy_status_changed(old_state=old_state, new_state='enemy', a=a, b=b)
+        self.on_diplomacy_status_changed(old_state=old_state,
+                                         new_state='enemy', a=a, b=b)
 
     def add_neutral_pair(self, a, b):
         tup = make_tup(a, b)
@@ -69,7 +74,8 @@ class Diplomacy(object):
         old_state = self._get_state_string(tup)
         self.remove_ally_pair(a, b)
         self.remove_enemy_pair(a, b)
-        self.on_diplomacy_status_changed(old_state=old_state, new_state='neutral', a=a, b=b)
+        self.on_diplomacy_status_changed(old_state=old_state,
+                                         new_state='neutral', a=a, b=b)
 
     def remove_enemy_pair(self, a, b):
         tup = make_tup(a, b)

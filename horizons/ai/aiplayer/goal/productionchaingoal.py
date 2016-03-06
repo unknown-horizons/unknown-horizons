@@ -43,22 +43,26 @@ class ProductionChainGoal(SettlementGoal):
         return self._translate_build_result(result)
 
     def _update_needed_amount(self):
-        self._needed_amount = self.settlement_manager.get_resource_production_requirement(self.chain.resource_id) * \
+        self._needed_amount = self.settlement_manager.\
+            get_resource_production_requirement(self.chain.resource_id) * \
             self.settlement_manager.personality.production_level_multiplier
 
     def update(self):
         super(ProductionChainGoal, self).update()
         if self.can_be_activated:
             self._update_needed_amount()
-            self._current_amount = self.chain.reserve(self._needed_amount, self._may_import)
-            self._is_active = self.chain.need_to_build_more_buildings(self._needed_amount)
+            self._current_amount = self.chain.reserve(self._needed_amount,
+                                                      self._may_import)
+            self._is_active = self.chain.need_to_build_more_buildings(
+                self._needed_amount)
         else:
             self._is_active = False
 
 
 class FaithGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(FaithGoal, self).__init__(settlement_manager, RES.FAITH, 'pavilion')
+        super(FaithGoal, self).__init__(settlement_manager, RES.FAITH,
+                                        'pavilion')
 
     def get_personality_name(self):
         return 'FaithGoal'
@@ -66,7 +70,8 @@ class FaithGoal(ProductionChainGoal):
 
 class TextileGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(TextileGoal, self).__init__(settlement_manager, RES.TEXTILE, 'textile producer')
+        super(TextileGoal, self).__init__(settlement_manager, RES.TEXTILE,
+                                          'textile producer')
 
     def get_personality_name(self):
         return 'TextileGoal'
@@ -74,7 +79,8 @@ class TextileGoal(ProductionChainGoal):
 
 class BricksGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(BricksGoal, self).__init__(settlement_manager, RES.BRICKS, 'bricks producer')
+        super(BricksGoal, self).__init__(settlement_manager, RES.BRICKS,
+                                         'bricks producer')
 
     def get_personality_name(self):
         return 'BricksGoal'
@@ -82,7 +88,8 @@ class BricksGoal(ProductionChainGoal):
 
 class EducationGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(EducationGoal, self).__init__(settlement_manager, RES.EDUCATION, 'school')
+        super(EducationGoal, self).__init__(settlement_manager, RES.EDUCATION,
+                                            'school')
 
     def get_personality_name(self):
         return 'EducationGoal'
@@ -95,8 +102,9 @@ class EducationGoal(ProductionChainGoal):
 
 class GetTogetherGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(GetTogetherGoal, self).__init__(settlement_manager, RES.GET_TOGETHER,
-            'get-together producer')
+        super(GetTogetherGoal, self).__init__(settlement_manager,
+                                              RES.GET_TOGETHER,
+                                              'get-together producer')
 
     def get_personality_name(self):
         return 'GetTogetherGoal'
@@ -109,7 +117,8 @@ class GetTogetherGoal(ProductionChainGoal):
 
 class ToolsGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(ToolsGoal, self).__init__(settlement_manager, RES.TOOLS, 'tools producer')
+        super(ToolsGoal, self).__init__(settlement_manager, RES.TOOLS,
+                                        'tools producer')
 
     def get_personality_name(self):
         return 'ToolsGoal'
@@ -123,7 +132,8 @@ class ToolsGoal(ProductionChainGoal):
 
 class BoardsGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(BoardsGoal, self).__init__(settlement_manager, RES.BOARDS, 'boards producer')
+        super(BoardsGoal, self).__init__(settlement_manager, RES.BOARDS,
+                                         'boards producer')
 
     def get_personality_name(self):
         return 'BoardsGoal'
@@ -131,7 +141,8 @@ class BoardsGoal(ProductionChainGoal):
 
 class FoodGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(FoodGoal, self).__init__(settlement_manager, RES.FOOD, 'food producer')
+        super(FoodGoal, self).__init__(settlement_manager, RES.FOOD,
+                                       'food producer')
 
     def get_personality_name(self):
         return 'FoodGoal'
@@ -139,7 +150,8 @@ class FoodGoal(ProductionChainGoal):
 
 class CommunityGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(CommunityGoal, self).__init__(settlement_manager, RES.COMMUNITY, 'main square')
+        super(CommunityGoal, self).__init__(settlement_manager, RES.COMMUNITY,
+                                            'main square')
 
     def get_personality_name(self):
         return 'CommunityGoal'
@@ -147,7 +159,8 @@ class CommunityGoal(ProductionChainGoal):
 
 class TobaccoProductsGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(TobaccoProductsGoal, self).__init__(settlement_manager, RES.TOBACCO_PRODUCTS,
+        super(TobaccoProductsGoal, self).__init__(
+            settlement_manager, RES.TOBACCO_PRODUCTS,
             'tobacco products producer')
 
     def get_personality_name(self):
@@ -156,8 +169,9 @@ class TobaccoProductsGoal(ProductionChainGoal):
 
 class MedicalHerbsProductsGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(MedicalHerbsProductsGoal, self).__init__(settlement_manager,
-            RES.MEDICAL_HERBS, 'medical herbs products producer')
+        super(MedicalHerbsProductsGoal, self).__init__(
+            settlement_manager, RES.MEDICAL_HERBS,
+            'medical herbs products producer')
 
     def get_personality_name(self):
         return 'MedicalHerbsProductsGoal'
@@ -165,7 +179,8 @@ class MedicalHerbsProductsGoal(ProductionChainGoal):
 
 class SaltGoal(ProductionChainGoal):
     def __init__(self, settlement_manager):
-        super(SaltGoal, self).__init__(settlement_manager, RES.SALT, 'salt producer')
+        super(SaltGoal, self).__init__(settlement_manager, RES.SALT,
+                                       'salt producer')
 
     def get_personality_name(self):
         return 'SaltGoal'

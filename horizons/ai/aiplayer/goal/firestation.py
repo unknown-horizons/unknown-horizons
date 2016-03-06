@@ -41,14 +41,16 @@ class FireStationGoal(SettlementGoal):
     def update(self):
         super(FireStationGoal, self).update()
         if self.can_be_activated:
-            self._is_active = any(AbstractBuilding.buildings[BUILDINGS.FIRE_STATION]
-                .iter_potential_locations(self.settlement_manager))
+            self._is_active = any(AbstractBuilding.buildings
+                                  [BUILDINGS.FIRE_STATION]
+                                  .iter_potential_locations
+                                  (self.settlement_manager))
         else:
             self._is_active = False
 
     def execute(self):
-        result = AbstractBuilding.buildings[BUILDINGS.FIRE_STATION].build(self.settlement_manager,
-            None)[0]
+        result = AbstractBuilding.buildings[BUILDINGS.FIRE_STATION].build(
+            self.settlement_manager, None)[0]
         self._log_generic_build_result(result, 'fire station')
         return self._translate_build_result(result)
 

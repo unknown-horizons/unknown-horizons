@@ -35,39 +35,53 @@ from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.command.building import Tear
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
-from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
-from horizons.world.buildability.terraincache import TerrainBuildabilityCache, TerrainRequirement
+from horizons.world.buildability.freeislandcache import \
+    FreeIslandBuildabilityCache
+from horizons.world.buildability.terraincache import TerrainBuildabilityCache, \
+    TerrainRequirement
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
 
 
 class Island(BuildingOwner, WorldObject):
-    """The Island class represents an island. It contains a list of all things on the map
-    that belong to the island. This comprises ground tiles as well as buildings,
-    nature objects (which are buildings), and units.
+    """The Island class represents an island. It contains a list of all
+    things on the map that belong to the island. This comprises ground
+    tiles as well as buildings, nature objects (which are buildings),
+    and units.
     All those objects also have a reference to the island,
     making it easy to determine to which island the instance belongs.
-    An Island instance is created during map creation, when all tiles are added to the map.
+    An Island instance is created during map creation, when all tiles
+    are added to the map.
     @param origin: Point instance - Position of the (0, 0) ground tile.
     @param filename: file from which the island is loaded.
 
     Each island holds some important attributes:
-    * grounds - All ground tiles that belong to the island are referenced here.
-    * grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
+    * grounds - All ground tiles that belong to the island are
+               referenced here.
+    * grounds_map -  a dictionary that binds tuples of coordinates with
+                     a reference to the tile:
                       { (x, y): tileref, ...}
-                      This is important for pathfinding and quick tile fetching.
-    * position - a Rect that borders the island with the smallest possible area.
-    * buildings - a list of all Building instances that are present on the island.
-    * settlements - a list of all Settlement instances that are present on the island.
+                      This is important for pathfinding and quick tile
+                      fetching.
+    * position - a Rect that borders the island with the smallest
+                 possible area.
+    * buildings - a list of all Building instances that are present
+                  on the island.
+    * settlements - a list of all Settlement instances that are present
+                    on the island.
     * path_nodes - a special dictionary used by the pather to save paths.
 
     TUTORIAL:
-    Why do we use a separate __init() function, and do not use the __init__() function?
-    Simple: if we load the game, the class is not loaded as a new instance, so the __init__
-    function is not called. Rather, the load function is called, so everything that new
-    classes and loaded classes share to initialize goes into the __init() function.
-    This is the common way of doing this in Unknown Horizons, so better get used to it :)
-    NOTE: The components work a bit different, but this code here is mostly not component oriented.
+    Why do we use a separate __init() function, and do not use
+    the __init__() function?
+    Simple: if we load the game, the class is not loaded as a new instance,
+    so the __init__ function is not called. Rather, the load function
+    is called, so everything that new classes and loaded classes share
+    to initialize goes into the __init() function.
+    This is the common way of doing this in Unknown Horizons,
+    so better get used to it :)
+    NOTE: The components work a bit different, but this code here
+          is mostly not component oriented.
 
     To continue hacking, check out the __init() function now.
     """
@@ -155,7 +169,8 @@ class Island(BuildingOwner, WorldObject):
         self.wild_animals = []
         self.num_trees = 0
 
-        # define the rectangle with the smallest area that contains every island tile its position
+        # define the rectangle with the smallest area that contains
+        #  every island tile its position
         min_x = min(zip(*self.ground_map.keys())[0])
         max_x = max(zip(*self.ground_map.keys())[0])
         min_y = min(zip(*self.ground_map.keys())[1])
@@ -206,7 +221,8 @@ class Island(BuildingOwner, WorldObject):
                 yield self.ground_map[tup]
 
     def add_settlement(self, position, radius, player):
-        """Adds a settlement to the island at the position x, y with radius as area of influence.
+        """Adds a settlement to the island at the position x, y
+        with radius as area of influence.
         @param position: Rect describing the position of the new warehouse
         @param radius: int radius of the area of influence.
         @param player: int id of the player that owns the settlement"""
@@ -220,8 +236,10 @@ class Island(BuildingOwner, WorldObject):
 
     def add_existing_settlement(self, position, radius, settlement):
         """Same as add_settlement, but uses settlement from parameter.
-        May also be called for extension of an existing settlement by a new building (this
-        is useful for loading, where every loaded building extends the radius of its settlement).
+        May also be called for extension of an existing settlement by
+        a new building (this
+        is useful for loading, where every loaded building extends the
+        radius of its settlement).
         @param position: Rect
         @param load: whether it has been called during load"""
         if settlement not in self.settlements:
@@ -231,8 +249,8 @@ class Island(BuildingOwner, WorldObject):
         return settlement
 
     def assign_settlement(self, position, radius, settlement):
-        """Assigns the settlement property to tiles within the circle defined by \
-        position and radius.
+        """Assigns the settlement property to tiles within the
+        circle defined by \ position and radius.
         @param position: Rect
         @param radius:
         @param settlement:
@@ -251,14 +269,17 @@ class Island(BuildingOwner, WorldObject):
             settlement_coords_changed.append(coords)
 
             building = tile.object
-            # In theory fish deposits should never be on the island but this has been
-            # possible since they were turned into a 2x2 building. Since they are never
-            # entirely on the island then it is easiest to just make it impossible to own
+            # In theory fish deposits should never be on the island but
+            # this has been
+            # possible since they were turned into a 2x2 building.
+            # Since they are never entirely on the island then it is
+            # easiest to just make it impossible to own
             # fish deposits.
             if building is None or building.id == BUILDINGS.FISH_DEPOSIT:
                 continue
 
-            # Assign the entire building to the first settlement that covers some of it.
+            # Assign the entire building to the first settlement that
+            #  covers some of it.
             assert building.settlement is None or building.settlement is settlement
             for building_coords in building.position.tuple_iter():
                 building_tile = self.ground_map[building_coords]
@@ -298,7 +319,8 @@ class Island(BuildingOwner, WorldObject):
             Tear(building)(building.owner)
 
     def remove_settlement(self, building):
-        """Removes the settlement property from tiles within the radius of the given building"""
+        """Removes the settlement property from tiles within the radius
+        of the given building"""
         settlement = building.settlement
         buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
         assert building not in buildings_to_abandon
@@ -332,8 +354,10 @@ class Island(BuildingOwner, WorldObject):
         SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
 
     def add_building(self, building, player, load=False):
-        """Adds a building to the island at the position x, y with player as the owner.
-        @param building: Building class instance of the building that is to be added.
+        """Adds a building to the island at the position x, y with
+        player as the owner.
+        @param building: Building class instance of the building that
+                         is to be added.
         @param player: int id of the player that owns the settlement
         @param load: boolean, whether it has been called during loading"""
         if building.id in (BUILDINGS.CLAY_DEPOSIT,
@@ -345,10 +369,12 @@ class Island(BuildingOwner, WorldObject):
             self.available_land_cache.remove_area(list(building.position.tuple_iter()))
         super(Island, self).add_building(building, player, load=load)
         if not load and building.settlement is not None:
-            # Note: (In case we do not require all building tiles to lay inside settlement
-            # range at some point.) `include_self` is True in get_radius_coordinates()
-            # called from here, so the building area itself *is* expanded by even with
-            # radius=0! Right now this has no effect (above buildability requirements).
+            # Note: (In case we do not require all building tiles
+            # to lay inside settlement range at some point.)
+            # `include_self` is True in get_radius_coordinates()
+            # called from here, so the building area itself *is*
+            # expanded by even with radius=0! Right now this has
+            # no effect (above buildability requirements).
             radius = 0 if building.id not in BUILDINGS.EXPAND_RANGE else building.radius
             self.assign_settlement(building.position, radius, building.settlement)
 
@@ -386,7 +412,8 @@ class Island(BuildingOwner, WorldObject):
         if building.id in self.building_indexers:
             self.building_indexers[building.id].remove(building)
 
-        # Reset the tiles this building was covering (after building has been completely removed)
+        # Reset the tiles this building was covering
+        #  (after building has been completely removed)
         for coords in building.position.tuple_iter():
             self.path_nodes.reset_tile_walkability(coords)
             self._register_change()
@@ -415,8 +442,10 @@ class Island(BuildingOwner, WorldObject):
     def get_tiles_in_radius(self, location, radius, include_self):
         """Returns tiles in radius of location.
         This is a generator.
-        @param location: anything that supports get_radius_coordinates (usually Rect).
-        @param include_self: bool, whether to include the coordinates in location
+        @param location: anything that supports get_radius_coordinates
+                         (usually Rect).
+        @param include_self: bool, whether to include the coordinates
+                             in location
         """
         for coord in location.get_radius_coordinates(radius, include_self):
             try:
@@ -451,12 +480,14 @@ class Island(BuildingOwner, WorldObject):
         self.last_change_id = -1
 
     def _register_change(self):
-        """ registers the possible buildability change of a rectangle on this island """
+        """ registers the possible buildability change of a rectangle
+        on this island """
         self.last_change_id += 1
 
     def end(self):
-        # NOTE: killing animals before buildings is an optimization, else they would
-        # keep searching for new trees every time a tree is torn down.
+        # NOTE: killing animals before buildings is an optimization,
+        # else they would keep searching for new trees every time
+        # a tree is torn down.
         for wild_animal in (wild_animal for wild_animal in self.wild_animals):
             wild_animal.remove()
         super(Island, self).end()

@@ -47,7 +47,8 @@ class DoNothingGoal(Goal):
         else:
             # be lazy
             self._is_active = True
-            self._priority = self.owner.session.random.gauss(self.personality.default_priority,
+            self._priority = self.owner.session.random.gauss(
+                self.personality.default_priority,
                 self.personality.priority_variance)
 
     def execute(self):
