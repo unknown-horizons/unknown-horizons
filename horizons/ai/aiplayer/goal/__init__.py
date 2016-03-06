@@ -26,18 +26,21 @@ from horizons.util.python import decorators
 
 
 class Goal(object):
-    """An object of this class describes a goal that an AI player attempts to fulfil."""
+    """An object of this class describes a goal that an AI player
+    attempts to fulfil."""
 
     log = logging.getLogger("ai.aiplayer.goal")
 
     def __init__(self, owner):
         super(Goal, self).__init__()
         self.owner = owner
-        self.personality = self.owner.personality_manager.get(self.get_personality_name())
+        self.personality = self.owner.personality_manager.get(
+            self.get_personality_name())
 
         if not hasattr(Goal, '_next_id'):
             Goal._next_id = 1
-            # used to assign sequence numbers to goals to ensure consistent ordering
+            # used to assign sequence numbers to goals
+            # to ensure consistent ordering
         self.sequence_number = Goal._next_id
         Goal._next_id += 1
 
@@ -57,7 +60,8 @@ class Goal(object):
     @property
     def can_be_activated(self):
         """Return True if and only if it is ok to update this goal."""
-        return self.personality.enabled and self.owner.settler_level >= self.personality.min_tier
+        return self.personality.enabled and self.owner.settler_level >= \
+            self.personality.min_tier
 
     def execute(self):
         """Do whatever is best to get closer to fulfilling the goal
@@ -65,20 +69,23 @@ class Goal(object):
         raise NotImplementedError("This function has to be overridden.")
 
     def update(self):
-        """Update the goal to find out whether it is currently active and what its current priority is."""
+        """Update the goal to find out whether it is currently active
+        and what its current priority is."""
         pass
 
     @classmethod
     def _translate_build_result(cls, result):
-        """Returns the goal execution state that corresponds to the given BUILD_RESULT constant."""
+        """Returns the goal execution state that corresponds to
+        the given BUILD_RESULT constant."""
         if result == BUILD_RESULT.OK:
             return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
         elif result == BUILD_RESULT.NEED_RESOURCES:
             return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
         elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR,
-                BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
+                        BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
             return GOAL_RESULT.SKIP
-        assert False, 'Unable to translate BUILD_RESULT %d to a GOAL_RESULT' % result
+        assert False, ('Unable to translate BUILD_RESULT {} to a GOAL_RESULT'
+                       .format(result))
 
     def __lt__(self, other):
         if self.priority != other.priority:
@@ -86,6 +93,7 @@ class Goal(object):
         return self.sequence_number < other.sequence_number
 
     def __str__(self):
-        return 'Goal(%d): %s(%d)' % (self.priority, self.__class__.__name__, self.sequence_number)
+        return 'Goal(%d): %s(%d)' % (self.priority, self.__class__.__name__,
+                                     self.sequence_number)
 
 decorators.bind_all(Goal)

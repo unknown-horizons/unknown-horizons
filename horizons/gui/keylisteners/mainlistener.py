@@ -72,10 +72,12 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
             # doesn't support unicode paths
             temp_handle, temp_path = tempfile.mkstemp()
             os.close(temp_handle)
-            horizons.globals.fife.engine.getRenderBackend().captureScreen(temp_path)
+            horizons.globals.fife.engine.getRenderBackend()\
+                .captureScreen(temp_path)
 
             # move the screenshot into the final location
-            filename = datetime.datetime.now().isoformat('.').replace(":", "-") + ".png"
+            filename = datetime.datetime.now().isoformat('.')\
+                .replace(":", "-") + ".png"
             final_path = os.path.join(PATHS.SCREENSHOT_DIR, filename)
             shutil.move(temp_path, final_path)
 

@@ -42,7 +42,8 @@ class Command(object):
     def execute(self, session, local=False):
         """Execute command.
         @param session: Execute command on this session's manager.
-        @param local: Execute the command only locally (only used in multiplayer manager)
+        @param local: Execute the command only locally
+                     (only used in multiplayer manager)
         @return: Propagated return value of manager's execute function.
         """
         return session.manager.execute(self, local)
@@ -54,7 +55,8 @@ class Command(object):
 
 class GenericCommand(Command):
     """Code generator for trivial commands on an object.
-    It saves an object's world id, and executes a method specified as string on it in __call__
+    It saves an object's world id, and executes a method specified
+    as string on it in __call__
 
     NOTE: Do not use floats! 2.6 and 2.7 handle them differently.
     Use like this to call obj.mymethod(42, 1337):
@@ -70,13 +72,15 @@ class GenericCommand(Command):
         self.kwargs = kwargs
 
     def __call__(self, issuer):
-        return getattr(self._get_object(), self.method)(*self.args, **self.kwargs)
+        return getattr(self._get_object(), self.method)(*self.args,
+                                                        **self.kwargs)
 
     def _get_object(self):
         return WorldObject.get_object_by_id(self.obj_id)
 
     def __str__(self):
-        return "GenericCommand(%s, %s, %s, %s, %s)" % (self.__class__, self._get_object(),
+        return "GenericCommand(%s, %s, %s, %s, %s)" % (
+            self.__class__, self._get_object(),
             self.method, self.args, self.kwargs)
 
 
@@ -90,12 +94,13 @@ class GenericComponentCommand(Command):
         self.kwargs = kwargs
 
     def __call__(self, issuer):
-        return getattr(self._get_object().get_component_by_name(self.component_name),
-            self.method)(*self.args, **self.kwargs)
+        return getattr(self._get_object().get_component_by_name(
+            self.component_name), self.method)(*self.args, **self.kwargs)
 
     def _get_object(self):
         return WorldObject.get_object_by_id(self.obj_id)
 
     def __str__(self):
-        return "GenericCompCommand(%s, %s, %s, %s, %s, %s)" % (self.__class__, self._get_object(),
+        return "GenericCompCommand(%s, %s, %s, %s, %s, %s)" % (
+            self.__class__, self._get_object(),
             self.component_name, self.method, self.args, self.kwargs)

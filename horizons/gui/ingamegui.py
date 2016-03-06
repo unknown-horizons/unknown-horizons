@@ -23,10 +23,12 @@ from fife import fife
 import pdb
 
 import horizons.globals
-from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
+from horizons.command.game import SpeedDownCommand, SpeedUpCommand, \
+    TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, VERSION, LAYERS, VIEW
+from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, VERSION, \
+    LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig

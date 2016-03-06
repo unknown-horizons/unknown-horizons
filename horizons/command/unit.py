@@ -31,8 +31,9 @@ class GenericUnitCommand(GenericCommand):
         try:
             unit = self._get_object()
         except WorldObjectNotFound as e:
-            self.log.warning("Tried to call a unit command on an inexistent unit."
-                " It could have been killed: %s", e)
+            self.log.warning("Tried to call a unit command on an "
+                             "inexistent unit."
+                             " It could have been killed: %s", e)
             return
         if unit.owner.worldid != issuer.worldid:
             return  # don't move enemy units
@@ -64,7 +65,8 @@ GenericCommand.allow_network(Attack)
 
 class RemoveUnit(GenericUnitCommand):
     """
-    Command class that removes the unit. Not to be used if .remove() is going to be
+    Command class that removes the unit
+  . Not to be used if .remove() is going to be
     called through an indirect command anyway.
     @param unit: Instance of Unit
     """
@@ -88,8 +90,10 @@ GenericCommand.allow_network(CreateRoute)
 class CreateUnit(Command):
     """Command class that creates a unit.
     TODO: remove this command and put the code in a method in e.g. world.
-    Commands are there for user interactions, and there is no user interaction, that creates a unit
-    You always only add a production that creates then units, but that is simulated on every machine
+    Commands are there for user interactions, and there is
+    no user interaction, that creates a unit
+    You always only add a production that creates then units,
+    but that is simulated on every machine
 
     """
     def __init__(self, owner_id, unit_id, x, y, **kwargs):

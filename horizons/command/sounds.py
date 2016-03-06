@@ -25,11 +25,12 @@ from horizons.command import Command
 
 
 class PlaySound(Command):
-    """Command class that plays the build sound. This has been moved to a separate
-    class, in order to be able to play only one sound for 20 buildings(like a group of
-    trees)
+    """Command class that plays the build sound.
+    This has been moved to a separate class, in order to be able to
+    play only one sound for 20 buildings(like a group of trees)
     @param sound: sound id that is to be played
-    @param position: tuple of int coordinates where the sound is to be played."""
+    @param position: tuple of int coordinates where the sound is to be played.
+    """
 
     def __init__(self, sound, position=None, **trash):
         self.sound = sound
@@ -42,6 +43,7 @@ class PlaySound(Command):
         if self.position is None:
             AmbientSoundComponent.play_special(self.sound)
         else:
-            AmbientSoundComponent.play_special(self.sound, Point(self.position[0], self.position[1]))
+            AmbientSoundComponent.play_special(
+                self.sound, Point(self.position[0], self.position[1]))
 
 Command.allow_network(PlaySound)

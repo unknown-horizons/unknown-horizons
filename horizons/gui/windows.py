@@ -286,7 +286,8 @@ class Popup(Dialog):
         elif self.size == 2:
             wdg_name = "popup_350"
         else:
-            assert False, "size should be 0 <= size <= 2, but is " + str(self.size)
+            assert False, "size should be 0 <= size <= 2, but is " + str(
+                self.size)
 
         self._gui = load_uh_widget(wdg_name + '.xml')
 

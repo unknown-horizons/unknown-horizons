@@ -53,23 +53,29 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
         return super(EnlargeCollectorAreaGoal, self).active and self._is_active
 
     def update(self):
-        available_squares, total_squares = self.settlement_manager.production_builder \
+        available_squares, total_squares = \
+            self.settlement_manager.production_builder \
             .count_available_squares(
                 3, self.personality.max_interesting_collector_area)
-        self.log.info('%s collector area: %d of %d useable', self, available_squares, total_squares)
-        self._is_active = available_squares < min(self.personality.max_interesting_collector_area,
+        self.log.info('%s collector area: %d of %d useable', self,
+                      available_squares, total_squares)
+        self._is_active = available_squares < min(
+            self.personality.max_interesting_collector_area,
             total_squares - self.personality.max_collector_area_unreachable)
 
     def _enlarge_collector_area(self):
         if not self.production_builder.have_resources(BUILDINGS.STORAGE):
             return BUILD_RESULT.NEED_RESOURCES
 
-        moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]  # valid moves for collectors
+        moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+        # valid moves for collectors
         collector_area = self.production_builder.get_collector_area()
         coastline = self.land_manager.coastline
 
-        # area_label contains free tiles in the production area and all road tiles
-        area_label = dict.fromkeys(self.land_manager.roads)  # {(x, y): area_number, ...}
+        # area_label contains free tiles in the production area
+        #  and all road tiles
+        area_label = dict.fromkeys(self.land_manager.roads)
+        # {(x, y): area_number, ...}
         for coords, (purpose, _) in self.production_builder.plan.iteritems():
             if coords not in coastline and purpose == BUILDING_PURPOSE.NONE:
                 area_label[coords] = None
@@ -92,21 +98,25 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
         coords_set_by_area = defaultdict(set)
         for coords, area_number in area_label.iteritems():
-            if (coords in self.production_builder.plan
-                    and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE
-                    and coords not in collector_area):
+            if (coords in self.production_builder.plan and
+                    self.production_builder.plan[coords][0] ==
+                    BUILDING_PURPOSE.NONE and coords not in collector_area):
                 coords_set_by_area[area_number].add(coords)
 
         storage_class = Entities.buildings[BUILDINGS.STORAGE]
-        storage_spots = self.island.terrain_cache.get_buildability_intersection(
-            storage_class.terrain_type,
-            storage_class.size, self.settlement.buildability_cache,
-            self.production_builder.buildability_cache)
-        storage_surrounding_offsets = Rect.get_surrounding_offsets(storage_class.size)
+        storage_spots = \
+            self.island.terrain_cache.get_buildability_intersection(
+                storage_class.terrain_type,
+                storage_class.size, self.settlement.buildability_cache,
+                self.production_builder.buildability_cache)
+        storage_surrounding_offsets = Rect.get_surrounding_offsets(
+            storage_class.size)
 
         options = []
-        num_offsets = int(len(self._radius_offsets) * self.personality.overlap_precision)
-        radius_offsets = self.session.random.sample(self._radius_offsets, num_offsets)
+        num_offsets = int(len(self._radius_offsets) *
+                          self.personality.overlap_precision)
+        radius_offsets = self.session.random.sample(self._radius_offsets,
+                                                    num_offsets)
         for coords in sorted(storage_spots):
             if coords not in area_label:
                 continue
@@ -126,15 +136,19 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
             builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
             for (dx, dy) in storage_surrounding_offsets:
                 coords = (x + dx, y + dy)
-                if (coords in coastline or coords not in self.production_builder.plan
-                        or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE):
+                if (coords in coastline or coords not in
+                        self.production_builder.plan or
+                        self.production_builder.plan[coords][0] !=
+                        BUILDING_PURPOSE.NONE):
                     alignment += 1
 
-            value = useful_area + alignment * self.personality.alignment_coefficient
+            value = useful_area + alignment * \
+                self.personality.alignment_coefficient
             options.append((value, builder))
 
         if options:
-            return self.production_builder.build_best_option(options, BUILDING_PURPOSE.STORAGE)
+            return self.production_builder.build_best_option(
+                options, BUILDING_PURPOSE.STORAGE)
 
         return BUILD_RESULT.IMPOSSIBLE
 

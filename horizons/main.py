@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""This is the main game file. It has grown over the years from a collection of global
-variables (sic!) to something holding mainly the main gui and game session, as well as
-a reference to the engine object (fife).
+"""This is the main game file. It has grown over the years from a
+collection of global variables (sic!) to something holding mainly
+the main gui and game session, as well as a reference to the
+engine object (fife).
 The functions below are used to start different kinds of games.
 
 TUTORIAL:
@@ -44,7 +45,8 @@ import horizons.globals
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX, VERSION
+from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER,\
+    GAME_SPEED, GFX, VERSION
 from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -63,8 +65,8 @@ class Modules(object):
     session = None
 _modules = Modules()
 
-# used to save a reference to the string previewer to ensure it is not removed by
-# garbage collection
+# used to save a reference to the string previewer to ensure it
+# is not removed by garbage collection
 __string_previewer = None
 
 command_line_arguments = None
@@ -72,12 +74,15 @@ command_line_arguments = None
 
 def start(_command_line_arguments):
     """Starts the horizons. Will drop you to the main menu.
-    @param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
+    @param _command_line_arguments: options object from
+        optparse.OptionParser. see run_uh.py.
     """
     global debug, preloading, command_line_arguments
     command_line_arguments = _command_line_arguments
-    # NOTE: globals are designwise the same thing as singletons. they don't look pretty.
-    #       here, we only have globals that are either trivial, or only one instance may ever exist.
+    # NOTE: globals are designwise the same thing as singletons.
+    #  they don't look pretty.
+    #       here, we only have globals that are either trivial,
+    #  or only one instance may ever exist.
 
     from engine import Fife
 
@@ -97,7 +102,7 @@ def start(_command_line_arguments):
                 NETWORK.SERVER_PORT = parse_port(mpieces[2])
         except ValueError:
             print("Error: Invalid syntax in --mp-master commandline option."
-                " Port must be a number between 1 and 65535.")
+                  " Port must be a number between 1 and 65535.")
             return False
 
     # init fife before mp_bind is parsed, since it's needed there
@@ -105,7 +110,8 @@ def start(_command_line_arguments):
 
     if command_line_arguments.generate_minimap:
         # we've been called as subprocess to generate a map preview
-        from horizons.gui.modules.singleplayermenu import generate_random_minimap
+        from horizons.gui.modules.singleplayermenu import \
+            generate_random_minimap
         generate_random_minimap(* json.loads(
           command_line_arguments.generate_minimap))
         sys.exit(0)
@@ -120,10 +126,11 @@ def start(_command_line_arguments):
         try:
             mpieces = command_line_arguments.mp_bind.partition(':')
             NETWORK.CLIENT_ADDRESS = mpieces[0]
-            horizons.globals.fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
+            horizons.globals.fife.set_uh_setting("NetworkPort",
+                                                 parse_port(mpieces[2]))
         except ValueError:
             print("Error: Invalid syntax in --mp-bind commandline option."
-                " Port must be a number between 1 and 65535.")
+                  " Port must be a number between 1 and 65535.")
             return False
 
     setup_AI_settings(command_line_arguments)
@@ -134,9 +141,11 @@ def start(_command_line_arguments):
 
     preload_lock = threading.Lock()
 
-    if command_line_arguments.atlas_generation and not command_line_arguments.gui_test and \
-       VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
-       and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled'):
+    if command_line_arguments.atlas_generation and not\
+            command_line_arguments.gui_test and \
+            VERSION.IS_DEV_VERSION and \
+            horizons.globals.fife.get_uh_setting('AtlasesEnabled') and \
+            horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled'):
 
         atlas_loading_thread = None
         atlas_loading_thread = AtlasLoadingThread(preload_lock)
@@ -161,10 +170,12 @@ def start(_command_line_arguments):
                 res_logo_image = ImageTk.PhotoImage(res_logo)
                 logo_label = Tkinter.Label(window, image=res_logo_image)
                 logo_label.pack(side="left")
-                label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
+                label = Tkinter.Label(window, padx=10,
+                                      text="Generating atlases!")
                 label.pack(side="right")
 
-                # wait a second to give the thread time to check if a generation is necessary at all
+                # wait a second to give the thread time to check
+                #  if a generation is necessary at all
                 time.sleep(1.0)
                 window.deiconify()
                 while atlas_loading_thread.is_alive():
@@ -185,7 +196,8 @@ def start(_command_line_arguments):
     if not setup_gui_logger(command_line_arguments):
         return False
 
-    # GUI tests always run with sound disabled and SDL (so they can run under xvfb).
+    # GUI tests always run with sound disabled and SDL
+    #  (so they can run under xvfb).
     # Needs to be done before engine is initialized.
     if command_line_arguments.gui_test:
         horizons.globals.fife.engine.getSettings().setRenderBackend('SDL')
@@ -194,7 +206,8 @@ def start(_command_line_arguments):
     ExtScheduler.create_instance(horizons.globals.fife.pump)
     horizons.globals.fife.init()
 
-    if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
+    if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting(
+            'AtlasesEnabled'):
         GFX.USE_ATLASES = True
         PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
@@ -207,7 +220,8 @@ def start(_command_line_arguments):
     Entities.load(horizons.globals.db, load_now=False)  # create all references
 
     # for preloading game data while in main screen
-    preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
+    preload_thread = threading.Thread(target=preload_game_data,
+                                      args=(preload_lock,))
     preloading = (preload_thread, preload_lock)
 
     # Singleplayer seed needs to be changed before startup.
@@ -218,25 +232,33 @@ def start(_command_line_arguments):
     # start something according to commandline parameters
     startup_worked = True
     if command_line_arguments.start_dev_map:
-        startup_worked = _start_map('development', command_line_arguments.ai_players,
-            force_player_id=command_line_arguments.force_player_id, is_map=True)
+        startup_worked = _start_map(
+            'development', command_line_arguments.ai_players,
+            force_player_id=command_line_arguments.force_player_id,
+            is_map=True)
     elif command_line_arguments.start_random_map:
-        startup_worked = _start_random_map(command_line_arguments.ai_players,
+        startup_worked = _start_random_map(
+            command_line_arguments.ai_players,
             force_player_id=command_line_arguments.force_player_id)
     elif command_line_arguments.start_specific_random_map is not None:
-        startup_worked = _start_random_map(command_line_arguments.ai_players,
+        startup_worked = _start_random_map(
+            command_line_arguments.ai_players,
             seed=command_line_arguments.start_specific_random_map,
-                 force_player_id=command_line_arguments.force_player_id)
+            force_player_id=command_line_arguments.force_player_id)
     elif command_line_arguments.start_map is not None:
-        startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
-            force_player_id=command_line_arguments.force_player_id, is_map=True)
+        startup_worked = _start_map(
+            command_line_arguments.start_map,
+            command_line_arguments.ai_players,
+            force_player_id=command_line_arguments.force_player_id,
+            is_map=True)
     elif command_line_arguments.start_scenario is not None:
-        startup_worked = _start_map(command_line_arguments.start_scenario, 0, True,
+        startup_worked = _start_map(
+            command_line_arguments.start_scenario, 0, True,
             force_player_id=command_line_arguments.force_player_id)
     elif command_line_arguments.load_game is not None:
         startup_worked = _load_cmd_map(command_line_arguments.load_game,
-            command_line_arguments.ai_players,
-            command_line_arguments.force_player_id)
+                                       command_line_arguments.ai_players,
+                                       command_line_arguments.force_player_id)
     elif command_line_arguments.load_quicksave is not None:
         startup_worked = _load_last_quicksave()
     elif command_line_arguments.edit_map is not None:
@@ -247,8 +269,10 @@ def start(_command_line_arguments):
         tiny = [i for i in SavegameManager.get_maps()[0] if 'tiny' in i]
         if not tiny:
             tiny = SavegameManager.get_map()[0]
-        startup_worked = _start_map(tiny[0], ai_players=0, trader_enabled=False, pirate_enabled=False,
-            force_player_id=command_line_arguments.force_player_id, is_map=True)
+        startup_worked = _start_map(tiny[0], ai_players=0,
+                                    trader_enabled=False, pirate_enabled=False,
+                                    force_player_id=command_line_arguments
+                                    .force_player_id, is_map=True)
         from development.stringpreviewwidget import StringPreviewWidget
         __string_previewer = StringPreviewWidget(_modules.session)
         __string_previewer.show()
@@ -278,9 +302,10 @@ def start(_command_line_arguments):
     if command_line_arguments.gamespeed is not None:
         if _modules.session is None:
             print("You can only set the speed via command line in combination"
-                " with a game start parameter such as --start-map, etc.")
+                  " with a game start parameter such as --start-map, etc.")
             return False
-        _modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND * command_line_arguments.gamespeed)
+        _modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND *
+                                   command_line_arguments.gamespeed)
 
     if command_line_arguments.gui_test:
         from tests.gui import TestRunner
@@ -290,14 +315,17 @@ def start(_command_line_arguments):
 
 
 def setup_update_check():
-    from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
+    from horizons.util.checkupdates import UpdateInfo, check_for_updates, \
+        show_new_version_hint
     update_info = UpdateInfo()
-    update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
+    update_check_thread = threading.Thread(target=check_for_updates,
+                                           args=(update_info,))
     update_check_thread.start()
 
     def update_info_handler(info):
         if info.status == UpdateInfo.UNINITIALIZED:
-            ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
+            ExtScheduler().add_new_object(Callback(update_info_handler, info),
+                                          info)
         elif info.status == UpdateInfo.READY:
             show_new_version_hint(_modules.gui, info)
         elif info.status == UpdateInfo.INVALID:
@@ -316,8 +344,8 @@ def setup_AI_settings(command_line_arguments):
 
 
 def setup_debug_mode(command_line_arguments):
-    if not (command_line_arguments.debug_module
-            and 'fife' not in command_line_arguments.debug_module):
+    if not (command_line_arguments.debug_module and 'fife' not in
+            command_line_arguments.debug_module):
         horizons.globals.fife._log.logToPrompt = True
 
     if command_line_arguments.debug_log_only:
@@ -331,12 +359,13 @@ def setup_debug_mode(command_line_arguments):
 
 def setup_gui_logger(command_line_arguments):
     """
-    Install gui logger, needs to be done before instantiating Gui, otherwise we miss
-    the events of the main menu buttons
+    Install gui logger, needs to be done before instantiating Gui,
+    otherwise we miss the events of the main menu buttons
     """
     if command_line_arguments.log_gui:
         if command_line_arguments.gui_test:
-            raise Exception("Logging gui interactions doesn't work when running tests.")
+            raise Exception("Logging gui interactions doesn't work when "
+                            "running tests.")
         try:
             import tests.gui.logger
             logger.setup_gui_logger()
@@ -344,7 +373,7 @@ def setup_gui_logger(command_line_arguments):
             traceback.print_exc()
             print
             print ("Gui logging requires code that is only present in the "
-                "repository and is not being installed.")
+                   "repository and is not being installed.")
             return False
     return True
 
@@ -387,7 +416,8 @@ def start_singleplayer(options):
     # start new session
     _modules.session = session_class(horizons.globals.db)
 
-    from horizons.scenario import InvalidScenarioFileFormat  # would create import loop at top
+    from horizons.scenario import InvalidScenarioFileFormat
+    # would create import loop at top
     from horizons.util.savegameaccessor import MapFileNotFound
     from horizons.util.savegameupgrader import SavegameTooOld
     try:
@@ -406,20 +436,22 @@ def start_singleplayer(options):
             try:
                 _modules.session.end()
             except Exception:
-                print
+                print()
                 traceback.print_exc()
-                print "Additionally to failing when loading, cleanup afterwards also failed"
+                print("Additionally to failing when loading, "
+                      "cleanup afterwards also failed")
         _modules.gui.show_main()
         headline = _("Failed to start/load the game")
         descr = _("The game you selected could not be started.") + u" " + \
-                _("The savegame might be broken or has been saved with an earlier version.")
+            _("The savegame might be broken or has been saved with an "
+              "earlier version.")
         _modules.gui.open_error_popup(headline, descr)
         _modules.gui.load_game()
     return _modules.session
 
 
 def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True,
-        natural_resource_multiplier=1):
+                        natural_resource_multiplier=1):
     """Starts a multiplayer game server
     TODO: actual game data parameter passing
     """
@@ -444,7 +476,8 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True,
     _modules.session = MPSession(horizons.globals.db, NetworkInterface(),
                                  rng_seed=random)
 
-    # NOTE: this data passing is only temporary, maybe use a player class/struct
+    # NOTE: this data passing is only temporary,
+    #  maybe use a player class/struct
     if game.is_savegame:
         map_file = SavegameManager.get_multiplayersave_map(game.map_name)
     else:
@@ -477,7 +510,8 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
     if not map_file:
         return False
 
-    options = StartGameOptions.create_start_singleplayer(map_file, is_scenario,
+    options = StartGameOptions.create_start_singleplayer(
+        map_file, is_scenario,
         ai_players, trader_enabled, pirate_enabled, force_player_id, is_map)
     start_singleplayer(options)
     return True
@@ -512,7 +546,8 @@ def _find_matching_map(name_or_path, savegames):
     """
     game_language = horizons.globals.fife.get_locale()
     # now we have "_en.yaml" which is set to language_extension variable
-    language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
+    language_extension = '_' + game_language + '.' + \
+        SavegameManager.scenario_extension
     map_file = None
     for filename, name in zip(*savegames):
         if name in (name_or_path, name_or_path + language_extension):
@@ -536,7 +571,8 @@ def _find_matching_map(name_or_path, savegames):
         if os.path.exists(name_or_path):
             return name_or_path
         else:
-            print u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path)
+            print u"Error: Cannot find savegame or map '{name}'."\
+                .format(name=name_or_path)
             return
 
 
@@ -547,8 +583,9 @@ def _load_last_quicksave(session=None, force_player_id=None):
     save_files = SavegameManager.get_quicksaves()[0]
     if _modules.session is not None:
         if not save_files:
-            _modules.session.ingame_gui.open_popup(_("No quicksaves found"),
-                                _("You need to quicksave before you can quickload."))
+            _modules.session.ingame_gui.open_popup(
+                _("No quicksaves found"),
+                _("You need to quicksave before you can quickload."))
             return False
     else:
         if not save_files:
@@ -608,7 +645,8 @@ def edit_game_map(saved_game_name):
 
 
 def _create_main_db():
-    """Returns a dbreader instance, that is connected to the main game data dbfiles.
+    """Returns a dbreader instance, that is connected
+    to the main game data dbfiles.
     NOTE: This data is read_only, so there are no concurrency issues."""
     _db = UhDbAccessor(':memory:')
     for i in PATHS.DB_FILES:
@@ -624,13 +662,15 @@ def preload_game_data(lock):
     log = logging.getLogger("preload")
     try:
         lock.acquire()
-        mydb = _create_main_db()  # create own db reader instance, since it's not thread-safe
+        mydb = _create_main_db()
+        # create own db reader instance, since it's not thread-safe
         from horizons.entities import Entities
-        preload_functions = [ActionSetLoader.load,
-            TileSetLoader.load,
-            Callback(Entities.load_grounds, mydb, load_now=True),
-            Callback(Entities.load_buildings, mydb, load_now=True),
-            Callback(Entities.load_units, load_now=True)]
+        preload_functions = [ActionSetLoader.load, TileSetLoader.load,
+                             Callback(Entities.load_grounds, mydb,
+                                      load_now=True),
+                             Callback(Entities.load_buildings, mydb,
+                                      load_now=True),
+                             Callback(Entities.load_units, load_now=True)]
         for f in preload_functions:
             if not lock.acquire(False):
                 break
@@ -686,9 +726,12 @@ def set_debug_log(enabled, startup=False):
 
         if not startup:
             headline = _("Logging enabled")
-            msg = _("Logs are written to {directory}.").format(directory=PATHS.LOG_DIR)
-            # Let the ext scheduler show the popup, so that all other settings can be saved and validated
-            ExtScheduler().add_new_object(Callback(_modules.gui.open_popup, headline, msg), None)
+            msg = _("Logs are written to {directory}.").format(
+                directory=PATHS.LOG_DIR)
+            # Let the ext scheduler show the popup, so that all other
+            #  settings can be saved and validated
+            ExtScheduler().add_new_object(Callback(_modules.gui.open_popup,
+                                                   headline, msg), None)
 
     else:  # disable logging
         logging.getLogger().setLevel(logging.WARNING)

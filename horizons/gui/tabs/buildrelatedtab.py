@@ -53,22 +53,27 @@ class BuildRelatedTab(OverviewTab):
             parent_container.removeChild(parent_container.children[0])
 
         # load all related buildings from DB
-        building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
+        building_ids = self.instance.session.db.\
+            get_related_building_ids_for_menu(self.instance.id)
         sorted_ids = sorted([(b, Entities.buildings[b].settler_level)
-            for b in building_ids], key=lambda x: x[1])
+                             for b in building_ids], key=lambda x: x[1])
         container = self.__get_new_container()
         self.current_row = min(building[1] for building in sorted_ids)
         for building_id, level in sorted_ids:
-            if level <= self.instance.owner.settler_level:  # available in build menu?
+            if level <= self.instance.owner.settler_level:
+                # available in build menu?
                 button = self._create_build_buttons(building_id, container)
                 # check whether to start new line (for new tier row)
                 if level > self.current_row:
                     self.current_row = level
                     parent_container.addChild(container)
                     container = self.__get_new_container()
-                container.findChild(name="build_button_container").addChild(button)
-                button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
-                container.findChild(name="build_button_bg_container").addChild(button_bg)
+                container.findChild(name="build_button_container").addChild(
+                    button)
+                button_bg = Icon(image="content/gui/images/buttons/buildmenu_"
+                                       "button_bg.png")
+                container.findChild(
+                    name="build_button_bg_container").addChild(button_bg)
         # Still need to add last container
         parent_container.addChild(container)
         super(BuildRelatedTab, self).refresh()
@@ -84,7 +89,7 @@ class BuildRelatedTab(OverviewTab):
         # {{mode}} in double braces because it is replaced as a second step
         building_type = Entities.buildings[building_id]
         build_button = ImageButton(name="build{id}".format(id=building_id),
-            helptext=building_type.get_tooltip())
+                                   helptext=building_type.get_tooltip())
         build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
         build_button.capture(Callback(self.build_related, building_id))
         return build_button
@@ -96,6 +101,6 @@ class BuildRelatedTab(OverviewTab):
             instance.get_component(SelectableComponent).deselect()
         self.instance.session.selected_instances.clear()
 
-        self.instance.session.ingame_gui.set_cursor('building', Entities.buildings[building_id],
-                                                    ship=None,
-                                                    build_related=self.instance)
+        self.instance.session.ingame_gui.set_cursor(
+            'building', Entities.buildings[building_id], ship=None,
+            build_related=self.instance)

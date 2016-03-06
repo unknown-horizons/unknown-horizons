@@ -34,8 +34,9 @@ from horizons.messaging import GuiAction, GuiHover, GuiCancelAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-from horizons.gui.modules import (HelpDialog, SingleplayerMenu, MultiplayerMenu,
-                                  SelectSavegameDialog, LoadingScreen, SettingsDialog)
+from horizons.gui.modules import (HelpDialog, SingleplayerMenu,
+                                  MultiplayerMenu, SelectSavegameDialog,
+                                  LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
 
@@ -72,14 +73,17 @@ class MainMenu(Window):
         self._gui.hide()
 
     def on_escape(self):
-        """Shows the quit dialog. Closes the game unless the dialog is cancelled."""
+        """Shows the quit dialog. Closes the game unless
+        the dialog is cancelled."""
         message = _("Are you sure you want to quit Unknown Horizons?")
-        if self._windows.open_popup(_("Quit Game"), message, show_cancel_button=True):
+        if self._windows.open_popup(_("Quit Game"), message,
+                                    show_cancel_button=True):
             horizons.main.quit()
 
 
 class Gui(object):
-    """This class handles all the out of game menu, like the main and pause menu, etc.
+    """This class handles all the out of game menu,
+    like the main and pause menu, etc.
     """
     log = logging.getLogger("gui")
 
@@ -92,7 +96,8 @@ class Gui(object):
         self.open_error_popup = self.windows.open_error_popup
 
         # Main menu background image setup.
-        available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
+        available_images = glob.glob(
+            'content/gui/images/background/mainmenu/bg_*.png')
         self.bg_images = deque(available_images)
 
         latest_bg = horizons.globals.fife.get_uh_setting("LatestBackground")
@@ -176,7 +181,8 @@ class Gui(object):
         self._background.image = self.bg_images[0]
         # Save current background choice to settings.
         # This keeps the background image consistent between sessions.
-        horizons.globals.fife.set_uh_setting("LatestBackground", self.bg_images[0])
+        horizons.globals.fife.set_uh_setting("LatestBackground",
+                                             self.bg_images[0])
         horizons.globals.fife.save_settings()
 
     def _on_gui_click_action(self, msg):

@@ -314,7 +314,8 @@ class Session(LivingObject):
         """Set game speed to ticks ticks per second"""
         old = self.timer.ticks_per_second
         self.timer.ticks_per_second = ticks
-        self.view.map.setTimeMultiplier(float(ticks) / float(GAME_SPEED.TICKS_PER_SECOND))
+        self.view.map.setTimeMultiplier(float(ticks) /
+                                        float(GAME_SPEED.TICKS_PER_SECOND))
         if old == 0 and self.timer.tick_next_time is None:
             # back from paused state
             if self.paused_time_missing is None:
@@ -441,7 +442,8 @@ class Session(LivingObject):
                 "There has been an error while creating your savegame file.")
             advice = _("This usually means that the savegame name contains "
                        "unsupported special characters.")
-            self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
+            self.ingame_gui.open_error_popup(headline, descr, advice,
+                                             unicode(e))
             # retry with new savegamename entered by the user
             # (this must not happen with quicksave/autosave)
             return self.save()

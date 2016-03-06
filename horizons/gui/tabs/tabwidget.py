@@ -72,7 +72,8 @@ class TabWidget(object):
         # Load buttons
         for index, tab in enumerate(self._tabs):
             # don't add a reference to the
-            tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
+            tab.add_remove_listener(Callback(on_tab_removal,
+                                             weakref.ref(self)))
             container = Container(name="container_%s" % index)
             background = Icon(name="bg_%s" % index)
             button = ImageButton(name=str(index), size=(50, 50))
@@ -99,14 +100,17 @@ class TabWidget(object):
         @param number: tab number that is to be shown.
         """
         if number not in range(len(self._tabs)):
-            # this usually indicates a non-critical error, therefore we can handle it without crashing
+            # this usually indicates a non-critical error,
+            #  therefore we can handle it without crashing
             traceback.print_stack()
-            self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
+            self.log.warning("Invalid tab number %s, available tabs: %s",
+                             number, self._tabs)
             return
         if self.current_tab.is_visible():
             self.current_tab.hide()
         new_tab = self._tabs[number]
-        old_bg = self.content.findChild(name="bg_%s" % self._tabs.index(self.current_tab))
+        old_bg = self.content.findChild(name="bg_%s" % self._tabs.index(
+            self.current_tab))
         old_bg.image = self.current_tab.button_background_image
         name = str(self._tabs.index(self.current_tab))
         old_button = self.content.findChild(name=name)
@@ -124,19 +128,20 @@ class TabWidget(object):
         self._apply_layout_hack()
 
     def _apply_layout_hack(self):
-        # pychan layouting depends on time, it's usually in a better mood later.
-        # this introduces some flickering, but fixes #916
+        # pychan layouting depends on time, it's usually in a better
+        # mood later. this introduces some flickering, but fixes #916
         from horizons.extscheduler import ExtScheduler
 
         def do_apply_hack():
-            # just query widget when executing, since if lazy loading is used, the widget
-            # does not exist yet in the outer function
+            # just query widget when executing, since if lazy loading is used,
+            # the widget does not exist yet in the outer function
             self.current_tab.widget.adaptLayout()
         ExtScheduler().add_new_object(do_apply_hack, self, run_in=0)
 
     def _draw_widget(self):
         """Draws the widget, but does not show it automatically"""
-        self.current_tab.position = (self.widget.position[0] + self.widget.size[0] - 11,
+        self.current_tab.position = (self.widget.position[0] +
+                                     self.widget.size[0] - 11,
                                      self.widget.position[1] - 52)
         self.current_tab.refresh()
 

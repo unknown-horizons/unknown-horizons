@@ -56,6 +56,7 @@ class SignalFireOverviewTab(OverviewTab):
         image = action_gfx[45].keys()[0]
         self.widget.findChild(name="building_image").image = image
 
+
 class ResourceDepositOverviewTab(OverviewTab):
     widget = 'overview_resourcedeposit.xml'
 

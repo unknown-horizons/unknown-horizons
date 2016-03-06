@@ -38,8 +38,8 @@ class TabInterface(object):
     widget.
     In both cases the widget is accessible at `self.widget`.
 
-    If you want to override the TabButton image used for the tab, you also have
-    to set the button_image_{up,down,hover} variables.
+    If you want to override the TabButton image used for the tab,
+    you also have to set the button_image_{up,down,hover} variables.
 
     Use the refresh() method to implement any redrawing of the widget. The
     TabWidget will call this method based on callbacks.
@@ -54,15 +54,17 @@ class TabInterface(object):
     # Whether to load the tab only when it's shown.
     # If True, self.widget will only be valid after _lazy_loading_init, which
     # is guaranteed to be executed before show(), refresh() and the like.
-    # Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
-    # Note: to prevent memory leak due to unshown tabs registered with WidgetManager, always set it
-    # to be true by default
-    # set it false only in its subclass if have special reason to disable lazy_loading
+    # Usually, you will want to overwrite _lazy_loading_init and call
+    #  the super impl as first step.
+    # Note: to prevent memory leak due to unshown tabs registered with
+    #  WidgetManager, always set it to be true by default
+    # set it false only in its subclass if have special reason
+    #  to disable lazy_loading
     lazy_loading = True
 
-    # Override these in your subclass either as class attribute, or by passing it
-    # to the constructor. The value of the constructor has preference over the
-    # class attribute.
+    # Override these in your subclass either as class attribute, or by passing
+    # it to the constructor. The value of the constructor has preference over
+    # the class attribute.
     widget = None
     icon_path = 'images/tabwidget/tab'
 
