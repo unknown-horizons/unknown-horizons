@@ -31,7 +31,8 @@ from horizons.gui.mousetools import NavigationTool
 
 
 class StatusIconManager(object):
-    """Manager class that manages all status icons. It listenes to AddStatusIcon
+    """Manager class that manages all status icons.
+    It listens to AddStatusIcon
     and RemoveStatusIcon messages on the main message bus"""
 
     def __init__(self, renderer, layer):
@@ -46,8 +47,10 @@ class StatusIconManager(object):
         self.icons = {}
 
         self.tooltip_instance = None  # no weakref:
-        # we need to remove the tooltip always anyway, and along with it the entry here
-        self.tooltip_icon = Icon(position=(1, 1))  # 0, 0 is currently not supported by tooltips
+        # we need to remove the tooltip always anyway, and along with
+        # it the entry here
+        self.tooltip_icon = Icon(position=(1, 1))
+        # 0, 0 is currently not supported by tooltips
 
         AddStatusIcon.subscribe(self.on_add_icon_message)
         HoverInstancesChanged.subscribe(self.on_hover_instances_changed)
@@ -81,15 +84,18 @@ class StatusIconManager(object):
         # Now render the most important one
         self.__render_status(icon_instance, self.icons[icon_instance][0])
 
-        if self.tooltip_instance is not None and self.tooltip_instance is icon_instance:
+        if self.tooltip_instance is not None and self.tooltip_instance is \
+                icon_instance:
             # possibly have to update tooltip
-            self.on_hover_instances_changed(HoverInstancesChanged(self, [self.tooltip_instance]))
+            self.on_hover_instances_changed(HoverInstancesChanged(
+                self, [self.tooltip_instance]))
 
     def on_worldobject_deleted_message(self, message):
         assert isinstance(message, WorldObjectDeleted)
         # remove icon
         if message.worldobject in self.icons:
-            self.renderer.removeAll(self.get_status_string(message.worldobject))
+            self.renderer.removeAll(self.get_status_string(
+                message.worldobject))
             del self.icons[message.worldobject]
         # remove icon tooltip
         if message.worldobject is self.tooltip_instance:
@@ -105,16 +111,20 @@ class StatusIconManager(object):
                     self.icons[icon_instance].remove(registered_icon)
                     if not self.icons[icon_instance]:
                         # No icon left for this building, remove it
-                        self.renderer.removeAll(self.get_status_string(icon_instance))
+                        self.renderer.removeAll(self.get_status_string(
+                            icon_instance))
                         del self.icons[icon_instance]
                     else:
                         # Render next icon
-                        self.__render_status(icon_instance, self.icons[icon_instance][0])
+                        self.__render_status(icon_instance, self.icons[
+                            icon_instance][0])
                     break
 
-            if self.tooltip_instance is not None and self.tooltip_instance is icon_instance:
+            if self.tooltip_instance is not None and self.tooltip_instance is \
+                    icon_instance:
                 # possibly have to update tooltip
-                self.on_hover_instances_changed(HoverInstancesChanged(self, [self.tooltip_instance]))
+                self.on_hover_instances_changed(HoverInstancesChanged(
+                    self, [self.tooltip_instance]))
 
     def __render_status(self, instance, status):
         status_string = self.get_status_string(instance)
@@ -127,7 +137,8 @@ class StatusIconManager(object):
 
         pos = instance.position
 
-        # trial and error has brought me to this (it's supposed to hit the center)
+        # trial and error has brought me to this
+        #  (it's supposed to hit the center)
         x = pos.origin.x + (pos.width / 4.0)
         y = pos.origin.y + (pos.height / 4.0)
         loc = fife.Location(self.layer)
@@ -136,7 +147,8 @@ class StatusIconManager(object):
         node = fife.RendererNode(loc, rel)
 
         try:  # to load an animation
-            anim = horizons.globals.fife.animationloader.loadResource(status.icon)
+            anim = horizons.globals.fife.animationloader.loadResource(
+                status.icon)
             self.renderer.addAnimation(status_string, node, anim)
         except ValueError:
             img = horizons.globals.fife.imagemanager.load(status.icon)
@@ -165,7 +177,8 @@ class StatusIconManager(object):
             self.tooltip_icon.hide_tooltip()
         else:
             # get tooltip text, set, position and show
-            self.tooltip_instance = instances[0]  # pick any (usually ordered by fife)
+            self.tooltip_instance = instances[0]
+            # pick any (usually ordered by fife)
 
             icons_of_instance = self.icons[self.tooltip_instance]
             icon = max(icons_of_instance, key=StatusIcon.get_sorting_key())

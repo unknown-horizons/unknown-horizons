@@ -31,65 +31,65 @@ from horizons.world.ingametype import IngameType
 
 class UnitClass(IngameType):
 
-	log = logging.getLogger('world.units')
-	basepackage = 'horizons.world.units.'
-	classstring = 'Unit['
+    log = logging.getLogger('world.units')
+    basepackage = 'horizons.world.units.'
+    classstring = 'Unit['
 
-	_action_load_callbacks = {}
+    _action_load_callbacks = {}
 
-	def __init__(self, id, yaml_data):
-		"""
-		@param id: unit id.
-		"""
-		super(UnitClass, self).__init__(id, yaml_data)
+    def __init__(self, id, yaml_data):
+        """
+        @param id: unit id.
+        """
+        super(UnitClass, self).__init__(id, yaml_data)
 
-	@classmethod
-	def ensure_action_loaded(cls, action_set_id, action):
-		"""Called when an action is actually needed, makes sure it is loaded then"""
-		try:
-			# load for all instances, don't care for separating again per object
-			for i in cls._action_load_callbacks[action_set_id][action]:
-				i()
-			del cls._action_load_callbacks[action_set_id][action]
-		except KeyError:
-			pass
+    @classmethod
+    def ensure_action_loaded(cls, action_set_id, action):
+        """Called when an action is actually needed, makes sure it is loaded then"""
+        try:
+            # load for all instances, don't care for separating again per object
+            for i in cls._action_load_callbacks[action_set_id][action]:
+                i()
+            del cls._action_load_callbacks[action_set_id][action]
+        except KeyError:
+            pass
 
-	def _loadObject(cls):
-		"""Loads the object with all animations.
-		"""
-		cls.log.debug('Loading unit %s', cls.id)
-		model = horizons.globals.fife.engine.getModel()
-		try:
-			cls._real_object = model.createObject(str(cls.id), 'unit')
-		except RuntimeError:
-			cls.log.debug('Already loaded unit %s', cls.id)
-			cls._real_object = model.getObject(str(cls.id), 'unit')
-			return
-		cls._real_object.setPather(model.getPather('RoutePather'))
-		cls._real_object.setBlocking(False)
-		cls._real_object.setStatic(False)
-		all_action_sets = ActionSetLoader.get_sets()
-		# create load callbacks to be called when the actions are needed
-		# { action_set : { action_id : [ load0, load1, ..., loadn ]}}
-		# (loadi are load functions of objects, there can be many per as_id and action)
-		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
-		for set_dict in cls.action_sets.itervalues():
-			for action_set in set_dict:  # set1, set2, ...
-				if action_set not in cls._action_load_callbacks:
-					cls._action_load_callbacks[action_set] = {}
-				for action_id in all_action_sets[action_set]:  # idle, move, ...
-					if action_id not in cls._action_load_callbacks[action_set]:
-						cls._action_load_callbacks[action_set][action_id] = []
-					cls._action_load_callbacks[action_set][action_id].append(
-					  Callback(cls._do_load, all_action_sets, action_set, action_id))
+    def _loadObject(cls):
+        """Loads the object with all animations.
+        """
+        cls.log.debug('Loading unit %s', cls.id)
+        model = horizons.globals.fife.engine.getModel()
+        try:
+            cls._real_object = model.createObject(str(cls.id), 'unit')
+        except RuntimeError:
+            cls.log.debug('Already loaded unit %s', cls.id)
+            cls._real_object = model.getObject(str(cls.id), 'unit')
+            return
+        cls._real_object.setPather(model.getPather('RoutePather'))
+        cls._real_object.setBlocking(False)
+        cls._real_object.setStatic(False)
+        all_action_sets = ActionSetLoader.get_sets()
+        # create load callbacks to be called when the actions are needed
+        # { action_set : { action_id : [ load0, load1, ..., loadn ]}}
+        # (loadi are load functions of objects, there can be many per as_id and action)
+        # cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
+        for set_dict in cls.action_sets.itervalues():
+            for action_set in set_dict:  # set1, set2, ...
+                if action_set not in cls._action_load_callbacks:
+                    cls._action_load_callbacks[action_set] = {}
+                for action_id in all_action_sets[action_set]:  # idle, move, ...
+                    if action_id not in cls._action_load_callbacks[action_set]:
+                        cls._action_load_callbacks[action_set][action_id] = []
+                    cls._action_load_callbacks[action_set][action_id].append(
+                      Callback(cls._do_load, all_action_sets, action_set, action_id))
 
-	def _do_load(cls, all_action_sets, action_set, action_id):
-		params = {'id': action_set, 'action': action_id}
-		action = cls._real_object.createAction('{action}_{id}'.format(**params))
-		fife.ActionVisual.create(action)
-		for rotation in all_action_sets[action_set][action_id]:
-			params['rot'] = rotation
-			path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
-			anim = horizons.globals.fife.animationloader.loadResource(path)
-			action.get2dGfxVisual().addAnimation(int(rotation), anim)
-			action.setDuration(anim.getDuration())
+    def _do_load(cls, all_action_sets, action_set, action_id):
+        params = {'id': action_set, 'action': action_id}
+        action = cls._real_object.createAction('{action}_{id}'.format(**params))
+        fife.ActionVisual.create(action)
+        for rotation in all_action_sets[action_set][action_id]:
+            params['rot'] = rotation
+            path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
+            anim = horizons.globals.fife.animationloader.loadResource(path)
+            action.get2dGfxVisual().addAnimation(int(rotation), anim)
+            action.setDuration(anim.getDuration())

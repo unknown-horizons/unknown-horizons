@@ -38,7 +38,8 @@ class Path(ComponentHolder):
         super(Path, self).load(db, worldid)
 
     def init(self):
-        # this does not belong in __init__, it's just here that all the data should be consistent
+        # this does not belong in __init__, it's just here that all
+        #  the data should be consistent
         self.__init()
 
     def __init(self):
@@ -47,9 +48,11 @@ class Path(ComponentHolder):
             self.recalculate_surrounding_tile_orientation()
             self.recalculate_orientation()
         else:
-            # don't always recalculate while loading, we'd recalculate too often.
+            # don't always recalculate while loading,
+            #  we'd recalculate too often.
             # do it once when everything is finished.
-            Scheduler().add_new_object(self.recalculate_orientation, self, run_in=0)
+            Scheduler().add_new_object(self.recalculate_orientation, self,
+                                       run_in=0)
 
     def remove(self):
         super(Path, self).remove()
@@ -69,12 +72,12 @@ class Path(ComponentHolder):
         a       b
          \  e  /     a,b,c,d are connections to nearby roads
           \   /
-           \ /       e,f,g,h indicate whether this area occupies more space than
-         h  X  f     a single road would (i.e. whether we should fill this three-
-           / \       cornered space with graphics that will make it look like a
-          /   \      coherent square instead of many short-circuit road circles).
-         /  g  \     Note that 'e' can only be placed if both 'a' and 'b' exist.
-        d       c
+           \ /       e,f,g,h indicate whether this area occupies more space
+         h  X  f     than a single road would (i.e. whether we should fill
+           / \       this three cornered space with graphics that will make
+          /   \      it look like a coherent square instead of many
+         /  g  \     short-circuit road circles). Note that 'e' can
+        d       c    only be placed if both 'a' and 'b' exist.
 
         SAMPLE ROADS
         ============
@@ -93,7 +96,8 @@ class Path(ComponentHolder):
         path_nodes = self.island.path_nodes
 
         # Order is important here.
-        ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.iteritems())
+        ordered_actions = sorted(
+            BUILDINGS.ACTION.action_offset_dict.iteritems())
         for action_part, (xoff, yoff) in ordered_actions:
             tile = self.island.get_tile(origin.offset(xoff, yoff))
             if tile is None or tile.object is None:
@@ -111,8 +115,10 @@ class Path(ComponentHolder):
                 # and the condition for 'g' is met: road tiles exist in that
                 # direction.
                 fill_left = chr(ord(action_part) - 4) in action
-                # 'h' has the parents 'd' and 'a' (not 'e'), so we need a slight hack here.
-                fill_right = chr(ord(action_part) - 3 - 4 * (action_part == 'h')) in action
+                # 'h' has the parents 'd' and 'a' (not 'e'),
+                # so we need a slight hack here.
+                fill_right = chr(ord(action_part) - 3 - 4 * (
+                    action_part == 'h')) in action
                 if fill_left and fill_right:
                     action += action_part
         if action == '':
@@ -120,7 +126,8 @@ class Path(ComponentHolder):
             action = 'single'
 
         location = self._instance.getLocation()
-        location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
+        location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1),
+                                                          int(origin.y), 0))
         self.act(action, location, True)
 
 

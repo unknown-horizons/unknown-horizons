@@ -31,8 +31,8 @@ from horizons.util.python.callback import Callback
 
 
 class ProductionFinishedIconManager(object):
-    """Manager class that manages all production finished icons. It listens to
-     ResourceProduced messages on the main message bus"""
+    """Manager class that manages all production finished icons.
+     It listens to ResourceProduced messages on the main message bus"""
 
     def __init__(self, renderer, layer):
         """
@@ -42,9 +42,11 @@ class ProductionFinishedIconManager(object):
         self.layer = layer
         self.renderer = renderer
         self.run = {}
-        self.animation_duration = 20  # The duration how long the image moves up
+        self.animation_duration = 20
+        # The duration how long the image moves up
         self.animation_steps = 1  # The steps that the image makes every run
-        self.background = "content/gui/images/background/produced_notification.png"
+        self.background = "content/gui/images/background/" \
+                          "produced_notification.png"
 
         if bool(horizons.globals.fife.get_uh_setting("ShowResourceIcons")):
             self.enable()
@@ -76,24 +78,28 @@ class ProductionFinishedIconManager(object):
                 self.disable()
 
     def _on_resource_produced(self, message):
-        """This is called by the message bus with ResourceProduced messages"""
+        """This is called by the message bus with
+        ResourceProduced messages"""
         assert isinstance(message, ResourceProduced)
 
         # if we get an empty dictionary, abort
-        if (not message.produced_resources or not message.produced_resources.keys()) or \
-            not message.caller.instance.owner.is_local_player:
+        if (not message.produced_resources or not
+                message.produced_resources.keys()) or not\
+                message.caller.instance.owner.is_local_player:
             return
 
         # makes the animation independent from game speed
         cur_ticks_per_second = Scheduler().timer.ticks_per_second
         interval = None
         if cur_ticks_per_second > GAME_SPEED.TICKS_PER_SECOND:
-            interval = (cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
+            interval = (
+                cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
 
         display_latency = 1
         for resource_item in message.produced_resources.items():
             res = resource_item[0]  # TODO multiple resources
-            amount = message.sender.get_component(StorageComponent).inventory[res]
+            amount = message.sender.get_component(
+                StorageComponent).inventory[res]
 
             # abort if amount is zero
             if not amount:
@@ -102,19 +108,25 @@ class ProductionFinishedIconManager(object):
             group = self.get_resource_string(message.sender, res)
             self.run[group] = self.animation_steps
 
-            tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
+            tick_callback = Callback(self.__render_icon, message.sender,
+                                     group, res, amount)
             finish_callback = Callback(self.remove_icon, group)
 
-            Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback,
-                                   run_in=display_latency, loops=self.animation_duration,
-                                   loop_interval=interval)
-            display_latency += (self.animation_duration * display_latency) * (interval if interval else 1)
+            Scheduler().add_new_object(tick_callback, self,
+                                       finish_callback=finish_callback,
+                                       run_in=display_latency,
+                                       loops=self.animation_duration,
+                                       loop_interval=interval)
+            display_latency += (self.animation_duration * display_latency) * (
+                interval if interval else 1)
 
     def __render_icon(self, instance, group, res, amount):
         """ This renders the icon. It calculates the position of the icon.
-        Most parts of this were copied from horizons/world/managers/statusiconmanager.py
+        Most parts of this were copied from
+        horizons/world/managers/statusiconmanager.py
         """
-        # TODO: Try to unify the __render methods of this class and statusiconmanager.py!
+        # TODO: Try to unify the __render methods of this class and
+        #  statusiconmanager.py!
         self.renderer.removeAll(group)
 
         pos = instance.position
@@ -133,12 +145,14 @@ class ProductionFinishedIconManager(object):
         node = fife.RendererNode(loc, rel)
 
         bg_image = horizons.globals.fife.imagemanager.load(self.background)
-        res_icon = horizons.globals.fife.imagemanager.load(get_res_icon_path(res))
+        res_icon = horizons.globals.fife.imagemanager.load(
+            get_res_icon_path(res))
         font = horizons.globals.fife.pychan.manager.getFont('mainmenu')
 
         self.renderer.addImage(group, bg_node, bg_image)
         self.renderer.resizeImage(group, node, res_icon, 24, 24)
-        self.renderer.addText(group, node, font, ' ' * 9 + '{amount:>2d}'.format(amount=amount))
+        self.renderer.addText(group, node, font, ' ' * 9 + '{amount:>2d}'
+                              .format(amount=amount))
 
     def remove_icon(self, group):
         """ Remove the icon after the animation finished
@@ -151,5 +165,6 @@ class ProductionFinishedIconManager(object):
         """Returns the render name for resource icons of this instance
         This key MUST be unique!
         """
-        return "produced_resource_" + str(res) + "_" + str(instance.position.origin)\
+        return "produced_resource_" + str(res) + "_" + \
+               str(instance.position.origin)\
                + "_" + str(Scheduler().cur_tick)

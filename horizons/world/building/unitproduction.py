@@ -22,7 +22,8 @@
 
 from building import BasicBuilding
 from buildable import BuildableSingle, BuildableSingleOnOcean
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.building.buildingresourcehandler import \
+    BuildingResourceHandler
 from horizons.component.storagecomponent import StorageComponent
 
 
@@ -36,7 +37,8 @@ class Barracks(BuildingResourceHandler, BuildableSingle, BasicBuilding):
         self.get_component(StorageComponent).inventory.limit = 5
 
 
-class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
+class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean,
+                  BasicBuilding):
 
     def __init__(self, **kwargs):
         super(BoatBuilder, self).__init__(**kwargs)
