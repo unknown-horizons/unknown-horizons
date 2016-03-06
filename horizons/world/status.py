@@ -43,8 +43,9 @@ Keep the numbers unique to avoid confusion when sorting.
 class StatusIcon(object):
     # integer
     priority = None
-    # fife identifier for animations or icons. Must be supported by either the animationloader
-    # or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
+    # fife identifier for animations or icons. Must be supported
+    # by either the animationloader or the imagemanager.
+    # (i.e. either file path or something like "as_buoy0+idle+45")
     icon = None
     # use _lazy
     helptext = ""
@@ -68,7 +69,8 @@ class StatusIcon(object):
         return cmp(self.__class__, other.__class__)
 
     def __str__(self):
-        return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
+        return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority,
+                                                            self.icon)
 
 
 class BlackDeathStatusIcon(StatusIcon):

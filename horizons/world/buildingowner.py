@@ -25,10 +25,11 @@ from horizons.util.shapes import Point, RadiusRect
 
 """
 Simple building management functionality.
-Inherited mainly by Island, but also by World for buildings at sea such as fish.
-Island adds more functionality to these functions (e.g. settlement handling),
-this implementation can be viewed as the the common denominator of building handling
-required by World and Island.
+Inherited mainly by Island, but also by World for buildings at sea such
+as fish. Island adds more functionality to these functions
+(e.g. settlement handling),
+this implementation can be viewed as the the common denominator
+of building handling required by World and Island.
 The instances need to provide a get_tile function.
 """
 
@@ -40,8 +41,10 @@ class BuildingOwner(object):
         self.buildings = []
 
     def add_building(self, building, player, load=False):
-        """Adds a building to the island at the position x, y with player as the owner.
-        @param building: Building class instance of the building that is to be added.
+        """Adds a building to the island at the position x, y with
+        player as the owner.
+        @param building: Building class instance of the building
+                         that is to be added.
         @param player: int id of the player that owns the settlement"""
         # Set all tiles in the buildings position(rect)
         for point in building.position:
@@ -66,19 +69,22 @@ class BuildingOwner(object):
         assert building not in self.buildings
 
     def get_settlements(self, rect, player=None):
-        """Returns the list of settlements for the coordinates describing a rect.
+        """Returns the list of settlements for the coordinates
+        describing a rect.
         @param rect: Area to search for settlements
         @return: list of Settlement instances at that position."""
         settlements = set()
         for point in rect:
             try:
-                if player is None or self.get_tile(point).settlement.owner == player:
+                if player is None or self.get_tile(
+                        point).settlement.owner == player:
                     settlements.add(self.get_tile(point).settlement)
             except AttributeError:
-                # some tiles don't have settlements, we don't explicitly check for them cause
-                # its faster this way.
+                # some tiles don't have settlements, we don't explicitly
+                # check for them cause its faster this way.
                 pass
-        settlements.discard(None)  # None values might have been added, we don't want them
+        settlements.discard(None)
+        # None values might have been added, we don't want them
         return list(settlements)
 
     def get_building(self, point):
@@ -106,13 +112,17 @@ class BuildingOwner(object):
         raise NotImplementedError
 
     @decorators.make_constants()
-    def get_providers_in_range(self, radiusrect, res=None, reslist=None, player=None):
+    def get_providers_in_range(self, radiusrect, res=None, reslist=None,
+                               player=None):
         """Returns all instances of provider within the specified shape.
         NOTE: Specifing the res parameter is usually a huge speed gain.
         @param radiusrect: instance of RadiusShape
-        @param res: optional; only return providers that provide res.  conflicts with reslist
-        @param reslist: optionally; list of res to search providers for. conflicts with res
-        @param player: Player instance, only buildings belonging to this player
+        @param res: optional; only return providers that provide res.
+                              conflicts with reslist
+        @param reslist: optionally; list of res to search providers
+                                    for. conflicts with res
+        @param player: Player instance, only buildings belonging to
+                       this player
         @return: list of providers"""
         assert not (bool(res) and bool(reslist))
         assert isinstance(radiusrect, RadiusRect)
@@ -122,7 +132,8 @@ class BuildingOwner(object):
         elif reslist:
             provider_list = set()
             for _res in reslist:
-                provider_list = provider_list.union(self.provider_buildings.provider_by_resources[_res])
+                provider_list = provider_list.union(
+                    self.provider_buildings.provider_by_resources[_res])
         else:
             # worst case: search all provider buildings
             provider_list = self.provider_buildings
@@ -132,10 +143,12 @@ class BuildingOwner(object):
         for provider in provider_list:
             if (player is None or player == provider.owner):
                 # inline of :
-                # provider.position.distance_to_rect(radiusrect.center) <= radiusrect.radius:
+                # provider.position.distance_to_rect(radiusrect.center) <=
+                # radiusrect.radius:
                 r1 = provider.position
-                if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2)
-                        + (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= radius_squared:
+                if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) + (
+                        max(r1.top - r2.bottom,
+                            0, r2.top - r1.bottom) ** 2)) <= radius_squared:
                     yield provider
 
     def save(self, db):
@@ -145,8 +158,9 @@ class BuildingOwner(object):
     def end(self):
         if self.buildings is not None:
             # remove all buildings
-            # this iteration style is the most robust; sometimes the ai reacts to removals
-            # by building/tearing, effectively changing the list, therefore iterating over a
+            # this iteration style is the most robust; sometimes the ai
+            # reacts to removals by building/tearing,
+            # effectively changing the list, therefore iterating over a
             # copy would either miss instances or remove some twice.
             while self.buildings:
                 self.buildings[-1].remove()
