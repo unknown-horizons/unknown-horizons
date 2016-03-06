@@ -46,7 +46,8 @@ class ProductionLine(object):
         self.production = {}
         self.produced_res = {}  # contains only produced
         self.consumed_res = {}  # contains only consumed
-        self.unit_production = {}  # Stores unit_id: amount entries, if units are to be produced
+        self.unit_production = {}
+        # Stores unit_id: amount entries, if units are to be produced
         if 'produces' in self.__data:
             for produced_object, amount in self.__data['produces']:
                 if produced_object < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
@@ -69,8 +70,8 @@ class ProductionLine(object):
         self.time = self.__data.get('time', 1) * modifier
 
     def change_amount(self, res, amount):
-        """Alters an amount of a res at runtime. Because of redundancy, you can only change
-        amounts here."""
+        """Alters an amount of a res at runtime. Because of redundancy,
+        you can only change amounts here."""
         self.production[res] = amount
         if res in self.consumed_res:
             self.consumed_res[res] = amount
@@ -80,20 +81,25 @@ class ProductionLine(object):
     def save(self, db, for_worldid):
         # we don't have a worldid, we load it for another world id
         for res, amount in self.production.iteritems():
-            db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
+            db("INSERT INTO production_line(for_worldid, type, res, amount) "
+               "VALUES(?, ?, ?, ?)",
                for_worldid, "NORMAL", res, amount)
         for res, amount in self.consumed_res.iteritems():
-            db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
+            db("INSERT INTO production_line(for_worldid, type, res, amount) "
+               "VALUES(?, ?, ?, ?)",
                for_worldid, "CONSUMED", res, amount)
         for res, amount in self.produced_res.iteritems():
-            db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
+            db("INSERT INTO production_line(for_worldid, type, res, amount) "
+               "VALUES(?, ?, ?, ?)",
                for_worldid, "PRODUCED", res, amount)
         for unit, amount in self.unit_production.iteritems():
-            db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
+            db("INSERT INTO production_line(for_worldid, type, res, amount) "
+               "VALUES(?, ?, ?, ?)",
                for_worldid, "UNIT", unit, amount)
 
-        db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
-             for_worldid, "TIME", self.time, None)
+        db("INSERT INTO production_line(for_worldid, type, res, amount) "
+           "VALUES(?, ?, ?, ?)",
+           for_worldid, "TIME", self.time, None)
 
     def load(self, db, for_worldid):
         # we don't have a worldid, we load it for another world id
@@ -106,9 +112,9 @@ class ProductionLine(object):
                 self.time = res
             else:
                 {"NORMAL": self.production,
-                "CONSUMED": self.consumed_res,
-                "PRODUCED": self.produced_res,
-                "UNIT": self.unit_production}[t][res] = amount
+                 "CONSUMED": self.consumed_res,
+                 "PRODUCED": self.produced_res,
+                 "UNIT": self.unit_production}[t][res] = amount
 
     def get_original_copy(self):
         """Returns a copy of this production, in its original state, no changes

@@ -20,8 +20,10 @@
 # ###################################################
 
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.building.buildable import BuildableRect, \
+    BuildableSingleEverywhere
+from horizons.world.building.buildingresourcehandler import \
+    BuildingResourceHandler
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
@@ -47,23 +49,28 @@ class Field(NatureBuildingResourceHandler):
         super(Field, self).initialize(**kwargs)
 
         if self.owner.is_local_player:
-            # make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
+            # make sure to have a farm nearby when we can reasonably
+            #  assume that the crops are fully grown
             prod_comp = self.get_component(Producer)
             productions = prod_comp.get_productions()
             if not productions:
-                print "Warning: Field is assumed to always produce, but doesn't.", self
+                print("Warning: Field is assumed to always produce, "
+                      "but doesn't.", self)
             else:
-                run_in = Scheduler().get_ticks(productions[0].get_production_time())
-                Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)
+                run_in = Scheduler().get_ticks(
+                    productions[0].get_production_time())
+                Scheduler().add_new_object(self._check_covered_by_farm,
+                                           self, run_in=run_in)
 
     def _check_covered_by_farm(self):
         """Warn in case there is no farm nearby to cultivate the field"""
-        farm_in_range = any((farm.position.distance(self.position) <= farm.radius) for farm in
-            self.settlement.buildings_by_id[BUILDINGS.FARM])
+        farm_in_range = any((farm.position.distance(self.position) <=
+                             farm.radius) for farm in
+                            self.settlement.buildings_by_id[BUILDINGS.FARM])
         if not farm_in_range and self.owner.is_local_player:
             pos = self.position.origin
-            self.session.ingame_gui.message_widget.add(point=pos, string_id="FIELD_NEEDS_FARM",
-                                                       check_duplicate=True)
+            self.session.ingame_gui.message_widget.add(
+                point=pos, string_id="FIELD_NEEDS_FARM", check_duplicate=True)
 
 
 class Tree(NatureBuildingResourceHandler):
@@ -95,7 +102,8 @@ class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
         super(Fish, self).save(db)
         translated_tick = self.last_usage_tick - Scheduler().cur_tick
         # pre-translate for the loading process
-        db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", self.worldid, translated_tick)
+        db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)",
+           self.worldid, translated_tick)
 
     def remove_incoming_collector(self, collector):
         super(Fish, self).remove_incoming_collector(collector)

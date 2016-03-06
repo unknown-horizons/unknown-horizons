@@ -20,9 +20,11 @@
 # ###################################################
 
 
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.building.buildingresourcehandler import \
+    BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, \
+from horizons.world.building.buildable import BuildableSingle,\
+    BuildableSingleOnCoast, \
     BuildableSingleOnDeposit, BuildableSingleOnOcean
 from horizons.world.building.nature import Field
 from horizons.util.shapes import Rect, RadiusRect
@@ -33,7 +35,8 @@ from horizons.world.production.producer import Producer
 from horizons.component.storagecomponent import StorageComponent
 
 
-class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding):
+class ProductionBuilding(BuildingResourceHandler, BuildableSingle,
+                         BasicBuilding):
     pass
 
 
@@ -41,7 +44,8 @@ class PastryShop(ProductionBuilding):
     def get_providers(self):
         reach = RadiusRect(self.position, self.radius)
         resources = self.get_consumed_resources(include_inactive=True)
-        providers = self.island.get_providers_in_range(reach, reslist=resources)
+        providers = self.island.get_providers_in_range(
+            reach, reslist=resources)
         return [provider for provider in providers]
 
 
@@ -49,18 +53,21 @@ class Farm(ProductionBuilding):
     def get_providers(self):
         reach = RadiusRect(self.position, self.radius)
         resources = self.get_consumed_resources(include_inactive=True)
-        providers = self.island.get_providers_in_range(reach, reslist=resources)
-        return [provider for provider in providers if isinstance(provider, Field)]
+        providers = self.island.get_providers_in_range(
+            reach, reslist=resources)
+        return [provider for provider in providers if
+                isinstance(provider, Field)]
 
 
-class CoastalProducer(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
+class CoastalProducer(BuildingResourceHandler, BuildableSingleOnOcean,
+                      BasicBuilding):
     """E.g. salt ponds"""
     pass
 
 
 class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
-    """
-    Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
+    """Old selection workaround (only color fish)
+    removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
     """
 
     def get_non_paused_utilization(self):
@@ -77,11 +84,13 @@ class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
     def __init__(self, inventory, deposit_class, *args, **kwargs):
         """
-        @param inventory: inventory dump of deposit (collected by get_prebuild_data())
+        @param inventory: inventory dump of deposit
+                          (collected by get_prebuild_data())
         @param deposit_class: class num of deposit for later reconstruction
         (collected by get_prebuild_data())
         """
-        # needs to be inited before super(), since that will call the _on_production_changed hook
+        # needs to be inited before super(), since that will call
+        # the _on_production_changed hook
         super(Mine, self).__init__(*args, **kwargs)
         self.__inventory = inventory
         self.__deposit_class = deposit_class
@@ -97,13 +106,17 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
     def get_loading_area(cls, building_id, rotation, pos):
         if building_id == BUILDINGS.MOUNTAIN or building_id == BUILDINGS.MINE:
             if rotation == 45:
-                return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
+                return Rect.init_from_topleft_and_size(
+                    pos.origin.x, pos.origin.y + 1, 1, 3)
             elif rotation == 135:
-                return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
+                return Rect.init_from_topleft_and_size(
+                    pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
             elif rotation == 225:
-                return Rect.init_from_topleft_and_size(pos.origin.x + pos.width - 1, pos.origin.y + 1, 1, 3)
+                return Rect.init_from_topleft_and_size(
+                    pos.origin.x + pos.width - 1, pos.origin.y + 1, 1, 3)
             elif rotation == 315:
-                return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
+                return Rect.init_from_topleft_and_size(pos.origin.x + 1,
+                                                       pos.origin.y, 3, 1)
             assert False
         else:
             return pos
@@ -112,24 +125,32 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
         self.__deposit_class = deposit_class
 
         # setup loading area
-        # TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
-        #       this needs to be generalized, possibly by defining the loading tiles in the db
-        self.loading_area = self.get_loading_area(deposit_class, self.rotation, self.position)
+        # TODO: for now we assume that a mine building is 5x5 with a
+        #        3x1 entry on 1 side
+        #       this needs to be generalized, possibly by defining the
+        #       loading tiles in the db
+        self.loading_area = self.get_loading_area(deposit_class, self.rotation,
+                                                  self.position)
 
     @classmethod
     def get_prebuild_data(cls, session, position):
-        """Returns dict containing inventory of deposit, which is needed for the mine build"""
+        """Returns dict containing inventory of deposit,
+        which is needed for the mine build"""
         deposit = session.world.get_building(position.center)
         data = {}
-        data["inventory"] = deposit.get_component(StorageComponent).inventory.get_dump()
+        data["inventory"] = deposit.get_component(
+            StorageComponent).inventory.get_dump()
         data["deposit_class"] = deposit.id
         return data
 
     def remove(self):
         # build the deposit back here after remove() is finished
-        deposit_build_data = {'inventory': self.get_component(StorageComponent).inventory.get_dump()}
-        build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y,
-                          self.island, rotation=self.rotation, ownerless=True, data=deposit_build_data)
+        deposit_build_data = {'inventory': self.get_component(
+            StorageComponent).inventory.get_dump()}
+        build_cmd = Build(self.__deposit_class, self.position.origin.x,
+                          self.position.origin.y,
+                          self.island, rotation=self.rotation, ownerless=True,
+                          data=deposit_build_data)
         Scheduler().add_new_object(build_cmd, build_cmd, run_in=0)
 
         super(Mine, self).remove()
@@ -141,5 +162,6 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
     def load(self, db, worldid):
         super(Mine, self).load(db, worldid)
-        deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
+        deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?",
+                           worldid)[0][0]
         self.__init(deposit_class)

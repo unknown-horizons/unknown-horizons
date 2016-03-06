@@ -67,7 +67,8 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
             inhabitants_that_will_die = self._manager.session.random.randint(1, building.inhabitants)
             building.inhabitants -= inhabitants_that_will_die
             self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
-            Scheduler().add_new_object(Callback(self.wreak_havoc, building),
+            Scheduler().add_new_object(
+                Callback(self.wreak_havoc, building),
                 self, run_in=self.TIME_BEFORE_HAVOC)
         else:
             self.recover(building)

@@ -39,8 +39,10 @@ class Utilization(object):
     def capacity_utilization_below(self, limit, instance):
         """Returns whether the capacity utilization is below a value.
         It is equivalent to "foo.capacity_utilization <= value, but faster."""
-        # idea: retrieve the value, then check how long it has to take until the limit
-        # can be reached (from both sides). Within this timespan, don't check again.
+        # idea: retrieve the value, then check how long
+        # it has to take until the limit
+        # can be reached (from both sides). Within this timespan,
+        # don't check again.
         cur_tick = Scheduler().cur_tick
         if not hasattr(self, "_old_capacity_utilization") or \
            self._old_capacity_utilization[0] < cur_tick or \
@@ -49,8 +51,9 @@ class Utilization(object):
             diff = abs(limit - capac)
             # all those values are relative values, so we can just do this:
             interval = diff * PRODUCTION.STATISTICAL_WINDOW
-            self._old_capacity_utilization = (cur_tick + interval,  # expiration date
-                                    limit, capac < limit)
+            self._old_capacity_utilization = (cur_tick + interval,
+                                              # expiration date
+                                              limit, capac < limit)
         return self._old_capacity_utilization[2]
 
 
@@ -70,7 +73,8 @@ class FieldUtilization(Utilization):
         Calculate productivity by the number of fields nearby.
         """
 
-        result = float(len(instance.instance.get_providers())) / self.max_fields_possible
+        result = float(len(
+            instance.instance.get_providers())) / self.max_fields_possible
         # sanity checks for theoretically impossible cases:
         result = min(result, 1.0)
         result = max(result, 0.0)
