@@ -415,6 +415,18 @@ class DefaultPersonality:
 		residences_required = 0
 		min_tier = TIER.CITIZENS
 
+	class FlourGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class FeederFlourGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
 
