@@ -6,16 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-12-08 20:31+0200\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
-"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/tutorial/tr/>\n"
+"POT-Creation-Date: 2015-12-02 23:38+0100\n"
+"PO-Revision-Date: 2016-01-15 03:15+0000\n"
+"Last-Translator: kenan akgün <kenanakgun@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/uh/tutorial/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -30,12 +31,12 @@ msgstr ""
 "İlk yerleşim yerinizi kurun ve oyunu öğrenin!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#| msgid ""
+#| "Build a warehouse at the coast, so it is easily accessible for other "
+#| "ships like the Free Trader."
 msgid ""
-"Build a warehouse at the coast, so it is easily accessible for other ships "
-"like the Free Trader."
-msgstr ""
-"Sahilde bir depo inşa et ki Serbest Tüccar gibi diğer gemiler için "
-"kolaylıkla erişebilir olsun."
+"Build a warehouse on the coast to allow trade ships to visit your settlement."
+msgstr "ticaret gemileri ziyareti için sahile depo inşa et."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -43,224 +44,231 @@ msgstr "Unknown Horizons'a hoş geldiniz!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is your Captain's log where all important information is stored. A "
-"short notification of each task will be provided on the left of the screen."
+"This is your Journal, where important information about the current scenario "
+"is stored. A summary of each new task will also appear as a 'notification "
+"button' near the left-hand edge of the screen. You can hover your mouse over "
+"these notifications to read the summary, or click the button itself to open "
+"the Journal."
 msgstr ""
-"Bu, sizin Kaptan Günlüğü'nüz. Tüm bilgiler burada kayıtlı. Size verilen her "
-"görevin kısa bir bildirimi ekranın sol tarafında gösterilecektir."
+"Bu, geçerli senaryo hakkında önemli bilgiler depolandığı Dergi. Her yeni "
+"görev bir özet de bir 'bildirim düğmesi' ekranın sol kenarına yakın görünür. "
+"Özet okumak, veya düğmesine kendisi Journal açmak için Tıklayın Bu "
+"bildirimler üzerine getirin."
 
 #. This is the text body of a logbook page.
 msgid ""
-"If you are interested in longer descriptions, your log will hopefully "
-"provide all the help you need."
+"You can also re-open the Journal at any time by clicking the button below "
+"the mini-map, at the top right of your screen. From now on we'll refer to "
+"this area containing the mini-map and various buttons and tabs as the "
+"'Overview'."
 msgstr ""
-"Daha detaylı bilgi almak isterseniz günlüğünüz size yardımcı olacaktır."
+"Ayrıca ekranın sağ üst köşesindeki mini-Harita, aşağıdaki butona tıklayarak "
+"herhangi bir zamanda yeniden açabilirsiniz. Bu alana mini-Harita ve çeşitli "
+"düğmeleri ve sekmeler hakkında söz edeceğiz  'Genel Bakış'."
 
 #. This is the text body of a logbook page.
-msgid ""
-"After you close this log, it can be re-opened with the \"Captain's Log\" "
-"icon in the top-right corner (below the mini-map, with a sealed document and "
-"a feather)."
-msgstr ""
-"Bu günlüğü kapattıktan sonra, ekranın sağ üst köşesindeki haritanın hemen "
-"altında bulunan \"Kaptanın Günlüğü\" simgesine (üzerinde mühürlü belge ve bir "
-"tüy kalem bulunan simgeye) tıklayarak yeniden açabilirsiniz."
-
-#. This is the text body of a logbook page.
+#| msgid ""
+#| "\n"
+#| "To see your first task, click on the button \"Read next entries\" in the "
+#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
-"To see your first task, click on the button \"Read next entries\" in the "
-"navigation panel! It looks like this:"
+"To see your first task, turn to the next page of the Journal using the "
+"button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"İlk görevinizi görmek için gezinti panelindeki \"Sonraki girdileri oku\" "
-"düğmesine basınız! Düğme şuna benzemektedir:"
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"For any suggestions on better wording, topics you would like to have "
-"explained or even buggy conditions: Please tell us and we will try to "
-"improve the tutorial!"
-msgstr ""
-"\n"
-"Daha iyi anlatım, açıklanmasını istediğiniz konular ya da hatalı durumlar "
-"ile ilgili önerilerinizi lütfen bize bildirin. Öğretici oyunu birlikte "
-"geliştirelim!"
+"İlk göreviniz görmek, ters sayfanın altındaki Günlük düğmesini kullanarak "
+"bir sonraki sayfayı çevirmek için - bu gibi görünüyor:"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
-"Visit www.unknown-horizons.org for help on how to contact the team!"
+"If you have any suggestions about how this tutorial can be improved, or if "
+"you encounter any errors, please tell us."
 msgstr ""
 "\n"
-"Oyun ekibine ulaşmak için www.unknown-horizons.org adresini ziyaret edin!"
+"Eğer bu yazının geliştirilebilir hakkında herhangi bir öneriniz varsa veya "
+"herhangi bir hata ile karşılaşırsanız, lütfen bize bildirin."
 
 #. This is the text body of a logbook page.
-msgid "And now, let's start the actual game."
-msgstr "Haydi şimdi gerçek oyuna başlayalım."
+#| msgid ""
+#| "\n"
+#| "Visit www.unknown-horizons.org for help on how to contact the team!"
+msgid ""
+"\n"
+"Visit www.unknown-horizons.org to find out how to contact the team."
+msgstr ""
+"\n"
+"Oyun ekibine danışmak ve öğrenmek için www.unknown-horizons.org adresini "
+"ziyaret edin."
+
+#. This is the text body of a logbook page.
+#| msgid "And now, let's start the actual game."
+msgid "And now, let's start the game!"
+msgstr "Ve şimdi, oyun başlasın!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "YENİ GÖREV: BİR ADAYA YERLEŞ"
+#| msgid "NEW TASK: SETTLE ON AN ISLAND"
+msgid "NEW TASK: CREATE A SETTLEMENT"
+msgstr "YENİ GÖREV: BİR YERLEŞİM OLUŞTURMAK"
 
 #. This is the text body of a logbook page.
 msgid ""
-"To move your ship, select it with a left click and right click on the "
-"location you want it to go to."
+"Your ship is at sea, loaded with the supplies you'll need to establish a new "
+"settlement."
+msgstr "Gemi yeni bir köy kurmak için gerekli malzemeleri ile dolu ve denizde."
+
+#. This is the text body of a logbook page.
+#| msgid ""
+#| "To move your ship, select it with a left click and right click on the "
+#| "location you want it to go to."
+msgid ""
+"To move your ship, select it with a left-click then right-click on the "
+"location you want it to sail to."
 msgstr ""
 "Geminizi hareket ettirmek için öncelikle farenin sol tuşuyla gemiyi seçin, "
 "sonra da sağ tuşla gemiyi göndermek istediğiniz yere tıklayın."
 
 #. This is the text body of a logbook page.
+#| msgid ""
+#| "Once you are near the coast, the anchor-like button you see in the "
+#| "overview tab will become active."
 msgid ""
-"Once you are near the coast, the anchor-like button you see in the overview "
-"tab will become active."
+"Once you're near the coast, the 'Build Settlement' button in the overview "
+"will become active."
 msgstr ""
-"Sahile yeteri kadar yakın olduğunuzda, üzerinde çıpa bulunan düğme aktif "
-"hale gelecektir."
+"Sahile yeteri kadar yakın olduğunuzda, yapı iskan düğmesi etkin hale "
+"gelecektir."
 
 #. This is the text body of a logbook page.
 msgid ""
-"This indicates that you are able to build a warehouse there by pressing that "
-"button (called 'Build Settlement')."
+"Clicking this button will show a preview of the Warehouse, the first "
+"building required to found a new settlement. As you move the cursor around, "
+"you'll notice that the preview is shaded red when the building is in an "
+"unsuitable area."
 msgstr ""
-"Bu, deponuzu bulunduğunuz noktada, üzerinde 'Yerleşim Yerini Kur' yazan "
-"düğmeye tıklayarak kurabileceğiniz anlamına geliyor."
+"Bu düğmeyi tıkladığınızda Depo ön izlemesini gösterecektir, ilk bina için "
+"gerekli yeni bir çözüm buldu. İmleci hareket olduğu gibi, ön izleme binanın "
+"uygun bir alanda kırmızı gölgeli olduğunu fark edeceksiniz."
 
 #. This is the text body of a logbook page.
 msgid ""
-"Now a preview of your building is dragged around when you move the cursor."
+"The Warehouse needs to be positioned on the coast to allow ships to dock. "
+"So, find a good location then left-click to place this important building."
 msgstr ""
-"Şimdi imleci oynattığınızda binanızın bir ön izlemesi de harita üzerinde "
-"taşınıyor."
+"Depodan iskeleye gemiler yolun kıyısında konumlandırılmış olması gerekir. "
+"Çok güzel bir yer sonra sol tuşla bu önemli bina için yer bul."
+
+#. This is the text body of a logbook page.
+#| msgid "Task: Build a warehouse at the coast."
+msgid "Task: Build a Warehouse on the coast."
+msgstr "Görev: deniz kıyısında bir Depo İnşa etmek."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
+msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
+msgstr "Bir oduncu çadırı kurun ve yol ile deponuza bağlayın."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#| msgid "NEW TASK: BUILD A LUMBERJACK"
+msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
+msgstr "YENİ GÖREV: ODUNCULAR ÇADIRI KURMAK"
 
 #. This is the text body of a logbook page.
 msgid ""
-"You can build on any spot where this preview is not shaded red.\n"
-"Click where you want to place your first building."
+"The supplies and construction materials have been unloaded from your ship "
+"and safely stored in your new Warehouse. Now it's time to construct some "
+"basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
-"Bu ön izlemenin soluk kırmızı olmadığı her noktaya binanızı kurabilirsiniz.\n"
-"Binanızı kurmak istediğiniz yere tıklayın."
+"Malzeme ve inşaat malzemeleri gemi kaldırılmış ve güvenli bir şekilde yeni "
+"Depoda muhafaza edilmiştir. Şimdi temel bazı binalar, bir Oduncu Çadırı ile "
+"başlayan inşa etme zamanı geldi."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Lumberjacks will fell trees from the woodland around their tent and process "
+"the timber to produce boards, for use in construction or as a trade resource."
+msgstr ""
+"Oduncular onların çadır etrafında sürdürülen ağaç ve kereste panoları, "
+"ticari bir kaynak olarak inşa edilmesi için veya üretmek için işleyecektir."
 
 #. This is the text body of a logbook page.
 #| msgid ""
-#| "\n"
-#| "TASK: Build a warehouse at the coast."
-msgid "Task: Build a warehouse at the coast."
-msgstr "Görev: Sahilde bir depo inşa et."
-
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr "Bir oduncu yapın ve yol ile deponuza bağlayın."
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "YENİ GÖREV: BİR ODUNCU İNŞA ET"
-
-#. This is the text body of a logbook page.
+#| "In order to construct lumberjacks; open the build menu by either clicking "
+#| "the big icon below the mini map or pressing B key."
 msgid ""
-"The construction material on your ship got unloaded automatically. You can "
-"now construct some basic buildings."
-msgstr ""
-"Geminizdeki yapı malzemesi otomatik olarak boşaltıldı. Artık bazı temel "
-"binaları inşa edebilirsiniz."
-
-#. This is the text body of a logbook page.
-msgid "We will start with building a lumberjack."
-msgstr "Bir oduncu inşaası ile başlayacağız."
-
-#. This is the text body of a logbook page.
-msgid ""
-"This is essential because, at this stage, boards are the only poles your "
-"sailors can afford to hang their tents over."
-msgstr ""
-"Bu zorunlu bir görev çünkü bu adımda, denizcilerinizin gücünün yeteceği "
-"çadırları üzerine asmalarına yardımcı olabilecek en uç şey bu."
-
-#. This is the text body of a logbook page.
-msgid "The fisherman needs some boards to build his vessel as well."
-msgstr "Balıkçının da teknesini yapabilmesi için tahtaya ihtiyacı var."
-
-#. This is the text body of a logbook page.
-msgid ""
-"In order to construct lumberjacks; open the build menu by either clicking "
-"the big icon below the mini map or pressing B key."
+"To build a Lumberjack's Tent, open the Build Menu by clicking the button "
+"below the mini map or pressing 'B', the default hotkey."
 msgstr ""
 "Oduncu inşa etmek için; aşağıdaki büyük düğmeye tıklayarak veya B tuşuna "
 "basarak inşa menüsünü açabilirsiniz."
 
 #. This is the text body of a logbook page.
-msgid "The build menu is sorted by tiers."
-msgstr "İnşa menüsü seviyeye göre sıralanır."
+msgid ""
+"The Build Menu is sorted by tiers and, as yours is a new settlement, First "
+"Tier buildings are the only ones available to you; as your civilization "
+"advances, you will obtain access to higher tiers and be able to construct a "
+"much wider range of buildings."
+msgstr ""
+"Yapı menüsüne göre sıralanmış dizileri ve sizin yeni bir yerleşim yeri için "
+"İlk Kademe binaları sadece onlar kullanabilirsiniz. sizin medeniyetiniz "
+"gelişmeler olursa üst sıralardaki bina yelpazesine erişebilmek için "
+"gereklidir."
 
 #. This is the text body of a logbook page.
 msgid ""
-"You are currently in the first tier (the Sailors level) so are offered only "
-"the basic buildings."
+"Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
+"Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
-"Şu an ilk seviyedesiniz (Denizciler seviyesi) ve bu yüzden sadece temel "
-"binalar sunuluyor."
+"bizim Oduncu için güzel bir ormanlık alan 'Oduncu Çadırı' Bakış ve "
+"bina.binalar yer listesinden seçin bulun."
 
 #. This is the text body of a logbook page.
 msgid ""
-"\n"
-"As your civilization advances, you also gain more and more complex buildings."
+"Later in the game you might want to create woodland by planting trees, but "
+"since that costs money, you should use what nature has provided for the time "
+"being!"
 msgstr ""
-"\n"
-"Uygarlığınız geliştikçe daha gelişmiş binaları kurabileceksiniz."
+"Daha sonra oyun ağaç dikerek ormanlık oluşturmak isteyebilirsiniz, ama bu "
+"para maliyeti getirir, ilk önce alanları kullanmalısınız!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"For now, select the lumberjack under 'Companies' and build it in an area "
-"with some trees around."
+"Any resource-gathering or production building needs a path connecting it to "
+"a Warehouse or other form of storage, otherwise the goods it produces will "
+"not be collected."
 msgstr ""
-"Şimdilik, 'Şirketler' bölümünde oduncu seçerek, ağaçların yoğun olduğu bir "
-"alana kurun."
+"Kaynak toplama veya üretim binasının herhangi bir yolunu depolama Depo veya "
+"başka bir form bağlamak gerekiyor, aksi halde ürettiği malları toplanmaz."
 
 #. This is the text body of a logbook page.
 msgid ""
-"You can also plant trees later - but that costs money. Use what nature "
-"provided you with!"
+"So, once your Lumberjack's Tent is in position, connect it to your Warehouse "
+"by opening the Build Menu then clicking the 'Path' button. You can now click "
+"and drag with the mouse to draw the route of your path between the "
+"Lumberjack's Tent and the Warehouse."
 msgstr ""
-"Daha sonra yeni ağaçlar da dikebilirsiniz, fakat bu masraflıdır. Doğanın "
-"size sağladıklarını kullanın!"
-
-#. This is the text body of a logbook page.
-msgid ""
-"A company always needs a trail connection to a storage or warehouse, "
-"otherwise goods will remain at the company and not be collected."
-msgstr ""
-"Bir şirketin her zaman bir depo ya da ambara yollarla bağlanması gerekir, "
-"aksi takdirde ürünler şirkette kalacak ve toplanmayacaktır."
-
-#. This is the text body of a logbook page.
-msgid ""
-"This means that you have to build a trail connecting your warehouse (or "
-"storage) and lumberjack."
-msgstr ""
-"Yani oduncunuz ile herhangi bir deponuz (ya da ambarınız) arasında bir yol "
-"inşa etmeniz gerekiyor."
+"Oduncu Çadırını, Yapı Menüsünü tıklatarak ve açarak kurabilirsin Depoya "
+"bağlamak ise 'Yol' butonuna basın. Şimdi tıklayın ve Oduncu Çadırı ve Depo "
+"arasındaki yolu çizmek için fare ile sürükleyebilirsiniz."
 
 # Böyle daha açıklayıcı olduğunu düşündüm.
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a lumberjack in a wooded area and connect it to a road."
-msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
-msgstr ""
-"Görev: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu "
-"depoya bağlayın."
+#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
+msgid ""
+"Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
+"Warehouse."
+msgstr "Görev: ağaçlık alanda bir Oduncu Çadırı Kur ve Depo bağlayın."
 
 #. This is the text body of a logbook page.
 msgid ""
-"Watch how a collector will fetch your first self-produced boards. Don't "
-"worry about recruiting workers for the lumberjack. That happens "
-"automatically."
+"Once the buildings are connected you'll see a collector arrive to pick up "
+"your newly produced boards and deliver them to the Warehouse, ready for use "
+"in  construction or trade."
 msgstr ""
-"Toplayıcının gelip sizin ürettiğiniz tahtaları oduncunuzdan alışını izleyin. "
-"Oduncunuz için işçi istihdam etmenize gerek yok. Bu otomatik olarak "
-"yapılıyor."
+"Binalar bağlandıktan sonra bir koleksiyoncu yeni üretilen panoları alır ve "
+"onları ambara teslim eder, inşaat veya ticari kullanıma hazır hale gelmesi "
+"göreceksiniz."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -334,9 +342,6 @@ msgstr ""
 "dengeleyebilirsiniz."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a hunter and a fisher."
 msgid "Task: Build a hunter and a fisher."
 msgstr "Görev: Bir avcı kulübesi ve bir balıkçı inşa edin."
 
@@ -347,8 +352,7 @@ msgstr "Bunları yollarla deponuza bağlamayı unutmayın!"
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
-"Bir ana meydan kurun. Bunun için ticari binalardan uzak bir alan tercih "
-"edin."
+"Bir ana meydan kurun. Bunun için ticari binalardan uzak bir alan tercih edin."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
@@ -362,10 +366,16 @@ msgstr ""
 "duyarlar."
 
 #. This is the text body of a logbook page.
+#| msgid ""
+#| "This means that they need a trail connection from their home to the main "
+#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the main "
-"square."
-msgstr "Bu nedenle de, evlerden ana meydana yol bağlantısı olmalıdır."
+"square. Note that the main square acts as trail as well, therefore adjacent "
+"tents do not need a separate trail."
+msgstr ""
+"Bu ana kare içindeki evlerinden Bir bağlantı gerekiyor demektir. Ana meydanı "
+"yol gibi davranır, bu nedenle bitişik çadır ayrı bir yol gerekmez unutmayın."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -394,9 +404,6 @@ msgstr ""
 "oduncu çadırı arası gibi yerlere yol yapmanıza gerek yok."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a main square."
 msgid "Task: Build a main square."
 msgstr "Görev: Ana meydan inşa et."
 
@@ -440,8 +447,9 @@ msgstr ""
 "engelleyebilirsiniz."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a tent and connect it to the main square."
-msgstr "Bir çadır yapın ve ana meydana bağlayın."
+#| msgid "Build a tent and connect it to the main square."
+msgid "Build a tent and connect it to the main square if necessary."
+msgstr "Bir çadır yapın ve gerekirse ana meydana bağlayın."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
@@ -490,15 +498,14 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #| msgid ""
-#| "\n"
-#| "TASK: Build a tent and connect it to the main square. Tents dont need to "
+#| "Task: Build a tent and connect it to the main square. Tents dont need to "
 #| "be connected to any of the companies."
 msgid ""
-"Task: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies."
+"Task: Build a tent and connect it to the main square if necessary. Tents "
+"don't need to be connected to any of the companies."
 msgstr ""
-"Görev: Bir çadır kurun ve ana meydana bağlayın. Çadırların şirketlere "
-"bağlanmaları gerekmez."
+"Görev: Bir çadır kurun ve gerekirse ana meydana bağlayın. Çadırların "
+"şirketlere bağlanmaları gerekmez."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -547,9 +554,6 @@ msgstr ""
 "Ayrıca evrensel vergi ayarlarını buradan da değiştirebileceğinizi unutmayın."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build at least three additional tents."
 msgid "Task: Build at least three additional tents."
 msgstr "Görev: En az üç adet daha çadır yap."
 
@@ -650,7 +654,6 @@ msgstr ""
 "olduğunuzda bunu daha ayrıntılı açıklayacağız."
 
 #. This is the text body of a logbook page.
-#| msgid "Build a signal fire at the coast close to your warehouse."
 msgid "Task: Build a signal fire at the coast close to your warehouse."
 msgstr "Görev: Deponuza yakın sahilde bir işaret ateşi yakın."
 
@@ -751,9 +754,6 @@ msgstr ""
 "karşılaştırarak görebilirsiniz."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
 msgstr "Görev: Stoğunuzda 30 alete sahip oluncaya kadar alet satın al!"
 
@@ -834,10 +834,6 @@ msgstr ""
 "Yol bağlantısı da gereklidir."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
-#| "sailors' demand for faith."
 msgid ""
 "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
@@ -937,9 +933,6 @@ msgstr ""
 "için bu ek parayı harcamanız gerekiyor."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgid ""
 "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
@@ -1034,9 +1027,6 @@ msgstr ""
 "mevcut binalarınızın yakınına yapmamaya çalışın."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a farm."
 msgid "Task: Build a farm."
 msgstr "Görev: Bir çiftlik inşa edin."
 
@@ -1127,10 +1117,6 @@ msgstr ""
 "Bunu değiştirelim!"
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build at least one pasture in the farm's range and add potato "
-#| "fields if you like."
 msgid ""
 "Task: Build at least one pasture in the farm's range and add potato fields "
 "if you like."
@@ -1232,13 +1218,9 @@ msgstr ""
 "yoğunsa, yardım etmesi için bir ambar çadırı yerleştirebilirsiniz."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a storage tent, preferably where you need collectors."
 msgid "Task: Build a storage tent, preferably where you need collectors."
 msgstr ""
-"Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir ambar çadırı "
-"yapın."
+"Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir ambar çadırı yapın."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a weaver that can somehow reach the wool of your farm."
@@ -1277,9 +1259,6 @@ msgstr ""
 "görmek için tüm patikaları yok edebilirsiniz."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Build a weaver positioned so it can get wool."
 msgid "Task: Build a weaver positioned so it can get wool."
 msgstr "Görev: Yün alabilmesi için konumlandırılmış bir dokumacı inşa edin."
 
@@ -1320,10 +1299,6 @@ msgstr ""
 "için de bir pozitif bakiye ('Hesap' sekmesinde depoyu kontrol edin) gerekli."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "TASK: Reach a total number of 50 inhabitants and a positive balance to "
-#| "complete this tutorial."
 msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
@@ -1408,6 +1383,136 @@ msgstr ""
 "Öğreticiyi oynadığınız için teşekkürler!\n"
 "\n"
 "UH-Takımınız"
+
+#~ msgid ""
+#~ "This is your Captain's log where all important information is stored. A "
+#~ "short notification of each task will be provided on the left of the "
+#~ "screen."
+#~ msgstr ""
+#~ "Bu, sizin Kaptan Günlüğü'nüz. Tüm bilgiler burada kayıtlı. Size verilen "
+#~ "her görevin kısa bir bildirimi ekranın sol tarafında gösterilecektir."
+
+#~ msgid ""
+#~ "If you are interested in longer descriptions, your log will hopefully "
+#~ "provide all the help you need."
+#~ msgstr ""
+#~ "Daha detaylı bilgi almak isterseniz günlüğünüz size yardımcı olacaktır."
+
+#~ msgid ""
+#~ "After you close this log, it can be re-opened with the \"Captain's Log\" "
+#~ "icon in the top-right corner (below the mini-map, with a sealed document "
+#~ "and a feather)."
+#~ msgstr ""
+#~ "Bu günlüğü kapattıktan sonra, ekranın sağ üst köşesindeki haritanın hemen "
+#~ "altında bulunan \"Kaptanın Günlüğü\" simgesine (üzerinde mühürlü belge ve "
+#~ "bir tüy kalem bulunan simgeye) tıklayarak yeniden açabilirsiniz."
+
+#~ msgid ""
+#~ "\n"
+#~ "For any suggestions on better wording, topics you would like to have "
+#~ "explained or even buggy conditions: Please tell us and we will try to "
+#~ "improve the tutorial!"
+#~ msgstr ""
+#~ "\n"
+#~ "Daha iyi anlatım, açıklanmasını istediğiniz konular ya da hatalı durumlar "
+#~ "ile ilgili önerilerinizi lütfen bize bildirin. Öğretici oyunu birlikte "
+#~ "geliştirelim!"
+
+#~ msgid ""
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement')."
+#~ msgstr ""
+#~ "Bu, deponuzu bulunduğunuz noktada, üzerinde 'Yerleşim Yerini Kur' yazan "
+#~ "düğmeye tıklayarak kurabileceğiniz anlamına geliyor."
+
+#~ msgid ""
+#~ "Now a preview of your building is dragged around when you move the cursor."
+#~ msgstr ""
+#~ "Şimdi imleci oynattığınızda binanızın bir ön izlemesi de harita üzerinde "
+#~ "taşınıyor."
+
+#~ msgid ""
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building."
+#~ msgstr ""
+#~ "Bu ön izlemenin soluk kırmızı olmadığı her noktaya binanızı "
+#~ "kurabilirsiniz.\n"
+#~ "Binanızı kurmak istediğiniz yere tıklayın."
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings."
+#~ msgstr ""
+#~ "Geminizdeki yapı malzemesi otomatik olarak boşaltıldı. Artık bazı temel "
+#~ "binaları inşa edebilirsiniz."
+
+#~ msgid "We will start with building a lumberjack."
+#~ msgstr "Bir oduncu inşaası ile başlayacağız."
+
+#~ msgid ""
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over."
+#~ msgstr ""
+#~ "Bu zorunlu bir görev çünkü bu adımda, denizcilerinizin gücünün yeteceği "
+#~ "çadırları üzerine asmalarına yardımcı olabilecek en uç şey bu."
+
+#~ msgid "The fisherman needs some boards to build his vessel as well."
+#~ msgstr "Balıkçının da teknesini yapabilmesi için tahtaya ihtiyacı var."
+
+#~ msgid "The build menu is sorted by tiers."
+#~ msgstr "İnşa menüsü seviyeye göre sıralanır."
+
+#~ msgid ""
+#~ "You are currently in the first tier (the Sailors level) so are offered "
+#~ "only the basic buildings."
+#~ msgstr ""
+#~ "Şu an ilk seviyedesiniz (Denizciler seviyesi) ve bu yüzden sadece temel "
+#~ "binalar sunuluyor."
+
+#~ msgid ""
+#~ "\n"
+#~ "As your civilization advances, you also gain more and more complex "
+#~ "buildings."
+#~ msgstr ""
+#~ "\n"
+#~ "Uygarlığınız geliştikçe daha gelişmiş binaları kurabileceksiniz."
+
+#~ msgid ""
+#~ "For now, select the lumberjack under 'Companies' and build it in an area "
+#~ "with some trees around."
+#~ msgstr ""
+#~ "Şimdilik, 'Şirketler' bölümünde oduncu seçerek, ağaçların yoğun olduğu "
+#~ "bir alana kurun."
+
+#~ msgid ""
+#~ "You can also plant trees later - but that costs money. Use what nature "
+#~ "provided you with!"
+#~ msgstr ""
+#~ "Daha sonra yeni ağaçlar da dikebilirsiniz, fakat bu masraflıdır. Doğanın "
+#~ "size sağladıklarını kullanın!"
+
+#~ msgid ""
+#~ "A company always needs a trail connection to a storage or warehouse, "
+#~ "otherwise goods will remain at the company and not be collected."
+#~ msgstr ""
+#~ "Bir şirketin her zaman bir depo ya da ambara yollarla bağlanması gerekir, "
+#~ "aksi takdirde ürünler şirkette kalacak ve toplanmayacaktır."
+
+#~ msgid ""
+#~ "This means that you have to build a trail connecting your warehouse (or "
+#~ "storage) and lumberjack."
+#~ msgstr ""
+#~ "Yani oduncunuz ile herhangi bir deponuz (ya da ambarınız) arasında bir "
+#~ "yol inşa etmeniz gerekiyor."
+
+#~ msgid ""
+#~ "Watch how a collector will fetch your first self-produced boards. Don't "
+#~ "worry about recruiting workers for the lumberjack. That happens "
+#~ "automatically."
+#~ msgstr ""
+#~ "Toplayıcının gelip sizin ürettiğiniz tahtaları oduncunuzdan alışını "
+#~ "izleyin. Oduncunuz için işçi istihdam etmenize gerek yok. Bu otomatik "
+#~ "olarak yapılıyor."
 
 #~ msgid ""
 #~ "\n"

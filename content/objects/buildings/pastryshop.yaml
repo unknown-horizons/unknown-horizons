@@ -9,7 +9,7 @@ size_y: 2
 inhabitants: 4
 tooltip_text: _ Produces all kinds of confectionery.
 tier: TIER.CITIZENS
-buildingcosts: {RES.GOLD: 1}
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.BRICKS: 3}
 components:
 - SelectableComponent:
     type: building

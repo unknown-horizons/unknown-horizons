@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -397,6 +397,24 @@ class SavegameUpgrader(object):
 
 	def _upgrade_to_rev74(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
+		
+	def _upgrade_to_rev75(self, db):
+		# some production line id changes
+
+		# [(object id, old prod line id, new prod line id)]
+		changes = [
+			(68, 1842760585, 2105680898),
+		]
+		for obj_type, old_prod_line, new_prod_line in changes:
+			for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
+				db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?", new_prod_line, obj, old_prod_line)
+
+	def _upgrade_to_rev76(self, db):
+		#needed for commint: b0471afd48a0034150580e8fa00533f9ccae2a9b (Split unit production into ship & groundunit)
+		old = 'NEW_UNIT'
+		new = 'NEW_SHIP'
+		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
+		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
 
 	def _upgrade_to_rev77(self, db):
 		db('CREATE TABLE "island_fertility" ("island" INT NOT NULL, "resource" INT NOT NULL)')
@@ -487,6 +505,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev74(db)
 			if rev < 75:
 				self._upgrade_to_rev75(db)
+			if rev < 76:
+				self._upgrade_to_rev76(db)
 			if rev < 77:
 				self._upgrade_to_rev77(db)
 

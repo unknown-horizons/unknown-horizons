@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 1c4eb21\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-12-06 21:58+0200\n"
-"Last-Translator: Yes Stone <s2327259@hotmail.com>\n"
-"Language-Team: Traditional Chinese "
-"<http://hosted.weblate.org/projects/uh/tutorial/zh_TW/>\n"
+"POT-Creation-Date: 2015-12-02 23:38+0100\n"
+"PO-Revision-Date: 2015-12-08 06:17+0000\n"
+"Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) "
+"<https://hosted.weblate.org/projects/uh/tutorial/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -32,10 +32,12 @@ msgstr ""
 "建立你的第一個殖民地並學習如何遊玩!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#| msgid ""
+#| "Build a warehouse at the coast, so it is easily accessible for other "
+#| "ships like the Free Trader."
 msgid ""
-"Build a warehouse at the coast, so it is easily accessible for other ships "
-"like the Free Trader."
-msgstr "在沿岸建造一座倉庫，如此便可處理其它船隻，如自由商人。"
+"Build a warehouse on the coast to allow trade ships to visit your settlement."
+msgstr "在沿岸建造一座倉庫以便貿易船造訪你的殖民地。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -43,179 +45,192 @@ msgstr "歡迎來到Unknown Horizons的世界!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is your Captain's log where all important information is stored. A "
-"short notification of each task will be provided on the left of the screen."
-msgstr "這是你的船長日誌，所有重要的資訊都會記錄在這理。 每個任務的訊息都會顯示在螢幕左邊。"
+"This is your Journal, where important information about the current scenario "
+"is stored. A summary of each new task will also appear as a 'notification "
+"button' near the left-hand edge of the screen. You can hover your mouse over "
+"these notifications to read the summary, or click the button itself to open "
+"the Journal."
+msgstr ""
+"這是你的日誌，儲存了關於當前場景中的重要資訊。每個新任務的概要也會作為一個「通知按鈕」在螢幕左側邊緣出現。你可以將滑鼠移至按鈕上以閱讀它的概要，或按它一下"
+"來打開日誌。"
 
 #. This is the text body of a logbook page.
 msgid ""
-"If you are interested in longer descriptions, your log will hopefully "
-"provide all the help you need."
-msgstr "如果你對長篇的說明感興趣的話，那你的日誌將會提供你所需要的所有幫助。"
+"You can also re-open the Journal at any time by clicking the button below "
+"the mini-map, at the top right of your screen. From now on we'll refer to "
+"this area containing the mini-map and various buttons and tabs as the "
+"'Overview'."
+msgstr "你還可以隨時通過螢幕右上方的小地圖下面的按鈕重新打開日誌。從現在起，我們會把這包含小地圖、各種按鈕和標籤的區域稱為「總覽」。"
 
 #. This is the text body of a logbook page.
-msgid ""
-"After you close this log, it can be re-opened with the \"Captain's Log\" "
-"icon in the top-right corner (below the mini-map, with a sealed document and "
-"a feather)."
-msgstr "關閉日誌後，可以再從右上角的「船長日誌」圖示重新開啟(在小地圖下面，有著蓋印章的文件與一根羽毛的圖案)。"
-
-#. This is the text body of a logbook page.
+#| msgid ""
+#| "\n"
+#| "To see your first task, click on the button \"Read next entries\" in the "
+#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
-"To see your first task, click on the button \"Read next entries\" in the "
-"navigation panel! It looks like this:"
+"To see your first task, turn to the next page of the Journal using the "
+"button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"來了解你的第一個任務，點擊在導航面板上的按鈕「閱讀下一個項目」! 按鈕看起來像這樣:"
+"來了解你的第一個任務，請利用在日誌下一頁底部的按鈕來掀至下一個頁面──按鈕看起來像這樣:"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
-"For any suggestions on better wording, topics you would like to have "
-"explained or even buggy conditions: Please tell us and we will try to "
-"improve the tutorial!"
+"If you have any suggestions about how this tutorial can be improved, or if "
+"you encounter any errors, please tell us."
 msgstr ""
 "\n"
-"如果有任何關於文字描述、主題改進的建議或是遊戲上的漏洞: 請告訴我們，我們會再試著改善這個教學!"
+"如果你有關於改善本教程的任何建議，或者遇到任何錯誤，請告訴我們。"
 
 #. This is the text body of a logbook page.
+#| msgid ""
+#| "\n"
+#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
-"Visit www.unknown-horizons.org for help on how to contact the team!"
+"Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"拜訪 www.unknown-horizons.org 以得知如何連絡我們!"
+"拜訪 www.unknown-horizons.org 以了解如何連絡我們。"
 
 #. This is the text body of a logbook page.
-msgid "And now, let's start the actual game."
-msgstr "那麼現在，讓我們實際開始遊戲吧。"
+#| msgid "And now, let's start the actual game."
+msgid "And now, let's start the game!"
+msgstr "那麼現在，讓我們開始遊戲吧！"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "新任務: 定居島上"
+#| msgid "NEW TASK: SETTLE ON AN ISLAND"
+msgid "NEW TASK: CREATE A SETTLEMENT"
+msgstr "新任務: 建立一個殖民地"
 
 #. This is the text body of a logbook page.
 msgid ""
-"To move your ship, select it with a left click and right click on the "
-"location you want it to go to."
-msgstr "用左鍵選擇你的船隻，並按右鍵指定想讓船隻移動到的位置。"
+"Your ship is at sea, loaded with the supplies you'll need to establish a new "
+"settlement."
+msgstr "你的船隻現在在海上，載滿了建立一個新殖民地所需的用品。"
 
 #. This is the text body of a logbook page.
+#| msgid ""
+#| "To move your ship, select it with a left click and right click on the "
+#| "location you want it to go to."
 msgid ""
-"Once you are near the coast, the anchor-like button you see in the overview "
-"tab will become active."
+"To move your ship, select it with a left-click then right-click on the "
+"location you want it to sail to."
+msgstr "要移動船隻，先用左鍵選擇你的船隻，並在想讓船隻航行到的位置上按一下右鍵。"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Once you are near the coast, the anchor-like button you see in the "
+#| "overview tab will become active."
+msgid ""
+"Once you're near the coast, the 'Build Settlement' button in the overview "
+"will become active."
 msgstr "一旦你靠近沿岸，在總覽頁面上的錨狀按鈕便可以點擊。"
 
 #. This is the text body of a logbook page.
 msgid ""
-"This indicates that you are able to build a warehouse there by pressing that "
-"button (called 'Build Settlement')."
-msgstr "這意謂你可以點擊它來建造貨棧(即「建立殖民地」)。"
+"Clicking this button will show a preview of the Warehouse, the first "
+"building required to found a new settlement. As you move the cursor around, "
+"you'll notice that the preview is shaded red when the building is in an "
+"unsuitable area."
+msgstr "點擊此按鈕將顯示倉庫的預覽。倉庫是建立一個新殖民地所需的第一幢建築物。當你四周移動鼠標時就可以看到當建築物在不合適的區域內時，預覽會變成紅色。"
 
 #. This is the text body of a logbook page.
 msgid ""
-"Now a preview of your building is dragged around when you move the cursor."
-msgstr "現在一棟建築物的預覽將會隨著滑鼠被拖曳。"
-
-#. This is the text body of a logbook page.
-msgid ""
-"You can build on any spot where this preview is not shaded red.\n"
-"Click where you want to place your first building."
+"The Warehouse needs to be positioned on the coast to allow ships to dock. "
+"So, find a good location then left-click to place this important building."
 msgstr ""
-"你只能在預覽圖沒有紅色陰影的地方建造。\n"
-"在你想要的地方點擊以建造你的第一個建築物。"
 
 #. This is the text body of a logbook page.
-msgid "Task: Build a warehouse at the coast."
-msgstr "任務: 在沿岸建造一座貨棧。"
+#| msgid "Task: Build a warehouse at the coast."
+msgid "Task: Build a Warehouse on the coast."
+msgstr "任務: 在沿岸建造一座倉庫。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr "建造一座伐木場並將其與貨棧用道路連接起來。"
+#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
+msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
+msgstr "建造一座伐木場並將它和倉庫連接起來。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "新任務: 建造伐木場"
+#| msgid "NEW TASK: BUILD A LUMBERJACK"
+msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
+msgstr "新任務：建造伐木場"
 
 #. This is the text body of a logbook page.
 msgid ""
-"The construction material on your ship got unloaded automatically. You can "
-"now construct some basic buildings."
-msgstr "在你船上的建築材料都已經被自動卸載。 你現在可以建造一些基本建築。"
-
-#. This is the text body of a logbook page.
-msgid "We will start with building a lumberjack."
-msgstr "我們將要開始建造一座伐木場。"
+"The supplies and construction materials have been unloaded from your ship "
+"and safely stored in your new Warehouse. Now it's time to construct some "
+"basic buildings, beginning with a Lumberjack's Tent."
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is essential because, at this stage, boards are the only poles your "
-"sailors can afford to hang their tents over."
-msgstr "這是極其必要的，因為在這裡，木板是唯一可以被水手用做撐起帳篷的工具。"
+"Lumberjacks will fell trees from the woodland around their tent and process "
+"the timber to produce boards, for use in construction or as a trade resource."
+msgstr ""
 
 #. This is the text body of a logbook page.
-msgid "The fisherman needs some boards to build his vessel as well."
-msgstr "漁夫也需要一些木板去建造他的船。"
-
-#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "In order to construct lumberjacks; open the build menu by either clicking "
+#| "the big icon below the mini map or pressing B key."
 msgid ""
-"In order to construct lumberjacks; open the build menu by either clicking "
-"the big icon below the mini map or pressing B key."
+"To build a Lumberjack's Tent, open the Build Menu by clicking the button "
+"below the mini map or pressing 'B', the default hotkey."
 msgstr "為了建造伐木場，必須點擊小地圖下方的大圖示或按B開啟建築選單。"
 
 #. This is the text body of a logbook page.
-msgid "The build menu is sorted by tiers."
-msgstr "建築選單是按照階級排列。"
-
-#. This is the text body of a logbook page.
 msgid ""
-"You are currently in the first tier (the Sailors level) so are offered only "
-"the basic buildings."
-msgstr "目前你處在最初的階段(水手等級)，所以僅只提供最基本的建築。"
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"As your civilization advances, you also gain more and more complex buildings."
+"The Build Menu is sorted by tiers and, as yours is a new settlement, First "
+"Tier buildings are the only ones available to you; as your civilization "
+"advances, you will obtain access to higher tiers and be able to construct a "
+"much wider range of buildings."
 msgstr ""
-"\n"
-"隨著市民的升級，你同時也可獲得越來越多複雜的建築。"
 
 #. This is the text body of a logbook page.
 msgid ""
-"For now, select the lumberjack under 'Companies' and build it in an area "
-"with some trees around."
-msgstr "那麼現在，選擇「公司」底下的伐木場並將其建在周圍環繞樹的地方。"
+"Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
+"Tent' from the list of buildings in the Overview and place the building."
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"You can also plant trees later - but that costs money. Use what nature "
-"provided you with!"
-msgstr "當然你也可以在之後種植樹木，但這要花費金錢。 使用大自然所提供給你的!"
+"Later in the game you might want to create woodland by planting trees, but "
+"since that costs money, you should use what nature has provided for the time "
+"being!"
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"A company always needs a trail connection to a storage or warehouse, "
-"otherwise goods will remain at the company and not be collected."
-msgstr "每一家公司都需要道路將其與儲藏室或貨棧連接，否則貨物只會留在公司而不會被收集起來。"
+"Any resource-gathering or production building needs a path connecting it to "
+"a Warehouse or other form of storage, otherwise the goods it produces will "
+"not be collected."
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"This means that you have to build a trail connecting your warehouse (or "
-"storage) and lumberjack."
-msgstr "這表示你必須要建造道路連接你的貨棧(或儲藏室)與伐木場。"
+"So, once your Lumberjack's Tent is in position, connect it to your Warehouse "
+"by opening the Build Menu then clicking the 'Path' button. You can now click "
+"and drag with the mouse to draw the route of your path between the "
+"Lumberjack's Tent and the Warehouse."
+msgstr ""
 
 #. This is the text body of a logbook page.
-msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
-msgstr "任務: 在森林區域建造一座伐木場並用道路連接。"
+#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
+msgid ""
+"Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
+"Warehouse."
+msgstr "任務: 在森林區域建造一座伐木場並把它連接至倉庫。"
 
 #. This is the text body of a logbook page.
 msgid ""
-"Watch how a collector will fetch your first self-produced boards. Don't "
-"worry about recruiting workers for the lumberjack. That happens "
-"automatically."
-msgstr "注意看一個收集者將會取得你第一塊自產的木板。 不用擔心伐木場的人員招募，那會自動進行。"
+"Once the buildings are connected you'll see a collector arrive to pick up "
+"your newly produced boards and deliver them to the Warehouse, ready for use "
+"in  construction or trade."
+msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -229,7 +244,8 @@ msgstr "新任務: 食物供應"
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
-msgstr "你也將會需要一些食物生產公司，因為一般來說，人們都會非常飢餓(由其是水手)。"
+msgstr ""
+"你也將會需要一些食物生產公司，因為一般來說，人們都會非常飢餓(由其是水手)。"
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
@@ -241,7 +257,7 @@ msgstr "獵人會在森林裡狩獵動物，因此附近需要有樹林。"
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr "注意，你可以將獵場放在伐木場森林得附近。"
+msgstr "注意，你可以將獵場放在伐木場森林的附近。"
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -275,11 +291,10 @@ msgid ""
 msgstr "這是一個非常穩定的食物來源，但每單位的食物需要花費較長的時間生產。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
-msgstr "小型殖民地(如你的)可以同時建造這兩種公司，而如果你有看到直接的比較，最好是在它們的優缺點之間取得平衡。"
+msgstr "你的小型殖民地可以同時利用這兩種食物來源。如果你能直接比較它們的輸出，你也可以更好地在它們的優缺點之間取得平衡。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a hunter and a fisher."
@@ -303,29 +318,39 @@ msgid ""
 msgstr "你的居民需要一個中央廣場來取得他們的貨物。"
 
 #. This is the text body of a logbook page.
+#| msgid ""
+#| "This means that they need a trail connection from their home to the main "
+#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the main "
-"square."
-msgstr "這意謂著他們需要道路從他們家裡連接到中央廣場。"
+"square. Note that the main square acts as trail as well, therefore adjacent "
+"tents do not need a separate trail."
+msgstr "這意謂著他們需要道路從他們家裡連接到中央廣場。要注意中央廣場自己也是一條道路，所以旁邊的帳篷不需要額外的道路。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
-msgstr "所以存放在貨棧的貨品同樣也可以在這個「市井」取用，所以你的居民便不需要再走到漁場甚至於貨棧。"
+msgstr ""
+"所以存放在貨棧的貨品同樣也可以在這個「市井」取用，所以你的居民便不需要再走到"
+"漁場甚至於貨棧。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You should avoid placing your main settlement tents too close to your "
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
-msgstr "你應該要避免將居住帳篷放置太過靠近於伐木場，因為建築帳棚將會清除掉附近的樹，而這些樹卻也是我們要拿來生產木板用的。"
+msgstr ""
+"你應該要避免將居住帳篷放置太過靠近於伐木場，因為建築帳棚將會清除掉附近的樹，"
+"而這些樹卻也是我們要拿來生產木板用的。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
-msgstr "公司的運作並不需要與帳篷連接，所以你不需要在中央廣場與你的伐木場(之類的)之間用道路連接。"
+msgstr ""
+"公司的運作並不需要與帳篷連接，所以你不需要在中央廣場與你的伐木場(之類的)之間"
+"用道路連接。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a main square."
@@ -343,7 +368,9 @@ msgstr ""
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
-msgstr "在「帳目」的標籤頁，你可以看到這座島的收支情況，如你付出的所有花費和你得到的所有稅金。"
+msgstr ""
+"在「帳目」的標籤頁，你可以看到這座島的收支情況，如你付出的所有花費和你得到的"
+"所有稅金。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -360,11 +387,14 @@ msgid ""
 "In the different tier overview tabs you can see statistics about your "
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
-msgstr "在不同階級的總覽標籤，你可以看到關於居民的一些統計。而你也可以依據階級去調整各等級住戶的稅率，或是禁止某一階級的居民升級到更高階。"
+msgstr ""
+"在不同階級的總覽標籤，你可以看到關於居民的一些統計。而你也可以依據階級去調整"
+"各等級住戶的稅率，或是禁止某一階級的居民升級到更高階。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a tent and connect it to the main square."
-msgstr "建造一個帳篷並將它與中央廣場連接。"
+#| msgid "Build a tent and connect it to the main square."
+msgid "Build a tent and connect it to the main square if necessary."
+msgstr "建造一個帳篷並視乎需要將它與中央廣場連接。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
@@ -374,7 +404,9 @@ msgstr "新任務: 居住建築"
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
-msgstr "居民們都希望居住的地方至少要有個屋頂，否則他們根本不會想去住在你得城市! 所以你必須要提供這些帳棚作為住所。"
+msgstr ""
+"居民們都希望居住的地方至少要有個屋頂，否則他們根本不會想去住在你得城市! 所以"
+"你必須要提供這些帳棚作為住所。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -402,8 +434,8 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"Task: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies."
+"Task: Build a tent and connect it to the main square if necessary. Tents "
+"don't need to be connected to any of the companies."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1090,3 +1122,115 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+
+#~ msgid ""
+#~ "This is your Captain's log where all important information is stored. A "
+#~ "short notification of each task will be provided on the left of the "
+#~ "screen."
+#~ msgstr ""
+#~ "這是你的船長日誌，所有重要的資訊都會記錄在這理。 每個任務的訊息都會顯示在"
+#~ "螢幕左邊。"
+
+#~ msgid ""
+#~ "If you are interested in longer descriptions, your log will hopefully "
+#~ "provide all the help you need."
+#~ msgstr ""
+#~ "如果你對長篇的說明感興趣的話，那你的日誌將會提供你所需要的所有幫助。"
+
+#~ msgid ""
+#~ "After you close this log, it can be re-opened with the \"Captain's Log\" "
+#~ "icon in the top-right corner (below the mini-map, with a sealed document "
+#~ "and a feather)."
+#~ msgstr ""
+#~ "關閉日誌後，可以再從右上角的「船長日誌」圖示重新開啟(在小地圖下面，有著蓋"
+#~ "印章的文件與一根羽毛的圖案)。"
+
+#~ msgid ""
+#~ "\n"
+#~ "For any suggestions on better wording, topics you would like to have "
+#~ "explained or even buggy conditions: Please tell us and we will try to "
+#~ "improve the tutorial!"
+#~ msgstr ""
+#~ "\n"
+#~ "如果有任何關於文字描述、主題改進的建議或是遊戲上的漏洞: 請告訴我們，我們會"
+#~ "再試著改善這個教學!"
+
+#~ msgid ""
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement')."
+#~ msgstr "這意謂你可以點擊它來建造貨棧(即「建立殖民地」)。"
+
+#~ msgid ""
+#~ "Now a preview of your building is dragged around when you move the cursor."
+#~ msgstr "現在一棟建築物的預覽將會隨著滑鼠被拖曳。"
+
+#~ msgid ""
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building."
+#~ msgstr ""
+#~ "你只能在預覽圖沒有紅色陰影的地方建造。\n"
+#~ "在你想要的地方點擊以建造你的第一個建築物。"
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings."
+#~ msgstr "在你船上的建築材料都已經被自動卸載。 你現在可以建造一些基本建築。"
+
+#~ msgid "We will start with building a lumberjack."
+#~ msgstr "我們將要開始建造一座伐木場。"
+
+#~ msgid ""
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over."
+#~ msgstr ""
+#~ "這是極其必要的，因為在這裡，木板是唯一可以被水手用做撐起帳篷的工具。"
+
+#~ msgid "The fisherman needs some boards to build his vessel as well."
+#~ msgstr "漁夫也需要一些木板去建造他的船。"
+
+#~ msgid "The build menu is sorted by tiers."
+#~ msgstr "建築選單是按照階級排列。"
+
+#~ msgid ""
+#~ "You are currently in the first tier (the Sailors level) so are offered "
+#~ "only the basic buildings."
+#~ msgstr "目前你處在最初的階段(水手等級)，所以僅只提供最基本的建築。"
+
+#~ msgid ""
+#~ "\n"
+#~ "As your civilization advances, you also gain more and more complex "
+#~ "buildings."
+#~ msgstr ""
+#~ "\n"
+#~ "隨著市民的升級，你同時也可獲得越來越多複雜的建築。"
+
+#~ msgid ""
+#~ "For now, select the lumberjack under 'Companies' and build it in an area "
+#~ "with some trees around."
+#~ msgstr "那麼現在，選擇「公司」底下的伐木場並將其建在周圍環繞樹的地方。"
+
+#~ msgid ""
+#~ "You can also plant trees later - but that costs money. Use what nature "
+#~ "provided you with!"
+#~ msgstr ""
+#~ "當然你也可以在之後種植樹木，但這要花費金錢。 使用大自然所提供給你的!"
+
+#~ msgid ""
+#~ "A company always needs a trail connection to a storage or warehouse, "
+#~ "otherwise goods will remain at the company and not be collected."
+#~ msgstr ""
+#~ "每一家公司都需要道路將其與儲藏室或貨棧連接，否則貨物只會留在公司而不會被收"
+#~ "集起來。"
+
+#~ msgid ""
+#~ "This means that you have to build a trail connecting your warehouse (or "
+#~ "storage) and lumberjack."
+#~ msgstr "這表示你必須要建造道路連接你的貨棧(或儲藏室)與伐木場。"
+
+#~ msgid ""
+#~ "Watch how a collector will fetch your first self-produced boards. Don't "
+#~ "worry about recruiting workers for the lumberjack. That happens "
+#~ "automatically."
+#~ msgstr ""
+#~ "注意看一個收集者將會取得你第一塊自產的木板。 不用擔心伐木場的人員招募，那"
+#~ "會自動進行。"

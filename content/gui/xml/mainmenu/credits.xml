@@ -3,7 +3,7 @@
 <!--  /!\ WARNING /!\
 This document was auto-generated from doc/AUTHORS.md.
 Please edit doc/AUTHORS.md instead if you need to change something,
-afterwards run development/generate_credits.py to refresh this file.
+afterwards run ./development/generate_credits.py to refresh this file.
 -->
 
 <Container name="credits_window" size="1000,580">
@@ -11,7 +11,8 @@ afterwards run development/generate_credits.py to refresh this file.
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
 <HBox name="credits_team" position="185,45" padding="10">
-	<VBox max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
 		<Label text="UH-Team" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
@@ -19,6 +20,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Kilian] (Kilian Köppchen)" />
 				<Label text="Nightraven (Tobias Schroefel)" />
 				<Label text="Nihathrael (Thomas Kinnen)" />
+				<Label text="LinuxDonald (Thomas Kowaliczek)" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Programming" name="headline" />
@@ -44,7 +46,9 @@ afterwards run development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
-	<VBox max_size="310,500" min_size="310,500">
+	</ScrollArea>
+	<ScrollArea name="uh-team" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
 		<VBox> <Label text="Game-Play Design" name="headline" />
 			<VBox name="box">
 				<Label text="Andre (Andre Reichelt)" />
@@ -77,10 +81,12 @@ afterwards run development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
+	</ScrollArea>
 </HBox>
 
 <HBox name="credits_patchers" position="185,45" padding="10">
-	<VBox max_size="310,500" min_size="310,500">
+	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
 		<Label text="Patchers" name="headline" />
 		<hr />
 		<VBox> <Label text="2009" name="headline" />
@@ -113,7 +119,9 @@ afterwards run development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
-	<VBox max_size="310,500" min_size="310,500">
+	</ScrollArea>
+	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
 		<VBox> <Label text="2011.2" name="headline" />
 			<VBox name="box">
 				<Label text="mtfk (Voice internationalization)" />
@@ -149,7 +157,13 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="paul59 (Tutorial)" />
 			</VBox>
 		</VBox>
+		<VBox> <Label text="2015" name="headline" />
+			<VBox name="box">
+				<Label text="Gladius1 (add Sounds to menu)" />
+			</VBox>
+		</VBox>
 	</VBox>
+	</ScrollArea>
 </HBox>
 
 <HBox name="credits_translators" position="185,45" padding="10">
@@ -160,6 +174,11 @@ afterwards run development/generate_credits.py to refresh this file.
 		<VBox> <Label text="Hosting Weblate" name="headline" />
 			<VBox name="box">
 				<Label text="Michal Čihař (nijel)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Afrikaans" name="headline" />
+			<VBox name="box">
+				<Label text="Alexandre Bezerra" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Bulgarian" name="headline" />
@@ -174,6 +193,8 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Àngel Mompó Llovet" />
 				<Label text="josep constanti" />
 				<Label text="Xavier Muntada Samà" />
+				<Label text="Joan Josep" />
+				<Label text="Josep Constanti" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Catalan (Valencia)" name="headline" />
@@ -205,6 +226,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="German" name="headline" />
 			<VBox name="box">
+				<Label text="darksider3" />
 				<Label text="djot" />
 				<Label text="Jordan Liese" />
 				<Label text="Kikody" />
@@ -214,6 +236,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Raymond Vetter" />
 				<Label text="schnurlos" />
 				<Label text="Stefan S" />
+				<Label text="Wuzzy" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Greek" name="headline" />
@@ -233,7 +256,9 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Fabio Fernández (Catharsius)" />
 				<Label text="Fede Muller" />
 				<Label text="Gauekoizar" />
+				<Label text="Ivan (malkavi)" />
 				<Label text="Ivan Gonzalez Martin" />
+				<Label text="Luis García Sevillano" />
 				<Label text="MicMic" />
 				<Label text="Nikolai Woutlan" />
 				<Label text="Rubén Viguera" />
@@ -304,6 +329,8 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="Hungarian" name="headline" />
 			<VBox name="box">
+				<Label text="Balázs Úr (urbalazs)" />
+				<Label text="Bence Nagy (nagybence)" />
 				<Label text="Lipták Krisztián" />
 				<Label text="Lorant Perger" />
 				<Label text="matyi" />
@@ -316,8 +343,10 @@ afterwards run development/generate_credits.py to refresh this file.
 			<VBox name="box">
 				<Label text="alamswijaya" />
 				<Label text="davezh" />
+				<Label text="Gallanth" />
 				<Label text="Ichwan Elhamdani" />
 				<Label text="Samuel Christo" />
+				<Label text="Samuel D.S.P" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Italian" name="headline" />
@@ -325,6 +354,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Davide Nanni" />
 				<Label text="Fabio Pedretti" />
 				<Label text="Fede Muller" />
+				<Label text="federico" />
 				<Label text="Gioele Cerri (joel)" />
 				<Label text="Giorgio Saragnese (supermario)" />
 				<Label text="Mathias Hofmann" />
@@ -350,11 +380,17 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Wooyoung Cho" />
 			</VBox>
 		</VBox>
+		<VBox> <Label text="Latvian" name="headline" />
+			<VBox name="box">
+				<Label text="Ronalds" />
+			</VBox>
+		</VBox>
 		<VBox> <Label text="Lithuanian" name="headline" />
 			<VBox name="box">
 				<Label text="Jur Kis" />
 				<Label text="Mantas Kondrotas (Anielius)" />
 				<Label text="Mantas Kriaučiūnas" />
+				<Label text="Pilypas Kriauciunas" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Malayalam" name="headline" />
@@ -372,16 +408,20 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Daniel Andre" />
 				<Label text="Frode Woldsund (frodus)" />
 				<Label text="Jared Isaksen (JeThro)" />
+				<Label text="Kurt Eilertsen" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Dutch" name="headline" />
 			<VBox name="box">
+				<Label text="Damian Bodde" />
 				<Label text="Dieter Adriaenssens" />
 				<Label text="Jasper Tepper (Shadow23)" />
 				<Label text="Joenit S. (joenit)" />
 				<Label text="Luth" />
 				<Label text="mightykai" />
 				<Label text="Nick Z. (angellus)" />
+				<Label text="Niels Breuker" />
+				<Label text="NiLSPACE" />
 				<Label text="Ruud Jacobs (MrRuudJ)" />
 				<Label text="Sander Hasenpflug (SanderOnline)" />
 				<Label text="Sietze Greydanus" />
@@ -395,6 +435,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Adrian Marcinkowski (Amfidiusz)" />
 				<Label text="Eerozeteen" />
 				<Label text="Gilead" />
+				<Label text="Grzegorz Cora" />
 				<Label text="Jan Krzysztof Zawadzki (kzawadzki)" />
 				<Label text="janczarny" />
 				<Label text="Lemoid" />
@@ -405,9 +446,11 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Piotr Gredka" />
 				<Label text="Piotr Strebski" />
 				<Label text="Premislaus" />
+				<Label text="Rafał Michalski" />
 				<Label text="Robert Matusewicz (matekm)" />
 				<Label text="Robert Mitwicki (mtfk)" />
 				<Label text="Stanislaw Gackowski (soeb)" />
+				<Label text="Tomasz Rydzyński" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Portuguese" name="headline" />
@@ -416,6 +459,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Guilherme Nogueira" />
 				<Label text="João Sena Cardoso" />
 				<Label text="Joel Santinho" />
+				<Label text="José Gil" />
 				<Label text="Luis Coehlo" />
 				<Label text="Nelson Marques (nmarques)" />
 				<Label text="Nuno Alves (MadMonk)" />
@@ -448,6 +492,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Raymond Vetter" />
 				<Label text="tbmale" />
 				<Label text="trendy" />
+				<Label text="Vlad Topala" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Russian" name="headline" />
@@ -467,6 +512,11 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Вячеслав Гостюхин (scazy)" />
 			</VBox>
 		</VBox>
+		<VBox> <Label text="Serbian" name="headline" />
+			<VBox name="box">
+				<Label text="Slobodan Simić (Слободан Симић)" />
+			</VBox>
+		</VBox>
 		<VBox> <Label text="Slovenian" name="headline" />
 			<VBox name="box">
 				<Label text="Andrej Žnidaršič (andrejz)" />
@@ -474,6 +524,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="Swedish" name="headline" />
 			<VBox name="box">
+				<Label text="Åke Engelbrektson (eson57)" />
 				<Label text="Chris Browne" />
 				<Label text="Fringillus" />
 				<Label text="Karar Al-Remahy" />
@@ -484,6 +535,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="Turkish" name="headline" />
 			<VBox name="box">
+				<Label text="Burak Yavuz (BouRock)" />
 				<Label text="Ceren Kocaman (CerenK)" />
 				<Label text="cuil" />
 				<Label text="Ersan Doru Doru" />
@@ -510,11 +562,6 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="Marco Leong" />
 				<Label text="Yes Stone" />
 				<Label text="Ezjerry Liao" />
-			</VBox>
-		</VBox>
-		<VBox> <Label text="Afrikaans" name="headline" />
-			<VBox name="box">
-				<Label text="Alexandre Bezerra" />
 			</VBox>
 		</VBox>
 	</VBox>

@@ -9,11 +9,11 @@ size_y: 2
 inhabitants: 3
 tooltip_text: _ Produces wine out of grapes.
 tier: TIER.CITIZENS
-buildingcosts: {RES.GOLD: 1}
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.BRICKS: 3}
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab ]
+    tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
@@ -27,6 +27,9 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.LIQUOR: 6, RES.GRAPES: 8}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.CITIZENS:
     as_winery:

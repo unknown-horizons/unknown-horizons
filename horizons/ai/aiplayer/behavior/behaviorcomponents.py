@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,7 +36,7 @@ from horizons.constants import BUILDINGS
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class BehaviorComponent(object):

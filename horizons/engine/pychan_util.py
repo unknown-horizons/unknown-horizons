@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -235,3 +235,4 @@ def setup_trigger_signals_on_hover():
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['CancelButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['DeleteButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['MainmenuButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['ImageButton'])

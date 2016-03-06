@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 자유 교역선 등의 다른 배가 접근하기 쉽게 해안에 창고를 건설하세요.]
+  - [Message, 무역선이 정착지를 방문할 수 있도록 해안에 창고를 건설하세요.]
   - '
 
 
@@ -24,63 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - 여기는 모든 중요한 정보가 저장되어있는 선장의 항해일지 입니다. 각 임무에 대한 간단한 알림이 화면의 왼쪽에 제공될 것입니다.
-  - 이 설명에 더 관심이 있다면, 필요로하는 모든 도움을 항해일지가 원하는데로 제공할것입니다.
-  - 이 기록을 닫은 후, 오른쪽 상단 모서리에있는 "선장의 항해일지" 아이콘을 다시 열 수 있습니다. (미니 맵 아래 밀봉 문서와 깃털펜).
+  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    첫 번째 임무를 확인하려면, 탐색 패널에서 "다음 항목을 읽기"버튼을 클릭하세요! 그것은 다음과 같습니다:'
+    첫 번째 임무를 확인하려면, 반대 페이지의 하단에 있는 버튼을 사용하여 저널?? 일기??의 다음 페이지로 넘기세요.- 다음과 같습니다:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    더 나은 표현에 대한 제안, 설명하고 싶거나 오류 조건에 대한 주제를 저희에게 알려주세요. 그러면 우리는 이 자습서를 개선할것입니다!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    팀에 문의하는 방법에 대한 도움을 얻으려면 www.unknown-horizons.org에 방문하십시오!'
-  - 그러면 이제, 진짜 게임을 시작합니다.
+    팀에 문의하는 방법을 찾으려면 www.unknown-horizons.org에 방문하십시오.'
+  - ''
+  - 그러면 이제, 게임을 시작합니다!
   - [Pagebreak]
-  - [Headline, '새로운 임무: 섬에 정착하기']
+  - [Headline, '새로운 임무: 정착지 만들기']
   - [Image, content/gui/images/background/hr.png]
-  - 배를 이동하려면, 왼쪽 클릭으로 선택하고, 가고싶은 위치에서 오른쪽 클릭합니다.
-  - 일단 해안 근처에 있으면, 요약 탭에서 볼 수 있는 닻 모양의 버튼이 활성화됩니다.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - 배를 이동하려면, 왼쪽 클릭으로 선택하고, 항해할 위치에서 오른쪽 클릭합니다.
+  - 일단 해안 근처에 있으면, 요약에있는 '정착지 건설' 버튼이 활성화됩니다.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - 이것은 '정착지 건설'이라는 버튼을 누르면 거기에 창고를 만들 수 있다는것을 나타냅니다.
-  - 이제 커서를 움직이면 건물의 미리보기가 움직입니다.
-  - '이 미리보기가 빨간 그림자가 아닌 아무곳이나 건설할 수 있습니다.
-
-    첫 번째 건물을 배치 하려면 클릭 하십시오.'
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, '임무: 해안선 근처에서 창고를 건설하기.']
 
 - &LUMBERJACK
-  - [Message, '벌목꾼의 집을 건설하고, 도로를 이용하여 창고를 연결하세요.']
-  - [Headline, '새로운 임무 : 벌목꾼의 집을 건설']
+  - [Message, '벌목꾼의 집을 건설하고, 창고와 연결하십시오.']
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - 배에 있는 건축 자재는 자동으로 내려집니다. 이제 몇 가지 기본적인 건물을 만들 수 있습니다.
-  - 우리는 나무꾼 오두막 건설을 시작 합니다.
-  - 이 단계에서는, 판자가 선원들이 천막을 설치하기위해 걸수있는 유일한 기둥이기 때문에 필요합니다.
-  - 어부는 자신의 배를 잘 만들기 위해서 약간의 판자를 필요로 합니다.
-  - 벌목소를 짓기 위해; 작은지도 아래 큰 아이콘을 클릭 하나 B 키를 눌러서 건설 메뉴를 여세요.
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - 벌목꾼의 집을 지으려면, 작은지도 아래 버튼을 클릭거나  기본 단축키인 'B' 키를 눌러하여 건설 차림판을 여십시오.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - 건설 메뉴는 계층별로 정렬되어 있습니다.
-  - 현재는 기본적인 건물만을 제공하는 첫번째 계층에 있습니다(선원 수준).
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    문명의 발전으로 더 복잡한 건물과 더 많은 것을 얻었습니다.'
-  - 이제, '조직원컴퍼니???' 아래에 있는 벌목소를 선택하고, 나무들이있는 주변의 지역에 건설하세요.
-  - 나중에 나무도 심을수 있습니다. - 하지만 비용이 듭니다. 자연적으로 제공된것을 최대한 활용하세요!
-  - 조직원??은 항상 저장소와 창고로 연결된 길을 필요로 합니다. 그러지않으면 물건은 조직원??에게 남아있고 수집되지않습니다.
-  - 창고(또는 저장소)와 벌목소를 반드시 연결해야한다는 뜻입니다.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - 수집꾼들이 첫번째 자체 생산된 판자들을 가져오는 방법을 보십세요. 나무꾼에대한 노동자의 모집은 걱정하지마세요. 자동적으로 나타납니다.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, '임무: 벌목꾼의 집을 숲속지역에 건설하고 그곳을 창고와 길을 연결하세요.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -102,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 유닛 음식 당 약간 긴 생산시간의 비용으로 매우 안정적인 공급입니다.
   - 당신것 같은 작은 정착지는 같은 조직원을 사용할 수 있고 더나은 장단점을 조정할수 있습니다.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, '임무: 사냥꾼의 집과 낚시꾼의 집을 건설.']
   - 길로 창고와 그것들을 연결하는것을 잊지마세요!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -112,14 +105,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, '새로운 임무: 주요 광장']
   - [Image, content/gui/images/background/hr.png]
   - 주민들은 그들의 상품을 가져올 수 있는 주요 광장을 필요로 합니다.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
+  - 즉, 그들의 집에서 주요광장까지 연결된 길을 필요로 한다는 뜻입니다. 주 광장은 길로서의 역할을 합니다. 따라서 인접한 집들은 별도의 길이 필요하지 않습니다.
   - 창고 에있는 모든 상품들은 '시장'에서 이용할수있습니다., 주민들은 어부나 창고로 걸을 필요가 없습니다.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - 건설 천막은 벌목소가 판자를 만드는데 필요한 나무들을 제거해버리기 때문에 주요 정착지 천막에 벌목소가 너무 가까운걸 피해야 합니다.
   - 조직원들은 천막와 연결되지않고 일을 하므로 주요 광장과 벌목소 천막 사이의 도로를 건설할 필요가 없습니다.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, '임무: 주요 광장을 건설.']
   - [Pagebreak]
   - '
 
@@ -134,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 다른 계층의 요약 탭에서 주민들에 대한 통계를 볼 수 있습니다. 또한 여기에서 계층별 전체 세금을 설정하고, 이 계층의 주민들을 다음의 더 높은 단계로 상향하는데 허용 하거나 거부할 수 있습니다.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
+  - [Message, 필요하다면 집을 건설하고 주 광장과 연결하세요.]
   - [Headline, '새로운 임무: 주택 건설']
   - [Image, content/gui/images/background/hr.png]
   - 정착민들은 자신들의 머리를 덮어줄 지붕을 원합니다. 그들은 당신의 도시에 살고 싶은생각이 없습니다! 천막을  제공해야 합니다.
@@ -145,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 만약 이러한 재료의 재고가 부족한경우, 향상을 하지않는것이 좋습니다.
   - 정착민들은 생산하는 모든 상품을 소비하려하기 때문에 정착민들은 매우 유용해 보이지 않을수 있습니다. -하지만 그들은 최소한의 세금을 지불하므로 지금 돈을 벌 수있는 유일한 방법입니다!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, '임무 : 필요하다면 천막을 건설하고 주요 광장에 연결하세요. 천막은 어떠한 동료와도 연결을 필요로 하지 않습니다.']
 
 - &MORETENTS
   - [Message, '추가로 최소 세 개의 천막을 만들고, 주요광장과 연결한다.']
@@ -163,7 +156,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 그렇지 않는경우 행복도와 수입이 감소합니다. 언젠가 주민들이 정말로 뽀로통해지고, 마을을 두고 가버리고, 부폐 퇴락될것입니다.
   - 여기서 전체 세금 설정도 바꿀 수 있습니다.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, '임무: 최소한 3개의 천막을 추가적으로 건설.']
   - '
 
     팁: Shift 키를 누르고 있으면 같은 종류의 여러 건물을 건설하는데 쉽습니다.'
@@ -191,7 +184,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '''구매''에서 ''판매''로 또는 반대의 경우에도 칸모드를 바꾸기 위해 작은 아이콘을 클릭하세요.'
   - 무역하고자하는 칸의 물품을 선택하세요. 무역 준비가 되면 더 설명하겠습니다.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, '임무: 창고 근처 해안에 봉화를 건설.']
 
 - &TRADING
   - [Message, 최소 도구30개의 섬 비축품을 확보하세요. 약간의 시간이 걸릴수있다는것을 알고계세요.]
@@ -218,7 +211,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     값은 수동적으로 변할수 없습니다!'
   - '''구매''와 ''판매''''회계''탭에서 무역수지를 볼 수 있습니다.'
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, '임무: 재고에서 30개의 도구를 가지고하는 데 필요한만큼 도구로 구입(???)!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -243,7 +236,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     뿐만 아니라 도로 연결도 필요합니다.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, '임무: 신앙에 대한 선원들의 요구를 충족하기 위해 천막과 연결된 길과 교회을 건설.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -264,7 +257,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 업그레이드 된 주택은 더 많은 주민들을 수용합니다, 그리고 개척자도 선원보다 더 많은 세금을 지불합니다.
   - 이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 상품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 할뿐만아니라 이 여분의 돈을 소비해야합니다.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, '임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다릴것.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -289,7 +282,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, '임무: 농장을 건설.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -316,7 +309,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, '임무: 최소 하나 이상의 목초지를 건설하고, 좋아 한다면 감자밭도 추가.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -324,7 +317,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 그럴듯한 곳에 저장소 천막(제 1 시대 탭)을 건설하세요.]
   - [Headline, '새로운 임무: 저장소 건설']
   - [Image, content/gui/images/background/hr.png]
-  - Did you watch your lumberjack recently?
+  - 최근에 나무꾼을 본적 있습니까?
   - Since your warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
   - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
   - We can improve this situation in two different ways, and we will have a look at both of them below.
@@ -346,7 +339,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * sends its own collectors to fetch goods, just like the warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, '임무: 가급적이면 수집자를 필요로 하는곳에 장소 천막을 건설.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -359,7 +352,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In both cases you should ensure the connection to a trail as well.
   - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, '임무: 양털을 얻을수있는 위치에 방직소를 건설.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -371,13 +364,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, '임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야함.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
   - [Message, 축하합니다! 자습서를 완료했습니다. 이제 새로운 것에 도전해 봅시다!]
-  - [Headline, 남아있는 임무가 없음]
+  - [Headline, 남은 임무 없음]
   - [Image, content/gui/images/background/hr.png]
   - 전달된 모든 임무를 성공적으로 완료하였습니다. 세계는 지금 자유로운 열망과 용감한 탐험을 위해여러분의 명령을 기다리고 있고 있습니다!
   - '우리가 할수있거나 개선, 추가, 삭제해야 하는 제안 사항이 있다면:'
@@ -662,4 +655,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 163 translated messages, 28 untranslated messages.
+  translation_status: 144 translated messages, 1 fuzzy translation, 41 untranslated messages.

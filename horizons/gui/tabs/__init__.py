@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,9 +36,10 @@ from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
-from boatbuildertabs import BoatbuilderTab, BoatbuilderFisherTab, \
-						BoatbuilderTradeTab, BoatbuilderWar1Tab, \
-						BoatbuilderWar2Tab, BoatbuilderConfirmTab
+from boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, BoatbuilderTab, \
+                                                BoatbuilderFisherTab, BoatbuilderTradeTab, \
+                                                BoatbuilderWar1Tab, BoatbuilderWar2Tab, \
+                                                BoatbuilderConfirmTab
 from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
 						MainSquareSettlersTab, MainSquareCitizensTab
@@ -46,6 +47,9 @@ from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
+
+from barrackstabs import BarracksTab, BarracksSelectTab, \
+						BarracksSwordmanTab, BarracksConfirmTab
 
 def resolve_tab(tabclass_name):
 	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""

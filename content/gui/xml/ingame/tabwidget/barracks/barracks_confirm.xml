@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!-- Confirm order "tab" -->
+<Container  size="260,550">
+<TabBG amount="8" />
+
+	<Container position="0,70" size="260,40">
+		<!-- Headline-->
+		<Label name="headline" position="60,7" text="Confirm order" />
+		<hr position="20,30" />
+	</Container>
+
+	<Container position="20,110" size="95,95">
+		<!--Current order pic-->
+		<Icon image="content/gui/images/background/square_80.png" position="15,15" helptext="(like in the selection tabs)" />
+	</Container>
+
+	<Container position="130,110" size="260,100">
+		<!--Resources and amount-->
+		<Icon image="content/gui/icons/resources/32/004.png" min_size="16,16" max_size="16,16" size="16,16" position="0,0" helptext="$res" />
+		<Label position="22,0" name="BB_needed_boards" text="24t" />
+		<Icon image="content/gui/icons/resources/32/003.png" min_size="16,16" max_size="16,16" size="16,16" position="0,20" helptext="$res" />
+		<Label position="22,20" name="BB_needed_cloth" text="14t" />
+		<Icon image="content/gui/icons/resources/32/006.png" min_size="16,16" max_size="16,16" size="16,16" position="0,40" helptext="$res" />
+		<Label position="22,40" name="BB_needed_ropes" text="06t" />
+		<Icon image="content/gui/icons/resources/32/005.png" min_size="16,16" max_size="16,16" size="16,16" position="0,60" helptext="$res" />
+		<Label position="22,60" name="BB_needed_cannons" text="06t" />
+		<Icon image="content/gui/icons/resources/32/001.png" min_size="16,16" max_size="16,16" size="16,16" position="0,80" helptext="$res" />
+		<Label position="22,80" name="BB_needed_money" text="2500" />
+
+	</Container>
+
+	<Container position="20,210" size="220,120">
+		<!--Description-->
+		<Label name="headline_BB_builtgroundunit_label" position="15,0" text="Sloop-o'-war" />
+		<Label name="BB_description_swordman" position="15,25" text="Three-masted most common classified war ship with one gun deck." wrap_text="1" max_size="212,60" />
+		<Label name="headline_upgrades" position="50,90" text="Buy Upgrades" />
+		<hr position="0,113" />
+	</Container>
+
+	<Container position="20,333" size="220,30">
+		<!--Upgrades-->
+		<ImageButton position="20,0" path="images/background/sq" />
+		<Label name="BB_upgrade_cannons" position="50,4" text="Cannons" />
+		<ImageButton position="120,0" path="images/background/sq_ok" />
+		<Label name="BB_upgrade_hull" position="150,4" text="Hull" />
+	</Container>
+
+	<Container position="180,110" size="80,100">
+		<!--Upgrade costs-->
+		<Label position="0,0" name="BB_needed_boards+" text=" + 24t" />
+		<Label position="0,20" name="BB_needed_cloth+" text=" + 14t" />
+		<Label position="0,40" name="BB_needed_ropes+" text=" + 06t" />
+		<Label position="0,60" name="BB_needed_cannons+" text=" + 06t" />
+		<Label position="0,80" name="BB_needed_money+" text=" + 1457" />
+
+	</Container>
+
+	<Container position="60,380" size="240,100">
+		<!--Confirm task-->
+		<Label position="30,10" name="BB_confirm_build_label" text="Build groundunit:" />
+		<OkButton position="100,0" helptext="Build this groundunit!" name="create_unit" />
+	</Container>-->
+</Container>

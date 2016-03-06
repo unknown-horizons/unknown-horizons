@@ -1,0 +1,27 @@
+id: BUILDINGS.HOP_FIELD
+name: _ Hop Field
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Yields hop. Needs a farm.
+tier: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      HOP_PLANTS:
+        produces:
+        - [RES.HOP_PLANTS, 1]
+        time: 26
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.HOP_PLANTS: 1}
+actionsets:
+  TIER.CITIZENS:
+    as_hopfield:
