@@ -33,9 +33,10 @@ from horizons.world.units import UnitClass
 
 class ConcreteObject(WorldObject):
     """Class for concrete objects like Units or Buildings.
-    "Concrete" here means "you can touch it", e.g. a Warehouse is a ConcreteObject,
-    a Settlement isn't.
-    All such objects have positions, so Islands are no ConcreteObjects for technical reasons.
+    "Concrete" here means "you can touch it", e.g. a Warehouse
+    is a ConcreteObject, a Settlement isn't.
+    All such objects have positions, so Islands are no
+    ConcreteObjects for technical reasons.
 
     Assumes that object has a member _instance.
     """
@@ -58,14 +59,17 @@ class ConcreteObject(WorldObject):
         self._instance = None
         # Default action is 'idle'
         self._action = 'idle'
-        # NOTE: this can't be level-aware since not all ConcreteObjects have levels
-        self._action_set_id = action_set_id if action_set_id else self.__class__.get_random_action_set()
+        # NOTE: this can't be level-aware since
+        #  not all ConcreteObjects have levels
+        self._action_set_id = action_set_id if action_set_id else \
+            self.__class__.get_random_action_set()
 
         # only buildings for now
         # NOTE: this is player dependent, therefore there must be no calls
         # to session.random that depend on this
-        self.has_status_icon = self.is_building and self.show_status_icons and \
-            self.owner is not None and self.owner.is_local_player  # and only for the player's buildings
+        self.has_status_icon = self.is_building and self.show_status_icons and\
+            self.owner is not None and self.owner.is_local_player
+        # and only for the player's buildings
 
     @property
     def fife_instance(self):
@@ -73,8 +77,9 @@ class ConcreteObject(WorldObject):
 
     def save(self, db):
         super(ConcreteObject, self).save(db)
-        db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid,
-             self._instance.getActionRuntime(), self._action_set_id)
+        db("INSERT INTO concrete_object(id, action_runtime, action_set_id) "
+           "VALUES(?, ?, ?)", self.worldid,
+           self._instance.getActionRuntime(), self._action_set_id)
 
     def load(self, db, worldid):
         super(ConcreteObject, self).load(db, worldid)
@@ -86,16 +91,22 @@ class ConcreteObject(WorldObject):
                 level=self.level if hasattr(self, "level") else 0)
         self.__init(action_set_id)
 
-        # delay setting of runtime until load of sub/super-class has set the action
+        # delay setting of runtime until load of sub/super-class
+        #  has set the action
         def set_action_runtime(self, runtime):
-            # workaround to delay resolution of self._instance, which doesn't exist yet
+            # workaround to delay resolution of self._instance,
+            #  which doesn't exist yet
             self._instance.setActionRuntime(runtime)
-        Scheduler().add_new_object(Callback(set_action_runtime, self, runtime), self, run_in=0)
+        Scheduler().add_new_object(Callback(set_action_runtime, self, runtime),
+                                   self, run_in=0)
 
-    def act(self, action, facing_loc=None, repeating=False, force_restart=True):
+    def act(self, action, facing_loc=None, repeating=False,
+            force_restart=True):
         """
-        @param repeating: maps to fife instance method actRepeat or actOnce
-        @param force_restart: whether to always restart, even if action is already displayed
+        @param repeating: maps to fife instance method actRepeat
+                          or actOnce
+        @param force_restart: whether to always restart,
+                              even if action is already displayed
         """
         if not self.has_action(action):
             action = 'idle'
@@ -105,9 +116,11 @@ class ConcreteObject(WorldObject):
 
         self._action = action
 
-        # TODO This should not happen, this is a fix for the component introduction
-        # Should be fixed as soon as we move concrete object to a component as well
-        # which ensures proper initialization order for loading and initing
+        # TODO This should not happen, this is a fix
+        # for the component introduction
+        # Should be fixed as soon as we move concrete object
+        # to a component as well which ensures proper initialization
+        #  order for loading and initing
         if self._instance is None:
             return
 
@@ -116,11 +129,14 @@ class ConcreteObject(WorldObject):
         UnitClass.ensure_action_loaded(self._action_set_id, action)  # lazy
         if (Fife.getVersion() >= (0, 3, 6)):
             if repeating:
-                self._instance.actRepeat(action + "_" + str(self._action_set_id), facing_loc)
+                self._instance.actRepeat(action + "_" + str(
+                    self._action_set_id), facing_loc)
             else:
-                self._instance.actOnce(action + "_" + str(self._action_set_id), facing_loc)
+                self._instance.actOnce(action + "_" + str(
+                    self._action_set_id), facing_loc)
         else:
-            self._instance.act(action + "_" + str(self._action_set_id), facing_loc, repeating)
+            self._instance.act(action + "_" + str(self._action_set_id),
+                               facing_loc, repeating)
         ActionChanged.broadcast(self, action)
 
     def has_action(self, action):
@@ -129,14 +145,16 @@ class ConcreteObject(WorldObject):
         return (action in ActionSetLoader.get_set(self._action_set_id))
 
     def remove(self):
-        self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
+        self._instance.getLocationRef().getLayer().deleteInstance(
+            self._instance)
         self._instance = None
         Scheduler().rem_all_classinst_calls(self)
         super(ConcreteObject, self).remove()
 
     @classmethod
     def weighted_choice(cls, weighted_dict):
-        """ http://eli.thegreenplace.net/2010/01/22/weighted-random-generation-in-python/
+        """ http://eli.thegreenplace.net/2010/01/22/
+        weighted-random-generation-in-python/
         """
         # usually we do not need any magic because there only is one set:
         if len(weighted_dict) == 1:
@@ -151,10 +169,12 @@ class ConcreteObject(WorldObject):
 
     @classmethod
     def get_random_action_set(cls, level=0, exact_level=False):
-        """Returns an action set for an object of type object_id in a level <= the specified level.
+        """Returns an action set for an object of type object_id
+        in a level <= the specified level.
         The highest level number is preferred.
         @param level: level to prefer. a lower level might be chosen
-        @param exact_level: choose only action sets from this level. return val might be None here.
+        @param exact_level: choose only action sets from this level.
+                            return val might be None here.
         @return: action_set_id or None"""
         action_sets = cls.action_sets
         action_set = None
@@ -162,15 +182,17 @@ class ConcreteObject(WorldObject):
             if level in action_sets:
                 action_set = cls.weighted_choice(action_sets[level])
             # if there isn't one, stick with None
-        else:  # search all levels for an action set, starting with highest one
+        else:
+            # search all levels for an action set, starting with highest one
             for possible_level in reversed(xrange(level + 1)):
                 if possible_level in action_sets.iterkeys():
-                    action_set = cls.weighted_choice(action_sets[possible_level])
+                    action_set = cls.weighted_choice(
+                        action_sets[possible_level])
                     break
             if action_set is None:  # didn't find a suitable one
                 # fall back to one from a higher level.
-                # this does not happen in valid games, but can happen in tests, when level
-                # constraints are ignored.
+                # this does not happen in valid games, but can happen
+                # in tests, when level constraints are ignored.
                 action_set, weight = action_sets.values()[0].items()[0]
 
         return action_set

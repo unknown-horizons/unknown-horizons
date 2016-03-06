@@ -245,7 +245,8 @@ class Island(BuildingOwner, WorldObject):
         if settlement not in self.settlements:
             self.settlements.append(settlement)
         self.assign_settlement(position, radius, settlement)
-        self.session.scenario_eventhandler.check_events(CONDITIONS.settlements_num_greater)
+        self.session.scenario_eventhandler.check_events(
+            CONDITIONS.settlements_num_greater)
         return settlement
 
     def assign_settlement(self, position, radius, settlement):
@@ -256,7 +257,8 @@ class Island(BuildingOwner, WorldObject):
         @param settlement:
         """
         settlement_coords_changed = []
-        for coords in position.get_radius_coordinates(radius, include_self=True):
+        for coords in position.get_radius_coordinates(radius,
+                                                      include_self=True):
             if coords not in self.ground_map:
                 continue
 
@@ -280,7 +282,8 @@ class Island(BuildingOwner, WorldObject):
 
             # Assign the entire building to the first settlement that
             #  covers some of it.
-            assert building.settlement is None or building.settlement is settlement
+            assert building.settlement is None or building.settlement is \
+                settlement
             for building_coords in building.position.tuple_iter():
                 building_tile = self.ground_map[building_coords]
                 if building_tile.settlement is not settlement:
@@ -296,7 +299,8 @@ class Island(BuildingOwner, WorldObject):
         if not settlement_coords_changed:
             return
 
-        flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+        flat_land_set = self.terrain_cache.cache[
+            TerrainRequirement.LAND][(1, 1)]
         settlement_tiles_changed = []
         for coords in settlement_coords_changed:
             settlement_tiles_changed.append(self.ground_map[coords])
@@ -307,7 +311,8 @@ class Island(BuildingOwner, WorldObject):
 
         self._register_change()
         if self.terrain_cache:
-            settlement.buildability_cache.modify_area(settlement_coords_changed)
+            settlement.buildability_cache.modify_area(
+                settlement_coords_changed)
 
         SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
 
@@ -322,11 +327,13 @@ class Island(BuildingOwner, WorldObject):
         """Removes the settlement property from tiles within the radius
         of the given building"""
         settlement = building.settlement
-        buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
+        buildings_to_abandon, settlement_coords_to_change = \
+            Tear.additional_removals_after_tear(building)
         assert building not in buildings_to_abandon
         self.abandon_buildings(buildings_to_abandon)
 
-        flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+        flat_land_set = self.terrain_cache.cache[
+            TerrainRequirement.LAND][(1, 1)]
         land_or_coast = self.terrain_cache.land_or_coast
         settlement_tiles_changed = []
         clean_coords = set()
@@ -361,12 +368,15 @@ class Island(BuildingOwner, WorldObject):
         @param player: int id of the player that owns the settlement
         @param load: boolean, whether it has been called during loading"""
         if building.id in (BUILDINGS.CLAY_DEPOSIT,
-                BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
+                           BUILDINGS.MOUNTAIN) and \
+                self.available_land_cache is not None:
             # self.available_land_cache may be None when loading a settlement
             # it is ok to skip in that case because the cache's constructor
             # will take the deposits into account anyway
-            self.deposits[building.id][building.position.origin.to_tuple()] = building
-            self.available_land_cache.remove_area(list(building.position.tuple_iter()))
+            self.deposits[building.id][
+                building.position.origin.to_tuple()] = building
+            self.available_land_cache.remove_area(list(
+                building.position.tuple_iter()))
         super(Island, self).add_building(building, player, load=load)
         if not load and building.settlement is not None:
             # Note: (In case we do not require all building tiles
@@ -375,8 +385,10 @@ class Island(BuildingOwner, WorldObject):
             # called from here, so the building area itself *is*
             # expanded by even with radius=0! Right now this has
             # no effect (above buildability requirements).
-            radius = 0 if building.id not in BUILDINGS.EXPAND_RANGE else building.radius
-            self.assign_settlement(building.position, radius, building.settlement)
+            radius = 0 if building.id not in BUILDINGS.EXPAND_RANGE else \
+                building.radius
+            self.assign_settlement(building.position, radius,
+                                   building.settlement)
 
         if building.settlement is not None:
             building.settlement.add_building(building, load)
@@ -458,7 +470,8 @@ class Island(BuildingOwner, WorldObject):
 
     def check_wild_animal_population(self):
         """Creates a wild animal if they died out."""
-        self.log.debug("Checking wild animal population: %s", len(self.wild_animals))
+        self.log.debug("Checking wild animal population: %s",
+                       len(self.wild_animals))
         if self.wild_animals:
             # Some animals still alive, nothing to revive.
             return
@@ -470,7 +483,8 @@ class Island(BuildingOwner, WorldObject):
             if building.id == BUILDINGS.TREE:
                 point = building.position.origin
                 entity = Entities.units[UNITS.WILD_ANIMAL]
-                animal = entity(self, x=point.x, y=point.y, session=self.session)
+                animal = entity(self, x=point.x, y=point.y,
+                                session=self.session)
                 animal.initialize()
                 return
 

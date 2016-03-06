@@ -25,8 +25,8 @@ from collections import defaultdict
 
 class ProviderHandler(list):
     """Class to keep track of providers of an area, especially an island.
-    It acts as a data structure for quick retrieval of special properties, that only resource
-    providers have.
+    It acts as a data structure for quick retrieval
+    of special properties, that only resource providers have.
 
     Precondition: Provider never change their provided resources."""
 
@@ -35,7 +35,8 @@ class ProviderHandler(list):
         self.provider_by_resources = defaultdict(list)
 
     def append(self, provider):
-        # NOTE: appended elements need to be removed, else there will be a memory leak
+        # NOTE: appended elements need to be removed,
+        #  else there will be a memory leak
         for res in provider.provided_resources:
             self.provider_by_resources[res].append(provider)
         super(ProviderHandler, self).append(provider)

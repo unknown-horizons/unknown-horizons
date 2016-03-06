@@ -33,14 +33,17 @@ class IngameType(type):
     Note this creates class types, NOT instances.
     These types are created at the beginning of a session
     and are later used to create instances, when buildings are built.
-    The __new__() function uses quite some python magic to construct the new class.
+    The __new__() function uses quite some python magic to construct
+    the new class.
 
     TUTORIAL:
-    Check out the __new__() function if you feel you're pretty good with python and
-    are interested in how it all works. Otherwise, continue to the __init__() function.
+    Check out the __new__() function if you feel you're pretty good
+    with python and are interested in how it all works.
+    Otherwise, continue to the __init__() function.
     """
 
-    # Base package to import from, must end with the '.', the package is appended
+    # Base package to import from, must end with the '.', the package
+    #  is appended
     basepackage = 'horizons.world.building.'
     # Class name for the type.__new__ constructor
     classstring = 'Type[{id}]'
@@ -55,19 +58,26 @@ class IngameType(type):
             super(cls, self).load(db, worldid)
             return self
 
-        module = __import__(str(self.basepackage + class_package), [], [], [str(class_name)])
+        module = __import__(str(self.basepackage + class_package),
+                            [], [], [str(class_name)])
         return type.__new__(self, self.classstring.format(id=id),
-            (getattr(module, class_name),),
-            {'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
+                            (getattr(module, class_name),),
+                            {'load': load,
+                             'class_package': str(class_package),
+                             'class_name': str(class_name)})
 
     def _strip_translation_marks(self, string):
-        """Converts object translation `string` to translated object for in-game display.
+        """Converts object translation `string` to translated object
+        for in-game display.
 
         Object properties supposed to be translated are recognized by the
         (subsequently stripped) leading `_ `.
-        If `string` is supposed to be translated, returns lazy translation object of `string`.
-        If `string` is not supposed to be translated, returns `string` unchanged.
-        If `string` is None (not defined or empty in yaml), returns empty unicode.
+        If `string` is supposed to be translated,
+         returns lazy translation object of `string`.
+        If `string` is not supposed to be translated,
+         returns `string` unchanged.
+        If `string` is None (not defined or empty in yaml),
+         returns empty unicode.
         """
         if not string:
             return u''
@@ -79,12 +89,15 @@ class IngameType(type):
     def __init__(self, id, yaml_data):
         self.id = id
         # self._name is always some default name
-        # self._level_specific_names is optional and contains a dict like this: { level_id : name }
+        # self._level_specific_names is optional and contains
+        #  a dict like this: { level_id : name }
         # (with entries for all tiers in which it is active)
         name_data = yaml_data['name']
-        start_tier = yaml_data.get('tier', TIER.NATURE)  # first tier where object is available
+        start_tier = yaml_data.get('tier', TIER.NATURE)
+        # first tier where object is available
         if isinstance(name_data, dict):  # { level_id : name }
-            # fill up dict (fall down to highest tier which has a name specified
+            # fill up dict (fall down to highest tier which has
+            #  a name specified
             self._level_specific_names = {}
             for lvl in xrange(start_tier, TIER.CURRENT_MAX + 1):
                 name = name_data.get(lvl)
@@ -96,9 +109,11 @@ class IngameType(type):
                         "Found:\n%s") % (name_data, start_tier)
                     self._level_specific_names[lvl] = name
                 else:
-                    self._level_specific_names[lvl] = self._strip_translation_marks(name)
+                    self._level_specific_names[lvl] = \
+                        self._strip_translation_marks(name)
 
-            self._name = self._level_specific_names[start_tier]  # default name: lowest available
+            self._name = self._level_specific_names[start_tier]
+            # default name: lowest available
         else:  # assume just one string
             self._name = self._strip_translation_marks(name_data)
         self.radius = yaml_data['radius']
@@ -109,8 +124,10 @@ class IngameType(type):
 
         self._parse_component_templates()
 
-        # TODO: move this to the producer component as soon as there is support for class attributes there
-        self.additional_provided_resources = yaml_data.get('additional_provided_resources', [])
+        # TODO: move this to the producer component as soon as there
+        # is support for class attributes there
+        self.additional_provided_resources = yaml_data.get(
+            'additional_provided_resources', [])
 
         """TUTORIAL: Now you know the basic attributes each type has.
         Further attributes specific to buildings and units can be found in
@@ -130,15 +147,19 @@ class IngameType(type):
         * scheduler: horizons/scheduler.py. Manages ingame time.
         * extscheduler: horizons/extscheduler.py. Manages wall clock time.
         * scenario: horizons/scenario. Condition-action system for scenarios
-        * automatic tests: tests/. Contains unit tests, gui tests and game (system) tests
+        * automatic tests: tests/. Contains unit tests, gui tests
+                                   and game (system) tests
         * networking: horizons/network. Sending stuff over the wire
-        * concreteobject: horizons/world/concreteobject.py. Things with graphical representations
-        * gui: horizons/gui. The ugly parts. IngameGui and Gui, tabs and widgets.
+        * concreteobject: horizons/world/concreteobject.py.
+                          Things with graphical representations
+        * gui: horizons/gui. The ugly parts. IngameGui and Gui, tabs
+                             and widgets.
         * production: horizons/world/production
         ** Producer: producer component, manages everything
         ** ProductionLine: keeps data about the different production lines.
-        ** Production: the alive version of the production line. Used when a building
-                       actually produces something, stores progress and the like.
+        ** Production: the alive version of the production line.
+                       Used when a building actually produces something,
+                       stores progress and the like.
         * engine: horizons/engine. Direct interface to fife.
         * ai: horizons/ai/aiplayer. Way too big to describe here.
         """
@@ -146,9 +167,11 @@ class IngameType(type):
     def _parse_component_templates(self):
         """Prepares misc data in self.component_templates"""
         producer = [comp for comp in self.component_templates if
-            isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent']
+                    isinstance(comp, dict) and
+                    comp.iterkeys().next() == 'ProducerComponent']
         if producer:
-            # we want to support string production line ids, the code should still only see integers
+            # we want to support string production line ids,
+            #  the code should still only see integers
             # therefore we do a deterministic string -> int conversion here
 
             producer_data = producer[0]['ProducerComponent']
@@ -162,15 +185,19 @@ class IngameType(type):
                 else:
                     # hash the string
                     new_key = int(hashlib.sha1(old_key).hexdigest(), 16)
-                    # crop to integer. this might not be necessary, however the legacy code operated
-                    # on this data type, so problems might occur, also with respect to performance.
-                    # in principle, strings and longs should also be supported, but for the sake of
+                    # crop to integer. this might not be necessary,
+                    # however the legacy code operated
+                    # on this data type, so problems might occur,
+                    # also with respect to performance.
+                    # in principle, strings and longs should also
+                    # be supported, but for the sake of
                     # safety, we use ints.
-                    new_key = int(new_key % 2 ** 31)  # this ensures it's an integer on all reasonable platforms
+                    new_key = int(new_key % 2 ** 31)
+                    # this ensures it's an integer on all reasonable platforms
                 if new_key in new_data:
                     raise Exception('Error: production line id conflict.'
-                                    ' Please change "%s" to anything else for "%s"'
-                                    % (old_key, self.name))
+                                    ' Please change "%s" to anything else '
+                                    'for "%s"' % (old_key, self.name))
                 new_data[new_key] = v
 
             producer_data['productionlines'] = new_data
