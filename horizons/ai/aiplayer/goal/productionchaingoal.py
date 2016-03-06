@@ -178,6 +178,13 @@ class CannonGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'CannonGoal'
 
+class FlourGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(FlourGoal, self).__init__(settlement_manager, RES.FLOUR, 'flour producer')
+
+	def get_personality_name(self):
+		return 'FlourGoal'
+
 decorators.bind_all(ProductionChainGoal)
 decorators.bind_all(FaithGoal)
 decorators.bind_all(TextileGoal)
@@ -192,3 +199,4 @@ decorators.bind_all(TobaccoProductsGoal)
 decorators.bind_all(SaltGoal)
 decorators.bind_all(BeerGoal)
 decorators.bind_all(CannonGoal)
+decorators.bind_all(FlourGoal)
