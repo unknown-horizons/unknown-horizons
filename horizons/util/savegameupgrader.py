@@ -398,7 +398,7 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev74(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
 
-	def _upgrade_to_rev75(self, db):
+	def _upgrade_to_rev77(self, db):
 		db('CREATE TABLE "island_fertility" ("island" INT NOT NULL, "resource" INT NOT NULL)')
 		temperate = ClimateZone(CLIMATE.TEMPERATE_ZONE)
 		desert = ClimateZone(CLIMATE.DESERT_ZONE)
@@ -487,6 +487,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev74(db)
 			if rev < 75:
 				self._upgrade_to_rev75(db)
+			if rev < 77:
+				self._upgrade_to_rev77(db)
 
 			db('COMMIT')
 			db.close()
