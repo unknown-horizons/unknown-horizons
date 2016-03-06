@@ -26,8 +26,9 @@ class LazyBinaryBuildabilityCacheElement(object):
     """
     Lazily computed cache element of a BinaryBuildabilityCache instance.
 
-    Instances of this class are used to make less frequently needed caches of the
-    BinaryBuildabilityCache class instances get computed lazily just when it is needed.
+    Instances of this class are used to make less frequently needed
+    caches of the BinaryBuildabilityCache class instances get computed
+    lazily just when it is needed.
     """
 
     def __init__(self, buildability_cache, width):
@@ -45,7 +46,8 @@ class LazyBinaryBuildabilityCacheElement(object):
         usable = set()
         for coords in r3x3:
             x, y = coords
-            if (x + offset, y) in r3x3 and (x, y + offset) in r3x3 and (x + offset, y + offset) in r3x3:
+            if (x + offset, y) in r3x3 and (x, y + offset) in r3x3 and \
+                    (x + offset, y + offset) in r3x3:
                 usable.add(coords)
 
         self._cache = usable
@@ -70,20 +72,21 @@ class LazyBinaryBuildabilityCacheElement(object):
 
 
 class BinaryBuildabilityCache(object):
-    """
-    A cache that knows where rectangles can be placed such that they are entirely inside the area.
+    """A cache that knows where rectangles can be placed such
+    that they are entirely inside the area.
 
-    This cache can be used to keep track of building buildability in case the
-    buildability depends on the building being entirely within a certain area.
-    The binary part of the name refers to the fact that a node either is or isn't part of
-    the area that the instance is about.
+    This cache can be used to keep track of building buildability in
+    case the buildability depends on the building being entirely within
+    a certain area. The binary part of the name refers to the fact that
+    a node either is or isn't part of the area that the instance is about.
 
-    A query of the form (x, y) in instance.cache[(width, height)] is a very cheap way of
-    finding out whether a rectangle of size (width, height) can be placed on origin (x, y)
+    A query of the form (x, y) in instance.cache[(width, height)]
+    is a very cheap way of finding out whether a rectangle of size
+    (width, height) can be placed on origin (x, y)
     such that it is entirely within the given area.
 
-    All elements of instance.cache[(width, height)] can be iterated to get a complete list
-    of all such coordinates.
+    All elements of instance.cache[(width, height)] can be iterated to
+    get a complete list of all such coordinates.
     """
 
     def __init__(self, terrain_cache):
@@ -113,7 +116,8 @@ class BinaryBuildabilityCache(object):
                 cur_set.add(prev_coords)
                 base_set_additions.add(prev_coords)
             next_coords = (x + dx, y + dy)
-            if next_coords not in prev_set_additions and next_coords in prev_set:
+            if next_coords not in prev_set_additions and \
+                    next_coords in prev_set:
                 cur_set.add(coords)
                 base_set_additions.add(coords)
         return base_set_additions
@@ -122,10 +126,12 @@ class BinaryBuildabilityCache(object):
         """
         Add a list of new coordinates to the area.
 
-        This function quickly updates the information about the changed coordinates.
-        For example when (x, y) is added to the area then it will update the information
-        showing whether the 2x1 rectangles with the origin on (x - 1, y) and (x, y) are
-        now completely part of the area. Similar the things are done for the larger sizes.
+        This function quickly updates the information about the changed
+        coordinates. For example when (x, y) is added to the area then
+        it will update the information showing whether
+        the 2x1 rectangles with the origin on (x - 1, y) and (x, y) are
+        now completely part of the area.
+        Similar the things are done for the larger sizes.
         """
 
         for coords in new_coords_list:
@@ -136,16 +142,23 @@ class BinaryBuildabilityCache(object):
         coords_set = self.coords_set
         new_coords_set = set(new_coords_list)
 
-        new_row2 = self._extend_set(self._row2, coords_set, new_coords_set, 1, 0)
-        new_r2x2 = self._extend_set(self.cache[(2, 2)], self._row2, new_row2, 0, 1)
+        new_row2 = self._extend_set(self._row2, coords_set,
+                                    new_coords_set, 1, 0)
+        new_r2x2 = self._extend_set(self.cache[(2, 2)], self._row2,
+                                    new_row2, 0, 1)
 
-        new_r2x3 = self._extend_set(self.cache[(2, 3)], self.cache[(2, 2)], new_r2x2, 0, 1)
-        new_r2x4 = self._extend_set(self.cache[(2, 4)], self.cache[(2, 3)], new_r2x3, 0, 1)
+        new_r2x3 = self._extend_set(self.cache[(2, 3)], self.cache[(2, 2)],
+                                    new_r2x2, 0, 1)
+        new_r2x4 = self._extend_set(self.cache[(2, 4)], self.cache[(2, 3)],
+                                    new_r2x3, 0, 1)
 
-        new_r3x2 = self._extend_set(self.cache[(3, 2)], self.cache[(2, 2)], new_r2x2, 1, 0)
-        new_r4x2 = self._extend_set(self.cache[(4, 2)], self.cache[(3, 2)], new_r3x2, 1, 0)
+        new_r3x2 = self._extend_set(self.cache[(3, 2)], self.cache[(2, 2)],
+                                    new_r2x2, 1, 0)
+        new_r4x2 = self._extend_set(self.cache[(4, 2)], self.cache[(3, 2)],
+                                    new_r3x2, 1, 0)
 
-        self._extend_set(self.cache[(3, 3)], self.cache[(3, 2)], new_r3x2, 0, 1)
+        self._extend_set(self.cache[(3, 3)], self.cache[(3, 2)],
+                         new_r3x2, 0, 1)
         self._reset_lazy_sets()
 
     @classmethod

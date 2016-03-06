@@ -37,8 +37,8 @@ from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.buildability.freeislandcache import \
     FreeIslandBuildabilityCache
-from horizons.world.buildability.terraincache import TerrainBuildabilityCache, \
-    TerrainRequirement
+from horizons.world.buildability.terraincache import \
+    TerrainBuildabilityCache, TerrainRequirement
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
 
@@ -110,7 +110,8 @@ class Island(BuildingOwner, WorldObject):
                 WildAnimal.walking_range, self, self.session.random)
 
         # Load settlements.
-        for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
+        for (settlement_id,) in db("SELECT rowid FROM settlement WHERE "
+                                   "island = ?", island_id):
             settlement = Settlement.load(db, settlement_id, self.session, self)
             self.settlements.append(settlement)
 
@@ -119,7 +120,8 @@ class Island(BuildingOwner, WorldObject):
             return
 
         self.terrain_cache = TerrainBuildabilityCache(self)
-        flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+        flat_land_set = self.terrain_cache.cache[
+            TerrainRequirement.LAND][(1, 1)]
         self.available_flat_land = len(flat_land_set)
         available_coords_set = set(self.terrain_cache.land_or_coast)
 
@@ -134,7 +136,8 @@ class Island(BuildingOwner, WorldObject):
 
         # Load buildings.
         from horizons.world import load_building
-        buildings = db("SELECT rowid, type FROM building WHERE location = ?", island_id)
+        buildings = db("SELECT rowid, type FROM building WHERE location = ?",
+                       island_id)
         for (building_worldid, building_typeid) in buildings:
             load_building(self.session, db, building_typeid, building_worldid)
 
@@ -143,19 +146,24 @@ class Island(BuildingOwner, WorldObject):
         Load the actual island from a file
         @param preview: flag, map preview mode
         """
-        p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)),"
-            " (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
+        p_x, p_y, width, height = db(
+            "SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)),"
+            " (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?",
+            island_id - 1001)[0]
 
         self.ground_map = {}
-        for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id,"
-                " action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001):  # Load grounds
+        for (x, y, ground_id, action_id, rotation) in db(
+                "SELECT x, y, ground_id,"
+                " action_id, rotation FROM ground WHERE island_id = ?",
+                island_id - 1001):  # Load grounds
             if not preview:  # actual game, need actual tiles
-                ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+                ground = Entities.grounds[str('%d-%s' % (
+                    ground_id, action_id))](self.session, x, y)
                 ground.act(rotation)
             else:
                 ground = MapPreviewTile(x, y, ground_id)
-            # These are important for pathfinding and building to check if the ground tile
-            # is blocked in any way.
+            # These are important for pathfinding and building to check
+            # if the ground tile is blocked in any way.
             self.ground_map[(ground.x, ground.y)] = ground
 
         self._init_cache()
@@ -182,12 +190,14 @@ class Island(BuildingOwner, WorldObject):
             self.path_nodes = IslandPathNodes(self)
 
             # Repopulate wild animals every 2 mins if they die out.
-            Scheduler().add_new_object(self.check_wild_animal_population, self,
-                                       run_in=Scheduler().get_ticks(120), loops=-1)
+            Scheduler().add_new_object(self.check_wild_animal_population,
+                                       self, run_in=Scheduler().get_ticks(120),
+                                       loops=-1)
 
         """TUTORIAL:
-        The next step will be an overview of the component system, which you will need
-        to understand in order to see how our actual game object (buildings, units) work.
+        The next step will be an overview of the component system,
+        which you will need to understand in order to see how our
+        actual game object (buildings, units) work.
         Please proceed to horizons/component/componentholder.py.
         """
 

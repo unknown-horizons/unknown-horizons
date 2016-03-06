@@ -32,71 +32,71 @@ from horizons.component.collectingcomponent import CollectingComponent
 
 class StorageBuilding(StorageResourceHandler,
                       BuildingResourceHandler, BasicBuilding):
-	"""Building that gets pickups and provides them for anyone.
-	Inherited eg. by warehouse, storage tent.
-	These objects don't have a storage themselves, but use the settlement storage.
-	"""
-	def __init__(self, x, y, owner, instance=None, **kwargs):
-		super(StorageBuilding, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
+    """Building that gets pickups and provides them for anyone.
+    Inherited eg. by warehouse, storage tent.
+    These objects don't have a storage themselves, but use the settlement storage.
+    """
+    def __init__(self, x, y, owner, instance=None, **kwargs):
+        super(StorageBuilding, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
-	def initialize(self):
-		super(StorageBuilding, self).initialize()
-		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
-		# add limit, it will be saved so don't set on load()
-		inv = self.get_component(StorageComponent).inventory
-		inv.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
+    def initialize(self):
+        super(StorageBuilding, self).initialize()
+        self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
+        # add limit, it will be saved so don't set on load()
+        inv = self.get_component(StorageComponent).inventory
+        inv.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
-	def remove(self):
-		inv = self.get_component(StorageComponent).inventory
-		inv.remove_change_listener(self._changed)
-		inv.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
-		super(StorageBuilding, self).remove()
+    def remove(self):
+        inv = self.get_component(StorageComponent).inventory
+        inv.remove_change_listener(self._changed)
+        inv.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
+        super(StorageBuilding, self).remove()
 
-	def load(self, db, worldid):
-		super(StorageBuilding, self).load(db, worldid)
-		# limit will be save/loaded by the storage, don't do anything here
-		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
+    def load(self, db, worldid):
+        super(StorageBuilding, self).load(db, worldid)
+        # limit will be save/loaded by the storage, don't do anything here
+        self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 
-	def get_utilization_history_length(self):
-		collecting_comp = self.get_component(CollectingComponent)
-		if collecting_comp.get_local_collectors():
-			return collecting_comp.get_local_collectors()[0].get_utilization_history_length()
+    def get_utilization_history_length(self):
+        collecting_comp = self.get_component(CollectingComponent)
+        if collecting_comp.get_local_collectors():
+            return collecting_comp.get_local_collectors()[0].get_utilization_history_length()
 
-	def get_collector_utilization(self):
-		collectors = self.get_component(CollectingComponent).get_local_collectors()
-		if not collectors:
-			return None
-		return sum(collector.get_utilization() for collector in collectors) / float(len(collectors))
+    def get_collector_utilization(self):
+        collectors = self.get_component(CollectingComponent).get_local_collectors()
+        if not collectors:
+            return None
+        return sum(collector.get_utilization() for collector in collectors) / float(len(collectors))
 
 
 class StorageTent(StorageBuilding, BuildableSingle):
-	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
-	pass
+    """Can't inherit from Buildable* in StorageBuilding because of mro issues."""
+    pass
 
 
 class Warehouse(StorageBuilding, BuildableSingleFromShip):
-	tearable = False
+    tearable = False
 
-	def __init__(self, *args, **kwargs):
-		super(Warehouse, self).__init__(*args, **kwargs)
-		self.settlement.warehouse = self
-		# we never need to unset this since warehouses are indestructible
-		# settlement warehouse setting is done at the settlement for loading
+    def __init__(self, *args, **kwargs):
+        super(Warehouse, self).__init__(*args, **kwargs)
+        self.settlement.warehouse = self
+        # we never need to unset this since warehouses are indestructible
+        # settlement warehouse setting is done at the settlement for loading
 
-	def get_status_icons(self):
-		banned_classes = (InventoryFullStatus,)
-		return [i for i in super(Warehouse, self).get_status_icons() if
-			i.__class__ not in banned_classes]
+    def get_status_icons(self):
+        banned_classes = (InventoryFullStatus,)
+        return [i for i in super(Warehouse, self).get_status_icons() if
+            i.__class__ not in banned_classes]
 
 
 class MainSquare(Path, StorageBuilding, ProductionBuilding):
-	walkable = True
+    walkable = True
 
-	def recalculate_orientation(self):
-		# change gfx according to roads here
-		pass
+    def recalculate_orientation(self):
+        # change gfx according to roads here
+        pass
 
-	def _load_provided_resources(self):
-		"""Storages provide every res.
-		"""
-		return self.session.db.get_res(only_tradeable=False)
+    def _load_provided_resources(self):
+        """Storages provide every res.
+        """
+        return self.session.db.get_res(only_tradeable=False)

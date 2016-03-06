@@ -43,8 +43,9 @@ class SettlementBuildabilityCache(BinaryBuildabilityCache):
         """
         Refresh the usability of the coordinates in the given list.
 
-        This function is called with a list of coordinates on which the possibility of
-        building a building may have changed to update the underlying BinaryBuildabilityCache.
+        This function is called with a list of coordinates on which
+        the possibility of building a building may have changed
+        to update the underlying BinaryBuildabilityCache.
         """
 
         land_or_coast = self.terrain_cache.land_or_coast
@@ -53,7 +54,8 @@ class SettlementBuildabilityCache(BinaryBuildabilityCache):
         remove_list = []
         for coords in coords_list:
             assert isinstance(coords, tuple)
-            if coords not in land_or_coast or coords not in self.settlement_ground_map:
+            if coords not in land_or_coast or coords not in \
+                    self.settlement_ground_map:
                 continue
 
             object = self.settlement_ground_map[coords].object

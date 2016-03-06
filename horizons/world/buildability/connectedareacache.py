@@ -26,13 +26,15 @@ class ConnectedAreaCache(object):
     """
     Query whether (x1, y1) and (x2, y2) are connected.
 
-    This class aims to let one cheaply query the id of the area where (x, y) are. Getting
-    that information for (x1, y1) and (x2, y2) shows that it is possible to get from
-    one to the other entirely within the area if and only if they have the same area id.
+    This class aims to let one cheaply query the id of the area where
+    (x, y) are. Getting that information for (x1, y1) and (x2, y2)
+    shows that it is possible to get from one to the other entirely
+    within the area if and only if they have the same area id.
 
-    The area id is an arbitrary integer that is returned for all coordinates in a
-    connected area. It is only valid between updates of the cache (any addition/removal
-    may change the area id). Thus the ids should never be used for anything other than
+    The area id is an arbitrary integer that is returned for all
+    coordinates in a connected area. It is only valid between updates
+    of the cache (any addition/removal may change the area id).
+    Thus the ids should never be used for anything other than
     (in)equality checks.
     """
 

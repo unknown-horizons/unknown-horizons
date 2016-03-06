@@ -88,7 +88,8 @@ class Player(ComponentHolder, WorldObject):
         self.max_tier_notification = max_tier_notification
         self.settler_level = settlerlevel
         self._stats = None
-        assert self.color.is_default_color, "Player color has to be a default color"
+        assert self.color.is_default_color, "Player color has to be a " \
+                                            "default color"
 
         if self.regular_player:
             SettlerUpdate.subscribe(self.notify_settler_reached_level)
@@ -155,7 +156,8 @@ class Player(ComponentHolder, WorldObject):
             for settlement in self.settlements:
                 settlement.level_upgrade(self.settler_level)
             self._changed()
-            PlayerLevelUpgrade.broadcast(self, self.settler_level, message.sender)
+            PlayerLevelUpgrade.broadcast(self, self.settler_level,
+                                         message.sender)
 
     def end(self):
         self._stats = None
@@ -166,22 +168,26 @@ class Player(ComponentHolder, WorldObject):
 
     @decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
     def get_balance_estimation(self):
-        """This takes a while to calculate, so only do it every 2 seconds at most"""
+        """This takes a while to calculate,
+        so only do it every 2 seconds at most"""
         return sum(settlement.balance for settlement in self.settlements)
 
     @decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
     def get_statistics(self):
         """Returns a namedtuple containing player-wide statistics"""
-        Data = collections.namedtuple(
-            'Data', ['running_costs', 'taxes', 'sell_income', 'buy_expenses', 'balance'])
+        Data = collections.namedtuple('Data', ['running_costs', 'taxes',
+                                               'sell_income', 'buy_expenses',
+                                               'balance'])
         # balance is duplicated here and above such that the version above
-        # can be used independently and the one here is always perfectly in sync
-        # with the other values here
+        # can be used independently and the one here is always perfectly
+        # in sync with the other values here
 
         get_sum = lambda l, attr: sum(getattr(obj, attr) for obj in l)
-        trade_posts = [s.get_component(TradePostComponent) for s in self.settlements]
+        trade_posts = [s.get_component(TradePostComponent) for s in
+                       self.settlements]
         return Data(
-            running_costs=get_sum(self.settlements, 'cumulative_running_costs'),
+            running_costs=get_sum(self.settlements,
+                                  'cumulative_running_costs'),
             taxes=get_sum(self.settlements, 'cumulative_taxes'),
             sell_income=get_sum(trade_posts, 'sell_income'),
             buy_expenses=get_sum(trade_posts, 'buy_expenses'),
@@ -190,11 +196,13 @@ class Player(ComponentHolder, WorldObject):
 
 
 class HumanPlayer(Player):
-    """Class for players that physically sit in front of the machine where the game is run"""
+    """Class for players that physically sit in front of the machine
+    where the game is run"""
 
     def __init(self, *args, **kwargs):
         super(HumanPlayer, self).__init(*args, **kwargs)
-        self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated,
+        self.__inventory_checker = InventoryChecker(
+            PlayerInventoryUpdated,
             self.get_component(StorageComponent), 4)
 
     def end(self):

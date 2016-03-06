@@ -33,14 +33,17 @@ class TerrainBuildabilityCache(object):
     """Keep track of the locations where buildings
     of specific types can be built.
 
-    An instance of this class is used to keep track of the buildability options given the
-    terrain. (x, y) are in instance.cache[terrain_type][(width, height)] if and only if
-    it is possible to place a building with the given terrain type restrictions and with
-    the given size at the origin (x, y) given that other conditions are met. Basically it
-    cares about the required terrain type of the building and not about the buildings on
-    the island.
+    An instance of this class is used to keep track of the buildability
+    options given the terrain. (x, y) are in
+    instance.cache[terrain_type][(width, height)] if and only if
+    it is possible to place a building with the given terrain type
+    restrictions and with the given size at the origin (x, y) given
+    that other conditions are met. Basically it cares about
+    the required terrain type of the building and not about
+    the buildings on the island.
 
-    Other than the terrain type dimension it acts like an immutable BinaryBuildabilityCache.
+    Other than the terrain type dimension it acts like an immutable
+    BinaryBuildabilityCache.
     """
 
     sizes = [(1, 1), (2, 2), (2, 3), (2, 4), (3, 3), (4, 4), (6, 6)]
@@ -52,7 +55,8 @@ class TerrainBuildabilityCache(object):
         self._land = None
         self._coast = None
         self.land_or_coast = None  # set((x, y), ...)
-        self.cache = None  # {terrain type: {(width, height): set((x, y), ...), ...}, ...}
+        self.cache = None
+        # {terrain type: {(width, height): set((x, y), ...), ...}, ...}
         self.create_cache()
 
     def _init_land_and_coast(self):
@@ -70,7 +74,8 @@ class TerrainBuildabilityCache(object):
         self.land_or_coast = land.union(coast)
 
     def _init_rows(self):
-        # these dicts show whether there is a constructible and/or coastline tile in a row
+        # these dicts show whether there is a constructible and/or
+        # coastline tile in a row
         # of 2 or 3 tiles starting from the coords and going right
         # both are in the format {(x, y): (has land, has coast), ...}
         row2 = {}
@@ -115,8 +120,10 @@ class TerrainBuildabilityCache(object):
             coords2 = (coords[0], coords[1] + 1)
             coords3 = (coords[0], coords[1] + 2)
             if coords2 in row3 and coords3 in row3:
-                has_land = row3[coords][0] or row3[coords2][0] or row3[coords3][0]
-                has_coast = row3[coords][1] or row3[coords2][1] or row3[coords3][1]
+                has_land = row3[coords][0] or row3[coords2][0] or \
+                           row3[coords3][0]
+                has_coast = row3[coords][1] or row3[coords2][1] or \
+                    row3[coords3][1]
                 sq3[coords] = (has_land, has_coast)
 
         self.sq2 = sq2
@@ -169,15 +176,18 @@ class TerrainBuildabilityCache(object):
                 # handle 3x3 coastal buildings
                 land_and_coast[(3, 3)].add(coords)
             elif has_land and not has_coast:
-                # handle other buildings that have both sides >= 3 (3x3, 4x4, 6x6)
+                # handle other buildings that have both sides >= 3
+                #  (3x3, 4x4, 6x6)
                 land[(3, 3)].add(coords)
 
-                if (x, y + 3) in sq3 and not sq3[(x, y + 3)][1] and (x + 3, y) in sq3 \
-                    and not sq3[(x + 3, y)][1] and (x + 3, y + 3) in sq3 and not sq3[(x + 3, y + 3)][1]:
+                if (x, y + 3) in sq3 and not sq3[(x, y + 3)][1] and \
+                        (x + 3, y) in sq3 and not sq3[(x + 3, y)][1] and\
+                        (x + 3, y + 3) in sq3 and not sq3[(x + 3, y + 3)][1]:
                     land[(4, 4)].add(coords)
                     land[(6, 6)].add(coords)
-                elif (x, y + 1) in sq3 and not sq3[(x, y + 1)][1] and (x + 1, y) in sq3 \
-                    and not sq3[(x + 1, y)][1] and (x + 1, y + 1) in sq3 and not sq3[(x + 1, y + 1)][1]:
+                elif (x, y + 1) in sq3 and not sq3[(x, y + 1)][1] and \
+                        (x + 1, y) in sq3 and not sq3[(x + 1, y)][1] and \
+                        (x + 1, y + 1) in sq3 and not sq3[(x + 1, y + 1)][1]:
                     land[(4, 4)].add(coords)
 
         self.cache = {}
@@ -201,14 +211,17 @@ class TerrainBuildabilityCache(object):
         for bx, by in coast_set:
             for dx, dy in nearby_coords_list:
                 coords = (bx + dx, by + dy)
-                if coords in water_bodies and water_bodies[coords] == sea_number:
+                if coords in water_bodies and water_bodies[
+                        coords] == sea_number:
                     near_sea.add((bx, by))
                     break
 
         self.cache[TerrainRequirement.LAND_AND_COAST_NEAR_SEA] = {}
-        self.cache[TerrainRequirement.LAND_AND_COAST_NEAR_SEA][(3, 3)] = near_sea
+        self.cache[TerrainRequirement.LAND_AND_COAST_NEAR_SEA][(
+            3, 3)] = near_sea
 
-    def get_buildability_intersection(self, terrain_type, size, *other_cache_layers):
+    def get_buildability_intersection(self, terrain_type, size,
+                                      *other_cache_layers):
         result = self.cache[terrain_type][size]
         for cache_layer in other_cache_layers:
             result = result.intersection(cache_layer.cache[size])

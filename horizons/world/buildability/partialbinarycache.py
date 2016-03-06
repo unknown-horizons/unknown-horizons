@@ -23,20 +23,22 @@ from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
 
 class PartialBinaryBuildabilityCache(object):
-    """
-    A cache that knows where rectangles can be placed such that they are entirely inside the area.
+    """A cache that knows where rectangles can be placed such that
+    they are entirely inside the area.
 
-    This cache can be used to keep track of building buildability in case the
-    buildability depends on the building being at least partly within a certain area.
-    The binary part of the name refers to the fact that a node either is or isn't part of
+    This cache can be used to keep track of building buildability in
+    case the buildability depends on the building being at least
+    partly within a certain area. The binary part of the name refers
+    to the fact that a node either is or isn't part of
     the area that the instance is about.
 
-    A query of the form (x, y) in instance.cache[(width, height)] is a very cheap way of
-    finding out whether a rectangle of size (width, height) can be placed on origin (x, y)
+    A query of the form (x, y) in instance.cache[(width, height)]
+    is a very cheap way of finding out whether a rectangle of size
+    (width, height) can be placed on origin (x, y)
     such that at least some part of it is within the given area.
 
-    All elements of instance.cache[(width, height)] can be iterated to get a complete list
-    of all such coordinates.
+    All elements of instance.cache[(width, height)] can be iterated to
+    get a complete list of all such coordinates.
     """
 
     def __init__(self, terrain_cache):
@@ -111,7 +113,8 @@ class PartialBinaryBuildabilityCache(object):
                 cur_set.discard(prev_coords)
                 base_set_removals.add(prev_coords)
             next_coords = (x + dx, y + dy)
-            if next_coords not in prev_set_removals and next_coords not in prev_set:
+            if next_coords not in prev_set_removals and \
+                    next_coords not in prev_set:
                 cur_set.discard(coords)
                 base_set_removals.add(coords)
         return base_set_removals
@@ -124,19 +127,32 @@ class PartialBinaryBuildabilityCache(object):
             self.coords_set.discard(coords)
         removed_coords_set = set(removed_coords_list)
 
-        removed_row2 = self._reduce_set(self._row2, self.coords_set, removed_coords_set, 1, 0)
-        removed_r2x2 = self._reduce_set(self.cache[(2, 2)], self._row2, removed_row2, 0, 1)
+        removed_row2 = self._reduce_set(self._row2, self.coords_set,
+                                        removed_coords_set, 1, 0)
+        removed_r2x2 = self._reduce_set(self.cache[(2, 2)],
+                                        self._row2, removed_row2, 0, 1)
 
-        removed_r2x3 = self._reduce_set(self.cache[(2, 3)], self.cache[(2, 2)], removed_r2x2, 0, 1)
-        removed_r2x4 = self._reduce_set(self.cache[(2, 4)], self.cache[(2, 3)], removed_r2x3, 0, 1)
+        removed_r2x3 = self._reduce_set(self.cache[(2, 3)],
+                                        self.cache[(2, 2)], removed_r2x2, 0, 1)
+        removed_r2x4 = self._reduce_set(self.cache[(2, 4)],
+                                        self.cache[(2, 3)], removed_r2x3, 0, 1)
 
-        removed_r3x2 = self._reduce_set(self.cache[(3, 2)], self.cache[(2, 2)], removed_r2x2, 1, 0)
-        removed_r4x2 = self._reduce_set(self.cache[(4, 2)], self.cache[(3, 2)], removed_r3x2, 1, 0)
+        removed_r3x2 = self._reduce_set(self.cache[(3, 2)],
+                                        self.cache[(2, 2)], removed_r2x2, 1, 0)
+        removed_r4x2 = self._reduce_set(self.cache[(4, 2)],
+                                        self.cache[(3, 2)], removed_r3x2, 1, 0)
 
-        removed_r3x3 = self._reduce_set(self.cache[(3, 3)], self.cache[(3, 2)], removed_r3x2, 0, 1)
-        removed_r3x4 = self._reduce_set(self.cache[(3, 4)], self.cache[(3, 3)], removed_r3x3, 0, 1)
-        removed_r4x4 = self._reduce_set(self.cache[(4, 4)], self.cache[(3, 4)], removed_r3x4, 1, 0)
-        removed_r4x5 = self._reduce_set(self.cache[(4, 5)], self.cache[(4, 4)], removed_r4x4, 0, 1)
-        removed_r5x5 = self._reduce_set(self.cache[(5, 5)], self.cache[(4, 5)], removed_r4x5, 1, 0)
-        removed_r5x6 = self._reduce_set(self.cache[(5, 6)], self.cache[(5, 5)], removed_r5x5, 0, 1)
-        self._reduce_set(self.cache[(6, 6)], self.cache[(5, 6)], removed_r5x6, 1, 0)
+        removed_r3x3 = self._reduce_set(self.cache[(3, 3)],
+                                        self.cache[(3, 2)], removed_r3x2, 0, 1)
+        removed_r3x4 = self._reduce_set(self.cache[(3, 4)],
+                                        self.cache[(3, 3)], removed_r3x3, 0, 1)
+        removed_r4x4 = self._reduce_set(self.cache[(4, 4)],
+                                        self.cache[(3, 4)], removed_r3x4, 1, 0)
+        removed_r4x5 = self._reduce_set(self.cache[(4, 5)],
+                                        self.cache[(4, 4)], removed_r4x4, 0, 1)
+        removed_r5x5 = self._reduce_set(self.cache[(5, 5)],
+                                        self.cache[(4, 5)], removed_r4x5, 1, 0)
+        removed_r5x6 = self._reduce_set(self.cache[(5, 6)],
+                                        self.cache[(5, 5)], removed_r5x5, 0, 1)
+        self._reduce_set(self.cache[(6, 6)],
+                         self.cache[(5, 6)], removed_r5x6, 1, 0)

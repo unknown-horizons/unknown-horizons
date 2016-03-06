@@ -19,23 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
+from horizons.world.buildability.partialbinarycache import \
+    PartialBinaryBuildabilityCache
 
 
 class SimpleCollectorAreaCache(object):
     """
-    A specialized PartialBinaryBuildabilityCache for keeping track of collector coverage.
+    A specialized PartialBinaryBuildabilityCache for keeping track of
+    collector coverage.
 
-    The AI uses instances of this class to figure out where it can place buildings such
-    that at least some part of the building would be covered by a general collector. It
-    is a simple version in that it doesn't check whether a road to the corresponding
+    The AI uses instances of this class to figure out where it can
+    place buildings such that at least some part of the building would
+    be covered by a general collector. It is a simple version in that
+    it doesn't check whether a road to the corresponding
     collector would be possible.
     """
 
     def __init__(self, terrain_cache):
         self.terrain_cache = terrain_cache
         self._area_cache = PartialBinaryBuildabilityCache(terrain_cache)
-        self.cache = self._area_cache.cache  # {(width, height): set((x, y), ...), ...}
+        self.cache = self._area_cache.cache
+        # {(width, height): set((x, y), ...), ...}
         self._buildings = set()
         self._area_coverage = {}
 
@@ -44,7 +48,8 @@ class SimpleCollectorAreaCache(object):
         self._buildings.add(building)
 
         new_coords_list = []
-        for coords in building.position.get_radius_coordinates(building.radius, True):
+        for coords in building.position.get_radius_coordinates(
+                building.radius, True):
             if coords not in self.terrain_cache.land_or_coast:
                 continue
 
@@ -62,7 +67,8 @@ class SimpleCollectorAreaCache(object):
         self._buildings.remove(building)
 
         removed_coords_list = []
-        for coords in building.position.get_radius_coordinates(building.radius, True):
+        for coords in building.position.get_radius_coordinates(
+                building.radius, True):
             if coords not in self.terrain_cache.land_or_coast:
                 continue
 
