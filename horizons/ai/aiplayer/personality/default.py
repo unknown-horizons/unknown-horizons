@@ -451,6 +451,18 @@ class DefaultPersonality:
 		residences_required = 0
 		min_tier = TIER.CITIZENS
 
+	class CondimentsGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.SETTLERS
+
+	class FeederCondimentsGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.SETTLERS
+
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
 
@@ -543,6 +555,11 @@ class DefaultPersonality:
 		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
 		smeltery_distance_importance = 0.4 # importance of the distance to the nearest smeltery in the range [0, 1]
 		distance_penalty = 2 # when no smeltery is in reach then apply a penalty of this times the radius
+
+	class BlenderEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.4 # importance of the distance to the nearest farm in the range [0, 1]
+		distance_penalty = 2 # when no farm is in reach then apply a penalty of this times the radius
 
 	class ModifiedFieldEvaluator:
 		add_potato_field_value = 1.5 # the value of adding a potato field
