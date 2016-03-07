@@ -124,6 +124,13 @@ class FeederFlourGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FeederFlourGoal'
 
+class FeederCondimentsGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederCondimentsGoal, self).__init__(settlement_manager, RES.CONDIMENTS, 'condiments producer')
+
+	def get_personality_name(self):
+		return 'FeederCondimentsGoal'
+
 decorators.bind_all(FeederChainGoal)
 decorators.bind_all(FeederFoodGoal)
 decorators.bind_all(FeederTextileGoal)
@@ -134,3 +141,4 @@ decorators.bind_all(FeederMedicalProductsGoal)
 decorators.bind_all(FeederSaltGoal)
 decorators.bind_all(FeederCannonGoal)
 decorators.bind_all(FeederFlourGoal)
+decorators.bind_all(FeederCondimentsGoal)
