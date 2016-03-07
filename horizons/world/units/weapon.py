@@ -38,7 +38,8 @@ class Weapon(object):
         damage - damage dealt in hp
         weapon_range - tuple with minimum and maximum attack range
         cooldown_time - number of seconds until the attack is ready again
-        attack_speed - speed that calculates the time until attack reaches target
+        attack_speed - speed that calculates the time until attack
+                       reaches target
         attack_radius - radius affected by attack
 
         attack_ready callbacks are executed when the attack is made ready
@@ -78,8 +79,10 @@ class Weapon(object):
     @classmethod
     def on_impact(cls, session, weapon_id, damage, position):
         """
-        Classmethod that deals damage to units at position, depending on weapon_id
-        Damage is done independent of the weapon instance, which may not exist at the time damage is done
+        Classmethod that deals damage to units at position,
+         depending on weapon_id
+        Damage is done independent of the weapon instance,
+         which may not exist at the time damage is done
         @param session : UH session
         @param weapon_id : id of the weapon
         @param damage : damage to be done
@@ -115,17 +118,19 @@ class Weapon(object):
             return
 
         # Calculate the ticks until impact.
-        impact_ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
+        impact_ticks = int(
+            GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
         # Deal damage when attack reaches target.
-        Scheduler().add_new_object(Callback(Weapon.on_impact,
-            self.session, self.weapon_id, self.get_damage_modifier(), destination),
-            Weapon, impact_ticks)
+        Scheduler().add_new_object(Callback(
+            Weapon.on_impact, self.session, self.weapon_id,
+            self.get_damage_modifier(), destination), Weapon, impact_ticks)
 
         # Calculate the ticks until attack is ready again.
         ready_ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
         Scheduler().add_new_object(self.make_attack_ready, self, ready_ticks)
 
-        self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks)
+        self.log.debug("fired %s at %s, impact in %s", self, destination,
+                       impact_ticks)
 
         self.attack_ready = False
         self.on_weapon_fired()
@@ -142,7 +147,8 @@ class Weapon(object):
         Returns the number of ticks until the attack is ready
         If attack is ready return 0
         """
-        return 0 if self.attack_ready else Scheduler().get_remaining_ticks(self, self.make_attack_ready)
+        return 0 if self.attack_ready else Scheduler().get_remaining_ticks(
+            self, self.make_attack_ready)
 
     @classmethod
     def load_attacks(cls, session, db):
@@ -150,10 +156,12 @@ class Weapon(object):
         Loads ongoing attacks from savegame database
         Creates scheduled calls for on_impact
         """
-        attacks = db("SELECT remaining_ticks, weapon_id, damage, dest_x, dest_y FROM attacks")
+        attacks = db("SELECT remaining_ticks, weapon_id, damage, dest_x, "
+                     "dest_y FROM attacks")
         for (ticks, weapon_id, damage, dx, dy) in attacks:
-            Scheduler().add_new_object(Callback(Weapon.on_impact,
-                session, weapon_id, damage, Point(dx, dy)), Weapon, ticks)
+            Scheduler().add_new_object(Callback(Weapon.on_impact, session,
+                                                weapon_id, damage,
+                                                Point(dx, dy)), Weapon, ticks)
 
     @classmethod
     def save_attacks(cls, db):
@@ -168,12 +176,14 @@ class Weapon(object):
             dest_x = callback.args[3].x
             dest_y = callback.args[3].y
             ticks = calls[call]
-            db("INSERT INTO attacks(remaining_ticks, weapon_id, damage, dest_x, dest_y)"
-                " VALUES (?, ?, ?, ?, ?)",
+            db("INSERT INTO attacks(remaining_ticks, weapon_id, damage, "
+               "dest_x, dest_y) VALUES (?, ?, ?, ?, ?)",
                 ticks, weapon_id, damage, dest_x, dest_y)
 
     def __str__(self):
-        return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id, self.weapon_type, self.weapon_range)
+        return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id,
+                                                  self.weapon_type,
+                                                  self.weapon_range)
 
 
 class SetStackableWeaponNumberError(Exception):
@@ -186,9 +196,11 @@ class SetStackableWeaponNumberError(Exception):
 class StackableWeapon(Weapon):
     """
     Stackable Weapon class
-    A generic Weapon that can have a number of weapons binded per instance
+    A generic Weapon that can have a number of weapons binded
+    per instance
     It deals the number of weapons times weapon's default damage
-    This is used for cannons, reducing the number of instances and bullets fired
+    This is used for cannons, reducing the number of instances and
+    bullets fired
     """
     def __init__(self, session, id):
         super(StackableWeapon, self).__init__(session, id)
@@ -199,9 +211,10 @@ class StackableWeapon(Weapon):
         self.max_number_of_weapons = 1
 
     def set_number_of_weapons(self, number):
-        """
-        Sets number of cannons as resource binded to a StackableWeapon object
-        the number of cannons increases the damage dealt by one StackableWeapon instance
+        """Sets number of cannons as resource binded to
+        a StackableWeapon object
+        the number of cannons increases the damage dealt by one
+        StackableWeapon instance
         @param number : number of cannons
         """
         if number > self.max_number_of_weapons:
@@ -211,7 +224,8 @@ class StackableWeapon(Weapon):
 
     def increase_number_of_weapons(self, number):
         """
-        Increases number of cannons as resource binded to a StackableWeapon object
+        Increases number of cannons as resource binded to
+        a StackableWeapon object
         @param number : number of cannons
         """
         if number + self.number_of_weapons > self.max_number_of_weapons:
@@ -221,7 +235,8 @@ class StackableWeapon(Weapon):
 
     def decrease_number_of_weapons(self, number):
         """
-        Decreases number of cannons as resource binded to a StackableWeapon object
+        Decreases number of cannons as resource binded to
+        a StackableWeapon object
         @param number : number of cannons
         """
         if self.number_of_weapons - number <= 0:
@@ -230,4 +245,5 @@ class StackableWeapon(Weapon):
             self.number_of_weapons -= number
 
     def get_damage_modifier(self):
-        return self.number_of_weapons * super(StackableWeapon, self).get_damage_modifier()
+        return self.number_of_weapons * super(
+            StackableWeapon, self).get_damage_modifier()

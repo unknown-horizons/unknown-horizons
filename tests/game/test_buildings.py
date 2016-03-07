@@ -128,7 +128,7 @@ def test_brick_production_chain(s, p):
         StorageComponent).inventory[RES.BRICKS] == 0
     assert brickyard.get_component(StorageComponent).inventory[RES.CLAY] == 0
 
-    s.run(seconds=60) # 15s clay pit, 15s brickyard
+    s.run(seconds=60)  # 15s clay pit, 15s brickyard
 
     assert brickyard.get_component(StorageComponent).inventory[RES.BRICKS]
 
@@ -165,6 +165,7 @@ def test_tool_production_chain(s, p):
     s.run(seconds=120)
     assert toolmaker.get_component(StorageComponent).inventory[RES.TOOLS]
 
+
 @game_test()
 def test_build_tear(s, p):
     """
@@ -181,7 +182,7 @@ def test_build_tear(s, p):
     try:
         WorldObject.get_object_by_id(wid)
     except WorldObjectNotFound:
-        pass # should be gone
+        pass  # should be gone
     else:
         assert False
 
@@ -201,7 +202,7 @@ def test_tree_production(s, p):
             s.run(seconds=5)
 
         # take one away to free storage space
-        #from tests import set_trace ; set_trace()
+        # from tests import set_trace ; set_trace()
         inv.alter(RES.TREES, -1)
 
     # here, n tons of wood have been produced

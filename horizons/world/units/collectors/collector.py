@@ -62,13 +62,16 @@ class Collector(Unit):
     # all states, any (subclass) instance may have. Keeping a list in one place
     # is important, because every state must have a distinct number.
     # Handling of subclass specific states is done by subclass.
-    states = Enum('idle',  # doing nothing, waiting for job
+    states = Enum(
+        'idle',  # doing nothing, waiting for job
         'moving_to_target',
         'working',
         'moving_home',
-        'waiting_for_animal_to_stop',  # herder: wait for job target to finish for collecting
+        'waiting_for_animal_to_stop',
+        # herder: wait for job target to finish for collecting
         'waiting_for_herder',  # animal: has stopped, now waits for herder
-        'no_job_walking_randomly',  # animal: like idle, but moving instead of standing still
+        'no_job_walking_randomly',
+        # animal: like idle, but moving instead of standing still
         'no_job_waiting',  # animal: as idle, but no move target can be found
         # TODO: merge no_job_waiting with idle
         'decommissioned',
@@ -84,7 +87,8 @@ class Collector(Unit):
 
         self.__init(self.states.idle, start_hidden)
 
-        # start searching jobs just when construction (of subclass) is completed
+        # start searching jobs just when construction
+        #  (of subclass) is completed
         Scheduler().add_new_object(self.search_job, self, 1)
 
     def __init(self, state, start_hidden):
@@ -107,12 +111,13 @@ class Collector(Unit):
 
     def _abort_collector_job(self):
         if self.job is None or self.state == self.states.moving_home:
-            # in the move_home state, there still is a job, but the collector is
-            # already deregistered
+            # in the move_home state, there still is a job, but the collector
+            # is already deregistered
             return
         if not hasattr(self.job.object, 'remove_incoming_collector'):
             # when loading a game fails and the world is destructed again, the
-            # worldid may not yet have been resolved to an actual in-game object
+            # worldid may not yet have been resolved
+            # to an actual in-game object
             return
         self.job.object.remove_incoming_collector(self)
 
@@ -122,7 +127,8 @@ class Collector(Unit):
         super(Collector, self).save(db)
 
         # save state and remaining ticks for next callback
-        # retrieve remaining ticks according current callback according to state
+        # retrieve remaining ticks according current callback
+        #  according to state
         current_callback = None
         remaining_ticks = None
         if self.state == self.states.idle:
@@ -131,37 +137,46 @@ class Collector(Unit):
             current_callback = self.finish_working
         if current_callback is not None:
             calls = Scheduler().get_classinst_calls(self, current_callback)
-            assert len(calls) == 1, 'Collector should have callback %s scheduled, but has %s' % \
-                (current_callback, [str(i) for i in Scheduler().get_classinst_calls(self).keys()])
+            assert len(calls) == 1, 'Collector should have callback %s ' \
+                                    'scheduled, but has %s' % \
+                (current_callback, [
+                    str(i) for i in
+                    Scheduler().get_classinst_calls(self).keys()])
             remaining_ticks = max(calls.values()[0], 1)  # save a number > 0
 
-        db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)",
-            self.worldid, self.state.index, remaining_ticks, self.start_hidden)
+        db("INSERT INTO collector(rowid, state, remaining_ticks, "
+           "start_hidden) VALUES(?, ?, ?, ?)",
+           self.worldid, self.state.index, remaining_ticks, self.start_hidden)
 
         # save the job
         if self.job is not None:
             obj_id = -1 if self.job.object is None else self.job.object.worldid
-            # this is not in 3rd normal form since the object is saved multiple times but
+            # this is not in 3rd normal form since the object is saved
+            # multiple times but
             # it preserves compatibility with old savegames this way.
             for entry in self.job.reslist:
-                db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)",
-                    self.worldid, obj_id, entry.res, entry.amount)
+                db("INSERT INTO collector_job(collector, object, resource, "
+                   "amount) VALUES(?, ?, ?, ?)",
+                   self.worldid, obj_id, entry.res, entry.amount)
 
     def load(self, db, worldid):
         super(Collector, self).load(db, worldid)
 
         # load collector properties
-        state_id, remaining_ticks, start_hidden = db("SELECT state, remaining_ticks, "
+        state_id, remaining_ticks, start_hidden = db(
+            "SELECT state, remaining_ticks, "
             "start_hidden FROM collector WHERE rowid = ?", worldid)[0]
         self.__init(self.states[state_id], start_hidden)
 
         # load job
-        job_db = db("SELECT object, resource, amount FROM collector_job WHERE collector = ?", worldid)
+        job_db = db("SELECT object, resource, amount FROM collector_job "
+                    "WHERE collector = ?", worldid)
         if job_db:
             reslist = []
             for obj, res, amount in job_db:
                 reslist.append(Job.ResListEntry(res, amount, False))
-            # create job with worldid of object as object. This is used to defer the target resolution,
+            # create job with worldid of object as object. This is used
+            # to defer the target resolution,
             # which might not have been loaded
             self.job = Job(obj, reslist)
 
@@ -169,9 +184,11 @@ class Collector(Unit):
             # resolve worldid to object later
             if self.job:
                 if self.job.object == -1:
-                    self.job.object = None   # e.g. when hunters have killed their prey
+                    self.job.object = None
+                    # e.g. when hunters have killed their prey
                 else:
-                    self.job.object = WorldObject.get_object_by_id(self.job.object)
+                    self.job.object = WorldObject.get_object_by_id(
+                        self.job.object)
 
         # apply state when job object is loaded for sure
         Scheduler().add_new_object(
@@ -200,7 +217,8 @@ class Collector(Unit):
             # register the new job
             self.setup_new_job()
             # job finishes in remaining_ticks ticks
-            Scheduler().add_new_object(self.finish_working, self, remaining_ticks)
+            Scheduler().add_new_object(self.finish_working, self,
+                                       remaining_ticks)
 
     # GETTER
 
@@ -233,10 +251,12 @@ class Collector(Unit):
             self.begin_current_job()
 
     def handle_no_possible_job(self):
-        """Called when we can't find a job. default is to wait and try again in a few secs"""
+        """Called when we can't find a job. default is to wait
+        and try again in a few secs"""
         self.log.debug("%s: found no possible job, retry in %s ticks",
-            self, COLLECTORS.DEFAULT_WAIT_TICKS)
-        Scheduler().add_new_object(self.search_job, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+                       self, COLLECTORS.DEFAULT_WAIT_TICKS)
+        Scheduler().add_new_object(self.search_job, self,
+                                   COLLECTORS.DEFAULT_WAIT_TICKS)
 
     def setup_new_job(self):
         """Executes the necessary actions to begin a new job"""
@@ -244,25 +264,32 @@ class Collector(Unit):
 
     def check_possible_job_target(self, target):
         """Checks if we "are allowed" and able to pick up from the target"""
-        # Discard building if it works for same inventory (happens when both are storage buildings
+        # Discard building if it works for same inventory
+        # (happens when both are storage buildings
         # or home_building is checked out)
-        if target.get_component(StorageComponent).inventory is self.get_home_inventory():
+        if target.get_component(StorageComponent).inventory is \
+                self.get_home_inventory():
             # self.log.debug("nojob: same inventory")
             return False
 
-        if self.has_component(RestrictedPickup):  # check if we're allowed to pick up there
-            return self.get_component(RestrictedPickup).pickup_allowed_at(target.id)
+        if self.has_component(RestrictedPickup):
+            # check if we're allowed to pick up there
+            return self.get_component(RestrictedPickup).pickup_allowed_at(
+                target.id)
 
         # pathfinding would fit in here, but it's too expensive,
-        # we just do that at targets where we are sure to get a lot of res later on.
+        # we just do that at targets where we are sure to get a lot
+        # of res later on.
 
         return True
 
     @decorators.make_constants()
     def check_possible_job_target_for(self, target, res):
         """Checks out if we could get res from target.
-        Does _not_ check for anything else (e.g. if we are able to walk there).
-        @param target: possible target. buildings are supported, support for more can be added.
+        Does _not_ check for anything else (e.g. if we are able
+        to walk there).
+        @param target: possible target. buildings are supported,
+                       support for more can be added.
         @param res: resource id
         @return: instance of Job or None, if we can't collect anything
         """
@@ -271,8 +298,8 @@ class Collector(Unit):
             # self.log.debug("nojob: no pickup amount")
             return None
 
-        # check if other collectors get this resource, because our inventory could
-        # get full if they arrive.
+        # check if other collectors get this resource,
+        # because our inventory could get full if they arrive.
         total_registered_amount_consumer = sum(
             entry.amount for
             collector in self.get_colleague_collectors() if
@@ -296,20 +323,22 @@ class Collector(Unit):
             return None
 
         possible_res_amount = min(res_amount, home_inventory_free_space,
-                    collector_inventory_free_space)
+                                  collector_inventory_free_space)
 
         target_inventory_full = (target.get_component(
             StorageComponent).inventory.get_free_space_for(res) == 0)
 
         # create a new data line.
-        return Job.ResListEntry(res, possible_res_amount, target_inventory_full)
+        return Job.ResListEntry(res, possible_res_amount,
+                                target_inventory_full)
 
     def get_best_possible_job(self, jobs):
         """Return best possible job from jobs.
         "Best" means that the job is highest when the job list was sorted.
         "Possible" means that we can find a path there.
         @param jobs: unsorted JobList instance
-        @return: selected Job instance from list or None if no jobs are possible."""
+        @return: selected Job instance from list or None if no jobs
+                 are possible."""
         jobs.sort_jobs()
         # check if we can move to that targets
         for job in jobs:
@@ -321,20 +350,24 @@ class Collector(Unit):
         return None
 
     def begin_current_job(self, job_location=None):
-        """Starts executing the current job by registering itself and moving to target.
-        @param job_location: Where collector should work. default: job.object.loading_area"""
+        """Starts executing the current job by registering itself and
+        moving to target.
+        @param job_location: Where collector should work. default:
+                             job.object.loading_area"""
         self.log.debug("%s prepares job %s", self, self.job)
         self.setup_new_job()
         self.show()
         if job_location is None:
             job_location = self.job.object.loading_area
         self.move(job_location, self.begin_working,
-            destination_in_building=self.destination_always_in_building,
-            blocked_callback=self.handle_path_to_job_blocked, path=self.job.path)
+                  destination_in_building=self.destination_always_in_building,
+                  blocked_callback=self.handle_path_to_job_blocked,
+                  path=self.job.path)
         self.state = self.states.moving_to_target
 
     def resume_movement(self):
-        """Try to resume movement after getting blocked. If that fails then wait and try again."""
+        """Try to resume movement after getting blocked.
+        If that fails then wait and try again."""
         try:
             self._move_tick(resume=True)
         except PathBlockedError:
@@ -355,12 +388,14 @@ class Collector(Unit):
         finish_working is called after that time."""
         self.log.debug("%s begins working", self)
         assert self.job is not None, '%s job is None in begin_working' % self
-        Scheduler().add_new_object(self.finish_working, self, self.work_duration)
+        Scheduler().add_new_object(self.finish_working, self,
+                                   self.work_duration)
         # play working sound
         if self.has_component(AmbientSoundComponent):
             am_comp = self.get_component(AmbientSoundComponent)
             if am_comp.soundfiles:
-                am_comp.play_ambient(am_comp.soundfiles[0], position=self.position)
+                am_comp.play_ambient(am_comp.soundfiles[0],
+                                     position=self.position)
         self.state = self.states.working
 
     def finish_working(self):
@@ -376,7 +411,7 @@ class Collector(Unit):
         #  there were when we started
 
         reslist = (self.check_possible_job_target_for(self.job.object,
-                res) for res in self.get_collectable_res())
+                   res) for res in self.get_collectable_res())
         reslist = [i for i in reslist if i]
         if reslist:
             self.job.reslist = reslist
@@ -401,19 +436,25 @@ class Collector(Unit):
             else:
                 new_reslist.append(entry)
 
-            remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
-            assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s" % \
-                (self, entry.res, remnant, entry.amount)
+            remnant = self.get_component(StorageComponent).inventory.alter(
+                entry.res, actual_amount)
+            assert remnant == 0, "%s couldn't take all of res %s; remnant: " \
+                                 "%s; planned: %s" % (self, entry.res, remnant,
+                                                      entry.amount)
         self.job.reslist = new_reslist
 
     def transfer_res_to_home(self, res, amount):
         """Transfer resources from collector to the home inventory"""
         self.log.debug("%s brought home %s of %s", self, amount, res)
         remnant = self.get_home_inventory().alter(res, amount)
-        # assert remnant == 0, "Home building could not take all resources from collector."
-        remnant = self.get_component(StorageComponent).inventory.alter(res, -amount)
-        assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; inventory: %s" % \
-            (self, res, remnant, self.get_component(StorageComponent).inventory)
+        # assert remnant == 0, "Home building could not take
+        #  all resources from collector."
+        remnant = self.get_component(StorageComponent).inventory.alter(
+            res, -amount)
+        assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; " \
+                             "inventory: %s" % (
+                              self, res, remnant,
+                              self.get_component(StorageComponent).inventory)
 
     # unused reroute code removed in 2aef7bba77536da333360566467d9a2f08d38cab
 
@@ -425,25 +466,31 @@ class Collector(Unit):
         if self.start_hidden:
             self.hide()
         self.job = None
-        Scheduler().add_new_object(self.search_job, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+        Scheduler().add_new_object(self.search_job, self,
+                                   COLLECTORS.DEFAULT_WAIT_TICKS)
         self.state = self.states.idle
 
     def cancel(self, continue_action):
         """Aborts the current job.
-        @param continue_action: Callback, gets called after cancel. Specifies what collector
+        @param continue_action: Callback, gets called after cancel.
+                                Specifies what collector
                                 is supposed to do now.
-        NOTE: Subclasses set this to a proper action that makes the collector continue to work.
+        NOTE: Subclasses set this to a proper action that makes
+              the collector continue to work.
               If the collector is supposed to be remove, use a noop.
         """
         self.stop()
-        self.log.debug("%s was cancelled, continue action is %s", self, continue_action)
+        self.log.debug("%s was cancelled, continue action is %s", self,
+                       continue_action)
         # remove us as incoming collector at target
         self._abort_collector_job()
         if self.job is not None:
             # clean up depending on state
             if self.state == self.states.working:
                 removed_calls = Scheduler().rem_call(self, self.finish_working)
-                assert removed_calls == 1, 'removed %s calls instead of one' % removed_calls
+                assert removed_calls == 1, 'removed %s calls instead ' \
+                                           'of one' % \
+                                           removed_calls
             self.job = None
             self.state = self.states.idle
         # NOTE:
@@ -451,7 +498,8 @@ class Collector(Unit):
         # movement callbacks have to be cancelled here, else the unit will try
         # to continue the movement later when its state has already changed.
         # This line should fix it sufficiently for now and the problem could be
-        # deprecated when the switch to a component-based system is accomplished.
+        # deprecated when the switch to a component-based system
+        # is accomplished.
         Scheduler().rem_call(self, self.resume_movement)
         continue_action()
 
@@ -464,7 +512,8 @@ class Collector(Unit):
 
 class Job(object):
     """Data structure for storing information of collector jobs"""
-    ResListEntry = namedtuple("ResListEntry", ["res", "amount", "target_inventory_full"])
+    ResListEntry = namedtuple("ResListEntry", ["res", "amount",
+                                               "target_inventory_full"])
 
     def __init__(self, obj, reslist):
         """
@@ -472,12 +521,14 @@ class Job(object):
         @param reslist: ResListEntry list
             res: resource to get
             amount: amount of resource to get
-            target_inventory_full: whether target inventory can't store any more of this res.
+            target_inventory_full: whether target inventory can't store
+                                   any more of this res.
         """
         for entry in reslist:
             assert entry.amount >= 0
-        # can't assert that it's not 0, since the value is reset to the amount
-        # the collector actually got at the target, which might be 0. yet for new jobs
+        # can't assert that it's not 0, since the value is reset to the
+        # amount the collector actually got at the target,
+        #  which might be 0. yet for new jobs
         # amount > 0 is a necessary precondition.
 
         self.object = obj
@@ -549,7 +600,8 @@ class JobList(list):
         if shuffle_first:
             self.collector.session.random.shuffle(self)
         inventory = self.collector.get_home_inventory()
-        self.sort(key=lambda job: min(inventory[res] for res in job.resources), reverse=False)
+        self.sort(key=lambda job: min(inventory[res] for res in job.resources),
+                  reverse=False)
 
     def _sort_jobs_fewest_available_and_distance(self):
         """Sort jobs by distance, but secondarily also consider fewest

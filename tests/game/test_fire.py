@@ -124,5 +124,6 @@ def test_upgrade_disallowed_with_fire(s):
 
     assert dis_man._active_disaster[settlement]._affected_buildings,\
         "No building is on fire!"
-    assert not dis_man._active_disaster[settlement]._affected_buildings[0].can_level_up(), \
+    assert not dis_man._active_disaster[
+        settlement]._affected_buildings[0].can_level_up(), \
         "Buildings should not get upgraded when they are affected by a fire!"

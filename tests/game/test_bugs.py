@@ -30,7 +30,8 @@ from horizons.world.production.utilization import FieldUtilization
 from horizons.world.building.settler import SettlerRuin
 
 from tests.game import settle, game_test, new_session, saveload
-from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
+from tests.game.test_buildings import test_brick_production_chain, \
+    test_tool_production_chain
 from tests.game.test_farm import _build_farm
 
 
@@ -251,7 +252,8 @@ def test_ticket_1523(s, p):
 def test_ticket_1561(s, p):
     settlement, island = settle(s)
 
-    residence = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
+    residence = Build(BUILDINGS.RESIDENTIAL, 30, 30, island,
+                      settlement=settlement)(p)
     s.run(ticks=1)
     assert residence.level == 0
 
@@ -259,7 +261,8 @@ def test_ticket_1561(s, p):
     s.run(ticks=1)
     assert residence.level == 1
 
-    residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 32, island, settlement=settlement)(p)
+    residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 32, island,
+                       settlement=settlement)(p)
     s.run(ticks=1)
     assert residence2.level == 0
 
@@ -268,7 +271,8 @@ def test_ticket_1561(s, p):
 def test_ticket_1693(s, p):
     settlement, island = settle(s)
 
-    residence = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
+    residence = Build(BUILDINGS.RESIDENTIAL, 30, 30, island,
+                      settlement=settlement)(p)
     assert residence.level == 0
 
     # Run and wait until the settler levels down
@@ -286,7 +290,8 @@ def test_ticket_1693(s, p):
     assert ruin.buildable_upon
 
     # Build another one on top of the ruin
-    residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
+    residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 30, island,
+                       settlement=settlement)(p)
     assert residence2
 
 
@@ -296,7 +301,8 @@ def test_ticket_1847(s, p):
     settlement, island = settle(s)
 
     assert Build(BUILDINGS.CLAY_DEPOSIT, 30, 30, island, ownerless=True)(None)
-    claypit = Build(BUILDINGS.CLAY_PIT, 30, 30, island, settlement=settlement)(p)
+    claypit = Build(BUILDINGS.CLAY_PIT, 30, 30, island,
+                    settlement=settlement)(p)
     assert claypit
 
     Tear(claypit)(p)

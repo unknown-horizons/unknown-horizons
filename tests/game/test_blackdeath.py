@@ -48,7 +48,7 @@ def test_blackdeath_destroy(s):
         BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
 
     while not dis_man._active_disaster:
-        dis_man.run() # try to seed until we have the black death
+        dis_man.run()  # try to seed until we have the black death
 
     # wait until the black death has done some damage
     s.run(seconds=50)

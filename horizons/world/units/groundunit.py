@@ -46,7 +46,8 @@ class GroundUnit(Unit):
     def __init__(self, x, y, **kwargs):
         super(GroundUnit, self).__init__(x=x, y=y, **kwargs)
         self.session.world.ground_units.append(self)
-        self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
+        self.session.world.ground_unit_map[
+            self.position.to_tuple()] = weakref.ref(self)
 
     def remove(self):
         super(GroundUnit, self).remove()
@@ -61,18 +62,22 @@ class GroundUnit(Unit):
             super(GroundUnit, self)._move_tick(resume)
         except PathBlockedError:
             if resume:
-                self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
+                self.session.world.ground_unit_map[
+                    self.position.to_tuple()] = weakref.ref(self)
             raise
 
-        self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
-        self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
+        self.session.world.ground_unit_map[self.position.to_tuple()] = \
+            weakref.ref(self)
+        self.session.world.ground_unit_map[self._next_target.to_tuple()] = \
+            weakref.ref(self)
 
     def load(self, db, worldid):
         super(GroundUnit, self).load(db, worldid)
 
         # register unit in world
         self.session.world.ground_units.append(self)
-        self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
+        self.session.world.ground_unit_map[self.position.to_tuple()] = \
+            weakref.ref(self)
 
 
 class FightingGroundUnit(MovingWeaponHolder, GroundUnit):

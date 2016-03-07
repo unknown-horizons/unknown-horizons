@@ -23,8 +23,9 @@ from horizons.constants import RES, TIER
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship, saveload
-from tests.gui.scenarios.helper import (assert_win, var_eq, wait_and_close_logbook,
-                                        settlement_res_stored_greater, settler_level_greater)
+from tests.gui.scenarios.helper import (
+    assert_win, var_eq, wait_and_close_logbook,
+    settlement_res_stored_greater, settler_level_greater)
 
 
 @gui_test(use_scenario='content/scenarios/tutorial_en', timeout=7*60)
@@ -163,7 +164,7 @@ def test_tutorial(gui):
     while not settlement_res_stored_greater(gui.session, RES.BOARDS, 10):
         gui.run()
 
-    gui.trigger('tab_base', '1') # FIXME this sometimes fails
+    gui.trigger('tab_base', '1')  # FIXME this sometimes fails
     gui.trigger('tab', 'button_02')
     gui.cursor_click(25, 12, 'left')
 

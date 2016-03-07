@@ -47,12 +47,14 @@ def test_load_game(gui):
         with mock.patch('horizons.main.start_singleplayer') as start_mock:
             gui.trigger('load_game_window', 'okButton')
 
-            # we need to run the game for a bit, because start_singleplayer isn't
-            # called right away, probably because load/save is a dialog
+            # we need to run the game for a bit,
+            # because start_singleplayer isn't called right away,
+            # probably because load/save is a dialog
             gui.run(1)
             options = start_mock.call_args[0][0]
 
-            assert options.game_identifier == SavegameManager.create_filename('boatbuilder')
+            assert options.game_identifier == SavegameManager.create_filename(
+                'boatbuilder')
 
     with gui.handler(func1):
         gui.trigger('menu', 'load_button')
@@ -73,7 +75,7 @@ def test_save_game_new_file(gui):
     """Test saving a game."""
 
     # FIXME escape doesn't work
-    #gui.press_key(gui.Key.ESCAPE)
+    # gui.press_key(gui.Key.ESCAPE)
     gui.trigger('mainhud', 'gameMenuButton')
 
     def func1():
@@ -94,7 +96,7 @@ def test_save_game_override(gui):
     old_size = os.path.getsize(SavegameManager.create_filename('boatbuilder'))
 
     # FIXME escape doesn't work
-    #gui.press_key(gui.Key.ESCAPE)
+    # gui.press_key(gui.Key.ESCAPE)
     gui.trigger('mainhud', 'gameMenuButton')
 
     def func1():

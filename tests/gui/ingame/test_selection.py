@@ -59,7 +59,7 @@ def test_selectmultitab(gui):
         return CreateUnit(
             player.worldid, type,
             *gui.session.world.get_random_possible_ship_position().
-                to_tuple())(issuer=player)
+            to_tuple())(issuer=player)
 
     ships = [create_ship(UNITS.FRIGATE), create_ship(UNITS.FRIGATE)]
     gui.select(ships)

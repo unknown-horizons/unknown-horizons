@@ -45,9 +45,11 @@ class UnitClass(IngameType):
 
     @classmethod
     def ensure_action_loaded(cls, action_set_id, action):
-        """Called when an action is actually needed, makes sure it is loaded then"""
+        """Called when an action is actually needed, makes sure it is
+        loaded then"""
         try:
-            # load for all instances, don't care for separating again per object
+            # load for all instances, don't care for separating again
+            #  per object
             for i in cls._action_load_callbacks[action_set_id][action]:
                 i()
             del cls._action_load_callbacks[action_set_id][action]
@@ -71,25 +73,31 @@ class UnitClass(IngameType):
         all_action_sets = ActionSetLoader.get_sets()
         # create load callbacks to be called when the actions are needed
         # { action_set : { action_id : [ load0, load1, ..., loadn ]}}
-        # (loadi are load functions of objects, there can be many per as_id and action)
-        # cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
+        # (loadi are load functions of objects, there can be many
+        #  per as_id and action)
+        # cls.action_sets looks like this:
+        #  {tier1: {set1: None, set2: preview2, ..}, ..}
         for set_dict in cls.action_sets.itervalues():
             for action_set in set_dict:  # set1, set2, ...
                 if action_set not in cls._action_load_callbacks:
                     cls._action_load_callbacks[action_set] = {}
-                for action_id in all_action_sets[action_set]:  # idle, move, ...
+                for action_id in all_action_sets[action_set]:
+                    # idle, move, ...
                     if action_id not in cls._action_load_callbacks[action_set]:
                         cls._action_load_callbacks[action_set][action_id] = []
                     cls._action_load_callbacks[action_set][action_id].append(
-                      Callback(cls._do_load, all_action_sets, action_set, action_id))
+                      Callback(cls._do_load, all_action_sets, action_set,
+                               action_id))
 
     def _do_load(cls, all_action_sets, action_set, action_id):
         params = {'id': action_set, 'action': action_id}
-        action = cls._real_object.createAction('{action}_{id}'.format(**params))
+        action = cls._real_object.createAction('{action}_{id}'.format(
+            **params))
         fife.ActionVisual.create(action)
         for rotation in all_action_sets[action_set][action_id]:
             params['rot'] = rotation
-            path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
+            path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(
+                **params)
             anim = horizons.globals.fife.animationloader.loadResource(path)
             action.get2dGfxVisual().addAnimation(int(rotation), anim)
             action.setDuration(anim.getDuration())

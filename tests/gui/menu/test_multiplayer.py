@@ -34,6 +34,7 @@ from tests.gui import gui_test
 
 _master_server = None
 
+
 def start_server():
     global _master_server
     args = [sys.executable, "run_server.py", "-h", "localhost", "-p", "2002"]

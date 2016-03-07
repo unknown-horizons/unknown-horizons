@@ -22,9 +22,11 @@
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
-from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_reached
+from tests.gui.scenarios.helper import assert_win, assert_defeat, \
+    assert_goal_reached
 
 # Example tests
+
 
 @gui_test(use_scenario='tests/gui/scenarios/win', timeout=20)
 def test_win(gui):

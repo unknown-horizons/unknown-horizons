@@ -29,11 +29,12 @@ from horizons.util.worldobject import WorldObject
 from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
-from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \
-    NoneStance, FleeStance
+from horizons.component.stancecomponent import HoldGroundStance, \
+    AggressiveStance, NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
-from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
+from horizons.world.units.weapon import Weapon, StackableWeapon, \
+    SetStackableWeaponNumberError
 from horizons.component.storagecomponent import StorageComponent
 
 
@@ -58,9 +59,12 @@ class WeaponHolder(object):
         self.remove_storage_modified_listener(self.update_range)
         self.stop_attack()
         for weapon in self._weapon_storage:
-            weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
-            weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
-            weapon.remove_weapon_fired_listener(self._increase_fired_weapons_number)
+            weapon.remove_attack_ready_listener(Callback(
+                self._add_to_fireable, weapon))
+            weapon.remove_weapon_fired_listener(Callback(
+                self._remove_from_fireable, weapon))
+            weapon.remove_weapon_fired_listener(
+                self._increase_fired_weapons_number)
         super(WeaponHolder, self).remove()
 
     def create_weapon_storage(self):
@@ -71,8 +75,10 @@ class WeaponHolder(object):
 
     def update_range(self, caller=None):
         if self._weapon_storage:
-            self._min_range = min([w.get_minimum_range() for w in self._weapon_storage])
-            self._max_range = max([w.get_maximum_range() for w in self._weapon_storage])
+            self._min_range = min([w.get_minimum_range() for w in
+                                   self._weapon_storage])
+            self._max_range = max([w.get_maximum_range() for w in
+                                   self._weapon_storage])
         else:
             self._min_range = 0
             self._max_range = 0
@@ -88,7 +94,8 @@ class WeaponHolder(object):
         Callback executed when weapon is fired
         """
         # remove in the next tick
-        Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self, run_in=0)
+        Scheduler().add_new_object(Callback(self._fireable.remove, weapon),
+                                   self, run_in=0)
 
     def _increase_fired_weapons_number(self, caller=None):
         """
@@ -108,8 +115,10 @@ class WeaponHolder(object):
             self.log.debug("%s weapon storage full", self)
             return False
         if self.session.db.get_weapon_stackable(weapon_id):
-            stackable = [w for w in self._weapon_storage if weapon_id == w.weapon_id]
-            # Try to increase the number of weapons for one stackable weapon.
+            stackable = [w for w in self._weapon_storage if
+                         weapon_id == w.weapon_id]
+            # Try to increase the number of weapons for
+            #  one stackable weapon.
             increased = False
             for weapon in stackable:
                 try:
@@ -125,9 +134,12 @@ class WeaponHolder(object):
             weapon = Weapon(self.session, weapon_id)
         if weapon:
             self._weapon_storage.append(weapon)
-            weapon.add_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
-            weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
-            weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
+            weapon.add_weapon_fired_listener(Callback(
+                self._remove_from_fireable, weapon))
+            weapon.add_attack_ready_listener(Callback(
+                self._add_to_fireable, weapon))
+            weapon.add_weapon_fired_listener(
+                self._increase_fired_weapons_number)
             self._fireable.append(weapon)
             self.equipped_weapon_number += 1
         self.on_storage_modified()  # This will update the range.
@@ -158,9 +170,12 @@ class WeaponHolder(object):
 
         if remove_from_storage:
             self._weapon_storage.remove(weapon)
-            weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
-            weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
-            weapon.remove_weapon_fired_listener(self._increase_fired_weapons_number)
+            weapon.remove_weapon_fired_listener(Callback(
+                self._remove_from_fireable, weapon))
+            weapon.remove_attack_ready_listener(Callback(
+                self._add_to_fireable, weapon))
+            weapon.remove_weapon_fired_listener(
+                self._increase_fired_weapons_number)
             try:
                 self._fireable.remove(weapon)
             except ValueError:
@@ -177,11 +192,13 @@ class WeaponHolder(object):
         @return: number of weapons that were not equipped
         """
         while number:
-            if self.get_component(StorageComponent).inventory.alter(weapon_id, -1) == 0:
+            if self.get_component(StorageComponent).inventory.alter(
+                    weapon_id, -1) == 0:
                 # try to decrease number from inventory
                 if not self.add_weapon_to_storage(weapon_id):
                     # if not added, put back in inventory and break
-                    self.get_component(StorageComponent).inventory.alter(weapon_id, 1)
+                    self.get_component(StorageComponent).inventory.alter(
+                        weapon_id, 1)
                     break
             else:
                 break
@@ -197,8 +214,10 @@ class WeaponHolder(object):
         while number:
             if self.remove_weapon_from_storage(weapon_id):
                 # try to remove from weapon storage
-                if self.get_component(StorageComponent).inventory.alter(weapon_id, 1) == 1:
-                    # if not added to holder inventory move back to storage and break
+                if self.get_component(StorageComponent).inventory.alter(
+                        weapon_id, 1) == 1:
+                    # if not added to holder inventory move back
+                    #  to storage and break
                     self.add_weapon_to_storage(weapon_id)
                     break
             else:
@@ -238,7 +257,8 @@ class WeaponHolder(object):
         if not self._fireable:
             return False
         # if position not in range return False
-        return self._min_range <= self.position.distance(position.center) <= self._max_range
+        return self._min_range <= self.position.distance(
+            position.center) <= self._max_range
 
     def try_attack_target(self):
         """
@@ -254,21 +274,25 @@ class WeaponHolder(object):
                 dest = self._target._next_target
 
             self.fire_all_weapons(dest)
-            Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
-            self.log.debug("%s fired, fire again in %s ticks", self, GAME_SPEED.TICKS_PER_SECOND)
+            Scheduler().add_new_object(self.try_attack_target, self,
+                                       GAME_SPEED.TICKS_PER_SECOND)
+            self.log.debug("%s fired, fire again in %s ticks", self,
+                           GAME_SPEED.TICKS_PER_SECOND)
         else:
             self.log.debug("%s target not in range", self)
 
     def _stance_tick(self):
         """
         Executes every few seconds, doing movement depending on the stance.
-        Static WeaponHolders are aggressive, attacking all enemies that are in range
+        Static WeaponHolders are aggressive, attacking all enemies
+        that are in range
         """
         enemies = [u for u in self.session.world.get_health_instances(
             self.position.center, self._max_range)
             if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
-        self.log.debug("%s stance tick, found enemies: %s", self, [str(i) for i in enemies])
+        self.log.debug("%s stance tick, found enemies: %s", self,
+                       [str(i) for i in enemies])
         if not enemies:
             return
 
@@ -297,7 +321,8 @@ class WeaponHolder(object):
 
     def user_attack(self, targetid):
         """
-        Called when the user triggeres the attack, executes the user_attack_issued callbacks
+        Called when the user triggeres the attack,
+        executes the user_attack_issued callbacks
         @param targetid: world id of the unit that is to be attacked
         """
         self.attack(WorldObject.get_object_by_id(targetid))
@@ -314,12 +339,14 @@ class WeaponHolder(object):
         Removes reference from target,
         this happens when the attack is stopped or the target is dead
         either way the refs are checked using gc module
-        this is used because after unit death it's possbile that it still has refs
+        this is used because after unit death it's possbile
+        that it still has refs
         """
         self._target = None
 
     def stop_attack(self):
-        # When the ship is told to move, the target is None and the listeners in target removed
+        # When the ship is told to move, the target is None
+        #  and the listeners in target removed
         # TODO make another listener for target_changed
         self.log.debug("%s stop attack", self)
         if self._target is not None:
@@ -330,8 +357,10 @@ class WeaponHolder(object):
         """
         Fires all weapons in storage at a given position
         @param dest: Point with the given position
-        @param rotated: If True weapons will be fired at different locations, rotated around dest
-            override to True for units that need to fire at rotated coords
+        @param rotated: If True weapons will be fired at different
+                        locations, rotated around dest
+                        override to True for units that need
+                        to fire at rotated coords
         """
         self.log.debug("%s fire all weapons", self)
         self._fired_weapons_number = 0
@@ -387,17 +416,20 @@ class WeaponHolder(object):
             if self.session.db.get_weapon_stackable(weapon.weapon_id):
                 number = weapon.number_of_weapons
 
-            db("INSERT INTO weapon_storage(owner_id, weapon_id, number, remaining_ticks) VALUES(?, ?, ?, ?)",
+            db("INSERT INTO weapon_storage(owner_id, weapon_id, number, "
+               "remaining_ticks) VALUES(?, ?, ?, ?)",
                 self.worldid, weapon.weapon_id, number, ticks)
         # save target
         if self._target:
-            db("INSERT INTO target(worldid, target_id) VALUES(?, ?)", self.worldid, self._target.worldid)
+            db("INSERT INTO target(worldid, target_id) VALUES(?, ?)",
+               self.worldid, self._target.worldid)
 
     def load_target(self, db):
         """
         Loads target from database
         """
-        target_id = db("SELECT target_id from target WHERE worldid = ?", self.worldid)
+        target_id = db("SELECT target_id from target WHERE worldid = ?",
+                       self.worldid)
         if target_id:
             target = self.session.world.get_object_by_id(target_id[0][0])
             self.attack(target)
@@ -405,8 +437,8 @@ class WeaponHolder(object):
     def load(self, db, worldid):
         super(WeaponHolder, self).load(db, worldid)
         self.__init()
-        weapons = db("SELECT weapon_id, number, remaining_ticks FROM weapon_storage WHERE owner_id = ?",
-            worldid)
+        weapons = db("SELECT weapon_id, number, remaining_ticks FROM "
+                     "weapon_storage WHERE owner_id = ?", worldid)
         for weapon_id, number, ticks in weapons:
             # create weapon and add to storage manually
             if self.session.db.get_weapon_stackable(weapon_id):
@@ -418,16 +450,22 @@ class WeaponHolder(object):
             # if weapon not ready add scheduled call and remove from fireable
             if ticks:
                 weapon.attack_ready = False
-                Scheduler().add_new_object(weapon.make_attack_ready, weapon, ticks)
+                Scheduler().add_new_object(weapon.make_attack_ready,
+                                           weapon, ticks)
             else:
                 self._fireable.append(weapon)
-            weapon.add_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
-            weapon.add_attack_ready_listener(Callback(self._add_to_fireable, weapon))
-            weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
+            weapon.add_weapon_fired_listener(Callback(
+                self._remove_from_fireable, weapon))
+            weapon.add_attack_ready_listener(Callback(
+                self._add_to_fireable, weapon))
+            weapon.add_weapon_fired_listener(
+                self._increase_fired_weapons_number)
         self.on_storage_modified()
         # load target after all objects have been loaded
-        Scheduler().add_new_object(Callback(self.load_target, db), self, run_in=0)
-        self.log.debug("%s weapon storage after load: %s", self, self._weapon_storage)
+        Scheduler().add_new_object(Callback(self.load_target, db), self,
+                                   run_in=0)
+        self.log.debug("%s weapon storage after load: %s", self,
+                       self._weapon_storage)
 
     def get_status(self):
         """Return the current status of the ship."""
@@ -435,7 +473,8 @@ class WeaponHolder(object):
             target = self.get_attack_target()
             if isinstance(target, Ship):
                 string = _("Attacking {target} '{name}' ({owner})")
-                return (string.format(target=target.classname.lower(), name=target.name,
+                return (string.format(target=target.classname.lower(),
+                                      name=target.name,
                                       owner=target.owner.name),
                         target.position)
             return (_('Attacking {owner}').format(owner=target.owner.name),
@@ -468,14 +507,17 @@ class MovingWeaponHolder(WeaponHolder):
         Used when shooting in specialized unit code.
         """
         if Scheduler().rem_call(self, self._move_tick):
-            Scheduler().add_new_object(Callback(self._move_tick, resume=False), self, ticks)
+            Scheduler().add_new_object(Callback(self._move_tick, resume=False),
+                                       self, ticks)
 
-    def _move_and_attack(self, destination, not_possible_action=None, in_range_callback=None):
+    def _move_and_attack(self, destination, not_possible_action=None,
+                         in_range_callback=None):
         """
         Callback for moving to a destination, then attack
         @param destination : moving destination
         @param not_possible_action : execute if MoveNotPossible is thrown
-        @param in_range_callback : sets up a conditional callback that is executed
+        @param in_range_callback : sets up a conditional callback
+                                   that is executed
         if the target is in range
         """
         if not_possible_action:
@@ -485,9 +527,10 @@ class MovingWeaponHolder(WeaponHolder):
 
         try:
             self.move(destination, callback=self.try_attack_target,
-                blocked_callback=self.try_attack_target)
+                      blocked_callback=self.try_attack_target)
             if in_range_callback:
-                self.add_conditional_callback(self.attack_in_range, in_range_callback)
+                self.add_conditional_callback(self.attack_in_range,
+                                              in_range_callback)
 
         except MoveNotPossible:
             if not_possible_action:
@@ -501,12 +544,14 @@ class MovingWeaponHolder(WeaponHolder):
             return
 
         if not self.attack_in_range():
-            destination = Annulus(self._target.position.center, self._min_range, self._max_range)
+            destination = Annulus(self._target.position.center,
+                                  self._min_range, self._max_range)
             not_possible_action = self.stop_attack
             # if target passes near self, attack!
             in_range_callback = self.try_attack_target
             # if executes attack action try to move in 1 second
-            self._move_and_attack(destination, not_possible_action, in_range_callback)
+            self._move_and_attack(destination, not_possible_action,
+                                  in_range_callback)
         else:
             if self.is_moving() and self._fireable:
                 # stop to shoot
@@ -524,22 +569,26 @@ class MovingWeaponHolder(WeaponHolder):
             fireable_number = len(self._fireable)
             self.fire_all_weapons(dest)
             move_closer = False
-            # if no weapon was fired, because of holder positioned in dead range, move closer
+            # if no weapon was fired, because of holder positioned in
+            #  dead range, move closer
             if self._fired_weapons_number == 0 and fireable_number != 0:
                 # no weapon was fired but i could have fired weapons
                 # check if i have weapons that could be shot from this position
                 move_closer = True
-                distance = self.position.center.distance(self._target.position.center)
+                distance = self.position.center.distance(
+                    self._target.position.center)
                 for weapon in self._weapon_storage:
                     if weapon.check_target_in_range(distance):
                         move_closer = False
                         break
 
             if move_closer:
-                destination = Annulus(self._target.position.center, self._min_range, self._min_range)
+                destination = Annulus(self._target.position.center,
+                                      self._min_range, self._min_range)
                 self._move_and_attack(destination)
             else:
-                Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)
+                Scheduler().add_new_object(self.try_attack_target, self,
+                                           GAME_SPEED.TICKS_PER_SECOND)
 
     def set_stance(self, stance):
         """
@@ -556,12 +605,14 @@ class MovingWeaponHolder(WeaponHolder):
     def save(self, db):
         super(MovingWeaponHolder, self).save(db)
         db("INSERT INTO stance(worldid, stance, state) VALUES(?, ?, ?)",
-            self.worldid, self.stance.NAME, self.get_component(self.stance).get_state())
+           self.worldid, self.stance.NAME,
+           self.get_component(self.stance).get_state())
 
     def load(self, db, worldid):
         super(MovingWeaponHolder, self).load(db, worldid)
         self.__init()
-        stance, state = db("SELECT stance, state FROM stance WHERE worldid = ?", worldid)[0]
+        stance, state = db("SELECT stance, state FROM stance WHERE "
+                           "worldid = ?", worldid)[0]
         self.stance = self.get_component_by_name(stance)
         self.stance.set_state(state)
 

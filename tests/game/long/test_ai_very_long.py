@@ -23,9 +23,11 @@ from functools import partial
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
+
 def test_ai_very_long():
     # (function, seed)
     yield run_ai_very_long, 4
+
 
 def run_ai_very_long(seed):
     @game_test(mapgen=partial(generate_map_from_seed, seed),

@@ -70,6 +70,7 @@ def test_load_inactive_production():
 
     session.end()
 
+
 def create_lumberjack_production_session():
     """Create a saved game with a producing production and then load it."""
     session, player = new_session()
@@ -133,7 +134,7 @@ def test_hunter_save_load():
     hunter = Build(BUILDINGS.HUNTER, 30, 30, island,
                    settlement=settlement)(player)
     hunter_worldid = hunter.worldid
-    del hunter # invalid after save/load
+    del hunter  # invalid after save/load
 
     for x in xrange(27, 29):
         for y in xrange(25, 28):
@@ -158,7 +159,6 @@ def test_hunter_save_load():
         assert collector.state == new_state,\
             "expected new state {0}, got {1}".format(old_state,
                                                      collector.state)
-
 
     sequence = [
       Collector.states.idle,

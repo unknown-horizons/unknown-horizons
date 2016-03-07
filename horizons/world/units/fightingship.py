@@ -52,8 +52,8 @@ class FightingShip(MovingWeaponHolder, Ship):
         """
         Rotates the ship and triggers correct animation
         """
-        # rotate the ship so it faces dest
-        # for this rotate facing location coordinates around position coordinates
+        # rotate the ship so it faces dest, for this
+        # rotate facing location coordinates around position coordinates
         self.stop_for(GAME_SPEED.TICKS_PER_SECOND * 2)
         self_location = self._instance.getLocation()
         facing_location = self._instance.getFacingLocation()
