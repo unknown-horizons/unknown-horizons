@@ -35,16 +35,16 @@ class BuildingInfluencingDisaster(Disaster):
 
     """
 
-    # Defines the building type that should be influenced, by default it infects
-    # the residents of a settlement
+    # Defines the building type that should be influenced,
+    # by default it infects the residents of a settlement
     BUILDING_TYPE = BUILDINGS.RESIDENTIAL
 
-    # Defines the minimum tier a settlement needs before this disaster can break out,
-    # by default its the PIONEER tier
+    # Defines the minimum tier a settlement needs before this disaster
+    # can break out, by default its the PIONEER tier
     MIN_BREAKOUT_TIER = TIER.PIONEERS
 
-    # Defines the minimum number of pioneer or higher residences that need to be in a
-    # settlement before this disaster can break loose
+    # Defines the minimum number of pioneer or higher residences that
+    # need to be in a settlement before this disaster can break loose
     MIN_INHABITANTS_FOR_BREAKOUT = 5
 
     # Defines the status icon for the influenced BUILDING_TYPE
@@ -67,15 +67,17 @@ class BuildingInfluencingDisaster(Disaster):
     def save(self, db):
         super(BuildingInfluencingDisaster, self).save(db)
         for building in self._affected_buildings:
-            ticks = Scheduler().get_remaining_ticks(self, Callback(self.wreak_havoc, building), True)
+            ticks = Scheduler().get_remaining_ticks(self, Callback(
+                self.wreak_havoc, building), True)
             db("INSERT INTO building_influencing_disaster(disaster,"
-                " building, remaining_ticks_havoc) VALUES(?, ?, ?)",
-                self.worldid, building.worldid, ticks)
+               " building, remaining_ticks_havoc) VALUES(?, ?, ?)",
+               self.worldid, building.worldid, ticks)
 
     def load(self, db, worldid):
         super(BuildingInfluencingDisaster, self).load(db, worldid)
         for building_id, ticks in db("SELECT building, remaining_ticks_havoc"
-                " FROM building_influencing_disaster WHERE disaster = ?", worldid):
+                                     " FROM building_influencing_disaster "
+                                     "WHERE disaster = ?", worldid):
             # do half of infect()
             building = WorldObject.get_object_by_id(building_id)
             self.log.debug("%s loading disaster %s", self, building)
@@ -84,15 +86,18 @@ class BuildingInfluencingDisaster(Disaster):
     def breakout(self):
         assert self.can_breakout(self._settlement)
         super(BuildingInfluencingDisaster, self).breakout()
-        possible_buildings = self._settlement.buildings_by_id[self.BUILDING_TYPE]
+        possible_buildings = self._settlement.buildings_by_id[
+            self.BUILDING_TYPE]
         building = self._settlement.session.random.choice(possible_buildings)
         self.infect(building)
-        self.log.debug("%s breakout out on %s at %s", self, building, building.position)
+        self.log.debug("%s breakout out on %s at %s", self, building,
+                       building.position)
 
     @classmethod
     def can_breakout(cls, settlement):
         return settlement.owner.settler_level >= cls.MIN_BREAKOUT_TIER and \
-            settlement.count_buildings(cls.BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
+            settlement.count_buildings(cls.BUILDING_TYPE) > \
+            cls.MIN_INHABITANTS_FOR_BREAKOUT
 
     def expand(self):
         if not self.evaluate():
@@ -102,13 +107,14 @@ class BuildingInfluencingDisaster(Disaster):
             return
         self.log.debug("%s still active, expanding..", self)
         for building in self._affected_buildings:
-            for tile in self._settlement.get_tiles_in_radius(building.position,
-                    self.EXPANSION_RADIUS, False):
+            for tile in self._settlement.get_tiles_in_radius(
+                    building.position, self.EXPANSION_RADIUS, False):
                 if tile.object is None or tile.object.id != self.BUILDING_TYPE:
                     continue
                 if tile.object in self._affected_buildings:
                     continue
-                if self._settlement.session.random.random() <= self.SEED_CHANCE:
+                if self._settlement.session.random.random() <= \
+                        self.SEED_CHANCE:
                     self.infect(tile.object)
                     return
 
@@ -116,17 +122,20 @@ class BuildingInfluencingDisaster(Disaster):
         Scheduler().rem_all_classinst_calls(self)
 
     def infect(self, building, load=None):
-        """@load: (db, disaster_worldid), set on restoring infected state of savegame"""
+        """@load: (db, disaster_worldid), set on restoring infected
+        state of savegame"""
         super(BuildingInfluencingDisaster, self).infect(building, load=load)
         self._affected_buildings.append(building)
         havoc_time = self.TIME_BEFORE_HAVOC
         # keep in sync with load()
         if load:
             db, worldid = load
-            havoc_time = db("SELECT remaining_ticks_havoc FROM"
-                " building_influencing_disaster WHERE disaster = ?"
-                " AND building = ?", worldid, building.worldid)[0][0]
-        Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
+            havoc_time = db("SELECT remaining_ticks_havoc FROM "
+                            "building_influencing_disaster WHERE disaster = ?"
+                            " AND building = ?", worldid,
+                            building.worldid)[0][0]
+        Scheduler().add_new_object(Callback(self.wreak_havoc, building),
+                                   self, run_in=havoc_time)
         AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
         NewDisaster.broadcast(building.owner, building, self.__class__, self)
 

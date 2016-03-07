@@ -42,7 +42,8 @@ class Unit(MovingObject, ResourceTransferHandler):
     is_ship = False
     health_bar_y = -30
 
-    AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10  # show health for 10 sec after damage has been taken
+    AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10
+    # show health for 10 sec after damage has been taken
 
     def __init__(self, x, y, owner=None, **kwargs):
         super(Unit, self).__init__(x=x, y=y, **kwargs)
@@ -59,13 +60,17 @@ class Unit(MovingObject, ResourceTransferHandler):
         self.InstanceActionListener.onInstanceActionCancelled = WeakMethod(
             self.onInstanceActionCancelled)
         self.InstanceActionListener.onInstanceActionFrame = lambda *args: None
-        self.InstanceActionListener.thisown = 0  # fife will claim ownership of this
+        self.InstanceActionListener.thisown = 0
+        # fife will claim ownership of this
 
-        self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance(
-            self.__class__._fife_object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
+        self._instance = self.session.view.layers[
+            LAYERS.OBJECTS].createInstance(
+                self.__class__._fife_object, fife.ModelCoordinate(
+                    int(x), int(y), 0), str(self.worldid))
         fife.InstanceVisual.create(self._instance)
         location = fife.Location(self._instance.getLocation().getLayer())
-        location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
+        location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x,
+                                                                    y + y, 0))
         self.act(self._action, location, True)
         self._instance.addActionListener(self.InstanceActionListener)
 
@@ -74,7 +79,8 @@ class Unit(MovingObject, ResourceTransferHandler):
         self._health_displayed = False
 
         if self.has_component(HealthComponent):
-            self.get_component(HealthComponent).add_damage_dealt_listener(self._on_damage)
+            self.get_component(HealthComponent).add_damage_dealt_listener(
+                self._on_damage)
 
     def remove(self):
         self.log.debug("Unit.remove for %s started", self)
@@ -108,7 +114,8 @@ class Unit(MovingObject, ResourceTransferHandler):
     def _on_damage(self, caller=None):
         """Called when health has changed"""
         if not self._instance:  # dead
-            # it is sometimes hard to avoid this being called after the unit has died,
+            # it is sometimes hard to avoid this being called after
+            # the unit has died,
             # e.g. when it's part of a list of changelisteners,
             # and one of the listeners executed before kills the unit
             return
@@ -120,8 +127,9 @@ class Unit(MovingObject, ResourceTransferHandler):
         # remember that it has been drawn automatically
         self._last_draw_health_call_on_damage = True
         # remove later (but only in case there's no manual interference)
-        ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True),
-                                      self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
+        ExtScheduler().add_new_object(
+            Callback(self.draw_health, auto_remove=True),
+            self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
 
     def draw_health(self, remove_only=False, auto_remove=False):
         """Draws the units current health as a healthbar over the unit."""
@@ -130,8 +138,10 @@ class Unit(MovingObject, ResourceTransferHandler):
         render_name = "health_" + str(self.worldid)
         renderer = self.session.view.renderer['GenericRenderer']
         renderer.removeAll(render_name)
-        if remove_only or (auto_remove and not self._last_draw_health_call_on_damage):
-            # only remove on auto_remove if this health was actually displayed as reacton to _on_damage
+        if remove_only or (auto_remove and not
+                           self._last_draw_health_call_on_damage):
+            # only remove on auto_remove if this health was actually
+            # displayed as reacton to _on_damage
             # else we might remove something that the user still wants
             self._health_displayed = False
             return
@@ -145,14 +155,21 @@ class Unit(MovingObject, ResourceTransferHandler):
         width = int(50 * zoom)
         y_pos = int(self.health_bar_y * zoom)
         relative_x = int((width * health) // max_health - (width // 2))
-        # mid_node is the coord separating healthy (green) and damaged (red) quads
-        mid_node_top = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos - height))
-        mid_node_btm = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos))
+        # mid_node is the coord separating healthy (green)
+        #  and damaged (red) quads
+        mid_node_top = fife.RendererNode(
+            self._instance, fife.Point(relative_x, y_pos - height))
+        mid_node_btm = fife.RendererNode(self._instance,
+                                         fife.Point(relative_x, y_pos))
 
-        left_upper = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos - height))
-        right_upper = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos - height))
-        left_lower = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos))
-        right_lower = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos))
+        left_upper = fife.RendererNode(self._instance,
+                                       fife.Point(-width // 2, y_pos - height))
+        right_upper = fife.RendererNode(self._instance,
+                                        fife.Point(width // 2, y_pos - height))
+        left_lower = fife.RendererNode(self._instance,
+                                       fife.Point(-width // 2, y_pos))
+        right_lower = fife.RendererNode(self._instance,
+                                        fife.Point(width // 2, y_pos))
 
         if health > 0:  # draw healthy part of health bar
             renderer.addQuad(render_name,
@@ -183,12 +200,14 @@ class Unit(MovingObject, ResourceTransferHandler):
 
         owner_id = 0 if self.owner is None else self.owner.worldid
         db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
-            self.worldid, self.__class__.id, self.position.x, self.position.y, owner_id)
+           self.worldid, self.__class__.id, self.position.x, self.position.y,
+           owner_id)
 
     def load(self, db, worldid):
         super(Unit, self).load(db, worldid)
 
-        x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
+        x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?",
+                            worldid)[0]
         if owner_id == 0:
             owner = None
         else:
@@ -198,16 +217,19 @@ class Unit(MovingObject, ResourceTransferHandler):
         return self
 
     def get_random_location(self, in_range):
-        """Returns a random location in walking_range, that we can find a path to
+        """Returns a random location in walking_range,
+        that we can find a path to
         Does not check every point, only a few samples are tried.
-        @param in_range: int, max distance to returned point from current position
+        @param in_range: int, max distance to returned point from
+                         current position
         @return: tuple(Instance of Point or None, path or None)"""
         range_squared = in_range * in_range
         randint = self.session.random.randint
         # pick a sample, try tries times
         tries = range_squared // 2
         for i in xrange(tries):
-            # choose x-difference, then y-difference so that the distance is in the range.
+            # choose x-difference, then y-difference so that the
+            #  distance is in the range.
             x_diff = randint(1, in_range)  # always go at least 1 field
             y_max_diff = int(math.sqrt(range_squared - x_diff * x_diff))
             y_diff = randint(0, y_max_diff)
@@ -221,7 +243,8 @@ class Unit(MovingObject, ResourceTransferHandler):
             if y_diff % 2 == 0:
                 x_diff = -x_diff
             # check this target
-            possible_target = Point(self.position.x + x_diff, self.position.y + y_diff)
+            possible_target = Point(self.position.x + x_diff,
+                                    self.position.y + y_diff)
             path = self.check_move(possible_target)
             if path:
                 return (possible_target, path)

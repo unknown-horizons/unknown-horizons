@@ -27,7 +27,8 @@ from horizons.util.pathfinding.pather import SoldierPather
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.command.unit import CreateUnit
-from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job
+from horizons.world.units.collectors import Collector, BuildingCollector, \
+    JobList, Job
 from horizons.constants import RES, WILD_ANIMAL
 from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.component.storagecomponent import StorageComponent
@@ -35,7 +36,8 @@ from horizons.world.resourcehandler import ResourceHandler
 
 
 class Animal(ResourceHandler):
-    """Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
+    """Base Class for all animals. An animal is a unit,
+    that consumes resources (e.g. grass)
     and usually produce something (e.g. wool, meat)."""
     log = logging.getLogger('world.units.animal')
 
@@ -62,18 +64,20 @@ class CollectorAnimal(Animal):
             self.add_move_callback(self.search_job)
 
     def stop_after_job(self, collector):
-        """Tells the unit to stop after the current job and call the collector to pick it up"""
+        """Tells the unit to stop after the current job and call
+        the collector to pick it up"""
         self.collector = collector
 
     def remove_stop_after_job(self):
-        """Let the animal continue as usual after the job. Can only be called
-        after stop_after_job"""
+        """Let the animal continue as usual after the job.
+        Can only be called after stop_after_job"""
         assert self.collector is not None
         self.collector = None
 
     def has_collectors(self):
         """Whether this unit is just now or about to be collected"""
-        return self.collector is not None or self.state == self.states.waiting_for_herder
+        return self.collector is not None or \
+            self.state == self.states.waiting_for_herder
 
     def finish_working(self):
         # animal is done when it has eaten, and
@@ -82,7 +86,8 @@ class CollectorAnimal(Animal):
         self.end_job()
 
     def search_job(self):
-        """Search for a job, only called if the collector does not have a job."""
+        """Search for a job, only called if the collector does not
+        have a job."""
         self.log.debug("%s search job", self)
         if self.collector is not None:
             # tell the animalcollector to pick me up
@@ -104,11 +109,12 @@ class WildAnimal(CollectorAnimal, Collector):
     """Animals, that live in the nature and feed on natural resources.
     These animals can be hunted.
 
-    They produce wild animal meat and feed on wild animal food x, which is produced by
-    e.g. a tree.
+    They produce wild animal meat and feed on wild animal food x,
+    which is produced by e.g. a tree.
 
-    It is assumed, that they need all resources, that they use, for reproduction. If they have
-    gathered all resources, and their inventory is full, they reproduce.
+    It is assumed, that they need all resources, that they use,
+    for reproduction. If they have gathered all resources, and their
+    inventory is full, they reproduce.
     """
     walking_range = 6
     work_duration = 96

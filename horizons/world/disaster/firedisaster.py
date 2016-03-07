@@ -20,7 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
+from horizons.world.disaster.buildinginfluencingdisaster import \
+    BuildingInfluencingDisaster
 from horizons.world.status import FireStatusIcon
 from horizons.constants import BUILDINGS, RES, TIER
 

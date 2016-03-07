@@ -60,8 +60,9 @@ class AnimalCollector(BuildingCollector):
         if self.job is not None:
             if self.state == self.states.waiting_for_animal_to_stop:
                 if hasattr(self.job.object, 'remove_stop_after_job'):
-                    # when loading a game fails and the world is destructed again, the
-                    # worldid may not yet have been resolved to an actual in-game object
+                    # when loading a game fails and the world is
+                    # destructed again, the worldid may not yet have
+                    # been resolved to an actual in-game object
                     self.job.object.remove_stop_after_job()
         super(AnimalCollector, self).cancel(continue_action=continue_action)
 
@@ -72,7 +73,8 @@ class AnimalCollector(BuildingCollector):
         self.state = self.states.waiting_for_animal_to_stop
 
     def pickup_animal(self):
-        """Moves collector to animal. Called by animal when it actually stopped"""
+        """Moves collector to animal.
+        Called by animal when it actually stopped"""
         self.show()
         try:
             self.move(self.job.object.loading_area, self.begin_working)
@@ -85,7 +87,8 @@ class AnimalCollector(BuildingCollector):
         self.state = self.states.moving_to_target
 
     def finish_working(self):
-        """Called when collector arrives at the animal. Move home with the animal"""
+        """Called when collector arrives at the animal.
+        Move home with the animal"""
         if self.__class__.kill_animal:
             # get res now, and kill animal right after
             super(AnimalCollector, self).finish_working()
@@ -94,10 +97,12 @@ class AnimalCollector(BuildingCollector):
         self.get_animal()  # get or kill animal
 
     def reached_home(self):
-        """Transfer res to home building and such. Called when collector arrives at it's home"""
+        """Transfer res to home building and such.
+        Called when collector arrives at it's home"""
         if not self.__class__.kill_animal:
             # sheep and herder are inside the building now, pretending to work.
-            super(AnimalCollector, self).finish_working(collector_already_home=True)
+            super(AnimalCollector, self).finish_working(
+                collector_already_home=True)
             self.release_animal()
         super(AnimalCollector, self).reached_home()
 
@@ -124,7 +129,8 @@ class AnimalCollector(BuildingCollector):
         if target.has_collectors():
             return None
         else:
-            return super(AnimalCollector, self).check_possible_job_target_for(target, res)
+            return super(AnimalCollector, self).check_possible_job_target_for(
+                target, res)
 
     def stop_animal(self):
         """Tell animal to stop at the next occasion"""
@@ -137,15 +143,19 @@ class AnimalCollector(BuildingCollector):
             self.job.object.die()
             self.job.object = None  # there is no target anymore now
         else:
-            self.job.object.move(self.home_building.position, destination_in_building=True,
-                action='move_full')
+            self.job.object.move(self.home_building.position,
+                                 destination_in_building=True,
+                                 action='move_full')
 
     def release_animal(self):
-        """Let animal free after shearing and schedules search for a new job for animal."""
+        """Let animal free after shearing and schedules search for
+        a new job for animal."""
         if not self.__class__.kill_animal:
             self.log.debug("%s releasing animal %s", self, self.job.object)
-            Scheduler().add_new_object(self.job.object.search_job, self.job.object,
+            Scheduler().add_new_object(self.job.object.search_job,
+                                       self.job.object,
                                        GAME_SPEED.TICKS_PER_SECOND)
+
 
 class HunterCollector(AnimalCollector):
     kill_animal = True
@@ -154,7 +164,7 @@ class HunterCollector(AnimalCollector):
         dist = self.home_building.position.distance
         radius = self.home_building.radius
         return [animal for animal in self.home_building.island.wild_animals if
-            dist(animal.position) <= radius]
+                dist(animal.position) <= radius]
 
 
 decorators.bind_all(AnimalCollector)

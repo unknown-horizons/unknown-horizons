@@ -41,7 +41,8 @@ class DisasterManager(object):
 
     def __init__(self, session, disabled=False):
         """
-        @param disabled: Don't do anything at all if True (but be responsive to normal calls)"""
+        @param disabled: Don't do anything at all if True
+                        (but be responsive to normal calls)"""
         from horizons.session import Session
         assert isinstance(session, Session)
         self.session = session
@@ -53,7 +54,8 @@ class DisasterManager(object):
         self._active_disaster = {}
 
         # keep call also when disabled, simplifies save/load
-        Scheduler().add_new_object(self.run, self, run_in=self.CALL_EVERY, loops=-1)
+        Scheduler().add_new_object(self.run, self,
+                                   run_in=self.CALL_EVERY, loops=-1)
 
     def save(self, db):
         ticks = Scheduler().get_remaining_ticks(self, self.run, True)
@@ -70,9 +72,10 @@ class DisasterManager(object):
                                        loop_interval=self.CALL_EVERY, loops=-1)
 
         for disaster_id, disaster_type, settlement_id in db(
-            "SELECT rowid, type, settlement FROM disaster"):
+                "SELECT rowid, type, settlement FROM disaster"):
             settlement = WorldObject.get_object_by_id(settlement_id)
-            klass = (i for i in self.disasters if i.TYPE == disaster_type).next()
+            klass = (i for i in self.disasters if
+                     i.TYPE == disaster_type).next()
             cata = klass(settlement, self)
             self._active_disaster[settlement] = cata
             cata.load(db, disaster_id)
@@ -90,8 +93,8 @@ class DisasterManager(object):
                             cata.breakout()
                             self._active_disaster[settlement] = cata
                         else:
-                            self.log.debug("Disaster %s would breakout apply but can't breakout",
-                                           disaster)
+                            self.log.debug("Disaster %s would breakout apply "
+                                           "but can't breakout", disaster)
 
     def end_disaster(self, settlement):
         # End the disaster

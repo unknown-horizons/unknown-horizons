@@ -58,11 +58,13 @@ class Disaster(WorldObject):
 
     def save(self, db):
         ticks = Scheduler().get_remaining_ticks(self, self.expand, True)
-        db("INSERT INTO disaster(rowid, type, remaining_ticks_expand, settlement) VALUES(?, ?, ?, ?)",
+        db("INSERT INTO disaster(rowid, type, remaining_ticks_expand, "
+           "settlement) VALUES(?, ?, ?, ?)",
            self.worldid, self.__class__.TYPE, ticks, self._settlement.worldid)
 
     def load(self, db, worldid):
-        ticks = db("SELECT remaining_ticks_expand from disaster where rowid = ?", worldid)[0][0]
+        ticks = db("SELECT remaining_ticks_expand from disaster where "
+                   "rowid = ?", worldid)[0][0]
         Scheduler().add_new_object(self.expand, self, run_in=ticks, loops=-1,
                                    loop_interval=self.EXPANSION_TIME)
 
@@ -75,33 +77,43 @@ class Disaster(WorldObject):
         raise NotImplementedError
 
     def infect(self, building, load):
-        """Used to expand disaster to this building. Usually called by expand and breakout
-        @load: (db, disaster_worldid), set on restoring infected state of savegame"""
-        self.log.debug("%s infecting %s at %s", self, building, building.position)
+        """Used to expand disaster to this building. Usually called
+        by expand and breakout
+        @load: (db, disaster_worldid), set on restoring infected
+               state of savegame"""
+        self.log.debug("%s infecting %s at %s", self, building,
+                       building.position)
         building.disaster = self
-        if self.DISASTER_RES is not None and not load:  # in load, storage save/load will kick in
-            remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
+        if self.DISASTER_RES is not None and not load:
+            # in load, storage save/load will kick in
+            remnant = building.get_component(
+                StorageComponent).inventory.alter(self.DISASTER_RES, 1)
             assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
     def recover(self, building):
-        """Inverse of infect(). Is also called when buildings are torn down by the user."""
-        self.log.debug("%s recovering %s at %s", self, building, building.position)
+        """Inverse of infect(). Is also called when buildings are torn
+        down by the user."""
+        self.log.debug("%s recovering %s at %s", self, building,
+                       building.position)
         del building.disaster
         if self.DISASTER_RES is not None:
             # make sure to remove everything in case of random recovery
             inv = building.get_component(StorageComponent).inventory
             if inv[self.DISASTER_RES] > 0:
                 remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
-                assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
+                assert remnant == 0, 'remn: ' + str(
+                    remnant) + " " + str(building)
 
     def breakout(self):
         """Picks (a) object(s) to start a breakout."""
-        Scheduler().add_new_object(self.expand, self, run_in=self.EXPANSION_TIME, loops=-1)
+        Scheduler().add_new_object(self.expand, self,
+                                   run_in=self.EXPANSION_TIME, loops=-1)
 
     def wreak_havoc(self, building):
         """The implementation to whatever the disaster does to affected
         objects goes here"""
-        self.log.debug("%s wreak havoc %s at %s", self, building, building.position)
+        self.log.debug("%s wreak havoc %s at %s", self, building,
+                       building.position)
         del building.disaster
 
     @classmethod

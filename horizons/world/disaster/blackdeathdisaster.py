@@ -23,7 +23,8 @@
 from horizons.constants import BUILDINGS, RES, TIER
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
-from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
+from horizons.world.disaster.buildinginfluencingdisaster import \
+    BuildingInfluencingDisaster
 from horizons.world.status import BlackDeathStatusIcon
 
 
@@ -56,7 +57,8 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
         self.healed_buildings = []
 
     def infect(self, building, load=None):
-        """@load: (db, disaster_worldid), set on restoring infected state of savegame"""
+        """@load: (db, disaster_worldid), set on restoring infected
+        state of savegame"""
         if building not in self.healed_buildings:
             super(BlackDeathDisaster, self).infect(building, load=load)
 
@@ -64,7 +66,8 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
         """Some inhabitants have to die."""
         super(BlackDeathDisaster, self)
         if building.inhabitants > 1:
-            inhabitants_that_will_die = self._manager.session.random.randint(1, building.inhabitants)
+            inhabitants_that_will_die = self._manager.session.random.randint(
+                1, building.inhabitants)
             building.inhabitants -= inhabitants_that_will_die
             self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
             Scheduler().add_new_object(

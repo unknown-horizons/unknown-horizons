@@ -21,5 +21,6 @@
 
 
 class MoveNotPossible(Exception):
-    """Gets thrown when the unit should move some where, but there is no possible path"""
+    """Gets thrown when the unit should move some where,
+    but there is no possible path"""
     pass

@@ -338,18 +338,21 @@ class Collector(Unit):
         try:
             self._move_tick(resume=True)
         except PathBlockedError:
-            Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+            Scheduler().add_new_object(self.resume_movement, self,
+                                       COLLECTORS.DEFAULT_WAIT_TICKS)
 
     def handle_path_to_job_blocked(self):
         """Called when we get blocked while trying to move to the job location.
         The default action is to resume movement in a few seconds."""
-        self.log.debug("%s: got blocked while moving to the job location, trying again in %s ticks.",
-            self, COLLECTORS.DEFAULT_WAIT_TICKS)
-        Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+        self.log.debug("%s: got blocked while moving to the job location, "
+                       "trying again in %s ticks.",
+                       self, COLLECTORS.DEFAULT_WAIT_TICKS)
+        Scheduler().add_new_object(self.resume_movement, self,
+                                   COLLECTORS.DEFAULT_WAIT_TICKS)
 
     def begin_working(self):
-        """Pretends that the collector works by waiting some time. finish_working is
-        called after that time."""
+        """Pretends that the collector works by waiting some time.
+        finish_working is called after that time."""
         self.log.debug("%s begins working", self)
         assert self.job is not None, '%s job is None in begin_working' % self
         Scheduler().add_new_object(self.finish_working, self, self.work_duration)
@@ -363,12 +366,14 @@ class Collector(Unit):
     def finish_working(self):
         """Called when collector has stayed at the target for a while.
         Picks up the resources.
-        Should be overridden to specify what the collector should do after this."""
+        Should be overridden to specify what the collector should
+        do after this."""
         self.log.debug("%s finished working", self)
         self.act("idle", self._instance.getFacingLocation(), True)
         # deregister at the target we're at
         self.job.object.remove_incoming_collector(self)
-        # reconsider job now: there might now be more res available than there were when we started
+        # reconsider job now: there might now be more res available than
+        #  there were when we started
 
         reslist = (self.check_possible_job_target_for(self.job.object,
                 res) for res in self.get_collectable_res())
@@ -376,8 +381,9 @@ class Collector(Unit):
         if reslist:
             self.job.reslist = reslist
 
-        # transfer res (this must be the last step, it will trigger consecutive actions through the
-        # target inventory changelistener, and the collector must be in a consistent state then.
+        # transfer res (this must be the last step, it will trigger
+        # consecutive actions through the target inventory changelistener,
+        # and the collector must be in a consistent state then.
         self.transfer_res_from_target()
         # stop playing ambient sound if any
         if self.has_component(AmbientSoundComponent):
@@ -387,9 +393,11 @@ class Collector(Unit):
         """Transfers resources from target to collector inventory"""
         new_reslist = []
         for entry in self.job.reslist:
-            actual_amount = self.job.object.pickup_resources(entry.res, entry.amount, self)
+            actual_amount = self.job.object.pickup_resources(
+                entry.res, entry.amount, self)
             if entry.amount != actual_amount:
-                new_reslist.append(Job.ResListEntry(entry.res, actual_amount, False))
+                new_reslist.append(Job.ResListEntry(
+                    entry.res, actual_amount, False))
             else:
                 new_reslist.append(entry)
 
@@ -501,8 +509,8 @@ class JobList(list):
     It's a list extended by special sort functions.
     """
     order_by = Enum('rating', 'amount', 'random', 'fewest_available',
-        'fewest_available_and_distance', 'for_storage_collector',
-        'distance')
+                    'fewest_available_and_distance', 'for_storage_collector',
+                    'distance')
 
     def __init__(self, collector, job_order):
         """
@@ -536,32 +544,37 @@ class JobList(list):
         """Prefer jobs where least amount is available in obj's inventory.
         Only considers resource of resource list with minimum amount available.
         This is supposed to fix urgent shortages."""
-        # shuffle list before sorting, so that jobs with same value have equal chance
+        # shuffle list before sorting, so that jobs
+        # with same value have equal chance
         if shuffle_first:
             self.collector.session.random.shuffle(self)
         inventory = self.collector.get_home_inventory()
         self.sort(key=lambda job: min(inventory[res] for res in job.resources), reverse=False)
 
     def _sort_jobs_fewest_available_and_distance(self):
-        """Sort jobs by distance, but secondarily also consider fewest available resources"""
+        """Sort jobs by distance, but secondarily also consider fewest
+        available resources"""
         # python sort is stable, so two sequenced sorts work.
         self._sort_jobs_fewest_available(shuffle_first=False)
         self._sort_jobs_distance()
 
     def _sort_jobs_for_storage_collector(self):
         """Special sophisticated sorting routing for storage collectors.
-        Same as fewest_available_and_distance_, but also considers whether target inv is full."""
+        Same as fewest_available_and_distance_, but also considers whether
+        target inv is full."""
         self._sort_jobs_fewest_available_and_distance()
         self._sort_target_inventory_full()
 
     def _sort_jobs_distance(self):
         """Prefer targets that are nearer"""
         collector_point = self.collector.position
-        self.sort(key=lambda job: collector_point.distance(job.object.loading_area))
+        self.sort(key=lambda job: collector_point.distance(
+            job.object.loading_area))
 
     def _sort_target_inventory_full(self):
         """Prefer targets with full inventory"""
-        self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
+        self.sort(key=operator.attrgetter('target_inventory_full_num'),
+                  reverse=True)
 
     def __str__(self):
         return unicode([unicode(i) for i in self])
