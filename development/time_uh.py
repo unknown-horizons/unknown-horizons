@@ -31,7 +31,8 @@ import time
 
 from optparse import AmbiguousOptionError, BadOptionError, OptionParser
 
-# make this script work both when started inside development and in the uh root dir
+# make this script work both when started inside development
+#  and in the uh root dir
 if not os.path.exists('content'):
     os.chdir('..')
 assert os.path.exists('content'), 'Content dir not found.'
@@ -73,7 +74,8 @@ class GameTimer(object):
     def run(self):
         start = time.time()
         args = ' '.join([sys.executable, 'run_uh.py'] + self.args)
-        proc = subprocess.Popen(args, executable=sys.executable, stdin=dev_null,
+        proc = subprocess.Popen(args, executable=sys.executable,
+                                stdin=dev_null,
                                 stdout=dev_null, stderr=dev_null)
         proc.wait()
         self.returncode = proc.returncode
@@ -105,14 +107,17 @@ def show_data(games):
 
 if __name__ == '__main__':
     parser = PassThroughOptionParser()
-    parser.add_option("-p", "--processes", dest="num_processes", metavar="<processes>",
-        type="int", default=1, help="Run <processes> processes in parallel.")
+    parser.add_option("-p", "--processes", dest="num_processes",
+                      metavar="<processes>", type="int", default=1,
+                      help="Run <processes> processes in parallel.")
     parser.add_option("--game-seed-range", dest="game_seed_range",
-        help="Use the given expression (same as for xrange) to run a number "
-        "of game instances with --sp-seed=SEED")
+                      help="Use the given expression (same as for xrange) "
+                           "to run a number of game instances with"
+                           " --sp-seed=SEED")
     parser.add_option("--map-seed-range", dest="map_seed_range",
-        help="Use the given expression (same as for xrange) to run a number "
-        "of game instances with --start-specific-random-map=SEED")
+                      help="Use the given expression (same as for xrange) "
+                           "to run a number of game instances with "
+                           "--start-specific-random-map=SEED")
     (options, args) = parser.parse_args()
 
     games = []

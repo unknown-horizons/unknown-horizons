@@ -371,9 +371,9 @@ def setup_gui_logger(command_line_arguments):
             logger.setup_gui_logger()
         except ImportError:
             traceback.print_exc()
-            print
-            print ("Gui logging requires code that is only present in the "
-                   "repository and is not being installed.")
+            print()
+            print("Gui logging requires code that is only present in the "
+                  "repository and is not being installed.")
             return False
     return True
 

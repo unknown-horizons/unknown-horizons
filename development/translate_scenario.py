@@ -57,7 +57,8 @@ def setup_paths():
 
     if not os.path.exists(scenario_path):
         scenario_path = YAML_PATH.format(path_prefix=path_prefix,
-           scenario=scenario_path, language='en')
+                                         scenario=scenario_path,
+                                         language='en')
     if not os.path.exists(scenario_path):
         print 'Scenario file not found:', scenario_path
         sys.exit(1)
@@ -259,7 +260,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 
 def main():
     (path_prefix, scenario, scenario_path, language, language_path,
-         yaml_output, msgfmt_output) = setup_paths()
+     yaml_output, msgfmt_output) = setup_paths()
     # This writes .mo files in the *scenario* domain, so setup_gettext needs
     # to come afterwards!
     tl_status = compile_scenario_po(msgfmt_output)

@@ -61,12 +61,15 @@ sys.path.append("./horizons/util")
 init_environment(True)
 db = horizons.main._create_main_db()
 
-ExtScheduler.create_instance(Dummy())  # sometimes needed by entities in subsequent calls
+ExtScheduler.create_instance(Dummy())
+# sometimes needed by entities in subsequent calls
 Entities.load_buildings(db, load_now=True)
 Entities.load_units(load_now=True)
 
-building_name_mapping = dict((b.id, b.name) for b in Entities.buildings.itervalues())
-unit_name_mapping = dict((u.id, u.name) for u in Entities.units.itervalues())
+building_name_mapping = dict((b.id, b.name) for b in
+                             Entities.buildings.itervalues())
+unit_name_mapping = dict((u.id, u.name) for u in
+                         Entities.units.itervalues())
 
 
 def get_obj_name(obj):
@@ -111,13 +114,16 @@ def print_production_lines():
                     if not dct:
                         continue
                     changes_animation = dct.get('changes_animation') is None
-                    changes_anim_text = changes_animation and 'changes animation' \
-                        or 'does not change animation'
-                    disabled_by_default = dct.get('enabled_by_default') is not None
-                    enabled_text = (disabled_by_default and 'not ' or '') + 'enabled by default'
+                    changes_anim_text = changes_animation and \
+                        'changes animation' or 'does not change animation'
+                    disabled_by_default = dct.get(
+                        'enabled_by_default') is not None
+                    enabled_text = (disabled_by_default and 'not ' or
+                                    '') + 'enabled by default'
                     time = dct.get('time') or 1
-                    print('{time:>3}s'.format(time=time), '(' + changes_anim_text + ',',
-                        enabled_text + ')')
+                    print('{time:>3}s'.format(time=time),
+                          '(' + changes_anim_text + ',',
+                          enabled_text + ')')
                     consumes = dct.get('consumes')
                     if consumes:
                         print '   consumes'
@@ -136,53 +142,61 @@ def print_verbose_lines():
         if len(list) == 1:
             for res, amount in list:
                 print('      ' + str(string) + ':\t%s %s(%s)' % (abs(amount),
-                    get_res_name(res), res))
+                      get_res_name(res), res))
         elif len(list) > 1:
             print '      ' + str(string) + ': '
             for res, amount in list:
                 print '\t\t%s %s (%s)' % (abs(amount), get_res_name(res), res)
 
     print 'Production Lines:'
-    for prod_line in db("SELECT id, object_id, time, enabled_by_default FROM production_line \
-                         WHERE object_id != 3 ORDER BY object_id"):
+    for prod_line in db("SELECT id, object_id, time, enabled_by_default FROM "
+                        "production_line WHERE object_id != 3 ORDER BY "
+                        "object_id"):
         # do not include tent production lines here
         id = prod_line[0]
         object = prod_line[1]
         (consumption, production) = get_prod_line(id, list)
 
-        print '%2s: %s(%s) needs %s seconds to' % (id, get_obj_name(object), object, prod_line[2])
+        print '%2s: %s(%s) needs %s seconds to' % (id, get_obj_name(object),
+                                                   object, prod_line[2])
         _output_helper_prodlines('consume', consumption)
         _output_helper_prodlines('produce', production)
 
 
 def print_res():
-    print 'Resources' + '\n' + '%2s: %-15s %5s %10s %19s' % ('id', 'resource',
+    print 'Resources' + '\n' + '%2s: %-15s %5s %10s %19s' % (
+        'id', 'resource',
         'value', 'tradeable', 'shown_in_inventory')
     print '=' * 56
-    for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, "
+    for id, name, value, trade, inventory in db(
+            "SELECT id, name, value, tradeable, "
             "shown_in_inventory FROM resource"):
         print "%2s: %-16s %4s %6s %13s " % (id, name[0:16], value or '-',
-            trade or '-', inventory or '-')
+                                            trade or '-', inventory or '-')
 
 
 def print_building():
     print 'Buildings' + '\n' + 'Running costs scheme:'
     print '=' * 2 + 'Running===Paused' + '=' * 2
-    for (cost, cost_inactive) in [('0-10', 0), ('11-24', 5), ('25-40', 10), ('>40', 15)]:
+    for (cost, cost_inactive) in [('0-10', 0), ('11-24', 5),
+                                  ('25-40', 10), ('>40', 15)]:
         print "   %5s :   %2s" % (cost or '--', cost_inactive or '--')
     print '\n' + '=' * 23 + 'R===P' + '=' * 50
     for b in Entities.buildings.itervalues():
         print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s" % \
-            (b.id, b.name, b.running_costs or '--', b.running_costs_inactive or '--',
-            b.size[0], b.size[1], b.radius, b.baseclass)
+            (b.id, b.name, b.running_costs or '--',
+             b.running_costs_inactive or '--',
+             b.size[0], b.size[1], b.radius, b.baseclass)
 
 
 def print_unit():
     print "Units (id: name (radius) from class)"
     for u in Entities.units.itervalues():
-        print "%2s: %-22s (%2s) from %s" % ((u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID),
-            u.name, u.radius, u.baseclass)
-    print "Add %s to each ID if you want to use them." % UNITS.DIFFERENCE_BUILDING_UNIT_ID
+        print("%2s: %-22s (%2s) from %s" % (
+            (u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID),
+            u.name, u.radius, u.baseclass))
+    print("Add %s to each ID if you want to use them." %
+          UNITS.DIFFERENCE_BUILDING_UNIT_ID)
 
 
 def print_storage():
@@ -215,7 +229,8 @@ def print_collectors():
                 if 'collect' not in name.lower():
                     continue
                 for id, amount in data.get('collectors').iteritems():
-                    print "%2s: %-18s %s %s (%s)" % (b.id, b.name, amount, get_obj_name(id), id)
+                    print "%2s: %-18s %s %s (%s)" % (b.id, b.name, amount,
+                                                     get_obj_name(id), id)
 
 
 def print_building_costs():
@@ -245,19 +260,23 @@ def print_collector_restrictions():
                     continue
                 print '%s(%s) is restricted to:' % (u.class_name, u.id)
                 for building in data.get('allowed'):
-                    print '\t%s(%s)' % (building_name_mapping[building], building)
+                    print '\t%s(%s)' % (building_name_mapping[building],
+                                        building)
 
 
 def print_tier_data():
     print 'Data has been moved, this view is unavailable for now'
     return
     upgrade_tiers = xrange(1, TIER.CURRENT_MAX + 1)
-    print '%15s %s %s  %s' % ('tier', 'max_inh', 'base_tax', 'upgrade_prod_line')
+    print '%15s %s %s  %s' % ('tier', 'max_inh', 'base_tax',
+                              'upgrade_prod_line')
     print '=' * 64
-    for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM tier'):
+    for inc, name, inh, tax in db('SELECT level, name, inhabitants_max,'
+                                  ' tax_income FROM tier'):
         str = '%3s %11s %5s    %4s' % ((inc + 1), name, inh, tax)
         if inc + 1 in upgrade_tiers:
-            line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc + 1)[0][0]
+            line = db("SELECT production_line FROM upgrade_material WHERE"
+                      " level = ?", inc + 1)[0][0]
             str += 5 * ' ' + '%2s: ' % line
             (consumption, _) = get_prod_line(line, list)
             for (res, amount) in consumption:
@@ -266,32 +285,36 @@ def print_tier_data():
 
 
 def print_colors():
-    print 'Colors' + '\n' + '%2s: %12s  %3s  %3s  %3s  %3s  #%6s' % ('id', 'name',
-        'R ', 'G ', 'B ', 'A ', 'HEX   ')
+    print('Colors' + '\n' + '%2s: %12s  %3s  %3s  %3s  %3s  #%6s' % (
+        'id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   '))
     print '=' * 45
-    for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
-        print '%2s: %12s  %3s  %3s  %3s  %3s  #' % (id_, name, R, G, B, alpha) + 3 * \
-            '%02x' % (R, G, B)
+    for id_, name, R, G, B, alpha in db(
+            "SELECT id, name, red, green, blue, alpha FROM colors"):
+        print('%2s: %12s  %3s  %3s  %3s  %3s  #' % (
+            id_, name, R, G, B, alpha) + 3 * '%02x' % (R, G, B))
 
 
 def print_scenario_actions():
     print 'Available scenario actions and their arguments:'
     for action in ACTIONS.registry:
-        arguments = inspect.getargspec(ACTIONS.get(action))[0][1:]  # exclude session
+        arguments = inspect.getargspec(ACTIONS.get(action))[0][1:]
+        # exclude session
         print '%-12s  %s' % (action, arguments or '')
 
 
 def print_scenario_conditions():
     print 'Available scenario conditions and their arguments:'
     for condition in CONDITIONS.registry:
-        arguments = inspect.getargspec(CONDITIONS.get(condition))[0][1:]  # exclude session
+        arguments = inspect.getargspec(CONDITIONS.get(condition))[0][1:]
+        # exclude session
         print '%-36s  %s' % (condition, arguments or '')
 
 
 def print_names():
     text = ''
-    for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship', 'player'),
-            ('ship', 'pirate'), ('ship', 'fisher'), ('ship', 'trader')]:
+    for (table, type) in [('city', 'player'), ('city', 'pirate'),
+                          ('ship', 'player'), ('ship', 'pirate'),
+                          ('ship', 'fisher'), ('ship', 'trader')]:
         sql = "SELECT name FROM %snames WHERE for_%s = 1" % (table, type)
         names = db(sql)
         text += '\n' + "%s %s names" % (type, table) + '[list]\n'
@@ -303,14 +326,17 @@ def print_names():
 
 def print_settler_needs():
     klass = Entities.buildings[BUILDINGS.RESIDENTIAL]
-    comp = [i for i in klass.component_templates if i.keys()[0] == u'ProducerComponent'][0]
+    comp = [i for i in klass.component_templates if i.keys()[0] ==
+            u'ProducerComponent'][0]
     lines = comp.values()[0][u'productionlines']
     per_level = defaultdict(list)
     for line_data in lines.itervalues():
         level = line_data.get("level", [-1])
         for l in level:
-            per_level[l].extend([res for (res, num) in line_data[u'consumes']])
-    data = dict((k, sorted(db.get_res_name(i) for i in v)) for k, v in per_level.iteritems())
+            per_level[l].extend([res for (res, num) in
+                                 line_data[u'consumes']])
+    data = dict((k, sorted(db.get_res_name(i) for i in v)) for k, v in
+                per_level.iteritems())
     print("Needed resources per tier")
     pprint.pprint(data)
     print('\nChanges per level:')
@@ -362,7 +388,8 @@ abbrevs = {
 }
 
 flags = dict(functions)
-for (x, y) in abbrevs.iteritems():  # add convenience abbreviations to possible flags
+for (x, y) in abbrevs.iteritems():
+    # add convenience abbreviations to possible flags
     flags[x] = functions[y]
 
 args = sys.argv

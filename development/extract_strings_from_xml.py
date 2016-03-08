@@ -126,7 +126,8 @@ def list_all_files():
     for root, dirs, files in walker:
         for filename in files:
             if filename.endswith('.xml'):
-                result.append(('%s/%s' % (root, filename), filename not in files_to_skip))
+                result.append(('%s/%s' % (root, filename), filename not in
+                               files_to_skip))
     return sorted(result)
 
 
@@ -148,14 +149,15 @@ def content_from_element(element_name, parse_tree, attribute):
     for element in element_list:
         name = element.getAttribute('name')
         text = element.getAttribute(attribute)
-        i18n = element.getAttribute('comment')  # translator comment about widget context
+        i18n = element.getAttribute('comment')
+        # translator comment about widget context
         if i18n == 'noi18n':
             # comment='noi18n' in widgets where translation is not desired
             continue
 
         if i18n == 'noi18n_%s' % attribute:
-            # comment='noi18n_tooltip' in widgets where tooltip translation is not
-            # desired, but text should be translated.
+            # comment='noi18n_tooltip' in widgets where tooltip
+            # translation is not desired, but text should be translated.
             continue
 
         if not name:
@@ -185,8 +187,9 @@ def content_from_file(filename, parse=True):
 
     parsed = minidom.parse(filename)
 
-    # HACK! we strip the string until no "/" occurs and then use the remaining part
-    # this is necessary because of our dynamic widget loading (by unique file names)
+    # HACK! we strip the string until no "/" occurs and then use the
+    # remaining part this is necessary because of our dynamic widget
+    # loading (by unique file names)
     printname = filename.rsplit("/", 1)[1]
     if not parse:
         return empty()
@@ -203,7 +206,8 @@ def content_from_file(filename, parse=True):
 
     return FILE.format(filename=printname, entries=strings)
 
-filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
+filesnippets = (content_from_file(filename, parse) for (filename, parse) in
+                list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)
 
 output = '%s%s%s' % (header, filesnippets, FOOTER)

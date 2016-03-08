@@ -85,7 +85,8 @@ def onlist(*args):
         print("[GAMESLIST]")
         for game in games:
             print("  [{}] map={} maxplayers={} playercnt={} name={}"
-                  .format(game.uuid, game.mapname, game.maxplayers, game.playercnt, game.name))
+                  .format(game.uuid, game.mapname, game.maxplayers,
+                          game.playercnt, game.name))
     else:
         print("No games available")
 
@@ -97,9 +98,11 @@ def oncreate(*args):
         return
     try:
         maxplayers = int(args[1])
-        game = client.creategame(unicode(args[0]), maxplayers, unicode(args[2]))
+        game = client.creategame(unicode(args[0]), maxplayers,
+                                 unicode(args[2]))
         print("[GAME] [{}] mapname={} maxplayers={} playercnt={}"
-              .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
+              .format(game.uuid, game.mapname, game.maxplayers,
+                      game.playercnt))
         for player in game.players:
             print("  Player: {} ({})".format(player.name, player.sid))
     except (ValueError, IndexError):
@@ -114,7 +117,8 @@ def onjoin(*args):
     try:
         game = client.joingame(unicode(args[0]))
         print("[GAME] [{}] mapname={} maxplayers={} playercnt={}"
-              .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
+              .format(game.uuid, game.mapname, game.maxplayers,
+                      game.playercnt))
         for player in game.players:
             print("  Player: {} ({})".format(player.name, player.sid))
     except ValueError:
@@ -145,7 +149,8 @@ def cb_onleave(game, player):
 
 def cb_onchangename(game, oldplayer, newplayer, myself):
     global name
-    print "[ONCHANGENAME] [%s] %s changed name to %s" % (game.uuid, oldplayer.name, newplayer.name)
+    print "[ONCHANGENAME] [%s] %s changed name to %s" % (
+        game.uuid, oldplayer.name, newplayer.name)
     if myself:
         name = newplayer.name
         print "[NAME] My new name is %s" % (name)
@@ -183,7 +188,7 @@ def onauto(*args):
     else:
         game = client.creategame(mapname, maxplayers, gamename)
     print("[GAME] [{}] mapname={} maxplayers={} playercnt={}"
-         .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
+          .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
     for player in game.players:
         print "  Player: %s" % (player.name)
     client.chat("I am here guys. Game can start")
@@ -211,15 +216,17 @@ def onstatus(*args):
     global name, client
     statusstr = "[STATUS]"
     statusstr += " name=%s" % (name)
-    statusstr += " mode=%s" % ("GAME" if client.mode is ClientMode.Game else "Server")
+    statusstr += " mode=%s" % ("GAME" if client.mode is ClientMode.Game else
+                               "Server")
     statusstr += " connected=%s" % ("yes" if client.isconnected() else "no")
     statusstr += " server=%s" % (client.serveraddress)
     print statusstr
     if client.isconnected():
         if client.game is not None:
-            print("[STATUS] game: uuid={} mapname={} maxplayers={} playercnt={}"
-                .format(client.game.uuid, client.game.mapname,
-                client.game.maxplayers, client.game.playercnt))
+            print("[STATUS] game: uuid={} mapname={} maxplayers={} "
+                  "playercnt={}"
+                  .format(client.game.uuid, client.game.mapname,
+                          client.game.maxplayers, client.game.playercnt))
             for player in client.game.players:
                 print "[STATUS]  Player: %s" % (player.name)
 

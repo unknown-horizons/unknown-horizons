@@ -29,7 +29,8 @@ def remove_double(liste):
     return [i.replace('\\\\', '\\') for i in liste]
 
 if not os.path.split(os.getcwd())[1] == 'development':
-    print("This program expects to be invoked from the Unknown Horizons development directory")
+    print("This program expects to be invoked from the Unknown Horizons "
+          "development directory")
     sys.exit(-1)
 
 os.chdir('..')  # Change to the root directory
@@ -61,15 +62,19 @@ for root, dirs, files in os.walk('.'):
         rootp = root[2:]
         if rootp[:4] == 'fife':
             if rootp[-4:] == 'fife' and len(rootp.split('\\')) == 1:
-                files = filter(lambda f: f in ('AUTHORS', 'COPYING', 'README'), files)
+                files = filter(lambda f: f in (
+                    'AUTHORS', 'COPYING', 'README'), files)
             elif 'editor' in rootp.split('\\'):
-                files = filter(lambda s: s.split('.')[-1] not in ('pyc', 'log'), files)
+                files = filter(lambda s: s.split('.')[-1] not in (
+                    'pyc', 'log'), files)
             else:
-                files = filter(lambda s: s.split('.')[-1] in ('dll', 'py', 'pyd'), files)
+                files = filter(lambda s: s.split('.')[-1] in (
+                    'dll', 'py', 'pyd'), files)
             if not len(files):
                 continue
         else:
-            files = filter(lambda s: s.split('.')[-1] not in ('pyc', 'log', 'nsi'), files)
+            files = filter(lambda s: s.split('.')[-1] not in (
+                'pyc', 'log', 'nsi'), files)
         inst.append((' SetOutPath "$INSTDIR/%s"' % rootp).replace('/', '\\'))
         installed_dirs.append(rootp)
         for j in files:
@@ -94,6 +99,8 @@ if len(sys.argv) > 1:
 else:
     version = raw_input('Version: ')
 
-file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (version,
-    '\n'.join(remove_double(inst)), "0x%08X", '\n'.join(remove_double(remf)),
-    '\n'.join(remove_double(sorted(list(set(remd)), lambda x, y: 1 if len(x) < len(y) else -1)))))
+file('install.nsi', 'w').write(file('development/nsi.template', 'r').read() % (
+    version, '\n'.join(remove_double(inst)), "0x%08X",
+    '\n'.join(remove_double(remf)),
+    '\n'.join(remove_double(sorted(
+        list(set(remd)), lambda x, y: 1 if len(x) < len(y) else -1)))))

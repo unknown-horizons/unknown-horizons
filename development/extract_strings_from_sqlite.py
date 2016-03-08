@@ -120,14 +120,15 @@ def collect_all():
     collector = MSGID_collect()
 
     for message in db_session.query(Message):
-        collector.add_to_collection(message.text,
-                                    'a messagewidget message (left part of the screen)')
+        collector.add_to_collection(
+            message.text, 'a messagewidget message (left part of the screen)')
 
     for resource in db_session.query(Resource):
         collector.add_to_collection(resource.name, 'the name of a resource')
 
     for tier in db_session.query(Tier):
-        collector.add_to_collection(tier.name, 'the name of an inhabitant tier (level)')
+        collector.add_to_collection(
+            tier.name, 'the name of an inhabitant tier (level)')
 
     return collector
 

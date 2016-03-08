@@ -24,23 +24,23 @@ import os
 import glob
 
 if os.path.basename(os.getcwd()) != 'development':
-	print 'Please run the script from the "development" directory!'
-	quit()
+    print 'Please run the script from the "development" directory!'
+    quit()
 
 if not os.path.isdir('../po/uh/'):
-	print 'The translations directory does not exist! Quiting..'
-	quit()
+    print 'The translations directory does not exist! Quiting..'
+    quit()
 
 os.chdir('..')
 files = glob.glob('po/uh/*.po')
 for x in files:
-	file = x.rpartition("\\")[2]
-	dir = file[:-len('.po')]
-	dir = os.path.join('content', 'lang', dir, 'LC_MESSAGES', '')
-	if not os.path.isdir(dir):
-		os.makedirs(dir)
-	print 'Generating translations for', file
-	command = 'msgfmt ' + x + ' -o ' + dir + 'unknown-horizons.mo'
-	os.system(command)
+    file = x.rpartition("\\")[2]
+    dir = file[:-len('.po')]
+    dir = os.path.join('content', 'lang', dir, 'LC_MESSAGES', '')
+    if not os.path.isdir(dir):
+        os.makedirs(dir)
+    print 'Generating translations for', file
+    command = 'msgfmt ' + x + ' -o ' + dir + 'unknown-horizons.mo'
+    os.system(command)
 
 print '\n== Completed generating translations ==\n'

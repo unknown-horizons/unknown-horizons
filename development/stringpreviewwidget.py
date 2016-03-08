@@ -30,8 +30,8 @@ from horizons.scheduler import Scheduler
 
 class StringPreviewWidget(Window):
     """Widget for testing Logbook strings.
-    It provides a list of scenarios, of which the user can select one and display
-    its strings in a logbook"""
+    It provides a list of scenarios, of which the user can select one
+    and display its strings in a logbook"""
     def __init__(self, session):
         super(StringPreviewWidget, self).__init__()
         self._init_gui(session)
@@ -61,7 +61,8 @@ class StringPreviewWidget(Window):
 
     def update_infos(self):
         """Updates the status label while scrolling the scenario list. No up-
-        date to logbook messages. Those are loaded after Load/Reload is clicked.
+        date to logbook messages.
+        Those are loaded after Load/Reload is clicked.
         """
         scenario_file_path = self.scenarios[0][self.listbox.selected]
         data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
@@ -88,7 +89,8 @@ class StringPreviewWidget(Window):
         for event in events:
             for action in event['actions']:
                 if action['type'] in ('logbook', 'logbook'):
-                    self.logbook.add_captainslog_entry(action['arguments'], show_logbook=False)
+                    self.logbook.add_captainslog_entry(action['arguments'],
+                                                       show_logbook=False)
 
         try:
             self.logbook.set_cur_entry(cur_entry)

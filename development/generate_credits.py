@@ -45,7 +45,8 @@ afterwards run %s to refresh this file.
 
 <Container name="credits_window" size="1000,580">
     <Icon image="content/gui/images/background/book.png" position="100,0" />
-    <Container name="left_pickbelts" size="170,580" position="30,0" />''' % (INPUT, INPUT, __file__)
+    <Container name="left_pickbelts" size="170,580" position="30,0" />''' % \
+         (INPUT, INPUT, __file__)
 FOOTER = ur'''
 <OkButton position="800,500" helptext="Exit to main menu" />
 
@@ -55,7 +56,7 @@ FOOTER = ur'''
 
 # (search, replace) list of stuff we need to replace
 # before writing xml manually
-XML_MESS = [('&', '&amp;'),]
+XML_MESS = [('&', '&amp;'), ]
 
 
 def write(f, level, text, newline=True):
