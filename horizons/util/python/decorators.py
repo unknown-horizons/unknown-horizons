@@ -112,7 +112,9 @@ from opcode import opmap, HAVE_ARGUMENT, EXTENDED_ARG
 globals().update(opmap)
 
 
-def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
+def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
+    if stoplist is None:
+        stoplist = []
     try:
         co = f.func_code
     except AttributeError:
@@ -248,7 +250,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 
 
 @_make_constants
-def make_constants(builtin_only=False, stoplist=[], verbose=False):
+def make_constants(builtin_only=False, stoplist=None, verbose=False):
     """ Return a decorator for optimizing global references.
 
     Replaces global references with their currently defined values.
@@ -259,6 +261,8 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
     If verbose is True, prints each substitution as is occurs
 
     """
+    if stoplist is None:
+        stoplist = []
     if type(builtin_only) == type(make_constants):
         raise ValueError("The bind_constants decorator must have arguments.")
     return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
