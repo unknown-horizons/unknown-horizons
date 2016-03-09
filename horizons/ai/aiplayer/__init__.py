@@ -40,8 +40,14 @@ from horizons.world.units.weaponholder import MovingWeaponHolder
 
 from .basicbuilder import BasicBuilder
 from .building import AbstractBuilding
+# all subclasses of AbstractBuilding have to be imported here to register the available buildings
+from .building.bakery import AbstractBakery
+from .building.blender import AbstractBlender
 from .building.boatbuilder import AbstractBoatBuilder
+from .building.brewery import AbstractBrewery
 from .building.brickyard import AbstractBrickyard
+from .building.butchery import AbstractButchery
+from .building.cannonfoundry import AbstractCannonfoundry
 from .building.charcoalburner import AbstractCharcoalBurner
 from .building.claydeposit import AbstractClayDeposit
 from .building.claypit import AbstractClayPit
@@ -55,6 +61,7 @@ from .building.fisher import AbstractFisher
 from .building.irondeposit import AbstractIronDeposit
 from .building.ironmine import AbstractIronMine
 from .building.lumberjack import AbstractLumberjack
+from .building.pastryshop import AbstractPastryShop
 from .building.saltponds import AbstractSaltPonds
 from .building.signalfire import AbstractSignalFire
 from .building.smeltery import AbstractSmeltery
@@ -65,7 +72,12 @@ from .building.tobacconist import AbstractTobacconist
 from .building.toolmaker import AbstractToolmaker
 from .building.tree import AbstractTree
 from .building.villagebuilding import AbstractVillageBuilding
+#from .building.woodentower import AbstractWoodenTower
+from .building.weaponsmith import AbstractWeaponsmith
 from .building.weaver import AbstractWeaver
+from .building.windmill import AbstractWindmill
+#from .building.hunter import AbstractHunter
+from .building.winery import AbstractWinery
 from .constants import GOAL_RESULT
 from .goal.donothing import DoNothingGoal
 from .goal.settlementgoal import SettlementGoal
@@ -81,19 +93,6 @@ from .settlementfounder import SettlementFounder
 from .settlementmanager import SettlementManager
 from .specialdomestictrademanager import SpecialDomesticTradeManager
 from .unitbuilder import UnitBuilder=
-
-#from building.pastryshop import AbstractPastryShop
-from building.bakery import AbstractBakery
-from building.blender import AbstractBlender
-from building.windmill import AbstractWindmill
-from building.brewery import AbstractBrewery
-from building.butchery import AbstractButchery
-from building.cannonfoundry import AbstractCannonfoundry
-#from building.hunter import AbstractHunter
-from building.winery import AbstractWinery
-#from building.woodentower import AbstractWoodenTower
-from building.weaponsmith import AbstractWeaponsmith
-
 
 
 class AIPlayer(GenericAI):
