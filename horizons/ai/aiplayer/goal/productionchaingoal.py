@@ -187,10 +187,24 @@ class FlourGoal(ProductionChainGoal):
 
 class CondimentsGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
-		super(CondimentsGoal, self).__init__(settlement_manager, RES.CONDIMENTS, 'Condiments producer')
+		super(CondimentsGoal, self).__init__(settlement_manager, RES.CONDIMENTS, 'condiments producer')
 
 	def get_personality_name(self):
 		return 'CondimentsGoal'
+
+class ConfectioneryGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(ConfectioneryGoal, self).__init__(settlement_manager, RES.CONFECTIONERY, 'confectionery producer')
+
+	def get_personality_name(self):
+		return 'ConfectioneryGoal'
+
+class CandlesGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(CandlesGoal, self).__init__(settlement_manager, RES.CANDLES, 'candles producer')
+
+	def get_personality_name(self):
+		return 'CandlesGoal'
 
 decorators.bind_all(ProductionChainGoal)
 decorators.bind_all(FaithGoal)
@@ -208,3 +222,5 @@ decorators.bind_all(BeerGoal)
 decorators.bind_all(CannonGoal)
 decorators.bind_all(FlourGoal)
 decorators.bind_all(CondimentsGoal)
+decorators.bind_all(ConfectioneryGoal)
+decorators.bind_all(CandlesGoal)
