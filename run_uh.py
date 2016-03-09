@@ -427,20 +427,20 @@ def init_environment(use_fife):
 
 def log_paths():
     """Prints debug info about paths to log"""
-    log().debug("SYS.PATH: {}".format(sys.path))
+    log().debug("SYS.PATH: {0}".format(sys.path))
     log().debug('PATHSEP: "{0}" SEP: "{1}"'.format(os.path.pathsep,
                                                    os.path.sep))
-    log().debug("LD_LIBRARY_PATH: {}".format(os.environ.get('LD_LIBRARY_PATH',
+    log().debug("LD_LIBRARY_PATH: {0}".format(os.environ.get('LD_LIBRARY_PATH',
                                                             '<undefined>')))
-    log().debug("PATH: {}".format(os.environ.get('PATH', '<undefined>')))
-    log().debug("PYTHONPATH {}".format(os.environ.get('PYTHONPATH',
+    log().debug("PATH: {0}".format(os.environ.get('PATH', '<undefined>')))
+    log().debug("PYTHONPATH {0}".format(os.environ.get('PYTHONPATH',
                                                       '<undefined>')))
 
 
 def log_sys_info():
     """Prints debug info about the current system to log"""
-    log().debug("Python version: {}".format(sys.version_info))
-    log().debug("Platform: {}".format(platform.platform()))
+    log().debug("Python version: {0}".format(sys.version_info))
+    log().debug("Platform: {0}".format(platform.platform()))
 
 if __name__ == '__main__':
     main()

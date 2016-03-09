@@ -84,7 +84,7 @@ class Goal(object):
         elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR,
                         BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
             return GOAL_RESULT.SKIP
-        assert False, ('Unable to translate BUILD_RESULT {} to a GOAL_RESULT'
+        assert False, ('Unable to translate BUILD_RESULT {0} to a GOAL_RESULT'
                        .format(result))
 
     def __lt__(self, other):

@@ -243,7 +243,7 @@ class Connection(object):
             except NameError:
                 pass
             else:
-                self.log.error("Unknown packet from {}!".
+                self.log.error("Unknown packet from {0}!".
                                format(event.peer.address))
             errstr = "Pickle/Security: %s" % (e)
             print("[FATAL] %s" % (errstr))

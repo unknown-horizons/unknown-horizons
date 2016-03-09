@@ -86,7 +86,7 @@ class AccountTab(MainSquareTab):
         self.widget.child_finder('headline').helptext = _(
             'Click to change the name of your settlement')
 
-        path = 'icons/widgets/cityinfo/settlement_{}'.format(
+        path = 'icons/widgets/cityinfo/settlement_{0}'.format(
             self.settlement.owner.color.name)
         self.widget.child_finder('show_production_overview').path = path
 

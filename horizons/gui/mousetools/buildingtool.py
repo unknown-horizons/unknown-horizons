@@ -767,7 +767,7 @@ class BuildingTool(NavigationTool):
 
     def _rotate(self, degrees):
         self.rotation = (self.rotation + degrees) % 360
-        self.log.debug("BuildingTool: Building rotation now: {}".format(
+        self.log.debug("BuildingTool: Building rotation now: {0}".format(
             self.rotation))
         self.update_preview()
         self.draw_gui()

@@ -84,7 +84,7 @@ def onlist(*args):
     if games:
         print("[GAMESLIST]")
         for game in games:
-            print("  [{}] map={} maxplayers={} playercnt={} name={}"
+            print("  [{0}] map={1} maxplayers={2} playercnt={3} name={4}"
                   .format(game.uuid, game.mapname, game.maxplayers,
                           game.playercnt, game.name))
     else:
@@ -100,11 +100,11 @@ def oncreate(*args):
         maxplayers = int(args[1])
         game = client.creategame(unicode(args[0]), maxplayers,
                                  unicode(args[2]))
-        print("[GAME] [{}] mapname={} maxplayers={} playercnt={}"
+        print("[GAME] [{0}] mapname={1} maxplayers={2} playercnt={3}"
               .format(game.uuid, game.mapname, game.maxplayers,
                       game.playercnt))
         for player in game.players:
-            print("  Player: {} ({})".format(player.name, player.sid))
+            print("  Player: {0} ({1})".format(player.name, player.sid))
     except (ValueError, IndexError):
         print "Maxplayers must be an integer"
 
@@ -116,11 +116,11 @@ def onjoin(*args):
         return
     try:
         game = client.joingame(unicode(args[0]))
-        print("[GAME] [{}] mapname={} maxplayers={} playercnt={}"
+        print("[GAME] [{0}] mapname={1} maxplayers={2} playercnt={3}"
               .format(game.uuid, game.mapname, game.maxplayers,
                       game.playercnt))
         for player in game.players:
-            print("  Player: {} ({})".format(player.name, player.sid))
+            print("  Player: {0} ({1})".format(player.name, player.sid))
     except ValueError:
         print "Invalid UUID"
 
@@ -187,7 +187,7 @@ def onauto(*args):
         game = client.joingame(games[0].uuid)
     else:
         game = client.creategame(mapname, maxplayers, gamename)
-    print("[GAME] [{}] mapname={} maxplayers={} playercnt={}"
+    print("[GAME] [{0}] mapname={1} maxplayers={2} playercnt={3}"
           .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
     for player in game.players:
         print "  Player: %s" % (player.name)

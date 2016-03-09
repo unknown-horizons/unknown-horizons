@@ -706,6 +706,6 @@ class Server(object):
 
             fd.close()
         except IOError as e:
-            logging.error("[STATISTIC] Unable to open statistic file: {}".
+            logging.error("[STATISTIC] Unable to open statistic file: {0}".
                           format(e))
         return

@@ -298,7 +298,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0,
 
             def handler(signum, frame):
                 proc.kill()
-                raise TestFailed('\n\nTest run exceeded {} time limit'
+                raise TestFailed('\n\nTest run exceeded {0} time limit'
                                  .format(timeout))
 
             timelimit = Timer(handler)

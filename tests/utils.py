@@ -112,6 +112,6 @@ class ReRunInfoPlugin(Plugin):
         try:
             ev = unicode(ev, 'utf-8', errors='ignore')
         except TypeError:
-            ev = u"{}".format(ev)
+            ev = u"{0}".format(ev)
 
         return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
