@@ -315,7 +315,7 @@ class World(BuildingOwner, WorldObject):
         # big sea water tile class
         if not preview:
             default_grounds = Entities.grounds[self.properties.get(
-                'default_ground', '%d-straight' % GROUND.WATER[0])]
+                'default_ground', '{0:d}-straight'.format(GROUND.WATER[0]))]
 
         fake_tile_class = Entities.grounds['-1-special']
         fake_tile_size = 10

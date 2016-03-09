@@ -49,14 +49,14 @@ original arguments used to create the enumeration::
 
 __author_name__ = "Ben Finney"
 __author_email__ = "ben+python@benfinney.id.au"
-__author__ = "%(__author_name__)s <%(__author_email__)s>" % vars()
+__author__ = "{__author_name__!s} <{__author_email__!s}>".format(**vars())
 
 _copyright_year_begin = "2007"
 __date__ = "2009-08-26"
 _copyright_year_latest = __date__.split('-')[0]
 _copyright_year_range = _copyright_year_begin
 if _copyright_year_latest > _copyright_year_begin:
-    _copyright_year_range += "–%(_copyright_year_latest)s" % vars()
+    _copyright_year_range += "–{_copyright_year_latest!s}".format(**vars())
 __copyright__ = ("Copyright © %(_copyright_year_range)s"
                  " %(__author_name__)s") % vars()
 __license__ = "Choice of GPL or Python license"
@@ -90,7 +90,7 @@ class EnumBadKeyError(TypeError, EnumException):
         self.key = key
 
     def __str__(self):
-        return "Enumeration keys must be strings: %(key)r" % vars(self)
+        return "Enumeration keys must be strings: {key!r}".format(**vars(self))
 
 
 class EnumImmutableError(TypeError, EnumException):
@@ -143,7 +143,7 @@ class EnumValue(object):
         return self._index
 
     def __repr__(self):
-        return "EnumValue(%(_enumtype)r, %(_index)r, %(_key)r)" % vars(self)
+        return "EnumValue({_enumtype!r}, {_index!r}, {_key!r})".format(**vars(self))
 
     def __hash__(self):
         return hash(self._index)

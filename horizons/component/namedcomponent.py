@@ -50,7 +50,7 @@ class NamedComponent(Component):
             self.instance._changed()
 
     def _possible_names(self):
-        return [u'object_%s' % self.instance.worldid]
+        return [u'object_{0!s}'.format(self.instance.worldid)]
 
     def get_default_name(self):
         available_names = [name for name in self._possible_names()

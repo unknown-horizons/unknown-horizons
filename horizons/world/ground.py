@@ -59,8 +59,7 @@ class SurfaceTile(object):
         fife.InstanceVisual.create(self._instance)
 
     def __str__(self):
-        return "SurfaceTile(id=%s, shape=%s, x=%s, y=%s, water=%s, obj=%s)" % \
-               (self.id, self.shape, self.x, self.y, self.is_water,
+        return "SurfaceTile(id={0!s}, shape={1!s}, x={2!s}, y={3!s}, water={4!s}, obj={5!s})".format(self.id, self.shape, self.x, self.y, self.is_water,
                 self.object)
 
     def act(self, rotation):
@@ -134,13 +133,13 @@ class GroundClass(type):
         @param shape: ground shape (straight, curve_in, curve_out).
         """
         if id == GROUND.WATER[0]:
-            return type.__new__(self, 'Ground[%d-%s]' % (id, shape),
+            return type.__new__(self, 'Ground[{0:d}-{1!s}]'.format(id, shape),
                                 (Water,), {})
         elif id == -1:
-            return type.__new__(self, 'Ground[%d-%s]' % (id, shape),
+            return type.__new__(self, 'Ground[{0:d}-{1!s}]'.format(id, shape),
                                 (WaterDummy,), {})
         else:
-            return type.__new__(self, 'Ground[%d-%s]' % (id, shape),
+            return type.__new__(self, 'Ground[{0:d}-{1!s}]'.format(id, shape),
                                 (Ground,), {})
 
     def _loadObject(cls, db):
@@ -153,7 +152,7 @@ class GroundClass(type):
                            cls.id)
         for tile_set_row in tile_set_data:
             tile_set_id = str(tile_set_row[0])
-            cls_name = '%d-%s' % (cls.id, cls.shape)
+            cls_name = '{0:d}-{1!s}'.format(cls.id, cls.shape)
             cls.log.debug('Loading ground %s', cls_name)
             fife_object = None
             try:

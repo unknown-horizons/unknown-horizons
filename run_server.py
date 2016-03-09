@@ -35,7 +35,7 @@ def fork():
         if pid > 0:
             sys.exit(0)
     except OSError as e:
-        sys.stderr.write("Unable to fork: (%d) %s\n" % (e.errno, e.strerror))
+        sys.stderr.write("Unable to fork: ({0:d}) {1!s}\n".format(e.errno, e.strerror))
         sys.exit(1)
 
     os.umask(0)
@@ -47,7 +47,7 @@ def fork():
         if pid > 0:
             sys.exit(0)
     except OSError as e:
-        sys.stderr.write("Unable to fork: (%d) %s\n" % (e.errno, e.strerror))
+        sys.stderr.write("Unable to fork: ({0:d}) {1!s}\n".format(e.errno, e.strerror))
         sys.exit(1)
     return os.getpid()
 
@@ -64,7 +64,7 @@ def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 
 
 def usage(fd=sys.stdout):
-    fd.write("Usage: %s" % (sys.argv[0]))
+    fd.write("Usage: {0!s}".format((sys.argv[0])))
     if os.name == "posix":
         fd.write(" [-d]")
     fd.write(" -h host [-p port] [-s statistic_file]")
@@ -113,7 +113,7 @@ if host is None or port is None or port <= 0:
     sys.exit(1)
 
 if pidfile and os.path.isfile(pidfile):
-    sys.stderr.write("Error: Pidfile '%s' already exists.\n" % (pidfile))
+    sys.stderr.write("Error: Pidfile '{0!s}' already exists.\n".format((pidfile)))
     sys.stderr.write("Please make sure no other server is running and"
                      " remove this file\n")
     sys.exit(1)
@@ -135,7 +135,7 @@ try:
     server = Server(host, port, statfile)
     server.run()
 except network.NetworkException as e:
-    sys.stderr.write("Error: %s\n" % e)
+    sys.stderr.write("Error: {0!s}\n".format(e))
     sys.exit(2)
 
 if pidfile:

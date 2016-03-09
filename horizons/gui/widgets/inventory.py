@@ -156,7 +156,7 @@ class Inventory(Container):
             button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
                                                         filled=filled,
                                                         uncached=self.uncached)
-            button.button.name = "inventory_entry_%s" % index
+            button.button.name = "inventory_entry_{0!s}".format(index)
             # required for gui tests
             current_hbox.addChild(button)
 

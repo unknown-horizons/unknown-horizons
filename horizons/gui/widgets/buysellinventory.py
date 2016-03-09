@@ -69,7 +69,7 @@ class BuySellInventory(Inventory):
             button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
                                                         filled=0,
                                                         uncached=self.uncached)
-            button.button.name = "buy_sell_inventory_%s_entry_%s" % (
+            button.button.name = "buy_sell_inventory_{0!s}_entry_{1!s}".format(
                 self._selling, index)  # for tests
             current_hbox.addChild(button)
 

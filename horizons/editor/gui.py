@@ -218,7 +218,7 @@ class SettingsTab(TabInterface):
 
         # Brush size
         for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
-            b = self.widget.findChild(name='size_%d' % i)
+            b = self.widget.findChild(name='size_{0:d}'.format(i))
             b.capture(Callback(self._change_brush_size, i))
 
         # Activate radio button for default brush size
@@ -248,11 +248,11 @@ class SettingsTab(TabInterface):
           'box': 'content/gui/icons/ship/smallbutton.png',
         }
 
-        b = self.widget.findChild(name='size_%d' %
-                                  self._world_editor.brush_size)
+        b = self.widget.findChild(name='size_{0:d}'.format(
+                                  self._world_editor.brush_size))
         b.up_image = images['box']
 
         self._world_editor.brush_size = size
-        b = self.widget.findChild(name='size_%d' %
-                                  self._world_editor.brush_size)
+        b = self.widget.findChild(name='size_{0:d}'.format(
+                                  self._world_editor.brush_size))
         b.up_image = images['box_highlighted']

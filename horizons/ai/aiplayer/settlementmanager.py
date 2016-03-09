@@ -281,16 +281,16 @@ class SettlementManager(WorldObject):
     def _set_taxes_and_permissions_prefix(self, prefix):
         """Set new tax settings and building permissions according to the
         prefix used in the personality file."""
-        sailor_taxes = getattr(self.personality, '%s_sailor_taxes' % prefix)
-        pioneer_taxes = getattr(self.personality, '%s_pioneer_taxes' % prefix)
-        settler_taxes = getattr(self.personality, '%s_settler_taxes' % prefix)
-        citizen_taxes = getattr(self.personality, '%s_citizen_taxes' % prefix)
+        sailor_taxes = getattr(self.personality, '{0!s}_sailor_taxes'.format(prefix))
+        pioneer_taxes = getattr(self.personality, '{0!s}_pioneer_taxes'.format(prefix))
+        settler_taxes = getattr(self.personality, '{0!s}_settler_taxes'.format(prefix))
+        citizen_taxes = getattr(self.personality, '{0!s}_citizen_taxes'.format(prefix))
         sailor_upgrades = getattr(self.personality,
-                                  '%s_sailor_upgrades' % prefix)
+                                  '{0!s}_sailor_upgrades'.format(prefix))
         pioneer_upgrades = getattr(self.personality,
-                                   '%s_pioneer_upgrades' % prefix)
+                                   '{0!s}_pioneer_upgrades'.format(prefix))
         settler_upgrades = getattr(self.personality,
-                                   '%s_settler_upgrades' % prefix)
+                                   '{0!s}_settler_upgrades'.format(prefix))
         self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes,
                                         settler_taxes, citizen_taxes,
                                         sailor_upgrades, pioneer_upgrades,
@@ -605,7 +605,7 @@ class SettlementManager(WorldObject):
             Tear(message.building).execute(self.session)
 
     def __str__(self):
-        return '%s.SM(%s/%s)' % (
+        return '{0!s}.SM({1!s}/{2!s})'.format(
             self.owner, self.settlement.get_component(NamedComponent).name if
             hasattr(self, 'settlement') else 'unknown', self.worldid if
             hasattr(self, 'worldid') else 'none')

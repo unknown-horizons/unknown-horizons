@@ -273,6 +273,6 @@ class SettlementFounder(object):
             self.owner.need_feeder_island = True
 
     def __str__(self):
-        return '%s SettlementFounder' % (self.owner)
+        return '{0!s} SettlementFounder'.format((self.owner))
 
 decorators.bind_all(SettlementFounder)

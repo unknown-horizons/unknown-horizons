@@ -57,7 +57,7 @@ class Point(Shape):
 
     def __str__(self):
         """ nice representation for debugging purposes """
-        return 'Point(%s, %s)' % (self.x, self.y)
+        return 'Point({0!s}, {1!s})'.format(self.x, self.y)
 
     def __eq__(self, other):
         if other is None:

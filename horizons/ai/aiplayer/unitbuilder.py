@@ -78,6 +78,6 @@ class UnitBuilder(object):
                    self._get_boat_builders())
 
     def __str__(self):
-        return '%s UnitBuilder' % self.owner
+        return '{0!s} UnitBuilder'.format(self.owner)
 
 decorators.bind_all(UnitBuilder)

@@ -157,7 +157,7 @@ class Island(BuildingOwner, WorldObject):
                 " action_id, rotation FROM ground WHERE island_id = ?",
                 island_id - 1001):  # Load grounds
             if not preview:  # actual game, need actual tiles
-                ground = Entities.grounds[str('%d-%s' % (
+                ground = Entities.grounds[str('{0:d}-{1!s}'.format(
                     ground_id, action_id))](self.session, x, y)
                 ground.act(rotation)
             else:

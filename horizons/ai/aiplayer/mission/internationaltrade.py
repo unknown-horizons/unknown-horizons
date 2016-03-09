@@ -120,9 +120,9 @@ class InternationalTrade(ShipMission):
             self.settlement_manager.settlement.warehouse.position,
             Callback(self._reached_my_settlement),
             Callback(self._move_to_my_settlement),
-            'Unable to move to my settlement (%s)' %
+            'Unable to move to my settlement ({0!s})'.format(
             self.settlement_manager.settlement.get_component
-            (NamedComponent).name)
+            (NamedComponent).name))
 
     def _get_max_sellable_amount(self, available_amount):
         if self.sold_resource not in self.settlement.get_component(
@@ -211,7 +211,7 @@ class InternationalTrade(ShipMission):
                             self.ship, self.sold_resource,
                             sellable_amount).execute(self.owner.session)
                 if self.bought_resource is None:
-                    self.report_success('Sold %d of resource %d' % (
+                    self.report_success('Sold {0:d} of resource {1:d}'.format(
                         sellable_amount, self.sold_resource))
                     return
                 else:
@@ -236,13 +236,12 @@ class InternationalTrade(ShipMission):
             self.settlement_manager.settlement.warehouse.position,
             Callback(self._returned_to_my_settlement),
             Callback(self._return_to_my_settlement),
-            'Unable to return to %s' % self.settlement_manager.settlement.
-            get_component(NamedComponent).name)
+            'Unable to return to {0!s}'.format(self.settlement_manager.settlement.
+            get_component(NamedComponent).name))
 
     def _returned_to_my_settlement(self):
         self._unload_all_resources(self.settlement_manager.settlement)
-        self.report_success('Unloaded the bought resources at %s'
-                            % self.settlement_manager.settlement.get_component(
-                                NamedComponent).name)
+        self.report_success('Unloaded the bought resources at {0!s}'.format(self.settlement_manager.settlement.get_component(
+                                NamedComponent).name))
 
 decorators.bind_all(InternationalTrade)

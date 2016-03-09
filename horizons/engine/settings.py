@@ -112,8 +112,7 @@ class Settings(object):
         template_version = self._settings_template_serializer.get(
             SETTINGS.META_MODULE, self.SETTINGS_VERSION)
         if current_version != template_version:
-            print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
-                  (current_version, template_version)
+            print 'Discovered old settings file, auto-upgrading: {0!s} -> {1!s}'.format(current_version, template_version)
             for module in self._settings_template_serializer.getModuleName():
                 for setting_name in self._settings_template_serializer.\
                         getAllSettings(module):

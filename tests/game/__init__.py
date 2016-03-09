@@ -239,7 +239,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True,
     """
 
     def handler(signum, frame):
-        raise Exception('Test run exceeded %ds time limit' % timeout)
+        raise Exception('Test run exceeded {0:d}s time limit'.format(timeout))
 
     def deco(func):
         @wraps(func)
@@ -252,7 +252,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True,
                 path = os.path.join(TEST_FIXTURES_DIR,
                                     use_fixture + '.sqlite')
                 if not os.path.exists(path):
-                    raise Exception('Savegame %s not found' % path)
+                    raise Exception('Savegame {0!s} not found'.format(path))
                 s = load_session(path)
 
             timelimit = Timer(handler)

@@ -55,7 +55,7 @@ class Fleet(WorldObject):
     def __init__(self, ships, destroy_callback=None):
         super(Fleet, self).__init__()
 
-        assert ships, "request to create a fleet from  %s ships" % (len(ships))
+        assert ships, "request to create a fleet from  {0!s} ships".format((len(ships)))
         self.__init(ships, destroy_callback)
 
     def __init(self, ships, destroy_callback=None):
@@ -289,11 +289,11 @@ class Fleet(WorldObject):
 
     def __str__(self):
         if hasattr(self, '_ships'):
-            ships_str = ("\n   " + "\n   ".join(["%s (fleet state:%s)" % (
+            ships_str = ("\n   " + "\n   ".join(["{0!s} (fleet state:{1!s})".format(
                 ship.get_component(NamedComponent).name,
                 self._ships[ship]) for ship in self._ships.keys()]))
         else:
             ships_str = 'N/A'
-        return "Fleet: %s , state: %s, ships:%s" % (
+        return "Fleet: {0!s} , state: {1!s}, ships:{2!s}".format(
             self.worldid, (self.state if hasattr(self, 'state') else
                            'unknown state'), ships_str)

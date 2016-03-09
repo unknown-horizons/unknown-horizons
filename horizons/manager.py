@@ -134,8 +134,8 @@ class MPManager(LivingObject):
                                           self.gamecommands)
             self.gamecommands = []
             self.commandsmanager.add_packet(commandpacket)
-            self.log.debug("sending command for tick %d" % (
-                commandpacket.tick))
+            self.log.debug("sending command for tick {0:d}".format((
+                commandpacket.tick)))
             self.networkinterface.send_packet(commandpacket)
 
             self.localcommandsmanager.add_packet(CommandPacket(
@@ -152,8 +152,8 @@ class MPManager(LivingObject):
                     self.calculate_hash_tick(tick),
                     self.session.world.player.worldid, hash_value)
                 self.checkuphashmanager.add_packet(checkuphashpacket)
-                self.log.debug("sending checkuphash for tick %d" % (
-                    checkuphashpacket.tick))
+                self.log.debug("sending checkuphash for tick {0:d}".format((
+                    checkuphashpacket.tick)))
                 self.networkinterface.send_packet(checkuphashpacket)
 
         # decide if tick can be calculated
@@ -338,10 +338,10 @@ class MPCheckupHashManager(MPPacketmanager):
                 if cb_diff is not None:
                     localplayerid = self.mpmanager.session.world.player.worldid
                     cb_diff("local" if pkges[0].player_id == localplayerid else
-                            "pl#%02d" % (pkges[0].player_id),
+                            "pl#{0:02d}".format((pkges[0].player_id)),
                             pkges[0].checkup_hash,
                             "local" if pkg.player_id == localplayerid else
-                            "pl#%02d" % (pkg.player_id),
+                            "pl#{0:02d}".format((pkg.player_id)),
                             pkg.checkup_hash)
                 return False
         return True

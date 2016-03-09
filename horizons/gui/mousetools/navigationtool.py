@@ -97,7 +97,7 @@ class NavigationTool(CursorTool):
             def show_evt(self, evt):
                 if self.enabled:
                     x, y = self.cursor_tool.get_world_location(evt).to_tuple()
-                    self.icon.helptext = u'%d, %d ' % (
+                    self.icon.helptext = u'{0:d}, {1:d} '.format(
                         x, y) + _("Press H to remove this hint")
                     self.icon.position_tooltip(evt)
                     self.icon.show_tooltip()

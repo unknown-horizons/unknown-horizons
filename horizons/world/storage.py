@@ -131,7 +131,7 @@ class GenericStorage(ChangeListener):
         return self._storage.iteritems()
 
     def __str__(self):
-        return "%s(%s)" % (self.__class__, self._storage if
+        return "{0!s}({1!s})".format(self.__class__, self._storage if
                            hasattr(self, "_storage") else None)
 
 
