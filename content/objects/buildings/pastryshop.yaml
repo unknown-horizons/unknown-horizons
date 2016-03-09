@@ -34,11 +34,20 @@ components:
         time: 30
       HONEYCOMBS:
         produces:
-        - [RES.SUGAR, 2]
+        #- [RES.CONFECTIONERY, 1]
         - [RES.CANDLES, 1]
         consumes:
         - [RES.HONEYCOMBS, -1]
-        time: 15
+        - [RES.COCOA, -1]
+        time: 30
+      #HONEYCOMBS_GRAPES:
+        #produces:
+        #- [RES.CONFECTIONERY, 1]
+        #- [RES.CANDLES, 1]
+        #consumes:
+        #- [RES.GRAPES, -1]
+        #- [RES.HONEYCOMBS, -1]
+        #time: 30
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.SUGAR: 8, RES.COCOA: 6, RES.CONFECTIONERY: 6,
