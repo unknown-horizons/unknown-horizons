@@ -105,7 +105,7 @@ class SpecialDomesticTrade(ShipMission):
             self.source_settlement_manager.settlement.warehouse.position,
             Callback(self._reached_source_settlement),
             Callback(self._move_to_source_settlement),
-            'Unable to move to the source settlement ({})'
+            'Unable to move to the source settlement ({0})'
             .format(self.source_settlement_manager.settlement.
                     get_component(NamedComponent).name))
 

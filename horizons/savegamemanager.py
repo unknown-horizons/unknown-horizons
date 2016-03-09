@@ -178,7 +178,7 @@ class SavegameManager(object):
         prepared_filename = time.strftime(cls.quicksave_filenamepattern)
         name = cls.filename.format(directory=cls.quicksave_dir,
                                    name=prepared_filename)
-        cls.log.debug("Savegamemanager: creating quicksave-filename: {}".
+        cls.log.debug("Savegamemanager: creating quicksave-filename: {0}".
                       format(name))
         return name
 
@@ -202,7 +202,7 @@ class SavegameManager(object):
 
         name = cls.filename.format(directory=cls.multiplayersave_dir,
                                    name=name)
-        cls.log.debug("Savegamemanager: creating multiplayersave-filename: {}"
+        cls.log.debug("Savegamemanager: creating multiplayersave-filename: {0}"
                       .format(name))
         return name
 

@@ -318,7 +318,7 @@ class NetworkInterface(object):
             return [] if not fatal else None
         for game in games:
             ret_mp_games.append(self.game2mpgame(game))
-            self.log.debug("NetworkInterface: found active game {}".
+            self.log.debug("NetworkInterface: found active game {0}".
                            format(game.mapname))
         return ret_mp_games
 

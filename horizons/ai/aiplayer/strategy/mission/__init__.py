@@ -151,7 +151,7 @@ class FleetMission(Mission):
             "request to continue mission without it being in combat_phase " \
             "in the first place"
         assert self.state in self.combatIntermissions, \
-            "request to continue mission from not defined state: {}".\
+            "request to continue mission from not defined state: {0}".\
             format(self.state)
         self.log.debug("Player %s, Mission %s, continuing mission at state %s",
                        self.owner.name,

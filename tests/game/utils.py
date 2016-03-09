@@ -80,7 +80,7 @@ def new_settlement(session, pos=Point(30, 20)):
 
     building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island,
                      ship=ship)(player)
-    assert building, "Could not build warehouse at {}".format(pos)
+    assert building, "Could not build warehouse at {0}".format(pos)
 
     return (building.settlement, island)
 

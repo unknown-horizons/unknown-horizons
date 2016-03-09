@@ -395,12 +395,12 @@ for (x, y) in abbrevs.iteritems():
 args = sys.argv
 
 if len(args) == 1:
-    print('Start with one of those args: {} \nSupported abbreviations: {}'
+    print('Start with one of those args: {0} \nSupported abbreviations: {1}'
           .format(sorted(functions.keys()), sorted(abbrevs.keys())))
 else:
     for i in flags.iteritems():
         if i[0].startswith(args[1]):
             i[1]()
             sys.exit(0)
-    print('Start with one of those args: {} \nSupported abbreviations: {}'
+    print('Start with one of those args: {0} \nSupported abbreviations: {1}'
           .format(functions.keys(), abbrevs.keys()))

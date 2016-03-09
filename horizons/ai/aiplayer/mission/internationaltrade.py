@@ -170,7 +170,7 @@ class InternationalTrade(ShipMission):
             self.settlement.warehouse.position,
             Callback(self._reached_other_settlement),
             Callback(self._move_to_other_settlement),
-            'Unable to move to the other settlement ({})'
+            'Unable to move to the other settlement ({0})'
             .format(self.settlement.get_component(NamedComponent).name))
 
     def _get_max_buyable_amount(self):

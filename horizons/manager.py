@@ -112,11 +112,11 @@ class MPManager(LivingObject):
 
         for packet in packets_received:
             if isinstance(packet, CommandPacket):
-                self.log.debug("Got command packet from {} for tick {}"
+                self.log.debug("Got command packet from {0} for tick {1}"
                                .format(packet.player_id, packet.tick))
                 self.commandsmanager.add_packet(packet)
             elif isinstance(packet, CheckupHashPacket):
-                self.log.debug("Got checkuphash packet from {} for tick {}"
+                self.log.debug("Got checkuphash packet from {0} for tick {1}"
                                .format(packet.player_id, packet.tick))
                 self.checkuphashmanager.add_packet(packet)
             else:
@@ -212,7 +212,7 @@ class MPManager(LivingObject):
 
     def hash_value_diff(self, player1, hash1, player2, hash2):
         """Called when a divergence has been detected"""
-        self.log.error("MPManager: Hash diff:\n{} hash1: {}\n{} hash2: {}"
+        self.log.error("MPManager: Hash diff:\n{0} hash1: {1}\n{2} hash2: {3}"
                        .format(player1, hash1, player2, hash2))
         self.log.error("------------------")
         self.log.error("Differences:")
@@ -236,7 +236,7 @@ class MPManager(LivingObject):
         """Receive commands to be executed from local player
         @param command: Command instance
         @param local: commands that don't need to be sent over the wire"""
-        self.log.debug('MPManager: adding command (next tick: {}) {}'
+        self.log.debug('MPManager: adding command (next tick: {0}) {1}'
                        .format(self.session.timer.tick_next_id, command))
         if local:
             self.localcommands.append(command)
@@ -286,7 +286,7 @@ class MPPacketmanager(object):
                     tick, remove_returned_commands=False)) == \
             self.mpmanager.get_player_count()
         if not ready:
-            self.log.debug("tick not ready, packets: {}".format(
+            self.log.debug("tick not ready, packets: {0}".format(
                 list(str(x) for x in self.get_packets_for_tick(
                     tick, remove_returned_commands=False))))
         return ready
@@ -369,7 +369,7 @@ class MPPacket(object):
         packets.SafeUnpickler.add('server', klass)
 
     def __str__(self):
-        return "packet {} from player {} for tick {}".format(
+        return "packet {0} from player {1} for tick {2}".format(
             self.__class__, WorldObject.get_object_by_id(self.player_id),
             self.tick)
 
