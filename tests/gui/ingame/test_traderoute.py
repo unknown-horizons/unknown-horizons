@@ -81,7 +81,7 @@ def test_traderoute(gui):
     # the amount
     gui.trigger('configure_route/container_1/slot_0', 'button', mouse='left')
     # Select the second warehouse's first slot
-    gui.trigger('configure_route', 'resource_%d' % RES.FOOD)
+    gui.trigger('configure_route', 'resource_{0:d}'.format(RES.FOOD))
     gui.find('configure_route/container_1/slot_0/slider').slide(120)
 
     # Check if the ship obeys the state of "Wait at load" and "Wait at unload"

@@ -142,7 +142,7 @@ class WorldEditor(object):
 
         (ground_id, shape, rotation) = tile_details
         if ground_id != 0:
-            ground = Entities.grounds['%d-%s' % (ground_id, shape)](
+            ground = Entities.grounds['{0:d}-{1!s}'.format(ground_id, shape)](
                 self.session, *coords)
             ground.act(rotation)
             self.world.full_map[coords] = ground

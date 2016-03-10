@@ -129,7 +129,7 @@ class YamlCache(object):
                     data = convert_game_data(data)
                 except Exception as e:
                     # add info about file
-                    to_add = "\nThis error happened in %s ." % filename
+                    to_add = "\nThis error happened in {0!s} .".format(filename)
                     e.args = (e.args[0] + to_add,) + e.args[1:]
                     e.message = (e.message + to_add)
                     raise

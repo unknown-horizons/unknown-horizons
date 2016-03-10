@@ -80,7 +80,7 @@ class Connection(object):
             raise network.AlreadyConnected(
                 "We are already connected to a server")
 
-        self.log.debug("[CONNECT] to server %s" % (self.server_address))
+        self.log.debug("[CONNECT] to server {0!s}".format((self.server_address)))
         try:
             if self.server_address is None:
                 # can only construct address now, as it resolves the target
@@ -214,16 +214,16 @@ class Connection(object):
                 return None
             elif event.type == enet.EVENT_TYPE_DISCONNECT:
                 self._reset()
-                self.log.warning("Unexpected disconnect from %s" %
-                                 (event.peer.address))
-                raise network.CommandError("Unexpected disconnect from %s" %
-                                           (event.peer.address))
+                self.log.warning("Unexpected disconnect from {0!s}".format(
+                                 (event.peer.address)))
+                raise network.CommandError("Unexpected disconnect from {0!s}".format(
+                                           (event.peer.address)))
             elif event.type == enet.EVENT_TYPE_CONNECT:
                 self._reset()
-                self.log.warning("Unexpected connection from %s" %
-                                 (event.peer.address))
-                raise network.CommandError("Unexpected connection from %s" %
-                                           (event.peer.address))
+                self.log.warning("Unexpected connection from {0!s}".format(
+                                 (event.peer.address)))
+                raise network.CommandError("Unexpected connection from {0!s}".format(
+                                           (event.peer.address)))
 
             return event
         except IOError as e:
@@ -245,10 +245,10 @@ class Connection(object):
             else:
                 self.log.error("Unknown packet from {0}!".
                                format(event.peer.address))
-            errstr = "Pickle/Security: %s" % (e)
-            print("[FATAL] %s" % (errstr))
+            errstr = "Pickle/Security: {0!s}".format((e))
+            print("[FATAL] {0!s}".format((errstr)))
             # print that even when no logger is enabled!
-            self.log.error("[FATAL] %s" % (errstr))
+            self.log.error("[FATAL] {0!s}".format((errstr)))
             self.disconnect()
             raise network.FatalError(errstr)
 
@@ -270,7 +270,7 @@ class Connection(object):
             """
             raise network.CommandError(packet.errorstr)
         elif isinstance(packet, packets.cmd_fatalerror):
-            self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
+            self.log.error("[FATAL] Network message: {0!s}".format((packet.errorstr)))
             self.disconnect(server_may_disconnect=True)
             raise network.FatalError(packet.errorstr)
 

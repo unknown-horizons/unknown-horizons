@@ -159,6 +159,6 @@ class SpecialDomesticTradeManager(object):
         self._add_route()
 
     def __str__(self):
-        return '%s.SpecialDomesticTradeManager' % self.owner
+        return '{0!s}.SpecialDomesticTradeManager'.format(self.owner)
 
 decorators.bind_all(SpecialDomesticTradeManager)

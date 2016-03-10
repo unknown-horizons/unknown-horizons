@@ -38,15 +38,14 @@ OUTPUT = 'content/gui/xml/mainmenu/credits.xml'
 HEADER = ur'''<?xml version="1.0"?>
 
 <!--  /!\ WARNING /!\
-This document was auto-generated from %s.
-Please edit %s instead if you need to change something,
-afterwards run %s to refresh this file.
+This document was auto-generated from {0!s}.
+Please edit {1!s} instead if you need to change something,
+afterwards run {2!s} to refresh this file.
 -->
 
 <Container name="credits_window" size="1000,580">
     <Icon image="content/gui/images/background/book.png" position="100,0" />
-    <Container name="left_pickbelts" size="170,580" position="30,0" />''' % \
-         (INPUT, INPUT, __file__)
+    <Container name="left_pickbelts" size="170,580" position="30,0" />'''.format(INPUT, INPUT, __file__)
 FOOTER = ur'''
 <OkButton position="800,500" helptext="Exit to main menu" />
 
@@ -67,7 +66,7 @@ def write(f, level, text, newline=True):
 
 
 def close_box(box, level):
-    write(f, level, u'</%sBox>' % box)
+    write(f, level, u'</{0!s}Box>'.format(box))
 
 
 def close_vbox(level):
@@ -133,12 +132,11 @@ def write_page(heading, content):
         if heading in huge_pages:
             write(f, 1, u'</ScrollArea>')
 
-    write(f, 0, u'\n<HBox name="%s" position="185,45" padding="10">'
-          % section_widgets[heading])
+    write(f, 0, u'\n<HBox name="{0!s}" position="185,45" padding="10">'.format(section_widgets[heading]))
 
     write_page_header()
 
-    write(f, 2, u'<Label text="%s" name="headline" />' % heading)
+    write(f, 2, u'<Label text="{0!s}" name="headline" />'.format(heading))
     write(f, 2, u'<hr />')
 
     for h3, lines in content.items():
@@ -154,7 +152,7 @@ def write_page(heading, content):
 
 
 def write_subsection(subheading, subcontent):
-    write(f, 2, u'<VBox> <Label text="%s" name="headline" />' % subheading)
+    write(f, 2, u'<VBox> <Label text="{0!s}" name="headline" />'.format(subheading))
     write(f, 3, u'<VBox name="box">')
     for line in subcontent['items']:  # finally, names
         if set(line) == set('- '):
@@ -162,7 +160,7 @@ def write_subsection(subheading, subcontent):
             close_vbox(2)
             raise PageBreak
         else:
-            write(f, 4, u'<Label text="%s" />' % unicode(line, 'utf-8'))
+            write(f, 4, u'<Label text="{0!s}" />'.format(unicode(line, 'utf-8')))
     close_vbox(3)
     close_vbox(2)
 

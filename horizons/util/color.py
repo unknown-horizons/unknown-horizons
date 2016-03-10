@@ -41,7 +41,7 @@ class ColorMeta(type):
         try:
             rgb = query[0]
         except IndexError:
-            raise KeyError('No color defined for this name or id: %s' % key)
+            raise KeyError('No color defined for this name or id: {0!s}'.format(key))
         else:
             return Color(*rgb)
 
@@ -96,4 +96,4 @@ class Color(object):
         return self.to_tuple() == other.to_tuple()
 
     def __hash__(self):
-        return hash("%s%s%s%s" % (self.r, self.g, self.b, self.a))
+        return hash("{0!s}{1!s}{2!s}{3!s}".format(self.r, self.g, self.b, self.a))

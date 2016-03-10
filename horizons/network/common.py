@@ -35,7 +35,7 @@ class Address(object):
             self.port = int(port)
 
     def __str__(self):
-        return "%s:%u" % (self.host, self.port)
+        return "{0!s}:{1:d}".format(self.host, self.port)
 
     def __hash__(self):
         return hash((self.host, self.port))
@@ -109,11 +109,11 @@ class Player(object):
 
     def __str__(self):
         if self.name:
-            return "Player(addr=%s;proto=%d;name=%s)" % (self.address,
+            return "Player(addr={0!s};proto={1:d};name={2!s})".format(self.address,
                                                          self.protocol,
                                                          self.name)
         else:
-            return "Player(addr=%s;proto=%d)" % (self.address, self.protocol)
+            return "Player(addr={0!s};proto={1:d})".format(self.address, self.protocol)
 
     def join(self, game, packet):
         """ assigns player data sent by create/join-command to the player """
@@ -146,7 +146,7 @@ class Game(object):
 
         def __str__(self):
             strvals = ["Open", "Prepare", "Running"]
-            return "%s" % (strvals[self.state])
+            return "{0!s}".format((strvals[self.state]))
 
     def __init__(self, packet, creator):
         # pickle doesn't use all of these attributes
@@ -234,7 +234,7 @@ class Game(object):
         self.playercnt = 0
 
     def __str__(self):
-        return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (
+        return "Game(uuid={0!s};maxpl={1:d};plcnt={2:d};pw={3:d};state={4!s})".format(
             self.uuid, self.maxplayers, self.playercnt, self.has_password(),
             Game.State(self.state))
 
@@ -252,6 +252,6 @@ class ErrorType(object):
 
     def __str__(self):
         strvals = ["NotSet", "TerminateGame"]
-        return "%s" % (strvals[self.state])
+        return "{0!s}".format((strvals[self.state]))
 
 packets.SafeUnpickler.add('common', ErrorType)

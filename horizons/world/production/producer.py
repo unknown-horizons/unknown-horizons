@@ -315,8 +315,8 @@ class Producer(Component):
         # which can be needed by changelisteners' actions
         # (e.g. in remove_production method)
         super(Producer, self).remove()
-        assert not self.get_productions(), 'Failed to remove %s ' % \
-                                           self.get_productions()
+        assert not self.get_productions(), 'Failed to remove {0!s} '.format( \
+                                           self.get_productions())
 
     # PROTECTED METHODS
     def _get_current_state(self):

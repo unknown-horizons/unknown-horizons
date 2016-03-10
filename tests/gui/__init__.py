@@ -237,7 +237,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0,
     def deco(func):
         @wraps(func)
         def wrapped():
-            test_name = '%s.%s' % (func.__module__, func.__name__)
+            test_name = '{0!s}.{1!s}'.format(func.__module__, func.__name__)
 
             # when running under coverage, enable it for subprocesses too
             if os.environ.get('RUNCOV'):
@@ -251,7 +251,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0,
                 path = os.path.join(TEST_FIXTURES_DIR,
                                     use_fixture + '.sqlite')
                 if not os.path.exists(path):
-                    raise Exception('Savegame %s not found' % path)
+                    raise Exception('Savegame {0!s} not found'.format(path))
                 args.extend(['--load-game', path])
             elif use_dev_map:
                 args.append('--start-dev-map')

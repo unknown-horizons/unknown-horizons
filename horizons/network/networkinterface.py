@@ -140,7 +140,7 @@ class NetworkInterface(object):
             self.sid = packet[1].sid
             self.capabilities = packet[1].capabilities
             self._mode = ClientMode.Server
-            self.log.debug("[CONNECT] done (session=%s)" % (self.sid))
+            self.log.debug("[CONNECT] done (session={0!s})".format((self.sid)))
             self._set_client_language()
         except NetworkException as e:
             self.disconnect()
@@ -263,7 +263,7 @@ class NetworkInterface(object):
 
     def _joingame(self, uuid, password="", fetch=False):
         self._assert_connection()
-        self.log.debug("[JOIN] %s" % (uuid))
+        self.log.debug("[JOIN] {0!s}".format((uuid)))
         self.send_packet(packets.client.cmd_joingame(
             uuid=uuid,
             clientver=self._client_data.version,
@@ -295,7 +295,7 @@ class NetworkInterface(object):
         try:
             self._assert_connection()
             self._assert_lobby()
-            self.log.debug("[CHAT] %s" % (message))
+            self.log.debug("[CHAT] {0!s}".format((message)))
             self.send_packet(packets.client.cmd_chatmsg(message))
         except NetworkException as e:
             self._handle_exception(e)
@@ -348,7 +348,7 @@ class NetworkInterface(object):
         try:
             if self._client_data.name == new_name:
                 return True
-            self.log.debug("[CHANGENAME] %s" % (new_name))
+            self.log.debug("[CHANGENAME] {0!s}".format((new_name)))
             if self._mode is None or self._game is None:
                 self._client_data.name = new_name
                 return
@@ -357,7 +357,7 @@ class NetworkInterface(object):
             self._handle_exception(e)
 
     def _on_change_name(self, game, plold, plnew, myself):
-        self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
+        self.log.debug("[ONCHANGENAME] {0!s} -> {1!s}".format(plold.name, plnew.name))
         if myself:
             self._client_data.name = plnew.name
 
@@ -371,7 +371,7 @@ class NetworkInterface(object):
         try:
             if self._client_data.color == new_color:
                 return
-            self.log.debug("[CHANGECOLOR] %s" % (new_color))
+            self.log.debug("[CHANGECOLOR] {0!s}".format((new_color)))
             if self._mode is None or self._game is None:
                 self._client_data.color = new_color
                 return
@@ -472,7 +472,7 @@ class NetworkInterface(object):
                 return True
             self._on_game_start()
         elif isinstance(packet[1], packets.client.game_data):
-            self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
+            self.log.debug("[GAMEDATA] from {0!s}".format((packet[0].address)))
             self._on_game_data(packet[1].data)
         elif isinstance(packet[1], packets.server.cmd_kickplayer):
             player = packet[1].player

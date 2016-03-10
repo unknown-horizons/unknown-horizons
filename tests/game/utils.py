@@ -70,7 +70,7 @@ def new_settlement(session, pos=Point(30, 20)):
     too verbose.
     """
     island = session.world.get_island(pos)
-    assert island, "No island found at %s" % pos
+    assert island, "No island found at {0!s}".format(pos)
     player = session.world.player
 
     ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)

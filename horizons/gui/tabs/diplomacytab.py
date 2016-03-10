@@ -122,7 +122,7 @@ class PlayerDiplomacyTab(TabInterface):
             state = 'enemy'
 
         # Check the selected box.
-        self.widget.distributeData({'%s_check_box' % state: True})
+        self.widget.distributeData({'{0!s}_check_box'.format(state): True})
 
 
 class DiplomacyTab(TabWidget):

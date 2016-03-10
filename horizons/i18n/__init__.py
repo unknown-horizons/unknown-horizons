@@ -65,7 +65,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
     LANGCACHE = languages = {}
 
     for i in alternatives:
-        for j in glob.glob('%s/*/*/%s.mo' % (i, domain)):
+        for j in glob.glob('{0!s}/*/*/{1!s}.mo'.format(i, domain)):
             splited = j.split(os.sep)
             key = splited[-3]
             if key not in languages:

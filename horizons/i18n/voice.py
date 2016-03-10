@@ -129,6 +129,6 @@ def eval_category_name(category):
     try:
         cat_name = getattr(Speech, category)
     except:
-        print "Incorrect name of speech category: %s" % category
+        print "Incorrect name of speech category: {0!s}".format(category)
         print "You might want to add this here in voice.py."
     return cat_name

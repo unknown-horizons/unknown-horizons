@@ -45,7 +45,7 @@ class _ExtCallbackObject(object):
         self.loops = loops
 
     def __str__(self):
-        return "ExtSchedCb(%s on %s)" % (self.callback, self.class_instance)
+        return "ExtSchedCb({0!s} on {1!s})".format(self.callback, self.class_instance)
 
 
 class ExtScheduler(object):

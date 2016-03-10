@@ -258,7 +258,7 @@ class Unit(MovingObject, ResourceTransferHandler):
         return self.session.db.get_unit_type_name(self.id)
 
     def __str__(self):  # debug
-        return '%s(id=%s;worldid=%s)' % (self.name, self.id,
+        return '{0!s}(id={1!s};worldid={2!s})'.format(self.name, self.id,
                                          self.worldid if
                                          hasattr(self, 'worldid') else 'none')
 

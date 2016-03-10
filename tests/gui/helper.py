@@ -340,11 +340,11 @@ class GuiHelper(object):
             root_name = root
             root = self.find(name=root_name)
             if not root:
-                raise Exception("Container '%s' not found" % root_name)
+                raise Exception("Container '{0!s}' not found".format(root_name))
 
         widget = root.findChild(name=widget_name)
         if not widget:
-            raise Exception("'%s' contains no widget with the name '%s'" % (
+            raise Exception("'{0!s}' contains no widget with the name '{1!s}'".format(
                                 root.name, widget_name))
 
         self._trigger_widget_callback(widget, event_name, group_name,

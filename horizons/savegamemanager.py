@@ -225,10 +225,10 @@ class SavegameManager(object):
                 os.unlink(filename)
 
         if autosaves:
-            tmp_del("%s/*.%s" % (cls.autosave_dir, cls.savegame_extension),
+            tmp_del("{0!s}/*.{1!s}".format(cls.autosave_dir, cls.savegame_extension),
                     horizons.globals.fife.get_uh_setting("AutosaveMaxCount"))
         if quicksaves:
-            tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
+            tmp_del("{0!s}/*.{1!s}".format(cls.quicksave_dir, cls.savegame_extension),
                     horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
 
     @classmethod
@@ -444,7 +444,7 @@ class SavegameManager(object):
     def get_savegamename_from_filename(cls, savegamefile):
         """Returns a displayable name, extracted from a filename"""
         name = os.path.basename(savegamefile)
-        name = name.rsplit(".%s" % cls.savegame_extension, 1)[0]
+        name = name.rsplit(".{0!s}".format(cls.savegame_extension), 1)[0]
         cls.log.debug("Savegamemanager: savegamename: %s", name)
         return name
 

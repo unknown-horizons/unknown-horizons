@@ -354,7 +354,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
         pass
 
     def __unicode__(self):  # debug
-        return u'%s(id=%s;worldid=%s)' % (self.name, self.id,
+        return u'{0!s}(id={1!s};worldid={2!s})'.format(self.name, self.id,
                                           getattr(self, 'worldid', 'none'))
 
 

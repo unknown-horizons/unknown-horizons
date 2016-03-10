@@ -108,7 +108,7 @@ class Trader(GenericAI):
             if current_callback is not None:
                 # current state has a callback
                 calls = Scheduler().get_classinst_calls(self, current_callback)
-                assert len(calls) == 1, "got %s calls for saving %s: %s" % (
+                assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(
                     len(calls), current_callback, calls)
                 remaining_ticks = max(calls.values()[0], 1)
             targeted_warehouse = None if ship.worldid not in \

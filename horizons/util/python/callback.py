@@ -28,7 +28,7 @@ class Callback(object):
     """
     def __init__(self, callback_function, *args, **kwargs):
         assert callable(callback_function), \
-            "Argument to for callback_f is %s" % callback_function
+            "Argument to for callback_f is {0!s}".format(callback_function)
         self.callback = callback_function
         self.args = args
         self.kwargs = kwargs
@@ -69,4 +69,4 @@ class Callback(object):
         # to tuple, dict is unhashable
 
     def __str__(self):
-        return 'Callback(%s, %s, %s)' % (self.callback, self.args, self.kwargs)
+        return 'Callback({0!s}, {1!s}, {2!s})'.format(self.callback, self.args, self.kwargs)

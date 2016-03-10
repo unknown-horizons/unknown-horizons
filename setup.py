@@ -60,8 +60,8 @@ data = [
 ]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
-    data.append(('share/unknown-horizons/%s' % root,
-                 ['%s/%s' % (root, f) for f in files]))
+    data.append(('share/unknown-horizons/{0!s}'.format(root),
+                 ['{0!s}/{1!s}'.format(root, f) for f in files]))
 
 packages = []
 for root, dirs, files in os.walk('horizons'):
@@ -70,7 +70,7 @@ for root, dirs, files in os.walk('horizons'):
 # Add enet files for build platform
 type = platform.system().lower()
 arch = platform.machine()
-dir = "horizons/network/%s-x%s" % (type, arch[-2:])
+dir = "horizons/network/{0!s}-x{1!s}".format(type, arch[-2:])
 package_data = {dir: ['*.so']}
 
 
@@ -99,7 +99,7 @@ class _build_i18n(distutils.cmd.Command):
     def generate_mo_files(self, domain, po_dir):
         if not os.path.isdir(po_dir):
             return []
-        po_files = glob.glob("%s/*.po" % po_dir)
+        po_files = glob.glob("{0!s}/*.po".format(po_dir))
         if po_files and not find_executable('msgfmt'):
             raise RuntimeError(
                 "Can't generate language files, needs msgfmt. "
@@ -121,7 +121,7 @@ class _build_i18n(distutils.cmd.Command):
             if selected_languages and lang not in selected_languages:
                 continue
             mo_dir = os.path.join("content", "lang", lang, "LC_MESSAGES")
-            mo_file = os.path.join(mo_dir, "%s.mo" % domain)
+            mo_file = os.path.join(mo_dir, "{0!s}.mo".format(domain))
             if not os.path.exists(mo_dir):
                 os.makedirs(mo_dir)
             cmd = ["msgfmt", po_file, "-o", mo_file]
