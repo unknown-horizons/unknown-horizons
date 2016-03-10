@@ -79,7 +79,8 @@ def setup_paths():
     yaml_output = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario,
                                    language=language)
     msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT,
-                                       language=language) + '{0!s}.mo'.format(scenario)
+                                       language=language) +\
+        '{0!s}.mo'.format(scenario)
 
     # If path for compiled translations does not exist yet, create it
     subprocess.call(['mkdir', '-p', MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT,

@@ -75,13 +75,16 @@ for root, dirs, files in os.walk('.'):
         else:
             files = filter(lambda s: s.split('.')[-1] not in (
                 'pyc', 'log', 'nsi'), files)
-        inst.append((' SetOutPath "$INSTDIR/{0!s}"'.format(rootp)).replace('/', '\\'))
+        inst.append((' SetOutPath "$INSTDIR/{0!s}"'.format(
+            rootp)).replace('/', '\\'))
         installed_dirs.append(rootp)
         for j in files:
-            inst.append((' File "./{0!s}/{1!s}"'.format(rootp, j)).replace('/', '\\'))
+            inst.append((' File "./{0!s}/{1!s}"'.format(
+                rootp, j)).replace('/', '\\'))
             installed_files.append('{0!s}/{1!s}'.format(rootp, j))
             if j[-3:] == '.py':
-                installed_files.append('{0!s}.pyc'.format(('{0!s}/{1!s}'.format(rootp, j))[:-3]))
+                installed_files.append('{0!s}.pyc'.format(
+                    ('{0!s}/{1!s}'.format(rootp, j))[:-3]))
 
 installed_dirs.extend(['fife\\engine\\python', 'fife\\engine', 'fife'])
 
@@ -92,7 +95,8 @@ for d in installed_dirs:
     pref = ""
     for i in d.split('/'):
         pref = i if not pref else "{0!s}/{1!s}".format(pref, i)
-        remd.append((' RMDir "$INSTDIR/{0!s}"'.format(pref)).replace('/', '\\'))
+        remd.append((' RMDir "$INSTDIR/{0!s}"'
+                     .format(pref)).replace('/', '\\'))
 
 if len(sys.argv) > 1:
     version = sys.argv[1]

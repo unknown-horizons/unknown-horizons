@@ -166,7 +166,8 @@ def content_from_file(filename):
                 replace('/', ':')
             comment = '{0!s} of {1!s}'.format(component, filename)
             object_strings.append('# {0!s}'.format(comment) + ROWINDENT +
-                                  '{0:<30!s}: {1!s}'.format(('"%s"') % component, text))
+                                  '{0:<30!s}: {1!s}'.format(
+                                      ('"%s"') % component, text))
 
     for component, value in parsed.iteritems():
         if isinstance(value, basestring):

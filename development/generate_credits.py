@@ -45,7 +45,8 @@ afterwards run {2!s} to refresh this file.
 
 <Container name="credits_window" size="1000,580">
     <Icon image="content/gui/images/background/book.png" position="100,0" />
-    <Container name="left_pickbelts" size="170,580" position="30,0" />'''.format(INPUT, INPUT, __file__)
+    <Container name="left_pickbelts" size="170,580" position="30,0" />'''\
+    .format(INPUT, INPUT, __file__)
 FOOTER = ur'''
 <OkButton position="800,500" helptext="Exit to main menu" />
 
@@ -132,7 +133,8 @@ def write_page(heading, content):
         if heading in huge_pages:
             write(f, 1, u'</ScrollArea>')
 
-    write(f, 0, u'\n<HBox name="{0!s}" position="185,45" padding="10">'.format(section_widgets[heading]))
+    write(f, 0, u'\n<HBox name="{0!s}" position="185,45" padding="10">'
+          .format(section_widgets[heading]))
 
     write_page_header()
 
@@ -152,7 +154,8 @@ def write_page(heading, content):
 
 
 def write_subsection(subheading, subcontent):
-    write(f, 2, u'<VBox> <Label text="{0!s}" name="headline" />'.format(subheading))
+    write(f, 2, u'<VBox> <Label text="{0!s}" name="headline" />'
+          .format(subheading))
     write(f, 3, u'<VBox name="box">')
     for line in subcontent['items']:  # finally, names
         if set(line) == set('- '):
@@ -160,7 +163,8 @@ def write_subsection(subheading, subcontent):
             close_vbox(2)
             raise PageBreak
         else:
-            write(f, 4, u'<Label text="{0!s}" />'.format(unicode(line, 'utf-8')))
+            write(f, 4, u'<Label text="{0!s}" />'.format(unicode(line,
+                                                                 'utf-8')))
     close_vbox(3)
     close_vbox(2)
 

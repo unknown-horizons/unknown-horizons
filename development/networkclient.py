@@ -216,9 +216,10 @@ def onstatus(*args):
     global name, client
     statusstr = "[STATUS]"
     statusstr += " name={0!s}".format((name))
-    statusstr += " mode={0!s}".format(("GAME" if client.mode is ClientMode.Game else
-                               "Server"))
-    statusstr += " connected={0!s}".format(("yes" if client.isconnected() else "no"))
+    statusstr += " mode={0!s}".format(("GAME" if client.mode is
+                                       ClientMode.Game else "Server"))
+    statusstr += " connected={0!s}".format(
+        ("yes" if client.isconnected() else "no"))
     statusstr += " server={0!s}".format((client.serveraddress))
     print statusstr
     if client.isconnected():

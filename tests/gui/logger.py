@@ -355,10 +355,11 @@ class TestCodeGenerator(object):
 
         # Output debug information, no test code yet
         if button:
-            log.debug("# {0!s}.{1!s}({2:d}, {3:d}, '{4!s}')".format(tool_name, event_name, x, y,
-                                                 button))
+            log.debug("# {0!s}.{1!s}({2:d}, {3:d}, '{4!s}')".format(
+                tool_name, event_name, x, y, button))
         else:
-            log.debug("# {0!s}.{1!s}({2:d}, {3:d})".format(tool_name, event_name, x, y))
+            log.debug("# {0!s}.{1!s}({2:d}, {3:d})".format(tool_name,
+                                                           event_name, x, y))
 
     def dialog_opened(self):
         """
@@ -383,7 +384,8 @@ class TestCodeGenerator(object):
                 gui.cursor_click(2, 3, 'left')
         """
         self._dialog_active = False
-        self._emit(['with gui.handler(func{0:d}):'.format(self._handler_count)])
+        self._emit(['with gui.handler(func{0:d}):'.format(
+            self._handler_count)])
         for line in self._dialog_opener:
             self._emit(['\t' + line])
         self._last_command = []

@@ -46,7 +46,8 @@ def _build_farm(x, y, field_type, island, settlement, owner):
         field = Build(field_type, fx, fy, island,
                       settlement=settlement)(owner)
         assert field, \
-            "Failed to build a field ({0:d}) at ({1:d}, {2:d})".format(field_type, x, y)
+            "Failed to build a field ({0:d}) at ({1:d}, {2:d})".format(
+                field_type, x, y)
 
     return farm
 

@@ -117,7 +117,8 @@ files_to_skip = [
 
 def print_n_no_name(n, text):
     print '\tWarning: ',
-    print '{0!s} without name. Add unique name if desired: text="{1!s}"'.format(n, text)
+    print '{0!s} without name. Add unique name if desired: text="{1!s}"'\
+        .format(n, text)
 
 
 def list_all_files():
@@ -126,8 +127,8 @@ def list_all_files():
     for root, dirs, files in walker:
         for filename in files:
             if filename.endswith('.xml'):
-                result.append(('{0!s}/{1!s}'.format(root, filename), filename not in
-                               files_to_skip))
+                result.append(('{0!s}/{1!s}'.format(root, filename),
+                               filename not in files_to_skip))
     return sorted(result)
 
 

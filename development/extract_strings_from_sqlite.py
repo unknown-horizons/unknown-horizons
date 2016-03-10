@@ -107,7 +107,8 @@ class MSGID_collect:
     def __str__(self):
         s = []
         for text, locations in self.msgids.items():
-            comment = '#. This is a database entry: {0!s}\n'.format(','.join(locations))
+            comment = '#. This is a database entry: {0!s}\n'.format(
+                ','.join(locations))
             s += [comment + build_msgid(text)]
         return '\n'.join(s).strip()
 

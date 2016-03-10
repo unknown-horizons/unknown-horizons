@@ -103,7 +103,8 @@ def show_data(games):
         s %= 3600
         m = s // 60
         s %= 60
-        print game.name, '{0:d}:{1:02d}:{2:06.3f}s'.format(h, m, s), game.returncode
+        print game.name, '{0:d}:{1:02d}:{2:06.3f}s'.format(
+            h, m, s), game.returncode
 
 if __name__ == '__main__':
     parser = PassThroughOptionParser()

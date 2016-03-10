@@ -135,18 +135,20 @@ def print_production_lines():
 
 
 def print_verbose_lines():
-    print 'Data has been moved, this view is unavailable for now'
+    print('Data has been moved, this view is unavailable for now')
     return
 
     def _output_helper_prodlines(string, list):
         if len(list) == 1:
             for res, amount in list:
-                print('      ' + str(string) + ':\t{0!s} {1!s}({2!s})'.format(abs(amount),
+                print('      ' + str(string) + ':\t{0!s} {1!s}({2!s})'
+                      .format(abs(amount),
                       get_res_name(res), res))
         elif len(list) > 1:
             print '      ' + str(string) + ': '
             for res, amount in list:
-                print '\t\t{0!s} {1!s} ({2!s})'.format(abs(amount), get_res_name(res), res)
+                print('\t\t{0!s} {1!s} ({2!s})'.format(abs(amount),
+                                                       get_res_name(res), res))
 
     print 'Production Lines:'
     for prod_line in db("SELECT id, object_id, time, enabled_by_default FROM "
@@ -157,35 +159,37 @@ def print_verbose_lines():
         object = prod_line[1]
         (consumption, production) = get_prod_line(id, list)
 
-        print '{0:2!s}: {1!s}({2!s}) needs {3!s} seconds to'.format(id, get_obj_name(object),
-                                                   object, prod_line[2])
+        print('{0:2!s}: {1!s}({2!s}) needs {3!s} seconds to'
+              .format(id, get_obj_name(object), object, prod_line[2]))
         _output_helper_prodlines('consume', consumption)
         _output_helper_prodlines('produce', production)
 
 
 def print_res():
-    print 'Resources' + '\n' + '{0:2!s}: {1:<15!s} {2:5!s} {3:10!s} {4:19!s}'.format(
-        'id', 'resource',
-        'value', 'tradeable', 'shown_in_inventory')
+    print('Resources' + '\n' + '{0:2!s}: {1:<15!s} {2:5!s} {3:10!s} {4:19!s}'
+          .format('id', 'resource', 'value',
+                  'tradeable', 'shown_in_inventory'))
     print '=' * 56
     for id, name, value, trade, inventory in db(
             "SELECT id, name, value, tradeable, "
             "shown_in_inventory FROM resource"):
-        print "{0:2!s}: {1:<16!s} {2:4!s} {3:6!s} {4:13!s} ".format(id, name[0:16], value or '-',
-                                            trade or '-', inventory or '-')
+        print "{0:2!s}: {1:<16!s} {2:4!s} {3:6!s} {4:13!s} ".format(
+            id, name[0:16], value or '-', trade or '-', inventory or '-')
 
 
 def print_building():
-    print 'Buildings' + '\n' + 'Running costs scheme:'
-    print '=' * 2 + 'Running===Paused' + '=' * 2
+    print('Buildings' + '\n' + 'Running costs scheme:')
+    print('=' * 2 + 'Running===Paused' + '=' * 2)
     for (cost, cost_inactive) in [('0-10', 0), ('11-24', 5),
                                   ('25-40', 10), ('>40', 15)]:
-        print "   {0:5!s} :   {1:2!s}".format(cost or '--', cost_inactive or '--')
-    print '\n' + '=' * 23 + 'R===P' + '=' * 50
+        print("   {0:5!s} :   {1:2!s}".format(cost or '--',
+                                              cost_inactive or '--'))
+    print('\n' + '=' * 23 + 'R===P' + '=' * 50)
     for b in Entities.buildings.itervalues():
-        print "{0:2!s}: {1:<16!s} {2:3!s} / {3:2!s} {4:5!s}x{5:1!s} {6:4!s}   {7!s}".format(b.id, b.name, b.running_costs or '--',
-             b.running_costs_inactive or '--',
-             b.size[0], b.size[1], b.radius, b.baseclass)
+        print("{0:2!s}: {1:<16!s} {2:3!s} / {3:2!s} {4:5!s}x{5:1!s} {6:4!s}"
+              "   {7!s}".format(b.id, b.name, b.running_costs or '--',
+                                b.running_costs_inactive or '--',
+                                b.size[0], b.size[1], b.radius, b.baseclass))
 
 
 def print_unit():
@@ -212,7 +216,9 @@ def print_storage():
             continue
         print '{0!s}({1:d}) can store:'.format(b.name, b.id)
         for res, amount in stor.values()[0].values()[0].iteritems():
-            print "\t{0:2!s} tons of {1!s}({2!s})".format(amount, get_res_name(res), res)
+            print "\t{0:2!s} tons of {1!s}({2!s})".format(amount,
+                                                          get_res_name(res),
+                                                          res)
 
     print "\nAll others can store 30 tons of each res."
     # TODO show buildings with default storage here
@@ -228,8 +234,8 @@ def print_collectors():
                 if 'collect' not in name.lower():
                     continue
                 for id, amount in data.get('collectors').iteritems():
-                    print "{0:2!s}: {1:<18!s} {2!s} {3!s} ({4!s})".format(b.id, b.name, amount,
-                                                     get_obj_name(id), id)
+                    print "{0:2!s}: {1:<18!s} {2!s} {3!s} ({4!s})".format(
+                        b.id, b.name, amount, get_obj_name(id), id)
 
 
 def print_building_costs():
@@ -257,10 +263,11 @@ def print_collector_restrictions():
             for name, data in comp.iteritems():
                 if 'restricted' not in name.lower():
                     continue
-                print '{0!s}({1!s}) is restricted to:'.format(u.class_name, u.id)
+                print '{0!s}({1!s}) is restricted to:'.format(u.class_name,
+                                                              u.id)
                 for building in data.get('allowed'):
-                    print '\t{0!s}({1!s})'.format(building_name_mapping[building],
-                                        building)
+                    print '\t{0!s}({1!s})'.format(
+                        building_name_mapping[building], building)
 
 
 def print_tier_data():
@@ -268,29 +275,32 @@ def print_tier_data():
     return
     upgrade_tiers = xrange(1, TIER.CURRENT_MAX + 1)
     print '{0:15!s} {1!s} {2!s}  {3!s}'.format('tier', 'max_inh', 'base_tax',
-                              'upgrade_prod_line')
+                                               'upgrade_prod_line')
     print '=' * 64
     for inc, name, inh, tax in db('SELECT level, name, inhabitants_max,'
                                   ' tax_income FROM tier'):
-        str = '{0:3!s} {1:11!s} {2:5!s}    {3:4!s}'.format((inc + 1), name, inh, tax)
+        str = '{0:3!s} {1:11!s} {2:5!s}    {3:4!s}'.format((inc + 1), name,
+                                                           inh, tax)
         if inc + 1 in upgrade_tiers:
             line = db("SELECT production_line FROM upgrade_material WHERE"
                       " level = ?", inc + 1)[0][0]
             str += 5 * ' ' + '{0:2!s}: '.format(line)
             (consumption, _) = get_prod_line(line, list)
             for (res, amount) in consumption:
-                str += '{0:d} {1!s}({2!s}), '.format(-amount, get_res_name(res), res)
+                str += '{0:d} {1!s}({2!s}), '.format(-amount,
+                                                     get_res_name(res), res)
         print str
 
 
 def print_colors():
-    print('Colors' + '\n' + '{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  {5:3!s}  #{6:6!s}'.format(
-        'id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   '))
-    print '=' * 45
+    print('Colors' + '\n' + '{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  '
+          '{5:3!s}  #{6:6!s}'.format('id', 'name', 'R ', 'G ', 'B ', 'A ',
+                                     'HEX   '))
+    print('=' * 45)
     for id_, name, R, G, B, alpha in db(
             "SELECT id, name, red, green, blue, alpha FROM colors"):
-        print('{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  {5:3!s}  #'.format(
-            id_, name, R, G, B, alpha) + 3 * '%02x' % (R, G, B))
+        print('{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  {5:3!s}  #'
+              .format(id_, name, R, G, B, alpha) + 3 * '%02x' % (R, G, B))
 
 
 def print_scenario_actions():
@@ -314,7 +324,8 @@ def print_names():
     for (table, type) in [('city', 'player'), ('city', 'pirate'),
                           ('ship', 'player'), ('ship', 'pirate'),
                           ('ship', 'fisher'), ('ship', 'trader')]:
-        sql = "SELECT name FROM {0!s}names WHERE for_{1!s} = 1".format(table, type)
+        sql = "SELECT name FROM {0!s}names WHERE for_{1!s} = 1".format(
+            table, type)
         names = db(sql)
         text += '\n' + "{0!s} {1!s} names".format(type, table) + '[list]\n'
         for name in map(lambda x: x[0], names):
