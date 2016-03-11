@@ -112,7 +112,6 @@ class _Tooltip(object):
 		# the tooltip will display, else it will disappear after 0.5 seconds
 		# The bug is caused by pychan not capturing the mouseExited event
 		if 10 < x and (self.width - 10) > x and 10 < y and (self.height - 10) > y:
-			print x
 			ExtScheduler().rem_all_classinst_calls(self)
 		else:
 			ExtScheduler().add_new_object(self.hide_tooltip, self, run_in=0.5, loops=-1)
@@ -126,7 +125,7 @@ class _Tooltip(object):
 			self.tooltip_shown = True
 
 	def show_tooltip(self):
-		self.label.max_width = self.MAX_LABEL_WIDTH
+
 		if not self.helptext:
 			return
 		if self.gui is None:
@@ -136,7 +135,7 @@ class _Tooltip(object):
 		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
 		# Remove the weird stuff before displaying text.
 		tooltip_text = self.icon_regexp.sub('', unicode(self.helptext))
-
+		self.label.max_width = self.MAX_LABEL_WIDTH
 		if buildmenu_icons:
 			self.populate_tooltip_icons(buildmenu_icons)
 		# enable Textwrapping
