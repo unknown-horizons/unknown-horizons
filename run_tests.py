@@ -25,68 +25,71 @@ import gettext
 import sys
 
 try:
-    import nose
+	import nose
 except ImportError:
-    print 'The nose package is needed to run the UH tests.'
-    sys.exit(1)
+	print('The nose package is needed to run the UH tests.')
+	sys.exit(1)
 
 try:
-    import mock
+	import mock
 except ImportError:
-    print 'The mock package is needed to run the UH tests.'
-    sys.exit(1)
+	print('The mock package is needed to run the UH tests.')
+	sys.exit(1)
 
 
 from horizons.ext.dummy import Dummy
 
 
 def mock_fife():
-    """
-    Using a custom import hook, we catch all imports of fife and provide a
-    dummy module.
-    """
-    class Importer(object):
+	"""
+	Using a custom import hook, we catch all imports of fife and provide a
+	dummy module.
+	"""
+	class Importer(object):
 
-        def find_module(self, fullname, path=None):
-            if fullname.startswith('fife'):
-                return self
+		def find_module(self, fullname, path=None):
+			if fullname.startswith('fife'):
+				return self
 
-            return None
+			return None
 
-        def load_module(self, name):
-            mod = sys.modules.setdefault(name, Dummy())
-            return mod
+		def load_module(self, name):
+			mod = sys.modules.setdefault(name, Dummy())
+			return mod
 
-    sys.meta_path = [Importer()]
+	sys.meta_path = [Importer()]
 
 
 def setup_horizons():
-    """
-    Get ready for testing.
-    """
+	"""
+	Get ready for testing.
+	"""
 
-    # This needs to run at first to avoid that other code gets a reference to
-    # the real fife module
-    mock_fife()
+	# This needs to run at first to avoid that other code gets a reference to
+	# the real fife module
+	mock_fife()
 
-    # set global reference to fife
-    import horizons.globals
-    import fife
-    horizons.globals.fife = fife.fife
+	# set global reference to fife
+	from horizons import globals
+	import fife
+	globals.fife = fife.fife
 
-    from run_uh import create_user_dirs
-    create_user_dirs()
+	from run_uh import create_user_dirs
+	create_user_dirs()
 
-    import horizons.i18n
-    horizons.i18n.change_language()
+	import horizons.i18n
+	horizons.i18n.change_language()
 
 
 if __name__ == '__main__':
-    gettext.install('', unicode=True)  # no translations here
+	kwargs = {}
+	if sys.version_info < (3,):
+		kwargs['unicode'] = True
+	gettext.install('', **kwargs)  # no translations here
 
-    setup_horizons()
+	setup_horizons()
 
-    from tests.gui import GuiTestPlugin
-    from tests.utils import ReRunInfoPlugin
-    nose.run(defaultTest='tests', addplugins=[GuiTestPlugin(),
-                                              ReRunInfoPlugin()])
+	from tests.gui import GuiTestPlugin
+	from tests.utils import ReRunInfoPlugin
+	nose.run(defaultTest='tests', addplugins=[GuiTestPlugin(),
+											  ReRunInfoPlugin()])
