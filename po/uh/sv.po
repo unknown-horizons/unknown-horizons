@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-03-13 21:22+0000\n"
+"PO-Revision-Date: 2016-03-13 21:44+0000\n"
 "Last-Translator: Emil Hemdal <emil.hemdal.em@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
@@ -1642,18 +1642,21 @@ msgid ""
 msgstr "Du kan öka lyckan hos dina invånare genom att sänka skatterna."
 
 #: horizons/gui/modules/loadingscreen.py:71
+#, fuzzy
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Bygg brandstationer och sjukhus för att skydda dina invånare ifrån eldsvådor "
+"och sjukdomar."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Bygg förvaringstält för att utöka lagringskapaciteten."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Säkerställ att alla hus är inom räckhåll till en marknadsplats."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
@@ -1664,24 +1667,24 @@ msgstr "Tryck 'T' för att göra träd transparenta."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Blandade"
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Startar spelmotorn…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "Fångar fisk…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Ritar användargränssnitt…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "Aktiverar timers…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
@@ -1689,27 +1692,27 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Formar öar…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Förbereder ritningar…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Fyller världen med vatten…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "Uppföder djur…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Övertalar AI:n…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Gräver ner skatter…"
 
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Unable to find pyenet"
@@ -1781,10 +1784,10 @@ msgstr "Namn: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:212
 #: horizons/gui/modules/multiplayermenu.py:470
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Creator: {game_creator}"
 msgid "Creator: {game_creator}"
-msgstr "Skapare: {player}"
+msgstr "Skapare: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/gui/modules/multiplayermenu.py:471
@@ -1827,17 +1830,16 @@ msgstr "Rekommenderat antal spelare: {number}"
 #: horizons/gui/modules/multiplayermenu.py:404
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr ""
+msgstr "Redo"
 
 #: horizons/gui/modules/multiplayermenu.py:406
 msgid "Not ready"
-msgstr ""
+msgstr "Inte redo"
 
 #: horizons/gui/modules/multiplayermenu.py:441
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Skriv ditt meddelande:"
+msgstr "Skriv ditt meddelande"
 
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
@@ -1855,10 +1857,10 @@ msgid "{player} has joined the game"
 msgstr "{player} har gått med i spelet"
 
 #: horizons/gui/modules/multiplayermenu.py:585
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "{player} has left the game"
 msgid "{player} has left the game"
-msgstr "{spelare} har lämnat spelet"
+msgstr "{player} har lämnat spelet"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 msgid "You are now ready"
@@ -1935,14 +1937,14 @@ msgid "Please enter a valid filename."
 msgstr "Ange ett giltigt filnamn."
 
 #: horizons/gui/modules/select_savegame.py:161
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Det finns redan ett sparat spel med namnet '{name}'."
+msgstr "Det finns redan ett sparat spel med namnet {name}."
 
 #: horizons/gui/modules/select_savegame.py:163
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Det finns redan ett sparat spel med namnet '{name}'."
+msgstr "Det finns redan en karta med namnet '{name}'."
 
 # Translated "would you like to save anyway?"
 #: horizons/gui/modules/select_savegame.py:165
@@ -1972,9 +1974,8 @@ msgid "Savegame version {version}"
 msgstr "Sparad version: {version}"
 
 #: horizons/gui/modules/select_savegame.py:250
-#, fuzzy
 msgid "(probably incompatible)"
-msgstr "(eventuellt okompatibel)"
+msgstr "(eventuellt inkompatibel)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -2009,16 +2010,15 @@ msgstr "Misslyckades att radera sparat spel!"
 
 #: horizons/gui/modules/settings.py:55 horizons/gui/modules/settings.py:118
 msgid "Hotkeys"
-msgstr ""
+msgstr "Kortkommandon"
 
 #: horizons/gui/modules/settings.py:56
-#, fuzzy
 msgid "Game"
-msgstr "Avsluta spel"
+msgstr "Spel"
 
 #: horizons/gui/modules/settings.py:76
 msgid "Disabled"
-msgstr ""
+msgstr "Avstängd"
 
 #: horizons/gui/modules/settings.py:130
 msgid "Restart required"
@@ -2150,31 +2150,32 @@ msgstr "Bygg {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Tryck H för att ta bort detta tips"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Förstör byggnad"
+msgstr "Förstör alla byggnader"
 
 #: horizons/gui/mousetools/tearingtool.py:113
+#, fuzzy
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Detta kommer att förstöra alla byggnader som kommer utanför kolonins område."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ytterligare byggnad kommer att förstöras."
+msgstr[1] "%s ytterligare byggnader kommer att förstöras"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (plats i kön: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:193
 msgid "Boat builder overview"
@@ -2214,11 +2215,11 @@ msgstr "Översikt"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr ""
+msgstr "Bygg relaterade byggnader"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Tryck på en av resursplatserna för att lägga ett handelserbjudande."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2235,6 +2236,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"Kommer att köpa {resource_name} för {price} guld/t när mindre än {limit}t "
+"finns i lager."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2242,6 +2245,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"Kommer att sälja {resource_name} för {price} guld/t när mer än {limit}t "
+"finns tillgängligt."
 
 # Mellanslag, bindesstreck eller utan genitiv?
 #: horizons/gui/tabs/enemybuildingtabs.py:39
