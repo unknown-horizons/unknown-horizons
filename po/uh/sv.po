@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-03-13 22:11+0000\n"
+"PO-Revision-Date: 2016-03-13 22:14+0000\n"
 "Last-Translator: Emil Hemdal <emil.hemdal.em@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
@@ -3173,7 +3173,7 @@ msgstr "Försiktighet"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:496
 msgid "Residential"
-msgstr ""
+msgstr "Bostäder"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:498
@@ -3183,7 +3183,7 @@ msgstr "Hav"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:504
 msgid "Wood"
-msgstr ""
+msgstr "Ved"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:506
@@ -3191,7 +3191,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:510
 #: horizons/i18n/objecttranslations.py:512
 msgid "Workshops"
-msgstr ""
+msgstr "Verkstäder"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:514
@@ -3201,7 +3201,7 @@ msgstr "Mina bosättningar"
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:520
 msgid "Agriculture"
-msgstr ""
+msgstr "Jordbruk"
 
 #: horizons/main.py:397
 msgid "Failed to start/load the game"
@@ -3237,14 +3237,17 @@ msgstr "Loggarna är skrivna till {directory}."
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:175
+#, fuzzy
 msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"Spelet har hamnat i ofas. Detta indikerar ett okänt intern problem, spelet "
+"kan inte fortsätta."
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "Vi beklagar och hoppas att ha fixat denna bug i framtida versioner."
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
