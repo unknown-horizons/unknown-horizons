@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-22 00:56+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2016-03-13 21:22+0000\n"
+"Last-Translator: Emil Hemdal <emil.hemdal.em@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.5\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -314,10 +314,9 @@ msgid "Capacity utilization"
 msgstr "Kapacitetsanvändning"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Tryck för att ändra namnet på fartyget"
+msgstr "Tryck för att ändra namnet på denna marktrupp"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -508,10 +507,9 @@ msgid "Configure trading route"
 msgstr "Konfigurera handelsrutt"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(förlora alla resurser)"
+msgstr "Ta bort alla resurser"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1249,9 +1247,8 @@ msgstr ""
 "mushjulets funktion att zooma vid nuvarande position."
 
 #: content/gui/xml/mainmenu/settings.xml:91
-#, fuzzy
 msgid "Middle mouse button pan:"
-msgstr "Flytta kartan med mushjulet:"
+msgstr "Mellersta musknappspanorering:"
 
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "When enabled, dragging the middle mouse button will pan the camera"
@@ -1347,12 +1344,11 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Högre värden minskar rullningen."
 
 #: content/gui/xml/mainmenu/settings.xml:193
-#, fuzzy
 msgid "Scroll delay:"
-msgstr "Flytta vyn nedåt"
+msgstr "Skrollningsfördröjning:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
@@ -1360,7 +1356,7 @@ msgstr "Välj en bana:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Vad för slags citat att visa när spelet laddas"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
@@ -1368,25 +1364,25 @@ msgstr "Nätverk"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Om satt till 0, använd routerns standardval"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
 msgstr "Nätverksport:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
+#, fuzzy
 msgid "Discard current changes"
-msgstr ""
+msgstr "Ta bort nuvarande ändringar"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
 msgstr "Återställ till standardinställningar"
 
 #: content/gui/xml/mainmenu/settings.xml:237
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Spara spel"
+msgstr "Spara ändringar"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1394,7 +1390,7 @@ msgstr "Dina sparade spel:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "Lösenord för spelet. Krävs för att gå med i spelet"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Cancel"
@@ -1426,7 +1422,6 @@ msgid "Random map"
 msgstr "Slumpmässig karta"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
-#, fuzzy
 msgid "Free play"
 msgstr "Fritt spel"
 
@@ -1572,16 +1567,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Kan inte göra diplomati eftersom det inte finns några andra spelare."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Är du säker att du vill avbryta den pågående sessionen?"
+msgstr "Är du säker att du vill ta bort dessa objekt?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Ta bort inmatning"
+msgstr "Ta bort"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1590,17 +1583,18 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} rutor"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
+#, fuzzy
 msgid "Press key…"
-msgstr ""
+msgstr "Tryck på knapp…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} är redan satt för {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Vill du skriva över den?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:148
@@ -1610,15 +1604,15 @@ msgstr "Bekräftelse för att skriva över"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "Citat"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Speltips"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Tryck 'ESC' för att komma åt spelmenyn."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
@@ -1626,26 +1620,26 @@ msgstr "Håll ner för att placera flera byggnader."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Just nu är bara {tier} nivåerna spelbara."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Du kan pausa spelet med 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Du kan dra vägar genom att hålla ner vänster musknapp."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Du kan bygga flera vägar genom att hålla ner 'SHIFT' knappen."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "Du kan öka lyckan hos dina invånare genom att sänka skatterna."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
