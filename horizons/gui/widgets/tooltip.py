@@ -20,26 +20,28 @@
 # ###################################################
 
 import re
-
+import textwrap
 
 from fife import fife
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 import horizons.globals
 
-from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
+from horizons.messaging import HoverInstancesChanged
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
-	LABEL_LEFT_RIGHT_MARGIN = 10
+	LABEL_LEFT_MARGIN = 7
+	LABEL_RIGHT_MARGIN = 7
 	# Left and right margin for the tooltips text, otherwise the text is over the border of the icon
 	LABEL_TOP_BOTTOM_MARGIN = 5
 	# Top and bottom margin for the tooltips text, otherwise the text is over the border of the icon
 	MAX_LABEL_WIDTH = 145  # Width of the tooltip text before the text wraps
+	MAX_BG_WIDTH = 0
 	# Find and replace horribly complicated elements that allow simple icons.
 	icon_regexp = re.compile(r'\[\[Buildmenu((?: \d+\:\d+)+)\]\]')
 
@@ -67,9 +69,10 @@ class _Tooltip(object):
 
 	def __init_gui(self):
 		self.gui = AutoResizeContainer()
-		self.label = Label(position=(self.LABEL_LEFT_RIGHT_MARGIN, self.LABEL_TOP_BOTTOM_MARGIN))
+		self.label = Label(position=(self.LABEL_LEFT_MARGIN, self.LABEL_TOP_BOTTOM_MARGIN))
 		self.bg = TooltipBG()
 		self.gui.addChildren(self.bg, self.label)
+		self.populate_tooltip()
 
 	def position_tooltip(self, event):
 		if not self.helptext:
@@ -85,7 +88,6 @@ class _Tooltip(object):
 		else:
 			if where.getButton() == fife.MouseEvent.MIDDLE:
 				return
-
 			x, y = where.getX(), where.getY()
 
 		if self.gui is None:
@@ -99,81 +101,98 @@ class _Tooltip(object):
 		# by setting the top container's position to 0, 0.
 		# Since this position is currently unused, it can serve as invalid flag,
 		# and dropping these events seems to lead to the desired placements
-		def get_top(w):
-			return get_top(w.parent) if w.parent else w
-		top_pos = get_top(self).position
-		if top_pos == (0, 0):
-			return
+		# def get_top(w):
+		# 	return get_top(w.parent) if w.parent else w
+		# top_pos = get_top(self).position
+		# if top_pos == (0, 0):
+		# 	return
 
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + y + 5
 		offset = x + 10
-		# Hack to fix the problem with persistent tooltips. When the mouse is in the center of the button,
-		# the tooltip will display, else it will disappear after 0.5 seconds
-		# The bug is caused by pychan not capturing the mouseExited event
-		if 10 < x and (self.width - 10) > x and 10 < y and (self.height - 10) > y:
-			ExtScheduler().rem_all_classinst_calls(self)
-		else:
-			ExtScheduler().add_new_object(self.hide_tooltip, self, run_in=0.5, loops=-1)
 
 		if (widget_position[0] + self.gui.size[0] + offset) > (screen_width / 2):
 			# right screen edge, position to the left of cursor instead
 			offset = x - self.gui.size[0] - 5
 		self.gui.x = widget_position[0] + offset
+
 		if not self.tooltip_shown:
 			self.show_tooltip()
-			self.tooltip_shown = True
 
 	def show_tooltip(self):
 
-		if not self.helptext:
-			return
 		if self.gui is None:
 			self.__init_gui()
+
+		self.gui.show()
+		self.tooltip_shown = True
+
+	def populate_tooltip(self):
+		"""This checks whether or not icons are to be shown and shows the if so.
+			This also sets the tooltips text.
+		"""
+		if not self.helptext:
+			return
 
 		# Specification looks like [[Buildmenu icon_index:amount (1:250 4:2 6:2)]]
 		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
 		# Remove the weird stuff before displaying text.
 		tooltip_text = self.icon_regexp.sub('', unicode(self.helptext))
 		self.label.max_width = self.MAX_LABEL_WIDTH
+
+
 		if buildmenu_icons:
-			self.populate_tooltip_icons(buildmenu_icons)
-		# enable Textwrapping
-		self.label.wrap_text = True
-		# Finish up the actual tooltip (text, background panel amount, layout).
-		# To display build menu icons, we need another empty (first) line.
+			hbox = HBox(position=(7, 5), padding=0)
+			for spec in buildmenu_icons[0].split():
+				(res_id, amount) = spec.split(':')
+				resource_amount_label = Label(text=amount+'  ')
+				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
+				# For compatibility with FIFE 0.3.5 and older, also set min/max.
+				icon.max_size = icon.min_size = (16, 16)
+				hbox.addChildren(icon, resource_amount_label)
+			hbox.adaptLayout()
+			if hbox.width >= self.MAX_LABEL_WIDTH:
+				#self.MAX_LABEL_WIDTH = hbox.width
+				self.wrap_tt_text(buildmenu_icons, tooltip_text)
+				self.MAX_BG_WIDTH = hbox.width
+			else:
+				self.wrap_tt_text(buildmenu_icons, tooltip_text)
+			self.gui.addChild(hbox)
 
-		self.label.text = bool(buildmenu_icons) * '\n' + tooltip_text
-		self.gui.adaptLayout()
+		else:
+			self.wrap_tt_text(buildmenu_icons, tooltip_text)
+
+		# For large tooltips the width of the label is off because we are not using a monospaced font
+		# so the margins have to be adapted. Since the label is already initialized, we have to check whether the
+		# tooltip is big, adapt the margins, hide and reshow the tooltip.
+		if self.label.width >= 100:
+			self.LABEL_LEFT_MARGIN = 12
+			self.LABEL_RIGHT_MARGIN = 12
+			self.label.position = self.LABEL_LEFT_MARGIN, self.LABEL_TOP_BOTTOM_MARGIN
+
 		# self.bg.amount should be renamed to self.bg.y_tile_amount or something similar.
-		# unfortunately there are several xml files that us amount and it would be a lot of work to fix is
+		# unfortunately there are several xml files that use amount and it would be a lot of work to fix this
 		self.bg.amount = ((self.label.height / 18) - 1)
-		# set the width of the icon to the textlabel width plus the margin
-		self.bg.x_width_amount = (self.label.width + self.LABEL_LEFT_RIGHT_MARGIN * 2)
-		self.gui.show()
+		# set the width of the icon
+		self.bg.x_width_amount = (self.MAX_BG_WIDTH + self.LABEL_LEFT_MARGIN + self.LABEL_RIGHT_MARGIN)
 
-		# add an event to constantly check whether the hovered widget is still there
-		# if this is no longer there, dismiss the tooltip widget
-		ExtScheduler().add_new_object(self.hide_tooltip, self, run_in=0.5, loops=-1)
-
-	def populate_tooltip_icons(self, buildmenu_icons):
-		hbox = HBox(position=(7, 5), padding=0)
-		for spec in buildmenu_icons[0].split():
-			(res_id, amount) = spec.split(':')
-			resource_amount_label = Label(text=amount+'  ')
-			icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
-			# For compatibility with FIFE 0.3.5 and older, also set min/max.
-			icon.max_size = icon.min_size = (16, 16)
-			hbox.addChildren(icon, resource_amount_label)
-		hbox.adaptLayout()
-		if hbox.width >= self.MAX_LABEL_WIDTH:
-			self.label.max_width = hbox.width + 9
-		return self.gui.addChild(hbox)
+		HoverInstancesChanged.subscribe(self.hide_tooltip)
 
 	def hide_tooltip(self, event=None):
 		if self.gui is not None:
+			self.tooltip_shown = False
 			self.gui.hide()
-		# tooltip is hidden, no need to check any more
-		ExtScheduler().rem_call(self, self.hide_tooltip)
-		self.topmost_widget = None
-		self.tooltip_shown = False
+
+	def wrap_tt_text(self, buildmenu_icons, text):
+		chars_per_line = 1
+		for i in range(0, text.__len__()):
+
+			if self.label.text.__sizeof__() < self.MAX_LABEL_WIDTH:
+				self.label.text += text[i]
+				chars_per_line += 1
+			self.gui.adaptLayout()
+		chars_per_line - 1
+		self.label.text = bool(buildmenu_icons) * '\n' + textwrap.fill(text, chars_per_line)
+		self.gui.adaptLayout()
+		self.MAX_BG_WIDTH = self.label.width
+
