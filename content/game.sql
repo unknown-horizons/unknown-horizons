@@ -279,8 +279,8 @@ INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    0);
 INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    0);
 INSERT INTO "resource" VALUES(53, 'cocoa beans',     2,     0,    1);
 INSERT INTO "resource" VALUES(54, 'cocoa',           2.5,   0,    0);
-INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    0); -- unused
-INSERT INTO "resource" VALUES(56, 'candles',        10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    1);
+INSERT INTO "resource" VALUES(56, 'candles',        10,     0,    1);
 INSERT INTO "resource" VALUES(57, 'vines',           2,     0,    1); 
 INSERT INTO "resource" VALUES(58, 'grapes',          2.5,   0,    1);
 INSERT INTO "resource" VALUES(59, 'alvearies',       2,     0,    1);
