@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-03-13 21:44+0000\n"
+"PO-Revision-Date: 2016-03-13 22:11+0000\n"
 "Last-Translator: Emil Hemdal <emil.hemdal.em@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
@@ -2254,10 +2254,9 @@ msgid "Warehouse overview"
 msgstr "Packhus översikt"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "Enhetsöversikt"
+msgstr "Marktruppsöverblick"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2273,7 +2272,7 @@ msgstr "Uppgradering inte möjlig:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:152
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Detta är den högst spelbara nivån just nu!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:198
 msgid "Don't allow upgrades"
@@ -2294,9 +2293,9 @@ msgid "Production overview"
 msgstr "Produktionsöversikt"
 
 #: horizons/gui/tabs/productiontabs.py:300
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Fyll serien med {how_many} träd"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2324,8 +2323,9 @@ msgid "Buy/Sell"
 msgstr "Köp/Sälj"
 
 #: horizons/gui/tabs/shiptabs.py:102
+#, fuzzy
 msgid "Too far from the nearest tradeable warehouse"
-msgstr ""
+msgstr "För långt bort från närmsta varuhus att handla med."
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
@@ -2346,27 +2346,27 @@ msgstr "Avbestycka vapen"
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} guld"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "köp för {buyprice} guld"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "sälj för {sellprice} guld"
 
 #: horizons/gui/widgets/inventory.py:171
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:173
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Gräns: {amount}t per plats"
 
 #: horizons/gui/widgets/logbook.py:49
 msgid "Logbook"
@@ -2407,7 +2407,7 @@ msgstr "Produktionsöversikt över {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "Tryck för att visa statistik"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
@@ -2425,10 +2425,13 @@ msgstr ""
 "Återställ denna bosättnings resurser till standardkonfigurationen du sparat."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
+#, fuzzy
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"Återställ standardkonfigurationen (vilket du ser här) till fabriksstandard "
+"för alla kolonier."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2464,13 +2467,13 @@ msgstr "Avlasta från fartyget"
 
 #: horizons/gui/widgets/routeconfig.py:380
 msgid "You are not allowed to trade with this player"
-msgstr ""
+msgstr "Du är inte tillåten att göra affärer med denna spelare"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
@@ -2479,7 +2482,7 @@ msgstr "ingen"
 #: horizons/gui/windows.py:411
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "Detaljer: {error_details}"
 
 #: horizons/gui/windows.py:413
 #, python-brace-format
@@ -2509,23 +2512,22 @@ msgstr "Rekryterar artillerienheter."
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "Blender"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Producerar kryddor utav kryddplantor."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
 msgid "Boat Builder"
-msgstr ""
+msgstr "Båtbyggare"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:79
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Bygger båtar och små fartyg. Placeras vid kusten."
+msgstr "Bygger båtar och mindre fartyg. Placeras vid kusten."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:84
@@ -2534,9 +2536,8 @@ msgstr "Tegelbruk"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:86
-#, fuzzy
 msgid "Turns clay into bricks."
-msgstr "Bränner lera till tegel."
+msgstr "Gör lera till tegel."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
@@ -2545,9 +2546,8 @@ msgstr "Slakteri"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Behöver grisar eller nötkreatur. Producerar föda."
+msgstr "Behöver grisar eller nötkreatur. Producerar mat."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
@@ -2556,8 +2556,9 @@ msgstr "Kolmila"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:100
+#, fuzzy
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Bränner en massa brädor."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
@@ -2582,7 +2583,6 @@ msgstr "Bränneri"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
-#, fuzzy
 msgid "Turns sugar into liquor."
 msgstr "Omvandlar socker till sprit."
 
@@ -2603,7 +2603,6 @@ msgstr "Gård"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
-#, fuzzy
 msgid "Grows field crops and raises livestock."
 msgstr "Odlar grödor och föder upp boskap."
 
@@ -2621,13 +2620,12 @@ msgstr ""
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Cattle Run"
-msgstr ""
+msgstr "Nötkreatursinhägnad"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:147
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Föder upp nötkreatur. Behöver en gård."
+msgstr "Föder upp nötkreatur. Behöver ett jordbruk."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:152
@@ -2646,9 +2644,8 @@ msgstr "Majsodling"
 
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:161
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Ger föda. Behöver en gård."
+msgstr "Ger majs. Behöver ett jordbruk."
 
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:166
@@ -2722,13 +2719,15 @@ msgstr "Producerar råtobak. Behöver en gård."
 
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:215
+#, fuzzy
 msgid "Vineyard"
-msgstr ""
+msgstr "Vingård"
 
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:217
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
+"Producerar vindruvor för användning i vin och sötsaker. Behöver ett jordbruk."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:222
@@ -2775,9 +2774,8 @@ msgstr "Utkiksplats"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 msgid "Expands settlement range."
-msgstr "Försvarar din bosättning."
+msgstr "Expanderar koloniområdet."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2807,10 +2805,9 @@ msgstr "Levererar varor till medborgarna."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Järngruva"
+msgstr "Gruva"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -2874,9 +2871,8 @@ msgstr "Smältverk"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:318
-#, fuzzy
 msgid "Refines all kind of ores."
-msgstr "Utvinner metaller ur malmer."
+msgstr "Förädlar all slags malm."
 
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:323
@@ -2885,23 +2881,25 @@ msgstr "Stenhuggare"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
+#, fuzzy
 msgid "Carver"
-msgstr ""
+msgstr "Stenhuggare"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
+#, fuzzy
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Hugger sten till stenblock."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
-msgstr ""
+msgstr "Stengrop"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:334
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Hämtar sten från ett berg."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
@@ -2918,7 +2916,8 @@ msgstr "Lagerhydda"
 #, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Utökar lagerkapaciteten och tillhandahåller samlare."
+msgstr ""
+"Utökar lagringskapaciteten och koloniområdet samt tillhandahåller samlare."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3033,30 +3032,26 @@ msgstr "Packhus"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Vapen"
+msgstr "Vapensmed"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Producerar verktyg av järn."
+msgstr "Producerar vapen utav järn."
 
 # Eg. Vävaretält. jämför weaver description. Byggnaden är inte ens ett tält, snarare en hydda.
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "Vävare"
+msgstr "Vävarhydda"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Väver lammull till tyg."
+msgstr "Gör lammull till tyg."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
@@ -3066,28 +3061,27 @@ msgstr "Väderkvarn"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Maler majs till mjöl."
 
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Vingård"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Producerar vin utav vindruvor."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:444
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Trätorn"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:446
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Försvarar din bosättning."
+msgstr "Försvarar din koloni."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3174,7 +3168,7 @@ msgstr "Pionjärer"
 #: horizons/i18n/objecttranslations.py:494
 #, fuzzy
 msgid "Precaution"
-msgstr "utbildning"
+msgstr "Försiktighet"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:496
