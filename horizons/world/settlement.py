@@ -216,8 +216,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.buildings_by_id[building.id].append(building)
 		else:
 			self.buildings_by_id[building.id] = [building]
-		if building.has_component(Producer) and not \
-		   building.has_component(ShipProducer) and not building.has_component(GroundUnitProducer):
+		if building.has_component(Producer):
 			finished = self.settlement_building_production_finished
 			building.get_component(Producer).add_production_finished_listener(finished)
 		if not load and not building.buildable_upon and self.buildability_cache:
