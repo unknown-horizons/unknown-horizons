@@ -554,7 +554,7 @@ class QueueProducer(Producer):
 
 class ShipProducer(QueueProducer):
 	"""Uses queues to produce naval units"""
-
+	NAME = "shipproducer"
 	production_class = UnitProduction
 
 	def get_unit_production_queue(self):
@@ -606,6 +606,8 @@ class ShipProducer(QueueProducer):
 
 class GroundUnitProducer(ShipProducer):
 	"""Uses queues to produce groundunits"""
+
+	NAME = "groundunitproducer"
 
 	def _place_unit(self, unit):
 		radius = 1
