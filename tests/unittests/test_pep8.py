@@ -30,7 +30,7 @@ class TestCodeFormat(unittest.TestCase):
 
 	def test_pep8_conformance(self):
 		"""Test that code conform to PEP8."""
-		pep8style = pep8.StyleGuide(quiet=False)
+		pep8style = pep8.StyleGuide(quiet=False, config_file='setup.cfg')
 		result = pep8style.check_files(
 			['run_tests.py',
 			 'run_server.py',
@@ -44,7 +44,7 @@ class TestCodeFormat(unittest.TestCase):
 
 	def test_pep8_dir_tests(self):
 		"""Test that code conform to PEP8. tests files"""
-		pep8style = pep8.StyleGuide(quiet=False)
+		pep8style = pep8.StyleGuide(quiet=False, config_file='setup.cfg')
 		result = pep8style.check_files(
 			['tests/__init__.py',
 			 'tests/utils.py',
@@ -85,7 +85,9 @@ class TestCodeFormat(unittest.TestCase):
 						'cmdlineoptions.py' in file or
 						'translations.py' in file):
 					check_files.append(os.path.join(root, file))
-		pep8style = pep8.StyleGuide(quiet=False)
+		pep8style = pep8.StyleGuide(quiet=False, config_file='setup.cfg')
+		# line long 87 but no fault 11111111111111111111111111111111111111111111111111
+		# E501 line too long (81 > 80 characters) but the line in 88 long 1111111111111
 		result = pep8style.check_files(check_files)
 		self.assertEqual(result.total_errors, 0,
 						 "Found code style errors (and warnings).")
