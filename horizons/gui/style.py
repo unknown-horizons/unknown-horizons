@@ -112,4 +112,13 @@ STYLES = {
             'font': 'headline',
         },
     },
+
+    'transparent': { # style for transparent widgets
+        'default': {
+            'background_color': Color(0, 0, 0, 0),
+        },
+        'ScrollArea': {
+            'background_color': Color(0, 0, 0, 0),
+        },
+},
 }

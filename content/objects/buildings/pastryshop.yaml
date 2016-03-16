@@ -52,7 +52,9 @@ components:
       SlotsStorage:
         slot_sizes: {RES.SUGAR: 6, RES.COCOA: 6, RES.CONFECTIONERY: 6,
                      RES.CANDLES: 6, RES.GRAPES: 6, RES.HONEYCOMBS: 6}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.CITIZENS:
-    #as_pastryshop0:
-    as_2x2:
+    as_pastryshop0:
