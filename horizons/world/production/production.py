@@ -471,8 +471,8 @@ class Production(ChangeListener):
 
     def __str__(self):  # debug
         if hasattr(self, "_state"):
-            return 'Production(state={0!s};prodline={1!s})'.format(self._state,
-                                                         self._prod_line)
+            return 'Production(state={0!s};prodline={1!s})'.format(
+                self._state, self._prod_line)
         else:
             return "UninitializedProduction()"
 

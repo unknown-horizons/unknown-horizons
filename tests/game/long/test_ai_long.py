@@ -31,10 +31,10 @@ def test_ai_long():
 
 def run_ai_long(seed):
     @game_test(mapgen=partial(generate_map_from_seed, seed),
-               human_player=False, ai_players=2, timeout=60*60)
+               human_player=False, ai_players=2, timeout=60 * 60)
     def test(session, _):
         """Let 2 AI players play for 40 minutes."""
-        session.run(seconds=40*60)
+        session.run(seconds=40 * 60)
         assert session.world.settlements
 
     test()

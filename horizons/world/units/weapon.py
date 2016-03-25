@@ -181,9 +181,8 @@ class Weapon(object):
                 ticks, weapon_id, damage, dest_x, dest_y)
 
     def __str__(self):
-        return "Weapon(id:{0!s};type:{1!s};rang:{2!s})".format(self.weapon_id,
-                                                  self.weapon_type,
-                                                  self.weapon_range)
+        return "Weapon(id:{0!s};type:{1!s};rang:{2!s})".format(
+            self.weapon_id, self.weapon_type, self.weapon_range)
 
 
 class SetStackableWeaponNumberError(Exception):

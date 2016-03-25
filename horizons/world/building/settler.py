@@ -480,9 +480,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
     def __str__(self):
         try:
-            return "{0!s}(l:{1!s};ihab:{2!s};hap:{3!s})".format(super(Settler, self).__str__(),
-                                                self.level, self.inhabitants,
-                                                self.happiness)
+            return "{0!s}(l:{1!s};ihab:{2!s};hap:{3!s})".format(
+                super(Settler, self).__str__(), self.level, self.inhabitants,
+                self.happiness)
         except AttributeError:  # an attribute hasn't been set up
             return super(Settler, self).__str__()
 

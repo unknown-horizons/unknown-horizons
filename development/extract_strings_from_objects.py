@@ -102,11 +102,11 @@ locations_to_translate = [
     OBJECT_PATH + 'buildings/',
     OBJECT_PATH + 'units/ships/',
     OBJECT_PATH + 'gui_buildmenu/',
-    ]
+]
 
 files_to_skip = [
     'usablefisher.yaml',
-    ]
+]
 
 import os
 import sys
@@ -192,7 +192,7 @@ def content_from_file(filename):
 
     if strings:
         return ('\n\t"{0!s}" : {{'.format(filename)) + \
-               (ROWINDENT + '{0!s},'.format((','+ROWINDENT)
+               (ROWINDENT + '{0!s},'.format((',' + ROWINDENT)
                 .join(strings))) + ROWINDENT + '},'
     else:
         return ''

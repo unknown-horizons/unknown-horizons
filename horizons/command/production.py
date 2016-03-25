@@ -36,7 +36,8 @@ class ToggleActive(GenericComponentCommand):
         if self._production is not None:
             production = obj._get_production(self._production)
             assert production is not None,\
-                "{0!s} does not have a production {1!s}".format(obj, self._production)
+                "{0!s} does not have a production {1!s}".format(
+                    obj, self._production)
         else:
             production = None
 

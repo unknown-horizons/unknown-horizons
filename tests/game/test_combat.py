@@ -40,7 +40,7 @@ def setup_combat(s, ship):
     worldid = 10000000
 
     p0 = Player(s, worldid, "p1", Color[1])
-    p1 = Player(s, worldid+1, "p2", Color[2])
+    p1 = Player(s, worldid + 1, "p2", Color[2])
 
     for p in (p0, p1):
         p.initialize(None)
@@ -95,8 +95,8 @@ def test_equip(s, p):
     raise SkipTest()
 
     assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, (
-            "This test only makes sense with default cannons."
-            " Adapt this if you don't want default cannons.")
+        "This test only makes sense with default cannons."
+        " Adapt this if you don't want default cannons.")
 
     (p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 

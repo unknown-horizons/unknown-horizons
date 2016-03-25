@@ -220,14 +220,14 @@ class BuildTab(TabInterface):
                     # out of 4x4 bounds
                     err = "Invalid entry '{0!s}': column {1!s} does not exist.".format(
                         entry, column + 1)
-                    err += " Max. column amount in current layout is {0!s}.".format( \
+                    err += " Max. column amount in current layout is {0!s}.".format(
                            self.MAX_COLS)
                     raise InvalidBuildMenuFileFormat(err)
                 elif row_num > self.MAX_ROWS:
                     # out of 4x4 bounds
                     err = "Invalid entry '{0!s}': row {1!s} does not exist.".format(
                         entry, row_num)
-                    err += " Max. row amount in current layout is {0!s}.".format( \
+                    err += " Max. row amount in current layout is {0!s}.".format(
                            self.MAX_ROWS)
                     raise InvalidBuildMenuFileFormat(err)
                 elif isinstance(entry, basestring):
@@ -349,7 +349,8 @@ class BuildTab(TabInterface):
                                unlocking_strategy, source)
                 tabs.append(tab)
             except Exception as e:
-                to_add = "\nThis error happened in {0!s} of {1!s} .".format(tab, source)
+                to_add = "\nThis error happened in {0!s} of {1!s} .".format(
+                    tab, source)
                 e.args = (e.args[0] + to_add,) + e.args[1:]
                 e.message = (e.message + to_add)
                 raise

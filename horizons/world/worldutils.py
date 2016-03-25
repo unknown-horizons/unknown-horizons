@@ -96,8 +96,8 @@ def save_map(world, path, prefix):
     read_savegame_template(db)
     db('BEGIN')
     for island in world.islands:
-        island_name = '{0!s}_island_{1:d}_{2:d}.sqlite'.format(prefix, island.origin.x,
-                                                  island.origin.y)
+        island_name = '{0!s}_island_{1:d}_{2:d}.sqlite'.format(
+            prefix, island.origin.x, island.origin.y)
         island_db_path = os.path.join(path, island_name)
         if os.path.exists(island_db_path):
             os.unlink(island_db_path)

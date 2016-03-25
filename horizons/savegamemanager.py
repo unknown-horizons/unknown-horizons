@@ -225,10 +225,12 @@ class SavegameManager(object):
                 os.unlink(filename)
 
         if autosaves:
-            tmp_del("{0!s}/*.{1!s}".format(cls.autosave_dir, cls.savegame_extension),
+            tmp_del("{0!s}/*.{1!s}".format(cls.autosave_dir,
+                                           cls.savegame_extension),
                     horizons.globals.fife.get_uh_setting("AutosaveMaxCount"))
         if quicksaves:
-            tmp_del("{0!s}/*.{1!s}".format(cls.quicksave_dir, cls.savegame_extension),
+            tmp_del("{0!s}/*.{1!s}".format(cls.quicksave_dir,
+                                           cls.savegame_extension),
                     horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
 
     @classmethod

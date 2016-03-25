@@ -293,4 +293,4 @@ class WildAnimal(CollectorAnimal, Collector):
 
     def __str__(self):
         return "{0!s}(health={1!s})".format(super(WildAnimal, self).__str__(),
-                                  getattr(self, 'health', None))
+                                            getattr(self, 'health', None))

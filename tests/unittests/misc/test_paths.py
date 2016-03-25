@@ -45,7 +45,7 @@ class TestPaths(TestCase):
         outer = tempfile.mkdtemp(self.__class__.odd_characters)
         inner = unicode(os.path.join(outer, self.__class__.odd_characters))
         inner2 = unicode(os.path.join(outer,
-                                      self.__class__.odd_characters+u"2"))
+                                      self.__class__.odd_characters + u"2"))
 
         PATHS.USER_DIR = inner
 

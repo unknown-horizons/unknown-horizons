@@ -121,8 +121,8 @@ class InternationalTrade(ShipMission):
             Callback(self._reached_my_settlement),
             Callback(self._move_to_my_settlement),
             'Unable to move to my settlement ({0!s})'.format(
-            self.settlement_manager.settlement.get_component
-            (NamedComponent).name))
+                self.settlement_manager.settlement
+                .get_component(NamedComponent).name))
 
     def _get_max_sellable_amount(self, available_amount):
         if self.sold_resource not in self.settlement.get_component(
@@ -236,12 +236,14 @@ class InternationalTrade(ShipMission):
             self.settlement_manager.settlement.warehouse.position,
             Callback(self._returned_to_my_settlement),
             Callback(self._return_to_my_settlement),
-            'Unable to return to {0!s}'.format(self.settlement_manager.settlement.
-            get_component(NamedComponent).name))
+            'Unable to return to {0!s}'.format(
+                self.settlement_manager.settlement
+                .get_component(NamedComponent).name))
 
     def _returned_to_my_settlement(self):
         self._unload_all_resources(self.settlement_manager.settlement)
-        self.report_success('Unloaded the bought resources at {0!s}'.format(self.settlement_manager.settlement.get_component(
-                                NamedComponent).name))
+        self.report_success('Unloaded the bought resources at {0!s}'.format(
+            self.settlement_manager.settlement.get_component(
+                NamedComponent).name))
 
 decorators.bind_all(InternationalTrade)

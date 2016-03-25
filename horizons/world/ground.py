@@ -59,8 +59,10 @@ class SurfaceTile(object):
         fife.InstanceVisual.create(self._instance)
 
     def __str__(self):
-        return "SurfaceTile(id={0!s}, shape={1!s}, x={2!s}, y={3!s}, water={4!s}, obj={5!s})".format(self.id, self.shape, self.x, self.y, self.is_water,
-                self.object)
+        return "SurfaceTile(id={0!s}, shape={1!s}, x={2!s}, y={3!s}, " \
+               "water={4!s}, obj={5!s})".format(
+                   self.id, self.shape, self.x, self.y, self.is_water,
+                   self.object)
 
     def act(self, rotation):
         self._instance.setRotation(rotation)

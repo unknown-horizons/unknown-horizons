@@ -101,6 +101,7 @@ class GenericComponentCommand(Command):
         return WorldObject.get_object_by_id(self.obj_id)
 
     def __str__(self):
-        return "GenericCompCommand({0!s}, {1!s}, {2!s}, {3!s}, {4!s}, {5!s})".format(
-            self.__class__, self._get_object(),
-            self.component_name, self.method, self.args, self.kwargs)
+        return "GenericCompCommand({0!s}, {1!s}, {2!s}, {3!s}, {4!s}, " \
+               "{5!s})".format(self.__class__, self._get_object(),
+                               self.component_name, self.method,
+                               self.args, self.kwargs)

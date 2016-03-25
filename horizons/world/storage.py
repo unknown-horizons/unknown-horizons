@@ -132,7 +132,7 @@ class GenericStorage(ChangeListener):
 
     def __str__(self):
         return "{0!s}({1!s})".format(self.__class__, self._storage if
-                           hasattr(self, "_storage") else None)
+                                     hasattr(self, "_storage") else None)
 
 
 class SpecializedStorage(GenericStorage):

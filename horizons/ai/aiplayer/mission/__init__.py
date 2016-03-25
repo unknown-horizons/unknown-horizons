@@ -139,7 +139,7 @@ class ShipMission(Mission):
     def __str__(self):
         return super(ShipMission, self).__str__() + (
             ' using {0!s}'.format((self.ship if hasattr(self, 'ship') else
-                           'unknown ship')))
+                                  'unknown ship')))
 
 decorators.bind_all(Mission)
 decorators.bind_all(ShipMission)

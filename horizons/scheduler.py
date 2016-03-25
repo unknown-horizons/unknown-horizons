@@ -252,7 +252,8 @@ class Scheduler(LivingObject):
                 if obj.callback == callback:
                     del self.calls_by_instance[instance][i]
                     test += 1
-            assert test == removed_calls, "{0!s}, {1!s}".format(test, removed_calls)
+            assert test == removed_calls, "{0!s}, {1!s}".format(
+                test, removed_calls)
             if not self.calls_by_instance[instance]:
                 del self.calls_by_instance[instance]
 
@@ -289,7 +290,8 @@ class Scheduler(LivingObject):
         @return int or possbile None if not assert_present"""
         calls = self.get_classinst_calls(instance, callback)
         if assert_present:
-            assert len(calls) == 1, 'got {0:d} calls for {1!s} {2!s}: {3!s}'.format(
+            assert len(calls) == 1, \
+                'got {0:d} calls for {1!s} {2!s}: {3!s}'.format(
                 len(calls), instance, callback, [str(i) for i in calls])
             return calls.itervalues().next()
         else:

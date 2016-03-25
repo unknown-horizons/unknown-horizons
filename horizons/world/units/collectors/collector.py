@@ -76,7 +76,7 @@ class Collector(Unit):
         # TODO: merge no_job_waiting with idle
         'decommissioned',
         # fisher ship: When home building got demolished. No more collecting.
-                  )
+    )
 
     # INIT/DESTRUCT
 
@@ -387,7 +387,8 @@ class Collector(Unit):
         """Pretends that the collector works by waiting some time.
         finish_working is called after that time."""
         self.log.debug("%s begins working", self)
-        assert self.job is not None, '{0!s} job is None in begin_working'.format(self)
+        assert self.job is not None,\
+            '{0!s} job is None in begin_working'.format(self)
         Scheduler().add_new_object(self.finish_working, self,
                                    self.work_duration)
         # play working sound
@@ -505,7 +506,8 @@ class Collector(Unit):
 
     def __str__(self):
         try:
-            return super(Collector, self).__str__() + "(state={0!s})".format(self.state)
+            return super(Collector, self).__str__() + "(state={0!s})".format(
+                self.state)
         except AttributeError:  # state has not been set
             return super(Collector, self).__str__()
 

@@ -35,7 +35,8 @@ def fork():
         if pid > 0:
             sys.exit(0)
     except OSError as e:
-        sys.stderr.write("Unable to fork: ({0:d}) {1!s}\n".format(e.errno, e.strerror))
+        sys.stderr.write("Unable to fork: ({0:d}) {1!s}\n".format(
+            e.errno, e.strerror))
         sys.exit(1)
 
     os.umask(0)
@@ -47,7 +48,8 @@ def fork():
         if pid > 0:
             sys.exit(0)
     except OSError as e:
-        sys.stderr.write("Unable to fork: ({0:d}) {1!s}\n".format(e.errno, e.strerror))
+        sys.stderr.write("Unable to fork: ({0:d}) {1!s}\n".format(
+            e.errno, e.strerror))
         sys.exit(1)
     return os.getpid()
 
@@ -113,7 +115,8 @@ if host is None or port is None or port <= 0:
     sys.exit(1)
 
 if pidfile and os.path.isfile(pidfile):
-    sys.stderr.write("Error: Pidfile '{0!s}' already exists.\n".format((pidfile)))
+    sys.stderr.write("Error: Pidfile '{0!s}' already exists.\n".format(
+        pidfile))
     sys.stderr.write("Please make sure no other server is running and"
                      " remove this file\n")
     sys.exit(1)

@@ -161,23 +161,23 @@ def test_hunter_save_load():
                                                      collector.state)
 
     sequence = [
-      Collector.states.idle,
-      Collector.states.waiting_for_animal_to_stop,
-      Collector.states.moving_to_target,
-      Collector.states.working,
-      Collector.states.moving_home,
-      Collector.states.idle
-      ]
+        Collector.states.idle,
+        Collector.states.waiting_for_animal_to_stop,
+        Collector.states.moving_to_target,
+        Collector.states.working,
+        Collector.states.moving_home,
+        Collector.states.idle
+    ]
 
     # do full run without saveload
     collector = get_hunter_collector(session)
-    for i in xrange(len(sequence)-1):
-        await_transition(session, collector, sequence[i], sequence[i+1])
+    for i in xrange(len(sequence) - 1):
+        await_transition(session, collector, sequence[i], sequence[i + 1])
 
     # do full run with saveload
-    for i in xrange(len(sequence)-1):
+    for i in xrange(len(sequence) - 1):
         collector = get_hunter_collector(session)
-        await_transition(session, collector, sequence[i], sequence[i+1])
+        await_transition(session, collector, sequence[i], sequence[i + 1])
         session = saveload(session)
 
     # last state reached successfully 2 times -> finished

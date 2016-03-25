@@ -232,7 +232,8 @@ def main():
             num += 1
 
         outfilename = pattern % num
-        print('Starting in profile mode. Writing output to: {0!s}'.format(outfilename))
+        print('Starting in profile mode. Writing output to: {0!s}'.format(
+            outfilename))
         profile.runctx('horizons.main.start(options)', globals(), locals(),
                        outfilename)
         print('Program ended. Profiling output: {0!s}'.format(outfilename))
@@ -273,7 +274,7 @@ def setup_debugging(options):
         else:
             logfilename = os.path.join(PATHS.LOG_DIR,
                                        "unknown-horizons-{0!s}.log".format(
-                                       time.strftime("%Y-%m-%d_%H-%M-%S")))
+                                           time.strftime("%Y-%m-%d_%H-%M-%S")))
         print('Logging to {uh} and {fife}'.format(
             uh=logfilename.encode('utf-8', 'replace'),
             fife=os.path.join(os.getcwd(), 'fife.log')))
@@ -431,10 +432,10 @@ def log_paths():
     log().debug('PATHSEP: "{0}" SEP: "{1}"'.format(os.path.pathsep,
                                                    os.path.sep))
     log().debug("LD_LIBRARY_PATH: {0}".format(os.environ.get('LD_LIBRARY_PATH',
-                                                            '<undefined>')))
+                                                             '<undefined>')))
     log().debug("PATH: {0}".format(os.environ.get('PATH', '<undefined>')))
     log().debug("PYTHONPATH {0}".format(os.environ.get('PYTHONPATH',
-                                                      '<undefined>')))
+                                                       '<undefined>')))
 
 
 def log_sys_info():

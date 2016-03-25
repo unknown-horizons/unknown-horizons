@@ -344,8 +344,8 @@ class GuiHelper(object):
 
         widget = root.findChild(name=widget_name)
         if not widget:
-            raise Exception("'{0!s}' contains no widget with the name '{1!s}'".format(
-                                root.name, widget_name))
+            raise Exception("'{0!s}' contains no widget with the name "
+                            "'{1!s}'".format(root.name, widget_name))
 
         self._trigger_widget_callback(widget, event_name, group_name,
                                       mouse=mouse)

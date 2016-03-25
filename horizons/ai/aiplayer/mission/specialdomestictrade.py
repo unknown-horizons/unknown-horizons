@@ -164,8 +164,9 @@ class SpecialDomesticTrade(ShipMission):
             self.destination_settlement_manager.settlement.warehouse.position,
             Callback(self._reached_destination_settlement),
             Callback(self._move_to_destination_settlement),
-            'Unable to move to the destination settlement ({0!s})'.format(self.destination_settlement_manager.settlement.get_component(
-                NamedComponent).name))
+            'Unable to move to the destination settlement ({0!s})'.format(
+                self.destination_settlement_manager.settlement.get_component(
+                    NamedComponent).name))
 
     def _reached_destination_settlement(self):
         self._unload_all_resources(

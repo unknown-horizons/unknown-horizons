@@ -78,10 +78,10 @@ for t in translations:
     if trans == "\"\"":
         continue
 
-    len_ratio = float(len(orig))/len(trans)
+    len_ratio = float(len(orig)) / len(trans)
 
     if len_ratio > 1.4 or len_ratio < 0.6 and \
-            abs(len(orig)-len(trans)) > 2:
+            abs(len(orig) - len(trans)) > 2:
         print 'string length ratio:', len_ratio
         print orig
         print trans
