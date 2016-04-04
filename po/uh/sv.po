@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-03-15 09:14+0000\n"
-"Last-Translator: Emil Hemdal <emil.hemdal.em@gmail.com>\n"
+"PO-Revision-Date: 2016-04-04 10:23+0000\n"
+"Last-Translator: Karar Al-Remahy <alremahykarar@ymail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.6-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -1372,7 +1372,6 @@ msgid "Network port:"
 msgstr "Nätverksport:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
-#, fuzzy
 msgid "Discard current changes"
 msgstr "Ta bort nuvarande ändringar"
 
@@ -1584,7 +1583,6 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} rutor"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 msgid "Press key…"
 msgstr "Tryck på knapp…"
 
@@ -1621,9 +1619,9 @@ msgstr "Håll ner för att placera flera byggnader."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Just nu är bara {tier} nivåerna spelbara."
+msgstr "Just nu är bara {tier} nivåer spelbara."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
@@ -1648,7 +1646,7 @@ msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
-"Bygg brandstationer och sjukhus för att skydda dina invånare ifrån eldsvådor "
+"Bygg brandstationer och sjukhus för att skydda dina invånare från eldsvådor "
 "och sjukdomar."
 
 #: horizons/gui/modules/loadingscreen.py:72
@@ -1688,7 +1686,6 @@ msgid "Activating timer…"
 msgstr "Aktiverar timers…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Chomping game data…"
 msgstr "Mumsar på speldatan…"
 
@@ -2160,12 +2157,11 @@ msgid "Destroy all buildings"
 msgstr "Förstör alla byggnader"
 
 #: horizons/gui/mousetools/tearingtool.py:113
-#, fuzzy
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
-"Detta kommer att förstöra alla byggnader som kommer utanför kolonins område."
+"Detta kommer att förstöra alla byggnader som står utanför kolonins område."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
@@ -2295,9 +2291,9 @@ msgid "Production overview"
 msgstr "Produktionsöversikt"
 
 #: horizons/gui/tabs/productiontabs.py:300
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr "Fyll serien med {how_many} träd"
+msgstr "Fyll arean med {how_many} träd"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2427,7 +2423,6 @@ msgstr ""
 "Återställ denna bosättnings resurser till standardkonfigurationen du sparat."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
-#, fuzzy
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
@@ -2558,9 +2553,8 @@ msgstr "Kolmila"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:100
-#, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Bränner en massa brädor."
+msgstr "Bränner massa brädor."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
@@ -2721,7 +2715,6 @@ msgstr "Producerar råtobak. Behöver en gård."
 
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:215
-#, fuzzy
 msgid "Vineyard"
 msgstr "Vingård"
 
@@ -2883,9 +2876,8 @@ msgstr "Stenhuggare"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
-#, fuzzy
 msgid "Carver"
-msgstr "Stenhuggare"
+msgstr "Skulptör"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
@@ -2915,11 +2907,9 @@ msgstr "Lagerhydda"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr ""
-"Utökar lagringskapaciteten och koloniområdet samt tillhandahåller samlare."
+msgstr "Utökar lagringskapaciteten, koloniområdet samt tillhandahåller samlare."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3239,12 +3229,11 @@ msgstr "Loggarna är skrivna till {directory}."
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:175
-#, fuzzy
 msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
-"Spelet har hamnat i ofas. Detta indikerar ett okänt intern problem, spelet "
+"Spelet är osynkroniserat. Detta indikerar ett okänt internt problem, spelet "
 "kan inte fortsätta."
 
 #: horizons/manager.py:176
@@ -3424,10 +3413,9 @@ msgid "These residents are unhappy."
 msgstr "Dessa invånare är olyckliga."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Dessa invånare har ingen tillgång till ett torg."
+msgstr "Dessa invånare har inte tillgång till ett torg."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3519,7 +3507,6 @@ msgid "gems"
 msgstr "ädelstenar"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
 msgstr "saltvattenstillgång"
@@ -3814,9 +3801,8 @@ msgid "You won!"
 msgstr "Du vann!"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "blossoms"
-msgstr "blomning"
+msgstr "blommor"
 
 #. This is a database entry: the name of a resource
 #| msgid "spice plants"
