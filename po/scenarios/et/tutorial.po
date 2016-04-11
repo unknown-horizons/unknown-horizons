@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-12-28 14:02+0000\n"
+"PO-Revision-Date: 2016-04-11 14:34+0000\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/>"
 "\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.6-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -148,12 +148,17 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Klõpsates sellel nupul kuvatakse Lao eelvaade. Ladu on esimese hoone, mis on "
+"vajalik koloonia asutamiseks. Liigutades kursorit märkad punase varjundiga "
+"eelvaateid, mis kuuluvad sellesse piirkonda sobimatutele hoonetele."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Ladu peab asuma rannikul, et laevad saaksid randuda. Seega otsi hea asukoht "
+"ja tee selle olulise hoone asetamiseks vasak-klõps."
 
 #. This is the text body of a logbook page.
 #| msgid "Task: Build a warehouse at the coast."
@@ -176,12 +181,17 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Varud ja ehitusmaterjalid on su laevalt lossitud ja asuvad turvaliselt su "
+"uues laos. Nüüd on aeg ehitada mõned lihtsad ehitised, alustades "
+"puuraidurite telgist."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Puuraidurid langetavad nende telki ümbritsevast metsaselt alat puid ja "
+"töötlevad selle puiduks, mida saab kasutada ehitamiseks või vahetuskaubana."
 
 #. This is the text body of a logbook page.
 #| msgid ""
@@ -202,12 +212,18 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Ehitamise menüü on sorteeritud tasemete kaupa. Kuna sul on uus koloonia, "
+"siis saad ehitada ainult esimese taseme ehitisi. Vastavalt sellele, kuidas "
+"su tsivilisatsioon areneb, saad võimaluse ehitada mitmesugustele kõrgemate "
+"tasemete ehitistele."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Otsi puuraidurite telgile sobilik metsane ala ja vali ülevaate menüüst "
+"ehitiste alt \"Puuraidurite telk\" ning aseta see valitud kohta."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -215,6 +231,8 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Mängu hilisemas faasis võid luua puid istutades metsamaad, kuid see maksab. "
+"Hetkel pead sa kasutama looduse pakutud ressursse!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -222,6 +240,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Igasugune ressursside kogumine või tootmine vajab teerada, mis ühendab ta "
+"laohoone või mõne muu ladustamise kohaga. Vastasel juhul ei koguta "
+"toodetavaid kaupu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -230,6 +251,9 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Seega, kui puuraidurite telk on valmis, pead sa ühendama ta laoga. Ava menüü "
+"ehita ja klõpsa nupul \"Teerada\". Sa saad nüüd klõpsata ja vedada hiirega "
+"teeraja puuraidurite telgi ja lao vahele."
 
 #. This is the text body of a logbook page.
 #| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
@@ -245,6 +269,9 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in  construction or trade."
 msgstr ""
+"Kui ehitised on ühendatud, näed kogujat, kes võtab kaasa äsja valmistatud "
+"lauad ja toimetab need lattu. Seal on need valmis ehitamiseks või "
+"kauplemiseks."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
