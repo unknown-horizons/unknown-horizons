@@ -172,8 +172,8 @@ class ProductionChainSubtreeChoice(object):
         for option in self.options:
             result += option.__str__(level + 1)
         if self.get_root_import_level() > 1e-9:
-            result += '\n{0!s}Import {1:.5f}'.format('  ' * (level + 1),
-                                           self.get_root_import_level())
+            result += '\n{0!s}Import {1:.5f}'.format(
+                '  ' * (level + 1), self.get_root_import_level())
         return result
 
     def get_root_import_level(self):
@@ -307,7 +307,7 @@ class ProductionChainSubtree(object):
         """Recursively assign an identifier to this subtree to know which
         subtree owns which resource quota."""
         self.identifier = '{0!s}/{1:d},{2:d}'.format(prefix, self.resource_id,
-                                        self.abstract_building.id)
+                                                     self.abstract_building.id)
         for child in self.children:
             child.assign_identifier(self.identifier)
 
@@ -319,10 +319,12 @@ class ProductionChainSubtree(object):
             self.abstract_building.settler_level
 
     def __str__(self, level=0):
-        result = '{0!s}Produce {1:d} (ratio {2:.2f}) in {3!s} ({4:.5f}, {5:.5f})\n'.format(
-            '  ' * level, self.resource_id, self.production_ratio,
-            self.abstract_building.name, self.get_root_production_level(),
-            self.get_final_production_level())
+        result = '{0!s}Produce {1:d} (ratio {2:.2f}) in {3!s} ({4:.5f}, ' \
+                 '{5:.5f})\n'.format('  ' * level, self.resource_id,
+                                     self.production_ratio,
+                                     self.abstract_building.name,
+                                     self.get_root_production_level(),
+                                     self.get_final_production_level())
         for child in self.children:
             result += child.__str__(level + 1)
         return result

@@ -378,8 +378,8 @@ class LandManager(WorldObject):
                                 *coastline_color)
 
     def __str__(self):
-        return '{0!s} LandManager({1!s})'.format(getattr(self, 'owner',
-                                               'unknown player'),
-                                       getattr(self, 'worldid', 'none'))
+        return '{0!s} LandManager({1!s})'.format(
+            getattr(self, 'owner', 'unknown player'),
+            getattr(self, 'worldid', 'none'))
 
 decorators.bind_all(LandManager)

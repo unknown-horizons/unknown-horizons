@@ -134,14 +134,14 @@ class Pirate(GenericAI):
 
         current_callback = Callback(self.tick)
         calls = Scheduler().get_classinst_calls(self, current_callback)
-        assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(
-            len(calls), current_callback, calls)
+        assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".\
+            format(len(calls), current_callback, calls)
         remaining_ticks = max(calls.values()[0], 1)
 
         current_callback_long = Callback(self.tick_long)
         calls = Scheduler().get_classinst_calls(self, current_callback_long)
-        assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(
-            len(calls), current_callback_long, calls)
+        assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".\
+            format(len(calls), current_callback_long, calls)
         remaining_ticks_long = max(calls.values()[0], 1)
 
         db("INSERT INTO ai_pirate(rowid, remaining_ticks, "

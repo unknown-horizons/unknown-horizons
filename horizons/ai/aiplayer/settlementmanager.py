@@ -281,10 +281,14 @@ class SettlementManager(WorldObject):
     def _set_taxes_and_permissions_prefix(self, prefix):
         """Set new tax settings and building permissions according to the
         prefix used in the personality file."""
-        sailor_taxes = getattr(self.personality, '{0!s}_sailor_taxes'.format(prefix))
-        pioneer_taxes = getattr(self.personality, '{0!s}_pioneer_taxes'.format(prefix))
-        settler_taxes = getattr(self.personality, '{0!s}_settler_taxes'.format(prefix))
-        citizen_taxes = getattr(self.personality, '{0!s}_citizen_taxes'.format(prefix))
+        sailor_taxes = getattr(self.personality,
+                               '{0!s}_sailor_taxes'.format(prefix))
+        pioneer_taxes = getattr(self.personality,
+                                '{0!s}_pioneer_taxes'.format(prefix))
+        settler_taxes = getattr(self.personality,
+                                '{0!s}_settler_taxes'.format(prefix))
+        citizen_taxes = getattr(self.personality,
+                                '{0!s}_citizen_taxes'.format(prefix))
         sailor_upgrades = getattr(self.personality,
                                   '{0!s}_sailor_upgrades'.format(prefix))
         pioneer_upgrades = getattr(self.personality,

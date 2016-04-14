@@ -667,8 +667,9 @@ class SingleResourceManager(WorldObject):
     def __str__(self):
         if not hasattr(self, "resource_id"):
             return 'UninitializedSingleResourceManager'
-        result = 'Resource {0:d} production {1:.5f}/{2:.5f} ({3:.5f} low priority)'.format(
-            self.resource_id, self.available, self.total, self.low_priority)
+        result = 'Resource {0:d} production {1:.5f}/{2:.5f} ({3:.5f} ' \
+                 'low priority)'.format(self.resource_id, self.available,
+                                        self.total, self.low_priority)
         for quota_holder, (quota, priority) in self.quotas.iteritems():
             result += '\n  {0!s}quota assignment {1:.5f} to {2!s}'.format(
                 'priority ' if priority else '', quota, quota_holder)
@@ -721,8 +722,8 @@ class SimpleProductionChainSubtree(object):
     def assign_identifier(self, prefix):
         """Recursively assign an identifier to this subtree to know
         which subtree owns which resource quota."""
-        self.identifier = '{0!s}/{1:d},{2:d}'.format(prefix, self.resource_id,
-                                        self.abstract_building.id)
+        self.identifier = '{0!s}/{1:d},{2:d}'.format(
+            prefix, self.resource_id, self.abstract_building.id)
         for child in self.children:
             child.assign_identifier(self.identifier)
 
