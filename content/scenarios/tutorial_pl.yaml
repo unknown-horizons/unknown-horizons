@@ -36,22 +36,22 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Jeżeli masz jakieś sugestie jak ten tutorial może być polepszony, lub jeśli napotkasz jakieś błędy, proszę zgłoś to.'
   - '
 
     Visit www.unknown-horizons.org to find out how to contact the team.'
   - ''
-  - And now, let's start the game!
+  - A teraz rozpocznijmy zabawę!
   - [Pagebreak]
   - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
+  - Twój statek jest na morzu i ma na pokładzie zaopatrzenie, którego potrzebujesz do założenia osady.
+  - Aby poruszyć statkiem, wybierz go klikając na nim lewym przyciskiem myszki a następnie kliknij prawym przyciskiem w miejscu do którego ma się udać.
   - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Kliknięcie tego przycisku umożliwi Ci podgląd Składu, pierwszego budynku, który umożliwi Ci stworzenie osady. Jeśli poruszysz kursorem, zobaczysz, że podgląd jest czerwony, gdy budynek znajduje się na nieodpowiednim terenie.
+  - Skład musi być umieszczony na wybrzeżu, aby umożliwić statkom przycumowanie i wyładowanie towarów. Znajdź więc odpowiednią lokalizację i kliknij lewym przyciskiem myszy, aby umieścić Skład.
   - ''
   - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
@@ -655,4 +655,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 161 translated messages, 13 fuzzy translations, 12 untranslated messages.
+  translation_status: 167 translated messages, 11 fuzzy translations, 8 untranslated messages.

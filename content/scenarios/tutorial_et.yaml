@@ -50,8 +50,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ranniku läheduses muutub ülevaates nupp "Ehita koloonia" aktiivseks.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Klõpsates sellel nupul kuvatakse Lao eelvaade. Ladu on esimese hoone, mis on vajalik koloonia asutamiseks. Liigutades kursorit märkad punase varjundiga eelvaateid, mis kuuluvad sellesse piirkonda sobimatutele hoonetele.
+  - Ladu peab asuma rannikul, et laevad saaksid randuda. Seega otsi hea asukoht ja tee selle olulise hoone asetamiseks vasak-klõps.
   - ''
   - [BoldLabel, 'Ülesanne: ehita rannikule laohoone.']
 
@@ -59,21 +59,21 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Ehita puuraidurite telk ja ühenda see teeraja abil laohoonega.]
   - [Headline, 'ÜLESANNE: EHITA PUURAIDURITE TELK']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - Varud ja ehitusmaterjalid on su laevalt lossitud ja asuvad turvaliselt su uues laos. Nüüd on aeg ehitada mõned lihtsad ehitised, alustades puuraidurite telgist.
+  - Puuraidurid langetavad nende telki ümbritsevast metsaselt alat puid ja töötlevad selle puiduks, mida saab kasutada ehitamiseks või vahetuskaubana.
   - Puuraidurite telgi ehitamiseks ava menüü "Ehita". Selleks klõpsa kas minikaardi all oleval suurel ikoonil või vajuta klahvi 'B' (vaikimisi kiirklahv).
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Ehitamise menüü on sorteeritud tasemete kaupa. Kuna sul on uus koloonia, siis saad ehitada ainult esimese taseme ehitisi. Vastavalt sellele, kuidas su tsivilisatsioon areneb, saad võimaluse ehitada mitmesugustele kõrgemate tasemete ehitistele.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Otsi puuraidurite telgile sobilik metsane ala ja vali ülevaate menüüst ehitiste alt "Puuraidurite telk" ning aseta see valitud kohta.
+  - Mängu hilisemas faasis võid luua puid istutades metsamaad, kuid see maksab. Hetkel pead sa kasutama looduse pakutud ressursse!
+  - Igasugune ressursside kogumine või tootmine vajab teerada, mis ühendab ta laohoone või mõne muu ladustamise kohaga. Vastasel juhul ei koguta toodetavaid kaupu.
+  - Seega, kui puuraidurite telk on valmis, pead sa ühendama ta laoga. Ava menüü ehita ja klõpsa nupul "Teerada". Sa saad nüüd klõpsata ja vedada hiirega teeraja puuraidurite telgi ja lao vahele.
   - ''
   - [BoldLabel, 'Ülesanne: Ehita metsasele alale puuraidurite telk ja ühenda see laohoonega.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
+  - Kui ehitised on ühendatud, näed kogujat, kes võtab kaasa äsja valmistatud lauad ja toimetab need lattu. Seal on need valmis ehitamiseks või kauplemiseks.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -655,4 +655,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 176 translated messages, 10 untranslated messages.
+  translation_status: 186 translated messages.
