@@ -69,4 +69,5 @@ class Callback(object):
         # to tuple, dict is unhashable
 
     def __str__(self):
-        return 'Callback({0!s}, {1!s}, {2!s})'.format(self.callback, self.args, self.kwargs)
+        return 'Callback({0!s}, {1!s}, {2!s})'.format(self.callback, self.args,
+                                                      self.kwargs)

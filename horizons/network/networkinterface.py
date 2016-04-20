@@ -357,7 +357,8 @@ class NetworkInterface(object):
             self._handle_exception(e)
 
     def _on_change_name(self, game, plold, plnew, myself):
-        self.log.debug("[ONCHANGENAME] {0!s} -> {1!s}".format(plold.name, plnew.name))
+        self.log.debug("[ONCHANGENAME] {0!s} -> {1!s}".format(plold.name,
+                                                              plnew.name))
         if myself:
             self._client_data.name = plnew.name
 

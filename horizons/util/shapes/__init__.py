@@ -45,15 +45,18 @@ class Shape(object):
         co1 = co1.replace('const', '')
         co2 = co2.replace('const', '')
 
-        dist = getattr(distances, "distance_{0!s}_{1!s}".format(co1, co2), None)
+        dist = getattr(distances,
+                       "distance_{0!s}_{1!s}".format(co1, co2), None)
         if dist:
             return dist(self, other)
         else:
-            dist = getattr(distances, "distance_{0!s}_{1!s}".format(co2, co1), None)
+            dist = getattr(distances, "distance_{0!s}_{1!s}"
+                           .format(co2, co1), None)
             if dist:
                 return dist(other, self)
 
-        raise TypeError("No distance defined between {0!s} and {1!s}".format(co1, co2))
+        raise TypeError("No distance defined between {0!s} and {1!s}"
+                        .format(co1, co2))
 
     def get_distance_function(self, other):
         # TODO pre-build a dictionary for fast function lookup
@@ -64,15 +67,18 @@ class Shape(object):
         co1 = co1.replace('const', '')
         co2 = co2.replace('const', '')
 
-        dist_func = getattr(distances, "distance_{0!s}_{1!s}".format(co1, co2), None)
+        dist_func = getattr(distances,
+                            "distance_{0!s}_{1!s}".format(co1, co2), None)
         if dist_func:
             return dist_func
 
-        dist_func = getattr(distances, "distance_{0!s}_{1!s}".format(co2, co1), None)
+        dist_func = getattr(distances, "distance_{0!s}_{1!s}".
+                            format(co2, co1), None)
         if dist_func:
             return dist_func
 
-        raise TypeError("No distance defined between {0!s} and {1!s}".format(co1, co2))
+        raise TypeError("No distance defined between {0!s} and {1!s}"
+                        .format(co1, co2))
 
 # Convenience methods so you can use
 # 'from horizons.util.shapes import Circle, Rect'

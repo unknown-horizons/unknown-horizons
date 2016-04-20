@@ -158,7 +158,7 @@ class Server(object):
 
     def run(self):
         logging.info("Starting up server on {0!s}:{1:d}".format(self.hostname,
-                                                      self.port))
+                                                                self.port))
         try:
             self.host = enet.Host(enet.Address(self.hostname, self.port),
                                   MAX_PEERS, 0, 0, 0)
@@ -203,7 +203,8 @@ class Server(object):
         self.host.flush()
 
     def disconnect(self, peer, later=True):
-        logging.debug("[DISCONNECT] Disconnecting client {0!s}".format((peer.address)))
+        logging.debug("[DISCONNECT] Disconnecting client {0!s}"
+                      .format(peer.address))
         try:
             if later:
                 peer.disconnect_later()
@@ -235,8 +236,8 @@ class Server(object):
         event.peer.data = player.sid
 
         if player.protocol not in PROTOCOLS:
-            logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(
-                            (player)))
+            logging.warning("[CONNECT] {0!s} runs old or unsupported protocol"
+                            .format(player))
             self.fatalerror(
                 player, __("Old or unsupported multiplayer protocol."
                            " Please check your game version"))
@@ -263,8 +264,8 @@ class Server(object):
         # logging.debug("[RECEIVE] Got data from %s" % (peer.address))
         # check player is known by server
         if peer.data not in self.players:
-            logging.warning("[RECEIVE] Packet from unknown player {0!s}!".format(
-                            (peer.address)))
+            logging.warning("[RECEIVE] Packet from unknown player {0!s}!"
+                            .format(peer.address))
             self._fatalerror(event.peer, "I don't know you")
             return
 
@@ -294,7 +295,8 @@ class Server(object):
             self.error(player, e.message)
             return
         except network.PacketTooLarge as e:
-            logging.warning("[RECEIVE] Per packet size exceeded from {0!s}: {1!s}".format(player, e))
+            logging.warning("[RECEIVE] Per packet size exceeded from "
+                            "{0!s}: {1!s}".format(player, e))
             self.fatalerror(
                 player, __("You've exceeded the per packet size.") + " " +
                 __("This should never happen. "
@@ -311,7 +313,9 @@ class Server(object):
         # session id check
         if packet.sid != player.sid:
             logging.warning(
-                "[RECEIVE] Invalid session id for player {0!s} ({1!s} vs {2!s})!".format(peer.address, packet.sid, player.sid))
+                "[RECEIVE] Invalid session id for player {0!s} "
+                "({1!s} vs {2!s})!"
+                .format(peer.address, packet.sid, player.sid))
             self.fatalerror(player, __("Invalid/Unknown session"))
             # this will trigger ondisconnect() for cleanup
             return
@@ -343,13 +347,15 @@ class Server(object):
     def oncreategame(self, player, packet):
         if packet.maxplayers < self.capabilities['minplayers']:
             raise network.SoftNetworkException(
-                "You can't run a game with less than {0:d} players".format((self.capabilities['minplayers'])))
+                "You can't run a game with less than {0:d} players"
+                .format(self.capabilities['minplayers']))
         if packet.maxplayers > self.capabilities['maxplayers']:
             raise network.SoftNetworkException(
-                "You can't run a game with more than {0:d} players".format((self.capabilities['maxplayers'])))
+                "You can't run a game with more than {0:d} players"
+                .format(self.capabilities['maxplayers']))
         game = Game(packet, player)
-        logging.debug("[CREATE] [{0!s}] {1!s} created {2!s}".format(game.uuid,
-                                                       player, game))
+        logging.debug("[CREATE] [{0!s}] {1!s} created {2!s}".format(
+            game.uuid, player, game))
         self.games.append(game)
         self.send(player.peer, packets.server.data_gamestate(game))
 
@@ -439,7 +445,8 @@ class Server(object):
                                       "This should never occur."))
                 return
 
-        logging.debug("[JOIN] [{0!s}] {1!s} joined {2!s}".format(game.uuid, player, game))
+        logging.debug("[JOIN] [{0!s}] {1!s} joined {2!s}".format(game.uuid,
+                                                                 player, game))
         game.add_player(player, packet)
         for _player in game.players:
             self.send(_player.peer, packets.server.data_gamestate(game))
@@ -461,7 +468,8 @@ class Server(object):
         if not game.is_open():
             self.call_callbacks('terminategame', game, player)
             return
-        logging.debug("[LEAVE] [{0!s}] {1!s} left {2!s}".format(game.uuid, player, game))
+        logging.debug("[LEAVE] [{0!s}] {1!s} left {2!s}".format(game.uuid,
+                                                                player, game))
         game.remove_player(player)
         if game.is_empty():
             self.call_callbacks('deletegame', game)
@@ -516,7 +524,7 @@ class Server(object):
         if not game.is_open():
             return
         logging.debug("[CHAT] [{0!s}] {1!s}: {2!s}".format(game.uuid, player,
-                                              packet.chatmsg))
+                                                           packet.chatmsg))
         for _player in game.players:
             self.send(_player.peer, packets.server.cmd_chatmsg(player.name,
                                                                packet.chatmsg))
@@ -696,9 +704,10 @@ class Server(object):
                     players_inlobby += 1
                 if player.protocol < PROTOCOLS[-1]:
                     players_oldprotocol += 1
-            fd.write("Players.Lobby: {0:d}\n".format((players_inlobby)))
-            fd.write("Players.Playing: {0:d}\n".format((players_playing)))
-            fd.write("Players.OldProtocol: {0:d}\n".format((players_oldprotocol)))
+            fd.write("Players.Lobby: {0:d}\n".format(players_inlobby))
+            fd.write("Players.Playing: {0:d}\n".format(players_playing))
+            fd.write("Players.OldProtocol: {0:d}\n"
+                     .format(players_oldprotocol))
 
             fd.close()
         except IOError as e:

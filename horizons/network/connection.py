@@ -80,7 +80,7 @@ class Connection(object):
             raise network.AlreadyConnected(
                 "We are already connected to a server")
 
-        self.log.debug("[CONNECT] to server {0!s}".format((self.server_address)))
+        self.log.debug("[CONNECT] to server {0!s}".format(self.server_address))
         try:
             if self.server_address is None:
                 # can only construct address now, as it resolves the target
@@ -216,14 +216,14 @@ class Connection(object):
                 self._reset()
                 self.log.warning("Unexpected disconnect from {0!s}".format(
                                  (event.peer.address)))
-                raise network.CommandError("Unexpected disconnect from {0!s}".format(
-                                           (event.peer.address)))
+                raise network.CommandError("Unexpected disconnect from {0!s}"
+                                           .format(event.peer.address))
             elif event.type == enet.EVENT_TYPE_CONNECT:
                 self._reset()
-                self.log.warning("Unexpected connection from {0!s}".format(
-                                 (event.peer.address)))
-                raise network.CommandError("Unexpected connection from {0!s}".format(
-                                           (event.peer.address)))
+                self.log.warning("Unexpected connection from {0!s}"
+                                 .format(event.peer.address))
+                raise network.CommandError("Unexpected connection from {0!s}"
+                                           .format(event.peer.address))
 
             return event
         except IOError as e:
@@ -270,7 +270,8 @@ class Connection(object):
             """
             raise network.CommandError(packet.errorstr)
         elif isinstance(packet, packets.cmd_fatalerror):
-            self.log.error("[FATAL] Network message: {0!s}".format((packet.errorstr)))
+            self.log.error("[FATAL] Network message: {0!s}"
+                           .format(packet.errorstr))
             self.disconnect(server_may_disconnect=True)
             raise network.FatalError(packet.errorstr)
 

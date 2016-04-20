@@ -232,8 +232,8 @@ class ScenarioEventHandler(LivingObject):
         yaml_code = dump_dict_to_yaml(data)
         # remove last } so we can add stuff
         yaml_code = yaml_code.rsplit(u'}\n', 1)[0]
-        yaml_code += ', events: [ {0!s} ] }}'.format(', '.join(event.to_yaml() for
-                                                      event in self._events))
+        yaml_code += ', events: [ {0!s} ] }}'.format(
+            ', '.join(event.to_yaml() for event in self._events))
         return yaml_code
 
 
@@ -242,8 +242,9 @@ class ScenarioEventHandler(LivingObject):
 
 def assert_type(var, expected_type, name):
     if not isinstance(var, expected_type):
-        raise InvalidScenarioFileFormat('{0!s} should be a {1!s}, but is: {2!s}'.format(
-            name, expected_type.__name__, str(var)))
+        raise InvalidScenarioFileFormat(
+            '{0!s} should be a {1!s}, but is: {2!s}'.format(
+                name, expected_type.__name__, str(var)))
 
 
 class _Event(object):
@@ -269,8 +270,9 @@ class _Event(object):
 
     def to_yaml(self):
         """Returns yaml representation of self"""
-        return '{{ actions: [ {0!s} ] , conditions: [ {1!s} ]  }}'.format(', '.join(action.to_yaml() for action in self.actions),
-             ', '.join(cond.to_yaml() for cond in self.conditions))
+        return '{{ actions: [ {0!s} ] , conditions: [ {1!s} ]  }}'.format(
+            ', '.join(action.to_yaml() for action in self.actions),
+            ', '.join(cond.to_yaml() for cond in self.conditions))
 
 
 class _Action(object):
@@ -298,7 +300,8 @@ class _Action(object):
     def to_yaml(self):
         """Returns yaml representation of self"""
         arguments_yaml = dump_dict_to_yaml(self.arguments)
-        return "{{arguments: {0!s}, type: {1!s}}}".format(arguments_yaml, self.action_type)
+        return "{{arguments: {0!s}, type: {1!s}}}".format(arguments_yaml,
+                                                          self.action_type)
 
 
 class _Condition(object):
@@ -329,7 +332,8 @@ class _Condition(object):
     def to_yaml(self):
         """Returns yaml representation of self"""
         arguments_yaml = dump_dict_to_yaml(self.arguments)
-        return '{{arguments: {0!s}, type: "{1!s}"}}'.format(arguments_yaml, self.cond_type)
+        return '{{arguments: {0!s}, type: "{1!s}"}}'.format(arguments_yaml,
+                                                            self.cond_type)
 
 
 def dump_dict_to_yaml(data):

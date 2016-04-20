@@ -93,7 +93,8 @@ class AtlasBook(object):
 
     def __init__(self, id, max_size):
         self.id = id
-        self.path = os.path.join(PATHS.ATLAS_FILES_DIR, '{0:03d}.png'.format(id))
+        self.path = os.path.join(PATHS.ATLAS_FILES_DIR,
+                                 '{0:03d}.png'.format(id))
         self.max_size = max_size
         self._clear()
 
@@ -234,8 +235,8 @@ class AtlasGenerator(object):
                 "CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, "
                 "'atlas_path' TEXT NOT NULL);\n")
             for book in self.books:
-                atlas_db_file.write("INSERT INTO atlas VALUES({0:d}, '{1!s}');\n".format(
-                    book.id, book.path))
+                atlas_db_file.write("INSERT INTO atlas VALUES({0:d}, "
+                                    "'{1!s}');\n".format(book.id, book.path))
 
         self._save_sets()
         self._save_books(self.books)

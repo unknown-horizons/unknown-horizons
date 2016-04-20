@@ -44,19 +44,23 @@ class PlayersOverview(StatsWidget):
     def _add_line_to_gui(self, player):
         stats = player.get_latest_stats()
 
-        emblem = widgets.Label(name='emblem_{0:d}'.format(player.worldid), text=u"   ")
+        emblem = widgets.Label(name='emblem_{0:d}'
+                               .format(player.worldid), text=u"   ")
         emblem.background_color = player.color
         emblem.min_size = (12, 20)
 
-        name = widgets.Label(name='player_{0:d}'.format(player.worldid))
+        name = widgets.Label(name='player_{0:d}'
+                             .format(player.worldid))
         name.text = player.name
         name.min_size = (108, 20)
 
-        money_score = widgets.Label(name='money_score_{0:d}'.format(player.worldid))
+        money_score = widgets.Label(name='money_score_{0:d}'
+                                    .format(player.worldid))
         money_score.text = unicode(stats.money_score)
         money_score.min_size = (60, 20)
 
-        land_score = widgets.Label(name='land_score_{0:d}'.format(player.worldid))
+        land_score = widgets.Label(name='land_score_{0:d}'
+                                   .format(player.worldid))
         land_score.text = unicode(stats.land_score)
         land_score.min_size = (50, 20)
 
@@ -70,15 +74,18 @@ class PlayersOverview(StatsWidget):
         building_score.text = unicode(stats.building_score)
         building_score.min_size = (70, 20)
 
-        settler_score = widgets.Label(name='settler_score_{0:d}'.format(player.worldid))
+        settler_score = widgets.Label(name='settler_score_{0:d}'
+                                      .format(player.worldid))
         settler_score.text = unicode(stats.settler_score)
         settler_score.min_size = (60, 20)
 
-        unit_score = widgets.Label(name='unit_score_{0:d}'.format(player.worldid))
+        unit_score = widgets.Label(name='unit_score_{0:d}'
+                                   .format(player.worldid))
         unit_score.text = unicode(stats.unit_score)
         unit_score.min_size = (50, 20)
 
-        total_score = widgets.Label(name='total_score_{0:d}'.format(player.worldid))
+        total_score = widgets.Label(name='total_score_{0:d}'
+                                    .format(player.worldid))
         total_score.text = unicode(stats.total_score)
         total_score.min_size = (70, 20)
 

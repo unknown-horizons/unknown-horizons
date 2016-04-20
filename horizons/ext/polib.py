@@ -875,8 +875,9 @@ class _BaseEntry(object):
             # quick and dirty trick to get the real field name
             fieldname = fieldname[9:]
 
-        ret = ['{0!s}{1!s}{2!s} "{3!s}"'.format(delflag, fieldname, plural_index,
-                                escape(lines.pop(0)))]
+        ret = ['{0!s}{1!s}{2!s} "{3!s}"'.format(delflag, fieldname,
+                                                plural_index,
+                                                escape(lines.pop(0)))]
         for mstr in lines:
             # import pdb; pdb.set_trace()
             ret.append('{0!s}"{1!s}"'.format(delflag, escape(mstr)))
@@ -1279,7 +1280,8 @@ class _POFileParser(object):
 
             elif tokens[0] == '#|':
                 if nb_tokens <= 1:
-                    raise IOError('Syntax error in po file {0!s} (line {1!s})'.format(self.instance.fpath, i))
+                    raise IOError('Syntax error in po file {0!s} (line {1!s})'
+                                  .format(self.instance.fpath, i))
 
                 # Remove the marker and any whitespace right after that.
                 line = line[2:].lstrip()
@@ -1310,7 +1312,8 @@ class _POFileParser(object):
                 self.process(prev_keywords[tokens[1]], i)
 
             else:
-                raise IOError('Syntax error in po file {0!s} (line {1!s})'.format(self.instance.fpath, i))
+                raise IOError('Syntax error in po file {0!s} (line {1!s})'
+                              .format(self.instance.fpath, i))
 
         if self.current_entry:
             # since entries are added when another entry is found, we must add
@@ -1373,7 +1376,8 @@ class _POFileParser(object):
             if action():
                 self.current_state = state
         except Exception:
-            raise IOError('Syntax error in po file (line {0!s})'.format(linenum))
+            raise IOError('Syntax error in po file (line {0!s})'.format(
+                linenum))
 
     # state handlers
 
@@ -1680,7 +1684,8 @@ class TextWrapper(textwrap.TextWrapper):
         """
         lines = []
         if self.width <= 0:
-            raise ValueError("invalid width {0!r} (must be > 0)".format(self.width))
+            raise ValueError("invalid width {0!r} (must be > 0)".format(
+                self.width))
 
         # Arrange in reverse order so items can be efficiently popped
         # from a stack of chucks.

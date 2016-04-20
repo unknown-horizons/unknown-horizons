@@ -60,7 +60,8 @@ def find_enet_module():
     # Python version-specific, e.g. linux-64-27. If this is not found, we fall
     # back to the more generic version.
     version = platform.python_version_tuple()
-    directory_pyversion = "{0!s}-{1!s}{2!s}".format(directory, version[0], version[1])
+    directory_pyversion = "{0!s}-{1!s}{2!s}".format(directory, version[0],
+                                                    version[1])
 
     if os.path.exists(os.path.join(lib_path, directory_pyversion)):
         path = os.path.join(lib_path, directory_pyversion)

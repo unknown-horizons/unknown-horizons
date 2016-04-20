@@ -112,7 +112,8 @@ class BuildTab(TabInterface):
                 # this is a line of data
                 rows.append(entry)  # parse later on demand
             else:
-                raise InvalidBuildMenuFileFormat("Invalid entry: {0!s}".format(entry))
+                raise InvalidBuildMenuFileFormat("Invalid entry: {0!s}"
+                                                 .format(entry))
 
         if not icon_path:
             raise InvalidBuildMenuFileFormat(
@@ -173,7 +174,8 @@ class BuildTab(TabInterface):
             # tooltip.py will then place icons from this information.
             required_resources = ''
             for resource_id, amount_needed in sorted(building.costs.items()):
-                required_resources += ' {0!s}:{1!s}'.format(resource_id, amount_needed)
+                required_resources += ' {0!s}:{1!s}'.format(resource_id,
+                                                            amount_needed)
             required_text = '[[Buildmenu{0!s}]]'.format((required_resources))
             button.helptext = required_text + button.helptext
 
@@ -218,17 +220,17 @@ class BuildTab(TabInterface):
                     continue
                 elif (column + 1) > self.MAX_COLS:
                     # out of 4x4 bounds
-                    err = "Invalid entry '{0!s}': column {1!s} does not exist.".format(
-                        entry, column + 1)
-                    err += " Max. column amount in current layout is {0!s}.".format(
-                           self.MAX_COLS)
+                    err = "Invalid entry '{0!s}': column {1!s} does not " \
+                          "exist.".format(entry, column + 1)
+                    err += " Max. column amount in current layout is {0!s}."\
+                        .format(self.MAX_COLS)
                     raise InvalidBuildMenuFileFormat(err)
                 elif row_num > self.MAX_ROWS:
                     # out of 4x4 bounds
-                    err = "Invalid entry '{0!s}': row {1!s} does not exist.".format(
-                        entry, row_num)
-                    err += " Max. row amount in current layout is {0!s}.".format(
-                           self.MAX_ROWS)
+                    err = "Invalid entry '{0!s}': row {1!s} does not exist."\
+                        .format(entry, row_num)
+                    err += " Max. row amount in current layout is {0!s}."\
+                        .format(self.MAX_ROWS)
                     raise InvalidBuildMenuFileFormat(err)
                 elif isinstance(entry, basestring):
                     column -= 1  # a headline does not take away a slot

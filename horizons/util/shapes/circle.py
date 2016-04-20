@@ -45,7 +45,8 @@ class Circle(Shape):
         return rect.distance(self.center) > self.radius
 
     def __str__(self):
-        return "Circle(center={0!s},radius={1!s})".format(self.center, self.radius)
+        return "Circle(center={0!s},radius={1!s})".format(self.center,
+                                                          self.radius)
 
     def __eq__(self, other):
         try:

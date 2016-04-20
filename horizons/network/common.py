@@ -109,11 +109,11 @@ class Player(object):
 
     def __str__(self):
         if self.name:
-            return "Player(addr={0!s};proto={1:d};name={2!s})".format(self.address,
-                                                         self.protocol,
-                                                         self.name)
+            return "Player(addr={0!s};proto={1:d};name={2!s})".format(
+                self.address, self.protocol, self.name)
         else:
-            return "Player(addr={0!s};proto={1:d})".format(self.address, self.protocol)
+            return "Player(addr={0!s};proto={1:d})".format(self.address,
+                                                           self.protocol)
 
     def join(self, game, packet):
         """ assigns player data sent by create/join-command to the player """
@@ -234,9 +234,10 @@ class Game(object):
         self.playercnt = 0
 
     def __str__(self):
-        return "Game(uuid={0!s};maxpl={1:d};plcnt={2:d};pw={3:d};state={4!s})".format(
-            self.uuid, self.maxplayers, self.playercnt, self.has_password(),
-            Game.State(self.state))
+        return "Game(uuid={0!s};maxpl={1:d};plcnt={2:d};pw={3:d};state={4!s})"\
+            .format(self.uuid, self.maxplayers, self.playercnt,
+                    self.has_password(),
+                    Game.State(self.state))
 
 packets.SafeUnpickler.add('server', Game)
 
