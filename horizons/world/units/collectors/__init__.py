@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,5 +20,5 @@
 # ###################################################
 
 from buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
-from animalcollector import AnimalCollector, HunterCollector, FarmAnimalCollector
+from animalcollector import AnimalCollector, HunterCollector
 from collector import Collector, Job, JobList

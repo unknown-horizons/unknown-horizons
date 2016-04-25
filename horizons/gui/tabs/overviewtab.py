@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -92,9 +92,9 @@ class OverviewTab(TabInterface):
 	def init_stance_widget(self):
 		"""Call this for tabs with stances."""
 		stance_widget = self.widget.findChild(name='stance')
-		stance_widget.init(self.instance)
-		self.add_remove_listener(stance_widget.remove)
-
+		if stance_widget is not None:
+			stance_widget.init(self.instance)
+			self.add_remove_listener(stance_widget.remove)
 
 class GroundUnitOverviewTab(OverviewTab):
 	widget = 'overview_groundunit.xml'
@@ -111,7 +111,14 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
 
-
+#added from old groundunittabs.py
+#class GroundUnitOverviewTab(OverviewTab):
+#	widget = 'overview_war_groundunit.xml'
+#	helptext = _lazy("Groundunit overview")
+#
+#	def init_widget(self):
+#		super(GroundUnitOverviewTab, self).init_widget()
+		
 class GenericOverviewTab(OverviewTab):
 	"""Name and running costs."""
 	widget = 'overview_generic.xml'

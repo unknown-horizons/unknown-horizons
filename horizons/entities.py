@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -47,7 +47,9 @@ class _EntitiesLazyDict(dict):
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
-	Loads everything from the db."""
+	Loads grounds from the db.
+	Loads units and buildings from the object YAML files.
+	"""
 	loaded = False
 
 	log = logging.getLogger('entities')

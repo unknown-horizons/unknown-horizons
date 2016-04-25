@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Sahilde bir depo inşa et ki Serbest Tüccar gibi diğer gemiler için kolaylıkla erişebilir olsun.]
+  - [Message, ticaret gemileri ziyareti için sahile depo inşa et.]
   - '
 
 
@@ -24,63 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Bu, sizin Kaptan Günlüğü'nüz. Tüm bilgiler burada kayıtlı. Size verilen her görevin kısa bir bildirimi ekranın sol tarafında gösterilecektir.
-  - Daha detaylı bilgi almak isterseniz günlüğünüz size yardımcı olacaktır.
-  - Bu günlüğü kapattıktan sonra, ekranın sağ üst köşesindeki haritanın hemen altında bulunan "Kaptanın Günlüğü" simgesine (üzerinde mühürlü belge ve bir tüy kalem bulunan simgeye) tıklayarak yeniden açabilirsiniz.
+  - Bu, geçerli senaryo hakkında önemli bilgiler depolandığı Dergi. Her yeni görev bir özet de bir 'bildirim düğmesi' ekranın sol kenarına yakın görünür. Özet okumak, veya düğmesine kendisi Journal açmak için Tıklayın Bu bildirimler üzerine getirin.
+  - Ayrıca ekranın sağ üst köşesindeki mini-Harita, aşağıdaki butona tıklayarak herhangi bir zamanda yeniden açabilirsiniz. Bu alana mini-Harita ve çeşitli düğmeleri ve sekmeler hakkında söz edeceğiz  'Genel Bakış'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    İlk görevinizi görmek için gezinti panelindeki "Sonraki girdileri oku" düğmesine basınız! Düğme şuna benzemektedir:'
+    İlk göreviniz görmek, ters sayfanın altındaki Günlük düğmesini kullanarak bir sonraki sayfayı çevirmek için - bu gibi görünüyor:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Daha iyi anlatım, açıklanmasını istediğiniz konular ya da hatalı durumlar ile ilgili önerilerinizi lütfen bize bildirin. Öğretici oyunu birlikte geliştirelim!'
+    Eğer bu yazının geliştirilebilir hakkında herhangi bir öneriniz varsa veya herhangi bir hata ile karşılaşırsanız, lütfen bize bildirin.'
   - '
 
-    Oyun ekibine ulaşmak için www.unknown-horizons.org adresini ziyaret edin!'
-  - Haydi şimdi gerçek oyuna başlayalım.
+    Oyun ekibine danışmak ve öğrenmek için www.unknown-horizons.org adresini ziyaret edin.'
+  - ''
+  - Ve şimdi, oyun başlasın!
   - [Pagebreak]
-  - [Headline, 'YENİ GÖREV: BİR ADAYA YERLEŞ']
+  - [Headline, 'YENİ GÖREV: BİR YERLEŞİM OLUŞTURMAK']
   - [Image, content/gui/images/background/hr.png]
+  - Gemi yeni bir köy kurmak için gerekli malzemeleri ile dolu ve denizde.
   - Geminizi hareket ettirmek için öncelikle farenin sol tuşuyla gemiyi seçin, sonra da sağ tuşla gemiyi göndermek istediğiniz yere tıklayın.
-  - Sahile yeteri kadar yakın olduğunuzda, üzerinde çıpa bulunan düğme aktif hale gelecektir.
+  - Sahile yeteri kadar yakın olduğunuzda, yapı iskan düğmesi etkin hale gelecektir.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Bu, deponuzu bulunduğunuz noktada, üzerinde 'Yerleşim Yerini Kur' yazan düğmeye tıklayarak kurabileceğiniz anlamına geliyor.
-  - Şimdi imleci oynattığınızda binanızın bir ön izlemesi de harita üzerinde taşınıyor.
-  - 'Bu ön izlemenin soluk kırmızı olmadığı her noktaya binanızı kurabilirsiniz.
-
-    Binanızı kurmak istediğiniz yere tıklayın.'
+  - Bu düğmeyi tıkladığınızda Depo ön izlemesini gösterecektir, ilk bina için gerekli yeni bir çözüm buldu. İmleci hareket olduğu gibi, ön izleme binanın uygun bir alanda kırmızı gölgeli olduğunu fark edeceksiniz.
+  - Depodan iskeleye gemiler yolun kıyısında konumlandırılmış olması gerekir. Çok güzel bir yer sonra sol tuşla bu önemli bina için yer bul.
   - ''
-  - [BoldLabel, 'Görev: Sahilde bir depo inşa et.']
+  - [BoldLabel, 'Görev: deniz kıyısında bir Depo İnşa etmek.']
 
 - &LUMBERJACK
-  - [Message, Bir oduncu yapın ve yol ile deponuza bağlayın.]
-  - [Headline, 'YENİ GÖREV: BİR ODUNCU İNŞA ET']
+  - [Message, Bir oduncu çadırı kurun ve yol ile deponuza bağlayın.]
+  - [Headline, 'YENİ GÖREV: ODUNCULAR ÇADIRI KURMAK']
   - [Image, content/gui/images/background/hr.png]
-  - Geminizdeki yapı malzemesi otomatik olarak boşaltıldı. Artık bazı temel binaları inşa edebilirsiniz.
-  - Bir oduncu inşaası ile başlayacağız.
-  - Bu zorunlu bir görev çünkü bu adımda, denizcilerinizin gücünün yeteceği çadırları üzerine asmalarına yardımcı olabilecek en uç şey bu.
-  - Balıkçının da teknesini yapabilmesi için tahtaya ihtiyacı var.
+  - Malzeme ve inşaat malzemeleri gemi kaldırılmış ve güvenli bir şekilde yeni Depoda muhafaza edilmiştir. Şimdi temel bazı binalar, bir Oduncu Çadırı ile başlayan inşa etme zamanı geldi.
+  - Oduncular onların çadır etrafında sürdürülen ağaç ve kereste panoları, ticari bir kaynak olarak inşa edilmesi için veya üretmek için işleyecektir.
   - Oduncu inşa etmek için; aşağıdaki büyük düğmeye tıklayarak veya B tuşuna basarak inşa menüsünü açabilirsiniz.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - İnşa menüsü seviyeye göre sıralanır.
-  - Şu an ilk seviyedesiniz (Denizciler seviyesi) ve bu yüzden sadece temel binalar sunuluyor.
+  - Yapı menüsüne göre sıralanmış dizileri ve sizin yeni bir yerleşim yeri için İlk Kademe binaları sadece onlar kullanabilirsiniz. sizin medeniyetiniz gelişmeler olursa üst sıralardaki bina yelpazesine erişebilmek için gereklidir.
   - [Pagebreak]
-  - '
-
-    Uygarlığınız geliştikçe daha gelişmiş binaları kurabileceksiniz.'
-  - Şimdilik, 'Şirketler' bölümünde oduncu seçerek, ağaçların yoğun olduğu bir alana kurun.
-  - Daha sonra yeni ağaçlar da dikebilirsiniz, fakat bu masraflıdır. Doğanın size sağladıklarını kullanın!
-  - Bir şirketin her zaman bir depo ya da ambara yollarla bağlanması gerekir, aksi takdirde ürünler şirkette kalacak ve toplanmayacaktır.
-  - Yani oduncunuz ile herhangi bir deponuz (ya da ambarınız) arasında bir yol inşa etmeniz gerekiyor.
   - ''
-  - [BoldLabel, 'Görev: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu depoya bağlayın.']
-  - Toplayıcının gelip sizin ürettiğiniz tahtaları oduncunuzdan alışını izleyin. Oduncunuz için işçi istihdam etmenize gerek yok. Bu otomatik olarak yapılıyor.
+  - bizim Oduncu için güzel bir ormanlık alan 'Oduncu Çadırı' Bakış ve bina.binalar yer listesinden seçin bulun.
+  - Daha sonra oyun ağaç dikerek ormanlık oluşturmak isteyebilirsiniz, ama bu para maliyeti getirir, ilk önce alanları kullanmalısınız!
+  - Kaynak toplama veya üretim binasının herhangi bir yolunu depolama Depo veya başka bir form bağlamak gerekiyor, aksi halde ürettiği malları toplanmaz.
+  - Oduncu Çadırını, Yapı Menüsünü tıklatarak ve açarak kurabilirsin Depoya bağlamak ise 'Yol' butonuna basın. Şimdi tıklayın ve Oduncu Çadırı ve Depo arasındaki yolu çizmek için fare ile sürükleyebilirsiniz.
+  - ''
+  - [BoldLabel, 'Görev: ağaçlık alanda bir Oduncu Çadırı Kur ve Depo bağlayın.']
+  - Binalar bağlandıktan sonra bir koleksiyoncu yeni üretilen panoları alır ve onları ambara teslim eder, inşaat veya ticari kullanıma hazır hale gelmesi göreceksiniz.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -112,7 +105,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'YENİ GÖREV: ANA MEYDAN']
   - [Image, content/gui/images/background/hr.png]
   - Halkınız, ürünleri alıp evlerine götürmek için bir ana meydana gereksinim duyarlar.
-  - Bu nedenle de, evlerden ana meydana yol bağlantısı olmalıdır.
+  - Bu ana kare içindeki evlerinden Bir bağlantı gerekiyor demektir. Ana meydanı yol gibi davranır, bu nedenle bitişik çadır ayrı bir yol gerekmez unutmayın.
   - Deponuzdaki tüm ürünler bu 'pazar yeri'nde bulunur, halkınızın balıkçıya ve hatta deponuza yürümesine bile gerek yoktur.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -134,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Farklı seviye görünüm sekmelerinde, halkınızın istatistiklerini görebilirsiniz. Ayrıca burada, seviyeye bağlı genel vergiyi ayarlayabilir ve bu seviyenin sonraki daha yüksek seviyeye yükseltilmesine izin verebilir ve engelleyebilirsiniz.
 
 - &FIRSTTENT
-  - [Message, Bir çadır yapın ve ana meydana bağlayın.]
+  - [Message, Bir çadır yapın ve gerekirse ana meydana bağlayın.]
   - [Headline, 'YENİ GÖREV: YERLEŞİMSEL BİNALAR']
   - [Image, content/gui/images/background/hr.png]
   - Göçmenler başlarının üstünde bir çatı istiyorlar. Aksi takdirde şehrinizde yaşamayı bile düşünmeyecekler! Çadır sağlaman gerek.
@@ -145,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Eğer bu maddeler stoğunuzda az bulunuyorsa, yükseltmeyi devre dışı bırakmayı düşünün.
   - Göçmenler, ürettiğiniz tüm malları yok etmeye çalıştıklarından yararlı görünmeyebilirler, ancak en azından vergi veriyorlar ve şimdilik para kazanmanızın tek yolu bu!
   - ''
-  - [BoldLabel, 'Görev: Bir çadır kurun ve ana meydana bağlayın. Çadırların şirketlere bağlanmaları gerekmez.']
+  - [BoldLabel, 'Görev: Bir çadır kurun ve gerekirse ana meydana bağlayın. Çadırların şirketlere bağlanmaları gerekmez.']
 
 - &MORETENTS
   - [Message, En az üç tane daha çadır yapın ve ana merkeze bağlayın.]
@@ -662,4 +655,4 @@ metadata:
   locale: tr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 186 translated messages.

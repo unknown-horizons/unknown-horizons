@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ from fife import fife
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
@@ -44,6 +45,7 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
                                 NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover, GuiCancelAction)
+
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
@@ -662,7 +664,7 @@ class IngameGui(LivingObject):
 
 	def _on_mine_empty(self, message):
 		self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')
-	
+
 	def _on_gui_click_action(self, msg):
 		"""Make a sound when a button is clicked"""
 		AmbientSoundComponent.play_special('click', gain=10)

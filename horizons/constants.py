@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -72,7 +72,7 @@ class VERSION:
 	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 74
+	SAVEGAMEREVISION = 76
 	SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
 
 	@staticmethod
@@ -175,6 +175,10 @@ class BUILDINGS:
 	WINERY           = 65
 
 	WEAPONSMITH      = 66
+	CANNONFOUNDRY    = 67
+	
+	BREWERY          = 68
+	HOP_FIELD        = 69
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -290,9 +294,10 @@ class RES:
 	INDIGO           = GOLD # 86
 	GARMENTS         = GOLD # 87
 	PERFUME          = GOLD # 88
-	HOP_PLANTS       = GOLD # 89
-	HOPS             = GOLD # 90
-	# 91-99 reserved for services
+	HOP_PLANTS       = 89
+	HOPS             = 90
+	BEER             = 91
+	# 92-99 reserved for services
 	REPRESENTATION   = GOLD # 92
 	SOCIETY          = GOLD # 93
 	FAITH_2          = GOLD # 94
@@ -301,7 +306,7 @@ class RES:
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
 	FIRE             = 99
-	# 91-99 reserved for services
+	# 92-99 reserved for services
 
 class WEAPONS:
 	CANNON = RES.CANNON
@@ -370,7 +375,7 @@ class COLORS:
 	BLACK = 9
 
 class VIEW:
-	ZOOM_MAX = 1
+	ZOOM_MAX = 1.5
 	ZOOM_MIN = 0.25
 	ZOOM_DEFAULT = 1
 	ZOOM_LEVELS_FACTOR = 0.875
@@ -394,6 +399,7 @@ class PRODUCTIONLINES:
 	FRIGATE = 58
 	TREES = 256812226
 	WOOL = 1654557398
+	SWORDSMAN = 1062345232
 
 
 ## GAME-RELATED, BALANCING VALUES
@@ -622,11 +628,13 @@ LANGUAGENAMES = _LanguageNameDict({
 	"da"    : (u'Danske', u'Danish'),
 	"de"    : (u'Deutsch', u'German'),
 	"en"    : (u'English', u'English'),
+	"eo"    : (u'Esperanto', u'Esperanto'),
 	"es"    : (u'Español', u'Spanish'),
 	"et"    : (u'Eesti', u'Estonian'),
 	"el"    : (u'Ελληνικά', u'Greek'),
 	"fi"    : (u'Suomi', u'Finnish'),
 	"fr"    : (u'Français', u'French'),
+	"frp"   : (u'Francoprovençâl', u'Franco-Provencal'),
 	"ga"    : (u'Gaeilge', u'Irish'),
 	"gl"    : (u'Galego', u'Galician'),
 	"hi"    : (u'मानक हिन्दी', u'Hindi'),

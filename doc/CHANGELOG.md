@@ -3,7 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
-| 2016.1 | 74 |
+| 2015.1 | 75 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
 | 2013.2 | 71 |
@@ -18,9 +18,9 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2016-: Milestone 2016.1
+2016-04-31: Milestone 2016.1
 ----------------------------
-changelog date: NOV 22/15
+changelog date: Dec 09/15
 
 ### Gameplay and Balancing
 
@@ -35,15 +35,40 @@ New files and features
  - spice, spice plant & condiments resource icons
  - blender building
  - menü sounds (Gladius1)
+ - added menu sound from Ollo (toolmaker, market)
  - added cow, market, smith, windmill, toolmaker sounds (Gladius1)
- 
+ - added cocoafield
+ - replaced the discard icon on the trade ship widget
+ - replaced the load/unload icon on the trade ship widget
+ - added barracks
+ - added cannon production
+ - added cattlerun
+ - added brewery to the game
+ - added pioneers and citizens warehouse graphics
+ - added hop field
+ - added citizens warehouse
+ - added new mainsquare for tier4
+ - added happiness resource icon
+ - added grass ressource icon
+ - added shiny new female gfx
+ - added grain ressource icon
+ - added fire actionset and ressource icon
+ - added beer ressource icon
+ - replaced cacao and cacaobeans ressource placeholder icons
+ - added alvearies and corn ressource icon and replaced the placeholder
+ - added vines and grapes ressource gui icons
+ - added wild animal food icon
+ - added acorn ressource icon
+ - added happiness icons
+ - added warehouse building icon
+>>>>>>> master
  
 ### User Interface
 
 Fixed bugs and usability problems
  - 85d4ff4 Fix signal fire text being hidden for some longer translations.
  - #2305 No message when reassigning the same key in the settings.
- 
+ - small clean up on build menu
  
 ### Codebase
 
@@ -61,12 +86,17 @@ Fixed crashes and inconsistencies
  - #2308 Fix memory leak in the Tabwidget handling (pinkfloyda).
  - #2306 Non-hotkey settings reset if not saved.
  - #2263 Don't load savegame with nonexisting map file.
+ - #2349 Click on Main Square cause a crash
+ - #2350 Fixed bug where keyboard scrolling hanged from time to time
+ - #2352 Fix crash on missing thumbnails in unit queue
  
 
 New team members with this release, Annotations
  - Accepting bounties via bountysource now
  - We accepted pull requests or patches by:
      pinkfloyda
+     Gladius1
+     martingeiger
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
    

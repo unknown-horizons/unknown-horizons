@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -98,6 +98,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 			w.stylize('headline')
 		elif w.name.startswith("uni_") or w.comment.startswith("uni_"):
 			w.font = 'unifont'
+		elif w.name.startswith("transparent_"):
+			w.stylize('transparent')
 	if center_widget:
 		widget.position_technique = "center:center"
 

@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -260,8 +260,15 @@ def set_translations():
 	'unit_entry_widget.xml' : {
 		},
 
+	'overview_ship.xml' : {
+		(u'configure_route'              , 'helptext'): _(u"Configure trading route"),
+		(u'found_settlement'             , 'helptext'): _(u"Build settlement"),
+		(u'trade'                        , 'helptext'): _(u"Trade"),
+		},
+
 	'overview_trade_ship.xml' : {
 		(u'configure_route'              , 'helptext'): _(u"Configure trading route"),
+		(u'discard_res'                  , 'helptext'): _(u"Discard all resources"),
 		(u'found_settlement'             , 'helptext'): _(u"Build settlement"),
 		(u'trade'                        , 'helptext'): _(u"Trade"),
 		},

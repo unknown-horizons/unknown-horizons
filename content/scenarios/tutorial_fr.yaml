@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Construisez un comptoir sur la côte, ainsi il sera facilement accessible aux autres navires comme ceux du Marchand Indépendant.']
+  - [Message, Construisez un comptoir sur la côte pour rendre votre colonie accessible aux navires marchands.]
   - '
 
 
@@ -24,63 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Voici votre journal de bord où toute information importante est sauvegardée. Un court rappel de chaque tâche sera visible sur le coté gauche de l'écran.
-  - Si vous voulez une plus ample description, votre journal vous fournira toute l'aide dont vous aurez besoin.
-  - Après avoir fermé ce journal, il peut être rouvert avec l'icône « Journal de bord » en haut à droite (sous la mini-carte, avec un document cacheté et une plume).
+  - Ceci est votre journal de bord, où sont enregistrées les informations importantes du scénario en cours. Un aperçu de chaque nouvelle tâche apparaîtra sous la forme d'une "bouton de notification" sur le bord gauche de l'écran. Vous pouvez pointer votre souris sur ces notifications pour lire l'aperçu, ou bien cliquer dessus pour ouvrir le journal de bord.
+  - Vous pouvez aussi ouvrir à nouveau le Journal de Bord à n'importe quel moment en cliquant sur le bouton situé sous la mini-carte, en haut à droite de l'écran. Dorénavant, nous appellerons cette zone contenant la mini-carte et divers boutons et données la "Vue d'Ensemble".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Pour voir votre première tâche, cliquez le bouton « Lire les entrées suivantes » dans la fenêtre de navigation! Ça ressemble à ça :'
+    Pour voir votre première tâche, tournez la page du Journal de Bord en utilisant le bouton en bas de la page que vous voulez tourner - ça ressemble à ça :'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Pour toute suggestion sur une meilleure rédaction, une explication, ou pour nous rapporter un bug : N''hésitez pas à nous contacter et nous essaierons d''améliorer ce didacticiel !'
+    Si vous avez des suggestions sur l''amélioration de ce didacticiel, ou bien si des erreurs se produisent, s''il vous plaît, dîtes-le nous.'
   - '
 
-    Visitez www.unknown-horizons.org pour savoir comment contacter l''équipe !'
-  - Et maintenant, commençons la partie.
+    Visitez www.unknown-horizons.org pour trouver comment contacter l''équipe.'
+  - ''
+  - Et maintenant, commençons à jouer !
   - [Pagebreak]
-  - [Headline, 'MISSION : COLONISER UNE ÎLE']
+  - [Headline, 'MISSION : CREER UNE COLONIE']
   - [Image, content/gui/images/background/hr.png]
-  - Afin de déplacer votre bateau, sélectionnez le avec un clic gauche et cliquez droit sur la destination de votre choix.
-  - Une fois que vous êtes près de la côte, le bouton en forme d'ancre dans le panneau sommaire deviendra actif.
+  - Votre navire est à flot, chargé des ressources nécessaires à l'établissement d'une nouvelle colonie.
+  - Pour déplacer votre navire, sélectionnez le avec un clic gauche puis cliquez droit sur l'endroit où vous voulez que ce dernier vogue.
+  - Une fois que vous êtes près de la côte, le bouton "Construire une colonie" de la Vue d'Ensemble deviendra actif.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Cela signifie que vous êtes capable de construire un entrepôt ici en cliquant sur ce bouton (nommé « Fonder une colonie »).
-  - Maintenant, un aperçu de votre entrepôt devrait suivre votre curseur.
-  - 'Vous pouvez construire aux endroits où cet aperçu n’apparait pas en rouge.
-
-    Cliquez à l''endroit où vous voulez placer votre première construction.'
+  - Cliquer sur ce bouton montrera un aperçu de l'Entrepôt, le premier bâtiment requis pour fonder une nouvelle colonie. En déplaçant le curseur, vous remarquerez que l'aperçu du bâtiment est teinté de rouge quand ce dernier se trouve sur une zone inadéquate.
+  - L'Entrepôt doit se trouver sur la côte pour permettre aux navires d'accoster. Alors, trouvez un endroit qui convienne puis faites un clic gauche pour placer ce bâtiment important.
   - ''
-  - [BoldLabel, 'Mission: Établissez un comptoir sur la côte.']
+  - [BoldLabel, 'Mission: Construisez un Entrepôt sur la côte.']
 
 - &LUMBERJACK
-  - [Message, Construisez un campement de bûcheron et connectez le à votre entrepôt grâce à une route.]
-  - [Headline, 'MISSION : LE BÛCHERON']
+  - [Message, Construisez un Campement de Bûcherons et reliez-le à l'Entrepôt.]
+  - [Headline, 'MISSION : LE CAMP DE BÛCHERONS']
   - [Image, content/gui/images/background/hr.png]
-  - Les matériaux de construction de votre vaisseau sont déchargés automatiquement. Vous pouvez maintenant construire quelques bâtiments de base.
-  - Nous commencerons par établir un bûcheron.
-  - C'est essentiel car, à ce niveau, les planches sont le seul matériel que les marins peuvent s'offrir pour monter leurs tentes.
-  - Le pêcheur a également besoin de planches pour construire son bateau.
-  - Pour construire un camp de bûcheron, ouvrez le menu construction en cliquant sur le grand icône sous la mini-carte, ou en appuyant sur la touche B.
+  - Les ressources et matériaux de construction ont été déchargés de votre navire et mis à l’abri dans votre nouvel Entrepôt. Il est maintenant temps de construire quelques bâtiments de base, en commençant par un Camp de Bûcherons.
+  - Les bûcherons vont abattre des arbres des zones boisées autour de leur camp et transformer le bois obtenu en planches, qui peuvent être utilisées dans la construction ou bien vendues.
+  - Pour construire un Camp de Bûcherons, ouvrez le Menu Construction en cliquant sur le bouton sous la mini-carte, ou en appuyant sur "B" par défaut.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Le menu construction est classé par niveaux.
-  - Vous êtes actuellement au premier niveau (le niveau des Marins) et donc, seuls les bâtiments de base sont accessibles.
+  - Le Menu Construction est trié par paliers et comme votre colonie est nouvelle, seuls les bâtiments du Premier Palier vous sont accessibles; au fur et à mesure que votre civilisation avance, vous accéderez aux paliers supérieurs et aurez accès à une plus large variété de bâtiments.
   - [Pagebreak]
-  - '
-
-    Plus votre civilisation avancera et plus vous pourrez construire de bâtiments complexes.'
-  - Pour l'instant sélectionnez le camp de bûcheron dans la catégorie « Entreprises » et construisez-le dans une zone boisée.
-  - Vous pourrez aussi planter des arbres plus tard - mais cela vous coûtera de l'argent. Utilisez ce que la nature vous offre !
-  - Une entreprise nécessite une route menant à un dépôt ou un entrepôt, autrement les biens produits y resteront et ne seront pas collectés.
-  - Vous devez donc construire un sentier entre votre entrepôt (ou votre dépôt) et votre bûcheron.
   - ''
-  - [BoldLabel, 'Mission: Établissez un comptoir sur la côte.']
-  - Observez comme un collecteur va chercher vos premières planches. Ne vous préoccupez pas de recruter des employés pour le bûcheron. Cela se fait automatiquement.
+  - Trouvez une jolie place boisée pour faire travailler les bûcherons puis sélectionnez "Camp de Bûcherons" dans la liste des bâtiments de la Vue d'Ensemble et placez le bâtiment.
+  - Plus tard dans la partie, vous pourriez vouloir créer des zones boisées en plantant des arbres, mais étant donné que cela coûte de l'argent, vous devriez utiliser ce que la nature a fourni pour l'instant !
+  - N'importe quel bâtiment de récolte de ressources ou bien de production nécessite d'être connecté par un chemin à l'Entrepôt ou à une autre forme de stockage, autrement, les biens qu'il produit ne seront pas récupérés.
+  - Alors, une fois votre Camp de Bûcherons en place, connectez le à l'Entrepôt en ouvrant le Menu Construction puis en cliquant sur le bouton "Chemin". Vous pouvez maintenant cliquer-déplacer votre souris pour dessiner l'itinéraire de votre chemin entre le Camp de Bûcherons et l'Entrepôt.
+  - ''
+  - [BoldLabel, 'Mission: Construisez un Camp de Bûcherons dans une zone boisée et reliez-le à l''Entrepôt.']
+  - Une fois les bâtiments reliés, vous verrez un transporteur arriver pour embarquer les planches fraîchement produites et les livrer à l'Entrepôt, prêtes à servir pour construire ou bien être vendues.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -112,7 +105,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'MISSION : LA PLACE PRINCIPALE']
   - [Image, content/gui/images/background/hr.png]
   - Vos habitants ont besoin d'une place principale où ils trouveront des biens de consommation.
-  - Cela signifie qu'il leur faudra un sentier menant des habitations à la place principale.
+  - Cela signifie qu'il leur faudra un sentier reliant leurs habitations à la place principale. Notez que la place principale agit elle même comme un chemin, ainsi, les tentes adjacentes n'ont pas besoin d'un sentier séparé.
   - Toutes les marchandises de votre entrepôt sont disponibles à ce « marché », donc vos habitants n'ont pas besoin d'aller chez le pêcheur ou même jusqu'à l'entrepôt.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -134,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dans les différents onglets de sélection de niveaux vous pouvez voir des statistiques sur vos habitants. Vous pouvez également définir le niveau global de taxe spécifique et autoriser ou refuser aux habitants de ce niveau de passer au niveau suivant.
 
 - &FIRSTTENT
-  - [Message, Construisez une tente et connectez-la à la place principale.]
+  - [Message, Construisez une tente et connectez-la à la place principale si c'est nécessaire.]
   - [Headline, 'MISSION : LES HABITATIONS']
   - [Image, content/gui/images/background/hr.png]
   - Les colons veulent avoir un toit au dessus de la tête, autrement ils ne penseront même pas à venir vivre dans votre ville ! Vous devez leurs fournir des tentes.
@@ -145,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Envisagez d'interdire les améliorations si vos stocks de matériaux sont faibles.
   - Les colons peuvent sembler peu ou pas très utiles dans la mesure où ils essaieront de consommer tout les biens que vous produirez mais, au moins, ils paient les taxes et c'est votre seule façon de gagner de l'argent pour le moment !
   - ''
-  - [BoldLabel, 'Mission : Construisez une tente et connectez-la à la place principale. Les tentes n''ont pas besoin d''être connectées aux entreprises.']
+  - [BoldLabel, 'Mission : Construisez une tente et reliez-la à la place principale si c''est nécessaire. Les tentes n''ont pas besoin d''être reliées aux bâtiments de production.']
 
 - &MORETENTS
   - [Message, Construisez 3 tentes supplémentaires et reliez-les à la place principale.]
@@ -260,7 +253,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     L''amélioration de l''habitation coûte des ressources et peut être limitée depuis la place principale.'
-  - Comme vous pouvez l'observer chez le bûcheron il existe aussi des améliorations gratuites. Dans ce cas uniquement l'image du bâtiment est changée.
+  - Il existe aussi des améliorations gratuites, tel que vous le verrez avec le Camp de Bûcherons. Dans ce cas, seule l'apparence du bâtiment change.
   - Les logements améliorés peuvent héberger plus d'habitants et, de plus, les pionniers paient plus de taxes que les marins.
   - Comme vous l'avez peut-être constaté, le désavantage est que les pionniers demandent des biens supplémentaires dont les marins n'ont pas besoin - vous devrez donc dépenser cet argent supplémentaire pour les satisfaire également.
   - ''
@@ -662,4 +655,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 186 translated messages.

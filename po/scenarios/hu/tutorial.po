@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 23:41+0100\n"
+"POT-Creation-Date: 2015-12-02 23:38+0100\n"
 "PO-Revision-Date: 2015-04-10 00:40+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian "
-"<https://hosted.weblate.org/projects/uh/tutorial/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/tutorial/hu/"
+">\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,9 +31,12 @@ msgstr ""
 "Építsd fel az első telepedet és tanuld meg hogyan kell játszani!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid ""
+#| "Build a warehouse at the coast, so it is easily accessible for other "
+#| "ships like the Free Trader."
 msgid ""
-"Build a warehouse at the coast, so it is easily accessible for other ships "
-"like the Free Trader."
+"Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
 "Építs egy raktárat a tengerpartra, így könnyen megközelíthető a többi "
 "kereskedő, mint például a szabad kereskedő számára."
@@ -44,35 +47,31 @@ msgstr "Üdvözöl az Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is your Captain's log where all important information is stored. A "
-"short notification of each task will be provided on the left of the screen."
+"This is your Journal, where important information about the current scenario "
+"is stored. A summary of each new task will also appear as a 'notification "
+"button' near the left-hand edge of the screen. You can hover your mouse over "
+"these notifications to read the summary, or click the button itself to open "
+"the Journal."
 msgstr ""
-"Ez a kapitányod naplója, ahol az összes fontos információ elérhető. A "
-"képernyő bal szélén minden teendőről értesítés jelenik meg."
 
 #. This is the text body of a logbook page.
 msgid ""
-"If you are interested in longer descriptions, your log will hopefully "
-"provide all the help you need."
+"You can also re-open the Journal at any time by clicking the button below "
+"the mini-map, at the top right of your screen. From now on we'll refer to "
+"this area containing the mini-map and various buttons and tabs as the "
+"'Overview'."
 msgstr ""
-"Amennyiben hosszabb leírás szükséges, a napló remélhetőleg segítséget tud "
-"nyújtani."
 
 #. This is the text body of a logbook page.
-msgid ""
-"After you close this log, it can be re-opened with the \"Captain's Log\" "
-"icon in the top-right corner (below the mini-map, with a sealed document and "
-"a feather)."
-msgstr ""
-"Miután bezárod a naplót, a jobb felső sarokban lévő \"Kapitány naplója\" (a "
-"kis térkép alatt, egy lepecsételt mappával és egy tollal ellátott ikon) "
-"ikonnal újra megnyitható."
-
-#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "To see your first task, click on the button \"Read next entries\" in the "
+#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
-"To see your first task, click on the button \"Read next entries\" in the "
-"navigation panel! It looks like this:"
+"To see your first task, turn to the next page of the Journal using the "
+"button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
 "Az első feladathoz kattints a \"Következő bejegyzés elolvasása\" gombra a "
@@ -81,174 +80,166 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
-"For any suggestions on better wording, topics you would like to have "
-"explained or even buggy conditions: Please tell us and we will try to "
-"improve the tutorial!"
+"If you have any suggestions about how this tutorial can be improved, or if "
+"you encounter any errors, please tell us."
 msgstr ""
-"\n"
-"A szókincs javításával, illetve témákkal, bugokkal kapcsolatosan: Kérjük "
-"oszd meg velünk, hogy ezáltal jobbá tehessük a bevezetőt!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
-"Visit www.unknown-horizons.org for help on how to contact the team!"
+"Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
 "Látogasd meg a www.unknown-horizons.org oldalt, hogy megtudd, hogyan veheted "
 "fel a kapcsolatot a csapattal!"
 
 #. This is the text body of a logbook page.
-msgid "And now, let's start the actual game."
+#, fuzzy
+#| msgid "And now, let's start the actual game."
+msgid "And now, let's start the game!"
 msgstr "És most, kezdjük el a játékot."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: SETTLE ON AN ISLAND"
+#, fuzzy
+#| msgid "NEW TASK: SETTLE ON AN ISLAND"
+msgid "NEW TASK: CREATE A SETTLEMENT"
 msgstr "Új feladat: Telepedj le!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"To move your ship, select it with a left click and right click on the "
-"location you want it to go to."
+"Your ship is at sea, loaded with the supplies you'll need to establish a new "
+"settlement."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "To move your ship, select it with a left click and right click on the "
+#| "location you want it to go to."
+msgid ""
+"To move your ship, select it with a left-click then right-click on the "
+"location you want it to sail to."
 msgstr ""
 "A hajó mozgatásához válaszd ki bal egérgombbal, majd jobb egérgombbal "
 "kattints oda, ahova el szeretnél jutni."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Once you are near the coast, the anchor-like button you see in the "
+#| "overview tab will become active."
 msgid ""
-"Once you are near the coast, the anchor-like button you see in the overview "
-"tab will become active."
+"Once you're near the coast, the 'Build Settlement' button in the overview "
+"will become active."
 msgstr ""
 "Amint egy part közelébe érsz, a vasmacskaszerű gomb aktívvá válik az "
 "áttekintő fülön."
 
 #. This is the text body of a logbook page.
 msgid ""
-"This indicates that you are able to build a warehouse there by pressing that "
-"button (called 'Build Settlement')."
+"Clicking this button will show a preview of the Warehouse, the first "
+"building required to found a new settlement. As you move the cursor around, "
+"you'll notice that the preview is shaded red when the building is in an "
+"unsuitable area."
 msgstr ""
-"Ez azt jelzi, hogy fel tudsz építeni egy raktárházat a gomb megnyomásával ("
-"'Település létrehozása' gomb)."
 
 #. This is the text body of a logbook page.
 msgid ""
-"Now a preview of your building is dragged around when you move the cursor."
-msgstr "Az épület előnézetét húzod körbe, amikor a kurzort mozgatod."
-
-#. This is the text body of a logbook page.
-msgid ""
-"You can build on any spot where this preview is not shaded red.\n"
-"Click where you want to place your first building."
+"The Warehouse needs to be positioned on the coast to allow ships to dock. "
+"So, find a good location then left-click to place this important building."
 msgstr ""
-"Bárhova építheted, ahol az előnézet nem pirossal van árnyékolva.\n"
-"Kattints oda, ahova építeni szeretnéd az első épületed."
 
 #. This is the text body of a logbook page.
 #, fuzzy
 #| msgid "Build a warehouse at the coast."
-msgid "Task: Build a warehouse at the coast."
+msgid "Task: Build a Warehouse on the coast."
 msgstr "Építs egy fiókirodást a partra."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a lumberjack and connect it to the warehouse using a trail."
+#, fuzzy
+#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
+msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
 msgstr "Építs egy favágóházat és csatlakoztass hozzá a raktárból egy utat."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A LUMBERJACK"
+#, fuzzy
+#| msgid "NEW TASK: BUILD A LUMBERJACK"
+msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
 msgstr "ÚJ FELADAT: ÉPÍTS FEL EGY FAVÁGÓT"
 
 #. This is the text body of a logbook page.
 msgid ""
-"The construction material on your ship got unloaded automatically. You can "
-"now construct some basic buildings."
+"The supplies and construction materials have been unloaded from your ship "
+"and safely stored in your new Warehouse. Now it's time to construct some "
+"basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
-"Az építéshez szükséges nyersanyagok a hajódról automatikusan kirakodásra "
-"kerültek. Most tudsz építeni pár alap épületet."
-
-#. This is the text body of a logbook page.
-msgid "We will start with building a lumberjack."
-msgstr "Egy favágó építésével fogjuk kezdeni."
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is essential because, at this stage, boards are the only poles your "
-"sailors can afford to hang their tents over."
+"Lumberjacks will fell trees from the woodland around their tent and process "
+"the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
 
 #. This is the text body of a logbook page.
-msgid "The fisherman needs some boards to build his vessel as well."
-msgstr ""
-"A halásznak is szüksége van néhány deszkára, hogy megépíthesse a csónakját."
-
-#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "In order to construct lumberjacks; open the build menu by either clicking "
+#| "the big icon below the mini map or pressing B key."
 msgid ""
-"In order to construct lumberjacks; open the build menu by either clicking "
-"the big icon below the mini map or pressing B key."
+"To build a Lumberjack's Tent, open the Build Menu by clicking the button "
+"below the mini map or pressing 'B', the default hotkey."
 msgstr ""
 "A favágó megépítéséhez nyisd meg az építési menüt egy kattintással a nagy "
 "ikonon a minitérkép alatt, vagy a B billentyű lenyomásával."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-msgid "The build menu is sorted by tiers."
-msgstr "Az építési menü szintenként van sorba rendezve."
-
-#. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
-"You are currently in the first tier (the Sailors level) so are offered only "
-"the basic buildings."
+"The Build Menu is sorted by tiers and, as yours is a new settlement, First "
+"Tier buildings are the only ones available to you; as your civilization "
+"advances, you will obtain access to higher tiers and be able to construct a "
+"much wider range of buildings."
 msgstr ""
-"Jelenleg te az első szinten vagy (a Tengerész szinten), tehát csak az alap "
-"épületek elérhetőek."
 
 #. This is the text body of a logbook page.
 msgid ""
-"\n"
-"As your civilization advances, you also gain more and more complex buildings."
+"Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
+"Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
-"\n"
-"Ahogy a civilizációd fejlődik, komplexebbnél komplexebb épületek kapsz."
 
 #. This is the text body of a logbook page.
 msgid ""
-"For now, select the lumberjack under 'Companies' and build it in an area "
-"with some trees around."
+"Later in the game you might want to create woodland by planting trees, but "
+"since that costs money, you should use what nature has provided for the time "
+"being!"
 msgstr ""
-"Most, válaszd ki a favágót a 'Vállalatok' csoportból, és építs egyet ahol "
-"több fa van."
 
 #. This is the text body of a logbook page.
 msgid ""
-"You can also plant trees later - but that costs money. Use what nature "
-"provided you with!"
+"Any resource-gathering or production building needs a path connecting it to "
+"a Warehouse or other form of storage, otherwise the goods it produces will "
+"not be collected."
 msgstr ""
-"Később még tudsz fákat ültetni - de pénzbe kerül. Használd, amit a természet "
-"biztosított!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"A company always needs a trail connection to a storage or warehouse, "
-"otherwise goods will remain at the company and not be collected."
+"So, once your Lumberjack's Tent is in position, connect it to your Warehouse "
+"by opening the Build Menu then clicking the 'Path' button. You can now click "
+"and drag with the mouse to draw the route of your path between the "
+"Lumberjack's Tent and the Warehouse."
 msgstr ""
-"Egy vállalkozásnak mindig szüksége van egy nyomvonalra a raktárhoz, vagy a "
-"raktárházhoz. Különben a termékek a vállalkozásban maradnak és nem lesznek "
-"begyűjtve."
-
-#. This is the text body of a logbook page.
-msgid ""
-"This means that you have to build a trail connecting your warehouse (or "
-"storage) and lumberjack."
-msgstr ""
-"Ez azt jelenti, hogy építened kell egy utat, hogy összekösd a raktárházat "
-"(vagy raktárat) és a favágót."
 
 #. This is the text body of a logbook page.
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a lumberjack in a wooded area and connect it to a road."
-msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
+msgid ""
+"Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
+"Warehouse."
 msgstr ""
 "\n"
 "FELADAT: Építs egy favágót egy fás területre, majd úttal kösd össze a "
@@ -256,12 +247,10 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"Watch how a collector will fetch your first self-produced boards. Don't "
-"worry about recruiting workers for the lumberjack. That happens "
-"automatically."
+"Once the buildings are connected you'll see a collector arrive to pick up "
+"your newly produced boards and deliver them to the Warehouse, ready for use "
+"in  construction or trade."
 msgstr ""
-"Nézd a begyűjtőt, hogyan gyűjti be az első saját termelésű deszkákat. Ne "
-"aggódj a favágó munkásainak verbuválása miatt, ez automatikusan történik."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -367,9 +356,14 @@ msgstr ""
 "A lakosoknak egy főtérre van szükségük, ahonnan termékeket tudnak hazavinni."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that they need a trail connection from their home to the main "
+#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the main "
-"square."
+"square. Note that the main square acts as trail as well, therefore adjacent "
+"tents do not need a separate trail."
 msgstr ""
 "Ez annyit jelent, hogy össze kell kötni az otthonaikat és a főteret egy "
 "úttal."
@@ -451,7 +445,9 @@ msgstr ""
 "szintre."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a tent and connect it to the main square."
+#, fuzzy
+#| msgid "Build a tent and connect it to the main square."
+msgid "Build a tent and connect it to the main square if necessary."
 msgstr "Építs egy sátrat, és csatlakoztasd a főtérhez."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -498,13 +494,13 @@ msgstr ""
 "szerzésére."
 
 #. This is the text body of a logbook page.
+#, fuzzy
 #| msgid ""
-#| "\n"
-#| "TASK: Build a tent and connect it to the main square. Tents dont need to "
+#| "Task: Build a tent and connect it to the main square. Tents dont need to "
 #| "be connected to any of the companies."
 msgid ""
-"Task: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies."
+"Task: Build a tent and connect it to the main square if necessary. Tents "
+"don't need to be connected to any of the companies."
 msgstr ""
 "Feladat: Építs egy sátrat és kösd össze a főtérrel. A sátraknak nem kell "
 "összeköttetésben lenniük a gazdasági épületekkel."
@@ -1289,6 +1285,130 @@ msgstr ""
 "Köszönöm hogy végigjátszottad a gyakorlást!\n"
 "\n"
 "A te UH-Csapatod"
+
+#~ msgid ""
+#~ "This is your Captain's log where all important information is stored. A "
+#~ "short notification of each task will be provided on the left of the "
+#~ "screen."
+#~ msgstr ""
+#~ "Ez a kapitányod naplója, ahol az összes fontos információ elérhető. A "
+#~ "képernyő bal szélén minden teendőről értesítés jelenik meg."
+
+#~ msgid ""
+#~ "If you are interested in longer descriptions, your log will hopefully "
+#~ "provide all the help you need."
+#~ msgstr ""
+#~ "Amennyiben hosszabb leírás szükséges, a napló remélhetőleg segítséget tud "
+#~ "nyújtani."
+
+#~ msgid ""
+#~ "After you close this log, it can be re-opened with the \"Captain's Log\" "
+#~ "icon in the top-right corner (below the mini-map, with a sealed document "
+#~ "and a feather)."
+#~ msgstr ""
+#~ "Miután bezárod a naplót, a jobb felső sarokban lévő \"Kapitány naplója"
+#~ "\" (a kis térkép alatt, egy lepecsételt mappával és egy tollal ellátott "
+#~ "ikon) ikonnal újra megnyitható."
+
+#~ msgid ""
+#~ "\n"
+#~ "For any suggestions on better wording, topics you would like to have "
+#~ "explained or even buggy conditions: Please tell us and we will try to "
+#~ "improve the tutorial!"
+#~ msgstr ""
+#~ "\n"
+#~ "A szókincs javításával, illetve témákkal, bugokkal kapcsolatosan: Kérjük "
+#~ "oszd meg velünk, hogy ezáltal jobbá tehessük a bevezetőt!"
+
+#~ msgid ""
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement')."
+#~ msgstr ""
+#~ "Ez azt jelzi, hogy fel tudsz építeni egy raktárházat a gomb megnyomásával "
+#~ "('Település létrehozása' gomb)."
+
+#~ msgid ""
+#~ "Now a preview of your building is dragged around when you move the cursor."
+#~ msgstr "Az épület előnézetét húzod körbe, amikor a kurzort mozgatod."
+
+#~ msgid ""
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building."
+#~ msgstr ""
+#~ "Bárhova építheted, ahol az előnézet nem pirossal van árnyékolva.\n"
+#~ "Kattints oda, ahova építeni szeretnéd az első épületed."
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings."
+#~ msgstr ""
+#~ "Az építéshez szükséges nyersanyagok a hajódról automatikusan kirakodásra "
+#~ "kerültek. Most tudsz építeni pár alap épületet."
+
+#~ msgid "We will start with building a lumberjack."
+#~ msgstr "Egy favágó építésével fogjuk kezdeni."
+
+#~ msgid "The fisherman needs some boards to build his vessel as well."
+#~ msgstr ""
+#~ "A halásznak is szüksége van néhány deszkára, hogy megépíthesse a "
+#~ "csónakját."
+
+#, fuzzy
+#~ msgid "The build menu is sorted by tiers."
+#~ msgstr "Az építési menü szintenként van sorba rendezve."
+
+#, fuzzy
+#~ msgid ""
+#~ "You are currently in the first tier (the Sailors level) so are offered "
+#~ "only the basic buildings."
+#~ msgstr ""
+#~ "Jelenleg te az első szinten vagy (a Tengerész szinten), tehát csak az "
+#~ "alap épületek elérhetőek."
+
+#~ msgid ""
+#~ "\n"
+#~ "As your civilization advances, you also gain more and more complex "
+#~ "buildings."
+#~ msgstr ""
+#~ "\n"
+#~ "Ahogy a civilizációd fejlődik, komplexebbnél komplexebb épületek kapsz."
+
+#~ msgid ""
+#~ "For now, select the lumberjack under 'Companies' and build it in an area "
+#~ "with some trees around."
+#~ msgstr ""
+#~ "Most, válaszd ki a favágót a 'Vállalatok' csoportból, és építs egyet ahol "
+#~ "több fa van."
+
+#~ msgid ""
+#~ "You can also plant trees later - but that costs money. Use what nature "
+#~ "provided you with!"
+#~ msgstr ""
+#~ "Később még tudsz fákat ültetni - de pénzbe kerül. Használd, amit a "
+#~ "természet biztosított!"
+
+#~ msgid ""
+#~ "A company always needs a trail connection to a storage or warehouse, "
+#~ "otherwise goods will remain at the company and not be collected."
+#~ msgstr ""
+#~ "Egy vállalkozásnak mindig szüksége van egy nyomvonalra a raktárhoz, vagy "
+#~ "a raktárházhoz. Különben a termékek a vállalkozásban maradnak és nem "
+#~ "lesznek begyűjtve."
+
+#~ msgid ""
+#~ "This means that you have to build a trail connecting your warehouse (or "
+#~ "storage) and lumberjack."
+#~ msgstr ""
+#~ "Ez azt jelenti, hogy építened kell egy utat, hogy összekösd a raktárházat "
+#~ "(vagy raktárat) és a favágót."
+
+#~ msgid ""
+#~ "Watch how a collector will fetch your first self-produced boards. Don't "
+#~ "worry about recruiting workers for the lumberjack. That happens "
+#~ "automatically."
+#~ msgstr ""
+#~ "Nézd a begyűjtőt, hogyan gyűjti be az első saját termelésű deszkákat. Ne "
+#~ "aggódj a favágó munkásainak verbuválása miatt, ez automatikusan történik."
 
 #~ msgid ""
 #~ "\n"

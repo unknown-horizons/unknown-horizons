@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -42,7 +42,7 @@ class SignalFireOverviewTab(OverviewTab):
 
 	def init_widget(self):
 		super(SignalFireOverviewTab, self).init_widget()
-		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image

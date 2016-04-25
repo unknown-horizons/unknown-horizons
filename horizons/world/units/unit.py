@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,6 +30,7 @@ from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.constants import LAYERS
+from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.healthcomponent import HealthComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
@@ -222,6 +223,9 @@ class Unit(MovingObject, ResourceTransferHandler):
 			if path:
 				return (possible_target, path)
 		return (None, None)
+
+	def go(self, x, y):
+		self.get_component(CommandableComponent).go(x, y)
 
 	@property
 	def classname(self):

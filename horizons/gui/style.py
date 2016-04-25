@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -111,4 +111,12 @@ STYLES = {
 		},
 },
 
+'transparent': { # style for transparent widgets
+		'default': {
+			'background_color': Color(0, 0, 0, 0),
+		},
+		'ScrollArea': {
+			'background_color': Color(0, 0, 0, 0),
+		},
+},
 }

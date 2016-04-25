@@ -14,7 +14,7 @@ tab1:
 - # third row
   - _ Companies
   - BUILDINGS.LUMBERJACK
-  - BUILDINGS.TREE
+#  - BUILDINGS.TREE
   - BUILDINGS.HUNTER
   - BUILDINGS.FISHER
 
@@ -64,11 +64,8 @@ tab3:
   - _ Services
   - BUILDINGS.TAVERN
   - BUILDINGS.DOCTOR
-  - _ Military
-  - BUILDINGS.WEAPONSMITH
-#  - BUILDINGS.BARRACKS
+  - BUILDINGS.BREWERY
 #  - # empty slot
-
 
 tab4:
 - icon: icons/tabwidget/buildmenu/tier/tier4
@@ -77,14 +74,23 @@ tab4:
   - BUILDINGS.WINDMILL
   - BUILDINGS.BAKERY
   - BUILDINGS.WINERY
-#  - BUILDINGS.PASTRY_SHOP
+  - BUILDINGS.PASTRY_SHOP
 -
   - _ Fields
   - BUILDINGS.CORN_FIELD
-#  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.COCOA_FIELD
   - BUILDINGS.VINEYARD
   - BUILDINGS.ALVEARIES
-
+-
+  - _ Fields
+  - BUILDINGS.HOP_FIELD
+  - BUILDINGS.STONE_PIT #ToDo
+  - BUILDINGS.STONEMASON #ToDo
+-
+  - _ Military
+  - BUILDINGS.WEAPONSMITH
+  - BUILDINGS.CANNONFOUNDRY
+  - BUILDINGS.BARRACKS 
 
 meta:
   unlocking_strategy: tab_per_tier

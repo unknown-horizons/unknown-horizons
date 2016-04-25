@@ -4,6 +4,7 @@
 * Kilian] (Kilian Köppchen)
 * Nightraven (Tobias Schroefel)
 * Nihathrael (Thomas Kinnen)
+* LinuxDonald (Thomas Kowaliczek)
 
 #### Programming
 * ChrisOelmueller (Christopher Oelmueller)
@@ -115,6 +116,9 @@
 #### Hosting Weblate
 * Michal Čihař (nijel)
 
+#### Afrikaans
+* Alexandre Bezerra
+
 #### Bulgarian
 * Bojana
 * Nikolai Nikolov
@@ -124,6 +128,8 @@
 * Àngel Mompó Llovet
 * josep constanti
 * Xavier Muntada Samà
+* Joan Josep
+* Josep Constanti
 
 #### Catalan (Valencia)
 * Àngel Mompó Llovet
@@ -232,14 +238,15 @@
 * supercracker111
 
 #### Hungarian
+* Balázs Úr (urbalazs)
+* Bence Nagy (nagybence)
 * Lipták Krisztián
 * Lorant Perger
-* Bence Nagy (nagybence)
 * matyi
 * probert
 * Szabolcs Tóth
 * Szontágh Ferenc (ghostarthour)
-* urbalazs
+
 
 #### Indonesian
 * alamswijaya
@@ -274,10 +281,14 @@
 * Sebastian Sohn
 * Wooyoung Cho
 
+#### Latvian
+* Ronalds
+
 #### Lithuanian
 * Jur Kis
 * Mantas Kondrotas (Anielius)
 * Mantas Kriaučiūnas
+* Pilypas Kriauciunas
 
 #### Malayalam
 * Cebin Joseph Benny
@@ -289,14 +300,17 @@
 * Daniel Andre
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
+* Kurt Eilertsen
 
 #### Dutch
+* Damian Bodde
 * Dieter Adriaenssens
 * Jasper Tepper (Shadow23)
 * Joenit S. (joenit)
 * Luth
 * mightykai
 * Nick Z. (angellus)
+* Niels Breuker
 * NiLSPACE
 * Ruud Jacobs (MrRuudJ)
 * Sander Hasenpflug (SanderOnline)
@@ -309,6 +323,7 @@
 * Adrian Marcinkowski (Amfidiusz)
 * Eerozeteen
 * Gilead
+* Grzegorz Cora
 * Jan Krzysztof Zawadzki (kzawadzki)
 * janczarny
 * Lemoid
@@ -319,6 +334,7 @@
 * Piotr Gredka
 * Piotr Strebski
 * Premislaus
+* Rafał Michalski
 * Robert Matusewicz (matekm)
 * Robert Mitwicki (mtfk)
 * Stanislaw Gackowski (soeb)
@@ -329,6 +345,7 @@
 * Guilherme Nogueira
 * João Sena Cardoso
 * Joel Santinho
+* José Gil
 * Luis Coehlo
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
@@ -374,6 +391,9 @@
 * Владимир Хоменко
 * Вячеслав Гостюхин (scazy)
 
+#### Serbian
+* Slobodan Simić (Слободан Симић)
+
 #### Slovenian
 * Andrej Žnidaršič (andrejz)
 
@@ -409,8 +429,6 @@
 * Yes Stone
 * Ezjerry Liao
 
-#### Afrikaans
-* Alexandre Bezerra
 
 ## Packagers ##
 
