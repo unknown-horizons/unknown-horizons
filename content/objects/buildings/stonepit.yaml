@@ -8,7 +8,7 @@ size_x: 3
 size_y: 3
 inhabitants: 1
 tooltip_text: _ Gets stone from a mountain.
-tier: TIER.SETTLERS
+tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
 components:
 - SelectableComponent:
@@ -29,6 +29,6 @@ components:
       SlotsStorage:
         slot_sizes: {RES.STONE_DEPOSIT: 1000000, RES.STONE_TOPS: 8}
 actionsets:
-  TIER.SETTLERS:
+  TIER.CITIZENS:
     as_3x3:
     #as_stone_pit0:
