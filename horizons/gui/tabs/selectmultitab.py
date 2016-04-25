@@ -199,7 +199,7 @@ class UnitEntry(object):
 		i = instances[0]
 		if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 			# A building. Generate dynamic thumbnail from its action set.
-			imgs = ActionSetLoader.get_sets()[i._action_set_id].items()[0][1]
+			imgs = ActionSetLoader.get_set(i._action_set_id).items()[0][1]
 			thumbnail = imgs[45].keys()[0]
 		else:
 			# Units use manually created thumbnails because those need to be

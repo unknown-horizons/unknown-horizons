@@ -98,6 +98,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 			w.stylize('headline')
 		elif w.name.startswith("uni_") or w.comment.startswith("uni_"):
 			w.font = 'unifont'
+		elif w.name.startswith("transparent_"):
+			w.stylize('transparent')
 	if center_widget:
 		widget.position_technique = "center:center"
 

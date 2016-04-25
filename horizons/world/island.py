@@ -369,11 +369,12 @@ class Island(BuildingOwner, WorldObject):
 			coords = building.position.origin.to_tuple()
 			if coords in self.deposits[building.id]:
 				del self.deposits[building.id][coords]
-		if building.settlement is not None:
+		settlement = building.settlement
+		if settlement is not None:
 			if building.id in BUILDINGS.EXPAND_RANGE:
 				self.remove_settlement(building)
-			building.settlement.remove_building(building)
-			assert building not in building.settlement.buildings
+			settlement.remove_building(building)
+			assert building not in settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:
