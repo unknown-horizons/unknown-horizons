@@ -30,7 +30,7 @@ components:
       SlotsStorage:
         slot_sizes: {RES.IRON_INGOTS: 4, RES.BOARDS: 4, RES.TOOLS: 8, RES.CHARCOAL: 4}
 - AmbientSoundComponent:
-    soundfiles: [content/audio/sounds/smith_1.ogg]
+    soundfiles: [content/audio/sounds/smith.ogg]
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
