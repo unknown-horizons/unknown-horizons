@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-04-18 14:56+0200\n"
-"Last-Translator: Pilypas Kriauciunas <pilypaskriauciunas91@gmail.com>\n"
-"Language-Team: Lithuanian <https://hosted.weblate.org/projects/uh/tutorial/"
-"lt/>\n"
+"PO-Revision-Date: 2016-04-20 18:53+0000\n"
+"Last-Translator: Ieva Urbanaviciute <ieva.urbanaviciute@yahoo.com>\n"
+"Language-Team: Lithuanian "
+"<https://hosted.weblate.org/projects/uh/tutorial/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.6-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -33,15 +33,14 @@ msgstr ""
 "Įkurkite savo pirmąją gyvenvietę bei išmokite žaisti!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid ""
 #| "Build a warehouse at the coast, so it is easily accessible for other "
 #| "ships like the Free Trader."
 msgid ""
 "Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
-"Pastatykite sandėlį pakrantėje, tuomet jis bus lengvai pasiekiamas kitiems "
-"laivams kaip „Nepriklausomas Pirklys“."
+"Pastatykite sandėlį pakrantėje, kad prekybos laivai galėtų apsilankyti jūsų "
+"gyvenvietėje."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -55,6 +54,11 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"Čia jūsų Žurnalas, kuriame saugoma svarbi su dabartiniu scenarijumi susijusi "
+"informacija. Apie kiekvienos naujos užduoties santrauką taip pat įspės „"
+"pranešimo mygtukas“ šalia kairiojo ekrano krašto. Užveskite pelės žymeklį "
+"ant šio pranešimo, norėdami perskaityti santrauką, arba spustelėkite patį "
+"mygtuką, norėdami atverti Žurnalą."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -63,9 +67,12 @@ msgid ""
 "this area containing the mini-map and various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Bet kuriuo metu galite iš naujo atverti Žurnalą spustelėdami po sumažintu "
+"žemėlapiu, ekrano dešiniajame krašte esantį mygtuką. Toliau ši sritis, "
+"kurioje yra mažasis žemėlapis, įvairūs mygtukai ir skirtukai, bus vadinama "
+"„Apžvalga“."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "To see your first task, click on the button \"Read next entries\" in the "
@@ -76,8 +83,8 @@ msgid ""
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"Jei norite pamatyti savo pirmąją užduotį, spustelėkite mygtuką \"Skaityti "
-"sekančius įrašus\" navigacijos skydelyje! Ji atrodo taip:"
+"Jei norite pamatyti savo pirmąją užduotį, atverskite kitą Žurnalo puslapį "
+"naudodami priešais esančio puslapio apačioje esantį mygtuką. Jis atrodo taip:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -85,33 +92,38 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"Jei turite pasiūlymų, kaip patobulinti šį mokomąjį žaidimą, arba jei randate "
+"klaidų, prašome pranešti mums."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
+"\n"
+"Apsilankykite www.unknown-horizons.org ir sužinokite, kaip susisiekti su "
+"žaidimo komanda."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
-msgstr "O dabar pradėkime tikrą žaidimą."
+msgstr "O dabar pradėkime žaidimą!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 #| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "NAUJA UŽDUOTIS: Įsikurkite saloje"
+msgstr "NAUJA UŽDUOTIS: ĮKURKITE GYVENVIETĘ"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Jūsų laivas jūroje, pakrautas resursais, kurių jums prireiks norint įkurti "
+"naują gyvenvietę."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "To move your ship, select it with a left click and right click on the "
 #| "location you want it to go to."
@@ -119,14 +131,17 @@ msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
-"Norėdami nuplukdyti laivą į kitą vietą paspauskite ant jo kairį pelės "
-"mygtuką, o tada paspauskite ant norimos vietos dešinį mygtuką."
+"Norėdami perkelti laivą į kitą vietą, spustelėkite jį kairiuoju pelės "
+"mygtuku, o tada paspauskite dešinį pelės mygtuką ant tos vietos, į kurią "
+"norite nuplaukti."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
+"Kai būsite netoli pakrantės, apžvalgos mygtukas „Pastatyti gyvenvietę“ taps "
+"aktyvus."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -135,31 +150,34 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Spustelėjus šį mygtuką bus rodoma Sandėlio, pirmojo pastato, reikalingo "
+"įkurti naują gyvenvietę, peržvalga. Perkeldami žymeklį, pastebėsite, kad, "
+"pastatą nukreipus į netinkamą sritį, peržvalgos vaizdas yra užtušuotas "
+"raudonai."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Sandėlys turi būti pastatytas pakrantėje, kad laivai galėtų priplaukti. "
+"Todėl paieškokite tinkamos vietos ir paspauskite kairįjį pelės klavišą, kad "
+"pastatytumėte šį svarbų pastatą."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
-msgstr "Užduotis: Pakrantėje pastatykite sandėlį."
+msgstr "Užduotis: Pakrantėje pastatykite Sandėlį."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
-"UŽDUOTIS: Miškingoje vietoje pastatykite lentpjūvę ir sujunkite ją su keliu."
+msgstr "Pastatykite Lentpjūvę ir sujunkite ją su Sandėliu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 #| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "NAUJA UŽDUOTIS: Pastatyti Lentpjūvę"
+msgstr "NAUJA UŽDUOTIS: PASTATYKITE MEDKIRČIO PALAPINĘ"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -167,18 +185,27 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Resursai ir statybinės medžiagos buvo iškrauti iš jūsų laivo ir saugiai "
+"laikomi jūsų naujajame Sandėlyje. Dabar jau galite statyti kai kuriuos "
+"pagrindinius pastatus, pradėdami nuo Medkirčio palapinės."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Medkirčiai kirs medžius aplink jų palapinę esančioje miškingoje vietovėje ir "
+"perdirbs medieną į lentas, kurias bus galima naudoti statyboje arba kaip "
+"prekybos išteklių."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"Norėdami pastatyti Medkirčio Palapinę, atverkite Statymo Meniu, spustelėdami "
+"po sumažintu žemėlapiu esantį mygtuką arba paspausdami numatytąjį klavišą "
+"„B“."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -187,12 +214,19 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Statymo Meniu, kaip ir jūsų naujoji gyvenvietė, yra surūšiuotas pagal "
+"pakopas, kol kas galite statyti tik Pirmosios pakopos pastatus; kai jūsų "
+"civilizacija pažengs, gausite prieigą prie aukštesnių pakopų ir galėsite "
+"statyti kur kas įvairesnius pastatus."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Suraskite savo Medkirčiui gražią miškingą vietovę, kurioje jis galėtų "
+"dirbti, tada iš Apžvalgos pastatų sąrašo pasirinkite „Medkirčio palapinę“ ir "
+"ją pastatykite."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -200,6 +234,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Vėlesniame žaidime gali būti naudinga sukurti miškingą vietovę sodinant "
+"medžius, bet tai kainuoja, todėl kol kas geriau naudokite tuos išteklius, "
+"kuriais pasirūpino gamta!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -207,6 +244,8 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Bet kuris išteklių rinkimo ar gamybos pastatas turi būti keliu sujungtas su "
+"Sandėliu ar kitokia saugykla, kitaip išgautos gėrybės nebus surenkamos."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -215,15 +254,19 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Kai jūsų Medkirčio palapinė bus reikiamoje padėtyje, sujunkite ją su "
+"Sandėliu, atverdami Statymo meniu ir paspausdami mygtuką „Kelias“. "
+"Spustelėkite ir tempkite pelytės žymeklį, kad padarytumėte kelią tarp "
+"Medkirčio palapinės ir Sandėlio."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
-"UŽDUOTIS: Miškingoje vietoje pastatykite lentpjūvę ir sujunkite ją su keliu."
+"Užduotis: Miškingoje vietoje pastatykite Medkirčio Palapinę ir sujunkite ją "
+"su Sandėliu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -231,45 +274,55 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in  construction or trade."
 msgstr ""
+"Kai pastatai bus sujungti, pamatysite atvykstantį surinkėją, kuris surinks "
+"ką tik pagamintas lentas ir pristatys jas į Sandėlį, kur jos jau bus "
+"paruoštos naudojimui statyboje ar prekyboje."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
-msgstr ""
+msgstr "Sukurkite medžiotoją ir žvejį. Sujunkite juos su sandėliu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NAUJA UŽDUOTIS: Maisto gavimas"
+msgstr "NAUJA UŽDUOTIS: MAISTO TIEKIMAS"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Jums prireiks turėti keletą maisto tiekėjų, nes dažniausiai žmonės (o ypač "
+"jūreiviai) būna labai alkani."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr ""
+msgstr "Prieinami pirmosios pakopos maisto tiekėjai yra Medžiotojas ir Žvejys."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
-"Medžiotojas žudo gyvūnus miške, todėl reikia, kad netoliese būtų medžių."
+"Medžiotojas medžioja gyvūnus miške, todėl reikia, kad netoliese būtų medžių."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
 msgstr ""
+"Atkreipkite dėmesį, kad savo Medžiotoją galite įkurdinti šalia medkirčio "
+"miško."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Gali atsitikti taip, kad gyvūnai pakankamai greitai nesiveis, arba tiesiog "
+"gerai pasislėps."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Išvada: jei jums reikia nepertraukiamo tiekimo, medžiotoju galite ne itin "
+"pasikliauti."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -280,40 +333,48 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Jis pastatys nedidelę valtį ir pradės gaudyti žuvį."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Šis tiekimo būdas itin pastovus, tačiau maisto vieneto gamybos trukmė yra "
+"šiek tiek ilgesnė."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Tokiai nedidelei gyvenvietei, kaip jūsų, gali praversti abu tiekėjai, o "
+"matydami jų tiesioginį palyginimą, galėsite geriau subalansuoti privalumus "
+"ir trūkumus."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a hunter and a fisher."
-msgstr ""
+msgstr "Užduotis: Sukurkite medžiotoją ir žvejį."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Nepamirškite jų keliais sujungti su sandėliu!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
+"Pastatykite pagrindinę aikštę. Pasirinkite sritį, kurioje nėra daug ūkio "
+"pastatų."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NAUJA UŽDUOTIS: PAGRINDINĖ AIKŠTĖ"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Gyventojams prireiks pagrindinės aikštės, kurioje jie galės gauti prekių."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -321,12 +382,17 @@ msgid ""
 "square. Note that the main square acts as trail as well, therefore adjacent "
 "tents do not need a separate trail."
 msgstr ""
+"Tai reiškia, kad tarp jų namų ir pagrindinės aikštės turi būti ryšys - t. y. "
+"kelias. Atkreipkite dėmesį, kad pagrindinė aikštė taip pat atlieka kelio "
+"funkciją, todėl šalia esančioms palapinėms nebūtina statyti atskirų kelių."
 
 #. This is the text body of a logbook page.
 msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Šioje „prekyvietėje“ yra prieinamos visos jūsų sandėliuose esančios gėrybės, "
+"todėl gyventojams nereikės keliauti iki žvejo ar sandėlio."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -334,38 +400,49 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Geriau nestatykite pagrindinės gyvenvietės palapinių per daug arti "
+"medkirčių, nes statydami palapines išnaikinsite medžius, iš kurių medkirčiai "
+"gamina lentas."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"Tiekėjai gali dirbti nebūdami prijungti prie palapinių, todėl nebūtina "
+"statyti kelių tarp pagrindinės aikštės ir pvz. medkirčio palapinės."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a main square."
-msgstr ""
+msgstr "Užduotis: Pastatykite pagrindinę aikštę."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Dabar atidžiau pažvelkime į pagrindinę aikštę."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"Skirtuke „Paskyra“ matysite šios salos balanso ataskaitą, kurioje bus "
+"nurodytos visos patirtos išlaidos ir gauti mokesčiai."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Įrašai „Pardavimas“ ir „Pirkimas“ rodo jūsų prekybos balansą. Jie bus "
+"paaiškinti vėliau."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Jei jūsų balansas teigiamas, gaunate pelną."
 
 #. This is the text body of a logbook page.
 msgid ""
