@@ -27,87 +27,92 @@ from nose.util import ln
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
 try:
-	from signal import SIGALRM
-	SUPPORTED = True
+    from signal import SIGALRM
+    SUPPORTED = True
 except ImportError:
-	SUPPORTED = False
+    SUPPORTED = False
 
 
 class Timer(object):
-	"""
-	Example
+    """
+    Example
 
-		def handler(signum, frame):
-			print 'Timer triggered'
+        def handler(signum, frame):
+            print 'Timer triggered'
 
-		t = Timer(handler)
-		# handler will be called after 2 seconds
-		t.start(2)
+        t = Timer(handler)
+        # handler will be called after 2 seconds
+        t.start(2)
 
-		# if 2 seconds have not passed, this will stop the timer
-		t.stop()
+        # if 2 seconds have not passed, this will stop the timer
+        t.stop()
 
-	Note: if SIGALRM is not supported, this class does nothing
-	"""
+    Note: if SIGALRM is not supported, this class does nothing
+    """
 
-	def __init__(self, handler):
-		"""Install the passed function as handler that is called when the signal
-		triggers.
-		"""
-		if not SUPPORTED:
-			return
+    def __init__(self, handler):
+        """Install the passed function as handler that is called when the signal
+        triggers.
+        """
+        if not SUPPORTED:
+            return
 
-		signal.signal(signal.SIGALRM, handler)
+        signal.signal(signal.SIGALRM, handler)
 
-	def start(self, timeout):
-		"""Start the timer. A timeout of 0 means that the signal will never trigger."""
-		if not SUPPORTED or timeout == 0:
-			return
+    def start(self, timeout):
+        """Start the timer. A timeout of 0 means that the signal will never trigger.
+        """
+        if not SUPPORTED or timeout == 0:
+            return
 
-		signal.alarm(timeout)
+        signal.alarm(timeout)
 
-	@classmethod
-	def stop(cls):
-		"""Stop the timer. This can be called on both the instance and class (when you
-		have no access to the instance for example).
-		"""
-		if not SUPPORTED:
-			return
+    @classmethod
+    def stop(cls):
+        """Stop the timer. This can be called on both the instance and class (when you
+        have no access to the instance for example).
+        """
+        if not SUPPORTED:
+            return
 
-		signal.alarm(0)
+        signal.alarm(0)
 
 
 class ReRunInfoPlugin(Plugin):
-	"""Print information on how to rerun a test after each failed test.
+    """Print information on how to rerun a test after each failed test.
 
-	Code to add additional output taken from the Collect plugin.
-	"""
-	name = 'reruninfo'
-	enabled = True
+    Code to add additional output taken from the Collect plugin.
+    """
+    name = 'reruninfo'
+    enabled = True
 
-	def configure(self, options, conf):
-		pass
+    def configure(self, options, conf):
+        pass
 
-	def formatError(self, test, err):
-		_, module, call = test.address()
+    def formatError(self, test, err):
+        _, module, call = test.address()
 
-		output = ['python2', 'run_tests.py', u'%s:%s' % (module, call)]
+        output = ['python2', 'run_tests.py', u'{0!s}:{1!s}'.format(module,
+                                                                   call)]
 
-		# add necessary flags
-		if 'tests.gui' in module:
-			output.append('-a gui')
-		elif 'tests.game.long' in module:
-			output.append('-a long')
+        # add necessary flags
+        if 'tests.gui' in module:
+            output.append('-a gui')
+        elif 'tests.game.long' in module:
+            output.append('-a long')
 
-		output = u' '.join(output)
+        output = u' '.join(output)
 
-		ec, ev, tb = err
-		return (ec, self.addOutputToErr(ev, output), tb)
+        ec, ev, tb = err
+        return (ec, self.addOutputToErr(ev, output), tb)
 
-	def formatFailure(self, test, err):
-		return self.formatError(test, err)
+    def formatFailure(self, test, err):
+        return self.formatError(test, err)
 
-	def addOutputToErr(self, ev, output):
-		if isinstance(ev, Exception):
-			ev = unicode(ev)
-		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
+    def addOutputToErr(self, ev, output):
+        try:
+            ev = unicode(ev, 'utf-8', errors='ignore')
+        except TypeError:
+            ev = u"{0}".format(ev)
+
+        return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])

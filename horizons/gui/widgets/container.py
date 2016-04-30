@@ -24,19 +24,20 @@ from fife.extensions.pychan.widgets import Container
 
 
 class AutoResizeContainer(Container):
-	"""A regular pychan container, that implements resizeToContent"""
+    """A regular pychan container, that implements resizeToContent"""
 
-	def resizeToContent(self):
-		"""resizeToContent for unlayouted containers. Sets size to smallest box"""
-		for child in self.children:
-			child.adaptLayout() # recalc values for children
+    def resizeToContent(self):
+        """resizeToContent for unlayouted containers.
+        Sets size to smallest box"""
+        for child in self.children:
+            child.adaptLayout()  # recalc values for children
 
-		max_x = max_y = 0
-		for child in self.children:
-			x = child.position[0] + child.size[0]
-			y = child.position[1] + child.size[1]
-			if x > max_x:
-				max_x = x
-			if y > max_y:
-				max_y = y
-		self.size = (max_x, max_y)
+        max_x = max_y = 0
+        for child in self.children:
+            x = child.position[0] + child.size[0]
+            y = child.position[1] + child.size[1]
+            if x > max_x:
+                max_x = x
+            if y > max_y:
+                max_y = y
+        self.size = (max_x, max_y)

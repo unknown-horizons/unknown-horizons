@@ -28,34 +28,41 @@ from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 
+
 class AbstractClayPit(AbstractBuilding):
-	def iter_potential_locations(self, settlement_manager):
-		building_class = Entities.buildings[BUILDINGS.CLAY_PIT]
-		for building in settlement_manager.settlement.buildings_by_id.get(BUILDINGS.CLAY_DEPOSIT, []):
-			if building.get_component(StorageComponent).inventory[RES.RAW_CLAY]:
-				coords = building.position.origin.to_tuple()
-				if coords in settlement_manager.production_builder.simple_collector_area_cache.cache[building_class.size]:
-					yield (coords[0], coords[1], 0)
+    def iter_potential_locations(self, settlement_manager):
+        building_class = Entities.buildings[BUILDINGS.CLAY_PIT]
+        for building in settlement_manager.settlement.buildings_by_id.get(
+                BUILDINGS.CLAY_DEPOSIT, []):
+            if building.get_component(StorageComponent).inventory[
+                    RES.RAW_CLAY]:
+                coords = building.position.origin.to_tuple()
+                if (coords in settlement_manager.production_builder
+                        .simple_collector_area_cache
+                        .cache[building_class.size]):
+                    yield (coords[0], coords[1], 0)
 
-	@property
-	def evaluator_class(self):
-		return ClayPitEvaluator
+    @property
+    def evaluator_class(self):
+        return ClayPitEvaluator
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.CLAY_PIT] = cls
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.CLAY_PIT] = cls
+
 
 class ClayPitEvaluator(BuildingEvaluator):
-	@classmethod
-	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.CLAY_PIT, (x, y), orientation)
-		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder, False)
-		value = 1.0 / (distance_to_collector + 1)
-		return ClayPitEvaluator(area_builder, builder, value)
+    @classmethod
+    def create(cls, area_builder, x, y, orientation):
+        builder = BasicBuilder.create(BUILDINGS.CLAY_PIT, (x, y), orientation)
+        distance_to_collector = cls._distance_to_nearest_collector(
+            area_builder, builder, False)
+        value = 1.0 / (distance_to_collector + 1)
+        return ClayPitEvaluator(area_builder, builder, value)
 
-	@property
-	def purpose(self):
-		return BUILDING_PURPOSE.CLAY_PIT
+    @property
+    def purpose(self):
+        return BUILDING_PURPOSE.CLAY_PIT
 
 AbstractClayPit.register_buildings()
 

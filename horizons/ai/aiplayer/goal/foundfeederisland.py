@@ -23,29 +23,38 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.util.python import decorators
 
+
 class FoundFeederIslandGoal(SettlementGoal):
-	def get_personality_name(self):
-		return 'FoundFeederIslandGoal'
+    def get_personality_name(self):
+        return 'FoundFeederIslandGoal'
 
-	def _need_feeder_island(self):
-		return self.production_builder.count_available_squares(3, self.personality.feeder_island_requirement_cutoff)[1] < self.personality.feeder_island_requirement_cutoff
+    def _need_feeder_island(self):
+        return self.production_builder.count_available_squares(
+            3, self.personality.feeder_island_requirement_cutoff)[1] < \
+            self.personality.feeder_island_requirement_cutoff
 
-	def _have_feeder_island(self):
-		for settlement_manager in self.owner.settlement_managers:
-			if settlement_manager.feeder_island:
-				available_squares = settlement_manager.production_builder.count_available_squares(3, self.personality.usable_feeder_island_cutoff)[1]
-				if available_squares >= self.personality.usable_feeder_island_cutoff:
-					return True
-		return False
+    def _have_feeder_island(self):
+        for settlement_manager in self.owner.settlement_managers:
+            if settlement_manager.feeder_island:
+                available_squares = settlement_manager.production_builder. \
+                    count_available_squares(
+                        3, self.personality.usable_feeder_island_cutoff)[1]
+                if available_squares >= \
+                        self.personality.usable_feeder_island_cutoff:
+                    return True
+        return False
 
-	@property
-	def active(self):
-		return super(FoundFeederIslandGoal, self).active and self._need_feeder_island() and not self._have_feeder_island() and \
-			self.owner.settlement_founder.can_found_feeder_island()
+    @property
+    def active(self):
+        return super(FoundFeederIslandGoal, self).active and \
+            self._need_feeder_island() and not \
+            self._have_feeder_island() and \
+            self.owner.settlement_founder.can_found_feeder_island()
 
-	def execute(self):
-		self.settlement_manager.log.info('%s waiting for a feeder islands to be founded', self)
-		self.owner.settlement_founder.found_feeder_island()
-		return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
+    def execute(self):
+        self.settlement_manager.log.info(
+            '%s waiting for a feeder islands to be founded', self)
+        self.owner.settlement_founder.found_feeder_island()
+        return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
 
 decorators.bind_all(FoundFeederIslandGoal)

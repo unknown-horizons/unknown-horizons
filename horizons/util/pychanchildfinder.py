@@ -21,18 +21,20 @@
 
 
 class PychanChildFinder(dict):
-	"""Caches child references of a gui object, since pychan's findChild function is expensive.
-	Init it with your gui and use like a dictionary or call object directly (__call__)"""
-	def __init__(self, gui):
-		super(PychanChildFinder, self).__init__()
-		self.gui = gui
+    """Caches child references of a gui object, since pychan's findChild
+    function is expensive.
+    Init it with your gui and use like a dictionary or call object
+    directly (__call__)"""
+    def __init__(self, gui):
+        super(PychanChildFinder, self).__init__()
+        self.gui = gui
 
-	def __getitem__(self, key):
-		try:
-			return dict.__getitem__(self, key)
-		except KeyError:
-			self[key] = self.gui.findChild(name=key)
-			return self[key]
+    def __getitem__(self, key):
+        try:
+            return dict.__getitem__(self, key)
+        except KeyError:
+            self[key] = self.gui.findChild(name=key)
+            return self[key]
 
-	def __call__(self, name):
-		return self[name]
+    def __call__(self, name):
+        return self[name]

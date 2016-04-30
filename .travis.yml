@@ -6,9 +6,9 @@ before_install:
   - "sudo apt-get update"
 install:
   - "sudo apt-get install python-fife"
-  - "pip install pyyaml greenlet"
+  - "pip install pyyaml greenlet pep8"
 script: 
   python run_tests.py --with-xunit --verbose --nologcapture
 notifications:
-  irc: "irc.freenode.org#unknown-horizons"
+  irc: false
   email: false

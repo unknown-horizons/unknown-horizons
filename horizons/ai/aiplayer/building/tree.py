@@ -23,20 +23,22 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractTree(AbstractBuilding):
-	@property
-	def directly_buildable(self):
-		""" trees are built by the lumberjacks """
-		return False
+    @property
+    def directly_buildable(self):
+        """ trees are built by the lumberjacks """
+        return False
 
-	@property
-	def ignore_production(self):
-		# TODO: improve the code so the actual lumberjack production can be calculated
-		return True
+    @property
+    def ignore_production(self):
+        # TODO: improve the code so the actual lumberjack production
+        #  can be calculated
+        return True
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.TREE] = cls
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.TREE] = cls
 
 AbstractTree.register_buildings()
 

@@ -25,18 +25,18 @@ import time
 
 
 def test_run_server():
-	"""Test if the multiplayer server can be started.
+    """Test if the multiplayer server can be started.
 
-	Runs the server for 2 seconds and checks if anything was printed on stderr.
-	"""
-	proc = subprocess.Popen([sys.executable, "server.py", "-h", "127.0.0.1"],
-	                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    Runs the server for 2 seconds and checks if anything was printed on stderr.
+    """
+    proc = subprocess.Popen([sys.executable, "server.py", "-h", "127.0.0.1"],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-	time.sleep(2)
-	proc.terminate()
+    time.sleep(2)
+    proc.terminate()
 
-	# By default logging prints to stderr, which makes it difficult to detect
-	# errors. This solution isn't great, but works for now.
-	stderr = proc.stderr.read()
-	if stderr and 'Traceback' in stderr:
-		raise Exception("\n\n" + stderr)
+    # By default logging prints to stderr, which makes it difficult to detect
+    # errors. This solution isn't great, but works for now.
+    stderr = proc.stderr.read()
+    if stderr and 'Traceback' in stderr:
+        raise Exception("\n\n" + stderr)

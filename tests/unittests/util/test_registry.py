@@ -26,34 +26,36 @@ from horizons.util.python.registry import Registry
 
 class RegistryTest(unittest.TestCase):
 
-	def test_simple(self):
-		class Example(object):
-			__metaclass__ = Registry
-			@classmethod
-			def register_function(cls, func):
-				cls.registry[func.__name__] = func
+    def test_simple(self):
+        class Example(object):
+            __metaclass__ = Registry
 
-		self.assertRaises(KeyError, Example.get, 'foo')
+            @classmethod
+            def register_function(cls, func):
+                cls.registry[func.__name__] = func
 
-		@Example.register()
-		def foo(a, b):
-			return a + b
+        self.assertRaises(KeyError, Example.get, 'foo')
 
-		self.assertEqual(Example.get('foo'), foo)
+        @Example.register()
+        def foo(a, b):
+            return a + b
 
-	def test_with_arguments(self):
-		"""Test arguments in the register decorator."""
-		class Example(object):
-			__metaclass__ = Registry
-			@classmethod
-			def register_function(cls, func, name):
-				cls.registry[name] = func
+        self.assertEqual(Example.get('foo'), foo)
 
-		self.assertRaises(KeyError, Example.get, 'foo')
+    def test_with_arguments(self):
+        """Test arguments in the register decorator."""
+        class Example(object):
+            __metaclass__ = Registry
 
-		@Example.register(name='bar')
-		def foo(a, b):
-			return a + b
+            @classmethod
+            def register_function(cls, func, name):
+                cls.registry[name] = func
 
-		self.assertRaises(KeyError, Example.get, 'foo')
-		self.assertEqual(Example.get('bar'), foo)
+        self.assertRaises(KeyError, Example.get, 'foo')
+
+        @Example.register(name='bar')
+        def foo(a, b):
+            return a + b
+
+        self.assertRaises(KeyError, Example.get, 'foo')
+        self.assertEqual(Example.get('bar'), foo)

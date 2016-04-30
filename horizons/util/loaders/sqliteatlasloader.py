@@ -22,130 +22,133 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
+
 class SQLiteAtlasLoader(object):
-	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database.
-	"""
-	def __init__(self):
-		self.atlaslib = []
+    """Loads atlases and appropriate action sets from a JSON file
+    and a SQLite database.
+    """
+    def __init__(self):
+        self.atlaslib = []
 
-		# TODO: There's something wrong with ground entities if atlas.sql
-		# is loaded only here, for now it's added to DB_FILES (empty file if no atlases are used)
+        # TODO: There's something wrong with ground entities if atlas.sql
+        # is loaded only here, for now it's added to DB_FILES
+        # (empty file if no atlases are used)
 
-		#f = open('content/atlas.sql', "r")
-		#sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
-		#horizons.globals.db.execute_script(sql)
+        self.atlases = horizons.globals.db(
+            "SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+        self.inited = False
 
-		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
-		self.inited = False
+    def init(self):
+        """Used to lazy init the loader"""
+        for (atlas,) in self.atlases:
+            # print 'creating', atlas
+            # cast explicit to str because the imagemanager is not able
+            # to handle unicode strings
+            img = horizons.globals.fife.imagemanager.create(str(atlas))
+            self.atlaslib.append(img)
+        self.inited = True
 
+    def loadResource(self, location):
+        """
+        @param location: String with the location. See below for details:
+        Location format: <animation_id>:<command>:<params>
+        (e.g.: "123:shift:left-16, bottom-8)
+        Available commands:
+        - shift:
+        Shift the image using the params left, right, center,
+        middle for x shifting and
+        y-shifting with the params: top, bottom, center, middle.
+        A param looks like this: "param_x(+/-)value, param_y(+/-)value"
+        (e.g.: left-16, bottom+8)
+        - cut:
+        # TODO: complete documentation
+        """
+        if not self.inited:
+            self.init()
+        commands = location.split(':')
+        id = commands.pop(0)
+        actionset, action, rotation = id.split('+')
+        commands = zip(commands[0::2], commands[1::2])
 
-	def init(self):
-		"""Used to lazy init the loader"""
-		for (atlas,) in self.atlases:
-			# print 'creating', atlas
-			# cast explicit to str because the imagemanager is not able to handle unicode strings
-			img = horizons.globals.fife.imagemanager.create(str(atlas))
-			self.atlaslib.append(img)
-		self.inited = True
+        ani = fife.Animation.createAnimation()
 
+        # Set the correct loader based on the actionset
+        loader = self._get_loader(actionset)
 
-	def loadResource(self, location):
-		"""
-		@param location: String with the location. See below for details:
-		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
-		Available commands:
-		- shift:
-		Shift the image using the params left, right, center, middle for x shifting and
-		y-shifting with the params: top, bottom, center, middle.
-		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
-		- cut:
-		#TODO: complete documentation
-		"""
-		if not self.inited:
-			self.init()
-		commands = location.split(':')
-		id = commands.pop(0)
-		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+        frame_start, frame_end = 0.0, 0.0
+        for file in sorted(loader.get_sets()[actionset][action][int(
+                rotation)].iterkeys()):
+            entry = loader.get_sets()[actionset][action][int(rotation)][file]
+            # we don't need to load images at this point to query
+            # for its parameters such as width and height
+            # because we can get those from json file
+            xpos, ypos, width, height = entry[2:]
 
-		ani = fife.Animation.createAnimation()
+            if horizons.globals.fife.imagemanager.exists(file):
+                img = horizons.globals.fife.imagemanager.get(file)
+            else:
+                img = horizons.globals.fife.imagemanager.create(file)
+                region = fife.Rect(xpos, ypos, width, height)
+                img.useSharedImage(self.atlaslib[entry[1]], region)
 
-		# Set the correct loader based on the actionset
-		loader = self._get_loader(actionset)
+            for command, arg in commands:
+                if command == 'shift':
+                    x, y = arg.split(',')
+                    if x.startswith('left'):
+                        x = int(x[4:]) + (width // 2)
+                    elif x.startswith('right'):
+                        x = int(x[5:]) - (width // 2)
+                    elif x.startswith(('center', 'middle')):
+                        x = int(x[6:])
+                    else:
+                        x = int(x)
 
+                    if y.startswith('top'):
+                        y = int(y[3:]) + (height // 2)
+                    elif y.startswith('bottom'):
+                        y = int(y[6:]) - (height // 2)
+                    elif y.startswith(('center', 'middle')):
+                        y = int(y[6:])
+                    else:
+                        y = int(y)
 
-		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
-			entry = loader.get_sets()[actionset][action][int(rotation)][file]
-			# we don't need to load images at this point to query for its parameters
-			# such as width and height because we can get those from json file
-			xpos, ypos, width, height = entry[2:]
+                    img.setXShift(x)
+                    img.setYShift(y)
 
-			if horizons.globals.fife.imagemanager.exists(file):
-				img = horizons.globals.fife.imagemanager.get(file)
-			else:
-				img = horizons.globals.fife.imagemanager.create(file)
-				region = fife.Rect(xpos, ypos, width, height)
-				img.useSharedImage(self.atlaslib[entry[1]], region)
+            frame_end = entry[0]
+            ani.addFrame(img, max(1, int((float(frame_end) -
+                                          frame_start) * 1000)))
+            frame_start = float(frame_end)
+        ani.setActionFrame(0)
+        return ani
 
-			for command, arg in commands:
-				if command == 'shift':
-					x, y = arg.split(',')
-					if x.startswith('left'):
-						x = int(x[4:]) + (width // 2)
-					elif x.startswith('right'):
-						x = int(x[5:]) - (width // 2)
-					elif x.startswith(('center', 'middle')):
-						x = int(x[6:])
-					else:
-						x = int(x)
+    def _get_loader(self, actionset):
+            if actionset.startswith("ts_"):
+                loader = TileSetLoader
+            elif actionset.startswith("as_"):
+                loader = ActionSetLoader
+            else:
+                assert False, "Invalid set being loaded: " + actionset
+            return loader
 
-					if y.startswith('top'):
-						y = int(y[3:]) + (height // 2)
-					elif y.startswith('bottom'):
-						y = int(y[6:]) - (height // 2)
-					elif y.startswith(('center', 'middle')):
-						y = int(y[6:])
-					else:
-						y = int(y)
+    def load_image(self, file, actionset, action, rotation):
+        if not self.inited:
+            self.init()
+        loader = self._get_loader(actionset)
+        entry = loader.get_sets()[actionset][action][int(rotation)][file]
+        # we don't need to load images at this point to query
+        # for its parameters such as width and height because
+        # we can get those from json file
+        xpos, ypos, width, height = entry[2:]
 
-					img.setXShift(x)
-					img.setYShift(y)
+        if horizons.globals.fife.imagemanager.exists(file):
+            img = horizons.globals.fife.imagemanager.get(file)
+        else:
+            img = horizons.globals.fife.imagemanager.create(file)
+            region = fife.Rect(xpos, ypos, width, height)
+            img.useSharedImage(self.atlaslib[entry[1]], region)
 
-			frame_end = entry[0]
-			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
-			frame_start = float(frame_end)
-		ani.setActionFrame(0)
-		return ani
-
-	def _get_loader(self, actionset):
-			if actionset.startswith("ts_"):
-				loader = TileSetLoader
-			elif actionset.startswith("as_"):
-				loader = ActionSetLoader
-			else:
-				assert False, "Invalid set being loaded: " + actionset
-			return loader
-
-	def load_image(self, file, actionset, action, rotation):
-		if not self.inited:
-			self.init()
-		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][int(rotation)][file]
-		# we don't need to load images at this point to query for its parameters
-		# such as width and height because we can get those from json file
-		xpos, ypos, width, height = entry[2:]
-
-		if horizons.globals.fife.imagemanager.exists(file):
-			img = horizons.globals.fife.imagemanager.get(file)
-		else:
-			img = horizons.globals.fife.imagemanager.create(file)
-			region = fife.Rect(xpos, ypos, width, height)
-			img.useSharedImage(self.atlaslib[entry[1]], region)
-
-		return img
-
+        return img

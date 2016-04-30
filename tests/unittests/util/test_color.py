@@ -25,30 +25,30 @@ from tests.unittests import TestCase
 
 class TestColor(TestCase):
 
-	def setUp(self):
-		super(TestColor, self).setUp()
+    def setUp(self):
+        super(TestColor, self).setUp()
 
-		self.db.execute_many(
-			"INSERT INTO colors VALUES(?, ?, ?, ?, ?, ?)",
-			[('black', 0, 0, 0, 255, 1),
-			 ('red', 255, 0, 0, 255, 2)]
-		)
+        self.db.execute_many(
+            "INSERT INTO colors VALUES(?, ?, ?, ?, ?, ?)",
+            [('black', 0, 0, 0, 255, 1),
+             ('red', 255, 0, 0, 255, 2)]
+        )
 
-	def test_iter(self):
-		colors = list(Color)
-		self.assertEqual(len(colors), 2)
-		self.assertTrue(all(c.is_default_color for c in colors))
-		self.assertEqual(colors[0], Color(0, 0, 0, 255))
-		self.assertEqual(colors[1], Color(255, 0, 0, 255))
+    def test_iter(self):
+        colors = list(Color)
+        self.assertEqual(len(colors), 2)
+        self.assertTrue(all(c.is_default_color for c in colors))
+        self.assertEqual(colors[0], Color(0, 0, 0, 255))
+        self.assertEqual(colors[1], Color(255, 0, 0, 255))
 
-	def test_default_color(self):
-		self.assertTrue(Color(0, 0, 0, 255).is_default_color)
-		self.assertFalse(Color(1, 2, 3, 255).is_default_color)
+    def test_default_color(self):
+        self.assertTrue(Color(0, 0, 0, 255).is_default_color)
+        self.assertFalse(Color(1, 2, 3, 255).is_default_color)
 
-	def test_comparison(self):
-		self.assertEqual(Color(0, 0, 0, 255), Color(0, 0, 0, 255))
-		self.assertNotEqual(Color(0, 0, 0, 255), Color(1, 2, 3, 255))
+    def test_comparison(self):
+        self.assertEqual(Color(0, 0, 0, 255), Color(0, 0, 0, 255))
+        self.assertNotEqual(Color(0, 0, 0, 255), Color(1, 2, 3, 255))
 
-	def test_indexing(self):
-		self.assertEqual(Color[1], Color(0, 0, 0, 255))
-		self.assertEqual(Color['black'], Color(0, 0, 0, 255))
+    def test_indexing(self):
+        self.assertEqual(Color[1], Color(0, 0, 0, 255))
+        self.assertEqual(Color['black'], Color(0, 0, 0, 255))

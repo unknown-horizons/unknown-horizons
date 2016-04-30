@@ -28,24 +28,26 @@ from horizons.util.savegameaccessor import SavegameAccessor
 
 from tests.game import game_test
 
-@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=2*60)
+
+@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False,
+           ai_players=2, timeout=2 * 60)
 def test_save_trivial(session, _):
-	"""
-	Let 2 AI players play for a while, then attempt to save the game.
+    """
+    Let 2 AI players play for a while, then attempt to save the game.
 
-	Be aware, this is a pretty simple test and it doesn't actually check what is
-	being saved.
-	"""
-	session.run(seconds=4*60)
+    Be aware, this is a pretty simple test and it doesn't actually check what
+    is being saved.
+    """
+    session.run(seconds=4 * 60)
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
+    fd, filename = tempfile.mkstemp()
+    os.close(fd)
 
-	assert session.save(savegamename=filename)
+    assert session.save(savegamename=filename)
 
-	SavegameAccessor(filename, False)
+    SavegameAccessor(filename, False)
 
-	os.unlink(filename)
+    os.unlink(filename)
 
 # this disables the test in general and only makes it being run when
 # called like this: run_tests.py -a long

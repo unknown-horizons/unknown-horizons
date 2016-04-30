@@ -24,48 +24,48 @@ from tests.gui import gui_test
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_settings_dialog_crash(gui):
-	"""Opening&closing the settings dialog in two different games crashes."""
+    """Opening&closing the settings dialog in two different games crashes."""
 
-	# open pause menu
-	gui.trigger('mainhud', 'gameMenuButton')
+    # open pause menu
+    gui.trigger('mainhud', 'gameMenuButton')
 
-	# open & close settings
-	gui.trigger('menu', 'settingsLink')
-	gui.trigger('settings_window', 'okButton')
+    # open & close settings
+    gui.trigger('menu', 'settingsLink')
+    gui.trigger('settings_window', 'okButton')
 
-	# open pause menu, quit session
-	def func1():
-		gui.trigger('popup_window', 'okButton')
+    # open pause menu, quit session
+    def func1():
+        gui.trigger('popup_window', 'okButton')
 
-	with gui.handler(func1):
-		gui.trigger('menu', 'closeButton')
+    with gui.handler(func1):
+        gui.trigger('menu', 'closeButton')
 
-	# start a new game (development map)
-	gui.trigger('menu', 'single_button')
-	gui.trigger('singleplayermenu', 'free_maps')
-	gui.find('maplist').select(u'development')
-	gui.trigger('singleplayermenu', 'okay')
+    # start a new game (development map)
+    gui.trigger('menu', 'single_button')
+    gui.trigger('singleplayermenu', 'free_maps')
+    gui.find('maplist').select(u'development')
+    gui.trigger('singleplayermenu', 'okay')
 
-	# open pause menu
-	gui.trigger('mainhud', 'gameMenuButton')
+    # open pause menu
+    gui.trigger('mainhud', 'gameMenuButton')
 
-	# open & close settings
-	gui.trigger('menu', 'settingsLink')
-	gui.trigger('settings_window', 'okButton')  # this crashes
+    # open & close settings
+    gui.trigger('menu', 'settingsLink')
+    gui.trigger('settings_window', 'okButton')  # this crashes
 
 
 @gui_test(timeout=60)
 def test_settings_dialog_crash2(gui):
-	# open settings in main menu
-	gui.trigger('menu', 'settings_button')
-	gui.trigger('settings_window', 'cancelButton')
+    # open settings in main menu
+    gui.trigger('menu', 'settings_button')
+    gui.trigger('settings_window', 'cancelButton')
 
-	# start game
-	gui.trigger('menu', 'single_button')
-	gui.trigger('singleplayermenu', 'free_maps')
-	gui.trigger('singleplayermenu', 'okay')
+    # start game
+    gui.trigger('menu', 'single_button')
+    gui.trigger('singleplayermenu', 'free_maps')
+    gui.trigger('singleplayermenu', 'okay')
 
-	gui.press_key(gui.Key.ESCAPE)
-	# open & close settings
-	gui.trigger('menu', 'settingsLink')
-	gui.press_key(gui.Key.ESCAPE)
+    gui.press_key(gui.Key.ESCAPE)
+    # open & close settings
+    gui.trigger('menu', 'settingsLink')
+    gui.press_key(gui.Key.ESCAPE)

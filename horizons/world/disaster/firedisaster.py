@@ -20,34 +20,35 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
+from horizons.world.disaster.buildinginfluencingdisaster import \
+    BuildingInfluencingDisaster
 from horizons.world.status import FireStatusIcon
 from horizons.constants import BUILDINGS, RES, TIER
 
+
 class FireDisaster(BuildingInfluencingDisaster):
-	"""Simulates a fire.
+    """Simulates a fire.
+    """
 
-	"""
+    TYPE = "The Flames Of The End"
+    NOTIFICATION_TYPE = 'BUILDING_ON_FIRE'
 
-	TYPE = "The Flames Of The End"
-	NOTIFICATION_TYPE = 'BUILDING_ON_FIRE'
+    SEED_CHANCE = 0.005
 
-	SEED_CHANCE = 0.005
+    EXPANSION_RADIUS = 3
 
-	EXPANSION_RADIUS = 3
+    DISASTER_RES = RES.FIRE
 
-	DISASTER_RES = RES.FIRE
+    BUILDING_TYPE = BUILDINGS.RESIDENTIAL
 
-	BUILDING_TYPE = BUILDINGS.RESIDENTIAL
+    MIN_BREAKOUT_TIER = TIER.PIONEERS
 
-	MIN_BREAKOUT_TIER = TIER.PIONEERS
+    MIN_INHABITANTS_FOR_BREAKOUT = 7
 
-	MIN_INHABITANTS_FOR_BREAKOUT = 7
+    STATUS_ICON = FireStatusIcon
 
-	STATUS_ICON = FireStatusIcon
+    RESCUE_BUILDING_TYPE = BUILDINGS.FIRE_STATION
 
-	RESCUE_BUILDING_TYPE = BUILDINGS.FIRE_STATION
-
-	def wreak_havoc(self, building):
-		super(FireDisaster, self).wreak_havoc(building)
-		building.make_ruin()
+    def wreak_havoc(self, building):
+        super(FireDisaster, self).wreak_havoc(building)
+        building.make_ruin()

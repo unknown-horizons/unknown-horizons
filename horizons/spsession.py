@@ -27,58 +27,64 @@ from horizons.constants import SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.timer import Timer
 
+
 class SPSession(Session):
-	"""Session tailored for singleplayer games."""
+    """Session tailored for singleplayer games."""
 
-	def create_manager(self):
-		return SPManager(self)
+    def create_manager(self):
+        return SPManager(self)
 
-	def create_rng(self, seed=None):
-		return random.Random(seed if seed is not None else SINGLEPLAYER.SEED)
+    def create_rng(self, seed=None):
+        return random.Random(seed if seed is not None else SINGLEPLAYER.SEED)
 
-	def create_timer(self):
-		return Timer(freeze_protection=SINGLEPLAYER.FREEZE_PROTECTION)
+    def create_timer(self):
+        return Timer(freeze_protection=SINGLEPLAYER.FREEZE_PROTECTION)
 
-	def load(self, *args, **kwargs):
-		super(SPSession, self).load(*args, **kwargs)
-		# single player games start right away
-		self.start()
+    def load(self, *args, **kwargs):
+        super(SPSession, self).load(*args, **kwargs)
+        # single player games start right away
+        self.start()
 
-	def autosave(self):
-		"""Called automatically in an interval"""
-		self.log.debug("Session: autosaving")
-		success = self._do_save(SavegameManager.create_autosave_filename())
-		if success:
-			SavegameManager.delete_dispensable_savegames(autosaves=True)
-			self.ingame_gui.message_widget.add('AUTOSAVE')
+    def autosave(self):
+        """Called automatically in an interval"""
+        self.log.debug("Session: autosaving")
+        success = self._do_save(SavegameManager.create_autosave_filename())
+        if success:
+            SavegameManager.delete_dispensable_savegames(autosaves=True)
+            self.ingame_gui.message_widget.add('AUTOSAVE')
 
-	def quicksave(self):
-		"""Called when user presses the quicksave hotkey"""
-		self.log.debug("Session: quicksaving")
-		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = self._do_save(SavegameManager.create_quicksave_filename())
-		if success:
-			SavegameManager.delete_dispensable_savegames(quicksaves=True)
-			self.ingame_gui.message_widget.add('QUICKSAVE')
-		else:
-			headline = _("Failed to quicksave.")
-			descr = _("An error happened during quicksave.") + u"\n" + _("Your game has not been saved.")
-			advice = _("If this error happens again, please contact the development team: "
-			           "{website}").format(website="http://unknown-horizons.org/support/")
-			self.ingame_gui.open_error_popup(headline, descr, advice)
+    def quicksave(self):
+        """Called when user presses the quicksave hotkey"""
+        self.log.debug("Session: quicksaving")
+        # call saving through horizons.main and not directly through session,
+        # so that save errors are handled
+        success = self._do_save(SavegameManager.create_quicksave_filename())
+        if success:
+            SavegameManager.delete_dispensable_savegames(quicksaves=True)
+            self.ingame_gui.message_widget.add('QUICKSAVE')
+        else:
+            headline = _("Failed to quicksave.")
+            descr = _("An error happened during quicksave.") + u"\n" + \
+                _("Your game has not been saved.")
+            advice = _("If this error happens again, please contact the"
+                       " development team: {website}")\
+                .format(website="http://unknown-horizons.org/support/")
+            self.ingame_gui.open_error_popup(headline, descr, advice)
 
-	def save(self, savegamename=None):
-		"""Saves a game
-		@param savegamename: string with the full path of the savegame file or None to let user pick one
-		@return: bool, whether no error happened (user aborting dialog means success)
-		"""
-		if savegamename is None:
-			savegamename = self.ingame_gui.show_select_savegame(mode='save')
-			if savegamename is None:
-				return True # user aborted dialog
-			savegamename = SavegameManager.create_filename(savegamename)
+    def save(self, savegamename=None):
+        """Saves a game
+        @param savegamename: string with the full path of the savegame file
+                             or None to let user pick one
+        @return: bool, whether no error happened (user aborting dialog means
+                 success)
+        """
+        if savegamename is None:
+            savegamename = self.ingame_gui.show_select_savegame(mode='save')
+            if savegamename is None:
+                return True  # user aborted dialog
+            savegamename = SavegameManager.create_filename(savegamename)
 
-		success = self._do_save(savegamename)
-		if success:
-			self.ingame_gui.message_widget.add('SAVED_GAME')
-		return success
+        success = self._do_save(savegamename)
+        if success:
+            self.ingame_gui.message_widget.add('SAVED_GAME')
+        return success

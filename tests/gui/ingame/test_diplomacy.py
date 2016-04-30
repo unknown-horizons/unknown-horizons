@@ -24,30 +24,30 @@ from tests.gui import gui_test
 
 @gui_test(use_dev_map=True, ai_players=1)
 def test_diplomacy(gui):
-	"""Test changing diplomacy status."""
+    """Test changing diplomacy status."""
 
-	human = gui.session.world.player
+    human = gui.session.world.player
 
-	players = list(gui.session.world.players)
-	players.remove(human)
+    players = list(gui.session.world.players)
+    players.remove(human)
 
-	pirate = gui.session.world.pirate
-	ai = players[0]
+    pirate = gui.session.world.pirate
+    ai = players[0]
 
-	diplomacy = gui.session.world.diplomacy
+    diplomacy = gui.session.world.diplomacy
 
-	# Make sure they are neutral at first
-	for p in (ai, pirate):
-		assert diplomacy.are_neutral(human, p)
+    # Make sure they are neutral at first
+    for p in (ai, pirate):
+        assert diplomacy.are_neutral(human, p)
 
-	# Ally with first player
-	gui.trigger('mainhud', 'diplomacyButton')
-	gui.trigger('tab0', 'ally_check_box')
+    # Ally with first player
+    gui.trigger('mainhud', 'diplomacyButton')
+    gui.trigger('tab0', 'ally_check_box')
 
-	assert diplomacy.are_allies(human, ai)
+    assert diplomacy.are_allies(human, ai)
 
-	# Be enemy with second player
-	gui.trigger('tab_base', '1')
-	gui.trigger('tab0', 'enemy_check_box')
+    # Be enemy with second player
+    gui.trigger('tab_base', '1')
+    gui.trigger('tab0', 'enemy_check_box')
 
-	assert diplomacy.are_enemies(human, pirate)
+    assert diplomacy.are_enemies(human, pirate)

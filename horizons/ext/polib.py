@@ -12,11 +12,6 @@ modify entries, comments or metadata, etc. or create new po files from scratch.
 :func:`~polib.mofile` convenience functions.
 """
 
-__author__ = 'David Jean Louis <izimobil@gmail.com>'
-__version__ = '1.0.3'
-__all__ = ['pofile', 'POFile', 'POEntry', 'mofile', 'MOFile', 'MOEntry',
-           'default_encoding', 'escape', 'unescape', 'detect_encoding', ]
-
 import array
 import codecs
 import os
@@ -24,6 +19,11 @@ import re
 import struct
 import sys
 import textwrap
+
+__author__ = 'David Jean Louis <izimobil@gmail.com>'
+__version__ = '1.0.3'
+__all__ = ['pofile', 'POFile', 'POEntry', 'mofile', 'MOFile', 'MOEntry',
+           'default_encoding', 'escape', 'unescape', 'detect_encoding', ]
 
 
 # the default encoding to use when encoding cannot be detected
@@ -300,7 +300,7 @@ class _BaseFile(list):
         ret = u('\n').join(ret)
 
         assert isinstance(ret, text_type)
-        #if type(ret) != text_type:
+        # if type(ret) != text_type:
         #    return unicode(ret, self.encoding)
         return ret
 
@@ -345,7 +345,7 @@ class _BaseFile(list):
             an instance of :class:`~polib._BaseEntry`.
         """
         if self.check_for_duplicates and entry in self:
-            raise ValueError('Entry "%s" already exists' % entry.msgid)
+            raise ValueError('Entry "{0!s}" already exists'.format(entry.msgid))
         super(_BaseFile, self).append(entry)
 
     def insert(self, index, entry):
@@ -363,7 +363,7 @@ class _BaseFile(list):
             an instance of :class:`~polib._BaseEntry`.
         """
         if self.check_for_duplicates and entry in self:
-            raise ValueError('Entry "%s" already exists' % entry.msgid)
+            raise ValueError('Entry "{0!s}" already exists'.format(entry.msgid))
         super(_BaseFile, self).insert(index, entry)
 
     def metadata_as_entry(self):
@@ -376,7 +376,7 @@ class _BaseFile(list):
             strs = []
             for name, value in mdata:
                 # Strip whitespace off each line in a multi-line entry
-                strs.append('%s: %s' % (name, value))
+                strs.append('{0!s}: {1!s}'.format(name, value))
             e.msgstr = '\n'.join(strs) + '\n'
         if self.metadata_is_fuzzy:
             e.flags.append('fuzzy')
@@ -499,7 +499,7 @@ class _BaseFile(list):
         # add metadata entry
         entries.sort(key=lambda o: o.msgctxt or o.msgid)
         mentry = self.metadata_as_entry()
-        #mentry.msgstr = mentry.msgstr.replace('\\n', '').lstrip()
+        # mentry.msgstr = mentry.msgstr.replace('\\n', '').lstrip()
         entries = [mentry] + entries
         entries_len = len(entries)
         ids, strs = b(''), b('')
@@ -592,9 +592,9 @@ class POFile(_BaseFile):
         ret, headers = '', self.header.split('\n')
         for header in headers:
             if header[:1] in [',', ':']:
-                ret += '#%s\n' % header
+                ret += '#{0!s}\n'.format(header)
             else:
-                ret += '# %s\n' % header
+                ret += '# {0!s}\n'.format(header)
 
         if not isinstance(ret, text_type):
             ret = ret.decode(self.encoding)
@@ -633,8 +633,8 @@ class POFile(_BaseFile):
         """
         Convenience method that returns the list of untranslated entries.
         """
-        return [e for e in self if not e.translated() and not e.obsolete
-                and not 'fuzzy' in e.flags]
+        return [e for e in self if not e.translated() and not e.obsolete and
+                'fuzzy' not in e.flags]
 
     def fuzzy_entries(self):
         """
@@ -821,7 +821,7 @@ class _BaseEntry(object):
             keys.sort()
             for index in keys:
                 msgstr = msgstrs[index]
-                plural_index = '[%s]' % index
+                plural_index = '[{0!s}]'.format(index)
                 ret += self._str_field("msgstr", delflag, plural_index, msgstr,
                                        wrapwidth)
         else:
@@ -875,11 +875,12 @@ class _BaseEntry(object):
             # quick and dirty trick to get the real field name
             fieldname = fieldname[9:]
 
-        ret = ['%s%s%s "%s"' % (delflag, fieldname, plural_index,
-                                escape(lines.pop(0)))]
+        ret = ['{0!s}{1!s}{2!s} "{3!s}"'.format(delflag, fieldname,
+                                                plural_index,
+                                                escape(lines.pop(0)))]
         for mstr in lines:
-            #import pdb; pdb.set_trace()
-            ret.append('%s"%s"' % (delflag, escape(mstr)))
+            # import pdb; pdb.set_trace()
+            ret.append('{0!s}"{1!s}"'.format(delflag, escape(mstr)))
         return ret
 # }}}
 # class POEntry {{{
@@ -947,14 +948,14 @@ class POEntry(_BaseEntry):
                             break_long_words=False
                         )
                     else:
-                        ret.append('%s%s' % (c[1], comment))
+                        ret.append('{0!s}{1!s}'.format(c[1], comment))
 
         # occurrences (with text wrapping as xgettext does)
         if self.occurrences:
             filelist = []
             for fpath, lineno in self.occurrences:
                 if lineno:
-                    filelist.append('%s:%s' % (fpath, lineno))
+                    filelist.append('{0!s}:{1!s}'.format(fpath, lineno))
                 else:
                     filelist.append(fpath)
             filestr = ' '.join(filelist)
@@ -975,7 +976,7 @@ class POEntry(_BaseEntry):
 
         # flags (TODO: wrapping ?)
         if self.flags:
-            ret.append('#, %s' % ', '.join(self.flags))
+            ret.append('#, {0!s}'.format(', '.join(self.flags)))
 
         # previous context and previous msgid/msgid_plural
         fields = ['previous_msgctxt', 'previous_msgid',
@@ -989,7 +990,7 @@ class POEntry(_BaseEntry):
         ret = u('\n').join(ret)
 
         assert isinstance(ret, text_type)
-        #if type(ret) != types.UnicodeType:
+        # if type(ret) != types.UnicodeType:
         #    return unicode(ret, self.encoding)
         return ret
 
@@ -1170,22 +1171,22 @@ class _POFileParser(object):
         all = ['ST', 'HE', 'GC', 'OC', 'FL', 'CT', 'PC', 'PM', 'PP', 'TC',
                'MS', 'MP', 'MX', 'MI']
 
-        self.add('TC', ['ST', 'HE'],                                     'HE')
+        self.add('TC', ['ST', 'HE'], 'HE')
         self.add('TC', ['GC', 'OC', 'FL', 'TC', 'PC', 'PM', 'PP', 'MS',
-                        'MP', 'MX', 'MI'],                               'TC')
-        self.add('GC', all,                                              'GC')
-        self.add('OC', all,                                              'OC')
-        self.add('FL', all,                                              'FL')
-        self.add('PC', all,                                              'PC')
-        self.add('PM', all,                                              'PM')
-        self.add('PP', all,                                              'PP')
+                        'MP', 'MX', 'MI'], 'TC')
+        self.add('GC', all, 'GC')
+        self.add('OC', all, 'OC')
+        self.add('FL', all, 'FL')
+        self.add('PC', all, 'PC')
+        self.add('PM', all, 'PM')
+        self.add('PP', all, 'PP')
         self.add('CT', ['ST', 'HE', 'GC', 'OC', 'FL', 'TC', 'PC', 'PM',
-                        'PP', 'MS', 'MX'],                               'CT')
+                        'PP', 'MS', 'MX'], 'CT')
         self.add('MI', ['ST', 'HE', 'GC', 'OC', 'FL', 'CT', 'TC', 'PC',
-                 'PM', 'PP', 'MS', 'MX'],                                'MI')
-        self.add('MP', ['TC', 'GC', 'PC', 'PM', 'PP', 'MI'],             'MP')
-        self.add('MS', ['MI', 'MP', 'TC'],                               'MS')
-        self.add('MX', ['MI', 'MX', 'MP', 'TC'],                         'MX')
+                 'PM', 'PP', 'MS', 'MX'], 'MI')
+        self.add('MP', ['TC', 'GC', 'PC', 'PM', 'PP', 'MI'], 'MP')
+        self.add('MS', ['MI', 'MP', 'TC'], 'MS')
+        self.add('MX', ['MI', 'MX', 'MP', 'TC'], 'MX')
         self.add('MC', ['CT', 'MI', 'MP', 'MS', 'MX', 'PM', 'PP', 'PC'], 'MC')
 
     def parse(self):
@@ -1279,8 +1280,8 @@ class _POFileParser(object):
 
             elif tokens[0] == '#|':
                 if nb_tokens <= 1:
-                    raise IOError('Syntax error in po file %s (line %s)' %
-                                  (self.instance.fpath, i))
+                    raise IOError('Syntax error in po file {0!s} (line {1!s})'
+                                  .format(self.instance.fpath, i))
 
                 # Remove the marker and any whitespace right after that.
                 line = line[2:].lstrip()
@@ -1311,8 +1312,8 @@ class _POFileParser(object):
                 self.process(prev_keywords[tokens[1]], i)
 
             else:
-                raise IOError('Syntax error in po file %s (line %s)' %
-                              (self.instance.fpath, i))
+                raise IOError('Syntax error in po file {0!s} (line {1!s})'
+                              .format(self.instance.fpath, i))
 
         if self.current_entry:
             # since entries are added when another entry is found, we must add
@@ -1354,7 +1355,7 @@ class _POFileParser(object):
             the next state the fsm will have after the action.
         """
         for state in states:
-            action = getattr(self, 'handle_%s' % next_state.lower())
+            action = getattr(self, 'handle_{0!s}'.format(next_state.lower()))
             self.transitions[(symbol, state)] = (action, next_state)
 
     def process(self, symbol, linenum):
@@ -1375,7 +1376,8 @@ class _POFileParser(object):
             if action():
                 self.current_state = state
         except Exception:
-            raise IOError('Syntax error in po file (line %s)' % linenum)
+            raise IOError('Syntax error in po file (line {0!s})'.format(
+                linenum))
 
     # state handlers
 
@@ -1682,7 +1684,8 @@ class TextWrapper(textwrap.TextWrapper):
         """
         lines = []
         if self.width <= 0:
-            raise ValueError("invalid width %r (must be > 0)" % self.width)
+            raise ValueError("invalid width {0!r} (must be > 0)".format(
+                self.width))
 
         # Arrange in reverse order so items can be efficiently popped
         # from a stack of chucks.

@@ -26,78 +26,82 @@ from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, PRODUCTION
 
 from tests.game import settle, game_test
 
+
 @game_test()
 def test_basic_wood_production(session, player):
-	"""This is a fairly detailed test of the simple wood production"""
+    """This is a fairly detailed test of the simple wood production"""
 
-	settlement, island = settle(session)
+    settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
-	assert lj.id == BUILDINGS.LUMBERJACK
+    lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island,
+               settlement=settlement)(player)
+    assert lj.id == BUILDINGS.LUMBERJACK
 
-	storage = lj.get_component(StorageComponent)
-	assert isinstance(storage, StorageComponent)
+    storage = lj.get_component(StorageComponent)
+    assert isinstance(storage, StorageComponent)
 
-	producer = lj.get_component(Producer)
-	assert isinstance(producer, Producer)
+    producer = lj.get_component(Producer)
+    assert isinstance(producer, Producer)
 
+    # Make sure wood production is added
+    assert PRODUCTIONLINES.TREES in producer.get_production_lines()
+    assert producer.has_production_line(PRODUCTIONLINES.TREES)
+    production = producer._get_production(PRODUCTIONLINES.TREES)
 
-	# Make sure wood production is added
-	assert PRODUCTIONLINES.TREES in producer.get_production_lines()
-	assert producer.has_production_line(PRODUCTIONLINES.TREES)
-	production = producer._get_production(PRODUCTIONLINES.TREES)
+    # Check if the production finished listener is called
+    production_finished = [False]
+    production.add_production_finished_listener(
+        lambda _: production_finished.__setitem__(0, True))
 
-	# Check if the production finished listener is called
-	production_finished = [False]
-	production.add_production_finished_listener(lambda _: production_finished.__setitem__(0, True))
+    assert producer.is_active()
 
-	assert producer.is_active()
+    # No res yet, waiting...
+    assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
 
-	# No res yet, waiting...
-	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
+    # Got res, producing
+    storage.inventory.alter(RES.TREES, 2)
+    assert producer._get_current_state() == PRODUCTION.STATES.producing
 
-	# Got res, producing
-	storage.inventory.alter(RES.TREES, 2)
-	assert producer._get_current_state() == PRODUCTION.STATES.producing
+    # Work half-way
+    session.run(seconds=3)
 
-	# Work half-way
-	session.run(seconds=3)
+    #  Pause
+    producer.toggle_active()
+    assert not producer.is_active()
+    assert producer._get_current_state() == PRODUCTION.STATES.paused
 
-	#  Pause
-	producer.toggle_active()
-	assert not producer.is_active()
-	assert producer._get_current_state() == PRODUCTION.STATES.paused
+    # Unpause
+    producer.toggle_active()
+    assert producer.is_active()
+    assert producer._get_current_state() == PRODUCTION.STATES.producing
 
-	# Unpause
-	producer.toggle_active()
-	assert producer.is_active()
-	assert producer._get_current_state() == PRODUCTION.STATES.producing
+    # Finish work partly
+    session.run(seconds=2)
 
-	# Finish work partly
-	session.run(seconds=2)
+    assert producer._get_current_state() == PRODUCTION.STATES.producing
+    assert storage.inventory[RES.BOARDS] == 0
+    # Callback should not yet have been called
+    assert not production_finished[0]
 
-	assert producer._get_current_state() == PRODUCTION.STATES.producing
-	assert storage.inventory[RES.BOARDS] == 0
-	# Callback should not yet have been called
-	assert not production_finished[0]
+    # Finish work
+    session.run(seconds=10)
 
-	# Finish work
-	session.run(seconds=10)
+    # out of res again, waiting for res
+    assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
 
-	# out of res again, waiting for res
-	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
+    # Produced one board
+    assert storage.inventory[RES.BOARDS] == 1
+    # Callback should have been called now
+    assert production_finished[0]
 
-	# Produced one board
-	assert storage.inventory[RES.BOARDS] == 1
-	# Callback should have been called now
-	assert production_finished[0]
+    # Fillup storage
+    storage.inventory.alter(
+        RES.BOARDS, storage.inventory.get_limit(RES.BOARDS))
 
-	# Fillup storage
-	storage.inventory.alter(RES.BOARDS, storage.inventory.get_limit(RES.BOARDS))
+    # Cannot produce because inventory full
+    assert producer._get_current_state() == PRODUCTION.STATES.inventory_full
 
-	# Cannot produce because inventory full
-	assert producer._get_current_state() == PRODUCTION.STATES.inventory_full
-
-	# Empty inventory, wait again
-	storage.inventory.alter(RES.BOARDS, -storage.inventory.get_limit(RES.BOARDS))
-	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
+    # Empty inventory, wait again
+    storage.inventory.alter(RES.BOARDS,
+                            -storage.inventory.get_limit(RES.BOARDS))
+    assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res

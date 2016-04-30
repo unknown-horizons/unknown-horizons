@@ -21,5 +21,5 @@
 
 
 class PathBlockedError(Exception):
-	"""Exception to be thrown when a path is unexpectedly blocked"""
-	pass
+    """Exception to be thrown when a path is unexpectedly blocked"""
+    pass

@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# The global Fife instance. This is used both inside a game session and in the menus.
+# The global Fife instance.
+# This is used both inside a game session and in the menus.
 fife = None
 
 # The global read-only data database (includes most content/*.sql)

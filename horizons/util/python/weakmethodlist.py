@@ -21,45 +21,48 @@
 
 from horizons.util.python.weakmethod import WeakMethod
 
+
 class WeakMethodList(list):
-	"""A class that handles zero to n callbacks."""
+    """A class that handles zero to n callbacks."""
 
-	def __init__(self, callbacks=None):
-		"""
-		@param callbacks: None, a function, a list of functions, or a tuple of functions
-		"""
-		super(WeakMethodList, self).__init__()
-		self.append(callbacks)
+    def __init__(self, callbacks=None):
+        """
+        @param callbacks: None, a function, a list of functions,
+                          or a tuple of functions
+        """
+        super(WeakMethodList, self).__init__()
+        self.append(callbacks)
 
-	def append(self, callback):
-		"""Just like list.append, except it can also handle lists and discards None-values"""
-		if callback is None:
-			pass
-		elif callable(callback):
-			list.append(self, WeakMethod(callback))
-		elif isinstance(callback, list, tuple):
-			for i in callback:
-				self.append(i)
-		else:
-			assert False
+    def append(self, callback):
+        """Just like list.append, except it can also handle lists
+        and discards None-values"""
+        if callback is None:
+            pass
+        elif callable(callback):
+            list.append(self, WeakMethod(callback))
+        elif isinstance(callback, list, tuple):
+            for i in callback:
+                self.append(i)
+        else:
+            assert False
 
-	extend = append
+    extend = append
 
-	def execute(self):
-		"""Execute all callbacks. Number of callbacks may be zero to n."""
-		for callback in self:
-			callback()
+    def execute(self):
+        """Execute all callbacks. Number of callbacks may be zero to n."""
+        for callback in self:
+            callback()
 
-	def remove(self, elem):
-		if not isinstance(elem, WeakMethod):
-			elem = WeakMethod(elem)
-		list.remove(self, elem)
+    def remove(self, elem):
+        if not isinstance(elem, WeakMethod):
+            elem = WeakMethod(elem)
+        list.remove(self, elem)
 
-	def __contains__(self, elem):
-		if isinstance(elem, WeakMethod):
-			return list.__contains__(self, elem)
-		else:
-			return WeakMethod(elem) in self
+    def __contains__(self, elem):
+        if isinstance(elem, WeakMethod):
+            return list.__contains__(self, elem)
+        else:
+            return WeakMethod(elem) in self
 
-	def __str__(self):
-		return str([str(i) for i in self])
+    def __str__(self):
+        return str([str(i) for i in self])

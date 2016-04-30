@@ -23,53 +23,59 @@
 from horizons.constants import BUILDINGS, RES, TIER
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
-from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
+from horizons.world.disaster.buildinginfluencingdisaster import \
+    BuildingInfluencingDisaster
 from horizons.world.status import BlackDeathStatusIcon
 
+
 class BlackDeathDisaster(BuildingInfluencingDisaster):
-	"""Simulates the Black Death.
+    """Simulates the Black Death.
 
-	"""
+    """
 
-	TYPE = "Happy dying."
-	NOTIFICATION_TYPE = 'BUILDING_INFECTED_BY_BLACK_DEATH'
+    TYPE = "Happy dying."
+    NOTIFICATION_TYPE = 'BUILDING_INFECTED_BY_BLACK_DEATH'
 
-	SEED_CHANCE = 0.015
+    SEED_CHANCE = 0.015
 
-	EXPANSION_RADIUS = 4
+    EXPANSION_RADIUS = 4
 
-	DISASTER_RES = RES.BLACKDEATH
+    DISASTER_RES = RES.BLACKDEATH
 
-	BUILDING_TYPE = BUILDINGS.RESIDENTIAL
+    BUILDING_TYPE = BUILDINGS.RESIDENTIAL
 
-	MIN_BREAKOUT_TIER = TIER.SETTLERS
+    MIN_BREAKOUT_TIER = TIER.SETTLERS
 
-	MIN_INHABITANTS_FOR_BREAKOUT = 5
+    MIN_INHABITANTS_FOR_BREAKOUT = 5
 
-	STATUS_ICON = BlackDeathStatusIcon
+    STATUS_ICON = BlackDeathStatusIcon
 
-	RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
+    RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
 
-	def __init__(self, settlement, manager):
-		super (BlackDeathDisaster, self).__init__(settlement, manager)
-		self.healed_buildings = []
+    def __init__(self, settlement, manager):
+        super(BlackDeathDisaster, self).__init__(settlement, manager)
+        self.healed_buildings = []
 
-	def infect(self, building, load=None):
-		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
-		if not building in self.healed_buildings:
-			super(BlackDeathDisaster, self).infect(building, load=load)
+    def infect(self, building, load=None):
+        """@load: (db, disaster_worldid), set on restoring infected
+        state of savegame"""
+        if building not in self.healed_buildings:
+            super(BlackDeathDisaster, self).infect(building, load=load)
 
-	def wreak_havoc(self, building):
-		"""Some inhabitants have to die."""
-		super(BlackDeathDisaster, self)
-		if building.inhabitants > 1:
-			inhabitants_that_will_die = self._manager.session.random.randint(1, building.inhabitants)
-			building.inhabitants -= inhabitants_that_will_die
-			self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
-			Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=self.TIME_BEFORE_HAVOC)
-		else:
-			self.recover(building)
+    def wreak_havoc(self, building):
+        """Some inhabitants have to die."""
+        super(BlackDeathDisaster, self)
+        if building.inhabitants > 1:
+            inhabitants_that_will_die = self._manager.session.random.randint(
+                1, building.inhabitants)
+            building.inhabitants -= inhabitants_that_will_die
+            self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
+            Scheduler().add_new_object(
+                Callback(self.wreak_havoc, building),
+                self, run_in=self.TIME_BEFORE_HAVOC)
+        else:
+            self.recover(building)
 
-	def recover(self, building):
-		self.healed_buildings.append(building)
-		super(BlackDeathDisaster, self).recover(building)
+    def recover(self, building):
+        self.healed_buildings.append(building)
+        super(BlackDeathDisaster, self).recover(building)

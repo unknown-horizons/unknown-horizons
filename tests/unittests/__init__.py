@@ -20,26 +20,26 @@
 # ###################################################
 
 import unittest
-
 import horizons.globals
 import horizons.main
 
 
 class TestCase(unittest.TestCase):
-	"""
-	For each test, set up a new database.
-	"""
-	def setUp(self):
-		self.db = horizons.main._create_main_db()
+    """
+    For each test, set up a new database.
+    """
+    def setUp(self):
+        self.db = horizons.main._create_main_db()
 
-		# Truncate all tables. We don't want to rely on existing data.
-		for (table_name, ) in self.db("SELECT name FROM sqlite_master WHERE type = 'table'"):
-			self.db('DELETE FROM %s' % table_name)
+        # Truncate all tables. We don't want to rely on existing data.
+        for (table_name, ) in self.db(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"):
+            self.db('DELETE FROM {0!s}'.format(table_name))
 
-		horizons.globals.db = self.db
+        horizons.globals.db = self.db
 
-	def tearDown(self):
-		self.db.close()
+    def tearDown(self):
+        self.db.close()
 
 
 _multiprocess_can_split_ = True

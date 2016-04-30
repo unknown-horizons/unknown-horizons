@@ -23,73 +23,77 @@ from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
 from horizons.world.storage import (
-	PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage,
-	SettlementStorage, PositiveTotalNumSlotsStorage,
+    PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage,
+    SettlementStorage, PositiveTotalNumSlotsStorage,
 )
 
 
 class StorageComponent(Component):
-	"""The StorageComponent class is used for everything that has an inventory.
-	
-	Examples for these classes are ships, settlements, buildings, etc.
-	Basically it just adds an inventory, nothing more, nothing less.
-	"""
+    """The StorageComponent class is used for everything that has an inventory.
 
-	NAME = 'storagecomponent'
+    Examples for these classes are ships, settlements, buildings, etc.
+    Basically it just adds an inventory, nothing more, nothing less.
+    """
 
-	storage_mapping = {
-	    'PositiveStorage': PositiveStorage,
-	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
-	    'PositiveTotalNumSlotsStorage': PositiveTotalNumSlotsStorage,
-	    'SlotsStorage': PositiveSizedSpecializedStorage,
-	    'SettlementStorage': SettlementStorage # pseudo storage meaning to share settlement storage
-	    }
+    NAME = 'storagecomponent'
 
-	def __init__(self, inventory):
-		super(StorageComponent, self).__init__()
-		self.inventory = inventory
+    storage_mapping = {
+        'PositiveStorage': PositiveStorage,
+        'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
+        'PositiveTotalNumSlotsStorage': PositiveTotalNumSlotsStorage,
+        'SlotsStorage': PositiveSizedSpecializedStorage,
+        'SettlementStorage': SettlementStorage
+        # pseudo storage meaning to share settlement storage
+    }
 
-		# SettlementStorage is used as flag to signal using another inventory
-		self.has_own_inventory = not isinstance(self.inventory, SettlementStorage)
+    def __init__(self, inventory):
+        super(StorageComponent, self).__init__()
+        self.inventory = inventory
 
-	def initialize(self):
-		# NOTE: also called on load (initialize usually isn't)
-		if not self.has_own_inventory:
-			self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
-		self.inventory.add_change_listener(self.something_changed)
+        # SettlementStorage is used as flag to signal using another inventory
+        self.has_own_inventory = not isinstance(self.inventory,
+                                                SettlementStorage)
 
-	def remove(self):
-		super(StorageComponent, self).remove()
-		if self.has_own_inventory:
-			# no changelister calls on remove
-			self.inventory.clear_change_listeners()
-			# remove inventory to prevent any action here in subclass remove
-			self.inventory.reset_all()
+    def initialize(self):
+        # NOTE: also called on load (initialize usually isn't)
+        if not self.has_own_inventory:
+            self.inventory = self.instance.settlement.get_component(
+                StorageComponent).inventory
+        self.inventory.add_change_listener(self.something_changed)
 
-	def save(self, db):
-		super(StorageComponent, self).save(db)
-		if self.has_own_inventory:
-			self.inventory.save(db, self.instance.worldid)
+    def remove(self):
+        super(StorageComponent, self).remove()
+        if self.has_own_inventory:
+            # no changelister calls on remove
+            self.inventory.clear_change_listeners()
+            # remove inventory to prevent any action here in subclass remove
+            self.inventory.reset_all()
 
-	def load(self, db, worldid):
-		super(StorageComponent, self).load(db, worldid)
-		self.initialize()
-		if self.has_own_inventory:
-			self.inventory.load(db, worldid)
-		# This allows other components to instantly update on load
-		Scheduler().add_new_object(self.something_changed, self, run_in=0)
+    def save(self, db):
+        super(StorageComponent, self).save(db)
+        if self.has_own_inventory:
+            self.inventory.save(db, self.instance.worldid)
 
-	def something_changed(self):
-		"""Used as proxy to send messages when a changelistener notifies us.
+    def load(self, db, worldid):
+        super(StorageComponent, self).load(db, worldid)
+        self.initialize()
+        if self.has_own_inventory:
+            self.inventory.load(db, worldid)
+        # This allows other components to instantly update on load
+        Scheduler().add_new_object(self.something_changed, self, run_in=0)
 
-		Masks the message sender to be `self.instance` rather than self because
-		that is what we are interested in, usually.
-		"""
-		InstanceInventoryUpdated.broadcast(self.instance, self.inventory._storage)
+    def something_changed(self):
+        """Used as proxy to send messages when a changelistener notifies us.
 
-	@classmethod
-	def get_instance(cls, arguments):
-		key, value = arguments.iteritems().next()
-		storage = cls.storage_mapping[key]
-		inventory = storage(**value)
-		return cls(inventory=inventory)
+        Masks the message sender to be `self.instance` rather than self because
+        that is what we are interested in, usually.
+        """
+        InstanceInventoryUpdated.broadcast(self.instance,
+                                           self.inventory._storage)
+
+    @classmethod
+    def get_instance(cls, arguments):
+        key, value = arguments.iteritems().next()
+        storage = cls.storage_mapping[key]
+        inventory = storage(**value)
+        return cls(inventory=inventory)

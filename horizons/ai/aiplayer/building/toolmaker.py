@@ -27,40 +27,56 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
-class AbstractToolmaker(AbstractBuilding):
-	@property
-	def evaluator_class(self):
-		return ToolmakerEvaluator
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.TOOLMAKER] = cls
+class AbstractToolmaker(AbstractBuilding):
+    @property
+    def evaluator_class(self):
+        return ToolmakerEvaluator
+
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.TOOLMAKER] = cls
+
 
 class ToolmakerEvaluator(BuildingEvaluator):
-	@classmethod
-	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.TOOLMAKER, (x, y), orientation)
-		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
-		if distance_to_collector is None:
-			return None
+    @classmethod
+    def create(cls, area_builder, x, y, orientation):
+        builder = BasicBuilder.create(BUILDINGS.TOOLMAKER, (x, y), orientation)
+        distance_to_collector = cls._distance_to_nearest_collector(
+            area_builder, builder)
+        if distance_to_collector is None:
+            return None
 
-		distance_to_smeltery = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.SMELTERY)
-		distance_to_charcoal_burner = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.CHARCOAL_BURNER)
-		distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.LUMBERJACK)
-		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
+        distance_to_smeltery = cls._distance_to_nearest_building(
+            area_builder, builder, BUILDINGS.SMELTERY)
+        distance_to_charcoal_burner = cls._distance_to_nearest_building(
+            area_builder, builder, BUILDINGS.CHARCOAL_BURNER)
+        distance_to_lumberjack = cls._distance_to_nearest_building(
+            area_builder, builder,
+            BUILDINGS.LUMBERJACK)
+        alignment = cls._get_alignment(area_builder,
+                                       builder.position.tuple_iter())
 
-		personality = area_builder.owner.personality_manager.get('ToolmakerEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.TOOLMAKER].radius * personality.distance_penalty
+        personality = area_builder.owner.personality_manager.get(
+            'ToolmakerEvaluator')
+        distance_penalty = Entities.buildings[
+            BUILDINGS.TOOLMAKER].radius * personality.distance_penalty
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_smeltery),
-			(personality.charcoal_burner_distance_importance, distance_to_charcoal_burner), (personality.lumberjack_distance_importance, distance_to_lumberjack)],
-			distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.TOOLMAKER].radius) / distance + alignment * personality.alignment_importance
-		return ToolmakerEvaluator(area_builder, builder, value)
+        distance = cls._weighted_distance(
+            distance_to_collector, [
+                (personality.smeltery_distance_importance,
+                 distance_to_smeltery),
+                (personality.charcoal_burner_distance_importance,
+                 distance_to_charcoal_burner),
+                (personality.lumberjack_distance_importance,
+                 distance_to_lumberjack)], distance_penalty)
+        value = (float(Entities.buildings[BUILDINGS.TOOLMAKER].radius) /
+                 distance + alignment * personality.alignment_importance)
+        return ToolmakerEvaluator(area_builder, builder, value)
 
-	@property
-	def purpose(self):
-		return BUILDING_PURPOSE.BRICKYARD
+    @property
+    def purpose(self):
+        return BUILDING_PURPOSE.BRICKYARD
 
 AbstractToolmaker.register_buildings()
 

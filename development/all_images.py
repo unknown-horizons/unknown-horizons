@@ -41,16 +41,17 @@ where = 'content/gui/'
 # Warning: This most likely is too huge to be of any help.
 # where = 'content/gfx/'
 
-# make this script work both when started inside development and in the uh root dir
+# make this script work both when started inside development and
+#  in the uh root dir
 if not os.path.exists('content'):
-	os.chdir('..')
+    os.chdir('..')
 assert os.path.exists('content'), 'Content dir not found.'
 
 base_url = 'file://localhost/' + os.path.abspath(os.getcwd()) + '/'
 
 for root, dirs, files in sorted(os.walk(where)):
-	for f in sorted(files):
-		if not f.endswith(('.png', '.jpg')):
-			continue
-		url = base_url + '/' + root + '/' + f
-		print '<a href="{url}"><img src="{url}" /></a>'.format(url=url)
+    for f in sorted(files):
+        if not f.endswith(('.png', '.jpg')):
+            continue
+        url = base_url + '/' + root + '/' + f
+        print '<a href="{url}"><img src="{url}" /></a>'.format(url=url)

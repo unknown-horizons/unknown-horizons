@@ -28,28 +28,38 @@ from horizons.component.tradepostcomponent import TradePostComponent
 
 
 class EnemyBuildingOverviewTab(OverviewTab):
-	widget = 'overview_enemybuilding.xml'
+    widget = 'overview_enemybuilding.xml'
 
-	def init_widget(self):
-		super(EnemyBuildingOverviewTab, self).init_widget()
-		self.widget.findChild(name="headline").text = self.instance.owner.name
+    def init_widget(self):
+        super(EnemyBuildingOverviewTab, self).init_widget()
+        self.widget.findChild(name="headline").text = self.instance.owner.name
+
 
 class EnemyWarehouseOverviewTab(OverviewTab):
-	widget = 'overview_enemywarehouse.xml'
-	helptext = _lazy("Warehouse overview")
+    widget = 'overview_enemywarehouse.xml'
+    helptext = _lazy("Warehouse overview")
 
-	def init_widget(self):
-		super(EnemyWarehouseOverviewTab, self).init_widget()
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
+    def init_widget(self):
+        super(EnemyWarehouseOverviewTab, self).init_widget()
+        self.widget.findChild(name="headline").text = \
+            self.instance.settlement.get_component(NamedComponent).name
 
-	def refresh(self):
-		settlement = self.instance.settlement
-		self.widget.findChild(name="headline").text = settlement.get_component(NamedComponent).name
+    def refresh(self):
+        settlement = self.instance.settlement
+        self.widget.findChild(name="headline").text = settlement.get_component(
+            NamedComponent).name
 
-		selling_inventory = self.widget.findChild(name='selling_inventory')
-		selling_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).sell_list, True)
+        selling_inventory = self.widget.findChild(name='selling_inventory')
+        selling_inventory.init(
+            self.instance.session.db,
+            settlement.get_component(StorageComponent).inventory,
+            settlement.get_component(TradePostComponent).sell_list, True)
 
-		buying_inventory = self.widget.findChild(name='buying_inventory')
-		buying_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).buy_list, False)
+        buying_inventory = self.widget.findChild(name='buying_inventory')
+        buying_inventory.init(self.instance.session.db,
+                              settlement.get_component(
+                                  StorageComponent).inventory,
+                              settlement.get_component(
+                                  TradePostComponent).buy_list, False)
 
-		super(EnemyWarehouseOverviewTab, self).refresh()
+        super(EnemyWarehouseOverviewTab, self).refresh()

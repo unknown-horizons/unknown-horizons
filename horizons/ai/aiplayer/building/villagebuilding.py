@@ -27,101 +27,122 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.entities import Entities
 
+
 class AbstractVillageBuilding(AbstractBuilding):
-	@classmethod
-	def get_purpose(cls, resource_id):
-		return {
-			RES.FAITH:        BUILDING_PURPOSE.PAVILION,
-			RES.EDUCATION:    BUILDING_PURPOSE.VILLAGE_SCHOOL,
-			RES.GET_TOGETHER: BUILDING_PURPOSE.TAVERN,
-			RES.COMMUNITY:    BUILDING_PURPOSE.MAIN_SQUARE,
-		}.get(resource_id)
+    @classmethod
+    def get_purpose(cls, resource_id):
+        return {
+            RES.FAITH: BUILDING_PURPOSE.PAVILION,
+            RES.EDUCATION: BUILDING_PURPOSE.VILLAGE_SCHOOL,
+            RES.GET_TOGETHER: BUILDING_PURPOSE.TAVERN,
+            RES.COMMUNITY: BUILDING_PURPOSE.MAIN_SQUARE,
+        }.get(resource_id)
 
-	def in_settlement(self, settlement_manager, position):
-		for coords in position.tuple_iter():
-			if coords not in settlement_manager.settlement.ground_map:
-				return False
-		return True
+    def in_settlement(self, settlement_manager, position):
+        for coords in position.tuple_iter():
+            if coords not in settlement_manager.settlement.ground_map:
+                return False
+        return True
 
-	def _need_producer(self, settlement_manager, coords, resource_id):
-		if not settlement_manager.settlement.count_buildings(BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
-			return True # if none exist and we need the resource then build it
-		assigned_residences = settlement_manager.village_builder.special_building_assignments[self.get_purpose(resource_id)][coords]
-		total = len(assigned_residences)
-		not_serviced = 0
-		for residence_coords in assigned_residences:
-			if settlement_manager.village_builder.plan[residence_coords][0] != BUILDING_PURPOSE.RESIDENCE:
-				continue
-			not_serviced += 1
+    def _need_producer(self, settlement_manager, coords, resource_id):
+        if not settlement_manager.settlement.count_buildings(
+                BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
+            return True  # if none exist and we need the resource then build it
+        assigned_residences = settlement_manager.village_builder.\
+            special_building_assignments[self.get_purpose(resource_id)][coords]
+        total = len(assigned_residences)
+        not_serviced = 0
+        for residence_coords in assigned_residences:
+            if settlement_manager.village_builder.plan[
+                    residence_coords][0] != BUILDING_PURPOSE.RESIDENCE:
+                continue
+            not_serviced += 1
 
-		if not_serviced > 0 and not_serviced >= total * settlement_manager.owner.personality_manager.get('AbstractVillageBuilding').fraction_of_assigned_residences_built:
-			return True
-		return False
+        if (not_serviced > 0 and not_serviced >= total *
+                settlement_manager.owner.personality_manager.get
+                ('AbstractVillageBuilding').
+                fraction_of_assigned_residences_built):
+            return True
+        return False
 
-	def build(self, settlement_manager, resource_id):
-		village_builder = settlement_manager.village_builder
-		building_purpose = self.get_purpose(resource_id)
-		building_id = BUILDING_PURPOSE.get_building(building_purpose)
-		building_class = Entities.buildings[building_id]
+    def build(self, settlement_manager, resource_id):
+        village_builder = settlement_manager.village_builder
+        building_purpose = self.get_purpose(resource_id)
+        building_id = BUILDING_PURPOSE.get_building(building_purpose)
+        building_class = Entities.buildings[building_id]
 
-		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
-			if section > village_builder.current_section or purpose != building_purpose:
-				continue
+        for coords, (purpose,
+                     (section, _)) in village_builder.plan.iteritems():
+            if section > village_builder.current_section or \
+                    purpose != building_purpose:
+                continue
 
-			object = village_builder.land_manager.island.ground_map[coords].object
-			if object is not None and object.id == self.id:
-				continue
+            object = village_builder.land_manager.island.ground_map[
+                coords].object
+            if object is not None and object.id == self.id:
+                continue
 
-			if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
-				if not self._need_producer(settlement_manager, coords, resource_id):
-					continue
+            if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
+                if not self._need_producer(settlement_manager, coords,
+                                           resource_id):
+                    continue
 
-			if not village_builder.have_resources(building_id):
-				return (BUILD_RESULT.NEED_RESOURCES, None)
-			if coords not in village_builder.settlement.buildability_cache.cache[building_class.size]:
-				position = Rect.init_from_topleft_and_size_tuples(coords, building_class.size)
-				return (BUILD_RESULT.OUT_OF_SETTLEMENT, position)
+            if not village_builder.have_resources(building_id):
+                return (BUILD_RESULT.NEED_RESOURCES, None)
+            if coords not in village_builder.settlement.buildability_cache.\
+                    cache[building_class.size]:
+                position = Rect.init_from_topleft_and_size_tuples(
+                    coords, building_class.size)
+                return (BUILD_RESULT.OUT_OF_SETTLEMENT, position)
 
-			building = BasicBuilder(building_id, coords, 0).execute(settlement_manager.land_manager)
-			assert building
-			if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not village_builder.roads_built:
-				village_builder.build_roads()
-			return (BUILD_RESULT.OK, building)
-		return (BUILD_RESULT.SKIP, None)
+            building = BasicBuilder(building_id, coords, 0).execute(
+                settlement_manager.land_manager)
+            assert building
+            if (self.get_purpose(resource_id) ==
+                    BUILDING_PURPOSE.MAIN_SQUARE and not
+                    village_builder.roads_built):
+                village_builder.build_roads()
+            return (BUILD_RESULT.OK, building)
+        return (BUILD_RESULT.SKIP, None)
 
-	def need_to_build_more_buildings(self, settlement_manager, resource_id):
-		village_builder = settlement_manager.village_builder
-		building_purpose = self.get_purpose(resource_id)
+    def need_to_build_more_buildings(self, settlement_manager, resource_id):
+        village_builder = settlement_manager.village_builder
+        building_purpose = self.get_purpose(resource_id)
 
-		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
-			if section > village_builder.current_section:
-				continue
-			if purpose == building_purpose:
-				object = village_builder.land_manager.island.ground_map[coords].object
-				if object is None or object.id != self.id:
-					if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
-						if not self._need_producer(settlement_manager, coords, resource_id):
-							continue
-					return True
-		return False
+        for coords, (purpose,
+                     (section, _)) in village_builder.plan.iteritems():
+            if section > village_builder.current_section:
+                continue
+            if purpose == building_purpose:
+                object = village_builder.land_manager.island.ground_map[
+                    coords].object
+                if object is None or object.id != self.id:
+                    if building_purpose != BUILDING_PURPOSE.MAIN_SQUARE:
+                        if not self._need_producer(settlement_manager, coords,
+                                                   resource_id):
+                            continue
+                    return True
+        return False
 
-	@property
-	def coverage_building(self):
-		""" main squares, pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
-		return True
+    @property
+    def coverage_building(self):
+        """ main squares, pavilions, schools, and taverns are buildings that
+        need to be built even if the total production is enough """
+        return True
 
-	def _get_producer_building(self):
-		# TODO: remove this hack; introduced to battle the community Production moving from main squares to the warehouse
-		if self.id == BUILDINGS.MAIN_SQUARE:
-			return Entities.buildings[BUILDINGS.WAREHOUSE]
-		return super(AbstractVillageBuilding, self)._get_producer_building()
+    def _get_producer_building(self):
+        # TODO: remove this hack; introduced to battle the community Production
+        # moving from main squares to the warehouse
+        if self.id == BUILDINGS.MAIN_SQUARE:
+            return Entities.buildings[BUILDINGS.WAREHOUSE]
+        return super(AbstractVillageBuilding, self)._get_producer_building()
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.MAIN_SQUARE] = cls
-		cls._available_buildings[BUILDINGS.PAVILION] = cls
-		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL] = cls
-		cls._available_buildings[BUILDINGS.TAVERN] = cls
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.MAIN_SQUARE] = cls
+        cls._available_buildings[BUILDINGS.PAVILION] = cls
+        cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL] = cls
+        cls._available_buildings[BUILDINGS.TAVERN] = cls
 
 AbstractVillageBuilding.register_buildings()
 

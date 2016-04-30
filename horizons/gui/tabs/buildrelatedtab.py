@@ -30,69 +30,77 @@ from horizons.util.python.callback import Callback
 from horizons.entities import Entities
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class BuildRelatedTab(OverviewTab):
-	"""
-	Adds a special tab to each production building with at least one entry in
-	the table related_buildings. This tab acts as modified build menu tab and
-	only displays those buildings actually related to the selected building.
-	Examples: tree for lumberjack; pavilion, school, etc. for inhabitants.
-	"""
-	widget = 'related_buildings.xml'
-	icon_path = 'icons/tabwidget/production/related'
-	helptext = _lazy("Build related buildings")
-	template_gui_xml = 'related_buildings_container.xml'
+    """
+    Adds a special tab to each production building with at least one entry in
+    the table related_buildings. This tab acts as modified build menu tab and
+    only displays those buildings actually related to the selected building.
+    Examples: tree for lumberjack; pavilion, school, etc. for inhabitants.
+    """
+    widget = 'related_buildings.xml'
+    icon_path = 'icons/tabwidget/production/related'
+    helptext = _lazy("Build related buildings")
+    template_gui_xml = 'related_buildings_container.xml'
 
-	def refresh(self):
-		"""
-		This function is called by the TabWidget to redraw the widget.
-		"""
-		# remove old data
-		parent_container = self.widget.child_finder('related_buildings')
-		while parent_container.children:
-			parent_container.removeChild(parent_container.children[0])
+    def refresh(self):
+        """
+        This function is called by the TabWidget to redraw the widget.
+        """
+        # remove old data
+        parent_container = self.widget.child_finder('related_buildings')
+        while parent_container.children:
+            parent_container.removeChild(parent_container.children[0])
 
-		# load all related buildings from DB
-		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
-		sorted_ids = sorted([(b, Entities.buildings[b].settler_level) for b in building_ids], key=lambda x : x[1])
-		container = self.__get_new_container()
-		self.current_row = min(building[1] for building in sorted_ids)
-		for building_id, level in sorted_ids:
-			if level <= self.instance.owner.settler_level: # available in build menu?
-				button = self._create_build_buttons(building_id, container)
-				# check whether to start new line (for new tier row)
-				if level > self.current_row:
-					self.current_row = level
-					parent_container.addChild(container)
-					container = self.__get_new_container()
-				container.findChild(name="build_button_container").addChild(button)
-				button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
-				container.findChild(name="build_button_bg_container").addChild(button_bg)
-		# Still need to add last container
-		parent_container.addChild(container)
-		super(BuildRelatedTab, self).refresh()
+        # load all related buildings from DB
+        building_ids = self.instance.session.db.\
+            get_related_building_ids_for_menu(self.instance.id)
+        sorted_ids = sorted([(b, Entities.buildings[b].settler_level)
+                             for b in building_ids], key=lambda x: x[1])
+        container = self.__get_new_container()
+        self.current_row = min(building[1] for building in sorted_ids)
+        for building_id, level in sorted_ids:
+            if level <= self.instance.owner.settler_level:
+                # available in build menu?
+                button = self._create_build_buttons(building_id, container)
+                # check whether to start new line (for new tier row)
+                if level > self.current_row:
+                    self.current_row = level
+                    parent_container.addChild(container)
+                    container = self.__get_new_container()
+                container.findChild(name="build_button_container").addChild(
+                    button)
+                button_bg = Icon(image="content/gui/images/buttons/buildmenu_"
+                                       "button_bg.png")
+                container.findChild(
+                    name="build_button_bg_container").addChild(button_bg)
+        # Still need to add last container
+        parent_container.addChild(container)
+        super(BuildRelatedTab, self).refresh()
 
-	def __get_new_container(self):
-		"""
-		Loads a background container xml file. Returns the loaded widget.
-		"""
-		gui = load_uh_widget(self.template_gui_xml)
-		return gui.findChild(name="buildings_container")
+    def __get_new_container(self):
+        """
+        Loads a background container xml file. Returns the loaded widget.
+        """
+        gui = load_uh_widget(self.template_gui_xml)
+        return gui.findChild(name="buildings_container")
 
-	def _create_build_buttons(self, building_id, container):
-		# {{mode}} in double braces because it is replaced as a second step
-		building_type = Entities.buildings[building_id]
-		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=building_type.get_tooltip())
-		build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
-		build_button.capture(Callback(self.build_related, building_id))
-		return build_button
+    def _create_build_buttons(self, building_id, container):
+        # {{mode}} in double braces because it is replaced as a second step
+        building_type = Entities.buildings[building_id]
+        build_button = ImageButton(name="build{id}".format(id=building_id),
+                                   helptext=building_type.get_tooltip())
+        build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
+        build_button.capture(Callback(self.build_related, building_id))
+        return build_button
 
-	def build_related(self, building_id):
-		self.hide()
-		# deselect all
-		for instance in self.instance.session.selected_instances:
-			instance.get_component(SelectableComponent).deselect()
-		self.instance.session.selected_instances.clear()
+    def build_related(self, building_id):
+        self.hide()
+        # deselect all
+        for instance in self.instance.session.selected_instances:
+            instance.get_component(SelectableComponent).deselect()
+        self.instance.session.selected_instances.clear()
 
-		self.instance.session.ingame_gui.set_cursor('building', Entities.buildings[building_id],
-		                                            ship=None,
-		                                            build_related=self.instance)
+        self.instance.session.ingame_gui.set_cursor(
+            'building', Entities.buildings[building_id], ship=None,
+            build_related=self.instance)

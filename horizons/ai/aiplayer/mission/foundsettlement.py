@@ -29,116 +29,142 @@ from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 from horizons.entities import Entities
 
+
 class FoundSettlement(ShipMission):
-	"""
-	Given a ship with the required resources and the coordinates of the future warehouse
-	the ship is taken near the end location and a warehouse is built.
-	"""
+    """
+    Given a ship with the required resources and the coordinates of
+    the future warehouse the ship is taken near the end location and
+    a warehouse is built.
+    """
 
-	missionStates = Enum('created', 'moving')
+    missionStates = Enum('created', 'moving')
 
-	def __init__(self, success_callback, failure_callback, land_manager, ship, coords):
-		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
-		self.land_manager = land_manager
-		self.coords = coords
-		self.warehouse = None
-		self.state = self.missionStates.created
+    def __init__(self, success_callback, failure_callback, land_manager,
+                 ship, coords):
+        super(FoundSettlement, self).__init__(success_callback,
+                                              failure_callback, ship)
+        self.land_manager = land_manager
+        self.coords = coords
+        self.warehouse = None
+        self.state = self.missionStates.created
 
-	def save(self, db):
-		super(FoundSettlement, self).save(db)
-		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
-			self.worldid, self.land_manager.worldid, self.ship.worldid, self.coords[0], self.coords[1], self.state.index)
+    def save(self, db):
+        super(FoundSettlement, self).save(db)
+        db("INSERT INTO ai_mission_found_settlement(rowid, land_manager,"
+            " ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
+            self.worldid, self.land_manager.worldid, self.ship.worldid,
+            self.coords[0], self.coords[1], self.state.index)
 
-	@classmethod
-	def load(cls, db, worldid, success_callback, failure_callback):
-		self = cls.__new__(cls)
-		self._load(db, worldid, success_callback, failure_callback)
-		return self
+    @classmethod
+    def load(cls, db, worldid, success_callback, failure_callback):
+        self = cls.__new__(cls)
+        self._load(db, worldid, success_callback, failure_callback)
+        return self
 
-	def _load(self, db, worldid, success_callback, failure_callback):
-		db_result = db("SELECT land_manager, ship, x, y, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
-		self.land_manager = WorldObject.get_object_by_id(db_result[0])
-		self.coords = (int(db_result[2]), int(db_result[3]))
-		self.warehouse = None
-		self.state = self.missionStates[db_result[4]]
-		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
+    def _load(self, db, worldid, success_callback, failure_callback):
+        db_result = db("SELECT land_manager, ship, x, y, state FROM"
+                       " ai_mission_found_settlement WHERE rowid = ?",
+                       worldid)[0]
+        self.land_manager = WorldObject.get_object_by_id(db_result[0])
+        self.coords = (int(db_result[2]), int(db_result[3]))
+        self.warehouse = None
+        self.state = self.missionStates[db_result[4]]
+        super(FoundSettlement, self).load(
+            db, worldid, success_callback, failure_callback,
+            WorldObject.get_object_by_id(db_result[1]))
 
-		if self.state == self.missionStates.moving:
-			self.ship.add_move_callback(Callback(self._reached_destination_area))
-			self.ship.add_blocked_callback(Callback(self._move_to_destination_area))
-		else:
-			assert False, 'invalid state'
+        if self.state == self.missionStates.moving:
+            self.ship.add_move_callback(Callback(
+                self._reached_destination_area))
+            self.ship.add_blocked_callback(Callback(
+                self._move_to_destination_area))
+        else:
+            assert False, 'invalid state'
 
-	def start(self):
-		self.state = self.missionStates.moving
-		self._move_to_destination_area()
+    def start(self):
+        self.state = self.missionStates.moving
+        self._move_to_destination_area()
 
-	def _move_to_destination_area(self):
-		if self.coords is None:
-			self.report_failure('No possible warehouse location')
-			return
+    def _move_to_destination_area(self):
+        if self.coords is None:
+            self.report_failure('No possible warehouse location')
+            return
 
-		self._move_to_warehouse_area(Point(*self.coords), Callback(self._reached_destination_area),
-			Callback(self._move_to_destination_area), 'Move not possible')
+        self._move_to_warehouse_area(Point(*self.coords),
+                                     Callback(self._reached_destination_area),
+                                     Callback(self._move_to_destination_area),
+                                     'Move not possible')
 
-	def _reached_destination_area(self):
-		self.log.info('%s reached BO area', self)
+    def _reached_destination_area(self):
+        self.log.info('%s reached BO area', self)
 
-		builder = BasicBuilder(BUILDINGS.WAREHOUSE, self.coords, 0)
-		if not builder.have_resources(self.land_manager, ship=self.ship):
-			self.report_failure('Not enough resources for a warehouse at %s' % str(self.coords))
-			return
+        builder = BasicBuilder(BUILDINGS.WAREHOUSE, self.coords, 0)
+        if not builder.have_resources(self.land_manager, ship=self.ship):
+            self.report_failure('Not enough resources for a warehouse '
+                                'at %s' % str(self.coords))
+            return
 
-		self.warehouse = builder.execute(self.land_manager, ship=self.ship)
-		assert self.warehouse
+        self.warehouse = builder.execute(self.land_manager, ship=self.ship)
+        assert self.warehouse
 
-		self.land_manager.settlement = self.warehouse.settlement
-		self.log.info('%s built the warehouse', self)
+        self.land_manager.settlement = self.warehouse.settlement
+        self.log.info('%s built the warehouse', self)
 
-		self._unload_all_resources(self.land_manager.settlement)
-		self.report_success('Built the warehouse, transferred resources')
+        self._unload_all_resources(self.land_manager.settlement)
+        self.report_success('Built the warehouse, transferred resources')
 
-	@classmethod
-	def find_warehouse_location(cls, ship, land_manager):
-		"""Return the coordinates of a location for the warehouse on the given island."""
-		warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
-		pos_offsets = []
-		for dx in xrange(warehouse_class.width):
-			for dy in xrange(warehouse_class.height):
-				pos_offsets.append((dx, dy))
+    @classmethod
+    def find_warehouse_location(cls, ship, land_manager):
+        """Return the coordinates of a location for the warehouse
+        on the given island."""
+        warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
+        pos_offsets = []
+        for dx in xrange(warehouse_class.width):
+            for dy in xrange(warehouse_class.height):
+                pos_offsets.append((dx, dy))
 
-		island = land_manager.island
-		personality = land_manager.owner.personality_manager.get('FoundSettlement')
+        island = land_manager.island
+        personality = land_manager.owner.personality_manager.get(
+            'FoundSettlement')
 
-		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
-		if not available_spots_list:
-			return None
+        available_spots_list = list(sorted(island.terrain_cache.cache[
+            warehouse_class.terrain_type][warehouse_class.size].intersection(
+            island.available_land_cache.cache[warehouse_class.size])))
+        if not available_spots_list:
+            return None
 
-		options = []
-		limited_spots = island.session.random.sample(available_spots_list, min(len(available_spots_list), personality.max_options))
-		for (x, y) in limited_spots:
-			cost = 0
-			for (x2, y2) in land_manager.village:
-				dx = x2 - x
-				dy = y2 - y
-				distance = (dx * dx + dy * dy) ** 0.5
-				if distance < personality.too_close_penalty_threshold:
-					cost += personality.too_close_constant_penalty + personality.too_close_linear_penalty / (distance + 1.0)
-				else:
-					cost += distance
+        options = []
+        limited_spots = island.session.random.sample(
+            available_spots_list, min(len(available_spots_list),
+                                      personality.max_options))
+        for (x, y) in limited_spots:
+            cost = 0
+            for (x2, y2) in land_manager.village:
+                dx = x2 - x
+                dy = y2 - y
+                distance = (dx * dx + dy * dy) ** 0.5
+                if distance < personality.too_close_penalty_threshold:
+                    cost += personality.too_close_constant_penalty + \
+                        personality.too_close_linear_penalty / (distance + 1.0)
+                else:
+                    cost += distance
 
-			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += settlement_manager.settlement.warehouse.position.distance((x, y)) * personality.linear_warehouse_penalty
-			options.append((cost, x, y))
+            for settlement_manager in land_manager.owner.settlement_managers:
+                cost += settlement_manager.settlement.warehouse.position.\
+                    distance((x, y)) * personality.linear_warehouse_penalty
+            options.append((cost, x, y))
 
-		for _, x, y in sorted(options):
-			if ship.check_move(Circle(Point(x + warehouse_class.width // 2, y + warehouse_class.height // 2), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
-				return (x, y)
-		return None
+        for _, x, y in sorted(options):
+            if ship.check_move(Circle(Point(x + warehouse_class.width // 2,
+                                            y + warehouse_class.height // 2),
+                               BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
+                return (x, y)
+        return None
 
-	@classmethod
-	def create(cls, ship, land_manager, success_callback, failure_callback):
-		coords = cls.find_warehouse_location(ship, land_manager)
-		return FoundSettlement(success_callback, failure_callback, land_manager, ship, coords)
+    @classmethod
+    def create(cls, ship, land_manager, success_callback, failure_callback):
+        coords = cls.find_warehouse_location(ship, land_manager)
+        return FoundSettlement(success_callback, failure_callback,
+                               land_manager, ship, coords)
 
 decorators.bind_all(FoundSettlement)

@@ -27,38 +27,54 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
-class AbstractSmeltery(AbstractBuilding):
-	@property
-	def evaluator_class(self):
-		return SmelteryEvaluator
 
-	@classmethod
-	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.SMELTERY] = cls
+class AbstractSmeltery(AbstractBuilding):
+    @property
+    def evaluator_class(self):
+        return SmelteryEvaluator
+
+    @classmethod
+    def register_buildings(cls):
+        cls._available_buildings[BUILDINGS.SMELTERY] = cls
+
 
 class SmelteryEvaluator(BuildingEvaluator):
-	@classmethod
-	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.SMELTERY, (x, y), orientation)
+    @classmethod
+    def create(cls, area_builder, x, y, orientation):
+        builder = BasicBuilder.create(BUILDINGS.SMELTERY, (x, y), orientation)
 
-		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.MINE)
-		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
-		distance_to_charcoal_burner = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.CHARCOAL_BURNER)
-		if distance_to_collector is None and (distance_to_charcoal_burner is None or distance_to_iron_mine is None):
-			return None
+        distance_to_iron_mine = cls._distance_to_nearest_building(
+            area_builder, builder, BUILDINGS.MINE)
+        distance_to_collector = cls._distance_to_nearest_collector(
+            area_builder, builder)
+        distance_to_charcoal_burner = cls._distance_to_nearest_building(
+            area_builder, builder, BUILDINGS.CHARCOAL_BURNER)
+        if distance_to_collector is None and (distance_to_charcoal_burner is
+                                              None or
+                                              distance_to_iron_mine is None):
+            return None
 
-		personality = area_builder.owner.personality_manager.get('SmelteryEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.SMELTERY].radius * personality.distance_penalty
+        personality = area_builder.owner.personality_manager.get(
+            'SmelteryEvaluator')
+        distance_penalty = Entities.buildings[
+            BUILDINGS.SMELTERY].radius * personality.distance_penalty
 
-		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-		distance = cls._weighted_distance(distance_to_iron_mine, [(personality.collector_distance_importance, distance_to_collector),
-			(personality.charcoal_burner_distance_importance, distance_to_charcoal_burner)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.SMELTERY].radius) / distance + alignment * personality.alignment_importance
-		return SmelteryEvaluator(area_builder, builder, value)
+        alignment = cls._get_alignment(area_builder,
+                                       builder.position.tuple_iter())
+        distance = cls._weighted_distance(
+            distance_to_iron_mine,
+            [(personality.collector_distance_importance,
+              distance_to_collector),
+             (personality.charcoal_burner_distance_importance,
+              distance_to_charcoal_burner)],
+            distance_penalty)
+        value = (float(Entities.buildings[BUILDINGS.SMELTERY].radius) /
+                 distance + alignment * personality.alignment_importance)
+        return SmelteryEvaluator(area_builder, builder, value)
 
-	@property
-	def purpose(self):
-		return BUILDING_PURPOSE.SMELTERY
+    @property
+    def purpose(self):
+        return BUILDING_PURPOSE.SMELTERY
 
 AbstractSmeltery.register_buildings()
 

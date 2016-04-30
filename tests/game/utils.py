@@ -35,60 +35,63 @@ from horizons.component.storagecomponent import StorageComponent
 
 
 def create_map():
-	"""
-	Create a map with a square island (20x20) at position (20, 20) and return the path
-	to the database file.
-	"""
+    """
+    Create a map with a square island (20x20) at position (20, 20) and
+     return the path to the database file.
+    """
 
-	tiles = []
-	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
-		if (0 < x < 20) and (0 < y < 20):
-			ground = GROUND.DEFAULT_LAND
-		else:
-			# Add coastline at the borders.
-			ground = GROUND.SHALLOW_WATER
-		tiles.append([0, 20 + x, 20 + y] + list(ground))
+    tiles = []
+    for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
+        if (0 < x < 20) and (0 < y < 20):
+            ground = GROUND.DEFAULT_LAND
+        else:
+            # Add coastline at the borders.
+            ground = GROUND.SHALLOW_WATER
+        tiles.append([0, 20 + x, 20 + y] + list(ground))
 
-	fd, map_file = tempfile.mkstemp()
-	os.close(fd)
+    fd, map_file = tempfile.mkstemp()
+    os.close(fd)
 
-	db = DbReader(map_file)
-	with open('content/map-template.sql') as map_template:
-		db.execute_script(map_template.read())
+    db = DbReader(map_file)
+    with open('content/map-template.sql') as map_template:
+        db.execute_script(map_template.read())
 
-	db('BEGIN')
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", tiles)
-	db('COMMIT')
-	db.close()
-	return map_file
+    db('BEGIN')
+    db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", tiles)
+    db('COMMIT')
+    db.close()
+    return map_file
 
 
 def new_settlement(session, pos=Point(30, 20)):
-	"""
-	Creates a settlement at the given position. It returns the settlement and the island
-	where it was created on, to avoid making function-baed tests too verbose.
-	"""
-	island = session.world.get_island(pos)
-	assert island, "No island found at %s" % pos
-	player = session.world.player
+    """
+    Creates a settlement at the given position. It returns the settlement and
+    the island where it was created on, to avoid making function-baed tests
+    too verbose.
+    """
+    island = session.world.get_island(pos)
+    assert island, "No island found at {0!s}".format(pos)
+    player = session.world.player
 
-	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
-	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-		ship.get_component(StorageComponent).inventory.alter(res, amount)
+    ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
+    for res, amount in session.db(
+            "SELECT resource, amount FROM start_resources"):
+        ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-	building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island, ship=ship)(player)
-	assert building, "Could not build warehouse at %s" % pos
+    building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island,
+                     ship=ship)(player)
+    assert building, "Could not build warehouse at {0}".format(pos)
 
-	return (building.settlement, island)
+    return (building.settlement, island)
 
 
 def settle(s):
-	"""
-	Create a new settlement, start with some resources.
-	"""
-	settlement, island = new_settlement(s)
-	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD, 5000)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS, 50)
-	return settlement, island
+    """
+    Create a new settlement, start with some resources.
+    """
+    settlement, island = new_settlement(s)
+    settlement.get_component(StorageComponent).inventory.alter(RES.GOLD, 5000)
+    settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, 50)
+    settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS, 50)
+    settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS, 50)
+    return settlement, island

@@ -27,6 +27,7 @@
 # details can be found at http://wiki.unknown-horizons.org/w/MacOS_build_notes
 
 import os
+from setuptools import setup
 
 # Sets what directory to crawl for files to include
 # Relative to location of setup.py; leave off trailing slash
@@ -44,7 +45,7 @@ for root, dirs, filenames in os.walk(includes_dir):
     if root is includes_dir:
         final = includes_target
     else:
-        final = includes_target + root[len(includes_dir)+1:] + '/'
+        final = includes_target + root[len(includes_dir) + 1:] + '/'
     files = []
     for file in filenames:
         if (file[0] != '.'):
@@ -52,26 +53,23 @@ for root, dirs, filenames in os.walk(includes_dir):
     data_includes.append((final, files))
 
 
-from setuptools import setup
-
 packages = []
 packages.append('horizons')
 packages.append('fife')
 
-#Info.plist keys for the app
-#Icon.icns must be inside src/Contents/Resources/
+# Info.plist keys for the app
+# Icon.icns must be inside src/Contents/Resources/
 plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
-		 "CFBundleDisplayName": "Unknown Horizons",
-		 "CFBundleExecutable": "Unknown Horizons",
-		 "CFBundleIdentifier": "org.unknown-horizons",
-		 "CFBundleName": "Unknown Horizons",
-		 "CFBundleShortVersionString": "0.0.0",
-		 "LSArchitecturePriority": ["x86_64", "i386"],
-		 "CFBundleVersion": "0.0.0"
-		}
+         "CFBundleDisplayName": "Unknown Horizons",
+         "CFBundleExecutable": "Unknown Horizons",
+         "CFBundleIdentifier": "org.unknown-horizons",
+         "CFBundleName": "Unknown Horizons",
+         "CFBundleShortVersionString": "0.0.0",
+         "LSArchitecturePriority": ["x86_64", "i386"],
+         "CFBundleVersion": "0.0.0"}
 
 APP = ['run_uh.py']
-OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist':plist}
+OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist': plist}
 
 setup(
     app=APP,

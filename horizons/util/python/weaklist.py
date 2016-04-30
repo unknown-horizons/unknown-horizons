@@ -28,22 +28,24 @@ instead of strong ref
 
 import weakref
 
+
 class _CopyDocFromParentClass(type):
-	"""
+    """
     metaclass that copy, for a given class,
     all the docstring from their parents if there are not set
     """
 
-	def __init__(cls, name, bases, dict):
-		for name, method in dict.iteritems():
-			try:
-				if not method.__doc__:
-					method.__doc__ = getattr(bases[0], name).__doc__
-			except AttributeError:
-				pass
+    def __init__(cls, name, bases, dict):
+        for name, method in dict.iteritems():
+            try:
+                if not method.__doc__:
+                    method.__doc__ = getattr(bases[0], name).__doc__
+            except AttributeError:
+                pass
+
 
 class WeakList(list):
-	"""
+    """
     A Weak_list can store objects but without keeping them
     alive with references couting incrementation.
 
@@ -74,148 +76,136 @@ class WeakList(list):
 
     """
 
-	# This copy all the list's doctstring into this class's method
-	# So even if the class look undocumented, it is ! (use pydoc)
-	__metaclass__ = _CopyDocFromParentClass
+    # This copy all the list's doctstring into this class's method
+    # So even if the class look undocumented, it is ! (use pydoc)
+    __metaclass__ = _CopyDocFromParentClass
 
+    # Basic custom
+    def __init__(self, items=None):
+        if items:
+            list.__init__(self, self.__iter_over_weakref(items))
+        else:
+            list.__init__(self)
 
-	## Basic custom
+    def __str__(self):
+        return '[' + ', '.join((repr(i) for i in self)) + ']'
 
-	def __init__(self, items=None):
-		if items:
-			list.__init__(self, self.__iter_over_weakref(items))
-		else:
-			list.__init__(self)
+    def __repr__(self):
+        return 'Weak_list((' + ', '.join((repr(i) for i in self)) + '))'
 
-	def __str__(self):
-		return '[' + ', '.join((repr(i) for i in self)) + ']'
+    # Special method
+    def __new_weakref(self, item):
+        """Create a weakref with the good callback"""
+        return weakref.ref(item, self.__remove_ref)
 
-	def __repr__(self):
-		return 'Weak_list((' + ', '.join((repr(i) for i in self)) + '))'
+    def __iter_over_weakref(self, iterable):
+        """For a given iterable, return an iterable generator over all weakref
+        """
+        return (self.__new_weakref(i) for i in iterable)
 
-
-	## Special method
-
-	def __new_weakref(self, item):
-		"""Create a weakref with the good callback"""
-		return weakref.ref(item, self.__remove_ref)
-
-	def __iter_over_weakref(self, iterable):
-		"""For a given iterable, return an iterable generator over all weakref"""
-		return (self.__new_weakref(i) for i in iterable)
-
-	def __remove_ref(self, ref):
-		"""
+    def __remove_ref(self, ref):
+        """
         When an object from the list is destroy, this
         method is call to remove it from list
         """
+        list.remove(self, ref)
 
-		list.remove(self, ref)
+    # list method
+    def extend(self, iterable):
+        iterable = self.__iter_over_weakref(list(iterable))
+        list.extend(self, iterable)
 
+    def append(self, obj):
+        list.append(self, weakref.ref(obj, self.__remove_ref))
 
-	## list method
+    def remove(self, obj):
+        list.remove(self, weakref.ref(obj))
 
-	def extend(self, iterable):
-		iterable = self.__iter_over_weakref(list(iterable))
-		list.extend(self, iterable)
+    def count(self, value):
+        return list.count(self, weakref.ref(value))
 
-	def append(self, obj):
-		list.append(self, weakref.ref(obj, self.__remove_ref))
+    def index(self, value, *args):
+        return list.index(self, weakref.ref(value), *args)
 
-	def remove(self, obj):
-		list.remove(self, weakref.ref(obj))
+    def pop(self, index=-1):
+        return list.pop(self, index)()
 
-	def count(self, value):
-		return list.count(self, weakref.ref(value))
+    def sort(self, cmp=None, key=None, reverse=False):
+        sortable = list(self)
+        sortable.sort(cmp, key, reverse)
+        del self[:]
+        self.extend(sortable)
 
-	def index(self, value, *args):
-		return list.index(self, weakref.ref(value), *args)
+    def insert(self, index, obj):
+        list.insert(self, index, self.__new_weakref(obj))
 
-	def pop(self, index=-1):
-		return list.pop(self, index)()
+    # Emulating container types
+    def __getitem__(self, index):
+        return list.__getitem__(self, index)()
 
-	def sort(self, cmp=None, key=None, reverse=False):
-		sortable = list(self)
-		sortable.sort(cmp, key, reverse)
-		del self[:]
-		self.extend(sortable)
+    def __setitem__(self, index, value):
+        if isinstance(index, slice):
+            list.__setitem__(self, index, self.__iter_over_weakref(value))
+        else:
+            list.__setitem__(self, index, self.__new_weakref(value))
 
-	def insert(self, index, obj):
-		list.insert(self, index, self.__new_weakref(obj))
+    def __iter__(self):
+        for i in list.__iter__(self):
+            yield i()
 
+    def __contains__(self, item):
+        return list.__contains__(self, weakref.ref(item))
 
-	## Emulating container types
+    def __getslice__(self, i, j):
+        return WeakList(list(self)[i:j])
 
-	def __getitem__(self, index):
-		return list.__getitem__(self, index)()
+    def __setslice__(self, i, j, iterable):
+        list.__setslice__(self, i, j, self.__iter_over_weakref(iterable))
 
-	def __setitem__(self, index, value):
-		if isinstance(index, slice):
-			list.__setitem__(self, index, self.__iter_over_weakref(value))
-		else:
-			list.__setitem__(self, index, self.__new_weakref(value))
+    def __reversed__(self):
+        return iter([i() for i in list.__reversed__(self)])
 
-	def __iter__(self):
-		for i in list.__iter__(self):
-			yield i()
+    # Emulating numeric types
+    def __iadd__(self, other):
+        self.extend(other)
+        return self
 
-	def __contains__(self, item):
-		return list.__contains__(self, weakref.ref(item))
+    def __add__(self, other):
+        return self.__class__(list(self) + list(other))
 
-	def __getslice__(self, i, j):
-		return WeakList(list(self)[i:j])
+    # Rich comparison
+    def __eq__(self, other):
+        if isinstance(other, WeakList):
+            other = list(other)
+        return list.__eq__(list(self), other)
 
-	def __setslice__(self, i, j, iterable):
-		list.__setslice__(self, i, j, self.__iter_over_weakref(iterable))
+    def __ge__(self, other):
+        if isinstance(other, WeakList):
+            other = list(other)
+        return list.__ge__(list(self), other)
 
-	def __reversed__(self):
-		return iter([i() for i in list.__reversed__(self)])
+    def __le__(self, other):
+        if isinstance(other, WeakList):
+            other = list(other)
 
+        return list.__le__(list(self), other)
 
-	## Emulating numeric types
+    def __gt__(self, other):
+        if isinstance(other, WeakList):
+            other = list(other)
 
-	def __iadd__(self, other):
-		self.extend(other)
-		return self
+        return list.__gt__(list(self), other)
 
-	def __add__(self, other):
-		return self.__class__(list(self) + list(other))
+    def __ne__(self, other):
+        if isinstance(other, WeakList):
+            other = list(other)
 
+        return list.__ne__(list(self), other)
 
-	## Rich comparison
+    def __lt__(self, other):
+        if isinstance(other, WeakList):
+            other = list(other)
 
-	def __eq__(self, other):
-		if isinstance(other, WeakList):
-			other = list(other)
-		return list.__eq__(list(self), other)
+        return list.__lt__(list(self), other)
 
-	def __ge__(self, other):
-		if isinstance(other, WeakList):
-			other = list(other)
-		return list.__ge__(list(self), other)
-
-	def __le__(self, other):
-		if isinstance(other, WeakList):
-			other = list(other)
-
-		return list.__le__(list(self), other)
-
-	def __gt__(self, other):
-		if isinstance(other, WeakList):
-			other = list(other)
-
-		return list.__gt__(list(self), other)
-
-	def __ne__(self, other):
-		if isinstance(other, WeakList):
-			other = list(other)
-
-		return list.__ne__(list(self), other)
-
-	def __lt__(self, other):
-		if isinstance(other, WeakList):
-			other = list(other)
-
-		return list.__lt__(list(self), other)
-
-### End of WeakList class
+# End of WeakList class

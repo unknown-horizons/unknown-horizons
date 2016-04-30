@@ -23,19 +23,20 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class CombatShipGoal(SettlementGoal):
-	def get_personality_name(self):
-		return 'CombatShipGoal'
+    def get_personality_name(self):
+        return 'CombatShipGoal'
 
-	@property
-	def active(self):
-		return super(CombatShipGoal, self).active \
-			and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
-			and self.owner.need_more_combat_ships \
-			and not self.owner.unit_builder.num_ships_being_built
+    @property
+    def active(self):
+        return super(CombatShipGoal, self).active \
+            and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
+            and self.owner.need_more_combat_ships \
+            and not self.owner.unit_builder.num_ships_being_built
 
-	def execute(self):
-		self.settlement_manager.log.info('%s start building frigate', self)
-		self.owner.unit_builder.build_combat_ship()
+    def execute(self):
+        self.settlement_manager.log.info('%s start building frigate', self)
+        self.owner.unit_builder.build_combat_ship()
 
 decorators.bind_all(CombatShipGoal)

@@ -26,85 +26,85 @@ from horizons.gui.windows import WindowManager, Window
 
 class DummyWindow(Window):
 
-	def __init__(self, windows):
-		Window.__init__(self, windows)
-		self.visible = False
+    def __init__(self, windows):
+        Window.__init__(self, windows)
+        self.visible = False
 
-	def show(self):
-		self.visible = True
+    def show(self):
+        self.visible = True
 
-	def hide(self):
-		self.visible = False
+    def hide(self):
+        self.visible = False
 
 
 class TestWindowManager(unittest.TestCase):
 
-	def setUp(self):
-		self.windows = WindowManager()
+    def setUp(self):
+        self.windows = WindowManager()
 
-	def test_trivial(self):
-		assert not self.windows.visible
+    def test_trivial(self):
+        assert not self.windows.visible
 
-	def test_open_hide(self):
-		window1 = DummyWindow(self.windows)
-		self.windows.open(window1)
-		assert self.windows.visible
-		assert window1.visible
+    def test_open_hide(self):
+        window1 = DummyWindow(self.windows)
+        self.windows.open(window1)
+        assert self.windows.visible
+        assert window1.visible
 
-		window2 = DummyWindow(self.windows)
-		self.windows.open(window2)
-		assert self.windows.visible
-		assert not window1.visible
-		assert window2.visible
+        window2 = DummyWindow(self.windows)
+        self.windows.open(window2)
+        assert self.windows.visible
+        assert not window1.visible
+        assert window2.visible
 
-	def test_close(self):
-		window1 = DummyWindow(self.windows)
-		window2 = DummyWindow(self.windows)
-		self.windows.open(window1)
-		self.windows.open(window2)
-		assert not window1.visible
-		assert window2.visible
+    def test_close(self):
+        window1 = DummyWindow(self.windows)
+        window2 = DummyWindow(self.windows)
+        self.windows.open(window1)
+        self.windows.open(window2)
+        assert not window1.visible
+        assert window2.visible
 
-		self.windows.close()
-		assert window1.visible
-		assert not window2.visible
+        self.windows.close()
+        assert window1.visible
+        assert not window2.visible
 
-		self.windows.close()
-		assert not window1.visible
-		assert not window2.visible
-		assert not self.windows.visible
+        self.windows.close()
+        assert not window1.visible
+        assert not window2.visible
+        assert not self.windows.visible
 
-	def test_toggle_single_window(self):
-		window1 = DummyWindow(self.windows)
-		assert not window1.visible
+    def test_toggle_single_window(self):
+        window1 = DummyWindow(self.windows)
+        assert not window1.visible
 
-		self.windows.toggle(window1)
-		assert window1.visible
-		self.windows.toggle(window1)
-		assert not window1.visible
+        self.windows.toggle(window1)
+        assert window1.visible
+        self.windows.toggle(window1)
+        assert not window1.visible
 
-	def test_toggle_multiple(self):
-		"""
-		Alternately toggle two windows and make sure we have only
-		once instance of each window in the stack.
-		"""
-		window1 = DummyWindow(self.windows)
-		window2 = DummyWindow(self.windows)
-		assert not window1.visible
-		assert not window2.visible
+    def test_toggle_multiple(self):
+        """
+        Alternately toggle two windows and make sure we have only
+        once instance of each window in the stack.
+        """
+        window1 = DummyWindow(self.windows)
+        window2 = DummyWindow(self.windows)
+        assert not window1.visible
+        assert not window2.visible
 
-		self.windows.toggle(window1)
-		assert window1.visible
-		assert not window2.visible
+        self.windows.toggle(window1)
+        assert window1.visible
+        assert not window2.visible
 
-		self.windows.toggle(window2)
-		assert not window1.visible
-		assert window2.visible
+        self.windows.toggle(window2)
+        assert not window1.visible
+        assert window2.visible
 
-		self.windows.toggle(window1)
-		assert window1.visible
-		assert not window2.visible
+        self.windows.toggle(window1)
+        assert window1.visible
+        assert not window2.visible
 
-		self.windows.close()
-		self.windows.close()
-		assert not self.windows.visible
+        self.windows.close()
+        self.windows.close()
+        assert not self.windows.visible

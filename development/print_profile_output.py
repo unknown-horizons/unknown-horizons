@@ -25,8 +25,8 @@ import sys
 
 
 if not sys.argv:
-	print 'profile_output.py file [ sortstats [ ( callees | callers ) ] ]'
-	sys.exit(1)
+    print 'profile_output.py file [ sortstats [ ( callees | callers ) ] ]'
+    sys.exit(1)
 
 p = pstats.Stats(sys.argv[1])
 
@@ -37,11 +37,10 @@ arg2 = None if len(sys.argv) < 3 else sys.argv[2]
 p.sort_stats(-1 if arg2 is None else arg2)
 
 if not len(sys.argv) > 3:
-	p.print_stats()
+    p.print_stats()
 elif sys.argv[3] == 'callees':
-	p.print_callees()
+    p.print_callees()
 elif sys.argv[3] == 'callers':
-	p.print_callers()
+    p.print_callers()
 else:
-	print 'invalid arg'
-
+    print 'invalid arg'

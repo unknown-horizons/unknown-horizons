@@ -29,20 +29,21 @@ from horizons.gui.windows import Window
 
 class HelpDialog(Window):
 
-	def __init__(self, windows):
-		super(HelpDialog, self).__init__(windows)
+    def __init__(self, windows):
+        super(HelpDialog, self).__init__(windows)
 
-		self.widget = load_uh_widget('help.xml')
-		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
-		self.widget.findChild(name='headline').text = GAMEPLAY_TIPS['name']
-		tip_box = self.widget.findChild(name='tip_box')
-		size = {'max_size': (300, 60), 'min_size': (300, 20)}
-		for tip in GAMEPLAY_TIPS['items']:
-			tip_label = Label(text=unicode(tip), wrap_text=True, **size)
-			tip_box.addChild(tip_label)
+        self.widget = load_uh_widget('help.xml')
+        self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(
+            self._windows.close)
+        self.widget.findChild(name='headline').text = GAMEPLAY_TIPS['name']
+        tip_box = self.widget.findChild(name='tip_box')
+        size = {'max_size': (300, 60), 'min_size': (300, 20)}
+        for tip in GAMEPLAY_TIPS['items']:
+            tip_label = Label(text=unicode(tip), wrap_text=True, **size)
+            tip_box.addChild(tip_label)
 
-	def show(self):
-		self.widget.show()
+    def show(self):
+        self.widget.show()
 
-	def hide(self):
-		self.widget.hide()
+    def hide(self):
+        self.widget.hide()

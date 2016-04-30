@@ -23,18 +23,21 @@ from functools import partial
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
+
 def test_ai_very_long():
-	# (function, seed)
-	yield run_ai_very_long, 4
+    # (function, seed)
+    yield run_ai_very_long, 4
+
 
 def run_ai_very_long(seed):
-	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=6*60*60)
-	def test(session, _):
-		"""Let 2 AI players play for 4 hours."""
-		session.run(seconds=4*60*60)
-		assert session.world.settlements
+    @game_test(mapgen=partial(generate_map_from_seed, seed),
+               human_player=False, ai_players=2, timeout=6 * 60 * 60)
+    def test(session, _):
+        """Let 2 AI players play for 4 hours."""
+        session.run(seconds=4 * 60 * 60)
+        assert session.world.settlements
 
-	test()
+    test()
 
 # this disables the test in general and only makes it being run when
 # called like this: run_tests.py -a long

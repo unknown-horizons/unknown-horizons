@@ -24,30 +24,32 @@ from horizons.i18n import _lazy
 from horizons.extscheduler import ExtScheduler
 from horizons.component.storagecomponent import StorageComponent
 
+
 class InventoryTab(TabInterface):
-	widget = 'island_inventory.xml'
-	icon_path = 'icons/tabwidget/common/inventory'
-	helptext = _lazy("Settlement inventory")
+    widget = 'island_inventory.xml'
+    icon_path = 'icons/tabwidget/common/inventory'
+    helptext = _lazy("Settlement inventory")
 
-	def __init__(self, instance=None):
-		self.instance = instance
-		super(InventoryTab, self).__init__()
+    def __init__(self, instance=None):
+        self.instance = instance
+        super(InventoryTab, self).__init__()
 
-	def init_widget(self):
-		self.widget.child_finder('inventory').init(self.instance.session.db,
-		                                           self.instance.get_component(StorageComponent).inventory)
+    def init_widget(self):
+        self.widget.child_finder('inventory').init(
+            self.instance.session.db,
+            self.instance.get_component(StorageComponent).inventory)
 
-	def refresh(self):
-		"""This function is called by the TabWidget to redraw the widget."""
-		self.widget.child_finder('inventory').update()
+    def refresh(self):
+        """This function is called by the TabWidget to redraw the widget."""
+        self.widget.child_finder('inventory').update()
 
-	def show(self):
-		# run once now
-		ExtScheduler().add_new_object(self.refresh, self, run_in=0, loops=1)
-		# and every sec later
-		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
-		super(InventoryTab, self).show()
+    def show(self):
+        # run once now
+        ExtScheduler().add_new_object(self.refresh, self, run_in=0, loops=1)
+        # and every sec later
+        ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
+        super(InventoryTab, self).show()
 
-	def hide(self):
-		ExtScheduler().rem_call(self, self.refresh)
-		super(InventoryTab, self).hide()
+    def hide(self):
+        ExtScheduler().rem_call(self, self.refresh)
+        super(InventoryTab, self).hide()

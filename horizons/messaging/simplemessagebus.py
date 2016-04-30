@@ -25,39 +25,42 @@ from collections import defaultdict
 from horizons.util.python.singleton import Singleton
 from horizons.messaging.messagebus import MessageBus
 
+
 class SimpleMessageBus(object):
-	"""Manages registration and calling of callbacks when events (strings) occur.
+    """Manages registration and calling of callbacks
+    when events (strings) occur.
 
-	Example:
+    Example:
 
-		bus = SimpleMessageBus(('foo', 'bar'))
-		bus.subscribe('foo', cb)
+        bus = SimpleMessageBus(('foo', 'bar'))
+        bus.subscribe('foo', cb)
 
-		bus.broadcast('foo')  # cb will be called
-	"""
+        bus.broadcast('foo')  # cb will be called
+    """
 
-	def __init__(self, message_types):
-		self._message_types = message_types
-		self._callbacks = defaultdict(list)
+    def __init__(self, message_types):
+        self._message_types = message_types
+        self._callbacks = defaultdict(list)
 
-	def subscribe(self, type, callback):
-		if type not in self._message_types:
-			raise TypeError("Unsupported type")
-		if callback in self._callbacks[type]:
-			raise Exception("Callback %s already subscribed to %s" % (callback, type))
+    def subscribe(self, type, callback):
+        if type not in self._message_types:
+            raise TypeError("Unsupported type")
+        if callback in self._callbacks[type]:
+            raise Exception("Callback {0} already subscribed to {1}".
+                            format(callback, type))
 
-		self._callbacks[type].append(callback)
+        self._callbacks[type].append(callback)
 
-	def unsubscribe(self, type, callback):
-		self._callbacks[type].remove(callback)
+    def unsubscribe(self, type, callback):
+        self._callbacks[type].remove(callback)
 
-	def discard(self, type, callback):
-		if callback in self._callbacks[type]:
-			self._callbacks[type].remove(callback)
+    def discard(self, type, callback):
+        if callback in self._callbacks[type]:
+            self._callbacks[type].remove(callback)
 
-	def broadcast(self, type, *args, **kwargs):
-		if type not in self._message_types:
-			return
+    def broadcast(self, type, *args, **kwargs):
+        if type not in self._message_types:
+            return
 
-		for cb in self._callbacks[type]:
-			cb(*args, **kwargs)
+        for cb in self._callbacks[type]:
+            cb(*args, **kwargs)

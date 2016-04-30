@@ -22,31 +22,35 @@
 from horizons.scheduler import Scheduler
 from copy import deepcopy
 
+
 class InventoryChecker(object):
 
-	def __init__(self, message_class, storage_component, check_interval):
-		"""Message class is a subclass of message that this checker will broadcast when the storage_component given has change in its inventory.
-		This check is done every check_interval ticks."""
-		self.__message_class = message_class
-		self.__storage_component = storage_component
-		self.__inventory_copy = deepcopy(storage_component.inventory._storage)
+    def __init__(self, message_class, storage_component, check_interval):
+        """Message class is a subclass of message that this checker will broadcast
+        when the storage_component given has change in its inventory.
+        This check is done every check_interval ticks."""
+        self.__message_class = message_class
+        self.__storage_component = storage_component
+        self.__inventory_copy = deepcopy(storage_component.inventory._storage)
 
-		self.__check_interval = check_interval
+        self.__check_interval = check_interval
 
-		# Check for updates every few ticks
-		Scheduler().add_new_object(self.check_inventory_changed, self, loops=-1, loop_interval=self.__check_interval)
+        # Check for updates every few ticks
+        Scheduler().add_new_object(self.check_inventory_changed, self,
+                                   loops=-1,
+                                   loop_interval=self.__check_interval)
 
-	def check_inventory_changed(self):
-		"""Function that checks whether the settlements inventory has changed from the last time checked"""
-		inventory = self.__storage_component.inventory._storage
-		if inventory != self.__inventory_copy:
-			self.__message_class.broadcast(self)
-			self.__inventory_copy = deepcopy(inventory)
+    def check_inventory_changed(self):
+        """Function that checks whether the settlements inventory
+        has changed from the last time checked"""
+        inventory = self.__storage_component.inventory._storage
+        if inventory != self.__inventory_copy:
+            self.__message_class.broadcast(self)
+            self.__inventory_copy = deepcopy(inventory)
 
-
-	def remove(self):
-		"""Clean up"""
-		Scheduler().rem_all_classinst_calls(self)
-		self.__inventory_copy = None
-		self.__storage_component = None
-		self.__message_class = None
+    def remove(self):
+        """Clean up"""
+        Scheduler().rem_all_classinst_calls(self)
+        self.__inventory_copy = None
+        self.__storage_component = None
+        self.__message_class = None

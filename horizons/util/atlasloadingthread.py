@@ -28,28 +28,31 @@ from thread import error as ThreadError  # raised by threading.Lock.release
 import horizons.globals
 from horizons.constants import GFX, PATHS
 
+
 class AtlasLoadingThread(threading.Thread):
-	"""Class used to preload and generate the atlas files if necessary"""
+    """Class used to preload and generate the atlas files if necessary"""
 
-	def __init__(self, lock):
-		threading.Thread.__init__(self)
-		self.lock = lock
+    def __init__(self, lock):
+        threading.Thread.__init__(self)
+        self.lock = lock
 
-	def run(self):
-		self.lock.acquire()
-		horizons_path = os.path.dirname(horizons.__file__)
-		args = [sys.executable, os.path.join(horizons_path, 'engine', 'generate_atlases.py'),
-		        str(horizons.globals.fife.get_uh_setting('MaxAtlasSize'))]
-		atlas_generator = subprocess.Popen(args, stdout=None, stderr=subprocess.STDOUT)
-		atlas_generator.wait()
-		assert atlas_generator.returncode is not None
-		if atlas_generator.returncode != 0:
-			print 'Atlas generation failed. Continuing without atlas support.'
-			print 'This just means that the game will run a bit slower.'
-			print 'It will still run fine unless there are other problems.'
-			print
-			GFX.USE_ATLASES = False
-		else:
-			GFX.USE_ATLASES = True
-			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-		self.lock.release()
+    def run(self):
+        self.lock.acquire()
+        horizons_path = os.path.dirname(horizons.__file__)
+        args = [sys.executable, os.path.join(horizons_path, 'engine',
+                                             'generate_atlases.py'),
+                str(horizons.globals.fife.get_uh_setting('MaxAtlasSize'))]
+        atlas_generator = subprocess.Popen(args, stdout=None,
+                                           stderr=subprocess.STDOUT)
+        atlas_generator.wait()
+        assert atlas_generator.returncode is not None
+        if atlas_generator.returncode != 0:
+            print 'Atlas generation failed. Continuing without atlas support.'
+            print 'This just means that the game will run a bit slower.'
+            print 'It will still run fine unless there are other problems.'
+            print
+            GFX.USE_ATLASES = False
+        else:
+            GFX.USE_ATLASES = True
+            PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
+        self.lock.release()

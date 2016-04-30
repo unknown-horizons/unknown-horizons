@@ -22,17 +22,19 @@
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
 
+
 class TentGoal(SettlementGoal):
-	def get_personality_name(self):
-		return 'TentGoal'
+    def get_personality_name(self):
+        return 'TentGoal'
 
-	@property
-	def active(self):
-		return super(TentGoal, self).active and len(self.settlement_manager.village_builder.tent_queue) > 0
+    @property
+    def active(self):
+        return super(TentGoal, self).active and len(
+            self.settlement_manager.village_builder.tent_queue) > 0
 
-	def execute(self):
-		result = self.settlement_manager.village_builder.build_tent()
-		self._log_generic_build_result(result, 'tent')
-		return self._translate_build_result(result)
+    def execute(self):
+        result = self.settlement_manager.village_builder.build_tent()
+        self._log_generic_build_result(result, 'tent')
+        return self._translate_build_result(result)
 
 decorators.bind_all(TentGoal)

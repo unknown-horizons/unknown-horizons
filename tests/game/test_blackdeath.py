@@ -30,27 +30,29 @@ from tests.game import game_test
 
 @game_test(use_fixture='blackdeath')
 def test_blackdeath_destroy(s):
-	"""
-	Check if the black death destroys some settlers
-	"""
-	dis_man = s.world.disaster_manager
-	settlement = s.world.player.settlements[0]
+    """
+    Check if the black death destroys some settlers
+    """
+    dis_man = s.world.disaster_manager
+    settlement = s.world.player.settlements[0]
 
-	# need this so that disaster can break out
-	s.world.player.settler_level = 4
+    # need this so that disaster can break out
+    s.world.player.settler_level = 4
 
-	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
-	inhabitants_before = settlement.inhabitants
+    assert settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
+    inhabitants_before = settlement.inhabitants
 
-	residential_buildings = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
-	assert residential_buildings > BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
+    residential_buildings = len(
+        settlement.buildings_by_id[BUILDINGS.RESIDENTIAL])
+    assert residential_buildings > \
+        BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
 
-	while not dis_man._active_disaster:
-		dis_man.run() # try to seed until we have the black death
+    while not dis_man._active_disaster:
+        dis_man.run()  # try to seed until we have the black death
 
-	# wait until the black death has done some damage
-	s.run(seconds=50)
+    # wait until the black death has done some damage
+    s.run(seconds=50)
 
-	# it's not defined how bad the black death is, but some inhabitants should die
-	assert settlement.inhabitants < inhabitants_before
-
+    # it's not defined how bad the black death is,
+    # but some inhabitants should die
+    assert settlement.inhabitants < inhabitants_before

@@ -51,15 +51,16 @@ from horizons.constants import PATHS
 # sqlalchemy doesn't support importing sql files,
 # therefore we work around this by using sqlite3
 
-filename = tempfile.mkstemp(text = True)[1]
+filename = tempfile.mkstemp(text=True)[1]
 conn = sqlite3.connect(filename)
 
 for db_file in PATHS.DB_FILES:
-	conn.executescript( open(db_file, "r").read())
+    conn.executescript(open(db_file, "r").read())
 
 conn.commit()
 
-engine = sqlalchemy.create_engine('sqlite:///'+filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
+engine = sqlalchemy.create_engine('sqlite:///' + filename)
+# must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
 
 Session = sqlalchemy.orm.sessionmaker(bind=engine)
 db_session = Session()
@@ -67,62 +68,70 @@ db_session = Session()
 Base = sqlalchemy.ext.declarative.declarative_base()
 
 
-
 #
 # Classes
 #
 
-class Message(Base):
-	__tablename__ = 'message_text'
 
-	text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+class Message(Base):
+    __tablename__ = 'message_text'
+
+    text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+
 
 class Resource(Base):
-	__tablename__ = 'resource'
+    __tablename__ = 'resource'
 
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+
 
 class Tier(Base):
-	__tablename__ = 'tier'
+    __tablename__ = 'tier'
 
-	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+    name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 #
 # print it
 #
 
+
 class MSGID_collect:
-	msgids = defaultdict(list)
+    msgids = defaultdict(list)
 
-	def __init__(self):
-		pass
+    def __init__(self):
+        pass
 
-	def add_to_collection(self, msgid, place):
-		self.msgids[msgid].append(place)
+    def add_to_collection(self, msgid, place):
+        self.msgids[msgid].append(place)
 
-	def __str__(self):
-		s = []
-		for text, locations in self.msgids.items():
-			comment = '#. This is a database entry: %s\n' % ','.join(locations)
-			s += [comment + build_msgid(text)]
-		return '\n'.join(s).strip()
+    def __str__(self):
+        s = []
+        for text, locations in self.msgids.items():
+            comment = '#. This is a database entry: {0!s}\n'.format(
+                ','.join(locations))
+            s += [comment + build_msgid(text)]
+        return '\n'.join(s).strip()
+
 
 def build_msgid(msgid):
-	return 'msgid "%s"\nmsgstr ""\n' % msgid.replace('"','\\"')
+    return 'msgid "{0!s}"\nmsgstr ""\n'.format(msgid.replace('"', '\\"'))
+
 
 def collect_all():
-	collector = MSGID_collect()
+    collector = MSGID_collect()
 
-	for message in db_session.query(Message):
-		collector.add_to_collection(message.text, 'a messagewidget message (left part of the screen)')
+    for message in db_session.query(Message):
+        collector.add_to_collection(
+            message.text, 'a messagewidget message (left part of the screen)')
 
-	for resource in db_session.query(Resource):
-		collector.add_to_collection(resource.name, 'the name of a resource')
+    for resource in db_session.query(Resource):
+        collector.add_to_collection(resource.name, 'the name of a resource')
 
-	for tier in db_session.query(Tier):
-		collector.add_to_collection(tier.name, 'the name of an inhabitant tier (level)')
+    for tier in db_session.query(Tier):
+        collector.add_to_collection(
+            tier.name, 'the name of an inhabitant tier (level)')
 
-	return collector
+    return collector
 
 
 print collect_all()

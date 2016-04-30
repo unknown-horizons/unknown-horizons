@@ -20,10 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 ```
-
-[![Build Status](https://travis-ci.org/unknown-horizons/unknown-horizons.svg?branch=master)](https://travis-ci.org/unknown-horizons/unknown-horizons)
- [![Bountysource](https://www.bountysource.com/badge/team?team_id=9261&style=bounties_received)](https://www.bountysource.com/teams/unknown-horizons/issues?utm_source=unknown-horizons&utm_medium=shield&utm_campaign=bounties_received)
- [![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)](https://hosted.weblate.org/engage/uh/?utm_source=widget)
+[![Build Status](https://travis-ci.org/MarkusHackspacher/unknown-horizons.svg)]
+(https://travis-ci.org/MarkusHackspacher/unknown-horizons)
+[![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)]
+(https://hosted.weblate.org/engage/uh/?utm_source=widget)
+[![Code Issues](https://www.quantifiedcode.com/api/v1/project/dfb8434844b0481d9328975c88c8d703/badge.svg)]
+(https://www.quantifiedcode.com/app/project/dfb8434844b0481d9328975c88c8d703)
 
 Unknown Horizons is a 2D realtime strategy simulation with an
 emphasis on economy and city building. Expand your small
@@ -39,3 +41,11 @@ For installation instructions check the "Downloads" section on
 our website and refer to our wiki:
 https://github.com/unknown-horizons/unknown-horizons/wiki
 
+The difference [MarkusHackspacher/unknown-horizons]
+(https://github.com/MarkusHackspacher/unknown-horizons)
+to the [original unknown-horizons]
+(https://github.com/unknown-horizons/unknown-horizons)
+is change in the codefiles the tabs to spaces and make
+it pep8 standards compliant. A long time goal for 2020 is
+make the code ready for Python 3. New code is taken from the original
+and unit tests checks the function.

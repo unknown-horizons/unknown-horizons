@@ -37,11 +37,7 @@ Coding style
 ------------
 We closely follow [PEP-8] (http://www.python.org/dev/peps/pep-0008/).
 Things that are handled differently:
-* **Tabs** only, no spaces for indentation
 * We do not strictly enforce a **line length** of 79 characters, usually our code stays at around 90 columns per line
-* **String formatting** should prefer the [Python3-style `format()`]
-  (http://svn.python.org/view/sandbox/trunk/pep3101/doctests/basic_examples.txt?revision=54966&view=markup)
-  over the `%` operator
 
 Pull requests
 -------------

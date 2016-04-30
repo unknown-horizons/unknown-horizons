@@ -22,47 +22,49 @@
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
-from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_reached
+from tests.gui.scenarios.helper import assert_win, assert_defeat, \
+    assert_goal_reached
 
 # Example tests
 
+
 @gui_test(use_scenario='tests/gui/scenarios/win', timeout=20)
 def test_win(gui):
-	"""Simple test that detects a win in a game."""
+    """Simple test that detects a win in a game."""
 
-	assert_win(gui)
+    assert_win(gui)
 
 
 @gui_test(use_scenario='tests/gui/scenarios/defeat', timeout=20)
 def test_defeat(gui):
-	"""Simple test that detects a defeat in a game."""
+    """Simple test that detects a defeat in a game."""
 
-	assert_defeat(gui)
+    assert_defeat(gui)
 
 
 @gui_test(use_scenario='tests/gui/scenarios/mission1', timeout=40)
 def test_mission1(gui):
-	"""Sample mission which requires multiple buildings to win."""
+    """Sample mission which requires multiple buildings to win."""
 
-	# Move ship to coast
-	ship = get_player_ship(gui.session)
-	gui.select([ship])
-	move_ship(gui, ship, (7, 3))
+    # Move ship to coast
+    ship = get_player_ship(gui.session)
+    gui.select([ship])
+    move_ship(gui, ship, (7, 3))
 
-	# Build warehouse
-	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'found_settlement')
-	gui.cursor_click(10, 5, 'left')
-	assert_goal_reached(gui, 'warehouse')
+    # Build warehouse
+    gui.select([ship])
+    gui.trigger('overview_trade_ship', 'found_settlement')
+    gui.cursor_click(10, 5, 'left')
+    assert_goal_reached(gui, 'warehouse')
 
-	# Build main square
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_02')
-	gui.cursor_click(9, 11, 'left')
-	assert_goal_reached(gui, 'mainsquare')
+    # Build main square
+    gui.trigger('mainhud', 'build')
+    gui.trigger('tab', 'button_02')
+    gui.cursor_click(9, 11, 'left')
+    assert_goal_reached(gui, 'mainsquare')
 
-	# Build fisher
-	gui.trigger('tab', 'button_33')
-	gui.cursor_click(7, 7, 'left')
+    # Build fisher
+    gui.trigger('tab', 'button_33')
+    gui.cursor_click(7, 7, 'left')
 
-	assert_win(gui)
+    assert_win(gui)

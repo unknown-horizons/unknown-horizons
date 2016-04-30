@@ -47,7 +47,8 @@ from internationaltrademanager import InternationalTradeManager
 from settlementfounder import SettlementFounder
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
-# all subclasses of AbstractBuilding have to be imported here to register the available buildings
+# all subclasses of AbstractBuilding have to be imported here to register
+#  the available buildings
 from building import AbstractBuilding
 from building.farm import AbstractFarm, FarmEvaluator
 from building.field import AbstractField
@@ -85,429 +86,503 @@ from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class AIPlayer(GenericAI):
-	"""This is the AI that builds settlements."""
-
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission',)
-
-	log = logging.getLogger("ai.aiplayer")
-	tick_interval = 32
-	tick_long_interval = 128
-
-	def __init__(self, session, id, name, color, clientid, difficulty_level, **kwargs):
-		super(AIPlayer, self).__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
-		self.need_more_ships = False
-		self.need_more_combat_ships = True
-		self.need_feeder_island = False
-		self.personality_manager = PersonalityManager(self)
-		self.__init()
-		Scheduler().add_new_object(Callback(self.finish_init), self, run_in=0)
-
-	def start(self):
-		""" Start the AI tick process. Try to space out their ticks evenly. """
-		ai_players = 0
-		position = None
-		for player in self.world.players:
-			if isinstance(player, AIPlayer):
-				if player is self:
-					position = ai_players
-				ai_players += 1
-		run_in = self.tick_interval * position // ai_players + 1
-		Scheduler().add_new_object(Callback(self.tick), self, run_in=run_in)
-		run_in = self.tick_long_interval * position // ai_players + 1
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=run_in)
-
-	def finish_init(self):
-		# initialize the things that couldn't be initialized before because of the loading order
-		self.refresh_ships()
-		self.start()
-
-	def refresh_ships(self):
-		""" called when a new ship is added to the fleet """
-		for ship in self.world.ships:
-			if ship.owner == self and ship.has_component(SelectableComponent) and ship not in self.ships:
-				self.log.info('%s Added %s to the fleet', self, ship)
-				self.ships[ship] = self.shipStates.idle
-				if isinstance(ship, MovingWeaponHolder):
-					ship.stance = NoneStance
-				if isinstance(ship, FightingShip):
-					self.combat_manager.add_new_unit(ship)
-		self.need_more_ships = False
-		self.need_more_combat_ships = False
-
-	def __init(self):
-		self._enabled = True  # whether this player is enabled (currently disabled at the end of the game)
-		self.world = self.session.world
-		self.islands = {}
-		self.settlement_managers = []
-		self._settlement_manager_by_settlement_id = {}
-		self.missions = set()
-		self.fishers = []
-		self.settlement_founder = SettlementFounder(self)
-		self.unit_builder = UnitBuilder(self)
-		self.unit_manager = UnitManager(self)
-		self.combat_manager = CombatManager(self)
-		self.strategy_manager = StrategyManager(self)
-		self.behavior_manager = BehaviorManager(self)
-		self.settlement_expansions = []  # [(coords, settlement)]
-		self.goals = [DoNothingGoal(self)]
-		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
-		self.international_trade_manager = InternationalTradeManager(self)
-		SettlementRangeChanged.subscribe(self._on_settlement_range_changed)
-		NewDisaster.subscribe(self.notify_new_disaster)
-		MineEmpty.subscribe(self.notify_mine_empty)
-
-	def get_random_profile(self, token):
-		return BehaviorProfileManager.get_random_player_profile(self, token)
-
-	def start_mission(self, mission):
-		self.ships[mission.ship] = self.shipStates.on_a_mission
-		self.missions.add(mission)
-		mission.start()
-
-	def report_success(self, mission, msg):
-		if not self._enabled:
-			return
-
-		self.missions.remove(mission)
-		if mission.ship and mission.ship in self.ships:
-			self.ships[mission.ship] = self.shipStates.idle
-		if isinstance(mission, FoundSettlement):
-			settlement_manager = SettlementManager(self, mission.land_manager)
-			self.settlement_managers.append(settlement_manager)
-			self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
-			self.add_building(settlement_manager.settlement.warehouse)
-			if settlement_manager.feeder_island:
-				self.need_feeder_island = False
-		elif isinstance(mission, PrepareFoundationShip):
-			self.settlement_founder.tick()
-
-	def report_failure(self, mission, msg):
-		if not self._enabled:
-			return
-
-		self.missions.remove(mission)
-		if mission.ship and mission.ship in self.ships:
-			self.ships[mission.ship] = self.shipStates.idle
-		if isinstance(mission, FoundSettlement):
-			del self.islands[mission.land_manager.island.worldid]
-
-	def save(self, db):
-		super(AIPlayer, self).save(db)
-
-		# save the player
-		db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?", self.worldid)
-
-		current_callback = Callback(self.tick)
-		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
-		remaining_ticks = max(calls.values()[0], 1)
-
-		current_callback_long = Callback(self.tick_long)
-		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
-		remaining_ticks_long = max(calls.values()[0], 1)
-
-		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
-			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long)
-
-		# save the ships
-		for ship, state in self.ships.iteritems():
-			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)", ship.worldid, self.worldid, state.index)
-
-		# save the land managers
-		for land_manager in self.islands.itervalues():
-			land_manager.save(db)
-
-		# save the settlement managers
-		for settlement_manager in self.settlement_managers:
-			settlement_manager.save(db)
-
-		# save the missions
-		for mission in self.missions:
-			mission.save(db)
-
-		# save the personality manager
-		self.personality_manager.save(db)
-
-		# save the unit manager
-		self.unit_manager.save(db)
-
-		# save the combat manager
-		self.combat_manager.save(db)
-
-		# save the strategy manager
-		self.strategy_manager.save(db)
-
-		# save the behavior manager
-		self.behavior_manager.save(db)
-
-	def _load(self, db, worldid):
-		super(AIPlayer, self)._load(db, worldid)
-		self.personality_manager = PersonalityManager.load(db, self)
-		self.__init()
-
-		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
-			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
-		Scheduler().add_new_object(Callback(self.tick), self, run_in=remaining_ticks)
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=remaining_ticks_long)
-
-	def finish_loading(self, db):
-		""" This is called separately because most objects are loaded after the player. """
-
-		# load the ships
-
-		for ship_id, state_id in db("SELECT rowid, state FROM ai_ship WHERE owner = ?", self.worldid):
-			ship = WorldObject.get_object_by_id(ship_id)
-			self.ships[ship] = self.shipStates[state_id]
-
-		# load unit manager
-		self.unit_manager = UnitManager.load(db, self)
-
-		# load combat manager
-		self.combat_manager = CombatManager.load(db, self)
-
-		# load strategy manager
-		self.strategy_manager = StrategyManager.load(db, self)
-
-		# load BehaviorManager
-		self.behavior_manager = BehaviorManager.load(db, self)
-
-		# load the land managers
-		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):
-			land_manager = LandManager.load(db, self, worldid)
-			self.islands[land_manager.island.worldid] = land_manager
-
-		# load the settlement managers and settlement foundation missions
-		for land_manager in self.islands.itervalues():
-			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)
-			if db_result:
-				settlement_manager = SettlementManager.load(db, self, db_result[0][0])
-				self.settlement_managers.append(settlement_manager)
-				self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
-
-				# load the foundation ship preparing missions
-				db_result = db("SELECT rowid FROM ai_mission_prepare_foundation_ship WHERE settlement_manager = ?",
-					settlement_manager.worldid)
-				for (mission_id,) in db_result:
-					self.missions.add(PrepareFoundationShip.load(db, mission_id, self.report_success, self.report_failure))
-			else:
-				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?", land_manager.worldid)[0][0]
-				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success, self.report_failure))
-
-		for settlement_manager in self.settlement_managers:
-			# load the domestic trade missions
-			db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
-			for (mission_id,) in db_result:
-				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
-
-			# load the special domestic trade missions
-			db_result = db("SELECT rowid FROM ai_mission_special_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
-			for (mission_id,) in db_result:
-				self.missions.add(SpecialDomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
-
-			# load the international trade missions
-			db_result = db("SELECT rowid FROM ai_mission_international_trade WHERE settlement_manager = ?", settlement_manager.worldid)
-			for (mission_id,) in db_result:
-				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
-
-	def tick(self):
-		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval)
-		self.settlement_founder.tick()
-		self.handle_enemy_expansions()
-		self.handle_settlements()
-		self.special_domestic_trade_manager.tick()
-		self.international_trade_manager.tick()
-		self.unit_manager.tick()
-		self.combat_manager.tick()
-
-	def tick_long(self):
-		"""
-		Same as above but used for reasoning that is not required to be called as often (such as diplomacy, strategy etc.)
-		"""
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval)
-		self.strategy_manager.tick()
-
-	def handle_settlements(self):
-		goals = []
-		for goal in self.goals:
-			if goal.can_be_activated:
-				goal.update()
-				goals.append(goal)
-		for settlement_manager in self.settlement_managers:
-			settlement_manager.tick(goals)
-		goals.sort(reverse=True)
-
-		settlements_blocked = set()  # set([settlement_manager_id, ...])
-		for goal in goals:
-			if not goal.active:
-				continue
-			if isinstance(goal, SettlementGoal) and goal.settlement_manager.worldid in settlements_blocked:
-				continue  # can't build anything in this settlement
-			result = goal.execute()
-			if result == GOAL_RESULT.SKIP:
-				self.log.info('%s, skipped goal %s', self, goal)
-			elif result == GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE:
-				self.log.info('%s blocked further settlement resource usage by goal %s', self, goal)
-				settlements_blocked.add(goal.settlement_manager.worldid)
-				goal.settlement_manager.need_materials = True
-			else:
-				self.log.info('%s all further goals during this tick blocked by goal %s', self, goal)
-				break  # built something; stop because otherwise the AI could look too fast
-
-		self.log.info('%s had %d active goals', self, sum(goal.active for goal in goals))
-		for goal in goals:
-			if goal.active:
-				self.log.info('%s %s', self, goal)
-
-		# refresh taxes and upgrade permissions
-		for settlement_manager in self.settlement_managers:
-			settlement_manager.refresh_taxes_and_upgrade_permissions()
-
-	def request_ship(self):
-		self.log.info('%s received request for more ships', self)
-		self.need_more_ships = True
-
-	def request_combat_ship(self):
-		self.log.info('%s received request for combat ships', self)
-		self.need_more_combat_ships = True
-
-	def add_building(self, building):
-		assert self._enabled
-		# if the settlement id is not present then this is a new settlement that has to be handled separately
-		if building.settlement.worldid in self._settlement_manager_by_settlement_id:
-			self._settlement_manager_by_settlement_id[building.settlement.worldid].add_building(building)
-
-	def remove_building(self, building):
-		if not self._enabled:
-			return
-
-		self._settlement_manager_by_settlement_id[building.settlement.worldid].remove_building(building)
-
-	def remove_unit(self, unit):
-		if not self._enabled:
-			return
-
-		if unit in self.ships:
-			del self.ships[unit]
-		self.combat_manager.remove_unit(unit)
-		self.unit_manager.remove_unit(unit)
-
-	def count_buildings(self, building_id):
-		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
-
-	def notify_mine_empty(self, message):
-		"""The Mine calls this function to let the player know that the mine is empty."""
-		settlement = message.mine.settlement
-		if settlement.owner is self:
-			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.handle_mine_empty(message.mine)
-
-	def notify_new_disaster(self, message):
-		settlement = message.building.settlement
-		if settlement.owner is self:
-			Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[settlement.worldid].handle_disaster, message), self, run_in=0)
-
-	def _on_settlement_range_changed(self, message):
-		"""Stores the ownership changes in a list for later processing."""
-		our_new_coords_list = []
-		settlement = message.sender
-
-		for tile in message.changed_tiles:
-			coords = (tile.x, tile.y)
-			if settlement.owner is self:
-				our_new_coords_list.append(coords)
-			else:
-				self.settlement_expansions.append((coords, settlement))
-
-		if our_new_coords_list and settlement.worldid in self._settlement_manager_by_settlement_id:
-			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.road_connectivity_cache.modify_area(our_new_coords_list)
-
-	def handle_enemy_expansions(self):
-		if not self.settlement_expansions:
-			return  # no changes in land ownership
-
-		change_lists = defaultdict(list)
-		for coords, settlement in self.settlement_expansions:
-			if settlement.island.worldid not in self.islands:
-				continue  # we don't have a settlement there and have no current plans to create one
-			change_lists[settlement.island.worldid].append(coords)
-		self.settlement_expansions = []
-		if not change_lists:
-			return  # no changes in land ownership on islands we care about
-
-		for island_id, changed_coords in change_lists.iteritems():
-			affects_us = False
-			land_manager = self.islands[island_id]
-			for coords in changed_coords:
-				if coords in land_manager.production or coords in land_manager.village:
-					affects_us = True
-					break
-			if not affects_us:
-				continue  # we weren't using that land anyway
-
-			settlement_manager = None
-			for potential_settlement_manager in self.settlement_managers:
-				if potential_settlement_manager.settlement.island.worldid == island_id:
-					settlement_manager = potential_settlement_manager
-					break
-
-			if settlement_manager is None:
-				self.handle_enemy_settling_on_our_chosen_island(island_id)
-				# we are on the way to found a settlement on that island
-			else:
-				# we already have a settlement there
-				settlement_manager.handle_lost_area(changed_coords)
-
-	def handle_enemy_settling_on_our_chosen_island(self, island_id):
-		mission = None
-		for a_mission in self.missions:
-			if isinstance(a_mission, FoundSettlement) and a_mission.land_manager.island.worldid == island_id:
-				mission = a_mission
-				break
-		assert mission
-		mission.cancel()
-		self.settlement_founder.tick()
-
-	@classmethod
-	def load_abstract_buildings(cls, db):
-		AbstractBuilding.load_all(db)
-
-	@classmethod
-	def clear_caches(cls):
-		BasicBuilder.clear_cache()
-		AbstractFarm.clear_cache()
-
-	def __str__(self):
-		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
-
-	def early_end(self):
-		"""Called to speed up session destruction."""
-		assert self._enabled
-		self._enabled = False
-		SettlementRangeChanged.unsubscribe(self._on_settlement_range_changed)
-		NewDisaster.unsubscribe(self.notify_new_disaster)
-		MineEmpty.unsubscribe(self.notify_mine_empty)
-
-	def end(self):
-		assert not self._enabled
-		self.personality_manager = None
-		self.world = None
-		self.islands = None
-		self.settlement_managers = None
-		self._settlement_manager_by_settlement_id = None
-		self.missions = None
-		self.fishers = None
-		self.settlement_founder = None
-		self.unit_builder = None
-		self.unit_manager = None
-		self.behavior_manager = None
-		self.combat_manager = None
-		self.settlement_expansions = None
-		self.goals = None
-		self.special_domestic_trade_manager = None
-		self.international_trade_manager = None
-		self.strategy_manager.end()
-		self.strategy_manager = None
-		super(AIPlayer, self).end()
+    """This is the AI that builds settlements."""
+
+    shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission',)
+
+    log = logging.getLogger("ai.aiplayer")
+    tick_interval = 32
+    tick_long_interval = 128
+
+    def __init__(self, session, id, name, color, clientid, difficulty_level,
+                 **kwargs):
+        super(AIPlayer, self).__init__(session, id, name, color, clientid,
+                                       difficulty_level, **kwargs)
+        self.need_more_ships = False
+        self.need_more_combat_ships = True
+        self.need_feeder_island = False
+        self.personality_manager = PersonalityManager(self)
+        self.__init()
+        Scheduler().add_new_object(Callback(self.finish_init), self, run_in=0)
+
+    def start(self):
+        """ Start the AI tick process. Try to space out their ticks evenly. """
+        ai_players = 0
+        position = None
+        for player in self.world.players:
+            if isinstance(player, AIPlayer):
+                if player is self:
+                    position = ai_players
+                ai_players += 1
+        run_in = self.tick_interval * position // ai_players + 1
+        Scheduler().add_new_object(Callback(self.tick), self, run_in=run_in)
+        run_in = self.tick_long_interval * position // ai_players + 1
+        Scheduler().add_new_object(Callback(self.tick_long), self,
+                                   run_in=run_in)
+
+    def finish_init(self):
+        """initialize the things that couldn't be initialized before because
+        of the loading order"""
+        self.refresh_ships()
+        self.start()
+
+    def refresh_ships(self):
+        """ called when a new ship is added to the fleet """
+        for ship in self.world.ships:
+            if ship.owner == self and ship.has_component(
+                    SelectableComponent) and ship not in self.ships:
+                self.log.info('%s Added %s to the fleet', self, ship)
+                self.ships[ship] = self.shipStates.idle
+                if isinstance(ship, MovingWeaponHolder):
+                    ship.stance = NoneStance
+                if isinstance(ship, FightingShip):
+                    self.combat_manager.add_new_unit(ship)
+        self.need_more_ships = False
+        self.need_more_combat_ships = False
+
+    def __init(self):
+        self._enabled = True
+        # whether this player is enabled (currently disabled
+        #  at the end of the game)
+        self.world = self.session.world
+        self.islands = {}
+        self.settlement_managers = []
+        self._settlement_manager_by_settlement_id = {}
+        self.missions = set()
+        self.fishers = []
+        self.settlement_founder = SettlementFounder(self)
+        self.unit_builder = UnitBuilder(self)
+        self.unit_manager = UnitManager(self)
+        self.combat_manager = CombatManager(self)
+        self.strategy_manager = StrategyManager(self)
+        self.behavior_manager = BehaviorManager(self)
+        self.settlement_expansions = []  # [(coords, settlement)]
+        self.goals = [DoNothingGoal(self)]
+        self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
+        self.international_trade_manager = InternationalTradeManager(self)
+        SettlementRangeChanged.subscribe(self._on_settlement_range_changed)
+        NewDisaster.subscribe(self.notify_new_disaster)
+        MineEmpty.subscribe(self.notify_mine_empty)
+
+    def get_random_profile(self, token):
+        return BehaviorProfileManager.get_random_player_profile(self, token)
+
+    def start_mission(self, mission):
+        self.ships[mission.ship] = self.shipStates.on_a_mission
+        self.missions.add(mission)
+        mission.start()
+
+    def report_success(self, mission, msg):
+        if not self._enabled:
+            return
+
+        self.missions.remove(mission)
+        if mission.ship and mission.ship in self.ships:
+            self.ships[mission.ship] = self.shipStates.idle
+        if isinstance(mission, FoundSettlement):
+            settlement_manager = SettlementManager(self, mission.land_manager)
+            self.settlement_managers.append(settlement_manager)
+            self._settlement_manager_by_settlement_id[
+                settlement_manager.settlement.worldid] = settlement_manager
+            self.add_building(settlement_manager.settlement.warehouse)
+            if settlement_manager.feeder_island:
+                self.need_feeder_island = False
+        elif isinstance(mission, PrepareFoundationShip):
+            self.settlement_founder.tick()
+
+    def report_failure(self, mission, msg):
+        if not self._enabled:
+            return
+
+        self.missions.remove(mission)
+        if mission.ship and mission.ship in self.ships:
+            self.ships[mission.ship] = self.shipStates.idle
+        if isinstance(mission, FoundSettlement):
+            del self.islands[mission.land_manager.island.worldid]
+
+    def save(self, db):
+        super(AIPlayer, self).save(db)
+
+        # save the player
+        db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?",
+           self.worldid)
+
+        current_callback = Callback(self.tick)
+        calls = Scheduler().get_classinst_calls(self, current_callback)
+        assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".\
+            format(len(calls), current_callback, calls)
+        remaining_ticks = max(calls.values()[0], 1)
+
+        current_callback_long = Callback(self.tick_long)
+        calls = Scheduler().get_classinst_calls(self, current_callback_long)
+        assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".\
+            format(len(calls), current_callback_long, calls)
+        remaining_ticks_long = max(calls.values()[0], 1)
+
+        db("INSERT INTO ai_player(rowid, need_more_ships, "
+           "need_more_combat_ships, need_feeder_island,"
+           " remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
+           self.worldid, self.need_more_ships, self.need_more_combat_ships,
+           self.need_feeder_island, remaining_ticks, remaining_ticks_long)
+
+        # save the ships
+        for ship, state in self.ships.iteritems():
+            db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)",
+                ship.worldid, self.worldid, state.index)
+
+        # save the land managers
+        for land_manager in self.islands.itervalues():
+            land_manager.save(db)
+
+        # save the settlement managers
+        for settlement_manager in self.settlement_managers:
+            settlement_manager.save(db)
+
+        # save the missions
+        for mission in self.missions:
+            mission.save(db)
+
+        # save the personality manager
+        self.personality_manager.save(db)
+
+        # save the unit manager
+        self.unit_manager.save(db)
+
+        # save the combat manager
+        self.combat_manager.save(db)
+
+        # save the strategy manager
+        self.strategy_manager.save(db)
+
+        # save the behavior manager
+        self.behavior_manager.save(db)
+
+    def _load(self, db, worldid):
+        super(AIPlayer, self)._load(db, worldid)
+        self.personality_manager = PersonalityManager.load(db, self)
+        self.__init()
+
+        self.need_more_ships, self.need_more_combat_ships, \
+            self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
+            db("SELECT need_more_ships, need_more_combat_ships, "
+               "need_feeder_island, remaining_ticks,"
+               " remaining_ticks_long FROM ai_player WHERE rowid = ?",
+               worldid)[0]
+        Scheduler().add_new_object(Callback(self.tick), self,
+                                   run_in=remaining_ticks)
+        Scheduler().add_new_object(Callback(self.tick_long), self,
+                                   run_in=remaining_ticks_long)
+
+    def finish_loading(self, db):
+        """ This is called separately because most objects are loaded after
+        the player. """
+
+        # load the ships
+
+        for ship_id, state_id in db("SELECT rowid, state FROM ai_ship "
+                                    "WHERE owner = ?", self.worldid):
+            ship = WorldObject.get_object_by_id(ship_id)
+            self.ships[ship] = self.shipStates[state_id]
+
+        # load unit manager
+        self.unit_manager = UnitManager.load(db, self)
+
+        # load combat manager
+        self.combat_manager = CombatManager.load(db, self)
+
+        # load strategy manager
+        self.strategy_manager = StrategyManager.load(db, self)
+
+        # load BehaviorManager
+        self.behavior_manager = BehaviorManager.load(db, self)
+
+        # load the land managers
+        for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE "
+                             "owner = ?", self.worldid):
+            land_manager = LandManager.load(db, self, worldid)
+            self.islands[land_manager.island.worldid] = land_manager
+
+        # load the settlement managers and settlement foundation missions
+        for land_manager in self.islands.itervalues():
+            db_result = db("SELECT rowid FROM ai_settlement_manager WHERE "
+                           "land_manager = ?", land_manager.worldid)
+            if db_result:
+                settlement_manager = SettlementManager.load(db, self,
+                                                            db_result[0][0])
+                self.settlement_managers.append(settlement_manager)
+                self._settlement_manager_by_settlement_id[
+                    settlement_manager.settlement.worldid] = settlement_manager
+
+                # load the foundation ship preparing missions
+                db_result = db("SELECT rowid FROM "
+                               "ai_mission_prepare_foundation_ship"
+                               " WHERE settlement_manager = ?",
+                               settlement_manager.worldid)
+                for (mission_id,) in db_result:
+                    self.missions.add(PrepareFoundationShip.load(
+                        db, mission_id, self.report_success,
+                        self.report_failure))
+            else:
+                mission_id = db("SELECT rowid FROM "
+                                "ai_mission_found_settlement WHERE "
+                                "land_manager = ?",
+                                land_manager.worldid)[0][0]
+                self.missions.add(FoundSettlement.load(
+                    db, mission_id, self.report_success, self.report_failure))
+
+        for settlement_manager in self.settlement_managers:
+            # load the domestic trade missions
+            db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE "
+                           "source_settlement_manager = ?",
+                           settlement_manager.worldid)
+            for (mission_id,) in db_result:
+                self.missions.add(DomesticTrade.load(
+                    db, mission_id, self.report_success, self.report_failure))
+
+            # load the special domestic trade missions
+            db_result = db("SELECT rowid FROM "
+                           "ai_mission_special_domestic_trade WHERE"
+                           " source_settlement_manager = ?",
+                           settlement_manager.worldid)
+            for (mission_id,) in db_result:
+                self.missions.add(SpecialDomesticTrade.load(
+                    db, mission_id, self.report_success, self.report_failure))
+
+            # load the international trade missions
+            db_result = db("SELECT rowid FROM ai_mission_international_trade "
+                           "WHERE settlement_manager = ?",
+                           settlement_manager.worldid)
+            for (mission_id,) in db_result:
+                self.missions.add(InternationalTrade.load(
+                    db, mission_id, self.report_success, self.report_failure))
+
+    def tick(self):
+        Scheduler().add_new_object(Callback(self.tick), self,
+                                   run_in=self.tick_interval)
+        self.settlement_founder.tick()
+        self.handle_enemy_expansions()
+        self.handle_settlements()
+        self.special_domestic_trade_manager.tick()
+        self.international_trade_manager.tick()
+        self.unit_manager.tick()
+        self.combat_manager.tick()
+
+    def tick_long(self):
+        """
+        Same as above but used for reasoning that is not required to be called
+        as often (such as diplomacy, strategy etc.)
+        """
+        Scheduler().add_new_object(Callback(self.tick_long), self,
+                                   run_in=self.tick_long_interval)
+        self.strategy_manager.tick()
+
+    def handle_settlements(self):
+        goals = []
+        for goal in self.goals:
+            if goal.can_be_activated:
+                goal.update()
+                goals.append(goal)
+        for settlement_manager in self.settlement_managers:
+            settlement_manager.tick(goals)
+        goals.sort(reverse=True)
+
+        settlements_blocked = set()  # set([settlement_manager_id, ...])
+        for goal in goals:
+            if not goal.active:
+                continue
+            if isinstance(goal, SettlementGoal) and \
+                    goal.settlement_manager.worldid in settlements_blocked:
+                continue  # can't build anything in this settlement
+            result = goal.execute()
+            if result == GOAL_RESULT.SKIP:
+                self.log.info('%s, skipped goal %s', self, goal)
+            elif result == GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE:
+                self.log.info('%s blocked further settlement resource usage '
+                              'by goal %s', self, goal)
+                settlements_blocked.add(goal.settlement_manager.worldid)
+                goal.settlement_manager.need_materials = True
+            else:
+                self.log.info('%s all further goals during this tick blocked '
+                              'by goal %s', self, goal)
+                break
+                # built something; stop because otherwise the AI
+                #  could look too fast
+
+        self.log.info('%s had %d active goals', self,
+                      sum(goal.active for goal in goals))
+        for goal in goals:
+            if goal.active:
+                self.log.info('%s %s', self, goal)
+
+        # refresh taxes and upgrade permissions
+        for settlement_manager in self.settlement_managers:
+            settlement_manager.refresh_taxes_and_upgrade_permissions()
+
+    def request_ship(self):
+        self.log.info('%s received request for more ships', self)
+        self.need_more_ships = True
+
+    def request_combat_ship(self):
+        self.log.info('%s received request for combat ships', self)
+        self.need_more_combat_ships = True
+
+    def add_building(self, building):
+        assert self._enabled
+        # if the settlement id is not present then this is a new settlement
+        # that has to be handled separately
+        if building.settlement.worldid in \
+                self._settlement_manager_by_settlement_id:
+            self._settlement_manager_by_settlement_id[
+                building.settlement.worldid].add_building(building)
+
+    def remove_building(self, building):
+        if not self._enabled:
+            return
+
+        self._settlement_manager_by_settlement_id[
+            building.settlement.worldid].remove_building(building)
+
+    def remove_unit(self, unit):
+        if not self._enabled:
+            return
+
+        if unit in self.ships:
+            del self.ships[unit]
+        self.combat_manager.remove_unit(unit)
+        self.unit_manager.remove_unit(unit)
+
+    def count_buildings(self, building_id):
+        return sum(settlement_manager.settlement.count_buildings(building_id)
+                   for settlement_manager in self.settlement_managers)
+
+    def notify_mine_empty(self, message):
+        """The Mine calls this function to let the player know that the mine
+        is empty."""
+        settlement = message.mine.settlement
+        if settlement.owner is self:
+            self._settlement_manager_by_settlement_id[settlement.worldid].\
+                production_builder.handle_mine_empty(message.mine)
+
+    def notify_new_disaster(self, message):
+        settlement = message.building.settlement
+        if settlement.owner is self:
+            Scheduler().add_new_object(Callback(
+                self._settlement_manager_by_settlement_id[settlement.worldid]
+                .handle_disaster, message), self, run_in=0)
+
+    def _on_settlement_range_changed(self, message):
+        """Stores the ownership changes in a list for later processing."""
+        our_new_coords_list = []
+        settlement = message.sender
+
+        for tile in message.changed_tiles:
+            coords = (tile.x, tile.y)
+            if settlement.owner is self:
+                our_new_coords_list.append(coords)
+            else:
+                self.settlement_expansions.append((coords, settlement))
+
+        if our_new_coords_list and settlement.worldid in \
+                self._settlement_manager_by_settlement_id:
+            self._settlement_manager_by_settlement_id[
+                settlement.worldid].production_builder. \
+                road_connectivity_cache.modify_area(our_new_coords_list)
+
+    def handle_enemy_expansions(self):
+        if not self.settlement_expansions:
+            return  # no changes in land ownership
+
+        change_lists = defaultdict(list)
+        for coords, settlement in self.settlement_expansions:
+            if settlement.island.worldid not in self.islands:
+                continue
+                # we don't have a settlement there and have no current plans
+                #  to create one
+            change_lists[settlement.island.worldid].append(coords)
+        self.settlement_expansions = []
+        if not change_lists:
+            return  # no changes in land ownership on islands we care about
+
+        for island_id, changed_coords in change_lists.iteritems():
+            affects_us = False
+            land_manager = self.islands[island_id]
+            for coords in changed_coords:
+                if coords in land_manager.production or coords in \
+                        land_manager.village:
+                    affects_us = True
+                    break
+            if not affects_us:
+                continue  # we weren't using that land anyway
+
+            settlement_manager = None
+            for potential_settlement_manager in self.settlement_managers:
+                if potential_settlement_manager.settlement.island.worldid == \
+                        island_id:
+                    settlement_manager = potential_settlement_manager
+                    break
+
+            if settlement_manager is None:
+                self.handle_enemy_settling_on_our_chosen_island(island_id)
+                # we are on the way to found a settlement on that island
+            else:
+                # we already have a settlement there
+                settlement_manager.handle_lost_area(changed_coords)
+
+    def handle_enemy_settling_on_our_chosen_island(self, island_id):
+        mission = None
+        for a_mission in self.missions:
+            if isinstance(a_mission, FoundSettlement) and \
+                    a_mission.land_manager.island.worldid == island_id:
+                mission = a_mission
+                break
+        assert mission
+        mission.cancel()
+        self.settlement_founder.tick()
+
+    @classmethod
+    def load_abstract_buildings(cls, db):
+        AbstractBuilding.load_all(db)
+
+    @classmethod
+    def clear_caches(cls):
+        BasicBuilder.clear_cache()
+        AbstractFarm.clear_cache()
+
+    def __str__(self):
+        return 'AI({0!s}/{1!s})'.format(
+            self.name if hasattr(self, 'name') else
+            'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
+
+    def early_end(self):
+        """Called to speed up session destruction."""
+        assert self._enabled
+        self._enabled = False
+        SettlementRangeChanged.unsubscribe(self._on_settlement_range_changed)
+        NewDisaster.unsubscribe(self.notify_new_disaster)
+        MineEmpty.unsubscribe(self.notify_mine_empty)
+
+    def end(self):
+        assert not self._enabled
+        self.personality_manager = None
+        self.world = None
+        self.islands = None
+        self.settlement_managers = None
+        self._settlement_manager_by_settlement_id = None
+        self.missions = None
+        self.fishers = None
+        self.settlement_founder = None
+        self.unit_builder = None
+        self.unit_manager = None
+        self.behavior_manager = None
+        self.combat_manager = None
+        self.settlement_expansions = None
+        self.goals = None
+        self.special_domestic_trade_manager = None
+        self.international_trade_manager = None
+        self.strategy_manager.end()
+        self.strategy_manager = None
+        super(AIPlayer, self).end()
 
 decorators.bind_all(AIPlayer)

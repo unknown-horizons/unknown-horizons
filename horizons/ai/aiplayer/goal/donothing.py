@@ -23,33 +23,36 @@ from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.util.python import decorators
 
+
 class DoNothingGoal(Goal):
-	"""This goal makes the AI not do anything during a tick."""
+    """This goal makes the AI not do anything during a tick."""
 
-	def get_personality_name(self):
-		return 'DoNothingGoal'
+    def get_personality_name(self):
+        return 'DoNothingGoal'
 
-	@property
-	def priority(self):
-		return self._priority
+    @property
+    def priority(self):
+        return self._priority
 
-	@property
-	def active(self):
-		return super(DoNothingGoal, self).active and self._is_active
+    @property
+    def active(self):
+        return super(DoNothingGoal, self).active and self._is_active
 
-	def update(self):
-		""" whether to do nothing and if so then how important it is """
-		if self.owner.session.random.random() >= self.personality.likelihood:
-			# don't be lazy
-			self._is_active = False
-			self._priority = 0
-		else:
-			# be lazy
-			self._is_active = True
-			self._priority = self.owner.session.random.gauss(self.personality.default_priority, self.personality.priority_variance)
+    def update(self):
+        """ whether to do nothing and if so then how important it is """
+        if self.owner.session.random.random() >= self.personality.likelihood:
+            # don't be lazy
+            self._is_active = False
+            self._priority = 0
+        else:
+            # be lazy
+            self._is_active = True
+            self._priority = self.owner.session.random.gauss(
+                self.personality.default_priority,
+                self.personality.priority_variance)
 
-	def execute(self):
-		# do nothing
-		return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
+    def execute(self):
+        # do nothing
+        return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
 
 decorators.bind_all(DoNothingGoal)

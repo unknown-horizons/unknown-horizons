@@ -22,45 +22,50 @@
 import types
 import weakref
 
+
 class WeakMethod(object):
-	def __init__(self, function):
-		assert callable(function)
+    def __init__(self, function):
+        assert callable(function)
 
-		if isinstance(function, types.MethodType) and function.im_self is not None:
-			self.function = function.im_func
-			self.instance = weakref.ref(function.im_self)
-		else:
-			self.function = function
-			self.instance = None
+        if isinstance(function, types.MethodType) and \
+                function.im_self is not None:
+            self.function = function.im_func
+            self.instance = weakref.ref(function.im_self)
+        else:
+            self.function = function
+            self.instance = None
 
-	def __call__(self, *args, **kwargs):
-		if self.instance is None:
-			return self.function(*args, **kwargs)
-		elif self.instance() is not None:
-			return self.function(self.instance(), *args, **kwargs)
-		else:
-			raise ReferenceError("Instance: %s  Function: %s  Function from module: %s" %
-			                     (self.instance(), self.function, self.function.__module__))
+    def __call__(self, *args, **kwargs):
+        if self.instance is None:
+            return self.function(*args, **kwargs)
+        elif self.instance() is not None:
+            return self.function(self.instance(), *args, **kwargs)
+        else:
+            raise ReferenceError(
+                "Instance: {0}  Function: {1}  Function from module: {2}".
+                format(self.instance(), self.function,
+                       self.function.__module__))
 
-	def __eq__(self, other):
-		if isinstance(other, WeakMethod):
-			if self.function != other.function:
-				return False
-			# check also if either instance is None or else if instances are equal
-			if self.instance is None:
-				return other.instance is None
-			else:
-				return self.instance() == other.instance()
-		elif callable(other):
-			return self == WeakMethod(other)
-		else:
-			return False
+    def __eq__(self, other):
+        if isinstance(other, WeakMethod):
+            if self.function != other.function:
+                return False
+            # check also if either instance is None or else
+            # if instances are equal
+            if self.instance is None:
+                return other.instance is None
+            else:
+                return self.instance() == other.instance()
+        elif callable(other):
+            return self == WeakMethod(other)
+        else:
+            return False
 
-	def __ne__(self, other):
-		return not self.__eq__(other)
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
-	def __hash__(self):
-		return hash((self.instance, self.function))
+    def __hash__(self):
+        return hash((self.instance, self.function))
 
-	def __str__(self):
-		return str(self.function)
+    def __str__(self):
+        return str(self.function)

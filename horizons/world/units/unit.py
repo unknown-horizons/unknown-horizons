@@ -35,204 +35,231 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
 
+
 class Unit(MovingObject, ResourceTransferHandler):
-	log = logging.getLogger("world.units")
-	is_unit = True
-	is_ship = False
-	health_bar_y = -30
+    log = logging.getLogger("world.units")
+    is_unit = True
+    is_ship = False
+    health_bar_y = -30
 
-	AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10 # show health for 10 sec after damage has been taken
+    AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10
+    # show health for 10 sec after damage has been taken
 
-	def __init__(self, x, y, owner=None, **kwargs):
-		super(Unit, self).__init__(x=x, y=y, **kwargs)
-		self.__init(x, y, owner)
+    def __init__(self, x, y, owner=None, **kwargs):
+        super(Unit, self).__init__(x=x, y=y, **kwargs)
+        self.__init(x, y, owner)
 
-	def __init(self, x, y, owner):
-		self.owner = owner
-		class Tmp(fife.InstanceActionListener):
-			pass
-		self.InstanceActionListener = Tmp()
-		self.InstanceActionListener.onInstanceActionFinished = \
-				WeakMethod(self.onInstanceActionFinished)
-		self.InstanceActionListener.onInstanceActionCancelled = \
-				WeakMethod(self.onInstanceActionCancelled)
-		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
-		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
+    def __init(self, x, y, owner):
+        self.owner = owner
 
-		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance(
-			self.__class__._fife_object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
-		fife.InstanceVisual.create(self._instance)
-		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
-		self.act(self._action, location, True)
-		self._instance.addActionListener(self.InstanceActionListener)
+        class Tmp(fife.InstanceActionListener):
+            pass
+        self.InstanceActionListener = Tmp()
+        self.InstanceActionListener.onInstanceActionFinished = WeakMethod(
+            self.onInstanceActionFinished)
+        self.InstanceActionListener.onInstanceActionCancelled = WeakMethod(
+            self.onInstanceActionCancelled)
+        self.InstanceActionListener.onInstanceActionFrame = lambda *args: None
+        self.InstanceActionListener.thisown = 0
+        # fife will claim ownership of this
 
-		self.loading_area = self.position
+        self._instance = self.session.view.layers[
+            LAYERS.OBJECTS].createInstance(
+                self.__class__._fife_object, fife.ModelCoordinate(
+                    int(x), int(y), 0), str(self.worldid))
+        fife.InstanceVisual.create(self._instance)
+        location = fife.Location(self._instance.getLocation().getLayer())
+        location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x,
+                                                                    y + y, 0))
+        self.act(self._action, location, True)
+        self._instance.addActionListener(self.InstanceActionListener)
 
-		self._health_displayed = False
+        self.loading_area = self.position
 
-		if self.has_component(HealthComponent):
-			self.get_component(HealthComponent).add_damage_dealt_listener(self._on_damage)
+        self._health_displayed = False
 
-	def remove(self):
-		self.log.debug("Unit.remove for %s started", self)
-		if hasattr(self.owner, 'remove_unit'):
-			self.owner.remove_unit(self)
-		self._instance.removeActionListener(self.InstanceActionListener)
-		ExtScheduler().rem_all_classinst_calls(self)
-		super(Unit, self).remove()
-		self.log.debug("Unit.remove finished")
+        if self.has_component(HealthComponent):
+            self.get_component(HealthComponent).add_damage_dealt_listener(
+                self._on_damage)
 
-	def onInstanceActionFinished(self, instance, action):
-		"""
-		@param instance: fife.Instance
-		@param action: string representing the action that is finished.
-		"""
-		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate(
-			self.position.x + self.position.x - self.last_position.x,
-			self.position.y + self.position.y - self.last_position.y, 0))
+    def remove(self):
+        self.log.debug("Unit.remove for %s started", self)
+        if hasattr(self.owner, 'remove_unit'):
+            self.owner.remove_unit(self)
+        self._instance.removeActionListener(self.InstanceActionListener)
+        ExtScheduler().rem_all_classinst_calls(self)
+        super(Unit, self).remove()
+        self.log.debug("Unit.remove finished")
 
-		facing_loc = self._instance.getFacingLocation()
-		if action.getId().startswith('move_'):
-			# Remember: this means we *ended* a "move" action just now!
-			facing_loc = location
+    def onInstanceActionFinished(self, instance, action):
+        """
+        @param instance: fife.Instance
+        @param action: string representing the action that is finished.
+        """
+        location = fife.Location(self._instance.getLocation().getLayer())
+        location.setExactLayerCoordinates(fife.ExactModelCoordinate(
+            self.position.x + self.position.x - self.last_position.x,
+            self.position.y + self.position.y - self.last_position.y, 0))
 
-		self.act(self._action, facing_loc=facing_loc, repeating=True)
+        facing_loc = self._instance.getFacingLocation()
+        if action.getId().startswith('move_'):
+            # Remember: this means we *ended* a "move" action just now!
+            facing_loc = location
 
-	def onInstanceActionCancelled(self, instance, action):
-		pass
+        self.act(self._action, facing_loc=facing_loc, repeating=True)
 
-	def _on_damage(self, caller=None):
-		"""Called when health has changed"""
-		if not self._instance: # dead
-			# it is sometimes hard to avoid this being called after the unit has died,
-			# e.g. when it's part of a list of changelisteners, and one of the listeners executed before kills the unit
-			return
-		health_was_displayed_before = self._health_displayed
-		# always update
-		self.draw_health()
-		if health_was_displayed_before:
-			return # don't schedule removal
-		# remember that it has been drawn automatically
-		self._last_draw_health_call_on_damage = True
-		# remove later (but only in case there's no manual interference)
-		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True),
-		                              self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
+    def onInstanceActionCancelled(self, instance, action):
+        pass
 
-	def draw_health(self, remove_only=False, auto_remove=False):
-		"""Draws the units current health as a healthbar over the unit."""
-		if not self.has_component(HealthComponent):
-			return
-		render_name = "health_" + str(self.worldid)
-		renderer = self.session.view.renderer['GenericRenderer']
-		renderer.removeAll(render_name)
-		if remove_only or (auto_remove and not self._last_draw_health_call_on_damage):
-			# only remove on auto_remove if this health was actually displayed as reacton to _on_damage
-			# else we might remove something that the user still wants
-			self._health_displayed = False
-			return
-		self._last_draw_health_call_on_damage = False
-		self._health_displayed = True
-		health_component = self.get_component(HealthComponent)
-		health = health_component.health
-		max_health = health_component.max_health
-		zoom = self.session.view.zoom
-		height = int(5 * zoom)
-		width = int(50 * zoom)
-		y_pos = int(self.health_bar_y * zoom)
-		relative_x = int((width * health) // max_health - (width // 2))
-		# mid_node is the coord separating healthy (green) and damaged (red) quads
-		mid_node_top = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos - height))
-		mid_node_btm = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos))
+    def _on_damage(self, caller=None):
+        """Called when health has changed"""
+        if not self._instance:  # dead
+            # it is sometimes hard to avoid this being called after
+            # the unit has died,
+            # e.g. when it's part of a list of changelisteners,
+            # and one of the listeners executed before kills the unit
+            return
+        health_was_displayed_before = self._health_displayed
+        # always update
+        self.draw_health()
+        if health_was_displayed_before:
+            return  # don't schedule removal
+        # remember that it has been drawn automatically
+        self._last_draw_health_call_on_damage = True
+        # remove later (but only in case there's no manual interference)
+        ExtScheduler().add_new_object(
+            Callback(self.draw_health, auto_remove=True),
+            self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
 
-		left_upper = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos - height))
-		right_upper = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos - height))
-		left_lower = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos))
-		right_lower = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos))
+    def draw_health(self, remove_only=False, auto_remove=False):
+        """Draws the units current health as a healthbar over the unit."""
+        if not self.has_component(HealthComponent):
+            return
+        render_name = "health_" + str(self.worldid)
+        renderer = self.session.view.renderer['GenericRenderer']
+        renderer.removeAll(render_name)
+        if remove_only or (auto_remove and not
+                           self._last_draw_health_call_on_damage):
+            # only remove on auto_remove if this health was actually
+            # displayed as reacton to _on_damage
+            # else we might remove something that the user still wants
+            self._health_displayed = False
+            return
+        self._last_draw_health_call_on_damage = False
+        self._health_displayed = True
+        health_component = self.get_component(HealthComponent)
+        health = health_component.health
+        max_health = health_component.max_health
+        zoom = self.session.view.zoom
+        height = int(5 * zoom)
+        width = int(50 * zoom)
+        y_pos = int(self.health_bar_y * zoom)
+        relative_x = int((width * health) // max_health - (width // 2))
+        # mid_node is the coord separating healthy (green)
+        #  and damaged (red) quads
+        mid_node_top = fife.RendererNode(
+            self._instance, fife.Point(relative_x, y_pos - height))
+        mid_node_btm = fife.RendererNode(self._instance,
+                                         fife.Point(relative_x, y_pos))
 
-		if health > 0: # draw healthy part of health bar
-			renderer.addQuad(render_name,
-			                 left_upper,
-			                 left_lower,
-			                 mid_node_btm,
-			                 mid_node_top,
-			                 0, 255, 0)
-		if health < max_health: # draw damaged part
-			renderer.addQuad(render_name,
-			                 mid_node_top,
-			                 mid_node_btm,
-			                 right_lower,
-			                 right_upper,
-			                 255, 0, 0)
+        left_upper = fife.RendererNode(self._instance,
+                                       fife.Point(-width // 2, y_pos - height))
+        right_upper = fife.RendererNode(self._instance,
+                                        fife.Point(width // 2, y_pos - height))
+        left_lower = fife.RendererNode(self._instance,
+                                       fife.Point(-width // 2, y_pos))
+        right_lower = fife.RendererNode(self._instance,
+                                        fife.Point(width // 2, y_pos))
 
-	def hide(self):
-		"""Hides the unit."""
-		vis = self._instance.get2dGfxVisual()
-		vis.setVisible(False)
+        if health > 0:  # draw healthy part of health bar
+            renderer.addQuad(render_name,
+                             left_upper,
+                             left_lower,
+                             mid_node_btm,
+                             mid_node_top,
+                             0, 255, 0)
+        if health < max_health:  # draw damaged part
+            renderer.addQuad(render_name,
+                             mid_node_top,
+                             mid_node_btm,
+                             right_lower,
+                             right_upper,
+                             255, 0, 0)
 
-	def show(self):
-		vis = self._instance.get2dGfxVisual()
-		vis.setVisible(True)
+    def hide(self):
+        """Hides the unit."""
+        vis = self._instance.get2dGfxVisual()
+        vis.setVisible(False)
 
-	def save(self, db):
-		super(Unit, self).save(db)
+    def show(self):
+        vis = self._instance.get2dGfxVisual()
+        vis.setVisible(True)
 
-		owner_id = 0 if self.owner is None else self.owner.worldid
-		db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
-			self.worldid, self.__class__.id, self.position.x, self.position.y, owner_id)
+    def save(self, db):
+        super(Unit, self).save(db)
 
-	def load(self, db, worldid):
-		super(Unit, self).load(db, worldid)
+        owner_id = 0 if self.owner is None else self.owner.worldid
+        db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
+           self.worldid, self.__class__.id, self.position.x, self.position.y,
+           owner_id)
 
-		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
-		if owner_id == 0:
-			owner = None
-		else:
-			owner = WorldObject.get_object_by_id(owner_id)
-		self.__init(x, y, owner)
+    def load(self, db, worldid):
+        super(Unit, self).load(db, worldid)
 
-		return self
+        x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?",
+                            worldid)[0]
+        if owner_id == 0:
+            owner = None
+        else:
+            owner = WorldObject.get_object_by_id(owner_id)
+        self.__init(x, y, owner)
 
-	def get_random_location(self, in_range):
-		"""Returns a random location in walking_range, that we can find a path to
-		Does not check every point, only a few samples are tried.
-		@param in_range: int, max distance to returned point from current position
-		@return: tuple(Instance of Point or None, path or None)"""
-		range_squared = in_range * in_range
-		randint = self.session.random.randint
-		# pick a sample, try tries times
-		tries = range_squared // 2
-		for i in xrange(tries):
-			# choose x-difference, then y-difference so that the distance is in the range.
-			x_diff = randint(1, in_range) # always go at least 1 field
-			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
-			y_diff = randint(0, y_max_diff)
-			# use randomness of x/y_diff below, randint calls are expensive
-			# this results in a higher chance for x > y than y < x, so equalize
-			if (x_diff + y_diff) % 2 == 0:
-				x_diff, y_diff = y_diff, x_diff
-			# direction
-			if x_diff % 2 == 0:
-				y_diff = -y_diff
-			if y_diff % 2 == 0:
-				x_diff = -x_diff
-			# check this target
-			possible_target = Point(self.position.x + x_diff, self.position.y + y_diff)
-			path = self.check_move(possible_target)
-			if path:
-				return (possible_target, path)
-		return (None, None)
+        return self
 
-	def go(self, x, y):
-		self.get_component(CommandableComponent).go(x, y)
+    def get_random_location(self, in_range):
+        """Returns a random location in walking_range,
+        that we can find a path to
+        Does not check every point, only a few samples are tried.
+        @param in_range: int, max distance to returned point from
+                         current position
+        @return: tuple(Instance of Point or None, path or None)"""
+        range_squared = in_range * in_range
+        randint = self.session.random.randint
+        # pick a sample, try tries times
+        tries = range_squared // 2
+        for i in xrange(tries):
+            # choose x-difference, then y-difference so that the
+            #  distance is in the range.
+            x_diff = randint(1, in_range)  # always go at least 1 field
+            y_max_diff = int(math.sqrt(range_squared - x_diff * x_diff))
+            y_diff = randint(0, y_max_diff)
+            # use randomness of x/y_diff below, randint calls are expensive
+            # this results in a higher chance for x > y than y < x, so equalize
+            if (x_diff + y_diff) % 2 == 0:
+                x_diff, y_diff = y_diff, x_diff
+            # direction
+            if x_diff % 2 == 0:
+                y_diff = -y_diff
+            if y_diff % 2 == 0:
+                x_diff = -x_diff
+            # check this target
+            possible_target = Point(self.position.x + x_diff,
+                                    self.position.y + y_diff)
+            path = self.check_move(possible_target)
+            if path:
+                return (possible_target, path)
+        return (None, None)
 
-	@property
-	def classname(self):
-		return self.session.db.get_unit_type_name(self.id)
+    def go(self, x, y):
+        self.get_component(CommandableComponent).go(x, y)
 
-	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
+    @property
+    def classname(self):
+        return self.session.db.get_unit_type_name(self.id)
 
+    def __str__(self):  # debug
+        return '{0!s}(id={1!s};worldid={2!s})'.format(
+            self.name, self.id, self.worldid if
+            hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(Unit)

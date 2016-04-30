@@ -24,29 +24,29 @@ from tests.gui import gui_test
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_logbook(gui):
-	"""
-	Open the (empty) logbook.
-	"""
+    """
+    Open the (empty) logbook.
+    """
 
-	gui.trigger('mainhud', 'logbook')
+    gui.trigger('mainhud', 'logbook')
 
-	logbook = gui.find(name='captains_log')
-	assert logbook
+    logbook = gui.find(name='captains_log')
+    assert logbook
 
-	# Close it and confirm it's gone
-	gui.trigger(logbook, 'okButton')
-	assert gui.find(name='captains_log') is None
+    # Close it and confirm it's gone
+    gui.trigger(logbook, 'okButton')
+    assert gui.find(name='captains_log') is None
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_logbook_statistics(gui):
-	"""Open the 3 three different statistic tabs in the logbook."""
+    """Open the 3 three different statistic tabs in the logbook."""
 
-	# Open statistics page in logbook
-	gui.trigger('mainhud', 'logbook')
-	gui.trigger('captains_log', 'statistics_right')
+    # Open statistics page in logbook
+    gui.trigger('mainhud', 'logbook')
+    gui.trigger('captains_log', 'statistics_right')
 
-	# Open players/ships/settlements tabs
-	gui.trigger('captains_log', 'stats_players')
-	gui.trigger('captains_log', 'stats_ships')
-	gui.trigger('captains_log', 'stats_settlements')
+    # Open players/ships/settlements tabs
+    gui.trigger('captains_log', 'stats_players')
+    gui.trigger('captains_log', 'stats_ships')
+    gui.trigger('captains_log', 'stats_settlements')

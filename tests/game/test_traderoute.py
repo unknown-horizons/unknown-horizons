@@ -29,32 +29,34 @@ from tests.game import game_test
 
 @game_test(use_fixture='traderoute')
 def test_traderoute_basic(s):
-	"""
-	Check if traderoutes do anything.
-	"""
-	settlements = s.world.player.settlements
-	assert len(settlements) == 2
+    """
+    Check if traderoutes do anything.
+    """
+    settlements = s.world.player.settlements
+    assert len(settlements) == 2
 
-	# 2 settlements, one produces food, the other one boards
-	# a traderoute is there to exchange the res
+    # 2 settlements, one produces food, the other one boards
+    # a traderoute is there to exchange the res
 
-	has_food = settlements[0] if 'food' in settlements[0].get_component(NamedComponent).name else settlements[1]
-	has_wood = settlements[0] if settlements[0] != has_food else settlements[1]
+    has_food = settlements[0] if 'food' in \
+        settlements[0].get_component(NamedComponent).name else settlements[1]
+    has_wood = settlements[0] if settlements[0] != has_food else \
+        settlements[1]
 
-	food_inv = has_food.get_component(StorageComponent).inventory
-	wood_inv = has_wood.get_component(StorageComponent).inventory
+    food_inv = has_food.get_component(StorageComponent).inventory
+    wood_inv = has_wood.get_component(StorageComponent).inventory
 
-	assert food_inv[RES.FOOD] > 0
-	assert wood_inv[RES.BOARDS] > 0
+    assert food_inv[RES.FOOD] > 0
+    assert wood_inv[RES.BOARDS] > 0
 
-	while food_inv[RES.BOARDS] == 0: # first ensure wood to food
-		s.run()
-	while wood_inv[RES.FOOD] == 0: # traderoute also goes other way around
-		s.run()
+    while food_inv[RES.BOARDS] == 0:  # first ensure wood to food
+        s.run()
+    while wood_inv[RES.FOOD] == 0:  # traderoute also goes other way around
+        s.run()
 
-	while food_inv.get_free_space_for(RES.BOARDS) > 0: # also fill up
-		s.run()
-	while wood_inv.get_free_space_for(RES.FOOD) > 0: # also fill up
-		s.run()
+    while food_inv.get_free_space_for(RES.BOARDS) > 0:  # also fill up
+        s.run()
+    while wood_inv.get_free_space_for(RES.FOOD) > 0:  # also fill up
+        s.run()
 
-	# when the whiles pass, it is ensured that traderoutes somewhat work
+    # when the whiles pass, it is ensured that traderoutes somewhat work
