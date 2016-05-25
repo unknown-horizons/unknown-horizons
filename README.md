@@ -35,6 +35,7 @@ Technology     | Component
 
 
 Our goals *include*:
+
 TODO
 
 
@@ -63,5 +64,15 @@ Development Process
     - [Getting started](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started)
     
     
-    
-[Contact](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos)
+Contact
+-------
+
+ - [Klick here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos)
+ 
+ 
+License
+-------
+
+**GNU GPLv2**
+
+**Content license** [see here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc)
