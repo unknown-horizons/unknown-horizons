@@ -60,10 +60,11 @@ INSERT INTO "sounds" VALUES(10, 'content/audio/sounds/flippage.ogg');
 INSERT INTO "sounds" VALUES(11, 'content/audio/sounds/success.ogg');
 INSERT INTO "sounds" VALUES(12, 'content/audio/sounds/refresh.ogg');
 INSERT INTO "sounds" VALUES(13, 'content/audio/sounds/click.ogg');
-INSERT INTO "sounds" VALUES(14, 'content/audio/sounds/cow_1.ogg');
+--INSERT INTO "sounds" VALUES(14, 'content/audio/sounds/cow.ogg');
 INSERT INTO "sounds" VALUES(15, 'content/audio/sounds/smith.ogg');
 INSERT INTO "sounds" VALUES(16, 'content/audio/sounds/main_square.ogg');
 INSERT INTO "sounds" VALUES(17, 'content/audio/sounds/windmill.ogg');
+INSERT INTO "sounds" VALUES(17, 'content/audio/sounds/tavern.ogg');
 
 CREATE TABLE "sounds_special" (
 	"type" TEXT NOT NULL,
