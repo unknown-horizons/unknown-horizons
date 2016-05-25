@@ -67,12 +67,15 @@ Development Process
 Contact
 -------
 
- - [Klick here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos)
+ - [Click here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos)
  
  
 License
 -------
 
 **GNU GPLv2**
+ - [GNU GPLv2](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/licenses/GPL)
 
-**Content license** [see here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc)
+**Content license** 
+
+ - [see here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc)
