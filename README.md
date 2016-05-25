@@ -24,7 +24,7 @@ https://github.com/unknown-horizons/unknown-horizons/wiki
 
 
 
-The foundation of **openage**:
+The foundation of **Unknown Horizons**:
 
 Technology     | Component
 ---------------|----------
