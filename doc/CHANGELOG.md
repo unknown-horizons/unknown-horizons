@@ -20,7 +20,7 @@ CHANGELOG Unknown Horizons
 
 2016-XX-XX: Milestone 2016.1
 ----------------------------
-changelog date: May 05/25
+changelog date: 25. May 2016
 
 ### Gameplay and Balancing
 
