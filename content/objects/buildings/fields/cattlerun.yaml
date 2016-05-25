@@ -22,6 +22,8 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.GRASS: 10, RES.CATTLE: 2}
+#- AmbientSoundComponent:
+    #soundfiles: [content/audio/sounds/cow.ogg]
 actionsets:
   TIER.SETTLERS:
     as_cattlerun0:

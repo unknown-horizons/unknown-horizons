@@ -18,9 +18,9 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2016-04-31: Milestone 2016.1
+2016-XX-XX: Milestone 2016.1
 ----------------------------
-changelog date: Dec 09/15
+changelog date: 25. May 2016
 
 ### Gameplay and Balancing
 
@@ -34,7 +34,8 @@ New files and features
  - spices buildmenu icon
  - spice, spice plant & condiments resource icons
  - blender building
- - menü sounds
+ - added menu sound from Ollo (toolmaker, market)
+ - added market, smith, windmill, toolmaker and tavern sounds (Ollo)
  - added cocoafield
  - replaced the discard icon on the trade ship widget
  - replaced the load/unload icon on the trade ship widget
@@ -71,6 +72,7 @@ Fixed bugs and usability problems
 
 New functionalities
  - 85d0cb8 Travis build for unit tests
+ - menü sounds (Gladius1)
  
 Modified structures
  - 1761cef Add abstraction layer above boat builder tab. Preparation for general Unitproduction tabs.
