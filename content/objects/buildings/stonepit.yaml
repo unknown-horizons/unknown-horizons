@@ -30,5 +30,4 @@ components:
         slot_sizes: {RES.STONE_DEPOSIT: 1000000, RES.STONE_TOPS: 8}
 actionsets:
   TIER.CITIZENS:
-    as_3x3:
-    #as_stone_pit0:
+    as_stone_pit0:
