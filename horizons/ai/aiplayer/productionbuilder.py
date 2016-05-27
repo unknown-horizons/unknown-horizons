@@ -523,3 +523,5 @@ class ProductionBuilder(AreaBuilder):
 			self.settlement.get_component(NamedComponent).name if hasattr(
 				self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
+
+decorators.bind_all(ProductionBuilder, builtin_only=True)
