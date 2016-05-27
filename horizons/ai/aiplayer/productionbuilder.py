@@ -294,12 +294,12 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.SPICE_FIELD:     (  0, 100,   0),
 			BUILDING_PURPOSE.VINEYARD:        ( 32, 178, 170),
 			BUILDING_PURPOSE.CATTLE_RUN:      (192, 155,  62),
-			#BUILDING_PURPOSE.BAKERY:          (),
-			#BUILDING_PURPOSE.WINDMILL:        (),
-			#BUILDING_PURPOSE.WINERY:          (),
-			#BUILDING_PURPOSE.BREWERY:         (),
-			#BUILDING_PURPOSE.CANNONFOUNDRY:   (),
-			#BUILDING_PURPOSE.BLENDER:         (),
+			BUILDING_PURPOSE.BAKERY:          (  0,   0,   0),
+			BUILDING_PURPOSE.WINDMILL:        (  3,   3,   3),
+			BUILDING_PURPOSE.WINERY:          (  5,   5,   5),
+			BUILDING_PURPOSE.BREWERY:         (  8,   8,   8),
+			BUILDING_PURPOSE.CANNONFOUNDRY:   ( 10,  10,  10),
+			BUILDING_PURPOSE.BLENDER:         ( 13,  13,  13),
 		}
 
 		misc_color = (0, 255, 255)
