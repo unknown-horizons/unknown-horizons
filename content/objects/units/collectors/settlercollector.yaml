@@ -24,9 +24,7 @@ actionsets:
     as_male3:
     #as_female3:
   TIER.PIONEERS:
-    as_male_p:
-    #as_female_p:
+    as_pioneermale0:
   TIER.SETTLERS:
-    as_male_s:
-    #as_female_s:
+    as_settlermale0:
     
