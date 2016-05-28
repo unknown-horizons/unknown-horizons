@@ -64,7 +64,8 @@ INSERT INTO "sounds" VALUES(13, 'content/audio/sounds/click.ogg');
 INSERT INTO "sounds" VALUES(15, 'content/audio/sounds/smith.ogg');
 INSERT INTO "sounds" VALUES(16, 'content/audio/sounds/main_square.ogg');
 INSERT INTO "sounds" VALUES(17, 'content/audio/sounds/windmill.ogg');
-INSERT INTO "sounds" VALUES(17, 'content/audio/sounds/tavern.ogg');
+INSERT INTO "sounds" VALUES(18, 'content/audio/sounds/tavern.ogg');
+INSERT INTO "sounds" VALUES(19, 'content/audio/sounds/stonemason.ogg');
 
 CREATE TABLE "sounds_special" (
 	"type" TEXT NOT NULL,

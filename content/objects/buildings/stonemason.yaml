@@ -25,6 +25,8 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS: 8}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/stonemason.ogg]
 actionsets:
   TIER.SETTLERS:
     #as_stonemason0:
