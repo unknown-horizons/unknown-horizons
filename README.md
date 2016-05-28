@@ -12,8 +12,7 @@ Find more information about Unknown Horizons on our website:
 http://www.unknown-horizons.org/
 
 For installation instructions check the "Downloads" section on
-our website and refer to our wiki:
-https://github.com/unknown-horizons/unknown-horizons/wiki
+our website http://www.unknown-horizons.org/download/
 
 
 
@@ -24,27 +23,15 @@ https://github.com/unknown-horizons/unknown-horizons/wiki
 
 
 
-The foundation of **Unknown Horizons**:
+The **Unknown Horizons** game:
 
 Technology     | Component
 ---------------|----------
-**Python2**    | ToDo
-**fifengine**  | Our Engine
-**fifechan**   | GUI library
-
-
-
-Our goals *include*:
-
-TODO
-
-
-
-Current State of the Project
-----------------------------
-
-ToDo
-
+**Python2**    | Used for everything
+**SQLite**     | Maps
+**YAML**       | Objectfiles storing component based information, easily scriptable
+**[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings
+**[fifechan](https://github.com/fifengine/fifechan)**   | GUI library
 
 
 Dependencies, Building and Running
