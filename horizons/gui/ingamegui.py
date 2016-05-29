@@ -137,9 +137,6 @@ class IngameGui(LivingObject):
 			'logbook' : lambda: self.windows.toggle(self.logbook)
 		})
 		self.mainhud.show()
-		GuiAction.subscribe(self._on_gui_click_action)
-		GuiHover.subscribe(self._on_gui_hover_action)
-		GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
 		hotkey_replacements = {
 			'rotateRight': 'ROTATE_RIGHT',
@@ -167,6 +164,9 @@ class IngameGui(LivingObject):
 		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
 		MineEmpty.subscribe(self._on_mine_empty)
 		ZoomChanged.subscribe(self._update_zoom)
+		GuiAction.subscribe(self._on_gui_click_action)
+		GuiHover.subscribe(self._on_gui_hover_action)
+		GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -178,6 +178,9 @@ class IngameGui(LivingObject):
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		MineEmpty.unsubscribe(self._on_mine_empty)
 		ZoomChanged.unsubscribe(self._update_zoom)
+		GuiAction.subscribe(self._on_gui_click_action)
+		GuiHover.subscribe(self._on_gui_hover_action)
+		GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
