@@ -178,9 +178,9 @@ class IngameGui(LivingObject):
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		MineEmpty.unsubscribe(self._on_mine_empty)
 		ZoomChanged.unsubscribe(self._update_zoom)
-		GuiAction.subscribe(self._on_gui_click_action)
-		GuiHover.subscribe(self._on_gui_hover_action)
-		GuiCancelAction.subscribe(self._on_gui_cancel_action)
+		GuiAction.unsubscribe(self._on_gui_click_action)
+		GuiHover.unsubscribe(self._on_gui_hover_action)
+		GuiCancelAction.unsubscribe(self._on_gui_cancel_action)
 
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
