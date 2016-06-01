@@ -26,17 +26,17 @@ from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from tests.game import game_test
 
 
-# FIXTURE is settlement in tier settlers with min 16 inhabitants
+# FIXTURE is a settlement of tier settlers with a minimum of 16 inhabitants
 
 @game_test(use_fixture='blackdeath')
 def test_blackdeath_destroy(s):
 	"""
-	Check if the black death destroys all settlers
+	Check if the black death destroys some settlers
 	"""
 	dis_man = s.world.disaster_manager
 	settlement = s.world.player.settlements[0]
 
-	# need this so that disaster  can break out
+	# need this so that disaster can break out
 	s.world.player.settler_level = 4
 
 	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]

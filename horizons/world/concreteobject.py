@@ -91,7 +91,7 @@ class ConcreteObject(WorldObject):
 
 	def act(self, action, facing_loc=None, repeating=False, force_restart=True):
 		"""
-		@param repeating: maps to fife, currently broken: http://github.com/fifengine/fifengine/issues/708
+		@param repeating: maps to fife instance method actRepeat or actOnce
 		@param force_restart: whether to always restart, even if action is already displayed
 		"""
 		if not self.has_action(action):
@@ -123,7 +123,7 @@ class ConcreteObject(WorldObject):
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
 		@param action: animation id as string"""
-		return (action in ActionSetLoader.get_sets()[self._action_set_id])
+		return (action in ActionSetLoader.get_set(self._action_set_id))
 
 	def remove(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)

@@ -21,3 +21,10 @@ actionsets:
     as_female:
     as_male2:
     as_female2:
+    as_male3:
+    #as_female3:
+  TIER.PIONEERS:
+    as_pioneermale0:
+  TIER.SETTLERS:
+    as_settlermale0:
+    
