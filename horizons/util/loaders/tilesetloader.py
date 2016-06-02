@@ -48,8 +48,11 @@ class TileSetLoader(object):
 		It is similar to os.walk, but more optimized for this use case."""
 		for entry in os.listdir(dir):
 			full_path = os.path.join(dir, entry)
+			climatezone = os.path.basename(dir)
 			if entry.startswith("ts_"):
-				cls.tile_sets[entry] = GeneralLoader._load_action(full_path)
+				if not climatezone in cls.tile_sets:
+					cls.tile_sets[climatezone] = {}
+				cls.tile_sets[climatezone][entry] = GeneralLoader._load_action(full_path)
 			else:
 				if os.path.isdir(full_path) and entry != ".DS_Store":
 					cls._find_tile_sets(full_path)

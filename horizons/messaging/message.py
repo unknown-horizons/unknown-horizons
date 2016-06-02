@@ -197,6 +197,10 @@ class HoverSettlementChanged(Message):
 	"""Sent when hovering over any different settlement, or no settlement."""
 	arguments = ('settlement', )
 
+class HoverIslandChanged(Message):
+	"""Sent when hovering over any different island, or no island."""
+	arguments = ('island', )
+
 class NewSettlement(Message):
 	"""Sent when a new settlement is created."""
 	arguments = ('settlement', 'warehouse_position', )

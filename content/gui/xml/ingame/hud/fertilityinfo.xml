@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<AutoResizeContainer name="fertility_info">
+	<TilingHBox name="fertility_background" />
+	<HBox name="fertility_icons" position="6, 5" />
+</AutoResizeContainer>

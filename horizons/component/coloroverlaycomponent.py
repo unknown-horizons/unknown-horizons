@@ -165,7 +165,7 @@ class ColorOverlayComponent(Component):
 				except TypeError:
 					# not using atlases
 					frame_length = frame_data
-				pic = horizons.globals.fife.animationloader.load_image(frame_img, self.action_set, overlay_name, rotation)
+				pic = horizons.globals.fife.animationloader.load_image(frame_img, None, self.action_set, overlay_name, rotation)
 				frame_milliseconds = int(frame_length * 1000)
 				ov_anim.addFrame(pic, frame_milliseconds)
 			overlay = fife.OverlayColors(ov_anim)

@@ -92,3 +92,15 @@ def settle(s):
 	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS, 50)
 	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS, 50)
 	return settlement, island
+
+def settle_zone(s, zone):
+	"""Settle in the given climate zone
+	@param zone: climate zone name (See constants.py - CLIMATE.*)
+	"""
+	settlement, island = settle(s)
+	island.fertility = []
+	# Force climate zone
+	island.climate_zone = s.world.zones[zone]
+	# Redistribute the resources to match the given zone
+	s.world._distribute_resources()
+	return settlement, island

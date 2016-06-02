@@ -101,6 +101,7 @@ locations_to_translate = [
 	OBJECT_PATH + 'buildings/',
 	OBJECT_PATH + 'units/ships/',
 	OBJECT_PATH + 'gui_buildmenu/',
+	OBJECT_PATH + 'climate/',
 	]
 
 files_to_skip = [

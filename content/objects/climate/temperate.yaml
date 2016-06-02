@@ -1,0 +1,12 @@
+type: temperate
+name: _ Temperate
+default_resources:
+    - RES.TREES
+    - RES.GRAIN
+possible_resources:
+    RES.POTATOES: 0.5
+    RES.HERBS:
+    RES.VINES:
+    RES.RAW_CLAY:
+    RES.RAW_IRON:
+    RES.STONE_DEPOSIT:

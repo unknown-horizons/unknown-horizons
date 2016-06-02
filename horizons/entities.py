@@ -26,6 +26,7 @@ import os
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
+from horizons.world.climate.climatezone import ClimateZone
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -62,6 +63,7 @@ class Entities(object):
 		cls.load_grounds(db, load_now)
 		cls.load_buildings(db, load_now)
 		cls.load_units(load_now)
+		cls.load_climate_zones()
 		cls.loaded = True
 
 	@classmethod
@@ -76,11 +78,12 @@ class Entities(object):
 		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
 			tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", ground_id)[0][0]
-			for shape in tile_sets[tile_set_id].iterkeys():
-				cls_name = '%d-%s' % (ground_id, shape)
-				cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
-				if load_now:
-					cls.grounds[cls_name]
+			for climate_zone in tile_sets.iterkeys():
+				for shape in tile_sets[climate_zone][tile_set_id].iterkeys():
+					cls_name = '%d-%s' % (ground_id, shape)
+					cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
+					if load_now:
+						cls.grounds[cls_name]
 		cls.grounds['-1-special'] = GroundClass(db, -1, 'special')
 
 	@classmethod
@@ -126,3 +129,16 @@ class Entities(object):
 				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
 				if load_now:
 					cls.units[unit_id]
+					
+	@classmethod
+	def load_climate_zones(cls):
+		cls.log.debug("Entities: loading climate zones")
+		if ClimateZone.yaml_data is not None:
+			cls.log.debug("Entities: climate zones already loaded")
+			return
+		ClimateZone.yaml_data = {}
+		for root, dirnames, filenames in os.walk('content/objects/climate'):
+			for filename in fnmatch.filter(filenames, '*.yaml'):
+				full_file = os.path.join(root, filename)
+				result = YamlCache.get_file(full_file, game_data=True)
+				ClimateZone.yaml_data[result['type']] = result

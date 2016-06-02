@@ -1,0 +1,10 @@
+type: desert
+name: _ Desert
+default_resources:
+    - RES.TREES
+    - RES.POTATOES
+possible_resources:
+    RES.TOBACCO_PLANTS: 0.5
+    RES.SPICES: 0.5
+    RES.RAW_SUGAR:
+    RES.COCOA_BEANS:

@@ -32,6 +32,7 @@ from collections import defaultdict
 from horizons.constants import PATHS, VERSION
 from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
+from horizons.util.random_map import create_random_island
 
 import horizons.globals
 import horizons.main
@@ -329,6 +330,32 @@ class SavegameManager(object):
 	@classmethod
 	def get_multiplayersave_map(cls, name):
 		return os.path.join(cls.multiplayersave_dir, name + "." + cls.savegame_extension)
+
+	@classmethod
+	def get_mappath_from_savegame(cls, savegame):
+		map_name_data = savegame('SELECT value FROM metadata WHERE name = ?', 'map_name')
+		map_path = None
+		if not map_name_data:
+			random_island_sequence = savegame('SELECT value FROM metadata WHERE name = ?', 'random_island_sequence')[0][0].split(' ')
+			handle, _temp_path2 = tempfile.mkstemp()
+			os.close(handle)
+			random_map_db = DbReader(_temp_path2)
+			with open('content/map-template.sql') as map_template:
+				random_map_db.execute_script(map_template.read())
+			for island_id, island_string in enumerate(random_island_sequence):
+				create_random_island(random_map_db, island_id, island_string)
+			random_map_db.close()
+			map_path = _temp_path2
+		else:
+			map_name = map_name_data[0][0]
+			if map_name.startswith('USER_MAPS_DIR:'):
+				map_path = PATHS.USER_MAPS_DIR + map_name[len('USER_MAPS_DIR:'):]
+			elif os.path.isabs(map_name):
+				map_path = map_name
+			else:
+				map_path = SavegameManager.get_filename_from_map_name(map_name)
+		return map_path
+
 
 	@classmethod
 	def get_saves(cls, include_displaynames=True):

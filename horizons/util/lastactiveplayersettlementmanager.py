@@ -24,7 +24,7 @@ import weakref
 from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
+from horizons.messaging import NewPlayerSettlementHovered, HoverIslandChanged, HoverSettlementChanged, NewSettlement
 
 def resolve_weakref(ref):
 	"""Resolves a weakref to a hardref, where the ref itself can be None"""
@@ -56,6 +56,7 @@ class LastActivePlayerSettlementManager(object):
 
 		# settlement mouse currently is above or None
 		self._cur_settlement = None
+		self._cur_island = None
 
 		# last settlement of player mouse was on, only None at startup
 		self._last_player_settlement = None
@@ -85,18 +86,26 @@ class LastActivePlayerSettlementManager(object):
 	def remove(self):
 		self._last_player_settlement = None
 		self._cur_settlement = None
+		self._cur_island = None
 		self.session.view.remove_change_listener(self._on_scroll)
 		NewSettlement.unsubscribe(self._on_new_settlement_created)
 
 	def update(self, current):
 		"""Update to new world position. Sets internal state to new settlement or no settlement
 		@param current: some kind of position coords with x- and y-values"""
-		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
+		point = Point(int(round(current.x)), int(round(current.y)))
+		settlement = self.session.world.get_settlement(point)
+		island = self.session.world.get_island(point)
 
 		# check if it's a new settlement independent of player
 		if resolve_weakref(self._cur_settlement) is not settlement:
 			self._cur_settlement = create_weakref(settlement)
 			HoverSettlementChanged.broadcast(self, settlement)
+
+		# Also send island information, for e.g. fertility updates.
+		if resolve_weakref(self._cur_island) is not island:
+			self._cur_island = create_weakref(island)
+			HoverIslandChanged.broadcast(self, island)
 
 		# player-sensitive code
 		new_player_settlement = weakref.ref(settlement) if \

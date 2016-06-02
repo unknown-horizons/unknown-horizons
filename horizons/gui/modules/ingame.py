@@ -28,10 +28,10 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent
 from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.util import load_uh_widget
+from horizons.gui.util import load_uh_widget, create_resource_icon
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.windows import Dialog
-from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
+from horizons.messaging import SettlerInhabitantsChanged, HoverIslandChanged, HoverSettlementChanged, ResourceBarResize
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 
@@ -93,6 +93,79 @@ class ChangeNameDialog(Dialog):
 			# different namedcomponent classes share the name
 			namedcomp = named_instance.get_component_by_name(NamedComponent.NAME)
 			RenameObject(namedcomp, new_name).execute(self._session)
+
+
+class FertilityInfo(object):
+	def __init__(self, ingame_gui):
+		self._ingame_gui = ingame_gui
+		self._widget = load_uh_widget('fertilityinfo.xml', 'resource_bar')
+		self._child_finder = PychanChildFinder(self._widget)
+
+		self._island = None
+		HoverIslandChanged.subscribe(self._on_hover_island_change)
+		ResourceBarResize.subscribe(self._on_resourcebar_resize)
+
+	def end(self):
+		HoverIslandChanged.unsubscribe(self._on_hover_island_change)
+		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
+
+	def _on_hover_island_change(self, message):
+		self.set_island(message.island)
+
+	def set_island(self, island):
+		self._island = island
+
+		if not island:
+			# Hide the widget (after some seconds).
+			# Delayed to allow players scrolling away to click on the widget.
+			# This often happens when moving mouse up from island to reach it.
+			ExtScheduler().add_new_object(self.hide, self, run_in=GUI.CITYINFO_UPDATE_DELAY)
+		else:
+			# Cancel previously scheduled hide if an island is hovered again.
+			ExtScheduler().rem_call(self, self.hide)
+
+			self._update_island()  # This calls show()!
+
+	def _update_island(self):
+		fertility_box = self._child_finder('fertility_icons')
+		fertility_box.removeAllChildren()
+		fertility_box.padding = 3
+		for res_id in sorted(self._island.fertility):
+			icon = create_resource_icon(res_id, self._ingame_gui.session.db)
+			icon.max_size = icon.min_size = icon.size = (20, 20)
+			fertility_box.addChild(icon)
+
+		fertility_bg = self._child_finder('fertility_background')
+		fertility_bg.amount = 2 + 2 * len(self._island.fertility)
+
+		#TODO click on this box to expand and show list of natural resource deposits on this island
+		#self._widget.mapEvents({
+		#	'fertility_icons':
+		#})
+
+		self._widget.adaptLayout()  # Resize AutoResizeContainer.
+		self._update_position()
+
+	def _update_position(self):
+		cityinfo = self._ingame_gui.cityinfo._widget
+		cityinfo_pos = cityinfo.position
+		if cityinfo_pos == (0, 0):
+			# Not shown for this island right now, e.g. because there's no settlement.
+			width = horizons.globals.fife.engine_settings.getScreenWidth()
+			new_x = (width // 2 - self._widget.width // 2)
+		else:
+			new_x = cityinfo_pos[0] + (cityinfo.width - self._widget.width) // 2
+		self._widget.position = (new_x, cityinfo_pos[1] + 35)
+		self._widget.hide()
+		self._widget.show()
+
+	def _on_resourcebar_resize(self, message):
+		# Slightly delayed repositioning, so that the cityinfo gets updated
+		# first - we then position ourselves relative to the new cityinfo.
+		ExtScheduler().add_new_object(self._update_position, self, run_in=0.3)
+
+	def hide(self):
+		self._widget.hide()
 
 
 class CityInfo(object):

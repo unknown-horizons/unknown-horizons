@@ -255,7 +255,7 @@ class BuildingTool(NavigationTool):
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
 		if GFX.USE_ATLASES:
 			# Make sure the preview is loaded
-			horizons.globals.fife.animationloader.load_image(image, action_set, action, rotation)
+			horizons.globals.fife.animationloader.load_image(image, None, action_set, action, rotation)
 		building_icon = self.gui.findChild(name='building')
 		loaded_image = horizons.globals.fife.imagemanager.load(image)
 		building_icon.image = fife.GuiImage(loaded_image)

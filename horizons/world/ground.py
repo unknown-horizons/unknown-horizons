@@ -34,9 +34,9 @@ class SurfaceTile(object):
 	is_water = False
 	layer = LAYERS.GROUND
 
-	__slots__ = ('x', 'y', 'settlement', 'blocked', 'object', 'session', '_instance', '_tile_set_id')
+	__slots__ = ('x', 'y', 'settlement', 'blocked', 'object', 'session', '_instance', '_tile_set_id', 'climate_zone')
 
-	def __init__(self, session, x, y):
+	def __init__(self, session, x, y, climate_zone='temperate'):
 		"""
 		@param session: Session instance
 		@param x: int x position the ground is created.
@@ -49,10 +49,18 @@ class SurfaceTile(object):
 		self.blocked = False
 		self.object = None
 		self.session = session
+		self.climate_zone = climate_zone
 		self._tile_set_id = horizons.globals.db.get_random_tile_set(self.id)
 
 		layer = session.view.layers[self.layer]
-		self._instance = layer.createInstance(self._fife_objects[self._tile_set_id],
+		
+		if not self._tile_set_id in self._fife_objects[self.climate_zone]:
+			# Fallback, try to load tileset number 0, so e.g. ts_grass0 instead of ts_grass5
+			self._tile_set_id = self._tile_set_id[:-1] + '0'
+			if not self._tile_set_id in self._fife_objects[self.climate_zone]:
+				self.log("No such tileset(%s) in climate zone '%s'", self._tile_set_id, self.climate_zone)
+		
+		self._instance = layer.createInstance(self._fife_objects[self.climate_zone][self._tile_set_id],
 		                                      fife.ModelCoordinate(int(x), int(y), 0),
 		                                      "")
 		fife.InstanceVisual.create(self._instance)
@@ -144,34 +152,40 @@ class GroundClass(type):
 		model = horizons.globals.fife.engine.getModel()
 		load_image = horizons.globals.fife.animationloader.load_image
 		tile_set_data = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)
-		for tile_set_row in tile_set_data:
-			tile_set_id = str(tile_set_row[0])
-			cls_name = '%d-%s' % (cls.id, cls.shape)
-			cls.log.debug('Loading ground %s', cls_name)
-			fife_object = None
-			try:
-				fife_object = model.createObject(cls_name, 'ground_' + tile_set_id)
-			except RuntimeError:
-				cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
-				fife_object = model.getObject(cls_name, 'ground_' + tile_set_id)
-				return
-
-			fife.ObjectVisual.create(fife_object)
-			visual = fife_object.get2dGfxVisual()
-			for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
-				if not data:
-					raise KeyError('No data found for tile set `%s` in rotation `%s`. '
-						'Most likely the shape `%s` is missing.' %
-						(tile_set_id, rotation, cls.shape))
-				if len(data) > 1:
-					raise ValueError('Currently only static tiles are supported. '
-						'Found this data for tile set `%s` in rotation `%s`: '
-						'%s' % (tile_set_id, rotation, data))
-				img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
-				visual.addStaticImage(rotation, img.getHandle())
-
-			# Save the object
-			cls._fife_objects[tile_set_id] = fife_object
+		for climate_zone in tile_sets.iterkeys():
+			for tile_set_row in tile_set_data:
+				tile_set_id = str(tile_set_row[0])
+				if tile_set_id not in tile_sets[climate_zone]:
+					cls.log.debug("Warning: No tile set named %s found for climate zone %s", tile_set_id, climate_zone)
+					continue
+				cls_name = '%d-%s' % (cls.id, cls.shape)
+				cls.log.debug('Loading ground %s', cls_name)
+				fife_object = None
+				try:
+					fife_object = model.createObject(cls_name, 'ground_' + tile_set_id + '_' + climate_zone)
+				except RuntimeError:
+					cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
+					fife_object = model.getObject(cls_name, 'ground_' + tile_set_id  + '_' + climate_zone)
+					return
+	
+				fife.ObjectVisual.create(fife_object)
+				visual = fife_object.get2dGfxVisual()
+				for rotation, data in tile_sets[climate_zone][tile_set_id][cls.shape].iteritems():
+					if not data:
+						raise KeyError('No data found for tile set `%s` in rotation `%s`. '
+							'Most likely the shape `%s` is missing.' %
+							(tile_set_id, rotation, cls.shape))
+					if len(data) > 1:
+						raise ValueError('Currently only static tiles are supported. '
+							'Found this data for tile set `%s` in rotation `%s`: '
+							'%s' % (tile_set_id, rotation, data))
+					img = load_image(data.keys()[0], climate_zone, tile_set_id, cls.shape, str(rotation))
+					visual.addStaticImage(rotation, img.getHandle())
+	
+				# Save the object
+				if climate_zone not in cls._fife_objects:
+					cls._fife_objects[climate_zone] = {}
+				cls._fife_objects[climate_zone][tile_set_id] = fife_object
 
 
 class MapPreviewTile(object):

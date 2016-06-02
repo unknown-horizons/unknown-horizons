@@ -131,11 +131,15 @@ class SQLiteAtlasLoader(object):
 				assert False, "Invalid set being loaded: " + actionset
 			return loader
 
-	def load_image(self, file, actionset, action, rotation):
+	def load_image(self, file, climate_zone, actionset, action, rotation):
+		"""@param climate_zone: None for action sets. Climate zone for tile sets"""
 		if not self.inited:
 			self.init()
 		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][int(rotation)][file]
+		if climate_zone is not None:
+			entry = loader.get_sets()[climate_zone][actionset][action][int(rotation)][file]
+		else:
+			entry = loader.get_sets()[actionset][action][int(rotation)][file]
 		# we don't need to load images at this point to query for its parameters
 		# such as width and height because we can get those from json file
 		xpos, ypos, width, height = entry[2:]

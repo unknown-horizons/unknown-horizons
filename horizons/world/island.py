@@ -32,7 +32,7 @@ from horizons.util.shapes import Circle, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from horizons.world.settlement import Settlement
-from horizons.constants import BUILDINGS, RES, UNITS
+from horizons.constants import BUILDINGS, FERTILITY, RES, UNITS
 from horizons.command.building import Tear
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
@@ -82,6 +82,7 @@ class Island(BuildingOwner, WorldObject):
 		super(Island, self).__init__(worldid=island_id)
 
 		self.session = session
+		self.fertility = []
 
 		self.terrain_cache = None
 		self.available_land_cache = None
@@ -97,6 +98,9 @@ class Island(BuildingOwner, WorldObject):
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
+						
+		for (resource, ) in db("SELECT resource FROM island_fertility WHERE island = ?", island_id):
+			self.fertility.append(resource)
 
 		if preview:
 			# Caches and buildings are not required for map preview.
@@ -127,12 +131,18 @@ class Island(BuildingOwner, WorldObject):
 		Load the actual island from a file
 		@param preview: flag, map preview mode
 		"""
-		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
-
+		
+		min_y, max_y, min_x, max_x = db("SELECT min(y), max(y), min(x), max(x) FROM ground WHERE island_id = ?", island_id - 1001)[0]
+		# define the rectangle with the smallest area that contains every island tile its position
+		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
+		
+		if not preview:
+			self.climate_zone = self.session.world.get_climate_zone(min_y+((max_y-min_y)/2))
+		
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y, self.climate_zone.zone_type)
 				ground.act(rotation)
 			else:
 				ground = MapPreviewTile(x, y, ground_id)
@@ -150,13 +160,6 @@ class Island(BuildingOwner, WorldObject):
 		self.settlements = []
 		self.wild_animals = []
 		self.num_trees = 0
-
-		# define the rectangle with the smallest area that contains every island tile its position
-		min_x = min(zip(*self.ground_map.keys())[0])
-		max_x = max(zip(*self.ground_map.keys())[0])
-		min_y = min(zip(*self.ground_map.keys())[1])
-		max_y = max(zip(*self.ground_map.keys())[1])
-		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
 			# This isn't needed for map previews, but it is in actual games.
@@ -178,6 +181,8 @@ class Island(BuildingOwner, WorldObject):
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
 			animal.save(db)
+		for resource in self.fertility:
+			db("INSERT INTO island_fertility (island, resource) VALUES(?, ?)", self.worldid, resource)
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""

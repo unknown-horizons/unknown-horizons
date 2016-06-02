@@ -30,8 +30,8 @@ from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
-from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
+from horizons.gui.modules.ingame import ChangeNameDialog, ChatDialog, CityInfo, FertilityInfo
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs import resolve_tab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -74,6 +74,7 @@ class IngameGui(LivingObject):
 		self.keylistener = IngameKeyListener(self.session)
 
 		self.cityinfo = CityInfo(self)
+		self.fertilityinfo = FertilityInfo(self)
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		self.message_widget = MessageWidget(self.session)
@@ -200,6 +201,8 @@ class IngameGui(LivingObject):
 		self.resource_overview.end()
 		self.resource_overview = None
 		self.keylistener = None
+		self.fertilityinfo.end()
+		self.fertilityinfo = None
 		self.cityinfo.end()
 		self.cityinfo = None
 		self.hide_menu()

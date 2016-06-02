@@ -595,4 +595,9 @@ CREATE TABLE "fish_data" (
 	"last_usage_tick" INT NOT NULL
 );
 
+CREATE TABLE "island_fertility" (
+	"island" INT NOT NULL,
+	"resource" INT NOT NULL
+);
+
 COMMIT;

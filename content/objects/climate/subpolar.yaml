@@ -1,0 +1,11 @@
+type: subpolar
+name: _ Subpolar
+default_resources:
+    - RES.TREES
+    - RES.RAW_CLAY
+    - RES.RAW_IRON
+    - RES.STONE_DEPOSIT
+possible_resources:
+    RES.POTATOES: 0.5
+    RES.GRAIN:
+    RES.ALVEARIES:

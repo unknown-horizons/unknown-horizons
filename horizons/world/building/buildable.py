@@ -26,7 +26,7 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.terraincache import TerrainRequirement
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, FERTILITY
 from horizons.entities import Entities
 
 class BuildableErrorTypes(object):
@@ -34,7 +34,7 @@ class BuildableErrorTypes(object):
 	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
 	OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
 	NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE, ISLAND_ALREADY_SETTLED, \
-	NO_FLAT_LAND = range(13)
+	NO_FLAT_LAND, NO_FERTILITY = range(14)
 
 	text = {
 	  NO_ISLAND : _("This building must be built on an island."),
@@ -48,7 +48,8 @@ class BuildableErrorTypes(object):
 	  ONLY_NEAR_SHIP : _("This spot is too far away from your ship."),
 	  NEED_RES_SOURCE : _("This building can only be built on a resource source."),
 	  ISLAND_ALREADY_SETTLED : _("You have already settled this island."),
-	  NO_FLAT_LAND : _("This building must be partly on flat land.")
+	  NO_FLAT_LAND : _("This building must be partly on flat land."),
+	  NO_FERTILITY : _("The island does not provide the necessary fertility.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
@@ -129,6 +130,8 @@ class Buildable(object):
 		tearset = []
 		try:
 			island = cls._check_island(session, position)
+			if island is not None:
+				cls._check_fertility(island)
 			# TODO: if the rotation changes here for non-quadratic buildings, wrong results will be returned
 			rotation = cls._check_rotation(session, position, rotation)
 			tearset = cls._check_buildings(session, position, island=island)
@@ -140,6 +143,12 @@ class Buildable(object):
 			problem = (e.errortype, _(BuildableErrorTypes.text[e.errortype]))
 
 		return _BuildPosition(position, rotation, tearset, buildable, problem=problem)
+
+	@classmethod
+	def _check_fertility(cls, island):
+		if cls.id in FERTILITY.BUILDING_TO_RES:
+			if FERTILITY.BUILDING_TO_RES[cls.id] not in island.fertility:
+				raise _NotBuildableError(BuildableErrorTypes.NO_FERTILITY)
 
 	@classmethod
 	def check_build_line(cls, session, point1, point2, rotation=45, ship=None):

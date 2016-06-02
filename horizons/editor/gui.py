@@ -230,7 +230,8 @@ class SettingsTab(TabInterface):
 
 		ground_id, action_id, rotation = tile
 		set_id = horizons.globals.db.get_random_tile_set(ground_id)
-		return tile_sets[set_id][action_id][rotation].keys()[0]
+		#TODO Support other climate zone tiles here, hardcoding 'temperate' is awful.
+		return tile_sets['temperate'][set_id][action_id][rotation].keys()[0]
 
 	def _change_brush_size(self, size):
 		"""Change the brush size and update the gui."""

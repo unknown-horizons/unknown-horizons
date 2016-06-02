@@ -36,7 +36,7 @@ from horizons.util.color import Color
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS, CLIMATE
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -52,6 +52,7 @@ from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.messaging import LoadingProgress
+from horizons.world.climate.climatezone import ClimateZone
 
 
 class World(BuildingOwner, WorldObject):
@@ -87,9 +88,14 @@ class World(BuildingOwner, WorldObject):
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
 
+		# Need to be here, so that zone data is already loaded
+		self.zones = { CLIMATE.SUBPOLAR_ZONE: ClimateZone(CLIMATE.SUBPOLAR_ZONE), \
+				CLIMATE.DESERT_ZONE: ClimateZone(CLIMATE.DESERT_ZONE), \
+				CLIMATE.TEMPERATE_ZONE: ClimateZone(CLIMATE.TEMPERATE_ZONE)}
+
 		# create playerlist
 		self.players = []
-		self.player = None # player sitting in front of this machine
+		self.player = None  # player sitting in front of this machine
 		self.trader = None
 		self.pirate = None
 
@@ -116,7 +122,7 @@ class World(BuildingOwner, WorldObject):
 		for island in self.islands:
 			island.end()
 		for player in self.players:
-			player.end() # end players after game entities, since they usually depend on players
+			player.end()  # end players after game entities, since they usually depend on players
 
 		self.session = None
 		self.properties = None
@@ -223,7 +229,7 @@ class World(BuildingOwner, WorldObject):
 			# load the AI stuff only when we have AI players
 			LoadingProgress.broadcast(self, 'world_setup_ai')
 			if any(isinstance(player, AIPlayer) for player in self.players):
-				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+				AIPlayer.load_abstract_buildings(self.session.db)  # TODO: find a better place for this
 
 			# load the AI players
 			# this has to be done here because otherwise the ships and other objects won't exist
@@ -235,6 +241,9 @@ class World(BuildingOwner, WorldObject):
 		self._load_combat(savegame_db)
 		self._load_diplomacy(savegame_db)
 		self._load_disasters(savegame_db)
+		
+		if not self.session.is_game_loaded():
+			self._distribute_resources()
 
 		self.inited = True
 		"""TUTORIAL:
@@ -263,24 +272,20 @@ class World(BuildingOwner, WorldObject):
 	def load_raw_map(self, savegame_db, preview=False):
 		self.map_name = savegame_db.map_name
 
+		# Calculate map dimensions
+		self.min_x, self.min_y, self.max_x, self.max_y = savegame_db("SELECT min(x), min(y), max(x), max(y) from GROUND")[0]
+		self.map_padding = savegame_db.map_padding
+		# Min with 0, to make sure the map starts at 0,0
+		self.min_x = min(self.min_x, 0) - self.map_padding
+		self.min_y = min(self.min_y, 0) - self.map_padding
+		self.max_x = max(self.max_x, 0) + self.map_padding
+		self.max_y = max(self.max_y, 0) + self.map_padding
+		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
+
 		# Load islands.
 		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session, preview=preview)
 			self.islands.append(island)
-
-		# Calculate map dimensions.
-		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
-		for island in self.islands:
-			self.min_x = min(island.position.left, self.min_x)
-			self.min_y = min(island.position.top, self.min_y)
-			self.max_x = max(island.position.right, self.max_x)
-			self.max_y = max(island.position.bottom, self.max_y)
-		self.min_x -= savegame_db.map_padding
-		self.min_y -= savegame_db.map_padding
-		self.max_x += savegame_db.map_padding
-		self.max_y += savegame_db.map_padding
-
-		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 
 		# Add water.
 		self.log.debug("Filling world with water...")
@@ -292,8 +297,8 @@ class World(BuildingOwner, WorldObject):
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10
-		for x in xrange(self.min_x-MAP.BORDER, self.max_x+MAP.BORDER, fake_tile_size):
-			for y in xrange(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
+		for x in xrange(self.min_x - MAP.BORDER, self.max_x + MAP.BORDER, fake_tile_size):
+			for y in xrange(self.min_y - MAP.BORDER, self.max_y + MAP.BORDER, fake_tile_size):
 				fake_tile_x = x - 1
 				fake_tile_y = y + fake_tile_size - 1
 				if not preview:
@@ -303,7 +308,7 @@ class World(BuildingOwner, WorldObject):
 					if self.min_x <= x + x_offset < self.max_x:
 						for y_offset in xrange(fake_tile_size):
 							if self.min_y <= y + y_offset < self.max_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
+								self.ground_map[(x + x_offset, y + y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# Remove parts that are occupied by islands, create the island map and the full map.
@@ -326,10 +331,10 @@ class World(BuildingOwner, WorldObject):
 			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
+				module = __import__('horizons.ai.' + class_package, fromlist=[str(class_name)])
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
-			else: # no ai
+			else:  # no ai
 				player = HumanPlayer.load(self.session, savegame_db, player_worldid)
 			self.players.append(player)
 
@@ -382,6 +387,39 @@ class World(BuildingOwner, WorldObject):
 						map_dict[coords2] = n
 						queue.append(coords2)
 			n += 1
+
+	def get_climate_zone(self, y_coord):
+		map_height = self.map_dimensions.height - self.map_padding * 2
+		min_y = self.min_y + self.map_padding
+		# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert
+		border_sub_polar = min_y + (map_height / CLIMATE.EXTREME_RATIO)
+		border_desert = min_y + ((map_height / CLIMATE.EXTREME_RATIO) * (CLIMATE.EXTREME_RATIO - 1))
+
+		if y_coord <= border_sub_polar:
+			return self.zones[CLIMATE.SUBPOLAR_ZONE]
+		elif y_coord >= border_desert:
+			return self.zones[CLIMATE.DESERT_ZONE]
+		else:
+			return self.zones[CLIMATE.DEFAULT_ZONE]
+
+	def _distribute_resources(self):
+		"""Distributes resources among islands according to their probability in 
+		the island's climate zone. Every resource is made available at least once per map."""
+		islands_by_climate_zone = {}
+		for island in self.islands:
+			if island.climate_zone not in islands_by_climate_zone:
+				islands_by_climate_zone[island.climate_zone] = []
+			islands_by_climate_zone[island.climate_zone].append(island)
+			island.fertility.extend(island.climate_zone.default_resources)
+		for climate_zone, islands in islands_by_climate_zone.iteritems():
+			for resource, probability in climate_zone.possible_resources.iteritems():
+				# Number of islands to put resources on at least
+				number_of_islands = 1
+				if probability is not None:
+					# Put each resource on at least one island
+					number_of_islands = max(number_of_islands, int(probability * len(islands)))
+				for island in self.session.random.sample(islands, number_of_islands):
+					island.fertility.append(resource)
 
 	def _init_water_bodies(self):
 		"""This function runs the flood fill algorithm on the water to make it easy
@@ -458,7 +496,7 @@ class World(BuildingOwner, WorldObject):
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):
-			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+			AIPlayer.load_abstract_buildings(self.session.db)  # TODO: find a better place for this
 
 		# add a pirate ship
 		if pirate_enabled:
@@ -525,7 +563,7 @@ class World(BuildingOwner, WorldObject):
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
-		if is_ai: # a human controlled AI player
+		if is_ai:  # a human controlled AI player
 			player = AIPlayer(self.session, id, name, color, clientid, difficulty_level)
 		else:
 			player = HumanPlayer(self.session, id, name, color, clientid, difficulty_level)
@@ -539,7 +577,7 @@ class World(BuildingOwner, WorldObject):
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""
-		return self.full_map.get( (point.x, point.y) )
+		return self.full_map.get((point.x, point.y))
 
 	@property
 	def settlements(self):
@@ -712,7 +750,7 @@ class World(BuildingOwner, WorldObject):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		# Toggle flag that tracks highlight status.
 		self.owner_highlight_active = not self.owner_highlight_active
-		if self.owner_highlight_active: #show
+		if self.owner_highlight_active:  # show
 			for player in self.players:
 				red = player.color.r
 				green = player.color.g

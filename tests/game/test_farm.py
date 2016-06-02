@@ -23,10 +23,11 @@
 from itertools import product
 
 from horizons.command.building import Build
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS, RES, CLIMATE
 from horizons.component.storagecomponent import StorageComponent
 
 from tests.game import game_test, settle
+from tests.game.utils import settle_zone
 
 
 def _build_farm(x, y, field_type, island, settlement, owner):
@@ -74,7 +75,7 @@ def test_distillery(s, p):
 	Distillery produces liquor out of sugar. A farm will collect raw sugar from a
 	sugar field and produce sugar.
 	"""
-	settlement, island = settle(s)
+	settlement, island = settle_zone(s, CLIMATE.DESERT_ZONE)
 
 	_build_farm(30, 30, BUILDINGS.SUGARCANE_FIELD, island, settlement, p)
 
