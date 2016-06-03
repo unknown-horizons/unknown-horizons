@@ -97,5 +97,10 @@ tab4:
   - BUILDINGS.CANNON_FOUNDRY
   - BUILDINGS.BARRACKS 
 
+tab5:
+- icon: icons/tabwidget/buildmenu/tier/tier5
+-
+  - _ Companies
+  
 meta:
   unlocking_strategy: tab_per_tier
