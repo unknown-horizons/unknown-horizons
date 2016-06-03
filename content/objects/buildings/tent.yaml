@@ -181,3 +181,5 @@ actionsets:
     as_stonehouse1:
     as_stonehouse2:
     as_stonehouse3:
+  TIER.MERCHANTS:
+    as_2x2:
