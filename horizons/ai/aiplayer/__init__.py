@@ -72,6 +72,9 @@ from building.boatbuilder import AbstractBoatBuilder
 from building.signalfire import AbstractSignalFire
 from building.tobacconist import AbstractTobacconist
 from building.saltponds import AbstractSaltPonds
+from building.claydeposit import AbstractClayDeposit
+from building.stonepit import AbstractStonePit
+from building.stonemason import AbstractStonemason
 
 from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal
