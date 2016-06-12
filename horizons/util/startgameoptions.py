@@ -20,12 +20,27 @@
 # ###################################################
 
 from operator import itemgetter
+from random import shuffle
 
 from horizons.constants import AI, COLORS
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
 class StartGameOptions(object):
+
+	# list of possible ai names. Should somewhen be outsourced to the name database
+	preset_ai_names = [
+		"Christopher Columbus",
+		"William Adams",
+		"Vitus Bering",
+		"John Smith",
+		"Paulo da Gama",
+		"Ferdinand Magellan",
+		"Anna Shchetinina",
+		"John M. Whitall",
+		"Leif Eriksson"
+	]
+
 	def __init__(self, game_identifier):
 		super(StartGameOptions, self).__init__()
 		self.game_identifier = game_identifier
@@ -48,6 +63,11 @@ class StartGameOptions(object):
 		# this is used by the map editor to pass along the new map's size
 		self.map_padding = None
 		self.is_editor = False
+		
+		# copy name list template
+		self.ai_names = self.preset_ai_names[:]
+		# initially shuffle the ai player names so that every game is different
+		shuffle(self.ai_names)
 
 	def init_new_world(self, session):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
@@ -61,6 +81,17 @@ class StartGameOptions(object):
 	def set_human_data(self, player_name, player_color):
 		self.player_name = player_name
 		self.player_color = player_color
+
+
+	def _generate_ai_name(self, aiNumber):
+		"""Generates a name for the ai player with the given number.
+		
+		The number of the first ai player is 0.
+		"""
+		if aiNumber >= len(self.ai_names):
+			return 'AI' + str(aiNumber + 1)
+		return self.ai_names[aiNumber]
+		
 
 	def _get_player_list(self):
 		if self._player_list is not None:
@@ -89,10 +120,10 @@ class StartGameOptions(object):
 				if not used:
 					color = possible_color
 					break
-
+			
 			players.append({
 				'id' : num + 2,
-				'name' : 'AI' + str(num + 1),
+				'name' : self._generate_ai_name(num),
 				'color' : color,
 				'local' : False,
 				'ai' : True,
