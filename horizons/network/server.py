@@ -665,34 +665,34 @@ class Server(object):
 
 
 	def print_statistic(self, file):
+		lines = []
+		lines.append("Games.Total: %d" % (len(self.games)))
+		games_playing = 0
+		for game in self.games:
+			if game.state is Game.State.Running:
+				games_playing += 1
+		lines.append("Games.Playing: %d" % (games_playing))
+
+		lines.append("Players.Total: %d" % (len(self.players)))
+		players_inlobby = 0
+		players_playing = 0
+		players_oldprotocol = 0
+		for player in self.players.values():
+			if player.game is None:
+				continue
+			if player.game.state is Game.State.Running:
+				players_playing += 1
+			else:
+				players_inlobby += 1
+			if player.protocol < PROTOCOLS[-1]:
+				players_oldprotocol += 1
+		lines.append("Players.Lobby: %d" % (players_inlobby))
+		lines.append("Players.Playing: %d" % (players_playing))
+		lines.append("Players.OldProtocol: %d" % (players_oldprotocol))
+
 		try:
-			fd = open(file, "w")
-
-			fd.write("Games.Total: %d\n" % (len(self.games)))
-			games_playing = 0
-			for game in self.games:
-				if game.state is Game.State.Running:
-					games_playing += 1
-			fd.write("Games.Playing: %d\n" % (games_playing))
-
-			fd.write("Players.Total: %d\n" % (len(self.players)))
-			players_inlobby = 0
-			players_playing = 0
-			players_oldprotocol = 0
-			for player in self.players.values():
-				if player.game is None:
-					continue
-				if player.game.state is Game.State.Running:
-					players_playing += 1
-				else:
-					players_inlobby += 1
-				if player.protocol < PROTOCOLS[-1]:
-					players_oldprotocol += 1
-			fd.write("Players.Lobby: %d\n" % (players_inlobby))
-			fd.write("Players.Playing: %d\n" % (players_playing))
-			fd.write("Players.OldProtocol: %d\n" % (players_oldprotocol))
-
-			fd.close()
+			with open(file, "w") as fd:
+				fd.write('\n'.join(lines))
 		except IOError as e:
 			logging.error("[STATISTIC] Unable to open statistic file: %s" % (e))
 		return

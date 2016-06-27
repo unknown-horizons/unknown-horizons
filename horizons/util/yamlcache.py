@@ -103,11 +103,11 @@ class YamlCache(object):
 		@param filename: path to the file
 		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
 		"""
+		with open(filename, 'r') as f:
+			filedata = f.read()
 
 		# calc the hash
-		f = open(filename, 'r')
-		h = hash(f.read())
-		f.seek(0)
+		h = hash(filedata)
 
 		# check for updates or new files
 		if cls.cache is None:
@@ -115,7 +115,7 @@ class YamlCache(object):
 
 		yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
 		if not yaml_file_in_cache:
-			data = cls.load_yaml_data( f )
+			data = cls.load_yaml_data(filedata)
 			if game_data: # need to convert some values
 				try:
 					data = convert_game_data(data)

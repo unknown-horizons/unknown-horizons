@@ -47,9 +47,8 @@ else:
 
 # this trick is for setting RELEASE_VERSION if the code is cloned from git repository
 if os.path.exists('.git'):
-	f = open('content/packages/gitversion.txt', 'w')
-	f.write(VERSION.RELEASE_VERSION)
-	f.close()
+	with open('content/packages/gitversion.txt', 'w') as f:
+		f.write(VERSION.RELEASE_VERSION)
 
 data = [
   (executable_path, ('unknown-horizons', )),
@@ -109,7 +108,8 @@ class _build_i18n(distutils.cmd.Command):
 		selected_languages = None
 		linguas_file = os.path.join(po_dir, "LINGUAS")
 		if os.path.isfile(linguas_file):
-			selected_languages = open(linguas_file).read().split()
+			with open(linguas_file) as f:
+				selected_languages = f.read().split()
 		if "LINGUAS" in os.environ:
 			selected_languages = os.environ["LINGUAS"].split()
 

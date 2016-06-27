@@ -208,11 +208,11 @@ def test_savegame_upgrade():
 	os.close(fd)
 
 	path = os.path.join(TEST_FIXTURES_DIR, 'large.sqlite.bz2')
-	compressed_data = open(path, "rb").read()
+	with open(path, "rb") as compressed_file:
+		compressed_data = compressed_file.read()
 	data = bz2.decompress(compressed_data)
-	f = open(filename, "wb")
-	f.write(data)
-	f.close()
+	with open(filename, "wb") as f:
+		f.write(data)
 
 	# check if loading and running fails
 	session = load_session(filename)

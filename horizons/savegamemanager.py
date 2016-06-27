@@ -282,6 +282,7 @@ class SavegameManager(object):
 
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
+		os.close(screenshot_fd)
 		os.unlink(screenshot_filename)
 
 	@classmethod

@@ -354,7 +354,8 @@ class AtlasGenerator(object):
 
 		# verify that the combined images exist
 		db = DbReader(':memory:')
-		db.execute_script(open('content' + os.sep + 'atlas.sql').read())
+		with open('content' + os.sep + 'atlas.sql') as f:
+			db.execute_script(f.read())
 		for db_row in db("SELECT atlas_path FROM atlas"):
 			if not os.path.exists(db_row[0]):
 				return False

@@ -61,14 +61,11 @@ class YamlCacheStorage(object):
 		"""Load the cache from disk if possible. Create an empty cache otherwise."""
 		if os.path.exists(self._filename):
 			self.log.debug('%s._reload(): loading cache from disk', self)
-			file = open(self._filename)
-			try:
-				data = pickle.load(file)
-				if not self._validate(data):
-					raise RuntimeError('Bad YamlCacheStorage data format')
-				self._data = data[1]
-			finally:
-				file.close()
+			with open(self._filename) as f:
+				data = pickle.load(f)
+			if not self._validate(data):
+				raise RuntimeError('Bad YamlCacheStorage data format')
+			self._data = data[1]
 			self.log.debug('%s._reload(): successfully loaded cache from disk', self)
 		else:
 			self._clear()
@@ -95,12 +92,9 @@ class YamlCacheStorage(object):
 	def sync(self):
 		"""Write the file to disk if possible. Do nothing otherwise."""
 		try:
-			file = open(self._filename, 'wb')
-			try:
-				pickle.dump((self.version, self._data), file)
+			with open(self._filename, 'wb') as f:
+				pickle.dump((self.version, self._data), f)
 				self.log.debug('%s.sync(): success', self)
-			finally:
-				file.close()
 		except Exception as e:
 			# Ignore all exceptions because saving the cache on disk is not critical.
 			self.log.warning("Warning: Unable to save cache into %s: %s" % (self._filename, unicode(e)))
