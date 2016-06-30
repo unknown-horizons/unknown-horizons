@@ -34,6 +34,7 @@ from horizons.command.building import Build
 from horizons.util.python.callback import Callback
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus, SettlerNotConnectedStatus
 from horizons.world.production.producer import Producer
@@ -313,6 +314,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.log.debug("%s: Levelling up to %s", self, self.level)
 			self._update_level_data()
 
+			# update the level of our inhabitants so graphics can change
+			if self.has_component(CollectingComponent):
+				for collector in self.get_component(CollectingComponent).get_local_collectors():
+					collector.level_upgrade(self.level)
+
 			# Notify the world about the level up
 			SettlerUpdate.broadcast(self, self.level, 1)
 
@@ -340,6 +346,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, new_happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
+
+			# update the level of our inhabitants so graphics can change
+			if self.has_component(CollectingComponent):
+				for collector in self.get_component(CollectingComponent).get_local_collectors():
+					collector.level_upgrade(self.level)
 
 			# Notify the world about the level down
 			SettlerUpdate.broadcast(self, self.level, -1)
