@@ -313,6 +313,13 @@ class BuildingCollector(Collector):
 		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
 			self._job_history.popleft()
 
+	def level_upgrade(self, lvl):
+		"""Upgrades collector to another tier"""
+		action_set = self.__class__.get_random_action_set(lvl, exact_level=True)
+		if action_set:
+			self._action_set_id = action_set
+			self.act(self._action, repeating=True)
+
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
