@@ -57,8 +57,8 @@ def parse_token(token, token_klass):
 		return getattr( classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = ("This means that you either have to add an entry in horizons/constants.py "
-		       "in the class %s for %s,\nor %s is actually a typo."
-		       % (token_klass, token, token))
+		       "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".
+		       format(token_klass, token, token))
 		raise Exception( str(e) + "\n\n" + err +"\n" )
 
 
@@ -121,7 +121,7 @@ class YamlCache(object):
 					data = convert_game_data(data)
 				except Exception as e:
 					# add info about file
-					to_add = "\nThis error happened in %s ." % filename
+					to_add = "\nThis error happened in {0!s} .".format(filename)
 					e.args = ( e.args[0] + to_add, ) + e.args[1:]
 					e.message = ( e.message + to_add )
 					raise
