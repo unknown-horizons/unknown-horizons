@@ -103,8 +103,7 @@ class YamlCacheStorage(object):
 				format(self._filename, unicode(e)))
 
 	def close(self):
-		"""Write the file to disk if possible and then invalidate
-		the object in memory."""
+		"""Write the file to disk if possible and then invalidate the object in memory."""
 		self.log.debug('%s.close()', self)
 		self.sync()
 		self._filename = None
