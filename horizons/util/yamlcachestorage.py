@@ -31,9 +31,10 @@ class YamlCacheStorage(object):
 	"""
 	Store the YamlCache data in a cache.
 
-	An instance of this class provides a implements a cache that always has all the data
-	in memory. It tries to also load the data from disk and write it back on disk but
-	if it fails then it just ignores the errors and keeps working.
+	An instance of this class provides a implements a cache that always has
+	all the data in memory. It tries to also load the data from disk and write
+	it back on disk but if it fails then it just ignores the errors and keeps
+	working.
 	"""
 
 	log = logging.getLogger("yamlcachestorage")
@@ -48,7 +49,8 @@ class YamlCacheStorage(object):
 
 	@classmethod
 	def _validate(cls, data):
-		"""Make sure data is a tuple (version no, _data dict) with the right version."""
+		"""Make sure data is a tuple (version no, _data dict) with
+		the right version."""
 		if not isinstance(data, tuple):
 			return False
 		if len(data) != 2:
@@ -58,7 +60,8 @@ class YamlCacheStorage(object):
 		return data[0] == cls.version
 
 	def _reload(self):
-		"""Load the cache from disk if possible. Create an empty cache otherwise."""
+		"""Load the cache from disk if possible. Create an empty cache
+		otherwise."""
 		if os.path.exists(self._filename):
 			self.log.debug('%s._reload(): loading cache from disk', self)
 			with open(self._filename) as f:
@@ -77,15 +80,19 @@ class YamlCacheStorage(object):
 
 	@classmethod
 	def open(cls, filename):
-		"""Open the cache specified by the file name or create an empty one otherwise."""
+		"""Open the cache specified by the file name or create an empty one
+		otherwise."""
 		cls.log.debug("YamlCacheStorage.open('%s')", filename)
 		obj = YamlCacheStorage(filename)
 		try:
 			obj._reload()
 		except Exception as e:
-			# Ignore all exceptions because loading the cache from disk is not critical.
+			# Ignore all exceptions because loading the cache from disk
+			# is not critical.
 			e = unicode(str(e), errors='replace')
-			cls.log.warning("Warning: Failed to open %s as cache: %s\nThis warning is expected when upgrading from old versions.\n" % (filename, e))
+			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
+				"warning is expected when upgrading from "
+				"old versions.\n".format(filename, e))
 			obj._clear()
 		return obj
 
@@ -96,11 +103,14 @@ class YamlCacheStorage(object):
 				pickle.dump((self.version, self._data), f)
 				self.log.debug('%s.sync(): success', self)
 		except Exception as e:
-			# Ignore all exceptions because saving the cache on disk is not critical.
-			self.log.warning("Warning: Unable to save cache into %s: %s" % (self._filename, unicode(e)))
+			# Ignore all exceptions because saving the cache on disk
+			# is not critical.
+			self.log.warning("Warning: Unable to save cache into {0!s}: {1!s}".
+				format(self._filename, unicode(e)))
 
 	def close(self):
-		"""Write the file to disk if possible and then invalidate the object in memory."""
+		"""Write the file to disk if possible and then invalidate
+		the object in memory."""
 		self.log.debug('%s.close()', self)
 		self.sync()
 		self._filename = None
@@ -122,4 +132,5 @@ class YamlCacheStorage(object):
 		return item in self._data
 
 	def __str__(self):
-		return "YamlCacheStorage('%s', %d items)" % (self._filename, len(self._data))
+		return "YamlCacheStorage('{0!s}', {1!d} items)".format(self._filename,
+			len(self._data))
