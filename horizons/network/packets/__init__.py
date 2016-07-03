@@ -61,8 +61,7 @@ class SafeUnpickler(object):
 	"""
 	@classmethod
 	def add(cls, origin, klass):
-		"""Adding SafeUnpickler to the pickle whitelist
-		"""
+		"""Adding SafeUnpickler to the pickle whitelist"""
 		global PICKLE_SAFE
 		module = klass.__module__
 		name  = klass.__name__
