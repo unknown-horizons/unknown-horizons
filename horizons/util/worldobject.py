@@ -84,4 +84,4 @@ class WorldObject(ChangeListener):
 	@classmethod
 	def get_objs(cls):
 		"""returns objects"""
-		return self.__objects
+		return cls.__objects
