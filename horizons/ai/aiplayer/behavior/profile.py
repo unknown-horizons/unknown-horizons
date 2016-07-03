@@ -152,7 +152,8 @@ class BehaviorProfileManager(object):
 
 		probabilities_sum = sum([item[1] for item in profiles])
 
-		assert probabilities_sum > 1e-7, "sum of BehaviorProfile probabilities is too low: %s" % probabilities_sum
+		assert probabilities_sum > 1e-7, "sum of BehaviorProfile probabilities is too low: {0!s}". \
+			format(probabilities_sum)
 
 		random_value *= probabilities_sum
 
