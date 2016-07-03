@@ -29,8 +29,9 @@ from horizons.network.packets import SafeUnpickler
 class Command(object):
 	"""Base class for every Command."""
 	log = logging.getLogger("command")
+
 	@classmethod
-	def allow_network(self, klass):
+	def allow_network(cls, klass):
 		"""
 		NOTE: this is a security related method and may lead to
 		execution of arbritary code if used in a wrong way
