@@ -264,8 +264,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def _suitable_for_road(cls, production_builder, coords):
-		"""check coordinates
-		returns true/false"""
+		"""check coordinates"""
 		return coords in production_builder.land_manager.roads or (
 			coords in production_builder.plan and
 			production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
