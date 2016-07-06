@@ -149,18 +149,19 @@ class BehaviorPirateRoutine(BehaviorComponent):
 
 			# if ship was caught
 			if ship.position.distance(pirate_ship.position) <= self.pirate_caught_ship_radius:
-				self.log.debug('Pirate %s: Ship %s(%s) caught %s' % (owner.worldid,
-					pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship))
+				self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) caught {3!s}'
+					.format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+						owner.ships[pirate_ship], ship))
 				self._sail_home(pirate_ship)
 			else:
 				try:
 					pirate_ship.move(Circle(ship.position, self.pirate_caught_ship_radius - 1), Callback(self._sail_home, pirate_ship))
 					owner.ships[pirate_ship] = owner.shipStates.chasing_ship
-					self.log.debug('Pirate {0!s}: Ship {0!s}({0!s}) chasing {0!s}'
+					self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) chasing {3!s}'
 						format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
 							owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
 				except MoveNotPossible:
-					self.log.debug('Pirate {0!s}: Ship {0!s}({0!s}) unable to chase the closest ship {0!s}'
+					self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) unable to chase the closest ship {3!s}'
 						.format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
 							owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
 					owner.ships[pirate_ship] = owner.shipStates.idle
@@ -170,12 +171,12 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		try:
 			pirate_ship.move(Circle(owner.home_point, self.pirate_home_radius), Callback(self._arrived, pirate_ship))
 			owner.ships[pirate_ship] = owner.shipStates.going_home
-			self.log.debug('Pirate {0!s}: Ship {0!s}({0!s}): sailing home at {0!s}'
+			self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}): sailing home at {3!s}'
 				.format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
 					owner.ships[pirate_ship], owner.home_point))
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
-			self.log.debug('Pirate {0!s}: Ship {0!s}: unable to move home at {0!s}'
+			self.log.debug('Pirate {0!s}: Ship {1!s}: unable to move home at {2!s}'
 				.format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
 					owner.home_point))
 
@@ -187,12 +188,12 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		try:
 			pirate_ship.move(point, Callback(self._arrived, pirate_ship))
 			owner.ships[pirate_ship] = owner.shipStates.moving_random
-			self.log.debug('Pirate {0!s}: Ship {0!s}({0!s}): moving random at {0!s}'
+			self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}): moving random at {3!s}'
 				.format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
 					owner.ships[pirate_ship], point))
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
-			self.log.debug('Pirate {0!s}: Ship {0!s}: unable to move random at {0!s}'
+			self.log.debug('Pirate {0!s}: Ship {1!s}: unable to move random at {2!s}'
 				.format(owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
 
 
@@ -277,8 +278,7 @@ class BehaviorRegular(BehaviorComponent):
 			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
 
 	def _certainty_player_shares_island(self, **environment):
-		"""
-		Dummy certainty that checks for a fleets size only.
+		"""Dummy certainty that checks for a fleets size only.
 		"""
 		idle_ships = environment['idle_ships']
 
@@ -468,7 +468,8 @@ class BehaviorSmart(BehaviorComponent):
 			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
 
 
-# Behaviors calculate single value against each of the players (you can think of it as of respect, or "relationship_score" values towards other player)
+# Behaviors calculate single value against each of the players
+# (you can think of it as of respect, or "relationship_score" values towards other player)
 # Each AI values different traits in others. Based on that value AI can break diplomacy with an ally, declare a war, or
 # act the other way around: form an alliance
 class BehaviorDiplomatic(BehaviorComponent):
@@ -539,9 +540,11 @@ class BehaviorDiplomatic(BehaviorComponent):
 		"""
 
 		# base function is upside-down parabola, stretched in X in order to have roots at exactly 'root' value.
-		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola in X axis and flipping it upside down, we have to use
+		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola
+		# in X axis and flipping it upside down, we have to use
 		# abs(mid - root) because it's later moved by mid
-		# Note: Multiply by 1./abs(mid-root) to scale function in X (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
+		# Note: Multiply by 1./abs(mid-root) to scale function in X
+		# (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
 		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
 
 		# we move the function so it looks like "distribution", i.e. move it far left (or right), and assume the peek is 1.0
@@ -739,7 +742,8 @@ class BehaviorRegularPirate(BehaviorComponent):
 		# Use a one-ship group:
 		idle_ships = idle_ships[:1]
 
-		mission = PirateRoutine.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
+		mission = PirateRoutine.create(self.owner.strategy_manager.report_success,
+			self.owner.strategy_manager.report_failure, idle_ships)
 		BehaviorComponent.log.info('BehaviorRegularPirate: pirate_routine request')
 		return mission
 
