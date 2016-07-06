@@ -121,15 +121,15 @@ class BehaviorPirateRoutine(BehaviorComponent):
 				else:
 					self._sail_random(ship)
 
-			self.log.debug('BehaviorPirateRoutine: Ship:{0!s} no_one_in_sight' \
+			self.log.debug('BehaviorPirateRoutine: Ship:{0!s} no_one_in_sight'
 				.format(ship.get_component(NamedComponent).name))
 
 	def trading_ships_in_sight(self, **environment):
 		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self._chase_closest_ship(ship)
-			self.log.debug('BehaviorPirateRoutine: Ship:{0!s}  trading_ships_in_sight' \
-				format(ship.get_component(NamedComponent).name))
+			self.log.debug('BehaviorPirateRoutine: Ship:{0!s}  trading_ships_in_sight'
+				.format(ship.get_component(NamedComponent).name))
 
 	def _arrived(self, ship):
 		"""
@@ -138,7 +138,7 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		"""
 		owner = ship.owner
 		self.log.debug('Player {0!s}: Ship {1!s}: arrived at destination after "{2!s}"'
-			format(owner.name, ship.get_component(NamedComponent).name, owner.ships[ship]))
+			.format(owner.name, ship.get_component(NamedComponent).name, owner.ships[ship]))
 		owner.ships[ship] = owner.shipStates.idle
 
 	def _chase_closest_ship(self, pirate_ship):
@@ -158,7 +158,7 @@ class BehaviorPirateRoutine(BehaviorComponent):
 					pirate_ship.move(Circle(ship.position, self.pirate_caught_ship_radius - 1), Callback(self._sail_home, pirate_ship))
 					owner.ships[pirate_ship] = owner.shipStates.chasing_ship
 					self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) chasing {3!s}'
-						format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+						.format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
 							owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
 				except MoveNotPossible:
 					self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) unable to chase the closest ship {3!s}'
