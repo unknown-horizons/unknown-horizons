@@ -162,12 +162,13 @@ class Server(object):
 
 
 	def run(self):
-		logging.info("Starting up server on %s:%d" % (self.hostname, self.port))
+		logging.info("Starting up server on {0!s}:{1:d}".format(self.hostname, self.port))
 		try:
 			self.host = enet.Host(enet.Address(self.hostname, self.port), MAX_PEERS, 0, 0, 0)
 		except (IOError, MemoryError) as e:
 			# these exceptions do not provide any information.
-			raise network.NetworkException("Unable to create network structure: %s" % (e))
+			raise network.NetworkException(
+				"Unable to create network structure: {0!s}".format((e)))
 
 		logging.debug("Entering the main loop...")
 		while True:
@@ -188,7 +189,7 @@ class Server(object):
 			elif event.type == enet.EVENT_TYPE_RECEIVE:
 				self.call_callbacks("onreceive", event)
 			else:
-				logging.warning("Invalid packet (%u)" % (event.type))
+				logging.warning("Invalid packet ({})".format(event.type))
 
 
 	def send(self, peer, packet, channelid=0):
@@ -207,7 +208,7 @@ class Server(object):
 
 
 	def disconnect(self, peer, later=True):
-		logging.debug("[DISCONNECT] Disconnecting client %s" % (peer.address))
+		logging.debug("[DISCONNECT] Disconnecting client {0!s}".format(peer.address))
 		try:
 			if later:
 				peer.disconnect_later()
@@ -239,14 +240,14 @@ class Server(object):
 		#	self._fatalerror(event.peer, "You can't connect more than once")
 		#	return
 		player = Player(event.peer, self.generate_session_id(), event.data)
-		logging.debug("[CONNECT] New Client: %s" % (player))
+		logging.debug("[CONNECT] New Client: {0!s}".format(player))
 
 		# store session id inside enet.peer.data
 		# NOTE: ALWAYS initialize peer.data
 		event.peer.data = player.sid
 
 		if not player.protocol in PROTOCOLS:
-			logging.warning("[CONNECT] %s runs old or unsupported protocol" % (player))
+			logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(player))
 			self.fatalerror(player, __("Old or unsupported multiplayer protocol. Please check your game version"))
 			return
 
@@ -261,7 +262,7 @@ class Server(object):
 		if peer.data not in self.players:
 			return
 		player = self.players[peer.data]
-		logging.debug("[DISCONNECT] %s disconnected" % (player))
+		logging.debug("[DISCONNECT] {0!s} disconnected".format(player))
 		if player.game is not None:
 			self.call_callbacks("leavegame", player)
 		del self.players[peer.data]
@@ -272,7 +273,7 @@ class Server(object):
 		#logging.debug("[RECEIVE] Got data from %s" % (peer.address))
 		# check player is known by server
 		if peer.data not in self.players:
-			logging.warning("[RECEIVE] Packet from unknown player %s!" % (peer.address))
+			logging.warning("[RECEIVE] Packet from unknown player {0!s}!".format(peer.address))
 			self._fatalerror(event.peer, "I don't know you")
 			return
 
@@ -280,7 +281,8 @@ class Server(object):
 
 		# check packet size
 		if len(event.packet.data) > self.capabilities['maxpacketsize']:
-			logging.warning("[RECEIVE] Global packet size exceeded from %s: size=%d" % (peer.address, len(event.packet.data)))
+			logging.warning("[RECEIVE] Global packet size exceeded from {0!s}: size={1!d}"
+				.format(peer.address, len(event.packet.data)))
 			self.fatalerror(player, __("You've exceeded the global packet size.") + " " +
 			                        __("This should never happen. "
 			                           "Please contact us or file a bug report."))
@@ -298,25 +300,31 @@ class Server(object):
 			self.error(player, e.message)
 			return
 		except network.PacketTooLarge as e:
-			logging.warning("[RECEIVE] Per packet size exceeded from %s: %s" % (player, e))
+			logging.warning("[RECEIVE] Per packet size exceeded from "
+				"{0!s}: {1!s}".format(player, e))
 			self.fatalerror(player, __("You've exceeded the per packet size.") + " " +
 			                        __("This should never happen. "
 			                           "Please contact us or file a bug report.") +
 			                        " " + str(e))
 			return
 		except Exception as e:
-			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (player, e))
+			logging.warning("[RECEIVE] Unknown or malformed packet "
+				"from {0!s}: {1!s}".format(player, e))
 			self.fatalerror(player, __("Unknown or malformed packet. Please check your game version"))
 			return
 
 		# session id check
 		if packet.sid != player.sid:
-			logging.warning("[RECEIVE] Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid))
-			self.fatalerror(player, __("Invalid/Unknown session")) # this will trigger ondisconnect() for cleanup
+			logging.warning(
+				"[RECEIVE] Invalid session id for player {0!s} "
+				"({1!s} vs {2!s})!".format(peer.address, packet.sid, player.sid))
+			# this will trigger ondisconnect() for cleanup
+			self.fatalerror(player, __("Invalid/Unknown session"))
 			return
 
 		if packet.__class__ not in self.callbacks:
-			logging.warning("[RECEIVE] Unhandled network packet from %s - Ignoring!" % (peer.address))
+			logging.warning("[RECEIVE] Unhandled network packet from {0!s} - "
+				"Ignoring!".format(peer.address))
 			return
 		self.call_callbacks(packet.__class__, player, packet)
 
@@ -324,18 +332,18 @@ class Server(object):
 	def onerror(self, player, packet):
 		# we shouldn't receive any errors from client
 		# so ignore them all
-		logging.debug("[ERROR] Client Message: %s" % (packet.errorstr))
+		logging.debug("[ERROR] Client Message: {0!s}".format(packet.errorstr))
 
 
 	def onfatalerror(self, player, packet):
 		# we shouldn't receive any fatala errors from client
 		# so just disconnect them
-		logging.debug("[FATAL] Client Message: %s" % (packet.errorstr))
+		logging.debug("[FATAL] Client Message: {0!s}".format(packet.errorstr))
 		self.disconnect(player.peer)
 
 
 	def onsessionprops(self, player, packet):
-		logging.debug("[PROPS] %s" % (player))
+		logging.debug("[PROPS] {0!s}".format(player))
 		if hasattr(packet, 'lang'):
 			if packet.lang in self.i18n:
 				player.gettext = self.i18n[packet.lang]
@@ -343,16 +351,20 @@ class Server(object):
 
 	def oncreategame(self, player, packet):
 		if packet.maxplayers < self.capabilities['minplayers']:
-			raise network.SoftNetworkException("You can't run a game with less than %d players" % (self.capabilities['minplayers']))
+			raise network.SoftNetworkException(
+				"You can't run a game with less than {0:d} players"
+				.format(self.capabilities['minplayers']))
 		if packet.maxplayers > self.capabilities['maxplayers']:
-			raise network.SoftNetworkException("You can't run a game with more than %d players" % (self.capabilities['maxplayers']))
+			raise network.SoftNetworkException(
+				"You can't run a game with more than {0:d} players"
+				.format(self.capabilities['maxplayers']))
 		game = Game(packet, player)
-		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
+		logging.debug("[CREATE] [{0!s}] {1!s} created {2!s}".format(game.uuid, player, game))
 		self.games.append(game)
 		self.send(player.peer, packets.server.data_gamestate(game))
 
 	def deletegame(self, game):
-		logging.debug("[REMOVE] [%s] %s removed" % (game.uuid, game))
+		logging.debug("[REMOVE] [{0!s}] {1!s} removed".format(game.uuid, game))
 		game.clear()
 		self.games.remove(game)
 
@@ -433,7 +445,7 @@ class Server(object):
 				                      "This should never occur."))
 				return
 
-		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
+		logging.debug("[JOIN] [{0!s}] {1!s} joined {2!s}".format(game.uuid, player, game))
 		game.add_player(player, packet)
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
@@ -457,7 +469,7 @@ class Server(object):
 		if not game.is_open():
 			self.call_callbacks('terminategame', game, player)
 			return
-		logging.debug("[LEAVE] [%s] %s left %s" % (game.uuid, player, game))
+		logging.debug("[LEAVE] [{0!s}] {1!s} left {2!s}".format(game.uuid, player, game))
 		game.remove_player(player)
 		if game.is_empty():
 			self.call_callbacks('deletegame', game)
@@ -471,7 +483,8 @@ class Server(object):
 
 
 	def terminategame(self, game, player=None):
-		logging.debug("[TERMINATE] [%s] (by %s)" % (game.uuid, player if player is not None else None))
+		logging.debug("[TERMINATE] [{0!s}] (by {1!s})"
+			.format(game.uuid, player if player is not None else None))
 		if game.creator.protocol >= 1 and game.is_open():
 			# NOTE: works with protocol >= 1
 			for _player in game.players:
@@ -487,14 +500,16 @@ class Server(object):
 
 
 	def preparegame(self, game):
-		logging.debug("[PREPARE] [%s] Players: %s" % (game.uuid, [unicode(i) for i in game.players]))
+		logging.debug("[PREPARE] [{0!s}] Players: {1!s}"
+			.format(game.uuid, [unicode(i) for i in game.players]))
 		game.state = Game.State.Prepare
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_preparegame())
 
 
 	def startgame(self, game):
-		logging.debug("[START] [%s] Players: %s" % (game.uuid, [unicode(i) for i in game.players]))
+		logging.debug("[START] [{0!s}] Players: {1!s}"
+			.format(game.uuid, [unicode(i) for i in game.players]))
 		game.state = Game.State.Running
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_startgame())
@@ -509,7 +524,7 @@ class Server(object):
 		# don't send packets to already started games
 		if not game.is_open():
 			return
-		logging.debug("[CHAT] [%s] %s: %s" % (game.uuid, player, packet.chatmsg))
+		logging.debug("[CHAT] [{0!s}] {1!s}: {2!s}".format(game.uuid, player, packet.chatmsg))
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_chatmsg(player.name, packet.chatmsg))
 
@@ -536,7 +551,8 @@ class Server(object):
 				return
 
 		# ACK the change
-		logging.debug("[CHANGENAME] [%s] %s -> %s" % (game.uuid, player.name, packet.playername))
+		logging.debug("[CHANGENAME] [{0!s}] {1!s} -> {2!s}"
+			.format(game.uuid, player.name, packet.playername))
 		player.name = packet.playername
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
@@ -564,7 +580,8 @@ class Server(object):
 				return
 
 		# ACK the change
-		logging.debug("[CHANGECOLOR] [%s] Player:%s %s -> %s" % (game.uuid, player.name, player.color, packet.playercolor))
+		logging.debug("[CHANGECOLOR] [{0!s}] Player:{1!s} {2!s} -> {3!s}"
+			.format(game.uuid, player.name, player.color, packet.playercolor))
 		player.color = packet.playercolor
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
@@ -585,7 +602,7 @@ class Server(object):
 		game = player.game
 		if game is None:
 			return
-		logging.debug("[PREPARED] [%s] %s" % (game.uuid, player))
+		logging.debug("[PREPARED] [{0!s}] {1!s}".format(game.uuid, player))
 		player.prepared = True
 		count = 0
 		for _player in game.players:
@@ -606,8 +623,8 @@ class Server(object):
 
 		# ACK the change
 		player.toggle_ready()
-		logging.debug("[TOGGLEREADY] [%s] Player:%s %s ready" %
-				(game.uuid, player.name, "is not" if not player.ready else "is"))
+		logging.debug("[TOGGLEREADY] [{0!s}] Player:{1!s} {2!s} ready".
+			format(game.uuid, player.name, "is not" if not player.ready else "is"))
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
 
@@ -636,7 +653,7 @@ class Server(object):
 		if kickplayer is game.creator:
 			return
 
-		logging.debug("[KICK] [%s] %s got kicked" % (game.uuid, kickplayer.name))
+		logging.debug("[KICK] [{0!s}] {1!s} got kicked".format(game.uuid, kickplayer.name))
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_kickplayer(kickplayer))
 		self.call_callbacks("leavegame", kickplayer)
@@ -666,14 +683,14 @@ class Server(object):
 
 	def print_statistic(self, file):
 		lines = []
-		lines.append("Games.Total: %d" % (len(self.games)))
+		lines.append("Games.Total: {0:d}\n".format(len(self.games)))
 		games_playing = 0
 		for game in self.games:
 			if game.state is Game.State.Running:
 				games_playing += 1
-		lines.append("Games.Playing: %d" % (games_playing))
+		lines.append("Games.Playing: {0:d}\n".format(games_playing))
 
-		lines.append("Players.Total: %d" % (len(self.players)))
+		lines.append("Players.Total: {0:d}\n".format(len(self.players)))
 		players_inlobby = 0
 		players_playing = 0
 		players_oldprotocol = 0
@@ -686,14 +703,13 @@ class Server(object):
 				players_inlobby += 1
 			if player.protocol < PROTOCOLS[-1]:
 				players_oldprotocol += 1
-		lines.append("Players.Lobby: %d" % (players_inlobby))
-		lines.append("Players.Playing: %d" % (players_playing))
-		lines.append("Players.OldProtocol: %d" % (players_oldprotocol))
+		lines.append("Players.Lobby: {0:d}\n".format(players_inlobby))
+		lines.append("Players.Playing: {0:d}\n".format(players_playing))
+		lines.append("Players.OldProtocol: {0:d}\n".format(players_oldprotocol))
 
 		try:
 			with open(file, "w") as fd:
 				fd.write('\n'.join(lines))
 		except IOError as e:
-			logging.error("[STATISTIC] Unable to open statistic file: %s" % (e))
+			logging.error("[STATISTIC] Unable to open statistic file: {0}".format(e))
 		return
-

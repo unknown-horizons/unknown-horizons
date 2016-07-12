@@ -98,7 +98,8 @@ class BasicBuilder(object):
 		raise NotImplementedError()
 
 	def __str__(self):
-		return 'BasicBuilder of building %d at %s, orientation %d' % (self.building_id, self.coords, self.orientation)
+		return 'BasicBuilder of building {0:d} at {1!s}, orientation {2:d}' \
+			.format(self.building_id, self.coords, self.orientation)
 
 	__cache = {}
 
