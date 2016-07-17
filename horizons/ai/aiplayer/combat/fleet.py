@@ -257,7 +257,7 @@ class Fleet(WorldObject):
 			ships_str = "\n   " + "\n   ".join(
 				["{0!s} (fleet state:{1!s})".
 				format((ship.get_component(NamedComponent).name,
-					self._ships[ship]) for ship in self._ships.keys()]))
+					self._ships[ship]) for ship in self._ships.keys())])
 		else:
 			ships_str = 'N/A'
 		return "Fleet: {0!s} , state: {1!s}, ships:{2!s}". \
