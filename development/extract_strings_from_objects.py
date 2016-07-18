@@ -133,8 +133,8 @@ def parse_token(token, token_klass):
 		return getattr( classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = "This means that you either have to add an entry in horizons/constants.py "\
-		      "in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
-		raise Exception( str(e) + "\n\n" + err +"\n" )
+		      "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".format(token_klass, token, token)
+		raise Exception("{0!s}\n\n{1!s}\n".format(str(e), err))
 
 def list_all_files():
 	result = []
@@ -156,7 +156,8 @@ def content_from_file(filename):
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
 			comment = '{0!s} of {1!s}'.format(component, filename)
-			object_strings.append('# {0!s}'.format(comment) + ROWINDENT + '{0:<30!s}: {1!s}'.format(('"%s"') % component, text))
+			object_strings.append('# {0!s} {1!s}"{2:<30!s}": {3!s}'. \
+				format(comment,ROWINDENT, component, text))
 
 	for component, value in parsed.iteritems():
 		if isinstance(value, basestring):
@@ -179,8 +180,8 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return ('\n\t"{0!s}" : {{'.format(filename)) + \
-		       (ROWINDENT + '{0!s},'.format((','+ROWINDENT).join(strings))) + ROWINDENT + '},'
+		return('\n\t"{0!s}" : {{{1!s}{2!s},{3!s}}'.
+			format(filename, ROWINDENT, (',' + ROWINDENT).join(strings)) + ROWINDENT)
 	else:
 		return ''
 
