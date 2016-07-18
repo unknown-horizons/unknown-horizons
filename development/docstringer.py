@@ -48,8 +48,8 @@ for filename in files:
 			docstub = [(indent + '"""\n')]
 			for i in params:
 				if i[0] != 'self' and i[0] != 'cls':
-					docstub.append(("{0!s}@param {1!s}:\n".format(indent, i[0])))
-			docstub.append((indent + '"""\n'))
+					docstub.append("{0!s}@param {1!s}:\n".format(indent, i[0])))
+			docstub.append((indent + '"""\n')
 			if funk_reg.group(2) == '__init__':
 				newfile.extend(docstub)
 				newfile.append(funk_reg.group())
