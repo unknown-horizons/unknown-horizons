@@ -128,7 +128,8 @@ class FleetMission(Mission):
 	# CombatManager decides whether the battle was successful (and if the mission should be continued) or unsuccessful (mission should be aborted)
 	def continue_mission(self):
 		assert self.combat_phase, "request to continue mission without it being in combat_phase in the first place"
-		assert self.state in self.combatIntermissions, "request to continue mission from not defined state: {0!s}". \
+		assert self.state in self.combatIntermissions, \
+			"request to continue mission from not defined state: {0!s}". \
 			format(self.state)
 		self.log.debug("Player %s, Mission %s, continuing mission at state %s", self.owner.name, self.__class__.__name__, self.state)
 		self.combat_phase = False
@@ -136,7 +137,8 @@ class FleetMission(Mission):
 
 	def abort_mission(self, msg):
 		assert self.combat_phase, "request to abort mission without it being in combat_phase in the first place"
-		assert self.state in self.combatIntermissions, "request to abort mission from not defined state: {0!s}". \
+		assert self.state in self.combatIntermissions, \
+			"request to abort mission from not defined state: {0!s}". \
 			format(self.state)
 		self.log.debug("Player %s, Mission %s, aborting mission at state %s", self.owner.name, self.__class__.__name__, self.state)
 		self.combat_phase = False
@@ -150,4 +152,4 @@ class FleetMission(Mission):
 		(' using {0!s} (mission state:{1!s}, combat_phase:{2!s})'.format(
 			self.fleet if hasattr(self, 'fleet') else 'unknown fleet',
 			self.state if hasattr(self, 'state') else 'unknown state',
-			self.combat_phase if hasattr(self, 'combat_phase') else 'N/A')
+			self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))
