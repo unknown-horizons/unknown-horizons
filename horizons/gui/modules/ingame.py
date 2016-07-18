@@ -170,7 +170,8 @@ class CityInfo(object):
 		city_name_label.helptext = helptext
 
 		foundlabel = self._child_finder('owner_emblem')
-		foundlabel.image = 'content/gui/icons/widgets/cityinfo/settlement_{0!s}.png'.format((self._settlement.owner.color.name))
+		foundlabel.image = 'content/gui/icons/widgets/cityinfo/settlement_{0!s}.png'. \
+			format(self._settlement.owner.color.name)
 		foundlabel.helptext = self._settlement.owner.name
 
 		foundlabel = self._child_finder('city_name')
