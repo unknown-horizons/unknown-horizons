@@ -86,7 +86,7 @@ class EditorCreateMapWidget(object):
 		self._gui.findChild(name='size_150').marked = True
 
 		for size in self.sizes:
-			option_name = 'size_%d' % size
+			option_name = 'size_{0:d}'.format(size)
 			# size of empty map in map editor
 			self._gui.findChild(name=option_name).text = _('{size}x{size} tiles').format(size=size)
 
@@ -96,7 +96,7 @@ class EditorCreateMapWidget(object):
 
 	def act(self):
 		for size in self.sizes:
-			option_name = 'size_%d' % size
+			option_name = 'size_{0:d}'.format(size)
 			if self._gui.findChild(name=option_name).marked:
 				self._windows.close()
 

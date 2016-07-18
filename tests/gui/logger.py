@@ -251,13 +251,13 @@ class TestCodeGenerator(object):
 
 		if container.name == '__unnamed__':
 			print '# FIXME this container needs a name to identify it!'
-			print '# Path: %s' % path
+			print '# Path: {0!s}'.format(path)
 		elif event_name == 'action' and group_name == 'action_listener':
 			# this is a custom event defined in engine.pychan_util to play click sounds
 			# for widgets
 			pass
 		else:
-			log.debug('# %s' % path)
+			log.debug('# {0!s}'.format(path))
 			code = None
 
 			# Emit code for the last slider that was manipulated, but only if the current
@@ -266,24 +266,24 @@ class TestCodeGenerator(object):
 			if self._last_slider_event:
 				w = self._last_slider_event
 				if w.name != widget.name:
-					self._add(["gui.find('%s').slide(%f)" % (w.name, w.value), ""])
+					self._add(["gui.find('{0!s}').slide({1:f})".format(w.name, w.value), ""])
 					self._last_slider_event = None
 
 			if isinstance(widget, widgets.ListBox):
 				selection = widget.items[widget.selected]
-				code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
+				code = "gui.find('{0!s}').select(u'{1!s}')".format(widget.name, selection)
 			elif isinstance(widget, widgets.TextField):
-				code = "gui.find('%s').write(TODO)" % widget.name
+				code = "gui.find('{0!s}').write(TODO)".format(widget.name)
 			elif isinstance(widget, widgets.Slider):
 				self._last_slider_event = widget
 			else:
 				if group_name == 'default':
 					if event_name in ('action', 'mouseClicked'):
-						code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+						code = "gui.trigger('{0!s}', '{1!s}')".format(container.name, widget.name)
 					else:
-						code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+						code = "gui.trigger('{0!s}', '{1!s}/{2!s}')".format(container.name, widget.name, event_name)
 				else:
-					code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+					code = "gui.trigger('{0!s}', '{1!s}/{2!s}/{3!s}')".format(container.name, widget.name, event_name, group_name)
 
 			if code:
 				self._add([code, ''])
@@ -294,15 +294,15 @@ class TestCodeGenerator(object):
 		Output test code to press the key.
 		"""
 		try:
-			args = ['gui.Key.%s' % KEY_NAME_LOOKUP[keycode]]
+			args = ['gui.Key.{0!s}'.format(KEY_NAME_LOOKUP[keycode])]
 			if shift:
 				args.append('shift=True')
 			if ctrl:
 				args.append('ctrl=True')
 
-			code = 'gui.press_key(%s)' % ', '.join(args)
+			code = 'gui.press_key({0!s})'.format(', '.join(args))
 		except KeyError:
-			code = '# Unknown key (code %s)' % keycode
+			code = '# Unknown key (code {0!s})'.format(keycode)
 
 		self._add([code, ''])
 
@@ -315,13 +315,13 @@ class TestCodeGenerator(object):
 			last_event = self._mousetool_events[-1]
 			# simple click
 			if last_event == ('mousePressed', x, y, button):
-				self._add(["gui.cursor_click(%s, %s, '%s')" % (x, y, button)])
+				self._add(["gui.cursor_click({0!s}, {1!s}, '{2!s}')".format(x, y, button)])
 				self._mousetool_events.pop()
 			# mouse dragged
 			elif (last_event[0], last_event[-1]) == ('mousePressed', button):
 				start = last_event[1], last_event[2]
 				end = x, y
-				self._add(["gui.cursor_drag((%s, %s), (%s, %s), '%s')" % (
+				self._add(["gui.cursor_drag(({0!s}, {1!s}), ({2!s}, {3!s}), '{4!s}')".format(
 					start[0], start[1], end[0], end[1], button
 				)])
 		elif event_name == 'mousePressed':
@@ -332,13 +332,13 @@ class TestCodeGenerator(object):
 			# drage event
 			pass
 		else:
-			raise Exception("Event '%s' not supported." % event_name)
+			raise Exception("Event '{0!s}' not supported.".format(event_name))
 
 		# Output debug information, no test code yet
 		if button:
-			log.debug("# %s.%s(%d, %d, '%s')" % (tool_name, event_name, x, y, button))
+			log.debug("# {0!s}.{1!s}({2:d}, {3:d}, '{4!s}')".format(tool_name, event_name, x, y, button))
 		else:
-			log.debug("# %s.%s(%d, %d)" % (tool_name, event_name, x, y))
+			log.debug("# {0!s}.{1!s}({2:d}, {3:d})".format(tool_name, event_name, x, y))
 
 	def dialog_opened(self):
 		"""
@@ -349,7 +349,7 @@ class TestCodeGenerator(object):
 		"""
 		self._dialog_opener = self._last_command
 		self._last_command = []
-		self._emit(['def func%d():' % self._handler_count])
+		self._emit(['def func{0:d}():'.format(self._handler_count)])
 		self._dialog_active = True
 
 	def dialog_closed(self):
@@ -363,7 +363,7 @@ class TestCodeGenerator(object):
 				gui.cursor_click(2, 3, 'left')
 		"""
 		self._dialog_active = False
-		self._emit(['with gui.handler(func%d):' % self._handler_count])
+		self._emit(['with gui.handler(func{0:d}):'.format(self._handler_count)])
 		for line in self._dialog_opener:
 			self._emit(['\t' + line])
 		self._last_command = []

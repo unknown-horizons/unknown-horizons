@@ -190,9 +190,9 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		for i, (res, amount) in enumerate(needed_res):
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
-			label = Label(name="needed_res_lbl_%s" % i)
+			label = Label(name="needed_res_lbl_{0!s}".format(i))
 			label.text = u'{amount}t'.format(amount=amount)
-			new_hbox = HBox(name="needed_res_box_%s" % i)
+			new_hbox = HBox(name="needed_res_box_{0!s}".format(i))
 			new_hbox.addChildren(icon, label)
 			needed_res_container.addChild(new_hbox)
 
@@ -234,14 +234,14 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
 	def build_ship_info(self, index, ship, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		widget = Container(name='showcase_{0!s}'.format(index), position=(0, 20 + index*90),
 		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{0!s}'.format(index))
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_unit_tooltip(ship)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_{0!s}'.format(index), position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
@@ -249,10 +249,10 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_{0!s}'.format(index), helptext=_('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			button = CancelButton(position=(60, 50), name='ok_{0!s}'.format(index),
 			helptext=ship_unbuildable)
 
 		widget.addChild(button)
@@ -267,7 +267,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
 			icon.position = (xoffset, yoffset)
-			label = Label(name='cost_%s_%s' % (index, i))
+			label = Label(name='cost_{0!s}_{1!s}'.format(index, i))
 			if res == RES.GOLD:
 				label.text = unicode(-amount)
 			else:

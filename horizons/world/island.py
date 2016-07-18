@@ -132,7 +132,7 @@ class Island(BuildingOwner, WorldObject):
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+				ground = Entities.grounds[str('{0:d}-{1!s}'.format(ground_id, action_id))](self.session, x, y)
 				ground.act(rotation)
 			else:
 				ground = MapPreviewTile(x, y, ground_id)

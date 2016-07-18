@@ -155,8 +155,8 @@ def content_from_file(filename):
 			text = '_("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
-			comment = '%s of %s' %(component, filename)
-			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
+			comment = '{0!s} of {1!s}'.format(component, filename)
+			object_strings.append('# {0!s}'.format(comment) + ROWINDENT + '{0:<30!s}: {1!s}'.format(('"%s"') % component, text))
 
 	for component, value in parsed.iteritems():
 		if isinstance(value, basestring):
@@ -179,15 +179,15 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return ('\n\t"%s" : {' % filename) + \
-		       (ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
+		return ('\n\t"{0!s}" : {{'.format(filename)) + \
+		       (ROWINDENT + '{0!s},'.format((','+ROWINDENT).join(strings))) + ROWINDENT + '},'
 	else:
 		return ''
 
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 
-output = '%s%s%s' % (HEADER, '\n'.join(filesnippets), FOOTER)
+output = '{0!s}{1!s}{2!s}'.format(HEADER, '\n'.join(filesnippets), FOOTER)
 
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
