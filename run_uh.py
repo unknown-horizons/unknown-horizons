@@ -205,9 +205,9 @@ def main():
 			num += 1
 
 		outfilename = pattern % num
-		print('Starting in profile mode. Writing output to: %s' % outfilename)
+		print('Starting in profile mode. Writing output to: {0!s}'.format(outfilename))
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
-		print('Program ended. Profiling output: %s' % outfilename)
+		print('Program ended. Profiling output: {0!s}'.format(outfilename))
 
 	if logfile:
 		logfile.close()
@@ -231,7 +231,7 @@ def setup_debugging(options):
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
 		if not module in logging.Logger.manager.loggerDict:
-			print('No such logger: %s' % module)
+			print('No such logger: {0!s}'.format(module))
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 	if options.debug or options.debug_module or options.debug_log_only:
@@ -242,8 +242,8 @@ def setup_debugging(options):
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
-			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-{0!s}.log".format(
+			                           time.strftime("%Y-%m-%d_%H-%M-%S")))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
 			fife=os.path.join(os.getcwd(), 'fife.log')) )

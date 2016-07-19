@@ -86,6 +86,6 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 		facing_location.setMapCoordinates(facing_coords)
 		self._instance.setFacingLocation(facing_location)
-		self.act('fire_%s' % direction, facing_location, repeating=False)
+		self.act('fire_{0!s}'.format(direction), facing_location, repeating=False)
 		self._action = 'idle'
 

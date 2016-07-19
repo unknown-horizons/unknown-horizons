@@ -72,14 +72,14 @@ class ProductionOverview(StatsWidget, Window):
 		res_name = self.db.get_res_name(resource_id)
 
 		icon = create_resource_icon(resource_id, self.db)
-		icon.name = 'icon_%s' % resource_id
+		icon.name = 'icon_{0!s}'.format(resource_id)
 		icon.max_size = icon.min_size = icon.size = (20, 20)
 
-		label = widgets.Label(name = 'resource_%s' % resource_id)
+		label = widgets.Label(name = 'resource_{0!s}'.format(resource_id))
 		label.text = res_name
 		label.min_size = (100, 20)
 
-		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)
+		amount_label = widgets.Label(name = 'produced_sum_{0!s}'.format(resource_id))
 		amount_label.text = unicode(amount)
 
 		hbox = widgets.HBox()

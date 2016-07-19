@@ -88,7 +88,7 @@ class BuildTab(TabInterface):
 			if isinstance(entry, dict):
 				# this is one key-value pair, e.g. "- icon: img/foo.png"
 				if len(entry) != 1:
-					raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: %s" % entry)
+					raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: {0!s}".format(entry))
 				key, value = entry.items()[0]
 				if key == "icon":
 					icon_path = value
@@ -97,12 +97,12 @@ class BuildTab(TabInterface):
 				elif key == "headline":
 					headline = value[2:] if value.startswith('_ ') else value
 				else:
-					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon, helptext or headline." % key)
+					raise InvalidBuildMenuFileFormat("Invalid key: {0!s}\nMust be either icon, helptext or headline.".format(key))
 			elif isinstance(entry, list):
 				# this is a line of data
 				rows.append(entry) # parse later on demand
 			else:
-				raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
+				raise InvalidBuildMenuFileFormat("Invalid entry: {0!s}".format(entry))
 
 		if not icon_path:
 			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
@@ -153,8 +153,8 @@ class BuildTab(TabInterface):
 			# tooltip.py will then place icons from this information.
 			required_resources = ''
 			for resource_id, amount_needed in sorted(building.costs.items()):
-				required_resources += ' %s:%s' % (resource_id, amount_needed)
-			required_text = '[[Buildmenu%s]]' % (required_resources)
+				required_resources += ' {0!s}:{1!s}'.format(resource_id, amount_needed)
+			required_text = '[[Buildmenu{0!s}]]'.format((required_resources))
 			button.helptext = required_text + button.helptext
 
 			enough_res = False # don't show building by default
@@ -187,13 +187,13 @@ class BuildTab(TabInterface):
 					continue
 				elif (column + 1) > self.MAX_COLS:
 					# out of 4x4 bounds
-					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
-					err += " Max. column amount in current layout is %s." % self.MAX_COLS
+					err = "Invalid entry '{0!s}': column {1!s} does not exist.".format(entry, column + 1)
+					err += " Max. column amount in current layout is {0!s}.".format(self.MAX_COLS)
 					raise InvalidBuildMenuFileFormat(err)
 				elif row_num > self.MAX_ROWS:
 					# out of 4x4 bounds
-					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
-					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
+					err = "Invalid entry '{0!s}': row {1!s} does not exist.".format(entry, row_num)
+					err += " Max. row amount in current layout is {0!s}.".format(self.MAX_ROWS)
 					raise InvalidBuildMenuFileFormat(err)
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
@@ -204,7 +204,7 @@ class BuildTab(TabInterface):
 					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
 					_set_entry(button, icon, entry)
 				else:
-					raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
+					raise InvalidBuildMenuFileFormat("Invalid entry: {0!s}".format(entry))
 
 	def refresh(self):
 		self.set_content()
@@ -295,7 +295,7 @@ class BuildTab(TabInterface):
 				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
 				tabs.append( tab )
 			except Exception as e:
-				to_add = "\nThis error happened in %s of %s ." % (tab, source)
+				to_add = "\nThis error happened in {0!s} of {1!s} .".format(tab, source)
 				e.args = ( e.args[0] + to_add, ) + e.args[1:]
 				e.message = ( e.message + to_add )
 				raise

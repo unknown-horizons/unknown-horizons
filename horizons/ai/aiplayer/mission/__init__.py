@@ -63,8 +63,9 @@ class Mission(WorldObject):
 		self.report_failure('Mission cancelled')
 
 	def __str__(self):
-		return '%s %s(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player',
-		                      self.__class__.__name__, self.worldid)
+		return '{0!s} {1!s}({2:d})'.format(
+			self.owner if hasattr(self, 'owner') else 'unknown player',
+			self.__class__.__name__, self.worldid)
 
 	def end(self):
 		pass
@@ -119,7 +120,8 @@ class ShipMission(Mission):
 			self.report_failure(failure_msg)
 
 	def __str__(self):
-		return super(ShipMission, self).__str__() + (' using %s' % (self.ship if hasattr(self, 'ship') else 'unknown ship'))
+		return super(ShipMission, self).__str__() + (' using {0!s}'.
+			format(self.ship if hasattr(self, 'ship') else 'unknown ship'))
 
 decorators.bind_all(Mission)
 decorators.bind_all(ShipMission)

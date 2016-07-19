@@ -339,7 +339,7 @@ class _IngameMessage(object):
 		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
-			assert isinstance(message, unicode), "Message is not unicode: %s" % message
+			assert isinstance(message, unicode), "Message is not unicode: {0!s}".format(message)
 			self.message = message
 		else:
 			msg = _(horizons.globals.db.get_msg_text(id))
@@ -352,14 +352,14 @@ class _IngameMessage(object):
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s %s %s%s" % (self.created, self.id,
-			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+		return "{0: 4d}: {1!s} {2!s} {3!s}{4!s}".format(self.created, self.id,
+			'({0!s},{1!s}) '.format(self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')
 
 	def __unicode__(self):
-		return u"% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
+		return u"{0: 4d}: {1!s}  '{2!s}'  {3!s} {4!s}{5!s}".format(self.created, self.id,
 			self.message,
-			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+			'({0!s},{1!s}) '.format(self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')

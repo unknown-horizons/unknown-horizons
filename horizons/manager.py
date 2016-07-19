@@ -101,13 +101,15 @@ class MPManager(LivingObject):
 
 		for packet in packets_received:
 			if isinstance(packet, CommandPacket):
-				self.log.debug("Got command packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
+				self.log.debug("Got command packet from {0:s} for tick {1:s}". \
+					format(packet.player_id, packet.tick))
 				self.commandsmanager.add_packet(packet)
 			elif isinstance(packet, CheckupHashPacket):
-				self.log.debug("Got checkuphash packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
+				self.log.debug("Got checkuphash packet from {0:s} for tick {1:s}". \
+					format(packet.player_id, packet.tick))
 				self.checkuphashmanager.add_packet(packet)
 			else:
-				self.log.warning("invalid packet: " + str(packet))
+				self.log.warning("invalid packet: {0:s}".format(packet))
 
 		# send out new commands
 		# check if we already sent commands for this tick (only 1 packet per tick is allowed,
@@ -118,7 +120,7 @@ class MPManager(LivingObject):
 					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
-			self.log.debug("sending command for tick %d" % (commandpacket.tick))
+			self.log.debug("sending command for tick {0:d}".format(commandpacket.tick))
 			self.networkinterface.send_packet(commandpacket)
 
 			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
@@ -132,7 +134,7 @@ class MPManager(LivingObject):
 				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick),
 			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
-				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
+				self.log.debug("sending checkuphash for tick {0:d}".format(checkuphashpacket.tick))
 				self.networkinterface.send_packet(checkuphashpacket)
 
 		# decide if tick can be calculated
@@ -169,7 +171,8 @@ class MPManager(LivingObject):
 	def hash_value_check(self, tick):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
 			if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
-				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
+				self.log.error("MPManager: Hash values generated in tick {0} are not equal". \
+					format(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
 				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
@@ -178,7 +181,8 @@ class MPManager(LivingObject):
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
 		"""Called when a divergence has been detected"""
-		self.log.error("MPManager: Hash diff:\n%s hash1: %s\n%s hash2: %s" % (player1, hash1, player2, hash2))
+		self.log.error("MPManager: Hash diff:\n{0!s} hash1: {1!s}\n{2!s} hash2: {3!s}".
+			format(player1, hash1, player2, hash2))
 		self.log.error("------------------")
 		self.log.error("Differences:")
 		if len(hash1) != len(hash2):
@@ -201,7 +205,8 @@ class MPManager(LivingObject):
 		"""Receive commands to be executed from local player
 		@param command: Command instance
 		@param local: commands that don't need to be sent over the wire"""
-		self.log.debug('MPManager: adding command (next tick: ' + str(self.session.timer.tick_next_id) + ')'+str(command))
+		self.log.debug('MPManager: adding command (next tick: {0}){1}'.
+			format(self.session.timer.tick_next_id, command))
 		if local:
 			self.localcommands.append(command)
 		else:
@@ -283,9 +288,11 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id),
+					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#{0:02d}".
+							format(pkges[0].player_id),
 						pkges[0].checkup_hash,
-						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id),
+						"local" if pkg.player_id==localplayerid else "pl#{0:02d}".
+							format(pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True

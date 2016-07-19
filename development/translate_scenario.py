@@ -73,7 +73,7 @@ def setup_paths():
 		language_path = PO_INPUT_PATH.format(scenario=scenario, language=language)
 
 	yaml_output = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario, language=language)
-	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '%s.mo' % scenario
+	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '{0!s}.mo'.format(scenario)
 
 	# If path for compiled translations does not exist yet, create it
 	subprocess.call(['mkdir', '-p', MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language)])
@@ -99,7 +99,7 @@ def setup_gettext(scenario, language):
 def compile_scenario_po(output_mo):
 	input_po = sys.argv[1]
 	if not os.path.exists(input_po):
-		print('Input file does not exist: %s' % input_po)
+		print('Input file does not exist: {0!s}'.format(input_po))
 		sys.exit(1)
 	try:
 		stats = subprocess.check_output([

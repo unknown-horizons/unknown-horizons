@@ -222,7 +222,7 @@ class Scheduler(LivingObject):
 				if obj.callback == callback:
 					del self.calls_by_instance[instance][i]
 					test += 1
-			assert test == removed_calls, "%s, %s" % (test, removed_calls)
+			assert test == removed_calls, "{0!s}, {1!s}".format(test, removed_calls)
 			if not self.calls_by_instance[instance]:
 				del self.calls_by_instance[instance]
 
@@ -256,7 +256,7 @@ class Scheduler(LivingObject):
 		@return int or possbile None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
 		if assert_present:
-			assert len(calls) == 1, 'got %i calls for %s %s: %s' % (len(calls), instance, callback, [str(i) for i in calls])
+			assert len(calls) == 1, 'got {0:d} calls for {1!s} {2!s}: {3!s}'.format(len(calls), instance, callback, [str(i) for i in calls])
 			return calls.itervalues().next()
 		else:
 			return calls.itervalues().next() if calls else None
@@ -293,6 +293,6 @@ class _CallbackObject(object):
 	def __str__(self):
 		cb = str(self.callback)
 		if "_move_tick" in cb: # very crude measure to reduce log noise
-			return "(_move_tick,%s)" %  self.class_instance.worldid
+			return "(_move_tick,{0!s})".format(self.class_instance.worldid)
 
-		return "SchedCb(%s on %s)" % (cb, self.class_instance)
+		return "SchedCb({0!s} on {1!s})".format(cb, self.class_instance)
