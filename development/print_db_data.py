@@ -161,7 +161,8 @@ def print_building():
 def print_unit():
 	print "Units (id: name (radius) from class)"
 	for u in Entities.units.itervalues():
-		print "{0:2!s}: {1:<22!s} ({2:2!s}) from {3!s}".format((u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID),
+		print "{0:2!s}: {1:<22!s} ({2:2!s}) from {3!s}".format
+			u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID,
 			u.name, u.radius, u.baseclass)
 	print "Add {0!s} to each ID if you want to use them.".format(UNITS.DIFFERENCE_BUILDING_UNIT_ID)
 
@@ -194,7 +195,8 @@ def print_collectors():
 				if 'collect' not in name.lower():
 					continue
 				for id, amount in data.get('collectors').iteritems():
-					print "{0:2!s}: {1:<18!s} {2!s} {3!s} ({4!s})".format(b.id, b.name, amount, get_obj_name(id), id)
+					print("{0:2!s}: {1:<18!s} {2!s} {3!s} ({4!s})".
+						format(b.id, b.name, amount, get_obj_name(id), id))
 
 def print_building_costs():
 	print 'Building costs:'
@@ -206,11 +208,11 @@ def print_building_costs():
 		s = ''
 		for res, amount in b.costs.iteritems():
 			s += "{0:4d} {1!s}({2!s}) ".format(amount, get_res_name(res), res)
-		print "{0:2!s}: {1:<18!s} {2!s}".format(b.id, b.name, s)
+		print("{0:2!s}: {1:<18!s} {2!s}".format(b.id, b.name, s))
 
 	print "\nBuildings without building costs:"
 	for b in no_costs:
-		print "{0:2d}: {1!s}".format(b.id, b.name)
+		print("{0:2d}: {1!s}".format(b.id, b.name))
 
 def print_collector_restrictions():
 	for u in Entities.units.itervalues():
@@ -220,15 +222,15 @@ def print_collector_restrictions():
 			for name, data in comp.iteritems():
 				if 'restricted' not in name.lower():
 					continue
-				print '{0!s}({1!s}) is restricted to:'.format(u.class_name, u.id)
+				print('{0!s}({1!s}) is restricted to:'.format(u.class_name, u.id))
 				for building in data.get('allowed'):
-					print '\t{0!s}({1!s})'.format(building_name_mapping[building], building)
+					print('\t{0!s}({1!s})'.format(building_name_mapping[building], building))
 
 def print_tier_data():
 	print 'Data has been moved, this view is unavailable for now'
 	return
 	upgrade_tiers = xrange(1, TIER.CURRENT_MAX+1)
-	print '{0:15!s} {1!s} {2!s}  {3!s}'.format('tier', 'max_inh', 'base_tax', 'upgrade_prod_line')
+	print('{0:15!s} {1!s} {2!s}  {3!s}'.format('tier', 'max_inh', 'base_tax', 'upgrade_prod_line'))
 	print '=' * 64
 	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM tier'):
 		str = '{0:3!s} {1:11!s} {2:5!s}    {3:4!s}'.format((inc+1), name, inh, tax)
@@ -244,19 +246,20 @@ def print_colors():
 	print 'Colors' + '\n' + '{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  {5:3!s}  #{6:6!s}'.format('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   ')
 	print '=' * 45
 	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
-		print '{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  {5:3!s}  #'.format(id_, name, R, G, B, alpha) + 3*'%02x' % (R, G, B)
+		print('{0:2!s}: {1:12!s}  {2:3!s}  {3:3!s}  {4:3!s}  {5:3!s}  # {6:02x}{7:02x}{8:02x}'.
+			format(id_, name, R, G, B, alpha, R, G, B))
 
 def print_scenario_actions():
 	print 'Available scenario actions and their arguments:'
 	for action in ACTIONS.registry:
 		arguments = inspect.getargspec(ACTIONS.get(action))[0][1:] # exclude session
-		print '{0:<12!s}  {1!s}'.format(action, arguments or '')
+		print('{0:<12!s}  {1!s}'.format(action, arguments or ''))
 
 def print_scenario_conditions():
 	print 'Available scenario conditions and their arguments:'
 	for condition in CONDITIONS.registry:
 		arguments = inspect.getargspec(CONDITIONS.get(condition))[0][1:] # exclude session
-		print '{0:<36!s}  {1!s}'.format(condition, arguments or '')
+		print('{0:<36!s}  {1!s}'.format(condition, arguments or ''))
 
 def print_names():
 	text = ''
@@ -336,10 +339,12 @@ for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible fl
 args = sys.argv
 
 if len(args) == 1:
-	print 'Start with one of those args: {0!s} \nSupported abbreviations: {1!s}'.format(sorted(functions.keys()), sorted(abbrevs.keys()))
+	print('Start with one of those args: {0!s} \nSupported abbreviations: {1!s}'.
+		format(sorted(functions.keys()), sorted(abbrevs.keys())))
 else:
 	for i in flags.iteritems():
 		if i[0].startswith(args[1]):
 			i[1]()
 			sys.exit(0)
-	print 'Start with one of those args: {0!s} \nSupported abbreviations: {1!s}'.format(functions.keys(), abbrevs.keys())
+	print('Start with one of those args: {0!s} \nSupported abbreviations: {1!s}'.
+		format(functions.keys(), abbrevs.keys()))
