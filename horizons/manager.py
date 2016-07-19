@@ -102,12 +102,11 @@ class MPManager(LivingObject):
 		for packet in packets_received:
 			if isinstance(packet, CommandPacket):
 				self.log.debug("Got command packet from {0:s} for tick {1:s}". \
-					format(packet.player_id, packet.tick)
-				+ str(packet.tick))
+					format(packet.player_id, packet.tick))
 				self.commandsmanager.add_packet(packet)
 			elif isinstance(packet, CheckupHashPacket):
 				self.log.debug("Got checkuphash packet from {0:s} for tick {1:s}". \
-					.format(packet.player_id, packet.tick)
+					.format(packet.player_id, packet.tick))
 				self.checkuphashmanager.add_packet(packet)
 			else:
 				self.log.warning("invalid packet: {0:s}".format(packet))
@@ -121,7 +120,7 @@ class MPManager(LivingObject):
 					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
-			self.log.debug("sending command for tick {0:d}".format((commandpacket.tick)))
+			self.log.debug("sending command for tick {0:d}".format(commandpacket.tick))
 			self.networkinterface.send_packet(commandpacket)
 
 			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
