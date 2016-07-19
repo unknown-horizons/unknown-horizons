@@ -75,7 +75,7 @@ for root, dirs, files in os.walk('.'):
 			inst.append( ('	File "./{0!s}/{1!s}"'.format(rootp, j)).replace('/', '\\'))
 			installed_files.append('{0!s}/{1!s}'.format(rootp, j))
 			if j[-3:] == '.py':
-				installed_files.append('{0!s}.pyc'.format(('{0!s}/{1!s}'.format(rootp, j))[:-3]))
+				installed_files.append('{0!s}.pyc'.format('{0!s}/{1!s}'.format(rootp, j))[:-3])
 
 installed_dirs.extend(['fife\\engine\\python', 'fife\\engine', 'fife'])
 
