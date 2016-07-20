@@ -112,8 +112,8 @@ def parse_markdown(infile):
 def write_page(heading, content):
 	def write_page_header():
 		if heading in huge_pages:
-			write(f, 1, u'<ScrollArea name="%s" '
-					  u'max_size="310,500" min_size="310,500">' % heading.lower())
+			write(f, 1, u'<ScrollArea name="{0!s}" '
+					  u'max_size="310,500" min_size="310,500">'.format(heading.lower()))
 			# Make sure there is no max_size set in this case!
 			write(f, 1, u'<VBox min_size="310,500">')
 		else:
