@@ -89,8 +89,8 @@ def setup_gettext(scenario, language):
 		translation = gettext.translation(scenario, MO_OUTPUT, [language])
 	except IOError:
 		# IOError: [Errno 2] No translation file found for domain
-		print('No compiled translation for domain `%s` and language `%s` in `%s`. '
-		      'Exiting.' % (scenario, language, MO_OUTPUT))
+		print('No compiled translation for domain `%s` and language `{0!s}` in `{1!s}`. '
+		      'Exiting.'.format(scenario, language, MO_OUTPUT))
 		sys.exit(1)
 	else:
 		translation.install(unicode=True)
@@ -111,8 +111,8 @@ def compile_scenario_po(output_mo):
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
-		print('Error while compiling translation `%s`, probably malformed `.po`. '
-		      'Exiting.' % input_po)
+		print('Error while compiling translation `{1!s}`, probably malformed `.po`. '
+		      'Exiting.'.format(input_po))
 		sys.exit(1)
 	else:
 		return stats
@@ -267,9 +267,10 @@ def main():
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print 'Usage: {0} scenario_translation_file'.format(os.path.basename(__file__))
-		print '\tscenario_translation_file: `po/scenarios/sv/tutorial.po`'
-		print 'Run from main UH directory!'
+		print('Usage: {0} scenario_translation_file'.
+			format(os.path.basename(__file__)))
+		print('\tscenario_translation_file: `po/scenarios/sv/tutorial.po`')
+		print('Run from main UH directory!')
 		sys.exit(1)
 	else:
 		main()
