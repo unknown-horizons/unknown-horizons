@@ -60,6 +60,7 @@ New files and features
  - added acorn ressource icon
  - added happiness icons
  - added warehouse building icon
+ - added pigsty
  
 ### User Interface
 
