@@ -27,16 +27,21 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 import horizons.globals
 
-from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
+from horizons.messaging import HoverInstancesChanged
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
-	# Character count after which we start new line.
-	CHARS_PER_LINE = 19
+	LABEL_LEFT_MARGIN = 7
+	LABEL_RIGHT_MARGIN = 7
+	# Left and right margin for the tooltips text, otherwise the text is over the border of the icon
+	LABEL_TOP_BOTTOM_MARGIN = 5
+	# Top and bottom margin for the tooltips text, otherwise the text is over the border of the icon
+	MAX_LABEL_WIDTH = 145  # Width of the tooltip text before the text wraps
+	MAX_BG_WIDTH = 0
 	# Find and replace horribly complicated elements that allow simple icons.
 	icon_regexp = re.compile(r'\[\[Buildmenu((?: \d+\:\d+)+)\]\]')
 
@@ -50,7 +55,6 @@ class _Tooltip(object):
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
 			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
-
 			# TIP: the mousePressed event is especially useful when such as click
 			# will trigger this tooltip's parent widget to be hidden (or destroyed), 
 			# which hides this tooltip first before hides the parent widget. 
@@ -65,9 +69,10 @@ class _Tooltip(object):
 
 	def __init_gui(self):
 		self.gui = AutoResizeContainer()
-		self.label = Label(position=(10, 5))
+		self.label = Label(position=(self.LABEL_LEFT_MARGIN, self.LABEL_TOP_BOTTOM_MARGIN))
 		self.bg = TooltipBG()
 		self.gui.addChildren(self.bg, self.label)
+		self.populate_tooltip()
 
 	def position_tooltip(self, event):
 		if not self.helptext:
@@ -83,7 +88,6 @@ class _Tooltip(object):
 		else:
 			if where.getButton() == fife.MouseEvent.MIDDLE:
 				return
-
 			x, y = where.getX(), where.getY()
 
 		if self.gui is None:
@@ -97,103 +101,98 @@ class _Tooltip(object):
 		# by setting the top container's position to 0, 0.
 		# Since this position is currently unused, it can serve as invalid flag,
 		# and dropping these events seems to lead to the desired placements
-		def get_top(w):
-			return get_top(w.parent) if w.parent else w
-		top_pos = get_top(self).position
-		if top_pos == (0, 0):
-			return
+		# def get_top(w):
+		# 	return get_top(w.parent) if w.parent else w
+		# top_pos = get_top(self).position
+		# if top_pos == (0, 0):
+		# 	return
 
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + y + 5
 		offset = x + 10
-		if (widget_position[0] + self.gui.size[0] + offset) > screen_width:
+
+		if (widget_position[0] + self.gui.size[0] + offset) > (screen_width / 2):
 			# right screen edge, position to the left of cursor instead
 			offset = x - self.gui.size[0] - 5
 		self.gui.x = widget_position[0] + offset
+
 		if not self.tooltip_shown:
 			self.show_tooltip()
-			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
-			self.tooltip_shown = True
 
 	def show_tooltip(self):
-		if not self.helptext:
-			return
+
 		if self.gui is None:
 			self.__init_gui()
 
-		#HACK: support icons in build menu
-		# Code below exists for the sole purpose of build menu tooltips showing
-		# resource icons. Even supporting that is a pain (as you will see),
-		# so if you think you need icons in other tooltips, maybe reconsider.
-		# [These unicode() calls brought to you by status icon tooltip code.]
+		self.gui.show()
+		self.tooltip_shown = True
+
+	def populate_tooltip(self):
+		"""This checks whether or not icons are to be shown and shows the if so.
+			This also sets the tooltips text.
+		"""
+		if not self.helptext:
+			return
+
+		# Specification looks like [[Buildmenu icon_index:amount (1:250 4:2 6:2)]]
 		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
 		# Remove the weird stuff before displaying text.
-		replaced = self.icon_regexp.sub('', unicode(self.helptext))
-		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
+		tooltip_text = self.icon_regexp.sub('', unicode(self.helptext))
+		self.label.max_width = self.MAX_LABEL_WIDTH
+
+
 		if buildmenu_icons:
 			hbox = HBox(position=(7, 5), padding=0)
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
-				label = Label(text=amount+'  ')
+				resource_amount_label = Label(text=amount+'  ')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
 				# For compatibility with FIFE 0.3.5 and older, also set min/max.
 				icon.max_size = icon.min_size = (16, 16)
-				hbox.addChildren(icon, label)
+				hbox.addChildren(icon, resource_amount_label)
 			hbox.adaptLayout()
-			# Now display the 16x16px "required resources" icons in the last line.
+			if hbox.width >= self.MAX_LABEL_WIDTH:
+				#self.MAX_LABEL_WIDTH = hbox.width
+				self.wrap_tt_text(buildmenu_icons, tooltip_text)
+				self.MAX_BG_WIDTH = hbox.width
+			else:
+				self.wrap_tt_text(buildmenu_icons, tooltip_text)
 			self.gui.addChild(hbox)
 
-		#HACK: wrap tooltip text
-		# This looks better than splitting into several lines and joining them.
-		# It works because replace_whitespace in `fill` defaults to True.
-		replaced = replaced.replace(r'\n', self.CHARS_PER_LINE * ' ')
-		replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')
-		tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
+		else:
+			self.wrap_tt_text(buildmenu_icons, tooltip_text)
 
-		# Finish up the actual tooltip (text, background panel amount, layout).
-		# To display build menu icons, we need another empty (first) line.
-		self.bg.amount = len(tooltip.splitlines()) - 1 + bool(buildmenu_icons)
-		self.label.text = bool(buildmenu_icons) * '\n' + tooltip
-		self.gui.adaptLayout()
-		self.gui.show()
+		# For large tooltips the width of the label is off because we are not using a monospaced font
+		# so the margins have to be adapted. Since the label is already initialized, we have to check whether the
+		# tooltip is big, adapt the margins, hide and reshow the tooltip.
+		if self.label.width >= 100:
+			self.LABEL_LEFT_MARGIN = 12
+			self.LABEL_RIGHT_MARGIN = 12
+			self.label.position = self.LABEL_LEFT_MARGIN, self.LABEL_TOP_BOTTOM_MARGIN
 
-		# NOTE: the below code in this method is a hack to resolve #2227
-		# cannot find a better way to fix it, cause in fife.pychan, it seems
-		# if a widget gets hidden or removed, the children of that widget are not
-		# hidden or removed properly (at least in Python code)
+		# self.bg.amount should be renamed to self.bg.y_tile_amount or something similar.
+		# unfortunately there are several xml files that use amount and it would be a lot of work to fix this
+		self.bg.amount = ((self.label.height / 18) - 1)
+		# set the width of the icon
+		self.bg.x_width_amount = (self.MAX_BG_WIDTH + self.LABEL_LEFT_MARGIN + self.LABEL_RIGHT_MARGIN)
 
-		# update topmost_widget every time the tooltip is shown
-		# this is to dismiss the tooltip later, see _check_hover_alive
-		target_widget = self
-		while target_widget:
-			self.topmost_widget = target_widget
-			target_widget = target_widget.parent
-
-		# add an event to constantly check whether the hovered widget is still there
-		# if this is no longer there, dismiss the tooltip widget
-		ExtScheduler().add_new_object(self._check_hover_alive, self, run_in=0.5, loops=-1)
-
-	def _check_hover_alive(self):
-		target_widget = self
-		# traverse the widget chain again
-		while target_widget:
-			# none of ancestors of this widget gets removed, 
-			# just do nothing and let the tooltip shown
-			if target_widget == self.topmost_widget:
-				return
-			# one ancestor of this widget is hidden
-			if not target_widget.isVisible():
-				self.hide_tooltip()
-				return
-			target_widget = target_widget.parent
-
-		# if it comes to here, meaning one ancestor of this widget is removed
-		self.hide_tooltip()
+		HoverInstancesChanged.subscribe(self.hide_tooltip)
 
 	def hide_tooltip(self, event=None):
 		if self.gui is not None:
+			self.tooltip_shown = False
 			self.gui.hide()
-		# tooltip is hidden, no need to check any more
-		ExtScheduler().rem_call(self, self._check_hover_alive)
-		self.topmost_widget = None
-		self.tooltip_shown = False
+
+	def wrap_tt_text(self, buildmenu_icons, text):
+		chars_per_line = 1
+		for i in range(0, text.__len__()):
+
+			if self.label.text.__sizeof__() < self.MAX_LABEL_WIDTH:
+				self.label.text += text[i]
+				chars_per_line += 1
+			self.gui.adaptLayout()
+		chars_per_line - 1
+		self.label.text = bool(buildmenu_icons) * '\n' + textwrap.fill(text, chars_per_line)
+		self.gui.adaptLayout()
+		self.MAX_BG_WIDTH = self.label.width
+
