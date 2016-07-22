@@ -129,7 +129,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.DOCTOR] = BUILDINGS.DOCTOR
 		cls.purpose_to_building[cls.HERBARY] = BUILDINGS.HERBARY
 		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
-		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONEMANSON
+		cls.purpose_to_building[cls.STONEMANSON] = BUILDINGS.STONEMANSON
 		cls.purpose_to_building[cls.ALVEARIES] = BUILDINGS.ALVEARIES
 		cls.purpose_to_building[cls.COCOA_FIELD] = BUILDINGS.COCOA_FIELD
 		cls.purpose_to_building[cls.CORN_FIELD] = BUILDINGS.CORN_FIELD
