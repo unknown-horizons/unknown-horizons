@@ -23,5 +23,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.PIGS: 4, RES.ACORNS: 10}
 actionsets:
-  TIER.SETTLERS:
+  TIER.CITIZENS:
     as_pigsty0:
