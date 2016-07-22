@@ -281,8 +281,8 @@ INSERT INTO "resource" VALUES(48, 'marble deposit',  0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(49, 'marble tops',     7.5,   0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(50, 'coal deposit',    0,     0,    0); -- unused
-INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    0);
-INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    0);
+INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    1);
+INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    1);
 INSERT INTO "resource" VALUES(53, 'cocoa beans',     2,     0,    1);
 INSERT INTO "resource" VALUES(54, 'cocoa',           2.5,   0,    0);
 INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    1);

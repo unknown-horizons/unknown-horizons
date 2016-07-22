@@ -576,8 +576,8 @@ def _create_main_db():
 	NOTE: This data is read_only, so there are no concurrency issues."""
 	_db = UhDbAccessor(':memory:')
 	for i in PATHS.DB_FILES:
-		f = open(i, "r")
-		sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
+		with open(i, "r") as f:
+			sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
 		_db.execute_script(sql)
 	return _db
 

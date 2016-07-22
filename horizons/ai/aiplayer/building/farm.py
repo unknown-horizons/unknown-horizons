@@ -270,8 +270,11 @@ class FarmEvaluator(BuildingEvaluator):
 		cls.__field_offsets = first_class + second_class + third_class
 
 	@classmethod
-	def _suitable_for_road(self, production_builder, coords):
-		return coords in production_builder.land_manager.roads or (coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
+	def _suitable_for_road(cls, production_builder, coords):
+		"""check coordinates"""
+		return coords in production_builder.land_manager.roads or (
+			coords in production_builder.plan and
+			production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
 	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment):

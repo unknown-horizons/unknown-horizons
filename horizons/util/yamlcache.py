@@ -57,8 +57,8 @@ def parse_token(token, token_klass):
 		return getattr( classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = ("This means that you either have to add an entry in horizons/constants.py "
-		       "in the class %s for %s,\nor %s is actually a typo."
-		       % (token_klass, token, token))
+		       "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".
+		       format(token_klass, token, token))
 		raise Exception( str(e) + "\n\n" + err +"\n" )
 
 
@@ -93,7 +93,7 @@ class YamlCache(object):
 	log = logging.getLogger("yamlcache")
 
 	@classmethod
-	def load_yaml_data(self, string_or_stream):
+	def load_yaml_data(cls, string_or_stream):
 		"""Use this instead of yaml.load everywhere in uh in case get_file isn't useable"""
 		return yaml.load( string_or_stream, Loader=SafeLoader )
 
@@ -103,11 +103,11 @@ class YamlCache(object):
 		@param filename: path to the file
 		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
 		"""
+		with open(filename, 'r') as f:
+			filedata = f.read()
 
 		# calc the hash
-		f = open(filename, 'r')
-		h = hash(f.read())
-		f.seek(0)
+		h = hash(filedata)
 
 		# check for updates or new files
 		if cls.cache is None:
@@ -115,13 +115,13 @@ class YamlCache(object):
 
 		yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
 		if not yaml_file_in_cache:
-			data = cls.load_yaml_data( f )
+			data = cls.load_yaml_data(filedata)
 			if game_data: # need to convert some values
 				try:
 					data = convert_game_data(data)
 				except Exception as e:
 					# add info about file
-					to_add = "\nThis error happened in %s ." % filename
+					to_add = "\nThis error happened in {0!s} .".format(filename)
 					e.args = ( e.args[0] + to_add, ) + e.args[1:]
 					e.message = ( e.message + to_add )
 					raise

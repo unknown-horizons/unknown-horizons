@@ -71,8 +71,8 @@ class BUILDING_PURPOSE:
 	FIRE_STATION = 31
 	DOCTOR = 32
 	HERBARY = 33
-	#STONE_PIT = 34
-	#STONEMASON = 35
+	STONE_PIT = 34
+	STONEMASON = 35
 	ALVEARIES = 36
 	COCOA_FIELD = 37
 	CORN_FIELD = 38
@@ -91,6 +91,7 @@ class BUILDING_PURPOSE:
 	WINERY = 51
 	#WOODEN_TOWER = 52
 	WEAPONSMITH = 53
+
 	purpose_to_building = {}
 	building_to_purpose = {}
 
@@ -127,8 +128,8 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.FIRE_STATION] = BUILDINGS.FIRE_STATION
 		cls.purpose_to_building[cls.DOCTOR] = BUILDINGS.DOCTOR
 		cls.purpose_to_building[cls.HERBARY] = BUILDINGS.HERBARY
-		#cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
-		#cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONE_MANSON
+		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
+		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONE_MANSON
 		cls.purpose_to_building[cls.ALVEARIES] = BUILDINGS.ALVEARIES
 		cls.purpose_to_building[cls.COCOA_FIELD] = BUILDINGS.COCOA_FIELD
 		cls.purpose_to_building[cls.CORN_FIELD] = BUILDINGS.CORN_FIELD

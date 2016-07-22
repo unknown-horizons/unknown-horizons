@@ -45,8 +45,6 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
                                 NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover, GuiCancelAction)
-
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -376,8 +374,8 @@ class IngameGui(LivingObject):
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"%s" % a.name
-			player2 = u"%s" % b.name
+			player1 = u"{0!s}".format(a.name)
+			player2 = u"{0!s}".format(b.name)
 
 			data = {'player1' : player1, 'player2' : player2}
 
@@ -443,7 +441,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = u"%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = u"{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):

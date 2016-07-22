@@ -46,6 +46,7 @@ tab2:
 -
   - _ Citizens
   - BUILDINGS.HOP_FIELD
+  - BUILDINGS.PIGSTY
 
 tab3:
 - icon: icons/tabwidget/buildmenu/class/agricultural_companies
