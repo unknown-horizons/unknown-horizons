@@ -82,4 +82,5 @@ class WorldObject(ChangeListener):
 
 	# for testing:
 	@classmethod
-	def get_objs(self): return self.__objects
+	def get_objs(cls):
+		return cls.__objects

@@ -187,7 +187,8 @@ class BuildingEvaluator(object):
 
 	def __str__(self):
 		point = self.builder.position.origin
-		return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
+		return '{0!s} at {1!d}, {2!d} with value {3!f}'. \
+			format(self.__class__.__name__, point.x, point.y, self.value)
 
 	@classmethod
 	def get_best_evaluator(cls, evaluators):
