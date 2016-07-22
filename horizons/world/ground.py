@@ -159,13 +159,13 @@ class GroundClass(type):
 			visual = fife_object.get2dGfxVisual()
 			for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
 				if not data:
-					raise KeyError('No data found for tile set `%s` in rotation `%s`. '
-						'Most likely the shape `%s` is missing.' %
-						(tile_set_id, rotation, cls.shape))
+					raise KeyError('No data found for tile set `{0!s}` in rotation `{1!s}`. '
+						'Most likely the shape `{2!s}` is missing.'.
+						format(tile_set_id, rotation, cls.shape))
 				if len(data) > 1:
 					raise ValueError('Currently only static tiles are supported. '
-						'Found this data for tile set `%s` in rotation `%s`: '
-						'%s' % (tile_set_id, rotation, data))
+						'Found this data for tile set `{0!s}` in rotation `{1!s}`: '
+						'{2!s}'.format(tile_set_id, rotation, data))
 				img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
 				visual.addStaticImage(rotation, img.getHandle())
 
