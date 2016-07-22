@@ -168,8 +168,8 @@ class IngameType(type):
 					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
 				if new_key in new_data:
 					raise Exception('Error: production line id conflict.'
-					                ' Please change "%s" to anything else for "%s"'
-					                % (old_key, self.name))
+					                ' Please change "{0!s}" to anything else for "{1!s}"'
+					                .format(old_key, self.name))
 				new_data[new_key] = v
 
 			producer_data['productionlines'] = new_data
