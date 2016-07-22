@@ -91,8 +91,8 @@ class IngameType(type):
 					name = self._level_specific_names.get(lvl - 1)
 					assert name is not None, (
 						"Error in object file:\n"
-						"'name' attribute needs to at least describe tier %s. "
-						"Found:\n%s") % (name_data, start_tier)
+						"'name' attribute needs to at least describe tier {0!s}. "
+						"Found:\n{1!s}".format(name_data, start_tier))
 					self._level_specific_names[lvl] = name
 				else:
 					self._level_specific_names[lvl] = self._strip_translation_marks(name)
