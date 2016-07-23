@@ -80,7 +80,7 @@ GAMEPLAY_TIPS = {
 		_lazy("Press 'T' to make trees transparent."),
 		_lazy("Build storage tents and lookouts to expand your settlement range."),
 		_lazy("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
-		_lazy("Make singleplayer more fun with additional computer players by increasing 'AI players' in the new singleplayer menue."),
+		_lazy("Make singleplayer more fun with additional computer players by increasing 'AI players' in the new singleplayer menu."),
 		_lazy("First steps are easier by looking at how AI players are setting up their settlement."),
 		_lazy("Want funny quotes only? Change the quote types shown here in the settings menu on the game page.")
 	]
