@@ -51,7 +51,13 @@ FUN_QUOTES = {
 		"Travel beyond the horizon and discover unknown worlds!",
 		u"War… war never changes",
 		"Support Unknown Horizons with Cookies!",
-		"wow, looks nearly completed \n(Neomex)"
+		"wow, looks nearly completed \n(Neomex)",
+		"Anchor is missing ...",
+		"campfire is lighted",
+		"The fish was as large as the whole island",
+		"Bugs are for your personal fun",
+		"Your game is unique. Please wait.",
+		"Take it easy, the shore is near"
     ]
 }
 
@@ -71,7 +77,11 @@ GAMEPLAY_TIPS = {
 		_lazy("Build fire stations and doctors to protect your inhabitants from fire and disease."),
 		_lazy("Build storage tents to increase your storage capacity."),
 		_lazy("Make sure every house is in range of a marketplace."),
-		_lazy("Press 'T' to make trees transparent.")
+		_lazy("Press 'T' to make trees transparent."),
+		_lazy("Build storage tents and lookouts to expand your settlement range."),
+		_lazy("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
+		_lazy("Make singleplayer more fun with additional computer players by increasing 'AI players' in the new singleplayer menue."),
+		_lazy("First steps are easier by looking at how AI players are setting up their settlement.")
 	]
 }
 
