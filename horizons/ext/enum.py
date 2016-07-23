@@ -59,7 +59,7 @@ if _copyright_year_latest > _copyright_year_begin:
 	_copyright_year_range += "–{_copyright_year_latest!s}".format(**vars())
 __copyright__ = (
 	"Copyright © %(_copyright_year_range)s"
-	" {__author_name__!s}")format(vars())
+	" {__author_name__!s}").format(vars())
 __license__ = "Choice of GPL or Python license"
 
 __url__ = "http://pypi.python.org/pypi/enum/"
