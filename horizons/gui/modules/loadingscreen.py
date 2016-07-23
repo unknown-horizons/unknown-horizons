@@ -37,21 +37,27 @@ FUN_QUOTES = {
 	'name': _lazy("Quotes"),
 	# Fun Quotes should not be translated...
 	'items': [
-		"beer, the cause and solution to all problems of humanity",
-		"trying is the first step t'wards failing. ",
-		"# nobody actually knows how the code below works. ",
-		"here be dragons",
-		"procrastination is the first step towards getting stuff done",
-		"patience is a virtue \n(barra)",
-		"you must really, really love to test \n(portal 2)",
-		"here be bugs",
-		"strength is the capacity to break a chocolate bar into four pieces with your bare hands - and then eat just one of the pieces",
-		"If one does not know to which port one is sailing, no wind is favorable",
-		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
+		"Beer, the cause and solution to all problems of humanity.",
+		"Trying is the first step t'wards failing.",
+		"# nobody actually knows how the code below works.",
+		"Here are dragons.",
+		"Procrastination is the first step towards getting stuff done.",
+		"Patience is a virtue. \n(barra)",
+		"You must really, really love to test. \n(portal 2)",
+		"Here are bugs.",
+		"Strength is the capacity to break a chocolate bar into four pieces with your bare hands - and then eat just one of the pieces.",
+		"If one does not know to which port one is sailing, no wind is favorable.",
+		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails.",
 		"Travel beyond the horizon and discover unknown worlds!",
-		u"War… war never changes",
+		u"War… war never changes.",
 		"Support Unknown Horizons with Cookies!",
-		"wow, looks nearly completed \n(Neomex)"
+		"Wow, looks nearly completed. \n(Neomex)",
+		"Anchor is missing ...",
+		"Campfire is lighted.",
+		"The fish was as large as the whole island.",
+		"Bugs are for your personal fun.",
+		"Your game is unique. Please wait.",
+		"Take it easy, the shore is near."
     ]
 }
 
@@ -71,7 +77,13 @@ GAMEPLAY_TIPS = {
 		_lazy("Build fire stations and doctors to protect your inhabitants from fire and disease."),
 		_lazy("Build storage tents to increase your storage capacity."),
 		_lazy("Make sure every house is in range of a marketplace."),
-		_lazy("Press 'T' to make trees transparent.")
+		_lazy("Press 'T' to make trees transparent."),
+		_lazy("Build storage tents and lookouts to expand your settlement range."),
+		_lazy("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
+		_lazy("Make singleplayer more fun with additional computer players by increasing 'AI players' when starting a new game."),
+		_lazy("First steps are easier by looking at how AI players are setting up their settlement."),
+		_lazy("Want funny quotes only? Change the quote types shown here in the settings menu on the game page."),
+		_lazy("A marketplace links your buildings like a road.")
 	]
 }
 
