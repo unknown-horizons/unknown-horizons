@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2014-01-17 10:17+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
-"Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh/cs/>\n"
+"PO-Revision-Date: 2016-07-31 15:14+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/uh/uh/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -309,10 +309,9 @@ msgid "Capacity utilization"
 msgstr "Využití kapacity"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Klikněte za účelem změny jména lodi"
+msgstr "Klikněte pro změnu názvu jednotky"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -499,10 +498,9 @@ msgid "Configure trading route"
 msgstr "Nastavení obchodní cesty"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(ztratit všechen materiál)"
+msgstr "Zahodit všechny zásoby"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1543,16 +1541,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Diplomacie není možná. Neexistují další hráči."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Jste si jisti, že chcete přerušit aktuální hru?"
+msgstr "Jste si jisti, že chcete odstranit tyto objekty?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Smazat položku"
+msgstr "Smazat"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1561,10 +1557,9 @@ msgid "{size}x{size} tiles"
 msgstr "dlaždice {size}x{size}"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Stiskněte požadovanou klávesu"
+msgstr "Stiskněte klávesu…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2124,10 +2119,9 @@ msgid "Press H to remove this hint"
 msgstr "Stiskněte klávesu H k odstranění tohoto tipu"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Zničit budovu"
+msgstr "Zničit všechny budovy"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
@@ -2224,7 +2218,6 @@ msgid "Warehouse overview"
 msgstr "Přehled obchodního přístavu"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
 msgstr "Přehled jednotek"
@@ -2735,10 +2728,9 @@ msgstr "Rozhledna"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Brání tvou osadu."
+msgstr "Rozšířit velikost osady."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2874,7 +2866,6 @@ msgstr "Skladiště"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr "Zvyšuje zásobní kapacitu a poskytuje sběrače."
@@ -2991,14 +2982,12 @@ msgstr "Obchodní přístav"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
 msgstr "Zbraně"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
 msgstr "Vyrábí železné nástroje."
