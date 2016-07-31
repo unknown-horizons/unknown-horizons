@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-07-31 06:12+0000\n"
+"PO-Revision-Date: 2016-07-31 07:45+0000\n"
 "Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/uh/uh/nb/>\n"
@@ -24,7 +24,9 @@ msgstr "Unknown Horizons har krasjet."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Vi beklager dette, og ønsker å fikse feilen som forårsaket krasjet."
+msgstr ""
+"Vi beklager dette, og ønsker å fikse den underliggende feilen som forårsaket "
+"krasjet."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
@@ -96,7 +98,7 @@ msgstr "Avslutt kartredigering"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Velg størrelse:"
+msgstr "Velg penselstørrelse:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
@@ -112,7 +114,7 @@ msgstr "Starten av spillet"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Før du kan oppføre bygninger må du grunnlegge en bosetning!"
+msgstr "Før du kan føre opp bygninger må du opprette en bosetning!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
@@ -157,7 +159,7 @@ msgstr "Roter kartet mot klokken ({key})"
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Roter kartet med klkken ({key})"
+msgstr "Roter kartet med klokken ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
@@ -217,7 +219,7 @@ msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Skriv din melding:"
+msgstr "Skriv meldingen din:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -239,7 +241,8 @@ msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"For å bygge en båt, velg en kategori, deretter ønsket skip og godkjenn."
+"For å bygge en båt, velg en kategori, deretter ønsket skip og bekreft "
+"bestillingen."
 
 #. Information about the ship currently under construction at the boat
 #. builder
