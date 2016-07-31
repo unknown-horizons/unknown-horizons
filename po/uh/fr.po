@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
 "PO-Revision-Date: 2016-07-31 15:00+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Last-Translator: clément arondel <clement.arondel@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1706,7 +1706,7 @@ msgstr "Création des îles…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr "Préparation des plans de construction…"
+msgstr "Préparation des plans…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
@@ -3374,7 +3374,7 @@ msgstr "{slotnum} emplacements, {limit}t"
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
 msgid "Health: {health}"
-msgstr "Santé: {health}"
+msgstr "Points de vie : {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:123
