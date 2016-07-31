@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-06-04 20:07+0200\n"
-"Last-Translator: Kurt Eilertsen <kurt@kheds.com>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/uh/"
-"nb/>\n"
+"PO-Revision-Date: 2016-07-31 06:12+0000\n"
+"Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
+"Language-Team: Norwegian Bokmål "
+"<https://hosted.weblate.org/projects/uh/uh/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -310,10 +310,9 @@ msgid "Capacity utilization"
 msgstr "Kapasitetsutnyttelse"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Klikk for å gi dette skipet nytt navn"
+msgstr "Klikk for å gi denne bakkeenheten nytt navn"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -500,10 +499,9 @@ msgid "Configure trading route"
 msgstr "Sett opp handelsrute"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(mist alle ressurser)"
+msgstr "Kast alle ressurser"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1548,16 +1546,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Diplomati kan ikke utføres ettersom det ikke finnes andre spillere."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Er du sikker på du vil avslutte denne spilløkten?"
+msgstr "Er du sikker på du vil slette disse objektene?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Fjern"
+msgstr "Slett"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1566,10 +1562,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} ruter"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Trykk ønsket knapp"
+msgstr "Trykk tast…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2136,23 +2131,23 @@ msgid "Press H to remove this hint"
 msgstr "Trykk H for å fjerne dette hintet"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Ødelegg bygning"
+msgstr "Ødelegg alle bygninger"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Dette vil ødelegge alle bygninger som ligger utenfor bosetningens rekkevidde."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ekstra bygning vil bli ødelagt."
+msgstr[1] "%s ekstra bygninger vil bli ødelagt"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2236,10 +2231,9 @@ msgstr "Oversikt over varehus"
 
 # ship -> unit
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "Enhetsoversikt"
+msgstr "Oversikt over bakkeenheter"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2278,7 +2272,7 @@ msgstr "Produksjonsoverskit"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Fyll feltet med {how_many} trær"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2748,10 +2742,9 @@ msgstr "Utsiktstårn"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Beskytter bosetningen."
+msgstr "Utvider bosetningens rekkevidde."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2885,10 +2878,9 @@ msgstr "Lager"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Utvider lager og gir innsamlere."
+msgstr "Utvider lager, utvider bosetningens rekkevidde og gir innsamlere."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3002,17 +2994,15 @@ msgstr "Varehus"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Våpen"
+msgstr "Våpensmed"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Produserer verktøy fra jern."
+msgstr "Produserer våpen fra jern."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3037,7 +3027,7 @@ msgstr "Kverner korn om til mel."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Vingård"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3882,7 +3872,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "sverd"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
