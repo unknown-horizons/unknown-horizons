@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-07-31 14:43+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2016-07-31 14:44+0000\n"
+"Last-Translator: Karar Al-Remahy <alremahykarar@ymail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -2321,7 +2321,7 @@ msgstr "Köp/Sälj"
 
 #: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "För långt bort från närmsta varuhus att handla med."
+msgstr "För långt bort från närmaste handelsaktiverad varuhus"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
@@ -2879,9 +2879,8 @@ msgstr "Skulptör"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
-#, fuzzy
 msgid "Carves stone tops into bricks."
-msgstr "Hugger sten till stenblock."
+msgstr "Hugger sten toppar till stenblock."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
@@ -3156,9 +3155,8 @@ msgstr "Pionjärer"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:494
-#, fuzzy
 msgid "Precaution"
-msgstr "Försiktighet"
+msgstr "Försiktighetsåtgärd"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:496
@@ -3595,9 +3593,8 @@ msgid "cocoa"
 msgstr "kakao"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "marble tops"
-msgstr "marmor"
+msgstr "marmor toppar"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
