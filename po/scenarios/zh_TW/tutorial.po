@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 1c4eb21\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-12-08 06:17+0000\n"
+"PO-Revision-Date: 2016-07-31 15:16+0000\n"
 "Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) "
 "<https://hosted.weblate.org/projects/uh/tutorial/zh_TW/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -121,14 +121,13 @@ msgid ""
 msgstr "要移動船隻，先用左鍵選擇你的船隻，並在想讓船隻航行到的位置上按一下右鍵。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Once you are near the coast, the anchor-like button you see in the "
 #| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
-msgstr "一旦你靠近沿岸，在總覽頁面上的錨狀按鈕便可以點擊。"
+msgstr "一旦你靠近海岸，在總覽上的「建立殖民地」按鈕就可以被點擊。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -173,14 +172,13 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "In order to construct lumberjacks; open the build menu by either clicking "
 #| "the big icon below the mini map or pressing B key."
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
-msgstr "為了建造伐木場，必須點擊小地圖下方的大圖示或按B開啟建築選單。"
+msgstr "要建造伐木場，你先要點擊小地圖下方的按鈕或按「B」(預設)以開啟建築選單。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -260,11 +258,10 @@ msgid "Note that you can place your Hunter close to the lumberjack's forest."
 msgstr "注意，你可以將獵場放在伐木場森林的附近。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
-msgstr "這樣可以讓動物繁殖夠快且不能完全隱藏。"
+msgstr "但動物繁殖可能不夠快或者牠們太過隱蔽。"
 
 #. This is the text body of a logbook page.
 msgid ""
