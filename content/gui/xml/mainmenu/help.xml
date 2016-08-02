@@ -5,7 +5,9 @@
 <VBox position="72,40">
 	<Label name="headline" />
 	<hr />
-	<VBox name="tip_box" padding="10" />
+	<ScrollArea name="help_box" max_size="310,470" min_size="310,470">
+		<VBox name="tip_box" padding="10" />
+	</ScrollArea>
 </VBox>
 
 <OkButton position="695,500"  helptext="Return" />
