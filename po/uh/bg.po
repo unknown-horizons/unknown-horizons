@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-22 00:57+0000\n"
+"PO-Revision-Date: 2016-07-31 14:31+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/uh/bg/>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -310,7 +310,6 @@ msgid "Capacity utilization"
 msgstr "Използване на капацитета"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
 msgstr "Натисни за да смениш името на този кораб"
@@ -499,7 +498,6 @@ msgid "Configure trading route"
 msgstr "Конфигуриране на търговски маршрут"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
 msgstr "(изгуби всички ресурси)"
@@ -974,7 +972,6 @@ msgid "Screenshot"
 msgstr "Скрийншот"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
-#, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Вкл./изкл. решетка"
 
@@ -1001,7 +998,6 @@ msgid "Reset to default"
 msgstr "Върни първоначалните настройки"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
-#, fuzzy
 msgid "Reset to default keys"
 msgstr "Избере настройки под разбиране"
 
@@ -1022,9 +1018,8 @@ msgid "Cancel game"
 msgstr "Анулиране на играта"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Зареждане ..."
+msgstr "Зареждане …"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1160,10 +1155,9 @@ msgid "Create a new game"
 msgstr "Създай нова игра"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Влез в играта"
+msgstr "Влез в играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1210,7 +1204,6 @@ msgid "Enable sound:"
 msgstr "Включи звук:"
 
 #: content/gui/xml/mainmenu/settings.xml:74
-#, fuzzy
 msgid "Mouse"
 msgstr "къщи"
 
@@ -1242,12 +1235,10 @@ msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
-#, fuzzy
 msgid "0 is default system settings"
 msgstr "Върни настройките под разбиране"
 
 #: content/gui/xml/mainmenu/settings.xml:99
-#, fuzzy
 msgid "Mouse sensitivity:"
 msgstr "Ресурсен залеж:"
 
@@ -1264,7 +1255,6 @@ msgid "Number of autosaves:"
 msgstr "Номер на автозапазване:"
 
 #: content/gui/xml/mainmenu/settings.xml:136
-#, fuzzy
 msgid "Number of quicksaves:"
 msgstr "Номер на автозапазване:"
 
@@ -1356,7 +1346,6 @@ msgid "Reset to default settings"
 msgstr "Избере настройки под разбиране"
 
 #: content/gui/xml/mainmenu/settings.xml:237
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
 msgstr "Запазване на игра"
@@ -1544,13 +1533,11 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr ""
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
 msgstr "Сигурни ли сте, че искате да прекратите пуснатата сесия?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
 msgstr "Изтриване на запис"
@@ -1805,10 +1792,9 @@ msgid "Not ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:441
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Въведи съобщение:"
+msgstr "Въведи съобщение"
 
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
@@ -1980,7 +1966,6 @@ msgid "Hotkeys"
 msgstr ""
 
 #: horizons/gui/modules/settings.py:56
-#, fuzzy
 msgid "Game"
 msgstr "Напускане на играта"
 
@@ -2115,7 +2100,6 @@ msgid "Press H to remove this hint"
 msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
 msgstr "Унищожи сграда"
@@ -2204,12 +2188,10 @@ msgid ""
 msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
-#, fuzzy
 msgid "Warehouse overview"
 msgstr "Пазар-преглед"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 msgid "Groundunit overview"
 msgstr "Кораб-преглед"
 
@@ -2238,7 +2220,6 @@ msgid "Allow upgrades"
 msgstr "Позволи надграждане"
 
 #: horizons/gui/tabs/overviewtab.py:101
-#, fuzzy
 msgid "Unit overview"
 msgstr "Кораб-преглед"
 
@@ -2590,7 +2571,6 @@ msgstr ""
 
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:161
-#, fuzzy
 msgid "Yields corn. Needs a farm."
 msgstr "Добива картофи. Нуждае се от ферма."
 
@@ -2716,9 +2696,8 @@ msgstr ""
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 msgid "Expands settlement range."
-msgstr "Построй колония"
+msgstr "Построй колония."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2747,10 +2726,9 @@ msgstr ""
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Желязна мина"
+msgstr "мина"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -2854,7 +2832,6 @@ msgstr ""
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr "Разширява запасите и осигурява събирачи."
@@ -2881,7 +2858,6 @@ msgstr ""
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
 msgstr "къщи"
 
@@ -2967,27 +2943,23 @@ msgstr "Осигурява образование."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:411
-#, fuzzy
 msgid "Warehouse"
 msgstr "къщи"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
 msgstr "Оръжия"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
 msgstr "Произвежда инструменти от желязо."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
-#, fuzzy
 msgid "Weaver's Hut"
 msgstr "Палатката на тъкача"
 
@@ -3023,9 +2995,8 @@ msgstr ""
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:446
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Построй колония"
+msgstr "Построй колония."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3079,7 +3050,6 @@ msgstr "Услуги"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:480
-#, fuzzy
 msgid "Citizens"
 msgstr "гражданин"
 
@@ -3225,7 +3195,6 @@ msgid "You have completed this scenario."
 msgstr ""
 
 #: horizons/scenario/actions.py:95
-#, fuzzy
 msgid "Do you want to continue playing?"
 msgstr "Искате ли да продължите?"
 
@@ -3261,9 +3230,8 @@ msgid "Your game has not been saved."
 msgstr ""
 
 #: horizons/util/checkupdates.py:87
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "The FIFE and Unknown Horizons"
+msgstr "Нова версия на Unknown Horizons"
 
 #: horizons/util/checkupdates.py:88
 #, python-brace-format
@@ -3439,7 +3407,6 @@ msgid "medical herbs"
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Aristocrats"
 msgstr "аристократ"
 
@@ -3452,20 +3419,18 @@ msgid "gems"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "brine deposit"
-msgstr "Ресурсен залеж"
+msgstr "саламура депозит"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "gem deposit"
-msgstr "Ресурсен залеж"
+msgstr "скъпоценност депозит"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3488,10 +3453,9 @@ msgid "wool"
 msgstr "вълна"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "тютюневи листа"
+msgstr "чаени листа"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
@@ -3514,20 +3478,18 @@ msgid "pigs for slaughter"
 msgstr "свине за клане"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "education"
 msgid "recreation"
-msgstr "образование"
+msgstr "отдих"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "marble deposit"
-msgstr "Ресурсен залеж"
+msgstr "мрамор депозит"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3563,25 +3525,22 @@ msgid "perfume"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "тютюневи растения"
+msgstr "памук растения"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
 msgstr "глина"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Merchants"
 msgstr "търговец"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "hop plants"
-msgstr "тютюневи растения"
+msgstr "хмелни насаждения"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
@@ -3596,10 +3555,9 @@ msgid "iron ingots"
 msgstr "желязно кюлче"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "coal deposit"
-msgstr "Ресурсен залеж"
+msgstr "въглища депозит"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3690,20 +3648,18 @@ msgid "spices"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "coffee plants"
-msgstr "тютюневи растения"
+msgstr "Кафе растенията"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "тухли"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "желязна руда"
+msgstr "злато руда"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3738,10 +3694,9 @@ msgid "confectionery"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Китоловец"
+msgstr "китове"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3818,15 +3773,13 @@ msgid "sugar cane"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been autosaved."
 msgstr "Вашата игра беше запаметена."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "gold deposit"
-msgstr "Ресурсен залеж"
+msgstr "Златен депозит"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3890,10 +3843,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "тютюневи растения"
+msgstr "чай растения"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3932,7 +3884,6 @@ msgid "condiments"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
 msgstr "черен"
@@ -3951,7 +3902,6 @@ msgid "vines"
 msgstr "вина"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been saved."
 msgstr "Вашата игра беше запаметена."
 
