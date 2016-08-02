@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-01-09 05:29+0000\n"
+"PO-Revision-Date: 2016-07-31 15:05+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -2125,7 +2125,7 @@ msgstr "이 정착 범위를 벗어나는 모든 건물을 파괴 됩니다."
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] "%s 추가 건물이 파괴됩니다."
+msgstr[0] "%s 의 추가 건물은 파괴 됩니다."
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2210,7 +2210,7 @@ msgstr "창고 개요"
 #: horizons/gui/tabs/groundunittabs.py:27
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "지상유닛 요약"
+msgstr "지상 유닛 요약"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2853,7 +2853,7 @@ msgstr "저장소 오두막"
 #: horizons/i18n/objecttranslations.py:343
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "재고를 확장하고 수집가를 제공합니다."
+msgstr "재고와 정착지를 확장하고 수집자을 제공합니다."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348

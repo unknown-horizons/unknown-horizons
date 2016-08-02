@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2013-11-15 21:00+0200\n"
-"Last-Translator: Rilen T. L. <rilen.lima@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <http://hosted.weblate.org/projects/uh/uh/"
-"pt_BR/>\n"
+"PO-Revision-Date: 2016-07-31 15:13+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Portuguese (Brazil) "
+"<https://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -1565,10 +1565,9 @@ msgstr "Não é possível ter diplomacia quando não se tem outros jogadores."
 
 # ook u aangepast
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Você tem certeza que quer abortar a execução da sessão?"
+msgstr "Você tem certeza que deseja deletar estes objetos?"
 
 #: horizons/gui/ingamegui.py:480
 #, fuzzy

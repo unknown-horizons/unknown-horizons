@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Izgradi skladište na obali, kako bi bilo lako dostupno za druge brodove kao što su slobodni trgovci.']
+  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
   - '
 
 
@@ -24,61 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Ovo je kapetanov dnevnik tu su pohranjene sve bitne informacije. Kratka obavijest za svaki zadatak će biti prikazana na lijevoj strani ekrana.
-  - Ako ste zainteresirani za duže opise, u vašim zapisima će te pronaći sve što vam je potrebno.
-  - Kada zatvorite ovaj zapis, možete ga opet otvoriti sa  "Kapetanovi zapisi" sličicom u gornjem desnom kutu (ispod minijaturne mape, sličica sa zatvorenim dokumentom i perom).
+  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Kako bi vidjeli svoj prvi zadatak, kliknite na dugme "Pročitaj sljedeće unose" u navigacijskoj ploči! Ona izgleda ovako:'
+    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Bilo kakve sugestije za tekst, teme koje bi da su bolje objašnjene ili čak situacije s greškom: Molimo da to kažete kako bi poboljšali vodič!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Posjetite www.unknown-horizons.org za pomoć oko toga kako kontaktirati ekipu!'
-  - I sad, ajmo kreniti u igru.
+    Visit www.unknown-horizons.org to find out how to contact the team.'
+  - ''
+  - And now, let's start the game!
   - [Pagebreak]
-  - [Headline, 'NOVI ZADATAK: NASELI SE NA OTOK']
+  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Da biste premjestili svoj brod, odaberite ga s lijevim klikom i zatim desnim klikom na mjesto gdje želite ići.
-  - Nakon što ste u blizini obale, gumb poput sidra vidjet će te na kartici pregled će postati aktivna.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
+  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - To pokazuje da ste u mogućnosti za izgradnju skladišta na određenom mjestu pritiskom na taj gumb ('Izgradi naselje')
-  - Sada imate pregled vašeg skladišta, kojeg možete povući na željnu lokaciju pomicanjem miša.
-  - "Možete graditi na svakom mjestu gdje pregled nije zasjenjenom crvenom bojom. ↵ \nKliknite na mjesto gdje želite staviti svoju prvu zgradu."
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Izgradite drvosječu i povežite se na skladište pomoću staze.]
-  - [Headline, 'Novi zadatak: izgraditi drvosječu']
+  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - Građevinski materijali na vašem brodu istovareni su automatski. Sada možete izgraditi neke osnovne zgrade.
-  - Mi ćemo početi s izgradnjom drvosječe.
-  - To je bitno jer u ovoj fazi, jer vaši pomorci trenutno mogu priuštiti drvene ploče za izgradnju šatora.
-  - Također i ribari trebaju drvene ploče za izgradnju svojih ribarica.
-  - Da bi ste izgradili drvosječu, otvorite izbornik graditi bilo klikom na veliku ikonu ispod mini mape ili pritiskom na B tipku.
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Izbornik je razvrstan prema razinama.
-  - Trenutno ste u prva razina(Mornari), tako da se nude samo osnovne zgrade.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    Kako napreduje te, tako vam se otključavaju nove zgrade.'
-  - For now, select the lumberjack under 'Companies' and build it in an area with some trees around.
-  - You can also plant trees later - but that costs money. Use what nature provided you with!
-  - A company always needs a trail connection to a storage or warehouse, otherwise goods will remain at the company and not be collected.
-  - This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -110,7 +105,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVI ZADATAK: GLAVNI TRG']
   - [Image, content/gui/images/background/hr.png]
   - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -132,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
   - [Image, content/gui/images/background/hr.png]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
@@ -143,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Consider to disable the upgrade if your stock of these materials is low.
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Build at least three additional tents and connect them to the main square.]
@@ -655,9 +650,9 @@ metadata:
   author: The UH team
   description: 'Vodič:
 
-    Izgradi svoju prvu naseobinu i nauči kako igrati!'
+    Izgradi svoje prvo naselje i nauči kako igrati!'
   difficulty: Vodič
   locale: hr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 37 translated messages, 2 fuzzy translations, 152 untranslated messages.
+  translation_status: 12 translated messages, 15 fuzzy translations, 159 untranslated messages.
