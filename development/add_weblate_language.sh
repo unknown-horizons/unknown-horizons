@@ -5,19 +5,25 @@ if [[ "$#" -ne 1 ]]; then
 	exit 1
 fi
 
-f="po/uh/unknown-horizons.pot"
-o="po/uh/${1}.po"
+f="../po/uh/unknown-horizons.pot"
+o="../po/uh/${1}.po"
 msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
 git add "$o"
 
-f="po/uh-server/unknown-horizons-server.pot"
-o="po/uh-server/${1}.po"
+f="../po/uh-server/unknown-horizons-server.pot"
+o="../po/uh-server/${1}.po"
 msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
 git add "$o"
 
-mkdir -p "po/scenarios/${1}/"
-f="po/scenarios/templates/tutorial.pot"
-o="po/scenarios/${1}/tutorial.po"
+mkdir -p "../po/scenarios/${1}/"
+f="../po/scenarios/templates/tutorial.pot"
+o="../po/scenarios/${1}/tutorial.po"
+msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
+git add "$o"
+
+mkdir -p "../po/scenarios/${1}/"
+f="../po/scenarios/templates/The_Unknown.pot"
+o="../po/scenarios/${1}/The_Unknown.po"
 msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
 git add "$o"
 
