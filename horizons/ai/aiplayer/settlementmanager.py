@@ -29,7 +29,7 @@ from horizons.ai.aiplayer.resourcemanager import ResourceManager
 from horizons.ai.aiplayer.trademanager import TradeManager
 
 from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
-from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, MountainCoverageGoal
+from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, StoneDepositCoverageGoal, MountainCoverageGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
 	FeederTobaccoProductsGoal, FeederSaltGoal, FeederMedicalProductsGoal
@@ -133,6 +133,7 @@ class SettlementManager(WorldObject):
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
+			self._goals.append(StoneDepositCoverageGoal(self))
 			self._goals.append(FoundFeederIslandGoal(self))
 			self._goals.append(MountainCoverageGoal(self))
 			self._goals.append(FoodGoal(self))
