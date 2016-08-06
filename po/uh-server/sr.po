@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2015-06-04 12:47+0200\n"
-"Last-Translator: Slobodan Simić <slsimic@gmail.com>\n"
+"PO-Revision-Date: 2016-08-05 15:25+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/uh/uh-server/sr/>"
 "\n"
 "Language: sr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -113,6 +113,5 @@ msgid "Unable to change your color."
 msgstr "Не могу да променим вашу боју."
 
 #: horizons/network/server.py:650
-#, fuzzy
 msgid "You can't fetch a game while in another game"
 msgstr "Не можете добавити игру док сте у другој игри"
