@@ -23,10 +23,10 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
-from horizons.entities import Entities
 from horizons.util.python import decorators
+from horizons.component.storagecomponent import StorageComponent
+from horizons.entities import Entities
 
 class AbstractClayPit(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
