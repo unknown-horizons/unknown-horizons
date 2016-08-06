@@ -116,7 +116,8 @@ class LandManager(WorldObject):
 
 	def refresh_resource_deposits(self):
 		self.resource_deposits = defaultdict(list) # {resource_id: [tile, ...]} all resource deposits of a type on the island
-		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE]}.iteritems():
+		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE],
+											RES.STONE_DEPOSIT: [BUILDINGS.STONE_DEPOSIT, BUILDINGS.STONE_PIT]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
 					if building.get_component(StorageComponent).inventory[resource_id] > 0:

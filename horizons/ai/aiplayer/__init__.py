@@ -83,6 +83,7 @@ from building.cannonfoundry import AbstractCannonfoundry
 from building.winery import AbstractWinery
 #from building.woodentower import AbstractWoodenTower
 from building.weaponsmith import AbstractWeaponsmith
+from building.stonedeposit import AbstractStoneDeposit
 from building.stonepit import AbstractStonePit
 from building.stonemason import AbstractStonemason
 

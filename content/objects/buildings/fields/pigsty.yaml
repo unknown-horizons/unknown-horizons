@@ -4,8 +4,8 @@ baseclass: nature.Field
 radius: 0
 cost: 0
 cost_inactive: 0
-size_x: 5
-size_y: 5
+size_x: 3
+size_y: 3
 inhabitants: 0
 tooltip_text: _ Raises pigs. Needs a farm.
 tier: TIER.SETTLERS
@@ -23,5 +23,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.PIGS: 4, RES.ACORNS: 10}
 actionsets:
-  TIER.SETTLERS:
+  TIER.CITIZENS:
     as_pigsty0:

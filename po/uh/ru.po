@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2014-06-19 03:19+0200\n"
-"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
+"PO-Revision-Date: 2016-07-31 14:45+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -311,7 +311,6 @@ msgid "Capacity utilization"
 msgstr "Использование производственных мощностей"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
 msgstr "Щёлкните, чтобы переименовать корабль"
@@ -499,10 +498,9 @@ msgid "Configure trading route"
 msgstr "Задать торговый путь"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(с потерей ресурсов)"
+msgstr "Отменить все ресурсы"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1542,16 +1540,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Дипломатия невозможна, т.к. нет других игроков."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Вы действительно хотите прервать эту партию?"
+msgstr "Вы уверены, что хотите удалить эти объекты?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Убрать пункт"
+msgstr "Удалить"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1560,10 +1556,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} клеток"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Выберите клавишу"
+msgstr "Нажмите клавишу…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2125,7 +2120,6 @@ msgid "Press H to remove this hint"
 msgstr "Нажмите H, чтобы убрать подсказку"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
 msgstr "Уничтожить строение"
@@ -2225,7 +2219,6 @@ msgid "Warehouse overview"
 msgstr "Обзор склада"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
 msgstr "Обзор единицы"
@@ -2737,10 +2730,9 @@ msgstr "Дозорная башня"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Обеспечивает защиту поселения."
+msgstr "Расширяет диапазон урегулирования."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2877,10 +2869,11 @@ msgstr "Хранилище"
 # Very bad translate
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Позволяет хранить больше товаров и предоставляет носильщиков."
+msgstr ""
+"Расширяет складе, расширяет диапазон урегулирования и обеспечивает "
+"коллекционеров."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -2994,17 +2987,15 @@ msgstr "Склад"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Оружие"
+msgstr "Шахта"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Изготовляет инструменты из железа."
+msgstr "Производит оружие из железа."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423

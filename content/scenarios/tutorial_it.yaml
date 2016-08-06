@@ -24,7 +24,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Questo è il tuo Diario, dove troverai informazioni importanti riguardo questo scenario. Un sommario con delle notifiche per ogni nuova missione apparirà sul lato sinistro della schermata. Potrai muoverti col mouse su di essere per leggerne il contenuto, o cliccarci per aprire il Diario.
+  - Questo è il tuo Diario, dove troverai informazioni importanti riguardo lo scenario attuale. Un sommario con le notifiche delle nuove missioni apparirà nella parte sinistra della schermata. Potrai muoverti col mouse su queste notifiche per leggerne il contenuto, o cliccarci di sopra per aprire il Diario.
   - Puoi anche aprire il Diario ogni volta che vuoi cliccando sul bottone sotto la mini-mappa, in alto a destra sullo schermo. Da adesso faremo riferimento a quest'aria che contiene la mini-mappa e i vari bottoni come "Panoramica".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]

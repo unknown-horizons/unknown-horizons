@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-22 00:49+0000\n"
+"PO-Revision-Date: 2016-07-31 14:57+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -425,7 +425,9 @@ msgstr "Name:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr "Bewaffnung:"
+msgstr ""
+"Bewaffnung:\n"
+"Waffen:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"

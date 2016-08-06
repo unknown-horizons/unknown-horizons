@@ -39,6 +39,11 @@ class DefaultPersonality:
 		raw_clay_importance = 0.3 # how important is the available resource amount
 		no_raw_clay_penalty = 100 # penalty for having less than this much of the resource on the island
 
+		min_stone_deposit = 100 # if the island has less than this much then apply the penalty
+		max_stone_deposit = 300 # no more than this much will count for the bonus value
+		stone_deposit_importance = 0.3 # how important is the available resource amount
+		no_stone_deposit_penalty = 100 # penalty for having less than this much of the resource on the island
+		
 		min_raw_iron = 100 # if the island has less than this much then apply the penalty
 		max_raw_iron = 300 # no more than this much will count for the bonus value
 		raw_iron_importance = 0.05 # how important is the available resource amount
@@ -209,6 +214,13 @@ class DefaultPersonality:
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
+	class StoneDepositCoverageGoal:
+		enabled = True
+		default_priority = 450
+		residences_required = 0
+		min_tier = TIER.PIONEERS
+
+		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing
