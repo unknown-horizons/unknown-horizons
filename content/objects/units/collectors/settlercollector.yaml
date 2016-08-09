@@ -25,6 +25,10 @@ actionsets:
     #as_female3:
   TIER.PIONEERS:
     as_pioneermale0:
+    as_pioneerfemale0:
   TIER.SETTLERS:
     as_settlermale0:
-    
+    as_settlerfemale0:
+  TIER.CITIZENS:
+    as_citizenmale0:
+    as_citizenfemale0
