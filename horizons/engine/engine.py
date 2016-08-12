@@ -233,7 +233,7 @@ class Fife(object):
 		if remkey in old_keys:
 				old_keys.remove(remkey)
 		if not old_keys:
-				print 'Cannot have no binding for action'
+				print('Cannot have no binding for action')
 				return
 		self.set_key_for_action(action, old_keys)
 
