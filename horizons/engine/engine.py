@@ -232,7 +232,7 @@ class Fife(object):
 		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
 		if remkey in old_keys:
 				old_keys.remove(remkey)
-		if len(old_keys) == 0:
+		if not old_keys:
 				print 'Cannot have no binding for action'
 				return
 		self.set_key_for_action(action, old_keys)
