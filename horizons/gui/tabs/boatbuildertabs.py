@@ -66,7 +66,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 		# a Unitbuilder is considered active here if it builds sth, no matter if it's paused
 		production_lines = self.producer.get_production_lines()
-		if len(production_lines) > 0:
+		if production_lines:
 			self.show_production_is_active_container(container_active, container_inactive,
 			                                         progress_container, cancel_container, production_lines)
 		else:
