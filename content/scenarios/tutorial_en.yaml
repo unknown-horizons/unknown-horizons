@@ -192,6 +192,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Excellent! The Free Trader will now stop by at your warehouse from time to time.
 
     Let's continue our tutorial on how to trade.
+  - First click on your own warehouse and click on the third tab.
+  - Than click on one of the 3 solts than you can select an good that you want to buy or sell.
   - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
   - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
   - When buying, you will buy sufficient to hold your 'target value' in stock.
