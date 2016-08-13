@@ -109,9 +109,15 @@ files_to_skip = [
 
 import os
 import sys
+import inspect
 
 from yaml import load
 from yaml import SafeLoader as Loader
+
+cmd_folder = os.path.realpath(
+    os.path.abspath(os.path.join(os.path.split(inspect.getfile(inspect.currentframe()))[0], "..")))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS
 
