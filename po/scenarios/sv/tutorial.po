@@ -9,8 +9,8 @@ msgstr ""
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
 "PO-Revision-Date: 2016-08-05 15:28+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/>"
-"\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/"
+">\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -134,7 +134,6 @@ msgstr ""
 "Bygg en skogshuggare och anslut den till handelskontoret med en gångstig."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
 msgstr "NY UPPGIFT: BYGG EN SKOGSHUGGARE"
 
@@ -354,7 +353,6 @@ msgid ""
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a tent and connect it to the main square."
 msgid "Build a tent and connect it to the main square if necessary."
 msgstr "Bygg ett tält och anslut den till marknadsplatsen."
 
@@ -519,7 +517,6 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid "Build a signal fire at the coast close to your warehouse."
 msgid "Task: Build a signal fire at the coast close to your warehouse."
 msgstr "Bygg en signalbrand vid kusten och i närheten av handelskontoret."
 

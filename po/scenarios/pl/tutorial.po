@@ -31,9 +31,6 @@ msgstr ""
 "Zbuduj swoją pierwszą osadę i naucz się grać!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid ""
-#| "Build a warehouse at the coast, so it is easily accessible for other "
-#| "ships like the Free Trader."
 msgid ""
 "Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
@@ -71,10 +68,6 @@ msgstr ""
 "zakładki jako \"Przegląd\"."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "To see your first task, click on the button \"Read next entries\" in the "
-#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
 "To see your first task, turn to the next page of the Journal using the "
@@ -95,9 +88,6 @@ msgstr ""
 "napotkasz jakieś błędy, proszę zgłoś to."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
@@ -106,7 +96,6 @@ msgstr ""
 "Odwiedź www.unknown-horizons.org, aby skontaktować się z twórcami."
 
 #. This is the text body of a logbook page.
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
 msgstr "A teraz rozpocznijmy zabawę!"
 
@@ -125,9 +114,6 @@ msgstr ""
 "potrzebujesz do założenia osady."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "To move your ship, select it with a left click and right click on the "
-#| "location you want it to go to."
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."

@@ -9,8 +9,8 @@ msgstr ""
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
 "PO-Revision-Date: 2016-04-11 14:34+0000\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
-"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/>"
-"\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/"
+">\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,9 +31,6 @@ msgstr ""
 "Ehita oma esimene koloonia ja õpi kuidas mängida!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid ""
-#| "Build a warehouse at the coast, so it is easily accessible for other "
-#| "ships like the Free Trader."
 msgid ""
 "Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
@@ -67,14 +64,10 @@ msgid ""
 msgstr ""
 "Logiraamatu saad alati avada ka klõpsates ekraani paremas ülanurgas asuva "
 "minikaardi all oleval nupul. Edaspidi viidatakse sellele alale kui "
-"minikaardile ning seal olevatele nuppudele ja vahekaartidele kui \""
-"Ülevaatele\"."
+"minikaardile ning seal olevatele nuppudele ja vahekaartidele kui \"Ülevaatele"
+"\"."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "To see your first task, click on the button \"Read next entries\" in the "
-#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
 "To see your first task, turn to the next page of the Journal using the "
@@ -95,9 +88,6 @@ msgstr ""
 "vea, siis palun anna meile teada."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
@@ -106,12 +96,10 @@ msgstr ""
 "Tiimiga ühenduse võtmiseks külasta saiti www.unknown-horizons.org."
 
 #. This is the text body of a logbook page.
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
 msgstr "Ja nüüd alustagem mänguga!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
 msgstr "ÜLESANNE: LOO KOLOONIA"
 
@@ -119,12 +107,10 @@ msgstr "ÜLESANNE: LOO KOLOONIA"
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
-msgstr "Su laev on merel, lastiks vahendid, mida vajad uue koloonia rajamiseks."
+msgstr ""
+"Su laev on merel, lastiks vahendid, mida vajad uue koloonia rajamiseks."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "To move your ship, select it with a left click and right click on the "
-#| "location you want it to go to."
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
@@ -133,9 +119,6 @@ msgstr ""
 "peaks seilama."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Once you are near the coast, the anchor-like button you see in the "
-#| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
@@ -161,17 +144,14 @@ msgstr ""
 "ja tee selle olulise hoone asetamiseks vasak-klõps."
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
 msgstr "Ülesanne: ehita rannikule laohoone."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
 msgstr "Ehita puuraidurite telk ja ühenda see teeraja abil laohoonega."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
 msgstr "ÜLESANNE: EHITA PUURAIDURITE TELK"
 
@@ -194,9 +174,6 @@ msgstr ""
 "töötlevad selle puiduks, mida saab kasutada ehitamiseks või vahetuskaubana."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "In order to construct lumberjacks; open the build menu by either clicking "
-#| "the big icon below the mini map or pressing B key."
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
@@ -256,7 +233,6 @@ msgstr ""
 "teeraja puuraidurite telgi ja lao vahele."
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
@@ -369,9 +345,6 @@ msgid ""
 msgstr "Su elanikud vajavad peaväljakut, kus nad saavad hankida omale kaupu."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "This means that they need a trail connection from their home to the main "
-#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square. Note that the main square acts as trail as well, therefore adjacent "
@@ -450,7 +423,6 @@ msgstr ""
 "maksu ja lubada või keelata selle taseme elanikel tõusta järgmisele tasemele."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a tent and connect it to the main square."
 msgid "Build a tent and connect it to the main square if necessary."
 msgstr "Ehita telk ja vajadusel ühenda see peaväljakuga."
 
@@ -498,9 +470,6 @@ msgstr ""
 "ainus raha saamise viis!"
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Task: Build a tent and connect it to the main square. Tents dont need to "
-#| "be connected to any of the companies."
 msgid ""
 "Task: Build a tent and connect it to the main square if necessary. Tents "
 "don't need to be connected to any of the companies."
