@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2015-12-02 23:38+0100\n"
+"POT-Creation-Date: 2016-08-13 02:39+0200\n"
 "PO-Revision-Date: 2016-01-09 07:15+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
@@ -590,6 +590,15 @@ msgstr ""
 "훌륭합니다! 자유무역상은 창고에 수시로 멈출것입니다.\n"
 "\n"
 "무역하는 방법에대해 우리 자습서를 계속 진행 합니다."
+
+#. This is the text body of a logbook page.
+msgid "First click on your own warehouse and click on the third tab."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Then click on one of the 3 slots, then select a good you want to buy or sell."
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""

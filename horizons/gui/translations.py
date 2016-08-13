@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -131,6 +131,43 @@ def set_translations():
 		(u'headline'                     , 'text'    ): _(u"Chat"),
 		},
 
+	'barracks.xml' : {
+		(u'UB_cancel_build_label'        , 'text'    ): _(u"Cancel building:"),
+		(u'UB_cancel_warning_label'      , 'text'    ): _(u"(lose all resources)"),
+		(u'UB_current_order'             , 'text'    ): _(u"Currently building:"),
+		(u'UB_howto_build_lbl'           , 'text'    ): _(u"To build a groundunit, click on one of the class tabs, select the desired groundunit and confirm the order."),
+		(u'UB_needed_res_label'          , 'text'    ): _(u"Resources still needed:"),
+		(u'UB_progress_label'            , 'text'    ): _(u"Construction progress:"),
+		(u'UB_cancel_button'             , 'helptext'): _(u"Cancel all building progress"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'toggle_active_active'         , 'helptext'): _(u"Pause"),
+		(u'toggle_active_inactive'       , 'helptext'): _(u"Resume"),
+		},
+
+	'barracks_confirm.xml' : {
+		(u'BB_confirm_build_label'       , 'text'    ): _(u"Build groundunit:"),
+		(u'BB_description_swordman'      , 'text'    ): _(u"Three-masted most common classified war ship with one gun deck."),
+		(u'BB_needed_boards'             , 'text'    ): _(u"24t"),
+		(u'BB_needed_boards+'            , 'text'    ): _(u" + 24t"),
+		(u'BB_needed_cannons'            , 'text'    ): _(u"06t"),
+		(u'BB_needed_cannons+'           , 'text'    ): _(u" + 06t"),
+		(u'BB_needed_cloth'              , 'text'    ): _(u"14t"),
+		(u'BB_needed_cloth+'             , 'text'    ): _(u" + 14t"),
+		(u'BB_needed_money'              , 'text'    ): _(u"2500"),
+		(u'BB_needed_money+'             , 'text'    ): _(u" + 1457"),
+		(u'BB_needed_ropes'              , 'text'    ): _(u"06t"),
+		(u'BB_needed_ropes+'             , 'text'    ): _(u" + 06t"),
+		(u'BB_upgrade_cannons'           , 'text'    ): _(u"Cannons"),
+		(u'BB_upgrade_hull'              , 'text'    ): _(u"Hull"),
+		(u'headline'                     , 'text'    ): _(u"Confirm order"),
+		(u'headline_BB_builtgroundunit_label', 'text'    ): _(u"Sloop-o'-war"),
+		(u'headline_upgrades'            , 'text'    ): _(u"Buy Upgrades"),
+		(u'create_unit'                  , 'helptext'): _(u"Build this groundunit!"),
+		},
+
+	'barracks_showcase.xml' : {
+		},
+
 	'boatbuilder.xml' : {
 		(u'UB_cancel_build_label'        , 'text'    ): _(u"Cancel building:"),
 		(u'UB_cancel_warning_label'      , 'text'    ): _(u"(lose all resources)"),
@@ -142,6 +179,27 @@ def set_translations():
 		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
 		(u'toggle_active_active'         , 'helptext'): _(u"Pause"),
 		(u'toggle_active_inactive'       , 'helptext'): _(u"Resume"),
+		},
+
+	'boatbuilder_confirm.xml' : {
+		(u'BB_confirm_build_label'       , 'text'    ): _(u"Build ship:"),
+		(u'BB_description_frigate'       , 'text'    ): _(u"Three-masted most common classified war ship with one gun deck."),
+		(u'BB_needed_boards'             , 'text'    ): _(u"24t"),
+		(u'BB_needed_boards+'            , 'text'    ): _(u" + 24t"),
+		(u'BB_needed_cannons'            , 'text'    ): _(u"06t"),
+		(u'BB_needed_cannons+'           , 'text'    ): _(u" + 06t"),
+		(u'BB_needed_cloth'              , 'text'    ): _(u"14t"),
+		(u'BB_needed_cloth+'             , 'text'    ): _(u" + 14t"),
+		(u'BB_needed_money'              , 'text'    ): _(u"2500"),
+		(u'BB_needed_money+'             , 'text'    ): _(u" + 1457"),
+		(u'BB_needed_ropes'              , 'text'    ): _(u"06t"),
+		(u'BB_needed_ropes+'             , 'text'    ): _(u" + 06t"),
+		(u'BB_upgrade_cannons'           , 'text'    ): _(u"Cannons"),
+		(u'BB_upgrade_hull'              , 'text'    ): _(u"Hull"),
+		(u'headline'                     , 'text'    ): _(u"Confirm order"),
+		(u'headline_BB_builtship_label'  , 'text'    ): _(u"Sloop-o'-war"),
+		(u'headline_upgrades'            , 'text'    ): _(u"Buy Upgrades"),
+		(u'create_unit'                  , 'helptext'): _(u"Build this ship!"),
 		},
 
 	'boatbuilder_showcase.xml' : {
