@@ -76,7 +76,7 @@ class FeederLiquorGoal(FeederChainGoal):
 
 	@property
 	def can_be_activated(self):
-			return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 class FeederBeerGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
