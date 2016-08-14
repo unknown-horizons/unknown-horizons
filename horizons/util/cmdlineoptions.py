@@ -227,7 +227,7 @@ The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
 .RE
 .SH "COPYRIGHT"
 .br
-Copyright \(co 2008-2014 The Unknown Horizons Team
+Copyright \(co 2008-2016 The Unknown Horizons Team
 .br
 .PP
 Permission is granted to copy, distribute and/or modify this document under the
