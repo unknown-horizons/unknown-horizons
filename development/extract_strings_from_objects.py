@@ -36,7 +36,7 @@
 
 HEADER = '''\
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -109,9 +109,15 @@ files_to_skip = [
 
 import os
 import sys
+import inspect
 
 from yaml import load
 from yaml import SafeLoader as Loader
+
+cmd_folder = os.path.realpath(
+    os.path.abspath(os.path.join(os.path.split(inspect.getfile(inspect.currentframe()))[0], "..")))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS
 
@@ -152,7 +158,7 @@ def content_from_file(filename):
 		return ''
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
-			text = '_("{value}")'.format(value=value[2:])
+			text = u'_("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
 			comment = '%s of %s' %(component, filename)

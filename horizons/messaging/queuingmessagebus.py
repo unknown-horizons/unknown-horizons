@@ -38,7 +38,7 @@ class QueuingMessageBus(MessageBus):
 	def subscribe_globally(self, messagetype, callback):
 		MessageBus.subscribe_globally(self, messagetype, callback)
 		
-		while len(self.message_queue[messagetype]):
+		while self.message_queue[messagetype]:
 			self.broadcast(self.message_queue[messagetype].popleft())
 
 	def subscribe_locally(self, messagetype, instance, callback):

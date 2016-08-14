@@ -145,7 +145,7 @@ class SelectionTool(NavigationTool):
 		if self.session.world.health_visible_for_all_health_instances:
 			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
-		if len(selected) == 0:
+		if not selected:
 			return
 		if len(selected) == 1:
 			iter(selected).next().get_component(SelectableComponent).show_menu()

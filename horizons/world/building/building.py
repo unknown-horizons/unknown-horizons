@@ -24,6 +24,7 @@ import logging
 from fife import fife
 
 from horizons.command.building import Build
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import RES, LAYERS, GAME
@@ -203,6 +204,12 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		"""Upgrades building to another tier"""
 		self.level = lvl
 		self.update_action_set_level(lvl)
+
+		# any collectors (units) should also be upgraded, so that their
+		# graphics or properties can change
+		if self.has_component(CollectingComponent):
+			for collector in self.get_component(CollectingComponent).get_local_collectors():
+				collector.level_upgrade(lvl)
 
 	@classmethod
 	def get_initial_level(cls, player):
