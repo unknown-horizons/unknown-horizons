@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2015-12-02 23:38+0100\n"
+"POT-Creation-Date: 2016-08-13 15:14+0200\n"
 "PO-Revision-Date: 2016-01-09 07:15+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
@@ -31,9 +31,6 @@ msgstr ""
 "정착지를 건설하고 게임플레이 방법을 배우세요!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid ""
-#| "Build a warehouse at the coast, so it is easily accessible for other "
-#| "ships like the Free Trader."
 msgid ""
 "Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr "무역선이 정착지를 방문할 수 있도록 해안에 창고를 건설하세요."
@@ -60,17 +57,14 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "To see your first task, click on the button \"Read next entries\" in the "
-#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
 "To see your first task, turn to the next page of the Journal using the "
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"첫 번째 임무를 확인하려면, 반대 페이지의 하단에 있는 버튼을 사용하여 저널?? 일기??의 다음 페이지로 넘기세요.- 다음과 같습니다:"
+"첫 번째 임무를 확인하려면, 반대 페이지의 하단에 있는 버튼을 사용하여 저널?? "
+"일기??의 다음 페이지로 넘기세요.- 다음과 같습니다:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -80,9 +74,6 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
@@ -91,12 +82,10 @@ msgstr ""
 "팀에 문의하는 방법을 찾으려면 www.unknown-horizons.org에 방문하십시오."
 
 #. This is the text body of a logbook page.
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
 msgstr "그러면 이제, 게임을 시작합니다!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
 msgstr "새로운 임무: 정착지 만들기"
 
@@ -107,18 +96,13 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "To move your ship, select it with a left click and right click on the "
-#| "location you want it to go to."
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
-msgstr "배를 이동하려면, 왼쪽 클릭으로 선택하고, 항해할 위치에서 오른쪽 클릭합니다."
+msgstr ""
+"배를 이동하려면, 왼쪽 클릭으로 선택하고, 항해할 위치에서 오른쪽 클릭합니다."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Once you are near the coast, the anchor-like button you see in the "
-#| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
@@ -139,12 +123,10 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
 msgstr "임무: 해안선 근처에서 창고를 건설하기."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
 msgstr "벌목꾼의 집을 건설하고, 창고와 연결하십시오."
 
@@ -168,13 +150,12 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "In order to construct lumberjacks; open the build menu by either clicking "
-#| "the big icon below the mini map or pressing B key."
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
-msgstr "벌목꾼의 집을 지으려면, 작은지도 아래 버튼을 클릭거나  기본 단축키인 'B' 키를 눌러하여 건설 차림판을 여십시오."
+msgstr ""
+"벌목꾼의 집을 지으려면, 작은지도 아래 버튼을 클릭거나  기본 단축키인 'B' 키"
+"를 눌러하여 건설 차림판을 여십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -213,7 +194,6 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
@@ -316,16 +296,13 @@ msgid ""
 msgstr "주민들은 그들의 상품을 가져올 수 있는 주요 광장을 필요로 합니다."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "This means that they need a trail connection from their home to the main "
-#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square. Note that the main square acts as trail as well, therefore adjacent "
 "tents do not need a separate trail."
 msgstr ""
-"즉, 그들의 집에서 주요광장까지 연결된 길을 필요로 한다는 뜻입니다. 주 광장은 길로서의 역할을 합니다. 따라서 인접한 집들은 별도의 "
-"길이 필요하지 않습니다."
+"즉, 그들의 집에서 주요광장까지 연결된 길을 필요로 한다는 뜻입니다. 주 광장은 "
+"길로서의 역할을 합니다. 따라서 인접한 집들은 별도의 길이 필요하지 않습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -393,7 +370,6 @@ msgstr ""
 "데 허용 하거나 거부할 수 있습니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a tent and connect it to the main square."
 msgid "Build a tent and connect it to the main square if necessary."
 msgstr "필요하다면 집을 건설하고 주 광장과 연결하세요."
 
@@ -439,13 +415,12 @@ msgstr ""
 "수있는 유일한 방법입니다!"
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Task: Build a tent and connect it to the main square. Tents dont need to "
-#| "be connected to any of the companies."
 msgid ""
 "Task: Build a tent and connect it to the main square if necessary. Tents "
 "don't need to be connected to any of the companies."
-msgstr "임무 : 필요하다면 천막을 건설하고 주요 광장에 연결하세요. 천막은 어떠한 동료와도 연결을 필요로 하지 않습니다."
+msgstr ""
+"임무 : 필요하다면 천막을 건설하고 주요 광장에 연결하세요. 천막은 어떠한 동료"
+"와도 연결을 필요로 하지 않습니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -615,6 +590,15 @@ msgstr ""
 "훌륭합니다! 자유무역상은 창고에 수시로 멈출것입니다.\n"
 "\n"
 "무역하는 방법에대해 우리 자습서를 계속 진행 합니다."
+
+#. This is the text body of a logbook page.
+msgid "First click on your own warehouse and click on the third tab."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Then click on one of the 3 slots, then select a good you want to buy or sell."
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-03 22:09+0200\n"
+"POT-Creation-Date: 2016-08-14 02:13+0200\n"
 "PO-Revision-Date: 2013-07-13 19:06+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh-server/ko/>\n"
@@ -20,92 +20,99 @@ msgstr ""
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr "오래 되었거나 지원 되지 않는 다중 플레이어 프로토콜입니다. 게임 버전을 확인 하시기 바랍니다"
+msgstr ""
+"오래 되었거나 지원 되지 않는 다중 플레이어 프로토콜입니다. 게임 버전을 확인 "
+"하시기 바랍니다"
 
-#: horizons/network/server.py:284
+#: horizons/network/server.py:285
 msgid "You've exceeded the global packet size."
 msgstr "전체 패킷 크기를 초과 했습니다."
 
-#: horizons/network/server.py:285 horizons/network/server.py:303
+#: horizons/network/server.py:286 horizons/network/server.py:305
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr "이것은 결코 일어나서는 안되어야합니다. 저희에게 버그 보고서를 파일을 보내주세요."
+msgstr ""
+"이것은 결코 일어나서는 안되어야합니다. 저희에게 버그 보고서를 파일을 보내주세"
+"요."
 
-#: horizons/network/server.py:302
+#: horizons/network/server.py:304
 msgid "You've exceeded the per packet size."
 msgstr "패킷 크기를 초과했습니다."
 
-#: horizons/network/server.py:309
+#: horizons/network/server.py:312
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr "알 수 없거나 잘못된 패킷입니다. 게임 버전을 확인 하시기 바랍니다"
 
-#: horizons/network/server.py:315
+#. this will trigger ondisconnect() for cleanup
+#: horizons/network/server.py:321
 msgid "Invalid/Unknown session"
 msgstr "잘못되었거나 알 수 없는 세션"
 
-#: horizons/network/server.py:393
+#: horizons/network/server.py:404
 msgid "You can't join a game while in another game"
 msgstr "다른 판에는 참여할수 없습니다"
 
-#: horizons/network/server.py:398
+#: horizons/network/server.py:409
 msgid "Unknown game or game is running a different version"
 msgstr "알수 없는 게임이거나 다른버전의 게임이 실행중입니다"
 
-#: horizons/network/server.py:401
+#: horizons/network/server.py:412
 msgid "Game has already started. No more joining"
 msgstr "이판은 이미 시작되었습니다. 더 이상 참여할수 없습니다"
 
-#: horizons/network/server.py:404
+#: horizons/network/server.py:415
 msgid "Game is full"
 msgstr "이판의 정원이 채워졌습니다"
 
-#: horizons/network/server.py:407
+#: horizons/network/server.py:418
 msgid "Wrong password"
 msgstr "비밀번호가 틀렸습니다"
 
-#: horizons/network/server.py:424 horizons/network/server.py:534
+#: horizons/network/server.py:435 horizons/network/server.py:548
 msgid "There's already a player with your name inside this game."
 msgstr "이판에 같은 이름의 플레이어가 이미 있습니다."
 
-#: horizons/network/server.py:425
+#: horizons/network/server.py:436
 msgid "Please change your name."
 msgstr "이름을 바꿔주세요."
 
-#: horizons/network/server.py:428 horizons/network/server.py:562
+#: horizons/network/server.py:439 horizons/network/server.py:577
 msgid "There's already a player with your color inside this game."
 msgstr "이판에 같은 색상의 플레이어가 이미 있습니다."
 
-#: horizons/network/server.py:429
+#: horizons/network/server.py:440
 msgid "Please change your color."
 msgstr "색상을 바꿔주세요."
 
-#: horizons/network/server.py:432
+#: horizons/network/server.py:443
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr "게임에서 유일해야되는 플레이어 ID가 이미 있습니다. 발생하면 안됩니다."
 
-#: horizons/network/server.py:448
+#: horizons/network/server.py:459
 msgid "You are not inside a game"
 msgstr "게임을 하고 있지 않습니다"
 
-#: horizons/network/server.py:478
+#: horizons/network/server.py:490
 msgid "The game has been terminated. The creator has left the game."
 msgstr "이 판 게임이 종료 되었습니다. 방장이 이 게임을 떠났습니다."
 
-#: horizons/network/server.py:483
+#: horizons/network/server.py:495
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr "한 플레이어가 그게임을 종료하였습니다. 기술적인 이유로 현재 이판을 더 이상 지속할수 없음을 의미합니다. 죄송합니다."
+msgstr ""
+"한 플레이어가 그게임을 종료하였습니다. 기술적인 이유로 현재 이판을 더 이상 지"
+"속할수 없음을 의미합니다. 죄송합니다."
 
-#: horizons/network/server.py:535
+#: horizons/network/server.py:549
 msgid "Unable to change your name."
 msgstr "이름을 바꿀수 없습니다."
 
-#: horizons/network/server.py:563
+#: horizons/network/server.py:578
 msgid "Unable to change your color."
 msgstr "색상을 바꿀수 없습니다."
 
-#: horizons/network/server.py:650
+#: horizons/network/server.py:666
 msgid "You can't fetch a game while in another game"
 msgstr "다른 게임중에는 게임을 가져올 수 없습니다"
