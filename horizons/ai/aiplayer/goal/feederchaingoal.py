@@ -77,6 +77,10 @@ class FeederLiquorGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'LiquorGoal'
 
+	@property
+	def can_be_activated(self):
+			return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
 class FeederBeerGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederBeerGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
