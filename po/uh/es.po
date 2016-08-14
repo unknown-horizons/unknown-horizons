@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-07-31 15:13+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2016-08-15 00:10+0000\n"
+"Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -2162,13 +2162,15 @@ msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Esto destruirá todos los edificios que estén fuera del alcance del "
+"asentamiento."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s edificio adicional será destruido."
+msgstr[1] "%s edificios adicionales serán destruidos"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2294,7 +2296,7 @@ msgstr "Visión general de la producción"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Llena alrededor de {how_many} árboles"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -3053,7 +3055,7 @@ msgstr "Muele el maíz para hacer harina."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Bodega"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3908,7 +3910,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "espada"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
