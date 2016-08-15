@@ -152,11 +152,11 @@ def content_from_file(filename):
 		return ''
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
-			text = '_("{value}")'.format(value=value[2:])
+			text = u'_("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
-			comment = '{0!s} of {1!s}'.format(component, filename)
-			object_strings.append('# {0!s} {1!s}"{2:<30!s}": {3!s}'. \
+			comment = u'{0!s} of {1!s}'.format(component, filename)
+			object_strings.append(u'# {0!s} {1!s}"{2:<30!s}": {3!s}'. \
 				format(comment,ROWINDENT, component, text))
 
 	for component, value in parsed.iteritems():
@@ -180,7 +180,7 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return('\n\t"{0!s}" : {{{1!s}{2!s},{3!s}}'.
+		return(u'\n\t"{0!s}" : {{{1!s}{2!s},{3!s}}'.
 			format(filename, ROWINDENT, (',' + ROWINDENT).join(strings)) + ROWINDENT)
 	else:
 		return ''
@@ -188,7 +188,7 @@ def content_from_file(filename):
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 
-output = '{0!s}{1!s}{2!s}'.format(HEADER, '\n'.join(filesnippets), FOOTER)
+output = u'{0!s}{1!s}{2!s}'.format(HEADER, '\n'.join(filesnippets), FOOTER)
 
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
