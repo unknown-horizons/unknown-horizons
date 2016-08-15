@@ -137,17 +137,17 @@ def main():
 		update_authors_per_file(f)
 
 	# Output data ready for AUTHORS.md copy/paste
-	print '-- New translation contributors since last update:'
+	print('-- New translation contributors since last update:')
 	sort_order = lambda (lang, _): LANGUAGENAMES.get_by_value(lang, english=True)
 	for language, authors in sorted(language_authors.items(), key=sort_order):
-		print '\n####', language
+		print('\n####', language)
 		#TODO
 		# The sorted() below will not correctly sort names containing non-ascii.
 		# You'll need to rely on manual copy/paste and ordering anyways, so just
 		# keep your eyes open a bit more than usual.
 		for author in sorted(authors):
 			print_ready = map(str.capitalize, author.split())
-			print '*', ' '.join(print_ready)
+			print('*', ' '.join(print_ready))
 
 
 if __name__ == '__main__':
