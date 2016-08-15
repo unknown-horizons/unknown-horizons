@@ -873,8 +873,8 @@ class _BaseEntry(object):
             # quick and dirty trick to get the real field name
             fieldname = fieldname[9:]
 
-        ret = ['{0!s}{1!s}{2!s} "{3!s}"'.format(delflag, fieldname, plural_index,
-                                escape(lines.pop(0)))]
+        ret = [u'{0!s}{1!s}{2!s} "{3!s}"'.format(
+            delflag, fieldname, plural_index, escape(lines.pop(0)))]
         for mstr in lines:
             #import pdb; pdb.set_trace()
             ret.append('{0!s}"{1!s}"'.format(delflag, escape(mstr)))
