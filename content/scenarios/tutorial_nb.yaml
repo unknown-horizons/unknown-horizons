@@ -25,7 +25,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -41,17 +41,17 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Besøk www.unknown-horizons.org for å finne ut hvordan du kontakter oss som står bak.'
   - ''
-  - And now, let's start the game!
+  - Nå er det på tide å gå i gang med spillet!
   - [Pagebreak]
   - [Headline, 'NY OPPGAVE: OPPRETT BOSETNING']
   - [Image, content/gui/images/background/hr.png]
   - Båten din er til havs, lastet med forsyningene du trenger for å opprette en ny bosetning.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - For å flytte båten din, velg den med venstreklikk og høyreklikk deretter på punktet du ønsker at den skal seile til.
+  - Når du kommer nær kysten vil «Bygg bosetning»-knappen i oversikten bli aktiv.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Når du klikker på denne knappen vil en forhåndsvisning av varehuset dukke opp.  Dette er den første byningen som kreves for å opprette en bosetning.  Mens du flytter muspekeren rundt vil du legge merke til at forhåndsvisningen blir farget rød når bygningen er i et område det ikke kan plasseres.
+  - Varehuset må plasseres ved kysten for å la båter legge til kai.  Du bør finne en god plassering før du venstreklikker for å plassere denne viktige bygningen.
   - ''
   - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Let''s continue our tutorial on how to trade.'
+  - First click on your own warehouse and click on the third tab.
+  - Then click on one of the 3 slots, then select a good you want to buy or sell.
   - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
   - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
   - When buying, you will buy sufficient to hold your 'target value' in stock.
@@ -655,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 9 translated messages, 177 untranslated messages.
+  translation_status: 14 translated messages, 174 untranslated messages.
