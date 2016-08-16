@@ -43,11 +43,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - ''
   - Y ahora, ¡comencemos la partida!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'N. TAREA: CREA UN ASENTAMIENTO']
   - [Image, content/gui/images/background/hr.png]
   - Tu barco está en el mar, cargado con los suministros que necesitarás para establecer un nuevo asentamiento.
   - Para mover tu navío, selecciónalo con el botón izquierdo, luego haz clic con el derecho sobre el punto al que quieras que vaya.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - Una vez cerca de la costa, el botón «Construir asentamiento» en la vista general se activará.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - Al hacer clic en este botón, se mostrará la vista previa del Almacén, el primer edificio requerido para fundar un nuevo asentamiento. A medida que muevas el cursor, notarás que la vista previa se sombrea de color rojo cuando el edificio está en una zona inadecuada.
@@ -56,24 +56,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Tarea: Construye un Almacén en la costa.']
 
 - &LUMBERJACK
-  - [Message, Construye una Tienda del Leñador y conéctala al Almacén.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Construye una Tienda de Leñador y únela al Almacén.]
+  - [Headline, EDIFICA UNA TIENDA DE LEÑADOR]
   - [Image, content/gui/images/background/hr.png]
   - Los suministros y los materiales de construcción han sido descargados de tu barco y pueden ser guardados de forma segura en tu nuevo Almacén. Ya es hora de construir algunos edificios básicos, empezando por una Tienda de Leñador.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Los leñadores talarán árboles del bosque alrededor de su tienda y procesarán la madera para producir tablas, para su uso en la construcción o como recurso comercial.
+  - Para construir una Tienda de Leñador, abre el Menú de Construcción haciendo clic sobre el botón que hay debajo del mini-mapa o pulsando la tecla 'B', la tecla de acceso rápido por defecto.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - El Menú de construcción se ordena por niveles y, como el tuyo es un nuevo asentamiento, los Edificios de Primer Nivel son los únicos que tienes disponibles. A medida que tu civilización avance, obtendrás acceso a niveles superiores y serás capaz de construir una variedad de edificios mucho mayor.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Busca una buena zona con árboles para que nuestro Leñador pueda trabajar y selecciona 'Tienda de Leñador' de la lista de edificios en la Vista General y ubica el edificio.
+  - En fases más avanzadas del juego puede que quieras crear bosques plantando árboles, pero dado que cuesta dinero, ¡deberías usar lo que la naturaleza ofrece por ahora!
+  - Cualquier edificio de recolección de recursos o de producción necesita un camino que lo conecte a un Almacén o a otra forma de almacenamiento, de lo contrario los bienes producidos no serán recogidos.
+  - Así que cunado hayas construido tu Tienda de Leñador, conéctala a tu Almacén abriendo el Menú de construcción y haciendo clic en el botón del Sendero. Ahora puedes hacer clic y arrastrar con el ratón para dibujar la ruta de tu Sendero entre la Tienda de Leñador y el Almacén.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
+  - [BoldLabel, 'Tarea: Construye una Tienda de Leñador en un área boscosa y conéctala a tu Almacén.']
+  - Una vez que los edificios estén conectados, verás un transportista llegar para recoger tus recién producidas tablas y llevarlas al Almacén, listas para ser usadas en la construcción o el comercio.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -105,7 +105,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, LA PLAZA PRINCIPAL]
   - [Image, content/gui/images/background/hr.png]
   - Tus residentes necesitan una plaza principal donde poder obtener sus bienes.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
+  - Esto significa que necesitan un camino de conexión entre sus casas y la plaza principal. Ten en cuenta que la plaza principal sirve de camino también, por eso las tiendas adyacentes no necesitan un camino separado.
   - Todos los bienes de tu almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir al pescador ni al almacén.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - En las diferentes pestañas de información de niveles de construcción, puedes ver estadísticas de tus habitantes. También puedes fijar aquí el impuesto global de un nivel específico y permitir o denegar a los habitantes de ese nivel que realicen mejoras para alcanzar el siguiente nivel.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
+  - [Message, Construye una tienda de campaña y conéctala a la plaza principal si es necesario.]
   - [Headline, EDIFICIOS RESIDENCIALES]
   - [Image, content/gui/images/background/hr.png]
   - ¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se quedarán a vivir en tu ciudad! Proporciónales tiendas de campaña.
@@ -138,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Considere desactivar las mejoras si sus reservas de estos materiales son bajos.
   - Los colonos pueden parecerte poco útiles porque intentarán consumir todos los bienes que produzcas - al menos pagan impuestos, y esa es la única forma de hacer dinero por ahora!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Tarea: Construye una tienda y conéctala a la plaza principal si es necesario. Las tiendas no necesitan estar conectadas a ningún negocio.']
 
 - &MORETENTS
   - [Message, Construye al menos tres tiendas adicionales y conéctalas a la plaza principal.]
@@ -195,7 +195,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Vamos a continuar nuestro tutorial con cómo comerciar.'
   - Primero clica en tu propia lonja y clica en la tercera pestaña.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+  - Después haz clic en una de las tres casillas y selecciona el bien que quieres comprar o vender.
   - Después de seleccionar un tipo concreto de producto, la barra verde que atraviesa el fondo del casillero muestra cuánto tienes en almacén de este producto.
   - Podrás determinar el "valor objetivo" arrastrando el control deslizante de la derecha de cada casilla. Este valor tendrá un significado distinto según quieras "Comprar" o "Vender".
   - Cuando compres, comprarás lo suficiente como para mantener ese valor objetivo en el almacén.
@@ -375,7 +375,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, NO MÁS OBJETIVOS]
   - [Image, content/gui/images/background/hr.png]
   - Has completado satisfactoriamente todos los objetivos que te hemos propuesto. ¡Ahora tienes el mundo a tu disposición, esperando tus libres aspiraciones y desafiantes exploraciones!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
+  - 'Si tienes alguna sugerencia sobre algo que podríamos o deberíamos mejorar, añadir o quitar:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
@@ -657,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 171 translated messages, 9 fuzzy translations, 8 untranslated messages.
+  translation_status: 188 translated messages.

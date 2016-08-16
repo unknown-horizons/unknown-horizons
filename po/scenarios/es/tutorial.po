@@ -7,9 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-15 16:21+0200\n"
-"PO-Revision-Date: 2014-08-04 11:31+0200\n"
-"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/"
+"PO-Revision-Date: 2016-08-16 09:54+0000\n"
+"Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,10 +111,9 @@ msgid "And now, let's start the game!"
 msgstr "Y ahora, ¡comencemos la partida!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 #| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "ESTABLECERSE EN UNA ISLA"
+msgstr "N. TAREA: CREA UN ASENTAMIENTO"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -135,7 +135,6 @@ msgstr ""
 "el derecho sobre el punto al que quieras que vaya."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Once you are near the coast, the anchor-like button you see in the "
 #| "overview tab will become active."
@@ -143,8 +142,8 @@ msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
-"Una vez cerca de la costa, se activará un botón que abre una pestaña con "
-"información general."
+"Una vez cerca de la costa, el botón «Construir asentamiento» en la vista "
+"general se activará."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -175,13 +174,12 @@ msgstr "Tarea: Construye un Almacén en la costa."
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr "Construye una Tienda del Leñador y conéctala al Almacén."
+msgstr "Construye una Tienda de Leñador y únela al Almacén."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 #| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "NUEVA TAREA: CONSTRUYE UN ASERRADERO"
+msgstr "EDIFICA UNA TIENDA DE LEÑADOR"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -198,9 +196,11 @@ msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Los leñadores talarán árboles del bosque alrededor de su tienda y procesarán "
+"la madera para producir tablas, para su uso en la construcción o como "
+"recurso comercial."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "In order to construct lumberjacks; open the build menu by either clicking "
 #| "the big icon below the mini map or pressing B key."
@@ -208,8 +208,9 @@ msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
-"Para construir aserraderos; abre el menú de construcción haciendo clic sobre "
-"el icono grande que hay debajo del mini-mapa o pulsando la tecla B."
+"Para construir una Tienda de Leñador, abre el Menú de Construcción haciendo "
+"clic sobre el botón que hay debajo del mini-mapa o pulsando la tecla 'B', la "
+"tecla de acceso rápido por defecto."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -218,12 +219,19 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"El Menú de construcción se ordena por niveles y, como el tuyo es un nuevo "
+"asentamiento, los Edificios de Primer Nivel son los únicos que tienes "
+"disponibles. A medida que tu civilización avance, obtendrás acceso a niveles "
+"superiores y serás capaz de construir una variedad de edificios mucho mayor."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Busca una buena zona con árboles para que nuestro Leñador pueda trabajar y "
+"selecciona 'Tienda de Leñador' de la lista de edificios en la Vista General "
+"y ubica el edificio."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -231,6 +239,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"En fases más avanzadas del juego puede que quieras crear bosques plantando "
+"árboles, pero dado que cuesta dinero, ¡deberías usar lo que la naturaleza "
+"ofrece por ahora!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -238,6 +249,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Cualquier edificio de recolección de recursos o de producción necesita un "
+"camino que lo conecte a un Almacén o a otra forma de almacenamiento, de lo "
+"contrario los bienes producidos no serán recogidos."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -246,15 +260,19 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Así que cunado hayas construido tu Tienda de Leñador, conéctala a tu Almacén "
+"abriendo el Menú de construcción y haciendo clic en el botón del Sendero. "
+"Ahora puedes hacer clic y arrastrar con el ratón para dibujar la ruta de tu "
+"Sendero entre la Tienda de Leñador y el Almacén."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
-"Tarea: Construye un aserradero en un área boscosa y conéctalo a un camino."
+"Tarea: Construye una Tienda de Leñador en un área boscosa y conéctala a tu "
+"Almacén."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -262,6 +280,9 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in  construction or trade."
 msgstr ""
+"Una vez que los edificios estén conectados, verás un transportista llegar "
+"para recoger tus recién producidas tablas y llevarlas al Almacén, listas "
+"para ser usadas en la construcción o el comercio."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -364,7 +385,6 @@ msgstr ""
 "Tus residentes necesitan una plaza principal donde poder obtener sus bienes."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "This means that they need a trail connection from their home to the main "
 #| "square."
@@ -374,7 +394,8 @@ msgid ""
 "tents do not need a separate trail."
 msgstr ""
 "Esto significa que necesitan un camino de conexión entre sus casas y la "
-"plaza principal."
+"plaza principal. Ten en cuenta que la plaza principal sirve de camino "
+"también, por eso las tiendas adyacentes no necesitan un camino separado."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -447,10 +468,11 @@ msgstr ""
 "nivel que realicen mejoras para alcanzar el siguiente nivel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid "Build a tent and connect it to the main square."
 msgid "Build a tent and connect it to the main square if necessary."
-msgstr "Construya una tienda de campaña y conéctela a la plaza principal."
+msgstr ""
+"Construye una tienda de campaña y conéctala a la plaza principal si es "
+"necesario."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
@@ -498,7 +520,6 @@ msgstr ""
 "de hacer dinero por ahora!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Task: Build a tent and connect it to the main square. Tents dont need to "
 #| "be connected to any of the companies."
@@ -506,8 +527,8 @@ msgid ""
 "Task: Build a tent and connect it to the main square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
-"Tarea: Construye una tienda y conéctala a la plaza principal. Las tiendas no "
-"necesitan estar conectadas a ningún negocio."
+"Tarea: Construye una tienda y conéctala a la plaza principal si es "
+"necesario. Las tiendas no necesitan estar conectadas a ningún negocio."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -704,6 +725,8 @@ msgstr "Primero clica en tu propia lonja y clica en la tercera pestaña."
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Después haz clic en una de las tres casillas y selecciona el bien que "
+"quieres comprar o vender."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1382,13 +1405,12 @@ msgstr ""
 "aspiraciones y desafiantes exploraciones!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
-"Si tienes alguna sugerencia que podríamos o deberíamos mejorar, añadir o "
-"dejar:"
+"Si tienes alguna sugerencia sobre algo que podríamos o deberíamos mejorar, "
+"añadir o quitar:"
 
 #. This is the text body of a logbook page.
 msgid "www.unknown-horizons.org"
