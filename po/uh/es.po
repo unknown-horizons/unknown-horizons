@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-08-15 00:10+0000\n"
+"PO-Revision-Date: 2016-08-16 11:19+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -49,7 +49,7 @@ msgstr "PyYAML (Librería requerida) no se encuentra y necesita ser instalada."
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
-"El instalador de windows está disponible en http://pyyaml.org/wiki/PyYAML."
+"El instalador de Windows está disponible en http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:181
 msgid ""
@@ -1016,7 +1016,7 @@ msgstr "Restablecer configuración por defecto"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default keys"
-msgstr "Restablecer configuración por defecto"
+msgstr "Restablecer las teclas por defecto"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:49
@@ -1377,7 +1377,7 @@ msgstr "Reiniciar configuración por defecto"
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr "Guardar partida"
+msgstr "Guardar los cambios"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -2414,7 +2414,7 @@ msgstr "Haz clic para añadir una nueva casilla"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Restablecer esta configuración como predeterminada."
+msgstr "Restablecer esta configuración a los ajustes de fábrica."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
