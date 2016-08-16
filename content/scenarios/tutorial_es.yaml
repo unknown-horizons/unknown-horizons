@@ -92,7 +92,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     El Pescador necesita que a su alcance haya un edificio como el Almacén y un banco de peces.'
   - Él construirá una pequeña embarcación a remo y pescará.
-  - Esta es una fuente muy constante de suministro a costa de un mayor tiempo de producción por unidad de comida.
+  - Esta es una fuente muy constante de suministro a costa de un tiempo de producción ligeramente mayor por unidad de comida.
   - Un pequeño asentamiento como el tuyo puede utilizar ambos negocios, y puedes mejorar el saldo de ventajas e inconvenientes si te fijas en la comparación directa.
   - ''
   - [BoldLabel, 'Tarea: Construye un cazador y un pescador.']
@@ -106,11 +106,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Tus residentes necesitan una plaza principal donde poder obtener sus bienes.
   - Esto significa que necesitan un camino de conexión entre sus casas y la plaza principal. Ten en cuenta que la plaza principal sirve de camino también, por eso las tiendas adyacentes no necesitan un camino separado.
-  - Todos los bienes de tu almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir al pescador ni al almacén.
+  - Todos los bienes de tu Almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir al pescador ni siquiera al Almacén.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Deberías proporcionar un lugar adecuado a las tiendas de tu asentamiento procurando no ubicarlas demasiado cerca del aserradero ya que éstas despejarán los árboles que tu aserradero necesita para producir tablones.
-  - Los negocios no necesitan estar conectados a las tiendas, así que no necesitas construir un camino entre la plaza principal y por ejemplo, la tienda del leñador.
+  - Los negocios no necesitan estar conectados a las tiendas, así que no necesitas construir un camino entre la plaza principal y por ejemplo, la Tienda de Leñador.
   - ''
   - [BoldLabel, 'Tarea: Construye una plaza principal.']
   - [Pagebreak]
@@ -124,24 +124,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Si tu saldo es positivo, estarás produciendo beneficios.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - En las diferentes pestañas de información de niveles de construcción, puedes ver estadísticas de tus habitantes. También puedes fijar aquí el impuesto global de un nivel específico y permitir o denegar a los habitantes de ese nivel que realicen mejoras para alcanzar el siguiente nivel.
+  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Construye una tienda de campaña y conéctala a la plaza principal si es necesario.]
-  - [Headline, EDIFICIOS RESIDENCIALES]
+  - [Message, Construye una Tienda y conéctala a la Plaza Principal si es necesario.]
+  - [Headline, 'TAREA: EDIFICIOS RESIDENCIALES']
   - [Image, content/gui/images/background/hr.png]
-  - ¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se quedarán a vivir en tu ciudad! Proporciónales tiendas de campaña.
+  - ¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se quedarán a vivir en tu ciudad! Proporciónales Tiendas.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Las tiendas son edificios residenciales básicos. Tus habitantes querrán mejorarlas cuando alcancen niveles superiores.
+  - Las Tiendas son los edificios residenciales básicos. Tus habitantes querrán mejorarlas cuando alcancen niveles superiores.
   - Tenga en cuenta que la mejora de cada edificio requiere material de construcción, como madera para la primera mejora.
   - Considere desactivar las mejoras si sus reservas de estos materiales son bajos.
-  - Los colonos pueden parecerte poco útiles porque intentarán consumir todos los bienes que produzcas - al menos pagan impuestos, y esa es la única forma de hacer dinero por ahora!
+  - Los colonos pueden parecerte poco útiles porque intentarán consumir todos los bienes que produzcas, pero al menos pagan impuestos, ¡y esa es la única forma que tienes de hacer dinero por ahora!
   - ''
-  - [BoldLabel, 'Tarea: Construye una tienda y conéctala a la plaza principal si es necesario. Las tiendas no necesitan estar conectadas a ningún negocio.']
+  - [BoldLabel, 'Tarea: Construye una Tienda y conéctala a la Plaza Principal si es necesario. Las Tiendas no necesitan estar conectadas a ningún negocio.']
 
 - &MORETENTS
-  - [Message, Construye al menos tres tiendas adicionales y conéctalas a la plaza principal.]
+  - [Message, Construye al menos tres Tiendas adicionales y conéctalas a la Plaza Principal.]
   - '
 
     Vamos a echar una ojeada a la pestaña de información de la tienda.'
@@ -152,9 +152,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * los impuestos que ellos pagan y
 
     * los recursos que piden.'
-  - Si sus demandas son satisfechas, su felicidad así como tus ingresos aumentarán.
+  - Si sus demandas son satisfechas, su felicidad y, por ende, tus ingresos derivados de los impuestos aumentarán.
   - Si no, su felicidad y tus ingresos decrecen. Algunas veces tus residentes estarán tan disgustados que simplemente se marcharán de tu villa, dejando atrás una ruina decadente.
-  - Ten en cuenta que aquí también puedes cambiar los impuestos globales.
+  - Ten en cuenta que aquí también puedes cambiar los ajustes de los impuestos globales.
   - ''
   - [BoldLabel, 'Tarea: Construye al menos tres tiendas adicionales.']
   - '
@@ -162,7 +162,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     TRUCO: Si mantienes pulsado MAYUS podrás construir más de un edificio del mismo tipo.'
 
 - &SIGNALFIRE
-  - [Message, Construye una señal de humo en la costa cerca de tu almacén.]
+  - [Message, Construye una señal de humo en la costa cerca de tu Almacén.]
   - [Headline, CONSTRUYE UNA SEÑAL DE HUMO]
   - [Image, content/gui/images/background/hr.png]
   - ¿Ves un navío pasando por tu isla de vez en cuando? Ese navío pertenece a un Comerciante Libre, uno de los primeros colonos en este archipiélago.
@@ -657,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 188 translated messages.
+  translation_status: 187 translated messages, 1 fuzzy translation.

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-15 16:21+0200\n"
-"PO-Revision-Date: 2016-08-16 10:22+0000\n"
+"PO-Revision-Date: 2016-08-16 11:29+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/"
 ">\n"
@@ -324,8 +324,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
-"Esta es una fuente muy constante de suministro a costa de un mayor tiempo de "
-"producción por unidad de comida."
+"Esta es una fuente muy constante de suministro a costa de un tiempo de "
+"producción ligeramente mayor por unidad de comida."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -375,8 +375,8 @@ msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
-"Todos los bienes de tu almacén están disponibles en este 'mercado', por lo "
-"que tus residentes no necesitan acudir al pescador ni al almacén."
+"Todos los bienes de tu Almacén están disponibles en este 'mercado', por lo "
+"que tus residentes no necesitan acudir al pescador ni siquiera al Almacén."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -395,7 +395,7 @@ msgid ""
 msgstr ""
 "Los negocios no necesitan estar conectados a las tiendas, así que no "
 "necesitas construir un camino entre la plaza principal y por ejemplo, la "
-"tienda del leñador."
+"Tienda de Leñador."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a main square."
@@ -430,6 +430,7 @@ msgid "If your balance is positive, you all-in-all make a profit."
 msgstr "Si tu saldo es positivo, estarás produciendo beneficios."
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "In the different tier overview tabs you can see statistics about your "
 "inhabitants. You also set the tier-specific global tax here and allow or "
@@ -442,13 +443,11 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a tent and connect it to the main square if necessary."
-msgstr ""
-"Construye una tienda de campaña y conéctala a la plaza principal si es "
-"necesario."
+msgstr "Construye una Tienda y conéctala a la Plaza Principal si es necesario."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "EDIFICIOS RESIDENCIALES"
+msgstr "TAREA: EDIFICIOS RESIDENCIALES"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -456,14 +455,14 @@ msgid ""
 "living in your city! You need to provide tents."
 msgstr ""
 "¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se "
-"quedarán a vivir en tu ciudad! Proporciónales tiendas de campaña."
+"quedarán a vivir en tu ciudad! Proporciónales Tiendas."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
-"Las tiendas son edificios residenciales básicos. Tus habitantes querrán "
+"Las Tiendas son los edificios residenciales básicos. Tus habitantes querrán "
 "mejorarlas cuando alcancen niveles superiores."
 
 #. This is the text body of a logbook page.
@@ -488,23 +487,23 @@ msgid ""
 "make money for now!"
 msgstr ""
 "Los colonos pueden parecerte poco útiles porque intentarán consumir todos "
-"los bienes que produzcas - al menos pagan impuestos, y esa es la única forma "
-"de hacer dinero por ahora!"
+"los bienes que produzcas, pero al menos pagan impuestos, ¡y esa es la única "
+"forma que tienes de hacer dinero por ahora!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a tent and connect it to the main square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
-"Tarea: Construye una tienda y conéctala a la plaza principal si es "
-"necesario. Las tiendas no necesitan estar conectadas a ningún negocio."
+"Tarea: Construye una Tienda y conéctala a la Plaza Principal si es "
+"necesario. Las Tiendas no necesitan estar conectadas a ningún negocio."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional tents and connect them to the main square."
 msgstr ""
-"Construye al menos tres tiendas adicionales y conéctalas a la plaza "
-"principal."
+"Construye al menos tres Tiendas adicionales y conéctalas a la Plaza "
+"Principal."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -530,8 +529,8 @@ msgstr ""
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
-"Si sus demandas son satisfechas, su felicidad así como tus ingresos "
-"aumentarán."
+"Si sus demandas son satisfechas, su felicidad y, por ende, tus ingresos "
+"derivados de los impuestos aumentarán."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -545,7 +544,9 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr "Ten en cuenta que aquí también puedes cambiar los impuestos globales."
+msgstr ""
+"Ten en cuenta que aquí también puedes cambiar los ajustes de los impuestos "
+"globales."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build at least three additional tents."
@@ -563,7 +564,7 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a signal fire at the coast close to your warehouse."
-msgstr "Construye una señal de humo en la costa cerca de tu almacén."
+msgstr "Construye una señal de humo en la costa cerca de tu Almacén."
 
 # sin contexto (construye/haz)
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
