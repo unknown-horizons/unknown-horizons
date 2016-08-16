@@ -79,10 +79,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FOOD
   - [Message, Construya un puesto de caza y pesca. Conéctelos al almacén.]
-  - [Headline, SUMINISTRO DE ALIMENTOS]
+  - [Headline, 'TAREA: SUMINISTRO DE ALIMENTOS']
   - [Image, content/gui/images/background/hr.png]
-  - Necesitarás tener algunos negocios que produzcan alimentos, también, porque la gente en general (y especialmente los marineros) están muy hambrientos.
-  - Los negocios disponibles en el primer nivel son el Cazador y el Pescador.
+  - Necesitarás tener algunos negocios que produzcan alimentos también, porque la gente en general (y especialmente los marineros) está muy hambrienta.
+  - Los negocios disponibles en el Primer Nivel son el Cazador y el Pescador.
   - El Cazador caza animales en el bosque, por lo que necesita que haya árboles cerca.
   - Ten en cuenta que puedes colocar el Cazador cerca del bosque del leñador.
   - Puede ocurrir que los animales no se reproduzcan lo suficientemente rápido o simplemente que se escondan bien.
@@ -90,7 +90,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    El Pescador necesita que en su alcance haya una sucursal y un banco de peces.'
+    El Pescador necesita que a su alcance haya un edificio como el Almacén y un banco de peces.'
   - Él construirá una pequeña embarcación a remo y pescará.
   - Esta es una fuente muy constante de suministro a costa de un mayor tiempo de producción por unidad de comida.
   - Un pequeño asentamiento como el tuyo puede utilizar ambos negocios, y puedes mejorar el saldo de ventajas e inconvenientes si te fijas en la comparación directa.

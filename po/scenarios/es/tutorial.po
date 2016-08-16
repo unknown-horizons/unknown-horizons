@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-15 16:21+0200\n"
-"PO-Revision-Date: 2016-08-16 09:54+0000\n"
+"PO-Revision-Date: 2016-08-16 10:22+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/>"
 "\n"
@@ -290,20 +290,20 @@ msgstr "Construya un puesto de caza y pesca. Conéctelos al almacén."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "SUMINISTRO DE ALIMENTOS"
+msgstr "TAREA: SUMINISTRO DE ALIMENTOS"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
-"Necesitarás tener algunos negocios que produzcan alimentos, también, porque "
-"la gente en general (y especialmente los marineros) están muy hambrientos."
+"Necesitarás tener algunos negocios que produzcan alimentos también, porque "
+"la gente en general (y especialmente los marineros) está muy hambrienta."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
 msgstr ""
-"Los negocios disponibles en el primer nivel son el Cazador y el Pescador."
+"Los negocios disponibles en el Primer Nivel son el Cazador y el Pescador."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -337,7 +337,8 @@ msgid ""
 "school in range."
 msgstr ""
 "\n"
-"El Pescador necesita que en su alcance haya una sucursal y un banco de peces."
+"El Pescador necesita que a su alcance haya un edificio como el Almacén y un "
+"banco de peces."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
