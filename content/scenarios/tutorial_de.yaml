@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Weiter geht es mit der Anleitung zum Handeln.'
+  - Zuerst klickt ihr auf den Kontor und danach auf den dritten Tab.
+  - Dann klickt auf einen der 3 Slots, danach wählt ihr aus welchen Güter ihr Kaufen oder Verkaufen möchtet.
   - Nach dem Auswählen eines Guts zeigt der grüne Balken, wie viel davon momentan vorrätig ist. Befindet sich keine Ware im Lager, wird auch kein Balken erscheinen.
   - Das Bewegen des Schiebereglers auf der rechten Seite des Slots verändert die maximale Lagermenge. Dieser Wert hat unterschiedliche Bedeutungen beim Ver- und Einkauf.
   - Beim Einkauf legt er fest, wie viel dieser Ware Ihr insgesamt bevorraten möchtet.
@@ -647,4 +649,4 @@ metadata:
   locale: de
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 188 translated messages.
