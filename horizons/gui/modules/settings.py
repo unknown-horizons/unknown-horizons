@@ -181,7 +181,8 @@ class SettingsDialog(PickBeltWidget, Window):
 
 		if restart_required:
 			if self.restart_promt():
-				os.execl(sys.executable, sys.executable, *sys.argv)
+				horizons.globals.fife.engine.destroy()
+				os.execv(sys.executable, [sys.executable] + sys.argv)
 
 		self._windows.close()
 
