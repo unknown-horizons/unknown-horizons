@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Construye una lonja en la costa que permita a los barcos comerciales visitar tu asentamiento.]
+  - [Message, Construye un Almacén en la costa que permita a los barcos comerciales visitar tu asentamiento.]
   - '
 
 
