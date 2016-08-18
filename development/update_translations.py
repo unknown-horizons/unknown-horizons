@@ -54,8 +54,8 @@ SCENARIO_TRANSLATIONS = {}
 SCENARIO_TEMPLATE = {}
 ALL_SCENARIOS = ('tutorial', 'The_Unknown')
 for s in ALL_SCENARIOS:
-	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
-	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
+	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/{0!s}.po'.format(s))
+	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/{0!s}.pot'.format(s)
 
 VOICES_TRANSLATIONS = glob('po/voices/*.po')
 VOICES_TEMPLATE = 'po/voices/unknown-horizons-voices.pot'
@@ -70,7 +70,7 @@ def update_from_template(input_po, input_template):
 	@param input_po: the translation to be updated against new template
 	@param input_template: the reference .pot template catalog
 	"""
-	print('Updating %s:' % input_po)
+	print('Updating {0!s}:'.format(input_po))
 	try:
 		subprocess.call([
 			'msgmerge',
@@ -81,7 +81,7 @@ def update_from_template(input_po, input_template):
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
-		print('Error while updating translation `%s`. Exiting.' % input_po)
+		print('Error while updating translation `{0!s}`. Exiting.'.format(input_po))
 		sys.exit(1)
 
 

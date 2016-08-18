@@ -164,7 +164,7 @@ def unserialize(data, validate=False, protocol=0):
 		if not inspect.isfunction(mypacket.validate):
 			raise NetworkException("Attempt to override packet.validate()")
 		if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
-			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
+			raise PacketTooLarge("packet={0!s}, length={1:d})".format(mypacket.__class__.__name__, len(data)))
 		mypacket.__class__.validate(mypacket, protocol)
 	return mypacket
 

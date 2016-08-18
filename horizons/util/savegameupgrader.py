@@ -293,7 +293,7 @@ class SavegameUpgrader(object):
 		# random map
 		island_strings = []
 		for island_x, island_y, island_string in db('SELECT x, y, file FROM island ORDER BY rowid'):
-			island_strings.append(island_string + ':%d:%d' % (island_x, island_y))
+			island_strings.append(island_string + ':{0:d}:{1:d}'.format(island_x, island_y))
 		db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence', ' '.join(island_strings))
 
 	def _upgrade_to_rev66(self, db):
@@ -425,8 +425,7 @@ class SavegameUpgrader(object):
 			if not SavegameUpgrader.can_upgrade(rev):
 				raise SavegameTooOld(revision=rev)
 			
-			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
-						     (rev, VERSION.SAVEGAMEREVISION))
+			self.log.warning('Discovered old savegame file, auto-upgrading: {0!s} -> {1!s}'.format(rev, VERSION.SAVEGAMEREVISION))
 			db = DbReader(self.final_path)
 			db('BEGIN TRANSACTION')
 

@@ -43,7 +43,7 @@ def test_ticket_1224(gui):
 		return c.findChild(name='running_costs').text
 
 	# Check (inactive) running costs
-	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
+	assert running_costs() == '10', "Expected 10, got {0!s}".format(running_costs())
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1')
@@ -57,7 +57,7 @@ def test_ticket_1224(gui):
 		gui.run()
 
 	# Check (active) running costs
-	assert running_costs() == '25', "Expected 25, got %s" % running_costs()
+	assert running_costs() == '25', "Expected 25, got {0!s}".format(running_costs())
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -230,7 +230,7 @@ def test_ticket_1513(gui):
 		return c.findChild(name='running_costs').text
 
 	# Check (inactive) running costs
-	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
+	assert running_costs() == '10', "Expected 10, got {0!s}".format(running_costs())
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1')
@@ -244,7 +244,7 @@ def test_ticket_1513(gui):
 		gui.run()
 
 	# Check (active) running costs
-	assert running_costs() == '25', "Expected 25, got %s" % running_costs()
+	assert running_costs() == '25', "Expected 25, got {0!s}".format(running_costs())
 
 	gui.run()
 
@@ -252,7 +252,7 @@ def test_ticket_1513(gui):
 	gui.trigger('UB_main_tab', 'UB_cancel_button')
 
 	# Check (inactive) running costs
-	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
+	assert running_costs() == '10', "Expected 10, got {0!s}".format(running_costs())
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)

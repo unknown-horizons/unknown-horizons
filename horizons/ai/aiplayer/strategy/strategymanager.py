@@ -204,7 +204,7 @@ class StrategyManager(object):
 
 	def _load(self, db):
 		for class_name, db_table in self.missions_to_load.iteritems():
-			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
+			db_result = db("SELECT m.rowid FROM {0!s} m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid".format(db_table), self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
