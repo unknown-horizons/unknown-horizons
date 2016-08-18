@@ -59,7 +59,9 @@ class BehaviorComponent(object):
 
 	def certainty(self, action_name, **environment):
 		certainty = self._certainty[action_name](**environment)
-		assert certainty is not None, "Certainty function returned None instead of a float. Certainty in %s for %s" % (self.__class__.__name__, action_name)
+		assert certainty is not None, "Certainty function returned None " \
+			"instead of a float. Certainty in {0!s} for {1!s}". \
+			format(self.__class__.__name__, action_name)
 		return certainty
 
 	# common certainties used by various behaviors
@@ -119,13 +121,15 @@ class BehaviorPirateRoutine(BehaviorComponent):
 				else:
 					self._sail_random(ship)
 
-			self.log.debug('BehaviorPirateRoutine: Ship:%s no_one_in_sight' % ship.get_component(NamedComponent).name)
+			self.log.debug('BehaviorPirateRoutine: Ship:{0!s} no_one_in_sight'.
+				format(ship.get_component(NamedComponent).name))
 
 	def trading_ships_in_sight(self, **environment):
 		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self._chase_closest_ship(ship)
-			self.log.debug('BehaviorPirateRoutine: Ship:%s trading_ships_in_sight' % ship.get_component(NamedComponent).name)
+			self.log.debug('BehaviorPirateRoutine: Ship:{0!s} trading_ships_in_sight'.
+				format(ship.get_component(NamedComponent).name))
 
 	def _arrived(self, ship):
 		"""
@@ -133,8 +137,8 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		Practically only changes ship state to idle.
 		"""
 		owner = ship.owner
-		self.log.debug('Player %s: Ship %s: arrived at destination after "%s"' % (owner.name,
-			ship.get_component(NamedComponent).name, owner.ships[ship]))
+		self.log.debug('Player {0!s}: Ship {1!s}: arrived at destination after "{2!s}"'.
+			format(owner.name, ship.get_component(NamedComponent).name, owner.ships[ship]))
 		owner.ships[ship] = owner.shipStates.idle
 
 	def _chase_closest_ship(self, pirate_ship):
@@ -145,18 +149,21 @@ class BehaviorPirateRoutine(BehaviorComponent):
 
 			# if ship was caught
 			if ship.position.distance(pirate_ship.position) <= self.pirate_caught_ship_radius:
-				self.log.debug('Pirate %s: Ship %s(%s) caught %s' % (owner.worldid,
-					pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship))
+				self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) caught {3!s}'.
+					format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+						owner.ships[pirate_ship], ship))
 				self._sail_home(pirate_ship)
 			else:
 				try:
 					pirate_ship.move(Circle(ship.position, self.pirate_caught_ship_radius - 1), Callback(self._sail_home, pirate_ship))
 					owner.ships[pirate_ship] = owner.shipStates.chasing_ship
-					self.log.debug('Pirate %s: Ship %s(%s) chasing %s' % (owner.worldid,
-						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
+					self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) chasing {3!s}'.
+						format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+							owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
 				except MoveNotPossible:
-					self.log.debug('Pirate %s: Ship %s(%s) unable to chase the closest ship %s' % (owner.worldid,
-						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
+					self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}) unable to chase the closest ship {3!s}'.
+						format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+							owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
 					owner.ships[pirate_ship] = owner.shipStates.idle
 
 	def _sail_home(self, pirate_ship):
@@ -164,11 +171,14 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		try:
 			pirate_ship.move(Circle(owner.home_point, self.pirate_home_radius), Callback(self._arrived, pirate_ship))
 			owner.ships[pirate_ship] = owner.shipStates.going_home
-			self.log.debug('Pirate %s: Ship %s(%s): sailing home at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name,
-				owner.ships[pirate_ship], owner.home_point))
+			self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}): sailing home at {3!s}'.
+				format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+					owner.ships[pirate_ship], owner.home_point))
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
-			self.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, owner.home_point))
+			self.log.debug('Pirate {0!s}: Ship {1!s}: unable to move home at {2!s}'.
+				format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+					owner.home_point))
 
 	def _sail_random(self, pirate_ship):
 
@@ -178,11 +188,13 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		try:
 			pirate_ship.move(point, Callback(self._arrived, pirate_ship))
 			owner.ships[pirate_ship] = owner.shipStates.moving_random
-			self.log.debug('Pirate %s: Ship %s(%s): moving random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name,
-				owner.ships[pirate_ship], point))
+			self.log.debug('Pirate {0!s}: Ship {1!s}({2!s}): moving random at {3!s}'.
+				format(owner.worldid, pirate_ship.get_component(NamedComponent).name,
+					owner.ships[pirate_ship], point))
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
-			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
+			self.log.debug('Pirate {0!s}: Ship {1!s}: unable to move random at {2!s}'.
+				format(owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
 
 
 # Common certainty functions for offensive actions
@@ -194,16 +206,13 @@ def certainty_power_balance_exp(**environment):
 
 
 def certainty_power_balance_inverse(**environment):
+	"""Return power_balance reciprocal,
 	"""
-	Return power_balance reciprocal,
-	"""
-
 	return BehaviorComponent.default_certainty * (1. / environment['power_balance'])
 
 
 class BehaviorRegular(BehaviorComponent):
-	"""
-	A well-balanced way to respond to situations in game.
+	"""A well-balanced way to respond to situations in game.
 	"""
 	power_balance_threshold = 1.0
 
@@ -332,8 +341,7 @@ class BehaviorRegular(BehaviorComponent):
 		return mission
 
 	def neutral_player(self, **environment):
-		"""
-		Not concerned about neutral players.
+		"""Not concerned about neutral players.
 		"""
 		return None
 
@@ -498,7 +506,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		balance = self.owner.strategy_manager.calculate_player_balance(player)
 		relationship_score = self.calculate_relationship_score(balance, self.weights)
 		action = self._get_action(relationship_score, **parameters)
-		self.log.debug("%s vs %s | Dipomacy: balance:%s, relationship_score:%s, action:%s", self.owner.name, player.name, balance, relationship_score, action)
+		self.log.debug("{0!s} vs {1!s} | Dipomacy: balance:{2!s}, relationship_score:{3!s}, action:{4!s}".
+			format(self.owner.name, player.name, balance, relationship_score, action))
 		self._perform_action(action, **environment)
 
 	def _perform_action(self, action, **environment):
@@ -773,7 +782,8 @@ class BehaviorBreakDiplomacy(BehaviorComponent):
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-		BehaviorComponent.log.info('Player:%s broke diplomacy with %s' % (self.owner.name, enemies[0].owner.name))
+		BehaviorComponent.log.info('Player:{0!s} broke diplomacy with {1!s}'
+			.format(self.owner.name, enemies[0].owner.name))
 
 
 class BehaviorCoward(BehaviorComponent):
@@ -785,8 +795,7 @@ class BehaviorCoward(BehaviorComponent):
 		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_inverse
 
 	def pirate_ships_in_sight(self, **environment):
-		"""
-		Dummy action, do nothing really.
+		"""Dummy action, do nothing really.
 		"""
 		BehaviorComponent.log.info('Pirates give me chills man.')
 
@@ -811,8 +820,7 @@ class BehaviorPirateHater(BehaviorComponent):
 		self._certainty['pirate_ships_in_sight'] = certainty_are_enemies
 
 	def pirate_ships_in_sight(self, **environment):
-		"""
-		Breaks diplomacy and attacks pirates.
+		"""Breaks diplomacy and attacks pirates.
 		"""
 		enemies = environment['enemies']
 		ship_group = environment['ship_group']

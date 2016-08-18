@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Järgmisena õpime kauplema.'
+  - Esmalt tee klõps oma laol ja seejärel klõpsa kolmandal kaardil.
+  - Nüüd klõpsa ühel kolmest pesast ja vali kaup, mida soovid osta või müüa.
   - Kaubagrupi valimisel järel näitab pesa alumises servas olev roheline riba (kui ta on nähtav) laos oleva kauba kogust.
   - Sikutades liuguri iga pesa parempoolsesse serva määrab "vajaliku koguse", mis omab erinevat tähendust kaartidel "Ost" ja "Müük".
   - Ostmisel ostad sa piisavalt, et hoida laos oleks varus "vajalik kogus" kaupa.
@@ -655,4 +657,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 188 translated messages.

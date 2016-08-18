@@ -79,6 +79,13 @@ object_translations = {
 		"tooltip_text"                : _("Builds boats and small ships. Built on coast."),
 		},
 
+	"content/objects/buildings/brewery.yaml" : {
+		# name of buildings:brewery
+		"name"                        : _("Brewery"),
+		# tooltip_text of buildings:brewery
+		"tooltip_text"                : _("Consumes hops. Produces Beer."),
+		},
+
 	"content/objects/buildings/brickyard.yaml" : {
 		# name of buildings:brickyard
 		"name"                        : _("Brickyard"),
@@ -91,6 +98,13 @@ object_translations = {
 		"name"                        : _("Butchery"),
 		# tooltip_text of buildings:butchery
 		"tooltip_text"                : _("Needs pigs or cattle. Produces food."),
+		},
+
+	"content/objects/buildings/cannonfoundry.yaml" : {
+		# name of buildings:cannonfoundry
+		"name"                        : _("Cannon foundry"),
+		# tooltip_text of buildings:cannonfoundry
+		"tooltip_text"                : _("Produces Cannons."),
 		},
 
 	"content/objects/buildings/charcoalburning.yaml" : {
@@ -166,6 +180,13 @@ object_translations = {
 		"name"                        : _("Herbary"),
 		# tooltip_text of buildings:fields:herbary
 		"tooltip_text"                : _("Produces herbs. Needs a farm."),
+		},
+
+	"content/objects/buildings/fields/hopfield.yaml" : {
+		# name of buildings:fields:hopfield
+		"name"                        : _("Hop Field"),
+		# tooltip_text of buildings:fields:hopfield
+		"tooltip_text"                : _("Yields hop. Needs a farm."),
 		},
 
 	"content/objects/buildings/fields/pasture.yaml" : {
@@ -318,9 +339,14 @@ object_translations = {
 		"tooltip_text"                : _("Refines all kind of ores."),
 		},
 
+	"content/objects/buildings/stonedeposit.yaml" : {
+		# name of buildings:stonedeposit
+		"name"                        : _("Stone Deposit"),
+		},
+
 	"content/objects/buildings/stonemason.yaml" : {
-		# name_2 of buildings:stonemason
-		"name_2"                      : _("Stonemason"),
+		# name_3 of buildings:stonemason
+		"name_3"                      : _("Stonemason"),
 		# name_4 of buildings:stonemason
 		"name_4"                      : _("Carver"),
 		# tooltip_text of buildings:stonemason
@@ -462,6 +488,8 @@ object_translations = {
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
 		# headline of gui_buildmenu:build_menu_per_tier
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Military"),
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Mining"),
@@ -476,6 +504,8 @@ object_translations = {
 		},
 
 	"content/objects/gui_buildmenu/build_menu_per_type.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Citizens"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Citizens"),
 		# headline of gui_buildmenu:build_menu_per_type

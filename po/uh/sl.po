@@ -7,45 +7,40 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2013-05-05 12:56+0000\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2016-07-31 14:39+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Slovenian <https://hosted.weblate.org/projects/uh/uh/sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
-#, fuzzy
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons se je sesul."
 
 #: run_uh.py:126
-#, fuzzy
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Zelo nam je žal za to in želimo to napako popraviti."
 
 #: run_uh.py:127
-#, fuzzy
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "Hiervoor hebben we de informatie van het logbestand nodig:"
 
 #: run_uh.py:129
-#, fuzzy
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Var vänlig skicka den till oss via IRC eller vårt forum, för båda se http://"
-"unknown-horizons.org ."
+"Var vänlig skicka den till oss via IRC eller vårt forum, för båda se http"
+"://unknown-horizons.org ."
 
 #: run_uh.py:178
-#, fuzzy
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "zahtevanih knjižnic ni mogoče najti"
+msgstr "Napaka: Ni mogoče najti zahtevane knjižnico \"PyYAML\"."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -62,7 +57,6 @@ msgid ""
 msgstr ""
 
 #: run_uh.py:215
-#, fuzzy
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Bedankt voor het spelen van Unknown Horizons!"
 
@@ -72,7 +66,6 @@ msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:53
-#, fuzzy
 msgid "Save map"
 msgstr "Spara karta"
 
@@ -84,7 +77,6 @@ msgstr ""
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
-#, fuzzy
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -92,9 +84,8 @@ msgstr "Instellingen"
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "pomoč"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
@@ -113,34 +104,28 @@ msgid "(right click to stop)"
 msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
-#, fuzzy
 msgid "Game start"
-msgstr "Start spel"
+msgstr "Igra"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
-#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Er is een nederzetting nodig voordat gebouwen gebouwd kunnen worden!"
+msgstr "Morate najti rešitev, preden lahko gradnjo stavb!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
-#, fuzzy
 msgid "Select your ship and approach the coast via right-click."
 msgstr "Selecteer je schip en benader de kust met de rechtermuisknop."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
-#, fuzzy
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr "Daarna klik je op de grote knop in het scheepsoverzicht."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
-#, fuzzy
 msgid "Build"
-msgstr "Bouw"
+msgstr "Graditi"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
-#, fuzzy
 msgid "Running costs:"
-msgstr "Operationele kosten:"
+msgstr "Tekoče stroške:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -148,59 +133,55 @@ msgstr ""
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
-#, fuzzy
 msgid "Inhabitants"
-msgstr "Inwoners"
+msgstr "Prebivalcev"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Poveča hitrost igre"
+msgstr "Poveča hitrost igre({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Zmanjša hitrost igre"
+msgstr "Zmanjša hitrost igre({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Rotera kartan moturs (,)"
+msgstr "Zasuk zemljevid v levo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Rotera kartan medurs (.)"
+msgstr "Zasuk zemljevid v smeri urinega kazalca ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
-#, fuzzy
 msgid "Zoom in"
-msgstr "Zoom in"
+msgstr "Povečava"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 #: content/gui/xml/mainmenu/hotkeys.xml:20
-#, fuzzy
 msgid "Zoom out"
-msgstr "Zoom uit"
+msgstr "Pomanjšava"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Destroy ({key})"
-msgstr "Riv (X)"
+msgstr "Uničiti ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "Kaptenens loggbok (L)"
+msgstr "Kaptenens loggbok ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Build menu ({key})"
-msgstr "Byggmeny (B)"
+msgstr "Graditi meni ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
-#, fuzzy
 msgid "Diplomacy"
 msgstr "Diplomatie"
 

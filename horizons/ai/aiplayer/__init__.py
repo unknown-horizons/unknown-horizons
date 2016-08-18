@@ -72,6 +72,7 @@ from building.boatbuilder import AbstractBoatBuilder
 from building.signalfire import AbstractSignalFire
 from building.tobacconist import AbstractTobacconist
 from building.saltponds import AbstractSaltPonds
+from building.stonedeposit import AbstractStoneDeposit
 from building.stonepit import AbstractStonePit
 from building.stonemason import AbstractStonemason
 
@@ -202,12 +203,12 @@ class AIPlayer(GenericAI):
 
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback, calls)
 		remaining_ticks = max(calls.values()[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
+		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback_long, calls)
 		remaining_ticks_long = max(calls.values()[0], 1)
 
 		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
@@ -480,7 +481,8 @@ class AIPlayer(GenericAI):
 		AbstractFarm.clear_cache()
 
 	def __str__(self):
-		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
+		return 'AI({0!s}/{1!s})'.format(getattr(self, 'name', 'unknown'),
+			getattr(self, 'worldid', 'none'))
 
 	def early_end(self):
 		"""Called to speed up session destruction."""

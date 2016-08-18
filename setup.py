@@ -155,8 +155,7 @@ class _build_i18n(distutils.cmd.Command):
 			return
 
 		if self.bug_contact is not None:
-			os.environ["XGETTEXT_ARGS"] = "--msgid-bugs-address={0}".format(
-				self.bug_contact)
+			os.environ["XGETTEXT_ARGS"] = "--msgid-bugs-address={0}".format(self.bug_contact)
 		data_files = self.distribution.data_files
 		if data_files is None:
 			# in case not data_files are defined in setup.py

@@ -86,11 +86,15 @@ class SafeUnpickler(object):
 	def find_class(cls, module, name):
 		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
 		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")' % (module, name))
+			raise cPickle.UnpicklingError(
+				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
+				format(module, name))
 		__import__(module)
 		mod = sys.modules[module]
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")' % (name, module))
+			raise cPickle.UnpicklingError(
+				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
+				format(name, module))
 		klass = getattr(mod, name)
 		return klass
 

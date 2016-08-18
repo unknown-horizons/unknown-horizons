@@ -93,6 +93,12 @@ class ClayDepositCoverageGoal(DepositCoverageGoal):
 	def get_personality_name(self):
 		return 'ClayDepositCoverageGoal'
 
+class StoneDepositCoverageGoal(DepositCoverageGoal):
+	_deposit_resource_id = RES.STONE_DEPOSIT
+
+	def get_personality_name(self):
+		return 'StoneDepositCoverageGoal'
+		
 class MountainCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_IRON
 
@@ -101,4 +107,5 @@ class MountainCoverageGoal(DepositCoverageGoal):
 
 decorators.bind_all(DepositCoverageGoal)
 decorators.bind_all(ClayDepositCoverageGoal)
+decorators.bind_all(StoneDepositCoverageGoal)
 decorators.bind_all(MountainCoverageGoal)

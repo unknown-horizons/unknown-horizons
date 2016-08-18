@@ -224,6 +224,20 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT size FROM storage_building_capacity WHERE type = ?"
 		return self.cached_query(sql, storage_type)[0][0]
 
+	def get_random_ai_name(self, locale, used_names):
+		"""Returns a random name compatible with the given locale. If there are
+		no unused names left, None is returned.
+		"""
+		used_names_placeholder = ', '.join(['?']*len(used_names))
+		sql = "SELECT name FROM ainames \
+				WHERE name NOT IN ({0}) AND \
+					  (locale IS NULL OR locale = ?) \
+				ORDER BY random() \
+				LIMIT 1".format(used_names_placeholder)
+		params = used_names
+		params.append(locale)
+		return self(sql, *params)[0][0]
+
 	# Tile sets
 
 	def get_random_tile_set(self, ground_id):

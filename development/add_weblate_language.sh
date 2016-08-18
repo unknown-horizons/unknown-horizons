@@ -5,21 +5,31 @@ if [[ "$#" -ne 1 ]]; then
 	exit 1
 fi
 
-f="po/uh/unknown-horizons.pot"
-o="po/uh/${1}.po"
-msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
-git add "$o"
+PO_DIR=po/
+while ! [ -d "${PO_DIR}" ]; do
+	PO_DIR="../${PO_DIR}"
+done
 
-f="po/uh-server/unknown-horizons-server.pot"
-o="po/uh-server/${1}.po"
-msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
-git add "$o"
+cd "${PO_DIR}"
 
-mkdir -p "po/scenarios/${1}/"
-f="po/scenarios/templates/tutorial.pot"
-o="po/scenarios/${1}/tutorial.po"
-msginit --locale "$1" --input "$f" --no-translator --output-file "$o"
-git add "$o"
+create_po_from_pot(){
+	l="${1}"
+	f="${2}"
+	o="${3}"
+	msginit --locale "${l}" --input "${f}" --no-translator --output-file "${o}"
+	git add "${o}"
+}
+
+create_po_from_pot "${1}" "uh/unknown-horizons.pot" "uh/${1}.po"
+
+create_po_from_pot "${1}" "uh-server/unknown-horizons-server.pot" "uh-server/${1}.po"
+
+mkdir -p "scenarios/${1}/"
+for s in scenarios/templates/*.pot; do
+	o="scenarios/${1}/"$(basename "${s}")
+	o="${o%t}"
+	create_po_from_pot "${1}" "${s}" "${o}"
+done
 
 git commit -m "Add $1 translation files"
 

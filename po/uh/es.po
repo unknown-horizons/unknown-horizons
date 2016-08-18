@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2014-12-21 00:22+0200\n"
-"Last-Translator: Fede Muller <fedem8@live.com>\n"
+"PO-Revision-Date: 2016-08-16 11:19+0000\n"
+"Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -49,7 +49,7 @@ msgstr "PyYAML (Librería requerida) no se encuentra y necesita ser instalada."
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
-"El instalador de windows está disponible en http://pyyaml.org/wiki/PyYAML."
+"El instalador de Windows está disponible en http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:181
 msgid ""
@@ -314,10 +314,9 @@ msgid "Capacity utilization"
 msgstr "Capacidad de uso"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Haz clic para cambiar el nombre de este navío"
+msgstr "Haz clic para cambiar el nombre de esta unidad terrestre"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -504,10 +503,9 @@ msgid "Configure trading route"
 msgstr "Configurar la ruta de comercio"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(perder todos los recursos)"
+msgstr "Deseche todos los recursos"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1018,7 +1016,7 @@ msgstr "Restablecer configuración por defecto"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default keys"
-msgstr "Restablecer configuración por defecto"
+msgstr "Restablecer las teclas por defecto"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:49
@@ -1379,7 +1377,7 @@ msgstr "Reiniciar configuración por defecto"
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr "Guardar partida"
+msgstr "Guardar los cambios"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1566,16 +1564,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "No puedes hacer diplomacia al no haber otros jugadores."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "¿Estás seguro de que quieres salir de la sesión actual?"
+msgstr "¿Está seguro que desea eliminar estos objetos?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Borrar entrada"
+msgstr "Eliminar"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1584,10 +1580,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} recuadros"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Presione la tecla deseada"
+msgstr "Pulsar la tecla…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2158,23 +2153,24 @@ msgid "Press H to remove this hint"
 msgstr "Presiona H para remover este consejo"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Destruir edificio"
+msgstr "Destruir todos los edificios"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Esto destruirá todos los edificios que estén fuera del alcance del "
+"asentamiento."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s edificio adicional será destruido."
+msgstr[1] "%s edificios adicionales serán destruidos"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2259,7 +2255,6 @@ msgstr "Visión general del almacén"
 
 # misses ship ==> unit! TODO replace navío
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
 msgstr "Visión de unidades"
@@ -2301,7 +2296,7 @@ msgstr "Visión general de la producción"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Llena alrededor de {how_many} árboles"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2419,7 +2414,7 @@ msgstr "Haz clic para añadir una nueva casilla"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Restablecer esta configuración como predeterminada."
+msgstr "Restablecer esta configuración a los ajustes de fábrica."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
@@ -2773,10 +2768,9 @@ msgstr "Vigilancia"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Defiende tu asentamiento."
+msgstr "Amplía la gama del establecimiento."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2910,10 +2904,11 @@ msgstr "Cabaña de Almacenamiento"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Amplia la capacidad y provee recolectores."
+msgstr ""
+"Se extiende la acción, amplía la gama del establecimiento y ofrece "
+"colectores."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3027,17 +3022,15 @@ msgstr "Almacén"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
 msgstr "Armas"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Produce herramientas de hierro."
+msgstr "Produce armas de hierro."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3062,7 +3055,7 @@ msgstr "Muele el maíz para hacer harina."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Bodega"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3346,7 +3339,7 @@ msgstr "Una página ha sido abierta en tu navegador."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{slotnum} slots, {limit}t"
 msgstr "{slotnum} huecos, de {limit}"
 
@@ -3917,7 +3910,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "espada"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"

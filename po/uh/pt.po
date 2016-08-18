@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-22 00:55+0000\n"
+"PO-Revision-Date: 2016-07-31 15:13+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -23,7 +23,7 @@ msgstr "A execução de Unknown Horizons foi interrompida com erro."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Nos sentimos muito e queremos corrigir este erro básico."
+msgstr "Lamentamos o ocorrido e pretendemos corrigir o erro."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
@@ -154,13 +154,13 @@ msgstr "Diminuir a velocidade de jogo ({key})"
 #, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Rodar o mapa no sentido inverso dos ponteiros de relógio  ({key})"
+msgstr "Rodar o mapa no sentido antihorário ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Rodar o mapa no sentido dos ponteiros de relógio (.)"
+msgstr "Rodar o mapa no sentido horário ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
@@ -173,32 +173,32 @@ msgid "Zoom out"
 msgstr "Reduzir"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Destruir (X)"
+msgstr "Destruir ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Diário de bordo (L)"
+msgstr "Diário de bordo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menu de construção (B)"
+msgstr "Menu de construção ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomacia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menu de jogo (Esc)"
+msgstr "Menu de jogo ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -318,7 +318,6 @@ msgid "Capacity utilization"
 msgstr "Capacidade de utilização"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
 msgstr "Clique para mudar o nome deste navio"
@@ -508,10 +507,9 @@ msgid "Configure trading route"
 msgstr "Configurar a rota comercial"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(perder todos os recursos)"
+msgstr "Descartar todos os recursos"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -673,9 +671,8 @@ msgstr "Enviar as mensagens para todos os jogadores."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Introduza a sua mensagem:"
+msgstr "Introduza a sua mensagem"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -886,7 +883,6 @@ msgid "Return"
 msgstr "Voltar"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
 msgstr "Opções de IA"
 
@@ -995,7 +991,6 @@ msgid "Screenshot"
 msgstr "Imagem de ecrã"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
-#, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Ligar/desligar grelha"
 
@@ -1022,7 +1017,6 @@ msgid "Reset to default"
 msgstr "Restaurar definições predefinidas"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
-#, fuzzy
 msgid "Reset to default keys"
 msgstr "Repor definições por omissão"
 
@@ -1043,7 +1037,6 @@ msgid "Cancel game"
 msgstr "Cancelar o jogo"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
 msgstr "A carregar …"
 
@@ -1262,12 +1255,10 @@ msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
-#, fuzzy
 msgid "0 is default system settings"
 msgstr "Repor as definições por omissão"
 
 #: content/gui/xml/mainmenu/settings.xml:99
-#, fuzzy
 msgid "Mouse sensitivity:"
 msgstr "Quantidade de recursos:"
 
@@ -1375,10 +1366,9 @@ msgid "Reset to default settings"
 msgstr "Repor definições por omissão"
 
 #: content/gui/xml/mainmenu/settings.xml:237
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Gravar jogo"
+msgstr "Salvar as alterações"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1563,16 +1553,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Não existem outros jogadores para exercer diplomacia."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Tem a certeza que deseja abandonar a sessão actual?"
+msgstr "Tem certeza que deseja excluir esses objetos?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Apagar entrada"
+msgstr "Excluir"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1830,10 +1818,9 @@ msgid "Not ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:441
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Introduza a sua mensagem:"
+msgstr "Introduza a sua mensagem"
 
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
@@ -2005,7 +1992,6 @@ msgid "Hotkeys"
 msgstr ""
 
 #: horizons/gui/modules/settings.py:56
-#, fuzzy
 msgid "Game"
 msgstr "Sair do Jogo"
 
@@ -2147,7 +2133,6 @@ msgid "Press H to remove this hint"
 msgstr "Pressione H para remover este aviso"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
 msgstr "Destruir edificio"
@@ -2236,12 +2221,10 @@ msgid ""
 msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
-#, fuzzy
 msgid "Warehouse overview"
 msgstr "Resumo do mercado"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
 msgstr "Relatório de unidades"
@@ -2508,7 +2491,6 @@ msgstr "Constructor de Barcos"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:79
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
 msgstr ""
 "Construtor de barcos: Contrói barcos e navios pequenos. Construido na costa."
@@ -2520,7 +2502,6 @@ msgstr "Fábrica de tijolos"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:86
-#, fuzzy
 msgid "Turns clay into bricks."
 msgstr "Converte barro em tijolos."
 
@@ -2531,7 +2512,6 @@ msgstr "Matadouro"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Precisa de porcos ou gado vacum. Produz comida."
 
@@ -2558,7 +2538,6 @@ msgstr "Poço de barro"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:112
-#, fuzzy
 msgid "Gets clay from deposit."
 msgstr "Extrai barro do depósito."
 
@@ -2569,7 +2548,6 @@ msgstr "Destilaria"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
-#, fuzzy
 msgid "Turns sugar into liquor."
 msgstr "Converte o açucar em álcool."
 
@@ -2590,13 +2568,11 @@ msgstr "Quinta"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
-#, fuzzy
 msgid "Grows field crops and raises livestock."
 msgstr "Produz campos de cultivo e cria gado."
 
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:138
-#, fuzzy
 msgid "Alvearies"
 msgstr "aviários"
 
@@ -2612,7 +2588,6 @@ msgstr "Pasto"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:147
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
 msgstr "Cria gado. Precisa de uma quinta."
 
@@ -2644,7 +2619,6 @@ msgstr "Viveiro"
 
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:168
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
 msgstr "Produz tabaco. Necessita de uma quinta."
 
@@ -2655,7 +2629,6 @@ msgstr "Pastagem"
 
 #. tooltip_text of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:175
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Cria ovelhas. Produz lã. Requer uma quinta."
 
@@ -2666,7 +2639,6 @@ msgstr "Pocilga"
 
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:182
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
 msgstr "Cria porcos. Precisa de uma quinta."
 
@@ -2677,7 +2649,6 @@ msgstr "Plantação de batatas"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:189
-#, fuzzy
 msgid "Yields food. Needs a farm."
 msgstr "Produz comida. Requer uma quinta."
 
@@ -2698,7 +2669,6 @@ msgstr "Plantação de cana de açúcar"
 
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:203
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
 msgstr ""
 "Plantação de cana de açúcar: Utilizado na produção de alcoól. Requer uma "
@@ -2711,7 +2681,6 @@ msgstr "Plantação de tabaco"
 
 #. tooltip_text of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:210
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
 msgstr "Produz tabaco. Necessita de uma quinta."
 
@@ -2747,7 +2716,6 @@ msgstr "Tenda do pescador"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:236
-#, fuzzy
 msgid "Fishes the sea, produces food."
 msgstr "Pesca no mar, produz comida."
 
@@ -2758,7 +2726,6 @@ msgstr "Tenda de caçador"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:243
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
 msgstr "Caça animais selvagens na floresta, produz comida."
 
@@ -2769,7 +2736,6 @@ msgstr "Vigia"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 msgid "Expands settlement range."
 msgstr "Defende a povoação."
 
@@ -2785,7 +2751,6 @@ msgstr ""
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:259
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
 msgstr "Corta árvores e converte-as em tábuas."
 
@@ -2801,14 +2766,12 @@ msgstr ""
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Mina de ferro"
+msgstr "Meu"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
-#, fuzzy
 msgid "Gets iron ore from deposit."
 msgstr "Mina de ferro: fornece minério de ferro."
 
@@ -2834,7 +2797,6 @@ msgstr "Pavilhão"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
 msgstr "Atende as necessidades religiosas dos marinheiros."
 
@@ -2850,7 +2812,6 @@ msgstr "Lagoas de Sal"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:304
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Água evapora para produzir sal. Construído na costa marítima."
 
@@ -2861,7 +2822,6 @@ msgstr "Sinal de Fogo"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:311
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
 msgstr "Permite ao jogador trocar com o mercador livre."
 
@@ -2872,7 +2832,6 @@ msgstr "Fundição"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:318
-#, fuzzy
 msgid "Refines all kind of ores."
 msgstr "Refina todos os tipos de minério."
 
@@ -2908,13 +2867,11 @@ msgstr "Armazém"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
-#, fuzzy
 msgid "Storage Hut"
 msgstr "Armazém"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr ""
 "Armazenamento: Extende a capacidade de armazenamento e fornece "
@@ -2928,7 +2885,6 @@ msgstr "Taberna"
 # A tavern is also a place where wine is sold, shouldn't it be mentioned?
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:350
-#, fuzzy
 msgid "Provides get-together."
 msgstr "Oferece um local para reuniões populares."
 
@@ -2944,7 +2900,6 @@ msgstr ""
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
 msgstr "casas"
 
@@ -2965,7 +2920,6 @@ msgstr ""
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
-#, fuzzy
 msgid "Houses your inhabitants."
 msgstr "Aloja os seus habitantes."
 
@@ -2976,7 +2930,6 @@ msgstr "Tabaqueiro"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:374
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
 msgstr "Produz produtos à base de tabaco."
 
@@ -2987,7 +2940,6 @@ msgstr "Ferreiro"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:381
-#, fuzzy
 msgid "Produces tools out of iron."
 msgstr "Produz ferramentas a partir do ferro."
 
@@ -3008,7 +2960,6 @@ msgstr ""
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:392
-#, fuzzy
 msgid "Needed for collecting goods."
 msgstr "Caminho: Necessário para transportar mercadorias."
 
@@ -3029,38 +2980,32 @@ msgstr "Escola"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:406
-#, fuzzy
 msgid "Provides education."
 msgstr "Fornece educação."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:411
-#, fuzzy
 msgid "Warehouse"
 msgstr "casas"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Armas"
+msgstr "Armeiro"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 msgid "Produces weapons out of iron."
 msgstr "Produz ferramentas a partir do ferro."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
-#, fuzzy
 msgid "Weaver's Hut"
 msgstr "Tenda de tecelão"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
-#, fuzzy
 msgid "Turns lamb wool into cloth."
 msgstr "Converte a lã em tecido."
 
@@ -3091,7 +3036,6 @@ msgstr "Torre de Madeira"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:446
-#, fuzzy
 msgid "Defends your settlement."
 msgstr "Defende a povoação."
 
@@ -3147,7 +3091,6 @@ msgstr "Serviços"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:480
-#, fuzzy
 msgid "Citizens"
 msgstr "cidadão"
 
@@ -3220,7 +3163,6 @@ msgid "Failed to start/load the game"
 msgstr "Não foi possível iniciar/carregar o jogo"
 
 #: horizons/main.py:398
-#, fuzzy
 msgid "The game you selected could not be started."
 msgstr "O jogo seleccionado não pôde ser iniciado."
 
@@ -3270,7 +3212,6 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr "De momento não é possível carregar/gravar jogos em rede"
 
 #: horizons/mpsession.py:103
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
@@ -3334,7 +3275,6 @@ msgid "Your game has not been saved."
 msgstr ""
 
 #: horizons/util/checkupdates.py:87
-#, fuzzy
 msgid "New version of Unknown Horizons"
 msgstr "A iniciar o Unknown Horizons"
 
@@ -3371,12 +3311,10 @@ msgid "{building}: {description}"
 msgstr ""
 
 #: horizons/world/building/buildable.py:40
-#, fuzzy
 msgid "This building must be built on an island."
 msgstr "Este edifício deve ser construído no litoral."
 
 #: horizons/world/building/buildable.py:41
-#, fuzzy
 msgid "This ground is not suitable for this building."
 msgstr "O solo não é dequado para este edifício."
 
@@ -3393,7 +3331,6 @@ msgid "This area is already occupied by another building."
 msgstr ""
 
 #: horizons/world/building/buildable.py:45
-#, fuzzy
 msgid "This area is already occupied by a unit."
 msgstr "Esta área já está ocupada."
 
@@ -3402,7 +3339,6 @@ msgid "This building must be built on the coastline."
 msgstr "Este edifício deve ser construído no litoral."
 
 #: horizons/world/building/buildable.py:47
-#, fuzzy
 msgid "This building has to be placed at the ocean."
 msgstr "Este edifício necessita de ser colocado perto do oceano."
 
@@ -3435,10 +3371,9 @@ msgid "These residents are unhappy."
 msgstr ""
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Alguns habitantes não conseguem chegar à praça principal."
+msgstr "Esses moradores não têm acesso a uma praça principal."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3449,7 +3384,6 @@ msgid "This building has a very low productivity."
 msgstr ""
 
 #: horizons/world/status.py:121
-#, fuzzy
 msgid "This building is decommissioned."
 msgstr "Este edifício deve ser construído no litoral."
 
@@ -3519,7 +3453,6 @@ msgid "medical herbs"
 msgstr "ervas medicinais"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Aristocrats"
 msgstr "aristocrata ou fidalgo"
 
@@ -3532,20 +3465,18 @@ msgid "gems"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "depósito de ferro"
+msgstr "depósito de salmoura"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "Alguns dos seus habitantes mudaram-se."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "depósito de ferro"
+msgstr "gem de depósito"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3560,20 +3491,18 @@ msgid "stone tops"
 msgstr "tampos de pedra"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "sementes de cacau"
+msgstr "grãos de café"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "lã"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "folhas de tabaco"
+msgstr "folhas de chá"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
@@ -3596,20 +3525,18 @@ msgid "pigs for slaughter"
 msgstr "porcos para abate"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "education"
 msgid "recreation"
-msgstr "educação"
+msgstr "recreação"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "depósito de barro"
+msgstr "depósito de mármore"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3645,28 +3572,24 @@ msgid "perfume"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "planta de tabaco"
+msgstr "plantas de algodão"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
 msgstr "barro"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Merchants"
 msgstr "mercador"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "plantas de especiarias"
+msgstr "plantas de lúpulo"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
 msgstr "azul-esverdeado escuro"
@@ -3680,7 +3603,6 @@ msgid "iron ingots"
 msgstr "lingotes de ferro"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
 msgstr "depósito de barro"
@@ -3776,7 +3698,6 @@ msgid "spices"
 msgstr "especiarias"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
 msgstr "plantas de especiarias"
@@ -3786,10 +3707,9 @@ msgid "bricks"
 msgstr "tijolos"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "minério de ferro"
+msgstr "minério de ouro"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3825,10 +3745,9 @@ msgid "confectionery"
 msgstr "doçaria"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Baleeiro"
+msgstr "baleias"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3843,10 +3762,9 @@ msgid "blossoms"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "plantas de especiarias"
+msgstr "plantas de índigo"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3911,10 +3829,9 @@ msgid "Your game has been autosaved."
 msgstr "O seu jogo foi gravado/guardado automaticamente."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "depósito de barro"
+msgstr "depósito de ouro"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3979,10 +3896,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "planta de tabaco"
+msgstr "plantas de chá"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -4024,7 +3940,6 @@ msgid "condiments"
 msgstr "condimentos"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
 msgstr "preto"

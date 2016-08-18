@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-12-22 00:41+0000\n"
+"PO-Revision-Date: 2016-07-31 14:59+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -99,7 +99,7 @@ msgstr "Valitse siveltimen koko:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr "Valitse maastotyyppi:"
+msgstr "Valitse maatyyppi:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
@@ -314,7 +314,6 @@ msgid "Capacity utilization"
 msgstr "Käyttöosuus"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
 msgstr "Vaihda aluksen nimi napsauttamalla tästä"
@@ -504,10 +503,9 @@ msgid "Configure trading route"
 msgstr "Muuta kauppareittiä"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(menetät kaikki resurssisi)"
+msgstr "Hylkää kaikki resurssit"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -816,7 +814,7 @@ msgstr "Aggressiivinen"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr "Pysy asemissa"
+msgstr "Pysy paikallaan"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
@@ -963,7 +961,7 @@ msgstr "Korosta maa-alueen omistajat"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Toggle health bars"
-msgstr "Näytä/piilota elämäpalkit"
+msgstr "Näytä terveydentila"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Focus camera on selection"
@@ -1554,16 +1552,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Haluatko varmasti lopettaa käynnissä olevan pelin?"
+msgstr "Oletko varma, että haluat poistaa nämä objektit?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Poista merkintä"
+msgstr "Poista"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1572,10 +1568,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} ruutua"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Paina haluttua painiketta"
+msgstr "Painamalla näppäintä…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2142,7 +2137,6 @@ msgid "Press H to remove this hint"
 msgstr "Piilota tämä tietoikkuna painamalla H"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
 msgstr "Tuhoa rakennus"
@@ -2241,7 +2235,6 @@ msgid "Warehouse overview"
 msgstr "Sivutoimiston yleiskatsaus"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
 msgstr "Aluksen yleiskatsaus"
@@ -2758,10 +2751,9 @@ msgstr "Vartiotorni"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Puolustaa siirtokuntaasi."
+msgstr "Laajentaa ratkaisun alueen."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2895,10 +2887,9 @@ msgstr "Varastomökki"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Laajentaa varastotilaa ja tarjoaa lisää kerääjiä."
+msgstr "Asiakkaansa varastossa, laajentaa ratkaisun alueen ja tarjoaa kerääjät."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3012,17 +3003,15 @@ msgstr "Sivutoimisto"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
 msgstr "Aseistus"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Valmistaa työkaluja raudasta."
+msgstr "Tuottaa aseita ulos iron."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423

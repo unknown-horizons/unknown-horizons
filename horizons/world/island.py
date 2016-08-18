@@ -332,7 +332,7 @@ class Island(BuildingOwner, WorldObject):
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
-		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
 			# self.available_land_cache may be None when loading a settlement
 			# it is ok to skip in that case because the cache's constructor will take the deposits into account anyway
 			self.deposits[building.id][building.position.origin.to_tuple()] = building
@@ -365,7 +365,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def remove_building(self, building):
 		# removal code (before super call)
-		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.MOUNTAIN):
 			coords = building.position.origin.to_tuple()
 			if coords in self.deposits[building.id]:
 				del self.deposits[building.id][coords]
