@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-17 15:49+0200\n"
+"POT-Creation-Date: 2016-08-18 18:57+0200\n"
 "PO-Revision-Date: 2016-01-09 07:15+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
@@ -737,8 +737,13 @@ msgstr ""
 "이더는 5톤을 판매 할것입니다."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "If the free trader however only wants to buy or sell less than your "
+#| "settings would allow him, you need to live with that and wait for him to "
+#| "return."
 msgid ""
-"If the free trader however only wants to buy or sell less than your settings "
+"If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
 "어쨌거나 자유무역상인이 설정한 값보다 구입이나 판매를 적게 요구한다면, 그와 "
@@ -765,7 +770,9 @@ msgstr ""
 "임무: 재고에서 30개의 도구를 가지고하는 데 필요한만큼 도구로 구입(???)!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a pavilion with connection to the tents."
+#, fuzzy
+#| msgid "Build a pavilion with connection to the tents."
+msgid "Build a Pavilion with connection to the Tents."
 msgstr "교회를 건설하고 천막과 연결한다."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -780,545 +787,329 @@ msgstr "이러한 도구는 바로 충분할것입니다. 잘 하셨습니다!"
 msgid "You now provide housing, a main square and food to your inhabitants."
 msgstr "지금 주민들에게 집과 주요광장과 음식을 제공하세요."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Still there is one demand which we have not satisfied so far, you may check "
-"that in the marketplace or tent tab - your sailors want a basic building "
-"where they can pray."
-msgstr ""
-"여전히 우리가 만족하지않는 한가지가 있습니다. 이는 시장 또는 천막 탭에서 확"
-"인 할 수 있습니다 - 선원은 기도할 수 있는 기본 건물을 원합니다."
+#~ msgid ""
+#~ "Still there is one demand which we have not satisfied so far, you may "
+#~ "check that in the marketplace or tent tab - your sailors want a basic "
+#~ "building where they can pray."
+#~ msgstr ""
+#~ "여전히 우리가 만족하지않는 한가지가 있습니다. 이는 시장 또는 천막 탭에서 "
+#~ "확인 할 수 있습니다 - 선원은 기도할 수 있는 기본 건물을 원합니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"The solution is a pavilion which the village parson quickly puts up as "
-"shelter from the sun."
-msgstr ""
-"이 해결책은 마을 목사를 태양으로부터 주거지로 빨리 이동시키기는 교회 입니다."
+#~ msgid ""
+#~ "The solution is a pavilion which the village parson quickly puts up as "
+#~ "shelter from the sun."
+#~ msgstr ""
+#~ "이 해결책은 마을 목사를 태양으로부터 주거지로 빨리 이동시키기는 교회 입니"
+#~ "다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Service buildings like this also need to be connected to the tents with a "
-"trail, else your inhabitants feel unable to reach them."
-msgstr ""
-"이 같은 서비스 건물도 길을 천막과 연결해야합니다. 그렇지 않으면 주민들은 그 "
-"건물들에 도달할수 없을것입니다."
+#~ msgid ""
+#~ "Service buildings like this also need to be connected to the tents with a "
+#~ "trail, else your inhabitants feel unable to reach them."
+#~ msgstr ""
+#~ "이 같은 서비스 건물도 길을 천막과 연결해야합니다. 그렇지 않으면 주민들은 "
+#~ "그 건물들에 도달할수 없을것입니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"Note that faith is treated like a physical resource!"
-msgstr ""
-"\n"
-"신앙은 물리적 자원과 같이 취급됩니다!"
+#~ msgid ""
+#~ "\n"
+#~ "Note that faith is treated like a physical resource!"
+#~ msgstr ""
+#~ "\n"
+#~ "신앙은 물리적 자원과 같이 취급됩니다!"
 
-#. This is the text body of a logbook page.
-msgid ""
-"This means that your inhabitants need a road connection to the producer "
-"(pavilion) to pick up faith there."
-msgstr ""
-"즉, 주민들의 신앙을 끌어올리기 위해서는 생산자(교회)와 연결된 길이 필요하다"
-"는 말입니다."
+#~ msgid ""
+#~ "This means that your inhabitants need a road connection to the producer "
+#~ "(pavilion) to pick up faith there."
+#~ msgstr ""
+#~ "즉, 주민들의 신앙을 끌어올리기 위해서는 생산자(교회)와 연결된 길이 필요하"
+#~ "다는 말입니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"After some time, they will have consumed it and then again look for a "
-"producer to collect more faith."
-msgstr ""
-"잠시후면, 그들은 그것을 소비하는 것하고 다시 신앙을 더 수집하는 생산자를 찾을"
-"것입니다."
+#~ msgid ""
+#~ "After some time, they will have consumed it and then again look for a "
+#~ "producer to collect more faith."
+#~ msgstr ""
+#~ "잠시후면, 그들은 그것을 소비하는 것하고 다시 신앙을 더 수집하는 생산자를 "
+#~ "찾을것입니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Important:\n"
-"It is NOT enough that the building is merely within a certain range of the "
-"tents.\n"
-"The road connection is required as well."
-msgstr ""
-"중요:\n"
-"건물은 천막의 단지 특정 영역에 있는게 충분하지 않습니다.???\n"
-"뿐만 아니라 도로 연결도 필요합니다."
+#~ msgid ""
+#~ "Important:\n"
+#~ "It is NOT enough that the building is merely within a certain range of "
+#~ "the tents.\n"
+#~ "The road connection is required as well."
+#~ msgstr ""
+#~ "중요:\n"
+#~ "건물은 천막의 단지 특정 영역에 있는게 충분하지 않습니다.???\n"
+#~ "뿐만 아니라 도로 연결도 필요합니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Task: Build a pavilion with a trail to the tents in order to fulfill your "
-"sailors' demand for faith."
-msgstr ""
-"임무: 신앙에 대한 선원들의 요구를 충족하기 위해 천막과 연결된 길과 교회을 건"
-"설."
+#~ msgid ""
+#~ "Task: Build a pavilion with a trail to the tents in order to fulfill your "
+#~ "sailors' demand for faith."
+#~ msgstr ""
+#~ "임무: 신앙에 대한 선원들의 요구를 충족하기 위해 천막과 연결된 길과 교회을 "
+#~ "건설."
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid ""
-"Set the tax level to Low (left end) and wait for your sailors to upgrade."
-msgstr ""
-"세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리세요."
+#~ msgid ""
+#~ "Set the tax level to Low (left end) and wait for your sailors to upgrade."
+#~ msgstr ""
+#~ "세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리세요."
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: NEXT TIER"
-msgstr "새로운 임무 : 다음 시대"
+#~ msgid "NEW TASK: NEXT TIER"
+#~ msgstr "새로운 임무 : 다음 시대"
 
-#. This is the text body of a logbook page.
-msgid ""
-"All demands are fulfilled now if your inhabitants can regularly visit the "
-"main square & pavilion and your food supply is adequate."
-msgstr ""
-"주민들이 정기적으로 주요 광장 및 교회를 방문 할 수 있고 식량 공급이 충분하다"
-"면, 이제 모든 요구는 성취됩니다."
+#~ msgid ""
+#~ "All demands are fulfilled now if your inhabitants can regularly visit the "
+#~ "main square & pavilion and your food supply is adequate."
+#~ msgstr ""
+#~ "주민들이 정기적으로 주요 광장 및 교회를 방문 할 수 있고 식량 공급이 충분하"
+#~ "다면, 이제 모든 요구는 성취됩니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"If the sailors are happy enough, they want to advance to the next tier "
-"called Pioneers."
-msgstr ""
-"선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다."
+#~ msgid ""
+#~ "If the sailors are happy enough, they want to advance to the next tier "
+#~ "called Pioneers."
+#~ msgstr ""
+#~ "선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"To make them happy, there is nothing else for you to do but setting taxes to "
-"a lower level since you have fulfilled all the demands of your inhabitants."
-msgstr ""
-"당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 세금"
-"을 낮추는 방법 밖에 없습니다."
+#~ msgid ""
+#~ "To make them happy, there is nothing else for you to do but setting taxes "
+#~ "to a lower level since you have fulfilled all the demands of your "
+#~ "inhabitants."
+#~ msgstr ""
+#~ "당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 "
+#~ "세금을 낮추는 방법 밖에 없습니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"You should try to not always run on low taxes since this will probably lead "
-"to bankruptcy sooner or later. For a period of time and if you know what you "
-"are doing, it is fine though."
-msgstr ""
-"아마 조만간 파산으로 이어질 것 때문에, 항상 낮은 세금으로 지속하지 마십시오. "
-"당분간은 무엇을하는지 아는 경우는 그래도 괜찮습니다."
+#~ msgid ""
+#~ "You should try to not always run on low taxes since this will probably "
+#~ "lead to bankruptcy sooner or later. For a period of time and if you know "
+#~ "what you are doing, it is fine though."
+#~ msgstr ""
+#~ "아마 조만간 파산으로 이어질 것 때문에, 항상 낮은 세금으로 지속하지 마십시"
+#~ "오. 당분간은 무엇을하는지 아는 경우는 그래도 괜찮습니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"After some time, the first unit should walk to the main square and have a "
-"look for new construction material there to build a log house. This house "
-"will replace the old tent."
-msgstr ""
-"몇 시간 후, 첫 번째 유닛이 주 광장으로 걸어가서 통나무 집을 짓기위해 건축자재"
-"가 있는 곳을 찾을것입니다. 이 집은 오래된 천막을 대체 할 것입니다."
+#~ msgid ""
+#~ "After some time, the first unit should walk to the main square and have a "
+#~ "look for new construction material there to build a log house. This house "
+#~ "will replace the old tent."
+#~ msgstr ""
+#~ "몇 시간 후, 첫 번째 유닛이 주 광장으로 걸어가서 통나무 집을 짓기위해 건축"
+#~ "자재가 있는 곳을 찾을것입니다. 이 집은 오래된 천막을 대체 할 것입니다."
 
-#. This is the text body of a logbook page.
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "Such residential upgrades cost resources and can thus be restricted at "
-#| "the main square."
-msgid ""
-"\n"
-"Such residential upgrades cost resources and can thus be restricted at the "
-"Main Square."
-msgstr ""
-"\n"
-"이러한 주거 개선은 자원이 필요하므로 주요 광장에서 제한될 수 있습니다."
+#~| msgid ""
+#~| "\n"
+#~| "Such residential upgrades cost resources and can thus be restricted at "
+#~| "the main square."
+#~ msgid ""
+#~ "\n"
+#~ "Such residential upgrades cost resources and can thus be restricted at "
+#~ "the Main Square."
+#~ msgstr ""
+#~ "\n"
+#~ "이러한 주거 개선은 자원이 필요하므로 주요 광장에서 제한될 수 있습니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"There also are upgrades of buildings without costs, as you will see with the "
-"lumberjack. In this case, only the graphics change."
-msgstr ""
-"또한 벌목꾼을 보게 되므로 비용이 안드는 건물의 업그레이드가 있습니다. 이 경"
-"우, 그래픽만 바뀝니다."
+#~ msgid ""
+#~ "There also are upgrades of buildings without costs, as you will see with "
+#~ "the lumberjack. In this case, only the graphics change."
+#~ msgstr ""
+#~ "또한 벌목꾼을 보게 되므로 비용이 안드는 건물의 업그레이드가 있습니다. 이 "
+#~ "경우, 그래픽만 바뀝니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
-"than sailors, too."
-msgstr ""
-"업그레이드 된 주택은 더 많은 주민들을 수용합니다, 그리고 개척자도 선원보다 "
-"더 많은 세금을 지불합니다."
+#~ msgid ""
+#~ "Upgraded housing accomodates more inhabitants, and pioneers pay more "
+#~ "taxes than sailors, too."
+#~ msgstr ""
+#~ "업그레이드 된 주택은 더 많은 주민들을 수용합니다, 그리고 개척자도 선원보"
+#~ "다 더 많은 세금을 지불합니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"As you may have figured out already, the downside is that pioneers demand "
-"additional goods which sailors do not need - so you will need to spend this "
-"extra money to make them happy as well."
-msgstr ""
-"이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 상"
-"품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 할뿐만아니라 이 여분"
-"의 돈을 소비해야합니다."
+#~ msgid ""
+#~ "As you may have figured out already, the downside is that pioneers demand "
+#~ "additional goods which sailors do not need - so you will need to spend "
+#~ "this extra money to make them happy as well."
+#~ msgstr ""
+#~ "이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 "
+#~ "상품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 할뿐만아니라 이 "
+#~ "여분의 돈을 소비해야합니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
-msgstr ""
-"임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다릴것."
+#~ msgid ""
+#~ "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
+#~ msgstr ""
+#~ "임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다릴"
+#~ "것."
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a farm and keep some empty space around it."
-msgstr "농장을 건설하고, 주변에 약간의 빈공터를 확보해두세요."
+#~ msgid "Build a farm and keep some empty space around it."
+#~ msgstr "농장을 건설하고, 주변에 약간의 빈공터를 확보해두세요."
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A FARM"
-msgstr "새로운 임무: 농장 건설"
+#~ msgid "NEW TASK: BUILD A FARM"
+#~ msgstr "새로운 임무: 농장 건설"
 
-#. This is the text body of a logbook page.
-msgid "Congratulations! Some of your inhabitants have reached tier II!"
-msgstr "축하합니다! 주민들의 일부가 계층II에 도달했습니다!"
+#~ msgid "Congratulations! Some of your inhabitants have reached tier II!"
+#~ msgstr "축하합니다! 주민들의 일부가 계층II에 도달했습니다!"
 
-#. This is the text body of a logbook page.
-msgid ""
-"Now you have access to new buildings, take a look at the Build menu again."
-msgstr "이젠 지금 새로운 건물에 접근할수 있습니다, 건설 메뉴를 다시 봐보세요."
+#~ msgid ""
+#~ "Now you have access to new buildings, take a look at the Build menu again."
+#~ msgstr ""
+#~ "이젠 지금 새로운 건물에 접근할수 있습니다, 건설 메뉴를 다시 봐보세요."
 
-#. This is the text body of a logbook page.
-msgid "A shiny new tab appeared there."
-msgstr "그곳에 빛나는 새로운 탭이 나타났습니다."
+#~ msgid "A shiny new tab appeared there."
+#~ msgstr "그곳에 빛나는 새로운 탭이 나타났습니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Pioneers will demand cloth, so you need to set up a production line for "
-"cloth starting with lambs wool (which is one of the goods produced at the "
-"farm)."
-msgstr ""
-"개척자가 천을 요구할 것입니다. 양털실(농장에서 생산되는 제품중의 하나)로 만"
-"든 천의 생산라인을 설정 해야합니다."
+#~ msgid ""
+#~ "Pioneers will demand cloth, so you need to set up a production line for "
+#~ "cloth starting with lambs wool (which is one of the goods produced at the "
+#~ "farm)."
+#~ msgstr ""
+#~ "개척자가 천을 요구할 것입니다. 양털실(농장에서 생산되는 제품중의 하나)로 "
+#~ "만든 천의 생산라인을 설정 해야합니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"The farm is a very special production building since it can produce not only "
-"one, but very many (and different) goods if you choose."
-msgstr ""
-"농장은 매우 특별한 생산 건물입니다. 왜냐면 하나만 생산하지 않고  귀하가 원하"
-"는 매우 많은 제품을 생산하기 때문입니다."
+#~ msgid ""
+#~ "The farm is a very special production building since it can produce not "
+#~ "only one, but very many (and different) goods if you choose."
+#~ msgstr ""
+#~ "농장은 매우 특별한 생산 건물입니다. 왜냐면 하나만 생산하지 않고  귀하가 원"
+#~ "하는 매우 많은 제품을 생산하기 때문입니다."
 
-#. This is the text body of a logbook page.
-msgid "The output of farms depends on what kind of fields you build around it."
-msgstr "농장의 수확물은 주위에 만든 농작물에 종류에 의존합니다."
+#~ msgid ""
+#~ "The output of farms depends on what kind of fields you build around it."
+#~ msgstr "농장의 수확물은 주위에 만든 농작물에 종류에 의존합니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"We will have a closer look at this later."
-msgstr ""
-"\n"
-"이제, 이 것을 자세히 살펴 봅시다."
+#~ msgid ""
+#~ "\n"
+#~ "We will have a closer look at this later."
+#~ msgstr ""
+#~ "\n"
+#~ "이제, 이 것을 자세히 살펴 봅시다."
 
-#. This is the text body of a logbook page.
 #, fuzzy
-#| msgid ""
-#| "Farms, like all companies producing raw materials, do not necessarily "
-#| "need to be connected to storage or a warehouse."
-msgid ""
-"Farms, like all companies producing raw materials, do not necessarily need "
-"to be connected to storage or a Warehouse."
-msgstr ""
-"농장, 원 재료를 생산 하는 모든 회사 처럼, 저장 또는 창고에 연결 되어야 할 필"
-"요는 없습니다."
+#~| msgid ""
+#~| "Farms, like all companies producing raw materials, do not necessarily "
+#~| "need to be connected to storage or a warehouse."
+#~ msgid ""
+#~ "Farms, like all companies producing raw materials, do not necessarily "
+#~ "need to be connected to storage or a Warehouse."
+#~ msgstr ""
+#~ "농장, 원 재료를 생산 하는 모든 회사 처럼, 저장 또는 창고에 연결 되어야 할 "
+#~ "필요는 없습니다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"As long as units of the final production company can reach the farm, and "
-"collectors from the warehouse or storage tent can reach the final company "
-"everything's fine."
-msgstr ""
-"최종 생산 회사의 단위가 농장에 도달할 수 있는 한, 그리고 창고 수집가 또는 저"
-"장 텐트는 최종 회사에 도달할 수 있다."
+#~ msgid ""
+#~ "As long as units of the final production company can reach the farm, and "
+#~ "collectors from the warehouse or storage tent can reach the final company "
+#~ "everything's fine."
+#~ msgstr ""
+#~ "최종 생산 회사의 단위가 농장에 도달할 수 있는 한, 그리고 창고 수집가 또는 "
+#~ "저장 텐트는 최종 회사에 도달할 수 있다."
 
-#. This is the text body of a logbook page.
-msgid ""
-"If you, however, plan to do some processing on different parts of the island "
-"(which can make sense) or even on different islands, you will need a "
-"connection to collectors."
-msgstr ""
+#~ msgid "Task: Build a farm."
+#~ msgstr "임무: 농장을 건설."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Try to build the farm not too close to the coast or your existing buildings "
-"since it will need some space around it to work well."
-msgstr ""
+#~ msgid "Build at least one pasture and add potato fields if you like."
+#~ msgstr ""
+#~ "최소 하나이상의 목초지를 건설하고, 좋아 하신다면 감자밭도 추가하세요."
 
-#. This is the text body of a logbook page.
-msgid "Task: Build a farm."
-msgstr "임무: 농장을 건설."
+#~ msgid "NEW TASK: BUILD FIELDS"
+#~ msgstr "새로운 임무: 농지 건설"
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build at least one pasture and add potato fields if you like."
-msgstr "최소 하나이상의 목초지를 건설하고, 좋아 하신다면 감자밭도 추가하세요."
+#~ msgid ""
+#~ "Task: Build at least one pasture in the farm's range and add potato "
+#~ "fields if you like."
+#~ msgstr ""
+#~ "임무: 최소 하나 이상의 목초지를 건설하고, 좋아 한다면 감자밭도 추가."
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD FIELDS"
-msgstr "새로운 임무: 농지 건설"
+#~ msgid "Build a storage tent (tier I tab) where it makes sense."
+#~ msgstr "그럴듯한 곳에 저장소 천막(제 1 시대 탭)을 건설하세요."
 
-#. This is the text body of a logbook page.
-msgid "The farm itself is not going to produce anything without some fields."
-msgstr ""
+#~ msgid "NEW TASK: BUILD STORAGE"
+#~ msgstr "새로운 임무: 저장소 건설"
 
-#. This is the text body of a logbook page.
-msgid ""
-"You currently have the choice between pastures, potato and sugar fields."
-msgstr ""
+#~ msgid "Did you watch your lumberjack recently?"
+#~ msgstr "최근에 나무꾼을 본적 있습니까?"
 
-#. This is the text body of a logbook page.
-msgid ""
-"Let's have a short overview:\n"
-"* Pasture: Sheep live here, producing lamb wool.\n"
-"* Potato field: Grows potatoes which are currently treated as food.\n"
-"* Sugar field: Grows sugar which is used to distill liquor and (later) "
-"produce confectionery."
-msgstr ""
+#~ msgid "Task: Build a storage tent, preferably where you need collectors."
+#~ msgstr "임무: 가급적이면 수집자를 필요로 하는곳에 장소 천막을 건설."
 
-#. This is the text body of a logbook page.
-msgid ""
-"We now only need pastures, but in case your food supply chain is too small "
-"(maybe many residential buildings) you can also produce some potatoes."
-msgstr ""
+#~ msgid "Build a weaver that can somehow reach the wool of your farm."
+#~ msgstr "어떻게든 농장의 양털을 생산할 수 있도록 방직소를 건설하세요."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Note that for potatoes you will need a road connection to the farm (not to "
-"the field!) as it will be the only company to work on the goods."
-msgstr ""
+#~ msgid "NEW TASK: BUILD A WEAVER"
+#~ msgstr "새로운 임무: 방직소를 건설"
 
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"Make sure that all fields you build are in the area covered by the farm."
-msgstr ""
+#~ msgid "Task: Build a weaver positioned so it can get wool."
+#~ msgstr "임무: 양털을 얻을수있는 위치에 방직소를 건설."
 
-#. This is the text body of a logbook page.
-msgid ""
-"You can have combined production - one pasture will not lead to 100 percent "
-"efficiency of the farm - but you need to check how many fields one farm can "
-"serve."
-msgstr ""
+#~ msgid ""
+#~ "House a total of 50 or more inhabitants in your city to complete the "
+#~ "tutorial. You need a positive balance."
+#~ msgstr ""
+#~ "자습서을 완료하기 위해서는 도시에서 총 50명 이상의 주민들이 있어야 합니"
+#~ "다. 흑자가 되도록 하세요."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Different classes of fields require the farm units to spend more or less "
-"time there (to seed, harvest, herd, etc…) and because of that, the farm may "
-"be unable to serve all of the fields you built for it in time."
-msgstr ""
+#~ msgid "NEW TASK: COMPLETE TUTORIAL"
+#~ msgstr "새로운 임무: 자습서 완료"
 
-#. This is the text body of a logbook page.
-msgid ""
-"For now, you do not need to care about these issues a lot since you haven't "
-"built any fields. Let's change that!"
-msgstr ""
+#~ msgid ""
+#~ "Task: Reach a total number of 50 inhabitants and a positive balance to "
+#~ "complete this tutorial."
+#~ msgstr ""
+#~ "임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야함."
 
-#. This is the text body of a logbook page.
-msgid ""
-"Task: Build at least one pasture in the farm's range and add potato fields "
-"if you like."
-msgstr "임무: 최소 하나 이상의 목초지를 건설하고, 좋아 한다면 감자밭도 추가."
+#~ msgid ""
+#~ "Congratulations! You have reached the end of this tutorial and are ready "
+#~ "to meet new challenges!"
+#~ msgstr "축하합니다! 자습서를 완료했습니다. 이제 새로운 것에 도전해 봅시다!"
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a storage tent (tier I tab) where it makes sense."
-msgstr "그럴듯한 곳에 저장소 천막(제 1 시대 탭)을 건설하세요."
+#~ msgid "NO TASKS LEFT"
+#~ msgstr "남은 임무 없음"
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD STORAGE"
-msgstr "새로운 임무: 저장소 건설"
+#~ msgid ""
+#~ "You have successfully completed all tasks that were handed to you. The "
+#~ "world is now at your command, waiting for your free aspirations and brave "
+#~ "explorations!"
+#~ msgstr ""
+#~ "전달된 모든 임무를 성공적으로 완료하였습니다. 세계는 지금 자유로운 열망과 "
+#~ "용감한 탐험을 위해여러분의 명령을 기다리고 있고 있습니다!"
 
-#. This is the text body of a logbook page.
-msgid "Did you watch your lumberjack recently?"
-msgstr "최근에 나무꾼을 본적 있습니까?"
+#~ msgid ""
+#~ "If you have any suggestions on what we could or should improve, add or "
+#~ "leave out:"
+#~ msgstr "우리가 할수있거나 개선, 추가, 삭제해야 하는 제안 사항이 있다면:"
 
-#. This is the text body of a logbook page.
-msgid ""
-"Since your Warehouse does not have unlimited space to store goods, "
-"collectors will stop fetching goods from companies when stock is full."
-msgstr ""
+#~ msgid "www.unknown-horizons.org"
+#~ msgstr "www.unknown-horizons.org"
 
-#. This is the text body of a logbook page.
-msgid ""
-"So if no sailors recently wanted to upgrade their tents, you probably have a "
-"lot of boards and in that case, the lumberjack may idle."
-msgstr ""
+#~ msgid "#unknown-horizons @ irc.freenode.net"
+#~ msgstr "#unknown-horizons @ irc.freenode.net"
 
-#. This is the text body of a logbook page.
-msgid ""
-"We can improve this situation in two different ways, and we will have a look "
-"at both of them below."
-msgstr ""
+#~ msgid "team@unknown-horizons.org"
+#~ msgstr "team@unknown-horizons.org"
 
-#. This is the text body of a logbook page.
-msgid ""
-"All companies offer to do no work at all.\n"
-"This may sound strange, but click on the gear wheel you see in a lumberjack "
-"hut's overview."
-msgstr ""
+#~ msgid "Our forums are open to you as well!"
+#~ msgstr "우리 포럼은 당신에게도 열려있습니다!"
 
-#. This is the text body of a logbook page.
-msgid ""
-"If this 'break' mode is enabled (we call it 'Decommissioning'), the running "
-"costs you pay for the building will decrease. They won't be zero, but still "
-"lower than if you keep the company producing."
-msgstr ""
+#~ msgid ""
+#~ "The best results until now were achieved by joining our IRC channel, so "
+#~ "you could try that out first (-;"
+#~ msgstr ""
+#~ "지금까지 가장 좋은 결과들은 우리의 IRC 채널에 접속을 통해서 이뤄졌습니다,"
+#~ "그렇기 때문에 여러분도 IRC에서 좋은결과를 위해 시도해보세요 (-;"
 
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"This means that you can save money when you temporarily do not need a "
-"company and do not want to tear it down, either."
-msgstr ""
+#~ msgid "Thanks!"
+#~ msgstr "고맙습니다!"
 
-#. This is the text body of a logbook page.
-msgid ""
-"Another solution is to build the last tier-I building which has not been "
-"mentioned so far: the storage tent."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"This building has two purposes. It:\n"
-"* Offers more storage for your goods, and\n"
-"* sends its own collectors to fetch goods, just like the Warehouse does."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Note that companies can also be connected to a storage in order to get their "
-"products collected, and if the Warehouse is overwhelmed with collector "
-"tasks, you can place a storage tent to help out there."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "Task: Build a storage tent, preferably where you need collectors."
-msgstr "임무: 가급적이면 수집자를 필요로 하는곳에 장소 천막을 건설."
-
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr "어떻게든 농장의 양털을 생산할 수 있도록 방직소를 건설하세요."
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A WEAVER"
-msgstr "새로운 임무: 방직소를 건설"
-
-#. This is the text body of a logbook page.
-msgid ""
-"Now the wool production is set up, you still need a weaver to produce cloth "
-"out of this wool."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"There are two spots where you can build it - either close to the farm or "
-"close to a Storage Tent (or the Warehouse)."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "In both cases you should ensure the connection to a trail as well."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"You can place the weaver close to the farm and tear down any trail to the "
-"farm to see that it will still fetch the wool and produce."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "Task: Build a weaver positioned so it can get wool."
-msgstr "임무: 양털을 얻을수있는 위치에 방직소를 건설."
-
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid ""
-"House a total of 50 or more inhabitants in your city to complete the "
-"tutorial. You need a positive balance."
-msgstr ""
-"자습서을 완료하기 위해서는 도시에서 총 50명 이상의 주민들이 있어야 합니다. 흑"
-"자가 되도록 하세요."
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "새로운 임무: 자습서 완료"
-
-#. This is the text body of a logbook page.
-msgid ""
-"Try to house a total of 50 or more inhabitants in your city by providing "
-"more residential buildings."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Once you are able to keep an economy running which can satisfy this amount "
-"of consumers, you are ready to discover new Unknown Horizons!"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"You also need enough money to keep this economy running, so a positive "
-"balance (check in the Warehouse tab 'Account') is required."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Task: Reach a total number of 50 inhabitants and a positive balance to "
-"complete this tutorial."
-msgstr "임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야함."
-
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid ""
-"Congratulations! You have reached the end of this tutorial and are ready to "
-"meet new challenges!"
-msgstr "축하합니다! 자습서를 완료했습니다. 이제 새로운 것에 도전해 봅시다!"
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NO TASKS LEFT"
-msgstr "남은 임무 없음"
-
-#. This is the text body of a logbook page.
-msgid ""
-"You have successfully completed all tasks that were handed to you. The world "
-"is now at your command, waiting for your free aspirations and brave "
-"explorations!"
-msgstr ""
-"전달된 모든 임무를 성공적으로 완료하였습니다. 세계는 지금 자유로운 열망과 용"
-"감한 탐험을 위해여러분의 명령을 기다리고 있고 있습니다!"
-
-#. This is the text body of a logbook page.
-msgid ""
-"If you have any suggestions on what we could or should improve, add or leave "
-"out:"
-msgstr "우리가 할수있거나 개선, 추가, 삭제해야 하는 제안 사항이 있다면:"
-
-#. This is the text body of a logbook page.
-msgid "www.unknown-horizons.org"
-msgstr "www.unknown-horizons.org"
-
-#. This is the text body of a logbook page.
-msgid "#unknown-horizons @ irc.freenode.net"
-msgstr "#unknown-horizons @ irc.freenode.net"
-
-#. This is the text body of a logbook page.
-msgid "team@unknown-horizons.org"
-msgstr "team@unknown-horizons.org"
-
-#. This is the text body of a logbook page.
-msgid "Our forums are open to you as well!"
-msgstr "우리 포럼은 당신에게도 열려있습니다!"
-
-#. This is the text body of a logbook page.
-msgid ""
-"The best results until now were achieved by joining our IRC channel, so you "
-"could try that out first (-;"
-msgstr ""
-"지금까지 가장 좋은 결과들은 우리의 IRC 채널에 접속을 통해서 이뤄졌습니다,그렇"
-"기 때문에 여러분도 IRC에서 좋은결과를 위해 시도해보세요 (-;"
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "Thanks!"
-msgstr "고맙습니다!"
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"Thanks for playing the tutorial!\n"
-"\n"
-"Your UH-Team"
-msgstr ""
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"자습서를 플레이 해주셔서 고맙습니다!\n"
-"\n"
-"여러분의 UH 팀 입니다"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "Thanks for playing the tutorial!\n"
+#~ "\n"
+#~ "Your UH-Team"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "자습서를 플레이 해주셔서 고맙습니다!\n"
+#~ "\n"
+#~ "여러분의 UH 팀 입니다"
 
 #~ msgid ""
 #~ "This is your Captain's log where all important information is stored. A "

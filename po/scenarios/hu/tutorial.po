@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-17 15:49+0200\n"
+"POT-Creation-Date: 2016-08-18 18:57+0200\n"
 "PO-Revision-Date: 2015-04-10 00:40+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/tutorial/hu/"
@@ -813,7 +813,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"If the free trader however only wants to buy or sell less than your settings "
+"If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
 
@@ -841,7 +841,9 @@ msgstr ""
 "raktáron!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a pavilion with connection to the tents."
+#, fuzzy
+#| msgid "Build a pavilion with connection to the tents."
+msgid "Build a Pavilion with connection to the Tents."
 msgstr "Építs egy pavilont és kapcsold össze a sátrakkal."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -856,508 +858,113 @@ msgstr "Ennyi eszköz elég lesz most. Szép volt!"
 msgid "You now provide housing, a main square and food to your inhabitants."
 msgstr ""
 
-#. This is the text body of a logbook page.
-msgid ""
-"Still there is one demand which we have not satisfied so far, you may check "
-"that in the marketplace or tent tab - your sailors want a basic building "
-"where they can pray."
-msgstr ""
+#~ msgid ""
+#~ "Set the tax level to Low (left end) and wait for your sailors to upgrade."
+#~ msgstr ""
+#~ "Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok "
+#~ "frissítik."
 
-#. This is the text body of a logbook page.
-msgid ""
-"The solution is a pavilion which the village parson quickly puts up as "
-"shelter from the sun."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Service buildings like this also need to be connected to the tents with a "
-"trail, else your inhabitants feel unable to reach them."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"Note that faith is treated like a physical resource!"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"This means that your inhabitants need a road connection to the producer "
-"(pavilion) to pick up faith there."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"After some time, they will have consumed it and then again look for a "
-"producer to collect more faith."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Important:\n"
-"It is NOT enough that the building is merely within a certain range of the "
-"tents.\n"
-"The road connection is required as well."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Task: Build a pavilion with a trail to the tents in order to fulfill your "
-"sailors' demand for faith."
-msgstr ""
-
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid ""
-"Set the tax level to Low (left end) and wait for your sailors to upgrade."
-msgstr ""
-"Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok "
-"frissítik."
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #, fuzzy
-msgid "NEW TASK: NEXT TIER"
-msgstr "Új feladat: Következő szintnövekedés"
+#~ msgid "NEW TASK: NEXT TIER"
+#~ msgstr "Új feladat: Következő szintnövekedés"
 
-#. This is the text body of a logbook page.
-msgid ""
-"All demands are fulfilled now if your inhabitants can regularly visit the "
-"main square & pavilion and your food supply is adequate."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"If the sailors are happy enough, they want to advance to the next tier "
-"called Pioneers."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"To make them happy, there is nothing else for you to do but setting taxes to "
-"a lower level since you have fulfilled all the demands of your inhabitants."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"You should try to not always run on low taxes since this will probably lead "
-"to bankruptcy sooner or later. For a period of time and if you know what you "
-"are doing, it is fine though."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"After some time, the first unit should walk to the main square and have a "
-"look for new construction material there to build a log house. This house "
-"will replace the old tent."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"Such residential upgrades cost resources and can thus be restricted at the "
-"Main Square."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"There also are upgrades of buildings without costs, as you will see with the "
-"lumberjack. In this case, only the graphics change."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
-"than sailors, too."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"As you may have figured out already, the downside is that pioneers demand "
-"additional goods which sailors do not need - so you will need to spend this "
-"extra money to make them happy as well."
-msgstr ""
-
-#. This is the text body of a logbook page.
 #, fuzzy
-#| msgid ""
-#| "Set the tax level to Low (left end) and wait for your sailors to upgrade."
-msgid ""
-"Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
-msgstr ""
-"Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok "
-"frissítik."
+#~| msgid ""
+#~| "Set the tax level to Low (left end) and wait for your sailors to upgrade."
+#~ msgid ""
+#~ "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
+#~ msgstr ""
+#~ "Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok "
+#~ "frissítik."
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a farm and keep some empty space around it."
-msgstr "Építs egy farmot, legyen néhány üres hely körülötte."
+#~ msgid "Build a farm and keep some empty space around it."
+#~ msgstr "Építs egy farmot, legyen néhány üres hely körülötte."
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A FARM"
-msgstr "Új feladat: Építs egy farmot"
+#~ msgid "NEW TASK: BUILD A FARM"
+#~ msgstr "Új feladat: Építs egy farmot"
 
-#. This is the text body of a logbook page.
-msgid "Congratulations! Some of your inhabitants have reached tier II!"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Now you have access to new buildings, take a look at the Build menu again."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "A shiny new tab appeared there."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Pioneers will demand cloth, so you need to set up a production line for "
-"cloth starting with lambs wool (which is one of the goods produced at the "
-"farm)."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"The farm is a very special production building since it can produce not only "
-"one, but very many (and different) goods if you choose."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "The output of farms depends on what kind of fields you build around it."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"We will have a closer look at this later."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Farms, like all companies producing raw materials, do not necessarily need "
-"to be connected to storage or a Warehouse."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"As long as units of the final production company can reach the farm, and "
-"collectors from the warehouse or storage tent can reach the final company "
-"everything's fine."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"If you, however, plan to do some processing on different parts of the island "
-"(which can make sense) or even on different islands, you will need a "
-"connection to collectors."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Try to build the farm not too close to the coast or your existing buildings "
-"since it will need some space around it to work well."
-msgstr ""
-
-#. This is the text body of a logbook page.
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "TASK: Build a main square."
-msgid "Task: Build a farm."
-msgstr ""
-"\n"
-"FELADAT: Építs egy főteret."
+#~| msgid ""
+#~| "\n"
+#~| "TASK: Build a main square."
+#~ msgid "Task: Build a farm."
+#~ msgstr ""
+#~ "\n"
+#~ "FELADAT: Építs egy főteret."
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
-"Építs legalább egy legelőt, és ha úgy tetszik adj hozzá burgonyamezőket."
+#~ msgid "Build at least one pasture and add potato fields if you like."
+#~ msgstr ""
+#~ "Építs legalább egy legelőt, és ha úgy tetszik adj hozzá burgonyamezőket."
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD FIELDS"
-msgstr "Új feladat: Építs mezőket"
+#~ msgid "NEW TASK: BUILD FIELDS"
+#~ msgstr "Új feladat: Építs mezőket"
 
-#. This is the text body of a logbook page.
-msgid "The farm itself is not going to produce anything without some fields."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"You currently have the choice between pastures, potato and sugar fields."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Let's have a short overview:\n"
-"* Pasture: Sheep live here, producing lamb wool.\n"
-"* Potato field: Grows potatoes which are currently treated as food.\n"
-"* Sugar field: Grows sugar which is used to distill liquor and (later) "
-"produce confectionery."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"We now only need pastures, but in case your food supply chain is too small "
-"(maybe many residential buildings) you can also produce some potatoes."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Note that for potatoes you will need a road connection to the farm (not to "
-"the field!) as it will be the only company to work on the goods."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"Make sure that all fields you build are in the area covered by the farm."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"You can have combined production - one pasture will not lead to 100 percent "
-"efficiency of the farm - but you need to check how many fields one farm can "
-"serve."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Different classes of fields require the farm units to spend more or less "
-"time there (to seed, harvest, herd, etc…) and because of that, the farm may "
-"be unable to serve all of the fields you built for it in time."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"For now, you do not need to care about these issues a lot since you haven't "
-"built any fields. Let's change that!"
-msgstr ""
-
-#. This is the text body of a logbook page.
 #, fuzzy
-#| msgid "Build at least one pasture and add potato fields if you like."
-msgid ""
-"Task: Build at least one pasture in the farm's range and add potato fields "
-"if you like."
-msgstr ""
-"Építs legalább egy legelőt, és ha úgy tetszik adj hozzá burgonyamezőket."
+#~| msgid "Build at least one pasture and add potato fields if you like."
+#~ msgid ""
+#~ "Task: Build at least one pasture in the farm's range and add potato "
+#~ "fields if you like."
+#~ msgstr ""
+#~ "Építs legalább egy legelőt, és ha úgy tetszik adj hozzá burgonyamezőket."
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
-msgid "Build a storage tent (tier I tab) where it makes sense."
-msgstr "Építs egy tárolósátrat (növekmény fül) amennyiben van értelme."
+#~ msgid "Build a storage tent (tier I tab) where it makes sense."
+#~ msgstr "Építs egy tárolósátrat (növekmény fül) amennyiben van értelme."
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD STORAGE"
-msgstr "Új feladat: Építs raktárat"
+#~ msgid "NEW TASK: BUILD STORAGE"
+#~ msgstr "Új feladat: Építs raktárat"
 
-#. This is the text body of a logbook page.
-msgid "Did you watch your lumberjack recently?"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Since your Warehouse does not have unlimited space to store goods, "
-"collectors will stop fetching goods from companies when stock is full."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"So if no sailors recently wanted to upgrade their tents, you probably have a "
-"lot of boards and in that case, the lumberjack may idle."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"We can improve this situation in two different ways, and we will have a look "
-"at both of them below."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"All companies offer to do no work at all.\n"
-"This may sound strange, but click on the gear wheel you see in a lumberjack "
-"hut's overview."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"If this 'break' mode is enabled (we call it 'Decommissioning'), the running "
-"costs you pay for the building will decrease. They won't be zero, but still "
-"lower than if you keep the company producing."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"This means that you can save money when you temporarily do not need a "
-"company and do not want to tear it down, either."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Another solution is to build the last tier-I building which has not been "
-"mentioned so far: the storage tent."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"This building has two purposes. It:\n"
-"* Offers more storage for your goods, and\n"
-"* sends its own collectors to fetch goods, just like the Warehouse does."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Note that companies can also be connected to a storage in order to get their "
-"products collected, and if the Warehouse is overwhelmed with collector "
-"tasks, you can place a storage tent to help out there."
-msgstr ""
-
-#. This is the text body of a logbook page.
 #, fuzzy
-msgid "Task: Build a storage tent, preferably where you need collectors."
-msgstr "Építs egy tárolósátrat (növekmény fül) amennyiben van értelme."
+#~ msgid "Task: Build a storage tent, preferably where you need collectors."
+#~ msgstr "Építs egy tárolósátrat (növekmény fül) amennyiben van értelme."
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr "Építs egy szövőt amely eléri a farmon lévő gyapjút!"
+#~ msgid "Build a weaver that can somehow reach the wool of your farm."
+#~ msgstr "Építs egy szövőt amely eléri a farmon lévő gyapjút!"
 
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A WEAVER"
-msgstr "Új feladat: Építs egy szövőt"
+#~ msgid "NEW TASK: BUILD A WEAVER"
+#~ msgstr "Új feladat: Építs egy szövőt"
 
-#. This is the text body of a logbook page.
-msgid ""
-"Now the wool production is set up, you still need a weaver to produce cloth "
-"out of this wool."
-msgstr ""
+#~ msgid ""
+#~ "House a total of 50 or more inhabitants in your city to complete the "
+#~ "tutorial. You need a positive balance."
+#~ msgstr ""
+#~ "Legalább 50 lakosnodnak kell lennie és pozitív egyenlegednek, hogy "
+#~ "befejezd a gyakorlást."
 
-#. This is the text body of a logbook page.
-msgid ""
-"There are two spots where you can build it - either close to the farm or "
-"close to a Storage Tent (or the Warehouse)."
-msgstr ""
+#~ msgid "NEW TASK: COMPLETE TUTORIAL"
+#~ msgstr "Új feladat: Végezz a gyakorlással"
 
-#. This is the text body of a logbook page.
-msgid "In both cases you should ensure the connection to a trail as well."
-msgstr ""
+#~ msgid ""
+#~ "Congratulations! You have reached the end of this tutorial and are ready "
+#~ "to meet new challenges!"
+#~ msgstr ""
+#~ "Gratulálok! Elértél a gyakorlás végéhez, most már megfelesz az új "
+#~ "kihívásoknak!"
 
-#. This is the text body of a logbook page.
-msgid ""
-"You can place the weaver close to the farm and tear down any trail to the "
-"farm to see that it will still fetch the wool and produce."
-msgstr ""
+#~ msgid "NO TASKS LEFT"
+#~ msgstr "Nincs feladat hátra"
 
-#. This is the text body of a logbook page.
-msgid "Task: Build a weaver positioned so it can get wool."
-msgstr ""
+#~ msgid "Thanks!"
+#~ msgstr "Köszönöm!"
 
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid ""
-"House a total of 50 or more inhabitants in your city to complete the "
-"tutorial. You need a positive balance."
-msgstr ""
-"Legalább 50 lakosnodnak kell lennie és pozitív egyenlegednek, hogy befejezd "
-"a gyakorlást."
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "Új feladat: Végezz a gyakorlással"
-
-#. This is the text body of a logbook page.
-msgid ""
-"Try to house a total of 50 or more inhabitants in your city by providing "
-"more residential buildings."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Once you are able to keep an economy running which can satisfy this amount "
-"of consumers, you are ready to discover new Unknown Horizons!"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"You also need enough money to keep this economy running, so a positive "
-"balance (check in the Warehouse tab 'Account') is required."
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"Task: Reach a total number of 50 inhabitants and a positive balance to "
-"complete this tutorial."
-msgstr ""
-
-#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid ""
-"Congratulations! You have reached the end of this tutorial and are ready to "
-"meet new challenges!"
-msgstr ""
-"Gratulálok! Elértél a gyakorlás végéhez, most már megfelesz az új "
-"kihívásoknak!"
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NO TASKS LEFT"
-msgstr "Nincs feladat hátra"
-
-#. This is the text body of a logbook page.
-msgid ""
-"You have successfully completed all tasks that were handed to you. The world "
-"is now at your command, waiting for your free aspirations and brave "
-"explorations!"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"If you have any suggestions on what we could or should improve, add or leave "
-"out:"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "www.unknown-horizons.org"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "#unknown-horizons @ irc.freenode.net"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "team@unknown-horizons.org"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid "Our forums are open to you as well!"
-msgstr ""
-
-#. This is the text body of a logbook page.
-msgid ""
-"The best results until now were achieved by joining our IRC channel, so you "
-"could try that out first (-;"
-msgstr ""
-
-#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "Thanks!"
-msgstr "Köszönöm!"
-
-#. This is the text body of a logbook page.
-msgid ""
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"Thanks for playing the tutorial!\n"
-"\n"
-"Your UH-Team"
-msgstr ""
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"Köszönöm hogy végigjátszottad a gyakorlást!\n"
-"\n"
-"A te UH-Csapatod"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "Thanks for playing the tutorial!\n"
+#~ "\n"
+#~ "Your UH-Team"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "Köszönöm hogy végigjátszottad a gyakorlást!\n"
+#~ "\n"
+#~ "A te UH-Csapatod"
 
 #~ msgid ""
 #~ "This is your Captain's log where all important information is stored. A "
