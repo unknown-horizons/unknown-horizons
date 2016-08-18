@@ -185,8 +185,8 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return ('\n\t"%s" : {' % filename) + \
-			(ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
+		return('\n\t"{filename}" : {{{rowindent}{strings},{rowindent}}},'.
+			format(filename=filename, rowindent=ROWINDENT, strings=(','+ROWINDENT).join(strings)))
 	else:
 		return ''
 
