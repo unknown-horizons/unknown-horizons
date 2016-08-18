@@ -20,6 +20,8 @@
 # ###################################################
 
 import collections
+import os
+import sys
 
 from fife import fife
 
@@ -67,7 +69,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			'defaultButton': self.set_defaults,
 			'cancelButton': self._windows.close,
 		})
-		
+
 	def _init_settings(self):
 		"""Init the settings with the stored values."""
 		languages = find_available_languages().keys()
@@ -126,10 +128,11 @@ class SettingsDialog(PickBeltWidget, Window):
 	def hide(self):
 		self.widget.hide()
 
-	def show_restart_popup(self):
+	def restart_promt(self):
 		headline = _("Restart required")
-		message = _("Some of your changes require a restart of Unknown Horizons.")
-		self._windows.open_popup(headline, message)
+		message = _("Some of your changes require a restart of Unknown Horizons. Do you want to restart Unknown Horizons now?")
+		if self._windows.open_popup(headline, message, show_cancel_button=True):
+			return True
 
 	def set_defaults(self):
 		title = _("Restore default settings")
@@ -139,7 +142,7 @@ class SettingsDialog(PickBeltWidget, Window):
 		if self._windows.open_popup(title, msg, show_cancel_button=True):
 			self.hotkey_interface.reset_to_default()
 			self._settings.set_defaults()
-			self.show_restart_popup()
+			self.restart_prompt()
 			self._windows.close()
 
 	def apply_settings(self):
@@ -172,12 +175,15 @@ class SettingsDialog(PickBeltWidget, Window):
 				if entry.callback:
 					entry.callback(old_value, new_value)
 
-		if restart_required:
-			self.show_restart_popup()
-
 		self.hotkey_interface.save_settings()
 		self._settings.apply()
 		self._settings.save()
+
+		if restart_required:
+			if self.restart_promt():
+				horizons.globals.fife.engine.destroy()
+				os.execv(sys.executable, [sys.executable] + sys.argv)
+
 		self._windows.close()
 
 	def _fill_widgets(self):
