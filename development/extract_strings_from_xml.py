@@ -166,7 +166,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = '_(u"{0!s}")'.format(text)
+				text = u'_(u"{0!s}")'.format(text)
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
@@ -202,6 +202,6 @@ def content_from_file(filename, parse=True):
 filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)
 
-output = '{0!s}{1!s}{2!s}'.format(header, filesnippets, FOOTER)
+output = u'{0!s}{1!s}{2!s}'.format(header, filesnippets, FOOTER)
 
 file(sys.argv[1], 'w').write(output.encode('utf-8'))

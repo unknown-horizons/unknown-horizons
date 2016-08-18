@@ -162,12 +162,11 @@ def content_from_file(filename):
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
 			comment = u'{0!s} of {1!s}'.format(component, filename)
-			object_strings.append(u'# {0!s} {1!s}"{2:<30!s}": {3!s}'. \
-				format(comment,ROWINDENT, component, text))
+			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
 
 	for component, value in parsed.iteritems():
 		if isinstance(value, basestring):
-			add_line(value, component, '', '', filename)
+			add_line(value, component, u'', u'', filename)
 		elif isinstance(value, dict):
 			for key, subvalue in value.iteritems():
 				if isinstance(subvalue, basestring):
@@ -186,8 +185,8 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return(u'\n\t"{0!s}" : {{{1!s}{2!s},{3!s}}'.
-			format(filename, ROWINDENT, (',' + ROWINDENT).join(strings)) + ROWINDENT)
+		return ('\n\t"%s" : {' % filename) + \
+			(ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
 	else:
 		return ''
 
