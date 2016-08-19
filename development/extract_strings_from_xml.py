@@ -117,7 +117,7 @@ files_to_skip = [
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
-	print '%s without name. Add unique name if desired: text="%s"' % (n, text)
+	print '{0!s} without name. Add unique name if desired: text="{1!s}"'.format(n, text)
 
 def list_all_files():
 	result = []
@@ -125,7 +125,7 @@ def list_all_files():
 	for root, dirs, files in walker:
 		for filename in files:
 			if filename.endswith('.xml'):
-				result.append(('%s/%s' % (root, filename), filename not in files_to_skip))
+				result.append(('{0!s}/{1!s}'.format(root, filename), filename not in files_to_skip))
 	return sorted(result)
 
 def content_from_element(element_name, parse_tree, attribute):
@@ -151,7 +151,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			# comment='noi18n' in widgets where translation is not desired
 			continue
 
-		if i18n == 'noi18n_%s' % attribute:
+		if i18n == 'noi18n_{0!s}'.format(attribute):
 			# comment='noi18n_tooltip' in widgets where tooltip translation is not
 			# desired, but text should be translated.
 			continue
@@ -166,7 +166,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = '_(u"%s")' % text
+				text = u'_(u"{0!s}")'.format(text)
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
@@ -202,6 +202,6 @@ def content_from_file(filename, parse=True):
 filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)
 
-output = '%s%s%s' % (header, filesnippets, FOOTER)
+output = u'{0!s}{1!s}{2!s}'.format(header, filesnippets, FOOTER)
 
 file(sys.argv[1], 'w').write(output.encode('utf-8'))

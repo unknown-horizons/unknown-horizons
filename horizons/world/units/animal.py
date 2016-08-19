@@ -149,7 +149,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		# save remaining ticks when in waiting state
 		if self.state == self.states.no_job_waiting:
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
-			assert len(calls) == 1, 'calls: %s' % calls
+			assert len(calls) == 1, 'calls: {0!s}'.format(calls)
 			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?",
 				 remaining_ticks, self.worldid)
@@ -258,5 +258,5 @@ class WildAnimal(CollectorAnimal, Collector):
 		super(WildAnimal, self).cancel(continue_action=continue_action)
 
 	def __str__(self):
-		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),
+		return "{0!s}(health={1!s})".format(super(WildAnimal, self).__str__(),
 		                          getattr(self, 'health', None))

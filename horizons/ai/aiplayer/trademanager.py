@@ -203,7 +203,7 @@ class TradeManager(WorldObject):
 		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):
-		result = 'TradeManager(%s, %s)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown',
+		result = 'TradeManager({0!s}, {1!s})'.format(self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
 		for resource_manager in self.data.itervalues():
 			result += '\n' + resource_manager.__str__()
@@ -223,7 +223,7 @@ class SingleResourceTradeManager(WorldObject):
 		self.resource_id = resource_id
 		self.quotas = {} # {quota_holder: amount, ...}
 		self.partners = {} # {settlement_manager_id: amount, ...}
-		self.identifier = '/%d,%d/trade' % (self.worldid, self.resource_id)
+		self.identifier = '/{0:d},{1:d}/trade'.format(self.worldid, self.resource_id)
 		self.building_ids = []
 		for abstract_building in AbstractBuilding.buildings.itervalues():
 			if self.resource_id in abstract_building.lines:
@@ -342,16 +342,16 @@ class SingleResourceTradeManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "resource_id"):
 			return "UninitializedSingleResourceTradeManager"
-		result = 'Resource %d import %.5f/%.5f' % (self.resource_id, self.available, self.total)
+		result = 'Resource {0:d} import {1:.5f}/{2:.5f}'.format(self.resource_id, self.available, self.total)
 		for quota_holder, quota in self.quotas.iteritems():
-			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
+			result += '\n  quota assignment {0:.5f} to {1!s}'.format(quota, quota_holder)
 		for settlement_manager_id, amount in self.partners.iteritems():
 			try:
 				settlement = WorldObject.get_object_by_id(settlement_manager_id).settlement
 				settlement_name = settlement.get_component(NamedComponent).name
 			except WorldObjectNotFound:
 				settlement_name = 'unknown'
-			result += '\n  import %.5f from %s' % (amount, settlement_name)
+			result += '\n  import {0:.5f} from {1!s}'.format(amount, settlement_name)
 		return result
 
 decorators.bind_all(TradeManager)

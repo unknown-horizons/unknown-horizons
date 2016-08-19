@@ -129,7 +129,7 @@ def test_tutorial(gui):
 	gui.cursor_click(11, 6, 'left')
 	gui.trigger('tab_base', '2')
 	gui.trigger('buysellmenu/slot_0', 'button', mouse='left')
-	gui.trigger('select_trade_resource', 'resource_%d' % RES.TOOLS)
+	gui.trigger('select_trade_resource', 'resource_{0:d}'.format(RES.TOOLS))
 	gui.find('buysellmenu/slot_0/slider').slide(30)
 
 	# Goal: Pavilion

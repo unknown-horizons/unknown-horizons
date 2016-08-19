@@ -214,7 +214,7 @@ class Production(ChangeListener):
 				Scheduler().add_new_object(self._get_producing_callback(), self,
 				                           self._pause_remaining_ticks)
 			else:
-				assert False, 'Unhandled production state: %s' % self._pause_old_state
+				assert False, 'Unhandled production state: {0!s}'.format(self._pause_old_state)
 		else: # do pause
 			# switch state
 			self._pause_old_state = self._state
@@ -230,7 +230,7 @@ class Production(ChangeListener):
 						Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 				Scheduler().rem_call(self, self._get_producing_callback())
 			else:
-				assert False, 'Unhandled production state: %s' % self._pause_old_state
+				assert False, 'Unhandled production state: {0!s}'.format(self._pause_old_state)
 
 		self._changed()
 
@@ -434,7 +434,7 @@ class Production(ChangeListener):
 
 	def __str__(self): # debug
 		if hasattr(self, "_state"):
-			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
+			return 'Production(state={0!s};prodline={1!s})'.format(self._state, self._prod_line)
 		else:
 			return "UninitializedProduction()"
 

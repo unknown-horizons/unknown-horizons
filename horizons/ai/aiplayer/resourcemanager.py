@@ -336,7 +336,7 @@ class ResourceManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "settlement_manager"):
 			return 'UninitializedResourceManager'
-		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
+		result = 'ResourceManager({0!s}, {1:d})'.format(self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
 		for resource_manager in self._data.itervalues():
 			res = resource_manager.resource_id
 			if res not in [RES.FOOD, RES.TEXTILE, RES.BRICKS]:
@@ -488,9 +488,9 @@ class SingleResourceManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "resource_id"):
 			return 'UninitializedSingleResourceManager'
-		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)
+		result = 'Resource {0:d} production {1:.5f}/{2:.5f} ({3:.5f} low priority)'.format(self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.iteritems():
-			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)
+			result += '\n  {0!s}quota assignment {1:.5f} to {2!s}'.format('priority ' if priority else '', quota, quota_holder)
 		return result
 
 class SimpleProductionChainSubtreeChoice(object):
@@ -531,7 +531,7 @@ class SimpleProductionChainSubtree(object):
 
 	def assign_identifier(self, prefix):
 		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
-		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
+		self.identifier = '{0!s}/{1:d},{2:d}'.format(prefix, self.resource_id, self.abstract_building.id)
 		for child in self.children:
 			child.assign_identifier(self.identifier)
 

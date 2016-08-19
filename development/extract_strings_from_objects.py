@@ -139,8 +139,8 @@ def parse_token(token, token_klass):
 		return getattr( classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = "This means that you either have to add an entry in horizons/constants.py "\
-		      "in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
-		raise Exception( str(e) + "\n\n" + err +"\n" )
+		      "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".format(token_klass, token, token)
+		raise Exception("{0!s}\n\n{1!s}\n".format(str(e), err))
 
 def list_all_files():
 	result = []
@@ -161,12 +161,13 @@ def content_from_file(filename):
 			text = u'_("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
-			comment = '%s of %s' %(component, filename)
-			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
+			comment = u'{0!s} of {1!s}'.format(component, filename)
+			object_strings.append('# {comment!s}{rowindent}{component:<30}: {text!s}'.
+				format(comment=comment, rowindent=ROWINDENT, component='"{}"'.format(component), text=text))
 
 	for component, value in parsed.iteritems():
 		if isinstance(value, basestring):
-			add_line(value, component, '', '', filename)
+			add_line(value, component, u'', u'', filename)
 		elif isinstance(value, dict):
 			for key, subvalue in value.iteritems():
 				if isinstance(subvalue, basestring):
@@ -185,15 +186,15 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return ('\n\t"%s" : {' % filename) + \
-		       (ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
+		return('\n\t"{filename}" : {{{rowindent}{strings},{rowindent}}},'.
+			format(filename=filename, rowindent=ROWINDENT, strings=(','+ROWINDENT).join(strings)))
 	else:
 		return ''
 
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 
-output = '%s%s%s' % (HEADER, '\n'.join(filesnippets), FOOTER)
+output = u'{0!s}{1!s}{2!s}'.format(HEADER, '\n'.join(filesnippets), FOOTER)
 
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)

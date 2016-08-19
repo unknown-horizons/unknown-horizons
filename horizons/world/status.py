@@ -66,7 +66,7 @@ class StatusIcon(object):
 		return cmp(self.__class__, other.__class__)
 
 	def __str__(self):
-		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
+		return str(self.__class__) + "(prio:{0!s},icon:{1!s})".format(self.priority, self.icon)
 
 class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """

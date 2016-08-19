@@ -58,8 +58,7 @@ class SurfaceTile(object):
 		fife.InstanceVisual.create(self._instance)
 
 	def __str__(self):
-		return "SurfaceTile(id=%s, shape=%s, x=%s, y=%s, water=%s, obj=%s)" % \
-		       (self.id, self.shape, self.x, self.y, self.is_water, self.object)
+		return "SurfaceTile(id={0!s}, shape={1!s}, x={2!s}, y={3!s}, water={4!s}, obj={5!s})".format(self.id, self.shape, self.x, self.y, self.is_water, self.object)
 
 	def act(self, rotation):
 		self._instance.setRotation(rotation)
@@ -131,11 +130,11 @@ class GroundClass(type):
 		@param shape: ground shape (straight, curve_in, curve_out).
 		"""
 		if id == GROUND.WATER[0]:
-			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (Water,), {})
+			return type.__new__(self, 'Ground[{0:d}-{1!s}]'.format(id, shape), (Water,), {})
 		elif id == -1:
-			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (WaterDummy,), {})
+			return type.__new__(self, 'Ground[{0:d}-{1!s}]'.format(id, shape), (WaterDummy,), {})
 		else:
-			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (Ground,), {})
+			return type.__new__(self, 'Ground[{0:d}-{1!s}]'.format(id, shape), (Ground,), {})
 
 	def _loadObject(cls, db):
 		"""Loads the ground object from the db (animations, etc)"""
@@ -146,7 +145,7 @@ class GroundClass(type):
 		tile_set_data = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)
 		for tile_set_row in tile_set_data:
 			tile_set_id = str(tile_set_row[0])
-			cls_name = '%d-%s' % (cls.id, cls.shape)
+			cls_name = '{0:d}-{1!s}'.format(cls.id, cls.shape)
 			cls.log.debug('Loading ground %s', cls_name)
 			fife_object = None
 			try:
@@ -160,13 +159,13 @@ class GroundClass(type):
 			visual = fife_object.get2dGfxVisual()
 			for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
 				if not data:
-					raise KeyError('No data found for tile set `%s` in rotation `%s`. '
-						'Most likely the shape `%s` is missing.' %
-						(tile_set_id, rotation, cls.shape))
+					raise KeyError('No data found for tile set `{0!s}` in rotation `{1!s}`. '
+						'Most likely the shape `{2!s}` is missing.'.
+						format(tile_set_id, rotation, cls.shape))
 				if len(data) > 1:
 					raise ValueError('Currently only static tiles are supported. '
-						'Found this data for tile set `%s` in rotation `%s`: '
-						'%s' % (tile_set_id, rotation, data))
+						'Found this data for tile set `{0!s}` in rotation `{1!s}`: '
+						'{2!s}'.format(tile_set_id, rotation, data))
 				img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
 				visual.addStaticImage(rotation, img.getHandle())
 
