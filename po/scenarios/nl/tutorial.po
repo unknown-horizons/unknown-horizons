@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-17 15:49+0200\n"
+"POT-Creation-Date: 2016-08-19 18:04+0200\n"
 "PO-Revision-Date: 2016-01-10 16:38+0000\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/tutorial/nl/>\n"
@@ -838,8 +838,13 @@ msgstr ""
 "niet meer dan 5 ton worden verkocht."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "If the free trader however only wants to buy or sell less than your "
+#| "settings would allow him, you need to live with that and wait for him to "
+#| "return."
 msgid ""
-"If the free trader however only wants to buy or sell less than your settings "
+"If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
 "Echter, als de Vrije Handelaars minder wil kopen of verkopen dan jij hebt "
@@ -869,7 +874,9 @@ msgstr ""
 "voorraad hebt!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a pavilion with connection to the tents."
+#, fuzzy
+#| msgid "Build a pavilion with connection to the tents."
+msgid "Build a Pavilion with connection to the Tents."
 msgstr "Plaats een paviljoen met verbinding naar de tenten."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -886,26 +893,39 @@ msgstr ""
 "U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Still there is one demand which we have not satisfied so far, you may "
+#| "check that in the marketplace or tent tab - your sailors want a basic "
+#| "building where they can pray."
 msgid ""
-"Still there is one demand which we have not satisfied so far, you may check "
-"that in the marketplace or tent tab - your sailors want a basic building "
-"where they can pray."
+"Still there is one demand which we have not satisfied so far (you may check "
+"that by clicking on any Tent) your sailors want a basic building where they "
+"can pray."
 msgstr ""
 "Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben, "
 "dat kunt je controleren in de tabbladen van de marktplein of een tent: De "
 "zeelui willen een simpel gebouw om te kunnen bidden."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The solution is a pavilion which the village parson quickly puts up as "
+#| "shelter from the sun."
 msgid ""
-"The solution is a pavilion which the village parson quickly puts up as "
+"The solution is a Pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
 "De oplossing is een paviljoen die de dominee opzet als bescherming tegen de "
 "zon."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Service buildings like this also need to be connected to the tents with a "
+#| "trail, else your inhabitants feel unable to reach them."
 msgid ""
-"Service buildings like this also need to be connected to the tents with a "
+"Service buildings like this also need to be connected to the Tents with a "
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
 "Gebouwen ten behoeve van dienstverlening moeten met behulp van een pad "
@@ -921,9 +941,13 @@ msgstr ""
 "Merk op dat geloof wordt behandeld als een fysiek consumptiegoed!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that your inhabitants need a road connection to the producer "
+#| "(pavilion) to pick up faith there."
 msgid ""
 "This means that your inhabitants need a road connection to the producer "
-"(pavilion) to pick up faith there."
+"(Pavilion) to pick up faith there."
 msgstr ""
 "Dit betekend dat jouw inwoners een wegverbinding met het paviljoen moeten "
 "hebben om hun voorraad geloof aan te kunnen vullen."
@@ -949,8 +973,12 @@ msgstr ""
 "Een wegverbinding is noodzakelijk."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build a pavilion with a trail to the tents in order to fulfill your "
+#| "sailors' demand for faith."
 msgid ""
-"Task: Build a pavilion with a trail to the tents in order to fulfill your "
+"Task: Build a Pavilion with a trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
 "Opdracht: Bouw een paviljoen met een pad naar de tenten om aan de vraag van "
@@ -968,9 +996,13 @@ msgid "NEW TASK: NEXT TIER"
 msgstr "OPDRACHT: VOLGENDE NIVEAU"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All demands are fulfilled now if your inhabitants can regularly visit the "
+#| "main square & pavilion and your food supply is adequate."
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
-"main square & pavilion and your food supply is adequate."
+"Main Square & Pavilion and your food supply is adequate."
 msgstr ""
 "Alle eisen zijn ingewilligd als jouw inwoners de marktplein en het paviljoen "
 "regelmatig kunnen bezoeken en als er voldoende voedsel voorhanden is."
@@ -1002,8 +1034,13 @@ msgstr ""
 "een korte periode kan het echter geen kwaad en zelfs nuttig zijn."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "After some time, the first unit should walk to the main square and have a "
+#| "look for new construction material there to build a log house. This house "
+#| "will replace the old tent."
 msgid ""
-"After some time, the first unit should walk to the main square and have a "
+"After some time, the first unit should walk to the Main Square and have a "
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
@@ -1061,7 +1098,9 @@ msgstr ""
 "zeelui hun woningen verbeteren."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a farm and keep some empty space around it."
+#, fuzzy
+#| msgid "Build a farm and keep some empty space around it."
+msgid "Build a Farm and keep some empty space around it."
 msgstr "Plaats een boerderij, zorg voor vrije ruimte eromheen."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -1083,25 +1122,37 @@ msgid "A shiny new tab appeared there."
 msgstr "Een prachtig nieuw tabblad is hier verschenen."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Pioneers will demand cloth, so you need to set up a production line for "
+#| "cloth starting with lambs wool (which is one of the goods produced at the "
+#| "farm)."
 msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for "
 "cloth starting with lambs wool (which is one of the goods produced at the "
-"farm)."
+"Farm)."
 msgstr ""
 "Pioniers zijn kleding nodig, dus moet je hiervoor een productielijn "
 "opzetten. Deze begint met schapenwol, wat één van de producten van de "
 "boerderij is."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The farm is a very special production building since it can produce not "
+#| "only one, but very many (and different) goods if you choose."
 msgid ""
-"The farm is a very special production building since it can produce not only "
-"one, but very many (and different) goods if you choose."
+"The Farm is a very special production building since it can produce not only "
+"one, but many (and different) goods if you choose."
 msgstr ""
 "De boerderij is een heel speciaal gebouw, omdat je er voor kunt kiezen niet "
 "één, meer meerdere verschillende producten te laten produceren."
 
 #. This is the text body of a logbook page.
-msgid "The output of farms depends on what kind of fields you build around it."
+#, fuzzy
+#| msgid ""
+#| "The output of farms depends on what kind of fields you build around it."
+msgid "The output of Farms depends on what kind of fields you build around it."
 msgstr ""
 "Welke producten boerderijen produceren, is afhankelijk van wat voor soort "
 "velden je er omheen bouwt."
@@ -1128,9 +1179,14 @@ msgstr ""
 "verbinden."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "As long as units of the final production company can reach the farm, and "
+#| "collectors from the warehouse or storage tent can reach the final company "
+#| "everything's fine."
 msgid ""
-"As long as units of the final production company can reach the farm, and "
-"collectors from the warehouse or storage tent can reach the final company "
+"As long as units of the final production company can reach the Farm, and "
+"collectors from the Warehouse or Storage Tent can reach the final company "
 "everything's fine."
 msgstr ""
 "Zolang medewerkers van de verwerkende bedrijven de boerderij kunnen bereiken "
@@ -1149,15 +1205,21 @@ msgstr ""
 "noodzakelijk is."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Try to build the farm not too close to the coast or your existing "
+#| "buildings since it will need some space around it to work well."
 msgid ""
-"Try to build the farm not too close to the coast or your existing buildings "
+"Try to build the Farm not too close to the coast or your existing buildings "
 "since it will need some space around it to work well."
 msgstr ""
 "Probeer een boerderij niet te dicht bij de kust of bestaande gebouwen te "
 "bouwen, omdat je eromheen werkruimte nodig bent."
 
 #. This is the text body of a logbook page.
-msgid "Task: Build a farm."
+#, fuzzy
+#| msgid "Task: Build a farm."
+msgid "Task: Build a Farm."
 msgstr "Opdracht: Bouw een boerderij."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1170,7 +1232,10 @@ msgid "NEW TASK: BUILD FIELDS"
 msgstr "OPDRACHT: PLAATS VELDEN"
 
 #. This is the text body of a logbook page.
-msgid "The farm itself is not going to produce anything without some fields."
+#, fuzzy
+#| msgid ""
+#| "The farm itself is not going to produce anything without some fields."
+msgid "The Farm itself is not going to produce anything without some fields."
 msgstr "De boerderij zelf zal niet kunnen produceren zonder velden eromheen."
 
 #. This is the text body of a logbook page.
@@ -1295,10 +1360,15 @@ msgstr ""
 "methoden bekijken."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All companies offer to do no work at all.\n"
+#| "This may sound strange, but click on the gear wheel you see in a "
+#| "lumberjack hut's overview."
 msgid ""
 "All companies offer to do no work at all.\n"
-"This may sound strange, but click on the gear wheel you see in a lumberjack "
-"hut's overview."
+"This may sound strange, but click on the gear wheel you see in the "
+"Lumberjack Hut's overview."
 msgstr ""
 "Alle bedrijven bieden de mogelijkheid om hun productie te pauzeren.\n"
 "Klik op het tandwiel dat te zien is in het overzichtstabblad van de "
@@ -1325,9 +1395,13 @@ msgstr ""
 "hebt, en deze niet wilt slopen."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Another solution is to build the last tier-I building which has not been "
+#| "mentioned so far: the storage tent."
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
-"mentioned so far: the storage tent."
+"mentioned so far: the Storage Tent."
 msgstr ""
 "Een andere oplossing is het laatste gebouw uit het eerste beschavingsniveau "
 "dat nog niet eerder genoemd is: de opslagtent."
@@ -1356,7 +1430,7 @@ msgstr ""
 msgid ""
 "Note that companies can also be connected to a storage in order to get their "
 "products collected, and if the Warehouse is overwhelmed with collector "
-"tasks, you can place a storage tent to help out there."
+"tasks, you can place a Storage Tent to help out there."
 msgstr ""
 "Merk op dat bedrijven ook met een opslaggebouw verbonden kunnen worden om "
 "hun goederen te laten afhalen. Wanneer het pakhuis de aanvoer van goederen "
@@ -1364,12 +1438,16 @@ msgstr ""
 "bieden."
 
 #. This is the text body of a logbook page.
-msgid "Task: Build a storage tent, preferably where you need collectors."
+#, fuzzy
+#| msgid "Task: Build a storage tent, preferably where you need collectors."
+msgid "Task: Build a Storage Tent, preferably where you need collectors."
 msgstr ""
 "Opdracht: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a weaver that can somehow reach the wool of your farm."
+#, fuzzy
+#| msgid "Build a weaver that can somehow reach the wool of your farm."
+msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
 msgstr ""
 "Bouw een kleermaker die op een of andere manier bij de wol kan komen op je "
 "boerderij."
@@ -1393,8 +1471,9 @@ msgstr ""
 #| "There are two spots where you can build it - either close to the farm or "
 #| "close to a Storage Tent (or the warehouse)."
 msgid ""
-"There are two spots where you can build it - either close to the farm or "
-"close to a Storage Tent (or the Warehouse)."
+"The Weaver's Hut is the place where the weaver lives. There are two spots "
+"where you can build it - either close to the Farm or close to a Storage Tent "
+"(or the Warehouse)."
 msgstr ""
 "Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij, "
 "opslag tent of pakhuis."
@@ -1405,16 +1484,22 @@ msgstr ""
 "In deze twee gevallen moet je er zeker van zijn dat er een verbinding is."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can place the weaver close to the farm and tear down any trail to the "
+#| "farm to see that it will still fetch the wool and produce."
 msgid ""
-"You can place the weaver close to the farm and tear down any trail to the "
-"farm to see that it will still fetch the wool and produce."
+"You can place the Weaver's Hut close to the Farm and tear down any trail to "
+"the Farm to see that it will still fetch the wool and produce."
 msgstr ""
 "Als je een weverij dicht bij een boerderij bouwt en alle paden er na toe "
 "afbreekt, dan zul je zien dat er nog steeds wol wordt afgehaald en stof "
 "wordt geproduceerd."
 
 #. This is the text body of a logbook page.
-msgid "Task: Build a weaver positioned so it can get wool."
+#, fuzzy
+#| msgid "Task: Build a weaver positioned so it can get wool."
+msgid "Task: Build a Weaver's Hut positioned so it can get wool."
 msgstr "Opdracht: Bouw een weverij die bij het wol kan komen."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
