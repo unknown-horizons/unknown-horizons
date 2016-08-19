@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 5bf36e7\n"
+"Project-Id-Version: Unknown Horizons b829058\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-19 17:17+0200\n"
+"POT-Creation-Date: 2016-08-14 02:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1287,7 +1287,7 @@ msgstr ""
 msgid "Change player details"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:54
 msgid "Graphics"
 msgstr ""
 
@@ -1846,13 +1846,13 @@ msgid "Failed to initialize networking."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:136
-#: horizons/gui/modules/settings.py:275
+#: horizons/gui/modules/settings.py:269
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:137
-#: horizons/gui/modules/settings.py:276
+#: horizons/gui/modules/settings.py:270
 msgid "Check the settings you specified in the network section."
 msgstr ""
 
@@ -2108,63 +2108,61 @@ msgstr ""
 msgid "Failed to delete savefile!"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:57 horizons/gui/modules/settings.py:120
+#: horizons/gui/modules/settings.py:55 horizons/gui/modules/settings.py:118
 msgid "Hotkeys"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:58
+#: horizons/gui/modules/settings.py:56
 msgid "Game"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:78
+#: horizons/gui/modules/settings.py:76
 msgid "Disabled"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:132
+#: horizons/gui/modules/settings.py:130
 msgid "Restart required"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:133
-msgid ""
-"Some of your changes require a restart of Unknown Horizons. Do you want to "
-"restart Unknown Horizons now?"
+#: horizons/gui/modules/settings.py:131
+msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:138
+#: horizons/gui/modules/settings.py:135
 msgid "Restore default settings"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:139
+#: horizons/gui/modules/settings.py:136
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:140
+#: horizons/gui/modules/settings.py:137
 msgid "Do you want to continue?"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:261
+#: horizons/gui/modules/settings.py:255
 msgid "Invalid network port"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:262
+#: horizons/gui/modules/settings.py:256
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:263
+#: horizons/gui/modules/settings.py:257
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:274
+#: horizons/gui/modules/settings.py:268
 msgid "Failed to apply new network settings."
 msgstr ""
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
-#: horizons/gui/modules/settings.py:280
+#: horizons/gui/modules/settings.py:274
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."

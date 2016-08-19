@@ -204,7 +204,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     For example:
     Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.
   - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
+  - If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
   - |
     Unknown Horizons features smart pricing, so the value of one unit can vary.
     It is NOT possible to change prices manually!
@@ -216,19 +216,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 - &PAVILION
-  - [Message, "Build a Pavilion with connection to the Tents."]
+  - [Message, "Build a pavilion with connection to the tents."]
   - [Headline, "NEW TASK: BUILD A PAVILION"]
   - [Image, "content/gui/images/background/hr.png"]
   - Those tools will be enough for the moment. Well done!
   - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
+  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
+  - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
+  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - |
 
     Note that faith is treated like a physical resource!
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
+  - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
   - After some time, they will have consumed it and then again look for a producer to collect more faith.
   - |
     Important:
@@ -236,7 +236,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     The road connection is required as well.
   - |
 
-  - [BoldLabel, "Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors' demand for faith."]
+  - [BoldLabel, "Task: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith."]
   - [Gallery, ["content/gui/icons/buildmenu/005.png"]]
 
 
@@ -244,11 +244,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, "Set the tax level to Low (left end) and wait for your sailors to upgrade."]
   - [Headline, "NEW TASK: NEXT TIER"]
   - [Image, "content/gui/images/background/hr.png"]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
+  - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
   - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
   - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
   - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - |
 
@@ -263,27 +263,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 - &FARM
-  - [Message, "Build a Farm and keep some empty space around it."]
+  - [Message, "Build a farm and keep some empty space around it."]
   - [Headline, "NEW TASK: BUILD A FARM"]
   - [Image, "content/gui/images/background/hr.png"]
   - Congratulations! Some of your inhabitants have reached tier II!
   - Now you have access to new buildings, take a look at the Build menu again.
   - [Gallery, ["content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png"]]
   - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
+  - The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.
+  - The output of farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - |
 
     We will have a closer look at this later.
   - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
+  - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+  - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - |
 
-  - [BoldLabel, "Task: Build a Farm."]
+  - [BoldLabel, "Task: Build a farm."]
   - [Gallery, ["content/gui/icons/buildmenu/020.png"]]
 
 
@@ -291,7 +291,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, "Build at least one pasture and add potato fields if you like."]
   - [Headline, "NEW TASK: BUILD FIELDS"]
   - [Image, "content/gui/images/background/hr.png"]
-  - The Farm itself is not going to produce anything without some fields.
+  - The farm itself is not going to produce anything without some fields.
   - You currently have the choice between pastures, potato and sugar fields.
   - |
     Let's have a short overview:
@@ -324,7 +324,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - We can improve this situation in two different ways, and we will have a look at both of them below.
   - |
     All companies offer to do no work at all.
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut's overview.
+    This may sound strange, but click on the gear wheel you see in a lumberjack hut's overview.
   - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
   - [Gallery, ["content/gui/icons/templates/production/toggle_inactive_h.png"]]
   - [Pagebreak]
@@ -332,29 +332,29 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.
   - |
-    Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.
+    Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.
   - |
     This building has two purposes. It:
     * Offers more storage for your goods, and
     * sends its own collectors to fetch goods, just like the Warehouse does.
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
   - |
 
-  - [BoldLabel, "Task: Build a Storage Tent, preferably where you need collectors."]
+  - [BoldLabel, "Task: Build a storage tent, preferably where you need collectors."]
   - [Gallery, ["content/gui/icons/buildmenu/002.png"]]
 
 
 - &WEAVER
-  - [Message, "Build a Weaver's Hut that can somehow reach the wool of your Farm."]
+  - [Message, "Build a weaver that can somehow reach the wool of your farm."]
   - [Headline, "NEW TASK: BUILD A WEAVER"]
   - [Image, "content/gui/images/background/hr.png"]
   - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
+  - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the Warehouse).
   - In both cases you should ensure the connection to a trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
+  - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
   - |
 
-  - [BoldLabel, "Task: Build a Weaver's Hut positioned so it can get wool."]
+  - [BoldLabel, "Task: Build a weaver positioned so it can get wool."]
   - [Gallery, ["content/gui/icons/buildmenu/007.png"]]
 
 
