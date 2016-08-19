@@ -221,7 +221,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Diese Werkzeuge sollten für den Moment ausreichen. Gut gemacht!
   - Ihr stellt Euren Einwohnern nun Unterkünfte, einen Marktplatz und Nahrung zur Verfügung.
-  - 'Ein Grundbedarf ist aber immer noch nicht gedeckt, wie Ihr in den Übersichten von Marktplatz oder Zelt nachprüfen könnt: Eure Seefahrer verlangen nach einem Gebäude zum Beten.'
+  - Ein Grundbedarf ist aber immer noch nicht gedeckt (wie Ihr in den Übersichten von Zelt nachprüfen könnt) Eure Seefahrer verlangen nach einem Gebäude zum Beten.
   - Die Lösung ist ein Pavillon, welchen der Dorfpfarrer als Sonnenschutz aufspannt.
   - Dienstleistungsgebäude wie dieses benötigen einen Zugang zur Straße, ansonsten können es die Einwohner nicht erreichen.
   - [Pagebreak]
