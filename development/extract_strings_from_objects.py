@@ -162,8 +162,8 @@ def content_from_file(filename):
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
 			comment = u'{0!s} of {1!s}'.format(component, filename)
-			object_strings.append('# {comment!s}{rowindent}"{component}": {text!s}'.
-				format(comment=comment, rowindent=ROWINDENT, component=component, text=text))
+			object_strings.append('# {comment!s}{rowindent}{component:<30}: {text!s}'.
+				format(comment=comment, rowindent=ROWINDENT, component='"{}"'.format(component), text=text))
 
 	for component, value in parsed.iteritems():
 		if isinstance(value, basestring):
