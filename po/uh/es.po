@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2016-08-16 11:19+0000\n"
+"PO-Revision-Date: 2016-08-22 05:56+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -463,15 +463,15 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"La señar de fuego enseña al comerciante libre cómo llegar a tu asentamiento "
-"en caso de que tu quieras comprar o vender bienes."
+"La Señal de Fuego enseña al Comerciante Libre cómo llegar a tu asentamiento "
+"en caso de que quieras comprar o vender bienes."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Esto es un barco del comerciante libre. Él te visitará periódicamente para "
+"Este es el barco del Comerciante Libre. Te visitará periódicamente para "
 "comprar o vender bienes."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
@@ -1453,7 +1453,7 @@ msgstr "Configuración del juego:"
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr "Comerciante libre"
+msgstr "Comerciante Libre"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
@@ -2855,7 +2855,7 @@ msgstr "Señal de fuego"
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:311
 msgid "Allows the player to trade with the free trader."
-msgstr "Te permite comerciar con el comerciante libre."
+msgstr "Te permite comerciar con el Comerciante Libre."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:316
