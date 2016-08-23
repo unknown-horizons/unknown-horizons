@@ -112,7 +112,7 @@ def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..',
 def main():
 	# Main interface translation (old 'uh' project in pootle)
 	for f in INTERFACE_TRANSLATIONS:
-		update_from_template(f, INTERFACE_TEMPLATE)
+		#update_from_template(f, INTERFACE_TEMPLATE)
 		update_authors_per_file(f)
 
 	# MP server message translation (old 'mp-server' project in pootle)
