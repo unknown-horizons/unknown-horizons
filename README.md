@@ -19,7 +19,7 @@ Find more information about Unknown Horizons on [our website](http://www.unknown
 ## Installation
 
 For installation instructions check the "Downloads" section on
-[our website](http://www.unknown-horizons.org/download/)
+[our website](http://www.unknown-horizons.org/download/).
 
 ## Building from source
 
@@ -56,4 +56,4 @@ More support info [here](https://github.com/unknown-horizons/unknown-horizons/wi
 
 ## License
 
-This game is free software. It uses the [GNU General Public License, version 2](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/licenses/GPL). The licenses used for music, artwork, sounds, etc. can be found [here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc)
+This game is free software. It uses the [GNU General Public License, version 2](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/licenses/GPL). The licenses used for music, artwork, sounds, etc. can be found [here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc).
