@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2015-12-02 23:34+0100\n"
+"POT-Creation-Date: 2016-08-19 18:06+0200\n"
 "PO-Revision-Date: 2015-08-24 21:58+0200\n"
 "Last-Translator: Joan Josep <juanjo.ng.83@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
@@ -221,6 +221,7 @@ msgstr "Xat"
 msgid "Enter your message:"
 msgstr "Introduïu el vostre missatge:"
 
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:21
@@ -236,6 +237,190 @@ msgstr "Introduïu el vostre missatge:"
 msgid "Running costs"
 msgstr "Costos de funcionament"
 
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
+#, fuzzy
+#| msgid ""
+#| "To build a boat, click on one of the class tabs, select the desired ship "
+#| "and confirm the order."
+msgid ""
+"To build a groundunit, click on one of the class tabs, select the desired "
+"groundunit and confirm the order."
+msgstr ""
+"Per construir un vaixell, feu clic a una de les pestanyes de classe, "
+"seleccioneu el vaixell que voleu i confirmeu l'ordre."
+
+#. Information about the groundunit currently under construction at the
+#. groundunit builder
+#. Information about the ship currently under construction at the boat
+#. builder
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
+msgid "Currently building:"
+msgstr "S'està construint:"
+
+#. Pauses the current groundunit production, can be resumed later
+#. Pauses the current ship production, can be resumed later
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:40
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
+#, fuzzy
+msgid "Pause"
+msgstr "Posa en pausa"
+
+#. Resumes the currently paused groundunit production
+#. Resumes the currently paused ship production
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:43
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
+msgid "Resume"
+msgstr "Continua"
+
+#. Refers to the resources still missing to complete the current
+#. groundunit builder task
+#. Refers to the resources still missing to complete the current boat
+#. builder task
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:51
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
+msgid "Construction progress:"
+msgstr "Progrés de la construcció:"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
+msgid "Resources still needed:"
+msgstr "Recursos que falten:"
+
+#. abort construction of a groundunit, lose invested resources
+#. abort construction of a ship, lose invested resources
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
+msgid "Cancel building:"
+msgstr "Cancel·la la construcció:"
+
+#. abort construction of a groundunit, lose invested resources
+#. abort construction of a ship, lose invested resources
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:67
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
+msgid "(lose all resources)"
+msgstr "(es perden tots els recursos)"
+
+#. abort construction of a groundunit, lose invested resources
+#. abort construction of a ship, lose invested resources
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:70
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
+msgid "Cancel all building progress"
+msgstr "Cancel·la totes les construccions en progrés"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
+#: horizons/gui/tabs/barrackstabs.py:128
+#: horizons/gui/tabs/boatbuildertabs.py:342
+msgid "Confirm order"
+msgstr "Confirmeu l'ordre"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
+#, fuzzy
+#| msgid "Join the selected game"
+msgid "(like in the selection tabs)"
+msgstr "Uneix-te a la partida seleccionada"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:23
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:25
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:27
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:19
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:21
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:23
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
+msgid "$res"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
+msgid "24t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
+msgid "14t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
+msgid "06t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
+msgid "2500"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
+msgid "Sloop-o'-war"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
+msgid "Three-masted most common classified war ship with one gun deck."
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
+#, fuzzy
+#| msgid "Allow upgrades"
+msgid "Buy Upgrades"
+msgstr "Permet actualitzacions"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
+#, fuzzy
+#| msgid "cannon"
+msgid "Cannons"
+msgstr "canó"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
+msgid "Hull"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
+msgid "+ 24t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
+msgid "+ 14t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
+msgid "+ 06t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
+msgid "+ 1457"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
+#, fuzzy
+#| msgid "Hold ground"
+msgid "Build groundunit:"
+msgstr "Mantenint la posició"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
+#: horizons/gui/tabs/barrackstabs.py:79
+#, fuzzy
+#| msgid "Build this ship!"
+msgid "Build this groundunit!"
+msgstr "Construeix aquest vaixell!"
+
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
@@ -244,47 +429,16 @@ msgstr ""
 "Per construir un vaixell, feu clic a una de les pestanyes de classe, "
 "seleccioneu el vaixell que voleu i confirmeu l'ordre."
 
-#. Information about the ship currently under construction at the boat
-#. builder
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
-msgid "Currently building:"
-msgstr "S'està construint:"
-
-#. Pauses the current ship production, can be resumed later
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 #, fuzzy
-msgid "Pause"
-msgstr "Posa en pausa"
+#| msgid "Build this ship!"
+msgid "Build ship:"
+msgstr "Construeix aquest vaixell!"
 
-#. Resumes the currently paused ship production
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
-msgid "Resume"
-msgstr "Continua"
-
-#. Refers to the resources still missing to complete the current boat
-#. builder task
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
-msgid "Construction progress:"
-msgstr "Progrés de la construcció:"
-
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
-msgid "Resources still needed:"
-msgstr "Recursos que falten:"
-
-#. abort construction of a ship, lose invested resources
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
-msgid "Cancel building:"
-msgstr "Cancel·la la construcció:"
-
-#. abort construction of a ship, lose invested resources
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
-msgid "(lose all resources)"
-msgstr "(es perden tots els recursos)"
-
-#. abort construction of a ship, lose invested resources
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
-msgid "Cancel all building progress"
-msgstr "Cancel·la totes les construccions en progrés"
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
+#: horizons/gui/tabs/boatbuildertabs.py:252
+msgid "Build this ship!"
+msgstr "Construeix aquest vaixell!"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -772,7 +926,7 @@ msgstr "Valor de tots els edificis dels assentaments del jugador"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:502
+#: horizons/i18n/objecttranslations.py:532
 msgid "Settlers"
 msgstr "Colons"
 
@@ -847,7 +1001,7 @@ msgstr "Passiu"
 msgid "Flee"
 msgstr "Fugint"
 
-#: content/gui/xml/mainmenu/credits.xml:584
+#: content/gui/xml/mainmenu/credits.xml:631
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
@@ -888,7 +1042,7 @@ msgstr "Carrega el mapa d'una partida desada"
 msgid "Start editor"
 msgstr "Inicia l'editor"
 
-#: content/gui/xml/mainmenu/help.xml:11
+#: content/gui/xml/mainmenu/help.xml:14
 msgid "Return"
 msgstr "Torna"
 
@@ -1201,7 +1355,7 @@ msgstr "Uneix-te a la partida seleccionada"
 msgid "Change player details"
 msgstr "Canvia els detalls del jugador"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:54
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Gràfics"
 
@@ -1571,21 +1725,21 @@ msgstr "Esteu segur que voleu sortir de l'Unknown Horizons?"
 msgid "Quit Game"
 msgstr "Surt de la partida"
 
-#: horizons/gui/ingamegui.py:241
+#: horizons/gui/ingamegui.py:244
 msgid "No diplomacy possible"
 msgstr "No es pot fer servir la diplomàcia"
 
-#: horizons/gui/ingamegui.py:242
+#: horizons/gui/ingamegui.py:245
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "No podeu fer servir la diplomàcia perquè no hi ha cap més jugador."
 
-#: horizons/gui/ingamegui.py:479
+#: horizons/gui/ingamegui.py:482
 #, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
 msgstr "Esteu segur que voleu tancar la sessió actual?"
 
-#: horizons/gui/ingamegui.py:480
+#: horizons/gui/ingamegui.py:483
 #, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
@@ -1623,46 +1777,46 @@ msgstr "Confirmació de la sobreescriptura"
 msgid "Quotes"
 msgstr "Cites"
 
-#: horizons/gui/modules/loadingscreen.py:60
+#: horizons/gui/modules/loadingscreen.py:67
 msgid "Gameplay Tips"
 msgstr "Consells per jugar"
 
-#: horizons/gui/modules/loadingscreen.py:62
+#: horizons/gui/modules/loadingscreen.py:69
 #, fuzzy
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Premeu «ESC» per accedir al menú del joc."
 
-#: horizons/gui/modules/loadingscreen.py:63
+#: horizons/gui/modules/loadingscreen.py:70
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Feu servir «MAJÚSCULES» per posar diversos edificis."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:65
+#: horizons/gui/modules/loadingscreen.py:72
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Actualment només es pot jugar als primers {tier} nivells."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "You can pause the game with 'P'."
 msgstr "Feu servir «P» per posar la partida en pausa."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Podeu fer carreteres arrossegant el botó esquerre premut."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:76
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 "Podeu construir diversos edificis mantenint premuda la tecla «MAJÚSCULES»."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:77
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 "Podeu incrementar la felicitat dels vostres habitants abaixant-los els "
 "impostos."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:78
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
@@ -1670,70 +1824,107 @@ msgstr ""
 "Construïu hospitals i estacions de bombers per protegir als vostres "
 "habitants de malalties i del foc."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:79
 #, fuzzy
 msgid "Build storage tents to increase your storage capacity."
 msgstr ""
 "Construïu tendes de magatzem per incrementar la capacitat total "
 "d'emmagatzematge."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:80
 msgid "Make sure every house is in range of a marketplace."
 msgstr "Assegureu-vos que totes les cases són a prop d'un mercat."
 
-#: horizons/gui/modules/loadingscreen.py:74
+#: horizons/gui/modules/loadingscreen.py:81
 msgid "Press 'T' to make trees transparent."
 msgstr "Premeu «T» per fer els arbres transparents."
+
+#: horizons/gui/modules/loadingscreen.py:82
+#, fuzzy
+msgid "Build storage tents and lookouts to expand your settlement range."
+msgstr ""
+"Construïu tendes de magatzem per incrementar la capacitat total "
+"d'emmagatzematge."
+
+#: horizons/gui/modules/loadingscreen.py:83
+msgid ""
+"To easily see whether the pavilion's range cover all your tents, select it "
+"from the build menu and hover it over your existing pavilion. Uncovered "
+"tents are shown in yellow. It's a good idea to build a new pavilion in their "
+"neighborhood."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:84
+msgid ""
+"Make singleplayer more fun with additional computer players by increasing "
+"'AI players' when starting a new game."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:85
+msgid ""
+"First steps are easier by looking at how AI players are setting up their "
+"settlement."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:86
+msgid ""
+"Want funny quotes only? Change the quote types shown here in the settings "
+"menu on the game page."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:87
+msgid "A marketplace links your buildings like a road."
+msgstr ""
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
-#: horizons/gui/modules/loadingscreen.py:80
+#: horizons/gui/modules/loadingscreen.py:93
 msgid "Mixed"
 msgstr "Barrejat"
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:100
+#: horizons/gui/modules/loadingscreen.py:113
 msgid "Starting engine…"
 msgstr "S'està engegant el motor…"
 
-#: horizons/gui/modules/loadingscreen.py:101
+#: horizons/gui/modules/loadingscreen.py:114
 msgid "Catching fish…"
 msgstr "S'està pescant peix…"
 
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:115
 msgid "Drawing user interface…"
 msgstr "S'està dibuixat la interfície d'usuari…"
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:116
 msgid "Activating timer…"
 msgstr "S'està activant el rellotge…"
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:117
 msgid "Chomping game data…"
 msgstr "S'estan mastegant les dades de la partida…"
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:118
 msgid "Shaping islands…"
 msgstr "S'estant formant les illes…"
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:119
 msgid "Preparing blueprints…"
 msgstr "S'estan preparant els plànols del projecte…"
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:120
 msgid "Filling world with water…"
 msgstr "S'està afegint aigua al món…"
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:121
 msgid "Raising animals…"
 msgstr "S'està fent créixer els animals…"
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:122
 msgid "Convincing AI…"
 msgstr "S'està convencent l'IA…"
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:123
 msgid "Burying treasures…"
 msgstr "S'estan enterrant tresors…"
 
@@ -1760,13 +1951,13 @@ msgid "Failed to initialize networking."
 msgstr "No es pot inicialitzar la xarxa."
 
 #: horizons/gui/modules/multiplayermenu.py:136
-#: horizons/gui/modules/settings.py:269
+#: horizons/gui/modules/settings.py:275
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "No es pot inicialitzar la xarxa amb la configuració actual."
 
 #: horizons/gui/modules/multiplayermenu.py:137
-#: horizons/gui/modules/settings.py:270
+#: horizons/gui/modules/settings.py:276
 msgid "Check the settings you specified in the network section."
 msgstr "Comproveu-ne la configuració a la secció de xarxa."
 
@@ -2031,31 +2222,35 @@ msgstr "S'ha produït un error!"
 msgid "Failed to delete savefile!"
 msgstr "No s'ha pogut esborrar la partida desada!"
 
-#: horizons/gui/modules/settings.py:55 horizons/gui/modules/settings.py:118
+#: horizons/gui/modules/settings.py:57 horizons/gui/modules/settings.py:120
 msgid "Hotkeys"
 msgstr "Dreceres de teclat"
 
-#: horizons/gui/modules/settings.py:56
+#: horizons/gui/modules/settings.py:58
 msgid "Game"
 msgstr "Partida"
 
-#: horizons/gui/modules/settings.py:76
+#: horizons/gui/modules/settings.py:78
 msgid "Disabled"
 msgstr "Desactivat"
 
-#: horizons/gui/modules/settings.py:130
+#: horizons/gui/modules/settings.py:132
 msgid "Restart required"
 msgstr "Cal reiniciar"
 
-#: horizons/gui/modules/settings.py:131
-msgid "Some of your changes require a restart of Unknown Horizons."
+#: horizons/gui/modules/settings.py:133
+#, fuzzy
+#| msgid "Some of your changes require a restart of Unknown Horizons."
+msgid ""
+"Some of your changes require a restart of Unknown Horizons. Do you want to "
+"restart Unknown Horizons now?"
 msgstr "Alguns canvis necessiten tornar a engegar l'Unknown Horizons."
 
-#: horizons/gui/modules/settings.py:135
+#: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
 msgstr "Recupera la configuració per defecte"
 
-#: horizons/gui/modules/settings.py:136
+#: horizons/gui/modules/settings.py:139
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
@@ -2063,34 +2258,34 @@ msgstr ""
 "Si recupereu la configuració per defecte, s'eliminaran els canvis que hagueu "
 "fet."
 
-#: horizons/gui/modules/settings.py:137
+#: horizons/gui/modules/settings.py:140
 msgid "Do you want to continue?"
 msgstr "Voleu continuar?"
 
-#: horizons/gui/modules/settings.py:255
+#: horizons/gui/modules/settings.py:261
 msgid "Invalid network port"
 msgstr "El port de la xarxa no és vàlid"
 
-#: horizons/gui/modules/settings.py:256
+#: horizons/gui/modules/settings.py:262
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 "Heu especificat un port que no és vàlid. Ha de ser un número entre 1 i 65535."
 
-#: horizons/gui/modules/settings.py:257
+#: horizons/gui/modules/settings.py:263
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 "Comproveu el port que heu introduït i assegureu-vos que és dins el rang "
 "especificat."
 
-#: horizons/gui/modules/settings.py:268
+#: horizons/gui/modules/settings.py:274
 msgid "Failed to apply new network settings."
 msgstr "No s'ha pogut aplicar la nova configuració de la xarxa."
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
-#: horizons/gui/modules/settings.py:274
+#: horizons/gui/modules/settings.py:280
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
@@ -2194,38 +2389,40 @@ msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] ""
 msgstr[1] ""
 
+#: horizons/gui/tabs/barrackstabs.py:36
+#, fuzzy
+#| msgid "Warehouse overview"
+msgid "Barracks overview"
+msgstr "Vista del magatzem"
+
+#: horizons/gui/tabs/barrackstabs.py:114
+msgid "Swordman"
+msgstr ""
+
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (lloc a la cua: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:193
+#: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
 msgstr "Vista del constructor de barques"
 
-#: horizons/gui/tabs/boatbuildertabs.py:236
-msgid "Build this ship!"
-msgstr "Construeix aquest vaixell!"
-
-#: horizons/gui/tabs/boatbuildertabs.py:272
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
 msgstr "Barques de pesca"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
 msgstr "Vaixells mercants"
 
-#: horizons/gui/tabs/boatbuildertabs.py:296
+#: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
 msgstr "Vaixells de guerra"
 
-#: horizons/gui/tabs/boatbuildertabs.py:308
+#: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
 msgstr "Bucs de guerra"
-
-#: horizons/gui/tabs/boatbuildertabs.py:326
-msgid "Confirm order"
-msgstr "Confirmeu l'ordre"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
@@ -2273,12 +2470,6 @@ msgstr ""
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
 msgstr "Vista del magatzem"
-
-#: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
-#| msgid "Unit overview"
-msgid "Groundunit overview"
-msgstr "Vista de les unitats"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2548,672 +2739,719 @@ msgstr "Mestre d'aixa"
 msgid "Builds boats and small ships. Built on coast."
 msgstr "Fa barques i vaixells petits. Es construeix a la costa."
 
-#. name of buildings:brickyard
+#. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:84
+msgid "Brewery"
+msgstr ""
+
+#. tooltip_text of buildings:brewery
+#: horizons/i18n/objecttranslations.py:86
+#, fuzzy
+#| msgid "Consumes flour. Produces food."
+msgid "Consumes hops. Produces Beer."
+msgstr "Necessita farina. Produeix menjar."
+
+#. name of buildings:brickyard
+#: horizons/i18n/objecttranslations.py:91
 msgid "Brickyard"
 msgstr "Forn d'argila"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:86
+#: horizons/i18n/objecttranslations.py:93
 msgid "Turns clay into bricks."
 msgstr "Converteix l'argila en maons."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:91
+#: horizons/i18n/objecttranslations.py:98
 msgid "Butchery"
 msgstr "Carnisseria"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:93
+#: horizons/i18n/objecttranslations.py:100
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Necessita bestiar porcí o boví. Produeix aliment."
 
+#. name of buildings:cannonfoundry
+#: horizons/i18n/objecttranslations.py:105
+msgid "Cannon foundry"
+msgstr ""
+
+#. tooltip_text of buildings:cannonfoundry
+#: horizons/i18n/objecttranslations.py:107
+#, fuzzy
+#| msgid "Produces tools out of iron."
+msgid "Produces Cannons."
+msgstr "Fa eines de ferro."
+
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:98
+#: horizons/i18n/objecttranslations.py:112
 #, fuzzy
 msgid "Charcoal Burning"
 msgstr "Carbonera"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:100
+#: horizons/i18n/objecttranslations.py:114
 #, fuzzy
 msgid "Burns a lot of boards."
 msgstr "Fa cremar molta fusta."
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:105
+#: horizons/i18n/objecttranslations.py:119
 msgid "Clay Deposit"
 msgstr "Jaciment d'argila"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:110
+#: horizons/i18n/objecttranslations.py:124
 msgid "Clay Pit"
 msgstr "Mina d'argila"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:112
+#: horizons/i18n/objecttranslations.py:126
 msgid "Gets clay from deposit."
 msgstr "Treu argila del jaciment."
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:117
+#: horizons/i18n/objecttranslations.py:131
 msgid "Distillery"
 msgstr "Destil·leria"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:119
+#: horizons/i18n/objecttranslations.py:133
 msgid "Turns sugar into liquor."
 msgstr "Converteix el sucre en licor."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:124
+#: horizons/i18n/objecttranslations.py:138
 msgid "Doctor"
 msgstr "Metge"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:126
+#: horizons/i18n/objecttranslations.py:140
 msgid "Treats diseases. Consumes herbs."
 msgstr "Tracta les malalties. Fa servir herbes."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:131
+#: horizons/i18n/objecttranslations.py:145
 msgid "Farm"
 msgstr "Granja"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:133
+#: horizons/i18n/objecttranslations.py:147
 msgid "Grows field crops and raises livestock."
 msgstr "Cultiva camps i cria el bestiar."
 
 #. name of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:138
+#: horizons/i18n/objecttranslations.py:152
 msgid "Alvearies"
 msgstr "Arna d'abelles"
 
 #. tooltip_text of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:140
+#: horizons/i18n/objecttranslations.py:154
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
 "Cuida les abelles. Se n'obtenen bresques de mel per fer després dolços. "
 "Necessita una granja."
 
 #. name of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:145
+#: horizons/i18n/objecttranslations.py:159
 msgid "Cattle Run"
 msgstr "Clos de bestiar boví"
 
 #. tooltip_text of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:147
+#: horizons/i18n/objecttranslations.py:161
 msgid "Raises cattle. Needs a farm."
 msgstr "Cria bestiar boví. Necessita una granja."
 
 #. name of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:152
+#: horizons/i18n/objecttranslations.py:166
 msgid "Cocoa Field"
 msgstr "Camp de cacau"
 
 #. tooltip_text of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:168
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
 "Fa llavors de cacau per productes de pastisseria. Necessita una granja."
 
 #. name of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:159
+#: horizons/i18n/objecttranslations.py:173
 msgid "Corn Field"
 msgstr "Camp de blat"
 
 #. tooltip_text of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:175
 msgid "Yields corn. Needs a farm."
 msgstr "Fa blat. Necessita una granja."
 
 #. name of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:166
+#: horizons/i18n/objecttranslations.py:180
 msgid "Herbary"
 msgstr "Herboristeria"
 
 #. tooltip_text of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:182
 msgid "Produces herbs. Needs a farm."
 msgstr "Fa herbes. Necessita una granja."
 
+#. name of buildings:fields:hopfield
+#: horizons/i18n/objecttranslations.py:187
+#, fuzzy
+#| msgid "Corn Field"
+msgid "Hop Field"
+msgstr "Camp de blat"
+
+#. tooltip_text of buildings:fields:hopfield
+#: horizons/i18n/objecttranslations.py:189
+#, fuzzy
+#| msgid "Yields corn. Needs a farm."
+msgid "Yields hop. Needs a farm."
+msgstr "Fa blat. Necessita una granja."
+
 #. name of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:173
+#: horizons/i18n/objecttranslations.py:194
 msgid "Pasture"
 msgstr "Pastures"
 
 #. tooltip_text of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py:196
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Cria ovelles. Fa llana. Necessita una granja."
 
 #. name of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:180
+#: horizons/i18n/objecttranslations.py:201
 msgid "Pigsty"
 msgstr "Cort de porcs"
 
 #. tooltip_text of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:182
+#: horizons/i18n/objecttranslations.py:203
 msgid "Raises pigs. Needs a farm."
 msgstr "Cria porcs. Necessita una granja."
 
 #. name of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:187
+#: horizons/i18n/objecttranslations.py:208
 msgid "Potato Field"
 msgstr "Camp de patates"
 
 #. tooltip_text of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py:210
 msgid "Yields food. Needs a farm."
 msgstr "Produeix menjar. Necessita na granja."
 
 #. name of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py:215
 msgid "Spice Field"
 msgstr "Camp d'espècies"
 
 #. tooltip_text of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py:217
 msgid "Grows spices. Needs a farm."
 msgstr "Produeix espècies. Necessita una granja."
 
 #. name of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:201
+#: horizons/i18n/objecttranslations.py:222
 msgid "Sugar Field"
 msgstr "Camp de sucre"
 
 #. tooltip_text of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py:224
 msgid "Used in liquor production. Needs a farm."
 msgstr "Es fa servir per fer licor. Necessita una granja."
 
 #. name of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:208
+#: horizons/i18n/objecttranslations.py:229
 msgid "Tobacco Field"
 msgstr "Camp de tabac"
 
 #. tooltip_text of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:210
+#: horizons/i18n/objecttranslations.py:231
 msgid "Produces tobacco. Needs a farm."
 msgstr "Fa tabac. Necessita una granja."
 
 #. name of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py:236
 msgid "Vineyard"
 msgstr "Vinya"
 
 #. tooltip_text of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:238
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr "Fa raïm per fer vi i pastisseria. Necessita una granja."
 
 #. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py:243
 msgid "Fire Station"
 msgstr "Parc de bombers"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:245
 msgid "Extinguishes fires."
 msgstr "Apaga focs."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:229
+#: horizons/i18n/objecttranslations.py:250
 msgid "Fish Deposit"
 msgstr "Banc de peixos"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:234
+#: horizons/i18n/objecttranslations.py:255
 msgid "Fisherman's Tent"
 msgstr "Cabana de pescador"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:236
+#: horizons/i18n/objecttranslations.py:257
 msgid "Fishes the sea, produces food."
 msgstr "Pesca al mar, fa menjar."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:241
+#: horizons/i18n/objecttranslations.py:262
 msgid "Hunter's Tent"
 msgstr "Cabana de caçador"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:243
+#: horizons/i18n/objecttranslations.py:264
 msgid "Hunts wild forest animals, produces food."
 msgstr "Caça animals salvatges, fa menjar."
 
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:248
+#: horizons/i18n/objecttranslations.py:269
 msgid "Lookout"
 msgstr "Vigilant"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py:271
 #, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
 msgstr "Defensa l'assentament."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:255
+#: horizons/i18n/objecttranslations.py:276
 msgid "Lumberjack Tent"
 msgstr "Tenda de llenyataire"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:257
+#: horizons/i18n/objecttranslations.py:278
 msgid "Lumberjack Hut"
 msgstr "Cabana de llenyataire"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:259
+#: horizons/i18n/objecttranslations.py:280
 msgid "Chops down trees and turns them into boards."
 msgstr "Talla arbres i en fa taulons."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py:285
 msgid "Main Square"
 msgstr "Plaça major"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:266
+#: horizons/i18n/objecttranslations.py:287
 msgid "Supplies citizens with goods. Provides community."
 msgstr "Proveeix als vilatans de béns. Fa comunitat."
 
 #. name of buildings:mine
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py:292
 msgid "Mine"
 msgstr "Mina"
 
 #. tooltip_text of buildings:mine
-#: horizons/i18n/objecttranslations.py:273
+#: horizons/i18n/objecttranslations.py:294
 msgid "Gets iron ore from deposit."
 msgstr "Extreu mineral de ferro del jaciment."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:278
+#: horizons/i18n/objecttranslations.py:299
 msgid "Mountain"
 msgstr "Muntanya"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:283
+#: horizons/i18n/objecttranslations.py:304
 msgid "Pastry Shop"
 msgstr "Pastisseria"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py:306
 msgid "Produces all kinds of confectionery."
 msgstr "Produeix tota mena de pastissos."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:290
+#: horizons/i18n/objecttranslations.py:311
 msgid "Pavilion"
 msgstr "Pavelló"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:292
+#: horizons/i18n/objecttranslations.py:313
 msgid "Fulfills religious needs of sailors."
 msgstr "Satisfà les necessitats religioses dels mariners."
 
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:297
+#: horizons/i18n/objecttranslations.py:318
 msgid "Ruined Tent"
 msgstr "Tendes ruïnoses"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:302
+#: horizons/i18n/objecttranslations.py:323
 msgid "Salt Ponds"
 msgstr "Salines"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py:325
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Fa sal. Es construeixen a la costa marina."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:309
+#: horizons/i18n/objecttranslations.py:330
 msgid "Signal Fire"
 msgstr "Senyal de foc"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py:332
 msgid "Allows the player to trade with the free trader."
 msgstr "Permet al jugador fer negocis amb el comerciant lliure."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:316
+#: horizons/i18n/objecttranslations.py:337
 msgid "Smeltery"
 msgstr "Foneria"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:318
+#: horizons/i18n/objecttranslations.py:339
 msgid "Refines all kind of ores."
 msgstr "Refina tot tipus de mineral."
 
-#. name_2 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:323
+#. name of buildings:stonedeposit
+#: horizons/i18n/objecttranslations.py:344
+#, fuzzy
+#| msgid "stone deposit"
+msgid "Stone Deposit"
+msgstr "jaciment de pedra"
+
+#. name_3 of buildings:stonemason
+#: horizons/i18n/objecttranslations.py:349
 msgid "Stonemason"
 msgstr "Pedraire"
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:325
+#: horizons/i18n/objecttranslations.py:351
 msgid "Carver"
 msgstr "Picapedrer"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:327
+#: horizons/i18n/objecttranslations.py:353
 msgid "Carves stone tops into bricks."
 msgstr "Talla la pedra en blocs més petits."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:332
+#: horizons/i18n/objecttranslations.py:358
 msgid "Stone Pit"
 msgstr "Pedrera"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py:360
 msgid "Gets stone from a mountain."
 msgstr "Treu pedra d'una muntanya."
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:339
+#: horizons/i18n/objecttranslations.py:365
 msgid "Storage Tent"
 msgstr "Tenda magatzem"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py:367
 msgid "Storage Hut"
 msgstr "Cabana magatzem"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:343
+#: horizons/i18n/objecttranslations.py:369
 #, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr "Millora la capacitat d'emmagatzematge i proveeix als recol·lectors."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:348
+#: horizons/i18n/objecttranslations.py:374
 msgid "Tavern"
 msgstr "Taverna"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:350
+#: horizons/i18n/objecttranslations.py:376
 msgid "Provides get-together."
 msgstr "Socialitza."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:355
+#: horizons/i18n/objecttranslations.py:381
 msgid "Tent"
 msgstr "Tenda"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:357
+#: horizons/i18n/objecttranslations.py:383
 msgid "Hut"
 msgstr "Cabana"
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:359
+#: horizons/i18n/objecttranslations.py:385
 msgid "House"
 msgstr "Casa"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:361
+#: horizons/i18n/objecttranslations.py:387
 msgid "Stone house"
 msgstr "Casa de pedra"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:363
+#: horizons/i18n/objecttranslations.py:389
 msgid "Estate"
 msgstr "Residència"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py:391
 msgid "Manor"
 msgstr "Mansió"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py:393
 msgid "Houses your inhabitants."
 msgstr "Allotjament pels vostres habitants."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py:398
 msgid "Tobacconist"
 msgstr "Tabaquer"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py:400
 msgid "Produces tobaccos out of tobacco."
 msgstr "Fa cigars a partir de tabac."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py:405
 #, fuzzy
 msgid "Toolmaker"
 msgstr "Taller d'eines"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py:407
 msgid "Produces tools out of iron."
 msgstr "Fa eines de ferro."
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:386
+#: horizons/i18n/objecttranslations.py:412
 msgid "Trail"
 msgstr "Camí"
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:388
+#: horizons/i18n/objecttranslations.py:414
 msgid "Gravel Path"
 msgstr "Camí de grava"
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:390
+#: horizons/i18n/objecttranslations.py:416
 msgid "Cobblestone Street"
 msgstr "Carrer de llambordes"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:392
+#: horizons/i18n/objecttranslations.py:418
 msgid "Needed for collecting goods."
 msgstr "Es fa servir per recollir mercaderies."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:397
+#: horizons/i18n/objecttranslations.py:423
 msgid "Tree"
 msgstr "Arbre"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:399
+#: horizons/i18n/objecttranslations.py:425
 msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr "Fa fusta. Els tallen els llenyataires."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:404
+#: horizons/i18n/objecttranslations.py:430
 msgid "Village school"
 msgstr "Escola"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:406
+#: horizons/i18n/objecttranslations.py:432
 msgid "Provides education."
 msgstr "Forma la població."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:411
+#: horizons/i18n/objecttranslations.py:437
 msgid "Warehouse"
 msgstr "Magatzem"
 
 #. name of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:416
+#: horizons/i18n/objecttranslations.py:442
 #, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
 msgstr "Armament"
 
 #. tooltip_text of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:418
+#: horizons/i18n/objecttranslations.py:444
 #, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
 msgstr "Fa eines de ferro."
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:449
 msgid "Weaver's Hut"
 msgstr "Cabana de teixidor"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:451
 msgid "Turns lamb wool into cloth."
 msgstr "Fa roba de la llana d'ovella."
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:430
+#: horizons/i18n/objecttranslations.py:456
 msgid "Windmill"
 msgstr "Molí"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:432
+#: horizons/i18n/objecttranslations.py:458
 msgid "Grinds corn into flour."
 msgstr "Mol el blat per fer farina."
 
 #. name of buildings:winery
-#: horizons/i18n/objecttranslations.py:437
+#: horizons/i18n/objecttranslations.py:463
 msgid "Winery"
 msgstr ""
 
 #. tooltip_text of buildings:winery
-#: horizons/i18n/objecttranslations.py:439
+#: horizons/i18n/objecttranslations.py:465
 msgid "Produces wine out of grapes."
 msgstr "Del raïm en fa vi."
 
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:444
+#: horizons/i18n/objecttranslations.py:470
 msgid "Wooden Tower"
 msgstr "Torre de fusta"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:446
+#: horizons/i18n/objecttranslations.py:472
 msgid "Defends your settlement."
 msgstr "Defensa l'assentament."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:451
-#: horizons/i18n/objecttranslations.py:453
-#: horizons/i18n/objecttranslations.py:455
-#: horizons/i18n/objecttranslations.py:457
-#: horizons/i18n/objecttranslations.py:522
+#: horizons/i18n/objecttranslations.py:477
+#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:483
+#: horizons/i18n/objecttranslations.py:552
 msgid "Companies"
 msgstr "Companyies"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:459
-#: horizons/i18n/objecttranslations.py:461
-#: horizons/i18n/objecttranslations.py:463
-#: horizons/i18n/objecttranslations.py:518
+#: horizons/i18n/objecttranslations.py:485
+#: horizons/i18n/objecttranslations.py:487
+#: horizons/i18n/objecttranslations.py:489
+#: horizons/i18n/objecttranslations.py:491
+#: horizons/i18n/objecttranslations.py:548
 msgid "Fields"
 msgstr "Camps"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab5_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:465
-#: horizons/i18n/objecttranslations.py:524
+#: horizons/i18n/objecttranslations.py:493
+#: horizons/i18n/objecttranslations.py:554
 msgid "Military"
 msgstr "Militar"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:467
-#: horizons/i18n/objecttranslations.py:490
+#: horizons/i18n/objecttranslations.py:495
+#: horizons/i18n/objecttranslations.py:520
 #, fuzzy
 msgid "Mining"
 msgstr "Mines"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:469
-#: horizons/i18n/objecttranslations.py:516
+#: horizons/i18n/objecttranslations.py:497
+#: horizons/i18n/objecttranslations.py:546
 msgid "Residents and infrastructure"
 msgstr "Habitatge i infraestructures"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:471
-#: horizons/i18n/objecttranslations.py:473
-#: horizons/i18n/objecttranslations.py:475
-#: horizons/i18n/objecttranslations.py:500
+#: horizons/i18n/objecttranslations.py:499
+#: horizons/i18n/objecttranslations.py:501
+#: horizons/i18n/objecttranslations.py:503
+#: horizons/i18n/objecttranslations.py:530
 msgid "Services"
 msgstr "Serveis"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:480
+#: horizons/i18n/objecttranslations.py:508
+#: horizons/i18n/objecttranslations.py:510
 msgid "Citizens"
 msgstr "Ciutadans"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:482
+#: horizons/i18n/objecttranslations.py:512
 msgid "Food"
 msgstr "Menjar"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:484
+#: horizons/i18n/objecttranslations.py:514
 msgid "Fortifications"
 msgstr "Fortificacions"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:486
+#: horizons/i18n/objecttranslations.py:516
 msgid "Infrastructure"
 msgstr "Infraestructura"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:488
+#: horizons/i18n/objecttranslations.py:518
 msgid "Military Service"
 msgstr "Servei militar"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:492
+#: horizons/i18n/objecttranslations.py:522
 msgid "Pioneers"
 msgstr "Colons"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:494
+#: horizons/i18n/objecttranslations.py:524
 msgid "Precaution"
 msgstr "Precaució"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:496
+#: horizons/i18n/objecttranslations.py:526
 msgid "Residential"
 msgstr "Residencial"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:498
+#: horizons/i18n/objecttranslations.py:528
 msgid "Sea"
 msgstr "Mar"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:504
+#: horizons/i18n/objecttranslations.py:534
 msgid "Wood"
 msgstr "Fusta"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:506
-#: horizons/i18n/objecttranslations.py:508
-#: horizons/i18n/objecttranslations.py:510
-#: horizons/i18n/objecttranslations.py:512
+#: horizons/i18n/objecttranslations.py:536
+#: horizons/i18n/objecttranslations.py:538
+#: horizons/i18n/objecttranslations.py:540
+#: horizons/i18n/objecttranslations.py:542
 msgid "Workshops"
 msgstr "Tallers"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:514
+#: horizons/i18n/objecttranslations.py:544
 msgid "Settlement"
 msgstr "Assentaments"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:520
+#: horizons/i18n/objecttranslations.py:550
 msgid "Agriculture"
 msgstr "Agricultura"
 
@@ -3363,12 +3601,12 @@ msgid "A page has been opened in your browser."
 msgstr "S'ha obert una pàgina al vostre navegador."
 
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:267
+#: horizons/util/uhdbaccessor.py:281
 #, fuzzy, python-brace-format
 msgid "{slotnum} slots, {limit}t"
 msgstr "{slotnum} espais, {limit} t"
 
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:289
 #, python-brace-format
 msgid "Health: {health}"
 msgstr "Salut: {health}"
@@ -3581,8 +3819,8 @@ msgid "food"
 msgstr "menjar"
 
 #. This is a database entry: the name of a resource
-msgid "flour"
-msgstr "farina"
+msgid "cannon"
+msgstr "canó"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
@@ -3620,6 +3858,10 @@ msgstr "cacau"
 #. This is a database entry: the name of a resource
 msgid "marble tops"
 msgstr "lloses de marbre"
+
+#. This is a database entry: the name of a resource
+msgid "flour"
+msgstr "farina"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3710,6 +3952,12 @@ msgstr "No s'hi pot anar."
 #. This is a database entry: the name of a resource
 msgid "corn"
 msgstr "blat de moro"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, fuzzy, python-brace-format
+#| msgid "A new ship by the name of {name} has been created."
+msgid "The Soldier by the name of {name} is ready to battle."
+msgstr "S'ha creat un nou vaixell anomenat {name}."
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
@@ -3809,6 +4057,10 @@ msgstr "balenes"
 #. This is a database entry: the name of a resource
 msgid "coins"
 msgstr "monedes"
+
+#. This is a database entry: the name of a resource
+msgid "beer"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -3937,9 +4189,11 @@ msgstr "{player}: {message}"
 msgid "sword"
 msgstr ""
 
-#. This is a database entry: the name of a resource
-msgid "cannon"
-msgstr "canó"
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, fuzzy, python-brace-format
+#| msgid "A new ship by the name of {name} has been created."
+msgid "The inhabitant by the name of {name} is available."
+msgstr "S'ha creat un nou vaixell anomenat {name}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
@@ -4019,6 +4273,11 @@ msgstr "sal"
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
 msgstr "lingots d'or"
+
+#, fuzzy
+#~| msgid "Unit overview"
+#~ msgid "Groundunit overview"
+#~ msgstr "Vista de les unitats"
 
 #~ msgid "SDL is only meant as unsupported fallback and might cause problems!"
 #~ msgstr ""
