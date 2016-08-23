@@ -13,14 +13,14 @@ supply your inhabitants with valuable goods. Increase your
 power with a well balanced economy and with strategic trade
 and diplomacy.
 
-Find more information about Unknown Horizons on our [website](http://www.unknown-horizons.org/).
+Find more information about Unknown Horizons on [our website](http://www.unknown-horizons.org/).
 
 
 # Installation
 
 
 For installation instructions check the "Downloads" section on
-our website [http://www.unknown-horizons.org/download/](http://www.unknown-horizons.org/download/)
+[our website](http://www.unknown-horizons.org/download/)
 
 
 # Dependencies
