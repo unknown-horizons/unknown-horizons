@@ -20,7 +20,7 @@ Find more information about Unknown Horizons on [our website](http://www.unknown
 
 
 For installation instructions check the "Downloads" section on
-[our website](http://www.unknown-horizons.org/download/)
+[our website](http://www.unknown-horizons.org/download/).
 
 
 # Dependencies
@@ -38,7 +38,7 @@ Technology     | Component
 # Help us develop
 
 
-Check out this guide [Getting started](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3Astarter).
+Check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3Astarter).
 
 
 # Contact
