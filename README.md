@@ -16,14 +16,23 @@ and diplomacy.
 Find more information about Unknown Horizons on [our website](http://www.unknown-horizons.org/).
 
 
-# Installation
-
+## Installation
 
 For installation instructions check the "Downloads" section on
-[our website](http://www.unknown-horizons.org/download/).
+[our website](http://www.unknown-horizons.org/download/)
+
+## Building from source
+
+To get the latest version of the game, you have to build it from source:
+
+ * [Instructions for GNU/Linux](http://www.unknown-horizons.org/download/sources/s-linux/)
+ * [Instructions for Windows](http://www.unknown-horizons.org/download/sources/s-windows/)
+ * [Instructions for OS X](http://www.unknown-horizons.org/download/sources/s-osx/)
+
+If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3Astarter).
 
 
-# Dependencies
+## Dependencies
 
 
 Technology     | Component
@@ -34,15 +43,7 @@ Technology     | Component
 **[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings
 **[fifechan](https://github.com/fifengine/fifechan)**   | GUI library
 
-
-# Help us develop
-
-
-Check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3Astarter).
-
-
-# Contact
-
+## Community
 
 Type         | Where?
 -------------|-----------------------------------------------------------------------
@@ -53,16 +54,6 @@ IRC Channel  | #unknown-horizons on freenode ([irc://irc.freenode.net/unknown-ho
 
 More support info [here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos).
 
+## License
 
-# License
-
-
-This game is free software.
-
-## Game license
-
-This game uses the [GNU General Public License, version 2](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/licenses/GPL).
-
-## Content licenses
-
-[These](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc) are the licenses used for music, artwork, sounds, etc.
+This game is free software. It uses the [GNU General Public License, version 2](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/licenses/GPL). The licenses used for music, artwork, sounds, etc. can be found [here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc)
