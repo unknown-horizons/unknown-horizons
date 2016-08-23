@@ -37,9 +37,9 @@ If you want to start hacking on Unknown Horizons, check out [this guide](https:/
 
 Technology     | Component
 ---------------|----------
-**Python2**    | Used for everything
+**Python 2**    | Used for everything
 **SQLite**     | Maps
-**YAML**       | Objectfiles storing component based information, easily scriptable
+**YAML**       | Object files storing component based information, easily scriptable
 **[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings
 **[fifechan](https://github.com/fifengine/fifechan)**   | GUI library
 
