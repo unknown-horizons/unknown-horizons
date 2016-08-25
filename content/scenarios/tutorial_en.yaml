@@ -221,7 +221,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, "content/gui/images/background/hr.png"]
   - Those tools will be enough for the moment. Well done!
   - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent) your sailors want a basic building where they can pray.
+  - "Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray."
   - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
   - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
