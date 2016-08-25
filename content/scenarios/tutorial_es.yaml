@@ -218,13 +218,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Construye un Convento conectado a las Tiendas.]
+  - [Message, Construye un Pabellón con conexión a las Tiendas.]
   - [Headline, 'N. TAREA: EDIFICA UN PABELLÓN']
   - [Image, content/gui/images/background/hr.png]
   - Esas herramientas serán suficientes de momento. ¡Bien hecho!
   - Ahora proporciona casas, una plaza principal y alimento a tus habitantes.
-  - Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent) your sailors want a basic building where they can pray.
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
+  - 'Aún hay una demanda que no hemos satisfecho hasta ahora (puedes comprobarlo haciendo clic en cualquier Tienda): tus marineros quieren un básico edificio donde poder rezar.'
+  - La solución es un Pabellón donde refugiar del sol al párroco del pueblo.
   - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
@@ -238,7 +238,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     La conexión vial también es necesaria.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Tarea: Construye un Pabellón con una conexión a las Tiendas para satisfacer la demanda de fe de tus marineros.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -246,7 +246,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Fija los impuestos a un nivel 'Bajo' (izquierda de todo) y espera a la actualización de tus marineros.]
   - [Headline, 'NUEVA TAREA: SIGUIENTE NIVEL']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
+  - Todas las demandas están satisfechas ahora si tus habitantes pueden visitar regularmente la Plaza Principal y el Pabellón, y tu suministro de alimentos es adecuado.
   - Si los marineros son lo suficientemente felices querrán avanzar al siguiente nivel denominado Pioneros.
   - Para mantenerlos felices no puedes hacer nada más que eso, salvo mantener los impuestos en el nivel más bajo hasta que satisfagas todas sus demandas.
   - No mantengas los impuestos bajos ya que probablemente te llevará tarde o temprano a la quiebra. Sin embargo durante un breve período de tiempo, si sabes lo que haces, está bien.
@@ -657,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 154 translated messages, 34 fuzzy translations.
+  translation_status: 158 translated messages, 30 fuzzy translations.
