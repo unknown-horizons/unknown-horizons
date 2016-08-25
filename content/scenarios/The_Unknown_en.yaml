@@ -48,7 +48,7 @@ logbook-data:
     - It is time to build some tents to live in and a small main square to supply our citizens with goods.
     - |
       Task:
-      Build a main square and at least 10 tents.
+      Build a Main Square and at least 10 Tents.
     - [Pagebreak]
     - |
 
@@ -136,6 +136,6 @@ metadata:
   difficulty: easy
   author: Kikody, UH-Team
   description: |
-    You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the pacific ocean.
+    You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the Pacific Ocean.
     Everything went fine until you came into a storm…
   locale: en
