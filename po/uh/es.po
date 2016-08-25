@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-19 18:06+0200\n"
-"PO-Revision-Date: 2016-08-25 15:46+0000\n"
+"PO-Revision-Date: 2016-08-25 16:46+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -2749,7 +2749,7 @@ msgstr "Necesita cerdos o ganado. Produce alimento."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
 msgid "Cannon foundry"
-msgstr ""
+msgstr "Fundición de Cañones"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
