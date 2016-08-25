@@ -9,8 +9,8 @@ msgstr ""
 "POT-Creation-Date: 2016-08-25 18:38+0200\n"
 "PO-Revision-Date: 2016-08-22 15:46+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/"
-">\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -807,7 +807,7 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Pavilion with connection to the Tents."
-msgstr "Construye un Convento conectado a las Tiendas."
+msgstr "Construye un Pabellón con conexión a las Tiendas."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
@@ -823,7 +823,6 @@ msgstr ""
 "Ahora proporciona casas, una plaza principal y alimento a tus habitantes."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Still there is one demand which we have not satisfied so far, you may "
 #| "check that in the marketplace or tent tab - your sailors want a basic "
@@ -838,7 +837,6 @@ msgstr ""
 "donde poder rezar."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "The solution is a pavilion which the village parson quickly puts up as "
 #| "shelter from the sun."
@@ -846,7 +844,7 @@ msgid ""
 "The solution is a Pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
-"La solución es un pabellón donde refugiar del sol al párroco del pueblo."
+"La solución es un Pabellón donde refugiar del sol al párroco del pueblo."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -901,7 +899,6 @@ msgstr ""
 "La conexión vial también es necesaria."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 #| "sailors' demand for faith."
@@ -909,7 +906,7 @@ msgid ""
 "Task: Build a Pavilion with a trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
-"Tarea: Construye un convento con una conexión a las tiendas para satisfacer "
+"Tarea: Construye un Pabellón con una conexión a las Tiendas para satisfacer "
 "la demanda de fe de tus marineros."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -924,7 +921,6 @@ msgid "NEW TASK: NEXT TIER"
 msgstr "NUEVA TAREA: SIGUIENTE NIVEL"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "All demands are fulfilled now if your inhabitants can regularly visit the "
 #| "main square & pavilion and your food supply is adequate."
@@ -932,8 +928,9 @@ msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square & Pavilion and your food supply is adequate."
 msgstr ""
-"Tus habitantes verán satisfechas sus demandas si pueden visitar regularmente "
-"la plaza principal y el convento y tu suministro de alimentos es adecuada."
+"Todas las demandas están satisfechas ahora si tus habitantes pueden visitar "
+"regularmente la Plaza Principal y el Pabellón, y tu suministro de alimentos "
+"es adecuado."
 
 #. This is the text body of a logbook page.
 msgid ""
