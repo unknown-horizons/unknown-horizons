@@ -58,7 +58,7 @@ logbook-data:
   - Es hora de construir algunas tiendas de campaña donde vivir y una plaza principal para proporcionar bienes a nuestros ciudadanos.
   - 'Tarea:
 
-    Construye una plaza principal y al menos 10 tiendas de campaña.'
+    Construye una Plaza Principal y al menos 10 Tiendas.'
   - [Pagebreak]
   - ''
 
@@ -142,7 +142,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Eres el capitán de un navío bajo bandera de Inglaterra en 1740. Tú y tu tripulación navegáis hacia una colonia inglesa en el océano Pacífico.
+  description: 'Eres el capitán de un navío bajo bandera de Inglaterra en 1740. Tú y tu tripulación os dirigíais hacia una colonia inglesa en el océano Pacífico.
 
     Todo iba bien hasta que entraste en una tormenta…'
   difficulty: fácil
