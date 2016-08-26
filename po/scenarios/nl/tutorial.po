@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 18:38+0200\n"
-"PO-Revision-Date: 2016-01-10 16:38+0000\n"
+"PO-Revision-Date: 2016-08-26 10:21+0000\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/tutorial/nl/>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -59,7 +59,6 @@ msgstr ""
 "dagboek worden geopend."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "You can also re-open the Journal at any time by clicking the button below "
 #| "the mini-map, at the top right of your screen. From now on we'll refer to "
@@ -289,8 +288,8 @@ msgid ""
 "You will need to have some food-producing companies too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
-"Je hebt voedsel producerende bedrijven nodig, want mensen in het algemeen "
-"(en zeker zeelui) zijn heel hongerig."
+"Je hebt een aantal voedsel producerende bedrijven nodig, want mensen in het "
+"algemeen (en zeker zeelui) zijn heel hongerig."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
@@ -776,13 +775,17 @@ msgstr ""
 "Laten we nu verder gaan met de handelsinstructies."
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "Klik eerst op jouw eigen pakhuis en klik daarna op het derde tabblad."
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Klik dan op één van de de drie slots, selecteer vervolgens het product dat "
+"je wil kopen of verkopen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -838,7 +841,6 @@ msgstr ""
 "niet meer dan 5 ton worden verkocht."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "If the free trader however only wants to buy or sell less than your "
 #| "settings would allow him, you need to live with that and wait for him to "
@@ -893,7 +895,6 @@ msgstr ""
 "U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Still there is one demand which we have not satisfied so far, you may "
 #| "check that in the marketplace or tent tab - your sailors want a basic "
@@ -903,9 +904,9 @@ msgid ""
 "that by clicking on any Tent): your sailors want a basic building where they "
 "can pray."
 msgstr ""
-"Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben, "
-"dat kunt je controleren in de tabbladen van de marktplein of een tent: De "
-"zeelui willen een simpel gebouw om te kunnen bidden."
+"Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben ("
+"dat kun je controleren door op een tent te klikken): De zeelui willen een "
+"simpel gebouw om te kunnen bidden."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -1449,7 +1450,7 @@ msgstr ""
 #| msgid "Build a weaver that can somehow reach the wool of your farm."
 msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
 msgstr ""
-"Bouw een kleermaker die op een of andere manier bij de wol kan komen op je "
+"Bouw een weverij die op één of andere manier bij de wol kan komen op je "
 "boerderij."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -1475,8 +1476,8 @@ msgid ""
 "where you can build it - either close to the Farm or close to a Storage Tent "
 "(or the Warehouse)."
 msgstr ""
-"Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij, "
-"opslag tent of pakhuis."
+"De weverij is waar de kleermaker woont. Er zijn twee plekken waar je het kan "
+"plaatsen - of dicht bij de boerderij of bij een opslagtent (of het pakhuis)."
 
 #. This is the text body of a logbook page.
 msgid "In both cases you should ensure the connection to a trail as well."
