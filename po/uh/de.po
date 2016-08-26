@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-19 18:06+0200\n"
-"PO-Revision-Date: 2016-07-31 14:57+0000\n"
+"PO-Revision-Date: 2016-08-26 05:08+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -245,7 +245,6 @@ msgid "Running costs"
 msgstr "Laufende Kosten"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
 #| msgid ""
 #| "To build a boat, click on one of the class tabs, select the desired ship "
 #| "and confirm the order."
@@ -253,8 +252,8 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Um ein Schiff zu bauen, wählt zunächst die gewünschte Kategorie aus und "
-"danach das gewünschte Schiff. Bestätigt anschließend Euren Auftrag."
+"Um eine Bodeneinheit zu bauen, wählt zunächst die gewünschte Kategorie aus "
+"und danach die gewünschte Einheit. Bestätigt anschließend Euren Auftrag."
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -323,10 +322,9 @@ msgstr "Auftrag bestätigen"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
 #| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "In ausgewähltes Spiel einklinken"
+msgstr "(wie in den Auswahl Tabs)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -375,7 +373,6 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
 #| msgid "Allow upgrades"
 msgid "Buy Upgrades"
 msgstr "Aufstieg erlauben"
@@ -413,17 +410,15 @@ msgid "+ 1457"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
 #| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Standhalten"
+msgstr "Baut Bodeneinheit:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:79
-#, fuzzy
 #| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "In Auftrag geben!"
+msgstr "Diese Bodeneinheit bauen!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -434,10 +429,9 @@ msgstr ""
 "danach das gewünschte Schiff. Bestätigt anschließend Euren Auftrag."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
 #| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "In Auftrag geben!"
+msgstr "Schiff bauen:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -1825,7 +1819,6 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Drückt „T“, um durch Bäume zu sehen."
 
 #: horizons/gui/modules/loadingscreen.py:82
-#, fuzzy
 #| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr "Errichtet Lagerzelte, um Eure Lagerkapazität zu erhöhen."
@@ -2220,12 +2213,13 @@ msgid "Restart required"
 msgstr "Neustart erforderlich"
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
 #| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Einige Eurer Änderungen erfordern einen Neustart von Unknown Horizons."
+msgstr ""
+"Einige Eurer Änderungen erfordern einen Neustart von Unknown Horizons. Wollt "
+"ihr Unknown Horzions jetzt neustarten?"
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
@@ -2372,16 +2366,14 @@ msgstr[0] "%s zusätzliches Gebäude wird zerstört."
 msgstr[1] "%s zusätzliche Gebäude werden zerstört"
 
 #: horizons/gui/tabs/barrackstabs.py:36
-#, fuzzy
 #| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Kontor-Übersicht"
+msgstr "Barracken-Übersicht"
 
 #: horizons/gui/tabs/barrackstabs.py:114
-#, fuzzy
 #| msgid "sword"
 msgid "Swordman"
-msgstr "Schwert"
+msgstr "Schwert Soldat"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2742,10 +2734,9 @@ msgstr ""
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
-#, fuzzy
 #| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Verbraucht Mehl. Produziert Nahrung."
+msgstr "Verbraucht Mehl. Produziert Bier."
 
 # Building
 #. name of buildings:brickyard
@@ -2775,10 +2766,9 @@ msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
-#, fuzzy
 #| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Stellt Eisenwerkzeuge her."
+msgstr "Stellt Kannonen her."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:112
@@ -2889,17 +2879,15 @@ msgstr "Anbau von Heilkräutern. Benötigt eine Farm."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:187
-#, fuzzy
 #| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Maisfeld"
+msgstr "Hopfen Feld"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:189
-#, fuzzy
 #| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Produziert Nahrung. Benötigt eine Farm."
+msgstr "Produziert Hopfen. Benötigt eine Farm."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:194
@@ -3119,7 +3107,6 @@ msgstr "Verhüttet Erze zu Metallen."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#, fuzzy
 #| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "Steinbruch"
@@ -3959,10 +3946,10 @@ msgid "corn"
 msgstr "Getreide"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "A new ship by the name of {name} has been created."
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Ein neues Schiff mit dem Namen {name} wurde fertiggestellt."
+msgstr "Der Soldat mit dem Namen {name} wurde fertiggestellt."
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
@@ -4196,10 +4183,10 @@ msgid "sword"
 msgstr "Schwert"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "A new ship by the name of {name} has been created."
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Ein neues Schiff mit dem Namen {name} wurde fertiggestellt."
+msgstr "Der Einwohner mit dem Namen {name} wurde fertiggestellt."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
