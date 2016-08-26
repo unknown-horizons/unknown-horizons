@@ -8,18 +8,20 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-19 18:06+0200\n"
-"PO-Revision-Date: 2015-12-02 23:34+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2016-08-26 10:15+0000\n"
+"Last-Translator: Arm Coon <armcoon@gmail.com>\n"
+"Language-Team: Chinese (China) "
+"<https://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "未知地平线已崩溃。"
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -3972,7 +3974,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "你的矿厂没资源了。"
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
@@ -3984,7 +3986,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "棉花"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -4004,7 +4006,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "剑"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -4022,7 +4024,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr ""
+msgstr "茶叶"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -4030,11 +4032,11 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "新的世界已创建。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "你的游戏已快速储存。"
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
@@ -4042,49 +4044,49 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "草药"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "灯油"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "猪"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "你不能摧毁仓库，你的殖民地需要它。"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "调味料"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "黑死病"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "蜡烛"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "发现 {player} 的新殖民地。"
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "藤蔓"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "你的游戏已储存。"
 
 #. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "盐"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
-msgstr ""
+msgstr "金元宝"
