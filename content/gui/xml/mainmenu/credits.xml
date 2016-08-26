@@ -204,6 +204,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="jorgesumle (text fixes)" />
 				<Label text="MarkusHackspacher (code fixes)" />
 				<Label text="xseanl (tooltips added)" />
+				<Label text="martingeiger (added new inhabitant grafics)" />
 			</VBox>
 		</VBox>
 	</VBox>

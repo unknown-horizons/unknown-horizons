@@ -135,6 +135,7 @@
 * jorgesumle (text fixes)
 * MarkusHackspacher (code fixes)
 * xseanl (tooltips added)
+* martingeiger (added new inhabitant grafics)
 
 ## Translators
 
