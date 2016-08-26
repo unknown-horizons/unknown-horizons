@@ -81,7 +81,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construya un Cazador y un Pescador. Conéctalos al Almacén.]
   - [Headline, 'TAREA: SUMINISTRO DE ALIMENTOS']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
+  - Necesitarás tener algunos negocios que produzcan alimentos también, porque la gente en general (y especialmente los marineros) está muy hambrienta.
   - Los negocios disponibles en el Primer Nivel son el Cazador y el Pescador.
   - El Cazador caza animales en el bosque, por lo que necesita que haya árboles cerca.
   - Ten en cuenta que puedes colocar el Cazador cerca del bosque del leñador.
@@ -190,10 +190,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
   - [Headline, 'N. TAREA: APRENDE A COMERCIAR']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - '¡Excelente! El Comerciante Libre ahora se detendrá frente a tu Almacén de vez en cuando.
 
 
-    Let''s continue our tutorial on how to trade.'
+    Vamos a continuar nuestro tutorial con cómo comerciar.'
   - Primero haz clic en tu propio Almacén y luego en la tercera pestaña.
   - Después haz clic en una de las tres casillas y selecciona el bien que quieres comprar o vender.
   - Después de seleccionar un tipo concreto de producto, la barra verde que atraviesa el fondo del casillero muestra cuánto tienes en almacén de este producto.
@@ -225,12 +225,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ahora proporciona casas, una plaza principal y alimento a tus habitantes.
   - 'Aún hay una demanda que no hemos satisfecho hasta ahora (puedes comprobarlo haciendo clic en cualquier Tienda): tus marineros quieren un básico edificio donde poder rezar.'
   - La solución es un Pabellón donde refugiar del sol al párroco del pueblo.
-  - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
+  - Los edificios de servicios como éste también necesitan estar conectados a las Tiendas por medio de un camino o tus habitantes no podrán llegar a ellos.
   - [Pagebreak]
   - '
 
     ¡Ten en cuenta que la fe es tratada como un recurso físico!'
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
+  - Esto significa que tus habitantes necesitan un camino para conectar con el productor (Pabellón) para adquirir la fe allí.
   - Un poco más tarde, la habrán consumido y volverán a recolectar más fe del fabricante.
   - 'Importante:
 
@@ -247,44 +247,44 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NUEVA TAREA: SIGUIENTE NIVEL']
   - [Image, content/gui/images/background/hr.png]
   - Todas las demandas están satisfechas ahora si tus habitantes pueden visitar regularmente la Plaza Principal y el Pabellón, y tu suministro de alimentos es adecuado.
-  - Si los marineros son lo suficientemente felices querrán avanzar al siguiente nivel denominado Pioneros.
-  - Para mantenerlos felices no puedes hacer nada más que eso, salvo mantener los impuestos en el nivel más bajo hasta que satisfagas todas sus demandas.
+  - Si los marineros son lo suficientemente felices, querrán avanzar al siguiente nivel denominado Pioneros.
+  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
   - No mantengas los impuestos bajos ya que probablemente te llevará tarde o temprano a la quiebra. Sin embargo durante un breve período de tiempo, si sabes lo que haces, está bien.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Después de algún tiempo, la primera unidad saldrá caminando hacia la Plaza Principal donde buscará materiales de construcción para construirse una cabaña que sustituya su vieja tienda de campaña.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
-  - También hay mejoras de edificios sin costes, como podrás ver con el aserradero. En este caso, sólo hay un cambio en los gráficos.
-  - Las mejoras de las casas permite acomodar más habitantes, y además los pioneros pagan más impuestos que los marineros.
-  - Como podrás imaginar, la desventaja es que los pioneros van a demandar productos adicionales que los marineros no necesitaban - así que tendrás que gastar un dinero extra en hacerles felices también.
+    Tales mejoras residenciales suponen un consumo de recursos, y ,por tanto, puede ser restringido en la Plaza Principal.'
+  - También hay mejoras de edificios sin costes, como podrás ver con el aserradero. En este caso, solo hay un cambio en los gráficos.
+  - Las mejoras de las casas permiten acomodar a más habitantes, y además los pioneros pagan más impuestos que los marineros.
+  - Como habrás podido averiguar, la desventaja es que los pioneros demandan productos adicionales que los marineros no necesitaban, así que tendrás que gastar este dinero extra en hacerles felices también.
   - ''
   - [BoldLabel, 'Tarea: Fija un nivel de impuestos Bajo (hacia la izquierda) y espera a que los marineros empiecen las mejoras.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, LAS GRANJAS]
+  - [Message, Construye una Granja manteniendo disponible algún espacio alrededor de ella.]
+  - [Headline, 'N. TAREA: CONSTRUYE UNA GRANJA']
   - [Image, content/gui/images/background/hr.png]
   - ¡Felicidades! ¡Algunos de tus habitantes han alcanzado el nivel 2!
-  - Ahora accede a los nuevos edificios, vamos a echar un vistazo otra vez al menú de construcción.
+  - Ahora tienes acceso a nuevos edificios, echa un vistazo otra vez al Menú de Construcción.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Un nueva y reluciente pestaña apareció ahí.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - Los pioneros reclamarán tejidos, así que necesitas fijar el inicio de una línea de producción textil con lana de oveja (que es uno de los bienes producidos en la Granja).
+  - La Granja es un edificio de producción muy especial, dado que si lo deseas puedes producir muchos (y variados) bienes.
+  - La producción de las Granjas depende del tipo de campos de cultivo que construyas a su alrededor.
   - [Pagebreak]
   - '
 
     Daremos un vistazo en profundidad más adelante.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
-  - Sin embargo, si planeas hacer distintas partes del procesamiento distintas áreas de la isla (que puede tener sentido) o incluso en diferentes islas, necesitarás una conexión a los recolectores.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+  - Las Granjas, al igual que todos los negocios que producen materias primas, no necesariamente requieren estar conectadas a algún medio de almacenamiento o a un Almacén.
+  - Todo irá bien mientras los trabajadores del negocio de producción final puedan llegar a la Granja, así como los recolectores del Almacén o de la Tienda de Almacenamiento puedan llegar al negocio final.
+  - Sin embargo, si planeas hacer distintas partes del procesamiento en distintas áreas de la isla (lo cual puede tener sentido) o incluso en diferentes islas, necesitarás una conexión a los recolectores.
+  - Procura no construir la Granja en un lugar demasiado cerca de la costa o de otros edificios existentes, dado que necesitará algo de espacio alrededor para funcionar bien.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Tarea: Construir una Granja.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -292,7 +292,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construye al menos un prado y añade un campo de patatas si te apetece.]
   - [Headline, LOS CAMPOS]
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
+  - La Granja por sí sola no va a producir nada sin crear campos de cultivo.
   - Tienes para elegir entre prados, patatas y campos de caña de azúcar.
   - 'Aquí tenemos una breve información:
 
@@ -320,7 +320,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, EL ALMACÉN]
   - [Image, content/gui/images/background/hr.png]
   - ¿Te fijaste en el leñador?
-  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
+  - Dado que tu Almacén no tiene espacio ilimitado para almacenar bienes, los recolectores dejarán de recoger bienes de los negocios cuando el espacio de almacenaje esté completo.
   - Por lo que si no quieres que los marineros mejoren sus tiendas de campaña, probablemente tendrás un montón de tableros de madera y en ese caso, el leñador se detendrá.
   - Puedes mejorar esta situación de dos formas distintas, y vamos a echar un vistazo a ambas a continuación.
   - 'All companies offer to do no work at all.
@@ -657,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 158 translated messages, 30 fuzzy translations.
+  translation_status: 173 translated messages, 15 fuzzy translations.
