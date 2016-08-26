@@ -84,7 +84,8 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
 	sections = (
-		('credits_team', u'UH-Team'),
+		('credits_team_2016', u'UH-Team New'),
+		('credits_team_2015', u'UH-Team Old'),
 		('credits_patchers', u'Patchers'),
 		('credits_translators', u'Translators'),
 		('credits_packagers', u'Packagers'),

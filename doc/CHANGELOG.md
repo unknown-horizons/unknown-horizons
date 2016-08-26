@@ -25,42 +25,46 @@ changelog date: 25. May 2016
 ### Gameplay and Balancing
 
 New features
- - #986 Add a button to discard all resources from a tradeship.
-
+ - #986  Add a button to discard all resources from a tradeship.
+ - #1821 gameplay tips
  
 ### Media Content
 
 New files and features
- - spices buildmenu icon
- - spice, spice plant & condiments resource icons
+
+Grafic:
+
  - blender building
- - added menu sound from Ollo (toolmaker, market)
- - added market, smith, windmill, toolmaker and tavern sounds (Ollo)
  - added cocoafield
  - replaced the discard icon on the trade ship widget
  - replaced the load/unload icon on the trade ship widget
  - added barracks
- - added cannon production
+ - added cannon foundry
  - added cattlerun
- - added brewery to the game
+ - added brewery
  - added pioneers and citizens warehouse graphics
  - added hop field
  - added citizens warehouse
  - added new mainsquare for tier4
  - added happiness resource icon
  - added grass ressource icon
- - added shiny new female gfx
- - added grain ressource icon
  - added fire actionset and ressource icon
- - added beer ressource icon
- - replaced cacao and cacaobeans ressource placeholder icons
- - added alvearies and corn ressource icon and replaced the placeholder
- - added vines and grapes ressource gui icons
- - added wild animal food icon
- - added acorn ressource icon
- - added happiness icons
- - added warehouse building icon
  - added pigsty
+ - added pastry shop
+ - added stone pit ,stone deposit and stone mason
+ - added new sheep pasture
+ - replaced windmill grafic with new one
+ - replaced sailors tent grafic with new ones
+ - replaced pirate ship grafic with new one
+ - add new inhabitants for all tiers
+ - Icons: replaced alot placeholder icons
+ - added shiny new female gfx
+ - Animate fire of market place and tent1
+Sound:
+
+ - added menu sound from Ollo
+ - added market, smith, windmill, toolmaker and tavern sounds (Ollo)
+ 
  
 ### User Interface
 
@@ -68,19 +72,30 @@ Fixed bugs and usability problems
  - 85d4ff4 Fix signal fire text being hidden for some longer translations.
  - #2305 No message when reassigning the same key in the settings.
  - small clean up on build menu
+ - #2373 Farm Second Tab line 3 not work correctly
+ - #2313 Button/Icon to represent discarding all resources currently loaded
  
 ### Codebase
 
 New functionalities
  - 85d0cb8 Travis build for unit tests
  - menü sounds (Gladius1)
+ - #2434 Button to restart game after adjusting Settings when restart required?
+ - #986  Need a way to discard resources
  
 Modified structures
  - 1761cef Add abstraction layer above boat builder tab. Preparation for general Unitproduction tabs.
  - #2086 Only load savegames which have an higher revision than the related value stored in the constants.
    Old behaviour was to load everything and hope it works.
-  
-Fixed crashes and inconsistencies
+ - #2422 Avoid using `len(x)` to check if a list is empty
+ - #2403 classmethod should be called `cls` and not `self`
+ - #2401 change to the `.format()` function
+ - #2402 use `.format()` function and staticmethod
+ - #2398 Use contextmanager when opening a file
+ - #2346 Remove old sheep code
+ - #2314 Check which savegamerevisions are upgradeable
+ 
+Fixed crashes and inconsistencies and bugs
  - 405c514 Use animationloader instead of imagemanager to retrieve images.
    The imagemanager isn't necessarily aware of the files available as animations.
  - #2308 Fix memory leak in the Tabwidget handling (pinkfloyda).
@@ -89,14 +104,43 @@ Fixed crashes and inconsistencies
  - #2349 Click on Main Square cause a crash
  - #2350 Fixed bug where keyboard scrolling hanged from time to time
  - #2352 Fix crash on missing thumbnails in unit queue
+ - #2388 Settler stages grafic´s dont show up ingame
+ - #2399 Allow different collector unit graphics per tier
+ - #2358 Game Crashes when i click on: Cancel game
+ - #2349 Click on Main Square cause a crash
+ - #2350 Fixed bug where keyboard scrolling hanged from time to time
+ - #2131 Overlay renders of brickyard production
+ - #2321 game crashes when you ally with one of the AIs
+ - #2315 Crash by clicking diplomacy button twice in a row
+ - #2318 fix issue #2315 to prevent double hide of current_tab of TabWidget
+ - #2316 Crash click at a ship
+ - #2086 Error with auto-upgrading pretty old savegame to rev 50: stance
+ - #2263 self-created map can't be played without the corresponding map file itself
+ - #2305 Setting the same keystroke should not show overwrite confirmation popup
+ - #2310 fix some select memory leak bugs, partly resolve issue #2308
+ - #708  Loading allows to press F1, P and so on. Crashes the game
  
-
+ 
+### Translation and Text fixes
+ - #2433 Some English text little errors
+ - #2438 Corrected some errors and ambiguities from the english text in the tutorial
+ - #2435 Improved the english text in the tutorial
+ - #2425 Translations scripts problem
+ - #2427 Update translations files. Fix translations scripts
+ - #2426 add folder to sys.path
+ - #2242 Fix #2242 (Trade Tutorial Confusing)
+ 
 New team members with this release, Annotations
  - Accepting bounties via bountysource now
  - We accepted pull requests or patches by:
      pinkfloyda
      Gladius1
      martingeiger
+     konstin
+     jorgesumle
+     MarkusHackspacher
+     xseanl
+     Teemperor
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
    
