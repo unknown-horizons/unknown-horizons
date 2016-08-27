@@ -289,8 +289,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Construye al menos un prado y añade un campo de patatas si te apetece.]
-  - [Headline, LOS CAMPOS]
+  - [Message, Construye al menos un prado y añade campos de patatas si te apetece.]
+  - [Headline, 'NUEVA TAREA: CONSTRUYE CAMPOS']
   - [Image, content/gui/images/background/hr.png]
   - La Granja por sí sola no va a producir nada sin crear campos de cultivo.
   - Tienes para elegir entre prados, patatas y campos de caña de azúcar.
