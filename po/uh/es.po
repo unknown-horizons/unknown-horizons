@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-19 18:06+0200\n"
-"PO-Revision-Date: 2016-08-25 16:46+0000\n"
+"PO-Revision-Date: 2016-08-27 16:39+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -122,7 +122,9 @@ msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "A continuación, pulse el botón grande en la petañas resumen del barco."
+msgstr ""
+"A continuación, pulsa el botón grande en la pestaña de visión general del "
+"navío."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -238,7 +240,6 @@ msgid "Running costs"
 msgstr "Costos de operación"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
 #| msgid ""
 #| "To build a boat, click on one of the class tabs, select the desired ship "
 #| "and confirm the order."
@@ -246,8 +247,8 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Para construir un barco, clica en una de las pestañas de clase, selecciona "
-"un barco y confirma la orden."
+"Para construir una unidad de tierra, haz clic en una de las pestañas de "
+"clase, selecciona la unidad de tierra que quieras y confirma la orden."
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -369,10 +370,9 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
 #| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Permitir actualizaciones"
+msgstr "Comprar actualizaciones"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -2721,10 +2721,9 @@ msgstr ""
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
-#, fuzzy
 #| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Consume harina. Produce alimento."
+msgstr "Consume lúpulo. Produce cerveza."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:91
@@ -2868,17 +2867,15 @@ msgstr "Produce hierbas. Necesita una granja."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:187
-#, fuzzy
 #| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Campo de Maíz"
+msgstr "Campo de Lúpulo"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:189
-#, fuzzy
 #| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Produce maíz. Requiere una granja."
+msgstr "Produce lúpulo. Requiere una Granja."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:194
@@ -3856,7 +3853,7 @@ msgstr "Comerciantes"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr "coníferas"
+msgstr "plantas de lúpulo"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
@@ -3961,7 +3958,7 @@ msgstr "{player1} y {player2} se combatirán mutuamente hasta la muerte."
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr "Lúpulo"
+msgstr "lúpulo"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
