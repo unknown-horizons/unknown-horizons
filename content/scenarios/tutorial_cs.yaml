@@ -105,18 +105,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVÝ ÚKOL: TRŽIŠTĚ']
   - [Image, content/gui/images/background/hr.png]
   - Vaši obyvatelé potřebují tržiště, kde si mohou vyzvednout zboží.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisher or even to the Warehouse.
+  - To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště. Všimnete si to že, tržiště se chová také jako stezka, to znamená že stany okolo tržiště nepotřebují osobitní stezku.
+  - Všechno zboží v obchodním přístavu je dostupné na tomto 'tržišti', takže obyvatelé nemusí chodit k rybáři nebo až do obchodního přístavu.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Měli byste se vyvarovat výstavby stanů příliš blízko Vašemu dřevorubci,protože postavením stanů budou zničeny stromy, které dřevorubec potřebuje k produkci prken.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Společnosti nepotřebují přístup ke stanům, proto nepotřebujete vybudovat cestu mezi tržištěm a např. dřevorubeckým stanem.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Úkol: Postavte tržiště.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Nyní se blíže podívejme na tržiště.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - V záložce "Účet" můžete vidět přehled financí  Vašeho ostrova, který zahrnuje všechny platby, které platíte, a všechny daně, které dostáváte.
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dále jsou zde záložky odpovídající jednotlivým úrovním. Zde můžete sledovat statistiky o Vašich obyvatelích. Zde můžete nastavit celkovou daň pro každou úroveň a povolit nebo zakázat obyvatelům na dané úrovni postoupit do vyšší úrovně.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
+  - [Message, Postavte stan a propojte jej s tržištěm jestli je to potřebný.]
   - [Headline, 'NOVÝ ÚKOL: OBYTNÉ BUDOVY']
   - [Image, content/gui/images/background/hr.png]
   - Osadníci chtějí mít střechu nad hlavou, jinak je ani nenapadne usadit se ve Vašem městě! Potřebujete zajistit jim stany.
@@ -657,4 +657,4 @@ metadata:
   locale: cs
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 125 translated messages, 48 fuzzy translations, 15 untranslated messages.
+  translation_status: 131 translated messages, 42 fuzzy translations, 15 untranslated messages.

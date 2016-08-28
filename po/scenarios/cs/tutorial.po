@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 18:38+0200\n"
-"PO-Revision-Date: 2016-08-28 10:36+0000\n"
+"PO-Revision-Date: 2016-08-28 10:43+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/uh/tutorial/cs/>\n"
 "Language: cs\n"
@@ -345,7 +345,6 @@ msgid ""
 msgstr "Vaši obyvatelé potřebují tržiště, kde si mohou vyzvednout zboží."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "This means that they need a trail connection from their home to the main "
 #| "square."
@@ -354,10 +353,11 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "tents do not need a separate trail."
 msgstr ""
-"To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště."
+"To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště. "
+"Všimnete si to že, tržiště se chová také jako stezka, to znamená že stany "
+"okolo tržiště nepotřebují osobitní stezku."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "All goods in your warehouse are available at this 'market place', so your "
 #| "residents do not need to walk to the fisher or even to the warehouse."
@@ -379,7 +379,6 @@ msgstr ""
 "produkci prken."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Companies work without being connected to the tents, so you don't need to "
 #| "build a road between the main square and e.g. your lumberjack tent."
@@ -391,13 +390,11 @@ msgstr ""
 "cestu mezi tržištěm a např. dřevorubeckým stanem."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a main square."
 msgid "Task: Build a Main Square."
 msgstr "Úkol: Postavte tržiště."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "Now let's have a closer look at the main square."
@@ -440,10 +437,9 @@ msgstr ""
 "úrovně."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid "Build a tent and connect it to the main square."
 msgid "Build a Tent and connect it to the Main Square if necessary."
-msgstr "Postavte stan a propojte jej s tržištěm."
+msgstr "Postavte stan a propojte jej s tržištěm jestli je to potřebný."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
