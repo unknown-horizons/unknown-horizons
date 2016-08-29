@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d2bbe58\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 16:48+0000\n"
+"PO-Revision-Date: 2016-08-29 17:05+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh/sk/>\n"
 "Language: sk\n"
@@ -3540,288 +3540,289 @@ msgstr "Táto budova môže byť postavená len na pobreží."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Táto budova musí byť postavená v blízkosti oceánu."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Toto miesto je príliš ďaleko od vašej lodi."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Táto budova môže byť postavená len na ložisku surovín."
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Tento ostrov si už osídlil."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "Táto budeova musí byť čiastočne na plochej zemi."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Obyvatelia sú napadnutý čiernou smrťou!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Táto budova horí!"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Títo obyvatelia sú nešťastný."
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "Títo obyvatelia nemajú prístup k tržnici."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Zásoby tejto budovy sú plné."
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Táto budova má veľmi nízku produktivitu."
 
 #: horizons/world/status.py:121
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "Táto budova bola vypnutá."
 
 #: horizons/world/traderoute.py:335
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Obchodná cesta: sa plaví do {location}"
 
 #: horizons/world/traderoute.py:339
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Obchodná cesta: čaká v {position}"
 
 #: horizons/world/units/ship.py:212
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Pláva do {location}"
 
 #: horizons/world/units/ship.py:213
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Pláva na {x}, {y}"
 
 #: horizons/world/units/ship.py:217
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Nečinná v {location}"
 
 #: horizons/world/units/ship.py:218
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Nečinná na {x}, {y}"
 
 #: horizons/world/units/ship.py:229
 msgid "Trader"
-msgstr ""
+msgstr "Obchodník"
 
 #: horizons/world/units/weaponholder.py:434
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Útočí na {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:438
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Útočí na {owner}"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "Hráči {player1} a {player2} spojili svoje sily."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Vaša budeova horí!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "soľanka"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "bylinky"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
-msgstr ""
+msgstr "Šľachta"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
-msgstr ""
+msgstr "šťastie"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "drahokamy"
 
 #. This is a database entry: the name of a resource
 msgid "brine deposit"
-msgstr ""
+msgstr "ložisko soľanky"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Niektorý z osadníkov sa odsťahovali."
 
 #. This is a database entry: the name of a resource
 msgid "gem deposit"
-msgstr ""
+msgstr "ložisko drahokamov"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
-msgstr ""
+msgstr "cukor"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr ""
+msgstr "tabakové lístky"
 
 #. This is a database entry: the name of a resource
 msgid "stone tops"
-msgstr ""
+msgstr "kamene"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr ""
+msgstr "kávové bôby"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "vlna"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr ""
+msgstr "čajové lístky"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "káva"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr ""
+msgstr "kakaové bôby"
 
 #. This is a database entry: the name of a resource
 msgid "food"
-msgstr ""
+msgstr "jedlo"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr ""
+msgstr "delo"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "ošípané na porážku"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
-msgstr ""
+msgstr "rekreácia"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "stromy"
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr ""
+msgstr "ložisko mramoru"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr ""
+msgstr "Námorníci"
 
 #. This is a database entry: the name of a resource
 msgid "clay deposit"
-msgstr ""
+msgstr "ložisko ílu"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "Hráči {player1} a {player2} ukončili vojnnu a teraz sú spojenci."
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
-msgstr ""
+msgstr "kakao"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "mramorové dosky"
 
 #. This is a database entry: the name of a resource
 msgid "flour"
-msgstr ""
+msgstr "múka"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "zemiaky"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr ""
+msgstr "železná ruda"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfém"
 
 #. This is a database entry: the name of a resource
 msgid "cotton plants"
-msgstr ""
+msgstr "bavlníky"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
-msgstr ""
+msgstr "íl"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
-msgstr ""
+msgstr "Obchodníci"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr ""
+msgstr "rastliny chmelu"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
-msgstr ""
+msgstr "čaj"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
-msgstr ""
+msgstr "pálenka"
 
 #. This is a database entry: the name of a resource
 msgid "iron ingots"
-msgstr ""
+msgstr "železné ingoty"
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
-msgstr ""
+msgstr "ložisko uhlia"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Snímok obrazovky bol uložený do {file}."
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "dobytok"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Cestu môžete postaviť aj ťahaním myši."
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr ""
+msgstr "ovčia vlna"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
+"Dosiahli ste maximálnej úrovne. Vaši obyvatelia sa nebudú ďalej vylepšovať."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
