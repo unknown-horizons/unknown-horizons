@@ -1,221 +1,218 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Unknown Horizons Team
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Latvian translations for Unknown Horizons package.
+# Copyright (C) 2016 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons package.
+# Automatically generated, 2016.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Unknown Horizons 2c4f0c1\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2015-12-03 22:30+0000\n"
-"Last-Translator: Ronalds <birgermeister@tvnet.lv>\n"
-"Language-Team: Latvian <https://hosted.weblate.org/projects/uh/uh/lv/>\n"
-"Language: lv\n"
+"PO-Revision-Date: 2016-08-29 06:02+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons pārstāja darboties."
+msgstr ""
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Mēs ļoti atvainojamies un vēlamies labot radušos kļūdu."
+msgstr ""
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Lai veiktu šo darbību, mums vajag informāciju no logfaila:"
+msgstr ""
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Lūdzu atsūti to mums caur IRC vai uzraksti forumā, informācija http://"
-"unknown-horizons.org ."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "Kļūda: Nav iespējams atrast datni \"PyYAML\" ."
+msgstr ""
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr "Trūkst datne: PyYAML un ir vajadzība to ieinstalēt."
+msgstr ""
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr "Windowa setups ir pieejams http://pyyaml.org/wiki/PyYAML."
+msgstr ""
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Linux lietotāji šo failu var atrast pakotņu menedžerī ar nosaukumu \"pyyaml"
-"\" vai \"python-yaml\"."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Paldies ka lietojāt Unknown Horizons!"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr "Atgriezties editorā"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:53
 msgid "Save map"
-msgstr "Saglabāt karti"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Atvērt karti"
+msgstr ""
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr "Iestatījumi"
+msgstr ""
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr "Palīdzība"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr "Iziet no editora"
+msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Izvēlies otas izmēru:"
+msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr "Izvēlies augsni:"
+msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(labais peles klikšķis lai apstādinātu)"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "Sākt spēli"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Ir jāuzbūvē ciemats pirms būvē ēkas!"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Izvēlies savu kuģi un virzies uz krastu ar labo peles klikšķi."
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Pēctam, nospied lielo pogu kuģu pārskata izvēlnē."
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr "Būvēt"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Ražošanas izmaksas:"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr "Līdzejošās ēkas"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr "Iedzīvotāji"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Palielināt spēles ātrumu ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Samazināt spēles ātrumu ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Pagriezt karti pretēji pulksteņrādītājam ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Pagriezt karti pulksteņrādītāja virzienā ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Zoom in"
-msgstr "Palielināt"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Zoom out"
-msgstr "Samazināt"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
 msgid "Destroy ({key})"
-msgstr "Izpostīt ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 #, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "Kapteiņa pieraksti ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 #, python-brace-format
 msgid "Build menu ({key})"
-msgstr "Celtniecības izvēlne ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr "Diplomātija"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
 msgid "Game menu ({key})"
-msgstr "Spēles izvēlne ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr "Mainīt vārdu"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr "Vecais vārds:"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr "Ievadīt jaunu vārdu:"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr "Apstiprināt jauno vārdu"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr "Čats"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Ieraksti savu ziņu:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -231,18 +228,13 @@ msgstr "Ieraksti savu ziņu:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr "Uzturēšanas izmaksas"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Lai uzbūvētu Kuģi, izvēlies klasi, izvēlies kuģi un apstiprini izvēlni."
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -251,21 +243,21 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "Šobrīd būvējam:"
+msgstr ""
 
 #. Pauses the current groundunit production, can be resumed later
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:40
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr "Pauze"
+msgstr ""
 
 #. Resumes the currently paused groundunit production
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr "Turpināt"
+msgstr ""
 
 #. Refers to the resources still missing to complete the current
 #. groundunit builder task
@@ -274,33 +266,33 @@ msgstr "Turpināt"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Konstrukcijas progress:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr "Pietrūkst šādi resursi:"
+msgstr ""
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr "Pārtraukt konstruēšanu:"
+msgstr ""
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:67
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr "(izmantotie resursi netiek atgriezti)"
+msgstr ""
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:70
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Atcelt visus konstruēšanas procesus"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
@@ -397,10 +389,8 @@ msgid "+ 1457"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Turēt pozīciju"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:79
@@ -412,13 +402,10 @@ msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Lai uzbūvētu Kuģi, izvēlies klasi, izvēlies kuģi un apstiprini izvēlni."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build"
 msgid "Build ship:"
-msgstr "Būvēt"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -428,151 +415,149 @@ msgstr ""
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr "Sabiedrotais"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr "Neitrāls"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr "Ienaidnieks"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:10
 msgid "Building overview"
-msgstr "Ēkas pārskats"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr "Kapacitātes utilizācija"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
-#| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Spied lai mainītu šī kuģa nosaukumu"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
 msgid "Settlement inventory"
-msgstr "Ciemata inventārs"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr "Iedzīvotāju pārskats"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr "Samaksātie nodokļi"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr "Nodokļi:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Nodokļu likme"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "Uzlabojuma atļaujas:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr "Prieks uz katru māju"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:60
 msgid "sad"
-msgstr "skumjš"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:63
 msgid "satisfied"
-msgstr "apmierināts"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:66
 msgid "happy"
-msgstr "Laimīgs"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Māju kopums ar šādu laimes līmeni"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "Iedzīvotāji uz māju"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr "Iedzīvotāju daudzums uz māju"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Mājas ar šādu iedzīvotāju daudzumu"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr "Statistika"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
-msgstr "mājas"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "iedzīvotāji"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:350
 msgid "Selling"
-msgstr "Pārdod"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
-msgstr "Pēŗk"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 msgid "Name:"
-msgstr "Nosaukums:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr "Ieroči:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "Resursu atradnes"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr "Uz šīm atradnēm vari būvēt raktuves lai raktu resursus."
+msgstr ""
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "Tas satur šādus resursus:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -580,44 +565,40 @@ msgstr "Tas satur šādus resursus:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
-msgstr "Spied lai mainītu ciemata nosaukumu"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
-msgstr "Prieks"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr "Iedzīvotāji"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
-msgstr "Vajadzīgie resursi:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Signāluguns norāda brīvajam tirgotājam, kā nonākti līdz Jūsu ciemam gadījumā "
-"ja vēlaties pirkt vai pārdot preces."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Šis ir brīvtirgotāja kuģis. tas apciemos  Jūs reizi pa reizei lai nopirktu "
-"vai pārdotu preces."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
-msgstr "Spied lai mainītu šī kuģa nosaukumu"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -625,99 +606,97 @@ msgstr "Spied lai mainītu šī kuģa nosaukumu"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:88 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr "Tirgoties"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
-msgstr "Izveidot ciematu"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "Rediģēt tirzniecības ceļu"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
-#| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(izmantotie resursi netiek atgriezti)"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr "Kuģis:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr "Apmaiņa:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr "Tirzniecības partneris:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr "Pirkt vai pārdot resursus"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr "Tirzniecības vēsture"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr "Izvēlēties resursus:"
+msgstr ""
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr "Kolektoru noslogojums"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
-msgstr "Ienākumi:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
-msgstr "Nodokļi"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Sale"
-msgstr "ietirgojums"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 msgid "Expenses:"
-msgstr "Izdevumi:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
-msgstr "Bilance:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "Parādīt šī ciema saražoto"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:16
 #: content/gui/xml/ingame/templates/overview_productionline.xml:14
 msgid "Pause production"
-msgstr "Nopauzēt  produkciju"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:19
 #: content/gui/xml/ingame/templates/overview_productionline.xml:17
 msgid "Start production"
-msgstr "Sākt produkciju"
+msgstr ""
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Izvēlies resursu:"
+msgstr ""
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -726,244 +705,239 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"Resurss kuru izvēlies tiks parādīts iepriekšējā vietā. Iztukšot nospiežot X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "Saglabāt šo resursu iestatījumu kā pamatuzstādījumu visos ciemos."
+msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Atjaunot pamata uzstādījumus visos ciemos."
+msgstr ""
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
-msgstr "Iet uz augšu"
+msgstr ""
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr "Dzēst ierakstu"
+msgstr ""
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
-msgstr "Doties uz leju"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
-msgstr "Izvēlēties resursu:"
+msgstr ""
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr "Lasīt iepriekšējos ierakstus"
+msgstr ""
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr "Lasīt nākamos ierakstus"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
-msgstr "Statistika"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
-msgstr "Spēlētāji"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
-msgstr "Mani kuģi"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
-msgstr "Mani ciemi"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
-msgstr "Spēles ziņojumi"
+msgstr ""
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 msgid "Whole world"
-msgstr "Visa pasaule"
+msgstr ""
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
-msgstr "Jebkurš"
+msgstr ""
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Sūta ziņojumus visiem spēlētājiem."
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Raksti savu ziņu šeit"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr "Atgriezties spēlē"
+msgstr ""
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 msgid "Wait at load:"
-msgstr "Gaidīt iekraušanu:"
+msgstr ""
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
 msgid "Wait at unload:"
-msgstr "Gaidīt izkraušanu:"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr "Ceļa aktivitāte:"
+msgstr ""
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Start route"
-msgstr "Sākt tirzniecības ceļu"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
-msgstr "Iziet"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/island_production.xml:24
 msgid "Close"
-msgstr "Aizvērt"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
-msgstr "Spēlētāju sasniegumi"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
-msgstr "Vārds"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
-msgstr "Spēlētāja vārds"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
-msgstr "Nauda"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Spēlētāja šībrīža kapitāls + gaidāmie ienākumi"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
-msgstr "Zeme"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr "Derīgas zemes daudzums t.i. zemes daudzums uz kura iespējams būvēt"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
-msgstr "Materiāli"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Iegūstamo resursu daudzums no visiem iespējamiem avotiem spēlētāja ciemos"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
-msgstr "Ēkas"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Visu ēku kopējā vērtība spēlētāja ciemā(os)"
+msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:532
 msgid "Settlers"
-msgstr "Iedzīvotājs"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Daudzums kas apzīmē progresu ciemā(os) -iedzīvotāji, ēkas un kopējais prieks"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
-msgstr "vienības"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Visu vienību kopējā vērtība spēlētājam"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
-"Pilna kopējā vērtība no visām nozarēm vai īsāk : Kopējais Spēlētāja Punktu "
-"Skaits"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
-msgstr "Kopā"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
 msgid "Balance"
-msgstr "Bilance"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
-msgstr "Tips"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
-msgstr "Ieroči"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
-msgstr "Veselība"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
-msgstr "Statuss"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
-msgstr "Agresīvs"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr "Turēt pozīciju"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr "Pasīvs"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
-msgstr "Bēgt"
+msgstr ""
 
 #: content/gui/xml/mainmenu/credits.xml:676
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -971,112 +945,112 @@ msgstr "Bēgt"
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr "Iziet uz galveno izvēlni"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr "Izvēlēties kartes izmēru:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr "Izvēlēties karti:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr "Izvēlēties saglabātas spēles karti:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr "Izvēlēties kartes avotu"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr "Izveidot jaunu karti"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "Atvērt eksistējošu karti"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "Atvērt saglabātas spēles karti"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr "Sākt editoru"
+msgstr ""
 
 #: content/gui/xml/mainmenu/help.xml:14
 msgid "Return"
-msgstr "Atgriezties"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 msgid "Actions"
-msgstr "Darbības"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
-msgstr "Pārvietoties pa kreisi"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
-msgstr "Pārvietoties pa labi"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
-msgstr "Pārvietoties uz augšu"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
-msgstr "Pārvietoties uz leju"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
-msgstr "Pagriezt ēku vai karti pulksteņrādītāja virzienā"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
-msgstr "Pagriezt ēku vai karti pretēji pulksteņrādītājam"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr "Palielināt spēles ātrumu"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr "Samazināt spēles ātrumu"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr "Nopauzēt spēli"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Show build menu"
-msgstr "Parādīt celtniecības izvēlni"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable destruct mode"
-msgstr "Ieslēgt nojaukšanas iespēju"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Enable road building mode"
-msgstr "Ieslēgt ceļu būvēšanas iespēju"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Enable pipette mode (clone buildings)"
-msgstr "Ieslēgt pipetes režimu (klonēt ēkas)"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show player scores"
-msgstr "Rādīt spēlētāju punktus"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Show settlement list"
-msgstr "Parādīt ciematu sarakstu"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:27
 msgid "Show ship list"
-msgstr "Parādīt kuģu sarakstu"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Toggle Captain's log"
@@ -1683,7 +1657,7 @@ msgstr ""
 
 #: horizons/gui/ingamegui.py:483
 msgid "Delete"
-msgstr "Dzēst"
+msgstr ""
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -2277,7 +2251,7 @@ msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:112
 msgid "Destroy all buildings"
-msgstr "iznīcināt visas ēkas"
+msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
@@ -2294,10 +2268,8 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: horizons/gui/tabs/barrackstabs.py:36
-#, fuzzy
-#| msgid "Settler overview"
 msgid "Barracks overview"
-msgstr "Iedzīvotāju pārskats"
+msgstr ""
 
 #: horizons/gui/tabs/barrackstabs.py:114
 msgid "Swordman"
@@ -3000,10 +2972,8 @@ msgstr ""
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#, fuzzy
-#| msgid "Resource deposit"
 msgid "Stone Deposit"
-msgstr "Resursu atradnes"
+msgstr ""
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:349
@@ -3157,10 +3127,8 @@ msgstr ""
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:442
-#, fuzzy
-#| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Ieroči"
+msgstr ""
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:444
@@ -4123,8 +4091,3 @@ msgstr ""
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Building overview"
-#~ msgid "Groundunit overview"
-#~ msgstr "Ēkas pārskats"
