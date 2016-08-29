@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-19 18:06+0200\n"
+"POT-Creation-Date: 2016-08-29 06:02+0200\n"
 "PO-Revision-Date: 2015-12-22 00:49+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/uh/uh/gl/>\n"
@@ -995,7 +995,7 @@ msgstr "Pasivo"
 msgid "Flee"
 msgstr "Fuxir"
 
-#: content/gui/xml/mainmenu/credits.xml:631
+#: content/gui/xml/mainmenu/credits.xml:676
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
@@ -1344,8 +1344,7 @@ msgstr "Unirse á partida seleccionada"
 msgid "Change player details"
 msgstr "Cambiar os detalles do xogador"
 
-#: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Gráficos"
 

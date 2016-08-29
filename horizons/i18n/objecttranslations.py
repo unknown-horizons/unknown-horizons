@@ -102,7 +102,7 @@ object_translations = {
 
 	"content/objects/buildings/cannonfoundry.yaml" : {
 		# name of buildings:cannonfoundry
-		"name"                        : _("Cannon foundry"),
+		"name"                        : _("Cannon Foundry"),
 		# tooltip_text of buildings:cannonfoundry
 		"tooltip_text"                : _("Produces Cannons."),
 		},
@@ -427,7 +427,7 @@ object_translations = {
 
 	"content/objects/buildings/villageschool.yaml" : {
 		# name of buildings:villageschool
-		"name"                        : _("Village school"),
+		"name"                        : _("Village School"),
 		# tooltip_text of buildings:villageschool
 		"tooltip_text"                : _("Provides education."),
 		},

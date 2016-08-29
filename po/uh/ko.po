@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-19 18:06+0200\n"
+"POT-Creation-Date: 2016-08-29 06:02+0200\n"
 "PO-Revision-Date: 2016-07-31 15:05+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
@@ -969,7 +969,7 @@ msgstr "수동적"
 msgid "Flee"
 msgstr "도망"
 
-#: content/gui/xml/mainmenu/credits.xml:631
+#: content/gui/xml/mainmenu/credits.xml:676
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
@@ -1317,8 +1317,7 @@ msgstr "선택한 게임에 참여하기"
 msgid "Change player details"
 msgstr "플레이어 상세정보 변경하기"
 
-#: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "그래픽"
 

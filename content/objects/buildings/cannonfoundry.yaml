@@ -1,5 +1,5 @@
 id: BUILDINGS.CANNONFOUNDRY
-name: _ Cannon foundry
+name: _ Cannon Foundry
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 10
