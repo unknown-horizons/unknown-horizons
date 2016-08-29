@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
@@ -1781,7 +1781,6 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Натисніть 'T', щоби зробити дерева прозорими."
 
 #: horizons/gui/modules/loadingscreen.py:82
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
 "Будуйте намети для зберігання та оглядові вежі, щоби збільшити ваше "
@@ -2705,7 +2704,6 @@ msgstr "Необхідні свині або скот. Виробляє їжу."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-#| msgid "Cannon foundry"
 msgid "Cannon Foundry"
 msgstr "Гарматна ливарня"
 
@@ -3183,7 +3181,6 @@ msgstr "Забезпечує пиломатеріалами з зрубаних 
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Сільська школа"
 
