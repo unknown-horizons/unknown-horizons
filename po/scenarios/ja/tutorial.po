@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-25 18:38+0200\n"
+"POT-Creation-Date: 2016-08-29 03:24+0200\n"
 "PO-Revision-Date: 2014-08-27 12:21+0200\n"
 "Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/tutorial/ja/"
@@ -247,7 +247,8 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
 #| msgid "Build a hunter and a fisher. Connect them to the warehouse."
-msgid "Build a Hunter and a Fisher. Connect them to the Warehouse."
+msgid ""
+"Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
 msgstr "狩猟場と漁村を作って、倉庫と道で接続しましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -267,15 +268,25 @@ msgstr ""
 "す。"
 
 #. This is the text body of a logbook page.
-msgid "Available companies in the first tier are the Hunter and Fisher."
+#, fuzzy
+#| msgid "Available companies in the first tier are the Hunter and Fisher."
+msgid ""
+"Available companies in the first tier are the Hunter's Tent and Fisherman's "
+"Tent."
 msgstr "第一階層で造れる生産拠点は、狩猟場と漁村です。"
 
 #. This is the text body of a logbook page.
-msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
+#, fuzzy
+#| msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
+msgid "The hunter hunts animals in the forest, thus needs trees nearby."
 msgstr "狩猟場では森の動物を狩るため、近くに木々がなくてはなりません。"
 
 #. This is the text body of a logbook page.
-msgid "Note that you can place your Hunter close to the lumberjack's forest."
+#, fuzzy
+#| msgid ""
+#| "Note that you can place your Hunter close to the lumberjack's forest."
+msgid ""
+"Note that you can place your Hunter's Tent close to the lumberjack's forest."
 msgstr "なお、伐採所の森の近くに狩猟場を置いても問題ありません。"
 
 #. This is the text body of a logbook page.
@@ -291,7 +302,8 @@ msgstr ""
 #| msgid ""
 #| "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgid ""
-"Conclusion: the Hunter is not too reliable if you need continuous supply."
+"Conclusion: the Hunter's Tent is not too reliable if you need continuous "
+"supply."
 msgstr "結論：安定供給を必要とする場合は、狩猟場はあまり頼りになりません。"
 
 #. This is the text body of a logbook page.
@@ -331,13 +343,13 @@ msgstr ""
 #. This is the text body of a logbook page.
 #, fuzzy
 #| msgid "Task: Build a hunter and a fisher."
-msgid "Task: Build a Hunter and a Fisher."
+msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
 msgstr "任務：狩猟場と漁村を建設せよ。"
 
 #. This is the text body of a logbook page.
 #, fuzzy
 #| msgid "Don't forget to connect them to your warehouse with trails!"
-msgid "Don't forget to connect them to your Warehouse with trails!"
+msgid "Don't forget to connect them to your Warehouse with Trails!"
 msgstr "これらを道で倉庫に接続させることを忘れないように！"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -363,7 +375,7 @@ msgstr "あなたの住民たちは、財を手に入れるのに中央広場を
 msgid ""
 "This means that they need a trail connection from their home to the Main "
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
-"tents do not need a separate trail."
+"Tents do not need a separate Trail."
 msgstr "このため彼らは、住居から中央広場までを接続する道を必要とします。"
 
 #. This is the text body of a logbook page.
@@ -373,7 +385,8 @@ msgstr "このため彼らは、住居から中央広場までを接続する道
 #| "residents do not need to walk to the fisher or even to the warehouse."
 msgid ""
 "All goods in your Warehouse are available at this 'market place', so your "
-"residents do not need to walk to the Fisher or even to the Warehouse."
+"residents do not need to walk to the Fisherman's Tent or even to the "
+"Warehouse."
 msgstr ""
 "あなたの住民たちが漁村や倉庫に歩いて行かなくてもいいように、あなたの倉庫にあ"
 "る全財は、この「市場」で買うことができます。"
@@ -867,7 +880,7 @@ msgstr ""
 #| "trail, else your inhabitants feel unable to reach them."
 msgid ""
 "Service buildings like this also need to be connected to the Tents with a "
-"trail, else your inhabitants feel unable to reach them."
+"Trail, else your inhabitants feel unable to reach them."
 msgstr ""
 "このようなサービス建造物は、テントに道で接続されていないと、住民たちはそこに"
 "行けないと思ってしまいます。"
@@ -901,10 +914,16 @@ msgstr ""
 "もう一度生産者を探すことになります。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Important:\n"
+#| "It is NOT enough that the building is merely within a certain range of "
+#| "the tents.\n"
+#| "The road connection is required as well."
 msgid ""
 "Important:\n"
 "It is NOT enough that the building is merely within a certain range of the "
-"tents.\n"
+"Tents.\n"
 "The road connection is required as well."
 msgstr ""
 "重要：\n"
@@ -917,7 +936,7 @@ msgstr ""
 #| "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 #| "sailors' demand for faith."
 msgid ""
-"Task: Build a Pavilion with a trail to the Tents in order to fulfill your "
+"Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
 "任務：船乗りの信仰への需要を満たすために、テントへ道で連絡している巨大テント"
@@ -940,7 +959,7 @@ msgstr "新しい任務：次の階級"
 #| "main square & pavilion and your food supply is adequate."
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
-"Main Square & Pavilion and your food supply is adequate."
+"Main Square and the Pavilion and your food supply is adequate."
 msgstr ""
 "あなたの住民たちが定期的に中央広場と巨大テントを訪れることができ、食料供給が"
 "適切ならば、全ての需要が満たされたことになります。"
@@ -1170,11 +1189,18 @@ msgid ""
 msgstr "いまのところ、牧場とじゃがいも畑、さとうきび畑を選ぶことができます。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Let's have a short overview:\n"
+#| "* Pasture: Sheep live here, producing lamb wool.\n"
+#| "* Potato field: Grows potatoes which are currently treated as food.\n"
+#| "* Sugar field: Grows sugar which is used to distill liquor and (later) "
+#| "produce confectionery."
 msgid ""
 "Let's have a short overview:\n"
 "* Pasture: Sheep live here, producing lamb wool.\n"
-"* Potato field: Grows potatoes which are currently treated as food.\n"
-"* Sugar field: Grows sugar which is used to distill liquor and (later) "
+"* Potato Field: Grows potatoes which are currently treated as food.\n"
+"* Sugar Field: Grows sugar which is used to distill liquor and (later) "
 "produce confectionery."
 msgstr ""
 "簡単にまとめてみましょう：\n"
@@ -1193,25 +1219,38 @@ msgstr ""
 "が多すぎる場合など）、じゃがいもも生産することができます。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that for potatoes you will need a road connection to the farm (not "
+#| "to the field!) as it will be the only company to work on the goods."
 msgid ""
-"Note that for potatoes you will need a road connection to the farm (not to "
-"the field!) as it will be the only company to work on the goods."
+"Note that for potatoes you will need a road connection to the Farm (not to "
+"the field!), as it will be the only company to work on the goods."
 msgstr ""
 "じゃがいもを作るなら、農家がこの財を扱う唯一の生産拠点なので、農家へ（畑では"
 "なく！）道の接続があることが必要ですので、注意してください。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Make sure that all fields you build are in the area covered by the farm."
 msgid ""
 "\n"
-"Make sure that all fields you build are in the area covered by the farm."
+"Make sure that all fields you build are in the area covered by the Farm."
 msgstr ""
 "\n"
 "畑は、すべて農家の範囲内に建てるようにしてください。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can have combined production - one pasture will not lead to 100 "
+#| "percent efficiency of the farm - but you need to check how many fields "
+#| "one farm can serve."
 msgid ""
 "You can have combined production - one pasture will not lead to 100 percent "
-"efficiency of the farm - but you need to check how many fields one farm can "
+"efficiency of the Farm - but you need to check how many fields one Farm can "
 "serve."
 msgstr ""
 "一つの牧場で農家が100％稼働率に達することはないので、複数の作物を生産すること"
@@ -1236,8 +1275,12 @@ msgstr ""
 "はそんな状況を変えましょう！"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build at least one pasture in the farm's range and add potato "
+#| "fields if you like."
 msgid ""
-"Task: Build at least one pasture in the farm's range and add potato fields "
+"Task: Build at least one Pasture in the Farm's range and add Potato Fields "
 "if you like."
 msgstr ""
 "任務：農家の敷地内に少なくとも一つの牧場を作れ。お好みでジャガイモ畑も。"
@@ -1397,7 +1440,9 @@ msgstr ""
 "くの二箇所があります。"
 
 #. This is the text body of a logbook page.
-msgid "In both cases you should ensure the connection to a trail as well."
+#, fuzzy
+#| msgid "In both cases you should ensure the connection to a trail as well."
+msgid "In both cases you should ensure the connection to a Trail as well."
 msgstr "どちらの場合も、道に接続しているようにしてください。"
 
 #. This is the text body of a logbook page.
@@ -1406,7 +1451,7 @@ msgstr "どちらの場合も、道に接続しているようにしてくださ
 #| "You can place the weaver close to the farm and tear down any trail to the "
 #| "farm to see that it will still fetch the wool and produce."
 msgid ""
-"You can place the Weaver's Hut close to the Farm and tear down any trail to "
+"You can place the Weaver's Hut close to the Farm and tear down any Trail to "
 "the Farm to see that it will still fetch the wool and produce."
 msgstr ""
 "農家の近くに機織り場を置いて、農家への道を全部取り除いても、機織り場は羊毛を"
