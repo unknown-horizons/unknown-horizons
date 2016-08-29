@@ -44,7 +44,8 @@ from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover, GuiCancelAction)
+                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover,
+                                GuiCancelAction, LanguageChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -150,6 +151,8 @@ class IngameGui(LivingObject):
 		GuiAction.subscribe(self._on_gui_click_action)
 		GuiHover.subscribe(self._on_gui_hover_action)
 		GuiCancelAction.subscribe(self._on_gui_cancel_action)
+		# NOTE: This has to be called after the text is replaced!
+		LanguageChanged.subscribe(self._on_language_changed)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -681,3 +684,11 @@ class IngameGui(LivingObject):
 			# No `.upper()` here: "Pause" looks better than "PAUSE".
 			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
 			widget.helptext = widget.helptext.format(key=keyname)
+
+	def _on_language_changed(self, msg):
+		"""Replace the hotkeys after translation.
+
+		NOTE: This should be called _after_ the texts are replaced. This
+		currently relies on import order with `horizons.gui`.
+		"""
+		self._replace_hotkeys_in_widgets()
