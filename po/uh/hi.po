@@ -1,221 +1,217 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR The Unknown Horizons Team
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hindi translations for Unknown Horizons package.
+# Copyright (C) 2016 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons package.
+# Automatically generated, 2016.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Unknown Horizons 2c4f0c1\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2015-12-22 00:54+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
-"Language-Team: Hindi <https://hosted.weblate.org/projects/uh/uh/hi/>\n"
-"Language: hi\n"
+"PO-Revision-Date: 2016-08-29 06:02+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"Language: hi\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons ध्वस्त हो गया।"
+msgstr ""
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "हमें इस बात के लिए बहुत खेद है और अंतर्निहित त्रुटि को ठीक करना चाहते हैं |"
+msgstr ""
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "इस कार्य को करने के लिए हमें कार्यपंजी से जानकारी चाहिए:"
+msgstr ""
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"कृपया इसे हमें IRC या फोरम के द्वारा भेजिए। दोनों http://unknown-horizons.org पर "
-"उपलब्ध है।"
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "आवश्यक लाइब्रेरी \"PyYAML\" उपलब्ध नहीं है |"
+msgstr ""
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr "PyYAML (एक आवश्यक लाइब्रेरी) लापता है और स्थापित करने की ज़रूरत है |"
+msgstr ""
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr "Windows installer http://pyyaml.org/wiki/PyYAML पर उपलब्ध है |"
+msgstr ""
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Linux के उपयोगकर्ताओं यह अपने 'पैकेज मैनेजर' का उपयोग कर \"pyyaml\" या \"python-yaml"
-"\" नाम पर पा सकते है |"
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Unknown Horizons का उपयोग करने के लिए धन्यवाद!"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr "संपादक के पास वापस जाइये"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:53
 msgid "Save map"
-msgstr "नक्शा संचयित कीजिये"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "नक्शा खोलिए"
+msgstr ""
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr "तरजीह"
+msgstr ""
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr "सहायता"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr "संपादक से बाहर"
+msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "कूंचे का माप:"
+msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr "जमीन का प्रकार:"
+msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(रुकने के लिए राइट क्लिक)"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "खेल शुरू"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "इमारतें निर्माण करने के समक्ष औपनिवेशीकरण जरुरी है!"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "अपने जहाज को चुनिए और राइट क्लिक करके किनारे तक पहुँचिये।"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "उसके बाद, जहाज अवलोकन पत्र में बडा बटन दबाईये।"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr "निर्माण कीजिये"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "परिचालन लागतें:"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr "सम्बंधित इमारतें"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr "निवासी"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "खेल कि गति बढाइये ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "खेल कि गति घटाइये ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "नक्शा वामावर्त घुमाएं ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "नक्शा दक्षिणावर्त घुमाएं ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Zoom in"
-msgstr "आकार वर्धित कीजिये"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Zoom out"
-msgstr "आकार घटायें"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
 msgid "Destroy ({key})"
-msgstr "नष्ट करिएँ ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 #, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "कप्तान कि कार्यपंजी ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 #, python-brace-format
 msgid "Build menu ({key})"
-msgstr "निर्माण सूचि ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr "कूटनीति"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
 msgid "Game menu ({key})"
-msgstr "खेल कि सूचि ({key})"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr "नाम बदलिए"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr "पुराना नाम:"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr "नया नाम प्रविष्ट कीजिये:"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr "नया नाम लागू कीजिये"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr "बातचीत"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "आपका संदेश प्रविष्ट कीजिये:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -231,18 +227,13 @@ msgstr "आपका संदेश प्रविष्ट कीजिये
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr "परिचालन लागतें"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"जहाज बनाने के लिए, वर्ग पत्र पे क्लिक कीजिये, वांछित जहाज चुनिए और हुक्म पुष्टित कीजिये।"
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -251,21 +242,21 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "प्रचलित निर्माण:"
+msgstr ""
 
 #. Pauses the current groundunit production, can be resumed later
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:40
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr "विराम"
+msgstr ""
 
 #. Resumes the currently paused groundunit production
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr "फिर से शुरू"
+msgstr ""
 
 #. Refers to the resources still missing to complete the current
 #. groundunit builder task
@@ -274,47 +265,45 @@ msgstr "फिर से शुरू"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "निर्माणकार्य कि प्रगति:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr "अभी भी जरुरी संसाधन:"
+msgstr ""
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr "निर्माणकार्य रद्द करे:"
+msgstr ""
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:67
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr "(सब संसाधन खोइए)"
+msgstr ""
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:70
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "सभी निर्माण प्रगति रद्द करे"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:128
 #: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
-msgstr "हुक्म की पुष्टि करे"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "चयित खेल में शामिल होए"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -363,10 +352,8 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "उन्नयन की अनुमती दे"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -401,184 +388,175 @@ msgid "+ 1457"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "डटे रहो"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:79
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "इस जहाज को बनाये!"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"जहाज बनाने के लिए, वर्ग पत्र पे क्लिक कीजिये, वांछित जहाज चुनिए और हुक्म पुष्टित कीजिये।"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "इस जहाज को बनाये!"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
-msgstr "इस जहाज को बनाये!"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr "मित्र"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr "निष्पक्ष"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr "शत्रु"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:10
 msgid "Building overview"
-msgstr "इमारत अवलोकन"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr "क्षमता का उपयोग"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
-#| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "इस जहाज का नाम बदलने के लिए क्लिक करे"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
 msgid "Settlement inventory"
-msgstr "उपनिवेश कि वस्तुसूची"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr "उपनिवेशी का अवलोकन"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr "करों का भुगतान"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr "कर:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "कर की दर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "उन्नति कि अनुमतियाँ:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr "सुख प्रति घर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:60
 msgid "sad"
-msgstr "दुखी"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:63
 msgid "satisfied"
-msgstr "संतुष्ट"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:66
 msgid "happy"
-msgstr "सुखी"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "इस सुख के साथ घरो कि संख्या"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "निवासी प्रति घर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr "निवासी प्रति घर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "इस निवासी संख्या के घर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr "सारांश"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
-msgstr "घर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "निवासी"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:350
 msgid "Selling"
-msgstr "विक्रीय"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
-msgstr "क्रय"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 msgid "Name:"
-msgstr "नाम:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr "शस्त्र:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "संसाधन भंडार"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr "इस संसाधन भंडार पर खान बनाके संसाधन खोदा जा सकता है।"
+msgstr ""
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "इसमे यह संसाधन है:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -586,44 +564,40 @@ msgstr "इसमे यह संसाधन है:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
-msgstr "उपनिवेश का नाम बदलने के लिए क्लिक करें"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
-msgstr "सुख"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr "निवासी"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
-msgstr "अपेक्षित संसाधन:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"जब आपको सामग्री बेचनी या खरीदनी है तो संकेतसूचक अग्नि करमुक्त व्यापारी को आपके उपनिवेश "
-"तक पहुँचने में मदद करती है।"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"यह करमुक्त व्यापारी का जहाज है। सामग्री खरीदने या बेचने के लिए वो आपको समय-समय पर भेंट "
-"देगा।"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
-msgstr "इस जहाज का नाम बदलने के लिए क्लिक करे"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -631,99 +605,97 @@ msgstr "इस जहाज का नाम बदलने के लिए �
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:88 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr "व्यापार"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
-msgstr "उपनिवेश स्थापित कीजिये"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "व्यापर मार्ग का प्रारूप"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
-#| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(सब संसाधन खोइए)"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr "जहाज:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr "विनिमय:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr "व्यापारी साझेदार:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr "संसाधनों का व्यापार"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr "व्यापर की कार्यपंजी"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr "संसाधन चुनिए:"
+msgstr ""
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr "संग्राहक का उपयोगीकरण"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
-msgstr "आमदनी:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
-msgstr "कर"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Sale"
-msgstr "विक्री"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 msgid "Expenses:"
-msgstr "लागत:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
-msgstr "रोकड-बाकी:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "इस उपनिवेश में उत्पादित संसाधन दिखाएँ"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:16
 #: content/gui/xml/ingame/templates/overview_productionline.xml:14
 msgid "Pause production"
-msgstr "उत्पादन थामें"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:19
 #: content/gui/xml/ingame/templates/overview_productionline.xml:17
 msgid "Start production"
-msgstr "उत्पादन शुरू करें"
+msgstr ""
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "संसाधन चुनिये:"
+msgstr ""
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -731,180 +703,180 @@ msgstr "संसाधन चुनिये:"
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr "चुना हुआ संसाधन दिखाया जायेगा। खाली करने के लिए X चुनिए।"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "मौजूदा प्रारूप सब उपनिवेशों के लिए संचयित करे।"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "मूलभूत संसाधन प्रारूप सब उपनिवेशों के लिए स्थापित करे।"
+msgstr ""
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
-msgstr "ऊपर सरकाएं"
+msgstr ""
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr "प्रविष्टि हटाएं"
+msgstr ""
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
-msgstr "निचे सरकाएं"
+msgstr ""
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
-msgstr "कोई एक संसाधन चुनिए:"
+msgstr ""
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr "पिछली प्रविष्टि पढियें"
+msgstr ""
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr "अगली प्रविष्टि पढियें"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
-msgstr "अंक-विवरन"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
-msgstr "खिलाडी"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
-msgstr "मेरी जहाजें"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
-msgstr "मेरे उपनिवेश"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
-msgstr "खेल कि सूचनाएं"
+msgstr ""
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 msgid "Whole world"
-msgstr "संपूर्ण दुनिया"
+msgstr ""
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
-msgstr "हर कोई"
+msgstr ""
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "सब खिलाडियों को संदेश भेजता है।"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "आपका संदेश यहाँ प्रविष्ट करे"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr "खेल में लौटें"
+msgstr ""
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 msgid "Wait at load:"
-msgstr "प्रतीक्षा करके पूर्ण भर लादने कि कोशिश करे:"
+msgstr ""
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
 msgid "Wait at unload:"
-msgstr "प्रतीक्षा करके पूर्ण भर उतारने कि कोशिश करे:"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr "मार्ग सक्रियता:"
+msgstr ""
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Start route"
-msgstr "मार्ग चालू करें"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
-msgstr "ठीक हैं"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/island_production.xml:24
 msgid "Close"
-msgstr "ठीक हैं"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
-msgstr "खिलाडीयों के अंक"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
-msgstr "नाम"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
-msgstr "खिलाडी का नाम"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
-msgstr "धन"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "खिलाडी का वर्तमान राज्य-कोष + भविष्य कि अपेक्षित आमदनी"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
-msgstr "भूमि क्षेत्र"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr "प्रोयोज्य भूमि का क्षेत्रफल; याने जिसपर इमारते निर्माण की जा सकती है"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
-msgstr "संसाधन"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
-msgstr "खिलाडी के सारे उपनिवेशों से उत्पादित संसाधनो का संपूर्ण मूल्य"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
-msgstr "इमारतें"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "खिलाडी के सारे उपनिवेशों में मौजूद इमारतों का मूल्य"
+msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:532
 msgid "Settlers"
-msgstr "उपनिवेशी"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
-msgstr "उपनिवेशी, इमारतें और कुल सुख के अनुसार उपनिवेशों की प्रगति दर्शाने वाला आंकडा"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -917,54 +889,54 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr "खिलाडी के समस्त अंक"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
-msgstr "कुल राशि"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
 msgid "Balance"
-msgstr "रोकड-बाकी"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
-msgstr "प्रकार"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
-msgstr "शस्त्र"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
-msgstr "स्वास्थ्य"
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
-msgstr "स्थिति"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
-msgstr "आक्रामक"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr "डटे रहो"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr "अप्रतिरोधी"
+msgstr ""
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
-msgstr "भाग जाओ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/credits.xml:676
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -972,819 +944,805 @@ msgstr "भाग जाओ"
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr "मुख्य सूचि तक निकास"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr "नक्शे का आकार चुनिए:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr "नक्शा चुनिए:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr "संचयित खेल का नक्शा चुनिए:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr "नक्शे का स्त्रोत चुनिए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr "नया नक्शा बनाइए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "मौजूदा नक्शा खोलिए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "संचयित खेल का नक्शा खोलिए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr "संपादन शुरू करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/help.xml:14
 msgid "Return"
-msgstr "ठीक है"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 msgid "Actions"
-msgstr "क्रिया"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
-msgstr "बाएं सरकिये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
-msgstr "दाहिने सरकिये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
-msgstr "ऊपर सरकिये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
-msgstr "निचे सरकिये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
-msgstr "इमारत या नक्शा दक्षिणावर्त घुमाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
-msgstr "इमारत या नक्शा वामावर्त घुमाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr "खेल कि गति बढाये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr "खेल कि गति घटाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr "विराम"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Show build menu"
-msgstr "निर्माण सूचि दिखाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable destruct mode"
-msgstr "विनाश का साधन सक्षम करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Enable road building mode"
-msgstr "मार्ग निर्माण का साधन सक्षम करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Enable pipette mode (clone buildings)"
-msgstr "विंदुक साधन सक्षम करे (इमारते प्रतिरूपित करता है)"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show player scores"
-msgstr "खिलाडियों के अंक दिखाएँ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Show settlement list"
-msgstr "उपनिवेशों कि सूचि दिखाएँ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:27
 msgid "Show ship list"
-msgstr "जहाजों कि सूचि दिखाएँ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Toggle Captain's log"
-msgstr "कप्तान कि कार्यपंजी दिखाएँ/छुपाएँ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Quicksave"
-msgstr "शीघ्रसंचायन"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Quickload"
-msgstr "शीघ्रभारण"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle translucency of ambient buildings"
-msgstr "व्यापक वस्तुओंकी पारदर्शता बदले"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Highlight tile ownership"
-msgstr "खपरे कि मलिकी प्रकाशित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Toggle health bars"
-msgstr "स्वास्थ्यदर्शक पट्टी दिखाएँ/छुपाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Focus camera on selection"
-msgstr "चयन पर दृश्य केंद्रित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Remove selected units / buildings"
-msgstr "चयित इमारत / यूनिट हटाएं"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Display help"
-msgstr "सहयता दिखाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Screenshot"
-msgstr "चित्र संचयित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Toggle showing FPS on/off"
-msgstr "चित्रदर (FPS) दिखाएँ/छुपाएँ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:40
 msgid "Toggle grid on/off"
-msgstr "जालीरचना दिखाएँ/छुपाएँ"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:41
 msgid "Show coordinate values (Debug)"
-msgstr "निर्देशांक दिखाएँ/छुपाएँ (दोषमार्जन)"
+msgstr ""
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:45
 msgid "Primary"
-msgstr "मुख्य"
+msgstr ""
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:49
 msgid "Secondary"
-msgstr "अतिरिक्त"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default"
-msgstr "मुलभुत मूल्य स्थापित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default keys"
-msgstr "मुलभुत कुंजी स्थापित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:49
 msgid "Save game"
-msgstr "खेल संचयित करे"
+msgstr ""
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:51
 msgid "Load game"
-msgstr "खेल भारित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
-msgstr "खेल रद्द करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr "भारित हो रहा है…"
+msgstr ""
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr "prushthabhumi badle"
+msgstr ""
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
-msgstr "एकांकी खेल"
+msgstr ""
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
-msgstr "एकाधिक खेल"
+msgstr ""
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 msgid "Quit"
-msgstr "बंद करे"
+msgstr ""
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr "संपादक"
+msgstr ""
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "आभार सूचि"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr "नया खेल - एकाधिक"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
-msgstr "खिलाडी संख्या-मर्यादा:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr "एकाधिक सूचि तक निकास करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
-msgstr "खेल का नाम:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "यह दूसरे खिलाड़ियों को दिखाया जायेगा ताकि वो पहचान कर सके।"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr "बेनाम खेल"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr "खेल के सांकेतिक शब्द:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr "यह सांकेतिक शब्द (पासवर्ड) खेल में शामिल होने के लिए आवश्यक है।"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr "यह नया खेल बनाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr "सभाकक्ष"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
-msgstr "बातचीत:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
-msgstr "सभाकक्ष से निकास करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr "जैसे ही सारे खिलाडी तैयार होंगे, यह खेल शुरू होगा।"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
-msgstr "खेल का विवरण:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
-msgstr "रंग"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr "तैयार:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "आपकी \"तैयार\" स्थिति स्थापित करता है ताकि खेल शुरू हो सके"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr "नया खेल - एकाधिक"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load game:"
-msgstr "खेल खोलिए:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
-msgstr "संचयित खेल खोलो"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
-msgstr "सक्रिय खेल:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
-msgstr "सूचि ताजा करे:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
-msgstr "सक्रिय खेलों कि सूचि तजा करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
 msgid "Create game:"
-msgstr "खेल तैयार कीजिये:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr "नया खेल बनाये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
 msgid "Join game:"
-msgstr "खेल में शामिल होइए:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
-msgstr "चयित खेल में शामिल होए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr "खिलाडी का विवरण बदले"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
 msgid "Graphics"
-msgstr "चित्र"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
-msgstr "चित्र आकार:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
-msgstr "पूर्ण पटल:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Frame rate limit:"
-msgstr "चित्रगति मर्यादा:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "अधिकतम चित्रगटी प्रस्थापित करे। मूलभूत: ६० प्रति सेकंड।"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:46
 msgid "Sound"
-msgstr "ध्वनि"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:52
 msgid "Music volume:"
-msgstr "संगीत परिमाण:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:61
 msgid "Effects volume:"
-msgstr "प्रभाव ध्वनि परिमाण:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:68
 msgid "Enable sound:"
-msgstr "ध्वनि सक्षम करे:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:74
 msgid "Mouse"
-msgstr "माउस"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid "Scroll at map edge:"
-msgstr "नक्शे के किनारे पे सरकाए:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "नक़्शे के किनारे पे माउस पॉइंटर जाने पर दृष्टि सरकाए कि नहीं"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:85
 msgid "Cursor centered zoom:"
-msgstr "पॉइंटर केंद्रित ज़ूम:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:85
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
-"समक्ष करने पर, माउस चक्र घुमाने पर माउस पॉइंटर को केंद्र मानके नक्शे का आकर बदलेगा। असमक्ष "
-"करने पर, नक़्शे का आकर चित्र केंद्र को केंद्र मानकर बदलेगा।"
 
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "Middle mouse button pan:"
-msgstr "मध्य माउस बटन खिचाव:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "When enabled, dragging the middle mouse button will pan the camera"
-msgstr "समक्षित करने पर, मध्य माउस बटन घसीटने पर दृश्य सरकेगा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
-msgstr "प्रणाली का मूलभूत विकल्प 0 है"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Mouse sensitivity:"
-msgstr "माउस की संवेदनशीलता:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Saving"
-msgstr "संचयन"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:120
 msgid "Autosave interval in minutes:"
-msgstr "स्वतःसंचयन का अंतराल (मिनट में):"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:128
 msgid "Number of autosaves:"
-msgstr "स्वतःसंचयनों की संख्या:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of quicksaves:"
-msgstr "शीघ्रसंचायनों  कि संख्या:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:144
 msgid "Language"
-msgstr "भाषा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:156
 msgid "General"
-msgstr "सार्विक"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Rotate minimap with map:"
-msgstr "छोटा नक्शा बड़े नक़्शे के साथ घुमाएं:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "छोटा नक्शा बडे नक्शे के साथ घूमेगा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "Uninterrupted building:"
-msgstr "लगातार निर्माण:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr "समक्ष करने पर, निर्माण साधन सफल निर्माण के बाद निकास नही करेगा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Auto-unload ship:"
-msgstr "जहाज से स्वतः माल उतरना:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "समक्ष करने पर, उपनिवेश प्रस्थापित करने पर जहाज से माल उपनिवेश में उतरा जायेगा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
-"इस विकल्प का प्रयोग आम खेल में न करे। समक्ष करने पर, दोषमार्गन करने के लिए जानकारी "
-"उपयोगकर्ता (user) डायरेक्टरी के कार्यपंजी डायरेक्टरी में लिखी जायेगी। इससे खेल सुस्त हो "
-"सकता है।"
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
-msgstr "कार्यपंजी सक्षम करे:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid "Production indicators:"
-msgstr "उत्पादन संकेतक:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
-"सक्षम करने पर, इमारत में संसाधन का उत्पादन पूरा होने पर उसके ऊपर संसाधन का चित्र दिखता है"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr "उच्च मूल्य से दृश्य सरकने कि गति धीमी होती है।"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Scroll delay:"
-msgstr "सरकने में विलम्ब:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr "उद्धरण प्रकार चुने:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr "खेल भारित होते हुए किस प्रकार का उद्धरण दिखाए"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
-msgstr "संजाल"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr "अगर मूल्य ० स्थापित किया है, तो अनुर्मागण (router) के मूलभूत मूल्यो का प्रयोग होगा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
-msgstr "संजाल द्वार (पोर्ट):"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr "मौजूदा बदलाव हटाइये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr "मूलभूत विकल्पों को पुनर्स्थापित करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr "बदलाव संचयित कीजिये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
-msgstr "आपके संचयित खेल:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr "खेल के सांकेतिक शब्द (पासवर्ड). खेल में शामिल होने के लिए आवश्यक"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Cancel"
-msgstr "रद्द करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
-msgstr "फाइल का नाम प्रविष्टित करे:"
+msgstr ""
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
 msgid "Details:"
-msgstr "विवरण:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Delete selected savegame"
-msgstr "चयित खेल मिटाइये"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr "नया खेल - एकांकी"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr "कथानक"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr "यादृच्छिक नक्शा"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr "मुक्त खेल"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr "खेल शुरू करे"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr "खेलने के लिए नक्शा चुनें:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr "नक्शे के विकल्प:"
+msgstr ""
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr "बीज:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr "भाषा का चयन करें:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr "कृत्रिम बुद्धि के खिलाडी (संगणक):"
+msgstr ""
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr "खेल के विकल्प:"
+msgstr ""
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr "करमुक्त व्यापारी"
+msgstr ""
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
-msgstr "समुद्री डाकू"
+msgstr ""
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr "आपदाएं"
+msgstr ""
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr "खिलाडी का नाम:"
+msgstr ""
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr "रंग:"
+msgstr ""
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr "अवैध फाइल नाम"
+msgstr ""
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr "संचयन आदेश के लिए अवैध नाम प्राप्त हुआ।"
+msgstr ""
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:163
 #: horizons/gui/modules/pausemenu.py:99 horizons/mpsession.py:56
 msgid "Error"
-msgstr "त्रुटि"
+msgstr ""
 
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:99
 msgid "Failed to save."
-msgstr "संचयन में विफल."
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:190
 msgid "The trade partner does not sell this."
-msgstr "व्यापारी साथी यह नहीं बेचता।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
-msgstr "आप इसे संग्रहित नही कर सकते।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr "आप इसे खरीदने के लिए पैसा नहीं जूता सकते।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
-msgstr "व्यापारी साथी इस से ज्यादा नही बेचता।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
-msgstr "व्यापारी साथी यह नही खरीदता।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
-msgstr "आपके पास यह नही है।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
-msgstr "व्यापारी साथी इससे ज्यादा संग्रह नही कर सकता।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not afford to buy this."
-msgstr "व्यापारी साथी यह खरीदने के लिए पैसा जुटा नही सकता।"
+msgstr ""
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
-msgstr "व्यापारी साथी यह और नही खरीद सकता।"
+msgstr ""
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
-msgstr "शीघ्रसंचयन में विफल."
+msgstr ""
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr "शीघ्रसंचयन के दौरान त्रुटि हुई।"
+msgstr ""
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
-msgstr "आपका नक्शा संचयित नही है।"
+msgstr ""
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr "अगर यह त्रुटि दोबारा होती है, तो कृपया विकसन दल को संपर्क करे: {website}"
+msgstr ""
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "क्या आप निश्चित है कि आपको Unknown Horizons बंद करना है?"
+msgstr ""
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
-msgstr "खेल बंद करे"
+msgstr ""
 
 #: horizons/gui/ingamegui.py:244
 msgid "No diplomacy possible"
-msgstr "कोई कूटनीति संभव नही"
+msgstr ""
 
 #: horizons/gui/ingamegui.py:245
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "कूटनीति संभव नही है, क्योंकि दुसरे खिलाडी मौजूद नही है।"
+msgstr ""
 
 #: horizons/gui/ingamegui.py:482
-#, fuzzy
-#| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "क्या आप यह चालु सत्र रुकाने में निश्चित है?"
+msgstr ""
 
 #: horizons/gui/ingamegui.py:483
-#, fuzzy
-#| msgid "Delete entry"
 msgid "Delete"
-msgstr "प्रविष्टि हटाएं"
+msgstr ""
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr "{size}x{size} खपरे (टाइल्स)"
+msgstr ""
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
-#| msgid "Press desired key"
 msgid "Press key…"
-msgstr "वांछित कुंजी दबाये"
+msgstr ""
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr "\"{key}\" पहले से \"{action}\" के लिए स्थापित है।"
+msgstr ""
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 msgid "Would you like to overwrite it?"
-msgstr "अधिलेखित करे?"
+msgstr ""
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:148
 #: horizons/gui/modules/select_savegame.py:167
 msgid "Confirmation for overwriting"
-msgstr "अधिलेखन की पुष्टि"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr "उद्धरण"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "Gameplay Tips"
-msgstr "खेल की युक्तियाँ"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Press 'ESC' to access Game Menu."
-msgstr "खेल कि सूचि में प्रवेश करने के लिए 'ESC' दबाये।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "अनेक इमारते स्थापित करने के लिए \"SHIFT\" दबाये।"
+msgstr ""
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:72
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "वर्त्तमान में सर्फ पहले {tier} स्तर खेलने योग्य है।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can pause the game with 'P'."
-msgstr "खेल विराम करने के लिए \"P\" दबाये।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid "You can drag roads by holding the left mouse button."
-msgstr "बाईं माउस बटन पकड़के आप मार्ग खिंच सकते है।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "अनेक इमारते स्थापित करने के लिए \"SHIFT\" दबाये।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr "आप अपने निवासियो का कर कम करके सुख बढा सकते है।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
-msgstr "आपके निवासियों को आग और रोग से बचने के लिए दमकल स्टेशन और चिकित्सक निर्माण करे।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Build storage tents to increase your storage capacity."
-msgstr "अपनी संचयन क्षमता बढ़ने के लिए भण्डारण तम्बू निर्माण करे।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Make sure every house is in range of a marketplace."
-msgstr "हर घर बाजार कि सीमा में है यह सुनिश्चित करे।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid "Press 'T' to make trees transparent."
-msgstr "पेड़ पारदर्शी करने के लिए \"T\" दबाये।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:82
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "अपनी संचयन क्षमता बढ़ने के लिए भण्डारण तम्बू निर्माण करे।"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
@@ -1821,136 +1779,132 @@ msgstr ""
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:93
 msgid "Mixed"
-msgstr "मिश्रित"
+msgstr ""
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:113
 msgid "Starting engine…"
-msgstr "इंजन शुरू हो रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:114
 msgid "Catching fish…"
-msgstr "मछली पकड़ रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Drawing user interface…"
-msgstr "उपयोगकर्ता का अंतरफलक चित्रित हो रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Activating timer…"
-msgstr "कालक सक्रिय हो रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Chomping game data…"
-msgstr "खेल की आधार-सामग्री को खा रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Shaping islands…"
-msgstr "द्वीपों को आकर दे रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:119
 msgid "Preparing blueprints…"
-msgstr "खाका तैयार हो रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:120
 msgid "Filling world with water…"
-msgstr "दुनिया को पानी से भर रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:121
 msgid "Raising animals…"
-msgstr "जीव-जंतु और पशु-पक्षियों का पालन कर रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:122
 msgid "Convincing AI…"
-msgstr "कृत्रिम बुद्धि को समझा रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:123
 msgid "Burying treasures…"
-msgstr "खजानों को दफना रहा है…"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:123
 msgid "Unable to find pyenet"
-msgstr "pyenet धुंडने में असमर्थ"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:124
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
-"एकाधिक खेल की सुविधा के लिए \"pyenet\" संग्रह कि आवश्यकता है, जो आपकी प्रणाली में नही "
-"मिली।"
 
 #: horizons/gui/modules/multiplayermenu.py:126
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "लिनक्स उपयोगकर्ता: अपने पैकेज प्रबंधक के द्वारा pyenet स्थापित करने कि कोशिश करे।"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:135
 msgid "Failed to initialize networking."
-msgstr "संजाल में जुड़ने में विफल।"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:136
 #: horizons/gui/modules/settings.py:275
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr "संजाल कि सुविधा वर्तमान प्रारूप के अनुसार शुरू नहीं की जा सकती।"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:137
 #: horizons/gui/modules/settings.py:276
 msgid "Check the settings you specified in the network section."
-msgstr "संजाल के अनुच्छेद में विनिर्दिष्ट विकल्पों को जांचे।"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:146
 #: horizons/gui/modules/multiplayermenu.py:165 horizons/mpsession.py:51
 msgid "Fatal Network Error"
-msgstr "संजाल की घातक त्रुटि"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:147
 msgid "Could not connect to master server."
-msgstr "मास्टर सर्वर से सम्बन्ध नहीं जोड पाया।"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:148
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"कृपया अपना अंतर्जाल संपर्क जाँच ले। अगर वोह अंतर्जाल से उदा हुआ है, तो इसका मतलक है कि "
-"हमारा मास्टर सर्वर थोडी देर के लिए उपलब्ध नही है।"
 
 #: horizons/gui/modules/multiplayermenu.py:166 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
-msgstr "संजाल में कुछ बिघाड हो गया:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:181
 msgid "Version differs!"
-msgstr "संस्करण में भिन्नता है!"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:210
 #: horizons/gui/modules/multiplayermenu.py:468
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr "नक्शा: {map_name}"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:211
 #: horizons/gui/modules/multiplayermenu.py:469
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr "नाम: {game_name}"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:212
 #: horizons/gui/modules/multiplayermenu.py:470
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr "निर्माता: {game_creator}"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/gui/modules/multiplayermenu.py:471
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr "खिलाडी: {player_amount}/{player_limit}"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:233
 msgid "Wrong version"
-msgstr "भिन्न संस्करण"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:234
 #, python-brace-format
@@ -1960,259 +1914,253 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"इस खेल का संस्करण आपके संस्करण से भिन्न है। एकाधिक खेल में हर खिलाडी का संस्करण सामान होना "
-"आवश्यक है। इसे ठीक करने के लिए हर खिलाडी को नवीनतम अद्यतन करना जरुरी है। खेल का "
-"संस्करण: {game_version} आपका संस्करण: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:272
 msgid "Password of the game"
-msgstr "खेल के सांकेतिक शब्द"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:273
 msgid "Enter password:"
-msgstr "सांकेतिक शब्द प्रविष्टित कीजिये:"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:358
 #: horizons/gui/modules/singleplayermenu.py:410
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "सिफारिश की हुई खिलाडियों की संख्या: {number}"
+msgstr ""
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:404
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr "तैयार"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:406
 msgid "Not ready"
-msgstr "तैयार नही"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:441
 msgid "Enter your message"
-msgstr "आपका संदेश प्रविष्ट कीजिये"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
 msgid "Click here to change your name and/or color"
-msgstr "आपका नाम या रंग बदलने के लिए यहाँ क्लिक कीजिये"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:515
 #, python-brace-format
 msgid "Kick {player}"
-msgstr "{player} को हटाए"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:582
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr "{player} खेल में शामिल हुआ"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr "{player} खेल से बहार गया"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:591
 msgid "You are now ready"
-msgstr "अब आप तैयार है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:593
 msgid "You are not ready anymore"
-msgstr "अब आप तैयार नही है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr "{player} अब तैयार है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:598
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr "{player} अब तैयार नहीं है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:602
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr "अब आप {new_name} के नाम से से जाने जाते है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:604
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr "{player} अब {new_name} से जाना जाता है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:608
 msgid "You changed your color"
-msgstr "आपने आपका रंग बदला है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr "{player} ने अपना रंग बदला"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:614
 msgid "Kicked"
-msgstr "हटा दिया"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:614
 msgid "You have been kicked from the game by creator"
-msgstr "खेल के निर्माता ने आपको हटा दिया है"
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:617
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr "{player} निर्माता द्वारा बाहर कर दिया गया है"
+msgstr ""
 
 #: horizons/gui/modules/pausemenu.py:88
 msgid "Are you sure you want to abort the running session?"
-msgstr "क्या आप यह चालु सत्र रुकाने में निश्चित है?"
+msgstr ""
 
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Quit Session"
-msgstr "सत्र रुकाए"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:87
 msgid "No saved games"
-msgstr "कोई संचयित खेल नहीं"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:87
 msgid "There are no saved games to load."
-msgstr "खोलने के लिए कोई संचयित खेल नही।"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:156
 msgid "No filename given"
-msgstr "कोई फाइल का नाम नही दिया गया"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Please enter a valid filename."
-msgstr "कृपया वैध नाम प्रविष्ट करे।"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:161
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "{name} के नाम से पहले ही एक खेल मौजूद है।"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:163
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "{name} के नाम से पहले ही एक नक्शा मौजूद है।"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:165
 msgid "Overwrite it?"
-msgstr "अधिलेखित करे?"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:232
 msgid "Unknown savedate"
-msgstr "अज्ञात संचयन-तिथि"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:235
 #, python-brace-format
 msgid "Saved at {time}"
-msgstr "{time} पर संचयित"
+msgstr ""
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:239
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "{amount} बार संचयित किया"
-msgstr[1] "{amount} बार संचयित किया"
+msgstr[0] ""
+msgstr[1] ""
 
 #: horizons/gui/modules/select_savegame.py:246
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr "खेलसंचयन का संस्करण {version}"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:250
 msgid "(probably incompatible)"
-msgstr "(शायद विसंगत)"
+msgstr ""
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:254
 msgid "Incompatible version"
-msgstr "विसंगत संस्करण"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:267
 msgid "No file selected"
-msgstr "कोई फाइल चयित नही"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:267
 msgid "You need to select a savegame to delete."
-msgstr "मिटाने के लिए खेलसंचयन फाइल को चुनिए।"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:270
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "क्या आपको सचमुच संचयीतखेल '{name}' को मिटाना है?"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:272
 msgid "Confirm deletion"
-msgstr "विलोप कि पुष्टि"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:277
 msgid "Error!"
-msgstr "त्रुटि!"
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:277
 msgid "Failed to delete savefile!"
-msgstr "संचयित फाइल मिटने में विफल!"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:57 horizons/gui/modules/settings.py:120
 msgid "Hotkeys"
-msgstr "उक्तकुंजियां"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:58
 msgid "Game"
-msgstr "खेल"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:78
 msgid "Disabled"
-msgstr "अक्षम"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:132
 msgid "Restart required"
-msgstr "पुनः प्रारंभ जरुरी है"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "आपके कुछ बदलावों का परिणाम देखने के लिए Unknown Horizons का पुनःप्रारंभ जरुरी है."
+msgstr ""
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
-msgstr "मूलभूत विकल्पों को पुनर्स्थापित करे"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:139
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
-"मूलभूत विकल्पों को पुनःप्रस्थापित करने के बाद आपने अब तक किये हुए सब बदलाव मिटाए जायेंगे।"
 
 #: horizons/gui/modules/settings.py:140
 msgid "Do you want to continue?"
-msgstr "जारी रखें?"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:261
 msgid "Invalid network port"
-msgstr "अवैध संजाल द्वार"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:262
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr "निर्दिष्ट द्वार वैध नहीं है। वह १ और ६५५३५ के बीच कि कोई संख्या चाहिए।"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:263
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr "कृपया प्रविष्टित द्वार जाँच ले और उसकी श्रेणी सुनिश्चित करे।"
+msgstr ""
 
 #: horizons/gui/modules/settings.py:274
 msgid "Failed to apply new network settings."
-msgstr "नए संजाल विकल्प प्रस्थापित करने में विफल।"
+msgstr ""
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
@@ -2224,7 +2172,7 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:109
 msgid "Invalid player name"
-msgstr "अवैध खिलाडी नाम"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:109
 msgid "You entered an invalid playername."
@@ -2232,78 +2180,76 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:152
 msgid "Resource density:"
-msgstr "संसाधन घनता:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Map size:"
-msgstr "नक्शे का आकार:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Water:"
-msgstr "पानी:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Max island size:"
-msgstr "द्वीप का अधिकतम आकार:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:233
 msgid "Preferred island size:"
-msgstr "द्वीप का पसंदीदा आकार:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:234
 msgid "Island size deviation:"
-msgstr "द्वीप के आकर में विचलन:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:348
 msgid "Click to generate a different random map"
-msgstr "अलग यादृच्छिक नक्शा तैयार करने के लिये क्लिक करे"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:508
 msgid "Invalid scenario file"
-msgstr "अवैध परदृश्य फाइल"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:509
 msgid "The selected file is not a valid scenario file."
-msgstr "चुनी हुई फाइल वैध कथानक फाइल नहीं है।"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:510
 msgid "Error message:"
-msgstr "त्रुटि संदेश:"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:511
 msgid "Please report this to the author."
-msgstr "कृपया इसे रचयिता से प्रतिवेदित करे."
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:573
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr "कठिनाई: {difficulty}"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:576
 #, python-brace-format
 msgid "Author: {author}"
-msgstr "रचयिता: {author}"
+msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:579
 #, python-brace-format
 msgid "Description: {desc}"
-msgstr "विवरण: {desc}"
+msgstr ""
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:230
 #, python-brace-format
 msgid "Build {building}"
-msgstr "{building} निर्माण करे"
+msgstr ""
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "इस एशारे को हटाने के लिये H दबाये"
+msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
-#| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "सम्बंधित इमारतें"
+msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
@@ -2319,10 +2265,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: horizons/gui/tabs/barrackstabs.py:36
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "भांडागार अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/barrackstabs.py:114
 msgid "Swordman"
@@ -2331,43 +2275,43 @@ msgstr ""
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (पंक्ति मे #{place})"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
-msgstr "नाव बनानेवाले का अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
-msgstr "मछियारी नौकाएं"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
-msgstr "व्यापारी नौकाएं"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
-msgstr "युद्ध नौकाएं"
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
-msgstr "युद्ध नौकाएं"
+msgstr ""
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr "बुर्ज का अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
-msgstr "अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr "सम्बंधित इमारतें बांधे"
+msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr "व्यापार प्रस्ताव सुझाने के लिये किसी एक संसाधन खांचे को क्लिक कीजिये।"
+msgstr ""
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2375,7 +2319,6 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
-"खरीदने या बेचने के लिये उसके नाम पे क्लिक करे, फिर दाहिनेवाले माप से मात्रा स्थापित करे।"
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
@@ -2383,8 +2326,6 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
-"भंडार मे {limit} टन से कम {resource_name} होने पर उसे {price} सोना/टन के दाम से "
-"खरीदा जायेगा।"
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2392,36 +2333,34 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"भंडार मे {limit} टन से जादा {resource_name} होने पर उसे {price} सोना/टन के दाम से "
-"बेचा जायेगा।"
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr "भांडागार अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr "हिसाब"
+msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
-msgstr "प्रधान चौक का अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:149
 msgid "Upgrade not possible:"
-msgstr "उन्नति असंभव:"
+msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:152
 msgid "This is the highest playable tier for now!"
-msgstr "अब के लिये यह सबसे उच्च खेलनेयोग्य स्तर है!"
+msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:198
 msgid "Don't allow upgrades"
-msgstr "उन्नयन की अनुमती ना दे"
+msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:201
 msgid "Allow upgrades"
-msgstr "उन्नयन की अनुमती दे"
+msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
@@ -2430,7 +2369,7 @@ msgstr ""
 #: horizons/gui/tabs/productiontabs.py:47
 #: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
-msgstr "उत्पादन का अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
@@ -2444,58 +2383,58 @@ msgstr ""
 #: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
 #: horizons/gui/tabs/shiptabs.py:200 horizons/gui/tabs/shiptabs.py:205
 msgid "Ship overview"
-msgstr "जहाज का अवलोकन"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr "उपनिवेश स्थापित करने के लिये जहाज द्वीप के करीब होना जरूरी है।"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
-msgstr "आपका इस द्वीप पर पहले से उपनिवेश है।"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
-msgstr "लादिये/उतारिए"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
-msgstr "बेचिए/खरीदिए"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "सबसे नजदीक व्यापार योग्य गोदाम से बहुत दूर"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
-msgstr "व्यापारी जहाज को शस्त्रों से लैस नहीं कर सकते"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "व्यापारी जहाज को शस्त्रों से लैस करना असंभव है।"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr "शस्त्र लैस करें"
+msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
-msgstr "शस्त्र लैस ना करें"
+msgstr ""
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr "{resource_name}: {price} सोना"
+msgstr ""
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr "{buyprice} सोने के लिये खरीदे"
+msgstr ""
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr "{sellprice} सोने के लिये बेंचे"
+msgstr ""
 
 #: horizons/gui/widgets/inventory.py:171
 #, python-brace-format
@@ -2616,12 +2555,12 @@ msgstr ""
 #: horizons/gui/windows.py:411
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr "विवरण: {error_details}"
+msgstr ""
 
 #: horizons/gui/windows.py:413
 #, python-brace-format
 msgid "Error: {error_message}"
-msgstr "विवरण: {error_message}"
+msgstr ""
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:56
@@ -2716,12 +2655,12 @@ msgstr ""
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:119
 msgid "Clay Deposit"
-msgstr "मिट्टी भंडार"
+msgstr ""
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:124
 msgid "Clay Pit"
-msgstr "मिट्टी गड्ढा"
+msgstr ""
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:126
@@ -2761,7 +2700,7 @@ msgstr ""
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:152
 msgid "Alvearies"
-msgstr "मधुमक्खी के छत्ते"
+msgstr ""
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:154
@@ -2901,7 +2840,7 @@ msgstr ""
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:250
 msgid "Fish Deposit"
-msgstr "मछली का भंडार"
+msgstr ""
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:255
@@ -2966,7 +2905,7 @@ msgstr ""
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:294
 msgid "Gets iron ore from deposit."
-msgstr "भंडार से कच्चा लोहा प्राप्त करता है।"
+msgstr ""
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:299
@@ -3030,10 +2969,8 @@ msgstr ""
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "पत्थर का भंडार"
+msgstr ""
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:349
@@ -3053,7 +2990,7 @@ msgstr ""
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:358
 msgid "Stone Pit"
-msgstr "पत्थरों का गड्ढा"
+msgstr ""
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:360
@@ -3103,7 +3040,7 @@ msgstr ""
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:387
 msgid "Stone house"
-msgstr "पत्थरी घर"
+msgstr ""
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:389
@@ -3163,7 +3100,7 @@ msgstr ""
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:423
 msgid "Tree"
-msgstr "Árbore"
+msgstr ""
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:425
@@ -3183,14 +3120,12 @@ msgstr ""
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:437
 msgid "Warehouse"
-msgstr "गोदाम"
+msgstr ""
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:442
-#, fuzzy
-#| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "शस्त्र"
+msgstr ""
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:444
@@ -3297,7 +3232,7 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:512
 msgid "Food"
-msgstr "अन्न"
+msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:514
@@ -3338,7 +3273,7 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:534
 msgid "Wood"
-msgstr "लकडी"
+msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:536
@@ -3437,7 +3372,7 @@ msgstr ""
 
 #: horizons/scenario/actions.py:95
 msgid "Do you want to continue playing?"
-msgstr "खेल जारी रखें?"
+msgstr ""
 
 #: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
@@ -3446,7 +3381,7 @@ msgstr ""
 #. usually invalid filename
 #: horizons/session.py:397
 msgid "Failed to create savegame file"
-msgstr "संचयन फाइल तैयार करने में विफल"
+msgstr ""
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
@@ -3504,7 +3439,7 @@ msgstr ""
 #: horizons/world/building/__init__.py:123
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr "{building}: {description}"
+msgstr ""
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
@@ -3536,7 +3471,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr "यह इमारत समुद्र में रखनी चाहिए।"
+msgstr ""
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
@@ -3661,7 +3596,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "brine deposit"
-msgstr "लवण-जल का भंडार"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
@@ -3669,7 +3604,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "gem deposit"
-msgstr "रत्नों का भंडार"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3680,9 +3615,8 @@ msgid "tobacco leaves"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone tops"
-msgstr "पत्थर शिखर"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
@@ -3726,7 +3660,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr "संगमरमर का भंडार"
+msgstr ""
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3734,7 +3668,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "clay deposit"
-msgstr "मिट्टी का भंडार"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3795,7 +3729,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
-msgstr "कोयले का भंडार"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3840,10 +3774,9 @@ msgid "corn"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "{name} के नाम से एक नए जहाज बनाया गया है |"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
@@ -3969,7 +3902,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr "पत्थर का भंडार"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
@@ -4023,7 +3956,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr "सोने का भंडार"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -4035,7 +3968,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr "मधुमक्खी के छत्ते"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
@@ -4043,7 +3976,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr "लोहे का भंडार"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "education"
@@ -4067,17 +4000,16 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr "{player}: {message}"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "sword"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "{name} के नाम से एक नए जहाज बनाया गया है |"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
@@ -4086,7 +4018,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr "{name} के नाम से एक नए जहाज बनाया गया है |"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
@@ -4098,7 +4030,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr "एक नयी दुनिया बनाई गई  है |"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
@@ -4106,7 +4038,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr "हिरण का भोजन A"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
@@ -4122,7 +4054,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "आप गोदाम को हटा नहीं सकते, आपके उपनिवेश को उसकी आवश्यकता है।"
+msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
@@ -4156,51 +4088,3 @@ msgstr ""
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Production overview"
-#~ msgid "Groundunit overview"
-#~ msgstr "उत्पादन का अवलोकन"
-
-#~ msgid "SDL is only meant as unsupported fallback and might cause problems!"
-#~ msgstr "SDL सिर्फ असमर्थित निवर्तन में प्रयोग के लिए है और समस्यात्मक है!"
-
-#~ msgid "Used renderer:"
-#~ msgstr "चित्र प्रस्तोता:"
-
-#~ msgid "Warning"
-#~ msgstr "चेतावनी"
-
-#~ msgid ""
-#~ "The SDL renderer is meant as a fallback solution only and has serious "
-#~ "graphical glitches. \n"
-#~ "\n"
-#~ "Use at own risk!"
-#~ msgstr ""
-#~ "SDL सिर्फ असमर्थित निवर्तन में प्रयोग के लिए  और चित्र में गडबडियां निर्माण करता है। \n"
-#~ "\n"
-#~ "खुद जोखिम लेकर प्रयोग करें!"
-
-#~ msgid "Default"
-#~ msgstr "डिफ़ॉल्ट"
-
-#~ msgid "[{key}] = {text}"
-#~ msgstr "[{key}] = {text}"
-
-#~ msgid "Terminated"
-#~ msgstr "समाप्त"
-
-#~ msgid "Current key: [{key}]"
-#~ msgstr "वर्तमान कुंजी: [{key}]"
-
-#~ msgid "Default key: [{key}]"
-#~ msgstr "डिफ़ॉल्ट कुंजी: [{key}]"
-
-#~ msgid "Click to reset to default key"
-#~ msgstr "डिफ़ॉल्ट कुंजी रीसेट करने के लिए क्लिक करें |"
-
-#~ msgid "Change hotkey for {action}"
-#~ msgstr "{action} के लिए hotkey बदलें"
-
-#~ msgid "The default key for this action has been selected."
-#~ msgstr "इस कार्रवाई के लिए डिफ़ॉल्ट कुंजी चुना गया है |"
