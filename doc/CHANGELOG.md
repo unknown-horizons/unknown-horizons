@@ -33,8 +33,8 @@ New features
 New files and features
 
 Grafic:
-
- - blender building
+ - added winery
+ - added blender building
  - added cocoafield
  - replaced the discard icon on the trade ship widget
  - replaced the load/unload icon on the trade ship widget
@@ -60,6 +60,8 @@ Grafic:
  - Icons: replaced alot placeholder icons
  - added shiny new female gfx
  - Animate fire of market place and tent1
+ - added second residential house for tier 3
+
 Sound:
 
  - added menu sound from Ollo
