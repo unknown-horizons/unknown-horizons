@@ -1,39 +1,42 @@
-# Malayalam translations for Unknown Horizons package.
-# Copyright (C) 2016 The Unknown Horizons Team
-# This file is distributed under the same license as the Unknown Horizons package.
-# Automatically generated, 2016.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 2c4f0c1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 06:02+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2015-12-22 00:55+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Malayalam <https://hosted.weblate.org/projects/uh/uh/ml/>\n"
+"Language: ml\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ml\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "‘അജ്ഞാത ചക്രവാളം’ പ്രവർത്തനം നിലച്ചിരിക്കുന്നു."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
+"ഇതിൽ ഞങ്ങൾ ഖേദം പ്രകടിപ്പിക്കുന്നു. ഉടനെ തന്നെ ഈ പ്രശ്നം പരിഹരിക്കാൻ ഞങ്ങൾ ആഗ്രഹിക്കുന്നു."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "ഇതിനായി ഞങ്ങൾക്ക് \"ലോഗ് ഫയലിലെ' വിവരങ്ങൾ ആവശ്യമാണ്:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"ഇത് ഞങ്ങൾക്ക്, IRC മുഖേനയോ, ഞങ്ങളുടെ ഫോറം മുഖേനയോ എത്തിക്കുക. രണ്ടിനുമായി http://unknown-"
+"horizons.org എന്ന വെബ്‌സൈറ്റ് സന്ദർശിക്കുക."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."

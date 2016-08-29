@@ -1,24 +1,26 @@
-# Hindi translations for Unknown Horizons Server package.
-# Copyright (C) 2016 The Unknown Horizons Team
-# This file is distributed under the same license as the Unknown Horizons Server package.
-# Automatically generated, 2016.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons Server b829058\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-14 02:13+0200\n"
-"PO-Revision-Date: 2016-08-14 02:13+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2012-12-09 13:15+0000\n"
+"Last-Translator: supercracker111 <supercracker111@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "पुराने या असमर्थित multiplayer प्रोटोकॉल | कृपया अपने खेल संस्करण की जाँच करें |"
 
 #: horizons/network/server.py:285
 msgid "You've exceeded the global packet size."
@@ -34,44 +36,46 @@ msgstr ""
 
 #: horizons/network/server.py:312
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "अज्ञात या विकृत पैकेट | कृपया अपने खेल संस्करण की जाँच करें |"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:321
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "अमान्य / अज्ञात सत्र"
 
 #: horizons/network/server.py:404
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "आप एक ओर खेल में नहीं शामिल हो सकते हैं, जबकि आप एक दूसरे खेल में हो |"
 
 #: horizons/network/server.py:409
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "अज्ञात खेल या खेल एक अलग संस्करण चल रहा है |"
 
 #: horizons/network/server.py:412
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "खेल पहले से ही शुरू हो गया है | अब शामिल होना मुमकिन नहीं है |"
 
 #: horizons/network/server.py:415
 msgid "Game is full"
-msgstr ""
+msgstr "खेल भरा है |"
 
 #: horizons/network/server.py:418
 msgid "Wrong password"
-msgstr ""
+msgstr "ग़लत पासवर्ड"
 
 #: horizons/network/server.py:435 horizons/network/server.py:548
+#, fuzzy
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "आपके अद्वितीय खिलाड़ी ID के साथ एक ओर खिलाडी पहले से ही खेल के अंदर है |"
 
 #: horizons/network/server.py:436
 msgid "Please change your name."
 msgstr ""
 
 #: horizons/network/server.py:439 horizons/network/server.py:577
+#, fuzzy
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "आपके अद्वितीय खिलाड़ी ID के साथ एक ओर खिलाडी पहले से ही खेल के अंदर है |"
 
 #: horizons/network/server.py:440
 msgid "Please change your color."
@@ -81,21 +85,24 @@ msgstr ""
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "आपके अद्वितीय खिलाड़ी ID के साथ एक ओर खिलाडी पहले से ही खेल के अंदर है |"
 
 #: horizons/network/server.py:459
 msgid "You are not inside a game"
-msgstr ""
+msgstr "आप खेल के अंदर नहीं है |"
 
 #: horizons/network/server.py:490
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "खेल समाप्त कर दिया गया है | निर्माता खेल छोड़ दिया है |"
 
 #: horizons/network/server.py:495
+#, fuzzy
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"मुझे एक बुरा खरगोश की तरह लग रहा है, लेकिन एक खिलाड़ी ने खेल समाप्त कर दिया है जो अभी "
+"तकनीकी कारणों के लिए है | इसका मतलब है कि खेल जारी नहीं रख सकते |"
 
 #: horizons/network/server.py:549
 msgid "Unable to change your name."
@@ -107,4 +114,4 @@ msgstr ""
 
 #: horizons/network/server.py:666
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "आप एक ओर खेल का आनयन नहीं कर सकते जबकि आप एक दूसरे खेल में हो |"

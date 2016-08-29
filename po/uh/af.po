@@ -1,57 +1,62 @@
 # Afrikaans translations for Unknown Horizons package.
-# Copyright (C) 2016 The Unknown Horizons Team
+# Copyright (C) 2013 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
-# Automatically generated, 2016.
+# Automatically generated, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 2c4f0c1\n"
+"Project-Id-Version: Unknown Horizons 52b47e7\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 06:02+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2014-11-17 22:48+0200\n"
+"Last-Translator: Alexandre Bezerra <aledidi175@hotmail.com>\n"
+"Language-Team: Afrikaans <https://hosted.weblate.org/projects/uh/uh/af/>\n"
+"Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: af\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Onbekende horisonne is gesluit."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "Ons vra om verskoning en ons is die oplossing."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "Hiervoor het ons inligting van log lêer:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"Kontak gerus ons IRC of forum, sodat beide sien http://unknown-horizons.org."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
+msgstr "Fout: Kon nie die \"PyYAML\" biblioteek."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "PyYAML (die vereiste biblioteek) ontbreek en moet geïnstalleer word."
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
+"Die installeerder vir Windows is beskikbaar in http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Linux-gebruikers kan vind na die pakket bestuurder vir \"PyYAML\" of "
+"\"python-yaml\" naam."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
