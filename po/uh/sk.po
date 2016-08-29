@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d2bbe58\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 17:05+0000\n"
+"PO-Revision-Date: 2016-08-29 17:38+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh/sk/>\n"
 "Language: sk\n"
@@ -323,39 +323,39 @@ msgstr "(rovnako ako vo vybraných záložkách)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Delová šalupa"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "Trojsťažník je najbežnejšia vojnová loď s jednou delovou palubou."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -375,24 +375,24 @@ msgstr "Trup"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
@@ -3829,332 +3829,334 @@ msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"Obchodná cesta je pripravená. Začnete ju tlačidlo \"začať cestu\" v menu \""
+"nastavenia cesty\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "Hráči {player1} a {player2} zrušili mierovú zmluvu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
-msgstr ""
+msgstr "Miesto je nedostupné."
 
 #. This is a database entry: the name of a resource
 msgid "corn"
-msgstr ""
+msgstr "kukurica"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr ""
+msgstr "Vojak s menom {name} je pripravený do boja."
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "kvitnúce lúky"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
-msgstr ""
+msgstr "hrozno"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Vaši obyvatelia dosiahli úrovne {level}."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ambra"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "viera"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "dosky"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Niektorý vaši obyvatelia nemajú prístup k tržnici."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "Hráči {player1} a {player2} začali vojnu na život a na smrť."
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "chmel"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "obilie"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
-msgstr ""
+msgstr "korenie"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr ""
+msgstr "kávovníky"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "tehly"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr ""
+msgstr "zlatá ruda"
 
 #. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "spoločnosť"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "bylinky"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "hygiena"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "dobytok na porážku"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "cigary"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "náradie"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "jelenie mäso"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "cukrovinky"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "velryby"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
-msgstr ""
+msgstr "mince"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "pivo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr ""
+msgstr "Vyhrali ste!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "kvety"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr ""
+msgstr "rastliny indiga"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "ryby"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "drevené uhlie"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr ""
+msgstr "ložisko kameňov"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Nauspel si v scenári."
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "oheň"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "žalude"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "šaty"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "včelie plásty"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "tabakové rastliny"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Chýba dostatok {resource} na postavenie tejto budovy."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Vaši ľudia  odmietajú opustiť túto mapu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "Hráči {player1} a {player2} ukončili nepriateľstvo."
 
 #. This is a database entry: the name of a resource
 msgid "grass"
-msgstr ""
+msgstr "tráva"
 
 #. This is a database entry: the name of a resource
 msgid "sugar cane"
-msgstr ""
+msgstr "cukrová trstina"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Hra bola automaticky uložená."
 
 #. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr ""
+msgstr "ložisko zlata"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Jedno z vaších polí nie je v dosahu farmy."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "neupravené drahokamy"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
+msgstr "včelárstvo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Vo vašom dole už nie sú žiadne suroviny."
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr ""
+msgstr "ložisko železa"
 
 #. This is a database entry: the name of a resource
 msgid "education"
-msgstr ""
+msgstr "vzdelanie"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "bavlna"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr ""
+msgstr "Hráči {player1} a {player2} zrušili mierovú zmluvu a sú vo vojne."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
-msgstr ""
+msgstr "textília"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "meč"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr ""
+msgstr "Obyvateľ s menom {name} je dostupný."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "Obyvatelia tejto budovy sú napadnutý čiernou smrťou!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "Boly vyrobená nová loď pomenovaná {name}."
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr ""
+msgstr "čajovníky"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr ""
+msgstr "stretnutie"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "Bol vytvorený nový svet."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Hra bola rýchlo uložená."
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "jedlo pre jelene"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "bylinky"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "lampový olej"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "ošípané"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Obchodný prístav nie je možné zbúrať, vaši osadníci ho potrebujú."
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "korenie"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "čierna smrť"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "sviečky"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Nová osada bola založená hráčom {player}."
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "víno"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Hra bola uložená."
 
 #. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "soľ"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
-msgstr ""
+msgstr "zlaté ingoty"
