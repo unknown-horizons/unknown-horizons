@@ -430,7 +430,6 @@ msgstr ""
 "schip en bevestig de order."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#| msgid "Build this ship!"
 msgid "Build ship:"
 msgstr "Bouw schip:"
 
@@ -1331,7 +1330,8 @@ msgstr "Speel mee met geselecteerd spel"
 msgid "Change player details"
 msgstr "Spelerdetails veranderen"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Beeld"
 
@@ -1803,7 +1803,6 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Druk 'T' om bomen transparant te maken."
 
 #: horizons/gui/modules/loadingscreen.py:82
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
 "Bouw opslagtenten en uitkijktorens om het bereik van je kolonie te vergroten."
@@ -2204,7 +2203,6 @@ msgid "Restart required"
 msgstr "Herstart vereist"
 
 #: horizons/gui/modules/settings.py:133
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
@@ -2715,7 +2713,6 @@ msgstr "Brouwerij"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
 msgstr "Verbruikt hop. Produceert bier."
 
@@ -2741,12 +2738,11 @@ msgstr "Heeft varkens of vee nodig. Produceert voedsel."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
 msgstr "Produceert kanonnen."
 
@@ -2868,7 +2864,6 @@ msgstr "Hopveld"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:189
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
 msgstr "Produceert hop. Vereist een boerderij."
 
@@ -3087,7 +3082,6 @@ msgstr "Verwerkt verschillende soorten erts."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "Steengroeve"
 
@@ -3231,7 +3225,9 @@ msgstr "Levert hout. Wordt omgehakt door houthakkers."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "Dorpsschool"
 
 #. tooltip_text of buildings:villageschool

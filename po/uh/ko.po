@@ -1317,7 +1317,8 @@ msgstr "선택한 게임에 참여하기"
 msgid "Change player details"
 msgstr "플레이어 상세정보 변경하기"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "그래픽"
 
@@ -2699,7 +2700,7 @@ msgstr "돼지나 소가 필요합니다. 음식을 생산합니다."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3182,7 +3183,9 @@ msgstr "목재를 제공합니다. 벌목꾼에의해 베어짐."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "마을 학교"
 
 #. tooltip_text of buildings:villageschool

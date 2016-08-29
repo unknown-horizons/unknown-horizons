@@ -1317,7 +1317,8 @@ msgstr "Присоединиться к выбранной игре"
 msgid "Change player details"
 msgstr "Изменить данные об игроке"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Графика"
 
@@ -2707,7 +2708,7 @@ msgstr "Требует свиней или крупный скот. Произв
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3197,7 +3198,9 @@ msgstr "Восстанавливает срубленный лес."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "Сельская школа"
 
 #. tooltip_text of buildings:villageschool

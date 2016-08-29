@@ -1318,7 +1318,8 @@ msgstr "選択したゲームに参加します"
 msgid "Change player details"
 msgstr "プレイヤー詳細を変更"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "グラフィックス"
 
@@ -2707,7 +2708,7 @@ msgstr "豚か牛を必要とし、食糧を生産します。"
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3194,7 +3195,9 @@ msgstr "板材を提供します。伐採人によって切りだされます。
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "村校"
 
 #. tooltip_text of buildings:villageschool

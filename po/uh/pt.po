@@ -1331,7 +1331,8 @@ msgstr "Junte-se ao jogo selecionado"
 msgid "Change player details"
 msgstr "Mudar detalhes de jogador"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Gráficos"
 
@@ -2703,7 +2704,7 @@ msgstr "Precisa de porcos ou gado vacum. Produz comida."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3193,7 +3194,9 @@ msgstr ""
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "Escola"
 
 #. tooltip_text of buildings:villageschool

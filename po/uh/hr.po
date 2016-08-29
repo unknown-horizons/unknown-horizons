@@ -1332,7 +1332,8 @@ msgstr "Pridruži se odabranoj igri"
 msgid "Change player details"
 msgstr "Promijeni detalje igrača"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Grafika"
 
@@ -2745,7 +2746,7 @@ msgstr "Potrebene su joj svinje ili goveda. Proizvodi hranu."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3233,7 +3234,9 @@ msgstr "Proizvodi klade. Posječene od strane drvosječa."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "Seoska škola"
 
 #. tooltip_text of buildings:villageschool

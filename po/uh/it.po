@@ -1342,7 +1342,8 @@ msgstr "Accedi alla partita selezionata"
 msgid "Change player details"
 msgstr "Cambia i dettagli del giocatore"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Grafica"
 
@@ -2754,7 +2755,7 @@ msgstr "Necessita di suini o bovini. Produce cibo."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3251,7 +3252,9 @@ msgstr "Fornisce legname. Abbattuto da boscaioli."
 # Building
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "Villagio scolastico"
 
 #. tooltip_text of buildings:villageschool

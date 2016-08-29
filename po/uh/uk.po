@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.8-dev\n"
 
 #: run_uh.py:124
@@ -236,9 +236,6 @@ msgid "Running costs"
 msgstr "Поточні витрати"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
@@ -313,7 +310,6 @@ msgstr "Підтвердити наказ"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
 msgstr "(як і у вкладках вибору)"
 
@@ -365,13 +361,11 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
 msgstr "Купити оновлення"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
-#| msgid "cannon"
 msgid "Cannons"
 msgstr "Гармати"
 
@@ -403,13 +397,11 @@ msgid "+ 1457"
 msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#| msgid "Hold ground"
 msgid "Build groundunit:"
 msgstr "Побудувати піший підрозділ:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:79
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
 msgstr "Побудувати піший підрозділ!"
 
@@ -422,7 +414,6 @@ msgstr ""
 "корабель і підтвердіть замовлення."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#| msgid "Build this ship!"
 msgid "Build ship:"
 msgstr "Побудувати корабель:"
 
@@ -1320,7 +1311,8 @@ msgstr "Приєднатися до вибраної гри"
 msgid "Change player details"
 msgstr "Змінити параметри гравця"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Графіка"
 
@@ -2186,7 +2178,6 @@ msgid "Restart required"
 msgstr "Необхідний перезапуск"
 
 #: horizons/gui/modules/settings.py:133
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
@@ -2335,12 +2326,10 @@ msgstr[1] "%s додаткові будівлі будуть знищені"
 msgstr[2] "%s додаткових будівель буде знищено"
 
 #: horizons/gui/tabs/barrackstabs.py:36
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
 msgstr "Огляд казарми"
 
 #: horizons/gui/tabs/barrackstabs.py:114
-#| msgid "sword"
 msgid "Swordman"
 msgstr "Мечник"
 
@@ -2691,7 +2680,6 @@ msgstr "Пивоварня"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
 msgstr "Споживає хміль. Виробляє пиво."
 
@@ -2717,12 +2705,13 @@ msgstr "Необхідні свині або скот. Виробляє їжу."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+#, fuzzy
+#| msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr "Гарматна ливарня"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
 msgstr "Виробляє гармати."
 
@@ -2835,13 +2824,11 @@ msgstr "Виробляє лікарські трави. Потребує фер�
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:187
-#| msgid "Corn Field"
 msgid "Hop Field"
 msgstr "Хмелеве поле"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:189
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
 msgstr "Вирощує хміль. Потребує ферми."
 
@@ -3057,7 +3044,6 @@ msgstr "Переробляє всі види руди."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "Поклади каміння"
 
@@ -3198,7 +3184,9 @@ msgstr "Забезпечує пиломатеріалами з зрубаних 
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "Сільська школа"
 
 #. tooltip_text of buildings:villageschool
@@ -3882,7 +3870,6 @@ msgstr "кукурудза"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
 msgid "The Soldier by the name of {name} is ready to battle."
 msgstr "Солдат на ім'я {name} готовий до битви."
 
@@ -4116,7 +4103,6 @@ msgstr "меч"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
 msgid "The inhabitant by the name of {name} is available."
 msgstr "Доступний новий мешканець на ім'я {name}."
 

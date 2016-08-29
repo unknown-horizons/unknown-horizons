@@ -1337,7 +1337,8 @@ msgstr "Se joindre à la partie sélectionnée"
 msgid "Change player details"
 msgstr "Quitter le panneau des scores"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Graphismes"
 
@@ -2765,7 +2766,7 @@ msgstr "Nécessite des cochons ou des bovins. Produit de la nourriture."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cannon foundry"
+msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
@@ -3258,7 +3259,9 @@ msgstr "Fournit du bois. Abattu par les bûcherons."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-msgid "Village school"
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
 msgstr "École de village"
 
 #. tooltip_text of buildings:villageschool
