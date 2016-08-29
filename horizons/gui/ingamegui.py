@@ -136,22 +136,7 @@ class IngameGui(LivingObject):
 		})
 		self.mainhud.show()
 
-		hotkey_replacements = {
-			'rotateRight': 'ROTATE_RIGHT',
-			'rotateLeft': 'ROTATE_LEFT',
-			'speedUp': 'SPEED_UP',
-			'speedDown': 'SPEED_DOWN',
-			'destroy_tool': 'DESTROY_TOOL',
-			'build': 'BUILD_TOOL',
-			'gameMenuButton': 'ESCAPE',
-			'logbook': 'LOGBOOK',
-		}
-		for (widgetname, action) in hotkey_replacements.iteritems():
-			widget = self.mainhud.findChild(name=widgetname)
-			keys = horizons.globals.fife.get_keys_for_action(action)
-			# No `.upper()` here: "Pause" looks better than "PAUSE".
-			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
-			widget.helptext = widget.helptext.format(key=keyname)
+		self._replace_hotkeys_in_widgets()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
 
@@ -677,3 +662,22 @@ class IngameGui(LivingObject):
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
 		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
+
+	def _replace_hotkeys_in_widgets(self):
+		"""Replaces the `{key}` in the (translated) widget helptext with the actual hotkey"""
+		hotkey_replacements = {
+			'rotateRight': 'ROTATE_RIGHT',
+			'rotateLeft': 'ROTATE_LEFT',
+			'speedUp': 'SPEED_UP',
+			'speedDown': 'SPEED_DOWN',
+			'destroy_tool': 'DESTROY_TOOL',
+			'build': 'BUILD_TOOL',
+			'gameMenuButton': 'ESCAPE',
+			'logbook': 'LOGBOOK',
+		}
+		for (widgetname, action) in hotkey_replacements.iteritems():
+			widget = self.mainhud.findChild(name=widgetname)
+			keys = horizons.globals.fife.get_keys_for_action(action)
+			# No `.upper()` here: "Pause" looks better than "PAUSE".
+			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
+			widget.helptext = widget.helptext.format(key=keyname)
