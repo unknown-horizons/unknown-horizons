@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 11:15+0000\n"
+"PO-Revision-Date: 2016-08-29 11:25+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
@@ -1809,9 +1809,9 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
-"Hogy megbizonyosod arról, a pavilon lefedi az összes sátrat, válaszd ki az "
-"építés menüből és húzd a jelenlegi pavilonod fölé. A le nem fedett sátrak "
-"sárgával jelöltek. Ezek közelébe érdemes új pavilont építeni."
+"Hogy megbizonyosod arról, a kerti ház lefedi az összes sátrat, válaszd ki az "
+"építés menüből és húzd a jelenlegi kerti házad fölé. A le nem fedett sátrak "
+"sárgával jelöltek. Ezek közelébe érdemes új kerti házat építeni."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
@@ -2350,7 +2350,7 @@ msgstr "Ezzel minden, a gyarmat határain kívülre eső épületet lerombolsz."
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] "%s további épület lebontásra kerül."
-msgstr[1] "%s további épületek lebontásra kerülnek."
+msgstr[1] "%s további épületek lebontásra kerülnek"
 
 #: horizons/gui/tabs/barrackstabs.py:36
 #| msgid "Warehouse overview"
@@ -2430,8 +2430,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"{resource_name} eladása {price} aranyért tonnánként, hogyha több van a "
-"raktárban, mint {limit} tonna."
+"{resource_name} eladása {price} aranyért tonnánként, ha több van raktáron, "
+"mint {limit} tonna."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
@@ -3553,7 +3553,7 @@ msgstr "A böngésződben megnyílt egy új lap."
 #: horizons/util/uhdbaccessor.py:281
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr "{slotnum} slot, {limit}"
+msgstr "{slotnum} férőhely, {limit}"
 
 #: horizons/util/uhdbaccessor.py:289
 #, python-brace-format
