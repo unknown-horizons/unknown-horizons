@@ -52,9 +52,9 @@ logbook-data:
   - ''
 
 - &TENTS
-  - [Headline, 1740. november 25.]
+  - [Headline, 1740. november 25-e]
   - [Image, content/gui/images/background/hr.png]
-  - Rendelkezünk alapvető élelemmel és gyűjtöttünk némi fát, így az új gyarmatunk tovább növekedhet. A lakosoknak házra van szükségük és egy helyre, ahol cserekereskedelmet folytathatnak.
+  - Rendelkezünk alapvető élelemmel és gyűjtöttünk némi fát, így az új településünk tovább növekedhet. A lakosoknak házra van szükségük és egy helyre, ahol cserekereskedelmet folytathatnak.
   - Itt az idő lakósátrak építésének és szükség van egy főtérre, ahol a lakosságot elláthatjuk javakkal.
   - 'Feladat:
 
@@ -63,7 +63,7 @@ logbook-data:
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1740. december 1.]
+  - [Headline, 1740. december 1-je]
   - [Image, content/gui/images/background/hr.png]
   - Végre van mit ennünk és lakhelyünk. Bár a sátram nem túl kényelmes, de szárazon tart és jó érzés, hogy éjjelente van tető a fejem felett.
   - 'Éjjelente a csillagokat fürkészem, de a hajózási térkép és a hozzá tartozó eszközök nélkül nem sokra jutok. Az az érzésem, hogy egy darabig még itt fogunk rostokolni, így a lehető legjobbat kell kihoznunk a helyzetből.
@@ -76,7 +76,7 @@ logbook-data:
   - ''
 
 - &WON
-  - [Headline, 1745. augusztus 27.]
+  - [Headline, 1745. augusztus 27-e]
   - [Image, content/gui/images/background/hr.png]
   - A falu jól teljesít, a város lakossága elérte a 250-et. Már kezdem megszeretni az új otthonomat, de ez a sziget túl kicsi ahhoz, hogy örökre itt maradjak.
   - Ideje berakodni a hajóba és felkutatni egy nagyobb szigetet, amely több hellyel és sok nyersanyaggal kecsegtet. Elkészítettem egy kezdetleges navigációs térképet az éjszakai csillagszemlék alapján. Nem tökéletes, de kis szerencsével visszatalálunk ide.
@@ -142,7 +142,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: '1740-et írunk, egy angol lobogóval ellátott hajó kapitánya vagy. Te és a legénységed Anglia egy gyarmatára tartottatok, átszelve a Csendes-óceánt.
+  description: '1740-et írunk, egy angol lobogóval ellátott hajó kapitánya vagy. Te és a legénységed Anglia egy településére tartottatok, átszelve a Csendes-óceánt.
 
     Minden remekül haladt, amikor jött a vihar…'
   difficulty: könnyű
