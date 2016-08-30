@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2016-08-29 11:51+0000\n"
+"PO-Revision-Date: 2016-08-30 07:49+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/the-"
 "unknown/hu/>\n"
@@ -83,6 +83,9 @@ msgid ""
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
 msgstr ""
+"Biztosítanunk kell alapvető szükségleteinket az életben maradáshoz. Ideje "
+"embereket küldeni élelem és faanyag beszerzésére, így túlélhetjük és fedél "
+"is lesz a fejünk felett."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -93,10 +96,16 @@ msgid ""
 "* Hunter\n"
 "Collect 5 food and 5 boards."
 msgstr ""
+"Feladatok:\n"
+"Építs a következőkből legalább egyet:\n"
+"* Favágó\n"
+"* Horgász sátor\n"
+"* Vadász sátor\n"
+"Gyűjts össze 5 élelmet és 5 deszkát."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr ""
+msgstr "1740. november 25."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -104,22 +113,29 @@ msgid ""
 "the growth of our new settlement. Our people demand a place to live and "
 "exchange goods for their everyday needs."
 msgstr ""
+"Rendelkezünk alapvető élelemmel és gyűjtöttünk némi fát, így az új "
+"gyarmatunk tovább növekedhet. A lakosoknak házra van szükségük és egy "
+"helyre, ahol cserekereskedelmet folytathatnak."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It is time to build some tents to live in and a small main square to supply "
 "our citizens with goods."
 msgstr ""
+"Itt az idő lakósátrak építésének és szükség van egy főtérre, ahol a "
+"lakosságot elláthatjuk javakkal."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Build a Main Square and at least 10 Tents."
 msgstr ""
+"Feladat:\n"
+"Építs egy főteret és legalább 10 sátrat."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr ""
+msgstr "1740. december 1."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -127,6 +143,8 @@ msgid ""
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
 msgstr ""
+"Végre van mit ennünk és lakhelyünk. Bár a sátram nem túl kényelmes, de "
+"szárazon tart és jó érzés, hogy éjjelente van tető a fejem felett."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -135,6 +153,10 @@ msgid ""
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
+"Éjjelente a csillagokat fürkészem, de a hajózási térkép és a hozzá tartozó "
+"eszközök nélkül nem sokra jutok. Az az érzésem, hogy egy darabig még itt "
+"fogunk rostokolni, így a lehető legjobbat kell kihoznunk a helyzetből.\n"
+"Tovább kell bővítenünk civilizációnkat és módot kell találnunk a hazajutásra…"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -142,10 +164,13 @@ msgid ""
 "Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"Feladat:\n"
+"Bővítsd a falut, amíg a lakosok száma el nem éri a 250-et és az egyenleged "
+"pozitív számot nem mutat."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr ""
+msgstr "1745. augusztus 27."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -153,6 +178,9 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
+"A falu jól teljesít, a város lakossága elérte a 250-et. Már kezdem "
+"megszeretni az új otthonomat, de ez a sziget túl kicsi ahhoz, hogy örökre "
+"itt maradjak."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -161,6 +189,10 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
+"Ideje berakodni a hajóba és felkutatni egy nagyobb szigetet, amely több "
+"hellyel és sok nyersanyaggal kecsegtet. Elkészítettem egy kezdetleges "
+"navigációs térképet az éjszakai csillagszemlék alapján. Nem tökéletes, de "
+"kis szerencsével visszatalálunk ide."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -168,3 +200,7 @@ msgid ""
 "Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
 "how you can contribute to making this scenario longer and better!"
 msgstr ""
+"Feladat:\n"
+"Lépj kapcsolatba az Unknown Horizons csapatával (www.unknown-horizons.org) "
+"és ha van ötleted, segíts, hogy ez a küldetés hosszabb és tartalmasabb "
+"legyen!"
