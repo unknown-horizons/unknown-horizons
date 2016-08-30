@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-21 12:45+0200\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
 "PO-Revision-Date: 2015-07-29 02:37+0200\n"
 "Last-Translator: José Gil <transporte74@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/the-"
@@ -24,9 +24,14 @@ msgid "easy"
 msgstr "fácil"
 
 #. scenario description
+#, fuzzy
+#| msgid ""
+#| "You are the captain of a ship under the flag of England in 1740. You and "
+#| "your crew were on the way to a colony of England in the pacific ocean.\n"
+#| "Everything went fine until you came into a storm…"
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
-"your crew were on the way to a colony of England in the pacific ocean.\n"
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
 "És o Capitão de um navio Inglês em 1740. Tu e a tripulação estavam a caminho "
@@ -107,7 +112,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
-"Build a main square and at least 10 tents."
+"Build a Main Square and at least 10 Tents."
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).

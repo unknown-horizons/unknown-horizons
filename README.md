@@ -1,41 +1,59 @@
-```python
-# ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
-# team@unknown-horizons.org
-# This file is part of Unknown Horizons.
-#
-# Unknown Horizons is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the
-# Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-# ###################################################
-```
+[![Unknown-Horizons](/content/gfx/uh.png)](http://www.unknown-horizons.org/)
+============================================================
 
 [![Build Status](https://travis-ci.org/unknown-horizons/unknown-horizons.svg?branch=master)](https://travis-ci.org/unknown-horizons/unknown-horizons)
  [![Bountysource](https://www.bountysource.com/badge/team?team_id=9261&style=bounties_received)](https://www.bountysource.com/teams/unknown-horizons/issues?utm_source=unknown-horizons&utm_medium=shield&utm_campaign=bounties_received)
  [![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)](https://hosted.weblate.org/engage/uh/?utm_source=widget)
+ [![#unknown-horizons on Freenode](https://img.shields.io/badge/freenode-%23unknown--horizons-green.svg)](https://webchat.freenode.net/?channels=unknown-horizons)
 
-Unknown Horizons is a 2D realtime strategy simulation with an
+_Unknown Horizons_ is a 2D real time strategy simulation with an
 emphasis on economy and city building. Expand your small
 settlement to a strong and wealthy colony, collect taxes and
 supply your inhabitants with valuable goods. Increase your
 power with a well balanced economy and with strategic trade
 and diplomacy.
 
-Find more information about Unknown Horizons on our website:
-http://www.unknown-horizons.org/
+Find more information about Unknown Horizons on [our website](http://www.unknown-horizons.org/).
+
+
+## Installation
 
 For installation instructions check the "Downloads" section on
-our website and refer to our wiki:
-https://github.com/unknown-horizons/unknown-horizons/wiki
+[our website](http://www.unknown-horizons.org/download/).
 
+## Building from source
+
+To get the latest version of the game, you have to build it from source:
+
+ * [Instructions for GNU/Linux](http://www.unknown-horizons.org/download/sources/s-linux/)
+ * [Instructions for Windows](http://www.unknown-horizons.org/download/sources/s-windows/)
+ * [Instructions for OS X](http://www.unknown-horizons.org/download/sources/s-osx/)
+
+If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3Astarter).
+
+
+## Dependencies
+
+
+Technology     | Component
+---------------|----------
+**Python 2**    | Used for everything
+**SQLite**     | Maps
+**YAML**       | Object files storing component based information, easily scriptable
+**[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings
+**[fifechan](https://github.com/fifengine/fifechan)**   | GUI library
+
+## Community
+
+Type         | Where?
+-------------|-----------------------------------------------------------------------
+Forum        | http://forum.unknown-horizons.org/
+Mailing list | http://lists.unknown-horizons.org/cgi-bin/mailman/listinfo/uh-dev
+Bug Tracker  | https://github.com/unknown-horizons/unknown-horizons/issues
+IRC Channel  | #unknown-horizons on freenode ([irc://irc.freenode.net/unknown-horizons](irc://irc.freenode.net/unknown-horizons))
+
+More support info [here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos).
+
+## License
+
+This game is free software. It uses the [GNU General Public License, version 2](https://github.com/unknown-horizons/unknown-horizons/blob/master/doc/licenses/GPL). The licenses used for music, artwork, sounds, etc. can be found [here](https://github.com/unknown-horizons/unknown-horizons/tree/master/doc).

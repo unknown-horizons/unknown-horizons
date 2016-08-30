@@ -1,5 +1,5 @@
 id: BUILDINGS.CANNONFOUNDRY
-name: _ Cannon foundry
+name: _ Cannon Foundry
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 10
@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 3
 size_y: 3
 inhabitants: 1
-tooltip_text: _ Produces Cannon´s.
+tooltip_text: _ Produces Cannons.
 tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 2}
 components:

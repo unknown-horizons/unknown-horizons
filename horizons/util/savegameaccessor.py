@@ -324,11 +324,10 @@ class SavegameAccessor(DbReader):
 	def get_hash(cls, savegamefile):
 		if not os.path.exists(savegamefile):
 			return False
-		fd = open(savegamefile, "rb")
-		h = hashlib.sha1()
-		h.update(fd.read())
-		filehash = h.hexdigest()
-		fd.close()
+		with open(savegamefile, "rb") as f:
+			h = hashlib.sha1()
+			h.update(f.read())
+			filehash = h.hexdigest()
 		return filehash
 
 decorators.bind_all(SavegameAccessor)

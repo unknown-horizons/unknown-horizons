@@ -291,3 +291,17 @@ INSERT INTO "shipnames" VALUES('Swift',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Tower',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Wave',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('William',1,0,1,1,'en');
+
+CREATE TABLE "ainames" (
+	"name" TEXT NOT NULL,
+	"locale" TEXT
+);
+INSERT INTO "ainames" VALUES("Christopher Columbus", NULL);
+INSERT INTO "ainames" VALUES("William Adams", NULL);
+INSERT INTO "ainames" VALUES("Vitus Bering", NULL);
+INSERT INTO "ainames" VALUES("John Smith", NULL);
+INSERT INTO "ainames" VALUES("Paulo da Gama", NULL);
+INSERT INTO "ainames" VALUES("Ferdinand Magellan", NULL);
+INSERT INTO "ainames" VALUES("Anna Shchetinina", NULL);
+INSERT INTO "ainames" VALUES("John M. Whitall", NULL);
+INSERT INTO "ainames" VALUES("Leif Eriksson", NULL);

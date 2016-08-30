@@ -23,9 +23,17 @@
 
 import re
 import subprocess
+import os
 import sys
+import inspect
+
 from collections import defaultdict
 from glob import glob
+
+cmd_folder = os.path.realpath(
+    os.path.abspath(os.path.join(os.path.split(inspect.getfile(inspect.currentframe()))[0], "..")))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
 
 from horizons.constants import LANGUAGENAMES
 
@@ -104,7 +112,7 @@ def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..',
 def main():
 	# Main interface translation (old 'uh' project in pootle)
 	for f in INTERFACE_TRANSLATIONS:
-		#update_from_template(f, INTERFACE_TEMPLATE)
+		update_from_template(f, INTERFACE_TEMPLATE)
 		update_authors_per_file(f)
 
 	# MP server message translation (old 'mp-server' project in pootle)

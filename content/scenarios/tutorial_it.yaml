@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, 'Realizza un deposito presso la costa, in modo che sia facilmente accessibile per le altre navi, come il Trader libero.']
   - '
 
 
@@ -24,50 +24,50 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - Questo è il tuo Diario, dove troverai informazioni importanti riguardo lo scenario attuale. Un sommario con le notifiche delle nuove missioni apparirà nella parte sinistra della schermata. Potrai muoverti col mouse su queste notifiche per leggerne il contenuto, o cliccarci di sopra per aprire il Diario.
+  - Puoi anche aprire il Diario ogni volta che vuoi cliccando sul bottone sotto la mini-mappa, in alto a destra sullo schermo. Da adesso faremo riferimento a quest'aria che contiene la mini-mappa e i vari bottoni come "Panoramica".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Per visualizzare il tuo primo obiettivo cliccare su "Leggi altre voci" nel pannello di navigazione! Ti apparirà così:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Se hai qualche consiglio riguardo questo questo tutorial, o hai incontrato dei problemi, non esitare a contattarci.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Visita www.unknown-horizons.org per cercare aiuto e per contattare il team.'
   - ''
-  - And now, let's start the game!
+  - E adesso iniziamo a giocare seriamente!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'OBIETTIVO: INSEDIARSI SU UN''ISOLA']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - La tua nave è sul mare, carica di materiale. Devi attraccare e fondare un nuovo insediamento.
+  - Per muovere la tua nave, selezionala con il tasto sinistro e clicca con il destro nella posizione in cui vuoi farla andare.
+  - Quando sarai vicino alla costa, l'icona a forma di ancora nella scheda della panoramica si attiverà.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Cliccando su questo bottone ti verrà mostrato un anteprima del Magazzino, la prima costruzione che serve per fondare un nuovo insediamento. Se muovi il cursore attorno, noterai che l'anteprima diventa rosso quando la costruzione si trova in un'area non edificabile.
+  - Il Magazzino ha bisogno di essere posizionato sulla costa affinché la nave possa attraccare. Trova quindi una buona posizione e fai click col tasto sinistro per piazzare quest'edificio fondamentale.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Incarico: Costruire un magazzino sulla la costa.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Costruisci un tagliaboschi e collegalo al magazzino con un sentiero.]
+  - [Headline, 'NUOVO INCARICO: IL TAGLIABOSCHI']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Le provviste e i materiali da costruzione sono stati scaricati dalla nave e depositate nel tuo nuovo magazzino. Adesso è il momento di costruire qualche edificio basilare, cominciamo con la Tenda del Taglialegna.
+  - I taglialegna butteranno giù gli alberi dal bosco attorno alla tenda e lavoreranno il legno per produrre tavole, che possono essere utilizzare nella costruzione o nello scambio di materiali.
+  - Per costruire la Tenda del Taglialegna apri il menù Costruisci cliccando l'icona grande sotto la mini-mappa oppure premendo il tasto B.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Il menù "Costruisci" è suddiviso in gruppi. Gli edifici del primo gruppo sono i soli disponibili per te; man mano che il livello di civilizzazione avanzerà, potrai accedere agli altri gruppi e potrai costruire una quantità maggiore di edifici.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Trova una zona alberata per il nostro taglialegna, poi selezione "Tenda del Taglialegna" dalla lista degli edifici nella Panoramica e piazza l'edificio.
   - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
   - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
@@ -95,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Questa è una fornitura molto costante al costo di un tempo di produzione leggermente più lungo per unità di cibo.
   - Un piccolo insediamento come il tuo può utilizzare entrambe le compagnie, e si può meglio bilanciare i pro e i contro, se si vede il confronto diretto.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, 'OBIETTIVO: Costruisci un cacciatore e un pescatore.']
   - Non dimenticare di collegarli al magazzino con dei percorsi!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -112,7 +112,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Evita di mettere le costruzioni principali troppo vicino alla falegnameria perche rimuoveranno gli alberi che servono il boscaiolo.
   - Le industrie lavorano anche senza essere collegate alle tende, quindi non serve costruire un percorso tra la piazza principale e (per esempio) la capanna del falegname.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Obiettivo: Costruisci una piazza principale.']
   - [Pagebreak]
   - '
 
@@ -156,7 +156,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In caso contrario, felicità e reddito diminuiscono. Ad un certo momento i vostri residenti possono arrabbiarsi e semplicemente andarsene dal tuo villaggio, lasciando un rudere decadente.
   - Nota che è possibile modificare le impostazioni fiscali globali anche qui.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Obiettivo: Costruisci almeno tre tende aggiuntive.']
   - '
 
     TIP: Premendo "SHIFT" facilita la costruzione di più edifici dello stesso tipo.'
@@ -184,7 +184,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Fare clic sulla piccola icona per cambiare la modalità da 'Buy' a 'Sell' e viceversa.
   - Fare clic sullo slot per scegliere il bene che si desidera commerciare. Ulteriori spiegazzioni seguiranno una volta che siete pronti per il commercio.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Obiettivo:Costruisci un segnale di fuoco sulla costa vicino alla tua filiale.']
 
 - &TRADING
   - [Message, Raggiungi una scorta  di almeno 30 attrezzi per isola. Nota che ci vorrà non poco tempo.]
@@ -211,7 +211,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     NON è possibile modificare i prezzi manualmente!'
   - Puoi vedere il tuo saldo commerciale nella scheda 'Account' confrontando i valori 'Sale' e 'Buy'.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Obiettivo: Acquista tanto quanto è necessario per disporre di 30 utensili in magazzino!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -236,7 +236,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     È anche necessario il collegamento stradale.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Obiettivo:Costruisci un padiglione con un sentiero per le tende in modo da soddisfare la domanda di fede dei vostri marinai.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -257,7 +257,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Un alloggio aggiornato accoglie più abitanti, in oltre i pionieri pagano più tasse rispetto ai marinai.
   - Come avrete già capito, il lato negativo è che i pionieri richiedono beni supplementari di cui i marinai non hanno bisogno - così hai bisogno di spendere soldi in più per renderli felici.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Obiettivo: Imposta il livello delle tasse su Basso (a sinistra) ed attendi l''aggiornamento dei marinai.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -282,7 +282,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Se, invece, hai intenzione di fare alcune lavori su diversi parti dell'isola (che può avere senso) o anche su isole diverse, avrete bisogno di un collegamento per i raccoglitori.
   - Prova a costruire la fattoria non troppo vicino alla costa o a edifici esistenti in quanto avrà bisogno di un po ' di spazio intorno per funzionare bene.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Obiettivo: Costruisci una fattoria.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -303,7 +303,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Diverse coltivazioni consumano più o meno tempo (semina, raccolta, allevamento, ecc ...) e per questo, l'azienda potrebbe non essere in grado di servire tutti i campi costruiti in tempo.
   - Per ora, non è necessario occuparsi di questi problemi dato cheal momento non avete costruito alcun campo. Cambiamo questo!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Obiettivo: Costruisci almeno un pascolo nel campo della fattoria e aggiungi campi di patate se lo desideri.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -331,7 +331,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Invia i propri raccoglitori a prendere le merci, è simile al magazzino.'
   - Le aziende possono anche essere collegate a un magazzino per far si che i loro prodotti vengono raccolti, se il magazzino è sopraffatto dai compiti di raccolta, è possibile inserire una tenda di stoccaggio per aiutare.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Obiettivo: Costruisci una tenda magazzino (livello I) preferibilmente la dove ti servono dei raccoglitori.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -344,7 +344,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In entrambi i casi è necessario verificare il collegamento ad una strada.
   - È possibile inserire il tessitore vicino alla fattoria e abbattere ogni sentiero alla fattoria per vedere che può ancora prendere la lana e produrre.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Obiettivo: Costruire un tessitore posizionato in modo tale che possa ottenere la lana.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -356,7 +356,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Una volta che siete in grado di mantenere stabile un economia che può soddisfare questa quantità di consumatori, siete pronti a scoprire nuovi orizzonti sconosciuti!
   - È inoltre necessario possedere abbastanza soldi per alimentare l`economia, quindi è richiesto un saldo positivo (guarda  la scheda 'Account' del magazzino).
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Obiettivo: Raggiungi una popolazione di 50 abitanti e un bilancio in attivo per completare il tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -647,4 +647,4 @@ metadata:
   locale: it
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 178 translated messages, 4 fuzzy translations, 4 untranslated messages.

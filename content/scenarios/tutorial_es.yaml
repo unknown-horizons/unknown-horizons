@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Construye una almacén en la costa, así será fácilmente accesible para otros barcos como el ''Mercader Libre''.']
+  - [Message, Construye un Almacén en la costa que permita a los barcos comerciales visitar tu asentamiento.]
   - '
 
 
@@ -24,104 +24,99 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Este es tu Diario de a bordo del Capitán donde se almacena toda la información importante. Una breve notificación de cada tarea aparecerá a la izquierda de la pantalla.
-  - Si estás interesado en descripciones más extensas, tu bitácora te proporcionará con suerte toda la ayuda que necesites.
-  - Después de cerrar esta bitácora, puedes volver a abrirlo mediante el icono "Bitácora del Capitán" en la esquina superior derecha (al lado del mini-mapa, con un documento sellado y una pluma).
+  - Este es tu Diario de Navegación, donde se guarda la información relevante sobre el escenario actual. Un resumen de cada nueva tarea aparecerá como un 'botón de notificación' a la izquierda de la pantalla. Puedes pasar el ratón sobre estas notificaciones para leer el resumen, o hacer clic directamente en el mismo botón para abrir el Diario de Navegación.
+  - También puedes volver a abrir el Diario de Navegación en cualquier momento haciendo clic en el botón que hay debajo del mini-mapa, en la parte superior derecha de tu pantalla. A partir de ahora, nos referiremos a este área que contiene el mini-mapa, varios botones y pestañas como la «Vista General».
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Para ver tu primera tarea, haz clic en el botón "Leer las siguientes entradas" en el panel de navegación. Aparecerá algo como esto:'
+    Para ver tu primera tarea, pasa a la siguiente página del Diario de Navegación usando el botón de la página anterior, es así:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Para cualquier sugerencia sobre una mejor redacción, temas que te gustaría que se explicaran o cualquier otra cosa: ¡Por favor dínoslo e intentaremos mejorar este tutorial!'
+    Si tienes alguna sugerencia para mejorar este tutorial o si encuentras algún error, por favor, avísanos.'
   - '
 
-    ¡Visita www.unknown-horizons.org para más ayuda sobre cómo contactar con el equipo!'
-  - Y ahora, vamos a empezar la partida en curso.
+    Visita www.unknown-horizons.org para averiguar cómo contactar con el equipo.'
+  - ''
+  - Y ahora, ¡comencemos la partida!
   - [Pagebreak]
-  - [Headline, ESTABLECERSE EN UNA ISLA]
+  - [Headline, 'N. TAREA: CREA UN ASENTAMIENTO']
   - [Image, content/gui/images/background/hr.png]
-  - Para mover tu navío, selecciónalo con el botón izquierdo y haz clic con el derecho sobre el punto al que quieras que vaya.
-  - Una vez cerca de la costa, se activará un botón que abre una pestaña con información general.
+  - Tu barco está en el mar, cargado con los suministros que necesitarás para establecer un nuevo asentamiento.
+  - Para mover tu navío, selecciónalo con el botón izquierdo, luego haz clic con el derecho sobre el punto al que quieras que vaya.
+  - Una vez cerca de la costa, el botón «Construir asentamiento» en la vista general se activará.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Esto indica que puedes construir una lonja pulsando ese botón (llamado "Construir Asentamiento").
-  - Ahora aparecerá una vista previa de tu edificio que arrastrarás allá donde muevas el cursor.
-  - Puedes construir en cualquier punto mientras no aparezca la vista previa ensombrecida en color rojo. Haz clic donde quieras ubicar tu primer edificio.
+  - Al hacer clic en este botón, se mostrará la vista previa del Almacén, el primer edificio requerido para fundar un nuevo asentamiento. A medida que muevas el cursor, notarás que la vista previa se sombrea de color rojo cuando el edificio está en una zona inadecuada.
+  - El Almacén debe ser posicionado en la costa para que los barcos puedan atracar. Así que busca una buena localización y haz clic izquierdo para ubicar este importante edificio.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Tarea: Construye un Almacén en la costa.']
 
 - &LUMBERJACK
-  - [Message, Construya un aserradero y conéctelo al almacén usando un sendero.]
-  - [Headline, 'NUEVA TAREA: CONSTRUYE UN ASERRADERO']
+  - [Message, Construye una Tienda de Leñador y únela al Almacén.]
+  - [Headline, EDIFICA UNA TIENDA DE LEÑADOR]
   - [Image, content/gui/images/background/hr.png]
-  - Los materiales de construcción de tu navío se han descargado automáticamente. Ahora puedes construir algunos edificios básicos.
-  - Vamos a comenzar construyendo un aserradero.
-  - Esto es muy importante porque, en esta fase, los tableros son los únicos postes que los marineros se pueden permitir colgar en sus tiendas.
-  - El pescador necesita también unos tableros para construir su pequeña embarcación.
-  - Para construir aserraderos; abre el menú de construcción haciendo clic sobre el icono grande que hay debajo del mini-mapa o pulsando la tecla B.
+  - Los suministros y los materiales de construcción han sido descargados de tu barco y pueden ser guardados de forma segura en tu nuevo Almacén. Ya es hora de construir algunos edificios básicos, empezando por una Tienda de Leñador.
+  - Los leñadores talarán árboles del bosque alrededor de su tienda y procesarán la madera para producir tablas, para su uso en la construcción o como recurso comercial.
+  - Para construir una Tienda de Leñador, abre el Menú de Construcción haciendo clic sobre el botón que hay debajo del mini-mapa o pulsando la tecla 'B', la tecla de acceso rápido por defecto.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - El menú de construcción se ordena por niveles.
-  - Ahora estás en el primer nivel (nivel de los Marineros) por lo que sólo tendrás a tu disposición los edificios básicos.
+  - El Menú de Construcción se ordena por niveles y, como el tuyo es un nuevo asentamiento, los Edificios de Primer Nivel son los únicos que tienes disponibles. A medida que tu civilización avance, obtendrás acceso a niveles superiores y serás capaz de construir una variedad de edificios mucho mayor.
   - [Pagebreak]
-  - '
-
-    A medida que tu civilización avance, podrás construir edificios más complejos.'
-  - Por ahora, selecciona el aserradero bajo "Compañías" y constrúyelo en un área con algunos árboles alrededor.
-  - Más tarde también podrás plantar árboles - pero cuesta dinero. ¡Utiliza lo que la naturaleza te proporcione!
-  - Un negocio también necesita una conexión a un almacén o lonja, de lo contrario los bienes permanecerán en el negocio y no serán recolectados.
-  - Esto significa que tienes que conectar tu sucursal (o almacén) y el leñador.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Observa cómo un recolector recogerá tu primera producción automática de tableros. Los trabajadores del aserradero se reclutan automáticamente, no te preocupes.
+  - Busca una buena zona con árboles para que nuestro Leñador pueda trabajar y selecciona 'Tienda de Leñador' de la lista de edificios en la Vista General y ubica el edificio.
+  - En fases más avanzadas del juego puede que quieras crear bosques plantando árboles, pero dado que cuesta dinero, ¡deberías usar lo que la naturaleza ofrece por ahora!
+  - Cualquier edificio de recolección de recursos o de producción necesita un camino que lo conecte a un Almacén o a otra forma de almacenamiento, de lo contrario los bienes producidos no serán recogidos.
+  - Así que cunado hayas construido tu Tienda de Leñador, conéctala a tu Almacén abriendo el Menú de construcción y haciendo clic en el botón del 'Sendero'. Ahora puedes hacer clic y arrastrar con el ratón para dibujar la ruta de tu Sendero entre la Tienda de Leñador y el Almacén.
+  - ''
+  - [BoldLabel, 'Tarea: Construye una Tienda de Leñador en un área boscosa y conéctala a tu Almacén.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Construya un puesto de caza y pesca. Conéctelos al almacén.]
-  - [Headline, SUMINISTRO DE ALIMENTOS]
+  - [Message, Construya un Cazador y un Pescador. Conéctalos al Almacén.]
+  - [Headline, 'TAREA: SUMINISTRO DE ALIMENTOS']
   - [Image, content/gui/images/background/hr.png]
-  - Necesitarás tener algunos negocios que produzcan alimentos, también, porque la gente en general (y especialmente los marineros) están muy hambrientos.
-  - Los negocios disponibles en el primer nivel son el Cazador y el Pescador.
+  - Necesitarás tener algunos negocios que produzcan alimentos también, porque la gente en general (y especialmente los marineros) está muy hambrienta.
+  - Los negocios disponibles en el Primer Nivel son el Cazador y el Pescador.
   - El Cazador caza animales en el bosque, por lo que necesita que haya árboles cerca.
   - Ten en cuenta que puedes colocar el Cazador cerca del bosque del leñador.
   - Puede ocurrir que los animales no se reproduzcan lo suficientemente rápido o simplemente que se escondan bien.
-  - 'Conclusión: el cazador no es muy fiable si necesitas un suministro continuo.'
+  - 'Conclusión: el Cazador no es muy fiable si necesitas un suministro continuo.'
   - [Pagebreak]
   - '
 
-    El Pescador necesita que en su alcance haya una sucursal y un banco de peces.'
-  - Él construirá una pequeña embarcación a remo y pescará.
-  - Esta es una fuente muy constante de suministro a costa de un mayor tiempo de producción por unidad de comida.
+    El Pescador necesita un emplazamiento costero como el Almacén y un banco de peces a su alcance.'
+  - Él construirá una pequeña embarcación a remo y pescará algunos peces.
+  - Esta es una fuente muy constante de suministro a costa de un tiempo de producción ligeramente mayor por unidad de comida.
   - Un pequeño asentamiento como el tuyo puede utilizar ambos negocios, y puedes mejorar el saldo de ventajas e inconvenientes si te fijas en la comparación directa.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - ¡No olvides conectarlos a tu almacén mediante caminos!
+  - [BoldLabel, 'Tarea: Construye un Cazador y un Pescador.']
+  - ¡No olvides conectarlos a tu Almacén mediante caminos!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Construya una plaza principal. Elija una zona sin demasiados edificios comerciales.]
-  - [Headline, LA PLAZA PRINCIPAL]
+  - [Message, Construya una Plaza Principal. Elija una zona sin demasiados edificios comerciales.]
+  - [Headline, 'N. TAREA: LA PLAZA PRINCIPAL']
   - [Image, content/gui/images/background/hr.png]
   - Tus residentes necesitan una plaza principal donde poder obtener sus bienes.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - Todos los bienes de tu almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir al pescador ni al almacén.
+  - Esto significa que necesitan un camino de conexión entre sus casas y la Plaza Principal. Ten en cuenta que la Plaza Principal sirve de camino también, por eso las tiendas adyacentes no necesitan un camino separado.
+  - Todos los bienes de tu Almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir al Pescador ni siquiera al Almacén.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Deberías proporcionar un lugar adecuado a las tiendas de tu asentamiento procurando no ubicarlas demasiado cerca del aserradero ya que éstas despejarán los árboles que tu aserradero necesita para producir tablones.
-  - Los negocios no necesitan estar conectados a las tiendas, así que no necesitas construir un camino entre la plaza principal y por ejemplo, la tienda del leñador.
+  - Los negocios no necesitan estar conectados a las tiendas, así que no necesitas construir un camino entre la Plaza Principal y por ejemplo, la Tienda de Leñador.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Tarea: Construye una Plaza Principal.']
   - [Pagebreak]
   - '
 
-    Ahora vamos a centrar la mirada en la plaza principal.'
+    Ahora vamos a centrar la mirada en la Plaza Principal.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - En la pestaña "Cuenta" tendrás una hoja del saldo de esta isla, enumerando todos los costes que pagas y todos los impuestos que cobras.
@@ -132,24 +127,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - En las diferentes pestañas de información de niveles de construcción, puedes ver estadísticas de tus habitantes. También puedes fijar aquí el impuesto global de un nivel específico y permitir o denegar a los habitantes de ese nivel que realicen mejoras para alcanzar el siguiente nivel.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
-  - [Headline, EDIFICIOS RESIDENCIALES]
+  - [Message, Construye una Tienda y conéctala a la Plaza Principal si es necesario.]
+  - [Headline, 'TAREA: EDIFICIOS RESIDENCIALES']
   - [Image, content/gui/images/background/hr.png]
-  - ¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se quedarán a vivir en tu ciudad! Proporciónales tiendas de campaña.
+  - ¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se quedarán a vivir en tu ciudad! Proporciónales Tiendas.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Las tiendas son edificios residenciales básicos. Tus habitantes querrán mejorarlas cuando alcancen niveles superiores.
-  - Tenga en cuenta que la mejora de cada edificio requiere material de construcción, como madera para la primera mejora.
-  - Considere desactivar las mejoras si sus reservas de estos materiales son bajos.
-  - Los colonos pueden parecerte poco útiles porque intentarán consumir todos los bienes que produzcas - al menos pagan impuestos, y esa es la única forma de hacer dinero por ahora!
+  - Las Tiendas son los edificios residenciales básicos. Tus habitantes querrán mejorarlas cuando alcancen niveles superiores.
+  - Ten en cuenta que la mejora de cada edificio requiere material de construcción, como madera para la primera mejora.
+  - Considera desactivar las mejoras si tus reservas de estos materiales son bajos.
+  - Los colonos pueden parecerte poco útiles porque intentarán consumir todos los bienes que produzcas, pero al menos pagan impuestos, ¡y esa es la única forma que tienes de hacer dinero por ahora!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Tarea: Construye una Tienda y conéctala a la Plaza Principal si es necesario. Las Tiendas no necesitan estar conectadas a ningún negocio.']
 
 - &MORETENTS
-  - [Message, Construye al menos tres tiendas adicionales y conéctalas a la plaza principal.]
+  - [Message, Construye al menos tres Tiendas adicionales y conéctalas a la Plaza Principal.]
   - '
 
-    Vamos a echar una ojeada a la pestaña de información de la tienda.'
+    Vamos a echar una ojeada a la pestaña de información de la Tienda.'
   - 'Puedes ver
 
     * la felicidad de esos residentes.
@@ -157,48 +152,50 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * los impuestos que ellos pagan y
 
     * los recursos que piden.'
-  - Si sus demandas son satisfechas, su felicidad así como tus ingresos aumentarán.
+  - Si sus demandas son satisfechas, su felicidad y, por ende, tus ingresos derivados de los impuestos aumentarán.
   - Si no, su felicidad y tus ingresos decrecen. Algunas veces tus residentes estarán tan disgustados que simplemente se marcharán de tu villa, dejando atrás una ruina decadente.
-  - Ten en cuenta que aquí también puedes cambiar los impuestos globales.
+  - Ten en cuenta que aquí también puedes cambiar los ajustes de los impuestos globales.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Tarea: Construye al menos tres Tiendas adicionales.']
   - '
 
     TRUCO: Si mantienes pulsado MAYUS podrás construir más de un edificio del mismo tipo.'
 
 - &SIGNALFIRE
-  - [Message, Construye una señal de humo en la costa cerca de tu almacén.]
-  - [Headline, CONSTRUYE UNA SEÑAL DE HUMO]
+  - [Message, Construye una Señal de Fuego en la costa cerca de tu Almacén.]
+  - [Headline, CONSTRUYE UNA SEÑAL DE FUEGO]
   - [Image, content/gui/images/background/hr.png]
-  - ¿Ves un navío pasando por tu isla de vez en cuando? Ese navío pertenece a un Comerciante Libre, uno de los primeros colonos en este archipiélago.
-  - El comerciante proporcionará a tu asentamiento bienes necesarios sin los cuales no podrás producir aún.
-  - También puedes vender excesos de tu producción, pero en general consúmelos (construyendo más tiendas de campaña) en lugar de venderlos y obtener un rendimiento por ellos.
+  - ¿Ves un navío pasando por tu isla de vez en cuando? Ese navío pertenece al Comerciante Libre, uno de los primeros colonos en este archipiélago.
+  - El comerciante proporcionará a tu asentamiento bienes necesarios que no puedes producir aún.
+  - También puedes vender excesos de tu producción, pero en general consumirlos (construyendo más Tiendas) en lugar de venderlos genera un mayor beneficio.
   - Normalmente los navíos del comerciante navegan alrededor y buscan ofertas, pero puedes acelerar las cosas un poco.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Para este propósito, construye una señal de humo en la costa cerca de tu lonja, de forma que los navíos conozcan el camino a tu asentamiento.
-  - La señal de humo permite atraer a los navíos que pasen a través del área que cubre.
+  - Para este propósito, construye una Señal de Fuego en la costa cerca de tu Almacén, de forma que los navíos conozcan el camino a tu asentamiento.
+  - La Señal de Fuego debe cubrir el área por la que pasan los navíos para llamar su atención.
   - [Pagebreak]
   - '
 
-    Tras este pequeño anuncio, el comerciante pasará y si tuviese previsto zarpar echará un vistazo en lonja.'
-  - Puedes proponer intercambios a través de la lonja en la pestaña "Comprar/Vender".
+    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.'
+  - Puedes proponer intercambios a través de la pestaña "Comprar/Vender" del Almacén.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - En el nivel de "marineros", estás equipado con tres casillas de compraventa.
   - Haz clic en el icono pequeño para cambiar el modo casilla de "Comprar" a "Vender" y viceversa.
-  - Mediante clic en una casilla puedes elegir el producto que quieres comerciar. Lo explicaremos más detenidamente una vez que estés listo para ello..
+  - Haz clic en la casilla para el elegir el bien con el que quieres comercial. Lo explicaremos más detenidamente una vez que estés listo para comerciar.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Tarea: Construye una Señal de Fuego en la costa cerca de tu Almacén.']
 
 - &TRADING
-  - [Message, Llegar a unas reservas de isla de al menos 30 herramientas. Tenga en cuenta que esto puede llevar un tiempo.]
-  - [Headline, EL COMERCIO]
+  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Headline, 'N. TAREA: APRENDE A COMERCIAR']
   - [Image, content/gui/images/background/hr.png]
-  - '¡Excelente! El comerciante libre ahora se detendrá frente a tu lonja de vez en cuando.
+  - '¡Excelente! El Comerciante Libre ahora se detendrá frente a tu Almacén de vez en cuando.
 
 
     Vamos a continuar nuestro tutorial con cómo comerciar.'
+  - Primero haz clic en tu propio Almacén y luego en la tercera pestaña.
+  - Después haz clic en una de las tres casillas y selecciona el bien que quieres comprar o vender.
   - Después de seleccionar un tipo concreto de producto, la barra verde que atraviesa el fondo del casillero muestra cuánto tienes en almacén de este producto.
   - Podrás determinar el "valor objetivo" arrastrando el control deslizante de la derecha de cada casilla. Este valor tendrá un significado distinto según quieras "Comprar" o "Vender".
   - Cuando compres, comprarás lo suficiente como para mantener ese valor objetivo en el almacén.
@@ -209,31 +206,31 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     For ejemplo:
 
     Si tienes una casilla para "Comprar" y 5 toneladas en el almacén, un control deslizante posicionado en 9 toneladas significará que comprarás 4 toneladas más como máximo.'
-  - Una casilla de "Venta" con 18 toneladas en almacén y el control deslizante posicionado en 13 significa que venderás 5 toneladas más.
-  - Si el comerciante libre sin embargo sólo quiere comprar o vender menos de lo que tú permitas, tendrás que vivir con esa pena y esperar a que vuelva.
+  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
+  - Sin embargo, si el Comerciante Libre solo quiere comprar o vender menos de lo que tu configuración le dejaría, tendrás que vivir con esa pena y esperar a que vuelva.
   - 'Unknown Horizons calcula los precios automáticamente, así que el valor de una unidad puede variar.
 
     ¡NO es posible cambiar los precios manualmente!'
   - Puedes ver el saldo de comercio en la pestaña "Cuenta" comparando los valores de "Ventas" y "Compras".
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Tarea: ¡Compra las herramientas que necesites hasta completar 30 en el almacén!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Construye un convento conectado a las tiendas.]
-  - [Headline, EL PABELLÓN]
+  - [Message, Construye un Pabellón con conexión a las Tiendas.]
+  - [Headline, 'N. TAREA: EDIFICA UN PABELLÓN']
   - [Image, content/gui/images/background/hr.png]
   - Esas herramientas serán suficientes de momento. ¡Bien hecho!
   - Ahora proporciona casas, una plaza principal y alimento a tus habitantes.
-  - Aún hay una demanda insatisfecha. Puedes comprobar que en la plaza del mercado o en la pestaña de tiendas - tus marineros quieren un edificio básico donde poder rezar.
-  - La solución es un pabellón donde refugiar del sol al párroco del pueblo.
-  - Los edificios de Servicios como éste también necesitan estar conectados a las tiendas por medio de un camino o tus habitantes no podrán llegar a ellos.
+  - 'Aún hay una demanda que no hemos satisfecho hasta ahora (puedes comprobarlo haciendo clic en cualquier Tienda): tus marineros quieren un básico edificio donde poder rezar.'
+  - La solución es un Pabellón donde refugiar del sol al párroco del pueblo.
+  - Los edificios de servicios como éste también necesitan estar conectados a las Tiendas por medio de un camino o tus habitantes no podrán llegar a ellos.
   - [Pagebreak]
   - '
 
     ¡Ten en cuenta que la fe es tratada como un recurso físico!'
-  - Esto significa que tus habitantes necesitan un camino para conectar con el productor (convento) para escoger la fe allí.
+  - Esto significa que tus habitantes necesitan un camino para conectar con el productor (Pabellón) para adquirir la fe allí.
   - Un poco más tarde, la habrán consumido y volverán a recolectar más fe del fabricante.
   - 'Importante:
 
@@ -241,7 +238,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     La conexión vial también es necesaria.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Tarea: Construye un Pabellón con una conexión a las Tiendas para satisfacer la demanda de fe de tus marineros.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -249,53 +246,53 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Fija los impuestos a un nivel 'Bajo' (izquierda de todo) y espera a la actualización de tus marineros.]
   - [Headline, 'NUEVA TAREA: SIGUIENTE NIVEL']
   - [Image, content/gui/images/background/hr.png]
-  - Tus habitantes verán satisfechas sus demandas si pueden visitar regularmente la plaza principal y el convento y tu suministro de alimentos es adecuada.
-  - Si los marineros son lo suficientemente felices querrán avanzar al siguiente nivel denominado Pioneros.
-  - Para mantenerlos felices no puedes hacer nada más que eso, salvo mantener los impuestos en el nivel más bajo hasta que satisfagas todas sus demandas.
+  - Todas las demandas están satisfechas ahora si tus habitantes pueden visitar regularmente la Plaza Principal y el Pabellón, y tu suministro de alimentos es adecuado.
+  - Si los marineros son lo suficientemente felices, querrán avanzar al siguiente nivel denominado Pioneros.
+  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
   - No mantengas los impuestos bajos ya que probablemente te llevará tarde o temprano a la quiebra. Sin embargo durante un breve período de tiempo, si sabes lo que haces, está bien.
-  - Después de algún tiempo, la primera unidad saldrá caminando hacia la plaza principal donde buscará materiales de construcción para construirse una cabaña que sustituya su vieja tienda de campaña.
+  - Después de algún tiempo, la primera unidad saldrá caminando hacia la Plaza Principal donde buscará materiales de construcción para construirse una cabaña que sustituya su vieja tienda de campaña.
   - [Pagebreak]
   - '
 
-    Como tales mejoras residenciales supone consumo de recursos puedes restringirlos en la plaza principal.'
-  - También hay mejoras de edificios sin costes, como podrás ver con el aserradero. En este caso, sólo hay un cambio en los gráficos.
-  - Las mejoras de las casas permite acomodar más habitantes, y además los pioneros pagan más impuestos que los marineros.
-  - Como podrás imaginar, la desventaja es que los pioneros van a demandar productos adicionales que los marineros no necesitaban - así que tendrás que gastar un dinero extra en hacerles felices también.
+    Tales mejoras residenciales suponen un consumo de recursos, y ,por tanto, puede ser restringido en la Plaza Principal.'
+  - También hay mejoras de edificios sin costes, como podrás ver con el aserradero. En este caso, solo hay un cambio en los gráficos.
+  - Las mejoras de las casas permiten acomodar a más habitantes, y además los pioneros pagan más impuestos que los marineros.
+  - Como habrás podido averiguar, la desventaja es que los pioneros demandan productos adicionales que los marineros no necesitaban, así que tendrás que gastar este dinero extra en hacerles felices también.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Tarea: Fija un nivel de impuestos Bajo (hacia la izquierda) y espera a que los marineros empiecen las mejoras.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Construya una granja manteniendo disponible algún espacio alrededor de ella.]
-  - [Headline, LAS GRANJAS]
+  - [Message, Construye una Granja manteniendo disponible algún espacio alrededor de ella.]
+  - [Headline, 'N. TAREA: CONSTRUYE UNA GRANJA']
   - [Image, content/gui/images/background/hr.png]
   - ¡Felicidades! ¡Algunos de tus habitantes han alcanzado el nivel 2!
-  - Ahora accede a los nuevos edificios, vamos a echar un vistazo otra vez al menú de construcción.
+  - Ahora tienes acceso a nuevos edificios, echa un vistazo otra vez al Menú de Construcción.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Un nueva y reluciente pestaña apareció ahí.
-  - Los pioneros reclamarán tejidos, así que necesitas fijar el inicio de una línea de producción textil con lana de oveja (que es uno de los bienes producidos en las granjas).
-  - La granja es un edificio de producción especial dado que si lo deseas puedes producir muchos (y variados) bienes.
-  - La producción de las granjas depende del tipo de campos de cultivo que construyas a su alrededor.
+  - Los pioneros reclamarán tejidos, así que necesitas fijar el inicio de una línea de producción textil con lana de oveja (que es uno de los bienes producidos en la Granja).
+  - La Granja es un edificio de producción muy especial, dado que si lo deseas puedes producir muchos (y variados) bienes.
+  - La producción de las Granjas depende del tipo de campos de cultivo que construyas a su alrededor.
   - [Pagebreak]
   - '
 
     Daremos un vistazo en profundidad más adelante.'
-  - Las granjas, al igual que todos los negocios que producen materias primas, no necesariamente requieren estar conectadas a un almacén o a una lonja.
-  - Todo irá bien mientras los trabajadores del negocio de producción final puedan llegar a la granja, así como los recolectores de la lonja o del almacén puedan llegar el negocio final.
-  - Sin embargo, si planeas hacer distintas partes del procesamiento distintas áreas de la isla (que puede tener sentido) o incluso en diferentes islas, necesitarás una conexión a los recolectores.
-  - Procura no construir la granja en un lugar demasiado cerca de la costa o de otros edificios existentes dado que necesitará algo de espacio alrededor para funcionar bien.
+  - Las Granjas, al igual que todos los negocios que producen materias primas, no necesariamente requieren estar conectadas a algún medio de almacenamiento o a un Almacén.
+  - Todo irá bien mientras los trabajadores del negocio de producción final puedan llegar a la Granja, así como los recolectores del Almacén o de la Tienda de Almacenamiento puedan llegar al negocio final.
+  - Sin embargo, si planeas hacer distintas partes del procesamiento en distintas áreas de la isla (lo cual puede tener sentido) o incluso en diferentes islas, necesitarás una conexión a los recolectores.
+  - Procura no construir la Granja en un lugar demasiado cerca de la costa o de otros edificios existentes, dado que necesitará algo de espacio alrededor para funcionar bien.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Tarea: Construir una Granja.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Construye al menos un prado y añade un campo de patatas si te apetece.]
-  - [Headline, LOS CAMPOS]
+  - [Message, Construye al menos un prado y añade campos de patatas si te apetece.]
+  - [Headline, 'NUEVA TAREA: CONSTRUYE CAMPOS']
   - [Image, content/gui/images/background/hr.png]
-  - La granja por sí sola no va a producir nada sin crear campos de cultivo.
+  - La Granja por sí sola no va a producir nada sin crear campos de cultivo.
   - Tienes para elegir entre prados, patatas y campos de caña de azúcar.
   - 'Aquí tenemos una breve información:
 
@@ -314,7 +311,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Los diferentes tipos de cultivo requieren más o menos tiempo de producción (para sembrar, cosechar, ordeñar, etc...) así que la granja no podrá atender al mismo tiempo a todos los campos de cultivo que construyas a su alrededor.
   - Por ahora, no tienes que preocuparte mucho de esos problemas mientras no hayas creado campos de cultivo. ¡Vamos a cambiar eso!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Tarea: Construye al menos un prado alrededor de la granja y añade si quieres campos de patata.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -323,12 +320,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, EL ALMACÉN]
   - [Image, content/gui/images/background/hr.png]
   - ¿Te fijaste en el leñador?
-  - Dado que en la lonja no tienes espacio ilimitado, los recolectores dejarán de recoger bienes de los negocios cuando el espacio de almacenaje esté completo.
+  - Dado que tu Almacén no tiene espacio ilimitado para almacenar bienes, los recolectores dejarán de recoger bienes de los negocios cuando el espacio de almacenaje esté completo.
   - Por lo que si no quieres que los marineros mejoren sus tiendas de campaña, probablemente tendrás un montón de tableros de madera y en ese caso, el leñador se detendrá.
   - Puedes mejorar esta situación de dos formas distintas, y vamos a echar un vistazo a ambas a continuación.
-  - 'Ningún negocio tiene trabajo que hacer.
+  - 'All companies offer to do no work at all.
 
-    Esto puede resultar extraño, pero haciendo clic en la rueda de marcha verás un informe en la cabaña del leñador.'
+    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
   - Si se activa este modo de "ruptura" (que podemos llamar "Decomiso"), disminuirán los costes de producción que pagas por el edificio. No van a ser cero, pero serán más bajos que si los negocios estuviesen produciendo.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -336,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Esto significa que puedes ahorrar dinero cuando temporalmente no necesites un negocio y no quieras demolerlo.'
-  - 'Otra solución es construir el último edificio del nivel 1 que no habíamos mencionado antes: la tienda de almacenamiento.'
-  - 'Este edificio tiene dos propósitos:
+  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
+  - 'This building has two purposes. It:
 
-    * Ofrece más almacenamiento de bienes, y
+    * Offers more storage for your goods, and
 
-    * envía sus propios transportistas para recoger bienes, tal como hace la lonja.'
-  - Ten en cuenta que los negocios también pueden ser conectados a un almacén para recoger bienes allí recogidos, y si la lonja está saturada de tareas de recolección, puedes colocar una tienda de almacén para ayudar a la que hay.
+    * sends its own collectors to fetch goods, just like the Warehouse does.'
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Construya un tejedor que de algún modo alcance la lana de tu granja.]
+  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
   - [Headline, EL TEJEDOR]
   - [Image, content/gui/images/background/hr.png]
   - Ahora que has fijado la producción de lana, para producir tejidos a partir de la lana necesitarás una tejedora.
-  - Hay dos sitios donde puedes construirlo - al lado de la granja o junto a un almacén (o lonja).
+  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
   - En ambos casos asegúrate de que están bien conectados por caminos.
-  - Puedes colocar la tejedora al lado de la granja y olvidarte del camino y observar cómo aun así comenzará la recolección de lana y empezará la producción.
+  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -367,9 +364,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Intenta dar cobijo a un total de 50 o más habitantes en tu ciudad proporcionándoles más edificios residenciales.
   - ¡Una vez que seas capaz de mantener la actividad económica que permita satisfacer la demanda de los consumidores, estarás listo para descubrir nuevos Horizontes Desconocidos!
-  - Necesitas también bastante dinero para mantener la actividad económica, así como tener un saldo positivo (compruébalo en la pestaña de la lonja "Cuenta").
+  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Tarea: Alcanza un total de 50 habitantes y un saldo positivo para completar este tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -378,12 +375,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, NO MÁS OBJETIVOS]
   - [Image, content/gui/images/background/hr.png]
   - Has completado satisfactoriamente todos los objetivos que te hemos propuesto. ¡Ahora tienes el mundo a tu disposición, esperando tus libres aspiraciones y desafiantes exploraciones!
-  - 'Si tienes alguna sugerencia que podríamos o deberíamos mejorar, añadir o dejar:'
+  - 'Si tienes alguna sugerencia sobre algo que podríamos o deberíamos mejorar, añadir o quitar:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - ¡También tienes a tu disposición nuestros foros!
-  - Los mejores resultados hasta ahora se han conseguido uniéndose a nuestro canal IRC, así que prueba a entrar antes :-)
+  - Los mejores resultados hasta ahora se han conseguido uniéndose a nuestro canal IRC, así que puedes probar eso primero (-;
   - [Pagebreak]
   - [Headline, ¡Gracias!]
   - [Image, content/gui/images/background/hr.png]
@@ -660,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 173 translated messages, 15 fuzzy translations.

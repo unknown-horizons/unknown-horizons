@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Järgmisena õpime kauplema.'
+  - Esmalt tee klõps oma laol ja seejärel klõpsa kolmandal kaardil.
+  - Nüüd klõpsa ühel kolmest pesast ja vali kaup, mida soovid osta või müüa.
   - Kaubagrupi valimisel järel näitab pesa alumises servas olev roheline riba (kui ta on nähtav) laos oleva kauba kogust.
   - Sikutades liuguri iga pesa parempoolsesse serva määrab "vajaliku koguse", mis omab erinevat tähendust kaartidel "Ost" ja "Müük".
   - Ostmisel ostad sa piisavalt, et hoida laos oleks varus "vajalik kogus" kaupa.
@@ -221,14 +223,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Neist tööriistadest hetkel piisab. Hästi tehtud!
   - Nüüd võimaldad oma elanikele eluaseme, peaväljaku ja toidu.
-  - Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud; sa võid vaadata seda lao või telgi kaardilt - su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.
+  - 'Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud (kontrolliks klõpsa ühel telkidest): su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.'
   - Lahenduseks on paviljon, mille küla hingekarjane püstitab kiirelt päikesevarjuks.
   - Pühakodadest peavad samuti viima rajad telkideni, sest muidu ei jõua su elanikud nendeni.
   - [Pagebreak]
   - '
 
     Arvesta sellega, et usku käsitletakse kui füüsilist resurssi!'
-  - See tähendab, et su koloonia elanikud vajavad ühendusteed, mida mööda nad saavad tootja juurest (paviljonist) hankida usku.
+  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - Mõne aja möödudes on nad selle ära tarbinud ja otsivad tootjat, kelle käest veel usku hankida.
   - 'Tähtis:
 
@@ -236,7 +238,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Nõutav on ka ühendav tee.'
   - ''
-  - [BoldLabel, 'Ülesanne: ehita paviljon ja teerada sellest telkideni, et rahuldada meremeeste usunälg.']
+  - [BoldLabel, 'Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -244,11 +246,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 'Määra madal maksude tase (vasak serv) ja oota, et su meremehed jõuaks järgmisele tasemele.']
   - [Headline, 'UUS ÜLESANNE: JÄRGMINE TASE']
   - [Image, content/gui/images/background/hr.png]
-  - Kõik nõudmised on nüüd täidetud, kui su elanikud külastavad regulaarselt peaväljakut ja paviljoni ja su toiduga varustamine on piisav.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
   - Kui meremehed on piisavalt õnnelikud, siis soovivad nad jõuda järgmisele tasemele, mida kutsutakse Avastajad.
   - Nende õnnelikuks tegemiseks on sul vaja ainult alandada makse, sest sa oled täitnud oma elanike kõik nõudmised.
   - Sa ei tohiks jääda madalate maksude juurde pikaks ajaks, sest see viib su varem või hiljem üsna kindlalt pankrotti. Mõneks ajaks on teadlik maksude alandamine siiski mõistlik samm.
-  - Mõne aja möödudes peaks esimene üksus tulema keskväljakule ja otsima seal uut ehitusmaterjali, et ehitada palkmaja. See maja asendab vana telgi.
+  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - '
 
@@ -262,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Ehita farm ja jäta selle ümbrusesse natuke tühja maad.]
+  - [Message, Build a Farm and keep some empty space around it.]
   - [Headline, 'ÜLESANNE: EHITA FARM']
   - [Image, content/gui/images/background/hr.png]
   - Palju õnne! Mõned su elaniukd on jõudnud järgmisele tasemele!!!
@@ -270,19 +272,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Sinna on lisandunud uus vahekaart.
-  - Avastajad vajavad kangast. Seega pead üles seadma kanga tootmisliini, mille sisendiks on lambavill (see on üks kaupadest, mida farm toodab).
-  - Farm on väga eriline tootmishoone, sest ta saab soovi korral toota mitte ühte, vaid paljusid (ja erinevaid) kaupu.
-  - Farmi toodang sõltub tema ümber rajatud põldudest.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
+  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
+  - The output of Farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - '
 
     Lähemalt vaatame seda hiljem.'
   - Farmid nagu ka kõik teised kompaniid, mis toodavad toormaterjale, ei pea olema ühendatud lao või laohoonega.
-  - Nii kaua kuni lõpp toodangu kompanii üksused jõuavad farmini ja laohoone või -telgi kogujad jõuavad lõppkompaniini, on kõik korras.
+  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
   - Kui sa siiski kavatsed teha mingit töötlemist saare erinevates osades (mõnikord on see mõislik) või isegi teis(t)el saar(t)el, siis on sul vaja ühendust kogujatega.
-  - Proovi ehitada farm nii rannikust kui ka teistest ehitistest natuke kaugemale, sest edukaks tööks on vaja seni kasutamata maad.
+  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'ÜLESANNE: Ehita farm.']
+  - [BoldLabel, 'Task: Build a Farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -290,7 +292,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Ehita vähemalt üks karjamaa ja lisa soovi korral ka kartupõld või kaks.]
   - [Headline, 'UUS ÜLESANNE: EHITA PÕLLUD']
   - [Image, content/gui/images/background/hr.png]
-  - Põldudeta farm ei tooda iseenesest mitte midagi.
+  - The Farm itself is not going to produce anything without some fields.
   - Sul on hetkel valida karjamaa ning kartuli- ja suhkrupõllu vahel.
   - 'Kiire ülevaade:
 
@@ -321,9 +323,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kuna su laohoone ei ole lõputult suur, et kaupu hoida, siis lõpetavad kogujad lao täitumisel kaupade kogumise.
   - Kui meremehed ei ole hiljuti soovinud oma telkide uuendamist, siis on sul ilmselt palju laudu ja saeveski ei tööta.
   - Sellist olukorda saab parandada kahel viisil ja järgnevalt tutvume mõlemaga.
-  - 'Kõik kompaniid ei pruugi alati tööd pakkuda.
+  - 'All companies offer to do no work at all.
 
-    See võib kõlada imelikult, kuid klõpsa hammasrattal, mis on saeveski ülevaatel.'
+    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
   - Kui seal on "puhkuse" olek lubatud, siis on ehitise käituskulud madalamad. Need ei lange nulli, kuid nad on siiski väiksemad, kui sa hoiad kompanii kaupu tootmas.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -331,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     See tähendab, et sa saad raha koguda, kui sa ajutiselt ei kompaniid ei vaja ja ei soovi ka seda lammutada.'
-  - 'Teine võimalus on ehitada viimane esimese taseme ehitis, millest ei ole siiani veel juttu olnud: lao telk.'
+  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
   - 'Sellel ehitisel on kaks ülesannet. See
 
     * võimaldab sul hoiustada rohkem kaupu, ja
 
     * saadab oma enda kogujad kapuadele järgi, nii nagu seda teevad laod.'
-  - Kõik kompaniid võivad olla ühendatud ka laoga, et nende toodangut kogutaks ja kui lao kogujad on ülekoormatud, siis saab laotelk sind ladustamisel aidata.
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita laotelk, eelistatult kohta, kuhu vajad kogujaid.']
+  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, 'Ehita ketrusvabrik, mis saab kuidagi töödelda su farmi villa.']
+  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
   - [Headline, 'UUS ÜLESANNE: EHITA KETRUSVABRIK']
   - [Image, content/gui/images/background/hr.png]
   - Nüüd, kus villatootmine on käivitatud, on sul vaja veel kangrut, et toota villast kangast.
-  - 'Ehitamiseks mõistlikke kohti on kaks: kas farmi või lao (-telgi) naabrusesse.'
+  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
   - Mõlemal juhul pead rajama ka ühendava teeraja.
-  - Ketrusvabriku võid paigutada farmi lähedale ja samas hävitada farmi ühendusteed, kuid villa varumine ja töötlemine jätkub ikkagi.
+  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita ketrusvabrik nii, et ta saaks hankida villa.']
+  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -655,4 +657,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 168 translated messages, 20 fuzzy translations.

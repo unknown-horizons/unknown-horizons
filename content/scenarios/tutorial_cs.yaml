@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Postavte na pobřeží Obchodní přístav, aby byl snadno dostupný ostatním lodím, jako je třeba Svobodný obchodník.']
+  - [Message, 'Postavte na pobřeží Obchodní přístav, aby povolil ostatním lodím navštívit vaší osadu.']
   - '
 
 
@@ -24,63 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Toto je Váš Lodní deník. Zde najdete všechny důležité informace. Krátké upozornění na každý úkol bude umístěno vlevo na obrazovce.
-  - Pokud máte zájem o podrobnější popisy, deník Vám poskytne všechny informace, které budete potřebovat.
-  - Pokud tento deník zavřete, můžete ho znovu otevřít pomocí ikony "Lodní deník" v pravém horním rohu (pod minimapou s listinou a brkem).
+  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Pro zobrazení Vašeho prvního úkolu klikněte na tlačítko "Přečíst další položku" v panelu navigace! Vypadá to takhle:'
+    Pro zobrazení Vašeho prvního úkolu obráťte na další stranu deníku použitím tlačítka v dolní časti na protější straně - Vypadá to takhle:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Pokud máte jakékoliv návrhy na lepší formulace nebo témata, která by měla být vysvětlena anebo je někde chyba, napište nám a my se pokusíme o nápravu!'
+    Jestli máte nejaké nápady o tom jak tenhle tutorial může být vylepšen, nebo jestli ste narazili na nejakú chybu, prosím řekněte nám.'
   - '
 
-    Navštivte nás na www.unknown-horizons.org a kontaktujte nás!'
-  - A nyní pojďme hrát.
+    Navštivte nás na www.unknown-horizons.org pro kontaktovaní týmu.'
+  - ''
+  - A nyní, pojďme hrát!
   - [Pagebreak]
-  - [Headline, 'NOVÝ ÚKOL: OSÍDLIT OSTROV']
+  - [Headline, 'NOVÝ ÚKOL: VYTVOŘTE OSADU']
   - [Image, content/gui/images/background/hr.png]
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
   - Pro pohyb lodí jí nejprve vyberte pomocí levého tlačítka myši a pravým tlačítkem zadejte místo, kam chcete plout.
-  - Jakmile budete v blízkosti pobřeží, tlačítko kotvy, které vidíte na kartě přehledu, bude aktivní.
+  - Jakmile budete v blízkosti pobřeží, tlačítko postavit osadu na kartě přehledu, bude aktivní.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - To naznačuje, že zde můžete postavit obchodní přístav stiskem tohoto tlačítka (nazvané "Postavit osadu").
-  - Při pohybu kurzorem se zobrazí náhled Vaší budovy.
-  - 'Budovu můžete postavit na jakémkoliv místě, kde není náhled zbarven červěně.
-
-    Klikněte a postavte Vaši první budovu.'
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Úkol: Vybuduj na pobřeží obchodní přístav.']
 
 - &LUMBERJACK
-  - [Message, Postavte dřevorubce a spojte ho s obchodním přístavem pomocí stezky.]
-  - [Headline, 'NOVÝ ÚKOL: POSTAVTE DŘEVORUBCE']
+  - [Message, Postavte dřevorubcuv stan a spojte ho s obchodním přístavem.]
+  - [Headline, 'NOVÝ ÚKOL: POSTAVTE DŘEVORUBCUV STAN']
   - [Image, content/gui/images/background/hr.png]
-  - Stavební materiál se z lodi vyloží automaticky. Nyní můžete postavit několik základních budov.
-  - Začneme se stavbou dřevorubce.
-  - V této části hry je to nezbytné, protože prkna jsou to jediné, co můžete poskytnout námořníkům k zakrytí jejich stanů.
-  - Také rybář potřebuje nějaká prkna, aby si mohl vyrobit svou loďku.
-  - Abyste postavili dřevorubce, otevřete stavební menu kliknutím na velkou ikonu pod minimapou nebo stisknutím klávesy B.
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - Pro postavení dřevorubeckého stanu, otevřete stavební menu kliknutím na tlačítko pod minimapou nebo stisknutím klávesy 'B', přednastavenou skratkou.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Stavební menu je rozděleno podle jednotlivých úrovní.
-  - Nyní se nacházíte na první úrovni (námořnická úroveň), proto máte k dispozici pouze základní budovy.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    Jak se bude Vaše civilizace rozvíjet, budete získávat složitější a složitější budovy.'
-  - Nyní vyberte dřevorubce v sekci "Podniky" a postavte ho v oblasti, kde jsou stromy.
-  - Později můžete stromy také sázet, ale bude Vás to stát peníze. Využijte to, co Vám příroda poskytuje!
-  - Podnik vždy potřebuje spojení stezkou ke skladišti nebo obchodnímu přístavu, jinak zboží zůstane v podniku a nebude vybráno.
-  - To znamená, že musíte vybudovat stezku spojující váš obchodní přístav (nebo skladiště) a dřevorubce.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Sledujte jak nosič odnese Vaše první vyprodukovaná prkna.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Úkol: Postavte dřevorubcuv stan v zalesněné oblasti a propojte ho cestou k Obchodnímu přístavu.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -102,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jedná se o nepřetržitý zdroj potravy, cenou za to je delší produkční čas každé jednotky jídla.
   - Malá osada, jakou je ta Vaše, může využít obě společnosti. Pokud je uvidíte v přímém srovnání, můžete lépe porovnat jejich výhody a nevýhody.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, 'Úkol: Postavte lovce a rybáře.']
   - Nezapomeňte je připojit k Vašemu obchodnímu přístavu pomocí stezek!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -112,14 +105,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVÝ ÚKOL: TRŽIŠTĚ']
   - [Image, content/gui/images/background/hr.png]
   - Vaši obyvatelé potřebují tržiště, kde si mohou vyzvednout zboží.
-  - To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště.
+  - To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště. Všimnete si to že, tržiště se chová také jako stezka, to znamená že stany okolo tržiště nepotřebují osobitní stezku.
   - Všechno zboží v obchodním přístavu je dostupné na tomto 'tržišti', takže obyvatelé nemusí chodit k rybáři nebo až do obchodního přístavu.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Měli byste se vyvarovat výstavby stanů příliš blízko Vašemu dřevorubci,protože postavením stanů budou zničeny stromy, které dřevorubec potřebuje k produkci prken.
   - Společnosti nepotřebují přístup ke stanům, proto nepotřebujete vybudovat cestu mezi tržištěm a např. dřevorubeckým stanem.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Úkol: Postavte tržiště.']
   - [Pagebreak]
   - '
 
@@ -134,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dále jsou zde záložky odpovídající jednotlivým úrovním. Zde můžete sledovat statistiky o Vašich obyvatelích. Zde můžete nastavit celkovou daň pro každou úroveň a povolit nebo zakázat obyvatelům na dané úrovni postoupit do vyšší úrovně.
 
 - &FIRSTTENT
-  - [Message, Postavte stan a propojte jej s tržištěm.]
+  - [Message, Postavte stan a propojte jej s tržištěm jestli je to potřebný.]
   - [Headline, 'NOVÝ ÚKOL: OBYTNÉ BUDOVY']
   - [Image, content/gui/images/background/hr.png]
   - Osadníci chtějí mít střechu nad hlavou, jinak je ani nenapadne usadit se ve Vašem městě! Potřebujete zajistit jim stany.
@@ -145,13 +138,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Zvažte vypnutí vylepšování, pokud máte nedostatek skladových zásob.
   - Osadníci se nezdají být příliš užiteční, snaží se spotřebovat všechno zboží, které produkujete, ale na druhou stranu platí daně, které jsou prozatím Vaším jediným zdrojem peněz!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
-  - [Message, Postavte alespoň tři další stany a propojte je s tržištěm.]
+  - [Message, Build at least three additional Tents and connect them to the Main Square.]
   - '
 
-    Nyní se pojďme podívat na přehledovou záložku pro stany.'
+    Let''s have a look at the Tent overview tab.'
   - 'Můžete zde vidět:
 
     * spokojenost obyvatel,
@@ -163,44 +156,46 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Pokud nebudou splněny, štěstí a příjem poklesne. Po určité době se obyvatelé stanou nevrlými, opustí Vaši vesnici a zanechají za sebou rozpadající se trosky.
   - Všimněte si, že i zde můžete změnit nastavení celkové daně.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Task: Build at least three additional Tents.']
   - '
 
     TIP: Přidržení klávesy SHIFT Vám zjednoduší hromadnou výstavbu budov stejného druhu.'
 
 - &SIGNALFIRE
-  - [Message, Postavte signální oheň na pobřeží v blízkosti obchodního přístavu.]
+  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
   - [Headline, 'NOVÝ ÚKOL: POSTAVTE SIGNÁLNÍ OHEŇ']
   - [Image, content/gui/images/background/hr.png]
   - Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto souostroví.
   - Obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím nemůžete sami produkovat.
-  - Také můžete prodávat přebytky z Vaší produkce. Obecně je ale výhodnější tyto přebytky spotřebovat (tak, že postavíte více stanů). Příjem z daní bude vyšší než by byl příjem z prodeje.
+  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
   - Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní příležitosti, ale my můžeme věci trochu urychlit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Pro tento účel postavte signální oheň na pobřeží poblíž obchodního přístavu. Tak ukážete lodím cestu do Vaší osady.
-  - Aby mohl signální oheň přilákat lodě, musí pokrývat oblast, kterou lodě projíždějí.
+  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
+  - The Signal Fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - '
 
-    Pokud by obchodník plánoval proplout okolo, po této upoutávce zakotví a navštíví obchodní přístav.'
-  - Zakázky můžete nabízet pomocí záložky "Prodej/Nákup" v obchodním přístavu.
+    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.'
+  - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - V úrovni 'námořníci' máte k dispozici tři obchodní sloty.
   - Klikněte na malou ikonu, abyste změnili režim slotu z "Nákup" na "Prodej" a naopak.
   - Klikněte do slotu a vyberte zboží, se kterým chcete obchodovat. Více tuto část vysvětlíme později, až budete připraveni obchodovat.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
 
 - &TRADING
   - [Message, Dosáhněte ostrovní skladové zásoby alespoň 30 nástrojů. To může chvilku trvat.]
   - [Headline, 'NOVÝ ÚKOL: VÝUKA OBCHODOVANÍ']
   - [Image, content/gui/images/background/hr.png]
-  - 'Výborně! Svobodný obchodník nyní čas od času zakotví v obchodním přístavu.
+  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
 
-    Pokračujme v našem návodu, jak obchodovat.'
+    Let''s continue our tutorial on how to trade.'
+  - First click on your own Warehouse and click on the third tab.
+  - Then click on one of the 3 slots, then select a good you want to buy or sell.
   - Po vybrání konkrétního typu zboží, zelený ukazatel napravo od slotu (pokud je viditelný) ukazuje, kolik jednotek zboží máte aktuálně ve skladu.
   - Tažením posuvníku na pravé straně každého slotu určíte "cílovou hodnotu", která má různé významy pro "Prodej" a "Nákup".
   - Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena "cílová hodnota" zásob.
@@ -212,30 +207,30 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Pokud máme nastavený slot na "Nákup" a na skladě máme 5 tun daného zboží, tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 dalších tun zboží.'
   - Prodej funguje obdobně. Slot "Prodej" s 18 tunami zboží na skladě a posuvník nastavený na hodnotu 13 tun způsobí, že bude prodáno 5 tun zboží.
-  - Pokud svobodný obchodník bude chtít nakoupit nebo prodat méně zboží než nastavení vašich slotů dovoluje, nezbývá Vám nic jiného než počkat na jeho příští cestu.
+  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
   - 'Unknown Horizons obsahuje chytré nastavení cen, to znamená, že cena za jednotku zboží se může lišit.
 
     Není možné měnit ceny manuálně!'
   - Vaši obchodní bilanci můžete vidět v záložce \"Účet\", kde jsou srovnány "Nákup" a "Prodej".
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Úkol: Nakupte nástroje tak, aby zásoby ve vašem skladu byly 30 kusů!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Postav pavilón propojený se stany.]
+  - [Message, Build a Pavilion with connection to the Tents.]
   - [Headline, 'NOVÝ ÚKOL: POSTAVTE PAVILÓN']
   - [Image, content/gui/images/background/hr.png]
   - Pro tuto chvíli máte dostatek nástrojů. Velmi dobře!
   - Vašim obyvatelům nyní poskytujete bydlení, tržiště a jídlo.
-  - Stále je zde ještě jeden požadavek, který nebyl doposud uspokojen, jak si můžete sami ověřit v záložce tržnice nebo stanu - vaši námořníci chtějí budovu, kde by se mohli modlit.
-  - Řešením je pavilón, který vesnický pastor rychle vztyčí jako úkryt před sluncem.
-  - Budovy služeb, jako je tato, potřebují být propojeny se stany pomocí cest, jinak je vaši obyvatelé nebudou moci využívat.
+  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
+  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
+  - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
     Všimněte si, že víra se chová jako fyzikální zdroj!'
-  - To znamená, že vaši obyvatelé potřebují stezky k producentovi (pavilónu), aby si mohli přijít vyzvednout víru.
+  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - Po určité době tuto víru zkonzumují a potom znovu vyhledají producenta, aby dostali více víry.
   - 'Důležité:
 
@@ -243,7 +238,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Spojení pomocí stezky je rovněž vyžadováno.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -251,25 +246,25 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Nastavte výši daní na nízkou hodnotu (levý okraj) a počkejte na vylepšení.]
   - [Headline, 'NOVÝ ÚKOL: DALŠÍ ÚROVEŇ']
   - [Image, content/gui/images/background/hr.png]
-  - Všechny požadavky jsou nyní splněny. Vaši obyvatelé můžou pravidelně navštěvovat náměstí a pavilón a Vaše zásobení jídlem je dostačující.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
   - Pokud jsou námořníci dostatečně šťastní, chtějí postoupit na další úroveň zvanou Průkopníci.
   - Abyste je učinili šťastnými, není nic jednoduššího než nastavit daně na nižší úroveň, dokud nebudou naplněny všechny požadavky Vašich obyvatel.
   - Nízké daně je potřeba využívat obezřetně. Pokud je necháte na nízké úrovni, přivedete svůj ostrov, dříve nebo později, k bankrotu. Pokud ale víte, co děláte, fungují skvěle.
-  - Po určité době se první obyvatelé vypraví na náměstí, aby získali nový stavební materiál, který potřebují ke stavbě srubu. Tímto domem nahradí své dosavadní stany.
+  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - '
 
-    Takové vylepšení obytných budov jsou jediným vylepšením, které Vás stojí prostředky a nemůže být Vámi zakázáno.'
+    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
   - Jsou zde také manuální vylepšení některých budov, kdy jsou prostředky využity ke stavbě lepší verze budovy na tom samém místě. Také existují vylepšení bez poplatků, například jak uvidíte u dřevorubce (dojde ke grafické změně).
   - Vylepšené domy pojmou více obyvatel a průkopníci také platí vyšší daně než námořníci.
   - Jak už jste si možná všimli, nevýhodou je, že průkopníci požadují dodatečné zboží, které námořníci nepotřebovali - takže budete muset utratit peníze, abyste je učinili šťastnými.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Úkol: Nastavte výši daní na nízkou hodnotu (levý okraj posuvníku) a počkejte na vylepšení.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Postavte farmu a nechte kolem ni volné místo.]
+  - [Message, Build a Farm and keep some empty space around it.]
   - [Headline, 'NOVÝ ÚKOL: POSTAVTE FARMU']
   - [Image, content/gui/images/background/hr.png]
   - Gratulujeme! Část vašich obyvatel dosáhla úrovně II!
@@ -277,19 +272,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Objevila se zde nová blýskavá záložka.
-  - Průkopníci budou požadovat látku, to znamená, že budete muset vytvořit výrobní linku pro látku, která začne ovčí vlnou (ovce jsou produkovány na farmě).
-  - Farma je vyjímečná produkční budova, která neprodukuje pouze jednu, ale velmi mnoho (a rozličných) druhů zboží, které si zvolíte.
-  - Výstupní produkt závisí na typu polí, které jsou vystavěny okolo ní.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
+  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
+  - The output of Farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - '
 
     K tomuto se podrobněji vrátíme později.'
-  - Farmy, stejně jako všechny společnosti produkující suroviny, nemusí být propojeny s obchodním přístavem nebo skladištěm.
-  - Jednotky výrobní společnosti musí dosáhnout na výstupy z farmy a výběrčím z pobočky, nebo obchodního přístavu stačí dosáhnout na výsledné produkty z výrobní společnosti.
+  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
+  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
   - Nicméně, pokud plánujete provádět některou část z výrobního řetězce v jiných částech ostrova (což může dávat smysl) nebo na různých ostrovech, budete potřebovat propojení k výběrčím.
-  - Zkuste postavit farmu tak, aby nebyla blízko pobřeží a stávajících budov, protože bude pro správnou činnost potřebovat místo okolo sebe.
+  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Task: Build a Farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -297,7 +292,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 'Vybudujte alespoň jednu pastvinu a přidejte bramborové pole, pokud chcete.']
   - [Headline, 'NOVÝ ÚKOL: STAVBA POLÍ']
   - [Image, content/gui/images/background/hr.png]
-  - Samotná farma nebude nic produkovat, pokud nebudou postavena pole.
+  - The Farm itself is not going to produce anything without some fields.
   - Nyní máte možnost výběru mezi pastvinami, bramborovými poli a plantážemi s cukrovou třtinou.
   - 'Proveďme krátké shrnutí:
 
@@ -316,7 +311,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Různé druhy polí mají různé časové požadavky (k vysetí, sklizni, pastvě, atd.) a kvůli tomu nemusí být farma schopna obsloužit všechna pole včas.
   - Nyní se tím nemusíte příliš zabývat, protože jste nevybudovali žádné pole. Pojďme to změnit!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Úkol: Vybudujte alespoň jednu pastvinu v okolí farmy a přidejte bramborové pole, pokud chcete.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -325,12 +320,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVÝ ÚKOL: POSTAVTE SKLADIŠTĚ']
   - [Image, content/gui/images/background/hr.png]
   - Viděli jste nedávno dřevorubce?
-  - Vzhledem k tomu že obchodní přístav nemá neomezený prostor pro uložení zboží, dělníci přestanou odebírat zboží od dodavatelů, když je plný zásob.
+  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
   - Takže pokud námořník nechtěl nedávno provést vylepšení svého stanu, pravděpodobně máte spoustu prken, a v takovém případě nemusí dřevorubec pracovat.
   - Tuto situaci můžete zlepšit dvěma různými způsoby, pojďme se na ně podívat.
-  - 'Všichni dodavatelé nabízejí možnost nepracovat.
+  - 'All companies offer to do no work at all.
 
-    Může to znít divně, ale zkuste kliknout na ozubené kolo, které vidíte například v přehledu dřevorubce.'
+    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
   - Pokud je povolen režim "rozbít" (říkáme tomu "Vyřazení z provozu"), budou provozní náklady, které zaplatíte za budovu, nižší. Nebudou nulové, ale stále nižší, než pokud bude dodavatel pracovat.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -338,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     To znamená, že můžete ušetřit poeníze tak, že dočasně zastavíte produkci zboží, které nepotřebujete a zároveň nechcete budovu strhnout.'
-  - 'Jiné řešení je vybudovat poslední budovu úrovně I, která zatím nebyla zmíněna: skladovacího stanu.'
-  - 'Tato budova slouží ke dvoum účelům, a to:
+  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
+  - 'This building has two purposes. It:
 
-    * Nabízí více prostoru pro vaše zboží, a
+    * Offers more storage for your goods, and
 
-    * vysílá své sběrače vyzvednout zboží, stejně jako obchodní přístav.'
-  - Pamatujte že všechny společnosti potřebují být spojeny s obchodním přístavem pro svoz zboží. Pokud má obchodní přístav moc úkolů postavte skladovací stan ktery obchodnímu přístavu pomůže při svážení výrobků.
+    * sends its own collectors to fetch goods, just like the Warehouse does.'
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, 'Postavte tkalcovnu, která bude v dosahu vlny z Vaší farmy.']
+  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
   - [Headline, 'NOVÝ ÚKOL: POSTAVTE TKALCOVNU']
   - [Image, content/gui/images/background/hr.png]
   - Nyní je nastavena produkce vlny, ale stále potřebujete tkalcovnu pro produkci látky z vlny.
-  - Jsou zde dvě místa, kde ji můžete postavit - buď v blízkosti farmy nebo v blízkosti skladovacího stanu (nebo obchodního přístavu).
+  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
   - V obou případech se ujistěte, jestli je propojená stezkou.
-  - Pokud bude tkadlec v dosahu farmy nemusíte jej propojovat stezkou, zásobení bude fungovat.
+  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -369,9 +364,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Dosáhnětě 50 a více obyvatel tím, že jim postavíte více domů.
   - Jakmile zajistíte obyvatele, jste připraveni objevovat nové Neznámé obzory (Unknown Horizons)!
-  - Také budete potřebovat dostatek peněz, proto abyste uchovali stabilní ekonomiku, je vyžadována kladná bilance (můžete si ji zkontrolovat v obchodním přístavu v záložce 'Účet').
+  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Úkol: Dosáhněte počtu 50 obyvatel a udrže kladnou bilanci pro dokončení tutorialu.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -662,4 +657,4 @@ metadata:
   locale: cs
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 131 translated messages, 42 fuzzy translations, 15 untranslated messages.

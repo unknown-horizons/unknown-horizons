@@ -1,5 +1,5 @@
 id: BUILDINGS.VILLAGE_SCHOOL
-name: _ Village school
+name: _ Village School
 baseclass: production.ProductionBuilding
 radius: 0
 cost: 15

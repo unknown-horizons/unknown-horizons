@@ -1,4 +1,22 @@
-## UH-Team ##
+## UH-Team_2016 ##
+
+#### Project Coordination
+* LinuxDonald (Thomas Kowaliczek)
+* Kilian] (Kilian Köppchen)
+
+#### Programming
+* MasterofJOKers ()
+* Kilian] (Kilian Köppchen)
+
+#### Sound and Music Artists
+* Ollo123 ()
+
+#### Graphics Artists
+* janexx (Jana Weigel)
+
+- - - - -
+
+## UH-Team_2015 ##
 
 #### Project Coordination
 * Kilian] (Kilian Köppchen)
@@ -37,6 +55,7 @@
 * Matthew Pablo
 * novatlan (Tobias Escher)
 * ThomasD (Thomas Davey)
+* Ollo123 ()
 
 #### Graphics Artists
 * Clearskies (Anthony Nguyen)
@@ -110,6 +129,13 @@
 
 #### 2015
 * Gladius1 (add Sounds to menu)
+
+#### 2016
+* konstin (doc fixes)
+* jorgesumle (text fixes)
+* MarkusHackspacher (code fixes)
+* xseanl (tooltips added)
+* martingeiger (added new inhabitant grafics)
 
 ## Translators
 

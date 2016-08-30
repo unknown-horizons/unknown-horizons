@@ -44,7 +44,8 @@ from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover, GuiCancelAction)
+                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover,
+                                GuiCancelAction, LanguageChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -136,26 +137,8 @@ class IngameGui(LivingObject):
 			'logbook' : lambda: self.windows.toggle(self.logbook)
 		})
 		self.mainhud.show()
-		GuiAction.subscribe(self._on_gui_click_action)
-		GuiHover.subscribe(self._on_gui_hover_action)
-		GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
-		hotkey_replacements = {
-			'rotateRight': 'ROTATE_RIGHT',
-			'rotateLeft': 'ROTATE_LEFT',
-			'speedUp': 'SPEED_UP',
-			'speedDown': 'SPEED_DOWN',
-			'destroy_tool': 'DESTROY_TOOL',
-			'build': 'BUILD_TOOL',
-			'gameMenuButton': 'ESCAPE',
-			'logbook': 'LOGBOOK',
-		}
-		for (widgetname, action) in hotkey_replacements.iteritems():
-			widget = self.mainhud.findChild(name=widgetname)
-			keys = horizons.globals.fife.get_keys_for_action(action)
-			# No `.upper()` here: "Pause" looks better than "PAUSE".
-			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
-			widget.helptext = widget.helptext.format(key=keyname)
+		self._replace_hotkeys_in_widgets()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
 
@@ -166,6 +149,11 @@ class IngameGui(LivingObject):
 		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
 		MineEmpty.subscribe(self._on_mine_empty)
 		ZoomChanged.subscribe(self._update_zoom)
+		GuiAction.subscribe(self._on_gui_click_action)
+		GuiHover.subscribe(self._on_gui_hover_action)
+		GuiCancelAction.subscribe(self._on_gui_cancel_action)
+		# NOTE: This has to be called after the text is replaced!
+		LanguageChanged.subscribe(self._on_language_changed)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -177,6 +165,9 @@ class IngameGui(LivingObject):
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		MineEmpty.unsubscribe(self._on_mine_empty)
 		ZoomChanged.unsubscribe(self._update_zoom)
+		GuiAction.unsubscribe(self._on_gui_click_action)
+		GuiHover.unsubscribe(self._on_gui_hover_action)
+		GuiCancelAction.unsubscribe(self._on_gui_cancel_action)
 
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
@@ -374,8 +365,8 @@ class IngameGui(LivingObject):
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"%s" % a.name
-			player2 = u"%s" % b.name
+			player1 = u"{0!s}".format(a.name)
+			player2 = u"{0!s}".format(b.name)
 
 			data = {'player1' : player1, 'player2' : player2}
 
@@ -441,7 +432,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = u"%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = u"{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -677,3 +668,30 @@ class IngameGui(LivingObject):
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
 		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
+
+	def _replace_hotkeys_in_widgets(self):
+		"""Replaces the `{key}` in the (translated) widget helptext with the actual hotkey"""
+		hotkey_replacements = {
+			'rotateRight': 'ROTATE_RIGHT',
+			'rotateLeft': 'ROTATE_LEFT',
+			'speedUp': 'SPEED_UP',
+			'speedDown': 'SPEED_DOWN',
+			'destroy_tool': 'DESTROY_TOOL',
+			'build': 'BUILD_TOOL',
+			'gameMenuButton': 'ESCAPE',
+			'logbook': 'LOGBOOK',
+		}
+		for (widgetname, action) in hotkey_replacements.iteritems():
+			widget = self.mainhud.findChild(name=widgetname)
+			keys = horizons.globals.fife.get_keys_for_action(action)
+			# No `.upper()` here: "Pause" looks better than "PAUSE".
+			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
+			widget.helptext = widget.helptext.format(key=keyname)
+
+	def _on_language_changed(self, msg):
+		"""Replace the hotkeys after translation.
+
+		NOTE: This should be called _after_ the texts are replaced. This
+		currently relies on import order with `horizons.gui`.
+		"""
+		self._replace_hotkeys_in_widgets()

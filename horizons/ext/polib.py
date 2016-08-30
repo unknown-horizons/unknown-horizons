@@ -191,17 +191,15 @@ def detect_encoding(file, binary_mode=False):
         else:
             mode = 'r'
             rx = rxt
-        f = open(file, mode)
-        for l in f.readlines():
-            match = rx.search(l)
-            if match:
-                f.close()
-                enc = match.group(1).strip()
-                if not isinstance(enc, text_type):
-                    enc = enc.decode('utf-8')
-                if charset_exists(enc):
-                    return enc
-        f.close()
+        with open(file, mode) as f:
+            for l in f.readlines():
+                match = rx.search(l)
+                if match:
+                    enc = match.group(1).strip()
+                    if not isinstance(enc, text_type):
+                        enc = enc.decode('utf-8')
+                    if charset_exists(enc):
+                        return enc
     return default_encoding
 # }}}
 # function escape() {{{

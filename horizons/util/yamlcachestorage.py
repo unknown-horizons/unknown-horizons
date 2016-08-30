@@ -61,14 +61,11 @@ class YamlCacheStorage(object):
 		"""Load the cache from disk if possible. Create an empty cache otherwise."""
 		if os.path.exists(self._filename):
 			self.log.debug('%s._reload(): loading cache from disk', self)
-			file = open(self._filename)
-			try:
-				data = pickle.load(file)
-				if not self._validate(data):
-					raise RuntimeError('Bad YamlCacheStorage data format')
-				self._data = data[1]
-			finally:
-				file.close()
+			with open(self._filename) as f:
+				data = pickle.load(f)
+			if not self._validate(data):
+				raise RuntimeError('Bad YamlCacheStorage data format')
+			self._data = data[1]
 			self.log.debug('%s._reload(): successfully loaded cache from disk', self)
 		else:
 			self._clear()
@@ -88,22 +85,22 @@ class YamlCacheStorage(object):
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
 			e = unicode(str(e), errors='replace')
-			cls.log.warning("Warning: Failed to open %s as cache: %s\nThis warning is expected when upgrading from old versions.\n" % (filename, e))
+			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
+				"warning is expected when upgrading from "
+				"old versions.\n".format(filename, e))
 			obj._clear()
 		return obj
 
 	def sync(self):
 		"""Write the file to disk if possible. Do nothing otherwise."""
 		try:
-			file = open(self._filename, 'wb')
-			try:
-				pickle.dump((self.version, self._data), file)
+			with open(self._filename, 'wb') as f:
+				pickle.dump((self.version, self._data), f)
 				self.log.debug('%s.sync(): success', self)
-			finally:
-				file.close()
 		except Exception as e:
 			# Ignore all exceptions because saving the cache on disk is not critical.
-			self.log.warning("Warning: Unable to save cache into %s: %s" % (self._filename, unicode(e)))
+			self.log.warning("Warning: Unable to save cache into {0!s}: {1!s}".
+				format(self._filename, unicode(e)))
 
 	def close(self):
 		"""Write the file to disk if possible and then invalidate the object in memory."""
@@ -128,4 +125,4 @@ class YamlCacheStorage(object):
 		return item in self._data
 
 	def __str__(self):
-		return "YamlCacheStorage('%s', %d items)" % (self._filename, len(self._data))
+		return "YamlCacheStorage('{0!s}', {1!d} items)".format(self._filename, len(self._data))

@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, 'Pastatykite sandėlį pakrantėje, kad prekybos laivai galėtų apsilankyti jūsų gyvenvietėje.']
   - '
 
 
@@ -24,104 +24,104 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - Čia jūsų Žurnalas, kuriame saugoma svarbi su dabartiniu scenarijumi susijusi informacija. Apie kiekvienos naujos užduoties santrauką taip pat įspės „pranešimo mygtukas“ šalia kairiojo ekrano krašto. Užveskite pelės žymeklį ant šio pranešimo, norėdami perskaityti santrauką, arba spustelėkite patį mygtuką, norėdami atverti Žurnalą.
+  - Bet kuriuo metu galite iš naujo atverti Žurnalą spustelėdami po sumažintu žemėlapiu, ekrano dešiniajame krašte esantį mygtuką. Toliau ši sritis, kurioje yra mažasis žemėlapis, įvairūs mygtukai ir skirtukai, bus vadinama „Apžvalga“.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Jei norite pamatyti savo pirmąją užduotį, atverskite kitą Žurnalo puslapį naudodami priešais esančio puslapio apačioje esantį mygtuką. Jis atrodo taip:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Jei turite pasiūlymų, kaip patobulinti šį mokomąjį žaidimą, arba jei randate klaidų, prašome pranešti mums.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Apsilankykite www.unknown-horizons.org ir sužinokite, kaip susisiekti su žaidimo komanda.'
   - ''
-  - And now, let's start the game!
+  - O dabar pradėkime žaidimą!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'NAUJA UŽDUOTIS: ĮKURKITE GYVENVIETĘ']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - Jūsų laivas jūroje, pakrautas resursais, kurių jums prireiks norint įkurti naują gyvenvietę.
+  - Norėdami perkelti laivą į kitą vietą, spustelėkite jį kairiuoju pelės mygtuku, o tada paspauskite dešinį pelės mygtuką ant tos vietos, į kurią norite nuplaukti.
+  - Kai būsite netoli pakrantės, apžvalgos mygtukas „Pastatyti gyvenvietę“ taps aktyvus.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Spustelėjus šį mygtuką bus rodoma Sandėlio, pirmojo pastato, reikalingo įkurti naują gyvenvietę, peržvalga. Perkeldami žymeklį, pastebėsite, kad, pastatą nukreipus į netinkamą sritį, peržvalgos vaizdas yra užtušuotas raudonai.
+  - Sandėlys turi būti pastatytas pakrantėje, kad laivai galėtų priplaukti. Todėl paieškokite tinkamos vietos ir paspauskite kairįjį pelės klavišą, kad pastatytumėte šį svarbų pastatą.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Užduotis: Pakrantėje pastatykite Sandėlį.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Pastatykite Lentpjūvę ir sujunkite ją su Sandėliu.]
+  - [Headline, 'NAUJA UŽDUOTIS: PASTATYKITE MEDKIRČIO PALAPINĘ']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Resursai ir statybinės medžiagos buvo iškrauti iš jūsų laivo ir saugiai laikomi jūsų naujajame Sandėlyje. Dabar jau galite statyti kai kuriuos pagrindinius pastatus, pradėdami nuo Medkirčio palapinės.
+  - Medkirčiai kirs medžius aplink jų palapinę esančioje miškingoje vietovėje ir perdirbs medieną į lentas, kurias bus galima naudoti statyboje arba kaip prekybos išteklių.
+  - Norėdami pastatyti Medkirčio Palapinę, atverkite Statymo Meniu, spustelėdami po sumažintu žemėlapiu esantį mygtuką arba paspausdami numatytąjį klavišą „B“.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Statymo Meniu, kaip ir jūsų naujoji gyvenvietė, yra surūšiuotas pagal pakopas, kol kas galite statyti tik Pirmosios pakopos pastatus; kai jūsų civilizacija pažengs, gausite prieigą prie aukštesnių pakopų ir galėsite statyti kur kas įvairesnius pastatus.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Suraskite savo Medkirčiui gražią miškingą vietovę, kurioje jis galėtų dirbti, tada iš Apžvalgos pastatų sąrašo pasirinkite „Medkirčio palapinę“ ir ją pastatykite.
+  - Vėlesniame žaidime gali būti naudinga sukurti miškingą vietovę sodinant medžius, bet tai kainuoja, todėl kol kas geriau naudokite tuos išteklius, kuriais pasirūpino gamta!
+  - Bet kuris išteklių rinkimo ar gamybos pastatas turi būti keliu sujungtas su Sandėliu ar kitokia saugykla, kitaip išgautos gėrybės nebus surenkamos.
+  - Kai jūsų Medkirčio palapinė bus reikiamoje padėtyje, sujunkite ją su Sandėliu, atverdami Statymo meniu ir paspausdami mygtuką „Kelias“. Spustelėkite ir tempkite pelytės žymeklį, kad padarytumėte kelią tarp Medkirčio palapinės ir Sandėlio.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
+  - [BoldLabel, 'Užduotis: Miškingoje vietoje pastatykite Medkirčio Palapinę ir sujunkite ją su Sandėliu.']
+  - Kai pastatai bus sujungti, pamatysite atvykstantį surinkėją, kuris surinks ką tik pagamintas lentas ir pristatys jas į Sandėlį, kur jos jau bus paruoštos naudojimui statyboje ar prekyboje.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a hunter and a fisher. Connect them to the warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Sukurkite medžiotoją ir žvejį. Sujunkite juos su sandėliu.]
+  - [Headline, 'NAUJA UŽDUOTIS: MAISTO TIEKIMAS']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter and Fisher.
-  - Medžiotojas žudo gyvūnus miške, todėl reikia, kad netoliese būtų medžių.
-  - Note that you can place your Hunter close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
+  - Jums prireiks turėti keletą maisto tiekėjų, nes dažniausiai žmonės (o ypač jūreiviai) būna labai alkani.
+  - Prieinami pirmosios pakopos maisto tiekėjai yra Medžiotojas ir Žvejys.
+  - Medžiotojas medžioja gyvūnus miške, todėl reikia, kad netoliese būtų medžių.
+  - Atkreipkite dėmesį, kad savo Medžiotoją galite įkurdinti šalia medkirčio miško.
+  - Gali atsitikti taip, kad gyvūnai pakankamai greitai nesiveis, arba tiesiog gerai pasislėps.
+  - 'Išvada: jei jums reikia nepertraukiamo tiekimo, medžiotoju galite ne itin pasikliauti.'
   - [Pagebreak]
   - '
 
     The Fisher needs a coastal building site like the warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
-  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
-  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
+  - Jis pastatys nedidelę valtį ir pradės gaudyti žuvį.
+  - Šis tiekimo būdas itin pastovus, tačiau maisto vieneto gamybos trukmė yra šiek tiek ilgesnė.
+  - Tokiai nedidelei gyvenvietei, kaip jūsų, gali praversti abu tiekėjai, o matydami jų tiesioginį palyginimą, galėsite geriau subalansuoti privalumus ir trūkumus.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Don't forget to connect them to your warehouse with trails!
+  - [BoldLabel, 'Užduotis: Sukurkite medžiotoją ir žvejį.']
+  - Nepamirškite jų keliais sujungti su sandėliu!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a main square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Message, 'Pastatykite pagrindinę aikštę. Pasirinkite sritį, kurioje nėra daug ūkio pastatų.']
+  - [Headline, 'NAUJA UŽDUOTIS: PAGRINDINĖ AIKŠTĖ']
   - [Image, content/gui/images/background/hr.png]
-  - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
+  - Gyventojams prireiks pagrindinės aikštės, kurioje jie galės gauti prekių.
+  - Tai reiškia, kad tarp jų namų ir pagrindinės aikštės turi būti ryšys - t. y. kelias. Atkreipkite dėmesį, kad pagrindinė aikštė taip pat atlieka kelio funkciją, todėl šalia esančioms palapinėms nebūtina statyti atskirų kelių.
+  - Šioje „prekyvietėje“ yra prieinamos visos jūsų sandėliuose esančios gėrybės, todėl gyventojams nereikės keliauti iki žvejo ar sandėlio.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
+  - Geriau nestatykite pagrindinės gyvenvietės palapinių per daug arti medkirčių, nes statydami palapines išnaikinsite medžius, iš kurių medkirčiai gamina lentas.
+  - Tiekėjai gali dirbti nebūdami prijungti prie palapinių, todėl nebūtina statyti kelių tarp pagrindinės aikštės ir pvz. medkirčio palapinės.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Užduotis: Pastatykite pagrindinę aikštę.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    Dabar atidžiau pažvelkime į pagrindinę aikštę.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - Skirtuke „Paskyra“ matysite šios salos balanso ataskaitą, kurioje bus nurodytos visos patirtos išlaidos ir gauti mokesčiai.
+  - Įrašai „Pardavimas“ ir „Pirkimas“ rodo jūsų prekybos balansą. Jie bus paaiškinti vėliau.
+  - Jei jūsų balansas teigiamas, gaunate pelną.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
@@ -655,4 +655,4 @@ metadata:
   locale: lt
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 16 translated messages, 1 fuzzy translation, 174 untranslated messages.
+  translation_status: 55 translated messages, 131 untranslated messages.

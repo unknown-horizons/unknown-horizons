@@ -235,7 +235,7 @@ class Tear(Command):
 		# Find the buildings that need to be destroyed 
 		buildings_to_destroy = []
 		for building in settlement.buildings:
-			if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
+			if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
 				continue
 			if building.position == position:
 				continue

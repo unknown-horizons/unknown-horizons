@@ -28,6 +28,8 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.GET_TOGETHER: 12, RES.LIQUOR: 4}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/tavern.ogg]
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

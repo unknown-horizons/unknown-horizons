@@ -60,6 +60,12 @@ INSERT INTO "sounds" VALUES(10, 'content/audio/sounds/flippage.ogg');
 INSERT INTO "sounds" VALUES(11, 'content/audio/sounds/success.ogg');
 INSERT INTO "sounds" VALUES(12, 'content/audio/sounds/refresh.ogg');
 INSERT INTO "sounds" VALUES(13, 'content/audio/sounds/click.ogg');
+--INSERT INTO "sounds" VALUES(14, 'content/audio/sounds/cow.ogg');
+INSERT INTO "sounds" VALUES(15, 'content/audio/sounds/smith.ogg');
+INSERT INTO "sounds" VALUES(16, 'content/audio/sounds/main_square.ogg');
+INSERT INTO "sounds" VALUES(17, 'content/audio/sounds/windmill.ogg');
+INSERT INTO "sounds" VALUES(18, 'content/audio/sounds/tavern.ogg');
+INSERT INTO "sounds" VALUES(19, 'content/audio/sounds/stonemason.ogg');
 
 CREATE TABLE "sounds_special" (
 	"type" TEXT NOT NULL,
@@ -185,14 +191,14 @@ INSERT INTO "related_buildings" VALUES(20, 19, 1);
 INSERT INTO "related_buildings" VALUES(20, 22, 1);
 INSERT INTO "related_buildings" VALUES(20, 36, 1);
 INSERT INTO "related_buildings" VALUES(20, 38, 1);
-INSERT INTO "related_buildings" VALUES(20, 39, 0);
+INSERT INTO "related_buildings" VALUES(20, 39, 1);
 INSERT INTO "related_buildings" VALUES(20, 40, 1);
 INSERT INTO "related_buildings" VALUES(20, 46, 1);
 INSERT INTO "related_buildings" VALUES(20, 49, 1);
 INSERT INTO "related_buildings" VALUES(20, 60, 1);
 INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
---INSERT INTO "related_buildings" VALUES(20, 69, 1); --out of space
+INSERT INTO "related_buildings" VALUES(20, 69, 1);
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
 CREATE TABLE "tile_set" (
@@ -275,8 +281,8 @@ INSERT INTO "resource" VALUES(48, 'marble deposit',  0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(49, 'marble tops',     7.5,   0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(50, 'coal deposit',    0,     0,    0); -- unused
-INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    0);
-INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    0);
+INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    1);
+INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    1);
 INSERT INTO "resource" VALUES(53, 'cocoa beans',     2,     0,    1);
 INSERT INTO "resource" VALUES(54, 'cocoa',           2.5,   0,    0);
 INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    1);

@@ -39,7 +39,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Wenn Sie Vorschläge zur Verbesserung des Tutorial oder Fehler finden, bitte teilen Sie diese uns mit.'
   - '
 
-    Unter www.unknown-horizons.org könnt Ihr das Team kontaktieren sowie auch Hilfe erhalten.'
+    Die Kontaktdaten des Team`s findet Ihr auf www.unknown-horizons.org .'
   - ''
   - Und nun lasst uns das Spiel beginnen!
   - [Pagebreak]
@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Weiter geht es mit der Anleitung zum Handeln.'
+  - Zuerst klickt ihr auf den Kontor und danach auf den dritten Tab.
+  - Dann klickt auf einen der 3 Slots, danach wählt ihr aus welchen Güter ihr Kaufen oder Verkaufen möchtet.
   - Nach dem Auswählen eines Guts zeigt der grüne Balken, wie viel davon momentan vorrätig ist. Befindet sich keine Ware im Lager, wird auch kein Balken erscheinen.
   - Das Bewegen des Schiebereglers auf der rechten Seite des Slots verändert die maximale Lagermenge. Dieser Wert hat unterschiedliche Bedeutungen beim Ver- und Einkauf.
   - Beim Einkauf legt er fest, wie viel dieser Ware Ihr insgesamt bevorraten möchtet.
@@ -219,7 +221,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Diese Werkzeuge sollten für den Moment ausreichen. Gut gemacht!
   - Ihr stellt Euren Einwohnern nun Unterkünfte, einen Marktplatz und Nahrung zur Verfügung.
-  - 'Ein Grundbedarf ist aber immer noch nicht gedeckt, wie Ihr in den Übersichten von Marktplatz oder Zelt nachprüfen könnt: Eure Seefahrer verlangen nach einem Gebäude zum Beten.'
+  - 'Ein Grundbedarf ist aber immer noch nicht gedeckt (wie Ihr in den Übersichten von Zelt nachprüfen könnt): Eure Seefahrer verlangen nach einem Gebäude zum Beten.'
   - Die Lösung ist ein Pavillon, welchen der Dorfpfarrer als Sonnenschutz aufspannt.
   - Dienstleistungsgebäude wie dieses benötigen einen Zugang zur Straße, ansonsten können es die Einwohner nicht erreichen.
   - [Pagebreak]
@@ -647,4 +649,4 @@ metadata:
   locale: de
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 188 translated messages.

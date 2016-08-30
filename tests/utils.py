@@ -89,6 +89,10 @@ class ReRunInfoPlugin(Plugin):
 		pass
 
 	def formatError(self, test, err):
+		import nose.case
+		if not isinstance(test, nose.case.Test):
+			return err
+
 		_, module, call = test.address()
 
 		output = ['python2', 'run_tests.py', u'%s:%s' % (module, call)]

@@ -179,6 +179,8 @@ class BUILDINGS:
 	
 	BREWERY          = 68
 	HOP_FIELD        = 69
+	
+	STONE_DEPOSIT    = 70
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -684,6 +686,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"pt"    : (u'Português', u'Portuguese'),
 	"ro"    : (u'Română', u'Romanian'),
 	"ru"    : (u'Русский', u'Russian'),
+	"sk"    : (u'Slovenský', u'Slovak'),
 	"sl"    : (u'Slovenski', u'Slovenian'),
 	"sr"    : (u'Cрпски', u'Serbian'),
 	"sv"    : (u'Svenska', u'Swedish'),
@@ -728,6 +731,7 @@ FONTDEFS = {
 	"pt"    : 'libertine',
 	"ro"    : 'libertine',
 	"ru"    : 'libertine',
+	"sk"    : 'libertine',
 	"sl"    : 'libertine',
 	"sr"    : 'libertine',
 	"sv"    : 'libertine',

@@ -117,8 +117,8 @@ def excepthook_creator(outfilename):
 	to a file.
 	@param outfilename: a filename to append traceback to"""
 	def excepthook(exception_type, value, tb):
-		f = open(outfilename, 'a')
-		traceback.print_exception(exception_type, value, tb, file=f)
+		with open(outfilename, 'a') as f:
+			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print('')
 		print(_('Unknown Horizons has crashed.'))

@@ -1,6 +1,6 @@
 id: BUILDINGS.STONEMASON
 name:
-  TIER.SETTLERS: _ Stonemason
+  TIER.CITIZENS: _ Stonemason
   TIER.MERCHANTS: _ Carver
 baseclass: production.ProductionBuilding
 radius: 8
@@ -10,9 +10,13 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Carves stone tops into bricks.
-tier: TIER.SETTLERS
-buildingcosts: {RES.GOLD: 1}
+tier: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.BRICKS: 3}
 components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
@@ -25,7 +29,9 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS: 8}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/stonemason.ogg]
 actionsets:
-  TIER.SETTLERS:
-    #as_stonemason0:
-    as_2x2:
+  TIER.CITIZENS:
+    as_stonemason0:
+

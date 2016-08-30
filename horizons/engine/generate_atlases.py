@@ -88,7 +88,7 @@ class AtlasBook(object):
 
 	def __init__(self, id, max_size):
 		self.id = id
-		self.path = os.path.join(PATHS.ATLAS_FILES_DIR, '%03d.png' % id)
+		self.path = os.path.join(PATHS.ATLAS_FILES_DIR, '{0:03d}.png'.format(id))
 		self.max_size = max_size
 		self._clear()
 
@@ -259,7 +259,8 @@ class AtlasGenerator(object):
 		with open(PATHS.ATLAS_DB_PATH, 'wb') as atlas_db_file:
 			atlas_db_file.write("CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
 			for book in self.books:
-				atlas_db_file.write("INSERT INTO atlas VALUES(%d, '%s');\n" % (book.id, book.path))
+				atlas_db_file.write("INSERT INTO atlas VALUES({0:d}, "
+					"'{1!s}');\n".format(book.id, book.path))
 
 		self._save_sets()
 		self._save_books(self.books)
@@ -395,7 +396,8 @@ class AtlasGenerator(object):
 
 		# verify that the combined images exist
 		db = DbReader(':memory:')
-		db.execute_script(open('content' + os.sep + 'atlas.sql').read())
+		with open('content' + os.sep + 'atlas.sql') as f:
+			db.execute_script(f.read())
 		for db_row in db("SELECT atlas_path FROM atlas"):
 			if not os.path.exists(db_row[0]):
 				return False

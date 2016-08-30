@@ -10,10 +10,45 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
-<HBox name="credits_team" position="185,45" padding="10">
-	<ScrollArea name="uh-team" max_size="310,500" min_size="310,500">
+<HBox name="credits_team_2016" position="185,45" padding="10">
+	<ScrollArea name="uh-team_2016" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
-		<Label text="UH-Team" name="headline" />
+		<Label text="UH-Team_2016" name="headline" />
+		<hr />
+		<VBox> <Label text="Project Coordination" name="headline" />
+			<VBox name="box">
+				<Label text="LinuxDonald (Thomas Kowaliczek)" />
+				<Label text="Kilian] (Kilian Köppchen)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Programming" name="headline" />
+			<VBox name="box">
+				<Label text="MasterofJOKers ()" />
+				<Label text="Kilian] (Kilian Köppchen)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Sound and Music Artists" name="headline" />
+			<VBox name="box">
+				<Label text="Ollo123 ()" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Graphics Artists" name="headline" />
+			<VBox name="box">
+				<Label text="janexx (Jana Weigel)" />
+			</VBox>
+		</VBox>
+	</VBox>
+	</ScrollArea>
+	<ScrollArea name="uh-team_2016" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
+	</VBox>
+	</ScrollArea>
+</HBox>
+
+<HBox name="credits_team_2015" position="185,45" padding="10">
+	<ScrollArea name="uh-team_2015" max_size="310,500" min_size="310,500">
+	<VBox min_size="310,500">
+		<Label text="UH-Team_2015" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
 			<VBox name="box">
@@ -47,7 +82,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="uh-team" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team_2015" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 		<VBox> <Label text="Game-Play Design" name="headline" />
 			<VBox name="box">
@@ -61,6 +96,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="Matthew Pablo" />
 				<Label text="novatlan (Tobias Escher)" />
 				<Label text="ThomasD (Thomas Davey)" />
+				<Label text="Ollo123 ()" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Graphics Artists" name="headline" />
@@ -160,6 +196,15 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		<VBox> <Label text="2015" name="headline" />
 			<VBox name="box">
 				<Label text="Gladius1 (add Sounds to menu)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="2016" name="headline" />
+			<VBox name="box">
+				<Label text="konstin (doc fixes)" />
+				<Label text="jorgesumle (text fixes)" />
+				<Label text="MarkusHackspacher (code fixes)" />
+				<Label text="xseanl (tooltips added)" />
+				<Label text="martingeiger (added new inhabitant grafics)" />
 			</VBox>
 		</VBox>
 	</VBox>
