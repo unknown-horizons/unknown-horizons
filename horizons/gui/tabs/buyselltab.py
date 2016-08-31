@@ -45,9 +45,9 @@ class BuySellTab(TabInterface):
 	icon_path = 'icons/tabwidget/warehouse/buysell'
 
 	buy_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	buy_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
+	buy_hover_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
 	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
-	sell_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
+	sell_hover_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 
 	dummy_icon_path = "icons/resources/none_gray"
 
