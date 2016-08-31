@@ -97,6 +97,9 @@ tab5:
 - icon: icons/tabwidget/buildmenu/class/military
 - headline: _ Military
 -
+  - _ Infrastructure
+  - BUILDINGS.BARRIER
+-
   - _ Workshops
   - BUILDINGS.WEAPONSMITH
   - BUILDINGS.CANNONFOUNDRY

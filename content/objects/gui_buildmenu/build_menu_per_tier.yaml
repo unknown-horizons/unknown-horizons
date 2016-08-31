@@ -17,6 +17,10 @@ tab1:
 #  - BUILDINGS.TREE
   - BUILDINGS.HUNTER
   - BUILDINGS.FISHER
+- # forth row
+  - _ Military
+  - BUILDINGS.BARRIER
+
 
 tab2:
 - icon: icons/tabwidget/buildmenu/tier/tier2
