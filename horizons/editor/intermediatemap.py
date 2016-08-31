@@ -125,6 +125,9 @@ class IntermediateMap(object):
 		if coords_list:
 			self._set_tiles(coords_list, new_type)
 
+	def set_building(self, raw_coords, building):
+		self.session.world_editor.set_building(raw_coords,building)
+
 	def _get_surrounding_coords(self, current_coords_list):
 		all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		current_coords_set = set(current_coords_list)

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Container size="250,350" name="editor_settings">
-	<TabBG amount="4" />
+<Container size="250,400" name="editor_settings">
+	<TabBG amount="6" />
 
 	<Container position="0, 20" size="250, 350" max_size="250, 350">
 		<Label text="Select brush size:" name="headline_brush_size" position="25,55" />
@@ -23,6 +23,8 @@
 		<ImageButton position="80,0" name="sand" />
 		<ImageButton position="0,40" name="shallow_water" />
 		<ImageButton position="80,40" name="water" />
+		<Label text="Fish deposit" position="0,80" name="fish_deposit" />
+		<Label text="Tree" position="80,80" name="tree" />
 	</AutoResizeContainer>
-	<Label text="(right click to stop)" name="cursor_hint" position="25,255" />
+	<Label text="(right click to stop)" name="cursor_hint" position="25,280" />
 </Container>

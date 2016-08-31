@@ -21,11 +21,11 @@
 
 import horizons.globals
 
-from horizons.constants import EDITOR, GROUND, VIEW
+from horizons.constants import EDITOR, GROUND, VIEW, BUILDINGS
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
-from horizons.gui.mousetools import SelectionTool, TileLayingTool
+from horizons.gui.mousetools import SelectionTool, TileLayingTool, ResourceTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -37,6 +37,7 @@ from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSett
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
+from horizons.entities import Entities
 
 
 class IngameGui(LivingObject):
@@ -180,7 +181,8 @@ class IngameGui(LivingObject):
 		self.cursor.remove()
 		klass = {
 			'default': SelectionTool,
-			'tile_layer': TileLayingTool
+			'tile_layer': TileLayingTool,
+			'resource_tool': ResourceTool
 		}[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 
@@ -223,6 +225,11 @@ class SettingsTab(TabInterface):
 			image.up_image = self._get_tile_image(tile)
 			image.size = image.min_size = image.max_size = (64, 32)
 			image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
+
+		for building_type in ('fish_deposit', 'tree'):
+			image = self.widget.findChild(name=building_type)
+			building = Entities.buildings[getattr(BUILDINGS, building_type.upper())]
+			image.capture(Callback(ingame_gui.set_cursor, 'resource_tool', building, building_type))
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place

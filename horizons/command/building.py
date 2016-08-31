@@ -97,7 +97,7 @@ class Build(Command):
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
 			return
-
+			
 		# collect data before objs are torn
 		# required by e.g. the mines to find out about the status of the resource deposit
 		if hasattr(Entities.buildings[self.building_class], "get_prebuild_data"):
