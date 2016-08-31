@@ -36,10 +36,8 @@
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
 				hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
 				helptext="Start route" comment="Trade route" />
-
+			<OkButton helptext="Exit" />	
 			<Spacer fixed_size="58" />
-
-			<OkButton helptext="Exit" />
 		</HBox>
 	</VBox>
 <!-- Here pickbelts could be added to achieve more space.-->
