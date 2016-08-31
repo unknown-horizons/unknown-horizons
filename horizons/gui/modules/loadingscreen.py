@@ -153,7 +153,7 @@ class LoadingScreen(Window):
 		qotl_type_label_pos_height = (res_height - 100)
 
 		qotl_label_pos_width = (qotl_type_label_pos_width)
-		qotl_label_pos_height = (res_width - 80)
+		qotl_label_pos_height = (res_height - 80)
 
 		version_label_pos_width = (res_width - 150)
 		version_label_pos_height = (res_height - 100)
