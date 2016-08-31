@@ -21,6 +21,7 @@
 
 import sqlite3
 import re
+import os.path
 
 from horizons.util.python import decorators
 
@@ -28,6 +29,8 @@ class DbReader(object):
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
 	def __init__(self, dbfile):
+		if not DbReader.check_db_file_exist(dbfile):
+			raise IOError(dbfile + "not found")
 		self.db_path = dbfile
 		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
@@ -69,3 +72,11 @@ class DbReader(object):
 	def close(self):
 		"""Closes the db"""
 		self.connection.close()
+
+	@staticmethod
+	def check_db_file_exist(db_path):
+		"""Checks if the database exists.
+		@param db_path: path to sqlite db."""
+		if db_path == ":memory:":
+			return True
+		return os.path.isfile(db_path)
