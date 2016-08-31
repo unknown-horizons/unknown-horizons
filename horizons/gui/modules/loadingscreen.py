@@ -132,9 +132,68 @@ class LoadingScreen(Window):
 	total_steps = len(stage_text)
 
 	def __init__(self):
+		(width, height) = horizons.globals.fife.get_fife_setting('ScreenResolution').split('x')
+		
+		res_width = int(width)
+		res_height = int(height)		
+	
+		center_width = (res_width // 2)
+		center_height = (res_height // 2)
+		
+		loading_pos_width = (center_width - 125)
+		loading_pos_height = (center_height - 68)
+
+		quotearea_pos_width = 0
+		quotearea_pos_height = (res_height - 207)
+
+		loading_label_pos_width = (loading_pos_width + 25)
+		loading_label_pos_height = (loading_pos_height)
+
+		qotl_type_label_pos_width = (center_width - 50)
+		qotl_type_label_pos_height = (res_height - 100)
+
+		qotl_label_pos_width = (qotl_type_label_pos_width)
+		qotl_label_pos_height = (res_width - 80)
+
+		version_label_pos_width = (res_width - 150)
+		version_label_pos_height = (res_height - 100)
+	
+		loading_stage_pos_width = 150
+		loading_stage_pos_height = (res_height - 80)
+
+		loading_progress_pos_width = (loading_label_pos_width)
+		loading_progress_pos_height = (loading_label_pos_height + 79)
+
 		self._widget = load_uh_widget('loadingscreen.xml')
 		self._widget.position_technique = "center:center"
-
+		
+		loadingscreen = self._widget.findChild(name='loadingscreen')
+		loadingscreen.size = res_width, res_height		
+		
+		loading_image = self._widget.findChild(name='loading_image')
+		loading_image.position = loading_pos_width, loading_pos_height
+		
+		quote_area = self._widget.findChild(name='quote_area')
+		quote_area.position = quotearea_pos_width, quotearea_pos_height
+		
+		loading_label = self._widget.findChild(name='loading_label')	
+		loading_label.position = loading_label_pos_width, loading_label_pos_height	
+		
+		qotl_type_label = self._widget.findChild(name='qotl_type_label')
+		qotl_type_label.position = qotl_type_label_pos_width, qotl_type_label_pos_height
+		
+		qotl_label = self._widget.findChild(name='qotl_label')
+		qotl_label.position = qotl_label_pos_width, qotl_label_pos_height
+		
+		version_label = self._widget.findChild(name='version_label')
+		version_label.position = version_label_pos_width, version_label_pos_height
+	
+		loading_stage = self._widget.findChild(name='loading_stage')
+		loading_stage.position = loading_stage_pos_width, loading_stage_pos_height
+		
+		loading_progress = self._widget.findChild(name='loading_progress')
+		loading_progress.position = loading_progress_pos_width, loading_progress_pos_height
+	
 		self._current_step = 0
 
 	def show(self):
