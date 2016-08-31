@@ -30,3 +30,4 @@ from select_savegame import SelectSavegameDialog
 from loadingscreen import LoadingScreen
 from pausemenu import PauseMenu
 from settings import SettingsDialog
+from research import ResearchDialog

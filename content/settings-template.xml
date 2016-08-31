@@ -72,6 +72,7 @@
 		<Setting name="CHAT" type="list"> C </Setting>
 		<Setting name="GRID" type="list"> G </Setting>
 		<Setting name="COORD_TOOLTIP" type="list"> H </Setting>
+		<Setting name="RESEARCH" type="list"> I </Setting>
 		<Setting name="SHOW_SELECTED" type="list"> J </Setting>
 		<Setting name="HEALTH_BAR" type="list"> K </Setting>
 		<Setting name="LOGBOOK" type="list"> L </Setting>
@@ -103,6 +104,6 @@
 		<Setting name="DEBUG" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 38 </Setting>
+		<Setting name="SettingsVersion" type="int"> 39 </Setting>
 	</Module>
 </Settings>
