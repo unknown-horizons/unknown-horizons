@@ -108,7 +108,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				potential_road_connections.append((distance * collector_building.get_collector_utilization(), building, collector_building))
 
 		# try the best link from the above list
-		for _, building, collector_building in sorted(potential_road_connections):
+		for unused, building, collector_building in sorted(potential_road_connections):
 			result = self._build_extra_road_connection(building, collector_building)
 			if result == BUILD_RESULT.OK:
 				self.production_builder.last_collector_improvement_road = current_tick

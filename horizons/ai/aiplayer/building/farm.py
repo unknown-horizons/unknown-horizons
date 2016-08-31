@@ -123,7 +123,7 @@ class FarmOptionCache(object):
 
 	def _get_max_fields(self):
 		max_fields = 0
-		for (num_fields, _, _) in self.raw_options:
+		for (num_fields, unused, unused) in self.raw_options:
 			if num_fields > max_fields:
 				max_fields = num_fields
 		return max_fields
@@ -201,7 +201,7 @@ class AbstractFarm(AbstractBuilding):
 		options = []
 
 		# create evaluators for completely new farms
-		for (_, (x, y), road_config) in chosen_raw_options:
+		for (unused, (x, y), road_config) in chosen_raw_options:
 			road_dx, road_dy = road_configs[road_config]
 			evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, max_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment)
 			if evaluator is not None:

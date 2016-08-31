@@ -131,7 +131,7 @@ class FoundSettlement(ShipMission):
 				cost += settlement_manager.settlement.warehouse.position.distance((x, y)) * personality.linear_warehouse_penalty
 			options.append((cost, x, y))
 
-		for _, x, y in sorted(options):
+		for unused, x, y in sorted(options):
 			if ship.check_move(Circle(Point(x + warehouse_class.width // 2, y + warehouse_class.height // 2), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
 				return (x, y)
 		return None

@@ -297,7 +297,7 @@ class SingleResourceTradeManager(WorldObject):
 
 		self.partners = defaultdict(float)
 		needed_amount = self.total - self.available
-		for amount, _, resource_manager, settlement_manager in options:
+		for amount, unused, resource_manager, settlement_manager in options:
 			if needed_amount < 1e-9:
 				break
 			if amount > needed_amount:

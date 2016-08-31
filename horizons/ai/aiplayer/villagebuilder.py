@@ -116,7 +116,7 @@ class VillageBuilder(AreaBuilder):
 		"""
 
 		xs = set([x for (x, _) in self.land_manager.village])
-		ys = set([y for (_, y) in self.land_manager.village])
+		ys = set([y for (unused, y) in self.land_manager.village])
 
 		width = max(xs) - min(xs) + 1
 		height = max(ys) - min(ys) + 1
@@ -169,7 +169,7 @@ class VillageBuilder(AreaBuilder):
 
 		self.plan = {}
 		ys = set(zip(*self.land_manager.village.keys())[1])
-		set([y for (_, y) in self.land_manager.village])
+		set([y for (unused, y) in self.land_manager.village])
 		for road_x in vertical_roads:
 			for road_y in ys:
 				coords = (road_x, road_y)
@@ -278,7 +278,7 @@ class VillageBuilder(AreaBuilder):
 				xs.add(x)
 		xs = sorted(xs)
 
-		ys = set(y for (_, y) in section_coords_set)
+		ys = set(y for (unused, y) in section_coords_set)
 		for y in horizontal_roads:
 			if y - 1 in ys or y + 1 in ys:
 				ys.add(y)
@@ -422,7 +422,7 @@ class VillageBuilder(AreaBuilder):
 		possible_tents.sort()
 
 		# place the tents
-		for _, (x, y) in possible_tents:
+		for unused, (x, y) in possible_tents:
 			ok = True
 			for dx, dy in tent_squares:
 				coords = (x + dx, y + dy)
@@ -601,7 +601,7 @@ class VillageBuilder(AreaBuilder):
 			options.sort(reverse = True)
 
 			assigned_residence_coords = set()
-			for _, producer_coords, residence_coords in options:
+			for unused, producer_coords, residence_coords in options:
 				if residence_coords in assigned_residence_coords:
 					continue
 				if len(self.special_building_assignments[purpose][producer_coords]) >= max_capacity:
@@ -674,7 +674,7 @@ class VillageBuilder(AreaBuilder):
 	def _recreate_tent_queue(self, removal_location=None):
 		"""Recreate the tent queue making sure that the possibly removed location is missing."""
 		queue = []
-		for coords, (purpose, (_, seq_no)) in self.plan.iteritems():
+		for coords, (purpose, (unused, seq_no)) in self.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.RESIDENCE:
 				object = self.island.ground_map[coords].object
 				if object is None or object.id != BUILDINGS.RESIDENTIAL or removal_location == coords:
