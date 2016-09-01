@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 03:24+0200\n"
-"PO-Revision-Date: 2016-08-30 13:28+0000\n"
+"PO-Revision-Date: 2016-09-01 11:30+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian "
 "<https://hosted.weblate.org/projects/uh/tutorial/hu/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.8\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -1183,7 +1183,7 @@ msgid ""
 "(maybe many residential buildings) you can also produce some potatoes."
 msgstr ""
 "Most csak legelőre van szükségünk, viszont, ha az élelmiszer ellátás "
-"alacsony (túl sok lakóépületed van), termeszthetsz burgonyát is."
+"alacsony (talán túl sok lakóépületed van), termeszthetsz burgonyát is."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1236,7 +1236,7 @@ msgid ""
 "if you like."
 msgstr ""
 "Feladat: Építs legalább egy legelőt a farm hatósugarában, és ha úgy tetszik, "
-"adj hozzá burgonya ültetvényeket."
+"adj hozzá burgonya ültetvényeket is."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a storage tent (tier I tab) where it makes sense."
@@ -1307,7 +1307,7 @@ msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the Storage Tent."
 msgstr ""
-"A másik megoldás, amelyről még nem esett szó: építsük fel az első szintű "
+"A másik megoldás, amelyről még nem esett szó: felépítheted az első szintű "
 "épületek közül az utolsót, a tároló sátrat."
 
 #. This is the text body of a logbook page.
@@ -1328,12 +1328,12 @@ msgid ""
 msgstr ""
 "A cégek által előállított árukat begyűjtheted, ha útösszeköttetést "
 "létesítesz a tároló sátorral, ha pedig a raktárad árubegyűjtője leterhelt, a "
-"raktár sátor lehet a megoldás."
+"raktár sátor ezt a problémát is orvosolni tudja."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Storage Tent, preferably where you need collectors."
 msgstr ""
-"Feladat: Építs tároló sátrakat (egyes szintű épület), ahol szükség "
+"Feladat: Építs egy tároló sátrat (egyes szintű épület), ahol szükség van "
 "begyűjtőkre."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1360,70 +1360,84 @@ msgid ""
 "where you can build it - either close to the Farm or close to a Storage Tent "
 "(or the Warehouse)."
 msgstr ""
+"A takács kunyhóban él a szövőmester. Két helyre építheted fel ezt az "
+"épületet - vagy a farm közelébe, vagy a tároló sátor (akár raktár) mellé."
 
 #. This is the text body of a logbook page.
 msgid "In both cases you should ensure the connection to a Trail as well."
-msgstr ""
+msgstr "Mindkét esetben biztosítanod kell az útösszeköttetést."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can place the Weaver's Hut close to the Farm and tear down any Trail to "
 "the Farm to see that it will still fetch the wool and produce."
 msgstr ""
+"Helyezd a takács kunyhót a farm közelébe, de egyelőre ne építs utat, hogy "
+"lásd, vajon a felhasználja-e a farm által előállított gyapjút a termeléshez."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Build a warehouse at the coast."
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
-msgstr "Építs egy fiókirodást a partra."
+msgstr ""
+"Feladat: Építs egy takács kunyhót úgy helyezve, hogy elérje a gyapjú "
+"készletet."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
-"Legalább 50 lakosnodnak kell lennie és pozitív egyenlegednek, hogy befejezd "
-"a gyakorlást."
+"Legalább 50 lakosnodnak és pozitív egyenlegednek kell lennie ahhoz, hogy "
+"befejezd az oktató módot."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr "Új feladat: Végezz a gyakorlással"
+msgstr "ÚJ FELADAT: OKTATÓ MÓD VÉGE"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing "
 "more residential buildings."
 msgstr ""
+"Szállásolj el legalább 50 lakost a városodban további lakóépületek "
+"építésével."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you are able to keep an economy running which can satisfy this amount "
 "of consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
+"Ha sikerül olyan gazdaságot felépítened, amely ki tudja szolgálni az ekkora "
+"lakossággal járó igényeket, készen állsz felfedezni az Unknown Horizonst!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the Warehouse tab 'Account') is required."
 msgstr ""
+"Ennek a gazdaságnak a fenntartásához sok pénzre van szükséged, az egyenleged "
+"mindig legyen pozitív (ezt folyamatosan ellenőrizheted a raktár 'Kimutatás' "
+"füle alatt)."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"Feladat: Szállásolj el legalább 50 lakost és legyen pozitív egyenleged az "
+"oktató mód befejezéséhez."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
-"Gratulálok! Elértél a gyakorlás végéhez, most már megfelesz az új "
-"kihívásoknak!"
+"Gratulálunk! Az oktató mód végéhez értél, készen állsz az új "
+"megmérettetésekre!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NO TASKS LEFT"
-msgstr "Nincs feladat hátra"
+msgstr "NINCS ÚJABB FELADAT"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1431,34 +1445,40 @@ msgid ""
 "is now at your command, waiting for your free aspirations and brave "
 "explorations!"
 msgstr ""
+"Sikeresen elvégeztél minden rád háruló feladatot. A világ a rendelkezésedre "
+"áll, valósítsd meg ötleteidet, fedezz fel bátran mindent!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
+"Ha bármilyen javaslatod lenne, min kellene változtatnunk vagy javítanunk, "
+"hozzáadnunk vagy kivennünk a játékból:"
 
 #. This is the text body of a logbook page.
 msgid "www.unknown-horizons.org"
-msgstr ""
+msgstr "www.unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 msgid "#unknown-horizons @ irc.freenode.net"
-msgstr ""
+msgstr "#unknown-horizons @ irc.freenode.net"
 
 #. This is the text body of a logbook page.
 msgid "team@unknown-horizons.org"
-msgstr ""
+msgstr "team@unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 msgid "Our forums are open to you as well!"
-msgstr ""
+msgstr "A játék fóruma is nyitva áll előtted!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"Az eddigi tapasztalataink alapján a legtöbb eredményt az IRC csatornánknak "
+"köszönhetjük, próbálkozz először ott. (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Thanks!"

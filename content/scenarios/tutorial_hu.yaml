@@ -301,7 +301,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Burgonya ültetvény: burgonyát termeszt, amelyet élelmiszerként kezelünk.
 
     * Cukornád ültetvény: cukrot termeszt, amelyből alkoholt és (később) édességet állít elő.'
-  - Most csak legelőre van szükségünk, viszont, ha az élelmiszer ellátás alacsony (túl sok lakóépületed van), termeszthetsz burgonyát is.
+  - Most csak legelőre van szükségünk, viszont, ha az élelmiszer ellátás alacsony (talán túl sok lakóépületed van), termeszthetsz burgonyát is.
   - Burgonya termesztéshez szükség van útösszeköttetésre a farmhoz (nem a mezőhöz), hiszen az állítja elő az árut.
   - [Pagebreak]
   - '
@@ -311,7 +311,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - A különböző típusú mezők kevesebb/több időt igényelnek a munkásoktól (ültetés, aratás, pásztorkodás, stb...), emiatt a farm nem képes minden mezőt időben ellátni.
   - Eddig nem kellett ezekkel a problémákkal foglalkoznod, hiszen nem tettél le még mezőket. Változtassunk ezen!
   - ''
-  - [BoldLabel, 'Feladat: Építs legalább egy legelőt a farm hatósugarában, és ha úgy tetszik, adj hozzá burgonya ültetvényeket.']
+  - [BoldLabel, 'Feladat: Építs legalább egy legelőt a farm hatósugarában, és ha úgy tetszik, adj hozzá burgonya ültetvényeket is.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -333,15 +333,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Ez azt jelenti, hogy pénzt spórolhatsz, amennyiben ideiglenesen nincs szükséged a cég szolgáltatására, de nem is szeretnéd lerombolni az épületet.'
-  - 'A másik megoldás, amelyről még nem esett szó: építsük fel az első szintű épületek közül az utolsót, a tároló sátrat.'
+  - 'A másik megoldás, amelyről még nem esett szó: felépítheted az első szintű épületek közül az utolsót, a tároló sátrat.'
   - 'Ennek az épületnek két célja can:
 
     * Több szabad helyed van az áruk tárolására, és
 
     * saját árubegyűjtője van, akár csak a raktárnak.'
-  - A cégek által előállított árukat begyűjtheted, ha útösszeköttetést létesítesz a tároló sátorral, ha pedig a raktárad árubegyűjtője leterhelt, a raktár sátor lehet a megoldás.
+  - A cégek által előállított árukat begyűjtheted, ha útösszeköttetést létesítesz a tároló sátorral, ha pedig a raktárad árubegyűjtője leterhelt, a raktár sátor ezt a problémát is orvosolni tudja.
   - ''
-  - [BoldLabel, 'Feladat: Építs tároló sátrakat (egyes szintű épület), ahol szükség begyűjtőkre.']
+  - [BoldLabel, 'Feladat: Építs egy tároló sátrat (egyes szintű épület), ahol szükség van begyűjtőkre.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -350,37 +350,37 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'ÚJ FELADAT: ÉPÍTS TAKÁCS KUNYHÓT']
   - [Image, content/gui/images/background/hr.png]
   - Most, hogy a gyapjú termelése biztosítva van, szükséged van egy takácsra, hogy a gyapjúból ruhát szőjön.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - A takács kunyhóban él a szövőmester. Két helyre építheted fel ezt az épületet - vagy a farm közelébe, vagy a tároló sátor (akár raktár) mellé.
+  - Mindkét esetben biztosítanod kell az útösszeköttetést.
+  - Helyezd a takács kunyhót a farm közelébe, de egyelőre ne építs utat, hogy lásd, vajon a felhasználja-e a farm által előállított gyapjút a termeléshez.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Feladat: Építs egy takács kunyhót úgy helyezve, hogy elérje a gyapjú készletet.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, 'Legalább 50 lakosnodnak kell lennie és pozitív egyenlegednek, hogy befejezd a gyakorlást.']
-  - [Headline, 'Új feladat: Végezz a gyakorlással']
+  - [Message, 'Legalább 50 lakosnodnak és pozitív egyenlegednek kell lennie ahhoz, hogy befejezd az oktató módot.']
+  - [Headline, 'ÚJ FELADAT: OKTATÓ MÓD VÉGE']
   - [Image, content/gui/images/background/hr.png]
-  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
-  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - Szállásolj el legalább 50 lakost a városodban további lakóépületek építésével.
+  - Ha sikerül olyan gazdaságot felépítened, amely ki tudja szolgálni az ekkora lakossággal járó igényeket, készen állsz felfedezni az Unknown Horizonst!
+  - Ennek a gazdaságnak a fenntartásához sok pénzre van szükséged, az egyenleged mindig legyen pozitív (ezt folyamatosan ellenőrizheted a raktár 'Kimutatás' füle alatt).
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Feladat: Szállásolj el legalább 50 lakost és legyen pozitív egyenleged az oktató mód befejezéséhez.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, 'Gratulálok! Elértél a gyakorlás végéhez, most már megfelesz az új kihívásoknak!']
-  - [Headline, Nincs feladat hátra]
+  - [Message, 'Gratulálunk! Az oktató mód végéhez értél, készen állsz az új megmérettetésekre!']
+  - [Headline, NINCS ÚJABB FELADAT]
   - [Image, content/gui/images/background/hr.png]
-  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
+  - Sikeresen elvégeztél minden rád háruló feladatot. A világ a rendelkezésedre áll, valósítsd meg ötleteidet, fedezz fel bátran mindent!
+  - 'Ha bármilyen javaslatod lenne, min kellene változtatnunk vagy javítanunk, hozzáadnunk vagy kivennünk a játékból:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
-  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
+  - A játék fóruma is nyitva áll előtted!
+  - Az eddigi tapasztalataink alapján a legtöbb eredményt az IRC csatornánknak köszönhetjük, próbálkozz először ott. (-;
   - [Pagebreak]
   - [Headline, Köszönöm!]
   - [Image, content/gui/images/background/hr.png]
@@ -657,4 +657,4 @@ metadata:
   locale: hu
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 173 translated messages, 1 fuzzy translation, 14 untranslated messages.
+  translation_status: 188 translated messages.
