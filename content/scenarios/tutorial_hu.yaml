@@ -382,7 +382,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - A játék fóruma is nyitva áll előtted!
   - Az eddigi tapasztalataink alapján a legtöbb eredményt az IRC csatornánknak köszönhetjük, próbálkozz először ott. (-;
   - [Pagebreak]
-  - [Headline, Köszönöm!]
+  - [Headline, Köszönjük!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -390,10 +390,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Köszönöm hogy végigjátszottad a gyakorlást!
+    Köszönjük, hogy végigjátszottad az oktató módot!
 
 
-    A te UH-Csapatod'
+    A Te UH-csapatod'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
