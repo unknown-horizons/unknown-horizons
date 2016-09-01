@@ -182,14 +182,12 @@ class RouteConfig(Window):
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
-		button.hover_image = self.hover_button_path
 		button.helptext = _("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
-		button.hover_image = self.hover_button_path
 		button.helptext = _("Unloading from ship")
 		slot.action = "unload"
 
