@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2016-09-01 12:21+0000\n"
+"PO-Revision-Date: 2016-09-01 12:30+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/voices/hu/>"
 "\n"
@@ -29,7 +29,7 @@ msgstr "A lakosok minden bizonnyal jól fogják érezni magukat ezen a szigeten.
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr "Mostantól ez a földrész a Tiéd."
+msgstr "A földnek ez a szelete mostantól a Tiéd."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
@@ -41,11 +41,11 @@ msgstr "Mostantól ez a darab föld a miénk."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr "Még egy játékos vetette meg a lábát ezen a szigeten."
+msgstr "Egy újabb játékos vetette meg a lábát ezen a szigeten."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
-msgstr "Az egyik játékos új települést alapít."
+msgstr "Az egyik játékos új település alapításába kezdett."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
@@ -57,11 +57,12 @@ msgstr "Egyik riválisunk új települést alapított."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
-msgstr "Tudomásunkra jutott, hogy az egyik riválisunk új területhez jutott."
+msgstr ""
+"Tudomásunkra jutott, hogy az egyik riválisunk új területet kaparintott meg."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr "Az egyik ellenfelünk bővülni látszik."
+msgstr "Az egyik ellenfelünk kitolta határait."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
@@ -77,7 +78,7 @@ msgstr "Szövetségesünk kihirdette, egy új települést alapított."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr "Ez a sziget mostantól nem a mi birtotunkban van."
+msgstr "Ez a sziget mostantól nem a mi birtokunkban van."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
