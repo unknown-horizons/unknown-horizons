@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-30 08:21+0000\n"
+"PO-Revision-Date: 2016-09-01 12:57+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.8\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -211,7 +211,7 @@ msgstr "Régi név:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr "Írja be az új nevet:"
+msgstr "Írd be az új nevet:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
@@ -374,7 +374,7 @@ msgstr "Három árbócos hadihajó egy ágyúfedélzettel."
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
 #| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Fejlesztések vétele"
+msgstr "Fejlesztések vásárlása"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
