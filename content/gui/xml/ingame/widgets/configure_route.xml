@@ -32,7 +32,7 @@
 		</HBox>
 		<HBox min_size="310,80" max_size="310,80">
 			<Spacer fixed_size="35" />
-			<ImageButton name="start_route" max_size="48,48"
+			<ImageButton name="start_route" max_size="52,52"
 				inactive_image="content/gui/icons/ship/traderoute.png"
 				up_image="content/gui/icons/ship/traderoute_disabled.png"
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
