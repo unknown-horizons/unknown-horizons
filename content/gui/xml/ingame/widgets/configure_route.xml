@@ -25,20 +25,20 @@
 
 		<!-- this box is only displayed on resource selection. -->
 		<!-- res selection box, filled with icons -->
-		<VBox name="traderoute_resources" max_size="330,155" min_size="330,155" />
+		<VBox name="traderoute_resources" max_size="330,100" min_size="330,100" />
 
-		<HBox min_size="310,60" max_size="310,60">
-			<Spacer min_size="60" max_size="60" />
-			<Label name="lbl_route_activity" text="Route activity:" position="0,7" />
+		<HBox min_size="310,30" max_size="310,30">
+			<Label name="lbl_route_activity" text="Route activity:" position="0,5" />
+		</HBox>
+		<HBox min_size="310,80" max_size="310,80">
+			<Spacer fixed_size="35" />
 			<ImageButton name="start_route" max_size="52,52"
 				inactive_image="content/gui/icons/ship/traderoute.png"
 				up_image="content/gui/icons/ship/traderoute_disabled.png"
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
 				hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
 				helptext="Start route" comment="Trade route" />
-
-			<Spacer fixed_size="58" />
-
+			<Spacer fixed_size="120" />
 			<OkButton helptext="Exit" />
 		</HBox>
 	</VBox>
