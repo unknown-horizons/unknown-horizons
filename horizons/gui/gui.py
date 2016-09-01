@@ -64,7 +64,9 @@ class MainMenu(Window):
 			'load_button': gui.load_game,
 			'load_label' : gui.load_game,
 			'changeBackground' : gui.rotate_background,
-		})
+			'changeBackground/mouseEntered' : self.mouse_entered_changebackground,
+			'changeBackground/mouseExited': self.mouse_exited_changebackground,
+		}) 
 
 	def show(self):
 		self._gui.show()
@@ -78,6 +80,13 @@ class MainMenu(Window):
 		if self._windows.open_popup(_("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
+	def mouse_entered_changebackground(self):
+		changebackground = self._gui.findChild(name='changeBackground')
+		changebackground.background_color = (0, 0, 0, 255)
+
+	def mouse_exited_changebackground(self):
+		changebackground = self._gui.findChild(name='changeBackground')
+		changebackground.background_color = (0, 0, 0, 102)
 
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
