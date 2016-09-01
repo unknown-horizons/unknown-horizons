@@ -82,11 +82,12 @@ class MainMenu(Window):
 
 	def mouse_entered_changebackground(self):
 		changebackground = self._gui.findChild(name='changeBackground')
+		self._changebackground_old = changebackground.background_color
 		changebackground.background_color = (0, 0, 0, 255)
 
 	def mouse_exited_changebackground(self):
 		changebackground = self._gui.findChild(name='changeBackground')
-		changebackground.background_color = (0, 0, 0, 102)
+		changebackground.background_color = self._changebackground_old
 
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
