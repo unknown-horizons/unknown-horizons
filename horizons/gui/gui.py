@@ -41,6 +41,8 @@ from horizons.gui.windows import WindowManager, Window
 
 
 class MainMenu(Window):
+	# normal and hover
+	CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR = [(0, 0, 0, 70), (0, 0, 0, 175)]
 
 	def __init__(self, gui, windows):
 		super(MainMenu, self).__init__(windows)
@@ -68,6 +70,10 @@ class MainMenu(Window):
 			'changeBackground/mouseExited': self.mouse_exited_changebackground,
 		}) 
 
+		# non-default background color for this Label
+		w = self._gui.findChildByName('changeBackground')
+		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[0]
+
 	def show(self):
 		self._gui.show()
 
@@ -81,13 +87,12 @@ class MainMenu(Window):
 			horizons.main.quit()
 
 	def mouse_entered_changebackground(self):
-		changebackground = self._gui.findChild(name='changeBackground')
-		self._changebackground_old = changebackground.background_color
-		changebackground.background_color = (0, 0, 0, 255)
+		w = self._gui.findChildByName('changeBackground')
+		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[1]
 
 	def mouse_exited_changebackground(self):
-		changebackground = self._gui.findChild(name='changeBackground')
-		changebackground.background_color = self._changebackground_old
+		w = self._gui.findChildByName('changeBackground')
+		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[0]
 
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
