@@ -51,7 +51,6 @@ class RouteConfig(Window):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
 	SLOTS_PER_ENTRY = 3
@@ -183,14 +182,12 @@ class RouteConfig(Window):
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
-		button.hover_image = self.hover_button_path
 		button.helptext = _("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
-		button.hover_image = self.hover_button_path
 		button.helptext = _("Unloading from ship")
 		slot.action = "unload"
 
