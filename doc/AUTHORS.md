@@ -136,6 +136,7 @@
 * MarkusHackspacher (code fixes)
 * xseanl (tooltips added)
 * martingeiger (added new inhabitant grafics)
+* CrafterSvK (added some patches)
 
 ## Translators
 

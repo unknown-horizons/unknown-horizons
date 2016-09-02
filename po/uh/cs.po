@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-28 10:09+0000\n"
+"PO-Revision-Date: 2016-08-31 16:53+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/uh/uh/cs/>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.8\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -3164,7 +3164,6 @@ msgstr "Poskytuje kmeny stromů. Ty kácí dřevorubci."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#, fuzzy
 #| msgid "Village school"
 msgid "Village School"
 msgstr "Vesnická škola"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d2bbe58\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 17:38+0000\n"
+"PO-Revision-Date: 2016-08-30 07:52+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh/sk/>\n"
 "Language: sk\n"
@@ -1191,7 +1191,7 @@ msgstr "Editor"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "Autory"
+msgstr "Autori"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
@@ -1247,7 +1247,7 @@ msgstr "Opustiť herné lobby"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr "Hra sa odštartuje hneď ako budú všetci hráči pripravený."
+msgstr "Hra sa odštartuje hneď ako budú všetci hráči pripravení."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"

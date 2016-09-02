@@ -78,15 +78,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Construya un Cazador y un Pescador. Conéctalos al Almacén.]
+  - [Message, Construye una Tienda de Cazador y una Tienda de Pescador. Conéctalas al Almacén.]
   - [Headline, 'TAREA: SUMINISTRO DE ALIMENTOS']
   - [Image, content/gui/images/background/hr.png]
   - Necesitarás tener algunos negocios que produzcan alimentos también, porque la gente en general (y especialmente los marineros) está muy hambrienta.
-  - Los negocios disponibles en el Primer Nivel son el Cazador y el Pescador.
-  - El Cazador caza animales en el bosque, por lo que necesita que haya árboles cerca.
-  - Ten en cuenta que puedes colocar el Cazador cerca del bosque del leñador.
+  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Puede ocurrir que los animales no se reproduzcan lo suficientemente rápido o simplemente que se escondan bien.
-  - 'Conclusión: el Cazador no es muy fiable si necesitas un suministro continuo.'
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
@@ -95,8 +95,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Esta es una fuente muy constante de suministro a costa de un tiempo de producción ligeramente mayor por unidad de comida.
   - Un pequeño asentamiento como el tuyo puede utilizar ambos negocios, y puedes mejorar el saldo de ventajas e inconvenientes si te fijas en la comparación directa.
   - ''
-  - [BoldLabel, 'Tarea: Construye un Cazador y un Pescador.']
-  - ¡No olvides conectarlos a tu Almacén mediante caminos!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -105,8 +105,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'N. TAREA: LA PLAZA PRINCIPAL']
   - [Image, content/gui/images/background/hr.png]
   - Tus residentes necesitan una plaza principal donde poder obtener sus bienes.
-  - Esto significa que necesitan un camino de conexión entre sus casas y la Plaza Principal. Ten en cuenta que la Plaza Principal sirve de camino también, por eso las tiendas adyacentes no necesitan un camino separado.
-  - Todos los bienes de tu Almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir al Pescador ni siquiera al Almacén.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Deberías proporcionar un lugar adecuado a las tiendas de tu asentamiento procurando no ubicarlas demasiado cerca del aserradero ya que éstas despejarán los árboles que tu aserradero necesita para producir tablones.
@@ -234,11 +234,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Un poco más tarde, la habrán consumido y volverán a recolectar más fe del fabricante.
   - 'Importante:
 
-    NO es suficiente con que el edificio se construya abarcando en su área a todas las tiendas.
+    NO es suficiente con que el edificio se construya abarcando en su área a todas las Tiendas.
 
     La conexión vial también es necesaria.'
   - ''
-  - [BoldLabel, 'Tarea: Construye un Pabellón con una conexión a las Tiendas para satisfacer la demanda de fe de tus marineros.']
+  - [BoldLabel, 'Tarea: Construye un Pabellón conectado con un Sendero a las Tiendas para satisfacer la demanda de fe de tus marineros.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -248,8 +248,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Todas las demandas están satisfechas ahora si tus habitantes pueden visitar regularmente la Plaza Principal y el Pabellón, y tu suministro de alimentos es adecuado.
   - Si los marineros son lo suficientemente felices, querrán avanzar al siguiente nivel denominado Pioneros.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
-  - No mantengas los impuestos bajos ya que probablemente te llevará tarde o temprano a la quiebra. Sin embargo durante un breve período de tiempo, si sabes lo que haces, está bien.
+  - Para hacerlos felices, no tienes más que bajar los impuestos, puesto que has satisfecho todas sus demandas.
+  - No mantengas los impuestos bajos ya que probablemente te llevará tarde o temprano a la quiebra. Sin embargo, durante un breve período de tiempo, si sabes lo que haces, está bien.
   - Después de algún tiempo, la primera unidad saldrá caminando hacia la Plaza Principal donde buscará materiales de construcción para construirse una cabaña que sustituya su vieja tienda de campaña.
   - [Pagebreak]
   - '
@@ -284,12 +284,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sin embargo, si planeas hacer distintas partes del procesamiento en distintas áreas de la isla (lo cual puede tener sentido) o incluso en diferentes islas, necesitarás una conexión a los recolectores.
   - Procura no construir la Granja en un lugar demasiado cerca de la costa o de otros edificios existentes, dado que necesitará algo de espacio alrededor para funcionar bien.
   - ''
-  - [BoldLabel, 'Tarea: Construir una Granja.']
+  - [BoldLabel, 'Tarea: Construye una Granja.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Construye al menos un prado y añade campos de patatas si te apetece.]
+  - [Message, Construye al menos un Pasto y añade Campos de Patatas si te apetece.]
   - [Headline, 'NUEVA TAREA: CONSTRUYE CAMPOS']
   - [Image, content/gui/images/background/hr.png]
   - La Granja por sí sola no va a producir nada sin crear campos de cultivo.
@@ -298,34 +298,34 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * Pastos: Aquí viven las ovejas que producen lana.
 
-    * Campos de patata: Crecen patatas que proporcionan alimento.
+    * Campos de Patatas: Crecen patatas que proporcionan alimento.
 
-    * Cultivos de azúcar: Crece azúcar que se utiliza para destilar licor y (más tarde) elaborar productos de confitería.'
-  - Ahora sólo necesitamos pastos, pero en caso de que el suministro de alimento sea demasiado corto (quizá si hay muchos edificios residenciales) también puedes escoger algunos campos de patata.
-  - Ten en cuenta que para las patatas necesitarás un camino que conecte a la granja (¡no al cultivo!) así como a los negocios que trabajen con esos bienes.
+    * Cultivos de Azúcar: Crece azúcar que se utiliza para destilar licor y (más tarde) elaborar productos de confitería.'
+  - Ahora solo necesitamos pastos, pero en caso de que el suministro de alimento sea demasiado corto (quizá si hay muchos edificios residenciales) también puedes producir algunas patatas.
+  - Ten en cuenta que para las patatas necesitarás un camino que conecte a la Granja (¡no al cultivo!), ya que será la única compañía que trabaje con los bienes.
   - [Pagebreak]
   - '
 
-    Asegúrate de que tus campos de cultivo están construidos en el área cubierto por la granja.'
-  - Puedes hacer una producción combinada - un único prado no alcanzará una eficiencia del 100 por ciento de la granja - pero comprueba cuántos campos de cultivo pueden servir.
-  - Los diferentes tipos de cultivo requieren más o menos tiempo de producción (para sembrar, cosechar, ordeñar, etc...) así que la granja no podrá atender al mismo tiempo a todos los campos de cultivo que construyas a su alrededor.
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - Puedes hacer una producción combinada —un único prado no alcanzará una eficiencia del 100 por ciento de la Granja—, pero debes comprobar cuántos campos de cultivo una Granja puede servir.
+  - Los diferentes tipos de cultivo requieren más o menos tiempo de producción (para sembrar, cosechar, ordeñar, etc...) así que la Granja no podrá atender al mismo tiempo a todos los campos de cultivo que construyas a su alrededor.
   - Por ahora, no tienes que preocuparte mucho de esos problemas mientras no hayas creado campos de cultivo. ¡Vamos a cambiar eso!
   - ''
-  - [BoldLabel, 'Tarea: Construye al menos un prado alrededor de la granja y añade si quieres campos de patata.']
+  - [BoldLabel, 'Tarea: Construye al menos un Pasto alrededor de la Granja y añade si quieres Campos de Patatas.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Construye una tienda de almacén (en la pestaña de 'Nivel 1') donde pueda ser útil.]
-  - [Headline, EL ALMACÉN]
+  - [Message, Construye una Tienda de Almacenamiento (pestaña de 'Nivel 1') donde pueda ser útil.]
+  - [Headline, 'NUEVA TAREA: ALMACENAMIENTO']
   - [Image, content/gui/images/background/hr.png]
-  - ¿Te fijaste en el leñador?
+  - ¿Te fijaste en tu leñador?
   - Dado que tu Almacén no tiene espacio ilimitado para almacenar bienes, los recolectores dejarán de recoger bienes de los negocios cuando el espacio de almacenaje esté completo.
-  - Por lo que si no quieres que los marineros mejoren sus tiendas de campaña, probablemente tendrás un montón de tableros de madera y en ese caso, el leñador se detendrá.
+  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
   - Puedes mejorar esta situación de dos formas distintas, y vamos a echar un vistazo a ambas a continuación.
-  - 'All companies offer to do no work at all.
+  - 'Todos las compañías permiten no hacer ningún trabajo.
 
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
+    Esto puede sonar extraño, pero haz clic en el engranaje que verás en la vista principal de la Cabaña de Leñador.'
   - Si se activa este modo de "ruptura" (que podemos llamar "Decomiso"), disminuirán los costes de producción que pagas por el edificio. No van a ser cero, pero serán más bajos que si los negocios estuviesen produciendo.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -333,38 +333,38 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Esto significa que puedes ahorrar dinero cuando temporalmente no necesites un negocio y no quieras demolerlo.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+  - 'Otra solución es construir el último edificio del nivel 1 que no habíamos mencionado antes: la Tienda de Almacenamiento.'
+  - 'Este edificio tiene dos propósitos:
 
-    * Offers more storage for your goods, and
+    * Ofrece más almacenamiento de bienes, y
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
+    * envía sus propios transportistas para recoger bienes, tal como hace el Almacén.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Tarea: Construir una Tienda de Almacenamiento, preferentemente donde necesites recolectores.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
-  - [Headline, EL TEJEDOR]
+  - [Message, Construye una Cabaña de Tejedor que de algún modo alcance la lana de tu Granja.]
+  - [Headline, 'NUEVA TAREA: HAZ UN TEJEDOR']
   - [Image, content/gui/images/background/hr.png]
   - Ahora que has fijado la producción de lana, para producir tejidos a partir de la lana necesitarás una tejedora.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - En ambos casos asegúrate de que están bien conectados por caminos.
-  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
+  - 'La Cabaña de Tejedor es el lugar donde vive el tejedor. Hay dos sitios donde puedes construirla: al lado de la Granja o junto a una Tienda de Almacenamiento (o el Almacén).'
+  - En ambos casos asegúrate de que están bien conectados por Senderos.
+  - Puedes colocar la Cabaña de Tejedor cerca de la Granja y olvidarte del Sendero y observar cómo aun así comenzará la recolección de lana y empezará la producción.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Tarea: Construye una Cabaña de Tejedor de forma que pueda recoger lana.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
   - [Message, Hospeda al menos a 50 habitantes en tu ciudad para completar el tutorial. Necesitas un balance positivo.]
-  - [Headline, FINALIZACIÓN DEL TUTORIAL]
+  - [Headline, 'N. TAREA: COMPLETA EL TUTORIAL']
   - [Image, content/gui/images/background/hr.png]
   - Intenta dar cobijo a un total de 50 o más habitantes en tu ciudad proporcionándoles más edificios residenciales.
   - ¡Una vez que seas capaz de mantener la actividad económica que permita satisfacer la demanda de los consumidores, estarás listo para descubrir nuevos Horizontes Desconocidos!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - Necesitas también bastante dinero para mantener la actividad económica, así como tener un saldo positivo (compruébalo en la pestaña del Almacén "Cuenta").
   - ''
   - [BoldLabel, 'Tarea: Alcanza un total de 50 habitantes y un saldo positivo para completar este tutorial.']
   - - Gallery
@@ -372,7 +372,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &WON
   - [Message, ¡Felicidades! ¡Has llegado al final de este tutorial y ya estás preparado para conocer nuevos desafíos!]
-  - [Headline, NO MÁS OBJETIVOS]
+  - [Headline, NO HAY MÁS OBJETIVOS]
   - [Image, content/gui/images/background/hr.png]
   - Has completado satisfactoriamente todos los objetivos que te hemos propuesto. ¡Ahora tienes el mundo a tu disposición, esperando tus libres aspiraciones y desafiantes exploraciones!
   - 'Si tienes alguna sugerencia sobre algo que podríamos o deberíamos mejorar, añadir o quitar:'

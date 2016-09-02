@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2016-08-30 07:49+0000\n"
+"PO-Revision-Date: 2016-08-30 08:22+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/the-"
 "unknown/hu/>\n"
@@ -30,7 +30,7 @@ msgid ""
 "Everything went fine until you came into a storm…"
 msgstr ""
 "1740-et írunk, egy angol lobogóval ellátott hajó kapitánya vagy. Te és a "
-"legénységed Anglia egy gyarmatára tartottatok, átszelve a Csendes-óceánt.\n"
+"legénységed Anglia egy településére tartottatok, átszelve a Csendes-óceánt.\n"
 "Minden remekül haladt, amikor jött a vihar…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -105,7 +105,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr "1740. november 25."
+msgstr "1740. november 25-e"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -114,7 +114,7 @@ msgid ""
 "exchange goods for their everyday needs."
 msgstr ""
 "Rendelkezünk alapvető élelemmel és gyűjtöttünk némi fát, így az új "
-"gyarmatunk tovább növekedhet. A lakosoknak házra van szükségük és egy "
+"településünk tovább növekedhet. A lakosoknak házra van szükségük és egy "
 "helyre, ahol cserekereskedelmet folytathatnak."
 
 #. This is the text body of a logbook page.
@@ -135,7 +135,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr "1740. december 1."
+msgstr "1740. december 1-je"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -170,7 +170,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr "1745. augusztus 27."
+msgstr "1745. augusztus 27-e"
 
 #. This is the text body of a logbook page.
 msgid ""

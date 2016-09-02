@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-27 08:49+0000\n"
+"PO-Revision-Date: 2016-08-30 10:08+0000\n"
 "Last-Translator: Arm Coon <armcoon@gmail.com>\n"
-"Language-Team: Chinese (China) <https://hosted.weblate.org/projects/uh/uh/"
-"zh_CN/>\n"
+"Language-Team: Chinese (China) "
+"<https://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3695,7 +3695,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr ""
+msgstr "铁矿"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
@@ -3707,7 +3707,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "clay"
-msgstr ""
+msgstr "泥土"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
@@ -3719,7 +3719,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "tea"
-msgstr ""
+msgstr "茶"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -3740,7 +3740,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "小牛"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
@@ -3765,7 +3765,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1}和{Player2}已断绝了他们的联盟关系。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3773,7 +3773,7 @@ msgstr "不能走到这里。"
 
 #. This is a database entry: the name of a resource
 msgid "corn"
-msgstr ""
+msgstr "玉米"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format

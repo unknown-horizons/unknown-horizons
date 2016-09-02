@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 11:25+0000\n"
+"PO-Revision-Date: 2016-09-01 12:57+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.8\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -211,7 +211,7 @@ msgstr "Régi név:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr "Írja be az új nevet:"
+msgstr "Írd be az új nevet:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
@@ -374,12 +374,12 @@ msgstr "Három árbócos hadihajó egy ágyúfedélzettel."
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
 #| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Fejlesztések vétele"
+msgstr "Fejlesztések vásárlása"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
 msgid "Cannons"
-msgstr "Děla"
+msgstr "Ágyúk"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
@@ -742,8 +742,8 @@ msgstr ""
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
-"Mentse az aktuális nyersanyag beállítást, mint alapértelmezett beállítást az "
-"összes gyarmatra."
+"Mentsd az aktuális nyersanyag beállítást alapértelmezettként az összes "
+"településre."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
@@ -1455,7 +1455,7 @@ msgstr "Hajó automatikus kipakolása:"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "Gyarmat megalapítása után a hajó kipakolásra kerüljön-e"
+msgstr "Település megalapítása után a hajó kirakodásra kerüljön-e"
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
@@ -1800,7 +1800,7 @@ msgstr "Használd a 'T' gombot a fák átlátszóvá tételéhez."
 #: horizons/gui/modules/loadingscreen.py:82
 #| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "Építs tároló sátrakat a gyarmatod határainak kibővítéséhez."
+msgstr "Építs tároló sátrakat a településed határainak kibővítéséhez."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
@@ -1827,7 +1827,7 @@ msgid ""
 "settlement."
 msgstr ""
 "Az első lépések elsajátításához érdemes megnézni, az AI játékosok miként "
-"építik fel gyarmataikat."
+"építik fel településeiket."
 
 #: horizons/gui/modules/loadingscreen.py:86
 msgid ""
@@ -2343,7 +2343,7 @@ msgstr "Zničit budovu"
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr "Ezzel minden, a gyarmat határain kívülre eső épületet lerombolsz."
+msgstr "Ezzel minden, a település határain kívülre eső épületet lerombolsz."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
@@ -2486,8 +2486,7 @@ msgstr "Hajó áttekintés"
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
-"A hajónak egy sziget közelében kell tartózkodnia a gyarmat megalapításához."
+msgstr "A hajó tartózkodjon egy sziget közelében a település megalapításához."
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
@@ -2599,16 +2598,16 @@ msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
-"A gyarmat megjelenített nyersanyagainak visszaállítása az alapértelmezett "
-"beállításra, amelyet mentettél."
+"A település megjelenített nyersanyagainak visszaállítása az általad mentett "
+"alapértelmezett beállításra."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
-"Alapértelmezett beállítás visszaállítása (amit itt látsz) a gyári "
-"beállításokra az összes gyarmatra."
+"Alapértelmezett beállítás visszaállítása (amit itt látsz) a gyári értékekre "
+"az összes település esetében."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2624,15 +2623,15 @@ msgstr "Útvonal leállítása"
 
 #: horizons/gui/widgets/routeconfig.py:118
 msgid "Need at least two settlements"
-msgstr "Legalább két gyarmat szükséges"
+msgstr "Legalább két település szükséges"
 
 #: horizons/gui/widgets/routeconfig.py:119
 msgid "You need at least two different settlements in your route."
-msgstr "Legalább két különböző gyarmat szükséges az útvonalhoz."
+msgstr "Legalább két különböző település szükséges az útvonaladhoz."
 
 #: horizons/gui/widgets/routeconfig.py:148
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Kattints egy gyarmatra egy úticél hozzáadásához!"
+msgstr "Kattints egy településre az úticél hozzáadásához!"
 
 #: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
@@ -4206,7 +4205,7 @@ msgstr "gyertyák"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} új gyarmatot alapított."
+msgstr "{player} új települést alapított."
 
 #. This is a database entry: the name of a resource
 msgid "vines"
