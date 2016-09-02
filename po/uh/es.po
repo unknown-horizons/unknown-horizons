@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-27 16:39+0000\n"
+"PO-Revision-Date: 2016-09-02 10:22+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.8\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -336,29 +336,29 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Sloop-o'-war"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
@@ -383,24 +383,24 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 #, fuzzy
@@ -2446,7 +2446,7 @@ msgstr "Cuenta"
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
-msgstr "Visión de la plaza principal"
+msgstr "Vista general de la Plaza Principal"
 
 #: horizons/gui/tabs/mainsquaretabs.py:149
 msgid "Upgrade not possible:"
@@ -2702,7 +2702,7 @@ msgstr "Elabora condimentos de especias."
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
 msgid "Boat Builder"
-msgstr "Constructor de barcos"
+msgstr "Constructor de Barcos"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:79
@@ -2712,7 +2712,7 @@ msgstr "Construye barcos y navíos pequeños. Construido en la costa."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:84
 msgid "Brewery"
-msgstr ""
+msgstr "Cervecería"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
@@ -2722,7 +2722,7 @@ msgstr "Consume lúpulo. Produce cerveza."
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:91
 msgid "Brickyard"
-msgstr "Fábrica de ladrillos"
+msgstr "Fábrica de Ladrillos"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:93
@@ -2748,10 +2748,9 @@ msgstr "Fundición de Cañones"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
-#, fuzzy
 #| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Produce armas de hierro."
+msgstr "Produce cañones."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:112
@@ -2766,12 +2765,12 @@ msgstr "Quema un montón de tablas."
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:119
 msgid "Clay Deposit"
-msgstr "Yacimiento de arcilla"
+msgstr "Yacimiento de Arcilla"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:124
 msgid "Clay Pit"
-msgstr "Pozo de arcilla"
+msgstr "Pozo de Arcilla"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:126
@@ -2894,7 +2893,7 @@ msgstr "Aumenta los cerdos. Necesita una granja."
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:208
 msgid "Potato Field"
-msgstr "Campo de patatas"
+msgstr "Campo de Patatas"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:210
@@ -2914,7 +2913,7 @@ msgstr "Cultiva especias. Requiere una granja."
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:222
 msgid "Sugar Field"
-msgstr "Campo de azúcar"
+msgstr "Campo de Azúcar"
 
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:224
@@ -2959,7 +2958,7 @@ msgstr "Depósito de Peces"
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:255
 msgid "Fisherman's Tent"
-msgstr "Tienda de pescador"
+msgstr "Tienda de Pescador"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:257
@@ -2969,7 +2968,7 @@ msgstr "Pesca en el mar, produce alimento."
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:262
 msgid "Hunter's Tent"
-msgstr "Tienda de cazador"
+msgstr "Tienda de Cazador"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:264
@@ -3004,7 +3003,7 @@ msgstr "Corta árboles y los transforma en tablones."
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:285
 msgid "Main Square"
-msgstr "Plaza principal"
+msgstr "Plaza Principal"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:287
@@ -3064,7 +3063,7 @@ msgstr "La sal se evapora. Construir en la costa del mar."
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:330
 msgid "Signal Fire"
-msgstr "Señal de fuego"
+msgstr "Señal de Fuego"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:332
@@ -3083,10 +3082,9 @@ msgstr "Afina todo tipo de minerales."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#, fuzzy
 #| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "depósito de piedra"
+msgstr "Depósito de Piedra"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:349
@@ -3227,7 +3225,6 @@ msgstr "Proporciona madera talada por leñadores."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#, fuzzy
 #| msgid "Village school"
 msgid "Village School"
 msgstr "Escuela"
@@ -3638,7 +3635,7 @@ msgstr "Estos residentes están descontentos."
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a main square."
-msgstr "Estos habitantes no tiene acceso a la plaza principal."
+msgstr "Estos habitantes no tiene acceso a una Plaza Principal."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3945,7 +3942,7 @@ msgstr "tablas"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Alguno de tus habitantes no tiene acceso a la plaza principal."
+msgstr "Algunos de tus habitantes no tienen acceso a una Plaza Principal."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -4018,7 +4015,7 @@ msgstr "monedas"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "cerveza"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
