@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-29 12:25+0000\n"
+"PO-Revision-Date: 2016-09-02 07:25+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.8\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -360,12 +360,12 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Korvette"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "Gewöhnliches dreimastiges Kriegsschiff mit einem Kanonendeck."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -380,7 +380,7 @@ msgstr "Kanonen"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
 msgid "Hull"
-msgstr ""
+msgstr "Rumpf"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
@@ -1827,12 +1827,16 @@ msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Machen Sie den Einzelspieler-Modus interessanter durch Hinzufügen von KI-"
+"Spielern vor dem Start eines Spiels."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Die ersten Schritte können leichter fallen, indem man KI-Spieler bei der "
+"Errichtung ihrer Siedlungen beobachtet."
 
 #: horizons/gui/modules/loadingscreen.py:86
 msgid ""
@@ -1842,7 +1846,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:87
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Ein Marktplatz verbindet Ihre Gebäude genauso wie eine Straße."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
