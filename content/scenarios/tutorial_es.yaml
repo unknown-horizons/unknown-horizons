@@ -73,7 +73,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Así que cunado hayas construido tu Tienda de Leñador, conéctala a tu Almacén abriendo el Menú de construcción y haciendo clic en el botón del 'Sendero'. Ahora puedes hacer clic y arrastrar con el ratón para dibujar la ruta de tu Sendero entre la Tienda de Leñador y el Almacén.
   - ''
   - [BoldLabel, 'Tarea: Construye una Tienda de Leñador en un área boscosa y conéctala a tu Almacén.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - Una vez que los edificios estén conectados, verás a un transportista llegar para recoger tus recién producidas tablas y llevarlas al Almacén, listas para ser usadas en la construcción o el comercio.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -82,11 +82,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'TAREA: SUMINISTRO DE ALIMENTOS']
   - [Image, content/gui/images/background/hr.png]
   - Necesitarás tener algunos negocios que produzcan alimentos también, porque la gente en general (y especialmente los marineros) está muy hambrienta.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
+  - Los negocios disponibles en el primer nivel son la Tienda de Cazador y la Tienda de Pescador.
+  - El cazador caza animales en el bosque, por lo que necesita que haya árboles cerca.
+  - Ten en cuenta que puedes ubicar tu Tienda de Cazador cerca del bosque del leñador.
   - Puede ocurrir que los animales no se reproduzcan lo suficientemente rápido o simplemente que se escondan bien.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - 'Conclusión: la Tienda de Cazador no es muy fiable si necesitas un suministro continuo.'
   - [Pagebreak]
   - '
 
@@ -95,8 +95,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Esta es una fuente muy constante de suministro a costa de un tiempo de producción ligeramente mayor por unidad de comida.
   - Un pequeño asentamiento como el tuyo puede utilizar ambos negocios, y puedes mejorar el saldo de ventajas e inconvenientes si te fijas en la comparación directa.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
-  - Don't forget to connect them to your Warehouse with Trails!
+  - [BoldLabel, 'Tarea: Construye una Tienda de Cazador y una Tienda de Pescador.']
+  - ¡No olvides conectarlos a tu Almacén mediante Senderos!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -105,8 +105,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'N. TAREA: LA PLAZA PRINCIPAL']
   - [Image, content/gui/images/background/hr.png]
   - Tus residentes necesitan una plaza principal donde poder obtener sus bienes.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
+  - Esto significa que necesitan un camino de conexión entre sus casas y la Plaza Principal. Ten en cuenta que la Plaza Principal sirve de camino también, por eso las Tiendas adyacentes no necesitan un Sendero separado.
+  - Todos los bienes de tu Almacén están disponibles en este 'mercado', por lo que tus residentes no necesitan acudir a la Tienda de Pescador, ni siquiera al Almacén.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Deberías proporcionar un lugar adecuado a las tiendas de tu asentamiento procurando no ubicarlas demasiado cerca del aserradero ya que éstas despejarán los árboles que tu aserradero necesita para producir tablones.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.'
+    Tras este pequeño anuncio, el comerciante también se pasará y mirará en el Almacén si tuviera previsto pasárselo de largo.'
   - Puedes proponer intercambios a través de la pestaña "Comprar/Vender" del Almacén.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -187,7 +187,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Tarea: Construye una Señal de Fuego en la costa cerca de tu Almacén.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Message, Almacena en la isla unas reservas de al menos 30 herramientas. Ten en cuenta que esto puede llevar un tiempo.]
   - [Headline, 'N. TAREA: APRENDE A COMERCIAR']
   - [Image, content/gui/images/background/hr.png]
   - '¡Excelente! El Comerciante Libre ahora se detendrá frente a tu Almacén de vez en cuando.
@@ -306,7 +306,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
+    Asegúrate de que tus campos de cultivo están construidos en el área cubierto por la Granja.'
   - Puedes hacer una producción combinada —un único prado no alcanzará una eficiencia del 100 por ciento de la Granja—, pero debes comprobar cuántos campos de cultivo una Granja puede servir.
   - Los diferentes tipos de cultivo requieren más o menos tiempo de producción (para sembrar, cosechar, ordeñar, etc...) así que la Granja no podrá atender al mismo tiempo a todos los campos de cultivo que construyas a su alrededor.
   - Por ahora, no tienes que preocuparte mucho de esos problemas mientras no hayas creado campos de cultivo. ¡Vamos a cambiar eso!
@@ -339,7 +339,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Ofrece más almacenamiento de bienes, y
 
     * envía sus propios transportistas para recoger bienes, tal como hace el Almacén.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+  - Ten en cuenta que los negocios también pueden ser conectados a un edificio de almacenamiento para que sus productos sean recogidos, y si el Almacén está saturado de tareas de recolección, puedes colocar una Tienda de Almacenamiento para ayudar en eso.
   - ''
   - [BoldLabel, 'Tarea: Construir una Tienda de Almacenamiento, preferentemente donde necesites recolectores.']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 173 translated messages, 15 fuzzy translations.
+  translation_status: 186 translated messages, 2 fuzzy translations.
