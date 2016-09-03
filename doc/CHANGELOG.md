@@ -62,6 +62,7 @@ Grafic:
  - Animate fire of market place and tent1
  - added second residential house for tier 3
  - Changes to the main menu background grafics
+ - replaced settlers residential house with new one
 
 Sound:
 
