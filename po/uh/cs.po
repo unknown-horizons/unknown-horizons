@@ -1306,7 +1306,8 @@ msgstr "Připojit k vybrané hře"
 msgid "Change player details"
 msgstr "Změnit hráčovy podrobnosti"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Grafika"
 
@@ -3164,7 +3165,6 @@ msgstr "Poskytuje kmeny stromů. Ty kácí dřevorubci."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Vesnická škola"
 

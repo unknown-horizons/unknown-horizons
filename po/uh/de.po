@@ -1334,7 +1334,8 @@ msgid "Change player details"
 msgstr "Spieler-Details ändern"
 
 # Ist nicht falsch, aber im PC-/Internetumfeld schreibt man eigentlich immer "Grafik".
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Grafik"
 
@@ -3238,7 +3239,6 @@ msgstr "Versorgt den Holzfäller mit Holz."
 # Building
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Dorfschule"
 

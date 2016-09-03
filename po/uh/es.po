@@ -1330,7 +1330,8 @@ msgstr "Unirse a la partida seleccionada"
 msgid "Change player details"
 msgstr "Cambiar detalles del jugador"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Gráficos"
 
@@ -2748,7 +2749,6 @@ msgstr "Fundición de Cañones"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
 msgstr "Produce cañones."
 
@@ -3082,7 +3082,6 @@ msgstr "Afina todo tipo de minerales."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "Depósito de Piedra"
 
@@ -3225,7 +3224,6 @@ msgstr "Proporciona madera talada por leñadores."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Escuela"
 

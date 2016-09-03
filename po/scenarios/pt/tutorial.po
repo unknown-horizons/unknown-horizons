@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-29 03:24+0200\n"
+"POT-Creation-Date: 2016-09-04 00:33+0200\n"
 "PO-Revision-Date: 2013-08-22 22:20+0200\n"
 "Last-Translator: Guilherme Nogueira <Gui350@gmail.com>\n"
 "Language-Team: Portuguese <http://hosted.weblate.org/projects/uh/tutorial/pt/"
@@ -527,8 +527,8 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"Normally the trader ships just sail around and look for deals, but you can "
-"speed things up a bit."
+"Normally the trader just sails around and looks for deals, but you can speed "
+"things up a bit."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -546,8 +546,8 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
-"After this little advertisment, the trader will also stop by and look into "
-"your Warehouse if it planned to sail past it."
+"After this little advertisement, the trader will also stop by and look into "
+"your Warehouse, even if he had planned to sail past it."
 msgstr ""
 
 #. This is the text body of a logbook page.

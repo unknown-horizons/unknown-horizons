@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-29 03:24+0200\n"
+"POT-Creation-Date: 2016-09-04 00:33+0200\n"
 "PO-Revision-Date: 2016-09-02 10:09+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/>"
-"\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/"
+">\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -250,10 +250,6 @@ msgstr ""
 "Almacén."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Once the buildings are connected you'll see a collector arrive to pick up "
-#| "your newly produced boards and deliver them to the Warehouse, ready for "
-#| "use in  construction or trade."
 msgid ""
 "Once the buildings are connected you'll see a collector arrive to pick up "
 "your newly produced boards and deliver them to the Warehouse, ready for use "
@@ -264,7 +260,6 @@ msgstr ""
 "para ser usadas en la construcción o el comercio."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a Hunter and a Fisher. Connect them to the Warehouse."
 msgid ""
 "Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
 msgstr ""
@@ -284,7 +279,6 @@ msgstr ""
 "la gente en general (y especialmente los marineros) está muy hambrienta."
 
 #. This is the text body of a logbook page.
-#| msgid "Available companies in the first tier are the Hunter and Fisher."
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
@@ -293,15 +287,12 @@ msgstr ""
 "Tienda de Pescador."
 
 #. This is the text body of a logbook page.
-#| msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
 "El cazador caza animales en el bosque, por lo que necesita que haya árboles "
 "cerca."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Note that you can place your Hunter close to the lumberjack's forest."
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
 msgstr ""
@@ -317,8 +308,6 @@ msgstr ""
 "simplemente que se escondan bien."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Conclusion: the Hunter is not too reliable if you need continuous supply."
 msgid ""
 "Conclusion: the Hunter's Tent is not too reliable if you need continuous "
 "supply."
@@ -358,12 +347,10 @@ msgstr ""
 "directa."
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a Hunter and a Fisher."
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
 msgstr "Tarea: Construye una Tienda de Cazador y una Tienda de Pescador."
 
 #. This is the text body of a logbook page.
-#| msgid "Don't forget to connect them to your Warehouse with trails!"
 msgid "Don't forget to connect them to your Warehouse with Trails!"
 msgstr "¡No olvides conectarlos a tu Almacén mediante Senderos!"
 
@@ -384,10 +371,6 @@ msgstr ""
 "Tus residentes necesitan una plaza principal donde poder obtener sus bienes."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "This means that they need a trail connection from their home to the Main "
-#| "Square. Note that the Main Square acts as trail as well, therefore "
-#| "adjacent tents do not need a separate trail."
 msgid ""
 "This means that they need a trail connection from their home to the Main "
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
@@ -398,9 +381,6 @@ msgstr ""
 "también, por eso las Tiendas adyacentes no necesitan un Sendero separado."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "All goods in your Warehouse are available at this 'market place', so your "
-#| "residents do not need to walk to the Fisher or even to the Warehouse."
 msgid ""
 "All goods in your Warehouse are available at this 'market place', so your "
 "residents do not need to walk to the Fisherman's Tent or even to the "
@@ -627,9 +607,13 @@ msgstr ""
 "(construyendo más Tiendas) en lugar de venderlos genera un mayor beneficio."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Normally the trader ships just sail around and look for deals, but you "
+#| "can speed things up a bit."
 msgid ""
-"Normally the trader ships just sail around and look for deals, but you can "
-"speed things up a bit."
+"Normally the trader just sails around and looks for deals, but you can speed "
+"things up a bit."
 msgstr ""
 "Normalmente los navíos del comerciante navegan alrededor y buscan ofertas, "
 "pero puedes acelerar las cosas un poco."
@@ -651,14 +635,15 @@ msgstr ""
 "llamar su atención."
 
 #. This is the text body of a logbook page.
+#, fuzzy
 #| msgid ""
 #| "\n"
 #| "After this little advertisment, the trader will also stop by and look "
-#| "into your warehouse if it planned to sail past it."
+#| "into your Warehouse if it planned to sail past it."
 msgid ""
 "\n"
-"After this little advertisment, the trader will also stop by and look into "
-"your Warehouse if it planned to sail past it."
+"After this little advertisement, the trader will also stop by and look into "
+"your Warehouse, even if he had planned to sail past it."
 msgstr ""
 "\n"
 "Tras este pequeño anuncio, el comerciante también se pasará y mirará en el "
@@ -855,9 +840,6 @@ msgstr ""
 "La solución es un Pabellón donde refugiar del sol al párroco del pueblo."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Service buildings like this also need to be connected to the Tents with a "
-#| "trail, else your inhabitants feel unable to reach them."
 msgid ""
 "Service buildings like this also need to be connected to the Tents with a "
 "Trail, else your inhabitants feel unable to reach them."
@@ -890,11 +872,6 @@ msgstr ""
 "fabricante."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Important:\n"
-#| "It is NOT enough that the building is merely within a certain range of "
-#| "the tents.\n"
-#| "The road connection is required as well."
 msgid ""
 "Important:\n"
 "It is NOT enough that the building is merely within a certain range of the "
@@ -907,9 +884,6 @@ msgstr ""
 "La conexión vial también es necesaria."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Task: Build a Pavilion with a trail to the Tents in order to fulfill your "
-#| "sailors' demand for faith."
 msgid ""
 "Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
@@ -929,9 +903,6 @@ msgid "NEW TASK: NEXT TIER"
 msgstr "NUEVA TAREA: SIGUIENTE NIVEL"
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "All demands are fulfilled now if your inhabitants can regularly visit the "
-#| "Main Square & Pavilion and your food supply is adequate."
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square and the Pavilion and your food supply is adequate."
@@ -1136,12 +1107,6 @@ msgid ""
 msgstr "Tienes para elegir entre prados, patatas y campos de caña de azúcar."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Let's have a short overview:\n"
-#| "* Pasture: Sheep live here, producing lamb wool.\n"
-#| "* Potato field: Grows potatoes which are currently treated as food.\n"
-#| "* Sugar field: Grows sugar which is used to distill liquor and (later) "
-#| "produce confectionery."
 msgid ""
 "Let's have a short overview:\n"
 "* Pasture: Sheep live here, producing lamb wool.\n"
@@ -1165,9 +1130,6 @@ msgstr ""
 "puedes producir algunas patatas."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Note that for potatoes you will need a road connection to the farm (not "
-#| "to the field!) as it will be the only company to work on the goods."
 msgid ""
 "Note that for potatoes you will need a road connection to the Farm (not to "
 "the field!), as it will be the only company to work on the goods."
@@ -1177,9 +1139,6 @@ msgstr ""
 "bienes."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "Make sure that all fields you build are in the area covered by the farm."
 msgid ""
 "\n"
 "Make sure that all fields you build are in the area covered by the Farm."
@@ -1189,10 +1148,6 @@ msgstr ""
 "por la Granja."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "You can have combined production - one pasture will not lead to 100 "
-#| "percent efficiency of the farm - but you need to check how many fields "
-#| "one farm can serve."
 msgid ""
 "You can have combined production - one pasture will not lead to 100 percent "
 "efficiency of the Farm - but you need to check how many fields one Farm can "
@@ -1208,8 +1163,8 @@ msgid ""
 "time there (to seed, harvest, herd, etc…) and because of that, the farm may "
 "be unable to serve all of the fields you built for it in time."
 msgstr ""
-"Los diferentes tipos de cultivo requieren más o menos tiempo de producción ("
-"para sembrar, cosechar, ordeñar, etc...) así que la Granja no podrá atender "
+"Los diferentes tipos de cultivo requieren más o menos tiempo de producción "
+"(para sembrar, cosechar, ordeñar, etc...) así que la Granja no podrá atender "
 "al mismo tiempo a todos los campos de cultivo que construyas a su alrededor."
 
 #. This is the text body of a logbook page.
@@ -1221,9 +1176,6 @@ msgstr ""
 "hayas creado campos de cultivo. ¡Vamos a cambiar eso!"
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Task: Build at least one pasture in the farm's range and add potato "
-#| "fields if you like."
 msgid ""
 "Task: Build at least one Pasture in the Farm's range and add Potato Fields "
 "if you like."
@@ -1273,10 +1225,6 @@ msgstr ""
 "vistazo a ambas a continuación."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "All companies offer to do no work at all.\n"
-#| "This may sound strange, but click on the gear wheel you see in a "
-#| "lumberjack hut's overview."
 msgid ""
 "All companies offer to do no work at all.\n"
 "This may sound strange, but click on the gear wheel you see in the "
@@ -1307,9 +1255,6 @@ msgstr ""
 "un negocio y no quieras demolerlo."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Another solution is to build the last tier-I building which has not been "
-#| "mentioned so far: the storage tent."
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the Storage Tent."
@@ -1318,10 +1263,6 @@ msgstr ""
 "mencionado antes: la Tienda de Almacenamiento."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "This building has two purposes. It:\n"
-#| "* Offers more storage for your goods, and\n"
-#| "* sends its own collectors to fetch goods, just like the warehouse does."
 msgid ""
 "This building has two purposes. It:\n"
 "* Offers more storage for your goods, and\n"
@@ -1333,10 +1274,6 @@ msgstr ""
 "Almacén."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Note that companies can also be connected to a storage in order to get "
-#| "their products collected, and if the warehouse is overwhelmed with "
-#| "collector tasks, you can place a storage tent to help out there."
 msgid ""
 "Note that companies can also be connected to a storage in order to get their "
 "products collected, and if the Warehouse is overwhelmed with collector "
@@ -1348,14 +1285,12 @@ msgstr ""
 "Almacenamiento para ayudar en eso."
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a storage tent, preferably where you need collectors."
 msgid "Task: Build a Storage Tent, preferably where you need collectors."
 msgstr ""
 "Tarea: Construir una Tienda de Almacenamiento, preferentemente donde "
 "necesites recolectores."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#| msgid "Build a weaver that can somehow reach the wool of your farm."
 msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
 msgstr ""
 "Construye una Cabaña de Tejedor que de algún modo alcance la lana de tu "
@@ -1374,9 +1309,6 @@ msgstr ""
 "de la lana necesitarás una tejedora."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "There are two spots where you can build it - either close to the farm or "
-#| "close to a Storage Tent (or the warehouse)."
 msgid ""
 "The Weaver's Hut is the place where the weaver lives. There are two spots "
 "where you can build it - either close to the Farm or close to a Storage Tent "
@@ -1387,14 +1319,10 @@ msgstr ""
 "Almacenamiento (o el Almacén)."
 
 #. This is the text body of a logbook page.
-#| msgid "In both cases you should ensure the connection to a trail as well."
 msgid "In both cases you should ensure the connection to a Trail as well."
 msgstr "En ambos casos asegúrate de que están bien conectados por Senderos."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "You can place the weaver close to the farm and tear down any trail to the "
-#| "farm to see that it will still fetch the wool and produce."
 msgid ""
 "You can place the Weaver's Hut close to the Farm and tear down any Trail to "
 "the Farm to see that it will still fetch the wool and produce."
@@ -1404,9 +1332,9 @@ msgstr ""
 "la producción."
 
 #. This is the text body of a logbook page.
-#| msgid "Task: Build a weaver positioned so it can get wool."
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
-msgstr "Tarea: Construye una Cabaña de Tejedor de forma que pueda recoger lana."
+msgstr ""
+"Tarea: Construye una Cabaña de Tejedor de forma que pueda recoger lana."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -1438,16 +1366,13 @@ msgstr ""
 "nuevos Horizontes Desconocidos!"
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "You also need enough money to keep this economy running, so a positive "
-#| "balance (check in the warehouse tab 'Account') is required."
 msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the Warehouse tab 'Account') is required."
 msgstr ""
 "Necesitas también bastante dinero para mantener la actividad económica, así "
-"como tener un saldo positivo (compruébalo en la pestaña del Almacén \""
-"Cuenta\")."
+"como tener un saldo positivo (compruébalo en la pestaña del Almacén \"Cuenta"
+"\")."
 
 #. This is the text body of a logbook page.
 msgid ""

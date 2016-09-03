@@ -166,14 +166,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
   - The trader will supply your settlement with necessary goods which you can't produce yet.
   - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - [Gallery, ["content/gui/icons/buildmenu/006_h.png"]]
   - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
   - The Signal Fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - |
 
-    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.
   - You can propose deals via the Warehouse tab "Buy/Sell".
   - [Gallery, ["content/gui/icons/tabwidget/warehouse/buysell_a.png"]]
   - At the 'sailors' tier, you are equipped with three trading slots.

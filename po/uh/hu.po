@@ -244,9 +244,6 @@ msgid "Running costs"
 msgstr "Fenntartási költségek"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
@@ -321,7 +318,6 @@ msgstr "Rendelés jóváhagyása"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
 msgstr "(hasonlóan a kiválasztás fülhöz)"
 
@@ -372,7 +368,6 @@ msgstr "Három árbócos hadihajó egy ágyúfedélzettel."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
 msgstr "Fejlesztések vásárlása"
 
@@ -409,13 +404,11 @@ msgid "+ 1457"
 msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#| msgid "Hold ground"
 msgid "Build groundunit:"
 msgstr "Szárazföldi egység építése:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:79
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
 msgstr "Építsd meg ezt a szárazföldi egységet!"
 
@@ -428,7 +421,6 @@ msgstr ""
 "típust és hagyd jóvá az építést."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#| msgid "Build this ship!"
 msgid "Build ship:"
 msgstr "Hajó építése:"
 
@@ -1327,7 +1319,8 @@ msgstr "Csatlakozás a kiválasztott játékhoz"
 msgid "Change player details"
 msgstr "Játékos adatainak módosítása"
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
+#: content/gui/xml/mainmenu/settings.xml:14
+#: horizons/gui/modules/settings.py:56
 msgid "Graphics"
 msgstr "Grafika"
 
@@ -1798,7 +1791,6 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Használd a 'T' gombot a fák átlátszóvá tételéhez."
 
 #: horizons/gui/modules/loadingscreen.py:82
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr "Építs tároló sátrakat a településed határainak kibővítéséhez."
 
@@ -2202,7 +2194,6 @@ msgid "Restart required"
 msgstr "Újraindítás szükséges"
 
 #: horizons/gui/modules/settings.py:133
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
@@ -2353,7 +2344,6 @@ msgstr[0] "%s további épület lebontásra kerül."
 msgstr[1] "%s további épületek lebontásra kerülnek"
 
 #: horizons/gui/tabs/barrackstabs.py:36
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
 msgstr "Laktanya áttekintés"
 
@@ -2713,7 +2703,6 @@ msgstr "Sörfőzde"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
 msgstr "Komlót használ fel. Sört állít elő."
 
@@ -2744,7 +2733,6 @@ msgstr "Ágyúöntő műhely"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
 msgstr "Ágyút állít elő."
 
@@ -2857,13 +2845,11 @@ msgstr "Gyógynövényeket termeszt. Farm szükséges hozzá."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:187
-#| msgid "Corn Field"
 msgid "Hop Field"
 msgstr "Komlómező"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:189
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
 msgstr "Komlót termeszt. Farm szükséges hozzá."
 
@@ -3080,7 +3066,6 @@ msgstr "Minden ércet feldolgoz."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:344
-#| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "kő"
 
@@ -3221,7 +3206,6 @@ msgstr "Faanyagot biztosít. Favágó dönti ki."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:430
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Iskola"
 
@@ -3904,7 +3888,6 @@ msgstr "kukorica"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
 msgid "The Soldier by the name of {name} is ready to battle."
 msgstr "A {name} nevű katona készen áll a harcra."
 
@@ -4141,7 +4124,6 @@ msgstr "kard"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
 msgid "The inhabitant by the name of {name} is available."
 msgstr "A {name} nevű lakos elérhető."
 

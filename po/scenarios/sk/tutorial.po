@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 9e3f16e\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-29 03:24+0200\n"
+"POT-Creation-Date: 2016-09-04 00:33+0200\n"
 "PO-Revision-Date: 2016-09-02 08:36+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/tutorial/sk/>\n"
@@ -59,8 +59,8 @@ msgid ""
 "'Overview'."
 msgstr ""
 "Taktiež môžeš tento denník otvoriť kedykoľvek chceš tlačidlom pod mini-mapov "
-"v pravom hornom rohu obrazovky. Odteraz sa okolie minimapy bude volať \""
-"Prehľad\"."
+"v pravom hornom rohu obrazovky. Odteraz sa okolie minimapy bude volať "
+"\"Prehľad\"."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -485,8 +485,8 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"Normally the trader ships just sail around and look for deals, but you can "
-"speed things up a bit."
+"Normally the trader just sails around and looks for deals, but you can speed "
+"things up a bit."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -504,8 +504,8 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
-"After this little advertisment, the trader will also stop by and look into "
-"your Warehouse if it planned to sail past it."
+"After this little advertisement, the trader will also stop by and look into "
+"your Warehouse, even if he had planned to sail past it."
 msgstr ""
 
 #. This is the text body of a logbook page.
