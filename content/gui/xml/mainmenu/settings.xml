@@ -101,7 +101,7 @@
 			</HBox>
 
 			<Slider size="300,20" name="mousesensitivity" is_focusable="0"
-				  orientation="0" scale_start="0.5" scale_end="5.0" step_length="0.25" />
+				  orientation="0" scale_start="0.1" scale_end="5.0" step_length="0.25" />
 		</VBox>
 	</VBox>
 </HBox>
