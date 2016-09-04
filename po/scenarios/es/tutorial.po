@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-09-02 10:09+0000\n"
+"PO-Revision-Date: 2016-09-04 10:45+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/"
-">\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/tutorial/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -607,7 +607,6 @@ msgstr ""
 "(construyendo más Tiendas) en lugar de venderlos genera un mayor beneficio."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Normally the trader ships just sail around and look for deals, but you "
 #| "can speed things up a bit."
@@ -615,7 +614,7 @@ msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
-"Normalmente los navíos del comerciante navegan alrededor y buscan ofertas, "
+"Normalmente, el comerciante simplemente navega alrededor y busca ofertas, "
 "pero puedes acelerar las cosas un poco."
 
 #. This is the text body of a logbook page.
@@ -635,7 +634,6 @@ msgstr ""
 "llamar su atención."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "After this little advertisment, the trader will also stop by and look "
@@ -647,7 +645,7 @@ msgid ""
 msgstr ""
 "\n"
 "Tras este pequeño anuncio, el comerciante también se pasará y mirará en el "
-"Almacén si tuviera previsto pasárselo de largo."
+"Almacén, incluso si tuviera previsto pasárselo de largo."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
@@ -764,7 +762,6 @@ msgstr ""
 "toneladas más como máximo."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
@@ -1207,14 +1204,13 @@ msgstr ""
 "almacenaje esté completo."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
-"Por lo que si no quieres que los marineros mejoren sus tiendas de campaña, "
-"probablemente tendrás un montón de tableros de madera y en ese caso, el "
-"leñador se detendrá."
+"Así que si ningún marinero ha querido mejorar su tienda recientemente, "
+"probablemente tendrás un montón de tablones, y en ese caso el leñador podría "
+"estar parado."
 
 #. This is the text body of a logbook page.
 msgid ""

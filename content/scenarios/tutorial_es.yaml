@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - ¿Ves un navío pasando por tu isla de vez en cuando? Ese navío pertenece al Comerciante Libre, uno de los primeros colonos en este archipiélago.
   - El comerciante proporcionará a tu asentamiento bienes necesarios que no puedes producir aún.
   - También puedes vender excesos de tu producción, pero en general consumirlos (construyendo más Tiendas) en lugar de venderlos genera un mayor beneficio.
-  - Normalmente los navíos del comerciante navegan alrededor y buscan ofertas, pero puedes acelerar las cosas un poco.
+  - Normalmente, el comerciante simplemente navega alrededor y busca ofertas, pero puedes acelerar las cosas un poco.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - Para este propósito, construye una Señal de Fuego en la costa cerca de tu Almacén, de forma que los navíos conozcan el camino a tu asentamiento.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Tras este pequeño anuncio, el comerciante también se pasará y mirará en el Almacén si tuviera previsto pasárselo de largo.'
+    Tras este pequeño anuncio, el comerciante también se pasará y mirará en el Almacén, incluso si tuviera previsto pasárselo de largo.'
   - Puedes proponer intercambios a través de la pestaña "Comprar/Vender" del Almacén.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -206,7 +206,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     For ejemplo:
 
     Si tienes una casilla para "Comprar" y 5 toneladas en el almacén, un control deslizante posicionado en 9 toneladas significará que comprarás 4 toneladas más como máximo.'
-  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
+  - Las ventas funcionan de forma parecida. Una casilla de "Venta" con 18 toneladas en almacén y el control deslizante posicionado en 13 significa que venderás 5 toneladas más.
   - Sin embargo, si el Comerciante Libre solo quiere comprar o vender menos de lo que tu configuración le dejaría, tendrás que vivir con esa pena y esperar a que vuelva.
   - 'Unknown Horizons calcula los precios automáticamente, así que el valor de una unidad puede variar.
 
@@ -321,7 +321,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - ¿Te fijaste en tu leñador?
   - Dado que tu Almacén no tiene espacio ilimitado para almacenar bienes, los recolectores dejarán de recoger bienes de los negocios cuando el espacio de almacenaje esté completo.
-  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
+  - Así que si ningún marinero ha querido mejorar su tienda recientemente, probablemente tendrás un montón de tablones, y en ese caso el leñador podría estar parado.
   - Puedes mejorar esta situación de dos formas distintas, y vamos a echar un vistazo a ambas a continuación.
   - 'Todos las compañías permiten no hacer ningún trabajo.
 
@@ -657,4 +657,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages, 2 fuzzy translations.
+  translation_status: 188 translated messages.
