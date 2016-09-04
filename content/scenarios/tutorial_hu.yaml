@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Észrevetted már, hogy időről időre hajó halad el a szigeted mellett? Ez a hajó a Szabad Kereskedőkhöz tartozik, az első telepesek egyike ezen a szigetvilágon.
   - A kereskedő ellátja majd a településed olyan szükséges nyersanyagokkal, amelyeket még nem tudsz előállítani.
   - Viszont a termékfelesleget el is adhatod, de általában a felhasználásuk (több sátor építése) az eladás helyett több bevételt termel.
-  - Normál esetben a kereskedő hajó csak hajózik körbe és keresi az ajánlatokat, de ezt felgyorsíthatod egy kicsit.
+  - Normál esetben a kereskedő csak hajózik közbe, keresve az ajánlatokat, de ezt valamelyest meggyorsíthatod.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - Ehhez építened kell egy jelzőtüzet a tengerpartra, a raktárad közelébe. Ez jelzi majd az utat a hajóknak a településed felé.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    A figyelemfelhívást követően, amennyiben a kereskedő hajó a közelben jár, meg fog állni, hogy körbenézzen a raktáradban.'
+    A figyelemfelhívást követően a kereskedő be fog térni a raktáradba, hogy körbenézzen, még akkor is, ha eredetileg csak elhajózott volna mellette.'
   - Üzleti ajánlataidat előkészítheted a raktár "Vásárlás/Eladás" fülén.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
