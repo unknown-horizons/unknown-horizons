@@ -175,6 +175,7 @@ actionsets:
   TIER.SETTLERS:
     as_house0:
     as_house1:
+    as_house2:
   TIER.CITIZENS:
     as_stonehouse0:
     as_stonehouse1:
