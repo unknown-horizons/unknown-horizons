@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-08-31 20:52+0000\n"
+"PO-Revision-Date: 2016-09-07 14:54+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/tutorial/de/>\n"
 "Language: de\n"
@@ -601,7 +601,6 @@ msgstr ""
 "das Verbrauchen (mehr Zelte errichten) einträglicher als der Verkauf."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Normally the trader ships just sail around and look for deals, but you "
 #| "can speed things up a bit."
@@ -609,7 +608,7 @@ msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
-"In der Regel fahren die Schiffe umher und halten Ausschau nach möglichen "
+"In der Regel fahren die Händler umher und halten Ausschau nach möglichen "
 "Geschäften. Diesen Prozess könnt Ihr aber ein wenig beschleunigen."
 
 #. This is the text body of a logbook page.
@@ -629,7 +628,6 @@ msgstr ""
 "Schiffe navigieren."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "After this little advertisment, the trader will also stop by and look "
@@ -641,7 +639,8 @@ msgid ""
 msgstr ""
 "\n"
 "Nach dieser kleinen Orientierungshilfe wird der Händler gern ab und an "
-"vorbeikommen und Euer Kontor inspizieren."
+"vorbeikommen und Euer Kontor inspizieren, auch wenn er eigentlich vor hatte, "
+"daran vorbei zu segeln."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."

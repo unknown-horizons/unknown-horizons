@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Habt Ihr das Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert? Es gehört zum Freien Händler, einem der ersten Siedler in diesem Archipel.
   - Er beliefert Siedlungen mit Gütern, die Ihr momentan noch nicht produzieren könnt.
   - Außerdem wird er Produktionsüberschüsse einkaufen, aber im Allgemeinen ist das Verbrauchen (mehr Zelte errichten) einträglicher als der Verkauf.
-  - In der Regel fahren die Schiffe umher und halten Ausschau nach möglichen Geschäften. Diesen Prozess könnt Ihr aber ein wenig beschleunigen.
+  - In der Regel fahren die Händler umher und halten Ausschau nach möglichen Geschäften. Diesen Prozess könnt Ihr aber ein wenig beschleunigen.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - Zu diesem Zweck könnt Ihr ein Leuchtfeuer an der Küste in der Nähe des Kontors errichten. Es wird Schiffen den Weg zur Siedlung zu zeigen.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Nach dieser kleinen Orientierungshilfe wird der Händler gern ab und an vorbeikommen und Euer Kontor inspizieren.'
+    Nach dieser kleinen Orientierungshilfe wird der Händler gern ab und an vorbeikommen und Euer Kontor inspizieren, auch wenn er eigentlich vor hatte, daran vorbei zu segeln.'
   - Angebote werden über den Tab "Ein-/Verkaufen" im Kontor vorgeschlagen.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
