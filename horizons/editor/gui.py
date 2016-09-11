@@ -207,6 +207,8 @@ class SettingsTab(TabInterface):
 		super(SettingsTab, self).__init__(widget=self.widget)
 
 		self._world_editor = world_editor
+		self._current_tile = 'sand'
+		self._ingame_gui = ingame_gui
 
 		# Brush size
 		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
@@ -222,7 +224,27 @@ class SettingsTab(TabInterface):
 			tile = getattr(GROUND, tile_type.upper())
 			image.up_image = self._get_tile_image(tile)
 			image.size = image.min_size = image.max_size = (64, 32)
-			image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
+			image.capture(Callback(self._set_cursor_tile, tile))
+
+		self.widget.mapEvents({
+			self.widget.name+'/mouseEntered/cursor': self._cursor_inside,
+			self.widget.name+'/mouseExited/cursor': self._cursor_outside,
+		})
+
+		self._ingame_gui.mainhud.mapEvents({
+			self._ingame_gui.mainhud.name+'/mouseEntered/cursor': self._cursor_inside,
+			self._ingame_gui.mainhud.name+'/mouseExited/cursor': self._cursor_outside,
+		})
+
+	def _set_cursor_tile(self, tile):
+		self._current_tile = tile
+		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
+
+	def _cursor_inside(self):
+		horizons.globals.fife.set_cursor_image('default')
+
+	def _cursor_outside(self):
+		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place
