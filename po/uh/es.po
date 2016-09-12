@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-09-02 10:22+0000\n"
+"PO-Revision-Date: 2016-09-12 21:12+0000\n"
 "Last-Translator: Jorge <jorgesumle@freakspot.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -3908,10 +3908,10 @@ msgid "corn"
 msgstr "maíz"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "A new ship by the name of {name} has been created."
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "El nuevo barco con el nombre de {name} ha sido construido."
+msgstr "El soldado con el nombre de {name} ha está listo para la batalla."
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
