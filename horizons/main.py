@@ -326,8 +326,8 @@ def setup_gui_logger(command_line_arguments):
 		if command_line_arguments.gui_test:
 			raise Exception("Logging gui interactions doesn't work when running tests.")
 		try:
-			import tests.gui.logger
-			logger.setup_gui_logger()
+			from tests.gui.logger import setup_gui_logger
+			setup_gui_logger()
 		except ImportError:
 			traceback.print_exc()
 			print
