@@ -20,7 +20,7 @@ CHANGELOG Unknown Horizons
 
 2016-XX-XX: Milestone 2016.1
 ----------------------------
-changelog date: 08th Sep 2016
+changelog date: 17th Sep 2016
 
 ### Gameplay and Balancing
 
@@ -65,6 +65,7 @@ Grafic:
  - replaced settlers residential house with new one
  - added third residential house for tier 3
  - replaced brewery buildmenu icon (placeholder) with a new icon
+ - replaced grass tiles
 
 Sound:
 
