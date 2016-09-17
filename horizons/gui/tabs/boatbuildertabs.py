@@ -70,7 +70,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			self.show_production_is_active_container(container_active, container_inactive,
 			                                         progress_container, cancel_container, production_lines)
 		else:
-			self.show_production_is_inactive_container(container_inactive, progress_container, 
+			self.show_production_is_inactive_container(container_inactive, progress_container,
 			                                           cancel_container, container_active)
 		self.widget.adaptLayout()
 		

@@ -68,7 +68,7 @@ class MainMenu(Window):
 			'changeBackground' : gui.rotate_background,
 			'changeBackground/mouseEntered' : self.mouse_entered_changebackground,
 			'changeBackground/mouseExited': self.mouse_exited_changebackground,
-		}) 
+		})
 
 		# non-default background color for this Label
 		w = self._gui.findChildByName('changeBackground')

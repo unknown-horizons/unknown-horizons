@@ -232,7 +232,7 @@ class Tear(Command):
 			new_settlement_coords.update(range_coords)
 		obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(new_settlement_coords)
 
-		# Find the buildings that need to be destroyed 
+		# Find the buildings that need to be destroyed
 		buildings_to_destroy = []
 		for building in settlement.buildings:
 			if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):

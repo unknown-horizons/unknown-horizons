@@ -52,8 +52,8 @@ class _Tooltip(object):
 			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
 
 			# TIP: the mousePressed event is especially useful when such as click
-			# will trigger this tooltip's parent widget to be hidden (or destroyed), 
-			# which hides this tooltip first before hides the parent widget. 
+			# will trigger this tooltip's parent widget to be hidden (or destroyed),
+			# which hides this tooltip first before hides the parent widget.
 			# Otherwise the tooltip will show forever.
 			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
 
@@ -177,7 +177,7 @@ class _Tooltip(object):
 		target_widget = self
 		# traverse the widget chain again
 		while target_widget:
-			# none of ancestors of this widget gets removed, 
+			# none of ancestors of this widget gets removed,
 			# just do nothing and let the tooltip shown
 			if target_widget == self.topmost_widget:
 				return
