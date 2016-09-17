@@ -280,7 +280,7 @@ class Server(object):
 
 		# check packet size
 		if len(event.packet.data) > self.capabilities['maxpacketsize']:
-			logging.warning("[RECEIVE] Global packet size exceeded from {0!s}: size={1!d}".
+			logging.warning("[RECEIVE] Global packet size exceeded from {0!s}: size={1:d}".
 				format(peer.address, len(event.packet.data)))
 			self.fatalerror(player, __("You've exceeded the global packet size.") + " " +
 			                        __("This should never happen. "

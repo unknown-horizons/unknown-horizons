@@ -125,4 +125,4 @@ class YamlCacheStorage(object):
 		return item in self._data
 
 	def __str__(self):
-		return "YamlCacheStorage('{0!s}', {1!d} items)".format(self._filename, len(self._data))
+		return "YamlCacheStorage('{0!s}', {1:d} items)".format(self._filename, len(self._data))
