@@ -350,3 +350,12 @@ def test_ticket_2117(gui):
 	gui.trigger('settings_window', 'game_settings_right')
 	gui.find('uni_language').select(u'English')
 	gui.trigger('settings_window', 'okButton')
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2419(gui):
+	"""Game crashes when setting speed to zero and pressing pause twice"""
+
+	gui.session.speed_set(0)
+	gui.press_key(gui.Key.P)
+	gui.press_key(gui.Key.P)
