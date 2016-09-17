@@ -258,6 +258,7 @@ class GuiHelper(object):
 				self.selected = index
 				# trigger callbacks for selection change
 				gui_helper._trigger_widget_callback(self, can_fail=True)
+				gui_helper.run()
 
 			match.select = types.MethodType(select, match, match.__class__)
 		elif isinstance(match, pychan.widgets.TextField):
@@ -269,6 +270,7 @@ class GuiHelper(object):
 			def enter(self):
 				"""Trigger callback as if ENTER was pressed."""
 				gui_helper._trigger_widget_callback(self, can_fail=True)
+				gui_helper.run()
 
 			match.write = types.MethodType(write, match, match.__class__)
 			match.enter = types.MethodType(enter, match, match.__class__)
@@ -281,6 +283,7 @@ class GuiHelper(object):
 				# TODO find out why some sliders use 'stepslider' and others 'default'
 				if not gui_helper._trigger_widget_callback(self, can_fail=True):
 					gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
+					gui_helper.run()
 
 			match.slide = types.MethodType(slide, match, match.__class__)
 
@@ -328,6 +331,7 @@ class GuiHelper(object):
 								root.name, widget_name))
 
 		self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
+		self.run()
 
 	def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False, mouse=None):
 		"""Call callbacks for the given widget."""
@@ -424,6 +428,7 @@ class GuiHelper(object):
 		self.cursor_press_button(x, y, button, shift, ctrl)
 		self.run()
 		self.cursor_release_button(x, y, button, shift, ctrl)
+		self.run()
 
 	def cursor_multi_click(self, *coords):
 		"""Do multiple clicks in succession.
