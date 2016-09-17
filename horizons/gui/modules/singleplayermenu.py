@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import json
 import locale
 import logging
@@ -635,4 +636,4 @@ def generate_random_minimap(size, parameters):
 		preview=True)
 
 	# communicate via stdout
-	print minimap.dump_data()
+	print(minimap.dump_data())

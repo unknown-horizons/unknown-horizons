@@ -20,15 +20,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import os
 import glob
 
 if os.path.basename(os.getcwd()) != 'development':
-	print 'Please run the script from the "development" directory!'
+	print('Please run the script from the "development" directory!')
 	quit()
 
 if not os.path.isdir('../po/uh/'):
-	print 'The translations directory does not exist! Quiting..'
+	print('The translations directory does not exist! Quiting..')
 	quit()
 
 os.chdir('..')
@@ -39,8 +40,8 @@ for x in files:
 	dir = os.path.join('content', 'lang', dir, 'LC_MESSAGES', '')
 	if not os.path.isdir(dir):
 		os.makedirs(dir)
-	print 'Generating translations for', file
+	print('Generating translations for', file)
 	command = 'msgfmt ' + x + ' -o ' + dir + 'unknown-horizons.mo'
 	os.system(command)
 
-print '\n== Completed generating translations ==\n'
+print('\n== Completed generating translations ==\n')

@@ -34,6 +34,7 @@
 ###############################################################################
 
 
+from __future__ import print_function
 HEADER = '''\
 # ###################################################
 # Copyright (C) 2008-2016 The Unknown Horizons Team
@@ -198,4 +199,4 @@ output = '%s%s%s' % (HEADER, '\n'.join(filesnippets), FOOTER)
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
 else:
-	print output
+	print(output)

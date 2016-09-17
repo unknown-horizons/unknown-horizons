@@ -20,12 +20,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import pstats
 import sys
 
 
 if not sys.argv:
-	print 'profile_output.py file [ sortstats [ ( callees | callers ) ] ]'
+	print('profile_output.py file [ sortstats [ ( callees | callers ) ] ]')
 	sys.exit(1)
 
 p = pstats.Stats(sys.argv[1])
@@ -43,5 +44,5 @@ elif sys.argv[3] == 'callees':
 elif sys.argv[3] == 'callers':
 	p.print_callers()
 else:
-	print 'invalid arg'
+	print('invalid arg')
 

@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import functools
 import traceback
 
@@ -44,9 +45,9 @@ def handle_gcn_exception(e, msg=None):
 	@param msg: additional info as string
 	"""
 	traceback.print_stack()
-	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
+	print('Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.')
 	if msg:
-		print msg
+		print(msg)
 
 def init_pychan():
 	"""General pychan initiation for uh"""

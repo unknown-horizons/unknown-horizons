@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import logging
 import time
 
@@ -232,7 +234,7 @@ class Connection(object):
 			else:
 				self.log.error("Unknown packet from %s!" % (event.peer.address))
 			errstr = "Pickle/Security: %s" % (e)
-			print "[FATAL] %s" % (errstr) # print that even when no logger is enabled!
+			print("[FATAL] %s" % (errstr)) # print that even when no logger is enabled!
 			self.log.error("[FATAL] %s" % (errstr))
 			self.disconnect()
 			raise network.FatalError(errstr)
