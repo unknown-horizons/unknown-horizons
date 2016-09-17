@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 from fife import fife
 from fife.extensions.pychan.widgets import Button
 
@@ -194,7 +195,7 @@ class HotkeyConfiguration(object):
 			k = custom_key_actions[action]
 			if key_name in k:
 				return action
-		print "Action name not found. Key name (" + key_name + ") must be wrong. This is not supposed to ever happen"
+		print("Action name not found. Key name (" + key_name + ") must be wrong. This is not supposed to ever happen")
 
 	def reset_to_default(self):
 		"""Resets all bindings to default"""

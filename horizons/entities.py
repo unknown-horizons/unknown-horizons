@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import logging
 import fnmatch
 import os
@@ -98,7 +100,7 @@ class Entities(object):
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file, game_data=True)
 				if result is None: # discard empty yaml files
-					print "Empty yaml file {file} found, not loading!".format(file=full_file)
+					print("Empty yaml file {file} found, not loading!".format(file=full_file))
 					continue
 
 				result['yaml_file'] = full_file

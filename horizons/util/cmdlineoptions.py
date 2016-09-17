@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import datetime
 import optparse
 import re
@@ -205,7 +206,7 @@ if __name__ == '__main__':
 	p.formatter = formatter
 
 	today = datetime.date.today()
-	print r'''\
+	print(r'''\
 '\" t
 .\"     Title: unknown-horizons
 .\"    Author: The Unknown Horizons Team <team@unknown-horizons.org>
@@ -213,10 +214,10 @@ if __name__ == '__main__':
 .\"  Language: English
 .\"
 .TH "UNKNOWN\-HORIZONS" "6" "{0}" "unknown-horizons" "Unknown Horizons User Commands"
-'''.format(datetime.date.today())
+'''.format(datetime.date.today()))
 	p.print_help()
 
-	print r'''\
+	print(r'''\
 .SH "BUGS"
 .PP
 The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
@@ -234,4 +235,4 @@ Permission is granted to copy, distribute and/or modify this document under the
 terms of the GNU General Public License, Version 3 or (at your option) any later
 version published by the Free Software Foundation\&.
 .sp
-'''
+''')

@@ -33,6 +33,7 @@
 #
 ###############################################################################
 
+from __future__ import print_function
 import os
 import sqlalchemy
 import sqlalchemy.orm
@@ -125,5 +126,5 @@ def collect_all():
 	return collector
 
 
-print collect_all()
+print(collect_all())
 os.unlink(filename)

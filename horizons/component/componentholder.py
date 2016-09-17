@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 from horizons.component import Component
 
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -146,7 +148,7 @@ class ComponentHolder(object):
 			all components will have the init only with instance attribute
 		"""
 		if not isinstance(component, Component):
-			print component, type(component), component.__class__
+			print(component, type(component), component.__class__)
 		assert isinstance(component, Component)
 		component.instance = self
 		self.components[component.NAME] = component

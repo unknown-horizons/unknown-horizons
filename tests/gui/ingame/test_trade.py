@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
@@ -117,7 +118,7 @@ def test_trade(gui):
 	gui.trigger('buy_sell_goods', 'size_1')
 	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
 
-	print ship_inv[RES.ALVEARIES]
+	print(ship_inv[RES.ALVEARIES])
 	assert ship_inv[RES.ALVEARIES] == 1
 	assert settlement_inv[RES.ALVEARIES] == 9
 

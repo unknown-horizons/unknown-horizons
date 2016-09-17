@@ -18,6 +18,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import itertools
 import json
 import math
@@ -303,7 +305,7 @@ class Minimap(object):
 					Act(i, *map_coords).execute(self.session)
 		elif button == fife.MouseEvent.LEFT:
 			if self.view is None:
-				print "Warning: Can't handle minimap clicks since we have no view object"
+				print("Warning: Can't handle minimap clicks since we have no view object")
 			else:
 				self.view.center(*map_coords)
 

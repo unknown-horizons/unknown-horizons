@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
 from horizons.constants import LANGUAGENAMES, SETTINGS
@@ -104,8 +105,8 @@ class Settings(object):
 		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION, 1)
 		template_version = self._settings_template_serializer.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
 		if current_version != template_version:
-			print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
-		          (current_version, template_version)
+			print('Discovered old settings file, auto-upgrading: %s -> %s' % \
+		          (current_version, template_version))
 			for module in self._settings_template_serializer.getModuleName():
 				for setting_name in self._settings_template_serializer.getAllSettings(module):
 					default_value = self._settings_template_serializer.get(module, setting_name)
