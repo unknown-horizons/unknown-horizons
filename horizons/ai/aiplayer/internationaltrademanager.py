@@ -23,7 +23,7 @@ import logging
 
 from collections import defaultdict
 
-from mission.internationaltrade import InternationalTrade
+from .mission.internationaltrade import InternationalTrade
 from horizons.constants import RES, TRADER
 from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent

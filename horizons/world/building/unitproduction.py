@@ -20,8 +20,8 @@
 # ###################################################
 
 
-from building import BasicBuilding
-from buildable import BuildableSingle, BuildableSingleOnOcean
+from .building import BasicBuilding
+from .buildable import BuildableSingle, BuildableSingleOnOcean
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.component.storagecomponent import StorageComponent
 

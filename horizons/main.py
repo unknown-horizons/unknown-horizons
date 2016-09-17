@@ -78,7 +78,7 @@ def start(_command_line_arguments):
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
-	from engine import Fife
+	from .engine import Fife
 
 	# handle commandline globals
 	debug = command_line_arguments.debug

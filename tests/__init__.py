@@ -23,4 +23,4 @@
 RANDOM_SEED = 42
 
 # use this instead of the direct pdb version when debugging tests
-from game import set_trace
+from .game import set_trace

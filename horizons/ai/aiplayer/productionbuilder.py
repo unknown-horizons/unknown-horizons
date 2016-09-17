@@ -24,8 +24,8 @@ import itertools
 from collections import deque
 from functools import partial
 
-from areabuilder import AreaBuilder
-from constants import BUILD_RESULT, BUILDING_PURPOSE
+from .areabuilder import AreaBuilder
+from .constants import BUILD_RESULT, BUILDING_PURPOSE
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.world.building.production import Mine
