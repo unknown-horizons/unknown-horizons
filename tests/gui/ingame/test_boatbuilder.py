@@ -268,7 +268,7 @@ def test_ticket_1514(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# nothing being built, no cancel button visible
-	assert not gui.find('UB_cancel_button')
+	assert not gui.find('UB_cancel_button').isVisible()
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1')
@@ -276,7 +276,7 @@ def test_ticket_1514(gui):
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
-	assert gui.find('UB_cancel_button')
+	assert gui.find('UB_cancel_button').isVisible()
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -289,4 +289,4 @@ def test_ticket_1514(gui):
 	gui.trigger('UB_main_tab', 'UB_cancel_button')
 
 	# The tab should have changed, no cancel button visible
-	assert not gui.find('UB_cancel_button')
+	assert not gui.find('UB_cancel_button').isVisible()

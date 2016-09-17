@@ -74,11 +74,11 @@ def test_tutorial(gui):
 	assert_progress(22)
 
 	# fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('tab', 'button_23')
 	gui.cursor_click(13, 6, 'left')
 
 	# hunter
-	gui.trigger('tab', 'button_23')
+	gui.trigger('tab', 'button_13')
 	gui.cursor_click(8, 8, 'left')
 
 	# Goal: Mainsquare
@@ -128,9 +128,9 @@ def test_tutorial(gui):
 	# Buy tools from the trader (put the resource on the buy list)
 	gui.cursor_click(11, 6, 'left')
 	gui.trigger('tab_base', '2')
-	gui.trigger('buysellmenu/slot_0', 'button', mouse='left')
+	gui.trigger('slot_0', 'button', mouse='left')
 	gui.trigger('select_trade_resource', 'resource_%d' % RES.TOOLS)
-	gui.find('buysellmenu/slot_0/slider').slide(30)
+	gui.find('slot_0/slider').slide(30)
 
 	# Goal: Pavilion
 	assert_progress(40)
@@ -183,9 +183,13 @@ def test_tutorial(gui):
 	gui.trigger('mainhud', 'build')
 	gui.trigger('tab_base', '1')
 
+	# wait until we have enough boards
+	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 3):
+		gui.run()
+
 	# pasture
 	gui.trigger('tab', 'button_22')
-	gui.cursor_click(21, 10, 'left')
+	gui.cursor_click(24, 8, 'left')
 
 	# Goal: Storage
 	assert_progress(52)

@@ -62,7 +62,7 @@ def test_mission1(gui):
 	assert_goal_reached(gui, 'mainsquare')
 
 	# Build fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('tab', 'button_23')
 	gui.cursor_click(7, 7, 'left')
 
 	assert_win(gui)
