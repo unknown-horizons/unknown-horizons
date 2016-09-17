@@ -29,7 +29,7 @@ from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 
 
-@gui_test(use_dev_map=True, timeout=60)
+@gui_test(use_fixture='plain', timeout=60)
 def test_found_settlement(gui):
 	"""
 	Found a settlement.
@@ -93,7 +93,7 @@ def test_found_settlement(gui):
 	gui.trigger('mainhud', 'build')
 
 	# build a fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('tab', 'button_23')
 	gui.cursor_click(60, 4, 'left')
 	fisher = ground_map[(60, 4)].object
 	assert(fisher.id == BUILDINGS.FISHER)

@@ -127,7 +127,7 @@ def test_ticket_1362(gui):
 		gui.press_key(gui.Key.F5)
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_ticket_1371(gui):
 	"""
 	Build related tab becomes invisible.
@@ -271,7 +271,7 @@ def test_ticket_1526(gui):
 	gui.cursor_click(52, 12, 'left', ctrl=True)
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	"""
 	"""
@@ -319,7 +319,7 @@ def test_ticket_1848(gui):
 	gui.trigger('tab_account', 'show_production_overview')
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_fixture='plain')
 def test_ticket_1948(gui):
 	"""Triggers a crash that happens when building a storage tent on the border of the settlement"""
 	# Units cannot be selected right now, you need to do it this way. This is almost

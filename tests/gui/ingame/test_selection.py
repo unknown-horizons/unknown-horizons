@@ -73,7 +73,7 @@ def test_selectmultitab(gui):
 	gui.run(seconds=0.1)
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_selection_groups(gui):
 	"""Check group selection using ctrl-NUM"""
 

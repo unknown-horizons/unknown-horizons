@@ -50,7 +50,7 @@ def test_example(gui):
 	# Hopefully we're ingame now
 	assert gui.active_widgets
 	gold_label = gui.find(name='gold_available')
-	assert gold_label.text == '' # will upate only later
+	assert gold_label.text == '30000'
 
 	# All commands above run sequentially, neither the engine nor the timer
 	# will be run. If you need the game to run for some time (or have to wait for

@@ -25,7 +25,7 @@ from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_build_a_settlement(gui):
 	"""
 	Build a settlement. Generated with gui logger.
@@ -52,7 +52,7 @@ def test_build_a_settlement(gui):
 	gui.trigger('mainhud', 'build')
 
 	# Select fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('tab', 'button_23')
 
 	# Place fisher
 	gui.cursor_click(52, 3, 'left')
@@ -104,7 +104,7 @@ def test_build_a_settlement(gui):
 	gui.cursor_click(58, 5, 'left')
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_buildingtool(gui):
 	"""
 	Trigger different buildingtool highlights
@@ -139,7 +139,7 @@ def test_buildingtool(gui):
 	gui.trigger('mainhud', 'build')
 
 	# Select fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('tab', 'button_23')
 
 	# Place fisher
 	build_at( (52, 3) )
