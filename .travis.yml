@@ -18,7 +18,7 @@ install:
   - "sudo apt-get install python-fife"
   - "cp -a /usr/lib/python2.7/dist-packages/fife/ $VIRTUAL_ENV/lib/python2.7/site-packages/"
   - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/python2.7/site-packages/fife/*.so"
-  - "pip install pyyaml greenlet"
+  - "pip install -r requirements.txt"
 script: 
   - python -c 'from fife import fife; print fife.getVersion()'
   - python run_tests.py --with-xunit --verbose --nologcapture
