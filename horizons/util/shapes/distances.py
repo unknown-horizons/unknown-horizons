@@ -139,7 +139,7 @@ def distance_annulus_tuple(annulus, (x, y)):
 # DEBUG
 if __name__ == '__main__':
 	import itertools
-	import distances
+	from . import distances
 	shapes = ('rect', 'point', 'tuple', 'circle', 'annulus')
 	for s1, s2 in itertools.product(shapes, shapes):
 		if not (hasattr(distances, 'distance_%s_%s' % (s1, s2)) or
