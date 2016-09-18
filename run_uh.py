@@ -72,7 +72,7 @@ def check_python_version():
 		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
 
-check_python_version()
+#check_python_version()
 
 
 def log():
