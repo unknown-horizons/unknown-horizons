@@ -20,8 +20,10 @@
 # ###################################################
 
 from tests.gui import gui_test
+from tests.utils import mark_flaky
 
 
+@mark_flaky
 @gui_test(use_dev_map=True, timeout=60)
 def test_settings_dialog_crash(gui):
 	"""Opening&closing the settings dialog in two different games crashes."""

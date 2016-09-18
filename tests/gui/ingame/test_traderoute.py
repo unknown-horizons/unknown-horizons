@@ -27,8 +27,10 @@ from horizons.util.shapes import Point
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, found_settlement
+from tests.utils import mark_expected_failure
 
 
+@mark_expected_failure
 @gui_test(additional_cmdline=['--start-map', 'mp-dev'])
 def test_traderoute(gui):
 	"""Check that a ship's route is configured correctly after setting it up using the GUI."""

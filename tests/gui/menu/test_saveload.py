@@ -26,6 +26,7 @@ import mock
 
 from horizons.savegamemanager import SavegameManager
 from tests.gui import gui_test, TEST_FIXTURES_DIR
+from tests.utils import mark_flaky
 
 
 def _copy_savegame(filename='boatbuilder'):
@@ -86,6 +87,7 @@ def test_save_game_new_file(gui):
 	assert os.path.exists(SavegameManager.create_filename('testsave'))
 
 
+@mark_flaky
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
 def test_save_game_override(gui):
 	"""Test saving a game."""

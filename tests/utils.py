@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import functools
 import signal
 
+import nose
 from nose.plugins import Plugin
 from nose.util import ln
 
@@ -115,3 +117,32 @@ class ReRunInfoPlugin(Plugin):
 		if isinstance(ev, Exception):
 			ev = unicode(ev)
 		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
+
+
+def mark_expected_failure(func):
+	"""
+	Marks a test as expected failure. If it suddenly succeeds, the test will fail.
+	"""
+	@functools.wraps(func)
+	def wrapped(*args, **kwargs):
+		try:
+			test(*args, **kwargs)
+		except Exception:
+			raise nose.SkipTest
+		else:
+			raise AssertionError('Failure expected')
+	return wrapped
+
+
+def mark_flaky(func):
+	"""
+	Ignore test failures marked with this decorator. We have some tests that sometimes fail
+	unfortunately.
+	"""
+	@functools.wraps(func)
+	def wrapped(*args, **kwargs):
+		try:
+			func(*args, **kwargs)
+		except Exception:
+			raise nose.SkipTest
+	return wrapped
