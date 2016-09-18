@@ -126,7 +126,7 @@ def mark_expected_failure(func):
 	@functools.wraps(func)
 	def wrapped(*args, **kwargs):
 		try:
-			test(*args, **kwargs)
+			func(*args, **kwargs)
 		except Exception:
 			raise nose.SkipTest
 		else:

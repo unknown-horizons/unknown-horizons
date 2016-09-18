@@ -22,6 +22,7 @@
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
+from tests.utils import mark_expected_failure
 
 from horizons.command.uioptions import SetTradeSlot
 from horizons.component.storagecomponent import StorageComponent
@@ -30,6 +31,7 @@ from horizons.constants import RES
 
 
 
+@mark_expected_failure
 @gui_test(use_fixture='ai_settlement', timeout=60)
 def test_trade(gui):
 	"""

@@ -27,6 +27,7 @@ from nose.tools import with_setup
 
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
+from tests.utils import mark_flaky
 
 
 # Start our own master server for the multiplayer test because the official one
@@ -67,6 +68,7 @@ def test_games_list(gui):
 	gui.trigger('multiplayermenu', 'refresh')
 
 
+@mark_flaky
 @with_setup(start_server, stop_server)
 @mpmenu_test()
 def test_create_game(gui):
