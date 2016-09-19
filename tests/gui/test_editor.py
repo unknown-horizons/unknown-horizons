@@ -23,6 +23,7 @@ import os
 
 from horizons.constants import EDITOR, GROUND, PATHS
 from tests.gui import gui_test
+from tests.utils import mark_flaky
 
 
 editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
@@ -50,6 +51,7 @@ def test_place_tiles(gui):
 	gui.cursor_click(-8, 78, 'left')
 
 
+@mark_flaky
 @editor_test
 def test_save_map(gui):
 	"""Save a map in the editor."""

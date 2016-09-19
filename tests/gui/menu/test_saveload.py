@@ -69,6 +69,7 @@ def test_load_game_no_savegames(gui):
 		gui.trigger('menu', 'load_button')
 
 
+@mark_flaky
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
 def test_save_game_new_file(gui):
 	"""Test saving a game."""
