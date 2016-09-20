@@ -45,7 +45,6 @@ def test_select_ship(gui):
 	assert gui.find('overview_trade_ship')
 
 
-@mark_expected_failure
 @gui_test(use_dev_map=True, timeout=60)
 def test_selectmultitab(gui):
 	"""
@@ -57,7 +56,10 @@ def test_selectmultitab(gui):
 
 	player = gui.session.world.player
 	def create_ship(type):
-		return CreateUnit(player.worldid, type, *gui.session.world.get_random_possible_ship_position().to_tuple())(issuer=player)
+		position = gui.session.world.get_random_possible_ship_position()
+		unit = CreateUnit(player.worldid, type, *position.to_tuple())(issuer=player)
+		gui.run(seconds=0.1)
+		return unit
 
 	ships = [create_ship(UNITS.FRIGATE), create_ship(UNITS.FRIGATE)]
 	gui.select(ships)
