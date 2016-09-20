@@ -403,6 +403,78 @@ class DefaultPersonality:
 		residences_required = 0
 		min_tier = TIER.SETTLERS
 
+	class BeerGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.PIONEERS
+
+	class FeederBeerGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.PIONEERS
+
+	class CannonGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class FeederCannonGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class FlourGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class FeederFlourGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class CondimentsGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.SETTLERS
+
+	class FeederCondimentsGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.SETTLERS
+
+	class ConfectioneryGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class FeederConfectioneryGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class CandlesGoal:
+		enabled = True
+		default_priority = 250
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
+	class FeederCandlesGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.CITIZENS
+
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
 
@@ -476,17 +548,61 @@ class DefaultPersonality:
 		farm_distance_importance = 0.3 # importance of the distance to the nearest relevant farm in the range [0, 1]
 		distance_penalty = 2 # when no relevant farm is in reach then apply a penalty of this times the radius
 
+	class WindmillEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.4 # importance of the distance to the nearest farm in the range [0, 1]
+		distance_penalty = 2 # when no farm is in reach then apply a penalty of this times the radius
+
+	class BakeryEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		windmill_distance_importance = 0.4 # importance of the distance to the nearest windmill in the range [0, 1]
+		distance_penalty = 2 # when no windmill is in reach then apply a penalty of this times the radius
+
+	class BreweryEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.4 # importance of the distance to the nearest farm in the range [0, 1]
+		distance_penalty = 2 # when no farm is in reach then apply a penalty of this times the radius
+
+	class CannonfoundryEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		smeltery_distance_importance = 0.4 # importance of the distance to the nearest smeltery in the range [0, 1]
+		distance_penalty = 2 # when no smeltery is in reach then apply a penalty of this times the radius
+
+	class BlenderEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.4 # importance of the distance to the nearest farm in the range [0, 1]
+		distance_penalty = 2 # when no farm is in reach then apply a penalty of this times the radius
+
+	class PastryshopEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		farm_distance_importance = 0.4 # importance of the distance to the nearest farm in the range [0, 1]
+		distance_penalty = 2 # when no farm is in reach then apply a penalty of this times the radius
+
 	class ModifiedFieldEvaluator:
 		add_potato_field_value = 1.5 # the value of adding a potato field
 		add_pasture_value = 2.5 # the value of adding a pasture
 		add_sugarcane_field_value = 3.5 # the value of adding a sugarcane field
 		add_tobacco_field_value = 3.5 # the value of adding a tobacco field
 		add_herbary_field_value = 3.5 # the value of adding a herbary
+		add_alvearies_value = 3.5 # ToDo
+		add_cocoa_field_value = 3.5 # ToDo
+		add_corn_field_value = 3.5 # ToDo
+		add_hop_field_value = 2.5 # ToDo
+		add_spice_field_value = 3.5 # ToDo
+		add_vineyard_value = 3.5 # ToDo
+		add_cattle_run_value = 3.5 # ToDo
 		remove_unused_potato_field_penalty = 0 # the penalty for removing an unused potato field
 		remove_unused_pasture_penalty = 1 # the penalty for removing an unused pasture
 		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused sugarcane field
 		remove_unused_tobacco_field_penalty = 1.5 # the penalty for removing an unused tobacco field
 		remove_unused_herbary_field_penalty = 1.5 # the penalty for removing an unused herbary
+		remove_unused_alvearies_penalty = 1.5 # ToDo
+		remove_unused_cocoa_field_penalty = 1.5 # ToDo
+		remove_unused_corn_field_penalty = 1.5 # ToDo
+		remove_unused_hop_field_penalty = 1.5 # ToDo
+		remove_unused_spice_field_penalty = 1.5 # ToDo
+		remove_unused_vineyard_penalty = 1.5 # ToDo
+		remove_unused_cattle_run_penalty = 1.5 # ToDo
 
 	class FireStationGoal:
 		enabled = True

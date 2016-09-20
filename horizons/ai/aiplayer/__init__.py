@@ -72,6 +72,17 @@ from building.boatbuilder import AbstractBoatBuilder
 from building.signalfire import AbstractSignalFire
 from building.tobacconist import AbstractTobacconist
 from building.saltponds import AbstractSaltPonds
+from building.pastryshop import AbstractPastryShop
+from building.bakery import AbstractBakery
+from building.blender import AbstractBlender
+from building.windmill import AbstractWindmill
+from building.brewery import AbstractBrewery
+from building.butchery import AbstractButchery
+from building.cannonfoundry import AbstractCannonfoundry
+#from building.hunter import AbstractHunter
+from building.winery import AbstractWinery
+#from building.woodentower import AbstractWoodenTower
+from building.weaponsmith import AbstractWeaponsmith
 from building.stonedeposit import AbstractStoneDeposit
 from building.stonepit import AbstractStonePit
 from building.stonemason import AbstractStonemason

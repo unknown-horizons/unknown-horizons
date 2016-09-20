@@ -239,6 +239,13 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.SUGARCANE_FIELD: deque(),
 			BUILDING_PURPOSE.TOBACCO_FIELD: deque(),
 			BUILDING_PURPOSE.HERBARY: deque(),
+			BUILDING_PURPOSE.ALVEARIES: deque(),
+			BUILDING_PURPOSE.COCOA_FIELD: deque(),
+			BUILDING_PURPOSE.CORN_FIELD: deque(),
+			BUILDING_PURPOSE.HOP_FIELD: deque(),
+			BUILDING_PURPOSE.SPICE_FIELD: deque(),
+			BUILDING_PURPOSE.VINEYARD: deque(),
+			BUILDING_PURPOSE.CATTLE_RUN: deque(),
 		}
 
 		for coords, (purpose, _) in sorted(self.plan.iteritems()):
@@ -280,6 +287,19 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.SALT_PONDS:      (153, 217, 234),
 			BUILDING_PURPOSE.HERBARY:         ( 64, 200,   0),
 			BUILDING_PURPOSE.RESERVED:        (  0,   0, 128),
+			BUILDING_PURPOSE.ALVEARIES:       (139, 115,  85),
+			BUILDING_PURPOSE.COCOA_FIELD:     (165,  42,  42),
+			BUILDING_PURPOSE.CORN_FIELD:      ( 47,  79,  79),
+			BUILDING_PURPOSE.HOP_FIELD:       (105, 105, 105),
+			BUILDING_PURPOSE.SPICE_FIELD:     (  0, 100,   0),
+			BUILDING_PURPOSE.VINEYARD:        ( 32, 178, 170),
+			BUILDING_PURPOSE.CATTLE_RUN:      (192, 155,  62),
+			BUILDING_PURPOSE.BAKERY:          (  0,   0,   0),
+			BUILDING_PURPOSE.WINDMILL:        (  3,   3,   3),
+			BUILDING_PURPOSE.WINERY:          (  5,   5,   5),
+			BUILDING_PURPOSE.BREWERY:         (  8,   8,   8),
+			BUILDING_PURPOSE.CANNONFOUNDRY:   ( 10,  10,  10),
+			BUILDING_PURPOSE.BLENDER:         ( 13,  13,  13),
 		}
 
 		misc_color = (0, 255, 255)
@@ -338,7 +358,8 @@ class ProductionBuilder(AreaBuilder):
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY]:
+			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY,
+							BUILDINGS.ALVEARIES, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD, BUILDINGS.HOP_FIELD,BUILDINGS.SPICE_FIELD,BUILDINGS.VINEYARD, BUILDINGS.CATTLE_RUN]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:
@@ -361,10 +382,14 @@ class ProductionBuilder(AreaBuilder):
 		self.register_change_list(new_coords_list, BUILDING_PURPOSE.NONE, None)
 
 	collector_building_classes = [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE]
-	field_building_classes = [BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE, BUILDINGS.SUGARCANE_FIELD, BUILDINGS.TOBACCO_FIELD]
+	field_building_classes = [BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE, BUILDINGS.SUGARCANE_FIELD, BUILDINGS.TOBACCO_FIELD,
+		BUILDING_PURPOSE.HERBARY, BUILDINGS.ALVEARIES, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD, BUILDINGS.HOP_FIELD,
+		BUILDINGS.SPICE_FIELD,BUILDINGS.VINEYARD, BUILDINGS.CATTLE_RUN]
 	production_building_classes = set([BUILDINGS.FISHER, BUILDINGS.LUMBERJACK, BUILDINGS.FARM, BUILDINGS.CLAY_PIT,
 		BUILDINGS.BRICKYARD, BUILDINGS.WEAVER, BUILDINGS.DISTILLERY, BUILDINGS.MINE, BUILDINGS.SMELTERY,
-		BUILDINGS.TOOLMAKER, BUILDINGS.CHARCOAL_BURNER, BUILDINGS.TOBACCONIST, BUILDINGS.SALT_PONDS])
+		BUILDINGS.TOOLMAKER, BUILDINGS.CHARCOAL_BURNER, BUILDINGS.TOBACCONIST, BUILDINGS.SALT_PONDS,
+		BUILDINGS.WINDMILL, BUILDINGS.BAKERY, BUILDINGS.WINERY, BUILDINGS.BREWERY, BUILDINGS.CANNONFOUNDRY,
+		BUILDINGS.BLENDER])
 
 	def add_building(self, building):
 		"""Called when a new building is added in the area (the building already exists during the call)."""
@@ -496,4 +521,4 @@ class ProductionBuilder(AreaBuilder):
 		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(ProductionBuilder)
+decorators.bind_all(ProductionBuilder, builtin_only=True)

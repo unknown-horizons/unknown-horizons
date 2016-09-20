@@ -73,6 +73,24 @@ class BUILDING_PURPOSE:
 	HERBARY = 33
 	STONE_PIT = 34
 	STONEMASON = 35
+	ALVEARIES = 36
+	COCOA_FIELD = 37
+	CORN_FIELD = 38
+	HOP_FIELD = 39
+	SPICE_FIELD = 40
+	VINEYARD = 41
+	CATTLE_RUN = 42
+	PASTRY_SHOP = 43
+	BAKERY = 44
+	BLENDER = 45
+	WINDMILL = 46
+	BREWERY = 47
+	BUTCHERY = 48
+	CANNONFOUNDRY = 49
+	#HUNTER = 50
+	WINERY = 51
+	#WOODEN_TOWER = 52
+	WEAPONSMITH = 53
 
 	purpose_to_building = {}
 	building_to_purpose = {}
@@ -112,6 +130,24 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.HERBARY] = BUILDINGS.HERBARY
 		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
 		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONEMASON
+		cls.purpose_to_building[cls.ALVEARIES] = BUILDINGS.ALVEARIES
+		cls.purpose_to_building[cls.COCOA_FIELD] = BUILDINGS.COCOA_FIELD
+		cls.purpose_to_building[cls.CORN_FIELD] = BUILDINGS.CORN_FIELD
+		cls.purpose_to_building[cls.HOP_FIELD] = BUILDINGS.HOP_FIELD
+		cls.purpose_to_building[cls.SPICE_FIELD] = BUILDINGS.SPICE_FIELD
+		cls.purpose_to_building[cls.VINEYARD] = BUILDINGS.VINEYARD
+		cls.purpose_to_building[cls.CATTLE_RUN] = BUILDINGS.CATTLE_RUN
+		cls.purpose_to_building[cls.PASTRY_SHOP] = BUILDINGS.PASTRY_SHOP
+		cls.purpose_to_building[cls.BAKERY] = BUILDINGS.BAKERY
+		cls.purpose_to_building[cls.BLENDER] = BUILDINGS.BLENDER
+		cls.purpose_to_building[cls.WINDMILL] = BUILDINGS.WINDMILL
+		cls.purpose_to_building[cls.BREWERY] = BUILDINGS.BREWERY
+		cls.purpose_to_building[cls.BUTCHERY] = BUILDINGS.BUTCHERY
+		cls.purpose_to_building[cls.CANNONFOUNDRY] = BUILDINGS.CANNONFOUNDRY
+		#cls.purpose_to_building[cls.HUNTER] = BUILDINGS.HUNTER
+		cls.purpose_to_building[cls.WINERY] = BUILDINGS.WINERY
+		#cls.purpose_to_building[cls.WOODEN_TOWER] = BUILDINGS.WOODEN_TOWER
+		cls.purpose_to_building[cls.WEAPONSMITH] = BUILDINGS.WEAPONSMITH
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose
