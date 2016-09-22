@@ -26,7 +26,7 @@ from horizons.world.production.producer import Producer
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship, found_settlement
-from tests.utils import mark_expected_failure, mark_flaky
+from tests.utils import mark_expected_failure
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -336,7 +336,6 @@ def test_ticket_1948(gui):
 	gui.cursor_click(37, 20, 'left')
 
 
-@mark_flaky
 @gui_test(use_fixture='fife_exception_not_found', timeout=60)
 def test_ticket_2117(gui):
 	"""Changing language with active production overview tab crashes game"""
@@ -346,7 +345,7 @@ def test_ticket_2117(gui):
 
 	# Open settings
 	gui.trigger('mainhud', 'gameMenuButton')
-	gui.trigger('menu', 'settingsLink')
+	gui.trigger('menu/button_images', 'settingsLink')
 
 	# Change language (to anything not system default)
 	gui.trigger('settings_window', 'game_settings_right')
