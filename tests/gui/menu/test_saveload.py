@@ -26,7 +26,6 @@ import mock
 
 from horizons.savegamemanager import SavegameManager
 from tests.gui import gui_test, TEST_FIXTURES_DIR
-from tests.utils import mark_flaky
 
 
 def _copy_savegame(filename='boatbuilder'):
@@ -69,7 +68,6 @@ def test_load_game_no_savegames(gui):
 		gui.trigger('menu', 'load_button')
 
 
-@mark_flaky
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
 def test_save_game_new_file(gui):
 	"""Test saving a game."""
@@ -83,12 +81,11 @@ def test_save_game_new_file(gui):
 		gui.trigger('load_game_window', 'okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'savegameButton')
+		gui.trigger('menu/button_images', 'savegameButton')
 
 	assert os.path.exists(SavegameManager.create_filename('testsave'))
 
 
-@mark_flaky
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
 def test_save_game_override(gui):
 	"""Test saving a game."""
@@ -111,7 +108,7 @@ def test_save_game_override(gui):
 			gui.trigger('load_game_window', 'okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'savegameButton')
+		gui.trigger('menu/button_images', 'savegameButton')
 
 	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
 	new_size = os.path.getsize(SavegameManager.create_filename('boatbuilder'))

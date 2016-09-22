@@ -289,4 +289,4 @@ def test_ticket_1514(gui):
 	gui.trigger('UB_main_tab', 'UB_cancel_button')
 
 	# The tab should have changed, no cancel button visible
-	assert not gui.find('UB_cancel_button').isVisible()
+	assert not gui.find('UB_cancel_button')
