@@ -27,10 +27,8 @@ from horizons.util.shapes import Point
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, found_settlement
-from tests.utils import mark_expected_failure
 
 
-@mark_expected_failure
 @gui_test(additional_cmdline=['--start-map', 'mp-dev'])
 def test_traderoute(gui):
 	"""Check that a ship's route is configured correctly after setting it up using the GUI."""
@@ -58,7 +56,7 @@ def test_traderoute(gui):
 	gui.trigger('overview_trade_ship', 'configure_route')
 
 	# The trade route widget is visible
-	assert gui.find(name='configure_route')
+	assert gui.find(name='configure_route/minimap')
 	route_widget = gui.session.ingame_gui._old_menu.current_tab.route_menu
 
 	assert not ship.route.wait_at_load
@@ -77,14 +75,18 @@ def test_traderoute(gui):
 	event.map_coords = 15, 26
 	route_widget.on_map_click(event, False)
 
+	# need to give control to the rest of the code, these clicks will trigger new gui widgets
+	# to be added
+	gui.run()
+
 	# Set the resources to be loaded from settlement on the left and the amount
 	gui.trigger('configure_route/container_1/slot_0', 'button', mouse='left') # Select the second warehouse's first slot
-	gui.trigger('configure_route', 'resource_%d' % RES.FOOD)
+	gui.trigger('configure_route/traderoute_resources', 'resource_%d' % RES.FOOD)
 	gui.find('configure_route/container_1/slot_0/slider').slide(120)
 
 	# Check if the ship obeys the state of "Wait at load" and "Wait at unload"
-	gui.trigger('configure_route', 'wait_at_load')
-	gui.trigger('configure_route', 'wait_at_unload')
+	gui.trigger('configure_route/wait_options', 'wait_at_load')
+	gui.trigger('configure_route/wait_options', 'wait_at_unload')
 
 	assert ship.route.wait_at_load
 	assert ship.route.wait_at_unload
