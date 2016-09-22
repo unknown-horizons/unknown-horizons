@@ -80,6 +80,11 @@ class RouteConfig(Window):
 		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True, call_listener_now=True)
 
 	def hide(self):
+		# Check if the deferred init_gui call in __init__ ran already, otherwise cancel it
+		if not hasattr(self, '_gui'):
+			Scheduler().rem_call(self, self._init_gui)
+			return
+
 		self.minimap.disable()
 		self._gui.hide()
 
