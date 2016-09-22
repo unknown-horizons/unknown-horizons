@@ -28,7 +28,6 @@ import contextlib
 import os
 import tempfile
 import types
-from collections import deque
 
 import mock
 from fife import fife
@@ -192,40 +191,40 @@ class GuiHelper(object):
 		elif hasattr(w, 'findChildren'):
 			return w.findChildren()
 
-	def _find(self, name):
+	def _find(self, widgets, name):
 		"""Recursive find a widget by name.
 
 		This is the actual search implementation behind `GuiHelper.find`.
+
+		Finds all components that match the right-most name, e.g. foo in bar/baz/foo. From
+		there, go up the tree, removing candidates that have no match for other path
+		components, e.g. no baz in their parents.
 		"""
-		match = None
-		seen = set()
-		widgets = deque(self.active_widgets)
+		path_components = name.split('/')
 
-		path_components = list(reversed(name.split('/')))
+		first_part = path_components.pop()
+		filtered = [w for w in widgets if w.name == first_part]
+		if not filtered:
+			return None
 
+		candidates = [(f, [f.parent]) for f in filtered]
 		while path_components:
-			name = path_components.pop()
+			path = path_components.pop()
+			new_candidates = []
+			for candidate, up in candidates:
+				w = up[-1]
+				while w and w.name != path:
+					w = w.parent
 
-			while widgets:
-				w = widgets.popleft()
-				seen.add(w)
-				if w.name == name:
-					# When there are still names left in the path, continue our search
-					# in the children of the matched widget
-					if path_components:
-						widgets = deque([x for x in self._get_children(w) if x not in seen])
-						break
-					else:
-						# We're done!
-						match = w
-						break
-				else:
-					widgets.extend([x for x in self._get_children(w) if x not in seen])
+				if w and w.name == path:
+					new_candidates.append((candidate, up + [w]))
 
-			if match:
-				break
+			candidates = new_candidates
 
-		return match
+		if len(candidates) > 1:
+			raise Exception('Ambigious specification {}, found {} matches'.format(name, len(candidates)))
+		elif candidates:
+			return candidates[0][0]
 
 	def find(self, name):
 		"""Find a widget by name.
@@ -242,7 +241,7 @@ class GuiHelper(object):
 		Recursively searches through all widgets. Some widgets will be extended
 		with helper functions to allow easier interaction in tests.
 		"""
-		match = self._find(name)
+		match = self._find(self.active_widgets, name)
 
 		gui_helper = self
 
