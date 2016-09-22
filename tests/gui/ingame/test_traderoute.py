@@ -52,7 +52,7 @@ def test_traderoute(gui):
 	gui.trigger('buy_sell_goods', 'inventory_entry_3')
 
 	# Create the second settlement
-	found_settlement(gui, (27, 28), (28, 22))
+	found_settlement(gui, (14, 30), (15, 26))
 
 	# Open the configure trade route widget
 	gui.trigger('overview_trade_ship', 'configure_route')
@@ -74,7 +74,7 @@ def test_traderoute(gui):
 	# Select the other waypoint for the trade route
 	event = Mock()
 	event.getButton.return_value = fife.MouseEvent.LEFT
-	event.map_coords = 28, 22
+	event.map_coords = 15, 26
 	route_widget.on_map_click(event, False)
 
 	# Set the resources to be loaded from settlement on the left and the amount
@@ -90,5 +90,5 @@ def test_traderoute(gui):
 	assert ship.route.wait_at_unload
 	assert len(ship.route.waypoints) == 2
 	assert Point(38, 39) in ship.route.waypoints[0]['warehouse'].position
-	assert Point(28, 22) in ship.route.waypoints[1]['warehouse'].position
+	assert Point(15, 26) in ship.route.waypoints[1]['warehouse'].position
 	assert ship.route.waypoints[1]['resource_list'] == {RES.FOOD: 120}
