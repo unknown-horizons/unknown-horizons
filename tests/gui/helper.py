@@ -530,3 +530,16 @@ class GuiHelper(object):
 		self.cursor_map_coords.disable()
 		self.speed_default()
 		self.run(2**20)
+
+	def print_widget_tree(self, widget):
+		"""
+		Helper function that recurses through a widget and its children and prints them
+		nested.
+		"""
+		def visitor(w, level):
+			print '  ' * level, '<{0} name="{1}">'.format(w.__class__.__name__, w.name)
+			for child in self._get_children(w):
+				visitor(child, level + 1)
+			print '  ' * level, '</{0}>'.format(w.__class__.__name__)
+
+		visitor(widget, 0)
