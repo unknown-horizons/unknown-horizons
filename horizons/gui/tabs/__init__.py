@@ -21,34 +21,34 @@
 
 import sys
 
-from inventorytab import InventoryTab
-from tradetab import TradeTab
-from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
-from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
+from .inventorytab import InventoryTab
+from .tradetab import TradeTab
+from .overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
+from .buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab
-from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
-from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
+from .enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
+from .productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
 						SmallProductionOverviewTab
-from residentialtabs import SettlerOverviewTab
-from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
+from .residentialtabs import SettlerOverviewTab
+from .shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
 						TradeShipOverviewTab, TraderShipOverviewTab, \
                                                 EnemyShipOverviewTab
-from buyselltab import BuySellTab
-from buildtabs import BuildTab
-from tabwidget import TabWidget
-from boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, BoatbuilderTab, \
+from .buyselltab import BuySellTab
+from .buildtabs import BuildTab
+from .tabwidget import TabWidget
+from .boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, BoatbuilderTab, \
                                                 BoatbuilderFisherTab, BoatbuilderTradeTab, \
                                                 BoatbuilderWar1Tab, BoatbuilderWar2Tab, \
                                                 BoatbuilderConfirmTab
-from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
+from .mainsquaretabs import AccountTab, MainSquareOverviewTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
 						MainSquareSettlersTab, MainSquareCitizensTab
-from buildrelatedtab import BuildRelatedTab
+from .buildrelatedtab import BuildRelatedTab
 
-from diplomacytab import DiplomacyTab
-from selectmultitab import SelectMultiTab
+from .diplomacytab import DiplomacyTab
+from .selectmultitab import SelectMultiTab
 
-from barrackstabs import BarracksTab, BarracksSelectTab, \
+from .barrackstabs import BarracksTab, BarracksSelectTab, \
 						BarracksSwordmanTab, BarracksConfirmTab
 
 def resolve_tab(tabclass_name):

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fakeresourcedeposit import AbstractFakeResourceDeposit
+from .fakeresourcedeposit import AbstractFakeResourceDeposit
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 

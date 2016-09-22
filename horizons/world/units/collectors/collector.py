@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import operator
 import logging
 from collections import namedtuple
@@ -511,7 +513,7 @@ class JobList(list):
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
 			self.sort_jobs = self._sort_jobs_amount
-			print 'WARNING: invalid job order: ', job_order
+			print('WARNING: invalid job order: ', job_order)
 		else:
 			self.sort_jobs = getattr(self, sort_fun_name)
 

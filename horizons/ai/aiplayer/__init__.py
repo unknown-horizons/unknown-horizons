@@ -30,54 +30,54 @@ from horizons.component.stancecomponent import NoneStance
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.weaponholder import MovingWeaponHolder
 
-from mission.foundsettlement import FoundSettlement
-from mission.preparefoundationship import PrepareFoundationShip
-from mission.domestictrade import DomesticTrade
-from mission.specialdomestictrade import SpecialDomesticTrade
-from mission.internationaltrade import InternationalTrade
+from .mission.foundsettlement import FoundSettlement
+from .mission.preparefoundationship import PrepareFoundationShip
+from .mission.domestictrade import DomesticTrade
+from .mission.specialdomestictrade import SpecialDomesticTrade
+from .mission.internationaltrade import InternationalTrade
 
-from personalitymanager import PersonalityManager
-from landmanager import LandManager
-from settlementmanager import SettlementManager
-from unitbuilder import UnitBuilder
-from constants import GOAL_RESULT
-from basicbuilder import BasicBuilder
-from specialdomestictrademanager import SpecialDomesticTradeManager
-from internationaltrademanager import InternationalTradeManager
-from settlementfounder import SettlementFounder
+from .personalitymanager import PersonalityManager
+from .landmanager import LandManager
+from .settlementmanager import SettlementManager
+from .unitbuilder import UnitBuilder
+from .constants import GOAL_RESULT
+from .basicbuilder import BasicBuilder
+from .specialdomestictrademanager import SpecialDomesticTradeManager
+from .internationaltrademanager import InternationalTradeManager
+from .settlementfounder import SettlementFounder
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
-from building import AbstractBuilding
-from building.farm import AbstractFarm, FarmEvaluator
-from building.field import AbstractField
-from building.weaver import AbstractWeaver
-from building.distillery import AbstractDistillery
-from building.villagebuilding import AbstractVillageBuilding
-from building.claydeposit import AbstractClayDeposit
-from building.claypit import AbstractClayPit
-from building.doctor import AbstractDoctor
-from building.brickyard import AbstractBrickyard
-from building.firestation import AbstractFireStation
-from building.fishdeposit import AbstractFishDeposit
-from building.fisher import AbstractFisher
-from building.tree import AbstractTree
-from building.lumberjack import AbstractLumberjack
-from building.irondeposit import AbstractIronDeposit
-from building.ironmine import AbstractIronMine
-from building.charcoalburner import AbstractCharcoalBurner
-from building.smeltery import AbstractSmeltery
-from building.toolmaker import AbstractToolmaker
-from building.boatbuilder import AbstractBoatBuilder
-from building.signalfire import AbstractSignalFire
-from building.tobacconist import AbstractTobacconist
-from building.saltponds import AbstractSaltPonds
-from building.stonedeposit import AbstractStoneDeposit
-from building.stonepit import AbstractStonePit
-from building.stonemason import AbstractStonemason
+from .building import AbstractBuilding
+from .building.farm import AbstractFarm, FarmEvaluator
+from .building.field import AbstractField
+from .building.weaver import AbstractWeaver
+from .building.distillery import AbstractDistillery
+from .building.villagebuilding import AbstractVillageBuilding
+from .building.claydeposit import AbstractClayDeposit
+from .building.claypit import AbstractClayPit
+from .building.doctor import AbstractDoctor
+from .building.brickyard import AbstractBrickyard
+from .building.firestation import AbstractFireStation
+from .building.fishdeposit import AbstractFishDeposit
+from .building.fisher import AbstractFisher
+from .building.tree import AbstractTree
+from .building.lumberjack import AbstractLumberjack
+from .building.irondeposit import AbstractIronDeposit
+from .building.ironmine import AbstractIronMine
+from .building.charcoalburner import AbstractCharcoalBurner
+from .building.smeltery import AbstractSmeltery
+from .building.toolmaker import AbstractToolmaker
+from .building.boatbuilder import AbstractBoatBuilder
+from .building.signalfire import AbstractSignalFire
+from .building.tobacconist import AbstractTobacconist
+from .building.saltponds import AbstractSaltPonds
+from .building.stonedeposit import AbstractStoneDeposit
+from .building.stonepit import AbstractStonePit
+from .building.stonemason import AbstractStonemason
 
-from goal.settlementgoal import SettlementGoal
-from goal.donothing import DoNothingGoal
+from .goal.settlementgoal import SettlementGoal
+from .goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
 from horizons.messaging import SettlementRangeChanged, NewDisaster, MineEmpty

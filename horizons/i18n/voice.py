@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 
 import horizons.globals
 import os.path
@@ -117,6 +118,6 @@ def eval_category_name(category):
 	try:
 		cat_name = getattr(Speech, category)
 	except:
-		print "Incorrect name of speech category: %s" % category
-		print "You might want to add this here in voice.py."
+		print("Incorrect name of speech category: %s" % category)
+		print("You might want to add this here in voice.py.")
 	return cat_name

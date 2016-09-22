@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import os
 import os.path
 import sys
@@ -28,7 +29,7 @@ def remove_double(liste):
 	return [i.replace('\\\\', '\\') for i in liste]
 
 if not os.path.split(os.getcwd())[1] == 'development':
-	print "This program expects to be invoked from the Unknown Horizons development directory"
+	print("This program expects to be invoked from the Unknown Horizons development directory")
 	sys.exit(-1)
 
 os.chdir('..') #Change to the root directory

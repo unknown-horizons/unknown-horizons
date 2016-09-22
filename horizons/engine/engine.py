@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import locale
 import logging
 
@@ -282,7 +283,7 @@ class Fife(object):
 			try:
 				self.engine.pump()
 			except fife.Exception as e:
-				print e.getMessage()
+				print(e.getMessage())
 				break
 			for f in self.pump:
 				f()

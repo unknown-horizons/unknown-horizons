@@ -21,19 +21,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import gettext
 import sys
 
 try:
 	import nose
 except ImportError:
-	print 'The nose package is needed to run the UH tests.'
+	print('The nose package is needed to run the UH tests.')
 	sys.exit(1)
 
 try:
 	import mock
 except ImportError:
-	print 'The mock package is needed to run the UH tests.'
+	print('The mock package is needed to run the UH tests.')
 	sys.exit(1)
 
 

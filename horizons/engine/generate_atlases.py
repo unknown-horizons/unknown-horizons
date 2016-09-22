@@ -21,6 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import glob
 import json
 import logging
@@ -251,7 +252,7 @@ class AtlasGenerator(object):
 		return paths
 
 	def recreate(self):
-		print 'Recreating all atlases'
+		print('Recreating all atlases')
 
 		self._init_sets()
 		paths = self._get_paths()
@@ -268,10 +269,10 @@ class AtlasGenerator(object):
 		self.save()
 
 	def _update_selected_books(self, update_books):
-		print 'Updating some of the atlases:'
+		print('Updating some of the atlases:')
 		for book in sorted(update_books, key=lambda book: int(book.id)):
-			print book.path
-		print
+			print(book.path)
+		print()
 
 		self._save_sets()
 		self._save_books(update_books)
@@ -408,7 +409,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print 'Usage: python2 generate_atlases.py max_size'
+		print('Usage: python2 generate_atlases.py max_size')
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))

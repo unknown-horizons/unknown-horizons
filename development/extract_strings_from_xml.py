@@ -33,13 +33,14 @@
 #
 ###############################################################################
 
+from __future__ import print_function
 import os
 import sys
 from xml.dom import minidom
 
 
 if len(sys.argv) != 2:
-	print 'Error: Provide a file to write strings to as argument. Exiting.'
+	print('Error: Provide a file to write strings to as argument. Exiting.')
 	sys.exit(1)
 
 header = u'''\
@@ -116,8 +117,8 @@ files_to_skip = [
 
 
 def print_n_no_name(n, text):
-	print '\tWarning: ',
-	print '%s without name. Add unique name if desired: text="%s"' % (n, text)
+	print('\tWarning: ', end=' ')
+	print('%s without name. Add unique name if desired: text="%s"' % (n, text))
 
 def list_all_files():
 	result = []

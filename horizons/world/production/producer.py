@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import logging
 
 from horizons.world.production.productionline import ProductionLine
@@ -565,7 +567,7 @@ class ShipProducer(QueueProducer):
 			prod_line = self.create_production_line(prod_line_id)
 			units = prod_line.unit_production.keys()
 			if len(units) > 1:
-				print 'WARNING: unit production system has been designed for 1 type per order'
+				print('WARNING: unit production system has been designed for 1 type per order')
 			queue.append(units[0])
 		return queue
 

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from default import DefaultPersonality
+from .default import DefaultPersonality
 
 class OtherPersonality(DefaultPersonality):
 	"""This personality makes the AI build larger settlements."""

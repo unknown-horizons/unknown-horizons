@@ -20,13 +20,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import sys
 
 usage = "<filename> [lower_bound] [upper_bound]"
 usage = "<filename>"
 
 if len(sys.argv) < 2:
-	print usage
+	print(usage)
 	sys.exit(1)
 
 filename = sys.argv[1]
@@ -80,9 +81,9 @@ for t in translations:
 
 	if len_ratio > 1.4 or len_ratio < 0.6 and \
 			abs(len(orig)-len(trans)) > 2:
-		print 'string length ratio:', len_ratio
-		print orig
-		print trans
-		print
+		print('string length ratio:', len_ratio)
+		print(orig)
+		print(trans)
+		print()
 
 
