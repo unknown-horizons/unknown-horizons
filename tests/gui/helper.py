@@ -23,11 +23,11 @@
 Cleaner interface to various game/gui functions to make tests easier.
 """
 
+from __future__ import print_function
 import contextlib
 import os
 import tempfile
 import types
-from collections import deque
 
 import mock
 from fife import fife
@@ -191,40 +191,49 @@ class GuiHelper(object):
 		elif hasattr(w, 'findChildren'):
 			return w.findChildren()
 
-	def _find(self, name):
+	def _find(self, widgets, name):
 		"""Recursive find a widget by name.
 
 		This is the actual search implementation behind `GuiHelper.find`.
+
+		Finds all components that match the right-most name, e.g. foo in bar/baz/foo. From
+		there, go up the tree, removing candidates that have no match for other path
+		components, e.g. no baz in their parents.
 		"""
-		match = None
-		seen = set()
-		widgets = deque(self.active_widgets)
+		path_components = name.split('/')
 
-		path_components = list(reversed(name.split('/')))
+		first_part = path_components.pop()
+		filtered = [w for w in widgets if w.name == first_part]
+		if not filtered:
+			return None
 
+		candidates = [(f, [f.parent]) for f in filtered]
 		while path_components:
-			name = path_components.pop()
+			path = path_components.pop()
+			new_candidates = []
+			for candidate, up in candidates:
+				w = up.pop()
+				while w and w.name != path:
+					if w.name != '__unnamed__':
+						up.append(w)
+					w = w.parent
 
-			while widgets:
-				w = widgets.popleft()
-				seen.add(w)
-				if w.name == name:
-					# When there are still names left in the path, continue our search
-					# in the children of the matched widget
-					if path_components:
-						widgets = deque([x for x in self._get_children(w) if x not in seen])
-						break
-					else:
-						# We're done!
-						match = w
-						break
-				else:
-					widgets.extend([x for x in self._get_children(w) if x not in seen])
+				if w and w.name == path:
+					new_candidates.append((candidate, up + [w]))
 
-			if match:
-				break
+			candidates = new_candidates
 
-		return match
+		if len(candidates) > 1:
+			candidates = sorted(candidates, key=lambda c: len(c[1]))
+			best_matches = [c[0] for c in candidates if len(c[1]) == len(candidates[0][1])]
+
+			if len(best_matches) > 1:
+				raise Exception('Ambigious specification {}, found {} matches'.format(
+					name, len(best_matches)))
+			else:
+				return best_matches[0]
+		elif candidates:
+			return candidates[0][0]
 
 	def find(self, name):
 		"""Find a widget by name.
@@ -241,7 +250,7 @@ class GuiHelper(object):
 		Recursively searches through all widgets. Some widgets will be extended
 		with helper functions to allow easier interaction in tests.
 		"""
-		match = self._find(name)
+		match = self._find(self.active_widgets, name)
 
 		gui_helper = self
 
@@ -530,3 +539,16 @@ class GuiHelper(object):
 		self.cursor_map_coords.disable()
 		self.speed_default()
 		self.run(2**20)
+
+	def print_widget_tree(self, widget):
+		"""
+		Helper function that recurses through a widget and its children and prints them
+		nested.
+		"""
+		def visitor(w, level):
+			print('  ' * level, '<{0} name="{1}">'.format(w.__class__.__name__, w.name))
+			for child in self._get_children(w):
+				visitor(child, level + 1)
+			print('  ' * level, '</{0}>'.format(w.__class__.__name__))
+
+		visitor(widget, 0)
