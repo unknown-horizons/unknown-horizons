@@ -20,11 +20,12 @@
 # ###################################################
 
 import time
-import horizons.globals
 
-from horizons.util.living import LivingObject
+import horizons.globals
 from horizons.constants import GAME, GAME_SPEED
 from horizons.scheduler import Scheduler
+from horizons.util.living import LivingObject
+
 
 class Timer(LivingObject):
 	"""

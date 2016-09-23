@@ -27,8 +27,9 @@ from fife.extensions.pychan.widgets import Container, Icon
 
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python.callback import Callback
+
 
 @metaChangeListenerDecorator('remove')
 class TabWidget(object):
@@ -150,4 +151,3 @@ class TabWidget(object):
 		"""Hides current tab and this widget"""
 		self.current_tab.hide()
 		self.widget.hide()
-

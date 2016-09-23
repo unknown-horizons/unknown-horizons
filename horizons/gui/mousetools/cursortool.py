@@ -19,14 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
+import math
 
 from fife import fife
+
 import horizons.globals
-
 from horizons.util.shapes import Point
-
 
 # round half towards plus infinity
 # http://en.wikipedia.org/wiki/Rounding#Round_half_up

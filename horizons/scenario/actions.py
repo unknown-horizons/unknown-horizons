@@ -22,18 +22,16 @@
 import math
 
 import horizons.globals
-
+from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.command.unit import CreateUnit
+from horizons.constants import MESSAGES
+from horizons.messaging import SettlerUpdate
+from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.python.registry import Registry
-from horizons.util.shapes import Point, Circle
+from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
-from horizons.command.unit import CreateUnit
-from horizons.scenario import CONDITIONS
-from horizons.constants import MESSAGES
-from horizons.command.game import PauseCommand, UnPauseCommand
-from horizons.messaging import SettlerUpdate
-from horizons.component.storagecomponent import StorageComponent
 
 
 class ACTIONS(object):
@@ -133,6 +131,8 @@ def wait(session, seconds):
 @register()
 def alter_inventory(session, resource, amount):
 	"""Alters the inventory of each settlement."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	for settlement in session.world.settlements:
 		if settlement.owner == session.world.player and settlement.warehouse:
 			settlement.warehouse.get_component(StorageComponent).inventory.alter(

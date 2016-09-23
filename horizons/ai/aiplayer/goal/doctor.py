@@ -24,6 +24,7 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 
+
 class DoctorGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'DoctorGoal'

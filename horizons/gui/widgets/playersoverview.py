@@ -24,6 +24,7 @@ from fife.extensions.pychan import widgets
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
 
+
 class PlayersOverview(StatsWidget):
 	"""Widget that shows the scores of every player in the game."""
 

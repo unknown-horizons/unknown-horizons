@@ -27,17 +27,17 @@ from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
 import horizons.main
-from horizons.gui.keylisteners import MainListener
-from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
-from horizons.util.startgameoptions import StartGameOptions
-from horizons.messaging import GuiAction, GuiHover, GuiCancelAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import load_uh_widget
+from horizons.gui.keylisteners import MainListener
+from horizons.gui.modules import (
+	HelpDialog, LoadingScreen, MultiplayerMenu, SelectSavegameDialog, SettingsDialog, SingleplayerMenu)
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-from horizons.gui.modules import (HelpDialog, SingleplayerMenu, MultiplayerMenu,
-                                  SelectSavegameDialog, LoadingScreen, SettingsDialog)
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
-from horizons.gui.windows import WindowManager, Window
+from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
+from horizons.gui.windows import Window, WindowManager
+from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
+from horizons.util.startgameoptions import StartGameOptions
 
 
 class MainMenu(Window):

@@ -24,17 +24,17 @@ import itertools
 import json
 import math
 import re
-from math import sin, cos
+from math import cos, sin
 
-import horizons.globals
 from fife import fife
 
-from horizons.extscheduler import ExtScheduler
-from horizons.util.python import decorators
-from horizons.util.shapes import Circle, Point, Rect
+import horizons.globals
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
+from horizons.extscheduler import ExtScheduler
 from horizons.messaging import SettingChanged
+from horizons.util.python import decorators
+from horizons.util.shapes import Circle, Point, Rect
 
 
 class Minimap(object):

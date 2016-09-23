@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 import hashlib
 import random
 import re
 import string
-import copy
 
-from horizons.util.shapes import Circle, Point, Rect
 from horizons.constants import GROUND
+from horizons.util.shapes import Circle, Point, Rect
 
 # this is how a random island id looks like (used for creation)
 _random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}:${island_x}:${island_y}"

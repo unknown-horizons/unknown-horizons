@@ -21,6 +21,7 @@
 
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 
+
 class SimpleCollectorAreaCache(object):
 	"""
 	A specialized PartialBinaryBuildabilityCache for keeping track of collector coverage.

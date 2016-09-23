@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.world.buildability.connectedareacache import ConnectedAreaCache
 from tests.unittests import TestCase
 
-from horizons.world.buildability.connectedareacache import ConnectedAreaCache
 
 class TestConnectedAreaCache(TestCase):
 	def test(self):

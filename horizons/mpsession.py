@@ -22,11 +22,12 @@
 import random
 
 import horizons.main
-from horizons.session import Session
-from horizons.manager import MPManager
-from horizons.timer import Timer
-from horizons.savegamemanager import SavegameManager
 from horizons.command.game import SaveCommand
+from horizons.manager import MPManager
+from horizons.savegamemanager import SavegameManager
+from horizons.session import Session
+from horizons.timer import Timer
+
 
 class MPSession(Session):
 	"""Session class for multiplayer games."""

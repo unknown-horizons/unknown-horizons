@@ -21,7 +21,6 @@
 
 from horizons.scenario import CONDITIONS
 
-
 var_eq = CONDITIONS.get('var_eq')
 settlement_res_stored_greater = CONDITIONS.get('settlement_res_stored_greater')
 settler_level_greater = CONDITIONS.get('settler_level_greater')

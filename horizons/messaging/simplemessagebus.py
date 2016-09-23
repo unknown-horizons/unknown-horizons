@@ -22,8 +22,9 @@
 import logging
 from collections import defaultdict
 
-from horizons.util.python.singleton import Singleton
 from horizons.messaging.messagebus import MessageBus
+from horizons.util.python.singleton import Singleton
+
 
 class SimpleMessageBus(object):
 	"""Manages registration and calling of callbacks when events (strings) occur.

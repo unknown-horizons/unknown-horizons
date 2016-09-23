@@ -21,15 +21,13 @@
 
 from __future__ import print_function
 
-from tests.gui import gui_test
-from tests.gui.helper import get_player_ship, move_ship
-from tests.utils import mark_expected_failure
-
 from horizons.command.uioptions import SetTradeSlot
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
-
+from tests.gui import gui_test
+from tests.gui.helper import get_player_ship, move_ship
+from tests.utils import mark_expected_failure
 
 
 @mark_expected_failure

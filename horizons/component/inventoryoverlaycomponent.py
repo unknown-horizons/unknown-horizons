@@ -25,7 +25,6 @@ from collections import defaultdict
 from fife import fife
 
 import horizons.globals
-
 from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler

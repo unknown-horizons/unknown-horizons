@@ -21,10 +21,10 @@
 
 from copy import copy
 
-from horizons.gui.tabs import ProductionOverviewTab, InventoryTab
-from horizons.constants import PRODUCTION
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import PRODUCTION
+from horizons.gui.tabs import InventoryTab, ProductionOverviewTab
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 

@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command import Command, GenericCommand
 from horizons.entities import Entities
-from horizons.util.worldobject import WorldObject
-from horizons.command import GenericCommand, Command
-from horizons.util.worldobject import WorldObjectNotFound
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""

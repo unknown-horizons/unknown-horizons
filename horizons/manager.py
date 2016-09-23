@@ -19,16 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import operator
-import logging
 import itertools
+import logging
+import operator
 
-from horizons.timer import Timer
-from horizons.scheduler import Scheduler
-from horizons.util.worldobject import WorldObject
-from horizons.util.living import LivingObject
 from horizons.command.building import Build
 from horizons.network import CommandError, packets
+from horizons.scheduler import Scheduler
+from horizons.timer import Timer
+from horizons.util.living import LivingObject
+from horizons.util.worldobject import WorldObject
+
 
 class SPManager(LivingObject):
 	"""The manager class takes care of command issuing to the timermanager, sends tick-packets

@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
-from horizons.component.storagecomponent import StorageComponent
 
 
 class CONDITIONS(object):
@@ -75,11 +74,15 @@ def settler_level_greater(session, limit):
 @register(periodically=True)
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold than *limit*."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold than *limit*."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] < limit)
 
 @register(periodically=True)
@@ -116,18 +119,24 @@ def building_num_of_type_greater(session, building_class, limit):
 def player_res_stored_greater(session, resource, limit):
 	"""Returns whether all player settlements combined have more than *limit*
 	of *resource* in their inventories."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (sum(settlement.get_component(StorageComponent).inventory[resource] for settlement in _get_player_settlements(session)) > limit)
 
 @register(periodically=True)
 def player_res_stored_less(session, resource, limit):
 	"""Returns whether all player settlements combined have less than *limit*
 	of *resource* in their inventories."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (sum(settlement.get_component(StorageComponent).inventory[resource] for settlement in _get_player_settlements(session)) < limit)
 
 @register(periodically=True)
 def settlement_res_stored_greater(session, resource, limit):
 	"""Returns whether at least one player settlement has more than *limit*
 	of *resource* in its inventory."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return any(settlement for settlement in _get_player_settlements(session) if
 	           settlement.get_component(StorageComponent).inventory[resource] > limit)
 

@@ -22,12 +22,11 @@
 from fife import fife
 
 import horizons.globals
-
-from horizons.entities import Entities
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import LAYERS
+from horizons.entities import Entities
 from horizons.gui.mousetools import NavigationTool
 from horizons.gui.tabs.buildtabs import BuildTab
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 class PipetteTool(NavigationTool):

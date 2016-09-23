@@ -24,6 +24,7 @@ import logging
 from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
 from horizons.util.python import decorators
 
+
 class PersonalityManager(object):
 	"""This class handles the loading of personality data for the AI players."""
 

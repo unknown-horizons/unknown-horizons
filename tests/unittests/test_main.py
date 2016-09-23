@@ -23,7 +23,6 @@ import mock
 
 import horizons.main
 from horizons.util.cmdlineoptions import get_option_parser
-
 from tests.unittests import TestCase
 
 

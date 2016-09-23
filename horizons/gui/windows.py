@@ -27,7 +27,7 @@ from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.util.python.callback import Callback
 
 

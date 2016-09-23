@@ -21,12 +21,12 @@
 
 import logging
 
+from horizons.component.healthcomponent import HealthComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
-from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.component.healthcomponent import HealthComponent
 
 
 @metaChangeListenerDecorator("attack_ready")

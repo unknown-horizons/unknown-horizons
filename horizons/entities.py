@@ -21,13 +21,14 @@
 
 from __future__ import print_function
 
-import logging
 import fnmatch
+import logging
 import os
 
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
+
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):

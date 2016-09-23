@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import time
 import heapq
+import time
 
 from horizons.util.python.singleton import ManualConstructionSingleton
 

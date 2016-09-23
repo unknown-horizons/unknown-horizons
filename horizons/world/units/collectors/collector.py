@@ -21,21 +21,22 @@
 
 from __future__ import print_function
 
-import operator
 import logging
+import operator
 from collections import namedtuple
 
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.restrictedpickup import RestrictedPickup
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import COLLECTORS
+from horizons.ext.enum import Enum
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
-from horizons.constants import COLLECTORS
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.restrictedpickup import RestrictedPickup
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 class Collector(Unit):
 	"""Base class for every collector. Does not depend on any home building.

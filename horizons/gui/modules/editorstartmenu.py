@@ -20,12 +20,12 @@
 # ###################################################
 
 import horizons.main
-
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
+
 
 class EditorStartMenu(Window):
 	def __init__(self, windows):

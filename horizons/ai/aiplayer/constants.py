@@ -22,6 +22,7 @@
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class BUILD_RESULT:
 	OK = 0
 	NEED_RESOURCES = 1

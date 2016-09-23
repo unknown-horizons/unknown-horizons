@@ -19,25 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import bz2
+import os
 import tempfile
 
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, GAME, PRODUCTION, RES, TIER, UNITS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
-from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
-
-from tests.game import (
-	game_test, new_session, settle, load_session, saveload,
-	TEST_FIXTURES_DIR,
-)
+from tests.game import TEST_FIXTURES_DIR, game_test, load_session, new_session, saveload, settle
 
 
 @game_test(manual_session=True)

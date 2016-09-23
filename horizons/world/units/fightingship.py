@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import WEAPONS, GAME_SPEED
-from horizons.world.units.weaponholder import MovingWeaponHolder
-from horizons.world.units.ship import Ship
 from horizons.component.commandablecomponent import CommandableComponent
+from horizons.constants import GAME_SPEED, WEAPONS
+from horizons.world.units.ship import Ship
+from horizons.world.units.weaponholder import MovingWeaponHolder
+
 
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship
@@ -88,4 +89,3 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self._instance.setFacingLocation(facing_location)
 		self.act('fire_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
-

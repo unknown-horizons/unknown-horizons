@@ -20,21 +20,22 @@
 # ###################################################
 
 import weakref
+
 from fife import fife
 
 import horizons.globals
-
-from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.namedcomponent import NamedComponent, ShipNameComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import LAYERS
+from horizons.messaging import ShipDestroyed
+from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pather import FisherShipPather, ShipPather
+from horizons.world.traderoute import TradeRoute
 from horizons.world.units.collectors import FisherShipCollector
 from horizons.world.units.unit import Unit
-from horizons.constants import LAYERS
-from horizons.scheduler import Scheduler
-from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.component.commandablecomponent import CommandableComponent
-from horizons.messaging import ShipDestroyed
-from horizons.world.traderoute import TradeRoute
+
 
 class Ship(Unit):
 	"""Class representing a ship

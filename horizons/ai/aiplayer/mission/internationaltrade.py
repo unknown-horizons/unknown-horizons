@@ -20,15 +20,16 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import ShipMission
+from horizons.command.uioptions import BuyResource, SellResource
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import RES, TRADER
+from horizons.ext.enum import Enum
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.constants import RES, TRADER
-from horizons.command.uioptions import SellResource, BuyResource
-from horizons.ext.enum import Enum
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.namedcomponent import NamedComponent
-from horizons.component.tradepostcomponent import TradePostComponent
+
 
 class InternationalTrade(ShipMission):
 	"""

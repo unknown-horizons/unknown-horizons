@@ -22,7 +22,8 @@
 import uuid
 
 from horizons.network import NetworkException, SoftNetworkException
-from horizons.network.packets import packet, SafeUnpickler
+from horizons.network.packets import SafeUnpickler, packet
+
 
 class cmd_creategame(packet):
 	clientversion = None

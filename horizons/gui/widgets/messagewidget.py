@@ -19,23 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import itertools
 import logging
 import textwrap
-import itertools
 
 from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
-
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n.voice import get_speech_file
+from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
-from horizons.scheduler import Scheduler
-from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.i18n.voice import get_speech_file
 
 
 class MessageWidget(LivingObject):

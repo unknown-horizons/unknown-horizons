@@ -20,17 +20,17 @@
 # ###################################################
 
 import horizons.globals
-
-from horizons.entities import Entities
-from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
+from horizons.component.storagecomponent import StorageComponent
+from horizons.entities import Entities
+from horizons.ext.enum import Enum
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.messaging import NewPlayerSettlementHovered
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import NewPlayerSettlementHovered
-from horizons.ext.enum import Enum
+
 
 class InvalidBuildMenuFileFormat(Exception):
 	pass

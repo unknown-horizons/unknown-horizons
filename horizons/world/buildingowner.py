@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.providerhandler import ProviderHandler
 from horizons.util.python import decorators
 from horizons.util.shapes import Point, RadiusRect
+from horizons.world.providerhandler import ProviderHandler
+
 
 """
 Simple building management functionality.

@@ -23,6 +23,7 @@ import unittest
 
 from horizons.util.shapes import Circle, Point, Rect
 
+
 class TestPathfinding(unittest.TestCase):
 
 	def testPoint(self):

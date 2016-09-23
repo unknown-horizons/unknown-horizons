@@ -22,20 +22,20 @@
 import collections
 
 import horizons.main
-
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
-from horizons.world.playerstats import PlayerStats
+from horizons.messaging import PlayerInventoryUpdated, PlayerLevelUpgrade, SettlerUpdate
+from horizons.scenario import CONDITIONS
+from horizons.scheduler import Scheduler
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.inventorychecker import InventoryChecker
 from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
-from horizons.scenario import CONDITIONS
-from horizons.scheduler import Scheduler
-from horizons.component.componentholder import ComponentHolder
-from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import SettlerUpdate, PlayerInventoryUpdated, PlayerLevelUpgrade
-from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.world.playerstats import PlayerStats
+
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""

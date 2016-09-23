@@ -22,7 +22,6 @@
 import random
 
 import horizons.globals
-
 from horizons.component import Component
 from horizons.extscheduler import ExtScheduler
 

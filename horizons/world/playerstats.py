@@ -20,18 +20,18 @@
 # ###################################################
 
 import math
-
 from collections import defaultdict
 
-from horizons.util.worldobject import WorldObject
-from horizons.entities import Entities
-from horizons.constants import TIER, BUILDINGS, PRODUCTION, RES, UNITS
-from horizons.util.python import decorators
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.world.production.producer import Producer
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, RES, TIER, UNITS
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
+from horizons.world.production.producer import Producer
+
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):

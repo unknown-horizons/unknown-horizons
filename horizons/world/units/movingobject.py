@@ -20,20 +20,21 @@
 # ###################################################
 
 import logging
+
 from fife import fife
 
-from horizons.scheduler import Scheduler
-
+from horizons.component.componentholder import ComponentHolder
+from horizons.constants import GAME_SPEED
 from horizons.engine import Fife
-from horizons.util.shapes import Point
+from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.weakmethodlist import WeakMethodList
+from horizons.util.shapes import Point
 from horizons.world.concreteobject import ConcreteObject
-from horizons.constants import GAME_SPEED
-from horizons.component.componentholder import ComponentHolder
 from horizons.world.units import UnitClass
 from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class MovingObject(ComponentHolder, ConcreteObject):
 	"""This class provides moving functionality and is to be inherited by Unit.

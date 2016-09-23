@@ -22,15 +22,15 @@
 from collections import defaultdict
 
 import horizons.globals
-
-from horizons.entities import Entities
 from horizons.command import Command
 from horizons.command.uioptions import TransferResource
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES
+from horizons.entities import Entities
+from horizons.scenario import CONDITIONS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
-from horizons.scenario import CONDITIONS
-from horizons.constants import BUILDINGS, RES
-from horizons.component.storagecomponent import StorageComponent
+
 
 class Build(Command):
 	"""Command class that builds an object."""

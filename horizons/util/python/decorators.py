@@ -22,9 +22,11 @@
 """Save general python function decorators here"""
 from __future__ import print_function
 
-from types import FunctionType, ClassType
-import time
 import functools
+import time
+from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
+from types import ClassType, FunctionType
+
 
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
@@ -105,7 +107,6 @@ def temporary_cachedmethod(timeout):
 
 # adapted from http://code.activestate.com/recipes/277940/
 
-from opcode import opmap, HAVE_ARGUMENT, EXTENDED_ARG
 globals().update(opmap)
 
 def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):

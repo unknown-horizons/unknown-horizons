@@ -19,12 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import yaml
-import threading
 import logging
+import os
+import threading
 
-from horizons.constants import TIER, RES, UNITS, BUILDINGS, PATHS
+import yaml
+
+from horizons.constants import BUILDINGS, PATHS, RES, TIER, UNITS
 from horizons.util.yamlcachestorage import YamlCacheStorage
 
 try:

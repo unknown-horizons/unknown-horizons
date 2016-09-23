@@ -21,11 +21,12 @@
 
 import random
 
-from horizons.session import Session
-from horizons.manager import SPManager
 from horizons.constants import SINGLEPLAYER
+from horizons.manager import SPManager
 from horizons.savegamemanager import SavegameManager
+from horizons.session import Session
 from horizons.timer import Timer
+
 
 class SPSession(Session):
 	"""Session tailored for singleplayer games."""

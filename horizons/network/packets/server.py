@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.network.packets import packet, SafeUnpickler
+from horizons.network.packets import SafeUnpickler, packet
+
 
 class cmd_session(packet):
 	def __init__(self, sid, capabilities):

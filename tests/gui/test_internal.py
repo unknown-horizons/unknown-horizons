@@ -23,7 +23,6 @@ import functools
 import os
 
 from horizons.scheduler import Scheduler
-
 from tests.gui import gui_test
 
 

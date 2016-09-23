@@ -22,8 +22,9 @@
 import logging
 from collections import defaultdict, deque
 
-from horizons.util.python.singleton import Singleton
 from horizons.messaging.messagebus import MessageBus
+from horizons.util.python.singleton import Singleton
+
 
 class QueuingMessageBus(MessageBus):
 	"""The QueuingMessageBus class is used to send Message instances from a sender to

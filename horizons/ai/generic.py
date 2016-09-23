@@ -21,12 +21,13 @@
 
 import weakref
 
-from horizons.world.player import Player
-from horizons.scheduler import Scheduler
-from horizons.ext.enum import Enum
-from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.util.python.callback import Callback
 from horizons.constants import GAME_SPEED
+from horizons.ext.enum import Enum
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.world.player import Player
+from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class GenericAI(Player):
 	"""Class for AI players implementing generic stuff."""

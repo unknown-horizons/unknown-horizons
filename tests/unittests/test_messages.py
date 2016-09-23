@@ -21,9 +21,9 @@
 
 import unittest
 
-from horizons.messaging import Message
-
 import mock
+
+from horizons.messaging import Message
 
 
 class ExampleMessage(Message):

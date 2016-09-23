@@ -26,11 +26,11 @@ from fife import fife
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 import horizons.globals
-
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
+
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""

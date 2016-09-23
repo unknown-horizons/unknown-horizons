@@ -23,24 +23,24 @@ from __future__ import print_function
 
 import logging
 
-from horizons.world.production.productionline import ProductionLine
-from horizons.world.production.production import Production, SingleUseProduction
-from horizons.constants import PRODUCTION
-from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
-from horizons.util.shapes import Circle, Point
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.component import Component
-from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
-from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
-from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon
-from horizons.world.production.utilization import Utilization, FullUtilization, FieldUtilization
-from horizons.util.python.callback import Callback
+from horizons.component import Component
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
-from horizons.messaging import MineEmpty
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import PRODUCTION
+from horizons.messaging import AddStatusIcon, MineEmpty, RemoveStatusIcon
+from horizons.scheduler import Scheduler
+from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Circle, Point
+from horizons.world.production.production import Production, SingleUseProduction
+from horizons.world.production.productionline import ProductionLine
+from horizons.world.production.unitproduction import UnitProduction
+from horizons.world.production.utilization import FieldUtilization, FullUtilization, Utilization
+from horizons.world.status import DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus
+
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")

@@ -24,11 +24,11 @@ import traceback
 from fife import fife
 
 from horizons.command.unit import Act
-from horizons.util.worldobject import WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class SelectionTool(NavigationTool):
 	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important

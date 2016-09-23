@@ -24,6 +24,7 @@ import hashlib
 from horizons.constants import TIER
 from horizons.i18n import _lazy
 
+
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
 	@param id: building or unit type id

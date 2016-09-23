@@ -22,13 +22,14 @@
 from __future__ import print_function
 
 import os
-import sys
 import subprocess
+import sys
 import threading
 from thread import error as ThreadError  # raised by threading.Lock.release
 
 import horizons.globals
 from horizons.constants import GFX, PATHS
+
 
 class AtlasLoadingThread(threading.Thread):
 	"""Class used to preload and generate the atlas files if necessary"""

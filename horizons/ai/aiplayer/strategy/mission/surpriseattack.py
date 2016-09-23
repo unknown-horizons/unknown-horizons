@@ -22,12 +22,11 @@
 from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.ext.enum import Enum
+from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
-
 from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.util.python import decorators
 
 
 class SurpriseAttack(FleetMission):

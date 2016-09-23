@@ -21,11 +21,13 @@
 
 from __future__ import print_function
 
-import horizons.globals
-import os.path
 import glob
-from horizons.constants import PATHS
+import os.path
 from random import randrange
+
+import horizons.globals
+from horizons.constants import PATHS
+
 
 """
 Internationalization for speech|voice files

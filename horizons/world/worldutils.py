@@ -22,7 +22,6 @@
 import bisect
 import itertools
 import os
-
 from collections import deque
 
 from horizons.command.building import Build
@@ -34,6 +33,7 @@ from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
+
 
 """
 This is used for random features required by world,
@@ -354,4 +354,3 @@ def get_random_possible_coastal_ship_position(world):
 				point_to_check = Point( x + first_sign, y + second_sign )
 				if world.get_island(point_to_check) is not None:
 					return result
-

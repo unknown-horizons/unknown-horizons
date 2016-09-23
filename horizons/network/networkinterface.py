@@ -23,12 +23,11 @@ import logging
 import uuid
 
 import horizons.globals
-
 from horizons import network
-from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES, NETWORK, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging.simplemessagebus import SimpleMessageBus
-from horizons.network import CommandError, NetworkException, FatalError, packets
+from horizons.network import CommandError, FatalError, NetworkException, packets
 from horizons.network.common import Game
 from horizons.network.connection import Connection
 from horizons.util.color import Color

@@ -20,10 +20,11 @@
 # ###################################################
 
 from horizons.component import Component
-from horizons.util.shapes import Annulus, Circle
-from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Annulus, Circle
 from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class StanceComponent(Component):
 	"""

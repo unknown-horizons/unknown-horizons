@@ -21,42 +21,43 @@
 
 import logging
 
-from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
-from horizons.ai.aiplayer.villagebuilder import VillageBuilder
-from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
-from horizons.ai.aiplayer.productionchain import ProductionChain
-from horizons.ai.aiplayer.resourcemanager import ResourceManager
-from horizons.ai.aiplayer.trademanager import TradeManager
-
 from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
-from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, StoneDepositCoverageGoal, MountainCoverageGoal
-from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
-from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
-	FeederTobaccoProductsGoal, FeederSaltGoal, FeederMedicalProductsGoal
-from horizons.ai.aiplayer.goal.firestation import FireStationGoal
+from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
+from horizons.ai.aiplayer.goal.depositcoverage import (
+	ClayDepositCoverageGoal, MountainCoverageGoal, StoneDepositCoverageGoal)
 from horizons.ai.aiplayer.goal.doctor import DoctorGoal
+from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
+from horizons.ai.aiplayer.goal.feederchaingoal import (
+	FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal, FeederTextileGoal,
+	FeederTobaccoProductsGoal)
+from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
-	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal, \
-	SaltGoal, MedicalHerbsProductsGoal
+from horizons.ai.aiplayer.goal.productionchaingoal import (
+	BoardsGoal, BricksGoal, CommunityGoal, EducationGoal, FaithGoal, FoodGoal, GetTogetherGoal,
+	MedicalHerbsProductsGoal, SaltGoal, TextileGoal, TobaccoProductsGoal, ToolsGoal)
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal
 from horizons.ai.aiplayer.goal.tradingship import TradingShipGoal
-
-from horizons.scheduler import Scheduler
-from horizons.util.worldobject import WorldObject
-from horizons.util.python import decorators
+from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
+from horizons.ai.aiplayer.productionchain import ProductionChain
+from horizons.ai.aiplayer.resourcemanager import ResourceManager
+from horizons.ai.aiplayer.trademanager import TradeManager
+from horizons.ai.aiplayer.villagebuilder import VillageBuilder
 from horizons.command.building import Tear
-from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, RES, GAME_SPEED, TIER
-from horizons.entities import Entities
-from horizons.component.storagecomponent import StorageComponent
+from horizons.command.uioptions import SetSettlementUpgradePermissions, SetTaxSetting
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GAME_SPEED, RES, TIER
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.production.producer import Producer
+
 
 class SettlementManager(WorldObject):
 	"""

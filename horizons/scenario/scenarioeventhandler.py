@@ -19,16 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import json
-import yaml
 import copy
+import json
 
+import yaml
+
+from horizons.scenario import ACTIONS, CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
-
-from horizons.scenario import ACTIONS, CONDITIONS
 
 
 class InvalidScenarioFileFormat(Exception):
@@ -327,4 +327,3 @@ def dump_dict_to_yaml(data):
 
 	# default_flow_style: makes use of short list notation without newlines (required here)
 	return yaml.safe_dump(data, line_break='\n', default_flow_style=True)
-

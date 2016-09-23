@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.unittests import TestCase
-
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
+from tests.unittests import TestCase
+
 
 class MockTerrainBuildabilityCache(object):
 	sizes = TerrainBuildabilityCache.sizes

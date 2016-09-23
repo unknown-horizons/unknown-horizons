@@ -21,11 +21,12 @@
 # ###################################################
 
 from __future__ import print_function
+
 import locale
 import logging
 
 from fife import fife
-from fife.extensions import pychan, fifelog
+from fife.extensions import fifelog, pychan
 
 from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS
 from horizons.engine.pychan_util import init_pychan

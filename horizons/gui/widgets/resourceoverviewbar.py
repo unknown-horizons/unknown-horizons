@@ -19,28 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import functools
+import itertools
 import json
 import weakref
-import itertools
-import functools
 
 from fife import fife
 from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 
 import horizons.globals
-
-from horizons.constants import TIER, RES
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, TIER
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 from horizons.util.python.decorators import cachedmethod
-from horizons.extscheduler import ExtScheduler
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
 from horizons.world.player import Player
 
 

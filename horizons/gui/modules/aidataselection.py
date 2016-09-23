@@ -20,7 +20,6 @@
 # ###################################################
 
 import horizons.globals
-
 from horizons.constants import MULTIPLAYER
 from horizons.gui.util import load_uh_widget
 

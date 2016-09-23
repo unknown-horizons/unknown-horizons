@@ -22,10 +22,11 @@
 
 from unittest import TestCase
 
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
 from horizons.world.storage import GenericStorage
-from horizons.component.tradepostcomponent import TradePostComponent
+
 
 class TestTradePostComponent(TestCase):
 	"""

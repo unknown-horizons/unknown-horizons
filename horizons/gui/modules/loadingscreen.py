@@ -24,11 +24,10 @@ import random
 
 import horizons.globals
 from horizons.constants import TIER
-from horizons.i18n import _lazy
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import _lazy
 from horizons.messaging import LoadingProgress
-
 
 # list of quotes and gameplay tips that are displayed while loading a game
 # NOTE: Try to use not more than 4 lines in a quote/gameplay tip !

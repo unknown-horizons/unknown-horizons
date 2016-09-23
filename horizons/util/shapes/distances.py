@@ -21,6 +21,7 @@
 
 from __future__ import print_function
 
+
 # Point
 
 def distance_point_point(p1, p2):

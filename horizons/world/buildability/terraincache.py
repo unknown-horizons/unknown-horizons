@@ -21,6 +21,7 @@
 
 from horizons.util.shapes.rect import Rect
 
+
 class TerrainRequirement:
 	LAND = 1 # buildings that must be entirely on flat land
 	LAND_AND_COAST = 2 # buildings that have to be partially on the coast

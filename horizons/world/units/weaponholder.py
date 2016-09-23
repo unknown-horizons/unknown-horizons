@@ -22,19 +22,20 @@
 import logging
 import math
 
+from horizons.component.stancecomponent import (
+	AggressiveStance, FleeStance, HoldGroundStance, NoneStance)
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Annulus, Point
 from horizons.util.worldobject import WorldObject
-from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
-from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \
-	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
-from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
-from horizons.component.storagecomponent import StorageComponent
+from horizons.world.units.unitexeptions import MoveNotPossible
+from horizons.world.units.weapon import SetStackableWeaponNumberError, StackableWeapon, Weapon
+
 
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")

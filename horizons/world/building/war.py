@@ -19,11 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import WEAPONS
 from horizons.world.building.buildable import BuildableSingle
 from horizons.world.building.building import BasicBuilding
-
 from horizons.world.units.weaponholder import StationaryWeaponHolder
-from horizons.constants import WEAPONS
+
 
 class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 

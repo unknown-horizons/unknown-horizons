@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
-
-from horizons.util.python import decorators
-from horizons.util.shapes import Point
+import weakref
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
+from horizons.util.python import decorators
+from horizons.util.shapes import Point
+
 
 """
 In this file, you will find an interface to the pathfinding algorithm.

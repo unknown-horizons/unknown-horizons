@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
-from horizons.extscheduler import ExtScheduler
+
 
 @metaChangeListenerDecorator('remove')
 class TabInterface(object):

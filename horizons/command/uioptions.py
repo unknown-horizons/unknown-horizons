@@ -21,6 +21,7 @@
 
 from horizons.command import GenericCommand, GenericComponentCommand
 
+
 class SetTaxSetting(GenericCommand):
 	"""Sets the taxes for a settlement."""
 	def __init__(self, settlement, level, new_taxes):

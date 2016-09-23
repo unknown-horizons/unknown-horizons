@@ -21,12 +21,13 @@
 
 import copy
 
-from horizons.entities import Entities
-from horizons.constants import BUILDINGS
 from horizons.command.building import Build
+from horizons.constants import BUILDINGS
+from horizons.entities import Entities
 from horizons.util.python import decorators
 from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
+
 
 class BasicBuilder(object):
 	"""An object of this class represents a non-checked plan to build a building at a specific place."""

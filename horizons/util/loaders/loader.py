@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import defaultdict
-import os
-import re
 import glob
 import logging
+import os
+import re
+from collections import defaultdict
 
 from horizons.constants import ACTION_SETS
+
 
 class GeneralLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded

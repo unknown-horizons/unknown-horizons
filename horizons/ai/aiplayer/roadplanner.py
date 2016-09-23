@@ -23,6 +23,7 @@ import heapq
 
 from horizons.util.python import decorators
 
+
 class RoadPlanner(object):
 	"""
 	Finds the most reasonable road between two areas.

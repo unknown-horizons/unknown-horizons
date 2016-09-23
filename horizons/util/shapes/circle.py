@@ -22,6 +22,7 @@
 from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Point, Shape
 
+
 class Circle(Shape):
 	"""Class for the shape of a circle
 	You can access center and radius of the circle as public members."""

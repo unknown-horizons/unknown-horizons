@@ -22,17 +22,17 @@
 import weakref
 from collections import deque
 
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, COLLECTORS
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import BuildingCollectorPather, RoadPather
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import RadiusRect
 from horizons.util.worldobject import WorldObject
-from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
-from horizons.constants import COLLECTORS, BUILDINGS
-from horizons.scheduler import Scheduler
+from horizons.world.units.collectors.collector import Collector, Job, JobList
 from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.world.units.collectors.collector import Collector, JobList, Job
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.collectingcomponent import CollectingComponent
 
 
 class BuildingCollector(Collector):

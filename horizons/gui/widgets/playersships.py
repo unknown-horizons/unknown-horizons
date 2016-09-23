@@ -21,13 +21,14 @@
 
 from fife.extensions.pychan.widgets import HBox, Label
 
-from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.util.python.callback import Callback
-from horizons.util.python import decorators
-from horizons.world.units.fightingship import FightingShip
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.world.units.fightingship import FightingShip
+
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""

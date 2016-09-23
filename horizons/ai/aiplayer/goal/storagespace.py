@@ -20,9 +20,10 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from horizons.util.python import decorators
-from horizons.constants import RES
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES
+from horizons.util.python import decorators
+
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 	def get_personality_name(self):

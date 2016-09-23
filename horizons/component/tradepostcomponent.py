@@ -19,12 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.changelistener import ChangeListener
-from horizons.util.worldobject import WorldObject
+from horizons.component import Component
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component import Component
+from horizons.util.changelistener import ChangeListener
+from horizons.util.worldobject import WorldObject
+
 
 class TRADE_ERROR_TYPE(object):
 	"""Machine controlled entities need to know the difference. On this basis, they decide

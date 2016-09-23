@@ -20,11 +20,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import OverviewTab
-from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.gui.tabs import OverviewTab
+from horizons.i18n import _lazy
 
 
 class EnemyBuildingOverviewTab(OverviewTab):

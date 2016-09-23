@@ -21,10 +21,9 @@
 
 import time
 
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.constants import BUILDINGS
 from horizons.world.units.collectors.collector import Collector
-from horizons.component.collectingcomponent import CollectingComponent
-
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 

@@ -24,7 +24,6 @@
 from unittest import TestCase
 
 from horizons.ext.dummy import Dummy
-
 from horizons.world import World
 
 

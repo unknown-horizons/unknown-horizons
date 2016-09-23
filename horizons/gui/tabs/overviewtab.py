@@ -20,9 +20,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.i18n import _lazy
-from horizons.component.namedcomponent import NamedComponent
 
 
 class OverviewTab(TabInterface):

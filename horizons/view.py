@@ -21,14 +21,15 @@
 
 import math
 import time
+
 from fife import fife
 
 import horizons.globals
-
+from horizons.constants import GAME_SPEED, LAYERS, VIEW
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-from horizons.constants import LAYERS, VIEW, GAME_SPEED
+
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""

@@ -22,8 +22,9 @@
 import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class BuildingEvaluator(object):
 	"""Class representing a set of instructions for building a building complex along with its value."""

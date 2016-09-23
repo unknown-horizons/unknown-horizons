@@ -21,11 +21,11 @@
 # ###################################################
 
 from __future__ import print_function
+
 from fife import fife
 from fife.extensions.pychan.widgets import Button
 
 import horizons.globals
-
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton

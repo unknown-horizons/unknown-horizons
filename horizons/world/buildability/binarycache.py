@@ -21,6 +21,7 @@
 
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
+
 class LazyBinaryBuildabilityCacheElement(object):
 	"""
 	Lazily computed cache element of a BinaryBuildabilityCache instance.

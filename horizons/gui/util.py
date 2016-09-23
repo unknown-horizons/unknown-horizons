@@ -21,11 +21,6 @@
 
 import logging
 import os
-# Find the best implementation available on this platform
-try:
-	from cStringIO import StringIO
-except:
-	from StringIO import StringIO
 
 from fife.extensions.pychan import loadXML
 from fife.extensions.pychan.widgets import Container, HBox, Icon
@@ -34,6 +29,14 @@ from horizons.gui.i18n import translate_widget
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
+
+# Find the best implementation available on this platform
+try:
+	from cStringIO import StringIO
+except:
+	from StringIO import StringIO
+
+
 
 @decorators.cachedfunction
 def get_gui_files_map():

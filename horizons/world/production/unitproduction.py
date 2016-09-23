@@ -20,9 +20,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.production.production import ChangingProduction
 from horizons.constants import PRODUCTION, RES
 from horizons.scheduler import Scheduler
+from horizons.world.production.production import ChangingProduction
+
 
 class UnitProduction(ChangingProduction):
 	"""Production, that produces units."""

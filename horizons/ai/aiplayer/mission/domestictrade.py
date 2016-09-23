@@ -20,10 +20,11 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import ShipMission
+from horizons.ext.enum import Enum
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
+
 
 class DomesticTrade(ShipMission):
 	"""

@@ -29,6 +29,7 @@ from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.unitexeptions import MoveNotPossible
 
+
 class ChaseShipsAndAttack(FleetMission):
 	"""
 	This is one of the basic attack missions.

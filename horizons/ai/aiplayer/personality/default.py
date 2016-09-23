@@ -21,6 +21,7 @@
 
 from horizons.constants import TIER
 
+
 class DefaultPersonality:
 	class SettlementFounder:
 		min_feeder_island_area = 400 # minimum amount of usable free land on an island to consider turning it into a feeder island

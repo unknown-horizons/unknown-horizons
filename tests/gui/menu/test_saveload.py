@@ -25,7 +25,7 @@ import shutil
 import mock
 
 from horizons.savegamemanager import SavegameManager
-from tests.gui import gui_test, TEST_FIXTURES_DIR
+from tests.gui import TEST_FIXTURES_DIR, gui_test
 
 
 def _copy_savegame(filename='boatbuilder'):

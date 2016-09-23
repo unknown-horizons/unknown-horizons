@@ -19,16 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import os
 import os.path
 import tempfile
 import time
 
+from fife import fife
+
 from horizons.engine import Fife
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
+from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 from horizons.gui.windows import Dialog
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback

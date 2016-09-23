@@ -21,17 +21,17 @@
 
 import logging
 
+from horizons.command.unit import CreateUnit
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, WILD_ANIMAL
 from horizons.scheduler import Scheduler
-
 from horizons.util.pathfinding.pather import SoldierPather
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.command.unit import CreateUnit
-from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job
-from horizons.constants import RES, WILD_ANIMAL
-from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.resourcehandler import ResourceHandler
+from horizons.world.units.collectors import BuildingCollector, Collector, Job, JobList
+from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class Animal(ResourceHandler):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)

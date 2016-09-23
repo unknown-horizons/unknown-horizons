@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.unit import CreateUnit
 from horizons.command.building import Tear
-from horizons.constants import UNITS, BUILDINGS
+from horizons.command.unit import CreateUnit
+from horizons.constants import BUILDINGS, UNITS
 from horizons.world.production.producer import Producer
-
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship, move_ship, found_settlement
+from tests.gui.helper import found_settlement, get_player_ship, move_ship
 from tests.utils import mark_expected_failure
 
 

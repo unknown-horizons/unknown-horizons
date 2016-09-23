@@ -26,7 +26,6 @@ from operator import attrgetter
 from fife import fife
 
 import horizons.globals
-
 from horizons.component import Component
 from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler

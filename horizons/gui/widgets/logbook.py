@@ -19,20 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
-
 import json
+import logging
 from itertools import groupby
+
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
-from horizons.util.python.callback import Callback
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
-from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.scenario.actions import show_message
+from horizons.util.python.callback import Callback
 
 
 class LogBook(PickBeltWidget, Window):

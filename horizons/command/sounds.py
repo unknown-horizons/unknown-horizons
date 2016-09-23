@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command import Command
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.shapes import Point
-from horizons.command import Command
+
 
 class PlaySound(Command):
 	"""Command class that plays the build sound. This has been moved to a separate

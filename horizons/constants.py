@@ -21,11 +21,12 @@
 # ###################################################
 
 import ctypes
-import platform
 import os
 import os.path
+import platform
 
 from horizons.ext.enum import Enum
+
 
 """This file keeps track of the constants that are used in Unknown Horizons.
 NOTE: Using magic constants in code is generally a bad style, so avoid where

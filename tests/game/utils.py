@@ -28,10 +28,10 @@ import tempfile
 
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import GROUND, BUILDINGS, UNITS, RES
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GROUND, RES, UNITS
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point, Rect
-from horizons.component.storagecomponent import StorageComponent
 
 
 def create_map():

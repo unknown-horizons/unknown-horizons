@@ -23,7 +23,6 @@ import hashlib
 import os
 import os.path
 import tempfile
-
 from collections import defaultdict, deque
 
 from horizons.constants import MAP, PATHS
@@ -32,6 +31,7 @@ from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.random_map import create_random_island
 from horizons.util.savegameupgrader import SavegameUpgrader
+
 
 class MapFileNotFound(Exception):
 	def __init__(self, msg=None):

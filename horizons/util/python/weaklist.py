@@ -28,6 +28,7 @@ instead of strong ref
 
 import weakref
 
+
 class _CopyDocFromParentClass(type):
 	"""
     metaclass that copy, for a given class,
