@@ -212,8 +212,10 @@ class GuiHelper(object):
 			path = path_components.pop()
 			new_candidates = []
 			for candidate, up in candidates:
-				w = up[-1]
+				w = up.pop()
 				while w and w.name != path:
+					if w.name != '__unnamed__':
+						up.append(w)
 					w = w.parent
 
 				if w and w.name == path:
@@ -222,7 +224,14 @@ class GuiHelper(object):
 			candidates = new_candidates
 
 		if len(candidates) > 1:
-			raise Exception('Ambigious specification {}, found {} matches'.format(name, len(candidates)))
+			candidates = sorted(candidates, key=lambda c: len(c[1]))
+			best_matches = [c[0] for c in candidates if len(c[1]) == len(candidates[0][1])]
+
+			if len(best_matches) > 1:
+				raise Exception('Ambigious specification {}, found {} matches'.format(
+					name, len(best_matches)))
+			else:
+				return best_matches[0]
 		elif candidates:
 			return candidates[0][0]
 

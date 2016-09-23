@@ -38,6 +38,9 @@ class Widget(object):
 		for c in self.children:
 			c.parent = self
 
+	def __repr__(self):
+		return self.name
+
 	def __hash__(self):
 		return id(self)
 
@@ -110,6 +113,46 @@ class FindWidgetTest(unittest.TestCase):
 		self.w('target')
 
 		self.assertEqual(self.find('bla/target'), target)
+
+	def test_hierarchy_returns_widget_with_best_matching_path(self):
+		"""
+		If we have multiple matches for a path, return the one that fits most closely,
+		i.e. the one with the shortest path of names.
+		"""
+		target1 = self.w('target')
+		target2 = self.w('target')
+
+		self.w('bla', [
+			self.w('baz', [
+				target1
+			])
+		])
+		self.w('bla', [
+			target2
+		])
+
+		self.assertEqual(self.find('bla/target'), target2)
+
+	def test_ambigious_error(self):
+		"""
+		If a single best match can't be found, an error is raised instead.
+		"""
+		target1 = self.w('target')
+		target2 = self.w('target')
+
+		self.w('bla', [
+			target1
+		])
+		self.w('bla', [
+			target2
+		])
+
+		try:
+			self.find('bla/target')
+		except Exception as e:
+			self.assertEqual(str(e), 'Ambigious specification bla/target, found 2 matches')
+		else:
+			self.fail('No exception raised')
 
 	def test_hierarchy_not_absolute_path(self):
 		"""
