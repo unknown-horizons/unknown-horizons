@@ -51,7 +51,6 @@ def test_place_tiles(gui):
 	gui.cursor_click(-8, 78, 'left')
 
 
-@mark_flaky
 @editor_test
 def test_save_map(gui):
 	"""Save a map in the editor."""
@@ -65,7 +64,7 @@ def test_save_map(gui):
 		gui.trigger('load_game_window', 'okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'savegameButton')
+		gui.trigger('menu/button_images', 'savegameButton')
 
 	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, u"test_map.sqlite"))
 

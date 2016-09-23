@@ -125,6 +125,10 @@ class ShipOverviewTab(OverviewTab):
 		self._refresh_combat()
 		super(ShipOverviewTab, self).refresh()
 
+	def hide(self):
+		self.route_menu.hide()
+		super(ShipOverviewTab, self).hide()
+
 
 class FightingShipOverviewTab(ShipOverviewTab):
 	widget = 'overview_war_ship.xml'

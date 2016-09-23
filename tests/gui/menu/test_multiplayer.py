@@ -27,7 +27,6 @@ from nose.tools import with_setup
 
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
-from tests.utils import mark_flaky
 
 
 # Start our own master server for the multiplayer test because the official one
@@ -68,7 +67,6 @@ def test_games_list(gui):
 	gui.trigger('multiplayermenu', 'refresh')
 
 
-@mark_flaky
 @with_setup(start_server, stop_server)
 @mpmenu_test()
 def test_create_game(gui):
@@ -98,7 +96,7 @@ def test_create_game(gui):
 	gui.run(1)
 	# change player name (click on name)
 	gui.trigger('multiplayer_gamelobby', 'pname_' + NetworkInterface().get_client_name())
-	gui.find('playername').write(u'Darkwing')
+	gui.find('set_player_details_dialog_window/playername').write(u'Darkwing')
 	gui.trigger('set_player_details_dialog_window', 'okButton')
 
 	# run some time to wait for the server's acknowledgment of the new name
