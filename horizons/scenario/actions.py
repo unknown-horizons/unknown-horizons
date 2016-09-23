@@ -24,7 +24,6 @@ import math
 import horizons.globals
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.command.unit import CreateUnit
-from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import MESSAGES
 from horizons.messaging import SettlerUpdate
 from horizons.scenario import CONDITIONS
@@ -132,6 +131,8 @@ def wait(session, seconds):
 @register()
 def alter_inventory(session, resource, amount):
 	"""Alters the inventory of each settlement."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	for settlement in session.world.settlements:
 		if settlement.owner == session.world.player and settlement.warehouse:
 			settlement.warehouse.get_component(StorageComponent).inventory.alter(
