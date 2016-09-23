@@ -29,6 +29,7 @@ a pointer to the next step. Have fun :-)
 This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
+from __future__ import print_function
 
 import sys
 import os

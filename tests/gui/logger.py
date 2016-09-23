@@ -24,6 +24,7 @@ When activated, several hooks are installed into pychan/guichan and catch
 key presses and widget interactions.
 The results are formatted as code that can be used for writing GUI tests.
 """
+from __future__ import print_function
 
 import logging
 from functools import wraps
@@ -225,8 +226,8 @@ class TestCodeGenerator(object):
 	def _emit(self, lines):
 		for line in lines:
 			if self._dialog_active:
-				print '\t',
-			print line
+				print('\t', end=' ')
+			print(line)
 
 	def _find_container(self, widget):
 		"""
@@ -250,8 +251,8 @@ class TestCodeGenerator(object):
 		container, path = self._find_container(widget)
 
 		if container.name == '__unnamed__':
-			print '# FIXME this container needs a name to identify it!'
-			print '# Path: %s' % path
+			print('# FIXME this container needs a name to identify it!')
+			print('# Path: %s' % path)
 		elif event_name == 'action' and group_name == 'action_listener':
 			# this is a custom event defined in engine.pychan_util to play click sounds
 			# for widgets

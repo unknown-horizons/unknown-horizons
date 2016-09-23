@@ -35,6 +35,7 @@ dotted path to the test (along with other options), similar to this code:
 	def minimap(gui):
 		menu = gui.find(name='mainmenu')
 """
+from __future__ import print_function
 
 import os
 import shutil
@@ -297,7 +298,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			if proc.returncode != 0:
 				if nose_captured:
 					if stdout:
-						print stdout
+						print(stdout)
 					if not 'Traceback' in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
 					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))

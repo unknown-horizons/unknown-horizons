@@ -21,6 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import gettext
 import os
 import re
@@ -57,7 +58,7 @@ def setup_paths():
 	if not os.path.exists(scenario_path):
 		scenario_path = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario_path, language='en')
 	if not os.path.exists(scenario_path):
-		print 'Scenario file not found:', scenario_path
+		print('Scenario file not found:', scenario_path)
 		sys.exit(1)
 
 	# drop [_en].yaml suffix and paths to file to obtain base scenario name
@@ -267,9 +268,9 @@ def main():
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print 'Usage: {0} scenario_translation_file'.format(os.path.basename(__file__))
-		print '\tscenario_translation_file: `po/scenarios/sv/tutorial.po`'
-		print 'Run from main UH directory!'
+		print('Usage: {0} scenario_translation_file'.format(os.path.basename(__file__)))
+		print('\tscenario_translation_file: `po/scenarios/sv/tutorial.po`')
+		print('Run from main UH directory!')
 		sys.exit(1)
 	else:
 		main()

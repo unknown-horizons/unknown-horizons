@@ -20,6 +20,7 @@
 # ###################################################
 
 """Save general python function decorators here"""
+from __future__ import print_function
 
 from types import FunctionType, ClassType
 import time
@@ -146,7 +147,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 				newcode[i+1] = pos & 0xFF
 				newcode[i+2] = pos >> 8
 				if verbose:
-					print name, '-->', value
+					print(name, '-->', value)
 		i += 1
 		if opcode >= HAVE_ARGUMENT:
 			i += 2
@@ -200,7 +201,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 		newcode[i+2] = n >> 8
 		i += 3
 		if verbose:
-			print "new folded constant:", value
+			print("new folded constant:", value)
 
 	codestr = ''.join(map(chr, newcode))
 	codeobj = type(co)(co.co_argcount, co.co_nlocals, co.co_stacksize,

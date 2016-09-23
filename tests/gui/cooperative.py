@@ -19,13 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import sys
 from collections import deque
 
 try:
 	import greenlet
 except ImportError:
-	print 'The greenlet package is needed to run the UH gui tests.'
+	print('The greenlet package is needed to run the UH gui tests.')
 	sys.exit(1)
 
 

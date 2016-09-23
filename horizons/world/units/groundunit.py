@@ -24,7 +24,7 @@ import weakref
 
 from horizons.util.pathfinding.pather import SoldierPather
 from horizons.util.pathfinding import PathBlockedError
-from unit import Unit
+from .unit import Unit
 from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.component.selectablecomponent import SelectableComponent

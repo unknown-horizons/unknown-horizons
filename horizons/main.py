@@ -27,6 +27,7 @@ The functions below are used to start different kinds of games.
 TUTORIAL:
 Continue to horizons.session for further ingame digging.
 """
+from __future__ import print_function
 
 import os
 import sys
@@ -78,7 +79,7 @@ def start(_command_line_arguments):
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
-	from engine import Fife
+	from .engine import Fife
 
 	# handle commandline globals
 	debug = command_line_arguments.debug
@@ -95,7 +96,7 @@ def start(_command_line_arguments):
 			if mpieces[2]:
 				NETWORK.SERVER_PORT = parse_port(mpieces[2])
 		except ValueError:
-			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
+			print("Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535.")
 			return False
 
 	# init fife before mp_bind is parsed, since it's needed there
@@ -120,7 +121,7 @@ def start(_command_line_arguments):
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
 			horizons.globals.fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
 		except ValueError:
-			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
+			print("Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535.")
 			return False
 
 	setup_AI_settings(command_line_arguments)
@@ -270,7 +271,7 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.gamespeed is not None:
 		if _modules.session is None:
-			print "You can only set the speed via command line in combination with a game start parameter such as --start-map, etc."
+			print("You can only set the speed via command line in combination with a game start parameter such as --start-map, etc.")
 			return False
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
 
@@ -330,8 +331,8 @@ def setup_gui_logger(command_line_arguments):
 			setup_gui_logger()
 		except ImportError:
 			traceback.print_exc()
-			print
-			print "Gui logging requires code that is only present in the repository and is not being installed."
+			print()
+			print("Gui logging requires code that is only present in the repository and is not being installed.")
 			return False
 	return True
 
@@ -384,15 +385,15 @@ def start_singleplayer(options):
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
 			raise
-		print "Failed to load", options.game_identifier
+		print("Failed to load", options.game_identifier)
 		traceback.print_exc()
 		if _modules.session is not None and _modules.session.is_alive:
 			try:
 				_modules.session.end()
 			except Exception:
-				print
+				print()
 				traceback.print_exc()
-				print "Additionally to failing when loading, cleanup afterwards also failed"
+				print("Additionally to failing when loading, cleanup afterwards also failed")
 		_modules.gui.show_main()
 		headline = _("Failed to start/load the game")
 		descr = _("The game you selected could not be started.") + u" " + \
@@ -495,9 +496,9 @@ def _find_matching_map(name_or_path, savegames):
 				map_file = filename
 	if map_file is not None:
 		if len(map_file.splitlines()) > 1:
-			print "Error: Found multiple matches:"
+			print("Error: Found multiple matches:")
 			for name_or_path in map_file.splitlines():
-				print os.path.basename(name_or_path)
+				print(os.path.basename(name_or_path))
 			return
 		else:
 			return map_file
@@ -505,7 +506,7 @@ def _find_matching_map(name_or_path, savegames):
 		if os.path.exists(name_or_path):
 			return name_or_path
 		else:
-			print u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path)
+			print(u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
 			return
 
 def _load_last_quicksave(session=None, force_player_id=None):
@@ -520,7 +521,7 @@ def _load_last_quicksave(session=None, force_player_id=None):
 			return False
 	else:
 		if not save_files:
-			print "Error: No quicksave found."
+			print("Error: No quicksave found.")
 			return False
 
 	save = max(save_files)

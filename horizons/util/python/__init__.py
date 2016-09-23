@@ -24,7 +24,7 @@ Put all code here that is not directly related to the game,
 but rather a generic enhancement of the programming language.
 """
 
-import decorators
+from .decorators import *
 
 class Const(object):
 	"""An immutable type. Think C++-like const"""
