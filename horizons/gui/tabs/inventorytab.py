@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.component.storagecomponent import StorageComponent
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.i18n import _lazy
-from horizons.extscheduler import ExtScheduler
-from horizons.component.storagecomponent import StorageComponent
+
 
 class InventoryTab(TabInterface):
 	widget = 'island_inventory.xml'

@@ -21,17 +21,18 @@
 # ###################################################
 
 from __future__ import print_function
+
 import functools
 import traceback
 
 from fife.extensions import pychan
 
+import horizons.globals
 from horizons.gui.style import STYLES
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
 from horizons.util.python.callback import Callback
-from horizons.gui.widgets.imagebutton import ImageButton
 
-import horizons.globals
 
 class RenameLabel(pychan.widgets.Label):
 	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""

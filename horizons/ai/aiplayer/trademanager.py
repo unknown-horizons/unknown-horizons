@@ -19,20 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
-
+import math
 from collections import defaultdict
 
-from .mission.domestictrade import DomesticTrade
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, STORAGE
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 
 from .building import AbstractBuilding
-from horizons.util.worldobject import WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.util.python import decorators
-from horizons.constants import RES, STORAGE
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.namedcomponent import NamedComponent
+from .mission.domestictrade import DomesticTrade
+
 
 class TradeManager(WorldObject):
 	"""

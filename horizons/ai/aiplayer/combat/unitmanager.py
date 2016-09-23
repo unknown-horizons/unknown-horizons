@@ -23,6 +23,7 @@ import collections
 import logging
 import weakref
 from operator import itemgetter
+
 from horizons.ai.aiplayer.combat.fleet import Fleet
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent

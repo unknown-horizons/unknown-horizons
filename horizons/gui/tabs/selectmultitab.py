@@ -24,17 +24,17 @@ from collections import defaultdict
 
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.util.python.callback import Callback
+from horizons.command.unit import SetStance
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.stancecomponent import DEFAULT_STANCES
+from horizons.constants import UNITS
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
-from horizons.command.unit import SetStance
-from horizons.component.healthcomponent import HealthComponent
-from horizons.component.stancecomponent import DEFAULT_STANCES
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import UNITS
 from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
 
 
 class SelectMultiTab(TabInterface):

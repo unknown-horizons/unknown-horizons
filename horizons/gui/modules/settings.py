@@ -26,13 +26,12 @@ import sys
 from fife import fife
 
 import horizons.globals
-
 from horizons.constants import LANGUAGENAMES, SETTINGS
-from horizons.i18n import change_language, _lazy, find_available_languages
 from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+from horizons.i18n import _lazy, change_language, find_available_languages
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback

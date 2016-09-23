@@ -22,7 +22,7 @@
 import uuid
 from gettext import NullTranslations
 
-from horizons.network import packets, enet
+from horizons.network import enet, packets
 
 
 class Address(object):

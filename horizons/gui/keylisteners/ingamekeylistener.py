@@ -20,10 +20,11 @@
 # ###################################################
 
 from fife import fife
-import horizons.globals
 
-from horizons.util.living import LivingObject
+import horizons.globals
 from horizons.gui.keylisteners import KeyConfig
+from horizons.util.living import LivingObject
+
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""

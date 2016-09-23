@@ -28,6 +28,7 @@ import sys
 from horizons import network
 from horizons.network.server import Server
 
+
 def fork():
 	try:
 		pid = os.fork()

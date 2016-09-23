@@ -19,17 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 from fife import fife
 
 import horizons.globals
-import weakref
-
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
+from horizons.constants import BUILDINGS
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.messaging import WorldObjectDeleted
 from horizons.util.python.weaklist import WeakList
 from horizons.util.shapes import Point
-from horizons.constants import BUILDINGS
-from horizons.messaging import WorldObjectDeleted
+
 
 class TearingTool(NavigationTool):
 	"""

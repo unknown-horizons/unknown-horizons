@@ -22,15 +22,15 @@
 
 import weakref
 
-from horizons.constants import BUILDINGS, WEAPONS
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, WEAPONS
 from horizons.entities import Entities
 from horizons.gui.tabs import OverviewTab, TradeTab
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):

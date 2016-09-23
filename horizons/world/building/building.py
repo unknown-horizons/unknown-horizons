@@ -25,14 +25,14 @@ from fife import fife
 
 from horizons.command.building import Build
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.componentholder import ComponentHolder
-from horizons.constants import RES, LAYERS, GAME
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME, LAYERS, RES
 from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
-from horizons.util.shapes import ConstRect, distances, Point
+from horizons.util.shapes import ConstRect, Point, distances
 from horizons.util.worldobject import WorldObject
 from horizons.world.building.buildable import BuildableSingle
 from horizons.world.concreteobject import ConcreteObject

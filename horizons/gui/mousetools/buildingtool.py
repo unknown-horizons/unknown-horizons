@@ -19,26 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import logging
 import random
 import weakref
 
-import horizons.globals
+from fife import fife
 
+import horizons.globals
+from horizons.command.building import Build
+from horizons.command.sounds import PlaySound
+from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
+from horizons.constants import BUILDINGS, GFX
 from horizons.entities import Entities
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.util import load_uh_widget
+from horizons.messaging import (
+	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.command.building import Build
-from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
-from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.command.sounds import PlaySound
-from horizons.gui.util import load_uh_widget
-from horizons.constants import BUILDINGS, GFX
-from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
+
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.

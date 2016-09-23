@@ -20,11 +20,11 @@
 # ###################################################
 
 from horizons.command.building import Build
-from horizons.constants import BUILDINGS, RES, GAME, TIER
-from horizons.component.storagecomponent import StorageComponent
 from horizons.command.uioptions import SetSettlementUpgradePermissions
-
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GAME, RES, TIER
 from tests.game import game_test, settle
+
 
 @game_test()
 def test_settler_level(s, p):

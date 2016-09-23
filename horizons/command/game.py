@@ -22,6 +22,7 @@
 from horizons.command import Command
 from horizons.savegamemanager import SavegameManager
 
+
 class SaveCommand(Command):
 	"""Used to init a save, which will happen at all network machines.
 	Only reasonable in multiplayer games."""

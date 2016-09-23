@@ -39,11 +39,12 @@ Combinations:
 - PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
 """
 
-import sys
 import copy
+import sys
 from collections import defaultdict
 
 from horizons.util.changelistener import ChangeListener
+
 
 class GenericStorage(ChangeListener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing

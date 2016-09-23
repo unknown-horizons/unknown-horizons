@@ -22,8 +22,11 @@
 # ###################################################
 
 from __future__ import print_function
+
 import gettext
 import sys
+
+from horizons.ext.dummy import Dummy
 
 try:
 	import nose
@@ -38,7 +41,6 @@ except ImportError:
 	sys.exit(1)
 
 
-from horizons.ext.dummy import Dummy
 
 
 def mock_fife():

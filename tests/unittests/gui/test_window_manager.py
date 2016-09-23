@@ -21,7 +21,7 @@
 
 import unittest
 
-from horizons.gui.windows import WindowManager, Window
+from horizons.gui.windows import Window, WindowManager
 
 
 class DummyWindow(Window):

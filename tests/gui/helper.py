@@ -24,6 +24,7 @@ Cleaner interface to various game/gui functions to make tests easier.
 """
 
 from __future__ import print_function
+
 import contextlib
 import os
 import tempfile
@@ -36,13 +37,12 @@ from fife.extensions import pychan
 import horizons.main
 from horizons.constants import GAME_SPEED
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 from horizons.util.startgameoptions import StartGameOptions
-
 from tests.gui import cooperative
 
 

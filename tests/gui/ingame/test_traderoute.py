@@ -24,9 +24,8 @@ from mock import Mock
 
 from horizons.constants import RES
 from horizons.util.shapes import Point
-
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship, found_settlement
+from tests.gui.helper import found_settlement, get_player_ship
 
 
 @gui_test(additional_cmdline=['--start-map', 'mp-dev'])

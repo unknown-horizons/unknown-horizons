@@ -20,12 +20,13 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import ShipMission
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.ext.enum import Enum
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.namedcomponent import NamedComponent
+
 
 class SpecialDomesticTrade(ShipMission):
 	"""

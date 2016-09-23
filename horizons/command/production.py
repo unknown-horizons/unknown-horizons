@@ -21,6 +21,7 @@
 
 from horizons.command import GenericCommand, GenericComponentCommand
 
+
 class ToggleActive(GenericComponentCommand):
 	"""Sets a production to active/inactive."""
 	def __init__(self, producer, production=None):

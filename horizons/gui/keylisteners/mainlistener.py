@@ -19,19 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import datetime
-import shutil
 import os
 import os.path
+import shutil
 import tempfile
+
+from fife import fife
 
 import horizons.globals
 import horizons.main
-
+from horizons.constants import PATHS
 from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
-from horizons.constants import PATHS
+
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 	"""MainListener Class to process events of main window"""

@@ -25,11 +25,10 @@ from collections import defaultdict
 from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
-from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import BUILDINGS

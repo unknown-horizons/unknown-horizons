@@ -29,33 +29,32 @@ Continue to horizons.session for further ingame digging.
 """
 from __future__ import print_function
 
-import os
-import sys
-import os.path
 import json
-import traceback
-import threading
-from thread import error as ThreadError  # raised by threading.Lock.release
 import logging
+import os
+import os.path
+import sys
+import threading
+import traceback
+from thread import error as ThreadError  # raised by threading.Lock.release
 
 from fife import fife as fife_module
 
 import horizons.globals
-
-from horizons.savegamemanager import SavegameManager
-from horizons.gui import Gui
+from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLEPLAYER, VERSION
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX, VERSION
+from horizons.gui import Gui
 from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
+from horizons.savegamemanager import SavegameManager
+from horizons.util.atlasloadingthread import AtlasLoadingThread
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
-from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
-from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.util.savegameaccessor import SavegameAccessor
-from horizons.util.atlasloadingthread import AtlasLoadingThread
+from horizons.util.startgameoptions import StartGameOptions
+from horizons.util.uhdbaccessor import UhDbAccessor
 
 
 # private module pointers of this module

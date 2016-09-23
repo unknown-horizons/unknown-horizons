@@ -21,7 +21,6 @@
 
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS
 from horizons.world.production.producer import Producer
-
 from tests.gui import gui_test
 from tests.gui.helper import saveload
 

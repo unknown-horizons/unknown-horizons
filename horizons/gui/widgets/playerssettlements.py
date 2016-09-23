@@ -21,10 +21,11 @@
 
 from fife.extensions.pychan import widgets
 
+from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.component.namedcomponent import NamedComponent
+
 
 class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""

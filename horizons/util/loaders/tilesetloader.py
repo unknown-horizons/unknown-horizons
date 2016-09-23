@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import logging
+import os
 
 import horizons.globals
-
 from horizons.constants import PATHS
-from horizons.util.loaders.loader import GeneralLoader
 from horizons.util.loaders.jsondecoder import JsonDecoder
+from horizons.util.loaders.loader import GeneralLoader
+
 
 class TileSetLoader(object):
 	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded

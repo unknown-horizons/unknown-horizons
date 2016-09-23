@@ -25,9 +25,8 @@ import uuid
 
 from horizons import network
 from horizons.i18n import find_available_languages
-from horizons.network import packets, enet
-from horizons.network.common import Player, Game, ErrorType
-
+from horizons.network import enet, packets
+from horizons.network.common import ErrorType, Game, Player
 
 if not enet:
 	raise Exception("Could not find enet module.")

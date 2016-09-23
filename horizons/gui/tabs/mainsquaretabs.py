@@ -23,19 +23,18 @@ from functools import partial
 
 from fife.extensions.pychan.widgets import Label
 
-from horizons.gui.widgets.productionoverview import ProductionOverview
-from horizons.gui.tabs import OverviewTab
-from horizons.gui.tabs.residentialtabs import setup_tax_slider
-
-from horizons.i18n import _lazy
-from horizons.util.python.callback import Callback
-from horizons.messaging import UpgradePermissionsChanged, PlayerLevelUpgrade
 from horizons.command.uioptions import SetSettlementUpgradePermissions
-from horizons.constants import BUILDINGS, TIER
-from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import BUILDINGS, TIER
+from horizons.gui.tabs import OverviewTab
+from horizons.gui.tabs.residentialtabs import setup_tax_slider
+from horizons.gui.widgets.productionoverview import ProductionOverview
+from horizons.i18n import _lazy
+from horizons.messaging import PlayerLevelUpgrade, UpgradePermissionsChanged
+from horizons.util.python.callback import Callback
 
 
 class MainSquareTab(OverviewTab):

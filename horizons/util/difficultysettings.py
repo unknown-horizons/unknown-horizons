@@ -21,6 +21,7 @@
 
 from horizons.util.python import decorators
 
+
 class DifficultySettings(object):
 	EASY_LEVEL = 0
 	DEFAULT_LEVEL = 1

@@ -22,16 +22,17 @@
 from collections import deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES, PRODUCTION
-from horizons.scheduler import Scheduler
-from horizons.util.shapes import Rect
-from horizons.entities import Entities
+from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.shapes import Rect
 from horizons.world.production.producer import Producer
+
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
 	def get_personality_name(self):

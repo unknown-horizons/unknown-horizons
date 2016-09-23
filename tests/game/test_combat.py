@@ -21,16 +21,15 @@
 
 from nose.plugins.skip import SkipTest
 
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
+from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.command.unit import Attack, CreateUnit
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import UNITS, WEAPONS
 from horizons.util.color import Color
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
-from horizons.command.unit import CreateUnit, Attack
-from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
-from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.player import Player
-from horizons.constants import UNITS, WEAPONS
-from horizons.component.healthcomponent import HealthComponent
-
 from tests.game import game_test, new_session, saveload
 
 

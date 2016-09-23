@@ -21,6 +21,7 @@
 
 from collections import deque
 
+
 class ConnectedAreaCache(object):
 	"""
 	Query whether (x1, y1) and (x2, y2) are connected.

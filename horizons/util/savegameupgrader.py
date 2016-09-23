@@ -19,23 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
 import logging
 import os
 import os.path
-import json
 import shutil
 import tempfile
-
 from collections import defaultdict
 from sqlite3 import OperationalError
+
 from yaml.parser import ParserError
 
-from horizons.constants import BUILDINGS, VERSION, UNITS
+from horizons.constants import BUILDINGS, UNITS, VERSION
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.yamlcache import YamlCache
+
 
 class SavegameTooOld(Exception):
 	def __init__(self, msg=None, revision=None):

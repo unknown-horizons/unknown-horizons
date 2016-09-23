@@ -19,15 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.resourcehandler import StorageResourceHandler
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.component.storagecomponent import StorageComponent
-from horizons.world.building.production import ProductionBuilding
-from horizons.world.building.path import Path
-from horizons.world.status import InventoryFullStatus
 from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleFromShip
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.building.path import Path
+from horizons.world.building.production import ProductionBuilding
+from horizons.world.resourcehandler import StorageResourceHandler
+from horizons.world.status import InventoryFullStatus
+
 
 class StorageBuilding(StorageResourceHandler,
                       BuildingResourceHandler, BasicBuilding):

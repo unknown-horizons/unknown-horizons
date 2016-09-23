@@ -20,11 +20,11 @@
 # ###################################################
 
 
-from horizons.constants import RES, BUILDINGS
 from horizons.command.building import Build, Tear
-
+from horizons.constants import BUILDINGS, RES
 from tests.game import game_test
-		
+
+
 # FIXTURE is settlement with a lookout, some tents and some trees
 @game_test(use_fixture='settlement-range')
 def test_settlement_decrease(s):

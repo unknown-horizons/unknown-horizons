@@ -23,14 +23,13 @@ import collections
 import logging
 
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-from horizons.util.python import trim_value, map_balance
+from horizons.util.python import map_balance, trim_value
 from horizons.util.worldobject import WorldObject
 
 

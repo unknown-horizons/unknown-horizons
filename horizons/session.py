@@ -20,38 +20,38 @@
 # ###################################################
 
 import errno
+import json
+import logging
 import os
 import os.path
-import logging
-import json
-import traceback
 import time
+import traceback
 from random import Random
 
 import horizons.globals
 import horizons.main
-
 from horizons.ai.aiplayer import AIPlayer
-from horizons.gui.ingamegui import IngameGui
 from horizons.command.building import Tear
-from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
-from horizons.scheduler import Scheduler
-from horizons.extscheduler import ExtScheduler
-from horizons.view import View
-from horizons.world import World
-from horizons.entities import Entities
-from horizons.util.living import LivingObject, livingProperty
-from horizons.util.savegameaccessor import SavegameAccessor
-from horizons.util.worldobject import WorldObject
-from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableBuildingComponent
+from horizons.constants import GAME_SPEED
+from horizons.entities import Entities
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.ingamegui import IngameGui
+from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED
-from horizons.messaging import SettingChanged, MessageBus, SpeedChanged, LoadingProgress
+from horizons.scheduler import Scheduler
+from horizons.util.dbreader import DbReader
+from horizons.util.living import LivingObject, livingProperty
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.util.worldobject import WorldObject
+from horizons.view import View
+from horizons.world import World
+
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.

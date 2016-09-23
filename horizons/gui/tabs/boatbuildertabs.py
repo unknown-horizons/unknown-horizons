@@ -22,18 +22,19 @@
 import math
 from operator import itemgetter
 
-from fife.extensions.pychan.widgets import Icon, HBox, Label, Container
+from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
 
-from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
+from horizons.command.production import AddProduction, CancelCurrentProduction, RemoveFromQueue
+from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
 from horizons.engine import Fife
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
-from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
+
 
 class ProducerOverviewTabBase(OverviewTab):
 	"""Base class for tabs displaying producer data."""

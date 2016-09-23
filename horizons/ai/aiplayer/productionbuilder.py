@@ -20,28 +20,29 @@
 # ###################################################
 
 import itertools
-
 from collections import deque
 from functools import partial
+
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
+from horizons.command.building import Tear
+from horizons.command.production import ToggleActive
+from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import AI, BUILDINGS
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Rect, distances
+from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+from horizons.world.buildability.potentialroadconnectivitycache import \
+	PotentialRoadConnectivityCache
+from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
+from horizons.world.building.production import Mine
+from horizons.world.production.producer import Producer
 
 from .areabuilder import AreaBuilder
 from .constants import BUILD_RESULT, BUILDING_PURPOSE
 
-from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.world.building.production import Mine
-from horizons.command.building import Tear
-from horizons.command.production import ToggleActive
-from horizons.constants import AI, BUILDINGS
-from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
-from horizons.util.python.callback import Callback
-from horizons.util.shapes import distances, Rect
-from horizons.entities import Entities
-from horizons.world.production.producer import Producer
-from horizons.world.buildability.binarycache import BinaryBuildabilityCache
-from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
-from horizons.world.buildability.potentialroadconnectivitycache import PotentialRoadConnectivityCache
-from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
 	"""

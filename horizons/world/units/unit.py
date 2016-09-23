@@ -21,19 +21,21 @@
 
 import logging
 import math
+
 from fife import fife
 
-from horizons.world.units.movingobject import MovingObject
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.constants import LAYERS
+from horizons.extscheduler import ExtScheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.constants import LAYERS
-from horizons.component.commandablecomponent import CommandableComponent
-from horizons.component.healthcomponent import HealthComponent
-from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
+from horizons.world.units.movingobject import MovingObject
+
 
 class Unit(MovingObject, ResourceTransferHandler):
 	log = logging.getLogger("world.units")

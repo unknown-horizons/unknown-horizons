@@ -22,6 +22,7 @@
 # ###################################################
 
 from __future__ import print_function
+
 import glob
 import json
 import logging
@@ -62,18 +63,18 @@ if not os.path.exists('content'):
 assert os.path.exists('content'), 'Content dir not found.'
 
 sys.path.append('.')
-from run_uh import init_environment
+from run_uh import init_environment # isort:skip
 init_environment(False)
 
 class DummyFife:
 	use_atlases = False
-import horizons.globals
+import horizons.globals # isort:skip
 horizons.globals.fife = DummyFife()
 
-from horizons.constants import PATHS
-from horizons.util.dbreader import DbReader
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.constants import PATHS # isort:skip
+from horizons.util.dbreader import DbReader # isort:skip
+from horizons.util.loaders.actionsetloader import ActionSetLoader # isort:skip
+from horizons.util.loaders.tilesetloader import TileSetLoader # isort:skip
 
 
 class AtlasEntry(object):

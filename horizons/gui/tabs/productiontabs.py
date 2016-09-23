@@ -25,9 +25,10 @@ import weakref
 
 from fife.extensions.pychan.widgets import Icon, Label
 
-from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
+from horizons.command.production import ToggleActive
 from horizons.component.fieldbuilder import FieldBuilder
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED, PRODUCTION
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
@@ -36,9 +37,8 @@ from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
-from horizons.util.python.callback import Callback
 from horizons.util.pychananimation import PychanAnimation
-from horizons.component.storagecomponent import StorageComponent
+from horizons.util.python.callback import Callback
 from horizons.world.production.producer import Producer
 
 

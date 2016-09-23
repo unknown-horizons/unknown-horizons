@@ -22,9 +22,10 @@
 import random
 
 from horizons.constants import PATHS, TIER
-from horizons.util.python import decorators
-from horizons.util.dbreader import DbReader
 from horizons.entities import Entities
+from horizons.util.dbreader import DbReader
+from horizons.util.python import decorators
+
 
 ########################################################################
 class UhDbAccessor(DbReader):

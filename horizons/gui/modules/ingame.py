@@ -21,7 +21,6 @@
 
 
 import horizons.globals
-
 from horizons.command.misc import Chat
 from horizons.command.uioptions import RenameObject
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -29,9 +28,9 @@ from horizons.component.namedcomponent import NamedComponent, SettlementNameComp
 from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.gui.windows import Dialog
-from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
+from horizons.messaging import HoverSettlementChanged, ResourceBarResize, SettlerInhabitantsChanged
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 

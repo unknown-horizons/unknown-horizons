@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.constants import RES
 from horizons.util.python import decorators
 
+
 class ProductionChain(object):
 	"""
 	A production chain handles the building of buildings required to produce a resource.

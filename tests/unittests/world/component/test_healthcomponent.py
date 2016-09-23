@@ -21,10 +21,10 @@
 
 from unittest import TestCase
 
-from horizons.ext.dummy import Dummy
-from horizons.component.healthcomponent import HealthComponent
-
 from mock import Mock
+
+from horizons.component.healthcomponent import HealthComponent
+from horizons.ext.dummy import Dummy
 
 
 class TestHealthComponent(TestCase):

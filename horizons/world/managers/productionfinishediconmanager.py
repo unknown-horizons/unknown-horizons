@@ -20,14 +20,15 @@
 # ###################################################
 
 from fife import fife
-from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import GAME_SPEED
 
 import horizons.globals
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
 from horizons.gui.util import get_res_icon_path
 from horizons.messaging import ResourceProduced, SettingChanged
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
+
 
 class ProductionFinishedIconManager(object):
 	"""Manager class that manages all production finished icons. It listens to

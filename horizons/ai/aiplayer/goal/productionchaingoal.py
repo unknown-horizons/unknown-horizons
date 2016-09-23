@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
+from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import RES
 from horizons.util.python import decorators
+
 
 class ProductionChainGoal(SettlementGoal):
 	def __init__(self, settlement_manager, resource_id, name):

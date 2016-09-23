@@ -21,10 +21,11 @@
 
 import weakref
 
+from horizons.messaging import HoverSettlementChanged, NewPlayerSettlementHovered, NewSettlement
 from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
+
 
 def resolve_weakref(ref):
 	"""Resolves a weakref to a hardref, where the ref itself can be None"""

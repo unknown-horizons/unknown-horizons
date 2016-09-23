@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import PLAYER, GAME_SPEED
+from horizons.constants import GAME_SPEED, PLAYER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.util.python import decorators

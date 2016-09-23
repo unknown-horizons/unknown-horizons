@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import os
 import os.path
 import sqlite3
-import logging
-
 from collections import deque
 
 from horizons.command.unit import RemoveUnit
@@ -34,6 +33,7 @@ from horizons.gui.widgets.minimap import Minimap
 from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
+
 
 class WorldEditor(object):
 	def __init__(self, world):

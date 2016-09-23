@@ -21,6 +21,7 @@
 
 from .default import DefaultPersonality
 
+
 class OtherPersonality(DefaultPersonality):
 	"""This personality makes the AI build larger settlements."""
 

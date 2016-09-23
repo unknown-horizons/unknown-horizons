@@ -19,16 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import mock
+
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
-from horizons.world.production.producer import Producer
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
-from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
 from horizons.messaging import AddStatusIcon
+from horizons.world.production.producer import Producer
+from horizons.world.status import (
+	DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus, SettlerUnhappyStatus)
+from tests.game import game_test, settle
 
-import mock
-from tests.game import settle, game_test
 
 def assert_called_with_icon(cb, icon):
 	assert cb.called

@@ -22,13 +22,14 @@
 
 from fife.extensions.pychan.widgets import Icon
 
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.entities import Entities
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
-from horizons.entities import Entities
-from horizons.component.selectablecomponent import SelectableComponent
+
 
 class BuildRelatedTab(OverviewTab):
 	"""

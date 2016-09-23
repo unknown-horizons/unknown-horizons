@@ -20,10 +20,10 @@
 # ###################################################
 
 import platform
-import webbrowser
+import socket
 import urllib
 import urllib2
-import socket
+import webbrowser
 
 from fife.extensions.pychan.widgets import Button
 

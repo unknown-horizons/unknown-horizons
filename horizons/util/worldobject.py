@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
+import weakref
 
-from horizons.util.changelistener import ChangeListener
 from horizons.messaging import WorldObjectDeleted
+from horizons.util.changelistener import ChangeListener
+
 
 class WorldObjectNotFound(KeyError):
 	pass

@@ -23,6 +23,7 @@ import operator
 
 from horizons.i18n import _lazy
 
+
 """Classes used for StatusIcon.
 
 Code design note:

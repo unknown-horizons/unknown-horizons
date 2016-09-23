@@ -19,15 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.mission import ShipMission
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
+from horizons.ai.aiplayer.mission import ShipMission
 from horizons.constants import BUILDINGS
+from horizons.entities import Entities
+from horizons.ext.enum import Enum
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
-from horizons.entities import Entities
+
 
 class FoundSettlement(ShipMission):
 	"""

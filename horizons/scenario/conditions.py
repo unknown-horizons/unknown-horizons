@@ -19,11 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES, BUILDINGS
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
-from horizons.component.storagecomponent import StorageComponent
 
 
 class CONDITIONS(object):

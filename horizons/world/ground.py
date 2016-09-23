@@ -25,8 +25,7 @@ import logging
 from fife import fife
 
 import horizons.globals
-
-from horizons.constants import LAYERS, GROUND
+from horizons.constants import GROUND, LAYERS
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
 

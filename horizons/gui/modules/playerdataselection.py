@@ -110,5 +110,3 @@ class PlayerDataSelection(object):
 		horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())
 		horizons.globals.fife.set_uh_setting("ColorID", self.get_player_color().id)
 		horizons.globals.fife.save_settings()
-		
-		

@@ -21,12 +21,13 @@
 
 from fife.extensions.pychan.widgets import Container, HBox, Icon
 
-from horizons.gui.util import load_uh_widget, get_res_icon_path
-from horizons.util.python.callback import Callback
 from horizons.command.unit import SetStance
-from horizons.extscheduler import ExtScheduler
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import get_res_icon_path, load_uh_widget
+from horizons.util.python.callback import Callback
+
 
 class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -122,4 +123,3 @@ class WeaponStorageWidget(HBox):
 			icon_image = "content/gui/icons/resources/none.png"
 			icon = Icon(image=icon_image, helptext=_("none"))
 			self.addChild(icon)
-

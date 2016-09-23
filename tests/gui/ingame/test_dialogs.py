@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.component.namedcomponent import NamedComponent
-
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 

@@ -20,15 +20,15 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
+from horizons.ai.aiplayer.landmanager import LandManager
 from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
 from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundationShip
-from horizons.ai.aiplayer.landmanager import LandManager
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 from horizons.util.python import decorators
-from horizons.component.storagecomponent import StorageComponent
+
 
 class SettlementFounder(object):
 	"""This class handles the settlement founding activities of an AI player."""

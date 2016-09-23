@@ -29,14 +29,13 @@ from __future__ import print_function
 import logging
 from functools import wraps
 
-from horizons.gui import mousetools
-from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
-from horizons.gui.windows import Dialog
-
 from fife import fife
 from fife.extensions.pychan import tools, widgets
 from fife.extensions.pychan.events import EventMapper
 
+from horizons.gui import mousetools
+from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
+from horizons.gui.windows import Dialog
 
 log = logging.getLogger(__name__)
 

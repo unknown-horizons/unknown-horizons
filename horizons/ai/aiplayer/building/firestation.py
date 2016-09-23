@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractFireStation(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		spots_in_settlement = settlement_manager.settlement.buildability_cache.cache[(2, 2)]

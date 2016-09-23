@@ -22,6 +22,7 @@
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
 
+
 class TentGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'TentGoal'

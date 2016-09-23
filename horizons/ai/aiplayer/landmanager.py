@@ -19,15 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
-
+import math
 from collections import defaultdict
 
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
-from horizons.component.storagecomponent import StorageComponent
+
 
 class LandManager(WorldObject):
 	"""

@@ -20,16 +20,15 @@
 # ###################################################
 
 from horizons.command.building import Build, Tear
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.world.production.producer import Producer, QueueProducer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
-from horizons.util.worldobject import WorldObject
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTIONLINES, RES
 from horizons.util.shapes import Point
-from horizons.world.production.utilization import FieldUtilization
+from horizons.util.worldobject import WorldObject
 from horizons.world.building.settler import SettlerRuin
-
-from tests.game import settle, game_test, new_session, saveload
+from horizons.world.production.producer import Producer, QueueProducer
+from horizons.world.production.utilization import FieldUtilization
+from tests.game import game_test, new_session, saveload, settle
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
 from tests.game.test_farm import _build_farm
 

@@ -19,19 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-import logging
 import functools
+import logging
 
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.extscheduler import ExtScheduler
-from horizons.command.uioptions import SetTradeSlot, ClearTradeSlot
-from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
-from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
-from horizons.util.python.callback import Callback
-from horizons.util.worldobject import WorldObject
+from fife import fife
+
+from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import TRADER
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
+from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
+
 
 class BuySellTab(TabInterface):
 	"""

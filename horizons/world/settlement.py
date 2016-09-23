@@ -21,21 +21,21 @@
 
 import json
 import logging
-
 from collections import defaultdict
 
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import BUILDINGS, TIER
-from horizons.util.worldobject import WorldObject
-from horizons.messaging import UpgradePermissionsChanged, SettlementInventoryUpdated
+from horizons.messaging import SettlementInventoryUpdated, UpgradePermissionsChanged
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.inventorychecker import InventoryChecker
-from horizons.component.componentholder import ComponentHolder
-from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.component.storagecomponent import StorageComponent
+from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.settlementcache import SettlementBuildabilityCache
-from horizons.world.production.producer import Producer, GroundUnitProducer, ShipProducer
+from horizons.world.production.producer import GroundUnitProducer, Producer, ShipProducer
 from horizons.world.resourcehandler import ResourceHandler
-from horizons.scheduler import Scheduler
+
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information

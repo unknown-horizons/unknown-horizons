@@ -22,23 +22,24 @@
 import logging
 import math
 
-from horizons.scheduler import Scheduler
-
-from horizons.gui.tabs import SettlerOverviewTab
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingle
-from horizons.constants import RES, BUILDINGS, GAME, TIER
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.production.production import SettlerProduction
 from horizons.command.building import Build
-from horizons.util.python.callback import Callback
-from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.status import SettlerUnhappyStatus, SettlerNotConnectedStatus
+from horizons.constants import BUILDINGS, GAME, RES, TIER
+from horizons.gui.tabs import SettlerOverviewTab
+from horizons.messaging import (
+	AddStatusIcon, RemoveStatusIcon, SettlerInhabitantsChanged, SettlerUpdate,
+	UpgradePermissionsChanged)
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import StaticPather
+from horizons.util.python.callback import Callback
+from horizons.world.building.buildable import BuildableRect, BuildableSingle
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.producer import Producer
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
+from horizons.world.production.production import SettlerProduction
+from horizons.world.status import SettlerNotConnectedStatus, SettlerUnhappyStatus
 
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
@@ -453,4 +454,3 @@ class SettlerUpgradeData(object):
 	def get_production_line_id(cls, level):
 		"""Returns production line id for the upgrade to this level"""
 		return cls.production_line_ids[level]
-

@@ -20,10 +20,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.util.python.callback import Callback
-from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
 
 
 class PlayerDiplomacyTab(TabInterface):

@@ -28,7 +28,6 @@ from nose.tools import with_setup
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
 
-
 # Start our own master server for the multiplayer test because the official one
 # is probably too old.
 

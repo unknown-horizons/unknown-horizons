@@ -22,6 +22,7 @@
 from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Point, Shape
 
+
 class Annulus(Shape):
 	"""Class for the shape of an annulus
 	You can access center and radius of the annulus as public members."""

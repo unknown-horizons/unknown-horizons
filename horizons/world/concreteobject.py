@@ -30,6 +30,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.units import UnitClass
 
+
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
 	"Concrete" here means "you can touch it", e.g. a Warehouse is a ConcreteObject,
@@ -178,4 +179,3 @@ class ConcreteObject(WorldObject):
 			return self._level_specific_names[self.level]
 		else:
 			return self._name
-

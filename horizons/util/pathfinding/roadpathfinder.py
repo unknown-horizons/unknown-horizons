@@ -23,6 +23,7 @@ import heapq
 
 from horizons.util.python import decorators
 
+
 class RoadPathFinder(object):
 	"""Finds the shortest path that should be most preferred by human players."""
 

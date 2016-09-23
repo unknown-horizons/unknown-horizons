@@ -23,9 +23,8 @@ from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
 from horizons.world.storage import (
-	PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage,
-	SettlementStorage, PositiveTotalNumSlotsStorage,
-)
+	PositiveSizedSlotStorage, PositiveSizedSpecializedStorage, PositiveStorage,
+	PositiveTotalNumSlotsStorage, SettlementStorage)
 
 
 class StorageComponent(Component):

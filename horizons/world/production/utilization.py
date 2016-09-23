@@ -22,6 +22,7 @@
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 
+
 class Utilization(object):
 	"""Basic utilization class used in producers"""
 

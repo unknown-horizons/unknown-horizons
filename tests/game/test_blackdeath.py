@@ -22,7 +22,6 @@
 
 from horizons.constants import BUILDINGS
 from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
-
 from tests.game import game_test
 
 
@@ -53,4 +52,3 @@ def test_blackdeath_destroy(s):
 
 	# it's not defined how bad the black death is, but some inhabitants should die
 	assert settlement.inhabitants < inhabitants_before
-

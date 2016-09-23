@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
-
 from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
-from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.constants import GAME_SPEED
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class AnimalCollector(BuildingCollector):

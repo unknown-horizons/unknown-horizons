@@ -25,6 +25,7 @@ from horizons.component import Component
 from horizons.util.shapes import Circle, Point
 from horizons.world.units.unitexeptions import MoveNotPossible
 
+
 class CommandableComponent(Component):
 	"""
 	Class that handles the Commandable component of units

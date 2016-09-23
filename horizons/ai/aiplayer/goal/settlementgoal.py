@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS
+from horizons.ai.aiplayer.goal import Goal
 from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import BUILDINGS
+from horizons.util.python import decorators
+
 
 class SettlementGoal(Goal):
 	"""

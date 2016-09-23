@@ -20,11 +20,13 @@
 # ###################################################
 
 from unittest import TestCase
-from mock import Mock, MagicMock, patch
 
-from horizons.timer import Timer
-from horizons.scheduler import Scheduler
+from mock import MagicMock, Mock, patch
+
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.timer import Timer
+
 
 class TestTimer(TestCase):
 

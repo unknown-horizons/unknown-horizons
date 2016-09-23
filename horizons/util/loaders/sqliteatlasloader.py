@@ -22,9 +22,9 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
+
 
 class SQLiteAtlasLoader(object):
 	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database.
@@ -148,4 +148,3 @@ class SQLiteAtlasLoader(object):
 			img.useSharedImage(self.atlaslib[entry[1]], region)
 
 		return img
-

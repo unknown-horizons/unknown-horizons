@@ -25,7 +25,6 @@ from horizons.constants import EDITOR, GROUND, PATHS
 from tests.gui import gui_test
 from tests.utils import mark_flaky
 
-
 editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
 
 

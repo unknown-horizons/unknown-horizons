@@ -61,4 +61,3 @@ class Dummy(object):
 	__iter__ = __call__
 
 Dummy = Dummy()
-

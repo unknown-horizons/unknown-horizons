@@ -26,6 +26,7 @@ from horizons.constants import AI, COLORS
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
+
 class StartGameOptions(object):
 
 	def __init__(self, game_identifier):

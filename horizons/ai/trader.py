@@ -22,9 +22,9 @@
 import logging
 
 from horizons.ai.generic import GenericAI
-from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.command.unit import CreateUnit
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import BUILDINGS, TRADER, UNITS
 from horizons.ext.enum import Enum
 from horizons.messaging import NewSettlement
 from horizons.scheduler import Scheduler

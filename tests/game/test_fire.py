@@ -20,10 +20,9 @@
 # ###################################################
 
 
-from horizons.constants import RES, BUILDINGS
 from horizons.command.building import Build, Tear
 from horizons.component.storagecomponent import StorageComponent
-
+from horizons.constants import BUILDINGS, RES
 from tests.game import game_test
 
 

@@ -23,16 +23,15 @@ from fife import fife
 
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
-from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, VERSION, LAYERS, VIEW
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, LAYERS, VERSION, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
-from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
-from horizons.gui.tabs import resolve_tab
+from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
+from horizons.gui.modules.ingame import ChangeNameDialog, ChatDialog, CityInfo
+from horizons.gui.tabs import BuildTab, DiplomacyTab, SelectMultiTab, TabWidget, resolve_tab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.logbook import LogBook
@@ -43,11 +42,11 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover,
-                                GuiCancelAction, LanguageChanged)
+from horizons.messaging import (
+	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
+	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.living import livingProperty, LivingObject
+from horizons.util.living import LivingObject, livingProperty
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager

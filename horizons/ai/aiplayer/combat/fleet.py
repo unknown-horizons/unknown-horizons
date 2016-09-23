@@ -31,6 +31,7 @@ from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.unitexeptions import MoveNotPossible
 
+
 class Fleet(WorldObject):
 	"""
 	Fleet object is responsible for moving a group of ship around the map in an ordered manner, that is:

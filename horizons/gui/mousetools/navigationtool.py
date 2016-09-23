@@ -21,17 +21,17 @@
 # ###################################################
 
 from fife import fife
-import horizons.globals
+from fife.extensions.pychan.widgets import Icon
 
+import horizons.globals
+from horizons.constants import LAYERS, VIEW
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.messaging import HoverInstancesChanged
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.weaklist import WeakList
 from horizons.util.worldobject import WorldObject
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.constants import LAYERS, VIEW
-from horizons.messaging import HoverInstancesChanged
-from horizons.extscheduler import ExtScheduler
 
-from fife.extensions.pychan.widgets import Icon
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""

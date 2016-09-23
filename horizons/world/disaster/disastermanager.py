@@ -22,11 +22,12 @@
 
 import logging
 
-from horizons.world.disaster.firedisaster import FireDisaster
-from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
-from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
 from horizons.util.worldobject import WorldObject
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
+from horizons.world.disaster.firedisaster import FireDisaster
+
 
 class DisasterManager(object):
 	"""The disaster manager manages disasters. It seeds them into the
@@ -107,5 +108,3 @@ class DisasterManager(object):
 		if self.is_affected(settlement):
 			return self._active_disaster[settlement]
 		return None
-
-

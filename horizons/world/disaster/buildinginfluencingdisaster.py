@@ -20,12 +20,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.disaster import Disaster
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.constants import BUILDINGS, GAME_SPEED, TIER
+from horizons.messaging import AddStatusIcon, NewDisaster, RemoveStatusIcon
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
+from horizons.world.disaster import Disaster
+
 
 class BuildingInfluencingDisaster(Disaster):
 	"""Simulates a building influencing disaster.

@@ -26,7 +26,6 @@ import tempfile
 
 from tests.gui import gui_test
 
-
 USER_DIR = None
 
 def setup():

@@ -22,10 +22,9 @@
 import sys
 from unittest import TestCase
 
-from horizons.world.storage import (GenericStorage, SpecializedStorage, SizedSpecializedStorage,
-                                    TotalStorage, GlobalLimitStorage, PositiveStorage,
-                                    PositiveTotalStorage, PositiveSizedSlotStorage,
-                                    PositiveSizedNumSlotStorage)
+from horizons.world.storage import (
+	GenericStorage, GlobalLimitStorage, PositiveSizedNumSlotStorage, PositiveSizedSlotStorage,
+	PositiveStorage, PositiveTotalStorage, SizedSpecializedStorage, SpecializedStorage, TotalStorage)
 
 
 class TestGenericStorage(TestCase):

@@ -20,8 +20,10 @@
 # ###################################################
 
 from functools import partial
+
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
+
 
 def test_ai_quick():
 	for seed in [5, 6, 7, 8, 9]:

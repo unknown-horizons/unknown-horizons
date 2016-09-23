@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.goal.productionchaingoal import ProductionChainGoal
 from horizons.constants import RES
 from horizons.util.python import decorators
 
+
 class FeederChainGoal(ProductionChainGoal):
 	"""
 	Objects of this class are used for production chains on feeder islands

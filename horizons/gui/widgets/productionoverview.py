@@ -23,15 +23,16 @@ from operator import itemgetter
 
 from fife.extensions.pychan import widgets
 
+from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import GAME_SPEED
+from horizons.gui.util import create_resource_icon
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.gui.windows import Window
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.gui.util import create_resource_icon
-from horizons.gui.windows import Window
 from horizons.util.python.callback import Callback
-from horizons.component.namedcomponent import NamedComponent
-from horizons.gui.widgets.imagebutton import OkButton
+
 
 class ProductionOverview(StatsWidget, Window):
 	"""

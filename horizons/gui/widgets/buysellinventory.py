@@ -24,6 +24,7 @@ from fife.extensions.pychan.widgets import HBox
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
 
+
 class BuySellInventory(Inventory):
 	"""The buy/sell inventory widget displays an inventory of goods
 	where the available resources are restricted. It makes use of the

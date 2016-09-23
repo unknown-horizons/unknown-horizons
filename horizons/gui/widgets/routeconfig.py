@@ -19,29 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import functools
+import weakref
 
 from fife import fife
-
-from horizons.gui.util import load_uh_widget
-from horizons.util.python.callback import Callback
-from horizons.util.shapes import Point
 from fife.extensions.pychan import widgets
-from horizons.component.storagecomponent import StorageComponent
-from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import Window
-from horizons.command.uioptions import RouteConfigCommand
-from horizons.command.unit import CreateRoute
-from horizons.component.namedcomponent import NamedComponent
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
-from horizons.scheduler import Scheduler
-from horizons.manager import MPManager
-
-from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
+from horizons.command.uioptions import RouteConfigCommand
+from horizons.command.unit import CreateRoute
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
+from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.windows import Window
+from horizons.manager import MPManager
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point
 
 
 class RouteConfig(Window):

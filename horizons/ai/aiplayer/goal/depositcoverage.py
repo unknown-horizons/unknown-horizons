@@ -20,11 +20,12 @@
 # ###################################################
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS, RES
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""

@@ -20,12 +20,13 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
-from .mission.specialdomestictrade import SpecialDomesticTrade
-from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
+from horizons.util.python import decorators
+
+from .mission.specialdomestictrade import SpecialDomesticTrade
+
 
 class SpecialDomesticTradeManager(object):
 	"""

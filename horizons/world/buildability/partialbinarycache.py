@@ -21,6 +21,7 @@
 
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
+
 class PartialBinaryBuildabilityCache(object):
 	"""
 	A cache that knows where rectangles can be placed such that they are entirely inside the area.

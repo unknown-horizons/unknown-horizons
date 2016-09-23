@@ -20,12 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.component.depositcomponent import DepositComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.tabs import OverviewTab
 from horizons.i18n import _lazy
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.component.namedcomponent import NamedComponent
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.depositcomponent import DepositComponent
 
 
 class TowerOverviewTab(OverviewTab): # defensive tower

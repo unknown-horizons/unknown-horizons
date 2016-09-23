@@ -23,6 +23,7 @@ import logging
 
 from horizons.util.python import decorators
 
+
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
 called FindPath. You should never ever use this class directly, just through the Pather

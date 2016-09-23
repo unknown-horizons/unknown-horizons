@@ -23,6 +23,7 @@ from horizons.component import Component
 from horizons.component.storagecomponent import StorageComponent
 from horizons.util.python.decorators import cachedmethod
 
+
 class DepositComponent(Component):
 	NAME = 'resource_deposit'
 	DEPENDENCIES = ['StorageComponent']

@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+
 from horizons.ai.aiplayer.behavior.profile import BehaviorManager
 
 

@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
+from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Shape
+
 
 class Point(Shape):
 	def __init__(self, x, y):

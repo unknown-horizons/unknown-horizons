@@ -28,6 +28,7 @@ import horizons.globals
 from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
+
 class KeyConfig(object):
 	"""Class for storing key bindings.
 	The central function is translate().

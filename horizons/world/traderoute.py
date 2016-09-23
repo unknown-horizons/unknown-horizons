@@ -21,14 +21,14 @@
 
 import copy
 
-from horizons.world.units.unitexeptions import MoveNotPossible
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TRADE_ERROR_TYPE, TradePostComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.constants import GAME_SPEED
-from horizons.scheduler import Scheduler
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class TradeRoute(ChangeListener):

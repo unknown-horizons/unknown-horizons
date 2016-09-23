@@ -27,10 +27,11 @@ from fife.extensions.pychan.widgets import HBox, Label, TextField
 import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import MULTIPLAYER
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.icongroup import hr as HRule
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Popup, Window
 from horizons.network import enet
@@ -39,7 +40,6 @@ from horizons.savegamemanager import SavegameManager
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 from horizons.world import load_raw_world
-from horizons.extscheduler import ExtScheduler
 
 
 class MultiplayerMenu(Window):

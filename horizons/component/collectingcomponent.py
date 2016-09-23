@@ -20,9 +20,10 @@
 # ###################################################
 
 
-from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons import entities
 from horizons.component import Component
+from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
+
 
 class CollectingComponent(Component):
 	"""The CollectingBuilding class represents a object that uses collectors

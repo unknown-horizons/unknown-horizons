@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Icon, ImageButton as FifeImageButton
+from fife.extensions.pychan.widgets import ImageButton as FifeImageButton
+from fife.extensions.pychan.widgets import Icon
 from fife.extensions.pychan.widgets.common import Attr
 
 

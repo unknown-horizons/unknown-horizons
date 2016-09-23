@@ -21,6 +21,7 @@
 # ###################################################
 
 from __future__ import print_function
+
 import json
 import locale
 import logging
@@ -31,8 +32,6 @@ import tempfile
 
 import horizons.globals
 import horizons.main
-
-from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -40,11 +39,12 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
-from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
+from horizons.scenario import InvalidScenarioFileFormat, ScenarioEventHandler
 from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
+from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
 
 
 class SingleplayerMenu(Window):

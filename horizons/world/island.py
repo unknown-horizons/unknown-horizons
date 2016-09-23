@@ -20,26 +20,25 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
+from horizons.command.building import Tear
+from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.entities import Entities
+from horizons.gui.widgets.minimap import Minimap
+from horizons.messaging import NewSettlement, SettlementRangeChanged
+from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
-
 from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.pathfinding.pathnodes import IslandPathNodes
 from horizons.util.shapes import Circle, Rect
 from horizons.util.worldobject import WorldObject
-from horizons.messaging import SettlementRangeChanged, NewSettlement
-from horizons.world.settlement import Settlement
-from horizons.constants import BUILDINGS, RES, UNITS
-from horizons.command.building import Tear
-from horizons.scenario import CONDITIONS
-from horizons.world.buildingowner import BuildingOwner
 from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache, TerrainRequirement
-from horizons.gui.widgets.minimap import Minimap
+from horizons.world.buildingowner import BuildingOwner
 from horizons.world.ground import MapPreviewTile
+from horizons.world.settlement import Settlement
+
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map

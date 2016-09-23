@@ -21,6 +21,7 @@
 
 import logging
 
+
 class PathNodes(object):
 	"""
 	Abstract class; used to derive list of path nodes from, which is used for pathfinding.

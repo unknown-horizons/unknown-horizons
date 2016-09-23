@@ -29,12 +29,11 @@ import tempfile
 import time
 from collections import defaultdict
 
+import horizons.globals
+import horizons.main
 from horizons.constants import PATHS, VERSION
 from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
-
-import horizons.globals
-import horizons.main
 
 
 class SavegameManager(object):

@@ -21,10 +21,11 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS, RES, TIER
-from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.status import BlackDeathStatusIcon
+
 
 class BlackDeathDisaster(BuildingInfluencingDisaster):
 	"""Simulates the Black Death.
