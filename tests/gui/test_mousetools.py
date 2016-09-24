@@ -28,17 +28,17 @@ def test_tearing(gui):
 	found_settlement(gui, (11, 1), (11, 6))
 
 	# remove some trees
-	gui.trigger('mainhud', 'destroy_tool')
+	gui.trigger('mainhud/destroy_tool')
 	gui.cursor_drag((5, 7), (11, 16), 'left')
 
 	# build 4 tents
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_drag((7, 9), (10, 12), 'left')
 
 	# try to remove an area that includes the tents, some trees and
 	# the warehouse
-	gui.trigger('mainhud', 'destroy_tool')
+	gui.trigger('mainhud/destroy_tool')
 	gui.cursor_drag((5, 15), (15, 3), 'left')
 
 
@@ -52,8 +52,8 @@ def test_pipette(gui):
 	assert not gui.find('place_building')
 
 	# build signal fire
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_22')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_22')
 	gui.cursor_click(7, 7, 'left')
 
 	# activate pipette, select signal fire, place it next to the other

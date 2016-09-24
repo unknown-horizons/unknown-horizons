@@ -69,7 +69,7 @@ def found_settlement(gui, ship_pos, (x, y)):
 	move_ship(gui, ship, ship_pos)
 
 	# Found a settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 	assert isinstance(gui.cursor, BuildingTool)
 	gui.cursor_click(x, y, 'left')
 	assert isinstance(gui.cursor, CursorTool)

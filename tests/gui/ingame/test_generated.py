@@ -42,23 +42,23 @@ def test_build_a_settlement(gui):
 	while (ship.position.x, ship.position.y) != (57, 0):
 		gui.run()
 
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 
 	# Place warehouse
 	gui.cursor_click(56, 3, 'left')
 	assert gui.session.world.settlements
 
 	# Select buildmenu
-	gui.trigger('mainhud', 'build')
+	gui.trigger('mainhud/build')
 
 	# Select fisher
-	gui.trigger('tab', 'button_23')
+	gui.trigger('tab/button_23')
 
 	# Place fisher
 	gui.cursor_click(52, 3, 'left')
 
 	# Select path
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab/button_21')
 
 	# Build some paths
 	# Has to be one by one, no mouse drag support yet
@@ -71,15 +71,15 @@ def test_build_a_settlement(gui):
 	gui.cursor_click(54, 7, 'right')	# cancel
 
 	# Build lumberjack
-	gui.trigger('tab', 'button_03')
+	gui.trigger('tab/button_03')
 	gui.cursor_click(52, 6, 'left')
 
 	# Build main square
-	gui.trigger('tab', 'button_02')
+	gui.trigger('tab/button_02')
 	gui.cursor_click(53, 11, 'left')
 
 	# Select path
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab/button_21')
 
 	# Build some paths
 	gui.cursor_click(57, 6, 'left')
@@ -92,15 +92,15 @@ def test_build_a_settlement(gui):
 	gui.cursor_click(57, 13, 'right')	# cancel
 
 	# Build a tent
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(58, 9, 'left')
 
 	# Build a tent
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(58, 7, 'left')
 
 	# Build a tent
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(58, 5, 'left')
 
 
@@ -121,7 +121,7 @@ def test_buildingtool(gui):
 	while (ship.position.x, ship.position.y) != (57, 0):
 		gui.run()
 
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 
 	def build_at(target):
 		# build while moving around cursor beforehand
@@ -136,25 +136,25 @@ def test_buildingtool(gui):
 	assert gui.session.world.settlements
 
 	# Select buildmenu
-	gui.trigger('mainhud', 'build')
+	gui.trigger('mainhud/build')
 
 	# Select fisher
-	gui.trigger('tab', 'button_23')
+	gui.trigger('tab/button_23')
 
 	# Place fisher
 	build_at( (52, 3) )
 
 
 	# Build lumberjack
-	gui.trigger('tab', 'button_03')
+	gui.trigger('tab/button_03')
 	build_at( (52, 6) )
 
 	# Build main square
-	gui.trigger('tab', 'button_02')
+	gui.trigger('tab/button_02')
 	build_at( (53, 11) )
 
 	# Select path
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab/button_21')
 
 	# Build some paths
 	for i in xrange(6, 13):
@@ -162,13 +162,13 @@ def test_buildingtool(gui):
 	gui.cursor_click(54, 7, 'right') # cancel
 
 	# Build a tent
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	build_at( (58, 7) )
 
 	# Select pavilion (tent highlights)
-	gui.trigger('tab', 'button_12')
+	gui.trigger('tab/button_12')
 	build_at( (58, 5) )
 
 	# Build a tent (pavilion highlights)
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	build_at( (58, 9) )

@@ -67,7 +67,7 @@ def test_selectmultitab(gui):
 
 	def func():
 		assert gui.find('popup_window') is not None
-		gui.trigger('popup_window', 'okButton')
+		gui.trigger('popup_window/okButton')
 
 	with gui.handler(func):
 		gui.press_key(gui.Key.DELETE)
@@ -102,11 +102,11 @@ def test_selection_groups(gui):
 		gui.run()
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 
-	gui.trigger('mainhud', 'build')
+	gui.trigger('mainhud/build')
 
 	wh = gui.session.world.player.settlements[0].warehouse
 

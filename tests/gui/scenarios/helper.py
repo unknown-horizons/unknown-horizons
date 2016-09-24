@@ -57,4 +57,4 @@ def wait_and_close_logbook(gui):
 	while not gui.find('captains_log'):
 		gui.run()
 
-	gui.trigger('captains_log', 'okButton')
+	gui.trigger('captains_log/okButton')
