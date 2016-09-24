@@ -298,46 +298,42 @@ class GuiHelper(object):
 
 		return match
 
-	def trigger(self, root, event, mouse=None):
+	def trigger(self, widget, event=None, mouse=None):
 		"""Trigger a widget event in a container.
 
-		root  - container (object, name or path) that holds the widget.
+		root  - widget (object, name or path)
 				For more information on path, see `GuiHelper.find`.
-		event - string describing the event (widget/event/group)
-		        event and group are optional
+		event - Optional. string describing the event (event/group)
 		mouse - Optional. Can be 'left' or 'right'. Some event callbacks look
 				at the event that occured, so we need to tell what mouse
 				button triggered this.
 
 		Example:
-			c = gui.find('mainmenu')
-			gui.trigger(c, 'okButton/action/default')
+			c = gui.find('mainmenu/okButton')
+			gui.trigger(c, 'action/default')
 
 		Equivalent to:
-			gui.trigger('mainmenu', 'okButton/action/default')
+			gui.trigger('mainmenu/okButton', 'action/default')
+
+		Even shorter:
+
+			gui.trigger('mainmenu/okButton')
 		"""
 		group_name = 'default'
 		event_name = 'action'
 
-		parts = event.split('/')
-		if len(parts) == 3:
-			widget_name, event_name, group_name = parts
-		elif len(parts) == 2:
-			widget_name, event_name = parts
-		else:
-			widget_name, = parts
+		parts = event.split('/') if event else []
+		if len(parts) == 2:
+			event_name, group_name = parts
+		elif len(parts) == 1:
+			event_name, = parts
 
-		# if container is given by name, look it up first
-		if isinstance(root, basestring):
-			root_name = root
-			root = self.find(name=root_name)
-			if not root:
-				raise Exception("Container '%s' not found" % root_name)
-
-		widget = root.findChild(name=widget_name)
-		if not widget:
-			raise Exception("'%s' contains no widget with the name '%s'" % (
-								root.name, widget_name))
+		# if widget is given by name, look it up first
+		if isinstance(widget, basestring):
+			widget_name = widget
+			widget = self.find(widget_name)
+			if not widget:
+				raise Exception("Widget '%s' not found" % widget_name)
 
 		self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
 		self.run()
