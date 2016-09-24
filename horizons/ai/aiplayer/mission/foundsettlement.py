@@ -112,6 +112,8 @@ class FoundSettlement(ShipMission):
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
 
 		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
+		available_spots_list = [x for x in available_spots_list
+								if warehouse_class.check_build(land_manager.session, Point(*x), check_settlement=False)]
 		if not available_spots_list:
 			return None
 
