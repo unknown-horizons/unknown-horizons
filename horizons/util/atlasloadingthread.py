@@ -25,7 +25,6 @@ import os
 import subprocess
 import sys
 import threading
-from thread import error as ThreadError  # raised by threading.Lock.release
 
 import horizons.globals
 from horizons.constants import GFX, PATHS

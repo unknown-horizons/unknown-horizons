@@ -22,7 +22,6 @@
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.util.shapes import RadiusRect
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
 from horizons.world.units.unitexeptions import MoveNotPossible
 
