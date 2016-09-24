@@ -386,7 +386,7 @@ def _simplify_seed(seed):
 	depending on the platform which we don't want to happen.
 	"""
 
-	seed = str(seed).lower().strip()
+	seed = str(seed).lower().strip().encode('utf-8')
 	h = hashlib.md5(seed)
 	h.update(seed)
 	return int('0x' + h.hexdigest(), 16) % 1000000007

@@ -150,7 +150,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		total_sum = [0]
 		last_sum = 0
-		for value in zip(*locations)[0]:
+		for value in next(zip(*locations)):
 			last_sum += value
 			total_sum.append(last_sum)
 

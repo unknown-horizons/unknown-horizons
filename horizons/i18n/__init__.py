@@ -98,7 +98,7 @@ def change_language(language=None):
 			fallback = (language == 'en')
 			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
 			                            languages=[language], fallback=fallback)
-			trans.install(str=True, names=['ngettext',])
+			trans.install(names=['ngettext',])
 		except (IOError, KeyError, ValueError) as err:
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
@@ -113,7 +113,7 @@ def change_language(language=None):
 		# default locale
 		if platform.system() == "Windows": # win doesn't set the language variable by default
 			os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
-		gettext.install('unknown-horizons', 'content/lang', str=True, names=['ngettext',])
+		gettext.install('unknown-horizons', 'content/lang', names=['ngettext',])
 
 	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
 	import builtins

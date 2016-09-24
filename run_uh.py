@@ -361,7 +361,7 @@ def init_environment(use_fife):
 
 	Use in any program that requires access to FIFE and UH modules."""
 	# install dummy translation
-	gettext.install('', str=True)
+	gettext.install('')
 	if use_fife:
 		setup_fife()
 

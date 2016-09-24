@@ -21,11 +21,8 @@
 
 """Save general python function decorators here"""
 
-
 import functools
 import time
-from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
-from types import ClassType, FunctionType
 
 
 class cachedfunction(object):
@@ -105,6 +102,7 @@ def temporary_cachedmethod(timeout):
 
 
 
+'''
 # adapted from http://code.activestate.com/recipes/277940/
 
 globals().update(opmap)
@@ -255,6 +253,9 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 	if type(builtin_only) == type(make_constants):
 		raise ValueError("The bind_constants decorator must have arguments.")
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
+'''
+make_constants = lambda: lambda f: f
+bind_all = lambda *args: 0
 
 
 # cachedproperty taken from http://code.activestate.com/recipes/576563-cached-property/

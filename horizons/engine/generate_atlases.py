@@ -182,7 +182,7 @@ class ImageSetManager(object):
 						row.append(book_entry.height)
 						self._add_entry(set_id, action_id, rotation, path, row)
 
-		with open(self._path, 'wb') as json_file:
+		with open(self._path, 'w') as json_file:
 			json.dump(self._data, json_file, indent=1)
 
 
@@ -217,7 +217,7 @@ class AtlasGenerator(object):
 		pool.join()
 
 	def save(self):
-		with open(PATHS.ATLAS_DB_PATH, 'wb') as atlas_db_file:
+		with open(PATHS.ATLAS_DB_PATH, 'w') as atlas_db_file:
 			atlas_db_file.write("CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
 			for book in self.books:
 				atlas_db_file.write("INSERT INTO atlas VALUES({0:d}, "

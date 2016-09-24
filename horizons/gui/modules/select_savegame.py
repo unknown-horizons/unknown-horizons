@@ -61,11 +61,11 @@ class SelectSavegameDialog(Dialog):
 		else:
 			if w not in w.parent.hidden_children:
 				w.parent.hideChild(w)
-				
+
 		w = self._gui.findChild(name="gamepassword_box")
 		if (Fife.getVersion() >= (0, 4, 0)):
 			w.parent.hideChild(w)
-		else:		
+		else:
 			if w not in w.parent.hidden_children:
 				w.parent.hideChild(w)
 
@@ -220,7 +220,7 @@ class SelectSavegameDialog(Dialog):
 						fd, filename = None, None
 
 				if fd:
-					with os.fdopen(fd, "w") as f:
+					with os.fdopen(fd, "wb") as f:
 						f.write(savegame_info['screenshot'])
 					# fife only supports relative paths
 					gui.findChild(name="screenshot").image = path_rel
