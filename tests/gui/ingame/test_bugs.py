@@ -88,7 +88,7 @@ def test_ticket_1369(gui):
 	move_ship(gui, ship, (68, 23))
 
 	# click trade button
-	gui.trigger('overview_trade_ship', 'trade')
+	gui.trigger('overview_trade_ship/trade')
 
 	# trade widget visible
 	assert gui.find(name='buy_sell_goods')
@@ -144,25 +144,25 @@ def test_ticket_1371(gui):
 	found_settlement(gui, (59, 1), (56, 3))
 
 	# Build lumberjack
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_03')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select lumberjack
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 	# Select tree
-	gui.trigger('overview_buildrelated', 'build17')
+	gui.trigger('overview_buildrelated/build17')
 
 	# Plant a tree (without uninterrupted building)
 	gui.cursor_click(49, 6, 'left')
 	assert gui.find(name='overview_buildrelated')
 
 	# Select tree again and plant it with uninterrupted building
-	gui.trigger('overview_buildrelated', 'build17')
+	gui.trigger('overview_buildrelated/build17')
 	gui.cursor_click(49, 7, 'left', shift=True)
 
 	# Tab should still be there
@@ -214,14 +214,14 @@ def test_ticket_1520(gui):
 	ground_map = gui.session.world.islands[0].ground_map
 
 	# Build a tent
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(7, 9, 'left')
 
 	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL
 
 	# Start building a mainsquare (not releasing left mouse button)
-	gui.trigger('tab', 'button_02')
+	gui.trigger('tab/button_02')
 	gui.cursor_move(13, 11)
 	gui.cursor_press_button(13, 11, 'left')
 
@@ -241,19 +241,19 @@ def test_ticket_1509(gui):
 	found_settlement(gui, (8, 2), (10, 6))
 
 	# Build a tent
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(7, 10, 'left')
 
 	# Select tent
 	gui.cursor_click(7, 10, 'left')
 
 	# quickly switch between tabs
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 	gui.run()
-	gui.trigger('tab_base', '0')
+	gui.trigger('tab_base/0')
 	gui.run()
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -279,18 +279,18 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	found_settlement(gui, (59, 1), (56, 3))
 
 	# Build settler
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select settler
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 	# Select pavilion
-	gui.trigger('overview_buildrelated', 'build5')
+	gui.trigger('overview_buildrelated/build5')
 
 	# Plant it
 	gui.cursor_click(49, 6, 'left')
@@ -307,8 +307,8 @@ def test_ticket_1848(gui):
 
 	# Build huker
 	gui.cursor_click(64, 10, 'left')
-	gui.trigger('tab_base', '1')
-	gui.trigger('boatbuilder_showcase', 'ok_0')
+	gui.trigger('tab_base/1')
+	gui.trigger('boatbuilder_showcase/ok_0')
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
@@ -316,7 +316,7 @@ def test_ticket_1848(gui):
 		gui.run()
 
 	gui.cursor_click(51, 13, 'left')
-	gui.trigger('tab_account', 'show_production_overview')
+	gui.trigger('tab_account/show_production_overview')
 
 
 @gui_test(use_fixture='plain')
@@ -329,8 +329,8 @@ def test_ticket_1948(gui):
 	found_settlement(gui, (59, 1), (56, 3))
 
 	# Select storage tent
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_11')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_11')
 	# Build storage at the border of the settlement
 	gui.cursor_click(37, 20, 'left')
 
@@ -343,13 +343,13 @@ def test_ticket_2117(gui):
 	gui.cursor_click(23, 63, 'left')
 
 	# Open settings
-	gui.trigger('mainhud', 'gameMenuButton')
-	gui.trigger('menu/button_images', 'settingsLink')
+	gui.trigger('mainhud/gameMenuButton')
+	gui.trigger('menu/button_images/settingsLink')
 
 	# Change language (to anything not system default)
-	gui.trigger('settings_window', 'game_settings_right')
+	gui.trigger('settings_window/game_settings_right')
 	gui.find('uni_language').select(u'English')
-	gui.trigger('settings_window', 'okButton')
+	gui.trigger('settings_window/okButton')
 
 
 @mark_expected_failure

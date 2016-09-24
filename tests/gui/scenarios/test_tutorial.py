@@ -48,60 +48,60 @@ def test_tutorial(gui):
 	# Save and reload scenario (1/3)
 	saveload(gui)
 
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 	gui.cursor_click(11, 6, 'left')
 
 	# Goal: Build a lumberjack
 	assert_progress(19)
 
 	# lumberjack (2)
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_03')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
 	gui.cursor_click(8, 10, 'left', shift=True)
 	gui.cursor_click(13, 10, 'left')
 	gui.cursor_click(13, 10, 'right')
 
 	# plant some extra trees around the lumberjacks
-	gui.trigger('tab', 'button_13')
+	gui.trigger('tab/button_13')
 	gui.cursor_drag((6, 13), (15, 8), 'left')
 
 	# roads (no dragging to trigger the 'you can drag roads' hint)
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab/button_21')
 	gui.cursor_multi_click((10, 8), (10, 9), (10, 10), (11, 10))
 
 	# Goal: Build hunter and fisher
 	assert_progress(22)
 
 	# fisher
-	gui.trigger('tab', 'button_23')
+	gui.trigger('tab/button_23')
 	gui.cursor_click(13, 6, 'left')
 
 	# hunter
-	gui.trigger('tab', 'button_13')
+	gui.trigger('tab/button_13')
 	gui.cursor_click(8, 8, 'left')
 
 	# Goal: Mainsquare
 	assert_progress(25)
 
-	gui.trigger('tab', 'button_02')
+	gui.trigger('tab/button_02')
 	gui.cursor_click(15, 18, 'left')
 
 	# Goal: first tent
 	assert_progress(28)
 
 	# roads
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab/button_21')
 	gui.cursor_drag((13, 15), (20, 15), 'left')
 	gui.cursor_click(20, 15, 'right')
 
 	# tent
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(13, 13, 'left')
 
 	# Goal: 4 tents
 	assert_progress(31)
 
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab/button_01')
 	gui.cursor_multi_click((15, 13), (17, 13), (19, 13))
 
 	# Goal: Build a signal fire
@@ -111,14 +111,14 @@ def test_tutorial(gui):
 	saveload(gui)
 
 	# Open build menu again (it is not reloaded, unlike selected instances)
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab_base', '0')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab_base/0')
 
 	# wait until we have enough boards
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 5):
 		gui.run()
 
-	gui.trigger('tab', 'button_22')
+	gui.trigger('tab/button_22')
 	gui.cursor_click(9, 5, 'left')
 
 	# Goal: Trading
@@ -126,9 +126,9 @@ def test_tutorial(gui):
 
 	# Buy tools from the trader (put the resource on the buy list)
 	gui.cursor_click(11, 6, 'left')
-	gui.trigger('tab_base', '2')
-	gui.trigger('slot_0', 'button', mouse='left')
-	gui.trigger('select_trade_resource', 'resource_%d' % RES.TOOLS)
+	gui.trigger('tab_base/2')
+	gui.trigger('slot_0/button', mouse='left')
+	gui.trigger('select_trade_resource/resource_%d' % RES.TOOLS)
 	gui.find('slot_0/slider').slide(30)
 
 	# Goal: Pavilion
@@ -138,8 +138,8 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 5):
 		gui.run()
 
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_12')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_12')
 	gui.cursor_click(19, 16, 'left')
 
 	# Goal: Next tier
@@ -147,9 +147,9 @@ def test_tutorial(gui):
 
 	# Adjust settler taxes (using mainsquare)
 	gui.cursor_click(16, 18, 'left')
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 	gui.find('tax_slider').slide(0)
-	gui.trigger('mainhud', 'build')
+	gui.trigger('mainhud/build')
 
 	# wait until settlers upgraded
 	while not settler_level_greater(gui.session, TIER.SAILORS):
@@ -162,54 +162,54 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 10):
 		gui.run()
 
-	gui.trigger('tab_base', '1') # FIXME this sometimes fails
-	gui.trigger('tab', 'button_02')
+	gui.trigger('tab_base/1') # FIXME this sometimes fails
+	gui.trigger('tab/button_02')
 	gui.cursor_click(25, 12, 'left')
 
 	# Goal: Fields
 	assert_progress(49)
 
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 	# potato
-	gui.trigger('tab', 'button_12')
+	gui.trigger('tab/button_12')
 	gui.cursor_click(23, 11, 'left')
 
 	# Save and reload scenario (3/3)
 	saveload(gui)
 
 	# Open build menu again
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab_base', '1')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab_base/1')
 
 	# wait until we have enough boards
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 3):
 		gui.run()
 
 	# pasture
-	gui.trigger('tab', 'button_22')
+	gui.trigger('tab/button_22')
 	gui.cursor_click(24, 8, 'left')
 
 	# Goal: Storage
 	assert_progress(52)
 
 	# remove a tree to connect to farm
-	gui.trigger('mainhud', 'destroy_tool')
+	gui.trigger('mainhud/destroy_tool')
 	gui.cursor_click(21, 15, 'left')
 
 	# roads
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab_base', '0')
-	gui.trigger('tab', 'button_21')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab_base/0')
+	gui.trigger('tab/button_21')
 	gui.cursor_drag((21, 15), (24, 14), 'left')
 	gui.cursor_click(24, 14, 'right')
 	# back of mainsquare
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab/button_21')
 	gui.cursor_drag((13, 22), (20, 22), 'left')
 	gui.cursor_click(20, 22, 'right')
 
 	# storage tent
-	gui.trigger('tab', 'button_11')
+	gui.trigger('tab/button_11')
 	gui.cursor_click(21, 16, 'left')
 
 	# Goal: Weaver
@@ -219,16 +219,16 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 10):
 		gui.run()
 
-	gui.trigger('tab_base', '1')
-	gui.trigger('tab', 'button_21')
+	gui.trigger('tab_base/1')
+	gui.trigger('tab/button_21')
 	gui.cursor_click(25, 14, 'left')
 
 	# Goal: 50 inhabitants, positive balance
 	assert_progress(58)
 
 	# more potato fields
-	gui.trigger('tab_base', '1')
-	gui.trigger('tab', 'button_12')
+	gui.trigger('tab_base/1')
+	gui.trigger('tab/button_12')
 	gui.cursor_multi_click((24, 9), (27, 8), (27, 11))
 
 	# wait until we have enough boards
@@ -236,8 +236,8 @@ def test_tutorial(gui):
 		gui.run()
 
 	# tents
-	gui.trigger('tab_base', '0')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('tab_base/0')
+	gui.trigger('tab/button_01')
 	gui.cursor_multi_click(
 		(11, 14), (11, 15), (12, 17), (11, 20), (11, 22),
 		(13, 23), (15, 23), (17, 23), (19, 23),

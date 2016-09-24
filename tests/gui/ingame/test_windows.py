@@ -29,45 +29,45 @@ def test_settings_dialog_crash(gui):
 	"""Opening&closing the settings dialog in two different games crashes."""
 
 	# open pause menu
-	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('mainhud/gameMenuButton')
 
 	# open & close settings
-	gui.trigger('menu', 'settingsLink')
-	gui.trigger('settings_window', 'okButton')
+	gui.trigger('menu/settingsLink')
+	gui.trigger('settings_window/okButton')
 
 	# open pause menu, quit session
 	def func1():
-		gui.trigger('popup_window', 'okButton')
+		gui.trigger('popup_window/okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'closeButton')
+		gui.trigger('menu/closeButton')
 
 	# start a new game (development map)
-	gui.trigger('menu', 'single_button')
-	gui.trigger('singleplayermenu', 'free_maps')
+	gui.trigger('menu/single_button')
+	gui.trigger('singleplayermenu/free_maps')
 	gui.find('maplist').select(u'development')
-	gui.trigger('singleplayermenu', 'okay')
+	gui.trigger('singleplayermenu/okay')
 
 	# open pause menu
-	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('mainhud/gameMenuButton')
 
 	# open & close settings
-	gui.trigger('menu', 'settingsLink')
-	gui.trigger('settings_window', 'okButton')  # this crashes
+	gui.trigger('menu/settingsLink')
+	gui.trigger('settings_window/okButton')  # this crashes
 
 
 @gui_test(timeout=60)
 def test_settings_dialog_crash2(gui):
 	# open settings in main menu
-	gui.trigger('menu', 'settings_button')
-	gui.trigger('settings_window', 'cancelButton')
+	gui.trigger('menu/settings_button')
+	gui.trigger('settings_window/cancelButton')
 
 	# start game
-	gui.trigger('menu', 'single_button')
-	gui.trigger('singleplayermenu', 'free_maps')
-	gui.trigger('singleplayermenu', 'okay')
+	gui.trigger('menu/single_button')
+	gui.trigger('singleplayermenu/free_maps')
+	gui.trigger('singleplayermenu/okay')
 
 	gui.press_key(gui.Key.ESCAPE)
 	# open & close settings
-	gui.trigger('menu', 'settingsLink')
+	gui.trigger('menu/settingsLink')
 	gui.press_key(gui.Key.ESCAPE)

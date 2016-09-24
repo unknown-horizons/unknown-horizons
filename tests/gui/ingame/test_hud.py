@@ -28,13 +28,13 @@ def test_hud(gui):
 	Click on some buttons at the ingame menu.
 	"""
 
-	gui.trigger('mainhud', 'zoomOut')
-	gui.trigger('mainhud', 'zoomIn')
-	gui.trigger('mainhud', 'rotateRight')
-	gui.trigger('mainhud', 'rotateLeft')
+	gui.trigger('mainhud/zoomOut')
+	gui.trigger('mainhud/zoomIn')
+	gui.trigger('mainhud/rotateRight')
+	gui.trigger('mainhud/rotateLeft')
 
-	gui.trigger('mainhud', 'logbook')
-	gui.trigger('captains_log', 'okButton')
+	gui.trigger('mainhud/logbook')
+	gui.trigger('captains_log/okButton')
 
-	gui.trigger('mainhud', 'build')
-	gui.trigger('mainhud', 'diplomacyButton')
+	gui.trigger('mainhud/build')
+	gui.trigger('mainhud/diplomacyButton')

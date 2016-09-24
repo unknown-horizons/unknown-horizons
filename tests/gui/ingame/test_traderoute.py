@@ -40,19 +40,19 @@ def test_traderoute(gui):
 
 	# Give the resources back to the ship
 	# Click the trade button
-	gui.trigger('overview_trade_ship', 'trade')
+	gui.trigger('overview_trade_ship/trade')
 
 	# Get the default amount (50 t, which is more than all available) of everything
-	gui.trigger('buy_sell_goods', 'inventory_entry_0')
-	gui.trigger('buy_sell_goods', 'inventory_entry_1')
-	gui.trigger('buy_sell_goods', 'inventory_entry_2')
-	gui.trigger('buy_sell_goods', 'inventory_entry_3')
+	gui.trigger('buy_sell_goods/inventory_entry_0')
+	gui.trigger('buy_sell_goods/inventory_entry_1')
+	gui.trigger('buy_sell_goods/inventory_entry_2')
+	gui.trigger('buy_sell_goods/inventory_entry_3')
 
 	# Create the second settlement
 	found_settlement(gui, (14, 30), (15, 26))
 
 	# Open the configure trade route widget
-	gui.trigger('overview_trade_ship', 'configure_route')
+	gui.trigger('overview_trade_ship/configure_route')
 
 	# The trade route widget is visible
 	assert gui.find(name='configure_route/minimap')
@@ -79,13 +79,13 @@ def test_traderoute(gui):
 	gui.run()
 
 	# Set the resources to be loaded from settlement on the left and the amount
-	gui.trigger('configure_route/container_1/slot_0', 'button', mouse='left') # Select the second warehouse's first slot
-	gui.trigger('configure_route/traderoute_resources', 'resource_%d' % RES.FOOD)
+	gui.trigger('configure_route/container_1/slot_0/button', mouse='left') # Select the second warehouse's first slot
+	gui.trigger('configure_route/traderoute_resources/resource_%d' % RES.FOOD)
 	gui.find('configure_route/container_1/slot_0/slider').slide(120)
 
 	# Check if the ship obeys the state of "Wait at load" and "Wait at unload"
-	gui.trigger('configure_route/wait_options', 'wait_at_load')
-	gui.trigger('configure_route/wait_options', 'wait_at_unload')
+	gui.trigger('configure_route/wait_options/wait_at_load')
+	gui.trigger('configure_route/wait_options/wait_at_unload')
 
 	assert ship.route.wait_at_load
 	assert ship.route.wait_at_unload

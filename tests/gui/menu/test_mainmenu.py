@@ -26,8 +26,8 @@ from tests.gui import gui_test
 def test_credits(gui):
 	"""Test that the credits page shows up."""
 
-	gui.trigger('menu', 'credits_button')
-	gui.trigger('credits_window', 'okButton')
+	gui.trigger('menu/credits_button')
+	gui.trigger('credits_window/okButton')
 	assert not gui.find('credits_window')
 
 
@@ -35,12 +35,12 @@ def test_credits(gui):
 def test_help(gui):
 	"""Test that the help page shows up."""
 
-	gui.trigger('menu', 'help_button')
-	gui.trigger('help_window', 'okButton')
+	gui.trigger('menu/help_button')
+	gui.trigger('help_window/okButton')
 	assert not gui.find('help_window')
 
 
 @gui_test(timeout=60)
 def test_settings(gui):
-	gui.trigger('menu', 'settings_button')
-	gui.trigger('settings_window', 'cancelButton')
+	gui.trigger('menu/settings_button')
+	gui.trigger('settings_window/cancelButton')
