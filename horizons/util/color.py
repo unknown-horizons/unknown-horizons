@@ -52,7 +52,7 @@ class ColorMeta(type):
 		return iter(colors)
 
 
-class Color(object):
+class Color(object, metaclass=ColorMeta):
 	"""Class for saving a color.
 	Colors are saved in 32 bit rgb-format with an alpha value (for transparency).
 	32bit mean that each of the for values can only occupy 8 bit, i.e. the value is between
@@ -62,7 +62,6 @@ class Color(object):
 	 r, g, b, a: Color values + Alpha
 	 name: name of the Color or None
 	"""
-	__metaclass__ = ColorMeta
 
 	def __init__(self, r=0, g=0, b=0, a=255):
 		"""

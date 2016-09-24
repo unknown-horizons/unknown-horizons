@@ -88,7 +88,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		# Get production line info
 		production = self.producer.create_production_line(prodline)
 		# consumed == negative, reverse to sort in *ascending* order:
-		costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
+		costs = sorted(iter(production.consumed_res.items()), key=itemgetter(1))
 		for i, (res, amount) in enumerate(costs):
 			xoffset = 103 + (i  % 2) * 55
 			yoffset =  20 + (i // 2) * 20
@@ -97,9 +97,9 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 			icon.position = (xoffset, yoffset)
 			label = Label(name='cost_%s_%s' % (index, i))
 			if res == RES.GOLD:
-				label.text = unicode(-amount)
+				label.text = str(-amount)
 			else:
-				label.text = u'{amount:02}t'.format(amount=-amount)
+				label.text = '{amount:02}t'.format(amount=-amount)
 			label.position = (22 + xoffset, yoffset)
 			widget.addChild(icon)
 			widget.addChild(label)

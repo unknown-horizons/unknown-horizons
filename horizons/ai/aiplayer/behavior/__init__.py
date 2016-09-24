@@ -68,7 +68,7 @@ class BehaviorManager(object):
 
 	def request_behavior(self, type, action_name, behavior_list, **environment):
 		possible_behaviors = []
-		for behavior, probability in behavior_list[type].iteritems():
+		for behavior, probability in behavior_list[type].items():
 			if hasattr(behavior, action_name):
 				certainty = behavior.certainty(action_name, **environment)
 				# final probability is the one defined in profile multiplied by it's certainty

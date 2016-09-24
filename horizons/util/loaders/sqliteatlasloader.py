@@ -70,7 +70,7 @@ class SQLiteAtlasLoader(object):
 		commands = location.split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		commands = list(zip(commands[0::2], commands[1::2]))
 
 		ani = fife.Animation.createAnimation()
 
@@ -79,7 +79,7 @@ class SQLiteAtlasLoader(object):
 
 
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
 			entry = loader.get_sets()[actionset][action][int(rotation)][file]
 			# we don't need to load images at this point to query for its parameters
 			# such as width and height because we can get those from json file

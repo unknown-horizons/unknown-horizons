@@ -45,10 +45,10 @@ class SettlerOverviewTab(OverviewTab):
 		                 self.instance.level)
 
 		taxes = self.instance.settlement.tax_settings[self.instance.level]
-		self.widget.child_finder('tax_val_label').text = unicode(taxes)
+		self.widget.child_finder('tax_val_label').text = str(taxes)
 		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
-		action_gfx = action_set.items()[0][1]
-		image = action_gfx[45].keys()[0]
+		action_gfx = list(action_set.items())[0][1]
+		image = list(action_gfx[45].keys())[0]
 		self.widget.findChild(name="building_image").image = image
 
 	def on_settler_level_change(self, message):
@@ -58,9 +58,9 @@ class SettlerOverviewTab(OverviewTab):
 		                 self.instance.settlement,
 		                 message.level)
 		taxes = self.instance.settlement.tax_settings[self.instance.level]
-		self.widget.child_finder('tax_val_label').text = unicode(taxes)
-		imgs = ActionSetLoader.get_set(self.instance._action_set_id).items()[0][1]
-		self.widget.findChild(name="building_image").image = imgs[45].keys()[0]
+		self.widget.child_finder('tax_val_label').text = str(taxes)
+		imgs = list(ActionSetLoader.get_set(self.instance._action_set_id).items())[0][1]
+		self.widget.findChild(name="building_image").image = list(imgs[45].keys())[0]
 
 	def show(self):
 		super(SettlerOverviewTab, self).show()
@@ -75,10 +75,10 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.child_finder('happiness_label').image = image
 		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
+		self.widget.child_finder('inhabitants').text = "%s/%s" % (
 		                                               self.instance.inhabitants,
 		                                               self.instance.inhabitants_max)
-		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
+		self.widget.child_finder('taxes').text = str(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
@@ -111,7 +111,7 @@ def setup_tax_slider(slider, val_label, settlement, level):
 	slider.step_length = SETTLER.TAX_SETTINGS_STEP
 	slider.value = settlement.tax_settings[level]
 	def on_slider_change():
-		val_label.text = unicode(slider.value)
+		val_label.text = str(slider.value)
 		if settlement.tax_settings[level] != slider.value:
 			SetTaxSetting(settlement, level, slider.value).execute(settlement.session)
 	slider.capture(on_slider_change)

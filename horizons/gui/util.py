@@ -32,9 +32,9 @@ from horizons.util.python.callback import Callback
 
 # Find the best implementation available on this platform
 try:
-	from cStringIO import StringIO
+	from io import StringIO
 except:
-	from StringIO import StringIO
+	from io import StringIO
 
 
 
@@ -87,7 +87,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 		widget = loadXML(StringIO(get_widget_xml(filename)))
 	except (IOError, ValueError) as error:
 		log = logging.getLogger('gui')
-		log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
+		log.error('PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
 		raise
 
 	# translate

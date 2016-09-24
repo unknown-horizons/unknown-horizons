@@ -155,7 +155,7 @@ class FindPath(object):
 
 		from heapq import heappush, heappop
 		heap = []
-		for coords, data in to_check.iteritems():
+		for coords, data in to_check.items():
 			heappush(heap, (data[2], coords))
 
 		# pull dereferencing out of loop

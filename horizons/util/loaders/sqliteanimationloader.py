@@ -47,7 +47,7 @@ class SQLiteAnimationLoader(object):
 		commands = location.split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		commands = list(zip(commands[0::2], commands[1::2]))
 
 		# Set the correct loader based on the actionset
 		loader = None
@@ -55,7 +55,7 @@ class SQLiteAnimationLoader(object):
 
 		ani = fife.Animation.createAnimation()
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
 			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
 			img = horizons.globals.fife.imagemanager.load(file)
 			for command, arg in commands:

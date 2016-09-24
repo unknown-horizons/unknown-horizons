@@ -45,7 +45,7 @@ class FreeIslandBuildabilityCache(object):
 	def _init(self):
 		land_or_coast = self._binary_cache.terrain_cache.land_or_coast
 		coords_list = []
-		for (coords, tile) in self.island.ground_map.iteritems():
+		for (coords, tile) in self.island.ground_map.items():
 			if coords not in land_or_coast:
 				continue
 			if tile.settlement is not None:

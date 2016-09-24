@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import logging
 
@@ -117,7 +117,7 @@ class Producer(Component):
 		self.__init()
 		# add production lines as specified in db.
 		if self.__auto_init:
-			for prod_line, attributes in self.production_lines.iteritems():
+			for prod_line, attributes in self.production_lines.items():
 				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
 					continue  # It's set to False, don't add
 				prod = self.create_production(prod_line)
@@ -131,7 +131,7 @@ class Producer(Component):
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
-		for key, data in self.production_lines.iteritems():
+		for key, data in self.production_lines.items():
 			if 'level' in data and level in data['level']:
 				prod_lines.append(key)
 		return prod_lines
@@ -235,7 +235,7 @@ class Producer(Component):
 	def finish_production_now(self):
 		"""Cheat, makes current production finish right now (and produce the resources).
 		Useful to make trees fully grown at game start."""
-		for production in self._productions.itervalues():
+		for production in self._productions.values():
 			production.finish_production_now()
 
 	def has_production_line(self, prod_line_id):
@@ -299,12 +299,12 @@ class Producer(Component):
 
 	def get_productions(self):
 		"""Returns all productions, inactive and active ones, as list"""
-		return self._productions.values() + self._inactive_productions.values()
+		return list(self._productions.values()) + list(self._inactive_productions.values())
 
 	def get_production_lines(self):
 		"""Returns all production lines that have been added.
 		@return: a list of prodline ids"""
-		return self._productions.keys() + self._inactive_productions.keys()
+		return list(self._productions.keys()) + list(self._inactive_productions.keys())
 
 	def _get_production(self, prod_line_id):
 		"""Returns a production of this producer by a production line id.
@@ -413,14 +413,14 @@ class Producer(Component):
 		return l
 
 	def __str__(self):
-		return u'Producer(owner: ' + unicode(self.instance) + u')'
+		return 'Producer(owner: ' + str(self.instance) + ')'
 
 	def get_production_progress(self):
 		"""Returns the current progress of the active production."""
-		for production in self._productions.itervalues():
+		for production in self._productions.values():
 			# Always return first production
 			return production.progress
-		for production in self._inactive_productions.itervalues():
+		for production in self._inactive_productions.values():
 			# try inactive ones, if no active ones are found
 			# this makes e.g. the boatbuilder's progress bar constant when you pause it
 			return production.progress
@@ -539,9 +539,9 @@ class QueueProducer(Producer):
 	def cancel_current_production(self):
 		"""Cancels the current production and proceeds to the next one, if there is one"""
 		# Remove current productions, lose all progress and resources
-		for production in self._productions.copy().itervalues():
+		for production in self._productions.copy().values():
 			self.remove_production(production)
-		for production in self._inactive_productions.copy().itervalues():
+		for production in self._inactive_productions.copy().values():
 			self.remove_production(production)
 		if self.production_queue:
 			self.start_next_production()
@@ -565,7 +565,7 @@ class ShipProducer(QueueProducer):
 		queue = []
 		for prod_line_id in self.production_queue:
 			prod_line = self.create_production_line(prod_line_id)
-			units = prod_line.unit_production.keys()
+			units = list(prod_line.unit_production.keys())
 			if len(units) > 1:
 				print('WARNING: unit production system has been designed for 1 type per order')
 			queue.append(units[0])
@@ -577,12 +577,12 @@ class ShipProducer(QueueProducer):
 
 	def __create_unit(self):
 		"""Create the produced unit now."""
-		productions = self._productions.values()
+		productions = list(self._productions.values())
 		for production in productions:
 			assert isinstance(production, UnitProduction)
 			self.on_production_finished(production.get_produced_units())
-			for unit, amount in production.get_produced_units().iteritems():
-				for i in xrange(amount):
+			for unit, amount in production.get_produced_units().items():
+				for i in range(amount):
 					self._place_unit(unit)
 
 	def _place_unit(self, unit):

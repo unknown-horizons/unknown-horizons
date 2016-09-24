@@ -45,7 +45,7 @@ def test_settings_dialog_crash(gui):
 	# start a new game (development map)
 	gui.trigger('menu/single_button')
 	gui.trigger('singleplayermenu/free_maps')
-	gui.find('maplist').select(u'development')
+	gui.find('maplist').select('development')
 	gui.trigger('singleplayermenu/okay')
 
 	# open pause menu

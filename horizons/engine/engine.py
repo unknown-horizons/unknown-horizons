@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import locale
 import logging
@@ -167,7 +167,7 @@ class Fife(object):
 			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
 		}
-		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
+		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.items() )
 		self.cursor.set(self.cursor_images['default'])
 
 		# Init pychan.

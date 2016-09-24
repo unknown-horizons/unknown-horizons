@@ -34,6 +34,7 @@ from horizons.util.shapes import Point
 from horizons.world.concreteobject import ConcreteObject
 from horizons.world.units import UnitClass
 from horizons.world.units.unitexeptions import MoveNotPossible
+import collections
 
 
 class MovingObject(ComponentHolder, ConcreteObject):
@@ -236,7 +237,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
 		# check if a conditional callback becomes true
-		for cond in self._conditional_callbacks.keys(): # iterate of copy of keys to be able to delete
+		for cond in list(self._conditional_callbacks.keys()): # iterate of copy of keys to be able to delete
 			if cond():
 				# start callback when this function is done
 				Scheduler().add_new_object(self._conditional_callbacks[cond], self)
@@ -263,8 +264,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 	def add_conditional_callback(self, condition, callback):
 		"""Adds a callback, that gets called, if, at any time of the movement, the condition becomes
 		True. The condition is checked every move_tick. After calling the callback, it is removed."""
-		assert callable(condition)
-		assert callable(callback)
+		assert isinstance(condition, collections.Callable)
+		assert isinstance(callback, collections.Callable)
 		self._conditional_callbacks[condition] = callback
 
 	def get_unit_velocity(self):

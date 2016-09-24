@@ -291,7 +291,7 @@ class BuildingCollector(Collector):
 		self._clean_job_history_log()
 		num_entries = len(self._job_history)
 		total_utilization = 0
-		for i in xrange(num_entries):
+		for i in range(num_entries):
 			tick = self._job_history[i][0]
 			if tick >= current_tick:
 				break

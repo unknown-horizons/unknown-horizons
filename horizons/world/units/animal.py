@@ -148,7 +148,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		if self.state == self.states.no_job_waiting:
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
 			assert len(calls) == 1, 'calls: %s' % calls
-			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
+			remaining_ticks = max(list(calls.values())[0], 1) # we have to save a number > 0
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?",
 				 remaining_ticks, self.worldid)
 
@@ -193,7 +193,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		pos = self.position.to_tuple()
 
 		# try to get away with a random job (with normal forest density this works > 99% of the time)
-		for i in xrange(min(5, self._building_index.get_num_buildings_in_range(pos))):
+		for i in range(min(5, self._building_index.get_num_buildings_in_range(pos))):
 			provider = self._building_index.get_random_building_in_range(pos)
 			if provider is not None and self.check_possible_job_target(provider):
 				# animals only collect one resource

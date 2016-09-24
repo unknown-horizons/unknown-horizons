@@ -81,7 +81,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return os.path.join('content', 'fonts', u'{0}.fontdef'.format(fontdef_file))
+	return os.path.join('content', 'fonts', '{0}.fontdef'.format(fontdef_file))
 
 
 def change_language(language=None):
@@ -98,7 +98,7 @@ def change_language(language=None):
 			fallback = (language == 'en')
 			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
 			                            languages=[language], fallback=fallback)
-			trans.install(unicode=True, names=['ngettext',])
+			trans.install(str=True, names=['ngettext',])
 		except (IOError, KeyError, ValueError) as err:
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
@@ -113,11 +113,11 @@ def change_language(language=None):
 		# default locale
 		if platform.system() == "Windows": # win doesn't set the language variable by default
 			os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
-		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
+		gettext.install('unknown-horizons', 'content/lang', str=True, names=['ngettext',])
 
 	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
-	import __builtin__
-	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
+	import builtins
+	builtins.__dict__['N_'] = builtins.__dict__['ngettext']
 
 	# update fonts
 	new_locale = language or horizons.globals.fife.get_locale()

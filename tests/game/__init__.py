@@ -179,7 +179,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 			'difficulty': human_difficulty,
 		})
 
-	for i in xrange(ai_players):
+	for i in range(ai_players):
 		id = i + human_player + 1
 		players.append({
 			'id': id,

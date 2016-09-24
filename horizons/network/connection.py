@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import logging
 import time
@@ -85,7 +85,7 @@ class Connection(object):
 				self.server_address = enet.Address(*self.server_address_parameters)
 			self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
-			raise network.NetworkException(_("Unable to connect to server.") + u" " +
+			raise network.NetworkException(_("Unable to connect to server.") + " " +
 			                               _("Maybe invalid or irresolvable server address."))
 
 		event = self.host.service(SERVER_TIMEOUT)

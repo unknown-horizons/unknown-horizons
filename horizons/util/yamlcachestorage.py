@@ -23,7 +23,7 @@ import logging
 import os.path
 
 try:
-	import cPickle as pickle
+	import pickle as pickle
 except:
 	import pickle
 
@@ -84,7 +84,7 @@ class YamlCacheStorage(object):
 			obj._reload()
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
-			e = unicode(str(e), errors='replace')
+			e = str(str(e), errors='replace')
 			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
 				"warning is expected when upgrading from "
 				"old versions.\n".format(filename, e))
@@ -100,7 +100,7 @@ class YamlCacheStorage(object):
 		except Exception as e:
 			# Ignore all exceptions because saving the cache on disk is not critical.
 			self.log.warning("Warning: Unable to save cache into {0!s}: {1!s}".
-				format(self._filename, unicode(e)))
+				format(self._filename, str(e)))
 
 	def close(self):
 		"""Write the file to disk if possible and then invalidate the object in memory."""

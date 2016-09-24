@@ -30,7 +30,7 @@ class cmd_creategame(packet):
 	clientid      = None
 	playername    = None
 	playercolor   = None
-	gamename      = u"Unnamed Game"
+	gamename      = "Unnamed Game"
 	mapname       = None
 	maxplayers    = None
 	maphash       = ""
@@ -50,7 +50,7 @@ class cmd_creategame(packet):
 
 	@staticmethod
 	def validate(pkt, protocol):
-		if not isinstance(pkt.clientversion, unicode):
+		if not isinstance(pkt.clientversion, str):
 			raise NetworkException("Invalid datatype: clientversion")
 		if not pkt.clientversion:
 			raise SoftNetworkException("Invalid client version")
@@ -62,7 +62,7 @@ class cmd_creategame(packet):
 		if len(pkt.clientid) != 32:
 			raise SoftNetworkException("Invalid unique player ID")
 
-		if not isinstance(pkt.playername, unicode):
+		if not isinstance(pkt.playername, str):
 			raise NetworkException("Invalid datatype: playername")
 		if not pkt.playername:
 			raise SoftNetworkException("Your player name cannot be empty")
@@ -76,12 +76,12 @@ class cmd_creategame(packet):
 			if pkt.playercolor < 1:
 				raise SoftNetworkException("Your color is invalid")
 
-		if not isinstance(pkt.name, unicode):
+		if not isinstance(pkt.name, str):
 			raise NetworkException("Invalid datatype: name")
 		if not pkt.name:
-			pkt.name = u"Unnamed Game"
+			pkt.name = "Unnamed Game"
 
-		if not isinstance(pkt.mapname, unicode):
+		if not isinstance(pkt.mapname, str):
 			raise NetworkException("Invalid datatype: mapname")
 		if not pkt.mapname:
 			raise SoftNetworkException("You can't run a game with an empty mapname")
@@ -116,9 +116,9 @@ class cmd_listgames(packet):
 
 	@staticmethod
 	def validate(pkt, protocol):
-		if not isinstance(pkt.clientversion, (int, unicode)):
+		if not isinstance(pkt.clientversion, (int, str)):
 			raise NetworkException("Invalid datatype: clientversion")
-		if pkt.mapname is not None and not isinstance(pkt.mapname, unicode):
+		if pkt.mapname is not None and not isinstance(pkt.mapname, str):
 			raise NetworkException("Invalid datatype: mapname")
 		if pkt.maxplayers is not None and not isinstance(pkt.maxplayers, int):
 			raise NetworkException("Invalid datatype: maxplayers")
@@ -152,7 +152,7 @@ class cmd_joingame(packet):
 		if len(pkt.uuid) != 32:
 			raise SoftNetworkException("Invalid game UUID")
 
-		if not isinstance(pkt.clientversion, unicode):
+		if not isinstance(pkt.clientversion, str):
 			raise NetworkException("Invalid datatype: clientversion")
 		if not pkt.clientversion:
 			raise SoftNetworkException("Invalid client version")
@@ -164,7 +164,7 @@ class cmd_joingame(packet):
 		if len(pkt.clientid) != 32:
 			raise SoftNetworkException("Invalid unique player ID")
 
-		if not isinstance(pkt.playername, unicode):
+		if not isinstance(pkt.playername, str):
 			raise NetworkException("Invalid datatype: playername")
 		if not pkt.playername:
 			raise SoftNetworkException("Your player name cannot be empty")
@@ -204,7 +204,7 @@ class cmd_chatmsg(packet):
 
 	@staticmethod
 	def validate(pkt, protocol):
-		if not isinstance(pkt.chatmsg, unicode):
+		if not isinstance(pkt.chatmsg, str):
 			raise NetworkException("Invalid datatype: chatmsg")
 		if not pkt.chatmsg:
 			raise SoftNetworkException("Chat message cannot be empty")
@@ -221,7 +221,7 @@ class cmd_changename(packet):
 
 	@staticmethod
 	def validate(pkt, protocol):
-		if not isinstance(pkt.playername, unicode):
+		if not isinstance(pkt.playername, str):
 			raise NetworkException("Invalid datatype: playername")
 		if not pkt.playername:
 			raise SoftNetworkException("You must have a non empty name")

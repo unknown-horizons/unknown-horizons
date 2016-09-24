@@ -65,7 +65,7 @@ class TradeTab(TabInterface):
 
 	def init_widget(self):
 		events = {}
-		for k, v in self.exchange_size_buttons.iteritems():
+		for k, v in self.exchange_size_buttons.items():
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.partner = None

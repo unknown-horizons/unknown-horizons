@@ -156,9 +156,9 @@ class ColorOverlayComponent(Component):
 			return
 
 		self.current_overlays[z_order] = overlay_set
-		for rotation, frames in overlay_set.iteritems():
+		for rotation, frames in overlay_set.items():
 			ov_anim = fife.Animation.createAnimation()
-			for frame_img, frame_data in frames.iteritems():
+			for frame_img, frame_data in frames.items():
 				try:
 					frame_length = frame_data[0]
 				except TypeError:
@@ -182,7 +182,7 @@ class ColorOverlayComponent(Component):
 	def remove_overlay(self):
 		"""Removes color overlay recoloring the *color*-colored area from fife instance.
 		"""
-		for z_order, overlay_set in self.current_overlays.iteritems():
+		for z_order, overlay_set in self.current_overlays.items():
 			for rotation in overlay_set:
 				self.fife_instance.removeColorOverlay(self.identifier, rotation, z_order)
 

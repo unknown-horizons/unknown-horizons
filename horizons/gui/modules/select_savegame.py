@@ -101,7 +101,7 @@ class SelectSavegameDialog(Dialog):
 			def selected_changed():
 				"""Fills in the name of the savegame in the textbox when selected in the list"""
 				if self._gui.collectData('savegamelist') == -1: # set blank if nothing is selected
-					self._gui.findChild(name="savegamefile").text = u""
+					self._gui.findChild(name="savegamefile").text = ""
 				else:
 					savegamefile = self._map_file_display[self._gui.collectData('savegamelist')]
 					self._gui.distributeData({'savegamefile': savegamefile})
@@ -163,7 +163,7 @@ class SelectSavegameDialog(Dialog):
 				elif self._mode == 'editor-save':
 					message = _("A map with the name {name} already exists.")
 				message = message.format(name=selected_savegame)
-				message += u"\n" + _('Overwrite it?')
+				message += "\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.open_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
 					return self._windows.open(self)
@@ -228,19 +228,19 @@ class SelectSavegameDialog(Dialog):
 
 			# savegamedetails
 			details_label = gui.findChild(name="savegamedetails_lbl")
-			details_label.text = u""
+			details_label.text = ""
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
 				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
 				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
-			details_label.text += u'\n'
+			details_label.text += '\n'
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages
 			details_label.text += N_("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
-			details_label.text += u'\n'
+			details_label.text += '\n'
 
 			from horizons.constants import VERSION
 			try:
@@ -248,11 +248,11 @@ class SelectSavegameDialog(Dialog):
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
 					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
-						details_label.text += u" " + _("(probably incompatible)")
+						details_label.text += " " + _("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += u" " + _("Incompatible version")
+				details_label.text += " " + _("Incompatible version")
 
 			gui.adaptLayout()
 		return tmp_show_details

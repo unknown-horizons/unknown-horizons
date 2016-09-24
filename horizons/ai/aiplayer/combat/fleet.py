@@ -134,10 +134,10 @@ class Fleet(WorldObject):
 		return self
 
 	def get_ships(self):
-		return self._ships.keys()
+		return list(self._ships.keys())
 
 	def destroy(self):
-		for ship in self._ships.keys():
+		for ship in list(self._ships.keys()):
 			ship.remove_remove_listener(self._lost_ship)
 		if self.destroy_callback:
 			self.destroy_callback()
@@ -159,7 +159,7 @@ class Fleet(WorldObject):
 		Returns Counter about how many ships are in state idle, moving, reached.
 		"""
 		counter = defaultdict(int)
-		for value in self._ships.values():
+		for value in list(self._ships.values()):
 			counter[value] += 1
 		return counter
 
@@ -190,7 +190,7 @@ class Fleet(WorldObject):
 		"""
 		self.log.debug("Fleet %s reached the destination", self.worldid)
 		self.state = self.fleetStates.idle
-		for ship in self._ships.keys():
+		for ship in list(self._ships.keys()):
 			self._ships[ship] = self.shipStates.idle
 
 		if self.callback:
@@ -220,7 +220,7 @@ class Fleet(WorldObject):
 		if self.state != self.fleetStates.moving:
 			return
 
-		for ship in filter(lambda ship: self._ships[ship] == self.shipStates.blocked, self.get_ships()):
+		for ship in [ship for ship in self.get_ships() if self._ships[ship] == self.shipStates.blocked]:
 			self._move_ship(ship, self.destination, Callback(self._ship_reached, ship))
 
 	def move(self, destination, callback=None, ratio=1.0):
@@ -246,7 +246,7 @@ class Fleet(WorldObject):
 		self.callback = callback
 
 		# This is a good place to do something fancier later like preserving ship formation instead sailing to the same point
-		for ship in self._ships.keys():
+		for ship in list(self._ships.keys()):
 			self._move_ship(ship, destination, Callback(self._ship_reached, ship))
 
 	def size(self):
@@ -254,7 +254,7 @@ class Fleet(WorldObject):
 
 	def __str__(self):
 		if hasattr(self, '_ships'):
-			ships_str = "\n   " + "\n   ".join(["%s (fleet state:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship]) for ship in self._ships.keys()])
+			ships_str = "\n   " + "\n   ".join(["%s (fleet state:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship]) for ship in list(self._ships.keys())])
 		else:
 			ships_str = 'N/A'
 		return "Fleet: %s , state: %s, ships:%s" % (self.worldid, (self.state if hasattr(self, 'state') else 'unknown state'), ships_str)

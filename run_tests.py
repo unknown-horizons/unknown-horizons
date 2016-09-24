@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import gettext
 import sys
@@ -84,7 +84,7 @@ def setup_horizons():
 
 
 if __name__ == '__main__':
-	gettext.install('', unicode=True) # no translations here
+	gettext.install('', str=True) # no translations here
 
 	setup_horizons()
 

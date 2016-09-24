@@ -181,7 +181,7 @@ def test_tree_production(s, p):
 	n = 20
 
 	inv = tree.get_component(StorageComponent).inventory
-	for i in xrange(n):  # we want n units
+	for i in range(n):  # we want n units
 
 		while not inv[RES.TREES]:
 			s.run(seconds=5)

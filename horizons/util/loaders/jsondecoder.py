@@ -28,7 +28,7 @@ class JsonDecoder:
 		def _decode_list(lst):
 			newlist = []
 			for i in lst:
-				if isinstance(i, unicode):
+				if isinstance(i, str):
 					i = i.encode('utf-8')
 				elif isinstance(i, list):
 					i = _decode_list(i)
@@ -37,13 +37,13 @@ class JsonDecoder:
 
 		def _decode_dict(dct):
 			newdict = {}
-			for k, v in dct.iteritems():
-				if isinstance(k, unicode):
+			for k, v in dct.items():
+				if isinstance(k, str):
 					try:
 						k = int(k)
 					except ValueError:
 						k = k.encode('utf-8')
-				if isinstance(v, unicode):
+				if isinstance(v, str):
 					v = v.encode('utf-8')
 				elif isinstance(v, list):
 					v = _decode_list(v)

@@ -109,7 +109,7 @@ class TestTimer(TestCase):
 		self.callback.reset_mock()
 		self.timer.check_tick()
 		expected = [((self.TICK_START + 1,),), ((self.TICK_START + 2,),), ((self.TICK_START + 3,),)]
-		self.assertEquals(expected, self.callback.call_args_list)
+		self.assertEqual(expected, self.callback.call_args_list)
 
 	def test_paused_pump_then_no_ticks(self):
 		self.timer.check_tick()

@@ -84,7 +84,7 @@ class PrepareFoundationShip(ShipMission):
 		else:
 			max_amounts = {RES.BOARDS: personality.max_new_island_boards, RES.FOOD: personality.max_new_island_food, RES.TOOLS: personality.max_new_island_tools}
 
-		for resource_id, max_amount in max_amounts.iteritems():
+		for resource_id, max_amount in max_amounts.items():
 			self.move_resource(self.ship, self.settlement_manager.settlement, resource_id, self.ship.get_component(StorageComponent).inventory[resource_id] - max_amount)
 
 	def _reached_destination_area(self):

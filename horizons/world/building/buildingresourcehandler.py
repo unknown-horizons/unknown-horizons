@@ -61,10 +61,10 @@ class BuildingResourceHandler(ResourceHandler):
 	def is_valid_tradable_resource(self, resources):
 		""" Checks if the produced resource tradable (can be carried by collectors).
 		"""
-		if not resources or not resources.keys():
+		if not resources or not list(resources.keys()):
 			return False
 
-		return resources.keys()[0] in \
+		return list(resources.keys())[0] in \
 		       self.island.session.db.get_res(only_tradeable=True, only_inventory=True)
 
 	def _set_running_costs_to_status(self, caller, activate):

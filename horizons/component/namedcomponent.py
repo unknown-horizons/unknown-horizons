@@ -49,7 +49,7 @@ class NamedComponent(Component):
 			self.instance._changed()
 
 	def _possible_names(self):
-		return [u'object_%s' % self.instance.worldid]
+		return ['object_%s' % self.instance.worldid]
 
 	def get_default_name(self):
 		available_names = [name for name in self._possible_names() if name not in NamedComponent.names_used]
@@ -59,9 +59,9 @@ class NamedComponent(Component):
 		else:
 			newname = self.session.random.choice(self._possible_names())
 			index = 2
-			while u"{newname} {index}".format(newname=newname, index=index) in NamedComponent.names_used:
+			while "{newname} {index}".format(newname=newname, index=index) in NamedComponent.names_used:
 				index += 1
-			return u"{newname} {index}".format(newname=newname, index=index)
+			return "{newname} {index}".format(newname=newname, index=index)
 
 	def save(self, db):
 		super(NamedComponent, self).save(db)

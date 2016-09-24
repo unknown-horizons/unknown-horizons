@@ -36,7 +36,7 @@ class FPSDisplay(AutoResizeContainer):
 	def __init__(self):
 		super(FPSDisplay, self).__init__()
 
-		self._label = Label(text=u"- - -")
+		self._label = Label(text="- - -")
 		self.addChild(self._label)
 		self.stylize('menu')
 		self.position_technique = "left:bottom"
@@ -45,7 +45,7 @@ class FPSDisplay(AutoResizeContainer):
 
 	def _update(self):
 		fps = 1000 / self._timemanager.getAverageFrameTime()
-		self._label.text = u"FPS: %.1f" % fps
+		self._label.text = "FPS: %.1f" % fps
 		self.resizeToContent()
 		self.toggle()  # hide and show again to fix position (pychan...)
 		self.toggle()

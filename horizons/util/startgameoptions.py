@@ -85,7 +85,7 @@ class StartGameOptions(object):
 		cur_locale = horizons.globals.fife.get_locale()
 
 		# add AI players with a distinct color; if none can be found then use black
-		for num in xrange(self.ai_players):
+		for num in range(self.ai_players):
 			color = Color[COLORS.BLACK] # if none can be found then be black
 			for possible_color in Color:
 				if possible_color == Color[COLORS.BLACK]:

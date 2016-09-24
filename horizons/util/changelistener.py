@@ -24,6 +24,7 @@ import traceback
 
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethodlist import WeakMethodList
+import collections
 
 
 class ChangeListener(object):
@@ -86,7 +87,7 @@ class ChangeListener(object):
 
 	## Normal change listener
 	def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
-		assert callable(listener)
+		assert isinstance(listener, collections.Callable)
 		if not no_duplicates or listener not in self.__listeners:
 			self.__listeners.append(listener)
 		if call_listener_now: # also call if duplicate is added
@@ -114,7 +115,7 @@ class ChangeListener(object):
 	## Removal change listener
 	def add_remove_listener(self, listener, no_duplicates=False):
 		"""A listener that listens for removal of the object"""
-		assert callable(listener)
+		assert isinstance(listener, collections.Callable)
 		if no_duplicates and listener in self.__remove_listeners:
 			return # don't allow duplicate entries
 		self.__remove_listeners.append(listener)
@@ -164,7 +165,7 @@ def metaChangeListenerDecorator(event_name):
 		hard_remove_event = "__hard_remove"+event_name
 		# trivial changelistener operations
 		def add(self, listener):
-			assert callable(listener)
+			assert isinstance(listener, collections.Callable)
 			getattr(self, list_name).append(listener)
 
 		def rem(self, listener):

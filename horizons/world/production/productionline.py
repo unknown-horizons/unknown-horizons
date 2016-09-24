@@ -79,16 +79,16 @@ class ProductionLine(object):
 
 	def save(self, db, for_worldid):
 		# we don't have a worldid, we load it for another world id
-		for res, amount in self.production.iteritems():
+		for res, amount in self.production.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "NORMAL", res, amount)
-		for res, amount in self.consumed_res.iteritems():
+		for res, amount in self.consumed_res.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "CONSUMED", res, amount)
-		for res, amount in self.produced_res.iteritems():
+		for res, amount in self.produced_res.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "PRODUCED", res, amount)
-		for unit, amount in self.unit_production.iteritems():
+		for unit, amount in self.unit_production.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "UNIT", unit, amount)
 

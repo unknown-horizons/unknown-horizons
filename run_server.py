@@ -34,7 +34,7 @@ def fork():
 		pid = os.fork()
 		if pid > 0:
 			sys.exit(0)
-	except OSError, e:
+	except OSError as e:
 		sys.stderr.write("Unable to fork: (%d) %s\n" % (e.errno, e.strerror))
 		sys.exit(1)
 
@@ -46,7 +46,7 @@ def fork():
 		pid = os.fork( )
 		if pid > 0:
 			sys.exit(0)
-	except OSError, e:
+	except OSError as e:
 		sys.stderr.write("Unable to fork: (%d) %s\n" % (e.errno, e.strerror))
 		sys.exit(1)
 	return os.getpid()

@@ -60,10 +60,10 @@ class AbstractBuilding(object):
 
 	def __init_production_lines(self):
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
-		for key, value in production_lines.iteritems():
+		for key, value in production_lines.items():
 			production_line = ProductionLine(key, value)
 			assert len(production_line.produced_res) == 1
-			self.lines[production_line.produced_res.keys()[0]] = production_line
+			self.lines[list(production_line.produced_res.keys())[0]] = production_line
 
 	def _get_producer_building(self):
 		return Entities.buildings[self.id]
@@ -74,7 +74,7 @@ class AbstractBuilding(object):
 		if cls.__loaded:
 			return
 
-		for building_id, class_ref in cls._available_buildings.iteritems():
+		for building_id, class_ref in cls._available_buildings.items():
 			cls.buildings[building_id] = class_ref.load(db, building_id)
 		cls.__loaded = True
 
@@ -98,7 +98,7 @@ class AbstractBuilding(object):
 	def get_expected_building_cost(self):
 		"""Return a value representing the utility cost of building the building."""
 		total = 0
-		for resource_id, amount in Entities.buildings[self.id].costs.iteritems():
+		for resource_id, amount in Entities.buildings[self.id].costs.items():
 			total += self.resource_cost[resource_id] * amount
 		total += self.monthly_gold_cost * Entities.buildings[self.id].running_costs
 		return total

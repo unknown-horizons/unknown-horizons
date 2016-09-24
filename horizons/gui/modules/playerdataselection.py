@@ -44,8 +44,8 @@ class PlayerDataSelection(object):
 
 		# need the id to save it as int in settings file.
 		for color in (Color if color_palette is None else color_palette):
-			label = Label(name = u'{color}'.format(color=color.name),
-			              text = u"    ",
+			label = Label(name = '{color}'.format(color=color.name),
+			              text = "    ",
 			              max_size = (20, 20),
 			              min_size = (20, 20),
 			              background_color = color)
@@ -55,7 +55,7 @@ class PlayerDataSelection(object):
 
 		# split into three rows with at max 5 entries in each row
 		# right now there are 14 different colors to choose from.
-		for i in xrange(0, len(colorlabels), 5):
+		for i in range(0, len(colorlabels), 5):
 			hbox = HBox(name='line_{index}'.format(index=i))
 			hbox.addChildren(colorlabels[i:i+5])
 			self.colors.addChild(hbox)
@@ -86,7 +86,7 @@ class PlayerDataSelection(object):
 	def set_player_name(self, playername):
 		"""Updates the player name"""
 		self.gui.distributeData({
-			'playername': unicode(playername),
+			'playername': str(playername),
 			})
 
 	def get_player_name(self):

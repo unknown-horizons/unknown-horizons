@@ -141,7 +141,7 @@ class TestScheduler(TestCase):
 	def test_add_periodic_callback_called_every_tick_3_times(self):
 		self.scheduler.before_ticking()
 		self.scheduler.add_new_object(self.callback, None, run_in=1, loops=4)
-		for i in xrange(Scheduler.FIRST_TICK_ID, 4):
+		for i in range(Scheduler.FIRST_TICK_ID, 4):
 			self.scheduler.tick(i)
 			self.callback.assert_called_once_with()
 			self.callback.reset_mock()
@@ -154,7 +154,7 @@ class TestScheduler(TestCase):
 		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.scheduler.add_new_object(self.callback, None, run_in=1, loops=3, loop_interval=2)
 
-		for i in xrange(Scheduler.FIRST_TICK_ID+1, 7):
+		for i in range(Scheduler.FIRST_TICK_ID+1, 7):
 			self.scheduler.tick(i)
 			if (i % 2 - 1 == 0):
 				self.callback.assert_called_once_with()

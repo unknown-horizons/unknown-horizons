@@ -43,14 +43,14 @@ def create_random_island(map_db, island_id, id_string):
 	"""
 	match_obj = re.match(_random_island_id_regexp, id_string)
 	assert match_obj
-	creation_method, width, height, seed, island_x, island_y = [long(i) for i in match_obj.groups()]
+	creation_method, width, height, seed, island_x, island_y = [int(i) for i in match_obj.groups()]
 	assert creation_method == 2, 'The only supported island creation method is 2.'
 
 	rand = random.Random(seed)
 	map_set = set()
 
 	# place this number of shapes
-	for i in xrange(15 + width * height // 45):
+	for i in range(15 + width * height // 45):
 		# place shape determined by shape_id on (x, y)
 		add = True
 		shape_id = rand.randint(2, 8)
@@ -132,7 +132,7 @@ def create_random_island(map_db, island_id, id_string):
 					# (x2, y2) is now a point just off the island
 
 					neighbors_dirs = 0
-					for i in xrange(len(neighbors)):
+					for i in range(len(neighbors)):
 						x3 = x2 + neighbors[i][0]
 						y3 = y2 + neighbors[i][1]
 						if (x3, y3) not in map_set:
@@ -207,7 +207,7 @@ def create_random_island(map_db, island_id, id_string):
 		"""
 		result = set()
 		for x, y in map_set:
-			for offset_x, offset_y in all_moves.itervalues():
+			for offset_x, offset_y in all_moves.values():
 				coords = (x + offset_x, y + offset_y)
 				if coords not in map_set:
 					result.add(coords)
@@ -425,7 +425,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 		if estimated_land + size > max_land_amount:
 			continue
 
-		for _ in xrange(13):
+		for _ in range(13):
 			x = rand.randint(0, map_size - width)
 			y = rand.randint(0, map_size - height)
 
@@ -476,25 +476,25 @@ def generate_random_seed(seed):
 	if rand.randint(0, 1) == 0:
 		# generate a random string of 1-5 letters a-z with a dash if there are 4 or more letters
 		seq = ''
-		for i in xrange(rand.randint(1, 5)):
+		for i in range(rand.randint(1, 5)):
 			seq += chr(97 + rand.randint(0, 25))
 		if len(seq) > 3:
 			split = rand.randint(2, len(seq) - 2)
 			seq = seq[:split] + '-' + seq[split:]
-		return unicode(seq)
+		return str(seq)
 	else:
 		# generate a numeric seed
 		fields = rand.randint(1, 3)
 		if fields == 1:
 			# generate a five digit integer
-			return unicode(rand.randint(10000, 99999))
+			return str(rand.randint(10000, 99999))
 		else:
 			# generate a sequence of 2 or 3 dash separated fields of integers 10-9999
 			parts = []
-			for i in xrange(fields):
+			for i in range(fields):
 				power = rand.randint(1, 3)
 				parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
-			return unicode('-'.join(parts))
+			return str('-'.join(parts))
 
 def generate_map_from_seed(seed):
 	"""

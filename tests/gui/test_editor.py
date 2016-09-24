@@ -65,7 +65,7 @@ def test_save_map(gui):
 	with gui.handler(func1):
 		gui.trigger('menu/button_images/savegameButton')
 
-	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, u"test_map.sqlite"))
+	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, "test_map.sqlite"))
 
 
 @editor_test

@@ -93,7 +93,7 @@ class Path(ComponentHolder):
 		path_nodes = self.island.path_nodes
 
 		# Order is important here.
-		ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.iteritems())
+		ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.items())
 		for action_part, (xoff, yoff) in ordered_actions:
 			tile = self.island.get_tile(origin.offset(xoff, yoff))
 			if tile is None or tile.object is None:

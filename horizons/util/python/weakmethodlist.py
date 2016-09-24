@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.util.python.weakmethod import WeakMethod
+import collections
 
 
 class WeakMethodList(list):
@@ -36,7 +37,7 @@ class WeakMethodList(list):
 		"""Just like list.append, except it can also handle lists and discards None-values"""
 		if callback is None:
 			pass
-		elif callable(callback):
+		elif isinstance(callback, collections.Callable):
 			list.append(self, WeakMethod(callback))
 		elif isinstance(callback, list, tuple):
 			for i in callback:

@@ -39,16 +39,16 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 
 	def __init_production_lines(self):
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
-		for key, value in production_lines.iteritems():
+		for key, value in production_lines.items():
 			production_line = ProductionLine(key, value)
 			production_line.id = None
 			production_line.production = {}
 			production_line.produced_res = {}
-			for resource_id, amount in production_line.consumed_res.iteritems():
+			for resource_id, amount in production_line.consumed_res.items():
 				production_line.production[resource_id] = -amount
 				production_line.produced_res[resource_id] = -amount
 			production_line.consumed_res = {}
-			self.lines[production_line.produced_res.keys()[0]] = production_line
+			self.lines[list(production_line.produced_res.keys())[0]] = production_line
 
 	def _get_producer_building(self):
 		return Entities.buildings[self.get_higher_level_building_id()]

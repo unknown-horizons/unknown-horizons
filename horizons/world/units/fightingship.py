@@ -35,7 +35,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 	def __init__(self, x, y, **kwargs):
 		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
 		# add default weapons
-		for i in xrange(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
+		for i in range(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):

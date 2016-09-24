@@ -205,7 +205,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		randint = self.session.random.randint
 		# pick a sample, try tries times
 		tries = range_squared // 2
-		for i in xrange(tries):
+		for i in range(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
 			x_diff = randint(1, in_range) # always go at least 1 field
 			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
