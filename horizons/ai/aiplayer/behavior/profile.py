@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorDebug  # pylint: disable=W0611
 from horizons.ai.aiplayer.behavior.behaviorcomponents import (
 	BehaviorAggressive, BehaviorAggressivePirate, BehaviorDoNothing, BehaviorEvil, BehaviorGood,
-	BehaviorNeutral, BehaviorRegular, BehaviorRegularPirate, BehaviorSmart, import)
+	BehaviorNeutral, BehaviorRegular, BehaviorRegularPirate, BehaviorSmart)
 from horizons.ai.aiplayer.strategy.condition import ConditionDebug  # pylint: disable=W0611
 from horizons.ai.aiplayer.strategy.condition import (
 	ConditionAllied, ConditionHostile, ConditionNeutral, ConditionPirateRoutinePossible,
