@@ -233,7 +233,7 @@ class SelectSavegameDialog(Dialog):
 				details_label.text += _("Unknown savedate")
 			else:
 				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
-				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
+				details_label.text += _("Saved at {time}").format(time=savetime)
 			details_label.text += '\n'
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages

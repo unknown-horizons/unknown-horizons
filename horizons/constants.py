@@ -103,7 +103,7 @@ class UNITS:
 	FRIGATE              = 1000020
 
 	DISASTER_RECOVERY_COLLECTOR = 1000022
-	
+
 	SWORDSMAN            = 1000023
 
 	# players will be spawned with an instance of this
@@ -177,10 +177,10 @@ class BUILDINGS:
 
 	WEAPONSMITH      = 66
 	CANNONFOUNDRY    = 67
-	
+
 	BREWERY          = 68
 	HOP_FIELD        = 69
-	
+
 	STONE_DEPOSIT    = 70
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
@@ -510,7 +510,7 @@ class LAYERS:
 if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
 	# running GUI tests.
-	_user_dir = str(os.environ['UH_USER_DIR'], encoding='utf-8')
+	_user_dir = os.environ['UH_USER_DIR']
 elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:

@@ -56,10 +56,10 @@ class WorldEditor(object):
 			RemoveUnit(ship).execute(self.session)
 
 	def _center_view(self):
-		min_x = min(zip(*list(self.world.full_map.keys()))[0])
-		max_x = max(zip(*list(self.world.full_map.keys()))[0])
-		min_y = min(zip(*list(self.world.full_map.keys()))[1])
-		max_y = max(zip(*list(self.world.full_map.keys()))[1])
+		min_x = min(list(zip(*list(self.world.full_map.keys())))[0])
+		max_x = max(list(zip(*list(self.world.full_map.keys())))[0])
+		min_y = min(list(zip(*list(self.world.full_map.keys())))[1])
+		max_y = max(list(zip(*list(self.world.full_map.keys())))[1])
 		self.session.view.center((min_x + max_x) // 2, (min_y + max_y) // 2)
 
 	def _iter_islands(self):

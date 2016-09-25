@@ -148,7 +148,7 @@ class SelectionTool(NavigationTool):
 		if not selected:
 			return
 		if len(selected) == 1:
-			iter(selected).next().get_component(SelectableComponent).show_menu()
+			next(iter(selected)).get_component(SelectableComponent).show_menu()
 		else:
 			self.session.ingame_gui.show_multi_select_tab(selected)
 

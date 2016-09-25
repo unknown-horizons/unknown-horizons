@@ -261,7 +261,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				# use a debugger (he passed -s at the cmdline). In that case, we will
 				# redirect stdout/stderr from the gui-test process to the testrunner
 				# process.
-				sys.stdout.fileno()
+				#sys.stdout.fileno()
 				stdout = sys.stdout
 				stderr = sys.stderr
 				nose_captured = False

@@ -104,11 +104,7 @@ class SavegameManager(object):
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			timestamp = time.localtime(savegameinfo['timestamp'])
-			try:
-				return time.strftime('%c', timestamp).decode('utf-8')
-			except UnicodeDecodeError:
-				# With non-utf8 system locales this would crash (#2221).
-				return ""
+			return time.strftime('%c', timestamp)
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
@@ -279,7 +275,7 @@ class SavegameManager(object):
 			windows.show_all()
 			horizons.globals.fife.engine.pump()
 
-		screenshot_data = os.fdopen(screenshot_fd, "r").read()
+		screenshot_data = os.fdopen(screenshot_fd, "rb").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
 		os.unlink(screenshot_filename)
 

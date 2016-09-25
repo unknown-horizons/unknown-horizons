@@ -107,6 +107,7 @@ class Production(ChangeListener):
 		elif self._state == PRODUCTION.STATES.producing:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 		# use a number > 0 for ticks
+		remaining_ticks = remaining_ticks or 0
 		if remaining_ticks < 1:
 			remaining_ticks = 1
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \

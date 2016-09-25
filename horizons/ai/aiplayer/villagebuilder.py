@@ -168,7 +168,7 @@ class VillageBuilder(AreaBuilder):
 		"""
 
 		self.plan = {}
-		ys = set(zip(*list(self.land_manager.village.keys()))[1])
+		ys = set(list(zip(*list(self.land_manager.village.keys())))[1])
 		set([y for (_, y) in self.land_manager.village])
 		for road_x in vertical_roads:
 			for road_y in ys:
@@ -680,7 +680,7 @@ class VillageBuilder(AreaBuilder):
 				if object is None or object.id != BUILDINGS.RESIDENTIAL or removal_location == coords:
 					queue.append((seq_no, coords))
 		if queue:
-			self.tent_queue = deque(zip(*sorted(queue))[1])
+			self.tent_queue = deque(list(zip(*sorted(queue)))[1])
 		else:
 			self.tent_queue = deque()
 

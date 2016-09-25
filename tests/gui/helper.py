@@ -271,7 +271,7 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 				gui_helper.run()
 
-			match.select = types.MethodType(select, match, match.__class__)
+			match.select = types.MethodType(select, match)
 		elif isinstance(match, pychan.widgets.TextField):
 			def write(self, text):
 				"""Change text inside a textfield."""
@@ -283,8 +283,8 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 				gui_helper.run()
 
-			match.write = types.MethodType(write, match, match.__class__)
-			match.enter = types.MethodType(enter, match, match.__class__)
+			match.write = types.MethodType(write, match)
+			match.enter = types.MethodType(enter, match)
 		elif isinstance(match, pychan.widgets.Slider):
 			def slide(self, value):
 				"""Set the slider to this value and trigger callbacks."""
@@ -296,7 +296,7 @@ class GuiHelper(object):
 					gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
 					gui_helper.run()
 
-			match.slide = types.MethodType(slide, match, match.__class__)
+			match.slide = types.MethodType(slide, match)
 
 		return match
 
