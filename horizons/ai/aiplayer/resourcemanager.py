@@ -304,7 +304,7 @@ class ResourceManager(WorldObject):
 
 		# discard the less important buy/sell wishes
 		buy_sell_list = sorted(buy_sell_list)[:num_slots]
-		bought_sold_resources = zip(*buy_sell_list)[1]
+		bought_sold_resources = list(zip(*buy_sell_list))[1]
 
 		# clear all slots we will no longer be needing
 		for resource_id in managed_resources:

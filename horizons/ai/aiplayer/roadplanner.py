@@ -77,7 +77,7 @@ class RoadPlanner(object):
 		# perform A*
 		while heap:
 			(_, distance_so_far, key) = heapq.heappop(heap)
-			if distance[key] < distance_so_far:
+			if distance[key][0] < distance_so_far:
 				continue
 			if (key[0], key[1]) in destination:
 				final_key = key

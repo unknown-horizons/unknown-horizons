@@ -367,18 +367,18 @@ class Session(LivingObject):
 		for instance in [inst for inst in self.selected_instances]:
 			if instance.is_building:
 				if instance.tearable and instance.owner is self.world.player:
-					self.log.debug('Attempting to remove building %s', inst)
+					self.log.debug('Attempting to remove building %s', instance)
 					Tear(instance).execute(self)
 					self.selected_instances.discard(instance)
 				else:
-					self.log.debug('Unable to remove building %s', inst)
+					self.log.debug('Unable to remove building %s', instance)
 			elif instance.is_unit:
 				if instance.owner is self.world.player:
-					self.log.debug('Attempting to remove unit %s', inst)
+					self.log.debug('Attempting to remove unit %s', instance)
 					RemoveUnit(instance).execute(self)
 					self.selected_instances.discard(instance)
 				else:
-					self.log.debug('Unable to remove unit %s', inst)
+					self.log.debug('Unable to remove unit %s', instance)
 			else:
 				self.log.error('Unable to remove unknown object %s', instance)
 

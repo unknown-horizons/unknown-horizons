@@ -176,7 +176,7 @@ class VillageBuilder(AreaBuilder):
 				if self.land_manager.coords_usable(coords):
 					self.plan[coords] = (BUILDING_PURPOSE.ROAD, (0, None))
 
-		xs = set(zip(*list(self.land_manager.village.keys()))[0])
+		xs = set(list(zip(*list(self.land_manager.village.keys())))[0])
 		for road_y in horizontal_roads:
 			for road_x in xs:
 				coords = (road_x, road_y)
@@ -536,7 +536,7 @@ class VillageBuilder(AreaBuilder):
 					best_pos = replaced_pos
 
 			in_range = 0
-			positions = zip(*get_centroid_distance_pairs(planned_tents, set([best_pos])))[1]
+			positions = list(zip(*get_centroid_distance_pairs(planned_tents, set([best_pos]))))[1]
 			for position in positions:
 				if in_range < capacity and distance_rect_rect_sq(best_pos, position) <= tent_range_sq:
 					planned_tents.remove(position)
@@ -665,7 +665,7 @@ class VillageBuilder(AreaBuilder):
 		# form the sorted tent queue
 		result = defaultdict(lambda: None)
 		if block_distances:
-			for block in zip(*sorted(block_distances))[1]:
+			for block in list(zip(*sorted(block_distances)))[1]:
 				for coords in sorted(block):
 					result[coords] = len(self.tent_queue)
 					self.tent_queue.append(coords)

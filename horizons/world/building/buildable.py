@@ -312,8 +312,8 @@ class BuildableSingle(Buildable):
 		# only build 1 building at endpoint
 		# correct placement for large buildings (mouse should be at center of building)
 		point2 = point2.copy() # only change copy
-		point2.x -= (cls.size[0] - 1) / 2
-		point2.y -= (cls.size[1] - 1) / 2
+		point2.x -= (cls.size[0] - 1) // 2
+		point2.y -= (cls.size[1] - 1) // 2
 		return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
 
 class BuildableSingleEverywhere(BuildableSingle):
