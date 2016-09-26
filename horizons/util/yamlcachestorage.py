@@ -61,7 +61,7 @@ class YamlCacheStorage(object):
 		"""Load the cache from disk if possible. Create an empty cache otherwise."""
 		if os.path.exists(self._filename):
 			self.log.debug('%s._reload(): loading cache from disk', self)
-			with open(self._filename) as f:
+			with open(self._filename, 'rb') as f:
 				data = pickle.load(f)
 			if not self._validate(data):
 				raise RuntimeError('Bad YamlCacheStorage data format')
