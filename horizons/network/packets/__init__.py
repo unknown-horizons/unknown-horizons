@@ -22,11 +22,7 @@
 import pickle
 import inspect
 import sys
-
-try:
-	from io import StringIO
-except ImportError:
-	from io import StringIO
+from io import BytesIO
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -100,10 +96,11 @@ class SafeUnpickler(object):
 
 	@classmethod
 	def loads(cls, str):
-		file = StringIO(str)
-		obj = pickle.Unpickler(file)
-		obj.find_global = cls.find_class
-		return obj.load()
+		class CustomUnpickler(pickle.Unpickler):
+			find_global = cls.find_class
+
+		file = BytesIO(str)
+		return CustomUnpickler(file).load()
 
 #-------------------------------------------------------------------------------
 
