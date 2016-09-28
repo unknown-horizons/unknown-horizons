@@ -56,7 +56,7 @@ class IngameGui(LivingObject):
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy
+		self.logbook = Dummy()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
