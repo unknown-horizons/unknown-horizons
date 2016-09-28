@@ -3,30 +3,11 @@ sudo: required
 dist: trusty
 python:
   - "3.4"
-# command to install dependencies
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb [trusted=yes] http://joker.someserver.de/uh/trusty /'
-before_install:
-  - "sudo apt-get update"
-  - "export DISPLAY=:99.0"
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-  #- "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
 install:
-  - "sudo apt-get install python-fife"
-  - "cp -a /usr/lib/python2.7/dist-packages/fife/ $VIRTUAL_ENV/lib/python2.7/site-packages/"
-  - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/python2.7/site-packages/fife/*.so"
   - "pip install -r requirements.txt"
   - "pip install coverage coveralls"
 script: 
-  - python -c 'from fife import fife; print fife.getVersion()'
   - isort -c -rc horizons tests run_*.py
   - COVERAGE_FILE=.coverage.nongui python run_tests.py --with-xunit --verbose --nologcapture --with-coverage
-  - RUNCOV=1 python run_tests.py -a gui tests/gui --nologcapture
   - coverage combine
   - coveralls
-notifications:
-  irc: "irc.freenode.org#unknown-horizons"
-  email: false
