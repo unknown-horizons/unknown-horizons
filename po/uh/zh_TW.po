@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-09-08 14:35+0000\n"
+"PO-Revision-Date: 2016-09-28 13:54+0000\n"
 "Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) "
 "<https://hosted.weblate.org/projects/uh/uh/zh_TW/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.9-dev\n"
 
 #: run_uh.py:124
 #, fuzzy
@@ -955,23 +955,27 @@ msgstr "狀態"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
+#, fuzzy
 msgid "Aggressive"
-msgstr ""
+msgstr "主攻態"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
+#, fuzzy
 msgid "Hold ground"
-msgstr ""
+msgstr "堅守態"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
+#, fuzzy
 msgid "Passive"
-msgstr ""
+msgstr "被動態"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
+#, fuzzy
 msgid "Flee"
-msgstr ""
+msgstr "逃跑態"
 
 #: content/gui/xml/mainmenu/credits.xml:676
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -979,116 +983,124 @@ msgstr ""
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr ""
+msgstr "返回主頁面"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "選擇地圖大小："
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr ""
+msgstr "選擇地圖："
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "選擇已儲存遊戲的地圖："
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "選擇地圖來源"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "創建新地圖"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "載入已有地圖"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "載入已儲存遊戲的地圖"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "開啟編輯器"
 
 #: content/gui/xml/mainmenu/help.xml:14
 msgid "Return"
-msgstr ""
+msgstr "返回"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 msgid "Actions"
-msgstr ""
+msgstr "動作"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
+#, fuzzy
 msgid "Scroll left"
-msgstr ""
+msgstr "向左滾動"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
+#, fuzzy
 msgid "Scroll right"
-msgstr ""
+msgstr "向右滾動"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
+#, fuzzy
 msgid "Scroll up"
-msgstr ""
+msgstr "向上滾動"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
+#, fuzzy
 msgid "Scroll down"
-msgstr ""
+msgstr "向下滾動"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "把建築物或地圖順時針旋轉"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "把建築物或地圖逆時針旋轉"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr ""
+msgstr "增加遊戲速度"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr ""
+msgstr "減少遊戲速度"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr ""
+msgstr "暫停遊戲"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
+#, fuzzy
 msgid "Show build menu"
-msgstr ""
+msgstr "顯示建設畫面"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
+#, fuzzy
 msgid "Enable destruct mode"
-msgstr ""
+msgstr "開啟拆除模式"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
+#, fuzzy
 msgid "Enable road building mode"
-msgstr ""
+msgstr "開啟道路建設模式"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "開啟滴管模式(複製建築物)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show player scores"
-msgstr ""
+msgstr "顯示玩家分數"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Show settlement list"
-msgstr ""
+msgstr "顯示殖民地清單"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:27
 msgid "Show ship list"
-msgstr ""
+msgstr "顯示船隻清單"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
+#, fuzzy
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "切換船長記錄"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Quicksave"
