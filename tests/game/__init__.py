@@ -89,7 +89,7 @@ class SPTestSession(SPSession):
 
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
-		ExtScheduler.create_instance(Dummy)
+		ExtScheduler.create_instance(mock.Mock())
 		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
@@ -179,7 +179,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 			'difficulty': human_difficulty,
 		})
 
-	for i in xrange(ai_players):
+	for i in range(ai_players):
 		id = i + human_player + 1
 		players.append({
 			'id': id,

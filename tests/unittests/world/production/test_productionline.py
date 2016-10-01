@@ -37,7 +37,7 @@ class TestBase(TestCase):
 			self.db.execute_many(
 				'INSERT INTO unit_production (production_line, unit, amount) \
 				 VALUES (?, ?, ?)',
-				[(ident, unit, amount) for (unit, amount) in units.items()]
+				[(ident, unit, amount) for (unit, amount) in list(units.items())]
 			)
 
 

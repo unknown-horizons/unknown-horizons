@@ -113,7 +113,7 @@ class TearingTool(NavigationTool):
 			title = _("Destroy all buildings")
 			msg = _("This will destroy all the buildings that fall outside of"
 		            " the settlement range.")
-			msg += u"\n\n"
+			msg += "\n\n"
 			msg += N_("%s additional building will be destroyed.",
 		              "%s additional buildings will be destroyed",
 		              buildings_to_destroy) % buildings_to_destroy
@@ -148,8 +148,8 @@ class TearingTool(NavigationTool):
 			self.oldedges = edges
 		if edges is not None:
 			self._hovering_over = WeakList()
-			for x in xrange(edges[0][0], edges[1][0] + 1):
-				for y in xrange(edges[0][1], edges[1][1] + 1):
+			for x in range(edges[0][0], edges[1][0] + 1):
+				for y in range(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
 					if b is not None:
 						if b not in self._hovering_over:

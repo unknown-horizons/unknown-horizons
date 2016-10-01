@@ -88,7 +88,7 @@ class StorageComponent(Component):
 
 	@classmethod
 	def get_instance(cls, arguments):
-		key, value = arguments.iteritems().next()
+		key, value = next(iter(arguments.items()))
 		storage = cls.storage_mapping[key]
 		inventory = storage(**value)
 		return cls(inventory=inventory)

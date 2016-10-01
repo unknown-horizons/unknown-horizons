@@ -46,5 +46,5 @@ class StepSlider(Slider):
 		if value != self.__last_step_value:
 			self.__last_step_value = value
 			self.value = value # has be overwritten before this has been called
-			for callback in self.__callbacks_by_group.itervalues():
+			for callback in self.__callbacks_by_group.values():
 				callback()

@@ -30,7 +30,7 @@ USER_DIR = None
 
 def setup():
 	global USER_DIR
-	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ')
+	USER_DIR = tempfile.mkdtemp(suffix='H߀ｒìｚｏԉｓ')
 
 
 def teardown():

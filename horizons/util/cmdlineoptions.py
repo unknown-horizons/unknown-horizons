@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import datetime
 import optparse
@@ -178,7 +178,7 @@ trade and diplomacy.
 	def format_heading(self, text):
 		"""Format an option group.."""
 		if self.level == 0:
-			return u''
+			return ''
 		return r'''.TP
 \fB%s\fR
 ''' % self._markup(text.upper())

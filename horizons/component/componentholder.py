@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 from horizons.component import Component
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -110,7 +110,7 @@ class ComponentHolder(object):
 		if hasattr(self, 'component_templates'):
 			for entry in self.component_templates:
 				if isinstance(entry, dict):
-					for key, value in entry.iteritems():
+					for key, value in entry.items():
 						# TODO: try to pass read-only data to get_instance, since it's usually
 						# cached and changes would apply to all instances
 						# dict views of python2.7 could be a start.
@@ -124,7 +124,7 @@ class ComponentHolder(object):
 		return tmp_comp
 
 	def remove(self):
-		for component in self.components.values():
+		for component in list(self.components.values()):
 			component.remove()
 		super(ComponentHolder, self).remove()
 
@@ -138,7 +138,7 @@ class ComponentHolder(object):
 
 	def save(self, db):
 		super(ComponentHolder, self).save(db)
-		for component in self.components.itervalues():
+		for component in self.components.values():
 			component.save(db)
 
 	def add_component(self, component):
@@ -179,7 +179,7 @@ class ComponentHolder(object):
 		"""Returns the component template data given a component NAME"""
 		for entry in cls.component_templates:
 			if isinstance(entry, dict):
-				for key, value in entry.iteritems():
+				for key, value in entry.items():
 					if cls.class_mapping[key] == component or key == component:
 						return value
 		raise KeyError("This class does not contain a component with name: {0}".format(component))

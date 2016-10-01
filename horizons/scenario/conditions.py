@@ -25,7 +25,7 @@ from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
 
 
-class CONDITIONS(object):
+class CONDITIONS(object, metaclass=Registry):
 	"""
 	Class that holds all available conditions.
 
@@ -37,7 +37,6 @@ class CONDITIONS(object):
 	  1. possible condition change is notified somewhere in the game code
 	  2. condition is checked periodically
 	"""
-	__metaclass__ = Registry
 
 	check_periodically = []
 

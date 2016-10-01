@@ -75,9 +75,9 @@ class InventoryOverlayComponent(Component):
 			# parameter True: also convert color overlays attached to base frame(s) into animation
 			self.fife_instance.convertToOverlays(self.identifier, True)
 
-		for rotation, frames in overlay_set.iteritems():
+		for rotation, frames in overlay_set.items():
 			ov_anim = fife.Animation.createAnimation()
-			for frame_img, frame_data in frames.iteritems():
+			for frame_img, frame_data in frames.items():
 				try:
 					frame_length = frame_data[0]
 				except TypeError:
@@ -106,7 +106,7 @@ class InventoryOverlayComponent(Component):
 		Because it did not tell us which resources were added or removed, we
 		need to check everything in the inventory for possible updates.
 		"""
-		for res_id, new_amount in message.inventory.iteritems():
+		for res_id, new_amount in message.inventory.items():
 			self.update_overlay(res_id, new_amount)
 
 
@@ -178,7 +178,7 @@ class InventoryOverlayComponent(Component):
 		"""
 		InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
 
-		for (res_id, overlay) in self.current_overlays.iteritems():
+		for (res_id, overlay) in self.current_overlays.items():
 			if overlay is not None:
 				self.remove_overlay(res_id)
 

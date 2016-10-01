@@ -57,9 +57,8 @@ class ClientData(object):
 			self.id = client_id.hex
 
 
-class NetworkInterface(object):
+class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 	"""Interface for low level networking"""
-	__metaclass__ = ManualConstructionSingleton
 
 	log = logging.getLogger("network")
 
@@ -234,7 +233,7 @@ class NetworkInterface(object):
 				except CommandError as e:
 					self.log.debug("NetworkInterface: failed to join")
 					if 'name' in e.message:
-						self.change_name(self._client_data.name + unicode(i), save=False )
+						self.change_name(self._client_data.name + str(i), save=False )
 					elif 'color' in e.message:
 						self.change_color(self._client_data.color + i, save=False)
 					else:
@@ -379,7 +378,7 @@ class NetworkInterface(object):
 			while self._connection.ping(): # ping receives packets
 				pass
 		except NetworkException as e:
-			self.log.debug("ping in receive_all failed: "+unicode(e))
+			self.log.debug("ping in receive_all failed: "+str(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import logging
 import operator
@@ -134,8 +134,8 @@ class Collector(Unit):
 		if current_callback is not None:
 			calls = Scheduler().get_classinst_calls(self, current_callback)
 			assert len(calls) == 1, 'Collector should have callback %s scheduled, but has %s' % \
-			        (current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
-			remaining_ticks = max(calls.values()[0], 1) # save a number > 0
+			        (current_callback, [ str(i) for i in list(Scheduler().get_classinst_calls(self).keys()) ])
+			remaining_ticks = max(list(calls.values())[0], 1) # save a number > 0
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)",
 		   self.worldid, self.state.index, remaining_ticks, self.start_hidden)
@@ -563,7 +563,7 @@ class JobList(list):
 		self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
 
 	def __str__(self):
-		return unicode([ unicode(i) for i in self ])
+		return str([ str(i) for i in self ])
 
 
 decorators.bind_all(Collector)

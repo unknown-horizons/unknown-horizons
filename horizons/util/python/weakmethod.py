@@ -21,15 +21,16 @@
 
 import types
 import weakref
+import collections
 
 
 class WeakMethod(object):
 	def __init__(self, function):
-		assert callable(function)
+		assert isinstance(function, collections.Callable)
 
-		if isinstance(function, types.MethodType) and function.im_self is not None:
-			self.function = function.im_func
-			self.instance = weakref.ref(function.im_self)
+		if isinstance(function, types.MethodType) and function.__self__ is not None:
+			self.function = function.__func__
+			self.instance = weakref.ref(function.__self__)
 		else:
 			self.function = function
 			self.instance = None
@@ -52,7 +53,7 @@ class WeakMethod(object):
 				return other.instance is None
 			else:
 				return self.instance() == other.instance()
-		elif callable(other):
+		elif isinstance(other, collections.Callable):
 			return self == WeakMethod(other)
 		else:
 			return False

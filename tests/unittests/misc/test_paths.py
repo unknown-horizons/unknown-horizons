@@ -31,7 +31,7 @@ from run_uh import create_user_dirs
 
 
 class TestPaths(TestCase):
-	odd_characters = u"u\xfc\xdf\xfau"
+	odd_characters = "u\xfc\xdf\xfau"
 
 	def test_normal(self):
 
@@ -41,8 +41,8 @@ class TestPaths(TestCase):
 		"""Make paths have special characters and check some basic operations"""
 
 		outer = tempfile.mkdtemp( self.__class__.odd_characters )
-		inner = unicode(os.path.join(outer, self.__class__.odd_characters))
-		inner2 = unicode(os.path.join(outer, self.__class__.odd_characters+u"2"))
+		inner = str(os.path.join(outer, self.__class__.odd_characters))
+		inner2 = str(os.path.join(outer, self.__class__.odd_characters+"2"))
 
 		PATHS.USER_DIR = inner
 

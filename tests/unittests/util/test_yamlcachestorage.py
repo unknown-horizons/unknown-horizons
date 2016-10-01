@@ -19,24 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import subprocess
-import sys
-import time
+import os
+import tempfile
+import unittest
+
+from horizons.util.yamlcachestorage import YamlCacheStorage
 
 
-def test_run_server():
-	"""Test if the multiplayer server can be started.
+class YamlCacheStorageTest(unittest.TestCase):
 
-	Runs the server for 2 seconds and checks if anything was printed on stderr.
-	"""
-	proc = subprocess.Popen([sys.executable, "server.py", "-h", "127.0.0.1"],
-	                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	def setUp(self):
+		super().setUp()
+		self.tmp_file = tempfile.NamedTemporaryFile(delete=False)
 
-	time.sleep(2)
-	proc.terminate()
+	def tearDown(self):
+		os.unlink(self.tmp_file.name)
+		super().tearDown()
 
-	# By default logging prints to stderr, which makes it difficult to detect
-	# errors. This solution isn't great, but works for now.
-	stderr = proc.stderr.read()
-	if stderr and b'Traceback' in stderr:
-		raise Exception("\n\n" + stderr)
+	def test_save_and_reopen(self):
+		cache = YamlCacheStorage(self.tmp_file.name)
+		cache['foo'] = 'bar'
+		cache.sync()
+
+		new_cache = YamlCacheStorage.open(self.tmp_file.name)
+		self.assertEqual(new_cache['foo'], 'bar')

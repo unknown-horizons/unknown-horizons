@@ -25,10 +25,9 @@ from collections import defaultdict
 from horizons.util.python.singleton import Singleton
 
 
-class MessageBus(object):
+class MessageBus(object, metaclass=Singleton):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
-	__metaclass__ = Singleton
 
 	log = logging.getLogger("messaging.messagebus")
 
@@ -83,10 +82,10 @@ class MessageBus(object):
 	def reset(self):
 		"""Reset to initial state. Drops all subscriptions"""
 		# there shouldn't be anything left now, warn if there is
-		for messagetype, cb_list in self.global_receivers.iteritems():
+		for messagetype, cb_list in self.global_receivers.items():
 			if cb_list:
 				self.log.debug("MessageBus: leftover global receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype))
-		for messagetype, cb_list in self.local_receivers.iteritems():
+		for messagetype, cb_list in self.local_receivers.items():
 			if cb_list:
 				self.log.debug("MessageBus: leftover local receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype))
 

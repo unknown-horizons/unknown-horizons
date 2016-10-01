@@ -57,8 +57,8 @@ class TestGenericStorage(TestCase):
 
 	def test_limit(self):
 		s = GenericStorage()
-		self.assertEqual(s.get_limit(), sys.maxint)
-		self.assertEqual(s.get_limit(1), sys.maxint)
+		self.assertEqual(s.get_limit(), sys.maxsize)
+		self.assertEqual(s.get_limit(1), sys.maxsize)
 
 	def test_sum_of_stored_resources(self):
 		s = GenericStorage()

@@ -41,7 +41,7 @@ class TestMessageBus(unittest.TestCase):
 	def assert_called_once_with(self, cb, message_type, **arguments):
 		assert cb.call_count == 1
 		msg = cb.call_args[0][0]
-		for name, value in arguments.items():
+		for name, value in list(arguments.items()):
 			assert getattr(msg, name) == value
 
 	def test_global_subscribe(self):

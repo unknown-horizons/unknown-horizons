@@ -63,7 +63,7 @@ class ProductionChain(object):
 			for production_line, abstract_building in resource_producer[resource_id]:
 				possible = True
 				sources = []
-				for consumed_resource, amount in production_line.consumed_res.iteritems():
+				for consumed_resource, amount in production_line.consumed_res.items():
 					next_production_ratio = abs(production_ratio * amount / production_line.produced_res[resource_id])
 					subtree = self._get_chain(consumed_resource, resource_producer, next_production_ratio)
 					if not subtree:
@@ -80,8 +80,8 @@ class ProductionChain(object):
 	def create(cls, settlement_manager, resource_id):
 		"""Create a production chain that can produce the given resource."""
 		resource_producer = {}
-		for abstract_building in AbstractBuilding.buildings.itervalues():
-			for resource, production_line in abstract_building.lines.iteritems():
+		for abstract_building in AbstractBuilding.buildings.values():
+			for resource, production_line in abstract_building.lines.items():
 				if resource not in resource_producer:
 					resource_producer[resource] = []
 				resource_producer[resource].append((production_line, abstract_building))
@@ -184,7 +184,7 @@ class ProductionChainSubtreeChoice(object):
 			self.log.debug('%s: no possible options', self)
 			return BUILD_RESULT.IMPOSSIBLE
 		else:
-			for option in zip(*sorted(expected_costs))[2]:
+			for option in list(zip(*sorted(expected_costs)))[2]:
 				result = option.build(amount) # TODO: this amount should not include the part provided by the other options
 				if result != BUILD_RESULT.IMPOSSIBLE:
 					return result

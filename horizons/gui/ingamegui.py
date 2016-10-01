@@ -361,8 +361,8 @@ class IngameGui(LivingObject):
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"{0!s}".format(a.name)
-			player2 = u"{0!s}".format(b.name)
+			player1 = "{0!s}".format(a.name)
+			player2 = "{0!s}".format(b.name)
 
 			data = {'player1' : player1, 'player2' : player2}
 
@@ -419,16 +419,16 @@ class IngameGui(LivingObject):
 		self._display_speed(message.new)
 
 	def _display_speed(self, tps):
-		text = u''
+		text = ''
 		up_icon = self.mainhud.findChild(name='speedUp')
 		down_icon = self.mainhud.findChild(name='speedDown')
 		if tps == 0: # pause
-			text = u'0x'
+			text = '0x'
 			up_icon.set_inactive()
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = u"{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = "{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -466,8 +466,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			message = _(u"Are you sure you want to delete these objects?")
-			if self.windows.open_popup(_(u"Delete"), message, show_cancel_button=True):
+			message = _("Are you sure you want to delete these objects?")
+			if self.windows.open_popup(_("Delete"), message, show_cancel_button=True):
 				self.session.remove_selected()
 			else:
 				self.deselect_all()
@@ -529,7 +529,7 @@ class IngameGui(LivingObject):
 		elif action == _Actions.SHOW_SELECTED:
 			if self.session.selected_instances:
 				# Scroll to first one, we can never guarantee to display all selected units.
-				instance = iter(self.session.selected_instances).next()
+				instance = next(iter(self.session.selected_instances))
 				self.session.view.center( * instance.position.center.to_tuple())
 				for instance in self.session.selected_instances:
 					if hasattr(instance, "path") and instance.owner.is_local_player:
@@ -677,7 +677,7 @@ class IngameGui(LivingObject):
 			'gameMenuButton': 'ESCAPE',
 			'logbook': 'LOGBOOK',
 		}
-		for (widgetname, action) in hotkey_replacements.iteritems():
+		for (widgetname, action) in hotkey_replacements.items():
 			widget = self.mainhud.findChild(name=widgetname)
 			keys = horizons.globals.fife.get_keys_for_action(action)
 			# No `.upper()` here: "Pause" looks better than "PAUSE".

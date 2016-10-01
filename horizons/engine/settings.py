@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
@@ -77,7 +77,7 @@ class Settings(object):
 	def get_module_settings(self, module):
 		self._module_settings[module] = self._settings_serializer.getAllSettings(module)
 		self._module_settings_template[module] = self._settings_template_serializer.getAllSettings(module)
-		for name, value in self._module_settings_template[module].iteritems():
+		for name, value in self._module_settings_template[module].items():
 			if name not in self._module_settings[module]:
 				self._module_settings[module][name] = value
 		return self._module_settings[module]

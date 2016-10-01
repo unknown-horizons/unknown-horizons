@@ -158,7 +158,7 @@ class ResourceOverviewBar(object):
 				self._custom_default_resources = config
 
 	def save(self, db):
-		for obj, config in self.resource_configurations.iteritems():
+		for obj, config in self.resource_configurations.items():
 			for position, res in enumerate(config):
 				db("INSERT INTO resource_overview_bar(object, position, resource) VALUES(?, ?, ?)",
 				   obj.worldid, position, res)
@@ -280,10 +280,10 @@ class ResourceOverviewBar(object):
 		# remove old one before, avoids duplicates
 		self._drop_cost_labels()
 
-		for res, amount in build_costs.iteritems():
+		for res, amount in build_costs.items():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = Label(text=u"-"+unicode(amount))
+			cost_label = Label(text="-"+str(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
 			if res in res_list:
@@ -349,7 +349,7 @@ class ResourceOverviewBar(object):
 		# set gold amount
 		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
-		gold_available_lbl.text = unicode(gold)
+		gold_available_lbl.text = str(gold)
 		# reposition according to magic formula passed down from the elders in order to support centering
 		gold_available_lbl.resizeToContent() # this sets new size values
 		gold_available_lbl.position = (42 - (gold_available_lbl.size[0] // 2), 51)
@@ -360,7 +360,7 @@ class ResourceOverviewBar(object):
 		"""Updates balance info below gold icon"""
 		balance = self.session.world.player.get_balance_estimation()
 		balance_lbl = self.gold_gui.child_finder("balance")
-		balance_lbl.text = u"{balance:+}".format(balance=balance)
+		balance_lbl.text = "{balance:+}".format(balance=balance)
 		balance_lbl.resizeToContent()
 		# 38
 		balance_lbl.position = (70 - balance_lbl.size[0],  74) # see _update_gold
@@ -378,7 +378,7 @@ class ResourceOverviewBar(object):
 
 			# set amount
 			label = cur_gui.findChild(name="res_available")
-			label.text = unicode( inv[res] )
+			label.text = str( inv[res] )
 
 			# reposition according to magic formula passed down from the elders in order to support centering
 			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
@@ -590,7 +590,7 @@ class ResourceOverviewBar(object):
 		]
 		for (i, numbers) in enumerate(figures):
 			label = self.stats_gui.child_finder("resbar_stats_entry_%s" % i)
-			label.text = u"%+d" % numbers
+			label.text = "%+d" % numbers
 
 	def _hide_stats(self):
 		"""Inverse of show_stats"""

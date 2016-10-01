@@ -33,7 +33,7 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 		super(Tower, self).__init__(*args, **kwargs)
 		# apply cannons already paid for
 		for weapon_type in self.__class__.POSSIBLE_WEAPONS:
-			for i in xrange(self.costs.get(weapon_type, 0)):
+			for i in range(self.costs.get(weapon_type, 0)):
 				self.add_weapon_to_storage(weapon_type)
 
 	def fire_all_weapons(self, dest, rotate=True):

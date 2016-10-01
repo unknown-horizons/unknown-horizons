@@ -35,8 +35,8 @@ dotted path to the test (along with other options), similar to this code:
 	def minimap(gui):
 		menu = gui.find(name='mainmenu')
 """
-from __future__ import print_function
 
+import io
 import os
 import shutil
 import subprocess
@@ -265,7 +265,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				stdout = sys.stdout
 				stderr = sys.stderr
 				nose_captured = False
-			except AttributeError:
+			except io.UnsupportedOperation:
 				# if nose captures stdout, we can't redirect to sys.stdout, as that was
 				# replaced by StringIO. Instead we capture it and return the data at the
 				# end.
@@ -278,7 +278,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
 			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
-			if isinstance(env['UH_USER_DIR'], unicode):
+			if isinstance(env['UH_USER_DIR'], str):
 				env['UH_USER_DIR'] = env['UH_USER_DIR'].encode('utf-8')
 
 			# Start game
@@ -299,9 +299,10 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				if nose_captured:
 					if stdout:
 						print(stdout)
-					if not 'Traceback' in stderr:
+					stderr = stderr.decode('ascii', 'ignore')
+					if 'Traceback' not in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
-					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))
+					raise TestFailed('\n\n' + stderr)
 				else:
 					raise TestFailed()
 

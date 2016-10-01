@@ -61,7 +61,7 @@ class ProductionOverview(StatsWidget, Window):
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 
-		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+		data = sorted(list(self.settlement.produced_res.items()), key=itemgetter(1), reverse=True)
 		for resource_id, amount in data:
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
@@ -81,7 +81,7 @@ class ProductionOverview(StatsWidget, Window):
 		label.min_size = (100, 20)
 
 		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)
-		amount_label.text = unicode(amount)
+		amount_label.text = str(amount)
 
 		hbox = widgets.HBox()
 		hbox.addChild(icon)

@@ -102,8 +102,8 @@ class ResourceHandler(ResourceTransferHandler):
 			productions = copy(prod_comp._productions)
 			if include_inactive:
 				productions.update(prod_comp._inactive_productions)
-			for production in productions.itervalues():
-				needed_res.update(production.get_consumed_resources().iterkeys())
+			for production in productions.values():
+				needed_res.update(iter(production.get_consumed_resources().keys()))
 		return list(needed_res)
 
 	def get_produced_resources(self):
@@ -111,8 +111,8 @@ class ResourceHandler(ResourceTransferHandler):
 		produced_resources = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			for production in prod_comp._productions.itervalues():
-				produced_resources.update(production.get_produced_resources().iterkeys())
+			for production in prod_comp._productions.values():
+				produced_resources.update(iter(production.get_produced_resources().keys()))
 		return list(produced_resources)
 
 	def get_stocked_provided_resources(self):
@@ -124,9 +124,9 @@ class ResourceHandler(ResourceTransferHandler):
 		consumed_res = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			for production in prod_comp._productions.itervalues():
+			for production in prod_comp._productions.values():
 				if production.get_state() == PRODUCTION.STATES.producing:
-					consumed_res.update(production.get_consumed_resources().iterkeys())
+					consumed_res.update(iter(production.get_consumed_resources().keys()))
 		return list(consumed_res)
 
 	def get_currently_not_consumed_resources(self):

@@ -36,14 +36,14 @@ class _CopyDocFromParentClass(type):
     """
 
 	def __init__(cls, name, bases, dict):
-		for name, method in dict.iteritems():
+		for name, method in dict.items():
 			try:
 				if not method.__doc__:
 					method.__doc__ = getattr(bases[0], name).__doc__
 			except AttributeError:
 				pass
 
-class WeakList(list):
+class WeakList(list, metaclass=_CopyDocFromParentClass):
 	"""
     A Weak_list can store objects but without keeping them
     alive with references couting incrementation.
@@ -74,10 +74,6 @@ class WeakList(list):
     0
 
     """
-
-	# This copy all the list's doctstring into this class's method
-	# So even if the class look undocumented, it is ! (use pydoc)
-	__metaclass__ = _CopyDocFromParentClass
 
 
 	## Basic custom

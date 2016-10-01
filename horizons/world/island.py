@@ -151,10 +151,10 @@ class Island(BuildingOwner, WorldObject):
 		self.num_trees = 0
 
 		# define the rectangle with the smallest area that contains every island tile its position
-		min_x = min(zip(*self.ground_map.keys())[0])
-		max_x = max(zip(*self.ground_map.keys())[0])
-		min_y = min(zip(*self.ground_map.keys())[1])
-		max_y = max(zip(*self.ground_map.keys())[1])
+		min_x = min(list(zip(*list(self.ground_map.keys())))[0])
+		max_x = max(list(zip(*list(self.ground_map.keys())))[0])
+		min_y = min(list(zip(*list(self.ground_map.keys())))[1])
+		max_y = max(list(zip(*list(self.ground_map.keys())))[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
@@ -180,7 +180,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""
-		return self.ground_map.keys()
+		return list(self.ground_map.keys())
 
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
@@ -418,7 +418,7 @@ class Island(BuildingOwner, WorldObject):
 				pass
 
 	def __iter__(self):
-		return self.ground_map.iterkeys()
+		return iter(self.ground_map.keys())
 
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""

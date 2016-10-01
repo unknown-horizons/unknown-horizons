@@ -27,7 +27,7 @@ The functions below are used to start different kinds of games.
 TUTORIAL:
 Continue to horizons.session for further ingame digging.
 """
-from __future__ import print_function
+
 
 import json
 import logging
@@ -36,7 +36,7 @@ import os.path
 import sys
 import threading
 import traceback
-from thread import error as ThreadError  # raised by threading.Lock.release
+from _thread import error as ThreadError  # raised by threading.Lock.release
 
 from fife import fife as fife_module
 
@@ -141,11 +141,11 @@ def start(_command_line_arguments):
 
 		# show info label about atlas generation
 		try:
-			import Tkinter
+			import tkinter
 			from PIL import Image, ImageTk
 			import time
 			try:
-				window = Tkinter.Tk()
+				window = tkinter.Tk()
 				# iconify window instead of closing
 				window.protocol("WM_DELETE_WINDOW", window.iconify)
 				window.wm_withdraw()
@@ -156,9 +156,9 @@ def start(_command_line_arguments):
 				logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
 				res_logo = logo.resize((116, 99), Image.ANTIALIAS)
 				res_logo_image = ImageTk.PhotoImage(res_logo)
-				logo_label = Tkinter.Label(window, image=res_logo_image)
+				logo_label = tkinter.Label(window, image=res_logo_image)
 				logo_label.pack(side="left")
-				label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
+				label = tkinter.Label(window, padx = 10, text = "Generating atlases!")
 				label.pack(side="right")
 
 				# wait a second to give the thread time to check if a generation is necessary at all
@@ -170,7 +170,7 @@ def start(_command_line_arguments):
 						window.update()
 					time.sleep(0.1)
 				window.destroy()
-			except Tkinter.TclError:
+			except tkinter.TclError:
 				# catch #2298
 				atlas_loading_thread.join()
 		except ImportError:
@@ -395,7 +395,7 @@ def start_singleplayer(options):
 				print("Additionally to failing when loading, cleanup afterwards also failed")
 		_modules.gui.show_main()
 		headline = _("Failed to start/load the game")
-		descr = _("The game you selected could not be started.") + u" " + \
+		descr = _("The game you selected could not be started.") + " " + \
 		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.open_error_popup(headline, descr)
 		_modules.gui.load_game()
@@ -490,7 +490,7 @@ def _find_matching_map(name_or_path, savegames):
 		if name.startswith(name_or_path): # check for partial match
 			if map_file is not None:
 				# multiple matches, collect all for output
-				map_file += u'\n' + filename
+				map_file += '\n' + filename
 			else:
 				map_file = filename
 	if map_file is not None:
@@ -505,7 +505,7 @@ def _find_matching_map(name_or_path, savegames):
 		if os.path.exists(name_or_path):
 			return name_or_path
 		else:
-			print(u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
+			print("Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
 			return
 
 def _load_last_quicksave(session=None, force_player_id=None):

@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import gettext
 import sys
@@ -48,19 +48,22 @@ def mock_fife():
 	Using a custom import hook, we catch all imports of fife and provide a
 	dummy module.
 	"""
-	class Importer(object):
+	from importlib.abc import MetaPathFinder, Loader
+	from importlib.machinery import PathFinder, ModuleSpec
 
-		def find_module(self, fullname, path=None):
+	class Finder(PathFinder):
+		@classmethod
+		def find_spec(cls, fullname, path, target=None):
 			if fullname.startswith('fife'):
-				return self
+				return ModuleSpec(fullname, DummyLoader())
+			return PathFinder.find_spec(fullname, path, target)
 
-			return None
+	class DummyLoader(Loader):
+		def load_module(self, module):
+			sys.modules.setdefault(module, Dummy())
 
-		def load_module(self, name):
-			mod = sys.modules.setdefault(name, Dummy())
-			return mod
+	sys.meta_path = [Finder]
 
-	sys.meta_path = [Importer()]
 
 def setup_horizons():
 	"""
@@ -84,7 +87,7 @@ def setup_horizons():
 
 
 if __name__ == '__main__':
-	gettext.install('', unicode=True) # no translations here
+	gettext.install('') # no translations here
 
 	setup_horizons()
 

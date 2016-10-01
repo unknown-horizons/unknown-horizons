@@ -138,11 +138,11 @@ class ConcreteObject(WorldObject):
 		"""
 		# usually we do not need any magic because there only is one set:
 		if len(weighted_dict) == 1:
-			return weighted_dict.keys()[0]
+			return list(weighted_dict.keys())[0]
 		weights = sum(ACTION_SETS.DEFAULT_WEIGHT if w is None else w
-		              for i, w in weighted_dict.iteritems())
+		              for i, w in weighted_dict.items())
 		rnd = random.random() * weights
-		for action_set, weight in weighted_dict.iteritems():
+		for action_set, weight in weighted_dict.items():
 			rnd -= ACTION_SETS.DEFAULT_WEIGHT if weight is None else weight
 			if rnd < 0:
 				return action_set
@@ -161,15 +161,15 @@ class ConcreteObject(WorldObject):
 				action_set = cls.weighted_choice(action_sets[level])
 			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
-			for possible_level in reversed(xrange(level+1)):
-				if possible_level in action_sets.iterkeys():
+			for possible_level in reversed(range(level+1)):
+				if possible_level in iter(action_sets.keys()):
 					action_set = cls.weighted_choice(action_sets[possible_level])
 					break
 			if action_set is None: # didn't find a suitable one
 				# fall back to one from a higher level.
 				# this does not happen in valid games, but can happen in tests, when level
 				# constraints are ignored.
-				action_set, weight = action_sets.values()[0].items()[0]
+				action_set, weight = list(list(action_sets.values())[0].items())[0]
 
 		return action_set
 

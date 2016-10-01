@@ -211,7 +211,7 @@ class RouteConfig(Window):
 		slider = slot.findChild(name="slider")
 		amount_lbl = slot.findChild(name="amount")
 		amount = int(slider.value)
-		amount_lbl.text = u'{amount}t'.format(amount=amount)
+		amount_lbl.text = '{amount}t'.format(amount=amount)
 		if slot.action == "unload":
 			amount = -amount
 		self._route_cmd("add_to_resource_list", position, res_id, amount)
@@ -254,12 +254,12 @@ class RouteConfig(Window):
 			amount = value
 
 		if res_id != 0:
-			slot.findChild(name="amount").text = unicode(amount) + "t"
+			slot.findChild(name="amount").text = str(amount) + "t"
 			slot.adaptLayout()
 			self._route_cmd("add_to_resource_list", position, res_id, value)
 			slider.capture(Callback(self.slider_adjust, slot, res_id, entry))
 		else:
-			slot.findChild(name="amount").text = u""
+			slot.findChild(name="amount").text = ""
 
 	def handle_resource_click(self, widget, event):
 		if event.getButton() == fife.MouseEvent.LEFT:

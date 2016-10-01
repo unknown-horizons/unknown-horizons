@@ -348,7 +348,7 @@ def test_ticket_2117(gui):
 
 	# Change language (to anything not system default)
 	gui.trigger('settings_window/game_settings_right')
-	gui.find('uni_language').select(u'English')
+	gui.find('uni_language').select('English')
 	gui.trigger('settings_window/okButton')
 
 

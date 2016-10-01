@@ -367,18 +367,18 @@ class Session(LivingObject):
 		for instance in [inst for inst in self.selected_instances]:
 			if instance.is_building:
 				if instance.tearable and instance.owner is self.world.player:
-					self.log.debug('Attempting to remove building %s', inst)
+					self.log.debug('Attempting to remove building %s', instance)
 					Tear(instance).execute(self)
 					self.selected_instances.discard(instance)
 				else:
-					self.log.debug('Unable to remove building %s', inst)
+					self.log.debug('Unable to remove building %s', instance)
 			elif instance.is_unit:
 				if instance.owner is self.world.player:
-					self.log.debug('Attempting to remove unit %s', inst)
+					self.log.debug('Attempting to remove unit %s', instance)
 					RemoveUnit(instance).execute(self)
 					self.selected_instances.discard(instance)
 				else:
-					self.log.debug('Unable to remove unit %s', inst)
+					self.log.debug('Unable to remove unit %s', instance)
 			else:
 				self.log.error('Unable to remove unknown object %s', instance)
 
@@ -397,7 +397,7 @@ class Session(LivingObject):
 			headline = _("Failed to create savegame file")
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
+			self.ingame_gui.open_error_popup(headline, descr, advice, str(e))
 			# retry with new savegamename entered by the user
 			# (this must not happen with quicksave/autosave)
 			return self.save()

@@ -34,9 +34,8 @@ from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
 
 
-class ACTIONS(object):
+class ACTIONS(object, metaclass=Registry):
 	"""Class that holds all available action functions."""
-	__metaclass__ = Registry
 
 	@classmethod
 	def register_function(cls, func, name=None):
@@ -89,7 +88,7 @@ def do_win(session):
 	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
 	continue_playing = session.ingame_gui.open_popup(_("You have won!"),
-	                                                 _("You have completed this scenario.") + u" " +
+	                                                 _("You have completed this scenario.") + " " +
 	                                                 _("Do you want to continue playing?"),
 	                                                 show_cancel_button=True)
 	if not continue_playing:

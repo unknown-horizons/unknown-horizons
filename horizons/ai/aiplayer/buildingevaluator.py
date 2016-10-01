@@ -198,7 +198,7 @@ class BuildingEvaluator(object):
 
 		best_index = 0
 		best_value = evaluators[0].value
-		for i in xrange(1, len(evaluators)):
+		for i in range(1, len(evaluators)):
 			if evaluators[i].value > best_value:
 				best_index = i
 				best_value = evaluators[i].value

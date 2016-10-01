@@ -1,4 +1,5 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 
 # ###################################################
 # Copyright (C) 2008-2016 The Unknown Horizons Team
@@ -29,7 +30,7 @@ a pointer to the next step. Have fun :-)
 This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
-from __future__ import print_function
+
 
 import functools
 import gettext
@@ -56,11 +57,11 @@ def exit_with_error(title, message):
 	print(message)
 
 	try:
-		import Tkinter
-		import tkMessageBox
-		window = Tkinter.Tk()
+		import tkinter
+		import tkinter.messagebox
+		window = tkinter.Tk()
 		window.wm_withdraw()
-		tkMessageBox.showerror(title, message)
+		tkinter.messagebox.showerror(title, message)
 	except ImportError:
 		# tkinter may be missing
 		pass
@@ -72,7 +73,7 @@ def check_python_version():
 		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
 
-check_python_version()
+#check_python_version()
 
 
 def log():
@@ -92,16 +93,16 @@ def get_content_dir_parent_path():
 
 	options = []
 	# Try the directory this file is in. This should work in most cases.
-	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
+	options.append(os.path.dirname(os.path.realpath(str(__file__))))
 	# Try path for Mac Os X app container (Unknown Horizons.app).
 	# Unknown Horizons.app/Contents/Resources/contents
 	options.append(os.path.join(os.getcwd()))
 	# Try often-used paths on Linux.
 	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
-		options.append(os.path.join(path, u'unknown-horizons'))
+		options.append(os.path.join(path, 'unknown-horizons'))
 
 	for path in options:
-		content_path = os.path.join(path, u'content')
+		content_path = os.path.join(path, 'content')
 		if os.path.exists(content_path):
 			return path
 	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
@@ -261,7 +262,7 @@ def setup_debugging(options):
 		# a director exception, but no real error message then.
 		class StdOutDuplicator(object):
 			def write(self, line):
-				line = unicode(line)
+				line = str(line)
 				sys.__stdout__.write(line)
 				logfile.write(line.encode('UTF-8'))
 			def flush(self):
@@ -361,7 +362,7 @@ def init_environment(use_fife):
 
 	Use in any program that requires access to FIFE and UH modules."""
 	# install dummy translation
-	gettext.install('', unicode=True)
+	gettext.install('')
 	if use_fife:
 		setup_fife()
 

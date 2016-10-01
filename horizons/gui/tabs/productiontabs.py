@@ -174,7 +174,7 @@ class ProductionOverviewTab(OverviewTab):
 			mid_arrow.position = (x, 17 + y)
 			parent_container.insertChild(mid_arrow, 0)
 
-		for res in xrange(amount // 2):
+		for res in range(amount // 2):
 			# --\                      <= placed for res = 1
 			# --\| <= place connector  <= placed for res = 0
 			# ---O-->                  <= placed above (mid_arrow)
@@ -217,13 +217,13 @@ class ProductionOverviewTab(OverviewTab):
 				parent_container.insertChild(up_connector, 0)
 
 	def _set_resource_amounts(self, container, production):
-		for res, amount in production.get_consumed_resources().iteritems():
+		for res, amount in production.get_consumed_resources().items():
 			# consumed resources are negative!
-			label = Label(text=unicode(-amount), margins=(0, 16))
+			label = Label(text=str(-amount), margins=(0, 16))
 			container.findChild(name='input_box').addChild(label)
 
-		for res, amount in production.get_produced_resources().iteritems():
-			label = Label(text=unicode(amount).rjust(2), margins=(0, 16))
+		for res, amount in production.get_produced_resources().items():
+			label = Label(text=str(amount).rjust(2), margins=(0, 16))
 			container.findChild(name='output_box').addChild(label)
 
 	def destruct_building(self):
@@ -234,7 +234,7 @@ class ProductionOverviewTab(OverviewTab):
 		utilization = 0
 		if self.instance.has_component(Producer):
 			utilization = int(round(self.instance.get_component(Producer).capacity_utilization * 100))
-		self.widget.child_finder('capacity_utilization').text = unicode(utilization) + u'%'
+		self.widget.child_finder('capacity_utilization').text = str(utilization) + '%'
 
 	def _add_resource_icons(self, container, resources, marker=False):
 		calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
@@ -330,6 +330,6 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 		                       for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
 		productions = set([p for p in all_farm_productions
-		                     for res in p.get_consumed_resources().keys()
+		                     for res in list(p.get_consumed_resources().keys())
 		                   if res in possible_res])
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

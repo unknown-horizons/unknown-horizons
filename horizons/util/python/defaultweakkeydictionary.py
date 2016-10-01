@@ -45,6 +45,6 @@ class DefaultWeakKeyDictionary(WeakKeyDictionary):
 		self.default_function = default_function
 
 	def __getitem__(self, item):
-		if item not in self.items():
+		if item not in list(self.items()):
 			return self.default_function(item)
 		return WeakKeyDictionary.__getitem__(self, item)

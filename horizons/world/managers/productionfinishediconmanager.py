@@ -80,7 +80,7 @@ class ProductionFinishedIconManager(object):
 		assert isinstance(message, ResourceProduced)
 
 		# if we get an empty dictionary, abort
-		if (not message.produced_resources or not message.produced_resources.keys()) or \
+		if (not message.produced_resources or not list(message.produced_resources.keys())) or \
 			not message.caller.instance.owner.is_local_player:
 			return
 
@@ -91,7 +91,7 @@ class ProductionFinishedIconManager(object):
 			interval = (cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
 
 		display_latency = 1
-		for resource_item in message.produced_resources.items():
+		for resource_item in list(message.produced_resources.items()):
 			res = resource_item[0] # TODO multiple resources
 			amount = message.sender.get_component(StorageComponent).inventory[res]
 

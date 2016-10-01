@@ -23,9 +23,19 @@ SOFTWARE.
 # http://code.activestate.com/recipes/576447-dummy-object/
 # with some modifications
 
-class Dummy(object):
+class Dummy:
 	def __getattr__(self, attr):
 		try:
+			if attr == 'IKeyListener':
+				class A(Dummy): pass
+				return A
+			elif attr == 'ICommandListener':
+				class A(Dummy): pass
+				return A
+			elif attr == 'VBox' or  attr == 'HBox':
+				class A(Dummy):
+					ATTRIBUTES = Dummy()
+				return A
 			return super(self.__class__, self).__getattr__(attr)
 		except AttributeError:
 			if attr in ('__base__', '__bases__', '__basicsize__', '__cmp__',
@@ -36,7 +46,7 @@ class Dummy(object):
 				raise
 			else:
 				return self
-	def next(self):
+	def __next__(self):
 		raise StopIteration
 	def __repr__(self):
 		return 'Dummy()'
@@ -52,6 +62,8 @@ class Dummy(object):
 		return self
 	def __trunc__(self):
 		return 0
+	def __ge__(self, other):
+		return 0
 	__sub__ = __div__ = __mul__ = __floordiv__ = __mod__ = __and__ = __or__ = \
 	__xor__ = __rsub__ = __rdiv__ = __rmul__ = __rfloordiv__ = __rmod__ = \
 	__rand__ = __rxor__ = __ror__ = __radd__ = __pow__ = __rpow__ = \
@@ -59,5 +71,3 @@ class Dummy(object):
 	__rtruediv__ = __add__ = __getitem__ = __neg__ = __pos__ = __abs__ = \
 	__invert__ = __setattr__ = __delattr__ = __delitem__ = __setitem__ = \
 	__iter__ = __call__
-
-Dummy = Dummy()

@@ -220,7 +220,7 @@ class Dialog(Window):
 		This is done by entering a new mainloop in the engine until the dialog
 		is closed (see `abort`).
 		"""
-		for name, retval in self.return_events.items():
+		for name, retval in list(self.return_events.items()):
 			cb = Callback(self._abort, retval)
 			self._gui.findChild(name=name).capture(cb)
 
@@ -403,10 +403,10 @@ class WindowManager(object):
 		Guide for writing good error messages:
 		http://www.useit.com/alertbox/20010624.html
 		"""
-		msg = u""
-		msg += description + u"\n"
+		msg = ""
+		msg += description + "\n"
 		if advice:
-			msg += advice + u"\n"
+			msg += advice + "\n"
 		if details:
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:

@@ -27,8 +27,7 @@ from horizons.util.python.registry import Registry
 class RegistryTest(unittest.TestCase):
 
 	def test_simple(self):
-		class Example(object):
-			__metaclass__ = Registry
+		class Example(object, metaclass=Registry):
 			@classmethod
 			def register_function(cls, func):
 				cls.registry[func.__name__] = func
@@ -43,8 +42,7 @@ class RegistryTest(unittest.TestCase):
 
 	def test_with_arguments(self):
 		"""Test arguments in the register decorator."""
-		class Example(object):
-			__metaclass__ = Registry
+		class Example(object, metaclass=Registry):
 			@classmethod
 			def register_function(cls, func, name):
 				cls.registry[name] = func

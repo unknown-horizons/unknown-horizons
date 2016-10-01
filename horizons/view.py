@@ -51,7 +51,7 @@ class View(ChangeListener):
 		using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
 
 		self.layers = []
-		for layer_id in xrange(LAYERS.NUM):
+		for layer_id in range(LAYERS.NUM):
 			layer = self.map.createLayer(str(layer_id), cellgrid)
 			if layer_id == LAYERS.OBJECTS:
 				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)

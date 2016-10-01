@@ -128,7 +128,7 @@ def add_resource_deposits(world, resource_multiplier):
 	def get_valid_locations(usable_part, island, width, height):
 		"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
 		locations = []
-		offsets = list(itertools.product(xrange(width), xrange(height)))
+		offsets = list(itertools.product(range(width), range(height)))
 		for x, y in sorted(usable_part):
 			min_value = None
 			for dx, dy in offsets:
@@ -150,12 +150,12 @@ def add_resource_deposits(world, resource_multiplier):
 
 		total_sum = [0]
 		last_sum = 0
-		for value in zip(*locations)[0]:
+		for value in next(zip(*locations)):
 			last_sum += value
 			total_sum.append(last_sum)
 
-		for _unused1 in xrange(max_objects):
-			for _unused2 in xrange(7): # try to place the object 7 times
+		for _unused1 in range(max_objects):
+			for _unused2 in range(7): # try to place the object 7 times
 				object_sum = world.session.random.random() * last_sum
 				pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 				x, y = locations[pos][1]
@@ -169,7 +169,7 @@ def add_resource_deposits(world, resource_multiplier):
 		# mark island tiles that are next to the sea
 		queue = deque()
 		distance = {}
-		for (x, y), tile in island.ground_map.iteritems():
+		for (x, y), tile in island.ground_map.items():
 			if len(tile.classes) == 1: # could be a shallow to deep water tile
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
@@ -192,7 +192,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		# calculate tiles' values
 		usable_part = {}
-		for coords, dist in distance.iteritems():
+		for coords, dist in distance.items():
 			if coords in island.ground_map and 'constructible' in island.ground_map[coords].classes:
 				usable_part[coords] = (dist + 5) ** 2
 
@@ -246,13 +246,13 @@ def add_nature_objects(world, natural_resource_multiplier):
 	add_resource_deposits(world, natural_resource_multiplier)
 	Tree = Entities.buildings[BUILDINGS.TREE]
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
-	fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
+	fish_directions = [(i, j) for i in range(-1, 2) for j in range(-1, 2)]
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
 	# add trees, wild animals, and fish
 	for island in world.islands:
-		for (x, y), tile in sorted(island.ground_map.iteritems()):
+		for (x, y), tile in sorted(island.ground_map.items()):
 			# add trees based on adjacent trees
 			for (dx, dy) in fish_directions:
 				position = Point(x+dx, y+dy)

@@ -58,19 +58,19 @@ class PlayersSettlements(StatsWidget):
 
 	def _add_generic_line_to_gui(self, id, line_prefix, people, tax, costs):
 		inhabitants = widgets.Label(name='inhabitants_%d' % id)
-		inhabitants.text = unicode(people)
+		inhabitants.text = str(people)
 		inhabitants.min_size = inhabitants.max_size = (110, 20)
 
 		taxes = widgets.Label(name='taxes_%d' % id)
-		taxes.text = unicode(tax)
+		taxes.text = str(tax)
 		taxes.min_size = taxes.max_size = (50, 20)
 
 		running_costs = widgets.Label(name='running_costs_%d' % id)
-		running_costs.text = unicode(costs)
+		running_costs.text = str(costs)
 		running_costs.min_size = running_costs.max_size = (100, 20)
 
 		balance = widgets.Label(name='balance_%d' % id)
-		balance.text = unicode(tax - costs)
+		balance.text = str(tax - costs)
 		balance.min_size = balance.max_size = (60, 20)
 
 		hbox = widgets.HBox()
@@ -84,7 +84,7 @@ class PlayersSettlements(StatsWidget):
 
 	def _add_line_to_gui(self, settlement, sequence_number):
 		sequence_number_label = widgets.Label(name='sequence_number_%d' % settlement.worldid)
-		sequence_number_label.text = unicode(sequence_number)
+		sequence_number_label.text = str(sequence_number)
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		name = widgets.Label(name='name_%d' % settlement.worldid)

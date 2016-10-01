@@ -35,6 +35,7 @@ from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
 from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.world.units.weapon import SetStackableWeaponNumberError, StackableWeapon, Weapon
+import collections
 
 
 @metaChangeListenerDecorator("storage_modified")
@@ -476,9 +477,9 @@ class MovingWeaponHolder(WeaponHolder):
 		@param in_range_callback : sets up a conditional callback that is executed if the target is in range
 		"""
 		if not_possible_action:
-			assert callable(not_possible_action)
+			assert isinstance(not_possible_action, collections.Callable)
 		if in_range_callback:
-			assert callable(in_range_callback)
+			assert isinstance(in_range_callback, collections.Callable)
 
 		try:
 			self.move(destination, callback = self.try_attack_target,

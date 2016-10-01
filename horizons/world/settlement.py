@@ -78,12 +78,12 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def init_buildability_cache(self, terrain_cache):
 		self.buildability_cache = SettlementBuildabilityCache(terrain_cache, self.ground_map)
-		self.buildability_cache.modify_area(self.ground_map.keys())
+		self.buildability_cache.modify_area(list(self.ground_map.keys()))
 
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
-		for level in xrange(TIER.CURRENT_MAX):
+		for level in range(TIER.CURRENT_MAX):
 			upgrade_permissions[level] = True
 		upgrade_permissions[TIER.CURRENT_MAX] = False
 		return upgrade_permissions
@@ -91,7 +91,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@classmethod
 	def make_default_tax_settings(cls):
 		tax_settings = {}
-		for level in xrange(TIER.CURRENT_MAX + 1):
+		for level in range(TIER.CURRENT_MAX + 1):
 			tax_settings[level] = 1.0
 		return tax_settings
 
@@ -124,7 +124,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		is_valid_residential = lambda building: (hasattr(building, 'happiness') and
 		                                         min_happiness <= building.happiness < max_happiness) and \
 		                                        (hasattr(building, 'level') and building.level == level)
-		return len(filter(is_valid_residential, self.buildings))
+		return len(list(filter(is_valid_residential, self.buildings)))
 
 	@property
 	def balance(self):
@@ -148,15 +148,15 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
 			self.worldid, islandid, self.owner.worldid)
-		for res, amount in self.produced_res.iteritems():
+		for res, amount in self.produced_res.items():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)",
 			   self.worldid, res, amount)
-		for level in xrange(TIER.CURRENT_MAX + 1):
+		for level in range(TIER.CURRENT_MAX + 1):
 			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)",
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
 		# dump ground data via json, it's orders of magnitude faster than sqlite
-		data = json.dumps(self.ground_map.keys())
+		data = json.dumps(list(self.ground_map.keys()))
 		db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", self.worldid, data)
 
 	@classmethod
@@ -249,7 +249,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""
-		for res, amount in produced_res.iteritems():
+		for res, amount in produced_res.items():
 			self.produced_res[res] += amount
 
 	def __init_inventory_checker(self):

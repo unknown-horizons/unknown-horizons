@@ -57,7 +57,7 @@ class GenericStorage(ChangeListener):
 		self._storage = defaultdict(int)
 
 	def save(self, db, ownerid):
-		for slot in self._storage.iteritems():
+		for slot in self._storage.items():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, slot[0], slot[1])
 
@@ -97,14 +97,14 @@ class GenericStorage(ChangeListener):
 		@param res: int res that the limit should be returned for.
 		@return: int
 		"""
-		return sys.maxint # should not be used for generic storage
+		return sys.maxsize # should not be used for generic storage
 
 	def get_free_space_for(self, res):
 		"""Returns how much of res we can still store here (limit - current amount)."""
 		return self.get_limit(res) - self[res]
 
 	def get_sum_of_stored_resources(self):
-		return sum(self._storage.itervalues())
+		return sum(self._storage.values())
 
 	def get_dump(self):
 		"""Returns a dump of the inventory as dict"""
@@ -114,10 +114,10 @@ class GenericStorage(ChangeListener):
 		return self._storage.get(res, 0)
 
 	def iterslots(self):
-		return self._storage.iterkeys()
+		return iter(self._storage.keys())
 
 	def itercontents(self):
-		return self._storage.iteritems()
+		return iter(self._storage.items())
 
 	def __str__(self):
 		return "%s(%s)" % (self.__class__, self._storage if hasattr(self, "_storage") else None)
@@ -147,7 +147,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 		super(SizedSpecializedStorage, self).__init__()
 		slot_sizes = slot_sizes or {}
 		self.__slot_limits = {}
-		for res, size in slot_sizes.iteritems():
+		for res, size in slot_sizes.items():
 			self.add_resource_slot(res, size)
 
 	def alter(self, res, amount):
@@ -207,7 +207,7 @@ class GlobalLimitStorage(GenericStorage):
 		if self.limit < 0:
 			self.limit = 0
 		# remove res that don't fit anymore
-		for res, amount in self._storage.iteritems():
+		for res, amount in self._storage.items():
 			if amount > self.limit:
 				self._storage[res] = self.limit
 		self._changed()

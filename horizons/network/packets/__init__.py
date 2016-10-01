@@ -19,14 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import cPickle
+import pickle
 import inspect
 import sys
-
-try:
-	from cStringIO import StringIO
-except ImportError:
-	from StringIO import StringIO
+from io import BytesIO
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -86,13 +82,13 @@ class SafeUnpickler(object):
 	def find_class(cls, module, name):
 		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
 		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError(
+			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
 				format(module, name))
 		__import__(module)
 		mod = sys.modules[module]
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError(
+			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
 				format(name, module))
 		klass = getattr(mod, name)
@@ -100,10 +96,11 @@ class SafeUnpickler(object):
 
 	@classmethod
 	def loads(cls, str):
-		file = StringIO(str)
-		obj = cPickle.Unpickler(file)
-		obj.find_global = cls.find_class
-		return obj.load()
+		class CustomUnpickler(pickle.Unpickler):
+			find_global = cls.find_class
+
+		file = BytesIO(str)
+		return CustomUnpickler(file).load()
 
 #-------------------------------------------------------------------------------
 
@@ -118,7 +115,7 @@ class packet(object):
 		return True
 
 	def serialize(self):
-		return cPickle.dumps(self, PICKLE_PROTOCOL)
+		return pickle.dumps(self, PICKLE_PROTOCOL)
 
 #-------------------------------------------------------------------------------
 

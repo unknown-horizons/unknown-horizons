@@ -100,7 +100,7 @@ class MessageWidget(LivingObject):
 
 		sound = get_speech_file(string_id) if play_sound else None
 		return self._add_message(_IngameMessage(point=point, id=string_id, msg_type=msg_type,
-		                                        created=self.msgcount.next(), message_dict=message_dict),
+		                                        created=next(self.msgcount), message_dict=message_dict),
 		                         sound=sound)
 
 	def remove(self, messagetext):
@@ -120,7 +120,7 @@ class MessageWidget(LivingObject):
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
 		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
-		                                        display=visible_for, created=self.msgcount.next(),
+		                                        display=visible_for, created=next(self.msgcount),
 		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
@@ -208,11 +208,11 @@ class MessageWidget(LivingObject):
 			text = self.active_messages[index].message
 		except IndexError:
 			# Something went wrong, try to find out what. Also see #2273.
-			self.log.error(u'Tried to access message at index %s, only have %s. Messages:',
+			self.log.error('Tried to access message at index %s, only have %s. Messages:',
 			               index, len(self.active_messages))
-			self.log.error(u'\n'.join(unicode(m) for m in self.active_messages))
-			text = (u'Error trying to access message!\n'
-			        u'Please report a bug. Thanks!')
+			self.log.error('\n'.join(str(m) for m in self.active_messages))
+			text = ('Error trying to access message!\n'
+			        'Please report a bug. Thanks!')
 
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
@@ -222,7 +222,7 @@ class MessageWidget(LivingObject):
 		self.bg_middle.removeAllChildren()
 
 		line_count = len(text.splitlines()) - 1
-		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
+		for i in range(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
 			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
 
@@ -338,7 +338,7 @@ class _IngameMessage(object):
 		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
-			assert isinstance(message, unicode), "Message is not unicode: %s" % message
+			assert isinstance(message, str), "Message is not unicode: %s" % message
 			self.message = message
 		else:
 			msg = _(horizons.globals.db.get_msg_text(id))
@@ -347,7 +347,7 @@ class _IngameMessage(object):
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
-				self.log.warning(u'Unsubstituted string %s in %s message "%s", dict %s',
+				self.log.warning('Unsubstituted string %s in %s message "%s", dict %s',
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
@@ -357,7 +357,7 @@ class _IngameMessage(object):
 			'D' if self.display else ' ')
 
 	def __unicode__(self):
-		return u"% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
+		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
 			self.message,
 			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',

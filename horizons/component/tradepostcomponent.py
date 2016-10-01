@@ -31,7 +31,7 @@ class TRADE_ERROR_TYPE(object):
 	"""Machine controlled entities need to know the difference. On this basis, they decide
 	whether to retry the trade in a few seconds.
 	"""
-	NO_ERROR, TEMPORARY, PERMANENT = range(3)
+	NO_ERROR, TEMPORARY, PERMANENT = list(range(3))
 
 class TradeSlotInfo(object):
 	def __init__(self, resource_id, selling, limit):
@@ -44,7 +44,7 @@ class TradePostComponent(ChangeListener, Component):
 	the free trader.
 	"""
 	NAME = 'tradepostcomponent'
-	yaml_tag = u'!TradePostComponent'
+	yaml_tag = '!TradePostComponent'
 
 	def __init__(self):
 		super(TradePostComponent, self).__init__()
@@ -85,7 +85,7 @@ class TradePostComponent(ChangeListener, Component):
 			return self.buy_list[resource_id]
 		if resource_id in self.sell_list:
 			return self.sell_list[resource_id]
-		for i in xrange(len(self.slots)):
+		for i in range(len(self.slots)):
 			if self.slots[i] is None:
 				return i
 		return None
@@ -93,7 +93,7 @@ class TradePostComponent(ChangeListener, Component):
 	def save(self, db):
 		super(TradePostComponent, self).save(db)
 
-		for slot_id in xrange(len(self.slots)):
+		for slot_id in range(len(self.slots)):
 			if self.slots[slot_id] is not None:
 				db("INSERT INTO trade_slots(trade_post, slot_id, resource_id, selling, trade_limit) VALUES(?, ?, ?, ?, ?)",
 				   self.instance.worldid, slot_id, self.slots[slot_id].resource_id, self.slots[slot_id].selling, self.slots[slot_id].limit)
@@ -271,7 +271,7 @@ class TradePostComponent(ChangeListener, Component):
 		income = 0
 		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks_of_month()
 		keys_to_delete = []
-		for key, values in self.sell_history.iteritems():
+		for key, values in self.sell_history.items():
 			if key < last_month_start:
 				keys_to_delete.append(key)
 			else:
@@ -288,7 +288,7 @@ class TradePostComponent(ChangeListener, Component):
 		expenses = 0
 		last_month_start = Scheduler().cur_tick - Scheduler().get_ticks_of_month()
 		keys_to_delete = []
-		for key, values in self.buy_history.iteritems():
+		for key, values in self.buy_history.items():
 			if key < last_month_start:
 				keys_to_delete.append(key)
 			else:

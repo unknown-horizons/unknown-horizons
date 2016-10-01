@@ -114,7 +114,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
 		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONEMASON
 
-		for purpose, building_id in cls.purpose_to_building.iteritems():
+		for purpose, building_id in cls.purpose_to_building.items():
 			cls.building_to_purpose[building_id] = purpose
 
 	@classmethod

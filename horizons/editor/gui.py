@@ -56,7 +56,7 @@ class IngameGui(LivingObject):
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy
+		self.logbook = Dummy()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -251,7 +251,7 @@ class SettingsTab(TabInterface):
 
 		ground_id, action_id, rotation = tile
 		set_id = horizons.globals.db.get_random_tile_set(ground_id)
-		return tile_sets[set_id][action_id][rotation].keys()[0]
+		return list(tile_sets[set_id][action_id][rotation].keys())[0]
 
 	def _change_brush_size(self, size):
 		"""Change the brush size and update the gui."""

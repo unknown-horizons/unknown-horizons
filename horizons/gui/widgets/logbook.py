@@ -186,7 +186,7 @@ class LogBook(PickBeltWidget, Window):
 			self._display_parameters_on_page([
 			  ['Headline', _("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
-			  ['Label', u"\n\n"],
+			  ['Label', "\n\n"],
 			  ['Label', _('There is nothing written in your logbook yet!')],
 				], 'left')
 		self.backward_button.set_active()
@@ -216,7 +216,7 @@ class LogBook(PickBeltWidget, Window):
 
 		def _label(text, font='default'):
 			try:
-				return Label(text=unicode(text), wrap_text=True,
+				return Label(text=str(text), wrap_text=True,
 				             min_size=(335, 0), max_size=(335, 508),
 				             font=font)
 			except RuntimeError:
@@ -224,27 +224,27 @@ class LogBook(PickBeltWidget, Window):
 
 		if parameter and parameter[0]: # allow empty Labels
 			parameter_type = parameter[0]
-		if isinstance(parameter, basestring):
+		if isinstance(parameter, str):
 			add = _label(parameter)
-		elif parameter_type == u'Label':
+		elif parameter_type == 'Label':
 			add = _label(parameter[1])
-		elif parameter_type == u'Image':
+		elif parameter_type == 'Image':
 			add = _icon(parameter[1])
-		elif parameter_type == u'Gallery':
+		elif parameter_type == 'Gallery':
 			add = HBox()
 			for image in parameter[1]:
 				new_icon = _icon(image)
 				if new_icon is not None:
 					add.addChild(new_icon)
-		elif parameter_type == u'Headline':
+		elif parameter_type == 'Headline':
 			add = HBox()
-			is_not_last_headline = self._parameters and self._cur_entry < (len(self._parameters) - 2)
+			is_not_last_headline = self._parameters and self._cur_entry is not None and self._cur_entry < (len(self._parameters) - 2)
 			if is_not_last_headline:
 				add.addChild(_icon("content/gui/images/tabwidget/done.png"))
 			add.addChild(_label(parameter[1], font='headline'))
-		elif parameter_type == u'BoldLabel':
+		elif parameter_type == 'BoldLabel':
 			add = _label(parameter[1], font='default_bold')
-		elif parameter_type == u'Message':
+		elif parameter_type == 'Message':
 			add = None
 			# parameters are re-read on page reload.
 			# duplicate_message stops messages from
@@ -430,7 +430,7 @@ class LogBook(PickBeltWidget, Window):
 		msg = self.textfield.text
 		if msg:
 			Chat(msg).execute(self.session)
-			self.textfield.text = u''
+			self.textfield.text = ''
 		self._display_chat_history()
 
 	def display_message_history(self):
@@ -451,5 +451,5 @@ class LogBook(PickBeltWidget, Window):
 
 	def _chatfield_onfocus(self):
 		"""Removes text in chat input field when it gets focused."""
-		self.textfield.text = u''
+		self.textfield.text = ''
 		self.textfield.capture(None, 'mouseReleased', 'default')

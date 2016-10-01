@@ -38,7 +38,7 @@ class HelpDialog(Window):
 		tip_box = self.widget.findChild(name='tip_box')
 		size = {'max_size': (300, 60), 'min_size': (300, 20)}
 		for tip in GAMEPLAY_TIPS['items']:
-			tip_label = Label(text=unicode(tip), wrap_text=True, **size)
+			tip_label = Label(text=str(tip), wrap_text=True, **size)
 			tip_box.addChild(tip_label)
 
 	def show(self):

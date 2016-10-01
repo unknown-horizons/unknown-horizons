@@ -24,7 +24,7 @@ When activated, several hooks are installed into pychan/guichan and catch
 key presses and widget interactions.
 The results are formatted as code that can be used for writing GUI tests.
 """
-from __future__ import print_function
+
 
 import logging
 from functools import wraps
@@ -167,7 +167,7 @@ class GuiHooks(object):
 			mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
 		}
 
-		for tool, events in targets.items():
+		for tool, events in list(targets.items()):
 			for event in events:
 				original = getattr(tool, event)
 				setattr(tool, event, deco3(original))

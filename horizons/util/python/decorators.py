@@ -20,12 +20,9 @@
 # ###################################################
 
 """Save general python function decorators here"""
-from __future__ import print_function
 
 import functools
 import time
-from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
-from types import ClassType, FunctionType
 
 
 class cachedfunction(object):
@@ -105,27 +102,28 @@ def temporary_cachedmethod(timeout):
 
 
 
+'''
 # adapted from http://code.activestate.com/recipes/277940/
 
 globals().update(opmap)
 
 def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 	try:
-		co = f.func_code
+		co = f.__code__
 	except AttributeError:
 		return f        # Jython doesn't have a func_code attribute.
-	newcode = map(ord, co.co_code)
+	newcode = list(map(ord, co.co_code))
 	newconsts = list(co.co_consts)
 	names = co.co_names
 	codelen = len(newcode)
 
-	import __builtin__
+	import builtins
 	env = vars(__builtin__).copy()
 	if builtin_only:
 		stoplist = dict.fromkeys(stoplist)
-		stoplist.update(f.func_globals)
+		stoplist.update(f.__globals__)
 	else:
-		env.update(f.func_globals)
+		env.update(f.__globals__)
 
 	# First pass converts global lookups into constants
 	i = 0
@@ -210,8 +208,8 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 				             co.co_varnames, co.co_filename, co.co_name,
 				             co.co_firstlineno, co.co_lnotab, co.co_freevars,
 				             co.co_cellvars)
-	return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults,
-				         f.func_closure)
+	return type(f)(codeobj, f.__globals__, f.__name__, f.__defaults__,
+				         f.__closure__)
 
 _make_constants = _make_constants(_make_constants) # optimize thyself!
 
@@ -233,7 +231,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 		d = vars(mc)
 	except TypeError:
 		return
-	for k, v in d.items():
+	for k, v in list(d.items()):
 		if type(v) is FunctionType:
 			newv = _make_constants(v, builtin_only, stoplist, verbose)
 			setattr(mc, k, newv)
@@ -255,6 +253,9 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 	if type(builtin_only) == type(make_constants):
 		raise ValueError("The bind_constants decorator must have arguments.")
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
+'''
+make_constants = lambda: lambda f: f
+bind_all = lambda *args: 0
 
 
 # cachedproperty taken from http://code.activestate.com/recipes/576563-cached-property/
