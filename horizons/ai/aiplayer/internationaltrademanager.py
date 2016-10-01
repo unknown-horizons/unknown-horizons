@@ -124,7 +124,7 @@ class InternationalTradeManager(object):
 			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * buy_coefficient
 			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
 
-		bought_resource, sold_resource, settlement, settlement_manager = max(final_options)[1:]
+		bought_resource, sold_resource, settlement, settlement_manager = sorted(final_options, reverse=True, key=lambda x: x[0])[0][1:]
 		self.owner.start_mission(InternationalTrade(settlement_manager, settlement, ship, bought_resource, sold_resource, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
