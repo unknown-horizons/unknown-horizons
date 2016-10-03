@@ -117,6 +117,7 @@ class VillageBuilder(AreaBuilder):
 
 		xs = {x for (x, _) in self.land_manager.village}
 		ys = {y for (_, y) in self.land_manager.village}
+		# Sets of coordinates used for calulate the width and height
 
 		width = max(xs) - min(xs) + 1
 		height = max(ys) - min(ys) + 1
