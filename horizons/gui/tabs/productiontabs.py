@@ -329,7 +329,7 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 		possible_res = set(res for field in self.instance.get_providers()
 		                       for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
-		productions = set([p for p in all_farm_productions
+		productions = {p for p in all_farm_productions
 		                     for res in p.get_consumed_resources().keys()
-		                   if res in possible_res])
+		                   if res in possible_res}
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

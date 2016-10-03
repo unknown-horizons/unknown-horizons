@@ -114,9 +114,9 @@ class VillageBuilder(AreaBuilder):
 		* the plan is stitched together and other village buildings are by replacing some
 			of the residences
 		"""
-
-		xs = set([x for (x, _) in self.land_manager.village])
-		ys = set([y for (_, y) in self.land_manager.village])
+		# Sets of coordinates used for calulate the width and height
+		xs = {x for (x, _) in self.land_manager.village}
+		ys = {y for (_, y) in self.land_manager.village}
 
 		width = max(xs) - min(xs) + 1
 		height = max(ys) - min(ys) + 1
