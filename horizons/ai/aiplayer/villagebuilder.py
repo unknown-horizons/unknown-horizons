@@ -115,8 +115,8 @@ class VillageBuilder(AreaBuilder):
 			of the residences
 		"""
 
-		xs = set([x for (x, _) in self.land_manager.village])
-		ys = set([y for (_, y) in self.land_manager.village])
+		xs = {x for (x, _) in self.land_manager.village}
+		ys = {y for (_, y) in self.land_manager.village}
 
 		width = max(xs) - min(xs) + 1
 		height = max(ys) - min(ys) + 1
@@ -169,7 +169,6 @@ class VillageBuilder(AreaBuilder):
 
 		self.plan = {}
 		ys = set(zip(*self.land_manager.village.keys())[1])
-		set([y for (_, y) in self.land_manager.village])
 		for road_x in vertical_roads:
 			for road_y in ys:
 				coords = (road_x, road_y)
