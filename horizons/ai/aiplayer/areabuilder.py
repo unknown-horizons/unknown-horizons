@@ -177,7 +177,7 @@ class AreaBuilder(WorldObject):
 			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(collector_coords, destination_coords):
 				return None
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
+		blocked_coords = {coords for coords in builder.position.tuple_iter()}.union(self.land_manager.coastline)
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
 		                                loading_area.right + 1, loading_area.bottom + 1)
 
