@@ -5,7 +5,7 @@
 
 """
 **polib** allows you to manipulate, create, modify gettext files (pot, po and
-mo files).  You can load existing files, iterate through it's entries, add,
+mo files). You can load existing files, iterate through it's entries, add,
 modify entries, comments or metadata, etc. or create new po files from scratch.
 
 **polib** provides a simple and pythonic API via the :func:`~polib.pofile` and
