@@ -84,11 +84,11 @@ class TearingTool(NavigationTool):
 				self.coords = coords
 			self._mark(self.coords, coords)
 			selection_list_copy = [building for building in self.selected]
-			for building in selection_list_copy:
-				self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
-				if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
-					Tear(building).execute(self.session)
-					break
+			if self.selected:
+				for building in selection_list_copy:
+					self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
+					if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+						Tear(building).execute(self.session)
 			else:
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
