@@ -242,7 +242,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 			bind_all(v, builtin_only, stoplist, verbose)
 
 @_make_constants
-def make_constants(builtin_only=False, stoplist=[], verbose=False):
+def make_constants(builtin_only=False, stoplist=None, verbose=False):
 	""" Return a decorator for optimizing global references.
 
 	Replaces global references with their currently defined values.
@@ -253,6 +253,7 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 	If verbose is True, prints each substitution as is occurs
 
 	"""
+	stoplist = stoplist or []
 	if type(builtin_only) == type(make_constants):
 		raise ValueError("The bind_constants decorator must have arguments.")
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
