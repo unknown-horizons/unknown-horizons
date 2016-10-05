@@ -109,7 +109,8 @@ def temporary_cachedmethod(timeout):
 
 globals().update(opmap)
 
-def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
+def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
+	stoplist = stoplist or []
 	try:
 		co = f.func_code
 	except AttributeError:
