@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2016 The Unknown Horizons Team
