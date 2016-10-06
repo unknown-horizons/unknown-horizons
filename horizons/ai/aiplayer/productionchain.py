@@ -183,7 +183,7 @@ class ProductionChainSubtreeChoice(object):
 			self.log.debug('%s: no possible options', self)
 			return BUILD_RESULT.IMPOSSIBLE
 		else:
-			for option in zip(*sorted(expected_costs))[2]:
+			for option in list(zip(*sorted(expected_costs)))[2]:
 				result = option.build(amount) # TODO: this amount should not include the part provided by the other options
 				if result != BUILD_RESULT.IMPOSSIBLE:
 					return result
