@@ -25,11 +25,13 @@ from unittest import TestCase
 
 from horizons.ext.dummy import Dummy
 from horizons.world import World
+from horizons.util.worldobject import WorldObject
 
 
 class TestWorld(TestCase):
 
 	def setUp(self):
+		WorldObject.reset()
 		self.session = Dummy()
 
 	def test_world_end(self):
