@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-08-26 10:21+0000\n"
-"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
+"PO-Revision-Date: 2016-10-07 19:16+0000\n"
+"Last-Translator: Barry Voeten <barry@voeten.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/tutorial/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.9-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -30,10 +30,6 @@ msgstr ""
 "Plaats jouw eerste nederzetting en leer hoe je verder moet spelen!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid ""
-#| "Build a warehouse on the coast to allow trade ships to visit your "
-#| "settlement."
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
@@ -250,11 +246,6 @@ msgstr ""
 "je pakhuis."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Once the buildings are connected you'll see a collector arrive to pick up "
-#| "your newly produced boards and deliver them to the Warehouse, ready for "
-#| "use in  construction or trade."
 msgid ""
 "Once the buildings are connected you'll see a collector arrive to pick up "
 "your newly produced boards and deliver them to the Warehouse, ready for use "
@@ -265,11 +256,10 @@ msgstr ""
 "om te worden gebruikt in nieuwe gebouwen of om te worden verhandeld."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a hunter and a fisher. Connect them to the warehouse."
 msgid ""
 "Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
-msgstr "Plaats een jager en een visser. Verbindt ze met het pakhuis."
+msgstr ""
+"Plaats een jagers-tent en een vissers-tent. Verbindt ze met het pakhuis."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"

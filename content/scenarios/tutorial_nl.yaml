@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a Warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, 'Bouw een pakhuis aan de kust, zodat deze makkelijk bereikbaar is voor handelsschepen.']
   - '
 
 
@@ -73,20 +73,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Zo, nu je houthakkershut is geplaatst, verbind je deze met het pakhuis door het bouwmenu te openen en op de 'pad'-knop te klikken. Klik en sleep met de muis om een weg te maken tussen de houthakkershut en het pakhuis.
   - ''
   - [BoldLabel, 'Opdracht: Bouw een houthakkershut in een gebied met bomen en verbind het met je pakhuis.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - Nadat de gebouwen zijn verbonden, zul je zien dat een verzamelaar komt om de net geproduceerde planken op te halen en naar het pakhuis te brengen, klaar om te worden gebruikt in nieuwe gebouwen of om te worden verhandeld.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a Hunter and a Fisher. Connect them to the Warehouse.]
+  - [Message, Plaats een jagers-tent en een vissers-tent. Verbindt ze met het pakhuis.]
   - [Headline, 'OPDRACHT: AANVOER VAN VOEDSEL']
   - [Image, content/gui/images/background/hr.png]
   - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Beschikbare bedrijven in het eerste beschavingsniveau zijn jagers en vissers.
-  - Een jager jaagt op dieren in het bos, dus er moeten bomen in de omgeving staan.
-  - Merk op dat je een jagers hut dichtbij een houthakkershut kan plaatsen.
+  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Het kan dus gebeuren dat er op eens niet genoeg dieren meer zijn of dat ze zich goed hebben verstopt.
-  - 'Conclusion: the Hunter is not too reliable if you need continuous supply.'
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
@@ -95,8 +95,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dit is een zeer stabiele aanvoer voor voedsel, maar met een wat langere productietijd.
   - Een zeer kleine nederzetting zoals die van jouw kan gebruik maken van beide bedrijven, zo kun je een betere vergelijking maken tussen de voor- en nadelen.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter and a Fisher.']
-  - Don't forget to connect them to your Warehouse with trails!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -105,8 +105,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'OPDRACHT: MARKTPLEIN']
   - [Image, content/gui/images/background/hr.png]
   - Uw bewoners hebben behoeften aan een plein om goederen te krijgen.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisher or even to the Warehouse.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Probeer te vermeiden om je woontenten te dicht bij een houthakker te plaatsen, omdat je dan bomen moet kappen die een houthakker nodig heeft.
@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Heb je het schip gezien dat af en toe lang je eiland vaart? Het behoord tot de Vrije Handelaars, een van de eerste kolonisten in deze archipel.
   - De handelaar zul je nederzetting voorzien van de noodzakelijke goederen die je nog niet zelf kunt produceren.
   - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normaal zullen de handelsschepen gewoon wat rondvaren op zoek naar handelswaar, maar dit proces kan wat worden versneld.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.'
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
   - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -225,20 +225,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners.
   - 'Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben (dat kun je controleren door op een tent te klikken): De zeelui willen een simpel gebouw om te kunnen bidden.'
   - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
+  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
     Merk op dat geloof wordt behandeld als een fysiek consumptiegoed!'
   - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - Na een tijdje zullen ze het opgebruikt hebben en zullen ze opnieuw het product geloof op gaan halen.
-  - 'Belangrijk:
+  - 'Important:
 
-    Het is NIET voldoende om het gebouw binnen een bepaald bereik van de tenten te zetten.
+    It is NOT enough that the building is merely within a certain range of the Tents.
 
-    Een wegverbinding is noodzakelijk.'
+    The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -246,7 +246,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Zet het belasting niveau op laag (linkerkant) en wacht totdat de zeelui promoveren.]
   - [Headline, 'OPDRACHT: VOLGENDE NIVEAU']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
   - Als de zeelui voldoende tevreden zijn, zullen ze zich willen verbeteren naar het volgende beschavingsniveau, de Pioniers.
   - Om ze tevreden te krijgen, zit er niets anders op dan de belasting te verlagen, gezien je aan alle eisen van jouw inwoners hebt voldaan.
   - Je moet proberen het belastingniveau niet voor langere tijd op een laag niveau te laten, want dit zal vroeg of laat lijden tot faillissement. Voor een korte periode kan het echter geen kwaad en zelfs nuttig zijn.
@@ -294,24 +294,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - The Farm itself is not going to produce anything without some fields.
   - Momenteel heb je de keuze tussen drie soorten velden.
-  - 'Hieronder een kort overzicht.
+  - 'Let''s have a short overview:
 
-    * Weiland: onderkomen voor schapen, die wol produceren.
+    * Pasture: Sheep live here, producing lamb wool.
 
-    * Aardappelveld: verbouwt aardappelen, dat als voedsel dient.
+    * Potato Field: Grows potatoes which are currently treated as food.
 
-    * Suikerveld: verbouwt suiker, dat voor drank en de banketbakkerij gebruikt worden.'
+    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
   - We zijn alleen weilanden nodig, maar in het geval de voedselproductieketen niet toereikend is (bijvoorbeeld omdat je veel woonhuizen hebt) kun je ook wat aardappelen gaan verbouwen.
-  - Merk op, dat indien je boerderij aardappelen produceert, er een pad naar deze boerderij (niet naar het veld!) moet liggen.
+  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
   - [Pagebreak]
   - '
 
-    Let er op dat alle velden binnen het bereik van de boerderij worden gebouwd.'
-  - Gecombineerde productie is ook mogelijk - één weiland zal niet tot 100 procent efficiëntie leiden - maar je moet zelf uitzoeken hoeveel velden een boerderij kan verzorgen.
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
   - De hoeveelheid tijd die het bewerken van een veld benodigd (voor zaaien, oogsten, vee hoeden, enzovoort) verschilt per soort veld, waardoor het zo kan zijn dat de boerderij niet alle velden die je er om heen hebt gebouwd ook kan verzorgen.
   - Momenteel hoef jij je daar geen zorgen over te maken, omdat je nog niet veel velden gebouwd hebt. Laten we daar verandering in brengen!
   - ''
-  - [BoldLabel, 'Opdracht: Bouw op zijn minst één weiland binnen het bereik van de boerderij en voeg als je dat wilt ook een aardappelveld toe.']
+  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -351,8 +351,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Nu de wol productie op gang is, heb je kleermakers nodig om kleren te maken van de wol.
   - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In deze twee gevallen moet je er zeker van zijn dat er een verbinding is.
-  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
+  - In both cases you should ensure the connection to a Trail as well.
+  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
   - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: nl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 131 translated messages, 57 fuzzy translations.
+  translation_status: 123 translated messages, 65 fuzzy translations.
