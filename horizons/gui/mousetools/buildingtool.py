@@ -47,6 +47,8 @@ class BuildingTool(NavigationTool):
 	Builder visualizes if and why a building can not be built under the cursor position.
 	@param building: selected building type"
 	@param ship: If building from a ship, restrict to range of ship
+	@type session: horizons.session.Session
+	@param session: session type
 
 	The building tool has been under heavy development for several years, it's a collection
 	of random artifacts that used to have a purpose once.
@@ -99,6 +101,7 @@ class BuildingTool(NavigationTool):
 
 	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 		assert not (ship and build_related)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship

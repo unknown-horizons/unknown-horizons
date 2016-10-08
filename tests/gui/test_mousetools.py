@@ -25,6 +25,8 @@ from tests.gui.helper import found_settlement
 
 @gui_test(use_dev_map=True)
 def test_tearing(gui):
+	"""Test the destroy tool
+	"""
 	found_settlement(gui, (11, 1), (11, 6))
 
 	# remove some trees
@@ -44,6 +46,8 @@ def test_tearing(gui):
 
 @gui_test(use_dev_map=True)
 def test_pipette(gui):
+	"""Test the pipette tool
+	"""
 	found_settlement(gui, (11, 1), (11, 6))
 
 	# select mountain, can not be build

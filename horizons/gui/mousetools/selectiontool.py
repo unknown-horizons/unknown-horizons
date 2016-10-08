@@ -23,6 +23,7 @@ import traceback
 
 from fife import fife
 
+import horizons.globals
 from horizons.command.unit import Act
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
@@ -31,10 +32,17 @@ from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 
 
 class SelectionTool(NavigationTool):
+	"""Tool to select tiles.
+
+	@type session: horizons.session.Session
+	@param session: session type
+	"""
+
 	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important
 
 	def __init__(self, session):
 		super(SelectionTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 		self.deselect_at_end = True # Set this to deselect selections while exiting SelectionTool
 
 	def remove(self):
