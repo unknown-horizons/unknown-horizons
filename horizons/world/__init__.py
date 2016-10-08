@@ -83,7 +83,7 @@ class World(BuildingOwner, WorldObject):
 
 	def __init__(self, session):
 		self.inited = False
-		assert isinstance(session, horizons.session.Session)
+		# assert isinstance(session, horizons.session.Session)
 		self.session = session
 
 		# create playerlist
