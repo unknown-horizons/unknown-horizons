@@ -75,16 +75,15 @@ class World(BuildingOwner, WorldObject):
 	   * trader - The world's ingame free trader player instance (can control multiple ships)
 	   * pirate - The world's ingame pirate player instance
 	   TUTORIAL: You should now check out the _init() function.
+
+	@type session: horizons.session.Session
+	@param session: instance of session the world belongs to.
 	"""
 	log = logging.getLogger("world")
 
 	def __init__(self, session):
-		"""
-		@param session: instance of session the world belongs to.
-		"""
 		self.inited = False
-		if False:
-			assert isinstance(session, horizons.session.Session)
+		assert isinstance(session, horizons.session.Session)
 		self.session = session
 
 		# create playerlist

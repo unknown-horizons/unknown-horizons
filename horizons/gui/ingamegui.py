@@ -55,7 +55,11 @@ from horizons.world.managers.statusiconmanager import StatusIconManager
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
-	Assumes that only 1 instance is used (class variables)"""
+	Assumes that only 1 instance is used (class variables)
+
+	@type session: horizons.session.Session
+	@param session: instance of session the world belongs to.
+	"""
 
 	message_widget = livingProperty()
 	minimap = livingProperty()
@@ -454,7 +458,7 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()		
+			return self.on_escape()
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 
