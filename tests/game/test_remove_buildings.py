@@ -27,7 +27,7 @@ from horizons.command.building import Build, Tear
 from horizons.command.unit import CreateUnit
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, UNITS
-from horizons.util.pathfinding.roadpathfinder import RoadPathFinder
+from horizons.util.pathfinding.pathfinder import a_star_find_path
 from horizons.util.shapes import Point
 from horizons.world.production.producer import Producer
 from tests.game import RANDOM_SEED, game_test, settle
@@ -91,7 +91,7 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 	for (start, dest) in [(Point(27, 30), Point(30, 23)), (Point(32, 23), Point(35, 29)),
 						  (Point(25, 22), Point(30, 23)), (Point(32, 23), Point(35, 22)),
 						  (Point(30, 34), Point(32, 25)), (Point(26, 32), Point(27, 30))]:
-		path = RoadPathFinder()(island.path_nodes.nodes, start.to_tuple(), dest.to_tuple())
+		path = a_star_find_path(start.to_tuple(), dest.to_tuple(), island.path_nodes.nodes)
 		assert path
 		for (x, y) in path:
 			Build(BUILDINGS.TRAIL, x, y, island, settlement=settlement)(p)

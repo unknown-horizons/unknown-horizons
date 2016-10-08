@@ -23,7 +23,7 @@ import itertools
 
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.pathfinding.roadpathfinder import RoadPathFinder
+from horizons.util.pathfinding.pathfinder import a_star_find_path
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
@@ -382,8 +382,8 @@ class BuildableLine(Buildable):
 		if island is None:
 			return []
 
-		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(),
-		                        point2.to_tuple(), rotation in (45, 225))
+		path = a_star_find_path(point1.to_tuple(), point2.to_tuple(),
+		                        island.path_nodes.nodes, rotation in (45, 225))
 		if path is None: # can't find a path between these points
 			return [] # TODO: maybe implement alternative strategy
 
