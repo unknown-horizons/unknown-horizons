@@ -33,13 +33,16 @@ from horizons.util.shapes import Point
 
 
 class TearingTool(NavigationTool):
-	"""
-	Represents a dangling tool to remove (tear) buildings.
+	"""Represents a dangling tool to remove (tear) buildings.
+
+	@type session: horizons.session.Session
+	@param session: session type
 	"""
 	tear_selection_color = (255, 255, 255)
 	nearby_objects_radius = 4
 
 	def __init__(self, session):
+		assert isinstance(session, horizons.session.Session)
 		super(TearingTool, self).__init__(session)
 		self._transparent_instances = set() # fife instances modified for transparency
 		self.coords = None
