@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import BUILDINGS, WEAPONS
+from horizons.constants import WEAPONS
 from horizons.scheduler import Scheduler
-from horizons.world.building.buildable import BuildableSingle, BuildableLine
+from horizons.util.tile_orientation import get_tile_alignment_action
+from horizons.world.building.buildable import BuildableLine, BuildableSingle
 from horizons.world.building.building import BasicBuilding
 from horizons.world.units.weaponholder import StationaryWeaponHolder
 
@@ -85,57 +86,12 @@ class Barrier(BasicBuilding, BuildableLine):
 				tile.object.recalculate_orientation()
 
 	def recalculate_orientation(self):
-		"""
-		ROAD ORIENTATION CHEATSHEET
-		===========================
-		a       b
-		 \  e  /     a,b,c,d are connections to nearby roads
-		  \   /
-		   \ /       e,f,g,h indicate whether this area occupies more space than
-		 h  X  f     a single road would (i.e. whether we should fill this three-
-		   / \       cornered space with graphics that will make it look like a
-		  /   \      coherent square instead of many short-circuit road circles).
-		 /  g  \     Note that 'e' can only be placed if both 'a' and 'b' exist.
-		d       c
+		def is_similar_tile(position):
+			tile = self.island.get_tile(position)
+			return self.is_barrier(tile)
 
-		SAMPLE ROADS
-		============
-		\     \     \..../  \    /    \    /
-		 \    .\     \../    \  /.     \  /.
-		  \   ..\     \/      \/..      \/..
-		  /   ../     /         ..      /\..
-		 /    ./     /           .     /..\.
-		/     /     /                 /....\
-
-		ad    adh   abde   abf (im-   abcdfg
-		                   possible)
-		"""
-		action = ''
 		origin = self.position.origin
-
-		# Order is important here.
-		ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.iteritems())
-		for action_part, (xoff, yoff) in ordered_actions:
-			tile = self.island.get_tile(origin.offset(xoff, yoff))
-			if not self.is_barrier(tile):
-				continue
-
-			if action_part in 'abcd':
-				action += action_part
-			if action_part in 'efgh':
-				# Now check whether we can place valid road-filled areas.
-				# Only adds 'g' to action if both 'c' and 'd' are in already
-				# (that's why order matters - we need to know at this point)
-				# and the condition for 'g' is met: road tiles exist in that
-				# direction.
-				fill_left = chr(ord(action_part) - 4) in action
-				# 'h' has the parents 'd' and 'a' (not 'e'), so we need a slight hack here.
-				fill_right = chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
-				if fill_left and fill_right:
-					action += action_part
-		if action == '':
-			# Single trail piece with no neighbor road tiles.
-			action = 'single'
+		action = get_tile_alignment_action(origin, is_similar_tile)
 
 		location = self._instance.getLocation()
 		self.act(action, location, True)
