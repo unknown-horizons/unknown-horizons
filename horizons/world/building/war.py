@@ -61,6 +61,8 @@ class Barrier(BasicBuilding, BuildableLine):
 		self.__init()
 
 	def __init(self):
+		self.island.barrier_nodes.register(self)
+
 		# don't always recalculate while loading, we'd recalculate too often.
 		# do it once when everything is finished.
 		if not self.session.world.inited:
@@ -71,6 +73,7 @@ class Barrier(BasicBuilding, BuildableLine):
 
 	def remove(self):
 		super(Barrier, self).remove()
+		self.island.barrier_nodes.unregister(self)
 		self.recalculate_surrounding_tile_orientation()
 
 	def is_barrier(self, tile):
