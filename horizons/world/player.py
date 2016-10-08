@@ -38,7 +38,16 @@ from horizons.world.playerstats import PlayerStats
 
 
 class Player(ComponentHolder, WorldObject):
-	"""Class representing a player"""
+	"""Class representing a player
+
+	@type session: horizons.session.Session
+	@param session: Session instance
+	@param worldid: player's worldid
+	@param name: user-chosen name
+	@param color: color of player (as Color)
+	@param clientid: id of client
+	@param inventory: {res: value} that are put in the players inventory
+	"""
 
 	STATS_UPDATE_INTERVAL = 3 # seconds
 
@@ -47,16 +56,7 @@ class Player(ComponentHolder, WorldObject):
 
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
-		"""
-		@param session: Session instance
-		@param worldid: player's worldid
-		@param name: user-chosen name
-		@param color: color of player (as Color)
-		@param clientid: id of client
-		@param inventory: {res: value} that are put in the players inventory
-		"""
-		if False:
-			assert isinstance(session, horizons.session.Session)
+		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color, clientid, difficulty_level, 0)
@@ -69,7 +69,8 @@ class Player(ComponentHolder, WorldObject):
 
 	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
 		assert isinstance(color, Color)
-		assert isinstance(name, basestring) and name
+		assert isinstance(name, basestring)
+		assert name
 		try:
 			self.name = unicode(name)
 		except UnicodeDecodeError:
