@@ -33,7 +33,7 @@ class UnitClass(IngameType):
 
 	log = logging.getLogger('world.units')
 	basepackage = 'horizons.world.units.'
-	classstring = 'Unit['
+	classstring = 'Unit[{id}]'
 
 	_action_load_callbacks = {}
 

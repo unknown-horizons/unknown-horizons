@@ -34,7 +34,7 @@ class BuildingClass(IngameType):
 	log = logging.getLogger('world.building')
 
 	basepackage = 'horizons.world.building.'
-	classstring = 'Building['
+	classstring = 'Building[{id}]'
 
 	def __new__(self, db, id, yaml_data):
 		return super(BuildingClass, self).__new__(self, id, yaml_data)
