@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import WEAPONS
-from horizons.world.building.buildable import BuildableSingle
+from horizons.constants import BUILDINGS, WEAPONS
+from horizons.scheduler import Scheduler
+from horizons.world.building.buildable import BuildableSingle, BuildableLine
 from horizons.world.building.building import BasicBuilding
 from horizons.world.units.weaponholder import StationaryWeaponHolder
 
@@ -49,3 +50,92 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 		destroy the tower"""
 		for weapon in self._weapon_storage:
 			weapon.weapon_range = (0, weapon.weapon_range[1])
+
+
+class Barrier(BasicBuilding, BuildableLine):
+	"""Buildable barriers."""
+
+	def init(self):
+		# this does not belong in __init__, it's just here that all the data should be consistent
+		self.__init()
+
+	def __init(self):
+		# don't always recalculate while loading, we'd recalculate too often.
+		# do it once when everything is finished.
+		if not self.session.world.inited:
+			Scheduler().add_new_object(self.recalculate_orientation, self, run_in=0)
+		else:
+			self.recalculate_surrounding_tile_orientation()
+			self.recalculate_orientation()
+
+	def remove(self):
+		super(Barrier, self).remove()
+		self.recalculate_surrounding_tile_orientation()
+
+	def is_barrier(self, tile):
+		# Only consider barriers that the player build
+		return (tile is not None and
+		        tile.object is not None and
+		        tile.object.id == self.id and
+		        tile.object.owner == self.owner)
+
+	def recalculate_surrounding_tile_orientation(self):
+		for tile in self.island.get_surrounding_tiles(self.position):
+			if self.is_barrier(tile):
+				tile.object.recalculate_orientation()
+
+	def recalculate_orientation(self):
+		"""
+		ROAD ORIENTATION CHEATSHEET
+		===========================
+		a       b
+		 \  e  /     a,b,c,d are connections to nearby roads
+		  \   /
+		   \ /       e,f,g,h indicate whether this area occupies more space than
+		 h  X  f     a single road would (i.e. whether we should fill this three-
+		   / \       cornered space with graphics that will make it look like a
+		  /   \      coherent square instead of many short-circuit road circles).
+		 /  g  \     Note that 'e' can only be placed if both 'a' and 'b' exist.
+		d       c
+
+		SAMPLE ROADS
+		============
+		\     \     \..../  \    /    \    /
+		 \    .\     \../    \  /.     \  /.
+		  \   ..\     \/      \/..      \/..
+		  /   ../     /         ..      /\..
+		 /    ./     /           .     /..\.
+		/     /     /                 /....\
+
+		ad    adh   abde   abf (im-   abcdfg
+		                   possible)
+		"""
+		action = ''
+		origin = self.position.origin
+
+		# Order is important here.
+		ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.iteritems())
+		for action_part, (xoff, yoff) in ordered_actions:
+			tile = self.island.get_tile(origin.offset(xoff, yoff))
+			if not self.is_barrier(tile):
+				continue
+
+			if action_part in 'abcd':
+				action += action_part
+			if action_part in 'efgh':
+				# Now check whether we can place valid road-filled areas.
+				# Only adds 'g' to action if both 'c' and 'd' are in already
+				# (that's why order matters - we need to know at this point)
+				# and the condition for 'g' is met: road tiles exist in that
+				# direction.
+				fill_left = chr(ord(action_part) - 4) in action
+				# 'h' has the parents 'd' and 'a' (not 'e'), so we need a slight hack here.
+				fill_right = chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
+				if fill_left and fill_right:
+					action += action_part
+		if action == '':
+			# Single trail piece with no neighbor road tiles.
+			action = 'single'
+
+		location = self._instance.getLocation()
+		self.act(action, location, True)

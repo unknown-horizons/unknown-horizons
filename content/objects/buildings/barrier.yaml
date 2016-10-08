@@ -2,7 +2,7 @@ id: BUILDINGS.BARRIER
 name:
   TIER.SAILORS: _ Wooden barrier
   TIER.PIONEERS: _ Clay wall
-baseclass: path.Barrier
+baseclass: war.Barrier
 radius: 0
 cost: 0
 cost_inactive: 0
