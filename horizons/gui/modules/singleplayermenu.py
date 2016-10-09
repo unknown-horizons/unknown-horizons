@@ -26,6 +26,7 @@ import json
 import locale
 import logging
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -330,6 +331,11 @@ class RandomMapWidget(object):
 
 		with open(self._preview_output, 'r') as f:
 			data = f.read()
+			# Sometimes the subprocess outputs more then the minimap data, e.g. debug
+			# information. Since we just read from its stdout, parse out the data that
+			# is relevant to us.
+			data = re.findall(r'^DATA (\[\[.*\]\]) ENDDATA$', data, re.MULTILINE)[0]
+			data = json.loads(data)
 
 		os.unlink(self._preview_output)
 		self._preview_process = None
@@ -635,5 +641,7 @@ def generate_random_minimap(size, parameters):
 		use_rotation=False,
 		preview=True)
 
-	# communicate via stdout
-	print(minimap.dump_data())
+	# communicate via stdout. Sometimes the process seems to print more information, therefore
+	# we add markers around our data so it's easier for the caller to get to the data.
+	data = minimap.get_data()
+	print('DATA', json.dumps(data), 'ENDDATA')
