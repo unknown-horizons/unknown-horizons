@@ -352,7 +352,6 @@ def test_ticket_2117(gui):
 	gui.trigger('settings_window/okButton')
 
 
-@mark_expected_failure
 @gui_test(use_dev_map=True)
 def test_ticket_2419(gui):
 	"""Game crashes when setting speed to zero and pressing pause twice"""

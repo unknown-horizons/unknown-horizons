@@ -96,6 +96,7 @@ class Session(LivingObject):
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True
+		self.paused_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
 		self._clear_caches()
 
