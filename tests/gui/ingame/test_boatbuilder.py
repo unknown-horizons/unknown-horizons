@@ -267,7 +267,7 @@ def test_ticket_1514(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# nothing being built, no cancel button visible
-	assert not gui.find('UB_cancel_button').isVisible()
+	assert not gui.find('UB_cancel_button')
 
 	# Select trade ships tab
 	gui.trigger('tab_base/1')
