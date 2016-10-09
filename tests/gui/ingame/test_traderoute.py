@@ -23,6 +23,7 @@ from fife import fife
 from mock import Mock
 
 from horizons.constants import RES
+from horizons.manager import MPManager
 from horizons.util.shapes import Point
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship
@@ -52,6 +53,8 @@ def test_traderoute(gui):
 	found_settlement(gui, (14, 30), (15, 26))
 
 	# Open the configure trade route widget
+	# NOTE gui of traderoute is initialized with a delay, wait a bit, see `RouteConfig.__init__`
+	gui.run(MPManager.EXECUTIONDELAY + 3)
 	gui.trigger('overview_trade_ship/configure_route')
 
 	# The trade route widget is visible
