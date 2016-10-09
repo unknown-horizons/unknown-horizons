@@ -247,7 +247,7 @@ class BuildingTool(NavigationTool):
 				level = self.session.world.player.settler_level
 			action_set = self._class.get_random_action_set(level=level)
 		action_sets = ActionSetLoader.get_sets()
-		for action_option in ['idle', 'idle_full', 'abcd']:
+		for action_option in ['idle', 'idle_full', 'single', 'abcd']:
 			if action_option in action_sets[action_set]:
 				action = action_option
 				break

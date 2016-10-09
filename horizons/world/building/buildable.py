@@ -24,7 +24,7 @@ import itertools
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.util.pathfinding.pathfinder import a_star_find_path
-from horizons.util.python import decorators
+from horizons.util.python import ChainedContainer, decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.terraincache import TerrainRequirement
@@ -382,8 +382,16 @@ class BuildableLine(Buildable):
 		if island is None:
 			return []
 
-		path = a_star_find_path(point1.to_tuple(), point2.to_tuple(),
-		                        island.path_nodes.nodes, rotation in (45, 225))
+		if cls.id == BUILDINGS.TRAIL:
+			nodes = island.path_nodes.nodes
+		elif cls.id == BUILDINGS.BARRIER:
+			# Allow nodes that can be walked upon and existing barriers when finding a
+			# build path
+			nodes = ChainedContainer(island.path_nodes.nodes, island.barrier_nodes.nodes)
+		else:
+			raise Exception('BuildableLine does not support building id {0}'.format(cls.id))
+
+		path = a_star_find_path(point1.to_tuple(), point2.to_tuple(), nodes, rotation in (45, 225))
 		if path is None: # can't find a path between these points
 			return [] # TODO: maybe implement alternative strategy
 

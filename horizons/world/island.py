@@ -30,7 +30,7 @@ from horizons.messaging import NewSettlement, SettlementRangeChanged
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.pathfinding.pathnodes import IslandPathNodes
+from horizons.util.pathfinding.pathnodes import IslandBarrierNodes, IslandPathNodes
 from horizons.util.shapes import Circle, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
@@ -160,6 +160,7 @@ class Island(BuildingOwner, WorldObject):
 		if not preview:
 			# This isn't needed for map previews, but it is in actual games.
 			self.path_nodes = IslandPathNodes(self)
+			self.barrier_nodes = IslandBarrierNodes(self)
 
 			# Repopulate wild animals every 2 mins if they die out.
 			Scheduler().add_new_object(self.check_wild_animal_population, self,
@@ -284,7 +285,7 @@ class Island(BuildingOwner, WorldObject):
 			settlement.buildability_cache.modify_area(settlement_coords_changed)
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
-	
+
 	def abandon_buildings(self, buildings_list):
 		"""Abandon all buildings in the list
 		@param buildings_list: buildings to abandon
@@ -298,7 +299,7 @@ class Island(BuildingOwner, WorldObject):
 		buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
 		assert building not in buildings_to_abandon
 		self.abandon_buildings(buildings_to_abandon)
-		
+
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
 		land_or_coast = self.terrain_cache.land_or_coast
 		settlement_tiles_changed = []
@@ -457,4 +458,5 @@ class Island(BuildingOwner, WorldObject):
 		self.wild_animals = None
 		self.ground_map = None
 		self.path_nodes = None
+		self.barrier_nodes = None
 		self.building_indexers = None

@@ -24,6 +24,8 @@ Put all code here that is not directly related to the game,
 but rather a generic enhancement of the programming language.
 """
 
+import collections
+
 from .decorators import *
 
 class Const(object):
@@ -82,3 +84,21 @@ def trim_value(value, min, max):
 		return max
 	else:
 		return value
+
+
+class ChainedContainer(collections.Container):
+	"""
+	Allows membership test in multiple containers.
+
+	>>> chain = ChainedContainer({1: 'foo'}, [2, 3], set([5, 6]))
+	>>> 2 in chain
+	True
+	>>> 0 in chain
+	False
+
+	"""
+	def __init__(self, *containers):
+		self.containers = containers
+
+	def __contains__(self, value):
+		return any(value in c for c in self.containers)
