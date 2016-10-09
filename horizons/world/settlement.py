@@ -216,8 +216,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.buildings_by_id[building.id].append(building)
 		else:
 			self.buildings_by_id[building.id] = [building]
-		if building.has_component(Producer) and not \
-		   building.has_component(ShipProducer) and not building.has_component(GroundUnitProducer):
+		component = building.get_component(Producer)
+		if component and component.produces_resource:
 			finished = self.settlement_building_production_finished
 			building.get_component(Producer).add_production_finished_listener(finished)
 		if not load and not building.buildable_upon and self.buildability_cache:
@@ -233,8 +233,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			return
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
-		if building.has_component(Producer) and not \
-		   building.has_component(ShipProducer) and not building.has_component(GroundUnitProducer):
+		component = building.get_component(Producer)
+		if component and component.produces_resource:
 			finished = self.settlement_building_production_finished
 			building.get_component(Producer).remove_production_finished_listener(finished)
 		if not building.buildable_upon and self.buildability_cache:
