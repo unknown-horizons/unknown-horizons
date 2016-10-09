@@ -18,6 +18,17 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+2016-XX-XX: Milestone 2016.2
+----------------------------
+changelog date: 9th Oct 2016
+
+### Gameplay and Balancing
+
+New features
+ - #2353 Add a barrier building
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 2016-XX-XX: Milestone 2016.1
 ----------------------------
 changelog date: 17th Sep 2016
