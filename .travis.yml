@@ -24,7 +24,7 @@ script:
   - python -c 'from fife import fife; print fife.getVersion()'
   - isort -c -rc horizons tests run_*.py
   - COVERAGE_FILE=.coverage.nongui python run_tests.py --verbose --nologcapture --with-coverage
-  - RUNCOV=1 python run_tests.py -a gui tests/gui --nologcapture
+  - RUNCOV=1 python run_tests.py -a gui tests/gui --verbose --nologcapture
   - coverage combine
   - coveralls
 notifications:
