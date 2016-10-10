@@ -23,7 +23,6 @@ from __future__ import print_function
 import itertools
 import json
 import math
-import re
 from math import cos, sin
 
 from fife import fife
@@ -190,8 +189,8 @@ class Minimap(object):
 			ExtScheduler().add_new_object(self._timed_update, self,
 			                              self.SHIP_DOT_UPDATE_INTERVAL, -1)
 
-	def dump_data(self):
-		"""Returns a string representing the minimap data"""
+	def get_data(self):
+		"""Returns a list representing the minimap data"""
 		return self._recalculate(dump_data=True)
 
 	def draw_data(self, data):
@@ -206,12 +205,7 @@ class Minimap(object):
 		draw_point = rt.addPoint
 		point = fife.Point()
 
-		# XXX There have been reports about `data` containing Fife debug
-		# output (e.g. #2193). As temporary workaround, we try to only
-		# parse what looks like valid json in there and ignore the rest.
-		found_json = re.findall(r'\[\[.*\]\]', data)[0]
-
-		for x, y, r, g, b in json.loads(found_json):
+		for x, y, r, g, b in data:
 			point.set(x, y)
 			draw_point(render_name, point, r, g, b)
 
@@ -553,7 +547,7 @@ class Minimap(object):
 				draw_point(render_name, fife_point, *color)
 
 		if dump_data:
-			return json.dumps(data)
+			return data
 
 
 	def _timed_update(self, force=False):
