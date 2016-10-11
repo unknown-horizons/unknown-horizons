@@ -153,6 +153,9 @@ def start(_command_line_arguments):
 				window.title("Unknown Horizons")
 				window.maxsize(300, 150)
 
+				icon_path = os.path.abspath('./content/packages/unknown-horizons.gif')
+				window.tk.call('wm', 'iconphoto', window._w, Tkinter.PhotoImage(file=icon_path))
+
 				logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
 				res_logo = logo.resize((116, 99), Image.ANTIALIAS)
 				res_logo_image = ImageTk.PhotoImage(res_logo)
