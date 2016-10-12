@@ -105,7 +105,7 @@ try:
 except (ValueError, IndexError):
 	port = 0
 
-if host == None or port == None or port <= 0:
+if None in [host, port] or port <= 0:
 	usage()
 	sys.exit(1)
 
