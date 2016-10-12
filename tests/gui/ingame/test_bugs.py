@@ -21,7 +21,8 @@
 
 from horizons.command.building import Tear
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, UNITS
+from horizons.constants import BUILDINGS, UNITS, RES
+from horizons.messaging import ResourceProduced
 from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship, move_ship
@@ -359,3 +360,23 @@ def test_ticket_2419(gui):
 	gui.session.speed_set(0)
 	gui.press_key(gui.Key.P)
 	gui.press_key(gui.Key.P)
+
+
+@mark_expected_failure
+@gui_test(use_dev_map=True)
+def test_ticket_2475(gui):
+	"""Game crashes when two resources are produced in the same tick and the production
+	finished icon is about to be shown."""
+
+	# speed up animation to trigger bug earlier
+	gui.session.ingame_gui.production_finished_icon_manager.animation_duration = 1
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	settlement = found_settlement(gui, (13, 64), (17, 62))
+
+	warehouse = settlement.warehouse
+	producer = warehouse.get_component(Producer)
+
+	ResourceProduced.broadcast(warehouse, producer, {RES.FOOD: 0})
+	ResourceProduced.broadcast(warehouse, producer, {RES.FOOD: 0})
