@@ -21,12 +21,12 @@
 
 from horizons.command.building import Tear
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, UNITS, RES
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.messaging import ResourceProduced
 from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship, move_ship
-from tests.utils import mark_expected_failure
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -362,7 +362,6 @@ def test_ticket_2419(gui):
 	gui.press_key(gui.Key.P)
 
 
-@mark_expected_failure
 @gui_test(use_dev_map=True)
 def test_ticket_2475(gui):
 	"""Game crashes when two resources are produced in the same tick and the production
@@ -375,8 +374,16 @@ def test_ticket_2475(gui):
 	gui.select([ship])
 	settlement = found_settlement(gui, (13, 64), (17, 62))
 
-	warehouse = settlement.warehouse
-	producer = warehouse.get_component(Producer)
+	# Place a lumberjack
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
+	gui.cursor_click(18, 57, 'left', shift=True)
 
-	ResourceProduced.broadcast(warehouse, producer, {RES.FOOD: 0})
-	ResourceProduced.broadcast(warehouse, producer, {RES.FOOD: 0})
+	lumberjack = settlement.buildings_by_id[BUILDINGS.LUMBERJACK][0]
+	storage = lumberjack.get_component(StorageComponent)
+	producer = lumberjack.get_component(Producer)
+
+	storage.inventory.alter(RES.BOARDS, 5)
+
+	producer.on_production_finished({RES.BOARDS: 1})
+	producer.on_production_finished({RES.BOARDS: 1})
