@@ -112,6 +112,7 @@ class MessageWidget(LivingObject):
 				break
 		if index > -1:
 			del self.active_messages[index]
+			self.draw_widget()
 
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
@@ -204,16 +205,7 @@ class MessageWidget(LivingObject):
 		# stop hiding if a new text has been shown
 		ExtScheduler().rem_call(self, self.hide_text)
 
-		try:
-			text = self.active_messages[index].message
-		except IndexError:
-			# Something went wrong, try to find out what. Also see #2273.
-			self.log.error(u'Tried to access message at index %s, only have %s. Messages:',
-			               index, len(self.active_messages))
-			self.log.error(u'\n'.join(unicode(m) for m in self.active_messages))
-			text = (u'Error trying to access message!\n'
-			        u'Please report a bug. Thanks!')
-
+		text = self.active_messages[index].message
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
