@@ -33,14 +33,17 @@ from horizons.util.shapes import Point
 
 
 class TearingTool(NavigationTool):
-	"""
-	Represents a dangling tool to remove (tear) buildings.
+	"""Represents a dangling tool to remove (tear) buildings.
+
+	@type session: horizons.session.Session
+	@param session: session type
 	"""
 	tear_selection_color = (255, 255, 255)
 	nearby_objects_radius = 4
 
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 		self._transparent_instances = set() # fife instances modified for transparency
 		self.coords = None
 		self.selected = WeakList()
@@ -104,20 +107,26 @@ class TearingTool(NavigationTool):
 				self.tear_tool_active = False
 				self.on_escape()
 			evt.consume()
-			
+
 	def confirm_ranged_delete(self, building):
-			buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
-			if buildings_to_destroy == 0:
-				return True
-			
-			title = _("Destroy all buildings")
-			msg = _("This will destroy all the buildings that fall outside of"
-		            " the settlement range.")
-			msg += u"\n\n"
-			msg += N_("%s additional building will be destroyed.",
-		              "%s additional buildings will be destroyed",
-		              buildings_to_destroy) % buildings_to_destroy
-			return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
+		"""confirm to destroy all the buildings in the selected area
+
+		@param building: select buildings
+
+		@return: True to destroy
+		"""
+		buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
+		if buildings_to_destroy == 0:
+			return True
+
+		title = _("Destroy all buildings")
+		msg = _("This will destroy all the buildings that fall outside of"
+				" the settlement range.")
+		msg += u"\n\n"
+		msg += N_("%s additional building will be destroyed.",
+				  "%s additional buildings will be destroyed",
+				  buildings_to_destroy) % buildings_to_destroy
+		return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:

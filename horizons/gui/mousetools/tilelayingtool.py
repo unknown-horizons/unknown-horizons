@@ -29,13 +29,18 @@ from horizons.util.shapes import Circle, Point
 
 
 class TileLayingTool(NavigationTool):
-	"""Tool to lay ground tiles."""
+	"""Tool to lay ground tiles.
+
+	@type session: horizons.session.Session
+	@param session: session type
+	"""
 	HIGHLIGHT_COLOR = (0, 200, 90)
 
 	tile_images = {}
 
 	def __init__(self, session, tile_details):
 		super(TileLayingTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 		self.renderer = session.view.renderer['InstanceRenderer']
 		self._tile_details = (None, None, None)
 		if tile_details[0] in [0, 2]:

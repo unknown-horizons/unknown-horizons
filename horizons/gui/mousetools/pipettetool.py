@@ -31,12 +31,17 @@ from horizons.gui.tabs.buildtabs import BuildTab
 
 class PipetteTool(NavigationTool):
 	"""Tool to select buildings in order to build another building of
-	the type of the selected building"""
+	the type of the selected building
+
+	@type session: horizons.session.Session
+	@param session: session type
+	"""
 	HIGHLIGHT_COLOR = (0, 200, 90)
 	HIGHLIGHT_NOT_POSSIBLE_COLOR = (200, 90, 90)
 
 	def __init__(self, session):
 		super(PipetteTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 		self.renderer = session.view.renderer['InstanceRenderer']
 		horizons.globals.fife.set_cursor_image('pipette')
 

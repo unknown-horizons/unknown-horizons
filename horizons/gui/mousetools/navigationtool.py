@@ -34,7 +34,11 @@ from horizons.util.worldobject import WorldObject
 
 
 class NavigationTool(CursorTool):
-	"""Navigation Class to process mouse actions ingame"""
+	"""Navigation Class to process mouse actions ingame
+
+	@type session: horizons.session.Session
+	@param session: session type
+	"""
 
 
 	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
@@ -45,6 +49,7 @@ class NavigationTool(CursorTool):
 
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 		self._last_mmb_scroll_point = [0, 0]
 		# coordinates of last mouse positions
 		self.last_exact_world_location = fife.ExactModelCoordinate()

@@ -33,7 +33,11 @@ roundhalfplus = lambda x: int(round(math.floor(x + x) / 2.0 + 0.25))
 
 
 class CursorTool(fife.IMouseListener):
-	"""Basic tool for cursors."""
+	"""Basic tool for cursors.
+
+	@type session: horizons.session.Session
+	@param session: session type
+	"""
 	log = logging.getLogger("gui.mousetools")
 
 	def __init__(self, session):

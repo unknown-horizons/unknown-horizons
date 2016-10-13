@@ -29,15 +29,18 @@ from horizons.gui.mousetools.selectiontool import SelectionTool
 
 
 class AttackingTool(SelectionTool):
-	"""
-		This will be used when attacking units are selected
-		it will have to respond on right click and change cursor image when hovering enemy units
+	"""This will be used when attacking units are selected
+	it will have to respond on right click and change cursor image when hovering enemy units
+
+	@type session: horizons.session.Session
+	@param session: session type
 	"""
 
 	send_hover_instances_update = False
 
 	def __init__(self, session):
 		super(AttackingTool, self).__init__(session)
+		assert isinstance(session, horizons.session.Session)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
