@@ -120,7 +120,7 @@ class Buildable(object):
 		@param ship: ship instance if building from ship
 		@return instance of _BuildPosition"""
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
-		if rotation == 45 or rotation == 225:
+		if rotation in [45, 225]:
 			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
 			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
@@ -323,7 +323,7 @@ class BuildableSingleEverywhere(BuildableSingle):
 	@classmethod
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
-		if rotation == 45 or rotation == 225:
+		if rotation in [45, 225]:
 			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
 			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])

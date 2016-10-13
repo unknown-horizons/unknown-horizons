@@ -94,7 +94,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	@classmethod
 	def get_loading_area(cls, building_id, rotation, pos):
-		if building_id == BUILDINGS.MOUNTAIN or building_id == BUILDINGS.MINE:
+		if building_id in [BUILDINGS.MOUNTAIN, BUILDINGS.MINE]:
 			if rotation == 45:
 				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
 			elif rotation == 135:
