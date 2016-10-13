@@ -211,6 +211,7 @@ class IngameGui(LivingObject):
 		return self.windows.open(window)
 
 	def toggle_pause(self):
+		self.set_cursor('default')
 		self.windows.toggle(self.pausemenu)
 
 	def toggle_help(self):

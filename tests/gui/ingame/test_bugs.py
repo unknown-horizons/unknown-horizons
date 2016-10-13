@@ -380,3 +380,24 @@ def test_ticket_2475(gui):
 
 	ResourceProduced.broadcast(warehouse, producer, {RES.FOOD: 0})
 	ResourceProduced.broadcast(warehouse, producer, {RES.FOOD: 0})
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2500(gui):
+	"""Game crashes when exiting the game while the building tool is still active."""
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	settlement = found_settlement(gui, (13, 64), (17, 62))
+
+	# Select lumberjack
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
+
+	# Quit game via pause menu
+	gui.press_key(gui.Key.P)
+	def dialog():
+		gui.trigger('popup_window/okButton')
+
+	with gui.handler(dialog):
+		gui.trigger('menu/quit')
