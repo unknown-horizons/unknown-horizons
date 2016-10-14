@@ -3,6 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
+| 2016.1 | XX |
 | 2015.1 | 75 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
@@ -18,30 +19,18 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2016-XX-XX: Milestone 2016.2
+2016-XX-XX: Milestone 2016.1
 ----------------------------
 changelog date: 9th Oct 2016
 
 ### Gameplay and Balancing
 
 New features
- - #2353 Add a barrier building
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-2016-XX-XX: Milestone 2016.1
-----------------------------
-changelog date: 17th Sep 2016
-
-### Gameplay and Balancing
-
-New features
  - #986  Add a button to discard all resources from a tradeship.
  - #1821 gameplay tips
+ - #2353 Add a barrier building
  
 ### Media Content
-
-New files and features
 
 Grafic:
  - added winery

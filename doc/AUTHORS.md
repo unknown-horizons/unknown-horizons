@@ -7,6 +7,7 @@
 #### Programming
 * MasterofJOKers ()
 * Kilian] (Kilian Köppchen)
+* squiddy (Reiner Gerecke)
 
 #### Sound and Music Artists
 * Ollo123 ()
