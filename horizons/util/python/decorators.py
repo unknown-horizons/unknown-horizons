@@ -97,7 +97,7 @@ def temporary_cachedmethod(timeout):
 					del self.cache_dates[key]
 					return self(*args, **kwargs)
 			else:
-				self.cache_dates[key] = time.time()  # new entry
+				self.cache_dates[key] = time.time() # new entry
 
 			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
 
@@ -213,7 +213,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 	return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults,
 				         f.func_closure)
 
-_make_constants = _make_constants(_make_constants)  # optimize thyself!
+_make_constants = _make_constants(_make_constants) # optimize thyself!
 
 def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 	"""Recursively apply constant binding to functions in a module or class.
