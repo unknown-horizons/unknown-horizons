@@ -857,4 +857,4 @@ class VillageBuilder(AreaBuilder):
 	def __str__(self):
 		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(VillageBuilder)
+decorators.bind_all(VillageBuilder, stoplist=['AI'])

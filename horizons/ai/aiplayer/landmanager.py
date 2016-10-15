@@ -329,4 +329,4 @@ class LandManager(WorldObject):
 		return '%s LandManager(%s)' % (getattr(self, 'owner', 'unknown player'),
 		                               getattr(self, 'worldid', 'none'))
 
-decorators.bind_all(LandManager)
+decorators.bind_all(LandManager, stoplist=['AI'])
