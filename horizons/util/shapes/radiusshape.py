@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.shapes import Rect
+from .rect import Rect
 
 
 class RadiusShape(object):

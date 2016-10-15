@@ -39,7 +39,7 @@ class TileSetLoader(object):
 
 	log = logging.getLogger("util.loaders.tilesetloader")
 
-	tile_sets = {}
+	tile_sets = {} # type: Dict[str, Dict[str, Dict[int, Dict[str, List[float]]]]]
 	_loaded = False
 
 	@classmethod

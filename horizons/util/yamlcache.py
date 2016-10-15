@@ -24,14 +24,15 @@ import os
 import threading
 
 import yaml
+from typing import Optional
 
 from horizons.constants import BUILDINGS, PATHS, RES, TIER, UNITS
 from horizons.util.yamlcachestorage import YamlCacheStorage
 
 try:
-	from yaml import CSafeLoader as SafeLoader
+	from yaml import CSafeLoader as SafeLoader # type: ignore
 except ImportError:
-	from yaml import SafeLoader
+	from yaml import SafeLoader # type: ignore
 
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
@@ -84,7 +85,7 @@ class YamlCache(object):
 	Use get_file for files to cache (default case) or load_yaml_data for special use cases (behaves like yaml.load).
 	"""
 
-	cache = None
+	cache = None # type: Optional[YamlCacheStorage]
 	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
 
 	sync_scheduled = False
