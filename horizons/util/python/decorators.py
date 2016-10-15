@@ -97,12 +97,11 @@ def temporary_cachedmethod(timeout):
 					del self.cache_dates[key]
 					return self(*args, **kwargs)
 			else:
-				self.cache_dates[key] = time.time() # new entry
+				self.cache_dates[key] = time.time()  # new entry
 
 			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
 
-	return functools.partial( _temporary_cachedmethod, timeout=timeout )
-
+	return functools.partial(_temporary_cachedmethod, timeout=timeout)
 
 
 # adapted from http://code.activestate.com/recipes/277940/
@@ -135,7 +134,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 		if opcode in (EXTENDED_ARG, STORE_GLOBAL):
 			return f    # for simplicity, only optimize common cases
 		if opcode == LOAD_GLOBAL:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = co.co_names[oparg]
 			if name in env and name not in stoplist:
 				value = env[name]
@@ -146,8 +145,8 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 					pos = len(newconsts)
 					newconsts.append(value)
 				newcode[i] = LOAD_CONST
-				newcode[i+1] = pos & 0xFF
-				newcode[i+2] = pos >> 8
+				newcode[i + 1] = pos & 0xFF
+				newcode[i + 2] = pos >> 8
 				if verbose:
 					print(name, '-->', value)
 		i += 1
@@ -160,7 +159,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 
 		newtuple = []
 		while newcode[i] == LOAD_CONST:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			newtuple.append(newconsts[oparg])
 			i += 3
 
@@ -173,7 +172,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 
 		if opcode == LOAD_ATTR:
 			obj = newtuple[-1]
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = names[oparg]
 			try:
 				value = getattr(obj, name)
@@ -182,7 +181,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 			deletions = 1
 
 		elif opcode == BUILD_TUPLE:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			if oparg != len(newtuple):
 				continue
 			deletions = len(newtuple)
@@ -192,15 +191,15 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 			continue
 
 		reljump = deletions * 3
-		newcode[i-reljump] = JUMP_FORWARD
-		newcode[i-reljump+1] = (reljump-3) & 0xFF
-		newcode[i-reljump+2] = (reljump-3) >> 8
+		newcode[i - reljump] = JUMP_FORWARD
+		newcode[i - reljump + 1] = (reljump - 3) & 0xFF
+		newcode[i - reljump + 2] = (reljump - 3) >> 8
 
 		n = len(newconsts)
 		newconsts.append(value)
 		newcode[i] = LOAD_CONST
-		newcode[i+1] = n & 0xFF
-		newcode[i+2] = n >> 8
+		newcode[i + 1] = n & 0xFF
+		newcode[i + 2] = n >> 8
 		i += 3
 		if verbose:
 			print("new folded constant:", value)
@@ -214,7 +213,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 	return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults,
 				         f.func_closure)
 
-_make_constants = _make_constants(_make_constants) # optimize thyself!
+_make_constants = _make_constants(_make_constants)  # optimize thyself!
 
 def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 	"""Recursively apply constant binding to functions in a module or class.
