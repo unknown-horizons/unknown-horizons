@@ -124,8 +124,6 @@ class SingleplayerMenu(Window):
 class GameSettingsWidget(object):
 	"""Toggle trader/pirates/disasters and change resource density."""
 
-	resource_densities = [0.5, 0.7, 1, 1.4, 2]
-
 	def __init__(self):
 		self._gui = load_uh_widget('game_settings.xml')
 
@@ -154,11 +152,13 @@ class GameSettingsWidget(object):
 			self._gui.findChild(name=u'lbl_' + setting).capture(Callback(toggle, setting, setting_save_name))
 
 		resource_density_slider = self._gui.findChild(name='resource_density_slider')
+
 		def on_resource_density_slider_change():
 			self._gui.findChild(name='resource_density_lbl').text = T('Resource density:') + u' ' + \
-				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
+				unicode(resource_density_slider.value) + u'x'
 			horizons.globals.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
 			horizons.globals.fife.save_settings()
+
 		resource_density_slider.capture(on_resource_density_slider_change)
 		resource_density_slider.value = horizons.globals.fife.get_uh_setting("MapResourceDensity")
 
@@ -166,7 +166,7 @@ class GameSettingsWidget(object):
 
 	@property
 	def natural_resource_multiplier(self):
-		return self.resource_densities[int(self._gui.findChild(name='resource_density_slider').value)]
+		return self._gui.findChild(name='resource_density_slider').value
 
 	@property
 	def free_trader(self):
@@ -183,11 +183,6 @@ class GameSettingsWidget(object):
 
 class RandomMapWidget(object):
 	"""Create a random map, influence map generation with multiple sliders."""
-
-	map_sizes = [50, 100, 150, 200, 250]
-	water_percents = [20, 30, 40, 50, 60, 70, 80]
-	island_sizes = [30, 40, 50, 60, 70]
-	island_size_deviations = [5, 10, 20, 30, 40]
 
 	def __init__(self, windows, singleplayer_menu, aidata):
 		self._windows = windows
@@ -233,31 +228,31 @@ class RandomMapWidget(object):
 		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		parameters = (
-			('map_size', self.map_sizes, T('Map size:'), 'RandomMapSize'),
-			('water_percent', self.water_percents, T('Water:'), 'RandomMapWaterPercent'),
-			('max_island_size', self.island_sizes, T('Max island size:'), 'RandomMapMaxIslandSize'),
-			('preferred_island_size', self.island_sizes, T('Preferred island size:'), 'RandomMapPreferredIslandSize'),
-			('island_size_deviation', self.island_size_deviations, T('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
+			('map_size', T('Map size:'), 'RandomMapSize'),
+			('water_percent', T('Water:'), 'RandomMapWaterPercent'),
+			('max_island_size', T('Max island size:'), 'RandomMapMaxIslandSize'),
+			('preferred_island_size', T('Preferred island size:'), 'RandomMapPreferredIslandSize'),
+			('island_size_deviation', T('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
 		)
 
-		for param, __, __, setting_name in parameters:
+		for param, __, setting_name in parameters:
 			self._map_parameters[param] = horizons.globals.fife.get_uh_setting(setting_name)
 
-		def make_on_change(param, values, text, setting_name):
+		def make_on_change(param, text, setting_name):
 			# When a slider is changed, update the value displayed in the label, save the value
 			# in the settings and store the value in self._map_parameters
 			def on_change():
 				slider = self._gui.findChild(name=param + '_slider')
-				self._gui.findChild(name=param + '_lbl').text = text + u' ' + unicode(values[int(slider.value)])
+				self._gui.findChild(name=param + '_lbl').text = text + u' ' + unicode(int(slider.value))
 				horizons.globals.fife.set_uh_setting(setting_name, slider.value)
 				horizons.globals.fife.save_settings()
 				self._on_random_parameter_changed()
-				self._map_parameters[param] = values[int(slider.value)]
+				self._map_parameters[param] = int(slider.value)
 			return on_change
 
-		for param, values, text, setting_name in parameters:
+		for param, text, setting_name in parameters:
 			slider = self._gui.findChild(name=param + '_slider')
-			on_change = make_on_change(param, values, text, setting_name)
+			on_change = make_on_change(param, text, setting_name)
 			slider.capture(on_change)
 			slider.value = horizons.globals.fife.get_uh_setting(setting_name)
 			on_change()
