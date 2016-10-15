@@ -35,10 +35,10 @@ class Component(object):
 	"""
 
 	#  Store the name of this component. This has to be overwritten in subclasses
-	NAME = None
+	NAME = None # type: str
 
 	# Store dependencies to other components here
-	DEPENDENCIES = []
+	DEPENDENCIES = [] # type: List[str]
 
 	def __init__(self):
 		"""
