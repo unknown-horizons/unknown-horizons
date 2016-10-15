@@ -21,7 +21,7 @@
 
 import logging
 
-from horizons.ai.aiplayer.behavior.profile import BehaviorManager
+from horizons.ai.aiplayer.behavior import BehaviorManager
 
 
 class Condition(object):

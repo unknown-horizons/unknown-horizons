@@ -55,8 +55,8 @@ class AbstractBuilding(object):
 			self.__init_production_lines()
 
 	__loaded = False
-	buildings = {} # building_id: AbstractBuilding instance
-	_available_buildings = {} # building_id: subclass of AbstractBuilding
+	buildings = {} # type: Dict[int, AbstractBuilding]
+	_available_buildings = {} # type: Dict[int, AbstractBuilding]
 
 	def __init_production_lines(self):
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']

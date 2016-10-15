@@ -60,7 +60,7 @@ class PersonalityManager(object):
 		"""Return a class that contains the relevant personality constants."""
 		return getattr(self._personality, name)
 
-	available_personalities = [] # [personality class, ...]
+	available_personalities = [] # type: List[object]
 
 	@classmethod
 	def prepare_personalities_list(cls):

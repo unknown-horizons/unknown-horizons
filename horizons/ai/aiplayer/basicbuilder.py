@@ -21,6 +21,8 @@
 
 import copy
 
+from typing import Tuple
+
 from horizons.command.building import Build
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
@@ -102,7 +104,7 @@ class BasicBuilder(object):
 		return 'BasicBuilder of building {0:d} at {1!s}, orientation {2:d}'. \
 			format(self.building_id, self.coords, self.orientation)
 
-	__cache = {}
+	__cache = {} # type: Dict[Tuple[int, Tuple[int, int], int], BasicBuilder]
 
 	@classmethod
 	def clear_cache(cls):
