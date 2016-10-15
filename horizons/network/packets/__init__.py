@@ -37,7 +37,7 @@ PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
 	'client' : {},
 	'server' : {},
-}
+} # type: Dict[str, Dict[str, Set[str]]]
 
 class SafeUnpickler(object):
 	"""
