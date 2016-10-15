@@ -35,8 +35,8 @@ import traceback
 
 try:
 	import cPickle as pickle
-except:
-	import pickle
+except ImportError:
+	import pickle # type: ignore
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
 app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')

@@ -26,7 +26,7 @@ import sys
 try:
 	from cStringIO import StringIO
 except ImportError:
-	from StringIO import StringIO
+	from StringIO import StringIO # type: ignore
 
 from horizons.network import NetworkException, PacketTooLarge
 
