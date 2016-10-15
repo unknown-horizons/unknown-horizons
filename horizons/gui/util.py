@@ -33,8 +33,8 @@ from horizons.util.python.callback import Callback
 # Find the best implementation available on this platform
 try:
 	from cStringIO import StringIO
-except:
-	from StringIO import StringIO
+except ImportError:
+	from StringIO import StringIO # type: ignore
 
 
 
