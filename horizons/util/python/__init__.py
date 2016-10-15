@@ -86,7 +86,9 @@ def trim_value(value, min, max):
 		return value
 
 
-class ChainedContainer(collections.Container):
+# TODO Remove ignore once https://github.com/python/typeshed/pull/608 ships
+
+class ChainedContainer(collections.Container): # type: ignore
 	"""
 	Allows membership test in multiple containers.
 
