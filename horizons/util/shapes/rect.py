@@ -21,6 +21,7 @@
 
 from horizons.util.python import Const
 from horizons.util.python.decorators import bind_all
+
 from . import Shape
 from .point import Point
 

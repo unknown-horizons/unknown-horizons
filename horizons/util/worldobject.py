@@ -22,7 +22,7 @@
 import logging
 import weakref
 
-from typing import MutableMapping, Any
+from typing import Any, MutableMapping
 
 from horizons.messaging import WorldObjectDeleted
 from horizons.util.changelistener import ChangeListener

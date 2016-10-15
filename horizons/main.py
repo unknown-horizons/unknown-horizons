@@ -39,7 +39,7 @@ import traceback
 from thread import error as ThreadError  # raised by threading.Lock.release
 
 from fife import fife as fife_module
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 import horizons.globals
 from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLEPLAYER, VERSION
