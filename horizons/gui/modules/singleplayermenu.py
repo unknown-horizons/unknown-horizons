@@ -37,7 +37,7 @@ from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
 from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import InvalidScenarioFileFormat, ScenarioEventHandler
@@ -604,15 +604,6 @@ class ScenarioMapWidget(object):
 		return scenario[language_index][1]
 
 
-class _DataMinimap(Minimap):
-	def __init__(self, position, world):
-		"""Initialize only the very basics needed for `Minimap.get_data()`"""
-		self.use_rotation = False
-		self.location = position
-		self.world = world
-		self._update_world_to_minimap_ratio()
-
-
 def generate_random_minimap(size, parameters):
 	"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
 	# called as standalone basically, so init everything we need
@@ -638,9 +629,9 @@ def generate_random_minimap(size, parameters):
 	map_file = generate_random_map(*parameters)
 	world = load_raw_world(map_file)
 	location = Rect.init_from_topleft_and_size_tuples((0, 0), size)
-	minimap = _DataMinimap(location, world=world)
 
 	# communicate via stdout. Sometimes the process seems to print more information, therefore
 	# we add markers around our data so it's easier for the caller to get to the data.
-	data = minimap.get_data()
+	args = (location, world, Minimap.COLORS['island'], Minimap.COLORS['water'])
+	data = [(x, y, r, g, b) for (x, y), (r, g, b) in iter_minimap_points(*args)]
 	print('DATA', json.dumps(data), 'ENDDATA')
