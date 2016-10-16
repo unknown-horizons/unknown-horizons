@@ -415,6 +415,8 @@ class SavegameUpgrader(object):
 		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
 		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
 
+	def _upgrade_to_rev75(self, db):
+		db("ALTER TABLE ship_route_waypoint ADD COLUMN unload_all BOOL DEFAULT 0")
 
 	def _upgrade(self):
 		# fix import loop

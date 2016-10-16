@@ -178,7 +178,8 @@ CREATE TABLE "pirate_home_point" (
 CREATE TABLE "ship_route_waypoint" (
 	"ship_id" INT,
 	"warehouse_id" INT,
-	"waypoint_index" INT
+	"waypoint_index" INT,
+	"unload_all" BOOL
 );
 
 CREATE TABLE "ship_route_resources" (
