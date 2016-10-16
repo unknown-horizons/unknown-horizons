@@ -217,7 +217,7 @@ class LogBook(PickBeltWidget, Window):
 		def _label(text, font='default'):
 			try:
 				return Label(text=unicode(text), wrap_text=True,
-				             min_size=(325, 0), max_size=(325, 468),
+				             min_size=(325, 0), max_size=(325, 1024),
 				             font=font)
 			except RuntimeError:
 				return None
