@@ -190,7 +190,8 @@ class Minimap(object):
 
 	def get_data(self):
 		"""Returns a list representing the minimap data"""
-		return self._recalculate(dump_data=True)
+		return [(point.x, point.y, r, g, b)
+					for point, (r, g, b) in self._iter_points()]
 
 	def draw_data(self, data):
 		"""Display data from dump_data"""
@@ -464,18 +465,14 @@ class Minimap(object):
 
 		return True
 
-	def _recalculate(self, where=None, dump_data=False):
-		"""Calculate which pixel of the minimap should display what and draw it
-		@param where: Rect of minimap coords. Defaults to self.location
-		@param dump_data: Don't draw but return calculated data"""
-		self.minimap_image.set_drawing_enabled()
+	def _iter_points(self, where=None):
+		"""Returns an iterator over the points.
 
-		rt = self.minimap_image.rendertarget
-		render_name = self._get_render_name("base")
-
+		This can be used to only get the points without having to use any
+		rendering.
+		"""
 		if where is None:
 			where = self.location
-			rt.removeAll(render_name)
 
 		# calculate which area of the real map is mapped to which pixel on the minimap
 		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
@@ -490,11 +487,7 @@ class Minimap(object):
 		water_col = self.COLORS["water"]
 		location_left = self.location.left
 		location_top = self.location.top
-		if dump_data:
-			data = []
-			draw_point = lambda name, fife_point, r, g, b : data.append((fife_point.x, fife_point.y, r, g, b))
-		else:
-			draw_point = rt.addPoint
+
 		fife_point = fife.Point(0, 0)
 
 		use_rotation = self._get_rotation_setting()
@@ -543,11 +536,24 @@ class Minimap(object):
 				else:
 					fife_point.set(x, y)
 
-				draw_point(render_name, fife_point, *color)
+				yield (fife_point, color)
 
-		if dump_data:
-			return data
+	def _recalculate(self, where=None):
+		"""Calculate which pixel of the minimap should display what and draw it
+		@param where: Rect of minimap coords. Defaults to self.location
+		"""
+		self.minimap_image.set_drawing_enabled()
 
+		rt = self.minimap_image.rendertarget
+		render_name = self._get_render_name("base")
+
+		if where is None:
+			rt.removeAll(render_name)
+
+		draw_point = rt.addPoint
+
+		for fife_point, color in self._iter_points(where):
+			draw_point(render_name, fife_point, *color)
 
 	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
