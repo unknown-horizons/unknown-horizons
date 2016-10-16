@@ -21,7 +21,6 @@
 from __future__ import print_function
 
 import itertools
-import json
 import math
 from math import cos, sin
 
