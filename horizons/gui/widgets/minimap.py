@@ -95,6 +95,8 @@ class Minimap(object):
 		@param on_click: function taking 1 argument or None for scrolling
 		@param preview: flag, whether to only show the map as preview
 		@param tooltip: always show this tooltip when cursor hovers over minimap
+
+		NOTE: Preview generation in a different process overwrites this method.
 		"""
 		if isinstance(position, Rect):
 			self.location = position
