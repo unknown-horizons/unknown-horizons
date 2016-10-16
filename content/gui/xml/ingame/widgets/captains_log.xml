@@ -22,8 +22,8 @@
 		</HBox>
 	</VBox> <!-- closes VBox logbook left page -->
 
-    <!-- right page -->
-    <VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_right">
+	<!-- right page -->
+	<VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_right">
 		<ScrollArea name="transparent_scrollarea" min_size="325,468" max_size="325,468">
 			<VBox name="custom_widgets_right" max_size="310,1024" min_size="310,0"
 				comment="In here, widgets defined in yaml get added on runtime." />
