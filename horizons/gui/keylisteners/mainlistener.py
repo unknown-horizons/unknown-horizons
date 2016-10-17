@@ -97,5 +97,8 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.quit()
+			# NOTE Sometimes we get two quit events from FIFE, ignore the second
+			#      when we already shutting down the game
+			if not horizons.globals.fife.quit_requested:
+				horizons.main.quit()
 			command.consume()
