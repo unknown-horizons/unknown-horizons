@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from typing import TYPE_CHECKING, Any
+from horizons.ext.typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
 	from horizons.engine import Fife

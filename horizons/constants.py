@@ -25,9 +25,8 @@ import os
 import os.path
 import platform
 
-from typing import Optional
-
 from horizons.ext.enum import Enum
+from horizons.ext.typing import Optional
 
 
 """This file keeps track of the constants that are used in Unknown Horizons.
