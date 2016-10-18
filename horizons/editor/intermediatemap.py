@@ -27,7 +27,7 @@ SAND = 2
 GRASS = 3
 
 class IntermediateMap(object):
-	
+
 	def __init__(self, world):
 		self.world = world
 		self.session = world.session

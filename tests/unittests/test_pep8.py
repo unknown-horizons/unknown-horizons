@@ -28,7 +28,7 @@ import pep8
 
 
 class TestCodeFormat(TestCase):
-	"""automatical test for code format use pep8""" 
+	"""automatical test for code format use pep8"""
 
 	def test_pep8_dir_tests(self):
 		"""Test that code conform to PEP8 test all files"""

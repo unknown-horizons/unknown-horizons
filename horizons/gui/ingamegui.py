@@ -455,7 +455,7 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()		
+			return self.on_escape()
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 

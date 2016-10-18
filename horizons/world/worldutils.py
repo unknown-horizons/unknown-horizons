@@ -209,7 +209,7 @@ def add_resource_deposits(world, resource_multiplier):
 		local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
 		num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
 		place_objects(local_mountain_locations, num_local_mountains, Mountain)
-		
+
 		# place the local stone deposits
 		local_stone_deposit_locations = get_valid_locations(usable_part, island, *StoneDeposit.size)
 		stone_deposit_locations.extend(local_stone_deposit_locations)
@@ -221,7 +221,7 @@ def add_resource_deposits(world, resource_multiplier):
 	extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
 	num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_clay_base + abs(world.session.random.gauss(0, 1))))))
 	place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
-	
+
 	# place some extra stone deposits
 	extra_stone_base = len(stone_deposit_locations) ** 0.8 / 400.0
 	num_extra_stone_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_stone_base + abs(world.session.random.gauss(0, 1))))))
@@ -263,8 +263,8 @@ def add_nature_objects(world, natural_resource_multiplier):
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-				
-				
+
+
 			# add tree to every nth tile and an animal to one in every M trees
 			if world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
@@ -274,7 +274,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-			
+
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice
 				for (x_dir, y_dir) in world.session.random.sample(fish_directions, 2):

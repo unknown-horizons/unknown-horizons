@@ -38,15 +38,15 @@ from horizons.world.production.producer import Producer
 
 class ProducerOverviewTabBase(OverviewTab):
 	"""Base class for tabs displaying producer data."""
-	
+
 	@property
 	def producer(self):
 		"""The current instance's Producer compontent."""
 		return self.instance.get_component(Producer)
-	
+
 class UnitbuilderTabBase(ProducerOverviewTabBase):
 	"""Tab Baseclass that can be used by unit builders."""
-	
+
 	def show(self):
 		super(UnitbuilderTabBase, self).show()
 		Scheduler().add_new_object(Callback(self.refresh), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
@@ -54,7 +54,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 	def hide(self):
 		super(UnitbuilderTabBase, self).hide()
 		Scheduler().rem_all_classinst_calls(self)
-		
+
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		super(UnitbuilderTabBase, self).refresh()
@@ -74,7 +74,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			self.show_production_is_inactive_container(container_inactive, progress_container,
 			                                           cancel_container, container_active)
 		self.widget.adaptLayout()
-		
+
 	def show_production_is_active_container(self, container_active, container_inactive, progress_container, cancel_container, production_lines):
 		"""Show the container containing the active production."""
 		container_active.parent.showChild(container_active)
@@ -83,7 +83,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		else:
 			if not container_inactive in container_inactive.parent.hidden_children:
 				container_inactive.parent.hideChild(container_inactive)
-				
+
 		self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
 
 	def update_production_is_active_container(self, progress_container, container_active, cancel_container, production_lines):
@@ -91,17 +91,17 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		self.update_progress(progress_container)
 		self.update_queue(container_active)
 		self.update_buttons(container_active, cancel_container)
-		
+
 		needed_res_container = self.widget.findChild(name="UB_needed_resources_container")
 		self.update_needed_resources(needed_res_container)
 
 		# Set built unit info
 		production_line = self.producer._get_production(production_lines[0])
 		produced_unit_id = production_line.get_produced_units().keys()[0]
-		
+
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
 		container_active.findChild(name="headline_UB_builtunit_label").text = _(name)
-		
+
 		self.update_unit_icon(container_active, produced_unit_id)
 
 		upgrades_box = container_active.findChild(name="UB_upgrades_box")
@@ -134,7 +134,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 		set_active_cb = Callback(self.producer.set_active, active=to_active)
 		button_inactive.capture(set_active_cb, event_name="mouseClicked")
-		
+
 		cancel_container.parent.showChild(cancel_container)
 		cancel_button = self.widget.findChild(name="UB_cancel_button")
 		cancel_cb = Callback(CancelCurrentProduction(self.producer).execute, self.instance.session)
@@ -158,13 +158,13 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		            place=place_in_queue+1)
 			# people don't count properly, always starting at 1..
 			icon_name = "queue_elem_"+str(place_in_queue)
-			
+
 			try:
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
 			except RuntimeError,e:
 				# It's possible that this error was raised from a missing thumbnail asset,
 				# so we check against that now and use a fallback thumbnail instead
-			
+
 				# TODO string matching for runtime errors is nightmare fuel
 				# Better: Replace RuntimeError in fife with a more precise error class if possible
 				# and only catch that class here
@@ -174,7 +174,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 					icon = Icon(name=icon_name, image=image, helptext=helptext)
 				else:
 					raise
-			
+
 			rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
 		                                self.instance.session)
 			icon.capture(rm_from_queue_cb, event_name="mouseClicked")

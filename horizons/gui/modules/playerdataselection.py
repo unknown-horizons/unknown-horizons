@@ -59,13 +59,13 @@ class PlayerDataSelection(object):
 			hbox = HBox(name='line_{index}'.format(index=i))
 			hbox.addChildren(colorlabels[i:i+5])
 			self.colors.addChild(hbox)
-		
+
 		playertextfield = self.gui.findChild(name='playername')
 		def playertextfield_clicked():
 			if playertextfield.text == 'Unnamed Traveler':
 				playertextfield.text = "";
 		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
-		
+
 		self.gui.mapEvents(events)
 		self.update_data()
 
@@ -99,12 +99,12 @@ class PlayerDataSelection(object):
 
 	def get_widget(self):
 		return self.gui
-	
+
 	def update_data(self):
 		"""Update the player's name and color from the settings"""
 		self.set_color(horizons.globals.fife.get_uh_setting("ColorID"))
 		self.set_player_name(horizons.globals.fife.get_uh_setting("Nickname"))
-		
+
 	def save_settings(self):
 		"""Stores the current player_name and color into settings"""
 		horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())
