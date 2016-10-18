@@ -109,10 +109,10 @@ class SavegameAccessor(DbReader):
 			self.map_name = self._map_path
 		else:
 			self.map_name = SavegameManager.get_savegamename_from_filename(self._map_path)
-	
+
 		map_padding = self("SELECT value FROM map_properties WHERE name = 'padding'")
 		self.map_padding = int(map_padding[0][0]) if map_padding else MAP.PADDING
-	
+
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()

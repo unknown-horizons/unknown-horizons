@@ -29,7 +29,7 @@ from horizons.world.storage import (
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used for everything that has an inventory.
-	
+
 	Examples for these classes are ships, settlements, buildings, etc.
 	Basically it just adds an inventory, nothing more, nothing less.
 	"""

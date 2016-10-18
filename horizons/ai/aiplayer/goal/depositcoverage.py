@@ -99,7 +99,7 @@ class StoneDepositCoverageGoal(DepositCoverageGoal):
 
 	def get_personality_name(self):
 		return 'StoneDepositCoverageGoal'
-		
+
 class MountainCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_IRON
 
