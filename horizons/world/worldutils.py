@@ -265,15 +265,16 @@ def add_nature_objects(world, natural_resource_multiplier):
 				coastline_tiles.append(tile)
 		
 		#island_fish_ratio is the max number of fish deposits placed by an island, len(sorted(island.ground_map.iteritems()))/50 means 1/50 coastline tiles recieve a fish deposit
-		island_fish_ratio = len(sorted(island.ground_map.iteritems()))/50
+		island_fish_ratio = len(island.ground_map) / 50
 		
 		for i in xrange(0, island_fish_ratio):
 			tile = coastline_tiles[i*(len(coastline_tiles)/island_fish_ratio)]
 			fish_deposits = 0
 			while fish_deposits == 0:
 				#randomly choose 2 directions to place the fish deposit away from the coastline
-				x_dir = fish_directions[world.session.random.randint(0, 8)][0] + fish_directions[world.session.random.randint(0, 8)][0]
-				y_dir = fish_directions[world.session.random.randint(0, 8)][1] + fish_directions[world.session.random.randint(0, 8)][1]
+				randint = world.session.random.randint
+				x_dir = fish_directions[randint(0, 8)][0] + fish_directions[randint(0, 8)][0]
+				y_dir = fish_directions[randint(0, 8)][1] + fish_directions[randint(0, 8)][1]
 				
 				fish_x = tile.x + x_dir * world.session.random.randint(3, 9)
 				fish_y = tile.y + y_dir * world.session.random.randint(3, 9)
