@@ -247,6 +247,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 	Tree = Entities.buildings[BUILDINGS.TREE]
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
 	fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
+	coastline_tiles = []
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
@@ -274,18 +275,29 @@ def add_nature_objects(world, natural_resource_multiplier):
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-			
-			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
-				# try to place fish: from the current position go to a random directions twice
-				for (x_dir, y_dir) in world.session.random.sample(fish_directions, 2):
-					# move a random amount in both directions
-					fish_x = x + x_dir * world.session.random.randint(3, 9)
-					fish_y = y + y_dir * world.session.random.randint(3, 9)
-					# now we have the location, check if we can build here
-					if (fish_x, fish_y) in world.ground_map:
-						Build(FishDeposit, fish_x, fish_y, world,
-						      45 + world.session.random.randint(0, 3) * 90,
-						      ownerless=True)(issuer=None)
+		
+			#list all coastline tiles
+			if 'coastline' in tile.classes:
+				coastline_tiles.append(tile)
+		
+		#island_fish_ratio is the max number of fish deposits placed by an island, len(sorted(island.ground_map.iteritems()))/50 means 1/50 coastline tiles recieve a fish deposit
+		island_fish_ratio = len(island.ground_map) / 50
+		
+		for i in xrange(0, island_fish_ratio):
+			tile = coastline_tiles[i*(len(coastline_tiles)/island_fish_ratio)]
+			fish_deposits = 0
+			while fish_deposits == 0:
+				#randomly choose 2 directions to place the fish deposit away from the coastline
+				randint = world.session.random.randint
+				x_dir = fish_directions[randint(0, 8)][0] + fish_directions[randint(0, 8)][0]
+				y_dir = fish_directions[randint(0, 8)][1] + fish_directions[randint(0, 8)][1]
+				
+				fish_x = tile.x + x_dir * world.session.random.randint(3, 9)
+				fish_y = tile.y + y_dir * world.session.random.randint(3, 9)
+				if (fish_x, fish_y) in world.ground_map:
+					Build(FishDeposit, fish_x, fish_y, world, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
+					fish_deposits = 1
+					break
 
 	# TODO HACK BAD THING revert hack so trees don't start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False
