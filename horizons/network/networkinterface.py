@@ -346,7 +346,7 @@ class NetworkInterface(object):
 			self._client_data.name = plnew.name
 
 	def change_color(self, new_color, save=True):
-		new_color %= len(set(Color))
+		new_color %= len(set(Color.get_defaults()))
 
 		if save:
 			horizons.globals.fife.set_uh_setting("ColorID", new_color)
@@ -527,7 +527,7 @@ class MPGame(object):
 				'id':         index,
 				'sid':        player.sid,
 				'name':       player.name,
-				'color':      Color[player.color],
+				'color':      Color.get(player.color),
 				'clientid':   player.clientid,
 				'local':      self.netif.get_client_name() == player.name,
 				'ai':         False,
