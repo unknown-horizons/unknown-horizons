@@ -36,7 +36,7 @@ class TestCodeFormat(TestCase):
 			'W2',    # whitespace warnings
 		]
 
-		checker = pep8.StyleGuide(select=tests, paths=['.'], reporter=pep8.StandardReport)
+		checker = pep8.StyleGuide(select=tests, paths=['horizons', 'tests', 'development'], reporter=pep8.StandardReport)
 		report = checker.check_files()
 
 		self.assertEqual(report.total_errors, 0,
