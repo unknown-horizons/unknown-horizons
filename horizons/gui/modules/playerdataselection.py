@@ -43,7 +43,7 @@ class PlayerDataSelection(object):
 		events = {}
 
 		# need the id to save it as int in settings file.
-		for color in (Color if color_palette is None else color_palette):
+		for color in (Color.get_defaults() if color_palette is None else color_palette):
 			label = Label(name = u'{color}'.format(color=color.name),
 			              text = u"    ",
 			              max_size = (20, 20),
@@ -75,12 +75,12 @@ class PlayerDataSelection(object):
 		@param color_id: int. Gets converted to util.Color object.
 		"""
 		try:
-			self.selected_color = Color[color_id]
+			self.selected_color = Color.get(color_id)
 		except KeyError:
 			# For some reason, color_id can be 0 apparently:
 			# http://forum.unknown-horizons.org/viewtopic.php?t=6927
 			# Reset that setting to 1 if the problem occurs.
-			self.selected_color = Color[1]
+			self.selected_color = Color.get(1)
 		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
 
 	def set_player_name(self, playername):

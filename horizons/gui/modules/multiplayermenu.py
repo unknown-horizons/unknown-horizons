@@ -530,7 +530,7 @@ class GameLobby(Window):
 
 		assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()
 		            if p["name"] != NetworkInterface().get_client_name()]
-		unused_colors = set(Color) - set(assigned)
+		unused_colors = set(Color.get_defaults()) - set(assigned)
 
 		playerdata = PlayerDataSelection(color_palette=unused_colors)
 		playerdata.set_player_name(NetworkInterface().get_client_name())

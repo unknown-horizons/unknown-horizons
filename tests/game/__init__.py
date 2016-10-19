@@ -173,7 +173,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 		players.append({
 			'id': 1,
 			'name': 'foobar',
-			'color': Color[1],
+			'color': Color.get(1),
 			'local': True,
 			'ai': False,
 			'difficulty': human_difficulty,
@@ -184,7 +184,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 		players.append({
 			'id': id,
 			'name': ('AI' + str(i)),
-			'color': Color[id],
+			'color': Color.get(id),
 			'local': (id == 1),
 			'ai': True,
 			'difficulty': ai_difficulty,

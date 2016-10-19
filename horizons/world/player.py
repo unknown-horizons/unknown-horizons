@@ -130,7 +130,7 @@ class Player(ComponentHolder, WorldObject):
 		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
 			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
 			" FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
+		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
 
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player."""
