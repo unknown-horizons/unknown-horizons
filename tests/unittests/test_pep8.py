@@ -21,7 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 from unittest import TestCase
 
 import pep8
