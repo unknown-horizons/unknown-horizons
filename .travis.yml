@@ -26,6 +26,7 @@ script:
   - pep8 --count horizons/ tests/ development/
   - COVERAGE_FILE=.coverage.nongui python run_tests.py --verbose --nologcapture --with-coverage
   - RUNCOV=1 python run_tests.py -a gui tests/gui --verbose --nologcapture
+after_success:
   - coverage combine
   - coveralls
 notifications:
