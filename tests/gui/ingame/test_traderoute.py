@@ -96,3 +96,13 @@ def test_traderoute(gui):
 	assert Point(38, 39) in ship.route.waypoints[0]['warehouse'].position
 	assert Point(15, 26) in ship.route.waypoints[1]['warehouse'].position
 	assert ship.route.waypoints[1]['resource_list'] == {RES.FOOD: 120}
+
+	# Since this test is rather complex, we test bug #2525 as well
+
+	# open pause menu and quit
+	gui.trigger('mainhud/gameMenuButton')
+	def func1():
+		gui.trigger('popup_window/okButton')
+
+	with gui.handler(func1):
+		gui.trigger('menu/closeButton')

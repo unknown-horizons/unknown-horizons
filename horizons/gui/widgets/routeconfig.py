@@ -90,7 +90,10 @@ class RouteConfig(Window):
 
 		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
-			self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
+			# If message_widget is not defined anymore, we're closing the game right
+			# now
+			if self.session.ingame_gui.message_widget:
+				self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
 
 	def on_instance_removed(self):
 		self._windows.close()
