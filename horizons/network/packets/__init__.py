@@ -26,7 +26,7 @@ import sys
 try:
 	from cStringIO import StringIO
 except ImportError:
-	from StringIO import StringIO
+	from StringIO import StringIO # type: ignore
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -37,7 +37,7 @@ PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
 	'client' : {},
 	'server' : {},
-}
+} # type: Dict[str, Dict[str, Set[str]]]
 
 class SafeUnpickler(object):
 	"""

@@ -30,7 +30,8 @@ from horizons.util.python import decorators
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""
 
-	_deposit_resource_id = None # the resource that has to be in the resource deposit
+	# the resource that has to be in the resource deposit
+	_deposit_resource_id = None # type: int
 
 	def _have_reachable_deposit(self, resource_id):
 		"""Returns True if there is a resource deposit outside the settlement that is not owned by another player."""

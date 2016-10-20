@@ -24,8 +24,8 @@ import os.path
 
 try:
 	import cPickle as pickle
-except:
-	import pickle
+except ImportError:
+	import pickle # type: ignore
 
 class YamlCacheStorage(object):
 	"""
