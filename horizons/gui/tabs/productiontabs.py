@@ -99,7 +99,7 @@ class ProductionOverviewTab(OverviewTab):
 
 			centered_container = container.findChild(name='centered_production_icons')
 			center_y = self._center_production_line(container, production)
-			centered_container.position = (centered_container.position[0], center_y)
+			centered_container.position = (centered_container.position[0], center_y - 44 // 2)
 			self._set_resource_amounts(container, production)
 
 			if production.is_paused():
@@ -162,7 +162,7 @@ class ProductionOverviewTab(OverviewTab):
 			self._draw_pretty_arrows(parent_container, input_amount, x=58, y=center_y, out=False)
 		if output_amount > 0:
 			self._draw_pretty_arrows(parent_container, output_amount, x=96, y=center_y, out=True)
-		return center_y
+		return center_y + self.ICON_HEIGHT // 2
 
 	def _draw_pretty_arrows(self, parent_container, amount, x=0, y=0, out=False):
 		"""Draws incoming or outgoing arrows for production line container."""
