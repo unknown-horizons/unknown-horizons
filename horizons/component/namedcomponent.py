@@ -28,7 +28,7 @@ class NamedComponent(Component):
 
 	NAME = "namedcomponent"
 
-	names_used = []
+	names_used = [] # type: List[str]
 
 	def __init__(self, name=None):
 		super(NamedComponent, self).__init__()

@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ext.typing import Tuple
 from horizons.messaging.messagebus import MessageBus
 from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
@@ -32,7 +33,7 @@ class Message(object):
 	additional expected arguments are defined on the class-level attribute `arguments`,
 	these will be stored on the instance.
 	"""
-	arguments = tuple()
+	arguments = tuple() # type: Tuple[str, ...]
 	bus = MessageBus
 
 	def __init__(self, sender, *args):
