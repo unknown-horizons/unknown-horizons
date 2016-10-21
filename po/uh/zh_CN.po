@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-09-17 03:15+0000\n"
-"Last-Translator: Arm Coon <armcoon@gmail.com>\n"
+"PO-Revision-Date: 2016-10-21 01:54+0000\n"
+"Last-Translator: fliar <fliar@live.jp>\n"
 "Language-Team: Chinese (China) "
 "<https://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -25,39 +25,39 @@ msgstr "未知地平线已崩溃。"
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "对此我们表示非常抱歉，我们会尽快修复潜在的错误。"
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "所以我们需要日志文件中的相关信息："
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
-msgstr ""
+msgstr "请通过IRC或我们的论坛发送给我们，相关信息请参阅http://unknown-horizons.org。"
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
+msgstr "错误：无法找到需要的库：“PyYAML”。"
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "PyYAML（依赖库）没有找到，需要安装。"
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
+msgstr "Windows安装程序可以在这里找到：http://pyyaml.org/wiki/PyYAML。"
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
-msgstr ""
+msgstr "Linux用户可以用包管理器搜索“pyyaml”或“python-yaml”安装。"
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "感谢您使用未知地平线！"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
