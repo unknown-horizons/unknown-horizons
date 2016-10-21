@@ -25,7 +25,7 @@ from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
 
 
-class CONDITIONS(object):
+class ConditionsRegistry(Registry):
 	"""
 	Class that holds all available conditions.
 
@@ -37,27 +37,27 @@ class CONDITIONS(object):
 	  1. possible condition change is notified somewhere in the game code
 	  2. condition is checked periodically
 	"""
-	__metaclass__ = Registry
+	def __init__(self):
+		super(ConditionsRegistry, self).__init__()
+		self.check_periodically = []
 
-	check_periodically = []
-
-	@classmethod
-	def register_function(cls, func, periodically=False):
+	def register_function(self, func, periodically=False):
 		"""Register condition.
 
 		`periodically` means that this condition function will be called periodically
 		by the ScenarioEventHandler.
 		"""
 		name = func.__name__
-		cls.registry[name] = func
-		# allow CONDITIONS.example_condition_name to work, used as identifier to notify
+		self.registry[name] = func
+		# allow instance.example_condition_name to work, used as identifier to notify
 		# about condition change (see 1)
-		setattr(cls, name, name)
+		setattr(self, name, name)
 
 		if periodically:
-			cls.check_periodically.append(name)
+			self.check_periodically.append(name)
 
 
+CONDITIONS = ConditionsRegistry()
 register = CONDITIONS.register
 
 

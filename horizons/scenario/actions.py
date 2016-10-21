@@ -26,28 +26,27 @@ from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.command.unit import CreateUnit
 from horizons.constants import MESSAGES
 from horizons.messaging import SettlerUpdate
-from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.python.registry import Registry
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
 
+from .conditions import CONDITIONS
 
-class ACTIONS(object):
+
+class ActionsRegistry(Registry):
 	"""Class that holds all available action functions."""
-	__metaclass__ = Registry
-
-	@classmethod
-	def register_function(cls, func, name=None):
+	def register_function(self, func, name=None):
 		"""Register action.
 
 		By default, the function's name is used as identifier of the action. You can supply
 		a `name` parameter to use instead.
 		"""
-		cls.registry[name or func.__name__] = func
+		self.registry[name or func.__name__] = func
 
 
+ACTIONS = ActionsRegistry()
 register = ACTIONS.register
 
 
