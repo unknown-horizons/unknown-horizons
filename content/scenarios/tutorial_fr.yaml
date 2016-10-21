@@ -190,10 +190,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Atteignez un stock d'au moins 30 outils. Ceci pourra vous prendre du temps.]
   - [Headline, 'MISSION : COMMERCER']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - 'Excellent ! Le bateau-marchand va maintenant s''arrêter à votre entrepôt de temps en temps.
 
 
-    Let''s continue our tutorial on how to trade.'
+    Continuons ce tutoriel et voyons comment commercer.'
   - Tout d'abord, cliquez sur votre entrepôt, puis sur le troisième onglet.
   - Ensuite, cliquez sur l'un des trois emplacements et sélectionnez un bien à acheter ou à vendre.
   - Après avoir sélectionné un type de produit, la barre verte le long de l'emplacement (si visible) vous indique le niveau de stock de ce produit.
@@ -653,4 +653,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages, 2 fuzzy translations.
+  translation_status: 187 translated messages, 1 fuzzy translation.
