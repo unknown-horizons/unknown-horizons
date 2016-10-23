@@ -144,6 +144,7 @@ def create_resource_icon(res_id, db):
 	@param db: dbreader for main db"""
 	widget = Icon(image=get_res_icon_path(res_id))
 	widget.helptext = db.get_res_name(res_id)
+	widget.scale = True
 	return widget
 
 
