@@ -147,9 +147,9 @@ class Build(Command):
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
-		if (building.id == BUILDINGS.WAREHOUSE
-		    and isinstance(building.owner, HumanPlayer)
-		    and horizons.globals.fife.get_uh_setting("AutoUnload")):
+		if (building.id == BUILDINGS.WAREHOUSE and
+		    	isinstance(building.owner, HumanPlayer) and
+		    	horizons.globals.fife.get_uh_setting("AutoUnload")):
 			ship = WorldObject.get_object_by_id(self.ship)
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory

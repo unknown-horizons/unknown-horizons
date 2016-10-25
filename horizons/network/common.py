@@ -115,8 +115,8 @@ class Player(object):
 
 	def join(self, game, packet):
 		""" assigns player data sent by create/join-command to the player """
-		assert (isinstance(packet, packets.client.cmd_creategame)
-		        or isinstance(packet, packets.client.cmd_joingame))
+		assert (isinstance(packet, packets.client.cmd_creategame) or
+		        isinstance(packet, packets.client.cmd_joingame))
 		self.game     = game
 		self.version  = packet.clientversion
 		self.name     = packet.playername

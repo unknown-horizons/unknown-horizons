@@ -131,9 +131,9 @@ class Sound(object):
 		self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 		#TODO find cleaner way to check for this:
 		# check whether last track has finished:
-		if (self.music is not None
-		    and self._new_byte_pos == self._old_byte_pos
-		    and self._new_smpl_pos == self._old_smpl_pos):
+		if (self.music is not None and
+		    self._new_byte_pos == self._old_byte_pos and
+		    self._new_smpl_pos == self._old_smpl_pos):
 			# choose random new track, but not one we played very recently
 			track = random.choice([m for m in self.music if m not in self.last_tracks])
 			self.play_sound('bgsound', track)

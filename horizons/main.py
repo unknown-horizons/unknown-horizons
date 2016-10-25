@@ -310,8 +310,8 @@ def setup_AI_settings(command_line_arguments):
 		AI.HUMAN_AI = True
 
 def setup_debug_mode(command_line_arguments):
-	if not (command_line_arguments.debug_module
-	        and 'fife' not in command_line_arguments.debug_module):
+	if not (command_line_arguments.debug_module and
+	        'fife' not in command_line_arguments.debug_module):
 		horizons.globals.fife._log.logToPrompt = True
 
 	if command_line_arguments.debug_log_only:
