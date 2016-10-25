@@ -45,4 +45,3 @@ elif sys.argv[3] == 'callers':
 	p.print_callers()
 else:
 	print('invalid arg')
-

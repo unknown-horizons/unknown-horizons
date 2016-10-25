@@ -172,4 +172,3 @@ def unserialize(data, validate=False, protocol=0):
 
 import horizons.network.packets.server
 import horizons.network.packets.client
-
