@@ -124,7 +124,8 @@ class MainSquareOverviewTab(AccountTab):
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	widget = "mainsquare_inhabitants.xml"
-	LEVEL = None # overwrite in subclass
+	# overwrite in subclass
+	LEVEL = None # type: int
 
 	def __init__(self, instance):
 		self.max_inhabitants = instance.session.db.get_tier_inhabitants_max(self.__class__.LEVEL)

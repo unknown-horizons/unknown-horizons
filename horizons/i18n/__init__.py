@@ -47,7 +47,7 @@ from horizons.messaging import LanguageChanged
 log = logging.getLogger("i18n")
 
 
-LANGCACHE = {}
+LANGCACHE = {} # type: Dict[str, str]
 
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""

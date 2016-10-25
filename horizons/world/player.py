@@ -26,6 +26,7 @@ from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
+from horizons.ext.typing import Any, Sequence, Union
 from horizons.messaging import PlayerInventoryUpdated, PlayerLevelUpgrade, SettlerUpdate
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
@@ -43,7 +44,7 @@ class Player(ComponentHolder, WorldObject):
 	STATS_UPDATE_INTERVAL = 3 # seconds
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
-	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
+	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},) # type: Sequence[Union[str, Dict[str, Any]]]
 
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):

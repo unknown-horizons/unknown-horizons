@@ -149,7 +149,8 @@ class Minimap(object):
 
 	__minimap_id_counter = itertools.count()
 	__ship_route_counter = itertools.count()
-	_instances = [] # all active instances
+	# all active instances
+	_instances = [] # type: List[Minimap]
 
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 

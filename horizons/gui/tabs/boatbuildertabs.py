@@ -27,6 +27,7 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
 from horizons.command.production import AddProduction, CancelCurrentProduction, RemoveFromQueue
 from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
 from horizons.engine import Fife
+from horizons.ext.typing import Tuple
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
@@ -293,7 +294,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 		#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
 		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
 		#(UNITS.WHALER, PRODUCTIONLINES.xxx),
-	]
+	] # type: List[Tuple[int, int]]
 
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
@@ -317,7 +318,7 @@ class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 		#(UNITS.NAVAL_CUTTER, PRODUCTIONLINES.NAVAL_CUTTER),
 		#(UNITS.BOMBADIERE, PRODUCTIONLINES.BOMBADIERE),
 		#(UNITS.SLOOP_O_WAR, PRODUCTIONLINES.SLOOP_O_WAR),
-	]
+	] # type: List[Tuple[int, int]]
 
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):

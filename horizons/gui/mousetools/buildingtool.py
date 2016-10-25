@@ -31,6 +31,7 @@ from horizons.command.sounds import PlaySound
 from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.constants import BUILDINGS, GFX
 from horizons.entities import Entities
+from horizons.ext.typing import TYPE_CHECKING
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget
@@ -40,6 +41,9 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
+
+if TYPE_CHECKING:
+	from fife.extensions.pychan.widgets import Widget
 
 
 class BuildingTool(NavigationTool):
@@ -91,11 +95,12 @@ class BuildingTool(NavigationTool):
 	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
-	_last_road_built = []
+	_last_road_built = [] # type: List[int]
 
 	send_hover_instances_update = False
 
-	gui = None # share gui between instances
+	# share gui between instances
+	gui = None # type: Widget
 
 	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
