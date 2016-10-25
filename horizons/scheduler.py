@@ -209,9 +209,9 @@ class Scheduler(LivingObject):
 		for key in self.schedule:
 			callback_objects = self.schedule[key]
 			for i in xrange(len(callback_objects) - 1, -1, -1):
-				if (callback_objects[i].class_instance is instance
-				    and callback_objects[i].callback == callback
-				    and not hasattr(callback_objects[i], "invalid")):
+				if (callback_objects[i].class_instance is instance and
+				    callback_objects[i].callback == callback and not
+				    hasattr(callback_objects[i], "invalid")):
 					del callback_objects[i]
 					removed_calls += 1
 

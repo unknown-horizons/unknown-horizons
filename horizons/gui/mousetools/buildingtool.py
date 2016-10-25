@@ -542,9 +542,9 @@ class BuildingTool(NavigationTool):
 
 			# check how to continue: either build again or escape
 			shift = evt.isShiftPressed() or horizons.globals.fife.get_uh_setting('UninterruptedBuilding')
-			if ((shift and not self._class.id == BUILDINGS.WAREHOUSE)
-			    or not found_buildable
-			    or self._class.class_package == 'path'):
+			if ((shift and not self._class.id == BUILDINGS.WAREHOUSE) or not
+			    	found_buildable or
+			    	self._class.class_package == 'path'):
 				# build once more
 				self._restore_transparencified_instances()
 				self.highlight_buildable(changed_tiles)

@@ -210,8 +210,8 @@ class Rect(Shape):
 		@param rect: Rect that will be intersected with this rect.
 		@return: A bool.
 		"""
-		return not (rect.right < self.left or self.right < rect.left
-		            or rect.bottom < self.top or self.bottom < rect.top)
+		return not (rect.right < self.left or self.right < rect.left or
+		            rect.bottom < self.top or self.bottom < rect.top)
 
 	def get_corners(self):
 		"""Returns corners of rect in this order: topleft topright bottomright bottomleft
@@ -247,8 +247,8 @@ class Rect(Shape):
 	def __eq__(self, other):
 		if not isinstance(other, Rect):
 			return False
-		return (self.top == other.top and self.left == other.left
-		        and self.right == other.right and self.bottom == other.bottom)
+		return (self.top == other.top and self.left == other.left and
+		        self.right == other.right and self.bottom == other.bottom)
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
