@@ -61,7 +61,7 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 
 	Implementation based on https://github.com/unknown-horizons/unknown-horizons/issues/749 .
 	"""
-	LINES_PER_PAGE = 19
+	LINES_PER_PAGE = 12
 
 	widget_file_name = 'island_production.xml'
 
