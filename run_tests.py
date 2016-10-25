@@ -26,7 +26,6 @@ from __future__ import print_function
 import gettext
 import sys
 
-from horizons.ext.dummy import Dummy
 
 try:
 	import nose
@@ -48,6 +47,8 @@ def mock_fife():
 	Using a custom import hook, we catch all imports of fife and provide a
 	dummy module.
 	"""
+	from tests.dummy import Dummy
+
 	class Importer(object):
 
 		def find_module(self, fullname, path=None):

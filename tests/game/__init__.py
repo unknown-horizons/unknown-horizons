@@ -29,7 +29,6 @@ import mock
 import horizons.globals
 import horizons.main
 import horizons.world	# needs to be imported before session
-from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
@@ -40,6 +39,7 @@ from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.color import Color
 
 from tests import RANDOM_SEED
+from tests.dummy import Dummy
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
