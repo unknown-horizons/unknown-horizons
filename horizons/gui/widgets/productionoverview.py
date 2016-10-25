@@ -81,21 +81,40 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		self._gui.findChild(name='backwardButton').capture(self.go_to_previous_page)
 
 	@property
+	def displayed_resources(self):
+		"""
+		Returns all resources of the settlement that should be shown.
+		"""
+		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+		return [(resource_id, amount) for (resource_id, amount) in data
+		        if self.db.get_res_inventory_display(resource_id)]
+
+	@property
 	def max_pages(self):
-		return int(math.ceil(len(self.settlement.produced_res) / float(self.LINES_PER_PAGE)))
+		"""
+		Returns number of pages the resources need.
+		"""
+		return int(math.ceil(len(self.displayed_resources) / float(self.LINES_PER_PAGE)))
 
 	def go_to_next_page(self):
+		"""
+		Scrolls forward two pages. `self.current_page` will always be the index of the
+		left page of the book.
+		"""
 		self.current_page = min(self.max_pages - 1, self.current_page + 2)
+		self.current_page -= self.current_page % 2
 		self.refresh()
 
 	def go_to_previous_page(self):
+		"""
+		Scrolls backward two pages. `self.current_page` will always be the index of the
+		left page of the book.
+		"""
 		self.current_page = max(0, self.current_page - 2)
 		self.refresh()
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
-
-		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
 
 		name = self.settlement.get_component(NamedComponent).name
 		text = _('Production overview of {settlement}').format(settlement=name)
@@ -109,11 +128,14 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		else:
 			backward_button.set_active()
 
-		if self.current_page == self.max_pages - 1:
+		max_left_page_idx = self.max_pages - 1
+		max_left_page_idx -= max_left_page_idx % 2
+		if self.current_page == max_left_page_idx:
 			forward_button.set_inactive()
 		else:
 			forward_button.set_active()
 
+		data = self.displayed_resources
 		data = data[self.current_page * self.LINES_PER_PAGE:(self.current_page + 2) * self.LINES_PER_PAGE]
 
 		for idx, (resource_id, amount) in enumerate(data, start=1):
@@ -128,9 +150,6 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		self._page_right.adaptLayout()
 
 	def _add_line_to_gui(self, container, resource_id, amount):
-		displayed = self.db.get_res_inventory_display(resource_id)
-		if not displayed:
-			return
 		res_name = self.db.get_res_name(resource_id)
 
 		icon = create_resource_icon(resource_id, self.db)
