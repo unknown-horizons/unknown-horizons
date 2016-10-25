@@ -21,7 +21,6 @@
 
 import horizons.globals
 from horizons.constants import EDITOR, GROUND, VIEW
-from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
@@ -36,6 +35,14 @@ from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSett
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
+
+
+class DummyLogbook(object):
+	"""
+	Dummy object that provides the minimal interface for the editor's ingame gui to work.
+	"""
+	def display_message_history(self):
+		pass
 
 
 class IngameGui(LivingObject):
@@ -53,10 +60,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.show_menu = Dummy
-		self.hide_menu = Dummy
+		self.show_menu = lambda x: 0
+		self.hide_menu = lambda: 0
 		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy
+		self.logbook = DummyLogbook()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
