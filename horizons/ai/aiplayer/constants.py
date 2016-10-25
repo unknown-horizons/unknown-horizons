@@ -75,8 +75,8 @@ class BUILDING_PURPOSE:
 	STONE_PIT = 34
 	STONEMASON = 35
 
-	purpose_to_building = {}
-	building_to_purpose = {}
+	purpose_to_building = {} # type: Dict[int, int]
+	building_to_purpose = {} # type: Dict[int, int]
 
 	@classmethod
 	def init_translation(cls):

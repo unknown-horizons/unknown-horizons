@@ -104,12 +104,12 @@ class TearingTool(NavigationTool):
 				self.tear_tool_active = False
 				self.on_escape()
 			evt.consume()
-			
+
 	def confirm_ranged_delete(self, building):
 			buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
 			if buildings_to_destroy == 0:
 				return True
-			
+
 			title = _("Destroy all buildings")
 			msg = _("This will destroy all the buildings that fall outside of"
 		            " the settlement range.")

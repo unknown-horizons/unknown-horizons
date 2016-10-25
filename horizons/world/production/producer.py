@@ -59,6 +59,7 @@ class Producer(Component):
 	    'FullUtilization': FullUtilization
 	}
 
+	produces_resource = True
 	production_class = Production
 
 	# INIT
@@ -557,6 +558,7 @@ class QueueProducer(Producer):
 class ShipProducer(QueueProducer):
 	"""Uses queues to produce naval units"""
 
+	produces_resource = False
 	production_class = UnitProduction
 
 	def get_unit_production_queue(self):
@@ -608,6 +610,8 @@ class ShipProducer(QueueProducer):
 
 class GroundUnitProducer(ShipProducer):
 	"""Uses queues to produce groundunits"""
+
+	produces_resource = False
 
 	def _place_unit(self, unit):
 		radius = 1

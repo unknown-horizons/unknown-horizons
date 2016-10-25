@@ -26,6 +26,7 @@ import json
 import locale
 import logging
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -36,7 +37,7 @@ from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
 from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import InvalidScenarioFileFormat, ScenarioEventHandler
@@ -330,6 +331,11 @@ class RandomMapWidget(object):
 
 		with open(self._preview_output, 'r') as f:
 			data = f.read()
+			# Sometimes the subprocess outputs more then the minimap data, e.g. debug
+			# information. Since we just read from its stdout, parse out the data that
+			# is relevant to us.
+			data = re.findall(r'^DATA (\[\[.*\]\]) ENDDATA$', data, re.MULTILINE)[0]
+			data = json.loads(data)
 
 		os.unlink(self._preview_output)
 		self._preview_process = None
@@ -602,7 +608,6 @@ def generate_random_minimap(size, parameters):
 	"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
 	# called as standalone basically, so init everything we need
 	from horizons.entities import Entities
-	from horizons.ext.dummy import Dummy
 	from horizons.main import _create_main_db
 
 	if not VERSION.IS_DEV_VERSION:
@@ -624,16 +629,9 @@ def generate_random_minimap(size, parameters):
 	map_file = generate_random_map(*parameters)
 	world = load_raw_world(map_file)
 	location = Rect.init_from_topleft_and_size_tuples((0, 0), size)
-	minimap = Minimap(
-		location,
-		session=None,
-		view=None,
-		world=world,
-		targetrenderer=Dummy(),
-		imagemanager=Dummy(),
-		cam_border=False,
-		use_rotation=False,
-		preview=True)
 
-	# communicate via stdout
-	print(minimap.dump_data())
+	# communicate via stdout. Sometimes the process seems to print more information, therefore
+	# we add markers around our data so it's easier for the caller to get to the data.
+	args = (location, world, Minimap.COLORS['island'], Minimap.COLORS['water'])
+	data = [(x, y, r, g, b) for (x, y), (r, g, b) in iter_minimap_points(*args)]
+	print('DATA', json.dumps(data), 'ENDDATA')

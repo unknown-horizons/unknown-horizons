@@ -60,8 +60,10 @@ class RouteConfig(Window):
 		if not hasattr(instance, 'route'):
 			CreateRoute(instance).execute(self.session)
 
-		# We must make sure that the createRoute command has successfully finished, even in network games.
-		Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
+			# We must make sure that the createRoute command has successfully finished, even in network games.
+			Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
+		else:
+			self._init_gui()
 
 	@property
 	def session(self):
@@ -94,7 +96,10 @@ class RouteConfig(Window):
 
 		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
-			self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
+			# If message_widget is not defined anymore, we're closing the game right
+			# now
+			if self.session.ingame_gui.message_widget:
+				self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
 
 	def on_instance_removed(self):
 		self._windows.close()

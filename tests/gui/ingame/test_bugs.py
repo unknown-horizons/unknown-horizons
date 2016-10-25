@@ -21,11 +21,12 @@
 
 from horizons.command.building import Tear
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, UNITS
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES, UNITS
+from horizons.messaging import ResourceProduced
 from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship, move_ship
-from tests.utils import mark_expected_failure
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -352,7 +353,6 @@ def test_ticket_2117(gui):
 	gui.trigger('settings_window/okButton')
 
 
-@mark_expected_failure
 @gui_test(use_dev_map=True)
 def test_ticket_2419(gui):
 	"""Game crashes when setting speed to zero and pressing pause twice"""
@@ -360,3 +360,51 @@ def test_ticket_2419(gui):
 	gui.session.speed_set(0)
 	gui.press_key(gui.Key.P)
 	gui.press_key(gui.Key.P)
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2475(gui):
+	"""Game crashes when two resources are produced in the same tick and the production
+	finished icon is about to be shown."""
+
+	# speed up animation to trigger bug earlier
+	gui.session.ingame_gui.production_finished_icon_manager.animation_duration = 1
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	settlement = found_settlement(gui, (13, 64), (17, 62))
+
+	# Place a lumberjack
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
+	gui.cursor_click(18, 57, 'left', shift=True)
+
+	lumberjack = settlement.buildings_by_id[BUILDINGS.LUMBERJACK][0]
+	storage = lumberjack.get_component(StorageComponent)
+	producer = lumberjack.get_component(Producer)
+
+	storage.inventory.alter(RES.BOARDS, 5)
+
+	producer.on_production_finished({RES.BOARDS: 1})
+	producer.on_production_finished({RES.BOARDS: 1})
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2500(gui):
+	"""Game crashes when exiting the game while the building tool is still active."""
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	settlement = found_settlement(gui, (13, 64), (17, 62))
+
+	# Select lumberjack
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
+
+	# Quit game via pause menu
+	gui.press_key(gui.Key.P)
+	def dialog():
+		gui.trigger('popup_window/okButton')
+
+	with gui.handler(dialog):
+		gui.trigger('menu/quit')

@@ -74,6 +74,8 @@ def found_settlement(gui, ship_pos, (x, y)):
 	gui.cursor_click(x, y, 'left')
 	assert isinstance(gui.cursor, CursorTool)
 
+	return gui.session.world.player.settlements[-1]
+
 
 def saveload(gui):
 	"""Save and load the game (gui test version). Use like this:

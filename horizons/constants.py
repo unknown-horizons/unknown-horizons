@@ -26,6 +26,7 @@ import os.path
 import platform
 
 from horizons.ext.enum import Enum
+from horizons.ext.typing import Optional
 
 
 """This file keeps track of the constants that are used in Unknown Horizons.
@@ -33,35 +34,35 @@ NOTE: Using magic constants in code is generally a bad style, so avoid where
 possible and instead import the proper classes of this file.
 """
 
+def get_git_version():
+	"""Function gets latest revision of the working copy.
+	It only works in git repositories, and is actually a hack.
+	"""
+	try:
+		from run_uh import get_content_dir_parent_path
+		uh_path = get_content_dir_parent_path()
+		git_head_path = os.path.join(uh_path, '.git', 'HEAD')
+		if os.path.exists(git_head_path):
+			head = open(git_head_path).readline().strip().partition(' ')
+			if head[2]:
+				head_file = os.path.join(uh_path, '.git', head[2])
+			else:
+				head_file = git_head_path
+			if os.path.exists(head_file):
+				return unicode(open(head_file).readline().strip()[0:7])
+	#if there is no .git directory then check for gitversion.txt
+	except ImportError:
+		try:
+			return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
+		except IOError:
+			return u"<unknown>"
+
+	return u"<unknown>"
+
 ##Versioning
 class VERSION:
-	def _get_git_version():
-		"""Function gets latest revision of the working copy.
-		It only works in git repositories, and is actually a hack.
-		"""
-		try:
-			from run_uh import get_content_dir_parent_path
-			uh_path = get_content_dir_parent_path()
-			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
-			if os.path.exists(git_head_path):
-				head = open(git_head_path).readline().strip().partition(' ')
-				if head[2]:
-					head_file = os.path.join(uh_path, '.git', head[2])
-				else:
-					head_file = git_head_path
-				if os.path.exists(head_file):
-					return unicode(open(head_file).readline().strip()[0:7])
-		#if there is no .git directory then check for gitversion.txt
-		except ImportError:
-			try:
-				return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
-			except IOError:
-				return u"<unknown>"
-
-		return u"<unknown>"
-
 	RELEASE_NAME    = "Unknown Horizons %s"
-	RELEASE_VERSION = _get_git_version()
+	RELEASE_VERSION = get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2013.3'
@@ -103,7 +104,7 @@ class UNITS:
 	FRIGATE              = 1000020
 
 	DISASTER_RECOVERY_COLLECTOR = 1000022
-	
+
 	SWORDSMAN            = 1000023
 
 	# players will be spawned with an instance of this
@@ -177,11 +178,13 @@ class BUILDINGS:
 
 	WEAPONSMITH      = 66
 	CANNONFOUNDRY    = 67
-	
+
 	BREWERY          = 68
 	HOP_FIELD        = 69
-	
+
 	STONE_DEPOSIT    = 70
+
+	BARRIER	         = 71
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -371,8 +374,9 @@ class ACTION_SETS:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [int(i * TICKS_PER_SECOND)
-	              for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
+	TICK_RATES = [] # type: List[int]
+
+GAME_SPEED.TICK_RATES = [int(i * GAME_SPEED.TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
 
 class COLORS:
 	BLACK = 9
@@ -398,7 +402,8 @@ class PRODUCTION:
 
 class PRODUCTIONLINES:
 	HUKER = 15
-	FISHING_BOAT = None # will get added later
+	# will get added later
+	FISHING_BOAT = None # type: ignore
 	FRIGATE = 58
 	TREES = 256812226
 	WOOL = 1654557398
@@ -411,7 +416,8 @@ class GAME:
 	INGAME_TICK_INTERVAL = 30
 
 	WORLD_WORLDID = 0 # worldid of World object
-	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
+	# exit after on tick MAX_TICKS (disabled by setting to None)
+	MAX_TICKS = None # type: Optional[int]
 
 # Map related constants
 class MAP:
@@ -590,7 +596,7 @@ class PLAYER:
 ## SINGLEPLAYER
 class SINGLEPLAYER:
 	FREEZE_PROTECTION = True
-	SEED = None
+	SEED = None # type: int
 
 ## MULTIPLAYER
 class MULTIPLAYER:
@@ -600,7 +606,7 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	# change port to 2022 for development server updated after UH commits
 	SERVER_PORT = 2002
-	CLIENT_ADDRESS = None
+	CLIENT_ADDRESS = None # type: Optional[str]
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
 
 

@@ -25,6 +25,7 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
+from horizons.ext.typing import Tuple
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
@@ -39,8 +40,8 @@ class AbstractLumberjack(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.LUMBERJACK] = cls
 
 class LumberjackEvaluator(BuildingEvaluator):
-	__template_outline = None
-	__radius_offsets = None
+	__template_outline = None # type: List[Set[Tuple[int, int]]]
+	__radius_offsets = None # type: List[Tuple[int, int]]
 
 	@classmethod
 	def __init_outline(cls):

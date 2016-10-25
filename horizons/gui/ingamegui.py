@@ -215,6 +215,7 @@ class IngameGui(LivingObject):
 		return self.windows.open(window)
 
 	def toggle_pause(self):
+		self.set_cursor('default')
 		self.windows.toggle(self.pausemenu)
 
 	def toggle_help(self):
@@ -458,7 +459,7 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()		
+			return self.on_escape()
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 

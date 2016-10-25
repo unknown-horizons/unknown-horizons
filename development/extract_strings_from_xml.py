@@ -88,8 +88,9 @@ header = u'''\
 ###############################################################################
 
 from horizons.constants import VERSION
+from horizons.ext.typing import Tuple
 
-text_translations = {}
+text_translations = {} # type: Dict[str, Dict[Tuple[str, str], str]]
 
 def set_translations():
 	global text_translations

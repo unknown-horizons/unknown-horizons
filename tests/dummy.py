@@ -60,4 +60,5 @@ class Dummy(object):
 	__invert__ = __setattr__ = __delattr__ = __delitem__ = __setitem__ = \
 	__iter__ = __call__
 
-Dummy = Dummy()
+# see UH issue #2515
+Dummy = Dummy() # type: ignore

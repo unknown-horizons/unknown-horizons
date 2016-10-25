@@ -781,7 +781,7 @@ class VillageBuilder(AreaBuilder):
 
 		removed_coords_list = []
 		for coords, (purpose, (section, _)) in self.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.RESERVED or purpose == BUILDING_PURPOSE.NONE:
+			if purpose in [BUILDING_PURPOSE.RESERVED, BUILDING_PURPOSE.NONE]:
 				continue
 			position = self._get_position(coords, BUILDING_PURPOSE.get_building(purpose))
 			building = self.settlement.ground_map[coords].object if coords in self.settlement.ground_map else None
@@ -857,4 +857,4 @@ class VillageBuilder(AreaBuilder):
 	def __str__(self):
 		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(VillageBuilder)
+decorators.bind_all(VillageBuilder, stoplist=['AI'])

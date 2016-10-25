@@ -20,7 +20,9 @@
 # ###################################################
 
 from horizons.constants import WEAPONS
-from horizons.world.building.buildable import BuildableSingle
+from horizons.scheduler import Scheduler
+from horizons.util.tile_orientation import get_tile_alignment_action
+from horizons.world.building.buildable import BuildableLine, BuildableSingle
 from horizons.world.building.building import BasicBuilding
 from horizons.world.units.weaponholder import StationaryWeaponHolder
 
@@ -49,3 +51,50 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 		destroy the tower"""
 		for weapon in self._weapon_storage:
 			weapon.weapon_range = (0, weapon.weapon_range[1])
+
+
+class Barrier(BasicBuilding, BuildableLine):
+	"""Buildable barriers."""
+
+	def init(self):
+		# this does not belong in __init__, it's just here that all the data should be consistent
+		self.__init()
+
+	def __init(self):
+		self.island.barrier_nodes.register(self)
+
+		# don't always recalculate while loading, we'd recalculate too often.
+		# do it once when everything is finished.
+		if not self.session.world.inited:
+			Scheduler().add_new_object(self.recalculate_orientation, self, run_in=0)
+		else:
+			self.recalculate_surrounding_tile_orientation()
+			self.recalculate_orientation()
+
+	def remove(self):
+		super(Barrier, self).remove()
+		self.island.barrier_nodes.unregister(self)
+		self.recalculate_surrounding_tile_orientation()
+
+	def is_barrier(self, tile):
+		# Only consider barriers that the player build
+		return (tile is not None and
+		        tile.object is not None and
+		        tile.object.id == self.id and
+		        tile.object.owner == self.owner)
+
+	def recalculate_surrounding_tile_orientation(self):
+		for tile in self.island.get_surrounding_tiles(self.position):
+			if self.is_barrier(tile):
+				tile.object.recalculate_orientation()
+
+	def recalculate_orientation(self):
+		def is_similar_tile(position):
+			tile = self.island.get_tile(position)
+			return self.is_barrier(tile)
+
+		origin = self.position.origin
+		action = get_tile_alignment_action(origin, is_similar_tile)
+
+		location = self._instance.getLocation()
+		self.act(action, location, True)

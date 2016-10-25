@@ -26,6 +26,7 @@ from fife import fife
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import GAME_SPEED
 from horizons.engine import Fife
+from horizons.ext.typing import TYPE_CHECKING, Type
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
@@ -34,6 +35,9 @@ from horizons.util.shapes import Point
 from horizons.world.concreteobject import ConcreteObject
 from horizons.world.units import UnitClass
 from horizons.world.units.unitexeptions import MoveNotPossible
+
+if TYPE_CHECKING:
+	from horizons.util.pathfinding.pather import AbstractPather
 
 
 class MovingObject(ComponentHolder, ConcreteObject):
@@ -59,7 +63,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 	log = logging.getLogger("world.units")
 
-	pather_class = None # overwrite this with a descendant of AbstractPather
+	# overwrite this with a descendant of AbstractPather
+	pather_class = None # type: Type[AbstractPather]
 
 	def __init__(self, x, y, **kwargs):
 		super(MovingObject, self).__init__(x=x, y=y, **kwargs)

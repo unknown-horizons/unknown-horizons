@@ -42,6 +42,7 @@ from fife import fife as fife_module
 
 import horizons.globals
 from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLEPLAYER, VERSION
+from horizons.ext.typing import TYPE_CHECKING, Optional
 from horizons.extscheduler import ExtScheduler
 from horizons.gui import Gui
 from horizons.messaging import LoadingProgress
@@ -56,16 +57,20 @@ from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.uhdbaccessor import UhDbAccessor
 
+if TYPE_CHECKING:
+	from horizons.session import Session
+	from development.stringpreviewwidget import StringPreviewWidget
+
 
 # private module pointers of this module
 class Modules(object):
-	gui = None
-	session = None
+	gui = None # type: Optional[Gui]
+	session = None # type: Optional[Session]
 _modules = Modules()
 
 # used to save a reference to the string previewer to ensure it is not removed by
 # garbage collection
-__string_previewer = None
+__string_previewer = None # type: Optional[StringPreviewWidget]
 
 command_line_arguments = None
 

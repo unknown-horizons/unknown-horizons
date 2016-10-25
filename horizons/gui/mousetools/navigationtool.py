@@ -101,6 +101,9 @@ class NavigationTool(CursorTool):
 	def remove(self):
 		if self.__class__.send_hover_instances_update:
 			self.session.view.remove_change_listener(self._schedule_hover_instance_update)
+		if self._hover_instances_update_scheduled:
+			ExtScheduler().rem_call(self, self._send_hover_instance_upate)
+
 		horizons.globals.fife.eventmanager.removeCommandListener(self.cmdlist)
 		super(NavigationTool, self).remove()
 

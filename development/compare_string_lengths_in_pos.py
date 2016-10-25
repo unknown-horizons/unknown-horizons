@@ -85,5 +85,3 @@ for t in translations:
 		print(orig)
 		print(trans)
 		print()
-
-

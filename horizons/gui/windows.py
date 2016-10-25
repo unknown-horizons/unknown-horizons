@@ -26,6 +26,7 @@ from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
+from horizons.ext.typing import Any, Optional
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.util.python.callback import Callback
@@ -122,10 +123,10 @@ class Dialog(Window):
 	modal = False
 
 	# Name of widget that should get the focus once the dialog is shown
-	focus = None
+	focus = None # type: Optional[str]
 
 	# Maps Button names to return values that you can handle in `act`
-	return_events = {}
+	return_events = {} # type: Dict[str, Any]
 
 	def __init__(self, windows):
 		super(Dialog, self).__init__(windows)

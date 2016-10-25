@@ -20,42 +20,40 @@
 # ###################################################
 
 
-class Registry(type):
+class Registry(object):
 	"""Simple implementation of the registry pattern.
 
 	Example
 
-		class Test(object):
-			__metaclass__ = Registry
+		class Test(Registry):
+			def register_function(self, func):
+				self.registry[func.__name__] = func
 
-			@classmethod
-			def register_function(cls, func):
-				cls.registry[func.__name__] = func
+		x = Test()
 
-
-		@Test.register()
+		@x.register()
 		def foo(): pass
 
 	The function foo can now be retrieved with
 
-		Test.get('foo')
+		x.get('foo')
 
 	See the Scenario system or the unit tests for further usage examples.
 	"""
-	def __init__(cls, name, bases, dict):
-		setattr(cls, 'registry', {})
+	def __init__(self):
+		self.registry = {}
 
-	def register(cls, **kwargs):
+	def register(self, **kwargs):
 		"""Returns a decorator to register functions, all arguments are passed through
 		to `register_function`. You can use that to allow registeration under a different name
 		for example.
 		"""
 		def deco(func):
-			cls.register_function(func, **kwargs)
+			self.register_function(func, **kwargs)
 			return func
 		return deco
 
-	def register_function(cls, func, **kwargs):
+	def register_function(self, func, **kwargs):
 		"""Function that actually handles the registration. You need to implement this
 		yourself.
 
@@ -64,6 +62,6 @@ class Registry(type):
 		"""
 		raise NotImplementedError
 
-	def get(cls, name):
+	def get(self, name):
 		"""Retrieve a function given by `name` from the registry."""
-		return cls.registry[name]
+		return self.registry[name]

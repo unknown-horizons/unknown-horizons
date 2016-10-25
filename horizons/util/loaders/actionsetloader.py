@@ -39,7 +39,7 @@ class ActionSetLoader(object):
 
 	log = logging.getLogger("util.loaders.actionsetloader")
 
-	action_sets = {}
+	action_sets = {} # type: Dict[str, Dict[str, Dict[int, Dict[str, float]]]]
 	_loaded = False
 
 	@classmethod

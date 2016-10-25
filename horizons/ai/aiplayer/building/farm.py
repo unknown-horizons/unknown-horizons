@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, RES
+from horizons.ext.typing import Tuple
 from horizons.util.python import decorators
 from horizons.world.buildability.terraincache import TerrainRequirement
 
@@ -215,7 +216,7 @@ class AbstractFarm(AbstractBuilding):
 					options.append(evaluator)
 		return options
 
-	__cache = {}
+	__cache = {} # type: Dict[int, Tuple[Tuple[int, int], FarmOptionCache]]
 	def _get_option_cache(self, settlement_manager):
 		production_builder = settlement_manager.production_builder
 		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)
@@ -243,7 +244,7 @@ class AbstractFarm(AbstractBuilding):
 class FarmEvaluator(BuildingEvaluator):
 	__field_pos_offsets = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-	__field_offsets = None
+	__field_offsets = None # type: List[Tuple[int, int]]
 
 	__slots__ = ('farm_plan', 'field_purpose')
 

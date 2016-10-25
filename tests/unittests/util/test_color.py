@@ -35,7 +35,7 @@ class TestColor(TestCase):
 		)
 
 	def test_iter(self):
-		colors = list(Color)
+		colors = list(Color.get_defaults())
 		self.assertEqual(len(colors), 2)
 		self.assertTrue(all(c.is_default_color for c in colors))
 		self.assertEqual(colors[0], Color(0, 0, 0, 255))
@@ -50,5 +50,5 @@ class TestColor(TestCase):
 		self.assertNotEqual(Color(0, 0, 0, 255), Color(1, 2, 3, 255))
 
 	def test_indexing(self):
-		self.assertEqual(Color[1], Color(0, 0, 0, 255))
-		self.assertEqual(Color['black'], Color(0, 0, 0, 255))
+		self.assertEqual(Color.get(1), Color(0, 0, 0, 255))
+		self.assertEqual(Color.get('black'), Color(0, 0, 0, 255))

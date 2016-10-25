@@ -24,6 +24,8 @@ Put all code here that is not directly related to the game,
 but rather a generic enhancement of the programming language.
 """
 
+import collections
+
 from .decorators import *
 
 class Const(object):
@@ -82,3 +84,23 @@ def trim_value(value, min, max):
 		return max
 	else:
 		return value
+
+
+# TODO Remove ignore once https://github.com/python/typeshed/pull/608 ships
+
+class ChainedContainer(collections.Container): # type: ignore
+	"""
+	Allows membership test in multiple containers.
+
+	>>> chain = ChainedContainer({1: 'foo'}, [2, 3], set([5, 6]))
+	>>> 2 in chain
+	True
+	>>> 0 in chain
+	False
+
+	"""
+	def __init__(self, *containers):
+		self.containers = containers
+
+	def __contains__(self, value):
+		return any(value in c for c in self.containers)

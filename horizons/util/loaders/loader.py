@@ -94,7 +94,7 @@ class GeneralLoader(object):
 			basedir = os.path.join(directory, dirname)
 			if os.path.isdir(basedir):
 				actions[dirname] = cls._load_rotation(basedir)
-				if 'streets' in directory:
+				if any(folder in directory for folder in ['streets', 'wall']):
 					actions.update(cls._load_mirrored_roads(dirname, actions[dirname]))
 		return actions
 

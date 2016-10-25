@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import uuid
+
 from fife import fife
 
 import horizons.globals
@@ -151,5 +153,4 @@ class ProductionFinishedIconManager(object):
 		"""Returns the render name for resource icons of this instance
 		This key MUST be unique!
 		"""
-		return "produced_resource_" + str(res) + "_" + str(instance.position.origin)\
-		       + "_" + str(Scheduler().cur_tick)
+		return "produced_resource_" + str(res) + "_" + str(uuid.uuid4())

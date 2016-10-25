@@ -95,5 +95,5 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.left_key_pressed = False
 		if action == _Actions.RIGHT:
 			self.right_key_pressed = False
-		
+
 		self.updateAutoscroll()
