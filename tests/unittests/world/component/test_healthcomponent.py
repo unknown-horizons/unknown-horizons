@@ -24,7 +24,7 @@ from unittest import TestCase
 from mock import Mock
 
 from horizons.component.healthcomponent import HealthComponent
-from horizons.ext.dummy import Dummy
+from tests.dummy import Dummy
 
 
 class TestHealthComponent(TestCase):
