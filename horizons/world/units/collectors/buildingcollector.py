@@ -44,7 +44,7 @@ class BuildingCollector(Collector):
 	Therefore, this class is not functional with home_building == None,
 	but basic facilities (esp. save/load) have to work.
 	"""
-	job_ordering = JobList.order_by.fewest_available_and_distance
+	job_ordering = JobList.order_by.fewest_available_and_distance # type: ignore
 	pather_class = BuildingCollectorPather
 
 	def __init__(self, home_building, **kwargs):
@@ -327,14 +327,14 @@ class StorageCollector(BuildingCollector):
 	"""
 	pather_class = RoadPather
 	destination_always_in_building = True
-	job_ordering = JobList.order_by.for_storage_collector
+	job_ordering = JobList.order_by.for_storage_collector # type: ignore
 
 
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
-	job_ordering = JobList.order_by.random
+	job_ordering = JobList.order_by.random # type: ignore
 
 
 class SettlerCollector(StorageCollector):

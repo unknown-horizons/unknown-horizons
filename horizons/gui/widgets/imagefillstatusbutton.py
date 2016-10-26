@@ -94,7 +94,7 @@ class ImageFillStatusButton(Container):
 
 	filled = property(_get_filled, _set_filled)
 
-	__widget_cache = {}
+	__widget_cache = {} # type: Dict[Callback, ImageButton]
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call
