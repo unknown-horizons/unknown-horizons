@@ -28,7 +28,6 @@ import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import MULTIPLAYER
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
@@ -40,6 +39,8 @@ from horizons.savegamemanager import SavegameManager
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 from horizons.world import load_raw_world
+
+from .playerdataselection import PlayerDataSelection
 
 
 class MultiplayerMenu(Window):

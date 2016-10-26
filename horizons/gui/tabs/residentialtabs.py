@@ -23,12 +23,13 @@
 from horizons.command.uioptions import SetTaxSetting
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import SETTLER
-from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon, get_happiness_icon_and_helptext
 from horizons.i18n import _lazy
 from horizons.messaging import SettlerUpdate
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
+
+from .overviewtab import OverviewTab
 
 
 class SettlerOverviewTab(OverviewTab):

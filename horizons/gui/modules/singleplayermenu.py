@@ -35,7 +35,6 @@ import horizons.globals
 import horizons.main
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
 from horizons.gui.windows import Window
@@ -46,6 +45,9 @@ from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
+
+from .aidataselection import AIDataSelection
+from .playerdataselection import PlayerDataSelection
 
 
 class SingleplayerMenu(Window):

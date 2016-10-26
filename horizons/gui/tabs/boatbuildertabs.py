@@ -28,13 +28,14 @@ from horizons.command.production import AddProduction, CancelCurrentProduction, 
 from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
 from horizons.engine import Fife
 from horizons.ext.typing import Tuple
-from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.world.production.producer import Producer
+
+from .overviewtab import OverviewTab
 
 
 class ProducerOverviewTabBase(OverviewTab):

@@ -30,8 +30,9 @@ from fife import fife
 import horizons.globals
 import horizons.main
 from horizons.constants import PATHS
-from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
+
+from .keyconfig import KeyConfig
 
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):

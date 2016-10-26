@@ -22,8 +22,9 @@
 from fife import fife
 
 import horizons.globals
-from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
+
+from .keyconfig import KeyConfig
 
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
