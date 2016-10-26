@@ -51,13 +51,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	def updateAutoscroll(self):
 		self.key_scroll = [0, 0]
 		if self.up_key_pressed:
-			self.key_scroll[1] -= self.key_scroll_speed;
+			self.key_scroll[1] -= self.key_scroll_speed
 		if self.down_key_pressed:
-			self.key_scroll[1] += self.key_scroll_speed;
+			self.key_scroll[1] += self.key_scroll_speed
 		if self.left_key_pressed:
-			self.key_scroll[0] -= self.key_scroll_speed;
+			self.key_scroll[0] -= self.key_scroll_speed
 		if self.right_key_pressed:
-			self.key_scroll[0] += self.key_scroll_speed;
+			self.key_scroll[0] += self.key_scroll_speed
 
 		self.session.view.autoscroll_keys(*self.key_scroll)
 
