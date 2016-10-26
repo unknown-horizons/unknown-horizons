@@ -63,7 +63,7 @@ class PlayerDataSelection(object):
 		playertextfield = self.gui.findChild(name='playername')
 		def playertextfield_clicked():
 			if playertextfield.text == 'Unnamed Traveler':
-				playertextfield.text = "";
+				playertextfield.text = ""
 		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
 
 		self.gui.mapEvents(events)
