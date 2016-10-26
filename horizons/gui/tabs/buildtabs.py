@@ -262,7 +262,7 @@ class BuildTab(TabInterface):
 
 		#save build style
 		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
-		horizons.globals.fife.save_settings();
+		horizons.globals.fife.save_settings()
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
