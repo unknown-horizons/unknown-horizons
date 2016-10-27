@@ -216,7 +216,7 @@ class MPManager(LivingObject):
 		commandpackets = self.commandsmanager.get_packets_from_player(self.session.world.player.worldid)
 
 		# check commands already sent
-		l1 = itertools.chain.from_iterable( (pkg.commandlist for pkg in commandpackets) )
+		l1 = itertools.chain.from_iterable(pkg.commandlist for pkg in commandpackets)
 		# and the ones that haven't been sent yet (this are of course only commands by the local player)
 		commandlist = itertools.chain(l1, self.gamecommands)
 

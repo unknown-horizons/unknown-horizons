@@ -190,9 +190,9 @@ def setup_cursor_change_on_hover():
 		cls.disable_cursor_change_on_hover = disable_cursor_change_on_hover
 		cls.enable_cursor_change_on_hover = enable_cursor_change_on_hover
 
-	make_cursor_change_on_hover_class( pychan.widgets.WIDGETS['TextField'] )
-	make_cursor_change_on_hover_class( RenameLabel )
-	make_cursor_change_on_hover_class( RenameImageButton )
+	make_cursor_change_on_hover_class(pychan.widgets.WIDGETS['TextField'])
+	make_cursor_change_on_hover_class(RenameLabel)
+	make_cursor_change_on_hover_class(RenameImageButton)
 
 
 	# TODO: if the widget is hidden while the cursor is above it,
@@ -217,7 +217,7 @@ def setup_trigger_signals_on_action():
 					self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
 			return wrapper
 
-		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
+		cls.__init__ = add_action_triggers_a_signal(cls.__init__)
 
 	make_action_trigger_a_signal(pychan.widgets.Widget)
 
@@ -231,7 +231,7 @@ def setup_trigger_signals_on_hover():
 				self.capture(Callback(GuiHover.broadcast, self), "mouseEntered", "action_listener")
 			return wrapper
 
-		cls.__init__ = add_hover_triggers_a_signal( cls.__init__ )
+		cls.__init__ = add_hover_triggers_a_signal(cls.__init__)
 
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['OkButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['CancelButton'])
