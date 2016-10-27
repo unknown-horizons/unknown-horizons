@@ -441,7 +441,7 @@ class BuildingTool(NavigationTool):
 			if tile.object is not None and tile.object.id in ids:
 				related_building = tile.object
 				# check if it was actually this one's radius
-				if building.position.distance(tile.x, tile.y) <= \
+				if building.position.distance((tile.x, tile.y)) <= \
 				   Entities.buildings[related_building.id].radius:
 					# found one
 					if related_building in self._highlighted_buildings:

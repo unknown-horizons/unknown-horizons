@@ -77,7 +77,7 @@ class Server(object):
 			packets.client.cmd_changecolor:    [self.onchangecolor],
 			packets.client.cmd_preparedgame:   [self.onpreparedgame],
 			packets.client.cmd_toggleready:    [self.ontoggleready],
-			packets.client.cmd_kickplayer:     [self.onkick ],
+			packets.client.cmd_kickplayer:     [self.onkick],
 			#TODO packets.client.cmd_fetch_game:     [self.onfetchgame],
 			#TODO packets.client.savegame_data:      [self.onsavegamedata],
 			'preparegame':   [self.preparegame],
