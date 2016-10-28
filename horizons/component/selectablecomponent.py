@@ -58,7 +58,7 @@ class SelectableComponent(Component):
 		          'fisher'   : SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
-		return TYPES[ t ]( **arguments )
+		return TYPES[t](**arguments)
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None):
 		super(SelectableComponent, self).__init__()

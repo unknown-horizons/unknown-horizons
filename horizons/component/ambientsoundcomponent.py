@@ -55,7 +55,7 @@ class AmbientSoundComponent(Component):
 		if hasattr(self.instance.owner, "is_local_player") and self.instance.owner.is_local_player:
 			# don't use session random, this is player dependent
 			play_every = self.__class__.AMBIENT_SOUND_INTERVAL + \
-												random.randint( * self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE )
+												random.randint(* self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE)
 			for soundfile in self.soundfiles:
 				#TODO remove str() -- http://github.com/fifengine/fifengine/issues/701
 				self.play_ambient(str(soundfile), loop_interval=play_every,
@@ -68,7 +68,7 @@ class AmbientSoundComponent(Component):
 
 		interval = (0, self.__class__.AMBIENT_SOUND_INTERVAL +
 		            self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE[1])
-		run_in = random.randint( *interval )
+		run_in = random.randint(*interval)
 		ExtScheduler().add_new_object(self._init_playing, self, run_in=run_in)
 
 	def remove(self):

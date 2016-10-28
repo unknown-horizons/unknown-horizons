@@ -90,7 +90,7 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.restore_settings:
 		# just delete the file, Settings ctor will create a new one
-		os.remove( PATHS.USER_CONFIG_FILE )
+		os.remove(PATHS.USER_CONFIG_FILE)
 
 	if command_line_arguments.mp_master:
 		try:
@@ -108,9 +108,9 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
 		from horizons.gui.modules.singleplayermenu import generate_random_minimap
-		generate_random_minimap( * json.loads(
+		generate_random_minimap(* json.loads(
 		  command_line_arguments.generate_minimap
-		  ) )
+		  ))
 		sys.exit(0)
 
 	if debug: # also True if a specific module is logged (but not 'fife')
@@ -242,7 +242,7 @@ def start(_command_line_arguments):
 	elif command_line_arguments.edit_game_map is not None:
 		startup_worked = edit_game_map(command_line_arguments.edit_game_map)
 	elif command_line_arguments.stringpreview:
-		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
+		tiny = [i for i in SavegameManager.get_maps()[0] if 'tiny' in i]
 		if not tiny:
 			tiny = SavegameManager.get_map()[0]
 		startup_worked = _start_map(tiny[0], ai_players=0, trader_enabled=False, pirate_enabled=False,
@@ -427,7 +427,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	from horizons.mpsession import MPSession
 	# get random seed for game
 	uuid = game.uuid
-	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
+	random = sum([int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2)])
 	_modules.session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
