@@ -26,6 +26,7 @@ from horizons.component.stancecomponent import (
 	AggressiveStance, FleeStance, HoldGroundStance, NoneStance)
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED
+from horizons.i18n import gettext as _
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback

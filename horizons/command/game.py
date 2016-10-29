@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.command import Command
+from horizons.i18n import gettext as _
 from horizons.savegamemanager import SavegameManager
 
 

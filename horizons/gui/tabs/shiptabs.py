@@ -28,7 +28,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, WEAPONS
 from horizons.entities import Entities
 from horizons.gui.widgets.routeconfig import RouteConfig
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 from horizons.util.python.callback import Callback
 
 from .overviewtab import OverviewTab

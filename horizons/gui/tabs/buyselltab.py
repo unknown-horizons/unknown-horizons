@@ -31,6 +31,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
+from horizons.i18n import gettext as _
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 

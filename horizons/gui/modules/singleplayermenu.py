@@ -39,6 +39,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as _
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import InvalidScenarioFileFormat, ScenarioEventHandler
 from horizons.util.python.callback import Callback

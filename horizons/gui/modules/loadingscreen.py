@@ -24,9 +24,10 @@ import random
 
 import horizons.globals
 from horizons.constants import TIER
+from horizons.ext.speaklater import make_lazy_string
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 from horizons.messaging import LoadingProgress
 
 # list of quotes and gameplay tips that are displayed while loading a game
@@ -68,8 +69,7 @@ GAMEPLAY_TIPS = {
 		_lazy("Press 'ESC' to access Game Menu."),
 		_lazy("Use 'SHIFT' to place multiple buildings."),
 		#TODO: This tip should be removed when all tiers are playable!!
-		_lazy("Currently only the first {tier} tiers are playable.").format(
-				tier=TIER.CURRENT_MAX + 1),
+		make_lazy_string(lambda: _("Currently only the first {tier} tiers are playable.").format(tier=TIER.CURRENT_MAX + 1)),
 		_lazy("You can pause the game with 'P'."),
 		_lazy("You can drag roads by holding the left mouse button."),
 		_lazy("You can build multiple buildings by holding the 'SHIFT' key."),

@@ -26,7 +26,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 from horizons.entities import Entities
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as _lazy
 from horizons.util.python.callback import Callback
 
 from .overviewtab import OverviewTab

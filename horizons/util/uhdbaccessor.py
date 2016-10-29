@@ -23,6 +23,7 @@ import random
 
 from horizons.constants import PATHS, TIER
 from horizons.entities import Entities
+from horizons.i18n import gettext as _
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 

@@ -25,6 +25,7 @@ import logging
 import time
 
 from horizons import network
+from horizons.i18n import gettext as _
 from horizons.network import enet, packets
 
 # maximal peers enet should handle

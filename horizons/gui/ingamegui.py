@@ -42,6 +42,7 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
+from horizons.i18n import gettext as _
 from horizons.messaging import (
 	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
 	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)

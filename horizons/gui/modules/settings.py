@@ -31,7 +31,8 @@ from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
-from horizons.i18n import _lazy, change_language, find_available_languages
+from horizons.i18n import (
+	change_language, find_available_languages, gettext as _, gettext_lazy as _lazy)
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback

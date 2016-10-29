@@ -23,6 +23,7 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label, VBox
 from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+from horizons.i18n import gettext as _
 from horizons.world.storage import (
 	PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage, TotalStorage)
 

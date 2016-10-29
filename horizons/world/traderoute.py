@@ -24,6 +24,7 @@ import copy
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TRADE_ERROR_TYPE, TradePostComponent
 from horizons.constants import GAME_SPEED
+from horizons.i18n import gettext as _
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Circle

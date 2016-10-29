@@ -25,6 +25,7 @@ import horizons.globals
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.command.unit import CreateUnit
 from horizons.constants import MESSAGES
+from horizons.i18n import gettext as _
 from horizons.messaging import SettlerUpdate
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback

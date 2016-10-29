@@ -23,7 +23,7 @@
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as _lazy
 
 from .overviewtab import OverviewTab
 

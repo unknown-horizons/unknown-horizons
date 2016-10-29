@@ -36,6 +36,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.gui.windows import Window, WindowManager
+from horizons.i18n import gettext as _
 from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
 from horizons.util.startgameoptions import StartGameOptions
 

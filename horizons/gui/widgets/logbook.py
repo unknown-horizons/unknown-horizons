@@ -31,6 +31,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 from horizons.scenario.actions import show_message
 from horizons.util.python.callback import Callback
 
@@ -46,9 +47,9 @@ class LogBook(PickBeltWidget, Window):
 
 	widget_xml = 'captains_log.xml'
 	page_pos = (170, 38)
-	sections = (('logbook', _('Logbook')),
-	            ('statistics', _('Statistics')),
-	            ('chat_overview', _('Chat')))
+	sections = (('logbook', _lazy('Logbook')),
+	            ('statistics', _lazy('Statistics')),
+	            ('chat_overview', _lazy('Chat')))
 
 	def __init__(self, session, windows):
 		self.statistics_index = [i for i, sec in self.sections].index('statistics')

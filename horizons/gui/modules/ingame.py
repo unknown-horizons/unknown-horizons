@@ -30,6 +30,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.gui.windows import Dialog
+from horizons.i18n import gettext as _
 from horizons.messaging import HoverSettlementChanged, ResourceBarResize, SettlerInhabitantsChanged
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback

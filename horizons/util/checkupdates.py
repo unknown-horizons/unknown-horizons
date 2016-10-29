@@ -29,6 +29,7 @@ from fife.extensions.pychan.widgets import Button
 
 from horizons.constants import NETWORK, VERSION
 from horizons.gui.windows import Popup
+from horizons.i18n import gettext as _
 
 
 class UpdateInfo(object):

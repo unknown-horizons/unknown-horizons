@@ -22,6 +22,7 @@
 import random
 
 from horizons.constants import SINGLEPLAYER
+from horizons.i18n import gettext as _
 from horizons.manager import SPManager
 from horizons.savegamemanager import SavegameManager
 from horizons.session import Session

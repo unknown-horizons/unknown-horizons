@@ -35,6 +35,7 @@ from horizons.ext.typing import TYPE_CHECKING
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget
+from horizons.i18n import gettext as _
 from horizons.messaging import (
 	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
 from horizons.util.loaders.actionsetloader import ActionSetLoader

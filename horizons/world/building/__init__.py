@@ -25,6 +25,7 @@ import logging
 from fife import fife
 
 import horizons.globals
+from horizons.i18n import gettext as _
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.world.ingametype import IngameType
 from horizons.world.production.producer import Producer

@@ -44,6 +44,7 @@ from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLE
 from horizons.ext.typing import TYPE_CHECKING, Optional
 from horizons.extscheduler import ExtScheduler
 from horizons.gui import Gui
+from horizons.i18n import gettext as _
 from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager

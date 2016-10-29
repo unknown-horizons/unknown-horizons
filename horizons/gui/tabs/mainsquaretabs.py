@@ -30,7 +30,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import BUILDINGS, TIER
 from horizons.gui.widgets.productionoverview import ProductionOverview
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 from horizons.messaging import PlayerLevelUpgrade, UpgradePermissionsChanged
 from horizons.util.python.callback import Callback
 

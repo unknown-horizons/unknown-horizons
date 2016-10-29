@@ -40,6 +40,7 @@ from horizons.constants import GAME_SPEED
 from horizons.entities import Entities
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.ingamegui import IngameGui
+from horizons.i18n import gettext as _
 from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler

@@ -24,6 +24,7 @@ import logging
 import operator
 
 from horizons.command.building import Build
+from horizons.i18n import gettext as _
 from horizons.network import CommandError, packets
 from horizons.scheduler import Scheduler
 from horizons.timer import Timer

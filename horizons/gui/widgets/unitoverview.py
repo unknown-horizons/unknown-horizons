@@ -26,6 +26,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path, load_uh_widget
+from horizons.i18n import gettext as _
 from horizons.util.python.callback import Callback
 
 

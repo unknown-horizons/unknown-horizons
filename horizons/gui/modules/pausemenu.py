@@ -26,6 +26,7 @@ from horizons.gui.modules.select_savegame import SelectSavegameDialog
 from horizons.gui.modules.settings import SettingsDialog
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as _
 from horizons.util.startgameoptions import StartGameOptions
 
 

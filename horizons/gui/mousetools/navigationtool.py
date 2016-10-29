@@ -27,6 +27,7 @@ import horizons.globals
 from horizons.constants import LAYERS, VIEW
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.i18n import gettext as _
 from horizons.messaging import HoverInstancesChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.weaklist import WeakList

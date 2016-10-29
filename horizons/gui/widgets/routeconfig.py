@@ -35,6 +35,7 @@ from horizons.gui.util import create_resource_selection_dialog, get_res_icon_pat
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as _
 from horizons.manager import MPManager
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback

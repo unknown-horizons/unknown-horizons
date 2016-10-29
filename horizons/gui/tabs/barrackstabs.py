@@ -27,7 +27,7 @@ from horizons.command.production import AddProduction
 from horizons.constants import PRODUCTIONLINES, RES, UNITS
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 from horizons.util.python.callback import Callback
 
 from .boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase

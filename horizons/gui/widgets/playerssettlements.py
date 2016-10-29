@@ -23,6 +23,7 @@ from fife.extensions.pychan import widgets
 
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.i18n import gettext as _
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 

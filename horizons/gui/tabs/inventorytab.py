@@ -22,7 +22,7 @@
 from horizons.component.storagecomponent import StorageComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as _lazy
 
 
 class InventoryTab(TabInterface):

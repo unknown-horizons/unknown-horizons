@@ -22,7 +22,7 @@
 import hashlib
 
 from horizons.constants import TIER
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as _lazy
 
 
 class IngameType(type):

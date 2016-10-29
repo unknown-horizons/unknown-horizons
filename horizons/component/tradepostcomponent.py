@@ -22,6 +22,7 @@
 from horizons.component import Component
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES, TRADER
+from horizons.i18n import gettext as _
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.worldobject import WorldObject

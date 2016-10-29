@@ -28,6 +28,7 @@ from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.namedcomponent import NamedComponent, ShipNameComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
+from horizons.i18n import gettext as _
 from horizons.messaging import ShipDestroyed
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError

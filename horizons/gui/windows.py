@@ -29,6 +29,7 @@ import horizons.globals
 from horizons.ext.typing import Any, Optional
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
+from horizons.i18n import gettext as _
 from horizons.util.python.callback import Callback
 
 

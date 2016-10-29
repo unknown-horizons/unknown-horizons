@@ -24,6 +24,7 @@ from fife.extensions.pychan.widgets import Container, Icon, Label
 from horizons.constants import TRADER
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as _
 from horizons.util.python.callback import Callback
 
 

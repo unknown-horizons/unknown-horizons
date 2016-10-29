@@ -29,6 +29,7 @@ import horizons.globals
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.i18n import gettext as _
 from horizons.util.python.callback import Callback
 
 

@@ -25,6 +25,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.i18n import gettext as _
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.world.units.fightingship import FightingShip

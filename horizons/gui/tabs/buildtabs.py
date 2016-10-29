@@ -25,6 +25,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 from horizons.ext.enum import Enum
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext as _
 from horizons.messaging import NewPlayerSettlementHovered
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python import decorators

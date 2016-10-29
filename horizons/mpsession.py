@@ -23,6 +23,7 @@ import random
 
 import horizons.main
 from horizons.command.game import SaveCommand
+from horizons.i18n import gettext as _
 from horizons.manager import MPManager
 from horizons.savegamemanager import SavegameManager
 from horizons.session import Session

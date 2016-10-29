@@ -34,7 +34,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 from horizons.scheduler import Scheduler
 from horizons.util.pychananimation import PychanAnimation
 from horizons.util.python.callback import Callback

@@ -35,6 +35,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
+from horizons.i18n import gettext as _
 from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.pychanchildfinder import PychanChildFinder

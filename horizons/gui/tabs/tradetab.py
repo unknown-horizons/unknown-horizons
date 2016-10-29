@@ -28,7 +28,7 @@ from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import GUI
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as _lazy
 from horizons.util.python.callback import Callback
 
 

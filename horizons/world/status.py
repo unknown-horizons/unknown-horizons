@@ -21,7 +21,7 @@
 
 import operator
 
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 
 
 """Classes used for StatusIcon.
@@ -73,7 +73,7 @@ class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """
 	priority = 3000
 	icon = 'as_pestilence+idle+45'
-	_helptext = _("The inhabitants are infected by the Black Death!")
+	_helptext = _lazy("The inhabitants are infected by the Black Death!")
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """

@@ -30,6 +30,7 @@ from horizons.gui.util import create_resource_icon, load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as _
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback

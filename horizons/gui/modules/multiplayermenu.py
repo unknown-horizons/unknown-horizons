@@ -33,6 +33,7 @@ from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Popup, Window
+from horizons.i18n import gettext as _
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager

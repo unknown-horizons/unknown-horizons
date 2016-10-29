@@ -24,6 +24,8 @@ import json
 
 import yaml
 
+from horizons.i18n import gettext as _
+from horizons.scenario import ACTIONS, CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback

@@ -22,7 +22,7 @@
 
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as _, gettext_lazy as _lazy
 
 
 class OverviewTab(TabInterface):
