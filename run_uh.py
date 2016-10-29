@@ -32,7 +32,6 @@ If you want to dig into the game, continue to horizons/main.py. """
 from __future__ import print_function
 
 import functools
-import gettext
 import imp
 import locale
 import logging
@@ -360,8 +359,6 @@ def init_environment(use_fife):
 	"""Sets up everything.
 
 	Use in any program that requires access to FIFE and UH modules."""
-	# install dummy translation
-	gettext.install('', unicode=True)
 	if use_fife:
 		setup_fife()
 
