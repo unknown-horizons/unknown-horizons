@@ -21,7 +21,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import os
+import shutil
+import tempfile
+
 import mock
+import polib
 
 import horizons.i18n
 from horizons.i18n import change_language, gettext, gettext_lazy
@@ -35,29 +40,65 @@ class Testi18n(TestCase):
 	def setUp(self):
 		super(Testi18n, self).setUp()
 
-		# Reset global translation object before each test to keep them isolated
-		horizons.i18n._trans = None
+		horizons.i18n.reset_language()
+
+		# Create temporary MO files, so we don't have to rely on them beeing build outside
+		# of tests, or have to build all of them by running setup.py build_i18n
+		self.de_dir = tempfile.mkdtemp()
+		de_mo_dir = os.path.join(self.de_dir, 'de', 'LC_MESSAGES')
+		os.makedirs(de_mo_dir)
+
+		po = polib.POFile()
+		po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
+		po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
+					msgstr=u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'))
+		po.save_as_mofile(os.path.join(de_mo_dir, 'unknown-horizons.mo'))
+
+		self.fr_dir = tempfile.mkdtemp()
+		fr_mo_dir = os.path.join(self.fr_dir, 'fr', 'LC_MESSAGES')
+		os.makedirs(fr_mo_dir)
+
+		po = polib.POFile()
+		po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
+		po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
+					msgstr=u'McAvoy ou Stewart? Ces délais sont confus.'))
+		po.save_as_mofile(os.path.join(fr_mo_dir, 'unknown-horizons.mo'))
+
+		languages = {
+			'de': self.de_dir,
+			'fr': self.fr_dir
+		}
+		self.find_languages_patcher = mock.patch('horizons.i18n.find_available_languages',
+		                                         return_value=languages)
+		self.find_languages_patcher.start()
+
+	def tearDown(self):
+		super(Testi18n, self).tearDown()
+
+		self.find_languages_patcher.stop()
+		shutil.rmtree(self.fr_dir)
+		shutil.rmtree(self.de_dir)
 
 	def test_null_translations(self):
 		"""
 		Without active language, the message will be returned untranslated.
 		"""
-		self.assertEqual(gettext('Unknown Horizons has crashed.'),
-		                 u'Unknown Horizons has crashed.')
+		self.assertEqual(gettext('McAvoy or Stewart? These timelines are confusing.'),
+		                'McAvoy or Stewart? These timelines are confusing.')
 
 	def test_active_translation(self):
 		change_language('de')
-		self.assertEqual(gettext('Unknown Horizons has crashed.'),
-		                 u'Unknown Horizons ist abgestürzt.')
+		self.assertEqual(gettext('McAvoy or Stewart? These timelines are confusing.'),
+		                 u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
 
 		change_language('fr')
-		self.assertEqual(gettext('Unknown Horizons has crashed.'),
-		                 u'Unknown Horizons est tombé en panne.')
+		self.assertEqual(gettext('McAvoy or Stewart? These timelines are confusing.'),
+		                 u'McAvoy ou Stewart? Ces délais sont confus.')
 
 	def test_gettext_lazy(self):
-		text = gettext_lazy('Unknown Horizons has crashed.')
+		text = gettext_lazy('McAvoy or Stewart? These timelines are confusing.')
 
-		self.assertEqual(unicode(text), u'Unknown Horizons has crashed.')
+		self.assertEqual(unicode(text), u'McAvoy or Stewart? These timelines are confusing.')
 
 		change_language('de')
-		self.assertEqual(unicode(text), u'Unknown Horizons ist abgestürzt.')
+		self.assertEqual(unicode(text), u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')

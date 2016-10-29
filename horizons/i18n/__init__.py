@@ -70,6 +70,16 @@ def ngettext(message1, message2, count):
 LANGCACHE = {} # type: Dict[str, str]
 
 
+def reset_language():
+	"""
+	Reset global state to initial.
+	"""
+	global _trans
+	global LANGCACHE
+	_trans = None
+	LANGCACHE = {}
+
+
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
 	global LANGCACHE
