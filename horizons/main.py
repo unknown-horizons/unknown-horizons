@@ -48,7 +48,7 @@ from horizons.gui import Gui
 from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
-from horizons.util.atlasloadingthread import AtlasLoadingThread
+from horizons.util.atlasloading import generate_atlases
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python import parse_port
@@ -134,53 +134,17 @@ def start(_command_line_arguments):
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	preload_lock = threading.Lock()
+	# Setup atlases
+	if (command_line_arguments.atlas_generation
+	    and not command_line_arguments.gui_test
+	    and VERSION.IS_DEV_VERSION
+	    and horizons.globals.fife.get_uh_setting('AtlasesEnabled')
+	    and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled')):
+		generate_atlases()
 
-	if command_line_arguments.atlas_generation and not command_line_arguments.gui_test and \
-	   VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
-	   and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled'):
-
-		atlas_loading_thread = None
-		atlas_loading_thread = AtlasLoadingThread(preload_lock)
-		atlas_loading_thread.start()
-
-		# show info label about atlas generation
-		try:
-			import Tkinter
-			from PIL import Image, ImageTk
-			import time
-			try:
-				window = Tkinter.Tk()
-				# iconify window instead of closing
-				window.protocol("WM_DELETE_WINDOW", window.iconify)
-				window.wm_withdraw()
-				window.attributes("-topmost", 1)
-				window.title("Unknown Horizons")
-				window.maxsize(300, 150)
-
-				logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
-				res_logo = logo.resize((116, 99), Image.ANTIALIAS)
-				res_logo_image = ImageTk.PhotoImage(res_logo)
-				logo_label = Tkinter.Label(window, image=res_logo_image)
-				logo_label.pack(side="left")
-				label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
-				label.pack(side="right")
-
-				# wait a second to give the thread time to check if a generation is necessary at all
-				time.sleep(1.0)
-				window.deiconify()
-				while atlas_loading_thread.is_alive():
-					if not window.state() == "iconic":
-						window.attributes("-topmost", 0)
-						window.update()
-					time.sleep(0.1)
-				window.destroy()
-			except Tkinter.TclError:
-				# catch #2298
-				atlas_loading_thread.join()
-		except ImportError:
-			# tkinter or PIL may be missing
-			atlas_loading_thread.join()
+	if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
+		GFX.USE_ATLASES = True
+		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
 	# init game parts
 
@@ -196,10 +160,6 @@ def start(_command_line_arguments):
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
 	horizons.globals.fife.init()
 
-	if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
-		GFX.USE_ATLASES = True
-		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-
 	horizons.globals.db = _create_main_db()
 	_modules.gui = Gui()
 	SavegameManager.init()
@@ -209,6 +169,7 @@ def start(_command_line_arguments):
 	Entities.load(horizons.globals.db, load_now=False) # create all references
 
 	# for preloading game data while in main screen
+	preload_lock = threading.Lock()
 	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
 	preloading = (preload_thread, preload_lock)
 
