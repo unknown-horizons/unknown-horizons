@@ -36,7 +36,6 @@ import os.path
 import sys
 import threading
 import traceback
-from thread import error as ThreadError  # raised by threading.Lock.release
 
 from fife import fife as fife_module
 
@@ -49,8 +48,7 @@ from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
 from horizons.util.atlasloading import generate_atlases
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.preloader import PreloadingThread
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.savegameaccessor import SavegameAccessor
@@ -74,11 +72,14 @@ __string_previewer = None # type: Optional[StringPreviewWidget]
 
 command_line_arguments = None
 
+preloader = None # type: PreloadingThread
+
+
 def start(_command_line_arguments):
 	"""Starts the horizons. Will drop you to the main menu.
 	@param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global debug, preloading, command_line_arguments
+	global debug, preloader, command_line_arguments
 	command_line_arguments = _command_line_arguments
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
@@ -169,9 +170,7 @@ def start(_command_line_arguments):
 	Entities.load(horizons.globals.db, load_now=False) # create all references
 
 	# for preloading game data while in main screen
-	preload_lock = threading.Lock()
-	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
-	preloading = (preload_thread, preload_lock)
+	preloader = PreloadingThread()
 
 	# Singleplayer seed needs to be changed before startup.
 	if command_line_arguments.sp_seed:
@@ -228,7 +227,7 @@ def start(_command_line_arguments):
 
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
-			preloading[0].start()
+			preloader.start()
 
 	if not startup_worked:
 		# don't start main loop if startup failed
@@ -303,8 +302,7 @@ def setup_gui_logger(command_line_arguments):
 
 def quit():
 	"""Quits the game"""
-	# joing preload thread before quiting in case active
-	preload_game_join(preloading)
+	preloader.wait_for_finish()
 	horizons.globals.fife.quit()
 
 def quit_session():
@@ -317,8 +315,7 @@ def start_singleplayer(options):
 	_modules.gui.show_loading_screen()
 
 	LoadingProgress.broadcast(None, 'load_objects')
-	global preloading
-	preload_game_join(preloading)
+	preloader.wait_for_finish()
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
@@ -373,8 +370,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	"""
 	_modules.gui.show_loading_screen()
 
-	global preloading
-	preload_game_join(preloading)
+	preloader.wait_for_finish()
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
@@ -547,48 +543,6 @@ def _create_main_db():
 		_db.execute_script(sql)
 	return _db
 
-def preload_game_data(lock):
-	"""Preloads game data.
-	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
-	log = logging.getLogger("preload")
-	try:
-		lock.acquire()
-		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
-		from horizons.entities import Entities
-		preload_functions = [ ActionSetLoader.load,
-		                      TileSetLoader.load,
-		                      Callback(Entities.load_grounds, mydb, load_now=True),
-		                      Callback(Entities.load_buildings, mydb, load_now=True),
-		                      Callback(Entities.load_units, load_now=True) ]
-		for f in preload_functions:
-			if not lock.acquire(False):
-				break
-			log.debug("Preload: %s", f)
-			f()
-			log.debug("Preload: %s is done", f)
-			lock.release()
-		log.debug("Preloading done.")
-	except Exception as e:
-		log.warning("Exception occurred in preloading thread: %s", e)
-	finally:
-		if lock.locked():
-			lock.release()
-
-def preload_game_join(preloading):
-	"""Wait for preloading to finish.
-	@param preloading: tuple: (Thread, Lock)"""
-	# lock preloading
-	thread, lock = preloading
-	lock.acquire()
-	# wait until it finished its current action
-	if thread.isAlive():
-		thread.join()
-		assert not thread.isAlive()
-	else:
-		try:
-			lock.release()
-		except ThreadError:
-			pass # due to timing issues, the lock might be released already
 
 def set_debug_log(enabled, startup=False):
 	"""
