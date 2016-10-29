@@ -32,7 +32,7 @@ from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.i18n import (
-	change_language, find_available_languages, gettext as _, gettext_lazy as _lazy)
+	change_language, find_available_languages, gettext as T, gettext_lazy as LazyT)
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
@@ -53,9 +53,9 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	widget_xml = 'settings.xml'
 	sections = (
-		('graphics_settings', _lazy('Graphics')),
-		('hotkeys_settings', _lazy('Hotkeys')),
-		('game_settings', _lazy('Game')),
+		('graphics_settings', LazyT('Graphics')),
+		('hotkeys_settings', LazyT('Hotkeys')),
+		('game_settings', LazyT('Game')),
 	)
 
 	def __init__(self, windows):
@@ -75,7 +75,7 @@ class SettingsDialog(PickBeltWidget, Window):
 		languages = find_available_languages().keys()
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
-		fps = {0: _lazy("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
+		fps = {0: LazyT("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
 
 		FIFE = SETTINGS.FIFE_MODULE
 		UH = SETTINGS.UH_MODULE
@@ -117,7 +117,7 @@ class SettingsDialog(PickBeltWidget, Window):
 
 		# key configuration
 		self.hotkey_interface = HotkeyConfiguration()
-		number = self.sections.index(('hotkeys_settings', _('Hotkeys')))
+		number = self.sections.index(('hotkeys_settings', T('Hotkeys')))
 		self.page_widgets[number].removeAllChildren()
 		self.page_widgets[number].addChild(self.hotkey_interface.widget)
 
@@ -129,15 +129,15 @@ class SettingsDialog(PickBeltWidget, Window):
 		self.widget.hide()
 
 	def restart_promt(self):
-		headline = _("Restart required")
-		message = _("Some of your changes require a restart of Unknown Horizons. Do you want to restart Unknown Horizons now?")
+		headline = T("Restart required")
+		message = T("Some of your changes require a restart of Unknown Horizons. Do you want to restart Unknown Horizons now?")
 		if self._windows.open_popup(headline, message, show_cancel_button=True):
 			return True
 
 	def set_defaults(self):
-		title = _("Restore default settings")
-		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
-				u" " + _("Do you want to continue?")
+		title = T("Restore default settings")
+		msg = T("Restoring the default settings will delete all changes to the settings you made so far.") + \
+				u" " + T("Do you want to continue?")
 
 		if self._windows.open_popup(title, msg, show_cancel_button=True):
 			self.hotkey_interface.reset_to_default()
@@ -258,9 +258,9 @@ class SettingsDialog(PickBeltWidget, Window):
 			# 0 is not a valid port, but a valid value here (used for default)
 			parse_port(new)
 		except ValueError:
-			headline = _("Invalid network port")
-			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
-			advice = _("Please check the port you entered and make sure it is in the specified range.")
+			headline = T("Invalid network port")
+			descr = T("The port you specified is not valid. It must be a number between 1 and 65535.")
+			advice = T("Please check the port you entered and make sure it is in the specified range.")
 			self._windows.open_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
 			self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', u"0")
@@ -271,13 +271,13 @@ class SettingsDialog(PickBeltWidget, Window):
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed()
 			except Exception as e:
-				headline = _("Failed to apply new network settings.")
-				descr = _("Network features could not be initialized with the current configuration.")
-				advice = _("Check the settings you specified in the network section.")
+				headline = T("Failed to apply new network settings.")
+				descr = T("Network features could not be initialized with the current configuration.")
+				advice = T("Check the settings you specified in the network section.")
 				if 0 < parse_port(new) < 1024:
 					#i18n This is advice for players seeing a network error with the current config
 					advice += u" " + \
-						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
+						T("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
 				details = unicode(e)
 				self._windows.open_error_popup(headline, descr, advice, details)
 

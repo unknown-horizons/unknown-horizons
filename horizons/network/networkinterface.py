@@ -26,7 +26,7 @@ import horizons.globals
 from horizons import network
 from horizons.constants import LANGUAGENAMES, NETWORK, VERSION
 from horizons.extscheduler import ExtScheduler
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import CommandError, FatalError, NetworkException, packets
 from horizons.network.common import Game
@@ -523,7 +523,7 @@ class MPGame(object):
 		ret_players = []
 		for index, player in enumerate(self.players, start=1):
 			# TODO: add support for selecting difficulty levels to the GUI
-			status = _('Ready') if player.ready else _('Not Ready')
+			status = T('Ready') if player.ready else T('Not Ready')
 			ret_players.append({
 				'id':         index,
 				'sid':        player.sid,

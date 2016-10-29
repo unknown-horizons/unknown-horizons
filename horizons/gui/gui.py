@@ -36,7 +36,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.gui.windows import Window, WindowManager
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
 from horizons.util.startgameoptions import StartGameOptions
 
@@ -83,8 +83,8 @@ class MainMenu(Window):
 
 	def on_escape(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
-		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self._windows.open_popup(_("Quit Game"), message, show_cancel_button=True):
+		message = T("Are you sure you want to quit Unknown Horizons?")
+		if self._windows.open_popup(T("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
 	def mouse_entered_changebackground(self):

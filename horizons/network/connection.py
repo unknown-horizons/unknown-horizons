@@ -25,7 +25,7 @@ import logging
 import time
 
 from horizons import network
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.network import enet, packets
 
 # maximal peers enet should handle
@@ -86,13 +86,13 @@ class Connection(object):
 				self.server_address = enet.Address(*self.server_address_parameters)
 			self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
-			raise network.NetworkException(_("Unable to connect to server.") + u" " +
-			                               _("Maybe invalid or irresolvable server address."))
+			raise network.NetworkException(T("Unable to connect to server.") + u" " +
+			                               T("Maybe invalid or irresolvable server address."))
 
 		event = self.host.service(SERVER_TIMEOUT)
 		if event.type != enet.EVENT_TYPE_CONNECT:
 			self._reset()
-			raise network.UnableToConnect(_("Unable to connect to server."))
+			raise network.UnableToConnect(T("Unable to connect to server."))
 
 	def disconnect(self, server_may_disconnect=False):
 		"""End connection to master server.

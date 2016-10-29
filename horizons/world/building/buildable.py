@@ -23,7 +23,7 @@ import itertools
 
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.i18n import gettext_lazy as _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.pathfinding.pathfinder import a_star_find_path
 from horizons.util.python import ChainedContainer, decorators
 from horizons.util.shapes import Circle, Point, Rect
@@ -39,18 +39,18 @@ class BuildableErrorTypes(object):
 	NO_FLAT_LAND = range(13)
 
 	text = {
-	  NO_ISLAND : _lazy("This building must be built on an island."),
-	  UNFIT_TILE : _lazy("This ground is not suitable for this building."),
-	  NO_SETTLEMENT : _lazy("This building has to be built within your settlement."),
-	  OTHER_PLAYERS_SETTLEMENT : _lazy("This area is already occupied by another player."),
-	  OTHER_BUILDING_THERE : _lazy("This area is already occupied by another building."),
-	  UNIT_THERE : _lazy("This area is already occupied by a unit."),
-	  NO_COAST : _lazy("This building must be built on the coastline."),
-	  NO_OCEAN_NEARBY : _lazy("This building has to be placed at the ocean."),
-	  ONLY_NEAR_SHIP : _lazy("This spot is too far away from your ship."),
-	  NEED_RES_SOURCE : _lazy("This building can only be built on a resource source."),
-	  ISLAND_ALREADY_SETTLED : _lazy("You have already settled this island."),
-	  NO_FLAT_LAND : _lazy("This building must be partly on flat land.")
+	  NO_ISLAND : LazyT("This building must be built on an island."),
+	  UNFIT_TILE : LazyT("This ground is not suitable for this building."),
+	  NO_SETTLEMENT : LazyT("This building has to be built within your settlement."),
+	  OTHER_PLAYERS_SETTLEMENT : LazyT("This area is already occupied by another player."),
+	  OTHER_BUILDING_THERE : LazyT("This area is already occupied by another building."),
+	  UNIT_THERE : LazyT("This area is already occupied by a unit."),
+	  NO_COAST : LazyT("This building must be built on the coastline."),
+	  NO_OCEAN_NEARBY : LazyT("This building has to be placed at the ocean."),
+	  ONLY_NEAR_SHIP : LazyT("This spot is too far away from your ship."),
+	  NEED_RES_SOURCE : LazyT("This building can only be built on a resource source."),
+	  ISLAND_ALREADY_SETTLED : LazyT("You have already settled this island."),
+	  NO_FLAT_LAND : LazyT("This building must be partly on flat land.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 

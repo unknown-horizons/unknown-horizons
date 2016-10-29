@@ -23,7 +23,7 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label, VBox
 from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.world.storage import (
 	PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage, TotalStorage)
 
@@ -171,9 +171,9 @@ class Inventory(Container):
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored = self._inventory.get_sum_of_stored_resources()
-				self.legend.text = _('{stored}/{limit}').format(stored=sum_stored, limit=limit)
+				self.legend.text = T('{stored}/{limit}').format(stored=sum_stored, limit=limit)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				self.legend.text = _('Limit: {amount}t per slot').format(amount=limit)
+				self.legend.text = T('Limit: {amount}t per slot').format(amount=limit)
 
 	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory

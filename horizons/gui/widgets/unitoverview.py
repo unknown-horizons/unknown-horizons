@@ -26,7 +26,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path, load_uh_widget
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
@@ -117,10 +117,10 @@ class WeaponStorageWidget(HBox):
 				icon_image = get_res_icon_path(weapon, 24)
 				weapon_name = self.instance.session.db.get_res_name(weapon)
 				# You usually do not need to change anything here when translating
-				helptext = _('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
+				helptext = T('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
 				icon = Icon(image=icon_image, helptext=helptext)
 				self.addChild(icon)
 		if not weapons_added:
 			icon_image = "content/gui/icons/resources/none.png"
-			icon = Icon(image=icon_image, helptext=_("none"))
+			icon = Icon(image=icon_image, helptext=T("none"))
 			self.addChild(icon)

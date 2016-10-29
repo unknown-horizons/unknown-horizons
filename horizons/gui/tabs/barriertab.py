@@ -23,7 +23,7 @@
 from horizons.component.depositcomponent import DepositComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.i18n import gettext_lazy as _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 from .overviewtab import OverviewTab
@@ -31,7 +31,7 @@ from .overviewtab import OverviewTab
 
 class BarrierOverviewTab(OverviewTab):
 	widget = 'overview_barrier.xml'
-	helptext = _lazy("Overview")
+	helptext = LazyT("Overview")
 
 	def init_widget(self):
 		super(BarrierOverviewTab, self).init_widget()

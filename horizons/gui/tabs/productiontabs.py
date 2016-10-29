@@ -34,7 +34,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.i18n import gettext as _, gettext_lazy as _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.scheduler import Scheduler
 from horizons.util.pychananimation import PychanAnimation
 from horizons.util.python.callback import Callback
@@ -45,7 +45,7 @@ from .overviewtab import OverviewTab
 
 class ProductionOverviewTab(OverviewTab):
 	widget = 'overview_productionbuilding.xml'
-	helptext = _lazy("Production overview")
+	helptext = LazyT("Production overview")
 	production_line_gui_xml = 'overview_productionline.xml'
 
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
@@ -298,7 +298,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 			icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
 			button.path = 'icons/tabwidget/lumberjackcamp/no_area_build'
 		button.min_size = button.max_size = button.size = (46, 46)
-		button.helptext = _('Fill range with {how_many} trees').format(
+		button.helptext = T('Fill range with {how_many} trees').format(
 			how_many=field_comp.how_many)
 
 		res_bar = self.instance.session.ingame_gui.resource_overview
@@ -319,7 +319,7 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	Requires the building class using this tab to implement get_providers().
 	"""
 	widget = 'overview_farm.xml'
-	helptext = _lazy("Production overview")
+	helptext = LazyT("Production overview")
 	production_line_gui_xml = "overview_farmproductionline.xml"
 
 	# the farm uses small buttons

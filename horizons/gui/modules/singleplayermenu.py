@@ -39,7 +39,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
 from horizons.gui.windows import Window
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import InvalidScenarioFileFormat, ScenarioEventHandler
 from horizons.util.python.callback import Callback
@@ -112,7 +112,7 @@ class SingleplayerMenu(Window):
 		player_name = self._playerdata.get_player_name()
 
 		if not player_name:
-			self._windows.open_popup(_("Invalid player name"), _("You entered an invalid playername."))
+			self._windows.open_popup(T("Invalid player name"), T("You entered an invalid playername."))
 			return
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
@@ -155,7 +155,7 @@ class GameSettingsWidget(object):
 
 		resource_density_slider = self._gui.findChild(name='resource_density_slider')
 		def on_resource_density_slider_change():
-			self._gui.findChild(name='resource_density_lbl').text = _('Resource density:') + u' ' + \
+			self._gui.findChild(name='resource_density_lbl').text = T('Resource density:') + u' ' + \
 				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
 			horizons.globals.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
 			horizons.globals.fife.save_settings()
@@ -233,11 +233,11 @@ class RandomMapWidget(object):
 		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		parameters = (
-			('map_size', self.map_sizes, _('Map size:'), 'RandomMapSize'),
-			('water_percent', self.water_percents, _('Water:'), 'RandomMapWaterPercent'),
-			('max_island_size', self.island_sizes, _('Max island size:'), 'RandomMapMaxIslandSize'),
-			('preferred_island_size', self.island_sizes, _('Preferred island size:'), 'RandomMapPreferredIslandSize'),
-			('island_size_deviation', self.island_size_deviations, _('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
+			('map_size', self.map_sizes, T('Map size:'), 'RandomMapSize'),
+			('water_percent', self.water_percents, T('Water:'), 'RandomMapWaterPercent'),
+			('max_island_size', self.island_sizes, T('Max island size:'), 'RandomMapMaxIslandSize'),
+			('preferred_island_size', self.island_sizes, T('Preferred island size:'), 'RandomMapPreferredIslandSize'),
+			('island_size_deviation', self.island_size_deviations, T('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
 		)
 
 		for param, __, __, setting_name in parameters:
@@ -356,7 +356,7 @@ class RandomMapWidget(object):
 			imagemanager=horizons.globals.fife.imagemanager,
 			cam_border=False,
 			use_rotation=False,
-			tooltip=_("Click to generate a different random map"),
+			tooltip=T("Click to generate a different random map"),
 			on_click=self._on_preview_click,
 			preview=True)
 
@@ -418,7 +418,7 @@ class FreeMapsWidget(object):
 
 		number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
 		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
+		lbl.text = T("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(map_file)
 
@@ -506,10 +506,10 @@ class ScenarioMapWidget(object):
 		"""
 		logging.getLogger('gui.windows').error(u"Error: %s", exception)
 		self._windows.open_error_popup(
-			_("Invalid scenario file"),
-			description=_("The selected file is not a valid scenario file."),
-			details=_("Error message:") + u' ' + unicode(str(exception)),
-			advice=_("Please report this to the author."))
+			T("Invalid scenario file"),
+			description=T("The selected file is not a valid scenario file."),
+			details=T("Error message:") + u' ' + unicode(str(exception)),
+			advice=T("Please report this to the author."))
 
 	def _on_map_change(self):
 		# type: () -> None
@@ -592,13 +592,13 @@ class ScenarioMapWidget(object):
 		lbl.text = translation_status
 
 		lbl = self._gui.findChild(name="uni_map_difficulty")
-		lbl.text = _("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
+		lbl.text = T("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
 
 		lbl = self._gui.findChild(name="uni_map_author")
-		lbl.text = _("Author: {author}").format(author=metadata['author'])
+		lbl.text = T("Author: {author}").format(author=metadata['author'])
 
 		lbl = self._gui.findChild(name="uni_map_desc")
-		lbl.text = _("Description: {desc}").format(desc=metadata['description'])
+		lbl.text = T("Description: {desc}").format(desc=metadata['description'])
 
 	@staticmethod
 	def find_map_filename(scenario, target_locale):

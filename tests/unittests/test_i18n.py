@@ -29,7 +29,7 @@ import mock
 import polib
 
 import horizons.i18n
-from horizons.i18n import change_language, gettext, gettext_lazy
+from horizons.i18n import change_language, gettext as T, gettext_lazy as LazyT
 from tests.unittests import TestCase
 
 
@@ -83,20 +83,20 @@ class Testi18n(TestCase):
 		"""
 		Without active language, the message will be returned untranslated.
 		"""
-		self.assertEqual(gettext('McAvoy or Stewart? These timelines are confusing.'),
+		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
 		                'McAvoy or Stewart? These timelines are confusing.')
 
 	def test_active_translation(self):
 		change_language('de')
-		self.assertEqual(gettext('McAvoy or Stewart? These timelines are confusing.'),
+		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
 		                 u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
 
 		change_language('fr')
-		self.assertEqual(gettext('McAvoy or Stewart? These timelines are confusing.'),
+		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
 		                 u'McAvoy ou Stewart? Ces délais sont confus.')
 
 	def test_gettext_lazy(self):
-		text = gettext_lazy('McAvoy or Stewart? These timelines are confusing.')
+		text = LazyT('McAvoy or Stewart? These timelines are confusing.')
 
 		self.assertEqual(unicode(text), u'McAvoy or Stewart? These timelines are confusing.')
 

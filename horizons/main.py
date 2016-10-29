@@ -44,7 +44,7 @@ from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLE
 from horizons.ext.typing import TYPE_CHECKING, Optional
 from horizons.extscheduler import ExtScheduler
 from horizons.gui import Gui
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
@@ -358,9 +358,9 @@ def start_singleplayer(options):
 				traceback.print_exc()
 				print("Additionally to failing when loading, cleanup afterwards also failed")
 		_modules.gui.show_main()
-		headline = _("Failed to start/load the game")
-		descr = _("The game you selected could not be started.") + u" " + \
-		        _("The savegame might be broken or has been saved with an earlier version.")
+		headline = T("Failed to start/load the game")
+		descr = T("The game you selected could not be started.") + u" " + \
+		        T("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.open_error_popup(headline, descr)
 		_modules.gui.load_game()
 	return _modules.session
@@ -478,8 +478,8 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	save_files = SavegameManager.get_quicksaves()[0]
 	if _modules.session is not None:
 		if not save_files:
-			_modules.session.ingame_gui.open_popup(_("No quicksaves found"),
-			                                       _("You need to quicksave before you can quickload."))
+			_modules.session.ingame_gui.open_popup(T("No quicksaves found"),
+			                                       T("You need to quicksave before you can quickload."))
 			return False
 	else:
 		if not save_files:
@@ -567,8 +567,8 @@ def set_debug_log(enabled, startup=False):
 			options.debug = True
 
 		if not startup:
-			headline = _("Logging enabled")
-			msg = _("Logs are written to {directory}.").format(directory=PATHS.LOG_DIR)
+			headline = T("Logging enabled")
+			msg = T("Logs are written to {directory}.").format(directory=PATHS.LOG_DIR)
 			# Let the ext scheduler show the popup, so that all other settings can be saved and validated
 			ExtScheduler().add_new_object(Callback(_modules.gui.open_popup, headline, msg), None)
 

@@ -23,7 +23,7 @@
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.i18n import gettext_lazy as _lazy
+from horizons.i18n import gettext_lazy as LazyT
 
 from .overviewtab import OverviewTab
 
@@ -37,7 +37,7 @@ class EnemyBuildingOverviewTab(OverviewTab):
 
 class EnemyWarehouseOverviewTab(OverviewTab):
 	widget = 'overview_enemywarehouse.xml'
-	helptext = _lazy("Warehouse overview")
+	helptext = LazyT("Warehouse overview")
 
 	def init_widget(self):
 		super(EnemyWarehouseOverviewTab, self).init_widget()

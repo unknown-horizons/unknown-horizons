@@ -22,7 +22,7 @@
 import random
 
 from horizons.constants import SINGLEPLAYER
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.manager import SPManager
 from horizons.savegamemanager import SavegameManager
 from horizons.session import Session
@@ -63,9 +63,9 @@ class SPSession(Session):
 			SavegameManager.delete_dispensable_savegames(quicksaves=True)
 			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
-			headline = _("Failed to quicksave.")
-			descr = _("An error happened during quicksave.") + u"\n" + _("Your game has not been saved.")
-			advice = _("If this error happens again, please contact the development team: "
+			headline = T("Failed to quicksave.")
+			descr = T("An error happened during quicksave.") + u"\n" + T("Your game has not been saved.")
+			advice = T("If this error happens again, please contact the development team: "
 			           "{website}").format(website="http://unknown-horizons.org/support/")
 			self.ingame_gui.open_error_popup(headline, descr, advice)
 

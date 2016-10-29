@@ -22,13 +22,13 @@
 
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.i18n import gettext as _, gettext_lazy as _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 
 
 class OverviewTab(TabInterface):
 	widget = 'overviewtab.xml'
 	icon_path = 'icons/tabwidget/common/building_overview'
-	helptext = _lazy("Overview")
+	helptext = LazyT("Overview")
 
 	has_stance = False
 
@@ -56,7 +56,7 @@ class OverviewTab(TabInterface):
 			if self.instance.has_component(NamedComponent):
 				name_widget.text = self.instance.get_component(NamedComponent).name
 			else:
-				name_widget.text = _(self.instance.name)
+				name_widget.text = T(self.instance.name)
 
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
@@ -98,7 +98,7 @@ class OverviewTab(TabInterface):
 
 class GroundUnitOverviewTab(OverviewTab):
 	widget = 'overview_groundunit.xml'
-	helptext = _lazy("Unit overview")
+	helptext = LazyT("Unit overview")
 
 	has_stance = True
 
@@ -114,7 +114,7 @@ class GroundUnitOverviewTab(OverviewTab):
 #added from old groundunittabs.py
 #class GroundUnitOverviewTab(OverviewTab):
 #	widget = 'overview_war_groundunit.xml'
-#	helptext = _lazy("Groundunit overview")
+#	helptext = LazyT("Groundunit overview")
 #
 #	def init_widget(self):
 #		super(GroundUnitOverviewTab, self).init_widget()

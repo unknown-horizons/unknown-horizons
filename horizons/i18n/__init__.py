@@ -20,9 +20,9 @@
 # ###################################################
 
 """
-Maps _ to the ugettext unicode gettext call. Use: _(string).
+Maps _ to the ugettext unicode gettext call. Use: T(string).
 N_ takes care of plural forms for different languages. It masks ungettext
-calls (unicode, plural-aware _() ) to create different translation strings
+calls (unicode, plural-aware T() ) to create different translation strings
 depending on the counter value. Not all languages have only two plural forms
 "One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
 where n is a counter.

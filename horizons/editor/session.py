@@ -24,7 +24,7 @@ import random
 from horizons.constants import PATHS
 from horizons.editor.gui import IngameGui
 from horizons.editor.worldeditor import WorldEditor
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.manager import SPManager
 from horizons.session import Session
 from horizons.timer import Timer
@@ -67,9 +67,9 @@ class EditorSession(Session):
 		if success:
 			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
-			headline = _("Failed to quicksave.")
-			descr = _("An error happened during quicksave.") + u"\n" + _("Your map has not been saved.")
-			advice = _("If this error happens again, please contact the development team: "
+			headline = T("Failed to quicksave.")
+			descr = T("An error happened during quicksave.") + u"\n" + T("Your map has not been saved.")
+			advice = T("If this error happens again, please contact the development team: "
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.ingame_gui.open_error_popup(headline, descr, advice)
 

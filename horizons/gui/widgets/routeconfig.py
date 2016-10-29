@@ -35,7 +35,7 @@ from horizons.gui.util import create_resource_selection_dialog, get_res_icon_pat
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.manager import MPManager
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -111,19 +111,19 @@ class RouteConfig(Window):
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()
-		self._gui.findChild(name='start_route').helptext = _('Start route')
+		self._gui.findChild(name='start_route').helptext = T('Start route')
 
 	def start_button_set_inactive(self):
 		self._gui.findChild(name='start_route').set_inactive()
-		self._gui.findChild(name='start_route').helptext = _('Stop route')
+		self._gui.findChild(name='start_route').helptext = T('Stop route')
 
 	def start_route(self):
 		if self.instance.route.can_enable():
 			self._route_cmd("enable")
 		else:
 			self.instance.session.ingame_gui.open_popup(
-				_("Need at least two settlements"),
-				_("You need at least two different settlements in your route."))
+				T("Need at least two settlements"),
+				T("You need at least two different settlements in your route."))
 
 	def stop_route(self):
 		self._route_cmd("disable")
@@ -152,7 +152,7 @@ class RouteConfig(Window):
 		"""Update hint informing about how to add waypoints. Only visible when there are none."""
 		name = "no_entries_hint"
 		if not self.instance.route.waypoints:
-			lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
+			lbl = widgets.Label(name=name, text=T("Click on a settlement to add a waypoint!"))
 			self._gui.findChild(name="left_vbox").addChild(lbl)
 		else:
 			lbl = self._gui.findChild(name=name)
@@ -190,13 +190,13 @@ class RouteConfig(Window):
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
-		button.helptext = _("Loading into ship")
+		button.helptext = T("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
-		button.helptext = _("Unloading from ship")
+		button.helptext = T("Unloading from ship")
 		slot.action = "unload"
 
 	def toggle_load_unload(self, slot, entry):
@@ -382,7 +382,7 @@ class RouteConfig(Window):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
-			self.session.ingame_gui.message_widget.add_custom(_("You are not allowed to trade with this player"))
+			self.session.ingame_gui.message_widget.add_custom(T("You are not allowed to trade with this player"))
 			return
 
 		if len(self.widgets) >= self.MAX_ENTRIES:

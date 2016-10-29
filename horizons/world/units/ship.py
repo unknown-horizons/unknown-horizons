@@ -28,7 +28,7 @@ from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.namedcomponent import NamedComponent, ShipNameComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.messaging import ShipDestroyed
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
@@ -211,13 +211,13 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return (_('Going to {location}').format(location=location_based_status), target)
-			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
+				return (T('Going to {location}').format(location=location_based_status), target)
+			return (T('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return (_('Idle at {location}').format(location=location_based_status), self.position)
-			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
+				return (T('Idle at {location}').format(location=location_based_status), self.position)
+			return (T('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 
 class TradeShip(Ship):
@@ -228,7 +228,7 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [_('Trader')]
+		return [T('Trader')]
 
 
 class FisherShip(FisherShipCollector, Ship):

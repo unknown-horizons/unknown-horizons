@@ -23,7 +23,7 @@ from fife.extensions.pychan import widgets
 
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
@@ -38,7 +38,7 @@ class PlayersSettlements(StatsWidget):
 
 	def refresh(self):
 		super(PlayersSettlements, self).refresh()
-		self._gui.findChild(name='headline').text = _("Settlements of {player}").format(player=self.session.world.player.name)
+		self._gui.findChild(name='headline').text = T("Settlements of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
@@ -95,7 +95,7 @@ class PlayersSettlements(StatsWidget):
 		from horizons.engine.pychan_util import RenameImageButton
 		rename_icon = RenameImageButton(name='rename_%d' % settlement.worldid)
 		rename_icon.path = "images/background/rename_feather_20"
-		rename_icon.helptext = _("Click to change the name of your settlement")
+		rename_icon.helptext = T("Click to change the name of your settlement")
 		rename_icon.max_size = (20, 20) # (width, height)
 
 		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
@@ -116,7 +116,7 @@ class PlayersSettlements(StatsWidget):
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		name = widgets.Label(name='name_total')
-		name.text = _('Total')
+		name.text = T('Total')
 		name.min_size = name.max_size = (200, 20)
 
 		self._add_generic_line_to_gui(0, [sequence_number_label, name], people, tax, costs)

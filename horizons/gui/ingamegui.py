@@ -42,7 +42,7 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.i18n import gettext as _
+from horizons.i18n import gettext as T
 from horizons.messaging import (
 	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
 	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)
@@ -230,8 +230,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.windows.open_popup(_("No diplomacy possible"),
-			                        _("Cannot do diplomacy as there are no other players."))
+			self.windows.open_popup(T("No diplomacy possible"),
+			                        T("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -468,8 +468,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			message = _(u"Are you sure you want to delete these objects?")
-			if self.windows.open_popup(_(u"Delete"), message, show_cancel_button=True):
+			message = T(u"Are you sure you want to delete these objects?")
+			if self.windows.open_popup(T(u"Delete"), message, show_cancel_button=True):
 				self.session.remove_selected()
 			else:
 				self.deselect_all()
