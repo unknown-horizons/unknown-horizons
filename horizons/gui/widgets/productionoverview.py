@@ -40,7 +40,7 @@ class MultiPageStatsWidget(StatsWidget):
 	A widget that creates a large table with statistics that can be browsed through page by
 	page.
 	"""
-	widget_file_name = None # name of the widget's XML file
+	widget_file_name = None # type: str
 
 	def _init_gui(self):
 		self._gui = load_uh_widget(self.widget_file_name, center_widget=self.center_widget)

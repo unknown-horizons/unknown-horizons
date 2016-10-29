@@ -318,7 +318,7 @@ class BuildableSingle(Buildable):
 
 class BuildableSingleEverywhere(BuildableSingle):
 	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""
-	terrain_type = None
+	terrain_type = None # type: None
 
 	@classmethod
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
@@ -545,7 +545,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 	the buildingclass.
 	"""
 	irregular_conditions = True
-	terrain_type = None
+	terrain_type = None # type: None
 
 	@classmethod
 	def _check_buildings(cls, session, position, island=None):
