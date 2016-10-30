@@ -35,6 +35,7 @@ from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Popup, Window
 from horizons.i18n import gettext as T
 from horizons.network import enet
+from horizons.network.common import ErrorType
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
 from horizons.util.color import Color
@@ -436,6 +437,7 @@ class GameLobby(Window):
 		NetworkInterface().unsubscribe("lobbygame_toggleready", self._on_player_toggled_ready)
 		NetworkInterface().unsubscribe("game_details_changed", self._update_game_details)
 		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
+		NetworkInterface().unsubscribe("error", self._on_error)
 
 	def open(self):
 		textfield = self._gui.findChild(name="chatTextField")
@@ -457,11 +459,18 @@ class GameLobby(Window):
 		NetworkInterface().subscribe("lobbygame_changecolor", self._on_player_changed_color)
 		NetworkInterface().subscribe("lobbygame_toggleready", self._on_player_toggled_ready)
 		NetworkInterface().subscribe("game_details_changed", self._update_game_details)
+		NetworkInterface().subscribe("error", self._on_error)
 
 		self.show()
 
 	def show(self):
 		self._gui.show()
+
+	def _on_error(self, error, fatal=True):
+		if error.type == ErrorType.TerminateGame:
+			# We can't use `_cancel` here, since that calls `leavegame`, which isn't
+			# possible since the game was terminated already.
+			self._windows.close()
 
 	def _prepare_game(self, game):
 		horizons.main.prepare_multiplayer(game)

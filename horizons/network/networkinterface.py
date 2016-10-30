@@ -29,7 +29,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.i18n import gettext as T
 from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import CommandError, FatalError, NetworkException, packets
-from horizons.network.common import Game
+from horizons.network.common import ErrorType, Game
 from horizons.network.connection import Connection
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
@@ -394,6 +394,11 @@ class NetworkInterface(object):
 			self.broadcast("error", e, fatal=True)
 			self.disconnect()
 			return True
+		except CommandError as e:
+			if e.type == ErrorType.TerminateGame:
+				self._game = None
+			self.broadcast("error", e, fatal=False)
+			return False
 		except NetworkException as e:
 			self.broadcast("error", e, fatal=False)
 			return False
