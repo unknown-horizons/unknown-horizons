@@ -100,9 +100,9 @@ echo "=> Creating UH gettext pot template file at $RESULT_FILE."
              --package-name='Unknown Horizons' \
              --package-version="$VERSION" \
              --msgid-bugs-address='team@unknown-horizons.org' \
-             --keyword=N_:1,2 \
-             --keyword=_lazy
-# --keyword=N_ also catches N_() plural-aware ngettext calls
+             --keyword=NT:1,2 \
+             --keyword=LazyT \
+             --keyword=T
 
 # SQL files
 python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
