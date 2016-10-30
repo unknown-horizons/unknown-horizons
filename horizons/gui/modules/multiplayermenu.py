@@ -436,7 +436,7 @@ class GameLobby(Window):
 		NetworkInterface().unsubscribe("game_details_changed", self._update_game_details)
 		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
 
-	def show(self):
+	def open(self):
 		textfield = self._gui.findChild(name="chatTextField")
 		textfield.capture(self._send_chat_message)
 		welcome_string = _("Enter your message")
@@ -457,6 +457,9 @@ class GameLobby(Window):
 		NetworkInterface().subscribe("lobbygame_toggleready", self._on_player_toggled_ready)
 		NetworkInterface().subscribe("game_details_changed", self._update_game_details)
 
+		self.show()
+
+	def show(self):
 		self._gui.show()
 
 	def _prepare_game(self, game):
