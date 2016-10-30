@@ -240,20 +240,8 @@ class Connection(object):
 
 		if isinstance(packet, packets.cmd_error):
 			# handle special errors here
-			# FIXME: it's better to pass that to the interface,
-			# but our ui error handler currently can't handle that
-
 			# the game got terminated by the client
-			"""
-			# TODO
-			if packet.type == ErrorType.TerminateGame:
-				game = self.game
-				# this will destroy self.game
-				self.leavegame(stealth=True)
-				self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
-				return None
-			"""
-			raise network.CommandError(packet.errorstr)
+			raise network.CommandError(packet.errorstr, type=packet.type)
 		elif isinstance(packet, packets.cmd_fatalerror):
 			self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
 			self.disconnect(server_may_disconnect=True)

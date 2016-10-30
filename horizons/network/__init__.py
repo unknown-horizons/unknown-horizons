@@ -114,7 +114,9 @@ class UnableToConnect(ClientException):
 	pass
 
 class CommandError(ClientException):
-	pass
+	def __init__(self, message, type):
+		super(ClientException, self).__init__(message)
+		self.type = type
 
 class FatalError(ClientException):
 	pass
