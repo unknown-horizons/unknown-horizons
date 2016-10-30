@@ -248,6 +248,10 @@ def set_translations():
 		(u'taxes'                        , 'helptext'): _(u"Paid taxes"),
 		},
 
+	'overview_barrier.xml' : {
+		(u'barrier_description_lbl'      , 'text'    ): _(u"Provides security for your settlement."),
+		},
+
 	'overview_enemybuilding.xml' : {
 		},
 
@@ -436,6 +440,8 @@ def set_translations():
 
 	'island_production.xml' : {
 		(u'okButton'                     , 'helptext'): _(u"Close"),
+		(u'backwardButton'               , 'helptext'): _(u"Go to previous page"),
+		(u'forwardButton'                , 'helptext'): _(u"Go to next page"),
 		},
 
 	'players_overview.xml' : {
@@ -564,6 +570,7 @@ def set_translations():
 		},
 
 	'mainmenu.xml' : {
+		(u'changeBackground'             , 'text'    ): _(u"Change Background"),
 		(u'credits_label'                , 'text'    ): _(u"Credits"),
 		(u'editor_label'                 , 'text'    ): _(u"Editor"),
 		(u'help_label'                   , 'text'    ): _(u"Help"),
