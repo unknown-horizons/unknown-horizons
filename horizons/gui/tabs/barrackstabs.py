@@ -131,7 +131,7 @@ class BarracksConfirmTab(ProducerOverviewTabBase):
 
 	def init_widget(self):
 		super(BarracksConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
+		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 
 	def start_production(self):

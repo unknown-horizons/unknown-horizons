@@ -278,6 +278,6 @@ def _building_in_range_of(session, building_class, *classes):
 		for building in settlement.buildings_by_id[building_class]: # iterate through all buildings of building_class
 			for other_class in classes: # iterate through all given other classes
 				for building2 in settlement.buildings_by_id[other_class]: # iterate through all buildings of other_class
-					if building.position.distance( building2.position ) <= building.radius: # building in range of building2
+					if building.position.distance(building2.position) <= building.radius: # building in range of building2
 						return True
 	return False # building not found in range

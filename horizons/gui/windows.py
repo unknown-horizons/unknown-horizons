@@ -411,7 +411,7 @@ class WindowManager(object):
 		if details:
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:
-			self.open_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			self.open_popup(_("Error: {error_message}").format(error_message=windowtitle),
 			                 msg)
 		except SystemExit: # user really wants us to die
 			raise

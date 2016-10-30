@@ -100,12 +100,12 @@ def get_file_path(dir_name, var_id):
 	"""If var_id is None we get random variation from directory
 	"""
 	if var_id is not None:
-		for infile in glob.glob( os.path.join(dir_name, str(var_id) + '.*') ):
+		for infile in glob.glob(os.path.join(dir_name, str(var_id) + '.*')):
 			return infile
 	variation_count = count_variations(dir_name)
 	if variation_count > 0:
 		rand = randrange(0, variation_count)
-		filelist = glob.glob( os.path.join(dir_name, '*.*') )
+		filelist = glob.glob(os.path.join(dir_name, '*.*'))
 		return filelist[rand]
 	else:
 		return None

@@ -26,16 +26,16 @@ except ImportError:
 	# this is the old (0.3.4 and earlier) API
 	from fife.fife import Color
 
-BROWN = { 64: Color(80, 80, 40,  64),
-          96: Color(80, 80, 40,  96),
+BROWN = {64: Color(80, 80, 40,  64),
+         96: Color(80, 80, 40,  96),
          128: Color(80, 80, 40, 128),
          192: Color(80, 80, 40, 192),
          255: Color(80, 80, 40, 255),
 }
 
-WHITE = { 32: Color(255, 255, 255,  32),
-          64: Color(255, 255, 255,  64),
-          96: Color(255, 255, 255,  96),
+WHITE = {32: Color(255, 255, 255,  32),
+         64: Color(255, 255, 255,  64),
+         96: Color(255, 255, 255,  96),
          160: Color(255, 255, 255, 160),
          255: Color(255, 255, 255, 255),
 }

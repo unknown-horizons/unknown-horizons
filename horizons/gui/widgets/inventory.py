@@ -78,7 +78,7 @@ class Inventory(Container):
 				self.__icon.position = (130, 53)
 				self.legend.position = (150, 53)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				self.__icon.position = ( 0, 248)
+				self.__icon.position = (0, 248)
 				self.legend.position = (20, 248)
 
 		self.update()
@@ -100,7 +100,7 @@ class Inventory(Container):
 		"""Draws the inventory."""
 		# add res to res order in case there are new ones
 		# (never remove old ones for consistent positioning)
-		new_res = sorted( resid for resid in self._inventory.iterslots() if resid not in self._res_order )
+		new_res = sorted(resid for resid in self._inventory.iterslots() if resid not in self._res_order)
 
 		if isinstance(self._inventory, PositiveTotalNumSlotsStorage):
 			# limited number of slots. We have to switch unused slots with newly added ones on overflow
