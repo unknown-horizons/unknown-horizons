@@ -38,7 +38,7 @@ class ToggleActive(GenericComponentCommand):
 		else:
 			production = None
 
-		return getattr(obj, self.method)( production )
+		return getattr(obj, self.method)(production)
 
 GenericComponentCommand.allow_network(ToggleActive)
 

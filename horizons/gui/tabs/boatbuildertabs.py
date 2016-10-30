@@ -177,7 +177,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
 		                                self.instance.session)
 			icon.capture(rm_from_queue_cb, event_name="mouseClicked")
-			queue_container.addChild( icon )
+			queue_container.addChild(icon)
 
 	def update_needed_resources(self, needed_res_container):
 		""" Update needed resources """
@@ -343,7 +343,7 @@ class BoatbuilderConfirmTab(ProducerOverviewTabBase):
 
 	def init_widget(self):
 		super(BoatbuilderConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
+		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 
 	def start_production(self):

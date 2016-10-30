@@ -103,11 +103,11 @@ class ProductionOverviewTab(OverviewTab):
 			self._set_resource_amounts(container, production)
 
 			if production.is_paused():
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_active"))
 				toggle_icon = centered_container.findChild(name="toggle_active_inactive")
 				toggle_icon.name = "toggle_active"
 			else:
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_inactive") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_inactive"))
 				toggle_icon = centered_container.findChild(name="toggle_active_active")
 				toggle_icon.name = "toggle_active"
 
@@ -120,7 +120,7 @@ class ProductionOverviewTab(OverviewTab):
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					centered_container.anim = anim
 					anim.start(1.0/12, -1) # always start anew, people won't notice
-					self._animations.append( weakref.ref( anim ) )
+					self._animations.append(weakref.ref(anim))
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")

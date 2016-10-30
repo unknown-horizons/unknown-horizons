@@ -79,7 +79,7 @@ class ScenarioEventHandler(LivingObject):
 		for cond in CONDITIONS.registry.keys():
 			self._event_conditions[cond] = set()
 		if scenariofile:
-			self._apply_data( self._parse_yaml_file( scenariofile ) )
+			self._apply_data(self._parse_yaml_file(scenariofile))
 
 		self.sleep_ticks_remaining = 0
 
@@ -124,7 +124,7 @@ class ScenarioEventHandler(LivingObject):
 		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
 		if not data:
 			return # nothing to load
-		self._apply_data( self._parse_yaml( data[0][0] ) )
+		self._apply_data(self._parse_yaml(data[0][0]))
 
 	def schedule_check(self, condition):
 		"""Let check_events run in one tick for condition. Useful for lag prevetion if time is a
@@ -199,9 +199,9 @@ class ScenarioEventHandler(LivingObject):
 		self._data = data
 		for event_dict in self._data['events']:
 			event = _Event(self.session, event_dict)
-			self._events.append( event )
+			self._events.append(event)
 			for cond in event.conditions:
-				self._event_conditions[ cond.cond_type ].add( event )
+				self._event_conditions[cond.cond_type].add(event)
 		self.inited = True
 
 	def _scheduled_check(self):
@@ -214,8 +214,8 @@ class ScenarioEventHandler(LivingObject):
 		for cond in event.conditions:
 			# we have to use discard here, since cond.cond_type might be the same
 			# for multiple conditions of event
-			self._event_conditions[ cond.cond_type ].discard( event )
-		self._events.remove( event )
+			self._event_conditions[cond.cond_type].discard(event)
+		self._events.remove(event)
 
 	def to_yaml(self):
 		"""Returns yaml representation of current state of self.
@@ -248,10 +248,10 @@ class _Event(object):
 		self.conditions = []
 		assert_type(event_dict['actions'], list, "actions")
 		for action_dict in event_dict['actions']:
-			self.actions.append( _Action(action_dict) )
+			self.actions.append(_Action(action_dict))
 		assert_type(event_dict['conditions'], list, "conditions")
 		for cond_dict in event_dict['conditions']:
-			self.conditions.append( _Condition(session, cond_dict) )
+			self.conditions.append(_Condition(session, cond_dict))
 
 	def check(self, scenarioeventhandler):
 		for cond in self.conditions:
@@ -320,7 +320,7 @@ class _Condition(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		arguments_yaml = dump_dict_to_yaml(self.arguments)
-		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type)
+		return '{arguments: %s, type: "%s"}' % (arguments_yaml, self.cond_type)
 
 
 def dump_dict_to_yaml(data):
