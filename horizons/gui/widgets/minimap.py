@@ -186,7 +186,7 @@ class Minimap(object):
 		self.rotation = 0
 		self.fixed_tooltip = tooltip
 
-		self.optional_on_click = on_click
+		self.click_handler = on_click if on_click is not None else self.default_on_click
 
 		self.cam_border = cam_border
 		self.use_rotation = use_rotation
@@ -373,25 +373,20 @@ class Minimap(object):
 				self.view.center(*map_coords)
 
 	def _on_click(self, event):
-		if self.optional_on_click:
-			click_handler = self.optional_on_click
-		else:
-			click_handler = self.default_on_click
-
 		if self.world is not None: # supply world coords if there is a world
 			event.map_coords = self._get_event_coords(event)
 			if event.map_coords:
-				click_handler(event, drag=False)
+				self.click_handler(event, drag=False)
 		else:
-			click_handler(event, drag=True)
+			self.click_handler(event, drag=True)
 
 	def _on_drag(self, event):
 		if self.world is not None: # supply world coords if there is a world
 			event.map_coords = self._get_event_coords(event)
 			if event.map_coords:
-				self.on_click(event, drag=True)
+				self.click_handler(event, drag=True)
 		else:
-			self.on_click(event, drag=True)
+			self.click_handler(event, drag=True)
 
 	def _get_event_coords(self, event):
 		"""Returns position of event as uh map coordinate tuple or None"""
