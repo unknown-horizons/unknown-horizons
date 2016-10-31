@@ -118,7 +118,7 @@ class GroundUnitOverviewTab(OverviewTab):
 #
 #	def init_widget(self):
 #		super(GroundUnitOverviewTab, self).init_widget()
-		
+
 class GenericOverviewTab(OverviewTab):
 	"""Name and running costs."""
 	widget = 'overview_generic.xml'

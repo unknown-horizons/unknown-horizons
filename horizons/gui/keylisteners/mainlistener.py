@@ -30,8 +30,9 @@ from fife import fife
 import horizons.globals
 import horizons.main
 from horizons.constants import PATHS
-from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
+
+from .keyconfig import KeyConfig
 
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
@@ -97,5 +98,8 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.quit()
+			# NOTE Sometimes we get two quit events from FIFE, ignore the second
+			#      if we are already shutting down the game
+			if not horizons.globals.fife.quit_requested:
+				horizons.main.quit()
 			command.consume()

@@ -71,8 +71,10 @@ for t in translations:
 	if orig.startswith("#") or trans.startswith("#"):
 		continue
 
-	if orig.startswith("msgid"): orig = orig[6:]
-	if trans.startswith("msgstr"): trans = trans[7:]
+	if orig.startswith("msgid"):
+		orig = orig[6:]
+	if trans.startswith("msgstr"):
+		trans = trans[7:]
 
 	if trans == "\"\"":
 		continue
@@ -85,5 +87,3 @@ for t in translations:
 		print(orig)
 		print(trans)
 		print()
-
-

@@ -43,7 +43,7 @@ class PlayerDataSelection(object):
 		events = {}
 
 		# need the id to save it as int in settings file.
-		for color in (Color if color_palette is None else color_palette):
+		for color in (Color.get_defaults() if color_palette is None else color_palette):
 			label = Label(name = u'{color}'.format(color=color.name),
 			              text = u"    ",
 			              max_size = (20, 20),
@@ -59,13 +59,13 @@ class PlayerDataSelection(object):
 			hbox = HBox(name='line_{index}'.format(index=i))
 			hbox.addChildren(colorlabels[i:i+5])
 			self.colors.addChild(hbox)
-		
+
 		playertextfield = self.gui.findChild(name='playername')
 		def playertextfield_clicked():
 			if playertextfield.text == 'Unnamed Traveler':
-				playertextfield.text = "";
+				playertextfield.text = ""
 		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
-		
+
 		self.gui.mapEvents(events)
 		self.update_data()
 
@@ -75,12 +75,12 @@ class PlayerDataSelection(object):
 		@param color_id: int. Gets converted to util.Color object.
 		"""
 		try:
-			self.selected_color = Color[color_id]
+			self.selected_color = Color.get(color_id)
 		except KeyError:
 			# For some reason, color_id can be 0 apparently:
 			# http://forum.unknown-horizons.org/viewtopic.php?t=6927
 			# Reset that setting to 1 if the problem occurs.
-			self.selected_color = Color[1]
+			self.selected_color = Color.get(1)
 		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
 
 	def set_player_name(self, playername):
@@ -99,12 +99,12 @@ class PlayerDataSelection(object):
 
 	def get_widget(self):
 		return self.gui
-	
+
 	def update_data(self):
 		"""Update the player's name and color from the settings"""
 		self.set_color(horizons.globals.fife.get_uh_setting("ColorID"))
 		self.set_player_name(horizons.globals.fife.get_uh_setting("Nickname"))
-		
+
 	def save_settings(self):
 		"""Stores the current player_name and color into settings"""
 		horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())

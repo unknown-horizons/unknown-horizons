@@ -455,7 +455,7 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()		
+			return self.on_escape()
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 
@@ -493,7 +493,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.LOGBOOK:
 			self.windows.toggle(self.logbook)
 		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
-			import pdb; pdb.set_trace()
+			import pdb
+			pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
 			self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:

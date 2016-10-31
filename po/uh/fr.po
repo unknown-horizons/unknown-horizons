@@ -7,17 +7,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-09-04 15:41+0000\n"
-"Last-Translator: Thibaut Cuvelier <dourouc05@gmail.com>\n"
+"PO-Revision-Date: 2016-10-21 11:48+0000\n"
+"Last-Translator: Mayeul Cantan <mayeul.cantan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.9-dev\n"
 
 #: run_uh.py:124
+#, fuzzy
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons est tombé en panne."
 
@@ -247,8 +248,8 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Pour construire un bateau, cliquez sur l'un des onglets de classes, "
-"sélectionnez le navire désiré et confirmez l'ordre."
+"Pour construire une unité terrestre, cliquez sur l'un des onglets de "
+"classes, sélectionnez l'unité désirée et confirmez l'ordre."
 
 # context is the boat builder overview, so it means 'ship that currently gets constructed'
 #. Information about the groundunit currently under construction at the
@@ -321,7 +322,7 @@ msgstr "Valider la commande"
 #, fuzzy
 #| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Se joindre à la partie sélectionnée"
+msgstr "(comme pour les onglets de sélection)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -334,46 +335,47 @@ msgstr "Se joindre à la partie sélectionnée"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
+#, fuzzy
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Corvette"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
 msgstr ""
+"Navire de guerre, communément doté de trois mats, et de canons sur un seul "
+"pont."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Permettre des améliorations"
+msgstr "Acheter des améliorations"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -383,42 +385,39 @@ msgstr "Canons"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
 msgid "Hull"
-msgstr ""
+msgstr "Coque"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
+#, fuzzy
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Tenir la position"
+msgstr "Construire une unité terrestre"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:79
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Construire ce navire !"
+msgstr "Construire cette unité terrestre !"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -429,10 +428,8 @@ msgstr ""
 "sélectionnez le navire désiré et confirmez l'ordre."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "Construire ce navire !"
+msgstr "Construire le navire :"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -1823,37 +1820,53 @@ msgstr "Appuyez «T» afin de rendre les arbres transparents."
 #, fuzzy
 #| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "Érigez des dépôts afin d'augmenter votre capacité de stockage."
+msgstr ""
+"Érigez des dépôts et des tours de guet afin d'étendre la portée de votre "
+"colonie."
 
 #: horizons/gui/modules/loadingscreen.py:83
+#, fuzzy
 msgid ""
 "To easily see whether the pavilion's range cover all your tents, select it "
 "from the build menu and hover it over your existing pavilion. Uncovered "
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Pour facilement voir si la portée de l'étendard couvre toutes vos tentes, "
+"sélectionnez-le depuis le menu de construction et survolez l'étendard "
+"existant avec. Les tentes non couvertes apparaissent en jaune ; c'est une "
+"bonne idée d'en construire un nouveau près d'elles."
 
 #: horizons/gui/modules/loadingscreen.py:84
+#, fuzzy
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Rendez le jeu solo plus amusant avec plus de joueurs contrôlés par "
+"l'ordinateur en augmentant le nombre de 'joueurs IA' lors d'une nouvelle "
+"partie."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Les premiers pas sont plus faciles en observant comment les joueurs IA "
+"organisent leur colonie."
 
 #: horizons/gui/modules/loadingscreen.py:86
+#, fuzzy
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Vous voulez uniquement des citations amusantes ? Changez les types de "
+"citations montrées ici dans les paramètres."
 
 #: horizons/gui/modules/loadingscreen.py:87
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Un marché relie vos bâtiments tel une route."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2733,7 +2746,7 @@ msgstr ""
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:84
 msgid "Brewery"
-msgstr ""
+msgstr "Brasserie"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
@@ -2765,7 +2778,7 @@ msgstr "Nécessite des cochons ou des bovins. Produit de la nourriture."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Fonderie de Canons"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
@@ -4059,7 +4072,7 @@ msgstr "pièces de monnaie"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "bière"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"

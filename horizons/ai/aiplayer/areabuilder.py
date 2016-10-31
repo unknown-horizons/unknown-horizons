@@ -198,7 +198,7 @@ class AreaBuilder(WorldObject):
 
 	def build_road_connection(self, builder):
 		"""Build a road connecting the builder to a building with general collectors.
-		
+
 		Return True if it worked, False if the path was None."""
 		path = self._get_road_to_builder(builder)
 		return self.build_road(path)
@@ -258,7 +258,7 @@ class AreaBuilder(WorldObject):
 
 	def extend_settlement(self, position):
 		"""Build a storage to extend the settlement towards the given position.
-		
+
 		Return a BUILD_RESULT constant."""
 		return self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 

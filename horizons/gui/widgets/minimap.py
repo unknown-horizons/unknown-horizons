@@ -21,7 +21,6 @@
 from __future__ import print_function
 
 import itertools
-import json
 import math
 from math import cos, sin
 
@@ -34,6 +33,78 @@ from horizons.extscheduler import ExtScheduler
 from horizons.messaging import SettingChanged
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
+
+
+def get_world_to_minimap_ratio(world_dimensions, minimap_dimensions):
+	"""Compute the number of pixels of the world needed for one pixel on the minimap.
+
+	Returns a tuple for x and y, in case they differ.
+	Accepts two tuples of (width, height) to compute the ratio on.
+	"""
+	return tuple(float(w) / m for w, m in zip(world_dimensions, minimap_dimensions))
+
+
+def iter_minimap_points(location, world, island_color, water_color, area=None):
+	"""Return an iterator over the pixels of a minimap of the given world.
+
+	For every pixel, a tuple ((x, y), (r, g, b)) is returned. These are the x and y
+	coordinated and the color of the pixel in RGB.
+
+	If `area` is set, it's supposed to be a part of `location`, that is to be
+	returned.
+	"""
+	if area is None:
+		area = location
+
+	# calculate which area of the real map is mapped to which pixel on the minimap
+	world_dimensions = (world.map_dimensions.width, world.map_dimensions.height)
+	minimap_dimensions = (location.width, location.height)
+	pixel_per_coord_x, pixel_per_coord_y = get_world_to_minimap_ratio(world_dimensions, minimap_dimensions)
+
+	# calculate values here so we don't have to do it in the loop
+	pixel_per_coord_x_half_as_int = int(pixel_per_coord_x/2)
+	pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
+
+	world_min_x = world.min_x
+	world_min_y = world.min_y
+	full_map = world.full_map
+
+	# loop through map coordinates, assuming (0, 0) is the origin of the minimap
+	# this facilitates calculating the real world coords
+	for x in xrange(area.left - location.left, area.left + area.width - location.left):
+		for y in xrange(area.top - location.top, area.top + area.height - location.top):
+			"""
+			This code should be here, but since python can't do inlining, we have to inline
+			ourselves for performance reasons
+			covered_area = Rect.init_from_topleft_and_size(
+			  int(x * pixel_per_coord_x)+world_min_x,
+			  int(y * pixel_per_coord_y)+world_min_y),
+			  int(pixel_per_coord_x), int(pixel_per_coord_y))
+			real_map_point = covered_area.center
+			"""
+			# use center of the rect that the pixel covers
+			real_map_x = int(x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
+			real_map_y = int(y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
+			real_map_coords = (real_map_x, real_map_y)
+
+			# check what's at the covered_area
+			if real_map_coords in full_map:
+				# this pixel is an island
+				tile = full_map[real_map_coords]
+				settlement = tile.settlement
+				if settlement is None:
+					# island without settlement
+					if tile.id <= 0:
+						color = water_color
+					else:
+						color = island_color
+				else:
+					# pixel belongs to a player
+					color = settlement.owner.color.to_tuple()
+			else:
+				color = water_color
+
+			yield ((x, y), color)
 
 
 class Minimap(object):
@@ -78,7 +149,8 @@ class Minimap(object):
 
 	__minimap_id_counter = itertools.count()
 	__ship_route_counter = itertools.count()
-	_instances = [] # all active instances
+	# all active instances
+	_instances = [] # type: List[Minimap]
 
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 
@@ -96,6 +168,8 @@ class Minimap(object):
 		@param on_click: function taking 1 argument or None for scrolling
 		@param preview: flag, whether to only show the map as preview
 		@param tooltip: always show this tooltip when cursor hovers over minimap
+
+		NOTE: Preview generation in a different process overwrites this method.
 		"""
 		if isinstance(position, Rect):
 			self.location = position
@@ -112,8 +186,7 @@ class Minimap(object):
 		self.rotation = 0
 		self.fixed_tooltip = tooltip
 
-		if on_click is not None:
-			self.on_click = on_click
+		self.optional_on_click = on_click
 
 		self.cam_border = cam_border
 		self.use_rotation = use_rotation
@@ -188,10 +261,6 @@ class Minimap(object):
 			ExtScheduler().rem_all_classinst_calls(self)
 			ExtScheduler().add_new_object(self._timed_update, self,
 			                              self.SHIP_DOT_UPDATE_INTERVAL, -1)
-
-	def get_data(self):
-		"""Returns a list representing the minimap data"""
-		return self._recalculate(dump_data=True)
 
 	def draw_data(self, data):
 		"""Display data from dump_data"""
@@ -282,7 +351,7 @@ class Minimap(object):
 			icon.name + '/mouseExited' : self._mouse_exited,
 		})
 
-	def on_click(self, event, drag):
+	def default_on_click(self, event, drag):
 		"""Handler for clicks (pressed and dragged)
 		Scrolls screen to the point, where the cursor points to on the minimap.
 		Overwrite this method to your convenience.
@@ -304,12 +373,17 @@ class Minimap(object):
 				self.view.center(*map_coords)
 
 	def _on_click(self, event):
+		if self.optional_on_click:
+			click_handler = self.optional_on_click
+		else:
+			click_handler = self.default_on_click
+
 		if self.world is not None: # supply world coords if there is a world
 			event.map_coords = self._get_event_coords(event)
 			if event.map_coords:
-				self.on_click(event, drag=False)
+				click_handler(event, drag=False)
 		else:
-			self.on_click(event, drag=True)
+			click_handler(event, drag=True)
 
 	def _on_drag(self, event):
 		if self.world is not None: # supply world coords if there is a world
@@ -465,90 +539,33 @@ class Minimap(object):
 
 		return True
 
-	def _recalculate(self, where=None, dump_data=False):
+	def _recalculate(self, where=None):
 		"""Calculate which pixel of the minimap should display what and draw it
 		@param where: Rect of minimap coords. Defaults to self.location
-		@param dump_data: Don't draw but return calculated data"""
+		"""
 		self.minimap_image.set_drawing_enabled()
 
 		rt = self.minimap_image.rendertarget
 		render_name = self._get_render_name("base")
 
 		if where is None:
-			where = self.location
 			rt.removeAll(render_name)
 
-		# calculate which area of the real map is mapped to which pixel on the minimap
-		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
-
-		# calculate values here so we don't have to do it in the loop
-		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x/2)
-		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
-
-		world_min_x = self.world.min_x
-		world_min_y = self.world.min_y
-		island_col = self.COLORS["island"]
-		water_col = self.COLORS["water"]
 		location_left = self.location.left
 		location_top = self.location.top
-		if dump_data:
-			data = []
-			draw_point = lambda name, fife_point, r, g, b : data.append((fife_point.x, fife_point.y, r, g, b))
-		else:
-			draw_point = rt.addPoint
+		draw_point = rt.addPoint
 		fife_point = fife.Point(0, 0)
-
 		use_rotation = self._get_rotation_setting()
-		full_map = self.world.full_map
 
-		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
-		# this facilitates calculating the real world coords
-		for x in xrange(where.left-self.location.left, where.left+where.width-self.location.left):
-			for y in xrange(where.top-self.location.top, where.top+where.height-self.location.top):
-
-				"""
-				This code should be here, but since python can't do inlining, we have to inline
-				ourselves for performance reasons
-				covered_area = Rect.init_from_topleft_and_size(
-				  int(x * pixel_per_coord_x)+world_min_x,
-				  int(y * pixel_per_coord_y)+world_min_y),
-				  int(pixel_per_coord_x), int(pixel_per_coord_y))
-				real_map_point = covered_area.center
-				"""
-				# use center of the rect that the pixel covers
-				real_map_x = int(x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
-				real_map_y = int(y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
-				real_map_coords = (real_map_x, real_map_y)
-
-				# check what's at the covered_area
-				if real_map_coords in full_map:
-					# this pixel is an island
-					tile = full_map[real_map_coords]
-					settlement = tile.settlement
-					if settlement is None:
-						# island without settlement
-						if tile.id <= 0:
-							color = water_col
-						else:
-							color = island_col
-					else:
-						# pixel belongs to a player
-						color = settlement.owner.color.to_tuple()
-				else:
-					color = water_col
-
-				if use_rotation:
-					# inlined _get_rotated_coords
-					rot_x, rot_y = self._rotate((location_left + x, location_top + y), self._rotations)
-					fife_point.set(rot_x - location_left, rot_y - location_top)
-				else:
-					fife_point.set(x, y)
-
-				draw_point(render_name, fife_point, *color)
-
-		if dump_data:
-			return data
-
+		for (x, y), color in iter_minimap_points(self.location, self.world,
+						self.COLORS["island"], self.COLORS["water"], where):
+			if use_rotation:
+				# inlined _get_rotated_coords
+				rot_x, rot_y = self._rotate((location_left + x, location_top + y), self._rotations)
+				fife_point.set(rot_x - location_left, rot_y - location_top)
+			else:
+				fife_point.set(x, y)
+			draw_point(render_name, fife_point, *color)
 
 	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
@@ -730,13 +747,9 @@ class Minimap(object):
 		return (new_x, new_y)
 
 	def _update_world_to_minimap_ratio(self):
-		world_height = self.world.map_dimensions.height
-		world_width = self.world.map_dimensions.width
-		minimap_height = self.location.height
-		minimap_width = self.location.width
-		pixel_per_coord_x = float(world_width) / minimap_width
-		pixel_per_coord_y = float(world_height) / minimap_height
-		self._world_to_minimap_ratio = (pixel_per_coord_x, pixel_per_coord_y)
+		world_dimensions = (self.world.map_dimensions.width, self.world.map_dimensions.height)
+		minimap_dimensions = (self.location.width, self.location.height)
+		self._world_to_minimap_ratio = get_world_to_minimap_ratio(world_dimensions, minimap_dimensions)
 
 	def _world_coords_to_minimap_coords(self, tup):
 		"""Calculates which pixel in the minimap contains a coord in the real map.

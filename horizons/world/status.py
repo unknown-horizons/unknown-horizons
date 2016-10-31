@@ -41,10 +41,10 @@ Keep the numbers unique to avoid confusion when sorting.
 """
 class StatusIcon(object):
 	# integer
-	priority = None
+	priority = None # type: int
 	# fife identifier for animations or icons. Must be supported by either the animationloader
 	# or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
-	icon = None
+	icon = None # type: str
 	# use _lazy
 	helptext = ""
 

@@ -21,11 +21,15 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS, GAME_SPEED, TIER
+from horizons.ext.typing import TYPE_CHECKING, Type
 from horizons.messaging import AddStatusIcon, NewDisaster, RemoveStatusIcon
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.disaster import Disaster
+
+if TYPE_CHECKING:
+	from horizons.world.status import StatusIcon
 
 
 class BuildingInfluencingDisaster(Disaster):
@@ -46,10 +50,10 @@ class BuildingInfluencingDisaster(Disaster):
 	MIN_INHABITANTS_FOR_BREAKOUT = 5
 
 	# Defines the status icon for the influenced BUILDING_TYPE
-	STATUS_ICON = None
+	STATUS_ICON = None # type: Type[StatusIcon]
 
 	# Defines building type that consumes resources of type DISASTER_RES
-	RESCUE_BUILDING_TYPE = None
+	RESCUE_BUILDING_TYPE = None # type: int
 
 	# In a range of how many tiles can the disaster spread?
 	EXPANSION_RADIUS = 0

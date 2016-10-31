@@ -30,7 +30,6 @@ from horizons.command.production import ToggleActive
 from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED, PRODUCTION
-from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.imagebutton import ImageButton
@@ -40,6 +39,8 @@ from horizons.scheduler import Scheduler
 from horizons.util.pychananimation import PychanAnimation
 from horizons.util.python.callback import Callback
 from horizons.world.production.producer import Producer
+
+from .overviewtab import OverviewTab
 
 
 class ProductionOverviewTab(OverviewTab):
@@ -98,7 +99,7 @@ class ProductionOverviewTab(OverviewTab):
 
 			centered_container = container.findChild(name='centered_production_icons')
 			center_y = self._center_production_line(container, production)
-			centered_container.position = (centered_container.position[0], center_y)
+			centered_container.position = (centered_container.position[0], center_y - 44 // 2)
 			self._set_resource_amounts(container, production)
 
 			if production.is_paused():
@@ -161,7 +162,7 @@ class ProductionOverviewTab(OverviewTab):
 			self._draw_pretty_arrows(parent_container, input_amount, x=58, y=center_y, out=False)
 		if output_amount > 0:
 			self._draw_pretty_arrows(parent_container, output_amount, x=96, y=center_y, out=True)
-		return center_y
+		return center_y + self.ICON_HEIGHT // 2
 
 	def _draw_pretty_arrows(self, parent_container, amount, x=0, y=0, out=False):
 		"""Draws incoming or outgoing arrows for production line container."""

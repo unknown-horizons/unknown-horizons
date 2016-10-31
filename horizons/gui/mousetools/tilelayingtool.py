@@ -23,16 +23,18 @@ from fife import fife
 
 import horizons.globals
 from horizons.constants import GROUND
-from horizons.gui.mousetools import NavigationTool
+from horizons.ext.typing import Tuple
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.shapes import Circle, Point
+
+from .navigationtool import NavigationTool
 
 
 class TileLayingTool(NavigationTool):
 	"""Tool to lay ground tiles."""
 	HIGHLIGHT_COLOR = (0, 200, 90)
 
-	tile_images = {}
+	tile_images = {} # type: Dict[Tuple[int, str, int], fife.SharedImagePointer]
 
 	def __init__(self, session, tile_details):
 		super(TileLayingTool, self).__init__(session)

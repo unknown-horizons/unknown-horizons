@@ -79,12 +79,12 @@ class MPSession(Session):
 	def autosave(self):
 		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
 		return  #TODO disabled for now, see #2151 for details
-		SaveCommand( SavegameManager.create_multiplayer_autosave_name() ).execute(self)
+		SaveCommand(SavegameManager.create_multiplayer_autosave_name()).execute(self)
 
 	def quicksave(self):
 		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
 		return  #TODO disabled for now, see #2151 for details
-		SaveCommand( SavegameManager.create_multiplayer_quicksave_name() ).execute(self)
+		SaveCommand(SavegameManager.create_multiplayer_quicksave_name()).execute(self)
 
 	def quickload(self):
 		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
@@ -109,5 +109,5 @@ class MPSession(Session):
 			if savegamename is None:
 				return True # user aborted dialog
 
-		SaveCommand( savegamename ).execute(self)
+		SaveCommand(savegamename).execute(self)
 		return True

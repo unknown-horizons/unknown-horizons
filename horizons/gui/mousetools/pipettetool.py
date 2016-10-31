@@ -25,8 +25,9 @@ import horizons.globals
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import LAYERS
 from horizons.entities import Entities
-from horizons.gui.mousetools import NavigationTool
 from horizons.gui.tabs.buildtabs import BuildTab
+
+from .navigationtool import NavigationTool
 
 
 class PipetteTool(NavigationTool):

@@ -65,6 +65,15 @@ object_translations = {
 		"tooltip_text"                : _("Recruits units suitable for ground combat."),
 		},
 
+	"content/objects/buildings/barrier.yaml" : {
+		# name_0 of buildings:barrier
+		"name_0"                      : _("Wooden barrier"),
+		# name_1 of buildings:barrier
+		"name_1"                      : _("Clay wall"),
+		# tooltip_text of buildings:barrier
+		"tooltip_text"                : _("Provides security."),
+		},
+
 	"content/objects/buildings/blender.yaml" : {
 		# name of buildings:blender
 		"name"                        : _("Blender"),
@@ -492,6 +501,8 @@ object_translations = {
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Military"),
 		# headline of gui_buildmenu:build_menu_per_tier
+		"headline"                    : _("Military"),
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Mining"),
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Residents and infrastructure"),
@@ -512,6 +523,8 @@ object_translations = {
 		"headline"                    : _("Food"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Fortifications"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Infrastructure"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Infrastructure"),
 		# headline of gui_buildmenu:build_menu_per_type

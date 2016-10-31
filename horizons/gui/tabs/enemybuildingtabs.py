@@ -23,8 +23,9 @@
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.gui.tabs import OverviewTab
 from horizons.i18n import _lazy
+
+from .overviewtab import OverviewTab
 
 
 class EnemyBuildingOverviewTab(OverviewTab):

@@ -76,7 +76,7 @@ class StartGameOptions(object):
 		players.append({
 			'id': 1,
 			'name': self.player_name,
-			'color': Color[1] if self.player_color is None else self.player_color,
+			'color': Color.get(1) if self.player_color is None else self.player_color,
 			'local': True,
 			'ai': self.human_ai,
 			'difficulty': difficulty_level[bool(self.human_ai)],
@@ -86,9 +86,9 @@ class StartGameOptions(object):
 
 		# add AI players with a distinct color; if none can be found then use black
 		for num in xrange(self.ai_players):
-			color = Color[COLORS.BLACK] # if none can be found then be black
-			for possible_color in Color:
-				if possible_color == Color[COLORS.BLACK]:
+			color = Color.get(COLORS.BLACK) # if none can be found then be black
+			for possible_color in Color.get_defaults():
+				if possible_color == Color.get(COLORS.BLACK):
 					continue # black is used by the trader and the pirate
 				used = any(possible_color == player['color'] for player in players)
 				if not used:

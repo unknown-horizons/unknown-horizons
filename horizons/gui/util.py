@@ -33,8 +33,8 @@ from horizons.util.python.callback import Callback
 # Find the best implementation available on this platform
 try:
 	from cStringIO import StringIO
-except:
-	from StringIO import StringIO
+except ImportError:
+	from StringIO import StringIO # type: ignore
 
 
 
@@ -144,6 +144,7 @@ def create_resource_icon(res_id, db):
 	@param db: dbreader for main db"""
 	widget = Icon(image=get_res_icon_path(res_id))
 	widget.helptext = db.get_res_name(res_id)
+	widget.scale = True
 	return widget
 
 

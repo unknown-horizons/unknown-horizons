@@ -28,7 +28,6 @@ import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import MULTIPLAYER
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
@@ -40,6 +39,8 @@ from horizons.savegamemanager import SavegameManager
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 from horizons.world import load_raw_world
+
+from .playerdataselection import PlayerDataSelection
 
 
 class MultiplayerMenu(Window):
@@ -68,7 +69,7 @@ class MultiplayerMenu(Window):
 		self._gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
 
-	def show(self):		
+	def show(self):
 		if not self._check_connection():
 			return
 
@@ -322,7 +323,7 @@ class CreateGame(Window):
 		self._gui.findChild(name="maplist").mapEvents({
 			'maplist/action': self._update_infos
 		})
-		
+
 		gamenametextfield = self._gui.findChild(name='gamename')
 		def gamename_clicked():
 			if gamenametextfield.text == 'Unnamed Game':
@@ -530,7 +531,7 @@ class GameLobby(Window):
 
 		assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()
 		            if p["name"] != NetworkInterface().get_client_name()]
-		unused_colors = set(Color) - set(assigned)
+		unused_colors = set(Color.get_defaults()) - set(assigned)
 
 		playerdata = PlayerDataSelection(color_palette=unused_colors)
 		playerdata.set_player_name(NetworkInterface().get_client_name())

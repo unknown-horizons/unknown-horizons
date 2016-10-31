@@ -70,7 +70,7 @@ class BuildTab(TabInterface):
 	                            "single_per_tier" # each single building unlocked if tier is unlocked
 	                            )
 
-	last_active_build_tab = None
+	last_active_build_tab = None # type: int
 
 	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy, build_menu_config):
 		"""
@@ -262,7 +262,7 @@ class BuildTab(TabInterface):
 
 		#save build style
 		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
-		horizons.globals.fife.save_settings();
+		horizons.globals.fife.save_settings()
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):

@@ -61,11 +61,11 @@ class SelectSavegameDialog(Dialog):
 		else:
 			if w not in w.parent.hidden_children:
 				w.parent.hideChild(w)
-				
+
 		w = self._gui.findChild(name="gamepassword_box")
 		if (Fife.getVersion() >= (0, 4, 0)):
 			w.parent.hideChild(w)
-		else:		
+		else:
 			if w not in w.parent.hidden_children:
 				w.parent.hideChild(w)
 

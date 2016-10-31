@@ -396,7 +396,7 @@ class SavegameUpgrader(object):
 
 	def _upgrade_to_rev74(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
-		
+
 	def _upgrade_to_rev75(self, db):
 		# some production line id changes
 
@@ -427,7 +427,7 @@ class SavegameUpgrader(object):
 		if rev < VERSION.SAVEGAMEREVISION :
 			if not SavegameUpgrader.can_upgrade(rev):
 				raise SavegameTooOld(revision=rev)
-			
+
 			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
 						     (rev, VERSION.SAVEGAMEREVISION))
 			db = DbReader(self.final_path)
@@ -507,7 +507,7 @@ class SavegameUpgrader(object):
 			self.using_temp = True
 			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
 			os.close(handle)
-			shutil.copyfile(self.original_path, self.final_path)			
+			shutil.copyfile(self.original_path, self.final_path)
 			self._upgrade()
 		return self.final_path
 

@@ -26,9 +26,9 @@ For installation instructions check the "Downloads" section on
 
 To get the latest version of the game, you have to build it from source:
 
- * [Instructions for GNU/Linux](http://www.unknown-horizons.org/download/sources/s-linux/)
- * [Instructions for Windows](http://www.unknown-horizons.org/download/sources/s-windows/)
- * [Instructions for OS X](http://www.unknown-horizons.org/download/sources/s-osx/)
+ * [Instructions for GNU/Linux](https://github.com/unknown-horizons/unknown-horizons/wiki/Linux)
+ * [Instructions for Windows](https://github.com/unknown-horizons/unknown-horizons/wiki/Windows)
+ * [Instructions for OS X](https://github.com/unknown-horizons/unknown-horizons/wiki/MacOS)
 
 If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3Astarter).
 

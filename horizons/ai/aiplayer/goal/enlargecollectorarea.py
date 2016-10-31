@@ -26,13 +26,14 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
+from horizons.ext.typing import Tuple
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
-	_radius_offsets = None
+	_radius_offsets = None # type: List[Tuple[int, int]]
 
 	@classmethod
 	def _init_radius_offsets(cls):

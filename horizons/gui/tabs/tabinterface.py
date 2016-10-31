@@ -61,7 +61,7 @@ class TabInterface(object):
 	# Override these in your subclass either as class attribute, or by passing it
 	# to the constructor. The value of the constructor has preference over the
 	# class attribute.
-	widget = None
+	widget = None # type: str
 	icon_path = 'images/tabwidget/tab'
 
 	scheduled_update_delay = 0.4 # seconds, update after this time when an update is scheduled

@@ -22,6 +22,7 @@
 
 import logging
 
+from horizons.ext.typing import Optional
 from horizons.world.settlement import Settlement
 from horizons.util.worldobject import WorldObject
 from horizons.scheduler import Scheduler
@@ -32,7 +33,7 @@ class Disaster(WorldObject):
 	"""Prototype class for disasters."""
 	log = logging.getLogger("world.disaster")
 
-	TYPE = None # string to identify type
+	TYPE = None # type: str
 
 	# Chance this disaster is seeded into a settlement in a tick of the
 	# disaster manager
@@ -43,7 +44,7 @@ class Disaster(WorldObject):
 
 	# Resource to distribute to infected buildings
 	#	This is how preventory units (doctors) spot affected buildings.
-	DISASTER_RES = None
+	DISASTER_RES = None # type: Optional[int]
 
 	def __init__(self, settlement, manager):
 		"""

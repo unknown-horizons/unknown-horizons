@@ -36,44 +36,50 @@ import os.path
 import sys
 import threading
 import traceback
-from thread import error as ThreadError  # raised by threading.Lock.release
 
 from fife import fife as fife_module
 
 import horizons.globals
 from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLEPLAYER, VERSION
+from horizons.ext.typing import TYPE_CHECKING, Optional
 from horizons.extscheduler import ExtScheduler
 from horizons.gui import Gui
 from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
-from horizons.util.atlasloadingthread import AtlasLoadingThread
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.atlasloading import generate_atlases
+from horizons.util.preloader import PreloadingThread
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.uhdbaccessor import UhDbAccessor
 
+if TYPE_CHECKING:
+	from horizons.session import Session
+	from development.stringpreviewwidget import StringPreviewWidget
+
 
 # private module pointers of this module
 class Modules(object):
-	gui = None
-	session = None
+	gui = None # type: Optional[Gui]
+	session = None # type: Optional[Session]
 _modules = Modules()
 
 # used to save a reference to the string previewer to ensure it is not removed by
 # garbage collection
-__string_previewer = None
+__string_previewer = None # type: Optional[StringPreviewWidget]
 
 command_line_arguments = None
+
+preloader = None # type: PreloadingThread
+
 
 def start(_command_line_arguments):
 	"""Starts the horizons. Will drop you to the main menu.
 	@param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global debug, preloading, command_line_arguments
+	global debug, preloader, command_line_arguments
 	command_line_arguments = _command_line_arguments
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
@@ -85,7 +91,7 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.restore_settings:
 		# just delete the file, Settings ctor will create a new one
-		os.remove( PATHS.USER_CONFIG_FILE )
+		os.remove(PATHS.USER_CONFIG_FILE)
 
 	if command_line_arguments.mp_master:
 		try:
@@ -103,9 +109,9 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
 		from horizons.gui.modules.singleplayermenu import generate_random_minimap
-		generate_random_minimap( * json.loads(
+		generate_random_minimap(* json.loads(
 		  command_line_arguments.generate_minimap
-		  ) )
+		  ))
 		sys.exit(0)
 
 	if debug: # also True if a specific module is logged (but not 'fife')
@@ -129,53 +135,17 @@ def start(_command_line_arguments):
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	preload_lock = threading.Lock()
+	# Setup atlases
+	if (command_line_arguments.atlas_generation
+	    and not command_line_arguments.gui_test
+	    and VERSION.IS_DEV_VERSION
+	    and horizons.globals.fife.get_uh_setting('AtlasesEnabled')
+	    and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled')):
+		generate_atlases()
 
-	if command_line_arguments.atlas_generation and not command_line_arguments.gui_test and \
-	   VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
-	   and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled'):
-
-		atlas_loading_thread = None
-		atlas_loading_thread = AtlasLoadingThread(preload_lock)
-		atlas_loading_thread.start()
-
-		# show info label about atlas generation
-		try:
-			import Tkinter
-			from PIL import Image, ImageTk
-			import time
-			try:
-				window = Tkinter.Tk()
-				# iconify window instead of closing
-				window.protocol("WM_DELETE_WINDOW", window.iconify)
-				window.wm_withdraw()
-				window.attributes("-topmost", 1)
-				window.title("Unknown Horizons")
-				window.maxsize(300, 150)
-
-				logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
-				res_logo = logo.resize((116, 99), Image.ANTIALIAS)
-				res_logo_image = ImageTk.PhotoImage(res_logo)
-				logo_label = Tkinter.Label(window, image=res_logo_image)
-				logo_label.pack(side="left")
-				label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
-				label.pack(side="right")
-
-				# wait a second to give the thread time to check if a generation is necessary at all
-				time.sleep(1.0)
-				window.deiconify()
-				while atlas_loading_thread.is_alive():
-					if not window.state() == "iconic":
-						window.attributes("-topmost", 0)
-						window.update()
-					time.sleep(0.1)
-				window.destroy()
-			except Tkinter.TclError:
-				# catch #2298
-				atlas_loading_thread.join()
-		except ImportError:
-			# tkinter or PIL may be missing
-			atlas_loading_thread.join()
+	if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
+		GFX.USE_ATLASES = True
+		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
 	# init game parts
 
@@ -191,10 +161,6 @@ def start(_command_line_arguments):
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
 	horizons.globals.fife.init()
 
-	if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
-		GFX.USE_ATLASES = True
-		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-
 	horizons.globals.db = _create_main_db()
 	_modules.gui = Gui()
 	SavegameManager.init()
@@ -204,8 +170,7 @@ def start(_command_line_arguments):
 	Entities.load(horizons.globals.db, load_now=False) # create all references
 
 	# for preloading game data while in main screen
-	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
-	preloading = (preload_thread, preload_lock)
+	preloader = PreloadingThread()
 
 	# Singleplayer seed needs to be changed before startup.
 	if command_line_arguments.sp_seed:
@@ -237,7 +202,7 @@ def start(_command_line_arguments):
 	elif command_line_arguments.edit_game_map is not None:
 		startup_worked = edit_game_map(command_line_arguments.edit_game_map)
 	elif command_line_arguments.stringpreview:
-		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
+		tiny = [i for i in SavegameManager.get_maps()[0] if 'tiny' in i]
 		if not tiny:
 			tiny = SavegameManager.get_map()[0]
 		startup_worked = _start_map(tiny[0], ai_players=0, trader_enabled=False, pirate_enabled=False,
@@ -262,7 +227,7 @@ def start(_command_line_arguments):
 
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
-			preloading[0].start()
+			preloader.start()
 
 	if not startup_worked:
 		# don't start main loop if startup failed
@@ -337,8 +302,7 @@ def setup_gui_logger(command_line_arguments):
 
 def quit():
 	"""Quits the game"""
-	# joing preload thread before quiting in case active
-	preload_game_join(preloading)
+	preloader.wait_for_finish()
 	horizons.globals.fife.quit()
 
 def quit_session():
@@ -351,8 +315,7 @@ def start_singleplayer(options):
 	_modules.gui.show_loading_screen()
 
 	LoadingProgress.broadcast(None, 'load_objects')
-	global preloading
-	preload_game_join(preloading)
+	preloader.wait_for_finish()
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
@@ -407,8 +370,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	"""
 	_modules.gui.show_loading_screen()
 
-	global preloading
-	preload_game_join(preloading)
+	preloader.wait_for_finish()
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
@@ -422,7 +384,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	from horizons.mpsession import MPSession
 	# get random seed for game
 	uuid = game.uuid
-	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
+	random = sum([int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2)])
 	_modules.session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
@@ -581,48 +543,6 @@ def _create_main_db():
 		_db.execute_script(sql)
 	return _db
 
-def preload_game_data(lock):
-	"""Preloads game data.
-	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
-	log = logging.getLogger("preload")
-	try:
-		lock.acquire()
-		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
-		from horizons.entities import Entities
-		preload_functions = [ ActionSetLoader.load,
-		                      TileSetLoader.load,
-		                      Callback(Entities.load_grounds, mydb, load_now=True),
-		                      Callback(Entities.load_buildings, mydb, load_now=True),
-		                      Callback(Entities.load_units, load_now=True) ]
-		for f in preload_functions:
-			if not lock.acquire(False):
-				break
-			log.debug("Preload: %s", f)
-			f()
-			log.debug("Preload: %s is done", f)
-			lock.release()
-		log.debug("Preloading done.")
-	except Exception as e:
-		log.warning("Exception occurred in preloading thread: %s", e)
-	finally:
-		if lock.locked():
-			lock.release()
-
-def preload_game_join(preloading):
-	"""Wait for preloading to finish.
-	@param preloading: tuple: (Thread, Lock)"""
-	# lock preloading
-	thread, lock = preloading
-	lock.acquire()
-	# wait until it finished its current action
-	if thread.isAlive():
-		thread.join()
-		assert not thread.isAlive()
-	else:
-		try:
-			lock.release()
-		except ThreadError:
-			pass # due to timing issues, the lock might be released already
 
 def set_debug_log(enabled, startup=False):
 	"""

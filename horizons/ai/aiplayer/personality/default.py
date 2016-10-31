@@ -44,7 +44,7 @@ class DefaultPersonality:
 		max_stone_deposit = 300 # no more than this much will count for the bonus value
 		stone_deposit_importance = 0.3 # how important is the available resource amount
 		no_stone_deposit_penalty = 100 # penalty for having less than this much of the resource on the island
-		
+
 		min_raw_iron = 100 # if the island has less than this much then apply the penalty
 		max_raw_iron = 300 # no more than this much will count for the bonus value
 		raw_iron_importance = 0.05 # how important is the available resource amount

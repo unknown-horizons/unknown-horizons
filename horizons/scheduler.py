@@ -149,7 +149,7 @@ class Scheduler(LivingObject):
 			if not readd:  # readded calls haven't been removed here
 				if not callback_obj.class_instance in self.calls_by_instance:
 					self.calls_by_instance[callback_obj.class_instance] = []
-				self.calls_by_instance[callback_obj.class_instance].append( callback_obj )
+				self.calls_by_instance[callback_obj.class_instance].append(callback_obj)
 
 	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None, finish_callback=None):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.

@@ -29,12 +29,13 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import BUILDINGS, TIER
-from horizons.gui.tabs import OverviewTab
-from horizons.gui.tabs.residentialtabs import setup_tax_slider
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.i18n import _lazy
 from horizons.messaging import PlayerLevelUpgrade, UpgradePermissionsChanged
 from horizons.util.python.callback import Callback
+
+from .overviewtab import OverviewTab
+from .residentialtabs import setup_tax_slider
 
 
 class MainSquareTab(OverviewTab):
@@ -124,7 +125,8 @@ class MainSquareOverviewTab(AccountTab):
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	widget = "mainsquare_inhabitants.xml"
-	LEVEL = None # overwrite in subclass
+	# overwrite in subclass
+	LEVEL = None # type: int
 
 	def __init__(self, instance):
 		self.max_inhabitants = instance.session.db.get_tier_inhabitants_max(self.__class__.LEVEL)
