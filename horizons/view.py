@@ -26,9 +26,13 @@ from fife import fife
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
+from horizons.ext.typing import Tuple
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
+
+
+MapCoord = Tuple[int, int]
 
 
 class View(ChangeListener):
@@ -221,15 +225,38 @@ class View(ChangeListener):
 		self._changed()
 
 	def get_displayed_area(self):
-		"""Returns the coords of what is displayed on the screen as Rect"""
+		# type: () -> Tuple[MapCoord, MapCoord, MapCoord, MapCoord]
+		"""
+		Returns the coords (clockwise, beginning in the top-left corner) of what is
+		displayed on the screen.
+		"""
 		coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
-		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
-		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
-		screen_width_as_coords = (width_x // self.zoom, width_y // self.zoom)
-		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0] // 2),
-		                                       coords.y - (screen_width_as_coords[1] // 2),
-		                                       *screen_width_as_coords)
+		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
+		screen_height = horizons.globals.fife.engine_settings.getScreenHeight()
+
+		# Number of horizons/vertical cells on the screen
+		width_x = math.ceil(screen_width / (cell_dim.x * self.zoom))
+		width_y = math.ceil(screen_height / (cell_dim.y * self.zoom))
+
+		width_x //= 2
+		width_y //= 2
+
+		# Depending on rotation, the X/Y axis switch
+		d_x, d_y = {
+			45: (width_y // 2, width_x // 2),
+			225: (width_y // 2, width_x // 2),
+			135: (width_x // 2, width_y // 2),
+			315: (width_x // 2, width_y // 2)
+		}[self.cam.getRotation()]
+
+		(x, y) = coords.x, coords.y
+		return (
+			(x - d_x + d_y, y - d_x - d_y),
+			(x + d_y + d_y, y + d_x - d_y),
+			(x + d_x - d_y, y + d_x + d_y),
+			(x - d_x - d_y, y - d_x + d_y)
+		)
 
 	def save(self, db):
 		loc = self.cam.getLocation().getExactLayerCoordinates()

@@ -294,22 +294,9 @@ class Minimap(object):
 		# draw rect for current screen
 		displayed_area = self.view.get_displayed_area()
 		minimap_corners_as_point = []
-		for corner in displayed_area.get_corners():
-			# check if the corners are outside of the screen
-			corner = list(corner)
-			if corner[0] > self.world.max_x:
-				corner[0] = self.world.max_x
-			if corner[0] < self.world.min_x:
-				corner[0] = self.world.min_x
-			if corner[1] > self.world.max_y:
-				corner[1] = self.world.max_y
-			if corner[1] < self.world.min_y:
-				corner[1] = self.world.min_y
-			corner = tuple(corner)
-
-			coords = self._world_to_minimap(corner, use_rotation)
+		for (x, y) in displayed_area:
+			coords = self._world_to_minimap((x, y), use_rotation)
 			minimap_corners_as_point.append(fife.Point(coords[0], coords[1]))
-
 
 		for i in xrange(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
