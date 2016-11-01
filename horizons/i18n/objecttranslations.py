@@ -67,11 +67,11 @@ object_translations = {
 
 	"content/objects/buildings/barrier.yaml" : {
 		# name_0 of buildings:barrier
-		"name_0"                      : _("Wooden barrier"),
+		"name_0"                      : T("Wooden barrier"),
 		# name_1 of buildings:barrier
-		"name_1"                      : _("Clay wall"),
+		"name_1"                      : T("Clay wall"),
 		# tooltip_text of buildings:barrier
-		"tooltip_text"                : _("Provides security."),
+		"tooltip_text"                : T("Provides security."),
 		},
 
 	"content/objects/buildings/blender.yaml" : {
