@@ -24,6 +24,7 @@ import logging
 import operator
 
 from horizons.command.building import Build
+from horizons.i18n import gettext as T
 from horizons.network import CommandError, packets
 from horizons.scheduler import Scheduler
 from horizons.timer import Timer
@@ -173,8 +174,8 @@ class MPManager(LivingObject):
 				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
-				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
-				  _("We are very sorry and hope to have this bug fixed in a future version.")
+				msg = T("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
+				  T("We are very sorry and hope to have this bug fixed in a future version.")
 				self.session.ingame_gui.open_error_popup('Out of sync', msg)
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):

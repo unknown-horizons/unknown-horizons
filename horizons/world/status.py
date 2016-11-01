@@ -21,7 +21,7 @@
 
 import operator
 
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 
 
 """Classes used for StatusIcon.
@@ -73,32 +73,32 @@ class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """
 	priority = 3000
 	icon = 'as_pestilence+idle+45'
-	_helptext = _("The inhabitants are infected by the Black Death!")
+	_helptext = LazyT("The inhabitants are infected by the Black Death!")
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
 	priority = 3000
 	icon = 'as_on_fire+idle+45'
-	helptext = _lazy("This building is on fire!")
+	helptext = LazyT("This building is on fire!")
 
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
-	helptext = _lazy("These residents are unhappy.")
+	helptext = LazyT("These residents are unhappy.")
 
 class SettlerNotConnectedStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_mainsquare_access+idle+45'
-	helptext = _lazy("These residents don't have access to a main square.")
+	helptext = LazyT("These residents don't have access to a main square.")
 
 
 class InventoryFullStatus(StatusIcon):
 	priority = 1200
 	icon = 'as_inventory_full+idle+45'
-	helptext = _lazy("The inventory of this building is full.")
+	helptext = LazyT("The inventory of this building is full.")
 
 	def __init__(self, instance, reslist):
 		"""
@@ -113,10 +113,10 @@ class ProductivityLowStatus(StatusIcon):
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
-	helptext = _lazy("This building has a very low productivity.")
+	helptext = LazyT("This building has a very low productivity.")
 
 
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
-	helptext = _lazy("This building is decommissioned.")
+	helptext = LazyT("This building is decommissioned.")

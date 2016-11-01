@@ -23,6 +23,7 @@ import random
 
 from horizons.constants import PATHS, TIER
 from horizons.entities import Entities
+from horizons.i18n import gettext as T
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 
@@ -53,7 +54,7 @@ class UhDbAccessor(DbReader):
 		"""Returns the translated name for a specific resource id.
 		@param id: int resource's id, of which the name is returned """
 		name = self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
-		return _(name)
+		return T(name)
 
 	def get_res_inventory_display(self, id):
 		sql = "SELECT shown_in_inventory FROM resource WHERE id = ?"
@@ -279,7 +280,7 @@ class UhDbAccessor(DbReader):
 			comp = unit.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
 			# Ship storage properties
-			helptext = _('{slotnum} slots, {limit}t')
+			helptext = T('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
 			                           limit=storage['limit'])
 			helptexts.append(helptext)
@@ -287,7 +288,7 @@ class UhDbAccessor(DbReader):
 			pass
 		try:
 			comp = unit.get_component_template('HealthComponent')
-			helptext = _('Health: {health}')
+			helptext = T('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
 		except KeyError: # Component not found, ignore this part

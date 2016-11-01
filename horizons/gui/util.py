@@ -27,6 +27,7 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon
 
 from horizons.gui.i18n import translate_widget
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
@@ -60,13 +61,13 @@ def get_happiness_icon_and_helptext(value, session):
 	happy = session.db.get_upper_happiness_limit()
 	if value <= sad:
 		happiness_icon_path += "sad.png"
-		happiness_helptext = _("sad")
+		happiness_helptext = T("sad")
 	elif sad < value < happy:
 		happiness_icon_path += "average.png"
-		happiness_helptext = _("satisfied")
+		happiness_helptext = T("satisfied")
 	elif value >= happy:
 		happiness_icon_path += "happy.png"
-		happiness_helptext = _("happy")
+		happiness_helptext = T("happy")
 
 	return happiness_icon_path, happiness_helptext
 

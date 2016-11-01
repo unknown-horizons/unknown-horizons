@@ -24,16 +24,17 @@ import random
 
 import horizons.globals
 from horizons.constants import TIER
+from horizons.ext.speaklater import make_lazy_string
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.messaging import LoadingProgress
 
 # list of quotes and gameplay tips that are displayed while loading a game
 # NOTE: Try to use not more than 4 lines in a quote/gameplay tip !
 
 FUN_QUOTES = {
-	'name': _lazy("Quotes"),
+	'name': LazyT("Quotes"),
 	# Fun Quotes should not be translated...
 	'items': [
 		"Beer, the cause and solution to all problems of humanity.",
@@ -63,33 +64,32 @@ FUN_QUOTES = {
 
 
 GAMEPLAY_TIPS = {
-	'name': _lazy("Gameplay Tips"),
+	'name': LazyT("Gameplay Tips"),
 	'items': [
-		_lazy("Press 'ESC' to access Game Menu."),
-		_lazy("Use 'SHIFT' to place multiple buildings."),
+		LazyT("Press 'ESC' to access Game Menu."),
+		LazyT("Use 'SHIFT' to place multiple buildings."),
 		#TODO: This tip should be removed when all tiers are playable!!
-		_lazy("Currently only the first {tier} tiers are playable.").format(
-				tier=TIER.CURRENT_MAX + 1),
-		_lazy("You can pause the game with 'P'."),
-		_lazy("You can drag roads by holding the left mouse button."),
-		_lazy("You can build multiple buildings by holding the 'SHIFT' key."),
-		_lazy("You can increase the happiness of your inhabitants by lowering the taxes."),
-		_lazy("Build fire stations and doctors to protect your inhabitants from fire and disease."),
-		_lazy("Build storage tents to increase your storage capacity."),
-		_lazy("Make sure every house is in range of a marketplace."),
-		_lazy("Press 'T' to make trees transparent."),
-		_lazy("Build storage tents and lookouts to expand your settlement range."),
-		_lazy("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
-		_lazy("Make singleplayer more fun with additional computer players by increasing 'AI players' when starting a new game."),
-		_lazy("First steps are easier by looking at how AI players are setting up their settlement."),
-		_lazy("Want funny quotes only? Change the quote types shown here in the settings menu on the game page."),
-		_lazy("A marketplace links your buildings like a road.")
+		make_lazy_string(lambda: T("Currently only the first {tier} tiers are playable.").format(tier=TIER.CURRENT_MAX + 1)),
+		LazyT("You can pause the game with 'P'."),
+		LazyT("You can drag roads by holding the left mouse button."),
+		LazyT("You can build multiple buildings by holding the 'SHIFT' key."),
+		LazyT("You can increase the happiness of your inhabitants by lowering the taxes."),
+		LazyT("Build fire stations and doctors to protect your inhabitants from fire and disease."),
+		LazyT("Build storage tents to increase your storage capacity."),
+		LazyT("Make sure every house is in range of a marketplace."),
+		LazyT("Press 'T' to make trees transparent."),
+		LazyT("Build storage tents and lookouts to expand your settlement range."),
+		LazyT("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
+		LazyT("Make singleplayer more fun with additional computer players by increasing 'AI players' when starting a new game."),
+		LazyT("First steps are easier by looking at how AI players are setting up their settlement."),
+		LazyT("Want funny quotes only? Change the quote types shown here in the settings menu on the game page."),
+		LazyT("A marketplace links your buildings like a road.")
 	]
 }
 
 # This are the options you can select in the Settings what type of quotes should be
 # displayed during load
-QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _lazy("Mixed"))
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], LazyT("Mixed"))
 
 
 def get_random_quote():
@@ -109,17 +109,17 @@ def get_random_quote():
 
 stage_text = {
 	# translators: these are descriptions of the current task while loading a game
-	'session_create_world': _lazy(u'Starting engine…'),
-	'session_index_fish': _lazy(u'Catching fish…'),
-	'session_load_gui': _lazy(u'Drawing user interface…'),
-	'session_finish': _lazy(u'Activating timer…'),
-	'load_objects': _lazy(u'Chomping game data…'),
-	'world_load_map': _lazy(u'Shaping islands…'),
-	'world_load_buildings': _lazy(u'Preparing blueprints…'),
-	'world_init_water': _lazy(u'Filling world with water…'),
-	'world_load_units': _lazy(u'Raising animals…'),
-	'world_setup_ai': _lazy(u'Convincing AI…'),
-	'world_load_stuff': _lazy(u'Burying treasures…'),
+	'session_create_world': LazyT(u'Starting engine…'),
+	'session_index_fish': LazyT(u'Catching fish…'),
+	'session_load_gui': LazyT(u'Drawing user interface…'),
+	'session_finish': LazyT(u'Activating timer…'),
+	'load_objects': LazyT(u'Chomping game data…'),
+	'world_load_map': LazyT(u'Shaping islands…'),
+	'world_load_buildings': LazyT(u'Preparing blueprints…'),
+	'world_init_water': LazyT(u'Filling world with water…'),
+	'world_load_units': LazyT(u'Raising animals…'),
+	'world_setup_ai': LazyT(u'Convincing AI…'),
+	'world_load_stuff': LazyT(u'Burying treasures…'),
 }
 
 

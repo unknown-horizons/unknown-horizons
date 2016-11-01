@@ -30,6 +30,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.gui.windows import Dialog
+from horizons.i18n import gettext as T
 from horizons.messaging import HoverSettlementChanged, ResourceBarResize, SettlerInhabitantsChanged
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
@@ -156,7 +157,7 @@ class CityInfo(object):
 			# is setup correctly for the coming calculations
 			self._ingame_gui.resource_overview.set_inventory_instance(self._settlement)
 			cb = Callback(self._ingame_gui.show_change_name_dialog, self._settlement)
-			helptext = _("Click to change the name of your settlement")
+			helptext = T("Click to change the name of your settlement")
 			city_name_label.enable_cursor_change_on_hover()
 		else: # no name changes
 			cb = lambda: AmbientSoundComponent.play_special('error')

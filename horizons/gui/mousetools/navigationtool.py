@@ -27,6 +27,7 @@ import horizons.globals
 from horizons.constants import LAYERS, VIEW
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.i18n import gettext as T
 from horizons.messaging import HoverInstancesChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.weaklist import WeakList
@@ -92,7 +93,7 @@ class NavigationTool(CursorTool):
 			def show_evt(self, evt):
 				if self.enabled:
 					x, y = self.cursor_tool.get_world_location(evt).to_tuple()
-					self.icon.helptext = u'%d, %d ' % (x, y) + _("Press H to remove this hint")
+					self.icon.helptext = u'%d, %d ' % (x, y) + T("Press H to remove this hint")
 					self.icon.position_tooltip(evt)
 					self.icon.show_tooltip()
 
