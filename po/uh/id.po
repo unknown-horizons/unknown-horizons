@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2014-08-02 12:40+0200\n"
-"Last-Translator: Samuel Christo <srandiny@gmail.com>\n"
+"PO-Revision-Date: 2016-11-01 11:54+0000\n"
+"Last-Translator: Zulfikar <zulfikar97@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/uh/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -47,15 +47,15 @@ msgstr "PyYAML (library yang dibutuhkan) tidak ditemukan dan harus diinstal."
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr "Installer untuk Windows tersedia di http://pyyaml.org/wiki/PyYAML ."
+msgstr "Installer untuk Windows tersedia di http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Pengguna Linux dapat mencarinya menggunakan package manager dengan nama "
-"\"pyyaml\" ata \"python-yaml\" ."
+"Pengguna Linux dapat mencarinya menggunakan package manager dengan nama \""
+"pyyaml\" ata \"python-yaml\"."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
@@ -138,28 +138,24 @@ msgid "Inhabitants"
 msgstr "Penduduk"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
-#| msgid "Increase game speed (+)"
+#, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Meningkatkan kecepatan permainan (+)"
+msgstr "Meningkatkan kecepatan permainan ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
-#| msgid "Decrease game speed (-)"
+#, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Menurunkan kecepatan permainan (-)"
+msgstr "Menurunkan kecepatan permainan ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
-#| msgid "Rotate map counterclockwise (,)"
+#, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Memutar peta ke kiri(,)"
+msgstr "Memutar peta ke kiri({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
-#| msgid "Rotate map clockwise (.)"
+#, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Memutar peta ke kanan(.)"
+msgstr "Memutar peta ke kanan({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
@@ -172,22 +168,19 @@ msgid "Zoom out"
 msgstr "Memperkecil"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
-#| msgid "Destroy (X)"
+#, python-brace-format
 msgid "Destroy ({key})"
-msgstr "Menghancurkan(X)"
+msgstr "Menghancurkan({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
-#| msgid "Captain's log (L)"
+#, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "Catatan kapten(L)"
+msgstr "Catatan kapten({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
-#| msgid "Build menu (B)"
+#, python-brace-format
 msgid "Build menu ({key})"
-msgstr "Menu bangunan(B)"
+msgstr "Menu bangunan({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -197,7 +190,7 @@ msgstr "Diplomasi"
 #, fuzzy, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menu permainan (Esc)"
+msgstr "Menu permainan ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -423,10 +416,8 @@ msgstr ""
 "diinginkan dan konfirmasi pesanan."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build"
 msgid "Build ship:"
-msgstr "Membangun"
+msgstr "Membangun kapal:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -653,10 +644,8 @@ msgid "Configure trading route"
 msgstr "Mengkonfigurasi jalur perdagangan"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
-#| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(kehilangan semua sumber daya)"
+msgstr "Buang semua sumber daya"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1047,7 +1036,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr ""
+msgstr "Meningkatkan kecepatan permainan"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
@@ -1977,10 +1966,8 @@ msgid "Not ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:441
-#, fuzzy
-#| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Masukkan pesan Anda:"
+msgstr "Masukkan pesan Anda"
 
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
@@ -2163,12 +2150,12 @@ msgid "Restart required"
 msgstr "Restart diperlukan"
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Sejumlah perubahan Anda memerlukan restart Unknown Horizons."
+msgstr ""
+"Sejumlah perubahan Anda memerlukan restart Unknown Horizons. Apakah anda "
+"ingin me-restart Unknown Horizons sekarang?"
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
@@ -2292,10 +2279,8 @@ msgid "Press H to remove this hint"
 msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
-#| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "Bangunan yang berhubungan"
+msgstr "Hancurkan semua bangunan"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
@@ -3018,7 +3003,7 @@ msgstr ""
 #, fuzzy
 #| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "cadangan batu"
+msgstr "Cadangan Batu"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:349
@@ -3720,15 +3705,16 @@ msgstr ""
 #, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "Cadangan tanah liat"
+msgstr "cadangan tanah liat"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
 msgstr ""
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "clay deposit"
-msgstr "Cadangan tanah liat"
+msgstr "cadangan tanah liat"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3767,7 +3753,7 @@ msgstr "tanaman rempah-rempah"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
-msgstr "Tanah liat"
+msgstr "tanah liat"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
@@ -3795,7 +3781,7 @@ msgstr "besi batangan"
 #, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "Cadangan tanah liat"
+msgstr "cadangan tanah liat"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -4029,7 +4015,7 @@ msgstr "Permainan Anda telah disimpan otomatis."
 #, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "Cadangan tanah liat"
+msgstr "cadangan tanah liat"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
