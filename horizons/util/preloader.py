@@ -23,6 +23,7 @@ import logging
 import threading
 from thread import error as ThreadError  # raised by threading.Lock.release
 
+from horizons.ext.typing import Callable
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
@@ -65,7 +66,7 @@ class PreloadingThread(threading.Thread):
 				if not self.lock.acquire(False):
 					break
 				log.debug("Preload: %s", f)
-				f()
+				f() # type: ignore # https://github.com/python/mypy/issues/797
 				log.debug("Preload: %s is done", f)
 				self.lock.release()
 			log.debug("Preloading done.")

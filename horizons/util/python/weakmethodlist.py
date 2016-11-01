@@ -38,7 +38,8 @@ class WeakMethodList(list):
 			pass
 		elif callable(callback):
 			list.append(self, WeakMethod(callback))
-		elif isinstance(callback, list, tuple):
+		elif isinstance(callback, (list, tuple)):
+			# FIXME should we really change the lists behaviour? why not use extend?
 			for i in callback:
 				self.append(i)
 		else:

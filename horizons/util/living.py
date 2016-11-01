@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ext.typing import Optional
+
+
 class livingProperty(object):
 	"""livingProperty's are used to assign properties to a class, similar to python properties.
 	The extra benefit with livingPropertys is, that they will call the previously assigned
@@ -53,7 +56,7 @@ class livingProperty(object):
 	"""
 
 	def __init__(self):
-		self.__value = None
+		self.__value = None # type: Optional[LivingObject]
 
 	def __get__(self, obj, cls=None):
 		return self.__value

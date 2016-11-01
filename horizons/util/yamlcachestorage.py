@@ -27,6 +27,9 @@ try:
 except ImportError:
 	import pickle # type: ignore
 
+from horizons.ext.typing import Any
+
+
 class YamlCacheStorage(object):
 	"""
 	Store the YamlCache data in a cache.
@@ -44,7 +47,7 @@ class YamlCacheStorage(object):
 	def __init__(self, filename):
 		super(YamlCacheStorage, self).__init__()
 		self._filename = filename
-		self._data = {}
+		self._data = {} # type: Dict[Any, Any]
 
 	@classmethod
 	def _validate(cls, data):
@@ -84,10 +87,10 @@ class YamlCacheStorage(object):
 			obj._reload()
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
-			e = unicode(str(e), errors='replace')
+			message = unicode(str(e), errors='replace')
 			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
 				"warning is expected when upgrading from "
-				"old versions.\n".format(filename, e))
+				"old versions.\n".format(filename, message))
 			obj._clear()
 		return obj
 

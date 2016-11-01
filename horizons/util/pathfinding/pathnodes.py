@@ -21,6 +21,15 @@
 
 import logging
 
+from horizons.ext.typing import Tuple, TYPE_CHECKING
+
+
+if TYPE_CHECKING:
+	from horizons.world.island import Island
+
+
+Coord = Tuple[int, int]
+
 
 class PathNodes(object):
 	"""
@@ -38,14 +47,11 @@ class PathNodes(object):
 		pass
 
 class ConsumerBuildingPathNodes(PathNodes):
-	"""List of path nodes for a consumer, that is a building
-	Interface:
-	self.nodes: {(x, y): speed, ...} of the home_building, where the collectors can walk
-	"""
+	"""List of path nodes for a consumer, that is a building"""
 	def __init__(self, consumerbuilding):
 		super(ConsumerBuildingPathNodes, self).__init__()
 		ground_map = consumerbuilding.island.ground_map
-		self.nodes = {}
+		self.nodes = {} # type: Dict[Coord, float]
 		for coords in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
 			if coords in ground_map and not 'coastline' in ground_map[coords].classes:
 				self.nodes[coords] = self.NODE_DEFAULT_SPEED
@@ -70,13 +76,13 @@ class IslandPathNodes(PathNodes):
 		# generate list of walkable tiles
 		# we keep this up to date, so that path finding can use it and we don't have
 		# to calculate it every time (rather expensive!).
-		self.nodes = {}
+		self.nodes = {} # type: Dict[Coord, float]
 		for coord in self.island:
 			if self.is_walkable(coord):
 				self.nodes[coord] = self.NODE_DEFAULT_SPEED
 
 		# nodes where a real road is built on.
-		self.road_nodes = {}
+		self.road_nodes = {} # type: Dict[Coord, float]
 
 	def register_road(self, road):
 		for i in road.position:
@@ -135,10 +141,10 @@ class IslandBarrierNodes(PathNodes):
 	def __init__(self, island):
 		super(IslandBarrierNodes, self).__init__()
 
-		self.island = island
+		self.island = island # type: Island
 
 		# nodes where a barrier is built on.
-		self.nodes = set()
+		self.nodes = set() # type: Dict[Coord, float]
 
 	def register(self, barrier):
 		for i in barrier.position:

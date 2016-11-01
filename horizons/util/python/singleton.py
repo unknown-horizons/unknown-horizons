@@ -26,6 +26,8 @@ Warning:
 	Please make sure that this is really the best solution before using this code!
 '''
 
+from horizons.ext.typing import Any
+
 
 class Singleton(type):
 	"""Traditional Singleton design pattern.
@@ -36,7 +38,7 @@ class Singleton(type):
 	"""
 	def __init__(self, name, bases, dict):
 		super(Singleton, self).__init__(name, bases, dict)
-		self.instance = None
+		self.instance = None # type: Any
 
 	def __call__(self, *args, **kwargs):
 		if self.instance is None:

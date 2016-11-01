@@ -410,7 +410,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 	min_island_separation = 3 + map_size // 100 # minimum distance between two islands
 	max_island_side_coefficient = 4 # maximum value of island's max(side length) / min(side length)
 
-	islands = []
+	islands = [] # type: List[Rect]
 	estimated_land = 0
 	max_land_amount = map_size * map_size * (100 - water_percent) // 100
 

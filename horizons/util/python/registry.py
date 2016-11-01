@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ext.typing import Callable
+
 
 class Registry(object):
 	"""Simple implementation of the registry pattern.
@@ -41,7 +43,7 @@ class Registry(object):
 	See the Scenario system or the unit tests for further usage examples.
 	"""
 	def __init__(self):
-		self.registry = {}
+		self.registry = {} # type: Dict[str, Callable]
 
 	def register(self, **kwargs):
 		"""Returns a decorator to register functions, all arguments are passed through

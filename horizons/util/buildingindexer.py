@@ -19,7 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ext.typing import Tuple, TYPE_CHECKING
 from horizons.util.python import decorators
+
+
+if TYPE_CHECKING:
+	from horizons.world.building.building import BasicBuilding
+
+
+Coord = Tuple[int, int]
 
 
 class BuildingIndexer(object):
@@ -40,11 +48,11 @@ class BuildingIndexer(object):
 		@param buildings: initial list of buildings. Will only be read.
 		"""
 		self.radius = radius
-		self._map = {}
+		self._map = {} # type: Dict[Coord, BuildingIndex]
 		for coords in coords_list:
 			self._map[coords] = BuildingIndex(coords, random)
-		self._add_set = set()
-		self._remove_set = set()
+		self._add_set = set() # type: Set[BasicBuilding]
+		self._remove_set = set() # type: Set[BasicBuilding]
 		self._changed = False
 
 		if buildings:
@@ -136,9 +144,9 @@ class BuildingIndex(object):
 	def __init__(self, coords, random):
 		self._coords = coords
 		self._random = random
-		self._add_set = set()
-		self._remove_set = set()
-		self._list = []
+		self._add_set = set() # type: Set[BasicBuilding]
+		self._remove_set = set() # type: Set[BasicBuilding]
+		self._list = [] # type: List[Tuple[int, int, int, int, int, BasicBuilding]]
 		self._changed = False
 
 	def _update(self):

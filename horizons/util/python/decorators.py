@@ -27,6 +27,12 @@ import time
 from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
 from types import ClassType, FunctionType
 
+from horizons.ext.typing import Any, Tuple
+
+
+CacheFuncArgs = Tuple[Any, ...]
+CacheFuncKwargs = Tuple[Tuple[str, Any], ...]
+
 
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
@@ -35,7 +41,8 @@ class cachedfunction(object):
 	"""
 	def __init__(self, func):
 		self.func = func
-		self.cache = {}
+
+		self.cache = {} # type: Dict[Tuple[CacheFuncArgs, CacheFuncKwargs], Any]
 
 	def __call__(self, *args, **kwargs):
 		# dicts are not hashable, convert kwargs to a tuple
@@ -53,7 +60,7 @@ class cachedfunction(object):
 class cachedmethod(object):
 	"""Same as cachedfunction, but works also for methods. Results are saved per instance"""
 	def __init__(self, func):
-		self.cache = {}
+		self.cache = {} # type: Dict[Tuple[object, CacheFuncArgs, CacheFuncKwargs], Any]
 		self.func = func
 
 	def __get__(self, instance, cls=None):
@@ -84,7 +91,7 @@ def temporary_cachedmethod(timeout):
 		def __init__(self, func, timeout):
 			super(_temporary_cachedmethod, self).__init__(func)
 			self.timeout = timeout
-			self.cache_dates = {}
+			self.cache_dates = {} # type: Dict[Tuple[object, CacheFuncArgs, CacheFuncKwargs], float]
 
 		def __call__(self, *args, **kwargs):
 			key = self.instance, args, tuple(sorted(kwargs.items()))
@@ -105,8 +112,6 @@ def temporary_cachedmethod(timeout):
 
 
 # adapted from http://code.activestate.com/recipes/277940/
-
-globals().update(opmap)
 
 def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 	stoplist = stoplist or []
@@ -131,9 +136,9 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 	i = 0
 	while i < codelen:
 		opcode = newcode[i]
-		if opcode in (EXTENDED_ARG, STORE_GLOBAL):
+		if opcode in (opmap['EXTENDED_ARG'], opmap['STORE_GLOBAL']):
 			return f    # for simplicity, only optimize common cases
-		if opcode == LOAD_GLOBAL:
+		if opcode == opmap['LOAD_GLOBAL']:
 			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = co.co_names[oparg]
 			if name in env and name not in stoplist:
@@ -144,13 +149,13 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 				else:
 					pos = len(newconsts)
 					newconsts.append(value)
-				newcode[i] = LOAD_CONST
+				newcode[i] = opmap['LOAD_CONST']
 				newcode[i + 1] = pos & 0xFF
 				newcode[i + 2] = pos >> 8
 				if verbose:
 					print(name, '-->', value)
 		i += 1
-		if opcode >= HAVE_ARGUMENT:
+		if opcode >= opmap['HAVE_ARGUMENT']:
 			i += 2
 
 	# Second pass folds tuples of constants and constant attribute lookups
@@ -158,7 +163,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 	while i < codelen:
 
 		newtuple = []
-		while newcode[i] == LOAD_CONST:
+		while newcode[i] == opmap['LOAD_CONST']:
 			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			newtuple.append(newconsts[oparg])
 			i += 3
@@ -166,11 +171,11 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 		opcode = newcode[i]
 		if not newtuple:
 			i += 1
-			if opcode >= HAVE_ARGUMENT:
+			if opcode >= opmap['HAVE_ARGUMENT']:
 				i += 2
 			continue
 
-		if opcode == LOAD_ATTR:
+		if opcode == opmap['LOAD_ATTR']:
 			obj = newtuple[-1]
 			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = names[oparg]
@@ -180,7 +185,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 				continue
 			deletions = 1
 
-		elif opcode == BUILD_TUPLE:
+		elif opcode == opmap['BUILD_TUPLE']:
 			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			if oparg != len(newtuple):
 				continue
@@ -191,13 +196,13 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 			continue
 
 		reljump = deletions * 3
-		newcode[i - reljump] = JUMP_FORWARD
+		newcode[i - reljump] = opmap['JUMP_FORWARD']
 		newcode[i - reljump + 1] = (reljump - 3) & 0xFF
 		newcode[i - reljump + 2] = (reljump - 3) >> 8
 
 		n = len(newconsts)
 		newconsts.append(value)
-		newcode[i] = LOAD_CONST
+		newcode[i] = opmap['LOAD_CONST']
 		newcode[i + 1] = n & 0xFF
 		newcode[i + 2] = n >> 8
 		i += 3

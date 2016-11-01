@@ -90,8 +90,8 @@ class FindPath(object):
 		if hasattr(self.destination, 'position'):
 			self.destination = self.destination.position
 
-		if isinstance(self.path_nodes, list) or isinstance(self.path_nodes, set):
-			self.path_nodes = dict.fromkeys(self.path_nodes, 1.0)
+		if isinstance(self.path_nodes, (list, set)):
+			self.path_nodes = dict.fromkeys(self.path_nodes, 1.0) # type: ignore # https://github.com/python/mypy/issues/2330
 
 		# check if target is blocked
 		target_is_blocked = True

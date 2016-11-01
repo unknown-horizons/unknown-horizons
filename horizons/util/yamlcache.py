@@ -49,7 +49,7 @@ def parse_token(token, token_klass):
 	"""
 	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
 
-	if not isinstance(token, basestring):
+	if not isinstance(token, (str, unicode)):
 		# Probably numeric already
 		return token
 	if not token.startswith(token_klass):

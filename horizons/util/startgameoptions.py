@@ -23,6 +23,7 @@ from operator import itemgetter
 
 import horizons.globals
 from horizons.constants import AI, COLORS
+from horizons.ext.typing import Optional
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
@@ -32,24 +33,24 @@ class StartGameOptions(object):
 	def __init__(self, game_identifier):
 		super(StartGameOptions, self).__init__()
 		self.game_identifier = game_identifier
-		self._player_list = None
+		self._player_list = None # type: List[Dict]
 
 		self.trader_enabled = True
 		self.pirate_enabled = True
 		self.natural_resource_multiplier = 1
 		self.disasters_enabled = True
-		self.force_player_id = None
+		self.force_player_id = None # type: Optional[int]
 		self.is_map = False
 		self.is_multiplayer = False
 		self.is_scenario = False
 
 		self.player_name = 'Player'
-		self.player_color = None
+		self.player_color = None # type: Optional[Color]
 		self.ai_players = 0
 		self.human_ai = AI.HUMAN_AI
 
 		# this is used by the map editor to pass along the new map's size
-		self.map_padding = None
+		self.map_padding = None # type: Optional[int]
 		self.is_editor = False
 
 	def init_new_world(self, session):

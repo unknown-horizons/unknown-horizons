@@ -26,6 +26,7 @@ import tempfile
 from collections import defaultdict, deque
 
 from horizons.constants import MAP, PATHS
+from horizons.ext.typing import Optional
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
@@ -49,7 +50,7 @@ class SavegameAccessor(DbReader):
 	def __init__(self, game_identifier, is_map, options=None):
 		is_random_map = False
 		if is_map:
-			self.upgrader = None
+			self.upgrader = None # type: Optional[SavegameUpgrader]
 			handle, self._temp_path = tempfile.mkstemp()
 			os.close(handle)
 			super(SavegameAccessor, self).__init__(dbfile=self._temp_path)
@@ -126,7 +127,6 @@ class SavegameAccessor(DbReader):
 		self._load_storage_global_limit()
 		self._load_health()
 		self._load_fish_data()
-		self._hash = None
 
 	def close(self):
 		super(SavegameAccessor, self).close()

@@ -215,6 +215,6 @@ def metaChangeListenerDecorator(event_name):
 			setattr(obj, event_call_number, 0)
 			setattr(obj, hard_remove_event, True)
 			return obj
-		clas.__new__ = staticmethod(new)
+		clas.__new__ = staticmethod(new) # type: ignore # https://github.com/python/mypy/issues/1006
 		return clas
 	return decorator

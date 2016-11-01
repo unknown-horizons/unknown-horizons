@@ -36,8 +36,8 @@ class UpdateInfo(object):
 	INVALID, READY, UNINITIALIZED = range(3)
 	def __init__(self):
 		self.status = UpdateInfo.UNINITIALIZED
-		self.version = None
-		self.link = None
+		self.version = None # type: str
+		self.link = None # type: str
 
 TIMEOUT = 5.0 # we should be done before the user can start a game
 def check_for_updates(info):
