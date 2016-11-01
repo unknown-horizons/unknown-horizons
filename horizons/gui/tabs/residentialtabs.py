@@ -107,9 +107,9 @@ class SettlerOverviewTab(OverviewTab):
 
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""
-	slider.scale_start = SETTLER.TAX_SETTINGS_MIN
-	slider.scale_end = SETTLER.TAX_SETTINGS_MAX
-	slider.step_length = SETTLER.TAX_SETTINGS_STEP
+	step_count = int((SETTLER.TAX_SETTINGS_MAX - SETTLER.TAX_SETTINGS_MIN) / SETTLER.TAX_SETTINGS_STEP)
+	slider.steps = [SETTLER.TAX_SETTINGS_MIN + SETTLER.TAX_SETTINGS_STEP * i for i in
+			range(step_count)]
 	slider.value = settlement.tax_settings[level]
 	def on_slider_change():
 		val_label.text = unicode(slider.value)
