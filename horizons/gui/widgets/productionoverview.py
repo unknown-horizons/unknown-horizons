@@ -30,6 +30,7 @@ from horizons.gui.util import create_resource_icon, load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
@@ -117,7 +118,7 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		super(ProductionOverview, self).refresh()
 
 		name = self.settlement.get_component(NamedComponent).name
-		text = _('Production overview of {settlement}').format(settlement=name)
+		text = T('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 
 		forward_button = self._gui.findChild(name='forwardButton')

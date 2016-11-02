@@ -26,6 +26,7 @@ from horizons.component.stancecomponent import (
 	AggressiveStance, FleeStance, HoldGroundStance, NoneStance)
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED
+from horizons.i18n import gettext as T
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
@@ -432,11 +433,11 @@ class WeaponHolder(object):
 		if self.is_attacking():
 			target = self.get_attack_target()
 			if isinstance(target, Ship):
-				string = _("Attacking {target} '{name}' ({owner})")
+				string = T("Attacking {target} '{name}' ({owner})")
 				return (string.format(target=target.classname.lower(), name=target.name,
 				                      owner=target.owner.name),
 				        target.position)
-			return (_('Attacking {owner}').format(owner=target.owner.name),
+			return (T('Attacking {owner}').format(owner=target.owner.name),
 			        target.position)
 		return super(WeaponHolder, self).get_status()
 

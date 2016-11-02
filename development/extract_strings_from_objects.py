@@ -78,7 +78,7 @@ HEADER = '''\
 #
 ###############################################################################
 
-
+T = lambda s: s
 
 
 
@@ -159,7 +159,7 @@ def content_from_file(filename):
 		return ''
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
-			text = u'_("{value}")'.format(value=value[2:])
+			text = u'T("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
 			comment = '%s of %s' %(component, filename)

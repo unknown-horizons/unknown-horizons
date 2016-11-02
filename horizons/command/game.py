@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.command import Command
+from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
 
 
@@ -34,8 +35,8 @@ class SaveCommand(Command):
 		try:
 			path = SavegameManager.create_multiplayersave_filename(self.name)
 		except RuntimeError as e:
-			headline = _("Invalid filename")
-			msg = _("Received an invalid filename for a save command.")
+			headline = T("Invalid filename")
+			msg = T("Received an invalid filename for a save command.")
 			session.ingame_gui.open_error_popup(headline, msg, unicode(e))
 			return
 
@@ -46,7 +47,7 @@ class SaveCommand(Command):
 			# TODO: distinguish auto/quick/normal
 			session.ingame_gui.message_widget.add('SAVED_GAME')
 		else:
-			session.ingame_gui.open_popup(_('Error'), _('Failed to save.'))
+			session.ingame_gui.open_popup(T('Error'), T('Failed to save.'))
 
 Command.allow_network(SaveCommand)
 

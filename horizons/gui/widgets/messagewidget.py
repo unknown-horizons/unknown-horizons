@@ -30,6 +30,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
 from horizons.i18n.voice import get_speech_file
 from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
@@ -330,10 +331,9 @@ class _IngameMessage(object):
 		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
-			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
 		else:
-			msg = _(horizons.globals.db.get_msg_text(id))
+			msg = T(horizons.globals.db.get_msg_text(id))
 			#TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})

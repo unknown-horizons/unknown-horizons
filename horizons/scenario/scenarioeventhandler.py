@@ -24,6 +24,7 @@ import json
 
 import yaml
 
+from horizons.i18n import gettext as T
 from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
@@ -169,7 +170,7 @@ class ScenarioEventHandler(LivingObject):
 
 		@throws InvalidScenarioFileFormat on yaml parse error
 		"""
-		fallback = _('unknown')
+		fallback = T('unknown')
 		metadata = cls._parse_yaml_file(filename).get('metadata', {})
 		for required_key in ('author', 'difficulty', 'description'):
 			metadata.setdefault(required_key, fallback)

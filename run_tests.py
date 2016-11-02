@@ -85,8 +85,6 @@ def setup_horizons():
 
 
 if __name__ == '__main__':
-	gettext.install('', unicode=True) # no translations here
-
 	setup_horizons()
 
 	from tests.gui import GuiTestPlugin

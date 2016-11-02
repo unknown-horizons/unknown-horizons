@@ -30,7 +30,7 @@ from horizons.engine import Fife
 from horizons.ext.typing import Tuple
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.world.production.producer import Producer
@@ -102,7 +102,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		produced_unit_id = production_line.get_produced_units().keys()[0]
 
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-		container_active.findChild(name="headline_UB_builtunit_label").text = _(name)
+		container_active.findChild(name="headline_UB_builtunit_label").text = T(name)
 
 		self.update_unit_icon(container_active, produced_unit_id)
 
@@ -155,7 +155,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		queue_container.removeAllChildren()
 		for place_in_queue, unit_type in enumerate(queue):
 			image = self.__class__.UNIT_THUMBNAIL.format(type_id=unit_type)
-			helptext = _("{ship} (place in queue: {place})").format(
+			helptext = T("{ship} (place in queue: {place})").format(
 		            ship=self.instance.session.db.get_unit_type_name(unit_type),
 		            place=place_in_queue+1)
 			# people don't count properly, always starting at 1..
@@ -209,7 +209,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 class BoatbuilderTab(UnitbuilderTabBase):
 	widget = 'boatbuilder.xml'
-	helptext = _lazy("Boat builder overview")
+	helptext = LazyT("Boat builder overview")
 
 	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/ships/116/{type_id}.png"
@@ -252,7 +252,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=T('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
 			button = CancelButton(position=(60, 50), name='ok_%s'%index,
@@ -288,7 +288,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
 class BoatbuilderFisherTab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/fisher'
-	helptext = _lazy("Fisher boats")
+	helptext = LazyT("Fisher boats")
 
 	ships = [
 		#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
@@ -300,7 +300,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/trade'
-	helptext = _lazy("Trade boats")
+	helptext = LazyT("Trade boats")
 
 	ships = [
 		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
@@ -312,7 +312,7 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/war1'
-	helptext = _lazy("War boats")
+	helptext = LazyT("War boats")
 
 	ships = [
 		#(UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
@@ -324,7 +324,7 @@ class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/war2'
-	helptext = _lazy("War ships")
+	helptext = LazyT("War ships")
 
 	ships = [
 		#(UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
@@ -342,7 +342,7 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 
 class BoatbuilderConfirmTab(ProducerOverviewTabBase):
 	widget = 'boatbuilder_confirm.xml'
-	helptext = _lazy("Confirm order")
+	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
 		super(BoatbuilderConfirmTab, self).init_widget()

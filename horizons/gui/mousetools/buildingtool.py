@@ -35,6 +35,7 @@ from horizons.ext.typing import TYPE_CHECKING
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget
+from horizons.i18n import gettext as T
 from horizons.messaging import (
 	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -234,7 +235,7 @@ class BuildingTool(NavigationTool):
 		self.__class__.gui.mapEvents({"rotate_left" : self.rotate_left,
 		                              "rotate_right": self.rotate_right})
 		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
+		self.__class__.gui.findChild(name='headline').text = T('Build {building}').format(building=T(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content

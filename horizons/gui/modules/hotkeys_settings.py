@@ -29,6 +29,7 @@ import horizons.globals
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
@@ -95,7 +96,7 @@ class HotkeyConfiguration(object):
 		self.listener.activate()
 		self.update_buttons_text()
 		button.font = 'default'
-		button.text = _(u"Press key…")
+		button.text = T(u"Press key…")
 
 	def _detect_keypress(self, event):
 		if not self.detecting:
@@ -144,9 +145,9 @@ class HotkeyConfiguration(object):
 				self.last_combination = []
 				return
 
-			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
-			message += u" " + _("Would you like to overwrite it?")
-			confirmed = horizons.main._modules.gui.open_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
+			message = T("{key} is already set to {action}.").format(key=key_name, action=oldaction)
+			message += u" " + T("Would you like to overwrite it?")
+			confirmed = horizons.main._modules.gui.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			else:

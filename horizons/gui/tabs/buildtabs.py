@@ -25,6 +25,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 from horizons.ext.enum import Enum
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext as T
 from horizons.messaging import NewPlayerSettlementHovered
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python import decorators
@@ -115,8 +116,8 @@ class BuildTab(TabInterface):
 			if not helptext and not headline:
 				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
-		self.headline = _(headline) if headline else headline # don't translate None
-		self.helptext = _(helptext) if helptext else self.headline
+		self.headline = T(headline) if headline else headline # don't translate None
+		self.helptext = T(helptext) if helptext else self.headline
 
 		#get build style
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
@@ -135,7 +136,7 @@ class BuildTab(TabInterface):
 		if self.headline: # prefer specific headline
 			headline_lbl.text = self.headline
 		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
-			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
+			headline_lbl.text = T(self.session.db.get_settler_name(self.tabindex))
 
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
@@ -198,7 +199,7 @@ class BuildTab(TabInterface):
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
-					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
+					lbl.text = T(entry[2:]) if entry.startswith('_ ') else entry
 				elif isinstance(entry, int):
 					button = self.widget.child_finder('button_{position:02d}'.format(position=position))
 					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
