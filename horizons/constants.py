@@ -201,7 +201,7 @@ class BUILDINGS:
 	WINERY           = 65
 
 	WEAPONSMITH      = 66
-	CANNONFOUNDRY    = 67
+	CANNON_FOUNDRY   = 67
 
 	BREWERY          = 68
 	HOP_FIELD        = 69
