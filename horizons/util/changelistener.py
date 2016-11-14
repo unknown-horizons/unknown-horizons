@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,17 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import WeakMethodList
+import logging
+import traceback
+
 from horizons.util.python.callback import Callback
+from horizons.util.python.weakmethodlist import WeakMethodList
+
 
 class ChangeListener(object):
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
-	An object calls _changed everytime something has changed, obviously.
+	An object calls _changed every time something has changed, obviously.
 	This function calls every Callback, that has been registered to listen for a change.
 	NOTE: ChangeListeners aren't saved, they have to be reregistered on load
 	NOTE: RemoveListeners must not access the object, as it is in progress of being destroyed.
 	"""
+
+	log = logging.getLogger('changelistener')
+
 	def __init__(self, *args, **kwargs):
 		super(ChangeListener, self).__init__()
 		self.__init()
@@ -66,10 +73,9 @@ class ChangeListener(object):
 			if listener:
 				try:
 					listener()
-				except ReferenceError, e:
+				except ReferenceError as e:
 					# listener object is dead, don't crash since it doesn't need updates now anyway
-					print 'Warning: the dead are listening to', self, ': ', e
-					import traceback
+					self.log.warning('The dead are listening to %s: %s', self, e)
 					traceback.print_stack()
 
 		self.__event_call_number -= 1
@@ -83,7 +89,7 @@ class ChangeListener(object):
 		assert callable(listener)
 		if not no_duplicates or listener not in self.__listeners:
 			self.__listeners.append(listener)
-		if call_listener_now: # also call if duplicate is adde
+		if call_listener_now: # also call if duplicate is added
 			listener()
 
 	def remove_change_listener(self, listener):
@@ -145,7 +151,7 @@ These methods get added automatically (eventname is the name you pass to the dec
 - has_eventname_listener(listener)
     Checks if a certain listener has been added.
 - on_eventname
-    This is used to call the callbacks when the event occured.
+    This is used to call the callbacks when the event occurred.
     Additional parameters may be provided, which are passed to the callback.
 
 The goal is to simplify adding special listeners, as for example used in the
@@ -204,7 +210,7 @@ def metaChangeListenerDecorator(event_name):
 			# which results in endless recursion, if you construct an instance of a class,
 			# that inherits from a base class on which the decorator has been applied.
 			# therefore, this workaround is used:
-			obj = old_new(cls, *args, **kwargs)
+			obj = old_new(cls)
 			setattr(obj, list_name, [])
 			setattr(obj, event_call_number, 0)
 			setattr(obj, hard_remove_event, True)

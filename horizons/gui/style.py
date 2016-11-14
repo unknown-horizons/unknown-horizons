@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,313 +19,104 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
+try:
+	#TODO fifechan / FIFE 0.3.5+ compat
+	from fife.fifechan import Color
+except ImportError:
+	# this is the old (0.3.4 and earlier) API
+	from fife.fife import Color
+
+BROWN = { 64: Color(80, 80, 40,  64),
+          96: Color(80, 80, 40,  96),
+         128: Color(80, 80, 40, 128),
+         192: Color(80, 80, 40, 192),
+         255: Color(80, 80, 40, 255),
+}
+
+WHITE = { 32: Color(255, 255, 255,  32),
+          64: Color(255, 255, 255,  64),
+          96: Color(255, 255, 255,  96),
+         160: Color(255, 255, 255, 160),
+         255: Color(255, 255, 255, 255),
+}
+
+NOTHING = Color(0, 0, 0, 0)
 
 STYLES = {
 'default': {
-		'default' : {
+		'default': {
+			'background_color': NOTHING,
+			'base_color': NOTHING,
+			'foreground_color': BROWN[255],
+			'selection_color': BROWN[192],
 			'border_size': 0,
 			'margins': (0, 0),
-			'base_color' : fife.Color(40, 40, 40,   0),
-			'foreground_color' : fife.Color( 80, 80, 40,   0),
-			'background_color' : fife.Color(255,255,255, 128),
-			'selection_color' : fife.Color(80,80,40, 192),
-			'font' : '14_black',
+			'font': 'default',
+			'vertical_scrollbar': 1,
+			'horizontal_scrollbar': 0,
 		},
-		'Button' : {
-			'background_color' : fife.Color(255,255,255,32),
-			'foreground_color' : fife.Color(80,80,40, 192),
-			'base_color' : fife.Color(80,80,40, 64),
-			'border_size': 1,
-			'margins' : (10, 5),
+		'Button': {
+			'base_color': BROWN[64],
+			'foreground_color': BROWN[192],
+			'margins': (10, 5),
 		},
-		('Icon', 'ImageButton') : {
-			'border_size': 0
+		#TODO combine the following two after the tuple notation bug is fixed:
+		# http://github.com/fifengine/fifengine/issues/656
+		'CheckBox': {
+			'background_color': WHITE[96],
 		},
-		('CheckBox','DropDown') : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
-			'font' : '14_black',
-			'border_size': 0,
+		'RadioButton': {
+			'background_color': WHITE[96],
 		},
-		('Slider','StepSlider') : {
-			'base_color' : fife.Color(80,80,40,128),
+		'ListBox': {
+			'selection_color': WHITE[160],
 		},
-		'TextField' : {
-			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'font' : '14_black',
+		'ScrollArea': {
+			'selection_color': WHITE[255],
+			'background_color': WHITE[64],
+			'base_color': BROWN[64],
 		},
-		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
-			'font' : '14_black',
+		#TODO combine the following two after the tuple notation bug is fixed
+		'Slider': {
+			'base_color': BROWN[96],
 		},
-		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
-			'font' : '14_black',
-			'horizontal_scrollbar' : 0,
+		'StepSlider': {
+			'base_color': BROWN[96],
 		},
-		'RadioButton' : {
-			'border_size': 0,
+		'TextField': {
+			'selection_color': BROWN[96],
+			'background_color': WHITE[64],
 		},
-		'Label' : {
-			'border_size': 0,
-			'background_color' : fife.Color(40, 40, 40, 0),
-			'font' : '14_black',
-		},
-		'Window' : {
-			'border_size': 1,
-			'margins': (10, 10),
-			'titlebar_height' : 30,
-			'font' : 'large',
-			'base_color' : fife.Color(60, 60, 60)
-		},
-		('Container','HBox','VBox') : {
-			'opaque' : 0,
-			'border_size': 0
-		},
-},
-'menu': { #Used in the main menu and game menu
-		'default' : {
-			'border_size': 0,
-			'margins': (0, 0),
-			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0, 0),
-			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'mainmenu'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (10, 5)
-		},
-		'Label' : {
-			'border_size': 0,
-			'font' : 'mainmenu',
-			'background_color' : fife.Color(0, 0, 0, 102)
-		}
 },
 
-'menu_black': { # style for build menu etc.
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'small_black'
+'menu': { #Used in the main menu
+		'default': {
+			'font': 'headline_light',
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'margins': (0,0),
-			'font' : '14_black'
-		},
-		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container','HBox','VBox') : {
-		},
-		# once more, better not ask why this is necessary (#1607)
-		# also seems it won't work if just added to the above.
-		'CheckBox' : {
+		'Label': {
+			'background_color': Color(0, 0, 0, 102),
+			'font': 'mainmenu',
 		},
 },
 
 'resource_bar': {
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0, 0),
-			'foreground_color' : fife.Color(0, 0, 0, 0),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'small_black'
+		'default': {
+			'font': 'resourcebar',
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'alpha':0,
-			'font' : 'small_black'
-		}
-},
-
-'message_text': {
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'small'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'margins': (0,0),
-			'font' : 'small'
-		}
-},
-
-'city_info': { # style for city info
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'large'
-		},
-		'Button' : {
-			'font' : '18',
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'font' : '18'
-		}
 },
 
 'headline': { # style for headlines
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'headline'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'font' : 'headline'
-		},
-		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container','HBox','VBox') : {
+		'default': {
+			'font': 'headline',
 		},
 },
 
-'book': { # style for book widgets
-	    'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'font' : '14_black',
-			'foreground_color' : fife.Color(80,80,40),
+'transparent': { # style for transparent widgets
+		'default': {
+			'background_color': Color(0, 0, 0, 0),
 		},
-		'Label' : {
-			'font' : '14_black',
-		},
-		('CheckBox', 'RadioButton') : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-		},
-		'DropDown' : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,128),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'font' : '14_black',
-		},
-		('Slider','StepSlider') : {
-			'base_color' : fife.Color(80,80,40,128),
-		},
-		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
-			'font' : '14_black',
-		},
-		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
-			'font' : '14_black',
-			'horizontal_scrollbar' : 0,
-		},
-		'HBox' : {
-			'font' : '14_black',
-			'foreground_color' : fife.Color(80,80,40),
-			'opaque': 0
-		},
-		'TextField' : {
-			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'font' : '14_black',
-		},
-		('Container','HBox','VBox') : {
-#			'background_image' : ****,
+		'ScrollArea': {
+			'background_color': Color(0, 0, 0, 0),
 		},
 },
-
-'book_t': { # same as book, only styles anything text-related
-	    'default' : {
-			'font' : '14_black',
-		},
-		'Label' : {
-			'font' : '14_black',
-		},
-		'ListBox' : {
-			'font' : '14_black',
-		},
-		'ScrollArea' : {
-			'font' : '14_black',
-			'horizontal_scrollbar' : 0,
-		},
-		'HBox' : {
-			'font' : '14_black',
-			'opaque': 0
-		},
-		'TextField' : {
-			'font' : '14_black',
-		}
-},
-
-'tooltip': { # style for tooltips
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'headline'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'font' : 'tooltip'
-		}
-	},
-
 }

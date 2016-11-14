@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,13 +21,13 @@
 
 import random
 
-import horizons.main
-
-from horizons.session import Session
-from horizons.manager import SPManager
 from horizons.constants import SINGLEPLAYER
+from horizons.i18n import gettext as T
+from horizons.manager import SPManager
 from horizons.savegamemanager import SavegameManager
+from horizons.session import Session
 from horizons.timer import Timer
+
 
 class SPSession(Session):
 	"""Session tailored for singleplayer games."""
@@ -39,7 +39,7 @@ class SPSession(Session):
 		return random.Random(seed if seed is not None else SINGLEPLAYER.SEED)
 
 	def create_timer(self):
-		return Timer(freeze_protection=True)
+		return Timer(freeze_protection=SINGLEPLAYER.FREEZE_PROTECTION)
 
 	def load(self, *args, **kwargs):
 		super(SPSession, self).load(*args, **kwargs)
@@ -51,8 +51,8 @@ class SPSession(Session):
 		self.log.debug("Session: autosaving")
 		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
-			SavegameManager.delete_dispensable_savegames(autosaves = True)
-			self.ingame_gui.message_widget.add(None, None, 'AUTOSAVE')
+			SavegameManager.delete_dispensable_savegames(autosaves=True)
+			self.ingame_gui.message_widget.add('AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
@@ -60,23 +60,14 @@ class SPSession(Session):
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
-			SavegameManager.delete_dispensable_savegames(quicksaves = True)
-			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
+			SavegameManager.delete_dispensable_savegames(quicksaves=True)
+			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
-			headline = _(u"Failed to quicksave.")
-			descr = _(u"An error happened during quicksave. Your game has not been saved.")
-			advice = _(u"If this error happens again, please contact the development team:") + \
-			           u"unknown-horizons.org/support/"
-			self.gui.show_error_popup(headline, descr, advice)
-
-	def quickload(self):
-		"""Loads last quicksave"""
-		files = SavegameManager.get_quicksaves(include_displaynames = False)[0]
-		if len(files) == 0:
-			self.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
-			return
-		self.ingame_gui.on_escape() # close widgets that might be open
-		horizons.main.load_game(savegame=files[0])
+			headline = T("Failed to quicksave.")
+			descr = T("An error happened during quicksave.") + u"\n" + T("Your game has not been saved.")
+			advice = T("If this error happens again, please contact the development team: "
+			           "{website}").format(website="http://unknown-horizons.org/support/")
+			self.ingame_gui.open_error_popup(headline, descr, advice)
 
 	def save(self, savegamename=None):
 		"""Saves a game
@@ -84,12 +75,12 @@ class SPSession(Session):
 		@return: bool, whether no error happened (user aborting dialog means success)
 		"""
 		if savegamename is None:
-			savegamename = self.gui.show_select_savegame(mode='save')
+			savegamename = self.ingame_gui.show_select_savegame(mode='save')
 			if savegamename is None:
 				return True # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)
 
-		success= self._do_save(savegamename)
+		success = self._do_save(savegamename)
 		if success:
-			self.ingame_gui.message_widget.add(None, None, 'SAVED_GAME')
+			self.ingame_gui.message_widget.add('SAVED_GAME')
 		return success

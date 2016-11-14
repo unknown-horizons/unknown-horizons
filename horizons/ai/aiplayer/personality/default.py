@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import SETTLER
+from horizons.constants import TIER
+
 
 class DefaultPersonality:
 	class SettlementFounder:
@@ -38,6 +39,11 @@ class DefaultPersonality:
 		max_raw_clay = 300 # no more than this much will count for the bonus value
 		raw_clay_importance = 0.3 # how important is the available resource amount
 		no_raw_clay_penalty = 100 # penalty for having less than this much of the resource on the island
+
+		min_stone_deposit = 100 # if the island has less than this much then apply the penalty
+		max_stone_deposit = 300 # no more than this much will count for the bonus value
+		stone_deposit_importance = 0.3 # how important is the available resource amount
+		no_stone_deposit_penalty = 100 # penalty for having less than this much of the resource on the island
 
 		min_raw_iron = 100 # if the island has less than this much then apply the penalty
 		max_raw_iron = 300 # no more than this much will count for the bonus value
@@ -92,21 +98,24 @@ class DefaultPersonality:
 		double_road_penalty = 30 # the penalty for building two roads right next to each other (per complete road, not segment)
 
 		max_coverage_building_capacity = 22 # maximum number of residences a coverage building can service
-		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimised away)
+		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimized away)
 
 		max_fire_station_capacity = 40 # maximum number of residences a fire station can service
 		normal_fire_station_capacity = 30 # the initial plan calls for this number of residences per fire station
+
+		max_doctor_capacity = 40 # maximum number of residences a doctor can service
+		normal_doctor_capacity = 30 # the initial plan calls for this number of residences per doctor
 
 		min_coverage_building_options = 10 # consider at least this many coverage building options
 		coverage_building_option_ratio = 0.4 # consider this * 100% of the possible options
 
 	class LandManager:
-		max_section_side = 22 # minimise the number of village sections by considering this to be its maximum side length
+		max_section_side = 22 # minimize the number of village sections by considering this to be its maximum side length
 
-		village_area_small = 0.25 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
-		village_area_40 = 0.28 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
-		village_area_50 = 0.30 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
-		village_area_60 = 0.33 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
+		village_area_small = 0.23 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
+		village_area_40 = 0.26 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
+		village_area_50 = 0.28 # use this fraction of the area for the village if <= 3600 tiles are available for the settlement
+		village_area_60 = 0.31 # use this fraction of the area for the village if > 3600 tiles are available for the settlement
 		min_village_size = 81 # minimum possible village size in tiles
 		min_village_proportion = 0.95 # the proportion of the chosen village area size that must be present
 
@@ -114,6 +123,7 @@ class DefaultPersonality:
 		default_resource_requirement = 30 # try to always have this much tools and boards in settlement inventory
 		default_food_requirement = 30 # try to always have this much food in settlement inventory in settlements with a village
 		default_feeder_island_brick_requirement = 20 # try to always have this much bricks in feeder island inventory (active on level > 0)
+		default_cannon_requirement = 4
 
 		# the following constants affect the way the AI buys and sells resources
 		reserve_time = 1000 # number of ticks to pre-reserve resources for
@@ -138,36 +148,46 @@ class DefaultPersonality:
 		initial_sailor_taxes = 0.5
 		initial_pioneer_taxes = 0.8
 		initial_settler_taxes = 0.8
+		initial_citizen_taxes = 0.8
 		initial_sailor_upgrades = False
 		initial_pioneer_upgrades = False
+		initial_settler_upgrades = False
 
 		# tax rates and upgrade rights in settlements where the first sailors have been given the right to upgrade
 		early_sailor_taxes = 0.9
 		early_pioneer_taxes = 0.8
 		early_settler_taxes = 0.8
+		early_citizen_taxes = 0.8
 		early_sailor_upgrades = False
 		early_pioneer_upgrades = False
+		early_settler_upgrades = False
 
 		# tax rates and upgrade rights in settlements where bricks production exists but there is no school
 		no_school_sailor_taxes = 0.9
 		no_school_pioneer_taxes = 0.8
 		no_school_settler_taxes = 0.8
+		no_school_citizen_taxes = 0.8
 		no_school_sailor_upgrades = True
 		no_school_pioneer_upgrades = True
+		no_school_settler_upgrades = False
 
 		# tax rates and upgrade rights in settlements where there is a school but not enough resources to build something
 		school_sailor_taxes = 0.9
 		school_pioneer_taxes = 1.0
 		school_settler_taxes = 0.8
+		school_citizen_taxes = 0.8
 		school_sailor_upgrades = False
 		school_pioneer_upgrades = False
+		school_settler_upgrades = False
 
 		# tax rates and upgrade rights in settlements with a school and none of the above problems
 		final_sailor_taxes = 0.9
 		final_pioneer_taxes = 1.0
 		final_settler_taxes = 1.0
+		final_citizen_taxes = 0.8
 		final_sailor_upgrades = True
 		final_pioneer_upgrades = True
+		final_settler_upgrades = True
 
 	class FoundSettlement:
 		# use a penalty for warehouse being too close to the village area
@@ -176,6 +196,7 @@ class DefaultPersonality:
 		too_close_linear_penalty = 0
 
 		linear_warehouse_penalty = 1000 # add a penalty of this constant * distance to a warehouse to the warehouse penalty
+		max_options = 10 # maximum number of options to consider
 
 	class FeederChainGoal:
 		extra_priority = 1 # extra priority given to goals that are supposed to produce resources for other settlements on feeder islands
@@ -184,20 +205,27 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 600
 		residences_required = 16
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_tier = TIER.PIONEERS
 
 	class ClayDepositCoverageGoal:
 		enabled = True
 		default_priority = 450
 		residences_required = 0
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_tier = TIER.PIONEERS
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
+	class StoneDepositCoverageGoal:
+		enabled = True
+		default_priority = 450
+		residences_required = 0
+		min_tier = TIER.PIONEERS
+
+		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 		priority_variance = 50
 		likelihood = 0.1 # likelihood that it will be active [0, 1]
 
@@ -205,17 +233,18 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 850
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 		alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
 		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
 		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
+		overlap_precision = 0.2 # probability that a tile in the radius will be checked for match for useful coordinates
 
 	class FoundFeederIslandGoal:
 		enabled = True
 		default_priority = 650
 		residences_required = 16
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
 		usable_feeder_island_cutoff = 30 # if there are less than this many free 3x3 on a feeder island then another feeder island may be needed
@@ -224,11 +253,11 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 1000
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
 		min_free_space = 20 # if there is less than this much free space for a resource then it doesn't matter that the building in badly covered
-		max_good_collector_utilisation = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
+		max_good_collector_utilization = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
 
 		max_reasonably_served_buildings = 3 # maximum number of buildings a storage can reasonably serve (not a hard limit)
 		collector_extra_distance = 6.0 # constant distance on top of the actual distance a collector has to move (accounts for breaks)
@@ -241,7 +270,7 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 200
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
@@ -249,13 +278,13 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 750
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 	class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		enabled = True
 		default_priority = 825
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
 		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
@@ -264,98 +293,116 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 480
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 	class TradingShipGoal:
 		enabled = True
 		default_priority = 550
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
+
+	class CombatShipGoal:
+		enabled = True
+		default_priority = 560
+		residences_required = 0
+		min_tier = TIER.SAILORS
 
 	class FaithGoal:
 		enabled = True
 		default_priority = 700
 		residences_required = 10
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 	class TextileGoal:
 		enabled = True
 		default_priority = 520
 		residences_required = 0
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_tier = TIER.PIONEERS
 
 	class BricksGoal:
 		enabled = True
-		default_priority = 490
+		default_priority = 350
 		residences_required = 0
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_tier = TIER.PIONEERS
 
 	class EducationGoal:
 		enabled = True
 		default_priority = 300
 		residences_required = 10
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_tier = TIER.PIONEERS
 
 	class GetTogetherGoal:
 		enabled = True
 		default_priority = 250
 		residences_required = 10
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 	class ToolsGoal:
 		enabled = True
 		default_priority = 150
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 	class BoardsGoal:
 		enabled = True
 		default_priority = 950
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 	class FoodGoal:
 		enabled = True
 		default_priority = 800
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 	class CommunityGoal:
 		enabled = True
 		default_priority = 900
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.SAILORS
 
 	class LiquorGoal:
 		# this goal is only used on feeder islands
 		enabled = True
 		default_priority = 250
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 	class SaltGoal:
 		enabled = True
 		default_priority = 230
 		residences_required = 10
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 	class FeederSaltGoal:
 		enabled = True
 		default_priority = 230
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 	class TobaccoProductsGoal:
 		enabled = True
 		default_priority = 220
 		residences_required = 13
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
 
 	class FeederTobaccoProductsGoal:
 		enabled = True
 		default_priority = 220
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_tier = TIER.SETTLERS
+
+	class MedicalHerbsProductsGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 13
+		min_tier = TIER.SETTLERS
+
+	class FeederMedicalProductsGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.SETTLERS
 
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
@@ -395,6 +442,8 @@ class DefaultPersonality:
 		immediate_connection_road = 3 # bonus for a road in an entrance of the farm
 		immediate_connection_free = 1 # bonus for an unused tile in an entrance of the farm
 
+		max_options = 100 # maximum number of farm options to consider
+
 	class LumberjackEvaluator:
 		alignment_importance = 0.5 # the larger this value, the larger the effect of alignment on the placement
 		new_tree = 3 # number of points for a new tree in range
@@ -433,16 +482,30 @@ class DefaultPersonality:
 		add_pasture_value = 2.5 # the value of adding a pasture
 		add_sugarcane_field_value = 3.5 # the value of adding a sugarcane field
 		add_tobacco_field_value = 3.5 # the value of adding a tobacco field
+		add_herbary_field_value = 3.5 # the value of adding a herbary
 		remove_unused_potato_field_penalty = 0 # the penalty for removing an unused potato field
 		remove_unused_pasture_penalty = 1 # the penalty for removing an unused pasture
 		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused sugarcane field
 		remove_unused_tobacco_field_penalty = 1.5 # the penalty for removing an unused tobacco field
+		remove_unused_herbary_field_penalty = 1.5 # the penalty for removing an unused herbary
 
 	class FireStationGoal:
 		enabled = True
 		default_priority = 690
 		residences_required = 5
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_tier = TIER.PIONEERS
+
+	class DoctorGoal:
+		enabled = True
+		default_priority = 650
+		residences_required = 5
+		min_tier = TIER.SETTLERS
 
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
+
+	class AbstractDoctor:
+		fraction_of_assigned_residences_built = 0.4 # build a doctor if at least this amount of       the assigned residences have been built
+
+	class AbstractFisher:
+		max_options = 30 # maximum number of farm options to consider

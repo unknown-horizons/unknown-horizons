@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,23 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import textwrap
 import itertools
+import logging
+import textwrap
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon
 
-import horizons.main
-
+import horizons.globals
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.extscheduler import ExtScheduler
-from horizons.util import LivingObject, Callback, Point
-from horizons.scheduler import Scheduler
-from horizons.util.gui import load_uh_widget
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
 from horizons.i18n.voice import get_speech_file
+from horizons.scheduler import Scheduler
+from horizons.util.living import LivingObject
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point
+
 
 class MessageWidget(LivingObject):
 	"""Class that organizes the messages. Displayed on left screen edge.
-	It uses Message instances to store messages and manages the archive.
+	It uses _IngameMessage instances to store messages and manages the archive.
 	"""
 
 	BG_IMAGE_MIDDLE = 'content/gui/images/background/widgets/message_bg_middle.png'
@@ -43,7 +48,7 @@ class MessageWidget(LivingObject):
 	LINE_HEIGHT = 17
 	ICON_TEMPLATE = 'messagewidget_icon.xml'
 	MSG_TEMPLATE = 'messagewidget_message.xml'
-	CHARS_PER_LINE = 34 # character count after which we start new line. no wrap
+	CHARS_PER_LINE = 31 # character count after which we start new line. no wrap
 	SHOW_NEW_MESSAGE_TEXT = 7 # seconds
 	MAX_MESSAGES = 5
 
@@ -51,6 +56,8 @@ class MessageWidget(LivingObject):
 	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
 
 	OVERVIEW_WIDGET = 'messagewidget_overview.xml'
+
+	log = logging.getLogger('gui.widgets.messagewidget')
 
 	def __init__(self, session):
 		super(MessageWidget, self).__init__()
@@ -61,71 +68,80 @@ class MessageWidget(LivingObject):
 		self.msgcount = itertools.count() # sort to preserve order after loading
 
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
-		self.widget.position = (
-			 5,
-			 horizons.main.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
+		screenheight = horizons.globals.fife.engine_settings.getScreenHeight()
+		self.widget.position = (5, (screenheight // 2) - (self.widget.size[1] // 2))
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
-		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
+		self.reference_text_widget_position = (self.widget.x + self.widget.width, self.widget.y)
 
 		self.widget.show()
-		self.item = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
 		self._last_message = {} # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, x, y, string_id, message_dict=None, creation_tick=None, sound_file=True, check_duplicate=False):
+	def add(self, string_id, point=None, msg_type=None, message_dict=None, play_sound=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
-		@param x, y: int coordinates where the action took place. Clicks on the message will then focus that spot.
+		@param point: point where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
+		@param msg_type: message type; determines what happens on click
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
-		@param sound_file: if True: play default message speech for string_id
-		                   if False: do not play sound
-		                   if sound file path: play this sound file
+		@param play_sound: whether to play the default message speech for string_id
 		@param check_duplicate: check for pseudo-duplicates (similar messages recently nearby)
 		"""
 		if check_duplicate:
 			if string_id in self._last_message:
 				when, where = self._last_message[string_id]
 				if when > Scheduler().cur_tick - Scheduler().get_ticks(self.__class__._DUPLICATE_TIME_THRESHOLD) and \
-				   where.distance( (x, y) ) < self.__class__._DUPLICATE_SPACE_THRESHOLD:
+				   where.distance(point) < self.__class__._DUPLICATE_SPACE_THRESHOLD:
 					# there has been a message nearby recently, abort
 					return
-			self._last_message[string_id] = (Scheduler().cur_tick, Point(x, y))
+			self._last_message[string_id] = (Scheduler().cur_tick, point)
 
-		sound = {
-							True: get_speech_file(string_id),
-							False: None
-							}.get(sound_file, sound_file)
-		self._add_message(Message(x, y, string_id, created=self.msgcount.next(), message_dict=message_dict), sound)
+		sound = get_speech_file(string_id) if play_sound else None
+		return self._add_message(_IngameMessage(point=point, id=string_id, msg_type=msg_type,
+		                                        created=self.msgcount.next(), message_dict=message_dict),
+		                         sound=sound)
 
-	def add_custom(self, x, y, messagetext, visible_for=40, icon_id=1):
+	def remove(self, messagetext):
+		"""Remove a message containing the text *messagetext*"""
+		index = -1
+		for i, message in enumerate(self.active_messages):
+			if messagetext == message.message:
+				index = i
+				break
+		if index > -1:
+			del self.active_messages[index]
+			self.draw_widget()
+
+	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
-		self._add_message(Message(x, y, None, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
+		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
+		                                        display=visible_for, created=self.msgcount.next(),
+		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
 		"""
 		message_dict = {'player': player, 'message': messagetext}
-		self.add(x=None, y=None, string_id='CHAT', message_dict=message_dict)
+		self.add('CHAT', msg_type=None, message_dict=message_dict)
 		self.chat.append(self.active_messages[0])
 
 	def _add_message(self, message, sound=None):
 		"""Internal function for adding messages. Do not call directly.
-		@param message: Message instance
+		@param message: _IngameMessage instance
 		@param sound: path to soundfile"""
 		self.active_messages.insert(0, message)
 		if len(self.active_messages) > self.MAX_MESSAGES:
 			self.active_messages.remove(self.active_messages[self.MAX_MESSAGES])
 
 		if sound:
-			horizons.main.fife.play_sound('speech', sound)
+			horizons.globals.fife.play_sound('speech', sound)
 		else:
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')
@@ -137,6 +153,10 @@ class MessageWidget(LivingObject):
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
 
+		self.session.ingame_gui.logbook.display_message_history() # update message history on new message
+
+		return message.created
+
 	def draw_widget(self):
 		"""
 		Updates whole messagewidget (all messages): draw icons.
@@ -145,28 +165,37 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.item + index) < len(self.active_messages):
-				button = pychan.widgets.ImageButton()
-				button.name = str(index)
-				button.up_image = message.up_image
-				button.hover_image = message.hover_image
-				button.down_image = message.down_image
-				button.is_focusable = False
-				# show text on hover
-				events = {
-					button.name + "/mouseEntered": Callback(self.show_text, index),
-					button.name + "/mouseExited": self.hide_text
-				}
-				if message.x is not None and message.y is not None:
-					# move camera to source of event on click, if there is a source
-					callback = Callback.ChainedCallbacks(
-					  Callback(self.session.view.center, message.x, message.y),
-					  Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
-					)
-					events[button.name] = callback
+			if index >= len(self.active_messages):
+				# Only display most recent notifications
+				continue
+			button = ImageButton()
+			button.name = str(index)
+			button.path = message.path
+			# show text on hover
+			events = {
+				button.name + "/mouseEntered": Callback(self.show_text, index),
+				button.name + "/mouseExited": self.hide_text,
+			}
+			# init callback to something callable to improve robustness
+			callback = Callback(lambda: None)
+			if message.x is not None and message.y is not None:
+				# move camera to source of event on click, if there is a source
+				callback = Callback.ChainedCallbacks(
+					   callback, # this makes it so the order of callback assignment doesn't matter
+					   Callback(self.session.view.center, message.x, message.y),
+					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
+				   )
+			if message.msg_type == "logbook":
+				# open logbook to relevant page
+				callback = Callback.ChainedCallbacks(
+					   callback, # this makes it so the order of callback assignment doesn't matter
+					   Callback(self.session.ingame_gui.windows.toggle, self.session.ingame_gui.logbook, msg_id=message.created)
+				)
+			if callback:
+				events[button.name] = callback
 
-				button.mapEvents(events)
-				button_space.addChild(button)
+			button.mapEvents(events)
+			button_space.addChild(button)
 		button_space.resizeToContent()
 		self.widget.size = button_space.size
 
@@ -174,11 +203,12 @@ class MessageWidget(LivingObject):
 		"""Shows the text for a button.
 		@param index: index of button"""
 		assert isinstance(index, int)
-		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
-		label = self.text_widget.findChild(name='text')
-		text = unicode(self.active_messages[self.item+index].message)
-		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
-		text = text.replace(r'[br]', self.CHARS_PER_LINE*' ')
+		# stop hiding if a new text has been shown
+		ExtScheduler().rem_call(self, self.hide_text)
+
+		text = self.active_messages[index].message
+		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
+		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
 
 		self.bg_middle = self.text_widget.findChild(name='msg_bg_middle')
@@ -186,13 +216,21 @@ class MessageWidget(LivingObject):
 
 		line_count = len(text.splitlines()) - 1
 		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
-			middle_icon = pychan.Icon(image=self.BG_IMAGE_MIDDLE)
+			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
+
+		button = self.widget.findChild(name=str(index))
+		# y position relative to parent
+		button_y = button.position[1]
+		# Show text next to corresponding icon
+		x, y = self.reference_text_widget_position
+		self.text_widget.position = (x, y + button_y)
 
 		message_container = self.text_widget.findChild(name='message')
 		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
 
 		self.bg_middle.adaptLayout()
+		label = self.text_widget.findChild(name='text')
 		label.text = text
 		label.adaptLayout()
 		self.text_widget.show()
@@ -226,22 +264,34 @@ class MessageWidget(LivingObject):
 	def save(self, db):
 		for message in self.active_messages:
 			if message.id is not None and message.id != 'CHAT': # only save default messages (for now)
-				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) "
+				   "VALUES (?, ?, ?, ?, ?, ?, ?)",
+				   message.id, message.x, message.y, int(message.read),
+				   message.created, message.display, message.message)
 		for message in self.archive:
 			if message.id is not None and message.id != 'CHAT':
-				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) "
+				   "VALUES (?, ?, ?, ?, ?, ?, ?)",
+				   message.id, message.x, message.y, int(message.read),
+				   message.created, message.display, message.message)
 		for message in self.chat:
 			# handle 'CHAT' special case: display is 0 (do not show old chat on load)
-			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, 0, message.message)
+			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) "
+			   "VALUES (?, ?, ?, ?, ?, ?, ?)",
+			   message.id, message.x, message.y, int(message.read), message.created, 0, message.message)
 
 	def load(self, db):
-		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active ORDER BY created ASC")
+		messages = db("SELECT id, x, y, read, created, display, message "
+		              "FROM message_widget_active ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
+			msg = _IngameMessage(point=Point(x, y), id=msg_id, created=created,
+			                     read=bool(read), display=bool(display), message=message)
 			self.active_messages.append(msg)
-		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive ORDER BY created ASC")
+		messages = db("SELECT id, x, y, read, created, display, message "
+		              "FROM message_widget_archive ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
+			msg = _IngameMessage(point=Point(x, y), id=msg_id, created=created,
+			                     read=bool(read), display=bool(display), message=message)
 			if msg_id == 'CHAT':
 				self.chat.append(msg)
 			else:
@@ -251,36 +301,56 @@ class MessageWidget(LivingObject):
 		self.draw_widget()
 
 
-class Message(object):
+class _IngameMessage(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string template, meaning it can contain placeholders
-	like the following: {player}, {gold}. The dict needed to fill in these place-
-	holders needs to be provided when creating Messages. (parameter message_dict)
+	like the following: {player}, {gold}. The *message_dict* needed to fill in
+	these placeholders needs to be provided when creating _IngameMessages.
 
-	@param x, y: int position on the map where the action took place.
+	@param point: Point position on the map where the action took place, or None.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created. Keeps message order after load.
+
+	@param msg_type: messages coupled with logbook entries use this to link to pages
+	@param read: #TODO
+	@param display: #TODO
+	@param message: message text to display. Loads preset for `id` if None.
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
+	@param icon_id: which icon to display. Loads preset for `id` if None.
 	"""
-	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None, icon_id=None):
-		self.x, self.y = x, y
+	def __init__(self, point, id, created,
+	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
+		self.x, self.y = None, None
+		if point is not None:
+			self.x, self.y = point.x, point.y
 		self.id = id
+		self.msg_type = msg_type
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else horizons.main.db.get_msg_visibility(id)
-		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
-		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
+		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
+		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
+		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
-			assert isinstance(message, str) or isinstance(message, unicode)
 			self.message = message
 		else:
-			msg = _(horizons.main.db.get_msg_text(id))
+			msg = T(horizons.globals.db.get_msg_text(id))
+			#TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
-				print u"Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
-				       err=err, msg=msg, id=id, dic=message_dict)
+				self.log.warning(u'Unsubstituted string %s in %s message "%s", dict %s',
+				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message, '(%s,%s) ' % (self.x, self.y) if self.x and self.y else '', 'R' if self.read else ' ', 'D' if self.display else ' ')
+		return "% 4d: %s %s %s%s" % (self.created, self.id,
+			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+			'R' if self.read else ' ',
+			'D' if self.display else ' ')
+
+	def __unicode__(self):
+		return u"% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
+			self.message,
+			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+			'R' if self.read else ' ',
+			'D' if self.display else ' ')

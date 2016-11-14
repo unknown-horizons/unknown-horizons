@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="264,600">
+<Container size="264,600" name="buysellmenu">
 	<TabBG amount="9" />
 	<Container position="0,70" size="245,500">
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
@@ -7,14 +7,14 @@
 			<Label name="headline"  text="Buy or sell resources" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<!-- Replaced with the buy/sell boxes. -->
 		<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
-		<Icon image="content/gui/images/background/hr.png"  position="20,105" />
+		<hr position="20,105" />
 		<Label name="hint_label" position="17,120" wrap_text="1"
 			max_size="225,80" min_size="225,80" size="225,80" />
 
-		<Icon image="content/gui/images/background/hr.png"  position="20,180" />
+		<hr position="20,180" />
 
 		<Label name="headline_trade_history" position="22,200" text="Trade history" />
 		<VBox position="22,225" size="244,280" name="trade_history" />

@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2013-07-14 19:32+0200\n"
+"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/the-unknown/tr/"
+">\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 1.6-dev\n"
+
+#. scenario difficulty
+msgid "easy"
+msgstr "kolay"
+
+#. scenario description
+#, fuzzy
+#| msgid ""
+#| "You are the captain of a ship under the flag of England in 1740. You and "
+#| "your crew were on the way to a colony of England in the pacific ocean.\n"
+#| "Everything went fine until you came into a storm…"
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and "
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
+"Everything went fine until you came into a storm…"
+msgstr ""
+"1740'daki İngiliz bayrağı altındaki bir geminin kaptanısınız. Siz ve "
+"tayfanız pasifik okyanusundaki İngiliz kolonisi yolundaydınız.\n"
+"Her şey, bir fırtına ile karşılaşıncaya kadar güzel gidiyordu…"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "20th November 1740"
+msgstr "20 Kasım 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"Dört günlük fırtına dinmeye başlarken dinlenebiliriz. Fakat, çok az "
+"yiyeceğimiz kaldı ve gemimizin durumu kötü. Yönlendirme aygıtları ve deniz "
+"haritaları kayıp."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for "
+"fish, so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"Yakında bir karaya çıkmalıyız. Adamlarından biri, balık için avlanan birkaç "
+"kuş gördü. Yani kara uzakta olamaz. Şanslıyız ki, gemimizde, basit birkaç "
+"barınak yapılabilecek kadar aletimiz var."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"Görev:\n"
+"Karayı bul ve bir iskele inşa et."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "22nd November 1740"
+msgstr "22 Kasım 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days… we are running out of food and lack basic building material."
+msgstr ""
+"İskele yapılır ve umutlar yeşerir. Hala sonraki günler için "
+"endişeleniyorum... Yiyeceğimiz bitiyor ve inşa edecek malzemelerimiz de."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send "
+"people gathering food and lumber so that we can survive and build some "
+"shelter."
+msgstr ""
+"Bizi hayatta tutabilmesi için temel gereksinimlerimizi karşılamalıyız. Artık "
+"insanları yiyecek ve odun için göndermenin tam sırası. Böylece biz de "
+"hayatta kalıp birkaç barınak yapabiliriz."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"Görev:\n"
+"Her birinden en az bir adet yap:\n"
+"* Oduncu\n"
+"* Balıkçı\n"
+"* Avcu\n"
+"5 yiyecek ve 5 tahta biriktir."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "25th November 1740"
+msgstr "25 Kasım 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"Temel yiyecek gereksinimlerimizi karşıladık ve yeni köyümüzün gelişmesini "
+"sağlayacak odun biriktirdik. İnsanlarımız yaşamak için bir yer ve günlük "
+"ihtiyaçları için eşya takası talep ediyor."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"Artık içinde yaşanması için birkaç çadır ve halkımıza eşya desteği vermek "
+"için küçük bir ana meydan yapmanın tam zamanı."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task:\n"
+#| "Build a main square and at least 10 tents."
+msgid ""
+"Task:\n"
+"Build a Main Square and at least 10 Tents."
+msgstr ""
+"Görev:\n"
+"Ana meydan ve en az 10 çadır yap."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "1st December 1740"
+msgstr "1 Aralık 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"Sonunda yeterince yiyeceğimiz ve yaşayacak bir yerimiz var. Çadırım çok "
+"rahat değil ancak beni kuru tutuyor ve geceleri başımın üstünde bir çatı "
+"varmış hissini veriyor."
+
+#. This is the text body of a logbook page.
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home…"
+msgstr ""
+"Gece yıldızları araştırıyordum, ancak deniz haritalarım ve aletlerim olmadan "
+"anlamları bilinmez kalıyor. Burada bir süre burada takılı kalacağız gibi "
+"görünüyor. Bu yüzden bu durumda yapabileceğimizin en iyisini yapmalıyız.\n"
+"Sadece bir medeniyet kurmayı ve eve bir yol bulmayı deneyebiliriz…"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Grow the village until you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"Görev:\n"
+"Köyü en az 250 nüfus ve pozitif bakiye elde edinceye kadar genişlet."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "27th August 1745"
+msgstr "27 Ağustos 1745"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I "
+"have started getting used to my new home, but this island is too small to "
+"stay here forever."
+msgstr ""
+"Köyümüz güzel gidiyor. Şehirde 250 sakin var. Yeni evime alışmaya başladım "
+"ama bu ada üzerinde sonsuza dek kalınmak için çok küçük."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect, but I hope it will "
+"suffice to return here."
+msgstr ""
+"Gemimizi yüklemeli ve insanlarım için kaynak ve oda sağlayabilecek daha "
+"büyük bir ada bulmak için yola çıkmalıyız. Gece gördüğüm yıldızları "
+"kullanarak, temel yön haritamı tekrar oluşturdum. Mükemmel değil ancak "
+"umarım buraya dönmemizi sağlayacak."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
+"how you can contribute to making this scenario longer and better!"
+msgstr ""
+"Görev:\n"
+"Unkown Horizons Takımı (www.unknown-horizons.org) ile iletişime geç ve bu "
+"senaryoyu daha uzun ve daha iyi yapmak için nasıl katkıda bulunabileceğini "
+"öğren!"

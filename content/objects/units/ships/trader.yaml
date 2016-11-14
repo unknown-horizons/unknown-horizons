@@ -1,5 +1,5 @@
 baseclass: ship.TradeShip
-id: 1000006
+id: UNITS.TRADER_SHIP
 name: Trader
 radius: 8
 velocity: 12.0
@@ -10,11 +10,11 @@ components:
     enemy_tabs: [TraderShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
-      PositiveTotalNumSlotStorage:
+      PositiveTotalNumSlotsStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
 
 actionsets:
-   as_trader0: {level: 0}
+  TIER.SAILORS:
+    as_trader0:

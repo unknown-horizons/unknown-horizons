@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,21 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractFireStation(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
+		spots_in_settlement = settlement_manager.settlement.buildability_cache.cache[(2, 2)]
 		village_builder = settlement_manager.village_builder
-		for x, y in village_builder.special_building_assignments[BUILDING_PURPOSE.FIRE_STATION].iterkeys():
-			if village_builder.plan[(x, y)][1][0] > village_builder.current_section:
+		for coords in village_builder.special_building_assignments[BUILDING_PURPOSE.FIRE_STATION].iterkeys():
+			if coords not in spots_in_settlement or village_builder.plan[coords][1][0] > village_builder.current_section:
 				continue
-			object = settlement_manager.settlement.ground_map[(x, y)].object
+			object = settlement_manager.settlement.ground_map[coords].object
 			if object is None or object.buildable_upon:
-				yield (x, y, 0)
+				yield (coords[0], coords[1], 0)
 
 	@property
 	def producer_building(self):
@@ -46,7 +49,7 @@ class AbstractFireStation(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.FIRE_STATION_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FIRE_STATION] = cls
 
 class FireStationEvaluator(BuildingEvaluator):
 	need_collector_connection = False
@@ -56,9 +59,7 @@ class FireStationEvaluator(BuildingEvaluator):
 	def create(cls, production_builder, x, y, orientation):
 		settlement_manager = production_builder.settlement_manager
 		village_builder = settlement_manager.village_builder
-		builder = village_builder.make_builder(BUILDINGS.FIRE_STATION_CLASS, x, y, False, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.FIRE_STATION, (x, y), orientation)
 
 		assigned_residences = village_builder.special_building_assignments[BUILDING_PURPOSE.FIRE_STATION][(x, y)]
 		total = len(assigned_residences)

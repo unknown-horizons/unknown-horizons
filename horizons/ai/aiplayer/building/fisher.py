@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,29 +20,36 @@
 # ###################################################
 
 import copy
-import math
 import heapq
+import math
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.constants import BUILDINGS, COLLECTORS, RES
+from horizons.constants import BUILDINGS, COLLECTORS, GAME_SPEED, RES
+from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.entities import Entities
+from horizons.util.shapes import distances
+
 
 class AbstractFisher(AbstractBuilding):
 	def get_production_level(self, building, resource_id):
-		return self.get_expected_production_level(resource_id) * building.get_non_paused_utilisation()
+		return self.get_expected_production_level(resource_id) * building.get_non_paused_utilization()
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-		evaluators = self.get_evaluators(settlement_manager, resource_id)
-		if not evaluators:
+		evaluator = BuildingEvaluator.get_best_evaluator(self.get_evaluators(settlement_manager, resource_id))
+		if evaluator is None:
 			return None
 
-		evaluator = sorted(evaluators)[0]
 		current_expected_production_level = evaluator.get_expected_production_level(resource_id)
 		extra_buildings_needed = math.ceil(max(0.0, production_needed / current_expected_production_level))
 		return extra_buildings_needed * self.get_expected_building_cost()
+
+	def iter_potential_locations(self, settlement_manager):
+		options = list(super(AbstractFisher, self).iter_potential_locations(settlement_manager))
+		personality = settlement_manager.owner.personality_manager.get('AbstractFisher')
+		return settlement_manager.session.random.sample(options, min(len(options), personality.max_options))
 
 	@property
 	def evaluator_class(self):
@@ -50,53 +57,61 @@ class AbstractFisher(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.FISHERMAN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FISHER] = cls
 
 class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation
+
+	__slots__ = ('__production_level', )
 
 	def __init__(self, area_builder, builder, value):
 		super(FisherEvaluator, self).__init__(area_builder, builder, value)
 		self.__production_level = None
 
 	def get_expected_production_level(self, resource_id):
-		assert resource_id == RES.FOOD_ID
+		assert resource_id == RES.FOOD
 		if self.__production_level is None:
 			fishers_coords = [fisher.position.origin.to_tuple() for fisher in self.area_builder.owner.fishers]
-			self.__production_level = FisherSimulator.extra_productivity(self.area_builder.session, \
+			self.__production_level = FisherSimulator.extra_productivity(self.area_builder.session,
 				fishers_coords, self.builder.position.origin.to_tuple())
 		return self.__production_level
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True, orientation)
-		if not builder:
-			return None
+		coords = (x, y)
+		rect_rect_distance_func = distances.distance_rect_rect
+		builder = BasicBuilder.create(BUILDINGS.FISHER, coords, orientation)
 
-		fisher_radius = Entities.buildings[BUILDINGS.FISHERMAN_CLASS].radius
-		fishers_in_range = 1.0
-		for other_fisher in area_builder.owner.fishers:
-			distance = builder.position.distance(other_fisher.position)
-			if distance < fisher_radius:
-				fishers_in_range += 1 - distance / float(fisher_radius)
+		shallow_water_body = area_builder.session.world.shallow_water_body
+		fisher_shallow_water_body_ids = set()
+		for fisher_coords in builder.position.tuple_iter():
+			if fisher_coords in shallow_water_body:
+				fisher_shallow_water_body_ids.add(shallow_water_body[fisher_coords])
+		fisher_shallow_water_body_ids = list(fisher_shallow_water_body_ids)
+		assert fisher_shallow_water_body_ids
 
 		tiles_used = 0
 		fish_value = 0.0
-		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range((x, y)):
-			if tiles_used >= 3 * cls.refill_cycle_in_tiles:
-				break
-			distance = builder.position.distance(fish.position) + 1.0
+		last_usable_tick = Scheduler().cur_tick - 60 * GAME_SPEED.TICKS_PER_SECOND # TODO: use a direct calculation
+		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range(coords):
+			if shallow_water_body[fish.position.origin.to_tuple()] not in fisher_shallow_water_body_ids:
+				continue # not in the same shallow water body as the fisher => unreachable
+			if fish.last_usage_tick > last_usable_tick:
+				continue # the fish deposit seems to be already in use
+
+			distance = rect_rect_distance_func(builder.position, fish.position) + 1.0
 			if tiles_used >= cls.refill_cycle_in_tiles:
 				fish_value += min(1.0, (3 * cls.refill_cycle_in_tiles - tiles_used) / distance) / 10.0
 			else:
 				fish_value += min(1.0, (cls.refill_cycle_in_tiles - tiles_used) / distance)
+
 			tiles_used += distance
+			if tiles_used >= 3 * cls.refill_cycle_in_tiles:
+				break
 
-		if fish_value == 0:
+		if fish_value < 1.5:
 			return None
-
-		value = fish_value / fishers_in_range
-		return FisherEvaluator(area_builder, builder, value)
+		return FisherEvaluator(area_builder, builder, fish_value)
 
 	@property
 	def purpose(self):
@@ -151,7 +166,7 @@ class FisherSimulator(object):
 				break
 
 			if not found_fish:
-				heapq.heappush(heap, (tick +  COLLECTORS.DEFAULT_WAIT_TICKS, fisher_coords))
+				heapq.heappush(heap, (tick + COLLECTORS.DEFAULT_WAIT_TICKS, fisher_coords))
 		return float(fish_caught) / cls.simulation_time
 
 AbstractFisher.register_buildings()

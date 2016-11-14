@@ -1,98 +1,50 @@
 <?xml version="1.0"?>
-<Container  size="250,450">
+<Container name="tab_account" size="250,450">
 <TabBG amount="6" />
 
 <Container position="0,70" size="600,400">
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline"  text="Account" />
+		<RenameLabel name="headline" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 	<Container size="260,250" position="25,43">
+		<Icon name="collector_utilization_label" helptext="Collector utilization"
+			image="content/gui/icons/resources/cap_util.png" />
+		<Label name="collector_utilization" helptext="Collector utilization" position="20,0"
+			comment="Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)" />
 
-		<Label name="headline_income_label" position="0,0" text="Income:" />
-		<Label name="taxes_label" position="10,20" text="Taxes"/>
-		<Label position="160,20" name="taxes" min_size="100,15" />
+		<Label name="headline_income_label" text="Income:" position="0,20" />
+		<Icon image="content/gui/images/resbar_stats/income.png" position="0,40" />
+		<Label name="taxes_label" position="19,40" text="Taxes" />
+		<Label position="160,40" name="taxes" min_size="100,15" />
 
-		<Label name="sell_income_label" position="10,40" text="Sale" />
-		<Label position="160,40" name="sale" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/sell.png" position="0,60" />
+		<Label name="sell_income_label" position="19,60" text="Sale" />
+		<Label position="160,60" name="sale" min_size="100,15" />
 
 
-		<Label name="headline_expenses_label" position="0,70" text="Expenses:" />
+		<Label name="headline_expenses_label" position="0,90" text="Expenses:" />
 
-		<Label name="running_costs_label" position="10,90" text="Running costs"/>
-		<Label position="160,90" name="running_costs" min_size="100,15"/>
+		<Icon image="content/gui/images/resbar_stats/expense.png" position="0,110" />
+		<Label name="running_costs_label" position="19,110" text="Running costs" />
+		<Label position="160,110" name="running_costs" min_size="100,15" />
 
-		<Label name="buy_expenses_label" position="10,110" text="Buying" />
-		<Label position="160,110" name="buying" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/buy.png" position="0,130" />
+		<Label name="buy_expenses_label" position="19,130" text="Buying" />
+		<Label position="160,130" name="buying" min_size="100,15" />
 
-		<Label name="headline_balance_label" position="0,140" text="Balance:" />
-		<Label position="160,140" name="balance" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/scales_icon.png" position="0,164" />
+		<Label name="headline_balance_label" position="19,160" text="Balance:" />
+		<Label position="160,160" name="balance" min_size="100,15" />
 	</Container>
 
 	<Container size="260,50"  position="25,240">
-	<ToggleImageButton name="show_production_overview" position="160,0" border_size="0"
-		inactive_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		up_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		down_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		hover_image="content/gui/icons/widgets/cityinfo/settlement.png"
+	<ImageButton name="show_production_overview" position="160,0"
 		helptext="Show resources produced in this settlement" />
 	</Container>
 
 </Container>
 </Container>
-
-
-
-
-
-<!--
-using hboxes and vboxes (padding problem with margins)
-
-<Container  size="250,450">
-<TabBG amount="6"/>
-
-<Container position="22,77" size="250,450">
-
-	<HBox min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline"  text="Account" />
-	</HBox>
-
-	<Icon image="content/gui/images/background/hr.png" position="-2,30" />
-	<HBox size="230,450" min_size="230,450" position="0,43">
-
-<VBox margins="20,0" size="210,450" min_size="140,450">
-		<Label name="headline_income_label" text="Income:" />
-		<Label name="taxes_label"           text="Taxes" />
-		<Label name="sell_income_label"     text="Sale" />
-
-		<Label name="headline_expenses_label" text="Expenses:" />
-		<Label name="running_costs_label"     text="Running costs" />
-		<Label name="buy_expenses_label"      text="Buying" />
-
-		<Label name="headline_balance_label"  text="Balance:" />
-</VBox>
-
-<Spacer min_size="0" max_size="30" />
-
-<VBox min_size="20,450">
-		<Label name="" />
-		<Label name="taxes" />
-		<Label name="sale" />
-
-		<Label name=""/>
-		<Label name="running_costs" />
-		<Label name="buying" />
-
-		<Label name="balance" />
-</VBox>
-
-
-	</HBox>
-</Container>
-</Container>
-
--->

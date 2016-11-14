@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableLine
+from horizons.component.componentholder import ComponentHolder
+from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
-from horizons.world.componentholder import ComponentHolder
+from horizons.util.tile_orientation import get_tile_alignment_action
+from horizons.world.building.buildable import BuildableLine
+from horizons.world.building.building import BasicBuilding
 
 
 class Path(ComponentHolder):
@@ -56,32 +55,28 @@ class Path(ComponentHolder):
 		self.island.path_nodes.unregister_road(self)
 		self.recalculate_surrounding_tile_orientation()
 
+	def is_road(self, tile):
+		return (tile is not None and
+		        tile.object is not None and
+		        self.island.path_nodes.is_road(tile.x, tile.y) and
+		        tile.object.owner == self.owner)
+
 	def recalculate_surrounding_tile_orientation(self):
 		for tile in self.island.get_surrounding_tiles(self.position):
-			if tile is not None and tile.object is not None and \
-			   self.island.path_nodes.is_road(tile.x, tile.y):
+			if self.is_road(tile):
 				tile.object.recalculate_orientation()
 
 	def recalculate_orientation(self):
-		# orientation is a string containing a, b, c and/or d
-		# corresponding actions are saved in the db
-		action = ''
-		origin = self.position.origin
-		path_nodes = self.island.path_nodes
+		def is_similar_tile(position):
+			tile = self.island.get_tile(position)
+			return self.is_road(tile)
 
-		for action_part in sorted(BUILDINGS.ACTION.action_offset_dict): # order is important here
-			offset = BUILDINGS.ACTION.action_offset_dict[action_part]
-			tile = self.island.get_tile(origin.offset(*offset))
-			if tile is not None and tile.object is not None and \
-			   path_nodes.is_road(tile.x, tile.y) and \
-			   self.owner == tile.object.owner:
-				action += action_part
-		if action == '':
-			action = 'single' # single trail piece with no neighbours
+		origin = self.position.origin
+		action = get_tile_alignment_action(origin, is_similar_tile)
 
 		location = self._instance.getLocation()
-		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)
+
 
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""

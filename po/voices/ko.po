@@ -1,0 +1,127 @@
+# Korean translations for Unknown Horizons Voices package.
+# Copyright (C) 2013 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons Voices package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
+"PO-Revision-Date: 2016-07-31 15:15+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/uh/voices/ko/>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.8-dev\n"
+
+#. Founding settlement - Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr "이 정착지가 멋지게 발전하도록 노력해 주세요."
+
+#. Founding settlement - Player found settlement"
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr "이 섬에서 주민들이 확실히 편안함을 느끼고 있는것 같습니다."
+
+#. Founding settlement - Player found settlement"
+msgid "Call this patch of ground yours from now on."
+msgstr "이제부터 이 영토는 당신 것으로 불리게 될 것입니다."
+
+#. Founding settlement - Player found settlement"
+msgid "This region now belongs to our colors."
+msgstr "지금 이 지역은 우리의 색상에 속합니다."
+
+#. Founding settlement - Player found settlement"
+msgid "This piece of ground is now ours."
+msgstr "지금 이곳은 우리지역입니다."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr "다른 플레이어들이 섬에 정착했습니다."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "A player develops a new settlement."
+msgstr "플레이어가 새로운 정착을 개발합니다."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "One of your fellow players founded a settlement."
+msgstr "동료 플레이어 중 하나가 정착지를 설립했습니다."
+
+#. Founding settlement - Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr "우리의 경쟁자가 정착지를 설립한것처럼 보입니다."
+
+#. Founding settlement - Rival found settlement
+msgid "We've been informed that one of our rivals snared new land."
+msgstr "우리의 경쟁자중 하나가 새로운 땅을 잡았다는고 알려왔습니다."
+
+#. Founding settlement - Rival found settlement
+msgid "One of our opponents is said to have expanded."
+msgstr "우리 경쟁자중 하나가 확장했다고 합니다."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally settles on another island."
+msgstr "우리의 동맹이 또 다른 섬에 정착했습니다."
+
+#. Founding settlement - Ally found settlement
+msgid "One of our allies cultivates an islnd."
+msgstr "우리 동맹국중 하나가 섬을 육성합니다."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr "동맹이 성공적으로 정착했다는 소식을 전달합니다."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr "이 섬은 더 이상 우리의 영역이 아닙니다."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr "손님이 우리섬의 일부에 정착했다는것을 정찰병이 찾아냈습니다."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "We got new neighbors on this island!"
+msgstr "우리는 이섬에 새로운 이웃을 가졌습니다!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr "이웃집 불청객!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Should we really accept our rival as new neighbor?"
+msgstr "우리의 경쟁자를 새로운 이웃으로 정말 수락해야 합니까?"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "One of our enemies settles on our ground!"
+msgstr "우리의 적중 하나가 우리의 땅에 정착합니다!"
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr "우리 동맹국중 하나가 우리 영토에서 절박해 보입니다."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "We share this ground with our ally for now."
+msgstr "이제부터 이땅은 우리의 동맹과 공유합니다."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "Our ally settles on one of our islands."
+msgstr "우리의 동맹이 우리의 섬중 하나에 정착합니다."
+
+#. Resources - Construction material missing
+msgid "You need more resources to build this."
+msgstr "이것을 건설하려면 더 많은 자원이 필요합니다."
+
+#. Resources - Construction material missing
+msgid "This construction project needs more resources."
+msgstr "이 공사 작업에는 더 많은 자원이 필요합니다."
+
+#. Resources - Construction material missing
+msgid "Construction is impossible without sufficient material."
+msgstr "공사는 충분한 양의 자재가 없으면 불가능합니다."
+
+#. Resources - Construction material missing
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr "이것을 건설하기 위해 물품 목록중에 자원의 양이 충분하지 않습니다."

@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -33,13 +33,15 @@
 #
 ###############################################################################
 
+from __future__ import print_function
+import os
 import sqlalchemy
 import sqlalchemy.orm
 import sqlalchemy.ext.declarative
 import sqlite3
-import tempfile
-import os
 import sys
+import tempfile
+from collections import defaultdict
 
 sys.path.append(".")
 sys.path.append("./horizons")
@@ -72,7 +74,7 @@ Base = sqlalchemy.ext.declarative.declarative_base()
 #
 
 class Message(Base):
-	__tablename__ = 'message'
+	__tablename__ = 'message_text'
 
 	text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
@@ -81,8 +83,8 @@ class Resource(Base):
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
-class SettlerLevel(Base):
-	__tablename__ = 'settler_level'
+class Tier(Base):
+	__tablename__ = 'tier'
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
@@ -91,23 +93,18 @@ class SettlerLevel(Base):
 #
 
 class MSGID_collect:
-	msgids = dict()
+	msgids = defaultdict(list)
 
 	def __init__(self):
 		pass
 
 	def add_to_collection(self, msgid, place):
-		if self.msgids.has_key(msgid):
-			self.msgids[msgid].append(place)
-		else:
-			self.msgids[msgid] = [place]
+		self.msgids[msgid].append(place)
 
 	def __str__(self):
 		s = []
 		for text, locations in self.msgids.items():
-			comment = '#. This is a database entry: %s.\n#: sql database files\n' % ','.join(locations)
-			if "{" in text and "}" in text:
-				comment += '#, python-format\n'
+			comment = '#. This is a database entry: %s\n' % ','.join(locations)
 			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
@@ -123,12 +120,11 @@ def collect_all():
 	for resource in db_session.query(Resource):
 		collector.add_to_collection(resource.name, 'the name of a resource')
 
-	for settler_level in db_session.query(SettlerLevel):
-		collector.add_to_collection(settler_level.name, 'the name of an inhabitant increment (tier / level)')
+	for tier in db_session.query(Tier):
+		collector.add_to_collection(tier.name, 'the name of an inhabitant tier (level)')
 
 	return collector
 
 
-print collect_all()
+print(collect_all())
 os.unlink(filename)
-

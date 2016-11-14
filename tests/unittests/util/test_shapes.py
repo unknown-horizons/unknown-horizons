@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import unittest
 
-from horizons.util import Point, Rect, Circle
+from horizons.util.shapes import Circle, Point, Rect
+
 
 class TestPathfinding(unittest.TestCase):
 
@@ -39,7 +36,7 @@ class TestPathfinding(unittest.TestCase):
 
 	def testRect(self):
 		r1 = Rect(Point(0,0), 1, 1)
-		r2 = Rect(0, 0, 1 ,1)
+		r2 = Rect(0, 0, 1, 1)
 		r3 = Rect(Point(2, 2), 1, 1)
 		self.assertEqual(r1, r2)
 		self.assertTrue(r1 == r2)

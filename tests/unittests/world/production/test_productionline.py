@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.unittests import TestCase
-
 from horizons.world.production.productionline import ProductionLine
+from tests.unittests import TestCase
 
 
 class TestBase(TestCase):
@@ -45,7 +44,7 @@ class TestBase(TestCase):
 class TestProductionLineData(TestBase):
 
 	def test_init(self):
-		# NOTE: this has been broken by optimisations and will soon be moved to yaml, therefore not fixing it now
+		# NOTE: this has been broken by optimizations and will soon be moved to yaml, therefore not fixing it now
 		#self.add_line(1, {10: 4, 12: 8})
 
 		data = {'enabled_by_default': False,

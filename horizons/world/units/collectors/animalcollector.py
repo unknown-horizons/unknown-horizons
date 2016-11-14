@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,17 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scheduler import Scheduler
-
-from horizons.util import RadiusRect, decorators
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals.
-	Behaviour (timeline):
+	Behavior (timeline):
 	 - search for an animal which has resources to pick up
 	 - tell animal to stop when its current job is done
 	 - wait for callback from this animal, notifying that we can pick it up
@@ -46,7 +45,7 @@ class AnimalCollector(BuildingCollector):
 	def load(self, db, worldid):
 		super(AnimalCollector, self).load(db, worldid)
 
-	def apply_state(self, state, remaining_ticks = None):
+	def apply_state(self, state, remaining_ticks=None):
 		super(AnimalCollector, self).apply_state(state, remaining_ticks)
 		if state == self.states.waiting_for_animal_to_stop:
 			# register at target
@@ -56,10 +55,13 @@ class AnimalCollector(BuildingCollector):
 			if not self.__class__.kill_animal:
 				self.setup_new_job() # register at target if it's still alive
 
-	def cancel(self, continue_action = None):
+	def cancel(self, continue_action=None):
 		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
-				self.job.object.remove_stop_after_job()
+				if hasattr(self.job.object, 'remove_stop_after_job'):
+					# when loading a game fails and the world is destructed again, the
+					# worldid may not yet have been resolved to an actual in-game object
+					self.job.object.remove_stop_after_job()
 		super(AnimalCollector, self).cancel(continue_action=continue_action)
 
 	def begin_current_job(self):
@@ -129,44 +131,30 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
-		self.log.debug("%s getting animal %s",self, self.job.object)
+		self.log.debug("%s getting animal %s", self, self.job.object)
 		if self.__class__.kill_animal:
 			self.job.object.die()
 			self.job.object = None # there is no target anymore now
 		else:
-			self.job.object.move(self.home_building.position, destination_in_building = True, \
+			self.job.object.move(self.home_building.position, destination_in_building = True,
 			                     action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
 		if not self.__class__.kill_animal:
-			self.log.debug("%s releasing animal %s",self, self.job.object)
-			Scheduler().add_new_object(self.job.object.search_job, self.job.object, \
+			self.log.debug("%s releasing animal %s", self, self.job.object)
+			Scheduler().add_new_object(self.job.object.search_job, self.job.object,
 			                           GAME_SPEED.TICKS_PER_SECOND)
-
-
-class FarmAnimalCollector(AnimalCollector):
-	def get_animals_in_range(self, reslist=None):
-		"""Returns animals from buildings in range"""
-		reach = RadiusRect(self.home_building.position, self.home_building.radius)
-		# don't consider res when searching for buildings, since only their animals are
-		# the acctual providers
-		buildings = self.home_building.island.get_providers_in_range(reach)
-		animal_lists = (building.animals for building in buildings if hasattr(building, 'animals'))
-		# use overloaded + for lists here in sum
-		return sum(animal_lists, [])
-
 
 class HunterCollector(AnimalCollector):
 	kill_animal = True
 
 	def get_animals_in_range(self, res=None):
-		dist = self.home_building.position.distance_to_point
+		dist = self.home_building.position.distance
 		radius = self.home_building.radius
-		return [ animal for animal in self.home_building.island.wild_animals if \
+		return [ animal for animal in self.home_building.island.wild_animals if
 		         dist(animal.position) <= radius ]
 
 
 decorators.bind_all(AnimalCollector)
-decorators.bind_all(FarmAnimalCollector)
 decorators.bind_all(HunterCollector)

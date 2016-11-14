@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fakeresourcedeposit import AbstractFakeResourceDeposit
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
+
+from .fakeresourcedeposit import AbstractFakeResourceDeposit
+
 
 class AbstractClayDeposit(AbstractFakeResourceDeposit):
 	@classmethod
 	def get_higher_level_building_id(cls):
-		return BUILDINGS.CLAY_PIT_CLASS
+		return BUILDINGS.CLAY_PIT
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.CLAY_DEPOSIT_CLASS] = cls
+		cls._available_buildings[BUILDINGS.CLAY_DEPOSIT] = cls
 
 AbstractClayDeposit.register_buildings()
 

@@ -1,5 +1,5 @@
 baseclass: ship.Ship
-id: 1000016
+id: UNITS.USABLE_FISHER_BOAT
 name: Fisher
 radius: 5
 velocity: 12.0
@@ -10,8 +10,7 @@ components:
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
-      PositiveTotalNumSlotStorage:
+      PositiveTotalNumSlotsStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
@@ -19,4 +18,5 @@ components:
    maxhealth: 80
 - CommandableComponent
 actionsets:
-   as_fisher0: {level: 0}
+  TIER.SAILORS:
+   as_fisher0:

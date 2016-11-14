@@ -1,0 +1,1165 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:11+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367755893.0\n"
+
+msgid "game"
+msgstr "gra"
+
+msgid "building"
+msgstr "budynki"
+
+msgid "build"
+msgstr "buduj"
+
+msgid "player"
+msgstr "gracz----"
+
+msgid "settlement"
+msgstr "osada"
+
+msgid "ship"
+msgstr "okręt"
+
+msgid "tent"
+msgstr "namiot"
+
+msgid "farm"
+msgstr "farma"
+
+msgid "map"
+msgstr "mapa"
+
+msgid "resource"
+msgstr "towar"
+
+msgid "warehouse"
+msgstr "skład"
+
+msgid "inhabitants"
+msgstr "mieszkańcy"
+
+msgid "change"
+msgstr "zmień"
+
+msgid "unknown"
+msgstr "nieznany"
+
+msgid "produce"
+msgstr "produkuj"
+
+msgid "no"
+msgstr "nie"
+
+msgid "trade"
+msgstr "handel"
+
+msgid "check"
+msgstr "sprawdzić"
+
+msgid "field"
+msgstr "pole"
+
+msgid "main"
+msgstr "główny"
+
+msgid "buy"
+msgstr "kup"
+
+msgid "click"
+msgstr "kliknij"
+
+msgid "left"
+msgstr "lewo"
+
+msgid "overview"
+msgstr "przegląd"
+
+msgid "running"
+msgstr "działa"
+
+msgid "square"
+msgstr "plac"
+
+msgid "lumberjack"
+msgstr "drwal"
+
+msgid "unable"
+msgstr "niemożliwe"
+
+msgid "continue"
+msgstr "wznów"
+
+msgid "main square"
+msgstr "rynek"
+
+msgid "production"
+msgstr "produkcja"
+
+msgid "sailors"
+msgstr "marynarze"
+
+msgid "sell"
+msgstr "sprzedaj"
+
+msgid "storage"
+msgstr "zapasów"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "house"
+msgstr "dom"
+
+msgid "menu"
+msgstr "menu"
+
+msgid "tab"
+msgstr "zakładka"
+
+msgid "close"
+msgstr "zamknij"
+
+msgid "food"
+msgstr "jedzenie"
+
+msgid "free"
+msgstr "darmowy"
+
+msgid "ready"
+msgstr "gotowy"
+
+msgid "setting"
+msgstr "ustawienia"
+
+msgid "start"
+msgstr "start"
+
+msgid "time"
+msgstr "czas"
+
+msgid "trader"
+msgstr "handlarz"
+
+msgid "unit"
+msgstr "jednostka"
+
+msgid "version"
+msgstr "wersja"
+
+msgid "fire"
+msgstr "ogień"
+
+msgid "island"
+msgstr "wyspa"
+
+msgid "select"
+msgstr "wybierz"
+
+msgid "slot"
+msgstr "miejsce (slot)"
+
+msgid "stock"
+msgstr "zapasów"
+
+msgid "upgrade"
+msgstr "ulepsz"
+
+msgid "coast"
+msgstr "wybrzeże"
+
+msgid "color"
+msgstr "kolor"
+
+msgid "companies"
+msgstr "firmy"
+
+msgid "file"
+msgstr "plik"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "klawisz"
+
+msgid "taxes"
+msgstr "podatki"
+
+msgid "collector"
+msgstr "poborca"
+
+msgid "connection"
+msgstr "połączenie"
+
+msgid "log"
+msgstr "kłoda"
+
+msgid "multiplayer"
+msgstr "gra wieloosobowa"
+
+msgid "resident"
+msgstr "mieszkaniec"
+
+msgid "wool"
+msgstr "wełna"
+
+msgid "boards"
+msgstr "deski"
+
+msgid "built"
+msgstr "zbudowano"
+
+msgid "button"
+msgstr "przycisk"
+
+msgid "choose"
+msgstr "wybierz"
+
+msgid "connect"
+msgstr "połącz"
+
+msgid "cost"
+msgstr "koszt"
+
+msgid "happiness"
+msgstr "szczęście"
+
+msgid "road"
+msgstr "droga"
+
+msgid "save"
+msgstr "zapis"
+
+msgid "tree"
+msgstr "drzewo"
+
+msgid "amount"
+msgstr "ilość"
+
+msgid "reach"
+msgstr "osiągnąć"
+
+msgid "size"
+msgstr "rozmiar"
+
+msgid "add"
+msgstr "dodaj"
+
+msgid "fisher"
+msgstr "rybak"
+
+msgid "free trader"
+msgstr "darmowy handlarz"
+
+msgid "in stock"
+msgstr "w magazynie"
+
+msgid "increase"
+msgstr "zwiększyć"
+
+msgid "mode"
+msgstr "tryb"
+
+msgid "password"
+msgstr "hasło"
+
+msgid "pasture"
+msgstr "pastwisko"
+
+msgid "range"
+msgstr "zasięg"
+
+msgid "signal"
+msgstr "sygnał"
+
+msgid "speed"
+msgstr "prędkość"
+
+msgid "sugar"
+msgstr "cukier"
+
+msgid "access"
+msgstr "dostęp"
+
+msgid "build menu"
+msgstr "menu budowy"
+
+msgid "confectionery"
+msgstr "cukiernia"
+
+msgid "enabled"
+msgstr "włączone"
+
+msgid "fetch"
+msgstr ""
+
+msgid "help"
+msgstr "pomoc"
+
+msgid "income"
+msgstr "dochód"
+
+msgid "join"
+msgstr "dołącz"
+
+msgid "level"
+msgstr "poziom"
+
+msgid "move"
+msgstr "przesuń"
+
+msgid "multiple"
+msgstr "wielokrotny"
+
+msgid "please check"
+msgstr "proszę sprawdzić"
+
+msgid "potato"
+msgstr "ziemniak"
+
+msgid "settler"
+msgstr "osadnik"
+
+msgid "total"
+msgstr "razem"
+
+msgid "construction"
+msgstr "konstrukcja"
+
+msgid "creator"
+msgstr "twórca"
+
+msgid "faith"
+msgstr "wiara"
+
+msgid "hold"
+msgstr "przytrzymaj"
+
+msgid "icon"
+msgstr "ikona"
+
+msgid "lamb"
+msgstr "owca"
+
+msgid "leave"
+msgstr "opuścić"
+
+msgid "location"
+msgstr "położenie"
+
+msgid "multiple buildings"
+msgstr ""
+
+msgid "pioneers"
+msgstr "pionierzy"
+
+msgid "reached"
+msgstr "osiągnięty"
+
+msgid "run"
+msgstr "uruchom"
+
+msgid "session"
+msgstr "sesja"
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
+msgid "slider"
+msgstr "suwak"
+
+msgid "space"
+msgstr "przestrzeń"
+
+msgid "storage tent"
+msgstr "namiot magazynowy"
+
+msgid "target"
+msgstr "cel"
+
+msgid "terminated"
+msgstr "zakończono"
+
+msgid "tools"
+msgstr "narzędzia"
+
+msgid "account"
+msgstr "konto"
+
+msgid "active"
+msgstr "aktywny"
+
+msgid "afford"
+msgstr ""
+
+msgid "animals"
+msgstr "zwierzęta"
+
+msgid "Captain's log"
+msgstr "Dziennik kapitański"
+
+msgid "cloth"
+msgstr "tkanina"
+
+msgid "construct"
+msgstr "konstruuj"
+
+msgid "cursor"
+msgstr "kursor"
+
+msgid "description"
+msgstr "opis"
+
+msgid "entries"
+msgstr "wpisy"
+
+msgid "feature"
+msgstr "właściwości"
+
+msgid "fish"
+msgstr "ryba"
+
+msgid "forest"
+msgstr "las"
+
+msgid "from time to time"
+msgstr "od czasu do czasu"
+
+msgid "global"
+msgstr "globalna"
+
+msgid "grow"
+msgstr "wzrost"
+
+msgid "happy"
+msgstr "szczęśliwy"
+
+msgid "information"
+msgstr "informacja"
+
+msgid "liquor"
+msgstr "alkohol"
+
+msgid "minimap"
+msgstr "minimapa"
+
+msgid "offer"
+msgstr "oferta"
+
+msgid "overview tab"
+msgstr "zakładka przeglądu"
+
+msgid "plant"
+msgstr "rośliny"
+
+msgid "play"
+msgstr "graj"
+
+msgid "please check your"
+msgstr "proszę sprawdzić twoje"
+
+msgid "potatoes"
+msgstr "ziemniaki"
+
+msgid "price"
+msgstr "cena"
+
+msgid "read"
+msgstr "czytaj"
+
+msgid "screen"
+msgstr "ekran"
+
+msgid "service"
+msgstr "serwis"
+
+msgid "short"
+msgstr "krótki"
+
+msgid "solution"
+msgstr "rozwiązanie"
+
+msgid "sound"
+msgstr "dźwięk"
+
+msgid "special"
+msgstr "specjalne"
+
+msgid "spot"
+msgstr "miejsce"
+
+msgid "statistics"
+msgstr "statystyki"
+
+msgid "store"
+msgstr "sklep"
+
+msgid "team"
+msgstr "drużyna"
+
+msgid "tear"
+msgstr "niszczyć"
+
+msgid "time to time"
+msgstr "od czasu do czasu"
+
+msgid "trading"
+msgstr "handlować"
+
+msgid "unsupported"
+msgstr "niewspierany"
+
+msgid "visit"
+msgstr "odwiedzać"
+
+msgid "world"
+msgstr "świat"
+
+msgid "wrong"
+msgstr "zły"
+
+msgid "bar"
+msgstr "sztabka"
+
+msgid "bug"
+msgstr "błąd"
+
+msgid "command"
+msgstr "polecenie"
+
+msgid "completed"
+msgstr "ukończony/a/e"
+
+msgid "forum"
+msgstr "forum"
+
+msgid "happen"
+msgstr "zdarzyć"
+
+msgid "harvest"
+msgstr "zbiory"
+
+msgid "in range"
+msgstr "w zasięgu"
+
+msgid "lamb wool"
+msgstr "wełna owcza"
+
+msgid "left the game"
+msgstr "opuścić grę"
+
+msgid "lot of boards"
+msgstr "dużo desek"
+
+msgid "marketplace"
+msgstr "rynek"
+
+msgid "moment"
+msgstr "moment"
+
+msgid "playing"
+msgstr "granie"
+
+msgid "produced"
+msgstr "wyprodukowane"
+
+msgid "report"
+msgstr "zgłoś"
+
+msgid "sale"
+msgstr "sprzedaż"
+
+msgid "school"
+msgstr "szkoła"
+
+msgid "started"
+msgstr "zaczynać"
+
+msgid "temporarily"
+msgstr "tymczasowo"
+
+msgid "trade with"
+msgstr "handlować z"
+
+msgid "values"
+msgstr "wartości"
+
+msgid "wheel"
+msgstr "koło"
+
+msgid "satisfied"
+msgstr "satysfakcjonujący"
+
+msgid "balance"
+msgstr "równowaga"
+
+msgid "load"
+msgstr "załaduj"
+
+msgid "trail"
+msgstr "ścieżka"
+
+msgid "default"
+msgstr "domyślne"
+
+msgid "iron"
+msgstr "żelazo"
+
+msgid "tobacco"
+msgstr "tytoń"
+
+msgid "clay"
+msgstr "glina"
+
+msgid "money"
+msgstr "pieniądze"
+
+msgid "pavilion"
+msgstr "pawilon"
+
+msgid "tax"
+msgstr "podatek"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "stop"
+
+msgid "wait"
+msgstr "czekaj"
+
+msgid "decrease"
+msgstr "obniżyć"
+
+msgid "ore"
+msgstr "ruda"
+
+msgid "return"
+msgstr "powrót"
+
+msgid "savegame"
+msgstr "zapis gry"
+
+msgid "consume"
+msgstr "konsumować"
+
+msgid "idle"
+msgstr "bezrobotni"
+
+msgid "lower"
+msgstr "dolny"
+
+msgid "saved"
+msgstr "zapisany"
+
+msgid "village"
+msgstr "wioska"
+
+msgid "yields"
+msgstr "plony"
+
+msgid "back"
+msgstr "wróć"
+
+msgid "build settlement"
+msgstr "zbuduj osadę"
+
+msgid "charcoal"
+msgstr "węgiel drzewny"
+
+msgid "empty"
+msgstr "pusty"
+
+msgid "existing"
+msgstr "istniejący"
+
+msgid "fulfill"
+msgstr "zapełniony"
+
+msgid "graphics"
+msgstr "grafika"
+
+msgid "hunt"
+msgstr "polowanie"
+
+msgid "lumberjack tent"
+msgstr "namiot drwala"
+
+msgid "please contact"
+msgstr "proszę skontaktować się"
+
+msgid "potato field"
+msgstr "pole ziemniaczane"
+
+msgid "seed"
+msgstr "ziarno"
+
+msgid "send"
+msgstr "wyślij"
+
+msgid "sheep"
+msgstr "owca"
+
+msgid "signal fire"
+msgstr "ogień sygnałowy"
+
+msgid "sugar field"
+msgstr "pole cukrowe"
+
+msgid "error"
+msgstr "błąd"
+
+msgid "deposit"
+msgstr "depozyt"
+
+msgid "invalid"
+msgstr "nieprawidłówy"
+
+msgid "network"
+msgstr "sieć"
+
+msgid "route"
+msgstr "droga"
+
+msgid "selected"
+msgstr "wybrany"
+
+msgid "boat"
+msgstr "łódź"
+
+msgid "create"
+msgstr "stwórz"
+
+msgid "filename"
+msgstr "nazwa pliku"
+
+msgid "mouse"
+msgstr "mysz"
+
+msgid "partner"
+msgstr "towarzysz"
+
+msgid "reset"
+msgstr "reset"
+
+msgid "configuration"
+msgstr "konfiguracja"
+
+msgid "delete"
+msgstr "usuń"
+
+msgid "enter"
+msgstr "enter"
+
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr "kamień"
+
+msgid "weapon"
+msgstr "broń"
+
+msgid "cattle"
+msgstr "bydło"
+
+msgid "message"
+msgstr "wiadomość"
+
+msgid "port"
+msgstr "port"
+
+msgid "scenario"
+msgstr "scenariusz"
+
+msgid "spice"
+msgstr "przyprawa"
+
+msgid "cocoa"
+msgstr ""
+
+msgid "corn"
+msgstr "kukurydza"
+
+msgid "details"
+msgstr "detale"
+
+msgid "found"
+msgstr "stwierdzono"
+
+msgid "herbs"
+msgstr "zioła"
+
+msgid "pause"
+msgstr "pauza"
+
+msgid "pigs"
+msgstr "świnie"
+
+msgid "press"
+msgstr "naciśnij"
+
+msgid "quit"
+msgstr "zamknij"
+
+msgid "savegame file"
+msgstr "plik zapisu gry"
+
+msgid "valid"
+msgstr "poprawny"
+
+msgid "war"
+msgstr "wojna"
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr "potwierdź"
+
+msgid "bricks"
+msgstr "cegły"
+
+msgid "chat"
+msgstr "chat"
+
+msgid "confirm"
+msgstr "potwierdź"
+
+msgid "default settings"
+msgstr "domyślne ustawienia"
+
+msgid "diplomacy"
+msgstr "dyplomacja"
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "sprzedaż"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr "towar"
+
+msgid "trade partner"
+msgstr "partner handlowy"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "mieszkańcy"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "doktor"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "edukacja"
+
+msgid "ensure"
+msgstr "zapewnić"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "zapasów"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "koszty utrzymania"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr "osadnik"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr "czas"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,26 +20,36 @@
 # ###################################################
 
 
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean
-from horizons.world.building.nature import Field
-from horizons.util import Rect
-from horizons.util.shapes.radiusshape import RadiusRect
 from horizons.command.building import Build
-from horizons.scheduler import Scheduler
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.scheduler import Scheduler
+from horizons.util.shapes import RadiusRect, Rect
+from horizons.world.building.buildable import (
+	BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean)
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.building.nature import Field
 from horizons.world.production.producer import Producer
-from horizons.world.component.storagecomponent import StorageComponent
+
 
 class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class Farm(ProductionBuilding):
 
-	def _get_providers(self):
+class PastryShop(ProductionBuilding):
+	def get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
-		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
+		resources = self.get_consumed_resources(include_inactive=True)
+		providers = self.island.get_providers_in_range(reach, reslist=resources)
+		return [provider for provider in providers]
+
+
+class Farm(ProductionBuilding):
+	def get_providers(self):
+		reach = RadiusRect(self.position, self.radius)
+		resources = self.get_consumed_resources(include_inactive=True)
+		providers = self.island.get_providers_in_range(reach, reslist=resources)
 		return [provider for provider in providers if isinstance(provider, Field)]
 
 
@@ -47,13 +57,13 @@ class CoastalProducer(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuil
 	"""E.g. salt ponds"""
 	pass
 
-class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 
+class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 	"""
 	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
 	"""
 
-	def get_non_paused_utilisation(self):
+	def get_non_paused_utilization(self):
 		total = 0
 		productions = self.get_component(Producer).get_productions()
 		for production in productions:
@@ -62,6 +72,7 @@ class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 			state_history = production.get_state_history_times(True)
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
+
 
 class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
@@ -75,7 +86,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		self.__deposit_class = deposit_class
 
 	def initialize(self, deposit_class, inventory, **kwargs):
-		super(Mine, self).initialize( ** kwargs)
+		super(Mine, self).initialize(**kwargs)
 		self.__init(deposit_class=deposit_class)
 		for res, amount in inventory.iteritems():
 			# bury resources from mountain in mine
@@ -83,7 +94,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	@classmethod
 	def get_loading_area(cls, building_id, rotation, pos):
-		if building_id == BUILDINGS.MOUNTAIN_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+		if building_id in [BUILDINGS.MOUNTAIN, BUILDINGS.MINE]:
 			if rotation == 45:
 				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
 			elif rotation == 135:
@@ -101,13 +112,13 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 		# setup loading area
 		# TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
-		#       this needs to be generalised, possibly by defining the loading tiles in the db
+		#       this needs to be generalized, possibly by defining the loading tiles in the db
 		self.loading_area = self.get_loading_area(deposit_class, self.rotation, self.position)
 
 	@classmethod
 	def get_prebuild_data(cls, session, position):
 		"""Returns dict containing inventory of deposit, which is needed for the mine build"""
-		deposit = session.world.get_building(position.center())
+		deposit = session.world.get_building(position.center)
 		data = {}
 		data["inventory"] = deposit.get_component(StorageComponent).inventory.get_dump()
 		data["deposit_class"] = deposit.id
@@ -116,19 +127,18 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def remove(self):
 		# build the deposit back here after remove() is finished
 		deposit_build_data = { 'inventory' : self.get_component(StorageComponent).inventory.get_dump() }
-		build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y, \
-		                  self.island, ownerless=True, data = deposit_build_data)
+		build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y,
+		                  self.island, rotation=self.rotation, ownerless=True, data=deposit_build_data)
 		Scheduler().add_new_object(build_cmd, build_cmd, run_in=0)
 
 		super(Mine, self).remove()
 
 	def save(self, db):
 		super(Mine, self).save(db)
-		db("INSERT INTO mine(rowid, deposit_class) VALUES(?, ?)", \
+		db("INSERT INTO mine(rowid, deposit_class) VALUES(?, ?)",
 		   self.worldid, self.__deposit_class)
 
 	def load(self, db, worldid):
 		super(Mine, self).load(db, worldid)
 		deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
 		self.__init(deposit_class)
-

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 
 from horizons.util.changelistener import metaChangeListenerDecorator
 
+
 @metaChangeListenerDecorator("diplomacy_status_changed")
 class Diplomacy(object):
 	"""
@@ -28,7 +29,7 @@ class Diplomacy(object):
 	handles diplomacy between players
 	two players can be allies, neutral or enemies
 		allies: set of (a, b) tuples of player instances meaning a and b are allies
-		         for making the relationship symetrical a has a lower worldid than b
+		         for making the relationship symmetrical a has a lower worldid than b
 		enemies: set of (a, b) tuples of player instances meaning a and b are enemies
 		if to players are not allies nore enemies, they are neutral
 
@@ -101,6 +102,13 @@ class Diplomacy(object):
 			return False
 		tup = make_tup(a, b)
 		return tup not in self.allies and tup not in self.enemies
+
+	def can_trade(self, a, b):
+		# NOTE: this has not been specified w.r.t. game play
+		if a is b: # can trade with self
+			return True
+		else:
+			return not self.are_enemies(a, b)
 
 	def _get_state_string(self, tup):
 		if tup in self.enemies:

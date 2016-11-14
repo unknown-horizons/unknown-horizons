@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,12 @@
 
 from horizons.util.python import decorators
 
+
 class DifficultySettings(object):
 	EASY_LEVEL = 0
 	DEFAULT_LEVEL = 1
 
-	levels = {}
+	levels = {} # type: Dict[int, DifficultySettings]
 
 	@classmethod
 	def get_settings(cls, level):

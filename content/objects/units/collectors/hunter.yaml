@@ -1,14 +1,14 @@
 baseclass: collectors.HunterCollector
-id: 1000014
+id: UNITS.HUNTER_COLLECTOR
 name: HunterCollector
 radius: 5
 velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_hunterunit0: {level: 0}
+  TIER.SAILORS:
+    as_hunterunit0:

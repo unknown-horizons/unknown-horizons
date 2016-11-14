@@ -1,14 +1,14 @@
 baseclass: collectors.StorageCollector
-id: 1000008
+id: UNITS.STORAGE_COLLECTOR
 name: StorageCollector
 radius: 5
 velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_carrier0: {level: 0}
+  TIER.SAILORS:
+    as_carrier0:

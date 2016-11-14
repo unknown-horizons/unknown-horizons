@@ -3,8 +3,8 @@
 	<Label name="headline_game_settings_lbl" text="Game settings:" />
 
 	<HBox name="resource_density">
-		<Label name="resource_density_lbl" min_size="150,20" text="" />
-		<StepSlider name="resource_density_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+		<Label name="resource_density_lbl" min_size="150,20" />
+		<StepSlider name="resource_density_slider" size="125,20" steps="0.5 ; 0.7 ; 1 ; 1.4 ; 2" marker_length="25" is_focusable="0" />
 	</HBox>
 
 	<HBox name="game_setting_checkboxes">

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,35 +19,46 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.gui import load_uh_widget
+from horizons.constants import GAME_SPEED, PLAYER
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import load_uh_widget
 from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+
 
 class StatsWidget(object):
 	"""A widget that creates a large table with statistics."""
 
-	widget_file_name = None # name of the widget's XML file
+	# name of the widget's XML file
+	widget_file_name = None # type: str
 
-	def __init__(self, session):
+	def __init__(self, session, center_widget=False):
 		super(StatsWidget, self).__init__()
 		self.session = session
-		self._initialised = False
+		self.center_widget = center_widget
+		self._initialized = False
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 
 	def refresh(self):
 		self._clear_entries()
 
 	def _refresh_tick(self):
-		if self._initialised and self.is_visible():
+		if self._initialized and self.is_visible():
 			self.refresh()
 
 	def show(self):
-		if not self._initialised:
-			self._initialised = True
+		run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND
+		ExtScheduler().add_new_object(Callback(self._refresh_tick),
+		                              self, run_in=run_in, loops=-1)
+		if not self._initialized:
+			self._initialized = True
 			self._init_gui()
+		self.refresh()
 		self._gui.show()
 
 	def hide(self):
-		if not self._initialised:
+		ExtScheduler().rem_all_classinst_calls(self)
+		if not self._initialized:
 			return # can happen if the logbook calls hide on all statswidgets
 		if not self._hiding_widget:
 			self._hiding_widget = True
@@ -55,7 +66,7 @@ class StatsWidget(object):
 			self._hiding_widget = False
 
 	def is_visible(self):
-		if not self._initialised:
+		if not self._initialized:
 			return False
 		return self._gui.isVisible()
 
@@ -67,9 +78,10 @@ class StatsWidget(object):
 			self.refresh()
 
 	def _init_gui(self):
-		self._gui = load_uh_widget(self.widget_file_name)
-		self._gui.position_technique = 'center:center+25'
-		self._content_vbox = self._gui.findChild(name = 'content_vbox')
+		self._gui = load_uh_widget(self.widget_file_name, center_widget=self.center_widget)
+		if not self.center_widget:
+			self._gui.position_technique = 'center+20:center+25'
+		self._content_vbox = self._gui.findChild(name='content_vbox')
 		self.refresh()
 
 	def _clear_entries(self):

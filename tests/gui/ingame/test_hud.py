@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import gui_test, TestFinished
+from tests.gui import gui_test
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -27,17 +27,14 @@ def test_hud(gui):
 	"""
 	Click on some buttons at the ingame menu.
 	"""
-	yield # test needs to be a generator for now
 
-	gui.trigger('mainhud', 'zoomOut/action/default')
-	gui.trigger('mainhud', 'zoomIn/action/default')
-	gui.trigger('mainhud', 'rotateRight/action/default')
-	gui.trigger('mainhud', 'rotateLeft/action/default')
+	gui.trigger('mainhud/zoomOut')
+	gui.trigger('mainhud/zoomIn')
+	gui.trigger('mainhud/rotateRight')
+	gui.trigger('mainhud/rotateLeft')
 
-	gui.trigger('mainhud', 'logbook/action/default')
-	gui.trigger('captains_log', 'okButton/action/default')
+	gui.trigger('mainhud/logbook')
+	gui.trigger('captains_log/okButton')
 
-	gui.trigger('mainhud', 'build/action/default')
-	gui.trigger('mainhud', 'diplomacyButton/action/default')
-
-	yield TestFinished
+	gui.trigger('mainhud/build')
+	gui.trigger('mainhud/diplomacyButton')

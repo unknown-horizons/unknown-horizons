@@ -4,25 +4,21 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
 
-# Extract strings from a scenario file for easy translation in pootle.
+# Extract strings from a scenario file for easy translation in Weblate
 #
-# Usage: sh create_scenario_pot.sh scenario [po-directory]
-#
-# If a path is given, it's assumed to be the path to the translation files
-# from pootle for the scenario, and the .po files in there are used to
-# generate translated scenarios in horizons/scenarios/.
+# Usage: sh create_scenario_pot.sh scenario_name
 #
 # If you are looking for a way to compile the tutorial translations:
-# The file development/copy_pofiles.sh does this (and a bit more). No need to
-# call this script directly thus, unless you want to translate more scenarios.
+# The file development/translate_scenario.py does this. There is, however,
+# no need to call that script directly since it is integrated with Weblate.
 
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -73,41 +69,31 @@ def write(comment, string):
 	print retval.encode('utf-8')
 
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
-write('scenario difficulty', prep(scenario['difficulty']))
-write('scenario author', prep(scenario['author']))
-write('scenario description', prep(scenario['description']))
+metadata = scenario['metadata']
+write('scenario difficulty', prep(metadata['difficulty']))
+write('scenario description', prep(metadata['description'].rstrip('\n')))
 
 for event in scenario['events']:
 	for action in event['actions']:
 		at = action['type']
 		if at not in ('message', 'logbook'):
 			continue
-		elif at == 'message':
-			comment = COMMENT_MESSAGEWIDGET
-			for argument in action['arguments']:
-				if isinstance(argument, int) or not argument:
-					# ignore strings that only consist of newlines
-					continue
-				argument = prep(argument)
-				write(comment, argument)
 		elif at == 'logbook':
 			for widget_def in action['arguments']:
+				if not widget_def:
+					continue
 				if isinstance(widget_def, basestring):
-					content = widget_def.rstrip('\n')
-					# ignore strings that only consist of newlines
-					if content:
-						comment = COMMENT_TEXT
-						widget = prep(content)
-					else:
-						continue
-				elif widget_def[0] == 'Label' and widget_def[1]:
+					widget_def = ['Label', widget_def]
+				if widget_def[0] in ('Label', 'BoldLabel', 'Message') and widget_def[1]:
 					content = widget_def[1].rstrip('\n')
 					# ignore strings that only consist of newlines
-					if content:
-						comment = COMMENT_TEXT
-						widget = prep(content)
-					else:
+					if not content:
 						continue
+					if widget_def[0] == 'Message':
+						comment = COMMENT_MESSAGEWIDGET
+					else:
+						comment = COMMENT_TEXT
+					widget = prep(content)
 				elif widget_def[0] == 'Headline':
 					comment = COMMENT_HEADING
 					widget = prep(widget_def[1].rstrip('\n'))
@@ -116,93 +102,22 @@ for event in scenario['events']:
 				write(comment, widget)
 END
 
-xgettext --output-dir=po --output=$1.pot \
+OUTPUT_DIR="po/scenarios/templates"
+
+xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          --from-code=UTF-8 \
-	    --add-comments \
-	    --add-location \
+         --add-comments \
+         --no-location \
          --width=80 \
-	    --sort-by-file  \
          --copyright-holder='The Unknown Horizons Team' \
          --package-name='Unknown Horizons' \
          --package-version=$VERSION \
-         --msgid-bugs-address=translate-uh@lists.unknown-horizons.org \
+         --msgid-bugs-address=team@lists.unknown-horizons.org \
          po/$1.py
 rm po/$1.py
 
-diff=$(git diff --numstat po/$1.pot |awk '{print $1;}')
-if [ $diff -le 2 ]; then      # only changed version and date (two lines)
-    git checkout -- po/$1.pot # => discard this template change
+numstat=$(git diff --numstat -- "$OUTPUT_DIR/$1.pot" | cut -f1,2)
+if [ "$numstat" = "2	2" ]; then
+    echo "  -> No content changes in $1.pot, resetting to previous state."
+    git checkout -- $OUTPUT_DIR/$1.pot
 fi
-
-if [ "x$2" = x ]; then
-    exit
-fi
-
-# Create .mo files and extract the translations using gettext.
-echo
-echo "Compiling these translations for $1:"
-for path in "$2"/*.po; do
-    lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
-    mo=po/mo/$lang/LC_MESSAGES
-    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|message|translations),\t,g;s/[.,]//g'
-    mkdir -p $mo
-    msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
-    numbers=$(msgfmt --statistics $path -o $mo/$1.mo --check-format 2>&1) # this does not include -v!
-
-    python2 << END > content/scenarios/$1_$lang.yaml
-import yaml
-import gettext
-
-translation = gettext.translation('$1', 'po/mo', ['$lang'])
-translation.install(unicode=True)
-
-def unprep(trans):
-	return trans.replace(' [br]', '[br]')
-	#########trans = trans.replace('[br] ', '[br]')
-
-def translate(arg):
-	if isinstance(arg, int) or not arg:
-		return arg
-	return (_(unprep(arg))).replace('[br] ', '[br]')
-
-scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
-
-scenario['difficulty'] = _(scenario['difficulty'])
-scenario['author'] = _(scenario['author'])
-scenario['description'] = _(scenario['description'])
-scenario['locale'] = '$lang'
-scenario['translation_status'] = '$numbers'
-
-for i, event in enumerate(scenario['events']):
-	for j, action in enumerate(event['actions']):
-		if action['type'] not in ('message', 'logbook'):
-			continue
-		elif action['type'] == 'message':
-			action['arguments'] = map(translate, action['arguments'])
-		elif action['type'] == 'logbook':
-			old_args = action['arguments']
-			action['arguments'] = []
-			for widget in old_args:
-				if isinstance(widget, basestring):
-					action['arguments'].append(translate(widget.rstrip('\n')))
-				elif widget[0] in ('Label', 'Headline'):
-					text = translate(widget[1].rstrip('\n'))
-					action['arguments'].append([widget[0], text])
-				else:
-					action['arguments'].append(widget) # no translation for everything else
-		event['actions'][j] = action
-	scenario['events'][i] = event
-
-print """
-# DON'T EDIT THIS FILE.
-
-# It was automatically generated with development/create_scenario_pot.sh using
-# translation files from pootle. Documentation on this process is found here:
-#   development/copy_pofiles.sh
-"""
-print yaml.dump(scenario, line_break=u'\n')
-END
-
-done
-
-rm -rf po/mo

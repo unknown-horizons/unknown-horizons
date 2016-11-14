@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,57 +19,71 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Container, Icon, Label
 
-from fife.extensions.pychan.widgets import ImageButton
+from horizons.constants import TRADER
+from horizons.gui.util import get_res_icon_path
+from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
+from horizons.util.python.callback import Callback
 
-from horizons.util import Callback
-from horizons.util.gui import get_res_icon_path
 
-class ImageFillStatusButton(pychan.widgets.Container):
+class ImageFillStatusButton(Container):
 
-	DEFAULT_BUTTON_SIZE = (55, 50)
+	ICON_SIZE = (32, 32)
+	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
+	PADDING = 3
 
-	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="", \
-	             filled=0, uncached=False, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
-		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
-		in order to display the image. The container is only used, because ImageButtons can't have children.
+	def __init__(self, path, text, res_id, helptext="",
+	             filled=0, marker=0, uncached=False, **kwargs):
+		"""Represents the image in the ingame gui, with a bar to show how full
+		the inventory is for that resource. Derives from Container and also takes
+		all arguments of Imagebutton in order to display the resource icon.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
-		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self.helptext = unicode(_(helptext))
-		# res_id is used by the TradeWidget for example to determine the resource this button represents
+		self.path = path
+		self.text = text
+		self.helptext = T(helptext)
+		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
-		self.text_position = (17, 36)
-		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
+		self.text_position = (9, 30)
+		self.marker = marker
+		# force no cache. needed when the same icon has to appear several times at the same time
+		self.uncached = uncached
+		# Since draw() needs all other stuff initialized, only set this in the end:
 		self.filled = filled # <- black magic at work! this calls _draw()
 
 	@classmethod
-	def init_for_res(cls, db, res, amount=0, filled=0, use_inactive_icon=True, uncached=False):
+	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
 		@param amount: int amount of res (used to decide inactiveness and as text)
 		@param filled: percent of fill status (values are ints in [0, 100])
-		@param use_inactive_icon: wheter to use inactive icon if amount == 0
+		@param use_inactive_icon: whether to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icon = get_res_icon_path(res, 50)
-		if use_inactive_icon:
-			icon_disabled = get_res_icon_path(res, 50, greyscale=True)
+		greyscale = use_inactive_icon and amount == 0
+		path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale, full_path=False)
+
+		if showprice:
+			value = db.get_res_value(res)
+			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
+				helptext = T('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
+			else:
+				buyprice = value * TRADER.PRICE_MODIFIER_BUY
+				sellprice = value * TRADER.PRICE_MODIFIER_SELL
+				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+				            + T('buy for {buyprice} gold').format(buyprice=buyprice)
+				            + u'[br]'
+				            + T('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
-			icon_disabled = icon
-		helptext = db.get_res_name(res)
-		image = icon_disabled if amount == 0 else icon
-		return cls(up_image=image, down_image=image, hover_image=image,
-		           text=str(amount),
-		           helptext=helptext,
-		           size=cls.DEFAULT_BUTTON_SIZE,
-		           res_id = res,
-		           filled = filled,
-		           uncached = uncached,
-		           opaque=False)
+			helptext = db.get_res_name(res)
+
+		return cls(path=path, text=unicode(amount), helptext=helptext,
+		           size=cls.CELL_SIZE, res_id=res, filled=filled,
+		           max_size=cls.CELL_SIZE, min_size=cls.CELL_SIZE,
+		           marker=marker, uncached=uncached)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
@@ -81,15 +95,13 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	filled = property(_get_filled, _set_filled)
 
-	__widget_cache = {}
+	__widget_cache = {} # type: Dict[Callback, ImageButton]
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call
 		# NOTE: there may be problems with multiple buttons with the same
 		# images and helptext at the same time
-		create_btn = Callback(ImageButton, up_image=self.up_image,
-		                      down_image=self.down_image, hover_image=self.hover_image,
-		                      helptext=self.helptext)
+		create_btn = Callback(ImageButton, path=self.path, helptext=self.helptext)
 		self.button = None
 		if self.uncached:
 			self.button = create_btn()
@@ -103,9 +115,17 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 		# can't cache the other instances, because we need multiple instances
 		# with the same data active at the same time
-		self.label = pychan.widgets.Label(text=self.text)
+		self.label = Label(text=self.text)
 		self.label.position = self.text_position
-		self.fill_bar = pychan.widgets.Icon(image="content/gui/images/tabwidget/green_line.png")
-		self.fill_bar.position = (self.button.width-self.fill_bar.width-1, \
-		                          self.button.height-int(self.button.height/100.0*self.filled))
+		self.fill_bar = Icon(image="content/gui/images/tabwidget/green_line.png")
+		fill_level = (self.button.height * self.filled) // 100
+		self.fill_bar.size = ((2 * self.fill_bar.size[0]) // 3, fill_level)
+		# move fillbar down after resizing, since its origin is top aligned
+		self.fill_bar.position = (self.button.width, self.button.height - fill_level)
 		self.addChildren(self.button, self.fill_bar, self.label)
+		if self.marker > 0:
+			marker_icon = Icon(image="content/gui/icons/templates/production/marker.png")
+			marker_level = (self.button.height * self.marker) // 100
+			marker_icon.position = (self.button.width - 1, self.button.height - marker_level)
+			marker_icon.max_size = (5, 1)
+			self.addChild(marker_icon)

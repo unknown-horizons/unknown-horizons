@@ -1,4 +1,4 @@
-id: 45
+id: BUILDINGS.FIRE_STATION
 name: _ Fire Station
 baseclass: production.ProductionBuilding
 radius: 13
@@ -6,31 +6,28 @@ cost: 15
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 4
-inhabitants_max: 4
+inhabitants: 4
 tooltip_text: _ Extinguishes fires.
-settler_level: 1
-buildingcosts: {1: 750, 4: 3, 6: 2, 7: 5}
+tier: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 750, RES.BOARDS: 3, RES.TOOLS: 2, RES.BRICKS: 4}
 show_status_icons: false
 components:
 - SelectableComponent:
     type: building
-    tabs: [OverviewTab,]
+    tabs: [GenericOverviewTab, ]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
    productionlines:
-     56464472:
-       produces: []
+     FIRE:
        consumes:
-        - [RES.FIRE_ID, -1]
-       time: 1
+        - [RES.FIRE, -1]
 - StorageComponent:
-   inventory:
      SlotsStorage:
-      slot_sizes: {RES.FIRE_ID: 10}
+      slot_sizes: {RES.FIRE: 10}
 - CollectingComponent:
     collectors:
-      1000022: 1
+      UNITS.DISASTER_RECOVERY_COLLECTOR: 1
 actionsets:
-  as_fireservice0: {level: 0}
+  TIER.PIONEERS:
+    as_fireservice0:

@@ -1,14 +1,14 @@
 baseclass: collectors.AnimalCollector
-id: 1000007
+id: UNITS.ANIMAL_COLLECTOR
 name: AnimalCarriage
 radius: 5
 velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_herder0: {level: 0}
+  TIER.SAILORS:
+    as_herder0:

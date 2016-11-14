@@ -1,69 +1,14 @@
 <?xml version="1.0"?>
-<Container name="help_window" size="800,580" position="100,100">
-<Icon image="content/gui/images/background/book.png" />
+<Container name="help_window" size="800,580" position_technique="center:center"
+	background_image="content/gui/images/background/book.png">
 
-<VBox position="107,42" max_size="340,485" min_size="340,485" padding="15">
-	<Label text="Key bindings" name="headline" />
-	<Icon image="content/gui/images/background/hr.png" />
-	<VBox>
-		<Label name="lbl_LEFT" text="Scroll left" />
-		<Label name="lbl_RIGHT" text="Scroll right" />
-		<Label name="lbl_UP" text="Scroll up" />
-		<Label name="lbl_DOWN" text="Scroll down" />
-	</VBox>
-	<VBox>
-		<Label name="lbl_SPEED_UP" text="Increase game speed" />
-		<Label name="lbl_SPEED_DOWN" text="Decrease game speed" />
-	</VBox>
-	<VBox>
-		<Label name="lbl_ROTATE_LEFT" text="Rotate building or map counterclockwise"
-			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
-		<Label name="lbl_ROTATE_RIGHT" text="Rotate building or map clockwise"
-			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
-	</VBox>
-	<VBox>
-		<Label name="lbl_BUILD_TOOL" text="Show build menu" />
-		<Label name="lbl_LOGBOOK" text="Toggle Captain's log" />
-		<Label name="lbl_PAUSE" text="Pause game" />
-	</VBox>
-	<VBox>
-		<Label name="lbl_HELP" text="Display help" />
-		<Label name="lbl_QUICKSAVE" text="Quicksave" />
-		<Label name="lbl_QUICKLOAD" text="Quickload" />
-		<Label name="lbl_CONSOLE" text="Toggle console on/off" />
-	</VBox>
+<VBox position="72,40">
+	<Label name="headline" />
+	<hr />
 
-	<Spacer />
-</VBox>
-
-<VBox position="447,82" max_size="340,445" min_size="340,445" padding="15">
-	<VBox>
-		<Label name="lbl_GRID" text="Toggle grid on/off" />
-		<Label name="lbl_COORD_TOOLTIP" text="Show coordinate values (Debug)" />
-		<Label name="lbl_TRANSLUCENCY" text="Toggle translucency of ambient buildings"
-			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
-		<Label name="lbl_ROAD_TOOL" text="Enable road building mode" />
-		<Label name="lbl_TILE_OWNER_HIGHLIGHT" text="Highlight tile ownership" />
-		<Label name="lbl_DESTROY_TOOL" text="Enable destruct mode" />
-		<Label name="lbl_REMOVE_SELECTED" text="Remove selected units / buildings" />
-	</VBox>
-	<VBox>
-		<Label name="lbl_PLAYERS_OVERVIEW" text="Show player scores" />
-		<Label name="lbl_SETTLEMENTS_OVERVIEW" text="Show settlement list" />
-		<Label name="lbl_SHIPS_OVERVIEW" text="Show ship list" />
-	</VBox>
-	<VBox>
-		<Label name="lbl_SCREENSHOT" text="Screenshot" />
-		<Label name="lbl_CHAT" text="Chat" />
-		<Label name="lbl_SHIFT" text="Hold to place multiple buildings"
-			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
-	</VBox>
-	<VBox>
-		<Label name="have_fun" text="Have fun." />
-		<Label name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
-			text="The FIFE and Unknown Horizons development teams" />
-	</VBox>
-<Spacer />
+	<ScrollArea name="help_box" max_size="310,470" min_size="310,470">
+		<VBox name="tip_box" padding="10" />
+	</ScrollArea>
 </VBox>
 
 <OkButton position="695,500"  helptext="Return" />

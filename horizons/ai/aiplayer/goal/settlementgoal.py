@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
-from horizons.util.python import decorators
+from horizons.ai.aiplayer.goal import Goal
+from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import BUILDINGS
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.util.python import decorators
+
 
 class SettlementGoal(Goal):
 	"""
@@ -37,10 +38,12 @@ class SettlementGoal(Goal):
 		self.production_builder = settlement_manager.production_builder
 		self.village_builder = settlement_manager.village_builder
 		self.settlement = settlement_manager.settlement
+		self.island = settlement_manager.island
+		self.session = settlement_manager.session
 
 	@property
 	def can_be_activated(self):
-		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
+		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL)
 
 	def __str__(self):
 		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.get_component(NamedComponent).name

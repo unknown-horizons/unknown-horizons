@@ -1,14 +1,14 @@
 baseclass: collectors.BuildingCollector
-id: 1000002
+id: UNITS.BUILDING_COLLECTOR
 name: BuildingCollector
 radius: 5
 velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_carrier0: {level: 0}
+  TIER.SAILORS:
+    as_carrier0:

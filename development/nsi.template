@@ -3,7 +3,7 @@
 ;Defines
 !define PRODUCT_NAME "Unknown Horizons"
 !define PRODUCT_VERSION "%s"
-!define UH_ICON "$INSTDIR\content\gfx\uh.ico"
+!define UH_ICON "$INSTDIR\content\packages\uh.ico"
 !define PRODUCT_ROOT_KEY "HKLM"
 !define PRODUCT_SUBKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
@@ -14,13 +14,13 @@
 ;MUI2
 !include "MUI2.nsh"
 
-!define MUI_ICON "content\gfx\uh.ico"
+!define MUI_ICON "content\packages\uh.ico"
 !define MUI_ABORTWARNING
 !define MUI_ABORTWARNING_CANCEL_DEFAULT
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "content\gfx\header.bmp"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "content\gfx\banner.bmp"
+!define MUI_HEADERIMAGE_BITMAP "content\packages\win_installer_header.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "content\packages\win_installer_banner.bmp"
 
 ;Install pages
 !insertmacro MUI_PAGE_WELCOME
@@ -64,10 +64,10 @@ Section "-Misc"
 
 	SetOutPath "$INSTDIR"
 	CreateDirectory "$SMPROGRAMS\Unknown Horizons"
-	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py --fife-in-library-path" "${UH_ICON}"
-	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons Debug-Mode.lnk" "$INSTDIR\unknown-horizons.bat" "" "${UH_ICON}"
+	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\python\pythonw.exe" "run_uh.py" "${UH_ICON}"
+	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons Debug-Mode.lnk" "$INSTDIR\unknown-horizons-debug.bat" "" "${UH_ICON}"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Uninstall.lnk" "$INSTDIR\uninst.exe"
-	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py --fife-in-library-path" "${UH_ICON}"
+	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\python\pythonw.exe" "run_uh.py" "${UH_ICON}"
 SectionEnd
 
 Section "Uninstall"
@@ -149,9 +149,9 @@ done:
 		!insertmacro UnselectSection ${OpenAL_Sec}
 	${EndIf}
 	SetOutPath $TEMP
-	File "content\gfx\inst_splash.bmp"
-	advsplash::show 1300 500 400 0xff00ff "$TEMP\inst_splash"
-	Delete "$TEMP\inst_splash.bmp"
+	File "content\packages\win_installer_splash.bmp"
+	advsplash::show 1300 500 400 0xff00ff "$TEMP\win_installer_splash"
+	Delete "$TEMP\win_installer_splash.bmp"
 FunctionEnd
 
 Function un.onUninstSuccess

@@ -1,31 +1,31 @@
-id: 2
+id: BUILDINGS.STORAGE
 name:
-  0: _ Storage Tent
-  1: _ Storage Hut
+  TIER.SAILORS: _ Storage Tent
+  TIER.PIONEERS: _ Storage Hut
 baseclass: storages.StorageTent
 radius: 17
-cost: 0
+cost: 10
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: store-1
-tooltip_text: _ Extends stock and provides collectors.
-settler_level: 0
-buildingcosts: {1: 350, 4: 4}
+inhabitants: 1
+tooltip_text: _ Extends stock, expands settlement range and provides collectors.
+tier: TIER.SAILORS
+buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4, RES.TOOLS: 1}
 components:
 - SelectableComponent:
     type: building
-    tabs: [WarehouseOverviewTab, InventoryTab, AccountTab]
+    tabs: [AccountTab, InventoryTab]
+    active_tab: InventoryTab
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:
-    inventory:
         SettlementStorage: {}
 - CollectingComponent:
     collectors:
-      1000008: 2
+      UNITS.STORAGE_COLLECTOR: 2
 actionsets:
-  as_storagetent0: {level: 0}
-  as_storagetent1: {level: 1}
+  TIER.SAILORS:
+    as_storagetent0:
+  TIER.PIONEERS:
+    as_storagetent1:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,9 @@
 # ###################################################
 
 from horizons.command import Command
+from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
+
 
 class SaveCommand(Command):
 	"""Used to init a save, which will happen at all network machines.
@@ -32,19 +34,20 @@ class SaveCommand(Command):
 		session = issuer.session
 		try:
 			path = SavegameManager.create_multiplayersave_filename(self.name)
-		except RuntimeError, e:
-			headline = _("Invalid filename")
-			msg = _("Received an invalid filename for a save command.")
-			session.gui.show_error_popup(headline, msg, unicode(e))
+		except RuntimeError as e:
+			headline = T("Invalid filename")
+			msg = T("Received an invalid filename for a save command.")
+			session.ingame_gui.open_error_popup(headline, msg, unicode(e))
 			return
 
 		self.log.debug("SaveCommand: save to %s", path)
 
-		success = session._do_save( path )
+		success = session._do_save(path)
 		if success:
-			session.ingame_gui.message_widget.add(None, None, 'SAVED_GAME') # TODO: distinguish auto/quick/normal
+			# TODO: distinguish auto/quick/normal
+			session.ingame_gui.message_widget.add('SAVED_GAME')
 		else:
-			session.gui.show_popup(_('Error'), _('Failed to save.'))
+			session.ingame_gui.open_popup(T('Error'), T('Failed to save.'))
 
 Command.allow_network(SaveCommand)
 
@@ -73,7 +76,7 @@ class TogglePauseCommand(Command):
 
 	def __call__(self, issuer):
 		session = issuer.session
-		session.gui.toggle_pause()
+		session.ingame_gui.toggle_pause()
 
 Command.allow_network(TogglePauseCommand)
 

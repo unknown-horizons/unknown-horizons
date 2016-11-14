@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import glob
 import logging
+import os
+import re
+from collections import defaultdict
+
+from horizons.constants import ACTION_SETS
+
 
 class GeneralLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -30,76 +35,111 @@ class GeneralLoader(object):
 	for example that would be: fisher1/work/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional action sets.
-	@param start_dir: directory that is used to begin search in
 	"""
 
 	log = logging.getLogger("util.loaders.loader")
 
 	@classmethod
-	def _load_files(cls, dir, time):
+	def _load_files(cls, directory, time):
 		"""Loads the files for a specific rotation
-		@param dir: directory that the files are to loaded from. Example:
-		            'content/gfx/units/lumberjack/work/90/'
-		@return: dict containing 'file: anim_end' entries
+		@param directory: directory to load files from. Example:
+		                 'content/gfx/units/lumberjack/'
+		@return: dict of 'file: anim_end' items
 		"""
-		fl = {}
+		files = glob.glob(os.path.join(directory, "*.png"))
+		# Make sure entries are in the correct order: 'zz1.png' < '2.png' < '09.png'
+		files.sort(key=lambda f: int(re.search(r'\d+', os.path.basename(f)).group()))
 
-		entries = glob.glob(os.path.join(dir, "*.png"))
-		entries.sort() # Make sure entries are in the correct order
-
-		i = 1
-		for file in entries:
-			fl[file] = ((float(time)/1000)/len(entries))*i
-			i += 1
-		return fl
+		anim_length = {} # dict containing 'file: anim_end' items
+		for i, filename in enumerate(files, start=1):
+			anim_length[filename] = i * (time/1000.0) / len(files)
+		return anim_length
 
 	@classmethod
-	def _load_rotation(cls, dir):
+	def _load_rotation(cls, directory):
 		"""Loads the rotations + files for a specific action
-		@param dir: directory that the files are to loaded from. Example:
-		            'content/gfx/units/lumberjack/work/'
-		@return: dict containing 'rotation: filedict' entries. See _load_files for example.
+		@param directory: directory to load files from. Example:
+		                 'content/gfx/units/lumberjack/'
+		@return: dict of 'rotation: filedict' items. See _load_files for example.
 		"""
-		rotations = {}
-		time = 500
-		dirs = os.listdir(dir)
-		try:
-			dirs.remove('.svn')
-			dirs.remove('.DS_Store')
-		except ValueError: pass
+		dirs = cls._action_set_directories(directory)
 
 		for dirname in dirs:
 			if dirname.startswith("tm_"):
-				time = dirname.split('_')[1]
+				time = int(dirname.split('_')[1])
 				dirs.remove(dirname)
 				break
+		else:
+			time = ACTION_SETS.DEFAULT_ANIMATION_LENGTH
+
+		rotations = {}
 		for dirname in dirs:
 			try:
-				rotations[int(dirname)] = cls._load_files(os.path.join(dir, dirname),time)
+				rotations[int(dirname)] = cls._load_files(os.path.join(directory, dirname), time)
 			except Exception as e:
-				if dirname != '.DS_Store':
-					raise Exception("Failed to load action sets from %s with time %d: %s" % \
-				                	(os.path.join(dir, dirname), time, e))
-
+				raise Exception("Failed to load action sets from %s with time %s: %s" %
+							 (os.path.join(directory, dirname), time, e))
 		return rotations
 
+	@classmethod
+	def _load_action(cls, directory):
+		"""Loads the actions + rotations + files for a specific action
+		@param directory: directory to load files from. Example:
+		                 'content/gfx/units/lumberjack/'
+		@return: dict of 'action: rotationdict' items. See _load_rotation for example.
+		"""
+		dirs = cls._action_set_directories(directory)
+		actions = {}
+		for dirname in dirs:
+			basedir = os.path.join(directory, dirname)
+			if os.path.isdir(basedir):
+				actions[dirname] = cls._load_rotation(basedir)
+				if any(folder in directory for folder in ['streets', 'wall']):
+					actions.update(cls._load_mirrored_roads(dirname, actions[dirname]))
+		return actions
 
 	@classmethod
-	def _load_action(cls, dir):
-		"""Loads the actions + rotations + files for a specific action
-		@param dir: directory that the files are to loaded from. Example:
-		            'content/gfx/units/lumberjack/'
-		@return: dict containing 'action: rotationdict' entries. See _load_rotation for example.
-		"""
-		actions = {}
-		dirs = os.listdir(dir)
-		try:
-			dirs.remove('.svn')
-			dirs.remove('.DS_Store')
-		except ValueError: pass
-
-		for dirname in dirs:
-			if dirname != '.DS_Store':
-				actions[dirname] = cls._load_rotation(os.path.join(dir, dirname))
-
+	def _load_mirrored_roads(cls, base_action, existing_files):
+		actions = defaultdict(dict)
+		for base_rotation, path in existing_files.iteritems():
+			action = base_action
+			for iteration in range(1, 4):
+				rotation = (base_rotation + iteration * 90) % 360
+				action = cls._rotate_roads(action)
+				actions[action][rotation] = path
 		return actions
+
+	@classmethod
+	def _rotate_roads(cls, action):
+		"""Rotate around 'abcd' and 'efgh' like this:
+		>>> G = GeneralLoader()
+		>>> G._rotate_roads('a')
+		'b'
+		>>> G._rotate_roads('bd')
+		'ac'
+		>>> G._rotate_roads('acde')
+		'abdf'
+		>>> G._rotate_roads('abdf')
+		'abcg'
+		"""
+		if action == 'single':
+			return action
+
+		base = 'abcda' + 'efghe'
+
+		new_action = []
+		for char in action:
+			idx = base.index(char)
+			new_action += base[idx + 1]
+
+		action = ''.join(sorted(new_action))
+		return action
+
+	@classmethod
+	def _action_set_directories(cls, directory):
+		"""Returns directories that are important for loading action sets.
+		Discards everything else that we found living there in the past.
+		"""
+		junk = set(('.DS_Store', ))
+		return [d for d in os.listdir(directory)
+		          if d not in junk]

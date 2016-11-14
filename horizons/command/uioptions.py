@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,7 @@
 # ###################################################
 
 from horizons.command import GenericCommand, GenericComponentCommand
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.namedcomponent import NamedComponent
+
 
 class SetTaxSetting(GenericCommand):
 	"""Sets the taxes for a settlement."""
@@ -37,57 +36,43 @@ class SetSettlementUpgradePermissions(GenericCommand):
 
 GenericCommand.allow_network(SetSettlementUpgradePermissions)
 
-class AddToBuyList(GenericComponentCommand):
-	"""Adds a Resource to buy_list of TradePost"""
-	def __init__(self, tradepost, res_id, limit):
-		super(AddToBuyList, self).__init__(tradepost, 'add_to_buy_list', res_id, limit)
+class SetTradeSlot(GenericComponentCommand):
+	"""Set status of a trade post's buy/sell slot."""
+	def __init__(self, trade_post, slot_id, resource_id, selling, limit):
+		super(SetTradeSlot, self).__init__(trade_post, 'set_slot', slot_id, resource_id, selling, limit)
 
-GenericComponentCommand.allow_network(AddToBuyList)
+GenericComponentCommand.allow_network(SetTradeSlot)
 
-class RemoveFromBuyList(GenericComponentCommand):
-	"""Removes a Resource from buy_list of TradePost"""
-	def __init__(self, tradepost, res_id):
-		super(RemoveFromBuyList, self).__init__(tradepost, 'remove_from_buy_list', res_id)
+class ClearTradeSlot(GenericComponentCommand):
+	"""Clear a trade post's buy/sell slot."""
+	def __init__(self, trade_post, slot_id):
+		super(ClearTradeSlot, self).__init__(trade_post, 'clear_slot', slot_id, True)
 
-GenericComponentCommand.allow_network(RemoveFromBuyList)
-
-class AddToSellList(GenericComponentCommand):
-	"""Adds a Resource to sell_list of TradePost"""
-	def __init__(self, tradepost, res_id, limit):
-		super(AddToSellList, self).__init__(tradepost, 'add_to_sell_list', res_id, limit)
-
-GenericComponentCommand.allow_network(AddToSellList)
-
-class RemoveFromSellList(GenericComponentCommand):
-	"""Removes a Resource from sell_list of TradePost"""
-	def __init__(self, tradepost, res_id):
-		super(RemoveFromSellList, self).__init__(tradepost, 'remove_from_sell_list', res_id)
-
-GenericComponentCommand.allow_network(RemoveFromSellList)
+GenericComponentCommand.allow_network(ClearTradeSlot)
 
 class TransferResource(GenericCommand):
 	"""Transfers an amount of a resource from one Storage to another"""
-	def __init__(self, amount, res_id, transfer_from, transfer_to):
-		super(TransferResource, self).__init__(transfer_from, 'transfer_to_storageholder', amount, res_id, transfer_to.worldid)
+	def __init__(self, amount, res_id, transfer_from, transfer_to, signal_errors=False):
+		super(TransferResource, self).__init__(transfer_from, 'transfer_to_storageholder', amount, res_id, transfer_to.worldid, signal_errors=signal_errors)
 
 GenericCommand.allow_network(TransferResource)
 
 class SellResource(GenericComponentCommand):
-	"""The given tradepost attempts to sell the given amount of resource to the ship"""
-	def __init__(self, tradepost, ship, resource_id, amount):
-		super(SellResource, self).__init__(tradepost, 'sell_resource', ship.worldid, resource_id, amount)
+	"""The given trade post attempts to sell the given amount of resource to the ship"""
+	def __init__(self, trade_post, ship, resource_id, amount):
+		super(SellResource, self).__init__(trade_post, 'sell_resource', ship.worldid, resource_id, amount)
 
 GenericComponentCommand.allow_network(SellResource)
 
 class BuyResource(GenericComponentCommand):
-	"""The given tradepost attempts to buy the given amount of resource from the ship"""
-	def __init__(self, tradepost, ship, resource_id, amount):
-		super(BuyResource, self).__init__(tradepost, 'buy_resource', ship.worldid, resource_id, amount)
+	"""The given trade post attempts to buy the given amount of resource from the ship"""
+	def __init__(self, trade_post, ship, resource_id, amount):
+		super(BuyResource, self).__init__(trade_post, 'buy_resource', ship.worldid, resource_id, amount)
 
 GenericComponentCommand.allow_network(BuyResource)
 
 class RenameObject(GenericComponentCommand):
-	"""Rename a NamedComponant"""
+	"""Rename a NamedComponent"""
 	def __init__(self, namedcomponent, new_name):
 		super(RenameObject, self).__init__(namedcomponent, "set_name", new_name)
 

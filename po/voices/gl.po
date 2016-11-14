@@ -1,0 +1,128 @@
+# Galician translations for Unknown Horizons Voices package.
+# Copyright (C) 2013 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons Voices package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
+"PO-Revision-Date: 2013-07-27 13:00+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Founding settlement - Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr "Loita porque este asentamento acade a grandeza."
+
+#. Founding settlement - Player found settlement"
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr "Os teus habitantes hanse sentir nesta illa coma na casa."
+
+#. Founding settlement - Player found settlement"
+msgid "Call this patch of ground yours from now on."
+msgstr "A partir de agora este anaco de terra é teu."
+
+#. Founding settlement - Player found settlement"
+msgid "This region now belongs to our colors."
+msgstr "Agora a rexión levará a nosa bandeira."
+
+#. Founding settlement - Player found settlement"
+msgid "This piece of ground is now ours."
+msgstr "Agora estas terras son nosas."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr "Outro dos xogadores asentouse nunha illa."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "A player develops a new settlement."
+msgstr "Un xogador levanta un novo asentamento."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "One of your fellow players founded a settlement."
+msgstr "Un dos outros xogadores fundou un asentamento."
+
+#. Founding settlement - Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr "Parece que un dos nosos rivais fundou un asentamento."
+
+#. Founding settlement - Rival found settlement
+msgid "We've been informed that one of our rivals snared new land."
+msgstr "Infórmannos de que un dos nosos rivais capturou novas terras."
+
+#. Founding settlement - Rival found settlement
+msgid "One of our opponents is said to have expanded."
+msgstr "Disque un dos nosos opoñentes expandiu o seu territorio."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally settles on another island."
+msgstr "O noso aliado aséntase noutra illa."
+
+#. Founding settlement - Ally found settlement
+msgid "One of our allies cultivates an islnd."
+msgstr "Un dos nosos aliados cultiva unha illa."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr "Os nosos aliados informan de que fundaron un novo asentamento."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr "A illa xa non é toda nosa."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr ""
+"Os exploradores informan do levantamento dun asentamento estranxeiro nunha "
+"das nosas illas."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "We got new neighbors on this island!"
+msgstr "Temos novos veciños na illa!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr "Os exploradores informan de que estranxeiros invaden a nosa illa!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Should we really accept our rival as new neighbor?"
+msgstr ""
+"Estamos seguros de que é boa idea aceptar aos nosos rivais de novos veciños?"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "One of our enemies settles on our ground!"
+msgstr "Un dos nosos inimigos estabelécese nas nosas terras!"
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr "Un dos nosos aliados parece necesitar desesperadamente as nosas terras."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "We share this ground with our ally for now."
+msgstr "De momento compartimos estas terras co noso aliado."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "Our ally settles on one of our islands."
+msgstr "O noso aliado aséntase nunha das nosas illas."
+
+#. Resources - Construction material missing
+msgid "You need more resources to build this."
+msgstr "Necesitas máis recursos para construír isto."
+
+#. Resources - Construction material missing
+msgid "This construction project needs more resources."
+msgstr "Este proxecto de construción necesita máis recursos."
+
+#. Resources - Construction material missing
+msgid "Construction is impossible without sufficient material."
+msgstr "É imposíbel levar a cabo a construción sen materiais dabondo."
+
+#. Resources - Construction material missing
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr "Os recursos do almacén non abondan para construír isto."

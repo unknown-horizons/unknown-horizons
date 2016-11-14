@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,20 +20,23 @@
 # ###################################################
 
 import weakref
+
 from fife import fife
 
-import horizons.main
-
-from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
-from horizons.world.pathfinding import PathBlockedError
-from horizons.world.units.collectors import FisherShipCollector
-from unit import Unit
+import horizons.globals
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.namedcomponent import NamedComponent, ShipNameComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
+from horizons.i18n import gettext as T
+from horizons.messaging import ShipDestroyed
 from horizons.scheduler import Scheduler
-from horizons.world.component.namedcomponent import ShipNameComponent, NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.world.component.commandablecomponent import CommandableComponent
+from horizons.util.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pather import FisherShipPather, ShipPather
 from horizons.world.traderoute import TradeRoute
+from horizons.world.units.collectors import FisherShipCollector
+from horizons.world.units.unit import Unit
+
 
 class Ship(Unit):
 	"""Class representing a ship
@@ -75,27 +78,39 @@ class Ship(Unit):
 
 	def remove(self):
 		self.session.world.ships.remove(self)
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
+		self.session.view.discard_change_listener(self.draw_health)
 		if self.in_ship_map:
-			del self.session.world.ship_map[self.position.to_tuple()]
+			if self.position.to_tuple() in self.session.world.ship_map:
+				del self.session.world.ship_map[self.position.to_tuple()]
+			else:
+				self.log.error("Ship %s had in_ship_map flag set as True "
+				               "but tuple %s was not found in world.ship_map",
+				               self, self.position.to_tuple())
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
+		ShipDestroyed.broadcast(self)
 		super(Ship, self).remove()
 
 	def create_route(self):
 		self.route = TradeRoute(self)
 
-	def _move_tick(self, resume = False):
+	def _move_tick(self, resume=False):
 		"""Keeps track of the ship's position in the global ship_map"""
-		if self.in_ship_map:
+
+		# TODO: Originally, only self.in_ship_map should suffice here,
+		# but KeyError is raised during combat.
+		if self.in_ship_map and self.position.to_tuple() in self.session.world.ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+		elif self.in_ship_map:  # logging purposes only
+			self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was "
+			               "not found in world.ship_map", self, self.position.to_tuple())
 
 		try:
 			super(Ship, self)._move_tick(resume)
 		except PathBlockedError:
-			# if we fail to resume movement then the ship should still be on the map but the exception has to be raised again.
+			# if we fail to resume movement then the ship should still be on the map
+			# but the exception has to be raised again.
 			if resume:
 				if self.in_ship_map:
 					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -106,8 +121,17 @@ class Ship(Unit):
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
+	def _movement_finished(self):
+		if self.in_ship_map:
+			# if the movement somehow stops, the position sticks, and the unit isn't at next_target any more
+			if self._next_target is not None:
+				ship = self.session.world.ship_map.get(self._next_target.to_tuple())
+				if ship is not None and ship() is self:
+					del self.session.world.ship_map[self._next_target.to_tuple()]
+		super(Ship, self)._movement_finished()
+
 	def go(self, x, y):
-		#disable the trading route
+		# Disable trade route, direct commands overwrite automated ones.
 		if hasattr(self, 'route'):
 			self.route.disable()
 		if self.get_component(CommandableComponent).go(x, y) is None:
@@ -139,7 +163,7 @@ class Ship(Unit):
 		if remove_only:
 			return
 
-		if move_target != None:
+		if move_target is not None:
 			# set remove buoy callback
 			self.add_move_callback(tmp)
 
@@ -150,19 +174,26 @@ class Ship(Unit):
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.RendererNode(loc),
-				horizons.main.fife.animationloader.loadResource("as_buoy0+idle+45")
+				horizons.globals.fife.animationloader.loadResource("as_buoy0+idle+45")
 			)
 
 	def find_nearby_ships(self, radius=15):
-		# TODO: Replace 15 with a distance dependant on the ship type and any
+		# TODO: Replace 15 with a distance dependent on the ship type and any
 		# other conditions.
 		ships = self.session.world.get_ships(self.position, radius)
 		if self in ships:
 			ships.remove(self)
 		return ships
 
+	def get_tradeable_warehouses(self, position=None):
+		"""Returns warehouses this ship can trade with w.r.t. position, which defaults to the ships ones."""
+		if position is None:
+			position = self.position
+		return self.session.world.get_warehouses(position, self.radius, self.owner,
+		                                         include_tradeable=True)
+
 	def get_location_based_status(self, position):
-		warehouses = self.session.world.get_warehouses(position, self.radius, self.owner, True)
+		warehouses = self.get_tradeable_warehouses(position)
 		if warehouses:
 			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
 			player_suffix = u''
@@ -180,21 +211,14 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				#xgettext:python-format
-				return (_('Going to {location}').format(location=location_based_status), target)
-			#xgettext:python-format
-			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
+				return (T('Going to {location}').format(location=location_based_status), target)
+			return (T('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				#xgettext:python-format
-				return (_('Idle at {location}').format(location=location_based_status), self.position)
-			#xgettext:python-format
-			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
+				return (T('Idle at {location}').format(location=location_based_status), self.position)
+			return (T('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
-class PirateShip(Ship):
-	"""Represents a pirate ship."""
-	pass
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
@@ -204,7 +228,8 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [ _(u'Trader') ]
+		return [T('Trader')]
+
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,16 +21,17 @@
 
 import copy
 import logging
-
 from collections import deque
 
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
-from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
 from horizons.constants import BUILDINGS
-from horizons.util import Point, Rect, WorldObject
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+from horizons.util.shapes import Rect
+from horizons.util.worldobject import WorldObject
+
 
 class AreaBuilder(WorldObject):
 	"""A class governing the use of a specific type of area of a settlement."""
@@ -60,7 +61,7 @@ class AreaBuilder(WorldObject):
 		self.__init(settlement_manager)
 		super(AreaBuilder, self).load(db, worldid)
 
-	def iter_neighbour_tiles(self, rect):
+	def iter_neighbor_tiles(self, rect):
 		"""Iterate over the tiles that share a side with the given Rect."""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		for x, y in rect.tuple_iter():
@@ -70,21 +71,21 @@ class AreaBuilder(WorldObject):
 					yield self.island.get_tile_tuple(coords)
 
 	def iter_possible_road_coords(self, rect, blocked_rect):
-		"""Iterate over the possible road tiles that share a side with the given Rect and are not in the blocked Rect."""
+		"""Iterate over the possible road tiles that share a side with
+		the given Rect and are not in the blocked Rect."""
 		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
-		for tile in self.iter_neighbour_tiles(rect):
+		for tile in self.iter_neighbor_tiles(rect):
 			if tile is None:
 				continue
 			coords = (tile.x, tile.y)
-			if coords in blocked_coords_set or coords not in self.settlement.ground_map:
+			if coords in blocked_coords_set or coords in self.land_manager.coastline or coords not in self.settlement.ground_map:
 				continue
 			if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
 				yield coords
 
 	@classmethod
 	def __fill_distance(cls, distance, nodes):
-		"""
-		Fill the distance dict with the shortest distance from the starting nodes.
+		"""Fill the distance dict with the shortest distance from the starting nodes.
 
 		@param distance: {(x, y): distance, ...}
 		@param nodes: {(x, y): penalty, ...}
@@ -93,7 +94,7 @@ class AreaBuilder(WorldObject):
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		queue = deque([item for item in distance.iteritems()])
 
-		while len(queue) > 0:
+		while queue:
 			(coords, dist) = queue.popleft()
 			for dx, dy in moves:
 				coords2 = (coords[0] + dx, coords[1] + dy)
@@ -102,14 +103,15 @@ class AreaBuilder(WorldObject):
 					queue.append((coords2, dist + 1))
 
 	def get_path_nodes(self):
-		"""Return a dict {(x, y): penalty, ...} of current and possible future road tiles in the settlement."""
+		"""Return a dict {(x, y): penalty, ...}
+		of current and possible future road tiles in the settlement."""
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		nodes = {} # {(x, y): penalty, ...}
 		distance_to_road = {}
 		distance_to_boundary = {}
 		for coords in self.plan:
-			if coords not in self.settlement.ground_map:
+			if coords not in self.settlement.ground_map or coords in self.land_manager.coastline:
 				continue
 			if self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				nodes[coords] = 1
@@ -158,7 +160,8 @@ class AreaBuilder(WorldObject):
 		return nodes
 
 	def _get_road_to_builder(self, builder):
-		"""Return a path from the builder to a building with general collectors (None if impossible)."""
+		"""Return a path from the builder to a building with general
+		collectors (None if impossible)."""
 		loading_area = builder.get_loading_area()
 		collector_coords = set()
 		for building in self.collector_buildings:
@@ -169,26 +172,34 @@ class AreaBuilder(WorldObject):
 			for coords in self.iter_possible_road_coords(building.position, building.position):
 				collector_coords.add(coords)
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
 		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
-		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1, loading_area.right + 1, loading_area.bottom + 1)
+		if self is self.settlement_manager.production_builder:
+			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(collector_coords, destination_coords):
+				return None
 
-		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
-			destination_coords, beacon, self.get_path_nodes(), blocked_coords = blocked_coords)
+		blocked_coords = {coords for coords in builder.position.tuple_iter()}.union(self.land_manager.coastline)
+		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
+		                                loading_area.right + 1, loading_area.bottom + 1)
+
+		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords,
+			destination_coords, beacon, self.get_path_nodes(), blocked_coords=blocked_coords)
 
 	def build_road(self, path):
-		"""Build the road given a valid path or None. Return True if it worked, False if the path was None."""
+		"""Build the road given a valid path or None.
+		Return True if it worked, False if the path was None."""
 		if path is not None:
 			for x, y in path:
-				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
+				self.register_change_list([(x, y)], BUILDING_PURPOSE.ROAD, None)
 				building = self.island.ground_map[(x, y)].object
-				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
+				if building is not None and building.id == BUILDINGS.TRAIL:
 					continue
-				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
+				assert BasicBuilder(BUILDINGS.TRAIL, (x, y), 0).execute(self.land_manager)
 		return path is not None
 
 	def build_road_connection(self, builder):
-		"""Build a road connecting the builder to a building with general collectors. Return True if it worked, False if the path was None."""
+		"""Build a road connecting the builder to a building with general collectors.
+
+		Return True if it worked, False if the path was None."""
 		path = self._get_road_to_builder(builder)
 		return self.build_road(path)
 
@@ -200,97 +211,56 @@ class AreaBuilder(WorldObject):
 		if path is not None:
 			for x, y in path:
 				building = self.island.ground_map[(x, y)].object
-				if building is None or building.id != BUILDINGS.TRAIL_CLASS:
+				if building is None or building.id != BUILDINGS.TRAIL:
 					length += 1
 		if length == 0:
 			return {}
-		costs = copy.copy(Entities.buildings[BUILDINGS.TRAIL_CLASS].costs)
+		costs = copy.copy(Entities.buildings[BUILDINGS.TRAIL].costs)
 		for resource in costs:
 			costs[resource] *= length
 		return costs
 
 	def get_road_connection_cost(self, builder):
-		"""
-		Return the cost of building a road from the builder to a building with general collectors.
+		"""Return the cost of building a road from the builder to a building with general collectors.
 
 		The returned format is {resource_id: amount, ...} if it is possible to build a road and None otherwise.
 		"""
 		return self.get_road_cost(self._get_road_to_builder(builder))
 
-	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
-		"""
-		Return a Builder object containing the info.
-
-		If it is impossible to build it then the return value could either be None
-		or a Builder object that evaluates to False.
-		"""
-		return Builder.create(building_id, self.land_manager, Point(x, y), orientation = orientation)
-
 	def have_resources(self, building_id):
 		"""Return a boolean showing whether we currently have the resources to build a building of the given type."""
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
 
-	def extend_settlement_with_tent(self, position):
-		"""Build a tent to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
-		min_distance = None
-		best_coords = None
+	def build_best_option(self, options, purpose):
+		"""Try to build the highest valued option.
+		Return a BUILD_RESULT constant showing how it went.
 
-		for (x, y) in self.settlement_manager.village_builder.tent_queue:
-			ok = True
-			for dx in xrange(size[0]):
-				for dy in xrange(size[1]):
-					if (x + dx, y + dy) not in self.settlement.ground_map:
-						ok = False
-						break
-			if not ok:
-				continue
+		@param options: [(value, builder), ...]
+		@param purpose: a BUILDING_PURPOSE constant
+		"""
 
-			distance = Rect.init_from_topleft_and_size(x, y, size[0], size[1]).distance(position)
-			if min_distance is None or distance < min_distance:
-				min_distance = distance
-				best_coords = (x, y)
-
-		if min_distance is None:
+		if not options:
 			return BUILD_RESULT.IMPOSSIBLE
-		return self.settlement_manager.village_builder.build_tent(best_coords)
 
-	def _extend_settlement_with_storage(self, position):
-		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		options = []
-		for x, y in self.plan:
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
-			if not builder:
-				continue
+		best_index = 0
+		best_value = options[0][0]
+		for i in xrange(1, len(options)):
+			if options[i][0] > best_value:
+				best_index = i
+				best_value = options[i][0]
 
-			alignment = 1
-			for tile in self.iter_neighbour_tiles(builder.position):
-				if tile is None:
-					continue
-				coords = (tile.x, tile.y)
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					alignment += 1
-
-			distance = position.distance(builder.position)
-			value = distance - alignment * 0.7
-			options.append((value, builder))
-
-		for _, builder in sorted(options):
-			building = builder.execute()
-			if not building:
-				return BUILD_RESULT.UNKNOWN_ERROR
-			for x, y in builder.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
-			return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
+		builder = options[best_index][1]
+		if not builder.execute(self.land_manager):
+			return BUILD_RESULT.UNKNOWN_ERROR
+		self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
+		self.register_change_list([builder.position.origin.to_tuple()], purpose, None)
+		return BUILD_RESULT.OK
 
 	def extend_settlement(self, position):
-		"""Build a tent or a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		result = self.extend_settlement_with_tent(position)
-		if result != BUILD_RESULT.OK:
-			result = self._extend_settlement_with_storage(position)
-		return result
+		"""Build a storage to extend the settlement towards the given position.
+
+		Return a BUILD_RESULT constant."""
+		return self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
@@ -312,7 +282,7 @@ class AreaBuilder(WorldObject):
 		raise NotImplementedError('This function has to be overridden.')
 
 	def _init_cache(self):
-		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
+		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""
 		self.last_change_id = -1
 
 	def register_change(self, x, y, purpose, data):
@@ -321,5 +291,9 @@ class AreaBuilder(WorldObject):
 			self.plan[(x, y)] = (purpose, data)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
+
+	def register_change_list(self, coords_list, purpose, data):
+		for (x, y) in coords_list:
+			self.register_change(x, y, purpose, data)
 
 decorators.bind_all(AreaBuilder)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,13 @@
 
 import weakref
 
-from horizons.world.player import Player
-from horizons.scheduler import Scheduler
-from horizons.ext.enum import Enum
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Callback
 from horizons.constants import GAME_SPEED
+from horizons.ext.enum import Enum
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.world.player import Player
+from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class GenericAI(Player):
 	"""Class for AI players implementing generic stuff."""
@@ -57,8 +58,10 @@ class GenericAI(Player):
 		try:
 			ship.move(point, Callback(self.ship_idle, ship))
 		except MoveNotPossible:
-			# select new target soon:
-			self.notify_unit_path_blocked(ship)
+			self.log.info("%s %s: ship blocked", self.__class__.__name__, self.worldid)
+			# retry moving ship in 2 secs
+			Scheduler().add_new_object(Callback(self.ship_idle, ship), self,
+			                           GAME_SPEED.TICKS_PER_SECOND * 2)
 			return
 		self.ships[ship] = self.shipStates.moving_random
 
@@ -67,12 +70,6 @@ class GenericAI(Player):
 		@param ship: ship instance"""
 		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.worldid)
 		Scheduler().add_new_object(Callback(self.send_ship, ship), self)
-
-	def notify_unit_path_blocked(self, unit):
-		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
-		# retry moving ship in 2 secs
-		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, \
-		                           GAME_SPEED.TICKS_PER_SECOND * 2)
 
 	def end(self):
 		self.ships = None

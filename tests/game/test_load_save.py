@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import bz2
 import os
 import tempfile
 
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, PRODUCTION, UNITS, COLLECTORS
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GAME, PRODUCTION, RES, TIER, UNITS
+from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
-from horizons.world.component.collectingcompontent import CollectingComponent
 from horizons.world.units.collectors import Collector
-from horizons.scheduler import Scheduler
+from tests.game import TEST_FIXTURES_DIR, game_test, load_session, new_session, saveload, settle
 
-from tests.game import game_test, new_session, settle, load_session
 
 @game_test(manual_session=True)
 def test_load_inactive_production():
@@ -42,22 +44,16 @@ def test_load_inactive_production():
 	session, player = new_session()
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	# Set lumberjack to inactive
-	lj.get_component(Producer).set_active(active = False)
+	lj.get_component(Producer).set_active(active=False)
 	worldid = lj.worldid
 
 	session.run(seconds=1)
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
+	# Save and reload game
+	session = saveload(session)
 
-	assert session.save(savegamename=filename)
-
-	session.end(keep_map=True)
-
-	# Load game
-	session = load_session(filename)
 	loadedlj = WorldObject.get_object_by_id(worldid)
 
 	# Make sure it really is not active
@@ -75,8 +71,8 @@ def create_lumberjack_production_session():
 	settlement, island = settle(session)
 
 	for x in [29, 30, 31, 32]:
-		Build(BUILDINGS.TREE_CLASS, x, 29, island, settlement=settlement,)(player)
-	building = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+		Build(BUILDINGS.TREE, x, 29, island, settlement=settlement,)(player)
+	building = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	production = building.get_component(Producer).get_productions()[0]
 
 	# wait for the lumberjack to start producing
@@ -85,14 +81,10 @@ def create_lumberjack_production_session():
 			break
 		session.run(ticks=1)
 
-	fd1, filename1 = tempfile.mkstemp()
-	os.close(fd1)
-	assert session.save(savegamename=filename1)
-	session.end(keep_map=True)
-
-	# load the game
-	session = load_session(filename1)
+	# Save and reload game
+	session = saveload(session)
 	return session
+
 
 @game_test(manual_session=True)
 def test_load_producing_production_fast():
@@ -106,6 +98,7 @@ def test_load_producing_production_fast():
 	assert session.save(savegamename=filename2)
 	session.end()
 
+
 @game_test(manual_session=True)
 def test_load_producing_production_slow():
 	"""Create a saved game with a producing production, load it, and try to save again in a few seconds."""
@@ -118,6 +111,7 @@ def test_load_producing_production_slow():
 	assert session.save(savegamename=filename2)
 	session.end()
 
+
 @game_test(manual_session=True)
 def test_hunter_save_load():
 	"""Save/loading hunter in different states"""
@@ -126,27 +120,17 @@ def test_hunter_save_load():
 
 	# setup hunter, trees (to keep animals close) and animals
 
-	hunter = Build(BUILDINGS.HUNTER_CLASS, 30, 30, island, settlement=settlement)(player)
+	hunter = Build(BUILDINGS.HUNTER, 30, 30, island, settlement=settlement)(player)
 	hunter_worldid = hunter.worldid
 	del hunter # invalid after save/load
 
 	for x in xrange(27, 29):
 		for y in xrange(25, 28):
-			assert Build(BUILDINGS.TREE_CLASS, x, y, island, settlement=settlement)(player)
+			assert Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(player)
 
-	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 27, 27)(issuer=None)
-	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 28, 27)(issuer=None)
-	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 29, 27)(issuer=None)
-
-	# utility
-	def saveload(session):
-		fd, filename = tempfile.mkstemp()
-		os.close(fd)
-		assert session.save(savegamename=filename)
-		session.end(keep_map=True)
-		session =  load_session(filename)
-		Scheduler().before_ticking() # late init finish (not ticking already)
-		return session
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 27, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 28, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 29, 27)(issuer=None)
 
 	def get_hunter_collector(session):
 		hunter = WorldObject.get_object_by_id(hunter_worldid)
@@ -180,4 +164,97 @@ def test_hunter_save_load():
 		session = saveload(session)
 
 	# last state reached successfully 2 times -> finished
+	session.end()
 
+
+@game_test(manual_session=True)
+def test_settler_save_load():
+	"""Save/loading """
+	session, player = new_session()
+	settlement, island = settle(session)
+
+	# setup:
+	# 1) build settler
+	# 2) save/load
+	# 3) build main square
+	# -> settler won't load properly and not use the resources and die
+
+	settler = Build(BUILDINGS.RESIDENTIAL, 25, 22, island, settlement=settlement)(player)
+	assert settler
+
+	main_square = Build(BUILDINGS.MAIN_SQUARE, 23, 24, island, settlement=settlement)(player)
+	assert main_square
+	main_square.get_component(StorageComponent).inventory.alter(RES.FOOD, 100)
+
+	session = saveload(session)
+
+	session.run(seconds=500)
+
+	tile = session.world.get_tile(Point(25, 22))
+
+	# tile will contain ruin in case of failure
+	assert tile.object.id == BUILDINGS.RESIDENTIAL
+	session.end()
+
+
+@game_test(manual_session=True)
+def test_savegame_upgrade():
+	"""Loads an old savegame and keeps it running for a while"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+
+	path = os.path.join(TEST_FIXTURES_DIR, 'large.sqlite.bz2')
+	with open(path, "rb") as compressed_file:
+		compressed_data = compressed_file.read()
+	data = bz2.decompress(compressed_data)
+	with open(filename, "wb") as f:
+		f.write(data)
+
+	# check if loading and running fails
+	session = load_session(filename)
+	session.run(seconds=30)
+	session.end(keep_map=True)
+
+
+@game_test()
+def test_settler_level_save_load(s, p):
+	"""
+	Verify that settler level up with save/load works
+	"""
+	# test all available upgrades: 0->1, 1->2, 2->3...
+	for test_level in xrange(TIER.CURRENT_MAX):
+		session, player = new_session()
+		settlement, island = settle(s)
+
+		settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
+		settler.level += test_level
+		settler_worldid = settler.worldid
+
+		# make it happy
+		inv = settler.get_component(StorageComponent).inventory
+		to_give = inv.get_free_space_for(RES.HAPPINESS)
+		inv.alter(RES.HAPPINESS, to_give)
+		level = settler.level
+
+		# wait for it to realize it's supposed to upgrade
+		s.run(seconds=GAME.INGAME_TICK_INTERVAL)
+
+		session = saveload(session)
+		settler = WorldObject.get_object_by_id(settler_worldid)
+		inv = settler.get_component(StorageComponent).inventory
+
+		# continue
+		s.run(seconds=GAME.INGAME_TICK_INTERVAL)
+
+		assert settler.level == level
+		# give upgrade res
+		inv.alter(RES.BOARDS, 100)
+		inv.alter(RES.BRICKS, 100)
+
+		# give it max population
+		settler.inhabitants = settler.inhabitants_max
+
+		s.run(seconds=GAME.INGAME_TICK_INTERVAL)
+
+		# should have leveled up
+		assert settler.level == level + 1

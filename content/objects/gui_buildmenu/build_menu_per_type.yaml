@@ -1,0 +1,122 @@
+tab1:
+- icon: icons/tabwidget/buildmenu/class/residential
+- headline: _ Settlement
+- helptext: _ Residents and infrastructure
+-
+  - _ Infrastructure
+  - BUILDINGS.TRAIL
+  - BUILDINGS.STORAGE
+  - BUILDINGS.LOOKOUT
+  - BUILDINGS.SIGNAL_FIRE
+-
+  - _ Residential
+  - BUILDINGS.RESIDENTIAL
+-
+  - _ Services
+  - BUILDINGS.MAIN_SQUARE
+  - BUILDINGS.PAVILION
+  - BUILDINGS.VILLAGE_SCHOOL
+  - BUILDINGS.TAVERN
+-
+  - _ Precaution #TODO better name?
+  - BUILDINGS.FIRE_STATION
+  - BUILDINGS.DOCTOR
+
+tab2:
+- icon: icons/tabwidget/buildmenu/class/fields
+- headline: _ Fields
+-
+  - _ Pioneers
+  - BUILDINGS.FARM
+  - BUILDINGS.PASTURE
+  - BUILDINGS.POTATO_FIELD
+  - BUILDINGS.SUGARCANE_FIELD
+-
+  - _ Settlers
+  - BUILDINGS.TOBACCO_FIELD
+  - BUILDINGS.CATTLE_RUN
+  - BUILDINGS.HERBARY
+  - BUILDINGS.SPICE_FIELD
+-
+  - _ Citizens
+  - BUILDINGS.CORN_FIELD
+  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
+-
+  - _ Citizens
+  - BUILDINGS.HOP_FIELD
+  - BUILDINGS.PIGSTY
+
+tab3:
+- icon: icons/tabwidget/buildmenu/class/agricultural_companies
+- headline: _ Agriculture #TODO better name?
+-
+  - _ Sea
+  - BUILDINGS.FISHER
+  - BUILDINGS.SALT_PONDS
+-
+  - _ Food
+  - BUILDINGS.HUNTER
+  - BUILDINGS.BUTCHERY
+  - BUILDINGS.WINDMILL
+  - BUILDINGS.BAKERY
+-
+  - _ Workshops
+  - BUILDINGS.WEAVER
+  - BUILDINGS.BLENDER
+  - BUILDINGS.PASTRY_SHOP
+-
+  - _ Workshops
+  - BUILDINGS.DISTILLERY
+  - BUILDINGS.TOBACCONIST
+  - BUILDINGS.WINERY
+  - BUILDINGS.BREWERY
+
+tab4:
+- icon: icons/tabwidget/buildmenu/class/companies
+- headline: _ Companies
+-
+  - _ Wood
+  - BUILDINGS.LUMBERJACK
+#  - BUILDINGS.TREE # Only show Tree entry in LJ related tab?
+  - BUILDINGS.CHARCOAL_BURNER
+-
+  - _ Mining
+  - BUILDINGS.CLAY_PIT
+  - BUILDINGS.MINE
+  - BUILDINGS.STONE_PIT
+-
+  - _ Workshops
+  - BUILDINGS.TOOLMAKER
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.SMELTERY
+  - BUILDINGS.STONEMASON
+
+tab5:
+- icon: icons/tabwidget/buildmenu/class/military
+- headline: _ Military
+-
+  - _ Infrastructure
+  - BUILDINGS.BARRIER
+-
+  - _ Workshops
+  - BUILDINGS.WEAPONSMITH
+  - BUILDINGS.CANNONFOUNDRY
+-
+  - _ Fortifications
+  - BUILDINGS.WOODEN_TOWER
+-
+  - _ Military Service
+  - BUILDINGS.BOAT_BUILDER
+  - BUILDINGS.BARRACKS
+
+#tab6:
+#- icon: icons/tabwidget/buildmenu/class/aesthetics
+#- headline: _ Aesthetics
+#-
+#  -
+
+
+meta:
+  unlocking_strategy: single_per_tier

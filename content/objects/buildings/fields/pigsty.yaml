@@ -1,0 +1,27 @@
+id: BUILDINGS.PIGSTY
+name: _ Pigsty
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Raises pigs. Needs a farm.
+tier: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 200, RES.BOARDS: 2}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      50:
+        produces:
+        - [RES.PIGS, 4]
+        time: 60
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.PIGS: 4, RES.ACORNS: 10}
+actionsets:
+  TIER.CITIZENS:
+    as_pigsty0:

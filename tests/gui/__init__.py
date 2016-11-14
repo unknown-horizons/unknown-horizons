@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,25 +27,15 @@ When this test is run, it will launch the game in a subprocess, passing it the
 dotted path to the test (along with other options), similar to this code:
 
 	def test_example():
-		returncode = subprocess.call(['python', 'run_uh.py', '--gui-test',
-									  'tests.gui.minimap'])
+		returncode = subprocess.call(['python2', 'run_uh.py', '--gui-test',
+		                              'tests.gui.minimap'])
 		if returncode != 0:
 			assert False
 
 	def minimap(gui):
-		yield
 		menu = gui.find(name='mainmenu')
-		yield TestFinished
-
-When the game is run with --gui-test, an instance of `TestRunner` will load
-the test and install a callback function in the engine's mainloop. Each call
-the test will be further exhausted:
-
-	def callback():
-		value = minimap.next()
-		if value == TestFinished:
-			# Test ends
 """
+from __future__ import print_function
 
 import os
 import shutil
@@ -57,18 +47,15 @@ from functools import wraps
 from nose.plugins import Plugin
 
 from tests import RANDOM_SEED
+from tests.gui import cooperative
 from tests.gui.helper import GuiHelper
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
-# Used by the test to signal that's it's finished.
-# Needed to distinguish between the original test and other generators used
-# for dialogs.
-TestFinished = 'finished'
-
-class TestFailed(Exception): pass
+class TestFailed(Exception):
+	pass
 
 
 TEST_USER_DIR = None
@@ -102,7 +89,7 @@ class GuiTestPlugin(Plugin):
 
 	Because nose runs in a different process than the real test, we cannot easily
 	show the traceback as if the exception occured here. The real traceback will
-	be used as message in an `TestFailed` exception, which we capture here and
+	be used as message in a `TestFailed` exception, which we capture here and
 	remove the traceback (from the TestFailed raise) entirely, leaving us just
 	with the exception.
 
@@ -161,11 +148,21 @@ class TestRunner(object):
 		self._engine = engine
 		self._gui_handlers = []
 
-		self._filter_traceback()
+		self._custom_setup()
+		#self._filter_traceback()
 		test = self._load_test(test_path)
-		test_gen = test(GuiHelper(self._engine.pychan, self))
-		self._gui_handlers.append(test_gen)
+		testlet = cooperative.spawn(test, GuiHelper(self._engine.pychan, self))
+		testlet.link(self._stop_test)
 		self._start()
+
+	def _stop_test(self, green):
+		self._stop()
+
+	def _custom_setup(self):
+		"""Change build menu to 'per tier' for tests."""
+		from horizons.gui.tabs import BuildTab
+
+		BuildTab.default_build_menu_config = BuildTab.cur_build_menu_config = BuildTab.build_menu_config_per_tier
 
 	def _filter_traceback(self):
 		"""Remove test internals from exception tracebacks.
@@ -210,24 +207,20 @@ class TestRunner(object):
 		This function will be called by the engine's mainloop each frame.
 		"""
 		try:
-			# continue execution of current gui handler
-			value = self._gui_handlers[-1].next()
-			if value == TestFinished:
-				self._stop()
-		except StopIteration:
-			# if we end up here, it means that either
-			#   - a dialog handler has finished its execution (all fine) or
-			#   - the test has finished without signaling it (this might be on purpose)
-			#
-			# TODO issue a warning if this was the test itself
-			pass
+			cooperative.schedule()
+		except Exception:
+			import traceback
+			traceback.print_exc()
+			sys.exit(1)
 
 
-def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
+			 _user_dir=None, use_scenario=None, additional_cmdline=None):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
-	use_fixture		-	starts the game with --load-map=fixture_name
+	use_fixture		-	starts the game with --load-game=fixture_name
+	use_scenario    -   starts the game with --start-scenario=scenario_name
 	ai_players		-	starts the game with --ai_players=<number>
 	timeout			-	test will be stopped after X seconds passed (0 = disabled)
 	cleanup_userdir	-	whether the userdir should be cleaned after the test
@@ -239,17 +232,29 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 		@wraps(func)
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
-			args = [sys.executable, 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
+
+			# when running under coverage, enable it for subprocesses too
+			if os.environ.get('RUNCOV'):
+				executable = ['coverage', 'run']
+			else:
+				executable = [sys.executable]
+
+			args = executable + ['run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):
 					raise Exception('Savegame %s not found' % path)
-				args.extend(['--load-map', path])
+				args.extend(['--load-game', path])
 			elif use_dev_map:
 				args.append('--start-dev-map')
+			elif use_scenario:
+				args.extend(['--start-scenario', use_scenario + '.yaml'])
 
 			if ai_players:
 				args.extend(['--ai-players', str(ai_players)])
+
+			if additional_cmdline:
+				args.extend(additional_cmdline)
 
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
@@ -272,7 +277,9 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			# savegame could not be loaded (instead of showing an error popup)
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
-			env['UH_USER_DIR'] = TEST_USER_DIR
+			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
+			if isinstance(env['UH_USER_DIR'], unicode):
+				env['UH_USER_DIR'] = env['UH_USER_DIR'].encode('utf-8')
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
@@ -285,16 +292,17 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			timelimit.start(timeout)
 
 			stdout, stderr = proc.communicate()
+			if cleanup_userdir:
+				recreate_userdir()
+
 			if proc.returncode != 0:
 				if nose_captured:
 					if stdout:
-						print stdout
-					if cleanup_userdir:
-						recreate_userdir()
-					raise TestFailed('\n\n' + stderr)
+						print(stdout)
+					if not 'Traceback' in stderr:
+						stderr += '\nNo usable error output received, possibly a segfault.'
+					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))
 				else:
-					if cleanup_userdir:
-						recreate_userdir()
 					raise TestFailed()
 
 		# we need to store the original function, otherwise the new process will execute

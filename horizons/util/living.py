@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -66,14 +66,12 @@ class livingProperty(object):
 	def __delete__(self, obj):
 		self.__set__(obj, None)
 
-	def __del__(self):
-		self.__value = None
 
 class LivingObject(object):
 	"""This class is intended to be used with the livingProperty to ensure all variables
 	are safely deinited when intended by the programmer. The livingProperty calls the
 	livingObject's end() function to deinit the object. This mostly replacing the __del__
-	function, as it's behaviour is not well behaved."""
+	function, as its behavior is not well behaved."""
 
 	def end(self):
 		"""Put all the code the object needs to end safely here. Make sure it always

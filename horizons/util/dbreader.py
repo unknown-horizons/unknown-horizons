@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import sqlite3
 import re
+import sqlite3
 
 from horizons.util.python import decorators
+
 
 class DbReader(object):
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
 	def __init__(self, dbfile):
+		self.db_path = dbfile
 		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
-		self.connection.text_factory = str
 		def regexp(expr, item):
 			r = re.compile(expr)
 			return r.match(item) is not None
@@ -46,13 +47,7 @@ class DbReader(object):
 		assert not command.endswith(";")
 		command = '%s;' % command
 		self.cur.execute(command, args)
-		# fetch rows only on select statements, PEP-249 specifies that an error should be
-		# raised when fetching results on other statements that produced no results. This
-		# does not happen on CPython, but on PyPy
-		if command.startswith("SELECT"):
-			return self.cur.fetchall()
-		else:
-			return []
+		return self.cur.fetchall()
 
 	@decorators.cachedmethod
 	def cached_query(self, command, *args):

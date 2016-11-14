@@ -1,28 +1,27 @@
 <?xml version="1.0"?>
 <!-- Overview tab for defensive buildings -->
 <Container size="260,400" name="tower_overview">
-<TabBG amount="5"/>
-<Icon name="player_emblem" position="25,50"/>
+<TabBG amount="5" />
+<Icon name="player_emblem" position="25,50" />
 
-<Container position="0,70" size="245,300" >
+<Container position="0,70" size="245,300">
 
-	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline" text="" helptext="Click to change the name of your settlement" />
+		<RenameLabel name="headline" helptext="Click to change the name of your settlement" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 
 	<HBox size="225,20" max_size="225,20" position="25,43">
 		<Label name="name_label" text="Name:" />
-		<Label name="name" text="" />
+		<Label name="name" />
 	</HBox>
 
 	<HBox min_size="125,20" max_size="225,20" position="25,65">
 		<Icon name="running_costs_label" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<Label name="running_costs" text=""
-			helptext="Running costs" />
+		<Label name="running_costs" helptext="Running costs" />
 	</HBox>
 </Container>
 </Container>

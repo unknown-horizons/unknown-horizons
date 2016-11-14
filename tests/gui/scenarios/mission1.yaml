@@ -1,0 +1,22 @@
+events:
+
+- actions:
+  - {type: goal_reached, arguments: ['warehouse']}
+  - {type: message, arguments: ['You build a warehouse!']}
+  conditions:
+  - {type: building_num_of_type_greater, arguments: [BUILDINGS.WAREHOUSE, 0]}
+
+- actions:
+  - {type: goal_reached, arguments: ['mainsquare']}
+  - {type: message, arguments: ['You build a mainsquare!']}
+  conditions:
+  - {type: building_num_of_type_greater, arguments: [BUILDINGS.MAIN_SQUARE, 0]}
+
+- actions:
+  - {type: win}
+  - {type: message, arguments: ['Congratulations!']}
+  conditions:
+  - {type: building_num_of_type_greater, arguments: [BUILDINGS.FISHER, 0]}
+
+metadata:
+  mapfile: development.sqlite

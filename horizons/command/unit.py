@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command import Command, GenericCommand
 from horizons.entities import Entities
-from horizons.util import WorldObject
-from horizons.command import GenericCommand, Command
-from horizons.util.worldobject import WorldObjectNotFound
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
@@ -30,7 +30,7 @@ class GenericUnitCommand(GenericCommand):
 		try:
 			unit = self._get_object()
 		except WorldObjectNotFound as e:
-			self.log.warn("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
+			self.log.warning("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
 			return
 		if unit.owner.worldid != issuer.worldid:
 			return # don't move enemy units
@@ -67,6 +67,16 @@ class RemoveUnit(GenericUnitCommand):
 
 GenericCommand.allow_network(RemoveUnit)
 
+class CreateRoute(GenericUnitCommand):
+	"""Command class that moves a unit.
+	@param unit: Instance of Unit
+	@param x, y: float coordinates where the unit is to be moved.
+	"""
+	def __init__(self, unit):
+		super(CreateRoute, self).__init__(unit, "create_route")
+
+GenericCommand.allow_network(CreateRoute)
+
 class CreateUnit(Command):
 	"""Command class that creates a unit.
 	TODO: remove this command and put the code in a method in e.g. world.
@@ -92,7 +102,7 @@ class CreateUnit(Command):
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		unit = Entities.units[self.unit_id](session=owner.session, owner=owner, \
+		unit = Entities.units[self.unit_id](session=owner.session, owner=owner,
 		                                    x=self.x, y=self.y, **self.kwargs)
 		unit.initialize()
 		return unit
@@ -110,8 +120,7 @@ class SetStance(GenericUnitCommand):
 
 	def __call__(self, issuer):
 		# we need the stance component, so resolve the name
-		self.args = ( self._get_object().get_component_by_name( self.args[0] ) , )
-		return super(GenericUnitCommand, self).__call__(issuer)
+		self.args = (self._get_object().get_component_by_name(self.args[0]), )
+		return super(SetStance, self).__call__(issuer)
 
 GenericCommand.allow_network(SetStance)
-

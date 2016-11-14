@@ -1,0 +1,10 @@
+events:
+- # Win
+  actions:
+   - {type: win}
+  conditions:
+   - type: time_passed
+     arguments: [0]
+
+metadata:
+  mapfile: development.sqlite

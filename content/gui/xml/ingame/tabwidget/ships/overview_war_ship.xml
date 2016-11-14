@@ -1,65 +1,56 @@
 <?xml version="1.0"?>
 <Container size="250,400">
-	<TabBG amount="5"/>
-	<Icon name="player_emblem" position="25,50"/>
+	<TabBG amount="5" />
+	<Icon name="player_emblem" position="25,50" />
 
 	<Container position="0,70" size="245,320">
 		<!-- Name of Ship -->
 		<HBox position="22,7" min_size="170,20" size="230,20">
 			<Spacer min_size="0" max_size="50" />
-			<Label name="name" border_size="0" helptext="Click to change the name of this ship" />
+			<RenameLabel name="name" helptext="Click to change the name of this ship" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<Container position="22,40" min_size="230,20" size="230,50">
-			<Container position="0,0" size="50,50">
-				<ToggleImageButton name="trade_bg"
-					inactive_image="content/gui/images/buttons/msg_button_bw.png" 
-					up_image="content/gui/images/buttons/msg_button.png" 
-					down_image="content/gui/images/buttons/msg_button_d.png" 
-					hover_image="content/gui/images/buttons/msg_button_h.png"  is_focusable="0"/>
-				<ToggleImageButton name="trade" helptext="Trade" position="10,9"
-					inactive_image="content/gui/icons/ship/civil_32_bw.png"
-					up_image="content/gui/icons/ship/civil_32.png"
-					down_image="content/gui/icons/ship/civil_32_h.png"
-					hover_image="content/gui/icons/ship/civil_32_h.png" is_focusable="0" />
+			<Container size="50,50">
+				<ImageButton name="trade_bg" path="images/buttons/msg_button" />
+				<ImageButton name="trade" helptext="Trade" position="10,9"
+					path="icons/ship/civil_32"
+					down_image="content/gui/icons/ship/civil_32_h.png" />
+					<!--TODO fix explicit down_image-->
 			</Container>
 
 			<Container position="77,0" size="50,50">
-				<ToggleImageButton name="found_settlement_bg"
-					inactive_image="content/gui/images/buttons/msg_button_bw.png" 
-					up_image="content/gui/images/buttons/msg_button.png" 
-					down_image="content/gui/images/buttons/msg_button_d.png" 
-					hover_image="content/gui/images/buttons/msg_button_h.png"  is_focusable="0"/>
-				<ToggleImageButton name="found_settlement" helptext="Build settlement" position="6,5"
-					inactive_image="content/gui/icons/ship/anchor_bw.png" 
-					up_image="content/gui/icons/ship/anchor.png" 
-					down_image="content/gui/icons/ship/anchor_a.png" 
-					hover_image="content/gui/icons/ship/anchor_h.png"  is_focusable="0"/>
+				<ImageButton name="found_settlement_bg" path="images/buttons/msg_button" />
+				<ImageButton name="found_settlement" position="6,5"
+					path="icons/ship/anchor" helptext="Build settlement" />
 			</Container>
 
-			<ToggleImageButton name="configure_route" border_size="0" position="155,0" helptext="Configure trading route"
+			<ImageButton name="configure_route" position="155,0" helptext="Configure trading route"
 				inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
 				up_image="content/gui/icons/ship/traderoute_configure.png"
 				down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
-				hover_image="content/gui/icons/ship/traderoute_configure_hover.png"  is_focusable="0"/>
+				hover_image="content/gui/icons/ship/traderoute_configure_hover.png" />
+				<!--TODO fix weird image names-->
 		</Container>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,100" />
+		<hr position="20,100" />
 
-		<Container position="22,110" size="230,70">
-			<Icon image="content/gui/images/background/inv_bg.png" position="5,4" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="60,4" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="115,4" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="170,4" />
-			<Inventory name="inventory" size="230,70" position="0,0"/>
+		<Container position="22,110" size="230,75">
+			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
+				<Icon image="content/gui/images/background/inv_bg.png" />
+				<Icon image="content/gui/images/background/inv_bg.png" />
+				<Icon image="content/gui/images/background/inv_bg.png" />
+				<Icon image="content/gui/images/background/inv_bg.png" />
+			</HBox>
+			<Inventory name="inventory" size="230,70" position="4,4" uncached="1" />
 		</Container>
 
 		<StanceWidget position="0,190" size="230,40" name="stance" />
 		<Container position="22,190" size="50,50">
 			<Icon position="5,4" />
-			<Inventory name="weapon_inventory" size="50,50" position="0,0" uncached="1"/>
+			<Inventory name="weapon_inventory" size="50,50" uncached="1" />
 		</Container>
 	</Container>
 </Container>

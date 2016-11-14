@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,25 +20,26 @@
 # ###################################################
 
 import contextlib
-import inspect
 import os
+import tempfile
 from functools import wraps
 
 import mock
 
+import horizons.globals
 import horizons.main
 import horizons.world	# needs to be imported before session
-from horizons.ai.aiplayer import AIPlayer
-from horizons.command.unit import CreateUnit
-from horizons.constants import UNITS
-from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import Color, DbReader, SavegameAccessor, DifficultySettings, WorldObject
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.dbreader import DbReader
+from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.startgameoptions import StartGameOptions
+from horizons.util.color import Color
 
 from tests import RANDOM_SEED
+from tests.dummy import Dummy
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
@@ -89,25 +90,33 @@ class SPTestSession(SPSession):
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
 		ExtScheduler.create_instance(Dummy)
-		super(SPTestSession, self).__init__(Dummy, horizons.main.db, rng_seed)
+		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
 		"""
 		Wrapper around original save function to fix some things.
 		"""
-		# SavegameManager.write_metadata tries to create a screenshot and breaks when
+		# SavegameManager._write_screenshot tries to create a screenshot and breaks when
 		# accessing fife properties
-		with mock.patch('horizons.session.SavegameManager'):
+		with mock.patch('horizons.session.SavegameManager._write_screenshot'):
 			# We need to covert Dummy() objects to a sensible value that can be stored
 			# in the database
 			with _dbreader_convert_dummy_objects():
 				return super(SPTestSession, self).save(*args, **kwargs)
 
-	def load(self, savegame, players):
+	def load(self, savegame, players, is_ai_test, is_map):
 		# keep a reference on the savegame, so we can cleanup in `end`
 		self.savegame = savegame
-		super(SPTestSession, self).load(savegame, players, False, False, 0)
+		self.started_from_map = is_map
+		if is_ai_test:
+			# enable trader, pirate and natural resources in AI tests.
+			options = StartGameOptions.create_ai_test(savegame, players)
+		else:
+			# disable the above in usual game tests for simplicity.
+			options = StartGameOptions.create_game_test(savegame, players)
+			options.is_map = is_map
+		super(SPTestSession, self).load(options)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
@@ -115,16 +124,10 @@ class SPTestSession(SPSession):
 		"""
 		super(SPTestSession, self).end()
 
-		# Find all islands in the map first
-		savegame_db = SavegameAccessor(self.savegame)
-		if not keep_map:
-			for (island_file, ) in savegame_db('SELECT file FROM island'):
-				if not island_file.startswith('random:'): # random islands don't exist as files
-					os.remove(island_file)
-
-		# Finally remove savegame
+		# remove the saved game
+		savegame_db = SavegameAccessor(self.savegame, self.started_from_map)
 		savegame_db.close()
-		if remove_savegame:
+		if remove_savegame and not self.started_from_map:
 			os.remove(self.savegame)
 
 	@classmethod
@@ -136,7 +139,7 @@ class SPTestSession(SPSession):
 		"""
 		Scheduler.destroy_instance()
 		ExtScheduler.destroy_instance()
-		WorldObject.reset()
+		SPSession._clear_caches()
 
 	def run(self, ticks=1, seconds=None):
 		"""
@@ -146,18 +149,19 @@ class SPTestSession(SPSession):
 		if seconds:
 			ticks = self.timer.get_ticks(seconds)
 
-		for i in range(ticks):
-			Scheduler().tick( Scheduler().cur_tick + 1 )
+		while ticks > 0:
+			Scheduler().tick(Scheduler().cur_tick + 1)
+			ticks -= 1
 
 
 # import helper functions here, so tests can import from tests.game directly
 from tests.game.utils import create_map, new_settlement, settle
 
 
-def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
+def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
-	otherwise). It returns both session and player to avoid making the function-baed
+	otherwise). It returns both session and player to avoid making the function-based
 	tests too verbose.
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
@@ -166,37 +170,58 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 
 	players = []
 	if human_player:
-		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'ai': False, 'difficulty': human_difficulty})
+		players.append({
+			'id': 1,
+			'name': 'foobar',
+			'color': Color.get(1),
+			'local': True,
+			'ai': False,
+			'difficulty': human_difficulty,
+		})
+
 	for i in xrange(ai_players):
 		id = i + human_player + 1
-		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
+		players.append({
+			'id': id,
+			'name': ('AI' + str(i)),
+			'color': Color.get(id),
+			'local': (id == 1),
+			'ai': True,
+			'difficulty': ai_difficulty,
+		})
 
-	session.load(mapgen(), players)
-
-	if ai_players > 0: # currently only ai tests use the ships
-		for player in session.world.players:
-			point = session.world.get_random_possible_ship_position()
-			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=player)
-			# give ship basic resources
-			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-				ship.get_component(StorageComponent).inventory.alter(res, amount)
-		AIPlayer.load_abstract_buildings(session.db)
-
+	session.load(mapgen(), players, ai_players > 0, True)
 	return session, session.world.player
 
 
-def load_session(savegame, rng_seed=RANDOM_SEED):
+def load_session(savegame, rng_seed=RANDOM_SEED, is_map=False):
 	"""
 	Start a new session with the given savegame.
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
 
-	session.load(savegame, [])
+	session.load(savegame, [], False, is_map)
 
 	return session
 
 
-def game_test(*args, **kwargs):
+def saveload(session):
+	"""Save and load the game (game test version). Use like this:
+
+	# For game tests
+	session = saveload(session)
+	"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	game_session = load_session(filename)
+	Scheduler().before_ticking() # late init finish (not ticking already)
+	return game_session
+
+
+def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
+              manual_session=False, use_fixture=False):
 	"""
 	Decorator that is needed for each test in this package. setup/teardown of function
 	based tests can't pass arguments to the test, or keep a reference somewhere.
@@ -204,29 +229,7 @@ def game_test(*args, **kwargs):
 	break the rest of the tests. The global database reference has to be set each time too,
 	unittests use this too, and we can't predict the order tests run (we should not rely
 	on it anyway).
-
-	The decorator can be used in 2 ways:
-
-		1. No decorator arguments
-
-			@game_test
-			def foo(session, player):
-				pass
-
-		2. Pass extra arguments (timeout, different map generator)
-
-			@game_test(timeout=10, mapgen=my_map_generator)
-			def foo(session, player):
-				pass
 	"""
-	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
-
-	timeout = kwargs.get('timeout', 15 * 60)	# zero means no timeout, 15min default
-	mapgen = kwargs.get('mapgen', create_map)
-	human_player = kwargs.get('human_player', True)
-	ai_players = kwargs.get('ai_players', 0)
-	manual_session = kwargs.get('manual_session', False)
-	use_fixture = kwargs.get('use_fixture', False)
 
 	def handler(signum, frame):
 		raise Exception('Test run exceeded %ds time limit' % timeout)
@@ -234,9 +237,9 @@ def game_test(*args, **kwargs):
 	def deco(func):
 		@wraps(func)
 		def wrapped(*args):
-			horizons.main.db = db
+			horizons.globals.db = db
 			if not manual_session and not use_fixture:
-				s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
+				s, p = new_session(mapgen=mapgen, human_player=human_player, ai_players=ai_players)
 			elif use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):
@@ -259,7 +262,7 @@ def game_test(*args, **kwargs):
 						s.end(remove_savegame=False, keep_map=True)
 					elif not manual_session:
 						s.end()
-				except:
+				except Exception:
 					pass
 					# An error happened after cleanup after an error.
 					# This is ok since cleanup is only defined to work when invariants are in place,
@@ -271,13 +274,7 @@ def game_test(*args, **kwargs):
 
 				timelimit.stop()
 		return wrapped
-
-	if no_decorator_arguments:
-		# return the wrapped function
-		return deco(args[0])
-	else:
-		# return a decorator
-		return deco
+	return deco
 
 game_test.__test__ = False
 

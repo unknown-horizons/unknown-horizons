@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
+import math
+
 from fife import fife
 
-from horizons.world.units.movingobject import MovingObject
-from horizons.util import Point, WorldObject, WeakMethod, decorators, Callback
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.healthcomponent import HealthComponent
 from horizons.constants import LAYERS
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.storagecomponent import StorageComponent
 from horizons.extscheduler import ExtScheduler
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.python.weakmethod import WeakMethod
+from horizons.util.shapes import Point
+from horizons.util.worldobject import WorldObject
+from horizons.world.resourcehandler import ResourceTransferHandler
+from horizons.world.units.movingobject import MovingObject
 
-class Unit(MovingObject):
+
+class Unit(MovingObject, ResourceTransferHandler):
 	log = logging.getLogger("world.units")
 	is_unit = True
 	is_ship = False
@@ -49,11 +56,13 @@ class Unit(MovingObject):
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
 				WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionCancelled = \
+				WeakMethod(self.onInstanceActionCancelled)
 		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 
-		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance( \
-			self.__class__._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
+		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance(
+			self.__class__._fife_object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))
@@ -72,6 +81,7 @@ class Unit(MovingObject):
 		if hasattr(self.owner, 'remove_unit'):
 			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
+		ExtScheduler().rem_all_classinst_calls(self)
 		super(Unit, self).remove()
 		self.log.debug("Unit.remove finished")
 
@@ -81,14 +91,19 @@ class Unit(MovingObject):
 		@param action: string representing the action that is finished.
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
-			self.position.x + self.position.x - self.last_position.x, \
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(
+			self.position.x + self.position.x - self.last_position.x,
 			self.position.y + self.position.y - self.last_position.y, 0))
-		if action.getId() != ('move_' + self._action_set_id):
-			self.act(self._action, self._instance.getFacingLocation(), True)
-		else:
-			self.act(self._action, location, True)
-		self.session.view.cam.refresh()
+
+		facing_loc = self._instance.getFacingLocation()
+		if action.getId().startswith('move_'):
+			# Remember: this means we *ended* a "move" action just now!
+			facing_loc = location
+
+		self.act(self._action, facing_loc=facing_loc, repeating=True)
+
+	def onInstanceActionCancelled(self, instance, action):
+		pass
 
 	def _on_damage(self, caller=None):
 		"""Called when health has changed"""
@@ -104,7 +119,8 @@ class Unit(MovingObject):
 		# remember that it has been drawn automatically
 		self._last_draw_health_call_on_damage = True
 		# remove later (but only in case there's no manual interference)
-		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True), self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
+		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True),
+		                              self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
 
 	def draw_health(self, remove_only=False, auto_remove=False):
 		"""Draws the units current health as a healthbar over the unit."""
@@ -123,29 +139,33 @@ class Unit(MovingObject):
 		health_component = self.get_component(HealthComponent)
 		health = health_component.health
 		max_health = health_component.max_health
-		zoom = self.session.view.get_zoom()
+		zoom = self.session.view.zoom
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
-		# coord separating health (green) from damaged (red)
-		relative_up = fife.Point(int(width * health // max_health - width/2), y_pos - height)
-		relative_dn = fife.Point(int(width * health // max_health - width/2), y_pos)
-		mid_node_up = fife.RendererNode(self._instance, relative_up)
-		mid_node_down = fife.RendererNode(self._instance, relative_dn)
+		relative_x = int((width * health) // max_health - (width // 2))
+		# mid_node is the coord separating healthy (green) and damaged (red) quads
+		mid_node_top = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos - height))
+		mid_node_btm = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos))
 
-		if health != 0: # draw healthy part of health bar
+		left_upper = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos - height))
+		right_upper = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos - height))
+		left_lower = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos))
+		right_lower = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos))
+
+		if health > 0: # draw healthy part of health bar
 			renderer.addQuad(render_name,
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos - height)), \
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
-			                mid_node_down, \
-			                mid_node_up, \
-			                0, 255, 0)
-		if health != max_health: # draw damaged part
+			                 left_upper,
+			                 left_lower,
+			                 mid_node_btm,
+			                 mid_node_top,
+			                 0, 255, 0)
+		if health < max_health: # draw damaged part
 			renderer.addQuad(render_name,
-			                 mid_node_up, \
-			                 mid_node_down, \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos - height)), \
+			                 mid_node_top,
+			                 mid_node_btm,
+			                 right_lower,
+			                 right_upper,
 			                 255, 0, 0)
 
 	def hide(self):
@@ -162,39 +182,19 @@ class Unit(MovingObject):
 
 		owner_id = 0 if self.owner is None else self.owner.worldid
 		db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
-			self.worldid, self.__class__.id, self.position.x, self.position.y, \
-					owner_id)
+			self.worldid, self.__class__.id, self.position.x, self.position.y, owner_id)
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)
 
 		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
-		if (owner_id == 0):
+		if owner_id == 0:
 			owner = None
 		else:
 			owner = WorldObject.get_object_by_id(owner_id)
 		self.__init(x, y, owner)
 
 		return self
-
-	def transfer_to_storageholder(self, amount, res_id, transfer_to):
-		"""Transfers amount of res_id to transfer_to.
-		@param transfer_to: worldid or object reference
-		@return: amount that was actually transfered (NOTE: this is different from the
-						 return value of inventory.alter, since here are 2 storages involved)
-		"""
-		try:
-			transfer_to = WorldObject.get_object_by_id( int(transfer_to) )
-		except TypeError: # transfer_to not an int, assume already obj
-			pass
-		# take res from self
-		ret = self.get_component(StorageComponent).inventory.alter(res_id, -amount)
-		# check if we were able to get the planed amount
-		ret = amount if amount < abs(ret) else abs(ret)
-		# put res to transfer_to
-		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount - ret)
-		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
-		return amount - ret
 
 	def get_random_location(self, in_range):
 		"""Returns a random location in walking_range, that we can find a path to
@@ -204,7 +204,7 @@ class Unit(MovingObject):
 		range_squared = in_range * in_range
 		randint = self.session.random.randint
 		# pick a sample, try tries times
-		tries = int(range_squared / 2)
+		tries = range_squared // 2
 		for i in xrange(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
 			x_diff = randint(1, in_range) # always go at least 1 field
@@ -225,6 +225,9 @@ class Unit(MovingObject):
 			if path:
 				return (possible_target, path)
 		return (None, None)
+
+	def go(self, x, y):
+		self.get_component(CommandableComponent).go(x, y)
 
 	@property
 	def classname(self):

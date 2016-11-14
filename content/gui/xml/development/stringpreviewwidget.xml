@@ -4,13 +4,13 @@
 	<Label name="headline" text="String Previewer Tool for Scenario files" position="15,15" />
 
 	<ScrollArea min_size="300,300" position="15,35">
-		<ListBox name="scenario_list" />
+		<ListBox name="scenario_list" is_focusable="0" />
 	</ScrollArea>
 
-	<VBox position="315,45" min_size="250,300" max_size="250,300">
+	<VBox position="325,45" min_size="200,300" max_size="200,300" padding="10">
 		<Button name="load" text="Load / Reload" />
 		<Label name="hintlbl" wrap_text="1" max_size="200,80" min_size="200,80"
 			text="Select a scenario and click on 'Load / Reload' to update the messages in the captain's log" />
-		<Label name="stats" wrap_text="1" max_size="200,80" min_size="200,80" text="" />
+		<Label name="stats" wrap_text="1" max_size="200,80" min_size="200,80" />
 	</VBox>
 </Container>

@@ -1,35 +1,19 @@
 <?xml version="1.0"?>
 <!--Stance widget, used by fighting ship and multi tab-->
 <Container size="245,70">
-	<Icon image="content/gui/images/background/hr.png" position="22,0" />
+	<hr position="22,0" />
 	<HBox position="82,7">
-		<ToggleImageButton name="aggressive_stance" border_size="0" position="175,480"
-			inactive_image="content/gui/icons/units/stances/aggressive_gr.png"
-			up_image="content/gui/icons/units/stances/aggressive.png"
-			down_image="content/gui/icons/units/stances/aggressive.png"
-			hover_image="content/gui/icons/units/stances/aggressive.png"
-			comment="Description of combat stance (how units behave when fighting)"
-			helptext="Aggressive" />
-		<ToggleImageButton name="hold_ground_stance" border_size="0" position="175,480"
-			inactive_image="content/gui/icons/units/stances/hold_ground_gr.png"
-			up_image="content/gui/icons/units/stances/hold_ground.png"
-			down_image="content/gui/icons/units/stances/hold_ground.png"
-			hover_image="content/gui/icons/units/stances/hold_ground.png"
-			comment="Description of combat stance (how units behave when fighting)"
-			helptext="Hold ground" />
-		<ToggleImageButton name="none_stance" border_size="0" position="175,480"
-			inactive_image="content/gui/icons/units/stances/none_gr.png"
-			up_image="content/gui/icons/units/stances/none.png"
-			down_image="content/gui/icons/units/stances/none.png"
-			hover_image="content/gui/icons/units/stances/none.png"
-			comment="Description of combat stance (how units behave when fighting)"
-			helptext="Passive" />
-		<ToggleImageButton name="flee_stance" border_size="0" position="175,480"
-			inactive_image="content/gui/icons/units/stances/flee_gr.png"
-			up_image="content/gui/icons/units/stances/flee.png"
-			down_image="content/gui/icons/units/stances/flee.png"
-			hover_image="content/gui/icons/units/stances/flee.png"
-			comment="Description of combat stance (how units behave when fighting)"
-			helptext="Flee" />
+		<ImageButton name="aggressive_stance" position="175,480"
+			path="icons/units/stances/aggressive" helptext="Aggressive"
+			comment="Description of combat stance (how units behave when fighting)" />
+		<ImageButton name="hold_ground_stance" position="175,480"
+			path="icons/units/stances/hold_ground" helptext="Hold ground"
+			comment="Description of combat stance (how units behave when fighting)" />
+		<ImageButton name="none_stance" position="175,480"
+			path="icons/units/stances/none" helptext="Passive"
+			comment="Description of combat stance (how units behave when fighting)" />
+		<ImageButton name="flee_stance" position="175,480"
+			path="icons/units/stances/flee" helptext="Flee"
+			comment="Description of combat stance (how units behave when fighting)" />
 	</HBox>
 </Container>

@@ -1,0 +1,9 @@
+[run]
+branch = True
+parallel = True
+source = horizons
+
+include =
+    horizons/*
+    run_uh.py
+    run_server.py

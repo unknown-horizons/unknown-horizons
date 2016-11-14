@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,14 +20,16 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import ShipMission
-from horizons.util import Callback, WorldObject
-from horizons.util.python import decorators
+from horizons.command.uioptions import BuyResource, SellResource
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TRADER
-from horizons.command.uioptions import SellResource, BuyResource
 from horizons.ext.enum import Enum
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent  import NamedComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
+
 
 class InternationalTrade(ShipMission):
 	"""
@@ -49,7 +51,7 @@ class InternationalTrade(ShipMission):
 
 	def save(self, db):
 		super(InternationalTrade, self).save(db)
-		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.settlement.worldid, self.ship.worldid, self.bought_resource, self.sold_resource, self.state.index)
 
 	@classmethod
@@ -86,11 +88,11 @@ class InternationalTrade(ShipMission):
 		else:
 			self.state = self.missionStates.moving_to_other_settlement
 			self._move_to_other_settlement()
-		self.log.info('%s started an international trade mission between %s and %s to sell %s and buy %s using %s', self, \
+		self.log.info('%s started an international trade mission between %s and %s to sell %s and buy %s using %s', self,
 			self.settlement_manager.settlement.get_component(NamedComponent).name, self.settlement.get_component(NamedComponent).name, self.sold_resource, self.bought_resource, self.ship)
 
 	def _move_to_my_settlement(self):
-		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._reached_my_settlement), \
+		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._reached_my_settlement),
 			Callback(self._move_to_my_settlement), 'Unable to move to my settlement (%s)' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _get_max_sellable_amount(self, available_amount):
@@ -102,7 +104,7 @@ class InternationalTrade(ShipMission):
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.sold_resource) * TRADER.PRICE_MODIFIER_SELL)
 		return min(self.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement.get_component(TradePostComponent).buy_list[self.sold_resource],
-			self.settlement.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, available_amount)
+			self.settlement.owner.get_component(StorageComponent).inventory[RES.GOLD] // price, available_amount)
 
 	def _reached_my_settlement(self):
 		self.log.info('%s reached my warehouse area (%s)', self, self.settlement_manager.settlement.get_component(NamedComponent).name)
@@ -120,7 +122,7 @@ class InternationalTrade(ShipMission):
 		self._move_to_other_settlement()
 
 	def _move_to_other_settlement(self):
-		self._move_to_warehouse_area(self.settlement.warehouse.position, Callback(self._reached_other_settlement), \
+		self._move_to_warehouse_area(self.settlement.warehouse.position, Callback(self._reached_other_settlement),
 			Callback(self._move_to_other_settlement), 'Unable to move to the other settlement (%s)' % self.settlement.get_component(NamedComponent).name)
 
 	def _get_max_buyable_amount(self):
@@ -136,7 +138,7 @@ class InternationalTrade(ShipMission):
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.bought_resource) * TRADER.PRICE_MODIFIER_BUY)
 		return min(self.settlement.get_component(StorageComponent).inventory[self.bought_resource] - self.settlement.get_component(TradePostComponent).sell_list[self.bought_resource],
-			self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, needed_amount)
+			self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD] // price, needed_amount)
 
 	def _reached_other_settlement(self):
 		self.log.info('%s reached the other warehouse area (%s)', self, self.settlement.get_component(NamedComponent).name)
@@ -161,7 +163,7 @@ class InternationalTrade(ShipMission):
 		self._return_to_my_settlement()
 
 	def _return_to_my_settlement(self):
-		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._returned_to_my_settlement), \
+		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._returned_to_my_settlement),
 			Callback(self._return_to_my_settlement), 'Unable to return to %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _returned_to_my_settlement(self):

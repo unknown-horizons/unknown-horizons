@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,7 +31,7 @@ class PychanChildFinder(dict):
 		try:
 			return dict.__getitem__(self, key)
 		except KeyError:
-			self[key] = self.gui.findChild(name = key)
+			self[key] = self.gui.findChild(name=key)
 			return self[key]
 
 	def __call__(self, name):

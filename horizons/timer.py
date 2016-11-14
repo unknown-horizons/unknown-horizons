@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,12 @@
 # ###################################################
 
 import time
-import horizons.main
 
-from horizons.util.living import LivingObject
-from horizons.constants import GAME_SPEED
+import horizons.globals
+from horizons.constants import GAME, GAME_SPEED
 from horizons.scheduler import Scheduler
+from horizons.util.living import LivingObject
+
 
 class Timer(LivingObject):
 	"""
@@ -37,7 +38,7 @@ class Timer(LivingObject):
 	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
 
 
-	def __init__(self, tick_next_id = Scheduler.FIRST_TICK_ID, freeze_protection=False):
+	def __init__(self, tick_next_id=Scheduler.FIRST_TICK_ID, freeze_protection=False):
 		"""
 		NOTE: timer will not start until activate() is called
 		@param tick_next_id: int next tick id
@@ -47,17 +48,17 @@ class Timer(LivingObject):
 		self._freeze_protection = freeze_protection
 		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
-		self.tick_next_time = None
+		self.tick_next_time = 0.0
 		self.tick_func_test = []
 		self.tick_func_call = []
 
 	def activate(self):
 		"""Actually starts the timer"""
-		horizons.main.fife.pump.append(self.check_tick)
+		horizons.globals.fife.pump.append(self.check_tick)
 
 	def end(self):
-		if self.check_tick in horizons.main.fife.pump:
-			horizons.main.fife.pump.remove(self.check_tick)
+		if self.check_tick in horizons.globals.fife.pump:
+			horizons.globals.fife.pump.remove(self.check_tick)
 		super(Timer, self).end()
 
 	def add_test(self, call):
@@ -89,13 +90,13 @@ class Timer(LivingObject):
 		@param seconds: number of seconds that are to be converted into ticks
 		@return: int
 		"""
-		return int(round( seconds*GAME_SPEED.TICKS_PER_SECOND))
+		return int(round(seconds*GAME_SPEED.TICKS_PER_SECOND))
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""
 		if self.ticks_per_second == 0:
 			return
-		while time.time() >= self.tick_next_time:
+		while time.time() >= self.tick_next_time and (GAME.MAX_TICKS is None or self.tick_next_id <= GAME.MAX_TICKS):
 			for f in self.tick_func_test:
 				r = f(self.tick_next_id)
 				if r == self.TEST_SKIP:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
-import os
+from nose.plugins.skip import SkipTest
 
-from horizons.util import Color, WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.command.unit import CreateUnit, Attack
-from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.player import Player
+from horizons.command.unit import Attack, CreateUnit
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import UNITS, WEAPONS
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.util.color import Color
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+from horizons.world.player import Player
+from tests.game import game_test, new_session, saveload
 
-from tests.game import game_test, new_session, load_session
 
 def setup_combat(s, ship):
 	worldid = 10000000
 
-	p0 = Player(s, worldid, "p1", Color[1])
-	p1 = Player(s, worldid+1, "p2", Color[2])
+	p0 = Player(s, worldid, "p1", Color.get(1))
+	p1 = Player(s, worldid+1, "p2", Color.get(2))
 
 	for p in (p0, p1):
 		p.initialize(None)
@@ -49,10 +48,15 @@ def setup_combat(s, ship):
 
 	return ((p0, s0), (p1, s1))
 
+
 def health(thing):
 	return thing.get_component(HealthComponent).health
+
+
 def max_health(thing):
 	return thing.get_component(HealthComponent).max_health
+
+
 def one_dead(wid1, wid2):
 	for wid in (wid1, wid2):
 		at_least_one_dead = False
@@ -63,13 +67,11 @@ def one_dead(wid1, wid2):
 	return at_least_one_dead
 
 
-
-
-@game_test
+@game_test()
 def test_noncombat_units(s, p):
-	return
+	raise SkipTest()
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP)
 
 	# healthy before
 	assert health(s0) == max_health(s0)
@@ -84,22 +86,25 @@ def test_noncombat_units(s, p):
 	assert health(s0) == max_health(s0)
 	assert health(s1) == max_health(s1)
 
-@game_test
+
+@game_test()
 def test_equip(s, p):
-	return
+	raise SkipTest()
 
-	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, "This test only makes sense with default cannons. Adapt this if you don't want default cannons."
+	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, (
+	        "This test only makes sense with default cannons."
+	        " Adapt this if you don't want default cannons.")
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
 	assert s0.get_weapon_storage()[ WEAPONS.CANNON ] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 
-	# we don't have daggers
-	not_equip = EquipWeaponFromInventory(s0, WEAPONS.DAGGER, 1).execute(s)
+	# we don't have swords
+	not_equip = EquipWeaponFromInventory(s0, WEAPONS.SWORD, 1).execute(s)
 	assert not_equip == 1
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.DAGGER ] == 0
-	assert s0.get_weapon_storage()[ WEAPONS.DAGGER ] == 0
+	assert s0.get_component(StorageComponent).inventory[ WEAPONS.SWORD ] == 0
+	assert s0.get_weapon_storage()[ WEAPONS.SWORD ] == 0
 
 	# test equip
 	s0.get_component(StorageComponent).inventory.alter( WEAPONS.CANNON, 2 )
@@ -118,8 +123,8 @@ def test_equip(s, p):
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 2
 
-	# no daggers
-	not_equip = UnequipWeaponToInventory(s0, WEAPONS.DAGGER, 2).execute(s)
+	# no swords
+	not_equip = UnequipWeaponToInventory(s0, WEAPONS.SWORD, 2).execute(s)
 	assert not_equip == 2
 
 	not_equip = UnequipWeaponToInventory(s0, WEAPONS.CANNON, 2).execute(s)
@@ -133,10 +138,11 @@ def test_equip(s, p):
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 2 + WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == 0
 
-@game_test
+
+@game_test()
 def test_diplo0(s, p):
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	Attack(s0, s1).execute(s)
 	# attack without war
@@ -157,12 +163,13 @@ def test_diplo0(s, p):
 	# it's not specified which one should lose
 	assert health(s0) == 0 or health(s1) == 0
 
-@game_test
+
+@game_test()
 def test_dying(s, p):
 	"""
 	Check if units actually are gone when they have died
 	"""
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	AddEnemyPair(p0, p1).execute(s)
 	Attack(s0, s1).execute(s)
@@ -175,10 +182,11 @@ def test_dying(s, p):
 	# it's not specified which one should lose
 	assert one_dead(s0.worldid, s1.worldid)
 
-@game_test
+
+@game_test()
 def test_diplo1(s, p):
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	assert health(s0) == max_health(s0)
 	assert health(s1) == max_health(s1)
@@ -210,13 +218,14 @@ def test_diplo1(s, p):
 	assert health(s0) != max_health(s0)
 	assert health(s1) != max_health(s1)
 
-@game_test
+
+@game_test()
 def test_unfair(s, p):
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	# two against one
 
-	s0_1 = CreateUnit(p0.worldid, UNITS.FRIGATE_CLASS, 5, 5)(issuer=p0)
+	s0_1 = CreateUnit(p0.worldid, UNITS.FRIGATE, 5, 5)(issuer=p0)
 
 	AddEnemyPair(p0, p1).execute(s)
 
@@ -238,18 +247,14 @@ def test_combat_save_load():
 	"""
 
 	session, player = new_session()
-	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE)
 
 	s0_worldid, s1_worldid = s0.worldid, s1.worldid
 
 	session.run(seconds=1)
 
 	# saveload
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
+	session = saveload(session)
 
 	s0 = WorldObject.get_object_by_id(s0_worldid)
 	s1 = WorldObject.get_object_by_id(s1_worldid)
@@ -264,11 +269,7 @@ def test_combat_save_load():
 	session.run(seconds=20)
 
 	# saveload
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
+	session = saveload(session)
 
 	assert one_dead(s0_worldid, s1_worldid)
 

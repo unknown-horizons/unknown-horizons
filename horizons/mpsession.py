@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,22 +21,41 @@
 
 import random
 
-from horizons.session import Session
-from horizons.manager import MPManager
-from horizons.timer import Timer
-from horizons.savegamemanager import SavegameManager
+import horizons.main
 from horizons.command.game import SaveCommand
+from horizons.i18n import gettext as T
+from horizons.manager import MPManager
+from horizons.savegamemanager import SavegameManager
+from horizons.session import Session
+from horizons.timer import Timer
+
 
 class MPSession(Session):
-	"""Session class fo multiplayer games."""
+	"""Session class for multiplayer games."""
 
-	def __init__(self, gui, db, network_interface, **kwargs):
+	def __init__(self, db, network_interface, **kwargs):
 		"""
 		@param network_interface: instance of NetworkInterface to use for this game
 		@param rng_seed: seed for random number generator
 		"""
 		self.__network_interface = network_interface
-		super(MPSession, self).__init__(gui, db, **kwargs)
+		self.__network_interface.subscribe("game_starts", self._start_game)
+		self.__network_interface.subscribe("error", self._on_error)
+		super(MPSession, self).__init__(db, **kwargs)
+
+	def _start_game(self, game):
+		horizons.main.start_multiplayer(game)
+
+	def _on_error(self, exception, fatal=True):
+		"""Error callback"""
+		if fatal:
+			self.timer.ticks_per_second = 0
+			self.ingame_gui.windows.open_popup(T("Fatal Network Error"),
+		                                       T("Something went wrong with the network:") + u'\n' +
+		                                       unicode(exception) )
+			self.quit()
+		else:
+			self.ingame_gui.open_popup(T("Error"), unicode(exception))
 
 	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
@@ -53,19 +72,27 @@ class MPSession(Session):
 		return Timer(freeze_protection=False)
 
 	def end(self):
+		self.__network_interface.unsubscribe("error", self._on_error)
+		self.__network_interface.unsubscribe("game_starts", self._start_game)
 		self.__network_interface.disconnect()
 		super(MPSession, self).end()
 
 	def autosave(self):
-		SaveCommand( SavegameManager.create_multiplayer_autosave_name() ).execute(self)
+		self.ingame_gui.open_popup(T("Not possible"), T("Save/load for multiplayer games is not possible yet"))
+		return  #TODO disabled for now, see #2151 for details
+		SaveCommand(SavegameManager.create_multiplayer_autosave_name()).execute(self)
 
 	def quicksave(self):
-		SaveCommand( SavegameManager.create_multiplayer_quicksave_name() ).execute(self)
+		self.ingame_gui.open_popup(T("Not possible"), T("Save/load for multiplayer games is not possible yet"))
+		return  #TODO disabled for now, see #2151 for details
+		SaveCommand(SavegameManager.create_multiplayer_quicksave_name()).execute(self)
 
 	def quickload(self):
-		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		self.ingame_gui.open_popup(T("Not possible"), T("Save/load for multiplayer games is not possible yet"))
 
 	def save(self, savegamename=None):
+		self.ingame_gui.open_popup(T("Not possible"), T("Save/load for multiplayer games is not possible yet"))
+		return  #TODO disabled for now, see #2151 for details
 		if savegamename is None:
 			def sanity_checker(string):
 				try:
@@ -74,11 +101,14 @@ class MPSession(Session):
 					return False
 				else:
 					return True
-			sanity_criteria = _("The filename must consist only of letters, numbers, spaces and _.-")
-			savegamename = self.gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
-			                                             sanity_criteria=sanity_criteria)
+			sanity_criteria = T(
+				"The filename must consist only of letters, numbers, spaces "
+				"and these characters: _ . -"
+			)
+			savegamename = self.ingame_gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
+			                                                    sanity_criteria=sanity_criteria)
 			if savegamename is None:
 				return True # user aborted dialog
 
-		SaveCommand( savegamename ).execute(self)
+		SaveCommand(savegamename).execute(self)
 		return True

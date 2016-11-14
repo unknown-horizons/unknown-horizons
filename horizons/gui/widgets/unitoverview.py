@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Container, HBox, Icon
 
-from horizons.util.gui import load_uh_widget, get_res_icon_path
-from horizons.util import Callback
-from fife.extensions.pychan.widgets import Icon
 from horizons.command.unit import SetStance
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance, DEFAULT_STANCES
+from horizons.gui.util import get_res_icon_path, load_uh_widget
+from horizons.i18n import gettext as T
+from horizons.util.python.callback import Callback
 
-class StanceWidget(pychan.widgets.Container):
+
+class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
 	def __init__(self, **kwargs):
-		super(StanceWidget, self).__init__(size=(245,50), **kwargs)
+		super(StanceWidget, self).__init__(size=(245, 50), **kwargs)
 		widget = load_uh_widget('stancewidget.xml')
 		self.addChild(widget)
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0.3, loops=-1)
@@ -70,10 +71,10 @@ class StanceWidget(pychan.widgets.Container):
 			self.findChild(name=stance.NAME).set_inactive()
 		self.findChild(name=self.instance.stance.NAME).set_active()
 
-class HealthWidget(pychan.widgets.Container):
+class HealthWidget(Container):
 	"""Widget that shows a health bar for an unit"""
 	def __init__(self, **kwargs):
-		super(HealthWidget, self).__init__(size=(50,25), **kwargs)
+		super(HealthWidget, self).__init__(size=(50, 25), **kwargs)
 		widget = load_uh_widget('healthwidget.xml')
 		self.addChild(widget)
 
@@ -97,13 +98,13 @@ class HealthWidget(pychan.widgets.Container):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None
 
-class WeaponStorageWidget(pychan.widgets.HBox):
+class WeaponStorageWidget(HBox):
 	"""Widget that shows a small overview for one instance weapons"""
 	def init(self, instance):
 		self.instance = instance
 		self.update()
 
-	def remove(self, caller = None):
+	def remove(self, caller=None):
 		self.instance = None
 
 	def update(self):
@@ -114,11 +115,12 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 			for weapon, amount in storage:
 				weapons_added = True
 				icon_image = get_res_icon_path(weapon, 24)
-				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
-				icon = Icon(image = icon_image, helptext=icon_tooltip)
+				weapon_name = self.instance.session.db.get_res_name(weapon)
+				# You usually do not need to change anything here when translating
+				helptext = T('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
+				icon = Icon(image=icon_image, helptext=helptext)
 				self.addChild(icon)
 		if not weapons_added:
 			icon_image = "content/gui/icons/resources/none.png"
-			icon = Icon(image = icon_image, helptext=_("none"))
+			icon = Icon(image=icon_image, helptext=T("none"))
 			self.addChild(icon)
-

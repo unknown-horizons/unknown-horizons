@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
-from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
+from horizons.util.python.decorators import bind_all
+from horizons.util.shapes import Shape
 
-class Point(object):
+
+class Point(Shape):
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
@@ -32,65 +32,11 @@ class Point(object):
 	def copy(self):
 		return Point(self.x, self.y)
 
-	def distance(self, other):
-		# trap method: init data, then replace this method with real method
-		from circle import Circle
-		from rect import Rect, ConstRect
-		from annulus import Annulus
-		self._distance_functions_map = {
-			Point: self.distance_to_point,
-			ConstPoint: self.distance_to_point,
-			tuple: self.distance_to_tuple,
-			Circle: self.distance_to_circle,
-			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect,
-			Annulus: self.distance_to_annulus
-		}
-		self.distance = self.__real_distance
-		return self.distance(other)
-
-	def __real_distance(self, other):
-		try:
-			return self._distance_functions_map[other.__class__](other)
-		except KeyError:
-			return other.distance(self)
-
-	def distance_to_point(self, other):
-		return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
-
-	def distance_to_tuple(self, other):
-		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
-
-	def distance_to_rect(self, other):
-		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) + \
-						(max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
-
-	def distance_to_circle(self, other):
-		dist = self.distance(other.center) - other.radius
-		return dist if dist >= 0 else 0
-
-	def distance_to_annulus(self, other):
-		dist = self.distance(other.center)
-		if dist < other.min_radius:
-			return other.min_radius - dist
-		if dist > other.max_radius:
-			return dist - other.max_radius
-		return 0
-
-	def get_coordinates(self):
-		""" Returns point as coordinate
-		This is useful, because Rect supports this too.
-		"""
-		return [self.to_tuple()]
-
 	def to_tuple(self):
 		"""Returns point as a tuple"""
 		return (self.x, self.y)
 
-	def to_fife_point(self):
-		"""Returns point as fife.Point"""
-		return fife.Point(self.x, self.y)
-
+	@property
 	def center(self):
 		"""Returns the center of the point (this makes Point interface more coherent with Rect).
 		"""
@@ -106,7 +52,7 @@ class Point(object):
 
 	def contains(self, point):
 		"""For compatibility with Rect"""
-		return (self.x == point.x and self.y == point.y)
+		return self.x == point.x and self.y == point.y
 
 	def __str__(self):
 		""" nice representation for debugging purposes """
@@ -116,10 +62,10 @@ class Point(object):
 		if other is None:
 			return False
 		elif isinstance(other, Point):
-			return (self.x == other.x and self.y == other.y)
+			return self.x == other.x and self.y == other.y
 		else: # other is tuple
 			try:
-				return (self.x == other[0] and self.y == other[1])
+				return self.x == other[0] and self.y == other[1]
 			except TypeError:
 				return False
 
@@ -131,9 +77,8 @@ class Point(object):
 		assert isinstance(other, Point)
 		return Point(self.x-other.x, self.y-other.y)
 
-	def __iter__(self):
-		"""For interface-sharing with Rect"""
-		yield self
+	def __hash__(self):
+		return hash((self.x, self.y))
 
 	def tuple_iter(self):
 		yield self.to_tuple()
@@ -148,4 +93,3 @@ class ConstPoint(Const, Point):
 
 bind_all(Point)
 bind_all(ConstPoint)
-

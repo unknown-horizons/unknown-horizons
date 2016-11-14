@@ -4,25 +4,75 @@ Tab to be shown at the main square.
 It shows an overview over the inhabitants like average happiness and most needed
 resources.
 -->
-<Container  size="250,450">
-<TabBG amount="6"/>
+<Container size="250,500" name="mainsquare_inhabitants">
+<TabBG name="background" amount="7" />
 
-	<Container position="0,70" size="600,500" >
+	<Container position="0,70" size="600,500">
 
-		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
 			<Label name="headline" text="Settler overview" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
-		<Container size="260,550" position="25,43">
+		<Container size="260,50" position="25,43">
+			<!-- Taxes -->
+			<!-- TODO include icon, label, paid taxes in box to adjust with length
+				of translated strings (can vary a lot between en and nl) -->
+			<Icon name="paid_taxes_icon"
+				image="content/gui/icons/resources/running_costs.png"
+				helptext="Paid taxes" />
+			<Label position="20,0" name="tax_label" text="Taxes:" />
+			<Label name="taxes" position="98,0"
+				helptext="Paid taxes" />
+			<Icon name="tax_rate_icon" position="160,0"
+				image="content/gui/icons/resources/running_costs.png"
+				helptext="Tax rate" />
+			<Label name="tax_val_label" position="180,0"
+				helptext="Tax rate" />
+			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
+		</Container>
 
-			<Label name="avg_happiness_lbl" position="0,0" text="Average happiness:" /><Label name="avg_happiness" position="150,0"/>
+		<Container size="260,60" position="25,95">
+			<Label name="upgrades_lbl" text="Upgrade permissions:" />
+			<ImageButton name="allow_upgrades" position="0,20"
+				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
+				up_image="content/gui/images/buttons/upgrade/allow.png"
+				down_image="content/gui/images/buttons/upgrade/allow.png"
+				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />
+		</Container>
 
-			<Label name="most_needed_res_lbl" position="0,30" text="Most needed resource:" />
-			<HBox name="most_needed_res_container" position="70,50"/>
+		<hr position="20,160" />
 
+		<Container size="260,72" position="25,165">
+			<Label name="headline_happiness_per_house" text="Happiness per house" />
+			<Icon position="30,25" image="content/gui/icons/templates/happiness/sad.png" name="sad_icon" helptext="sad" />
+			<Icon position="80,25" image="content/gui/icons/templates/happiness/average.png" name="avg_icon" helptext="satisfied" />
+			<Icon position="130,25" image="content/gui/icons/templates/happiness/happy.png" name="happy_icon" helptext="happy" />
+
+			<Icon position="0,46" image="content/gui/icons/widgets/cityinfo/house_small.png" name="happiness_house_icon"
+				helptext="Amount of houses with this happiness" />
+			<Label position="30,45" name="sad_amount" />
+			<Label position="80,45" name="avg_amount" />
+			<Label position="130,45" name="happy_amount" />
+		</Container>
+
+		<Container name="residents_per_house_container" size="260,60" position="25,230">
+			<Label name="headline_residents_per_house" text="Residents per house" />
+			<Icon name="inhabitants_icon" position="0,21" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
+				helptext="Number of inhabitants per house" />
+			<Icon name="houses_icon" position="0,41" image="content/gui/icons/widgets/cityinfo/house_small.png"
+				helptext="Houses with this amount of inhabitants" />
+			<Container name="residents_per_house_table" position="20,20" size="240,40" />
+		</Container>
+
+		<Container name="residents_total" size="260,60" position="25,290">
+			<Label name="headline_residents_total" text="Summary" />
+			<Label name="houses" position="10,20" text="houses" />
+			<Label position="160,20" name="house_count" />
+			<Label name="residents" position="10,40" text="residents" />
+			<Label position="160,40" name="resident_count" />
 		</Container>
 	</Container>
 </Container>

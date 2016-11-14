@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,19 +22,20 @@
 
 import logging
 
+from horizons.ext.typing import Optional
 from horizons.world.settlement import Settlement
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Disaster(WorldObject):
 	"""Prototype class for disasters."""
 	log = logging.getLogger("world.disaster")
 
-	TYPE = None # string to identify type
+	TYPE = None # type: str
 
-	# Chance this disaster is seeded into a settlement in a tick of  the
+	# Chance this disaster is seeded into a settlement in a tick of the
 	# disaster manager
 	SEED_CHANCE = 0.5
 
@@ -43,7 +44,7 @@ class Disaster(WorldObject):
 
 	# Resource to distribute to infected buildings
 	#	This is how preventory units (doctors) spot affected buildings.
-	DISASTER_RES = None
+	DISASTER_RES = None # type: Optional[int]
 
 	def __init__(self, settlement, manager):
 		"""
@@ -67,11 +68,11 @@ class Disaster(WorldObject):
 
 	def evaluate(self):
 		"""Called to evaluate if this disaster is still active"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	def expand(self):
 		"""Called to make the disaster expand further"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	def infect(self, building, load):
 		"""Used to expand disaster to this building. Usually called by expand and breakout
@@ -107,7 +108,7 @@ class Disaster(WorldObject):
 	def can_breakout(cls, settlement):
 		"""Returns whether or not a disaster can break out in the
 		settlement"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	def end(self):
 		"""End this class, used for cleanup. Called by the DisasterManager

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,12 @@
 
 import logging
 
-from horizons.world.disaster.firedisaster import FireDisaster
-from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
-from horizons.util import WorldObject
+from horizons.scheduler import Scheduler
+from horizons.util.worldobject import WorldObject
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
+from horizons.world.disaster.firedisaster import FireDisaster
+
 
 class DisasterManager(object):
 	"""The disaster manager manages disasters. It seeds them into the
@@ -35,17 +37,17 @@ class DisasterManager(object):
 
 	# Number of ticks between calls to run()
 	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 60
-	#CALL_EVERY =  1 # to conjure the demons of armageddon
+	#CALL_EVERY = 1 # to conjure the demons of armageddon
 
 	def __init__(self, session, disabled=False):
 		"""
-		@param disabled: Don't do anything at all if true (but be responsive to normal calls)"""
+		@param disabled: Don't do anything at all if True (but be responsive to normal calls)"""
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
 		self.disabled = disabled
 		# List of possible disaster classes
-		self.disasters = [FireDisaster]
+		self.disasters = [FireDisaster, BlackDeathDisaster]
 
 		# Mapping settlement -> active disasters
 		self._active_disaster = {}
@@ -65,7 +67,7 @@ class DisasterManager(object):
 			Scheduler().rem_all_classinst_calls(self)
 			ticks = db_data[0][0] # only one row in table
 			Scheduler().add_new_object(self.run, self, run_in=ticks,
-			                           loop_interval=self.CALL_EVERY, loops = -1)
+			                           loop_interval=self.CALL_EVERY, loops=-1)
 
 		for disaster_id, disaster_type, settlement_id in db("SELECT rowid, type, settlement FROM disaster"):
 			settlement = WorldObject.get_object_by_id(settlement_id)
@@ -100,5 +102,9 @@ class DisasterManager(object):
 		"""Returns whether there is currently a disaster in a settlement"""
 		return settlement in self._active_disaster
 
-
-
+	def get_disaster(self, settlement):
+		"""Returns the currently active disaster for the given settlement. None is
+		returned in case no disaster is currently active."""
+		if self.is_affected(settlement):
+			return self._active_disaster[settlement]
+		return None

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 import types
 import weakref
 
+
 class WeakMethod(object):
 	def __init__(self, function):
 		assert callable(function)
@@ -39,16 +40,18 @@ class WeakMethod(object):
 		elif self.instance() is not None:
 			return self.function(self.instance(), *args, **kwargs)
 		else:
-			raise ReferenceError("Instance: " + str(self.instance()) + \
-													 " Function: "+ str(self.function) + \
-													 " Function from module: " + str(self.function.__module__))
+			raise ReferenceError("Instance: %s  Function: %s  Function from module: %s" %
+			                     (self.instance(), self.function, self.function.__module__))
 
 	def __eq__(self, other):
 		if isinstance(other, WeakMethod):
+			if self.function != other.function:
+				return False
 			# check also if either instance is None or else if instances are equal
-			return self.function == other.function and \
-						 (other.instance is None if self.instance is None else \
-							self.instance() == other.instance())
+			if self.instance is None:
+				return other.instance is None
+			else:
+				return self.instance() == other.instance()
 		elif callable(other):
 			return self == WeakMethod(other)
 		else:
@@ -56,6 +59,9 @@ class WeakMethod(object):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
+
+	def __hash__(self):
+		return hash((self.instance, self.function))
 
 	def __str__(self):
 		return str(self.function)

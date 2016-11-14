@@ -10,45 +10,22 @@
 	<Icon image="content/gui/images/buttons/msg_button.png" />
 </VBox>
 
-<VBox name="button_labels"  padding="35"  position="68,32" max_size="185,312" min_size="185,312">
-	<Label name="start" text="Return to game" />
-	<Label name="savegame" text="Save game"  />
-	<Label name="loadgame" text="Load game" />
-	<Label name="settings" text="Settings" />
-	<Label name="help" text="Help"        />
-	<Label name="quit" text="Cancel game"/>
+<VBox name="button_labels" padding="31" position="68,32" max_size="185,312" min_size="185,312">
+	<Label font="headline" name="start" text="Return to game" />
+	<Label font="headline" name="savegame" text="Save game"  />
+	<Label font="headline" name="loadgame" text="Load game" />
+	<Label font="headline" name="settings" text="Settings" />
+	<Label font="headline" name="help" text="Help"        />
+	<Label font="headline" name="quit" text="Cancel game" />
 </VBox>
 
 <VBox name="button_images"  padding="21"  position="25,25">
-	<ImageButton name="startGame"
-		up_image="content/gui/icons/mainmenu/32/compass_bw.png"
-		down_image="content/gui/icons/mainmenu/32/compass.png"
-		hover_image="content/gui/icons/mainmenu/32/compass.png" />
-
-	<ImageButton name="savegameButton"
-		up_image="content/gui/icons/mainmenu/32/save_bw.png"
-		down_image="content/gui/icons/mainmenu/32/save.png"
-		hover_image="content/gui/icons/mainmenu/32/save.png" />
-
-	<ImageButton name="loadgameButton"
-		up_image="content/gui/icons/mainmenu/32/load_bw.png"
-		down_image="content/gui/icons/mainmenu/32/load.png"
-		hover_image="content/gui/icons/mainmenu/32/load.png" />
-
-	<ImageButton name="settingsLink"
-		up_image="content/gui/icons/mainmenu/32/gears_bw.png"
-		down_image="content/gui/icons/mainmenu/32/gears.png"
-		hover_image="content/gui/icons/mainmenu/32/gears.png" />
-
-	<ImageButton name="helpLink"
-		up_image="content/gui/icons/mainmenu/32/help_bw.png"
-		down_image="content/gui/icons/mainmenu/32/help.png"
-		hover_image="content/gui/icons/mainmenu/32/help.png" />
-
-	<ImageButton name="closeButton"
-		up_image="content/gui/icons/mainmenu/32/door_bw.png"
-		down_image="content/gui/icons/mainmenu/32/door.png"
-		hover_image="content/gui/icons/mainmenu/32/door.png" />
+	<MainmenuButton name="startGame" icon="compass" max_size="32,32" />
+	<MainmenuButton name="savegameButton" icon="save" max_size="32,32" />
+	<MainmenuButton name="loadgameButton" icon="load" max_size="32,32" />
+	<MainmenuButton name="settingsLink" icon="gears" max_size="32,32" />
+	<MainmenuButton name="helpLink" icon="help" max_size="32,32" />
+	<MainmenuButton name="closeButton" icon="door" max_size="32,32" />
 </VBox>
 
 </Container>

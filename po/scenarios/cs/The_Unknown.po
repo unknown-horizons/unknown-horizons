@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2016-08-28 10:25+0000\n"
+"Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/uh/the-unknown/cs/"
+">\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.8-dev\n"
+
+#. scenario difficulty
+msgid "easy"
+msgstr "lehká"
+
+#. scenario description
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and "
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
+"Everything went fine until you came into a storm…"
+msgstr ""
+"Jsi kapitán lodi pod vlajkou Anglie roku 1740. Ty a tvoje posádka jste byli "
+"na cestě do jedné anglické kolonie uprostřed Tichého oceánu.\n"
+"Všechno šlo dobře až do chvíle, kdy vás potkala bouře…"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "20th November 1740"
+msgstr "20. listopadu 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"Po čtyřech dnech se bouře konečně vytratila a my si můžeme odpočinout. Zbývá "
+"nám ale už jen málo jídla a naše loď je na tom špatně. Navigační nástroje a "
+"mapy jsou ztraceny."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for "
+"fish, so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"Musíme brzy narazit na pevninu. Jeden z mých chlapů viděl ptáky lovící ryby, "
+"takže země nemůže být daleko. Naštěstí máme vždy nějaké nástroje a prkna na "
+"palubě, takže můžeme postavit nějaký prostý přístřešek."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"Úkol:\n"
+"Najdi zemi a postav přístav."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "22nd November 1740"
+msgstr "22. listopadu 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days… we are running out of food and lack basic building material."
+msgstr ""
+"Přístav stojí a vzniká nová naděje. Stále mám obavy z nadcházejících dnů… "
+"dochází nám jídlo a chybí základní stavební materiál."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send "
+"people gathering food and lumber so that we can survive and build some "
+"shelter."
+msgstr ""
+"Potřebujeme zajistit naše základní potřeby abychom zůstali naživu. Přišel "
+"čas vyslat lidi nashromáždit jídlo a dřevo abychom byli schopni přežít a "
+"postavit nějaký přístřešek."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"Úkol:\n"
+"Postav alespoň jeden od každého:\n"
+"* Dřevorubec\n"
+"* Rybář\n"
+"* Lovec\n"
+"Nashromáždi 5 kusů jídla a 5 prken."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "25th November 1740"
+msgstr "25. listopadu 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"Zabezpečili jsme naše základní potřeby jídla a nashromáždili nějaké dřevo k "
+"zachování růstu naší nové osady. Naši lidé se dožadují místa kde žít a kde "
+"vyměňovat zboží pro jejich každodenní potřebu."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"Přišel čas postavit nějaké stany ve kterých bychom mohli žít a malou tržnici "
+"k zásobení našich občanů zbožím."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build a Main Square and at least 10 Tents."
+msgstr ""
+"Úkol:\n"
+"Postav Tržnici a alespoň 10 stanů."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "1st December 1740"
+msgstr "1. prosince 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"Konečně máme dostatek jídla a znovu místo kde žít. Můj stan sice není moc "
+"pohodlný, ale drží mě v suchu a já mám v noci zase pocit střechy nad hlavou."
+
+#. This is the text body of a logbook page.
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home…"
+msgstr ""
+"V noci jsem zkoumal hvězdy, ale bez mých námořních map a navigačních "
+"nástrojů zůstává jejich význam neznámý. Cítím, že tu chvíli zůstaneme "
+"uvíznutí, takže budeme muset vytěžit z naší situace co nejvíce.\n"
+"Můžeme se jedině pokusit vytvořit civilizaci a najít cestu domů…"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Grow the village until you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"Úkol:\n"
+"Rozšiř vesnici dokud nebude mít alespoň 250 obyvatel a pozitivní bilanci."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "27th August 1745"
+msgstr "27. srpna 1745"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I "
+"have started getting used to my new home, but this island is too small to "
+"stay here forever."
+msgstr ""
+"Naší vesnici se daří dobře, město už má přes 250 obyvatel. Začal jsem si "
+"zvykat na můj nový domov, ale tento ostrov je příliš malý abychom tu zůstali "
+"navždy."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect, but I hope it will "
+"suffice to return here."
+msgstr ""
+"Měli bychom naložit naši loď a vyrazit hledat větší ostrov nabízející "
+"prostor a suroviny pro moje lidi. Vytvořil jsem základní navigační mapu "
+"pomocí hvězd které v noci pozoruji. Není perfektní, ale doufám, že bude "
+"stačit k návratu sem."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
+"how you can contribute to making this scenario longer and better!"
+msgstr ""
+"Úkol:\n"
+"Zkontaktuj tým Unknown Horizons (www.unknown-horizons.org) a zjisti jak bys "
+"mohl přispět udělat tento scénář delší a lepší!"

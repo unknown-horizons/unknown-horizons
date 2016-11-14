@@ -1,0 +1,1132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:43+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367757812.0\n"
+
+msgid "game"
+msgstr "Permainan"
+
+msgid "building"
+msgstr "Bangunan"
+
+msgid "build"
+msgstr "Bangun"
+
+msgid "player"
+msgstr ""
+
+msgid "settlement"
+msgstr "Pemukiman"
+
+msgid "ship"
+msgstr "Kapal"
+
+msgid "tent"
+msgstr "Tenda"
+
+msgid "farm"
+msgstr "Lahan Pertanian"
+
+msgid "map"
+msgstr "peta"
+
+msgid "resource"
+msgstr "Sumberdaya"
+
+msgid "warehouse"
+msgstr "Gudang"
+
+msgid "inhabitants"
+msgstr "penduduk"
+
+msgid "change"
+msgstr "perubahan"
+
+msgid "unknown"
+msgstr ""
+
+msgid "produce"
+msgstr "Menghasilkan"
+
+msgid "no"
+msgstr ""
+
+msgid "trade"
+msgstr "perdagangan"
+
+msgid "check"
+msgstr ""
+
+msgid "field"
+msgstr "lahan"
+
+msgid "main"
+msgstr ""
+
+msgid "buy"
+msgstr "beli"
+
+msgid "click"
+msgstr "klik"
+
+msgid "left"
+msgstr "kiritertinggal"
+
+msgid "overview"
+msgstr "tinjauan"
+
+msgid "running"
+msgstr "Berjalan"
+
+msgid "square"
+msgstr "Kotak"
+
+msgid "lumberjack"
+msgstr "penebang pohon"
+
+msgid "unable"
+msgstr "tidak bisa"
+
+msgid "continue"
+msgstr "lanjutkanteruskan"
+
+msgid "main square"
+msgstr "alun-alunlapangan"
+
+msgid "production"
+msgstr "produksi"
+
+msgid "sailors"
+msgstr "pelaut"
+
+msgid "sell"
+msgstr "jual"
+
+msgid "storage"
+msgstr "gudangpenyimpanan"
+
+msgid "contact"
+msgstr "kontak"
+
+msgid "house"
+msgstr "rumah"
+
+msgid "menu"
+msgstr "menusajian"
+
+msgid "tab"
+msgstr "tab"
+
+msgid "close"
+msgstr "tutup"
+
+msgid "food"
+msgstr "makanan"
+
+msgid "free"
+msgstr "bebas"
+
+msgid "ready"
+msgstr "baca"
+
+msgid "setting"
+msgstr "pengaturanseting"
+
+msgid "start"
+msgstr "mulaiawal"
+
+msgid "time"
+msgstr "waktu"
+
+msgid "trader"
+msgstr "perdagangan"
+
+msgid "unit"
+msgstr "satuan"
+
+msgid "version"
+msgstr "versi"
+
+msgid "fire"
+msgstr "api"
+
+msgid "island"
+msgstr "pulau"
+
+msgid "select"
+msgstr "pilih"
+
+msgid "slot"
+msgstr "tempat"
+
+msgid "stock"
+msgstr "persediaan"
+
+msgid "upgrade"
+msgstr "mengembangkan"
+
+msgid "coast"
+msgstr "pantai"
+
+msgid "color"
+msgstr "warna"
+
+msgid "companies"
+msgstr "perusahaan"
+
+msgid "file"
+msgstr "api"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "kunci"
+
+msgid "taxes"
+msgstr "pajak-pajak"
+
+msgid "collector"
+msgstr "pengumpul"
+
+msgid "connection"
+msgstr "hubungan"
+
+msgid "log"
+msgstr "balok kayu"
+
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr "penduduk"
+
+msgid "wool"
+msgstr "wol"
+
+msgid "boards"
+msgstr "Papan"
+
+msgid "built"
+msgstr "Bangun"
+
+msgid "button"
+msgstr "tombol"
+
+msgid "choose"
+msgstr "pilih"
+
+msgid "connect"
+msgstr "menghubungkan"
+
+msgid "cost"
+msgstr "biaya"
+
+msgid "happiness"
+msgstr "kebahagiaan"
+
+msgid "road"
+msgstr "jalan"
+
+msgid "save"
+msgstr "dijual"
+
+msgid "tree"
+msgstr "pohon"
+
+msgid "amount"
+msgstr "Jumlah"
+
+msgid "reach"
+msgstr ""
+
+msgid "size"
+msgstr ""
+
+msgid "add"
+msgstr ""
+
+msgid "fisher"
+msgstr "nelayan"
+
+msgid "free trader"
+msgstr "pedagang bebas"
+
+msgid "in stock"
+msgstr "tersedia"
+
+msgid "increase"
+msgstr "meningkatkan"
+
+msgid "mode"
+msgstr "mode"
+
+msgid "password"
+msgstr "Kata sandi"
+
+msgid "pasture"
+msgstr ""
+
+msgid "range"
+msgstr "jangkauan"
+
+msgid "signal"
+msgstr "sinyal"
+
+msgid "speed"
+msgstr "benih"
+
+msgid "sugar"
+msgstr "gula"
+
+msgid "access"
+msgstr "akses"
+
+msgid "build menu"
+msgstr "menu bangunan"
+
+msgid "confectionery"
+msgstr "pabrik konfeksi"
+
+msgid "enabled"
+msgstr "aktif"
+
+msgid "fetch"
+msgstr "Ambil"
+
+msgid "help"
+msgstr "bantutolong"
+
+msgid "income"
+msgstr "Penghasilan"
+
+msgid "join"
+msgstr "bergabung"
+
+msgid "level"
+msgstr "tingkatan"
+
+msgid "move"
+msgstr "pindahkan"
+
+msgid "multiple"
+msgstr "banyak"
+
+msgid "please check"
+msgstr ""
+
+msgid "potato"
+msgstr "kentang"
+
+msgid "settler"
+msgstr "penduduk"
+
+msgid "total"
+msgstr "total"
+
+msgid "construction"
+msgstr "pembangunan"
+
+msgid "creator"
+msgstr ""
+
+msgid "faith"
+msgstr "keyakinanagama"
+
+msgid "hold"
+msgstr ""
+
+msgid "icon"
+msgstr "besi"
+
+msgid "lamb"
+msgstr "domba"
+
+msgid "leave"
+msgstr "pergi"
+
+msgid "location"
+msgstr "lokasi"
+
+msgid "multiple buildings"
+msgstr ""
+
+msgid "pioneers"
+msgstr "pelopor"
+
+msgid "reached"
+msgstr "tercapai"
+
+msgid "run"
+msgstr "laripergi"
+
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
+msgid "slider"
+msgstr "slidertombol geser"
+
+msgid "space"
+msgstr "spasiruang kosong"
+
+msgid "storage tent"
+msgstr ""
+
+msgid "target"
+msgstr "targetsasaran"
+
+msgid "terminated"
+msgstr ""
+
+msgid "tools"
+msgstr "alatperkakas"
+
+msgid "account"
+msgstr ""
+
+msgid "active"
+msgstr "aktif"
+
+msgid "afford"
+msgstr "menjangkau"
+
+msgid "animals"
+msgstr "hewan"
+
+msgid "Captain's log"
+msgstr "catatan kapten"
+
+msgid "cloth"
+msgstr ""
+
+msgid "construct"
+msgstr "membangun"
+
+msgid "cursor"
+msgstr ""
+
+msgid "description"
+msgstr "keterangan"
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr ""
+
+msgid "fish"
+msgstr "ikan"
+
+msgid "forest"
+msgstr ""
+
+msgid "from time to time"
+msgstr "seiring waktu"
+
+msgid "global"
+msgstr ""
+
+msgid "grow"
+msgstr ""
+
+msgid "happy"
+msgstr ""
+
+msgid "information"
+msgstr ""
+
+msgid "liquor"
+msgstr "cairan"
+
+msgid "minimap"
+msgstr "peta kecil"
+
+msgid "offer"
+msgstr "menawarkan"
+
+msgid "overview tab"
+msgstr "tab tinjauan"
+
+msgid "plant"
+msgstr "tumbuhan"
+
+msgid "play"
+msgstr "mainkan"
+
+msgid "please check your"
+msgstr ""
+
+msgid "potatoes"
+msgstr "kentang-kentang"
+
+msgid "price"
+msgstr "harga"
+
+msgid "read"
+msgstr "baca"
+
+msgid "screen"
+msgstr "layar"
+
+msgid "service"
+msgstr "layanan"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "solusijalan keluar"
+
+msgid "sound"
+msgstr "suara"
+
+msgid "special"
+msgstr "khusus"
+
+msgid "spot"
+msgstr "tempat"
+
+msgid "statistics"
+msgstr "statistik"
+
+msgid "store"
+msgstr "tokomenyimpan"
+
+msgid "team"
+msgstr "regu"
+
+msgid "tear"
+msgstr "air mata"
+
+msgid "time to time"
+msgstr ""
+
+msgid "trading"
+msgstr "perdagangan"
+
+msgid "unsupported"
+msgstr ""
+
+msgid "visit"
+msgstr "berkunjung"
+
+msgid "world"
+msgstr "dunia"
+
+msgid "wrong"
+msgstr ""
+
+msgid "bar"
+msgstr ""
+
+msgid "bug"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "forum"
+msgstr ""
+
+msgid "happen"
+msgstr ""
+
+msgid "harvest"
+msgstr "panen"
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "wol domba"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "memainkan"
+
+msgid "produced"
+msgstr "Menghasilkan"
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "dijual"
+
+msgid "school"
+msgstr "sekolahan"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr "sementara"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr "nilai"
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "keseimbangan"
+
+msgid "load"
+msgstr "muat"
+
+msgid "trail"
+msgstr "jalan setapak"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "besi"
+
+msgid "tobacco"
+msgstr "tembakau"
+
+msgid "clay"
+msgstr "tanah liat"
+
+msgid "money"
+msgstr "uang"
+
+msgid "pavilion"
+msgstr "gedung"
+
+msgid "tax"
+msgstr "pajak"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr ""
+
+msgid "wait"
+msgstr ""
+
+msgid "decrease"
+msgstr "menurun"
+
+msgid "ore"
+msgstr "bijih"
+
+msgid "return"
+msgstr "kembalihasil"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "memakai"
+
+msgid "idle"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr "dijual"
+
+msgid "village"
+msgstr "desa"
+
+msgid "yields"
+msgstr "keuntungan"
+
+msgid "back"
+msgstr "kembali"
+
+msgid "build settlement"
+msgstr "bangun pemukiman"
+
+msgid "charcoal"
+msgstr "arang kayu"
+
+msgid "empty"
+msgstr ""
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr ""
+
+msgid "graphics"
+msgstr "tampilan"
+
+msgid "hunt"
+msgstr "buruan"
+
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+msgid "potato field"
+msgstr "lahan kentang"
+
+msgid "seed"
+msgstr "benih"
+
+msgid "send"
+msgstr "benih"
+
+msgid "sheep"
+msgstr "domba"
+
+msgid "signal fire"
+msgstr "api sinyal"
+
+msgid "sugar field"
+msgstr "lahan tebu"
+
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr "pilih"
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "mouse"
+msgstr "rumah"
+
+msgid "partner"
+msgstr ""
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr "tokomenyimpan"
+
+msgid "weapon"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr "spasiruang kosong"
+
+msgid "cocoa"
+msgstr ""
+
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "suara"
+
+msgid "herbs"
+msgstr ""
+
+msgid "pause"
+msgstr ""
+
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "dijual"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr "Sumberdaya"
+
+msgid "trade partner"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "warga"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr ""
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "biaya berjalan"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr "penduduk"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr "waktu"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+

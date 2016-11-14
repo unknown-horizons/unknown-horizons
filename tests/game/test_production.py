@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,20 +20,20 @@
 # ###################################################
 
 from horizons.command.building import Build
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, PRODUCTIONLINES, RES
 from horizons.world.production.producer import Producer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, PRODUCTION
+from tests.game import game_test, settle
 
-from tests.game import settle, game_test
 
-@game_test
+@game_test()
 def test_basic_wood_production(session, player):
 	"""This is a fairly detailed test of the simple wood production"""
 
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
-	assert lj.id == BUILDINGS.LUMBERJACK_CLASS
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+	assert lj.id == BUILDINGS.LUMBERJACK
 
 	storage = lj.get_component(StorageComponent)
 	assert isinstance(storage, StorageComponent)
@@ -57,7 +57,7 @@ def test_basic_wood_production(session, player):
 	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
 
 	# Got res, producing
-	storage.inventory.alter(RES.TREES_ID, 1)
+	storage.inventory.alter(RES.TREES, 2)
 	assert producer._get_current_state() == PRODUCTION.STATES.producing
 
 	# Work half-way
@@ -77,7 +77,7 @@ def test_basic_wood_production(session, player):
 	session.run(seconds=2)
 
 	assert producer._get_current_state() == PRODUCTION.STATES.producing
-	assert storage.inventory[RES.BOARDS_ID] == 0
+	assert storage.inventory[RES.BOARDS] == 0
 	# Callback should not yet have been called
 	assert not production_finished[0]
 
@@ -88,16 +88,16 @@ def test_basic_wood_production(session, player):
 	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
 
 	# Produced one board
-	assert storage.inventory[RES.BOARDS_ID] == 1
+	assert storage.inventory[RES.BOARDS] == 1
 	# Callback should have been called now
 	assert production_finished[0]
 
 	# Fillup storage
-	storage.inventory.alter(RES.BOARDS_ID, storage.inventory.get_limit(RES.BOARDS_ID))
+	storage.inventory.alter(RES.BOARDS, storage.inventory.get_limit(RES.BOARDS))
 
 	# Cannot produce because inventory full
 	assert producer._get_current_state() == PRODUCTION.STATES.inventory_full
 
 	# Empty inventory, wait again
-	storage.inventory.alter(RES.BOARDS_ID, -storage.inventory.get_limit(RES.BOARDS_ID))
+	storage.inventory.alter(RES.BOARDS, -storage.inventory.get_limit(RES.BOARDS))
 	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res

@@ -1,0 +1,1153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2011-07-24 00:10+0200\n"
+"Last-Translator: Mantas <dalelemanes@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
+
+msgid "game"
+msgstr "žaidimas"
+
+msgid "building"
+msgstr "pastatas"
+
+msgid "build"
+msgstr "statyti"
+
+msgid "player"
+msgstr ""
+
+msgid "settlement"
+msgstr "nausėdija"
+
+msgid "ship"
+msgstr "laivas"
+
+msgid "tent"
+msgstr "palapinė"
+
+msgid "farm"
+msgstr "ūkis"
+
+msgid "map"
+msgstr "žemėlapis"
+
+msgid "resource"
+msgstr "šaltinis"
+
+msgid "warehouse"
+msgstr ""
+
+msgid "inhabitants"
+msgstr "gyventojai"
+
+msgid "change"
+msgstr "keisti"
+
+msgid "unknown"
+msgstr "nežinomas"
+
+msgid "produce"
+msgstr "gaminti"
+
+msgid "no"
+msgstr "ne"
+
+msgid "trade"
+msgstr "prekyba"
+
+msgid "check"
+msgstr "tikrinti"
+
+msgid "field"
+msgstr "laukas"
+
+msgid "main"
+msgstr "pagrindinis"
+
+msgid "buy"
+msgstr "pirkti"
+
+msgid "click"
+msgstr "spragtelėti"
+
+msgid "left"
+msgstr "kairė"
+
+msgid "overview"
+msgstr "apžvalga"
+
+msgid "running"
+msgstr "veikimas"
+
+msgid "square"
+msgstr ""
+
+msgid "lumberjack"
+msgstr "medkirtys"
+
+msgid "unable"
+msgstr ""
+
+msgid "continue"
+msgstr "tęsti"
+
+msgid "main square"
+msgstr "pagrindinė aikštė"
+
+msgid "production"
+msgstr "gamyba"
+
+msgid "sailors"
+msgstr ""
+
+msgid "sell"
+msgstr "parduoti"
+
+msgid "storage"
+msgstr "saugykla"
+
+msgid "contact"
+msgstr "susisiekti"
+
+msgid "house"
+msgstr "namas"
+
+msgid "menu"
+msgstr "meniu"
+
+msgid "tab"
+msgstr "skirtukas"
+
+msgid "close"
+msgstr ""
+
+msgid "food"
+msgstr "maistas"
+
+msgid "free"
+msgstr "laisvas"
+
+msgid "ready"
+msgstr ""
+
+msgid "setting"
+msgstr "nuostata"
+
+msgid "start"
+msgstr "pradėti"
+
+msgid "time"
+msgstr "laikas"
+
+msgid "trader"
+msgstr "pirklys"
+
+msgid "unit"
+msgstr ""
+
+msgid "version"
+msgstr "versija"
+
+msgid "fire"
+msgstr "ugnis"
+
+msgid "island"
+msgstr ""
+
+msgid "select"
+msgstr "pasirinkti"
+
+msgid "slot"
+msgstr "lizdas"
+
+msgid "stock"
+msgstr "ištekliai"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "coast"
+msgstr "pakrantė"
+
+msgid "color"
+msgstr ""
+
+msgid "companies"
+msgstr "įmonės"
+
+msgid "file"
+msgstr ""
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "klavišas"
+
+msgid "taxes"
+msgstr "mokesčiai"
+
+msgid "collector"
+msgstr "surinkėjas"
+
+msgid "connection"
+msgstr "ryšys"
+
+msgid "log"
+msgstr "žurnalas"
+
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr ""
+
+msgid "wool"
+msgstr "vilna"
+
+msgid "boards"
+msgstr "lentos"
+
+msgid "built"
+msgstr "pastatymas"
+
+msgid "button"
+msgstr ""
+
+msgid "choose"
+msgstr "pasirinkti"
+
+msgid "connect"
+msgstr "užmegzti ryšį"
+
+msgid "cost"
+msgstr "kaina"
+
+msgid "happiness"
+msgstr "laimė"
+
+msgid "road"
+msgstr ""
+
+msgid "save"
+msgstr "įrašyti"
+
+msgid "tree"
+msgstr "medis"
+
+msgid "amount"
+msgstr ""
+
+msgid "reach"
+msgstr "pasiekti"
+
+msgid "size"
+msgstr ""
+
+msgid "add"
+msgstr "papildyti"
+
+msgid "fisher"
+msgstr "žvejys"
+
+msgid "free trader"
+msgstr "nepriklausomas pirklys"
+
+msgid "in stock"
+msgstr ""
+
+msgid "increase"
+msgstr "padidinti"
+
+msgid "mode"
+msgstr "būsena"
+
+msgid "password"
+msgstr ""
+
+msgid "pasture"
+msgstr "ganykla"
+
+msgid "range"
+msgstr "sritis"
+
+msgid "signal"
+msgstr "signalas"
+
+msgid "speed"
+msgstr ""
+
+msgid "sugar"
+msgstr "cukrus"
+
+msgid "access"
+msgstr ""
+
+msgid "build menu"
+msgstr "statymo meniu"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "fetch"
+msgstr ""
+
+msgid "help"
+msgstr "pagalba"
+
+msgid "income"
+msgstr "pajamos"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "lygis"
+
+msgid "move"
+msgstr "perkelti"
+
+msgid "multiple"
+msgstr "įvairiarūšis"
+
+msgid "please check"
+msgstr ""
+
+msgid "potato"
+msgstr "bulvės"
+
+msgid "settler"
+msgstr "naujakurys"
+
+msgid "total"
+msgstr ""
+
+msgid "construction"
+msgstr "statyba"
+
+msgid "creator"
+msgstr ""
+
+msgid "faith"
+msgstr "tikėjimas"
+
+msgid "hold"
+msgstr "turėti"
+
+msgid "icon"
+msgstr ""
+
+msgid "lamb"
+msgstr ""
+
+msgid "leave"
+msgstr "palikti"
+
+msgid "location"
+msgstr ""
+
+msgid "multiple buildings"
+msgstr ""
+
+msgid "pioneers"
+msgstr ""
+
+msgid "reached"
+msgstr "pasiekti"
+
+msgid "run"
+msgstr "vykdyti"
+
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
+msgid "slider"
+msgstr "šliaužiklis"
+
+msgid "space"
+msgstr ""
+
+msgid "storage tent"
+msgstr "saugojimo palapinė"
+
+msgid "target"
+msgstr ""
+
+msgid "terminated"
+msgstr ""
+
+msgid "tools"
+msgstr "įrankiai"
+
+msgid "account"
+msgstr "paskyra"
+
+msgid "active"
+msgstr "aktyvus"
+
+msgid "afford"
+msgstr ""
+
+msgid "animals"
+msgstr ""
+
+msgid "Captain's log"
+msgstr "Kapitono žurnalas"
+
+msgid "cloth"
+msgstr "drobė"
+
+msgid "construct"
+msgstr ""
+
+msgid "cursor"
+msgstr ""
+
+msgid "description"
+msgstr "aprašymas"
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr "funkcija"
+
+msgid "fish"
+msgstr "žuvis"
+
+msgid "forest"
+msgstr "miškas"
+
+msgid "from time to time"
+msgstr "kada ne kada"
+
+msgid "global"
+msgstr ""
+
+msgid "grow"
+msgstr "augti"
+
+msgid "happy"
+msgstr ""
+
+msgid "information"
+msgstr "informacija"
+
+msgid "liquor"
+msgstr "alkoholis"
+
+msgid "minimap"
+msgstr "mažas žemėlapis"
+
+msgid "offer"
+msgstr ""
+
+msgid "overview tab"
+msgstr ""
+
+msgid "plant"
+msgstr ""
+
+msgid "play"
+msgstr "žaisti"
+
+msgid "please check your"
+msgstr ""
+
+msgid "potatoes"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "read"
+msgstr ""
+
+msgid "screen"
+msgstr "ekranas"
+
+msgid "service"
+msgstr "paslauga"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "sprendimas"
+
+msgid "sound"
+msgstr "garsas"
+
+msgid "special"
+msgstr ""
+
+msgid "spot"
+msgstr ""
+
+msgid "statistics"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+msgid "team"
+msgstr "komanda"
+
+msgid "tear"
+msgstr ""
+
+msgid "time to time"
+msgstr ""
+
+msgid "trading"
+msgstr "prekiavimas"
+
+msgid "unsupported"
+msgstr ""
+
+msgid "visit"
+msgstr "apsilankymas"
+
+msgid "world"
+msgstr ""
+
+msgid "wrong"
+msgstr ""
+
+msgid "bar"
+msgstr ""
+
+msgid "bug"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "forum"
+msgstr "forumas"
+
+msgid "happen"
+msgstr ""
+
+msgid "harvest"
+msgstr ""
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "ėriuko vilna"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "žaisti"
+
+msgid "produced"
+msgstr "pagamintas"
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "pardavimas"
+
+msgid "school"
+msgstr "mokykla"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr "laikinai"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr ""
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "balansas"
+
+msgid "load"
+msgstr ""
+
+msgid "trail"
+msgstr "takas"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "geležis"
+
+msgid "tobacco"
+msgstr "tabakas"
+
+msgid "clay"
+msgstr "molis"
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "paviljonas"
+
+msgid "tax"
+msgstr "mokestis"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "stabdyti"
+
+msgid "wait"
+msgstr ""
+
+msgid "decrease"
+msgstr "sumažinti"
+
+msgid "ore"
+msgstr "rūda"
+
+msgid "return"
+msgstr "grįžti"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "vartoti"
+
+msgid "idle"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "village"
+msgstr "kaimas"
+
+msgid "yields"
+msgstr "derlius"
+
+msgid "back"
+msgstr "grįžti"
+
+msgid "build settlement"
+msgstr "statyti nausėdiją"
+
+msgid "charcoal"
+msgstr "anglis"
+
+msgid "empty"
+msgstr ""
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "patenkinti"
+
+msgid "graphics"
+msgstr "grafika"
+
+msgid "hunt"
+msgstr "medžioklė"
+
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+msgid "potato field"
+msgstr ""
+
+msgid "seed"
+msgstr "sėkla"
+
+msgid "send"
+msgstr ""
+
+msgid "sheep"
+msgstr "avis"
+
+msgid "signal fire"
+msgstr "ugnies signalas"
+
+msgid "sugar field"
+msgstr ""
+
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "mouse"
+msgstr ""
+
+msgid "partner"
+msgstr "partneris"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr ""
+
+msgid "weapon"
+msgstr ""
+
+msgid "cattle"
+msgstr "galvijai"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr ""
+
+msgid "cocoa"
+msgstr ""
+
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "rasti"
+
+msgid "herbs"
+msgstr "vaistažolės"
+
+msgid "pause"
+msgstr ""
+
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr ""
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr "prekybos partneris"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr ""
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "gydytojas"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "išsilavinimas"
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "inventorius"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "einamosios išlaidos"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
-
+import math
 from collections import defaultdict
 
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util.python import decorators
-from horizons.util import WorldObject
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.worldobject import WorldObject
+
 
 class LandManager(WorldObject):
 	"""
@@ -74,13 +74,13 @@ class LandManager(WorldObject):
 
 	def save(self, db):
 		super(LandManager, self).save(db)
-		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid, \
+		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid,
 			self.owner.worldid, self.island.worldid, self.feeder_island)
 		for (x, y) in self.production:
-			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
+			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)",
 				self.worldid, x, y, self.purpose.production)
 		for (x, y) in self.village:
-			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
+			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)",
 				self.worldid, x, y, self.purpose.village)
 
 	@classmethod
@@ -115,8 +115,9 @@ class LandManager(WorldObject):
 		return result
 
 	def refresh_resource_deposits(self):
-		self.resource_deposits = defaultdict(lambda: []) # {resource_id: [tile, ...]} all resource deposits of a type on the island
-		for resource_id, building_ids in {RES.RAW_CLAY_ID: [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.CLAY_PIT_CLASS], RES.RAW_IRON_ID: [BUILDINGS.MOUNTAIN_CLASS, BUILDINGS.IRON_MINE_CLASS]}.iteritems():
+		self.resource_deposits = defaultdict(list) # {resource_id: [tile, ...]} all resource deposits of a type on the island
+		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE],
+											RES.STONE_DEPOSIT: [BUILDINGS.STONE_DEPOSIT, BUILDINGS.STONE_PIT]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
 					if building.get_component(StorageComponent).inventory[resource_id] > 0:
@@ -177,11 +178,14 @@ class LandManager(WorldObject):
 					best_side2 = real_side2
 			self._divide(best_side1, best_side2)
 
-	def coords_usable(self, coords):
+	def coords_usable(self, coords, use_coast=False):
 		"""Return a boolean showing whether the land on the given coordinate is usable for a normal building."""
 		if coords in self.island.ground_map:
 			tile = self.island.ground_map[coords]
-			if 'constructible' not in tile.classes:
+			if use_coast:
+				if 'constructible' not in tile.classes and 'coastline' not in tile.classes:
+					return False
+			elif 'constructible' not in tile.classes:
 				return False
 			if tile.object is not None and not tile.object.buildable_upon:
 				return False
@@ -275,7 +279,7 @@ class LandManager(WorldObject):
 					self.village[coords] = self.island.ground_map[coords]
 
 		for coords, tile in self.island.ground_map.iteritems():
-			if coords not in self.village and self.coords_usable(coords):
+			if coords not in self.village and self.coords_usable(coords, use_coast=True):
 				self.production[coords] = tile
 
 	def _prepare_feeder_island(self):
@@ -283,7 +287,7 @@ class LandManager(WorldObject):
 		self.production = {}
 		self.village = {}
 		for coords, tile in self.island.ground_map.iteritems():
-			if self.coords_usable(coords):
+			if self.coords_usable(coords, use_coast=True):
 				self.production[coords] = tile
 
 	def add_to_production(self, coords):
@@ -307,21 +311,22 @@ class LandManager(WorldObject):
 		if not AI.HIGHLIGHT_PLANS:
 			return
 
-		village_colour = (255, 255, 255)
-		production_colour = (255, 255, 0)
-		coastline_colour = (0, 0, 255)
+		village_color = (255, 255, 255)
+		production_color = (255, 255, 0)
+		coastline_color = (0, 0, 255)
 		renderer = self.island.session.view.renderer['InstanceRenderer']
 
 		for tile in self.production.itervalues():
-			renderer.addColored(tile._instance, *production_colour)
+			renderer.addColored(tile._instance, *production_color)
 
 		for tile in self.village.itervalues():
-			renderer.addColored(tile._instance, *village_colour)
+			renderer.addColored(tile._instance, *village_color)
 
 		for coords in self.coastline:
-			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_colour)
+			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_color)
 
 	def __str__(self):
-		return '%s LandManager(%s)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid if hasattr(self, 'worldid') else 'none')
+		return '%s LandManager(%s)' % (getattr(self, 'owner', 'unknown player'),
+		                               getattr(self, 'worldid', 'none'))
 
-decorators.bind_all(LandManager)
+decorators.bind_all(LandManager, stoplist=['AI'])

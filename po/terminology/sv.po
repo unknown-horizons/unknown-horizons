@@ -1,0 +1,1162 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:28+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367756909.0\n"
+
+msgid "game"
+msgstr "spel"
+
+msgid "building"
+msgstr "byggnad"
+
+msgid "build"
+msgstr "bygg"
+
+msgid "player"
+msgstr "spelare"
+
+msgid "settlement"
+msgstr "bosättning"
+
+msgid "ship"
+msgstr "fartyg"
+
+msgid "tent"
+msgstr "tält"
+
+msgid "farm"
+msgstr "gård"
+
+msgid "map"
+msgstr "karta"
+
+msgid "resource"
+msgstr "resurs"
+
+msgid "warehouse"
+msgstr "lager"
+
+msgid "inhabitants"
+msgstr "invånare"
+
+msgid "change"
+msgstr "förändring"
+
+msgid "unknown"
+msgstr "okänd"
+
+msgid "produce"
+msgstr "producera / tillverka"
+
+msgid "no"
+msgstr "nej"
+
+msgid "trade"
+msgstr "handel"
+
+msgid "check"
+msgstr "kontrollera"
+
+msgid "field"
+msgstr "fält"
+
+msgid "main"
+msgstr "huvudsakliga"
+
+msgid "buy"
+msgstr "köp"
+
+msgid "click"
+msgstr "klicka"
+
+msgid "left"
+msgstr "vänster"
+
+msgid "overview"
+msgstr "översikt"
+
+msgid "running"
+msgstr "springer"
+
+msgid "square"
+msgstr "kvadrat"
+
+msgid "lumberjack"
+msgstr "skogshuggare"
+
+msgid "unable"
+msgstr "kan inte"
+
+msgid "continue"
+msgstr "fortsätt"
+
+msgid "main square"
+msgstr "torg"
+
+msgid "production"
+msgstr "produktion"
+
+msgid "sailors"
+msgstr "sjömän"
+
+msgid "sell"
+msgstr "sälj"
+
+msgid "storage"
+msgstr "lager"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "house"
+msgstr "hus"
+
+msgid "menu"
+msgstr "meny"
+
+msgid "tab"
+msgstr "flik"
+
+msgid "close"
+msgstr "stäng"
+
+msgid "food"
+msgstr "mat"
+
+msgid "free"
+msgstr "fri"
+
+msgid "ready"
+msgstr "redo"
+
+msgid "setting"
+msgstr "inställning"
+
+msgid "start"
+msgstr "starta"
+
+msgid "time"
+msgstr "tid"
+
+msgid "trader"
+msgstr "köpman"
+
+msgid "unit"
+msgstr "enhet"
+
+msgid "version"
+msgstr "version"
+
+msgid "fire"
+msgstr "eld"
+
+msgid "island"
+msgstr "ö"
+
+msgid "select"
+msgstr "välj"
+
+msgid "slot"
+msgstr "plats"
+
+msgid "stock"
+msgstr "lager"
+
+msgid "upgrade"
+msgstr "uppgradera / uppgradering"
+
+msgid "coast"
+msgstr "kust"
+
+msgid "color"
+msgstr "färg"
+
+msgid "companies"
+msgstr "företag"
+
+msgid "file"
+msgstr "fil"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "nyckel / tangent"
+
+msgid "taxes"
+msgstr "skatter"
+
+msgid "collector"
+msgstr "insamlare"
+
+msgid "connection"
+msgstr "anslutning"
+
+msgid "log"
+msgstr "logg"
+
+msgid "multiplayer"
+msgstr "multiplayer"
+
+msgid "resident"
+msgstr "boende"
+
+msgid "wool"
+msgstr "ull / ylle"
+
+msgid "boards"
+msgstr "brädor"
+
+msgid "built"
+msgstr "byggd / byggt"
+
+msgid "button"
+msgstr "knapp"
+
+msgid "choose"
+msgstr "välj / välja"
+
+msgid "connect"
+msgstr "anslut"
+
+msgid "cost"
+msgstr "kostnad"
+
+msgid "happiness"
+msgstr "lycka"
+
+msgid "road"
+msgstr "väg"
+
+msgid "save"
+msgstr "spara"
+
+msgid "tree"
+msgstr "träd"
+
+msgid "amount"
+msgstr "mängd"
+
+msgid "reach"
+msgstr "nå / räckhåll"
+
+msgid "size"
+msgstr "storlek"
+
+msgid "add"
+msgstr "lägga till / addera"
+
+msgid "fisher"
+msgstr "fiskare"
+
+msgid "free trader"
+msgstr "fritt handelsfartyg"
+
+msgid "in stock"
+msgstr "i lager"
+
+msgid "increase"
+msgstr "öka"
+
+msgid "mode"
+msgstr "läge"
+
+msgid "password"
+msgstr "lösenord"
+
+msgid "pasture"
+msgstr "betesmark"
+
+msgid "range"
+msgstr "räckvidd / intervall"
+
+msgid "signal"
+msgstr "signal"
+
+msgid "speed"
+msgstr "hastighet / fart"
+
+msgid "sugar"
+msgstr "socker"
+
+msgid "access"
+msgstr "åtkomst"
+
+msgid "build menu"
+msgstr "byggmeny"
+
+msgid "confectionery"
+msgstr "konfektyr"
+
+msgid "enabled"
+msgstr "aktiverad"
+
+msgid "fetch"
+msgstr "hämta"
+
+msgid "help"
+msgstr "hjälp"
+
+msgid "income"
+msgstr "inkomst"
+
+msgid "join"
+msgstr "hämta"
+
+msgid "level"
+msgstr "nivå / plan"
+
+msgid "move"
+msgstr "flytta / dra"
+
+msgid "multiple"
+msgstr "flera"
+
+msgid "please check"
+msgstr "kontrollera"
+
+msgid "potato"
+msgstr "potatis"
+
+msgid "settler"
+msgstr "nybyggare"
+
+msgid "total"
+msgstr "totalt / summa"
+
+msgid "construction"
+msgstr "byggnad"
+
+msgid "creator"
+msgstr "skapare"
+
+msgid "faith"
+msgstr "tro / religion"
+
+msgid "hold"
+msgstr "håll / hålla"
+
+msgid "icon"
+msgstr "ikon"
+
+msgid "lamb"
+msgstr "lamm"
+
+msgid "leave"
+msgstr "lämna"
+
+msgid "location"
+msgstr "plats"
+
+msgid "multiple buildings"
+msgstr "flera byggnader"
+
+msgid "pioneers"
+msgstr "pionjärer"
+
+msgid "reached"
+msgstr "uppnått / /uppnådd / nått / nådd"
+
+msgid "run"
+msgstr "kör / springa"
+
+msgid "session"
+msgstr "session"
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
+msgid "slider"
+msgstr "reglage"
+
+msgid "space"
+msgstr "blanksteg"
+
+msgid "storage tent"
+msgstr "lagertält"
+
+msgid "target"
+msgstr "mål"
+
+msgid "terminated"
+msgstr "avslutad"
+
+msgid "tools"
+msgstr "verktyg"
+
+msgid "account"
+msgstr "konto"
+
+msgid "active"
+msgstr "aktiv / verksam"
+
+msgid "afford"
+msgstr "råd"
+
+msgid "animals"
+msgstr "djur"
+
+msgid "Captain's log"
+msgstr "Kaptenens loggbok"
+
+msgid "cloth"
+msgstr "tyg"
+
+msgid "construct"
+msgstr "byggnad"
+
+msgid "cursor"
+msgstr "markör"
+
+msgid "description"
+msgstr "beskrivning"
+
+msgid "entries"
+msgstr "poster"
+
+msgid "feature"
+msgstr "funktion / kännetecken"
+
+msgid "fish"
+msgstr "fisk"
+
+msgid "forest"
+msgstr "skog"
+
+msgid "from time to time"
+msgstr "då och då"
+
+msgid "global"
+msgstr "global"
+
+msgid "grow"
+msgstr "växa / öka / odla"
+
+msgid "happy"
+msgstr "lycklig"
+
+msgid "information"
+msgstr "information"
+
+msgid "liquor"
+msgstr "sprit"
+
+msgid "minimap"
+msgstr "världskarta"
+
+msgid "offer"
+msgstr "erbjuda"
+
+msgid "overview tab"
+msgstr "översiktsflik"
+
+msgid "plant"
+msgstr "växt / plantera"
+
+msgid "play"
+msgstr "spela"
+
+msgid "please check your"
+msgstr "kontrollera dina"
+
+msgid "potatoes"
+msgstr "potatis"
+
+msgid "price"
+msgstr "pris"
+
+msgid "read"
+msgstr "röd"
+
+msgid "screen"
+msgstr "skärm"
+
+msgid "service"
+msgstr "service / tjänst"
+
+msgid "short"
+msgstr "kort"
+
+msgid "solution"
+msgstr "lösning"
+
+msgid "sound"
+msgstr "ljud"
+
+msgid "special"
+msgstr "speciell"
+
+msgid "spot"
+msgstr "plats"
+
+msgid "statistics"
+msgstr "statistik"
+
+msgid "store"
+msgstr "lagra / butik"
+
+msgid "team"
+msgstr "lag / grupp"
+
+msgid "tear"
+msgstr "lag"
+
+msgid "time to time"
+msgstr "tid till annan tid"
+
+msgid "trading"
+msgstr "handel"
+
+msgid "unsupported"
+msgstr "stöds inte"
+
+msgid "visit"
+msgstr "besök / besöka"
+
+msgid "world"
+msgstr "värld"
+
+msgid "wrong"
+msgstr "fel"
+
+msgid "bar"
+msgstr "bar"
+
+msgid "bug"
+msgstr "bugg"
+
+msgid "command"
+msgstr "kommando"
+
+msgid "completed"
+msgstr "färdigt"
+
+msgid "forum"
+msgstr "forum"
+
+msgid "happen"
+msgstr "hända"
+
+msgid "harvest"
+msgstr "skörd / skörda"
+
+msgid "in range"
+msgstr "inom räckvidd"
+
+msgid "lamb wool"
+msgstr "lammull"
+
+msgid "left the game"
+msgstr "lämnade spelet"
+
+msgid "lot of boards"
+msgstr "enhet brädor"
+
+msgid "marketplace"
+msgstr "marknad"
+
+msgid "moment"
+msgstr "ögonblick"
+
+msgid "playing"
+msgstr "spelar"
+
+msgid "produced"
+msgstr "tillverkad / producerad"
+
+msgid "report"
+msgstr "rapport"
+
+msgid "sale"
+msgstr "försäljning / rea"
+
+msgid "school"
+msgstr "skola"
+
+msgid "started"
+msgstr "startad"
+
+msgid "temporarily"
+msgstr "tillfälligt"
+
+msgid "trade with"
+msgstr "handla med"
+
+msgid "values"
+msgstr "värden"
+
+msgid "wheel"
+msgstr "hjul"
+
+msgid "satisfied"
+msgstr "nöjd"
+
+msgid "balance"
+msgstr "balans / saldo"
+
+msgid "load"
+msgstr "last / lasta"
+
+msgid "trail"
+msgstr "stig"
+
+msgid "default"
+msgstr "standard"
+
+msgid "iron"
+msgstr "järn"
+
+msgid "tobacco"
+msgstr "tobak"
+
+msgid "clay"
+msgstr "lera"
+
+msgid "money"
+msgstr "pengar"
+
+msgid "pavilion"
+msgstr "kapell"
+
+msgid "tax"
+msgstr "skatt"
+
+msgid "residential"
+msgstr "bostadsområde"
+
+msgid "stop"
+msgstr "stopp / stoppa"
+
+msgid "wait"
+msgstr "vänta"
+
+msgid "decrease"
+msgstr "minska"
+
+msgid "ore"
+msgstr "malm"
+
+msgid "return"
+msgstr "tillbaka / återgå / återlämna"
+
+msgid "savegame"
+msgstr "sparat spel"
+
+msgid "consume"
+msgstr "konsumera / förbruka"
+
+msgid "idle"
+msgstr "inaktiv / overksam"
+
+msgid "lower"
+msgstr "lägre"
+
+msgid "saved"
+msgstr "sparad"
+
+msgid "village"
+msgstr "by"
+
+msgid "yields"
+msgstr "ger"
+
+msgid "back"
+msgstr "tillbaka / bakåt"
+
+msgid "build settlement"
+msgstr "bygg bosättning"
+
+msgid "charcoal"
+msgstr "träkol"
+
+msgid "empty"
+msgstr "tom"
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "uppfylla"
+
+msgid "graphics"
+msgstr "grafik"
+
+msgid "hunt"
+msgstr "jaga / jakt / jakten"
+
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+msgid "potato field"
+msgstr "potatisfält"
+
+msgid "seed"
+msgstr "seeder / distributör? / frö / säd"
+
+msgid "send"
+msgstr "seeder / distributör? / frö / säd"
+
+msgid "sheep"
+msgstr "får"
+
+msgid "signal fire"
+msgstr "signaleld"
+
+msgid "sugar field"
+msgstr "sockerfält"
+
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr "välj"
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "mouse"
+msgstr "hus"
+
+msgid "partner"
+msgstr "partner / delägare"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr "lagra / butik"
+
+msgid "weapon"
+msgstr ""
+
+msgid "cattle"
+msgstr "boskap / nötkreatur"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr "plats"
+
+msgid "cocoa"
+msgstr ""
+
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "hittade"
+
+msgid "herbs"
+msgstr "örter"
+
+msgid "pause"
+msgstr ""
+
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "försäljning / rea"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr "vara / råvara / resurs"
+
+msgid "trade partner"
+msgstr "handelspartner"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "medborgare"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "läkare"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "utbildning"
+
+msgid "ensure"
+msgstr "säkra / försäkra"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "inventarie"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "driftskostnader"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr "nybyggare"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr "station"
+
+msgid "suitable"
+msgstr "passande"
+
+msgid "system"
+msgstr "system"
+
+msgid "tile"
+msgstr "tid"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr "torn"
+
+msgid "unable to find"
+msgstr "kan inte hitta"
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr "vann"
+
+msgid "written"
+msgstr "skrivet"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

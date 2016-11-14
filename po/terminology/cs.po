@@ -1,0 +1,1166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-03-08 11:47+0000\n"
+"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1362743261.0\n"
+
+msgid "game"
+msgstr "hra"
+
+msgid "building"
+msgstr "budova"
+
+msgid "build"
+msgstr "postavit"
+
+msgid "player"
+msgstr "hráč"
+
+msgid "settlement"
+msgstr "osada"
+
+msgid "ship"
+msgstr "loď"
+
+msgid "tent"
+msgstr "stan"
+
+msgid "farm"
+msgstr "farma"
+
+msgid "map"
+msgstr "mapa"
+
+msgid "resource"
+msgstr "surovina"
+
+msgid "warehouse"
+msgstr "obchodní přístav"
+
+msgid "inhabitants"
+msgstr "obyvatelé"
+
+msgid "change"
+msgstr "změna"
+
+msgid "unknown"
+msgstr "neznámé"
+
+msgid "produce"
+msgstr "produkování"
+
+msgid "no"
+msgstr "ne"
+
+msgid "trade"
+msgstr "obchod"
+
+msgid "check"
+msgstr "zkontrolovat / kontrol"
+
+msgid "field"
+msgstr "pole"
+
+msgid "main"
+msgstr "hlavní"
+
+msgid "buy"
+msgstr "koupit"
+
+msgid "click"
+msgstr "klik"
+
+msgid "left"
+msgstr "vlevo"
+
+msgid "overview"
+msgstr "přehled"
+
+msgid "running"
+msgstr "běh"
+
+msgid "square"
+msgstr "náměstí"
+
+msgid "lumberjack"
+msgstr "dřevorubec"
+
+msgid "unable"
+msgstr "nemožné"
+
+msgid "continue"
+msgstr "pokračování"
+
+msgid "main square"
+msgstr "tržnice"
+
+msgid "production"
+msgstr "výroba"
+
+msgid "sailors"
+msgstr "námořníci"
+
+msgid "sell"
+msgstr "prodat"
+
+msgid "storage"
+msgstr "skladiště"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "house"
+msgstr "dům"
+
+msgid "menu"
+msgstr "menu"
+
+msgid "tab"
+msgstr "záložka"
+
+msgid "close"
+msgstr "zavřít"
+
+msgid "food"
+msgstr "jídlo"
+
+msgid "free"
+msgstr "zdarma"
+
+msgid "ready"
+msgstr "připraven"
+
+msgid "setting"
+msgstr "nastavení"
+
+msgid "start"
+msgstr "start"
+
+msgid "time"
+msgstr "čas"
+
+msgid "trader"
+msgstr "obchodník"
+
+msgid "unit"
+msgstr "jednotka"
+
+msgid "version"
+msgstr "verze"
+
+msgid "fire"
+msgstr "oheň"
+
+msgid "island"
+msgstr "ostrov"
+
+msgid "select"
+msgstr "výběr"
+
+msgid "slot"
+msgstr "slot"
+
+msgid "stock"
+msgstr "zásoba"
+
+msgid "upgrade"
+msgstr "vylepšit"
+
+msgid "coast"
+msgstr "pobřeží"
+
+msgid "color"
+msgstr "barva"
+
+msgid "companies"
+msgstr "společnosti"
+
+msgid "file"
+msgstr "soubor"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "klíč"
+
+msgid "taxes"
+msgstr "daně"
+
+msgid "collector"
+msgstr "nosič"
+
+msgid "connection"
+msgstr "spojení"
+
+msgid "log"
+msgstr "záznam"
+
+msgid "multiplayer"
+msgstr "více hráčů"
+
+msgid "resident"
+msgstr "obyvatel"
+
+msgid "wool"
+msgstr "vlna"
+
+msgid "boards"
+msgstr "nástěnka"
+
+msgid "built"
+msgstr "postavený"
+
+msgid "button"
+msgstr "tlačítko"
+
+msgid "choose"
+msgstr "vybrat"
+
+msgid "connect"
+msgstr "spojit"
+
+msgid "cost"
+msgstr "cena"
+
+msgid "happiness"
+msgstr "štěstí"
+
+msgid "road"
+msgstr "cesta"
+
+msgid "save"
+msgstr "uložit"
+
+msgid "tree"
+msgstr "strom"
+
+msgid "amount"
+msgstr "množství"
+
+msgid "reach"
+msgstr "dosah"
+
+msgid "size"
+msgstr "velikost"
+
+msgid "add"
+msgstr "přidat"
+
+msgid "fisher"
+msgstr "rybář"
+
+msgid "free trader"
+msgstr "svobodný obchodník"
+
+msgid "in stock"
+msgstr "ve skladu"
+
+msgid "increase"
+msgstr "zvýšení"
+
+msgid "mode"
+msgstr "režim"
+
+msgid "password"
+msgstr "heslo"
+
+msgid "pasture"
+msgstr "pastvina"
+
+msgid "range"
+msgstr "rozsah"
+
+msgid "signal"
+msgstr "signál"
+
+msgid "speed"
+msgstr "rychlost"
+
+msgid "sugar"
+msgstr "cukr"
+
+msgid "access"
+msgstr "přístup"
+
+msgid "build menu"
+msgstr "stavební menu"
+
+msgid "confectionery"
+msgstr "sladkosti"
+
+msgid "enabled"
+msgstr "povoleno"
+
+msgid "fetch"
+msgstr "získat, stáhnout"
+
+msgid "help"
+msgstr "pomoc"
+
+msgid "income"
+msgstr "příjem"
+
+msgid "join"
+msgstr "připojit se"
+
+msgid "level"
+msgstr "úroveň"
+
+msgid "move"
+msgstr "pohyb"
+
+msgid "multiple"
+msgstr "násobek"
+
+msgid "please check"
+msgstr "prosím zkonrolujte"
+
+msgid "potato"
+msgstr "brambora"
+
+msgid "settler"
+msgstr "osadník"
+
+msgid "total"
+msgstr "celkem"
+
+msgid "construction"
+msgstr "výstavba"
+
+msgid "creator"
+msgstr "tvůrce, autor"
+
+msgid "faith"
+msgstr "víra"
+
+msgid "hold"
+msgstr "držet"
+
+msgid "icon"
+msgstr "ikona"
+
+msgid "lamb"
+msgstr "jehně"
+
+msgid "leave"
+msgstr "opustit"
+
+msgid "location"
+msgstr "oblast"
+
+msgid "multiple buildings"
+msgstr "více budov"
+
+msgid "pioneers"
+msgstr "průkopníci"
+
+msgid "reached"
+msgstr "dosaženo"
+
+msgid "run"
+msgstr "běh"
+
+msgid "session"
+msgstr "sezení"
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
+msgid "slider"
+msgstr "posuvník"
+
+msgid "space"
+msgstr "prostor"
+
+msgid "storage tent"
+msgstr "skladovací stan"
+
+msgid "target"
+msgstr "cíl"
+
+msgid "terminated"
+msgstr "ukončeno"
+
+msgid "tools"
+msgstr "nářadí"
+
+msgid "account"
+msgstr "účet"
+
+msgid "active"
+msgstr "aktivní"
+
+msgid "afford"
+msgstr "dovolit si"
+
+msgid "animals"
+msgstr "zvířata"
+
+msgid "Captain's log"
+msgstr "Lodní deník"
+
+msgid "cloth"
+msgstr "látka"
+
+msgid "construct"
+msgstr "postavit"
+
+msgid "cursor"
+msgstr "kurzor"
+
+msgid "description"
+msgstr "popis"
+
+msgid "entries"
+msgstr "položky"
+
+msgid "feature"
+msgstr "vlastnost"
+
+msgid "fish"
+msgstr "ryba"
+
+msgid "forest"
+msgstr "les"
+
+msgid "from time to time"
+msgstr "čas od času"
+
+msgid "global"
+msgstr "globální"
+
+msgid "grow"
+msgstr "růst / roste"
+
+msgid "happy"
+msgstr "šťastný"
+
+msgid "information"
+msgstr "informace"
+
+msgid "liquor"
+msgstr "kořalka"
+
+msgid "minimap"
+msgstr "minimapa"
+
+msgid "offer"
+msgstr "nabídka"
+
+msgid "overview tab"
+msgstr "záložka přehledu"
+
+msgid "plant"
+msgstr "zasadit"
+
+msgid "play"
+msgstr "hrát"
+
+msgid "please check your"
+msgstr "prosím zkontrolujte svůj"
+
+msgid "potatoes"
+msgstr "brambory"
+
+msgid "price"
+msgstr "cena"
+
+msgid "read"
+msgstr "číst"
+
+msgid "screen"
+msgstr "obraz"
+
+msgid "service"
+msgstr "služba"
+
+msgid "short"
+msgstr "krátký, zkratka"
+
+msgid "solution"
+msgstr "řešení"
+
+msgid "sound"
+msgstr "zvuk"
+
+msgid "special"
+msgstr "speciální"
+
+msgid "spot"
+msgstr "bod, spatřit"
+
+msgid "statistics"
+msgstr "statistiky"
+
+msgid "store"
+msgstr "uložit, obchod"
+
+msgid "team"
+msgstr "tým"
+
+msgid "tear"
+msgstr "trhat"
+
+msgid "time to time"
+msgstr "čas od času"
+
+msgid "trading"
+msgstr "obchodování"
+
+msgid "unsupported"
+msgstr "nepodporováno"
+
+msgid "visit"
+msgstr "návštěva"
+
+msgid "world"
+msgstr "svět"
+
+msgid "wrong"
+msgstr "špatně"
+
+msgid "bar"
+msgstr "sloupec, indikátor"
+
+msgid "bug"
+msgstr "chyba"
+
+msgid "command"
+msgstr "příkaz"
+
+msgid "completed"
+msgstr "hotovo"
+
+msgid "forum"
+msgstr "fórum"
+
+msgid "happen"
+msgstr "stát se, přihodit se"
+
+msgid "harvest"
+msgstr "těžit"
+
+msgid "in range"
+msgstr "v rozsahu, v dosahu"
+
+msgid "lamb wool"
+msgstr "jehněčí vlna"
+
+msgid "left the game"
+msgstr "opustil hru"
+
+msgid "lot of boards"
+msgstr "spoustu prken, hodně prken"
+
+msgid "marketplace"
+msgstr "tržiště"
+
+msgid "moment"
+msgstr "moment, chvilka"
+
+msgid "playing"
+msgstr "hraní"
+
+msgid "produced"
+msgstr "vyrobeno"
+
+msgid "report"
+msgstr "hlášení"
+
+msgid "sale"
+msgstr "prodej"
+
+msgid "school"
+msgstr "škola"
+
+msgid "started"
+msgstr "spuštěno"
+
+msgid "temporarily"
+msgstr "dočasně"
+
+msgid "trade with"
+msgstr "obchodovat s"
+
+msgid "values"
+msgstr "hodnoty"
+
+msgid "wheel"
+msgstr "kolo"
+
+msgid "satisfied"
+msgstr "spokojený, uspokojený"
+
+msgid "balance"
+msgstr "bilance"
+
+msgid "load"
+msgstr "naložit, načíst"
+
+msgid "trail"
+msgstr "stezka"
+
+msgid "default"
+msgstr "výchozí"
+
+msgid "iron"
+msgstr "železo"
+
+msgid "tobacco"
+msgstr "tabák"
+
+msgid "clay"
+msgstr "jíl"
+
+msgid "money"
+msgstr "peníze"
+
+msgid "pavilion"
+msgstr "pavilón"
+
+msgid "tax"
+msgstr "daň"
+
+msgid "residential"
+msgstr "obytný"
+
+msgid "stop"
+msgstr "stop"
+
+msgid "wait"
+msgstr "počkat"
+
+msgid "decrease"
+msgstr "snížení"
+
+msgid "ore"
+msgstr "ruda"
+
+msgid "return"
+msgstr "návrat"
+
+msgid "savegame"
+msgstr "uložená hra"
+
+msgid "consume"
+msgstr "spotřebovat"
+
+msgid "idle"
+msgstr "nečinný"
+
+msgid "lower"
+msgstr "nižší, menší"
+
+msgid "saved"
+msgstr "uloženo"
+
+msgid "village"
+msgstr "vesnice"
+
+msgid "yields"
+msgstr "výnosy"
+
+msgid "back"
+msgstr "zpět"
+
+msgid "build settlement"
+msgstr "postavit osadu"
+
+msgid "charcoal"
+msgstr "dřevěné uhlí"
+
+msgid "empty"
+msgstr "prázdný"
+
+msgid "existing"
+msgstr "existující"
+
+msgid "fulfill"
+msgstr "splnit"
+
+msgid "graphics"
+msgstr "grafiky"
+
+msgid "hunt"
+msgstr "lovit"
+
+msgid "lumberjack tent"
+msgstr "dřevorubecký srub"
+
+msgid "please contact"
+msgstr "prosím kontaktujte"
+
+msgid "potato field"
+msgstr "bramborové pole"
+
+msgid "seed"
+msgstr "osivo / semeno"
+
+msgid "send"
+msgstr "odeslat"
+
+msgid "sheep"
+msgstr "ovce"
+
+msgid "signal fire"
+msgstr "signální oheň"
+
+msgid "sugar field"
+msgstr "třtinové pole"
+
+msgid "error"
+msgstr "chyba"
+
+msgid "deposit"
+msgstr "uložit, vklad, naleziště"
+
+msgid "invalid"
+msgstr "neplatný"
+
+msgid "network"
+msgstr "síť"
+
+msgid "route"
+msgstr "cesta"
+
+msgid "selected"
+msgstr "vybraný"
+
+msgid "boat"
+msgstr "loďka"
+
+msgid "create"
+msgstr "vytvořit"
+
+msgid "filename"
+msgstr "název souboru"
+
+msgid "mouse"
+msgstr "myš"
+
+msgid "partner"
+msgstr "partner"
+
+msgid "reset"
+msgstr "obnovit"
+
+msgid "configuration"
+msgstr "konfigurace"
+
+msgid "delete"
+msgstr "smazat"
+
+msgid "enter"
+msgstr "vložit, vejít, enter"
+
+msgid "quicksave"
+msgstr "rychle uložit"
+
+msgid "stone"
+msgstr "kámen"
+
+msgid "weapon"
+msgstr "zbraň"
+
+msgid "cattle"
+msgstr "skot"
+
+msgid "message"
+msgstr "zpráva"
+
+msgid "port"
+msgstr "přístav"
+
+msgid "scenario"
+msgstr "scénář"
+
+msgid "spice"
+msgstr "koření"
+
+msgid "cocoa"
+msgstr "kakao"
+
+msgid "corn"
+msgstr "kukuřice"
+
+msgid "details"
+msgstr "podrobnosti"
+
+msgid "found"
+msgstr "nalezeno"
+
+msgid "herbs"
+msgstr "bylinky"
+
+msgid "pause"
+msgstr "pozastavit"
+
+msgid "pigs"
+msgstr "prasata"
+
+msgid "press"
+msgstr "stisknout"
+
+msgid "quit"
+msgstr "ukončit"
+
+msgid "savegame file"
+msgstr "soubor uložené hry"
+
+msgid "valid"
+msgstr "platný"
+
+msgid "war"
+msgstr "válka"
+
+msgid "all settlements"
+msgstr "všechny osady"
+
+msgid "apply"
+msgstr "použít"
+
+msgid "bricks"
+msgstr "cihly"
+
+msgid "chat"
+msgstr "konverzace"
+
+msgid "confirm"
+msgstr "potvrdit"
+
+msgid "default settings"
+msgstr "výchozí nastavení"
+
+msgid "diplomacy"
+msgstr "diplomacie"
+
+msgid "displayed"
+msgstr "zobrazeno"
+
+msgid "flour"
+msgstr "mouka"
+
+msgid "grapes"
+msgstr "hrozny"
+
+msgid "ground"
+msgstr "zem"
+
+msgid "health"
+msgstr "zdraví"
+
+msgid "land"
+msgstr "země"
+
+msgid "library"
+msgstr "knihovna"
+
+msgid "limit"
+msgstr "limit, omezení"
+
+msgid "loading"
+msgstr "načítání"
+
+msgid "logging"
+msgstr "protokolování"
+
+msgid "mine"
+msgstr "důl, moje"
+
+msgid "mouse button"
+msgstr "tlačítko myši"
+
+msgid "not ready"
+msgstr "nepřipraven"
+
+msgid "player name"
+msgstr "jméno hráče"
+
+msgid "quote"
+msgstr "citovat, uvozovka"
+
+msgid "reset to default"
+msgstr "obnovit výchozí"
+
+msgid "salt"
+msgstr "sůl"
+
+msgid "saved games"
+msgstr "uložené hry"
+
+msgid "source"
+msgstr "zdroj"
+
+msgid "trade partner"
+msgstr "obchodní partner"
+
+msgid "user"
+msgstr "uživatel"
+
+msgid "alliance"
+msgstr "spojenectví"
+
+msgid "allied"
+msgstr "spojenecký"
+
+msgid "alvearies"
+msgstr "včelíny, úly"
+
+msgid "beans"
+msgstr "fazole"
+
+msgid "boat builder"
+msgstr "stavitel lodí"
+
+msgid "builder"
+msgstr "stavitel"
+
+msgid "capacity"
+msgstr "kapacita"
+
+msgid "citizens"
+msgstr "občané"
+
+msgid "clay deposit"
+msgstr "ložisko jílu"
+
+msgid "cocoa beans"
+msgstr "kakaové boby"
+
+msgid "community"
+msgstr "komunita"
+
+msgid "condiments"
+msgstr "koření, ochucovadla"
+
+msgid "configure"
+msgstr "nastavit"
+
+msgid "created"
+msgstr "vytvořeno"
+
+msgid "crops"
+msgstr "plodiny"
+
+msgid "deer"
+msgstr "jelen"
+
+msgid "directory"
+msgstr "složka, adresář"
+
+msgid "disease"
+msgstr "nemoc, choroba"
+
+msgid "doctor"
+msgstr "lékař"
+
+msgid "drag"
+msgstr "táhnout, přesunout"
+
+msgid "education"
+msgstr "vzdělání"
+
+msgid "ensure"
+msgstr "zajistit"
+
+msgid "entered"
+msgstr "vešel"
+
+msgid "expenses"
+msgstr "výdaje, náklady"
+
+msgid "fallback"
+msgstr "záložní, náhradní"
+
+msgid "fixed"
+msgstr "opraveno"
+
+msgid "future"
+msgstr "budoucnost, budouci"
+
+msgid "game menu"
+msgstr "herní menu"
+
+msgid "get-together"
+msgstr "setkání, sraz, slezina"
+
+msgid "going to location"
+msgstr "jde do oblasti"
+
+msgid "honeycombs"
+msgstr "včelí plástve"
+
+msgid "inventory"
+msgstr "inventář"
+
+msgid "iron ore"
+msgstr "železná ruda"
+
+msgid "letters"
+msgstr "dopisy, znaky"
+
+msgid "linux users"
+msgstr "uživatelé linuxu"
+
+msgid "load game"
+msgstr "načíst hru"
+
+msgid "manager"
+msgstr "správce"
+
+msgid "map size"
+msgstr "velikost mapy"
+
+msgid "maximum"
+msgstr "maximum"
+
+msgid "meant"
+msgstr "myšleno"
+
+msgid "meant as"
+msgstr "myšleno jako"
+
+msgid "missing"
+msgstr "chybí"
+
+msgid "network port"
+msgstr "síťový port"
+
+msgid "package"
+msgstr "balíček"
+
+msgid "package manager"
+msgstr "správce balíčků"
+
+msgid "place multiple buildings"
+msgstr "umístit více budov"
+
+msgid "position"
+msgstr "pozice, poloha"
+
+msgid "production overview"
+msgstr "přehled výroby, přehled produkce"
+
+msgid "quickload"
+msgstr "rychle načíst"
+
+msgid "random"
+msgstr "náhodný"
+
+msgid "random map"
+msgstr "náhodná mapa"
+
+msgid "related"
+msgstr "příbuzný, související"
+
+msgid "related buildings"
+msgstr "související budovy"
+
+msgid "remove"
+msgstr "odstranit"
+
+msgid "renderer"
+msgstr "vykreslit, vykreslovač"
+
+msgid "run out"
+msgstr "dojít, spotřebovat, vyčerpat"
+
+msgid "running costs"
+msgstr "provozní náklady"
+
+msgid "screenshot"
+msgstr "snímek obrazovky"
+
+msgid "selected units"
+msgstr "zvolené jednotky, označené jednotky"
+
+msgid "settled"
+msgstr "usedlý, ustálený, zabydlený"
+
+msgid "ship overview"
+msgstr "přehled lodi"
+
+msgid "station"
+msgstr "stanice"
+
+msgid "suitable"
+msgstr "vhodný, vyhovující"
+
+msgid "system"
+msgstr "systém"
+
+msgid "tile"
+msgstr "kachličky, dlaždice, vydláždit"
+
+msgid "tops"
+msgstr "vrcholky"
+
+msgid "tower"
+msgstr "věž"
+
+msgid "unable to find"
+msgstr "nelze nalézt"
+
+msgid "want to continue"
+msgstr "chtít pokračovat"
+
+msgid "won"
+msgstr "vyhrál"
+
+msgid "written"
+msgstr "napsáno"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

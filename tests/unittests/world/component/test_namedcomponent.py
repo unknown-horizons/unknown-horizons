@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,8 @@
 
 from unittest import TestCase
 
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
+
 
 class MockNameComponent(NamedComponent):
 	def _possible_names(self):
@@ -32,7 +33,7 @@ class TestNamedComponent(TestCase):
 		NamedComponent.reset()
 
 	@classmethod
-	def make_component(cls, name = None):
+	def make_component(cls, name=None):
 		class Instance(object):
 			def __init__(self):
 				super(Instance, self).__init__()

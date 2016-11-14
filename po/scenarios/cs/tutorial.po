@@ -1,0 +1,2279 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-09-04 00:33+0200\n"
+"PO-Revision-Date: 2016-08-28 10:43+0000\n"
+"Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/uh/tutorial/cs/>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.8-dev\n"
+
+#. scenario difficulty
+msgid "Tutorial"
+msgstr "Výuka"
+
+#. scenario description
+msgid ""
+"The tutorial:\n"
+"Build your first settlement and learn how to play!"
+msgstr ""
+"Výuka:\n"
+"Postavte svojí první osadu a naučte se hrát!"
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Build a Warehouse on the coast to allow trade ships to visit your settlement."
+msgstr ""
+"Postavte na pobřeží Obchodní přístav, aby povolil ostatním lodím navštívit "
+"vaší osadu."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "Welcome to Unknown Horizons!"
+msgstr "Vítej v Unknown Horizons!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"This is your Journal, where important information about the current scenario "
+"is stored. A summary of each new task will also appear as a 'notification "
+"button' near the left-hand edge of the screen. You can hover your mouse over "
+"these notifications to read the summary, or click the button itself to open "
+"the Journal."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"You can also re-open the Journal at any time by clicking the button below "
+"the mini-map, at the top right of your screen. From now on, we'll refer to "
+"this area containing the mini-map, various buttons and tabs as the "
+"'Overview'."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"To see your first task, turn to the next page of the Journal using the "
+"button at the bottom of the opposite page - it looks like this:"
+msgstr ""
+"\n"
+"Pro zobrazení Vašeho prvního úkolu obráťte na další stranu deníku použitím "
+"tlačítka v dolní časti na protější straně - Vypadá to takhle:"
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"If you have any suggestions about how this tutorial can be improved, or if "
+"you encounter any errors, please tell us."
+msgstr ""
+"\n"
+"Jestli máte nejaké nápady o tom jak tenhle tutorial může být vylepšen, nebo "
+"jestli ste narazili na nejakú chybu, prosím řekněte nám."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"Visit www.unknown-horizons.org to find out how to contact the team."
+msgstr ""
+"\n"
+"Navštivte nás na www.unknown-horizons.org pro kontaktovaní týmu."
+
+#. This is the text body of a logbook page.
+msgid "And now, let's start the game!"
+msgstr "A nyní, pojďme hrát!"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: CREATE A SETTLEMENT"
+msgstr "NOVÝ ÚKOL: VYTVOŘTE OSADU"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Your ship is at sea, loaded with the supplies you'll need to establish a new "
+"settlement."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"To move your ship, select it with a left-click then right-click on the "
+"location you want it to sail to."
+msgstr ""
+"Pro pohyb lodí jí nejprve vyberte pomocí levého tlačítka myši a pravým "
+"tlačítkem zadejte místo, kam chcete plout."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Once you're near the coast, the 'Build Settlement' button in the overview "
+"will become active."
+msgstr ""
+"Jakmile budete v blízkosti pobřeží, tlačítko postavit osadu na kartě "
+"přehledu, bude aktivní."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Clicking this button will show a preview of the Warehouse, the first "
+"building required to found a new settlement. As you move the cursor around, "
+"you'll notice that the preview is shaded red when the building is in an "
+"unsuitable area."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"The Warehouse needs to be positioned on the coast to allow ships to dock. "
+"So, find a good location then left-click to place this important building."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid "Task: Build a Warehouse on the coast."
+msgstr "Úkol: Vybuduj na pobřeží obchodní přístav."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
+msgstr "Postavte dřevorubcuv stan a spojte ho s obchodním přístavem."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
+msgstr "NOVÝ ÚKOL: POSTAVTE DŘEVORUBCUV STAN"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The supplies and construction materials have been unloaded from your ship "
+"and safely stored in your new Warehouse. Now it's time to construct some "
+"basic buildings, beginning with a Lumberjack's Tent."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Lumberjacks will fell trees from the woodland around their tent and process "
+"the timber to produce boards, for use in construction or as a trade resource."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"To build a Lumberjack's Tent, open the Build Menu by clicking the button "
+"below the mini map or pressing 'B', the default hotkey."
+msgstr ""
+"Pro postavení dřevorubeckého stanu, otevřete stavební menu kliknutím na "
+"tlačítko pod minimapou nebo stisknutím klávesy 'B', přednastavenou skratkou."
+
+#. This is the text body of a logbook page.
+msgid ""
+"The Build Menu is sorted by tiers and, as yours is a new settlement, First "
+"Tier buildings are the only ones available to you; as your civilization "
+"advances, you will obtain access to higher tiers and be able to construct a "
+"much wider range of buildings."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
+"Tent' from the list of buildings in the Overview and place the building."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Later in the game you might want to create woodland by planting trees, but "
+"since that costs money, you should use what nature has provided for the time "
+"being!"
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Any resource-gathering or production building needs a path connecting it to "
+"a Warehouse or other form of storage, otherwise the goods it produces will "
+"not be collected."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"So, once your Lumberjack's Tent is in position, connect it to your Warehouse "
+"by opening the Build Menu then clicking the 'Path' button. You can now click "
+"and drag with the mouse to draw the route of your path between the "
+"Lumberjack's Tent and the Warehouse."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
+"Warehouse."
+msgstr ""
+"Úkol: Postavte dřevorubcuv stan v zalesněné oblasti a propojte ho cestou k "
+"Obchodnímu přístavu."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Once the buildings are connected you'll see a collector arrive to pick up "
+"your newly produced boards and deliver them to the Warehouse, ready for use "
+"in construction or trade."
+msgstr ""
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a Hunter and a Fisher. Connect them to the Warehouse."
+msgid ""
+"Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
+msgstr "Postavte lovce a rybáře. Spojte je s budovou obchodního přístavu."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: FOOD SUPPLY"
+msgstr "NOVÝ ÚKOL: ZÁSOBOVÁNÍ JÍDLEM"
+
+#. This is the text body of a logbook page.
+msgid ""
+"You will need to have some food-producing companies too, because people in "
+"general (and especially sailors) are very hungry."
+msgstr ""
+"Dále budete muset postavit některé základní budovy, které budou produkovat "
+"jídlo, protože všichni lidé (a námořníci obzvláště) jsou velmi hladoví."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Available companies in the first tier are the Hunter and Fisher."
+msgid ""
+"Available companies in the first tier are the Hunter's Tent and Fisherman's "
+"Tent."
+msgstr "Dostupné budovy pro první úroveň jsou Lovec a Rybář."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
+msgid "The hunter hunts animals in the forest, thus needs trees nearby."
+msgstr "Lovec loví v lesích zvířata, proto potřebuje být blízko lesa."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that you can place your Hunter close to the lumberjack's forest."
+msgid ""
+"Note that you can place your Hunter's Tent close to the lumberjack's forest."
+msgstr "Všimněte si, že lovce můžete umístit blízko dřevorubcova lesa."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It can happen that the animals don't reproduce fast enough or simply hide "
+"well."
+msgstr ""
+"Stává se, že zvířata se nemnoží dostatečně rychle nebo se umí dobře schovat."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Conclusion: the Hunter is not too reliable if you need continuous supply."
+msgid ""
+"Conclusion: the Hunter's Tent is not too reliable if you need continuous "
+"supply."
+msgstr ""
+"Závěr: Lovec není příliš spolehlivý zdroj potravy, pokud potřebujete "
+"nepřerušované zásobování."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"The Fisher needs a coastal building site like the Warehouse and a fish "
+"school in range."
+msgstr ""
+"\n"
+"Rybář potřebuje budovu na pobřeží jako obchodní přístav a hejno ryb v dosahu."
+
+#. This is the text body of a logbook page.
+msgid "He will build a small rowing vessel and catch some fish."
+msgstr "Postaví si malou loďku a bude chytat ryby."
+
+#. This is the text body of a logbook page.
+msgid ""
+"This is a very constant supply at the cost of a slightly longer production "
+"time per unit of food."
+msgstr ""
+"Jedná se o nepřetržitý zdroj potravy, cenou za to je delší produkční čas "
+"každé jednotky jídla."
+
+#. This is the text body of a logbook page.
+msgid ""
+"A small settlement like yours can use both companies, and you can better "
+"balance pros and cons if you see the direct comparison."
+msgstr ""
+"Malá osada, jakou je ta Vaše, může využít obě společnosti. Pokud je uvidíte "
+"v přímém srovnání, můžete lépe porovnat jejich výhody a nevýhody."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a Hunter and a Fisher."
+msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
+msgstr "Úkol: Postavte lovce a rybáře."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Don't forget to connect them to your Warehouse with trails!"
+msgid "Don't forget to connect them to your Warehouse with Trails!"
+msgstr "Nezapomeňte je připojit k Vašemu obchodnímu přístavu pomocí stezek!"
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build a Main Square. Choose an area without many economy buildings."
+msgstr ""
+"Postavte tržiště. Vyberte oblast, kde se nenachází mnoho produkčních budov."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: MAIN SQUARE"
+msgstr "NOVÝ ÚKOL: TRŽIŠTĚ"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Your residents need a main square where they can fetch their goods from."
+msgstr "Vaši obyvatelé potřebují tržiště, kde si mohou vyzvednout zboží."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that they need a trail connection from their home to the Main "
+#| "Square. Note that the Main Square acts as trail as well, therefore "
+#| "adjacent tents do not need a separate trail."
+msgid ""
+"This means that they need a trail connection from their home to the Main "
+"Square. Note that the Main Square acts as trail as well, therefore adjacent "
+"Tents do not need a separate Trail."
+msgstr ""
+"To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště. "
+"Všimnete si to že, tržiště se chová také jako stezka, to znamená že stany "
+"okolo tržiště nepotřebují osobitní stezku."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All goods in your Warehouse are available at this 'market place', so your "
+#| "residents do not need to walk to the Fisher or even to the Warehouse."
+msgid ""
+"All goods in your Warehouse are available at this 'market place', so your "
+"residents do not need to walk to the Fisherman's Tent or even to the "
+"Warehouse."
+msgstr ""
+"Všechno zboží v obchodním přístavu je dostupné na tomto 'tržišti', takže "
+"obyvatelé nemusí chodit k rybáři nebo až do obchodního přístavu."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You should avoid placing your main settlement tents too close to your "
+"lumberjacks because building tents will clear away the trees that your "
+"lumberjack needs to produce boards."
+msgstr ""
+"Měli byste se vyvarovat výstavby stanů příliš blízko Vašemu dřevorubci,"
+"protože postavením stanů budou zničeny stromy, které dřevorubec potřebuje k "
+"produkci prken."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Companies work without being connected to the tents, so you don't need to "
+"build a road between the Main Square and e.g. your Lumberjack's Tent."
+msgstr ""
+"Společnosti nepotřebují přístup ke stanům, proto nepotřebujete vybudovat "
+"cestu mezi tržištěm a např. dřevorubeckým stanem."
+
+#. This is the text body of a logbook page.
+msgid "Task: Build a Main Square."
+msgstr "Úkol: Postavte tržiště."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"Now let's have a closer look at the Main Square."
+msgstr ""
+"\n"
+"Nyní se blíže podívejme na tržiště."
+
+#. This is the text body of a logbook page.
+msgid ""
+"In the 'Account' tab you get a balance sheet of this island, featuring all "
+"costs you pay and all taxes you earn."
+msgstr ""
+"V záložce \"Účet\" můžete vidět přehled financí  Vašeho ostrova, který "
+"zahrnuje všechny platby, které platíte, a všechny daně, které dostáváte."
+
+#. This is the text body of a logbook page.
+msgid ""
+"The items 'Sale' and 'Buy' refer to your trading balance and will be "
+"explained later on."
+msgstr ""
+"Položky \"Nákup\" a \"Prodej\" ukazují Vaši obchodní bilanci a budou "
+"vysvětleny později."
+
+#. This is the text body of a logbook page.
+msgid "If your balance is positive, you all-in-all make a profit."
+msgstr "Pokud je Vaše bilance kladná, vykazujete zisk."
+
+#. This is the text body of a logbook page.
+msgid ""
+"In the different tier overview tabs you can see statistics about your "
+"inhabitants. You also set the tier-specific global tax here and allow or "
+"deny inhabitants of this tier to upgrade to the next higher one."
+msgstr ""
+"Dále jsou zde záložky odpovídající jednotlivým úrovním. Zde můžete sledovat "
+"statistiky o Vašich obyvatelích. Zde můžete nastavit celkovou daň pro každou "
+"úroveň a povolit nebo zakázat obyvatelům na dané úrovni postoupit do vyšší "
+"úrovně."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build a Tent and connect it to the Main Square if necessary."
+msgstr "Postavte stan a propojte jej s tržištěm jestli je to potřebný."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: RESIDENTIAL BUILDINGS"
+msgstr "NOVÝ ÚKOL: OBYTNÉ BUDOVY"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Settlers want to have a roof over their heads, else they won't even think of "
+"living in your city! You need to provide tents."
+msgstr ""
+"Osadníci chtějí mít střechu nad hlavou, jinak je ani nenapadne usadit se ve "
+"Vašem městě! Potřebujete zajistit jim stany."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Tents are the basic residential buildings. Your inhabitants will want to "
+"upgrade it when they reach higher tiers."
+msgstr ""
+"Stany jsou základními obytnými budovami. Vaši obyvatelé si je budou chtít "
+"vylepšit až dosáhnou vyšší úrovně."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Note that the upgrade of each building requires construction material, like "
+"wood for their first upgrade."
+msgstr ""
+"Všimněte si, že vylepšení každé budovy vyžaduje konstrukční materiál, jako "
+"třeba dřevo pro první vylepšení."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Consider to disable the upgrade if your stock of these materials is low."
+msgstr "Zvažte vypnutí vylepšování, pokud máte nedostatek skladových zásob."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Settlers may not look very useful since they will try to consume all goods "
+"you produce - but they at least pay taxes, and that's the only way you can "
+"make money for now!"
+msgstr ""
+"Osadníci se nezdají být příliš užiteční, snaží se spotřebovat všechno zboží, "
+"které produkujete, ale na druhou stranu platí daně, které jsou prozatím "
+"Vaším jediným zdrojem peněz!"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build a tent and connect it to the main square. Tents dont need to "
+#| "be connected to any of the companies."
+msgid ""
+"Task: Build a Tent and connect it to the Main Square if necessary. Tents "
+"don't need to be connected to any of the companies."
+msgstr ""
+"Úkol: Postavte stan a propojte ho s tržištěm. Stany nepotřebují být "
+"propojeny s žádnou výrobnou zboží."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid ""
+#| "Build at least three additional tents and connect them to the main square."
+msgid ""
+"Build at least three additional Tents and connect them to the Main Square."
+msgstr "Postavte alespoň tři další stany a propojte je s tržištěm."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Let's have a look at the tent overview tab."
+msgid ""
+"\n"
+"Let's have a look at the Tent overview tab."
+msgstr ""
+"\n"
+"Nyní se pojďme podívat na přehledovou záložku pro stany."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You can see\n"
+"* the happiness of these residents,\n"
+"* the taxes they pay and\n"
+"* the resources they demand."
+msgstr ""
+"Můžete zde vidět:\n"
+"* spokojenost obyvatel,\n"
+"* daně, které platí\n"
+"* zdroje, které požadují."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If their demands are fulfilled, happiness and thus your tax income increase."
+msgstr ""
+"Pokud budou jejich požadavky splněny, štěstí a také příjem z daní vzrostou."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If not, happiness and income decrease. At some time your residents may get "
+"really sour and simply turn their back on your village, leaving behind a "
+"decaying ruin."
+msgstr ""
+"Pokud nebudou splněny, štěstí a příjem poklesne. Po určité době se obyvatelé "
+"stanou nevrlými, opustí Vaši vesnici a zanechají za sebou rozpadající se "
+"trosky."
+
+#. This is the text body of a logbook page.
+msgid "Note that you can also change the global tax settings here, too."
+msgstr "Všimněte si, že i zde můžete změnit nastavení celkové daně."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build at least three additional tents."
+msgid "Task: Build at least three additional Tents."
+msgstr "Úkol: Postavte alespoň tři další stany."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"TIP: Holding down SHIFT eases constructing multiple buildings of the same "
+"kind."
+msgstr ""
+"\n"
+"TIP: Přidržení klávesy SHIFT Vám zjednoduší hromadnou výstavbu budov "
+"stejného druhu."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a signal fire at the coast close to your warehouse."
+msgid "Build a Signal Fire at the coast close to your Warehouse."
+msgstr "Postavte signální oheň na pobřeží v blízkosti obchodního přístavu."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD SIGNAL FIRE"
+msgstr "NOVÝ ÚKOL: POSTAVTE SIGNÁLNÍ OHEŇ"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Can you see the ship passing your island from time to time? That ship "
+"belongs to the Free Trader, one of the first settlers in this archipelago."
+msgstr ""
+"Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě "
+"patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto souostroví."
+
+#. This is the text body of a logbook page.
+msgid ""
+"The trader will supply your settlement with necessary goods which you can't "
+"produce yet."
+msgstr ""
+"Obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím nemůžete "
+"sami produkovat."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can also sell surpluses of your production, but in general consuming "
+#| "them (by building more tents) instead of selling them yields more profit."
+msgid ""
+"You can also sell surpluses of your production, but in general consuming "
+"them (by building more Tents) instead of selling them yields more profit."
+msgstr ""
+"Také můžete prodávat přebytky z Vaší produkce. Obecně je ale výhodnější tyto "
+"přebytky spotřebovat (tak, že postavíte více stanů). Příjem z daní bude "
+"vyšší než by byl příjem z prodeje."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Normally the trader ships just sail around and look for deals, but you "
+#| "can speed things up a bit."
+msgid ""
+"Normally the trader just sails around and looks for deals, but you can speed "
+"things up a bit."
+msgstr ""
+"Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní "
+"příležitosti, ale my můžeme věci trochu urychlit."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "For this purpose, build a signal fire at the coast near your warehouse. "
+#| "It will show ships the way to your settlement."
+msgid ""
+"For this purpose, build a Signal Fire at the coast near your Warehouse. It "
+"will show ships the way to your settlement."
+msgstr ""
+"Pro tento účel postavte signální oheň na pobřeží poblíž obchodního přístavu. "
+"Tak ukážete lodím cestu do Vaší osady."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The signal fire has to cover the area which the ships pass through to "
+#| "catch them."
+msgid ""
+"The Signal Fire has to cover the area which the ships pass through to catch "
+"them."
+msgstr ""
+"Aby mohl signální oheň přilákat lodě, musí pokrývat oblast, kterou lodě "
+"projíždějí."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "After this little advertisment, the trader will also stop by and look "
+#| "into your warehouse if it planned to sail past it."
+msgid ""
+"\n"
+"After this little advertisement, the trader will also stop by and look into "
+"your Warehouse, even if he had planned to sail past it."
+msgstr ""
+"\n"
+"Pokud by obchodník plánoval proplout okolo, po této upoutávce zakotví a "
+"navštíví obchodní přístav."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
+msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
+msgstr ""
+"Zakázky můžete nabízet pomocí záložky \"Prodej/Nákup\" v obchodním přístavu."
+
+#. This is the text body of a logbook page.
+msgid "At the 'sailors' tier, you are equipped with three trading slots."
+msgstr "V úrovni 'námořníci' máte k dispozici tři obchodní sloty."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
+"vice versa."
+msgstr ""
+"Klikněte na malou ikonu, abyste změnili režim slotu z \"Nákup\" na \"Prodej"
+"\" a naopak."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Click in the slot to choose the good you want to trade with. We will further "
+"explain this once you are ready to trade."
+msgstr ""
+"Klikněte do slotu a vyberte zboží, se kterým chcete obchodovat. Více tuto "
+"část vysvětlíme později, až budete připraveni obchodovat."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a signal fire at the coast close to your warehouse."
+msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
+msgstr ""
+"Úkol: Postavte signální oheň na pobřeží v blízkosti obchodního přístavu."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Reach an island stock of at least 30 tools. Note that this might take a "
+"while."
+msgstr ""
+"Dosáhněte ostrovní skladové zásoby alespoň 30 nástrojů. To může chvilku "
+"trvat."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: LEARN TO TRADE"
+msgstr "NOVÝ ÚKOL: VÝUKA OBCHODOVANÍ"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Excellent! The Free Trader will now stop by at your warehouse from time "
+#| "to time.\n"
+#| "\n"
+#| "Let's continue our tutorial on how to trade."
+msgid ""
+"Excellent! The Free Trader will now stop by at your Warehouse from time to "
+"time.\n"
+"\n"
+"Let's continue our tutorial on how to trade."
+msgstr ""
+"Výborně! Svobodný obchodník nyní čas od času zakotví v obchodním přístavu.\n"
+"\n"
+"Pokračujme v našem návodu, jak obchodovat."
+
+#. This is the text body of a logbook page.
+msgid "First click on your own Warehouse and click on the third tab."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Then click on one of the 3 slots, then select a good you want to buy or sell."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"After selecting a particular type of good, the green bar across the bottom "
+"of the slot (if visible) shows you how much you have in stock of this good."
+msgstr ""
+"Po vybrání konkrétního typu zboží, zelený ukazatel napravo od slotu (pokud "
+"je viditelný) ukazuje, kolik jednotek zboží máte aktuálně ve skladu."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Dragging the slider on the right of each slot determines your 'target value' "
+"which has a different meaning on 'Buy' and 'Sell'."
+msgstr ""
+"Tažením posuvníku na pravé straně každého slotu určíte \"cílovou hodnotu\", "
+"která má různé významy pro \"Prodej\" a \"Nákup\"."
+
+#. This is the text body of a logbook page.
+msgid ""
+"When buying, you will buy sufficient to hold your 'target value' in stock."
+msgstr ""
+"Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena "
+"\"cílová hodnota\" zásob."
+
+#. This is the text body of a logbook page.
+msgid ""
+"When selling, the 'target value' is the stock amount at which you will "
+"always stop selling until you get more of that resource again."
+msgstr ""
+"Pokud zboží prodáváte, \"cílová hodnota\" určuje množství zásob, na kterém "
+"vždy přestanete prodávat dokud této suroviny nezískáte zase více."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"For example:\n"
+"Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
+"cause you to buy 4 additional tons at most."
+msgstr ""
+"\n"
+"Ukážeme si to na příkladu:\n"
+"Pokud máme nastavený slot na \"Nákup\" a na skladě máme 5 tun daného zboží, "
+"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 dalších "
+"tun zboží."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
+"positioned at 13 will sell up to 5 tons."
+msgstr ""
+"Prodej funguje obdobně. Slot \"Prodej\" s 18 tunami zboží na skladě a "
+"posuvník nastavený na hodnotu 13 tun způsobí, že bude prodáno 5 tun zboží."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "If the free trader however only wants to buy or sell less than your "
+#| "settings would allow him, you need to live with that and wait for him to "
+#| "return."
+msgid ""
+"If the Free Trader however only wants to buy or sell less than your settings "
+"would allow him, you need to live with that and wait for him to return."
+msgstr ""
+"Pokud svobodný obchodník bude chtít nakoupit nebo prodat méně zboží než "
+"nastavení vašich slotů dovoluje, nezbývá Vám nic jiného než počkat na jeho "
+"příští cestu."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
+"It is NOT possible to change prices manually!"
+msgstr ""
+"Unknown Horizons obsahuje chytré nastavení cen, to znamená, že cena za "
+"jednotku zboží se může lišit.\n"
+"Není možné měnit ceny manuálně!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
+"'Buy' values there."
+msgstr ""
+"Vaši obchodní bilanci můžete vidět v záložce \\\"Účet\\\", kde jsou srovnány "
+"\"Nákup\" a \"Prodej\"."
+
+#. This is the text body of a logbook page.
+msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
+msgstr "Úkol: Nakupte nástroje tak, aby zásoby ve vašem skladu byly 30 kusů!"
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a pavilion with connection to the tents."
+msgid "Build a Pavilion with connection to the Tents."
+msgstr "Postav pavilón propojený se stany."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A PAVILION"
+msgstr "NOVÝ ÚKOL: POSTAVTE PAVILÓN"
+
+#. This is the text body of a logbook page.
+msgid "Those tools will be enough for the moment. Well done!"
+msgstr "Pro tuto chvíli máte dostatek nástrojů. Velmi dobře!"
+
+#. This is the text body of a logbook page.
+msgid "You now provide housing, a main square and food to your inhabitants."
+msgstr "Vašim obyvatelům nyní poskytujete bydlení, tržiště a jídlo."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Still there is one demand which we have not satisfied so far, you may "
+#| "check that in the marketplace or tent tab - your sailors want a basic "
+#| "building where they can pray."
+msgid ""
+"Still there is one demand which we have not satisfied so far (you may check "
+"that by clicking on any Tent): your sailors want a basic building where they "
+"can pray."
+msgstr ""
+"Stále je zde ještě jeden požadavek, který nebyl doposud uspokojen, jak si "
+"můžete sami ověřit v záložce tržnice nebo stanu - vaši námořníci chtějí "
+"budovu, kde by se mohli modlit."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The solution is a pavilion which the village parson quickly puts up as "
+#| "shelter from the sun."
+msgid ""
+"The solution is a Pavilion which the village parson quickly puts up as "
+"shelter from the sun."
+msgstr ""
+"Řešením je pavilón, který vesnický pastor rychle vztyčí jako úkryt před "
+"sluncem."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Service buildings like this also need to be connected to the tents with a "
+#| "trail, else your inhabitants feel unable to reach them."
+msgid ""
+"Service buildings like this also need to be connected to the Tents with a "
+"Trail, else your inhabitants feel unable to reach them."
+msgstr ""
+"Budovy služeb, jako je tato, potřebují být propojeny se stany pomocí cest, "
+"jinak je vaši obyvatelé nebudou moci využívat."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"Note that faith is treated like a physical resource!"
+msgstr ""
+"\n"
+"Všimněte si, že víra se chová jako fyzikální zdroj!"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that your inhabitants need a road connection to the producer "
+#| "(pavilion) to pick up faith there."
+msgid ""
+"This means that your inhabitants need a road connection to the producer "
+"(Pavilion) to pick up faith there."
+msgstr ""
+"To znamená, že vaši obyvatelé potřebují stezky k producentovi (pavilónu), "
+"aby si mohli přijít vyzvednout víru."
+
+#. This is the text body of a logbook page.
+msgid ""
+"After some time, they will have consumed it and then again look for a "
+"producer to collect more faith."
+msgstr ""
+"Po určité době tuto víru zkonzumují a potom znovu vyhledají producenta, aby "
+"dostali více víry."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Important:\n"
+#| "It is NOT enough that the building is merely within a certain range of "
+#| "the tents.\n"
+#| "The road connection is required as well."
+msgid ""
+"Important:\n"
+"It is NOT enough that the building is merely within a certain range of the "
+"Tents.\n"
+"The road connection is required as well."
+msgstr ""
+"Důležité:\n"
+"NENÍ dostačující, že se budova nachází v dostatečné vzdálenosti od stanů.\n"
+"Spojení pomocí stezky je rovněž vyžadováno."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build a pavilion with a trail to the tents in order to fulfill your "
+#| "sailors' demand for faith."
+msgid ""
+"Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
+"sailors' demand for faith."
+msgstr ""
+"Úkol: Postavte pavilón spojený stezkou se stany, aby se uspokojila potřeba "
+"víry vašich námořníků."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Set the tax level to Low (left end) and wait for your sailors to upgrade."
+msgstr ""
+"Nastavte výši daní na nízkou hodnotu (levý okraj) a počkejte na vylepšení."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: NEXT TIER"
+msgstr "NOVÝ ÚKOL: DALŠÍ ÚROVEŇ"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All demands are fulfilled now if your inhabitants can regularly visit the "
+#| "main square & pavilion and your food supply is adequate."
+msgid ""
+"All demands are fulfilled now if your inhabitants can regularly visit the "
+"Main Square and the Pavilion and your food supply is adequate."
+msgstr ""
+"Všechny požadavky jsou nyní splněny. Vaši obyvatelé můžou pravidelně "
+"navštěvovat náměstí a pavilón a Vaše zásobení jídlem je dostačující."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If the sailors are happy enough, they want to advance to the next tier "
+"called Pioneers."
+msgstr ""
+"Pokud jsou námořníci dostatečně šťastní, chtějí postoupit na další úroveň "
+"zvanou Průkopníci."
+
+#. This is the text body of a logbook page.
+msgid ""
+"To make them happy, there is nothing else for you to do but setting taxes to "
+"a lower level since you have fulfilled all the demands of your inhabitants."
+msgstr ""
+"Abyste je učinili šťastnými, není nic jednoduššího než nastavit daně na "
+"nižší úroveň, dokud nebudou naplněny všechny požadavky Vašich obyvatel."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You should try to not always run on low taxes since this will probably lead "
+"to bankruptcy sooner or later. For a period of time and if you know what you "
+"are doing, it is fine though."
+msgstr ""
+"Nízké daně je potřeba využívat obezřetně. Pokud je necháte na nízké úrovni, "
+"přivedete svůj ostrov, dříve nebo později, k bankrotu. Pokud ale víte, co "
+"děláte, fungují skvěle."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "After some time, the first unit should walk to the main square and have a "
+#| "look for new construction material there to build a log house. This house "
+#| "will replace the old tent."
+msgid ""
+"After some time, the first unit should walk to the Main Square and have a "
+"look for new construction material there to build a log house. This house "
+"will replace the old tent."
+msgstr ""
+"Po určité době se první obyvatelé vypraví na náměstí, aby získali nový "
+"stavební materiál, který potřebují ke stavbě srubu. Tímto domem nahradí své "
+"dosavadní stany."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Such residential upgrades cost resources and can thus be restricted at "
+#| "the main square."
+msgid ""
+"\n"
+"Such residential upgrades cost resources and can thus be restricted at the "
+"Main Square."
+msgstr ""
+"\n"
+"Takové vylepšení obytných budov jsou jediným vylepšením, které Vás stojí "
+"prostředky a nemůže být Vámi zakázáno."
+
+#. This is the text body of a logbook page.
+msgid ""
+"There also are upgrades of buildings without costs, as you will see with the "
+"lumberjack. In this case, only the graphics change."
+msgstr ""
+"Jsou zde také manuální vylepšení některých budov, kdy jsou prostředky "
+"využity ke stavbě lepší verze budovy na tom samém místě. Také existují "
+"vylepšení bez poplatků, například jak uvidíte u dřevorubce (dojde ke "
+"grafické změně)."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
+"than sailors, too."
+msgstr ""
+"Vylepšené domy pojmou více obyvatel a průkopníci také platí vyšší daně než "
+"námořníci."
+
+#. This is the text body of a logbook page.
+msgid ""
+"As you may have figured out already, the downside is that pioneers demand "
+"additional goods which sailors do not need - so you will need to spend this "
+"extra money to make them happy as well."
+msgstr ""
+"Jak už jste si možná všimli, nevýhodou je, že průkopníci požadují dodatečné "
+"zboží, které námořníci nepotřebovali - takže budete muset utratit peníze, "
+"abyste je učinili šťastnými."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
+msgstr ""
+"Úkol: Nastavte výši daní na nízkou hodnotu (levý okraj posuvníku) a počkejte "
+"na vylepšení."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a farm and keep some empty space around it."
+msgid "Build a Farm and keep some empty space around it."
+msgstr "Postavte farmu a nechte kolem ni volné místo."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A FARM"
+msgstr "NOVÝ ÚKOL: POSTAVTE FARMU"
+
+#. This is the text body of a logbook page.
+msgid "Congratulations! Some of your inhabitants have reached tier II!"
+msgstr "Gratulujeme! Část vašich obyvatel dosáhla úrovně II!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Now you have access to new buildings, take a look at the Build menu again."
+msgstr ""
+"Nyní máte přístup k novým budovám, podívejte se do Stavebního menu znova."
+
+#. This is the text body of a logbook page.
+msgid "A shiny new tab appeared there."
+msgstr "Objevila se zde nová blýskavá záložka."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Pioneers will demand cloth, so you need to set up a production line for "
+#| "cloth starting with lambs wool (which is one of the goods produced at the "
+#| "farm)."
+msgid ""
+"Pioneers will demand cloth, so you need to set up a production line for "
+"cloth starting with lambs wool (which is one of the goods produced at the "
+"Farm)."
+msgstr ""
+"Průkopníci budou požadovat látku, to znamená, že budete muset vytvořit "
+"výrobní linku pro látku, která začne ovčí vlnou (ovce jsou produkovány na "
+"farmě)."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The farm is a very special production building since it can produce not "
+#| "only one, but very many (and different) goods if you choose."
+msgid ""
+"The Farm is a very special production building since it can produce not only "
+"one, but many (and different) goods if you choose."
+msgstr ""
+"Farma je vyjímečná produkční budova, která neprodukuje pouze jednu, ale "
+"velmi mnoho (a rozličných) druhů zboží, které si zvolíte."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The output of farms depends on what kind of fields you build around it."
+msgid "The output of Farms depends on what kind of fields you build around it."
+msgstr "Výstupní produkt závisí na typu polí, které jsou vystavěny okolo ní."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"We will have a closer look at this later."
+msgstr ""
+"\n"
+"K tomuto se podrobněji vrátíme později."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Farms, like all companies producing raw materials, do not necessarily "
+#| "need to be connected to storage or a warehouse."
+msgid ""
+"Farms, like all companies producing raw materials, do not necessarily need "
+"to be connected to storage or a Warehouse."
+msgstr ""
+"Farmy, stejně jako všechny společnosti produkující suroviny, nemusí být "
+"propojeny s obchodním přístavem nebo skladištěm."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "As long as units of the final production company can reach the farm, and "
+#| "collectors from the warehouse or storage tent can reach the final company "
+#| "everything's fine."
+msgid ""
+"As long as units of the final production company can reach the Farm, and "
+"collectors from the Warehouse or Storage Tent can reach the final company "
+"everything's fine."
+msgstr ""
+"Jednotky výrobní společnosti musí dosáhnout na výstupy z farmy a výběrčím z "
+"pobočky, nebo obchodního přístavu stačí dosáhnout na výsledné produkty z "
+"výrobní společnosti."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If you, however, plan to do some processing on different parts of the island "
+"(which can make sense) or even on different islands, you will need a "
+"connection to collectors."
+msgstr ""
+"Nicméně, pokud plánujete provádět některou část z výrobního řetězce v jiných "
+"částech ostrova (což může dávat smysl) nebo na různých ostrovech, budete "
+"potřebovat propojení k výběrčím."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Try to build the farm not too close to the coast or your existing "
+#| "buildings since it will need some space around it to work well."
+msgid ""
+"Try to build the Farm not too close to the coast or your existing buildings "
+"since it will need some space around it to work well."
+msgstr ""
+"Zkuste postavit farmu tak, aby nebyla blízko pobřeží a stávajících budov, "
+"protože bude pro správnou činnost potřebovat místo okolo sebe."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a farm."
+msgid "Task: Build a Farm."
+msgstr "Úkol: Postavte farmu."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build at least one pasture and add potato fields if you like."
+msgstr ""
+"Vybudujte alespoň jednu pastvinu a přidejte bramborové pole, pokud chcete."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD FIELDS"
+msgstr "NOVÝ ÚKOL: STAVBA POLÍ"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The farm itself is not going to produce anything without some fields."
+msgid "The Farm itself is not going to produce anything without some fields."
+msgstr "Samotná farma nebude nic produkovat, pokud nebudou postavena pole."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You currently have the choice between pastures, potato and sugar fields."
+msgstr ""
+"Nyní máte možnost výběru mezi pastvinami, bramborovými poli a plantážemi s "
+"cukrovou třtinou."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Let's have a short overview:\n"
+#| "* Pasture: Sheep live here, producing lamb wool.\n"
+#| "* Potato field: Grows potatoes which are currently treated as food.\n"
+#| "* Sugar field: Grows sugar which is used to distill liquor and (later) "
+#| "produce confectionery."
+msgid ""
+"Let's have a short overview:\n"
+"* Pasture: Sheep live here, producing lamb wool.\n"
+"* Potato Field: Grows potatoes which are currently treated as food.\n"
+"* Sugar Field: Grows sugar which is used to distill liquor and (later) "
+"produce confectionery."
+msgstr ""
+"Proveďme krátké shrnutí:\n"
+"* Pastviny - žijí zde ovce, produkují ovčí vlnu.\n"
+"* Bramborové pole - pěstují se zde brambory, ty slouží jako potrava.\n"
+"* Plantáž cukrové třtiny - pěstuje se zde třtina, která je dále použita k "
+"destilaci kořalky a (později) produkci cukrovinek."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We now only need pastures, but in case your food supply chain is too small "
+"(maybe many residential buildings) you can also produce some potatoes."
+msgstr ""
+"Nyní potřebujeme pouze pastviny, ale v případě, že Vaše zásobení jídlem je "
+"příliš malé (díky mnoha obytným budovám), můžete také postavit bramborové "
+"pole."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that for potatoes you will need a road connection to the farm (not "
+#| "to the field!) as it will be the only company to work on the goods."
+msgid ""
+"Note that for potatoes you will need a road connection to the Farm (not to "
+"the field!), as it will be the only company to work on the goods."
+msgstr ""
+"Všimněte si, že brambory potřebujete propojit s farmou (nikoli s poli!), což "
+"je jediná budova, která pracuje se zbožím."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Make sure that all fields you build are in the area covered by the farm."
+msgid ""
+"\n"
+"Make sure that all fields you build are in the area covered by the Farm."
+msgstr ""
+"\n"
+"Ujistěte se, že všechna pole, která stavíte, leží v oblasti, která je "
+"pokryta farmou."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can have combined production - one pasture will not lead to 100 "
+#| "percent efficiency of the farm - but you need to check how many fields "
+#| "one farm can serve."
+msgid ""
+"You can have combined production - one pasture will not lead to 100 percent "
+"efficiency of the Farm - but you need to check how many fields one Farm can "
+"serve."
+msgstr ""
+"Můžete mít kombinovanou produkci - jedna jednotka pastvin nepovede ke "
+"stoprocentní efektivnosti farmy, ale na druhou stranu, počet polí, které "
+"jedna farma může zabezpečit je omezen."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Different classes of fields require the farm units to spend more or less "
+"time there (to seed, harvest, herd, etc…) and because of that, the farm may "
+"be unable to serve all of the fields you built for it in time."
+msgstr ""
+"Různé druhy polí mají různé časové požadavky (k vysetí, sklizni, pastvě, "
+"atd.) a kvůli tomu nemusí být farma schopna obsloužit všechna pole včas."
+
+#. This is the text body of a logbook page.
+msgid ""
+"For now, you do not need to care about these issues a lot since you haven't "
+"built any fields. Let's change that!"
+msgstr ""
+"Nyní se tím nemusíte příliš zabývat, protože jste nevybudovali žádné pole. "
+"Pojďme to změnit!"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build at least one pasture in the farm's range and add potato "
+#| "fields if you like."
+msgid ""
+"Task: Build at least one Pasture in the Farm's range and add Potato Fields "
+"if you like."
+msgstr ""
+"Úkol: Vybudujte alespoň jednu pastvinu v okolí farmy a přidejte bramborové "
+"pole, pokud chcete."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build a storage tent (tier I tab) where it makes sense."
+msgstr "Vybudujte skladovací stan (v záložce úrovně I) tam, kde to má smysl."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD STORAGE"
+msgstr "NOVÝ ÚKOL: POSTAVTE SKLADIŠTĚ"
+
+#. This is the text body of a logbook page.
+msgid "Did you watch your lumberjack recently?"
+msgstr "Viděli jste nedávno dřevorubce?"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Since your warehouse does not have unlimited space to store goods, "
+#| "collectors will stop fetching goods from companies when stock is full."
+msgid ""
+"Since your Warehouse does not have unlimited space to store goods, "
+"collectors will stop fetching goods from companies when stock is full."
+msgstr ""
+"Vzhledem k tomu že obchodní přístav nemá neomezený prostor pro uložení "
+"zboží, dělníci přestanou odebírat zboží od dodavatelů, když je plný zásob."
+
+#. This is the text body of a logbook page.
+msgid ""
+"So if no sailors recently wanted to upgrade their tents, you probably have a "
+"lot of boards and in that case, the lumberjack may idle."
+msgstr ""
+"Takže pokud námořník nechtěl nedávno provést vylepšení svého stanu, "
+"pravděpodobně máte spoustu prken, a v takovém případě nemusí dřevorubec "
+"pracovat."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We can improve this situation in two different ways, and we will have a look "
+"at both of them below."
+msgstr ""
+"Tuto situaci můžete zlepšit dvěma různými způsoby, pojďme se na ně podívat."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All companies offer to do no work at all.\n"
+#| "This may sound strange, but click on the gear wheel you see in a "
+#| "lumberjack hut's overview."
+msgid ""
+"All companies offer to do no work at all.\n"
+"This may sound strange, but click on the gear wheel you see in the "
+"Lumberjack Hut's overview."
+msgstr ""
+"Všichni dodavatelé nabízejí možnost nepracovat.\n"
+"Může to znít divně, ale zkuste kliknout na ozubené kolo, které vidíte "
+"například v přehledu dřevorubce."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If this 'break' mode is enabled (we call it 'Decommissioning'), the running "
+"costs you pay for the building will decrease. They won't be zero, but still "
+"lower than if you keep the company producing."
+msgstr ""
+"Pokud je povolen režim \"rozbít\" (říkáme tomu \"Vyřazení z provozu\"), "
+"budou provozní náklady, které zaplatíte za budovu, nižší. Nebudou nulové, "
+"ale stále nižší, než pokud bude dodavatel pracovat."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"This means that you can save money when you temporarily do not need a "
+"company and do not want to tear it down, either."
+msgstr ""
+"\n"
+"To znamená, že můžete ušetřit poeníze tak, že dočasně zastavíte produkci "
+"zboží, které nepotřebujete a zároveň nechcete budovu strhnout."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Another solution is to build the last tier-I building which has not been "
+#| "mentioned so far: the storage tent."
+msgid ""
+"Another solution is to build the last tier-I building which has not been "
+"mentioned so far: the Storage Tent."
+msgstr ""
+"Jiné řešení je vybudovat poslední budovu úrovně I, která zatím nebyla "
+"zmíněna: skladovacího stanu."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This building has two purposes. It:\n"
+#| "* Offers more storage for your goods, and\n"
+#| "* sends its own collectors to fetch goods, just like the warehouse does."
+msgid ""
+"This building has two purposes. It:\n"
+"* Offers more storage for your goods, and\n"
+"* sends its own collectors to fetch goods, just like the Warehouse does."
+msgstr ""
+"Tato budova slouží ke dvoum účelům, a to:\n"
+"* Nabízí více prostoru pro vaše zboží, a\n"
+"* vysílá své sběrače vyzvednout zboží, stejně jako obchodní přístav."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that companies can also be connected to a storage in order to get "
+#| "their products collected, and if the warehouse is overwhelmed with "
+#| "collector tasks, you can place a storage tent to help out there."
+msgid ""
+"Note that companies can also be connected to a storage in order to get their "
+"products collected, and if the Warehouse is overwhelmed with collector "
+"tasks, you can place a Storage Tent to help out there."
+msgstr ""
+"Pamatujte že všechny společnosti potřebují být spojeny s obchodním přístavem "
+"pro svoz zboží. Pokud má obchodní přístav moc úkolů postavte skladovací stan "
+"ktery obchodnímu přístavu pomůže při svážení výrobků."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a storage tent, preferably where you need collectors."
+msgid "Task: Build a Storage Tent, preferably where you need collectors."
+msgstr ""
+"Úkol: Vybudujte skladovací stan, přednostně tam kde potřebujete sběrače."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a weaver that can somehow reach the wool of your farm."
+msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
+msgstr "Postavte tkalcovnu, která bude v dosahu vlny z Vaší farmy."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A WEAVER"
+msgstr "NOVÝ ÚKOL: POSTAVTE TKALCOVNU"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Now the wool production is set up, you still need a weaver to produce cloth "
+"out of this wool."
+msgstr ""
+"Nyní je nastavena produkce vlny, ale stále potřebujete tkalcovnu pro "
+"produkci látky z vlny."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "There are two spots where you can build it - either close to the farm or "
+#| "close to a Storage Tent (or the warehouse)."
+msgid ""
+"The Weaver's Hut is the place where the weaver lives. There are two spots "
+"where you can build it - either close to the Farm or close to a Storage Tent "
+"(or the Warehouse)."
+msgstr ""
+"Jsou zde dvě místa, kde ji můžete postavit - buď v blízkosti farmy nebo v "
+"blízkosti skladovacího stanu (nebo obchodního přístavu)."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "In both cases you should ensure the connection to a trail as well."
+msgid "In both cases you should ensure the connection to a Trail as well."
+msgstr "V obou případech se ujistěte, jestli je propojená stezkou."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can place the weaver close to the farm and tear down any trail to the "
+#| "farm to see that it will still fetch the wool and produce."
+msgid ""
+"You can place the Weaver's Hut close to the Farm and tear down any Trail to "
+"the Farm to see that it will still fetch the wool and produce."
+msgstr ""
+"Pokud bude tkadlec v dosahu farmy nemusíte jej propojovat stezkou, zásobení "
+"bude fungovat."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a weaver positioned so it can get wool."
+msgid "Task: Build a Weaver's Hut positioned so it can get wool."
+msgstr "Úkol: Postavte tkalcovnu tak, aby byla zásobena vlnou."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"House a total of 50 or more inhabitants in your city to complete the "
+"tutorial. You need a positive balance."
+msgstr ""
+"Dosáhnětě 50 a více obyvatel ve vašem městě k dokončení tutorialu. Musíte "
+"mít pozitivní bilanci."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: COMPLETE TUTORIAL"
+msgstr "NOVÝ ÚKOL: DOKONČETE TUTORIAL"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Try to house a total of 50 or more inhabitants in your city by providing "
+"more residential buildings."
+msgstr "Dosáhnětě 50 a více obyvatel tím, že jim postavíte více domů."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Once you are able to keep an economy running which can satisfy this amount "
+"of consumers, you are ready to discover new Unknown Horizons!"
+msgstr ""
+"Jakmile zajistíte obyvatele, jste připraveni objevovat nové Neznámé obzory "
+"(Unknown Horizons)!"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You also need enough money to keep this economy running, so a positive "
+#| "balance (check in the warehouse tab 'Account') is required."
+msgid ""
+"You also need enough money to keep this economy running, so a positive "
+"balance (check in the Warehouse tab 'Account') is required."
+msgstr ""
+"Také budete potřebovat dostatek peněz, proto abyste uchovali stabilní "
+"ekonomiku, je vyžadována kladná bilance (můžete si ji zkontrolovat v "
+"obchodním přístavu v záložce 'Účet')."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task: Reach a total number of 50 inhabitants and a positive balance to "
+"complete this tutorial."
+msgstr ""
+"Úkol: Dosáhněte počtu 50 obyvatel a udrže kladnou bilanci pro dokončení "
+"tutorialu."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Congratulations! You have reached the end of this tutorial and are ready to "
+"meet new challenges!"
+msgstr ""
+"Gratulujeme! Dostali jste se na konec výuky a jste připraveni na další výzvy!"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NO TASKS LEFT"
+msgstr "ŽÁDNÉ DALŠÍ ÚKOLY"
+
+#. This is the text body of a logbook page.
+msgid ""
+"You have successfully completed all tasks that were handed to you. The world "
+"is now at your command, waiting for your free aspirations and brave "
+"explorations!"
+msgstr ""
+"Úspěšně jsi dokončil všechny úkoly které ti byly svěřeny. Svět je teď pod "
+"tvým vedením, čekající na tvoje ambice a statečné průzkumy!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"If you have any suggestions on what we could or should improve, add or leave "
+"out:"
+msgstr ""
+"Pokud máte nějaké návrhy co bychom mohli, nebo měli vylepšit, přidat, či "
+"vynechat:"
+
+#. This is the text body of a logbook page.
+msgid "www.unknown-horizons.org"
+msgstr "www.unknown-horizons.org"
+
+#. This is the text body of a logbook page.
+msgid "#unknown-horizons @ irc.freenode.net"
+msgstr "#unknown-horizons @ irc.freenode.net"
+
+#. This is the text body of a logbook page.
+msgid "team@unknown-horizons.org"
+msgstr "team@unknown-horizons.org"
+
+#. This is the text body of a logbook page.
+msgid "Our forums are open to you as well!"
+msgstr "Naše fóra jsou vám také otevřena!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The best results until now were achieved by joining our IRC channel, so you "
+"could try that out first (-;"
+msgstr ""
+"Nejlepších výsledků doposud bylo dosaženo připojením k našemu IRC kanálu, "
+"takže zkuste začít tam (-;"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "Thanks!"
+msgstr "Díky!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Thanks for playing the tutorial!\n"
+"\n"
+"Your UH-Team"
+msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Děkujeme za hraní výuky!\n"
+"\n"
+"Tvůj UH-Team"
+
+#~ msgid ""
+#~ "This is your Captain's log where all important information is stored. A "
+#~ "short notification of each task will be provided on the left of the "
+#~ "screen."
+#~ msgstr ""
+#~ "Toto je Váš Lodní deník. Zde najdete všechny důležité informace. Krátké "
+#~ "upozornění na každý úkol bude umístěno vlevo na obrazovce."
+
+#~ msgid ""
+#~ "If you are interested in longer descriptions, your log will hopefully "
+#~ "provide all the help you need."
+#~ msgstr ""
+#~ "Pokud máte zájem o podrobnější popisy, deník Vám poskytne všechny "
+#~ "informace, které budete potřebovat."
+
+#~ msgid ""
+#~ "After you close this log, it can be re-opened with the \"Captain's Log\" "
+#~ "icon in the top-right corner (below the mini-map, with a sealed document "
+#~ "and a feather)."
+#~ msgstr ""
+#~ "Pokud tento deník zavřete, můžete ho znovu otevřít pomocí ikony \"Lodní "
+#~ "deník\" v pravém horním rohu (pod minimapou s listinou a brkem)."
+
+#~ msgid ""
+#~ "\n"
+#~ "For any suggestions on better wording, topics you would like to have "
+#~ "explained or even buggy conditions: Please tell us and we will try to "
+#~ "improve the tutorial!"
+#~ msgstr ""
+#~ "\n"
+#~ "Pokud máte jakékoliv návrhy na lepší formulace nebo témata, která by měla "
+#~ "být vysvětlena anebo je někde chyba, napište nám a my se pokusíme o "
+#~ "nápravu!"
+
+#~ msgid ""
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement')."
+#~ msgstr ""
+#~ "To naznačuje, že zde můžete postavit obchodní přístav stiskem tohoto "
+#~ "tlačítka (nazvané \"Postavit osadu\")."
+
+#~ msgid ""
+#~ "Now a preview of your building is dragged around when you move the cursor."
+#~ msgstr "Při pohybu kurzorem se zobrazí náhled Vaší budovy."
+
+#~ msgid ""
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building."
+#~ msgstr ""
+#~ "Budovu můžete postavit na jakémkoliv místě, kde není náhled zbarven "
+#~ "červěně.\n"
+#~ "Klikněte a postavte Vaši první budovu."
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings."
+#~ msgstr ""
+#~ "Stavební materiál se z lodi vyloží automaticky. Nyní můžete postavit "
+#~ "několik základních budov."
+
+#~ msgid "We will start with building a lumberjack."
+#~ msgstr "Začneme se stavbou dřevorubce."
+
+#~ msgid ""
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over."
+#~ msgstr ""
+#~ "V této části hry je to nezbytné, protože prkna jsou to jediné, co můžete "
+#~ "poskytnout námořníkům k zakrytí jejich stanů."
+
+#~ msgid "The fisherman needs some boards to build his vessel as well."
+#~ msgstr "Také rybář potřebuje nějaká prkna, aby si mohl vyrobit svou loďku."
+
+#~ msgid "The build menu is sorted by tiers."
+#~ msgstr "Stavební menu je rozděleno podle jednotlivých úrovní."
+
+#~ msgid ""
+#~ "You are currently in the first tier (the Sailors level) so are offered "
+#~ "only the basic buildings."
+#~ msgstr ""
+#~ "Nyní se nacházíte na první úrovni (námořnická úroveň), proto máte k "
+#~ "dispozici pouze základní budovy."
+
+#~ msgid ""
+#~ "\n"
+#~ "As your civilization advances, you also gain more and more complex "
+#~ "buildings."
+#~ msgstr ""
+#~ "\n"
+#~ "Jak se bude Vaše civilizace rozvíjet, budete získávat složitější a "
+#~ "složitější budovy."
+
+#~ msgid ""
+#~ "For now, select the lumberjack under 'Companies' and build it in an area "
+#~ "with some trees around."
+#~ msgstr ""
+#~ "Nyní vyberte dřevorubce v sekci \"Podniky\" a postavte ho v oblasti, kde "
+#~ "jsou stromy."
+
+#~ msgid ""
+#~ "You can also plant trees later - but that costs money. Use what nature "
+#~ "provided you with!"
+#~ msgstr ""
+#~ "Později můžete stromy také sázet, ale bude Vás to stát peníze. Využijte "
+#~ "to, co Vám příroda poskytuje!"
+
+#~ msgid ""
+#~ "A company always needs a trail connection to a storage or warehouse, "
+#~ "otherwise goods will remain at the company and not be collected."
+#~ msgstr ""
+#~ "Podnik vždy potřebuje spojení stezkou ke skladišti nebo obchodnímu "
+#~ "přístavu, jinak zboží zůstane v podniku a nebude vybráno."
+
+#~ msgid ""
+#~ "This means that you have to build a trail connecting your warehouse (or "
+#~ "storage) and lumberjack."
+#~ msgstr ""
+#~ "To znamená, že musíte vybudovat stezku spojující váš obchodní přístav "
+#~ "(nebo skladiště) a dřevorubce."
+
+#~ msgid ""
+#~ "Watch how a collector will fetch your first self-produced boards. Don't "
+#~ "worry about recruiting workers for the lumberjack. That happens "
+#~ "automatically."
+#~ msgstr "Sledujte jak nosič odnese Vaše první vyprodukovaná prkna."
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a warehouse at the coast."
+#~ msgstr ""
+#~ "\n"
+#~ "ÚKOL: Postavte obchodní přístav na pobřeží."
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a signal fire at the coast close to your warehouse."
+#~ msgstr ""
+#~ "\n"
+#~ "ÚKOL: Postavte signální oheň na pobřeží v blízkosti obchodního přístavu."
+
+#~ msgid "The UH team"
+#~ msgstr "Tým UH"
+
+#~ msgid "Note that this might take a while."
+#~ msgstr "Všimněte si, že to může chvíli trvat."
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a tent and connect it to the main square. Tents dont need to "
+#~ "be connected to any of the companies"
+#~ msgstr ""
+#~ "\n"
+#~ "ÚKOL: Postavte stan a propojte jej s tržištěm."
+
+#~ msgid ""
+#~ "There is nothing left to do now.\n"
+#~ "\n"
+#~ "If you have any suggestions on what we could or should improve, add or "
+#~ "leave out:\n"
+#~ "\n"
+#~ "www.unknown-horizons.org\n"
+#~ "\n"
+#~ "#unknown-horizons @ irc.freenode.net\n"
+#~ "\n"
+#~ "team@unknown-horizons.org\n"
+#~ "\n"
+#~ "Our forums are open to you as well!\n"
+#~ "\n"
+#~ "The best results until now were achieved by joining our IRC channel, so "
+#~ "you could try that out first (-;"
+#~ msgstr ""
+#~ "Nic dalšího se zatím nedá dělat.\n"
+#~ "\n"
+#~ "Pokud máte nějaké nápady co by se mohlo nebo mělo vylepšit, přidat nebo "
+#~ "vynechat::\n"
+#~ "\n"
+#~ "www.unknown-horizons.org\n"
+#~ "\n"
+#~ "#unknown-horizons @ irc.freenode.net\n"
+#~ "\n"
+#~ "team@unknown-horizons.org\n"
+#~ "\n"
+#~ "Naše fórum je pro vás otevřené!\n"
+#~ "\n"
+#~ "Nejlepších výsledků bylo dosaženo pomocí našeho IRC kanálu, takže to "
+#~ "byste mohli zkusit jako první (-;"
+
+#~ msgid ""
+#~ "To move your ship, select it with a left click and right click on the "
+#~ "location you want it to go to.\n"
+#~ "\n"
+#~ "Once you are near the coast, the anchor-like button you see in the "
+#~ "overview tab will become active.\n"
+#~ "\n"
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement').\n"
+#~ "\n"
+#~ "Now a preview of your building is dragged around when you move the "
+#~ "cursor.\n"
+#~ "\n"
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building.\n"
+#~ "\n"
+#~ "TASK: Build a warehouse at the coast."
+#~ msgstr ""
+#~ "Pro pohyb lodí, jí vyberte kliknutím na levé tlačítko, a klikněte pravým "
+#~ "tlačítkem na místo kam chcete plout.\n"
+#~ "\n"
+#~ "Jakmile budete v blízkosti pobřeží, tlačítko kotvy, které vidíte na kartě "
+#~ "přehledu, bude aktivní.\n"
+#~ "\n"
+#~ "To naznačuje, že zde můžete postavit Obchodní přístav stiskem tohoto "
+#~ "tlačítka (nazvané \"Postavit osadu\").\n"
+#~ "\n"
+#~ "Nyní se zobrazí náhled budovy při pohybu kurzorem.\n"
+#~ "\n"
+#~ "Můžete postavit budovu na jakémkoliv místě, kde náhled není zbarven "
+#~ "červeně.\n"
+#~ "Klikněte kdekoliv pro umístění vaší první budovy.\n"
+#~ "\n"
+#~ "ÚKOL: Postavte Obchodní přístav na pobřeží."
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings.\n"
+#~ "\n"
+#~ "We will start with building a lumberjack.\n"
+#~ "\n"
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over.\n"
+#~ "\n"
+#~ "The fisherman needs some boards to build his vessel as well.\n"
+#~ "\n"
+#~ "In order to construct lumberjacks; open the build menu by either clicking "
+#~ "the big icon below the mini map or pressing B key.\n"
+#~ "\n"
+#~ "The build menu is sorted by increments.\n"
+#~ "You are currently in the first increment (the Sailors level) so are "
+#~ "offered only the basic buildings."
+#~ msgstr ""
+#~ "Stavební materiál se z lodi vyloží automaticky. Nyní můžete postavit "
+#~ "několik základních budov.\n"
+#~ "\n"
+#~ "Začneme se stavbou dřevorubce. \n"
+#~ "\n"
+#~ "V této části hry je to nezbytné, protože prkna jsou to jediné, co můžete "
+#~ "poskytnout námořníkům k zakrytí jejich stanů.\n"
+#~ "\n"
+#~ "Také rybář potřebuje nějaká prkna, aby si mohl vyrobit svou loďku.\n"
+#~ "\n"
+#~ "Aby jste postavili dřevorubce, otevřete stavební menu kliknutím na velkou "
+#~ "ikonu pod mini mapou nebo stisknutím klávesy B.\n"
+#~ "\n"
+#~ "Stavební menu je rozděleno podle jednotlivých úrovní.\n"
+#~ "Nyní se nacházíte na první úrovni (námořnická úroveň), proto máte k "
+#~ "dispozici pouze základní budovy."
+
+#~ msgid ""
+#~ "You will need to have some food-producing companies, too, because people "
+#~ "in general (and especially sailors) are very hungry.\n"
+#~ "\n"
+#~ "Available companies in the first increment are the Hunter and Fisher.\n"
+#~ "\n"
+#~ "The Hunter, surprisingly, hunts animals in the forest, so he needs trees "
+#~ "around.\n"
+#~ "\n"
+#~ "Note that you can place your Hunter close to the lumberjack's forest.\n"
+#~ "\n"
+#~ "It can happen that the animals don't reproduce fast enough or simply hide "
+#~ "well.\n"
+#~ "\n"
+#~ "Conclusion: the hunter is not too reliable if you need continuous supply."
+#~ msgstr ""
+#~ "Dále budete muset postavit některé základní budovy, které budou "
+#~ "produkovat jídlo. Všichni lidé (a námořníci obzvláště) jsou velmi "
+#~ "hladoví.\n"
+#~ "\n"
+#~ "Dostupné budovy pro první úroveň jsou Lovec a Rybář.\n"
+#~ "\n"
+#~ "Lovec loví v lesích zvířata, proto potřebuje být blízko lesa.\n"
+#~ "\n"
+#~ "Všimněte si, že lovce můžete umístit blízko dřevorubcova lesa.\n"
+#~ "\n"
+#~ "Stává se, že zvířata se nemnoží dostatečně rychle nebo se umí dobře "
+#~ "schovat.\n"
+#~ "\n"
+#~ "Závěrem: Lovec není příliš spolehlivý zdroj potravy, pokud potřebujete "
+#~ "nepřerušované zásobování."
+
+# Free Trader překlad jako Svobodný obchodník
+#~ msgid ""
+#~ "Can you see the ship passing your island from time to time? That ship "
+#~ "belongs to the Free Trader, one of the first settlers in this "
+#~ "archipelago.\n"
+#~ "\n"
+#~ "The trader will supply your settlement with necessary goods which you "
+#~ "can't produce yet.\n"
+#~ "You can also sell surpluses of your production, but in general consuming "
+#~ "them (by building more tents) instead of selling them yields more "
+#~ "profit.\n"
+#~ "\n"
+#~ "Normally the trader ships just sail around and look for deals, but you "
+#~ "can speed things up a bit.\n"
+#~ "\n"
+#~ "For this purpose, build a signal fire at the coast near your warehouse. "
+#~ "It will show ships the way to your settlement.\n"
+#~ "\n"
+#~ "The signal fire has to cover the area which the ships pass through to "
+#~ "catch them."
+#~ msgstr ""
+#~ "Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě "
+#~ "patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto "
+#~ "souostroví.\n"
+#~ "\n"
+#~ "Obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím "
+#~ "nemůžete sami produkovat.\n"
+#~ "Také můžete prodávat přebytky z Vaší produkce. Obecně je ale výhodnější "
+#~ "tyto přebytky spotřebovat (tak, že postavíte více stanů). Příjem z daní "
+#~ "bude vyšší než by byl příjem z prodeje.\n"
+#~ "\n"
+#~ "Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní "
+#~ "příležitosti, ale my můžeme věci trochu urychlit.\n"
+#~ "\n"
+#~ "Pro tento účel postavte signální oheň na pobřeží poblíž Obchodního "
+#~ "přístavu. Tak ukážete lodím cestu do Vaší osady.\n"
+#~ "\n"
+#~ "Aby mohl signální oheň přilákat lodě, musí pokrývat oblast, kterou lodě "
+#~ "projíždějí."
+
+#~ msgid ""
+#~ "Excellent! The Free Trader will now stop by at your warehouse from time "
+#~ "to time.\n"
+#~ "\n"
+#~ "Let's continue our tutorial on how to trade.\n"
+#~ "\n"
+#~ "After selecting a particular type of good, the green bar across the "
+#~ "bottom of the slot (if visible) shows you how much you have in stock of "
+#~ "this good.\n"
+#~ "\n"
+#~ "Dragging the slider on the right of each slot determines your 'target "
+#~ "value' which has a different meaning on 'Buy' and 'Sell'. \n"
+#~ "When buying, you will buy sufficient to hold your 'target value' in "
+#~ "stock. \n"
+#~ "When selling the 'target value' is the number which you hold in reserve "
+#~ "to not sell"
+#~ msgstr ""
+#~ "Výborně! Svobodný obchodník nyní čas od času zakotví v Obchodním "
+#~ "přístavu.\n"
+#~ "\n"
+#~ "Pokračujme v našem návodu, jak obchodovat.\n"
+#~ "\n"
+#~ "Po vybrání konkrétního typu zboží, zelený ukazatel napravo od slotu "
+#~ "(pokud je viditelný) ukazuje, kolik jednotek zboží máte aktuálně ve "
+#~ "skladu.\n"
+#~ "\n"
+#~ "Tažením posuvníku na pravé straně každého slotu určíte \"cílovou hodnotu"
+#~ "\", která má různé významy pro \"Prodej\" a \"Nákup\".\n"
+#~ "Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena "
+#~ "\"cílová hodnota\" ve skladu.\n"
+#~ "Pokud zboží prodáváte, \"cílová hodnota\" určuje množství zboží, které "
+#~ "uchováváte jako rezervu a nebude prodáno."
+
+#~ msgid ""
+#~ "Those tools will be enough for the moment. Well done!\n"
+#~ "\n"
+#~ "You now provide housing, a main square and food to your inhabitants.\n"
+#~ "\n"
+#~ "Still there is one demand which we have not satisfied so far, you may "
+#~ "check that in the marketplace or tent tab - your sailors want a basic "
+#~ "building where they can pray.\n"
+#~ "\n"
+#~ "The solution is a pavilion which the village parson quickly puts up as "
+#~ "shelter from the sun.\n"
+#~ "\n"
+#~ "Service buildings like this also need to be connected to the tents with a "
+#~ "trail, else your inhabitants feel unable to reach them.\n"
+#~ "\n"
+#~ "In later increments, upgraded versions of buildings may become available."
+#~ msgstr ""
+#~ "Pro tuto chvíli máte dostatek nástrojů. Velmi dobře!\n"
+#~ "\n"
+#~ "Vašim obyvatelům nyní poskytujete bydlení, tržiště a jídlo.\n"
+#~ "\n"
+#~ "Stále je zde ještě jeden požadavek, který nebyl doposud uspokojen, jak si "
+#~ "můžete sami ověřit v záložce tržnice nebo stanu - vaši námořníci chtějí "
+#~ "budovu, kde by se mohli modlit.\n"
+#~ "\n"
+#~ "Řešením je pavilón, který vesnický pastor rychle vztyčí jako úkryt před "
+#~ "sluncem.\n"
+#~ "\n"
+#~ "Budovy služeb, jako je tato, potřebují být propojeny se stany pomocí "
+#~ "cest, jinak je vaši obyvatelé nebudou moci využívat.\n"
+#~ "\n"
+#~ "V pozdějších úrovních, budou možná k dispozici vylepšené verze budov."
+
+#~ msgid ""
+#~ "All demands are fulfilled now if your inhabitants can regularly visit the "
+#~ "main square & pavilion and your food supply is adequate.\n"
+#~ "\n"
+#~ "If the sailors are happy enough, they want to advance to the next "
+#~ "increment called Pioneers.\n"
+#~ "\n"
+#~ "To make them happy, there is nothing else for you to do but setting taxes "
+#~ "to a lower level since you have fulfilled all the demands of your "
+#~ "inhabitants.\n"
+#~ "\n"
+#~ "You should try to not always run on low taxes since this will probably "
+#~ "lead to bankruptcy sooner or later. For a period of time and if you know "
+#~ "what you are doing, it is fine though.\n"
+#~ "\n"
+#~ "After some time, the first unit should walk to the main square and have a "
+#~ "look for new construction material there to build a log house. This house "
+#~ "will replace the old tent."
+#~ msgstr ""
+#~ "Všechny požadavky jsou nyní splněny. Vaši obyvatelé můžou pravidelně "
+#~ "navštěvovat náměstí a pavilón a Vaše zásobení jídlem je dostačující.\n"
+#~ "\n"
+#~ "Pokud budou námořníci dostatečně šťastní, budou chtít postoupit na další "
+#~ "úroveň nazvanou Průkopníci.\n"
+#~ "\n"
+#~ "Abyste je učinili šťastnými, není nic jednoduššího než nastavit daně na "
+#~ "nižší úroveň, dokud nebudou naplněny všechny požadavky Vašich obyvatel.\n"
+#~ "\n"
+#~ "Nízké daně je potřeba využívat obezřetně. Pokud je necháte na nízké "
+#~ "úrovni, přivedete svůj ostrov, dříve nebo později, k bankrotu. Pokud ale "
+#~ "víte, co děláte, fungují skvěle.\n"
+#~ "\n"
+#~ "Po určité době se první obyvatelé vypraví na náměstí, aby získali nový "
+#~ "stavební materiál, který potřebují ke stavbě srubu. Tímto domem nahradí "
+#~ "své dosavadní stany."
+
+#~ msgid ""
+#~ "Congratulations! Some of your inhabitants have reached increment II!\n"
+#~ "\n"
+#~ "Now you have access to new buildings, take a look at the Build menu "
+#~ "again.\n"
+#~ "\n"
+#~ "A shiny new tab appeared there.\n"
+#~ "\n"
+#~ "Pioneers will demand cloth, so you need to set up a production line for "
+#~ "cloth starting with lambs wool (which is one of the goods produced at the "
+#~ "farm).\n"
+#~ "\n"
+#~ "The farm is a very special production building since it can produce not "
+#~ "only one, but very many (and different) goods if you choose.\n"
+#~ "\n"
+#~ "The output of farms depends on what kind of fields you build around it."
+#~ msgstr ""
+#~ "Gratulujeme! Část vašich obyvatel dosáhla další úrovně II!\n"
+#~ "\n"
+#~ "Nyní máte přístup k novým budovám, podívejte se do Stavebního menu "
+#~ "znova.\n"
+#~ "\n"
+#~ "Objevila se zde nová blýskavá záložka.\n"
+#~ "\n"
+#~ "Průkopníci budou požadovat látku, to znamená, že budete muset vytvořit "
+#~ "výrobní linku pro látku, která začne ovčí vlnou (ovce jsou produkovány na "
+#~ "farmě).\n"
+#~ "\n"
+#~ "Farma je vyjímečná produkční budova, která neprodukuje pouze jednu, ale "
+#~ "velmi mnoho (a rozličných) druhů zboží, které si zvolíte.\n"
+#~ "\n"
+#~ "Výstupní produkt závisí na typu polí, které jsou vystavěny okolo ní."
+
+#~ msgid ""
+#~ "The farm itself is not going to produce anything without some fields.\n"
+#~ "\n"
+#~ "You currently have the choice between pastures, potato and sugar fields.\n"
+#~ "\n"
+#~ "Let's have a short overview:\n"
+#~ "* Pasture: Sheep live here, producing lamb wool.\n"
+#~ "* Potato field: Grows potatoes which are currently treated as food.\n"
+#~ "* Sugar field: Grows sugar which is used to distill liquor and (later) "
+#~ "produce confectionery.\n"
+#~ "\n"
+#~ "We now only need pastures, but in case your food supply chain is too "
+#~ "small (maybe many residential buildings) you can also produce some "
+#~ "potatoes.\n"
+#~ "\n"
+#~ "Note that for potatoes you will need a road connection to the farm (not "
+#~ "to the field!) as it will be the only company to work on the goods."
+#~ msgstr ""
+#~ "Samotná farma nebude nic produkovat, pokud nebudou postavena pole.\n"
+#~ "\n"
+#~ "Nyní máte možnost výběru mezi pastvinami, bramborovými poli a plantážemi "
+#~ "s cukrovou třtinou.\n"
+#~ "\n"
+#~ "Proveďme krátké shrnutí:\n"
+#~ "* Pastviny - žijí zde ovce, produkují ovčí vlnu.\n"
+#~ "* Bramborové pole - pěstují se zde brambory, ty slouží jako potrava.\n"
+#~ "* Plantáž cukrové třtiny - pěstuje se zde třtina, která je dále použita k "
+#~ "destilaci kořalky a (později) produkci cukrovinek.\n"
+#~ "\n"
+#~ "Nyní potřebujeme pouze pastviny, ale v případě, že Vaše zásobení jídlem "
+#~ "je příliš malé (díky mnoha obytným budovám), můžete také postavit "
+#~ "bramborové pole.\n"
+#~ "\n"
+#~ "Všimněte si, že brambory potřebujete propojit s farmou (nikoli s poli!), "
+#~ "což je jediná budova, která pracuje se zbožím."
+
+#~ msgid ""
+#~ "Did you watch your lumberjack recently?\n"
+#~ "\n"
+#~ "Since your warehouse does not have unlimited space to store goods, "
+#~ "collectors will stop fetching goods from companies when stock is full.\n"
+#~ "So if no sailor recently wanted to upgrade his tent, you probably have a "
+#~ "lot of boards and in that case, the lumberjack may idle.\n"
+#~ "We can improve this situation with two different approaches, and below we "
+#~ "will have a look at both of them.\n"
+#~ "\n"
+#~ "All companies offer the possibility of doing no work at all.\n"
+#~ "This may sound strange, but try to click on the gear wheel you see in, "
+#~ "for example, a lumberjack's overview.\n"
+#~ "\n"
+#~ "If this 'break' mode is enabled (we call it 'Decommissioning'), the "
+#~ "running costs you pay for the building will decrease. They won't be zero, "
+#~ "but still lower than if you keep the company producing."
+#~ msgstr ""
+#~ "Dívali jste se nedávno na dřevorubce?\n"
+#~ "\n"
+#~ "Vzhledem k tomu že Obchodní přístav nemá neomezený prostor pro uložení "
+#~ "zboží, dělníci přestanou odebírat zboží od dodavatelů, když je plný "
+#~ "zásob.\n"
+#~ "Takže pokud námořník nechtěl nedávno provést vylepšení svého stanu, "
+#~ "pravděpodobně máte spoustu prken, a v takovém případě nemusí dřevorubec "
+#~ "pracovat.\n"
+#~ "Tuto situaci můžete zlepšit dvěma různými způsoby, dále se podíváme na "
+#~ "oba.\n"
+#~ "\n"
+#~ "Všichni dodavatelé nabízejí možnost nepracovat.\n"
+#~ "Může to znít divně, ale zkuste kliknout na ozubené kolo, které vidíte "
+#~ "například v přehledu dřevorubce.\n"
+#~ "\n"
+#~ "Pokud je povolen režim \"rozbít\" (říkáme tomu \"Vyřazení z provozu\"), "
+#~ "budou provozní náklady, které zaplatíte za budovu nižší. Nebudou nula, "
+#~ "ale stále nižší, než pokud budete dodavatel pracovat."
+
+#~ msgid ""
+#~ "Now the wool production is set up, you still need a weaver to produce "
+#~ "cloth out of this wool.\n"
+#~ "\n"
+#~ "There are two spots where you can build it - either close to the farm or "
+#~ "close to a Storage Tent (or the warehouse).\n"
+#~ "\n"
+#~ "In both cases you should ensure the connection to a trail as well.\n"
+#~ "\n"
+#~ "You can place the weaver close to the farm and tear down any trail to the "
+#~ "farm to see that it will still fetch the wool and produce.\n"
+#~ "\n"
+#~ "TASK: Build a weaver positioned so it can get wool."
+#~ msgstr ""
+#~ "Nyní je nastavena produkce vlny, ale stále potřebujete tkalcovnu pro "
+#~ "produkci látky z vlny.\n"
+#~ "\n"
+#~ "Jsou zde dvě místa, kde je můžete postavit - buď v blízkosti farmy nebo v "
+#~ "blízkosti skladovacího stanu (obchodního přístavu).\n"
+#~ "\n"
+#~ "V obou případech se ujistěte jestli je propojená stezkou.\n"
+#~ "\n"
+#~ "Pokud bude tkadlec v dosahu farmy nemusíte je propojit stezkou a přece to "
+#~ "bude fungovat.\n"
+#~ "\n"
+#~ "ÚKOL: Postavte tkalcovnu tak, aby byla v dosahu vlny."
+
+#~ msgid ""
+#~ "Try to house a total of 50 or more inhabitants in your city by providing "
+#~ "more residential buildings.\n"
+#~ "\n"
+#~ "Once you are able to keep an economy running which can satisfy this "
+#~ "amount of consumers, you are ready to discover new Unknown Horizons!\n"
+#~ "\n"
+#~ "TASK: Reach a total number of 50 inhabitants and a positive balance to "
+#~ "complete this tutorial."
+#~ msgstr ""
+#~ "Dosáhnětě 50 a více obyvatel tím, že jim postavíte více domů.\n"
+#~ "\n"
+#~ "Jakmile uspokojíte obyvatele, jste připraveni objevovat nové neznámé "
+#~ "obzory!\n"
+#~ "\n"
+#~ "ÚKOL: Dosáhněte počtu 50 obyvatel a udrže kladnou bilanci pro dokončení "
+#~ "tutorialu."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "Thanks for playing the tutorial!\n"
+#~ "\n"
+#~ "Your UH-Team"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "Děkujeme za hraní tutorialu!\n"
+#~ "\n"
+#~ "Tvůj UH-Team"
+
+#~ msgid "NEW TASK: UNLOAD YOUR GOODS"
+#~ msgstr "NOVÝ ÚKOL: VYLOŽ TVÉ ZBOŽÍ"
+
+#~ msgid ""
+#~ "Now that you have built the warehouse, you need to move some of your "
+#~ "resources to its stock.\n"
+#~ "\n"
+#~ "To do so, select your ship and go into the tab with the wooden box icon "
+#~ "called 'Ship Inventory'.\n"
+#~ "\n"
+#~ "Here you get an overview of what this ship's cargo looks like and have "
+#~ "the button 'Load/Unload'.\n"
+#~ "\n"
+#~ "This button becomes active if your ship is in range of a possible trade "
+#~ "partner like a warehouse.\n"
+#~ "\n"
+#~ "Click on the button. If it is not active, move your ship towards the "
+#~ "warehouse and then try again.\n"
+#~ "\n"
+#~ "TASK: Open the trade dialogue."
+#~ msgstr ""
+#~ "Nyní když jsi postavil pobočku, musíš přesunout nějaké tvé prostředky do "
+#~ "zásob.\n"
+#~ "\n"
+#~ "Chceš-li tak učinit, vyber tvojí loď a klikni na záložku s ikonou "
+#~ "dřevěných beden nazvané 'Lodní inventář'.\n"
+#~ "\n"
+#~ "Zde máš přehled co za nálkad je v lodi a je zde tlačítko 'Naložit/"
+#~ "Vyložit'.\n"
+#~ "\n"
+#~ "Toto tlačítko bude aktivní pokud je tvoje loď v dosahu obchodních "
+#~ "partnerů např. Pobočky.\n"
+#~ "\n"
+#~ "Klikni na tlačítko. Pokud není aktivní přibliž se s loďí k Pobočce a zkus "
+#~ "to znovu.\n"
+#~ "\n"
+#~ "ÚKOL:Otevři obchodní dialog."
+
+#~ msgid ""
+#~ "The tab you will see is split into 'Ship' and 'Settlement' as trade "
+#~ "partners.\n"
+#~ "\n"
+#~ "To move goods from one stock to the other, simply click on them.\n"
+#~ "\n"
+#~ "Try clicking on the boards currently on your ship first and then try "
+#~ "moving them back.\n"
+#~ "\n"
+#~ "You can customize the quantity moved by using the self-explanatory radio "
+#~ "buttons in the middle.\n"
+#~ "\n"
+#~ "Did you get used to the trade tab?\n"
+#~ "You need some construction material in your settlement now!\n"
+#~ "\n"
+#~ "TASK: Unload at least 10 tons of each resource your ship sailed around "
+#~ "with."
+#~ msgstr ""
+#~ "Záložka je rozdělena na 'loď' a na 'osada' jako obchodního partnera.\n"
+#~ "\n"
+#~ "Chceš-li přesunout zboží z jednoho místa do druhého jednoduše na něj "
+#~ "klikni.\n"
+#~ "\n"
+#~ "Zkus kliknouz na zboží ve tvé loďi a pak ho zkus přesunout zpět.\n"
+#~ "\n"
+#~ "Můžeš upravit množství určené k přesunutí kliknutím na přednastavené "
+#~ "hodnoty uprostřed.\n"
+#~ "\n"
+#~ "Už jsi použil obchodní záložku?\n"
+#~ "Potřebuješ nějaký konstrukční materiál právě teď!\n"
+#~ "\n"
+#~ "ÚKOL:Vylož nejméně 10 tun od každého materiálu z loďi."
+
+#~ msgid "Unload at least 10 tons of each resource on your ship."
+#~ msgstr "Vylož nejméně 10 tun od každého materiálu z loďi."
+
+#~ msgid ""
+#~ "With your new construction material in the warehouse, you can start to "
+#~ "construct some basic buildings.\n"
+#~ "\n"
+#~ "We will start with building a lumberjack.\n"
+#~ "\n"
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over.\n"
+#~ "\n"
+#~ "The fisherman needs some boards to build his vessel as well.\n"
+#~ "\n"
+#~ "In order to construct lumberjacks; open the build menu by either clicking "
+#~ "the big icon below the mini map or pressing B key.\n"
+#~ "\n"
+#~ "The build menu is sorted by increments.\n"
+#~ "You are currently in the first increment (the Sailors level) so are "
+#~ "offered only the basic buildings."
+#~ msgstr ""
+#~ "S tvým novým konstrukčním materiálem v pobočce můžeš začít stavět některé "
+#~ "základní budovy.\n"
+#~ "\n"
+#~ "Zažneme se stavbou dřevorubce.\n"
+#~ "\n"
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over.\n"
+#~ "\n"
+#~ "The fisherman needs some boards to build his vessel as well.\n"
+#~ "\n"
+#~ "In order to construct lumberjacks; open the build menu by either clicking "
+#~ "the big icon below the mini map or pressing B key.\n"
+#~ "\n"
+#~ "The build menu is sorted by increments.\n"
+#~ "You are currently in the first increment (the Sailors level) so are "
+#~ "offered only the basic buildings."

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,20 @@
 # ###################################################
 
 from functools import partial
+
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
+
 def test_ai_quick():
-	for seed in xrange(1, 16):
+	for seed in [5, 6, 7, 8, 9]:
 		yield run_ai_quick, seed
 
 def run_ai_quick(seed):
-	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=120)
+	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=2*60)
 	def test(session, _):
 		"""Let 2 AI players play for four minutes."""
-		session.run(seconds = 4 * 60)
+		session.run(seconds=4*60)
 		assert session.world.settlements
 
 	test()

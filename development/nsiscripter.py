@@ -1,5 +1,26 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
+# ###################################################
+# Copyright (C) 2008-2016 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
+#
+# Unknown Horizons is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
 
+from __future__ import print_function
 import os
 import os.path
 import sys
@@ -8,7 +29,7 @@ def remove_double(liste):
 	return [i.replace('\\\\', '\\') for i in liste]
 
 if not os.path.split(os.getcwd())[1] == 'development':
-	print "This program expects to be invoked from the Unknown Horizons development directory"
+	print("This program expects to be invoked from the Unknown Horizons development directory")
 	sys.exit(-1)
 
 os.chdir('..') #Change to the root directory
@@ -21,16 +42,10 @@ remf = []
 remd = []
 
 for root, dirs, files in os.walk('.'):
-	if '.svn' in dirs:
-		dirs.remove('.svn')
 	if 'development' in dirs:
 		dirs.remove('development')
 	if '.git' in dirs:
 		dirs.remove('.git')
-	if 'screenshots' in dirs:
-		dirs.remove('screenshots')
-	if 'depends' in dirs:
-		dirs.remove('depends')
 	if root[-4:] == 'fife' and len(root.split('\\')) == 2:
 		for d in dirs[:]:
 			if d not in ('engine', 'tools'):
@@ -42,7 +57,7 @@ for root, dirs, files in os.walk('.'):
 	if 'Setup.exe' in files:
 		files.remove('Setup.exe')
 
-	if not len(files) == 0 or not len(dirs) == 0:
+	if files or dirs:
 		rootp = root[2:]
 		if rootp[:4] == 'fife':
 			if rootp[-4:] == 'fife' and len(rootp.split('\\')) == 1:
@@ -71,7 +86,7 @@ for f in installed_files:
 for d in installed_dirs:
 	pref = ""
 	for i in d.split('/'):
-		pref = i if len(pref) == 0 else "%s/%s" % (pref, i)
+		pref = i if not pref else "%s/%s" % (pref, i)
 		remd.append( ('	RMDir "$INSTDIR/%s"' % pref).replace('/', '\\'))
 
 if len(sys.argv) > 1:

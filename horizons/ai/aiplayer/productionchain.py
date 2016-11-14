@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.constants import RES
 from horizons.util.python import decorators
 
+
 class ProductionChain(object):
 	"""
 	A production chain handles the building of buildings required to produce a resource.
@@ -42,7 +43,7 @@ class ProductionChain(object):
 	without any subtrees. The imported amounts are added up over time and saved as an owed
 	resource in the exporting settlement's resource manager (these restrictions are again
 	just logical without affecting the way the settlements work in any way). That storage
-	is realised by organising DomesticTrade missions that transfer the resources to the
+	is realized by organizing DomesticTrade missions that transfer the resources to the
 	right settlements.
 	"""
 
@@ -113,7 +114,7 @@ class ProductionChainSubtreeChoice(object):
 	"""An object of this class represents a choice between N >= 1 ways of producing the required resource."""
 
 	log = logging.getLogger("ai.aiplayer.productionchain")
-	coverage_resources = set([RES.COMMUNITY_ID, RES.FAITH_ID, RES.EDUCATION_ID, RES.GET_TOGETHER_ID])
+	coverage_resources = set([RES.COMMUNITY, RES.FAITH, RES.EDUCATION, RES.GET_TOGETHER])
 
 	def __init__(self, options):
 		super(ProductionChainSubtreeChoice, self).__init__()
@@ -130,7 +131,7 @@ class ProductionChainSubtreeChoice(object):
 		for option in self.options:
 			option.assign_identifier(self.identifier)
 
-	def __str__(self, level = 0):
+	def __str__(self, level=0):
 		result = '%sChoice between %d options: %.5f\n' % ('  ' * level, len(self.options), self.get_final_production_level())
 		for option in self.options:
 			result += option.__str__(level + 1)
@@ -174,8 +175,7 @@ class ProductionChainSubtreeChoice(object):
 
 		# need to increase production: build the cheapest subtree
 		expected_costs = []
-		for i in xrange(len(available_options)):
-			option = available_options[i]
+		for i, option in enumerate(available_options):
 			cost = option.get_expected_cost(amount - current_production + option.get_final_production_level())
 			if cost is not None:
 				expected_costs.append((cost, i, option))
@@ -244,8 +244,8 @@ class ProductionChainSubtree(object):
 		"""Return a boolean showing whether this subtree is currently available."""
 		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
 
-	def __str__(self, level = 0):
-		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id, \
+	def __str__(self, level=0):
+		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id,
 			self.production_ratio, self.abstract_building.name, self.get_root_production_level(), self.get_final_production_level())
 		for child in self.children:
 			result += child.__str__(level + 1)

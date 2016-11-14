@@ -1,23 +1,23 @@
 baseclass: fightingship.FightingShip
-id: 1000020
+id: UNITS.FRIGATE
 name: Frigate
 radius: 5
 velocity: 12.0
 components:
 - SelectableComponent:
     type: ship
-    tabs: [FightingShipOverviewTab,]
+    tabs: [FightingShipOverviewTab, TradeTab]
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
-      PositiveTotalNumSlotStorage:
+      PositiveTotalNumSlotsStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
 - HealthComponent:
    maxhealth: 200
-- CommandableComponent   
+- CommandableComponent
 
 actionsets:
-   as_frigate0: {level: 0}
+ TIER.SAILORS:
+   as_frigate0:

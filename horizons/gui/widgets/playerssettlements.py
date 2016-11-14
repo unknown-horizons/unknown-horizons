@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,13 +21,12 @@
 
 from fife.extensions.pychan import widgets
 
-from horizons.constants import GAME_SPEED
-from fife.extensions.pychan.widgets import ImageButton
+from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.scheduler import Scheduler
+from horizons.i18n import gettext as T
 from horizons.util.python import decorators
-from horizons.util import Callback
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.util.python.callback import Callback
+
 
 class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""
@@ -36,12 +35,10 @@ class PlayersSettlements(StatsWidget):
 
 	def __init__(self, session):
 		super(PlayersSettlements, self).__init__(session)
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND / 3)
 
 	def refresh(self):
 		super(PlayersSettlements, self).refresh()
-		#xgettext:python-format
-		self._gui.findChild(name = 'headline').text = _("Settlements of {player}").format(player=self.session.world.player.name)
+		self._gui.findChild(name='headline').text = T("Settlements of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
@@ -57,23 +54,23 @@ class PlayersSettlements(StatsWidget):
 		self._content_vbox.adaptLayout()
 
 	def _go_to_settlement(self, settlement):
-		position = settlement.warehouse.position.center()
+		position = settlement.warehouse.position.center
 		self.session.view.center(position.x, position.y)
 
 	def _add_generic_line_to_gui(self, id, line_prefix, people, tax, costs):
-		inhabitants = widgets.Label(name = 'inhabitants_%d' % id)
+		inhabitants = widgets.Label(name='inhabitants_%d' % id)
 		inhabitants.text = unicode(people)
 		inhabitants.min_size = inhabitants.max_size = (110, 20)
 
-		taxes = widgets.Label(name = 'taxes_%d' % id)
+		taxes = widgets.Label(name='taxes_%d' % id)
 		taxes.text = unicode(tax)
 		taxes.min_size = taxes.max_size = (50, 20)
 
-		running_costs = widgets.Label(name = 'running_costs_%d' % id)
+		running_costs = widgets.Label(name='running_costs_%d' % id)
 		running_costs.text = unicode(costs)
 		running_costs.min_size = running_costs.max_size = (100, 20)
 
-		balance = widgets.Label(name = 'balance_%d' % id)
+		balance = widgets.Label(name='balance_%d' % id)
 		balance.text = unicode(tax - costs)
 		balance.min_size = balance.max_size = (60, 20)
 
@@ -87,18 +84,18 @@ class PlayersSettlements(StatsWidget):
 		self._content_vbox.addChild(hbox)
 
 	def _add_line_to_gui(self, settlement, sequence_number):
-		sequence_number_label = widgets.Label(name = 'sequence_number_%d' % settlement.worldid)
+		sequence_number_label = widgets.Label(name='sequence_number_%d' % settlement.worldid)
 		sequence_number_label.text = unicode(sequence_number)
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
-		name = widgets.Label(name = 'name_%d' % settlement.worldid)
-		name.text = unicode(settlement.get_component(NamedComponent).name)
+		name = widgets.Label(name='name_%d' % settlement.worldid)
+		name.text = settlement.get_component(NamedComponent).name
 		name.min_size = name.max_size = (175, 20)
 
-		rename_icon = ImageButton(name = 'rename_%d' % settlement.worldid)
-		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
-		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
-		rename_icon.helptext = _("Click to change the name of your settlement")
+		from horizons.engine.pychan_util import RenameImageButton
+		rename_icon = RenameImageButton(name='rename_%d' % settlement.worldid)
+		rename_icon.path = "images/background/rename_feather_20"
+		rename_icon.helptext = T("Click to change the name of your settlement")
 		rename_icon.max_size = (20, 20) # (width, height)
 
 		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
@@ -115,11 +112,11 @@ class PlayersSettlements(StatsWidget):
 				tax += settlement.cumulative_taxes
 				costs += settlement.cumulative_running_costs
 
-		sequence_number_label = widgets.Label(name = 'sequence_number_total')
+		sequence_number_label = widgets.Label(name='sequence_number_total')
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
-		name = widgets.Label(name = 'name_total')
-		name.text = _(u'Total')
+		name = widgets.Label(name='name_total')
+		name.text = T('Total')
 		name.min_size = name.max_size = (200, 20)
 
 		self._add_generic_line_to_gui(0, [sequence_number_label, name], people, tax, costs)

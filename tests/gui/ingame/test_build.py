@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,84 +21,91 @@
 
 import time
 
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.constants import BUILDINGS
-from horizons.command.unit import Act
 from horizons.world.units.collectors.collector import Collector
-from horizons.gui.mousetools.buildingtool import BuildingTool
-from horizons.gui.mousetools.cursortool import CursorTool
-from horizons.world.component.collectingcompontent import CollectingComponent
-from tests.gui import TestFinished, gui_test
-from tests.gui.helper import get_player_ship
+from tests.gui import gui_test
+from tests.gui.helper import found_settlement
 
 
-@gui_test(use_dev_map=True, timeout=60)
+@gui_test(use_fixture='plain', timeout=60)
 def test_found_settlement(gui):
 	"""
 	Found a settlement.
 	"""
-	yield # test needs to be a generator for now
 
 	player = gui.session.world.player
-	target = (68, 10)
-	gui.session.view.center(*target)
+	assert not player.settlements
 
-	assert len(player.settlements) == 0
+	found_settlement(gui, (68, 10), (64, 12))
 
-	ship = get_player_ship(gui.session)
-	Act(ship, *target)(player)
-
-	# wait until ship arrives
-	while (ship.position.x, ship.position.y) != target:
-		yield
-
-	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
-
-	assert isinstance(gui.cursor, BuildingTool)
-	gui.cursor_move(64, 12)
-	gui.cursor_click(64, 12, 'left')
-
-	assert isinstance(gui.cursor, CursorTool)
 	assert len(player.settlements) == 1
 
 	# activate the build menu
 	ground_map = gui.session.world.islands[0].ground_map
-	gui.trigger('mainhud', 'build/action/default')
+	gui.trigger('mainhud/build')
 
 	# build a lumberjack
-	gui.trigger('tab', 'button_5/action/default')
+	gui.trigger('tab/button_03')
 	gui.cursor_click(55, 5, 'left')
-	assert(ground_map[(55, 5)].object.id == BUILDINGS.LUMBERJACK_CLASS)
+	assert(ground_map[(55, 5)].object.id == BUILDINGS.LUMBERJACK)
 
 	# build a storage
-	gui.trigger('tab', 'button_2/action/default')
+	gui.trigger('tab/button_11')
 	gui.cursor_click(55, 15, 'left')
 	storage = ground_map[(55, 15)].object
-	assert(storage.id == BUILDINGS.STORAGE_CLASS)
+	assert(storage.id == BUILDINGS.STORAGE)
 
 	# connect the lumberjack and storage using a road
-	gui.trigger('tab', 'button_21/action/default')
+	gui.trigger('tab/button_21')
 	for y in xrange(7, 15):
 		gui.cursor_click(55, y, 'left')
-		assert(ground_map[(55, y)].object.id == BUILDINGS.TRAIL_CLASS)
+		assert(ground_map[(55, y)].object.id == BUILDINGS.TRAIL)
 	gui.cursor_click(55, y, 'right')
 
 	# select the storage
 	gui.cursor_click(55, 15, 'left')
-	assert gui.find('warehouse_and_storage_overview')
+	gui.trigger('tab_base/0')
+	assert gui.find('tab_account')
 	collectors = storage.get_component(CollectingComponent).get_local_collectors()
 
 	while True:
 		if any(collector.state is Collector.states.moving_to_target for collector in collectors):
 			break
-		yield
+		gui.run()
 
 	# remove the storage, trigger ticket 1441
-	gui.press_key(gui.Key.DELETE)
+	def func():
+		assert gui.find('popup_window') is not None
+		gui.trigger('popup_window/okButton')
+
+	with gui.handler(func):
+		gui.press_key(gui.Key.DELETE)
+
 	start = time.time()
 	# wait 0.5 seconds
 	while time.time() - start < 0.5:
-		yield
+		gui.run()
 	assert ground_map[(55, 15)].object is None
 
-	yield TestFinished
+	# open build menu again
+	gui.trigger('mainhud/build')
+
+	# build a fisher
+	gui.trigger('tab/button_23')
+	gui.cursor_click(60, 4, 'left')
+	fisher = ground_map[(60, 4)].object
+	assert(fisher.id == BUILDINGS.FISHER)
+
+	# connect the lumberjack and fisher using a road
+	gui.trigger('tab/button_21')
+	for x in xrange(57, 60):
+		gui.cursor_click(x, 5, 'left')
+		assert(ground_map[(x, 5)].object.id == BUILDINGS.TRAIL)
+	gui.cursor_click(x, 5, 'right')
+
+	# trigger ticket 1767
+	# build a signal fire
+	gui.trigger('tab/button_22')
+	gui.cursor_click(58, 5, 'left')
+	gui.cursor_click(58, 4, 'left')

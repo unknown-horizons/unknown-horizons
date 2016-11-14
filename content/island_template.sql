@@ -1,5 +1,0 @@
-PRAGMA foreign_keys=OFF;
-BEGIN TRANSACTION;
-CREATE TABLE `island_properties` (`name` TEXT NOT NULL, `value` TEXT NOT NULL);
-CREATE TABLE `ground` (x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL);
-COMMIT;

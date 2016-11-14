@@ -7,25 +7,32 @@
 		<Setting name="ScreenResolution" type="str">1024x768</Setting>
 		<Setting name="BitsPerPixel" type="int"> 0 </Setting>
 		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
-		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
+		<Setting name="SDLRemoveFakeAlpha" type="bool"> True </Setting>
 		<Setting name="GLCompressImages" type="bool"> False </Setting>
 		<Setting name="WindowTitle" type="str">Unknown Horizons</Setting>
 		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
 		<Setting name="Font" type="str"> content/fonts/LinLibertine.ttf </Setting>
-		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
-		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
-		<Setting name="LogModules" type="list"> controller ; audio ; vfs ; script ; loaders ; pool ; view ; video ; model ; metamodel ; event_channel ; xml </Setting>
+		<Setting name="LogModules" type="list"> all </Setting>
 		<Setting name="PychanDebug" type="bool"> False </Setting>
-		<Setting name="LogToPrompt" type="int"> 1 </Setting>
-		<Setting name="LogToFile" type="int"> 0 </Setting>
+		<Setting name="LogToPrompt" type="bool"> False </Setting>
+		<Setting name="LogToFile" type="bool"> False </Setting>
 		<Setting name="Lighting" type="int"> 0 </Setting>
 		<Setting name="GLUseFramebuffer" type="bool"> True </Setting>
 		<Setting name="GLUseNPOT" type="bool"> True </Setting>
 		<Setting name="MouseSensitivity" type="float"> 0.0 </Setting>
-        <Setting name="FrameLimitEnabled" type="bool"> True </Setting>
-        <Setting name="FrameLimit" type="int"> 60 </Setting>
+		<Setting name="FrameLimitEnabled" type="bool"> True </Setting>
+		<Setting name="FrameLimit" type="int"> 60 </Setting>
+		<Setting name="GLUseMonochrome" type="bool">False</Setting>
+		<Setting name="GLUseMipmapping" type="bool">False</Setting>
+		<Setting name="GLTextureFiltering" type="string">None</Setting>
+		<Setting name="GLUseDepthBuffer" type="bool">True</Setting>
+		<Setting name="GLAlphaTestValue" type="float">0.8</Setting>
 	</Module>
 	<Module name="unknownhorizons">
+		<Setting name="MiddleMousePan" type="bool">True</Setting>
+		<Setting name="ScrollSpeed" type="float">0.7</Setting>
+		<Setting name="CursorCenteredZoom" type="bool">True</Setting>
+		<Setting name="LatestBackground" type="str"></Setting>
 		<Setting name="AIPlayers" type="int">1</Setting>
 		<Setting name="VolumeMusic" type="float">0.20</Setting>
 		<Setting name="VolumeEffects" type="float">0.5</Setting>
@@ -49,8 +56,53 @@
 		<Setting name="AutoUnload" type="bool">True</Setting>
 		<Setting name="ResourceOverviewBarConfiguration" type="str"></Setting>
 		<Setting name="DebugLog" type="bool">False</Setting>
+		<Setting name="QuotesType" type="int">0</Setting>
+		<Setting name="ShowResourceIcons" type="bool">True</Setting>
+		<Setting name="MapSettingsPirateEnabled" type="bool">True</Setting>
+		<Setting name="MapSettingsDisastersEnabled" type="bool">True</Setting>
+		<Setting name="MapSettingsFreeTraderEnabled" type="bool">True</Setting>
+		<Setting name="AtlasesEnabled" type="bool">True</Setting>
+		<Setting name="AtlasGenerationEnabled" type="bool">True</Setting>
+		<Setting name="MaxAtlasSize" type="int">2048</Setting>
+		<Setting name="Buildstyle" type="int">0</Setting>
+	</Module>
+	<Module name="keys">
+		<Setting name="TILE_OWNER_HIGHLIGHT" type="list"> A </Setting>
+		<Setting name="BUILD_TOOL" type="list"> B </Setting>
+		<Setting name="CHAT" type="list"> C </Setting>
+		<Setting name="GRID" type="list"> G </Setting>
+		<Setting name="COORD_TOOLTIP" type="list"> H </Setting>
+		<Setting name="SHOW_SELECTED" type="list"> J </Setting>
+		<Setting name="HEALTH_BAR" type="list"> K </Setting>
+		<Setting name="LOGBOOK" type="list"> L </Setting>
+		<Setting name="PIPETTE" type="list"> O </Setting>
+		<Setting name="PAUSE" type="list"> P ; PAUSE </Setting>
+		<Setting name="ROAD_TOOL" type="list"> R </Setting>
+		<Setting name="SCREENSHOT" type="list"> S </Setting>
+		<Setting name="TRANSLUCENCY" type="list"> T </Setting>
+		<Setting name="DESTROY_TOOL" type="list"> X </Setting>
+		<Setting name="ROTATE_RIGHT" type="list"> PERIOD </Setting>
+		<Setting name="ROTATE_LEFT" type="list"> COMMA </Setting>
+		<Setting name="SPEED_UP" type="list"> PLUS ; EQUALS </Setting>
+		<Setting name="SPEED_DOWN" type="list"> MINUS </Setting>
+		<Setting name="ZOOM_IN" type="list"> PAGE_DOWN </Setting>
+		<Setting name="ZOOM_OUT" type="list"> PAGE_UP </Setting>
+		<Setting name="REMOVE_SELECTED" type="list"> DELETE </Setting>
+		<Setting name="ESCAPE" type="list"> ESCAPE </Setting>
+		<Setting name="LEFT" type="list"> LEFT </Setting>
+		<Setting name="RIGHT" type="list"> RIGHT </Setting>
+		<Setting name="UP" type="list"> UP </Setting>
+		<Setting name="DOWN" type="list"> DOWN </Setting>
+		<Setting name="HELP" type="list"> F1 </Setting>
+		<Setting name="PLAYERS_OVERVIEW" type="list"> F2 </Setting>
+		<Setting name="SHIPS_OVERVIEW" type="list"> F3 </Setting>
+		<Setting name="SETTLEMENTS_OVERVIEW" type="list"> F4 </Setting>
+		<Setting name="QUICKSAVE" type="list"> F5 </Setting>
+		<Setting name="QUICKLOAD" type="list"> F9 </Setting>
+		<Setting name="CONSOLE" type="list"> F10 </Setting>
+		<Setting name="DEBUG" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">17</Setting>
+		<Setting name="SettingsVersion" type="int"> 38 </Setting>
 	</Module>
 </Settings>

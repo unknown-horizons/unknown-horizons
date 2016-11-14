@@ -1,0 +1,1136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2012-12-08 16:50+0000\n"
+"Last-Translator: supercracker111 <supercracker111@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"X-POOTLE-MTIME: 1354985439.0\n"
+
+msgid "game"
+msgstr "खेल"
+
+msgid "building"
+msgstr "ईमारत"
+
+msgid "build"
+msgstr "निर्माण"
+
+msgid "player"
+msgstr ""
+
+msgid "settlement"
+msgstr "उपनिवेश"
+
+msgid "ship"
+msgstr "जहाज"
+
+msgid "tent"
+msgstr "शिविर"
+
+msgid "farm"
+msgstr "खेत"
+
+msgid "map"
+msgstr "नक्शा"
+
+msgid "resource"
+msgstr "संसाधन"
+
+msgid "warehouse"
+msgstr "गोदाम"
+
+msgid "inhabitants"
+msgstr "निवासियों"
+
+msgid "change"
+msgstr "बदलें"
+
+msgid "unknown"
+msgstr ""
+
+msgid "produce"
+msgstr "उत्पादन"
+
+msgid "no"
+msgstr ""
+
+msgid "trade"
+msgstr "व्यापार"
+
+msgid "check"
+msgstr "जांच करें |"
+
+msgid "field"
+msgstr "खेत"
+
+msgid "main"
+msgstr ""
+
+msgid "buy"
+msgstr "खरीदना"
+
+msgid "click"
+msgstr "क्लिक"
+
+msgid "left"
+msgstr "बाएँ"
+
+msgid "overview"
+msgstr "सिंहावलोकन"
+
+msgid "running"
+msgstr ""
+
+msgid "square"
+msgstr ""
+
+msgid "lumberjack"
+msgstr "लकड़हारा"
+
+msgid "unable"
+msgstr "असमर्थ"
+
+msgid "continue"
+msgstr "जारी रखें |"
+
+msgid "main square"
+msgstr "केंद्रीय स्थान"
+
+msgid "production"
+msgstr "उत्पादन"
+
+msgid "sailors"
+msgstr "नाविकों"
+
+msgid "sell"
+msgstr "बेचना"
+
+msgid "storage"
+msgstr "भंडार"
+
+msgid "contact"
+msgstr "संपर्क"
+
+msgid "house"
+msgstr "घर"
+
+msgid "menu"
+msgstr "सूचि"
+
+msgid "tab"
+msgstr "टैब"
+
+msgid "close"
+msgstr "बंद करें"
+
+msgid "food"
+msgstr "भोजन"
+
+msgid "free"
+msgstr ""
+
+msgid "ready"
+msgstr ""
+
+msgid "setting"
+msgstr "सेटिंग"
+
+msgid "start"
+msgstr "प्रारंभ"
+
+msgid "time"
+msgstr "समय"
+
+msgid "trader"
+msgstr ""
+
+msgid "unit"
+msgstr "इकाई"
+
+msgid "version"
+msgstr ""
+
+msgid "fire"
+msgstr "आग"
+
+msgid "island"
+msgstr "द्वीप"
+
+msgid "select"
+msgstr "चयन"
+
+msgid "slot"
+msgstr "खांचा"
+
+msgid "stock"
+msgstr "भंडार"
+
+msgid "upgrade"
+msgstr "उन्नयन"
+
+msgid "coast"
+msgstr "तट"
+
+msgid "color"
+msgstr ""
+
+msgid "companies"
+msgstr "कंपनियों"
+
+msgid "file"
+msgstr ""
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "कुंजी"
+
+msgid "taxes"
+msgstr "करों"
+
+msgid "collector"
+msgstr "संग्राहक"
+
+msgid "connection"
+msgstr "संपर्क"
+
+msgid "log"
+msgstr "लॉग"
+
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr "निवासी"
+
+msgid "wool"
+msgstr "ऊन"
+
+msgid "boards"
+msgstr "पटल"
+
+msgid "built"
+msgstr "निर्मित"
+
+msgid "button"
+msgstr "बटन"
+
+msgid "choose"
+msgstr "चुनें"
+
+msgid "connect"
+msgstr "जोड़ना"
+
+msgid "cost"
+msgstr "क़ीमत"
+
+msgid "happiness"
+msgstr "ख़ुशी"
+
+msgid "road"
+msgstr "सड़क"
+
+msgid "save"
+msgstr "सेव"
+
+msgid "tree"
+msgstr "पेड़"
+
+msgid "amount"
+msgstr "राशि"
+
+msgid "reach"
+msgstr "पहुंच"
+
+msgid "size"
+msgstr ""
+
+msgid "add"
+msgstr "जोडें"
+
+msgid "fisher"
+msgstr "मछ्वारा"
+
+msgid "free trader"
+msgstr "व्यापारी"
+
+msgid "in stock"
+msgstr "भंडार में"
+
+msgid "increase"
+msgstr "बढाएँ"
+
+msgid "mode"
+msgstr "प्रणाली"
+
+msgid "password"
+msgstr ""
+
+msgid "pasture"
+msgstr "चारागाह"
+
+msgid "range"
+msgstr "दायरा"
+
+msgid "signal"
+msgstr ""
+
+msgid "speed"
+msgstr "गति"
+
+msgid "sugar"
+msgstr "चीनी"
+
+msgid "access"
+msgstr "अभिगम"
+
+msgid "build menu"
+msgstr "निर्माण सूचि"
+
+msgid "confectionery"
+msgstr "मिष्टान्न"
+
+msgid "enabled"
+msgstr "सक्षम"
+
+msgid "fetch"
+msgstr ""
+
+msgid "help"
+msgstr "मदद"
+
+msgid "income"
+msgstr "आय"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "दरजा"
+
+msgid "move"
+msgstr "हटाएँ"
+
+msgid "multiple"
+msgstr "विभिन्न"
+
+msgid "please check"
+msgstr ""
+
+msgid "potato"
+msgstr "आलू"
+
+msgid "settler"
+msgstr "आबादकार"
+
+msgid "total"
+msgstr "कुल"
+
+msgid "construction"
+msgstr "निर्माण"
+
+msgid "creator"
+msgstr ""
+
+msgid "faith"
+msgstr "श्रद्धा"
+
+msgid "hold"
+msgstr "पकड़"
+
+msgid "icon"
+msgstr ""
+
+msgid "lamb"
+msgstr "मेमना"
+
+msgid "leave"
+msgstr "छोड़ें"
+
+msgid "location"
+msgstr "स्थान"
+
+msgid "multiple buildings"
+msgstr ""
+
+msgid "pioneers"
+msgstr "अग्रदूतों"
+
+msgid "reached"
+msgstr "पहुंच गया"
+
+msgid "run"
+msgstr "चलाना"
+
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
+msgid "slider"
+msgstr "स्लाइडर"
+
+msgid "space"
+msgstr "स्पेस कुंजी"
+
+msgid "storage tent"
+msgstr "भंडारण तम्बू"
+
+msgid "target"
+msgstr "लक्ष्य"
+
+msgid "terminated"
+msgstr ""
+
+msgid "tools"
+msgstr "औज़ार"
+
+msgid "account"
+msgstr "खाता"
+
+msgid "active"
+msgstr "सक्रिय"
+
+msgid "afford"
+msgstr "वहन करने में"
+
+msgid "animals"
+msgstr "जानवरों"
+
+msgid "Captain's log"
+msgstr "कप्तान के लॉग"
+
+msgid "cloth"
+msgstr "कपडे"
+
+msgid "construct"
+msgstr "निर्माण करना"
+
+msgid "cursor"
+msgstr ""
+
+msgid "description"
+msgstr "विवरण"
+
+msgid "entries"
+msgstr "प्रविष्टियों"
+
+msgid "feature"
+msgstr "विशेषता"
+
+msgid "fish"
+msgstr "मछली"
+
+msgid "forest"
+msgstr "जंगल"
+
+msgid "from time to time"
+msgstr "समय - समय पर"
+
+msgid "global"
+msgstr ""
+
+msgid "grow"
+msgstr ""
+
+msgid "happy"
+msgstr ""
+
+msgid "information"
+msgstr "जानकारी"
+
+msgid "liquor"
+msgstr "शराब"
+
+msgid "minimap"
+msgstr "छोटा नक्शा"
+
+msgid "offer"
+msgstr "प्रस्ताव"
+
+msgid "overview tab"
+msgstr "सिंहावलोकन टैब"
+
+msgid "plant"
+msgstr "पौधा"
+
+msgid "play"
+msgstr "खेल"
+
+msgid "please check your"
+msgstr ""
+
+msgid "potatoes"
+msgstr "आलू"
+
+msgid "price"
+msgstr "कीमत"
+
+msgid "read"
+msgstr "पढ़ें"
+
+msgid "screen"
+msgstr "स्क्रीन"
+
+msgid "service"
+msgstr "सेवा"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "समाधान"
+
+msgid "sound"
+msgstr "ध्वनि"
+
+msgid "special"
+msgstr "विशेष"
+
+msgid "spot"
+msgstr ""
+
+msgid "statistics"
+msgstr "आँकड़े"
+
+msgid "store"
+msgstr "भंडारित करें"
+
+msgid "team"
+msgstr "दल"
+
+msgid "tear"
+msgstr "फाड़"
+
+msgid "time to time"
+msgstr ""
+
+msgid "trading"
+msgstr "व्यापार"
+
+msgid "unsupported"
+msgstr ""
+
+msgid "visit"
+msgstr "दर्शन"
+
+msgid "world"
+msgstr "दुनिया"
+
+msgid "wrong"
+msgstr ""
+
+msgid "bar"
+msgstr ""
+
+msgid "bug"
+msgstr ""
+
+msgid "command"
+msgstr "आदेश"
+
+msgid "completed"
+msgstr "पूरा किया"
+
+msgid "forum"
+msgstr ""
+
+msgid "happen"
+msgstr ""
+
+msgid "harvest"
+msgstr "फ़सल काटना"
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "भेड़ ऊन"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "खेलते"
+
+msgid "produced"
+msgstr ""
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "बिक्री"
+
+msgid "school"
+msgstr "स्कूल"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr "कुछ वक़्त के लिये"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr "मूल्यों"
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "संतुलन"
+
+msgid "load"
+msgstr "लोड करें"
+
+msgid "trail"
+msgstr "पगडंडी"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "लोहा"
+
+msgid "tobacco"
+msgstr "तम्बाकू"
+
+msgid "clay"
+msgstr "मिट्टी"
+
+msgid "money"
+msgstr "धन"
+
+msgid "pavilion"
+msgstr "मंडप"
+
+msgid "tax"
+msgstr "कर"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "रोकें"
+
+msgid "wait"
+msgstr "इंतजार करें |"
+
+msgid "decrease"
+msgstr "कम करें |"
+
+msgid "ore"
+msgstr "अयस्क"
+
+msgid "return"
+msgstr "वापसी"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "उपभोग करना"
+
+msgid "idle"
+msgstr "निष्क्रिय"
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "village"
+msgstr "गांव"
+
+msgid "yields"
+msgstr ""
+
+msgid "back"
+msgstr "वापस"
+
+msgid "build settlement"
+msgstr "उपनिवेश का निर्माण"
+
+msgid "charcoal"
+msgstr "लकड़ी का कोयला"
+
+msgid "empty"
+msgstr "खाली"
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "पूरा करना"
+
+msgid "graphics"
+msgstr "ग्राफ़िक्स"
+
+msgid "hunt"
+msgstr ""
+
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+msgid "potato field"
+msgstr "आलू की खेत"
+
+msgid "seed"
+msgstr "बीज"
+
+msgid "send"
+msgstr ""
+
+msgid "sheep"
+msgstr "भेड़"
+
+msgid "signal fire"
+msgstr "संकेत आग"
+
+msgid "sugar field"
+msgstr "चीनी की खेत"
+
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "mouse"
+msgstr ""
+
+msgid "partner"
+msgstr ""
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr ""
+
+msgid "weapon"
+msgstr ""
+
+msgid "cattle"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr ""
+
+msgid "cocoa"
+msgstr ""
+
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr ""
+
+msgid "herbs"
+msgstr ""
+
+msgid "pause"
+msgstr ""
+
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr ""
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "नागरिकों"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "ensure"
+msgstr "सुनिश्चित करना"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr ""
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "परिचालन लागतें"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+

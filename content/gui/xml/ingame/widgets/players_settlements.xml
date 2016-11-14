@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 	<VBox max_size="695,388" min_size="695,388" padding="5">
 		<HBox>
-			<Label name="headline" text="" min_size="300,20" />
+			<Label name="headline" min_size="300,20" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 
 		<VBox max_size="650,20">
 			<HBox>
-				<Label min_size="15,20" name="sequence_number" text="" />
+				<Label min_size="15,20" name="sequence_number" />
 				<Label min_size="200,20" name="settlement_name" text="Name" />
 				<Label min_size="110,20" name="inhabitants" text="Inhabitants" />
 				<Label min_size="50,20" name="taxes" text="Taxes" />
@@ -16,15 +16,16 @@
 			</HBox>
 		</VBox>
 
-		<ScrollArea background_color="255,255,255,0" min_size="650,300">
+		<ScrollArea min_size="650,300" max_size="650,300">
 			<VBox name="content_vbox" />
 		</ScrollArea>
+<!--TODO fix-->
 <!--
 In this VBox a line is added per settlement in the following format:
 			<HBox>
 				<Label min_size="15,20" name="sequence_number_n" text="1" />
 				<Label min_size="175,20" name="name_n" text="St. Elmo" />
-				<Icon name="rename_n" helptext="Click to rename settlement" image="content/gui/images/background/rename_feather_20.png"/>
+				<RenameImageButton name="rename_n" helptext="Click to rename settlement" image="content/gui/images/background/rename_feather_20.png" />
 				<Label min_size="110,20" name="inhabitants_n" text="110" />
 				<Label min_size="50,20" name="taxes_n" text="152" />
 				<Label min_size="100,20" name="running_costs_n" text="110" />

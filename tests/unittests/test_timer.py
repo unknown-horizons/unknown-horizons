@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
-
 from unittest import TestCase
-from mock import Mock, MagicMock, patch
 
-from horizons.timer import Timer
-from horizons.scheduler import Scheduler
+from mock import MagicMock, Mock, patch
+
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.timer import Timer
+
 
 class TestTimer(TestCase):
 
@@ -45,7 +43,7 @@ class TestTimer(TestCase):
 		self.fife = Mock()
 		self.pump = MagicMock()
 		self.fife.pump = self.pump
-		self.fifePatcher = patch('horizons.main.fife', self.fife)
+		self.fifePatcher = patch('horizons.globals.fife', self.fife)
 		self.fifePatcher.start()
 		# Mock system time
 		self.timePatcher = patch('time.time')
@@ -67,7 +65,7 @@ class TestTimer(TestCase):
 		self.timer.end()
 		self.fife.pump.remove.assert_called_once_with(self.timer.check_tick)
 
-	def test_first_pump_then_one_tick(self):	
+	def test_first_pump_then_one_tick(self):
 		self.timer.check_tick()
 		self.callback.assert_called_once_with(TestTimer.TICK_START)
 
@@ -75,7 +73,7 @@ class TestTimer(TestCase):
 		self.timer.check_tick()
 		self.timer.check_tick()
 		self.callback.assert_called_once_with(TestTimer.TICK_START)
-		
+
 	def test_two_pump_with_delay_then_two_ticks(self):
 		self.timer.check_tick()
 		self.callback.reset_mock()
@@ -151,7 +149,7 @@ class TestTimer(TestCase):
 		self.timer.add_call(self.callback)
 		self.timer.check_tick()
 		self.callback.reset_mock()
-	
+
 		self.clock.return_value = self.TIME_START + (1.01 * self.TIME_TICK) + Timer.ACCEPTABLE_TICK_DELAY
 		self.timer.check_tick()
 		self.assertTrue(self.callback.called) # some number of ticks depending on tick delay
@@ -161,7 +159,7 @@ class TestTimer(TestCase):
 		self.clock.return_value = self.TIME_START + (2.02 * self.TIME_TICK) + Timer.DEFER_TICK_ON_DELAY_BY
 		self.timer.check_tick()
 		self.callback.assert_called_once_with(TestTimer.TICK_START + 2)
-	
+
 	def test_pump_test_func_pass(self):
 		self.test.return_value = Timer.TEST_PASS
 		self.timer.add_test(self.test)

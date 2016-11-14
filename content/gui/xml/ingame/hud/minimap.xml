@@ -8,50 +8,22 @@ In case you change the size of this Container, also adapt the ingamegui position
 <Container name="background_and_buttons" position="-30,0" size="240,240">
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
-	<Label name="speed_text" text="" position="48,88" font="small_black"/>
+	<Label name="speed_text" position="50,90" font="default_bold" />
 
-	<ToggleImageButton name="speedUp" position="48,63"
-		inactive_image="content/gui/icons/widgets/minimap/speed_up_bw.png"
-		up_image="content/gui/icons/widgets/minimap/speed_up.png"
-		down_image="content/gui/icons/widgets/minimap/speed_up_h.png"
-		hover_image="content/gui/icons/widgets/minimap/speed_up_h.png"
-		helptext="Increase game speed (+)"
-		is_focusable="0" />
-	<ToggleImageButton name="speedDown" position="48,105"
-		inactive_image="content/gui/icons/widgets/minimap/speed_down_bw.png"
-		up_image="content/gui/icons/widgets/minimap/speed_down.png"
-		down_image="content/gui/icons/widgets/minimap/speed_down_h.png"
-		hover_image="content/gui/icons/widgets/minimap/speed_down_h.png"
-		helptext="Decrease game speed (-)"
-		is_focusable="0" />
+	<ImageButton name="speedUp" position="48,63"
+		path="icons/widgets/minimap/speed_up" helptext="Increase game speed ({key})" />
+	<ImageButton name="speedDown" position="48,105"
+		path="icons/widgets/minimap/speed_down" helptext="Decrease game speed ({key})" />
 
 	<ImageButton name="rotateLeft" position="96,19"
-		up_image="content/gui/icons/widgets/minimap/rotate_left.png"
-		down_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
-		hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
-		helptext="Rotate map counterclockwise (,)"
-		is_focusable="0" />
+		path="icons/widgets/minimap/rotate_left" helptext="Rotate map counterclockwise ({key})" />
 	<ImageButton name="rotateRight" position="150,19"
-		up_image="content/gui/icons/widgets/minimap/rotate_right.png"
-		down_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
-		hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
-		helptext="Rotate map clockwise (.)"
-		is_focusable="0" />
+		path="icons/widgets/minimap/rotate_right" helptext="Rotate map clockwise ({key})" />
 
-	<ToggleImageButton name="zoomIn" position="195,63"
-		inactive_image="content/gui/icons/widgets/minimap/zoom_in_bw.png"
-		up_image="content/gui/icons/widgets/minimap/zoom_in.png"
-		down_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
-		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
-		helptext="Zoom in"
-		is_focusable="0" />
-	<ToggleImageButton name="zoomOut" position="195,105"
-		inactive_image="content/gui/icons/widgets/minimap/zoom_out_bw.png"
-		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
-		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
-		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
-		helptext="Zoom out"
-		is_focusable="0" />
+	<ImageButton name="zoomIn" position="195,63"
+		path="icons/widgets/minimap/zoom_in" helptext="Zoom in" />
+	<ImageButton name="zoomOut" position="195,105"
+		path="icons/widgets/minimap/zoom_out" helptext="Zoom out" />
 </Container>
 
 <Container size="250,90"  position="11,149">
@@ -64,30 +36,16 @@ In case you change the size of this Container, also adapt the ingamegui position
 	<Icon position="157,0"  image="content/gui/images/buttons/glass_small.png" />
 
 	<ImageButton name="destroy_tool" position="3,2"
-		up_image="content/gui/icons/widgets/minimap/tear.png"
-		down_image="content/gui/icons/widgets/minimap/tear_h.png"
-		hover_image="content/gui/icons/widgets/minimap/tear_h.png"
-		is_focusable="0" helptext="Destroy (X)" />
+		path="icons/widgets/minimap/tear" helptext="Destroy ({key})" />
 	<ImageButton name="logbook" position="39,32"
-		up_image="content/gui/icons/widgets/minimap/captainslog.png"
-		down_image="content/gui/icons/widgets/minimap/captainslog_h.png"
-		hover_image="content/gui/icons/widgets/minimap/captainslog_h.png"
-		is_focusable="0" helptext="Captain's log (L)" />
+		path="icons/widgets/minimap/captainslog" helptext="Captain's log ({key})" />
 	<ImageButton name="build" position="82,42"
-		up_image="content/gui/icons/widgets/minimap/build.png"
-		down_image="content/gui/icons/widgets/minimap/build_h.png"
-		hover_image="content/gui/icons/widgets/minimap/build_h.png"
-		is_focusable="0" helptext="Build menu (B)" />
+		path="icons/widgets/minimap/build" helptext="Build menu ({key})" />
 	<ImageButton name="diplomacyButton" position="130,32"
-		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
-		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
-		hover_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
-		helptext="Diplomacy" is_focusable="0"/>
+		path="icons/widgets/minimap/diplomacy" helptext="Diplomacy" />
 	<ImageButton name="gameMenuButton" position="160,0"
-		up_image="content/gui/icons/widgets/minimap/gamemenu.png"
-		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
-		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
-		helptext="Game menu (Esc)" is_focusable="0"/>
+		path="icons/widgets/minimap/gamemenu" helptext="Game menu ({key})" />
 </Container>
+
 <Icon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />
 </Container>

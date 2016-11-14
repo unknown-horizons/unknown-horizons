@@ -3,9 +3,9 @@
 	background_image="content/gui/images/background/notice350.png">
 
 <VBox position="50,40" padding="10" base_color="0,0,0,0">
-	<Label name="headline" text="" font="headline" min_size="300,0"/>
-	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="msg" text="" wrap_text="1" min_size="330,180" max_size="330,180" font="14_black"/>
+	<Label name="headline" font="headline" min_size="300,0" />
+	<hr />
+	<Label name="msg" wrap_text="1" min_size="330,180" max_size="330,180" font="default" />
 	<Button name="quit_button" text="Quit" font="headline" base_color="0,0,0,10" border_size="4" />
 </VBox>
 

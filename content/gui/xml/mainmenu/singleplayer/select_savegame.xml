@@ -1,28 +1,35 @@
 <?xml version="1.0"?>
 <!-- widget for ingame save and load -->
-<Container name="load_game_window" size="800,580" position="100,100">
-	<Icon image="content/gui/images/background/book.png" />
+<Container name="load_game_window" size="800,580" position_technique="center:center"
+	 background_image="content/gui/images/background/book.png">
 
 	<VBox name="left_page" max_size="335,495" min_size="335,495" position="85,45" padding="12">
-		<Label text="" name="headline" wrap_text="1"
-			max_size="335,20" min_size="335,20" />
-		<Icon image="content/gui/images/background/hr.png"/>
+		<Label name="headline" wrap_text="1" max_size="335,20" min_size="335,20" />
+		<hr />
 		<Label text="Your saved games:" name="headline_saved_games_label" wrap_text="1"
 			max_size="335,20" min_size="335,20" />
 
-		<ScrollArea max_size="300,400" horizontal_scrollbar="0" >
-			<ListBox name="savegamelist" />
+		<ScrollArea max_size="300,400">
+			<ListBox name="savegamelist" is_focusable="0" />
 		</ScrollArea>
 	<Spacer fixed_size="20" />
-		<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
-			<Label text="Name of the game:" name="gamename_lbl" helptext="This will be displayed to other players so they recognise the game."/>
-			<TextField name="gamename" text="Unnamed Game" max_size="250,20" min_size="150,20" />
-		</HBox>
+		<VBox name="gamedetails_box">
+			<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
+				<Label text="Name of the game:" name="gamename_lbl"
+					helptext="This will be displayed to other players so they recognize the game."/>
+				<TextField name="gamename" text="Unnamed Game" max_size="250,20" min_size="150,20" />
+			</HBox>
+			<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamepassword_box">
+				<Label text="Password of the game:" name="gamepassword_lbl"
+					helptext="Password of the game. Required to join this game" />
+				<TextField name="gamepassword" max_size="250,20" min_size="150,20" />
+			</HBox>
+		</VBox>
 
 	<Spacer fixed_size="30" />
 		<HBox max_size="34,40">
 			<!-- if no max_size is set, button reaction area expands to whole page -->
-			<DeleteButton helptext="Delete selected savegame" />
+			<CancelButton helptext="Cancel" />
 		</HBox>>
 	</VBox> <!-- left_page -->
 
@@ -41,15 +48,15 @@
 					<Icon name="screenshot" />
 					<Label name="headline_details_label"  text="Details:"
 						comment="More text describing the savegame" />
-					<VBox name="savegamedetails_box" min_size="300,80" />
-				</VBox>
+					<Label name="savegamedetails_lbl" wrap_text="1"
+						min_size="290, 0"  max_size="290, 290" />
 
-<!-- here a small screenshot will help the player to recognise the saved file -->
+				</VBox>
 			</HBox>
 		</VBox>
 	<Spacer />
 		<HBox min_size="300,40">
-			<CancelButton helptext="Cancel" />
+			<DeleteButton helptext="Delete selected savegame" />
 			<Spacer min_size="200" />
 			<OkButton />
 		</HBox>

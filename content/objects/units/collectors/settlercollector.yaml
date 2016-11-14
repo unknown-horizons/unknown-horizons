@@ -1,17 +1,34 @@
-baseclass: collectors.StorageCollector
-id: 1000011
+baseclass: collectors.SettlerCollector
+id: UNITS.SETTLER_COLLECTOR
 name: SettlerCollector
 radius: 5
 velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
+- RestrictedPickup:
+    allowed:
+    - BUILDINGS.MAIN_SQUARE
+    - BUILDINGS.PAVILION
+    - BUILDINGS.VILLAGE_SCHOOL
+    - BUILDINGS.TAVERN
 
 actionsets:
-   as_male: {level: 0}
-   as_female: {level: 0}
-   as_male2: {level: 0}
-   as_female2: {level: 0}
+  TIER.SAILORS:
+    as_male:
+    as_female:
+    as_male2:
+    as_female2:
+    as_male3:
+    #as_female3:
+  TIER.PIONEERS:
+    as_pioneermale0:
+    as_pioneerfemale0:
+  TIER.SETTLERS:
+    as_settlermale0:
+    as_settlerfemale0:
+  TIER.CITIZENS:
+    as_citizenmale0:
+    as_citizenfemale0:

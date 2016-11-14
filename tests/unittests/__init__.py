@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,48 +21,25 @@
 
 import unittest
 
+import horizons.globals
 import horizons.main
-
-
-db = None
-
-def setup_package():
-	"""
-	One-time database setup. Nose will call this function once for this package,
-	so we can avoid to create a database for each test. Using TestCase, we can
-	be sure that each test runs on an unmodified database.
-	"""
-	global db
-
-	db = horizons.main._create_main_db()
-
-	# Truncate all tables. We don't want to rely on existing data.
-	for (table_name, ) in db("SELECT name FROM sqlite_master WHERE type = 'table'"):
-		db('DELETE FROM %s' % table_name)
-
-
-def teardown_package():
-	"""
-	Close database.
-	"""
-	# TODO temporarily disabled, ProductionLine test breaks when using multiprocess
-	#db.close()
 
 
 class TestCase(unittest.TestCase):
 	"""
-	For each test, open a new transaction and roll it back afterwards. This
-	way, the database will remain unmodified for each new test.
+	For each test, set up a new database.
 	"""
 	def setUp(self):
-		# Some code is still accessing the global database reference.
-		horizons.main.db = db
+		self.db = horizons.main._create_main_db()
 
-		self.db = db
-		self.db('BEGIN TRANSACTION')
+		# Truncate all tables. We don't want to rely on existing data.
+		for (table_name, ) in self.db("SELECT name FROM sqlite_master WHERE type = 'table'"):
+			self.db('DELETE FROM %s' % table_name)
+
+		horizons.globals.db = self.db
 
 	def tearDown(self):
-		self.db('ROLLBACK TRANSACTION')
+		self.db.close()
 
 
 _multiprocess_can_split_ = True

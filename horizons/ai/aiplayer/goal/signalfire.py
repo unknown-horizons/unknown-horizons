@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,16 +24,17 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class SignalFireGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'SignalFireGoal'
 
 	@property
 	def active(self):
-		return super(SignalFireGoal, self).active and not self.settlement.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS)
+		return super(SignalFireGoal, self).active and not self.settlement.count_buildings(BUILDINGS.SIGNAL_FIRE)
 
 	def execute(self):
-		result = AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].build(self.settlement_manager, None)[0]
+		result = AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE].build(self.settlement_manager, None)[0]
 		self._log_generic_build_result(result, 'signal fire')
 		return self._translate_build_result(result)
 

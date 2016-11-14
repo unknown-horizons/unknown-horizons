@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import operator
+import itertools
 import logging
+import operator
 
-from horizons.timer import Timer
-from horizons.scheduler import Scheduler
-from horizons.util import WorldObject
-from horizons.util.living import LivingObject
 from horizons.command.building import Build
+from horizons.i18n import gettext as T
 from horizons.network import CommandError, packets
+from horizons.scheduler import Scheduler
+from horizons.timer import Timer
+from horizons.util.living import LivingObject
+from horizons.util.worldobject import WorldObject
+
 
 class SPManager(LivingObject):
 	"""The manager class takes care of command issuing to the timermanager, sends tick-packets
-	over the network, and syncronisation of network games."""
+	over the network, and synchronization of network games."""
 
 	def __init__(self, session):
 		super(SPManager, self).__init__()
@@ -44,9 +47,9 @@ class SPManager(LivingObject):
 		@param local: Whether to only execute command here (doesn't make sense in singleplayer
 		"""
 		# if we are in demo playback mode, every incoming command has to be thrown away.
-		if len(self.commands) > 0:
+		if self.commands:
 			return
-		ret = command(issuer = self.session.world.player) # actually execute the command
+		ret = command(issuer=self.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it
 		return ret
 
@@ -75,8 +78,8 @@ class MPManager(LivingObject):
 		self.commandsmanager = MPCommandsManager(self)
 		self.localcommandsmanager = MPCommandsManager(self)
 		self.checkuphashmanager = MPCheckupHashManager(self)
-		self.gamecommands = [] # commands from the local user
-		self.localcommands = [] # (only local) commands from the local user
+		self.gamecommands = [] # commands from the local user, that will be part of next CommandPacket
+		self.localcommands = [] # (only local) commands from the local user (e.g. sounds only this user should hear)
 
 		self.session.timer.add_test(self.can_tick)
 		self.session.timer.add_call(self.tick)
@@ -92,13 +95,13 @@ class MPManager(LivingObject):
 	def can_tick(self, tick):
 		"""Checks if we can execute this tick via return value"""
 		# get new packages fom networkinteface
-		packets = None
+		packets_received = None
 		try:
-			packets = self.networkinterface.receive_all()
+			packets_received = self.networkinterface.receive_all()
 		except CommandError:
 			return Timer.TEST_SKIP
 
-		for packet in packets:
+		for packet in packets_received:
 			if isinstance(packet, CommandPacket):
 				self.log.debug("Got command packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
 				self.commandsmanager.add_packet(packet)
@@ -106,21 +109,21 @@ class MPManager(LivingObject):
 				self.log.debug("Got checkuphash packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
 				self.checkuphashmanager.add_packet(packet)
 			else:
-				self.log.warn("invalid packet: "+str(packet))
+				self.log.warning("invalid packet: " + str(packet))
 
 		# send out new commands
 		# check if we already sent commands for this tick (only 1 packet per tick is allowed,
 		# in case of lags this code would be executed multiple times for the same tick)
 		if self._last_local_commands_send_tick < tick:
 			self._last_local_commands_send_tick = tick
-			commandpacket = CommandPacket(self.calculate_execution_tick(tick), \
+			commandpacket = CommandPacket(self.calculate_execution_tick(tick),
 					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
 			self.log.debug("sending command for tick %d" % (commandpacket.tick))
-			self.networkinterface.send_to_all_clients(commandpacket)
+			self.networkinterface.send_packet(commandpacket)
 
-			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick), \
+			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
 					self.session.world.player.worldid, self.localcommands))
 			self.localcommands = []
 
@@ -128,11 +131,11 @@ class MPManager(LivingObject):
 			if self.calculate_hash_tick(tick) % self.HASH_EVAL_DISTANCE == 0:
 				hash_value = self.session.world.get_checkup_hash()
 				#self.log.debug("MPManager: Checkup hash for tick %s is %s", tick, hash_value)
-				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick), \
+				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick),
 			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
 				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
-				self.networkinterface.send_to_all_clients(checkuphashpacket)
+				self.networkinterface.send_packet(checkuphashpacket)
 
 		# decide if tick can be calculated
 		# in the first few ticks, no data is available
@@ -167,16 +170,13 @@ class MPManager(LivingObject):
 
 	def hash_value_check(self, tick):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
-			if self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff) == False:
+			if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
 				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
-				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
-				  _("We are very sorry and hope to have this bug fixed in a future version.")
-				self.session.gui._on_error(msg, fatal=True)
-			else:
-				#self.log.debug("MPManager: Hash values are equal")
-				pass
+				msg = T("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
+				  T("We are very sorry and hope to have this bug fixed in a future version.")
+				self.session.ingame_gui.open_error_popup('Out of sync', msg)
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
 		"""Called when a divergence has been detected"""
@@ -213,25 +213,27 @@ class MPManager(LivingObject):
 		return len(self.session.world.players)
 
 	def get_builds_in_construction(self):
+		"""Returns all Build-commands by the local player, that are executed in the next ticks"""
 		commandpackets = self.commandsmanager.get_packets_from_player(self.session.world.player.worldid)
-		commandlist = []
-		for pkg in commandpackets:
-			for cmd in pkg.commandlist:
-				commandlist.append(cmd)
-		for cmd in self.gamecommands:
-			commandlist.append(cmd)
-		return filter(lambda x: type(x)==Build, commandlist)
+
+		# check commands already sent
+		l1 = itertools.chain.from_iterable(pkg.commandlist for pkg in commandpackets)
+		# and the ones that haven't been sent yet (this are of course only commands by the local player)
+		commandlist = itertools.chain(l1, self.gamecommands)
+
+		return filter(lambda x: isinstance(x, Build), commandlist)
 
 	def load(self, db):
 		"""Execute outstanding commands, loaded from db.
 		Currently not supported for MP"""
+		# NOTE: it is supported now, and such outstanding commands are dropped right now
 		pass
 
 # Packagemanagers storing Packages for later use
 ################################################
 
 class MPPacketmanager(object):
-	log =  logging.getLogger("mpmanager")
+	log = logging.getLogger("mpmanager")
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []
@@ -251,6 +253,10 @@ class MPPacketmanager(object):
 		return command_packets
 
 	def get_packets_from_player(self, player_id):
+		"""
+		Returns all command this player has issued, that are not yet executed
+		@param player_id: worldid of player
+		"""
 		return filter(lambda x: x.player_id==player_id, self.command_packet_list)
 
 	def add_packet(self, command_packet):
@@ -268,7 +274,7 @@ class MPCheckupHashManager(MPPacketmanager):
 			return True
 		return super(MPCheckupHashManager, self).is_tick_ready(tick)
 
-	def are_checkup_hash_values_equal(self, tick, cb_diff = None):
+	def are_checkup_hash_values_equal(self, tick, cb_diff=None):
 		"""
 		@param packages for tick
 		@param cb_diff: called in case hashes differ
@@ -279,9 +285,9 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id), \
-						pkges[0].checkup_hash, \
-						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id), \
+					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id),
+						pkges[0].checkup_hash,
+						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True
@@ -292,11 +298,14 @@ class MPCheckupHashManager(MPPacketmanager):
 class MPPacket(object):
 	"""Packet to be sent from every player to every player"""
 	def __init__(self, tick, player_id):
+		"""
+		@param player_id: worldid of player
+		"""
 		self.tick = tick
 		self.player_id = player_id
 
 	@classmethod
-	def allow_network(self, klass):
+	def allow_network(cls, klass):
 		"""
 		NOTE: this is a security related method and may lead to
 		execution of arbritary code if used in a wrong way

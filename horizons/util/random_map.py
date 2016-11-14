@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,66 +19,45 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
+import copy
+import hashlib
 import random
-import tempfile
-import sys
 import re
 import string
-import copy
 
-from horizons.util import Circle, Rect, Point, DbReader
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.constants import GROUND
+from horizons.util.shapes import Circle, Point, Rect
 
 # this is how a random island id looks like (used for creation)
-_random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}"
+_random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}:${island_x}:${island_y}"
 
 # you can check for a random island id with this:
-_random_island_id_regexp = r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+)$"
+_random_island_id_regexp = r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+):([\-]?[0-9]+):([\-]?[0-9]+)$"
 
 
-def is_random_island_id_string(id_string):
-	"""Returns whether id_string is an instance of a random island id string"""
-	return bool(re.match(_random_island_id_regexp, id_string))
-
-def create_random_island(id_string):
+def create_random_island(map_db, island_id, id_string):
 	"""Creates a random island as sqlite db.
 	It is rather primitive; it places shapes on the dict.
 	The coordinates of tiles will be 0 <= x < width and 0 <= y < height
 	@param id_string: random island id string
-	@return: sqlite db reader containing island
 	"""
-	# NOTE: the tilesystem will be redone soon, so constants indicating grounds are temporary
-	# here and will have to be changed anyways.
 	match_obj = re.match(_random_island_id_regexp, id_string)
 	assert match_obj
-	creation_method, width, height, seed = [ long(i) for i in match_obj.groups() ]
+	creation_method, width, height, seed, island_x, island_y = [long(i) for i in match_obj.groups()]
+	assert creation_method == 2, 'The only supported island creation method is 2.'
 
 	rand = random.Random(seed)
-
 	map_set = set()
 
-	# TODO: remove support for creation_method 0 and 1 (they have not been used for new maps since 2011-07-24)
-	# creation_method 0 - standard small island for the 3x3 grid
-	# creation_method 1 - large island
-	# creation_method 2 - a number of randomly sized and placed islands
-
 	# place this number of shapes
-	for i in xrange(15 + width * height / 45):
+	for i in xrange(15 + width * height // 45):
 		# place shape determined by shape_id on (x, y)
 		add = True
-		rect_chance = 6
-		if creation_method == 0:
-			shape_id = rand.randint(3, 5)
-		elif creation_method == 1:
-			shape_id = rand.randint(5, 8)
-		elif creation_method == 2:
-			shape_id = rand.randint(2, 8)
-			rect_chance = 29
-			if rand.randint(0, 4) == 0:
-				rect_chance = 13
-				add = False
+		shape_id = rand.randint(2, 8)
+		rect_chance = 29
+		if rand.randint(0, 4) == 0:
+			rect_chance = 13
+			add = False
 
 		shape = None
 		if rand.randint(1, rect_chance) == 1:
@@ -86,22 +65,16 @@ def create_random_island(id_string):
 			if add:
 				x = rand.randint(8, width - 7)
 				y = rand.randint(8, height - 7)
-				if creation_method == 0:
-					shape = Rect.init_from_topleft_and_size(x - 3, y - 3, 5, 5)
-				elif creation_method == 1:
-					shape = Rect.init_from_topleft_and_size(x - 5, y - 5, 8, 8)
-				elif creation_method == 2:
-					shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
 			else:
 				x = rand.randint(0, width)
 				y = rand.randint(0, height)
-				shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
+			shape = Rect.init_from_topleft_and_size(x - 5, y - 5, rand.randint(2, 8), rand.randint(2, 8))
 		else:
-			# use a circle, where radius is determined by shape_id
+			# use a circle such that the radius is determined by shape_id
 			radius = shape_id
 			if not add and rand.randint(0, 6) < 5:
-				x = rand.randint(-radius * 3 / 2, width + radius * 3 / 2)
-				y = rand.randint(-radius * 3 / 2, height + radius * 3 / 2)
+				x = rand.randint(-radius * 3 // 2, width + radius * 3 // 2)
+				y = rand.randint(-radius * 3 // 2, height + radius * 3 // 2)
 				shape = Circle(Point(x, y), shape_id)
 			elif width - radius - 4 >= radius + 3 and height - radius - 4 >= radius + 3:
 				x = rand.randint(radius + 3, width - radius - 4)
@@ -116,22 +89,19 @@ def create_random_island(id_string):
 					map_set.discard(shape_coord)
 
 	# write values to db
-	map_db = DbReader(":memory:")
-	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 	map_db("BEGIN TRANSACTION")
 
 	# add grass tiles
 	for x, y in map_set:
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *GROUND.DEFAULT_LAND)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
 
 	def fill_tiny_spaces(tile):
 		"""Fills 1 tile gulfs and straits with the specified tile
 		@param tile: ground tile to fill with
 		"""
 
-		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-		neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+		neighbors = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		corners = [(-1, -1), (-1, 1)]
 		knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
 		bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
@@ -143,10 +113,10 @@ def create_random_island(id_string):
 			to_fill = set()
 			to_ignore = set()
 			for x, y in edge_set:
-				# ignore the tiles with no empty neighbours
+				# ignore the tiles with no empty neighbors
 				if reduce_edge_set:
 					is_edge = False
-					for x_offset, y_offset in all_neighbours:
+					for x_offset, y_offset in all_neighbors:
 						if (x + x_offset, y + y_offset) not in map_set:
 							is_edge = True
 							break
@@ -154,20 +124,20 @@ def create_random_island(id_string):
 						to_ignore.add((x, y))
 						continue
 
-				for x_offset, y_offset in neighbours:
+				for x_offset, y_offset in neighbors:
 					x2 = x + x_offset
 					y2 = y + y_offset
 					if (x2, y2) in map_set:
 						continue
 					# (x2, y2) is now a point just off the island
 
-					neighbours_dirs = 0
-					for i in xrange(len(neighbours)):
-						x3 = x2 + neighbours[i][0]
-						y3 = y2 + neighbours[i][1]
+					neighbors_dirs = 0
+					for i in xrange(len(neighbors)):
+						x3 = x2 + neighbors[i][0]
+						y3 = y2 + neighbors[i][1]
 						if (x3, y3) not in map_set:
-							neighbours_dirs |= (1 << i)
-					if neighbours_dirs in bad_configs:
+							neighbors_dirs |= (1 << i)
+					if neighbors_dirs in bad_configs:
 						# part of a straight 1 tile gulf
 						to_fill.add((x2, y2))
 					else:
@@ -188,11 +158,11 @@ def create_random_island(id_string):
 					if (x2, y2) not in map_set:
 						continue
 					if abs(x_offset) == 1:
-						y2 = y + y_offset / 2
+						y2 = y + y_offset // 2
 						if (x2, y2) in map_set or (x, y2) in map_set:
 							continue
 					else:
-						x2 = x + x_offset / 2
+						x2 = x + x_offset // 2
 						if (x2, y2) in map_set or (x2, y) in map_set:
 							continue
 					to_fill.add((x2, y2))
@@ -211,7 +181,7 @@ def create_random_island(id_string):
 			if to_fill:
 				for x, y in to_fill:
 					map_set.add((x, y))
-					map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+					map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 
 				old_size = len(edge_set)
 				edge_set = edge_set.difference(to_ignore).union(to_fill)
@@ -255,22 +225,22 @@ def create_random_island(id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.SAND_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.SAND_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.SAND_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.SAND_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.SAND_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.SAND_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.SAND_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.SAND_NORTH
 		# sandy corner
 		elif filled == ['se']:
@@ -294,7 +264,7 @@ def create_random_island(id_string):
 				tile = GROUND.SAND_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 	map_set = map_set.union(outline)
 
 	# add sand to shallow water tiles
@@ -309,22 +279,22 @@ def create_random_island(id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'],['s']]:
 			tile = GROUND.COAST_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.COAST_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.COAST_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.COAST_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.COAST_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.COAST_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.COAST_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.COAST_NORTH
 		# mostly wet corner
 		elif filled == ['se']:
@@ -348,7 +318,7 @@ def create_random_island(id_string):
 				tile = GROUND.COAST_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 	map_set = map_set.union(outline)
 
 	# add shallow water to deep water tiles
@@ -363,22 +333,22 @@ def create_random_island(id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'],['s']]:
 			tile = GROUND.DEEP_WATER_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.DEEP_WATER_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.DEEP_WATER_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.DEEP_WATER_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.DEEP_WATER_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.DEEP_WATER_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.DEEP_WATER_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.DEEP_WATER_NORTH
 		# mostly deep corner
 		elif filled == ['se']:
@@ -402,16 +372,27 @@ def create_random_island(id_string):
 				tile = GROUND.DEEP_WATER_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 
 	map_db("COMMIT")
-	return map_db
 
 def _simplify_seed(seed):
-	"""Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally."""
-	return str(seed).lower().strip()
+	"""
+	Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally.
 
-def generate_map(seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation):
+	This function also makes sure its return value fits into a 32bit integer. That is
+	necessary because otherwise the hash of the value could be different between
+	32 and 64 bit python interpreters. That would cause a map with seed X to be different
+	depending on the platform which we don't want to happen.
+	"""
+
+	seed = str(seed).lower().strip()
+	h = hashlib.md5(seed)
+	h.update(seed)
+	return int('0x' + h.hexdigest(), 16) % 1000000007
+
+def generate_random_map(seed, map_size, water_percent, max_island_size,
+                        preferred_island_size, island_size_deviation):
 	"""
 	Generates a random map.
 
@@ -426,12 +407,12 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 	max_island_size = min(max_island_size, map_size)
 	rand = random.Random(_simplify_seed(seed))
 	min_island_size = 20 # minimum chosen island side length (the real size my be smaller)
-	min_island_separation = 3 + map_size / 100 # minimum distance between two islands
+	min_island_separation = 3 + map_size // 100 # minimum distance between two islands
 	max_island_side_coefficient = 4 # maximum value of island's max(side length) / min(side length)
 
 	islands = []
 	estimated_land = 0
-	max_land_amount = map_size * map_size * (100 - water_percent) / 100
+	max_land_amount = map_size * map_size * (100 - water_percent) // 100
 
 	trial_number = 0
 	while trial_number < 100:
@@ -451,7 +432,7 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 			rect = Rect.init_from_topleft_and_size(x, y, width, height)
 			blocked = False
 			for existing_island in islands:
-				if existing_island.distance_to_rect(rect) < min_island_separation:
+				if existing_island.distance(rect) < min_island_separation:
 					blocked = True
 					break
 			if not blocked:
@@ -459,11 +440,6 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 				estimated_land += size
 				trial_number = 0
 				break
-
-	handle, filename = tempfile.mkstemp()
-	os.close(handle)
-	db = DbReader(filename)
-	read_savegame_template(db)
 
 	# move some of the islands to stretch the map to the right size
 	if len(islands) > 1:
@@ -485,13 +461,40 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 		shift = map_size - max_right - 1
 		islands[islands.index(rect)] = Rect.init_from_borders(rect.left + shift, rect.top, rect.right + shift, rect.bottom)
 
+	island_strings = []
 	for rect in islands:
-		island_seed = rand.randint(-sys.maxint, sys.maxint)
-		island_params = {'creation_method': 2, 'seed': island_seed, 'width': rect.width, 'height': rect.height}
+		# The bounds must be platform independent to make sure the same maps are generated on all platforms.
+		island_seed = rand.randint(-2147483648, 2147483647)
+		island_params = {'creation_method': 2, 'seed': island_seed, 'width': rect.width,
+						 'height': rect.height, 'island_x': rect.left, 'island_y': rect.top}
 		island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
-		db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", rect.left, rect.top, island_string)
+		island_strings.append(island_string)
+	return island_strings
 
-	return filename
+def generate_random_seed(seed):
+	rand = random.Random(seed)
+	if rand.randint(0, 1) == 0:
+		# generate a random string of 1-5 letters a-z with a dash if there are 4 or more letters
+		seq = ''
+		for i in xrange(rand.randint(1, 5)):
+			seq += chr(97 + rand.randint(0, 25))
+		if len(seq) > 3:
+			split = rand.randint(2, len(seq) - 2)
+			seq = seq[:split] + '-' + seq[split:]
+		return unicode(seq)
+	else:
+		# generate a numeric seed
+		fields = rand.randint(1, 3)
+		if fields == 1:
+			# generate a five digit integer
+			return unicode(rand.randint(10000, 99999))
+		else:
+			# generate a sequence of 2 or 3 dash separated fields of integers 10-9999
+			parts = []
+			for i in xrange(fields):
+				power = rand.randint(1, 3)
+				parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
+			return unicode('-'.join(parts))
 
 def generate_map_from_seed(seed):
 	"""
@@ -501,8 +504,8 @@ def generate_map_from_seed(seed):
 	@return: filename of the SQLite database containing the map
 	"""
 
-	return generate_map(seed, 150, 50, 70, 70, 30)
+	return generate_random_map(seed, 150, 50, 70, 70, 30)
 
 def generate_huge_map_from_seed(seed):
 	"""Same as generate_map_from_seed, but making it as big as it is still reasonable"""
-	return generate_map(seed, 250, 20, 70, 70, 5)
+	return generate_random_map(seed, 250, 20, 70, 70, 5)

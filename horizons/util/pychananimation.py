@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,19 +21,22 @@
 
 import os
 import os.path
-import fnmatch
+import re
 
 from horizons.extscheduler import ExtScheduler
+
 
 class PychanAnimation(object):
 	"""Displays images in short succession in a pychan icon."""
 
 	def __init__(self, icon, directory):
-		assert icon
 		self.icon = icon
-		self.files = sorted(( os.path.join(directory, filename) for
-		                      filename in os.listdir( directory ) if
-		                      fnmatch.fnmatch(filename, "*.png") ))
+		files = [os.path.join(directory, filename)
+		         for filename in os.listdir(directory)
+		         if filename.endswith('.png')]
+		def find_int(f):
+			return int(re.search(r'\d+', os.path.basename(f)).group())
+		self.files = sorted(files, key=find_int)
 		self.cur = -1
 
 	def start(self, interval, loops):
@@ -55,6 +58,4 @@ class PychanAnimation(object):
 		# so that the user knows this is a button and now an image
 		for img in ('image', 'up_image', 'down_image'):
 			if hasattr(self.icon, img):
-				setattr(self.icon, img, self.files[ self.cur ])
-
-
+				setattr(self.icon, img, self.files[self.cur])

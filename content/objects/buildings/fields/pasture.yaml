@@ -1,0 +1,29 @@
+id: BUILDINGS.PASTURE
+name: _ Pasture
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Raises sheep. Produces wool. Needs a farm.
+tier: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 100, RES.BOARDS: 1}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      WOOL:
+        produces:
+        - [RES.LAMB_WOOL, 1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.GRASS: 10, RES.LAMB_WOOL: 1}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/sheepfield.ogg]
+actionsets:
+  TIER.PIONEERS:
+    as_pasture0:

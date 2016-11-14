@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,24 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.constants import RES, BUILDINGS
-from horizons.util.python import decorators
+from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
+from horizons.util.python import decorators
+from horizons.util.shapes import Rect
+
 
 class AbstractVillageBuilding(AbstractBuilding):
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.FAITH_ID:
-			return BUILDING_PURPOSE.PAVILION
-		elif resource_id == RES.EDUCATION_ID:
-			return BUILDING_PURPOSE.VILLAGE_SCHOOL
-		elif resource_id == RES.GET_TOGETHER_ID:
-			return BUILDING_PURPOSE.TAVERN
-		elif resource_id == RES.COMMUNITY_ID:
-			return BUILDING_PURPOSE.MAIN_SQUARE
-		return None
+		return {
+			RES.FAITH:        BUILDING_PURPOSE.PAVILION,
+			RES.EDUCATION:    BUILDING_PURPOSE.VILLAGE_SCHOOL,
+			RES.GET_TOGETHER: BUILDING_PURPOSE.TAVERN,
+			RES.COMMUNITY:    BUILDING_PURPOSE.MAIN_SQUARE,
+		}.get(resource_id)
 
 	def in_settlement(self, settlement_manager, position):
 		for coords in position.tuple_iter():
@@ -62,6 +62,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 	def build(self, settlement_manager, resource_id):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
+		building_id = BUILDING_PURPOSE.get_building(building_purpose)
+		building_class = Entities.buildings[building_id]
 
 		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
 			if section > village_builder.current_section or purpose != building_purpose:
@@ -75,15 +77,14 @@ class AbstractVillageBuilding(AbstractBuilding):
 				if not self._need_producer(settlement_manager, coords, resource_id):
 					continue
 
-			builder = village_builder.make_builder(BUILDING_PURPOSE.get_building(purpose), coords[0], coords[1], False)
-			if not builder.have_resources():
+			if not village_builder.have_resources(building_id):
 				return (BUILD_RESULT.NEED_RESOURCES, None)
-			if not self.in_settlement(settlement_manager, builder.position):
-				return (BUILD_RESULT.OUT_OF_SETTLEMENT, builder.position)
+			if coords not in village_builder.settlement.buildability_cache.cache[building_class.size]:
+				position = Rect.init_from_topleft_and_size_tuples(coords, building_class.size)
+				return (BUILD_RESULT.OUT_OF_SETTLEMENT, position)
 
-			building = builder.execute()
-			if not building:
-				return (BUILD_RESULT.UNKNOWN_ERROR, None)
+			building = BasicBuilder(building_id, coords, 0).execute(settlement_manager.land_manager)
+			assert building
 			if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not village_builder.roads_built:
 				village_builder.build_roads()
 			return (BUILD_RESULT.OK, building)
@@ -112,16 +113,16 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 	def _get_producer_building(self):
 		# TODO: remove this hack; introduced to battle the community Production moving from main squares to the warehouse
-		if self.id == BUILDINGS.MAIN_SQUARE_CLASS:
-			return Entities.buildings[BUILDINGS.WAREHOUSE_CLASS]
+		if self.id == BUILDINGS.MAIN_SQUARE:
+			return Entities.buildings[BUILDINGS.WAREHOUSE]
 		return super(AbstractVillageBuilding, self)._get_producer_building()
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.MAIN_SQUARE_CLASS] = cls
-		cls._available_buildings[BUILDINGS.PAVILION_CLASS] = cls
-		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS] = cls
-		cls._available_buildings[BUILDINGS.TAVERN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.MAIN_SQUARE] = cls
+		cls._available_buildings[BUILDINGS.PAVILION] = cls
+		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL] = cls
+		cls._available_buildings[BUILDINGS.TAVERN] = cls
 
 AbstractVillageBuilding.register_buildings()
 

@@ -1,0 +1,130 @@
+\chapter{Introduction}
+
+I have the pleasure to present you the current state of our combat AI, which is the area I've been working on over the last few months. 
+My main goal over that time was to bring some more challenge and fun to single-player mode by extending the current great AI (written by gscai over the last summer) to pick up and handle combat.
+Introduction
+
+Modeling reasoning is always a tricky task, and there's probably no "right" way to do it. 
+It wasn't different this time - the general scheme on which combat AI bases its reasoning may not be the most straightforward, but it was made with the intention to ease the process of adding new knowledge to the whole concept later.
+
+The emphasis on creating an easy to extend AI was a big priority; here's why:
+
+Artificial intelligence in games rarely resembles academic approaches to solving problems by machines. 
+The main difference is the absence of any self-learning abilities. 
+Although it would be very easy to gather required samples of data for a training set, game AI very often relies only on knowledge passed by an AI programmer. 
+Since we couldn't rely on self-learning here, every new feature in the project would have to be accompanied by hours of coding time to add/extend/fix AI in order for it to keep up with the changes. 
+Allowing for easy extension of AI would make this task easier and faster.
+General approach
+
+If someone were to ask me to give out the most general idea that describes how combat is handled, it would be something like this:
+
+    Scan the world for certain situations that fall close to combat/strategy/diplomacy.
+    Respond to given situation by taking appropriate action
+
+If I was additionally asked to implement it in under 500 lines of python code, I'd probably implement two kind of components here:
+
+    Situation detectors
+    Situation handlers
+
+Former would evaluate as True or False. 
+In case of a match (True) it would spawn a corresponding situation handler to a given world state. 
+The situation handler's job would be to move ships, change diplomacy settings, attack other ships etc. 
+Of course this is just an abstract idea behind what I tried to achieve, yet there are few components that share a very similar approach to what was mentioned above:
+
+
+CombatManager and StrategyManager (Situation detectors) along with BehaviorManager (Situation Handler) - more on each component later, in the next part of my Combat AI update.
+
+Cheers.
+
+# PART 2 
+
+
+
+Hello again!
+
+Welcome to the second part of my Combat AI update. In case you missed it, first part of the update can be found here: Combat AI Update part 1
+
+Let's start by looking at a diagram showing the basic relationship between the 3 main components in the Combat AI module: StrategyManager, CombatManager and BehaviorManager.
+
+What they do is work side by side for each AI player, sometimes communicating with each other when required.
+
+CombatManager is responsible for handling groups of ships during short outbursts of combat. The abstract idea of detection/handling applies here as well since every group of ships scans the area around them and looks for enemy units: pirates, frigates and even trade ships. Once it spots a certain type of unit, it proceeds to handle combat.
+
+StrategyManager follows the proposed general combat AI idea more closely. Its purpose is to iterate over a collection of predefined Conditions, that scan the game's current state for certain scenarios. 
+Every condition is checked, and in case where it occurs, it is added to the list of possible conditions. 
+Each condition has a priority attached to it, so when many conditions apply at once (as it is often the case), only the most important one is resolved. 
+Trying to resolve many conditions at once (e.g. top 3) could end up not working so well. 
+Certain conditions evaluating as True could have a common cause - a scenario we don't necessarily check for - thus we would end up overreacting based on corelated data. 
+StrategyManager is not really a detector on its own. 
+It's composed of Conditions which - according to our abstract model - are the actual Situation detectors.
+
+Notice that each component operates on a different scope with a different frequency:
+
+    CombatManager scans the area around each group of ships within a very short range. This check has to be executed quite frequently.
+    StrategyManager scans the whole map and game state, looking for certain conditions to occur. 
+	Currently it is executed 4 times less frequently than a CombatManager's loop.
+
+What we've covered so far was Situation detectors for both of the components. 
+To make things interesting we decided beforehand to introduce some sort of "Personality" feature along with combat AI.
+
+In theory we would like to have a component that is composed of small, replaceable knowledge-blocks that can respond to certain game situations. 
+The replaceability of small parts of component's reasoning is where the real power lies. 
+The AI programmer no longer has to read the whole AI code and think where the new kind of feature (not yet recognized by AI) would fit well.
+
+BehaviorManager plays the main role, while BehaviorComponents are small "building-blocks" that create the whole reasoning. 
+Notice that I didn't give out details on how CombatManager and StategyManager's Conditions resolve given situation in game. 
+Well, here it is: All they do is pass certain request of action to BehaviorManager, e.g. "pirate_ships_in_sight" or "player_shares_settlement" (called when StrategyManager notices that AI has to share an island with another player - a classical scenario for a war). 
+Once that is done, BehaviorManager asks its BehaviorComponents whether any of them would be interested in resolving the given case. 
+Very often more than one component is able to respond to given scenario - in that case it is resolved by predefined probability value and calculated "likelihood of success" by each Component.
+
+It is worth noting that with such hierarchy we are able to model different profiles of behavior, e.g. very aggressive, risk taking players, or a cautious, defensive ones.
+
+And that would be it for Combat AI Update part 2. 
+See you later in the last (I promise) part 3!
+
+Cheers.
+
+# PART 3 
+
+Hello everyone!
+Welcome back to the last part of my combat AI update. I hope you've enjoyed it so far.
+I already talked briefly about the need to have some sort o communication between the two main situation detectors - CombatManager and StrategyManager. 
+After all, both of the components indirectly operate on the same set of ships. 
+We had to make sure that they don't accidentally step on each other's toes. 
+Again, there's more than one way to do this, here's what seems to work well:
+Let's first introduce states each ship can take:
+
+    'idle'
+    'on_a_mission'
+
+Idle ships are handled by CombatManager, so any free wandering pirate that is hostile, will be attacked by an idle ship (thanks to CombatManager). 
+Ships on a mission are usually already being taken care of by StrategyManager, so it's worth noting who has the upper hand in case of idle ships:
+We assume StrategyManager is privileged to any idle ship, so he can create missions and use said ships to form a fleet. 
+In that case CombatManager can no longer use them.
+CombatManager's work isn't done here. It scans the environment around ships on a mission as well, but he can't take action directly. 
+What he does is request StrategyManager to pause given mission. 
+This way we assure that our fleet isn't indifferent to enemies shooting at it, just because StrategyManager decided to send it on a peaceful scouting trip. 
+In order to make pausing possible we had to model every mission as a finite state machine (I had it easy since gscai's did that last year). 
+Which later proved to be useful when writing saving/loading for each mission.
+
+Example scenario
+Let's look at the scenario below:
+Two AI players (AI-1 - red, AI-2 - blue) share the same island. 
+StrategyManager checks for such conditions, so as soon as any ships are available, it will create a mission to attack the enemy.
+Circles around each fleet (in this case single ships) is the range in which CombatManager "sees" things. 
+Each player does not notice each other just yet.
+After a while, ships get close enough for CombatManager's to take the handles. 
+Notice that the ship on the right reacted first - it is because CombatManager does not scan the world every game tick, but every N ticks. 
+To avoid lag spikes, CombatManagers are desynchronized, thus red player happened to respond earlier.
+Since ships were on a mission, each CombatManager has to request StrategManager to pause current mission in order to resolve unexpected combat along the way.
+Both StrategyManagers agree to pause the mission, the combat begins.
+Combat ends when CombatManager can't see any ships around anymore (i.e. enemy fled, or was destroyed). 
+In this case blue player won the skirmish. 
+Mission is resumed to previous state for AI-2 and canceled for AI-1 since all of the fleet ships were destroyed. 
+AI-2 continues the mission.
+Summary
+Currently the whole architecture and communication between components is done. 
+Early on I divided my work into modeling flow, Component's interface etc., and the real AI work which is putting knowledge into the whole system.
+Currently I'm working on new Conditions and BehaviorComponents to make things more interesting.
+I can't wait to have it merged eventually and get your feedback ;)
+Bye!

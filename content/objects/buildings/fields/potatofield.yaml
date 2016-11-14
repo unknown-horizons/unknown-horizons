@@ -1,0 +1,27 @@
+id: BUILDINGS.POTATO_FIELD
+name: _ Potato Field
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Yields food. Needs a farm.
+tier: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      POTATOES:
+        produces:
+        - [RES.POTATOES, 1]
+        time: 26
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.POTATOES: 1}
+actionsets:
+  TIER.PIONEERS:
+    as_potatofield0:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,11 @@
 
 import logging
 
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.command.production import AddProduction
+from horizons.constants import BUILDINGS, PRODUCTIONLINES
+from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
+
 
 class UnitBuilder(object):
 	"""An object of this class builds the units of one player."""
@@ -39,7 +40,7 @@ class UnitBuilder(object):
 		"""Return a list of all boat builders owned by the player."""
 		result = [] # [building, ...]
 		for settlement_manager in self.owner.settlement_managers:
-			result.extend(settlement_manager.settlement.buildings_by_id.get(BUILDINGS.BOATBUILDER_CLASS, []))
+			result.extend(settlement_manager.settlement.buildings_by_id.get(BUILDINGS.BOAT_BUILDER, []))
 		return result
 
 	def build_ship(self):
@@ -48,7 +49,15 @@ class UnitBuilder(object):
 		AddProduction(boat_builder.get_component(Producer), PRODUCTIONLINES.HUKER).execute(self.owner.session)
 		production = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.HUKER)
 		production.add_production_finished_listener(self._ship_built)
-		self.log.info('%s started building a ship', self)
+		self.log.info('%s started building trading ship', self)
+
+	def build_combat_ship(self):
+		"""Build a new frigate ship"""
+		boat_builder = self._get_boat_builders()[0]
+		AddProduction(boat_builder.get_component(Producer), PRODUCTIONLINES.FRIGATE).execute(self.owner.session)
+		production = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.FRIGATE)
+		production.add_production_finished_listener(self._ship_built)
+		self.log.info('%s started building combat ship', self)
 
 	def _ship_built(self, production):
 		"""Called when a new ship has been built."""

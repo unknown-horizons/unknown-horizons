@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,13 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
-from mission.specialdomestictrade import SpecialDomesticTrade
+from horizons.component.storagecomponent import StorageComponent
 from horizons.util.python import decorators
-from horizons.world.component.storagecomponent import StorageComponent
+
+from .mission.specialdomestictrade import SpecialDomesticTrade
+
 
 class SpecialDomesticTradeManager(object):
 	"""
@@ -74,7 +75,7 @@ class SpecialDomesticTradeManager(object):
 			#self.log.info('%s no available ships', self)
 			return
 
-		options = defaultdict(lambda: [])
+		options = defaultdict(list)
 		# try to set up a new route where the first settlement gets an extra shipment of a resource from the second settlement
 		for source_settlement_manager in self.owner.settlement_managers:
 			for destination_settlement_manager in self.owner.settlement_managers:
@@ -93,7 +94,7 @@ class SpecialDomesticTradeManager(object):
 						continue # the source settlement doesn't have a surplus of the resource
 
 					price = self.session.db.get_res_value(resource_id)
-					tradable_amount = min(ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
+					tradable_amount = min(ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id],
 						source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
 					options[(source_settlement_manager, destination_settlement_manager)].append((tradable_amount * price, tradable_amount, price, resource_id))
 

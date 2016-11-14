@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,16 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import time
 import heapq
+import time
 
-from horizons.util import ManualConstructionSingleton, Callback
+from horizons.util.python.singleton import ManualConstructionSingleton
 
 
 class _ExtCallbackObject(object):
 	"""Class used by the ExtScheduler Class to organize callbacks."""
 
-	def __init__(self,  callback, class_instance, run_in=1, loops=1):
+	def __init__(self, callback, class_instance, run_in=1, loops=1):
 		"""Creates the CallbackObject instance.
 		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the original function(not the lambda function!) belongs to.
@@ -39,7 +39,6 @@ class _ExtCallbackObject(object):
 		self.class_instance = class_instance
 		self.run_in = run_in
 		self.loops = loops
-
 
 	def __str__(self):
 		return "ExtSchedCb(%s on %s)" % (self.callback, self.class_instance)
@@ -78,7 +77,7 @@ class ExtScheduler(object):
 
 	def add_object(self, obj):
 		"""Adds a new CallbackObject instance to the callbacks list
-		@param object: CallbackObject type object, containing all necessary  information
+		@param object: CallbackObject type object, containing all necessary information
 		"""
 		if obj.loops > 0:
 			obj.loops -= 1
@@ -99,7 +98,7 @@ class ExtScheduler(object):
 		@return: number of removed callbacks"""
 		for tup in self.schedule:
 			if tup[1].class_instance is class_instance:
-				# don't destory heap
+				# don't destroy heap
 				tup[1] = self.__class__.NOOP
 
 	def rem_call(self, instance, callback):
@@ -109,11 +108,10 @@ class ExtScheduler(object):
 		"""
 		for tup in self.schedule:
 			if tup[1].class_instance is instance and tup[1].callback == callback:
-				# don't destory heap
+				# don't destroy heap
 				tup[1] = self.__class__.NOOP
 
 	def __del__(self):
 		self.schedule = []
 		self.pump.remove(self.tick)
 		self.pump = None
-

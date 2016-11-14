@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 	<VBox max_size="695,388" min_size="695,388" padding="5" name="ships_list">
 		<HBox>
-			<Label name="headline" text="" min_size="300,20" />
+			<Label name="headline" min_size="300,20" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 
 		<VBox max_size="650,20">
 			<HBox>
-				<Label min_size="15,20" name="sequence_number" text="" />
+				<Label min_size="15,20" name="sequence_number" />
 				<Label min_size="122,20" name="ship_name" text="Name" />
 				<Label min_size="60,20" name="ship_type" text="Type" />
 				<Label min_size="60,20" name="weapons" text="Weapons" />
@@ -16,7 +16,7 @@
 			</HBox>
 		</VBox>
 
-		<ScrollArea background_color="255,255,255,0" min_size="650,300">
+		<ScrollArea min_size="650,300" max_size="650,300">
 			<VBox name="content_vbox" />
 		</ScrollArea>
 <!--

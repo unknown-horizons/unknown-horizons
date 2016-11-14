@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,15 +35,16 @@ Storages with certain properties:
 Combinations:
 - SizedSlottedStorage: One limit, each res value must be <= the limit and >= 0.
 - PositiveTotalStorage: use case: ship inventory
-- PositiveSizedSlotStorage: every res has the same limit, only positive values (warehouse)
+- PositiveSizedSlotStorage: every res has the same limit, only positive values (warehouse, collectors)
 - PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
 """
 
-import sys
 import copy
+import sys
 from collections import defaultdict
 
-from horizons.util import ChangeListener
+from horizons.util.changelistener import ChangeListener
+
 
 class GenericStorage(ChangeListener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
@@ -53,7 +54,7 @@ class GenericStorage(ChangeListener):
 	"""
 	def __init__(self):
 		super(GenericStorage, self).__init__()
-		self._storage = defaultdict(lambda : 0)
+		self._storage = defaultdict(int)
 
 	def save(self, db, ownerid):
 		for slot in self._storage.iteritems():
@@ -73,12 +74,12 @@ class GenericStorage(ChangeListener):
 		@param amount: int amount that is to be changed. Can be negative to remove resources.
 		@return: int - amount that did not fit or was not available, depending on context.
 		"""
-		self._storage[res] += amount
+		self._storage[res] += amount # defaultdict
 		self._changed()
 		return 0
 
 	def reset(self, res):
-		"""Resets a resource slot to zero, removing all it's contents."""
+		"""Resets a resource slot to zero, removing all its contents."""
 		if res in self._storage:
 			self._storage[res] = 0
 			self._changed()
@@ -90,9 +91,9 @@ class GenericStorage(ChangeListener):
 		self._changed()
 
 	def get_limit(self, res=None):
-		"""Returns the current limit of the storage. Please not that this value can have
-		different meanings depending on the context. See the storage descriptions on what
-		the value does.
+		"""Returns the current limit of the storage. Please note that this
+		value can have different meanings depending on the context. See the
+		storage descriptions on what the value does in each case.
 		@param res: int res that the limit should be returned for.
 		@return: int
 		"""
@@ -110,9 +111,12 @@ class GenericStorage(ChangeListener):
 		return copy.deepcopy(self._storage)
 
 	def __getitem__(self, res):
-		return self._storage[res] if res in self._storage else 0
+		return self._storage.get(res, 0)
 
-	def __iter__(self):
+	def iterslots(self):
+		return self._storage.iterkeys()
+
+	def itercontents(self):
 		return self._storage.iteritems()
 
 	def __str__(self):
@@ -137,9 +141,8 @@ class SpecializedStorage(GenericStorage):
 
 class SizedSpecializedStorage(SpecializedStorage):
 	"""Just like SpecializedStorage, but each res has an own limit.
-	Can take a dict {res: size, res2: size2} to init slots
+	Can take a dict {res: size, res2: size2, ...} to init slots
 	"""
-
 	def __init__(self, slot_sizes=None):
 		super(SizedSpecializedStorage, self).__init__()
 		slot_sizes = slot_sizes or {}
@@ -149,53 +152,40 @@ class SizedSpecializedStorage(SpecializedStorage):
 
 	def alter(self, res, amount):
 		if not self.has_resource_slot(res):
+			# TODO: this is also checked in the super class, refactor one of them away
 			return amount
 
-		storeable_amount = self.get_free_space_for(res)
-		if amount > storeable_amount: # tried to store more than limit allows
-			ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
-			return (amount - storeable_amount ) + ret
+		if amount > 0: # can only reach limit if > 0
+			storeable_amount = self.get_free_space_for(res)
+			if amount > storeable_amount: # tried to store more than limit allows
+				ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
+				return (amount - storeable_amount ) + ret
 
 		# no limit breach, just propagate call
 		return super(SizedSpecializedStorage, self).alter(res, amount)
 
 	def get_limit(self, res):
-		if res in self.__slot_limits:
-			return self.__slot_limits[res]
-		else:
-			return 0
+		return self.__slot_limits.get(res, 0)
 
 	def add_resource_slot(self, res, size):
-		"""Add a resource slot for res for the size size.
-		If the slot already exists, just update it's size to size."""
+		"""Add a resource slot for res that can hold at most *size* units.
+		If the slot already exists, just update its size to *size*.
+		NOTE: THIS IS NOT SAVE/LOADED HERE. It must be restored manually."""
 		super(SizedSpecializedStorage, self).add_resource_slot(res)
 		assert size >= 0
 		self.__slot_limits[res] = size
 
-	def change_resource_slot_size(self, res, size_diff):
-		"""Changes the amount that can be stored of a certain res slot.
-		A slot for the specified resource has to exist.
-		@param res: resource id
-		@param size_diff: difference to new slot size"""
-		self.__slot_limits[res] += size_diff
-		assert self.__slot_limits[res] >= 0
-
 	def save(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
 		assert len(self._storage) == len(self.__slot_limits) # we have to have limits for each res
-		for res in self._storage:
-			assert res in self.__slot_limits
-			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)", \
-			   ownerid, res, self.__slot_limits[res])
 
 	def load(self, db, ownerid):
 		super(SizedSpecializedStorage, self).load(db, ownerid)
-		for res in self._storage:
-			self.__slot_limits[res] = db.get_storage_slot_limit(ownerid, res)
 
 class GlobalLimitStorage(GenericStorage):
-	"""Storage with some kind of global limit. This limit has to be interpreted in the subclass,
-	it has not predefined meaning here. (This class is used for infrastructure, such as save/load for the limit)"""
+	"""Storage with some kind of global limit. This limit has to be
+	interpreted in the subclass, it has no predefined meaning here.
+	This class is used for infrastructure, such as save/load for the limit."""
 	def __init__(self, limit):
 		super(GlobalLimitStorage, self).__init__()
 		self.limit = limit
@@ -237,7 +227,7 @@ class TotalStorage(GlobalLimitStorage):
 		super(TotalStorage, self).__init__(limit)
 
 	def alter(self, res, amount):
-		check =  max(0, amount + self.get_sum_of_stored_resources() - self.limit)
+		check = max(0, amount + self.get_sum_of_stored_resources() - self.limit)
 		return check + super(TotalStorage, self).alter(res, amount - check)
 
 	def get_free_space_for(self, res):
@@ -304,9 +294,9 @@ class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass
 
 class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
-	"""A storage consisting of a number of slots, all slots have the same size 'limit'
-	Used by ship (huker) for example. So with a limit of 50 and a slot num of 4 you could have a max of 50
-	from each resource and only slotnum resources."""
+	"""A storage consisting of a number of slots, all slots have the same size 'limit'.
+	Used by ships for example. With a limit of 50 and a slot num of 4, you
+	could have a max of 50 from each resource and only slotnum resources."""
 	def __init__(self, limit, slotnum):
 		super(PositiveSizedNumSlotStorage, self).__init__(limit)
 		self.slotnum = slotnum

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from keyconfig import KeyConfig
+from .keyconfig import KeyConfig
 
-from mainlistener import MainListener
-from ingamekeylistener import IngameKeyListener
-
+from .mainlistener import MainListener
+from .ingamekeylistener import IngameKeyListener

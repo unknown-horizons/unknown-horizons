@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,16 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import mock
+
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
-from horizons.world.production.producer import Producer
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
-from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
-from horizons.util.messaging.message import AddStatusIcon
+from horizons.messaging import AddStatusIcon
+from horizons.world.production.producer import Producer
+from horizons.world.status import (
+	DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus, SettlerUnhappyStatus)
+from tests.game import game_test, settle
 
-import mock
-from tests.game import settle, game_test
 
 def assert_called_with_icon(cb, icon):
 	assert cb.called
@@ -36,14 +38,21 @@ def assert_called_with_icon(cb, icon):
 	assert cb.call_args[0][0].icon.__class__ == icon
 
 
-@game_test
+@game_test()
+def test_addstatusicon_queue_emptied(session, player):
+	AddStatusIcon.clear()
+
+	assert not AddStatusIcon.queue_len()
+
+
+@game_test()
 def test_productivity_low(session, player):
 	settlement, island = settle(session)
 
-	Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 30, 30, island, settlement=settlement)(player)
+	Build(BUILDINGS.CHARCOAL_BURNER, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	# Not yet low
 	assert not cb.called
@@ -53,33 +62,34 @@ def test_productivity_low(session, player):
 	# Now low
 	assert_called_with_icon(cb, ProductivityLowStatus)
 
-@game_test
+
+@game_test()
 def test_settler_unhappy(session, player):
 	settlement, island = settle(session)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
-	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(player)
+	settler = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(player)
 
 	# certainly not unhappy
 	assert settler.happiness > 0.45
 	assert not cb.called
 
 	# make it unhappy
-	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, -settler.happiness)
+	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, -settler.happiness)
 	assert settler.happiness < 0.1
 	assert_called_with_icon(cb, SettlerUnhappyStatus)
 
 
-@game_test
+@game_test()
 def test_decommissioned(session, player):
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	assert not cb.called
 
@@ -87,20 +97,21 @@ def test_decommissioned(session, player):
 
 	assert_called_with_icon(cb, DecommissionedStatus)
 
-@game_test
+
+@game_test()
 def test_inventory_full(session, player):
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	# Not full
 	assert not cb.called
 
 	inv = lj.get_component(StorageComponent).inventory
-	res = RES.BOARDS_ID
+	res = RES.BOARDS
 	inv.alter(res, inv.get_free_space_for( res ) )
 
 	session.run(seconds=1)

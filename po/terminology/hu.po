@@ -1,0 +1,1162 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2012-04-14 21:01+0200\n"
+"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
+
+msgid "game"
+msgstr "játék"
+
+msgid "building"
+msgstr "épület"
+
+msgid "build"
+msgstr "építés"
+
+msgid "player"
+msgstr ""
+
+msgid "settlement"
+msgstr "gyarmat"
+
+msgid "ship"
+msgstr "hajó"
+
+msgid "tent"
+msgstr "sátor"
+
+msgid "farm"
+msgstr "tanya"
+
+msgid "map"
+msgstr "térkép"
+
+msgid "resource"
+msgstr "nyersanyag"
+
+msgid "warehouse"
+msgstr "raktárház"
+
+msgid "inhabitants"
+msgstr "lakosok"
+
+msgid "change"
+msgstr "változtat"
+
+msgid "unknown"
+msgstr "ismeretlen"
+
+msgid "produce"
+msgstr "termel"
+
+msgid "no"
+msgstr "nem"
+
+msgid "trade"
+msgstr "kereskedelem"
+
+msgid "check"
+msgstr "ellenőrzés"
+
+msgid "field"
+msgstr "mező"
+
+msgid "main"
+msgstr "fő"
+
+msgid "buy"
+msgstr "vásárol"
+
+msgid "click"
+msgstr "klikk"
+
+msgid "left"
+msgstr "bal"
+
+msgid "overview"
+msgstr "áttekintés"
+
+msgid "running"
+msgstr "futás"
+
+msgid "square"
+msgstr ""
+
+msgid "lumberjack"
+msgstr "favágó"
+
+msgid "unable"
+msgstr "képtelen"
+
+msgid "continue"
+msgstr "folytatás"
+
+msgid "main square"
+msgstr "főtér"
+
+msgid "production"
+msgstr "termelés"
+
+msgid "sailors"
+msgstr "tengerészek"
+
+msgid "sell"
+msgstr "elad"
+
+msgid "storage"
+msgstr "raktár"
+
+msgid "contact"
+msgstr "kapcsolat"
+
+msgid "house"
+msgstr "ház"
+
+msgid "menu"
+msgstr "menü"
+
+msgid "tab"
+msgstr "fül"
+
+msgid "close"
+msgstr "bezár"
+
+msgid "food"
+msgstr "étel"
+
+msgid "free"
+msgstr "szabad"
+
+msgid "ready"
+msgstr ""
+
+msgid "setting"
+msgstr "beállítás"
+
+msgid "start"
+msgstr "kezdés"
+
+msgid "time"
+msgstr "idő"
+
+msgid "trader"
+msgstr "kereskedő"
+
+msgid "unit"
+msgstr "egység"
+
+msgid "version"
+msgstr "verzió"
+
+msgid "fire"
+msgstr "tűz"
+
+msgid "island"
+msgstr "sziget"
+
+msgid "select"
+msgstr "választás"
+
+msgid "slot"
+msgstr "egység"
+
+msgid "stock"
+msgstr "készlet"
+
+msgid "upgrade"
+msgstr "fejlesztés"
+
+msgid "coast"
+msgstr "part"
+
+msgid "color"
+msgstr ""
+
+msgid "companies"
+msgstr "vállalatok"
+
+msgid "file"
+msgstr ""
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "kulcs"
+
+msgid "taxes"
+msgstr "adók"
+
+msgid "collector"
+msgstr "begyűjtő"
+
+msgid "connection"
+msgstr "kapcsolódás"
+
+msgid "log"
+msgstr "napló"
+
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr "lakos"
+
+msgid "wool"
+msgstr "gyapjú"
+
+msgid "boards"
+msgstr "táblák"
+
+msgid "built"
+msgstr "épült"
+
+msgid "button"
+msgstr "gomb"
+
+msgid "choose"
+msgstr "választás"
+
+msgid "connect"
+msgstr "kapcsolódás"
+
+msgid "cost"
+msgstr "ár"
+
+msgid "happiness"
+msgstr "boldogság"
+
+msgid "road"
+msgstr "út"
+
+msgid "save"
+msgstr "mentés"
+
+msgid "tree"
+msgstr "fa"
+
+msgid "amount"
+msgstr "mennyiség"
+
+msgid "reach"
+msgstr "elér"
+
+msgid "size"
+msgstr ""
+
+msgid "add"
+msgstr "hozzáadás"
+
+msgid "fisher"
+msgstr "halász"
+
+msgid "free trader"
+msgstr "szabad kereskedő"
+
+msgid "in stock"
+msgstr "raktáron"
+
+msgid "increase"
+msgstr "növekedés"
+
+msgid "mode"
+msgstr "mód"
+
+msgid "password"
+msgstr ""
+
+msgid "pasture"
+msgstr "legelő"
+
+msgid "range"
+msgstr "távolság"
+
+msgid "signal"
+msgstr "jelzés"
+
+msgid "speed"
+msgstr "sebesség"
+
+msgid "sugar"
+msgstr "cukor"
+
+msgid "access"
+msgstr "hozzáférés"
+
+msgid "build menu"
+msgstr "építési menü"
+
+msgid "confectionery"
+msgstr "cukrászat"
+
+msgid "enabled"
+msgstr "engedélyezett"
+
+msgid "fetch"
+msgstr ""
+
+msgid "help"
+msgstr "súgó"
+
+msgid "income"
+msgstr "bevétel"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "szint"
+
+msgid "move"
+msgstr "mozgás"
+
+msgid "multiple"
+msgstr "több"
+
+msgid "please check"
+msgstr ""
+
+msgid "potato"
+msgstr "paradicsom"
+
+msgid "settler"
+msgstr "gyarmatos"
+
+msgid "total"
+msgstr "teljes"
+
+msgid "construction"
+msgstr "építés"
+
+msgid "creator"
+msgstr ""
+
+msgid "faith"
+msgstr "gyűlölet"
+
+msgid "hold"
+msgstr "tart"
+
+msgid "icon"
+msgstr ""
+
+msgid "lamb"
+msgstr "bárány"
+
+msgid "leave"
+msgstr "elhagy"
+
+msgid "location"
+msgstr "helyzet"
+
+msgid "multiple buildings"
+msgstr ""
+
+msgid "pioneers"
+msgstr "telepesek"
+
+msgid "reached"
+msgstr "elérve"
+
+msgid "run"
+msgstr "futás"
+
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
+msgid "slider"
+msgstr "csúszka"
+
+msgid "space"
+msgstr "hely"
+
+msgid "storage tent"
+msgstr "raktár sátor"
+
+msgid "target"
+msgstr "cél"
+
+msgid "terminated"
+msgstr ""
+
+msgid "tools"
+msgstr "eszközök"
+
+msgid "account"
+msgstr "fiók"
+
+msgid "active"
+msgstr "aktív"
+
+msgid "afford"
+msgstr "nyújt"
+
+msgid "animals"
+msgstr "állatok"
+
+msgid "Captain's log"
+msgstr "A Kapitány naplója"
+
+msgid "cloth"
+msgstr "ruha"
+
+msgid "construct"
+msgstr "építés"
+
+msgid "cursor"
+msgstr ""
+
+msgid "description"
+msgstr "leírás"
+
+msgid "entries"
+msgstr "bejegyzések"
+
+msgid "feature"
+msgstr "funkció"
+
+msgid "fish"
+msgstr "hal"
+
+msgid "forest"
+msgstr "erdő"
+
+msgid "from time to time"
+msgstr "időről időre"
+
+msgid "global"
+msgstr ""
+
+msgid "grow"
+msgstr "növekedés"
+
+msgid "happy"
+msgstr ""
+
+msgid "information"
+msgstr "információ"
+
+msgid "liquor"
+msgstr "likőr"
+
+msgid "minimap"
+msgstr "kis térkép"
+
+msgid "offer"
+msgstr "ajánlat"
+
+msgid "overview tab"
+msgstr "áttekintő fül"
+
+msgid "plant"
+msgstr "növény"
+
+msgid "play"
+msgstr "játék"
+
+msgid "please check your"
+msgstr ""
+
+msgid "potatoes"
+msgstr "paradicsomok"
+
+msgid "price"
+msgstr "ár"
+
+msgid "read"
+msgstr "olvas"
+
+msgid "screen"
+msgstr "kép"
+
+msgid "service"
+msgstr "szolgáltatás"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "megoldás"
+
+msgid "sound"
+msgstr "hang"
+
+msgid "special"
+msgstr "speciális"
+
+msgid "spot"
+msgstr ""
+
+msgid "statistics"
+msgstr "statisztikák"
+
+msgid "store"
+msgstr "raktár"
+
+msgid "team"
+msgstr "csapat"
+
+msgid "tear"
+msgstr "csepp"
+
+msgid "time to time"
+msgstr ""
+
+msgid "trading"
+msgstr "kereskedés"
+
+msgid "unsupported"
+msgstr ""
+
+msgid "visit"
+msgstr "látogatás"
+
+msgid "world"
+msgstr "világ"
+
+msgid "wrong"
+msgstr ""
+
+msgid "bar"
+msgstr ""
+
+msgid "bug"
+msgstr ""
+
+msgid "command"
+msgstr "parancs"
+
+msgid "completed"
+msgstr "befejezve"
+
+msgid "forum"
+msgstr "fórum"
+
+msgid "happen"
+msgstr ""
+
+msgid "harvest"
+msgstr "aratás"
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "bárány gyapjú"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "játszik"
+
+msgid "produced"
+msgstr "termelt"
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "eladás"
+
+msgid "school"
+msgstr "iskola"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr "ideiglenesen"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr "értékek"
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "egyensúly"
+
+msgid "load"
+msgstr "berakodás"
+
+msgid "trail"
+msgstr "ösvény"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "vas"
+
+msgid "tobacco"
+msgstr "dohány"
+
+msgid "clay"
+msgstr "agyag"
+
+msgid "money"
+msgstr "pénz"
+
+msgid "pavilion"
+msgstr "pavilon"
+
+msgid "tax"
+msgstr "adó"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "állj"
+
+msgid "wait"
+msgstr "várakozás"
+
+msgid "decrease"
+msgstr "csökkentés"
+
+msgid "ore"
+msgstr "érc"
+
+msgid "return"
+msgstr "vissza"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "fogyasztás"
+
+msgid "idle"
+msgstr "tétlen"
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "village"
+msgstr "falu"
+
+msgid "yields"
+msgstr "hozam"
+
+msgid "back"
+msgstr "vissza"
+
+msgid "build settlement"
+msgstr "település építése"
+
+msgid "charcoal"
+msgstr "faszén"
+
+msgid "empty"
+msgstr "üres"
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "eleget"
+
+msgid "graphics"
+msgstr "grafika"
+
+msgid "hunt"
+msgstr "vadászat"
+
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+msgid "potato field"
+msgstr "paradicsom mezők"
+
+msgid "seed"
+msgstr "mag"
+
+msgid "send"
+msgstr ""
+
+msgid "sheep"
+msgstr "bárány"
+
+msgid "signal fire"
+msgstr "jelző tűz"
+
+msgid "sugar field"
+msgstr "cukor mező"
+
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "mouse"
+msgstr ""
+
+msgid "partner"
+msgstr "társ"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr ""
+
+msgid "weapon"
+msgstr ""
+
+msgid "cattle"
+msgstr "marha"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr ""
+
+msgid "cocoa"
+msgstr ""
+
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "talált"
+
+msgid "herbs"
+msgstr "gyógynövények"
+
+msgid "pause"
+msgstr ""
+
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr ""
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr "kereskedő partner"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "polgárok"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "orvos"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "oktatás"
+
+msgid "ensure"
+msgstr "biztosít"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "raktár"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "üzemeltetési ár"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,13 @@
 
 from fife import fife
 
-import horizons.main
-
+import horizons.globals
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.constants import LAYERS
 from horizons.entities import Entities
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.gui.mousetools import  NavigationTool
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.tabs.buildtabs import BuildTab
+
+from .navigationtool import NavigationTool
 
 
 class PipetteTool(NavigationTool):
@@ -37,26 +38,25 @@ class PipetteTool(NavigationTool):
 
 	def __init__(self, session):
 		super(PipetteTool, self).__init__(session)
-		self.session.gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
-		horizons.main.fife.set_cursor_image('pipette')
+		horizons.globals.fife.set_cursor_image('pipette')
 
 	def remove(self):
 		self._remove_coloring()
-		horizons.main.fife.set_cursor_image('default')
+		horizons.globals.fife.set_cursor_image('default')
 		super(PipetteTool, self).remove()
 
 	def on_escape(self):
-		self.session.set_cursor()
+		self.session.ingame_gui.set_cursor()
 
-	def mouseMoved(self,  evt):
+	def mouseMoved(self, evt):
 		self.update_coloring(evt)
 
-	def mousePressed(self,  evt):
+	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			obj = self._get_object(evt)
 			if obj and self._is_buildable(obj.id):
-				self.session.set_cursor('building', Entities.buildings[obj.id])
+				self.session.ingame_gui.set_cursor('building', Entities.buildings[obj.id])
 			elif obj: # object that is not buildable
 				AmbientSoundComponent.play_special('error')
 				self.on_escape()
@@ -67,7 +67,7 @@ class PipetteTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(PipetteTool,  self).mouseClicked(evt)
+			super(PipetteTool, self).mouseClicked(evt)
 
 	def _get_object(self, evt):
 		for obj in self.get_hover_instances(evt, layers=[LAYERS.FIELDS, LAYERS.OBJECTS]):
@@ -82,13 +82,11 @@ class PipetteTool(NavigationTool):
 			self._add_coloring(obj)
 
 	def _is_buildable(self, building_id):
-		# TODO: use proper buildability check once there is a system for that
-		#       (e.g. reuse from future build tabs)
-		return Entities.buildings[building_id].settler_level <= \
-		       self.session.world.player.settler_level and \
-		       building_id != BUILDINGS.WAREHOUSE_CLASS
+		building_tiers = BuildTab.get_building_tiers()
+		return building_id in building_tiers and \
+		       building_tiers[ building_id ] <= self.session.world.player.settler_level
 
-	def _add_coloring(self,  obj):
+	def _add_coloring(self, obj):
 		if self._is_buildable(obj.id):
 			self.renderer.addColored(obj.fife_instance,
 			                         *self.__class__.HIGHLIGHT_COLOR)

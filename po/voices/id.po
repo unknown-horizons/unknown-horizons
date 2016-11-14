@@ -1,0 +1,131 @@
+# Indonesian translations for Unknown Horizons Voices package.
+# Copyright (C) 2013 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons Voices package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
+"PO-Revision-Date: 2015-02-02 15:27+0200\n"
+"Last-Translator: Samuel D.S.P. <Samuel_DSP@yahoo.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/voices/id/>"
+"\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.2-dev\n"
+
+#. Founding settlement - Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr "Upayakan agar pemukiman ini berkembang megah."
+
+#. Founding settlement - Player found settlement"
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr "Penduduk anda akan sangat nyaman di pulau ini."
+
+#. Founding settlement - Player found settlement"
+msgid "Call this patch of ground yours from now on."
+msgstr "Sebut saja bidang tanah ini milikmu mulai sekarang."
+
+#. Founding settlement - Player found settlement"
+msgid "This region now belongs to our colors."
+msgstr "Daerah in sekarang menjadi milik warna kita."
+
+#. Founding settlement - Player found settlement"
+msgid "This piece of ground is now ours."
+msgstr "Bagian tanah ini sekarang milik kita."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr "Pemain lain telah menghuni sebuah pulau."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "A player develops a new settlement."
+msgstr "Seorang pemain telah membangun pemukiman baru."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "One of your fellow players founded a settlement."
+msgstr "Salahsatu rekan Anda telah mendirikan pemukiman."
+
+#. Founding settlement - Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr "Lawan kita nampaknya telah mendirikan pemukiman."
+
+#. Founding settlement - Rival found settlement
+msgid "We've been informed that one of our rivals snared new land."
+msgstr ""
+"Kita telah diinformasikan salahsatu lawan kita telah menjerat pulau baru."
+
+#. Founding settlement - Rival found settlement
+msgid "One of our opponents is said to have expanded."
+msgstr "Diberitakan salahsatu lawan kita telah memperluas wilayah."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally settles on another island."
+msgstr "Kawan kita telah menghuni pulau lain."
+
+#. Founding settlement - Ally found settlement
+msgid "One of our allies cultivates an islnd."
+msgstr "Salahsatu kawan kita telah mengolah sebuah pulau."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr ""
+"Kawan kita menyampaikan pesan tentang kesuksesan menemukan sebuah pemukiman."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr "Pulau ini tidak lagi menjadi milik kita sepenuhnya."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr "Mata-mata menemukan tamu telah bermukim di salahsatu pulau kita."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "We got new neighbors on this island!"
+msgstr "Kita punya tetangga baru di pulau ini!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr "Mata-mata melaporkan tamu tak diundang mengepung pulau kita!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Should we really accept our rival as new neighbor?"
+msgstr ""
+"Apakah kita benar-benar harus menerima lawan kita sebagai tetangga baru kita?"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "One of our enemies settles on our ground!"
+msgstr "Salahsatu musuh kita bermukim di tanah kita!"
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr "Salahsatu kawan kita sepertinya sangat membutuhkan tanah Anda."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "We share this ground with our ally for now."
+msgstr "Kita membagi tanah ini dengan kawan kita sekarang."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "Our ally settles on one of our islands."
+msgstr "Salahsatu kawan kita bermukim di salahsatu pulau kita."
+
+#. Resources - Construction material missing
+msgid "You need more resources to build this."
+msgstr "Anda memerlukan sumberdaya lebih untuk membangun ini."
+
+#. Resources - Construction material missing
+msgid "This construction project needs more resources."
+msgstr "Proyek konstruksi ini memerlukan sumberdaya lebih."
+
+#. Resources - Construction material missing
+msgid "Construction is impossible without sufficient material."
+msgstr "Konstruksi tidak mungkin dijalankan tanpa material yang cukup."
+
+#. Resources - Construction material missing
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr "Sumberdaya di persediaan Anda tidak cukup untuk membangun ini."

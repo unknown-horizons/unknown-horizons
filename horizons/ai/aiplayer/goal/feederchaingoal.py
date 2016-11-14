@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 from horizons.ai.aiplayer.goal.productionchaingoal import ProductionChainGoal
 from horizons.constants import RES
 from horizons.util.python import decorators
+
 
 class FeederChainGoal(ProductionChainGoal):
 	"""
@@ -55,43 +56,54 @@ class FeederChainGoal(ProductionChainGoal):
 
 class FeederFoodGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederFoodGoal, self).__init__(settlement_manager, RES.FOOD_ID, 'food producer')
+		super(FeederFoodGoal, self).__init__(settlement_manager, RES.FOOD, 'food producer')
 
 	def get_personality_name(self):
 		return 'FoodGoal'
 
 class FeederTextileGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederTextileGoal, self).__init__(settlement_manager, RES.TEXTILE_ID, 'textile producer')
+		super(FeederTextileGoal, self).__init__(settlement_manager, RES.TEXTILE, 'textile producer')
 
 	def get_personality_name(self):
 		return 'TextileGoal'
 
 class FeederLiquorGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederLiquorGoal, self).__init__(settlement_manager, RES.LIQUOR_ID, 'liquor producer')
+		super(FeederLiquorGoal, self).__init__(settlement_manager, RES.LIQUOR, 'liquor producer')
 
 	def get_personality_name(self):
 		return 'LiquorGoal'
 
 	@property
 	def can_be_activated(self):
-		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 class FeederTobaccoProductsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederTobaccoProductsGoal, self).__init__(settlement_manager, RES.TOBACCO_PRODUCTS_ID, 'tobacco products producer')
+		super(FeederTobaccoProductsGoal, self).__init__(settlement_manager, RES.TOBACCO_PRODUCTS, 'tobacco products producer')
 
 	def get_personality_name(self):
 		return 'FeederTobaccoProductsGoal'
 
 	@property
 	def can_be_activated(self):
-		return super(FeederTobaccoProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(FeederTobaccoProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
+class FeederMedicalProductsGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederMedicalProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs producer')
+
+	def get_personality_name(self):
+		return 'FeederMedicalProductsGoal'
+
+	@property
+	def can_be_activated(self):
+		return super(FeederMedicalProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 class FeederSaltGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederSaltGoal, self).__init__(settlement_manager, RES.SALT_ID, 'salt producer')
+		super(FeederSaltGoal, self).__init__(settlement_manager, RES.SALT, 'salt producer')
 
 	def get_personality_name(self):
 		return 'FeederSaltGoal'
@@ -101,4 +113,5 @@ decorators.bind_all(FeederFoodGoal)
 decorators.bind_all(FeederTextileGoal)
 decorators.bind_all(FeederLiquorGoal)
 decorators.bind_all(FeederTobaccoProductsGoal)
+decorators.bind_all(FeederMedicalProductsGoal)
 decorators.bind_all(FeederSaltGoal)

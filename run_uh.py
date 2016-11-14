@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,52 +23,56 @@
 
 """TUTORIAL: Welcome to the Unknown Horizons in-code tutorial!
 This is a guide for people who are interested in how the code works.
-All parts of it are marked with 'TUTORIAL', every entry contains a pointer
-to the next step. Have fun :-)
+All parts of it are marked with 'TUTORIAL', and every entry contains
+a pointer to the next step. Have fun :-)
 
-This is the Unknown Horizons launcher, it looks for FIFE and tries
+This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
+from __future__ import print_function
 
-__all__ = ['init_environment', 'get_fife_path']
-
-import sys
-import os
-import os.path
-import gettext
-import time
 import functools
+import imp
 import locale
 import logging
 import logging.config
 import logging.handlers
-import optparse
-import signal
-import traceback
+import os
+import os.path
 import platform
-import struct
+import signal
+import sys
+import time
+import traceback
+
 
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
-def show_error_message(title, message):
-	print(title)
+def exit_with_error(title, message):
+	if title + '.' != message:
+		print(title)
 	print(message)
 
 	try:
-		import tkinter
-		import tkinter.messagebox
-		window = tkinter.Tk()
+		import Tkinter
+		import tkMessageBox
+		window = Tkinter.Tk()
 		window.wm_withdraw()
-		tkinter.messagebox.showerror(title, message)
-	except:
+		tkMessageBox.showerror(title, message)
+	except ImportError:
 		# tkinter may be missing
 		pass
 	exit(1)
 
-if __name__ == '__main__':
-	if platform.python_version_tuple()[0] != '2':
-		show_error_message('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
+def check_python_version():
+	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
+	if platform.python_version_tuple()[0] not in (2,'2'):
+		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
+
+
+check_python_version()
+
 
 def log():
 	"""Returns Logger"""
@@ -77,119 +81,34 @@ def log():
 logfilename = None
 logfile = None
 
-def find_uh_position():
-	"""Returns path, where uh is located"""
-	# first check around cur dir and sys.argv[0]
-	for i in (
-		os.path.split(sys.argv[0])[0],
-		'.', '..'
-		):
-		i = os.path.realpath(i)
-		if os.path.exists( os.path.join(i, 'content')):
-			return i
-	else:
-		# also check system wide dirs
-		positions = (
-			'/usr/share/games',
-			'/usr/share',
-			'/usr/local/share/games',
-			'/usr/local/share'
-		)
-		for i in positions:
-			pos = os.path.join(i, 'unknown-horizons')
-			if os.path.exists( pos ):
-				return pos
-	raise RuntimeError('Cannot find location of Unknown Horizons.')
+def get_content_dir_parent_path():
+	"""
+	Return the path to the parent of the content dir.
+	This is usually just the dir the run_uh.py is in but on some Linux installation
+	scenarios the horizons dir, the content dir, and run_uh.py are all in different
+	locations.
+	"""
 
-def get_option_parser():
-	"""Returns inited OptionParser object"""
-	from horizons.constants import VERSION
-	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
-	p.add_option("-d", "--debug", dest="debug", action="store_true", \
-				       default=False, help="Enable debug output to stderr and a logfile.")
-	p.add_option("--fife-path", dest="fife_path", metavar="<path>", \
-				       help="Specify the path to FIFE root directory.")
-	p.add_option("--restore-settings", dest="restore_settings", action="store_true", \
-				       default=False, help="Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration.")
-	p.add_option("--mp-master", dest="mp_master", metavar="<ip:port>", \
-				       help="Specify alternative multiplayer master server.")
-	p.add_option("--mp-bind", dest="mp_bind", metavar="<ip:port>", \
-				       help="Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port.")
+	options = []
+	# Try the directory this file is in. This should work in most cases.
+	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
+	# Try path for Mac Os X app container (Unknown Horizons.app).
+	# Unknown Horizons.app/Contents/Resources/contents
+	options.append(os.path.join(os.getcwd()))
+	# Try often-used paths on Linux.
+	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
+		options.append(os.path.join(path, u'unknown-horizons'))
 
-
-	start_uh_group = optparse.OptionGroup(p, "Starting Unknown Horizons")
-	start_uh_group.add_option("--start-map", dest="start_map", metavar="<map>", \
-				                    help="Starts <map>. <map> is the mapname.")
-	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
-				                    help="Starts a random map.")
-	start_uh_group.add_option("--start-specific-random-map", dest="start_specific_random_map", metavar="<seed>", \
-									help="Starts a random map with seed <seed>.")
-	start_uh_group.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>", \
-				                    help="Starts <scenario>. <scenario> is the scenarioname.")
-	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
-				                    help="Starts <campaign>. <campaign> is the campaign name.")
-	start_uh_group.add_option("--start-dev-map", dest="start_dev_map", action="store_true", \
-				                    default=False, help="Starts the development map without displaying the main menu.")
-	start_uh_group.add_option("--load-map", dest="load_map", metavar="<save>", \
-				                    help="Loads a saved game. <save> is the savegamename.")
-	start_uh_group.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true", \
-				                    help="Loads the last quicksave.")
-	start_uh_group.add_option("--nature-seed", dest="nature_seed", type="int", \
-				                    help="Sets the seed used to generate trees, fish, and other natural resources.")
-	p.add_option_group(start_uh_group)
-
-	ai_group = optparse.OptionGroup(p, "AI options")
-	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>", type="int", default=0, \
-	             help="Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0).")
-	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
-	             help="Makes the human player a human-AI hybrid (for development only).")
-	ai_group.add_option("--force-player-id", dest="force_player_id", metavar="<force_player_id>", type="int", default=None, \
-	             help="Set the player with id <force_player_id> as the active (human) player.")
-	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
-	             help="Shows AI plans as highlights (for development only).")
-	p.add_option_group(ai_group)
-
-	dev_group = optparse.OptionGroup(p, "Development options")
-	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true", \
-				               default=False, help="Write debug output only to logfile, not to console. Implies -d.")
-	dev_group.add_option("--debug-module", action="append", dest="debug_module", \
-				               metavar="<module>", default=[], \
-				               help="Enable logging for a certain logging module (for developing only).")
-	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
-				               help="Writes log to <filename> instead of to the uh-userdir")
-	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", action="store_true", \
-				               default=False, help="For internal use only.")
-	dev_group.add_option("--profile", dest="profile", action="store_true", \
-				               default=False, help="Enable profiling (for developing only).")
-	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int", \
-				               help="Run the game for <max_ticks> ticks.")
-	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true", \
-				               default=False, help="Enable the string previewer tool for scenario writers")
-	dev_group.add_option("--no-preload", dest="nopreload", action="store_true", \
-				               default=False, help="Disable preloading while in main menu")
-	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int", \
-				               help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
-	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>", \
-	                           default=False, help="INTERNAL. Use run_tests.py instead.")
-	dev_group.add_option("--gui-log", dest="log_gui", action="store_true", default=False, help="Log gui interactions")
-	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int", \
-	                           help="Use this seed for singleplayer sessions.")
-	dev_group.add_option("--generate-minimap", dest="generate_minimap", \
-	                     metavar="<parameters>", help="Generate a minimap for a map")
-	dev_group.add_option("--create-mp-game", action="store_true", dest="create_mp_game", \
-	                     help="Create an multiplayer game with default settings.")
-	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game", \
-	                     help="Join first multiplayer game.")
-	dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
-	                     help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
-	p.add_option_group(dev_group)
-
-	return p
+	for path in options:
+		content_path = os.path.join(path, u'content')
+		if os.path.exists(content_path):
+			return path
+	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
 
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
 	from horizons.constants import PATHS
-	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.SCREENSHOT_DIR):
+	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
 		if not os.path.isdir(directory):
 			os.makedirs(directory)
 
@@ -199,13 +118,13 @@ def excepthook_creator(outfilename):
 	to a file.
 	@param outfilename: a filename to append traceback to"""
 	def excepthook(exception_type, value, tb):
-		f = open(outfilename, 'a')
-		traceback.print_exception(exception_type, value, tb, file=f)
+		with open(outfilename, 'a') as f:
+			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print('')
 		print(_('Unknown Horizons has crashed.'))
 		print('')
-		print(_('We are very sorry for this and want to fix underlying error.'))
+		print(_('We are very sorry for this and want to fix the underlying error.'))
 		print(_('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
 		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
@@ -222,39 +141,48 @@ def exithandler(exitcode, signum, frame):
 		logfile.close()
 	sys.exit(exitcode)
 
+def setup_streams():
+	"""Ignore output to stderr and stdout if writing to them is not possible."""
+	if sys.__stderr__.fileno() < 0:
+		sys.stderr = open(os.devnull, 'w')
+	if sys.__stdout__.fileno() < 0:
+		sys.stdout = open(os.devnull, 'w')
+
 def main():
 	# abort silently on signal
 	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
 	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
 
+	# avoid crashing when writing to unavailable standard streams
+	setup_streams()
+
 	# use locale-specific time.strftime handling
-	locale.setlocale(locale.LC_TIME, '')
+	try:
+		locale.setlocale(locale.LC_TIME, '')
+	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
+		pass
 
-	#chdir to Unknown Horizons root
-	os.chdir( find_uh_position() )
-	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
-
-	gettext.install("unknown-horizons", "content/lang", unicode=True)
-
+	# Change the working directory to the parent of the content directory
+	os.chdir(get_content_dir_parent_path())
+	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
 
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	setup_debugging(options)
-
-	# NOTE: this might cause a program restart
-	init_environment()
+	init_environment(True)
 
 	# test if required libs can be found or display specific error message
 	try:
 		import yaml
 	except ImportError:
-		headline = _("Error: Unable to find required libraries")
-		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
-		    _("Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
-		standalone_error_popup(headline, msg)
-		exit(1)
+		headline = _('Error: Unable to find required library "PyYAML".')
+		msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
+		    _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
+		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
+		exit_with_error(headline, msg)
 
-	#start UH
+	# Start UH.
 	import horizons.main
 	ret = True
 	if not options.profile:
@@ -272,7 +200,12 @@ def main():
 		if not os.path.exists(profiling_dir):
 			os.makedirs(profiling_dir)
 
-		outfilename = os.path.join(profiling_dir, time.strftime('%Y-%m-%d_%H-%M-%S') + '.prof')
+		pattern = os.path.join(profiling_dir, time.strftime('%Y-%m-%d') + '.%02d.prof')
+		num = 1
+		while os.path.exists(pattern % num):
+			num += 1
+
+		outfilename = pattern % num
 		print('Starting in profile mode. Writing output to: %s' % outfilename)
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
 		print('Program ended. Profiling output: %s' % outfilename)
@@ -291,7 +224,7 @@ def setup_debugging(options):
 
 	# not too nice way of sharing code, but it is necessary because code from this file
 	# can't be accessed elsewhere on every distribution, and we can't just access other code.
-	# however passing options is guaranteed to work
+	# however, passing options is guaranteed to work
 	options.setup_debugging = setup_debugging
 
 	# apply options
@@ -302,7 +235,7 @@ def setup_debugging(options):
 			print('No such logger: %s' % module)
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
-	if options.debug or len(options.debug_module) > 0 or options.debug_log_only:
+	if options.debug or options.debug_module or options.debug_log_only:
 		options.debug = True
 		# also log to file
 		# init a logfile handler with a dynamic filename
@@ -310,9 +243,11 @@ def setup_debugging(options):
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
-												         time.strftime("%Y-%m-%d_%H-%M-%S"))
-		print('Logging to %s' % logfilename.encode('utf-8', 'replace'))
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
+			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
+		print('Logging to {uh} and {fife}'.format(
+			uh=logfilename.encode('utf-8', 'replace'),
+			fife=os.path.join(os.getcwd(), 'fife.log')) )
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
@@ -327,11 +262,7 @@ def setup_debugging(options):
 			def write(self, line):
 				line = unicode(line)
 				sys.__stdout__.write(line)
-				try:
-					logfile.write(line)
-				except UnicodeEncodeError:
-					# python unicode handling is weird, this has been empirically proven to work
-					logfile.write( line.encode("UTF-8") )
+				logfile.write(line.encode('UTF-8'))
 			def flush(self):
 				sys.__stdout__.flush()
 				logfile.flush()
@@ -342,210 +273,107 @@ def setup_debugging(options):
 		# without getting logs twice + without enabling debug log for everything
 		# (see first if-clause inside that method)
 		if not options.debug_log_only and not logfile.isatty():
-			logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
+			logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 
 		log_sys_info()
 
-
-"""
-Functions controlling the program environment.
-NOTE: these are supposed to be in an extra file, but are placed here for simplifying
-			distribution
-"""
-def setup_fife(args):
-	""" Find FIFE and setup search paths, if it can't be imported yet."""
+def import_fife(paths):
 	try:
-		from fife import fife
-	except ImportError as e:
-		if '--fife-in-library-path' in args:
-			# fife should already be in LD_LIBRARY_PATH
-			log_paths()
-			err_str = str(e)
-			if err_str == 'DLL load failed: %1 is not a valid Win32 application.':
-				show_error_message('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
-			else:
-				show_error_message('Failed to load FIFE', err_str)
-		log().debug('Failed to load FIFE from default paths: %s', e)
-		log().debug('Searching for FIFE')
-		find_FIFE() # this restarts or terminates the program
-		assert False
-
-	log().debug('Using fife: %s', fife)
-
-	for arg in ['--fife-in-library-path', '--fife-path']:
-		if arg in args:
-			args.remove(arg)
-
-
-def init_environment():
-	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
-	It will parse sys.args, so this var has to contain only valid uh options."""
-
-	gettext.install("unknown-horizons", "po", unicode=True)
-
-	options = get_option_parser().parse_args()[0]
-
-	if options.fife_path and not options.fife_in_library_path:
-		# we got an explicit path, search there
-		# (but skip on second run, else we've got an endless loop)
-		find_FIFE(options.fife_path)
-
-	#find FIFE and setup search paths, if it can't be imported yet
-	setup_fife(sys.argv)
-
-	#for some external libraries distributed with UH
-	sys.path.append( os.path.join('horizons', 'ext') )
-
-
-def get_fife_path(fife_custom_path=None):
-	"""Returns absolute path to FIFE engine. Calls sys.exit() if it can't be found."""
-	# assemble a list of paths where FIFE could be located at
-	_paths = []
-	# check if there is a config file (has to be called config.py)
-
-	# first check for commandline arg
-	if fife_custom_path is not None:
-		_paths.append(fife_custom_path)
-		if not check_path_for_fife(fife_custom_path):
-			print('Specified invalid FIFE path: %s' %  fife_custom_path)
-			exit(1)
-	else:
-		# no command line parameter, now check for config
+		# If FIFE can't be found then this call will throw an exception.
+		settings = imp.find_module('fife', paths)
+		fife = imp.load_module('fife', *settings)
 		try:
-			import config
-			_paths.append(config.fife_path)
-			if not check_path_for_fife(config.fife_path):
-				print('Invalid fife_path in config.py: %s' % config.fife_path)
-				exit(1)
-		except (ImportError, AttributeError):
-		# no config, try frequently used paths
-			_paths += [ os.path.join(a, b, c) for \
-									a in ('.', '..', '../..') for \
-									b in ('.', 'fife', 'FIFE', 'Fife') for \
-									c in ('.', 'trunk') ]
-
-	fife_path = None
-	for p in _paths:
-		if p not in sys.path: # skip dirs where import would have found FIFE
-			p = os.path.abspath(p)
-			log().debug("Searching for FIFE in %s", p)
-			if check_path_for_fife(p):
-				fife_path = p
-
-				log().debug("Found FIFE in %s", fife_path)
-
-				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				pythonpaths = [ os.path.join( fife_path, 'engine/python') ]
-				for path in pythonpaths:
-					if os.path.exists(path):
-						sys.path.append(path)
-					if 'PYTHONPATH' in os.environ:
-						os.environ['PYTHONPATH'] += os.path.pathsep + path
-					else:
-						os.environ['PYTHONPATH'] = path
-
-				#add windows paths (<fife>/.)
-				if 'PATH' in os.environ:
-					os.environ['PATH'] += os.path.pathsep + fife_path
-				else:
-					os.environ['PATH'] = fife_path
-				os.path.defpath += os.path.pathsep + fife_path
-				break
-	else:
-		print(_('FIFE was not found.'))
-		sys.exit(1)
-	return fife_path
-
-def check_path_for_fife(path):
-	"""Checks if typical FIFE directories exist in path. This does not guarantee, that it's
-	really a FIFE dir, but it generally works."""
-	absolute_path = os.path.abspath(path)
-	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',  \
-				                                               'engine/python/fife/extensions') ]:
-		if not os.path.exists(pe):
+			from fife import fife
+		except ImportError as e:
+			if str(e) != 'cannot import name fife':
+				log().warning('Failed to use FIFE from %s', fife)
+				log().warning(str(e))
+				if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
+					# We found FIFE but the Python and FIFE architectures don't match (Windows).
+					exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
 			return False
+	except ImportError:
+		# FIFE couldn't be found in any of the paths.
+		return False
 	return True
 
-def find_FIFE(fife_custom_path=None):
-	"""Inserts path to FIFE engine to $LD_LIBRARY_PATH (environment variable).
-	If it's already there, the function will return, else
-	it will restart uh with correct $LD_LIBRARY_PATH. """
-	global logfilename
-	fife_path = get_fife_path(fife_custom_path) # terminates program if FIFE can't be found
+def find_fife():
+	# Use the path the user provided.
+	from horizons.util.cmdlineoptions import get_option_parser
+	options = get_option_parser().parse_args()[0]
+	if options.fife_path:
+		fife_path = os.path.abspath(options.fife_path)
+		# Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
+		if os.path.isfile(fife_path):
+			fife_path = os.path.dirname(fife_path)
+		# Support giving the path to FIFE_ROOT/engine/python
+		if import_fife([fife_path]):
+			return True
+		# Support giving the path to FIFE_ROOT/engine
+		if import_fife([os.path.join(fife_path, 'python')]):
+			return True
+		# Support giving the path to FIFE_ROOT
+		if import_fife([os.path.join(fife_path, 'engine', 'python')]):
+			return True
+		# Support giving the path to FIFE_ROOT/engine/python/fife
+		if import_fife([os.path.join(fife_path, '..')]):
+			return True
 
-	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
-		[ os.path.abspath(fife_path + '/' + a) for  \
-			a in ('ext/minizip', 'ext/install/lib') ] + \
-		(os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
-		 os.environ.has_key('LD_LIBRARY_PATH') else []))
+		# End the search to avoid using the wrong (non-user-specified) FIFE.
+		log().error('Unable to find FIFE in %s', fife_path)
+		exit(1)
 
-	log().debug("Restarting with proper LD_LIBRARY_PATH...")
+	# Try to use the default FIFE (equivalent of just trying to import it).
+	if import_fife(None):
+		return True
+
+	# Look for FIFE in the neighborhood of the game dir.
+	paths = []
+	for opt1 in ('.', '..', '..' + os.sep + '..'):
+		for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
+			for opt3 in ('.', 'trunk'):
+				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
+				if os.path.exists(path):
+					paths.append(path)
+	return import_fife(paths)
+
+def setup_fife():
 	log_paths()
+	log_sys_info()
+	if not find_fife():
+		#TODO useful error message anyone?
+		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
-	# assemble args (python run_uh.py ..)
-	args = [sys.executable] + sys.argv + [ "--fife-in-library-path" ]
+	from fife import fife
+	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
+	fife_version_minor = fife.getMinor() if hasattr(fife, 'getMinor') else 'unknown'
+	fife_version_patch = fife.getPatch() if hasattr(fife, 'getPatch') else 'unknown'
 
-	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
-	if platform.system() != 'Windows':
-		if logfilename:
-			args += [ "--logfile", logfilename ]
-		log().debug("Restarting with args %s", args)
-		os.execvp(args[0], args)
+	from horizons.constants import VERSION
+	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
+		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		args[1] = "\"%s\"" % args[1]
-		args += [ "--logfile", "\"%s\"" % logfilename ]
-		log().debug("Restarting using windows workaround with args %s", args)
-		os.system(" ".join(args))
-		sys.exit(0)
+		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+
+def init_environment(use_fife):
+	"""Sets up everything.
+
+	Use in any program that requires access to FIFE and UH modules."""
+	if use_fife:
+		setup_fife()
 
 def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
-	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
-	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
+	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
+	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
-	log().debug("Plattform: %s", platform.platform())
-
-
-def standalone_error_popup(headline, msg):
-	"""Display an error via gui.
-	Use only for errors that make 'import horizons.main' fail."""
-	from fife.extensions import pychan
-	from fife import fife
-
-	e = fife.Engine()
-	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine.ttf")
-	e.init()
-
-	pychan.init(e)
-	pychan.loadFonts("content/fonts/libertine.fontdef")
-
-	# hack for accessing this in do_quit (global does't work as the variables here are local)
-	class Quit(object):
-		do = False
-
-	def do_quit():
-		Quit.do=True
-
-	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
-	# can't translate as translations are only set up later
-	dlg.findChild(name="headline").text = unicode(headline)
-	dlg.findChild(name="msg").text = unicode(msg)
-	dlg.mapEvents({'quit_button': do_quit})
-	dlg.show()
-
-
-	e.initializePumping()
-	while not Quit.do:
-		e.pump()
-	e.finalizePumping()
-
-
+	log().debug("Platform: %s", platform.platform())
 
 if __name__ == '__main__':
 	main()

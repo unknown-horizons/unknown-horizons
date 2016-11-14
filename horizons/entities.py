@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,11 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
+from __future__ import print_function
+
 import fnmatch
+import logging
 import os
 
-from horizons.util import Callback, YamlCache
+from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.python.callback import Callback
+from horizons.util.yamlcache import YamlCache
+
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -45,7 +50,9 @@ class _EntitiesLazyDict(dict):
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
-	Loads everything from the db."""
+	Loads grounds from the db.
+	Loads units and buildings from the object YAML files.
+	"""
 	loaded = False
 
 	log = logging.getLogger('entities')
@@ -66,13 +73,18 @@ class Entities(object):
 		if hasattr(cls, "grounds"):
 			cls.log.debug("Entities: grounds already loaded")
 			return
-		from world.ground import GroundClass
+
+		from horizons.world.ground import GroundClass
+		tile_sets = TileSetLoader.get_sets()
 		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
-			cls.grounds.create_on_access(ground_id, Callback(GroundClass, db, ground_id))
-			if load_now:
-				cls.grounds[ground_id]
-		cls.grounds[-1] = GroundClass(db, -1)
+			tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", ground_id)[0][0]
+			for shape in tile_sets[tile_set_id].iterkeys():
+				cls_name = '%d-%s' % (ground_id, shape)
+				cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
+				if load_now:
+					cls.grounds[cls_name]
+		cls.grounds['-1-special'] = GroundClass(db, -1, 'special')
 
 	@classmethod
 	def load_buildings(cls, db, load_now=False):
@@ -81,15 +93,15 @@ class Entities(object):
 			cls.log.debug("Entities: buildings already loaded")
 			return
 		cls.buildings = _EntitiesLazyDict()
-		from world.building import BuildingClass
+		from horizons.world.building import BuildingClass
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
-				cls.log.debug("Loading: " +  filename)
+				cls.log.debug("Loading: " + filename)
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file, game_data=True)
 				if result is None: # discard empty yaml files
-					print "Empty yaml file {file} found, not loading!".format(file=full_file)
+					print("Empty yaml file {file} found, not loading!".format(file=full_file))
 					continue
 
 				result['yaml_file'] = full_file
@@ -108,7 +120,7 @@ class Entities(object):
 			return
 		cls.units = _EntitiesLazyDict()
 
-		from world.units import UnitClass
+		from horizons.world.units import UnitClass
 		for root, dirnames, filenames in os.walk('content/objects/units'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				full_file = os.path.join(root, filename)

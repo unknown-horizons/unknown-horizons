@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from random import randint
+import random
 
-from horizons.constants import PATHS
-from horizons.util import decorators
-from horizons.util.dbreader import DbReader
-from horizons.util.gui import get_res_icon_path
+from horizons.constants import PATHS, TIER
 from horizons.entities import Entities
+from horizons.i18n import gettext as T
+from horizons.util.dbreader import DbReader
+from horizons.util.python import decorators
+
 
 ########################################################################
 class UhDbAccessor(DbReader):
@@ -49,26 +50,21 @@ class UhDbAccessor(DbReader):
 
 	# Resource table
 
-	def get_res_name(self, id, only_if_tradeable=False, only_if_inventory=False):
-		"""
-		Returns the name to a specific resource id.
-		@param id: int resource's id, of which the name is returned
-		"""
-		sql = "SELECT name FROM resource WHERE id = ?"
-		if only_if_tradeable:
-			sql += " AND tradeable = 1"
-		if only_if_inventory:
-			sql += " AND shown_in_inventory = 1"
-		try:
-			return self.cached_query(sql, id)[0][0]
-		except IndexError:
-			return None
+	def get_res_name(self, id):
+		"""Returns the translated name for a specific resource id.
+		@param id: int resource's id, of which the name is returned """
+		name = self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
+		return T(name)
+
+	def get_res_inventory_display(self, id):
+		sql = "SELECT shown_in_inventory FROM resource WHERE id = ?"
+		return self.cached_query(sql, id)[0][0]
 
 	def get_res_value(self, id):
 		"""Returns the resource's value
 		@param id: resource id
 		@return: float value"""
-		return self.cached_query("SELECT value FROM resource WHERE id=?", id)[0][0]
+		return self.cached_query("SELECT value FROM resource WHERE id = ?", id)[0][0]
 
 	def get_res(self, only_tradeable=False, only_inventory=False):
 		"""Returns a list of all resources.
@@ -83,20 +79,6 @@ class UhDbAccessor(DbReader):
 		db_data = self.cached_query(sql)
 		return map(lambda x: x[0], db_data)
 
-	def get_res_id_and_icon(self, only_tradeable=False, only_inventory=False):
-		"""Returns a list of all resources and the matching icons.
-		@param only_tradeable: return only those you can trade.
-		@param only_inventory: return only those displayed in inventories.
-		@return: list of tuples: (resource ids, resource icon)"""
-		sql = "SELECT id FROM resource WHERE id "
-		if only_tradeable:
-			sql += " AND tradeable = 1 "
-		if only_inventory:
-			sql += " AND shown_in_inventory = 1 "
-		query = self.cached_query(sql)
-		format_data = lambda res: (res, get_res_icon_path(res, 50))
-		return [format_data(row[0]) for row in query]
-
 	# Sound table
 
 	def get_sound_file(self, soundname):
@@ -109,48 +91,7 @@ class UhDbAccessor(DbReader):
 		       sounds_special.type = ?'
 		return self.cached_query(sql, soundname)[0][0]
 
-
-	def get_random_action_set(self, object_id, level=0, exact_level=False):
-		"""Returns an action set for an object of type object_id in a level <= the specified level.
-		The highest level number is preferred.
-		@param db: UhDbAccessor
-		@param object_id: type id of building
-		@param level: level to prefer. a lower level might be chosen
-		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: tuple: (action_set_id, preview_action_set_id)"""
-		assert level >= 0
-
-		action_sets_by_lvl = Entities.buildings[object_id].action_sets_by_level
-		action_sets = Entities.buildings[object_id].action_sets
-		action_set = None
-		if exact_level:
-			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
-		else: # search all levels for an action set, starting with highest one
-			for possible_level in reversed(xrange(level+1)):
-				if len(action_sets_by_lvl[possible_level]) > 0:
-					action_set = action_sets_by_lvl[possible_level][randint(0, len(action_sets_by_lvl[possible_level])-1)]
-					break
-		if action_set is None:
-			assert False, "Couldn't find action set for obj %s in lvl %s" % (object_id, level)
-
-		preview = action_sets[action_set]['preview'] if 'preview' in action_sets[action_set] else None
-		return (action_set, preview)
-
-
 	# Building table
-
-	def get_building_tooltip(self, building_class_id):
-		"""Returns tooltip text of a building class.
-		ATTENTION: This text is automatically translated when loaded
-		already. DO NOT wrap the return value of this method in _()!
-		@param building_class_id: class of building, int
-		@return: string tooltip_text
-		"""
-		buildingtype = Entities.buildings[building_class_id]
-		#xgettext:python-format
-		tooltip = _("{building}: {description}")
-		return tooltip.format(building=_(buildingtype._name),
-		                      description=_(buildingtype.tooltip_text))
 
 	@decorators.cachedmethod
 	def get_related_building_ids(self, building_class_id):
@@ -186,7 +127,7 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT DISTINCT building FROM related_buildings"
 		return map(lambda x: x[0], self.cached_query(sql))
 
-	# Message table
+	# Messages
 
 	def get_msg_visibility(self, msg_id_string):
 		"""
@@ -200,7 +141,7 @@ class UhDbAccessor(DbReader):
 		"""
 		@param msg_id_string: string id of the message
 		"""
-		sql = "SELECT text FROM message WHERE id_string = ?"
+		sql = "SELECT text FROM message_text WHERE id_string = ?"
 		return self.cached_query(sql, msg_id_string)[0][0]
 
 	def get_msg_icon_id(self, msg_id_string):
@@ -211,113 +152,107 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT icon FROM message where id_string = ?"
 		return self.cached_query(sql, msg_id_string)[0][0]
 
-	def get_msg_icons(self, msg_id_string):
+	def get_msg_icon_path(self, msg_id_string):
 		"""
 		@param msg_id_string: string id of the message
-		@return: tuple: (up, down, hover) images
+		@return: str: path attribute to message icon suitable for ImageButton
 		"""
-		sql = "SELECT up_image, down_image, hover_image FROM message_icon WHERE icon_id = ?"
-		return self.cached_query(sql, msg_id_string)[0]
+		sql = "SELECT path FROM message_icon WHERE icon_id = ?"
+		return self.cached_query(sql, msg_id_string)[0][0]
 
 	#
 	#
-	# Settler DATABASE
+	# Inhabitants
 	#
 	#
-
-	# production_line table
-
-	def get_settler_production_lines(self, level):
-		"""Returns a list of settler's production lines for a specific level
-		@param level: int level for which to return the production lines
-		@return: list of production lines"""
-		return self.cached_query("SELECT production_line \
-		                          FROM settler_production_line \
-		                          WHERE level = ?", level)
 
 	def get_settler_name(self, level):
-		"""Returns the name for a specific settler level
-		@param level: int settler's level
-		@return: string settler's level name"""
-		return self.cached_query("SELECT name FROM settler_level WHERE level = ?",
-		                         level)[0][0]
+		"""Returns the name of inhabitants for a specific tier.
+		@param level: int - which tier
+		@return: string - inhabitant name"""
+		sql = "SELECT name FROM tier WHERE level = ?"
+		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_house_name(self, level):
-		"""Returns name of the residential building for a specific increment
-		@param level: int settler's level
-		@return: string settler's housing name"""
-		return self.cached_query("SELECT residential_name FROM settler_level \
-		                          WHERE level = ?", level)[0][0]
+		"""Returns name of the residential building for a specific tier
+		@param level: int - which tier
+		@return: string - housing name"""
+		sql = "SELECT residential_name FROM tier WHERE level = ?"
+		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_tax_income(self, level):
-		return self.cached_query("SELECT tax_income FROM settler_level \
-		                          WHERE level=?", level)[0][0]
+		sql = "SELECT tax_income FROM tier WHERE level = ?"
+		return self.cached_query(sql, level)[0][0]
 
-	def get_settler_inhabitants_max(self, level):
-		return self.cached_query("SELECT inhabitants_max FROM settler_level \
-		                          WHERE level=?", level)[0][0]
+	def get_tier_inhabitants_max(self, level):
+		"""Returns the upper limit of inhabitants per house for a specific tier.
+		Inhabitants will try to increase their tier upon exceeding this value.
+		@param level: int - which tier
+		"""
+		sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
+		return self.cached_query(sql, level)[0][0]
 
-	def get_settler_inhabitants(self, building_id):
-		return self.cached_query("SELECT inhabitants FROM settler WHERE rowid=?",
-		                         building_id)[0][0]
+	def get_tier_inhabitants_min(self, level):
+		"""Returns the lower limit of inhabitants per house for a specific tier.
+		This limit coincides with the max. amount of the previous tier.
+		Inhabitants will decrease their tier after falling below.
+		@param level: int - which tier
+		"""
+		if level == TIER.LOWEST:
+			return 0
+		else:
+			sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
+			return self.cached_query(sql, level - 1)[0][0]
 
-	def get_settler_upgrade_material_prodline(self, level):
-		db_result = self.cached_query("SELECT production_line FROM upgrade_material \
-		                          WHERE level = ?", level)
-		return db_result[0][0] if db_result else None
+	def get_upper_happiness_limit(self):
+		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"
+		return self.cached_query(sql)[0][0]
 
-	def get_production_line_data(self, production_line_id):
-		consumption = self.cached_query("SELECT resource, amount FROM production \
-			              WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", production_line_id)
-		production = self.cached_query("SELECT resource, amount FROM production \
-			             WHERE production_line = ? AND amount > 0 ORDER BY amount ASC", production_line_id)
-		consumption = list([list(x) for x in consumption])
-		production = list([list(x) for x in production])
-		(changes_anim, time, default) = self.cached_query("SELECT changes_animation, time, enabled_by_default FROM production_line WHERE id=?", production_line_id)[0]
-		prod_line =  { 'time': int(time) }
-		if changes_anim == 0:
-			prod_line['changes_animation'] = False
-		if default == 0:
-			prod_line['enabled_by_default'] = False
-		if len(production) > 0:
-			prod_line['produces'] = production
-		if len(consumption) > 0:
-			prod_line['consumes'] = consumption
-		return prod_line
-
+	def get_lower_happiness_limit(self):
+		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_decrease_limit'"
+		return self.cached_query(sql)[0][0]
 
 	# Misc
 
 	def get_player_start_res(self):
 		"""Returns resources, that players should get at startup as dict: { res : amount }"""
-		ret = {}
-		for res, amount in self.cached_query("SELECT resource, amount FROM player_start_res"):
-			ret[res] = amount
-		return ret
+		start_res = self.cached_query("SELECT resource, amount FROM player_start_res")
+		return dict(start_res)
 
 	@decorators.cachedmethod
 	def get_storage_building_capacity(self, storage_type):
-		"""Returns the amount that a storage building can store of every resource."""
-		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
+		"""Returns the amount that a storage building can store of every resource.
+		@param storage_type: building class id"""
+		sql = "SELECT size FROM storage_building_capacity WHERE type = ?"
+		return self.cached_query(sql, storage_type)[0][0]
 
-	def get_resource_deposit_resources(self, deposit_id):
-		"""Returns the range of resources a resource deposit has at the beginning."""
-		return self("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", deposit_id)
+	def get_random_ai_name(self, locale, used_names):
+		"""Returns a random name compatible with the given locale. If there are
+		no unused names left, None is returned.
+		"""
+		used_names_placeholder = ', '.join(['?']*len(used_names))
+		sql = "SELECT name FROM ainames \
+				WHERE name NOT IN ({0}) AND \
+					  (locale IS NULL OR locale = ?) \
+				ORDER BY random() \
+				LIMIT 1".format(used_names_placeholder)
+		params = used_names
+		params.append(locale)
+		return self(sql, *params)[0][0]
 
-	# Tile stes
+	# Tile sets
 
 	def get_random_tile_set(self, ground_id):
-		"""Returns an tile set for a tile of type id"""
-		sql = "SELECT set_id FROM tile_set \
-		       WHERE ground_id = ?"
+		"""Returns a tile set for a tile of type ground_id"""
+		sql = "SELECT set_id FROM tile_set WHERE ground_id = ?"
 		db_data = self.cached_query(sql, ground_id)
-		return db_data[randint(0, len(db_data) - 1)] if db_data else None
+		return random.choice(db_data)[0] if db_data else None
 
 	@decorators.cachedmethod
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
-		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )
+		return frozenset( id for (id, b) in Entities.buildings.iteritems() if b.translucent )
 
 	# Weapon table
 
@@ -334,13 +269,33 @@ class UhDbAccessor(DbReader):
 
 	def get_unit_type_name(self, type_id):
 		"""Returns the name of a unit type identified by its type"""
-		return self.cached_query("SELECT name FROM unit where id = ?", type_id)[0][0]
+		return Entities.units[type_id].name
+
+	def get_unit_tooltip(self, unit_id):
+		"""Tries to identify unit properties to display as tooltip.
+		#TODO Should be extended later to also include movement speed, etc."""
+		helptexts = [] # collects all information we will find
+		unit = Entities.units[unit_id]
+		try:
+			comp = unit.get_component_template('StorageComponent')
+			storage = comp['PositiveTotalNumSlotsStorage']
+			# Ship storage properties
+			helptext = T('{slotnum} slots, {limit}t')
+			helptext = helptext.format(slotnum=storage['slotnum'],
+			                           limit=storage['limit'])
+			helptexts.append(helptext)
+		except KeyError: # Component not found, ignore this part
+			pass
+		try:
+			comp = unit.get_component_template('HealthComponent')
+			helptext = T('Health: {health}')
+			helptext = helptext.format(health=comp['maxhealth'])
+			helptexts.append(helptext)
+		except KeyError: # Component not found, ignore this part
+			pass
+		return u'\\n'.join(helptexts)
 
 
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script( savegame_template.read() )
-
-def read_island_template(db):
-	savegame_template = open(PATHS.ISLAND_TEMPLATE, "r")
-	db.execute_script( savegame_template.read() )
+	db.execute_script(savegame_template.read())

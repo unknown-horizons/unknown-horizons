@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2016-10-29 14:24+0000\n"
+"Last-Translator: Matej Kolarević <tildica11@gmail.com>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/uh/the-"
+"unknown/hr/>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.9-dev\n"
+
+#. scenario difficulty
+msgid "easy"
+msgstr "lagano"
+
+#. scenario description
+#, fuzzy
+#| msgid ""
+#| "You are the captain of a ship under the flag of England in 1740. You and "
+#| "your crew were on the way to a colony of England in the pacific ocean.\n"
+#| "Everything went fine until you came into a storm…"
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and "
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
+"Everything went fine until you came into a storm…"
+msgstr ""
+"Vi ste kapetan broda pod zastavom Engleske 1740. godine. Vi i vaša posada "
+"bili ste na putu prema Engleskoj koloniji koja se nalazi negdje na "
+"pacifičkom oceanu.\n"
+"Sve je bilo u redu dok niste stigli u strašnu oluju…"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "20th November 1740"
+msgstr "20. studeni 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"Nakon četiri dana oluja se napokon stišala i posada se može odmoriti. "
+"Međutim imamo jako malo hrane i naš brod je u dosta lošem stanju. Također "
+"naši navigacijski instrumenti i morske karte su izgubljeni."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for "
+"fish, so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"Moramo uskoro doći do obale. Jedan od mojih mornara je vidio nekoliko ptica "
+"koje love ribu što ukazuje na kopno u blizini. Na sreću uvijek imamo nešto "
+"alata i dasaka na brodu kako bi mogli izgraditi sklonište."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"Zadatak:\n"
+"Pronađi kopno i izgradi luku."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "22nd November 1740"
+msgstr "22. studeni 1740g"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days… we are running out of food and lack basic building material."
+msgstr ""
+"Luka je izgrađena i nova nada se budi. Još uvijek sam zabrinut oko sljedećih "
+"par dana... uskoro ćemo ostati bez hrane i nedostaje nam osnovnih "
+"građevinskih materijala."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send "
+"people gathering food and lumber so that we can survive and build some "
+"shelter."
+msgstr ""
+"Moramo osigurati osnovne potrebe ljudi kako bi preživjeli. Vrijeme je da "
+"pošaljemo ljude kako bi sakupili hranu i drvo te time bi preživjeli i "
+"izgradili nekakav zaklon."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"Zadatak:\n"
+"Izgradi barem jedno od svakog:\n"
+"* Drvosječu\n"
+"* Ribara\n"
+"* Lovca\n"
+"Skupi 5 hrane i 5 dasaka."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "25th November 1740"
+msgstr "25. studeni 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"Osigurali smo naše osnovne potrebe za hranom i skupili nešto drva kako bi "
+"nastavili sa rastom naše naseobine. Naši ljudi zahtjevaju mjesto za život i "
+"razmjenu dobara kako bi zadovoljili svoje potrebe."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"Vrijeme je da izgradimo šatore za život i mali glavni trg za snabdjevanje "
+"stanovnika sa potrepštinama."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task:\n"
+#| "Build a main square and at least 10 tents."
+msgid ""
+"Task:\n"
+"Build a Main Square and at least 10 Tents."
+msgstr ""
+"Zadatak:\n"
+"Izgradi glavni trg i barem 10 šatora."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "1st December 1740"
+msgstr "1. prosinac 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"Napokon imamo dovoljno za jesti i mjesto za život. Moj šator nije baš udoban "
+"ali održava me suhim i imam osjećaj krova nad glavom noću."
+
+#. This is the text body of a logbook page.
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home…"
+msgstr ""
+"Istraživao sam  zvijezde noću, ali bez mojih morskih karata i instrumenata "
+"njihovo značenje je nejasno. Imam osjećaj da ćemo biti zaglavljeni ovdje "
+"neko vrijeme, moramo iskoristiti ovu novonastalu situaciju maksimalno.\n"
+"Možemo samo probati izgraditi civilizaciju pa pronaći put kući…"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Grow the village until you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"Zadatak:\n"
+"Izgradi svoju naseobinu dok populacija ne dosegne 250 stanovnika i pozitivnu "
+"bilancu."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "27th August 1745"
+msgstr "27. kolovoz 1745"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I "
+"have started getting used to my new home, but this island is too small to "
+"stay here forever."
+msgstr ""
+"Naše selo dobro napreduje, naseobina ima preko 250 stanovnika. Počeo sam se "
+"navikavati na naš novi dom ali ovaj otok je pre mali kako bi ostali ovdije "
+"zauvjek."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect, but I hope it will "
+"suffice to return here."
+msgstr ""
+"Trebali bi natovariti naš brod i pronaći veći otok koji nudi više mjesta za "
+"moje ljude. Napravio sam novu osnovnu navigacijsku mapu koristeći zvijezde "
+"koje vidim noću. Nije savršena ali se nadam da će biti dovoljna za povratak "
+"ovdije."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
+"how you can contribute to making this scenario longer and better!"
+msgstr ""
+"Zadatak:\n"
+"Kontaktirajte Unknown Horizons ekipu (www.unknown-horizons.org) i otkrij "
+"kako možeš pomoći u stvaranju ovog scenarija da bude duži i bolji!"

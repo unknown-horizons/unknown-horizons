@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,25 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import logging
 
-from horizons.world.production.productionline import ProductionLine
-from horizons.world.production.production import Production, SingleUseProduction
-from horizons.constants import PRODUCTION
-from horizons.scheduler import Scheduler
-from horizons.util import decorators
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.world.component import Component
-from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
-from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
+from horizons.component import Component
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import PRODUCTION
+from horizons.messaging import AddStatusIcon, MineEmpty, RemoveStatusIcon
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
-from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
+from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
+from horizons.util.shapes import Circle, Point
+from horizons.world.production.production import Production, SingleUseProduction
+from horizons.world.production.productionline import ProductionLine
+from horizons.world.production.unitproduction import UnitProduction
+from horizons.world.production.utilization import FieldUtilization, FullUtilization, Utilization
+from horizons.world.status import DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus
+
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
@@ -51,19 +54,22 @@ class Producer(Component):
 	NAME = "producer"
 	DEPENDENCIES = [StorageComponent]
 
-	utilisation_mapping = {
-	    'FieldUtilisation': FieldUtilisation,
-	    'FullUtilisation': FullUtilisation
+	utilization_mapping = {
+	    'FieldUtilization': FieldUtilization,
+	    'FullUtilization': FullUtilization
 	}
 
+	produces_resource = True
 	production_class = Production
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilisation_calculator=None, is_mine=True, **kwargs):
+	             utilization_calculator=None, is_mine_for=None, settler_upgrade_lines=None,
+	             **kwargs):
 		"""
-		@param productionline: yaml-dict for prod line data
-		@param utilisation_calculator: one of utilisatoin_mapping
+		@param productionline: yaml-dict for prod line data. Must not be changed since it is cached.
+		@param utilization_calculator: one of utilization_mapping
+		@param settler_upgrade_lines: data for settler upgrades. can one day be generalized to other upgrades
 		"""
 		if productionlines is None:
 			productionlines = {}
@@ -71,8 +77,17 @@ class Producer(Component):
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
-		assert utilisation_calculator is not None
-		self.__utilisation = utilisation_calculator
+		assert utilization_calculator is not None
+		self.__utilization = utilization_calculator
+
+		if settler_upgrade_lines:
+			from horizons.world.building.settler import SettlerUpgradeData
+			self.settler_upgrade_lines = SettlerUpgradeData(self, settler_upgrade_lines)
+
+			self.production_lines = self.production_lines.copy()
+			self.production_lines.update(self.settler_upgrade_lines.get_production_lines())
+		else:
+			self.settler_upgrade_lines = None
 
 
 	def __init(self):
@@ -84,16 +99,20 @@ class Producer(Component):
 		self._inactive_productions = {}
 		# Store whether or not the producer is active
 		self.__active = True
-		# Store whether or not the utilisation level is currently ok
-		self.__utilisation_ok = True
+		# Store whether or not the utilization level is currently ok
+		self.__utilization_ok = True
+		# Track if the producer is being removed
+		self.__removal_started = False
 
 		# BIG FAT NOTE: this has to be executed for all players for mp
 		# even if this building has no status icons
-		# TODO: think about whether this is enough gui-related so it belongs to the ExtScheduler, also check its performance when moving
+		# TODO: think about whether this is enough gui-related so it belongs to the ExtScheduler
+		# also check its performance when moving
 		interval = Scheduler().get_ticks(3)
 		run_in = self.session.random.randint(1, interval) # don't update all at once
 		if self.instance.has_status_icon:
-			Scheduler().add_new_object(self.update_capacity_utilisation, self, run_in=run_in, loops=-1, loop_interval = interval)
+			Scheduler().add_new_object(self.update_capacity_utilization, self, run_in=run_in,
+			                           loops=-1, loop_interval=interval)
 
 	def initialize(self):
 		self.__init()
@@ -101,16 +120,15 @@ class Producer(Component):
 		if self.__auto_init:
 			for prod_line, attributes in self.production_lines.iteritems():
 				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
-					continue  # It's set to false, don't add
+					continue  # It's set to False, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
-				prod.start()
-		# For newly built producers we set the utilisation to full for the first
+		# For newly built producers we set the utilization to full for the first
 		# few seconds, this avoids the low productivity icon being shown every
 		# time a new producer is built
-		temp_util = self.__utilisation
-		self.__utilisation = FullUtilisation()
-		Scheduler().add_new_object(Callback(self.__set_utilisation, temp_util), self, Scheduler().get_ticks(15))
+		temp_util = self.__utilization
+		self.__utilization = FullUtilization()
+		Scheduler().add_new_object(Callback(self.__set_utilization, temp_util), self, Scheduler().get_ticks(15))
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
@@ -120,43 +138,58 @@ class Producer(Component):
 		return prod_lines
 
 	def create_production(self, id, load=False):
+		"""
+		@param id: production line id
+		@param load: whether the production is used for loading.
+		"""
 		data = self.production_lines[id]
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
-		return production_class(inventory=self.instance.get_component(StorageComponent).inventory, \
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data, load=load, start_finished=self.__start_finished)
 
-	def add_production_by_id(self, production_line_id, start_finished=False):
+		# not really fancy way of selecting special production class
+		if self.settler_upgrade_lines:
+			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
+				production_class = SingleUseProduction
+
+		return production_class(inventory=self.instance.get_component(StorageComponent).inventory,
+		                        owner_inventory=owner_inventory, prod_id=id, prod_data=data,
+		                        load=load, start_finished=self.__start_finished)
+
+	def create_production_line(self, id):
+		"""Creates a production line instance, this is meant only for data transfer and READONLY use!
+		If you want to use production lines for anything else, go the proper way of the production class."""
+		assert id in self.production_lines
+		data = self.production_lines[id]
+		return ProductionLine(id, data)
+
+	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
 		@param production_line_id: Production line from db
 		"""
-		production_class = self.production_class
-		owner_inventory = self.instance._get_owner_inventory()
-		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, \
-				                             production_line_id, self.production_lines[production_line_id], start_finished=start_finished))
+		production = self.create_production(production_line_id)
+		self.add_production( production )
+		return production
 
-
-	def update_capacity_utilisation(self):
-		"""Called by the scheduler to update the utilisation regularly"""
-		if not self.capacity_utilisation_below(ProductivityLowStatus.threshold) is not self.__utilisation_ok:
-			self.__utilisation_ok = not self.__utilisation_ok
-			if self.__utilisation_ok:
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, ProductivityLowStatus))
+	def update_capacity_utilization(self):
+		"""Called by the scheduler to update the utilization regularly"""
+		if not self.capacity_utilization_below(ProductivityLowStatus.threshold) is not self.__utilization_ok:
+			self.__utilization_ok = not self.__utilization_ok
+			if self.__utilization_ok:
+				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
 			else:
-				icon = ProductivityLowStatus(self.instance)
-				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+				self._add_status_icon(ProductivityLowStatus(self.instance))
 
 	@property
-	def capacity_utilisation(self):
-		return self.__utilisation.capacity_utilisation(self)
+	def capacity_utilization(self):
+		return self.__utilization.capacity_utilization(self)
 
-	def capacity_utilisation_below(self, limit):
-		return self.__utilisation.capacity_utilisation_below(limit, self)
+	def capacity_utilization_below(self, limit):
+		return self.__utilization.capacity_utilization_below(limit, self)
 
 	def load(self, db, worldid):
 		# Call this before super, because we have to make sure this is called before the
 		# ConcreteObject's callback which is added during loading
-		Scheduler().add_new_object(self._on_production_change, self, run_in = 0)
+		Scheduler().add_new_object(self._on_production_change, self, run_in=0)
 		super(Producer, self).load(db, worldid)
 		# load all productions
 		self.__init()
@@ -166,13 +199,12 @@ class Producer(Component):
 			production.load(db, worldid)
 			self.add_production(production)
 
+		self._update_decommissioned_icon()
+
 	def save(self, db):
 		super(Producer, self).save(db)
 		for production in self.get_productions():
 			production.save(db, self.instance.worldid)
-
-	def load_production(self, db, worldid):
-		return self.production_class.load(db, worldid)
 
 	# INTERFACE
 	def add_production(self, production):
@@ -198,8 +230,8 @@ class Producer(Component):
 	def _production_finished(self, production):
 		"""Gets called when a production finishes. Intercepts call, adds info
 		and forwards it"""
-		produced_res = production.get_produced_res()
-		self.on_production_finished(produced_res)
+		produced_resources = production.get_produced_resources()
+		self.on_production_finished(produced_resources)
 
 	def finish_production_now(self):
 		"""Cheat, makes current production finish right now (and produce the resources).
@@ -217,6 +249,12 @@ class Producer(Component):
 		production.remove() # production "destructor"
 		if self.is_active(production):
 			del self._productions[production.get_production_line_id()]
+			# update decommissioned icon after removing production
+			self._update_decommissioned_icon()
+
+			self.instance._changed()
+			self.on_activity_changed(self.is_active())
+
 		else:
 			del self._inactive_productions[production.get_production_line_id()]
 
@@ -238,11 +276,14 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
-		super(Producer, self).remove()
+		self.__removal_started = True
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
 			self.remove_production(production)
-		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
+		# call super() after removing all productions since it removes the instance (make it invalid)
+		# which can be needed by changelisteners' actions (e.g. in remove_production method)
+		super(Producer, self).remove()
+		assert not self.get_productions(), 'Failed to remove %s ' % self.get_productions()
 
 
 	# PROTECTED METHODS
@@ -285,7 +326,7 @@ class Producer(Component):
 			return False
 		else:
 			assert production.get_production_line_id() in self._productions or \
-				   production.get_production_line_id() in self._inactive_productions
+			       production.get_production_line_id() in self._inactive_productions
 			return not production.is_paused()
 
 	def set_active(self, production=None, active=True):
@@ -311,17 +352,26 @@ class Producer(Component):
 					self._inactive_productions[line_id] = production
 					del self._productions[line_id]
 					production.pause()
-
-			if self.is_active() is not self.__active:
-				self.__active = not self.__active
-				if self.__active:
-					self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, DecommissionedStatus))
-				else:
-					icon = DecommissionedStatus(self.instance)
-					self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+			self._update_decommissioned_icon()
 
 		self.instance._changed()
 		self.on_activity_changed(self.is_active())
+
+	def _add_status_icon(self, icon):
+		if not self.__removal_started:
+			AddStatusIcon.broadcast(self, icon)
+
+	def _update_decommissioned_icon(self):
+		"""Add or remove decommissioned icon."""
+		if not self.instance.has_status_icon:
+			return
+
+		if self.is_active() is not self.__active:
+			self.__active = not self.__active
+			if self.__active:
+				RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
+			else:
+				self._add_status_icon(DecommissionedStatus(self.instance))
 
 	def toggle_active(self, production=None):
 		if production is None:
@@ -335,14 +385,14 @@ class Producer(Component):
 		"""Makes the instance act according to the producers
 		current state"""
 		state = self._get_current_state()
-		if (state is PRODUCTION.STATES.waiting_for_res or\
-			state is PRODUCTION.STATES.paused or\
-			state is PRODUCTION.STATES.none):
-			self.instance.act("idle", repeating=True)
-		elif state is PRODUCTION.STATES.producing:
-			self.instance.act("work", repeating=True)
+		new_action = 'idle'
+		if state is PRODUCTION.STATES.producing:
+			new_action = "work"
 		elif state is PRODUCTION.STATES.inventory_full:
-			self.instance.act("idle_full", repeating=True)
+			new_action = "idle_full"
+
+		# don't force restarts as not to disturb sequences such as tree growth
+		self.instance.act(new_action, repeating=True, force_restart=False)
 
 		if self.instance.has_status_icon:
 			full = state is PRODUCTION.STATES.inventory_full
@@ -351,20 +401,20 @@ class Producer(Component):
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
-				self.session.message_bus.broadcast(AddStatusIcon(self, self._producer_status_icon))
+				self._add_status_icon(self._producer_status_icon)
 
 			if not full and hasattr(self, "_producer_status_icon"):
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, InventoryFullStatus))
+				RemoveStatusIcon.broadcast(self, self.instance, InventoryFullStatus)
 				del self._producer_status_icon
 
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
-		if self.capacity_utilisation_below(ProductivityLowStatus.threshold):
+		if self.capacity_utilization_below(ProductivityLowStatus.threshold):
 			l.append( ProductivityLowStatus() )
 		return l
 
 	def __str__(self):
-		return "Producer(owner: " + str(self.instance) + ")"
+		return u'Producer(owner: ' + unicode(self.instance) + u')'
 
 	def get_production_progress(self):
 		"""Returns the current progress of the active production."""
@@ -377,27 +427,27 @@ class Producer(Component):
 			return production.progress
 		return 0 # No production available
 
-	def __set_utilisation(self, utilisation):
-		self.__utilisation = utilisation
+	def __set_utilization(self, utilization):
+		self.__utilization = utilization
 
 	@classmethod
 	def get_instance(cls, arguments=None):
 		arguments = arguments and arguments.copy() or {}
 
-		utilisation = None
-		if 'utilisation' in arguments:
-			if arguments['utilisation'] in cls.utilisation_mapping:
-				utilisation = cls.utilisation_mapping[arguments['utilisation']]()
-			del arguments['utilisation']
+		utilization = None
+		if 'utilization' in arguments:
+			if arguments['utilization'] in cls.utilization_mapping:
+				utilization = cls.utilization_mapping[arguments['utilization']]()
+			del arguments['utilization']
 		else:
-			utilisation = Utilisation()
+			utilization = Utilization()
 
-		if arguments.get('is_mine'):
+		if arguments.get('is_mine_for'):
 			# this is more of an aspect than an actual subclass, but python doesn't allow
 			# fast aspect-oriented programming
 			cls = MineProducer
 
-		return cls(utilisation_calculator=utilisation, **arguments)
+		return cls(utilization_calculator=utilization, **arguments)
 
 
 class MineProducer(Producer):
@@ -415,7 +465,7 @@ class MineProducer(Producer):
 			# this is never going to change, the building is useless now.
 			if self.is_active():
 				self.set_active(active=False)
-			self.instance.owner.notify_mine_empty(self.instance)
+			MineEmpty.broadcast(self, self.instance)
 
 
 class QueueProducer(Producer):
@@ -457,20 +507,14 @@ class QueueProducer(Producer):
 
 			self.start_next_production()
 
-	def load_production(self, db, worldid):
-		prod = self.production_class.load(db, worldid)
-		prod.add_production_finished_listener(self.on_queue_element_finished)
-		return prod
 
 	def check_next_production_startable(self):
-		# See if we can start the next production,  this only works if the current
+		# See if we can start the next production, this only works if the current
 		# production is done
-		#print "Check production"
 		state = self._get_current_state()
-		return (state is PRODUCTION.STATES.done or\
-				state is PRODUCTION.STATES.none or\
-				state is PRODUCTION.STATES.paused) and\
-			   (len(self.production_queue) > 0)
+		return len(self.production_queue) > 0 and \
+		       (state is PRODUCTION.STATES.done or
+		        state is PRODUCTION.STATES.none)
 
 	def on_queue_element_finished(self, production):
 		"""Callback used for the SingleUseProduction"""
@@ -495,7 +539,7 @@ class QueueProducer(Producer):
 
 	def cancel_current_production(self):
 		"""Cancels the current production and proceeds to the next one, if there is one"""
-		# Remove current productions, loose all progress and resources
+		# Remove current productions, lose all progress and resources
 		for production in self._productions.copy().itervalues():
 			self.remove_production(production)
 		for production in self._inactive_productions.copy().itervalues():
@@ -511,9 +555,10 @@ class QueueProducer(Producer):
 		self.instance._changed()
 
 
-class UnitProducer(QueueProducer):
+class ShipProducer(QueueProducer):
 	"""Uses queues to produce naval units"""
 
+	produces_resource = False
 	production_class = UnitProduction
 
 	def get_unit_production_queue(self):
@@ -521,16 +566,16 @@ class UnitProducer(QueueProducer):
 		Does not include the currently produced unit. List is in order."""
 		queue = []
 		for prod_line_id in self.production_queue:
-			prod_line = ProductionLine(prod_line_id, self.production_lines[prod_line_id])
+			prod_line = self.create_production_line(prod_line_id)
 			units = prod_line.unit_production.keys()
 			if len(units) > 1:
-				print 'WARNING: unit production system has been designed for 1 type per order'
+				print('WARNING: unit production system has been designed for 1 type per order')
 			queue.append(units[0])
 		return queue
 
 	def on_queue_element_finished(self, production):
 		self.__create_unit()
-		super(UnitProducer, self).on_queue_element_finished(production)
+		super(ShipProducer, self).on_queue_element_finished(production)
 
 	def __create_unit(self):
 		"""Create the produced unit now."""
@@ -539,26 +584,54 @@ class UnitProducer(QueueProducer):
 			assert isinstance(production, UnitProduction)
 			self.on_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
-				for i in xrange(0, amount):
-					radius = 1
-					found_tile = False
-					# search for free water tile, and increase search radius if none is found
-					while not found_tile:
-						for coord in Circle(self.instance.position.center(), radius).tuple_iter():
-							point = Point(coord[0], coord[1])
-							if self.instance.island.get_tile(point) is None:
-								tile = self.session.world.get_tile(point)
-								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
-									# execute bypassing the manager, it's simulated on every machine
-									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
-									# Fire a message indicating that the ship has been created
-									self.session.ingame_gui.message_widget.add(None, None, 'NEW_UNIT')
-									found_tile = True
-									break
-						radius += 1
+				for i in xrange(amount):
+					self._place_unit(unit)
 
+	def _place_unit(self, unit):
+		radius = 1
+		found_tile = False
+		# search for free water tile, and increase search radius if none is found
+		while not found_tile:
+			for coord in Circle(self.instance.position.center, radius).tuple_iter():
+				point = Point(coord[0], coord[1])
+				if self.instance.island.get_tile(point) is not None:
+					continue
+				tile = self.session.world.get_tile(point)
+				if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
+					# execute bypassing the manager, it's simulated on every machine
+					u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
+					# Fire a message indicating that the ship has been created
+					name = u.get_component(NamedComponent).name
+					self.session.ingame_gui.message_widget.add(string_id='NEW_SHIP', point=point,
+					                                           message_dict={'name' : name})
+					found_tile = True
+					break
+			radius += 1
+
+class GroundUnitProducer(ShipProducer):
+	"""Uses queues to produce groundunits"""
+
+	produces_resource = False
+
+	def _place_unit(self, unit):
+		radius = 1
+		found_tile = False
+		while not found_tile:
+			# search for a free tile around the building
+			for tile in self.instance.island.get_surrounding_tiles(self.instance.position.center, radius):
+				point = Point(tile.x, tile.y)
+				if not (tile.is_water or tile.blocked) and (tile.x, tile.y) not in self.session.world.ground_unit_map:
+					u = CreateUnit(self.instance.owner.worldid, unit, tile.x, tile.y)(issuer=self.instance.owner)
+					# Fire a message indicating that the ship has been created
+					name = u.get_component(NamedComponent).name
+					self.session.ingame_gui.message_widget.add(string_id='NEW_SOLDIER', point=point,
+						                                   message_dict={'name' : name})
+					found_tile = True
+					break
+			radius += 1
 
 decorators.bind_all(Producer)
 decorators.bind_all(MineProducer)
 decorators.bind_all(QueueProducer)
-decorators.bind_all(UnitProducer)
+decorators.bind_all(ShipProducer)
+decorators.bind_all(GroundUnitProducer)

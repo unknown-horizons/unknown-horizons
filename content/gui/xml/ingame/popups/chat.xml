@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<Container name="chat_dialog_window" size="472,290" position="275,205"
+<Container name="chat_dialog_window" size="472,290"
+	position_technique="center:center"
 	background_image="content/gui/images/background/notice290.png">
 <VBox position="90,30">
 	<Label text="Chat" name="headline" />
-	<Icon image="content/gui/images/background/hr.png" />
+	<hr />
 	<Label name="chat_lbl" text="Enter your message:" />
 	<TextField name="msg" min_size="300,20" max_size="300,20" />
 

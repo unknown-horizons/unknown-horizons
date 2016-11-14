@@ -1,20 +1,26 @@
-id: 15
-name: _ Trail
+id: BUILDINGS.TRAIL
+name:
+  TIER.SAILORS: _ Trail
+  TIER.PIONEERS: _ Gravel Path
+  TIER.CITIZENS: _ Cobblestone Street
+# TIER.ARISTOCRATS: _ Avenue
 baseclass: path.Road
 radius: 0
 cost: 0
 cost_inactive: 0
 size_x: 1
 size_y: 1
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: street-1
+inhabitants: 0
 tooltip_text: _ Needed for collecting goods.
-settler_level: 0
-buildingcosts: {1: 5}
+tier: TIER.SAILORS
+buildingcosts: {RES.GOLD: 5}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
-actionsets:
-  as_trail: {preview: as_preview_trail, level: 0}
-  as_gravel_path: {preview: as_preview_gravel_path, level: 1}
+actionsets: #TODO Fix preview sets
+  TIER.SAILORS:
+    as_trail:
+  TIER.PIONEERS:
+    as_gravel_path:
+  TIER.CITIZENS:
+    as_stone_path:

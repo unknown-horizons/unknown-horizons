@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractTree(AbstractBuilding):
 	@property
 	def directly_buildable(self):
@@ -36,7 +37,7 @@ class AbstractTree(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.TREE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TREE] = cls
 
 AbstractTree.register_buildings()
 

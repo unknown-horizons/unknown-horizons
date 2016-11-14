@@ -1,0 +1,33 @@
+id: BUILDINGS.STONE_PIT
+name: _ Stone Pit
+baseclass: production.Mine
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 3
+size_y: 3
+inhabitants: 1
+tooltip_text: _ Gets stone from a mountain.
+tier: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    is_mine_for: BUILDINGS.STONE_DEPOSIT
+    productionlines:
+      STONE:
+        produces:
+        - [RES.STONE_TOPS, 1]
+        consumes:
+        - [RES.STONE_DEPOSIT, -1]
+        time: 15
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.STONE_DEPOSIT: 1000000, RES.STONE_TOPS: 8}
+actionsets:
+  TIER.CITIZENS:
+    as_stone_pit0:

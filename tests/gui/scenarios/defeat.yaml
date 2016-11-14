@@ -1,0 +1,10 @@
+events:
+- # Defeat
+  actions:
+   - {type: lose}
+  conditions:
+   - type: time_passed
+     arguments: [0]
+
+metadata:
+  mapfile: development.sqlite

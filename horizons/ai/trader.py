@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,15 +21,18 @@
 
 import logging
 
-from horizons.scheduler import Scheduler
-from horizons.util import Callback, WorldObject, Circle
-from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.ai.generic import GenericAI
-from horizons.ext.enum import Enum
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.util.messaging.message import NewSettlement
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import BUILDINGS, TRADER, UNITS
+from horizons.ext.enum import Enum
+from horizons.messaging import NewSettlement
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Circle
+from horizons.util.worldobject import WorldObject
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class Trader(GenericAI):
@@ -49,25 +52,28 @@ class Trader(GenericAI):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)
 		self.__init()
-		self.create_ship()
+		map_size = self.session.world.map_dimensions.width
+		while map_size > 0:
+			self.create_ship()
+			map_size -= TRADER.TILES_PER_TRADER
 
 	def create_ship(self):
 		"""Create a ship and place it randomly"""
 		self.log.debug("Trader %s: creating new ship", self.worldid)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
+		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_warehouse
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
 	def __init(self):
-		self.office = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
+		self.warehouse = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
 		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
 
-		self.session.message_bus.subscribe_globally(NewSettlement, self._on_new_settlement)
+		NewSettlement.subscribe(self._on_new_settlement)
 
 	def _on_new_settlement(self, msg):
-		# make sure there's a trader ship for 2 settlements
-		if len(self.session.world.settlements) > self.get_ship_count() * 2:
+		# make sure there's a trader ship for SETTLEMENTS_PER_SHIP settlements
+		if len(self.session.world.settlements) > self.get_ship_count() * TRADER.SETTLEMENTS_PER_SHIP:
 			self.create_ship()
 
 	def save(self, db):
@@ -92,7 +98,7 @@ class Trader(GenericAI):
 				assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
 				remaining_ticks = max(calls.values()[0], 1)
 
-			targeted_warehouse = None if ship.worldid not in self.office else self.office[ship.worldid].worldid
+			targeted_warehouse = None if ship.worldid not in self.warehouse else self.warehouse[ship.worldid].worldid
 
 			# put them in the database
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_warehouse) \
@@ -117,10 +123,10 @@ class Trader(GenericAI):
 			elif state == self.shipStates.moving_to_warehouse:
 				ship.add_move_callback(Callback(self.reached_warehouse, ship))
 				assert targeted_warehouse is not None
-				self.office[ship.worldid] = WorldObject.get_object_by_id(targeted_warehouse)
+				self.warehouse[ship.worldid] = WorldObject.get_object_by_id(targeted_warehouse)
 			elif state == self.shipStates.reached_warehouse:
 				assert remaining_ticks is not None
-				Scheduler().add_new_object( \
+				Scheduler().add_new_object(
 					Callback(self.ship_idle, ship), self, remaining_ticks)
 
 	def get_ship_count(self):
@@ -131,7 +137,7 @@ class Trader(GenericAI):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
 		super(Trader, self).send_ship_random(ship)
-		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship), \
+		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship),
 		                              callback=Callback(self._ship_found_signal_fire, ship))
 
 	def _check_for_signal_fire_in_ship_range(self, ship):
@@ -140,7 +146,7 @@ class Trader(GenericAI):
 			return False # don't visit signal fire again
 		for tile in self.session.world.get_tiles_in_radius(ship.position, ship.radius):
 			try:
-				if tile.object.id == BUILDINGS.SIGNAL_FIRE_CLASS:
+				if tile.object.id == BUILDINGS.SIGNAL_FIRE:
 					return tile.object
 			except AttributeError:
 				pass # tile has no object or object has no id
@@ -157,7 +163,8 @@ class Trader(GenericAI):
 				self.log.debug("Trader %s moving to house %s", self.worldid, house)
 				self.allured_by_signal_fire[ship] = True
 				# HACK: remove allured flag in a few ticks
-				def rem_allured(self, ship): self.allured_by_signal_fire[ship] = False
+				def rem_allured(self, ship):
+					self.allured_by_signal_fire[ship] = False
 				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))
 				self.send_ship_random_warehouse(ship, house)
 				return
@@ -167,56 +174,63 @@ class Trader(GenericAI):
 		"""Sends a ship to a random warehouse on the map
 		@param ship: Ship instance that is to be used
 		@param warehouse: warehouse instance to move to. Random one is selected on None."""
-		self.log.debug("Trader %s ship %s moving to warehouse (random=%s)", self.worldid, ship.worldid, \
+		self.log.debug("Trader %s ship %s moving to warehouse (random=%s)", self.worldid, ship.worldid,
 		               (warehouse is None))
 		#TODO maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		warehouses = self.session.world.get_warehouses()
-		if len(warehouses) == 0: # there aren't any warehouses, move randomly
+		# Remove all warehouses that are not safe to visit
+		warehouses = filter(self.is_warehouse_safe, warehouses)
+		if not warehouses: # there aren't any warehouses, move randomly
 			self.send_ship_random(ship)
 		else: # select a warehouse
 			if warehouse is None:
-				self.office[ship.worldid] = self.session.random.choice(warehouses)
+				self.warehouse[ship.worldid] = self.session.random.choice(warehouses)
 			else:
-				self.office[ship.worldid] = warehouse
+				self.warehouse[ship.worldid] = warehouse
 			try: # try to find a possible position near the warehouse
-				ship.move(Circle(self.office[ship.worldid].position.center(), ship.radius), Callback(self.reached_warehouse, ship))
+				ship.move(Circle(self.warehouse[ship.worldid].position.center, ship.radius), Callback(self.reached_warehouse, ship))
 				self.ships[ship] = self.shipStates.moving_to_warehouse
 			except MoveNotPossible:
 				self.send_ship_random(ship)
+
+	def is_warehouse_safe(self, warehouse):
+		"""Checkes whether a warehouse is safe to visit"""
+		return not isinstance(self.session.world.disaster_manager.get_disaster(warehouse.settlement), BlackDeathDisaster)
 
 	def reached_warehouse(self, ship):
 		"""Actions that need to be taken when reaching a warehouse:
 		Sell demanded res, buy offered res, simulate load/unload, continue route.
 		@param ship: ship instance"""
 		self.log.debug("Trader %s ship %s: reached warehouse", self.worldid, ship.worldid)
-		settlement = self.office[ship.worldid].settlement
+		settlement = self.warehouse[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		trade_comp = settlement.get_component(TradePostComponent)
 		for res in sorted(trade_comp.buy_list.iterkeys()): # check for resources that the settlement wants to buy
-			wanted_amount = trade_comp.buy_list[res]
-			actual_min_limit = min(wanted_amount, TRADER.SELL_AMOUNT_MIN)
 			# select a random amount to sell
-			amount = self.session.random.randint(actual_min_limit, TRADER.SELL_AMOUNT_MAX)
-			if amount == 0:
-				continue
-			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)
-			trade_comp.buy(res, amount, price, self.worldid)
-			# don't care if it has been bought. the trader just offers.
-			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
+			amount = self.session.random.randint(TRADER.SELL_AMOUNT_MIN, TRADER.SELL_AMOUNT_MAX)
+			# try to sell all, else try smaller pieces
+			for try_amount in xrange(amount, 0, -1):
+				price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * try_amount)
+				trade_successful = trade_comp.buy(res, try_amount, price, self.worldid)
+				self.log.debug("Trader %s: offered sell %s tons of res %s, success: %s", self.worldid, try_amount, res, trade_successful)
+				if trade_successful:
+					break
 
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(trade_comp.sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
 			amount = self.session.random.randint(TRADER.BUY_AMOUNT_MIN, TRADER.BUY_AMOUNT_MAX)
-			if amount == 0:
-				continue
-			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * amount)
-			trade_comp.sell(res, amount, price, self.worldid)
-			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
+			# try to buy all, else try smaller pieces
+			for try_amount in xrange(amount, 0, -1):
+				price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * try_amount)
+				trade_successful = trade_comp.sell(res, try_amount, price, self.worldid)
+				self.log.debug("Trader %s: offered buy %s tons of res %s, success: %s", self.worldid, try_amount, res, trade_successful)
+				if trade_successful:
+					break
 
-		del self.office[ship.worldid]
+		del self.warehouse[ship.worldid]
 		# wait a few seconds before going on to simulate loading/unloading process
-		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, \
+		Scheduler().add_new_object(Callback(self.ship_idle, ship), self,
 		                           Scheduler().get_ticks(TRADER.TRADING_DURATION))
 		self.ships[ship] = self.shipStates.reached_warehouse
 
@@ -231,3 +245,7 @@ class Trader(GenericAI):
 		else:
 			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)
+
+	def end(self):
+		super(Trader, self).end()
+		NewSettlement.unsubscribe(self._on_new_settlement)

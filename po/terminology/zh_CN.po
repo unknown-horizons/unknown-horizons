@@ -1,0 +1,1123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-04-12 02:46+0000\n"
+"Last-Translator: Zhang June <avalon3515@163.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1365734761.0\n"
+
+msgid "game"
+msgstr "游戏"
+
+msgid "building"
+msgstr "建筑物"
+
+msgid "build"
+msgstr "建造"
+
+msgid "player"
+msgstr "玩家"
+
+msgid "settlement"
+msgstr "殖民"
+
+msgid "ship"
+msgstr "船"
+
+msgid "tent"
+msgstr "帐篷"
+
+msgid "farm"
+msgstr "农场"
+
+msgid "map"
+msgstr "地图"
+
+msgid "resource"
+msgstr "资源"
+
+msgid "warehouse"
+msgstr "仓库"
+
+msgid "inhabitants"
+msgstr "居民"
+
+msgid "change"
+msgstr "修改"
+
+msgid "unknown"
+msgstr "未知"
+
+msgid "produce"
+msgstr "生产"
+
+msgid "no"
+msgstr "不"
+
+msgid "trade"
+msgstr "贸易"
+
+msgid "check"
+msgstr "检查"
+
+msgid "field"
+msgstr "场"
+
+msgid "main"
+msgstr "主要"
+
+msgid "buy"
+msgstr "购买"
+
+msgid "click"
+msgstr "点击"
+
+msgid "left"
+msgstr "遗留"
+
+msgid "overview"
+msgstr "概述"
+
+msgid "running"
+msgstr "运行"
+
+msgid "square"
+msgstr "正方形"
+
+msgid "lumberjack"
+msgstr "伐木工"
+
+msgid "unable"
+msgstr "不能"
+
+msgid "continue"
+msgstr "继续"
+
+msgid "main square"
+msgstr "中央广场"
+
+msgid "production"
+msgstr "产品"
+
+msgid "sailors"
+msgstr "水手"
+
+msgid "sell"
+msgstr "卖"
+
+msgid "storage"
+msgstr "存储"
+
+msgid "contact"
+msgstr "联系"
+
+msgid "house"
+msgstr "房屋"
+
+msgid "menu"
+msgstr "菜单"
+
+msgid "tab"
+msgstr "标签"
+
+msgid "close"
+msgstr "关闭"
+
+msgid "food"
+msgstr "食物"
+
+msgid "free"
+msgstr "免费"
+
+msgid "ready"
+msgstr "就绪"
+
+msgid "setting"
+msgstr "设置"
+
+msgid "start"
+msgstr "开始"
+
+msgid "time"
+msgstr "时间"
+
+msgid "trader"
+msgstr "商人"
+
+msgid "unit"
+msgstr "单位"
+
+msgid "version"
+msgstr "版本"
+
+msgid "fire"
+msgstr "火"
+
+msgid "island"
+msgstr "岛屿"
+
+msgid "select"
+msgstr "选择"
+
+msgid "slot"
+msgstr "空位"
+
+msgid "stock"
+msgstr "库存"
+
+msgid "upgrade"
+msgstr "升级"
+
+msgid "coast"
+msgstr "海岸"
+
+msgid "color"
+msgstr "颜色"
+
+msgid "companies"
+msgstr "公司"
+
+msgid "file"
+msgstr "文件"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "键"
+
+msgid "taxes"
+msgstr "税"
+
+msgid "collector"
+msgstr "采集者"
+
+msgid "connection"
+msgstr "连接"
+
+msgid "log"
+msgstr "日志"
+
+msgid "multiplayer"
+msgstr "多人游戏"
+
+msgid "resident"
+msgstr "居民"
+
+msgid "wool"
+msgstr "羊毛"
+
+msgid "boards"
+msgstr "木板"
+
+msgid "built"
+msgstr "建造"
+
+msgid "button"
+msgstr "按钮"
+
+msgid "choose"
+msgstr "选择"
+
+msgid "connect"
+msgstr "连接"
+
+msgid "cost"
+msgstr "开销"
+
+msgid "happiness"
+msgstr "幸福"
+
+msgid "road"
+msgstr "路径"
+
+msgid "save"
+msgstr "保存"
+
+msgid "tree"
+msgstr "树木"
+
+msgid "amount"
+msgstr "数量"
+
+msgid "reach"
+msgstr "到达"
+
+msgid "size"
+msgstr "大小"
+
+msgid "add"
+msgstr "增加"
+
+msgid "fisher"
+msgstr "渔夫"
+
+msgid "free trader"
+msgstr "自由贸易"
+
+msgid "in stock"
+msgstr "库存"
+
+msgid "increase"
+msgstr "增加"
+
+msgid "mode"
+msgstr "模式"
+
+msgid "password"
+msgstr "密码"
+
+msgid "pasture"
+msgstr "牧场"
+
+msgid "range"
+msgstr "范围"
+
+msgid "signal"
+msgstr "信号"
+
+msgid "speed"
+msgstr "速度"
+
+msgid "sugar"
+msgstr "糖"
+
+msgid "access"
+msgstr "进入"
+
+msgid "build menu"
+msgstr "建造菜单"
+
+msgid "confectionery"
+msgstr "糖果店"
+
+msgid "enabled"
+msgstr "已启用"
+
+msgid "fetch"
+msgstr "获取"
+
+msgid "help"
+msgstr "帮助"
+
+msgid "income"
+msgstr "收入"
+
+msgid "join"
+msgstr "连接"
+
+msgid "level"
+msgstr "级别"
+
+msgid "move"
+msgstr "移动"
+
+msgid "multiple"
+msgstr "多人的"
+
+msgid "please check"
+msgstr "请检查"
+
+msgid "potato"
+msgstr "土豆"
+
+msgid "settler"
+msgstr "殖民者"
+
+msgid "total"
+msgstr "总数"
+
+msgid "construction"
+msgstr "建筑物"
+
+msgid "creator"
+msgstr "创建者"
+
+msgid "faith"
+msgstr "信仰"
+
+msgid "hold"
+msgstr "保持"
+
+msgid "icon"
+msgstr "图标"
+
+msgid "lamb"
+msgstr "羊羔"
+
+msgid "leave"
+msgstr "离开"
+
+msgid "location"
+msgstr "位置"
+
+msgid "multiple buildings"
+msgstr "多个建筑"
+
+msgid "pioneers"
+msgstr "括荒着"
+
+msgid "reached"
+msgstr "达到"
+
+msgid "run"
+msgstr "运行"
+
+msgid "session"
+msgstr "会话"
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
+msgid "slider"
+msgstr "滑框"
+
+msgid "space"
+msgstr "空间"
+
+msgid "storage tent"
+msgstr "储存间"
+
+msgid "target"
+msgstr "目标"
+
+msgid "terminated"
+msgstr "终止"
+
+msgid "tools"
+msgstr "工具"
+
+msgid "account"
+msgstr "帐号"
+
+msgid "active"
+msgstr "使用中的"
+
+msgid "afford"
+msgstr "提供"
+
+msgid "animals"
+msgstr "动物"
+
+msgid "Captain's log"
+msgstr "船长日志"
+
+msgid "cloth"
+msgstr "布匹"
+
+msgid "construct"
+msgstr "概念"
+
+msgid "cursor"
+msgstr "光标"
+
+msgid "description"
+msgstr "描述"
+
+msgid "entries"
+msgstr "条目"
+
+msgid "feature"
+msgstr "功能"
+
+msgid "fish"
+msgstr "鱼"
+
+msgid "forest"
+msgstr "森林"
+
+msgid "from time to time"
+msgstr "时时刻刻"
+
+msgid "global"
+msgstr "全球"
+
+msgid "grow"
+msgstr "种植"
+
+msgid "happy"
+msgstr "幸福"
+
+msgid "information"
+msgstr "信息"
+
+msgid "liquor"
+msgstr "酒"
+
+msgid "minimap"
+msgstr "小地图"
+
+msgid "offer"
+msgstr "提议"
+
+msgid "overview tab"
+msgstr "概览标签"
+
+msgid "plant"
+msgstr "植物"
+
+msgid "play"
+msgstr "玩"
+
+msgid "please check your"
+msgstr "请检查您的"
+
+msgid "potatoes"
+msgstr "土豆"
+
+msgid "price"
+msgstr "价格"
+
+msgid "read"
+msgstr "读取"
+
+msgid "screen"
+msgstr "屏幕"
+
+msgid "service"
+msgstr "服务"
+
+msgid "short"
+msgstr "短"
+
+msgid "solution"
+msgstr "解决方案"
+
+msgid "sound"
+msgstr "声音"
+
+msgid "special"
+msgstr "特殊的"
+
+msgid "spot"
+msgstr "点"
+
+msgid "statistics"
+msgstr "统计数据"
+
+msgid "store"
+msgstr "存储"
+
+msgid "team"
+msgstr "队伍"
+
+msgid "tear"
+msgstr "眼泪"
+
+msgid "time to time"
+msgstr "时常"
+
+msgid "trading"
+msgstr "贸易"
+
+msgid "unsupported"
+msgstr "不支持的"
+
+msgid "visit"
+msgstr "访问"
+
+msgid "world"
+msgstr "世界"
+
+msgid "wrong"
+msgstr "错误"
+
+msgid "bar"
+msgstr "条"
+
+msgid "bug"
+msgstr "漏洞"
+
+msgid "command"
+msgstr "命令"
+
+msgid "completed"
+msgstr "完成"
+
+msgid "forum"
+msgstr "论坛"
+
+msgid "happen"
+msgstr "发生"
+
+msgid "harvest"
+msgstr "丰收"
+
+msgid "in range"
+msgstr "在范围内"
+
+msgid "lamb wool"
+msgstr "羊毛"
+
+msgid "left the game"
+msgstr "离开游戏"
+
+msgid "lot of boards"
+msgstr "一些船只"
+
+msgid "marketplace"
+msgstr "市场"
+
+msgid "moment"
+msgstr "时刻"
+
+msgid "playing"
+msgstr "玩"
+
+msgid "produced"
+msgstr "生产"
+
+msgid "report"
+msgstr "报告"
+
+msgid "sale"
+msgstr "销售"
+
+msgid "school"
+msgstr "学校"
+
+msgid "started"
+msgstr "启动"
+
+msgid "temporarily"
+msgstr "临时地"
+
+msgid "trade with"
+msgstr "交易"
+
+msgid "values"
+msgstr "价值"
+
+msgid "wheel"
+msgstr "车轮"
+
+msgid "satisfied"
+msgstr "满意的"
+
+msgid "balance"
+msgstr "平衡"
+
+msgid "load"
+msgstr "读取"
+
+msgid "trail"
+msgstr "小径"
+
+msgid "default"
+msgstr "默认"
+
+msgid "iron"
+msgstr "铁"
+
+msgid "tobacco"
+msgstr "烟草"
+
+msgid "clay"
+msgstr "泥土"
+
+msgid "money"
+msgstr "金钱"
+
+msgid "pavilion"
+msgstr "帐篷"
+
+msgid "tax"
+msgstr "税"
+
+msgid "residential"
+msgstr "居民区的"
+
+msgid "stop"
+msgstr "停止"
+
+msgid "wait"
+msgstr "等待"
+
+msgid "decrease"
+msgstr "降低"
+
+msgid "ore"
+msgstr "矿石"
+
+msgid "return"
+msgstr "返回"
+
+msgid "savegame"
+msgstr "保存游戏"
+
+msgid "consume"
+msgstr "消耗"
+
+msgid "idle"
+msgstr "空闲"
+
+msgid "lower"
+msgstr "小写"
+
+msgid "saved"
+msgstr "已保存"
+
+msgid "village"
+msgstr "农村"
+
+msgid "yields"
+msgstr "生产量"
+
+msgid "back"
+msgstr "返回"
+
+msgid "build settlement"
+msgstr "修建殖民地"
+
+msgid "charcoal"
+msgstr "木炭"
+
+msgid "empty"
+msgstr "空的"
+
+msgid "existing"
+msgstr "现有"
+
+msgid "fulfill"
+msgstr "填满"
+
+msgid "graphics"
+msgstr "图形"
+
+msgid "hunt"
+msgstr "打猎"
+
+msgid "lumberjack tent"
+msgstr "伐木工的帐篷"
+
+msgid "please contact"
+msgstr "请联系"
+
+msgid "potato field"
+msgstr "土豆农场"
+
+msgid "seed"
+msgstr "种子"
+
+msgid "send"
+msgstr "发送"
+
+msgid "sheep"
+msgstr "绵羊"
+
+msgid "signal fire"
+msgstr "烽火"
+
+msgid "sugar field"
+msgstr "糖厂"
+
+msgid "error"
+msgstr "错误"
+
+msgid "deposit"
+msgstr "存款"
+
+msgid "invalid"
+msgstr "无效"
+
+msgid "network"
+msgstr "网络"
+
+msgid "route"
+msgstr "航线"
+
+msgid "selected"
+msgstr "已选取"
+
+msgid "boat"
+msgstr "船"
+
+msgid "create"
+msgstr "创建"
+
+msgid "filename"
+msgstr "文件名"
+
+msgid "mouse"
+msgstr "鼠标"
+
+msgid "partner"
+msgstr "伙伴"
+
+msgid "reset"
+msgstr "重置"
+
+msgid "configuration"
+msgstr "配置"
+
+msgid "delete"
+msgstr "删除"
+
+msgid "enter"
+msgstr "回车"
+
+msgid "quicksave"
+msgstr "快速保存"
+
+msgid "stone"
+msgstr "石头"
+
+msgid "weapon"
+msgstr "武器"
+
+msgid "cattle"
+msgstr "牛"
+
+msgid "message"
+msgstr "消息"
+
+msgid "port"
+msgstr "端口"
+
+msgid "scenario"
+msgstr "方案"
+
+msgid "spice"
+msgstr "香料"
+
+msgid "cocoa"
+msgstr "可可"
+
+msgid "corn"
+msgstr "谷物"
+
+msgid "details"
+msgstr "详细信息"
+
+msgid "found"
+msgstr "找到"
+
+msgid "herbs"
+msgstr "药草"
+
+msgid "pause"
+msgstr "暂停"
+
+msgid "pigs"
+msgstr "猪"
+
+msgid "press"
+msgstr "按"
+
+msgid "quit"
+msgstr "退出"
+
+msgid "savegame file"
+msgstr "游戏存档"
+
+msgid "valid"
+msgstr "有效"
+
+msgid "war"
+msgstr "战争"
+
+msgid "all settlements"
+msgstr "所有的定居点"
+
+msgid "apply"
+msgstr "应用"
+
+msgid "bricks"
+msgstr "砖块"
+
+msgid "chat"
+msgstr "聊天"
+
+msgid "confirm"
+msgstr "确认"
+
+msgid "default settings"
+msgstr "默认设置"
+
+msgid "diplomacy"
+msgstr "外交"
+
+msgid "displayed"
+msgstr "已显示"
+
+msgid "flour"
+msgstr "面粉"
+
+msgid "grapes"
+msgstr "葡萄"
+
+msgid "ground"
+msgstr "地面"
+
+msgid "health"
+msgstr "健康"
+
+msgid "land"
+msgstr "陆地"
+
+msgid "library"
+msgstr "图书馆"
+
+msgid "limit"
+msgstr "限制"
+
+msgid "loading"
+msgstr "加载中"
+
+msgid "logging"
+msgstr "日志"
+
+msgid "mine"
+msgstr "本地文件"
+
+msgid "mouse button"
+msgstr "鼠标按钮"
+
+msgid "not ready"
+msgstr "未就绪"
+
+msgid "player name"
+msgstr "玩家姓名"
+
+msgid "quote"
+msgstr "引述"
+
+msgid "reset to default"
+msgstr "恢复默认配置"
+
+msgid "salt"
+msgstr "盐"
+
+msgid "saved games"
+msgstr "已保存游戏"
+
+msgid "source"
+msgstr "资源"
+
+msgid "trade partner"
+msgstr "贸易伙伴"
+
+msgid "user"
+msgstr "用户"
+
+msgid "alliance"
+msgstr "联盟"
+
+msgid "allied"
+msgstr "联合的"
+
+msgid "alvearies"
+msgstr "蜂窝"
+
+msgid "beans"
+msgstr "豆类"
+
+msgid "boat builder"
+msgstr "造船厂"
+
+msgid "builder"
+msgstr "建造者"
+
+msgid "capacity"
+msgstr "容量"
+
+msgid "citizens"
+msgstr "市民"
+
+msgid "clay deposit"
+msgstr "粘土矿藏"
+
+msgid "cocoa beans"
+msgstr "可可豆"
+
+msgid "community"
+msgstr "社区"
+
+msgid "condiments"
+msgstr "调味品"
+
+msgid "configure"
+msgstr "配置"
+
+msgid "created"
+msgstr "创建"
+
+msgid "crops"
+msgstr "农作物"
+
+msgid "deer"
+msgstr "鹿"
+
+msgid "directory"
+msgstr "目录"
+
+msgid "disease"
+msgstr "疾病"
+
+msgid "doctor"
+msgstr "医生"
+
+msgid "drag"
+msgstr "拖动"
+
+msgid "education"
+msgstr "教育"
+
+msgid "ensure"
+msgstr "确认"
+
+msgid "entered"
+msgstr "进入"
+
+msgid "expenses"
+msgstr "费用"
+
+msgid "fallback"
+msgstr "备用"
+
+msgid "fixed"
+msgstr "固定"
+
+msgid "future"
+msgstr "将来"
+
+msgid "game menu"
+msgstr "游戏菜单"
+
+msgid "get-together"
+msgstr "聚会"
+
+msgid "going to location"
+msgstr "到达指定位置"
+
+msgid "honeycombs"
+msgstr "蜂窝"
+
+msgid "inventory"
+msgstr "库存"
+
+msgid "iron ore"
+msgstr "铁矿石"
+
+msgid "letters"
+msgstr "字母"
+
+msgid "linux users"
+msgstr "linux用户"
+
+msgid "load game"
+msgstr "载入游戏"
+
+msgid "manager"
+msgstr "经理"
+
+msgid "map size"
+msgstr "地图大小"
+
+msgid "maximum"
+msgstr "maximum 最大值"
+
+msgid "meant"
+msgstr "打算"
+
+msgid "meant as"
+msgstr "意味着"
+
+msgid "missing"
+msgstr "缺少"
+
+msgid "network port"
+msgstr "网络端口"
+
+msgid "package"
+msgstr "包"
+
+msgid "package manager"
+msgstr "软件包管理器"
+
+msgid "place multiple buildings"
+msgstr "放置多个建筑"
+
+msgid "position"
+msgstr "位置"
+
+msgid "production overview"
+msgstr "产品概述"
+
+msgid "quickload"
+msgstr "快速读取"
+
+msgid "random"
+msgstr "随机"
+
+msgid "random map"
+msgstr "随机地图"
+
+msgid "related"
+msgstr "相关的"
+
+msgid "related buildings"
+msgstr "相关建筑物"
+
+msgid "remove"
+msgstr "删除"
+
+msgid "renderer"
+msgstr "渲染器"
+
+msgid "run out"
+msgstr "耗尽"
+
+msgid "running costs"
+msgstr "运行成本"
+
+msgid "screenshot"
+msgstr "屏幕截图"
+
+msgid "selected units"
+msgstr "选择的单位"
+
+msgid "settled"
+msgstr "稳定的"
+
+msgid "ship overview"
+msgstr "显示概述"
+
+msgid "station"
+msgstr "车站"
+
+msgid "suitable"
+msgstr "合适的"
+
+msgid "system"
+msgstr "系统"
+
+msgid "tile"
+msgstr "拼接"
+
+msgid "tops"
+msgstr "顶端"
+
+msgid "tower"
+msgstr "堡垒"
+
+msgid "unable to find"
+msgstr "未能找到"
+
+msgid "want to continue"
+msgstr "希望继续"
+
+msgid "won"
+msgstr "胜利"
+
+msgid "written"
+msgstr "已写入"
+

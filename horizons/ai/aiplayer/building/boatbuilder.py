@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class AbstractBoatBuilder(AbstractBuilding):
 	@property
@@ -38,32 +40,20 @@ class AbstractBoatBuilder(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.BOATBUILDER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.BOAT_BUILDER] = cls
 
 class BoatBuilderEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.BOATBUILDER_CLASS, x, y, True, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.BOAT_BUILDER, (x, y), orientation)
 
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
 			return None # require boat builders to have a collector building in range
 
-		# TODO: it would be better to do a check like this once per game because it is never going to change
-		# make sure the boat builder has access to the sea
-		near_sea = False
-		world = area_builder.session.world
-		for coords in builder.position.get_radius_coordinates(2):
-			if coords in world.water_body and world.water_body[coords] == world.sea_number:
-				near_sea = True
-		if not near_sea:
-			return None
-
 		personality = area_builder.owner.personality_manager.get('BoatBuilderEvaluator')
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-		value = float(Entities.buildings[BUILDINGS.BOATBUILDER_CLASS].radius) / distance_to_collector + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.BOAT_BUILDER].radius) / distance_to_collector + alignment * personality.alignment_importance
 		return BoatBuilderEvaluator(area_builder, builder, value)
 
 	@property

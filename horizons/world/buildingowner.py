@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
+from horizons.util.python import decorators
+from horizons.util.shapes import Point, RadiusRect
 from horizons.world.providerhandler import ProviderHandler
-from horizons.util import decorators, Point
-from horizons.util.shapes.radiusshape import RadiusRect
+
 
 """
 Simple building management functionality.
@@ -64,7 +64,7 @@ class BuildingOwner(object):
 		self.buildings.remove(building)
 		assert building not in self.buildings
 
-	def get_settlements(self, rect, player = None):
+	def get_settlements(self, rect, player=None):
 		"""Returns the list of settlements for the coordinates describing a rect.
 		@param rect: Area to search for settlements
 		@return: list of Settlement instances at that position."""

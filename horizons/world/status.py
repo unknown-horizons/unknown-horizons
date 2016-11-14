@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,9 @@
 
 import operator
 
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
+
+
 """Classes used for StatusIcon.
 
 Code design note:
@@ -38,10 +41,12 @@ Keep the numbers unique to avoid confusion when sorting.
 """
 class StatusIcon(object):
 	# integer
-	priority = None
+	priority = None # type: int
 	# fife identifier for animations or icons. Must be supported by either the animationloader
 	# or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
-	icon = None
+	icon = None # type: str
+	# use _lazy
+	helptext = ""
 
 	def __init__(self, instance):
 		"""
@@ -64,22 +69,36 @@ class StatusIcon(object):
 	def __str__(self):
 		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
+class BlackDeathStatusIcon(StatusIcon):
+	""" Black Death disaster """
+	priority = 3000
+	icon = 'as_pestilence+idle+45'
+	_helptext = LazyT("The inhabitants are infected by the Black Death!")
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
 	priority = 3000
 	icon = 'as_on_fire+idle+45'
+	helptext = LazyT("This building is on fire!")
 
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
+	helptext = LazyT("These residents are unhappy.")
+
+class SettlerNotConnectedStatus(StatusIcon):
+	# threshold is the inhabitants decrease level
+	priority = 1700
+	icon = 'as_mainsquare_access+idle+45'
+	helptext = LazyT("These residents don't have access to a main square.")
 
 
 class InventoryFullStatus(StatusIcon):
 	priority = 1200
 	icon = 'as_inventory_full+idle+45'
+	helptext = LazyT("The inventory of this building is full.")
 
 	def __init__(self, instance, reslist):
 		"""
@@ -90,12 +109,14 @@ class InventoryFullStatus(StatusIcon):
 
 
 class ProductivityLowStatus(StatusIcon):
-	"""Terminology: productivity = capacity utilisation"""
+	"""Terminology: productivity = capacity utilization"""
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
+	helptext = LazyT("This building has a very low productivity.")
 
 
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
+	helptext = LazyT("This building is decommissioned.")

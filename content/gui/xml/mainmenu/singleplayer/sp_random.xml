@@ -4,45 +4,36 @@
 
 	<VBox name="map_settings"  padding="8">
 		<HBox name="seed_string">
-			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" />
-			<TextField name="seed_string_field" text="" max_size="250,20" min_size="125,20" />
+			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" comment="String to initialize random number generator with" />
+			<TextField name="seed_string_field" max_size="250,20" min_size="125,20" />
 		</HBox>
 		<HBox name="map_size">
-			<Label name="map_size_lbl" min_size="150,20" text="" />
-			<StepSlider name="map_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+			<Label name="map_size_lbl" min_size="150,20" />
+			<StepSlider name="map_size_slider" size="125,20" steps="50 ; 100 ; 150 ; 200 ; 250" marker_length="25" is_focusable="0" />
 		</HBox>
 		<HBox name="water_percent">
-			<Label name="water_percent_lbl" min_size="150,20" text="" />
-			<StepSlider name="water_percent_slider" size="125,20" scale_start="0" scale_end="6" step_length="1" marker_length="22" />
+			<Label name="water_percent_lbl" min_size="150,20" />
+			<StepSlider name="water_percent_slider" size="125,20" steps="20 ; 30 ; 40 ; 50 ; 60 ; 70 ; 80" marker_length="22" is_focusable="0" />
 		</HBox>
 		<HBox name="max_island_size">
-			<Label name="max_island_size_lbl" min_size="150,20" text="" />
-			<StepSlider name="max_island_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+			<Label name="max_island_size_lbl" min_size="150,20" />
+			<StepSlider name="max_island_size_slider" size="125,20" steps="30 ; 40 ; 50 ; 60 ; 70 ; 80" marker_length="25" is_focusable="0" />
 		</HBox>
 		<HBox name="preferred_island_size">
-			<Label name="preferred_island_size_lbl" min_size="150,20" text="" />
-			<StepSlider name="preferred_island_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+			<Label name="preferred_island_size_lbl" min_size="150,20" />
+			<StepSlider name="preferred_island_size_slider" size="125,20" steps="30 ; 40 ; 50 ; 60 ; 70 ; 80" marker_length="25" is_focusable="0" />
 		</HBox>
 		<HBox name="island_size_deviation">
-			<Label name="island_size_deviation_lbl" min_size="150,20" text="" />
-			<StepSlider name="island_size_deviation_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
+			<Label name="island_size_deviation_lbl" min_size="150,20" />
+			<StepSlider name="island_size_deviation_slider" size="125,20" steps="5 ; 10 ; 20 ; 30 ; 40" marker_length="25" is_focusable="0" />
 		</HBox>
-
-		<!--<HBox><Label text="TODO: all values below this aren't implemented yet"/></HBox>
-		<HBox name="param_climate">
-			<Label name="climate_lbl" text="Climate zone:" />
-		<Spacer />
-			<Label name="climate_zone_lbl_cold" text="frosty" />
-			<StepSlider name="map_size_slider" size="126,20" scale_start="1" scale_end="3" step_length="1" marker_length="42" />
-			<Label name="climate_zone_lbl_warm" text="torrid" />
-		</HBox>-->
 	</VBox>
 
 	<HBox>
-		<Icon name="map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0"/>
+		<Icon name="map_preview_minimap" size="128,128" max_size="128,128" is_focusable="0" />
 		<VBox>
-			<Spacer/>
-			<Label name="map_preview_status_label" is_focusable="0"/>
+			<Spacer />
+			<Label name="map_preview_status_label" is_focusable="0" />
 		</VBox>
 	</HBox>
 

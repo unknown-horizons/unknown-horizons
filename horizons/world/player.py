@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,37 +19,48 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import collections
 
+import horizons.main
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
-from horizons.world.playerstats import PlayerStats
-from horizons.util import WorldObject, Callback, Color, DifficultySettings
+from horizons.ext.typing import Any, Sequence, Union
+from horizons.messaging import PlayerInventoryUpdated, PlayerLevelUpgrade, SettlerUpdate
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
-from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.message import SettlerUpdate
+from horizons.util.color import Color
+from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.inventorychecker import InventoryChecker
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
+from horizons.world.playerstats import PlayerStats
+
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
+	STATS_UPDATE_INTERVAL = 3 # seconds
+
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
-	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
+	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},) # type: Sequence[Union[str, Dict[str, Any]]]
 
 
-	def __init__(self, session, worldid, name, color, difficulty_level = None):
+	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
 		@param name: user-chosen name
 		@param color: color of player (as Color)
+		@param clientid: id of client
 		@param inventory: {res: value} that are put in the players inventory
 		"""
 		if False:
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
-		self.__init(name, color, difficulty_level)
+		self.__init(name, color, clientid, difficulty_level, 0)
 
 	def initialize(self, inventory):
 		super(Player, self).initialize()
@@ -57,9 +68,9 @@ class Player(ComponentHolder, WorldObject):
 			for res, value in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
-	def __init(self, name, color, difficulty_level, settlerlevel = 0):
+	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
 		assert isinstance(color, Color)
-		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
+		assert isinstance(name, basestring) and name
 		try:
 			self.name = unicode(name)
 		except UnicodeDecodeError:
@@ -67,37 +78,43 @@ class Player(ComponentHolder, WorldObject):
 			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
 			self.name = unicode(name, errors='ignore')
 		self.color = color
+		self.clientid = clientid
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
+		self.max_tier_notification = max_tier_notification
 		self.settler_level = settlerlevel
+		self._stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
-		self.session.message_bus.subscribe_globally(SettlerUpdate, self.notify_settler_reached_level)
 
 		if self.regular_player:
-			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
+			SettlerUpdate.subscribe(self.notify_settler_reached_level)
 
 	@property
 	def is_local_player(self):
 		return self is self.session.world.player
 
-	def update_stats(self):
-		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)
-		self.stats = PlayerStats(self)
-
 	def get_latest_stats(self):
-		return self.stats
+		if self._stats is None or self._stats.collection_tick + PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick:
+			self._stats = PlayerStats(self)
+		return self._stats
 
 	@property
 	def settlements(self):
 		"""Calculate settlements dynamically to save having a redundant list here"""
-		return [ settlement for settlement in self.session.world.settlements if \
+		return [ settlement for settlement in self.session.world.settlements if
 		         settlement.owner == self ]
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not self.session.world.player else \
-		          horizons.main.fife.get_uh_setting("ClientID")
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level) VALUES(?, ?, ?, ?, ?, ?)", \
-			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None)
+		client_id = None
+		if self.clientid is not None or self is self.session.world.player:
+			client_id = self.clientid
+		db("INSERT INTO player"
+			" (rowid, name, color, client_id, settler_level,"
+			" difficulty_level, max_tier_notification)"
+			" VALUES(?, ?, ?, ?, ?, ?, ?)",
+			self.worldid, self.name, self.color.id, client_id, self.settler_level,
+			self.difficulty.level if self.difficulty is not None else None,
+			self.max_tier_notification)
 
 	@classmethod
 	def load(cls, session, db, worldid):
@@ -111,52 +128,62 @@ class Player(ComponentHolder, WorldObject):
 		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, name, settlerlevel, difficulty_level = db("SELECT color, name, settler_level, difficulty_level FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], difficulty_level, settlerlevel = settlerlevel)
-
-	def notify_unit_path_blocked(self, unit):
-		"""Notify the user that a unit stopped moving
-		NOTE: this is just a quick fix for a release
-		      a signaling concept for such events is planned.
-		"""
-		self.log.warning("ERROR: UNIT %s CANNOT MOVE ANY FURTHER!", unit)
+		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
+			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
+			" FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
 
 	def notify_settler_reached_level(self, message):
-		"""Settler calls this to notify the player
-		@param settler: instance of Settler
-		@return: bool, True if actually incremented the level"""
-		assert isinstance(message, SettlerUpdate)
+		"""Settler calls this to notify the player."""
 		if message.sender.owner is not self:
-			return False # was settler of another player
+			return
 		if message.level > self.settler_level:
 			self.settler_level = message.level
 			self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
 			for settlement in self.settlements:
 				settlement.level_upgrade(self.settler_level)
 			self._changed()
-			return True
-		else:
-			return False
-
-	def notify_mine_empty(self, mine):
-		"""The Mine calls this function to let the player know that the mine is empty."""
-		pass
+			PlayerLevelUpgrade.broadcast(self, self.settler_level, message.sender)
 
 	def end(self):
-		self.stats = None
+		self._stats = None
 		self.session = None
+
+		if self.regular_player:
+			SettlerUpdate.unsubscribe(self.notify_settler_reached_level)
+
+	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
+	def get_balance_estimation(self):
+		"""This takes a while to calculate, so only do it every 2 seconds at most"""
+		return sum(settlement.balance for settlement in self.settlements)
+
+	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
+	def get_statistics(self):
+		"""Returns a namedtuple containing player-wide statistics"""
+		Data = collections.namedtuple('Data', ['running_costs', 'taxes', 'sell_income', 'buy_expenses', 'balance'])
+		# balance is duplicated here and above such that the version above
+		# can be used independently and the one here is always perfectly in sync
+		# with the other values here
+
+		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
+		trade_posts = [ s.get_component(TradePostComponent) for s in self.settlements ]
+		return Data(
+		  running_costs = get_sum(self.settlements, 'cumulative_running_costs'),
+		  taxes = get_sum(self.settlements, 'cumulative_taxes'),
+		  sell_income = get_sum(trade_posts, 'sell_income'),
+		  buy_expenses = get_sum(trade_posts, 'buy_expenses'),
+		  balance = get_sum(self.settlements, 'balance'),
+		)
+
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
-	def notify_settler_reached_level(self, message):
-		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
-		if level_up:
-			# add message and update ingame gui
-			coords = (message.sender.position.center().x, message.sender.position.center().y)
-			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
-			                                                    'SETTLER_LEVEL_UP',
-			                                                    {'level': message.level+1})
-		return level_up
 
-	def notify_mine_empty(self, mine):
-		self.session.ingame_gui.message_widget.add(mine.position.center().x, mine.position.center().y, 'MINE_EMPTY')
+	def __init(self, *args, **kwargs):
+		super(HumanPlayer, self).__init(*args, **kwargs)
+		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
+
+	def end(self):
+		if hasattr(self, '__inventory_checker'):
+			self.__inventory_checker.remove()
+		super(HumanPlayer, self).end()

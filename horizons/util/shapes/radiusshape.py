@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import Rect
+from .rect import Rect
+
 
 class RadiusShape(object):
 	"""Class for generic shapes with a radius.
@@ -33,7 +34,7 @@ class RadiusShape(object):
 		self.radius = radius
 
 class RadiusRect(RadiusShape):
-	"""Specialisation of RadiusShape with a Rect as center"""
+	"""Specialization of RadiusShape with a Rect as center"""
 	def __init__(self, center, radius):
 		assert isinstance(center, Rect)
 		super(RadiusRect, self).__init__(center, radius)

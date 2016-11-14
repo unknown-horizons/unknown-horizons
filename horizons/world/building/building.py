@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,27 +23,31 @@ import logging
 
 from fife import fife
 
+from horizons.command.building import Build
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME, LAYERS, RES
+from horizons.engine import Fife
 from horizons.scheduler import Scheduler
-
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python import decorators
+from horizons.util.shapes import ConstRect, Point, distances
+from horizons.util.worldobject import WorldObject
+from horizons.world.building.buildable import BuildableSingle
 from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
-from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
-from horizons.constants import RES, LAYERS, GAME
-from horizons.world.building.buildable import BuildableSingle
-from horizons.command.building import Build
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.componentholder import ComponentHolder
+
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
-	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
+	walkable = False # whether we can walk on this building (True for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
 	tearable = True
 	layer = LAYERS.OBJECTS
-
 
 	log = logging.getLogger("world.building")
 
@@ -51,28 +55,28 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param x, y: int position of the building.
 	@param rotation: value passed to getInstance
 	@param owner: Player that owns the building.
-	@param level: start in this increment
+	@param level: start in this tier
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
-	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
-		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
-								                        island=island, **kwargs)
-		self.__init( action_set_id=action_set_id )
+		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner,
+		                                    island=island, **kwargs)
+		self.__init()
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
+		self.settlement = None
 		if settlements:
 			self.settlement = settlements[0]
-		else:
+		elif owner:
 			# create one if we have an owner
-			self.settlement = self.island.add_settlement(self.position, self.radius, owner) if \
-			    owner is not None else None
+			self.settlement = self.island.add_settlement(self.position, self.radius, owner)
 
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
 	def __pre_init(self, owner, rotation, origin, level=None):
-		"""Here we face the awkward situation of requiring a forth init function.
+		"""Here we face the awkward situation of requiring a fourth init function.
 		It is called like __init, but before other parts are inited via super().
 		This is necessary since some attributes are used by these other parts."""
 		self.owner = owner
@@ -85,35 +89,30 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 
-	def __init(self, remaining_ticks_of_month=None, action_set_id=None):
-		self._action_set_id = action_set_id if action_set_id is not None else \
-		    self.get_random_action_set(self.level)[0]
-
+	def __init(self, remaining_ticks_of_month=None):
 		self.loading_area = self.position # shape where collector get resources
 
 		origin = self.position.origin
-		self._instance, action_set_id = \
-		  self.getInstance(self.session, origin.x, origin.y, rotation=self.rotation,\
-		                   action_set_id=self._action_set_id)
-		self._instance.setId(str(self.worldid))
+		self._instance, action_name = self.getInstance(self.session, origin.x, origin.y,
+		    rotation=self.rotation, action_set_id=self._action_set_id, world_id=str(self.worldid))
 
 		if self.has_running_costs: # Get payout every 30 seconds
 			interval = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
-			Scheduler().add_new_object(self.get_payout, self, \
+			Scheduler().add_new_object(self.get_payout, self,
 			                           run_in=run_in, loops=-1, loop_interval=interval)
 
 	def toggle_costs(self):
-		self.running_costs , self.running_costs_inactive = \
+		self.running_costs, self.running_costs_inactive = \
 				self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
-		"""Returns whether the building currently payes the running costs for status 'active'"""
+		"""Returns whether the building currently pays the running costs for status 'active'"""
 		return (self.running_costs > self.running_costs_inactive)
 
 	def get_payout(self):
-		"""gets the payout from the settlement in form of it's running costs"""
-		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -self.running_costs)
+		"""Gets the payout from the settlement in form of its running costs"""
+		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -self.running_costs)
 
 	def remove(self):
 		"""Removes the building"""
@@ -121,17 +120,15 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
 		self.island.remove_building(self)
-		#instance is owned by layer...
-		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
 		# NOTE: removing layers from the renderer here will affect others players too!
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
-		   VALUES (?, ?, ?, ?, ?, ?, ?)", \
-		                                self.worldid, self.__class__.id, self.position.origin.x, \
-		                                self.position.origin.y, self.rotation, \
+		   VALUES (?, ?, ?, ?, ?, ?, ?)",
+		                                self.worldid, self.__class__.id, self.position.origin.x,
+		                                self.position.origin.y, self.rotation,
 		                                (self.settlement or self.island).worldid, self.level)
 		if self.has_running_costs:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self.get_payout)
@@ -151,11 +148,12 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		remaining_ticks_of_month = None
 		if self.has_running_costs:
 			db_data = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)
-			if len(db_data) == 0:
+			if not db_data:
 				# this can happen when running costs are set when there were no before
-				# we shouldn't crash because of changes in yaml code, still it's suspicous
-				print 'WARNING: object %s of type %s does not know when to pay its rent.'
-				print 'Disregard this when loading old savegames or on running cost changes.'
+				# we shouldn't crash because of changes in yaml code, still it's suspicious
+				self.log.warning('Object %s of type %s does not know when to pay its rent.\n'
+					'Disregard this when loading old savegames or on running cost changes.',
+					self.worldid, self.id)
 				remaining_ticks_of_month = 1
 			else:
 				remaining_ticks_of_month = db_data[0][0]
@@ -187,28 +185,40 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		for building in buildings:
 			if building is self:
 				continue
-			if self.position.distance( building.position ) <= self.radius:
+			if distances.distance_rect_rect(self.position, building.position) <= self.radius:
 				yield building
 
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level
 		(if an action set exists in that level).
-		It's different to get_random_action_set is, that it just checks one lvl, and doesn't
-		search for an action set everywhere, which makes it alot more effective, if you're
+		Its difference to get_random_action_set is that it just checks one level, and doesn't
+		search for an action set everywhere, which makes it a lot more effective if you're
 		just updating.
 		@param level: int level number"""
-		action_set = self.get_random_action_set(level, exact_level=True)[0]
+		action_set = self.__class__.get_random_action_set(level, exact_level=True)
 		if action_set:
-			self._action_set_id = action_set # Set the new action_set
+			self._action_set_id = action_set  # Set the new action_set
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):
-		"""Upgrades building to another increment"""
+		"""Upgrades building to another tier"""
 		self.level = lvl
 		self.update_action_set_level(lvl)
 
+		# any collectors (units) should also be upgraded, so that their
+		# graphics or properties can change
+		if self.has_component(CollectingComponent):
+			for collector in self.get_component(CollectingComponent).get_local_collectors():
+				collector.level_upgrade(lvl)
+
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None):
+	def get_initial_level(cls, player):
+		if hasattr(cls, 'default_level_on_build'):
+			return cls.default_level_on_build
+		return player.settler_level
+
+	@classmethod
+	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None, world_id=""):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
@@ -225,6 +235,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		facing_loc = fife.Location(session.view.layers[cls.layer])
 		instance_coords = list((x, y, 0))
 		layer_coords = list((x, y, 0))
+		width, length = cls.size
 
 		# NOTE:
 		# nobody actually knows how the code below works.
@@ -236,61 +247,66 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		# then fix that generally.
 
 		if rotation == 45:
-			layer_coords[0] = x+cls.size[0]+3
+			layer_coords[0] = x + width + 3
 
-			if cls.size[0] == 2 and cls.size[1] == 4:
+			if width == 2 and length == 4:
 				# HACK: fix for 4x2 buildings
 				instance_coords[0] -= 1
 				instance_coords[1] += 1
 
 		elif rotation == 135:
-			instance_coords[1] = y + cls.size[1] - 1
-			layer_coords[1] = y-cls.size[1]-3
+			instance_coords[1] = y + length - 1
+			layer_coords[1] = y - length - 3
 
-			if cls.size[0] == 2 and cls.size[1] == 4:
+			if width == 2 and length == 4:
 				# HACK: fix for 4x2 buildings
 				instance_coords[0] += 1
 				instance_coords[1] -= 1
 
 		elif rotation == 225:
-			instance_coords = list(( x + cls.size[0] - 1, y + cls.size[1] - 1, 0))
-			layer_coords[0] = x-cls.size[0]-3
+			instance_coords = list(( x + width - 1, y + length - 1, 0))
+			layer_coords[0] = x - width - 3
 
-			if cls.size[0] == 2 and cls.size[1] == 4:
+			if width == 2 and length == 4:
 				# HACK: fix for 4x2 buildings
 				instance_coords[0] += 1
 				instance_coords[1] -= 1
 
 		elif rotation == 315:
-			instance_coords[0] = x + cls.size[0] - 1
-			layer_coords[1] = y+cls.size[1]+3
+			instance_coords[0] = x + width - 1
+			layer_coords[1] = y + length + 3
 
-			if cls.size[0] == 2 and cls.size[1] == 4:
+			if width == 2 and length == 4:
 				# HACK: fix for 4x2 buildings
 				instance_coords[0] += 1
 				instance_coords[1] -= 1
 
 		else:
 			return None
-		instance = session.view.layers[cls.layer].createInstance(cls._object, \
-											                                       fife.ModelCoordinate(*instance_coords))
+		instance = session.view.layers[cls.layer].createInstance(
+			cls._fife_object,
+			fife.ModelCoordinate(*instance_coords),
+			world_id)
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
-			action_set_id = cls.get_random_action_set(level=level)[0]
+			action_set_id = cls.get_random_action_set(level=level)
 		fife.InstanceVisual.create(instance)
 
-		action_sets = ActionSetLoader.get_sets()
-		if not action in action_sets[action_set_id]:
-			if 'idle' in action_sets[action_set_id]:
-				action='idle'
-			elif 'idle_full' in action_sets[action_set_id]:
-				action='idle_full'
+		action_set = ActionSetLoader.get_set(action_set_id)
+		if not action in action_set:
+			if 'idle' in action_set:
+				action = 'idle'
+			elif 'idle_full' in action_set:
+				action = 'idle_full'
 			else:
 				# set first action
-				action = action_sets[action_set_id].keys()[0]
+				action = action_set.keys()[0]
 
-		instance.act(action+"_"+str(action_set_id), facing_loc, True)
+		if (Fife.getVersion() >= (0, 3, 6)):
+			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
+		else:
+			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 		return (instance, action_set_id)
 
 	@classmethod
@@ -298,17 +314,18 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		return Build.check_resources({}, cls.costs, owner, inventory_holders)[0]
 
 	def init(self):
-		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
+		"""init the building, called after the constructor is run and the
+		building is positioned (the settlement variable is assigned etc)
 		"""
 		pass
 
 	def start(self):
-		"""This function is called when the building is built, to start production for example."""
+		"""This function is called when the building is built,
+		to start production for example."""
 		pass
 
-	#@decorators.relese_mode(ret="Building")
-	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
+	def __unicode__(self): # debug
+		return u'%s(id=%s;worldid=%s)' % (self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):

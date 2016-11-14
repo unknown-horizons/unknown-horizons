@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -34,8 +34,10 @@
 ###############################################################################
 
 
-HEADER = '''# ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+from __future__ import print_function
+HEADER = '''\
+# ###################################################
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -59,7 +61,7 @@ HEADER = '''# ###################################################
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -76,23 +78,30 @@ HEADER = '''# ###################################################
 #
 ###############################################################################
 
-from horizons.constants import VERSION
+T = lambda s: s
 
-object_translations = dict()
 
-def set_translations():
-\tglobal object_translations
-\tobject_translations = {
+
+
+
+
+
+
+object_translations = {
 '''
 
-FOOTER = '''\n\t}\n'''
-ROWINDENT = '\n\t\t'
+FOOTER = '''
+}
+'''
+ROWINDENT = '''
+		'''
 
 OBJECT_PATH = 'content/objects/'
 
 locations_to_translate = [
 	OBJECT_PATH + 'buildings/',
 	OBJECT_PATH + 'units/ships/',
+	OBJECT_PATH + 'gui_buildmenu/',
 	]
 
 files_to_skip = [
@@ -101,9 +110,38 @@ files_to_skip = [
 
 import os
 import sys
+import inspect
 
 from yaml import load
 from yaml import SafeLoader as Loader
+
+cmd_folder = os.path.realpath(
+    os.path.abspath(os.path.join(os.path.split(inspect.getfile(inspect.currentframe()))[0], "..")))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
+
+from horizons.constants import TIER, RES, UNITS, BUILDINGS
+
+# cannot import parse_token from horizons.util.yamlcache here!
+#TODO Make sure to keep both in sync and/or fix the import trouble!
+def parse_token(token, token_klass):
+	"""Helper function that tries to parse a constant name.
+	Does not do error detection, but passes unparseable stuff through.
+	Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
+	@param token_klass: "TIER", "RES", "UNITS" or "BUILDINGS"
+	"""
+	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+
+	if not isinstance(token, basestring):
+		return token # probably numeric already
+	if not token.startswith(token_klass):
+		return token
+	try:
+		return getattr( classes[token_klass], token.split(".", 2)[1])
+	except AttributeError as e: # token not defined here
+		err = "This means that you either have to add an entry in horizons/constants.py "\
+		      "in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
+		raise Exception( str(e) + "\n\n" + err +"\n" )
 
 def list_all_files():
 	result = []
@@ -119,19 +157,31 @@ def content_from_file(filename):
 	object_strings = []
 	if not parsed:
 		return ''
-	def add_line(value, component, filename):
+	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
-			text = '_("{value}")'.format(value=value[2:])
-			comment = '%s of %s' %(component, filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':'))
+			text = u'T("{value}")'.format(value=value[2:])
+			component = component + sep + str(parse_token(key, 'TIER'))
+			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
+			comment = '%s of %s' %(component, filename)
 			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
 
 	for component, value in parsed.iteritems():
-		if isinstance(value, str) or isinstance(value, unicode):
-			add_line(value, component, filename)
+		if isinstance(value, basestring):
+			add_line(value, component, '', '', filename)
 		elif isinstance(value, dict):
 			for key, subvalue in value.iteritems():
-				if isinstance(subvalue, str) or isinstance(subvalue, unicode):
-					add_line(subvalue, component + "_" + str(key), filename)
+				if isinstance(subvalue, basestring):
+					add_line(subvalue, component, "_", str(key), filename)
+		elif isinstance(value, list): # build menu definitions
+			for attrlist in value:
+				if isinstance(attrlist, dict):
+					for key, subvalue in attrlist.iteritems():
+						if isinstance(subvalue, basestring):
+							add_line(subvalue, component, "_", str(key), filename)
+				else:
+					for subvalue in attrlist:
+						if isinstance(subvalue, basestring):
+							add_line(subvalue, 'headline', '', '', filename)
 
 	strings = sorted(object_strings)
 
@@ -149,5 +199,4 @@ output = '%s%s%s' % (HEADER, '\n'.join(filesnippets), FOOTER)
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
 else:
-	print
-	print output
+	print(output)

@@ -1,0 +1,101 @@
+tab1:
+- icon: icons/tabwidget/buildmenu/tier/tier1
+- # first row
+  - _ Residents and infrastructure
+  - BUILDINGS.RESIDENTIAL
+  - BUILDINGS.STORAGE
+  - BUILDINGS.TRAIL
+  - BUILDINGS.LOOKOUT
+- # second row
+  - _ Services
+  - BUILDINGS.MAIN_SQUARE
+  - BUILDINGS.PAVILION
+  - BUILDINGS.SIGNAL_FIRE
+- # third row
+  - _ Companies
+  - BUILDINGS.LUMBERJACK
+#  - BUILDINGS.TREE
+  - BUILDINGS.HUNTER
+  - BUILDINGS.FISHER
+- # forth row
+  - _ Military
+  - BUILDINGS.BARRIER
+
+
+tab2:
+- icon: icons/tabwidget/buildmenu/tier/tier2
+-
+  - _ Companies
+  - BUILDINGS.CLAY_PIT
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.WEAVER
+  - BUILDINGS.DISTILLERY
+-
+  - _ Fields
+  - BUILDINGS.FARM
+  - BUILDINGS.POTATO_FIELD
+  - BUILDINGS.PASTURE
+  - BUILDINGS.SUGARCANE_FIELD
+-
+  - _ Services
+  - BUILDINGS.VILLAGE_SCHOOL
+  - BUILDINGS.FIRE_STATION
+  - BUILDINGS.BOAT_BUILDER
+  - BUILDINGS.WOODEN_TOWER
+
+
+tab3:
+- icon: icons/tabwidget/buildmenu/tier/tier3
+-
+  - _ Mining
+  - BUILDINGS.MINE
+  - BUILDINGS.SMELTERY
+  - BUILDINGS.TOOLMAKER
+  - BUILDINGS.CHARCOAL_BURNER
+-
+  - _ Companies
+  - BUILDINGS.SALT_PONDS
+  - BUILDINGS.BUTCHERY
+  - BUILDINGS.TOBACCONIST
+  - BUILDINGS.BLENDER
+-
+  - _ Fields
+  - BUILDINGS.TOBACCO_FIELD
+  - BUILDINGS.CATTLE_RUN
+  - BUILDINGS.HERBARY
+  - BUILDINGS.SPICE_FIELD
+-
+  - _ Services
+  - BUILDINGS.TAVERN
+  - BUILDINGS.DOCTOR
+  - BUILDINGS.BREWERY
+#  - # empty slot
+
+tab4:
+- icon: icons/tabwidget/buildmenu/tier/tier4
+-
+  - _ Companies
+  - BUILDINGS.WINDMILL
+  - BUILDINGS.BAKERY
+  - BUILDINGS.WINERY
+  - BUILDINGS.PASTRY_SHOP
+-
+  - _ Fields
+  - BUILDINGS.CORN_FIELD
+  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
+-
+  - _ Fields
+  - BUILDINGS.HOP_FIELD
+  - BUILDINGS.STONE_PIT
+  - BUILDINGS.STONEMASON
+  - BUILDINGS.PIGSTY
+-
+  - _ Military
+  - BUILDINGS.WEAPONSMITH
+  - BUILDINGS.CANNONFOUNDRY
+  - BUILDINGS.BARRACKS 
+
+meta:
+  unlocking_strategy: tab_per_tier

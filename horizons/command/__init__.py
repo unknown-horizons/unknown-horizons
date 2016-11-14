@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'unit', 'sounds']
-
 import logging
 
-from horizons.util import WorldObject, get_all_subclasses
+from horizons.util.python import get_all_subclasses
+from horizons.util.worldobject import WorldObject
 from horizons.network.packets import SafeUnpickler
+
 
 class Command(object):
 	"""Base class for every Command."""
 	log = logging.getLogger("command")
+
 	@classmethod
-	def allow_network(self, klass):
+	def allow_network(cls, klass):
 		"""
 		NOTE: this is a security related method and may lead to
 		execution of arbritary code if used in a wrong way
@@ -60,7 +61,7 @@ class GenericCommand(Command):
 
 	class MyCommand(GenericCommand):
 	  def __init__(self, obj):
-	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
+	    super(MyCommand, self).__init__(obj, "mymethod", 42, 1337)
 	 """
 	def __init__(self, obj, method, *args, **kwargs):
 		self.obj_id = obj.worldid

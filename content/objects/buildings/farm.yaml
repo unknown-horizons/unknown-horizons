@@ -1,4 +1,4 @@
-id: 20
+id: BUILDINGS.FARM
 name: _ Farm
 baseclass: production.Farm
 radius: 3
@@ -6,75 +6,105 @@ cost: 10
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: herder-1
+inhabitants: 2
 tooltip_text: _ Grows field crops and raises livestock.
-settler_level: 1
-buildingcosts: {1: 500, 4: 4, 6: 2}
+tier: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
-    tabs: [FarmProductionOverviewTab,]
+    tabs: [SmallProductionOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
-    utilisation:
-      FieldUtilisation
+    utilization:
+      FieldUtilization
     productionlines:
-      7:
+      WOOL:
         produces:
-        - [10, 1]
+        - [RES.WOOL, 1]
         consumes:
-        - [2, -1]
-        time: 1
-      47:
+        - [RES.LAMB_WOOL, -1]
+      TOBACCO_LEAVES:
         produces:
-        - [31, 1]
+        - [RES.TOBACCO_LEAVES, 1]
         consumes:
-        - [30, -1]
-        time: 1
-      51:
+        - [RES.TOBACCO_PLANTS, -1]
+      CATTLE_SLAUGHTER:
         produces:
-        - [35, 1]
+        - [RES.CATTLE_SLAUGHTER, 1]
         consumes:
-        - [33, -1]
-        time: 1
-      52:
+        - [RES.CATTLE, -1]
+      PIGS_SLAUGHTER:
         produces:
-        - [36, 1]
+        - [RES.PIGS_SLAUGHTER, 1]
         consumes:
-        - [34, -1]
-        time: 1
-      23:
+        - [RES.PIGS, -1]
+      POTATOES:
         produces:
-        - [5, 1]
+        - [RES.FOOD, 1]
         consumes:
-        - [15, -2]
-        time: 1
-      28:
+        - [RES.POTATOES, -2]
+      SUGAR:
         produces:
-        - [18, 1]
+        - [RES.SUGAR, 1]
         consumes:
-        - [17, -1]
-        time: 1
-      0:
+        - [RES.RAW_SUGAR, -1]
+      MEDICAL_HERBS:
         produces:
-        - [43, 1]
+        - [RES.MEDICAL_HERBS, 1]
         consumes:
-        - [42, -1]
-        time: 1
+        - [RES.HERBS, -1]
+      CORN:
+        produces:
+        - [RES.CORN, 1]
+        consumes:
+        - [RES.GRAIN, -1]
+      SPICES:
+        produces:
+        - [RES.SPICES, 1]
+        consumes:
+        - [RES.SPICE_PLANTS, -1]
+      COCOA:
+        produces:
+        - [RES.COCOA, 1]
+        consumes:
+        - [RES.COCOA_BEANS, -1]
+      GRAPES:
+        produces:
+        - [RES.GRAPES, 1]
+        consumes:
+        - [RES.VINES, -1]
+      HONEYCOMBS:
+        produces:
+        - [RES.HONEYCOMBS, 1]
+        consumes:
+        - [RES.ALVEARIES, -1]
+      HOPS:
+        produces:
+        - [RES.HOPS, 1]
+        consumes:
+        - [RES.HOP_PLANTS, -1]
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {
-             2: 6,  5: 6, 10: 6, 15: 6, 17: 6, 18: 6, 30: 6, 31: 6,
-            33: 6, 34: 6, 35: 6, 36: 6, 37: 6, 38: 6, 42: 6, 43: 6,
-#           45: 6, 46: 6, 53: 6, 54: 6, 57: 6, 58: 6, 59: 6, 60: 6,
+            RES.LAMB_WOOL: 6, RES.WOOL: 6,
+            RES.POTATOES: 6, RES.FOOD: 6,
+            RES.RAW_SUGAR: 6, RES.SUGAR: 6,
+            RES.TOBACCO_PLANTS: 6, RES.TOBACCO_LEAVES: 6,
+            RES.CATTLE: 6, RES.CATTLE_SLAUGHTER: 6,
+            RES.PIGS: 6, RES.PIGS_SLAUGHTER: 6,
+            RES.HERBS: 6, RES.MEDICAL_HERBS: 6,
+            RES.GRAIN: 6, RES.CORN: 6,
+            RES.SPICE_PLANTS: 6, RES.SPICES: 6,
+            RES.COCOA_BEANS: 6, RES.COCOA: 6,
+            RES.VINES: 6, RES.GRAPES: 6,
+            RES.ALVEARIES: 6, RES.HONEYCOMBS: 6,
+            RES.HOP_PLANTS: 6, RES.HOPS: 6,
             }
 - CollectingComponent:
     collectors:
-      1000015: 1
-      1000009: 1
+      UNITS.FIELD_COLLECTOR: 2
 actionsets:
-  as_farm0: {level: 0}
+  TIER.PIONEERS:
+    as_farm0:

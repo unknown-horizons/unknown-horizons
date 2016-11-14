@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,42 +19,38 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-import horizons.main
 from fife.extensions.pychan.widgets import HBox, Label
 
-from horizons.util import Callback, Color
+import horizons.globals
+from horizons.gui.util import load_uh_widget
+from horizons.util.color import Color
+from horizons.util.python.callback import Callback
 
 
 class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.
 	Used by Multiplayer and Singleplayer menu."""
 
-	def __init__(self, parent_gui, widgets):
+	def __init__(self, color_palette=None):
 		"""
-		Adds the playerdataselection container to a parent gui
-		@param parent_gui: a pychan gui object containing a container named "playerdataselectioncontainer"
 		@param widgets: WidgetsDict
 		"""
-		widgets.reload( 'playerdataselection' )
-		self.gui = widgets[ 'playerdataselection' ]
+		self.gui = load_uh_widget('playerdataselection.xml')
 
-		self.colors = self.gui.findChild(name = 'playercolor')
-		self.selected_color = horizons.main.fife.get_uh_setting("ColorID") # starts at 1!
-		self._set_color(self.selected_color)
+		self.colors = self.gui.findChild(name='playercolor')
 
 		colorlabels = []
 		events = {}
 
 		# need the id to save it as int in settings file.
-		for color_id, color in enumerate(Color):
+		for color in (Color.get_defaults() if color_palette is None else color_palette):
 			label = Label(name = u'{color}'.format(color=color.name),
 			              text = u"    ",
-			              max_size = (20,20),
-			              min_size = (20,20),
+			              max_size = (20, 20),
+			              min_size = (20, 20),
 			              background_color = color)
 			events['{label}/mouseClicked'.format(label=color.name)] = \
-			                             Callback(self._set_color, color_id+1)
+			                             Callback(self.set_color, color.id)
 			colorlabels.append(label)
 
 		# split into three rows with at max 5 entries in each row
@@ -64,20 +60,34 @@ class PlayerDataSelection(object):
 			hbox.addChildren(colorlabels[i:i+5])
 			self.colors.addChild(hbox)
 
-		self.gui.distributeData({
-			'playername': unicode(horizons.main.fife.get_uh_setting("Nickname")),
-		})
-		parent_gui.findChild(name="playerdataselectioncontainer").addChild( self.gui )
-		parent_gui.mapEvents(events)
+		playertextfield = self.gui.findChild(name='playername')
+		def playertextfield_clicked():
+			if playertextfield.text == 'Unnamed Traveler':
+				playertextfield.text = ""
+		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
 
-	def _set_color(self, color_id):
+		self.gui.mapEvents(events)
+		self.update_data()
+
+	def set_color(self, color_id):
 		"""Updates the background color of large label where players
-		see their currently chosen color. Stores result in settings.
-		@param color_id: int. Gets converted to FIFE Color object.
+		see their currently chosen color.
+		@param color_id: int. Gets converted to util.Color object.
 		"""
-		self.selected_color = Color[color_id]
-		horizons.main.fife.set_uh_setting("ColorID", color_id)
-		self.gui.findChild(name='selectedcolor').background_color = Color[color_id]
+		try:
+			self.selected_color = Color.get(color_id)
+		except KeyError:
+			# For some reason, color_id can be 0 apparently:
+			# http://forum.unknown-horizons.org/viewtopic.php?t=6927
+			# Reset that setting to 1 if the problem occurs.
+			self.selected_color = Color.get(1)
+		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
+
+	def set_player_name(self, playername):
+		"""Updates the player name"""
+		self.gui.distributeData({
+			'playername': unicode(playername),
+			})
 
 	def get_player_name(self):
 		"""Returns the name that was entered by the user"""
@@ -87,3 +97,16 @@ class PlayerDataSelection(object):
 		"""Returns the color that the player selected as Color obj"""
 		return self.selected_color
 
+	def get_widget(self):
+		return self.gui
+
+	def update_data(self):
+		"""Update the player's name and color from the settings"""
+		self.set_color(horizons.globals.fife.get_uh_setting("ColorID"))
+		self.set_player_name(horizons.globals.fife.get_uh_setting("Nickname"))
+
+	def save_settings(self):
+		"""Stores the current player_name and color into settings"""
+		horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())
+		horizons.globals.fife.set_uh_setting("ColorID", self.get_player_color().id)
+		horizons.globals.fife.save_settings()

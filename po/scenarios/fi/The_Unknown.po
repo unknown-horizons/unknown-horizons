@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2014-02-02 20:28+0200\n"
+"Last-Translator: Olli Paasonen <betakeytome@gmail.com>\n"
+"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/the-unknown/fi/"
+">\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.9-dev\n"
+
+#. scenario difficulty
+msgid "easy"
+msgstr "helppo"
+
+#. scenario description
+#, fuzzy
+#| msgid ""
+#| "You are the captain of a ship under the flag of England in 1740. You and "
+#| "your crew were on the way to a colony of England in the pacific ocean.\n"
+#| "Everything went fine until you came into a storm…"
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and "
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
+"Everything went fine until you came into a storm…"
+msgstr ""
+"Sinä olet Englannin lipun alla purjehtivan laivan kapteeni vuonna 1740. Sinä "
+"ja sinun miehistösi olitte matkalla Englannin siirtokuntaan "
+"Tyynellämerellä.\n"
+"Kaikki oli hyvin ennen kuin myrsky iski…"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "20th November 1740"
+msgstr "20. marraskuuta 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"Neljän päivän jälkeen myrsky viimein hellittää ja me voimme levätä, mutta "
+"meillä ei ole paljoa ruokaa ja meidän laivamme on huonossa kunnossa. Meidän "
+"navigointivälineemme ja merikarttamme ovat kaadonneet."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for "
+"fish, so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"Meidän täytyy tulla rantaan kohta. Yksi miehistöni jäsen näki lintuja "
+"kalastamassa, joten ranta ei voi olla kaukana. Onneksi meillä on aina "
+"työkaluja ja lautoja mukana, että voimme rakentaa suojan."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"Tehtävä:\n"
+"Etsi maa-alue ja rakenna satama."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "22nd November 1740"
+msgstr "22. marraskuuta 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days… we are running out of food and lack basic building material."
+msgstr ""
+"Satama on rakennettu ja uusi toivo herää, mutta minä olen silti huolissani "
+"tulevista päivistä... Ruoka ja tavalliset rakennusmateriaalit ovat "
+"loppumaassa."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send "
+"people gathering food and lumber so that we can survive and build some "
+"shelter."
+msgstr ""
+"Meidän täytyy turvata pakollisten tarvikkeiden saanti pysyäksemme hengissä. "
+"On aika lähettää ihmiset keräämään ruokaa ja puita, että me voimme selvitä "
+"ja rakentaa suojan."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"Tehtävät:\n"
+"Rakenna ainakin yksi jokaista:\n"
+"* Metsuri\n"
+"* Kalastaja\n"
+"* Metsästäjä\n"
+"Kerää 5 ruokaa ja 5 lankkua."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "25th November 1740"
+msgstr "25. marraskuuta 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"Me olemme nyt keränneet tarpeeksi ruokaa ja puuta, jotta voimme kasvattaa "
+"uutta siirtokuntaamme. Meidän kansalaisemme vaativat paikkaa, jossa asua ja "
+"vaihtaa tuotteita heidän jokapäiväisiin tarpeisiinsa."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"On aika rakentaa muutama teltta joissa asua ja pieni keskusta antaaksemme "
+"tavaroita kansalaisille."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task:\n"
+#| "Build a main square and at least 10 tents."
+msgid ""
+"Task:\n"
+"Build a Main Square and at least 10 Tents."
+msgstr ""
+"Tehtävä:\n"
+"Rakenna keskusta ja ainakin 10 telttaa."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "1st December 1740"
+msgstr "1. joulukuuta 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"Viimeinkin meillä on taas tarpeeksi ruokaa ja paikka jossa elää. Minun "
+"telttani ei ole kovin mukava, mutta ainakin se pitää minut kuivana ja "
+"tunnen, että yöllä minulla on katto pääni päällä."
+
+#. This is the text body of a logbook page.
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home…"
+msgstr ""
+"Minä olen tutkinut tähtiä yöllä, mutta ilman minun merikarttojani ja "
+"työkalujani niiden tarkoitus pysyy mysteerinä. Minulla on tunne että me "
+"olemme jumissa täälä vielä jonkin aikaa, joten meidän vain täytyy tottua "
+"siihen.\n"
+"Me voimme vain yrittää rakentaa sivilisaatiota ja löytää tie kotiin…"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Grow the village until you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"Tehtävä:\n"
+"Kasvata kylääsi kunnes sinulla on ainakin 250 asukasta ja rahasi on "
+"plussalla."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "27th August 1745"
+msgstr "27. elokuuta 1745"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I "
+"have started getting used to my new home, but this island is too small to "
+"stay here forever."
+msgstr ""
+"Meidän kylämme pärjää hyvin. Kaupungissa on jo yli 250 asukasta. Minä olen "
+"alkanut tottumaan minun uuteen kotiini, mutta tämä saari on liian pieni "
+"jatkuvaan asumiseen."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect, but I hope it will "
+"suffice to return here."
+msgstr ""
+"Meidän pitäisi täyttää meidän laivamme ja lähteä etsimään isompaa saarta, "
+"joka tarjoaisi tilaa ja resoursseja kansalaisilleni."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
+"how you can contribute to making this scenario longer and better!"
+msgstr ""
+"Tehtävä:\n"
+"Ota yhteyttä Unknown Horizons tiimiin (www.unknown-horizons.org) ja selvitä, "
+"miten sinä voit osallistua ja tehdä tästä skenaariosta pidemmän ja paremman!"

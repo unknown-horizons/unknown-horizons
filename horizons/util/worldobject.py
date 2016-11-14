@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,11 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
+import weakref
 
-from horizons.util import ChangeListener
-from horizons.util.messaging.message import WorldObjectDeleted
+from horizons.ext.typing import Any, MutableMapping
+from horizons.messaging import WorldObjectDeleted
+from horizons.util.changelistener import ChangeListener
+
 
 class WorldObjectNotFound(KeyError):
 	pass
@@ -32,7 +34,7 @@ class WorldObject(ChangeListener):
 	"""Gives every instance a unique id.
 	"""
 	__next_id = 1
-	__objects = weakref.WeakValueDictionary()
+	__objects = weakref.WeakValueDictionary() # type: MutableMapping[int, Any]
 	log = logging.getLogger("util.worldobject")
 	def __init__(self, worldid=None, **kwargs):
 		"""
@@ -72,7 +74,7 @@ class WorldObject(ChangeListener):
 		self.log.debug('Loading worldobject %s %s', worldid, self)
 
 	def remove(self):
-		self.session.message_bus.broadcast(WorldObjectDeleted(self, self, self.worldid))
+		WorldObjectDeleted.broadcast(self, self, self.worldid)
 		super(WorldObject, self).remove()
 		self.log.debug("Removing WorldObject %s %s", self.worldid, self)
 		del WorldObject.__objects[self.worldid]
@@ -82,4 +84,5 @@ class WorldObject(ChangeListener):
 
 	# for testing:
 	@classmethod
-	def get_objs(self): return self.__objects
+	def get_objs(cls):
+		return cls.__objects

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,14 +18,14 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import math
+
 import logging
+import math
 
 from fife import fife
-import horizons.main
 
-from horizons.util import Point
-
+import horizons.globals
+from horizons.util.shapes import Point
 
 # round half towards plus infinity
 # http://en.wikipedia.org/wiki/Rounding#Round_half_up
@@ -44,11 +44,11 @@ class CursorTool(fife.IMouseListener):
 
 	def enable(self):
 		"""Call this to get events."""
-		horizons.main.fife.eventmanager.addMouseListener(self)
+		horizons.globals.fife.eventmanager.addMouseListener(self)
 
 	def disable(self):
 		"""Call this to not get events."""
-		horizons.main.fife.eventmanager.removeMouseListener(self)
+		horizons.globals.fife.eventmanager.removeMouseListener(self)
 
 	def remove(self):
 		self.disable()
@@ -72,7 +72,7 @@ class CursorTool(fife.IMouseListener):
 	def mouseDragged(self, evt):
 		pass
 
-	def get_world_location_from_event(self, evt):
+	def _round_map_coords(self, map_x, map_y):
 		"""Returns the coordinates of an event at the map.
 
 		Why roundhalfplus?
@@ -88,14 +88,16 @@ class CursorTool(fife.IMouseListener):
 		because both sides (-0.5 and 0.5) would be wrongly assigned to the other fields.
 
 		@return Point with int coordinates"""
+		return Point(roundhalfplus(map_x), roundhalfplus(map_y))
+
+	def get_world_location(self, evt):
 		screenpoint = self._get_screenpoint(evt)
-		mapcoord = self.session.view.cam.toMapCoordinates(screenpoint, False)
+		mapcoords = self.session.view.cam.toMapCoordinates(screenpoint, False)
+		return self._round_map_coords(mapcoords.x, mapcoords.y)
 
-		return Point(roundhalfplus(mapcoord.x), roundhalfplus(mapcoord.y))
-
-	def get_exact_world_location_from_event(self, evt):
+	def get_exact_world_location(self, evt):
 		"""Returns the coordinates of an event at the map.
-		@return FifePoint with float coordinates"""
+		@return FifePoint with float coordinates or something with getX/getY"""
 		screenpoint = self._get_screenpoint(evt)
 		return self.session.view.cam.toMapCoordinates(screenpoint, False)
 

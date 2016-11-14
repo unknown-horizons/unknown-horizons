@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import random
+
+from horizons.constants import ACTION_SETS
+from horizons.engine import Fife
+from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
-from horizons.util import WorldObject, Callback, ActionSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.world.units import UnitClass
-from random import randint
+
 
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -36,7 +43,7 @@ class ConcreteObject(WorldObject):
 	is_unit = False
 	is_building = False
 
-	def __init__(self, session, **kwargs):
+	def __init__(self, session, action_set_id=None, **kwargs):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
@@ -44,17 +51,20 @@ class ConcreteObject(WorldObject):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
-		self.__init()
+		self.__init(action_set_id)
 
-	def __init(self):
-		self._instance = None # overwrite in subclass __init[__]
-		self._action = 'idle' # Default action is idle
-		self._action_set_id = self.get_random_action_set()[0]
+	def __init(self, action_set_id=None):
+		# overwrite in subclass __init[__]
+		self._instance = None
+		# Default action is 'idle'
+		self._action = 'idle'
+		# NOTE: this can't be level-aware since not all ConcreteObjects have levels
+		self._action_set_id = action_set_id if action_set_id else self.__class__.get_random_action_set()
 
 		# only buildings for now
-		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
+		# NOTE: this is player dependent, therefore there must be no calls to session.random that depend on this
 		self.has_status_icon = self.is_building and self.show_status_icons and \
-			self.owner == self.session.world.player # and only for the player's buildings
+			self.owner is not None and self.owner.is_local_player # and only for the player's buildings
 
 	@property
 	def fife_instance(self):
@@ -62,36 +72,59 @@ class ConcreteObject(WorldObject):
 
 	def save(self, db):
 		super(ConcreteObject, self).save(db)
-		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.worldid, \
-			 self._instance.getActionRuntime())
+		db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid,
+			 self._instance.getActionRuntime(), self._action_set_id)
 
 	def load(self, db, worldid):
 		super(ConcreteObject, self).load(db, worldid)
-		self.__init()
-		runtime = db.get_concrete_object_action_runtime(worldid)
+		runtime, action_set_id = db.get_concrete_object_data(worldid)
+		# action_set_id should never be None in regular games,
+		# but this information was lacking in savegames before rev 59.
+		if action_set_id is None:
+			action_set_id = self.__class__.get_random_action_set(level=self.level if hasattr(self, "level") else 0)
+		self.__init(action_set_id)
+
 		# delay setting of runtime until load of sub/super-class has set the action
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
 			self._instance.setActionRuntime(runtime)
-		Scheduler().add_new_object( Callback(set_action_runtime, self, runtime), self, run_in=0)
+		Scheduler().add_new_object(Callback(set_action_runtime, self, runtime), self, run_in=0)
 
-	def act(self, action, facing_loc=None, repeating=False):
+	def act(self, action, facing_loc=None, repeating=False, force_restart=True):
+		"""
+		@param repeating: maps to fife instance method actRepeat or actOnce
+		@param force_restart: whether to always restart, even if action is already displayed
+		"""
 		if not self.has_action(action):
 			action = 'idle'
+
+		if not force_restart and self._action == action:
+			return
+
+		self._action = action
+
 		# TODO This should not happen, this is a fix for the component introduction
 		# Should be fixed as soon as we move concrete object to a component as well
 		# which ensures proper initialization order for loading and initing
-		if self._instance is not None:
-			if facing_loc is None:
-				facing_loc = self._instance.getFacingLocation()
-			UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
+		if self._instance is None:
+			return
+
+		if facing_loc is None:
+			facing_loc = self._instance.getFacingLocation()
+		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
+		if (Fife.getVersion() >= (0, 3, 6)):
+			if repeating:
+				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
+			else:
+				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+		else:
 			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
-		self._action = action
+		ActionChanged.broadcast(self, action)
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
-		@param anim: animation id as string"""
-		return (action in ActionSetLoader.get_sets()[self._action_set_id])
+		@param action: animation id as string"""
+		return (action in ActionSetLoader.get_set(self._action_set_id))
 
 	def remove(self):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
@@ -100,33 +133,45 @@ class ConcreteObject(WorldObject):
 		super(ConcreteObject, self).remove()
 
 	@classmethod
+	def weighted_choice(cls, weighted_dict):
+		""" http://eli.thegreenplace.net/2010/01/22/weighted-random-generation-in-python/
+		"""
+		# usually we do not need any magic because there only is one set:
+		if len(weighted_dict) == 1:
+			return weighted_dict.keys()[0]
+		weights = sum(ACTION_SETS.DEFAULT_WEIGHT if w is None else w
+		              for i, w in weighted_dict.iteritems())
+		rnd = random.random() * weights
+		for action_set, weight in weighted_dict.iteritems():
+			rnd -= ACTION_SETS.DEFAULT_WEIGHT if weight is None else weight
+			if rnd < 0:
+				return action_set
+
+	@classmethod
 	def get_random_action_set(cls, level=0, exact_level=False):
 		"""Returns an action set for an object of type object_id in a level <= the specified level.
 		The highest level number is preferred.
-		@param db: UhDbAccessor
-		@param object_id: type id of building
 		@param level: level to prefer. a lower level might be chosen
 		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: tuple: (action_set_id, preview_action_set_id)"""
-		assert level >= 0
-
-		action_sets_by_lvl = cls.action_sets_by_level
+		@return: action_set_id or None"""
 		action_sets = cls.action_sets
 		action_set = None
-		preview = None
 		if exact_level:
-			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
+			if level in action_sets:
+				action_set = cls.weighted_choice(action_sets[level])
+			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(xrange(level+1)):
-				if len(action_sets_by_lvl[possible_level]) > 0:
-					action_set = action_sets_by_lvl[possible_level][randint(0, len(action_sets_by_lvl[possible_level])-1)]
+				if possible_level in action_sets.iterkeys():
+					action_set = cls.weighted_choice(action_sets[possible_level])
 					break
-			if action_set is None:
-				assert False, "Couldn't find action set for obj %s(%s) in lvl %s" % (cls.id, cls.name, level)
+			if action_set is None: # didn't find a suitable one
+				# fall back to one from a higher level.
+				# this does not happen in valid games, but can happen in tests, when level
+				# constraints are ignored.
+				action_set, weight = action_sets.values()[0].items()[0]
 
-		if action_set is not None and 'preview' in action_sets[action_set]:
-			preview = action_sets[action_set]['preview']
-		return (action_set, preview)
+		return action_set
 
 	@property
 	def name(self):
@@ -134,4 +179,3 @@ class ConcreteObject(WorldObject):
 			return self._level_specific_names[self.level]
 		else:
 			return self._name
-

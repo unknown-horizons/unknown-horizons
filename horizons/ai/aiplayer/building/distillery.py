@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class AbstractDistillery(AbstractBuilding):
 	@property
@@ -33,22 +35,20 @@ class AbstractDistillery(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.DISTILLERY_CLASS] = cls
+		cls._available_buildings[BUILDINGS.DISTILLERY] = cls
 
 class DistilleryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.DISTILLERY_CLASS, x, y, True, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.DISTILLERY, (x, y), orientation)
 
 		distance_to_farm = None
-		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, []):
+		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM, []):
 			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius:
+			if distance <= Entities.buildings[BUILDINGS.DISTILLERY].radius:
 				sugarcane_producer = False
-				for provider in building._get_providers():
-					if isinstance(provider, Entities.buildings[BUILDINGS.SUGARCANE_FIELD_CLASS]):
+				for provider in building.get_providers():
+					if isinstance(provider, Entities.buildings[BUILDINGS.SUGARCANE_FIELD]):
 						sugarcane_producer = True
 						break
 				if sugarcane_producer:
@@ -59,11 +59,11 @@ class DistilleryEvaluator(BuildingEvaluator):
 			return None # require distilleries to have a collector building in range
 
 		personality = area_builder.owner.personality_manager.get('DistilleryEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.DISTILLERY].radius * personality.distance_penalty
 
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.DISTILLERY].radius) / distance + alignment * personality.alignment_importance
 		return DistilleryEvaluator(area_builder, builder, value)
 
 	@property

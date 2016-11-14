@@ -1,5 +1,15 @@
+from __future__ import print_function
+
+from horizons.constants import BUILDINGS, LAYERS
+from horizons.scheduler import Scheduler
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.production.producer import Producer
+
+
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,22 +29,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.entities import Entities
-from horizons.scheduler import Scheduler
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
 	walkable = True
 	layer = LAYERS.OBJECTS
-
-	def __init__(self, **kwargs):
-		super(NatureBuilding, self).__init__(**kwargs)
 
 class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
 	# sorry, but this class is to be removed soon anyway
@@ -45,14 +44,14 @@ class Field(NatureBuildingResourceHandler):
 	layer = LAYERS.FIELDS
 
 	def initialize(self, **kwargs):
-		super(Field, self).initialize( ** kwargs)
+		super(Field, self).initialize(**kwargs)
 
 		if self.owner.is_local_player:
 			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
 			prod_comp = self.get_component(Producer)
 			productions = prod_comp.get_productions()
 			if not productions:
-				print 'Warning: Field is assumed to always produce, but doesn\'t. ', self
+				print("Warning: Field is assumed to always produce, but doesn't.", self)
 			else:
 				run_in = Scheduler().get_ticks(productions[0].get_production_time())
 				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)
@@ -60,38 +59,12 @@ class Field(NatureBuildingResourceHandler):
 	def _check_covered_by_farm(self):
 		"""Warn in case there is no farm nearby to cultivate the field"""
 		farm_in_range = any( (farm.position.distance( self.position ) <= farm.radius) for farm in
-		                     self.settlement.buildings_by_id[ BUILDINGS.FARM_CLASS ] )
+		                     self.settlement.buildings_by_id[BUILDINGS.FARM] )
 		if not farm_in_range and self.owner.is_local_player:
 			pos = self.position.origin
-			self.session.ingame_gui.message_widget.add(pos.x, pos.y, "FIELD_NEEDS_FARM",
+			self.session.ingame_gui.message_widget.add(point=pos, string_id="FIELD_NEEDS_FARM",
 			                                           check_duplicate=True)
 
-class AnimalField(Field):
-	walkable = False
-	def create_collector(self):
-		self.animals = []
-		for (animal, number) in self.session.db("SELECT unit_id, count FROM animals \
-		                                    WHERE building_id = ?", self.id):
-			for i in xrange(0, number):
-				unit = Entities.units[animal](self, session=self.session)
-				unit.initialize()
-		super(AnimalField, self).create_collector()
-
-	def remove(self):
-		while len(self.animals) > 0:
-			self.animals[0].cancel(continue_action=lambda : 42) # don't continue
-			self.animals[0].remove()
-		super(AnimalField, self).remove()
-
-	def save(self, db):
-		super(AnimalField, self).save(db)
-		for animal in self.animals:
-			animal.save(db)
-
-	def load(self, db, worldid):
-		super(AnimalField, self).load(db, worldid)
-		self.animals = []
-		# units are loaded separatly
 
 class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True
@@ -103,26 +76,24 @@ class ResourceDeposit(NatureBuilding):
 	layer = LAYERS.OBJECTS
 	walkable = False
 
-	def __init__(self, *args, **kwargs):
-		super(ResourceDeposit, self).__init__(*args, **kwargs)
-
-	def initialize(self, inventory=None):
-		super(ResourceDeposit, self).initialize()
-		if inventory:
-			for res, amount in inventory.iteritems():
-				self.get_component(StorageComponent).inventory.alter(res, amount)
-		else: # new one
-			for resource, min_amount, max_amount in self.session.db.get_resource_deposit_resources(self.id):
-				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
-
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
-
 	def __init__(self, *args, **kwargs):
-		super(Fish,  self).__init__(*args, **kwargs)
+		super(Fish, self).__init__(*args, **kwargs)
+		self.last_usage_tick = -1000000 # a long time ago
 
 		# Make the fish run at different speeds
-		multiplier =  0.7 + self.session.random.random() * 0.6
+		multiplier = 0.7 + self.session.random.random() * 0.6
 		self._instance.setTimeMultiplier(multiplier)
 
+	def load(self, db, worldid):
+		super(Fish, self).load(db, worldid)
+		self.last_usage_tick = db.get_last_fish_usage_tick(worldid)
 
+	def save(self, db):
+		super(Fish, self).save(db)
+		translated_tick = self.last_usage_tick - Scheduler().cur_tick # pre-translate for the loading process
+		db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", self.worldid, translated_tick)
 
+	def remove_incoming_collector(self, collector):
+		super(Fish, self).remove_incoming_collector(collector)
+		self.last_usage_tick = Scheduler().cur_tick

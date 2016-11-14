@@ -1,0 +1,27 @@
+id: BUILDINGS.CORN_FIELD
+name: _ Corn Field
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Yields corn. Needs a farm.
+tier: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      GRAIN:
+        produces:
+        - [RES.GRAIN, 1]
+        time: 26
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.GRAIN: 1}
+actionsets:
+  TIER.CITIZENS:
+    as_cornfield0:

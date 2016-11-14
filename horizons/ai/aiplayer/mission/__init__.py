@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,12 @@
 
 import logging
 
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle, WorldObject
+from horizons.world.units.unitexeptions import MoveNotPossible
 from horizons.util.python import decorators
+from horizons.util.shapes import Circle
+from horizons.util.worldobject import WorldObject
 from horizons.constants import BUILDINGS
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Mission(WorldObject):
 	"""
@@ -62,8 +63,11 @@ class Mission(WorldObject):
 		self.report_failure('Mission cancelled')
 
 	def __str__(self):
-		return '%s %s(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player', \
-				              self.__class__.__name__, self.worldid)
+		return '%s %s(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player',
+		                      self.__class__.__name__, self.worldid)
+
+	def end(self):
+		pass
 
 class ShipMission(Mission):
 	def __init__(self, success_callback, failure_callback, ship):
@@ -104,12 +108,11 @@ class ShipMission(Mission):
 
 	def _unload_all_resources(self, settlement):
 		# copy the inventory because otherwise we would be modifying it while iterating
-		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory]:
+		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory.itercontents()]:
 			self.move_resource(self.ship, settlement, res, amount)
 
-	def _move_to_warehouse_area(self, warehouse_position, success_callback, blocked_callback, failure_msg):
-		(x, y) = warehouse_position.get_coordinates()[4]
-		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
+	def _move_to_warehouse_area(self, position, success_callback, blocked_callback, failure_msg):
+		area = Circle(position.center, BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
 		try:
 			self.ship.move(area, success_callback, blocked_callback = blocked_callback)
 		except MoveNotPossible:

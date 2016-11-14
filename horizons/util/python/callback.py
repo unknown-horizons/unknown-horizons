@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -61,7 +61,7 @@ class Callback(object):
 		return not self.__eq__(other)
 
 	def __hash__(self):
-		return hash((self.callback, self.args, \
+		return hash((self.callback, self.args,
 		             tuple(self.kwargs.iteritems()))) # to tuple, dict is unhashable
 
 	def __str__(self):

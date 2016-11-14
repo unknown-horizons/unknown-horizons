@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,17 +24,18 @@ When activated, several hooks are installed into pychan/guichan and catch
 key presses and widget interactions.
 The results are formatted as code that can be used for writing GUI tests.
 """
+from __future__ import print_function
 
 import logging
 from functools import wraps
 
-from horizons.gui import mousetools, Gui
-from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
-
 from fife import fife
-from fife.extensions.pychan import tools
+from fife.extensions.pychan import tools, widgets
 from fife.extensions.pychan.events import EventMapper
 
+from horizons.gui import mousetools
+from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
+from horizons.gui.windows import Dialog
 
 log = logging.getLogger(__name__)
 
@@ -57,10 +58,35 @@ class GuiHooks(object):
 		self._setup_dialog_detector()
 
 	def _setup_widget_events(self):
-		"""
-		Wrap event callbacks before they are registered at a widget.
+		"""Capture events on widgets.
+
+		We log events by wrapping callbacks before they are registered at a widget.
 		"""
 		log = self.logger.new_widget_event
+
+		def deco2(func):
+			@wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+
+				def callback(event, widget):
+					# this can be a no-op because we're patching addEvent below, which
+					# handles the logging
+					pass
+
+				# Provide a default callback for listboxes. Some will never have a
+				# callback installed because their selection is just read later.
+				# But we depend on event callbacks to detect events.
+				if isinstance(self.widget_ref(), widgets.ListBox):
+					self.capture('action', callback, 'default')
+				# We can't detect keypresses on textfields yet, but at least capture
+				# the event when we select the widget
+				elif isinstance(self.widget_ref(), widgets.TextField):
+					self.capture('mouseClicked', callback, 'default')
+
+			return wrapper
+
+		EventMapper.__init__ = deco2(EventMapper.__init__)
 
 		def deco(func):
 			@wraps(func)
@@ -93,8 +119,12 @@ class GuiHooks(object):
 		def deco2(func):
 			@wraps(func)
 			def wrapper(self, evt):
-				keycode = evt.getKey().getValue()
-				log(keycode)
+				data = {
+					'keycode': evt.getKey().getValue(),
+					'shift': evt.isShiftPressed(),
+					'ctrl': evt.isControlPressed()
+				}
+				log(**data)
 				return func(self, evt)
 
 			return wrapper
@@ -114,7 +144,7 @@ class GuiHooks(object):
 		def deco3(func):
 			@wraps(func)
 			def wrapper(self, evt):
-				x, y = self.get_world_location_from_event(evt).to_tuple()
+				x, y = self.get_world_location(evt).to_tuple()
 				button = mouse_button.get(evt.getButton())
 				data = {
 					'tool_name': self.__class__.__name__,
@@ -128,12 +158,13 @@ class GuiHooks(object):
 
 			return wrapper
 
-		# no mouseDragged/mouseMoved support yet
+		# no mouseMoved support yet
 		targets = {
-			mousetools.BuildingTool: ('mousePressed', 'mouseReleased', ),
-			mousetools.SelectionTool: ('mousePressed', 'mouseReleased', ),
-			mousetools.TearingTool: ('mousePressed', 'mouseReleased', ),
+			mousetools.BuildingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
+			mousetools.SelectionTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
+			mousetools.TearingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
 			mousetools.PipetteTool: ('mousePressed', ),
+			mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
 		}
 
 		for tool, events in targets.items():
@@ -156,7 +187,7 @@ class GuiHooks(object):
 				return result
 			return wrapper
 
-		Gui.show_dialog = deco4(Gui.show_dialog)
+		Dialog._execute = deco4(Dialog._execute)
 
 
 class TestCodeGenerator(object):
@@ -165,7 +196,7 @@ class TestCodeGenerator(object):
 	"""
 	def __init__(self):
 		# Keep a list of events to detect mouse clicks (pressed and released)
-		# Clicks are what we're interested in, we don't support mouseMoved/mouseDragged
+		# Clicks are what we're interested in, we don't support mouseMoved
 		self._mousetool_events = []
 
 		self._dialog_active = False
@@ -176,6 +207,10 @@ class TestCodeGenerator(object):
 		# until we either receive a new event or know that a dialog was opened.
 		self._last_command = []
 		self._handler_count = 1
+
+		# Keep track of the last slider event. When moving the slider, many events are
+		# emitted. We will generate code for the last value.
+		self._last_slider_event = None
 
 	def _add(self, code):
 		if self._dialog_active:
@@ -190,8 +225,8 @@ class TestCodeGenerator(object):
 	def _emit(self, lines):
 		for line in lines:
 			if self._dialog_active:
-				print '\t',
-			print line
+				print('\t', end=' ')
+			print(line)
 
 	def _find_container(self, widget):
 		"""
@@ -215,22 +250,57 @@ class TestCodeGenerator(object):
 		container, path = self._find_container(widget)
 
 		if container.name == '__unnamed__':
-			print '# FIXME this container needs a name to identify it!'
-			print '# Path: %s' % path
+			print('# FIXME this container needs a name to identify it!')
+			print('# Path: %s' % path)
+		elif event_name == 'action' and group_name == 'action_listener':
+			# this is a custom event defined in engine.pychan_util to play click sounds
+			# for widgets
+			pass
 		else:
 			log.debug('# %s' % path)
+			code = None
 
-			self._add([
-				"gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name),
-				''
-			])
+			# Emit code for the last slider that was manipulated, but only if the current
+			# event is from a different widget. This is a work around to avoid generating
+			# lots of code for every small mouse move.
+			if self._last_slider_event:
+				w = self._last_slider_event
+				if w.name != widget.name:
+					self._add(["gui.find('%s').slide(%f)" % (w.name, w.value), ""])
+					self._last_slider_event = None
 
-	def new_key_event(self, keycode):
+			if isinstance(widget, widgets.ListBox):
+				selection = widget.items[widget.selected]
+				code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
+			elif isinstance(widget, widgets.TextField):
+				code = "gui.find('%s').write(TODO)" % widget.name
+			elif isinstance(widget, widgets.Slider):
+				self._last_slider_event = widget
+			else:
+				if group_name == 'default':
+					if event_name in ('action', 'mouseClicked'):
+						code = "gui.trigger('%s/%s')" % (container.name, widget.name)
+					else:
+						code = "gui.trigger('%s/%s', '%s')" % (container.name, widget.name, event_name)
+				else:
+					code = "gui.trigger('%s/%s', '%s/%s')" % (container.name, widget.name, event_name, group_name)
+
+			if code:
+				self._add([code, ''])
+				code = None
+
+	def new_key_event(self, keycode, shift=False, ctrl=False):
 		"""
 		Output test code to press the key.
 		"""
 		try:
-			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode]
+			args = ['gui.Key.%s' % KEY_NAME_LOOKUP[keycode]]
+			if shift:
+				args.append('shift=True')
+			if ctrl:
+				args.append('ctrl=True')
+
+			code = 'gui.press_key(%s)' % ', '.join(args)
 		except KeyError:
 			code = '# Unknown key (code %s)' % keycode
 
@@ -243,11 +313,24 @@ class TestCodeGenerator(object):
 		"""
 		if event_name == 'mouseReleased':
 			last_event = self._mousetool_events[-1]
+			# simple click
 			if last_event == ('mousePressed', x, y, button):
 				self._add(["gui.cursor_click(%s, %s, '%s')" % (x, y, button)])
 				self._mousetool_events.pop()
+			# mouse dragged
+			elif (last_event[0], last_event[-1]) == ('mousePressed', button):
+				start = last_event[1], last_event[2]
+				end = x, y
+				self._add(["gui.cursor_drag((%s, %s), (%s, %s), '%s')" % (
+					start[0], start[1], end[0], end[1], button
+				)])
 		elif event_name == 'mousePressed':
 			self._mousetool_events.append((event_name, x, y, button))
+		elif event_name == 'mouseDragged':
+			# TODO for now we ignore these events, if the position between mousePressed
+			# and mouseReleased changed, we assume the mouse was moved and generate a
+			# drage event
+			pass
 		else:
 			raise Exception("Event '%s' not supported." % event_name)
 
@@ -262,12 +345,11 @@ class TestCodeGenerator(object):
 		Start the dialog handler:
 
 			def func1():
-				yield
 				# code for new events will follow
 		"""
 		self._dialog_opener = self._last_command
 		self._last_command = []
-		self._emit(['def func%d():\n\tyield' % self._handler_count])
+		self._emit(['def func%d():' % self._handler_count])
 		self._dialog_active = True
 
 	def dialog_closed(self):

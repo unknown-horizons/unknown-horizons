@@ -1,0 +1,1801 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-09-04 00:33+0200\n"
+"PO-Revision-Date: 2013-05-06 14:39+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"Language-Team: Galician <http://hosted.weblate.org/projects/uh/tutorial/gl/"
+">\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
+
+#. scenario difficulty
+msgid "Tutorial"
+msgstr "Aprendizaxe"
+
+#. scenario description
+msgid ""
+"The tutorial:\n"
+"Build your first settlement and learn how to play!"
+msgstr ""
+"Aprendizaxe:\n"
+"Constrúe o teu primeiro asentamento e aprende a xogar!"
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid ""
+#| "Build a warehouse at the coast, so it is easily accessible for other "
+#| "ships like the Free Trader."
+msgid ""
+"Build a Warehouse on the coast to allow trade ships to visit your settlement."
+msgstr ""
+"Constrúe un almacén na costa, para que outros barcos coma o comerciante "
+"libre poidan acceder a el facilmente."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "Welcome to Unknown Horizons!"
+msgstr "Benvido a Unknown Horizons!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"This is your Journal, where important information about the current scenario "
+"is stored. A summary of each new task will also appear as a 'notification "
+"button' near the left-hand edge of the screen. You can hover your mouse over "
+"these notifications to read the summary, or click the button itself to open "
+"the Journal."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"You can also re-open the Journal at any time by clicking the button below "
+"the mini-map, at the top right of your screen. From now on, we'll refer to "
+"this area containing the mini-map, various buttons and tabs as the "
+"'Overview'."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "To see your first task, click on the button \"Read next entries\" in the "
+#| "navigation panel! It looks like this:"
+msgid ""
+"\n"
+"To see your first task, turn to the next page of the Journal using the "
+"button at the bottom of the opposite page - it looks like this:"
+msgstr ""
+"\n"
+"Para ver o teu primeiro obxectivo, preme o botón de «Ler as seguintes "
+"entradas» no panel de navegación. Pinta así:"
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"If you have any suggestions about how this tutorial can be improved, or if "
+"you encounter any errors, please tell us."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Visit www.unknown-horizons.org for help on how to contact the team!"
+msgid ""
+"\n"
+"Visit www.unknown-horizons.org to find out how to contact the team."
+msgstr ""
+"\n"
+"Visita www.unknown-horizons.org para informarte sobre como contactar co "
+"equipo."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "And now, let's start the actual game."
+msgid "And now, let's start the game!"
+msgstr "E agora, a xogar."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#, fuzzy
+#| msgid "NEW TASK: SETTLE ON AN ISLAND"
+msgid "NEW TASK: CREATE A SETTLEMENT"
+msgstr "Novo obxectivo — Asentarse"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Your ship is at sea, loaded with the supplies you'll need to establish a new "
+"settlement."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "To move your ship, select it with a left click and right click on the "
+#| "location you want it to go to."
+msgid ""
+"To move your ship, select it with a left-click then right-click on the "
+"location you want it to sail to."
+msgstr ""
+"Para seleccionar o barco, pon o cursor sobre el e preme o botón principal do "
+"rato. Unha vez seleccionado, móveo premendo co botón secundario no lugar de "
+"destino."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Once you are near the coast, the anchor-like button you see in the "
+#| "overview tab will become active."
+msgid ""
+"Once you're near the coast, the 'Build Settlement' button in the overview "
+"will become active."
+msgstr ""
+"En canto esteas preto da costa, o botón con forma de áncora da lapela de "
+"información pasará a estar activo."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Clicking this button will show a preview of the Warehouse, the first "
+"building required to found a new settlement. As you move the cursor around, "
+"you'll notice that the preview is shaded red when the building is in an "
+"unsuitable area."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"The Warehouse needs to be positioned on the coast to allow ships to dock. "
+"So, find a good location then left-click to place this important building."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a warehouse at the coast."
+msgid "Task: Build a Warehouse on the coast."
+msgstr "Obxectivo: Construír un almacén na costa."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
+msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
+msgstr "Contrata un leñador e conéctao co almacén mediante un sendeiro."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#, fuzzy
+#| msgid "NEW TASK: BUILD A LUMBERJACK"
+msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
+msgstr "Novo obxectivo — Un leñador"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The supplies and construction materials have been unloaded from your ship "
+"and safely stored in your new Warehouse. Now it's time to construct some "
+"basic buildings, beginning with a Lumberjack's Tent."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Lumberjacks will fell trees from the woodland around their tent and process "
+"the timber to produce boards, for use in construction or as a trade resource."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "In order to construct lumberjacks; open the build menu by either clicking "
+#| "the big icon below the mini map or pressing B key."
+msgid ""
+"To build a Lumberjack's Tent, open the Build Menu by clicking the button "
+"below the mini map or pressing 'B', the default hotkey."
+msgstr ""
+"Para contratar un leñador: abre o menú de construción premendo a icona "
+"grande baixo o minimapa, ou premendo a tecla B."
+
+#. This is the text body of a logbook page.
+msgid ""
+"The Build Menu is sorted by tiers and, as yours is a new settlement, First "
+"Tier buildings are the only ones available to you; as your civilization "
+"advances, you will obtain access to higher tiers and be able to construct a "
+"much wider range of buildings."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
+"Tent' from the list of buildings in the Overview and place the building."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Later in the game you might want to create woodland by planting trees, but "
+"since that costs money, you should use what nature has provided for the time "
+"being!"
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Any resource-gathering or production building needs a path connecting it to "
+"a Warehouse or other form of storage, otherwise the goods it produces will "
+"not be collected."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"So, once your Lumberjack's Tent is in position, connect it to your Warehouse "
+"by opening the Build Menu then clicking the 'Path' button. You can now click "
+"and drag with the mouse to draw the route of your path between the "
+"Lumberjack's Tent and the Warehouse."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
+msgid ""
+"Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
+"Warehouse."
+msgstr ""
+"Obxectivo: contrata un leñador nunha zona de bosque e conéctao cun sendeiro."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Once the buildings are connected you'll see a collector arrive to pick up "
+"your newly produced boards and deliver them to the Warehouse, ready for use "
+"in construction or trade."
+msgstr ""
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a hunter and a fisher. Connect them to the warehouse."
+msgid ""
+"Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
+msgstr "Contrata un cazador e un pescador. Conéctaos ao almacén."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: FOOD SUPPLY"
+msgstr "Novo obxectivo — Alimentos"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You will need to have some food-producing companies, too, because people "
+#| "in general (and especially sailors) are very hungry."
+msgid ""
+"You will need to have some food-producing companies too, because people in "
+"general (and especially sailors) are very hungry."
+msgstr ""
+"Necesitarás tamén algúns negocios de produción de alimentos, xa que a xente "
+"(e en especial os mariñeiros) come e moito."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Available companies in the first tier are the Hunter and Fisher."
+msgid ""
+"Available companies in the first tier are the Hunter's Tent and Fisherman's "
+"Tent."
+msgstr ""
+"Os negocios de alimentación do primeiro nivel son o cazador e mailo pescador."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
+msgid "The hunter hunts animals in the forest, thus needs trees nearby."
+msgstr ""
+"O cazador caza animais no bosque, así que necesita estar preto de árbores."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that you can place your Hunter close to the lumberjack's forest."
+msgid ""
+"Note that you can place your Hunter's Tent close to the lumberjack's forest."
+msgstr "Ten en conta que poder colocar o cazador preto do bosque do leñador."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It can happen that the animals don't reproduce fast enough or simply hide "
+"well."
+msgstr ""
+"Pode ser que os animais non se reproduzan rápido dabondo, ou simplemente que "
+"se agochen moi ben."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Conclusion: the hunter is not too reliable if you need continuous supply."
+msgid ""
+"Conclusion: the Hunter's Tent is not too reliable if you need continuous "
+"supply."
+msgstr ""
+"Conclusión: non cómpre depender moito do cazador, é unha fonte de alimentos "
+"irregular."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The Fisher needs a coastal building site like the warehouse and a fish "
+#| "school in range."
+msgid ""
+"\n"
+"The Fisher needs a coastal building site like the Warehouse and a fish "
+"school in range."
+msgstr ""
+"\n"
+"O pescador necesita un edificio na costa, igual que o almacén, e un banco de "
+"peixes ao alcance."
+
+#. This is the text body of a logbook page.
+msgid "He will build a small rowing vessel and catch some fish."
+msgstr "Construirá unha pequena embarcación e comezará a pescar."
+
+#. This is the text body of a logbook page.
+msgid ""
+"This is a very constant supply at the cost of a slightly longer production "
+"time per unit of food."
+msgstr ""
+"O pescador fornece alimentos de maneira constante e regular, se ben a taxa "
+"de produción é menor que a do cazador."
+
+#. This is the text body of a logbook page.
+msgid ""
+"A small settlement like yours can use both companies, and you can better "
+"balance pros and cons if you see the direct comparison."
+msgstr ""
+"A un asentamento pequeno coma o teu venlle ben os dous negocios, e probando "
+"os dous poderás considerar mellor os pros e mailos contras de cada un."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a hunter and a fisher."
+msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
+msgstr "Obxectivo: contrata un cazador e un pescador."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Don't forget to connect them to your warehouse with trails!"
+msgid "Don't forget to connect them to your Warehouse with Trails!"
+msgstr "Non esquezas conectalos ao almacén mediante sendeiros."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a main square. Choose an area without many economy buildings."
+msgid "Build a Main Square. Choose an area without many economy buildings."
+msgstr ""
+"Constrúe unha praza principal. Escolle unha zona sen moitos edificios de "
+"produción."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: MAIN SQUARE"
+msgstr "Novo obxectivo — Praza principal"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Your residents need a main square where they can fetch their goods from."
+msgstr "Os residentes necesitan unha praza principal de onde obter bens."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that they need a trail connection from their home to the main "
+#| "square."
+msgid ""
+"This means that they need a trail connection from their home to the Main "
+"Square. Note that the Main Square acts as trail as well, therefore adjacent "
+"Tents do not need a separate Trail."
+msgstr ""
+"Iso significa que necesitan estar conectados por sendeiros desde a súa casa "
+"á praza principal."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All goods in your warehouse are available at this 'market place', so your "
+#| "residents do not need to walk to the fisher or even to the warehouse."
+msgid ""
+"All goods in your Warehouse are available at this 'market place', so your "
+"residents do not need to walk to the Fisherman's Tent or even to the "
+"Warehouse."
+msgstr ""
+"Todos os bens do almacén están dispoñíbeis nesta especie de «mercado», polo "
+"que os residentes non necesitan ir ata onde o pescador, nin ata o propio "
+"almacén."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You should avoid placing your main settlement tents too close to your "
+"lumberjacks because building tents will clear away the trees that your "
+"lumberjack needs to produce boards."
+msgstr ""
+"Intenta non construír os teus asentamentos moi preto dos leñadores, xa que "
+"as tendas que constrúas para os novos habitantes comeranlle terreo ao bosque "
+"que o leñador necesita para producir táboas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Companies work without being connected to the tents, so you don't need to "
+#| "build a road between the main square and e.g. your lumberjack tent."
+msgid ""
+"Companies work without being connected to the tents, so you don't need to "
+"build a road between the Main Square and e.g. your Lumberjack's Tent."
+msgstr ""
+"Os negocios funcionan sen necesitade de estar conectados ás tendas, así que "
+"non necesitas construír camiños entre a praza principal e, por exemplo, a "
+"tenda do leñador."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a main square."
+msgid "Task: Build a Main Square."
+msgstr "Obxectivo: constrúe unha praza principal."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Now let's have a closer look at the main square."
+msgid ""
+"\n"
+"Now let's have a closer look at the Main Square."
+msgstr ""
+"\n"
+"Agora imos botar unha ollada con máis detalle á praza principal."
+
+#. This is the text body of a logbook page.
+msgid ""
+"In the 'Account' tab you get a balance sheet of this island, featuring all "
+"costs you pay and all taxes you earn."
+msgstr ""
+"Na lapela de «Conta» podes ver en detalle o saldo do asentamento, con todos "
+"os custos e ingresos."
+
+#. This is the text body of a logbook page.
+msgid ""
+"The items 'Sale' and 'Buy' refer to your trading balance and will be "
+"explained later on."
+msgstr ""
+"Os elementos «Vender» e «Mercar» fan referencia ao saldo do comercio, que se "
+"explicará máis adiante."
+
+#. This is the text body of a logbook page.
+msgid "If your balance is positive, you all-in-all make a profit."
+msgstr "Se o saldo é positivo, estás a xerar beneficios."
+
+#. This is the text body of a logbook page.
+msgid ""
+"In the different tier overview tabs you can see statistics about your "
+"inhabitants. You also set the tier-specific global tax here and allow or "
+"deny inhabitants of this tier to upgrade to the next higher one."
+msgstr ""
+"Nas lapelas de información dos distintos niveis podes ver estatísticas dos "
+"habitantes. Tamén podes definir os impostos específicos de cada nivel, e "
+"permitir ou rexeitarlle aos habitantes de cada nivel que avancen ao seguinte "
+"nivel."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a tent and connect it to the main square."
+msgid "Build a Tent and connect it to the Main Square if necessary."
+msgstr "Constrúe unha tenda e conéctaa á praza principal."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: RESIDENTIAL BUILDINGS"
+msgstr "Novo obxectivo — Vivendas"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Settlers want to have a roof over their heads, else they won't even think of "
+"living in your city! You need to provide tents."
+msgstr ""
+"Os colonos queren ter un teito no que descansar, ou nin se lles pasará pola "
+"cabeza a idea de vivir na túa cidade! Tes que fornecerlles tendas."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Tents are the basic residential buildings. Your inhabitants will want to "
+"upgrade it when they reach higher tiers."
+msgstr ""
+"As tendas son as vivendas fundamentais. Os habitantes quererán anovalas "
+"cando avancen a niveis superiores."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Note that the upgrade of each building requires construction material, like "
+"wood for their first upgrade."
+msgstr ""
+"Ten en conta que para que os edificios avancen de nivel necesítanse "
+"materiais de construción. Por exemplo, para o primeiro avance necesítase "
+"madeira."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Consider to disable the upgrade if your stock of these materials is low."
+msgstr ""
+"Se anda falto dos materiais necesarios, sempre pode desactivar o avance."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Settlers may not look very useful since they will try to consume all goods "
+"you produce - but they at least pay taxes, and that's the only way you can "
+"make money for now!"
+msgstr ""
+"Pode que os colonos non parezan moi útiles, dado que simplemente se adican a "
+"consumir os bens que produces. Pero polo menos pagan impostos, que é o único "
+"xeito que tes de conseguir cartos de momento."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build a tent and connect it to the main square. Tents dont need to "
+#| "be connected to any of the companies."
+msgid ""
+"Task: Build a Tent and connect it to the Main Square if necessary. Tents "
+"don't need to be connected to any of the companies."
+msgstr ""
+"Obxectivo: constrúe unha tenda e conéctaa coa praza principal. As tendas non "
+"necesitan estar conectadas a ningún negocio."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid ""
+#| "Build at least three additional tents and connect them to the main square."
+msgid ""
+"Build at least three additional Tents and connect them to the Main Square."
+msgstr "Constrúe polo menos tres tendas máis e conéctaas coa praza principal."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Let's have a look at the tent overview tab."
+msgid ""
+"\n"
+"Let's have a look at the Tent overview tab."
+msgstr ""
+"\n"
+"Botémoslle un ollo á lapela de información da tenda."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You can see\n"
+"* the happiness of these residents,\n"
+"* the taxes they pay and\n"
+"* the resources they demand."
+msgstr ""
+"Nela podes observar:\n"
+"• o nivel de felicidade dos habitantes,\n"
+"• os impostos que pagan, e\n"
+"• os recursos que esixen."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If their demands are fulfilled, happiness and thus your tax income increase."
+msgstr ""
+"Se cumpres coas súas esixencias, serán máis felices, e aumentarán os "
+"ingresos por impostos."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If not, happiness and income decrease. At some time your residents may get "
+"really sour and simply turn their back on your village, leaving behind a "
+"decaying ruin."
+msgstr ""
+"En caso contrario, serán menos felices, e reduciranse os ingresos por "
+"impostos. Pode chegar un punto no que os residentes estean fartos e decidan "
+"marchar do asentamento, non deixando atrás máis que ruínas."
+
+#. This is the text body of a logbook page.
+msgid "Note that you can also change the global tax settings here, too."
+msgstr ""
+"Ten en conta que tamén podes cambiar as opcións globais de impostos desde "
+"aquí."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build at least three additional tents."
+msgid "Task: Build at least three additional Tents."
+msgstr "Obxectivo: constrúe polo menos outras tres tendas."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"TIP: Holding down SHIFT eases constructing multiple buildings of the same "
+"kind."
+msgstr ""
+"\n"
+"Consello: deixa premida a tecla Maiús para construír facilmente varios "
+"edificios do mesmo tipo."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a signal fire at the coast close to your warehouse."
+msgid "Build a Signal Fire at the coast close to your Warehouse."
+msgstr "Constrúe un sinal de lume na costa, preto do almacén."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD SIGNAL FIRE"
+msgstr "Novo obxectivo — Sinal de lume"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Can you see the ship passing your island from time to time? That ship "
+"belongs to the Free Trader, one of the first settlers in this archipelago."
+msgstr ""
+"Decatácheste do barco que pasa preto da illa de cando en vez? Trátase dun "
+"“comerciante libre”, un dos primeiros en asentarse no arquipélago."
+
+#. This is the text body of a logbook page.
+msgid ""
+"The trader will supply your settlement with necessary goods which you can't "
+"produce yet."
+msgstr ""
+"O comerciante fornecerache os recursos que necesites e que aínda non podas "
+"producir."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can also sell surpluses of your production, but in general consuming "
+#| "them (by building more tents) instead of selling them yields more profit."
+msgid ""
+"You can also sell surpluses of your production, but in general consuming "
+"them (by building more Tents) instead of selling them yields more profit."
+msgstr ""
+"Tamén podes vendes o que te sobre da produción, pero en xeral sae máis a "
+"conto consumir eses recursos (construíndo máis tendas) que non vendelos."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Normally the trader ships just sail around and look for deals, but you "
+#| "can speed things up a bit."
+msgid ""
+"Normally the trader just sails around and looks for deals, but you can speed "
+"things up a bit."
+msgstr ""
+"Normalmente o barco do comerciante non fai máis que dar voltas en busca de "
+"trato, pero podes acelerar as cousas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "For this purpose, build a signal fire at the coast near your warehouse. "
+#| "It will show ships the way to your settlement."
+msgid ""
+"For this purpose, build a Signal Fire at the coast near your Warehouse. It "
+"will show ships the way to your settlement."
+msgstr ""
+"Constrúe un sinal de lume na costa, preto do almacén. Así conseguirás que os "
+"barcos se acheguen ao asentamento."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The signal fire has to cover the area which the ships pass through to "
+#| "catch them."
+msgid ""
+"The Signal Fire has to cover the area which the ships pass through to catch "
+"them."
+msgstr ""
+"O sinal de lume ten que cubrir unha zona pola que pasen barcos, para "
+"atraelos."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "After this little advertisment, the trader will also stop by and look "
+#| "into your warehouse if it planned to sail past it."
+msgid ""
+"\n"
+"After this little advertisement, the trader will also stop by and look into "
+"your Warehouse, even if he had planned to sail past it."
+msgstr ""
+"\n"
+"Despois deste pequeno anuncio, o comerciante pasará polo teu almacén a ver "
+"que hai, sempre que lle quede de camiño."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
+msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
+msgstr "Podes propoñer intercambios desde a lapela de «Comercio» do almacén."
+
+#. This is the text body of a logbook page.
+msgid "At the 'sailors' tier, you are equipped with three trading slots."
+msgstr "No «nivel dos mariñeiros» podes usar ata tres celas de comercio."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
+"vice versa."
+msgstr ""
+"Preme a icona pequena para cambiar o modo da cela. Podes alternar entre "
+"«Mercar» e «Vender»."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Click in the slot to choose the good you want to trade with. We will further "
+"explain this once you are ready to trade."
+msgstr ""
+"Preme a cela en si para escoller o ben co que queres comerciar. Xa máis "
+"adiante, cando esteas listo para comerciar, se che explicará en detalle como "
+"funciona isto."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a signal fire at the coast close to your warehouse."
+msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
+msgstr "Obxectivo: constrúe un sinal de lume na costa, preto do almacén."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Reach an island stock of at least 30 tools. Note that this might take a "
+"while."
+msgstr ""
+"Almacena 30 toneladas de ferramentas no asentamento. Pode levarche un anaco."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: LEARN TO TRADE"
+msgstr "Novo obxectivo — Comercio"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Excellent! The Free Trader will now stop by at your warehouse from time "
+#| "to time.\n"
+#| "\n"
+#| "Let's continue our tutorial on how to trade."
+msgid ""
+"Excellent! The Free Trader will now stop by at your Warehouse from time to "
+"time.\n"
+"\n"
+"Let's continue our tutorial on how to trade."
+msgstr ""
+"Fantástico! Agora o comerciante libre parará no almacén de cando en vez.\n"
+"\n"
+"Agora toca continuar aprendendo a comerciar."
+
+#. This is the text body of a logbook page.
+msgid "First click on your own Warehouse and click on the third tab."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"Then click on one of the 3 slots, then select a good you want to buy or sell."
+msgstr ""
+
+#. This is the text body of a logbook page.
+msgid ""
+"After selecting a particular type of good, the green bar across the bottom "
+"of the slot (if visible) shows you how much you have in stock of this good."
+msgstr ""
+"Despois de seleccionar un tipo específico deben, a barra verde que hai na "
+"parte inferior da cela (cando se ve) amosa a cantidade que tes almacenada "
+"dese ben."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Dragging the slider on the right of each slot determines your 'target value' "
+"which has a different meaning on 'Buy' and 'Sell'."
+msgstr ""
+"Arrastrando a barra á dereita defines o «obxectivo», que significa algo "
+"distinto segundo se trate de «Mercar» ou de «Vender»."
+
+#. This is the text body of a logbook page.
+msgid ""
+"When buying, you will buy sufficient to hold your 'target value' in stock."
+msgstr ""
+"Cando se trate de mercar, mercarás dabondo para chegar ao obxectivo no "
+"almacén."
+
+#. This is the text body of a logbook page.
+msgid ""
+"When selling, the 'target value' is the stock amount at which you will "
+"always stop selling until you get more of that resource again."
+msgstr ""
+"Cando se trate de vender, o obxectivo será o límite; venderás ata que no "
+"almacén quede o obxectivo, e non volverás vender ata que no almacén se "
+"supere o obxectivo de novo."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"For example:\n"
+"Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
+"cause you to buy 4 additional tons at most."
+msgstr ""
+"\n"
+"Por exemplo:\n"
+"Cunha cela de «Mercar» e 5 toneladas almacenadas, se sitúas a barra nas 9 "
+"toneladas, mercaranse como moito outras catro toneladas."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
+"positioned at 13 will sell up to 5 tons."
+msgstr ""
+"Vender funciona de xeito similar. Cunha cela de «Vender» e 18 toneladas "
+"almacenadas, se a barra se sitúa en 13, venderanse como máximo 5 toneladas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "If the free trader however only wants to buy or sell less than your "
+#| "settings would allow him, you need to live with that and wait for him to "
+#| "return."
+msgid ""
+"If the Free Trader however only wants to buy or sell less than your settings "
+"would allow him, you need to live with that and wait for him to return."
+msgstr ""
+"Porén, se o comerciante libre só quere mercar ou vender menos do que permite "
+"a túa configuración, terás que asumilo e esperar a que volva."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
+"It is NOT possible to change prices manually!"
+msgstr ""
+"Unknown Horizons utiliza un sistema intelixente de xestión dos prezos, o que "
+"significa que o valor dunha unidade pode variar.\n"
+"Non é posíbel cambiar os prezos manualmente."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
+"'Buy' values there."
+msgstr ""
+"Pode ver os seus gastos e ingresos por comercio na lapela de «Conta», como "
+"«Vender» e «Mercar»."
+
+#. This is the text body of a logbook page.
+msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
+msgstr "Obxectivo: consigue reunir no almacén 30 toneladas de ferramentas."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a pavilion with connection to the tents."
+msgid "Build a Pavilion with connection to the Tents."
+msgstr "Constrúe un pavillón conectado coas tendas."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A PAVILION"
+msgstr "Novo obxectivo — Pavillón"
+
+#. This is the text body of a logbook page.
+msgid "Those tools will be enough for the moment. Well done!"
+msgstr "Con esas ferramentas abondará de momento. Bo traballo!"
+
+#. This is the text body of a logbook page.
+msgid "You now provide housing, a main square and food to your inhabitants."
+msgstr ""
+"Xa dispós de vivendas, unha praza principal e alimentos para os habitantes."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Still there is one demand which we have not satisfied so far, you may "
+#| "check that in the marketplace or tent tab - your sailors want a basic "
+#| "building where they can pray."
+msgid ""
+"Still there is one demand which we have not satisfied so far (you may check "
+"that by clicking on any Tent): your sailors want a basic building where they "
+"can pray."
+msgstr ""
+"Porén, aínda hai unha necesitade por satisfacer, algo que podes comprobar na "
+"lapela da praza ou dunha tenda: os mariñeiros queren un edificio onde rezar."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The solution is a pavilion which the village parson quickly puts up as "
+#| "shelter from the sun."
+msgid ""
+"The solution is a Pavilion which the village parson quickly puts up as "
+"shelter from the sun."
+msgstr ""
+"A solución é un pavillón, que o clérigo da vila non tardará en montar, coma "
+"quen constrúe un refuxio do sol."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Service buildings like this also need to be connected to the tents with a "
+#| "trail, else your inhabitants feel unable to reach them."
+msgid ""
+"Service buildings like this also need to be connected to the Tents with a "
+"Trail, else your inhabitants feel unable to reach them."
+msgstr ""
+"Os edificios de servizos coma este tamén teñen que estar conectados ás "
+"tendas cun sendeiro, ou os habitantes sentiranse incapaces de acceder a eles."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"Note that faith is treated like a physical resource!"
+msgstr ""
+"\n"
+"Ten en conta que a fe funciona no xogo como calquera recurso físico!"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that your inhabitants need a road connection to the producer "
+#| "(pavilion) to pick up faith there."
+msgid ""
+"This means that your inhabitants need a road connection to the producer "
+"(Pavilion) to pick up faith there."
+msgstr ""
+"Isto significa que os habitantes necesitan estar conectados por camiños ao "
+"produtor, o pavillón, para coller a fe del."
+
+#. This is the text body of a logbook page.
+msgid ""
+"After some time, they will have consumed it and then again look for a "
+"producer to collect more faith."
+msgstr ""
+"Despois dun tempo, consumirán a fe e terán que volver ao produtor a recoller "
+"máis."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Important:\n"
+#| "It is NOT enough that the building is merely within a certain range of "
+#| "the tents.\n"
+#| "The road connection is required as well."
+msgid ""
+"Important:\n"
+"It is NOT enough that the building is merely within a certain range of the "
+"Tents.\n"
+"The road connection is required as well."
+msgstr ""
+"Nota importante:\n"
+"Non abonda con que o edificio teña as tendas dentro do seu raio de efecto.\n"
+"Tamén ten que haber un camiño das tendas ao pavillón."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build a pavilion with a trail to the tents in order to fulfill your "
+#| "sailors' demand for faith."
+msgid ""
+"Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
+"sailors' demand for faith."
+msgstr ""
+"Obxectivo: constrúe un pavillón cun camiño ata as tendas para satisfacer as "
+"necesidades de fe dos mariñeiros."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Set the tax level to Low (left end) and wait for your sailors to upgrade."
+msgstr ""
+"Baixa o nivel de impostos ao mínimo (extremo esquerdo) e espera a que os "
+"mariñeiros avancen de nivel."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: NEXT TIER"
+msgstr "Novo obxectivo — Avanzar"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All demands are fulfilled now if your inhabitants can regularly visit the "
+#| "main square & pavilion and your food supply is adequate."
+msgid ""
+"All demands are fulfilled now if your inhabitants can regularly visit the "
+"Main Square and the Pavilion and your food supply is adequate."
+msgstr ""
+"Se poden visitar regularmente a praza principal e mailo pavillón, e hai "
+"alimentos dabondo para eles, todas as necesidades dos habitantes quedarán "
+"cubertas."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If the sailors are happy enough, they want to advance to the next tier "
+"called Pioneers."
+msgstr ""
+"Se os mariñeiros son felices dabondo, quererán avanzar ao seguinte nivel, o "
+"«nivel dos colonos»."
+
+#. This is the text body of a logbook page.
+msgid ""
+"To make them happy, there is nothing else for you to do but setting taxes to "
+"a lower level since you have fulfilled all the demands of your inhabitants."
+msgstr ""
+"Para facelos felices, non poder facer máis que baixar os impostos, pois xa "
+"satisfixeches todas as necesidades dos habitantes."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You should try to not always run on low taxes since this will probably lead "
+"to bankruptcy sooner or later. For a period of time and if you know what you "
+"are doing, it is fine though."
+msgstr ""
+"Deberías intentar non baixar os impostos constantemente, pois antes ou "
+"despois acabarás en bancarrota. Pero podes baixalos durante un certo período "
+"de tempo, sempre que teñas claro o que fas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "After some time, the first unit should walk to the main square and have a "
+#| "look for new construction material there to build a log house. This house "
+#| "will replace the old tent."
+msgid ""
+"After some time, the first unit should walk to the Main Square and have a "
+"look for new construction material there to build a log house. This house "
+"will replace the old tent."
+msgstr ""
+"Despois dun tempo, algún mariñeiro irá á praza principal a buscar novos "
+"materiais de construción para construírse unha casa de madeira. Dita casa "
+"substituirá a tenda do mariñeiro."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Such residential upgrades cost resources and can thus be restricted at "
+#| "the main square."
+msgid ""
+"\n"
+"Such residential upgrades cost resources and can thus be restricted at the "
+"Main Square."
+msgstr ""
+"\n"
+"Os avances das vivendas custan recursos, polo que podes restrinxilos desde a "
+"praza principal."
+
+#. This is the text body of a logbook page.
+msgid ""
+"There also are upgrades of buildings without costs, as you will see with the "
+"lumberjack. In this case, only the graphics change."
+msgstr ""
+"Tamén hai avances de edificios que non supoñen custos adicionais, como "
+"poderás observar co leñador. En casos coma este, o cambio é simplemente "
+"gráfico, só cambia o aspecto do edificio, máis nada."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
+"than sailors, too."
+msgstr ""
+"A medida que avanzan de nivel, as vivendas poden aloxar máis habitantes, e "
+"ademais, os colonos que habitan as novas casas pagan máis impostos que os "
+"mariñeiros."
+
+#. This is the text body of a logbook page.
+msgid ""
+"As you may have figured out already, the downside is that pioneers demand "
+"additional goods which sailors do not need - so you will need to spend this "
+"extra money to make them happy as well."
+msgstr ""
+"Como xa imaxinarás, o malo é que os colonos esixen bens adicionais que os "
+"mariñeiros non necesitan. Así que terás que gastar cartos en facer felices "
+"aos colonos tamén."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
+msgstr ""
+"Obxectivo: baixa o nivel de impostos (extremo esquerdo) e agarda a que os "
+"mariñeiros avancen de nivel."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a farm and keep some empty space around it."
+msgid "Build a Farm and keep some empty space around it."
+msgstr "Constrúe unha granxa e deixa espazo baleiro ao seu arredor."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A FARM"
+msgstr "Novo obxectivo — Granxa"
+
+#. This is the text body of a logbook page.
+msgid "Congratulations! Some of your inhabitants have reached tier II!"
+msgstr "Parabéns, algúns habitantes chegaron ao segundo nivel!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Now you have access to new buildings, take a look at the Build menu again."
+msgstr ""
+"Agora terás acceso a novos edificios, bótalle unha ollada ao menú de "
+"construción."
+
+#. This is the text body of a logbook page.
+msgid "A shiny new tab appeared there."
+msgstr "Apareceu nel unha nova e relucente lapela."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Pioneers will demand cloth, so you need to set up a production line for "
+#| "cloth starting with lambs wool (which is one of the goods produced at the "
+#| "farm)."
+msgid ""
+"Pioneers will demand cloth, so you need to set up a production line for "
+"cloth starting with lambs wool (which is one of the goods produced at the "
+"Farm)."
+msgstr ""
+"Os colonos esixirán roupa, así que necesitas preparar unha liña de produción "
+"desta, comezando pola la dos años (que é un dos bens que se poden producir "
+"nunha granxa)."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The farm is a very special production building since it can produce not "
+#| "only one, but very many (and different) goods if you choose."
+msgid ""
+"The Farm is a very special production building since it can produce not only "
+"one, but many (and different) goods if you choose."
+msgstr ""
+"As granxas son edificios de produción moi especiais, dado que poden producir "
+"non un, senón moitos (e moi distintos) bens, se así o decides."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The output of farms depends on what kind of fields you build around it."
+msgid "The output of Farms depends on what kind of fields you build around it."
+msgstr ""
+"O que xeran as granxas depende do tipo de campos que constrúas ao seu "
+"arredor."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"We will have a closer look at this later."
+msgstr ""
+"\n"
+"Máis tarde afondaremos neste tema."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Farms, like all companies producing raw materials, do not necessarily "
+#| "need to be connected to storage or a warehouse."
+msgid ""
+"Farms, like all companies producing raw materials, do not necessarily need "
+"to be connected to storage or a Warehouse."
+msgstr ""
+"As granxas, como calquera outro negocio de produción de materias primas, non "
+"necesitan necesariamente estar conectadas a un almacén ou depósito."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "As long as units of the final production company can reach the farm, and "
+#| "collectors from the warehouse or storage tent can reach the final company "
+#| "everything's fine."
+msgid ""
+"As long as units of the final production company can reach the Farm, and "
+"collectors from the Warehouse or Storage Tent can reach the final company "
+"everything's fine."
+msgstr ""
+"Sempre e cando as unidades dos negocios de transformación desas materias "
+"primas teñan a granxa ao seu alcance, e os transportistas dos almacéns e "
+"depósitos poidan chegar ata o negocio de transformación desas materias "
+"primas, non haberá problema."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If you, however, plan to do some processing on different parts of the island "
+"(which can make sense) or even on different islands, you will need a "
+"connection to collectors."
+msgstr ""
+"Porén, se contas con transformar esas materias primas en distintas partes da "
+"illa (algo que ten bastante sentido) ou mesmo en illas distintas, "
+"necesitarás conectar a granxa con transportistas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Try to build the farm not too close to the coast or your existing "
+#| "buildings since it will need some space around it to work well."
+msgid ""
+"Try to build the Farm not too close to the coast or your existing buildings "
+"since it will need some space around it to work well."
+msgstr ""
+"Intenta construír a granxa lonxe da costa ou dos edificios existentes, dado "
+"que para que funcione necesitarás espazo ao seu redor."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a farm."
+msgid "Task: Build a Farm."
+msgstr "Obxectivo: constrúe unha granxa."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build at least one pasture and add potato fields if you like."
+msgstr ""
+"Constrúe polo menos un terreo para ovellas, e se queres unha horta de "
+"patacas."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD FIELDS"
+msgstr "Novo obxectivo — Campos"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "The farm itself is not going to produce anything without some fields."
+msgid "The Farm itself is not going to produce anything without some fields."
+msgstr ""
+"A granxa por si soa non produce nada, necesita ter campos ao seu arredor."
+
+#. This is the text body of a logbook page.
+msgid ""
+"You currently have the choice between pastures, potato and sugar fields."
+msgstr ""
+"Nestes momentos podes elixir entre campos de ovellas, hortas de patacas ou "
+"campos de azucre."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Let's have a short overview:\n"
+#| "* Pasture: Sheep live here, producing lamb wool.\n"
+#| "* Potato field: Grows potatoes which are currently treated as food.\n"
+#| "* Sugar field: Grows sugar which is used to distill liquor and (later) "
+#| "produce confectionery."
+msgid ""
+"Let's have a short overview:\n"
+"* Pasture: Sheep live here, producing lamb wool.\n"
+"* Potato Field: Grows potatoes which are currently treated as food.\n"
+"* Sugar Field: Grows sugar which is used to distill liquor and (later) "
+"produce confectionery."
+msgstr ""
+"Aquí tes unha introdución a cada un deses campos:\n"
+"• Campo de ovellas. Críanse ovellas, cuxos años producen la.\n"
+"• Horta de patacas. Cultívanse patacas, que serven de alimento.\n"
+"• Campo de azucre. Cultívase azucre, que se emprega para destilar licor e, "
+"máis adiante, doces."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We now only need pastures, but in case your food supply chain is too small "
+"(maybe many residential buildings) you can also produce some potatoes."
+msgstr ""
+"De momento só necesitas un campo de ovellas, pero por se estás a quedar "
+"curto de alimentos (se tes moitas vivendas) tamén podes producir algunhas "
+"patacas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that for potatoes you will need a road connection to the farm (not "
+#| "to the field!) as it will be the only company to work on the goods."
+msgid ""
+"Note that for potatoes you will need a road connection to the Farm (not to "
+"the field!), as it will be the only company to work on the goods."
+msgstr ""
+"Ten en conta que para as patacas necesitarás un camiño que conecte a granxa "
+"(non a horta en si) cun almacén ou depósito, dado que as patacas non "
+"necesitan transformarse noutro negocio, senón que se distribúen directamente "
+"para o seu consumo."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Make sure that all fields you build are in the area covered by the farm."
+msgid ""
+"\n"
+"Make sure that all fields you build are in the area covered by the Farm."
+msgstr ""
+"\n"
+"Asegúrate de que todos os campos que constrúas están na zona de acción da "
+"granxa."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can have combined production - one pasture will not lead to 100 "
+#| "percent efficiency of the farm - but you need to check how many fields "
+#| "one farm can serve."
+msgid ""
+"You can have combined production - one pasture will not lead to 100 percent "
+"efficiency of the Farm - but you need to check how many fields one Farm can "
+"serve."
+msgstr ""
+"Podes combinar a produción de distintas materias primas, xa que un simple "
+"campo de ovellas non aproveitará completamente as capacidades produtivas da "
+"granxa, pero tes que determinar a cantidade de campos que pode ter a granxa."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Different classes of fields require the farm units to spend more or less "
+"time there (to seed, harvest, herd, etc…) and because of that, the farm may "
+"be unable to serve all of the fields you built for it in time."
+msgstr ""
+"Os distintos tipos de campos requiren unha cantidade distinta de tempo que "
+"as unidades da granxa deberán empregar no campo (sementando, recollendo, "
+"etc.), e por iso, pode que unha granxa non sexa capaz de dar abasto con "
+"todos os campos construídos para ela."
+
+#. This is the text body of a logbook page.
+msgid ""
+"For now, you do not need to care about these issues a lot since you haven't "
+"built any fields. Let's change that!"
+msgstr ""
+"De momento non tes que preocuparte destas cousas moito, xa que aínda non "
+"construíches ningún campo. Pero iso vai cambiar."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build at least one pasture in the farm's range and add potato "
+#| "fields if you like."
+msgid ""
+"Task: Build at least one Pasture in the Farm's range and add Potato Fields "
+"if you like."
+msgstr ""
+"Obxectivo: constrúe como mínimo un campo de ovellas na zona de acción da "
+"granxa e engade hortas de patacas se queres."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid "Build a storage tent (tier I tab) where it makes sense."
+msgstr ""
+"Constrúe unha tenda de depósito (na lapela do primeiro nivel) onde faga "
+"falla."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD STORAGE"
+msgstr "Novo obxectivo — Almacenamento"
+
+#. This is the text body of a logbook page.
+msgid "Did you watch your lumberjack recently?"
+msgstr "Botácheslle un ollo ao leñador ultimamente?"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Since your warehouse does not have unlimited space to store goods, "
+#| "collectors will stop fetching goods from companies when stock is full."
+msgid ""
+"Since your Warehouse does not have unlimited space to store goods, "
+"collectors will stop fetching goods from companies when stock is full."
+msgstr ""
+"Como o almacén non ten espazo ilimitado para almacenar os bens, os "
+"transportistas deixarán de recoller bens dos negocios cando se complete o "
+"espazo de almacenamento dispoñíbel."
+
+#. This is the text body of a logbook page.
+msgid ""
+"So if no sailors recently wanted to upgrade their tents, you probably have a "
+"lot of boards and in that case, the lumberjack may idle."
+msgstr ""
+"Así que, salvo que algún mariñeiro anovase a súa tenda hai pouco, o máis "
+"probable é que teñan unha morea de táboas, e pode que o leñador non estea a "
+"facer nada."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We can improve this situation in two different ways, and we will have a look "
+"at both of them below."
+msgstr ""
+"Hai dúas formas de mellorar esta situación, e a continuación comentaremos as "
+"dúas."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "All companies offer to do no work at all.\n"
+#| "This may sound strange, but click on the gear wheel you see in a "
+#| "lumberjack hut's overview."
+msgid ""
+"All companies offer to do no work at all.\n"
+"This may sound strange, but click on the gear wheel you see in the "
+"Lumberjack Hut's overview."
+msgstr ""
+"Todos os negocios poden non facer nada.\n"
+"Pode que che soe raro, pero proba a premer a icona de engrenaxe da xanela de "
+"información da cabana do leñador."
+
+#. This is the text body of a logbook page.
+msgid ""
+"If this 'break' mode is enabled (we call it 'Decommissioning'), the running "
+"costs you pay for the building will decrease. They won't be zero, but still "
+"lower than if you keep the company producing."
+msgstr ""
+"Se activas este modo de “descanso” (que chamamos «paralización»), os custos "
+"de funcionamento do edificio diminúen. Non desaparecerán, pero serán menores "
+"que os de ter o negocio en funcionamento."
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"This means that you can save money when you temporarily do not need a "
+"company and do not want to tear it down, either."
+msgstr ""
+"\n"
+"Isto significa que podes aforrar cartos cando non necesitas un negocio por "
+"un tempo, pero tampouco queres destruílo."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Another solution is to build the last tier-I building which has not been "
+#| "mentioned so far: the storage tent."
+msgid ""
+"Another solution is to build the last tier-I building which has not been "
+"mentioned so far: the Storage Tent."
+msgstr ""
+"Outra solución consiste en construír o último edificio do primeiro nivel que "
+"nos falta por ver: a tenda de depósito."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This building has two purposes. It:\n"
+#| "* Offers more storage for your goods, and\n"
+#| "* sends its own collectors to fetch goods, just like the warehouse does."
+msgid ""
+"This building has two purposes. It:\n"
+"* Offers more storage for your goods, and\n"
+"* sends its own collectors to fetch goods, just like the Warehouse does."
+msgstr ""
+"O edificio ten dúas finalidades:\n"
+"• ofrecer máis espazo de almacenamento para os bens, e\n"
+"• enviar os seus propios transportistas para recoller os bens, tal e como "
+"fai o almacén."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Note that companies can also be connected to a storage in order to get "
+#| "their products collected, and if the warehouse is overwhelmed with "
+#| "collector tasks, you can place a storage tent to help out there."
+msgid ""
+"Note that companies can also be connected to a storage in order to get their "
+"products collected, and if the Warehouse is overwhelmed with collector "
+"tasks, you can place a Storage Tent to help out there."
+msgstr ""
+"Ten en conta que os negocios tamén poden conectarse a un depósito para "
+"recoller a súa produción, e se o almacén está que non dá abasto coas tarefas "
+"de recolección, podes engadir un depósito para botar unha man."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a storage tent, preferably where you need collectors."
+msgid "Task: Build a Storage Tent, preferably where you need collectors."
+msgstr ""
+"Obxectivo: constrúe unha tenda de depósito, preferiblemente nun lugar no que "
+"necesites transportistas."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid "Build a weaver that can somehow reach the wool of your farm."
+msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
+msgstr "Contrata un tecelán que teña acceso á la da granxa."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: BUILD A WEAVER"
+msgstr "Novo obxectivo — Tecelán"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Now the wool production is set up, you still need a weaver to produce cloth "
+"out of this wool."
+msgstr ""
+"Agora que a produción de la está en marcha, necesitas un tecelán que "
+"converta a la en roupa."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "There are two spots where you can build it - either close to the farm or "
+#| "close to a Storage Tent (or the warehouse)."
+msgid ""
+"The Weaver's Hut is the place where the weaver lives. There are two spots "
+"where you can build it - either close to the Farm or close to a Storage Tent "
+"(or the Warehouse)."
+msgstr ""
+"Hai dous lugares onde podes situar o tecelán: ou ben preto da granxa, ou "
+"preto dunha tenda de depósito (ou do almacén)."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "In both cases you should ensure the connection to a trail as well."
+msgid "In both cases you should ensure the connection to a Trail as well."
+msgstr ""
+"En calquera dos dous casos, asegúrate de que quede conectado tamén a un "
+"sendeiro."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You can place the weaver close to the farm and tear down any trail to the "
+#| "farm to see that it will still fetch the wool and produce."
+msgid ""
+"You can place the Weaver's Hut close to the Farm and tear down any Trail to "
+"the Farm to see that it will still fetch the wool and produce."
+msgstr ""
+"Podes situar o tecelán preto da granxa e destruír calquera sendeiro que vaia "
+"ata esta última, para ver como, efectivamente, o negocio pode obter a la e "
+"transformala de todos xeitos."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a weaver positioned so it can get wool."
+msgid "Task: Build a Weaver's Hut positioned so it can get wool."
+msgstr "Obxectivo: contrata un tecelán e sitúao de xeito que teña acceso á la."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"House a total of 50 or more inhabitants in your city to complete the "
+"tutorial. You need a positive balance."
+msgstr ""
+"Aloxa a un total de 50 ou máis habitantes na túa cidade para completar a "
+"aprendizaxe. Necesitarás ademais ter un saldo positivo."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NEW TASK: COMPLETE TUTORIAL"
+msgstr "Novo obxectivo — Remate"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Try to house a total of 50 or more inhabitants in your city by providing "
+"more residential buildings."
+msgstr ""
+"Intenta aloxar a un total de 50 ou máis habitantes na túa cidade. Para "
+"facelo, necesitarás construír máis vivendas."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Once you are able to keep an economy running which can satisfy this amount "
+"of consumers, you are ready to discover new Unknown Horizons!"
+msgstr ""
+"En canto consigas desenvolver unha economía capaz de satisfacer ese número "
+"de consumidores, estarás listo para explorar novos horizontes!"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "You also need enough money to keep this economy running, so a positive "
+#| "balance (check in the warehouse tab 'Account') is required."
+msgid ""
+"You also need enough money to keep this economy running, so a positive "
+"balance (check in the Warehouse tab 'Account') is required."
+msgstr ""
+"Tamén necesitarás cartos de abondo para manter a economía en marcha, así que "
+"debes conseguir un saldo positivo. Podes comprobar o saldo actual na lapela "
+"de «Conta» do almacén."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task: Reach a total number of 50 inhabitants and a positive balance to "
+"complete this tutorial."
+msgstr ""
+"Obxectivo: consigue un total de 50 habitantes e un saldo positivo para "
+"completar a aprendizaxe."
+
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+msgid ""
+"Congratulations! You have reached the end of this tutorial and are ready to "
+"meet new challenges!"
+msgstr ""
+"Parabéns! Chegaches ao final da aprendizaxe, e estás preparado para afrontar "
+"novos desafíos!"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "NO TASKS LEFT"
+msgstr "Acabáronse os obxectivos"
+
+#. This is the text body of a logbook page.
+msgid ""
+"You have successfully completed all tasks that were handed to you. The world "
+"is now at your command, waiting for your free aspirations and brave "
+"explorations!"
+msgstr ""
+"Completaches todos os obxectivos que se che encomendaron. O mundo está agora "
+"ás túas ordes, agardando a que o explores!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"If you have any suggestions on what we could or should improve, add or leave "
+"out:"
+msgstr ""
+"Se tes calquera suxestión sobre que poderíamos ou deberíamos mellorar, "
+"engadir ou retirar:"
+
+#. This is the text body of a logbook page.
+msgid "www.unknown-horizons.org"
+msgstr "www.unknown-horizons.org"
+
+#. This is the text body of a logbook page.
+msgid "#unknown-horizons @ irc.freenode.net"
+msgstr "#unknown-horizons @ irc.freenode.net"
+
+#. This is the text body of a logbook page.
+msgid "team@unknown-horizons.org"
+msgstr "team@unknown-horizons.org"
+
+#. This is the text body of a logbook page.
+msgid "Our forums are open to you as well!"
+msgstr "E tamén podes contactar connosco nos nosos foros!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The best results until now were achieved by joining our IRC channel, so you "
+"could try that out first (-;"
+msgstr ""
+"A mellor forma de contactar connosco é unirse á canle de IRC, así que podes "
+"comezar por aí ;-)"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "Thanks!"
+msgstr "Grazas!"
+
+#. This is the text body of a logbook page.
+msgid ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Thanks for playing the tutorial!\n"
+"\n"
+"Your UH-Team"
+msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Grazas por xogar a aprendizaxe!\n"
+"\n"
+"Equipo de desenvolvemento de Unknown Horizons"
+
+#~ msgid ""
+#~ "This is your Captain's log where all important information is stored. A "
+#~ "short notification of each task will be provided on the left of the "
+#~ "screen."
+#~ msgstr ""
+#~ "Esta é a túa bitácora, onde se anota toda a información importante. Na "
+#~ "parte esquerda da pantalla aparecerán notificacións curtas para cada un "
+#~ "dos obxectivos."
+
+#~ msgid ""
+#~ "If you are interested in longer descriptions, your log will hopefully "
+#~ "provide all the help you need."
+#~ msgstr ""
+#~ "Se queres descricións máis detalladas, a bitácora debería conter todo "
+#~ "canto necesitas."
+
+#~ msgid ""
+#~ "After you close this log, it can be re-opened with the \"Captain's Log\" "
+#~ "icon in the top-right corner (below the mini-map, with a sealed document "
+#~ "and a feather)."
+#~ msgstr ""
+#~ "Unha vez pechada a bitácora, podes volvela abrir coa icona de bitácora "
+#~ "que hai na esquina superior dereita (baixo o minimapa, cun documento "
+#~ "selado e unha pluma)."
+
+#~ msgid ""
+#~ "\n"
+#~ "For any suggestions on better wording, topics you would like to have "
+#~ "explained or even buggy conditions: Please tell us and we will try to "
+#~ "improve the tutorial!"
+#~ msgstr ""
+#~ "\n"
+#~ "Se tes calquera suxestión lingüística, ou sobre temas que che gustaría se "
+#~ "tratasen, ou mesmo sobre erros que atopes, non dubides en contactar co "
+#~ "equipo de desenvolvemento do xogo, e intentaremos ter as túas achegas en "
+#~ "conta á hora de mellorar a aprendizaxe."
+
+#~ msgid ""
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement')."
+#~ msgstr ""
+#~ "Iso significa que podes construír un almacén na zona premendo ese botón, "
+#~ "chamado «Construír un asentamento»."
+
+#~ msgid ""
+#~ "Now a preview of your building is dragged around when you move the cursor."
+#~ msgstr ""
+#~ "Entón, aparecerá unha vista previa do edificio que seguirá ao cursor."
+
+#~ msgid ""
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building."
+#~ msgstr ""
+#~ "Podes construír o edificio en calquera punto no que o edificio non "
+#~ "apareza en vermello.\n"
+#~ "Preme co botón principal do rato no punto no que queiras construír o "
+#~ "primeiro edificio."
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings."
+#~ msgstr ""
+#~ "O material de construción do barco descargouse automaticamente. Agora "
+#~ "podes construír algúns edificios básicos."
+
+#~ msgid "We will start with building a lumberjack."
+#~ msgstr "O primeiro será contratar un leñador."
+
+#~ msgid ""
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over."
+#~ msgstr ""
+#~ "A táboas de madeira son esenciais durante os primeiros pasos do "
+#~ "asentamento, dado que é o único material que se poden permitir os "
+#~ "mariñeiros para construír as súas tendas."
+
+#~ msgid "The fisherman needs some boards to build his vessel as well."
+#~ msgstr "O pescador tamén necesita táboas para construír a súa embarcación."
+
+#~ msgid "The build menu is sorted by tiers."
+#~ msgstr "O menú de construción está organizado por niveis."
+
+#~ msgid ""
+#~ "You are currently in the first tier (the Sailors level) so are offered "
+#~ "only the basic buildings."
+#~ msgstr ""
+#~ "Agora mesmo estás no primeiro nivel, o «nivel dos mariñeiros», polo que "
+#~ "só tes acceso aos edificios fundamentais."
+
+#~ msgid ""
+#~ "\n"
+#~ "As your civilization advances, you also gain more and more complex "
+#~ "buildings."
+#~ msgstr ""
+#~ "\n"
+#~ "A medida que avance a túa civilización, conseguirás acceso a máis e "
+#~ "mellores edificios."
+
+#~ msgid ""
+#~ "For now, select the lumberjack under 'Companies' and build it in an area "
+#~ "with some trees around."
+#~ msgstr ""
+#~ "De momento, selecciona o leñador na categoría «Negocios» e colócao nunha "
+#~ "zona que teña árbores nos arredores."
+
+#~ msgid ""
+#~ "You can also plant trees later - but that costs money. Use what nature "
+#~ "provided you with!"
+#~ msgstr ""
+#~ "Máis adiante poderás plantar árbores, pero iso custa cartos. Aproveita o "
+#~ "que che regala a natureza!"
+
+#~ msgid ""
+#~ "A company always needs a trail connection to a storage or warehouse, "
+#~ "otherwise goods will remain at the company and not be collected."
+#~ msgstr ""
+#~ "Os negocios necesitan estar conectados a un depósito ou almacén por "
+#~ "sendeiros. Senón, os recursos quedaranse no negocio e non se recollerán."
+
+#~ msgid ""
+#~ "This means that you have to build a trail connecting your warehouse (or "
+#~ "storage) and lumberjack."
+#~ msgstr ""
+#~ "Iso significa que tes que construír un sendeiro que conecte o almacén (ou "
+#~ "un depósito) co leñador."
+
+#~ msgid ""
+#~ "Watch how a collector will fetch your first self-produced boards. Don't "
+#~ "worry about recruiting workers for the lumberjack. That happens "
+#~ "automatically."
+#~ msgstr ""
+#~ "Observa como o transportista vai a polas primeiras táboas producidas. Non "
+#~ "te preocupes da parte de contratar máis leñadores para a zona, iso "
+#~ "xestiónase automaticamente."
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a signal fire at the coast close to your warehouse."
+#~ msgstr ""
+#~ "\n"
+#~ "Obxectivo: constrúe un sinal de lume na costa, preto do almacén."
+
+#~ msgid "The UH team"
+#~ msgstr "Equipo de UH"

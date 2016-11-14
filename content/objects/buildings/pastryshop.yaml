@@ -1,0 +1,51 @@
+id: BUILDINGS.PASTRY_SHOP
+name: _ Pastry Shop
+baseclass: production.PastryShop
+radius: 8
+cost: 25
+cost_inactive: 10
+size_x: 2
+size_y: 2
+inhabitants: 4
+tooltip_text: _ Produces all kinds of confectionery.
+tier: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.BRICKS: 3}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [SmallProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      SUGAR_COCOA:
+        produces:
+        - [RES.CONFECTIONERY, 1]
+        consumes:
+        - [RES.SUGAR, -1]
+        - [RES.COCOA, -1]
+        time: 30
+      SUGAR_GRAPES:
+        produces:
+        - [RES.CONFECTIONERY, 1]
+        consumes:
+        - [RES.SUGAR, -1]
+        - [RES.GRAPES, -1]
+        time: 30
+      HONEYCOMBS:
+        produces:
+        - [RES.SUGAR, 2]
+        - [RES.CANDLES, 1]
+        consumes:
+        - [RES.HONEYCOMBS, -1]
+        time: 15
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.SUGAR: 8, RES.COCOA: 6, RES.CONFECTIONERY: 6,
+                     RES.CANDLES: 6, RES.GRAPES: 6, RES.HONEYCOMBS: 6}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
+actionsets:
+  TIER.CITIZENS:
+    as_pastryshop0:

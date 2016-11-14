@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <HBox position="100,190" name="aidataselection" border_size="1">
 	<VBox>
-		<Label name="ai_players_label" text="AI players:" min_size="77,16"/>
+		<Label name="ai_players_label" text="AI players:" min_size="77,16" />
 	</VBox>
 	<VBox>
-		<ScrollArea min_size="40,75" >
-			<ListBox name="ai_players" />
+		<ScrollArea min_size="40,75">
+			<ListBox name="ai_players" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 </HBox>

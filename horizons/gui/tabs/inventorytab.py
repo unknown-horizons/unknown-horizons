@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,27 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.component.storagecomponent import StorageComponent
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext_lazy as LazyT
+
 
 class InventoryTab(TabInterface):
+	widget = 'island_inventory.xml'
+	icon_path = 'icons/tabwidget/common/inventory'
+	helptext = LazyT("Settlement inventory")
 
-	lazy_loading = True
-
-	def __init__(self, instance = None, widget = 'island_inventory.xml',
-	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
-		super(InventoryTab, self).__init__(widget = widget)
+	def __init__(self, instance=None):
 		self.instance = instance
-		self.button_up_image = icon_path % 'u'
-		self.button_active_image = icon_path % 'a'
-		self.button_down_image = icon_path % 'd'
-		self.button_hover_image = icon_path % 'h'
-		self.helptext = _("Settlement inventory")
+		super(InventoryTab, self).__init__()
 
-	def _lazy_loading_init(self):
-		super(InventoryTab, self)._lazy_loading_init()
-		self.widget.child_finder('inventory').init(self.instance.session.db, \
+	def init_widget(self):
+		self.widget.child_finder('inventory').init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):

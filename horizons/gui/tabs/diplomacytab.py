@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,25 +20,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.util import Callback
-from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
+from horizons.gui.tabs.tabwidget import TabWidget
+from horizons.util.python.callback import Callback
 
-class DiplomacyTab(TabInterface):
+
+class PlayerDiplomacyTab(TabInterface):
 	"""
 	Diplomacy tab set per player.
 	It displays the menu for selecting the status between the local player and the tab's player
 	"""
-	def __init__(self, player, widget = 'diplomacy.xml', \
-	             icon_path='content/gui/images/tabwidget/emblems/emblem_%s.png'):
-		super(DiplomacyTab, self).__init__(widget)
+	widget = 'diplomacy.xml'
+	icon_path = 'images/tabwidget/emblems/emblem_%s'
 
+	def __init__(self, player):
 		self.local_player = player.session.world.player
 		self.player = player
 		self.diplomacy = player.session.world.diplomacy
-		self.init_values()
 
-		self.widget.findChild(name='headline').text = unicode(player.name)
+		super(PlayerDiplomacyTab, self).__init__()
+
+		color = self.player.color.name
+		# Set these here to override the defaults in TabInterface.__init__
+		# before they are used.
+		self.path = self.path_active = self.icon_path % color
+
+	def init_widget(self):
+		self.widget.findChild(name='headline').text = self.player.name
 		self.widget.mapEvents({
 			'ally_label' : self.add_ally,
 			'ally_check_box' : self.add_ally,
@@ -48,26 +57,15 @@ class DiplomacyTab(TabInterface):
 			'enemy_check_box' : self.add_enemy})
 
 		self.check_diplomacy_state()
-
-		color = player.color.name
-		self.button_up_image = icon_path % color
-		self.button_active_image = icon_path % color
-		self.button_down_image = icon_path % color
-		self.button_hover_image = icon_path % color
-		self.helptext = player.name
-
-		self.widget.stylize("default")
-		self.widget.findChild(name="ally_check_box").base_color = 80, 80, 80
-		self.widget.findChild(name="enemy_check_box").base_color = 80, 80, 80
-		self.widget.findChild(name="neutral_check_box").base_color = 80, 80, 80
+		self.helptext = self.player.name
 
 	def show(self):
-		super(DiplomacyTab, self).show()
+		super(PlayerDiplomacyTab, self).show()
 		# if diplomacy is changed by any player, change the checkbox
 		self.diplomacy.add_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def hide(self):
-		super(DiplomacyTab, self).hide()
+		super(PlayerDiplomacyTab, self).hide()
 		self.diplomacy.remove_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def add_ally(self):
@@ -98,14 +96,13 @@ class DiplomacyTab(TabInterface):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
-
-		#set all boxes true
+		# Uncheck all boxes.
 		self.widget.distributeData({
 			'ally_check_box' : False,
 			'neutral_check_box' : False,
 			'enemy_check_box' : False})
 
-		#get the name of the selected box
+		# Get the name of the selected box.
 		if self.diplomacy.are_allies(self.local_player, self.player):
 			state = 'ally'
 		elif self.diplomacy.are_neutral(self.local_player, self.player):
@@ -113,6 +110,27 @@ class DiplomacyTab(TabInterface):
 		else:
 			state = 'enemy'
 
-		#check the selected box
+		# Check the selected box.
 		self.widget.distributeData({'%s_check_box' % state : True})
 
+
+class DiplomacyTab(TabWidget):
+	name = "diplomacy_widget"
+
+	def __init__(self, ingame_gui, world):
+		players = list(world.players)
+		players.append(world.pirate)
+
+		# filter out local player and pirate (if it's disabled)
+		players = [p for p in players if p not in (world.player, None)]
+
+		tabs = [PlayerDiplomacyTab(p) for p in players]
+
+		super(DiplomacyTab, self).__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
+
+	@classmethod
+	def is_useable(cls, world):
+		"""Diplomacy only makes sense if there is another player.
+		Pirates do not qualify as players: right now they're not interested in diplomacy.
+		"""
+		return not (len(world.players) == 1 and not world.pirate)

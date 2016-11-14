@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class AbstractSignalFire(AbstractBuilding):
-	def iter_potential_locations(self, settlement_manager):
-		for (x, y) in settlement_manager.settlement.warehouse.position.get_radius_coordinates(self.radius):
-			if (x, y) in settlement_manager.production_builder.plan:
-				if (x, y) in settlement_manager.island.last_changed[self.size]:
-					yield (x, y, 0)
+	@classmethod
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type, need_collector_connection):
+		coords_set = super(AbstractSignalFire, cls)._get_buildability_intersection(settlement_manager, size, terrain_type, need_collector_connection)
+		radius = Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius
+		return coords_set.intersection(set(settlement_manager.settlement.warehouse.position.get_radius_coordinates(radius)))
 
 	@property
 	def evaluator_class(self):
@@ -44,19 +46,17 @@ class AbstractSignalFire(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.SIGNAL_FIRE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.SIGNAL_FIRE] = cls
 
 class SignalFireEvaluator(BuildingEvaluator):
 	need_collector_connection = False
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.SIGNAL_FIRE_CLASS, x, y, cls.need_collector_connection, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.SIGNAL_FIRE, (x, y), orientation)
 
 		sea_area = 0
-		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].radius):
+		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius):
 			if coords in area_builder.session.world.water:
 				sea_area += 1
 

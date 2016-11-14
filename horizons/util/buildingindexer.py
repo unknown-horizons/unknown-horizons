@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,7 +31,7 @@ class BuildingIndexer(object):
 	building that provides resource X in my range'.
 	"""
 
-	def __init__(self, radius, coords_list, random = None, buildings=None):
+	def __init__(self, radius, coords_list, random=None, buildings=None):
 		"""
 		Create a BuildingIndexer
 		@param radius: int, maximum required radius of the buildings
@@ -63,14 +63,14 @@ class BuildingIndexer(object):
 	def _update(self, add_buildings=None, initial=False):
 		"""
 		@param add_buildings: Don't use unless you know why.
-		@param initial: can be set on first call as optimisation
+		@param initial: can be set on first call as optimization
 		"""
 		for building in self._remove_set:
 			for coords in building.position.get_radius_coordinates(self.radius, include_self=True):
 				try:
 					index = self._map[coords]
 				except KeyError:
-					continue # should be faster than contains check, since usually true
+					continue # should be faster than contains check, since usually True
 				index._remove_set.add(building)
 				index._add_set.discard(building)
 				index._changed = True
@@ -82,7 +82,7 @@ class BuildingIndexer(object):
 				try:
 					index = self._map[coords]
 				except KeyError:
-					continue # should be faster than contains check, since usually true
+					continue # should be faster than contains check, since usually True
 				if not initial:
 					index._remove_set.discard(building)
 				index._add_set.add(building)
@@ -118,7 +118,7 @@ class BuildingIndexer(object):
 	def get_num_buildings_in_range(self, coords):
 		"""
 		Returns the number of buildings in range of the position
-		@param coords: tuple, the centre point
+		@param coords: tuple, the center point
 		"""
 		if coords in self._map:
 			if self._changed:

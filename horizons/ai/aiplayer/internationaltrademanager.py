@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,14 +20,15 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
-from mission.internationaltrade import InternationalTrade
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TRADER
 from horizons.util.python import decorators
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
+
+from .mission.internationaltrade import InternationalTrade
+
 
 class InternationalTradeManager(object):
 	"""
@@ -69,7 +70,7 @@ class InternationalTradeManager(object):
 			return
 
 		# find all possible legal trade route options
-		options = defaultdict(lambda: []) # {(settlement, settlement_manager): (total value, amount, resource id, bool(selling)), ...}
+		options = defaultdict(list) # {(settlement, settlement_manager): (total value, amount, resource id, bool(selling)), ...}
 		for settlement in self.world.settlements:
 			if settlement.owner is self.owner:
 				continue # don't allow routes of this type between the player's own settlements
@@ -88,8 +89,8 @@ class InternationalTradeManager(object):
 					if my_inventory[resource_id] <= resource_manager.resource_requirements[resource_id]:
 						continue # my settlement is unable to sell the resource
 					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL)
-					tradable_amount = min(my_inventory[resource_id] - resource_manager.resource_requirements[resource_id], \
-						limit - settlement.get_component(StorageComponent).inventory[resource_id], ship.get_component(StorageComponent).inventory.get_limit(), settlement.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
+					tradable_amount = min(my_inventory[resource_id] - resource_manager.resource_requirements[resource_id],
+						limit - settlement.get_component(StorageComponent).inventory[resource_id], ship.get_component(StorageComponent).inventory.get_limit(), settlement.owner.get_component(StorageComponent).inventory[RES.GOLD] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
 
 				# add the options where we buy from the other player
@@ -101,8 +102,8 @@ class InternationalTradeManager(object):
 					if my_inventory[resource_id] >= resource_manager.resource_requirements[resource_id]:
 						continue # my settlement doesn't want to buy the resource
 					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
-					tradable_amount = min(resource_manager.resource_requirements[resource_id] - my_inventory[resource_id], \
-						settlement.get_component(StorageComponent).inventory[resource_id] - limit, ship.get_component(StorageComponent).inventory.get_limit(), self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
+					tradable_amount = min(resource_manager.resource_requirements[resource_id] - my_inventory[resource_id],
+						settlement.get_component(StorageComponent).inventory[resource_id] - limit, ship.get_component(StorageComponent).inventory.get_limit(), self.owner.get_component(StorageComponent).inventory[RES.GOLD] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, False))
 		if not options:
 			#self.log.info('%s international trade: no interesting options', self)
@@ -120,7 +121,7 @@ class InternationalTradeManager(object):
 				else:
 					if best_buy is None or best_buy[1] < tradable_amount:
 						best_buy = (total_price, tradable_amount, resource_id)
-			buy_coefficient = self.personality.buy_coefficient_rich if self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] > self.personality.little_money else self.personality.buy_coefficient_poor
+			buy_coefficient = self.personality.buy_coefficient_rich if self.owner.get_component(StorageComponent).inventory[RES.GOLD] > self.personality.little_money else self.personality.buy_coefficient_poor
 			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * buy_coefficient
 			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
 

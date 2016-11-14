@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,5 +20,6 @@
 # ###################################################
 
 
-from conditions import CONDITIONS
-from scenarioeventhandler import ScenarioEventHandler, InvalidScenarioFileFormat
+from .conditions import CONDITIONS
+from .actions import ACTIONS
+from .scenarioeventhandler import ScenarioEventHandler, InvalidScenarioFileFormat

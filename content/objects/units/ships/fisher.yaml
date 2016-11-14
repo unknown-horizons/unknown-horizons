@@ -1,15 +1,15 @@
 baseclass: ship.FisherShip
-id: 1000004
+id: UNITS.FISHER_BOAT
 name: Fisher
 radius: 5
 velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
-      PositiveTotalNumSlotStorage:
+      PositiveTotalNumSlotsStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
 actionsets:
-   as_fisher0: {level: 0}
+  TIER.SAILORS:
+   as_fisher0:

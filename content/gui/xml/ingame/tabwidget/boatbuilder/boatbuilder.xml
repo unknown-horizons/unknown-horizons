@@ -1,85 +1,71 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container  size="260,550" name="BB_main_tab">
-<TabBG amount="8"/>
+<Container  size="260,550" name="UB_main_tab">
+<TabBG amount="8" />
 
-	<Container position="0,70" size="260,80" >
-
-		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<Container position="0,70" size="260,80">
+		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
-			<Label name="headline"  text="Building overview" />
+			<Label name='name' position="25,40" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-		<Label name='name' position="25,40" text="" />
-		<Icon name="running_costs_label"	position="180,62" helptext="Running costs"
+		<hr position="20,30" />
+		<Icon name="running_costs_label"	position="180,40" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<Label name="running_costs" position="200,62" text="" />
-		<!--<Label position="," name="health_label" text="Health:" />
-		<Label name='health' position="," text="" />-->
-
+		<Label name="running_costs" position="200,40" />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
 	<Container position="25,150" size="260,150" name="container_inactive">
-		<Label position="0,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150" min_size="200,150"
+		<Label position="0,15" name="UB_howto_build_lbl" wrap_text="1" max_size="200,150" min_size="200,150"
 		       text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN BUILDING -->
 
-	<Container position="25,133" size="260,190" name="container_active">
+	<Container position="25,110" size="260,210" name="container_active">
 		<!-- Current order, pause -->
-		<Label name="BB_current_order" position="0,0" text="Currently building:"
+		<Label name="UB_current_order" text="Currently building:"
 			comment="Information about the ship currently under construction at the boat builder" />
-		<HBox name="queue_container"></HBox>
-		<Label name="headline_BB_builtship_label" position="0,43" text=""/>
-		<Icon image="content/gfx/dummies/square_120.png" position="0,65"
-			name="BB_cur_ship_bg" />
-		<Icon name="BB_cur_ship_icon" position="2,67" />
-		<VBox position="125,75" name="BB_upgrades_box"/> 	<!-- translations? -->
+		<HBox name="queue_container" position="0,18" />
+		<Label name="headline_UB_builtunit_label" position="0,63" />
+		<Icon image="content/gui/images/background/square_120.png" position="0,85"
+			name="UB_cur_ship_bg" />
+		<Icon name="UB_cur_unit_icon" position="2,87" />
+		<VBox position="125,95" name="UB_upgrades_box" />
 
 		<!-- one of those button gets removed at runtime -->
-		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
-			down_image="content/gui/icons/templates/production/toggle_active_d.png"
-			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-			position="145,130"  border_size="0"  name="toggle_active_active"
-			comment="Pauses the current ship production, can be resumed later"  helptext="Pause" />
-		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
-			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
-			position="145,130"  border_size="0"  name="toggle_active_inactive"
-		comment="Resumes the currently paused ship production"  helptext="Resume" />
+		<ImageButton path="icons/templates/production/toggle_active" helptext="Pause"
+			position="140,150" name="toggle_active_active"
+			comment="Pauses the current ship production, can be resumed later" />
+		<ImageButton path="icons/templates/production/toggle_inactive" helptext="Resume"
+			position="140,150" name="toggle_active_inactive"
+			comment="Resumes the currently paused ship production" />
 	</Container>
 
-	<Container position="25,325" size="260,40" name="BB_progress_container">
+	<Container position="25,325" size="260,110" name="UB_progress_container">
 		<!-- Progress display -->
-		<ProgressBar position="0,5" name="progress" />
-		<Label position="0,20" name="BB_progress_label" text="Construction progress:"
+		<ProgressBar name="progress" max_size="100,12" position="9,3"
+			background="content/gui/images/background/bar_bg.png" />
+		<Label position="0,20" name="UB_progress_label" text="Construction progress:"
 			comment="Refers to the resources still missing to complete the current boat builder task" />
-		<Label position="165,20" name="BB_progress_perc" text="" />
+		<Label position="165,20" name="UB_progress_perc" />
+
+		<!-- Resources -->
+		<Label position="0,55" name="UB_needed_res_label" text="Resources still needed:" />
+		<HBox position="0,75" size="260,50" name="UB_needed_resources_container" padding="8">
+			<!-- dynamical display of the three most wanted res with amount in one line, looking like this:
+			[ ] 11t	[ ] 8t	[ ] 2t -->
+		</HBox>
 	</Container>
 
-	<Container position="25,380" size="260,50" name="BB_needed_resources_container">
-	<!-- Resources -->
-		<Label position="0,0" name="BB_needed_res_label" text="" />
-		<Icon image="" position="0,25" name="BB_needed_res_icon_1" helptext="" />
-		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
-		<Icon image="" position="70,25" name="BB_needed_res_icon_2" helptext="" />
-		<Label position="92,25" name="BB_needed_res_lbl_2" text="" />
-		<Icon image="" position="140,25" name="BB_needed_res_icon_3" helptext="" />
-		<Label position="162,25" name="BB_needed_res_lbl_3" text="" />
-		<!-- dynamical display of the three most wanted res with amount in one line, looking like this:
-		[ ] 11t	[ ] 8t	[ ] 2t -->
-	</Container>
-
-	<Container position="25,410" size="260,100" name="BB_cancel_container">
+	<Container position="25,410" size="260,100" name="UB_cancel_container">
 	<!-- Cancel task -->
-		<Label position="10,30" name="BB_cancel_build_label" text="Cancel building:"
+		<Label position="10,30" name="UB_cancel_build_label" text="Cancel building:"
 			comment="abort construction of a ship, lose invested resources" />
-		<Label position="10,45" name="BB_cancel_warning_label" text="(lose all resources)"
+		<Label position="10,45" name="UB_cancel_warning_label" text="(lose all resources)"
 			comment="abort construction of a ship, lose invested resources" /> <!-- smaller font than the above one -->
-		<CancelButton name="BB_cancel_button"  position="160,22"  size="64,64"
+		<CancelButton name="UB_cancel_button"  position="160,22"  size="64,64"
 			comment="abort construction of a ship, lose invested resources"
 			helptext="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>

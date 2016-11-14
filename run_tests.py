@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,38 +21,38 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import gettext
 import sys
+
 
 try:
 	import nose
 except ImportError:
-	print 'The nose package is needed to run the UH tests.'
+	print('The nose package is needed to run the UH tests.')
 	sys.exit(1)
 
 try:
 	import mock
 except ImportError:
-	print 'The mock package is needed to run the UH tests.'
+	print('The mock package is needed to run the UH tests.')
 	sys.exit(1)
 
 
-from horizons.ext.dummy import Dummy
 
 
-def mock_fife_and_gui():
+def mock_fife():
 	"""
-	Using a custom import hook, we catch all imports of fife, horizons.gui and enet
-	and provide a dummy module. Unfortunately horizons.gui has to be mocked too,
-	pychan will fail otherwise (isinstance checks that Dummy fails, metaclass
-	errors - pretty bad stuff).
+	Using a custom import hook, we catch all imports of fife and provide a
+	dummy module.
 	"""
+	from tests.dummy import Dummy
+
 	class Importer(object):
 
 		def find_module(self, fullname, path=None):
-			if fullname.startswith('fife') or \
-			   fullname.startswith('horizons.gui') or \
-			   fullname.startswith('enet'):
+			if fullname.startswith('fife'):
 				return self
 
 			return None
@@ -70,22 +70,23 @@ def setup_horizons():
 
 	# This needs to run at first to avoid that other code gets a reference to
 	# the real fife module
-	mock_fife_and_gui()
+	mock_fife()
 
 	# set global reference to fife
-	import horizons.main
+	import horizons.globals
 	import fife
-	horizons.main.fife = fife.fife
+	horizons.globals.fife = fife.fife
 
 	from run_uh import create_user_dirs
 	create_user_dirs()
 
+	import horizons.i18n
+	horizons.i18n.change_language()
+
 
 if __name__ == '__main__':
-	gettext.install('', unicode=True) # no translations here
-
 	setup_horizons()
 
 	from tests.gui import GuiTestPlugin
-	nose.run(defaultTest='tests', addplugins=[GuiTestPlugin()])
-
+	from tests.utils import ReRunInfoPlugin
+	sys.exit(not nose.run(defaultTest='tests', addplugins=[GuiTestPlugin(), ReRunInfoPlugin()]))

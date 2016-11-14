@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,10 +28,10 @@ import tempfile
 
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import GROUND, BUILDINGS, UNITS, RES
-from horizons.util import Rect, DbReader, Point
-from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GROUND, RES, UNITS
+from horizons.util.dbreader import DbReader
+from horizons.util.shapes import Point, Rect
 
 
 def create_map():
@@ -40,15 +40,6 @@ def create_map():
 	to the database file.
 	"""
 
-	# Create island.
-	fd, islandfile = tempfile.mkstemp()
-	os.close(fd)
-
-	db = DbReader(islandfile)
-	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
-
-	db("BEGIN TRANSACTION")
 	tiles = []
 	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
 		if (0 < x < 20) and (0 < y < 20):
@@ -56,21 +47,20 @@ def create_map():
 		else:
 			# Add coastline at the borders.
 			ground = GROUND.SHALLOW_WATER
-		tiles.append([x, y] + list(ground))
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", tiles)
-	db("COMMIT")
+		tiles.append([0, 20 + x, 20 + y] + list(ground))
 
-	# Create savegame with the island above.
-	fd, savegame = tempfile.mkstemp()
+	fd, map_file = tempfile.mkstemp()
 	os.close(fd)
 
-	db = DbReader(savegame)
-	read_savegame_template(db)
-	db("BEGIN TRANSACTION")
-	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
-	db("COMMIT")
+	db = DbReader(map_file)
+	with open('content/map-template.sql') as map_template:
+		db.execute_script(map_template.read())
 
-	return savegame
+	db('BEGIN')
+	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", tiles)
+	db('COMMIT')
+	db.close()
+	return map_file
 
 
 def new_settlement(session, pos=Point(30, 20)):
@@ -82,11 +72,11 @@ def new_settlement(session, pos=Point(30, 20)):
 	assert island, "No island found at %s" % pos
 	player = session.world.player
 
-	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
+	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
 	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
 		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
+	building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island, ship=ship)(player)
 	assert building, "Could not build warehouse at %s" % pos
 
 	return (building.settlement, island)
@@ -97,8 +87,8 @@ def settle(s):
 	Create a new settlement, start with some resources.
 	"""
 	settlement, island = new_settlement(s)
-	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD, 5000)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS, 50)
 	return settlement, island

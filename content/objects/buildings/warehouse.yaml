@@ -1,22 +1,21 @@
-id: 1
+id: BUILDINGS.WAREHOUSE
 name: _ Warehouse
 baseclass: storages.Warehouse
 radius: 24
-cost: 0
+cost: 5
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: null
+inhabitants: 2
 tooltip_text: null
-settler_level: 0
-buildingcosts: {1: 1000, 4: 12}
+tier: TIER.SAILORS
+buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 12}
 show_status_icons: false
 components:
 - SelectableComponent:
     type: building
-    tabs: [WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab]
+    tabs: [AccountTab, InventoryTab, BuySellTab]
+    active_tab: InventoryTab
     enemy_tabs: [EnemyWarehouseOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 # NOTE: productions in combinations with SettlementStorage are allowed here since there is only this one warehouse per settlement
@@ -24,15 +23,20 @@ components:
     productionlines:
       31:
         produces:
-        - [19, 10]
-        time: 1
+        - [RES.COMMUNITY, 10]
 - StorageComponent:
-    inventory:
         SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/warehouse.ogg]
 - CollectingComponent:
     collectors:
-      1000008: 3
+      UNITS.STORAGE_COLLECTOR: 3
 actionsets:
-  as_warehouse0: {preview: as_preview_warehouse0, level: 0}
+  TIER.SAILORS:
+    as_warehouse0:
+  TIER.PIONEERS:
+    as_warehouse_pioneers0:
+  TIER.SETTLERS:
+    as_warehouse_settler0:
+  TIER.CITIZENS:
+    as_warehouse_citizens0:

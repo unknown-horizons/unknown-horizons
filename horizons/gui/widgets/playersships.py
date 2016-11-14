@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan import widgets
+from fife.extensions.pychan.widgets import HBox, Label
 
-from horizons.constants import GAME_SPEED
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.gui.widgets.statswidget import StatsWidget
-from fife.extensions.pychan.widgets import ImageButton
-from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.i18n import gettext as T
 from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
 from horizons.world.units.fightingship import FightingShip
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -39,14 +38,12 @@ class PlayersShips(StatsWidget):
 
 	def __init__(self, session):
 		super(PlayersShips, self).__init__(session)
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND / 3)
 
 	def refresh(self):
 		super(PlayersShips, self).refresh()
 		player = self.session.world.player
 		self._clear_entries()
-		#xgettext:python-format
-		self._gui.findChild(name = 'headline').text = _("Ships of {player}").format(player=self.session.world.player.name)
+		self._gui.findChild(name='headline').text = T("Ships of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
@@ -69,48 +66,48 @@ class PlayersShips(StatsWidget):
 		self.session.view.center(point.x, point.y)
 
 	def _add_line_to_gui(self, ship, sequence_number):
-		sequence_number_label = widgets.Label(name = 'sequence_number_%d' % ship.worldid)
+		sequence_number_label = Label(name='sequence_number_%d' % ship.worldid)
 		sequence_number_label.text = unicode(sequence_number)
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
-		ship_name = widgets.Label(name = 'ship_name_%d' % ship.worldid)
-		ship_name.text = unicode(ship.get_component(NamedComponent).name)
+		ship_name = Label(name='ship_name_%d' % ship.worldid)
+		ship_name.text = ship.get_component(NamedComponent).name
 		ship_name.min_size = ship_name.max_size = (100, 20)
 
-		rename_icon = ImageButton(name = 'rename_%d' % ship.worldid)
-		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
-		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
-		rename_icon.helptext = _("Click to change the name of this ship")
+		from horizons.engine.pychan_util import RenameImageButton
+		rename_icon = RenameImageButton(name='rename_%d' % ship.worldid)
+		rename_icon.path = "images/background/rename_feather_20"
+		rename_icon.helptext = T("Click to change the name of this ship")
 		rename_icon.max_size = (20, 20) # (width, height)
 
-		ship_type = widgets.Label(name = 'ship_type_%d' % ship.worldid)
-		ship_type.text = unicode(ship.classname)
+		ship_type = Label(name='ship_type_%d' % ship.worldid)
+		ship_type.text = ship.classname
 		ship_type.min_size = ship_type.max_size = (60, 20)
 
-		weapons = widgets.Label(name = 'weapons_%d' % ship.worldid)
+		weapons = Label(name='weapons_%d' % ship.worldid)
 		if isinstance(ship, FightingShip):
 			weapon_list = []
-			for weapon_id, amount in sorted(ship.get_weapon_storage()):
+			for weapon_id, amount in sorted(ship.get_weapon_storage().itercontents()):
 				weapon_list.append('%d %s' % (amount, self.session.db.get_res_name(weapon_id)))
 			if weapon_list:
-				weapons.text = unicode(', '.join(weapon_list))
+				weapons.text = u', '.join(weapon_list)
 			else:
 				#i18n There are no weapons equipped at the moment.
-				weapons.text = _('None')
+				weapons.text = T('None')
 		else:
-			weapons.text = _('N/A')
+			weapons.text = T('N/A')
 		weapons.min_size = weapons.max_size = (60, 20)
 
-		health = widgets.Label(name = 'health_%d' % ship.worldid)
+		health = Label(name='health_%d' % ship.worldid)
 		health_component = ship.get_component(HealthComponent)
-		health.text = unicode('%d/%d' % (health_component.health, health_component.max_health))
+		health.text = u'%d/%d' % (health_component.health, health_component.max_health)
 		health.min_size = health.max_size = (65, 20)
 
-		status = widgets.Label(name = 'status_%d' % ship.worldid)
+		status = Label(name='status_%d' % ship.worldid)
 		status.text, status_position = ship.get_status()
 		status.min_size = status.max_size = (320, 20)
 
-		hbox = widgets.HBox()
+		hbox = HBox()
 		hbox.addChild(sequence_number_label)
 		hbox.addChild(ship_name)
 		hbox.addChild(rename_icon)

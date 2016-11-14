@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import gui_test, TestFinished
+from tests.gui import gui_test
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -27,12 +27,9 @@ def test_ticket_1342(gui):
 	"""
 	Ship list widget (F3, formerly F4) crashes game on access.
 	"""
-	yield # test needs to be a generator for now
 
 	assert gui.find(name='ships_list') is None
 	gui.press_key(gui.Key.F3)
 	assert gui.find(name='ships_list')
 	gui.press_key(gui.Key.F3)
 	assert gui.find(name='ships_list') is None
-
-	yield TestFinished

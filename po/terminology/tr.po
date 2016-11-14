@@ -1,0 +1,1137 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:38+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367757504.0\n"
+
+msgid "game"
+msgstr "oyun"
+
+msgid "building"
+msgstr "inşaat"
+
+msgid "build"
+msgstr "yapı"
+
+msgid "player"
+msgstr "oyuncu"
+
+msgid "settlement"
+msgstr "yerleşim yeri"
+
+msgid "ship"
+msgstr "gemi"
+
+msgid "tent"
+msgstr "çadır"
+
+msgid "farm"
+msgstr "çiftlik"
+
+msgid "map"
+msgstr "harita"
+
+msgid "resource"
+msgstr "kaynak"
+
+msgid "warehouse"
+msgstr "depo"
+
+msgid "inhabitants"
+msgstr "halk"
+
+msgid "change"
+msgstr "değiştir"
+
+msgid "unknown"
+msgstr "bilinmeyen"
+
+msgid "produce"
+msgstr "üret"
+
+msgid "no"
+msgstr "hayır"
+
+msgid "trade"
+msgstr "ticaret"
+
+msgid "check"
+msgstr "kontrol et"
+
+msgid "field"
+msgstr "alan"
+
+msgid "main"
+msgstr "ana"
+
+msgid "buy"
+msgstr "satın al"
+
+msgid "click"
+msgstr "tıkla"
+
+msgid "left"
+msgstr "sol"
+
+msgid "overview"
+msgstr "genel bakış"
+
+msgid "running"
+msgstr "çalışıyor"
+
+msgid "square"
+msgstr "kare"
+
+msgid "lumberjack"
+msgstr "oduncu"
+
+msgid "unable"
+msgstr "aciz"
+
+msgid "continue"
+msgstr "devam"
+
+msgid "main square"
+msgstr "ana meydan"
+
+msgid "production"
+msgstr "üretim"
+
+msgid "sailors"
+msgstr "denizci"
+
+msgid "sell"
+msgstr "sat"
+
+msgid "storage"
+msgstr "depo"
+
+msgid "contact"
+msgstr "iletişim"
+
+msgid "house"
+msgstr "ev"
+
+msgid "menu"
+msgstr "menü"
+
+msgid "tab"
+msgstr "sekme"
+
+msgid "close"
+msgstr "kapat"
+
+msgid "food"
+msgstr "yiyecek"
+
+msgid "free"
+msgstr "boş"
+
+msgid "ready"
+msgstr "hazır"
+
+msgid "setting"
+msgstr "ayar"
+
+msgid "start"
+msgstr "başla"
+
+msgid "time"
+msgstr "zaman"
+
+msgid "trader"
+msgstr "tüccar"
+
+msgid "unit"
+msgstr "birim"
+
+msgid "version"
+msgstr "sürüm"
+
+msgid "fire"
+msgstr "alev"
+
+msgid "island"
+msgstr "ada"
+
+msgid "select"
+msgstr "seç"
+
+msgid "slot"
+msgstr "slot"
+
+msgid "stock"
+msgstr "stok"
+
+msgid "upgrade"
+msgstr "yükselt"
+
+msgid "coast"
+msgstr "sahil"
+
+msgid "color"
+msgstr "renk"
+
+msgid "companies"
+msgstr "şirketler"
+
+msgid "file"
+msgstr "dosya"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "anahtar"
+
+msgid "taxes"
+msgstr "vergiler"
+
+msgid "collector"
+msgstr "toplayıcı"
+
+msgid "connection"
+msgstr "bağlantı"
+
+msgid "log"
+msgstr "kayıt"
+
+msgid "multiplayer"
+msgstr "çoklu oyuncu"
+
+msgid "resident"
+msgstr "sakin"
+
+msgid "wool"
+msgstr "yün"
+
+msgid "boards"
+msgstr "paneller"
+
+msgid "built"
+msgstr "yapılı"
+
+msgid "button"
+msgstr "düğme"
+
+msgid "choose"
+msgstr "seç"
+
+msgid "connect"
+msgstr "bağlan"
+
+msgid "cost"
+msgstr "tutar"
+
+msgid "happiness"
+msgstr "refah"
+
+msgid "road"
+msgstr "yol"
+
+msgid "save"
+msgstr "kaydet"
+
+msgid "tree"
+msgstr "ağaç"
+
+msgid "amount"
+msgstr "miktar"
+
+msgid "reach"
+msgstr "ulaş"
+
+msgid "size"
+msgstr "boyut"
+
+msgid "add"
+msgstr "ekle"
+
+msgid "fisher"
+msgstr "balıkçı"
+
+msgid "free trader"
+msgstr "tüccar"
+
+msgid "in stock"
+msgstr "stokta"
+
+msgid "increase"
+msgstr "artış"
+
+msgid "mode"
+msgstr "mod"
+
+msgid "password"
+msgstr "şifre"
+
+msgid "pasture"
+msgstr "otlak"
+
+msgid "range"
+msgstr "aralık"
+
+msgid "signal"
+msgstr "sinyal"
+
+msgid "speed"
+msgstr "hız"
+
+msgid "sugar"
+msgstr "şeker"
+
+msgid "access"
+msgstr "erişim"
+
+msgid "build menu"
+msgstr "yapı menüsü"
+
+msgid "confectionery"
+msgstr "şekerleme"
+
+msgid "enabled"
+msgstr "etkin"
+
+msgid "fetch"
+msgstr "getir"
+
+msgid "help"
+msgstr "yardım"
+
+msgid "income"
+msgstr "gelir"
+
+msgid "join"
+msgstr "katıl"
+
+msgid "level"
+msgstr "seviye"
+
+msgid "move"
+msgstr "taşı"
+
+msgid "multiple"
+msgstr "çoklu"
+
+msgid "please check"
+msgstr "lütfen kontrol edin"
+
+msgid "potato"
+msgstr "patates"
+
+msgid "settler"
+msgstr "göçmen"
+
+msgid "total"
+msgstr "toplam"
+
+msgid "construction"
+msgstr "yapı"
+
+msgid "creator"
+msgstr "oluşturan"
+
+msgid "faith"
+msgstr "inanç"
+
+msgid "hold"
+msgstr "tut"
+
+msgid "icon"
+msgstr "simge"
+
+msgid "lamb"
+msgstr "kuzu"
+
+msgid "leave"
+msgstr "çık"
+
+msgid "location"
+msgstr "konum"
+
+msgid "multiple buildings"
+msgstr "çoklu binalar"
+
+msgid "pioneers"
+msgstr "öncüler"
+
+msgid "reached"
+msgstr "ulaşıldı"
+
+msgid "run"
+msgstr "koş"
+
+msgid "session"
+msgstr "oturum"
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
+msgid "slider"
+msgstr "kaydırıcı"
+
+msgid "space"
+msgstr "boşluk"
+
+msgid "storage tent"
+msgstr "depo çadırı"
+
+msgid "target"
+msgstr "hedef"
+
+msgid "terminated"
+msgstr "sonlandırıldı"
+
+msgid "tools"
+msgstr "aletler"
+
+msgid "account"
+msgstr "hesap"
+
+msgid "active"
+msgstr "etkin"
+
+msgid "afford"
+msgstr "gücü yetmek"
+
+msgid "animals"
+msgstr "hayvanlar"
+
+msgid "Captain's log"
+msgstr "Kaptan'ın günlüğü"
+
+msgid "cloth"
+msgstr "kumaş"
+
+msgid "construct"
+msgstr "inşa et"
+
+msgid "cursor"
+msgstr "imleç"
+
+msgid "description"
+msgstr "tanım"
+
+msgid "entries"
+msgstr "girdiler"
+
+msgid "feature"
+msgstr "özellik"
+
+msgid "fish"
+msgstr "balık"
+
+msgid "forest"
+msgstr "orman"
+
+msgid "from time to time"
+msgstr "zaman zaman"
+
+msgid "global"
+msgstr "evrensel"
+
+msgid "grow"
+msgstr "büyüme"
+
+msgid "happy"
+msgstr "mutlu"
+
+msgid "information"
+msgstr "bilgi"
+
+msgid "liquor"
+msgstr "içki"
+
+msgid "minimap"
+msgstr "mini harita"
+
+msgid "offer"
+msgstr "teklif"
+
+msgid "overview tab"
+msgstr "genel görünüm sekmesi"
+
+msgid "plant"
+msgstr "bitki"
+
+msgid "play"
+msgstr "oyun"
+
+msgid "please check your"
+msgstr "lütfen şunu kontrol edin"
+
+msgid "potatoes"
+msgstr "patates"
+
+msgid "price"
+msgstr "fiyat"
+
+msgid "read"
+msgstr "oku"
+
+msgid "screen"
+msgstr "ekran"
+
+msgid "service"
+msgstr "hizmet"
+
+msgid "short"
+msgstr "kısa"
+
+msgid "solution"
+msgstr "çözüm"
+
+msgid "sound"
+msgstr "ses"
+
+msgid "special"
+msgstr "özel"
+
+msgid "spot"
+msgstr "benek"
+
+msgid "statistics"
+msgstr "istatistik"
+
+msgid "store"
+msgstr "depo"
+
+msgid "team"
+msgstr "takım"
+
+msgid "tear"
+msgstr "gözyaşı"
+
+msgid "time to time"
+msgstr "zaman zaman"
+
+msgid "trading"
+msgstr "ticaret"
+
+msgid "unsupported"
+msgstr "desteklenmeyen"
+
+msgid "visit"
+msgstr "ziyaret"
+
+msgid "world"
+msgstr "dünya"
+
+msgid "wrong"
+msgstr "yanlış"
+
+msgid "bar"
+msgstr "çubuk"
+
+msgid "bug"
+msgstr "hata"
+
+msgid "command"
+msgstr "komuta"
+
+msgid "completed"
+msgstr "tamamlandı"
+
+msgid "forum"
+msgstr "forum"
+
+msgid "happen"
+msgstr "olan"
+
+msgid "harvest"
+msgstr "hasat"
+
+msgid "in range"
+msgstr "menzil içinde"
+
+msgid "lamb wool"
+msgstr "kuzu yünü"
+
+msgid "left the game"
+msgstr "oyundan çıktı"
+
+msgid "lot of boards"
+msgstr "tahtaların çoğu"
+
+msgid "marketplace"
+msgstr "pazar"
+
+msgid "moment"
+msgstr "an"
+
+msgid "playing"
+msgstr "oynanıyor"
+
+msgid "produced"
+msgstr "üretildi"
+
+msgid "report"
+msgstr "raporla"
+
+msgid "sale"
+msgstr "satış"
+
+msgid "school"
+msgstr "okul"
+
+msgid "started"
+msgstr "başladı"
+
+msgid "temporarily"
+msgstr "geçici"
+
+msgid "trade with"
+msgstr "şununla takas et"
+
+msgid "values"
+msgstr "değerler"
+
+msgid "wheel"
+msgstr "tekerlek"
+
+msgid "satisfied"
+msgstr "memnun"
+
+msgid "balance"
+msgstr "bakiye"
+
+msgid "load"
+msgstr "yükle"
+
+msgid "trail"
+msgstr "patika"
+
+msgid "default"
+msgstr "varsayılan"
+
+msgid "iron"
+msgstr "demir"
+
+msgid "tobacco"
+msgstr "tütün"
+
+msgid "clay"
+msgstr "kil"
+
+msgid "money"
+msgstr "para"
+
+msgid "pavilion"
+msgstr "ibadet çadırı"
+
+msgid "tax"
+msgstr "vergi"
+
+msgid "residential"
+msgstr "yerleşim"
+
+msgid "stop"
+msgstr "dur"
+
+msgid "wait"
+msgstr "bekle"
+
+msgid "decrease"
+msgstr "azalış"
+
+msgid "ore"
+msgstr "maden"
+
+msgid "return"
+msgstr "geri dön"
+
+msgid "savegame"
+msgstr "kayıtlı oyun"
+
+msgid "consume"
+msgstr "tüketim"
+
+msgid "idle"
+msgstr "boş"
+
+msgid "lower"
+msgstr "daha düşük"
+
+msgid "saved"
+msgstr "kaydedildi"
+
+msgid "village"
+msgstr "köy"
+
+msgid "yields"
+msgstr "verim"
+
+msgid "back"
+msgstr "geri"
+
+msgid "build settlement"
+msgstr "yerleşim yeri inşa et"
+
+msgid "charcoal"
+msgstr "odun kömürü"
+
+msgid "empty"
+msgstr "boş"
+
+msgid "existing"
+msgstr "mevcut"
+
+msgid "fulfill"
+msgstr "yerine getir"
+
+msgid "graphics"
+msgstr "grafik"
+
+msgid "hunt"
+msgstr "av"
+
+msgid "lumberjack tent"
+msgstr "oduncu çadırı"
+
+msgid "please contact"
+msgstr "lütfen iletişime geçin"
+
+msgid "potato field"
+msgstr "patates ekim alanı"
+
+msgid "seed"
+msgstr "tohum"
+
+msgid "send"
+msgstr "gönder"
+
+msgid "sheep"
+msgstr "koyun"
+
+msgid "signal fire"
+msgstr "işaret ateşi"
+
+msgid "sugar field"
+msgstr "şeker ekim alanı"
+
+msgid "error"
+msgstr "hata"
+
+msgid "deposit"
+msgstr "birikim"
+
+msgid "invalid"
+msgstr "geçersiz"
+
+msgid "network"
+msgstr "ağ"
+
+msgid "route"
+msgstr "rota"
+
+msgid "selected"
+msgstr "seçilen"
+
+msgid "boat"
+msgstr "sal"
+
+msgid "create"
+msgstr "oluştur"
+
+msgid "filename"
+msgstr "dosya adı"
+
+msgid "mouse"
+msgstr "fare"
+
+msgid "partner"
+msgstr "arkadaş"
+
+msgid "reset"
+msgstr "sıfırla"
+
+msgid "configuration"
+msgstr "yapılandırma"
+
+msgid "delete"
+msgstr "sil"
+
+msgid "enter"
+msgstr "gir"
+
+msgid "quicksave"
+msgstr "hızlı kaydet"
+
+msgid "stone"
+msgstr "taş"
+
+msgid "weapon"
+msgstr "silah"
+
+msgid "cattle"
+msgstr "büyükbaş"
+
+msgid "message"
+msgstr "mesaj"
+
+msgid "port"
+msgstr "port"
+
+msgid "scenario"
+msgstr "senaryo"
+
+msgid "spice"
+msgstr "baharat"
+
+msgid "cocoa"
+msgstr "kakao"
+
+msgid "corn"
+msgstr "mısır"
+
+msgid "details"
+msgstr "ayrıntılar"
+
+msgid "found"
+msgstr "bulundu"
+
+msgid "herbs"
+msgstr "şifalı bitkiler"
+
+msgid "pause"
+msgstr "beklet"
+
+msgid "pigs"
+msgstr "domuzlar"
+
+msgid "press"
+msgstr "basmak"
+
+msgid "quit"
+msgstr "çıkış"
+
+msgid "savegame file"
+msgstr "oyun kayıt dosyası"
+
+msgid "valid"
+msgstr "geçerli"
+
+msgid "war"
+msgstr "savaş"
+
+msgid "all settlements"
+msgstr "tüm köyler"
+
+msgid "apply"
+msgstr "uygula"
+
+msgid "bricks"
+msgstr "tuğlalar"
+
+msgid "chat"
+msgstr "sohbet"
+
+msgid "confirm"
+msgstr "onayla"
+
+msgid "default settings"
+msgstr "varsayılan ayarlar"
+
+msgid "diplomacy"
+msgstr "siyaset"
+
+msgid "displayed"
+msgstr "gösterilen"
+
+msgid "flour"
+msgstr "un"
+
+msgid "grapes"
+msgstr "üzümler"
+
+msgid "ground"
+msgstr "yeryüzü"
+
+msgid "health"
+msgstr "sağlık"
+
+msgid "land"
+msgstr "kara"
+
+msgid "library"
+msgstr "kütüphane"
+
+msgid "limit"
+msgstr "sınır"
+
+msgid "loading"
+msgstr "yükleniyor"
+
+msgid "logging"
+msgstr "kayıt tutma"
+
+msgid "mine"
+msgstr "maden"
+
+msgid "mouse button"
+msgstr "fare düğmesi"
+
+msgid "not ready"
+msgstr "hazır değil"
+
+msgid "player name"
+msgstr "oyuncu adı"
+
+msgid "quote"
+msgstr "alıntı"
+
+msgid "reset to default"
+msgstr "varsayılana sıfırla"
+
+msgid "salt"
+msgstr "tuz"
+
+msgid "saved games"
+msgstr "kayıtlı oyunlar"
+
+msgid "source"
+msgstr "kaynak"
+
+msgid "trade partner"
+msgstr "ticaret arkadaşı"
+
+msgid "user"
+msgstr "kullanıcı"
+
+msgid "alliance"
+msgstr "ittifak"
+
+msgid "allied"
+msgstr "ittifakta"
+
+msgid "alvearies"
+msgstr "kovanlar"
+
+msgid "beans"
+msgstr "tohumlar"
+
+msgid "boat builder"
+msgstr "sal üreticisi"
+
+msgid "builder"
+msgstr "inşaatçı"
+
+msgid "capacity"
+msgstr "kapasite"
+
+msgid "citizens"
+msgstr "halk"
+
+msgid "clay deposit"
+msgstr "kil birikintisi"
+
+msgid "cocoa beans"
+msgstr "kakao çekirdekleri"
+
+msgid "community"
+msgstr "topluluk"
+
+msgid "condiments"
+msgstr "baharatlar"
+
+msgid "configure"
+msgstr "yapılandır"
+
+msgid "created"
+msgstr "oluşturulma"
+
+msgid "crops"
+msgstr "mahsuller"
+
+msgid "deer"
+msgstr "geyik"
+
+msgid "directory"
+msgstr "dizin"
+
+msgid "disease"
+msgstr "hastalık"
+
+msgid "doctor"
+msgstr "doktor"
+
+msgid "drag"
+msgstr "sürükle"
+
+msgid "education"
+msgstr "eğitim"
+
+msgid "ensure"
+msgstr "emin ol"
+
+msgid "entered"
+msgstr "girilen"
+
+msgid "expenses"
+msgstr "masraflar"
+
+msgid "fallback"
+msgstr "geri düşüm"
+
+msgid "fixed"
+msgstr "sabit"
+
+msgid "future"
+msgstr "gelecek"
+
+msgid "game menu"
+msgstr "oyun menüsü"
+
+msgid "get-together"
+msgstr "toplanın"
+
+msgid "going to location"
+msgstr "konuma gidiyor"
+
+msgid "honeycombs"
+msgstr "bal kovanları"
+
+msgid "inventory"
+msgstr "stok"
+
+msgid "iron ore"
+msgstr "demir cevheri"
+
+msgid "letters"
+msgstr "harfler"
+
+msgid "linux users"
+msgstr "linux kullanıcıları"
+
+msgid "load game"
+msgstr "oyun yükle"
+
+msgid "manager"
+msgstr "yönetici"
+
+msgid "map size"
+msgstr "harita boyutu"
+
+msgid "maximum"
+msgstr "en fazla"
+
+msgid "meant"
+msgstr "şu demek"
+
+msgid "meant as"
+msgstr "şu demek"
+
+msgid "missing"
+msgstr "eksik"
+
+msgid "network port"
+msgstr "ağ portu"
+
+msgid "package"
+msgstr "paket"
+
+msgid "package manager"
+msgstr "paket yöneticisi"
+
+msgid "place multiple buildings"
+msgstr "çoklu bina yerleştir"
+
+msgid "position"
+msgstr "konum"
+
+msgid "production overview"
+msgstr "üretim görünümü"
+
+msgid "quickload"
+msgstr "hızlı yükle"
+
+msgid "random"
+msgstr "rastgele"
+
+msgid "random map"
+msgstr "rastgele harita"
+
+msgid "related"
+msgstr "alakalı"
+
+msgid "related buildings"
+msgstr "alakalı binalar"
+
+msgid "remove"
+msgstr "kaldır"
+
+msgid "renderer"
+msgstr "hazırlayıcı"
+
+msgid "run out"
+msgstr "tükenmek"
+
+msgid "running costs"
+msgstr "işletme maliyeti"
+
+msgid "screenshot"
+msgstr "ekran görüntüsü"
+
+msgid "selected units"
+msgstr "seçili birimler"
+
+msgid "settled"
+msgstr "yerleşik"
+
+msgid "ship overview"
+msgstr "gemi görünümü"
+
+msgid "station"
+msgstr "istasyon"
+
+msgid "suitable"
+msgstr "uygun"
+
+msgid "system"
+msgstr "sistem"
+
+msgid "tile"
+msgstr "döşe"
+
+msgid "tops"
+msgstr "üstler"
+
+msgid "tower"
+msgstr "kule"
+
+msgid "unable to find"
+msgstr "bulunamadı"
+
+msgid "want to continue"
+msgstr "devam etmek istiyor"
+
+msgid "won"
+msgstr "kazandınız"
+
+msgid "written"
+msgstr "yazan"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
