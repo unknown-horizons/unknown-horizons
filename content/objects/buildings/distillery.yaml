@@ -1,4 +1,4 @@
-id: 26
+id: BUILDINGS.DISTILLERY
 name: _ Distillery
 baseclass: production.ProductionBuilding
 radius: 8
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 2
 tooltip_text: _ Turns sugar into liquor.
-settler_level: TIER.PIONEERS
+tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 4}
 components:
 - SelectableComponent:

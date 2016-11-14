@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,9 +21,12 @@
 
 from fife.extensions.pychan.widgets import Container, Icon, Label
 
-from horizons.util.python.callback import Callback
+from horizons.constants import TRADER
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
+from horizons.util.python.callback import Callback
+
 
 class ImageFillStatusButton(Container):
 
@@ -33,23 +36,25 @@ class ImageFillStatusButton(Container):
 
 	def __init__(self, path, text, res_id, helptext="",
 	             filled=0, marker=0, uncached=False, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
-		Derives from Container, but also takes the args of the Imagebutton,
-		in order to display the image. The container is only used, because ImageButtons can't have children.
+		"""Represents the image in the ingame gui, with a bar to show how full
+		the inventory is for that resource. Derives from Container and also takes
+		all arguments of Imagebutton in order to display the resource icon.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.path = path
 		self.text = text
-		self.helptext = _(helptext)
+		self.helptext = T(helptext)
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (9, 30)
-		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
 		self.marker = marker
+		# force no cache. needed when the same icon has to appear several times at the same time
+		self.uncached = uncached
+		# Since draw() needs all other stuff initialized, only set this in the end:
 		self.filled = filled # <- black magic at work! this calls _draw()
 
 	@classmethod
-	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False):
+	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
@@ -60,9 +65,24 @@ class ImageFillStatusButton(Container):
 		@return: ImageFillStatusButton instance"""
 		greyscale = use_inactive_icon and amount == 0
 		path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale, full_path=False)
-		helptext = db.get_res_name(res)
+
+		if showprice:
+			value = db.get_res_value(res)
+			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
+				helptext = T('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
+			else:
+				buyprice = value * TRADER.PRICE_MODIFIER_BUY
+				sellprice = value * TRADER.PRICE_MODIFIER_SELL
+				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+				            + T('buy for {buyprice} gold').format(buyprice=buyprice)
+				            + u'[br]'
+				            + T('sell for {sellprice} gold').format(sellprice=sellprice))
+		else:
+			helptext = db.get_res_name(res)
+
 		return cls(path=path, text=unicode(amount), helptext=helptext,
 		           size=cls.CELL_SIZE, res_id=res, filled=filled,
+		           max_size=cls.CELL_SIZE, min_size=cls.CELL_SIZE,
 		           marker=marker, uncached=uncached)
 
 	def _set_filled(self, percent):
@@ -75,7 +95,7 @@ class ImageFillStatusButton(Container):
 
 	filled = property(_get_filled, _set_filled)
 
-	__widget_cache = {}
+	__widget_cache = {} # type: Dict[Callback, ImageButton]
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,25 +20,25 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
+from horizons.command.building import Tear
+from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.entities import Entities
+from horizons.gui.widgets.minimap import Minimap
+from horizons.messaging import NewSettlement, SettlementRangeChanged
+from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
-
 from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.pathfinding.pathnodes import IslandPathNodes
+from horizons.util.pathfinding.pathnodes import IslandBarrierNodes, IslandPathNodes
 from horizons.util.shapes import Circle, Rect
 from horizons.util.worldobject import WorldObject
-from horizons.messaging import SettlementRangeChanged, NewSettlement
-from horizons.world.settlement import Settlement
-from horizons.constants import BUILDINGS, RES, UNITS
-from horizons.scenario import CONDITIONS
-from horizons.world.buildingowner import BuildingOwner
 from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache, TerrainRequirement
-from horizons.gui.widgets.minimap import Minimap
+from horizons.world.buildingowner import BuildingOwner
 from horizons.world.ground import MapPreviewTile
+from horizons.world.settlement import Settlement
+
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map
@@ -80,9 +80,6 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		super(Island, self).__init__(worldid=island_id)
 
-		if False:
-			from horizons.session import Session
-			assert isinstance(session, Session)
 		self.session = session
 
 		self.terrain_cache = None
@@ -90,36 +87,39 @@ class Island(BuildingOwner, WorldObject):
 		self.__init(db, island_id, preview)
 
 		if not preview:
-			# create building indexers
+			# Create building indexers.
 			from horizons.world.units.animal import WildAnimal
 			self.building_indexers = {}
 			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
-		# load settlements
+		# Load settlements.
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
-		if not preview:
-			self.terrain_cache = TerrainBuildabilityCache(self)
-			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
-			self.available_flat_land = len(flat_land_set)
-			available_coords_set = set(self.terrain_cache.land_or_coast)
+		if preview:
+			# Caches and buildings are not required for map preview.
+			return
 
-			for settlement in self.settlements:
-				settlement.init_buildability_cache(self.terrain_cache)
-				for coords in settlement.ground_map:
-					available_coords_set.discard(coords)
-					if coords in flat_land_set:
-						self.available_flat_land -= 1
+		self.terrain_cache = TerrainBuildabilityCache(self)
+		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+		self.available_flat_land = len(flat_land_set)
+		available_coords_set = set(self.terrain_cache.land_or_coast)
 
-			self.available_land_cache = FreeIslandBuildabilityCache(self)
+		for settlement in self.settlements:
+			settlement.init_buildability_cache(self.terrain_cache)
+			for coords in settlement.ground_map:
+				available_coords_set.discard(coords)
+				if coords in flat_land_set:
+					self.available_flat_land -= 1
 
-			# load buildings
-			from horizons.world import load_building
-			for (building_worldid, building_typeid) in \
-				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
-				load_building(self.session, db, building_typeid, building_worldid)
+		self.available_land_cache = FreeIslandBuildabilityCache(self)
+
+		# Load buildings.
+		from horizons.world import load_building
+		buildings = db("SELECT rowid, type FROM building WHERE location = ?", island_id)
+		for (building_worldid, building_typeid) in buildings:
+			load_building(self.session, db, building_typeid, building_worldid)
 
 	def __init(self, db, island_id, preview):
 		"""
@@ -141,8 +141,10 @@ class Island(BuildingOwner, WorldObject):
 
 		self._init_cache()
 
-		# Contains references to all resource deposits (but not mines) on the island regardless of the owner.
-		self.deposits = defaultdict(dict) # {building_id: {(x, y): building_instance, ...}, ...}
+		# Contains references to all resource deposits (but not mines)
+		# on the island, regardless of the owner:
+		# {building_id: {(x, y): building_instance, ...}, ...}
+		self.deposits = defaultdict(dict)
 
 		self.settlements = []
 		self.wild_animals = []
@@ -155,11 +157,14 @@ class Island(BuildingOwner, WorldObject):
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
-		if not preview: # this isn't needed for previews, but it is in actual games
+		if not preview:
+			# This isn't needed for map previews, but it is in actual games.
 			self.path_nodes = IslandPathNodes(self)
+			self.barrier_nodes = IslandBarrierNodes(self)
 
-			# repopulate wild animals every 2 mins if they die out.
-			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
+			# Repopulate wild animals every 2 mins if they die out.
+			Scheduler().add_new_object(self.check_wild_animal_population, self,
+			                           run_in=Scheduler().get_ticks(120), loops=-1)
 
 		"""TUTORIAL:
 		The next step will be an overview of the component system, which you will need
@@ -191,12 +196,12 @@ class Island(BuildingOwner, WorldObject):
 	def get_tiles_tuple(self, tuples):
 		"""Same as get_tile, but takes a list of tuples.
 		@param tuples: iterable of tuples
-		@return: list of tiles"""
+		@return: iterable of map tiles"""
 		for tup in tuples:
 			if tup in self.ground_map:
 				yield self.ground_map[tup]
 
-	def add_settlement(self, position, radius, player, load=False):
+	def add_settlement(self, position, radius, player):
 		"""Adds a settlement to the island at the position x, y with radius as area of influence.
 		@param position: Rect describing the position of the new warehouse
 		@param radius: int radius of the area of influence.
@@ -204,12 +209,12 @@ class Island(BuildingOwner, WorldObject):
 		settlement = Settlement(self.session, player)
 		settlement.initialize()
 		settlement.init_buildability_cache(self.terrain_cache)
-		self.add_existing_settlement(position, radius, settlement, load)
+		self.add_existing_settlement(position, radius, settlement)
 		NewSettlement.broadcast(self, settlement, position.center)
 
 		return settlement
 
-	def add_existing_settlement(self, position, radius, settlement, load=False):
+	def add_existing_settlement(self, position, radius, settlement):
 		"""Same as add_settlement, but uses settlement from parameter.
 		May also be called for extension of an existing settlement by a new building (this
 		is useful for loading, where every loaded building extends the radius of its settlement).
@@ -217,8 +222,7 @@ class Island(BuildingOwner, WorldObject):
 		@param load: whether it has been called during load"""
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
-		if not load:
-			self.assign_settlement(position, radius, settlement)
+		self.assign_settlement(position, radius, settlement)
 		self.session.scenario_eventhandler.check_events(CONDITIONS.settlements_num_greater)
 		return settlement
 
@@ -282,19 +286,65 @@ class Island(BuildingOwner, WorldObject):
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
 
+	def abandon_buildings(self, buildings_list):
+		"""Abandon all buildings in the list
+		@param buildings_list: buildings to abandon
+		"""
+		for building in buildings_list:
+			Tear(building)(building.owner)
+
+	def remove_settlement(self, building):
+		"""Removes the settlement property from tiles within the radius of the given building"""
+		settlement = building.settlement
+		buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
+		assert building not in buildings_to_abandon
+		self.abandon_buildings(buildings_to_abandon)
+
+		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+		land_or_coast = self.terrain_cache.land_or_coast
+		settlement_tiles_changed = []
+		clean_coords = set()
+		for coords in settlement_coords_to_change:
+			tile = self.ground_map[coords]
+			tile.settlement = None
+			building = tile.object
+			if building is not None:
+				settlement.remove_building(building)
+				building.owner = None
+				building.settlement = None
+			if coords in land_or_coast:
+				clean_coords.add(coords)
+			settlement_tiles_changed.append(self.ground_map[coords])
+			del settlement.ground_map[coords]
+			Minimap.update(coords)
+			if coords in flat_land_set:
+				self.available_flat_land += 1
+		self.available_land_cache.add_area(clean_coords)
+
+		self._register_change()
+		if self.terrain_cache:
+			settlement.buildability_cache.modify_area(clean_coords)
+
+		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
+
 	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
-		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
 			# self.available_land_cache may be None when loading a settlement
 			# it is ok to skip in that case because the cache's constructor will take the deposits into account anyway
 			self.deposits[building.id][building.position.origin.to_tuple()] = building
 			self.available_land_cache.remove_area(list(building.position.tuple_iter()))
 		super(Island, self).add_building(building, player, load=load)
 		if not load and building.settlement is not None:
-			self.assign_settlement(building.position, building.radius, building.settlement)
+			# Note: (In case we do not require all building tiles to lay inside settlement
+			# range at some point.) `include_self` is True in get_radius_coordinates()
+			# called from here, so the building area itself *is* expanded by even with
+			# radius=0! Right now this has no effect (above buildability requirements).
+			radius = 0 if building.id not in BUILDINGS.EXPAND_RANGE else building.radius
+			self.assign_settlement(building.position, radius, building.settlement)
 
 		if building.settlement is not None:
 			building.settlement.add_building(building, load)
@@ -315,13 +365,16 @@ class Island(BuildingOwner, WorldObject):
 
 	def remove_building(self, building):
 		# removal code (before super call)
-		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.MOUNTAIN):
 			coords = building.position.origin.to_tuple()
 			if coords in self.deposits[building.id]:
 				del self.deposits[building.id][coords]
-		if building.settlement is not None:
-			building.settlement.remove_building(building)
-			assert building not in building.settlement.buildings
+		settlement = building.settlement
+		if settlement is not None:
+			if building.id in BUILDINGS.EXPAND_RANGE:
+				self.remove_settlement(building)
+			settlement.remove_building(building)
+			assert building not in settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:
@@ -343,7 +396,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def get_surrounding_tiles(self, where, radius=1, include_corners=True):
 		"""Returns tiles around point with specified radius.
-		@param point: instance of Point, or object with get_surrounding()"""
+		@param where: instance of Point, or object with get_surrounding()"""
 		if hasattr(where, "get_surrounding"):
 			coords = where.get_surrounding(include_corners=include_corners)
 		else: # assume Point
@@ -371,16 +424,20 @@ class Island(BuildingOwner, WorldObject):
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""
 		self.log.debug("Checking wild animal population: %s", len(self.wild_animals))
-		if not self.wild_animals:
-			# find a tree where we can place it
-			for building in self.buildings:
-				if building.id == BUILDINGS.TREE:
-					point = building.position.origin
-					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=point.x, y=point.y, session=self.session)
-					animal.initialize()
-					return
-		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
-		# so do nothing in this case.
+		if self.wild_animals:
+			# Some animals still alive, nothing to revive.
+			return
+
+		# Find a tree where we can place a new animal.
+		# We might not find a tree at all, but if that's the case,
+		# wild animals would die out again anyway, so we do nothing.
+		for building in self.buildings:
+			if building.id == BUILDINGS.TREE:
+				point = building.position.origin
+				entity = Entities.units[UNITS.WILD_ANIMAL]
+				animal = entity(self, x=point.x, y=point.y, session=self.session)
+				animal.initialize()
+				return
 
 	def _init_cache(self):
 		""" initializes the cache that knows when the last time the buildability of a rectangle may have changed on this island """
@@ -395,12 +452,11 @@ class Island(BuildingOwner, WorldObject):
 		# keep searching for new trees every time a tree is torn down.
 		for wild_animal in (wild_animal for wild_animal in self.wild_animals):
 			wild_animal.remove()
-		for settlement in self.settlements:
-			settlement.buildability_cache = None
 		super(Island, self).end()
 		for settlement in self.settlements:
 			settlement.end()
 		self.wild_animals = None
 		self.ground_map = None
 		self.path_nodes = None
+		self.barrier_nodes = None
 		self.building_indexers = None

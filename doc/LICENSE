@@ -1,26 +1,14 @@
-UNKNOWN HORIZONS 
+UNKNOWN HORIZONS
 ----------------
 
 
 
 Our code is published under the terms of the  General Public License, version 2
-and later.
-The license text is shipped with this program as doc/GPL (from now on: "see GPL").
+and later. Instead of listing individual years within the copyright notice of every
+file, all are dated from 2008, the year this project was initiated, to the current year.
+The license text is shipped with this program as doc/licenses/GPL
+(from now on, we abbreviate this as: "see GPL").
 For more information visit  http://www.gnu.org/copyleft/gpl.html .
-
-The file
-
-/content/fonts/UMing.ttc
-
-is licensed under the terms of the the Arphic Public License (see APL).
-Currently supported charsets:
-ISO8859-1,2,3,4,7,9,10,13,14,15  Big5  HKSCS-2004  GB2312-80  as well as
-Bopomofo Extensions for Hakka, Minnan (Unicode 5.0) and their MBE variants.
-Partly supported:
-CNS 11643  GBK  GB18030  Japanese  Korean
-AR PL UMing is a font under development, for the project homepage, visit
-http://www.freedesktop.org/wiki/Software/CJKUnifonts .
-
 
 The file
 
@@ -30,9 +18,9 @@ is derived from a file licensed by the GIMP team ( http://gimp.org ) under the
 terms of the GNU General Public License, version 2.
 
 
-The file  
+The file
 
-/horizons/ext/enum.py  
+/horizons/ext/enum.py
 
 is derived from  http://cheeseshop.python.org/pypi/enum version 0.4.3  which is
 licensed under the terms of the GNU General Public License, version 2 or later.
@@ -44,10 +32,20 @@ is derived from https://launchpad.net/python-distutils-extra
 which is licensed under the terms of the GNU General Public License, version 2.
 
 
-/horizons/ext/dummy.py
+/tests/dummy.py
 
 is licensed by nosklo under the terms of the  MIT license.  Information can be
 obtained at http://www.opensource.org/licenses/mit-license.php .
+
+
+/horizons/ext/speaklater.py
+
+is licensed by Armin Ronacher under the terms of the 3-clause BSD license. See
+BSD_speaklater.
+
+/horizons/ext/typing.py
+
+is licensed under the Python License, Version 2. See https://github.com/python/typing
 
 
 The files
@@ -98,8 +96,21 @@ More details on the painting can be found at  http://the-athenaeum.org/art/detai
 "striking a Bell (15cm large)" by Stephan used in content/audio/sounds/ships_bell.ogg.
 More details can be found at  http://www.pdsounds.org/sounds/striking_a_bell_15cm_large .
 
+The file content/audio/music/Peer Gynt Suite No. 1, Op. 46 - I. Morning.ogg
+composed by Edvard Grieg performed by the Czech National Symphony Orchestra
+More details can be found at http://www.musopen.org/music/piece/1568
 
-Published under the terms of Creative Commons Attribution Sharealike 3.0 Unported License is:
+
+Published under the terms of Creative Commons Attribution 3.0 Unported License
+(see CC-BY) are:
+
+"Ireland's Coast (Game Edition - LIVE PLAYERS)" by Matthew Pablo (http://www.matthewpablo.com)
+used as content/audio/music/irelands_coast.ogg . More details here:
+http://opengameart.org/content/irelands-coast-game-edition-live-players
+
+
+Published under the terms of Creative Commons Attribution Sharealike 3.0
+Unported License (see CC-BY-SA) are:
 
 "Trout School Animation" by Lamoot used in content/gfx/terrain/resources/as_fish0/ .
 More details on the work can be found at  http://opengameart.org/content/trout-school-animation .
@@ -117,11 +128,12 @@ More details found here: http://opengameart.org/content/food-pack
 "Kingdom Weapon Set" by Clint Bellanger from http://opengameart.org/content/kingdom-weapon-set,
 "Training Target" by p0ss from http://opengameart.org/content/training-target,
 "Wooden Weapon Training Set" by p0ss from http://opengameart.org/content/wooden-weapon-training-set
-used in content/gfx/buildings/settlers/barracks/as_barracks0/*
+used in content/gfx/buildings/settlers/barracks/as_barracks0/*,
+"Sheep (rigged, textured and animated)" by p0ss from http://opengameart.org/content/sheep-rigged-textured-and-animated
 
 
 Our own audiovisual media content is published under the terms of the
-Creative Commons Attribution Sharealike 3.0 Unported License (see CC).
+Creative Commons Attribution Sharealike 3.0 Unported License (see CC-BY-SA).
 For more information visit  http://creativecommons.org/licenses/by-sa/3.0/legalcode .
 
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,10 +23,10 @@ import logging
 from collections import deque
 
 import horizons.main
-
+from horizons.constants import GAME
 from horizons.util.living import LivingObject
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.constants import GAME
+
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
@@ -132,7 +132,7 @@ class Scheduler(LivingObject):
 
 	def add_object(self, callback_obj, readd=False):
 		"""Adds a new CallbackObject instance to the callbacks list for the first time
-		@param callback_obj: CallbackObject type object, containing all neccessary  information
+		@param callback_obj: CallbackObject type object, containing all necessary  information
 		@param readd: Whether this object is added another time (looped)
 		"""
 		if callback_obj.loops > 0:
@@ -149,14 +149,14 @@ class Scheduler(LivingObject):
 			if not readd:  # readded calls haven't been removed here
 				if not callback_obj.class_instance in self.calls_by_instance:
 					self.calls_by_instance[callback_obj.class_instance] = []
-				self.calls_by_instance[callback_obj.class_instance].append( callback_obj )
+				self.calls_by_instance[callback_obj.class_instance].append(callback_obj)
 
 	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None, finish_callback=None):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
 		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the function belongs to.
 		@param run_in: int number of ticks after which the callback is called. Defaults to 1, run next tick.
-		@param loops: How often the callback is called. -1 = infinite times. Defautls to 1, run once.
+		@param loops: How often the callback is called. -1 = infinite times. Defaults to 1, run once.
 		@param loop_interval: Delay between subsequent loops in ticks. Defaults to run_in."""
 		callback_obj = _CallbackObject(self, callback, class_instance, run_in, loops, loop_interval, finish_callback=finish_callback)
 		self.add_object(callback_obj)

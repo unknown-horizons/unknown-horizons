@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,13 +23,13 @@ import logging
 import uuid
 
 import horizons.globals
-
 from horizons import network
-from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES, NETWORK, VERSION
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging.messagebus import SimpleMessageBus
-from horizons.network import CommandError, NetworkException, FatalError, packets
-from horizons.network.common import Game
+from horizons.i18n import gettext as T
+from horizons.messaging.simplemessagebus import SimpleMessageBus
+from horizons.network import CommandError, FatalError, NetworkException, packets
+from horizons.network.common import ErrorType, Game
 from horizons.network.connection import Connection
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
@@ -83,6 +83,7 @@ class NetworkInterface(object):
 		self.subscribe = self._messagebus.subscribe
 		self.unsubscribe = self._messagebus.unsubscribe
 		self.broadcast = self._messagebus.broadcast
+		self.discard = self._messagebus.discard
 
 		# create a game_details_changed callback
 		for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
@@ -286,13 +287,13 @@ class NetworkInterface(object):
 			return False
 		return True
 
-	def get_active_games(self, only_this_version_allowed=False):
+	def get_active_games(self):
 		"""Returns a list of active games or None on fatal error"""
 		ret_mp_games = []
 		try:
 			self._assert_connection()
 			self.log.debug("[LIST]")
-			version = self._client_data.version if only_this_version_allowed else -1
+			version = self._client_data.version
 			self.send_packet(packets.client.cmd_listgames(version))
 			packet = self._connection.receive_packet(packets.server.data_gameslist)
 			games = packet[1].games
@@ -346,7 +347,7 @@ class NetworkInterface(object):
 			self._client_data.name = plnew.name
 
 	def change_color(self, new_color, save=True):
-		new_color %= len(set(Color))
+		new_color %= len(set(Color.get_defaults()))
 
 		if save:
 			horizons.globals.fife.set_uh_setting("ColorID", new_color)
@@ -379,7 +380,7 @@ class NetworkInterface(object):
 			while self._connection.ping(): # ping receives packets
 				pass
 		except NetworkException as e:
-			self.log.debug("ping in receive_all failed: "+str(e))
+			self.log.debug("ping in receive_all failed: "+unicode(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets
@@ -393,6 +394,11 @@ class NetworkInterface(object):
 			self.broadcast("error", e, fatal=True)
 			self.disconnect()
 			return True
+		except CommandError as e:
+			if e.type == ErrorType.TerminateGame:
+				self._game = None
+			self.broadcast("error", e, fatal=False)
+			return False
 		except NetworkException as e:
 			self.broadcast("error", e, fatal=False)
 			return False
@@ -522,12 +528,12 @@ class MPGame(object):
 		ret_players = []
 		for index, player in enumerate(self.players, start=1):
 			# TODO: add support for selecting difficulty levels to the GUI
-			status = _('Ready') if player.ready else _('Not Ready')
+			status = T('Ready') if player.ready else T('Not Ready')
 			ret_players.append({
 				'id':         index,
 				'sid':        player.sid,
 				'name':       player.name,
-				'color':      Color[player.color],
+				'color':      Color.get(player.color),
 				'clientid':   player.clientid,
 				'local':      self.netif.get_client_name() == player.name,
 				'ai':         False,

@@ -3,21 +3,26 @@
 	<TabBG amount="4" />
 
 	<Container position="0, 20" size="250, 350" max_size="250, 350">
-		<ImageButton name="size_1" size="32,32" position="25, 55"
+		<Label text="Select brush size:" name="headline_brush_size" position="25,55" />
+		<ImageButton name="size_1" size="32,32" position="25, 75"
 			path="icons/ship/smallbutton" />
-		<Label position="33, 88" text="1" name="lbl_1" comment="noi18n" />
+		<Label position="33, 108" text="1" name="lbl_1" comment="noi18n" />
 
-		<ImageButton name="size_2" size="32,32" position="67, 55"
+		<ImageButton name="size_2" size="32,32" position="67, 75"
 			path="icons/ship/smallbutton" />
-		<Label position="75, 88" text="2" name="lbl_2" comment="noi18n" />
+		<Label position="75, 108" text="2" name="lbl_2" comment="noi18n" />
 
-		<ImageButton name="size_3" size="32,32" position="110, 55"
+		<ImageButton name="size_3" size="32,32" position="110, 75"
 			path="icons/ship/smallbutton" />
-		<Label position="115, 88" text="3" name="lbl_3" comment="noi18n" />
+		<Label position="115, 108" text="3" name="lbl_3" comment="noi18n" />
 	</Container>
 
-	<ImageButton position="40,150" name="default_land" />
-	<ImageButton position="120,150" name="sand" />
-	<ImageButton position="40,200" name="shallow_water" />
-	<ImageButton position="120,200" name="water" />
+	<Label text="Select terrain:" name="headline_terrain" position="25,155" />
+	<AutoResizeContainer position="40,175">
+		<ImageButton position="0,0" name="default_land" />
+		<ImageButton position="80,0" name="sand" />
+		<ImageButton position="0,40" name="shallow_water" />
+		<ImageButton position="80,40" name="water" />
+	</AutoResizeContainer>
+	<Label text="(right click to stop)" name="cursor_hint" position="25,255" />
 </Container>

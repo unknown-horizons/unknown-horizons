@@ -7,7 +7,7 @@
 	<Spacer min_size="0"  max_size="50" />
 		<Label name="headline" text="Trade" />
 	</HBox>
-<Icon image="content/gui/images/background/hr.png" position="20,30" />
+<hr position="20,30" />
 
 	<!-- Inventory of ship -->
 <Container size="230,550" position="20,40">
@@ -27,7 +27,7 @@
 
 </Container>
 
-<Icon image="content/gui/images/background/hr.png" position="20,140" />
+<hr position="20,140" />
 
 	<!-- Exchange selectors -->
 <Container size="260,550" position="20,145">
@@ -56,7 +56,7 @@
 
 </Container>
 
-<Icon image="content/gui/images/background/hr.png" position="20,220" />
+<hr position="20,220" />
 
 <Container size="520,30" position="20,230">
 	<Icon image="content/gui/images/tabwidget/icon_trade_settlement.png" position="160,0" />

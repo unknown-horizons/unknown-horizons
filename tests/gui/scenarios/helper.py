@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.scenario import CONDITIONS
-
 
 var_eq = CONDITIONS.get('var_eq')
 settlement_res_stored_greater = CONDITIONS.get('settlement_res_stored_greater')
@@ -58,4 +57,4 @@ def wait_and_close_logbook(gui):
 	while not gui.find('captains_log'):
 		gui.run()
 
-	gui.trigger('captains_log', 'okButton')
+	gui.trigger('captains_log/okButton')

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,9 +22,9 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
+
 
 class SQLiteAtlasLoader(object):
 	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database.
@@ -42,7 +42,7 @@ class SQLiteAtlasLoader(object):
 		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
 		self.inited = False
 
-		
+
 	def init(self):
 		"""Used to lazy init the loader"""
 		for (atlas,) in self.atlases:
@@ -96,18 +96,18 @@ class SQLiteAtlasLoader(object):
 				if command == 'shift':
 					x, y = arg.split(',')
 					if x.startswith('left'):
-						x = int(x[4:]) + int(width / 2)
+						x = int(x[4:]) + (width // 2)
 					elif x.startswith('right'):
-						x = int(x[5:]) - int(width / 2)
+						x = int(x[5:]) - (width // 2)
 					elif x.startswith(('center', 'middle')):
 						x = int(x[6:])
 					else:
 						x = int(x)
 
 					if y.startswith('top'):
-						y = int(y[3:]) + int(height / 2)
+						y = int(y[3:]) + (height // 2)
 					elif y.startswith('bottom'):
-						y = int(y[6:]) - int(height / 2)
+						y = int(y[6:]) - (height // 2)
 					elif y.startswith(('center', 'middle')):
 						y = int(y[6:])
 					else:
@@ -148,4 +148,3 @@ class SQLiteAtlasLoader(object):
 			img.useSharedImage(self.atlaslib[entry[1]], region)
 
 		return img
-

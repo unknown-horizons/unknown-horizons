@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,11 @@
 
 import logging
 
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.command.production import AddProduction
+from horizons.constants import BUILDINGS, PRODUCTIONLINES
+from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
+
 
 class UnitBuilder(object):
 	"""An object of this class builds the units of one player."""

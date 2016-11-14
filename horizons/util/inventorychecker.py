@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scheduler import Scheduler
 from copy import deepcopy
+
+from horizons.scheduler import Scheduler
+
 
 class InventoryChecker(object):
 
@@ -46,7 +48,7 @@ class InventoryChecker(object):
 
 	def remove(self):
 		"""Clean up"""
-		Scheduler.rem_all_classinst_calls(self)
+		Scheduler().rem_all_classinst_calls(self)
 		self.__inventory_copy = None
 		self.__storage_component = None
 		self.__message_class = None

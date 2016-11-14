@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
+
 
 class AbstractTree(AbstractBuilding):
 	@property

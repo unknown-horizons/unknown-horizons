@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableLine
-from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
+from horizons.constants import LAYERS
+from horizons.scheduler import Scheduler
+from horizons.util.tile_orientation import get_tile_alignment_action
+from horizons.world.building.buildable import BuildableLine
+from horizons.world.building.building import BasicBuilding
 
 
 class Path(ComponentHolder):
@@ -56,67 +55,28 @@ class Path(ComponentHolder):
 		self.island.path_nodes.unregister_road(self)
 		self.recalculate_surrounding_tile_orientation()
 
+	def is_road(self, tile):
+		return (tile is not None and
+		        tile.object is not None and
+		        self.island.path_nodes.is_road(tile.x, tile.y) and
+		        tile.object.owner == self.owner)
+
 	def recalculate_surrounding_tile_orientation(self):
 		for tile in self.island.get_surrounding_tiles(self.position):
-			if tile is not None and tile.object is not None and \
-			   self.island.path_nodes.is_road(tile.x, tile.y):
+			if self.is_road(tile):
 				tile.object.recalculate_orientation()
 
 	def recalculate_orientation(self):
-		"""
-		ROAD ORIENTATION CHEATSHEET
-		===========================
-		a       b
-		 \  e  /     a,b,c,d are connections to nearby roads
-		  \   /
-		   \ /       e,f,g,h indicate whether this area occupies more space than
-		 h  X  f     a single road would (i.e. whether we should fill this three-
-		   / \       cornered space with graphics that will make it look like a
-		  /   \      coherent square instead of many short-circuit road circles).
-		 /  g  \     Note that 'e' can only be placed if both 'a' and 'b' exist.
-		d       c
+		def is_similar_tile(position):
+			tile = self.island.get_tile(position)
+			return self.is_road(tile)
 
-		SAMPLE ROADS
-		============
-		\     \     \..../  \    /    \    /
-		 \    .\     \../    \  /.     \  /.
-		  \   ..\     \/      \/..      \/..
-		  /   ../     /         ..      /\..
-		 /    ./     /           .     /..\.
-		/     /     /                 /....\
-
-		ad    adh   abde   abf (im-   abcdfg
-		                   possible)
-		"""
-		action = ''
 		origin = self.position.origin
-		path_nodes = self.island.path_nodes
-
-		for action_part, (xoff, yoff) in \
-		    sorted(BUILDINGS.ACTION.action_offset_dict.iteritems()): # order is important here
-			tile = self.island.get_tile(origin.offset(xoff, yoff))
-			if (tile is not None and
-				tile.object is not None and
-				path_nodes.is_road(tile.x, tile.y) and
-				self.owner == tile.object.owner and
-				(action_part in 'abcd' or
-				#HACK Check whether we can place valid road-filled areas
-				# Only adds 'g' to action if c and d are in already and the condition for g is met
-					(action_part in 'efgh' and
-					chr(ord(action_part) - 4) in action and
-					chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
-					# 'h' has the parents a and d, so we hacked the hack
-					)
-				)
-				# end #HACK
-			   ):
-				action += action_part
-		if action == '':
-			action = 'single' # single trail piece with no neighbors
+		action = get_tile_alignment_action(origin, is_similar_tile)
 
 		location = self._instance.getLocation()
-		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)
+
 
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""

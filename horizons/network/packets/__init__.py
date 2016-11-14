@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,22 +26,18 @@ import sys
 try:
 	from cStringIO import StringIO
 except ImportError:
-	from StringIO import StringIO
+	from StringIO import StringIO # type: ignore
 
 from horizons.network import NetworkException, PacketTooLarge
 
 __version__ = '0.1'
-__all__ = [
-	'SafeUnpickler',
-	'packet',
-]
 
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
 	'client' : {},
 	'server' : {},
-}
+} # type: Dict[str, Dict[str, Set[str]]]
 
 class SafeUnpickler(object):
 	"""
@@ -64,11 +60,12 @@ class SafeUnpickler(object):
 	- http://nadiana.com/python-pickle-insecure
 	"""
 	@classmethod
-	def add(self, origin, klass):
+	def add(cls, origin, klass):
+		"""Adding SafeUnpickler to the pickle whitelist"""
 		global PICKLE_SAFE
 		module = klass.__module__
 		name  = klass.__name__
-		if (module == self.__module__ and name == self.__name__):
+		if (module == cls.__module__ and name == cls.__name__):
 			raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
 		types = ['client', 'server'] if origin == 'common' else [origin]
 		for origin in types:
@@ -78,7 +75,7 @@ class SafeUnpickler(object):
 				PICKLE_SAFE[origin][module].add(name)
 
 	@classmethod
-	def set_mode(self, client=True):
+	def set_mode(cls, client=True):
 		global PICKLE_RECIEVE_FROM
 		if client:
 			PICKLE_RECIEVE_FROM = 'server'
@@ -86,22 +83,26 @@ class SafeUnpickler(object):
 			PICKLE_RECIEVE_FROM = 'client'
 
 	@classmethod
-	def find_class(self, module, name):
+	def find_class(cls, module, name):
 		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
 		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")' % (module, name))
+			raise cPickle.UnpicklingError(
+				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
+				format(module, name))
 		__import__(module)
 		mod = sys.modules[module]
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")' % (name, module))
+			raise cPickle.UnpicklingError(
+				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
+				format(name, module))
 		klass = getattr(mod, name)
 		return klass
 
 	@classmethod
-	def loads(self, str):
+	def loads(cls, str):
 		file = StringIO(str)
 		obj = cPickle.Unpickler(file)
-		obj.find_global = self.find_class
+		obj.find_global = cls.find_class
 		return obj.load()
 
 #-------------------------------------------------------------------------------
@@ -171,4 +172,3 @@ def unserialize(data, validate=False, protocol=0):
 
 import horizons.network.packets.server
 import horizons.network.packets.client
-

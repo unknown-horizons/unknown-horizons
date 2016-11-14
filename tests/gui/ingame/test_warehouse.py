@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,9 +29,9 @@ def test_production_overview(gui):
 	gui.cursor_click(52, 12, 'left')
 
 	# open production overview
-	gui.trigger('tab_account', 'show_production_overview')
+	gui.trigger('tab_account/show_production_overview')
 
 	# leave it open for a while to let a refresh happen
 	gui.run(seconds=2)
 
-	gui.trigger('production_overview', 'okButton')
+	gui.trigger('production_overview/okButton')

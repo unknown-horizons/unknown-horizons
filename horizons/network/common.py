@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,14 +22,8 @@
 import uuid
 from gettext import NullTranslations
 
-from horizons.network import packets, enet
+from horizons.network import enet, packets
 
-__all__ = [
-  'Address',
-  'Player',
-  'Game',
-  'ErrorType',
-]
 
 class Address(object):
 	def __init__(self, address, port=None):
@@ -150,7 +144,7 @@ class Game(object):
 			self.state = state
 
 		def __str__(self):
-			strvals = [ "Open", "Prepare", "Running" ]
+			strvals = ["Open", "Prepare", "Running"]
 			return "%s" % (strvals[self.state])
 
 	def __init__(self, packet, creator):
@@ -172,9 +166,9 @@ class Game(object):
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
 		# NOTE: don't return _ANY_ private data here as these object
-		# gets sent in onlistgames too. if really necessary remove that
-		# data in data_gameslist.addgame
-		# NOTE: this classes get used on the client too, so beware of
+		# will be used to build the public game list. if really necessary remove
+		# the private data in packets.data_gameslist.addgame
+		# NOTE: this classes are used on the client too, so beware of
 		# datatype changes
 		state = self.__dict__.copy()
 
@@ -184,6 +178,9 @@ class Game(object):
 		# make data backwards compatible
 		state['creator'] = self.creator.name
 		state['clientversion'] = self.creator.version
+		if self.creator.protocol == 0:
+			state['load'] = self.maphash if self.maphash else None
+			del state['maphash']
 
 		return state
 
@@ -252,7 +249,7 @@ class ErrorType(object):
 		self.state = state
 
 	def __str__(self):
-		strvals = [ "NotSet", "TerminateGame" ]
+		strvals = ["NotSet", "TerminateGame"]
 		return "%s" % (strvals[self.state])
 
 packets.SafeUnpickler.add('common', ErrorType)

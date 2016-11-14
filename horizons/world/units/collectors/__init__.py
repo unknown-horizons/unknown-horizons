@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['collector', 'buildingcollector', 'animalcollector']
-
-from buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
-from animalcollector import AnimalCollector, HunterCollector, FarmAnimalCollector
-from collector import Collector, Job, JobList
+from .buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
+from .animalcollector import AnimalCollector, HunterCollector
+from .collector import Collector, Job, JobList

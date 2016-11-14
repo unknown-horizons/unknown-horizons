@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,28 +20,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import OverviewTab
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.i18n import gettext_lazy as LazyT
+
+from .overviewtab import OverviewTab
 
 
 class EnemyBuildingOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(EnemyBuildingOverviewTab, self).__init__(
-			widget = 'overview_enemybuilding.xml',
-			instance = instance
-		)
+	widget = 'overview_enemybuilding.xml'
+
+	def init_widget(self):
+		super(EnemyBuildingOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
 
 class EnemyWarehouseOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		super(EnemyWarehouseOverviewTab, self).__init__(
-			widget = 'overview_enemywarehouse.xml',
-			instance = instance
-		)
+	widget = 'overview_enemywarehouse.xml'
+	helptext = LazyT("Warehouse overview")
+
+	def init_widget(self):
+		super(EnemyWarehouseOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self.helptext = _("Warehouse overview")
 
 	def refresh(self):
 		settlement = self.instance.settlement

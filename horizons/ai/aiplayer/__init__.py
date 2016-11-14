@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,50 +30,54 @@ from horizons.component.stancecomponent import NoneStance
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.weaponholder import MovingWeaponHolder
 
-from mission.foundsettlement import FoundSettlement
-from mission.preparefoundationship import PrepareFoundationShip
-from mission.domestictrade import DomesticTrade
-from mission.specialdomestictrade import SpecialDomesticTrade
-from mission.internationaltrade import InternationalTrade
+from .mission.foundsettlement import FoundSettlement
+from .mission.preparefoundationship import PrepareFoundationShip
+from .mission.domestictrade import DomesticTrade
+from .mission.specialdomestictrade import SpecialDomesticTrade
+from .mission.internationaltrade import InternationalTrade
 
-from personalitymanager import PersonalityManager
-from landmanager import LandManager
-from settlementmanager import SettlementManager
-from unitbuilder import UnitBuilder
-from constants import GOAL_RESULT
-from basicbuilder import BasicBuilder
-from specialdomestictrademanager import SpecialDomesticTradeManager
-from internationaltrademanager import InternationalTradeManager
-from settlementfounder import SettlementFounder
+from .personalitymanager import PersonalityManager
+from .landmanager import LandManager
+from .settlementmanager import SettlementManager
+from .unitbuilder import UnitBuilder
+from .constants import GOAL_RESULT
+from .basicbuilder import BasicBuilder
+from .specialdomestictrademanager import SpecialDomesticTradeManager
+from .internationaltrademanager import InternationalTradeManager
+from .settlementfounder import SettlementFounder
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
-from building import AbstractBuilding
-from building.farm import AbstractFarm, FarmEvaluator
-from building.field import AbstractField
-from building.weaver import AbstractWeaver
-from building.distillery import AbstractDistillery
-from building.villagebuilding import AbstractVillageBuilding
-from building.claydeposit import AbstractClayDeposit
-from building.claypit import AbstractClayPit
-from building.brickyard import AbstractBrickyard
-from building.firestation import AbstractFireStation
-from building.fishdeposit import AbstractFishDeposit
-from building.fisher import AbstractFisher
-from building.tree import AbstractTree
-from building.lumberjack import AbstractLumberjack
-from building.irondeposit import AbstractIronDeposit
-from building.ironmine import AbstractIronMine
-from building.charcoalburner import AbstractCharcoalBurner
-from building.smeltery import AbstractSmeltery
-from building.toolmaker import AbstractToolmaker
-from building.boatbuilder import AbstractBoatBuilder
-from building.signalfire import AbstractSignalFire
-from building.tobacconist import AbstractTobacconist
-from building.saltponds import AbstractSaltPonds
+from .building import AbstractBuilding
+from .building.farm import AbstractFarm, FarmEvaluator
+from .building.field import AbstractField
+from .building.weaver import AbstractWeaver
+from .building.distillery import AbstractDistillery
+from .building.villagebuilding import AbstractVillageBuilding
+from .building.claydeposit import AbstractClayDeposit
+from .building.claypit import AbstractClayPit
+from .building.doctor import AbstractDoctor
+from .building.brickyard import AbstractBrickyard
+from .building.firestation import AbstractFireStation
+from .building.fishdeposit import AbstractFishDeposit
+from .building.fisher import AbstractFisher
+from .building.tree import AbstractTree
+from .building.lumberjack import AbstractLumberjack
+from .building.irondeposit import AbstractIronDeposit
+from .building.ironmine import AbstractIronMine
+from .building.charcoalburner import AbstractCharcoalBurner
+from .building.smeltery import AbstractSmeltery
+from .building.toolmaker import AbstractToolmaker
+from .building.boatbuilder import AbstractBoatBuilder
+from .building.signalfire import AbstractSignalFire
+from .building.tobacconist import AbstractTobacconist
+from .building.saltponds import AbstractSaltPonds
+from .building.stonedeposit import AbstractStoneDeposit
+from .building.stonepit import AbstractStonePit
+from .building.stonemason import AbstractStonemason
 
-from goal.settlementgoal import SettlementGoal
-from goal.donothing import DoNothingGoal
+from .goal.settlementgoal import SettlementGoal
+from .goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
 from horizons.messaging import SettlementRangeChanged, NewDisaster, MineEmpty
@@ -199,12 +203,12 @@ class AIPlayer(GenericAI):
 
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback, calls)
 		remaining_ticks = max(calls.values()[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
+		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback_long, calls)
 		remaining_ticks_long = max(calls.values()[0], 1)
 
 		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
@@ -397,10 +401,14 @@ class AIPlayer(GenericAI):
 
 	def notify_mine_empty(self, message):
 		"""The Mine calls this function to let the player know that the mine is empty."""
-		self._settlement_manager_by_settlement_id[message.mine.settlement.worldid].production_builder.handle_mine_empty(message.mine)
+		settlement = message.mine.settlement
+		if settlement.owner is self:
+			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.handle_mine_empty(message.mine)
 
 	def notify_new_disaster(self, message):
-		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in=0)
+		settlement = message.building.settlement
+		if settlement.owner is self:
+			Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[settlement.worldid].handle_disaster, message), self, run_in=0)
 
 	def _on_settlement_range_changed(self, message):
 		"""Stores the ownership changes in a list for later processing."""
@@ -421,7 +429,7 @@ class AIPlayer(GenericAI):
 		if not self.settlement_expansions:
 			return  # no changes in land ownership
 
-		change_lists = defaultdict(lambda: [])
+		change_lists = defaultdict(list)
 		for coords, settlement in self.settlement_expansions:
 			if settlement.island.worldid not in self.islands:
 				continue  # we don't have a settlement there and have no current plans to create one
@@ -473,7 +481,8 @@ class AIPlayer(GenericAI):
 		AbstractFarm.clear_cache()
 
 	def __str__(self):
-		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
+		return 'AI({0!s}/{1!s})'.format(getattr(self, 'name', 'unknown'),
+			getattr(self, 'worldid', 'none'))
 
 	def early_end(self):
 		"""Called to speed up session destruction."""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -23,6 +23,8 @@ import logging
 
 from horizons.component import Component
 from horizons.util.shapes import Circle, Point
+from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class CommandableComponent(Component):
 	"""
@@ -37,7 +39,6 @@ class CommandableComponent(Component):
 		super(CommandableComponent, self).__init__()
 
 	def go(self, x, y):
-		from horizons.world.units.movingobject import MoveNotPossible
 		"""Moves the unit.
 		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
 		x = int(round(x))
@@ -63,9 +64,10 @@ class CommandableComponent(Component):
 		if self.instance.owner.is_local_player:
 			self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
 		if move_target is None: # can't move
-			if self.instance.owner.is_local_player:
-				if self.session.world.get_tile(Point(x, y)) is None: # not even in world
-					self.session.ingame_gui.message_widget.add(point=Point(x, y), string_id="MOVE_OUTSIDE_OF_WORLD")
-				else: # in world, but still unreachable
-					self.session.ingame_gui.message_widget.add(point=Point(x, y), string_id="MOVE_INVALID_LOCATION")
-			return None
+			if not self.instance.owner.is_local_player:
+				return
+			if self.session.world.get_tile(Point(x, y)) is None: # not even in world
+				string_id = "MOVE_OUTSIDE_OF_WORLD"
+			else: # in world, but still unreachable
+				string_id = "MOVE_INVALID_LOCATION"
+			self.session.ingame_gui.message_widget.add(point=Point(x, y), string_id=string_id)

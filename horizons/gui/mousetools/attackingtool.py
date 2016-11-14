@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,11 @@
 from fife import fife
 
 import horizons.globals
-from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
+from horizons.command.unit import Act, Attack
 from horizons.component.healthcomponent import HealthComponent
 from horizons.gui.mousetools.selectiontool import SelectionTool
+
 
 class AttackingTool(SelectionTool):
 	"""
@@ -84,11 +85,10 @@ class AttackingTool(SelectionTool):
 			if instance.owner is local_player:
 				continue
 
-			#check diplomacy state between local player and instance owner
+			# Check diplomacy state between local player and instance owner.
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
 				and not evt.isShiftPressed():
 				continue
 			if instance.has_component(HealthComponent):
 				target = instance
 		return target
-

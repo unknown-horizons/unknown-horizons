@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,15 +21,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import re
-is_function = re.compile('^(\\s*)def\\s+([^\\s(]+)\\s*[(](.*)[)]\\s*:\\s*$')
-is_decorator = re.compile('^(\\s*)@\\s*(.+)\\s*$')
-func_param = re.compile('\\s*(?:,\\s*)?([^,=\\s]+)(?:\\s*=\\s*([^\\s,]+))?')
-is_empty = re.compile('^(\\s*)(?:#.*)?$')
 import sys
+
+is_function = re.compile(r'^(\s*)def ([^(]+)[(](.*)[)]:\s*$')
+is_decorator = re.compile(r'^(\s*)@\s*(.+)\s*$')
+func_param = re.compile(r'\s*(?:,\s*)?([^,=\s]+)(?:\s*=\s*([^\s,]+))?')
+is_empty = re.compile(r'^(\s*)(?:#.*)?$')
+
 files = sys.argv[1:]
 for filename in files:
-	print 'Adding documentation stubs to:', filename
+	print('Adding documentation stubs to:', filename)
 	file = open(filename, 'r+')
 	funk_reg = None
 	newfile = []
@@ -42,7 +45,7 @@ for filename in files:
 			funk_reg = None
 		elif funk_reg is not None:
 			params = func_param.findall(funk_reg.group(3))
-			indent = funk_reg.group(1)*2 if funk_reg.group(2) != '__init__' else funk_reg.group(1)
+			indent = funk_reg.group(1) + '\t' * (funk_reg.group(2) != '__init__')
 			docstub = [(indent + '"""\n')]
 			for i in params:
 				if i[0] != 'self' and i[0] != 'cls':
@@ -61,4 +64,4 @@ for filename in files:
 	file.seek(0)
 	file.writelines(newfile)
 	file.close()
-	print 'Done'
+	print('Done')

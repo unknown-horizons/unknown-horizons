@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import ctypes
 import multiprocessing
 import os
@@ -86,14 +87,14 @@ def run_game_timer(game, queue, counter):
 	counter.value -= 1
 
 def show_data(games):
-	print
+	print()
 	for game in sorted(games):
 		s = game.time
 		h = s // 3600
 		s %= 3600
 		m = s // 60
 		s %= 60
-		print game.name, '%d:%02d:%06.3fs' % (h, m, s), game.returncode
+		print(game.name, '%d:%02d:%06.3fs' % (h, m, s), game.returncode)
 
 if __name__ == '__main__':
 	parser = PassThroughOptionParser()

@@ -1,27 +1,20 @@
 <?xml version="1.0"?>
 <Container name="production_overview" size="800,580" position_technique="center:center"
 	background_image="content/gui/images/background/book.png">
+	<Label name="headline" min_size="300,20" position="70,33" />
+	<hr position="70,53" />
 
-	<VBox max_size="695,508" min_size="695,508" position="72,40" padding="5">
-		<HBox>
-			<Label name="headline" min_size="300,20" />
+	<VBox max_size="300,400" min_size="300,400" padding="12" name="page_left" position="100,100" />
+	<VBox max_size="300,400" min_size="300,400" padding="12" name="page_right" position="450,100" />
+
+	<HBox max_size="660,40" min_size="660,40" position="70,510">
+		<HBox max_size="80,36">
+			<ImageButton name="backwardButton" helptext="Go to previous page"
+				path="images/buttons/parrow_left" />
+			<ImageButton name="forwardButton" helptext="Go to next page"
+				path="images/buttons/parrow_right" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" />
-
-		<VBox name="content_vbox" />
-<!--
-In this VBox a line is added per sensible resource in the following format:
-		<HBox>
-			<Icon image="content/gui/icons/resources/32/4.png" max_size="16,16" min_size="16,16" size="16,16" />
-			<Label max_size="70, 20" min_size="70,20" name="resource_4"  text="Boards" />
-			<Label name="produced_sum_4"  text="17314" />
-		</HBox>
--->
-
 		<Spacer />
-		<HBox>
-			<Spacer min_size="627" />
-			<OkButton helptext="Close" />
-		</HBox>
-	</VBox>
+		<OkButton helptext="Close" />
+	</HBox>
 </Container>

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,21 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import operator
+from __future__ import print_function
+
 import logging
+import operator
 from collections import namedtuple
 
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.restrictedpickup import RestrictedPickup
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import COLLECTORS
+from horizons.ext.enum import Enum
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
-from horizons.constants import COLLECTORS
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.restrictedpickup import RestrictedPickup
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 class Collector(Unit):
 	"""Base class for every collector. Does not depend on any home building.
@@ -99,13 +102,21 @@ class Collector(Unit):
 		self.log.debug("%s: remove called", self)
 		self.cancel(continue_action=lambda : 42)
 		# remove from target collector list
-		if self.job is not None and self.state != self.states.moving_home:
-			# in the move_home state, there still is a job, but the collector is already deregistered
-			self.job.object.remove_incoming_collector(self)
+		self._abort_collector_job()
 		self.hide()
 		self.job = None
 		super(Collector, self).remove()
 
+	def _abort_collector_job(self):
+		if self.job is None or self.state == self.states.moving_home:
+			# in the move_home state, there still is a job, but the collector is
+			# already deregistered
+			return
+		if not hasattr(self.job.object, 'remove_incoming_collector'):
+			# when loading a game fails and the world is destructed again, the
+			# worldid may not yet have been resolved to an actual in-game object
+			return
+		self.job.object.remove_incoming_collector(self)
 
 	# SAVE/LOAD
 
@@ -133,7 +144,7 @@ class Collector(Unit):
 		if self.job is not None:
 			obj_id = -1 if self.job.object is None else self.job.object.worldid
 			# this is not in 3rd normal form since the object is saved multiple times but
-			# it preserves compatiblity with old savegames this way.
+			# it preserves compatibility with old savegames this way.
 			for entry in self.job.reslist:
 				db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)",
 				   self.worldid, obj_id, entry.res, entry.amount)
@@ -277,8 +288,8 @@ class Collector(Unit):
 		inventory = self.get_home_inventory()
 
 		# check if there are resources left to pickup
-		home_inventory_free_space = inventory.get_limit(res) - \
-		                        (total_registered_amount_consumer + inventory[res])
+		home_inventory_free_space = inventory.get_free_space_for(res) \
+		                            - total_registered_amount_consumer
 		if home_inventory_free_space <= 0:
 			#self.log.debug("nojob: no home inventory space")
 			return None
@@ -414,18 +425,15 @@ class Collector(Unit):
 	def cancel(self, continue_action):
 		"""Aborts the current job.
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
-			                      is supposed to now.
+		                        is supposed to do now.
 		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
 		      If the collector is supposed to be remove, use a noop.
 		"""
 		self.stop()
-		self.log.debug("%s was canceled, continue action is %s", self, continue_action)
+		self.log.debug("%s was cancelled, continue action is %s", self, continue_action)
+		# remove us as incoming collector at target
+		self._abort_collector_job()
 		if self.job is not None:
-			# remove us as incoming collector at target
-			if self.state != self.states.moving_home:
-				# in the moving_home state, the job object still exists,
-				# but the collector is already deregistered
-				self.job.object.remove_incoming_collector(self)
 			# clean up depending on state
 			if self.state == self.states.working:
 				removed_calls = Scheduler().rem_call(self, self.finish_working)
@@ -433,10 +441,11 @@ class Collector(Unit):
 			self.job = None
 			self.state = self.states.idle
 		# NOTE:
-		# Some blocked movement callbacks use this callback. All blocked movement callbacks have to
-		# be canceled here, else the unit will try to continue the movement later when its state has already changed.
-		# This line should fix it sufficiently for now and the problem could be deprecated when the
-		# switch to a component-based system is accomplished.
+		# Some blocked movement callbacks use this callback. All blocked
+		# movement callbacks have to be cancelled here, else the unit will try
+		# to continue the movement later when its state has already changed.
+		# This line should fix it sufficiently for now and the problem could be
+		# deprecated when the switch to a component-based system is accomplished.
 		Scheduler().rem_call(self, self.resume_movement)
 		continue_action()
 
@@ -501,18 +510,20 @@ class JobList(list):
 		"""
 		super(JobList, self).__init__()
 		self.collector = collector
-		# choose acctual function by name of enum value
+		# choose actual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
-			self.sort_jobs = self._sort_jobs_amount
-			print 'WARNING: invalid job order: ', job_order
+			self._selected_sort_jobs = self._sort_jobs_amount
+			print('WARNING: invalid job order: ', job_order)
 		else:
-			self.sort_jobs = getattr(self, sort_fun_name)
+			self._selected_sort_jobs = getattr(self, sort_fun_name)
 
-	def sort_jobs(self, obj):
-		"""Call this to sort jobs"""
-		# (this is overwritten in __init__)
-		raise NotImplementedError
+	def sort_jobs(self):
+		"""Call this to sort jobs.
+
+		The function to call is decided in `__init__`.
+		"""
+		self._selected_sort_jobs()
 
 	def _sort_jobs_random(self):
 		"""Sorts jobs randomly"""

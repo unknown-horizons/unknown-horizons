@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,13 @@
 # ###################################################
 
 import horizons.main
-
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
+
 
 class EditorStartMenu(Window):
 	def __init__(self, windows):
@@ -66,6 +67,9 @@ class EditorStartMenu(Window):
 		self._right_side.show()
 		self._gui.show()
 
+	def on_return(self):
+		self.act()
+
 	def hide(self):
 		self._gui.hide()
 
@@ -84,7 +88,8 @@ class EditorCreateMapWidget(object):
 
 		for size in self.sizes:
 			option_name = 'size_%d' % size
-			self._gui.findChild(name=option_name).text = _(u'{size}x{size} tiles').format(size=size)
+			# size of empty map in map editor
+			self._gui.findChild(name=option_name).text = T('{size}x{size} tiles').format(size=size)
 
 	def show(self):
 		self._parent_widget.removeAllChildren()

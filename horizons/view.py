@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,13 +21,15 @@
 
 import math
 import time
+
 from fife import fife
 
 import horizons.globals
-
+from horizons.constants import GAME_SPEED, LAYERS, VIEW
+from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-from horizons.constants import LAYERS, VIEW, GAME_SPEED
+
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -46,12 +48,16 @@ class View(ChangeListener):
 		cellgrid.setXShift(0)
 		cellgrid.setYShift(0)
 
+		using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
+
 		self.layers = []
 		for layer_id in xrange(LAYERS.NUM):
 			layer = self.map.createLayer(str(layer_id), cellgrid)
 			if layer_id == LAYERS.OBJECTS:
 				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
 				layer.setWalkable(True)
+			elif using_opengl and layer_id == LAYERS.WATER:
+				layer.setStatic(True)
 			self.layers.append(layer)
 
 		self.map.initializeCellCaches()
@@ -185,7 +191,7 @@ class View(ChangeListener):
 			zoom = VIEW.ZOOM_MIN
 		if track_cursor:
 			self._prepare_zoom_to_cursor(zoom)
-		self.set_zoom(zoom)
+		self.zoom = zoom
 
 	def zoom_in(self, track_cursor=False):
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
@@ -193,14 +199,16 @@ class View(ChangeListener):
 			zoom = VIEW.ZOOM_MAX
 		if track_cursor:
 			self._prepare_zoom_to_cursor(zoom)
-		self.set_zoom(zoom)
+		self.zoom = zoom
 
-	def get_zoom(self):
+	@property
+	def zoom(self):
 		return self.cam.getZoom()
 
-	def set_zoom(self, zoom):
-		self.cam.setZoom(zoom)
-		self._changed()
+	@zoom.setter
+	def zoom(self, value):
+		self.cam.setZoom(value)
+		ZoomChanged.broadcast(self, value)
 
 	def rotate_right(self):
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
@@ -218,8 +226,7 @@ class View(ChangeListener):
 		cell_dim = self.cam.getCellImageDimensions()
 		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
 		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
-		zoom = self.get_zoom()
-		screen_width_as_coords = (width_x // zoom, width_y // zoom)
+		screen_width_as_coords = (width_x // self.zoom, width_y // self.zoom)
 		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0] // 2),
 		                                       coords.y - (screen_width_as_coords[1] // 2),
 		                                       *screen_width_as_coords)
@@ -237,7 +244,7 @@ class View(ChangeListener):
 			# no view info
 			return
 		zoom, rotation, loc_x, loc_y = res[0]
-		self.set_zoom(zoom)
+		self.zoom = zoom
 		self.set_rotation(rotation)
 		self.center(loc_x, loc_y)
 

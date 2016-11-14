@@ -14,7 +14,7 @@ resources.
 			<Label name="headline" text="Settler overview" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<Container size="260,50" position="25,43">
 			<!-- Taxes -->
@@ -36,14 +36,14 @@ resources.
 
 		<Container size="260,60" position="25,95">
 			<Label name="upgrades_lbl" text="Upgrade permissions:" />
-			<ToggleImageButton name="allow_upgrades" position="0,20"
+			<ImageButton name="allow_upgrades" position="0,20"
 				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
 				up_image="content/gui/images/buttons/upgrade/allow.png"
 				down_image="content/gui/images/buttons/upgrade/allow.png"
 				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />
 		</Container>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,160" />
+		<hr position="20,160" />
 
 		<Container size="260,72" position="25,165">
 			<Label name="headline_happiness_per_house" text="Happiness per house" />

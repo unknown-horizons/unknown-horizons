@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,22 +20,23 @@
 # ###################################################
 
 import logging
+
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
 from horizons.ai.aiplayer.combat.combatmanager import PirateCombatManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.strategymanager import PirateStrategyManager
+from horizons.ai.generic import GenericAI
+from horizons.command.unit import CreateUnit
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import UNITS
+from horizons.ext.enum import Enum
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS
-from horizons.ext.enum import Enum
-from horizons.ai.generic import GenericAI
-from horizons.command.unit import CreateUnit
-from horizons.world.units.ship import TradeShip
 from horizons.world.units.pirateship import PirateShip
-from horizons.component.selectablecomponent import SelectableComponent
+from horizons.world.units.ship import TradeShip
 
 
 class Pirate(GenericAI):

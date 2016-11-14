@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,17 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import copy
 import itertools
 import operator
 
-import horizons.globals
+from fife import fife
 
+import horizons.globals
 from horizons.component import Component
+from horizons.constants import GFX, LAYERS, RES
 from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
-from horizons.constants import GFX, LAYERS, RES
+
 
 class SelectableComponent(Component):
 	"""Stuff you can select.
@@ -54,22 +55,24 @@ class SelectableComponent(Component):
 		TYPES = { 'building' : SelectableBuildingComponent,
 		          'unit'     : SelectableUnitComponent,
 		          'ship'     : SelectableShipComponent,
-		          'fisher' 	 : SelectableFisherComponent, }
+		          'fisher'   : SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
-		return TYPES[ t ]( **arguments )
+		return TYPES[t](**arguments)
 
-	def __init__(self, tabs, enemy_tabs):
+	def __init__(self, tabs, enemy_tabs, active_tab=None):
 		super(SelectableComponent, self).__init__()
 		# resolve tab
-		from horizons.gui import tabs as tab_classes
-		resolve_tab = lambda tab_class_name : getattr(tab_classes, tab_class_name)
+		from horizons.gui.tabs import resolve_tab
 		self.tabs = map(resolve_tab, tabs)
 		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+		self.active_tab = resolve_tab(active_tab) if active_tab is not None else None
 		self._selected = False
 
 	def show_menu(self, jump_to_tabclass=None):
-		"""Shows tabs from self.__class__.tabs, if there are any.
+		"""Shows tabwidget tabs of this instance.
+
+		Opens the first such tab unless jump_to_tabclass specifies otherwise.
 		@param jump_to_tabclass: open the first tab that is a subclass to this parameter
 		"""
 		from horizons.gui.tabs import TabWidget
@@ -79,18 +82,23 @@ class SelectableComponent(Component):
 		else: # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
 
-		if tablist:
-			tabs = [ tabclass(self.instance) for tabclass in tablist if
-			         tabclass.shown_for(self.instance) ]
-			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
+		if not tablist:
+			return
 
-			if jump_to_tabclass:
-				for i, tab in enumerate(tabs):
-					if isinstance(tab, jump_to_tabclass):
-						tabwidget._show_tab(i)
-						break
+		tabclasses = [tabclass for tabclass in tablist if tabclass.shown_for(self.instance)]
+		try:
+			active_tab_index = tabclasses.index(self.active_tab)
+		except ValueError:
+			active_tab_index = None
+		tabs = [tabclass(self.instance) for tabclass in tabclasses]
+		tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs, active_tab=active_tab_index)
 
-			self.session.ingame_gui.show_menu( tabwidget )
+		if jump_to_tabclass:
+			for i, tab in enumerate(tabs):
+				if isinstance(tab, jump_to_tabclass):
+					tabwidget.show_tab(i)
+					break
+		self.session.ingame_gui.show_menu(tabwidget)
 
 	def select(self, reset_cam=False):
 		self._selected = True
@@ -134,10 +142,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_tiles.l = []
 		cls._selected_fake_tiles.l = []
 
-
-	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
-		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
-
+	def __init__(self, tabs, enemy_tabs, active_tab=None, range_applies_only_on_island=True):
+		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs, active_tab=active_tab)
 		self.range_applies_only_on_island = range_applies_only_on_island
 
 	def initialize(self):
@@ -277,11 +283,14 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	@classmethod
 	def _init_fake_tile(cls):
-		"""Sets the _fake_tile_obj class variable with a ready to use fife object. To create a new fake tile, use _add_fake_tile()"""
+		"""Sets the _fake_tile_obj class variable with a ready to use fife object.
+
+		To create a new fake tile, use _add_fake_tile()."""
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
 		if not hasattr(SelectableBuildingComponent, "_fake_tile_obj"):
 			# create object to create instances from
-			SelectableBuildingComponent._fake_tile_obj = horizons.globals.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			fake_tile_obj = horizons.globals.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			SelectableBuildingComponent._fake_tile_obj = fake_tile_obj
 			fife.ObjectVisual.create(SelectableBuildingComponent._fake_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
@@ -324,13 +333,13 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
-		if self._selected:
-			super(SelectableUnitComponent, self).deselect()
-			self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
-			self.instance.draw_health(remove_only=True)
-			# this is necessary to make deselect idempotent
-			if self.session.view.has_change_listener(self.instance.draw_health):
-				self.session.view.remove_change_listener(self.instance.draw_health)
+		if not self._selected:
+			return
+		super(SelectableUnitComponent, self).deselect()
+		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
+		self.instance.draw_health(remove_only=True)
+		# this is necessary to make deselect idempotent
+		self.session.view.discard_change_listener(self.instance.draw_health)
 
 
 class SelectableShipComponent(SelectableUnitComponent):

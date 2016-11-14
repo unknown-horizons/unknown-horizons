@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,21 +20,23 @@
 # ###################################################
 
 import weakref
+
 from fife import fife
 
 import horizons.globals
-
-from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.namedcomponent import NamedComponent, ShipNameComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import LAYERS
+from horizons.i18n import gettext as T
+from horizons.messaging import ShipDestroyed
+from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pather import FisherShipPather, ShipPather
+from horizons.world.traderoute import TradeRoute
 from horizons.world.units.collectors import FisherShipCollector
 from horizons.world.units.unit import Unit
-from horizons.constants import LAYERS
-from horizons.scheduler import Scheduler
-from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.component.commandablecomponent import CommandableComponent
-from horizons.messaging import ShipDestroyed
-from horizons.world.traderoute import TradeRoute
+
 
 class Ship(Unit):
 	"""Class representing a ship
@@ -76,8 +78,7 @@ class Ship(Unit):
 
 	def remove(self):
 		self.session.world.ships.remove(self)
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
+		self.session.view.discard_change_listener(self.draw_health)
 		if self.in_ship_map:
 			if self.position.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self.position.to_tuple()]
@@ -130,7 +131,7 @@ class Ship(Unit):
 		super(Ship, self)._movement_finished()
 
 	def go(self, x, y):
-		#disable the trading route
+		# Disable trade route, direct commands overwrite automated ones.
 		if hasattr(self, 'route'):
 			self.route.disable()
 		if self.get_component(CommandableComponent).go(x, y) is None:
@@ -177,7 +178,7 @@ class Ship(Unit):
 			)
 
 	def find_nearby_ships(self, radius=15):
-		# TODO: Replace 15 with a distance dependant on the ship type and any
+		# TODO: Replace 15 with a distance dependent on the ship type and any
 		# other conditions.
 		ships = self.session.world.get_ships(self.position, radius)
 		if self in ships:
@@ -210,17 +211,14 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				#xgettext:python-format
-				return (_('Going to {location}').format(location=location_based_status), target)
-			#xgettext:python-format
-			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
+				return (T('Going to {location}').format(location=location_based_status), target)
+			return (T('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				#xgettext:python-format
-				return (_('Idle at {location}').format(location=location_based_status), self.position)
-			#xgettext:python-format
-			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
+				return (T('Idle at {location}').format(location=location_based_status), self.position)
+			return (T('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
+
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
@@ -230,7 +228,8 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [_(u'Trader')]
+		return [T('Trader')]
+
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""

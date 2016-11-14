@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,10 +20,13 @@
 # ###################################################
 
 """Save general python function decorators here"""
+from __future__ import print_function
 
-from types import FunctionType, ClassType
-import time
 import functools
+import time
+from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
+from types import ClassType, FunctionType
+
 
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
@@ -98,16 +101,15 @@ def temporary_cachedmethod(timeout):
 
 			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
 
-	return functools.partial( _temporary_cachedmethod, timeout=timeout )
-
+	return functools.partial(_temporary_cachedmethod, timeout=timeout)
 
 
 # adapted from http://code.activestate.com/recipes/277940/
 
-from opcode import opmap, HAVE_ARGUMENT, EXTENDED_ARG
 globals().update(opmap)
 
-def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
+def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
+	stoplist = stoplist or []
 	try:
 		co = f.func_code
 	except AttributeError:
@@ -132,7 +134,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 		if opcode in (EXTENDED_ARG, STORE_GLOBAL):
 			return f    # for simplicity, only optimize common cases
 		if opcode == LOAD_GLOBAL:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = co.co_names[oparg]
 			if name in env and name not in stoplist:
 				value = env[name]
@@ -143,10 +145,10 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 					pos = len(newconsts)
 					newconsts.append(value)
 				newcode[i] = LOAD_CONST
-				newcode[i+1] = pos & 0xFF
-				newcode[i+2] = pos >> 8
+				newcode[i + 1] = pos & 0xFF
+				newcode[i + 2] = pos >> 8
 				if verbose:
-					print name, '-->', value
+					print(name, '-->', value)
 		i += 1
 		if opcode >= HAVE_ARGUMENT:
 			i += 2
@@ -157,7 +159,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 
 		newtuple = []
 		while newcode[i] == LOAD_CONST:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			newtuple.append(newconsts[oparg])
 			i += 3
 
@@ -170,7 +172,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 
 		if opcode == LOAD_ATTR:
 			obj = newtuple[-1]
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = names[oparg]
 			try:
 				value = getattr(obj, name)
@@ -179,7 +181,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 			deletions = 1
 
 		elif opcode == BUILD_TUPLE:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			if oparg != len(newtuple):
 				continue
 			deletions = len(newtuple)
@@ -189,18 +191,18 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 			continue
 
 		reljump = deletions * 3
-		newcode[i-reljump] = JUMP_FORWARD
-		newcode[i-reljump+1] = (reljump-3) & 0xFF
-		newcode[i-reljump+2] = (reljump-3) >> 8
+		newcode[i - reljump] = JUMP_FORWARD
+		newcode[i - reljump + 1] = (reljump - 3) & 0xFF
+		newcode[i - reljump + 2] = (reljump - 3) >> 8
 
 		n = len(newconsts)
 		newconsts.append(value)
 		newcode[i] = LOAD_CONST
-		newcode[i+1] = n & 0xFF
-		newcode[i+2] = n >> 8
+		newcode[i + 1] = n & 0xFF
+		newcode[i + 2] = n >> 8
 		i += 3
 		if verbose:
-			print "new folded constant:", value
+			print("new folded constant:", value)
 
 	codestr = ''.join(map(chr, newcode))
 	codeobj = type(co)(co.co_argcount, co.co_nlocals, co.co_stacksize,
@@ -239,7 +241,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 			bind_all(v, builtin_only, stoplist, verbose)
 
 @_make_constants
-def make_constants(builtin_only=False, stoplist=[], verbose=False):
+def make_constants(builtin_only=False, stoplist=None, verbose=False):
 	""" Return a decorator for optimizing global references.
 
 	Replaces global references with their currently defined values.
@@ -250,14 +252,16 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 	If verbose is True, prints each substitution as is occurs
 
 	"""
+	stoplist = stoplist or []
 	if type(builtin_only) == type(make_constants):
 		raise ValueError("The bind_constants decorator must have arguments.")
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
 
 
 # cachedproperty taken from http://code.activestate.com/recipes/576563-cached-property/
-# Licenced under MIT
-# A cached property is a read-only property that is calculated on demand and automatically cached. If the value has already been calculated, the cached value is returned.
+# Licensed under MIT
+# A cached property is a read-only property that is calculated on demand and automatically cached.
+# If the value has already been calculated, the cached value is returned.
 
 def cachedproperty(f):
 	"""returns a cached property that is calculated by function f"""

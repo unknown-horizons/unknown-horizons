@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,12 +22,15 @@
 
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.gui.tabs import OverviewTab
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.entities import Entities
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.python.callback import Callback
-from horizons.entities import Entities
-from horizons.component.selectablecomponent import SelectableComponent
+
+from .overviewtab import OverviewTab
+
 
 class BuildRelatedTab(OverviewTab):
 	"""
@@ -36,12 +39,10 @@ class BuildRelatedTab(OverviewTab):
 	only displays those buildings actually related to the selected building.
 	Examples: tree for lumberjack; pavilion, school, etc. for inhabitants.
 	"""
+	widget = 'related_buildings.xml'
+	icon_path = 'icons/tabwidget/production/related'
+	helptext = LazyT("Build related buildings")
 	template_gui_xml = 'related_buildings_container.xml'
-
-	def  __init__(self, instance, widget='related_buildings.xml',
-	              icon_path='icons/tabwidget/production/related'):
-		super(BuildRelatedTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
-		self.helptext = _("Build related buildings")
 
 	def refresh(self):
 		"""
@@ -56,18 +57,18 @@ class BuildRelatedTab(OverviewTab):
 		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
 		sorted_ids = sorted([(b, Entities.buildings[b].settler_level) for b in building_ids], key=lambda x : x[1])
 		container = self.__get_new_container()
-		self.current_row = min(building[1] for building in sorted_ids)
-		for building_id, level in sorted_ids:
-			if level <= self.instance.owner.settler_level: # available in build menu?
-				button = self._create_build_buttons(building_id, container)
-				# check whether to start new line (for new tier row)
-				if level > self.current_row:
-					self.current_row = level
-					parent_container.addChild(container)
-					container = self.__get_new_container()
-				container.findChild(name="build_button_container").addChild(button)
-				button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
-				container.findChild(name="build_button_bg_container").addChild(button_bg)
+		for i, (building_id, level) in enumerate(sorted_ids):
+			if level > self.instance.owner.settler_level:
+				break
+
+			button = self._create_build_buttons(building_id, container)
+			# check whether to start new line (currently only 4 fit per line)
+			if i and i % 4 == 0:
+				parent_container.addChild(container)
+				container = self.__get_new_container()
+			container.findChild(name="build_button_container").addChild(button)
+			button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
+			container.findChild(name="build_button_bg_container").addChild(button_bg)
 		# Still need to add last container
 		parent_container.addChild(container)
 		super(BuildRelatedTab, self).refresh()
@@ -81,8 +82,8 @@ class BuildRelatedTab(OverviewTab):
 
 	def _create_build_buttons(self, building_id, container):
 		# {{mode}} in double braces because it is replaced as a second step
-		helptext = self.instance.session.db.get_building_tooltip(building_id)
-		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=helptext)
+		building_type = Entities.buildings[building_id]
+		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=building_type.get_tooltip())
 		build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
 		build_button.capture(Callback(self.build_related, building_id))
 		return build_button

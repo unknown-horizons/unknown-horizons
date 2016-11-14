@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -21,8 +21,9 @@
 
 import logging
 
-from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.component import Component
+from horizons.util.changelistener import metaChangeListenerDecorator
+
 
 @metaChangeListenerDecorator("damage_dealt")
 class HealthComponent(Component):
@@ -74,4 +75,3 @@ class HealthComponent(Component):
 		if self.instance in self.session.selected_instances:
 			if hasattr(self.instance, 'draw_health'):
 				self.instance.draw_health()
-

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,12 @@
 # ###################################################
 
 import time
-import horizons.globals
 
-from horizons.util.living import LivingObject
+import horizons.globals
 from horizons.constants import GAME, GAME_SPEED
 from horizons.scheduler import Scheduler
+from horizons.util.living import LivingObject
+
 
 class Timer(LivingObject):
 	"""
@@ -89,7 +90,7 @@ class Timer(LivingObject):
 		@param seconds: number of seconds that are to be converted into ticks
 		@return: int
 		"""
-		return int(round( seconds*GAME_SPEED.TICKS_PER_SECOND))
+		return int(round(seconds*GAME_SPEED.TICKS_PER_SECOND))
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

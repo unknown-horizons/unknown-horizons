@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,22 +20,25 @@
 # ###################################################
 
 import logging
+
 from fife import fife
 
+from horizons.component.componentholder import ComponentHolder
+from horizons.constants import GAME_SPEED
+from horizons.engine import Fife
+from horizons.ext.typing import TYPE_CHECKING, Type
 from horizons.scheduler import Scheduler
-
-from horizons.util.shapes import Point
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.weakmethodlist import WeakMethodList
+from horizons.util.shapes import Point
 from horizons.world.concreteobject import ConcreteObject
-from horizons.constants import GAME_SPEED
-from horizons.component.componentholder import ComponentHolder
 from horizons.world.units import UnitClass
+from horizons.world.units.unitexeptions import MoveNotPossible
 
-class MoveNotPossible(Exception):
-	"""Gets thrown when the unit should move some where, but there is no possible path"""
-	pass
+if TYPE_CHECKING:
+	from horizons.util.pathfinding.pather import AbstractPather
+
 
 class MovingObject(ComponentHolder, ConcreteObject):
 	"""This class provides moving functionality and is to be inherited by Unit.
@@ -60,7 +63,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 	log = logging.getLogger("world.units")
 
-	pather_class = None # overwrite this with a descendant of AbstractPather
+	# overwrite this with a descendant of AbstractPather
+	pather_class = None # type: Type[AbstractPather]
 
 	def __init__(self, x, y, **kwargs):
 		super(MovingObject, self).__init__(x=x, y=y, **kwargs)
@@ -89,7 +93,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		@param destination: destination supported by pathfinding
 		@return: object that can be used in boolean expressions (the path in case there is one)
 		"""
-		return self.path.calc_path(destination, check_only = True)
+		return self.path.calc_path(destination, check_only=True)
 
 	def is_moving(self):
 		"""Returns whether unit is currently moving"""
@@ -220,12 +224,17 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# TODO/HACK the *5 provides slightly less flickery behavior of the moving
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
-		self._route.setPath(fife.LocationList([self._fife_location2]*5))
-		self._route.setRouteStatus(3)  #fife.RouteStatus.ROUTE_SOLVED)
+		location_list = fife.LocationList([self._fife_location2]*5)
+		# It exists for FIFE 0.3.4 compat. See #1993.
+		if Fife.getVersion() == (0,3,4):
+			location_list.thisown = 0
+			self._route.thisown = 0
+		self._route.setPath(location_list)
 
+		self.act(self._move_action)
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
-		action = self._move_action+"_"+str(self._action_set_id)
 		speed = float(self.session.timer.get_ticks(1)) / move_time[0]
+		action = self._instance.getCurrentAction().getId()
 		self._instance.follow(action, self._route, speed)
 
 		#self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])

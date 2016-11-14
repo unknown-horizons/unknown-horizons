@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,21 +21,20 @@
 
 import weakref
 
-
-from horizons.util.pathfinding.pather import SoldierPather
-from horizons.util.pathfinding import PathBlockedError
-from unit import Unit
-from horizons.constants import GAME_SPEED, WEAPONS
-from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import GAME_SPEED, WEAPONS
+from horizons.util.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pather import SoldierPather
+from horizons.world.units.weaponholder import MovingWeaponHolder
+
+from .unit import Unit
+
 
 class GroundUnit(Unit):
 	"""Class representing ground unit
 	@param x: int x position
 	@param y: int y position
 	"""
-
-
 	# TODO:
 	# set these tabs in yaml as soon as there are ground units
 	# tabs = (GroundUnitOverviewTab,)
@@ -52,10 +51,8 @@ class GroundUnit(Unit):
 	def remove(self):
 		super(GroundUnit, self).remove()
 		self.session.world.ground_units.remove(self)
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
+		self.session.view.discard_change_listener(self.draw_health)
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
-
 
 	def _move_tick(self, resume=False):
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
@@ -77,12 +74,13 @@ class GroundUnit(Unit):
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 
+
 class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 	"""Weapon Holder Ground Unit"""
 	def __init__(self, x, y, **kwargs):
 		super(FightingGroundUnit, self).__init__(x=x, y=y, **kwargs)
 		#NOTE weapons
-		self.add_weapon_to_storage(WEAPONS.DAGGER)
+		self.add_weapon_to_storage(WEAPONS.SWORD)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		names = self.session.db("SELECT name FROM groundunitnames")
 		# We need unicode strings as the name is displayed on screen.
@@ -111,4 +109,3 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 
 		self.act('attack_%s' % action, facing_location, repeating = False)
 		self._action = 'idle'
-

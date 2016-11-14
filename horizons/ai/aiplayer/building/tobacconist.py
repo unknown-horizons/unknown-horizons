@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,9 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class AbstractTobacconist(AbstractBuilding):
 	@property

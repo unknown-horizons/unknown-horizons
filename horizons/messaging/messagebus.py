@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -29,7 +29,7 @@ class MessageBus(object):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
 	__metaclass__ = Singleton
-	
+
 	log = logging.getLogger("messaging.messagebus")
 
 	def __init__(self):
@@ -63,6 +63,11 @@ class MessageBus(object):
 		if callback in self.global_receivers[messagetype]:
 			self.unsubscribe_globally(messagetype, callback)
 
+	def discard_locally(self, messagetype, instance, callback):
+		pair = (messagetype, instance)
+		if pair in self.local_receivers and callback in self.local_receivers[pair]:
+			self.unsubscribe_locally(messagetype, instance, callback)
+
 	def broadcast(self, message):
 		"""Send a message to the bus and broadcast it to all recipients"""
 		messagetype = message.__class__
@@ -87,35 +92,3 @@ class MessageBus(object):
 
 		# suicide, next instance will be created on demand
 		self.__class__.destroy_instance()
-
-
-class SimpleMessageBus(object):
-	"""Manages registration and calling of callbacks when events (strings) occur.
-
-	Example:
-
-		bus = SimpleMessageBus(('foo', 'bar'))
-		bus.subscribe('foo', cb)
-
-		bus.broadcast('foo')  # cb will be called
-	"""
-
-	def __init__(self, message_types):
-		self._message_types = message_types
-		self._callbacks = defaultdict(list)
-
-	def subscribe(self, type, callback):
-		if type not in self._message_types:
-			raise TypeError("Unsupported type")
-
-		self._callbacks[type].append(callback)
-
-	def unsubscribe(self, type, callback):
-		self._callbacks[type].remove(callback)
-
-	def broadcast(self, type, *args, **kwargs):
-		if not type in self._message_types:
-			return
-
-		for cb in self._callbacks[type]:
-			cb(*args, **kwargs)

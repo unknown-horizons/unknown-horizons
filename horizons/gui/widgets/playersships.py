@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,13 +21,15 @@
 
 from fife.extensions.pychan.widgets import HBox, Label
 
-from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.util.python.callback import Callback
-from horizons.util.python import decorators
-from horizons.world.units.fightingship import FightingShip
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.i18n import gettext as T
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.world.units.fightingship import FightingShip
+
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -41,8 +43,7 @@ class PlayersShips(StatsWidget):
 		super(PlayersShips, self).refresh()
 		player = self.session.world.player
 		self._clear_entries()
-		#xgettext:python-format
-		self._gui.findChild(name='headline').text = _("Ships of {player}").format(player=self.session.world.player.name)
+		self._gui.findChild(name='headline').text = T("Ships of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
@@ -76,7 +77,7 @@ class PlayersShips(StatsWidget):
 		from horizons.engine.pychan_util import RenameImageButton
 		rename_icon = RenameImageButton(name='rename_%d' % ship.worldid)
 		rename_icon.path = "images/background/rename_feather_20"
-		rename_icon.helptext = _("Click to change the name of this ship")
+		rename_icon.helptext = T("Click to change the name of this ship")
 		rename_icon.max_size = (20, 20) # (width, height)
 
 		ship_type = Label(name='ship_type_%d' % ship.worldid)
@@ -92,9 +93,9 @@ class PlayersShips(StatsWidget):
 				weapons.text = u', '.join(weapon_list)
 			else:
 				#i18n There are no weapons equipped at the moment.
-				weapons.text = _('None')
+				weapons.text = T('None')
 		else:
-			weapons.text = _('N/A')
+			weapons.text = T('N/A')
 		weapons.min_size = weapons.max_size = (60, 20)
 
 		health = Label(name='health_%d' % ship.worldid)

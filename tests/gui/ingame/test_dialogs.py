@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.component.namedcomponent import NamedComponent
-
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
@@ -34,13 +33,16 @@ def test_change_name(gui):
 
 	assert not gui.find(name='change_name_dialog_window')
 	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'name')
-	assert gui.find(name='change_name_dialog_window')
 
-	gui.find('new_name').write('Dagobert')
-	gui.trigger('change_name_dialog_window', 'okButton')
+	def rename():
+		gui.find('new_name').write('Dagobert')
+		assert gui.find(name='change_name_dialog_window')
+		gui.trigger('change_name_dialog_window/okButton')
+
+	with gui.handler(rename):
+		gui.trigger('overview_trade_ship/name')
+
 	assert not gui.find(name='change_name_dialog_window')
-
 	new_name = ship.get_component(NamedComponent).name
 	assert old_name != new_name
 	assert new_name == 'Dagobert'
@@ -55,19 +57,26 @@ def test_change_name_empty_not_allowed(gui):
 	ship = get_player_ship(gui.session)
 	old_name = ship.get_component(NamedComponent).name
 
-	# try empty name
 	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'name')
-	gui.find('new_name').write('')
-	gui.trigger('change_name_dialog_window', 'okButton')
+
+	# try empty name
+	def rename_empty():
+		gui.find('new_name').write('')
+		gui.trigger('change_name_dialog_window/okButton')
+
+	with gui.handler(rename_empty):
+		gui.trigger('overview_trade_ship/name')
 
 	new_name = ship.get_component(NamedComponent).name
 	assert old_name == new_name
 
 	# try name with just spaces
-	gui.trigger('overview_trade_ship', 'name')
-	gui.find('new_name').write('   ')
-	gui.trigger('change_name_dialog_window', 'okButton')
+	def rename_spaces():
+		gui.find('new_name').write('   ')
+		gui.trigger('change_name_dialog_window/okButton')
+
+	with gui.handler(rename_spaces):
+		gui.trigger('overview_trade_ship/name')
 
 	new_name = ship.get_component(NamedComponent).name
 	assert old_name == new_name
@@ -82,13 +91,22 @@ def test_chat(gui):
 	"""
 
 	assert not gui.find(name='chat_dialog_window')
-	gui.press_key(gui.Key.C)
-	assert gui.find(name='chat_dialog_window')
-	gui.trigger('chat_dialog_window', 'cancelButton')
+
+	def func1():
+		assert gui.find(name='chat_dialog_window')
+		gui.trigger('chat_dialog_window/cancelButton')
+
+	with gui.handler(func1):
+		gui.press_key(gui.Key.C)
+
 	assert not gui.find(name='chat_dialog_window')
 
-	gui.press_key(gui.Key.C)
-	assert gui.find(name='chat_dialog_window')
-	gui.find('msg').write('Hello World')
-	gui.trigger('chat_dialog_window', 'okButton')
+	def func2():
+		assert gui.find(name='chat_dialog_window')
+		gui.find('msg').write('Hello World')
+		gui.trigger('chat_dialog_window/okButton')
+
+	with gui.handler(func2):
+		gui.press_key(gui.Key.C)
+
 	assert not gui.find(name='chat_dialog_window')

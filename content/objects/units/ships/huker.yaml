@@ -1,12 +1,12 @@
 baseclass: ship.Ship
-id: 1000001
+id: UNITS.HUKER_SHIP
 name: Huker
 radius: 5
 velocity: 12.0
 components:
 - SelectableComponent:
     type: ship
-    tabs: [ShipOverviewTab, TradeTab]
+    tabs: [TradeShipOverviewTab, TradeTab]
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
@@ -17,7 +17,13 @@ components:
 - HealthComponent:
    maxhealth: 150
 - CommandableComponent
-
+- ColorOverlayComponent:
+    overlays:
+      as_huker0:
+        idle:
+        - [0, color_idle, [255, 0, 255], [owner.color, 128]]
+        move:
+        - [0, color_move, [255, 0, 255], [owner.color, 128]]
 actionsets:
   TIER.SAILORS:
     as_huker0:

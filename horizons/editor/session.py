@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,9 @@ import random
 from horizons.constants import PATHS
 from horizons.editor.gui import IngameGui
 from horizons.editor.worldeditor import WorldEditor
-from horizons.session import Session
+from horizons.i18n import gettext as T
 from horizons.manager import SPManager
+from horizons.session import Session
 from horizons.timer import Timer
 
 
@@ -53,12 +54,25 @@ class EditorSession(Session):
 		self.start()
 
 	def autosave(self):
-		# TODO see issue 1935
-		pass
+		"""Called automatically in an interval"""
+		self.log.debug("Session: autosaving map")
+		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'autosave')
+		if success:
+			self.ingame_gui.message_widget.add('AUTOSAVE')
 
 	def quicksave(self):
-		# TODO see issue 1935
-		pass
+		"""Called when user presses the quicksave hotkey"""
+		self.log.debug("Session: quicksaving map")
+		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'quicksave')
+		if success:
+			self.ingame_gui.message_widget.add('QUICKSAVE')
+		else:
+			headline = T("Failed to quicksave.")
+			descr = T("An error happened during quicksave.") + u"\n" + T("Your map has not been saved.")
+			advice = T("If this error happens again, please contact the development team: "
+				   "{website}").format(website="http://unknown-horizons.org/support/")
+			self.ingame_gui.open_error_popup(headline, descr, advice)
 
-	def save(self, name):
-		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
+	def save(self, savegamename):
+		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
+		return success

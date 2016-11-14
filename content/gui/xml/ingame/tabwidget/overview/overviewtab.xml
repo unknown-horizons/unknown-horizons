@@ -10,6 +10,6 @@
 			<Label name="name" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 	</Container>
 </Container>

@@ -10,34 +10,34 @@
 			<RenameLabel name="headline" helptext="Click to change the name of your settlement" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Container size="260,550" position="22,20">
 
 			<!-- Building image -->
 			<Icon name="building_image" position="30,14" />
 
 			<!-- happiness and residents -->
-			<Label name='name' position="0,140" />
+			<Label name="name" position="0,140" />
 			<Icon name="happiness_label" position="0,167"
 				image="content/gui/icons/templates/happiness/average.png"
 				helptext="Happiness" />
-			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
-			<ProgressBar name='happiness' position="21,166" size="78,18" helptext="Happiness" />
+			<ProgressBar name="happiness" position="21,166" helptext="Happiness"
+				background="content/gui/images/background/bar_bg.png" />
 			<Icon name="residents_label" position="140,166"
 				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
 				helptext="Residents" />
-			<Label name='inhabitants' position="160,165"
+			<Label name="inhabitants" position="160,165"
 				helptext="Residents" />
 
 			<!-- Taxes -->
-			<Icon image="content/gui/images/background/hr.png" position="0,190" />
+			<hr position="0,190" />
 			<Label position="0,205" name="tax_label" text="Taxes:" />
-			<Label name='taxes' position="55,205"
+			<Label name="taxes" position="55,205"
 				helptext="Paid taxes" />
 			<Icon name="paid_taxes_label" position="72,205"
 				image="content/gui/icons/resources/running_costs.png"
 				helptext="Paid taxes" />
-			<Label name='tax_val_label' position="160,205"
+			<Label name="tax_val_label" position="160,205"
 				helptext="Tax rate" />
 			<Icon name="paid_taxes_label" position="185,205"
 				image="content/gui/icons/resources/running_costs.png"
@@ -45,9 +45,9 @@
 			<StepSlider position="2,230" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
 
 			<!-- Resources -->
-			<Icon image="content/gui/images/background/hr.png" position="0,255" />
+			<hr position="0,255" />
 			<Label position="0,265" name="needed_res_label" text="Needed resources:" />
-			<HBox name='needed_res' position="0,285" padding="8" />
+			<HBox name="needed_res" position="0,285" padding="8" />
 
 		</Container>
 	</Container>

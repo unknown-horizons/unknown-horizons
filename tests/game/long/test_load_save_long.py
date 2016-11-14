@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,18 +25,18 @@ from functools import partial
 
 from horizons.util.random_map import generate_map_from_seed
 from horizons.util.savegameaccessor import SavegameAccessor
-
 from tests.game import game_test
 
-@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=120)
+
+@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=2*60)
 def test_save_trivial(session, _):
 	"""
 	Let 2 AI players play for a while, then attempt to save the game.
 
 	Be aware, this is a pretty simple test and it doesn't actually check what is
-	beeing saved.
+	being saved.
 	"""
-	session.run(seconds=4 * 60)
+	session.run(seconds=4*60)
 
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,22 +22,24 @@
 import logging
 import math
 
-from horizons.scheduler import Scheduler
-
-from horizons.gui.tabs import SettlerOverviewTab
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingle
-from horizons.constants import RES, BUILDINGS, GAME, TIER
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.production.production import SettlerProduction
 from horizons.command.building import Build
-from horizons.util.python.callback import Callback
-from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.status import SettlerUnhappyStatus
+from horizons.constants import BUILDINGS, GAME, RES, TIER
+from horizons.gui.tabs import SettlerOverviewTab
+from horizons.messaging import (
+	AddStatusIcon, RemoveStatusIcon, SettlerInhabitantsChanged, SettlerUpdate,
+	UpgradePermissionsChanged)
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import StaticPather
+from horizons.util.python.callback import Callback
+from horizons.world.building.buildable import BuildableRect, BuildableSingle
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.producer import Producer
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
+from horizons.world.production.production import SettlerProduction
+from horizons.world.status import SettlerNotConnectedStatus, SettlerUnhappyStatus
 
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
@@ -81,7 +83,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner.is_local_player:
-			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
+			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month(), loops=-1)
 		self.__init()
 		self.run()
 
@@ -178,9 +180,10 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		"""
 		# taxes, inhabitants
 		self.tax_base = self.session.db.get_settler_tax_income(self.level)
-		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
-		self.inhabitants_min = self.session.db.get_settler_inhabitants_min(self.level)
-		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
+		self.inhabitants_max = self.session.db.get_tier_inhabitants_max(self.level)
+		self.inhabitants_min = self.session.db.get_tier_inhabitants_min(self.level)
+		#TODO This crops inhabitants at level down, but when can they exceed the limit?
+		if self.inhabitants > self.inhabitants_max:
 			self.inhabitants = self.inhabitants_max
 
 		# consumption:
@@ -199,6 +202,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				# all lines, that were added here but are not used due to the current level
 				# NOTE: this contains the upgrade material production line
 				prod_comp.remove_production_by_id(line)
+				# Make sure to set _upgrade_production to None in case we are removing it
+				if self._upgrade_production is not None and line == self._upgrade_production.get_production_line_id():
+					self._upgrade_production = None
 
 		if not initial:
 			# update instance graphics
@@ -223,7 +229,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
-		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
+		# see http://wiki.unknown-horizons.org/w/Settler_taxing
 
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		happiness_tax_modifier = 0.5 + (float(self.happiness)/70.0)
@@ -250,13 +256,13 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
+		sad = self.session.db.get_lower_happiness_limit()
+		happy = self.session.db.get_upper_happiness_limit()
 		change = 0
-		if self.happiness > self.session.db.get_settler_happiness_increase_requirement() and \
-			 self.inhabitants < self.inhabitants_max:
+		if self.happiness > happy and self.inhabitants < self.inhabitants_max:
 			change = 1
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
-		elif self.happiness < self.session.db.get_settler_happiness_decrease_limit() and \
-		     self.inhabitants > 1:
+		elif self.happiness < sad and self.inhabitants > 1:
 			change = -1
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
@@ -272,8 +278,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		   self.inhabitants >= self.inhabitants_min and not self._has_disaster()
 
 	def level_check(self):
-		"""Checks whether we should level up or down. 
-			Ignores buildings with a active disaster. """
+		"""Checks whether we should level up or down.
+
+		Ignores buildings with a active disaster. """
 		if self.can_level_up():
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
@@ -308,6 +315,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.log.debug("%s: Levelling up to %s", self, self.level)
 			self._update_level_data()
 
+			# update the level of our inhabitants so graphics can change
+			if self.has_component(CollectingComponent):
+				for collector in self.get_component(CollectingComponent).get_local_collectors():
+					collector.level_upgrade(self.level)
+
 			# Notify the world about the level up
 			SettlerUpdate.broadcast(self, self.level, 1)
 
@@ -319,7 +331,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		Scheduler().add_new_object(_do_level_up, self, run_in=0)
 
 	def level_down(self):
-		if self.level == 0: # can't level down any more
+		if self.level == TIER.LOWEST:
+			# Can't level down any more.
 			self.make_ruin()
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner.is_local_player:
@@ -334,6 +347,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, new_happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
+
+			# update the level of our inhabitants so graphics can change
+			if self.has_component(CollectingComponent):
+				for collector in self.get_component(CollectingComponent).get_local_collectors():
+					collector.level_upgrade(self.level)
 
 			# Notify the world about the level down
 			SettlerUpdate.broadcast(self, self.level, -1)
@@ -359,7 +377,13 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			if building.id == BUILDINGS.MAIN_SQUARE:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
 					# a main square is in range
+					if hasattr(self, "_main_square_status_icon"):
+						RemoveStatusIcon.broadcast(self, self, SettlerNotConnectedStatus)
+						del self._main_square_status_icon
 					return
+		if not hasattr(self, "_main_square_status_icon"):
+			self._main_square_status_icon = SettlerNotConnectedStatus(self) # save ref for removal later
+			AddStatusIcon.broadcast(self, self._main_square_status_icon)
 		# no main square found
 		# check_duplicate: only trigger once for different settlers of a neighborhood
 		self.session.ingame_gui.message_widget.add(point=self.position.origin,
@@ -383,7 +407,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def __str__(self):
 		try:
 			return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level,
-																				self.inhabitants, self.happiness)
+			                                    self.inhabitants, self.happiness)
 		except AttributeError: # an attribute hasn't been set up
 			return super(Settler, self).__str__()
 
@@ -430,4 +454,3 @@ class SettlerUpgradeData(object):
 	def get_production_line_id(cls, level):
 		"""Returns production line id for the upgrade to this level"""
 		return cls.production_line_ids[level]
-

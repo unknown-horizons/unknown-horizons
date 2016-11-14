@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,18 +24,18 @@ When activated, several hooks are installed into pychan/guichan and catch
 key presses and widget interactions.
 The results are formatted as code that can be used for writing GUI tests.
 """
+from __future__ import print_function
 
 import logging
 from functools import wraps
-
-from horizons.gui import mousetools
-from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
-from horizons.gui.windows import WindowManager
 
 from fife import fife
 from fife.extensions.pychan import tools, widgets
 from fife.extensions.pychan.events import EventMapper
 
+from horizons.gui import mousetools
+from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
+from horizons.gui.windows import Dialog
 
 log = logging.getLogger(__name__)
 
@@ -187,7 +187,7 @@ class GuiHooks(object):
 				return result
 			return wrapper
 
-		WindowManager.show_dialog = deco4(WindowManager.show_dialog)
+		Dialog._execute = deco4(Dialog._execute)
 
 
 class TestCodeGenerator(object):
@@ -225,8 +225,8 @@ class TestCodeGenerator(object):
 	def _emit(self, lines):
 		for line in lines:
 			if self._dialog_active:
-				print '\t',
-			print line
+				print('\t', end=' ')
+			print(line)
 
 	def _find_container(self, widget):
 		"""
@@ -250,8 +250,8 @@ class TestCodeGenerator(object):
 		container, path = self._find_container(widget)
 
 		if container.name == '__unnamed__':
-			print '# FIXME this container needs a name to identify it!'
-			print '# Path: %s' % path
+			print('# FIXME this container needs a name to identify it!')
+			print('# Path: %s' % path)
 		elif event_name == 'action' and group_name == 'action_listener':
 			# this is a custom event defined in engine.pychan_util to play click sounds
 			# for widgets
@@ -279,11 +279,11 @@ class TestCodeGenerator(object):
 			else:
 				if group_name == 'default':
 					if event_name in ('action', 'mouseClicked'):
-						code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+						code = "gui.trigger('%s/%s')" % (container.name, widget.name)
 					else:
-						code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+						code = "gui.trigger('%s/%s', '%s')" % (container.name, widget.name, event_name)
 				else:
-					code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+					code = "gui.trigger('%s/%s', '%s/%s')" % (container.name, widget.name, event_name, group_name)
 
 			if code:
 				self._add([code, ''])

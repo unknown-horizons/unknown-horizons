@@ -11,7 +11,7 @@
 			<Label name="headline" /> <!-- set to owner player name-->
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<Label name="name" position="25,43" /> <!-- set to instance name-->
 	</Container>

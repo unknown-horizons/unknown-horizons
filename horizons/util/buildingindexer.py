@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -70,7 +70,7 @@ class BuildingIndexer(object):
 				try:
 					index = self._map[coords]
 				except KeyError:
-					continue # should be faster than contains check, since usually true
+					continue # should be faster than contains check, since usually True
 				index._remove_set.add(building)
 				index._add_set.discard(building)
 				index._changed = True
@@ -82,7 +82,7 @@ class BuildingIndexer(object):
 				try:
 					index = self._map[coords]
 				except KeyError:
-					continue # should be faster than contains check, since usually true
+					continue # should be faster than contains check, since usually True
 				if not initial:
 					index._remove_set.discard(building)
 				index._add_set.add(building)

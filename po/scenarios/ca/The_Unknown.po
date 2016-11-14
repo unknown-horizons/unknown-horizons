@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons d0fc091\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2015-08-24 22:35+0200\n"
+"Last-Translator: Joan Josep <juanjo.ng.83@gmail.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/uh/the-unknown/"
+"ca/>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.4-dev\n"
+
+#. scenario difficulty
+msgid "easy"
+msgstr "fàcil"
+
+#. scenario description
+#, fuzzy
+#| msgid ""
+#| "You are the captain of a ship under the flag of England in 1740. You and "
+#| "your crew were on the way to a colony of England in the pacific ocean.\n"
+#| "Everything went fine until you came into a storm…"
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and "
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
+"Everything went fine until you came into a storm…"
+msgstr ""
+"Sou el capità d'un vaixell sota bandera anglesa al 1740. Vós i la vostra "
+"tripulació sou de camí a una colònia anglesa a l'oceà pacífic.\n"
+"Tot anava bé fins que vau trobar-vos enmig d'una tempesta…"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "20th November 1740"
+msgstr "20 de novembre de 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"Després de quatre dies la tempesta per fi amaina i podem descansar. "
+"Malauradament, ens queda poc menjar i el nostre vaixell ha quedat força "
+"malmès. Hem perdut la carta i els instruments de navegació."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for "
+"fish, so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"Hauríem de veure la costa aviat. Un dels homes ha vist ocells pescant, així "
+"que no podem ser lluny de terra. Afortunadament sempre portem taulons i "
+"eines. Podrem construir un refugi."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"Missió:\n"
+"Troba terra i construeix un port."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "22nd November 1740"
+msgstr "22 de novembre de 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days… we are running out of food and lack basic building material."
+msgstr ""
+"Hem construït un port i se'ns renoven les esperances. Encara em preocupa el "
+"futur proper... ens estem quedant sense menjar i ens falten alguns materials "
+"de construcció elementals."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send "
+"people gathering food and lumber so that we can survive and build some "
+"shelter."
+msgstr ""
+"Hem d'assegurar les necessitats bàsiques per continuar vius. Ha arribat "
+"l'hora d'anar a buscar menjar i fusta per poder sobreviure i construir un "
+"refugi."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"Missió:\n"
+"Construïu com a mínim un de cada:\n"
+"* Llenyataire\n"
+"* Pescador\n"
+"* Caçador\n"
+"Recolliu 5 unitats de menjar i 5 taulons."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "25th November 1740"
+msgstr "25 de novembre de 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"Hem assegurat les necessitats bàsiques de menjar i recollit fusta per "
+"continuar ampliant el nostre assentament. La gent demana un lloc on viure i "
+"intercanviar béns per les necessitats del dia a dia."
+
+#. This is the text body of a logbook page.
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"És hora de construir algunes tendes per viure-hi i una petita plaça per "
+"l'aprovisionament dels ciutadans."
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task:\n"
+#| "Build a main square and at least 10 tents."
+msgid ""
+"Task:\n"
+"Build a Main Square and at least 10 Tents."
+msgstr ""
+"Missió:\n"
+"Construïu una plaça i com a mínim 10 tendes."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "1st December 1740"
+msgstr "1 de desembre de 1740"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"Per fi tenim prou menjar i un lloc on refer la nostra vida. La meva tenda no "
+"és gaire confortable, però em manté eixut i em dóna el consol de tenir un "
+"sostre on passar la nit."
+
+#. This is the text body of a logbook page.
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home…"
+msgstr ""
+"A les nits miro els estels, però sense les cartes de navegació i els "
+"instruments no puc orientar-me. Tinc la sensació que ens haurem de quedar "
+"durant un temps, així que haurem de millorar la nostra situació.\n"
+"Només podem mirar de construir una civilització i trobar el camí cap a casa…"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Grow the village until you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"Missió:\n"
+"Feu créixer el poble fins que tingueu 250 habitants i un balanç positiu."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "27th August 1745"
+msgstr "27 d'agost de 1745"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I "
+"have started getting used to my new home, but this island is too small to "
+"stay here forever."
+msgstr ""
+"El nostre poble va força bé. Ja som 250 habitants. Ens estem acostumant a la "
+"nova llar, però l'illa és massa petita per quedar-nos-hi per sempre."
+
+#. This is the text body of a logbook page.
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect, but I hope it will "
+"suffice to return here."
+msgstr ""
+"Haurem de carregar el vaixell i anar a una illa més gran que disposi de més "
+"recursos i espai per la meva gent. He creat un mapa de navegació bàsic, fent "
+"servir les estrelles que es veuen a la nit. No és perfecte, però espero que "
+"sigui suficient per poder tornar aquí."
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
+"how you can contribute to making this scenario longer and better!"
+msgstr ""
+"Missió:\n"
+"Posa't en contacte amb l'equip de l'Unknown Horizons (www.unknown-horizons."
+"org) i descobreix com pots ajudar a fer aquest escenari més llarg i millor!"

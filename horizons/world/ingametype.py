@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,8 @@
 import hashlib
 
 from horizons.constants import TIER
+from horizons.i18n import gettext_lazy as LazyT
+
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
@@ -44,8 +46,7 @@ class IngameType(type):
 	classstring = 'Type[{id}]'
 
 	def __new__(self, id, yaml_data):
-		class_package = yaml_data['baseclass'].split('.')[0]
-		class_name = yaml_data['baseclass'].split('.')[1]
+		class_package, class_name = yaml_data['baseclass'].split('.', 1)
 
 		@classmethod
 		def load(cls, session, db, worldid):
@@ -60,8 +61,18 @@ class IngameType(type):
 			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
 
 	def _strip_translation_marks(self, string):
+		"""Converts object translation `string` to translated object for in-game display.
+
+		Object properties supposed to be translated are recognized by the
+		(subsequently stripped) leading `_ `.
+		If `string` is supposed to be translated, returns lazy translation object of `string`.
+		If `string` is not supposed to be translated, returns `string` unchanged.
+		If `string` is None (not defined or empty in yaml), returns empty unicode.
+		"""
+		if not string:
+			return u''
 		if string.startswith("_ "):
-			return string[2:]
+			return LazyT(string[2:])
 		else:
 			return string
 
@@ -71,7 +82,7 @@ class IngameType(type):
 		# self._level_specific_names is optional and contains a dict like this: { level_id : name }
 		# (with entries for all tiers in which it is active)
 		name_data = yaml_data['name']
-		start_tier = yaml_data.get('settler_level', TIER.NATURE) # first tier where object is available
+		start_tier = yaml_data.get('tier', TIER.NATURE)  # first tier where object is available
 		if isinstance(name_data, dict): # { level_id : name }
 			# fill up dict (fall down to highest tier which has a name specified
 			self._level_specific_names = {}
@@ -79,16 +90,17 @@ class IngameType(type):
 				name = name_data.get(lvl)
 				if name is None:
 					name = self._level_specific_names.get(lvl - 1)
-					assert name is not None, "Error in object file:\n" + \
-					"'name' attribute needs to at least describe tier %s. " + \
-					"Found:\n%s" % (name_data, start_tier)
+					assert name is not None, (
+						"Error in object file:\n"
+						"'name' attribute needs to at least describe tier %s. "
+						"Found:\n%s") % (name_data, start_tier)
 					self._level_specific_names[lvl] = name
 				else:
-					self._level_specific_names[lvl] = _(self._strip_translation_marks(name))
+					self._level_specific_names[lvl] = self._strip_translation_marks(name)
 
 			self._name = self._level_specific_names[start_tier] # default name: lowest available
 		else: # assume just one string
-			self._name = _( self._strip_translation_marks( name_data ) )
+			self._name = self._strip_translation_marks( name_data )
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
@@ -156,7 +168,9 @@ class IngameType(type):
 					# safety, we use ints.
 					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
 				if new_key in new_data:
-					raise Exception('Error: production line id conflict. Please change "%s" to anything else for "%s"' % (old_key, self.name))
+					raise Exception('Error: production line id conflict.'
+					                ' Please change "%s" to anything else for "%s"'
+					                % (old_key, self.name))
 				new_data[new_key] = v
 
 			producer_data['productionlines'] = new_data

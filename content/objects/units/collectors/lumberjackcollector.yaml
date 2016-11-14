@@ -1,5 +1,5 @@
 baseclass: collectors.FieldCollector
-id: 1000010
+id: UNITS.LUMBERJACK_COLLECTOR
 name: LumberjackCollector
 radius: 5
 velocity: 12.0

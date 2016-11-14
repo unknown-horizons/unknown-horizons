@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,17 +20,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import functools
 import traceback
 
 from fife.extensions import pychan
 
-from horizons.gui.style import STYLES
-from horizons.messaging import GuiAction
-from horizons.util.python.callback import Callback
-from horizons.gui.widgets.imagebutton import ImageButton
-
 import horizons.globals
+from horizons.gui.style import STYLES
+from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
+from horizons.util.python.callback import Callback
+
 
 class RenameLabel(pychan.widgets.Label):
 	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
@@ -44,9 +46,9 @@ def handle_gcn_exception(e, msg=None):
 	@param msg: additional info as string
 	"""
 	traceback.print_stack()
-	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
+	print('Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.')
 	if msg:
-		print msg
+		print(msg)
 
 def init_pychan():
 	"""General pychan initiation for uh"""
@@ -54,7 +56,7 @@ def init_pychan():
 
 	# quick hack to allow up_image/down_image values to be unicode
 	# TODO solve this problem in a better way (e.g. passing str explicitly)
-	# or waiting for a fix of http://fife.trac.cloudforge.com/engine/ticket/701
+	# or waiting for a fix of http://github.com/fifengine/fifengine/issues/701
 	from fife.extensions.pychan.properties import ImageProperty
 
 	def patch_imageproperty(func):
@@ -70,11 +72,10 @@ def init_pychan():
 	from horizons.gui.widgets.inventory import Inventory
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	from horizons.gui.widgets.progressbar import ProgressBar
-	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
+	from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
 	# additionally, ImageButton is imported from widgets.imagebutton above
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
-	from horizons.gui.widgets.icongroup import TabBG, TilingHBox
+	from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 	from horizons.gui.widgets.container import AutoResizeContainer
@@ -82,10 +83,10 @@ def init_pychan():
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
 	           Inventory, BuySellInventory, ImageFillStatusButton,
-	           ProgressBar, StepSlider, TabBG, ToggleImageButton,
+	           ProgressBar, StepSlider, TabBG,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
 	           AutoResizeContainer, RenameLabel, RenameImageButton,
-	           TilingHBox,
+	           TilingHBox, TilingProgressBar, hr,
 			 # This overwrites the ImageButton provided by FIFE!
 	           ImageButton,
 	           ]
@@ -112,32 +113,48 @@ def init_pychan():
 
 		widget.hide = catch_gcn_exception_decorator(widget.hide)
 
-		# support for tooltips via helptext attribute
-		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
-			# Copy everything we need from the tooltip class (manual mixin).
-			# TODO Figure out if it is safe to use this instead:
-			#widget.__bases__ += (_Tooltip, )
-			for key, value in _Tooltip.__dict__.iteritems():
-				if not key.startswith("__"):
-					setattr(widget, key, value)
+	from fife.extensions.pychan import Label, Icon, VBox, HBox
+	# this is white list of widgets with tooltip.
+	widgets_with_tooltip = [Label, Icon, HBox, VBox,
+	                        ImageButton, AutoResizeContainer]
 
-			def add_tooltip_init(func):
-				@functools.wraps(func)
-				def wrapper(self, *args, **kwargs):
-					func(self, *args, **kwargs)
-					self.init_tooltip()
-				return wrapper
+	for widget in widgets_with_tooltip:
+		# Copy everything we need from the tooltip class (manual mixin).
+		# TODO: Figure out if it is safe to use this instead:
+		# widget.__bases__ += (_Tooltip, )
+		for key, value in _Tooltip.__dict__.iteritems():
+			if not key.startswith("__"):
+				setattr(widget, key, value)
 
-			widget.__init__ = add_tooltip_init(widget.__init__)
+		def add_tooltip_init(func):
+			@functools.wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+				self.init_tooltip()
+			return wrapper
 
-			# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
-			# see #1597 and #1647
-			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+		widget.__init__ = add_tooltip_init(widget.__init__)
+
+		# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
+		# see #1597 and #1647
+		widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+
+	# FIXME hack pychan's text2gui function, it does an isinstance check that breaks
+	# the lazy string from horizons.i18n. we should be passing unicode to
+	# widgets all the time, therefore we don't need the additional check.
+	def text2gui(text):
+		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+
+	pychan.widgets.textfield.text2gui = text2gui
+	pychan.widgets.basictextwidget.text2gui = text2gui
 
 
 	setup_cursor_change_on_hover()
 
 	setup_trigger_signals_on_action()
+
+	setup_trigger_signals_on_hover()
 
 
 def setup_cursor_change_on_hover():
@@ -173,9 +190,9 @@ def setup_cursor_change_on_hover():
 		cls.disable_cursor_change_on_hover = disable_cursor_change_on_hover
 		cls.enable_cursor_change_on_hover = enable_cursor_change_on_hover
 
-	make_cursor_change_on_hover_class( pychan.widgets.WIDGETS['TextField'] )
-	make_cursor_change_on_hover_class( RenameLabel )
-	make_cursor_change_on_hover_class( RenameImageButton )
+	make_cursor_change_on_hover_class(pychan.widgets.WIDGETS['TextField'])
+	make_cursor_change_on_hover_class(RenameLabel)
+	make_cursor_change_on_hover_class(RenameImageButton)
 
 
 	# TODO: if the widget is hidden while the cursor is above it,
@@ -194,9 +211,30 @@ def setup_trigger_signals_on_action():
 			@functools.wraps(func)
 			def wrapper(self, *args, **kwargs):
 				func(self, *args, **kwargs)
-				self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
+				if cls._getName(self) == "cancelButton":
+					self.capture(Callback(GuiCancelAction.broadcast, self), "action", "action_listener")
+				else:
+					self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
 			return wrapper
 
-		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
+		cls.__init__ = add_action_triggers_a_signal(cls.__init__)
 
 	make_action_trigger_a_signal(pychan.widgets.Widget)
+
+def setup_trigger_signals_on_hover():
+	"""Make sure that the widgets specified below send a signal when a mouseOver event occurs"""
+	def make_hover_trigger_a_signal(cls):
+		def add_hover_triggers_a_signal(func):
+			@functools.wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+				self.capture(Callback(GuiHover.broadcast, self), "mouseEntered", "action_listener")
+			return wrapper
+
+		cls.__init__ = add_hover_triggers_a_signal(cls.__init__)
+
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['OkButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['CancelButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['DeleteButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['MainmenuButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['ImageButton'])

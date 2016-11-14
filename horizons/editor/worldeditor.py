@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import os
 import os.path
-
+import sqlite3
 from collections import deque
 
 from horizons.command.unit import RemoveUnit
+from horizons.constants import EDITOR
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.widgets.minimap import Minimap
 from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
+
 
 class WorldEditor(object):
 	def __init__(self, world):
@@ -41,9 +44,11 @@ class WorldEditor(object):
 		self._remove_unnecessary_objects()
 		self._center_view()
 
-		self.brush_size = 1
+		self.brush_size = EDITOR.DEFAULT_BRUSH_SIZE
 
 		self._tile_delete_set = set()
+
+		self.log = logging.getLogger("gui")
 
 	def _remove_unnecessary_objects(self):
 		# Delete all ships.
@@ -75,8 +80,7 @@ class WorldEditor(object):
 			ground[coords] = n
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in ground and ground[coords2] is None:
@@ -95,13 +99,21 @@ class WorldEditor(object):
 		with open('content/map-template.sql') as map_template:
 			db.execute_script(map_template.read())
 
-		db('BEGIN')
-		for island_id, coords_list in self._iter_islands():
-			for x, y in coords_list:
-				tile = self.world.full_map[(x, y)]
-				db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
-		db('COMMIT')
-		db.close()
+		save_successful = True
+		try:
+			db('BEGIN')
+			for island_id, coords_list in self._iter_islands():
+				for x, y in coords_list:
+					tile = self.world.full_map[(x, y)]
+					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
+			db('COMMIT')
+		except sqlite3.Error as e:
+			self.log.debug('Error: {error}'.format(error=e.args[0]))
+			save_successful = False
+		finally:
+			db.close()
+
+		return save_successful
 
 	def _delete_tile_instance(self, old_tile):
 		self._tile_delete_set.remove(old_tile)
@@ -129,3 +141,6 @@ class WorldEditor(object):
 		else:
 			self.world.full_map[coords] = self.world.fake_tile_map[coords]
 		Minimap.update(coords)
+
+		# update cam, that's necessary because of the static layer WATER
+		self.session.view.cam.refresh()

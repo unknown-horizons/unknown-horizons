@@ -1,4 +1,4 @@
-id: 4
+id: BUILDINGS.MAIN_SQUARE
 name: _ Main Square
 baseclass: storages.MainSquare
 radius: 0
@@ -8,7 +8,7 @@ size_x: 6
 size_y: 6
 inhabitants: 1
 tooltip_text: _ Supplies citizens with goods. Provides community.
-settler_level: TIER.SAILORS
+tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 5}
 components:
 # NOTE: don't add a producer component, it's currently not guaranteed to work flawlessly in combination with SettlementStorage

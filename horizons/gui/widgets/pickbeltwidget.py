@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
-from horizons.util.python.callback import Callback
+from horizons.gui.style import NOTHING
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
+from horizons.util.python.callback import Callback
 
 
 class PickBeltWidget(object):
@@ -81,24 +80,12 @@ class PickBeltWidget(object):
 			belt.hide()
 
 
-class OptionsPickbeltWidget(PickBeltWidget):
-	"""Widget for Options dialog with pickbelt style pages"""
-	widget_xml = 'settings.xml'
-
-	def __init__(self, *args, **kwargs):
-		# can't set this as class attribute directly since it's evaluated before gettext is set up
-		self.__class__.sections = (('graphics_settings', _('Graphics')),
-		                           ('game_settings', _('Game')))
-
-		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
-
-
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
-	# Can set as class attribute directly since no gettext calls
 	sections = (
-		('credits_team', u'UH-Team'),
+		('credits_team_2016', u'UH-Team New'),
+		('credits_team_2015', u'UH-Team Old'),
 		('credits_patchers', u'Patchers'),
 		('credits_translators', u'Translators'),
 		('credits_packagers', u'Packagers'),
@@ -114,7 +101,7 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 			box.margins = (30, 0) # to get some indentation
 			box.padding = 3
 		for listbox in self.widget.findChildren(name='translators'):
-			listbox.background_color = fife.Color(255, 255, 255, 0)
+			listbox.background_color = NOTHING
 
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 

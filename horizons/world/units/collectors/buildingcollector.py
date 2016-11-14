@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,17 +22,17 @@
 import weakref
 from collections import deque
 
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, COLLECTORS
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import BuildingCollectorPather, RoadPather
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import RadiusRect
 from horizons.util.worldobject import WorldObject
-from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
-from horizons.constants import COLLECTORS, BUILDINGS
-from horizons.scheduler import Scheduler
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.collectors.collector import Collector, JobList, Job
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.collectingcomponent import CollectingComponent
+from horizons.world.units.collectors.collector import Collector, Job, JobList
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class BuildingCollector(Collector):
@@ -44,7 +44,7 @@ class BuildingCollector(Collector):
 	Therefore, this class is not functional with home_building == None,
 	but basic facilities (esp. save/load) have to work.
 	"""
-	job_ordering = JobList.order_by.fewest_available_and_distance
+	job_ordering = JobList.order_by.fewest_available_and_distance # type: ignore
 	pather_class = BuildingCollectorPather
 
 	def __init__(self, home_building, **kwargs):
@@ -69,13 +69,15 @@ class BuildingCollector(Collector):
 		current_tick = Scheduler().cur_tick
 
 		# save home_building and creation tick
-		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
+		# pre-translate the tick number for the loading process
+		translated_creation_tick = self._creation_tick - current_tick + 1
 		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)",
-			 self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
+			self.worldid, self.home_building.worldid if self.home_building is not None else None,
+			translated_creation_tick)
 
 		# save job history
 		for tick, utilization in self._job_history:
-				# pre-translate the tick number for the loading process
+			# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + Scheduler.FIRST_TICK_ID
 			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)",
 				 self.worldid, translated_tick, utilization)
@@ -231,7 +233,7 @@ class BuildingCollector(Collector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.home_building.island.get_providers_in_range(reach, reslist=reslist,
-								                                            player=self.owner)
+		                                                        player=self.owner)
 
 	def handle_path_home_blocked(self):
 		"""Called when we get blocked while trying to move to the job location. """
@@ -302,14 +304,21 @@ class BuildingCollector(Collector):
 			total_utilization += relevant_ticks * self._job_history[i][1]
 
 		#assert -1e-7 < total_utilization / float(history_length) < 1 + 1e-7
-		
+
 		return total_utilization / float(history_length)
-	
+
 	def _clean_job_history_log(self):
 		""" remove too old entries """
 		first_relevant_tick = Scheduler().cur_tick - self.get_utilization_history_length()
 		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
 			self._job_history.popleft()
+
+	def level_upgrade(self, lvl):
+		"""Upgrades collector to another tier"""
+		action_set = self.__class__.get_random_action_set(lvl, exact_level=True)
+		if action_set:
+			self._action_set_id = action_set
+			self.act(self._action, repeating=True)
 
 
 class StorageCollector(BuildingCollector):
@@ -318,14 +327,14 @@ class StorageCollector(BuildingCollector):
 	"""
 	pather_class = RoadPather
 	destination_always_in_building = True
-	job_ordering = JobList.order_by.for_storage_collector
+	job_ordering = JobList.order_by.for_storage_collector # type: ignore
 
 
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
-	job_ordering = JobList.order_by.random
+	job_ordering = JobList.order_by.random # type: ignore
 
 
 class SettlerCollector(StorageCollector):

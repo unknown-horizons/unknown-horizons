@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,28 +20,29 @@
 # ###################################################
 
 import itertools
-
 from collections import deque
 from functools import partial
 
-from areabuilder import AreaBuilder
-from constants import BUILD_RESULT, BUILDING_PURPOSE
-
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.world.building.production import Mine
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
+from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import AI, BUILDINGS
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.util.shapes import distances, Rect
-from horizons.entities import Entities
-from horizons.world.production.producer import Producer
+from horizons.util.shapes import Rect, distances
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+from horizons.world.buildability.potentialroadconnectivitycache import \
+	PotentialRoadConnectivityCache
 from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
-from horizons.world.buildability.potentialroadconnectivitycache import PotentialRoadConnectivityCache
-from horizons.component.namedcomponent import NamedComponent
+from horizons.world.building.production import Mine
+from horizons.world.production.producer import Producer
+
+from .areabuilder import AreaBuilder
+from .constants import BUILD_RESULT, BUILDING_PURPOSE
+
 
 class ProductionBuilder(AreaBuilder):
 	"""
@@ -128,7 +129,7 @@ class ProductionBuilder(AreaBuilder):
 		self._refresh_unused_fields()
 
 	def have_deposit(self, resource_id):
-		"""Returns true if there is a resource deposit of the relevant type inside the settlement."""
+		"""Returns True if there is a resource deposit of the relevant type inside the settlement."""
 		for tile in self.land_manager.resource_deposits[resource_id]:
 			if tile.object.settlement is None:
 				continue
@@ -182,8 +183,7 @@ class ProductionBuilder(AreaBuilder):
 				queue.append(coords)
 
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
 					if coords not in reachable and coords in coverage_area:
@@ -239,6 +239,7 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.PASTURE: deque(),
 			BUILDING_PURPOSE.SUGARCANE_FIELD: deque(),
 			BUILDING_PURPOSE.TOBACCO_FIELD: deque(),
+			BUILDING_PURPOSE.HERBARY: deque(),
 		}
 
 		for coords, (purpose, _) in sorted(self.plan.iteritems()):
@@ -261,67 +262,37 @@ class ProductionBuilder(AreaBuilder):
 		if not AI.HIGHLIGHT_PLANS:
 			return
 
-		road_color = (30, 30, 30)
-		fisher_color = (128, 128, 128)
-		lumberjack_color = (30, 255, 30)
-		tree_color = (0, 255, 0)
-		reserved_color = (0, 0, 128)
-		unknown_color = (128, 0, 0)
-		farm_color = (128, 0, 255)
-		potato_field_color = (255, 0, 128)
-		pasture_color = (0, 192, 0)
-		weaver_color = (0, 64, 64)
-		sugarcane_field_color = (192, 192, 0)
-		distillery_color = (255, 128, 40)
-		tobacco_field_color = (64, 64, 0)
-		tobacconist_color = (128, 64, 40)
-		clay_pit_color = (0, 64, 0)
-		brickyard_color = (0, 32, 0)
-		boatbuilder_color = (163, 73, 164)
-		salt_ponds_color = (153, 217, 234)
+		tile_colors = {
+			BUILDING_PURPOSE.ROAD:            ( 30,  30,  30),
+			BUILDING_PURPOSE.FISHER:          (128, 128, 128),
+			BUILDING_PURPOSE.LUMBERJACK:      ( 30, 255,  30),
+			BUILDING_PURPOSE.TREE:            (  0, 255,   0),
+			BUILDING_PURPOSE.FARM:            (128,   0, 255),
+			BUILDING_PURPOSE.POTATO_FIELD:    (255,   0, 128),
+			BUILDING_PURPOSE.PASTURE:         (  0, 192,   0),
+			BUILDING_PURPOSE.WEAVER:          (  0,  64,  64),
+			BUILDING_PURPOSE.SUGARCANE_FIELD: (192, 192,   0),
+			BUILDING_PURPOSE.DISTILLERY:      (255, 128,  40),
+			BUILDING_PURPOSE.TOBACCO_FIELD:   ( 64,  64,   0),
+			BUILDING_PURPOSE.TOBACCONIST:     (128,  64,  40),
+			BUILDING_PURPOSE.CLAY_PIT:        (  0,  64,   0),
+			BUILDING_PURPOSE.BRICKYARD:       (  0,  32,   0),
+			BUILDING_PURPOSE.BOAT_BUILDER:    (163,  73, 164),
+			BUILDING_PURPOSE.SALT_PONDS:      (153, 217, 234),
+			BUILDING_PURPOSE.HERBARY:         ( 64, 200,   0),
+			BUILDING_PURPOSE.RESERVED:        (  0,   0, 128),
+		}
+
 		misc_color = (0, 255, 255)
+		unknown_color = (128, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if purpose == BUILDING_PURPOSE.ROAD:
-				renderer.addColored(tile._instance, *road_color)
-			elif purpose == BUILDING_PURPOSE.FISHER:
-				renderer.addColored(tile._instance, *fisher_color)
-			elif purpose == BUILDING_PURPOSE.LUMBERJACK:
-				renderer.addColored(tile._instance, *lumberjack_color)
-			elif purpose == BUILDING_PURPOSE.TREE:
-				renderer.addColored(tile._instance, *tree_color)
-			elif purpose == BUILDING_PURPOSE.FARM:
-				renderer.addColored(tile._instance, *farm_color)
-			elif purpose == BUILDING_PURPOSE.POTATO_FIELD:
-				renderer.addColored(tile._instance, *potato_field_color)
-			elif purpose == BUILDING_PURPOSE.PASTURE:
-				renderer.addColored(tile._instance, *pasture_color)
-			elif purpose == BUILDING_PURPOSE.WEAVER:
-				renderer.addColored(tile._instance, *weaver_color)
-			elif purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
-				renderer.addColored(tile._instance, *sugarcane_field_color)
-			elif purpose == BUILDING_PURPOSE.DISTILLERY:
-				renderer.addColored(tile._instance, *distillery_color)
-			elif purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
-				renderer.addColored(tile._instance, *tobacco_field_color)
-			elif purpose == BUILDING_PURPOSE.TOBACCONIST:
-				renderer.addColored(tile._instance, *tobacconist_color)
-			elif purpose == BUILDING_PURPOSE.CLAY_PIT:
-				renderer.addColored(tile._instance, *clay_pit_color)
-			elif purpose == BUILDING_PURPOSE.BRICKYARD:
-				renderer.addColored(tile._instance, *brickyard_color)
-			elif purpose == BUILDING_PURPOSE.BOAT_BUILDER:
-				renderer.addColored(tile._instance, *boatbuilder_color)
-			elif purpose == BUILDING_PURPOSE.SALT_PONDS:
-				renderer.addColored(tile._instance, *salt_ponds_color)
-			elif purpose == BUILDING_PURPOSE.RESERVED:
-				renderer.addColored(tile._instance, *reserved_color)
-			elif purpose != BUILDING_PURPOSE.NONE:
-				renderer.addColored(tile._instance, *misc_color)
-			else:
-				renderer.addColored(tile._instance, *unknown_color)
+			color = tile_colors.get(purpose, misc_color)
+			if purpose == BUILDING_PURPOSE.NONE:
+				color = unknown_color
+			renderer.addColored(tile._instance, *color)
 
 	def _init_cache(self):
 		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""
@@ -368,7 +339,7 @@ class ProductionBuilder(AreaBuilder):
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD]:
+			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:
@@ -393,7 +364,7 @@ class ProductionBuilder(AreaBuilder):
 	collector_building_classes = [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE]
 	field_building_classes = [BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE, BUILDINGS.SUGARCANE_FIELD, BUILDINGS.TOBACCO_FIELD]
 	production_building_classes = set([BUILDINGS.FISHER, BUILDINGS.LUMBERJACK, BUILDINGS.FARM, BUILDINGS.CLAY_PIT,
-		BUILDINGS.BRICKYARD, BUILDINGS.WEAVER, BUILDINGS.DISTILLERY, BUILDINGS.IRON_MINE, BUILDINGS.SMELTERY,
+		BUILDINGS.BRICKYARD, BUILDINGS.WEAVER, BUILDINGS.DISTILLERY, BUILDINGS.MINE, BUILDINGS.SMELTERY,
 		BUILDINGS.TOOLMAKER, BUILDINGS.CHARCOAL_BURNER, BUILDINGS.TOBACCONIST, BUILDINGS.SALT_PONDS])
 
 	def add_building(self, building):
@@ -526,4 +497,4 @@ class ProductionBuilder(AreaBuilder):
 		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(ProductionBuilder)
+decorators.bind_all(ProductionBuilder, stoplist=['AI'])

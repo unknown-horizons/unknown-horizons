@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.command import GenericCommand, GenericComponentCommand
+
 
 class SetTaxSetting(GenericCommand):
 	"""Sets the taxes for a settlement."""
@@ -71,7 +72,7 @@ class BuyResource(GenericComponentCommand):
 GenericComponentCommand.allow_network(BuyResource)
 
 class RenameObject(GenericComponentCommand):
-	"""Rename a NamedComponant"""
+	"""Rename a NamedComponent"""
 	def __init__(self, namedcomponent, new_name):
 		super(RenameObject, self).__init__(namedcomponent, "set_name", new_name)
 

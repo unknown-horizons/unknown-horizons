@@ -1,4 +1,4 @@
-id: 33
+id: BUILDINGS.FISH_DEPOSIT
 name: _ Fish Deposit
 baseclass: nature.Fish
 radius: 0
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 0
 tooltip_text: null
-settler_level: TIER.NATURE
+tier: TIER.NATURE
 buildingcosts: {}
 show_status_icons: false
 components:

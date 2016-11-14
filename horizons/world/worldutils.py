@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,21 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import bisect
 import itertools
-
+import os
 from collections import deque
 
-from horizons.constants import UNITS, BUILDINGS, RES, WILD_ANIMAL
 from horizons.command.building import Build
+from horizons.command.unit import CreateUnit
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.component.storagecomponent import StorageComponent
-from horizons.command.unit import CreateUnit
+
 
 """
 This is used for random features required by world,
@@ -45,13 +45,15 @@ def toggle_health_for_all_health_instances(world):
 	"""Show health bar of every instance with an health component, which isnt selected already"""
 	world.health_visible_for_all_health_instances = not world.health_visible_for_all_health_instances
 	if world.health_visible_for_all_health_instances:
-		for instance in world.session.world.get_health_instances():
+		for instance in world.get_health_instances():
 			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health()
 				world.session.view.add_change_listener(instance.draw_health)
 	else:
-		for instance in world.session.world.get_health_instances():
-			if world.session.view.has_change_listener(instance.draw_health) and not instance.get_component(SelectableComponent).selected:
+		for instance in world.get_health_instances():
+			if not world.session.view.has_change_listener(instance.draw_health):
+				continue
+			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
 
@@ -118,8 +120,10 @@ def add_resource_deposits(world, resource_multiplier):
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT]
 	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
+	StoneDeposit = Entities.buildings[BUILDINGS.STONE_DEPOSIT]
 	clay_deposit_locations = []
 	mountain_locations = []
+	stone_deposit_locations = []
 
 	def get_valid_locations(usable_part, island, width, height):
 		"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
@@ -140,7 +144,7 @@ def add_resource_deposits(world, resource_multiplier):
 		return locations
 
 	def place_objects(locations, max_objects, object_class):
-		"""Place at most max_objects objects of the given class."""
+		"""Place at most *max_objects* objects of the given class."""
 		if not locations:
 			return
 
@@ -176,8 +180,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		# calculate the manhattan distance to the sea
 		while queue:
-			x, y, dist = queue[0]
-			queue.popleft()
+			x, y, dist = queue.popleft()
 			for dx, dy in moves:
 				coords = (x + dx, y + dy)
 				if coords in distance:
@@ -207,10 +210,22 @@ def add_resource_deposits(world, resource_multiplier):
 		num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
 		place_objects(local_mountain_locations, num_local_mountains, Mountain)
 
+		# place the local stone deposits
+		local_stone_deposit_locations = get_valid_locations(usable_part, island, *StoneDeposit.size)
+		stone_deposit_locations.extend(local_stone_deposit_locations)
+		local_stone_deposits_base = 0.3 + len(local_stone_deposit_locations) ** 0.7 / 60.0
+		num_local_stone_deposits = int(max(0, resource_multiplier * min(3, local_stone_deposits_base + abs(world.session.random.gauss(0, 0.7)))))
+		place_objects(local_stone_deposit_locations, num_local_stone_deposits, StoneDeposit)
+
 	# place some extra clay deposits
 	extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
 	num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_clay_base + abs(world.session.random.gauss(0, 1))))))
 	place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
+
+	# place some extra stone deposits
+	extra_stone_base = len(stone_deposit_locations) ** 0.8 / 400.0
+	num_extra_stone_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_stone_base + abs(world.session.random.gauss(0, 1))))))
+	place_objects(stone_deposit_locations, num_extra_stone_deposits, StoneDeposit)
 
 	# place some extra mountains
 	extra_mountains_base = len(mountain_locations) ** 0.8 / 700.0
@@ -235,12 +250,23 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
-
 	# add trees, wild animals, and fish
 	for island in world.islands:
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
+			# add trees based on adjacent trees
+			for (dx, dy) in fish_directions:
+				position = Point(x+dx, y+dy)
+				newTile = world.get_tile(position)
+				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
+					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
+					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
+						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
+					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
+						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
+
+
 			# add tree to every nth tile and an animal to one in every M trees
-			if world.session.random.randint(0, 2) == 0 and \
+			if world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
@@ -266,7 +292,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 
 def get_random_possible_ground_unit_position(world):
-	"""Returns a position in water, that is not at the border of the world"""
+	"""Returns a random position upon an island"""
 	offset = 2
 	while True:
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
@@ -280,7 +306,7 @@ def get_random_possible_ground_unit_position(world):
 				return Point(x, y)
 
 def get_random_possible_ship_position(world):
-	"""Returns a position in water, that is not at the border of the world"""
+	"""Returns a random position in water, that is not at the border of the world"""
 	offset = 2
 	while True:
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
@@ -305,10 +331,10 @@ def get_random_possible_ship_position(world):
 	return Point(x, y)
 
 def get_random_possible_coastal_ship_position(world):
-	"""Returns a position in water, that is not at the border of the world
+	"""Returns a random position in water, that is not at the border of the world
 	but on the coast of an island"""
 	offset = 2
-	# Don't look for a point if there are no islands for some reason 
+	# Don't look for a point if there are no islands for some reason
 	if not world.islands:
 		return
 	while True:
@@ -328,4 +354,3 @@ def get_random_possible_coastal_ship_position(world):
 				point_to_check = Point( x + first_sign, y + second_sign )
 				if world.get_island(point_to_check) is not None:
 					return result
-

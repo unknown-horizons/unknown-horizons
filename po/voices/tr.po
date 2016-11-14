@@ -1,0 +1,129 @@
+# Turkish translations for Unknown Horizons Voices package.
+# Copyright (C) 2013 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons Voices package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
+"PO-Revision-Date: 2013-08-27 02:45+0200\n"
+"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/voices/tr/>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 1.7-dev\n"
+
+#. Founding settlement - Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr "Çabalayın ve bu yerleşim yeri görkemli bir şekilde gelişsin."
+
+#. Founding settlement - Player found settlement"
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr "Halkınız bu adada kesinlikle daha rahat hissedecektir."
+
+#. Founding settlement - Player found settlement"
+msgid "Call this patch of ground yours from now on."
+msgstr "Bu yeryüzü parçasını bundan sonra sizin sayın."
+
+#. Founding settlement - Player found settlement"
+msgid "This region now belongs to our colors."
+msgstr "Bu bölge artık kendi renklerimize ait."
+
+#. Founding settlement - Player found settlement"
+msgid "This piece of ground is now ours."
+msgstr "Bu yeryüzü parçası artık bizim."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr "Başka bir oyuncu bir adaya yerleşti."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "A player develops a new settlement."
+msgstr "Bir oyuncu yeni bir yerleşim kuruyor."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "One of your fellow players founded a settlement."
+msgstr "Arkadaşlarınızdan biri bir yerleşim kurdu."
+
+#. Founding settlement - Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr "Görünüyor ki rakiplerimizden biri bir yerleşim yeri kurdu."
+
+#. Founding settlement - Rival found settlement
+msgid "We've been informed that one of our rivals snared new land."
+msgstr ""
+"Rakiplerimizden birinin yeni bir karaya tuzak kurduğuna dair bilgi geldi."
+
+#. Founding settlement - Rival found settlement
+msgid "One of our opponents is said to have expanded."
+msgstr "Rakiplerimizden birinin genişlediği söyleniyor."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally settles on another island."
+msgstr "İttifakımız farklı bir adaya yerleşiyor."
+
+#. Founding settlement - Ally found settlement
+msgid "One of our allies cultivates an islnd."
+msgstr "İttifaklarımızdan biri, bir adaya inşa ediyor."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr "İttifakımız yerleşim yerinin başarıyla kurulduğunu bildiriyor."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr "Bu ada artık tamamen bizim değil."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr "İzciler, adalarımızdan birine misafirlerin yerleştiğini keşfetti."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "We got new neighbors on this island!"
+msgstr "Adada yeni komşularımız var!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr "İzciler, davetsiz misafirlerin adamızı kuşattığını bildirdi!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Should we really accept our rival as new neighbor?"
+msgstr "Gerçekten rakibimizi yeni komşumuz olarak kabul etmeli miyiz?"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "One of our enemies settles on our ground!"
+msgstr "Düşmanlarımızdan biri topraklarımıza yerleşiyor!"
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr ""
+"İttifaklarımızdan birinin umutsuzca topraklarınıza ihtiyaç olduğu görülüyor."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "We share this ground with our ally for now."
+msgstr "Bu toprağı şimdilik bir ittifakımız ile paylaşıyoruz."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "Our ally settles on one of our islands."
+msgstr "İttifakımız adalarımızdan birine yerleşiyor."
+
+#. Resources - Construction material missing
+msgid "You need more resources to build this."
+msgstr "Bunu yapmanız için daha çok kaynağa ihtiyacınız var."
+
+#. Resources - Construction material missing
+msgid "This construction project needs more resources."
+msgstr "Bu inşaat projesi daha fazla kaynak gerektiriyor."
+
+#. Resources - Construction material missing
+msgid "Construction is impossible without sufficient material."
+msgstr "İnşaatın kaynak miktarı yeterli oluncaya kadar yapılması imkansız."
+
+#. Resources - Construction material missing
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr "Stoğunuzdaki kaynak miktarı, bunu yapacak kadar yeterli değil."

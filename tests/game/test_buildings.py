@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,12 +22,11 @@
 from itertools import product
 
 from horizons.command.building import Build, Tear
-from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, UNITS, RES
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES, UNITS
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.world.production.producer import Producer
-
 from tests.game import game_test, settle
 
 
@@ -136,7 +135,7 @@ def test_tool_production_chain(s, p):
 	settlement, island = settle(s)
 
 	assert Build(BUILDINGS.MOUNTAIN, 30, 35, island, ownerless=True)(None)
-	assert Build(BUILDINGS.IRON_MINE, 30, 35, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.MINE, 30, 35, island, settlement=settlement)(p)
 
 	charcoal = Build(BUILDINGS.CHARCOAL_BURNER, 25, 35, island, settlement=settlement)(p)
 	assert charcoal

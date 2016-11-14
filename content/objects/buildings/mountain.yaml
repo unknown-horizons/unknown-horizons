@@ -1,4 +1,4 @@
-id: 34
+id: BUILDINGS.MOUNTAIN
 name: _ Mountain
 baseclass: nature.ResourceDeposit
 radius: 0
@@ -8,7 +8,7 @@ size_x: 5
 size_y: 5
 inhabitants: 0
 tooltip_text: null
-settler_level: TIER.NATURE
+tier: TIER.NATURE
 buildingcosts: {}
 translucent: true
 components:

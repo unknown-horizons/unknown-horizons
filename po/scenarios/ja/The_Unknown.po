@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2014-08-06 19:01+0200\n"
+"Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/uh/the-unknown/"
+"ja/>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 1.10-dev\n"
+
+#. scenario difficulty
+msgid "easy"
+msgstr "簡単"
+
+#. scenario description
+#, fuzzy
+#| msgid ""
+#| "You are the captain of a ship under the flag of England in 1740. You and "
+#| "your crew were on the way to a colony of England in the pacific ocean.\n"
+#| "Everything went fine until you came into a storm…"
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and "
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
+"Everything went fine until you came into a storm…"
+msgstr ""
+"あなたは、1740年、イングランドの旗の下にある船の船長です。あなたとあなたの乗"
+"組員は、太平洋にあるイングランドの植民地への途上でした。\n"
+"ある嵐に遭遇するまでは全てが順調でした…"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "20th November 1740"
+msgstr "1740年11月20日"
+
+#. This is the text body of a logbook page.
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"四日の後、嵐はようやく収まり、休息をとることができた。しかし、我々にはわずか"
+"の食糧しか残されておらず、我々の船の状態も良くない。航海用具も海図も失われて"
+"しまった。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for "
+"fish, so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"我々は早く接岸する必要がある。仲間の一人が鳥が魚をとっているのを目撃したの"
+"で、陸は遠くないはずだ。幸いにして、我々はいつもいくつかの道具と板を船に乗せ"
+"ているので、簡単なシェルターは造ることができる。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"任務：\n"
+"陸を見つけ港を建設せよ。"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "22nd November 1740"
+msgstr "1740年11月22日"
+
+#. This is the text body of a logbook page.
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days… we are running out of food and lack basic building material."
+msgstr ""
+"港は建設され、新たな希望が出てきた。しかし、私はまだ次なる日々を心配している…"
+"食糧は尽き始め、基本的な建設物資もない。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send "
+"people gathering food and lumber so that we can survive and build some "
+"shelter."
+msgstr ""
+"我々が生存し続けるためには、基本的欲求を満たす必要がある。いまは、生き残って"
+"シェルターを建設できるように、人を送って食糧を集め、木を切り出す時だ。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"任務：\n"
+"下記の少なくとも一つを造れ：\n"
+"* 樵\n"
+"* 漁師\n"
+"* 猟師\n"
+"5つの食糧と5つの板を集めよ。"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "25th November 1740"
+msgstr "1740年11月25日"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"我々は、食糧の基本的欲求を満たし、我々の新たな入植の発展を続けるための木材も"
+"収集した。我々の仲間は住む場所を欲し、日々の必要を満たすために財の交換を望む"
+"ようになった。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"生活するためのテントをつくり、我々の市民に財を供給する小さな中央広場を建設す"
+"る時が来た。"
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task:\n"
+#| "Build a main square and at least 10 tents."
+msgid ""
+"Task:\n"
+"Build a Main Square and at least 10 Tents."
+msgstr ""
+"任務：\n"
+"中央広場と少なくとも10個のテントを造れ。"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "1st December 1740"
+msgstr "1740年12月1日"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"遂に我々は食糧と住む場所には満たされた。我がテントは非常に快適とは言えない"
+"が、雨露はしのげるし、夜間には頭上に屋根があることを実感することができる。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home…"
+msgstr ""
+"夜には星空を検証しているが、海図と航海用具なしでは、そこから読みとることがで"
+"きるものはない。ここにはしばらくの間、繋ぎ止められてしまう気がするので、出来"
+"るだけのことをしなくてはならない。\n"
+"文明社会を構築した上で、帰国の道を探る以外にはない…"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Grow the village until you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"任務：\n"
+"村を成長させて、住民を250人以上にし、収支を黒字にせよ。"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+msgid "27th August 1745"
+msgstr "1745年8月27日"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I "
+"have started getting used to my new home, but this island is too small to "
+"stay here forever."
+msgstr ""
+"我々の村はよくやっており、街は250人以上までに成長した。私は、私の新しい故郷に"
+"適応し始めたが、ここに永久に滞在するには、この島は小さすぎる。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect, but I hope it will "
+"suffice to return here."
+msgstr ""
+"我々は、船に乗り込んで航海に出、人々に場所と資源を提供できるような大きな島を"
+"見つけなくてはならない。私は、夜間に観測した星を元に、簡単な海図を再現した。"
+"これは完璧なものではないが、ここに戻ってくるためには十分であろうと期待してい"
+"る。"
+
+#. This is the text body of a logbook page.
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
+"how you can contribute to making this scenario longer and better!"
+msgstr ""
+"任務：\n"
+"Unknown Horizons開発チームにコンタクトをとって(www.unknown-horizons.org)、こ"
+"のシナリオを延長し改善するために、あなたがどのような貢献をなしうるかを見出し"
+"てください！"

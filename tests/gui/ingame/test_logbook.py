@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,13 +28,13 @@ def test_logbook(gui):
 	Open the (empty) logbook.
 	"""
 
-	gui.trigger('mainhud', 'logbook')
+	gui.trigger('mainhud/logbook')
 
 	logbook = gui.find(name='captains_log')
 	assert logbook
 
 	# Close it and confirm it's gone
-	gui.trigger(logbook, 'okButton')
+	gui.trigger('captains_log/okButton')
 	assert gui.find(name='captains_log') is None
 
 
@@ -43,10 +43,10 @@ def test_logbook_statistics(gui):
 	"""Open the 3 three different statistic tabs in the logbook."""
 
 	# Open statistics page in logbook
-	gui.trigger('mainhud', 'logbook')
-	gui.trigger('captains_log', 'statistics_right')
+	gui.trigger('mainhud/logbook')
+	gui.trigger('captains_log/statistics_right')
 
 	# Open players/ships/settlements tabs
-	gui.trigger('captains_log', 'stats_players')
-	gui.trigger('captains_log', 'stats_ships')
-	gui.trigger('captains_log', 'stats_settlements')
+	gui.trigger('captains_log/stats_players')
+	gui.trigger('captains_log/stats_ships')
+	gui.trigger('captains_log/stats_settlements')

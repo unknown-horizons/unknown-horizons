@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ from fife.extensions.pychan.widgets import HBox
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
+
 
 class BuySellInventory(Inventory):
 	"""The buy/sell inventory widget displays an inventory of goods

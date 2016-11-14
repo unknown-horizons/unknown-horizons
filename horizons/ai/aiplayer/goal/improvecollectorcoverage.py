@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,16 +22,17 @@
 from collections import deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES, PRODUCTION
-from horizons.scheduler import Scheduler
-from horizons.util.shapes import Rect
-from horizons.entities import Entities
+from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.shapes import Rect
 from horizons.world.production.producer import Producer
+
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
 	def get_personality_name(self):
@@ -142,8 +143,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 					queue.append(coords)
 
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in distance and distance[coords2] is None:

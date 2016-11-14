@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
+
 
 class BUILD_RESULT:
 	OK = 0
@@ -59,7 +60,7 @@ class BUILDING_PURPOSE:
 	PAVILION = 19
 	VILLAGE_SCHOOL = 20
 	TAVERN = 21
-	IRON_MINE = 22
+	MINE = 22
 	SMELTERY = 23
 	TOOLMAKER = 24
 	CHARCOAL_BURNER = 25
@@ -69,9 +70,13 @@ class BUILDING_PURPOSE:
 	TOBACCONIST = 29
 	SALT_PONDS = 30
 	FIRE_STATION = 31
+	DOCTOR = 32
+	HERBARY = 33
+	STONE_PIT = 34
+	STONEMASON = 35
 
-	purpose_to_building = {}
-	building_to_purpose = {}
+	purpose_to_building = {} # type: Dict[int, int]
+	building_to_purpose = {} # type: Dict[int, int]
 
 	@classmethod
 	def init_translation(cls):
@@ -94,7 +99,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.PAVILION] = BUILDINGS.PAVILION
 		cls.purpose_to_building[cls.VILLAGE_SCHOOL] = BUILDINGS.VILLAGE_SCHOOL
 		cls.purpose_to_building[cls.TAVERN] = BUILDINGS.TAVERN
-		cls.purpose_to_building[cls.IRON_MINE] = BUILDINGS.IRON_MINE
+		cls.purpose_to_building[cls.MINE] = BUILDINGS.MINE
 		cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY
 		cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER
 		cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER
@@ -104,6 +109,10 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.TOBACCONIST] = BUILDINGS.TOBACCONIST
 		cls.purpose_to_building[cls.SALT_PONDS] = BUILDINGS.SALT_PONDS
 		cls.purpose_to_building[cls.FIRE_STATION] = BUILDINGS.FIRE_STATION
+		cls.purpose_to_building[cls.DOCTOR] = BUILDINGS.DOCTOR
+		cls.purpose_to_building[cls.HERBARY] = BUILDINGS.HERBARY
+		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
+		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONEMASON
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose

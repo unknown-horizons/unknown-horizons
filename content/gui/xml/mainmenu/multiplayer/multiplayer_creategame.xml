@@ -4,7 +4,7 @@
 
 	<Container size="320,500"  position="55,32"  name="left_side">
 		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
-		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
+		<hr position="52,30" />
 		<Icon name="map_preview_minimap" size="128,128" max_size="128,128" position="50, 100" is_focusable="0" />
 
 		<VBox position="50,250">
@@ -16,9 +16,7 @@
 			</HBox>
 		</VBox>
 
-		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
-		<CancelButton position="100,460"  name="cancel" 
-			helptext="Exit to multiplayer menu" />
+		<CancelButton position="20,460"  name="cancel" helptext="Exit to multiplayer menu" />
 	</Container>
 
 	<!--
@@ -49,10 +47,5 @@
 		</HBox>
 	</VBox>
 
-	<HBox min_size="0,30" position="600, 490">
-		<Spacer />
-		<Label name="create_game_lbl"  text="Create game:" />
-		<OkButton  name="create"  helptext="Create this new game" />
-	</HBox>
-
+	<OkButton  name="create"  helptext="Create this new game" position="680, 490"/>
 </Container>

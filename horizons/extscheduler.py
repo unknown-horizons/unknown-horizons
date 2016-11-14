@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import time
 import heapq
+import time
 
 from horizons.util.python.singleton import ManualConstructionSingleton
 
@@ -98,7 +98,7 @@ class ExtScheduler(object):
 		@return: number of removed callbacks"""
 		for tup in self.schedule:
 			if tup[1].class_instance is class_instance:
-				# don't destory heap
+				# don't destroy heap
 				tup[1] = self.__class__.NOOP
 
 	def rem_call(self, instance, callback):

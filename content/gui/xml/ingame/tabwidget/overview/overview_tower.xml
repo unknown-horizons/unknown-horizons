@@ -11,7 +11,7 @@
 		<RenameLabel name="headline" helptext="Click to change the name of your settlement" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 
 	<HBox size="225,20" max_size="225,20" position="25,43">
 		<Label name="name_label" text="Name:" />

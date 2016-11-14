@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,17 +20,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
-
 import logging
 import json
 import copy
 
 from collections import deque
+from functools import partial
 
 import horizons.globals
 from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
+from horizons.scheduler import Scheduler
 from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.color import Color
 from horizons.util.python import decorators
@@ -43,14 +43,16 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
-from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.messaging import LoadingProgress
+
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -75,6 +77,7 @@ class World(BuildingOwner, WorldObject):
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
+
 	def __init__(self, session):
 		"""
 		@param session: instance of session the world belongs to.
@@ -83,6 +86,20 @@ class World(BuildingOwner, WorldObject):
 		if False:
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
+
+		# create playerlist
+		self.players = []
+		self.player = None # player sitting in front of this machine
+		self.trader = None
+		self.pirate = None
+
+		# create shiplist, which is currently used for saving ships
+		# and having at least one reference to them
+		self.ships = []
+		self.ground_units = []
+
+		self.islands = []
+
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
@@ -125,7 +142,6 @@ class World(BuildingOwner, WorldObject):
 
 		self.islands = None
 		self.diplomacy = None
-		self.bullets = None
 
 	def _init(self, savegame_db, force_player_id=None, disasters_enabled=True):
 		"""
@@ -144,23 +160,20 @@ class World(BuildingOwner, WorldObject):
 			# set on first init
 			self.properties['disasters_enabled'] = disasters_enabled
 
-		# create playerlist
-		self.players = []
-		self.player = None # player sitting in front of this machine
-		self.trader = None
-		self.pirate = None
-
 		self._load_players(savegame_db, force_player_id)
 
 		# all static data
+		LoadingProgress.broadcast(self, 'world_load_map')
 		self.load_raw_map(savegame_db)
 
 		# load world buildings (e.g. fish)
-		for (building_worldid, building_typeid) in \
-		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
+		LoadingProgress.broadcast(self, 'world_load_buildings')
+		buildings = savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid)
+		for (building_worldid, building_typeid) in buildings:
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		# use a dict because it's directly supported by the pathfinding algo
+		LoadingProgress.broadcast(self, 'world_init_water')
 		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
@@ -183,14 +196,6 @@ class World(BuildingOwner, WorldObject):
 		self.ship_map = {}
 		self.ground_unit_map = {}
 
-		# create shiplist, which is currently used for saving ships
-		# and having at least one reference to them
-		self.ships = []
-		self.ground_units = []
-
-		# create bullets list, used for saving bullets in ongoing attacks
-		self.bullets = []
-
 		if self.session.is_game_loaded():
 			# there are 0 or 1 trader AIs so this is safe
 			trader_data = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")
@@ -202,6 +207,7 @@ class World(BuildingOwner, WorldObject):
 				self.pirate = Pirate.load(self.session, savegame_db, pirate_data[0][0])
 
 		# load all units (we do it here cause all buildings are loaded by now)
+		LoadingProgress.broadcast(self, 'world_load_units')
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
 			Entities.units[typeid].load(self.session, savegame_db, worldid)
 
@@ -215,6 +221,7 @@ class World(BuildingOwner, WorldObject):
 				self.pirate.finish_loading(savegame_db)
 
 			# load the AI stuff only when we have AI players
+			LoadingProgress.broadcast(self, 'world_setup_ai')
 			if any(isinstance(player, AIPlayer) for player in self.players):
 				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
@@ -224,6 +231,7 @@ class World(BuildingOwner, WorldObject):
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
 
+		LoadingProgress.broadcast(self, 'world_load_stuff')
 		self._load_combat(savegame_db)
 		self._load_diplomacy(savegame_db)
 		self._load_disasters(savegame_db)
@@ -236,11 +244,6 @@ class World(BuildingOwner, WorldObject):
 
 
 	def _load_combat(self, savegame_db):
-		# load bullets
-		if self.session.is_game_loaded():
-			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
-				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
-
 		# load ongoing attacks
 		if self.session.is_game_loaded():
 			Weapon.load_attacks(self.session, savegame_db)
@@ -260,13 +263,12 @@ class World(BuildingOwner, WorldObject):
 	def load_raw_map(self, savegame_db, preview=False):
 		self.map_name = savegame_db.map_name
 
-		# load islands
-		self.islands = []
+		# Load islands.
 		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session, preview=preview)
 			self.islands.append(island)
 
-		#calculate map dimensions
+		# Calculate map dimensions.
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for island in self.islands:
 			self.min_x = min(island.position.left, self.min_x)
@@ -280,7 +282,7 @@ class World(BuildingOwner, WorldObject):
 
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 
-		#add water
+		# Add water.
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
 
@@ -304,7 +306,7 @@ class World(BuildingOwner, WorldObject):
 								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
-		# remove parts that are occupied by islands, create the island map and the full map
+		# Remove parts that are occupied by islands, create the island map and the full map.
 		self.island_map = {}
 		self.full_map = copy.copy(self.ground_map)
 		for island in self.islands:
@@ -373,8 +375,7 @@ class World(BuildingOwner, WorldObject):
 			map_dict[coords] = n
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in map_dict and map_dict[coords2] is None:
@@ -445,6 +446,15 @@ class World(BuildingOwner, WorldObject):
 				ship.get_component(StorageComponent).inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
+				# HACK: Store starting ship as first unit group, and select it
+				def _preselect_player_ship(player_ship):
+					sel_comp = player_ship.get_component(SelectableComponent)
+					sel_comp.select(reset_cam=True)
+					self.session.selected_instances = set([player_ship])
+					self.session.ingame_gui.handle_selection_group(1, True)
+					sel_comp.show_menu()
+				select_ship = partial(_preselect_player_ship, ship)
+				Scheduler().add_new_object(select_ship, ship, run_in=0)
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):
@@ -468,17 +478,17 @@ class World(BuildingOwner, WorldObject):
 					break
 
 	def get_random_possible_ground_unit_position(self):
-		"""Returns a position in water that is not at the border of the world.
+		"""Returns a random position upon an island.
 		@return: Point"""
 		return worldutils.get_random_possible_ground_unit_position(self)
 
 	def get_random_possible_ship_position(self):
-		"""Returns a position in water that is not at the border of the world.
+		"""Returns a random position in water that is not at the border of the world.
 		@return: Point"""
 		return worldutils.get_random_possible_ship_position(self)
 
 	def get_random_possible_coastal_ship_position(self):
-		"""Returns a position in water that is not at the border of the world
+		"""Returns a random position in water that is not at the border of the world
 		but on the coast of an island.
 		@return: Point"""
 		return worldutils.get_random_possible_coastal_ship_position(self)
@@ -661,8 +671,6 @@ class World(BuildingOwner, WorldObject):
 			self.pirate.save(db)
 		for unit in self.ships + self.ground_units:
 			unit.save(db)
-		for bullet in self.bullets:
-			bullet.save(db)
 		self.diplomacy.save(db)
 		Weapon.save_attacks(db)
 		self.disaster_manager.save(db)
@@ -702,6 +710,7 @@ class World(BuildingOwner, WorldObject):
 
 	def toggle_owner_highlight(self):
 		renderer = self.session.view.renderer['InstanceRenderer']
+		# Toggle flag that tracks highlight status.
 		self.owner_highlight_active = not self.owner_highlight_active
 		if self.owner_highlight_active: #show
 			for player in self.players:
@@ -711,7 +720,8 @@ class World(BuildingOwner, WorldObject):
 				for settlement in player.settlements:
 					for tile in settlement.ground_map.itervalues():
 						renderer.addColored(tile._instance, red, green, blue)
-		else: # 'hide' functionality
+		else:
+			# "Hide": Do nothing after removing color highlights.
 			renderer.removeAllColored()
 
 	def toggle_translucency(self):

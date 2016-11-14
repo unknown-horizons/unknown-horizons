@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 # ###################################################
 
 from horizons.constants import UNITS
+
 
 class ProductionLine(object):
 	"""Class that collects the production line data."""

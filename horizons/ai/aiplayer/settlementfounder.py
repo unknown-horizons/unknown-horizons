@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,15 +20,15 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
+from horizons.ai.aiplayer.landmanager import LandManager
 from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
 from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundationShip
-from horizons.ai.aiplayer.landmanager import LandManager
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 from horizons.util.python import decorators
-from horizons.component.storagecomponent import StorageComponent
+
 
 class SettlementFounder(object):
 	"""This class handles the settlement founding activities of an AI player."""
@@ -45,7 +45,7 @@ class SettlementFounder(object):
 
 	def _evaluate_island(self, island):
 		"""Return (flat land, utility value) of the given island."""
-		resources = defaultdict(lambda: 0)
+		resources = defaultdict(int)
 		for deposit_dict in island.deposits.itervalues():
 			for deposit in deposit_dict.itervalues():
 				if deposit.settlement is None:

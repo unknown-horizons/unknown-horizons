@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 
 import horizons.globals
 from horizons.command.misc import Chat
@@ -29,92 +28,71 @@ from horizons.component.namedcomponent import NamedComponent, SettlementNameComp
 from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
-from horizons.gui.windows import Window
-from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
+from horizons.gui.windows import Dialog
+from horizons.i18n import gettext as T
+from horizons.messaging import HoverSettlementChanged, ResourceBarResize, SettlerInhabitantsChanged
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 
 
-class ChatDialog(Window):
+class ChatDialog(Dialog):
 	"""Allow player to send messages to other players."""
+	focus = 'msg'
 
 	def __init__(self, windows, session):
 		super(ChatDialog, self).__init__(windows)
-
 		self._session = session
-		self._widget = load_uh_widget('chat.xml')
 
-		events = {
-			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self._windows.close
+	def prepare(self):
+		self._gui = load_uh_widget('chat.xml')
+		self.return_events = {
+			OkButton.DEFAULT_NAME: True,
+			CancelButton.DEFAULT_NAME: False,
 		}
-		self._widget.mapEvents(events)
 
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._windows.close()
-
-		self._widget.findChild(name="msg").capture(forward_escape, "keyPressed")
-		self._widget.findChild(name="msg").capture(self._do_chat)
-
-	def show(self):
-		self._widget.show()
-		self._widget.findChild(name="msg").requestFocus()
-
-	def hide(self):
-		self._widget.hide()
-
-	def _do_chat(self):
+	def act(self, send_message):
 		"""Actually initiates chatting and hides the dialog"""
-		msg = self._widget.findChild(name="msg").text
+		if not send_message:
+			return
+		msg = self._gui.findChild(name="msg").text
 		Chat(msg).execute(self._session)
-		self._widget.findChild(name="msg").text = u''
-		self._windows.close()
 
 
-class ChangeNameDialog(Window):
+class ChangeNameDialog(Dialog):
 	"""Shows a dialog where the user can change the name of a NamedComponent."""
+	modal = True
+	focus = 'new_name'
 
 	def __init__(self, windows, session):
 		super(ChangeNameDialog, self).__init__(windows)
-
 		self._session = session
-		self._widget = load_uh_widget('change_name.xml')
 
-		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self._windows.close})
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._windows.close()
-
-		self._widget.findChild(name="new_name").capture(forward_escape, "keyPressed")
-
-	def show(self, instance):
-		cb = Callback(self._do_change_name, instance)
-		self._widget.mapEvents({OkButton.DEFAULT_NAME: cb})
-		self._widget.findChild(name="new_name").capture(cb)
-
-		oldname = self._widget.findChild(name='old_name')
+	def prepare(self, instance):
+		self._gui = load_uh_widget('change_name.xml')
+		self.return_events = {
+			OkButton.DEFAULT_NAME: instance,
+			CancelButton.DEFAULT_NAME: False,
+		}
+		oldname = self._gui.findChild(name='old_name')
 		oldname.text = instance.get_component(NamedComponent).name
 
-		self._widget.show()
-		self._widget.findChild(name="new_name").requestFocus()
+	def act(self, named_instance):
+		"""Renames the instance that is returned by the dialog, if confirmed.
 
-	def hide(self):
-		self._widget.hide()
+		Hitting Esc or the Cancel button will not trigger a rename.
+		if no name was entered or the new name only consists of spaces, abort
+		the renaming as well.
+		"""
+		if not named_instance:
+			return
 
-	def _do_change_name(self, instance):
-		new_name = self._widget.collectData('new_name')
-		self._widget.findChild(name='new_name').text = u''
+		new_name = self._gui.collectData('new_name')
 
 		if new_name and not new_name.isspace():
 			# different namedcomponent classes share the name
-			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
-
-		self._windows.close()
+			namedcomp = named_instance.get_component_by_name(NamedComponent.NAME)
+			RenameObject(namedcomp, new_name).execute(self._session)
 
 
 class CityInfo(object):
@@ -127,6 +105,7 @@ class CityInfo(object):
 	def __init__(self, ingame_gui):
 		self._ingame_gui = ingame_gui
 		self._widget = load_uh_widget('city_info.xml', 'resource_bar')
+		self._widget.adaptLayout()
 		self._child_finder = PychanChildFinder(self._widget)
 
 		self._settlement = None
@@ -147,31 +126,21 @@ class CityInfo(object):
 
 		Show/Hide is handled automatically
 		"""
-		old_was_player_settlement = False
 		if self._settlement:
 			self._settlement.remove_change_listener(self._update_settlement)
-			old_was_player_settlement = self._settlement.owner.is_local_player
 
 		self._settlement = settlement
 
 		if not settlement:
-			# we want to hide the widget now (but perhaps delayed).
-			if old_was_player_settlement:
-				# After scrolling away from settlement, leave name on screen for some
-				# seconds. Players can still click on it to rename the settlement now.
-				ExtScheduler().add_new_object(self.hide, self,
-				      run_in=GUI.CITYINFO_UPDATE_DELAY)
-				#TODO 'click to rename' tooltip of cityinfo can stay visible in
-				# certain cases if cityinfo gets hidden in tooltip delay buffer.
-			else:
-				# hovered settlement of other player, simply hide the widget
-				self.hide()
-
+			# Hide the widget (after some seconds).
+			# Delayed to allow players scrolling away to click on the widget.
+			# This often happens when moving mouse up from island to reach it.
+			ExtScheduler().add_new_object(self.hide, self, run_in=GUI.CITYINFO_UPDATE_DELAY)
 		else:
-			# do not hide if settlement is hovered and a hide was previously scheduled
+			# Cancel previously scheduled hide if a settlement is hovered again.
 			ExtScheduler().rem_call(self, self.hide)
 
-			self._update_settlement() # calls show()
+			self._update_settlement()  # This calls show()!
 			settlement.add_change_listener(self._update_settlement)
 
 	def _on_settler_inhabitant_change(self, message):
@@ -188,7 +157,7 @@ class CityInfo(object):
 			# is setup correctly for the coming calculations
 			self._ingame_gui.resource_overview.set_inventory_instance(self._settlement)
 			cb = Callback(self._ingame_gui.show_change_name_dialog, self._settlement)
-			helptext = _("Click to change the name of your settlement")
+			helptext = T("Click to change the name of your settlement")
 			city_name_label.enable_cursor_change_on_hover()
 		else: # no name changes
 			cb = lambda: AmbientSoundComponent.play_special('error')
@@ -201,7 +170,7 @@ class CityInfo(object):
 		city_name_label.helptext = helptext
 
 		foundlabel = self._child_finder('owner_emblem')
-		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self._settlement.owner.color.name)
+		foundlabel.image = 'content/gui/icons/widgets/cityinfo/settlement_%s.png' % (self._settlement.owner.color.name)
 		foundlabel.helptext = self._settlement.owner.name
 
 		foundlabel = self._child_finder('city_name')
@@ -235,7 +204,7 @@ class CityInfo(object):
 		if is_foreign: # other player, no resbar exists
 			self._widget.pos = ('center', 'top')
 			xoff = 0
-			yoff = 19
+			yoff = 10
 		elif blocked < width < resbar[0] + blocked: # large resbar / small resolution
 			self._widget.pos = ('center', 'top')
 			xoff = 0
@@ -243,7 +212,7 @@ class CityInfo(object):
 		else:
 			self._widget.pos = ('left', 'top')
 			xoff = resbar[0] + (width - blocked - resbar[0]) // 2
-			yoff = 24
+			yoff = 15
 
 		self._widget.offset = (xoff, yoff)
 		self._widget.position_technique = "{pos[0]}{off[0]:+d}:{pos[1]}{off[1]:+d}".format(

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,41 +21,43 @@
 
 import logging
 
-from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
-from horizons.ai.aiplayer.villagebuilder import VillageBuilder
-from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
-from horizons.ai.aiplayer.productionchain import ProductionChain
-from horizons.ai.aiplayer.resourcemanager import ResourceManager
-from horizons.ai.aiplayer.trademanager import TradeManager
-
 from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
-from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, MountainCoverageGoal
+from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
+from horizons.ai.aiplayer.goal.depositcoverage import (
+	ClayDepositCoverageGoal, MountainCoverageGoal, StoneDepositCoverageGoal)
+from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
-from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
-	FeederTobaccoProductsGoal, FeederSaltGoal
+from horizons.ai.aiplayer.goal.feederchaingoal import (
+	FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal, FeederTextileGoal,
+	FeederTobaccoProductsGoal)
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
-	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal, \
-	SaltGoal
+from horizons.ai.aiplayer.goal.productionchaingoal import (
+	BoardsGoal, BricksGoal, CommunityGoal, EducationGoal, FaithGoal, FoodGoal, GetTogetherGoal,
+	MedicalHerbsProductsGoal, SaltGoal, TextileGoal, TobaccoProductsGoal, ToolsGoal)
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal
 from horizons.ai.aiplayer.goal.tradingship import TradingShipGoal
-
-from horizons.scheduler import Scheduler
-from horizons.util.worldobject import WorldObject
-from horizons.util.python import decorators
+from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
+from horizons.ai.aiplayer.productionchain import ProductionChain
+from horizons.ai.aiplayer.resourcemanager import ResourceManager
+from horizons.ai.aiplayer.trademanager import TradeManager
+from horizons.ai.aiplayer.villagebuilder import VillageBuilder
 from horizons.command.building import Tear
-from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, RES, GAME_SPEED, TIER
-from horizons.entities import Entities
-from horizons.component.storagecomponent import StorageComponent
+from horizons.command.uioptions import SetSettlementUpgradePermissions, SetTaxSetting
 from horizons.component.namedcomponent import NamedComponent
-from horizons.world.disaster.firedisaster import FireDisaster
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GAME_SPEED, RES, TIER
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
+from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.production.producer import Producer
+
 
 class SettlementManager(WorldObject):
 	"""
@@ -91,7 +93,7 @@ class SettlementManager(WorldObject):
 
 		if not self.feeder_island:
 			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes,
-				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, \
+				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades,
 				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades)
 
 	def __init(self, land_manager):
@@ -107,7 +109,7 @@ class SettlementManager(WorldObject):
 		self.production_chain = {}
 		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
-						RES.TOBACCO_PRODUCTS, RES.SALT]:
+						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialize caches
@@ -128,9 +130,11 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederLiquorGoal(self))
 			self._goals.append(FeederSaltGoal(self))
 			self._goals.append(FeederTobaccoProductsGoal(self))
+			self._goals.append(FeederMedicalProductsGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
+			self._goals.append(StoneDepositCoverageGoal(self))
 			self._goals.append(FoundFeederIslandGoal(self))
 			self._goals.append(MountainCoverageGoal(self))
 			self._goals.append(FoodGoal(self))
@@ -146,6 +150,8 @@ class SettlementManager(WorldObject):
 			self._goals.append(TradingShipGoal(self))
 			self._goals.append(CombatShipGoal(self))
 			self._goals.append(FireStationGoal(self))
+			self._goals.append(DoctorGoal(self))
+			self._goals.append(MedicalHerbsProductsGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
@@ -331,6 +337,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR))
 		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT))
 		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
+		self.log.info('%s medical herbs requirement %.5f', self, self.get_ideal_production_level(RES.MEDICAL_HERBS))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -351,6 +358,8 @@ class SettlementManager(WorldObject):
 			self.get_resource_production_requirement(RES.SALT))
 		self.log.info('%s tobacco products production %.5f / %.5f', self, self.get_resource_production(RES.TOBACCO_PRODUCTS),
 			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS))
+		self.log.info('%s medical herbs production %.5f / %.5f', self, self.get_resource_production(RES.MEDICAL_HERBS),
+			self.get_resource_production_requirement(RES.MEDICAL_HERBS))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
@@ -439,24 +448,28 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def handle_disaster(self, message):
-		if issubclass(message.disaster_class, FireDisaster):
-			position = message.building.position
-			fire_station_radius = Entities.buildings[BUILDINGS.FIRE_STATION].radius
-			handled = False
-
-			for fire_station in self.settlement.buildings_by_id[BUILDINGS.FIRE_STATION]:
-				if fire_station.position.distance(position) > fire_station_radius:
-					continue
-				# TODO: check whether the building and the fire station are connected by road
-				self.log.info('%s ignoring %s at %s because %s should be able to handle it', self, message.disaster_class.__name__, message.building, fire_station)
-				handled = True
-				break
-
-			if not handled:
-				self.log.info('%s removing %s because of %s', self, message.building, message.disaster_class.__name__)
-				Tear(message.building).execute(self.session)
+		position = message.building.position
+		if issubclass(message.disaster_class, BuildingInfluencingDisaster):
+			rescue = message.disaster_class.RESCUE_BUILDING_TYPE
 		else:
 			self.log.info('%s ignoring unknown disaster of type %s', self, message.disaster_class.__name__)
+			return
+
+		rescue_radius = Entities.buildings[rescue].radius
+		handled = False
+
+		for b in self.settlement.buildings_by_id[rescue]:
+			if b.position.distance(position) > rescue_radius:
+				continue
+			# TODO: check whether the building and the doctor/fire station are connected by road
+			self.log.info('%s ignoring %s at %s because %s should be able to handle it',
+			              self, message.disaster_class.__name__, message.building, rescue)
+			handled = True
+			break
+
+		if not handled:
+			self.log.info('%s removing %s because of %s', self, message.building, message.disaster_class.__name__)
+			Tear(message.building).execute(self.session)
 
 	def __str__(self):
 		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')

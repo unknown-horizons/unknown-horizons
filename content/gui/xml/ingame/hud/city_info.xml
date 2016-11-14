@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<Container size="242,29">
-	<TilingHBox amount="23" />
+<AutoResizeContainer name="city_info">
+	<TilingHBox amount="24" position="0,10" />
 <!-- City Info widget: Includes city name and number of inhabitants.
 	Displayed when hovering player settlement. -->
-	<Icon name="owner_emblem"  position="4,1" />
-	<Icon name="city_info_inhabitants"  position="170,-6"
-		image="content/gui/icons/widgets/cityinfo/inhabitants.png" 
+	<Icon name="owner_emblem"  position="2,-4" />
+	<Icon name="city_info_inhabitants"  position="180,4"
+		image="content/gui/icons/widgets/cityinfo/inhabitants.png"
 		helptext="Inhabitants" />
 
-	<RenameLabel name="city_name" position="35,4" />
-	<Label name="city_inhabitants" position="196,4" />
+	<RenameLabel name="city_name" position="45,14" />
+	<Label name="city_inhabitants" position="206,14" />
 	<!-- text for these two is set at runtime: horizons.gui.ingamegui.update_settlement -->
-</Container>
+</AutoResizeContainer>

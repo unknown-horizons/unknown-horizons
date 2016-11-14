@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,11 +23,13 @@ from collections import defaultdict
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.constants import RES, BUILDINGS
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.constants import BUILDINGS, RES
+from horizons.ext.typing import Tuple
 from horizons.util.python import decorators
 from horizons.world.buildability.terraincache import TerrainRequirement
+
 
 class FarmOptionCache(object):
 	def __init__(self, settlement_manager):
@@ -139,6 +141,7 @@ class FarmOptionCache(object):
 			self._positive_alignment = positive_alignment
 		return self._positive_alignment
 
+
 class AbstractFarm(AbstractBuilding):
 	@property
 	def directly_buildable(self):
@@ -155,15 +158,13 @@ class AbstractFarm(AbstractBuilding):
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.FOOD:
-			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.WOOL:
-			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.SUGAR:
-			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_LEAVES:
-			return BUILDING_PURPOSE.TOBACCO_FIELD
-		return None
+		return {
+			RES.FOOD:           BUILDING_PURPOSE.POTATO_FIELD,
+			RES.WOOL:           BUILDING_PURPOSE.PASTURE,
+			RES.SUGAR:          BUILDING_PURPOSE.SUGARCANE_FIELD,
+			RES.TOBACCO_LEAVES: BUILDING_PURPOSE.TOBACCO_FIELD,
+			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+		}.get(resource_id)
 
 	def get_evaluators(self, settlement_manager, resource_id):
 		options_cache = self._get_option_cache(settlement_manager)
@@ -215,7 +216,7 @@ class AbstractFarm(AbstractBuilding):
 					options.append(evaluator)
 		return options
 
-	__cache = {}
+	__cache = {} # type: Dict[int, Tuple[Tuple[int, int], FarmOptionCache]]
 	def _get_option_cache(self, settlement_manager):
 		production_builder = settlement_manager.production_builder
 		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)
@@ -239,10 +240,11 @@ class AbstractFarm(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.FARM] = cls
 
+
 class FarmEvaluator(BuildingEvaluator):
 	__field_pos_offsets = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-	__field_offsets = None
+	__field_offsets = None # type: List[Tuple[int, int]]
 
 	__slots__ = ('farm_plan', 'field_purpose')
 
@@ -262,8 +264,11 @@ class FarmEvaluator(BuildingEvaluator):
 		cls.__field_offsets = first_class + second_class + third_class
 
 	@classmethod
-	def _suitable_for_road(self, production_builder, coords):
-		return coords in production_builder.land_manager.roads or (coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
+	def _suitable_for_road(cls, production_builder, coords):
+		"""check coordinates"""
+		return coords in production_builder.land_manager.roads or (
+			coords in production_builder.plan and
+			production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
 	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment):
@@ -359,8 +364,8 @@ class FarmEvaluator(BuildingEvaluator):
 		if not self.builder.have_resources(self.area_builder.land_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		changes = defaultdict(lambda: [])
-		reverse_changes = defaultdict(lambda: [])
+		changes = defaultdict(list)
+		reverse_changes = defaultdict(list)
 		for coords, purpose in self.farm_plan.iteritems():
 			# completely ignore the road in the plan for now
 			if purpose == BUILDING_PURPOSE.ROAD:
@@ -395,6 +400,7 @@ class FarmEvaluator(BuildingEvaluator):
 		self._register_changes(changes, True)
 		return (BUILD_RESULT.OK, building)
 
+
 class ModifiedFieldEvaluator(BuildingEvaluator):
 	"""This evaluator evaluates the cost of changing the type of an unused field."""
 
@@ -406,36 +412,31 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, new_field_purpose):
-		building_id = None
-		if new_field_purpose == BUILDING_PURPOSE.POTATO_FIELD:
-			building_id = BUILDINGS.POTATO_FIELD
-		elif new_field_purpose == BUILDING_PURPOSE.PASTURE:
-			building_id = BUILDINGS.PASTURE
-		elif new_field_purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
-			building_id = BUILDINGS.SUGARCANE_FIELD
-		elif new_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
-			building_id = BUILDINGS.TOBACCO_FIELD
+		building_id = {
+			BUILDING_PURPOSE.POTATO_FIELD:    BUILDINGS.POTATO_FIELD,
+			BUILDING_PURPOSE.PASTURE:         BUILDINGS.PASTURE,
+			BUILDING_PURPOSE.SUGARCANE_FIELD: BUILDINGS.SUGARCANE_FIELD,
+			BUILDING_PURPOSE.TOBACCO_FIELD:   BUILDINGS.TOBACCO_FIELD,
+			BUILDING_PURPOSE.HERBARY:         BUILDINGS.HERBARY,
+		}.get(new_field_purpose)
 
-		value = 0
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
-		if new_field_purpose == BUILDING_PURPOSE.POTATO_FIELD:
-			value += personality.add_potato_field_value
-		elif new_field_purpose == BUILDING_PURPOSE.PASTURE:
-			value += personality.add_pasture_value
-		elif new_field_purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
-			value += personality.add_sugarcane_field_value
-		elif new_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
-			value += personality.add_tobacco_field_value
+		value = {
+			BUILDING_PURPOSE.POTATO_FIELD:    personality.add_potato_field_value,
+			BUILDING_PURPOSE.PASTURE:         personality.add_pasture_value,
+			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.add_sugarcane_field_value,
+			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.add_tobacco_field_value,
+			BUILDING_PURPOSE.HERBARY:         personality.add_herbary_field_value,
+		}.get(new_field_purpose, 0)
 
 		old_field_purpose = area_builder.plan[(x, y)][0]
-		if old_field_purpose == BUILDING_PURPOSE.POTATO_FIELD:
-			value -= personality.remove_unused_potato_field_penalty
-		elif old_field_purpose == BUILDING_PURPOSE.PASTURE:
-			value -= personality.remove_unused_pasture_penalty
-		elif old_field_purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
-			value -= personality.remove_unused_sugarcane_field_penalty
-		elif old_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
-			value -= personality.remove_unused_tobacco_field_penalty
+		value -= {
+			BUILDING_PURPOSE.POTATO_FIELD:    personality.remove_unused_potato_field_penalty,
+			BUILDING_PURPOSE.PASTURE:         personality.remove_unused_pasture_penalty,
+			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.remove_unused_sugarcane_field_penalty,
+			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.remove_unused_tobacco_field_penalty,
+			BUILDING_PURPOSE.HERBARY:         personality.remove_unused_herbary_field_penalty,
+		}.get(old_field_purpose, 0)
 
 		builder = BasicBuilder.create(building_id, (x, y), 0)
 		return ModifiedFieldEvaluator(area_builder, builder, value, old_field_purpose)

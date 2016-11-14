@@ -16,7 +16,7 @@ while ( <FILE> ){
     $line = $_;
     $line_nr++;
 
-    if ( $line =~ m!, python-format! && $line !~ m!, fuzzy! ){
+    if ( $line =~ m!, python-brace-format! && $line !~ m!, fuzzy! ){
         $line_nr += 2;
         my $line1 = <FILE>;
         my $line2_read = <FILE>;

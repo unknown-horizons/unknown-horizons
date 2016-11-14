@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,14 @@
 
 from fife.extensions.pychan.widgets import Container, HBox, Icon
 
-from horizons.gui.util import load_uh_widget, get_res_icon_path
-from horizons.util.python.callback import Callback
 from horizons.command.unit import SetStance
-from horizons.extscheduler import ExtScheduler
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import get_res_icon_path, load_uh_widget
+from horizons.i18n import gettext as T
+from horizons.util.python.callback import Callback
+
 
 class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -113,11 +115,12 @@ class WeaponStorageWidget(HBox):
 			for weapon, amount in storage:
 				weapons_added = True
 				icon_image = get_res_icon_path(weapon, 24)
-				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
-				icon = Icon(image=icon_image, helptext=icon_tooltip)
+				weapon_name = self.instance.session.db.get_res_name(weapon)
+				# You usually do not need to change anything here when translating
+				helptext = T('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
+				icon = Icon(image=icon_image, helptext=helptext)
 				self.addChild(icon)
 		if not weapons_added:
 			icon_image = "content/gui/icons/resources/none.png"
-			icon = Icon(image=icon_image, helptext=_("none"))
+			icon = Icon(image=icon_image, helptext=T("none"))
 			self.addChild(icon)
-

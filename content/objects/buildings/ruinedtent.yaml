@@ -1,4 +1,4 @@
-id: 10
+id: BUILDINGS.SETTLER_RUIN
 name: _ Ruined Tent
 baseclass: settler.SettlerRuin
 radius: 0
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 0
 tooltip_text: null
-settler_level: TIER.NATURE
+tier: TIER.NATURE
 buildingcosts: {}
 components:
 - HealthComponent: {maxhealth: 1000}

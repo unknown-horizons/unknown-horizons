@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.worldobject import WorldObject
 from horizons.command import Command
+from horizons.util.worldobject import WorldObject
+
 
 class GenericDiplomacyCommand(Command):
 	def __init__(self, a, b):
@@ -50,4 +51,3 @@ class AddNeutralPair(GenericDiplomacyCommand):
 		player1.session.world.diplomacy.add_neutral_pair(player1, player2)
 
 Command.allow_network(AddNeutralPair)
-

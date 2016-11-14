@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,15 +22,15 @@
 from collections import defaultdict
 
 import horizons.globals
-
-from horizons.entities import Entities
 from horizons.command import Command
 from horizons.command.uioptions import TransferResource
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES
+from horizons.entities import Entities
+from horizons.scenario import CONDITIONS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
-from horizons.scenario import CONDITIONS
-from horizons.constants import BUILDINGS, RES
-from horizons.component.storagecomponent import StorageComponent
+
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -75,10 +75,10 @@ class Build(Command):
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
 		build_position = buildable_class.check_build(session, Point(self.x, self.y),
-			rotation=self.rotation,
-			check_settlement=issuer is not None,
-			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
-			issuer=issuer)
+		                                             rotation=self.rotation,
+		                                             check_settlement=issuer is not None,
+		                                             ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
+		                                             issuer=issuer)
 
 		# it's possible that the build check requires different actions now,
 		# so update our data
@@ -92,7 +92,7 @@ class Build(Command):
 			               None if self.settlement is None else WorldObject.get_object_by_id(self.settlement)]
 
 			build_position.buildable, missing_res = self.check_resources(
-				{}, buildable_class.costs, issuer, res_sources)
+			    {}, buildable_class.costs, issuer, res_sources)
 		if not build_position.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
@@ -112,10 +112,10 @@ class Build(Command):
 				pass
 
 		building = Entities.buildings[self.building_class](
-			session=session, x=self.x, y=self.y, rotation=self.rotation,
-			island=island, action_set_id=self.action_set_id, instance=None,
-			owner=issuer if not self.ownerless else None,
-			**self.data
+		    session=session, x=self.x, y=self.y, rotation=self.rotation,
+		    island=island, action_set_id=self.action_set_id, instance=None,
+		    owner=issuer if not self.ownerless else None,
+		    **self.data
 		)
 		building.initialize(**self.data)
 		# initialize must be called immediately after the construction
@@ -148,8 +148,8 @@ class Build(Command):
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
 		if (building.id == BUILDINGS.WAREHOUSE
-		and isinstance(building.owner, HumanPlayer)
-		and horizons.globals.fife.get_uh_setting("AutoUnload")):
+		    and isinstance(building.owner, HumanPlayer)
+		    and horizons.globals.fife.get_uh_setting("AutoUnload")):
 			ship = WorldObject.get_object_by_id(self.ship)
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory
@@ -175,7 +175,7 @@ class Build(Command):
 		for resource in costs:
 			needed_res[resource] = needed_res.get(resource, 0) + costs[resource]
 
-		reserved_res = defaultdict(lambda : 0) # res needed for sth else but still present
+		reserved_res = defaultdict(int) # res needed for sth else but still present
 		if hasattr(issuer.session.manager, "get_builds_in_construction"):
 			# mp game, consider res still to be subtracted
 			builds = issuer.session.manager.get_builds_in_construction()
@@ -210,6 +210,42 @@ class Tear(Command):
 		"""
 		self.building = building.worldid
 
+	@classmethod
+	def additional_removals_after_tear(cls, building_to_remove):
+		"""
+		Calculate which buildings need to be removed when removing the building from its settlement
+		@return tupel(buildings_to_remove, obsolete_settlement_coords)
+		"""
+		settlement = building_to_remove.settlement
+		position = building_to_remove.position
+		# Find all range affecting buildings.
+		other_range_buildings = []
+		for building in settlement.buildings:
+			if building.id in BUILDINGS.EXPAND_RANGE:
+				other_range_buildings.append(building)
+		other_range_buildings.remove(building_to_remove)
+
+		# Calculate which coordinates are in the new settlement and which are not
+		new_settlement_coords = set()
+		for building in other_range_buildings:
+			range_coords = list(building.position.get_radius_coordinates(building.radius, include_self=True))
+			new_settlement_coords.update(range_coords)
+		obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(new_settlement_coords)
+
+		# Find the buildings that need to be destroyed
+		buildings_to_destroy = []
+		for building in settlement.buildings:
+			if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
+				continue
+			if building.position == position:
+				continue
+			for coord in building.position:
+				if coord in obsolete_settlement_coords:
+					buildings_to_destroy.append(building)
+					break
+
+		return (buildings_to_destroy, obsolete_settlement_coords)
+
 	def __call__(self, issuer):
 		"""Execute the command
 		@param issuer: the issuer of the command
@@ -220,8 +256,7 @@ class Tear(Command):
 			self.log.debug("Tear: building %s already gone, not tearing it again.", self.building)
 			return # invalid command, possibly caused by mp delay
 		if building is None or building.fife_instance is None:
-			self.log.warning("Tear: attempting to tear down a building that shouldn't exist %s", building)
-			print "Tear: attempting to tear down a building that shouldn't exist %s" % building
+			self.log.error("Tear: attempting to tear down a building that shouldn't exist %s", building)
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()

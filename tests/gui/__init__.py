@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,14 +27,15 @@ When this test is run, it will launch the game in a subprocess, passing it the
 dotted path to the test (along with other options), similar to this code:
 
 	def test_example():
-		returncode = subprocess.call(['python', 'run_uh.py', '--gui-test',
-									  'tests.gui.minimap'])
+		returncode = subprocess.call(['python2', 'run_uh.py', '--gui-test',
+		                              'tests.gui.minimap'])
 		if returncode != 0:
 			assert False
 
 	def minimap(gui):
 		menu = gui.find(name='mainmenu')
 """
+from __future__ import print_function
 
 import os
 import shutil
@@ -53,7 +54,8 @@ from tests.utils import Timer
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
-class TestFailed(Exception): pass
+class TestFailed(Exception):
+	pass
 
 
 TEST_USER_DIR = None
@@ -87,7 +89,7 @@ class GuiTestPlugin(Plugin):
 
 	Because nose runs in a different process than the real test, we cannot easily
 	show the traceback as if the exception occured here. The real traceback will
-	be used as message in an `TestFailed` exception, which we capture here and
+	be used as message in a `TestFailed` exception, which we capture here and
 	remove the traceback (from the TestFailed raise) entirely, leaving us just
 	with the exception.
 
@@ -147,7 +149,7 @@ class TestRunner(object):
 		self._gui_handlers = []
 
 		self._custom_setup()
-		self._filter_traceback()
+		#self._filter_traceback()
 		test = self._load_test(test_path)
 		testlet = cooperative.spawn(test, GuiHelper(self._engine.pychan, self))
 		testlet.link(self._stop_test)
@@ -204,7 +206,12 @@ class TestRunner(object):
 
 		This function will be called by the engine's mainloop each frame.
 		"""
-		cooperative.schedule()
+		try:
+			cooperative.schedule()
+		except Exception:
+			import traceback
+			traceback.print_exc()
+			sys.exit(1)
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
@@ -291,10 +298,10 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			if proc.returncode != 0:
 				if nose_captured:
 					if stdout:
-						print stdout
+						print(stdout)
 					if not 'Traceback' in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
-					raise TestFailed('\n\n' + stderr)
+					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))
 				else:
 					raise TestFailed()
 

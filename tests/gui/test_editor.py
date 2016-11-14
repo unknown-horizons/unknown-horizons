@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,9 +21,9 @@
 
 import os
 
-from horizons.constants import PATHS, GROUND
+from horizons.constants import EDITOR, GROUND, PATHS
 from tests.gui import gui_test
-
+from tests.utils import mark_flaky
 
 editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
 
@@ -32,29 +32,38 @@ editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
 def test_place_tiles(gui):
 	"""Place different tiles with different tile sizes."""
 
-	gui.trigger('editor_settings', 'water')
+	gui.trigger('editor_settings/water')
 	gui.cursor_click(27, 36, 'left')
 	gui.cursor_click(27, 37, 'left')
 	gui.cursor_click(27, 38, 'left')
 
-	gui.trigger('editor_settings', 'size_2')
-	gui.trigger('editor_settings', 'sand')
+	gui.trigger('editor_settings/size_2')
+	gui.trigger('editor_settings/sand')
 	gui.cursor_click(34, 34, 'left')
 
-	gui.trigger('editor_settings', 'size_3')
-	gui.trigger('editor_settings', 'default_land')
+	gui.trigger('editor_settings/size_3')
+	gui.trigger('editor_settings/default_land')
 	gui.cursor_click(34, 27, 'left')
+
+	# Map edge and largest brush size
+	gui.trigger('editor_settings/size_%s' % (EDITOR.MAX_BRUSH_SIZE))
+	gui.cursor_click(-8, 78, 'left')
 
 
 @editor_test
 def test_save_map(gui):
 	"""Save a map in the editor."""
-	gui.trigger('mainhud', 'gameMenuButton')
-	gui.trigger('menu', 'savegameButton')
 
-	name = gui.find("map_name")
-	name.text = u"test_map"
-	gui.trigger('map_save_dialog_window', 'okButton')
+	# FIXME escape doesn't work
+	#gui.press_key(gui.Key.ESCAPE)
+	gui.trigger('mainhud/gameMenuButton')
+
+	def func1():
+		gui.find('savegamefile').write('test_map')
+		gui.trigger('load_game_window/okButton')
+
+	with gui.handler(func1):
+		gui.trigger('menu/button_images/savegameButton')
 
 	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, u"test_map.sqlite"))
 
@@ -65,7 +74,7 @@ def test_drag_mouse(gui):
 	# TODO This is a really simple demonstration of mouse drag support in tests.
 	# TODO We should add better tests to show that the tile algorithm really works.
 
-	gui.trigger('editor_settings', 'water')
+	gui.trigger('editor_settings/water')
 	gui.cursor_drag((30, 30), (30, 37), 'left')
 
 	# quick check if the mouse drag had any effect on the map

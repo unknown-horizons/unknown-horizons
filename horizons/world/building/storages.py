@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.resourcehandler import StorageResourceHandler
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.component.storagecomponent import StorageComponent
-from horizons.world.building.production import ProductionBuilding
-from horizons.world.building.path import Path
-from horizons.world.status import InventoryFullStatus
 from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleFromShip
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.building.path import Path
+from horizons.world.building.production import ProductionBuilding
+from horizons.world.resourcehandler import StorageResourceHandler
+from horizons.world.status import InventoryFullStatus
+
 
 class StorageBuilding(StorageResourceHandler,
                       BuildingResourceHandler, BasicBuilding):
@@ -42,11 +43,13 @@ class StorageBuilding(StorageResourceHandler,
 		super(StorageBuilding, self).initialize()
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 		# add limit, it will be saved so don't set on load()
-		self.get_component(StorageComponent).inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
+		inv = self.get_component(StorageComponent).inventory
+		inv.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
 	def remove(self):
-		self.get_component(StorageComponent).inventory.remove_change_listener(self._changed)
-		self.get_component(StorageComponent).inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
+		inv = self.get_component(StorageComponent).inventory
+		inv.remove_change_listener(self._changed)
+		inv.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
 	def load(self, db, worldid):
@@ -56,7 +59,8 @@ class StorageBuilding(StorageResourceHandler,
 
 	def get_utilization_history_length(self):
 		collecting_comp = self.get_component(CollectingComponent)
-		return None if not collecting_comp.get_local_collectors() else collecting_comp.get_local_collectors()[0].get_utilization_history_length()
+		if collecting_comp.get_local_collectors():
+			return collecting_comp.get_local_collectors()[0].get_utilization_history_length()
 
 	def get_collector_utilization(self):
 		collectors = self.get_component(CollectingComponent).get_local_collectors()

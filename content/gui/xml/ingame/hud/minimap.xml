@@ -10,19 +10,19 @@ In case you change the size of this Container, also adapt the ingamegui position
 		image="content/gui/images/background/widgets/map_bg.png" />
 	<Label name="speed_text" position="50,90" font="default_bold" />
 
-	<ToggleImageButton name="speedUp" position="48,63"
-		path="icons/widgets/minimap/speed_up" helptext="Increase game speed (+)" />
-	<ToggleImageButton name="speedDown" position="48,105"
-		path="icons/widgets/minimap/speed_down" helptext="Decrease game speed (-)" />
+	<ImageButton name="speedUp" position="48,63"
+		path="icons/widgets/minimap/speed_up" helptext="Increase game speed ({key})" />
+	<ImageButton name="speedDown" position="48,105"
+		path="icons/widgets/minimap/speed_down" helptext="Decrease game speed ({key})" />
 
 	<ImageButton name="rotateLeft" position="96,19"
-		path="icons/widgets/minimap/rotate_left" helptext="Rotate map counterclockwise (,)" />
+		path="icons/widgets/minimap/rotate_left" helptext="Rotate map counterclockwise ({key})" />
 	<ImageButton name="rotateRight" position="150,19"
-		path="icons/widgets/minimap/rotate_right" helptext="Rotate map clockwise (.)" />
+		path="icons/widgets/minimap/rotate_right" helptext="Rotate map clockwise ({key})" />
 
-	<ToggleImageButton name="zoomIn" position="195,63"
+	<ImageButton name="zoomIn" position="195,63"
 		path="icons/widgets/minimap/zoom_in" helptext="Zoom in" />
-	<ToggleImageButton name="zoomOut" position="195,105"
+	<ImageButton name="zoomOut" position="195,105"
 		path="icons/widgets/minimap/zoom_out" helptext="Zoom out" />
 </Container>
 
@@ -36,15 +36,15 @@ In case you change the size of this Container, also adapt the ingamegui position
 	<Icon position="157,0"  image="content/gui/images/buttons/glass_small.png" />
 
 	<ImageButton name="destroy_tool" position="3,2"
-		path="icons/widgets/minimap/tear" helptext="Destroy (X)" />
+		path="icons/widgets/minimap/tear" helptext="Destroy ({key})" />
 	<ImageButton name="logbook" position="39,32"
-		path="icons/widgets/minimap/captainslog" helptext="Captain's log (L)" />
+		path="icons/widgets/minimap/captainslog" helptext="Captain's log ({key})" />
 	<ImageButton name="build" position="82,42"
-		path="icons/widgets/minimap/build" helptext="Build menu (B)" />
+		path="icons/widgets/minimap/build" helptext="Build menu ({key})" />
 	<ImageButton name="diplomacyButton" position="130,32"
 		path="icons/widgets/minimap/diplomacy" helptext="Diplomacy" />
 	<ImageButton name="gameMenuButton" position="160,0"
-		path="icons/widgets/minimap/gamemenu" helptext="Game menu (Esc)" />
+		path="icons/widgets/minimap/gamemenu" helptext="Game menu ({key})" />
 </Container>
 
 <Icon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />

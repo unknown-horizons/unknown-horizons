@@ -51,7 +51,7 @@ CREATE TABLE "selected" (
 CREATE TABLE "command" (
 	"tick" INT NOT NULL,
 	"issuer" INT NOT NULL,
-	"data" TEXT NOT NULL 
+	"data" TEXT NOT NULL
 );
 
 CREATE TABLE "building" (
@@ -137,7 +137,7 @@ CREATE TABLE "storage_global_limit" (
 
 CREATE TABLE "scenario_variables" (
 	"key" TEXT NOT NULL,
-	"value" TEXT NOT NULL 
+	"value" TEXT NOT NULL
 );
 
 CREATE TABLE "logbook" (
@@ -152,7 +152,7 @@ CREATE TABLE "logbook_messages" (
 CREATE TABLE "trade_values" (
 	"object" INT NOT NULL,
 	"total_income" INT NOT NULL,
-	"total_expenses" INT NOT NULL 
+	"total_expenses" INT NOT NULL
 );
 
 CREATE TABLE "mine" (
@@ -172,7 +172,7 @@ CREATE TABLE "remaining_ticks_of_month" (
 
 CREATE TABLE "pirate_home_point" (
 	"x" INT NOT NULL,
-	"y" INT NOT NULL 
+	"y" INT NOT NULL
 );
 
 CREATE TABLE "ship_route_waypoint" (
@@ -206,16 +206,6 @@ CREATE TABLE "unit" (
 	"x" INT DEFAULT NULL,
 	"y" INT DEFAULT NULL,
 	"owner" INT NOT NULL
-);
-
-CREATE TABLE "bullet" (
-	"worldid" INT,
-	"startx" INT,
-	"starty" INT,
-	"destx" INT,
-	"desty" INT,
-	"speed" INT,
-	"image" TEXT
 );
 
 CREATE TABLE "attacks" (
@@ -272,21 +262,21 @@ CREATE TABLE "ai_builder" (
 CREATE TABLE "ai_land_manager" (
 	"owner" INT NOT NULL,
 	"island" INT NOT NULL,
-	"feeder_island" BOOL NOT NULL 
+	"feeder_island" BOOL NOT NULL
 );
 
 CREATE TABLE "ai_land_manager_coords" (
 	"land_manager" INT NOT NULL,
 	"x" INT NOT NULL,
 	"y" INT NOT NULL,
-	"purpose" INT NOT NULL 
+	"purpose" INT NOT NULL
 );
 
 CREATE TABLE "ai_mission_domestic_trade" (
 	"source_settlement_manager" INT NOT NULL,
 	"destination_settlement_manager" INT NOT NULL,
 	"ship" INT NOT NULL,
-	"state" INT NOT NULL 
+	"state" INT NOT NULL
 );
 
 CREATE TABLE "ai_mission_found_settlement" (
@@ -294,7 +284,7 @@ CREATE TABLE "ai_mission_found_settlement" (
 	"ship" INT NOT NULL,
 	"x" INT NOT NULL,
 	"y" INT NOT NULL,
-	"state" INT NOT NULL 
+	"state" INT NOT NULL
 );
 
 CREATE TABLE "ai_mission_international_trade" (
@@ -303,18 +293,18 @@ CREATE TABLE "ai_mission_international_trade" (
 	"ship" INT NOT NULL,
 	"bought_resource" INT,
 	"sold_resource" INT,
-	"state" INT NOT NULL 
+	"state" INT NOT NULL
 );
 
 CREATE TABLE "ai_mission_prepare_foundation_ship" (
 	"settlement_manager" INT NOT NULL,
 	"ship" INT NOT NULL,
 	"feeder_island" BOOL NOT NULL,
-	"state" INT NOT NULL 
+	"state" INT NOT NULL
 );
 
 CREATE TABLE "ai_personality_manager" (
-	"personality" TEXT NOT NULL 
+	"personality" TEXT NOT NULL
 );
 
 CREATE TABLE "ai_player" (
@@ -333,40 +323,40 @@ CREATE TABLE "ai_pirate" (
 CREATE TABLE "ai_production_builder" (
 	"settlement_manager" INT NOT NULL,
 	"last_collector_improvement_storage" INT NOT NULL,
-	"last_collector_improvement_road" INT NOT NULL 
+	"last_collector_improvement_road" INT NOT NULL
 );
 
 CREATE TABLE "ai_production_builder_plan" (
 	"production_builder" INT NOT NULL,
 	"x" INT NOT NULL,
 	"y" INT NOT NULL,
-	"purpose" INT NOT NULL 
+	"purpose" INT NOT NULL
 );
 
 CREATE TABLE "ai_resource_manager" (
-	"settlement_manager"  NOT NULL 
+	"settlement_manager"  NOT NULL
 );
 
 CREATE TABLE "ai_resource_manager_requirement" (
 	"resource_manager" INT NOT NULL,
 	"resource" INT NOT NULL,
-	"amount" INT NOT NULL 
+	"amount" INT NOT NULL
 );
 
 CREATE TABLE "ai_resource_manager_trade_storage" (
 	"resource_manager" INT NOT NULL,
 	"settlement_manager" INT NOT NULL,
 	"resource" INT NOT NULL,
-	"amount" REAL NOT NULL 
+	"amount" REAL NOT NULL
 );
 
 CREATE TABLE "ai_settlement_manager" (
-	"land_manager" INT NOT NULL 
+	"land_manager" INT NOT NULL
 );
 
 CREATE TABLE "ai_ship" (
 	"owner" INT NOT NULL,
-	"state" INT NOT NULL 
+	"state" INT NOT NULL
 );
 
 CREATE TABLE "fleet" (
@@ -438,43 +428,43 @@ CREATE TABLE "ai_single_resource_manager" (
 	"building_id" INT NOT NULL,
 	"low_priority" REAL NOT NULL,
 	"available" REAL NOT NULL,
-	"total" REAL NOT NULL 
+	"total" REAL NOT NULL
 );
 
 CREATE TABLE "ai_single_resource_manager_quota" (
 	"single_resource_manager" INT NOT NULL,
 	"identifier" TEXT NOT NULL,
 	"quota" REAL NOT NULL,
-	"priority" BOOL NOT NULL 
+	"priority" BOOL NOT NULL
 );
 
 CREATE TABLE "ai_single_resource_trade_manager" (
 	"trade_manager" INT NOT NULL,
 	"resource_id" INT NOT NULL,
 	"available" REAL NOT NULL,
-	"total" REAL NOT NULL 
+	"total" REAL NOT NULL
 );
 
 CREATE TABLE "ai_single_resource_trade_manager_partner" (
 	"single_resource_trade_manager" INT NOT NULL,
 	"settlement_manager" INT NOT NULL,
-	"amount" REAL NOT NULL 
+	"amount" REAL NOT NULL
 );
 
 CREATE TABLE "ai_single_resource_trade_manager_quota" (
 	"single_resource_trade_manager" INT NOT NULL,
 	"identifier" TEXT NOT NULL,
-	"quota" REAL NOT NULL 
+	"quota" REAL NOT NULL
 );
 
 CREATE TABLE "ai_trade_manager" (
-	"settlement_manager" INT NOT NULL 
+	"settlement_manager" INT NOT NULL
 );
 
 CREATE TABLE "ai_village_builder" (
 	"settlement_manager" INT NOT NULL,
 	"num_sections" INT NOT NULL,
-	"current_section" INT NOT NULL 
+	"current_section" INT NOT NULL
 );
 
 CREATE TABLE "ai_village_builder_plan" (
@@ -503,12 +493,12 @@ CREATE TABLE "production" (
 	"prod_line_id" INT NOT NULL,
 	"remaining_ticks" INT DEFAULT NULL,
 	"_pause_old_state" INT DEFAULT NULL,
-	"creation_tick" INT NOT NULL 
+	"creation_tick" INT NOT NULL
 );
 
 CREATE TABLE "settlement" (
 	"island" INT NOT NULL,
-	"owner" INT NOT NULL 
+	"owner" INT NOT NULL
 );
 
 CREATE TABLE "settlement_level_properties" (
@@ -533,7 +523,7 @@ CREATE TABLE "ai_mission_special_domestic_trade" (
 	"source_settlement_manager" INT NOT NULL,
 	"destination_settlement_manager" INT NOT NULL,
 	"ship" INT NOT NULL,
-	"state" INT NOT NULL 
+	"state" INT NOT NULL
 );
 
 CREATE TABLE "production_queue" (
@@ -586,8 +576,8 @@ CREATE TABLE "disaster" (
 	"remaining_ticks_expand" INT NOT NULL -- ticks until the disaster will expand next
 );
 
-CREATE TABLE "fire_disaster" (
-	"disaster" INT NOT NULL, -- disaster and building together make up the key 
+CREATE TABLE "building_influencing_disaster" (
+	"disaster" INT NOT NULL, -- disaster and building together make up the key
 	"building" INT NOT NULL,
 	"remaining_ticks_havoc" INT NOT NULL
 );
@@ -604,7 +594,5 @@ CREATE TABLE "last_active_settlement" (
 CREATE TABLE "fish_data" (
 	"last_usage_tick" INT NOT NULL
 );
-
-
 
 COMMIT;

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,13 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
-from mission.specialdomestictrade import SpecialDomesticTrade
-from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
+from horizons.util.python import decorators
+
+from .mission.specialdomestictrade import SpecialDomesticTrade
+
 
 class SpecialDomesticTradeManager(object):
 	"""
@@ -74,7 +75,7 @@ class SpecialDomesticTradeManager(object):
 			#self.log.info('%s no available ships', self)
 			return
 
-		options = defaultdict(lambda: [])
+		options = defaultdict(list)
 		# try to set up a new route where the first settlement gets an extra shipment of a resource from the second settlement
 		for source_settlement_manager in self.owner.settlement_managers:
 			for destination_settlement_manager in self.owner.settlement_managers:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
+from __future__ import print_function
+
 import fnmatch
+import logging
 import os
 
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
+
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -47,7 +50,9 @@ class _EntitiesLazyDict(dict):
 class Entities(object):
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
-	Loads everything from the db."""
+	Loads grounds from the db.
+	Loads units and buildings from the object YAML files.
+	"""
 	loaded = False
 
 	log = logging.getLogger('entities')
@@ -96,7 +101,7 @@ class Entities(object):
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file, game_data=True)
 				if result is None: # discard empty yaml files
-					print "Empty yaml file {file} found, not loading!".format(file=full_file)
+					print("Empty yaml file {file} found, not loading!".format(file=full_file))
 					continue
 
 				result['yaml_file'] = full_file

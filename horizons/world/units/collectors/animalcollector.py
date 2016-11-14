@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scheduler import Scheduler
-
-from horizons.util.python import decorators
-from horizons.util.shapes import RadiusRect
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class AnimalCollector(BuildingCollector):
@@ -60,7 +58,10 @@ class AnimalCollector(BuildingCollector):
 	def cancel(self, continue_action=None):
 		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
-				self.job.object.remove_stop_after_job()
+				if hasattr(self.job.object, 'remove_stop_after_job'):
+					# when loading a game fails and the world is destructed again, the
+					# worldid may not yet have been resolved to an actual in-game object
+					self.job.object.remove_stop_after_job()
 		super(AnimalCollector, self).cancel(continue_action=continue_action)
 
 	def begin_current_job(self):
@@ -145,19 +146,6 @@ class AnimalCollector(BuildingCollector):
 			Scheduler().add_new_object(self.job.object.search_job, self.job.object,
 			                           GAME_SPEED.TICKS_PER_SECOND)
 
-
-class FarmAnimalCollector(AnimalCollector):
-	def get_animals_in_range(self, reslist=None):
-		"""Returns animals from buildings in range"""
-		reach = RadiusRect(self.home_building.position, self.home_building.radius)
-		# don't consider res when searching for buildings, since only their animals are
-		# the acctual providers
-		buildings = self.home_building.island.get_providers_in_range(reach)
-		animal_lists = (building.animals for building in buildings if hasattr(building, 'animals'))
-		# use overloaded + for lists here in sum
-		return sum(animal_lists, [])
-
-
 class HunterCollector(AnimalCollector):
 	kill_animal = True
 
@@ -169,5 +157,4 @@ class HunterCollector(AnimalCollector):
 
 
 decorators.bind_all(AnimalCollector)
-decorators.bind_all(FarmAnimalCollector)
 decorators.bind_all(HunterCollector)

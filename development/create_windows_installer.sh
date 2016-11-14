@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RELEASE_VERSION=2012.2
+RELEASE_VERSION=2013.3
 
 PYTHON_DIR="C:/Python27"
 PYTHON_DLL="C:/windows/system32/python27.dll"
@@ -34,7 +34,7 @@ cd ..
 echo "Running Setup..."
 cd development
 python compile_translation_win.py
-python generate_atlases.py 1024
+python ../horizons/engine/generate_atlases.py 1024
 cd ..
 
 echo "Cleaning up"
@@ -43,7 +43,6 @@ echo "Cleaning up"
 rm setup*
 rm unknown-horizons
 rm unknown-horizons.wpr
-rm server.py
 rm stage_build_mac.py
 rm *_tests*
 rm -r tests/
@@ -54,13 +53,14 @@ rm run_uh.bat
 echo "Unsetting dev version..."
 sed -i 's/IS_DEV_VERSION\s=\sTrue/IS_DEV_VERSION = False/g' horizons/constants.py
 sed -i "s/RELEASE_VERSION = .*/RELEASE_VERSION = u'$RELEASE_VERSION'/g" horizons/constants.py
+sed -i "s/current_version\.php/current_version_win\.php/g" horizons/constants.py
 
 echo "Removing non-atlas graphics..."
 rm -r content/gfx/{base,buildings,units,terrain}
 
 echo "Creating executable..."
-echo "python\pythonw.exe run_uh.py" > unknown-horizons.bat
-echo "python\python.exe run_uh.py --debug-log-only" > unknown-horizons-debug.bat
+echo -e "python\pythonw.exe run_uh.py\r\npause" > unknown-horizons.bat
+echo -e "python\python.exe run_uh.py --debug-log-only\r\npause" > unknown-horizons-debug.bat
 
 cd development
 python nsiscripter.py $RELEASE_VERSION

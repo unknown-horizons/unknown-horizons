@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,58 +22,59 @@
 import horizons.globals
 
 
-class ColorMeta(type):
-	"""Metaclass allows iteration and indexing of the Color class.
-
-	Example:
-		
-		for c in Color:
-			pass
-
-		Color['red']
-		Color[0]
-	"""
-
-	def __getitem__(cls, key):
-		"""Gets a color by name or id in the db"""
-		if key == 0:
-			return None
-		r, g, b = horizons.globals.db('SELECT red, green, blue FROM colors WHERE name = ? OR id = ?',
-		                           key, key)[0]
-		c = Color(r, g, b)
-		return c
-
-	def __iter__(cls):
-		"""Iterate over all available colors in the db."""
-		colors = horizons.globals.db('SELECT id FROM colors ORDER BY id')
-		colors = (Color[id] for id, in colors)
-		return iter(colors)
-
-
 class Color(object):
 	"""Class for saving a color.
-	Colors are saved in 32 bit rgb-format with an alpha value (for transparency).
-	32bit mean that each of the for values can only occupy 8 bit, i.e. the value is between
-	0 and 255.
+
+	Colors are saved in 32 bit rgb-format with an alpha value (for transparency). 32bit mean
+	that each of the for values can only occupy 8 bit, i.e. the value is between 0 and 255.
 
 	Attributes:
-	 r, g, b, a: Color values + Alpha
-	 name: name of the Color or None
+	    r, g, b, a: Color values + Alpha
+	     name: name of the Color or None
 	"""
-	__metaclass__ = ColorMeta
+
+	@classmethod
+	def get_defaults(cls):
+		"""Returns an iterator over all available colors in the db.
+
+		    for color in Color.get_defaults():
+		        print(color)
+
+		"""
+		colors = horizons.globals.db('SELECT id FROM colors ORDER BY id')
+		return (cls.get(id) for id, in colors)
+
+	@classmethod
+	def get(cls, key):
+		"""Gets a color by name or id from the db.
+
+		    Color.get('red')
+		    Color.get(5)
+
+		"""
+		query = horizons.globals.db('SELECT red, green, blue FROM colors '
+		                            'WHERE name = ? OR id = ?', key, key)
+		try:
+			rgb = query[0]
+		except IndexError:
+			raise KeyError('No color defined for this name or id: %s' % key)
+		else:
+			return cls(*rgb)
 
 	def __init__(self, r=0, g=0, b=0, a=255):
 		"""
 		@params: int (0, 255)
 		"""
 		self.r, self.g, self.b, self.a = r, g, b, a
-		self.name = None
+		query = horizons.globals.db('SELECT name, rowid FROM colors '
+		                            'WHERE red = ? AND green = ? AND blue = ?',
+		                            self.r, self.g, self.b)
 		try:
 			# load name for the color, if it's a standard color
-			self.name, self.id = horizons.globals.db('SELECT name, rowid FROM colors WHERE red = ? AND green = ? AND blue = ?',
-			                                         self.r, self.g, self.b)[0]
-		except:
-			pass
+			self.name, self.id = query[0]
+		except IndexError:
+			self.name = None
+			self.id = None
 
 	def to_tuple(self):
 		"""Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""
@@ -81,7 +82,7 @@ class Color(object):
 
 	@property
 	def is_default_color(self):
-		return hasattr(self, 'id')
+		return self.id is not None
 
 	def __str__(self):
 		return 'Color' + str(self.to_tuple())

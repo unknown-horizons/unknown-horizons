@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,13 +21,14 @@
 
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 
+
 class SimpleCollectorAreaCache(object):
 	"""
 	A specialized PartialBinaryBuildabilityCache for keeping track of collector coverage.
 
 	The AI uses instances of this class to figure out where it can place buildings such
 	that at least some part of the building would be covered by a general collector. It
-	is a simple version in that it doen't check whether a road to the corresponding
+	is a simple version in that it doesn't check whether a road to the corresponding
 	collector would be possible.
 	"""
 

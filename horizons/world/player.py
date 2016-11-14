@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,20 +22,21 @@
 import collections
 
 import horizons.main
-
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
-from horizons.world.playerstats import PlayerStats
+from horizons.ext.typing import Any, Sequence, Union
+from horizons.messaging import PlayerInventoryUpdated, PlayerLevelUpgrade, SettlerUpdate
+from horizons.scenario import CONDITIONS
+from horizons.scheduler import Scheduler
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.inventorychecker import InventoryChecker
 from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
-from horizons.scenario import CONDITIONS
-from horizons.scheduler import Scheduler
-from horizons.component.componentholder import ComponentHolder
-from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import SettlerUpdate, PlayerInventoryUpdated, PlayerLevelUpgrade
-from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.world.playerstats import PlayerStats
+
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
@@ -43,7 +44,7 @@ class Player(ComponentHolder, WorldObject):
 	STATS_UPDATE_INTERVAL = 3 # seconds
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
-	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
+	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},) # type: Sequence[Union[str, Dict[str, Any]]]
 
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
@@ -104,12 +105,16 @@ class Player(ComponentHolder, WorldObject):
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not self.session.world.player and \
-		                    self.clientid is None else self.clientid
-
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level, max_tier_notification) VALUES(?, ?, ?, ?, ?, ?, ?)",
-			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None,
-			 self.max_tier_notification)
+		client_id = None
+		if self.clientid is not None or self is self.session.world.player:
+			client_id = self.clientid
+		db("INSERT INTO player"
+			" (rowid, name, color, client_id, settler_level,"
+			" difficulty_level, max_tier_notification)"
+			" VALUES(?, ?, ?, ?, ?, ?, ?)",
+			self.worldid, self.name, self.color.id, client_id, self.settler_level,
+			self.difficulty.level if self.difficulty is not None else None,
+			self.max_tier_notification)
 
 	@classmethod
 	def load(cls, session, db, worldid):
@@ -124,8 +129,9 @@ class Player(ComponentHolder, WorldObject):
 		super(Player, self).load(db, worldid)
 
 		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
-			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
+			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
+			" FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
 
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player."""

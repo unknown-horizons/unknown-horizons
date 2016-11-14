@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,50 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
 from operator import itemgetter
 
 from fife.extensions.pychan import widgets
 
+from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import GAME_SPEED
+from horizons.gui.util import create_resource_icon, load_uh_widget
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.gui.util import create_resource_icon
-from horizons.gui.windows import Window
 from horizons.util.python.callback import Callback
-from horizons.component.namedcomponent import NamedComponent
-from horizons.gui.widgets.imagebutton import OkButton
 
-class ProductionOverview(StatsWidget, Window):
+
+class MultiPageStatsWidget(StatsWidget):
+	"""
+	A widget that creates a large table with statistics that can be browsed through page by
+	page.
+	"""
+	widget_file_name = None # type: str
+
+	def _init_gui(self):
+		self._gui = load_uh_widget(self.widget_file_name, center_widget=self.center_widget)
+		if not self.center_widget:
+			self._gui.position_technique = 'center+20:center+25'
+		self._page_left = self._gui.findChild(name='page_left')
+		self._page_right = self._gui.findChild(name='page_right')
+		self.refresh()
+
+	def _clear_entries(self):
+		self._page_left.removeAllChildren()
+		self._page_right.removeAllChildren()
+
+
+class ProductionOverview(MultiPageStatsWidget, Window):
 	"""
 	Widget that shows every produced resource in this game.
 
 	Implementation based on https://github.com/unknown-horizons/unknown-horizons/issues/749 .
 	"""
+	LINES_PER_PAGE = 12
 
 	widget_file_name = 'island_production.xml'
 
@@ -46,6 +70,7 @@ class ProductionOverview(StatsWidget, Window):
 		StatsWidget.__init__(self, settlement.session, center_widget=True)
 		Window.__init__(self, windows)
 
+		self.current_page = 0
 		self.settlement = settlement
 		self.db = self.settlement.session.db
 		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
@@ -53,23 +78,79 @@ class ProductionOverview(StatsWidget, Window):
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+		self._gui.findChild(name='forwardButton').capture(self.go_to_next_page)
+		self._gui.findChild(name='backwardButton').capture(self.go_to_previous_page)
+
+	@property
+	def displayed_resources(self):
+		"""
+		Returns all resources of the settlement that should be shown.
+		"""
+		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+		return [(resource_id, amount) for (resource_id, amount) in data
+		        if self.db.get_res_inventory_display(resource_id)]
+
+	@property
+	def max_pages(self):
+		"""
+		Returns number of pages the resources need.
+		"""
+		return int(math.ceil(len(self.displayed_resources) / float(self.LINES_PER_PAGE)))
+
+	def go_to_next_page(self):
+		"""
+		Scrolls forward two pages. `self.current_page` will always be the index of the
+		left page of the book.
+		"""
+		self.current_page = min(self.max_pages - 1, self.current_page + 2)
+		self.current_page -= self.current_page % 2
+		self.refresh()
+
+	def go_to_previous_page(self):
+		"""
+		Scrolls backward two pages. `self.current_page` will always be the index of the
+		left page of the book.
+		"""
+		self.current_page = max(0, self.current_page - 2)
+		self.refresh()
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
+
 		name = self.settlement.get_component(NamedComponent).name
-		#xgettext:python-format
-		text = _('Production overview of {settlement}').format(settlement=name)
+		text = T('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 
-		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
-		for resource_id, amount in data:
-			self._add_line_to_gui(resource_id, amount)
-		self._content_vbox.adaptLayout()
+		forward_button = self._gui.findChild(name='forwardButton')
+		backward_button = self._gui.findChild(name='backwardButton')
 
-	def _add_line_to_gui(self, resource_id, amount):
-		displayed = self.db.get_res_inventory_display(resource_id)
-		if not displayed:
-			return
+		if self.current_page == 0:
+			backward_button.set_inactive()
+		else:
+			backward_button.set_active()
+
+		max_left_page_idx = self.max_pages - 1
+		max_left_page_idx -= max_left_page_idx % 2
+		if self.current_page == max_left_page_idx:
+			forward_button.set_inactive()
+		else:
+			forward_button.set_active()
+
+		data = self.displayed_resources
+		data = data[self.current_page * self.LINES_PER_PAGE:(self.current_page + 2) * self.LINES_PER_PAGE]
+
+		for idx, (resource_id, amount) in enumerate(data, start=1):
+			if idx > self.LINES_PER_PAGE:
+				container = self._page_right
+			else:
+				container = self._page_left
+
+			self._add_line_to_gui(container, resource_id, amount)
+
+		self._page_left.adaptLayout()
+		self._page_right.adaptLayout()
+
+	def _add_line_to_gui(self, container, resource_id, amount):
 		res_name = self.db.get_res_name(resource_id)
 
 		icon = create_resource_icon(resource_id, self.db)
@@ -87,6 +168,6 @@ class ProductionOverview(StatsWidget, Window):
 		hbox.addChild(icon)
 		hbox.addChild(label)
 		hbox.addChild(amount_label)
-		self._content_vbox.addChild(hbox)
+		container.addChild(hbox)
 
 decorators.bind_all(ProductionOverview)

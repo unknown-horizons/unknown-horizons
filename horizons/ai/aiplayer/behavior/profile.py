@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,17 @@
 # ###################################################
 
 import logging
-
 import random
-from horizons.ai.aiplayer.behavior import BehaviorManager
 
+from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorDebug  # pylint: disable=W0611
 from horizons.ai.aiplayer.behavior.behaviorcomponents import (
-	BehaviorPirateHater, BehaviorCoward, BehaviorRegular, BehaviorPirateRoutine,
-	BehaviorBreakDiplomacy, BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive,
-	BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart, BehaviorEvil, BehaviorNeutral,
-	BehaviorGood, BehaviorCautious)
+	BehaviorAggressive, BehaviorAggressivePirate, BehaviorDoNothing, BehaviorEvil, BehaviorGood,
+	BehaviorNeutral, BehaviorRegular, BehaviorRegularPirate, BehaviorSmart)
+from horizons.ai.aiplayer.strategy.condition import ConditionDebug  # pylint: disable=W0611
 from horizons.ai.aiplayer.strategy.condition import (
-	ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug,
-	ConditionPirateRoutinePossible, ConditionAllied)
+	ConditionAllied, ConditionHostile, ConditionNeutral, ConditionPirateRoutinePossible,
+	ConditionSharingSettlement)
 
 
 class BehaviorProfile(object):
@@ -152,7 +151,8 @@ class BehaviorProfileManager(object):
 
 		probabilities_sum = sum([item[1] for item in profiles])
 
-		assert probabilities_sum > 1e-7, "sum of BehaviorProfile probabilities is too low: %s" % probabilities_sum
+		assert probabilities_sum > 1e-7, "sum of BehaviorProfile probabilities is too low: {0!s}". \
+			format(probabilities_sum)
 
 		random_value *= probabilities_sum
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,34 +22,32 @@
 import math
 
 import horizons.globals
-
+from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.command.unit import CreateUnit
+from horizons.constants import MESSAGES
+from horizons.i18n import gettext as T
+from horizons.messaging import SettlerUpdate
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.python.registry import Registry
-from horizons.util.shapes import Point, Circle
+from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
-from horizons.command.unit import CreateUnit
-from horizons.scenario import CONDITIONS
-from horizons.constants import MESSAGES
-from horizons.command.game import PauseCommand, UnPauseCommand
-from horizons.messaging import SettlerUpdate
-from horizons.component.storagecomponent import StorageComponent
+
+from .conditions import CONDITIONS
 
 
-class ACTIONS(object):
+class ActionsRegistry(Registry):
 	"""Class that holds all available action functions."""
-	__metaclass__ = Registry
-
-	@classmethod
-	def register_function(cls, func, name=None):
+	def register_function(self, func, name=None):
 		"""Register action.
 
 		By default, the function's name is used as identifier of the action. You can supply
 		a `name` parameter to use instead.
 		"""
-		cls.registry[name or func.__name__] = func
+		self.registry[name or func.__name__] = func
 
 
+ACTIONS = ActionsRegistry()
 register = ACTIONS.register
 
 
@@ -59,23 +57,21 @@ def show_message(session, type=None, *messages):
 	If you pass more than one message, they are shown simultaneously."""
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
 
-	return [session.ingame_gui.message_widget.add_custom(point=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
+	return [session.ingame_gui.message_widget.add_custom(msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 
 @register(name='db_message')
 def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
-	session.ingame_gui.message_widget.add(point=None, string_id=database_message_id)
+	session.ingame_gui.message_widget.add(database_message_id)
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
-	"""Shows a logbook entry and opens the logbook after 'delay' seconds.
+	"""Shows a logbook entry and opens the logbook after some seconds.
 	Displays a YAML-defined notification message on logbook close.
 
-	Set delay=0 for instant appearing.
-	#TODO get *delay* parameter working again, it is currently not implemented!
-	@param parameters: arbitrary list of logbook parameters, including their values.
-	                Check widgets.logbook#add_captainslog_entry for parameter documentation.
+	@param parameters: list of logbook parameters, including their values.
+	See widgets.logbook:add_captainslog_entry for parameter documentation.
 	"""
 	def write_logbook_entry(session, parameters):
 		"""Adds an entry to the logbook and displays it.
@@ -92,10 +88,10 @@ def do_win(session):
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
-	continue_playing = session.gui.show_popup(_("You have won!"),
-	                                          _("You have completed this scenario.") + u" " +
-	                                          _("Do you want to continue playing?"),
-	                                          show_cancel_button=True)
+	continue_playing = session.ingame_gui.open_popup(T("You have won!"),
+	                                                 T("You have completed this scenario.") + u" " +
+	                                                 T("Do you want to continue playing?"),
+	                                                 show_cancel_button=True)
 	if not continue_playing:
 		Scheduler().add_new_object(session.quit, session, run_in=0)
 	else:
@@ -135,6 +131,8 @@ def wait(session, seconds):
 @register()
 def alter_inventory(session, resource, amount):
 	"""Alters the inventory of each settlement."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	for settlement in session.world.settlements:
 		if settlement.owner == session.world.player and settlement.warehouse:
 			settlement.warehouse.get_component(StorageComponent).inventory.alter(

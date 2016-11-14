@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+
 
 class PathNodes(object):
 	"""
@@ -124,3 +125,25 @@ class IslandPathNodes(PathNodes):
 			self.nodes[coord] = self.NODE_DEFAULT_SPEED
 		if in_list and not actually_walkable:
 			del self.nodes[coord]
+
+
+class IslandBarrierNodes(PathNodes):
+	"""
+	List of barriers on an island. Used for pathfinding when constructing barriers by
+	dragging.
+	"""
+	def __init__(self, island):
+		super(IslandBarrierNodes, self).__init__()
+
+		self.island = island
+
+		# nodes where a barrier is built on.
+		self.nodes = set()
+
+	def register(self, barrier):
+		for i in barrier.position:
+			self.nodes.add((i.x, i.y))
+
+	def unregister(self, barrier):
+		for i in barrier.position:
+			self.nodes.remove((i.x, i.y))

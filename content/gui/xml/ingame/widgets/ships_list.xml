@@ -3,7 +3,7 @@
 		<HBox>
 			<Label name="headline" min_size="300,20" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 
 		<VBox max_size="650,20">
 			<HBox>

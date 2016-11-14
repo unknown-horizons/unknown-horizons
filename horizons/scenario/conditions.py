@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
-from horizons.component.storagecomponent import StorageComponent
 
 
-class CONDITIONS(object):
+class ConditionsRegistry(Registry):
 	"""
 	Class that holds all available conditions.
 
@@ -39,27 +37,27 @@ class CONDITIONS(object):
 	  1. possible condition change is notified somewhere in the game code
 	  2. condition is checked periodically
 	"""
-	__metaclass__ = Registry
+	def __init__(self):
+		super(ConditionsRegistry, self).__init__()
+		self.check_periodically = []
 
-	check_periodically = []
-
-	@classmethod
-	def register_function(cls, func, periodically=False):
+	def register_function(self, func, periodically=False):
 		"""Register condition.
 
 		`periodically` means that this condition function will be called periodically
 		by the ScenarioEventHandler.
 		"""
 		name = func.__name__
-		cls.registry[name] = func
-		# allow CONDITIONS.example_condition_name to work, used as identifier to notify
+		self.registry[name] = func
+		# allow instance.example_condition_name to work, used as identifier to notify
 		# about condition change (see 1)
-		setattr(cls, name, name)
+		setattr(self, name, name)
 
 		if periodically:
-			cls.check_periodically.append(name)
+			self.check_periodically.append(name)
 
 
+CONDITIONS = ConditionsRegistry()
 register = CONDITIONS.register
 
 
@@ -76,11 +74,15 @@ def settler_level_greater(session, limit):
 @register(periodically=True)
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold than *limit*."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold than *limit*."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] < limit)
 
 @register(periodically=True)
@@ -117,18 +119,24 @@ def building_num_of_type_greater(session, building_class, limit):
 def player_res_stored_greater(session, resource, limit):
 	"""Returns whether all player settlements combined have more than *limit*
 	of *resource* in their inventories."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (sum(settlement.get_component(StorageComponent).inventory[resource] for settlement in _get_player_settlements(session)) > limit)
 
 @register(periodically=True)
 def player_res_stored_less(session, resource, limit):
 	"""Returns whether all player settlements combined have less than *limit*
 	of *resource* in their inventories."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return (sum(settlement.get_component(StorageComponent).inventory[resource] for settlement in _get_player_settlements(session)) < limit)
 
 @register(periodically=True)
 def settlement_res_stored_greater(session, resource, limit):
 	"""Returns whether at least one player settlement has more than *limit*
 	of *resource* in its inventory."""
+	# NOTE avoid circular import
+	from horizons.component.storagecomponent import StorageComponent
 	return any(settlement for settlement in _get_player_settlements(session) if
 	           settlement.get_component(StorageComponent).inventory[resource] > limit)
 
@@ -188,6 +196,11 @@ def building_in_range(session, building_class1, building_class2):
 def time_passed(session, seconds):
 	"""Returns whether at least *seconds* seconds have passed since the game started."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(seconds))
+
+@register()
+def game_started(session):
+	"""Always return True. Used for one-off events"""
+	return True
 
 @register()
 def var_eq(session, variable, value):

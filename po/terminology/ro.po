@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-12-30 08:43+0000\n"
-"Last-Translator: tbmale <tbmale@yahoo.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:44+0000\n"
+"Last-Translator: FlowerOS <flower_os@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -12,11 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1356857003.0\n"
-
-msgid "build"
-msgstr "construire"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367757856.0\n"
 
 msgid "game"
 msgstr "joc"
@@ -24,11 +21,14 @@ msgstr "joc"
 msgid "building"
 msgstr "clădire"
 
+msgid "build"
+msgstr "construire"
+
+msgid "player"
+msgstr "jucător"
+
 msgid "settlement"
 msgstr "colonie"
-
-msgid "farm"
-msgstr "fermă"
 
 msgid "ship"
 msgstr "navă"
@@ -36,125 +36,167 @@ msgstr "navă"
 msgid "tent"
 msgstr "cort"
 
-msgid "warehouse"
-msgstr ""
-
-msgid "resource"
-msgstr "resurse"
-
-msgid "produce"
-msgstr "produs / a produce"
-
-msgid "field"
-msgstr "câmp / lan"
+msgid "farm"
+msgstr "fermă"
 
 msgid "map"
 msgstr "hartă"
 
-msgid "trade"
-msgstr "comerț"
+msgid "resource"
+msgstr "resursă"
+
+msgid "warehouse"
+msgstr "depozit"
 
 msgid "inhabitants"
 msgstr "locuitori / coloniști"
 
+msgid "change"
+msgstr "schimbare"
+
+msgid "unknown"
+msgstr "necunoscut"
+
+msgid "produce"
+msgstr "produs / a produce"
+
+msgid "no"
+msgstr "nu"
+
+msgid "trade"
+msgstr "comerț"
+
+msgid "check"
+msgstr "a verifica"
+
+msgid "field"
+msgstr "câmp / lan"
+
+msgid "main"
+msgstr "principal"
+
 msgid "buy"
 msgstr "cumpăra / achiziționa"
-
-msgid "overview"
-msgstr "sumar"
 
 msgid "click"
 msgstr "clic"
 
+msgid "left"
+msgstr "stânga"
+
+msgid "overview"
+msgstr "sumar"
+
+msgid "running"
+msgstr "activ / în serviciu"
+
+msgid "square"
+msgstr "piață"
+
 msgid "lumberjack"
 msgstr "tăietor de lemne"
 
-#, fuzzy
-msgid "resident"
-msgstr "rezidenți / locuitori"
+msgid "unable"
+msgstr "incapabil"
 
-#, fuzzy
+msgid "continue"
+msgstr "continua"
+
 msgid "main square"
 msgstr "piață principală"
-
-#, fuzzy
-msgid "sailors"
-msgstr "marinar"
-
-msgid "food"
-msgstr "hrană"
-
-msgid "increment"
-msgstr "nivel"
 
 msgid "production"
 msgstr "producție"
 
-msgid "select"
-msgstr "selecționare"
+msgid "sailors"
+msgstr "marinar"
 
 msgid "sell"
 msgstr "vinde"
 
-msgid "setting"
-msgstr "preferințe / setări"
-
 msgid "storage"
 msgstr "depozit"
 
-msgid "tab"
-msgstr "tab"
+msgid "contact"
+msgstr "contact"
 
-msgid "upgrade"
-msgstr ""
-
-msgid "your inhabitants"
-msgstr ""
-
-msgid "close"
-msgstr ""
-
-msgid "companies"
-msgstr "companii / întreprinderi"
-
-msgid "island"
-msgstr ""
-
-msgid "time"
-msgstr "timp"
-
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr "balanță / bilanț"
-
-msgid "coast"
-msgstr "coastă"
+msgid "house"
+msgstr "casă"
 
 msgid "menu"
 msgstr "meniu"
 
-msgid "slot"
-msgstr "slot / plasament"
+msgid "tab"
+msgstr "tab"
+
+msgid "close"
+msgstr "închide"
+
+msgid "food"
+msgstr "hrană"
+
+msgid "free"
+msgstr "liber / independent"
+
+msgid "ready"
+msgstr "citește"
+
+msgid "setting"
+msgstr "preferințe / setări"
 
 msgid "start"
 msgstr "debut / pornire / începere"
 
+msgid "time"
+msgstr "timp"
+
+msgid "trader"
+msgstr "negustor / comerciant"
+
+msgid "unit"
+msgstr "unitate"
+
+msgid "version"
+msgstr "versiune"
+
+msgid "fire"
+msgstr "foc"
+
+msgid "island"
+msgstr "insulă"
+
+msgid "select"
+msgstr "selecționare"
+
+msgid "slot"
+msgstr "slot / plasament"
+
 msgid "stock"
 msgstr "stoc"
 
-msgid "trail"
-msgstr "urmă"
+msgid "upgrade"
+msgstr "îmbunătățire"
 
-msgid "Unknown Horizons"
+msgid "coast"
+msgstr "coastă"
+
+msgid "color"
+msgstr "culoare"
+
+msgid "companies"
+msgstr "companii / întreprinderi"
+
+msgid "file"
+msgstr "foc"
+
+msgid "tier"
 msgstr ""
 
-msgid "wool"
-msgstr "lână"
+msgid "key"
+msgstr "cheie"
 
-msgid "boards"
-msgstr "scânduri"
+msgid "taxes"
+msgstr "taxe"
 
 msgid "collector"
 msgstr "colector"
@@ -162,11 +204,29 @@ msgstr "colector"
 msgid "connection"
 msgstr "conexiune"
 
-msgid "fire"
-msgstr "foc"
+msgid "log"
+msgstr "jurnal / jurnal de bord / protocol"
 
-msgid "change"
-msgstr "schimbare"
+msgid "multiplayer"
+msgstr "multiplayer"
+
+msgid "resident"
+msgstr "rezidenți / locuitori"
+
+msgid "wool"
+msgstr "lână"
+
+msgid "boards"
+msgstr "scânduri"
+
+msgid "built"
+msgstr "construit / întemeiat / înființat"
+
+msgid "button"
+msgstr "buton"
+
+msgid "choose"
+msgstr "alege"
 
 msgid "connect"
 msgstr "conecta"
@@ -174,48 +234,29 @@ msgstr "conecta"
 msgid "cost"
 msgstr "cost"
 
-msgid "house"
-msgstr "casă"
-
-msgid "log"
-msgstr "jurnal / jurnal de bord / protocol"
+msgid "happiness"
+msgstr "fericire"
 
 msgid "road"
-msgstr ""
+msgstr "citește"
 
 msgid "save"
 msgstr "a salva / salvare"
 
-msgid "built"
-msgstr "construit / întemeiat / înființat"
-
-msgid "pasture"
-msgstr "pasture"
-
-#, fuzzy
-msgid "reach"
-msgstr "în rază"
-
 msgid "tree"
 msgstr "arbore"
 
-msgid "your"
-msgstr "dumneavoastră / a dumneavoastră"
+msgid "amount"
+msgstr "cantitate"
 
-msgid "your settlement"
-msgstr ""
+msgid "reach"
+msgstr "în rază"
+
+msgid "size"
+msgstr "dimensiune"
 
 msgid "add"
 msgstr "adaugă"
-
-msgid "check"
-msgstr "a verifica"
-
-msgid "choose"
-msgstr "alege"
-
-msgid "confectionery"
-msgstr ""
 
 msgid "fisher"
 msgstr "pescar / a pescui"
@@ -223,72 +264,68 @@ msgstr "pescar / a pescui"
 msgid "free trader"
 msgstr "negustor independent"
 
-msgid "happiness"
-msgstr "fericire"
-
 msgid "in stock"
-msgstr ""
+msgstr "în stoc"
 
-msgid "money"
-msgstr ""
-
-msgid "pavilion"
-msgstr "pavilion"
-
-msgid "running costs"
-msgstr "costuri de funcționare"
-
-msgid "sugar"
-msgstr "zahăr"
-
-msgid "taxes"
-msgstr "taxe"
-
-msgid "tax"
-msgstr "taxă"
-
-msgid "tools"
-msgstr "unelte"
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr "continua"
-
-msgid "faith"
-msgstr "credință"
-
-msgid "help"
-msgstr "ajutor"
-
-msgid "left"
-msgstr "stânga"
-
-msgid "level"
-msgstr "nivel"
+msgid "increase"
+msgstr "a crește / a mări / a spori"
 
 msgid "mode"
 msgstr "mod"
 
+msgid "password"
+msgstr "parolă"
+
+msgid "pasture"
+msgstr "pasture"
+
+msgid "range"
+msgstr "rază de acțiune / interval"
+
+msgid "signal"
+msgstr "semnal"
+
+msgid "speed"
+msgstr "viteză"
+
+msgid "sugar"
+msgstr "zahăr"
+
+msgid "access"
+msgstr "acces"
+
+msgid "build menu"
+msgstr "meniu de construcție"
+
+msgid "confectionery"
+msgstr "cofetărie"
+
+msgid "enabled"
+msgstr "activat"
+
+msgid "fetch"
+msgstr "adu"
+
+msgid "help"
+msgstr "ajutor"
+
+msgid "income"
+msgstr "venit"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "nivel"
+
 msgid "move"
 msgstr "deplasa"
 
-#, fuzzy
-msgid "pioneers"
-msgstr "pionier"
+msgid "multiple"
+msgstr "multiplu"
 
-#, fuzzy
-msgid "citizens"
-msgstr "cetățean"
-
-#, fuzzy
-msgid "merchants"
-msgstr "negustor"
-
-#, fuzzy
-msgid "aristocrats"
-msgstr "aristocrat"
+msgid "please check"
+msgstr ""
 
 msgid "potato"
 msgstr "cartof"
@@ -296,47 +333,23 @@ msgstr "cartof"
 msgid "settler"
 msgstr "colonist"
 
-msgid "speed"
-msgstr "viteză"
-
-msgid "stop"
-msgstr "stop / a opri"
-
-msgid "storage tent"
-msgstr "cort de depozitare"
-
-msgid "wait"
+msgid "total"
 msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr "cont / finanțe"
-
-msgid "amount"
-msgstr ""
-
-msgid "build menu"
-msgstr "meniu de construcție"
-
-msgid "cloth"
-msgstr "îmbrăcăminte"
 
 msgid "construction"
 msgstr "construire / construcție"
 
-msgid "decrease"
-msgstr "a scade / a micșora"
+msgid "creator"
+msgstr ""
 
-msgid "description"
-msgstr "descriere"
+msgid "faith"
+msgstr "credință"
 
-msgid "fish"
-msgstr "pește"
+msgid "hold"
+msgstr "a ține"
 
-msgid "increase"
-msgstr "a crește / a mări / a spori"
+msgid "icon"
+msgstr ""
 
 msgid "lamb"
 msgstr ""
@@ -344,55 +357,53 @@ msgstr ""
 msgid "leave"
 msgstr "părăsire / a părăsi"
 
-msgid "liquor"
-msgstr "lichior"
-
 msgid "location"
 msgstr ""
 
-msgid "offer"
+msgid "multiple buildings"
 msgstr ""
 
-msgid "potatoes"
-msgstr "cartofi"
-
-msgid "range"
-msgstr "rază de acțiune / interval"
+msgid "pioneers"
+msgstr "pionier"
 
 msgid "reached"
 msgstr "atins / ajuns"
 
-# 75%
-#, fuzzy
 msgid "run"
 msgstr "fugi"
+
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr "SHIFT"
 
 msgid "slider"
 msgstr "reglabil / glisor"
 
-msgid "solution"
-msgstr "soluție"
-
 msgid "space"
-msgstr ""
+msgstr "spațiu"
+
+msgid "storage tent"
+msgstr "cort de depozitare"
 
 msgid "target"
-msgstr ""
+msgstr "țintă"
 
-msgid "team"
-msgstr "echipă"
+msgid "terminated"
+msgstr "terminat"
 
-msgid "total"
-msgstr ""
+msgid "tools"
+msgstr "unelte"
 
-msgid "unable"
-msgstr ""
+msgid "account"
+msgstr "cont / finanțe"
 
 msgid "active"
 msgstr "activ"
 
 msgid "afford"
-msgstr ""
+msgstr "permite"
 
 msgid "animals"
 msgstr "animale"
@@ -400,55 +411,56 @@ msgstr "animale"
 msgid "Captain's log"
 msgstr "jurnal de bord"
 
-#, fuzzy
+msgid "cloth"
+msgstr "îmbrăcăminte"
+
 msgid "construct"
 msgstr "construire / construcție"
 
-msgid "consume"
-msgstr "a consuma"
+msgid "cursor"
+msgstr "cursor"
 
-msgid "enabled"
-msgstr ""
+msgid "description"
+msgstr "descriere"
 
 msgid "entries"
-msgstr ""
+msgstr "intrări"
 
 msgid "feature"
 msgstr "funcție / trăsătură"
 
+msgid "fish"
+msgstr "pește"
+
 msgid "forest"
 msgstr "pădure"
 
-#, fuzzy
-msgid "grows"
+msgid "from time to time"
+msgstr "din când în când"
+
+msgid "global"
+msgstr "global"
+
+msgid "grow"
 msgstr "a crește"
 
-msgid "hold"
-msgstr "a ține"
-
-msgid "idle"
-msgstr ""
-
-msgid "income"
-msgstr "venit"
+msgid "happy"
+msgstr "fericit"
 
 msgid "information"
 msgstr "informație"
 
-msgid "key"
-msgstr "cheie"
-
-msgid "lamb wool"
-msgstr "lână de oaie"
-
-msgid "overview tab"
-msgstr ""
+msgid "liquor"
+msgstr "lichior"
 
 msgid "minimap"
 msgstr "mini-hartă"
 
-msgid "issues"
-msgstr "probleme"
+msgid "offer"
+msgstr ""
+
+msgid "overview tab"
+msgstr ""
 
 msgid "plant"
 msgstr ""
@@ -456,24 +468,29 @@ msgstr ""
 msgid "play"
 msgstr "joacă"
 
-msgid "playing"
-msgstr "joacă"
+msgid "please check your"
+msgstr ""
+
+msgid "potatoes"
+msgstr "cartofi"
 
 msgid "price"
 msgstr ""
 
-#, fuzzy
 msgid "read"
 msgstr "citește"
 
-msgid "return"
-msgstr "a reîntoarce / a reveni"
-
-msgid "sale"
-msgstr "a vinde / tranzacție"
-
 msgid "screen"
 msgstr "ecran"
+
+msgid "service"
+msgstr "lucru / serviciu"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "soluție"
 
 msgid "sound"
 msgstr "sunet"
@@ -481,34 +498,179 @@ msgstr "sunet"
 msgid "special"
 msgstr ""
 
+msgid "spot"
+msgstr "slot / plasament"
+
+msgid "statistics"
+msgstr ""
+
 msgid "store"
 msgstr ""
 
-#, fuzzy
+msgid "team"
+msgstr "echipă"
+
 msgid "tear"
 msgstr "echipă"
 
-msgid "from time to time"
+msgid "time to time"
 msgstr "din când în când"
 
 msgid "trading"
 msgstr "comerț"
 
-msgid "village"
-msgstr "sat"
+msgid "unsupported"
+msgstr "nesuportat"
 
 msgid "visit"
 msgstr "a vizita / vizită"
 
 msgid "world"
+msgstr "lume"
+
+msgid "wrong"
+msgstr "greșit"
+
+msgid "bar"
+msgstr "lingou"
+
+msgid "bug"
+msgstr "eroare"
+
+msgid "command"
+msgstr "comandă"
+
+msgid "completed"
+msgstr "terminat"
+
+msgid "forum"
+msgstr "forum"
+
+msgid "happen"
 msgstr ""
 
-#, fuzzy
-msgid "yield"
+msgid "harvest"
+msgstr ""
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "lână de oaie"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "joacă"
+
+msgid "produced"
+msgstr "produs"
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "a vinde / tranzacție"
+
+msgid "school"
+msgstr "școală"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr "temporar"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr ""
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "balanță / bilanț"
+
+msgid "load"
+msgstr "citește"
+
+msgid "trail"
+msgstr "urmă"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "tobacco"
+msgstr "tutun"
+
+msgid "clay"
+msgstr "joacă"
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "pavilion"
+
+msgid "tax"
+msgstr "taxă"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "stop / a opri"
+
+msgid "wait"
+msgstr ""
+
+msgid "decrease"
+msgstr "a scade / a micșora"
+
+msgid "ore"
+msgstr ""
+
+msgid "return"
+msgstr "a reîntoarce / a reveni"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "a consuma"
+
+msgid "idle"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr "a salva / salvare"
+
+msgid "village"
+msgstr "sat"
+
+msgid "yields"
 msgstr "randament"
-
-msgid "your ship"
-msgstr ""
 
 msgid "back"
 msgstr "înapoi"
@@ -516,28 +678,13 @@ msgstr "înapoi"
 msgid "build settlement"
 msgstr "fondează o colonie"
 
-msgid "load"
+msgid "charcoal"
 msgstr ""
-
-msgid "unload"
-msgstr ""
-
-msgid "command"
-msgstr ""
-
-msgid "completed"
-msgstr ""
-
-msgid "condition"
-msgstr "condiție / stare"
-
-msgid "contact"
-msgstr "contact"
 
 msgid "empty"
 msgstr ""
 
-msgid "ensure"
+msgid "existing"
 msgstr ""
 
 msgid "fulfill"
@@ -546,191 +693,465 @@ msgstr "a completa / a realiza"
 msgid "graphics"
 msgstr "grafică"
 
-msgid "harvest"
-msgstr ""
-
-#, fuzzy
-msgid "hunts"
+msgid "hunt"
 msgstr "a vâna"
 
-msgid "multiple"
-msgstr "multiplu"
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
 
 msgid "potato field"
 msgstr ""
 
-msgid "school"
-msgstr "școală"
-
 msgid "seed"
 msgstr "semințe / rădăcină"
 
-msgid "service"
-msgstr "lucru / serviciu"
+msgid "send"
+msgstr "semințe / rădăcină"
 
 msgid "sheep"
 msgstr "oaie"
 
-#, fuzzy
 msgid "signal fire"
 msgstr "foc de semnalizare"
-
-msgid "statistics"
-msgstr ""
-
-#, fuzzy
-msgid "clay"
-msgstr "joacă"
-
-msgid "iron"
-msgstr ""
-
-msgid "ore"
-msgstr ""
-
-msgid "tobacco"
-msgstr "tutun"
-
-msgid "charcoal"
-msgstr ""
 
 msgid "sugar field"
 msgstr ""
 
-msgid "temporarily"
-msgstr "temporar"
-
-msgid "values"
+msgid "error"
 msgstr ""
 
-#~ msgid "branch office"
-#~ msgstr "sucursală"
+msgid "deposit"
+msgstr ""
 
-#~ msgid "main"
-#~ msgstr "principal"
+msgid "invalid"
+msgstr ""
 
-#~ msgid "unknown"
-#~ msgstr "necunoscut"
+msgid "network"
+msgstr ""
 
-#~ msgid "free"
-#~ msgstr "liber / independent"
+msgid "route"
+msgstr ""
 
-#~ msgid "trader"
-#~ msgstr "negustor / comerciant"
+msgid "selected"
+msgstr "selecționare"
 
-#~ msgid "version"
-#~ msgstr "versiune"
+msgid "boat"
+msgstr ""
 
-#~ msgid "signal"
-#~ msgstr "semnal"
+msgid "create"
+msgstr ""
 
-#~ msgid "found"
-#~ msgstr "găsit"
+msgid "filename"
+msgstr ""
 
-#~ msgid "raw"
-#~ msgstr "brut / neprelucrat"
+msgid "mouse"
+msgstr "casă"
 
-#~ msgid "running"
-#~ msgstr "activ / în serviciu"
+msgid "partner"
+msgstr "partener"
 
-#~ msgid "inventory"
-#~ msgstr "inventar / stoc"
+msgid "reset"
+msgstr ""
 
-#~ msgid "moved"
-#~ msgstr "deplasat"
+msgid "configuration"
+msgstr ""
 
-#~ msgid "produced"
-#~ msgstr "produs"
+msgid "delete"
+msgstr ""
 
-#~ msgid "hunter"
-#~ msgstr "vânător"
+msgid "enter"
+msgstr ""
 
-#~ msgid "market"
-#~ msgstr "piață"
+msgid "quicksave"
+msgstr ""
 
-#~ msgid "partner"
-#~ msgstr "partener"
+msgid "stone"
+msgstr ""
 
-#~ msgid "sailor"
-#~ msgstr "marinar"
+msgid "weapon"
+msgstr ""
 
-#~ msgid "pioneer"
-#~ msgstr "pionier"
+msgid "cattle"
+msgstr "bovine"
 
-#~ msgid "citizen"
-#~ msgstr "cetățean"
+msgid "message"
+msgstr ""
 
-#~ msgid "merchant"
-#~ msgstr "negustor"
+msgid "port"
+msgstr ""
 
-#~ msgid "aristocrat"
-#~ msgstr "aristocrat"
+msgid "scenario"
+msgstr ""
 
-#~ msgid "refresh"
-#~ msgstr "actualizare / a actualiza"
+msgid "spice"
+msgstr ""
 
-#~ msgid "residents"
-#~ msgstr "rezidenți / locuitori"
+msgid "cocoa"
+msgstr ""
 
-#~ msgid "output"
-#~ msgstr "producție / rezultat"
+msgid "corn"
+msgstr ""
 
-#~ msgid "weaver"
-#~ msgstr "țesător"
+msgid "details"
+msgstr ""
 
-#~ msgid "animal"
-#~ msgstr "animal"
+msgid "found"
+msgstr "găsit"
 
-#~ msgid "fisherman"
-#~ msgstr "pescar"
+msgid "herbs"
+msgstr "ierburi"
 
-#~ msgid "forum"
-#~ msgstr "forum"
+msgid "pause"
+msgstr ""
 
-#~ msgid "grow"
-#~ msgstr "a crește"
+msgid "pigs"
+msgstr ""
 
-#~ msgid "hunt"
-#~ msgstr "a vâna"
+msgid "press"
+msgstr ""
 
-#~ msgid "load/unload"
-#~ msgstr "încarcă / descarcă"
+msgid "quit"
+msgstr ""
 
-#~ msgid "ship inventory"
-#~ msgstr "inventar / cargou"
+msgid "savegame file"
+msgstr ""
 
-#~ msgid "starting"
-#~ msgstr "lansare / începe / debutează"
+msgid "valid"
+msgstr ""
 
-#~ msgid "trade partner"
-#~ msgstr "partener comercial"
+msgid "war"
+msgstr ""
 
-#~ msgid "yields"
-#~ msgstr "randament"
+msgid "all settlements"
+msgstr ""
 
-#~ msgid "green"
-#~ msgstr "verde"
+msgid "apply"
+msgstr ""
 
-#~ msgid "red"
-#~ msgstr "roșu"
+msgid "bricks"
+msgstr ""
 
-#~ msgid "no"
-#~ msgstr "nu"
+msgid "chat"
+msgstr ""
 
-#~ msgid "dialogue"
-#~ msgstr "dialog"
+msgid "confirm"
+msgstr ""
 
-#~ msgid "ruin"
-#~ msgstr "ruină"
+msgid "default settings"
+msgstr ""
 
-#~ msgid "salt ponds"
-#~ msgstr "saline"
+msgid "diplomacy"
+msgstr ""
 
-#~ msgid "cattle"
-#~ msgstr "bovine"
+msgid "displayed"
+msgstr ""
 
-#~ msgid "pig"
-#~ msgstr "porc"
+msgid "flour"
+msgstr ""
 
-#~ msgid "herbs"
-#~ msgstr "ierburi"
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "a vinde / tranzacție"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr "resurse"
+
+msgid "trade partner"
+msgstr "partener comercial"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "cetățean"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr ""
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "inventar / stoc"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "costuri de funcționare"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr "colonist"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr "timp"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

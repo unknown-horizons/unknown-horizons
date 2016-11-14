@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,13 +23,12 @@ import traceback
 
 from fife import fife
 
-import horizons.globals
 from horizons.command.unit import Act
-from horizons.util.worldobject import WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class SelectionTool(NavigationTool):
 	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important
@@ -108,11 +107,11 @@ class SelectionTool(NavigationTool):
 			instances = ( self.fife_instance_to_uh_instance(i) for i in instances )
 			instances = [ i for i in instances if i is not None ]
 
-			#we only consider selectable items when dragging a selection box
+			# We only consider selectable items when dragging a selection box.
 			instances = self.filter_selectable(instances)
 
-			#if there's at least one of player unit, we don't select any enemies
-			#applies both to buildings and ships
+			# If there is at least one player unit, we don't select any enemies.
+			# This applies to both buildings and ships.
 			if any((self.is_owned_by_player(instance) for instance in instances)):
 				instances = self.filter_owner(instances)
 
@@ -146,26 +145,25 @@ class SelectionTool(NavigationTool):
 		if self.session.world.health_visible_for_all_health_instances:
 			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
-		if len(selected) > 1 and all( i.is_unit for i in selected ):
-			self.session.ingame_gui.show_multi_select_tab()
-		elif len(selected) == 1:
+		if not selected:
+			return
+		if len(selected) == 1:
 			iter(selected).next().get_component(SelectableComponent).show_menu()
+		else:
+			self.session.ingame_gui.show_multi_select_tab(selected)
 
-		#change session cursor to attacking tool if selected instances can attack
 		# local import to prevent cycle
 		from horizons.gui.mousetools.attackingtool import AttackingTool
-		attacking_unit_found = False
-		for i in selected:
-			if hasattr(i, 'attack') and i.owner.is_local_player:
-				attacking_unit_found = True
-				self.deselect_at_end = False # Handover to AttackingTool without deselecting
-				break
+		# change session cursor to attacking tool if selected instances can attack
+		found_military = any(hasattr(i, 'attack') and i.owner.is_local_player
+		                     for i in selected)
+		# Handover to AttackingTool without deselecting
+		self.deselect_at_end = not found_military
 
-		if attacking_unit_found and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
+		if found_military and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
 			self.session.ingame_gui.set_cursor('attacking')
-		if not attacking_unit_found and isinstance(self.session.ingame_gui.cursor, AttackingTool):
-			self.session.ingame_gui.set_cursor()
-			horizons.globals.fife.set_cursor_image('default')
+		if not found_military and isinstance(self.session.ingame_gui.cursor, AttackingTool):
+			self.session.ingame_gui.set_cursor('default')
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
@@ -175,17 +173,17 @@ class SelectionTool(NavigationTool):
 			if self.session.selected_instances is None:
 				# this is a very odd corner case, it should only happen after the session has been ended
 				# we can't allow to just let it crash however
-				print 'WARNING: selected_instance is None. Please report this!'
+				self.log.error('Error: selected_instances is None. Please report this!')
 				traceback.print_stack()
-				print 'WARNING: selected_instance is None. Please report this!'
+				self.log.error('Error: selected_instances is None. Please report this!')
 				return
 			instances = self.get_hover_instances(evt)
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 
 			instances = filter(self.is_selectable, instances)
-			#on single click only one building should be selected from the hover_instances
-			#the if is for [] and [single_item] cases (they crashed)
-			#it acts as user would expect (instances[0] selects buildings in front first)
+			# On single click, only one building should be selected from the hover_instances.
+			# The if is for [] and [single_item] cases (they crashed).
+			# It acts as user would expect: instances[0] selects buildings in front first.
 			instances = instances if len(instances) <= 1 else [instances[0]]
 
 			self._update_selection(instances)
@@ -212,7 +210,7 @@ class SelectionTool(NavigationTool):
 		"""
 		self.select_old are old instances still relevant now (esp. on ctrl)
 		@param instances: uh instances
-		@param do_multi: true if selection rectangle on drag is used
+		@param do_multi: True if selection rectangle on drag is used
 		"""
 		self.log.debug("update selection %s", [unicode(i) for i in instances])
 
@@ -222,9 +220,6 @@ class SelectionTool(NavigationTool):
 			instances = self.select_old.symmetric_difference(instances)
 
 		# sanity:
-		# - if at least one unit, then only units
-		if any( not instance.is_building for instance in instances ):
-			instances = [ instance for instance in instances if not instance.is_building ]
 		# - no multiple entities from enemy selected
 		if len(instances) > 1:
 			user_instances = self.filter_owner(instances)

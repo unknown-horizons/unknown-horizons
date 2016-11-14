@@ -7,7 +7,7 @@
 	<Spacer min_size="0"  max_size="50" />
 		<Label name='name' />
 	</HBox>
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 
 	<HBox position="20,200">
 		<Label name="lbl_weapon_storage"  text="Weapons:" />

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-
 from tests.game import game_test
 
 

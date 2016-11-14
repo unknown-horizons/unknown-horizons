@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,33 +19,39 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
-
 import horizons.globals
-from horizons.constants import GROUND, VIEW
-from horizons.ext.dummy import Dummy
+from horizons.constants import EDITOR, GROUND, VIEW
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog
+from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import WindowManager, Window
+from horizons.gui.windows import WindowManager
+from horizons.messaging import ZoomChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 
 
+class DummyLogbook(object):
+	"""
+	Dummy object that provides the minimal interface for the editor's ingame gui to work.
+	"""
+	def display_message_history(self):
+		pass
+
+
 class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
+	message_widget = livingProperty()
 
-	def __init__(self, session, main_gui):
+	def __init__(self, session):
 		self.session = session
-		self.main_gui = main_gui
 
 		self.cursor = None
 		self.coordinates_tooltip = None
@@ -54,9 +60,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.message_widget = Dummy
-		self.show_menu = Dummy
-		self.hide_menu = Dummy
+		self.show_menu = lambda x: 0
+		self.hide_menu = lambda: 0
+		# a logbook Dummy is necessary for message_widget to work
+		self.logbook = DummyLogbook()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -77,16 +84,16 @@ class IngameGui(LivingObject):
 		})
 
 		self.mainhud.show()
-		self.session.view.add_change_listener(self._update_zoom)
+		ZoomChanged.subscribe(self._update_zoom)
 
 		# Hide unnecessary buttons in hud
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
 			self.mainhud.findChild(name=widget).hide()
 
 		self.windows = WindowManager()
-		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
+		self.message_widget = MessageWidget(self.session)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
-		self.help_dialog = HelpDialog(self.windows, session=self.session)
+		self.help_dialog = HelpDialog(self.windows)
 
 	def end(self):
 		self.mainhud.mapEvents({
@@ -96,12 +103,17 @@ class IngameGui(LivingObject):
 			'rotateLeft': None,
 			'gameMenuButton': None
 		})
+		self.mainhud.hide()
+		self.mainhud = None
+		self._settings_tab.hide()
+		self._settings_tab = None
+
 		self.windows.close_all()
 		self.minimap = None
 		self.keylistener = None
 		LastActivePlayerSettlementManager().remove()
 		LastActivePlayerSettlementManager.destroy_instance()
-		self.session.view.remove_change_listener(self._update_zoom)
+		ZoomChanged.unsubscribe(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
@@ -109,6 +121,11 @@ class IngameGui(LivingObject):
 			self.cursor = None
 
 		super(IngameGui, self).end()
+
+	def handle_selection_group(self, num, ctrl_pressed):
+		# Someday, maybe cool stuff will be possible here.
+		# That day is not today, I'm afraid.
+		pass
 
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)
@@ -133,17 +150,25 @@ class IngameGui(LivingObject):
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		self.windows.show(self.save_map_dialog)
+		window = SelectSavegameDialog('editor-save', self.windows)
+		savegamename = self.windows.open(window)
+		if savegamename is None:
+			return False # user aborted dialog
+		success = self.session.save(savegamename)
+		if success:
+				self.message_widget.add('SAVED_GAME')
 
 	def on_escape(self):
 		pass
 
 	def on_key_press(self, action, evt):
 		_Actions = KeyConfig._Actions
+		if action == _Actions.QUICKSAVE:
+			self.session.quicksave()
 		if action == _Actions.ESCAPE:
 			if self.windows.visible:
 				self.windows.on_escape()
-			elif not isinstance(self.cursor, SelectionTool):
+			elif hasattr(self.cursor, 'on_escape'):
 				self.cursor.on_escape()
 			else:
 				self.toggle_pause()
@@ -165,16 +190,15 @@ class IngameGui(LivingObject):
 		}[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 
-	def _update_zoom(self):
+	def _update_zoom(self, message):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.get_zoom()
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
-		if zoom == VIEW.ZOOM_MIN:
+		if message.zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()
 		else:
 			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
+		if message.zoom == VIEW.ZOOM_MAX:
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()
@@ -182,14 +206,18 @@ class IngameGui(LivingObject):
 
 class SettingsTab(TabInterface):
 	widget = 'editor_settings.xml'
+	# SettingsTab needs access widget upon init, thus disable lazy_loading
+	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
 		super(SettingsTab, self).__init__(widget=self.widget)
 
 		self._world_editor = world_editor
+		self._current_tile = 'sand'
+		self._ingame_gui = ingame_gui
 
 		# Brush size
-		for i in range(1, 4):
+		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
 			b = self.widget.findChild(name='size_%d' % i)
 			b.capture(Callback(self._change_brush_size, i))
 
@@ -202,7 +230,27 @@ class SettingsTab(TabInterface):
 			tile = getattr(GROUND, tile_type.upper())
 			image.up_image = self._get_tile_image(tile)
 			image.size = image.min_size = image.max_size = (64, 32)
-			image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
+			image.capture(Callback(self._set_cursor_tile, tile))
+
+		self.widget.mapEvents({
+			self.widget.name+'/mouseEntered/cursor': self._cursor_inside,
+			self.widget.name+'/mouseExited/cursor': self._cursor_outside,
+		})
+
+		self._ingame_gui.mainhud.mapEvents({
+			self._ingame_gui.mainhud.name+'/mouseEntered/cursor': self._cursor_inside,
+			self._ingame_gui.mainhud.name+'/mouseExited/cursor': self._cursor_outside,
+		})
+
+	def _set_cursor_tile(self, tile):
+		self._current_tile = tile
+		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
+
+	def _cursor_inside(self):
+		horizons.globals.fife.set_cursor_image('default')
+
+	def _cursor_outside(self):
+		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place
@@ -225,42 +273,3 @@ class SettingsTab(TabInterface):
 		self._world_editor.brush_size = size
 		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
 		b.up_image = images['box_highlighted']
-
-
-class SaveMapDialog(Window):
-	"""Shows a dialog where the user can set the name of the saved map."""
-
-	def __init__(self, session, windows):
-		super(SaveMapDialog, self).__init__(windows)
-
-		self._session = session
-		self._widget = load_uh_widget('save_map.xml')
-
-		name = self._widget.findChild(name='map_name')
-		name.text = u''
-		name.capture(self._do_save)
-
-		events = {
-			OkButton.DEFAULT_NAME: self._do_save,
-			CancelButton.DEFAULT_NAME: self._windows.close,
-		}
-		self._widget.mapEvents(events)
-
-	def show(self):
-		self._widget.show()
-		self._widget.findChild(name='map_name').requestFocus()
-
-	def hide(self):
-		self._widget.hide()
-
-	def _do_save(self):
-		name = self._widget.collectData('map_name')
-		if re.match('^[a-zA-Z0-9_-]+$', name):
-			self._session.save(name)
-			self._windows.close()
-		else:
-			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
-			#xgettext:python-format
-			advice = _('Try a name that only contains letters and numbers.')
-			self._windows.show_error_popup(_('Error'), message, advice)

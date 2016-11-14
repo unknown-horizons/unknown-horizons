@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.util.shapes.rect import Rect
+
 
 class TerrainRequirement:
 	LAND = 1 # buildings that must be entirely on flat land

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,9 @@ import math
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
+
 
 class AbstractField(AbstractBuilding):
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
@@ -53,27 +54,23 @@ class AbstractField(AbstractBuilding):
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.POTATOES:
-			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.LAMB_WOOL:
-			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.RAW_SUGAR:
-			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_PLANTS:
-			return BUILDING_PURPOSE.TOBACCO_FIELD
-		return None
+		return {
+			RES.POTATOES:       BUILDING_PURPOSE.POTATO_FIELD,
+			RES.LAMB_WOOL:      BUILDING_PURPOSE.PASTURE,
+			RES.RAW_SUGAR:      BUILDING_PURPOSE.SUGARCANE_FIELD,
+			RES.TOBACCO_PLANTS: BUILDING_PURPOSE.TOBACCO_FIELD,
+			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+		}.get(resource_id)
 
 	@classmethod
 	def get_higher_level_resource(cls, resource_id):
-		if resource_id == RES.POTATOES:
-			return RES.FOOD
-		elif resource_id == RES.LAMB_WOOL:
-			return RES.WOOL
-		elif resource_id == RES.RAW_SUGAR:
-			return RES.SUGAR
-		elif resource_id == RES.TOBACCO_PLANTS:
-			return RES.TOBACCO_LEAVES
-		return None
+		return {
+			RES.POTATOES:       RES.FOOD,
+			RES.LAMB_WOOL:      RES.WOOL,
+			RES.RAW_SUGAR:      RES.SUGAR,
+			RES.TOBACCO_PLANTS: RES.TOBACCO_LEAVES,
+			RES.HERBS:          RES.MEDICAL_HERBS,
+		}.get(resource_id)
 
 	def build(self, settlement_manager, resource_id):
 		production_builder = settlement_manager.production_builder
@@ -98,6 +95,7 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.PASTURE] = cls
 		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD] = cls
 		cls._available_buildings[BUILDINGS.TOBACCO_FIELD] = cls
+		cls._available_buildings[BUILDINGS.HERBARY] = cls
 
 AbstractField.register_buildings()
 

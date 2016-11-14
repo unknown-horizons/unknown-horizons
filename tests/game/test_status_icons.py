@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,21 +19,30 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import mock
+
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
-from horizons.world.production.producer import Producer
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
-from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
 from horizons.messaging import AddStatusIcon
+from horizons.world.production.producer import Producer
+from horizons.world.status import (
+	DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus, SettlerUnhappyStatus)
+from tests.game import game_test, settle
 
-import mock
-from tests.game import settle, game_test
 
 def assert_called_with_icon(cb, icon):
 	assert cb.called
 	# the first and only parameter is the message send
 	assert cb.call_args[0][0].icon.__class__ == icon
+
+
+@game_test()
+def test_addstatusicon_queue_emptied(session, player):
+	AddStatusIcon.clear()
+
+	assert not AddStatusIcon.queue_len()
 
 
 @game_test()
@@ -52,6 +61,7 @@ def test_productivity_low(session, player):
 
 	# Now low
 	assert_called_with_icon(cb, ProductivityLowStatus)
+
 
 @game_test()
 def test_settler_unhappy(session, player):
@@ -86,6 +96,7 @@ def test_decommissioned(session, player):
 	ToggleActive(lj.get_component(Producer))(player)
 
 	assert_called_with_icon(cb, DecommissionedStatus)
+
 
 @game_test()
 def test_inventory_full(session, player):

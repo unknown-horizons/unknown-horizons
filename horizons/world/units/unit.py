@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
+import math
+
 from fife import fife
 
-from horizons.world.units.movingobject import MovingObject
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.constants import LAYERS
+from horizons.extscheduler import ExtScheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.constants import LAYERS
-from horizons.component.healthcomponent import HealthComponent
-from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
+from horizons.world.units.movingobject import MovingObject
+
 
 class Unit(MovingObject, ResourceTransferHandler):
 	log = logging.getLogger("world.units")
@@ -53,6 +56,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
 				WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionCancelled = \
+				WeakMethod(self.onInstanceActionCancelled)
 		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 
@@ -89,10 +94,16 @@ class Unit(MovingObject, ResourceTransferHandler):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(
 			self.position.x + self.position.x - self.last_position.x,
 			self.position.y + self.position.y - self.last_position.y, 0))
-		if action.getId() != ('move_' + self._action_set_id):
-			self.act(self._action, self._instance.getFacingLocation(), True)
-		else:
-			self.act(self._action, location, True)
+
+		facing_loc = self._instance.getFacingLocation()
+		if action.getId().startswith('move_'):
+			# Remember: this means we *ended* a "move" action just now!
+			facing_loc = location
+
+		self.act(self._action, facing_loc=facing_loc, repeating=True)
+
+	def onInstanceActionCancelled(self, instance, action):
+		pass
 
 	def _on_damage(self, caller=None):
 		"""Called when health has changed"""
@@ -128,7 +139,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		health_component = self.get_component(HealthComponent)
 		health = health_component.health
 		max_health = health_component.max_health
-		zoom = self.session.view.get_zoom()
+		zoom = self.session.view.zoom
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
@@ -214,6 +225,9 @@ class Unit(MovingObject, ResourceTransferHandler):
 			if path:
 				return (possible_target, path)
 		return (None, None)
+
+	def go(self, x, y):
+		self.get_component(CommandableComponent).go(x, y)
 
 	@property
 	def classname(self):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,14 @@
 
 import copy
 
-from horizons.entities import Entities
-from horizons.constants import BUILDINGS
 from horizons.command.building import Build
+from horizons.constants import BUILDINGS
+from horizons.entities import Entities
+from horizons.ext.typing import Tuple
 from horizons.util.python import decorators
 from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
+
 
 class BasicBuilder(object):
 	"""An object of this class represents a non-checked plan to build a building at a specific place."""
@@ -34,7 +36,7 @@ class BasicBuilder(object):
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
 	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
-		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
+		BUILDINGS.MINE, BUILDINGS.SALT_PONDS]
 
 	__slots__ = ('building_id', 'coords', 'orientation', 'position')
 
@@ -62,7 +64,7 @@ class BasicBuilder(object):
 
 	def get_loading_area(self):
 		"""Return the position of the loading area."""
-		if self.building_id == BUILDINGS.IRON_MINE:
+		if self.building_id == BUILDINGS.MINE:
 			return Mine.get_loading_area(self.building_id, self.rotations[self.orientation], self.position)
 		else:
 			return self.position
@@ -98,9 +100,10 @@ class BasicBuilder(object):
 		raise NotImplementedError()
 
 	def __str__(self):
-		return 'BasicBuilder of building %d at %s, orientation %d' % (self.building_id, self.coords, self.orientation)
+		return 'BasicBuilder of building {0:d} at {1!s}, orientation {2:d}'. \
+			format(self.building_id, self.coords, self.orientation)
 
-	__cache = {}
+	__cache = {} # type: Dict[Tuple[int, Tuple[int, int], int], BasicBuilder]
 
 	@classmethod
 	def clear_cache(cls):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,14 @@
 
 from operator import itemgetter
 
+import horizons.globals
 from horizons.constants import AI, COLORS
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
+
 class StartGameOptions(object):
+
 	def __init__(self, game_identifier):
 		super(StartGameOptions, self).__init__()
 		self.game_identifier = game_identifier
@@ -73,26 +76,33 @@ class StartGameOptions(object):
 		players.append({
 			'id': 1,
 			'name': self.player_name,
-			'color': Color[1] if self.player_color is None else self.player_color,
+			'color': Color.get(1) if self.player_color is None else self.player_color,
 			'local': True,
 			'ai': self.human_ai,
 			'difficulty': difficulty_level[bool(self.human_ai)],
 		})
 
+		cur_locale = horizons.globals.fife.get_locale()
+
 		# add AI players with a distinct color; if none can be found then use black
 		for num in xrange(self.ai_players):
-			color = Color[COLORS.BLACK] # if none can be found then be black
-			for possible_color in Color:
-				if possible_color == Color[COLORS.BLACK]:
+			color = Color.get(COLORS.BLACK) # if none can be found then be black
+			for possible_color in Color.get_defaults():
+				if possible_color == Color.get(COLORS.BLACK):
 					continue # black is used by the trader and the pirate
 				used = any(possible_color == player['color'] for player in players)
 				if not used:
 					color = possible_color
 					break
 
+			name = horizons.globals.db.get_random_ai_name(cur_locale, [p['name'] for p in players])
+			# out of pre-defined names?
+			if name is None:
+				name = 'AI' + str(num + 1)
+
 			players.append({
 				'id' : num + 2,
-				'name' : 'AI' + str(num + 1),
+				'name' : name,
 				'color' : color,
 				'local' : False,
 				'ai' : True,

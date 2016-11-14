@@ -9,9 +9,9 @@
 		<Label name="headline"  text="Related buildings" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 
 	<VBox name="related_buildings" position="20,40"
-		max_size="230,200" min_size="230,200" size="230,200" />
+		max_size="230,360" min_size="230,360" size="230,360" />
 </Container>
 </Container>

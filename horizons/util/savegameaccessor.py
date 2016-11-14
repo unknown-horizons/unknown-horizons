@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@ import hashlib
 import os
 import os.path
 import tempfile
-
 from collections import defaultdict, deque
 
 from horizons.constants import MAP, PATHS
@@ -32,6 +31,13 @@ from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.random_map import create_random_island
 from horizons.util.savegameupgrader import SavegameUpgrader
+
+
+class MapFileNotFound(Exception):
+	def __init__(self, msg=None):
+		if msg is None:
+			msg = "Map file not found."
+		super(MapFileNotFound, self).__init__(msg)
 
 class SavegameAccessor(DbReader):
 	"""
@@ -91,6 +97,10 @@ class SavegameAccessor(DbReader):
 		if options is not None:
 			if options.map_padding is not None:
 				self("INSERT INTO map_properties VALUES(?, ?)", 'padding', options.map_padding)
+
+		if not os.path.exists(self._map_path):
+			raise MapFileNotFound("Map file " + unicode(self._map_path) + " not found!")
+
 
 		self('ATTACH ? AS map_file', self._map_path)
 		if is_random_map:
@@ -185,7 +195,7 @@ class SavegameAccessor(DbReader):
 
 			self._production_lines_by_owner[owner].append
 
-		self._production_state_history = defaultdict(lambda: deque())
+		self._production_state_history = defaultdict(deque)
 		for object_id, production_id, tick, state in self("SELECT object_id, production, tick, state FROM production_state_history ORDER BY object_id, production, tick"):
 			self._production_state_history[int(object_id), int(production_id)].append((tick, state))
 
@@ -243,7 +253,7 @@ class SavegameAccessor(DbReader):
 		for row in self("SELECT rowid, home_building, creation_tick FROM building_collector"):
 			self._building_collector[int(row[0])] = (int(row[1]) if row[1] is not None else None, row[2])
 
-		self._building_collector_job_history = defaultdict(lambda: deque())
+		self._building_collector_job_history = defaultdict(deque)
 		for collector_id, tick, utilization in self("SELECT collector, tick, utilisation FROM building_collector_job_history ORDER BY collector, tick"):
 			self._building_collector_job_history[int(collector_id)].append((tick, utilization))
 
@@ -314,11 +324,10 @@ class SavegameAccessor(DbReader):
 	def get_hash(cls, savegamefile):
 		if not os.path.exists(savegamefile):
 			return False
-		fd = open(savegamefile, "rb")
-		h = hashlib.sha1()
-		h.update(fd.read())
-		filehash = h.hexdigest()
-		fd.close()
+		with open(savegamefile, "rb") as f:
+			h = hashlib.sha1()
+			h.update(f.read())
+			filehash = h.hexdigest()
 		return filehash
 
 decorators.bind_all(SavegameAccessor)

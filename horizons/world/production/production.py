@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,14 +21,12 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict, deque
 
-from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
-from horizons.world.production.productionline import ProductionLine
-
 from horizons.scheduler import Scheduler
+from horizons.util.changelistener import ChangeListener, metaChangeListenerDecorator
+from horizons.world.production.productionline import ProductionLine
 
 
 @metaChangeListenerDecorator("production_finished")
@@ -64,7 +62,7 @@ class Production(ChangeListener):
 		@param prod_id: int id of the production line
 		@param prod_data: ?
 		@param start_finished: Whether to start at the final state of a production
-		@param load: set to true if this production is supposed to load a saved production
+		@param load: set to True if this production is supposed to load a saved production
 		"""
 		super(Production, self).__init__(**kwargs)
 		# this has grown to be a bit weird compared to other init/loads
@@ -254,7 +252,7 @@ class Production(ChangeListener):
 		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
 		"""
 		self._clean_state_history()
-		result = defaultdict(lambda: 0)
+		result = defaultdict(int)
 		current_tick = Scheduler().cur_tick
 		pause_state = PRODUCTION.STATES.paused.index
 		first_relevant_tick = self._get_first_relevant_tick(ignore_pause)
@@ -390,7 +388,7 @@ class Production(ChangeListener):
 
 	def _add_listeners(self, check_now=False):
 		"""Listen for changes in the inventory from now on."""
-		# don't set call_listener_now to true here, adding/removing changelisteners wouldn't be atomic any more
+		# don't set call_listener_now to True here, adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory)
 		if self.__class__.uses_gold:
 			self.owner_inventory.add_change_listener(self._check_inventory)
@@ -411,7 +409,7 @@ class Production(ChangeListener):
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.
-		@return: bool, true if we can start production
+		@return: bool, True if we can start production
 		"""
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			if self.inventory[res] < (-amount): # consumed res have negative sign
@@ -426,7 +424,7 @@ class Production(ChangeListener):
 
 	def _check_for_space_for_produced_res(self):
 		"""Checks if there is enough space in the inventory for the res, we want to produce.
-		@return bool, true if everything can fit."""
+		@return bool, True if everything can fit."""
 		for res, amount in self._prod_line.produced_res.iteritems():
 			if self.inventory.get_free_space_for(res) < amount:
 				return False
@@ -436,8 +434,8 @@ class Production(ChangeListener):
 		if hasattr(self, "_state"):
 			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
 		else:
-
 			return "UninitializedProduction()"
+
 
 class ChangingProduction(Production):
 	"""Same as Production, but can changes properties of the production line"""
@@ -463,6 +461,7 @@ class SettlerProduction(ChangingProduction):
 		super(SettlerProduction, self)._remove_res_to_expend()
 		# give the resources when taking away the consumed goods at prod start
 		super(SettlerProduction, self)._give_produced_res()
+
 
 class SingleUseProduction(Production):
 	"""This Production just produces one time, and then finishes.

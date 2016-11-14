@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -34,9 +34,10 @@
 ###############################################################################
 
 
+from __future__ import print_function
 HEADER = '''\
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -60,7 +61,7 @@ HEADER = '''\
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -77,20 +78,20 @@ HEADER = '''\
 #
 ###############################################################################
 
-object_translations = {}
+T = lambda s: s
 
-def set_translations():
-	"""Instead of overwriting object_translations, operates on the same
-	object (i.e. deleting dict keys, then updating) so that everything
-	importing object_translations once keeps getting updates. #1905, #1909
-	"""
-	global object_translations
-	object_translations.clear()
-	object_translations.update({
+
+
+
+
+
+
+
+object_translations = {
 '''
 
 FOOTER = '''
-	})
+}
 '''
 ROWINDENT = '''
 		'''
@@ -109,9 +110,15 @@ files_to_skip = [
 
 import os
 import sys
+import inspect
 
 from yaml import load
 from yaml import SafeLoader as Loader
+
+cmd_folder = os.path.realpath(
+    os.path.abspath(os.path.join(os.path.split(inspect.getfile(inspect.currentframe()))[0], "..")))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS
 
@@ -152,7 +159,7 @@ def content_from_file(filename):
 		return ''
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
-			text = '_("{value}")'.format(value=value[2:])
+			text = u'T("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
 			comment = '%s of %s' %(component, filename)
@@ -192,4 +199,4 @@ output = '%s%s%s' % (HEADER, '\n'.join(filesnippets), FOOTER)
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
 else:
-	print output
+	print(output)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+
 
 class FreeIslandBuildabilityCache(object):
 	"""
@@ -61,3 +62,11 @@ class FreeIslandBuildabilityCache(object):
 			if coords in self._binary_cache.coords_set:
 				clean_list.append(coords)
 		self._binary_cache.remove_area(clean_list)
+
+	def add_area(self, coords_list):
+		"""Add a list of coordinates to the area."""
+		clean_list = []
+		for coords in coords_list:
+			if coords not in self._binary_cache.coords_set:
+				clean_list.append(coords)
+		self._binary_cache.add_area(clean_list)

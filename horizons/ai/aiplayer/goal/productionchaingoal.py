@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
+from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import RES
 from horizons.util.python import decorators
+
 
 class ProductionChainGoal(SettlementGoal):
 	def __init__(self, settlement_manager, resource_id, name):
@@ -137,6 +138,13 @@ class TobaccoProductsGoal(ProductionChainGoal):
 
 	def get_personality_name(self):
 		return 'TobaccoProductsGoal'
+
+class MedicalHerbsProductsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(MedicalHerbsProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs products producer')
+
+	def get_personality_name(self):
+		return 'MedicalHerbsProductsGoal'
 
 class SaltGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):

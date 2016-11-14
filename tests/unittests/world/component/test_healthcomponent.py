@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,10 @@
 
 from unittest import TestCase
 
-from horizons.ext.dummy import Dummy
-from horizons.component.healthcomponent import HealthComponent
-
 from mock import Mock
+
+from horizons.component.healthcomponent import HealthComponent
+from tests.dummy import Dummy
 
 
 class TestHealthComponent(TestCase):

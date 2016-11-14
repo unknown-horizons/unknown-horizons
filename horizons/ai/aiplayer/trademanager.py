@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
-
+import math
 from collections import defaultdict
 
-from mission.domestictrade import DomesticTrade
-
-from building import AbstractBuilding
-from horizons.util.worldobject import WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.util.python import decorators
-from horizons.constants import RES, STORAGE
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, STORAGE
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
+from .building import AbstractBuilding
+from .mission.domestictrade import DomesticTrade
+
 
 class TradeManager(WorldObject):
 	"""
@@ -63,7 +62,7 @@ class TradeManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.trademanager")
 
 	# resources that can be produced on another island and transported to where they are needed
-	legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS, RES.SALT]
+	legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()
@@ -73,7 +72,7 @@ class TradeManager(WorldObject):
 		self.settlement_manager = settlement_manager
 		self.owner = settlement_manager.owner
 		self.data = {} # resource_id: SingleResourceTradeManager
-		self.ships_sent = defaultdict(lambda: 0) # {settlement_manager_id: num_sent, ...}
+		self.ships_sent = defaultdict(int) # {settlement_manager_id: num_sent, ...}
 
 	def save(self, db):
 		super(TradeManager, self).save(db)
@@ -133,7 +132,7 @@ class TradeManager(WorldObject):
 		destination_settlement_manager = mission.destination_settlement_manager
 		ship = mission.ship
 
-		total_amount = defaultdict(lambda: 0)
+		total_amount = defaultdict(int)
 		resource_manager = self.settlement_manager.resource_manager
 		for resource_id, amount in resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
 			available_amount = int(min(math.floor(amount), self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]))
@@ -295,7 +294,7 @@ class SingleResourceTradeManager(WorldObject):
 				options.append((amount, resource_manager.worldid, resource_manager, settlement_manager))
 		options.sort(reverse = True)
 
-		self.partners = defaultdict(lambda: 0.0)
+		self.partners = defaultdict(float)
 		needed_amount = self.total - self.available
 		for amount, _, resource_manager, settlement_manager in options:
 			if needed_amount < 1e-9:

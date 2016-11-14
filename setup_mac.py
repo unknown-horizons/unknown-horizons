@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# usage: 
+# usage:
 # copy the full content/ folder into src/Contents/Resources/
 # moreover copy the fife dir into the current dir
 # details can be found at http://wiki.unknown-horizons.org/w/MacOS_build_notes
@@ -30,11 +30,11 @@ import os
 
 # Sets what directory to crawl for files to include
 # Relative to location of setup.py; leave off trailing slash
-includes_dir = 'src'
+includes_dir = 'content'
 
 # Set the root directory for included files
 # Relative to the bundle's Resources folder, so '../../' targets bundle root
-includes_target = '../../'
+includes_target = 'content/'
 
 # Initialize an empty list so we can use list.append()
 data_includes = []
@@ -60,13 +60,13 @@ packages.append('fife')
 
 #Info.plist keys for the app
 #Icon.icns must be inside src/Contents/Resources/
-plist = {"CFBundleIconFile": "Icon.icns",
+plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
 		 "CFBundleDisplayName": "Unknown Horizons",
 		 "CFBundleExecutable": "Unknown Horizons",
 		 "CFBundleIdentifier": "org.unknown-horizons",
 		 "CFBundleName": "Unknown Horizons",
 		 "CFBundleShortVersionString": "0.0.0",
-		 "LSArchitecturePriority": "i386",
+		 "LSArchitecturePriority": ["x86_64", "i386"],
 		 "CFBundleVersion": "0.0.0"
 		}
 

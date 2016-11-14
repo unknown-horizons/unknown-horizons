@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,13 +22,13 @@
 import logging
 
 from fife import fife
-import horizons.globals
 
+import horizons.globals
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.component.namedcomponent import NamedComponent
-from horizons.constants import LAYERS, AI
+from horizons.constants import AI, LAYERS
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary

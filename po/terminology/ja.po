@@ -2,19 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-12-19 15:25+0200\n"
-"Last-Translator: naraba <narabanow@gmail.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:51+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.1.5\n"
-
-msgid "build"
-msgstr "ビルド"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367758272.0\n"
 
 msgid "game"
 msgstr "ゲーム"
@@ -22,11 +20,14 @@ msgstr "ゲーム"
 msgid "building"
 msgstr "ビルド中/ビル"
 
+msgid "build"
+msgstr "ビルド"
+
+msgid "player"
+msgstr ""
+
 msgid "settlement"
 msgstr "決済"
-
-msgid "farm"
-msgstr "農場"
 
 msgid "ship"
 msgstr "船"
@@ -34,127 +35,167 @@ msgstr "船"
 msgid "tent"
 msgstr "テント"
 
-msgid "warehouse"
-msgstr ""
-
-msgid "resource"
-msgstr "資源"
-
-msgid "produce"
-msgstr "生産する"
-
-# 農地？
-msgid "field"
-msgstr "フィールド"
+msgid "farm"
+msgstr "農場"
 
 msgid "map"
 msgstr "地図"
 
-msgid "trade"
-msgstr "交易"
+msgid "resource"
+msgstr "資源"
+
+msgid "warehouse"
+msgstr "倉庫"
 
 msgid "inhabitants"
 msgstr "住民"
 
+msgid "change"
+msgstr "変更"
+
+msgid "unknown"
+msgstr "不明"
+
+msgid "produce"
+msgstr "生産する"
+
+msgid "no"
+msgstr "ない"
+
+msgid "trade"
+msgstr "交易"
+
+msgid "check"
+msgstr "確認する"
+
+msgid "field"
+msgstr "フィールド"
+
+msgid "main"
+msgstr "メイン"
+
 msgid "buy"
 msgstr "購入"
-
-msgid "overview"
-msgstr "概要"
 
 msgid "click"
 msgstr "クリック"
 
+msgid "left"
+msgstr "残っている"
+
+msgid "overview"
+msgstr "概要"
+
+msgid "running"
+msgstr "運営"
+
+msgid "square"
+msgstr ""
+
 msgid "lumberjack"
 msgstr "木こり"
 
-# 88%
-#, fuzzy
-msgid "resident"
-msgstr "住民"
+msgid "unable"
+msgstr ""
+
+msgid "continue"
+msgstr "続ける"
 
 msgid "main square"
 msgstr "メイン広場"
 
-# 85%
-#, fuzzy
-msgid "sailors"
-msgstr "船乗り"
-
-msgid "food"
-msgstr "食料"
-
-msgid "increment"
-msgstr "増分"
-
 msgid "production"
 msgstr "生産"
 
-msgid "select"
-msgstr "選択"
+msgid "sailors"
+msgstr "船乗り"
 
 msgid "sell"
 msgstr "販売"
 
-msgid "setting"
-msgstr "設定"
-
 msgid "storage"
 msgstr "ストレージ"
+
+msgid "contact"
+msgstr "連絡する"
+
+msgid "house"
+msgstr "住宅"
+
+msgid "menu"
+msgstr "メニュー"
 
 msgid "tab"
 msgstr "タブ"
 
+msgid "close"
+msgstr ""
+
+msgid "food"
+msgstr "食料"
+
+msgid "free"
+msgstr "無料"
+
+msgid "ready"
+msgstr "赤い"
+
+msgid "setting"
+msgstr "設定"
+
+msgid "start"
+msgstr "開始"
+
+msgid "time"
+msgstr "時刻"
+
+msgid "trader"
+msgstr "交易者"
+
+msgid "unit"
+msgstr ""
+
+msgid "version"
+msgstr "バージョン"
+
+msgid "fire"
+msgstr "火"
+
+msgid "island"
+msgstr ""
+
+msgid "select"
+msgstr "選択"
+
+msgid "slot"
+msgstr "枠"
+
+msgid "stock"
+msgstr "貯蔵"
+
 msgid "upgrade"
 msgstr ""
 
-msgid "your inhabitants"
-msgstr ""
+msgid "coast"
+msgstr "海岸"
 
-msgid "close"
+msgid "color"
 msgstr ""
 
 msgid "companies"
 msgstr "企業"
 
-msgid "island"
+msgid "file"
+msgstr "火"
+
+msgid "tier"
 msgstr ""
 
-msgid "time"
-msgstr "時刻"
+msgid "key"
+msgstr "キー"
 
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr "バランス"
-
-msgid "coast"
-msgstr "海岸"
-
-msgid "menu"
-msgstr "メニュー"
-
-msgid "slot"
-msgstr "枠"
-
-msgid "start"
-msgstr "開始"
-
-msgid "stock"
-msgstr "貯蔵"
-
-msgid "trail"
-msgstr "歩道"
-
-msgid "Unknown Horizons"
-msgstr ""
-
-msgid "wool"
-msgstr "羊毛"
-
-msgid "boards"
-msgstr "ボード"
+msgid "taxes"
+msgstr "税金"
 
 msgid "collector"
 msgstr "収集する人"
@@ -162,11 +203,29 @@ msgstr "収集する人"
 msgid "connection"
 msgstr "接続"
 
-msgid "fire"
-msgstr "火"
+msgid "log"
+msgstr "ログ"
 
-msgid "change"
-msgstr "変更"
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr "住民"
+
+msgid "wool"
+msgstr "羊毛"
+
+msgid "boards"
+msgstr "ボード"
+
+msgid "built"
+msgstr "建造する"
+
+msgid "button"
+msgstr ""
+
+msgid "choose"
+msgstr "選ぶ"
 
 msgid "connect"
 msgstr "接続"
@@ -174,47 +233,29 @@ msgstr "接続"
 msgid "cost"
 msgstr "費用"
 
-msgid "house"
-msgstr "住宅"
-
-msgid "log"
-msgstr "ログ"
+msgid "happiness"
+msgstr "幸福度"
 
 msgid "road"
-msgstr ""
+msgstr "赤い"
 
 msgid "save"
 msgstr "節約する"
 
-msgid "built"
-msgstr "建造する"
+msgid "tree"
+msgstr "木"
 
-msgid "pasture"
-msgstr "牧場"
+msgid "amount"
+msgstr ""
 
 msgid "reach"
 msgstr "届く"
 
-msgid "tree"
-msgstr "木"
-
-msgid "your"
-msgstr "あなたの"
-
-msgid "your settlement"
+msgid "size"
 msgstr ""
 
 msgid "add"
 msgstr "追加する"
-
-msgid "check"
-msgstr "確認する"
-
-msgid "choose"
-msgstr "選ぶ"
-
-msgid "confectionery"
-msgstr ""
 
 msgid "fisher"
 msgstr "漁師"
@@ -222,76 +263,68 @@ msgstr "漁師"
 msgid "free trader"
 msgstr "自由交易船"
 
-msgid "happiness"
-msgstr "幸福度"
-
 msgid "in stock"
 msgstr ""
 
-msgid "money"
-msgstr ""
-
-msgid "pavilion"
-msgstr "パビリオン"
-
-msgid "running costs"
-msgstr "運営費"
-
-msgid "sugar"
-msgstr "砂糖"
-
-msgid "taxes"
-msgstr "税金"
-
-msgid "tax"
-msgstr "税"
-
-msgid "tools"
-msgstr "工具"
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr "続ける"
-
-msgid "faith"
-msgstr "信仰"
-
-msgid "help"
-msgstr "援助"
-
-msgid "left"
-msgstr "残っている"
-
-msgid "level"
-msgstr "レベル"
+msgid "increase"
+msgstr "増える"
 
 msgid "mode"
 msgstr "モード"
 
+msgid "password"
+msgstr ""
+
+msgid "pasture"
+msgstr "牧場"
+
+msgid "range"
+msgstr "範囲"
+
+msgid "signal"
+msgstr "信号"
+
+msgid "speed"
+msgstr "種をまく"
+
+msgid "sugar"
+msgstr "砂糖"
+
+msgid "access"
+msgstr ""
+
+msgid "build menu"
+msgstr "建築メニュー"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "fetch"
+msgstr ""
+
+msgid "help"
+msgstr "援助"
+
+msgid "income"
+msgstr "収入"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "レベル"
+
 msgid "move"
 msgstr "移動する"
 
-# 87%
-#, fuzzy
-msgid "pioneers"
-msgstr "開拓者"
+msgid "multiple"
+msgstr "複数の"
 
-# 87%
-#, fuzzy
-msgid "citizens"
-msgstr "市民"
-
-# 88%
-#, fuzzy
-msgid "merchants"
-msgstr "商人"
-
-# 90%
-#, fuzzy
-msgid "aristocrats"
-msgstr "貴族"
+msgid "please check"
+msgstr ""
 
 msgid "potato"
 msgstr "ジャガイモ"
@@ -299,49 +332,23 @@ msgstr "ジャガイモ"
 msgid "settler"
 msgstr "入植者"
 
-# 80%
-#, fuzzy
-msgid "speed"
-msgstr "種をまく"
-
-msgid "stop"
-msgstr "止める"
-
-msgid "storage tent"
-msgstr "貯蔵庫"
-
-msgid "wait"
+msgid "total"
 msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr "会計"
-
-msgid "amount"
-msgstr ""
-
-msgid "build menu"
-msgstr "建築メニュー"
-
-msgid "cloth"
-msgstr "布"
 
 msgid "construction"
 msgstr "建設"
 
-msgid "decrease"
-msgstr "減る"
+msgid "creator"
+msgstr ""
 
-msgid "description"
-msgstr "説明"
+msgid "faith"
+msgstr "信仰"
 
-msgid "fish"
-msgstr "魚"
+msgid "hold"
+msgstr "保持する"
 
-msgid "increase"
-msgstr "増える"
+msgid "icon"
+msgstr "鉄"
 
 msgid "lamb"
 msgstr ""
@@ -349,22 +356,14 @@ msgstr ""
 msgid "leave"
 msgstr "離れる"
 
-msgid "liquor"
-msgstr "酒"
-
 msgid "location"
 msgstr ""
 
-msgid "offer"
+msgid "multiple buildings"
 msgstr ""
 
-# 75%
-#, fuzzy
-msgid "potatoes"
-msgstr "ジャガイモ"
-
-msgid "range"
-msgstr "範囲"
+msgid "pioneers"
+msgstr "開拓者"
 
 msgid "reached"
 msgstr "届いた"
@@ -372,26 +371,32 @@ msgstr "届いた"
 msgid "run"
 msgstr "運営する"
 
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
 msgid "slider"
 msgstr "スライダー"
-
-msgid "solution"
-msgstr "解決策"
 
 msgid "space"
 msgstr ""
 
+msgid "storage tent"
+msgstr "貯蔵庫"
+
 msgid "target"
 msgstr ""
 
-msgid "team"
-msgstr "チーム"
-
-msgid "total"
+msgid "terminated"
 msgstr ""
 
-msgid "unable"
-msgstr ""
+msgid "tools"
+msgstr "工具"
+
+msgid "account"
+msgstr "会計"
 
 msgid "active"
 msgstr "機能している"
@@ -399,24 +404,23 @@ msgstr "機能している"
 msgid "afford"
 msgstr ""
 
-# 85%
-#, fuzzy
 msgid "animals"
 msgstr "動物"
 
 msgid "Captain's log"
 msgstr "船長の航海日誌"
 
-# 75%
-#, fuzzy
+msgid "cloth"
+msgstr "布"
+
 msgid "construct"
 msgstr "建設"
 
-msgid "consume"
-msgstr "消費する"
-
-msgid "enabled"
+msgid "cursor"
 msgstr ""
+
+msgid "description"
+msgstr "説明"
 
 msgid "entries"
 msgstr ""
@@ -424,40 +428,38 @@ msgstr ""
 msgid "feature"
 msgstr "機能"
 
+msgid "fish"
+msgstr "魚"
+
 msgid "forest"
 msgstr "森"
 
-# 80%
-#, fuzzy
-msgid "grows"
-msgstr "育てる"
+msgid "from time to time"
+msgstr "時々"
 
-msgid "hold"
-msgstr "保持する"
-
-msgid "idle"
+msgid "global"
 msgstr ""
 
-msgid "income"
-msgstr "収入"
+msgid "grow"
+msgstr "育てる"
+
+msgid "happy"
+msgstr ""
 
 msgid "information"
 msgstr "情報"
 
-msgid "key"
-msgstr "キー"
-
-msgid "lamb wool"
-msgstr "羊毛"
-
-msgid "overview tab"
-msgstr ""
+msgid "liquor"
+msgstr "酒"
 
 msgid "minimap"
 msgstr "ミニマップ"
 
-msgid "issues"
-msgstr "論点"
+msgid "offer"
+msgstr ""
+
+msgid "overview tab"
+msgstr ""
 
 msgid "plant"
 msgstr ""
@@ -465,25 +467,29 @@ msgstr ""
 msgid "play"
 msgstr "遊ぶ"
 
-msgid "playing"
-msgstr "遊び"
+msgid "please check your"
+msgstr ""
+
+msgid "potatoes"
+msgstr "ジャガイモ"
 
 msgid "price"
 msgstr ""
 
-# 75%
-#, fuzzy
 msgid "read"
 msgstr "赤い"
 
-msgid "return"
-msgstr "戻る"
-
-msgid "sale"
-msgstr "販売"
-
 msgid "screen"
 msgstr "画面"
+
+msgid "service"
+msgstr "施設"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "解決策"
 
 msgid "sound"
 msgstr "と思われる"
@@ -491,22 +497,29 @@ msgstr "と思われる"
 msgid "special"
 msgstr ""
 
+msgid "spot"
+msgstr "枠"
+
+msgid "statistics"
+msgstr ""
+
 msgid "store"
 msgstr ""
 
-# 75%
-#, fuzzy
+msgid "team"
+msgstr "チーム"
+
 msgid "tear"
 msgstr "チーム"
 
-msgid "from time to time"
-msgstr "時々"
+msgid "time to time"
+msgstr ""
 
 msgid "trading"
 msgstr "交易"
 
-msgid "village"
-msgstr "村"
+msgid "unsupported"
+msgstr ""
 
 msgid "visit"
 msgstr "訪れる"
@@ -514,24 +527,13 @@ msgstr "訪れる"
 msgid "world"
 msgstr ""
 
-# 83%
-#, fuzzy
-msgid "yield"
-msgstr "譲る"
-
-msgid "your ship"
+msgid "wrong"
 msgstr ""
 
-msgid "back"
-msgstr "後ろにある"
-
-msgid "build settlement"
-msgstr "集落を作る"
-
-msgid "load"
+msgid "bar"
 msgstr ""
 
-msgid "unload"
+msgid "bug"
 msgstr ""
 
 msgid "command"
@@ -540,16 +542,148 @@ msgstr ""
 msgid "completed"
 msgstr ""
 
-msgid "condition"
-msgstr "条件"
+msgid "forum"
+msgstr "公共広場"
 
-msgid "contact"
-msgstr "連絡する"
+msgid "happen"
+msgstr ""
+
+msgid "harvest"
+msgstr ""
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr "羊毛"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "遊び"
+
+msgid "produced"
+msgstr "生産された"
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "販売"
+
+msgid "school"
+msgstr "学校"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr "一時的に"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr ""
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "バランス"
+
+msgid "load"
+msgstr "赤い"
+
+msgid "trail"
+msgstr "歩道"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "鉄"
+
+msgid "tobacco"
+msgstr "タバコ"
+
+msgid "clay"
+msgstr "粘土"
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "パビリオン"
+
+msgid "tax"
+msgstr "税"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "止める"
+
+msgid "wait"
+msgstr ""
+
+msgid "decrease"
+msgstr "減る"
+
+msgid "ore"
+msgstr "鉱石"
+
+msgid "return"
+msgstr "戻る"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "消費する"
+
+msgid "idle"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr "節約する"
+
+msgid "village"
+msgstr "村"
+
+msgid "yields"
+msgstr "譲る"
+
+msgid "back"
+msgstr "後ろにある"
+
+msgid "build settlement"
+msgstr "集落を作る"
+
+msgid "charcoal"
+msgstr "木炭"
 
 msgid "empty"
 msgstr ""
 
-msgid "ensure"
+msgid "existing"
 msgstr ""
 
 msgid "fulfill"
@@ -558,28 +692,23 @@ msgstr "満たす"
 msgid "graphics"
 msgstr "グラフィック"
 
-msgid "harvest"
-msgstr ""
-
-# 80%
-#, fuzzy
-msgid "hunts"
+msgid "hunt"
 msgstr "狩り"
 
-msgid "multiple"
-msgstr "複数の"
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
 
 msgid "potato field"
 msgstr ""
 
-msgid "school"
-msgstr "学校"
-
 msgid "seed"
 msgstr "種をまく"
 
-msgid "service"
-msgstr "施設"
+msgid "send"
+msgstr "種をまく"
 
 msgid "sheep"
 msgstr "羊"
@@ -587,173 +716,443 @@ msgstr "羊"
 msgid "signal fire"
 msgstr "のろし"
 
-msgid "statistics"
-msgstr ""
-
-msgid "clay"
-msgstr "粘土"
-
-msgid "iron"
-msgstr "鉄"
-
-msgid "ore"
-msgstr "鉱石"
-
-msgid "tobacco"
-msgstr "タバコ"
-
-msgid "charcoal"
-msgstr "木炭"
-
 msgid "sugar field"
 msgstr ""
 
-msgid "temporarily"
-msgstr "一時的に"
-
-msgid "values"
+msgid "error"
 msgstr ""
 
-#~ msgid "branch office"
-#~ msgstr "支店"
+msgid "deposit"
+msgstr ""
 
-#~ msgid "main"
-#~ msgstr "メイン"
+msgid "invalid"
+msgstr ""
 
-#~ msgid "unknown"
-#~ msgstr "不明"
+msgid "network"
+msgstr ""
 
-#~ msgid "free"
-#~ msgstr "無料"
+msgid "route"
+msgstr ""
 
-#~ msgid "trader"
-#~ msgstr "交易者"
+msgid "selected"
+msgstr "選択"
 
-#~ msgid "version"
-#~ msgstr "バージョン"
+msgid "boat"
+msgstr ""
 
-#~ msgid "signal"
-#~ msgstr "信号"
+msgid "create"
+msgstr ""
 
-#~ msgid "found"
-#~ msgstr "設立する"
+msgid "filename"
+msgstr ""
 
-#~ msgid "raw"
-#~ msgstr "原料"
+msgid "mouse"
+msgstr "住宅"
 
-#~ msgid "running"
-#~ msgstr "運営"
+msgid "partner"
+msgstr "相手"
 
-#~ msgid "inventory"
-#~ msgstr "物品一覧"
+msgid "reset"
+msgstr ""
 
-#~ msgid "moved"
-#~ msgstr "立ち去った"
+msgid "configuration"
+msgstr ""
 
-#~ msgid "produced"
-#~ msgstr "生産された"
+msgid "delete"
+msgstr ""
 
-#~ msgid "hunter"
-#~ msgstr "猟師"
+msgid "enter"
+msgstr ""
 
-#~ msgid "market"
-#~ msgstr "市場"
+msgid "quicksave"
+msgstr ""
 
-#~ msgid "partner"
-#~ msgstr "相手"
+msgid "stone"
+msgstr ""
 
-#~ msgid "sailor"
-#~ msgstr "船乗り"
+msgid "weapon"
+msgstr ""
 
-#~ msgid "pioneer"
-#~ msgstr "開拓者"
+msgid "cattle"
+msgstr "牛"
 
-#~ msgid "citizen"
-#~ msgstr "市民"
+msgid "message"
+msgstr ""
 
-#~ msgid "merchant"
-#~ msgstr "商人"
+msgid "port"
+msgstr ""
 
-#~ msgid "aristocrat"
-#~ msgstr "貴族"
+msgid "scenario"
+msgstr ""
 
-#~ msgid "refresh"
-#~ msgstr "回復する"
+msgid "spice"
+msgstr ""
 
-#~ msgid "residents"
-#~ msgstr "住民"
+msgid "cocoa"
+msgstr ""
 
-#~ msgid "output"
-#~ msgstr "生産物"
+msgid "corn"
+msgstr ""
 
-#~ msgid "weaver"
-#~ msgstr "機織り"
+msgid "details"
+msgstr ""
 
-#~ msgid "animal"
-#~ msgstr "動物"
+msgid "found"
+msgstr "設立する"
 
-#~ msgid "fisherman"
-#~ msgstr "漁師"
+msgid "herbs"
+msgstr "薬草"
 
-#~ msgid "forum"
-#~ msgstr "公共広場"
+msgid "pause"
+msgstr ""
 
-#~ msgid "grow"
-#~ msgstr "育てる"
+msgid "pigs"
+msgstr ""
 
-#~ msgid "hunt"
-#~ msgstr "狩り"
+msgid "press"
+msgstr ""
 
-#~ msgid "load/unload"
-#~ msgstr "荷上げ／荷下ろし"
+msgid "quit"
+msgstr ""
 
-#~ msgid "ship inventory"
-#~ msgstr "船の荷物"
+msgid "savegame file"
+msgstr ""
 
-#~ msgid "starting"
-#~ msgstr "開始"
+msgid "valid"
+msgstr ""
 
-#~ msgid "trade partner"
-#~ msgstr "交易相手"
+msgid "war"
+msgstr ""
 
-#~ msgid "yields"
-#~ msgstr "譲る"
+msgid "all settlements"
+msgstr ""
 
-#~ msgid "green"
-#~ msgstr "緑色の"
+msgid "apply"
+msgstr ""
 
-#~ msgid "red"
-#~ msgstr "赤い"
+msgid "bricks"
+msgstr ""
 
-#~ msgid "no"
-#~ msgstr "ない"
+msgid "chat"
+msgstr ""
 
-#~ msgid "dialogue"
-#~ msgstr "話し合い"
+msgid "confirm"
+msgstr ""
 
-#~ msgid "ruin"
-#~ msgstr "廃墟"
+msgid "default settings"
+msgstr ""
 
-#~ msgid "salt ponds"
-#~ msgstr "塩田"
+msgid "diplomacy"
+msgstr ""
 
-#~ msgid "cattle"
-#~ msgstr "牛"
+msgid "displayed"
+msgstr ""
 
-#~ msgid "pig"
-#~ msgstr "豚"
+msgid "flour"
+msgstr ""
 
-#~ msgid "herbs"
-#~ msgstr "薬草"
+msgid "grapes"
+msgstr ""
 
-#~ msgid "herbary"
-#~ msgstr "薬草園"
+msgid "ground"
+msgstr ""
 
-#~ msgid "butchery"
-#~ msgstr "肉屋"
+msgid "health"
+msgstr ""
 
-#~ msgid "doctor"
-#~ msgstr "医者"
+msgid "land"
+msgstr ""
 
-#~ msgid "education"
-#~ msgstr "教育"
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "販売"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr "資源"
+
+msgid "trade partner"
+msgstr "交易相手"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "市民"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "医者"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "教育"
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "物品一覧"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "運営費"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr "入植者"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr "時刻"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

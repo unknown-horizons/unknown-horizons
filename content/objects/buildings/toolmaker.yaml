@@ -1,4 +1,4 @@
-id: 30
+id: BUILDINGS.TOOLMAKER
 name: _ Toolmaker
 baseclass: production.ProductionBuilding
 radius: 8
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Produces tools out of iron.
-settler_level: TIER.SETTLERS
+tier: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 2}
 components:
 - SelectableComponent:
@@ -29,6 +29,8 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.IRON_INGOTS: 4, RES.BOARDS: 4, RES.TOOLS: 8, RES.CHARCOAL: 4}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/smith.ogg]
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

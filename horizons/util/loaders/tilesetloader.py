@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import logging
+import os
 
 import horizons.globals
-
 from horizons.constants import PATHS
-from horizons.util.loaders.loader import GeneralLoader
 from horizons.util.loaders.jsondecoder import JsonDecoder
+from horizons.util.loaders.loader import GeneralLoader
+
 
 class TileSetLoader(object):
 	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded
@@ -35,11 +35,11 @@ class TileSetLoader(object):
 	for example that would be: ts_shallow/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional tile sets.
-	@param start_dir: directory that is used to begin search in"""
+	"""
 
 	log = logging.getLogger("util.loaders.tilesetloader")
 
-	tile_sets = {}
+	tile_sets = {} # type: Dict[str, Dict[str, Dict[int, Dict[str, List[float]]]]]
 	_loaded = False
 
 	@classmethod
@@ -51,7 +51,7 @@ class TileSetLoader(object):
 			if entry.startswith("ts_"):
 				cls.tile_sets[entry] = GeneralLoader._load_action(full_path)
 			else:
-				if os.path.isdir(full_path) and entry != ".svn" and entry != ".DS_Store":
+				if os.path.isdir(full_path) and entry != ".DS_Store":
 					cls._find_tile_sets(full_path)
 
 	@classmethod

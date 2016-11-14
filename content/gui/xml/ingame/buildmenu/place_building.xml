@@ -6,18 +6,16 @@
 		<HBox name="head_box" position="0,7" size="250,100">
 			<Label name="headline" text="Build" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Icon name="building" position="0,70" />
 	</Container>
 
-	<Container size="245,150" padding="5" name="top_bar">
-		<ImageButton name="rotate_left" position="32,60"
-			path="icons/widgets/minimap/rotate_left" />
-		<ImageButton name="rotate_right" position="215,60"
-			path="icons/widgets/minimap/rotate_right" />
+	<Container position="0,110" size="245,150" name="top_bar">
+		<ImageButton name="rotate_left" position="18,0" path="icons/widgets/minimap/rotate_left" />
+		<ImageButton name="rotate_right" position="198,0" path="icons/widgets/minimap/rotate_right" />
 
-		<Label position="73,65" name="running_costs_label" text="Running costs:" />
-		<Label position="189,65" name="running_costs" />
+		<Label position="53,5" name="running_costs_label" text="Running costs:" />
+		<Label position="178,5" name="running_costs" />
 
 	</Container>
 </Container>

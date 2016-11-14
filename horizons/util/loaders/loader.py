@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import defaultdict
-import os
-import re
 import glob
 import logging
+import os
+import re
+from collections import defaultdict
 
 from horizons.constants import ACTION_SETS
+
 
 class GeneralLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -34,7 +35,6 @@ class GeneralLoader(object):
 	for example that would be: fisher1/work/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional action sets.
-	@param start_dir: directory that is used to begin search in
 	"""
 
 	log = logging.getLogger("util.loaders.loader")
@@ -94,7 +94,7 @@ class GeneralLoader(object):
 			basedir = os.path.join(directory, dirname)
 			if os.path.isdir(basedir):
 				actions[dirname] = cls._load_rotation(basedir)
-				if 'streets' in directory:
+				if any(folder in directory for folder in ['streets', 'wall']):
 					actions.update(cls._load_mirrored_roads(dirname, actions[dirname]))
 		return actions
 
@@ -140,6 +140,6 @@ class GeneralLoader(object):
 		"""Returns directories that are important for loading action sets.
 		Discards everything else that we found living there in the past.
 		"""
-		junk = set(['.DS_Store', '.svn'])
+		junk = set(('.DS_Store', ))
 		return [d for d in os.listdir(directory)
 		          if d not in junk]

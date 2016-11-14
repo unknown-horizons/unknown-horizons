@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,18 @@
 # ###################################################
 
 import math
-
 from collections import defaultdict
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.util.worldobject import WorldObject
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES, TRADER
-from horizons.command.uioptions import SetTradeSlot, ClearTradeSlot
+from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
+from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import BUILDINGS, RES, TRADER
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
 from horizons.world.settlement import Settlement
+
 
 class ResourceManager(WorldObject):
 	"""
@@ -66,7 +66,7 @@ class ResourceManager(WorldObject):
 		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...} (cache that doesn't have to be saved)
 		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...} (only used during 1 tick, doesn't have to be saved)
 		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...} (cache that doesn't have to be saved)
-		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: float(amount)}, ...} shows how much of a resource is reserved for a particular settlement
+		self.trade_storage = defaultdict(lambda: defaultdict(int)) # {settlement_manager_id: {resource_id: float(amount)}, ...} shows how much of a resource is reserved for a particular settlement
 		self.resource_requirements = {} # {resource_id: int(amount), ...} the amount of resource the settlement would like to have in inventory (used to make buy/sell decisions)
 		self.personality = self.settlement_manager.owner.personality_manager.get('ResourceManager')
 
@@ -257,7 +257,7 @@ class ResourceManager(WorldObject):
 
 	def manager_buysell(self):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
-		managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT, RES.CANNON]
+		managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT, RES.CANNON, RES.MEDICAL_HERBS]
 		settlement = self.settlement_manager.settlement
 		assert isinstance(settlement, Settlement)
 		inventory = settlement.get_component(StorageComponent).inventory

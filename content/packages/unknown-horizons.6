@@ -1,0 +1,236 @@
+\
+'\" t
+.\"     Title: unknown-horizons
+.\"    Author: The Unknown Horizons Team <team@unknown-horizons.org>
+.\"      Date: 2013-10-11
+.\"  Language: English
+.\"
+.TH "UNKNOWN\-HORIZONS" "6" "2013-10-11" "unknown-horizons" "Unknown Horizons User Commands"
+
+\
+." some portability stuff
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+." disable hyphenation and justification (adjust text to left margin only)
+.nh
+.ad l
+.SH "NAME"
+unknown-horizons \- real-time strategy/simulation game
+.SH "SYNOPSIS"
+.HP \w'\fBunknown\-horizons\fR\ 'u
+\fBunknown\-horizons\fR [{\fB\-h\fR\ |\ \fB\-\-help\fR}]
+.SH "DESCRIPTION"
+.PP
+\fBUnknown Horizons\fR: isometric 2D real-time strategy/simulation fun.
+.br
+It puts emphasis on the economy and city building aspects.
+.br
+Expand your small settlement to a strong and wealthy colony, collect
+taxes and supply your inhabitants with valuable goods.
+.br
+Increase your power with a well balanced economy, with strategic
+trade and diplomacy.
+.SH "OPTIONS"
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-version\fR\fR
+show program's version number and exit
+\
+.TP
+.B
+\fB\-h\fR, \fB\fB\-\fR\fB\-help\fR\fR
+show this help message and exit
+\
+.TP
+.B
+\fB\-d\fR, \fB\fB\-\fR\fB\-debug\fR\fR
+Enable debug output to stderr and a logfile.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-fife\fR\fR\fB\-path\fR=<path>
+Specify the path to FIFE root directory.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-restore\fR\fR\fB\-settings\fR
+Restores the default settings. Useful if Unknown Horizons crashes on startup due to misconfiguration.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-mp\fR\fR\fB\-master\fR=<ip:port>
+Specify alternative multiplayer master server.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-mp\fR\fR\fB\-bind\fR=<ip:port>
+Specify network address to bind local network client to. This is useful if NAT holepunching is not working but you can forward a static port.
+
+.TP
+\fBSTARTING UNKNOWN HORIZONS\fR
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-start\fR\fR\fB\-map\fR=<map>
+Starts <map>. <map> is the mapname.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-start\fR\fR\fB\-random\fR\fB\-map\fR
+Starts a random map.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-start\fR\fR\fB\-specific\fR\fB\-random\fR\fB\-map\fR=<seed>
+Starts a random map with seed <seed>.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-start\fR\fR\fB\-scenario\fR=<scenario>
+Starts <scenario>. <scenario> is the scenarioname.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-start\fR\fR\fB\-dev\fR\fB\-map\fR
+Starts the development map without displaying the main menu.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-load\fR\fR\fB\-game\fR=<game>
+Loads a saved game. <game> is the saved game's name.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-load\fR\fR\fB\-last\fR\fB\-quicksave\fR
+Loads the last quicksave.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-edit\fR\fR\fB\-map\fR=<map>
+Edit map <map>.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-edit\fR\fR\fB\-game\fR\fB\-map\fR=<game>
+Edit the map from the saved game <game>.
+
+.TP
+\fBAI OPTIONS\fR
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-ai\fR\fR\fB\-players\fR=<ai_players>
+Uses <ai_players> AI players (excludes the possible human\-AI hybrid; defaults to 0).
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-human\fR\fR\fB\-ai\fR\fB\-hybrid\fR
+Makes the human player a human\-AI hybrid (for development only).
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-force\fR\fR\fB\-player\fR\fB\-id\fR=<force_player_id>
+Set the player with id <force_player_id> as the active (human) player.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-ai\fR\fR\fB\-highlights\fR
+Shows AI plans as highlights (for development only).
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-ai\fR\fR\fB\-combat\fR\fB\-highlights\fR
+Highlights combat ranges for units controlled by AI Players (for development only).
+
+.TP
+\fBDEVELOPMENT OPTIONS\fR
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-debug\fR\fR\fB\-log\fR\fB\-only\fR
+Write debug output only to logfile, not to console. Implies \-d.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-debug\fR\fR\fB\-module\fR=<module>
+Enable logging for a certain logging module (for developing only).
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-logfile\fR\fR=<filename>
+Writes log to <filename> instead of to the uh\-userdir
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-profile\fR\fR
+Enable profiling (for developing only).
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-max\fR\fR\fB\-ticks\fR=<max_ticks>
+Run the game for <max_ticks> ticks.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-no\fR\fR\fB\-freeze\fR\fB\-protection\fR
+Disable freeze protection.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-string\fR\fR\fB\-previewer\fR
+Enable the string previewer tool for scenario writers
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-no\fR\fR\fB\-preload\fR
+Disable preloading while in main menu
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-game\fR\fR\fB\-speed\fR=<game_speed>
+Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-gui\fR\fR\fB\-log\fR
+Log gui interactions
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-sp\fR\fR\fB\-seed\fR=<seed>
+Use this seed for singleplayer sessions.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-create\fR\fR\fB\-mp\fR\fB\-game\fR
+Create an multiplayer game with default settings.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-join\fR\fR\fB\-mp\fR\fB\-game\fR
+Join first multiplayer game.
+\
+.TP
+.B
+\fB\fB\-\fR\fB\-no\fR\fR\fB\-atlas\fR\fB\-generation\fR
+Disable atlas generation.
+\
+.SH "BUGS"
+.PP
+The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
+.SH "AUTHOR"
+.PP
+\fBThe Unknown Horizons Team\fR <\&team@unknown-horizons\&.org\&>
+.RS 4
+.RE
+.SH "COPYRIGHT"
+.br
+Copyright \(co 2008-2013 The Unknown Horizons Team
+.br
+.PP
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU General Public License, Version 3 or (at your option) any later
+version published by the Free Software Foundation\&.
+.sp
+

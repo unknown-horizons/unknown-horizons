@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,18 @@
 # ###################################################
 
 import math
-
 from collections import defaultdict
 
-from horizons.util.worldobject import WorldObject
-from horizons.entities import Entities
-from horizons.constants import TIER, BUILDINGS, PRODUCTION, RES, UNITS
-from horizons.util.python import decorators
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.world.production.producer import Producer
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, RES, TIER, UNITS
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
+from horizons.world.production.producer import Producer
+
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):
@@ -42,13 +42,13 @@ class PlayerStats(WorldObject):
 		self.collection_tick = Scheduler().cur_tick
 
 	def _collect_info(self):
-		settlers = defaultdict(lambda: 0)
-		settler_buildings = defaultdict(lambda: 0)
-		settler_resources_provided = defaultdict(lambda: 0)
-		buildings = defaultdict(lambda: 0)
-		available_resources = defaultdict(lambda: 0)
-		total_resources = defaultdict(lambda: 0)
-		ships = defaultdict(lambda: 0)
+		settlers = defaultdict(int)
+		settler_buildings = defaultdict(int)
+		settler_resources_provided = defaultdict(int)
+		buildings = defaultdict(int)
+		available_resources = defaultdict(int)
+		total_resources = defaultdict(int)
+		ships = defaultdict(int)
 		running_costs = 0
 		taxes = 0
 		usable_land = 0
@@ -142,7 +142,7 @@ class PlayerStats(WorldObject):
 
 	def _calculate_building_score(self, buildings):
 		total = 0
-		resources = defaultdict(lambda: 0)
+		resources = defaultdict(int)
 		for building_id, amount in buildings.iteritems():
 			for resource_id, res_amount in Entities.buildings[building_id].costs.iteritems():
 				resources[resource_id] += amount * res_amount

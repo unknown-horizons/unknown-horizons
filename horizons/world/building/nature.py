@@ -1,5 +1,15 @@
+from __future__ import print_function
+
+from horizons.constants import BUILDINGS, LAYERS
+from horizons.scheduler import Scheduler
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.production.producer import Producer
+
+
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +29,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.entities import Entities
-from horizons.scheduler import Scheduler
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -48,7 +51,7 @@ class Field(NatureBuildingResourceHandler):
 			prod_comp = self.get_component(Producer)
 			productions = prod_comp.get_productions()
 			if not productions:
-				print "Warning: Field is assumed to always produce, but doesn't.", self
+				print("Warning: Field is assumed to always produce, but doesn't.", self)
 			else:
 				run_in = Scheduler().get_ticks(productions[0].get_production_time())
 				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)
@@ -62,32 +65,6 @@ class Field(NatureBuildingResourceHandler):
 			self.session.ingame_gui.message_widget.add(point=pos, string_id="FIELD_NEEDS_FARM",
 			                                           check_duplicate=True)
 
-class AnimalField(Field):
-	walkable = False
-	def create_collector(self):
-		self.animals = []
-		for (animal, number) in self.session.db("SELECT unit_id, count FROM animals \
-		                                         WHERE building_id = ?", self.id):
-			for i in xrange(0, number):
-				unit = Entities.units[animal](self, session=self.session)
-				unit.initialize()
-		super(AnimalField, self).create_collector()
-
-	def remove(self):
-		while self.animals:
-			self.animals[0].cancel(continue_action=lambda : 42) # don't continue
-			self.animals[0].remove()
-		super(AnimalField, self).remove()
-
-	def save(self, db):
-		super(AnimalField, self).save(db)
-		for animal in self.animals:
-			animal.save(db)
-
-	def load(self, db, worldid):
-		super(AnimalField, self).load(db, worldid)
-		self.animals = []
-		# units are loaded separatly
 
 class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True

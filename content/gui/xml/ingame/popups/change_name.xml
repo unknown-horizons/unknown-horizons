@@ -5,7 +5,7 @@
 
 <VBox position="50,30" padding="10">
 	<Label name="headline_change_name" text="Change name" />
-	<Icon image="content/gui/images/background/hr.png" />
+	<hr />
 	<HBox padding="10">
 		<Label name="old_name_label" text="Old name:" />
 		<Label name="old_name" />

@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,11 +20,13 @@
 # ###################################################
 
 from unittest import TestCase
-from mock import Mock, MagicMock, patch
 
-from horizons.timer import Timer
-from horizons.scheduler import Scheduler
+from mock import MagicMock, Mock, patch
+
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.timer import Timer
+
 
 class TestTimer(TestCase):
 

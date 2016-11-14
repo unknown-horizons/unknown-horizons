@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,8 +23,9 @@
 Warning:
 	A Singleton is to some extend the OOP-version of a global variable.
 	The Singleton pattern has many downsides.
-	Please be sure you that this is really the best solution before using this code!
+	Please make sure that this is really the best solution before using this code!
 '''
+
 
 class Singleton(type):
 	"""Traditional Singleton design pattern.
@@ -45,12 +46,12 @@ class Singleton(type):
 	def destroy_instance(self):
 		self.instance = None
 
+
 class ManualConstructionSingleton(Singleton):
-	"""Same as Singleton, but Class() never creates an instance. Only create_instances() does."""
+	"""Same as Singleton, but Class() never creates an instance.
+	Only create_instance() does."""
 	def __call__(self):
 		return self.instance
 
 	def create_instance(self, *args, **kwargs):
 		self.instance = super(ManualConstructionSingleton, self).__call__(*args, **kwargs)
-
-

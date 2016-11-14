@@ -9,7 +9,7 @@
 		<Label name="headline" text="Resource deposit" />
 	</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<VBox position="25,50">
 			<Label name="res_dep_description_lbl" text="This is a resource deposit where you can build a mine to dig up resources." wrap_text="1" max_size="212,100" />

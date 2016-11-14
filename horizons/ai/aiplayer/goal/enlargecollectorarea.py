@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
-from horizons.util.shapes import Rect
 from horizons.entities import Entities
+from horizons.ext.typing import Tuple
+from horizons.util.python import decorators
+from horizons.util.shapes import Rect
+
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
-	_radius_offsets = None
+	_radius_offsets = None # type: List[Tuple[int, int]]
 
 	@classmethod
 	def _init_radius_offsets(cls):
@@ -78,8 +80,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in area_label and area_label[coords2] is None:
@@ -87,7 +88,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 						queue.append(coords2)
 			areas += 1
 
-		coords_set_by_area = defaultdict(lambda: set())
+		coords_set_by_area = defaultdict(set)
 		for coords, area_number in area_label.iteritems():
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
@@ -128,23 +129,6 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		if options:
 			return self.production_builder.build_best_option(options, BUILDING_PURPOSE.STORAGE)
 
-		# enlarge the settlement area instead since just enlarging the collector area is impossible
-		if self.village_builder.tent_queue:
-			tent_size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
-			tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL].radius
-			best_coords = None
-			best_area = 0
-
-			for x, y in self.village_builder.tent_queue:
-				new_area = 0
-				for coords in Rect.init_from_topleft_and_size(x, y, tent_size[0], tent_size[1]).get_radius_coordinates(tent_radius):
-					if coords in area_label and coords not in self.land_manager.roads and coords not in collector_area:
-						new_area += 1
-				if new_area > best_area:
-					best_coords = (x, y)
-					best_area = new_area
-			if best_coords is not None:
-				return self.village_builder.extend_settlement_with_tent(Rect.init_from_topleft_and_size_tuples(best_coords, tent_size))
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def execute(self):

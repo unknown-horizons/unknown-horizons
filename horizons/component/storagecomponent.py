@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,18 @@
 # ###################################################
 
 from horizons.component import Component
-from horizons.world.storage import PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage, SettlementStorage, PositiveTotalNumSlotsStorage
+from horizons.messaging import InstanceInventoryUpdated
+from horizons.scheduler import Scheduler
+from horizons.world.storage import (
+	PositiveSizedSlotStorage, PositiveSizedSpecializedStorage, PositiveStorage,
+	PositiveTotalNumSlotsStorage, SettlementStorage)
+
 
 class StorageComponent(Component):
-	"""The StorageComponent class is used as as a parent class for everything that
-	has an inventory. Examples for these classes are ships, settlements,
-	buildings, etc. Basically it just adds an inventory, nothing more, nothing
-	less.
-	If you want something different than a PositiveSizedSlotStorage, you'll have to
-	overwrite that in the subclass.
+	"""The StorageComponent class is used for everything that has an inventory.
 
-	TUTORIAL:
-	Continue to horizons/world/provider.py for further digging.
+	Examples for these classes are ships, settlements, buildings, etc.
+	Basically it just adds an inventory, nothing more, nothing less.
 	"""
 
 	NAME = 'storagecomponent'
@@ -55,6 +55,7 @@ class StorageComponent(Component):
 		# NOTE: also called on load (initialize usually isn't)
 		if not self.has_own_inventory:
 			self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
+		self.inventory.add_change_listener(self.something_changed)
 
 	def remove(self):
 		super(StorageComponent, self).remove()
@@ -74,6 +75,16 @@ class StorageComponent(Component):
 		self.initialize()
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)
+		# This allows other components to instantly update on load
+		Scheduler().add_new_object(self.something_changed, self, run_in=0)
+
+	def something_changed(self):
+		"""Used as proxy to send messages when a changelistener notifies us.
+
+		Masks the message sender to be `self.instance` rather than self because
+		that is what we are interested in, usually.
+		"""
+		InstanceInventoryUpdated.broadcast(self.instance, self.inventory._storage)
 
 	@classmethod
 	def get_instance(cls, arguments):

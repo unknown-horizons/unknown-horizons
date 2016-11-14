@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,38 +20,39 @@
 # ###################################################
 
 import errno
+import json
+import logging
 import os
 import os.path
-import logging
-import json
-import traceback
 import time
+import traceback
 from random import Random
 
 import horizons.globals
 import horizons.main
-
 from horizons.ai.aiplayer import AIPlayer
-from horizons.gui.ingamegui import IngameGui
 from horizons.command.building import Tear
-from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
-from horizons.scheduler import Scheduler
-from horizons.extscheduler import ExtScheduler
-from horizons.view import View
-from horizons.world import World
-from horizons.entities import Entities
-from horizons.util.living import LivingObject, livingProperty
-from horizons.util.savegameaccessor import SavegameAccessor
-from horizons.util.worldobject import WorldObject
-from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
-from horizons.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
+from horizons.component.selectablecomponent import SelectableBuildingComponent
+from horizons.constants import GAME_SPEED
+from horizons.entities import Entities
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.ingamegui import IngameGui
+from horizons.i18n import gettext as T
+from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED
-from horizons.messaging import SettingChanged, MessageBus, SpeedChanged
+from horizons.scheduler import Scheduler
+from horizons.util.dbreader import DbReader
+from horizons.util.living import LivingObject, livingProperty
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.util.worldobject import WorldObject
+from horizons.view import View
+from horizons.world import World
+
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -88,15 +89,15 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, gui, db, rng_seed=None, ingame_gui_class=IngameGui):
+	def __init__(self, db, rng_seed=None, ingame_gui_class=IngameGui):
 		super(Session, self).__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
-		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True
+		self.paused_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
 		self._clear_caches()
 
@@ -114,13 +115,15 @@ class Session(LivingObject):
 		self._ingame_gui_class = ingame_gui_class
 
 		self.selected_instances = set()
-		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
+		# List of sets that holds the player assigned unit groups.
+		self.selection_groups = [set() for _unused in range(10)]
 
 		self._old_autosave_interval = None
 
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()
+		self.scenario_eventhandler.start()
 		self.reset_autosave()
 		SettingChanged.subscribe(self._on_setting_changed)
 
@@ -172,7 +175,9 @@ class Session(LivingObject):
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
-		self.world.end() # must be called before the world ref is gone
+		if hasattr(self, 'world'):
+			# must be called before the world ref is gone, but may not exist yet while loading
+			self.world.end()
 		self.world = None
 		self.view = None
 		self.manager = None
@@ -185,18 +190,15 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-		horizons.main._modules.session = None
 		self._clear_caches()
 
-		# subscriptions shouldn't survive listeners (except the main Gui)
-		self.gui.unsubscribe()
-		SettingChanged.unsubscribe(self._on_setting_changed)
+		# discard() in case loading failed and we did not yet subscribe
+		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
-		self.gui.subscribe()
 
 	def quit(self):
 		self.end()
-		self.gui.show_main()
+		horizons.main.quit_session()
 
 	def autosave(self):
 		raise NotImplementedError
@@ -244,6 +246,7 @@ class Session(LivingObject):
 			# changing the rng is safe for mp, as all players have to have the same map
 			self.random.setstate(rng_state_tuple)
 
+		LoadingProgress.broadcast(self, 'session_create_world')
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
 		self.view.load(savegame_db, self.world) # load view
@@ -252,26 +255,21 @@ class Session(LivingObject):
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
-		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
+		self.manager.load(savegame_db) # load the manager (there might be old scheduled ticks).
+		LoadingProgress.broadcast(self, "session_index_fish")
 		self.world.init_fish_indexer() # now the fish should exist
 
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
-		self.ingame_gui = self._ingame_gui_class(self, self.gui)
+		LoadingProgress.broadcast(self, "session_load_gui")
+		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
-
-		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
-			obj = WorldObject.get_object_by_id(instance_id[0])
-			self.selected_instances.add(obj)
-			obj.get_component(SelectableComponent).select()
-		for group in xrange(len(self.selection_groups)): # load user defined unit groups
-			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
-				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
 		Scheduler().before_ticking()
 		savegame_db.close()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
+		LoadingProgress.broadcast(self, "session_finish")
 		"""
 		TUTORIAL:
 		That's it. After that, we call start() to activate the timer, and we're live.
@@ -398,44 +396,43 @@ class Session(LivingObject):
 
 			db = DbReader(savegame)
 		except IOError as e: # usually invalid filename
-			headline = _("Failed to create savegame file")
-			descr = _("There has been an error while creating your savegame file.")
-			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.gui.show_error_popup(headline, descr, advice, unicode(e))
-			return self.save() # retry with new savegamename entered by the user
-			# this must not happen with quicksave/autosave
+			headline = T("Failed to create savegame file")
+			descr = T("There has been an error while creating your savegame file.")
+			advice = T("This usually means that the savegame name contains unsupported special characters.")
+			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
+			# retry with new savegamename entered by the user
+			# (this must not happen with quicksave/autosave)
+			return self.save()
 		except OSError as e:
-			if e.errno == errno.EACCES:
-				self.gui.show_error_popup(_("Access is denied"),
-				                          _("The savegame file could be read-only or locked by another process."))
-				return self.save()
-			raise
+			if e.errno != errno.EACCES:
+				raise
+			self.ingame_gui.open_error_popup(
+				T("Access is denied"),
+				T("The savegame file could be read-only or locked by another process.")
+			)
+			return self.save()
 
 		try:
 			read_savegame_template(db)
 
 			db("BEGIN")
 			self.world.save(db)
-			#self.manager.save(db)
 			self.view.save(db)
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
 
-			for instance in self.selected_instances:
-				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
-			for group in xrange(len(self.selection_groups)):
-				for instance in self.selection_groups[group]:
-					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
-
+			# Store RNG state
 			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
-			# make sure everything gets written now
+
+			# Make sure everything gets written now
 			db("COMMIT")
 			db.close()
 			return True
-		except:
-			print "Save Exception"
+		except Exception:
+			self.log.error("Save Exception:")
 			traceback.print_exc()
-			db.close() # close db before delete
-			os.unlink(savegame) # remove invalid savegamefile
+			# remove invalid savegamefile (but close db connection before deleting)
+			db.close()
+			os.unlink(savegame)
 			return False

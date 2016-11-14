@@ -5,7 +5,7 @@
 	<Label name="headline" text="Select resource:" position="54,7"
 		helptext="The resource you select is displayed instead of the current one. Empty by clicking on X."
 		comment="Please keep the translation similarly short and concise, else the tooltip is not well understood by players." />
-	<Icon image="content/gui/images/background/hr.png" position="21,30" />
+	<hr position="21,30" />
 
 	<!-- Displays list of resources to select one which is displayed in this slot. -->
 	<ScrollArea min_size="225,260" max_size="225,260" size="225,260" position="12,39">
@@ -14,7 +14,7 @@
 		</VBox>
 	</ScrollArea>
 
-	<Icon image="content/gui/images/background/hr.png" position="21,300" />
+	<hr position="21,300" />
 
 	<ImageButton name="make_default_btn" path="images/buttons/store" position="15,308"
 	             helptext="Save current resource configuration as default for all settlements." />

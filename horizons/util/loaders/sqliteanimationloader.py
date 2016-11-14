@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,9 +22,9 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
+
 
 class SQLiteAnimationLoader(object):
 	"""Loads animations from a SQLite database.
@@ -51,12 +51,7 @@ class SQLiteAnimationLoader(object):
 
 		# Set the correct loader based on the actionset
 		loader = None
-		if actionset.startswith("ts_"):
-			loader = TileSetLoader
-		elif actionset.startswith("as_"):
-			loader = ActionSetLoader
-		else:
-			assert False, "Invalid set being loaded: " + actionset
+		loader = self._get_loader(actionset)
 
 		ani = fife.Animation.createAnimation()
 		frame_start, frame_end = 0.0, 0.0

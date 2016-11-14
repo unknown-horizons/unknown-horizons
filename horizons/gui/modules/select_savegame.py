@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,9 +24,14 @@ import os.path
 import tempfile
 import time
 
+from fife import fife
+
+from horizons.engine import Fife
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
+from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 from horizons.gui.windows import Dialog
+from horizons.i18n import gettext as T, ngettext as NT
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.savegameupgrader import SavegameUpgrader
@@ -37,46 +42,63 @@ class SelectSavegameDialog(Dialog):
 	def __init__(self, mode, windows):
 		super(SelectSavegameDialog, self).__init__(windows)
 
-		assert mode in ('load', 'save', )
+		assert mode in ('load', 'save', 'editor-save')
 		self._mode = mode
 
 		self._gui = load_uh_widget('select_savegame.xml')
 
 		if self._mode == 'save':
-			helptext = _('Save game')
+			helptext = T('Save game')
 		elif self._mode == 'load':
-			helptext = _('Load game')
+			helptext = T('Load game')
+		elif self._mode == 'editor-save':
+			helptext = T('Save map')
 		self._gui.findChild(name='headline').text = helptext
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
 
 		w = self._gui.findChild(name="gamename_box")
-		if w not in w.parent.hidden_children:
+		if (Fife.getVersion() >= (0, 4, 0)):
 			w.parent.hideChild(w)
+		else:
+			if w not in w.parent.hidden_children:
+				w.parent.hideChild(w)
+
 		w = self._gui.findChild(name="gamepassword_box")
-		if w not in w.parent.hidden_children:
+		if (Fife.getVersion() >= (0, 4, 0)):
 			w.parent.hideChild(w)
+		else:
+			if w not in w.parent.hidden_children:
+				w.parent.hideChild(w)
 
 		w = self._gui.findChild(name='enter_filename')
-		if self._mode == 'save': # only show enter_filename on save
+		if self._mode in ('save', 'editor-save'): # only show enter_filename on save
 			w.parent.showChild(w)
-		elif w not in w.parent.hidden_children:
-			w.parent.hideChild(w)
+		else:
+			if (Fife.getVersion() >= (0, 4, 0)):
+				w.parent.hideChild(w)
+			else:
+				if w not in w.parent.hidden_children:
+					w.parent.hideChild(w)
+
+		self.last_click_event = None
 
 	def prepare(self):
 		if self._mode == 'load':
 			self._map_files, self._map_file_display = SavegameManager.get_saves()
 			if not self._map_files:
-				self._windows.show_popup(_("No saved games"), _("There are no saved games to load."))
+				self._windows.open_popup(T("No saved games"), T("There are no saved games to load."))
 				return False
 		elif self._mode == 'save':
 			self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
+		elif self._mode == 'editor-save':
+			self._map_files, self._map_file_display = SavegameManager.get_maps()
 
 		self._gui.distributeInitialData({'savegamelist': self._map_file_display})
 		if self._mode == 'load':
 			self._gui.distributeData({'savegamelist': 0})
 
 		self._cb = self._create_show_savegame_details(self._gui, self._map_files, 'savegamelist')
-		if self._mode == 'save':
+		if self._mode in ('save', 'editor-save'):
 			def selected_changed():
 				"""Fills in the name of the savegame in the textbox when selected in the list"""
 				if self._gui.collectData('savegamelist') == -1: # set blank if nothing is selected
@@ -90,14 +112,32 @@ class SelectSavegameDialog(Dialog):
 		self._cb()  # Refresh data on start
 		self._gui.mapEvents({'savegamelist/action': self._cb})
 		self._gui.findChild(name="savegamelist").capture(self._cb, event_name="keyPressed")
+		self._gui.findChild(name="savegamelist").capture(self.check_double_click, event_name="mousePressed")
 
 		self.return_events = {
 			OkButton.DEFAULT_NAME    : True,
 			CancelButton.DEFAULT_NAME: False,
 			DeleteButton.DEFAULT_NAME: 'delete'
 		}
-		if self._mode == 'save':
+		if self._mode in ('save', 'editor-save'):
 			self.return_events['savegamefile'] = True
+
+	def check_double_click(self, event):
+		"""Apply OK button if there was a left double click"""
+		if event.getButton() != fife.MouseEvent.LEFT:
+			return
+		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
+			self.clicked = False
+			ExtScheduler().rem_call(self, self.reset_click_status)
+			self.trigger_close(OkButton.DEFAULT_NAME)
+		else:
+			self.clicked = True
+			ExtScheduler().add_new_object(self.reset_click_status, self, run_in=0.3, loops=0)
+			self.last_click_event = (event.getX(), event.getY())
+
+	def reset_click_status(self):
+		"""Callback function to reset the click status by Scheduler"""
+		self.clicked = False
 
 	def act(self, retval):
 		if not retval:  # cancelled
@@ -109,22 +149,26 @@ class SelectSavegameDialog(Dialog):
 			if delete_retval:
 				self._gui.distributeData({'savegamelist' : -1})
 				self._cb()
-			return self._windows.show(self)
+			return self._windows.open(self)
 
 		selected_savegame = None
-		if self._mode == 'save':  # return from textfield
+		if self._mode in ('save', 'editor-save'):  # return from textfield
 			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
-				self._windows.show_error_popup(windowtitle=_("No filename given"),
-				                               description=_("Please enter a valid filename."))
-				return self._windows.show(self)
+				self._windows.open_error_popup(windowtitle=T("No filename given"),
+				                               description=T("Please enter a valid filename."))
+				return self._windows.open(self)
 			elif selected_savegame in self._map_file_display: # savegamename already exists
-				#xgettext:python-format
-				message = _("A savegame with the name '{name}' already exists.").format(
-				             name=selected_savegame) + u"\n" + _('Overwrite it?')
+				if self._mode == 'save':
+					message = T("A savegame with the name {name} already exists.")
+				elif self._mode == 'editor-save':
+					message = T("A map with the name {name} already exists.")
+				message = message.format(name=selected_savegame)
+				message += u"\n" + T('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-					return self._windows.show(self)
+				if not self._windows.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True):
+					return self._windows.open(self)
+
 		elif self._mode == 'load':  # return selected item from list
 			selected_savegame = self._gui.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
@@ -144,8 +188,11 @@ class SelectSavegameDialog(Dialog):
 			savegame_details_box = gui.findChild(name="savegame_details")
 			savegame_details_parent = savegame_details_box.parent
 			if map_file_index == -1:
-				if savegame_details_box not in savegame_details_parent.hidden_children:
+				if (Fife.getVersion() >= (0, 4, 0)):
 					savegame_details_parent.hideChild(savegame_details_box)
+				else:
+					if savegame_details_box not in savegame_details_parent.hidden_children:
+						savegame_details_parent.hideChild(savegame_details_box)
 				return
 			else:
 				savegame_details_parent.showChild(savegame_details_box)
@@ -184,32 +231,29 @@ class SelectSavegameDialog(Dialog):
 			details_label = gui.findChild(name="savegamedetails_lbl")
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
-				details_label.text += _("Unknown savedate")
+				details_label.text += T("Unknown savedate")
 			else:
 				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
-				#xgettext:python-format
-				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
+				details_label.text += T("Saved at {time}").format(time=savetime.decode('utf-8'))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
-			# N_ takes care of plural forms for different languages
-			#xgettext:python-format
-			details_label.text += N_("Saved {amount} time",
+			# NT takes care of plural forms for different languages
+			details_label.text += NT("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
 			details_label.text += u'\n'
 
 			from horizons.constants import VERSION
 			try:
-				#xgettext:python-format
-				details_label.text += _("Savegame version {version}").format(
+				details_label.text += T("Savegame version {version}").format(
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
 					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
-						details_label.text += u" " + _("(probably incompatible)")
+						details_label.text += u" " + T("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += u" " + _("Incompatible version")
+				details_label.text += u" " + T("Incompatible version")
 
 			gui.adaptLayout()
 		return tmp_show_details
@@ -222,18 +266,17 @@ class SelectSavegameDialog(Dialog):
 		"""
 		selected_item = self._gui.collectData("savegamelist")
 		if selected_item == -1 or selected_item >= len(map_files):
-			self._windows.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
+			self._windows.open_popup(T("No file selected"), T("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
-		#xgettext:python-format
-		message = _("Do you really want to delete the savegame '{name}'?").format(
+		message = T("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
-		if self._windows.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
+		if self._windows.open_popup(T("Confirm deletion"), message, show_cancel_button=True):
 			try:
 				os.unlink(selected_file)
 				return True
 			except:
-				self._windows.show_popup(_("Error!"), _("Failed to delete savefile!"))
+				self._windows.open_popup(T("Error!"), T("Failed to delete savefile!"))
 				return False
 		else: # player cancelled deletion
 			return False

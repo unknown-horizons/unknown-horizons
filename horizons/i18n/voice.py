@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,47 +19,54 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
+import glob
+import os.path
+from random import randrange
 
 import horizons.globals
-import os.path
-import glob
 from horizons.constants import PATHS
-from random import randrange
+from horizons.ext.typing import Optional
+
 
 """
 Internationalization for speech|voice files
 """
 class Speech:
 	"""Definition of category names, those names are the name of directory where speech should be"""
-	CHAT = None
+	CHAT = None # type: Optional[str]
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
-	SAVED_GAME = None
-	QUICKSAVE = None
-	AUTOSAVE = None
-	SCREENSHOT = None
-	SETTLER_LEVEL_UP = None
-	NEED_MORE_RES = None
-	NO_MAIN_SQUARE_IN_RANGE = None
-	SETTLERS_MOVED_OUT = None
-	MINE_EMPTY = None
-	DRAG_ROADS_HINT = None
-	DIPLOMACY_STATUS_ALLY_NEUTRAL = None
-	DIPLOMACY_STATUS_ALLY_ENEMY = None
-	DIPLOMACY_STATUS_ENEMY_ALLY = None
-	DIPLOMACY_STATUS_ENEMY_NEUTRAL = None
-	DIPLOMACY_STATUS_NEUTRAL_ALLY = None
-	DIPLOMACY_STATUS_NEUTRAL_ENEMY = None
-	MAX_TIER_REACHED = None
-	YOU_HAVE_WON = None
-	FIELD_NEEDS_FARM = None
-	WAREHOUSE_NOT_TEARABLE = None
-	ROUTE_DISABLED = None
-	MOVE_OUTSIDE_OF_WORLD = None
-	MOVE_INVALID_LOCATION = None
-	NEW_UNIT = None
-	YOU_LOST = None
-	BUILDING_ON_FIRE = None
+	SAVED_GAME = None # type: Optional[str]
+	QUICKSAVE = None # type: Optional[str]
+	AUTOSAVE = None # type: Optional[str]
+	SCREENSHOT = None # type: Optional[str]
+	SETTLER_LEVEL_UP = None # type: Optional[str]
+	NEED_MORE_RES = None # type: Optional[str]
+	NO_MAIN_SQUARE_IN_RANGE = None # type: Optional[str]
+	SETTLERS_MOVED_OUT = None # type: Optional[str]
+	MINE_EMPTY = None # type: Optional[str]
+	DRAG_ROADS_HINT = None # type: Optional[str]
+	DIPLOMACY_STATUS_ALLY_NEUTRAL = None # type: Optional[str]
+	DIPLOMACY_STATUS_ALLY_ENEMY = None # type: Optional[str]
+	DIPLOMACY_STATUS_ENEMY_ALLY = None # type: Optional[str]
+	DIPLOMACY_STATUS_ENEMY_NEUTRAL = None # type: Optional[str]
+	DIPLOMACY_STATUS_NEUTRAL_ALLY = None # type: Optional[str]
+	DIPLOMACY_STATUS_NEUTRAL_ENEMY = None # type: Optional[str]
+	MAX_TIER_REACHED = None # type: Optional[str]
+	YOU_HAVE_WON = None # type: Optional[str]
+	FIELD_NEEDS_FARM = None # type: Optional[str]
+	WAREHOUSE_NOT_TEARABLE = None # type: Optional[str]
+	ROUTE_DISABLED = None # type: Optional[str]
+	MOVE_OUTSIDE_OF_WORLD = None # type: Optional[str]
+	MOVE_INVALID_LOCATION = None # type: Optional[str]
+	NEW_SHIP = None # type: Optional[str]
+	NEW_SOLDIER = None # type: Optional[str]
+	NEW_INHABITANT = None # type: Optional[str]
+	YOU_LOST = None # type: Optional[str]
+	BUILDING_ON_FIRE = None # type: Optional[str]
+	BUILDING_INFECTED_BY_BLACK_DEATH = None # type: Optional[str]
 
 DEFAULT_LANG="en"
 DEFAULT_VARIATION=0
@@ -114,6 +121,6 @@ def eval_category_name(category):
 	try:
 		cat_name = getattr(Speech, category)
 	except:
-		print "Incorrect name of speech category: %s" % category
-		print "You might want to add this here in voice.py."
+		print("Incorrect name of speech category: %s" % category)
+		print("You might want to add this here in voice.py.")
 	return cat_name

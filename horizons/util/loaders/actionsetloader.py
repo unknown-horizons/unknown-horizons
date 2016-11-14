@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import logging
+import os
 
 import horizons.globals
-
 from horizons.constants import PATHS
-from horizons.util.loaders.loader import GeneralLoader
 from horizons.util.loaders.jsondecoder import JsonDecoder
+from horizons.util.loaders.loader import GeneralLoader
+
 
 class ActionSetLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -35,11 +35,11 @@ class ActionSetLoader(object):
 	for example that would be: fisher1/work/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional action sets.
-	@param start_dir: directory that is used to begin search in"""
+	"""
 
 	log = logging.getLogger("util.loaders.actionsetloader")
 
-	action_sets = {}
+	action_sets = {} # type: Dict[str, Dict[str, Dict[int, Dict[str, float]]]]
 	_loaded = False
 
 	@classmethod
@@ -51,7 +51,7 @@ class ActionSetLoader(object):
 			if entry.startswith("as_"):
 				cls.action_sets[entry] = GeneralLoader._load_action(full_path)
 			else:
-				if os.path.isdir(full_path) and entry != ".svn" and entry != ".DS_Store":
+				if os.path.isdir(full_path) and entry != ".DS_Store":
 					cls._find_action_sets(full_path)
 
 	@classmethod
@@ -65,17 +65,18 @@ class ActionSetLoader(object):
 			cls.log.debug("Done!")
 			cls._loaded = True
 
-		#for key, value in cls.action_sets.iteritems():
-		#	print "Action_set:" , key
-		#	for key1, value1 in value.iteritems():
-		#		print "Action:", key1
-		#		for key2, value2 in value1.iteritems():
-		#			print "Rotation:", key2
-		#			for key3, value3 in value2.iteritems():
-		#				print "File:", key3, "length:", value3
-
 	@classmethod
 	def get_sets(cls):
 		if not cls._loaded:
 			cls.load()
 		return cls.action_sets
+
+	@classmethod
+	def get_set(cls, action_set_name):
+		"""
+		@param action_set_name: The name of the action_set.
+		@return None if action_set is not found.
+		"""
+		if not cls._loaded:
+			cls.load()
+		return cls.action_sets.get(action_set_name)
