@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,24 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['animal', 'nature', 'ship', 'unit']
-
 import logging
 
 from fife import fife
 
 import horizons.globals
+from horizons.ext.typing import Sequence
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType
+
 
 class UnitClass(IngameType):
 
 	log = logging.getLogger('world.units')
 	basepackage = 'horizons.world.units.'
-	classstring = 'Unit['
+	classstring = 'Unit[{id}]'
 
-	_action_load_callbacks = {}
+	_action_load_callbacks = {} # type: Dict[str, Dict[str, Sequence[Callback]]]
 
 	def __init__(self, id, yaml_data):
 		"""

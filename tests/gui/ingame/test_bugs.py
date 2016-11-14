@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.unit import CreateUnit
 from horizons.command.building import Tear
-from horizons.constants import UNITS, BUILDINGS
+from horizons.command.unit import CreateUnit
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES, UNITS
+from horizons.messaging import ResourceProduced
 from horizons.world.production.producer import Producer
-
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship, move_ship, found_settlement
+from tests.gui.helper import found_settlement, get_player_ship, move_ship
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -88,7 +89,7 @@ def test_ticket_1369(gui):
 	move_ship(gui, ship, (68, 23))
 
 	# click trade button
-	gui.trigger('overview_trade_ship', 'trade')
+	gui.trigger('overview_trade_ship/trade')
 
 	# trade widget visible
 	assert gui.find(name='buy_sell_goods')
@@ -127,7 +128,7 @@ def test_ticket_1362(gui):
 		gui.press_key(gui.Key.F5)
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_ticket_1371(gui):
 	"""
 	Build related tab becomes invisible.
@@ -144,25 +145,25 @@ def test_ticket_1371(gui):
 	found_settlement(gui, (59, 1), (56, 3))
 
 	# Build lumberjack
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_03')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select lumberjack
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 	# Select tree
-	gui.trigger('overview_buildrelated', 'build17')
+	gui.trigger('overview_buildrelated/build17')
 
 	# Plant a tree (without uninterrupted building)
 	gui.cursor_click(49, 6, 'left')
 	assert gui.find(name='overview_buildrelated')
 
 	# Select tree again and plant it with uninterrupted building
-	gui.trigger('overview_buildrelated', 'build17')
+	gui.trigger('overview_buildrelated/build17')
 	gui.cursor_click(49, 7, 'left', shift=True)
 
 	# Tab should still be there
@@ -214,14 +215,14 @@ def test_ticket_1520(gui):
 	ground_map = gui.session.world.islands[0].ground_map
 
 	# Build a tent
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(7, 9, 'left')
 
 	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL
 
 	# Start building a mainsquare (not releasing left mouse button)
-	gui.trigger('tab', 'button_02')
+	gui.trigger('tab/button_02')
 	gui.cursor_move(13, 11)
 	gui.cursor_press_button(13, 11, 'left')
 
@@ -241,19 +242,19 @@ def test_ticket_1509(gui):
 	found_settlement(gui, (8, 2), (10, 6))
 
 	# Build a tent
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(7, 10, 'left')
 
 	# Select tent
 	gui.cursor_click(7, 10, 'left')
 
 	# quickly switch between tabs
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 	gui.run()
-	gui.trigger('tab_base', '0')
+	gui.trigger('tab_base/0')
 	gui.run()
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -271,7 +272,7 @@ def test_ticket_1526(gui):
 	gui.cursor_click(52, 12, 'left', ctrl=True)
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	"""
 	"""
@@ -279,18 +280,18 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	found_settlement(gui, (59, 1), (56, 3))
 
 	# Build settler
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_01')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select settler
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('tab_base/1')
 
 	# Select pavilion
-	gui.trigger('overview_buildrelated', 'build5')
+	gui.trigger('overview_buildrelated/build5')
 
 	# Plant it
 	gui.cursor_click(49, 6, 'left')
@@ -307,8 +308,8 @@ def test_ticket_1848(gui):
 
 	# Build huker
 	gui.cursor_click(64, 10, 'left')
-	gui.trigger('tab_base', '1')
-	gui.trigger('boatbuilder_showcase', 'ok_0')
+	gui.trigger('tab_base/1')
+	gui.trigger('boatbuilder_showcase/ok_0')
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
@@ -316,10 +317,10 @@ def test_ticket_1848(gui):
 		gui.run()
 
 	gui.cursor_click(51, 13, 'left')
-	gui.trigger('tab_account', 'show_production_overview')
+	gui.trigger('tab_account/show_production_overview')
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_fixture='plain')
 def test_ticket_1948(gui):
 	"""Triggers a crash that happens when building a storage tent on the border of the settlement"""
 	# Units cannot be selected right now, you need to do it this way. This is almost
@@ -329,8 +330,8 @@ def test_ticket_1948(gui):
 	found_settlement(gui, (59, 1), (56, 3))
 
 	# Select storage tent
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_11')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_11')
 	# Build storage at the border of the settlement
 	gui.cursor_click(37, 20, 'left')
 
@@ -343,10 +344,67 @@ def test_ticket_2117(gui):
 	gui.cursor_click(23, 63, 'left')
 
 	# Open settings
-	gui.trigger('mainhud', 'gameMenuButton')
-	gui.trigger('menu', 'settingsLink')
+	gui.trigger('mainhud/gameMenuButton')
+	gui.trigger('menu/button_images/settingsLink')
 
 	# Change language (to anything not system default)
-	gui.trigger('settings_window', 'game_settings_right')
+	gui.trigger('settings_window/game_settings_right')
 	gui.find('uni_language').select(u'English')
-	gui.trigger('settings_window', 'okButton')
+	gui.trigger('settings_window/okButton')
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2419(gui):
+	"""Game crashes when setting speed to zero and pressing pause twice"""
+
+	gui.session.speed_set(0)
+	gui.press_key(gui.Key.P)
+	gui.press_key(gui.Key.P)
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2475(gui):
+	"""Game crashes when two resources are produced in the same tick and the production
+	finished icon is about to be shown."""
+
+	# speed up animation to trigger bug earlier
+	gui.session.ingame_gui.production_finished_icon_manager.animation_duration = 1
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	settlement = found_settlement(gui, (13, 64), (17, 62))
+
+	# Place a lumberjack
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
+	gui.cursor_click(18, 57, 'left', shift=True)
+
+	lumberjack = settlement.buildings_by_id[BUILDINGS.LUMBERJACK][0]
+	storage = lumberjack.get_component(StorageComponent)
+	producer = lumberjack.get_component(Producer)
+
+	storage.inventory.alter(RES.BOARDS, 5)
+
+	producer.on_production_finished({RES.BOARDS: 1})
+	producer.on_production_finished({RES.BOARDS: 1})
+
+
+@gui_test(use_dev_map=True)
+def test_ticket_2500(gui):
+	"""Game crashes when exiting the game while the building tool is still active."""
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	settlement = found_settlement(gui, (13, 64), (17, 62))
+
+	# Select lumberjack
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_03')
+
+	# Quit game via pause menu
+	gui.press_key(gui.Key.P)
+	def dialog():
+		gui.trigger('popup_window/okButton')
+
+	with gui.handler(dialog):
+		gui.trigger('menu/quit')

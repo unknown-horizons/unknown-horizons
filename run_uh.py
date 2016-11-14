@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,25 +29,22 @@ a pointer to the next step. Have fun :-)
 This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
+from __future__ import print_function
 
-__all__ = ['init_environment']
-
-import sys
-import os
-import os.path
-import gettext
-import time
-import imp
 import functools
+import imp
 import locale
 import logging
 import logging.config
 import logging.handlers
-import signal
-import traceback
+import os
+import os.path
 import platform
+import signal
+import sys
+import time
+import traceback
 
-from options import get_option_parser
 
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
@@ -121,8 +118,8 @@ def excepthook_creator(outfilename):
 	to a file.
 	@param outfilename: a filename to append traceback to"""
 	def excepthook(exception_type, value, tb):
-		f = open(outfilename, 'a')
-		traceback.print_exception(exception_type, value, tb, file=f)
+		with open(outfilename, 'a') as f:
+			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print('')
 		print(_('Unknown Horizons has crashed.'))
@@ -170,6 +167,7 @@ def main():
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
 
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	setup_debugging(options)
 	init_environment(True)
@@ -301,6 +299,7 @@ def import_fife(paths):
 
 def find_fife():
 	# Use the path the user provided.
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	if options.fife_path:
 		fife_path = os.path.abspath(options.fife_path)
@@ -351,17 +350,15 @@ def setup_fife():
 	fife_version_patch = fife.getPatch() if hasattr(fife, 'getPatch') else 'unknown'
 
 	from horizons.constants import VERSION
-	if VERSION.REQUIRED_FIFE_MAJOR_VERSION > fife_version_major or VERSION.REQUIRED_FIFE_MINOR_VERSION > fife_version_minor or VERSION.REQUIRED_FIFE_PATCH_VERSION > fife_version_patch:
+	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
 		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.           REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
 def init_environment(use_fife):
 	"""Sets up everything.
 
 	Use in any program that requires access to FIFE and UH modules."""
-	# install dummy translation
-	gettext.install('', unicode=True)
 	if use_fife:
 		setup_fife()
 

@@ -25,7 +25,7 @@ logbook-data:
   - [Headline, 20 de Noviembre de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Tras cuatro días la tormenta amainó y pudimos tomar un descanso. Pero nos queda poca comida y nuestro navío se encuentra en mal estado. Hemos perdido los instrumentos de navegación y las cartas de navegación.
-  - Tenemos que llegar a tierra pronto. Uno de mis hombres vió aves pescando peces así que la tierra no puede estar lejos. Afortunadamente, siempre llevamos algunas herramientas y tablas de madera a bordo para construir un refugio.
+  - Tenemos que llegar a tierra pronto. Uno de mis hombres vio aves pescando peces así que la tierra no puede estar lejos. Afortunadamente, siempre llevamos algunas herramientas y tablas de madera a bordo para construir un refugio.
   - 'Tarea:
 
     Encuentra la costa y construye un puerto.'
@@ -35,7 +35,7 @@ logbook-data:
 - &FOOD_BOARDS
   - [Headline, 22 de Noviembre de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Ya está construido el puerto y amanece una nueva esperanza. Aún me preocupan los próximos días... nos estamos quedando sin alimentos ni materiales básicos de construcción.
+  - Ya está construido el puerto y amanece una nueva esperanza. Aún me preocupan los próximos días... nos estamos quedando sin alimentos y sin materiales básicos de construcción.
   - Tenemos que asegurar nuestras necesidades básicas para sobrevivir. Es hora de enviar a algunos hombres a recoger algo de comida y madera con la que sobrevivir y construir un refugio.
   - 'Tarea:
 
@@ -58,7 +58,7 @@ logbook-data:
   - Es hora de construir algunas tiendas de campaña donde vivir y una plaza principal para proporcionar bienes a nuestros ciudadanos.
   - 'Tarea:
 
-    Construye una plaza principal y al menos 10 tiendas de campaña.'
+    Construye una Plaza Principal y al menos 10 Tiendas.'
   - [Pagebreak]
   - ''
 
@@ -66,9 +66,9 @@ logbook-data:
   - [Headline, 1 de Diciembre de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Finalmente tenemos suficiente comida y un lugar donde vivir de nuevo. Mi tienda no es muy cómoda pero me mantiene seco y tengo la sensación de tener un techo sobre mi cabeza durante la noche.
-  - 'He estado buscando las estrellas por la noche, pero sin mis cartas de navegación e instrumental su significado me resulta desconocido. Tengo la sensación de que permaneceremos aquí por mucho tiempo, así que tendremos que preocuparnos por mejorar nuestra situación.
+  - 'He estado buscando las estrellas por la noche, pero sin mis cartas de navegación e instrumental su significado me resulta desconocido. Tengo la sensación de que permaneceremos aquí por un tiempo, así que tendremos que preocuparnos por mejorar nuestra situación.
 
-    Ahora solo podemos levantar una civilización y encontrar un camino a casa...'
+    Ahora solo podemos intentar levantar una civilización y encontrar un camino de regreso a casa…'
   - 'Tarea:
 
     Haz crecer tu ciudad hasta alcanzar 250 habitantes y un saldo positivo.'
@@ -142,9 +142,9 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Eres el capitán de un navío bajo bandera de Inglaterra en 1740. Tú y tu tripulación navegáis hacia una colonia inglesa en el Pacífico.
+  description: 'Eres el capitán de un navío bajo la bandera de Inglaterra en 1740. Tú y tu tripulación os dirigíais hacia una colonia inglesa en el océano Pacífico.
 
-    Todo iba bien hasta que se avecinó una tormenta...'
+    Todo iba bien hasta que entraste en una tormenta…'
   difficulty: fácil
   locale: es
   mapfile: development.sqlite

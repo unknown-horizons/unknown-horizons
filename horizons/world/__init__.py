@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,13 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
-
 import logging
 import json
 import copy
 
 from collections import deque
+from functools import partial
 
 import horizons.globals
 from horizons.world.island import Island
@@ -44,7 +43,6 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
-from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
@@ -54,6 +52,7 @@ from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.messaging import LoadingProgress
+
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -78,6 +77,7 @@ class World(BuildingOwner, WorldObject):
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
+
 	def __init__(self, session):
 		"""
 		@param session: instance of session the world belongs to.
@@ -142,7 +142,6 @@ class World(BuildingOwner, WorldObject):
 
 		self.islands = None
 		self.diplomacy = None
-		self.bullets = None
 
 	def _init(self, savegame_db, force_player_id=None, disasters_enabled=True):
 		"""
@@ -197,9 +196,6 @@ class World(BuildingOwner, WorldObject):
 		self.ship_map = {}
 		self.ground_unit_map = {}
 
-		# create bullets list, used for saving bullets in ongoing attacks
-		self.bullets = []
-
 		if self.session.is_game_loaded():
 			# there are 0 or 1 trader AIs so this is safe
 			trader_data = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")
@@ -248,11 +244,6 @@ class World(BuildingOwner, WorldObject):
 
 
 	def _load_combat(self, savegame_db):
-		# load bullets
-		if self.session.is_game_loaded():
-			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
-				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
-
 		# load ongoing attacks
 		if self.session.is_game_loaded():
 			Weapon.load_attacks(self.session, savegame_db)
@@ -456,13 +447,14 @@ class World(BuildingOwner, WorldObject):
 			if player is self.player:
 				ret_coords = point.to_tuple()
 				# HACK: Store starting ship as first unit group, and select it
-				def _preselect_player_ship(ship):
-					sel_comp = ship.get_component(SelectableComponent)
+				def _preselect_player_ship(player_ship):
+					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = set([ship])
+					self.session.selected_instances = set([player_ship])
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
-				Scheduler().add_new_object(lambda: _preselect_player_ship(ship), ship, run_in=0)
+				select_ship = partial(_preselect_player_ship, ship)
+				Scheduler().add_new_object(select_ship, ship, run_in=0)
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):
@@ -486,17 +478,17 @@ class World(BuildingOwner, WorldObject):
 					break
 
 	def get_random_possible_ground_unit_position(self):
-		"""Returns a position in water that is not at the border of the world.
+		"""Returns a random position upon an island.
 		@return: Point"""
 		return worldutils.get_random_possible_ground_unit_position(self)
 
 	def get_random_possible_ship_position(self):
-		"""Returns a position in water that is not at the border of the world.
+		"""Returns a random position in water that is not at the border of the world.
 		@return: Point"""
 		return worldutils.get_random_possible_ship_position(self)
 
 	def get_random_possible_coastal_ship_position(self):
-		"""Returns a position in water that is not at the border of the world
+		"""Returns a random position in water that is not at the border of the world
 		but on the coast of an island.
 		@return: Point"""
 		return worldutils.get_random_possible_coastal_ship_position(self)
@@ -679,8 +671,6 @@ class World(BuildingOwner, WorldObject):
 			self.pirate.save(db)
 		for unit in self.ships + self.ground_units:
 			unit.save(db)
-		for bullet in self.bullets:
-			bullet.save(db)
 		self.diplomacy.save(db)
 		Weapon.save_attacks(db)
 		self.disaster_manager.save(db)

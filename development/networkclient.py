@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 # ###################################################
 
 
+from __future__ import print_function
 import getopt
 import os
 import sys
@@ -57,7 +58,7 @@ def nbrawinput(prompt='', timeout=1):
 #-------------------------------------------------------------------------------
 
 def usage():
-  print "Usage: %s -h host -p port" % (sys.argv[0])
+  print("Usage: %s -h host -p port" % (sys.argv[0]))
 
 def onquit(*args):
   try:
@@ -78,38 +79,38 @@ def onlist(*args):
   global client
   games = client.listgames(*args)
   if games:
-    print "[GAMESLIST]"
+    print("[GAMESLIST]")
     for game in games:
-      print "  [%s] map=%s maxplayers=%d playercnt=%d name=%s" % (game.uuid, game.mapname, game.maxplayers, game.playercnt, game.name)
+      print("  [%s] map=%s maxplayers=%d playercnt=%d name=%s" % (game.uuid, game.mapname, game.maxplayers, game.playercnt, game.name))
   else:
-    print "No games available"
+    print("No games available")
 
 def oncreate(*args):
   global client
   if len(args) != 3:
-    print "Syntax: create <mapname> <maxplayers> <gamename>"
+    print("Syntax: create <mapname> <maxplayers> <gamename>")
     return
   try:
     maxplayers = int(args[1])
     game = client.creategame(unicode(args[0]), maxplayers, unicode(args[2]))
-    print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
+    print("[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt))
     for player in game.players:
-      print "  Player: %s (%s)" % (player.name, player.sid)
+      print("  Player: %s (%s)" % (player.name, player.sid))
   except (ValueError, IndexError):
-    print "Maxplayers must be an integer"
+    print("Maxplayers must be an integer")
 
 def onjoin(*args):
   global client
   if len(args) != 1:
-    print "Syntax: join <uuid>"
+    print("Syntax: join <uuid>")
     return
   try:
     game = client.joingame(unicode(args[0]))
-    print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
+    print("[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt))
     for player in game.players:
-      print "  Player: %s (%s)" % (player.name, player.sid)
+      print("  Player: %s (%s)" % (player.name, player.sid))
   except ValueError:
-    print "Invalid UUID"
+    print("Invalid UUID")
 
 def onleave(*args):
   global client
@@ -120,29 +121,29 @@ def onchat(*args):
   client.chat(u' '.join(args))
 
 def cb_onchat(game, player, msg):
-  print "[ONCHAT] [%s] %s: %s" % (game.uuid, player, msg)
+  print("[ONCHAT] [%s] %s: %s" % (game.uuid, player, msg))
 
 def cb_onjoin(game, player):
-  print "[ONJOIN] [%s] %s joins" % (game.uuid, player)
+  print("[ONJOIN] [%s] %s joins" % (game.uuid, player))
 
 def cb_onleave(game, player):
-  print "[ONLEAVE] [%s] %s leaves" % (game.uuid, player)
+  print("[ONLEAVE] [%s] %s leaves" % (game.uuid, player))
 
 def cb_onchangename(game, oldplayer, newplayer, myself):
   global name
-  print "[ONCHANGENAME] [%s] %s changed name to %s" % (game.uuid, oldplayer.name, newplayer.name)
+  print("[ONCHANGENAME] [%s] %s changed name to %s" % (game.uuid, oldplayer.name, newplayer.name))
   if myself:
     name = newplayer.name
-    print "[NAME] My new name is %s" % (name)
+    print("[NAME] My new name is %s" % (name))
 
 def cb_ongameprepare(game):
-  print "[ONGAMEPREPARE]"
+  print("[ONGAMEPREPARE]")
 
 def cb_ongamestarts(game):
-  print "[ONGAMESTART]"
+  print("[ONGAMESTART]")
 
 def cb_ongamedata(data):
-  print "[ONGAMEDATA]: %s" % (data)
+  print("[ONGAMEDATA]: %s" % (data))
 
 def onauto(*args):
   global client
@@ -155,7 +156,7 @@ def onauto(*args):
     try:
       maxplayers = int(args[1])
     except (ValueError, IndexError):
-      print "Maxplayers must be an integer"
+      print("Maxplayers must be an integer")
       return
   client.connect()
   games = client.listgames(mapname, maxplayers)
@@ -163,15 +164,15 @@ def onauto(*args):
     game = client.joingame(games[0].uuid)
   else:
     game = client.creategame(mapname, maxplayers, gamename)
-  print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
+  print("[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt))
   for player in game.players:
-    print "  Player: %s" % (player.name)
+    print("  Player: %s" % (player.name))
   client.chat("I am here guys. Game can start")
 
 def ongamedata(*args):
   global client
   if client.mode is not ClientMode.Game:
-    print "[ERROR] Client not in game mode"
+    print("[ERROR] Client not in game mode")
     return
   client.send(u' '.join(args))
 
@@ -182,7 +183,7 @@ def onname(*args):
     if not client.changename(unicode(args[0])):
       return
     name = unicode(args[0])
-  print "[NAME] My name is %s" % (name)
+  print("[NAME] My name is %s" % (name))
 
 def onstatus(*args):
   global name, client
@@ -191,18 +192,18 @@ def onstatus(*args):
   statusstr += " mode=%s" % ("GAME" if client.mode is ClientMode.Game else "Server")
   statusstr += " connected=%s" % ("yes" if client.isconnected() else "no")
   statusstr += " server=%s" % (client.serveraddress)
-  print statusstr
+  print(statusstr)
   if client.isconnected():
     if client.game is not None:
-      print "[STATUS] game: uuid=%s mapname=%s maxplayers=%d playercnt=%d" % (client.game.uuid, client.game.mapname, client.game.maxplayers, client.game.playercnt)
+      print("[STATUS] game: uuid=%s mapname=%s maxplayers=%d playercnt=%d" % (client.game.uuid, client.game.mapname, client.game.maxplayers, client.game.playercnt))
       for player in client.game.players:
-        print "[STATUS]  Player: %s" % (player.name)
+        print("[STATUS]  Player: %s" % (player.name))
 
 def onhelp(*args):
   global commands, prompt
-  print "Available commands:"
+  print("Available commands:")
   for command in sorted(commands.iterkeys()):
-    print "  %s" % (command)
+    print("  %s" % (command))
 
 #-------------------------------------------------------------------------------
 
@@ -226,13 +227,13 @@ commands = {
 prompt = ">>>"
 
 if platform.system() == "Windows":
-  print "Testclient doesn't run on windows"
+  print("Testclient doesn't run on windows")
   sys.exit(1)
 
 try:
   opts, args = getopt.getopt(sys.argv[1:], 'h:p:')
 except getopt.GetoptError as err:
-  print str(err)
+  print(str(err))
   usage()
   sys.exit(1)
 
@@ -245,7 +246,7 @@ try:
 except (ValueError, IndexError):
   port = 0
 
-if host == None or port == None or port <= 0:
+if host is None or port is None or port <= 0:
   usage()
   sys.exit(1)
 
@@ -266,7 +267,7 @@ client.register_callback("lobbygame_starts", cb_ongameprepare)
 client.register_callback("game_starts", cb_ongamestarts)
 client.register_callback("game_data", cb_ongamedata)
 
-print prompt,
+print(prompt, end=' ')
 while True:
   try:
     if client.isconnected():
@@ -278,14 +279,14 @@ while True:
 
     pieces = filter(lambda x: len(x.strip()) > 0, text.strip().split(' '))
     if len(pieces) <= 0:
-      print prompt,
+      print(prompt, end=' ')
       continue
 
     cmd = pieces.pop(0)
     if cmd not in commands:
-      print "[ERROR] Unknown command"
+      print("[ERROR] Unknown command")
     else:
       commands[cmd](*pieces)
   except horizons.network.NetworkException as e:
-    print "[ERROR] %s" % (e)
-  print prompt,
+    print("[ERROR] %s" % (e))
+  print(prompt, end=' ')

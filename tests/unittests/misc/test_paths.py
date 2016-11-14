@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,15 +20,14 @@
 # ###################################################
 
 
+import os
+import shutil
+import tempfile
 from unittest import TestCase
 
-import tempfile
-import shutil
-import os
-
-from run_uh import create_user_dirs
 from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
+from run_uh import create_user_dirs
 
 
 class TestPaths(TestCase):
@@ -67,10 +66,3 @@ class TestPaths(TestCase):
 		os.rmdir(inner)
 		os.rmdir(inner2)
 		os.rmdir(outer)
-
-
-
-
-
-
-

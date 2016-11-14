@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,29 +21,38 @@
 
 import sys
 
-from inventorytab import InventoryTab
-from tradetab import TradeTab
-from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
-from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
+from .inventorytab import InventoryTab
+from .tradetab import TradeTab
+from .overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
+from .buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab
-from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
-from productiontabs import ProductionOverviewTab, SmallProductionOverviewTab
-from residentialtabs import SettlerOverviewTab
-from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
-						TraderShipOverviewTab, EnemyShipOverviewTab
-from buyselltab import BuySellTab
-from buildtabs import BuildTab
-from tabwidget import TabWidget
-from boatbuildertabs import BoatbuilderTab, BoatbuilderFisherTab, \
-						BoatbuilderTradeTab, BoatbuilderWar1Tab, \
-						BoatbuilderWar2Tab, BoatbuilderConfirmTab
-from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
+from .enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
+from .productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
+						SmallProductionOverviewTab
+from .residentialtabs import SettlerOverviewTab
+from .shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
+						TradeShipOverviewTab, TraderShipOverviewTab, \
+                                                EnemyShipOverviewTab
+from .buyselltab import BuySellTab
+from .buildtabs import BuildTab
+from .tabwidget import TabWidget
+from .boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase, BoatbuilderTab, \
+                                                BoatbuilderFisherTab, BoatbuilderTradeTab, \
+                                                BoatbuilderWar1Tab, BoatbuilderWar2Tab, \
+                                                BoatbuilderConfirmTab
+from .mainsquaretabs import AccountTab, MainSquareOverviewTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
 						MainSquareSettlersTab, MainSquareCitizensTab
-from buildrelatedtab import BuildRelatedTab
+from .buildrelatedtab import BuildRelatedTab
 
-from diplomacytab import DiplomacyTab
-from selectmultitab import SelectMultiTab
+from .diplomacytab import DiplomacyTab
+from .selectmultitab import SelectMultiTab
+
+from .barrackstabs import BarracksTab, BarracksSelectTab, \
+						BarracksSwordmanTab, BarracksConfirmTab
+
+from .barriertab import BarrierOverviewTab
 
 def resolve_tab(tabclass_name):
+	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
 	return getattr(sys.modules[__name__], tabclass_name)

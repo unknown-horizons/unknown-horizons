@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import gettext
 import os
 import re
@@ -57,7 +58,7 @@ def setup_paths():
 	if not os.path.exists(scenario_path):
 		scenario_path = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario_path, language='en')
 	if not os.path.exists(scenario_path):
-		print 'Scenario file not found:', scenario_path
+		print('Scenario file not found:', scenario_path)
 		sys.exit(1)
 
 	# drop [_en].yaml suffix and paths to file to obtain base scenario name
@@ -160,7 +161,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 				widget = event[0]
 				if widget in ('Gallery', 'Image', 'Pagebreak'):
 					pass
-				if widget in ('Headline', 'Label', 'Message'):
+				if widget in ('Headline', 'Label', 'BoldLabel', 'Message'):
 					event = [widget] + map(translate, event[1:])
 
 			all_events.append(event)
@@ -267,9 +268,9 @@ def main():
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print 'Usage: {0} scenario_translation_file'.format(os.path.basename(__file__))
-		print '\tscenario_translation_file: `po/scenarios/sv/tutorial.po`'
-		print 'Run from main UH directory!'
+		print('Usage: {0} scenario_translation_file'.format(os.path.basename(__file__)))
+		print('\tscenario_translation_file: `po/scenarios/sv/tutorial.po`')
+		print('Run from main UH directory!')
 		sys.exit(1)
 	else:
 		main()

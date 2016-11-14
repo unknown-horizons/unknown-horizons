@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,17 +20,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import OverviewTab
-from horizons.i18n import _lazy
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.component.depositcomponent import DepositComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.component.depositcomponent import DepositComponent
+from horizons.i18n import gettext_lazy as LazyT
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+
+from .overviewtab import OverviewTab
 
 
 class TowerOverviewTab(OverviewTab): # defensive tower
 	widget = 'overview_tower.xml'
-	helptext = _lazy("Tower overview")
+	helptext = LazyT("Tower overview")
 
 	def init_widget(self):
 		super(TowerOverviewTab, self).init_widget()
@@ -38,11 +39,11 @@ class TowerOverviewTab(OverviewTab): # defensive tower
 
 class SignalFireOverviewTab(OverviewTab):
 	widget = 'overview_signalfire.xml'
-	helptext = _lazy("Overview")
+	helptext = LazyT("Overview")
 
 	def init_widget(self):
 		super(SignalFireOverviewTab, self).init_widget()
-		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
+		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image

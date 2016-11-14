@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.unittests import TestCase
-
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
+from tests.unittests import TestCase
+
 
 class MockTerrainBuildabilityCache(object):
 	sizes = TerrainBuildabilityCache.sizes

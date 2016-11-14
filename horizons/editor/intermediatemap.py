@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,13 @@
 
 from horizons.constants import GROUND
 
+DEEP_WATER = 0
+SHALLOW_WATER = 1
+SAND = 2
+GRASS = 3
+
 class IntermediateMap(object):
+
 	def __init__(self, world):
 		self.world = world
 		self.session = world.session
@@ -33,22 +39,22 @@ class IntermediateMap(object):
 
 		tile = self.world.full_map[coords]
 		if tile.id <= 0:
-			return 0 # deep water
+			return DEEP_WATER
 		elif tile.id == 1:
-			return 1 # shallow water
+			return SHALLOW_WATER
 		elif tile.id == 6:
-			return 2 # sand
+			return SAND
 		elif tile.id == 3:
-			return 3 # grass
+			return GRASS
 		else:
 			offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
-			rot = tile.rotation // 90
+			rotation = tile.rotation // 90
 			if tile.shape == 'straight':
-				return offset + (1, 0, 0, 1)[rot] # 2 low, 2 high
+				return offset + (1, 0, 0, 1)[rotation] # 2 low, 2 high
 			elif tile.shape == 'curve_in':
-				return offset + (1, 1, 0, 1)[rot] # 1 low, 3 high
+				return offset + (1, 1, 0, 1)[rotation] # 1 low, 3 high
 			else:
-				return offset + (1, 0, 0, 0)[rot] # 3 low, 1 high
+				return offset + (1, 0, 0, 0)[rotation] # 3 low, 1 high
 
 	def _init_map(self):
 		self._map = {}
@@ -136,7 +142,7 @@ class IntermediateMap(object):
 			last_coords_list.append(coords)
 			self._update_intermediate_coords(coords, new_type)
 
-		for dist in xrange(3):
+		for _ in xrange(3):
 			surrounding_coords_list = self._get_surrounding_coords(last_coords_list)
 			for coords2 in surrounding_coords_list:
 				if coords2 not in self._map:
@@ -162,7 +168,7 @@ class IntermediateMap(object):
 					best_new_type = new_type2
 					best_dist = abs(new_type2 - cur_type)
 				self._update_intermediate_coords(coords2, best_new_type)
-			last_coords_list.extend(surrounding_coords_list)
+				last_coords_list.append(coords2)
 
 		self._fix_map(last_coords_list, new_type)
 		for coords in last_coords_list:
@@ -180,48 +186,36 @@ class IntermediateMap(object):
 				data.append(self._map[(x + dx, y + dy)])
 		coords = (x + self.world.min_x, y + self.world.min_y)
 
-		mi = min(data)
+		minimum = min(data)
 		for i in xrange(4):
-			data[i] -= mi
+			data[i] -= minimum
 
 		if max(data) == 0:
-			if mi == 0:
-				self.session.world_editor.set_tile(coords, GROUND.WATER)
-			elif mi == 1:
-				self.session.world_editor.set_tile(coords, GROUND.SHALLOW_WATER)
-			elif mi == 2:
-				self.session.world_editor.set_tile(coords, GROUND.SAND)
-			elif mi == 3:
-				self.session.world_editor.set_tile(coords, GROUND.DEFAULT_LAND)
+			ground_class = {
+				DEEP_WATER: GROUND.WATER,
+				SHALLOW_WATER: GROUND.SHALLOW_WATER,
+				SAND: GROUND.SAND,
+				GRASS: GROUND.DEFAULT_LAND,
+			}[minimum]
+			self.session.world_editor.set_tile(coords, ground_class)
 		else:
 			assert max(data) == 1, 'This should never happen'
-			type = 2 if mi == 0 else (5 if mi == 1 else 4)
-			if data == [0, 1, 0, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 45))
-			elif data == [1, 1, 0, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 135))
-			elif data == [1, 0, 1, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 225))
-			elif data == [0, 0, 1, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 315))
-			elif data == [0, 1, 1, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 45))
-			elif data == [1, 1, 0, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 135))
-			elif data == [1, 1, 1, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 225))
-			elif data == [1, 0, 1, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 315))
-			elif data == [0, 0, 0, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 45))
-			elif data == [0, 1, 0, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 135))
-			elif data == [1, 0, 0, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 225))
-			elif data == [0, 0, 1, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 315))
-			else:
-				assert False, 'This should never happen'
+			tile_type = 2 if minimum == 0 else (5 if minimum == 1 else 4)
+			tile_def = {
+				(0, 1, 0, 1): (tile_type, 'straight', 45),
+				(1, 1, 0, 0): (tile_type, 'straight', 135),
+				(1, 0, 1, 0): (tile_type, 'straight', 225),
+				(0, 0, 1, 1): (tile_type, 'straight', 315),
+				(0, 1, 1, 1): (tile_type, 'curve_in', 45),
+				(1, 1, 0, 1): (tile_type, 'curve_in', 135),
+				(1, 1, 1, 0): (tile_type, 'curve_in', 225),
+				(1, 0, 1, 1): (tile_type, 'curve_in', 315),
+				(0, 0, 0, 1): (tile_type, 'curve_out', 45),
+				(0, 1, 0, 0): (tile_type, 'curve_out', 135),
+				(1, 0, 0, 0): (tile_type, 'curve_out', 225),
+				(0, 0, 1, 0): (tile_type, 'curve_out', 315),
+			}[tuple(data)]
+			self.session.world_editor.set_tile(coords, tile_def)
 
 	def __str__(self):
 		res = ''

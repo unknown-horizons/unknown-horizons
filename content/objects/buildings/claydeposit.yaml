@@ -1,4 +1,4 @@
-id: 23
+id: BUILDINGS.CLAY_DEPOSIT
 name: _ Clay Deposit
 baseclass: nature.ResourceDeposit
 radius: 0
@@ -8,7 +8,7 @@ size_x: 3
 size_y: 3
 inhabitants: 0
 tooltip_text: null
-settler_level: TIER.NATURE
+tier: TIER.NATURE
 buildingcosts: {}
 components:
 - SelectableComponent:

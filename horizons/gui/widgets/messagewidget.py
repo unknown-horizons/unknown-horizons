@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,23 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import itertools
 import logging
 import textwrap
-import itertools
 
 from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
-
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
+from horizons.i18n.voice import get_speech_file
+from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
-from horizons.scheduler import Scheduler
-from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.i18n.voice import get_speech_file
 
 
 class MessageWidget(LivingObject):
@@ -75,7 +75,6 @@ class MessageWidget(LivingObject):
 		self.reference_text_widget_position = (self.widget.x + self.widget.width, self.widget.y)
 
 		self.widget.show()
-		self.item = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
@@ -114,6 +113,7 @@ class MessageWidget(LivingObject):
 				break
 		if index > -1:
 			del self.active_messages[index]
+			self.draw_widget()
 
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
@@ -165,7 +165,7 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.item + index) >= len(self.active_messages):
+			if index >= len(self.active_messages):
 				# Only display most recent notifications
 				continue
 			button = ImageButton()
@@ -203,9 +203,10 @@ class MessageWidget(LivingObject):
 		"""Shows the text for a button.
 		@param index: index of button"""
 		assert isinstance(index, int)
-		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
-		label = self.text_widget.findChild(name='text')
-		text = self.active_messages[self.item + index].message
+		# stop hiding if a new text has been shown
+		ExtScheduler().rem_call(self, self.hide_text)
+
+		text = self.active_messages[index].message
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
@@ -229,6 +230,7 @@ class MessageWidget(LivingObject):
 		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
 
 		self.bg_middle.adaptLayout()
+		label = self.text_widget.findChild(name='text')
 		label.text = text
 		label.adaptLayout()
 		self.text_widget.show()
@@ -329,10 +331,9 @@ class _IngameMessage(object):
 		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
-			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
 		else:
-			msg = _(horizons.globals.db.get_msg_text(id))
+			msg = T(horizons.globals.db.get_msg_text(id))
 			#TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
@@ -342,7 +343,14 @@ class _IngameMessage(object):
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message,
+		return "% 4d: %s %s %s%s" % (self.created, self.id,
+			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+			'R' if self.read else ' ',
+			'D' if self.display else ' ')
+
+	def __unicode__(self):
+		return u"% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
+			self.message,
 			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')

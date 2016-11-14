@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,26 +26,39 @@ from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
+from horizons.ext.typing import Any, Optional
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
+from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
 class Window(object):
 
 	def __init__(self, windows=None):
-		# Reference to the window manager. Use it to show new windows or close
+		# Reference to the window manager. Use it to open new windows or close
 		# this window.
 		self._windows = windows
 
 		self._modal_background = None
 
-	def show(self, **kwargs):
-		"""Show the window.
+	def open(self, **kwargs):
+		"""Open the window.
 
 		After this call, the window should be visible. If you decide to not show
 		the window here (e.g. an error occurred), you'll need to call
 		`self._windows.close()` to remove the window from the manager.
+
+		You may override this method in a subclass if you need to do stuff when
+		a window is first shown.
+		"""
+		return self.show(**kwargs)
+
+	def show(self, **kwargs):
+		"""Show the window.
+
+		After this call, the window should be visible. You should *never* call
+		this directly in your code.
 		"""
 		raise NotImplementedError
 
@@ -66,6 +79,9 @@ class Window(object):
 
 		You should *never* call this directly in your code. Use `self._windows.close()`
 		to ask the WindowManager to remove the window instead.
+
+		You may override this method in a subclass if you need to do stuff when
+		a window is closed.
 		"""
 		self.hide()
 
@@ -108,10 +124,10 @@ class Dialog(Window):
 	modal = False
 
 	# Name of widget that should get the focus once the dialog is shown
-	focus = None
+	focus = None # type: Optional[str]
 
 	# Maps Button names to return values that you can handle in `act`
-	return_events = {}
+	return_events = {} # type: Dict[str, Any]
 
 	def __init__(self, windows):
 		super(Dialog, self).__init__(windows)
@@ -132,7 +148,7 @@ class Dialog(Window):
 
 		If you want to show the dialog again, you need to do that explicitly, e.g. with:
 
-			self._windows.show(self)
+			self._windows.open(self)
 		"""
 		return retval
 
@@ -269,9 +285,9 @@ class Popup(Dialog):
 		self._gui = load_uh_widget(wdg_name + '.xml')
 
 		headline = self._gui.findChild(name='headline')
-		headline.text = _(self.windowtitle)
+		headline.text = T(self.windowtitle)
 		message_lbl = self._gui.findChild(name='popup_message')
-		message_lbl.text = _(self.message)
+		message_lbl.text = T(self.message)
 		self._gui.adaptLayout() # recalculate widths
 
 		self.return_events = {OkButton.DEFAULT_NAME: True}
@@ -287,17 +303,17 @@ class WindowManager(object):
 	def __init__(self):
 		self._windows = []
 
-	def show(self, window, **kwargs):
-		"""Show a new window on top.
+	def open(self, window, **kwargs):
+		"""Open a new window on top.
 
 		Hide the current one and show the new one.
-		Keyword arguments will be passed through to the window's `show` method.
+		Keyword arguments will be passed through to the window's `open` method.
 		"""
 		if self._windows:
 			self._windows[-1].hide()
 
 		self._windows.append(window)
-		return window.show(**kwargs)
+		return window.open(**kwargs)
 
 	def close(self):
 		"""Close the top window.
@@ -316,7 +332,12 @@ class WindowManager(object):
 		else:
 			if window in self._windows:
 				self._windows.remove(window)
-			self.show(window, **kwargs)
+				if self._windows:
+					self._windows[-1].hide()
+				self._windows.append(window)
+				window.show(**kwargs)
+			else:
+				self.open(window, **kwargs)
 
 	def on_escape(self):
 		"""Let the topmost window handle an escape key event."""
@@ -363,7 +384,7 @@ class WindowManager(object):
 		# most recently added window
 		self._windows[-1].show()
 
-	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+	def open_popup(self, windowtitle, message, show_cancel_button=False, size=0):
 		"""
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
@@ -371,9 +392,9 @@ class WindowManager(object):
 		@param size: 0, 1 or 2. Larger means bigger.
 		"""
 		window = Popup(self, windowtitle, message, show_cancel_button, size)
-		return self.show(window)
+		return self.open(window)
 
-	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
+	def open_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
 		@param windowtitle: title of popup, will be auto-prefixed with "Error: "
 		@param description: string to tell the user what happened
@@ -389,9 +410,9 @@ class WindowManager(object):
 		if advice:
 			msg += advice + u"\n"
 		if details:
-			msg += _("Details: {error_details}").format(error_details=details)
+			msg += T("Details: {error_details}").format(error_details=details)
 		try:
-			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			self.open_popup( T("Error: {error_message}").format(error_message=windowtitle),
 			                 msg)
 		except SystemExit: # user really wants us to die
 			raise
@@ -402,6 +423,6 @@ class WindowManager(object):
 				traceback.print_exc()
 				log = logging.getLogger('gui.windows')
 				log.error('Exception while showing error, retrying once more.')
-				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
+				return self.open_error_popup(windowtitle, description, advice, details, _first=False)
 			else:
 				raise # it persists, we have to die.

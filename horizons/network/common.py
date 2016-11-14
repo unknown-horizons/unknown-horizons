@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,14 +22,8 @@
 import uuid
 from gettext import NullTranslations
 
-from horizons.network import packets, enet
+from horizons.network import enet, packets
 
-__all__ = [
-  'Address',
-  'Player',
-  'Game',
-  'ErrorType',
-]
 
 class Address(object):
 	def __init__(self, address, port=None):
@@ -150,7 +144,7 @@ class Game(object):
 			self.state = state
 
 		def __str__(self):
-			strvals = [ "Open", "Prepare", "Running" ]
+			strvals = ["Open", "Prepare", "Running"]
 			return "%s" % (strvals[self.state])
 
 	def __init__(self, packet, creator):
@@ -255,7 +249,7 @@ class ErrorType(object):
 		self.state = state
 
 	def __str__(self):
-		strvals = [ "NotSet", "TerminateGame" ]
+		strvals = ["NotSet", "TerminateGame"]
 		return "%s" % (strvals[self.state])
 
 packets.SafeUnpickler.add('common', ErrorType)

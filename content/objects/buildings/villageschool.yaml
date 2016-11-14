@@ -1,5 +1,5 @@
-id: 21
-name: _ Village school
+id: BUILDINGS.VILLAGE_SCHOOL
+name: _ Village School
 baseclass: production.ProductionBuilding
 radius: 0
 cost: 15
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Provides education.
-settler_level: TIER.PIONEERS
+tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.BRICKS: 4}
 show_status_icons: false
 components:

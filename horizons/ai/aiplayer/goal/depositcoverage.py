@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,16 +20,18 @@
 # ###################################################
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS, RES
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""
 
-	_deposit_resource_id = None # the resource that has to be in the resource deposit
+	# the resource that has to be in the resource deposit
+	_deposit_resource_id = None # type: int
 
 	def _have_reachable_deposit(self, resource_id):
 		"""Returns True if there is a resource deposit outside the settlement that is not owned by another player."""
@@ -93,6 +95,12 @@ class ClayDepositCoverageGoal(DepositCoverageGoal):
 	def get_personality_name(self):
 		return 'ClayDepositCoverageGoal'
 
+class StoneDepositCoverageGoal(DepositCoverageGoal):
+	_deposit_resource_id = RES.STONE_DEPOSIT
+
+	def get_personality_name(self):
+		return 'StoneDepositCoverageGoal'
+
 class MountainCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_IRON
 
@@ -101,4 +109,5 @@ class MountainCoverageGoal(DepositCoverageGoal):
 
 decorators.bind_all(DepositCoverageGoal)
 decorators.bind_all(ClayDepositCoverageGoal)
+decorators.bind_all(StoneDepositCoverageGoal)
 decorators.bind_all(MountainCoverageGoal)

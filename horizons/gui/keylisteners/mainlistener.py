@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import datetime
-import shutil
 import os
 import os.path
+import shutil
 import tempfile
+
+from fife import fife
 
 import horizons.globals
 import horizons.main
-
-from horizons.gui.keylisteners import KeyConfig
-from horizons.util.living import LivingObject
 from horizons.constants import PATHS
+from horizons.util.living import LivingObject
+
+from .keyconfig import KeyConfig
+
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 	"""MainListener Class to process events of main window"""
@@ -96,5 +98,8 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.quit()
+			# NOTE Sometimes we get two quit events from FIFE, ignore the second
+			#      if we are already shutting down the game
+			if not horizons.globals.fife.quit_requested:
+				horizons.main.quit()
 			command.consume()

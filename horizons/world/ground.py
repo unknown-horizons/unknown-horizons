@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,8 +25,7 @@ import logging
 from fife import fife
 
 import horizons.globals
-
-from horizons.constants import LAYERS, GROUND
+from horizons.constants import GROUND, LAYERS
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
@@ -64,20 +63,15 @@ class SurfaceTile(object):
 	def act(self, rotation):
 		self._instance.setRotation(rotation)
 
+		(x, y) = (self.x, self.y)
+		layer_coords = {
+			45:  (x + 3, y,     0),
+			135: (x,     y - 3, 0),
+			225: (x - 3, y,     0),
+			315: (x,     y + 3, 0),
+		}[rotation]
+
 		facing_loc = fife.Location(self.session.view.layers[self.layer])
-		x = self.x
-		y = self.y
-		layer_coords = list((x, y, 0))
-
-		if rotation == 45:
-			layer_coords[0] = x + 3
-		elif rotation == 135:
-			layer_coords[1] = y - 3
-		elif rotation == 225:
-			layer_coords[0] = x - 3
-		elif rotation == 315:
-			layer_coords[1] = y + 3
-
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 		self._instance.setFacingLocation(facing_loc)
 

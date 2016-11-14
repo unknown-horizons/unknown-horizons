@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,7 +29,6 @@ import mock
 import horizons.globals
 import horizons.main
 import horizons.world	# needs to be imported before session
-from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
@@ -40,6 +39,7 @@ from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.color import Color
 
 from tests import RANDOM_SEED
+from tests.dummy import Dummy
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
@@ -173,7 +173,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 		players.append({
 			'id': 1,
 			'name': 'foobar',
-			'color': Color[1],
+			'color': Color.get(1),
 			'local': True,
 			'ai': False,
 			'difficulty': human_difficulty,
@@ -184,7 +184,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 		players.append({
 			'id': id,
 			'name': ('AI' + str(i)),
-			'color': Color[id],
+			'color': Color.get(id),
 			'local': (id == 1),
 			'ai': True,
 			'difficulty': ai_difficulty,
@@ -262,7 +262,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 						s.end(remove_savegame=False, keep_map=True)
 					elif not manual_session:
 						s.end()
-				except:
+				except Exception:
 					pass
 					# An error happened after cleanup after an error.
 					# This is ok since cleanup is only defined to work when invariants are in place,

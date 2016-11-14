@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,8 @@
 # ###################################################
 
 from horizons.messaging import ResourceProduced
-from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.production.producer import Producer
+from horizons.world.resourcehandler import ResourceHandler
 
 
 class BuildingResourceHandler(ResourceHandler):

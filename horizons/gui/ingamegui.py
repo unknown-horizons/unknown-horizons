@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,15 +23,15 @@ from fife import fife
 
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
+from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, LAYERS, VERSION, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
-from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
-from horizons.gui.tabs import resolve_tab
+from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
+from horizons.gui.modules.ingame import ChangeNameDialog, ChatDialog, CityInfo
+from horizons.gui.tabs import BuildTab, DiplomacyTab, SelectMultiTab, TabWidget, resolve_tab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.logbook import LogBook
@@ -42,10 +42,12 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade)
+from horizons.i18n import gettext as T
+from horizons.messaging import (
+	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
+	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.living import livingProperty, LivingObject
+from horizons.util.living import LivingObject, livingProperty
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
@@ -79,8 +81,8 @@ class IngameGui(LivingObject):
 
 		# Windows
 		self.windows = WindowManager()
-		self.show_popup = self.windows.show_popup
-		self.show_error_popup = self.windows.show_error_popup
+		self.open_popup = self.windows.open_popup
+		self.open_error_popup = self.windows.open_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
@@ -90,7 +92,7 @@ class IngameGui(LivingObject):
 		self.chat_dialog = ChatDialog(self.windows, self.session)
 		self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=False)
-		self.help_dialog = HelpDialog(self.windows, session=self.session)
+		self.help_dialog = HelpDialog(self.windows)
 
 		# Icon manager
 		self.status_icon_manager = StatusIconManager(
@@ -135,6 +137,8 @@ class IngameGui(LivingObject):
 		})
 		self.mainhud.show()
 
+		self._replace_hotkeys_in_widgets()
+
 		self.resource_overview = ResourceOverviewBar(self.session)
 
 		# Register for messages
@@ -143,7 +147,12 @@ class IngameGui(LivingObject):
 		NewSettlement.subscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
 		MineEmpty.subscribe(self._on_mine_empty)
-		self.session.view.add_change_listener(self._update_zoom)
+		ZoomChanged.subscribe(self._update_zoom)
+		GuiAction.subscribe(self._on_gui_click_action)
+		GuiHover.subscribe(self._on_gui_hover_action)
+		GuiCancelAction.subscribe(self._on_gui_cancel_action)
+		# NOTE: This has to be called after the text is replaced!
+		LanguageChanged.subscribe(self._on_language_changed)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -154,7 +163,10 @@ class IngameGui(LivingObject):
 		NewSettlement.unsubscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		MineEmpty.unsubscribe(self._on_mine_empty)
-		self.session.view.remove_change_listener(self._update_zoom)
+		ZoomChanged.unsubscribe(self._update_zoom)
+		GuiAction.unsubscribe(self._on_gui_click_action)
+		GuiHover.unsubscribe(self._on_gui_hover_action)
+		GuiCancelAction.unsubscribe(self._on_gui_cancel_action)
 
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
@@ -197,9 +209,10 @@ class IngameGui(LivingObject):
 
 	def show_select_savegame(self, mode):
 		window = SelectSavegameDialog(mode, self.windows)
-		return self.windows.show(window)
+		return self.windows.open(window)
 
 	def toggle_pause(self):
+		self.set_cursor('default')
 		self.windows.toggle(self.pausemenu)
 
 	def toggle_help(self):
@@ -217,8 +230,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.windows.show_popup(_("No diplomacy possible"),
-			                        _("Cannot do diplomacy as there are no other players."))
+			self.windows.open_popup(T("No diplomacy possible"),
+			                        T("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -350,8 +363,8 @@ class IngameGui(LivingObject):
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"%s" % a.name
-			player2 = u"%s" % b.name
+			player1 = u"{0!s}".format(a.name)
+			player2 = u"{0!s}".format(b.name)
 
 			data = {'player1' : player1, 'player2' : player2}
 
@@ -386,7 +399,7 @@ class IngameGui(LivingObject):
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
-		self.windows.show(self.change_name_dialog, instance=instance)
+		self.windows.open(self.change_name_dialog, instance=instance)
 
 	def on_escape(self):
 		if self.windows.visible:
@@ -417,7 +430,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
+				text = u"{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -455,13 +468,21 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			self.session.remove_selected()
+			message = T(u"Are you sure you want to delete these objects?")
+			if self.windows.open_popup(T(u"Delete"), message, show_cancel_button=True):
+				self.session.remove_selected()
+			else:
+				self.deselect_all()
 		elif action == _Actions.ROAD_TOOL:
 			self.toggle_road_tool()
 		elif action == _Actions.SPEED_UP:
 			SpeedUpCommand().execute(self.session)
 		elif action == _Actions.SPEED_DOWN:
 			SpeedDownCommand().execute(self.session)
+		elif action == _Actions.ZOOM_IN:
+			self.session.view.zoom_in()
+		elif action == _Actions.ZOOM_OUT:
+			self.session.view.zoom_out()
 		elif action == _Actions.PAUSE:
 			TogglePauseCommand().execute(self.session)
 		elif action == _Actions.PLAYERS_OVERVIEW:
@@ -473,7 +494,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.LOGBOOK:
 			self.windows.toggle(self.logbook)
 		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
-			import pdb; pdb.set_trace()
+			import pdb
+			pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
 			self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
@@ -490,7 +512,7 @@ class IngameGui(LivingObject):
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
 		elif action == _Actions.CHAT:
-			self.windows.show(self.chat_dialog)
+			self.windows.open(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
@@ -586,16 +608,15 @@ class IngameGui(LivingObject):
 		"""Initiate the destroy tool"""
 		self.toggle_cursor('tearing')
 
-	def _update_zoom(self):
+	def _update_zoom(self, message):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.get_zoom()
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
-		if zoom == VIEW.ZOOM_MIN:
+		if message.zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()
 		else:
 			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
+		if message.zoom == VIEW.ZOOM_MAX:
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()
@@ -632,11 +653,44 @@ class IngameGui(LivingObject):
 		if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
 			self.show_build_menu(update=True)
 
-		# TODO: Use a better measure then first tab
-		# Quite fragile, makes sure the tablist in the mainsquare menu is updated
-		if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
-			instance = list(self.session.selected_instances)[0]
-			instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
-
 	def _on_mine_empty(self, message):
 		self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')
+
+	def _on_gui_click_action(self, msg):
+		"""Make a sound when a button is clicked"""
+		AmbientSoundComponent.play_special('click', gain=10)
+
+	def _on_gui_cancel_action(self, msg):
+		"""Make a sound when a cancelButton is clicked"""
+		AmbientSoundComponent.play_special('success', gain=10)
+
+	def _on_gui_hover_action(self, msg):
+		"""Make a sound when the mouse hovers over a button"""
+		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
+
+	def _replace_hotkeys_in_widgets(self):
+		"""Replaces the `{key}` in the (translated) widget helptext with the actual hotkey"""
+		hotkey_replacements = {
+			'rotateRight': 'ROTATE_RIGHT',
+			'rotateLeft': 'ROTATE_LEFT',
+			'speedUp': 'SPEED_UP',
+			'speedDown': 'SPEED_DOWN',
+			'destroy_tool': 'DESTROY_TOOL',
+			'build': 'BUILD_TOOL',
+			'gameMenuButton': 'ESCAPE',
+			'logbook': 'LOGBOOK',
+		}
+		for (widgetname, action) in hotkey_replacements.iteritems():
+			widget = self.mainhud.findChild(name=widgetname)
+			keys = horizons.globals.fife.get_keys_for_action(action)
+			# No `.upper()` here: "Pause" looks better than "PAUSE".
+			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
+			widget.helptext = widget.helptext.format(key=keyname)
+
+	def _on_language_changed(self, msg):
+		"""Replace the hotkeys after translation.
+
+		NOTE: This should be called _after_ the texts are replaced. This
+		currently relies on import order with `horizons.gui`.
+		"""
+		self._replace_hotkeys_in_widgets()

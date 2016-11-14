@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import logging
 import time
 
 from horizons import network
+from horizons.i18n import gettext as T
 from horizons.network import enet, packets
-
 
 # maximal peers enet should handle
 MAX_PEERS = 1
@@ -84,13 +86,13 @@ class Connection(object):
 				self.server_address = enet.Address(*self.server_address_parameters)
 			self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
-			raise network.NetworkException(_("Unable to connect to server.") + u" " +
-			                               _("Maybe invalid or irresolvable server address."))
+			raise network.NetworkException(T("Unable to connect to server.") + u" " +
+			                               T("Maybe invalid or irresolvable server address."))
 
 		event = self.host.service(SERVER_TIMEOUT)
 		if event.type != enet.EVENT_TYPE_CONNECT:
 			self._reset()
-			raise network.UnableToConnect(_("Unable to connect to server."))
+			raise network.UnableToConnect(T("Unable to connect to server."))
 
 	def disconnect(self, server_may_disconnect=False):
 		"""End connection to master server.
@@ -198,53 +200,49 @@ class Connection(object):
 		"""Receives next event of type NONE or RECEIVE."""
 		if self.server_peer is None:
 			raise network.NotConnected()
+		try:
+			event = self.host.service(timeout)
 
-		event = self.host.service(timeout)
-		if event.type == enet.EVENT_TYPE_NONE:
-			return None
-		elif event.type == enet.EVENT_TYPE_DISCONNECT:
-			self._reset()
-			self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
-			raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
-		elif event.type == enet.EVENT_TYPE_CONNECT:
-			self._reset()
-			self.log.warning("Unexpected connection from %s" % (event.peer.address))
-			raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
+			if event.type == enet.EVENT_TYPE_NONE:
+				return None
+			elif event.type == enet.EVENT_TYPE_DISCONNECT:
+				self._reset()
+				self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
+				raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
+			elif event.type == enet.EVENT_TYPE_CONNECT:
+				self._reset()
+				self.log.warning("Unexpected connection from %s" % (event.peer.address))
+				raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
 
-		return event
+			return event
+		except IOError as e:
+			raise network.FatalError(e)
 
 	def _receive(self, timeout=SERVER_TIMEOUT):
 		"""Receive event and return unpacked packet."""
-		event = self._receive_event(timeout)
-		if event is None or event.type != enet.EVENT_TYPE_RECEIVE:
-			return None
-
 		try:
+			event = self._receive_event(timeout)
+			if event is None or event.type != enet.EVENT_TYPE_RECEIVE:
+				return None
+
 			packet = packets.unserialize(event.packet.data)
 		except Exception as e:
-			self.log.error("Unknown packet from %s!" % (event.peer.address))
+			try:
+				event
+			except NameError:
+				pass
+			else:
+				self.log.error("Unknown packet from %s!" % (event.peer.address))
 			errstr = "Pickle/Security: %s" % (e)
-			print "[FATAL] %s" % (errstr) # print that even when no logger is enabled!
+			print("[FATAL] %s" % (errstr)) # print that even when no logger is enabled!
 			self.log.error("[FATAL] %s" % (errstr))
 			self.disconnect()
 			raise network.FatalError(errstr)
 
 		if isinstance(packet, packets.cmd_error):
 			# handle special errors here
-			# FIXME: it's better to pass that to the interface,
-			# but our ui error handler currently can't handle that
-
 			# the game got terminated by the client
-			"""
-			# TODO
-			if packet.type == ErrorType.TerminateGame:
-				game = self.game
-				# this will destroy self.game
-				self.leavegame(stealth=True)
-				self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
-				return None
-			"""
-			raise network.CommandError(packet.errorstr)
+			raise network.CommandError(packet.errorstr, type=packet.type)
 		elif isinstance(packet, packets.cmd_fatalerror):
 			self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
 			self.disconnect(server_may_disconnect=True)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,10 @@
 
 from horizons.command.building import Build
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, PRODUCTIONLINES, RES
 from horizons.world.production.producer import Producer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, PRODUCTION
+from tests.game import game_test, settle
 
-from tests.game import settle, game_test
 
 @game_test()
 def test_basic_wood_production(session, player):

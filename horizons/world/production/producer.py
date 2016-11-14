@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import logging
 
-from horizons.world.production.productionline import ProductionLine
-from horizons.world.production.production import Production, SingleUseProduction
-from horizons.constants import PRODUCTION
-from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
-from horizons.util.shapes import Circle, Point
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.component import Component
-from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
-from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
-from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon
-from horizons.world.production.utilization import Utilization, FullUtilization, FieldUtilization
-from horizons.util.python.callback import Callback
+from horizons.component import Component
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
-from horizons.messaging import MineEmpty
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import PRODUCTION
+from horizons.messaging import AddStatusIcon, MineEmpty, RemoveStatusIcon
+from horizons.scheduler import Scheduler
+from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Circle, Point
+from horizons.world.production.production import Production, SingleUseProduction
+from horizons.world.production.productionline import ProductionLine
+from horizons.world.production.unitproduction import UnitProduction
+from horizons.world.production.utilization import FieldUtilization, FullUtilization, Utilization
+from horizons.world.status import DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus
+
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
@@ -57,6 +59,7 @@ class Producer(Component):
 	    'FullUtilization': FullUtilization
 	}
 
+	produces_resource = True
 	production_class = Production
 
 	# INIT
@@ -98,6 +101,8 @@ class Producer(Component):
 		self.__active = True
 		# Store whether or not the utilization level is currently ok
 		self.__utilization_ok = True
+		# Track if the producer is being removed
+		self.__removal_started = False
 
 		# BIG FAT NOTE: this has to be executed for all players for mp
 		# even if this building has no status icons
@@ -172,8 +177,7 @@ class Producer(Component):
 			if self.__utilization_ok:
 				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
 			else:
-				icon = ProductivityLowStatus(self.instance)
-				AddStatusIcon.broadcast(self, icon)
+				self._add_status_icon(ProductivityLowStatus(self.instance))
 
 	@property
 	def capacity_utilization(self):
@@ -272,6 +276,7 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
+		self.__removal_started = True
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
 			self.remove_production(production)
@@ -352,6 +357,10 @@ class Producer(Component):
 		self.instance._changed()
 		self.on_activity_changed(self.is_active())
 
+	def _add_status_icon(self, icon):
+		if not self.__removal_started:
+			AddStatusIcon.broadcast(self, icon)
+
 	def _update_decommissioned_icon(self):
 		"""Add or remove decommissioned icon."""
 		if not self.instance.has_status_icon:
@@ -362,8 +371,7 @@ class Producer(Component):
 			if self.__active:
 				RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
 			else:
-				icon = DecommissionedStatus(self.instance)
-				AddStatusIcon.broadcast(self, icon)
+				self._add_status_icon(DecommissionedStatus(self.instance))
 
 	def toggle_active(self, production=None):
 		if production is None:
@@ -393,7 +401,7 @@ class Producer(Component):
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
-				AddStatusIcon.broadcast(self, self._producer_status_icon)
+				self._add_status_icon(self._producer_status_icon)
 
 			if not full and hasattr(self, "_producer_status_icon"):
 				RemoveStatusIcon.broadcast(self, self.instance, InventoryFullStatus)
@@ -406,7 +414,7 @@ class Producer(Component):
 		return l
 
 	def __str__(self):
-		return "Producer(owner: " + str(self.instance) + ")"
+		return u'Producer(owner: ' + unicode(self.instance) + u')'
 
 	def get_production_progress(self):
 		"""Returns the current progress of the active production."""
@@ -547,9 +555,10 @@ class QueueProducer(Producer):
 		self.instance._changed()
 
 
-class UnitProducer(QueueProducer):
+class ShipProducer(QueueProducer):
 	"""Uses queues to produce naval units"""
 
+	produces_resource = False
 	production_class = UnitProduction
 
 	def get_unit_production_queue(self):
@@ -560,13 +569,13 @@ class UnitProducer(QueueProducer):
 			prod_line = self.create_production_line(prod_line_id)
 			units = prod_line.unit_production.keys()
 			if len(units) > 1:
-				print 'WARNING: unit production system has been designed for 1 type per order'
+				print('WARNING: unit production system has been designed for 1 type per order')
 			queue.append(units[0])
 		return queue
 
 	def on_queue_element_finished(self, production):
 		self.__create_unit()
-		super(UnitProducer, self).on_queue_element_finished(production)
+		super(ShipProducer, self).on_queue_element_finished(production)
 
 	def __create_unit(self):
 		"""Create the produced unit now."""
@@ -576,9 +585,9 @@ class UnitProducer(QueueProducer):
 			self.on_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(amount):
-					self.__place_unit(unit)
+					self._place_unit(unit)
 
-	def __place_unit(self, unit):
+	def _place_unit(self, unit):
 		radius = 1
 		found_tile = False
 		# search for free water tile, and increase search radius if none is found
@@ -593,14 +602,36 @@ class UnitProducer(QueueProducer):
 					u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 					# Fire a message indicating that the ship has been created
 					name = u.get_component(NamedComponent).name
-					self.session.ingame_gui.message_widget.add(string_id='NEW_UNIT', point=point,
+					self.session.ingame_gui.message_widget.add(string_id='NEW_SHIP', point=point,
 					                                           message_dict={'name' : name})
 					found_tile = True
 					break
 			radius += 1
 
+class GroundUnitProducer(ShipProducer):
+	"""Uses queues to produce groundunits"""
+
+	produces_resource = False
+
+	def _place_unit(self, unit):
+		radius = 1
+		found_tile = False
+		while not found_tile:
+			# search for a free tile around the building
+			for tile in self.instance.island.get_surrounding_tiles(self.instance.position.center, radius):
+				point = Point(tile.x, tile.y)
+				if not (tile.is_water or tile.blocked) and (tile.x, tile.y) not in self.session.world.ground_unit_map:
+					u = CreateUnit(self.instance.owner.worldid, unit, tile.x, tile.y)(issuer=self.instance.owner)
+					# Fire a message indicating that the ship has been created
+					name = u.get_component(NamedComponent).name
+					self.session.ingame_gui.message_widget.add(string_id='NEW_SOLDIER', point=point,
+						                                   message_dict={'name' : name})
+					found_tile = True
+					break
+			radius += 1
 
 decorators.bind_all(Producer)
 decorators.bind_all(MineProducer)
 decorators.bind_all(QueueProducer)
-decorators.bind_all(UnitProducer)
+decorators.bind_all(ShipProducer)
+decorators.bind_all(GroundUnitProducer)

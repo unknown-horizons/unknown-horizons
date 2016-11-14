@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,17 +22,17 @@
 import weakref
 from collections import deque
 
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, COLLECTORS
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import BuildingCollectorPather, RoadPather
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import RadiusRect
 from horizons.util.worldobject import WorldObject
-from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
-from horizons.constants import COLLECTORS, BUILDINGS
-from horizons.scheduler import Scheduler
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.collectors.collector import Collector, JobList, Job
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.collectingcomponent import CollectingComponent
+from horizons.world.units.collectors.collector import Collector, Job, JobList
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class BuildingCollector(Collector):
@@ -44,7 +44,7 @@ class BuildingCollector(Collector):
 	Therefore, this class is not functional with home_building == None,
 	but basic facilities (esp. save/load) have to work.
 	"""
-	job_ordering = JobList.order_by.fewest_available_and_distance
+	job_ordering = JobList.order_by.fewest_available_and_distance # type: ignore
 	pather_class = BuildingCollectorPather
 
 	def __init__(self, home_building, **kwargs):
@@ -313,6 +313,13 @@ class BuildingCollector(Collector):
 		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
 			self._job_history.popleft()
 
+	def level_upgrade(self, lvl):
+		"""Upgrades collector to another tier"""
+		action_set = self.__class__.get_random_action_set(lvl, exact_level=True)
+		if action_set:
+			self._action_set_id = action_set
+			self.act(self._action, repeating=True)
+
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
@@ -320,14 +327,14 @@ class StorageCollector(BuildingCollector):
 	"""
 	pather_class = RoadPather
 	destination_always_in_building = True
-	job_ordering = JobList.order_by.for_storage_collector
+	job_ordering = JobList.order_by.for_storage_collector # type: ignore
 
 
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
-	job_ordering = JobList.order_by.random
+	job_ordering = JobList.order_by.random # type: ignore
 
 
 class SettlerCollector(StorageCollector):

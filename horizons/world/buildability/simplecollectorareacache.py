@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
+
 
 class SimpleCollectorAreaCache(object):
 	"""

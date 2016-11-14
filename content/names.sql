@@ -58,8 +58,8 @@ INSERT INTO "citynames" VALUES('Cap-Rouge',0,1,'en');
 INSERT INTO "citynames" VALUES('Charlesfort',0,1,'en');
 INSERT INTO "citynames" VALUES('Fort Caroline',0,1,'en');
 INSERT INTO "citynames" VALUES('Tadoussac',0,1,'en');
-INSERT INTO "citynames" VALUES('Fort SaINT Louis',0,1,'en');
-INSERT INTO "citynames" VALUES('SaINT-Domingue',0,1,'en');
+INSERT INTO "citynames" VALUES('Fort Saint Louis',0,1,'en');
+INSERT INTO "citynames" VALUES('Saint-Domingue',0,1,'en');
 INSERT INTO "citynames" VALUES('Marie-Galante',0,1,'en');
 INSERT INTO "citynames" VALUES('Martinique',0,1,'en');
 INSERT INTO "citynames" VALUES('St. Croix',0,1,'en');
@@ -89,11 +89,15 @@ INSERT INTO "citynames" VALUES('Port la Riqueza',1,0,'en');
 
 CREATE TABLE "groundunitnames" (
 	"name" TEXT NOT NULL,
+	"for_soldier" BOOL NOT NULL DEFAULT ('0'),
+	"for_inhabitant" BOOL NOT NULL DEFAULT ('0'),
 	"locale" TEXT NOT NULL DEFAULT ('en')
 );
-INSERT INTO "groundunitnames" VALUES('Robin Hood','en');
-INSERT INTO "groundunitnames" VALUES('Klaus Stoertebeker','de');
-INSERT INTO "groundunitnames" VALUES('Blackbeard','en');
+INSERT INTO "groundunitnames" VALUES('Robin Hood',1,0,'en');
+INSERT INTO "groundunitnames" VALUES('Klaus Stoertebeker',1,0,'de');
+INSERT INTO "groundunitnames" VALUES('Blackbeard',1,0,'en');
+INSERT INTO "groundunitnames" VALUES('Aelfwine Sawyer',0,1,'en');
+INSERT INTO "groundunitnames" VALUES('Osbert Skelton',0,1,'en');
 
 CREATE TABLE "shipnames" (
 	"name" TEXT NOT NULL,
@@ -133,7 +137,7 @@ INSERT INTO "shipnames" VALUES('Essex',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Cibus',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Artis',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Adventure',1,0,0,0,'en');
-INSERT INTO "shipnames" VALUES('INTerceptor',1,0,0,0,'en');
+INSERT INTO "shipnames" VALUES('Interceptor',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Enterprise',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Mayflower',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Beagle',1,0,0,0,'en');
@@ -142,7 +146,7 @@ INSERT INTO "shipnames" VALUES('Blue Tulip',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Swan of Amsterdam',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Flying Molly',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Albertros',0,0,1,0,'en');
-INSERT INTO "shipnames" VALUES('SaINT Peter',0,0,1,0,'en');
+INSERT INTO "shipnames" VALUES('Saint Peter',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Neptune',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Poseidon',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Triton',0,0,1,0,'en');
@@ -155,7 +159,7 @@ INSERT INTO "shipnames" VALUES('Resolution',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Santa Barbara',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Santa Maria',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Gallega',1,0,0,1,'en');
-INSERT INTO "shipnames" VALUES('PINTa',1,0,0,1,'en');
+INSERT INTO "shipnames" VALUES('Pinta',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Santa Clara',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Pietro Gonzale',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Erasmo',0,0,0,1,'en');
@@ -287,3 +291,17 @@ INSERT INTO "shipnames" VALUES('Swift',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Tower',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Wave',1,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('William',1,0,1,1,'en');
+
+CREATE TABLE "ainames" (
+	"name" TEXT NOT NULL,
+	"locale" TEXT
+);
+INSERT INTO "ainames" VALUES("Christopher Columbus", NULL);
+INSERT INTO "ainames" VALUES("William Adams", NULL);
+INSERT INTO "ainames" VALUES("Vitus Bering", NULL);
+INSERT INTO "ainames" VALUES("John Smith", NULL);
+INSERT INTO "ainames" VALUES("Paulo da Gama", NULL);
+INSERT INTO "ainames" VALUES("Ferdinand Magellan", NULL);
+INSERT INTO "ainames" VALUES("Anna Shchetinina", NULL);
+INSERT INTO "ainames" VALUES("John M. Whitall", NULL);
+INSERT INTO "ainames" VALUES("Leif Eriksson", NULL);

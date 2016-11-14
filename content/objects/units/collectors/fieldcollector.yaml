@@ -1,5 +1,5 @@
 baseclass: collectors.FieldCollector
-id: 1000009
+id: UNITS.FIELD_COLLECTOR
 name: FieldCollector
 radius: 5
 velocity: 12.0

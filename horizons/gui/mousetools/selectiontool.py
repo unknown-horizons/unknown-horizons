@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,11 +24,11 @@ import traceback
 from fife import fife
 
 from horizons.command.unit import Act
-from horizons.util.worldobject import WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class SelectionTool(NavigationTool):
 	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important
@@ -145,7 +145,7 @@ class SelectionTool(NavigationTool):
 		if self.session.world.health_visible_for_all_health_instances:
 			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
-		if len(selected) == 0:
+		if not selected:
 			return
 		if len(selected) == 1:
 			iter(selected).next().get_component(SelectableComponent).show_menu()

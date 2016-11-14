@@ -1,0 +1,29 @@
+id: BUILDINGS.STONE_DEPOSIT
+name: _ Stone Deposit
+baseclass: nature.ResourceDeposit
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: null
+tier: TIER.NATURE
+buildingcosts: {}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ResourceDepositOverviewTab,]
+    enemy_tabs: [ResourceDepositOverviewTab,]
+- HealthComponent: {maxhealth: 10}
+- DepositComponent:
+    resources:
+      RES.STONE_DEPOSIT:
+        min_amount: 750
+        max_amount: 1250
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.STONE_DEPOSIT: 1000000}
+actionsets:
+  TIER.NATURE:
+    as_stonedeposit0:

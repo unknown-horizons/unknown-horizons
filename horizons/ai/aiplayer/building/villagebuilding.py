@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,23 +22,21 @@
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import BUILDINGS, RES
+from horizons.entities import Entities
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
-from horizons.entities import Entities
+
 
 class AbstractVillageBuilding(AbstractBuilding):
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.FAITH:
-			return BUILDING_PURPOSE.PAVILION
-		elif resource_id == RES.EDUCATION:
-			return BUILDING_PURPOSE.VILLAGE_SCHOOL
-		elif resource_id == RES.GET_TOGETHER:
-			return BUILDING_PURPOSE.TAVERN
-		elif resource_id == RES.COMMUNITY:
-			return BUILDING_PURPOSE.MAIN_SQUARE
-		return None
+		return {
+			RES.FAITH:        BUILDING_PURPOSE.PAVILION,
+			RES.EDUCATION:    BUILDING_PURPOSE.VILLAGE_SCHOOL,
+			RES.GET_TOGETHER: BUILDING_PURPOSE.TAVERN,
+			RES.COMMUNITY:    BUILDING_PURPOSE.MAIN_SQUARE,
+		}.get(resource_id)
 
 	def in_settlement(self, settlement_manager, position):
 		for coords in position.tuple_iter():

@@ -1,6 +1,6 @@
-id: 53
+id: BUILDINGS.BARRACKS
 name: _ Barracks
-baseclass: production.ProductionBuilding
+baseclass: unitproduction.Barracks
 radius: 6
 cost: 25
 cost_inactive: 10
@@ -8,27 +8,32 @@ size_x: 3
 size_y: 3
 inhabitants: 6
 tooltip_text: _ Recruits units suitable for ground combat.
-settler_level: TIER.SETTLERS
+tier: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 6, RES.TOOLS: 4, RES.BRICKS: 8}
-
-#for now and until proper unit production lines exist, don't show the low productivity status icon
-show_status_icons: false
-
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab]
+    tabs: [BarracksTab, BarracksSwordmanTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- UnitProducerComponent:
+- GroundUnitProducerComponent:
     productionlines:
-      0:
+      SCOUT:
+        produces:
         consumes:
-        - [RES.GOLD, -1]
+        - [RES.GOLD, -500]
+        - [RES.SWORD, -1]
+        time: 60
+      1062345232:
+        produces:
+        - [UNITS.SWORDSMAN, 1]
+        consumes:
+        - [RES.GOLD, -500]
+        - [RES.SWORD, -1]
         time: 60
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.TEXTILE: 12}
+        slot_sizes: {RES.SWORD: 5}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

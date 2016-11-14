@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ from fife.extensions.pychan import widgets
 
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
+
 
 class PlayersOverview(StatsWidget):
 	"""Widget that shows the scores of every player in the game."""

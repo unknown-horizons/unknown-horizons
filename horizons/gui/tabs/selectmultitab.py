@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,17 +24,17 @@ from collections import defaultdict
 
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.util.python.callback import Callback
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.util import load_uh_widget
-from horizons.i18n import _lazy
-from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
-from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.constants import UNITS
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.util import load_uh_widget
+from horizons.i18n import gettext_lazy as LazyT
+from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
 
 
 class SelectMultiTab(TabInterface):
@@ -43,7 +43,7 @@ class SelectMultiTab(TabInterface):
 	"""
 	widget = 'overview_select_multi.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
-	helptext = _lazy("Selected Units")
+	helptext = LazyT("Selected Units")
 
 	max_row_entry_number = 3
 	max_column_entry_number = 4
@@ -133,8 +133,7 @@ class SelectMultiTab(TabInterface):
 			self.stance_unit_number -= 1
 
 		self.instances.remove(instance)
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 
 		if self.widget.isVisible():
 			if len(self.instances) < 2:
@@ -200,7 +199,7 @@ class UnitEntry(object):
 		i = instances[0]
 		if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 			# A building. Generate dynamic thumbnail from its action set.
-			imgs = ActionSetLoader.get_sets()[i._action_set_id].items()[0][1]
+			imgs = ActionSetLoader.get_set(i._action_set_id).items()[0][1]
 			thumbnail = imgs[45].keys()[0]
 		else:
 			# Units use manually created thumbnails because those need to be
@@ -231,8 +230,7 @@ class UnitEntry(object):
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 		health_component = instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
@@ -257,8 +255,7 @@ class UnitEntry(object):
 		Clears all the listeners in instances
 		"""
 		for instance in self.instances:
-			if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-				instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+			instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 			health_component = instance.get_component(HealthComponent)
 			if health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.remove_damage_dealt_listener(self.draw_health)

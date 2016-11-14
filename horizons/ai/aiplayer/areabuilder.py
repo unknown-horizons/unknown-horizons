@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,13 +24,14 @@ import logging
 from collections import deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
-from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
 from horizons.constants import BUILDINGS
+from horizons.entities import Entities
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.worldobject import WorldObject
-from horizons.entities import Entities
+
 
 class AreaBuilder(WorldObject):
 	"""A class governing the use of a specific type of area of a settlement."""
@@ -70,7 +71,8 @@ class AreaBuilder(WorldObject):
 					yield self.island.get_tile_tuple(coords)
 
 	def iter_possible_road_coords(self, rect, blocked_rect):
-		"""Iterate over the possible road tiles that share a side with the given Rect and are not in the blocked Rect."""
+		"""Iterate over the possible road tiles that share a side with
+		the given Rect and are not in the blocked Rect."""
 		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
 		for tile in self.iter_neighbor_tiles(rect):
 			if tile is None:
@@ -83,8 +85,7 @@ class AreaBuilder(WorldObject):
 
 	@classmethod
 	def __fill_distance(cls, distance, nodes):
-		"""
-		Fill the distance dict with the shortest distance from the starting nodes.
+		"""Fill the distance dict with the shortest distance from the starting nodes.
 
 		@param distance: {(x, y): distance, ...}
 		@param nodes: {(x, y): penalty, ...}
@@ -102,7 +103,8 @@ class AreaBuilder(WorldObject):
 					queue.append((coords2, dist + 1))
 
 	def get_path_nodes(self):
-		"""Return a dict {(x, y): penalty, ...} of current and possible future road tiles in the settlement."""
+		"""Return a dict {(x, y): penalty, ...}
+		of current and possible future road tiles in the settlement."""
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		nodes = {} # {(x, y): penalty, ...}
@@ -158,7 +160,8 @@ class AreaBuilder(WorldObject):
 		return nodes
 
 	def _get_road_to_builder(self, builder):
-		"""Return a path from the builder to a building with general collectors (None if impossible)."""
+		"""Return a path from the builder to a building with general
+		collectors (None if impossible)."""
 		loading_area = builder.get_loading_area()
 		collector_coords = set()
 		for building in self.collector_buildings:
@@ -174,7 +177,7 @@ class AreaBuilder(WorldObject):
 			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(collector_coords, destination_coords):
 				return None
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
+		blocked_coords = {coords for coords in builder.position.tuple_iter()}.union(self.land_manager.coastline)
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
 		                                loading_area.right + 1, loading_area.bottom + 1)
 
@@ -182,7 +185,8 @@ class AreaBuilder(WorldObject):
 			destination_coords, beacon, self.get_path_nodes(), blocked_coords=blocked_coords)
 
 	def build_road(self, path):
-		"""Build the road given a valid path or None. Return True if it worked, False if the path was None."""
+		"""Build the road given a valid path or None.
+		Return True if it worked, False if the path was None."""
 		if path is not None:
 			for x, y in path:
 				self.register_change_list([(x, y)], BUILDING_PURPOSE.ROAD, None)
@@ -193,7 +197,9 @@ class AreaBuilder(WorldObject):
 		return path is not None
 
 	def build_road_connection(self, builder):
-		"""Build a road connecting the builder to a building with general collectors. Return True if it worked, False if the path was None."""
+		"""Build a road connecting the builder to a building with general collectors.
+
+		Return True if it worked, False if the path was None."""
 		path = self._get_road_to_builder(builder)
 		return self.build_road(path)
 
@@ -215,8 +221,7 @@ class AreaBuilder(WorldObject):
 		return costs
 
 	def get_road_connection_cost(self, builder):
-		"""
-		Return the cost of building a road from the builder to a building with general collectors.
+		"""Return the cost of building a road from the builder to a building with general collectors.
 
 		The returned format is {resource_id: amount, ...} if it is possible to build a road and None otherwise.
 		"""
@@ -227,8 +232,8 @@ class AreaBuilder(WorldObject):
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
 
 	def build_best_option(self, options, purpose):
-		"""
-		Try to build the highest valued option. Return a BUILD_RESULT constant showing how it went.
+		"""Try to build the highest valued option.
+		Return a BUILD_RESULT constant showing how it went.
 
 		@param options: [(value, builder), ...]
 		@param purpose: a BUILDING_PURPOSE constant
@@ -252,11 +257,10 @@ class AreaBuilder(WorldObject):
 		return BUILD_RESULT.OK
 
 	def extend_settlement(self, position):
-		"""Build a tent or a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		result = self.settlement_manager.village_builder.extend_settlement_with_tent(position)
-		if result != BUILD_RESULT.OK:
-			result = self.settlement_manager.production_builder.extend_settlement_with_storage(position)
-		return result
+		"""Build a storage to extend the settlement towards the given position.
+
+		Return a BUILD_RESULT constant."""
+		return self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""

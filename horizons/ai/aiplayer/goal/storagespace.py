@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +20,10 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from horizons.util.python import decorators
-from horizons.constants import RES
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES
+from horizons.util.python import decorators
+
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 	def get_personality_name(self):

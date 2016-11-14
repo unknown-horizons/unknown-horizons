@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,21 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import operator
+from __future__ import print_function
+
 import logging
+import operator
 from collections import namedtuple
 
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.restrictedpickup import RestrictedPickup
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import COLLECTORS
+from horizons.ext.enum import Enum
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
-from horizons.constants import COLLECTORS
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.restrictedpickup import RestrictedPickup
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 class Collector(Unit):
 	"""Base class for every collector. Does not depend on any home building.
@@ -285,8 +288,8 @@ class Collector(Unit):
 		inventory = self.get_home_inventory()
 
 		# check if there are resources left to pickup
-		home_inventory_free_space = inventory.get_limit(res) - \
-		                        (total_registered_amount_consumer + inventory[res])
+		home_inventory_free_space = inventory.get_free_space_for(res) \
+		                            - total_registered_amount_consumer
 		if home_inventory_free_space <= 0:
 			#self.log.debug("nojob: no home inventory space")
 			return None
@@ -510,15 +513,17 @@ class JobList(list):
 		# choose actual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
-			self.sort_jobs = self._sort_jobs_amount
-			print 'WARNING: invalid job order: ', job_order
+			self._selected_sort_jobs = self._sort_jobs_amount
+			print('WARNING: invalid job order: ', job_order)
 		else:
-			self.sort_jobs = getattr(self, sort_fun_name)
+			self._selected_sort_jobs = getattr(self, sort_fun_name)
 
-	def sort_jobs(self, obj):
-		"""Call this to sort jobs"""
-		# (this is overwritten in __init__)
-		raise NotImplementedError
+	def sort_jobs(self):
+		"""Call this to sort jobs.
+
+		The function to call is decided in `__init__`.
+		"""
+		self._selected_sort_jobs()
 
 	def _sort_jobs_random(self):
 		"""Sorts jobs randomly"""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,9 +22,9 @@
 import logging
 
 from horizons.ai.generic import GenericAI
-from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.command.unit import CreateUnit
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import BUILDINGS, TRADER, UNITS
 from horizons.ext.enum import Enum
 from horizons.messaging import NewSettlement
 from horizons.scheduler import Scheduler
@@ -32,7 +32,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class Trader(GenericAI):
@@ -52,7 +52,10 @@ class Trader(GenericAI):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)
 		self.__init()
-		self.create_ship()
+		map_size = self.session.world.map_dimensions.width
+		while map_size > 0:
+			self.create_ship()
+			map_size -= TRADER.TILES_PER_TRADER
 
 	def create_ship(self):
 		"""Create a ship and place it randomly"""
@@ -63,14 +66,14 @@ class Trader(GenericAI):
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
 	def __init(self):
-		self.office = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
+		self.warehouse = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
 		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
 
 		NewSettlement.subscribe(self._on_new_settlement)
 
 	def _on_new_settlement(self, msg):
-		# make sure there's a trader ship for 2 settlements
-		if len(self.session.world.settlements) > self.get_ship_count() * 2:
+		# make sure there's a trader ship for SETTLEMENTS_PER_SHIP settlements
+		if len(self.session.world.settlements) > self.get_ship_count() * TRADER.SETTLEMENTS_PER_SHIP:
 			self.create_ship()
 
 	def save(self, db):
@@ -95,7 +98,7 @@ class Trader(GenericAI):
 				assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
 				remaining_ticks = max(calls.values()[0], 1)
 
-			targeted_warehouse = None if ship.worldid not in self.office else self.office[ship.worldid].worldid
+			targeted_warehouse = None if ship.worldid not in self.warehouse else self.warehouse[ship.worldid].worldid
 
 			# put them in the database
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_warehouse) \
@@ -120,7 +123,7 @@ class Trader(GenericAI):
 			elif state == self.shipStates.moving_to_warehouse:
 				ship.add_move_callback(Callback(self.reached_warehouse, ship))
 				assert targeted_warehouse is not None
-				self.office[ship.worldid] = WorldObject.get_object_by_id(targeted_warehouse)
+				self.warehouse[ship.worldid] = WorldObject.get_object_by_id(targeted_warehouse)
 			elif state == self.shipStates.reached_warehouse:
 				assert remaining_ticks is not None
 				Scheduler().add_new_object(
@@ -181,11 +184,11 @@ class Trader(GenericAI):
 			self.send_ship_random(ship)
 		else: # select a warehouse
 			if warehouse is None:
-				self.office[ship.worldid] = self.session.random.choice(warehouses)
+				self.warehouse[ship.worldid] = self.session.random.choice(warehouses)
 			else:
-				self.office[ship.worldid] = warehouse
+				self.warehouse[ship.worldid] = warehouse
 			try: # try to find a possible position near the warehouse
-				ship.move(Circle(self.office[ship.worldid].position.center, ship.radius), Callback(self.reached_warehouse, ship))
+				ship.move(Circle(self.warehouse[ship.worldid].position.center, ship.radius), Callback(self.reached_warehouse, ship))
 				self.ships[ship] = self.shipStates.moving_to_warehouse
 			except MoveNotPossible:
 				self.send_ship_random(ship)
@@ -199,7 +202,7 @@ class Trader(GenericAI):
 		Sell demanded res, buy offered res, simulate load/unload, continue route.
 		@param ship: ship instance"""
 		self.log.debug("Trader %s ship %s: reached warehouse", self.worldid, ship.worldid)
-		settlement = self.office[ship.worldid].settlement
+		settlement = self.warehouse[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		trade_comp = settlement.get_component(TradePostComponent)
 		for res in sorted(trade_comp.buy_list.iterkeys()): # check for resources that the settlement wants to buy
@@ -225,7 +228,7 @@ class Trader(GenericAI):
 				if trade_successful:
 					break
 
-		del self.office[ship.worldid]
+		del self.warehouse[ship.worldid]
 		# wait a few seconds before going on to simulate loading/unloading process
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self,
 		                           Scheduler().get_ticks(TRADER.TRADING_DURATION))

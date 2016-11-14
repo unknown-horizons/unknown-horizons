@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,8 @@
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
-from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_reached
+from tests.gui.scenarios.helper import assert_defeat, assert_goal_reached, assert_win
+
 
 # Example tests
 
@@ -51,18 +52,18 @@ def test_mission1(gui):
 
 	# Build warehouse
 	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 	gui.cursor_click(10, 5, 'left')
 	assert_goal_reached(gui, 'warehouse')
 
 	# Build main square
-	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_02')
+	gui.trigger('mainhud/build')
+	gui.trigger('tab/button_02')
 	gui.cursor_click(9, 11, 'left')
 	assert_goal_reached(gui, 'mainsquare')
 
 	# Build fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('tab/button_23')
 	gui.cursor_click(7, 7, 'left')
 
 	assert_win(gui)

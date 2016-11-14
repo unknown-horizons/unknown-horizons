@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,9 +23,10 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.entities import Entities
 from horizons.constants import BUILDINGS
+from horizons.entities import Entities
 from horizons.util.python import decorators
+
 
 class AbstractCharcoalBurner(AbstractBuilding):
 	@property
@@ -48,7 +49,7 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('CharcoalBurnerEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius * personality.distance_penalty
 
-		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.IRON_MINE)
+		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.MINE)
 		distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.LUMBERJACK)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 

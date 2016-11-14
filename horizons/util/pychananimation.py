@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ import os.path
 import re
 
 from horizons.extscheduler import ExtScheduler
+
 
 class PychanAnimation(object):
 	"""Displays images in short succession in a pychan icon."""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command import Command, GenericCommand
 from horizons.entities import Entities
-from horizons.util.worldobject import WorldObject
-from horizons.command import GenericCommand, Command
-from horizons.util.worldobject import WorldObjectNotFound
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
@@ -66,6 +66,16 @@ class RemoveUnit(GenericUnitCommand):
 		super(RemoveUnit, self).__init__(unit, "remove")
 
 GenericCommand.allow_network(RemoveUnit)
+
+class CreateRoute(GenericUnitCommand):
+	"""Command class that moves a unit.
+	@param unit: Instance of Unit
+	@param x, y: float coordinates where the unit is to be moved.
+	"""
+	def __init__(self, unit):
+		super(CreateRoute, self).__init__(unit, "create_route")
+
+GenericCommand.allow_network(CreateRoute)
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.

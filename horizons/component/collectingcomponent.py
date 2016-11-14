@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +20,10 @@
 # ###################################################
 
 
-from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons import entities
 from horizons.component import Component
+from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
+
 
 class CollectingComponent(Component):
 	"""The CollectingBuilding class represents a object that uses collectors
@@ -73,6 +74,8 @@ class CollectingComponent(Component):
 				collector.remove()
 			else:
 				collector.decouple_from_home_building()
+				#TODO remove the remove call() #2123
+				collector.remove()
 		assert not [c for c in self.__collectors]
 		super(CollectingComponent, self).remove()
 		self.__collectors = None

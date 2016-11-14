@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 
 import horizons.globals
-
 from horizons.command.misc import Chat
 from horizons.command.uioptions import RenameObject
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -29,9 +28,10 @@ from horizons.component.namedcomponent import NamedComponent, SettlementNameComp
 from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.gui.windows import Dialog
-from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
+from horizons.i18n import gettext as T
+from horizons.messaging import HoverSettlementChanged, ResourceBarResize, SettlerInhabitantsChanged
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 
@@ -105,6 +105,7 @@ class CityInfo(object):
 	def __init__(self, ingame_gui):
 		self._ingame_gui = ingame_gui
 		self._widget = load_uh_widget('city_info.xml', 'resource_bar')
+		self._widget.adaptLayout()
 		self._child_finder = PychanChildFinder(self._widget)
 
 		self._settlement = None
@@ -125,31 +126,21 @@ class CityInfo(object):
 
 		Show/Hide is handled automatically
 		"""
-		old_was_player_settlement = False
 		if self._settlement:
 			self._settlement.remove_change_listener(self._update_settlement)
-			old_was_player_settlement = self._settlement.owner.is_local_player
 
 		self._settlement = settlement
 
 		if not settlement:
-			# we want to hide the widget now (but perhaps delayed).
-			if old_was_player_settlement:
-				# After scrolling away from settlement, leave name on screen for some
-				# seconds. Players can still click on it to rename the settlement now.
-				ExtScheduler().add_new_object(self.hide, self,
-				      run_in=GUI.CITYINFO_UPDATE_DELAY)
-				#TODO 'click to rename' tooltip of cityinfo can stay visible in
-				# certain cases if cityinfo gets hidden in tooltip delay buffer.
-			else:
-				# hovered settlement of other player, simply hide the widget
-				self.hide()
-
+			# Hide the widget (after some seconds).
+			# Delayed to allow players scrolling away to click on the widget.
+			# This often happens when moving mouse up from island to reach it.
+			ExtScheduler().add_new_object(self.hide, self, run_in=GUI.CITYINFO_UPDATE_DELAY)
 		else:
-			# do not hide if settlement is hovered and a hide was previously scheduled
+			# Cancel previously scheduled hide if a settlement is hovered again.
 			ExtScheduler().rem_call(self, self.hide)
 
-			self._update_settlement() # calls show()
+			self._update_settlement()  # This calls show()!
 			settlement.add_change_listener(self._update_settlement)
 
 	def _on_settler_inhabitant_change(self, message):
@@ -166,7 +157,7 @@ class CityInfo(object):
 			# is setup correctly for the coming calculations
 			self._ingame_gui.resource_overview.set_inventory_instance(self._settlement)
 			cb = Callback(self._ingame_gui.show_change_name_dialog, self._settlement)
-			helptext = _("Click to change the name of your settlement")
+			helptext = T("Click to change the name of your settlement")
 			city_name_label.enable_cursor_change_on_hover()
 		else: # no name changes
 			cb = lambda: AmbientSoundComponent.play_special('error')

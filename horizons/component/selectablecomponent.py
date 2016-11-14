@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,17 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import copy
 import itertools
 import operator
 
-import horizons.globals
+from fife import fife
 
+import horizons.globals
 from horizons.component import Component
+from horizons.constants import GFX, LAYERS, RES
 from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
-from horizons.constants import GFX, LAYERS, RES
+
 
 class SelectableComponent(Component):
 	"""Stuff you can select.
@@ -54,10 +55,10 @@ class SelectableComponent(Component):
 		TYPES = { 'building' : SelectableBuildingComponent,
 		          'unit'     : SelectableUnitComponent,
 		          'ship'     : SelectableShipComponent,
-		          'fisher' 	 : SelectableFisherComponent, }
+		          'fisher'   : SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
-		return TYPES[ t ]( **arguments )
+		return TYPES[t](**arguments)
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None):
 		super(SelectableComponent, self).__init__()
@@ -332,13 +333,13 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
-		if self._selected:
-			super(SelectableUnitComponent, self).deselect()
-			self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
-			self.instance.draw_health(remove_only=True)
-			# this is necessary to make deselect idempotent
-			if self.session.view.has_change_listener(self.instance.draw_health):
-				self.session.view.remove_change_listener(self.instance.draw_health)
+		if not self._selected:
+			return
+		super(SelectableUnitComponent, self).deselect()
+		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
+		self.instance.draw_health(remove_only=True)
+		# this is necessary to make deselect idempotent
+		self.session.view.discard_change_listener(self.instance.draw_health)
 
 
 class SelectableShipComponent(SelectableUnitComponent):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,19 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ext.typing import Tuple
 from horizons.messaging.messagebus import MessageBus
+from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
 
 class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
-	send through the MessageBus has to subclass this base class, to ensure proper
+	sent through the MessageBus has to subclass this base class, to ensure proper
 	setting of base attributes and inheriting the interface.
 
 	The first argument in each message is always a reference to the sender,
 	additional expected arguments are defined on the class-level attribute `arguments`,
 	these will be stored on the instance.
 	"""
-	arguments = tuple()
+	arguments = tuple() # type: Tuple[str, ...]
+	bus = MessageBus
 
 	def __init__(self, sender, *args):
 		self.sender = sender
@@ -60,9 +63,9 @@ class Message(object):
 			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
 		"""
 		if sender:
-			MessageBus().subscribe_locally(cls, sender, callback)
+			cls.bus().subscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().subscribe_globally(cls, callback)
+			cls.bus().subscribe_globally(cls, callback)
 
 	@classmethod
 	def unsubscribe(cls, callback, sender=None):
@@ -85,16 +88,19 @@ class Message(object):
 			>>> MessageClass.broadcast('sender')
 		"""
 		if sender:
-			MessageBus().unsubscribe_locally(cls, sender, callback)
+			cls.bus().unsubscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().unsubscribe_globally(cls, callback)
+			cls.bus().unsubscribe_globally(cls, callback)
 
 	@classmethod
-	def discard(cls, callback):
+	def discard(cls, callback, sender=None):
 		"""Similar to `Message.unsubscribe`, but does not raise an error if the
 		callback has not been registered before.
 		"""
-		MessageBus().discard_globally(cls, callback)
+		if sender:
+			cls.bus().discard_locally(cls, sender, callback)
+		else:
+			cls.bus().discard_globally(cls, callback)
 
 	@classmethod
 	def broadcast(cls, *args):
@@ -110,10 +116,29 @@ class Message(object):
 
 			>>> Foo.broadcast('sender', 1, 2)
 		"""
-		MessageBus().broadcast(cls(*args))
+		cls.bus().broadcast(cls(*args))
 
 
-class AddStatusIcon(Message):
+class QueuingMessage(Message):
+	"""QueuingMessage class for the QueuingMessageBus. Every Message that is supposed to be
+	sent through the QueuingMessageBus has to subclass this subclass.
+	"""
+	bus = QueuingMessageBus
+
+	@classmethod
+	def clear(cls, *args):
+		"""Empty the message queue for this Message class
+		"""
+		cls.bus().clear(cls)
+
+	@classmethod
+	def queue_len(cls, *args):
+		"""Get the length the message queue for this Message class
+		"""
+		return cls.bus().queue_len(cls)
+
+
+class AddStatusIcon(QueuingMessage):
 	arguments = ('icon', )
 
 class RemoveStatusIcon(Message):
@@ -196,6 +221,14 @@ class GuiAction(Message):
 	"""Sent on events pychan classifies as "action"."""
 	pass
 
+class GuiCancelAction(Message):
+	"""Sent on events that originate from the cancelButton."""
+	pass
+
+class GuiHover(Message):
+	"""Sent on mouseEntered events"""
+	pass
+
 class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )
@@ -234,3 +267,11 @@ class MineEmpty(Message):
 class LoadingProgress(Message):
 	"""Sent when loading screen is updated with a new progress hint."""
 	arguments = ('stage', )
+
+class ZoomChanged(Message):
+	"""Sent when map zoom has changed."""
+	arguments = ('zoom', )
+
+class ActionChanged(Message):
+	"""Sent when a ConcreteObject changed its action"""
+	arguments = ('action', )

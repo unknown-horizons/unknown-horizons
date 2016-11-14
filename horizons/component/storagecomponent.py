@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,14 +23,13 @@ from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
 from horizons.world.storage import (
-	PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage,
-	SettlementStorage, PositiveTotalNumSlotsStorage,
-)
+	PositiveSizedSlotStorage, PositiveSizedSpecializedStorage, PositiveStorage,
+	PositiveTotalNumSlotsStorage, SettlementStorage)
 
 
 class StorageComponent(Component):
 	"""The StorageComponent class is used for everything that has an inventory.
-	
+
 	Examples for these classes are ships, settlements, buildings, etc.
 	Basically it just adds an inventory, nothing more, nothing less.
 	"""

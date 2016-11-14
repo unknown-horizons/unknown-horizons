@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2013-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -39,10 +39,10 @@ def translate_widget(untranslated, filename):
 	"""
 	global translated_widgets
 	if filename in translations.text_translations:
-		for entry in translations.text_translations[filename].iteritems():
-			widget = untranslated.findChild(name=entry[0][0])
+		for (element_name, attribute), translation in translations.text_translations[filename].iteritems():
+			widget = untranslated.findChild(name=element_name)
 			if widget is not None:
-				replace_attribute(widget, entry[0][1], entry[1])
+				replace_attribute(widget, attribute, translation)
 				widget.adaptLayout()
 	else:
 		log.debug('No translation key in i18n.guitranslations for file %s', filename)

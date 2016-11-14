@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,17 +21,15 @@
 
 import logging
 
-from horizons.scheduler import Scheduler
-
-from horizons.util.pathfinding.pather import SoldierPather
-from horizons.util.shapes import Point
-from horizons.util.worldobject import WorldObject
 from horizons.command.unit import CreateUnit
-from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job
-from horizons.constants import RES, WILD_ANIMAL
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, WILD_ANIMAL
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import SoldierPather
+from horizons.util.worldobject import WorldObject
 from horizons.world.resourcehandler import ResourceHandler
+from horizons.world.units.collectors import Collector, Job
+
 
 class Animal(ResourceHandler):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -134,7 +132,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.append(self)
 
 		resources = self.get_needed_resources()
-		assert resources == [RES.WILDANIMALFOOD] or resources == []
+		assert resources in [[RES.WILDANIMALFOOD], []]
 		self._required_resource_id = RES.WILDANIMALFOOD
 		self._building_index = self.home_island.get_building_index(self._required_resource_id)
 
@@ -207,20 +205,8 @@ class WildAnimal(CollectorAnimal, Collector):
 						job.path = path
 						return job
 
-		# NOTE: only use random job for now, see how it's working it
-		# it speeds up animal.search_job by a third (0.00321 -> 0.00231)
-		# and animal.get_job by 3/4 (0.00231 -> 0.00061)
+		# NOTE: use random job, works fine and is faster than looking for the best
 		return None
-
-		jobs = JobList(self, JobList.order_by.random)
-		# try all possible jobs
-		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(pos):
-			if self.check_possible_job_target(provider):
-				job = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if job is not None:
-					jobs.append(job)
-
-		return self.get_best_possible_job(jobs)
 
 	def check_possible_job_target(self, provider):
 		if provider.position.contains(self.position):
@@ -272,61 +258,3 @@ class WildAnimal(CollectorAnimal, Collector):
 	def __str__(self):
 		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),
 		                          getattr(self, 'health', None))
-
-
-class FarmAnimal(CollectorAnimal, BuildingCollector):
-	"""Animals that are bred and live in the surrounding area of a farm, such as sheep.
-	They have a home_building, representing their farm; they usually feed on whatever
-	the farm grows, and collectors from the farm can collect their produced resources.
-	"""
-	job_ordering = JobList.order_by.random
-
-	def __init__(self, home_building, start_hidden=False, **kwargs):
-		super(FarmAnimal, self).__init__(home_building=home_building,
-		                                 start_hidden=start_hidden, **kwargs)
-
-	def register_at_home_building(self, unregister=False):
-		if unregister:
-			self.home_building.animals.remove(self)
-		else:
-			self.home_building.animals.append(self)
-
-	def get_buildings_in_range(self, reslist=None):
-		# we are only allowed to pick up at our pasture
-		return [self.home_building]
-
-	def _get_random_positions_on_object(self, obj):
-		"""Returns a shuffled list of tuples, that are in obj, but not in self.position"""
-		coords = obj.position.get_coordinates()
-		my_position = self.position.to_tuple()
-		if my_position in coords:
-			coords.remove(my_position)
-		self.session.random.shuffle(coords)
-		return coords
-
-	def begin_current_job(self):
-		# we can only move on 1 building; simulate this by choosing a random location with
-		# the building
-		coords = self._get_random_positions_on_object(self.job.object)
-
-		# move to first walkable target coord we find
-		for coord in coords:
-			# job target is walkable, so at least one coord of it has to be
-			# so we can safely assume, that we will find a walkable coord
-			target_location = Point(*coord)
-			if self.check_move(target_location):
-				super(FarmAnimal, self).begin_current_job(job_location=target_location)
-				return
-		assert False
-
-	def handle_no_possible_job(self):
-		"""Walk around on field, search again, when we arrive"""
-		for coord in self._get_random_positions_on_object(self.home_building):
-			try:
-				self.move(Point(*coord), callback=self.search_job)
-				self.state = self.states.no_job_walking_randomly
-				return
-			except MoveNotPossible:
-				pass
-		# couldn't find location, so don't move
-		super(FarmAnimal, self).handle_no_possible_job()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,18 @@
 # ###################################################
 
 import math
-
 from collections import defaultdict
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.util.worldobject import WorldObject
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES, TRADER
-from horizons.command.uioptions import SetTradeSlot, ClearTradeSlot
+from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
+from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import BUILDINGS, RES, TRADER
+from horizons.util.python import decorators
+from horizons.util.worldobject import WorldObject
 from horizons.world.settlement import Settlement
+
 
 class ResourceManager(WorldObject):
 	"""

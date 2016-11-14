@@ -1,4 +1,4 @@
-id: 11
+id: BUILDINGS.FISHER
 name: _ Fisherman's Tent
 baseclass: production.Fisher
 radius: 16
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Fishes the sea, produces food.
-settler_level: TIER.SAILORS
+tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 3, RES.TOOLS: 1}
 components:
 - SelectableComponent:

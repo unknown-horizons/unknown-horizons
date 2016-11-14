@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,38 +20,39 @@
 # ###################################################
 
 import errno
+import json
+import logging
 import os
 import os.path
-import logging
-import json
-import traceback
 import time
+import traceback
 from random import Random
 
 import horizons.globals
 import horizons.main
-
 from horizons.ai.aiplayer import AIPlayer
-from horizons.gui.ingamegui import IngameGui
 from horizons.command.building import Tear
-from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
-from horizons.scheduler import Scheduler
-from horizons.extscheduler import ExtScheduler
-from horizons.view import View
-from horizons.world import World
-from horizons.entities import Entities
-from horizons.util.living import LivingObject, livingProperty
-from horizons.util.savegameaccessor import SavegameAccessor
-from horizons.util.worldobject import WorldObject
-from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableBuildingComponent
+from horizons.constants import GAME_SPEED
+from horizons.entities import Entities
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.ingamegui import IngameGui
+from horizons.i18n import gettext as T
+from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED
-from horizons.messaging import SettingChanged, MessageBus, SpeedChanged, LoadingProgress
+from horizons.scheduler import Scheduler
+from horizons.util.dbreader import DbReader
+from horizons.util.living import LivingObject, livingProperty
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.util.worldobject import WorldObject
+from horizons.view import View
+from horizons.world import World
+
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -96,6 +97,7 @@ class Session(LivingObject):
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True
+		self.paused_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
 		self._clear_caches()
 
@@ -114,7 +116,7 @@ class Session(LivingObject):
 
 		self.selected_instances = set()
 		# List of sets that holds the player assigned unit groups.
-		self.selection_groups = [set()] * 10
+		self.selection_groups = [set() for _unused in range(10)]
 
 		self._old_autosave_interval = None
 
@@ -394,19 +396,19 @@ class Session(LivingObject):
 
 			db = DbReader(savegame)
 		except IOError as e: # usually invalid filename
-			headline = _("Failed to create savegame file")
-			descr = _("There has been an error while creating your savegame file.")
-			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.ingame_gui.show_error_popup(headline, descr, advice, unicode(e))
+			headline = T("Failed to create savegame file")
+			descr = T("There has been an error while creating your savegame file.")
+			advice = T("This usually means that the savegame name contains unsupported special characters.")
+			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
 			# retry with new savegamename entered by the user
 			# (this must not happen with quicksave/autosave)
 			return self.save()
 		except OSError as e:
 			if e.errno != errno.EACCES:
 				raise
-			self.ingame_gui.show_error_popup(
-				_("Access is denied"),
-				_("The savegame file could be read-only or locked by another process.")
+			self.ingame_gui.open_error_popup(
+				T("Access is denied"),
+				T("The savegame file could be read-only or locked by another process.")
 			)
 			return self.save()
 

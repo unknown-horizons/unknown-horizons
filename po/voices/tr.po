@@ -113,22 +113,17 @@ msgid "Our ally settles on one of our islands."
 msgstr "İttifakımız adalarımızdan birine yerleşiyor."
 
 #. Resources - Construction material missing
-#| msgid "You need more $RES to build this."
 msgid "You need more resources to build this."
 msgstr "Bunu yapmanız için daha çok kaynağa ihtiyacınız var."
 
 #. Resources - Construction material missing
-#| msgid "This construction project needs more $RES."
 msgid "This construction project needs more resources."
 msgstr "Bu inşaat projesi daha fazla kaynak gerektiriyor."
 
 #. Resources - Construction material missing
-#| msgid "Construction is impossible without sufficient amounts of $RES."
 msgid "Construction is impossible without sufficient material."
 msgstr "İnşaatın kaynak miktarı yeterli oluncaya kadar yapılması imkansız."
 
 #. Resources - Construction material missing
-#| msgid ""
-#| "The amount of $RES in your inventory is not sufficient to build this."
 msgid "The resources in your inventory are not sufficient to build this."
 msgstr "Stoğunuzdaki kaynak miktarı, bunu yapacak kadar yeterli değil."

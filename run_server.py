@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ import sys
 
 from horizons import network
 from horizons.network.server import Server
+
 
 def fork():
 	try:
@@ -104,7 +105,7 @@ try:
 except (ValueError, IndexError):
 	port = 0
 
-if host == None or port == None or port <= 0:
+if host is None or port is None or port <= 0:
 	usage()
 	sys.exit(1)
 

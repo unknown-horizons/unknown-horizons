@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,18 +22,19 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.constants import GROUND
-from horizons.gui.mousetools import NavigationTool
-from horizons.util.shapes import Circle, Point
+from horizons.ext.typing import Tuple
 from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.shapes import Circle, Point
+
+from .navigationtool import NavigationTool
 
 
 class TileLayingTool(NavigationTool):
 	"""Tool to lay ground tiles."""
 	HIGHLIGHT_COLOR = (0, 200, 90)
 
-	tile_images = {}
+	tile_images = {} # type: Dict[Tuple[int, str, int], fife.SharedImagePointer]
 
 	def __init__(self, session, tile_details):
 		super(TileLayingTool, self).__init__(session)
@@ -105,6 +106,7 @@ class TileLayingTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			coords = self.get_world_location(evt).to_tuple()
 			self._place_tile(coords)
+			self.update_coloring(evt)
 			evt.consume()
 
 	def update_coloring(self, evt):

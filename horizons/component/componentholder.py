@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,21 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.component import Component
+from __future__ import print_function
 
+from horizons.component import Component
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.coloroverlaycomponent import ColorOverlayComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.depositcomponent import DepositComponent
+from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
-from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
+from horizons.component.namedcomponent import (
+	InhabitantNameComponent, NamedComponent, PirateShipNameComponent, SettlementNameComponent,
+	ShipNameComponent, SoldierNameComponent)
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
-
-from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
+from horizons.world.production.producer import (
+	GroundUnitProducer, Producer, QueueProducer, ShipProducer)
 
 
 class ComponentHolder(object):
@@ -65,11 +70,15 @@ class ComponentHolder(object):
 	    'AmbientSoundComponent': AmbientSoundComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
+	    'ColorOverlayComponent': ColorOverlayComponent,
 	    'DepositComponent': DepositComponent,
+	    'FieldBuilder': FieldBuilder,
 	    'HealthComponent': HealthComponent,
 	    'InventoryOverlayComponent': InventoryOverlayComponent,
 	    'NamedComponent': NamedComponent,
 	    'PirateShipNameComponent': PirateShipNameComponent,
+	    'SoldierNameComponent': SoldierNameComponent,
+	    'InhabitantNameComponent': InhabitantNameComponent,
 	    'ProducerComponent': Producer,
 	    'SettlementNameComponent': SettlementNameComponent,
 	    'ShipNameComponent': ShipNameComponent,
@@ -78,7 +87,8 @@ class ComponentHolder(object):
 	    'RestrictedPickup': RestrictedPickup,
 	    'SelectableComponent': SelectableComponent,
 	    'TradePostComponent': TradePostComponent,
-	    'UnitProducerComponent': UnitProducer,
+	    'ShipProducerComponent': ShipProducer,
+	    'GroundUnitProducerComponent': GroundUnitProducer,
 	}
 
 	def __init__(self, *args, **kwargs):
@@ -138,7 +148,7 @@ class ComponentHolder(object):
 			all components will have the init only with instance attribute
 		"""
 		if not isinstance(component, Component):
-			print component, type(component), component.__class__
+			print(component, type(component), component.__class__)
 		assert isinstance(component, Component)
 		component.instance = self
 		self.components[component.NAME] = component
@@ -172,4 +182,4 @@ class ComponentHolder(object):
 				for key, value in entry.iteritems():
 					if cls.class_mapping[key] == component or key == component:
 						return value
-		raise KeyError("This class does not contain a component with name: " + component.NAME)
+		raise KeyError("This class does not contain a component with name: {0}".format(component))

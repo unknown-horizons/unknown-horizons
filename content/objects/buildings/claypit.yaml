@@ -1,4 +1,4 @@
-id: 25
+id: BUILDINGS.CLAY_PIT
 name: _ Clay Pit
 baseclass: production.Mine
 radius: 0
@@ -8,7 +8,7 @@ size_x: 3
 size_y: 3
 inhabitants: 1
 tooltip_text: _ Gets clay from deposit.
-settler_level: TIER.PIONEERS
+tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
 components:
 - SelectableComponent:

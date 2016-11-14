@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import glob
 import json
 import logging
@@ -33,8 +35,8 @@ import traceback
 
 try:
 	import cPickle as pickle
-except:
-	import pickle
+except ImportError:
+	import pickle # type: ignore
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
 app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')
@@ -47,11 +49,15 @@ if os.path.exists(app_python_lib_path):
 try:
 	from PIL import Image
 except ImportError:
-	print 'The Python Imaging Library (PIL / Pillow) package is needed to run the atlas generator.'
+	# Logging is not set up at this point.
+	print('The Python Imaging Library (PIL / Pillow) package'
+	      ' is needed to run the atlas generator.')
 	sys.exit(1)
 
+# TODO We can probably remove the type ignore in the next release of typeshed/mypy
+#      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
 # make sure os.path.getmtime returns ints
-os.stat_float_times(False)
+os.stat_float_times(False) # type: ignore
 
 # make this script work both when started inside development and in the uh root dir
 if not os.path.exists('content'):
@@ -59,18 +65,18 @@ if not os.path.exists('content'):
 assert os.path.exists('content'), 'Content dir not found.'
 
 sys.path.append('.')
-from run_uh import init_environment
+from run_uh import init_environment # isort:skip
 init_environment(False)
 
 class DummyFife:
 	use_atlases = False
-import horizons.globals
-horizons.globals.fife = DummyFife()
+import horizons.globals # isort:skip
+horizons.globals.fife = DummyFife() # type: ignore
 
-from horizons.constants import PATHS
-from horizons.util.dbreader import DbReader
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.constants import PATHS # isort:skip
+from horizons.util.dbreader import DbReader # isort:skip
+from horizons.util.loaders.actionsetloader import ActionSetLoader # isort:skip
+from horizons.util.loaders.tilesetloader import TileSetLoader # isort:skip
 
 
 class AtlasEntry(object):
@@ -86,7 +92,7 @@ class AtlasBook(object):
 
 	def __init__(self, id, max_size):
 		self.id = id
-		self.path = os.path.join(PATHS.ATLAS_FILES_DIR, '%03d.png' % id)
+		self.path = os.path.join(PATHS.ATLAS_FILES_DIR, '{0:03d}.png'.format(id))
 		self.max_size = max_size
 		self._clear()
 
@@ -216,7 +222,8 @@ class AtlasGenerator(object):
 		with open(PATHS.ATLAS_DB_PATH, 'wb') as atlas_db_file:
 			atlas_db_file.write("CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
 			for book in self.books:
-				atlas_db_file.write("INSERT INTO atlas VALUES(%d, '%s');\n" % (book.id, book.path))
+				atlas_db_file.write("INSERT INTO atlas VALUES({0:d}, "
+					"'{1!s}');\n".format(book.id, book.path))
 
 		self._save_sets()
 		self._save_books(self.books)
@@ -248,7 +255,7 @@ class AtlasGenerator(object):
 		return paths
 
 	def recreate(self):
-		print 'Recreating all atlases'
+		print('Recreating all atlases')
 
 		self._init_sets()
 		paths = self._get_paths()
@@ -265,10 +272,10 @@ class AtlasGenerator(object):
 		self.save()
 
 	def _update_selected_books(self, update_books):
-		print 'Updating some of the atlases:'
+		print('Updating some of the atlases:')
 		for book in sorted(update_books, key=lambda book: int(book.id)):
-			print book.path
-		print
+			print(book.path)
+		print()
 
 		self._save_sets()
 		self._save_books(update_books)
@@ -352,7 +359,8 @@ class AtlasGenerator(object):
 
 		# verify that the combined images exist
 		db = DbReader(':memory:')
-		db.execute_script(open('content' + os.sep + 'atlas.sql').read())
+		with open('content' + os.sep + 'atlas.sql') as f:
+			db.execute_script(f.read())
 		for db_row in db("SELECT atlas_path FROM atlas"):
 			if not os.path.exists(db_row[0]):
 				return False
@@ -404,7 +412,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print 'Usage: python2 generate_atlases.py max_size'
+		print('Usage: python2 generate_atlases.py max_size')
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))

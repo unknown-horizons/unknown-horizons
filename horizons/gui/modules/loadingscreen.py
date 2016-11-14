@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,61 +24,72 @@ import random
 
 import horizons.globals
 from horizons.constants import TIER
-from horizons.i18n import _lazy
+from horizons.ext.speaklater import make_lazy_string
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.messaging import LoadingProgress
-
 
 # list of quotes and gameplay tips that are displayed while loading a game
 # NOTE: Try to use not more than 4 lines in a quote/gameplay tip !
 
 FUN_QUOTES = {
-	'name': _lazy("Quotes"),
+	'name': LazyT("Quotes"),
 	# Fun Quotes should not be translated...
 	'items': [
-		"beer, the cause and solution to all problems of humanity",
-		"trying is the first step t'wards failing. ",
-		"# nobody actually knows how the code below works. ",
-		"here be dragons",
-		"procrastination is the first step towards getting stuff done",
-		"patience is a virtue \n(barra)",
-		"you must really, really love to test \n(portal 2)",
-		"here be bugs",
-		"strength is the capacity to break a chocolate bar into four pieces with your bare hands - and then eat just one of the pieces",
-		"If one does not know to which port one is sailing, no wind is favorable",
-		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
+		"Beer, the cause and solution to all problems of humanity.",
+		"Trying is the first step t'wards failing.",
+		"# nobody actually knows how the code below works.",
+		"Here are dragons.",
+		"Procrastination is the first step towards getting stuff done.",
+		"Patience is a virtue. \n(barra)",
+		"You must really, really love to test. \n(portal 2)",
+		"Here are bugs.",
+		"Strength is the capacity to break a chocolate bar into four pieces with your bare hands - and then eat just one of the pieces.",
+		"If one does not know to which port one is sailing, no wind is favorable.",
+		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails.",
 		"Travel beyond the horizon and discover unknown worlds!",
-		u"War… war never changes",
+		u"War… war never changes.",
 		"Support Unknown Horizons with Cookies!",
-		"wow, looks nearly completed \n(Neomex)"
+		"Wow, looks nearly completed. \n(Neomex)",
+		"Anchor is missing ...",
+		"Campfire is lighted.",
+		"The fish was as large as the whole island.",
+		"Bugs are for your personal fun.",
+		"Your game is unique. Please wait.",
+		"Take it easy, the shore is near.",
+		"Come on, let's discover new land."
     ]
 }
 
 
 GAMEPLAY_TIPS = {
-	'name': _lazy("Gameplay Tips"),
+	'name': LazyT("Gameplay Tips"),
 	'items': [
-		_lazy("Press 'ESC' to access Game Menu."),
-		_lazy("Use 'SHIFT' to place multiple buildings."),
+		LazyT("Press 'ESC' to access Game Menu."),
+		LazyT("Use 'SHIFT' to place multiple buildings."),
 		#TODO: This tip should be removed when all tiers are playable!!
-		_lazy("Currently only the first {tier} tiers are playable.").format(
-				tier=TIER.CURRENT_MAX + 1),
-		_lazy("You can pause the game with 'P'."),
-		_lazy("You can drag roads by holding the left mouse button."),
-		_lazy("You can build multiple buildings by holding the 'SHIFT' key."),
-		_lazy("You can increase the happiness of your inhabitants by lowering the taxes."),
-		_lazy("Build fire stations and doctors to protect your inhabitants from fire and disease."),
-		_lazy("Build storage tents to increase your storage capacity."),
-		_lazy("Make sure every house is in range of a marketplace."),
-		_lazy("Press 'T' to make trees transparent.")
+		make_lazy_string(lambda: T("Currently only the first {tier} tiers are playable.").format(tier=TIER.CURRENT_MAX + 1)),
+		LazyT("You can pause the game with 'P'."),
+		LazyT("You can drag roads by holding the left mouse button."),
+		LazyT("You can build multiple buildings by holding the 'SHIFT' key."),
+		LazyT("You can increase the happiness of your inhabitants by lowering the taxes."),
+		LazyT("Build fire stations and doctors to protect your inhabitants from fire and disease."),
+		LazyT("Build storage tents to increase your storage capacity."),
+		LazyT("Make sure every house is in range of a marketplace."),
+		LazyT("Press 'T' to make trees transparent."),
+		LazyT("Build storage tents and lookouts to expand your settlement range."),
+		LazyT("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
+		LazyT("Make singleplayer more fun with additional computer players by increasing 'AI players' when starting a new game."),
+		LazyT("First steps are easier by looking at how AI players are setting up their settlement."),
+		LazyT("Want funny quotes only? Change the quote types shown here in the settings menu on the game page."),
+		LazyT("A marketplace links your buildings like a road.")
 	]
 }
 
 # This are the options you can select in the Settings what type of quotes should be
 # displayed during load
-# TODO Unfortunately these are not translated
-QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], "Mixed")
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], LazyT("Mixed"))
 
 
 def get_random_quote():
@@ -98,17 +109,17 @@ def get_random_quote():
 
 stage_text = {
 	# translators: these are descriptions of the current task while loading a game
-	'session_create_world': _lazy(u'Starting engine…'),
-	'session_index_fish': _lazy(u'Catching fish…'),
-	'session_load_gui': _lazy(u'Drawing user interface…'),
-	'session_finish': _lazy(u'Activating timer…'),
-	'load_objects': _lazy(u'Chomping game data…'),
-	'world_load_map': _lazy(u'Shaping islands…'),
-	'world_load_buildings': _lazy(u'Preparing blueprints…'),
-	'world_init_water': _lazy(u'Filling world with water…'),
-	'world_load_units': _lazy(u'Raising animals…'),
-	'world_setup_ai': _lazy(u'Convincing AI…'),
-	'world_load_stuff': _lazy(u'Burying treasures…'),
+	'session_create_world': LazyT(u'Starting engine…'),
+	'session_index_fish': LazyT(u'Catching fish…'),
+	'session_load_gui': LazyT(u'Drawing user interface…'),
+	'session_finish': LazyT(u'Activating timer…'),
+	'load_objects': LazyT(u'Chomping game data…'),
+	'world_load_map': LazyT(u'Shaping islands…'),
+	'world_load_buildings': LazyT(u'Preparing blueprints…'),
+	'world_init_water': LazyT(u'Filling world with water…'),
+	'world_load_units': LazyT(u'Raising animals…'),
+	'world_setup_ai': LazyT(u'Convincing AI…'),
+	'world_load_stuff': LazyT(u'Burying treasures…'),
 }
 
 
@@ -120,8 +131,67 @@ class LoadingScreen(Window):
 	total_steps = len(stage_text)
 
 	def __init__(self):
+		(width, height) = horizons.globals.fife.get_fife_setting('ScreenResolution').split('x')
+
+		res_width = int(width)
+		res_height = int(height)
+
+		center_width = (res_width // 2)
+		center_height = (res_height // 2)
+
+		loading_pos_width = (center_width - 125)
+		loading_pos_height = (center_height - 68)
+
+		quotearea_pos_width = 0
+		quotearea_pos_height = (res_height - 207)
+
+		loading_label_pos_width = (loading_pos_width + 25)
+		loading_label_pos_height = (loading_pos_height)
+
+		qotl_type_label_pos_width = (center_width - 50)
+		qotl_type_label_pos_height = (res_height - 100)
+
+		qotl_label_pos_width = (qotl_type_label_pos_width)
+		qotl_label_pos_height = (res_height - 80)
+
+		version_label_pos_width = (res_width - 150)
+		version_label_pos_height = (res_height - 100)
+
+		loading_stage_pos_width = 150
+		loading_stage_pos_height = (res_height - 80)
+
+		loading_progress_pos_width = (loading_label_pos_width)
+		loading_progress_pos_height = (loading_label_pos_height + 79)
+
 		self._widget = load_uh_widget('loadingscreen.xml')
 		self._widget.position_technique = "center:center"
+
+		loadingscreen = self._widget.findChild(name='loadingscreen')
+		loadingscreen.size = res_width, res_height
+
+		loading_image = self._widget.findChild(name='loading_image')
+		loading_image.position = loading_pos_width, loading_pos_height
+
+		quote_area = self._widget.findChild(name='quote_area')
+		quote_area.position = quotearea_pos_width, quotearea_pos_height
+
+		loading_label = self._widget.findChild(name='loading_label')
+		loading_label.position = loading_label_pos_width, loading_label_pos_height
+
+		qotl_type_label = self._widget.findChild(name='qotl_type_label')
+		qotl_type_label.position = qotl_type_label_pos_width, qotl_type_label_pos_height
+
+		qotl_label = self._widget.findChild(name='qotl_label')
+		qotl_label.position = qotl_label_pos_width, qotl_label_pos_height
+
+		version_label = self._widget.findChild(name='version_label')
+		version_label.position = version_label_pos_width, version_label_pos_height
+
+		loading_stage = self._widget.findChild(name='loading_stage')
+		loading_stage.position = loading_stage_pos_width, loading_stage_pos_height
+
+		loading_progress = self._widget.findChild(name='loading_progress')
+		loading_progress.position = loading_progress_pos_width, loading_progress_pos_height
 
 		self._current_step = 0
 

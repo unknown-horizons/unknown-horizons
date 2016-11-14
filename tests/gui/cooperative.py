@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import sys
-import traceback
 from collections import deque
 
 try:
 	import greenlet
 except ImportError:
-	print 'The greenlet package is needed to run the UH gui tests.'
+	print('The greenlet package is needed to run the UH gui tests.')
 	sys.exit(1)
 
 

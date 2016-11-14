@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,10 +20,11 @@
 # ###################################################
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.world.production.productionline import ProductionLine
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
+from horizons.world.production.productionline import ProductionLine
+
 
 class AbstractFakeResourceDeposit(AbstractBuilding):
 	def __init__(self, building_id, name, settler_level):

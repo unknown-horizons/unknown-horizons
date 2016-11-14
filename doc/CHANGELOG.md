@@ -1,31 +1,197 @@
 CHANGELOG Unknown Horizons
 ==========================
 
+| Release | Current savegame revision |
+|---|---|
+| 2016.1 | XX |
+| 2015.1 | 75 |
+| 2014.1 | 74 |
+| 2013.3 | 73 |
+| 2013.2 | 71 |
+| 2013.1 | 70 |
+| 2012.1a | 56 |
+| 2012.1 | 56 |
+| 2011.3 | 43 |
+| 2011.2 | 15 |
+| 2011.1a | 12 |
+| 2011.1 | 12 |
+| 2010.1 | 8 |
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2013-??-??: Milestone 2013.4
+2016-XX-XX: Milestone 2016.1
 ----------------------------
-changelog date: OCT 28
+changelog date: 9th Oct 2016
 
 ### Gameplay and Balancing
 
 New features
- - 
+ - #986  Add a button to discard all resources from a tradeship.
+ - #1821 gameplay tips
+ - #2353 Add a barrier building
+ 
+### Media Content
+
+Grafic:
+ - added winery
+ - added blender building
+ - added cocoafield
+ - replaced the discard icon on the trade ship widget
+ - replaced the load/unload icon on the trade ship widget
+ - added barracks
+ - added cannon foundry
+ - added cattlerun
+ - added brewery
+ - added pioneers and citizens warehouse graphics
+ - added hop field
+ - added citizens warehouse
+ - added new mainsquare for tier4
+ - added happiness resource icon
+ - added grass ressource icon
+ - added fire actionset and ressource icon
+ - added pigsty
+ - added pastry shop
+ - added stone pit ,stone deposit and stone mason
+ - added new sheep pasture
+ - replaced windmill grafic with new one
+ - replaced sailors tent grafic with new ones
+ - replaced pirate ship grafic with new one
+ - add new inhabitants for all tiers
+ - Icons: replaced alot placeholder icons
+ - added shiny new female gfx
+ - Animate fire of market place and tent1
+ - added second residential house for tier 3
+ - Changes to the main menu background grafics
+ - replaced settlers residential house with new one
+ - added third residential house for tier 3
+ - replaced brewery buildmenu icon (placeholder) with a new icon
+ - replaced grass tiles
+
+Sound:
+
+ - added menu sound from Ollo
+ - added market, smith, windmill, toolmaker and tavern sounds (Ollo)
+ 
+ 
+### User Interface
+
+Fixed bugs and usability problems
+ - 85d4ff4 Fix signal fire text being hidden for some longer translations.
+ - #2305 No message when reassigning the same key in the settings.
+ - small clean up on build menu
+ - #2373 Farm Second Tab line 3 not work correctly
+ - #2313 Button/Icon to represent discarding all resources currently loaded
+ 
+### Codebase
+
+New functionalities
+ - 85d0cb8 Travis build for unit tests
+ - menü sounds (Gladius1)
+ - #2434 Button to restart game after adjusting Settings when restart required?
+ - #986  Need a way to discard resources
+ 
+Modified structures
+ - 1761cef Add abstraction layer above boat builder tab. Preparation for general Unitproduction tabs.
+ - #2086 Only load savegames which have an higher revision than the related value stored in the constants.
+   Old behaviour was to load everything and hope it works.
+ - #2422 Avoid using `len(x)` to check if a list is empty
+ - #2403 classmethod should be called `cls` and not `self`
+ - #2401 change to the `.format()` function
+ - #2402 use `.format()` function and staticmethod
+ - #2398 Use contextmanager when opening a file
+ - #2346 Remove old sheep code
+ - #2314 Check which savegamerevisions are upgradeable
+ 
+Fixed crashes and inconsistencies and bugs
+ - 405c514 Use animationloader instead of imagemanager to retrieve images.
+   The imagemanager isn't necessarily aware of the files available as animations.
+ - #2308 Fix memory leak in the Tabwidget handling (pinkfloyda).
+ - #2306 Non-hotkey settings reset if not saved.
+ - #2263 Don't load savegame with nonexisting map file.
+ - #2349 Click on Main Square cause a crash
+ - #2350 Fixed bug where keyboard scrolling hanged from time to time
+ - #2352 Fix crash on missing thumbnails in unit queue
+ - #2388 Settler stages grafic´s dont show up ingame
+ - #2399 Allow different collector unit graphics per tier
+ - #2358 Game Crashes when i click on: Cancel game
+ - #2349 Click on Main Square cause a crash
+ - #2350 Fixed bug where keyboard scrolling hanged from time to time
+ - #2131 Overlay renders of brickyard production
+ - #2321 game crashes when you ally with one of the AIs
+ - #2315 Crash by clicking diplomacy button twice in a row
+ - #2318 fix issue #2315 to prevent double hide of current_tab of TabWidget
+ - #2316 Crash click at a ship
+ - #2086 Error with auto-upgrading pretty old savegame to rev 50: stance
+ - #2263 self-created map can't be played without the corresponding map file itself
+ - #2305 Setting the same keystroke should not show overwrite confirmation popup
+ - #2310 fix some select memory leak bugs, partly resolve issue #2308
+ - #708  Loading allows to press F1, P and so on. Crashes the game
+ 
+ 
+### Translation and Text fixes
+ - #2433 Some English text little errors
+ - #2438 Corrected some errors and ambiguities from the english text in the tutorial
+ - #2435 Improved the english text in the tutorial
+ - #2425 Translations scripts problem
+ - #2427 Update translations files. Fix translations scripts
+ - #2426 add folder to sys.path
+ - #2242 Fix #2242 (Trade Tutorial Confusing)
+ 
+New team members with this release, Annotations
+ - Accepting bounties via bountysource now
+ - We accepted pull requests or patches by:
+     pinkfloyda
+     Gladius1
+     martingeiger
+     konstin
+     jorgesumle
+     MarkusHackspacher
+     xseanl
+     Teemperor
+ - Translators that joined our teams and contributed several strings:
+   Please refer to the credits!
+   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+2014-12-31: Milestone 2014.1
+----------------------------
+changelog date: DEC 31
+
+### Gameplay and Balancing
+
+New features
+ - #2207 Only expand settlement range for certain buildings
+ - #2201 Color overlays (if running with FIFE 0.3.6 or newer)
+ - #2129 Armory producing weapons
+ - #2286 Button to fill lumberjack range with trees
 
 Modifications and changes
- - 
-
+ - #2187 Change random tree distribution file to clump trees together
+ - #2217 Fisher ships now removed together with fisherman building
+ - 9411220 Add running costs for warehouse, storage tent, lookout
+ - e80ea85 Remove bullets from the attack sequence
+ - 56ef8f5 A Pastures starting image depends on its rotation (Rao)
+ - #1259 Create inital amount trader ship in ratio to world size
+ 
 Fixed bugs and problems
- - 
+ - #1824 Salt ponds could be created at fresh water lakes
 
 
 ### Media Content
 
 New files and features
+ - #630 Clinker pavilion (tier Settlers)
+ - #631 Clinker lighthouse (tier Settlers)
+ - #1450 Alvearies for producing honeycombs
+ - #1448 Winery
  - ddf6129 Restore warehouse ambient sound
-
+ - #2219 Modified "load from ship", "unload from ship" icons
+ - #1788 Spice field
+ 
 Brush-ups and modification
  - #2168 Fix "known incorrect sRGB profile" libpng warnings
+ - ee375da Pirate ship flag graphics now consistent with wind direction
+ - fcb6dea Update graphics tier bakery (tier Citizen)
 
 ### User Interface
 
@@ -33,40 +199,80 @@ Additions and new features
  - #2176 Store (and reload) currently selected tab in savegames
  - #2171 Show resource icons in build menu toolips
  - #2185 Ship pre-selected and in hotkeygroup 1 when starting new game
-
+ - #1387 Status icon for inhabitants without main square connection
+ - #2153 Confirmation for pressing Del with unit/building selected (Zappaman)
+ - beabc8b Add new key actions for zooming: PgUp / PgDn
+ - e886e11 Icons for lumberjack area tree building
+ - #2245 Add weaponsmith buildmenu icon
+ - #2133 Add simple GUI for atlas generation
+ - #2138 Add disaster message icons
+ 
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
+ - 3fd3c85 "Iron Mine" is now simply called "Mine"
+ - #2182 Tutorial task summary now printed in bold
+ - #2189 Dynamic hotkeys in tooltips for certain actions
+ - #2200 Larger editor brush sizes
+ - #2225 Clear default text for player name and game name (RSouthee)
+ - 54a1b59 No longer display Renderer setting in our gui (xml-only now)
+ - 7d178e7 multiplayer lobby automatically refresh for new games every 5s
+ - efa24b0 Fix resource amount padding in production overview tab
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
+ - 88d051d Consistent cityinfo hide delay for all settlements
+ - #2218 Empty inventory slots incorrectly stretch their icon
+ - d064f37 Only show "warehouse not tearable" message for own warehouses
+ - #2136 No more color confusion between SP and MP menu (pinkfloyda)
+ - #1966 Transparent nature buildings around destroy tool (Zappaman)
+ - #2267 Restore layout of production line tabs with multiple resources (dulrich)
+ - #1790 Scenario messages being displayed only after Logbook is hidden
+ - #2210 Wrong status icons at startup (dulrich)
 
 
 ### Codebase
 
 New functionalities
  - #2173 Manpage generation with custom optparse formatter
-
+ - #2229 Add the ability to set a default build menu style (Zappaman)
+ - 5038c59 Cache XML read from the harddrive
+ 
 Modified structures
  - #2175 Tabwidget code refactoring
  - #2174 Save/load helpers for game tests and gui tests
  - #2184 Introduce content/packages/ for files related to packaging
  - #2181 More readable filenames for auto- and quicksaves
+ - 3847de7 Make LAYERS.WATER static (zoom performance)
+ - 2811241 Extract atlas loading into thread
+ - 42abaf1 & #2130 Use unicode to log errors
+ - 37e5a73 Allow generic unit command for network usage
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
+ - #2193 Survive invalid minimap preview data
+ - #2197 Settings now upgrade properly again
+ - #2221 time.strftime crash on loading savegame with non-utf8 locale
+ - #2231 Prevent a crash when losing network connection
+ - #2244 Some Fife OpenGL settings were not applied
+ - #2287 Crash when clicking on ship in savegame
+ - #2289 Multiple PEP8 changes (MarkusHackspacher)
+ - #2113 Fix trade route handling in multiplayer games
 
-
+ 
 ### User-Contributed Content
 
 Translations
- - 
+ - New: Traditional Chinese
+ - New: Afrikaans
 
 Campaigns, scenarios and maps
- - 
+ - Update tutorial text (paul59)
 
 New team members with this release, Annotations
  - Push access was granted to:
- - We accepted pull requests or patches by: phaidon
+     janexx
+ - We accepted pull requests or patches by:
+     phaidon, RSouthee, Zappaman, pinkfloyda, myrdd, Rao, MarkusHackspacher, paul59
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import functools
+import weakref
 
 from fife import fife
-
-from horizons.gui.util import load_uh_widget
-from horizons.util.python.callback import Callback
-from horizons.util.shapes import Point
 from fife.extensions.pychan import widgets
-from horizons.component.storagecomponent import StorageComponent
-from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import Window
-from horizons.command.uioptions import RouteConfigCommand
-from horizons.component.namedcomponent import NamedComponent
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
-
-from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
+from horizons.command.uioptions import RouteConfigCommand
+from horizons.command.unit import CreateRoute
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
+from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
+from horizons.manager import MPManager
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point
 
 
 class RouteConfig(Window):
@@ -48,7 +49,6 @@ class RouteConfig(Window):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
 	SLOTS_PER_ENTRY = 3
@@ -59,9 +59,12 @@ class RouteConfig(Window):
 		self.instance = instance
 
 		if not hasattr(instance, 'route'):
-			instance.create_route()
+			CreateRoute(instance).execute(self.session)
 
-		self._init_gui()
+			# We must make sure that the createRoute command has successfully finished, even in network games.
+			Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
+		else:
+			self._init_gui()
 
 	@property
 	def session(self):
@@ -77,6 +80,11 @@ class RouteConfig(Window):
 		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True, call_listener_now=True)
 
 	def hide(self):
+		# Check if the deferred init_gui call in __init__ ran already, otherwise cancel it
+		if not hasattr(self, '_gui'):
+			Scheduler().rem_call(self, self._init_gui)
+			return
+
 		self.minimap.disable()
 		self._gui.hide()
 
@@ -85,7 +93,10 @@ class RouteConfig(Window):
 
 		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
-			self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
+			# If message_widget is not defined anymore, we're closing the game right
+			# now
+			if self.session.ingame_gui.message_widget:
+				self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
 
 	def on_instance_removed(self):
 		self._windows.close()
@@ -100,19 +111,19 @@ class RouteConfig(Window):
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()
-		self._gui.findChild(name='start_route').helptext = _('Start route')
+		self._gui.findChild(name='start_route').helptext = T('Start route')
 
 	def start_button_set_inactive(self):
 		self._gui.findChild(name='start_route').set_inactive()
-		self._gui.findChild(name='start_route').helptext = _('Stop route')
+		self._gui.findChild(name='start_route').helptext = T('Stop route')
 
 	def start_route(self):
 		if self.instance.route.can_enable():
 			self._route_cmd("enable")
 		else:
-			self.instance.session.ingame_gui.show_popup(
-				_("Need at least two settlements"),
-				_("You need at least two different settlements in your route."))
+			self.instance.session.ingame_gui.open_popup(
+				T("Need at least two settlements"),
+				T("You need at least two different settlements in your route."))
 
 	def stop_route(self):
 		self._route_cmd("disable")
@@ -141,7 +152,7 @@ class RouteConfig(Window):
 		"""Update hint informing about how to add waypoints. Only visible when there are none."""
 		name = "no_entries_hint"
 		if not self.instance.route.waypoints:
-			lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
+			lbl = widgets.Label(name=name, text=T("Click on a settlement to add a waypoint!"))
 			self._gui.findChild(name="left_vbox").addChild(lbl)
 		else:
 			lbl = self._gui.findChild(name=name)
@@ -164,7 +175,7 @@ class RouteConfig(Window):
 		elif direction == 'down':
 			new_pos = position + 1
 		else:
-			return
+			assert False, 'Direction for `move_entry` is neither "up" nor "down".'
 
 		vbox = self._gui.findChild(name="left_vbox")
 
@@ -179,15 +190,13 @@ class RouteConfig(Window):
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
-		button.hover_image = self.hover_button_path
-		button.helptext = _("Loading into ship")
+		button.helptext = T("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
-		button.hover_image = self.hover_button_path
-		button.helptext = _("Unloading from ship")
+		button.helptext = T("Unloading from ship")
 		slot.action = "unload"
 
 	def toggle_load_unload(self, slot, entry):
@@ -373,7 +382,7 @@ class RouteConfig(Window):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
-			self.session.ingame_gui.message_widget.add_custom(_("You are not allowed to trade with this player"))
+			self.session.ingame_gui.message_widget.add_custom(T("You are not allowed to trade with this player"))
 			return
 
 		if len(self.widgets) >= self.MAX_ENTRIES:

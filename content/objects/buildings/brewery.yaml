@@ -1,0 +1,35 @@
+id: BUILDINGS.BREWERY
+name: _ Brewery
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants: 2
+tooltip_text: _ Consumes hops. Produces Beer.
+tier: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 4}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      BEER:
+        produces:
+        - [RES.BEER, 1]
+        consumes:
+        - [RES.HOPS, -1]
+        time: 12
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.HOPS: 6, RES.BEER: 6}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
+actionsets:
+  TIER.PIONEERS:
+    as_brewery0:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,20 +22,36 @@
 import horizons.globals
 
 
-class ColorMeta(type):
-	"""Metaclass allows iteration and indexing of the Color class.
+class Color(object):
+	"""Class for saving a color.
 
-	Example:
+	Colors are saved in 32 bit rgb-format with an alpha value (for transparency). 32bit mean
+	that each of the for values can only occupy 8 bit, i.e. the value is between 0 and 255.
 
-		for c in Color:
-			pass
-
-		Color['red']
-		Color[0]
+	Attributes:
+	    r, g, b, a: Color values + Alpha
+	     name: name of the Color or None
 	"""
 
-	def __getitem__(cls, key):
-		"""Gets a color by name or id in the db"""
+	@classmethod
+	def get_defaults(cls):
+		"""Returns an iterator over all available colors in the db.
+
+		    for color in Color.get_defaults():
+		        print(color)
+
+		"""
+		colors = horizons.globals.db('SELECT id FROM colors ORDER BY id')
+		return (cls.get(id) for id, in colors)
+
+	@classmethod
+	def get(cls, key):
+		"""Gets a color by name or id from the db.
+
+		    Color.get('red')
+		    Color.get(5)
+
+		"""
 		query = horizons.globals.db('SELECT red, green, blue FROM colors '
 		                            'WHERE name = ? OR id = ?', key, key)
 		try:
@@ -43,26 +59,7 @@ class ColorMeta(type):
 		except IndexError:
 			raise KeyError('No color defined for this name or id: %s' % key)
 		else:
-			return Color(*rgb)
-
-	def __iter__(cls):
-		"""Iterate over all available colors in the db."""
-		colors = horizons.globals.db('SELECT id FROM colors ORDER BY id')
-		colors = (Color[id] for id, in colors)
-		return iter(colors)
-
-
-class Color(object):
-	"""Class for saving a color.
-	Colors are saved in 32 bit rgb-format with an alpha value (for transparency).
-	32bit mean that each of the for values can only occupy 8 bit, i.e. the value is between
-	0 and 255.
-
-	Attributes:
-	 r, g, b, a: Color values + Alpha
-	 name: name of the Color or None
-	"""
-	__metaclass__ = ColorMeta
+			return cls(*rgb)
 
 	def __init__(self, r=0, g=0, b=0, a=255):
 		"""
@@ -76,8 +73,8 @@ class Color(object):
 			# load name for the color, if it's a standard color
 			self.name, self.id = query[0]
 		except IndexError:
-			# id is not set to indicate this is a nondefault color
 			self.name = None
+			self.id = None
 
 	def to_tuple(self):
 		"""Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""
@@ -85,7 +82,7 @@ class Color(object):
 
 	@property
 	def is_default_color(self):
-		return hasattr(self, 'id')
+		return self.id is not None
 
 	def __str__(self):
 		return 'Color' + str(self.to_tuple())

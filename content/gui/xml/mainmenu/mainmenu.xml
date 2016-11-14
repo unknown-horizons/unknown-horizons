@@ -3,8 +3,8 @@
 	<Icon image="content/gui/images/background/mainmenu/wheel.png" position="212,44" />
 	<Icon image="content/gui/images/logos/fife.png" position="775,20" />
 
-	<Label name="version_label" text="Unknown Horizons" position="735,735" />
-	<ImageButton name="changeBackground" text="Change Background" position="755,685" />
+	<Label name="version_label" text="Unknown Horizons" position="40,685" />
+	<Label name="changeBackground" text="Change Background" position="755,685" />
 
 	<!-- clockwise, starting at 0 degree -->
 	<Label name="single_label"  text="Singleplayer"  position="531,100"

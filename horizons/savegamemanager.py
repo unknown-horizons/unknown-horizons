@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,12 +29,11 @@ import tempfile
 import time
 from collections import defaultdict
 
+import horizons.globals
+import horizons.main
 from horizons.constants import PATHS, VERSION
 from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
-
-import horizons.globals
-import horizons.main
 
 
 class SavegameManager(object):
@@ -103,9 +102,13 @@ class SavegameManager(object):
 		displaynames = []
 		def get_timestamp_string(savegameinfo):
 			if savegameinfo['timestamp'] == -1:
-				return ""
-			else:
-				return time.strftime('%c', time.localtime(savegameinfo['timestamp'])).decode('utf-8')
+				return u""
+			timestamp = time.localtime(savegameinfo['timestamp'])
+			try:
+				return time.strftime('%c', timestamp).decode('utf-8')
+			except UnicodeDecodeError:
+				# With non-utf8 system locales this would crash (#2221).
+				return u""
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):

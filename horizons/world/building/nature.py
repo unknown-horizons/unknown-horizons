@@ -1,5 +1,15 @@
+from __future__ import print_function
+
+from horizons.constants import BUILDINGS, LAYERS
+from horizons.scheduler import Scheduler
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.production.producer import Producer
+
+
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +29,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.entities import Entities
-from horizons.scheduler import Scheduler
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -48,7 +51,7 @@ class Field(NatureBuildingResourceHandler):
 			prod_comp = self.get_component(Producer)
 			productions = prod_comp.get_productions()
 			if not productions:
-				print "Warning: Field is assumed to always produce, but doesn't.", self
+				print("Warning: Field is assumed to always produce, but doesn't.", self)
 			else:
 				run_in = Scheduler().get_ticks(productions[0].get_production_time())
 				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)

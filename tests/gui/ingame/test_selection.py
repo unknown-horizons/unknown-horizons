@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,9 +21,9 @@
 
 from horizons.command.unit import CreateUnit
 from horizons.constants import UNITS
-
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
+from tests.utils import mark_expected_failure
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -55,19 +55,28 @@ def test_selectmultitab(gui):
 
 	player = gui.session.world.player
 	def create_ship(type):
-		return CreateUnit(player.worldid, type, *gui.session.world.get_random_possible_ship_position().to_tuple())(issuer=player)
+		position = gui.session.world.get_random_possible_ship_position()
+		unit = CreateUnit(player.worldid, type, *position.to_tuple())(issuer=player)
+		gui.run(seconds=0.1)
+		return unit
 
 	ships = [create_ship(UNITS.FRIGATE), create_ship(UNITS.FRIGATE)]
 	gui.select(ships)
 	assert gui.find('overview_select_multi')
 	gui.run(seconds=0.1)
 
-	gui.press_key(gui.Key.DELETE)
+	def func():
+		assert gui.find('popup_window') is not None
+		gui.trigger('popup_window/okButton')
+
+	with gui.handler(func):
+		gui.press_key(gui.Key.DELETE)
+
 	assert gui.find('tab_base') is None
 	gui.run(seconds=0.1)
 
 
-@gui_test(use_dev_map=True, timeout=120)
+@gui_test(use_fixture='plain', timeout=120)
 def test_selection_groups(gui):
 	"""Check group selection using ctrl-NUM"""
 
@@ -92,11 +101,11 @@ def test_selection_groups(gui):
 		gui.run()
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 
-	gui.trigger('mainhud', 'build')
+	gui.trigger('mainhud/build')
 
 	wh = gui.session.world.player.settlements[0].warehouse
 

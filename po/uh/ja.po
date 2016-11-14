@@ -6,571 +6,726 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-10-21 08:06+0200\n"
-"PO-Revision-Date: 2012-04-09 23:10+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2016-08-29 06:02+0200\n"
+"PO-Revision-Date: 2014-08-16 14:55+0200\n"
+"Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Weblate 1.10-dev\n"
 
-#: run_uh.py:128
-#, fuzzy
+#: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizonsは強制停止しました。"
+msgstr "Unknown Horizonsは強制終了しました。"
 
-#: run_uh.py:130
+#: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "たいへん申し訳ありませんが、これを引き起こしたエラーを修正したいので、"
 
-#: run_uh.py:131
+#: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "右記のログファイルから情報を得る必要があります:"
 
-#: run_uh.py:133
+#: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"これをIRCもしくはフォーラム経由で私達に送ってください。どちらの場合もhttp://"
+"unknown-horizons.orgをご参照ください。"
+
+#: run_uh.py:178
+msgid "Error: Unable to find required library \"PyYAML\"."
+msgstr "エラー：必要なライブラリ「PyYAML」が見つかりません。"
+
+#: run_uh.py:179
+msgid "PyYAML (a required library) is missing and needs to be installed."
+msgstr "PyYAML（必要なライブラリ）が存在しないため、導入する必要があります。"
+
+#: run_uh.py:180
+msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
+msgstr "Windows用導入プログラムはhttp://pyyaml.org/wiki/PyYAMLにあります。"
 
 #: run_uh.py:181
-msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
-
-#: run_uh.py:182
-msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
-
-#: run_uh.py:183
-msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
-
-#: run_uh.py:184
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Linuxユーザーは、パッケージマネージャを使って「pyyaml」もしくは「python-"
+"yaml」という名称を検索して下さい。"
 
-#: run_uh.py:218
-#, fuzzy
+#: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Unknown Horizonsを開始"
+msgstr "Unknown Horizonsをご利用頂き、ありがとうございます！"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "エディタに戻る"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
-#: horizons/gui/modules/select_savegame.py:52
+#: horizons/gui/modules/select_savegame.py:53
 msgid "Save map"
-msgstr ""
+msgstr "地図を保存"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "地図を読み込む"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
-#, fuzzy
-#| msgid "Settler buildings"
 msgid "Settings"
-msgstr "入植者の建造物"
+msgstr "設定"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "エディタを終了"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "ブラシの寸法を選択："
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "地形を選択："
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "（右クリックで終了）"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr ""
+msgstr "ゲーム開始"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "建築物を建てる前に開拓地をおく必要があります!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "自分の船を選択して右クリックで海岸に近づけて下さい。"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "その後、船の概要タブにある大きなボタンを押して下さい。"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr ""
+msgstr "建設"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr ""
+msgstr "維持費："
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "関連する建築物"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr ""
+msgstr "住民"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-msgid "Increase game speed (+)"
-msgstr ""
+#, python-brace-format
+msgid "Increase game speed ({key})"
+msgstr "ゲーム速度増加({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-msgid "Decrease game speed (-)"
-msgstr ""
+#, python-brace-format
+msgid "Decrease game speed ({key})"
+msgstr "ゲーム速度減少({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-msgid "Rotate map counterclockwise (,)"
-msgstr ""
+#, python-brace-format
+msgid "Rotate map counterclockwise ({key})"
+msgstr "地図を左に回転({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-msgid "Rotate map clockwise (.)"
-msgstr ""
+#, python-brace-format
+msgid "Rotate map clockwise ({key})"
+msgstr "地図を右に回転({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
+#: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Zoom in"
-msgstr ""
+msgstr "拡大"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
+#: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Zoom out"
-msgstr ""
+msgstr "縮小"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-msgid "Destroy (X)"
-msgstr ""
+#, python-brace-format
+msgid "Destroy ({key})"
+msgstr "取り壊す({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
-#| msgid "Leave Captain's log"
-msgid "Captain's log (L)"
-msgstr "船長の航海日誌を閉じる"
+#, python-brace-format
+msgid "Captain's log ({key})"
+msgstr "船長の航海日誌({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
-#| msgid "Show pause menu"
-msgid "Build menu (B)"
-msgstr "一時停止メニューの表示"
+#, python-brace-format
+msgid "Build menu ({key})"
+msgstr "建設メニュー({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr ""
+msgstr "外交"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-msgid "Game menu (Esc)"
-msgstr ""
+#, python-brace-format
+msgid "Game menu ({key})"
+msgstr "ゲームメニュー({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr ""
+msgstr "名称の変更"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
-#, fuzzy
 msgid "Old name:"
-msgstr "ゲームの読み込み"
+msgstr "旧名称："
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr ""
+msgstr "新名称を入力："
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr ""
+msgstr "新名称を適用"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr ""
+msgstr "チャット"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr ""
+msgstr "メッセージを入力："
 
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:21
-#: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:20
-#: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:21
+#: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:20
+#: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:21
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:19
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:20
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:24
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
-#: horizons/gui/widgets/resourceoverviewbar.py:617
+#: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
+msgstr "維持費"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
+#, fuzzy
+#| msgid ""
+#| "To build a boat, click on one of the class tabs, select the desired ship "
+#| "and confirm the order."
+msgid ""
+"To build a groundunit, click on one of the class tabs, select the desired "
+"groundunit and confirm the order."
 msgstr ""
+"造船には、種別タブのいずれかをクリックし、希望する船を選択して、注文を確定し"
+"てください。"
+
+#. Information about the groundunit currently under construction at the
+#. groundunit builder
+#. Information about the ship currently under construction at the boat
+#. builder
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
+msgid "Currently building:"
+msgstr "現在の建築物："
+
+#. Pauses the current groundunit production, can be resumed later
+#. Pauses the current ship production, can be resumed later
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:40
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
+msgid "Pause"
+msgstr "一時停止"
+
+#. Resumes the currently paused groundunit production
+#. Resumes the currently paused ship production
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:43
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
+msgid "Resume"
+msgstr "再開"
+
+#. Refers to the resources still missing to complete the current
+#. groundunit builder task
+#. Refers to the resources still missing to complete the current boat
+#. builder task
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:51
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
+msgid "Construction progress:"
+msgstr "建設の進捗状況："
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
+msgid "Resources still needed:"
+msgstr "未だ必要な資源："
+
+#. abort construction of a groundunit, lose invested resources
+#. abort construction of a ship, lose invested resources
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
+msgid "Cancel building:"
+msgstr "建設の中止："
+
+#. abort construction of a groundunit, lose invested resources
+#. abort construction of a ship, lose invested resources
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:67
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
+msgid "(lose all resources)"
+msgstr "（全資源を失います）"
+
+#. abort construction of a groundunit, lose invested resources
+#. abort construction of a ship, lose invested resources
+#: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:70
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
+msgid "Cancel all building progress"
+msgstr "全ての建設作業を中止"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
+#: horizons/gui/tabs/barrackstabs.py:128
+#: horizons/gui/tabs/boatbuildertabs.py:342
+msgid "Confirm order"
+msgstr "注文を確認"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
+#, fuzzy
+#| msgid "Join the selected game"
+msgid "(like in the selection tabs)"
+msgstr "選択したゲームに参加します"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:23
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:25
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:27
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:19
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:21
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:23
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
+msgid "$res"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
+msgid "24t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
+msgid "14t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
+msgid "06t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
+msgid "2500"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
+msgid "Sloop-o'-war"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
+msgid "Three-masted most common classified war ship with one gun deck."
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
+#, fuzzy
+#| msgid "Allow upgrades"
+msgid "Buy Upgrades"
+msgstr "昇格を許可"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
+#, fuzzy
+#| msgid "cannon"
+msgid "Cannons"
+msgstr "キャノン砲"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
+msgid "Hull"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
+msgid "+ 24t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
+msgid "+ 14t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
+msgid "+ 06t"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
+msgid "+ 1457"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
+#, fuzzy
+#| msgid "Hold ground"
+msgid "Build groundunit:"
+msgstr "死守"
+
+#: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
+#: horizons/gui/tabs/barrackstabs.py:79
+#, fuzzy
+#| msgid "Build this ship!"
+msgid "Build this groundunit!"
+msgstr "この船を建造します！"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
+"造船には、種別タブのいずれかをクリックし、希望する船を選択して、注文を確定し"
+"てください。"
 
-#. Information about the ship currently under construction at the boat
-#. builder
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 #, fuzzy
-#| msgid "Settler buildings"
-msgid "Currently building:"
-msgstr "入植者の建造物"
+#| msgid "Build this ship!"
+msgid "Build ship:"
+msgstr "この船を建造します！"
 
-#. Pauses the current ship production, can be resumed later
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
-msgid "Pause"
-msgstr ""
-
-#. Resumes the currently paused ship production
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
-msgid "Resume"
-msgstr ""
-
-#. Refers to the resources still missing to complete the current boat
-#. builder task
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
-msgid "Construction progress:"
-msgstr ""
-
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
-#, fuzzy
-#| msgid "Resource deposit"
-msgid "Resources still needed:"
-msgstr "資源の鉱床"
-
-#. abort construction of a ship, lose invested resources
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
-#, fuzzy
-#| msgid "Settler buildings"
-msgid "Cancel building:"
-msgstr "入植者の建造物"
-
-#. abort construction of a ship, lose invested resources
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
-#, fuzzy
-#| msgid "Sell resources"
-msgid "(lose all resources)"
-msgstr "資源を販売する"
-
-#. abort construction of a ship, lose invested resources
-#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
-msgid "Cancel all building progress"
-msgstr ""
+#: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
+#: horizons/gui/tabs/boatbuildertabs.py:252
+msgid "Build this ship!"
+msgstr "この船を建造します！"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr ""
+msgstr "同盟"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr ""
+msgstr "中立"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr ""
+msgstr "敵対"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
-#: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
-#, fuzzy
-#| msgid "Settler buildings"
+#: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:10
 msgid "Building overview"
-msgstr "入植者の建造物"
+msgstr "建築物の概要"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr ""
+msgstr "稼働率"
+
+#: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
+#, fuzzy
+#| msgid "Click to change the name of this ship"
+msgid "Click to change the name of this groundunit"
+msgstr "クリックすると、この船名を変更できます"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
-#, fuzzy
-#| msgid "{player}'s settlements"
 msgid "Settlement inventory"
-msgstr "{player} の集落"
+msgstr "入植地の在庫"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
-#, fuzzy
 msgid "Settler overview"
-msgstr "支部の概要"
+msgstr "入植者の概要"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr ""
+msgstr "税収"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr ""
+msgstr "税額："
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr ""
+msgstr "税率"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "昇格の許可："
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "一軒毎の幸福度"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:54
+#: horizons/gui/util.py:60
 msgid "sad"
-msgstr ""
+msgstr "不幸"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:57
+#: horizons/gui/util.py:63
 msgid "satisfied"
-msgstr ""
+msgstr "満足"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:60
+#: horizons/gui/util.py:66
 msgid "happy"
-msgstr ""
+msgstr "幸福"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "この幸福度の軒数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr ""
+msgstr "一軒あたりの住民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "一軒あたりの住民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "この住民数の軒数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr ""
+msgstr "要約"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
-#, fuzzy
 msgid "houses"
-msgstr "住宅"
+msgstr "軒数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr ""
+msgstr "住民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:350
 msgid "Selling"
-msgstr ""
+msgstr "売上"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
-msgstr ""
+msgstr "買入"
 
-#: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
+#: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 msgid "Name:"
-msgstr ""
+msgstr "名称："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr ""
+msgstr "武器："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "資源の鉱床"
+msgstr "資源鉱床"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr ""
+msgstr "この資源鉱床には、資源採掘坑を造ることができます。"
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr ""
+msgstr "下記の資源が埋蔵されています："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
-#: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:75
-#: horizons/gui/tabs/mainsquaretabs.py:116
+#: horizons/gui/modules/ingame.py:160 horizons/gui/tabs/mainsquaretabs.py:82
+#: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:96
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "クリックすると集落の名前が変更できます。"
+msgstr "クリックすると入植地名を変更することができます"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
-msgstr ""
+msgstr "幸福度"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr ""
+msgstr "住民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "資源の選択："
+msgstr "必要としている資源："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
-msgstr ""
+msgstr "狼煙台は、財の売買をしたいとき、自由交易者を入植地に導くのに必要です。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
+"これは自由交易者の船です。ときおり財の売買のために、あなたのところに立ち寄り"
+"ます。"
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "クリックで船の名前を変更できます。"
+msgstr "クリックすると、この船名を変更できます"
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
-#: horizons/gui/tabs/buyselltab.py:88
+#: horizons/gui/tabs/buyselltab.py:88 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr ""
+msgstr "交易"
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
-#, fuzzy
-#| msgid "{player}'s settlements"
 msgid "Build settlement"
-msgstr "{player} の集落"
+msgstr "入植地の建設"
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr ""
+msgstr "交易路の調整"
+
+#: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
+#, fuzzy
+#| msgid "(lose all resources)"
+msgid "Discard all resources"
+msgstr "（全資源を失います）"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr ""
+msgstr "船："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr ""
+msgstr "交換："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr ""
+msgstr "交易相手："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
-#, fuzzy
-#| msgid "Sell resources"
 msgid "Buy or sell resources"
-msgstr "資源を販売する"
+msgstr "資源を売買"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr ""
+msgstr "交易の履歴"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "資源の選択："
+msgstr "資源を選択："
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr ""
+msgstr "人夫稼働率"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
-msgstr ""
+msgstr "収入："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
-#: horizons/gui/widgets/resourceoverviewbar.py:620
+#: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
-msgstr ""
+msgstr "税収"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Sale"
-msgstr ""
+msgstr "売上"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 msgid "Expenses:"
-msgstr ""
+msgstr "支出："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
-msgstr ""
+msgstr "収支："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "この入植地で生産された資源を表示"
 
-#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
-#: content/gui/xml/ingame/templates/overview_productionline.xml:20
-#, fuzzy
+#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:16
+#: content/gui/xml/ingame/templates/overview_productionline.xml:14
 msgid "Pause production"
-msgstr "村の学校：　教育を提供します。"
+msgstr "生産を停止"
 
-#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
-#: content/gui/xml/ingame/templates/overview_productionline.xml:23
+#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:19
+#: content/gui/xml/ingame/templates/overview_productionline.xml:17
 msgid "Start production"
-msgstr ""
+msgstr "生産を開始"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "資源の選択："
+msgstr "資源を選択してください："
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -579,1225 +734,1232 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
+"選択した資源が現在のものの代わりに表示されます。×をクリックすれば消去されま"
+"す。"
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "現在の資源設定を全ての入植地の既定値として保存します。"
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "全ての入植地の既定資源設定を初期化します。"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
-msgstr ""
+msgstr "上に移動"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr ""
+msgstr "項目を削除"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
-msgstr ""
+msgstr "下に移動"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
-#, fuzzy
 msgid "Select a resource:"
-msgstr "資源の選択："
+msgstr "資源を選択してください："
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr ""
+msgstr "前の項目を読む"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr ""
+msgstr "次の項目を読む"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
-msgstr ""
+msgstr "統計"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#, fuzzy
-#| msgid "Show pause menu"
 msgid "Players"
-msgstr "一時停止メニューの表示"
+msgstr "プレイヤー"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
-msgstr ""
+msgstr "自分の船"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
-#, fuzzy
-#| msgid "{player}'s settlements"
 msgid "My settlements"
-msgstr "{player} の集落"
+msgstr "自分の入植地"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
-#, fuzzy
-#| msgid "{player}'s ships"
 msgid "Game messages"
-msgstr "{player} の船"
+msgstr "ゲームメッセージ"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 msgid "Whole world"
-msgstr ""
+msgstr "全世界"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
-msgstr ""
+msgstr "全員"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "全プレイヤーにチャットメッセージを送信します。"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr ""
+msgstr "ここにメッセージを入力してください"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr ""
+msgstr "ゲームに戻る"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 msgid "Wait at load:"
-msgstr ""
+msgstr "荷積み時に待機："
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
 msgid "Wait at unload:"
-msgstr ""
+msgstr "荷揚げ時に待機："
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr ""
+msgstr "交易路の活動："
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
-#: horizons/gui/widgets/routeconfig.py:103
+#: horizons/gui/widgets/routeconfig.py:107
 msgid "Start route"
-msgstr ""
+msgstr "交易路を開始"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
-msgstr ""
+msgstr "終了"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:24
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
-#, fuzzy
-#| msgid "Show pause menu"
 msgid "Player scores"
-msgstr "一時停止メニューの表示"
+msgstr "プレイヤー得点"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
-msgstr ""
+msgstr "プレイヤー名"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
-msgstr ""
+msgstr "貨幣"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "プレイヤーの現在の財産＋近い将来の予想所得"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
-msgstr ""
+msgstr "土地"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr ""
+msgstr "利用可能な土地の価値、すなわち建築物を建てることのできる土地の量"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
-#, fuzzy
-#| msgid "Buy resources"
 msgid "Resources"
-msgstr "資源を購入する"
+msgstr "資源"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
-msgstr ""
+msgstr "プレイヤーの入植地の全拠点から生成された資源の価値"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
-#, fuzzy
-#| msgid "Settler buildings"
 msgid "Buildings"
-msgstr "入植者の建造物"
+msgstr "建築物"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "プレイヤーの入植地の全建築物の価値"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493
-#, fuzzy
-#| msgid "Settler buildings"
+#: horizons/i18n/objecttranslations.py:532
 msgid "Settlers"
-msgstr "入植者の建造物"
+msgstr "入植者"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
-msgstr ""
+msgstr "住民数や建築物、全体的な幸福度の観点から入植の進捗を表す価値"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
-msgstr ""
+msgstr "ユニット"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "プレイヤが所有する全ユニットの価値"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "全要素からの全価値：つまりはプレイヤー総合点"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
-msgstr ""
+msgstr "総合点"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
-#: horizons/gui/widgets/resourceoverviewbar.py:630
+#: horizons/gui/widgets/resourceoverviewbar.py:618
 msgid "Balance"
-msgstr ""
+msgstr "収支"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
-msgstr ""
+msgstr "種別"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
-msgstr ""
+msgstr "武器"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
-msgstr ""
+msgstr "健康"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
-msgstr ""
+msgstr "状態"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
-msgstr ""
+msgstr "攻撃的"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr ""
+msgstr "死守"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr ""
+msgstr "受動的"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
-msgstr ""
+msgstr "退却"
 
-#: content/gui/xml/mainmenu/credits.xml:470
+#: content/gui/xml/mainmenu/credits.xml:676
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
-#: content/gui/xml/mainmenu/hotkeys.xml:53
+#: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr ""
+msgstr "メインメニューへ"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "地図の寸法を選択："
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr ""
+msgstr "地図を選択："
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "保存済みゲームの地図を選択："
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "地図のソースを選択"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "地図を新規作成"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "既存の地図の読み込み"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "保存済みゲームの地図を読み込む"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "エディタを開始"
 
-#: content/gui/xml/mainmenu/help.xml:11
+#: content/gui/xml/mainmenu/help.xml:14
 msgid "Return"
-msgstr ""
+msgstr "戻る"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "AIオプション"
+msgstr "動作"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
-msgstr ""
+msgstr "左へスクロール"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
-msgstr ""
+msgstr "右へスクロール"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
-msgstr ""
+msgstr "上へスクロール"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
-msgstr ""
+msgstr "下へスクロール"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
-#, fuzzy
-#| msgid "Rotate building left"
 msgid "Rotate building or map clockwise"
-msgstr "建造物を左に回転"
+msgstr "建築物または地図を時計廻りに回転"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
-#, fuzzy
-#| msgid "Rotate building left"
 msgid "Rotate building or map counterclockwise"
-msgstr "建造物を左に回転"
+msgstr "建築物または地図を反時計廻りに回転"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr ""
+msgstr "ゲーム速度を上げる"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr ""
+msgstr "ゲーム速度を下げる"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
-#, fuzzy
 msgid "Pause game"
-msgstr "ゲームの読み込み"
-
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-#, fuzzy
-#| msgid "Show pause menu"
-msgid "Show build menu"
-msgstr "一時停止メニューの表示"
-
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "Enable destruct mode"
-msgstr ""
+msgstr "ゲームを一時停止"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "Enable road building mode"
-msgstr ""
+msgid "Show build menu"
+msgstr "建築メニューを表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgid "Enable destruct mode"
+msgstr "整地モードを有効にする"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
-#, fuzzy
-#| msgid "Show pause menu"
-msgid "Show player scores"
-msgstr "一時停止メニューの表示"
+msgid "Enable road building mode"
+msgstr "道路建設モードを有効にする"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
-#, fuzzy
-#| msgid "{player}'s settlements"
-msgid "Show settlement list"
-msgstr "{player} の集落"
+msgid "Enable pipette mode (clone buildings)"
+msgstr "ピペットモードを有効にする（建築物を複製）"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "Show ship list"
-msgstr ""
+msgid "Show player scores"
+msgstr "プレイヤー得点を表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
-#, fuzzy
-#| msgid "Leave Captain's log"
-msgid "Toggle Captain's log"
-msgstr "船長の航海日誌を閉じる"
+msgid "Show settlement list"
+msgstr "入植地一覧を表示"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:27
+msgid "Show ship list"
+msgstr "船舶一覧を表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "Quicksave"
-msgstr ""
-
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "Quickload"
-msgstr ""
+msgid "Toggle Captain's log"
+msgstr "船長の航海日誌を開閉"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgid "Quicksave"
+msgstr "簡易保存"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "Highlight tile ownership"
-msgstr ""
+msgid "Quickload"
+msgstr "簡易読込"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "Toggle health bars"
-msgstr ""
+msgid "Toggle translucency of ambient buildings"
+msgstr "周囲の建造物の半透明化を入切"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "Focus camera on selection"
-msgstr ""
+msgid "Highlight tile ownership"
+msgstr "コマの所有権を強調表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "Remove selected units / buildings"
-msgstr ""
+msgid "Toggle health bars"
+msgstr "健康インジケーターを入切"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "Display help"
-msgstr ""
+msgid "Focus camera on selection"
+msgstr "選択したものにカメラの焦点を当てる"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "Screenshot"
-msgstr ""
+msgid "Remove selected units / buildings"
+msgstr "選択したユニットや建造物を削除"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-msgid "Toggle showing FPS on/off"
-msgstr ""
+msgid "Display help"
+msgstr "ヘルプを表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "Toggle grid on/off"
-msgstr ""
+msgid "Screenshot"
+msgstr "スクリーンショット"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
+msgid "Toggle showing FPS on/off"
+msgstr "FPS表示を入切"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:40
+msgid "Toggle grid on/off"
+msgstr "グリッド表示を入切"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:41
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "座標値を表示（デバッグ用）"
 
 #. First hotkey assigned to this action
-#: content/gui/xml/mainmenu/hotkeys.xml:43
+#: content/gui/xml/mainmenu/hotkeys.xml:45
 msgid "Primary"
-msgstr ""
+msgstr "第一鍵"
 
 #. Second hotkey assigned to this action
-#: content/gui/xml/mainmenu/hotkeys.xml:47
+#: content/gui/xml/mainmenu/hotkeys.xml:49
 msgid "Secondary"
-msgstr ""
+msgstr "第二鍵"
 
-#: content/gui/xml/mainmenu/hotkeys.xml:54
+#: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default"
-msgstr ""
+msgstr "既定値に初期化"
 
-#: content/gui/xml/mainmenu/hotkeys.xml:54
+#: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default keys"
-msgstr ""
+msgstr "既定鍵に初期化"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
-#: horizons/gui/modules/select_savegame.py:48
-#, fuzzy
+#: horizons/gui/modules/select_savegame.py:49
 msgid "Save game"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを保存"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
-#: horizons/gui/modules/select_savegame.py:50
-#, fuzzy
+#: horizons/gui/modules/select_savegame.py:51
 msgid "Load game"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを読み込む"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
-msgstr ""
+msgstr "ゲームを取り消す"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr ""
+msgstr "読み込み中…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "背景を変更"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
-msgstr ""
+msgstr "単独プレイヤー"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
-msgstr ""
+msgstr "複数プレイヤー"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 msgid "Quit"
-msgstr ""
+msgstr "終了"
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "エディタ"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr ""
+msgstr "製作者"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "ゲームを作成―複数プレイヤー"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
-msgstr ""
+msgstr "プレイヤー数上限："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "複数プレイヤーメニューに戻る"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
-msgstr ""
+msgstr "ゲームの名称："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
-msgstr ""
+msgstr "これはゲームを識別できるように他のプレイヤーに対して表示されます。"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "名のないゲーム"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "ゲームのパスワード："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "このゲームのパスワード。このゲームに参加するのに必要です。"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr ""
+msgstr "この新規ゲームを作成する"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr "ロビー"
+msgstr "ゲームロビー"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
-msgstr ""
+msgstr "チャット："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
-msgstr "ロビーから出る"
+msgstr "ゲームロビーを出る"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr ""
+msgstr "全プレイヤーの準備が出来次第、ゲームを開始します。"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
-msgstr ""
+msgstr "ゲーム詳細："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
-msgstr ""
+msgstr "色"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr ""
+msgstr "準備完了："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "あなたの状態を準備完了にする（ゲーム開始に必要）"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "新規ゲーム ― 複数プレイヤー"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-#, fuzzy
 msgid "Load game:"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを読み込む："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
-#, fuzzy
 msgid "Load a saved game"
-msgstr "ゲームの読み込み"
+msgstr "保存済みゲームを読み込む"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
-msgstr ""
+msgstr "有効なゲーム："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
-msgstr ""
+msgstr "一覧の更新："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "有効なゲームの一覧を更新します"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
-#, fuzzy
 msgid "Create game:"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを作成："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr ""
+msgstr "新規ゲームを作成します"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 msgid "Join game:"
-msgstr "ゲームの読み込み"
+msgstr "ゲームに参加："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
-msgstr ""
+msgstr "選択したゲームに参加します"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "プレイヤー詳細を変更"
 
-#: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/modules/settings.py:53
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:56
 msgid "Graphics"
-msgstr ""
+msgstr "グラフィックス"
 
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
-msgstr ""
+msgstr "画面解像度："
 
 #: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
-msgstr ""
+msgstr "フルスクリーン："
 
 #: content/gui/xml/mainmenu/settings.xml:33
-msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:33
-msgid "Used renderer:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "フレームレート上限："
 
-#: content/gui/xml/mainmenu/settings.xml:41
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "使用する最大フレームレートを設定します。既定値：60fps。"
 
-#: content/gui/xml/mainmenu/settings.xml:54
+#: content/gui/xml/mainmenu/settings.xml:46
 msgid "Sound"
-msgstr ""
+msgstr "音声"
 
-#: content/gui/xml/mainmenu/settings.xml:60
+#: content/gui/xml/mainmenu/settings.xml:52
 msgid "Music volume:"
-msgstr ""
+msgstr "音楽音量："
 
-#: content/gui/xml/mainmenu/settings.xml:69
+#: content/gui/xml/mainmenu/settings.xml:61
 msgid "Effects volume:"
-msgstr ""
+msgstr "効果音音量："
 
-#: content/gui/xml/mainmenu/settings.xml:76
-#, fuzzy
-#| msgid "Enable edge scrolling:"
+#: content/gui/xml/mainmenu/settings.xml:68
 msgid "Enable sound:"
-msgstr "ウィンドウの端でスクロールする："
+msgstr "音声を有効化："
 
-#: content/gui/xml/mainmenu/settings.xml:82
-#, fuzzy
+#: content/gui/xml/mainmenu/settings.xml:74
 msgid "Mouse"
-msgstr "住宅"
+msgstr "マウス"
 
-#: content/gui/xml/mainmenu/settings.xml:87
+#: content/gui/xml/mainmenu/settings.xml:79
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "地図の縁でスクロール："
 
-#: content/gui/xml/mainmenu/settings.xml:87
+#: content/gui/xml/mainmenu/settings.xml:79
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "マウスポインターが地図の縁部にあるとき、視点を移動するか否か"
 
-#: content/gui/xml/mainmenu/settings.xml:93
+#: content/gui/xml/mainmenu/settings.xml:85
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "カーソル位置への拡大縮小："
 
-#: content/gui/xml/mainmenu/settings.xml:93
+#: content/gui/xml/mainmenu/settings.xml:85
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"有効にすると、マウスホイールでの拡大縮小に際して、カーソル位置を新しい視点中"
+"央に据えます。無効にした場合には、現在の視点中央を維持します。"
 
-#: content/gui/xml/mainmenu/settings.xml:99
+#: content/gui/xml/mainmenu/settings.xml:91
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "中央マウスボタンでのパン："
 
-#: content/gui/xml/mainmenu/settings.xml:99
+#: content/gui/xml/mainmenu/settings.xml:91
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"有効にした場合、中央マウスボタンを押しながらドラッグするとカメラをパン（振"
+"る）します"
 
-#: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
-msgstr "初期設定に戻す"
+msgstr "０は既定のシステム設定です"
 
-#: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "Mouse sensitivity:"
-msgstr "資源の密度："
+msgstr "マウスの感度："
 
-#: content/gui/xml/mainmenu/settings.xml:123
+#: content/gui/xml/mainmenu/settings.xml:115
 msgid "Saving"
-msgstr ""
+msgstr "保存法"
+
+#: content/gui/xml/mainmenu/settings.xml:120
+msgid "Autosave interval in minutes:"
+msgstr "自動保存間隔（分）："
 
 #: content/gui/xml/mainmenu/settings.xml:128
-msgid "Autosave interval in minutes:"
-msgstr ""
+msgid "Number of autosaves:"
+msgstr "自動保存の数："
 
 #: content/gui/xml/mainmenu/settings.xml:136
-msgid "Number of autosaves:"
-msgstr ""
+msgid "Number of quicksaves:"
+msgstr "簡易保存の数："
 
 #: content/gui/xml/mainmenu/settings.xml:144
-#, fuzzy
-#| msgid "Error: No quicksave found."
-msgid "Number of quicksaves:"
-msgstr "エラー：　クイックセーブはありません。"
-
-#: content/gui/xml/mainmenu/settings.xml:152
 msgid "Language"
-msgstr ""
+msgstr "言語"
 
-#: content/gui/xml/mainmenu/settings.xml:164
+#: content/gui/xml/mainmenu/settings.xml:156
 msgid "General"
-msgstr ""
+msgstr "一般"
 
-#: content/gui/xml/mainmenu/settings.xml:169
+#: content/gui/xml/mainmenu/settings.xml:161
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "小地図を地図と共に回転："
 
-#: content/gui/xml/mainmenu/settings.xml:169
+#: content/gui/xml/mainmenu/settings.xml:161
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "通常の地図を回転した時に小地図も回転させるか否か"
 
-#: content/gui/xml/mainmenu/settings.xml:175
-#, fuzzy
-#| msgid "Settler buildings"
+#: content/gui/xml/mainmenu/settings.xml:167
 msgid "Uninterrupted building:"
-msgstr "入植者の建造物"
+msgstr "連続建設："
 
-#: content/gui/xml/mainmenu/settings.xml:175
+#: content/gui/xml/mainmenu/settings.xml:167
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr ""
+msgstr "有効にすると、建設に成功した後、建設モードから抜け出しません"
 
-#: content/gui/xml/mainmenu/settings.xml:181
+#: content/gui/xml/mainmenu/settings.xml:173
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "自動荷揚げ："
 
-#: content/gui/xml/mainmenu/settings.xml:181
+#: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "入植地を拓いた後、船から荷揚げするか否か"
 
-#: content/gui/xml/mainmenu/settings.xml:187
+#: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"通常のゲームセッションでは使わないでください。ユーザーディレクトリ中のログ保"
+"存ディレクトリにデバッグ情報を書き込むか否かを設定します。ゲームの速度が遅く"
+"なります。"
 
-#: content/gui/xml/mainmenu/settings.xml:187
+#: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
-msgstr ""
+msgstr "ログを有効化："
 
-#: content/gui/xml/mainmenu/settings.xml:193
+#: content/gui/xml/mainmenu/settings.xml:185
 msgid "Production indicators:"
-msgstr ""
+msgstr "生産インジケーター："
 
-#: content/gui/xml/mainmenu/settings.xml:193
+#: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr ""
+msgstr "生産を終了した時に建造物上に資源アイコンを表示するか否か"
 
-#: content/gui/xml/mainmenu/settings.xml:201
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "値を増やすとスクロール速度が落ちます。"
 
-#: content/gui/xml/mainmenu/settings.xml:201
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid "Scroll delay:"
-msgstr ""
+msgstr "スクロール遅延："
 
-#: content/gui/xml/mainmenu/settings.xml:210
+#: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "引用型を選択："
+
+#: content/gui/xml/mainmenu/settings.xml:202
+msgid "What kind of quote to display while loading a game"
+msgstr "ゲーム読み込み中にどのような引用文を表示するか"
 
 #: content/gui/xml/mainmenu/settings.xml:210
-msgid "What kind of quote to display while loading a game"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
-msgstr ""
+msgstr "ネットワーク"
 
-#: content/gui/xml/mainmenu/settings.xml:222
+#: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "0に設定すると、ルーターの既定値を使用します"
 
-#: content/gui/xml/mainmenu/settings.xml:222
+#: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
-msgstr ""
+msgstr "ネットワークポート："
 
-#: content/gui/xml/mainmenu/settings.xml:243
+#: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr ""
+msgstr "現在の変更分を破棄"
 
-#: content/gui/xml/mainmenu/settings.xml:244
-#, fuzzy
+#: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr "初期設定に戻す"
+msgstr "設定を既定値に初期化"
 
-#: content/gui/xml/mainmenu/settings.xml:245
+#: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr ""
+msgstr "変更分を保存"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
-#, fuzzy
 msgid "Your saved games:"
-msgstr "ゲームの読み込み"
+msgstr "保存済みゲーム："
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "ゲームのパスワード。このゲームに参加するのに必要です"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
-msgstr ""
+msgstr "ファイル名を入力："
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
 msgid "Details:"
-msgstr ""
+msgstr "詳細："
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "選択した保存済みゲームを削除"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "新規ゲーム ― 単独プレイヤー"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "シナリオ"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
-#, fuzzy
-#| msgid "Starts a random map."
 msgid "Random map"
-msgstr "ランダムマップの開始。"
+msgstr "ランダム生成地図"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr ""
+msgstr "自由プレイ"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
-#, fuzzy
 msgid "Start game"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを開始"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "プレイする地図を選択："
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "地図の設定："
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "乱数生成種："
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "言語を選択："
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr ""
+msgstr "AIプレイヤー："
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "ゲーム設定："
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr ""
+msgstr "自由交易船"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
-msgstr ""
+msgstr "海賊"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "災害"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
-#, fuzzy
-#| msgid "Show pause menu"
 msgid "Player name:"
-msgstr "一時停止メニューの表示"
+msgstr "プレイヤー名："
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr ""
+msgstr "色："
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr ""
+msgstr "無効なファイル名です"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "保存コマンド実行時に無効なファイル名を受け取りました。"
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
-#: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
+#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:163
+#: horizons/gui/modules/pausemenu.py:99 horizons/mpsession.py:56
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
-#: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
-#, fuzzy
-#| msgid "Loads the last quicksave."
+#: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:99
 msgid "Failed to save."
-msgstr "最新のクイックセーブのロード。"
+msgstr "保存に失敗しました。"
 
 #: horizons/component/tradepostcomponent.py:190
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "交易相手はこれを売っていません。"
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
-msgstr ""
+msgstr "これを保存することはできません。"
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "これを買う余裕がありません。"
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "交易相手はこれ以上売ることができません。"
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "交易相手はこれを買っていません。"
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
-msgstr ""
+msgstr "あなたはこれを保有していません。"
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "交易相手はこれをもう保存することができません。"
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "交易相手はこれを買うことができません。"
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "交易相手はこれをもう買うことができません。"
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
-#, fuzzy
-#| msgid "Loads the last quicksave."
 msgid "Failed to quicksave."
-msgstr "最新のクイックセーブのロード。"
+msgstr "簡易保存に失敗しました。"
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "簡易保存中にエラーが発生しました。"
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "あなたの地図は保存されていません。"
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"このエラーが再現するようならば、開発チームに連絡してください：{website}"
 
 #: horizons/gui/gui.py:77
-#, fuzzy
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Unknown Horizonsを開始"
+msgstr "本当にUnknown Horizonsを終了しますか？"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
 msgstr "ゲーム終了"
 
-#: horizons/gui/ingamegui.py:220
+#: horizons/gui/ingamegui.py:244
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "何も外交はありません"
 
-#: horizons/gui/ingamegui.py:221
+#: horizons/gui/ingamegui.py:245
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "他にプレイヤーがいないので、外交を続けることができません。"
+
+#: horizons/gui/ingamegui.py:482
+#, fuzzy
+#| msgid "Are you sure you want to abort the running session?"
+msgid "Are you sure you want to delete these objects?"
+msgstr "本当に実行中のセッションを停止しますか？"
+
+#: horizons/gui/ingamegui.py:483
+#, fuzzy
+#| msgid "Delete entry"
+msgid "Delete"
+msgstr "項目を削除"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size}コマ"
 
-#: horizons/gui/modules/hotkeys_settings.py:96
-msgid "Press desired key"
-msgstr ""
+#: horizons/gui/modules/hotkeys_settings.py:97
+#, fuzzy
+#| msgid "Press desired key"
+msgid "Press key…"
+msgstr "お望みの鍵を押してください"
 
-#: horizons/gui/modules/hotkeys_settings.py:140
+#: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key}は既に{action}に割り当てられています。"
 
-#: horizons/gui/modules/hotkeys_settings.py:141
+#: horizons/gui/modules/hotkeys_settings.py:147
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "これを上書きしますか？"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:142
-#: horizons/gui/modules/select_savegame.py:155
+#: horizons/gui/modules/hotkeys_settings.py:148
+#: horizons/gui/modules/select_savegame.py:167
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "上書きの確認"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:60
-msgid "Gameplay Tips"
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:62
-msgid "Press 'ESC' to access Game Menu."
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:63
-msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
-
-#. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:65
-#, python-brace-format
-msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "引用"
 
 #: horizons/gui/modules/loadingscreen.py:67
-msgid "You can pause the game with 'P'."
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:68
-msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgid "Gameplay Tips"
+msgstr "ゲームで遊ぶ上でのヒント"
 
 #: horizons/gui/modules/loadingscreen.py:69
-msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgid "Press 'ESC' to access Game Menu."
+msgstr "ゲームメニューを開くには「ESC」を押してください。"
 
 #: horizons/gui/modules/loadingscreen.py:70
+msgid "Use 'SHIFT' to place multiple buildings."
+msgstr "複数の建造物を配置するには「SHIFT」を押してください。"
+
+#. TODO: This tip should be removed when all tiers are playable!!
+#: horizons/gui/modules/loadingscreen.py:72
+#, python-brace-format
+msgid "Currently only the first {tier} tiers are playable."
+msgstr "現在、最初の{tier}階層のみプレイすることができます。"
+
+#: horizons/gui/modules/loadingscreen.py:74
+msgid "You can pause the game with 'P'."
+msgstr "「P」を押せばゲームを一時停止することができます。"
+
+#: horizons/gui/modules/loadingscreen.py:75
+msgid "You can drag roads by holding the left mouse button."
+msgstr "左のマウスボタンを押しながらドラッグすれば、道を引くことができます。"
+
+#: horizons/gui/modules/loadingscreen.py:76
+msgid "You can build multiple buildings by holding the 'SHIFT' key."
+msgstr "「SHIFT」鍵を押しながらやれば、複数の建造物を建設することができます。"
+
+#: horizons/gui/modules/loadingscreen.py:77
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "税金を引き下げることで住民の幸福度を増すことができます。"
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:78
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
-msgstr ""
+msgstr "住民を火事や病気から守るためには、消防署と病院を建設してください。"
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:79
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "貯蔵容量を増やすためには貯蔵テントを建設してください。"
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:80
 msgid "Make sure every house is in range of a marketplace."
+msgstr "全戸を市場の届く範囲内に収めるようにしてください。"
+
+#: horizons/gui/modules/loadingscreen.py:81
+msgid "Press 'T' to make trees transparent."
+msgstr "「T」を押せば木が透明になります。"
+
+#: horizons/gui/modules/loadingscreen.py:82
+#, fuzzy
+#| msgid "Build storage tents to increase your storage capacity."
+msgid "Build storage tents and lookouts to expand your settlement range."
+msgstr "貯蔵容量を増やすためには貯蔵テントを建設してください。"
+
+#: horizons/gui/modules/loadingscreen.py:83
+msgid ""
+"To easily see whether the pavilion's range cover all your tents, select it "
+"from the build menu and hover it over your existing pavilion. Uncovered "
+"tents are shown in yellow. It's a good idea to build a new pavilion in their "
+"neighborhood."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:74
-msgid "Press 'T' to make trees transparent."
+#: horizons/gui/modules/loadingscreen.py:84
+msgid ""
+"Make singleplayer more fun with additional computer players by increasing "
+"'AI players' when starting a new game."
 msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:85
+msgid ""
+"First steps are easier by looking at how AI players are setting up their "
+"settlement."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:86
+msgid ""
+"Want funny quotes only? Change the quote types shown here in the settings "
+"menu on the game page."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:87
+msgid "A marketplace links your buildings like a road."
+msgstr ""
+
+#. This are the options you can select in the Settings what type of quotes
+#. should be
+#. displayed during load
+#: horizons/gui/modules/loadingscreen.py:93
+msgid "Mixed"
+msgstr "両方"
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:101
+#: horizons/gui/modules/loadingscreen.py:113
 msgid "Starting engine…"
-msgstr ""
+msgstr "エンジンを起動します…"
 
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:114
 msgid "Catching fish…"
-msgstr ""
+msgstr "魚を獲っています…"
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:115
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "ユーザーインタフェースを描画しています…"
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:116
 msgid "Activating timer…"
-msgstr ""
+msgstr "タイマーを起動しています…"
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:117
 msgid "Chomping game data…"
-msgstr ""
+msgstr "ゲームデータを飲み込んでいます…"
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:118
 msgid "Shaping islands…"
-msgstr ""
+msgstr "島を形成しています…"
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:119
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "青写真を描いています…"
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:120
 msgid "Filling world with water…"
-msgstr ""
+msgstr "世界を水で満たしています…"
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:121
 msgid "Raising animals…"
-msgstr ""
+msgstr "動物たちを起こしています…"
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:122
 msgid "Convincing AI…"
-msgstr ""
+msgstr "AIを説得中です…"
 
-#: horizons/gui/modules/loadingscreen.py:111
+#: horizons/gui/modules/loadingscreen.py:123
 msgid "Burying treasures…"
-msgstr ""
+msgstr "宝物を埋めています…"
 
-#: horizons/gui/modules/multiplayermenu.py:118
+#: horizons/gui/modules/multiplayermenu.py:123
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "pyenetが見つかりません"
 
-#: horizons/gui/modules/multiplayermenu.py:119
+#: horizons/gui/modules/multiplayermenu.py:124
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"複数プレイヤー機能は「pyenet」ライブラリを必要としますが、本システム上に見つ"
+"かりませんでした。"
 
-#: horizons/gui/modules/multiplayermenu.py:121
+#: horizons/gui/modules/multiplayermenu.py:126
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Linuxユーザーへ：パッケージマネージャーを使ってpyenetを導入してください。"
 
-#: horizons/gui/modules/multiplayermenu.py:130
+#: horizons/gui/modules/multiplayermenu.py:135
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "ネットワークの初期化に失敗しました。"
 
-#: horizons/gui/modules/multiplayermenu.py:131
-#: horizons/gui/modules/settings.py:273
+#: horizons/gui/modules/multiplayermenu.py:136
+#: horizons/gui/modules/settings.py:275
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "現在の設定ではネットワーク機能を初期化することができませんでした。"
 
-#: horizons/gui/modules/multiplayermenu.py:132
-#: horizons/gui/modules/settings.py:274
+#: horizons/gui/modules/multiplayermenu.py:137
+#: horizons/gui/modules/settings.py:276
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "ネットワークセクションで指定した設定を再確認してください。"
 
-#: horizons/gui/modules/multiplayermenu.py:141
-#: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
+#: horizons/gui/modules/multiplayermenu.py:146
+#: horizons/gui/modules/multiplayermenu.py:165 horizons/mpsession.py:51
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "ネットワークの致命的エラー"
 
-#: horizons/gui/modules/multiplayermenu.py:142
+#: horizons/gui/modules/multiplayermenu.py:147
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "マスターサーバーに接続できませんでした。"
 
-#: horizons/gui/modules/multiplayermenu.py:143
+#: horizons/gui/modules/multiplayermenu.py:148
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
+"インターネット接続状況を確認してください。もしそれに問題がなければ、我々のマ"
+"スターサーバーが一時的に落ちているものと思われます。"
 
-#: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
+#: horizons/gui/modules/multiplayermenu.py:166 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "このネットワークで不具合がありました："
 
-#: horizons/gui/modules/multiplayermenu.py:176
+#: horizons/gui/modules/multiplayermenu.py:181
 msgid "Version differs!"
-msgstr ""
+msgstr "バージョンが違います！"
 
-#: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:457
+#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py:468
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "地図：{map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:458
+#: horizons/gui/modules/multiplayermenu.py:211
+#: horizons/gui/modules/multiplayermenu.py:469
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "名称：{game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:207
-#: horizons/gui/modules/multiplayermenu.py:459
+#: horizons/gui/modules/multiplayermenu.py:212
+#: horizons/gui/modules/multiplayermenu.py:470
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "作成者：{game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:460
+#: horizons/gui/modules/multiplayermenu.py:213
+#: horizons/gui/modules/multiplayermenu.py:471
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "プレイヤー数：{player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:228
+#: horizons/gui/modules/multiplayermenu.py:233
 msgid "Wrong version"
-msgstr ""
+msgstr "バージョン違い"
 
-#: horizons/gui/modules/multiplayermenu.py:229
+#: horizons/gui/modules/multiplayermenu.py:234
 #, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -1805,411 +1967,416 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
+"ゲームのバージョンがあなたのものと異なります。複数プレイヤーゲームのプレイ"
+"ヤーは、全員同じバージョンを使っていなければなりません。全プレイヤーが最新の"
+"バージョンに更新することで問題は解決します。ゲームバージョン：{game_version} "
+"あなたのバージョン：{own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:267
+#: horizons/gui/modules/multiplayermenu.py:272
 msgid "Password of the game"
-msgstr ""
+msgstr "ゲームのパスワード"
 
-#: horizons/gui/modules/multiplayermenu.py:268
+#: horizons/gui/modules/multiplayermenu.py:273
 msgid "Enter password:"
-msgstr ""
+msgstr "パスワードを入力してください："
 
-#: horizons/gui/modules/multiplayermenu.py:347
-#: horizons/gui/modules/singleplayermenu.py:406
+#: horizons/gui/modules/multiplayermenu.py:358
+#: horizons/gui/modules/singleplayermenu.py:410
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "推奨プレイヤー数：{number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/gui/modules/multiplayermenu.py:393
+#: horizons/gui/modules/multiplayermenu.py:404
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr ""
+msgstr "準備完了"
 
-#: horizons/gui/modules/multiplayermenu.py:395
+#: horizons/gui/modules/multiplayermenu.py:406
 msgid "Not ready"
-msgstr ""
+msgstr "準備中"
 
-#: horizons/gui/modules/multiplayermenu.py:430
+#: horizons/gui/modules/multiplayermenu.py:441
 msgid "Enter your message"
-msgstr ""
+msgstr "あなたからのメッセージを入力してください"
 
-#: horizons/gui/modules/multiplayermenu.py:478
-#: horizons/gui/modules/multiplayermenu.py:486
+#: horizons/gui/modules/multiplayermenu.py:489
+#: horizons/gui/modules/multiplayermenu.py:497
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "名前や色の変更をするにはここをクリックしてください"
 
-#: horizons/gui/modules/multiplayermenu.py:504
+#: horizons/gui/modules/multiplayermenu.py:515
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:571
-#, python-brace-format
-msgid "{player} has joined the game"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:574
-#, python-brace-format
-msgid "{player} has left the game"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:580
-msgid "You are now ready"
-msgstr ""
+msgstr "{player}を追い出す"
 
 #: horizons/gui/modules/multiplayermenu.py:582
-msgid "You are not ready anymore"
-msgstr ""
+#, python-brace-format
+msgid "{player} has joined the game"
+msgstr "{player}がゲームに参加しました"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
-msgid "{player} is now ready"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:587
-#, python-brace-format
-msgid "{player} not ready anymore"
-msgstr ""
+msgid "{player} has left the game"
+msgstr "{player}がゲームから去りました"
 
 #: horizons/gui/modules/multiplayermenu.py:591
-#, python-brace-format
-msgid "You are now known as {new_name}"
-msgstr ""
+msgid "You are now ready"
+msgstr "あなたは準備完了です"
 
 #: horizons/gui/modules/multiplayermenu.py:593
+msgid "You are not ready anymore"
+msgstr "あなたは準備完了ではなくなりました"
+
+#: horizons/gui/modules/multiplayermenu.py:596
+#, python-brace-format
+msgid "{player} is now ready"
+msgstr "{player}は準備完了です"
+
+#: horizons/gui/modules/multiplayermenu.py:598
+#, python-brace-format
+msgid "{player} not ready anymore"
+msgstr "{player}は準備完了ではなくなりました"
+
+#: horizons/gui/modules/multiplayermenu.py:602
+#, python-brace-format
+msgid "You are now known as {new_name}"
+msgstr "あなたの名前はこれから{new_name}です"
+
+#: horizons/gui/modules/multiplayermenu.py:604
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player}の名前はこれから{new_name}です"
 
-#: horizons/gui/modules/multiplayermenu.py:597
+#: horizons/gui/modules/multiplayermenu.py:608
 msgid "You changed your color"
-msgstr ""
+msgstr "あなたは色を変更しました"
 
-#: horizons/gui/modules/multiplayermenu.py:599
+#: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player}は色を変更しました"
 
-#: horizons/gui/modules/multiplayermenu.py:603
+#: horizons/gui/modules/multiplayermenu.py:614
 msgid "Kicked"
-msgstr ""
+msgstr "追い出されました"
 
-#: horizons/gui/modules/multiplayermenu.py:603
+#: horizons/gui/modules/multiplayermenu.py:614
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "あなたは作成者によってゲームから追い出されました"
 
-#: horizons/gui/modules/multiplayermenu.py:606
+#: horizons/gui/modules/multiplayermenu.py:617
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player}は作成者によって追い出されました"
 
-#: horizons/gui/modules/pausemenu.py:82
+#: horizons/gui/modules/pausemenu.py:88
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "本当に実行中のセッションを停止しますか？"
 
-#: horizons/gui/modules/pausemenu.py:83
+#: horizons/gui/modules/pausemenu.py:89
 msgid "Quit Session"
-msgstr ""
+msgstr "セッション終了"
 
-#: horizons/gui/modules/select_savegame.py:75
-#, fuzzy
+#: horizons/gui/modules/select_savegame.py:87
 msgid "No saved games"
-msgstr "ゲームの読み込み"
+msgstr "保存済みゲームはありません"
 
-#: horizons/gui/modules/select_savegame.py:75
+#: horizons/gui/modules/select_savegame.py:87
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "読み込める保存済みゲームがありません。"
 
-#: horizons/gui/modules/select_savegame.py:144
+#: horizons/gui/modules/select_savegame.py:156
 msgid "No filename given"
-msgstr ""
+msgstr "ファイル名がありません"
 
-#: horizons/gui/modules/select_savegame.py:145
+#: horizons/gui/modules/select_savegame.py:157
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "有効なファイル名を入力してください。"
 
-#: horizons/gui/modules/select_savegame.py:149
+#: horizons/gui/modules/select_savegame.py:161
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "{name}という名の保存済みゲームが既に存在します。"
 
-#: horizons/gui/modules/select_savegame.py:151
+#: horizons/gui/modules/select_savegame.py:163
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "{name}という名の地図が既に存在します。"
 
-#: horizons/gui/modules/select_savegame.py:153
+#: horizons/gui/modules/select_savegame.py:165
 msgid "Overwrite it?"
-msgstr ""
+msgstr "これに上書きしますか？"
 
-#: horizons/gui/modules/select_savegame.py:217
+#: horizons/gui/modules/select_savegame.py:232
 msgid "Unknown savedate"
-msgstr ""
+msgstr "保存日時が不明"
 
-#: horizons/gui/modules/select_savegame.py:220
-#, fuzzy, python-brace-format
+#: horizons/gui/modules/select_savegame.py:235
+#, python-brace-format
 msgid "Saved at {time}"
-msgstr "ゲームの読み込み"
+msgstr "{time}に保存されました"
 
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/modules/select_savegame.py:224
+#: horizons/gui/modules/select_savegame.py:239
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "{amount}回保存されました"
 
-#: horizons/gui/modules/select_savegame.py:231
+#: horizons/gui/modules/select_savegame.py:246
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "保存ゲームバージョン{version}"
 
-#: horizons/gui/modules/select_savegame.py:235
+#: horizons/gui/modules/select_savegame.py:250
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "（おそらく互換性なし）"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
-#: horizons/gui/modules/select_savegame.py:239
+#: horizons/gui/modules/select_savegame.py:254
 msgid "Incompatible version"
-msgstr ""
+msgstr "互換性のないバージョン"
 
-#: horizons/gui/modules/select_savegame.py:252
+#: horizons/gui/modules/select_savegame.py:267
 msgid "No file selected"
-msgstr ""
+msgstr "ファイルが選択されていません"
 
-#: horizons/gui/modules/select_savegame.py:252
+#: horizons/gui/modules/select_savegame.py:267
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "削除する保存済みゲームを選択する必要があります。"
 
-#: horizons/gui/modules/select_savegame.py:255
+#: horizons/gui/modules/select_savegame.py:270
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "本当に保存済みゲーム「{name}」を削除しますか？"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:272
 msgid "Confirm deletion"
-msgstr ""
+msgstr "削除の確認"
 
-#: horizons/gui/modules/select_savegame.py:262
+#: horizons/gui/modules/select_savegame.py:277
 msgid "Error!"
-msgstr ""
+msgstr "エラー！"
 
-#: horizons/gui/modules/select_savegame.py:262
-#, fuzzy
-#| msgid "Loads the last quicksave."
+#: horizons/gui/modules/select_savegame.py:277
 msgid "Failed to delete savefile!"
-msgstr "最新のクイックセーブのロード。"
+msgstr "保存ファイルの削除に失敗しました！"
 
-#: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
+#: horizons/gui/modules/settings.py:57 horizons/gui/modules/settings.py:120
 msgid "Hotkeys"
-msgstr ""
+msgstr "ホットキー"
 
-#: horizons/gui/modules/settings.py:55
-#, fuzzy
+#: horizons/gui/modules/settings.py:58
 msgid "Game"
-msgstr "ゲーム終了"
+msgstr "ゲーム"
 
-#: horizons/gui/modules/settings.py:72
+#: horizons/gui/modules/settings.py:78
 msgid "Disabled"
-msgstr ""
-
-#: horizons/gui/modules/settings.py:126
-msgid "Restart required"
-msgstr ""
-
-#: horizons/gui/modules/settings.py:127
-msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
-
-#: horizons/gui/modules/settings.py:131
-#, fuzzy
-msgid "Restore default settings"
-msgstr "初期設定に戻す"
+msgstr "無効"
 
 #: horizons/gui/modules/settings.py:132
+msgid "Restart required"
+msgstr "再起動が必要です"
+
+#: horizons/gui/modules/settings.py:133
+#, fuzzy
+#| msgid "Some of your changes require a restart of Unknown Horizons."
+msgid ""
+"Some of your changes require a restart of Unknown Horizons. Do you want to "
+"restart Unknown Horizons now?"
+msgstr "いくつかの変更はUnknown Horizonsの再起動を必要とします。"
+
+#: horizons/gui/modules/settings.py:138
+msgid "Restore default settings"
+msgstr "設定を既定値に戻す"
+
+#: horizons/gui/modules/settings.py:139
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
-msgstr ""
+msgstr "設定を既定値に戻すと、これまで設定に加えた変更の全てが失われます。"
 
-#: horizons/gui/modules/settings.py:133
+#: horizons/gui/modules/settings.py:140
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "続けますか？"
 
-#: horizons/gui/modules/settings.py:230
-msgid "Warning"
-msgstr ""
-
-#. i18n Warning popup shown in settings when SDL is selected as renderer.
-#: horizons/gui/modules/settings.py:232
-msgid ""
-"The SDL renderer is meant as a fallback solution only and has serious "
-"graphical glitches. \n"
-"\n"
-"Use at own risk!"
-msgstr ""
-
-#: horizons/gui/modules/settings.py:259
+#: horizons/gui/modules/settings.py:261
 msgid "Invalid network port"
-msgstr ""
+msgstr "ネットワークポートが無効です"
 
-#: horizons/gui/modules/settings.py:260
-#, fuzzy
-#| msgid ""
-#| "Error: Invalid syntax in --mp-bind commandline option. Port must be a "
-#| "number between 1 and 65535."
+#: horizons/gui/modules/settings.py:262
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"エラー：　--mp-bindオプションが不正です。ポート番号は1から65535までの数を指定"
-"してください。"
+"あなたが指定したポートは有効ではありません。ポート番号は1から65535までの数で"
+"なくてはなりません。"
 
-#: horizons/gui/modules/settings.py:261
+#: horizons/gui/modules/settings.py:263
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "入力したポートを再確認して指定範囲内に収めて下さい。"
 
-#: horizons/gui/modules/settings.py:272
+#: horizons/gui/modules/settings.py:274
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "新しいネットワーク設定の適用に失敗しました。"
 
-#. i18n This is advice for players seeing a network error with the current config
-#: horizons/gui/modules/settings.py:278
+#. i18n This is advice for players seeing a network error with the current
+#. config
+#: horizons/gui/modules/settings.py:280
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
 msgstr ""
+"小さいポート番号は特別なアクセス権限を必要とすることがありますので、0か1024よ"
+"りも大きい番号を選んでください。"
 
-#: horizons/gui/modules/singleplayermenu.py:105
+#: horizons/gui/modules/singleplayermenu.py:109
 msgid "Invalid player name"
-msgstr ""
+msgstr "プレイヤー名が無効です"
 
-#: horizons/gui/modules/singleplayermenu.py:105
+#: horizons/gui/modules/singleplayermenu.py:109
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "無効なプレイヤー名を入力しました。"
 
-#: horizons/gui/modules/singleplayermenu.py:148
-#, fuzzy
-#| msgid "Resource deposit"
+#: horizons/gui/modules/singleplayermenu.py:152
 msgid "Resource density:"
-msgstr "資源の鉱床"
-
-#: horizons/gui/modules/singleplayermenu.py:226
-msgid "Map size:"
-msgstr ""
-
-#: horizons/gui/modules/singleplayermenu.py:227
-msgid "Water:"
-msgstr ""
-
-#: horizons/gui/modules/singleplayermenu.py:228
-msgid "Max island size:"
-msgstr ""
-
-#: horizons/gui/modules/singleplayermenu.py:229
-msgid "Preferred island size:"
-msgstr ""
+msgstr "資源の密度："
 
 #: horizons/gui/modules/singleplayermenu.py:230
+msgid "Map size:"
+msgstr "地図の寸法："
+
+#: horizons/gui/modules/singleplayermenu.py:231
+msgid "Water:"
+msgstr "水："
+
+#: horizons/gui/modules/singleplayermenu.py:232
+msgid "Max island size:"
+msgstr "最大の島の大きさ："
+
+#: horizons/gui/modules/singleplayermenu.py:233
+msgid "Preferred island size:"
+msgstr "望ましい島の大きさ："
+
+#: horizons/gui/modules/singleplayermenu.py:234
 msgid "Island size deviation:"
-msgstr ""
+msgstr "島の大きさのずれ："
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:348
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "クリックすると別のランダム地図を生成します"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:508
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "シナリオファイルが無効です"
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:509
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "選択したファイルは有効なシナリオファイルではありません。"
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:510
 msgid "Error message:"
-msgstr ""
+msgstr "エラーメッセージ："
 
-#: horizons/gui/modules/singleplayermenu.py:507
+#: horizons/gui/modules/singleplayermenu.py:511
 msgid "Please report this to the author."
-msgstr ""
+msgstr "これを作者に知らせてください。"
 
-#: horizons/gui/modules/singleplayermenu.py:569
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "難易度：{difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:572
+#: horizons/gui/modules/singleplayermenu.py:576
 #, python-brace-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "著者：{author}"
 
-#: horizons/gui/modules/singleplayermenu.py:575
+#: horizons/gui/modules/singleplayermenu.py:579
 #, python-brace-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "摘要：{desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:230
 #, python-brace-format
 msgid "Build {building}"
-msgstr ""
+msgstr "{building}を建設"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
+msgstr "このヒントを消すにはHを押してください"
+
+#: horizons/gui/mousetools/tearingtool.py:112
+#, fuzzy
+#| msgid "Related buildings"
+msgid "Destroy all buildings"
+msgstr "関連する建築物"
+
+#: horizons/gui/mousetools/tearingtool.py:113
+msgid ""
+"This will destroy all the buildings that fall outside of the settlement "
+"range."
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:47
-#, fuzzy
-msgid "Boat builder overview"
-msgstr "支部の概要"
+#: horizons/gui/mousetools/tearingtool.py:116
+#, python-format
+msgid "%s additional building will be destroyed."
+msgid_plural "%s additional buildings will be destroyed"
+msgstr[0] ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:94
+#: horizons/gui/tabs/barrackstabs.py:36
+#, fuzzy
+#| msgid "Warehouse overview"
+msgid "Barracks overview"
+msgstr "倉庫の概要"
+
+#: horizons/gui/tabs/barrackstabs.py:114
+msgid "Swordman"
+msgstr ""
+
+#: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship}（待機場所：{place}）"
 
-#: horizons/gui/tabs/boatbuildertabs.py:198
-msgid "Build this ship!"
-msgstr ""
-
-#: horizons/gui/tabs/boatbuildertabs.py:234
-msgid "Fisher boats"
-msgstr ""
-
-#: horizons/gui/tabs/boatbuildertabs.py:246
-msgid "Trade boats"
-msgstr ""
-
-#: horizons/gui/tabs/boatbuildertabs.py:258
-msgid "War boats"
-msgstr ""
-
-#: horizons/gui/tabs/boatbuildertabs.py:270
-msgid "War ships"
-msgstr ""
+#: horizons/gui/tabs/boatbuildertabs.py:209
+msgid "Boat builder overview"
+msgstr "造船所の概要"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
-msgid "Confirm order"
-msgstr ""
+msgid "Fisher boats"
+msgstr "漁船"
+
+#: horizons/gui/tabs/boatbuildertabs.py:300
+msgid "Trade boats"
+msgstr "貿易船"
+
+#: horizons/gui/tabs/boatbuildertabs.py:312
+msgid "War boats"
+msgstr "戦船"
+
+#: horizons/gui/tabs/boatbuildertabs.py:324
+msgid "War ships"
+msgstr "軍艦"
 
 #: horizons/gui/tabs/buildingtabs.py:33
-#, fuzzy
 msgid "Tower overview"
-msgstr "支部の概要"
+msgstr "塔の概要"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
-msgstr ""
+msgstr "概要"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr ""
+msgstr "関連建造物を建設"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "交易の提案を追加するには、資源スロットの一つをクリックしてください。"
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2217,6 +2384,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"そのラベルをクリックして売りか買いかを設定し、右側のスライダーを使って量を調"
+"節してください。"
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
@@ -2224,6 +2393,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"在庫が{limit}tよりも少なくなれば、常に{resource_name}を{price}ゴールド/tの価"
+"格で買います。"
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2231,1000 +2402,1016 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"在庫が{limit}tよりも多ければ、常に{resource_name}を{price}ゴールド/tの価格で"
+"売ります。"
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "支部の概要"
+msgstr "倉庫の概要"
 
-#: horizons/gui/tabs/mainsquaretabs.py:62
+#: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr ""
+msgstr "会計"
 
-#: horizons/gui/tabs/mainsquaretabs.py:111
-#, fuzzy
+#: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
-msgstr "支部の概要"
+msgstr "中央広場の概要"
 
-#: horizons/gui/tabs/mainsquaretabs.py:142
+#: horizons/gui/tabs/mainsquaretabs.py:149
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "昇格はできません："
 
-#: horizons/gui/tabs/mainsquaretabs.py:145
+#: horizons/gui/tabs/mainsquaretabs.py:152
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "今のところ、これがプレイしうる最高の階層です！"
 
-#: horizons/gui/tabs/mainsquaretabs.py:190
+#: horizons/gui/tabs/mainsquaretabs.py:198
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "昇格を許可しない"
 
-#: horizons/gui/tabs/mainsquaretabs.py:193
+#: horizons/gui/tabs/mainsquaretabs.py:201
 msgid "Allow upgrades"
-msgstr ""
+msgstr "昇格を許可"
 
-#: horizons/gui/tabs/overviewtab.py:103
-#, fuzzy
+#: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
-msgstr "支部の概要"
+msgstr "ユニットの概要"
 
-#: horizons/gui/tabs/productiontabs.py:44
-#: horizons/gui/tabs/productiontabs.py:235
-#, fuzzy
+#: horizons/gui/tabs/productiontabs.py:47
+#: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
-msgstr "支部の概要"
+msgstr "生産の概要"
+
+#: horizons/gui/tabs/productiontabs.py:300
+#, python-brace-format
+msgid "Fill range with {how_many} trees"
+msgstr ""
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
-msgstr ""
+msgstr "選択したユニット"
 
 #: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
-#: horizons/gui/tabs/shiptabs.py:178
-#, fuzzy
+#: horizons/gui/tabs/shiptabs.py:200 horizons/gui/tabs/shiptabs.py:205
 msgid "Ship overview"
-msgstr "支部の概要"
+msgstr "船の概要"
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "入植地を拓くためには、船を島に近づけなくてはなりません。"
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "あなたは既にこの島に入植地を持っています。"
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
-msgstr ""
+msgstr "荷積み/荷揚げ"
 
 #: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
-msgstr ""
+msgstr "売り/買い"
 
 #: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
-msgstr ""
+msgstr "最寄りの交易可能な倉庫から離れすぎています"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "貿易船に武器を装備することはできません"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "貿易船に武器を装備することはできません。"
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr ""
+msgstr "武装"
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
-msgstr ""
+msgstr "武装解除"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price}ゴールド"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "{buyprice}ゴールドで買う"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "{sellprice}ゴールドで売る"
 
-#: horizons/gui/widgets/inventory.py:166
+#: horizons/gui/widgets/inventory.py:171
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
-#: horizons/gui/widgets/inventory.py:168
+#: horizons/gui/widgets/inventory.py:173
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "上限：スロット当たり{amount}t"
 
 #: horizons/gui/widgets/logbook.py:49
 msgid "Logbook"
-msgstr ""
+msgstr "航海日誌"
 
-#: horizons/gui/widgets/logbook.py:183
+#: horizons/gui/widgets/logbook.py:187
 msgid "Emptiness"
-msgstr ""
+msgstr "白紙"
 
-#: horizons/gui/widgets/logbook.py:186
+#: horizons/gui/widgets/logbook.py:190
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "あなたの航海日誌にはまだ何も書かれていません！"
 
 #: horizons/gui/widgets/playerssettlements.py:39
 #, python-brace-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "{player}の入植地"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-brace-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "{player}の船"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:94
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: horizons/gui/widgets/playersships.py:96
-#, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
 #: horizons/gui/widgets/productionoverview.py:60
 #, python-brace-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "{settlement}の生産概要"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "クリックすると統計が表示されます"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "クリックすると新しいスロットが追加されます"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "この設定を出荷時既定値に初期化する。"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
-msgstr ""
+msgstr "表示されているこの入植地の資源を保存した既定設定に初期化する。"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
-msgstr ""
+msgstr "（ここに表示されている）全入植地の既定設定を出荷時既定値に初期化する。"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:623
+#: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr ""
+msgstr "購入費用"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:626
+#: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr ""
+msgstr "売上所得"
 
-#: horizons/gui/widgets/routeconfig.py:107
+#: horizons/gui/widgets/routeconfig.py:111
 msgid "Stop route"
-msgstr ""
+msgstr "交易路を停止"
 
-#: horizons/gui/widgets/routeconfig.py:114
-#, fuzzy
+#: horizons/gui/widgets/routeconfig.py:118
 msgid "Need at least two settlements"
-msgstr "木製の要塞：　集落を防衛します。"
+msgstr "少なくとも2つの入植地が必要です"
 
-#: horizons/gui/widgets/routeconfig.py:115
+#: horizons/gui/widgets/routeconfig.py:119
 msgid "You need at least two different settlements in your route."
-msgstr ""
+msgstr "交易路上には少なくとも別々の2つの入植地が必要です。"
 
-#: horizons/gui/widgets/routeconfig.py:144
+#: horizons/gui/widgets/routeconfig.py:148
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "経路点を追加するには入植地をクリックしてください！"
 
-#: horizons/gui/widgets/routeconfig.py:183
+#: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
-msgstr ""
+msgstr "船に積み込む"
 
-#: horizons/gui/widgets/routeconfig.py:190
+#: horizons/gui/widgets/routeconfig.py:194
 msgid "Unloading from ship"
-msgstr ""
+msgstr "船から荷揚げする"
 
-#: horizons/gui/widgets/routeconfig.py:376
+#: horizons/gui/widgets/routeconfig.py:380
 msgid "You are not allowed to trade with this player"
-msgstr ""
+msgstr "このプレイヤーと交易することは禁じられています"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}：{amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
-msgstr ""
+msgstr "なし"
 
-#: horizons/gui/windows.py:391
+#: horizons/gui/windows.py:411
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "詳細：{error_details}"
 
-#: horizons/gui/windows.py:393
+#: horizons/gui/windows.py:413
 #, python-brace-format
 msgid "Error: {error_message}"
-msgstr ""
-
-#. name of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:56
-msgid "Alvearies"
-msgstr ""
-
-#. tooltip_text of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:58
-msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
+msgstr "エラー：{error_message}"
 
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:63
+#: horizons/i18n/objecttranslations.py:56
 msgid "Bakery"
-msgstr ""
+msgstr "パン屋"
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:65
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
-msgstr "肉屋：　豚か牛が必要です。食糧を生産します。"
+msgstr "小麦粉を消費し、食糧を生産します。"
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:70
+#: horizons/i18n/objecttranslations.py:63
 msgid "Barracks"
-msgstr ""
+msgstr "兵営"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:72
+#: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "陸地戦に適したユニットを募集します。"
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:77
+#: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "調合所"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:79
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr "工具製作所：　鉄から工具を作ります。"
+msgstr "スパイスから調味料を作ります。"
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:84
+#: horizons/i18n/objecttranslations.py:77
 msgid "Boat Builder"
-msgstr ""
+msgstr "船大工"
 
 #. tooltip_text of buildings:boatbuilder
+#: horizons/i18n/objecttranslations.py:79
+msgid "Builds boats and small ships. Built on coast."
+msgstr "手漕ぎ船と小舟を作ります。海岸沿いに建造してください。"
+
+#. name of buildings:brewery
+#: horizons/i18n/objecttranslations.py:84
+msgid "Brewery"
+msgstr ""
+
+#. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
 #, fuzzy
-msgid "Builds boats and small ships. Built on coast."
-msgstr "船大工：　手漕ぎ船と小舟を作ります。海岸沿いに建造してください。"
+#| msgid "Consumes flour. Produces food."
+msgid "Consumes hops. Produces Beer."
+msgstr "小麦粉を消費し、食糧を生産します。"
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:91
 msgid "Brickyard"
-msgstr ""
+msgstr "煉瓦工場"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:93
-#, fuzzy
 msgid "Turns clay into bricks."
-msgstr "レンガ工場：　粘土からレンガを作ります。"
+msgstr "粘土から煉瓦を作ります。"
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:98
 msgid "Butchery"
-msgstr ""
+msgstr "肉屋"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:100
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "肉屋：　豚か牛が必要です。食糧を生産します。"
+msgstr "豚か牛を必要とし、食糧を生産します。"
 
-#. name of buildings:cattlerun
+#. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
-msgid "Cattle Run"
+msgid "Cannon Foundry"
 msgstr ""
 
-#. tooltip_text of buildings:cattlerun
+#. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
 #, fuzzy
-msgid "Raises cattle. Needs a farm."
-msgstr "牛の放牧地：　牛を育てます。農場が必要です。"
+#| msgid "Produces tools out of iron."
+msgid "Produces Cannons."
+msgstr "鉄から工具を生産します。"
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:112
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "炭焼き"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:114
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "木板を大量に燃やします。"
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:119
 msgid "Clay Deposit"
-msgstr ""
+msgstr "粘土層"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:124
 msgid "Clay Pit"
-msgstr ""
+msgstr "粘土採掘所"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:126
-#, fuzzy
 msgid "Gets clay from deposit."
-msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
-
-#. name of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:131
-msgid "Cocoa Field"
-msgstr ""
-
-#. tooltip_text of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:133
-#, fuzzy
-msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr "タバコ畑：　タバコを作ります。農場が必要です。"
-
-#. name of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:138
-msgid "Corn Field"
-msgstr ""
-
-#. tooltip_text of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:140
-#, fuzzy
-msgid "Yields corn. Needs a farm."
-msgstr "ジャガイモ畑：　食糧を生産します。農場が必要です。"
+msgstr "粘土層から粘土を採取します。"
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:145
+#: horizons/i18n/objecttranslations.py:131
 msgid "Distillery"
-msgstr ""
+msgstr "醸造所"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:147
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:133
 msgid "Turns sugar into liquor."
-msgstr "蒸留酒製造所：　砂糖から酒を造ります。"
+msgstr "砂糖から酒を造ります。"
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:152
+#: horizons/i18n/objecttranslations.py:138
 msgid "Doctor"
-msgstr ""
+msgstr "医師"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:140
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "病の手当をします。薬草を消費します。"
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:159
+#: horizons/i18n/objecttranslations.py:145
 msgid "Farm"
-msgstr ""
+msgstr "農家"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:161
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:147
 msgid "Grows field crops and raises livestock."
-msgstr "農場：　作物を栽培し、家畜を育てます。"
+msgstr "作物を栽培し、家畜を育てます。"
 
-#. name of buildings:fireservice
+#. name of buildings:fields:alvearies
+#: horizons/i18n/objecttranslations.py:152
+msgid "Alvearies"
+msgstr "養蜂家"
+
+#. tooltip_text of buildings:fields:alvearies
+#: horizons/i18n/objecttranslations.py:154
+msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
+msgstr "蜂を飼います。菓子に使う蜂の巣を生産します。農家が必要です。"
+
+#. name of buildings:fields:cattlerun
+#: horizons/i18n/objecttranslations.py:159
+msgid "Cattle Run"
+msgstr "牛放牧地"
+
+#. tooltip_text of buildings:fields:cattlerun
+#: horizons/i18n/objecttranslations.py:161
+msgid "Raises cattle. Needs a farm."
+msgstr "牛を育てます。農家が必要です。"
+
+#. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:166
-msgid "Fire Station"
-msgstr ""
+msgid "Cocoa Field"
+msgstr "カカオ畑"
 
-#. tooltip_text of buildings:fireservice
+#. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:168
-msgid "Extinguishes fires."
-msgstr ""
+msgid "Produces cocoa beans used for confectionery. Needs a farm."
+msgstr "菓子に使うカカオ豆を生産します。農家が必要です。"
 
-#. name of buildings:fishdeposit
+#. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:173
-#, fuzzy
-msgid "Fish Deposit"
-msgstr "鉄の貯蔵"
+msgid "Corn Field"
+msgstr "とうもろこし畑"
 
-#. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:178
-msgid "Fisherman's Tent"
-msgstr ""
+#. tooltip_text of buildings:fields:cornfield
+#: horizons/i18n/objecttranslations.py:175
+msgid "Yields corn. Needs a farm."
+msgstr "とうもろこしを生産します。農家が必要です。"
 
-#. tooltip_text of buildings:fishermanstent
+#. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:180
-#, fuzzy
-msgid "Fishes the sea, produces food."
-msgstr "漁師：　魚を捕って、食糧を生産します。"
-
-#. name of buildings:herbary
-#: horizons/i18n/objecttranslations.py:185
 msgid "Herbary"
-msgstr ""
+msgstr "薬草畑"
 
-#. tooltip_text of buildings:herbary
+#. tooltip_text of buildings:fields:herbary
+#: horizons/i18n/objecttranslations.py:182
+msgid "Produces herbs. Needs a farm."
+msgstr "薬草を生産します。農家が必要です。"
+
+#. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:187
 #, fuzzy
-msgid "Produces herbs. Needs a farm."
-msgstr "タバコ畑：　タバコを作ります。農場が必要です。"
+#| msgid "Corn Field"
+msgid "Hop Field"
+msgstr "とうもろこし畑"
+
+#. tooltip_text of buildings:fields:hopfield
+#: horizons/i18n/objecttranslations.py:189
+#, fuzzy
+#| msgid "Yields corn. Needs a farm."
+msgid "Yields hop. Needs a farm."
+msgstr "とうもろこしを生産します。農家が必要です。"
+
+#. name of buildings:fields:pasture
+#: horizons/i18n/objecttranslations.py:194
+msgid "Pasture"
+msgstr "牧草地"
+
+#. tooltip_text of buildings:fields:pasture
+#: horizons/i18n/objecttranslations.py:196
+msgid "Raises sheep. Produces wool. Needs a farm."
+msgstr "羊を育て、羊毛を生産します。農家が必要です。"
+
+#. name of buildings:fields:pigsty
+#: horizons/i18n/objecttranslations.py:201
+msgid "Pigsty"
+msgstr "豚小屋"
+
+#. tooltip_text of buildings:fields:pigsty
+#: horizons/i18n/objecttranslations.py:203
+msgid "Raises pigs. Needs a farm."
+msgstr "豚を育てます。農家が必要です。"
+
+#. name of buildings:fields:potatofield
+#: horizons/i18n/objecttranslations.py:208
+msgid "Potato Field"
+msgstr "じゃがいも畑"
+
+#. tooltip_text of buildings:fields:potatofield
+#: horizons/i18n/objecttranslations.py:210
+msgid "Yields food. Needs a farm."
+msgstr "食糧を生産します。農家が必要です。"
+
+#. name of buildings:fields:spicefield
+#: horizons/i18n/objecttranslations.py:215
+msgid "Spice Field"
+msgstr "スパイス畑"
+
+#. tooltip_text of buildings:fields:spicefield
+#: horizons/i18n/objecttranslations.py:217
+msgid "Grows spices. Needs a farm."
+msgstr "スパイスを育てます。農家が必要です。"
+
+#. name of buildings:fields:sugarfield
+#: horizons/i18n/objecttranslations.py:222
+msgid "Sugar Field"
+msgstr "さとうきび畑"
+
+#. tooltip_text of buildings:fields:sugarfield
+#: horizons/i18n/objecttranslations.py:224
+msgid "Used in liquor production. Needs a farm."
+msgstr "酒の醸造に使います。農家が必要です。"
+
+#. name of buildings:fields:tobaccofield
+#: horizons/i18n/objecttranslations.py:229
+msgid "Tobacco Field"
+msgstr "たばこ畑"
+
+#. tooltip_text of buildings:fields:tobaccofield
+#: horizons/i18n/objecttranslations.py:231
+msgid "Produces tobacco. Needs a farm."
+msgstr "たばこを作ります。農家が必要です。"
+
+#. name of buildings:fields:vineyard
+#: horizons/i18n/objecttranslations.py:236
+msgid "Vineyard"
+msgstr "葡萄畑"
+
+#. tooltip_text of buildings:fields:vineyard
+#: horizons/i18n/objecttranslations.py:238
+msgid "Produces grapes for use in wine and confectionery. Needs a farm."
+msgstr "ワインと菓子に使う葡萄を生産します。農家が必要です。"
+
+#. name of buildings:fireservice
+#: horizons/i18n/objecttranslations.py:243
+msgid "Fire Station"
+msgstr "消防署"
+
+#. tooltip_text of buildings:fireservice
+#: horizons/i18n/objecttranslations.py:245
+msgid "Extinguishes fires."
+msgstr "火事を消火します。"
+
+#. name of buildings:fishdeposit
+#: horizons/i18n/objecttranslations.py:250
+msgid "Fish Deposit"
+msgstr "漁場"
+
+#. name of buildings:fishermanstent
+#: horizons/i18n/objecttranslations.py:255
+msgid "Fisherman's Tent"
+msgstr "漁師のテント"
+
+#. tooltip_text of buildings:fishermanstent
+#: horizons/i18n/objecttranslations.py:257
+msgid "Fishes the sea, produces food."
+msgstr "海で漁を行い、食糧を生産します。"
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:192
+#: horizons/i18n/objecttranslations.py:262
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "猟師のテント"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:194
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:264
 msgid "Hunts wild forest animals, produces food."
-msgstr "猟師：　森の動物を狩って、食糧を生産します。"
-
-#. name of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:199
-#, fuzzy
-msgid "Iron Mine"
-msgstr "鉄の貯蔵"
-
-#. tooltip_text of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:201
-#, fuzzy
-msgid "Gets iron ore from deposit."
-msgstr "鉱山：　鉱床から鉱石を掘ります。"
+msgstr "森の野生動物を狩って、食糧を生産します。"
 
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:206
+#: horizons/i18n/objecttranslations.py:269
 msgid "Lookout"
-msgstr ""
+msgstr "見張り台"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:208
-msgid "Increases the player's sight."
-msgstr ""
+#: horizons/i18n/objecttranslations.py:271
+#, fuzzy
+#| msgid "Defends your settlement."
+msgid "Expands settlement range."
+msgstr "入植地を防衛します。"
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:213
+#: horizons/i18n/objecttranslations.py:276
 msgid "Lumberjack Tent"
-msgstr "伐採所"
+msgstr "木こりのテント"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:215
-#, fuzzy
-#| msgid "Lumberjack Tent"
+#: horizons/i18n/objecttranslations.py:278
 msgid "Lumberjack Hut"
 msgstr "伐採所"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:280
 msgid "Chops down trees and turns them into boards."
 msgstr "木を切って板材を作ります。"
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py:285
 msgid "Main Square"
-msgstr ""
+msgstr "中央広場"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:287
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "市民に財を供給し、コミュニティを提供します。"
+
+#. name of buildings:mine
+#: horizons/i18n/objecttranslations.py:292
+msgid "Mine"
+msgstr "鉱山"
+
+#. tooltip_text of buildings:mine
+#: horizons/i18n/objecttranslations.py:294
+msgid "Gets iron ore from deposit."
+msgstr "鉱床から鉄鉱石を掘り出します。"
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:229
+#: horizons/i18n/objecttranslations.py:299
 msgid "Mountain"
-msgstr ""
+msgstr "山"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:234
+#: horizons/i18n/objecttranslations.py:304
 msgid "Pastry Shop"
-msgstr ""
+msgstr "菓子店"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:236
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:306
 msgid "Produces all kinds of confectionery."
-msgstr "工具製作所：　鉄から工具を作ります。"
-
-#. name of buildings:pasture
-#: horizons/i18n/objecttranslations.py:241
-msgid "Pasture"
-msgstr ""
-
-#. tooltip_text of buildings:pasture
-#: horizons/i18n/objecttranslations.py:243
-#, fuzzy
-msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "牧場：　羊を育てます。羊毛を生産します。農場が必要です。"
+msgstr "あらゆる種類の菓子を生産します。"
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:248
+#: horizons/i18n/objecttranslations.py:311
 msgid "Pavilion"
-msgstr ""
+msgstr "大型テント"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:250
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:313
 msgid "Fulfills religious needs of sailors."
-msgstr "パビリオン：　船乗りの進行を満たします。"
-
-#. name of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:255
-msgid "Pigsty"
-msgstr ""
-
-#. tooltip_text of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:257
-#, fuzzy
-msgid "Raises pigs. Needs a farm."
-msgstr "豚小屋：　豚を育てます。農場が必要です。"
-
-#. name of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:262
-msgid "Potato Field"
-msgstr ""
-
-#. tooltip_text of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:264
-#, fuzzy
-msgid "Yields food. Needs a farm."
-msgstr "ジャガイモ畑：　食糧を生産します。農場が必要です。"
+msgstr "船乗りの信仰心を満たします。"
 
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:269
+#: horizons/i18n/objecttranslations.py:318
 msgid "Ruined Tent"
-msgstr ""
+msgstr "テントの残骸"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:274
+#: horizons/i18n/objecttranslations.py:323
 msgid "Salt Ponds"
-msgstr ""
+msgstr "塩田"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:276
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:325
 msgid "Evaporates salt. Built on sea coast."
-msgstr "塩田：　塩を作ります。海岸沿いに建造してください。"
+msgstr "塩を抽出します。海岸沿いに造ってください。"
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:281
+#: horizons/i18n/objecttranslations.py:330
 msgid "Signal Fire"
-msgstr ""
+msgstr "狼煙台"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:283
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:332
 msgid "Allows the player to trade with the free trader."
-msgstr "のろし：　自由交易船と交易できるようにします。"
+msgstr "プレイヤーが自由交易船と交易できるようにします。"
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:288
+#: horizons/i18n/objecttranslations.py:337
 msgid "Smeltery"
-msgstr ""
+msgstr "精錬所"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:290
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:339
 msgid "Refines all kind of ores."
-msgstr "精錬所：　鉱石を精錬します。"
+msgstr "あらゆる種類の鉱石を精錬します。"
 
-#. name of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:295
-msgid "Spice Field"
-msgstr ""
-
-#. tooltip_text of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:297
+#. name of buildings:stonedeposit
+#: horizons/i18n/objecttranslations.py:344
 #, fuzzy
-msgid "Grows spices. Needs a farm."
-msgstr "豚小屋：　豚を育てます。農場が必要です。"
+#| msgid "stone deposit"
+msgid "Stone Deposit"
+msgstr "岩石層"
 
-#. name_2 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:302
+#. name_3 of buildings:stonemason
+#: horizons/i18n/objecttranslations.py:349
 msgid "Stonemason"
-msgstr ""
+msgstr "石屋"
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py:351
 msgid "Carver"
-msgstr ""
+msgstr "石工"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:306
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:353
 msgid "Carves stone tops into bricks."
-msgstr "レンガ工場：　粘土からレンガを作ります。"
+msgstr "石片を切り出して煉瓦にします。"
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:311
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:358
 msgid "Stone Pit"
-msgstr "鉄の貯蔵"
+msgstr "採石場"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:313
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:360
 msgid "Gets stone from a mountain."
-msgstr "鉱山：　鉱床から鉱石を掘ります。"
+msgstr "山から石を切り出します。"
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:318
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:365
 msgid "Storage Tent"
-msgstr "ストレージのテント"
+msgstr "貯蔵テント"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:320
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:367
 msgid "Storage Hut"
-msgstr "ストレージのテント"
+msgstr "貯蔵所"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:322
+#: horizons/i18n/objecttranslations.py:369
 #, fuzzy
-msgid "Extends stock and provides collectors."
-msgstr "貯蔵庫：　貯蔵量を増やします。"
-
-#. name of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:327
-msgid "Sugar Field"
-msgstr ""
-
-#. tooltip_text of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:329
-#, fuzzy
-msgid "Used in liquor production. Needs a farm."
-msgstr "サトウキビ畑：　酒の醸造に使います。農場が必要です。"
+#| msgid "Extends stock and provides collectors."
+msgid "Extends stock, expands settlement range and provides collectors."
+msgstr "在庫容量を増やし、在庫を人夫に引き渡します。"
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py:374
 msgid "Tavern"
-msgstr ""
+msgstr "酒場"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:336
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:376
 msgid "Provides get-together."
-msgstr "酒場：　住民の集いの場です。"
+msgstr "住民の集いの場を提供します。"
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py:381
 msgid "Tent"
-msgstr ""
+msgstr "テント"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:343
+#: horizons/i18n/objecttranslations.py:383
 msgid "Hut"
-msgstr ""
+msgstr "小屋"
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:345
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:385
 msgid "House"
 msgstr "住宅"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:347
+#: horizons/i18n/objecttranslations.py:387
 msgid "Stone house"
-msgstr ""
+msgstr "石造りの家"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:349
+#: horizons/i18n/objecttranslations.py:389
 msgid "Estate"
-msgstr ""
+msgstr "邸宅"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:351
+#: horizons/i18n/objecttranslations.py:391
 msgid "Manor"
-msgstr ""
+msgstr "荘園"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:353
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:393
 msgid "Houses your inhabitants."
-msgstr "テント：　住民の住宅です。"
-
-#. name of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:358
-msgid "Tobacco Field"
-msgstr ""
-
-#. tooltip_text of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:360
-#, fuzzy
-msgid "Produces tobacco. Needs a farm."
-msgstr "タバコ畑：　タバコを作ります。農場が必要です。"
+msgstr "住民に住居を提供します。"
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py:398
 msgid "Tobacconist"
-msgstr ""
+msgstr "たばこ屋"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:367
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:400
 msgid "Produces tobaccos out of tobacco."
-msgstr "タバコ屋：　タバコの葉からタバコを作ります。"
+msgstr "たばこの葉からたばこを作ります。"
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py:405
 msgid "Toolmaker"
-msgstr ""
+msgstr "工具屋"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:374
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:407
 msgid "Produces tools out of iron."
-msgstr "工具製作所：　鉄から工具を作ります。"
+msgstr "鉄から工具を生産します。"
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py:412
 msgid "Trail"
-msgstr ""
+msgstr "小道"
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py:414
 msgid "Gravel Path"
-msgstr ""
+msgstr "砂利道"
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:383
+#: horizons/i18n/objecttranslations.py:416
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "石畳の街路"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:385
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:418
 msgid "Needed for collecting goods."
-msgstr "道（R）：　物品を集めるのに必要です。"
+msgstr "財を集めるのに必要です。"
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:390
+#: horizons/i18n/objecttranslations.py:423
 msgid "Tree"
-msgstr ""
+msgstr "木"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:392
+#: horizons/i18n/objecttranslations.py:425
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "板材を提供します。伐採人によって切りだされます。"
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:397
-msgid "Village school"
-msgstr ""
+#: horizons/i18n/objecttranslations.py:430
+#, fuzzy
+#| msgid "Village school"
+msgid "Village School"
+msgstr "村校"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:399
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:432
 msgid "Provides education."
-msgstr "村の学校：　教育を提供します。"
-
-#. name of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:404
-msgid "Vineyard"
-msgstr ""
-
-#. tooltip_text of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:406
-#, fuzzy
-msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr "タバコ畑：　タバコを作ります。農場が必要です。"
-
-#. name of buildings:vintner
-#: horizons/i18n/objecttranslations.py:411
-msgid "Vintner"
-msgstr ""
-
-#. tooltip_text of buildings:vintner
-#: horizons/i18n/objecttranslations.py:413
-#, fuzzy
-msgid "Produces wine out of grapes."
-msgstr "工具製作所：　鉄から工具を作ります。"
+msgstr "教育を提供します。"
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:418
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:437
 msgid "Warehouse"
-msgstr "住宅"
+msgstr "倉庫"
+
+#. name of buildings:weaponsmith
+#: horizons/i18n/objecttranslations.py:442
+#, fuzzy
+#| msgid "Weapons"
+msgid "Weaponsmith"
+msgstr "武器"
+
+#. tooltip_text of buildings:weaponsmith
+#: horizons/i18n/objecttranslations.py:444
+#, fuzzy
+#| msgid "Produces tools out of iron."
+msgid "Produces weapons out of iron."
+msgstr "鉄から工具を生産します。"
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:423
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:449
 msgid "Weaver's Hut"
-msgstr "織工のテント"
+msgstr "機織小屋"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:425
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:451
 msgid "Turns lamb wool into cloth."
-msgstr "機織り：　羊毛から布を作ります。"
+msgstr "ラムウールから布を作ります。"
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:430
+#: horizons/i18n/objecttranslations.py:456
 msgid "Windmill"
-msgstr ""
+msgstr "風車"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:432
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:458
 msgid "Grinds corn into flour."
-msgstr "蒸留酒製造所：　砂糖から酒を造ります。"
+msgstr "とうもろこしを製粉します。"
 
-#. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:437
-msgid "Wooden Tower"
+#. name of buildings:winery
+#: horizons/i18n/objecttranslations.py:463
+msgid "Winery"
 msgstr ""
 
+#. tooltip_text of buildings:winery
+#: horizons/i18n/objecttranslations.py:465
+msgid "Produces wine out of grapes."
+msgstr "葡萄からワインを生産します。"
+
+#. name of buildings:woodentower
+#: horizons/i18n/objecttranslations.py:470
+msgid "Wooden Tower"
+msgstr "木塔"
+
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:439
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:472
 msgid "Defends your settlement."
-msgstr "木製の要塞：　集落を防衛します。"
+msgstr "入植地を防衛します。"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:444
-#: horizons/i18n/objecttranslations.py:446
-#: horizons/i18n/objecttranslations.py:448
-#: horizons/i18n/objecttranslations.py:450
-#: horizons/i18n/objecttranslations.py:511
+#: horizons/i18n/objecttranslations.py:477
+#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:483
+#: horizons/i18n/objecttranslations.py:552
 msgid "Companies"
-msgstr ""
+msgstr "生産拠点"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:452
-#: horizons/i18n/objecttranslations.py:454
-#: horizons/i18n/objecttranslations.py:456
-#: horizons/i18n/objecttranslations.py:507
+#: horizons/i18n/objecttranslations.py:485
+#: horizons/i18n/objecttranslations.py:487
+#: horizons/i18n/objecttranslations.py:489
+#: horizons/i18n/objecttranslations.py:491
+#: horizons/i18n/objecttranslations.py:548
 msgid "Fields"
-msgstr ""
+msgstr "畑"
+
+#. headline of gui_buildmenu:build_menu_per_tier
+#. tab5_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py:493
+#: horizons/i18n/objecttranslations.py:554
+msgid "Military"
+msgstr "軍隊"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:458
-#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:495
+#: horizons/i18n/objecttranslations.py:520
 msgid "Mining"
-msgstr ""
+msgstr "鉱業"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:460
-#: horizons/i18n/objecttranslations.py:505
+#: horizons/i18n/objecttranslations.py:497
+#: horizons/i18n/objecttranslations.py:546
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "住民と社会基盤"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:462
-#: horizons/i18n/objecttranslations.py:464
-#: horizons/i18n/objecttranslations.py:466
-#: horizons/i18n/objecttranslations.py:491
+#: horizons/i18n/objecttranslations.py:499
+#: horizons/i18n/objecttranslations.py:501
+#: horizons/i18n/objecttranslations.py:503
+#: horizons/i18n/objecttranslations.py:530
 msgid "Services"
-msgstr ""
+msgstr "サービス"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471
-#, fuzzy
+#. This is a database entry: the name of an inhabitant tier (level)
+#: horizons/i18n/objecttranslations.py:508
+#: horizons/i18n/objecttranslations.py:510
 msgid "Citizens"
 msgstr "市民"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:473
+#: horizons/i18n/objecttranslations.py:512
 msgid "Food"
-msgstr ""
+msgstr "食糧"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:475
+#: horizons/i18n/objecttranslations.py:514
 msgid "Fortifications"
-msgstr ""
+msgstr "防衛"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:477
+#: horizons/i18n/objecttranslations.py:516
 msgid "Infrastructure"
-msgstr ""
+msgstr "社会基盤"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:518
 msgid "Military Service"
-msgstr ""
+msgstr "軍務"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483
+#. This is a database entry: the name of an inhabitant tier (level)
+#: horizons/i18n/objecttranslations.py:522
 msgid "Pioneers"
-msgstr ""
+msgstr "開拓者"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:485
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:524
 msgid "Precaution"
-msgstr "村の学校：　教育を提供します。"
+msgstr "警戒"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:487
+#: horizons/i18n/objecttranslations.py:526
 msgid "Residential"
-msgstr ""
+msgstr "住民"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:489
+#: horizons/i18n/objecttranslations.py:528
 msgid "Sea"
-msgstr ""
+msgstr "海"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:495
+#: horizons/i18n/objecttranslations.py:534
 msgid "Wood"
-msgstr ""
+msgstr "木"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:497
-#: horizons/i18n/objecttranslations.py:499
-#: horizons/i18n/objecttranslations.py:501
+#: horizons/i18n/objecttranslations.py:536
+#: horizons/i18n/objecttranslations.py:538
+#: horizons/i18n/objecttranslations.py:540
+#: horizons/i18n/objecttranslations.py:542
 msgid "Workshops"
-msgstr ""
+msgstr "作業場"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:503
+#: horizons/i18n/objecttranslations.py:544
 msgid "Settlement"
-msgstr ""
+msgstr "入植"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:509
+#: horizons/i18n/objecttranslations.py:550
 msgid "Agriculture"
-msgstr ""
+msgstr "農業"
 
-#. tab5_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:513
-msgid "Military"
-msgstr ""
-
-#: horizons/main.py:354
+#: horizons/main.py:397
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "ゲームの開始/読込に失敗しました"
 
-#: horizons/main.py:355
+#: horizons/main.py:398
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "選択したゲームを開始できませんでした。"
 
-#: horizons/main.py:356
+#: horizons/main.py:399
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "保存ゲームが壊れているか古いバージョンで保存されています。"
 
-#: horizons/main.py:475
-#, fuzzy
-#| msgid "Error: No quicksave found."
+#: horizons/main.py:518
 msgid "No quicksaves found"
-msgstr "エラー：　クイックセーブはありません。"
+msgstr "簡易保存はありません"
 
-#: horizons/main.py:476
+#: horizons/main.py:519
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "簡易読込をするには前もって簡易保存が必要です。"
 
-#: horizons/main.py:605
+#: horizons/main.py:649
 msgid "Logging enabled"
-msgstr ""
+msgstr "ログが有効です"
 
-#: horizons/main.py:606
+#: horizons/main.py:650
 #, python-brace-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "ログは{directory}に書き込まれます。"
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3233,88 +3420,93 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"ゲームの同調が取れません。これは未知の内部エラーがあったことを意味し、ゲーム"
+"を続けることができません。"
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"たいへん申しわけありませんが、将来のバージョンでこのバグを修正したいと思いま"
+"す。"
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
 msgid "Not possible"
-msgstr ""
+msgstr "不可能"
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "複数プレイヤーの保存/読込はまだできません"
 
 #: horizons/mpsession.py:103
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr ""
+msgstr "ファイル名には半角英数字・スペース・「_ . -」の各記号のみが使えます"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "サーバーに接続することができません。"
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "無効あるいは解決できないサーバーアドレスである可能性があります。"
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr ""
+msgstr "準備中"
+
+#: horizons/scenario/actions.py:93
+msgid "You have won!"
+msgstr "あなたの勝ちです！"
+
+#: horizons/scenario/actions.py:94
+msgid "You have completed this scenario."
+msgstr "あなたはこのシナリオを完遂しました。"
 
 #: horizons/scenario/actions.py:95
-msgid "You have won!"
-msgstr ""
-
-#: horizons/scenario/actions.py:96
-msgid "You have completed this scenario."
-msgstr ""
-
-#: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "ゲームを続けますか？"
 
 #: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
-msgstr ""
+msgstr "不明"
 
 #. usually invalid filename
 #: horizons/session.py:397
-#, fuzzy
-#| msgid "Loads the last quicksave."
 msgid "Failed to create savegame file"
-msgstr "最新のクイックセーブのロード。"
+msgstr "保存ゲームファイルの生成に失敗しました"
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "保存ゲームファイルの生成中にエラーが発生しました。"
 
 #: horizons/session.py:399
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
+"これは通常、保存ゲーム名にサポートされていない特殊文字が含まれている時に起こ"
+"ります。"
 
 #: horizons/session.py:408
 msgid "Access is denied"
-msgstr ""
+msgstr "アクセスが拒否されました"
 
 #: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"保存ゲームファイルが、読み取り専用か、もしくは他のプロセスによってロックされ"
+"た状態になっている可能性があります。"
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "このゲームは保存できませんでした。"
 
 #: horizons/util/checkupdates.py:87
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Unknown Horizonsを開始"
+msgstr "Unknown Horizonsの新しいバージョンがあります"
 
 #: horizons/util/checkupdates.py:88
 #, python-brace-format
@@ -3322,551 +3514,722 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"現在ご利用のUnknown Horizons（{old_version}）よりも新しいリリース"
+"（{new_version}）があります。"
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
-msgstr ""
+msgstr "クリックするとダウンロードします"
 
 #: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "ページがブラウザ中に開かれました。"
 
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:260
+#: horizons/util/uhdbaccessor.py:281
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum}スロット、{limit}t"
 
-#: horizons/util/uhdbaccessor.py:268
+#: horizons/util/uhdbaccessor.py:289
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "健康：{health}"
 
 #. You usually do not need to change anything here when translating
-#: horizons/world/building/__init__.py:124
+#: horizons/world/building/__init__.py:123
 #, python-brace-format
 msgid "{building}: {description}"
 msgstr "{building}：　{description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "この建造物は陸上に作らなければなりません。"
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "この土地は、この建造物には適していません。"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "この建造物はあなたの入植地内に建てなければなりません。"
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "この区画は、既に他のプレイヤーが占有しています。"
 
 #: horizons/world/building/buildable.py:44
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "この区画は、既に他の建造物が占有しています。"
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "この区画は、既にユニットによって占有されています。"
 
 #: horizons/world/building/buildable.py:46
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "この建造物は海岸線上に建てなければなりません。"
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "この建造物は海辺に建てなくてはなりません。"
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "この地点はあなたの船から遠すぎます。"
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "この建造物は資源の上にのみ建てることができます。"
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
-msgstr ""
+msgstr "あなたは既にこの島に入植しています。"
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "この建造物は平らな土地にかかっている必要があります。"
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "住民たちが黒死病に感染しました！"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr ""
+msgstr "この建造物は燃えています！"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "この住民たちは不幸です。"
 
 #: horizons/world/status.py:94
-msgid "The inventory of this building is full."
-msgstr ""
+msgid "These residents don't have access to a main square."
+msgstr "この住民たちには中央広場への経路がありません。"
 
-#: horizons/world/status.py:109
-msgid "This building has a very low productivity."
-msgstr ""
+#: horizons/world/status.py:100
+msgid "The inventory of this building is full."
+msgstr "この建造物の在庫が満杯です。"
 
 #: horizons/world/status.py:115
-msgid "This building is decommissioned."
-msgstr ""
+msgid "This building has a very low productivity."
+msgstr "この建造物の生産性が非常に低くなっています。"
 
 #: horizons/world/status.py:121
-msgid "The inhabitants of this building have the plague."
-msgstr ""
+msgid "This building is decommissioned."
+msgstr "この建造物は閉鎖されました。"
 
-#: horizons/world/traderoute.py:329
+#: horizons/world/traderoute.py:335
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "交易路：{location}へ行く"
 
-#: horizons/world/traderoute.py:333
+#: horizons/world/traderoute.py:339
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "交易路：{position}で待機"
+
+#: horizons/world/units/ship.py:212
+#, python-brace-format
+msgid "Going to {location}"
+msgstr "{location}へ行く"
 
 #: horizons/world/units/ship.py:213
 #, python-brace-format
-msgid "Going to {location}"
-msgstr ""
-
-#: horizons/world/units/ship.py:214
-#, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "{x},{y}へ行く"
+
+#: horizons/world/units/ship.py:217
+#, python-brace-format
+msgid "Idle at {location}"
+msgstr "{location}で待機"
 
 #: horizons/world/units/ship.py:218
 #, python-brace-format
-msgid "Idle at {location}"
-msgstr ""
-
-#: horizons/world/units/ship.py:219
-#, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "{x},{y}で待機"
 
-#: horizons/world/units/ship.py:230
+#: horizons/world/units/ship.py:229
 msgid "Trader"
-msgstr ""
+msgstr "貿易船"
 
-#: horizons/world/units/weaponholder.py:454
+#: horizons/world/units/weaponholder.py:434
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "{target}「{name}」（{owner}）を攻撃"
 
-#: horizons/world/units/weaponholder.py:458
+#: horizons/world/units/weaponholder.py:438
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "{owner}を攻撃"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "indigo"
+msgstr "藍"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1}と{player2}は戦力を合わせることにしました。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "あなたの建造物が火事です！"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "brine"
+msgstr "塩水"
+
+#. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "薬草"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#, fuzzy
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
 msgstr "貴族"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "happiness"
-msgstr ""
+msgstr "幸福"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
+#. This is a database entry: the name of a resource
+msgid "gems"
+msgstr "宝石"
+
+#. This is a database entry: the name of a resource
+msgid "brine deposit"
+msgstr "塩田適地"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr "テント：　住民の住宅です。"
+msgstr "一部の住民が出て行きました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "gem deposit"
+msgstr "宝石鉱床"
+
+#. This is a database entry: the name of a resource
 msgid "sugar"
-msgstr ""
+msgstr "砂糖"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr ""
+msgstr "たばこの葉"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
 msgid "stone tops"
-msgstr "鉄の貯蔵"
+msgstr "石片"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "coffee beans"
+msgstr "珈琲豆"
+
+#. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "羊毛"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "tea leaves"
+msgstr "茶葉"
+
+#. This is a database entry: the name of a resource
+msgid "coffee"
+msgstr "珈琲"
+
+#. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr ""
+msgstr "カカオ豆"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "food"
-msgstr ""
+msgstr "食糧"
 
-#. This is a database entry: the name of a resource.
-msgid "flour"
-msgstr ""
+#. This is a database entry: the name of a resource
+msgid "cannon"
+msgstr "キャノン砲"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "食用豚"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "recreation"
+msgstr "レクリエーション"
+
+#. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "木"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
+msgid "marble deposit"
+msgstr "大理石鉱床"
+
+#. This is a database entry: the name of an inhabitant tier (level)
+msgid "Sailors"
+msgstr "船乗り"
+
+#. This is a database entry: the name of a resource
 msgid "clay deposit"
-msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
+msgstr "粘土層"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1}と{player2}は戦争を終結して同盟を結びました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cocoa"
-msgstr ""
+msgstr "カカオ"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "marble tops"
+msgstr "大理石片"
+
+#. This is a database entry: the name of a resource
+msgid "flour"
+msgstr "穀粉"
+
+#. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "じゃがいも"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr "鉄の貯蔵"
+msgstr "鉄鉱石"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "perfume"
+msgstr "香水"
+
+#. This is a database entry: the name of a resource
+msgid "cotton plants"
+msgstr "綿花農場"
+
+#. This is a database entry: the name of a resource
 msgid "clay"
-msgstr ""
+msgstr "粘土"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#, fuzzy
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
 msgstr "商人"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "hop plants"
+msgstr "ホップ農場"
+
+#. This is a database entry: the name of a resource
+msgid "tea"
+msgstr "茶"
+
+#. This is a database entry: the name of a resource
 msgid "liquor"
-msgstr ""
+msgstr "酒類"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
 msgid "iron ingots"
-msgstr "鉄の貯蔵"
+msgstr "鉄塊"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "coal deposit"
+msgstr "石炭層"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "スクリーンショットを{file}に保存しました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "牛"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr ""
+msgstr "道をドラッグすることもできます。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr ""
+msgstr "ラムウール"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
+"現在の最上位の階層に到達しました。あなたの住民は、これ以上昇格することはあり"
+"ません。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"交易路が設定されました。「交易路の調整」メニュー中の「交易路を開始」ボタンを"
+"押して交易路を開始してください。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1}と{player2}は同盟を解消しました。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
-msgstr ""
+msgstr "ここには行けません。"
 
-#. This is a database entry: the name of a resource.
-msgid "sugar cane"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "corn"
-msgstr ""
+msgstr "とうもろこし"
 
-#. This is a database entry: the name of a resource.
-msgid "grapes"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, fuzzy, python-brace-format
-#| msgid "Your inhabitants reached level ${level}."
+#| msgid "A new ship by the name of {name} has been created."
+msgid "The Soldier by the name of {name} is ready to battle."
+msgstr "{name}という名の新造船が造られました。"
+
+#. This is a database entry: the name of a resource
+msgid "flower meadows"
+msgstr "花畑"
+
+#. This is a database entry: the name of a resource
+msgid "grapes"
+msgstr "葡萄"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr "住民はレベル ${level} に到達しました。"
+msgstr "あなたの住民はレベル${level}に到達しました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "ambergris"
+msgstr "龍涎香"
+
+#. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "信仰"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "板材"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "中央広場への経路がない住民がいます。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1}と{player2}は決死戦に入ります。"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-msgid "Sailors"
-msgstr ""
+#. This is a database entry: the name of a resource
+msgid "hops"
+msgstr "ホップ"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "穀物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "spices"
-msgstr ""
+msgstr "スパイス"
 
-#. This is a database entry: the name of a resource.
-msgid "dagger"
-msgstr ""
+#. This is a database entry: the name of a resource
+msgid "coffee plants"
+msgstr "珈琲農場"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "煉瓦"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "gold ore"
+msgstr "金鉱石"
+
+#. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "コミュニティ"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "スパイス農場"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "hygiene"
+msgstr "衛生"
+
+#. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "食用牛"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "たばこ"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "工具"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "鹿肉"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "菓子屋"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "whales"
+msgstr "鯨"
+
+#. This is a database entry: the name of a resource
 msgid "coins"
+msgstr "コイン"
+
+#. This is a database entry: the name of a resource
+msgid "beer"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr ""
+msgstr "あなたの勝ちです！"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "blossoms"
+msgstr "花"
+
+#. This is a database entry: the name of a resource
+msgid "indigo plants"
+msgstr "藍農場"
+
+#. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "魚"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "木炭"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr "鉄の貯蔵"
+msgstr "岩石層"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "シナリオを完遂できませんでした。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "火事"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "どんぐり"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "garments"
+msgstr "衣類"
+
+#. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "蜂の巣"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "たばこ農場"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy, python-brace-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr "この建造物を作るにはあと ${resource} 必要です。"
+msgstr "この建造物を建てるには${resource}がもっと必要です。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "あなたの仲間がこの地図を去るのを拒んでいます。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1}と{player2}は互いに矛を収めました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grass"
-msgstr ""
+msgstr "牧草"
 
-#. This is a database entry: the name of a resource.
-msgid "alvearies"
-msgstr ""
+#. This is a database entry: the name of a resource
+msgid "sugar cane"
+msgstr "さとうきび"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "このゲームは自動保存されました。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "gold deposit"
+msgstr "金鉱床"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "あなたの畑の一つは、作物を収穫するのに農家を必要としています。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "rough gems"
+msgstr "原石"
+
+#. This is a database entry: the name of a resource
+msgid "alvearies"
+msgstr "蜂の巣"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "あなたの鉱山の資源が枯渇しました。"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr "鉄の貯蔵"
+msgstr "鉄鉱床"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
 msgid "education"
-msgstr "村の学校：　教育を提供します。"
+msgstr "教育"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "cotton"
+msgstr "綿花"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr ""
+msgstr "{player1}と{player2}は同盟関係を解消し交戦状態にあります。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "textile"
-msgstr ""
+msgstr "織物"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy, python-brace-format
-#| msgid "{player}'s ships"
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player}: {message}"
-msgstr "{player} の船"
+msgstr "{player}：{message}"
 
-#. This is a database entry: the name of a resource.
-msgid "cannon"
+#. This is a database entry: the name of a resource
+msgid "sword"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, fuzzy, python-brace-format
+#| msgid "A new ship by the name of {name} has been created."
+msgid "The inhabitant by the name of {name} is available."
+msgstr "{name}という名の新造船が造られました。"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "この建造物の住民たちは黒死病に感染しています！"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "{name}という名の新造船が造られました。"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
+#. This is a database entry: the name of a resource
+msgid "tea plants"
+msgstr "茶農場"
+
+#. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr "酒場：　住民の集いの場です。"
+msgstr "集いの場"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "新しい世界が造られました。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "このゲームは簡易保存されました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "鹿の食糧A"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "薬草"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "lamp oil"
+msgstr "灯油"
+
+#. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "豚"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "クリックすると集落の名前が変更できます。"
+msgstr "倉庫を剥ぎ取ることはできません。入植地が必要としています。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "調味料"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "黒死病"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "ろうそく"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "{player}が新しい入植地を拓きました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "葡萄"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "このゲームは保存されました。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "塩"
+
+#. This is a database entry: the name of a resource
+msgid "gold ingots"
+msgstr "金塊"
+
+#, fuzzy
+#~| msgid "Unit overview"
+#~ msgid "Groundunit overview"
+#~ msgstr "ユニットの概要"
+
+#~ msgid "SDL is only meant as unsupported fallback and might cause problems!"
+#~ msgstr ""
+#~ "SDLはサポートのない最終手段であり、問題を引き起こす可能性があります！"
+
+#~ msgid "Used renderer:"
+#~ msgstr "使用するレンダラー："
+
+#~ msgid "Warning"
+#~ msgstr "警告"
+
+#~ msgid ""
+#~ "The SDL renderer is meant as a fallback solution only and has serious "
+#~ "graphical glitches. \n"
+#~ "\n"
+#~ "Use at own risk!"
+#~ msgstr ""
+#~ "SDLレンダラーは、最終手段として用意されているに過ぎず、描画上深刻な不具合"
+#~ "が起こり得ます。\n"
+#~ "\n"
+#~ "自己責任でお使い下さい！"
+
+#~ msgid "Increases the player's sight."
+#~ msgstr "プレイヤーの視界を広げます。"
+
+#~ msgid "Vintner"
+#~ msgstr "ワイン商人"
+
+#~ msgid "dagger"
+#~ msgstr "短剣"
 
 #~ msgid "You cannot change the speed of a multiplayer game"
 #~ msgstr "マルチプレイではゲームスピードは変更できません"

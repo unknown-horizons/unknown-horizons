@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import locale
 import logging
 
 from fife import fife
-from fife.extensions import pychan, fifelog
+from fife.extensions import fifelog, pychan
 
 from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS
 from horizons.engine.pychan_util import init_pychan
@@ -74,6 +76,22 @@ class Fife(object):
 		self.engine_settings.setGLCompressImages(self._finalSetting['GLCompressImages'])
 		self.engine_settings.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
+
+		# introduced in fife 0.4.0
+		if self.getVersion() >= (0,4,0):
+			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
+			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
+			if self._finalSetting['GLTextureFiltering'] == 'None':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_NONE)
+			elif self._finalSetting['GLTextureFiltering'] == 'Bilinear':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_BILINEAR)
+			elif self._finalSetting['GLTextureFiltering'] == 'Trilinear':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_TRILINEAR)
+			elif self._finalSetting['GLTextureFiltering'] == 'Anisotropic':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_ANISOTROPIC)
+			self.engine_settings.setGLUseDepthBuffer(self._finalSetting['GLUseDepthBuffer'])
+			self.engine_settings.setGLAlphaTestValue(self._finalSetting['GLAlphaTestValue'])
+
 		(width, height) = self._finalSetting['ScreenResolution'].split('x')
 		self.engine_settings.setScreenWidth(int(width))
 		self.engine_settings.setScreenHeight(int(height))
@@ -149,7 +167,7 @@ class Fife(object):
 			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
 		}
-		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
+		self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems())
 		self.cursor.set(self.cursor_images['default'])
 
 		# Init pychan.
@@ -216,8 +234,8 @@ class Fife(object):
 		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
 		if remkey in old_keys:
 				old_keys.remove(remkey)
-		if len(old_keys) == 0:
-				print 'Cannot have no binding for action'
+		if not old_keys:
+				print('Cannot have no binding for action')
 				return
 		self.set_key_for_action(action, old_keys)
 
@@ -266,7 +284,7 @@ class Fife(object):
 			try:
 				self.engine.pump()
 			except fife.Exception as e:
-				print e.getMessage()
+				print(e.getMessage())
 				break
 			for f in self.pump:
 				f()

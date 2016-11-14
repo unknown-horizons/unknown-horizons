@@ -208,16 +208,6 @@ CREATE TABLE "unit" (
 	"owner" INT NOT NULL
 );
 
-CREATE TABLE "bullet" (
-	"worldid" INT,
-	"startx" INT,
-	"starty" INT,
-	"destx" INT,
-	"desty" INT,
-	"speed" INT,
-	"image" TEXT
-);
-
 CREATE TABLE "attacks" (
 	"remaining_ticks" INT,
 	"weapon_id" INT,

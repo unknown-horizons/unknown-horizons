@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,8 @@
 import hashlib
 
 from horizons.constants import TIER
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
+
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
@@ -71,7 +72,7 @@ class IngameType(type):
 		if not string:
 			return u''
 		if string.startswith("_ "):
-			return _lazy(string[2:])
+			return LazyT(string[2:])
 		else:
 			return string
 
@@ -81,7 +82,7 @@ class IngameType(type):
 		# self._level_specific_names is optional and contains a dict like this: { level_id : name }
 		# (with entries for all tiers in which it is active)
 		name_data = yaml_data['name']
-		start_tier = yaml_data.get('settler_level', TIER.NATURE) # first tier where object is available
+		start_tier = yaml_data.get('tier', TIER.NATURE)  # first tier where object is available
 		if isinstance(name_data, dict): # { level_id : name }
 			# fill up dict (fall down to highest tier which has a name specified
 			self._level_specific_names = {}
@@ -167,7 +168,9 @@ class IngameType(type):
 					# safety, we use ints.
 					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
 				if new_key in new_data:
-					raise Exception('Error: production line id conflict. Please change "%s" to anything else for "%s"' % (old_key, self.name))
+					raise Exception('Error: production line id conflict.'
+					                ' Please change "%s" to anything else for "%s"'
+					                % (old_key, self.name))
 				new_data[new_key] = v
 
 			producer_data['productionlines'] = new_data

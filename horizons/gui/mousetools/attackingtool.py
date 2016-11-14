@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,11 @@
 from fife import fife
 
 import horizons.globals
-from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
+from horizons.command.unit import Act, Attack
 from horizons.component.healthcomponent import HealthComponent
 from horizons.gui.mousetools.selectiontool import SelectionTool
+
 
 class AttackingTool(SelectionTool):
 	"""

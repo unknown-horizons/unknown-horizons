@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2013-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,11 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS, RES, TIER
-from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.status import BlackDeathStatusIcon
+
 
 class BlackDeathDisaster(BuildingInfluencingDisaster):
 	"""Simulates the Black Death.

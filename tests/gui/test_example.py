@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,14 +43,13 @@ def test_example(gui):
 	gui.disable_autoscroll()
 
 	# Main menu
-	main_menu = gui.find(name='menu')
-	gui.trigger(main_menu, 'single_button')
-	gui.trigger('singleplayermenu', 'okay')
+	gui.trigger('menu/single_button')
+	gui.trigger('singleplayermenu/okay')
 
 	# Hopefully we're ingame now
 	assert gui.active_widgets
 	gold_label = gui.find(name='gold_available')
-	assert gold_label.text == '' # will upate only later
+	assert gold_label.text == '30000'
 
 	# All commands above run sequentially, neither the engine nor the timer
 	# will be run. If you need the game to run for some time (or have to wait for
@@ -71,17 +70,17 @@ def test_example(gui):
 	# interactions.
 
 	# Open game menu
-	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('mainhud/gameMenuButton')
 
 	# gui.trigger accepts both a string (container name), or a object returned by gui.find
 
 	# Cancel current game
 	def dialog():
-		gui.trigger('popup_window', 'okButton')
+		gui.trigger('popup_window/okButton')
 
 	# Dialog handling has to be done by a separate generator.
 	with gui.handler(dialog):
-		gui.trigger('menu', 'quit')
+		gui.trigger('menu/quit')
 
 	# Code execution will continue here once `dialog` has ended.
 

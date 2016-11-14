@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +25,6 @@ from collections import defaultdict
 from fife import fife
 
 import horizons.globals
-
 from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
@@ -128,8 +127,6 @@ class InventoryOverlayComponent(Component):
 			self.current_overlays[res_id] = None
 			return
 
-		all_action_sets = ActionSetLoader.get_sets()
-
 		# We use max(0, new_amount) restricted to what exists in overlay_order.
 		# E.g. for
 		#   new_amount = 3
@@ -154,7 +151,7 @@ class InventoryOverlayComponent(Component):
 				return
 
 			try:
-				overlay_set = all_action_sets[self.action_set][overlay_name]
+				overlay_set = ActionSetLoader.get_set(self.action_set)[overlay_name]
 			except KeyError:
 				self.log.warning(
 					'Could not find overlay action set defined for object '
@@ -192,11 +189,3 @@ class InventoryOverlayComponent(Component):
 		self.remove_overlay(0)
 
 		super(InventoryOverlayComponent, self).remove()
-
-
-# If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
-if not hasattr(fife, 'AnimationOverlayMap'):
-	class InventoryOverlayComponent(Component):
-
-		def __init__(self, overlays=None):
-			super(InventoryOverlayComponent, self).__init__()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,13 +20,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
 import glob
+import random
 from collections import deque
 
 from fife import fife
 
 from horizons.extscheduler import ExtScheduler
+
 
 class Sound(object):
 	"""Stuff related to engine & sound"""
@@ -153,7 +154,7 @@ class Sound(object):
 		assert emitter is not None, "You need to supply an initialized emitter"
 		assert soundfile is not None, "You need to supply a soundfile"
 		emitter.reset()
-		#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
+		#TODO remove str() -- http://github.com/fifengine/fifengine/issues/449
 		emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 		emitter.play()
 
@@ -178,7 +179,4 @@ class Sound(object):
 		self.set_volume_emitter('effects', volume)
 		self.set_volume_emitter('speech', volume)
 		for emitter in self.emitter['ambient']:
-				emitter.setGain(volume*2)
-
-
-
+			emitter.setGain(volume * 2)

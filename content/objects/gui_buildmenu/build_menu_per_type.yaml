@@ -36,13 +36,17 @@ tab2:
   - BUILDINGS.TOBACCO_FIELD
   - BUILDINGS.CATTLE_RUN
   - BUILDINGS.HERBARY
-#  - BUILDINGS.SPICE_FIELD
+  - BUILDINGS.SPICE_FIELD
 -
   - _ Citizens
   - BUILDINGS.CORN_FIELD
-#  - BUILDINGS.COCOA_FIELD
-#  - BUILDINGS.VINEYARD
-#  - BUILDINGS.ALVEARIES
+  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
+-
+  - _ Citizens
+  - BUILDINGS.HOP_FIELD
+  - BUILDINGS.PIGSTY
 
 tab3:
 - icon: icons/tabwidget/buildmenu/class/agricultural_companies
@@ -60,15 +64,14 @@ tab3:
 -
   - _ Workshops
   - BUILDINGS.WEAVER
-#  - BUILDINGS.BLENDER
+  - BUILDINGS.BLENDER
+  - BUILDINGS.PASTRY_SHOP
 -
   - _ Workshops
   - BUILDINGS.DISTILLERY
   - BUILDINGS.TOBACCONIST
-#  - BUILDINGS.VINTNER
-#  - BUILDINGS.PASTRY_SHOP
-
-
+  - BUILDINGS.WINERY
+  - BUILDINGS.BREWERY
 
 tab4:
 - icon: icons/tabwidget/buildmenu/class/companies
@@ -76,29 +79,37 @@ tab4:
 -
   - _ Wood
   - BUILDINGS.LUMBERJACK
-  - BUILDINGS.TREE # Only show Tree entry in LJ related tab?
+#  - BUILDINGS.TREE # Only show Tree entry in LJ related tab?
   - BUILDINGS.CHARCOAL_BURNER
 -
   - _ Mining
   - BUILDINGS.CLAY_PIT
-  - BUILDINGS.BRICKYARD
-  - BUILDINGS.IRON_MINE
-  - BUILDINGS.SMELTERY
+  - BUILDINGS.MINE
+  - BUILDINGS.STONE_PIT
 -
   - _ Workshops
   - BUILDINGS.TOOLMAKER
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.SMELTERY
+  - BUILDINGS.STONEMASON
 
 tab5:
 - icon: icons/tabwidget/buildmenu/class/military
 - headline: _ Military
+-
+  - _ Infrastructure
+  - BUILDINGS.BARRIER
+-
+  - _ Workshops
+  - BUILDINGS.WEAPONSMITH
+  - BUILDINGS.CANNONFOUNDRY
 -
   - _ Fortifications
   - BUILDINGS.WOODEN_TOWER
 -
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
-#  - # empty
-#  - BUILDINGS.BARRACKS
+  - BUILDINGS.BARRACKS
 
 #tab6:
 #- icon: icons/tabwidget/buildmenu/class/aesthetics

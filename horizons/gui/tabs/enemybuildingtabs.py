@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import OverviewTab
-from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.i18n import gettext_lazy as LazyT
+
+from .overviewtab import OverviewTab
 
 
 class EnemyBuildingOverviewTab(OverviewTab):
@@ -36,7 +37,7 @@ class EnemyBuildingOverviewTab(OverviewTab):
 
 class EnemyWarehouseOverviewTab(OverviewTab):
 	widget = 'overview_enemywarehouse.xml'
-	helptext = _lazy("Warehouse overview")
+	helptext = LazyT("Warehouse overview")
 
 	def init_widget(self):
 		super(EnemyWarehouseOverviewTab, self).init_widget()

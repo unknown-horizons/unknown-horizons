@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -114,7 +114,9 @@ class UnableToConnect(ClientException):
 	pass
 
 class CommandError(ClientException):
-	pass
+	def __init__(self, message, type):
+		super(ClientException, self).__init__(message)
+		self.type = type
 
 class FatalError(ClientException):
 	pass

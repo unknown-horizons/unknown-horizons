@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
+from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Shape
+
 
 class Point(Shape):
 	def __init__(self, x, y):

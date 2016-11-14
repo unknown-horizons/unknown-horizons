@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,14 +21,15 @@
 
 import copy
 
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TRADE_ERROR_TYPE, TradePostComponent
+from horizons.constants import GAME_SPEED
+from horizons.i18n import gettext as T
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.constants import GAME_SPEED
-from horizons.scheduler import Scheduler
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class TradeRoute(ChangeListener):
@@ -62,12 +63,16 @@ class TradeRoute(ChangeListener):
 		})
 
 	def set_wait_at_load(self, flag):
-		self.wait_at_load = flag # as method for commands
+		"""Method for commands, and some type checking. See #2287 for details."""
+		self.wait_at_load = bool(flag)
 
 	def set_wait_at_unload(self, flag):
-		self.wait_at_unload = flag # as methods for commands
+		"""Method for commands, and some type checking. See #2287 for details."""
+		self.wait_at_unload = bool(flag)
 
 	def move_waypoint(self, position, direction):
+		# Error sounds for invalid move actions are triggered in
+		# gui.widgets.routeconfig, not here.
 		was_enabled = self.enabled
 		if was_enabled:
 			self.disable()
@@ -80,7 +85,7 @@ class TradeRoute(ChangeListener):
 		elif direction == 'down':
 			new_pos = position + 1
 		else:
-			return
+			assert False, 'Direction is neither "up" nor "down".'
 
 		self.waypoints.insert(new_pos, self.waypoints.pop(position))
 
@@ -271,14 +276,16 @@ class TradeRoute(ChangeListener):
 		self.current_waypoint = -1
 
 	@classmethod
-	def has_route(self, db, worldid):
+	def has_route(cls, db, worldid):
 		"""Check if a savegame contains route information for a certain ship"""
 		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 
 	def load(self, db):
-		enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload = \
+		enabled, self.current_waypoint, wait_at_load, wait_at_unload = \
 			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload "
 			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
+		self.set_wait_at_load(wait_at_load)
+		self.set_wait_at_unload(wait_at_unload)
 
 		query = "SELECT warehouse_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
 		offices_id = db(query, self.ship.worldid)
@@ -326,9 +333,9 @@ class TradeRoute(ChangeListener):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
 			location = self.ship.get_location_based_status(self.ship.get_move_target())
-			status_msg = _('Trade route: going to {location}').format(location=location)
+			status_msg = T('Trade route: going to {location}').format(location=location)
 			return (status_msg, self.ship.get_move_target())
 		else:
 			position = self.ship.get_location_based_status(self.ship.position)
-			status_msg = _('Trade route: waiting at {position}').format(position=position)
+			status_msg = T('Trade route: waiting at {position}').format(position=position)
 			return (status_msg, self.ship.position)

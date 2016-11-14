@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,10 @@
 # ###################################################
 
 from functools import partial
+
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
+
 
 def test_ai_very_long():
 	# (function, seed)

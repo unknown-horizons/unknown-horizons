@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,8 +27,9 @@ from fife.extensions.pychan.widgets import Container, Icon
 
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python.callback import Callback
+
 
 @metaChangeListenerDecorator('remove')
 class TabWidget(object):
@@ -49,6 +50,7 @@ class TabWidget(object):
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
+		self.current_tab.ensure_loaded() # loading current_tab widget
 		self.widget = load_uh_widget("tab_base.xml")
 		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
@@ -138,7 +140,6 @@ class TabWidget(object):
 
 	def show(self):
 		"""Show the current widget"""
-		self.current_tab.ensure_loaded()
 		# show before drawing so that position_technique properly sets
 		# button positions (which we want to draw our tabs relative to)
 		self.widget.show()
@@ -147,6 +148,6 @@ class TabWidget(object):
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):
-		"""Hide the current widget"""
+		"""Hides current tab and this widget"""
 		self.current_tab.hide()
 		self.widget.hide()

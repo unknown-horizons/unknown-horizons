@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.component import Component
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, TRADER
+from horizons.i18n import gettext as T
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.worldobject import WorldObject
-from horizons.constants import RES, TRADER
-from horizons.scheduler import Scheduler
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component import Component
+
 
 class TRADE_ERROR_TYPE(object):
 	"""Machine controlled entities need to know the difference. On this basis, they decide
@@ -187,7 +189,7 @@ class TradePostComponent(ChangeListener, Component):
 			return 0 if not add_error_type else (0, err_type)
 
 		if resource_id not in self.sell_list:
-			return err(_("The trade partner does not sell this."), TRADE_ERROR_TYPE.PERMANENT)
+			return err(T("The trade partner does not sell this."), TRADE_ERROR_TYPE.PERMANENT)
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
 		assert price > 0
@@ -195,17 +197,17 @@ class TradePostComponent(ChangeListener, Component):
 		# can't sell more than the ship can fit in its inventory
 		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
 		if amount <= 0:
-			return err(_("You can not store this."), TRADE_ERROR_TYPE.PERMANENT)
+			return err(T("You can not store this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't sell more than the ship's owner can afford
 		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD] // price)
 		if amount <= 0:
-			return err(_("You can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
+			return err(T("You can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't sell more than what we have
 		amount = min(amount, self.get_inventory()[resource_id])
 		# can't sell more than we are trying to sell according to the settings
 		amount = min(amount, self.get_inventory()[resource_id] - self.slots[self.sell_list[resource_id]].limit)
 		if amount <= 0:
-			return err(_("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
+			return err(T("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
 		assert self.get_owner_inventory().alter(RES.GOLD, total_price) == 0
@@ -229,7 +231,7 @@ class TradePostComponent(ChangeListener, Component):
 			return 0 if not add_error_type else 0, err_type
 
 		if resource_id not in self.buy_list:
-			return err(_("The trade partner does not buy this."), TRADE_ERROR_TYPE.PERMANENT)
+			return err(T("The trade partner does not buy this."), TRADE_ERROR_TYPE.PERMANENT)
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
 		assert price > 0
@@ -237,20 +239,20 @@ class TradePostComponent(ChangeListener, Component):
 		# can't buy more than the ship has
 		amount = min(amount, ship.get_component(StorageComponent).inventory[resource_id])
 		if amount <= 0:
-			return err(_("You do not possess this."), TRADE_ERROR_TYPE.PERMANENT)
+			return err(T("You do not possess this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't buy more than we can fit in the inventory
 		amount = min(amount, self.get_inventory().get_free_space_for(resource_id))
 		if amount <= 0:
-			return err(_("The trade partner can not store more of this."), TRADE_ERROR_TYPE.TEMPORARY)
+			return err(T("The trade partner can not store more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't buy more than we can afford
 		amount = min(amount, self.get_owner_inventory()[RES.GOLD] // price)
 		if amount <= 0:
-			return err(_("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
+			return err(T("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		# can't buy more than we are trying to buy according to the settings
 		amount = min(amount, self.slots[self.buy_list[resource_id]].limit - self.get_inventory()[resource_id])
 		if amount <= 0:
-			return err(_("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
+			return err(T("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
 		assert self.get_owner_inventory().alter(RES.GOLD, -total_price) == 0

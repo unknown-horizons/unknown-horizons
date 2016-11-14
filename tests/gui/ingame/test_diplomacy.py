@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,13 +41,13 @@ def test_diplomacy(gui):
 		assert diplomacy.are_neutral(human, p)
 
 	# Ally with first player
-	gui.trigger('mainhud', 'diplomacyButton')
-	gui.trigger('tab0', 'ally_check_box')
+	gui.trigger('mainhud/diplomacyButton')
+	gui.trigger('tab0/ally_check_box')
 
 	assert diplomacy.are_allies(human, ai)
 
 	# Be enemy with second player
-	gui.trigger('tab_base', '1')
-	gui.trigger('tab0', 'enemy_check_box')
+	gui.trigger('tab_base/1')
+	gui.trigger('tab0/enemy_check_box')
 
 	assert diplomacy.are_enemies(human, pirate)

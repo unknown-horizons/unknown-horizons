@@ -1,0 +1,38 @@
+id: BUILDINGS.WEAPONSMITH
+name: _ Weaponsmith
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants: 1
+tooltip_text: _ Produces weapons out of iron.
+tier: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 2}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      SWORD:
+        produces:
+        - [RES.SWORD, 1]
+        consumes:
+        - [RES.CHARCOAL, -2]
+        - [RES.IRON_INGOTS, -2]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.IRON_INGOTS: 6, RES.SWORD: 8, RES.CHARCOAL: 6}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/smith.ogg]
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
+actionsets:
+  TIER.SETTLERS:
+    as_weaponsmith0:

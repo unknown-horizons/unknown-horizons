@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,33 +27,31 @@ from horizons.util.python.registry import Registry
 class RegistryTest(unittest.TestCase):
 
 	def test_simple(self):
-		class Example(object):
-			__metaclass__ = Registry
-			@classmethod
-			def register_function(cls, func):
-				cls.registry[func.__name__] = func
+		class Example(Registry):
+			def register_function(self, func):
+				self.registry[func.__name__] = func
 
-		self.assertRaises(KeyError, Example.get, 'foo')
+		instance = Example()
+		self.assertRaises(KeyError, instance.get, 'foo')
 
-		@Example.register()
+		@instance.register()
 		def foo(a, b):
 			return a + b
 
-		self.assertEqual(Example.get('foo'), foo)
+		self.assertEqual(instance.get('foo'), foo)
 
 	def test_with_arguments(self):
 		"""Test arguments in the register decorator."""
-		class Example(object):
-			__metaclass__ = Registry
-			@classmethod
-			def register_function(cls, func, name):
-				cls.registry[name] = func
+		class Example(Registry):
+			def register_function(self, func, name):
+				self.registry[name] = func
 
-		self.assertRaises(KeyError, Example.get, 'foo')
+		instance = Example()
+		self.assertRaises(KeyError, instance.get, 'foo')
 
-		@Example.register(name='bar')
+		@instance.register(name='bar')
 		def foo(a, b):
 			return a + b
 
-		self.assertRaises(KeyError, Example.get, 'foo')
-		self.assertEqual(Example.get('bar'), foo)
+		self.assertRaises(KeyError, instance.get, 'foo')
+		self.assertEqual(instance.get('bar'), foo)

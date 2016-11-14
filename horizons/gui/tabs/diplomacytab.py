@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,10 +20,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.util.python.callback import Callback
-from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
 
 
 class PlayerDiplomacyTab(TabInterface):
@@ -129,7 +129,7 @@ class DiplomacyTab(TabWidget):
 		super(DiplomacyTab, self).__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
 
 	@classmethod
-	def is_useable(self, world):
+	def is_useable(cls, world):
 		"""Diplomacy only makes sense if there is another player.
 		Pirates do not qualify as players: right now they're not interested in diplomacy.
 		"""

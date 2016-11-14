@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,8 +21,9 @@
 
 from fife.extensions.pychan.widgets import Container
 
-from horizons.gui.util import load_uh_widget, get_res_icon_path
 from horizons.constants import RES
+from horizons.gui.util import get_res_icon_path, load_uh_widget
+
 
 class TradeHistoryItem(Container):
 	"""Widget that shows the last few trades that have taken place in the settlement."""

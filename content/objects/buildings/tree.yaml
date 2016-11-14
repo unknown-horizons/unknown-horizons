@@ -1,4 +1,4 @@
-id: 17
+id: BUILDINGS.TREE
 name: _ Tree
 baseclass: nature.Tree
 radius: 0
@@ -8,7 +8,7 @@ size_x: 1
 size_y: 1
 inhabitants: 0
 tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
-settler_level: TIER.NATURE
+tier: TIER.NATURE
 buildingcosts: {RES.GOLD: 50}
 show_status_icons: false
 translucent: true

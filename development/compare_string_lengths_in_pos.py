@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,13 +20,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import sys
 
 usage = "<filename> [lower_bound] [upper_bound]"
 usage = "<filename>"
 
 if len(sys.argv) < 2:
-	print usage
+	print(usage)
 	sys.exit(1)
 
 filename = sys.argv[1]
@@ -70,8 +71,10 @@ for t in translations:
 	if orig.startswith("#") or trans.startswith("#"):
 		continue
 
-	if orig.startswith("msgid"): orig = orig[6:]
-	if trans.startswith("msgstr"): trans = trans[7:]
+	if orig.startswith("msgid"):
+		orig = orig[6:]
+	if trans.startswith("msgstr"):
+		trans = trans[7:]
 
 	if trans == "\"\"":
 		continue
@@ -80,9 +83,7 @@ for t in translations:
 
 	if len_ratio > 1.4 or len_ratio < 0.6 and \
 			abs(len(orig)-len(trans)) > 2:
-		print 'string length ratio:', len_ratio
-		print orig
-		print trans
-		print
-
-
+		print('string length ratio:', len_ratio)
+		print(orig)
+		print(trans)
+		print()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,11 @@
 
 from unittest import TestCase
 
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
 from horizons.world.storage import GenericStorage
-from horizons.component.tradepostcomponent import TradePostComponent
+
 
 class TestTradePostComponent(TestCase):
 	"""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,11 +23,12 @@
 Cleaner interface to various game/gui functions to make tests easier.
 """
 
+from __future__ import print_function
+
 import contextlib
 import os
 import tempfile
 import types
-from collections import deque
 
 import mock
 from fife import fife
@@ -36,13 +37,12 @@ from fife.extensions import pychan
 import horizons.main
 from horizons.constants import GAME_SPEED
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 from horizons.util.startgameoptions import StartGameOptions
-
 from tests.gui import cooperative
 
 
@@ -69,10 +69,12 @@ def found_settlement(gui, ship_pos, (x, y)):
 	move_ship(gui, ship, ship_pos)
 
 	# Found a settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('overview_trade_ship/found_settlement')
 	assert isinstance(gui.cursor, BuildingTool)
 	gui.cursor_click(x, y, 'left')
 	assert isinstance(gui.cursor, CursorTool)
+
+	return gui.session.world.player.settlements[-1]
 
 
 def saveload(gui):
@@ -183,7 +185,7 @@ class GuiHelper(object):
 		"""Active widgets are the top level containers currently
 		known by pychan.
 		"""
-		return self._manager.allWidgets.keys()
+		return self._manager.allWidgets
 
 	def _get_children(self, w):
 		if hasattr(w, 'children'):
@@ -191,40 +193,49 @@ class GuiHelper(object):
 		elif hasattr(w, 'findChildren'):
 			return w.findChildren()
 
-	def _find(self, name):
+	def _find(self, widgets, name):
 		"""Recursive find a widget by name.
 
 		This is the actual search implementation behind `GuiHelper.find`.
+
+		Finds all components that match the right-most name, e.g. foo in bar/baz/foo. From
+		there, go up the tree, removing candidates that have no match for other path
+		components, e.g. no baz in their parents.
 		"""
-		match = None
-		seen = set()
-		widgets = deque(self.active_widgets)
+		path_components = name.split('/')
 
-		path_components = list(reversed(name.split('/')))
+		first_part = path_components.pop()
+		filtered = [w for w in widgets if w.name == first_part]
+		if not filtered:
+			return None
 
+		candidates = [(f, [f.parent]) for f in filtered]
 		while path_components:
-			name = path_components.pop()
+			path = path_components.pop()
+			new_candidates = []
+			for candidate, up in candidates:
+				w = up.pop()
+				while w and w.name != path:
+					if w.name != '__unnamed__':
+						up.append(w)
+					w = w.parent
 
-			while widgets:
-				w = widgets.popleft()
-				seen.add(w)
-				if w.name == name:
-					# When there are still names left in the path, continue our search
-					# in the children of the matched widget
-					if path_components:
-						widgets = deque([x for x in self._get_children(w) if x not in seen])
-						break
-					else:
-						# We're done!
-						match = w
-						break
-				else:
-					widgets.extend([x for x in self._get_children(w) if x not in seen])
+				if w and w.name == path:
+					new_candidates.append((candidate, up + [w]))
 
-			if match:
-				break
+			candidates = new_candidates
 
-		return match
+		if len(candidates) > 1:
+			candidates = sorted(candidates, key=lambda c: len(c[1]))
+			best_matches = [c[0] for c in candidates if len(c[1]) == len(candidates[0][1])]
+
+			if len(best_matches) > 1:
+				raise Exception('Ambigious specification {}, found {} matches'.format(
+					name, len(best_matches)))
+			else:
+				return best_matches[0]
+		elif candidates:
+			return candidates[0][0]
 
 	def find(self, name):
 		"""Find a widget by name.
@@ -241,7 +252,7 @@ class GuiHelper(object):
 		Recursively searches through all widgets. Some widgets will be extended
 		with helper functions to allow easier interaction in tests.
 		"""
-		match = self._find(name)
+		match = self._find(self.active_widgets, name)
 
 		gui_helper = self
 
@@ -258,6 +269,7 @@ class GuiHelper(object):
 				self.selected = index
 				# trigger callbacks for selection change
 				gui_helper._trigger_widget_callback(self, can_fail=True)
+				gui_helper.run()
 
 			match.select = types.MethodType(select, match, match.__class__)
 		elif isinstance(match, pychan.widgets.TextField):
@@ -269,6 +281,7 @@ class GuiHelper(object):
 			def enter(self):
 				"""Trigger callback as if ENTER was pressed."""
 				gui_helper._trigger_widget_callback(self, can_fail=True)
+				gui_helper.run()
 
 			match.write = types.MethodType(write, match, match.__class__)
 			match.enter = types.MethodType(enter, match, match.__class__)
@@ -281,53 +294,51 @@ class GuiHelper(object):
 				# TODO find out why some sliders use 'stepslider' and others 'default'
 				if not gui_helper._trigger_widget_callback(self, can_fail=True):
 					gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
+					gui_helper.run()
 
 			match.slide = types.MethodType(slide, match, match.__class__)
 
 		return match
 
-	def trigger(self, root, event, mouse=None):
+	def trigger(self, widget, event=None, mouse=None):
 		"""Trigger a widget event in a container.
 
-		root  - container (object, name or path) that holds the widget.
+		root  - widget (object, name or path)
 				For more information on path, see `GuiHelper.find`.
-		event - string describing the event (widget/event/group)
-		        event and group are optional
+		event - Optional. string describing the event (event/group)
 		mouse - Optional. Can be 'left' or 'right'. Some event callbacks look
 				at the event that occured, so we need to tell what mouse
 				button triggered this.
 
 		Example:
-			c = gui.find('mainmenu')
-			gui.trigger(c, 'okButton/action/default')
+			c = gui.find('mainmenu/okButton')
+			gui.trigger(c, 'action/default')
 
 		Equivalent to:
-			gui.trigger('mainmenu', 'okButton/action/default')
+			gui.trigger('mainmenu/okButton', 'action/default')
+
+		Even shorter:
+
+			gui.trigger('mainmenu/okButton')
 		"""
 		group_name = 'default'
 		event_name = 'action'
 
-		parts = event.split('/')
-		if len(parts) == 3:
-			widget_name, event_name, group_name = parts
-		elif len(parts) == 2:
-			widget_name, event_name = parts
-		else:
-			widget_name, = parts
+		parts = event.split('/') if event else []
+		if len(parts) == 2:
+			event_name, group_name = parts
+		elif len(parts) == 1:
+			event_name, = parts
 
-		# if container is given by name, look it up first
-		if isinstance(root, basestring):
-			root_name = root
-			root = self.find(name=root_name)
-			if not root:
-				raise Exception("Container '%s' not found" % root_name)
-
-		widget = root.findChild(name=widget_name)
-		if not widget:
-			raise Exception("'%s' contains no widget with the name '%s'" % (
-								root.name, widget_name))
+		# if widget is given by name, look it up first
+		if isinstance(widget, basestring):
+			widget_name = widget
+			widget = self.find(widget_name)
+			if not widget:
+				raise Exception("Widget '%s' not found" % widget_name)
 
 		self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
+		self.run()
 
 	def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False, mouse=None):
 		"""Call callbacks for the given widget."""
@@ -424,6 +435,7 @@ class GuiHelper(object):
 		self.cursor_press_button(x, y, button, shift, ctrl)
 		self.run()
 		self.cursor_release_button(x, y, button, shift, ctrl)
+		self.run()
 
 	def cursor_multi_click(self, *coords):
 		"""Do multiple clicks in succession.
@@ -525,3 +537,16 @@ class GuiHelper(object):
 		self.cursor_map_coords.disable()
 		self.speed_default()
 		self.run(2**20)
+
+	def print_widget_tree(self, widget):
+		"""
+		Helper function that recurses through a widget and its children and prints them
+		nested.
+		"""
+		def visitor(w, level):
+			print('  ' * level, '<{0} name="{1}">'.format(w.__class__.__name__, w.name))
+			for child in self._get_children(w):
+				visitor(child, level + 1)
+			print('  ' * level, '</{0}>'.format(w.__class__.__name__))
+
+		visitor(widget, 0)

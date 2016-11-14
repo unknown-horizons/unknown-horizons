@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,16 +22,17 @@
 import uuid
 
 from horizons.network import NetworkException, SoftNetworkException
-from horizons.network.packets import packet, SafeUnpickler
+from horizons.network.packets import SafeUnpickler, packet
+
 
 class cmd_creategame(packet):
-	clientversion = None
-	clientid      = None
-	playername    = None
-	playercolor   = None
+	clientversion = None # type: unicode
+	clientid      = None # type: str
+	playername    = None # type: unicode
+	playercolor   = None # type: int
 	gamename      = u"Unnamed Game"
-	mapname       = None
-	maxplayers    = None
+	mapname       = None # type: unicode
+	maxplayers    = None # type: int
 	maphash       = ""
 	password      = ""
 
@@ -105,8 +106,8 @@ SafeUnpickler.add('client', cmd_creategame)
 
 class cmd_listgames(packet):
 	clientversion = 0
-	mapname       = None
-	maxplayers    = None
+	mapname       = None # type: unicode
+	maxplayers    = None # type: int
 
 	def __init__(self, clientver, mapname=None, maxplayers=None):
 		self.clientversion = clientver
@@ -127,11 +128,11 @@ SafeUnpickler.add('client', cmd_listgames)
 #-------------------------------------------------------------------------------
 
 class cmd_joingame(packet):
-	uuid          = None
-	clientid      = None
-	clientversion = None
-	playername    = None
-	playercolor   = None
+	uuid          = None # type: str
+	clientid      = None # type: str
+	clientversion = None # type: unicode
+	playername    = None # type: unicode
+	playercolor   = None # type: int
 	password      = ""
 	fetch         = False
 
@@ -196,7 +197,7 @@ SafeUnpickler.add('client', cmd_leavegame)
 #-------------------------------------------------------------------------------
 
 class cmd_chatmsg(packet):
-	chatmsg = None
+	chatmsg = None # type: unicode
 
 	def __init__(self, msg):
 		self.chatmsg = msg
@@ -213,7 +214,7 @@ SafeUnpickler.add('client', cmd_chatmsg)
 #-------------------------------------------------------------------------------
 
 class cmd_changename(packet):
-	playername = None
+	playername = None # type: unicode
 
 	def __init__(self, playername):
 		self.playername = playername
@@ -230,7 +231,7 @@ SafeUnpickler.add('client', cmd_changename)
 #-------------------------------------------------------------------------------
 
 class cmd_changecolor(packet):
-	playercolor = None
+	playercolor = None # type: int
 
 	def __init__(self, playercolor):
 		self.playercolor = playercolor

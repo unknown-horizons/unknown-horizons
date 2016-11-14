@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +20,9 @@
 # ###################################################
 
 """
-Maps _ to the ugettext unicode gettext call. Use: _(string).
+Maps _ to the ugettext unicode gettext call. Use: T(string).
 N_ takes care of plural forms for different languages. It masks ungettext
-calls (unicode, plural-aware _() ) to create different translation strings
+calls (unicode, plural-aware T() ) to create different translation strings
 depending on the counter value. Not all languages have only two plural forms
 "One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
 where n is a counter.
@@ -32,7 +32,7 @@ We will need to make gettext recognize namespaces some time, but hardcoded
 """
 
 import platform
-import gettext
+import gettext as gettext_module
 import glob
 import os
 import logging
@@ -41,13 +41,44 @@ import locale
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES, FONTDEFS
+from horizons.ext.typing import Optional, Text
 from horizons.ext.speaklater import make_lazy_gettext
 from horizons.messaging import LanguageChanged
 
 log = logging.getLogger("i18n")
 
 
-LANGCACHE = {}
+# currently active translation object
+_trans = None # type: Optional[gettext_module.NullTranslations]
+
+
+def gettext(message):
+	# type: (Text) -> Text
+	if not _trans:
+		return message
+	return _trans.ugettext(message)
+
+
+gettext_lazy = make_lazy_gettext(lambda: gettext)
+
+
+def ngettext(message1, message2, count):
+	# type: (Text, Text, int) -> Text
+	return _trans.ungettext(message1, message2, count)
+
+
+LANGCACHE = {} # type: Dict[str, str]
+
+
+def reset_language():
+	"""
+	Reset global state to initial.
+	"""
+	global _trans
+	global LANGCACHE
+	_trans = None
+	LANGCACHE = {}
+
 
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
@@ -89,6 +120,7 @@ def change_language(language=None):
 
 	Called on startup and when changing the language in the settings menu.
 	"""
+	global _trans
 
 	if language: # non-default
 		try:
@@ -96,9 +128,9 @@ def change_language(language=None):
 			# English is not shipped as .mo file, thus if English is
 			# selected we use NullTranslations to get English output.
 			fallback = (language == 'en')
-			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
-			                            languages=[language], fallback=fallback)
-			trans.install(unicode=True, names=['ngettext',])
+			trans = gettext_module.translation('unknown-horizons', find_available_languages()[language],
+			                                   languages=[language], fallback=fallback)
+			_trans = trans
 		except (IOError, KeyError, ValueError) as err:
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
@@ -113,11 +145,8 @@ def change_language(language=None):
 		# default locale
 		if platform.system() == "Windows": # win doesn't set the language variable by default
 			os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
-		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
-
-	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
-	import __builtin__
-	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
+		_trans = gettext_module.translation('unknown-horizons', 'content/lang',
+		                                   fallback=True)
 
 	# update fonts
 	new_locale = language or horizons.globals.fife.get_locale()
@@ -125,6 +154,3 @@ def change_language(language=None):
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
 	LanguageChanged.broadcast(None)
-
-
-_lazy = make_lazy_gettext(lambda: lambda s: _(s))

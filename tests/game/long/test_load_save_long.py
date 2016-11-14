@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,8 +25,8 @@ from functools import partial
 
 from horizons.util.random_map import generate_map_from_seed
 from horizons.util.savegameaccessor import SavegameAccessor
-
 from tests.game import game_test
+
 
 @game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=2*60)
 def test_save_trivial(session, _):

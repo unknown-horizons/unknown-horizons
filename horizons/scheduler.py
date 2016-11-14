@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,10 +23,10 @@ import logging
 from collections import deque
 
 import horizons.main
-
+from horizons.constants import GAME
 from horizons.util.living import LivingObject
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.constants import GAME
+
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
@@ -149,7 +149,7 @@ class Scheduler(LivingObject):
 			if not readd:  # readded calls haven't been removed here
 				if not callback_obj.class_instance in self.calls_by_instance:
 					self.calls_by_instance[callback_obj.class_instance] = []
-				self.calls_by_instance[callback_obj.class_instance].append( callback_obj )
+				self.calls_by_instance[callback_obj.class_instance].append(callback_obj)
 
 	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None, finish_callback=None):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.

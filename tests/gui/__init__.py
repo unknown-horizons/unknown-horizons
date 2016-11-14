@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,6 +35,7 @@ dotted path to the test (along with other options), similar to this code:
 	def minimap(gui):
 		menu = gui.find(name='mainmenu')
 """
+from __future__ import print_function
 
 import os
 import shutil
@@ -53,7 +54,8 @@ from tests.utils import Timer
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
-class TestFailed(Exception): pass
+class TestFailed(Exception):
+	pass
 
 
 TEST_USER_DIR = None
@@ -206,7 +208,7 @@ class TestRunner(object):
 		"""
 		try:
 			cooperative.schedule()
-		except:
+		except Exception:
 			import traceback
 			traceback.print_exc()
 			sys.exit(1)
@@ -296,7 +298,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			if proc.returncode != 0:
 				if nose_captured:
 					if stdout:
-						print stdout
+						print(stdout)
 					if not 'Traceback' in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
 					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,26 +22,28 @@
 
 import weakref
 
-from horizons.constants import BUILDINGS, WEAPONS
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
-from horizons.entities import Entities
-from horizons.gui.tabs import OverviewTab, TradeTab
-from horizons.gui.widgets.routeconfig import RouteConfig
-from horizons.i18n import _lazy
-from horizons.util.python.callback import Callback
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, WEAPONS
+from horizons.entities import Entities
+from horizons.gui.widgets.routeconfig import RouteConfig
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
+from horizons.util.python.callback import Callback
+
+from .overviewtab import OverviewTab
+from .tradetab import TradeTab
 
 
 class ShipOverviewTab(OverviewTab):
-	widget = 'overview_trade_ship.xml'
+	widget = 'overview_ship.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
-	helptext = _lazy("Ship overview")
+	helptext = LazyT("Ship overview")
 
 	def init_widget(self):
 		super(ShipOverviewTab, self).init_widget()
-		ship_inv = self.instance.get_component(StorageComponent).inventory
-		self.widget.child_finder('inventory').init(self.instance.session.db, ship_inv)
+		self.ship_inv = self.instance.get_component(StorageComponent).inventory
+		self.widget.child_finder('inventory').init(self.instance.session.db, self.ship_inv)
 
 		# FIXME having to access the WindowManager this way is pretty ugly
 		self._windows = self.instance.session.ingame_gui.windows
@@ -52,12 +54,12 @@ class ShipOverviewTab(OverviewTab):
 
 	def _refresh_found_settlement_button(self, events):
 		island_without_player_settlement_found = False
-		helptext = _("The ship needs to be close to an island to found a settlement.")
+		helptext = T("The ship needs to be close to an island to found a settlement.")
 		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius):
 			if not any(settlement.owner.is_local_player for settlement in island.settlements):
 				island_without_player_settlement_found = True
 			else:
-				helptext = _("You already have a settlement on this island.")
+				helptext = T("You already have a settlement on this island.")
 
 		if island_without_player_settlement_found:
 			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build,
@@ -65,7 +67,7 @@ class ShipOverviewTab(OverviewTab):
 			                                      weakref.ref(self.instance) )
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
-			self.widget.child_finder('found_settlement').helptext = _("Build settlement")
+			self.widget.child_finder('found_settlement').helptext = T("Build settlement")
 		else:
 			events['found_settlement'] = None
 			self.widget.child_finder('found_settlement_bg').set_inactive()
@@ -88,9 +90,9 @@ class ShipOverviewTab(OverviewTab):
 
 		if warehouses:
 			if warehouses[0].owner is self.instance.owner:
-				helptext = _('Load/Unload')
+				helptext = T('Load/Unload')
 			else:
-				helptext = _('Buy/Sell')
+				helptext = T('Buy/Sell')
 			events['trade'] = Callback(self.instance.get_component(SelectableComponent).show_menu, TradeTab)
 			self.widget.findChild(name='trade_bg').set_active()
 			self.widget.findChild(name='trade').set_active()
@@ -99,22 +101,22 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').helptext = _('Too far from the nearest tradeable warehouse')
+			self.widget.findChild(name='trade').helptext = T('Too far from the nearest tradeable warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
 			button.button.capture(Callback(
-			  self.instance.session.ingame_gui.show_popup,
-			  _("Cannot equip trade ship with weapons"),
-			  _("It is not possible to equip a trade ship with weapons.")
+			  self.instance.session.ingame_gui.open_popup,
+			  T("Cannot equip trade ship with weapons"),
+			  T("It is not possible to equip a trade ship with weapons.")
 			))
 		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons, lambda b: b.res_id == WEAPONS.CANNON)
 
 	def refresh(self):
-		# show rename when you click on name
 		events = {
+			# show rename when you click on name
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
-			'configure_route/mouseClicked': Callback(self._configure_route)
+			'configure_route/mouseClicked': Callback(self._configure_route),
 		}
 
 		self._refresh_found_settlement_button(events)
@@ -124,6 +126,10 @@ class ShipOverviewTab(OverviewTab):
 		self.widget.child_finder('inventory').update()
 		self._refresh_combat()
 		super(ShipOverviewTab, self).refresh()
+
+	def hide(self):
+		self.route_menu.hide()
+		super(ShipOverviewTab, self).hide()
 
 
 class FightingShipOverviewTab(ShipOverviewTab):
@@ -141,11 +147,11 @@ class FightingShipOverviewTab(ShipOverviewTab):
 
 	def _refresh_combat(self):
 		def apply_equip(button):
-			button.button.helptext = _("Equip weapon")
+			button.button.helptext = T("Equip weapon")
 			button.button.capture(Callback(self.equip_weapon, button.res_id))
 
 		def apply_unequip(button):
-			button.button.helptext = _("Unequip weapon")
+			button.button.helptext = T("Unequip weapon")
 			button.button.capture(Callback(self.unequip_weapon, button.res_id))
 
 		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
@@ -167,15 +173,42 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		self.weapon_inventory = None
 		super(FightingShipOverviewTab, self).on_instance_removed()
 
+class TradeShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_trade_ship.xml'
+	icon_path = 'icons/tabwidget/ship/ship_inv'
+	helptext = LazyT("Ship overview")
+
+	def _refresh_discard_resources(self):
+		if self.ship_inv.get_sum_of_stored_resources() == 0:
+			self.widget.findChild(name='discard_res_bg').set_inactive()
+			self.widget.findChild(name='discard_res').set_inactive()
+		else:
+			self.widget.findChild(name='discard_res_bg').set_active()
+			self.widget.findChild(name='discard_res').set_active()
+
+	def _discard_resources(self):
+		self.ship_inv.reset_all()
+		self.widget.child_finder('inventory').update()
+
+	def refresh(self):
+		super(TradeShipOverviewTab, self).refresh()
+		events = {
+
+		        'discard_res/mouseClicked': Callback(self._discard_resources)
+		}
+		self.widget.mapEvents(events)
+		self._refresh_discard_resources()
+		super(TradeShipOverviewTab, self).refresh()
+
 class TraderShipOverviewTab(OverviewTab):
 	widget = 'overview_tradership.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
-	helptext = _lazy("Ship overview")
+	helptext = LazyT("Ship overview")
 
 class EnemyShipOverviewTab(OverviewTab):
 	widget = 'overview_enemyunit.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
-	helptext = _lazy("Ship overview")
+	helptext = LazyT("Ship overview")
 
 	def init_widget(self):
 		super(EnemyShipOverviewTab, self).init_widget()

@@ -1,0 +1,17 @@
+baseclass: groundunit.GroundUnit
+id: UNITS.SWORDSMAN
+name: Swordsman
+radius: 1
+velocity: 12.0
+components:
+- SelectableComponent:
+    type: unit
+    tabs: [GroundUnitOverviewTab]
+    enemy_tabs: [EnemyShipOverviewTab,]
+- HealthComponent:
+   maxhealth: 444
+- CommandableComponent
+- SoldierNameComponent
+actionsets:
+ TIER.SAILORS:
+   as_hunterunit0:

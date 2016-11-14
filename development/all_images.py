@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,6 +26,7 @@ in the repository and in a certain directory. Does not wite anything to a
 file, you will need to redirect output.
 Change `where` below to anything else as you see fit.
 '''
+from __future__ import print_function
 
 import os
 import os.path
@@ -53,4 +54,4 @@ for root, dirs, files in sorted(os.walk(where)):
 		if not f.endswith(('.png', '.jpg')):
 			continue
 		url = base_url + '/' + root + '/' + f
-		print '<a href="{url}"><img src="{url}" /></a>'.format(url=url)
+		print('<a href="{url}"><img src="{url}" /></a>'.format(url=url))

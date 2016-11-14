@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,6 +18,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+from __future__ import print_function
+
 
 # Point
 
@@ -139,9 +142,9 @@ def distance_annulus_tuple(annulus, (x, y)):
 # DEBUG
 if __name__ == '__main__':
 	import itertools
-	import distances
+	from . import distances
 	shapes = ('rect', 'point', 'tuple', 'circle', 'annulus')
 	for s1, s2 in itertools.product(shapes, shapes):
 		if not (hasattr(distances, 'distance_%s_%s' % (s1, s2)) or
 		        hasattr(distances, 'distance_%s_%s' % (s2, s1))):
-			print 'missing distance between', s1, s2
+			print('missing distance between', s1, s2)

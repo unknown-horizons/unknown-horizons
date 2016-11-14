@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+
 
 class SettlementBuildabilityCache(BinaryBuildabilityCache):
 	"""A specialized BinaryBuildabilityCache for settlements."""

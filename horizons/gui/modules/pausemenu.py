@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,11 @@
 import horizons.main
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-from horizons.gui.modules.settings import SettingsDialog
 from horizons.gui.modules.select_savegame import SelectSavegameDialog
+from horizons.gui.modules.settings import SettingsDialog
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.util.startgameoptions import StartGameOptions
 
 
@@ -47,7 +48,7 @@ class PauseMenu(Window):
 		events = {
 			'load' : self._load_game,
 			'save' : self._save_game,
-			'sett' : lambda: self._windows.show(self.settings_dialog),
+			'sett' : lambda: self._windows.open(self.settings_dialog),
 			'help' : ingame_gui.toggle_help,
 			'start': self._windows.close,
 			'quit' : self._do_quit,
@@ -70,17 +71,23 @@ class PauseMenu(Window):
 			'quit'    : events['quit'],
 		})
 
-	def show(self):
+	def open(self):
+		super(PauseMenu, self).open()
 		PauseCommand(suggestion=True).execute(self._session)
+
+	def show(self):
 		self._gui.show()
 
 	def hide(self):
 		self._gui.hide()
+
+	def close(self):
+		super(PauseMenu, self).close()
 		UnPauseCommand(suggestion=True).execute(self._session)
 
 	def _do_quit(self):
-		message = _("Are you sure you want to abort the running session?")
-		if self._windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
+		message = T("Are you sure you want to abort the running session?")
+		if self._windows.open_popup(T("Quit Session"), message, show_cancel_button=True):
 			self._session.quit()
 
 	def _save_game(self):
@@ -90,15 +97,15 @@ class PauseMenu(Window):
 			success = self._session.save()
 			if not success:
 				# There was a problem during the 'save game' procedure.
-				self._windows.show_popup(_('Error'), _('Failed to save.'))
+				self._windows.open_popup(T('Error'), T('Failed to save.'))
 
 	def _load_game(self):
 		if self._in_editor_mode:
 			editor_start_menu = EditorStartMenu(self._windows)
-			self._windows.show(editor_start_menu)
+			self._windows.open(editor_start_menu)
 		else:
 			window = SelectSavegameDialog('load', self._windows)
-			saved_game = self._windows.show(window)
+			saved_game = self._windows.open(window)
 			if saved_game is None:
 				return
 

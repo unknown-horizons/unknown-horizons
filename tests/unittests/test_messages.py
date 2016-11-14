@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -21,9 +21,9 @@
 
 import unittest
 
-from horizons.messaging import Message
-
 import mock
+
+from horizons.messaging import Message
 
 
 class ExampleMessage(Message):

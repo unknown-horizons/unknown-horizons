@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
-
 import json
+import logging
 from itertools import groupby
+
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
-from horizons.util.python.callback import Callback
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
-from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.scenario.actions import show_message
+from horizons.util.python.callback import Callback
 
 
 class LogBook(PickBeltWidget, Window):
@@ -46,9 +47,9 @@ class LogBook(PickBeltWidget, Window):
 
 	widget_xml = 'captains_log.xml'
 	page_pos = (170, 38)
-	sections = (('logbook', _('Logbook')),
-	            ('statistics', _('Statistics')),
-	            ('chat_overview', _('Chat')))
+	sections = (('logbook', LazyT('Logbook')),
+	            ('statistics', LazyT('Statistics')),
+	            ('chat_overview', LazyT('Chat')))
 
 	def __init__(self, session, windows):
 		self.statistics_index = [i for i, sec in self.sections].index('statistics')
@@ -136,6 +137,8 @@ class LogBook(PickBeltWidget, Window):
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
 
+		self.display_messages()
+
 	def show(self, msg_id=None):
 		if not hasattr(self, '_gui'):
 			self._init_gui()
@@ -147,6 +150,15 @@ class LogBook(PickBeltWidget, Window):
 			if self.current_mode == self.statistics_index:
 				self.show_statswidget(self.last_stats_widget)
 
+	def display_messages(self):
+		"""Display all messages in self._messages_to_display and map the to the current logbook page"""
+		for message in self._messages_to_display:
+			if message in self._displayed_messages:
+				continue
+			for msg_id in show_message(self.session, "logbook", message):
+				self._page_ids[msg_id] = self._cur_entry
+				self._displayed_messages.append(message)
+
 	def hide(self):
 		if not self._hiding_widget:
 			self._hiding_widget = True
@@ -154,14 +166,7 @@ class LogBook(PickBeltWidget, Window):
 			self._gui.hide()
 			self._hiding_widget = False
 
-			for message in self._messages_to_display:
-				# show all messages (except those already displayed) and map them to the current logbook page
-				if message in self._displayed_messages:
-					continue
-				for msg_id in show_message(self.session, "logbook", message):
-					self._page_ids[msg_id] = self._cur_entry
-					self._displayed_messages.append(message)
-
+			self.display_messages()
 			self._message_log.extend(self._messages_to_display)
 			self._messages_to_display = []
 		# Make sure the game is unpaused always and in any case
@@ -180,10 +185,10 @@ class LogBook(PickBeltWidget, Window):
 				self._display_parameters_on_page([], 'right') # display empty page
 		else:
 			self._display_parameters_on_page([
-			  ['Headline', _("Emptiness")],
+			  ['Headline', T("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
 			  ['Label', u"\n\n"],
-			  ['Label', _('There is nothing written in your logbook yet!')],
+			  ['Label', T('There is nothing written in your logbook yet!')],
 				], 'left')
 		self.backward_button.set_active()
 		self.forward_button.set_active()
@@ -199,31 +204,47 @@ class LogBook(PickBeltWidget, Window):
 ########
 
 	def parse_logbook_item(self, parameter):
-		# json.loads() returns unicode, thus convert strings and compare to unicode
-		# Image works with str() since pychan can only use str objects as file path
+		# Some error checking for widgets that are to be loaded.
+		# This happens, for example, with outdated YAML stored in old
+		# scenario savegames. Instead of crashing, display nothing.
+		def _icon(image):
+			try:
+				# Pychan can only use str objects as file path.
+				# json.loads() however returns unicode.
+				return Icon(image=str(image))
+			except RuntimeError:
+				return None
+
+		def _label(text, font='default'):
+			try:
+				return Label(text=unicode(text), wrap_text=True,
+				             min_size=(325, 0), max_size=(325, 1024),
+				             font=font)
+			except RuntimeError:
+				return None
+
 		if parameter and parameter[0]: # allow empty Labels
 			parameter_type = parameter[0]
 		if isinstance(parameter, basestring):
-			add = Label(text=unicode(parameter), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
+			add = _label(parameter)
 		elif parameter_type == u'Label':
-			add = Label(text=unicode(parameter[1]), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
+			add = _label(parameter[1])
 		elif parameter_type == u'Image':
-			add = Icon(image=str(parameter[1]))
+			add = _icon(parameter[1])
 		elif parameter_type == u'Gallery':
 			add = HBox()
 			for image in parameter[1]:
-				add.addChild(Icon(image=str(image)))
+				new_icon = _icon(image)
+				if new_icon is not None:
+					add.addChild(new_icon)
 		elif parameter_type == u'Headline':
 			add = HBox()
 			is_not_last_headline = self._parameters and self._cur_entry < (len(self._parameters) - 2)
 			if is_not_last_headline:
-				add.addChild(Icon(image="content/gui/images/tabwidget/done.png"))
-
-			add.addChild(Label(text=unicode(parameter[1]), wrap_text=True,
-			            min_size=(335, 0), max_size=(335, 508), font='headline'))
+				add.addChild(_icon("content/gui/images/tabwidget/done.png"))
+			add.addChild(_label(parameter[1], font='headline'))
 		elif parameter_type == u'BoldLabel':
-			add = Label(text=unicode(parameter[1]), wrap_text=True,
-			            min_size=(335, 0), max_size=(335, 508), font='14_bold')
+			add = _label(parameter[1], font='default_bold')
 		elif parameter_type == u'Message':
 			add = None
 			# parameters are re-read on page reload.
@@ -297,7 +318,7 @@ class LogBook(PickBeltWidget, Window):
 			self._cur_entry = len_old
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
-			self._windows.show(self)
+			self._windows.open(self)
 			self.show_logbookwidget()
 
 	def clear(self):
@@ -366,7 +387,7 @@ class LogBook(PickBeltWidget, Window):
 			if self.stats_visible:
 				self._windows.close()
 
-			self._windows.show(self)
+			self._windows.open(self)
 			self.show_statswidget(widget=widget)
 		else:
 			self._windows.close()

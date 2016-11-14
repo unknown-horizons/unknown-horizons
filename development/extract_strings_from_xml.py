@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,18 +33,20 @@
 #
 ###############################################################################
 
+from __future__ import print_function
 import os
 import sys
 from xml.dom import minidom
 
+
 if len(sys.argv) != 2:
-	print 'Error: Provide a file to write strings to as argument. Exiting.'
+	print('Error: Provide a file to write strings to as argument. Exiting.')
 	sys.exit(1)
 
 header = u'''\
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -86,8 +88,10 @@ header = u'''\
 ###############################################################################
 
 from horizons.constants import VERSION
+from horizons.ext.typing import Tuple
+from horizons.i18n import gettext as T
 
-text_translations = {}
+text_translations = {} # type: Dict[str, Dict[Tuple[str, str], str]]
 
 def set_translations():
 	global text_translations
@@ -111,12 +115,12 @@ files_to_skip = [
 	'credits.xml',
 	'stringpreviewwidget.xml',
 	'startup_error_popup.xml',
-	]
+]
 
 
 def print_n_no_name(n, text):
-	print '\tWarning: ',
-	print '%s without name. Add unique name if desired: text="%s"' % (n, text)
+	print('\tWarning: ', end=' ')
+	print('%s without name. Add unique name if desired: text="%s"' % (n, text))
 
 def list_all_files():
 	result = []
@@ -135,9 +139,9 @@ def content_from_element(element_name, parse_tree, attribute):
 	attribute: usually 'text' or 'helptext'
 	"""
 	default_names = {
-		'OkButton' : u'okButton',
-		'CancelButton' : u'cancelButton',
-		'DeleteButton' : u'deleteButton',
+		'OkButton': u'okButton',
+		'CancelButton': u'cancelButton',
+		'DeleteButton': u'deleteButton',
 	}
 	element_strings = []
 	element_list = parse_tree.getElementsByTagName(element_name)
@@ -165,7 +169,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = '_(u"%s")' % text
+				text = 'T(u"%s")' % text
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 

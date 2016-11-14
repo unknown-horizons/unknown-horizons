@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 import hashlib
 import random
 import re
 import string
-import copy
 
-from horizons.util.shapes import Circle, Point, Rect
 from horizons.constants import GROUND
+from horizons.util.shapes import Circle, Point, Rect
 
 # this is how a random island id looks like (used for creation)
 _random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}:${island_x}:${island_y}"
@@ -225,22 +225,22 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.SAND_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.SAND_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.SAND_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.SAND_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.SAND_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.SAND_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.SAND_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.SAND_NORTH
 		# sandy corner
 		elif filled == ['se']:
@@ -279,22 +279,22 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'],['s']]:
 			tile = GROUND.COAST_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.COAST_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.COAST_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.COAST_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.COAST_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.COAST_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.COAST_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.COAST_NORTH
 		# mostly wet corner
 		elif filled == ['se']:
@@ -333,22 +333,22 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'],['s']]:
 			tile = GROUND.DEEP_WATER_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.DEEP_WATER_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.DEEP_WATER_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.DEEP_WATER_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.DEEP_WATER_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.DEEP_WATER_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.DEEP_WATER_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.DEEP_WATER_NORTH
 		# mostly deep corner
 		elif filled == ['se']:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,3 @@
 
 # Seed that is used by all tests to initialize the RNG
 RANDOM_SEED = 42
-
-# use this instead of the direct pdb version when debugging tests
-from game import set_trace

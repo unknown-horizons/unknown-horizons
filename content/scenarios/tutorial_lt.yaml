@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader.']
+  - [Message, 'Pastatykite sandėlį pakrantėje, kad prekybos laivai galėtų apsilankyti jūsų gyvenvietėje.']
   - '
 
 
@@ -24,121 +24,110 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Čia yra jūsų „kapitono žurnalas“, jame yra visa svarbi informacija. Trumpa žinutė apie kiekvieną užduotį bus pateikiama kairėje ekrano pusėje.
-  - If you are interested in longer descriptions, your log will hopefully provide all the help you need.
-  - After you close this log, it can be re-opened with the "Captain's Log" icon in the top-right corner (below the mini-map, with a sealed document and a feather).
+  - Čia jūsų Žurnalas, kuriame saugoma svarbi su dabartiniu scenarijumi susijusi informacija. Apie kiekvienos naujos užduoties santrauką taip pat įspės „pranešimo mygtukas“ šalia kairiojo ekrano krašto. Užveskite pelės žymeklį ant šio pranešimo, norėdami perskaityti santrauką, arba spustelėkite patį mygtuką, norėdami atverti Žurnalą.
+  - Bet kuriuo metu galite iš naujo atverti Žurnalą spustelėdami po sumažintu žemėlapiu, ekrano dešiniajame krašte esantį mygtuką. Toliau ši sritis, kurioje yra mažasis žemėlapis, įvairūs mygtukai ir skirtukai, bus vadinama „Apžvalga“.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, click on the button "Read next entries" in the navigation panel! It looks like this:'
+    Jei norite pamatyti savo pirmąją užduotį, atverskite kitą Žurnalo puslapį naudodami priešais esančio puslapio apačioje esantį mygtuką. Jis atrodo taip:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    For any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we will try to improve the tutorial!'
+    Jei turite pasiūlymų, kaip patobulinti šį mokomąjį žaidimą, arba jei randate klaidų, prašome pranešti mums.'
   - '
 
-    Visit www.unknown-horizons.org for help on how to contact the team!'
-  - O dabar pradėkime tikrą žaidimą.
+    Apsilankykite www.unknown-horizons.org ir sužinokite, kaip susisiekti su žaidimo komanda.'
+  - ''
+  - O dabar pradėkime žaidimą!
   - [Pagebreak]
-  - [Headline, 'NAUJA UŽDUOTIS: Įsikurkite saloje']
+  - [Headline, 'NAUJA UŽDUOTIS: ĮKURKITE GYVENVIETĘ']
   - [Image, content/gui/images/background/hr.png]
-  - Norėdami nuplukdyti laivą į kitą vietą paspauskite ant jo kairį pelės mygtuką, o tada paspauskite ant norimos vietos dešinį mygtuką.
-  - Once you are near the coast, the anchor-like button you see in the overview tab will become active.
+  - Jūsų laivas jūroje, pakrautas resursais, kurių jums prireiks norint įkurti naują gyvenvietę.
+  - Norėdami perkelti laivą į kitą vietą, spustelėkite jį kairiuoju pelės mygtuku, o tada paspauskite dešinį pelės mygtuką ant tos vietos, į kurią norite nuplaukti.
+  - Kai būsite netoli pakrantės, apžvalgos mygtukas „Pastatyti gyvenvietę“ taps aktyvus.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - This indicates that you are able to build a warehouse there by pressing that button (called 'Build Settlement').
-  - Now a preview of your building is dragged around when you move the cursor.
-  - 'You can build on any spot where this preview is not shaded red.
-
-    Click where you want to place your first building.'
-  - '
-
-    TASK: Build a warehouse at the coast.'
+  - Spustelėjus šį mygtuką bus rodoma Sandėlio, pirmojo pastato, reikalingo įkurti naują gyvenvietę, peržvalga. Perkeldami žymeklį, pastebėsite, kad, pastatą nukreipus į netinkamą sritį, peržvalgos vaizdas yra užtušuotas raudonai.
+  - Sandėlys turi būti pastatytas pakrantėje, kad laivai galėtų priplaukti. Todėl paieškokite tinkamos vietos ir paspauskite kairįjį pelės klavišą, kad pastatytumėte šį svarbų pastatą.
+  - ''
+  - [BoldLabel, 'Užduotis: Pakrantėje pastatykite Sandėlį.']
 
 - &LUMBERJACK
-  - [Message, Build a lumberjack and connect it to the warehouse using a trail.]
-  - [Headline, 'NAUJA UŽDUOTIS: Pastatyti Lentpjūvę']
+  - [Message, Pastatykite Lentpjūvę ir sujunkite ją su Sandėliu.]
+  - [Headline, 'NAUJA UŽDUOTIS: PASTATYKITE MEDKIRČIO PALAPINĘ']
   - [Image, content/gui/images/background/hr.png]
-  - The construction material on your ship got unloaded automatically. You can now construct some basic buildings.
-  - Pradėsime pastatydami lentpjūvę.
-  - This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.
-  - The fisherman needs some boards to build his vessel as well.
-  - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
+  - Resursai ir statybinės medžiagos buvo iškrauti iš jūsų laivo ir saugiai laikomi jūsų naujajame Sandėlyje. Dabar jau galite statyti kai kuriuos pagrindinius pastatus, pradėdami nuo Medkirčio palapinės.
+  - Medkirčiai kirs medžius aplink jų palapinę esančioje miškingoje vietovėje ir perdirbs medieną į lentas, kurias bus galima naudoti statyboje arba kaip prekybos išteklių.
+  - Norėdami pastatyti Medkirčio Palapinę, atverkite Statymo Meniu, spustelėdami po sumažintu žemėlapiu esantį mygtuką arba paspausdami numatytąjį klavišą „B“.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
-  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
+  - Statymo Meniu, kaip ir jūsų naujoji gyvenvietė, yra surūšiuotas pagal pakopas, kol kas galite statyti tik Pirmosios pakopos pastatus; kai jūsų civilizacija pažengs, gausite prieigą prie aukštesnių pakopų ir galėsite statyti kur kas įvairesnius pastatus.
   - [Pagebreak]
-  - '
-
-    As your civilization advances, you also gain more and more complex buildings.'
-  - For now, select the lumberjack under 'Companies' and build it in an area with some trees around.
-  - You can also plant trees later - but that costs money. Use what nature provided you with!
-  - A company always needs a trail connection to a storage or warehouse, otherwise goods will remain at the company and not be collected.
-  - This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
-  - '
-
-    UŽDUOTIS: Miškingoje vietoje pastatykite lentpjūvę ir sujunkite ją su keliu.'
-  - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
+  - ''
+  - Suraskite savo Medkirčiui gražią miškingą vietovę, kurioje jis galėtų dirbti, tada iš Apžvalgos pastatų sąrašo pasirinkite „Medkirčio palapinę“ ir ją pastatykite.
+  - Vėlesniame žaidime gali būti naudinga sukurti miškingą vietovę sodinant medžius, bet tai kainuoja, todėl kol kas geriau naudokite tuos išteklius, kuriais pasirūpino gamta!
+  - Bet kuris išteklių rinkimo ar gamybos pastatas turi būti keliu sujungtas su Sandėliu ar kitokia saugykla, kitaip išgautos gėrybės nebus surenkamos.
+  - Kai jūsų Medkirčio palapinė bus reikiamoje padėtyje, sujunkite ją su Sandėliu, atverdami Statymo meniu ir paspausdami mygtuką „Kelias“. Spustelėkite ir tempkite pelytės žymeklį, kad padarytumėte kelią tarp Medkirčio palapinės ir Sandėlio.
+  - ''
+  - [BoldLabel, 'Užduotis: Miškingoje vietoje pastatykite Medkirčio Palapinę ir sujunkite ją su Sandėliu.']
+  - Kai pastatai bus sujungti, pamatysite atvykstantį surinkėją, kuris surinks ką tik pagamintas lentas ir pristatys jas į Sandėlį, kur jos jau bus paruoštos naudojimui statyboje ar prekyboje.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a hunter and a fisher. Connect them to the warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Sukurkite medžiotoją ir žvejį. Sujunkite juos su sandėliu.]
+  - [Headline, 'NAUJA UŽDUOTIS: MAISTO TIEKIMAS']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter and Fisher.
-  - Medžiotojas žudo gyvūnus miške, todėl reikia, kad netoliese būtų medžių.
-  - Note that you can place your Hunter close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
+  - Jums prireiks turėti keletą maisto tiekėjų, nes dažniausiai žmonės (o ypač jūreiviai) būna labai alkani.
+  - Prieinami pirmosios pakopos maisto tiekėjai yra Medžiotojas ir Žvejys.
+  - Medžiotojas medžioja gyvūnus miške, todėl reikia, kad netoliese būtų medžių.
+  - Atkreipkite dėmesį, kad savo Medžiotoją galite įkurdinti šalia medkirčio miško.
+  - Gali atsitikti taip, kad gyvūnai pakankamai greitai nesiveis, arba tiesiog gerai pasislėps.
+  - 'Išvada: jei jums reikia nepertraukiamo tiekimo, medžiotoju galite ne itin pasikliauti.'
   - [Pagebreak]
   - '
 
     The Fisher needs a coastal building site like the warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
-  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
-  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
-  - '
-
-    TASK: Build a hunter and a fisher.'
-  - Don't forget to connect them to your warehouse with trails!
+  - Jis pastatys nedidelę valtį ir pradės gaudyti žuvį.
+  - Šis tiekimo būdas itin pastovus, tačiau maisto vieneto gamybos trukmė yra šiek tiek ilgesnė.
+  - Tokiai nedidelei gyvenvietei, kaip jūsų, gali praversti abu tiekėjai, o matydami jų tiesioginį palyginimą, galėsite geriau subalansuoti privalumus ir trūkumus.
+  - ''
+  - [BoldLabel, 'Užduotis: Sukurkite medžiotoją ir žvejį.']
+  - Nepamirškite jų keliais sujungti su sandėliu!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a main square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Message, 'Pastatykite pagrindinę aikštę. Pasirinkite sritį, kurioje nėra daug ūkio pastatų.']
+  - [Headline, 'NAUJA UŽDUOTIS: PAGRINDINĖ AIKŠTĖ']
   - [Image, content/gui/images/background/hr.png]
-  - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square.
-  - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
+  - Gyventojams prireiks pagrindinės aikštės, kurioje jie galės gauti prekių.
+  - Tai reiškia, kad tarp jų namų ir pagrindinės aikštės turi būti ryšys - t. y. kelias. Atkreipkite dėmesį, kad pagrindinė aikštė taip pat atlieka kelio funkciją, todėl šalia esančioms palapinėms nebūtina statyti atskirų kelių.
+  - Šioje „prekyvietėje“ yra prieinamos visos jūsų sandėliuose esančios gėrybės, todėl gyventojams nereikės keliauti iki žvejo ar sandėlio.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
-  - '
-
-    TASK: Build a main square.'
+  - Geriau nestatykite pagrindinės gyvenvietės palapinių per daug arti medkirčių, nes statydami palapines išnaikinsite medžius, iš kurių medkirčiai gamina lentas.
+  - Tiekėjai gali dirbti nebūdami prijungti prie palapinių, todėl nebūtina statyti kelių tarp pagrindinės aikštės ir pvz. medkirčio palapinės.
+  - ''
+  - [BoldLabel, 'Užduotis: Pastatykite pagrindinę aikštę.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    Dabar atidžiau pažvelkime į pagrindinę aikštę.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - Skirtuke „Paskyra“ matysite šios salos balanso ataskaitą, kurioje bus nurodytos visos patirtos išlaidos ir gauti mokesčiai.
+  - Įrašai „Pardavimas“ ir „Pirkimas“ rodo jūsų prekybos balansą. Jie bus paaiškinti vėliau.
+  - Jei jūsų balansas teigiamas, gaunate pelną.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
   - [Image, content/gui/images/background/hr.png]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
@@ -148,9 +137,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
   - Consider to disable the upgrade if your stock of these materials is low.
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
-  - '
-
-    TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.'
+  - ''
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Build at least three additional tents and connect them to the main square.]
@@ -167,9 +155,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If their demands are fulfilled, happiness and thus your tax income increase.
   - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
   - Note that you can also change the global tax settings here, too.
-  - '
-
-    TASK: Build at least three additional tents.'
+  - ''
+  - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
     TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
@@ -196,9 +183,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - At the 'sailors' tier, you are equipped with three trading slots.
   - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
-  - '
-
-    TASK: Build a signal fire at the coast close to your warehouse.'
+  - ''
+  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
@@ -224,9 +210,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     It is NOT possible to change prices manually!'
   - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
-  - '
-
-    TASK: Buy as many tools as you need to have 30 tools in stock!'
+  - ''
+  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -250,9 +235,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     It is NOT enough that the building is merely within a certain range of the tents.
 
     The road connection is required as well.'
-  - '
-
-    TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.'
+  - ''
+  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -272,9 +256,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
   - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
-  - '
-
-    TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.'
+  - ''
+  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -298,9 +281,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
-  - '
-
-    TASK: Build a farm.'
+  - ''
+  - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -326,9 +308,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
-  - '
-
-    TASK: Build at least one pasture in the farm''s range and add potato fields if you like.'
+  - ''
+  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -357,9 +338,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * sends its own collectors to fetch goods, just like the warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
-  - '
-
-    TASK: Build a storage tent, preferably where you need collectors.'
+  - ''
+  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -371,9 +351,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
   - In both cases you should ensure the connection to a trail as well.
   - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
-  - '
-
-    TASK: Build a weaver positioned so it can get wool.'
+  - ''
+  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -384,9 +363,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
-  - '
-
-    TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.'
+  - ''
+  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -415,7 +393,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Your UH-Team'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
@@ -673,8 +651,8 @@ metadata:
   description: 'Mokomasis scenarijus:
 
     Įkurkite savo pirmąją gyvenvietę bei išmokite žaisti!'
-  difficulty: Tutorial
+  difficulty: Mokomasis žaidimas
   locale: lt
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 11 translated messages, 1 fuzzy translation, 179 untranslated messages.
+  translation_status: 55 translated messages, 131 untranslated messages.

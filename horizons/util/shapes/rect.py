@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,10 @@
 
 from horizons.util.python import Const
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes import Shape, Point
+
+from . import Shape
+from .point import Point
+
 
 class Rect(Shape):
 	__slots__ = ('top', 'left', 'right', 'bottom', 'origin')

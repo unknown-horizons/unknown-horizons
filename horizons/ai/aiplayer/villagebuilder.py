@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,18 @@
 # ###################################################
 
 import copy
-import math
 import logging
-
+import math
 from collections import defaultdict, deque
 
 from horizons.ai.aiplayer.areabuilder import AreaBuilder
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS
-from horizons.util.shapes import distances, Rect
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+from horizons.util.shapes import Rect, distances
+
 
 class VillageBuilder(AreaBuilder):
 	"""
@@ -114,9 +114,9 @@ class VillageBuilder(AreaBuilder):
 		* the plan is stitched together and other village buildings are by replacing some
 			of the residences
 		"""
-
-		xs = set([x for (x, _) in self.land_manager.village])
-		ys = set([y for (_, y) in self.land_manager.village])
+		# Sets of coordinates used for calulate the width and height
+		xs = {x for (x, _) in self.land_manager.village}
+		ys = {y for (_, y) in self.land_manager.village}
 
 		width = max(xs) - min(xs) + 1
 		height = max(ys) - min(ys) + 1
@@ -169,7 +169,6 @@ class VillageBuilder(AreaBuilder):
 
 		self.plan = {}
 		ys = set(zip(*self.land_manager.village.keys())[1])
-		set([y for (_, y) in self.land_manager.village])
 		for road_x in vertical_roads:
 			for road_y in ys:
 				coords = (road_x, road_y)
@@ -755,32 +754,6 @@ class VillageBuilder(AreaBuilder):
 			self.current_section = self.plan[coords][1][0]
 		return BUILD_RESULT.OK
 
-	def extend_settlement_with_tent(self, position):
-		"""Build a tent to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		distance_rect_rect = distances.distance_rect_rect
-		size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
-		min_distance = None
-		best_coords = None
-
-		for (x, y) in self.tent_queue:
-			ok = True
-			for dx in xrange(size[0]):
-				for dy in xrange(size[1]):
-					if (x + dx, y + dy) not in self.settlement.ground_map:
-						ok = False
-						break
-			if not ok:
-				continue
-
-			distance = distance_rect_rect(Rect.init_from_topleft_and_size(x, y, size[0], size[1]), position)
-			if min_distance is None or distance < min_distance:
-				min_distance = distance
-				best_coords = (x, y)
-
-		if min_distance is None:
-			return BUILD_RESULT.IMPOSSIBLE
-		return self.build_tent(best_coords)
-
 	def handle_lost_area(self, coords_list):
 		"""
 		Handle losing the potential land in the given coordinates list.
@@ -808,7 +781,7 @@ class VillageBuilder(AreaBuilder):
 
 		removed_coords_list = []
 		for coords, (purpose, (section, _)) in self.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.RESERVED or purpose == BUILDING_PURPOSE.NONE:
+			if purpose in [BUILDING_PURPOSE.RESERVED, BUILDING_PURPOSE.NONE]:
 				continue
 			position = self._get_position(coords, BUILDING_PURPOSE.get_building(purpose))
 			building = self.settlement.ground_map[coords].object if coords in self.settlement.ground_map else None
@@ -862,42 +835,26 @@ class VillageBuilder(AreaBuilder):
 		if not AI.HIGHLIGHT_PLANS:
 			return
 
-		road_color = (30, 30, 30)
-		tent_color = (255, 255, 255)
-		sq_color = (255, 0, 255)
-		pavilion_color = (255, 128, 128)
-		village_school_color = (128, 128, 255)
-		tavern_color = (255, 255, 0)
-		fire_station_color = (255, 64, 64)
-		doctor_color = (255, 128, 64)
-		reserved_color = (0, 0, 255)
 		unknown_color = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
+		tile_colors = {
+			BUILDING_PURPOSE.MAIN_SQUARE:    (255,   0, 255),
+			BUILDING_PURPOSE.RESIDENCE:      (255, 255, 255),
+			BUILDING_PURPOSE.ROAD:           ( 30,  30,  30),
+			BUILDING_PURPOSE.VILLAGE_SCHOOL: (128, 128, 255),
+			BUILDING_PURPOSE.PAVILION:       (255, 128, 128),
+			BUILDING_PURPOSE.TAVERN:         (255, 255,   0),
+			BUILDING_PURPOSE.FIRE_STATION:   (255,  64,  64),
+			BUILDING_PURPOSE.DOCTOR:         (255, 128,  64),
+			BUILDING_PURPOSE.RESERVED:       (  0,   0, 255),
+		}
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
-				renderer.addColored(tile._instance, *sq_color)
-			elif purpose == BUILDING_PURPOSE.RESIDENCE:
-				renderer.addColored(tile._instance, *tent_color)
-			elif purpose == BUILDING_PURPOSE.ROAD:
-				renderer.addColored(tile._instance, *road_color)
-			elif purpose == BUILDING_PURPOSE.VILLAGE_SCHOOL:
-				renderer.addColored(tile._instance, *village_school_color)
-			elif purpose == BUILDING_PURPOSE.PAVILION:
-				renderer.addColored(tile._instance, *pavilion_color)
-			elif purpose == BUILDING_PURPOSE.TAVERN:
-				renderer.addColored(tile._instance, *tavern_color)
-			elif purpose == BUILDING_PURPOSE.FIRE_STATION:
-				renderer.addColored(tile._instance, *fire_station_color)
-			elif purpose == BUILDING_PURPOSE.DOCTOR:
-				renderer.addColored(tile._instance, *doctor_color)
-			elif purpose == BUILDING_PURPOSE.RESERVED:
-				renderer.addColored(tile._instance, *reserved_color)
-			else:
-				renderer.addColored(tile._instance, *unknown_color)
+			color = tile_colors.get(purpose, unknown_color)
+			renderer.addColored(tile._instance, *color)
 
 	def __str__(self):
 		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(VillageBuilder)
+decorators.bind_all(VillageBuilder, stoplist=['AI'])

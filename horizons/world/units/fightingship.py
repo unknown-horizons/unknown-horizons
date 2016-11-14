@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import WEAPONS, GAME_SPEED
-from horizons.world.units.weaponholder import MovingWeaponHolder
-from horizons.world.units.ship import Ship
 from horizons.component.commandablecomponent import CommandableComponent
+from horizons.constants import GAME_SPEED, WEAPONS
+from horizons.world.units.ship import Ship
+from horizons.world.units.weaponholder import MovingWeaponHolder
+
 
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship
@@ -41,11 +42,11 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self.get_component(CommandableComponent).go(x, y)
 		self.stop_attack()
 
-	def fire_all_weapons(self, dest, rotate=True, bullet_delay=GAME_SPEED.TICKS_PER_SECOND):
+	def fire_all_weapons(self, dest, rotate=True):
 		"""
 		Fire weapons at rotated coordinates
 		"""
-		super(FightingShip, self).fire_all_weapons(dest, rotate, bullet_delay)
+		super(FightingShip, self).fire_all_weapons(dest, rotate)
 
 	def act_attack(self, dest):
 		"""
@@ -88,4 +89,3 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self._instance.setFacingLocation(facing_location)
 		self.act('fire_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
-

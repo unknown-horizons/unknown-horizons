@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,14 +21,12 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict, deque
 
-from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
-from horizons.world.production.productionline import ProductionLine
-
 from horizons.scheduler import Scheduler
+from horizons.util.changelistener import ChangeListener, metaChangeListenerDecorator
+from horizons.world.production.productionline import ProductionLine
 
 
 @metaChangeListenerDecorator("production_finished")

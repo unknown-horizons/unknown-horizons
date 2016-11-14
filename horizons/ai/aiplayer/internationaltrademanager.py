@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,14 +20,15 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
-from mission.internationaltrade import InternationalTrade
-from horizons.constants import RES, TRADER
-from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import RES, TRADER
+from horizons.util.python import decorators
+
+from .mission.internationaltrade import InternationalTrade
+
 
 class InternationalTradeManager(object):
 	"""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,6 +29,7 @@ Usage:
 3. After you close the plot window, next one should appear
 4. Uncomment functions from parameter_sets you don't want to have displayed
 """
+from __future__ import print_function
 
 import sys
 import pylab
@@ -40,8 +41,8 @@ sys.path.append("./horizons/util")
 try:
 	import run_uh
 except ImportError as e:
-	print e.message
-	print "Please run from Unknown Horizons root dir"
+	print(e.message)
+	print("Please run from Unknown Horizons root dir")
 	sys.exit(1)
 
 from run_uh import init_environment

@@ -1,4 +1,4 @@
-id: 50
+id: BUILDINGS.BLENDER
 #name: _ Blender's Cottage
 name: _ Blender
 baseclass: production.ProductionBuilding
@@ -9,7 +9,7 @@ size_x: 2
 size_y: 2
 inhabitants: 2
 tooltip_text: _ Produces condiments out of spices.
-settler_level: TIER.SETTLERS
+tier: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 3, RES.TOOLS: 2, RES.BRICKS: 3}
 components:
 - SelectableComponent:
@@ -33,5 +33,5 @@ components:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.SETTLERS:
-    #as_blender0:
-    as_2x2:
+    as_blender0:
+  

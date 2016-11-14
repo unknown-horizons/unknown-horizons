@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 # ###################################################
 
 from collections import defaultdict
+
 
 class ProviderHandler(list):
 	"""Class to keep track of providers of an area, especially an island.
@@ -43,7 +44,3 @@ class ProviderHandler(list):
 		for res in provider.provided_resources:
 			self.provider_by_resources[res].remove(provider)
 		super(ProviderHandler, self).remove(provider)
-
-
-
-

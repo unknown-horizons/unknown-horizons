@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,8 +22,9 @@
 import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.util.python import decorators
 from horizons.entities import Entities
+from horizons.util.python import decorators
+
 
 class BuildingEvaluator(object):
 	"""Class representing a set of instructions for building a building complex along with its value."""
@@ -187,7 +188,8 @@ class BuildingEvaluator(object):
 
 	def __str__(self):
 		point = self.builder.position.origin
-		return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
+		return '{0!s} at {1:d}, {2:d} with value {3:f}'. \
+			format(self.__class__.__name__, point.x, point.y, self.value)
 
 	@classmethod
 	def get_best_evaluator(cls, evaluators):

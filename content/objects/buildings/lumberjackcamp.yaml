@@ -6,7 +6,7 @@
 # The storage component has space for both raw trees and boards.
 # Finally, actionsets define how the building looks like in different tiers.
 # Inventory overlays then are small animations added to these base images depending on currently stored things.
-id: 8
+id: BUILDINGS.LUMBERJACK
 name:
   TIER.SAILORS: _ Lumberjack Tent
   TIER.PIONEERS: _ Lumberjack Hut
@@ -18,13 +18,15 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Chops down trees and turns them into boards.
-settler_level: TIER.SAILORS
+tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 250, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab]
+    tabs: [LumberjackOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
+- FieldBuilder:
+    field: BUILDINGS.TREE
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2013-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 
 from tests.game import game_test
 
+
 # FIXTURE is a savegame revision 49
 @game_test(use_fixture='savegame-rev-49')
 def test_upgrade(s):
@@ -28,5 +29,3 @@ def test_upgrade(s):
 	Simply let's do nothing except loading the fixture
 	"""
 	pass
-
-

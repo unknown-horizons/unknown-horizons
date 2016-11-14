@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 import logging
 
 from horizons.util.python import decorators
+
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class

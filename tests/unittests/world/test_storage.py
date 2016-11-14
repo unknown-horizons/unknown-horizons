@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,9 @@
 import sys
 from unittest import TestCase
 
-from horizons.world.storage import (GenericStorage, SpecializedStorage, SizedSpecializedStorage,
-                                    TotalStorage, GlobalLimitStorage, PositiveStorage,
-                                    PositiveTotalStorage, PositiveSizedSlotStorage,
-                                    PositiveSizedNumSlotStorage)
+from horizons.world.storage import (
+	GenericStorage, GlobalLimitStorage, PositiveSizedNumSlotStorage, PositiveSizedSlotStorage,
+	PositiveStorage, PositiveTotalStorage, SizedSpecializedStorage, SpecializedStorage, TotalStorage)
 
 
 class TestGenericStorage(TestCase):

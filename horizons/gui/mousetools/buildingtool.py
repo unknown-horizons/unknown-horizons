@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,33 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import logging
 import random
 import weakref
 
-import horizons.globals
+from fife import fife
 
+import horizons.globals
+from horizons.command.building import Build
+from horizons.command.sounds import PlaySound
+from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
+from horizons.constants import BUILDINGS, GFX
 from horizons.entities import Entities
+from horizons.ext.typing import TYPE_CHECKING
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.util import load_uh_widget
+from horizons.i18n import gettext as T
+from horizons.messaging import (
+	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.command.building import Build
-from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
-from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.command.sounds import PlaySound
-from horizons.gui.util import load_uh_widget
-from horizons.constants import BUILDINGS, GFX
-from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
+
+if TYPE_CHECKING:
+	from fife.extensions.pychan.widgets import Widget
+
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -89,11 +96,12 @@ class BuildingTool(NavigationTool):
 	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
-	_last_road_built = []
+	_last_road_built = [] # type: List[int]
 
 	send_hover_instances_update = False
 
-	gui = None # share gui between instances
+	# share gui between instances
+	gui = None # type: Widget
 
 	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
@@ -224,10 +232,10 @@ class BuildingTool(NavigationTool):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
 			self.__class__.gui.position_technique = "right-1:top+157"
-		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-		                                "rotate_right": self.rotate_right } )
+		self.__class__.gui.mapEvents({"rotate_left" : self.rotate_left,
+		                              "rotate_right": self.rotate_right})
 		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
+		self.__class__.gui.findChild(name='headline').text = T('Build {building}').format(building=T(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
@@ -245,7 +253,7 @@ class BuildingTool(NavigationTool):
 				level = self.session.world.player.settler_level
 			action_set = self._class.get_random_action_set(level=level)
 		action_sets = ActionSetLoader.get_sets()
-		for action_option in ['idle', 'idle_full', 'abcd']:
+		for action_option in ['idle', 'idle_full', 'single', 'abcd']:
 			if action_option in action_sets[action_set]:
 				action = action_option
 				break
@@ -334,12 +342,12 @@ class BuildingTool(NavigationTool):
 			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
 			                                                  self.session.world.player, [settlement, self.ship])
 			if building.buildable and not enough_res:
-					# make building red
-					self.renderer.addColored(self.buildings_fife_instances[building],
-					                         *self.not_buildable_color)
-					building.buildable = False
-					# set missing info for gui
-					self.buildings_missing_resources[building] = missing_res
+				# make building red
+				self.renderer.addColored(self.buildings_fife_instances[building],
+				                         *self.not_buildable_color)
+				building.buildable = False
+				# set missing info for gui
+				self.buildings_missing_resources[building] = missing_res
 
 			# color this instance with fancy stuff according to buildability
 
@@ -427,20 +435,20 @@ class BuildingTool(NavigationTool):
 		if settlement is None or not ids: # nothing is related
 			return
 
-		radii = dict( [ (bid, Entities.buildings[bid].radius) for bid in ids ] )
+		radii = dict((bid, Entities.buildings[bid].radius) for bid in ids)
 		max_radius = max(radii.itervalues())
 
 		for tile in settlement.get_tiles_in_radius(building.position, max_radius, include_self=True):
 			if tile.object is not None and tile.object.id in ids:
 				related_building = tile.object
 				# check if it was actually this one's radius
-				if building.position.distance( (tile.x, tile.y) ) <= \
+				if building.position.distance((tile.x, tile.y)) <= \
 				   Entities.buildings[related_building.id].radius:
 					# found one
 					if related_building in self._highlighted_buildings:
 						continue
 
-					self._highlighted_buildings.add( (related_building, True) ) # True: was_selected, see _restore_highlighted_buildings
+					self._highlighted_buildings.add((related_building, True)) # True: was_selected, see _restore_highlighted_buildings
 					# currently same code as coloring normal related buildings (_color_preview_build())
 					inst = related_building.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)
@@ -622,10 +630,8 @@ class BuildingTool(NavigationTool):
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
 		if self.last_change_listener is not None:
-			if self.last_change_listener.has_change_listener(self.force_update):
-				self.last_change_listener.remove_change_listener(self.force_update)
-			if self.last_change_listener.has_change_listener(self.highlight_buildable):
-				self.last_change_listener.remove_change_listener(self.highlight_buildable)
+			self.last_change_listener.discard_change_listener(self.force_update)
+			self.last_change_listener.discard_change_listener(self.highlight_buildable)
 			self._build_logic.remove_change_listener(self.last_change_listener, self)
 
 		self.last_change_listener = None
@@ -751,10 +757,8 @@ class ShipBuildingToolLogic(object):
 
 	def remove_change_listener(self, instance, building_tool):
 		# be idempotent
-		if instance.has_change_listener(building_tool.highlight_buildable):
-			instance.remove_change_listener(building_tool.highlight_buildable)
-		if instance.has_change_listener(building_tool.force_update):
-			instance.remove_change_listener(building_tool.force_update)
+		instance.discard_change_listener(building_tool.highlight_buildable)
+		instance.discard_change_listener(building_tool.force_update)
 
 	# Using messages now.
 	def continue_build(self):
@@ -787,7 +791,6 @@ class SettlementBuildingToolLogic(object):
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, None):
 					building_tool._color_buildable_tile(tile)
-
 		else:
 			# Default build on island.
 			for settlement in session.world.settlements:
