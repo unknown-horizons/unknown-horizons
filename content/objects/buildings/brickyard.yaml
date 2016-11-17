@@ -30,6 +30,18 @@ components:
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
+- InventoryOverlayComponent:
+    overlays:
+      as_brickyard0:
+        idle:
+          RES.CLAY:
+            - [0, null]
+          RES.BRICKS:
+            - [0, null]
+            - [1, bricks_01]
+            - [3, bricks_02]
+            - [5, bricks_03]
+            - [7, bricks_04]
 actionsets:
   TIER.PIONEERS:
     as_brickyard0:
