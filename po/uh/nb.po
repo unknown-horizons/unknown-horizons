@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-11-18 13:26+0000\n"
+"PO-Revision-Date: 2016-11-24 13:09+0000\n"
 "Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/uh/uh/nb/>\n"
@@ -353,12 +353,12 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Kanonsjalupp"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "Tremastet og vanligste krigsskip med ett kanondekk."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -373,29 +373,29 @@ msgstr "Kanoner"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
 msgid "Hull"
-msgstr ""
+msgstr "Skrog"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
@@ -1790,28 +1790,38 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"For å enklere se hvorvidt paviljongens rekkevidde dekker alle teltene dine, "
+"velg den fra byggmenyen og la musa henge over den på din eksisterende "
+"paviljong.  Telt som ikke dekkes vil vises i gult.  Det er en god ide å "
+"bygge en ny paviliong i nabolaget deres."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Gjør enspiller morsommere med flere dataspillere ved å øke antall kunstig "
+"intelligens-spillere når nytt spill startes."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"De første stegene blir enklere ved å se hvordan kunstig intelligens-spillere "
+"setter opp sin bosetning."
 
 #: horizons/gui/modules/loadingscreen.py:86
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Vil du ha kun morsomme sitater?  Endre sitat-type vist her i oppsettmenyen "
+"på spill-siden."
 
 #: horizons/gui/modules/loadingscreen.py:87
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "En markedsplass kobler sammen bygningene dine på samme måte som veier."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2676,7 +2686,7 @@ msgstr "Bygger båter og små skip. Bygges langs kysten."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:84
 msgid "Brewery"
-msgstr ""
+msgstr "Bryggeri"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
@@ -2706,7 +2716,7 @@ msgstr "Trenger griser eller storfe. Produserer mat."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:105
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Kanonstøperi"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
@@ -3961,7 +3971,7 @@ msgstr "mynter"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "øl"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
