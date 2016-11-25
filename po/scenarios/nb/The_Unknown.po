@@ -45,7 +45,7 @@ msgid ""
 msgstr ""
 "Etter fire dager har stormen endelig løyet og vi kan slappe av.  Men vi har "
 "bare litt mat igjen og skipet vårt er i dårlig stand.  "
-"Navigasjonsinstrumentene og draftene har gått tapt."
+"Navigasjonsinstrumentene og sjøkartene er tapt."
 
 #. This is the text body of a logbook page.
 msgid ""
