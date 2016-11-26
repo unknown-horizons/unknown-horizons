@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-09-07 14:53+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2016-11-26 19:21+0000\n"
+"Last-Translator: Jana Weigel <jana.weigel@htwk-leipzig.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -1823,10 +1823,10 @@ msgid ""
 "neighborhood."
 msgstr ""
 "Um leicht erkennen zu können, ob der Einzugsbereich Eures Pavillons alle "
-"Eure Zelte einschließt, wähle es im Baumenü aus und führe die Maus über den "
+"Eure Zelte einschließt, wähle ihn im Baumenü aus und führe die Maus über den "
 "bestehenden Pavillon. Zelte, die nicht eingeschlossen sind, werden in gelb "
 "dargestellt. Es ist eine gute Idee, einen neuen Pavillon in deren Nähe zu "
-"errichten."
+"errichten.\n"
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
@@ -2735,7 +2735,7 @@ msgstr "Brauerei"
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:86
 msgid "Consumes hops. Produces Beer."
-msgstr "Verbraucht Mehl. Produziert Bier."
+msgstr "Benötigt Hopfen. Produziert Bier."
 
 # Building
 #. name of buildings:brickyard
@@ -2766,7 +2766,7 @@ msgstr "Kanonen Schmiede"
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:107
 msgid "Produces Cannons."
-msgstr "Stellt Kannonen her."
+msgstr "Stellt Kanonen her."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:112
