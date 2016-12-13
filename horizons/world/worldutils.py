@@ -277,7 +277,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 			
-			if world.session.random.randint(0, 7) == 0 and \
+			if world.session.random.randint(0, 20) == 0 and \
 				Ambient.check_build(world.session, tile, check_settlement=False):
 				building = Build(Ambient, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
