@@ -62,7 +62,7 @@ class UnitClass(IngameType):
 		model = horizons.globals.fife.engine.getModel()
 		try:
 			cls._real_object = model.createObject(str(cls.id), 'unit')
-		except RuntimeError:
+		except fife.NameClash:
 			cls.log.debug('Already loaded unit %s', cls.id)
 			cls._real_object = model.getObject(str(cls.id), 'unit')
 			return
