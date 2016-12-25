@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-29 06:02+0200\n"
+"POT-Creation-Date: 2016-12-26 00:09+0100\n"
 "PO-Revision-Date: 2016-07-31 15:05+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.8-dev\n"
 
-#: run_uh.py:124
+#: run_uh.py:125
 msgid "Unknown Horizons has crashed."
 msgstr "알수없는 지평선이 강제 종료되었습니다."
 
-#: run_uh.py:126
+#: run_uh.py:127
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
 "이 문제에 대해 매우 죄송합니다. 저희는 근본적인 오류를 해결하고 싶습니다."
 
-#: run_uh.py:127
+#: run_uh.py:128
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "이를 해결 하기 위해서는, 로그파일안에 있는 정보가 필요합니다:"
 
-#: run_uh.py:129
+#: run_uh.py:130
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -38,20 +38,20 @@ msgstr ""
 "그것을 IRC나 홈페이지 포럼 게시판을 통해 우리에게 주세요, 자세한 방법은 "
 "http://unknown-horizons.org 를 참조하세요."
 
-#: run_uh.py:178
+#: run_uh.py:179
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "오류: 필요한 \"PyYAML\" 라이브러리 을 찾을 수 없습니다."
 
-#: run_uh.py:179
+#: run_uh.py:180
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "누락된 PyYAML(필요한 라이브러리)를 설치 해야 합니다."
 
-#: run_uh.py:180
+#: run_uh.py:181
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 "Windows installer는 http://pyyaml.org/wiki/PyYAML 에서 받을 수 있습니다."
 
-#: run_uh.py:181
+#: run_uh.py:182
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
@@ -59,7 +59,7 @@ msgstr ""
 "리눅스 사용자는 \"pyyaml\" 또는 \"python-yaml\" 라는 이름으로 패키지 관리자"
 "를 사용하여 그것을 찾아내야 합니다."
 
-#: run_uh.py:215
+#: run_uh.py:216
 msgid "Thank you for using Unknown Horizons!"
 msgstr "알수 없는 지평선을 이용해 주셔서 고맙습니다!"
 
@@ -68,7 +68,7 @@ msgid "Return to editor"
 msgstr "편집기로 돌아가기"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
-#: horizons/gui/modules/select_savegame.py:53
+#: horizons/gui/modules/select_savegame.py:55
 msgid "Save map"
 msgstr "지도 저장"
 
@@ -210,8 +210,8 @@ msgid "Apply the new name"
 msgstr "새 이름을 적용"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
-#: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:51
+#: content/gui/xml/ingame/widgets/captains_log.xml:67
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:52
 msgid "Chat"
 msgstr "채팅"
 
@@ -307,8 +307,8 @@ msgstr "모든 건물의 건설을 취소"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
-#: horizons/gui/tabs/barrackstabs.py:128
-#: horizons/gui/tabs/boatbuildertabs.py:342
+#: horizons/gui/tabs/barrackstabs.py:130
+#: horizons/gui/tabs/boatbuildertabs.py:345
 msgid "Confirm order"
 msgstr "명령 확인"
 
@@ -412,7 +412,7 @@ msgid "Build groundunit:"
 msgstr "가만히 있기"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
-#: horizons/gui/tabs/barrackstabs.py:79
+#: horizons/gui/tabs/barrackstabs.py:81
 #, fuzzy
 #| msgid "Build this ship!"
 msgid "Build this groundunit!"
@@ -433,7 +433,7 @@ msgid "Build ship:"
 msgstr "이 배를 건조!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
-#: horizons/gui/tabs/boatbuildertabs.py:252
+#: horizons/gui/tabs/boatbuildertabs.py:255
 msgid "Build this ship!"
 msgstr "이 배를 건조!"
 
@@ -469,12 +469,12 @@ msgid "Click to change the name of this groundunit"
 msgstr "이 지상 유닛의 이름을 변경 하려면 클릭 하십시오"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
-#: horizons/gui/tabs/inventorytab.py:30
+#: horizons/gui/tabs/inventorytab.py:31
 msgid "Settlement inventory"
 msgstr "정착지 물품 목록"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
-#: horizons/gui/tabs/residentialtabs.py:36
+#: horizons/gui/tabs/residentialtabs.py:37
 msgid "Settler overview"
 msgstr "정착지 요약"
 
@@ -506,17 +506,17 @@ msgid "Happiness per house"
 msgstr "가구 당 행복도"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:60
+#: horizons/gui/util.py:64
 msgid "sad"
 msgstr "슬픔"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:63
+#: horizons/gui/util.py:67
 msgid "satisfied"
 msgstr "만족"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:66
+#: horizons/gui/util.py:70
 msgid "happy"
 msgstr "행복"
 
@@ -548,9 +548,15 @@ msgstr "주택들"
 msgid "residents"
 msgstr "주민들"
 
+#: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
+#, fuzzy
+#| msgid "Defends your settlement."
+msgid "Provides security for your settlement."
+msgstr "정착지를 방어."
+
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
-#: horizons/gui/tabs/buyselltab.py:350
+#: horizons/gui/tabs/buyselltab.py:349
 msgid "Selling"
 msgstr "판매"
 
@@ -588,7 +594,7 @@ msgstr "매장된 자원:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: horizons/gui/modules/ingame.py:160 horizons/gui/tabs/mainsquaretabs.py:82
 #: horizons/gui/tabs/mainsquaretabs.py:123
-#: horizons/gui/widgets/playerssettlements.py:96
+#: horizons/gui/widgets/playerssettlements.py:98
 msgid "Click to change the name of your settlement"
 msgstr "정착지 이름을 변경 하려면 클릭 하십시오"
 
@@ -625,7 +631,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
-#: horizons/gui/widgets/playersships.py:78
+#: horizons/gui/widgets/playersships.py:80
 msgid "Click to change the name of this ship"
 msgstr "이 배의 이름을 변경 하려면 클릭 하십시오"
 
@@ -633,14 +639,14 @@ msgstr "이 배의 이름을 변경 하려면 클릭 하십시오"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
-#: horizons/gui/tabs/buyselltab.py:88 horizons/gui/tabs/tradetab.py:41
+#: horizons/gui/tabs/buyselltab.py:89 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
 msgstr "무역"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
-#: horizons/gui/tabs/shiptabs.py:68
+#: horizons/gui/tabs/shiptabs.py:70
 msgid "Build settlement"
 msgstr "정착지 건설"
 
@@ -764,57 +770,57 @@ msgid "Select a resource:"
 msgstr "자원 선택:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
-#: content/gui/xml/ingame/widgets/captains_log.xml:17
+#: content/gui/xml/ingame/widgets/captains_log.xml:18
 msgid "Read previous entries"
 msgstr "이전 항목들 읽기"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
-#: content/gui/xml/ingame/widgets/captains_log.xml:20
+#: content/gui/xml/ingame/widgets/captains_log.xml:21
 msgid "Read next entries"
 msgstr "다음 항목들 읽기"
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:33
-#: horizons/gui/widgets/logbook.py:50
+#: content/gui/xml/ingame/widgets/captains_log.xml:36
+#: horizons/gui/widgets/logbook.py:51
 msgid "Statistics"
 msgstr "통계"
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:36
+#: content/gui/xml/ingame/widgets/captains_log.xml:39
 msgid "Players"
 msgstr "플레이어"
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:37
+#: content/gui/xml/ingame/widgets/captains_log.xml:40
 msgid "My ships"
 msgstr "내 배"
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:38
+#: content/gui/xml/ingame/widgets/captains_log.xml:41
 msgid "My settlements"
 msgstr "내 정착지"
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:45
+#: content/gui/xml/ingame/widgets/captains_log.xml:48
 msgid "Game messages"
 msgstr "게임 메시지"
 
 #. Displays all notifications and game messages
-#: content/gui/xml/ingame/widgets/captains_log.xml:49
+#: content/gui/xml/ingame/widgets/captains_log.xml:52
 msgid "Whole world"
 msgstr "전체 세계"
 
 #. Sends the chat messages to all players (default)
-#: content/gui/xml/ingame/widgets/captains_log.xml:69
+#: content/gui/xml/ingame/widgets/captains_log.xml:72
 msgid "Everybody"
 msgstr "모든 사람"
 
 #. Sends the chat messages to all players (default)
-#: content/gui/xml/ingame/widgets/captains_log.xml:69
+#: content/gui/xml/ingame/widgets/captains_log.xml:72
 msgid "Sends the chat messages to all players."
 msgstr "모든 플레이어에게 메시지를 보냅니다."
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:83
+#: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
 msgstr "메시지 입력"
 
-#: content/gui/xml/ingame/widgets/captains_log.xml:87
+#: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
 msgstr "게임으로 돌아가기"
@@ -829,13 +835,13 @@ msgstr "짐 실을 때 기다리기:"
 msgid "Wait at unload:"
 msgstr "짐 내릴 때 기다리기:"
 
-#: content/gui/xml/ingame/widgets/configure_route.xml:32
+#: content/gui/xml/ingame/widgets/configure_route.xml:31
 msgid "Route activity:"
 msgstr "경로 활성화:"
 
 #. Trade route
-#: content/gui/xml/ingame/widgets/configure_route.xml:38
-#: horizons/gui/widgets/routeconfig.py:107
+#: content/gui/xml/ingame/widgets/configure_route.xml:40
+#: horizons/gui/widgets/routeconfig.py:114
 msgid "Start route"
 msgstr "경로 시작"
 
@@ -843,7 +849,15 @@ msgstr "경로 시작"
 msgid "Exit"
 msgstr "끝내기"
 
-#: content/gui/xml/ingame/widgets/island_production.xml:24
+#: content/gui/xml/ingame/widgets/island_production.xml:13
+msgid "Go to previous page"
+msgstr ""
+
+#: content/gui/xml/ingame/widgets/island_production.xml:15
+msgid "Go to next page"
+msgstr ""
+
+#: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
 msgstr "닫기"
 
@@ -899,7 +913,7 @@ msgstr "플레이어의 정착지에 있는 모든 건물의 점수"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:532
+#: horizons/i18n/objecttranslations.py:545
 msgid "Settlers"
 msgstr "정착민"
 
@@ -923,7 +937,7 @@ msgid ""
 msgstr "모든 항목을 종합한 점수"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
-#: horizons/gui/widgets/playerssettlements.py:117
+#: horizons/gui/widgets/playerssettlements.py:119
 msgid "Total"
 msgstr "합계"
 
@@ -969,7 +983,7 @@ msgstr "수동적"
 msgid "Flee"
 msgstr "도망"
 
-#: content/gui/xml/mainmenu/credits.xml:676
+#: content/gui/xml/mainmenu/credits.xml:677
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
@@ -1153,14 +1167,14 @@ msgid "Reset to default keys"
 msgstr "기본 키로 초기화"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
-#: horizons/gui/modules/select_savegame.py:49
+#: horizons/gui/modules/select_savegame.py:51
 msgid "Save game"
 msgstr "게임 저장"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
-#: horizons/gui/modules/select_savegame.py:51
+#: horizons/gui/modules/select_savegame.py:53
 msgid "Load game"
 msgstr "게임 불러오기"
 
@@ -1598,124 +1612,124 @@ msgstr "플레이어 이름:"
 msgid "Color:"
 msgstr "색상:"
 
-#: horizons/command/game.py:36
+#: horizons/command/game.py:38
 msgid "Invalid filename"
 msgstr "잘못된 파일이름"
 
-#: horizons/command/game.py:37
+#: horizons/command/game.py:39
 msgid "Received an invalid filename for a save command."
 msgstr "명령어를 저장하기 위해 잘못된 파일 이름을 수신."
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:163
-#: horizons/gui/modules/pausemenu.py:99 horizons/mpsession.py:56
+#: horizons/command/game.py:50 horizons/gui/modules/multiplayermenu.py:166
+#: horizons/gui/modules/pausemenu.py:100 horizons/mpsession.py:58
 msgid "Error"
 msgstr "오류"
 
-#: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:99
+#: horizons/command/game.py:50 horizons/gui/modules/pausemenu.py:100
 msgid "Failed to save."
 msgstr "저장하기 실패."
 
-#: horizons/component/tradepostcomponent.py:190
+#: horizons/component/tradepostcomponent.py:192
 msgid "The trade partner does not sell this."
 msgstr "무역 대상자는 이것을 판매 하지 않습니다."
 
-#: horizons/component/tradepostcomponent.py:198
+#: horizons/component/tradepostcomponent.py:200
 msgid "You can not store this."
 msgstr "이것을 저장할 수 없습니다."
 
-#: horizons/component/tradepostcomponent.py:202
+#: horizons/component/tradepostcomponent.py:204
 msgid "You can not afford to buy this."
 msgstr "이것을 살 여유가 없습니다."
 
-#: horizons/component/tradepostcomponent.py:208
+#: horizons/component/tradepostcomponent.py:210
 msgid "The trade partner does not sell more of this."
 msgstr "무역 대상자는 이것을 더 많이 판매하지 않습니다."
 
-#: horizons/component/tradepostcomponent.py:232
+#: horizons/component/tradepostcomponent.py:234
 msgid "The trade partner does not buy this."
 msgstr "무역 대상자는 이것을 구입하지 않습니다."
 
-#: horizons/component/tradepostcomponent.py:240
+#: horizons/component/tradepostcomponent.py:242
 msgid "You do not possess this."
 msgstr "이것을 소유하고 있지 않습니다."
 
-#: horizons/component/tradepostcomponent.py:244
+#: horizons/component/tradepostcomponent.py:246
 msgid "The trade partner can not store more of this."
 msgstr "무역 대상자는 이것을 더 많이 저장할 수 없습니다."
 
-#: horizons/component/tradepostcomponent.py:248
+#: horizons/component/tradepostcomponent.py:250
 msgid "The trade partner can not afford to buy this."
 msgstr "무역 대상자는 이것을 구입할 여유가 없습니다."
 
-#: horizons/component/tradepostcomponent.py:253
+#: horizons/component/tradepostcomponent.py:255
 msgid "The trade partner does not buy more of this."
 msgstr "무역 대상자는 이것을 더 이상 구입할 수 없습니다."
 
-#: horizons/editor/session.py:69 horizons/spsession.py:64
+#: horizons/editor/session.py:70 horizons/spsession.py:66
 msgid "Failed to quicksave."
 msgstr "빠른 저장 실패."
 
-#: horizons/editor/session.py:70 horizons/spsession.py:65
+#: horizons/editor/session.py:71 horizons/spsession.py:67
 msgid "An error happened during quicksave."
 msgstr "빠른 저장중에 오류가 발생했습니다."
 
-#: horizons/editor/session.py:70
+#: horizons/editor/session.py:71
 msgid "Your map has not been saved."
 msgstr "지도가 저장되지 않았습니다."
 
-#: horizons/editor/session.py:71 horizons/spsession.py:66
+#: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr "이 오류가 또 다시 발생하면, 개발모임에게 연락주십시오: {website}"
 
-#: horizons/gui/gui.py:77
+#: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr "게임을 종료 하시겠습니까?"
 
-#: horizons/gui/gui.py:78
+#: horizons/gui/gui.py:87
 msgid "Quit Game"
 msgstr "게임 종료"
 
-#: horizons/gui/ingamegui.py:244
+#: horizons/gui/ingamegui.py:233
 msgid "No diplomacy possible"
 msgstr "가능한 외교가 없습니다"
 
-#: horizons/gui/ingamegui.py:245
+#: horizons/gui/ingamegui.py:234
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "다른 플레이어가 없기 때문에 외교를 할 수 없습니다."
 
-#: horizons/gui/ingamegui.py:482
+#: horizons/gui/ingamegui.py:471
 msgid "Are you sure you want to delete these objects?"
 msgstr "이 객체들을 삭제 하시겠습니까?"
 
-#: horizons/gui/ingamegui.py:483
+#: horizons/gui/ingamegui.py:472
 msgid "Delete"
 msgstr "삭제"
 
 #. size of empty map in map editor
-#: horizons/gui/modules/editorstartmenu.py:91
+#: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
 msgstr "{size}x{size} 타일"
 
-#: horizons/gui/modules/hotkeys_settings.py:97
+#: horizons/gui/modules/hotkeys_settings.py:99
 msgid "Press key…"
 msgstr "키를 누르십시오…"
 
-#: horizons/gui/modules/hotkeys_settings.py:146
+#: horizons/gui/modules/hotkeys_settings.py:148
 #, python-brace-format
 msgid "{key} is already set to {action}."
 msgstr "{key}는 이미 {action}으로 설정되었습니다."
 
-#: horizons/gui/modules/hotkeys_settings.py:147
+#: horizons/gui/modules/hotkeys_settings.py:149
 msgid "Would you like to overwrite it?"
 msgstr "덮어 씌우시겠습니까?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:148
-#: horizons/gui/modules/select_savegame.py:167
+#: horizons/gui/modules/hotkeys_settings.py:150
+#: horizons/gui/modules/select_savegame.py:169
 msgid "Confirmation for overwriting"
 msgstr "덮어쓰기 확인"
 
@@ -1741,49 +1755,49 @@ msgstr "여러 건물을 배치하려면 'SHIFT'를 사용하세요."
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "현재 처음 {tier} 계층만 사용할수 있습니다."
 
-#: horizons/gui/modules/loadingscreen.py:74
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "You can pause the game with 'P'."
 msgstr "'P'를 눌러서 게임을 일시 정지 할 수 있습니다."
 
-#: horizons/gui/modules/loadingscreen.py:75
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "You can drag roads by holding the left mouse button."
 msgstr "마우스 왼쪽버튼을 누른상태에서 길을 드래그 할 수 있습니다."
 
-#: horizons/gui/modules/loadingscreen.py:76
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr "'SHIFT'키를 누른 상태로 여러 건물을 지을 수 있습니다."
 
-#: horizons/gui/modules/loadingscreen.py:77
+#: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr "세금을 낮춰 주민들의 행복도를 올릴 수 있습니다."
 
-#: horizons/gui/modules/loadingscreen.py:78
+#: horizons/gui/modules/loadingscreen.py:77
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
 "화재와 질병으로부터 주민들을 보호하기위해 소방서와 진료소를 건설하세요."
 
-#: horizons/gui/modules/loadingscreen.py:79
+#: horizons/gui/modules/loadingscreen.py:78
 msgid "Build storage tents to increase your storage capacity."
 msgstr "저장고의 용량을 늘리기위해 저장고 천막을 건설하세요."
 
-#: horizons/gui/modules/loadingscreen.py:80
+#: horizons/gui/modules/loadingscreen.py:79
 msgid "Make sure every house is in range of a marketplace."
 msgstr "시장의 범위내에 집들이 있도록 하세요."
 
-#: horizons/gui/modules/loadingscreen.py:81
+#: horizons/gui/modules/loadingscreen.py:80
 msgid "Press 'T' to make trees transparent."
 msgstr "나무를 투명하게 하기위해서는 'T'를 누르세요."
 
-#: horizons/gui/modules/loadingscreen.py:82
+#: horizons/gui/modules/loadingscreen.py:81
 #, fuzzy
 #| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr "저장고의 용량을 늘리기위해 저장고 천막을 건설하세요."
 
-#: horizons/gui/modules/loadingscreen.py:83
+#: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "To easily see whether the pavilion's range cover all your tents, select it "
 "from the build menu and hover it over your existing pavilion. Uncovered "
@@ -1791,85 +1805,85 @@ msgid ""
 "neighborhood."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:84
+#: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:85
+#: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:86
+#: horizons/gui/modules/loadingscreen.py:85
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:87
+#: horizons/gui/modules/loadingscreen.py:86
 msgid "A marketplace links your buildings like a road."
 msgstr ""
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
-#: horizons/gui/modules/loadingscreen.py:93
+#: horizons/gui/modules/loadingscreen.py:92
 msgid "Mixed"
 msgstr "혼합됨"
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:113
+#: horizons/gui/modules/loadingscreen.py:112
 msgid "Starting engine…"
 msgstr "엔진을 시작하는중…"
 
-#: horizons/gui/modules/loadingscreen.py:114
+#: horizons/gui/modules/loadingscreen.py:113
 msgid "Catching fish…"
 msgstr "고기를 잡는중…"
 
-#: horizons/gui/modules/loadingscreen.py:115
+#: horizons/gui/modules/loadingscreen.py:114
 msgid "Drawing user interface…"
 msgstr "사용자 인터페이스를 그리는중…"
 
-#: horizons/gui/modules/loadingscreen.py:116
+#: horizons/gui/modules/loadingscreen.py:115
 msgid "Activating timer…"
 msgstr "타이머를 활성화하는중…"
 
-#: horizons/gui/modules/loadingscreen.py:117
+#: horizons/gui/modules/loadingscreen.py:116
 msgid "Chomping game data…"
 msgstr "게임 데이터를 쩝쩝거리며 먹고 있는중…"
 
-#: horizons/gui/modules/loadingscreen.py:118
+#: horizons/gui/modules/loadingscreen.py:117
 msgid "Shaping islands…"
 msgstr "섬들을 형성중…"
 
-#: horizons/gui/modules/loadingscreen.py:119
+#: horizons/gui/modules/loadingscreen.py:118
 msgid "Preparing blueprints…"
 msgstr "청사진 준비중…"
 
-#: horizons/gui/modules/loadingscreen.py:120
+#: horizons/gui/modules/loadingscreen.py:119
 msgid "Filling world with water…"
 msgstr "세상을 물로 체우는중…"
 
-#: horizons/gui/modules/loadingscreen.py:121
+#: horizons/gui/modules/loadingscreen.py:120
 msgid "Raising animals…"
 msgstr "동물을 기르는중…"
 
-#: horizons/gui/modules/loadingscreen.py:122
+#: horizons/gui/modules/loadingscreen.py:121
 msgid "Convincing AI…"
 msgstr "인공지능을 설득하는중…"
 
-#: horizons/gui/modules/loadingscreen.py:123
+#: horizons/gui/modules/loadingscreen.py:122
 msgid "Burying treasures…"
 msgstr "보물을 묻고 있는중…"
 
-#: horizons/gui/modules/multiplayermenu.py:123
+#: horizons/gui/modules/multiplayermenu.py:126
 msgid "Unable to find pyenet"
 msgstr "pyenet을 찾을 수 없습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:124
+#: horizons/gui/modules/multiplayermenu.py:127
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
@@ -1877,35 +1891,35 @@ msgstr ""
 "다중 사용자 기능은 시스템에서 발견되지 않은 \"pyenet\" 라이브러리를 요구합니"
 "다."
 
-#: horizons/gui/modules/multiplayermenu.py:126
+#: horizons/gui/modules/multiplayermenu.py:129
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr "리눅스 사용자: 꾸러미 관리자를 통해 pyenet을 설치 합니다."
 
-#: horizons/gui/modules/multiplayermenu.py:135
+#: horizons/gui/modules/multiplayermenu.py:138
 msgid "Failed to initialize networking."
 msgstr "네트워킹을 초기화하는데 실패."
 
-#: horizons/gui/modules/multiplayermenu.py:136
+#: horizons/gui/modules/multiplayermenu.py:139
 #: horizons/gui/modules/settings.py:275
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "네트워크 기능은 현재의 환경설정을 초기화 할 수 없습니다."
 
-#: horizons/gui/modules/multiplayermenu.py:137
+#: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:276
 msgid "Check the settings you specified in the network section."
 msgstr "네트워크 섹션에서 지정한 설정을 재확인하십시오."
 
-#: horizons/gui/modules/multiplayermenu.py:146
-#: horizons/gui/modules/multiplayermenu.py:165 horizons/mpsession.py:51
+#: horizons/gui/modules/multiplayermenu.py:149
+#: horizons/gui/modules/multiplayermenu.py:168 horizons/mpsession.py:53
 msgid "Fatal Network Error"
 msgstr "치명적인 네트워크 오류"
 
-#: horizons/gui/modules/multiplayermenu.py:147
+#: horizons/gui/modules/multiplayermenu.py:150
 msgid "Could not connect to master server."
 msgstr "마스터 서버에 연결할 수 없습니다."
 
-#: horizons/gui/modules/multiplayermenu.py:148
+#: horizons/gui/modules/multiplayermenu.py:151
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
@@ -1913,43 +1927,43 @@ msgstr ""
 "인터넷 연결을 확인하세요. 인터넷 연결이 좋으면, 우리의 주 서버가 일시적으로 "
 "다운된것입니다."
 
-#: horizons/gui/modules/multiplayermenu.py:166 horizons/mpsession.py:52
+#: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
 msgstr "뭔가는 네트워크가 잘못되었습니다:"
 
-#: horizons/gui/modules/multiplayermenu.py:181
+#: horizons/gui/modules/multiplayermenu.py:184
 msgid "Version differs!"
 msgstr "버전이 다릅니다!"
 
-#: horizons/gui/modules/multiplayermenu.py:210
-#: horizons/gui/modules/multiplayermenu.py:468
+#: horizons/gui/modules/multiplayermenu.py:213
+#: horizons/gui/modules/multiplayermenu.py:482
 #, python-brace-format
 msgid "Map: {map_name}"
 msgstr "지도: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:211
-#: horizons/gui/modules/multiplayermenu.py:469
+#: horizons/gui/modules/multiplayermenu.py:214
+#: horizons/gui/modules/multiplayermenu.py:483
 #, python-brace-format
 msgid "Name: {game_name}"
 msgstr "이름: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:212
-#: horizons/gui/modules/multiplayermenu.py:470
+#: horizons/gui/modules/multiplayermenu.py:215
+#: horizons/gui/modules/multiplayermenu.py:484
 #, python-brace-format
 msgid "Creator: {game_creator}"
 msgstr "제작자: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:213
-#: horizons/gui/modules/multiplayermenu.py:471
+#: horizons/gui/modules/multiplayermenu.py:216
+#: horizons/gui/modules/multiplayermenu.py:485
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "플레이어: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:233
+#: horizons/gui/modules/multiplayermenu.py:236
 msgid "Wrong version"
 msgstr "잘못된 버전"
 
-#: horizons/gui/modules/multiplayermenu.py:234
+#: horizons/gui/modules/multiplayermenu.py:237
 #, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -1962,195 +1976,195 @@ msgstr ""
 "에 의해 고쳐질 수 있습니다. 게임 버전: {game_version} 당신의 버전 "
 "{own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:272
+#: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
 msgstr "게임 암호"
 
-#: horizons/gui/modules/multiplayermenu.py:273
+#: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
 msgstr "암호 입력:"
 
-#: horizons/gui/modules/multiplayermenu.py:358
-#: horizons/gui/modules/singleplayermenu.py:410
+#: horizons/gui/modules/multiplayermenu.py:361
+#: horizons/gui/modules/singleplayermenu.py:416
 #, python-brace-format
 msgid "Recommended number of players: {number}"
 msgstr "추천하는 플레이어 수: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/gui/modules/multiplayermenu.py:404
-#: horizons/network/networkinterface.py:526
+#: horizons/gui/modules/multiplayermenu.py:407
+#: horizons/network/networkinterface.py:531
 msgid "Ready"
 msgstr "준비"
 
-#: horizons/gui/modules/multiplayermenu.py:406
+#: horizons/gui/modules/multiplayermenu.py:409
 msgid "Not ready"
 msgstr "준비 안됨"
 
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:445
 msgid "Enter your message"
 msgstr "메시지를 입력하세요"
 
-#: horizons/gui/modules/multiplayermenu.py:489
-#: horizons/gui/modules/multiplayermenu.py:497
+#: horizons/gui/modules/multiplayermenu.py:503
+#: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
 msgstr "이름 및/또는 색상을 변경하려면 여기를 클릭하십시오"
 
-#: horizons/gui/modules/multiplayermenu.py:515
+#: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
 msgid "Kick {player}"
 msgstr "{player} 님을 추방"
 
-#: horizons/gui/modules/multiplayermenu.py:582
+#: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} has joined the game"
 msgstr "{player} 님이 들어왔습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:585
+#: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} has left the game"
 msgstr "{player} 님이 나갔습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:591
+#: horizons/gui/modules/multiplayermenu.py:605
 msgid "You are now ready"
 msgstr "준비되었습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:593
+#: horizons/gui/modules/multiplayermenu.py:607
 msgid "You are not ready anymore"
 msgstr "요즘 준비되지 않았습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:596
+#: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} is now ready"
 msgstr "{player} 님이 준비되었습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:612
 #, python-brace-format
 msgid "{player} not ready anymore"
 msgstr "{player} 님이 준비되지 않았습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:602
+#: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
 msgid "You are now known as {new_name}"
 msgstr "당신은 {new_name}으로 알려졌습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:604
+#: horizons/gui/modules/multiplayermenu.py:618
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
 msgstr "{player} 님이 {new_name}로 알려졌습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:608
+#: horizons/gui/modules/multiplayermenu.py:622
 msgid "You changed your color"
 msgstr "색상을 변경했습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:610
+#: horizons/gui/modules/multiplayermenu.py:624
 #, python-brace-format
 msgid "{player} changed their color"
 msgstr "{player} 님이 색상을 바꿨습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:614
+#: horizons/gui/modules/multiplayermenu.py:628
 msgid "Kicked"
 msgstr "강퇴되었습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:614
+#: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
 msgstr "방장에 의해 게임에서 강퇴되었습니다"
 
-#: horizons/gui/modules/multiplayermenu.py:617
+#: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
 msgid "{player} got kicked by creator"
 msgstr "{player} 님이 방장에 의해 강퇴 되었습니다"
 
-#: horizons/gui/modules/pausemenu.py:88
+#: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
 msgstr "실행중인 세션을 종료하시겠습니까?"
 
-#: horizons/gui/modules/pausemenu.py:89
+#: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
 msgstr "세션 종료"
 
-#: horizons/gui/modules/select_savegame.py:87
+#: horizons/gui/modules/select_savegame.py:89
 msgid "No saved games"
 msgstr "세이브한 게임이 없음"
 
-#: horizons/gui/modules/select_savegame.py:87
+#: horizons/gui/modules/select_savegame.py:89
 msgid "There are no saved games to load."
 msgstr "불러오기할 저장된 게임이 없습니다."
 
-#: horizons/gui/modules/select_savegame.py:156
+#: horizons/gui/modules/select_savegame.py:158
 msgid "No filename given"
 msgstr "주어진 파일 이름이 없습니다"
 
-#: horizons/gui/modules/select_savegame.py:157
+#: horizons/gui/modules/select_savegame.py:159
 msgid "Please enter a valid filename."
 msgstr "올바른 파일이름을 입력하세요."
 
-#: horizons/gui/modules/select_savegame.py:161
+#: horizons/gui/modules/select_savegame.py:163
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
 msgstr "{name} 이름으로 저장 게임이 이미 존재합니다."
 
-#: horizons/gui/modules/select_savegame.py:163
+#: horizons/gui/modules/select_savegame.py:165
 #, python-brace-format
 msgid "A map with the name {name} already exists."
 msgstr "{name} 이름의 지도가 이미 존재합니다."
 
-#: horizons/gui/modules/select_savegame.py:165
+#: horizons/gui/modules/select_savegame.py:167
 msgid "Overwrite it?"
 msgstr "덮어쓰시겠습니까?"
 
-#: horizons/gui/modules/select_savegame.py:232
+#: horizons/gui/modules/select_savegame.py:234
 msgid "Unknown savedate"
 msgstr "알수없는 저장 날짜"
 
-#: horizons/gui/modules/select_savegame.py:235
+#: horizons/gui/modules/select_savegame.py:237
 #, python-brace-format
 msgid "Saved at {time}"
 msgstr "{time}에 저장됨"
 
-#. N_ takes care of plural forms for different languages
-#: horizons/gui/modules/select_savegame.py:239
+#. NT takes care of plural forms for different languages
+#: horizons/gui/modules/select_savegame.py:241
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "{amount} 시간 저장되었습니다.- 확인요망"
 
-#: horizons/gui/modules/select_savegame.py:246
+#: horizons/gui/modules/select_savegame.py:248
 #, python-brace-format
 msgid "Savegame version {version}"
 msgstr "저장 게임 버전 {version}"
 
-#: horizons/gui/modules/select_savegame.py:250
+#: horizons/gui/modules/select_savegame.py:252
 msgid "(probably incompatible)"
 msgstr "(아마도 호환되지 않음)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
-#: horizons/gui/modules/select_savegame.py:254
+#: horizons/gui/modules/select_savegame.py:256
 msgid "Incompatible version"
 msgstr "호환되지 않는 버전"
 
-#: horizons/gui/modules/select_savegame.py:267
+#: horizons/gui/modules/select_savegame.py:269
 msgid "No file selected"
 msgstr "선택한 파일이 없습니다"
 
-#: horizons/gui/modules/select_savegame.py:267
+#: horizons/gui/modules/select_savegame.py:269
 msgid "You need to select a savegame to delete."
 msgstr "삭제할 저장게임을 선택해야합니다."
 
-#: horizons/gui/modules/select_savegame.py:270
+#: horizons/gui/modules/select_savegame.py:272
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "정말로 저장게임 '{name}'를 삭제 하시겠습니까?"
 
-#: horizons/gui/modules/select_savegame.py:272
+#: horizons/gui/modules/select_savegame.py:274
 msgid "Confirm deletion"
 msgstr "삭제 확인"
 
-#: horizons/gui/modules/select_savegame.py:277
+#: horizons/gui/modules/select_savegame.py:279
 msgid "Error!"
 msgstr "오류!"
 
-#: horizons/gui/modules/select_savegame.py:277
+#: horizons/gui/modules/select_savegame.py:279
 msgid "Failed to delete savefile!"
 msgstr "저장된 파일 삭제 실패!"
 
@@ -2222,154 +2236,155 @@ msgstr ""
 "때로 낮은 포트 번호는 특별한 접근 권한을 요구합니다, 0 또는 1024보다 더 큰 수"
 "를 사용하세요."
 
-#: horizons/gui/modules/singleplayermenu.py:109
+#: horizons/gui/modules/singleplayermenu.py:115
 msgid "Invalid player name"
 msgstr "잘못된 플레이어 이름"
 
-#: horizons/gui/modules/singleplayermenu.py:109
+#: horizons/gui/modules/singleplayermenu.py:115
 msgid "You entered an invalid playername."
 msgstr "잘못된 플레이어 이름을 입력하였습니다."
 
-#: horizons/gui/modules/singleplayermenu.py:152
+#: horizons/gui/modules/singleplayermenu.py:157
 msgid "Resource density:"
 msgstr "자원 밀도:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:231
 msgid "Map size:"
 msgstr "지도 크기:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:232
 msgid "Water:"
 msgstr "물:"
 
-#: horizons/gui/modules/singleplayermenu.py:232
+#: horizons/gui/modules/singleplayermenu.py:233
 msgid "Max island size:"
 msgstr "최대 섬 크기:"
 
-#: horizons/gui/modules/singleplayermenu.py:233
+#: horizons/gui/modules/singleplayermenu.py:234
 msgid "Preferred island size:"
 msgstr "선호하는 섬의 크기:"
 
-#: horizons/gui/modules/singleplayermenu.py:234
+#: horizons/gui/modules/singleplayermenu.py:235
 msgid "Island size deviation:"
 msgstr "섬의 크기 편차:"
 
-#: horizons/gui/modules/singleplayermenu.py:348
+#: horizons/gui/modules/singleplayermenu.py:354
 msgid "Click to generate a different random map"
 msgstr "클릭하여 다른 임의의 지도 생성하기"
 
-#: horizons/gui/modules/singleplayermenu.py:508
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr "잘못된 시나리오 파일"
 
-#: horizons/gui/modules/singleplayermenu.py:509
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr "선택한 파일은 올바른 시나리오 파일이 아닙니다."
 
-#: horizons/gui/modules/singleplayermenu.py:510
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr "오류 메시지:"
 
-#: horizons/gui/modules/singleplayermenu.py:511
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "제작자에게 이것을 보고해주십시오."
 
-#: horizons/gui/modules/singleplayermenu.py:573
+#: horizons/gui/modules/singleplayermenu.py:590
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
 msgstr "난이도: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:576
+#: horizons/gui/modules/singleplayermenu.py:593
 #, python-brace-format
 msgid "Author: {author}"
 msgstr "제작자: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:579
+#: horizons/gui/modules/singleplayermenu.py:596
 #, python-brace-format
 msgid "Description: {desc}"
 msgstr "설명: {desc}"
 
 #. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:230
+#: horizons/gui/mousetools/buildingtool.py:238
 #, python-brace-format
 msgid "Build {building}"
 msgstr "건설 {building}"
 
-#: horizons/gui/mousetools/navigationtool.py:95
+#: horizons/gui/mousetools/navigationtool.py:96
 msgid "Press H to remove this hint"
 msgstr "이 힌트를 삭제하려면 H를 누르세요"
 
-#: horizons/gui/mousetools/tearingtool.py:112
+#: horizons/gui/mousetools/tearingtool.py:114
 msgid "Destroy all buildings"
 msgstr "모든 건물 파괴"
 
-#: horizons/gui/mousetools/tearingtool.py:113
+#: horizons/gui/mousetools/tearingtool.py:115
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr "이 정착 범위를 벗어나는 모든 건물을 파괴 됩니다."
 
-#: horizons/gui/mousetools/tearingtool.py:116
+#: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] "%s 의 추가 건물은 파괴 됩니다."
 
-#: horizons/gui/tabs/barrackstabs.py:36
+#: horizons/gui/tabs/barrackstabs.py:38
 #, fuzzy
 #| msgid "Warehouse overview"
 msgid "Barracks overview"
 msgstr "창고 개요"
 
-#: horizons/gui/tabs/barrackstabs.py:114
+#: horizons/gui/tabs/barrackstabs.py:116
 #, fuzzy
 #| msgid "sword"
 msgid "Swordman"
 msgstr "칼"
 
-#: horizons/gui/tabs/boatbuildertabs.py:155
+#: horizons/gui/tabs/barriertab.py:34 horizons/gui/tabs/buildingtabs.py:42
+#: horizons/gui/tabs/overviewtab.py:31
+msgid "Overview"
+msgstr "요약"
+
+#: horizons/gui/tabs/boatbuildertabs.py:158
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (대기열에에 배치: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:209
+#: horizons/gui/tabs/boatbuildertabs.py:212
 msgid "Boat builder overview"
 msgstr "선박 제조사 개요"
 
-#: horizons/gui/tabs/boatbuildertabs.py:288
+#: horizons/gui/tabs/boatbuildertabs.py:291
 msgid "Fisher boats"
 msgstr "어선"
 
-#: horizons/gui/tabs/boatbuildertabs.py:300
+#: horizons/gui/tabs/boatbuildertabs.py:303
 msgid "Trade boats"
 msgstr "상선"
 
-#: horizons/gui/tabs/boatbuildertabs.py:312
+#: horizons/gui/tabs/boatbuildertabs.py:315
 msgid "War boats"
 msgstr "전투선"
 
-#: horizons/gui/tabs/boatbuildertabs.py:324
+#: horizons/gui/tabs/boatbuildertabs.py:327
 msgid "War ships"
 msgstr "전함"
 
-#: horizons/gui/tabs/buildingtabs.py:33
+#: horizons/gui/tabs/buildingtabs.py:34
 msgid "Tower overview"
 msgstr "타워 요약"
 
-#: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
-msgid "Overview"
-msgstr "요약"
-
-#: horizons/gui/tabs/buildrelatedtab.py:42
+#: horizons/gui/tabs/buildrelatedtab.py:44
 msgid "Build related buildings"
 msgstr "관련된 건물을 건설"
 
-#: horizons/gui/tabs/buyselltab.py:134
+#: horizons/gui/tabs/buyselltab.py:135
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr "무역 매물을 추가하기 위해 자원 슬롯 중 하나에 클릭합니다."
 
 #. new res
-#: horizons/gui/tabs/buyselltab.py:177
+#: horizons/gui/tabs/buyselltab.py:178
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
@@ -2377,7 +2392,7 @@ msgstr ""
 "라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽 슬라이더를 통해 양을 조정"
 "하세요."
 
-#: horizons/gui/tabs/buyselltab.py:321
+#: horizons/gui/tabs/buyselltab.py:322
 #, python-brace-format
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
@@ -2386,7 +2401,7 @@ msgstr ""
 "{resource_name}을 {price} 골드/t 에 구매합니다. 언제든지 {limit}t 보다 적은 "
 "양이 비축되어있습니다."
 
-#: horizons/gui/tabs/buyselltab.py:324
+#: horizons/gui/tabs/buyselltab.py:325
 #, python-brace-format
 msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
@@ -2395,7 +2410,7 @@ msgstr ""
 "{resource_name} 을 {price} 골드/t 에 판매합니다. 언제든지 {limit}t 보다 많은 "
 "양이 사용가능합니다."
 
-#: horizons/gui/tabs/enemybuildingtabs.py:39
+#: horizons/gui/tabs/enemybuildingtabs.py:40
 msgid "Warehouse overview"
 msgstr "창고 개요"
 
@@ -2407,19 +2422,19 @@ msgstr "회계"
 msgid "Main square overview"
 msgstr "주요 광장 개요"
 
-#: horizons/gui/tabs/mainsquaretabs.py:149
+#: horizons/gui/tabs/mainsquaretabs.py:150
 msgid "Upgrade not possible:"
 msgstr "업그레이드가 불가능:"
 
-#: horizons/gui/tabs/mainsquaretabs.py:152
+#: horizons/gui/tabs/mainsquaretabs.py:153
 msgid "This is the highest playable tier for now!"
 msgstr "현재 가장 높은 플레이 가능한 계층입니다!"
 
-#: horizons/gui/tabs/mainsquaretabs.py:198
+#: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
 msgstr "업그레이드 안함"
 
-#: horizons/gui/tabs/mainsquaretabs.py:201
+#: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
 msgstr "업그레드 허용"
 
@@ -2427,12 +2442,12 @@ msgstr "업그레드 허용"
 msgid "Unit overview"
 msgstr "유닛 요약"
 
-#: horizons/gui/tabs/productiontabs.py:47
-#: horizons/gui/tabs/productiontabs.py:321
+#: horizons/gui/tabs/productiontabs.py:48
+#: horizons/gui/tabs/productiontabs.py:322
 msgid "Production overview"
 msgstr "생산 요약"
 
-#: horizons/gui/tabs/productiontabs.py:300
+#: horizons/gui/tabs/productiontabs.py:301
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
 msgstr "{how_many} 그루의 나무를 범위에 채움"
@@ -2441,104 +2456,104 @@ msgstr "{how_many} 그루의 나무를 범위에 채움"
 msgid "Selected Units"
 msgstr "선택한 유닛"
 
-#: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
-#: horizons/gui/tabs/shiptabs.py:200 horizons/gui/tabs/shiptabs.py:205
+#: horizons/gui/tabs/shiptabs.py:41 horizons/gui/tabs/shiptabs.py:179
+#: horizons/gui/tabs/shiptabs.py:206 horizons/gui/tabs/shiptabs.py:211
 msgid "Ship overview"
 msgstr "선박 요약"
 
-#: horizons/gui/tabs/shiptabs.py:55
+#: horizons/gui/tabs/shiptabs.py:57
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr "배가 정착하기위한 섬에 근접해야합니다."
 
-#: horizons/gui/tabs/shiptabs.py:60
+#: horizons/gui/tabs/shiptabs.py:62
 msgid "You already have a settlement on this island."
 msgstr "이 섬에 이미 정착하였습니다."
 
-#: horizons/gui/tabs/shiptabs.py:91
+#: horizons/gui/tabs/shiptabs.py:93
 msgid "Load/Unload"
 msgstr "선적/하역"
 
-#: horizons/gui/tabs/shiptabs.py:93
+#: horizons/gui/tabs/shiptabs.py:95
 msgid "Buy/Sell"
 msgstr "구매/판매"
 
-#: horizons/gui/tabs/shiptabs.py:102
+#: horizons/gui/tabs/shiptabs.py:104
 msgid "Too far from the nearest tradeable warehouse"
 msgstr "근처의 무역가능한 창고에서 너무 멉니다"
 
-#: horizons/gui/tabs/shiptabs.py:108
+#: horizons/gui/tabs/shiptabs.py:110
 msgid "Cannot equip trade ship with weapons"
 msgstr "무역상선에 무기를 장착할수 없습니다"
 
-#: horizons/gui/tabs/shiptabs.py:109
+#: horizons/gui/tabs/shiptabs.py:111
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "무기를 무역상선에 장착 할 수 없습니다."
 
-#: horizons/gui/tabs/shiptabs.py:144
+#: horizons/gui/tabs/shiptabs.py:150
 msgid "Equip weapon"
 msgstr "무기 장착"
 
-#: horizons/gui/tabs/shiptabs.py:148
+#: horizons/gui/tabs/shiptabs.py:154
 msgid "Unequip weapon"
 msgstr "무기 장착해제"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:70
+#: horizons/gui/widgets/imagefillstatusbutton.py:72
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
 msgstr "{resource_name}: {price} 골드"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:75
+#: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "buy for {buyprice} gold"
 msgstr "{buyprice} 골드에 구입"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:77
+#: horizons/gui/widgets/imagefillstatusbutton.py:79
 #, python-brace-format
 msgid "sell for {sellprice} gold"
 msgstr "{sellprice} 골드에 판매"
 
-#: horizons/gui/widgets/inventory.py:171
+#: horizons/gui/widgets/inventory.py:174
 #, python-brace-format
 msgid "{stored}/{limit}"
 msgstr "{stored}/{limit}"
 
-#: horizons/gui/widgets/inventory.py:173
+#: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
 msgstr "제한: 슬롯당 {amount}t"
 
-#: horizons/gui/widgets/logbook.py:49
+#: horizons/gui/widgets/logbook.py:50
 msgid "Logbook"
 msgstr "일지"
 
-#: horizons/gui/widgets/logbook.py:187
+#: horizons/gui/widgets/logbook.py:188
 msgid "Emptiness"
 msgstr "텅 비어있음"
 
-#: horizons/gui/widgets/logbook.py:190
+#: horizons/gui/widgets/logbook.py:191
 msgid "There is nothing written in your logbook yet!"
 msgstr "아직 작성된 일지가 없습니다!"
 
-#: horizons/gui/widgets/playerssettlements.py:39
+#: horizons/gui/widgets/playerssettlements.py:41
 #, python-brace-format
 msgid "Settlements of {player}"
 msgstr "{player} 님의 정착지"
 
-#: horizons/gui/widgets/playersships.py:44
+#: horizons/gui/widgets/playersships.py:46
 #, python-brace-format
 msgid "Ships of {player}"
 msgstr "{player} 님의 배"
 
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:94
+#: horizons/gui/widgets/playersships.py:96
 msgid "None"
 msgstr "없음"
 
-#: horizons/gui/widgets/playersships.py:96
+#: horizons/gui/widgets/playersships.py:98
 msgid "N/A"
 msgstr "N/A"
 
-#: horizons/gui/widgets/productionoverview.py:60
+#: horizons/gui/widgets/productionoverview.py:121
 #, python-brace-format
 msgid "Production overview of {settlement}"
 msgstr "{settlement}의 생산 개요"
@@ -2577,50 +2592,50 @@ msgstr "구매 비용"
 msgid "Sell income"
 msgstr "판매 수입"
 
-#: horizons/gui/widgets/routeconfig.py:111
+#: horizons/gui/widgets/routeconfig.py:118
 msgid "Stop route"
 msgstr "경로 중지"
 
-#: horizons/gui/widgets/routeconfig.py:118
+#: horizons/gui/widgets/routeconfig.py:125
 msgid "Need at least two settlements"
 msgstr "최소한 2개의 정착지가 필요합니다"
 
-#: horizons/gui/widgets/routeconfig.py:119
+#: horizons/gui/widgets/routeconfig.py:126
 msgid "You need at least two different settlements in your route."
 msgstr "경로에 최소한 2개의 다른 정착지가 필요합니다."
 
-#: horizons/gui/widgets/routeconfig.py:148
+#: horizons/gui/widgets/routeconfig.py:155
 msgid "Click on a settlement to add a waypoint!"
 msgstr "웨이포인트를 추가할 정착지를 클릭하세요!"
 
-#: horizons/gui/widgets/routeconfig.py:187
+#: horizons/gui/widgets/routeconfig.py:193
 msgid "Loading into ship"
 msgstr "선적하는중"
 
-#: horizons/gui/widgets/routeconfig.py:194
+#: horizons/gui/widgets/routeconfig.py:199
 msgid "Unloading from ship"
 msgstr "하역하는중"
 
-#: horizons/gui/widgets/routeconfig.py:380
+#: horizons/gui/widgets/routeconfig.py:385
 msgid "You are not allowed to trade with this player"
 msgstr "이 플레이어와 무역할 수 없습니다"
 
 #. You usually do not need to change anything here when translating
-#: horizons/gui/widgets/unitoverview.py:118
+#: horizons/gui/widgets/unitoverview.py:120
 #, python-brace-format
 msgid "{weapon}: {amount}"
 msgstr "{weapon}: {amount}"
 
-#: horizons/gui/widgets/unitoverview.py:123
+#: horizons/gui/widgets/unitoverview.py:125
 msgid "none"
 msgstr "없음"
 
-#: horizons/gui/windows.py:411
+#: horizons/gui/windows.py:413
 #, python-brace-format
 msgid "Details: {error_details}"
 msgstr "상세정보: {error_details}"
 
-#: horizons/gui/windows.py:413
+#: horizons/gui/windows.py:415
 #, python-brace-format
 msgid "Error: {error_message}"
 msgstr "오류: {error_message}"
@@ -2645,761 +2660,782 @@ msgstr "병영"
 msgid "Recruits units suitable for ground combat."
 msgstr "지상전투를 위해 적당한 부대를 모집합니다."
 
-#. name of buildings:blender
+#. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
+#, fuzzy
+#| msgid "Wooden Tower"
+msgid "Wooden barrier"
+msgstr "목조 탑"
+
+#. name_1 of buildings:barrier
+#: horizons/i18n/objecttranslations.py:72
+msgid "Clay wall"
+msgstr ""
+
+#. tooltip_text of buildings:barrier
+#: horizons/i18n/objecttranslations.py:74
+#, fuzzy
+#| msgid "Provides education."
+msgid "Provides security."
+msgstr "교육을 제공합니다."
+
+#. name of buildings:blender
+#: horizons/i18n/objecttranslations.py:79
 msgid "Blender"
 msgstr "블렌더"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:72
+#: horizons/i18n/objecttranslations.py:81
 msgid "Produces condiments out of spices."
 msgstr "향신료없이 양념을 생산합니다."
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:77
+#: horizons/i18n/objecttranslations.py:86
 msgid "Boat Builder"
 msgstr "선박 건조자"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:79
+#: horizons/i18n/objecttranslations.py:88
 msgid "Builds boats and small ships. Built on coast."
 msgstr "배와 소형선박을 건조합니다. 해안에 건설합니다."
 
 #. name of buildings:brewery
-#: horizons/i18n/objecttranslations.py:84
+#: horizons/i18n/objecttranslations.py:93
 msgid "Brewery"
 msgstr ""
 
 #. tooltip_text of buildings:brewery
-#: horizons/i18n/objecttranslations.py:86
+#: horizons/i18n/objecttranslations.py:95
 #, fuzzy
 #| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
 msgstr "밀가루 소비. 음식 생산."
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:91
+#: horizons/i18n/objecttranslations.py:100
 msgid "Brickyard"
 msgstr "벽돌공장"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:93
+#: horizons/i18n/objecttranslations.py:102
 msgid "Turns clay into bricks."
 msgstr "점토로 벽돌을 만듬."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:98
+#: horizons/i18n/objecttranslations.py:107
 msgid "Butchery"
 msgstr "도축장"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:100
+#: horizons/i18n/objecttranslations.py:109
 msgid "Needs pigs or cattle. Produces food."
 msgstr "돼지나 소가 필요합니다. 음식을 생산합니다."
 
 #. name of buildings:cannonfoundry
-#: horizons/i18n/objecttranslations.py:105
+#: horizons/i18n/objecttranslations.py:114
 msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
-#: horizons/i18n/objecttranslations.py:107
+#: horizons/i18n/objecttranslations.py:116
 #, fuzzy
 #| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
 msgstr "철에서 무기를 생산."
 
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:112
+#: horizons/i18n/objecttranslations.py:121
 msgid "Charcoal Burning"
 msgstr "숯 굽기"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:114
+#: horizons/i18n/objecttranslations.py:123
 msgid "Burns a lot of boards."
 msgstr "많은 판을 굽습니다."
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:119
+#: horizons/i18n/objecttranslations.py:128
 msgid "Clay Deposit"
 msgstr "점토 매장층"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:124
+#: horizons/i18n/objecttranslations.py:133
 msgid "Clay Pit"
 msgstr "점토 채취장"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:126
+#: horizons/i18n/objecttranslations.py:135
 msgid "Gets clay from deposit."
 msgstr "매장층에서 점토를 채취합니다."
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:131
+#: horizons/i18n/objecttranslations.py:140
 msgid "Distillery"
 msgstr "양조장"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:133
+#: horizons/i18n/objecttranslations.py:142
 msgid "Turns sugar into liquor."
 msgstr "설탕을 술로 바꿉니다."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:138
+#: horizons/i18n/objecttranslations.py:147
 msgid "Doctor"
 msgstr "의사"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:140
+#: horizons/i18n/objecttranslations.py:149
 msgid "Treats diseases. Consumes herbs."
 msgstr "질병을 치료합니다. 약초를 소비합니다."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:145
+#: horizons/i18n/objecttranslations.py:154
 msgid "Farm"
 msgstr "농장"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:147
+#: horizons/i18n/objecttranslations.py:156
 msgid "Grows field crops and raises livestock."
 msgstr "밭 작물을 기르고 가축을 사육합니다."
 
 #. name of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:152
+#: horizons/i18n/objecttranslations.py:161
 msgid "Alvearies"
 msgstr "벌집"
 
 #. tooltip_text of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:163
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr "꿀벌을 지킵니다. 과자에 사용되는 벌집을 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:159
+#: horizons/i18n/objecttranslations.py:168
 msgid "Cattle Run"
 msgstr "목장"
 
 #. tooltip_text of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:170
 msgid "Raises cattle. Needs a farm."
 msgstr "소를 사육합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:166
+#: horizons/i18n/objecttranslations.py:175
 msgid "Cocoa Field"
 msgstr "코코아 밭"
 
 #. tooltip_text of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:177
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr "과자에 사용되는 코코아 열매를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:173
+#: horizons/i18n/objecttranslations.py:182
 msgid "Corn Field"
 msgstr "곡물 밭"
 
 #. tooltip_text of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py:184
 msgid "Yields corn. Needs a farm."
 msgstr "곡물을 얻습니다. 농장이 필요합니다."
 
 #. name of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:180
+#: horizons/i18n/objecttranslations.py:189
 msgid "Herbary"
 msgstr "약초원"
 
 #. tooltip_text of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:182
+#: horizons/i18n/objecttranslations.py:191
 msgid "Produces herbs. Needs a farm."
 msgstr "약초를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:hopfield
-#: horizons/i18n/objecttranslations.py:187
+#: horizons/i18n/objecttranslations.py:196
 #, fuzzy
 #| msgid "Corn Field"
 msgid "Hop Field"
 msgstr "곡물 밭"
 
 #. tooltip_text of buildings:fields:hopfield
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py:198
 #, fuzzy
 #| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
 msgstr "곡물을 얻습니다. 농장이 필요합니다."
 
 #. name of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py:203
 msgid "Pasture"
 msgstr "초원"
 
 #. tooltip_text of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py:205
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "양을 사육합니다. 양모를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:201
+#: horizons/i18n/objecttranslations.py:210
 msgid "Pigsty"
 msgstr "양돈장"
 
 #. tooltip_text of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py:212
 msgid "Raises pigs. Needs a farm."
 msgstr "돼지를 사육합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:208
+#: horizons/i18n/objecttranslations.py:217
 msgid "Potato Field"
 msgstr "감자밭"
 
 #. tooltip_text of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:210
+#: horizons/i18n/objecttranslations.py:219
 msgid "Yields food. Needs a farm."
 msgstr "음식을 수확합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py:224
 msgid "Spice Field"
 msgstr "향신료 밭"
 
 #. tooltip_text of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:226
 msgid "Grows spices. Needs a farm."
 msgstr "향신료를 기릅니다. 농장이 필요합니다."
 
 #. name of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py:231
 msgid "Sugar Field"
 msgstr "설탕 밭"
 
 #. tooltip_text of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:233
 msgid "Used in liquor production. Needs a farm."
 msgstr "주류 생산에 사용됩니다. 농장이 필요합니다."
 
 #. name of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:229
+#: horizons/i18n/objecttranslations.py:238
 msgid "Tobacco Field"
 msgstr "담배 밭"
 
 #. tooltip_text of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:231
+#: horizons/i18n/objecttranslations.py:240
 msgid "Produces tobacco. Needs a farm."
 msgstr "담배를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:236
+#: horizons/i18n/objecttranslations.py:245
 msgid "Vineyard"
 msgstr "포도원"
 
 #. tooltip_text of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:238
+#: horizons/i18n/objecttranslations.py:247
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr "포도주와 과자에 사용되는 포도를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:243
+#: horizons/i18n/objecttranslations.py:252
 msgid "Fire Station"
 msgstr "소방서"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:245
+#: horizons/i18n/objecttranslations.py:254
 msgid "Extinguishes fires."
 msgstr "화재를 진화합니다."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py:259
 msgid "Fish Deposit"
 msgstr "어장"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:255
+#: horizons/i18n/objecttranslations.py:264
 msgid "Fisherman's Tent"
 msgstr "어부의 천막"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:257
+#: horizons/i18n/objecttranslations.py:266
 msgid "Fishes the sea, produces food."
 msgstr "바다에서 낚시합니다. 음식을 생산합니다."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:262
+#: horizons/i18n/objecttranslations.py:271
 msgid "Hunter's Tent"
 msgstr "사냥꾼의 천막"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py:273
 msgid "Hunts wild forest animals, produces food."
 msgstr "숲속 야생 동물을 사냥하여, 음식을 생산합니다."
 
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:269
+#: horizons/i18n/objecttranslations.py:278
 msgid "Lookout"
 msgstr "전망대"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py:280
 msgid "Expands settlement range."
 msgstr "정착지 범위를 확장합니다."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:276
+#: horizons/i18n/objecttranslations.py:285
 msgid "Lumberjack Tent"
 msgstr "나무꾼 천막"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:278
+#: horizons/i18n/objecttranslations.py:287
 msgid "Lumberjack Hut"
 msgstr "나무꾼 오두막"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:280
+#: horizons/i18n/objecttranslations.py:289
 msgid "Chops down trees and turns them into boards."
 msgstr "나무를 자르고 판자로 만듭니다."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py:294
 msgid "Main Square"
 msgstr "주요 광장"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:287
+#: horizons/i18n/objecttranslations.py:296
 msgid "Supplies citizens with goods. Provides community."
 msgstr "시민과 상품을 공급합니다. 공동체를 제공합니다."
 
 #. name of buildings:mine
-#: horizons/i18n/objecttranslations.py:292
+#: horizons/i18n/objecttranslations.py:301
 msgid "Mine"
 msgstr "광산"
 
 #. tooltip_text of buildings:mine
-#: horizons/i18n/objecttranslations.py:294
+#: horizons/i18n/objecttranslations.py:303
 msgid "Gets iron ore from deposit."
 msgstr "매장층에서 철광석을 가져옵니다."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:299
+#: horizons/i18n/objecttranslations.py:308
 msgid "Mountain"
 msgstr "산"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py:313
 msgid "Pastry Shop"
 msgstr "제과점"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:306
+#: horizons/i18n/objecttranslations.py:315
 msgid "Produces all kinds of confectionery."
 msgstr "모든 종류의 과자를 생산합니다."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py:320
 msgid "Pavilion"
 msgstr "종교건물"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py:322
 msgid "Fulfills religious needs of sailors."
 msgstr "선원들의 종교적 요구를 충족시킵니다."
 
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:318
+#: horizons/i18n/objecttranslations.py:327
 msgid "Ruined Tent"
 msgstr "폐허 천막"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:323
+#: horizons/i18n/objecttranslations.py:332
 msgid "Salt Ponds"
 msgstr "염전"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:325
+#: horizons/i18n/objecttranslations.py:334
 msgid "Evaporates salt. Built on sea coast."
 msgstr "소금을 증발시킵니다. 해안에 건설합니다."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:330
+#: horizons/i18n/objecttranslations.py:339
 msgid "Signal Fire"
 msgstr "봉화"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:332
+#: horizons/i18n/objecttranslations.py:341
 msgid "Allows the player to trade with the free trader."
 msgstr "플레이어가 자유 무역 무역상인과 무역이 가능하게 합니다."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:337
+#: horizons/i18n/objecttranslations.py:346
 msgid "Smeltery"
 msgstr "용광로"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:339
+#: horizons/i18n/objecttranslations.py:348
 msgid "Refines all kind of ores."
 msgstr "모든 광물을 정제합니다."
 
 #. name of buildings:stonedeposit
-#: horizons/i18n/objecttranslations.py:344
+#: horizons/i18n/objecttranslations.py:353
 #, fuzzy
 #| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "석재 매장층"
 
 #. name_3 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:349
+#: horizons/i18n/objecttranslations.py:358
 msgid "Stonemason"
 msgstr "석수"
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:351
+#: horizons/i18n/objecttranslations.py:360
 msgid "Carver"
 msgstr "조각가"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:353
+#: horizons/i18n/objecttranslations.py:362
 msgid "Carves stone tops into bricks."
 msgstr "벽돌에 돌 탑을 새겨놓다."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:358
+#: horizons/i18n/objecttranslations.py:367
 msgid "Stone Pit"
 msgstr "채석장"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:360
+#: horizons/i18n/objecttranslations.py:369
 msgid "Gets stone from a mountain."
 msgstr "산에서 돌을 채취합니다."
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py:374
 msgid "Storage Tent"
 msgstr "저장소 천막"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py:376
 msgid "Storage Hut"
 msgstr "저장소 오두막"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:369
+#: horizons/i18n/objecttranslations.py:378
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr "재고와 정착지를 확장하고 수집자을 제공합니다."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py:383
 msgid "Tavern"
 msgstr "여관"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:376
+#: horizons/i18n/objecttranslations.py:385
 msgid "Provides get-together."
 msgstr "모임을 제공합니다."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py:390
 msgid "Tent"
 msgstr "천막"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:383
+#: horizons/i18n/objecttranslations.py:392
 msgid "Hut"
 msgstr "오두막"
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:385
+#: horizons/i18n/objecttranslations.py:394
 msgid "House"
 msgstr "집"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:387
+#: horizons/i18n/objecttranslations.py:396
 msgid "Stone house"
 msgstr "석조 가옥"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:389
+#: horizons/i18n/objecttranslations.py:398
 msgid "Estate"
 msgstr "사유지"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:391
+#: horizons/i18n/objecttranslations.py:400
 msgid "Manor"
 msgstr "영주의 저택"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:393
+#: horizons/i18n/objecttranslations.py:402
 msgid "Houses your inhabitants."
 msgstr "주민들 주택."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:398
+#: horizons/i18n/objecttranslations.py:407
 msgid "Tobacconist"
 msgstr "연초장"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:400
+#: horizons/i18n/objecttranslations.py:409
 msgid "Produces tobaccos out of tobacco."
 msgstr "담배 없이 담배를 제조."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:405
+#: horizons/i18n/objecttranslations.py:414
 msgid "Toolmaker"
 msgstr "도구 제작자"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:407
+#: horizons/i18n/objecttranslations.py:416
 msgid "Produces tools out of iron."
 msgstr "철 없이 도구 제작."
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:412
+#: horizons/i18n/objecttranslations.py:421
 msgid "Trail"
 msgstr "오솔 길"
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:414
+#: horizons/i18n/objecttranslations.py:423
 msgid "Gravel Path"
 msgstr "비포장 길"
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:416
+#: horizons/i18n/objecttranslations.py:425
 msgid "Cobblestone Street"
 msgstr "조약돌 거리"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:418
+#: horizons/i18n/objecttranslations.py:427
 msgid "Needed for collecting goods."
 msgstr "상품을 수집하기 위해 필요."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:432
 msgid "Tree"
 msgstr "나무"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:434
 msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr "목재를 제공합니다. 벌목꾼에의해 베어짐."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:430
+#: horizons/i18n/objecttranslations.py:439
 #, fuzzy
 #| msgid "Village school"
 msgid "Village School"
 msgstr "마을 학교"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:432
+#: horizons/i18n/objecttranslations.py:441
 msgid "Provides education."
 msgstr "교육을 제공합니다."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:437
+#: horizons/i18n/objecttranslations.py:446
 msgid "Warehouse"
 msgstr "창고"
 
 #. name of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:442
+#: horizons/i18n/objecttranslations.py:451
 msgid "Weaponsmith"
 msgstr "무기 제작소"
 
 #. tooltip_text of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:444
+#: horizons/i18n/objecttranslations.py:453
 msgid "Produces weapons out of iron."
 msgstr "철에서 무기를 생산."
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:449
+#: horizons/i18n/objecttranslations.py:458
 msgid "Weaver's Hut"
 msgstr "직공의 오두막"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:451
+#: horizons/i18n/objecttranslations.py:460
 msgid "Turns lamb wool into cloth."
 msgstr "양털을 천으로 만듭니다."
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:456
+#: horizons/i18n/objecttranslations.py:465
 msgid "Windmill"
 msgstr "풍차"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:458
+#: horizons/i18n/objecttranslations.py:467
 msgid "Grinds corn into flour."
 msgstr "곡물을 밀가루로 빻기."
 
 #. name of buildings:winery
-#: horizons/i18n/objecttranslations.py:463
+#: horizons/i18n/objecttranslations.py:472
 msgid "Winery"
 msgstr "양조장"
 
 #. tooltip_text of buildings:winery
-#: horizons/i18n/objecttranslations.py:465
+#: horizons/i18n/objecttranslations.py:474
 msgid "Produces wine out of grapes."
 msgstr "포도 없이 포도주 제조."
 
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:470
+#: horizons/i18n/objecttranslations.py:479
 msgid "Wooden Tower"
 msgstr "목조 탑"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:472
+#: horizons/i18n/objecttranslations.py:481
 msgid "Defends your settlement."
 msgstr "정착지를 방어."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:477
-#: horizons/i18n/objecttranslations.py:479
-#: horizons/i18n/objecttranslations.py:481
-#: horizons/i18n/objecttranslations.py:483
-#: horizons/i18n/objecttranslations.py:552
+#: horizons/i18n/objecttranslations.py:486
+#: horizons/i18n/objecttranslations.py:488
+#: horizons/i18n/objecttranslations.py:490
+#: horizons/i18n/objecttranslations.py:492
+#: horizons/i18n/objecttranslations.py:565
 msgid "Companies"
 msgstr "상회"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:485
-#: horizons/i18n/objecttranslations.py:487
-#: horizons/i18n/objecttranslations.py:489
-#: horizons/i18n/objecttranslations.py:491
-#: horizons/i18n/objecttranslations.py:548
+#: horizons/i18n/objecttranslations.py:494
+#: horizons/i18n/objecttranslations.py:496
+#: horizons/i18n/objecttranslations.py:498
+#: horizons/i18n/objecttranslations.py:500
+#: horizons/i18n/objecttranslations.py:561
 msgid "Fields"
 msgstr "밭"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab5_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:493
-#: horizons/i18n/objecttranslations.py:554
+#: horizons/i18n/objecttranslations.py:502
+#: horizons/i18n/objecttranslations.py:504
+#: horizons/i18n/objecttranslations.py:567
 msgid "Military"
 msgstr "군대"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:495
-#: horizons/i18n/objecttranslations.py:520
+#: horizons/i18n/objecttranslations.py:506
+#: horizons/i18n/objecttranslations.py:533
 msgid "Mining"
 msgstr "광산업"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:497
-#: horizons/i18n/objecttranslations.py:546
+#: horizons/i18n/objecttranslations.py:508
+#: horizons/i18n/objecttranslations.py:559
 msgid "Residents and infrastructure"
 msgstr "주민들과 기반시설"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:499
-#: horizons/i18n/objecttranslations.py:501
-#: horizons/i18n/objecttranslations.py:503
-#: horizons/i18n/objecttranslations.py:530
+#: horizons/i18n/objecttranslations.py:510
+#: horizons/i18n/objecttranslations.py:512
+#: horizons/i18n/objecttranslations.py:514
+#: horizons/i18n/objecttranslations.py:543
 msgid "Services"
 msgstr "봉사"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:508
-#: horizons/i18n/objecttranslations.py:510
+#: horizons/i18n/objecttranslations.py:519
+#: horizons/i18n/objecttranslations.py:521
 msgid "Citizens"
 msgstr "시민"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:512
+#: horizons/i18n/objecttranslations.py:523
 msgid "Food"
 msgstr "음식"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:514
+#: horizons/i18n/objecttranslations.py:525
 msgid "Fortifications"
 msgstr "축성 공사"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:516
+#: horizons/i18n/objecttranslations.py:527
+#: horizons/i18n/objecttranslations.py:529
 msgid "Infrastructure"
 msgstr "기반 시설"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:518
+#: horizons/i18n/objecttranslations.py:531
 msgid "Military Service"
 msgstr "군 복무"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:522
+#: horizons/i18n/objecttranslations.py:535
 msgid "Pioneers"
 msgstr "개척자"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:524
+#: horizons/i18n/objecttranslations.py:537
 msgid "Precaution"
 msgstr "예방책"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:526
+#: horizons/i18n/objecttranslations.py:539
 msgid "Residential"
 msgstr "주택"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:528
+#: horizons/i18n/objecttranslations.py:541
 msgid "Sea"
 msgstr "바다"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:534
+#: horizons/i18n/objecttranslations.py:547
 msgid "Wood"
 msgstr "목재"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:536
-#: horizons/i18n/objecttranslations.py:538
-#: horizons/i18n/objecttranslations.py:540
-#: horizons/i18n/objecttranslations.py:542
+#: horizons/i18n/objecttranslations.py:549
+#: horizons/i18n/objecttranslations.py:551
+#: horizons/i18n/objecttranslations.py:553
+#: horizons/i18n/objecttranslations.py:555
 msgid "Workshops"
 msgstr "작업장"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:544
+#: horizons/i18n/objecttranslations.py:557
 msgid "Settlement"
 msgstr "정착"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:550
+#: horizons/i18n/objecttranslations.py:563
 msgid "Agriculture"
 msgstr "농업"
 
-#: horizons/main.py:397
+#: horizons/main.py:361
 msgid "Failed to start/load the game"
 msgstr "게임을 시작/불러오기 실패"
 
-#: horizons/main.py:398
+#: horizons/main.py:362
 msgid "The game you selected could not be started."
 msgstr "선택한 게임을 시작할 수 없습니다."
 
-#: horizons/main.py:399
+#: horizons/main.py:363
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr "저장된 게임은 깨졌거나 이전 버전으로 저장되었습니다."
 
-#: horizons/main.py:518
+#: horizons/main.py:481
 msgid "No quicksaves found"
 msgstr "빠른 저장을 찾을 수 없습니다"
 
-#: horizons/main.py:519
+#: horizons/main.py:482
 msgid "You need to quicksave before you can quickload."
 msgstr "빠른 불러오기를 하기전에 빠른 저장을 해야합니다."
 
-#: horizons/main.py:649
+#: horizons/main.py:570
 msgid "Logging enabled"
 msgstr "로그 활성화됨"
 
-#: horizons/main.py:650
+#: horizons/main.py:571
 #, python-brace-format
 msgid "Logs are written to {directory}."
 msgstr "로그는 {directory}에 기록 됩니다."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
-#: horizons/manager.py:175
+#: horizons/manager.py:177
 msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
@@ -3407,65 +3443,65 @@ msgstr ""
 "동기화 없이 게임을 실행되었습니다. 알수없는 내부 오류를 나타냅니다, 게임을 계"
 "속할 수 없습니다."
 
-#: horizons/manager.py:176
+#: horizons/manager.py:178
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr "정말 죄송합니다. 이후버전에서는 이 문제를 고칠수있도록 노력하겠습니다."
 
-#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
-#: horizons/mpsession.py:92
+#: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
+#: horizons/mpsession.py:94
 msgid "Not possible"
 msgstr "가능 하지 않음"
 
-#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
-#: horizons/mpsession.py:92
+#: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
+#: horizons/mpsession.py:94
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr "다중 사용자 게임에서 저장하기/불러오기는 아직 가능하지 않습니다"
 
-#: horizons/mpsession.py:103
+#: horizons/mpsession.py:105
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
 "파일이름은 문자, 숫자, 공백 그리고 다음의 문자로만 구성되어야합니다: _ . -"
 
-#: horizons/network/connection.py:87 horizons/network/connection.py:93
+#: horizons/network/connection.py:89 horizons/network/connection.py:95
 msgid "Unable to connect to server."
 msgstr "서버에 연결할 수 없습니다."
 
-#: horizons/network/connection.py:88
+#: horizons/network/connection.py:90
 msgid "Maybe invalid or irresolvable server address."
 msgstr "잘못되었거나 확인할 수 없는 서버 주소입니다."
 
-#: horizons/network/networkinterface.py:526
+#: horizons/network/networkinterface.py:531
 msgid "Not Ready"
 msgstr "준비 안됨"
 
-#: horizons/scenario/actions.py:93
+#: horizons/scenario/actions.py:91
 msgid "You have won!"
 msgstr "승리하셨습니다!"
 
-#: horizons/scenario/actions.py:94
+#: horizons/scenario/actions.py:92
 msgid "You have completed this scenario."
 msgstr "이 시나리오를 완료하였습니다."
 
-#: horizons/scenario/actions.py:95
+#: horizons/scenario/actions.py:93
 msgid "Do you want to continue playing?"
 msgstr "게임을 계속 하시겠습니까?"
 
-#: horizons/scenario/scenarioeventhandler.py:170
+#: horizons/scenario/scenarioeventhandler.py:173
 msgid "unknown"
 msgstr "알수 없음"
 
 #. usually invalid filename
-#: horizons/session.py:397
+#: horizons/session.py:399
 msgid "Failed to create savegame file"
 msgstr "저장게임 파일 생성 실패"
 
-#: horizons/session.py:398
+#: horizons/session.py:400
 msgid "There has been an error while creating your savegame file."
 msgstr "저장게임 파일을 만드는 동안 오류가 발생했습니다."
 
-#: horizons/session.py:399
+#: horizons/session.py:401
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
@@ -3473,25 +3509,25 @@ msgstr ""
 "이것은 일반적으로 저장게임 이름이 지원되지 않는 특수 문자가 포함되어 있음을 "
 "의미합니다."
 
-#: horizons/session.py:408
+#: horizons/session.py:410
 msgid "Access is denied"
 msgstr "접근이 거부되었습니다"
 
-#: horizons/session.py:409
+#: horizons/session.py:411
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 "이 저장 게임 파일은 읽기 전용이거나 다른 프로세스에 의해 잠겨있을 수 있습니"
 "다."
 
-#: horizons/spsession.py:65
+#: horizons/spsession.py:67
 msgid "Your game has not been saved."
 msgstr "게임이 저장되지 않았습니다."
 
-#: horizons/util/checkupdates.py:87
+#: horizons/util/checkupdates.py:88
 msgid "New version of Unknown Horizons"
 msgstr "알수없는 지평선의 새로운 버전"
 
-#: horizons/util/checkupdates.py:88
+#: horizons/util/checkupdates.py:89
 #, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
@@ -3500,147 +3536,147 @@ msgstr ""
 "미지의 지평선의 버전이 현재의 ({old_version}) 보다 최신 버전인 "
 "({new_version})이 있습니다."
 
-#: horizons/util/checkupdates.py:98
+#: horizons/util/checkupdates.py:99
 msgid "Click to download"
 msgstr "클릭하여 다운로드"
 
-#: horizons/util/checkupdates.py:102
+#: horizons/util/checkupdates.py:103
 msgid "A page has been opened in your browser."
 msgstr "페이지가 브라우저에서 열렸습니다."
 
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:281
+#: horizons/util/uhdbaccessor.py:283
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
 msgstr "{slotnum} 슬롯, {limit}t"
 
-#: horizons/util/uhdbaccessor.py:289
+#: horizons/util/uhdbaccessor.py:291
 #, python-brace-format
 msgid "Health: {health}"
 msgstr "체력: {health}"
 
 #. You usually do not need to change anything here when translating
-#: horizons/world/building/__init__.py:123
+#: horizons/world/building/__init__.py:124
 #, python-brace-format
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
-#: horizons/world/building/buildable.py:40
+#: horizons/world/building/buildable.py:42
 msgid "This building must be built on an island."
 msgstr "이 건물은 섬에 건설해야 합니다."
 
-#: horizons/world/building/buildable.py:41
+#: horizons/world/building/buildable.py:43
 msgid "This ground is not suitable for this building."
 msgstr "이 땅은 이 건물에 적합하지 않습니다."
 
-#: horizons/world/building/buildable.py:42
+#: horizons/world/building/buildable.py:44
 msgid "This building has to be built within your settlement."
 msgstr "이 건물은 정착지 내에 건설해야 합니다."
 
-#: horizons/world/building/buildable.py:43
+#: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by another player."
 msgstr "이 지역은 다른 플레이어가 점령중입니다."
 
-#: horizons/world/building/buildable.py:44
+#: horizons/world/building/buildable.py:46
 msgid "This area is already occupied by another building."
 msgstr "이 지역은 다른 건물이 있습니다."
 
-#: horizons/world/building/buildable.py:45
+#: horizons/world/building/buildable.py:47
 msgid "This area is already occupied by a unit."
 msgstr "이 지역은 다른 유닛이 있습니다."
 
-#: horizons/world/building/buildable.py:46
+#: horizons/world/building/buildable.py:48
 msgid "This building must be built on the coastline."
 msgstr "이 건물은 해안선에 건설되어야 합니다."
 
-#: horizons/world/building/buildable.py:47
+#: horizons/world/building/buildable.py:49
 msgid "This building has to be placed at the ocean."
 msgstr "이 건물은 바다에 배치되어야 합니다."
 
-#: horizons/world/building/buildable.py:48
+#: horizons/world/building/buildable.py:50
 msgid "This spot is too far away from your ship."
 msgstr "이 지점은 배에서 너무 멀리 떨어져 있습니다."
 
-#: horizons/world/building/buildable.py:49
+#: horizons/world/building/buildable.py:51
 msgid "This building can only be built on a resource source."
 msgstr "이 건물은 자원에을 기반으로 건설할 수 있습니다."
 
-#: horizons/world/building/buildable.py:50
+#: horizons/world/building/buildable.py:52
 msgid "You have already settled this island."
 msgstr "이미 이섬에 정착했습니다."
 
-#: horizons/world/building/buildable.py:51
+#: horizons/world/building/buildable.py:53
 msgid "This building must be partly on flat land."
 msgstr "이 건물은 부분적이라도 평지에 있어야 합니다."
 
-#: horizons/world/status.py:75
+#: horizons/world/status.py:76
 msgid "The inhabitants are infected by the Black Death!"
 msgstr "주민들이 흑사병에 감염되었습니다!"
 
-#: horizons/world/status.py:81
+#: horizons/world/status.py:82
 msgid "This building is on fire!"
 msgstr "이 건물에 불이 났습니다!"
 
-#: horizons/world/status.py:88
+#: horizons/world/status.py:89
 msgid "These residents are unhappy."
 msgstr "이 주민들은 행복하지 않습니다."
 
-#: horizons/world/status.py:94
+#: horizons/world/status.py:95
 msgid "These residents don't have access to a main square."
 msgstr "이 주민들은 주요 광장에 접근할 수 없습니다."
 
-#: horizons/world/status.py:100
+#: horizons/world/status.py:101
 msgid "The inventory of this building is full."
 msgstr "이 건물의 재고가 가득 찼습니다."
 
-#: horizons/world/status.py:115
+#: horizons/world/status.py:116
 msgid "This building has a very low productivity."
 msgstr "이 건물은 생산성이 매우 낮습니다."
 
-#: horizons/world/status.py:121
+#: horizons/world/status.py:122
 msgid "This building is decommissioned."
 msgstr "이 건물은 해체 됩니다."
 
-#: horizons/world/traderoute.py:335
+#: horizons/world/traderoute.py:336
 #, python-brace-format
 msgid "Trade route: going to {location}"
 msgstr "무역 경로: {location}로 가는중"
 
-#: horizons/world/traderoute.py:339
+#: horizons/world/traderoute.py:340
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
 msgstr "무역 경로: {position}에서 대기중"
 
-#: horizons/world/units/ship.py:212
+#: horizons/world/units/ship.py:214
 #, python-brace-format
 msgid "Going to {location}"
 msgstr "{location}로 가는중"
 
-#: horizons/world/units/ship.py:213
+#: horizons/world/units/ship.py:215
 #, python-brace-format
 msgid "Going to {x}, {y}"
 msgstr "{x}, {y}로 가는중"
 
-#: horizons/world/units/ship.py:217
+#: horizons/world/units/ship.py:219
 #, python-brace-format
 msgid "Idle at {location}"
 msgstr "{location}에서 대기중"
 
-#: horizons/world/units/ship.py:218
+#: horizons/world/units/ship.py:220
 #, python-brace-format
 msgid "Idle at {x}, {y}"
 msgstr "{x}, {y}에서 대기중"
 
-#: horizons/world/units/ship.py:229
+#: horizons/world/units/ship.py:231
 msgid "Trader"
 msgstr "무역상인"
 
-#: horizons/world/units/weaponholder.py:434
+#: horizons/world/units/weaponholder.py:436
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
 msgstr "{target} '{name}' ({owner})를 공격중"
 
-#: horizons/world/units/weaponholder.py:438
+#: horizons/world/units/weaponholder.py:440
 #, python-brace-format
 msgid "Attacking {owner}"
 msgstr "{owner}를 공격중"

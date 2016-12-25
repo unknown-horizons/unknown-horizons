@@ -604,9 +604,6 @@ msgstr ""
 "das Verbrauchen (mehr Zelte errichten) einträglicher als der Verkauf."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "Normally the trader ships just sail around and look for deals, but you "
-#| "can speed things up a bit."
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
@@ -631,10 +628,6 @@ msgstr ""
 "Schiffe navigieren."
 
 #. This is the text body of a logbook page.
-#| msgid ""
-#| "\n"
-#| "After this little advertisment, the trader will also stop by and look "
-#| "into your Warehouse if it planned to sail past it."
 msgid ""
 "\n"
 "After this little advertisement, the trader will also stop by and look into "
