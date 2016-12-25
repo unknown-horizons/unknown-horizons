@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d2bbe58\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-29 06:02+0200\n"
-"PO-Revision-Date: 2016-08-30 07:52+0000\n"
+"PO-Revision-Date: 2016-12-25 17:16+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh/sk/>\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -604,8 +604,8 @@ msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Toto je loď slobodného obchodníka. Čas od času navštívi vašu osadu aby mohol "
-"nakúpiť alebo predať tovar."
+"Toto je loď slobodného obchodníka. Z času na čas navštívi vašu osadu aby "
+"mohol nakúpiť alebo predať tovar."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
@@ -3223,7 +3223,7 @@ msgstr "Vinná pivnica"
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:465
 msgid "Produces wine out of grapes."
-msgstr "Produkuje víne z hrozna."
+msgstr "Produkuje víno z hrozna."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:470
