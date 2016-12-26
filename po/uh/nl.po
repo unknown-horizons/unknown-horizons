@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-12-26 00:09+0100\n"
-"PO-Revision-Date: 2016-09-04 10:55+0000\n"
+"PO-Revision-Date: 2016-12-26 10:57+0000\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -541,7 +541,7 @@ msgstr "inwoners"
 #, fuzzy
 #| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Verdedigd je nederzetting."
+msgstr "Zorg voor bewaking van je nederzetting."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -845,11 +845,11 @@ msgstr "Einde"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "Ga naar de vorige bladzijde"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "Ga naar de volgende bladzijde"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -2700,19 +2700,20 @@ msgstr "Recruteerd eenheden geschikt voor grondgevechten."
 #, fuzzy
 #| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Houten toren"
+msgstr "Houten muur"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
+#, fuzzy
 msgid "Clay wall"
-msgstr ""
+msgstr "Muur van klei"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
 #, fuzzy
 #| msgid "Provides education."
 msgid "Provides security."
-msgstr "Levert scholing."
+msgstr "Levert bewaking."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
