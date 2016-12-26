@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-12-26 00:09+0100\n"
-"PO-Revision-Date: 2016-09-12 04:59+0000\n"
+"PO-Revision-Date: 2016-12-26 05:58+0000\n"
 "Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/uh/uh/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -534,10 +534,8 @@ msgid "residents"
 msgstr "жителі"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Provides security for your settlement."
-msgstr "Захищає ваше поселення."
+msgstr "Забезпечує захист вашого поселення."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -838,11 +836,11 @@ msgstr "Вихід"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "Перейти до попередньої сторінки"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "Перейти до наступної сторінки"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -2679,22 +2677,18 @@ msgstr "Рекрути придатні для наземних бойових �
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Дерев'яна вежа"
+msgstr "Дерев'яна перешкода"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "Глиняна стіна"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Забезпечує освітою."
+msgstr "Забезпечує захист."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
