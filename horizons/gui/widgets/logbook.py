@@ -23,7 +23,9 @@ import json
 import logging
 from itertools import groupby
 
+from fife import fife
 from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.exceptions import InitializationError
 
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
@@ -212,7 +214,7 @@ class LogBook(PickBeltWidget, Window):
 				# Pychan can only use str objects as file path.
 				# json.loads() however returns unicode.
 				return Icon(image=str(image))
-			except RuntimeError:
+			except fife.NotFound:
 				return None
 
 		def _label(text, font='default'):
@@ -220,7 +222,7 @@ class LogBook(PickBeltWidget, Window):
 				return Label(text=unicode(text), wrap_text=True,
 				             min_size=(325, 0), max_size=(325, 1024),
 				             font=font)
-			except RuntimeError:
+			except InitializationError:
 				return None
 
 		if parameter and parameter[0]: # allow empty Labels

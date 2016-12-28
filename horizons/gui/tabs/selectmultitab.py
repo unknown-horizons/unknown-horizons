@@ -22,6 +22,7 @@
 import logging
 from collections import defaultdict
 
+from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.command.unit import SetStance
@@ -223,7 +224,7 @@ class UnitEntry(object):
 		path = template.format(unit_id=unit_id)
 		try:
 			Icon(image=path)
-		except RuntimeError:
+		except fife.NotFound:
 			self.log.warning('Missing unit thumbnail {0}'.format(path))
 			path = template.format(unit_id='unknown_unit')
 		return path

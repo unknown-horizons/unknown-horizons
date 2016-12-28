@@ -77,7 +77,7 @@ class BuildingClass(IngameType):
 		cls.log.debug("Loading building %s", cls.id)
 		try:
 			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'building')
-		except RuntimeError:
+		except fife.NameClash:
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
