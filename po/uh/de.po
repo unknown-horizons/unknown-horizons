@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-12-26 00:09+0100\n"
-"PO-Revision-Date: 2016-11-26 19:39+0000\n"
+"PO-Revision-Date: 2016-12-28 14:12+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10-dev\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -543,8 +543,6 @@ msgid "residents"
 msgstr "Bewohner"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
 msgstr "Verteidigt Eure Siedlung."
 
@@ -854,11 +852,11 @@ msgstr "Ende"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "Zurück zur vorherigen Seite"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "Gehe zur nächsten Seite"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -2718,15 +2716,13 @@ msgstr "Rekrutiert Einheiten, die für den Bodenkampf geeignet sind."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
 msgstr "Hölzerner Turm"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "Lehmmauer"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
