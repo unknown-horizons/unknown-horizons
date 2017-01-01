@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 2014.1-910-gaa4146f4a\n"
+"Project-Id-Version: Unknown Horizons 2014.1-926-gc59160e53\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-12-26 00:09+0100\n"
+"POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
-#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:52
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
 msgstr ""
 
@@ -297,7 +297,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:130
-#: horizons/gui/tabs/boatbuildertabs.py:345
+#: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
 msgstr ""
 
@@ -408,7 +408,7 @@ msgid "Build ship:"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
-#: horizons/gui/tabs/boatbuildertabs.py:255
+#: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
 msgstr ""
 
@@ -481,17 +481,17 @@ msgid "Happiness per house"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:64
+#: horizons/gui/util.py:65
 msgid "sad"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:67
+#: horizons/gui/util.py:68
 msgid "satisfied"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:70
+#: horizons/gui/util.py:71
 msgid "happy"
 msgstr ""
 
@@ -748,7 +748,7 @@ msgid "Read next entries"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#: horizons/gui/widgets/logbook.py:51
+#: horizons/gui/widgets/logbook.py:53
 msgid "Statistics"
 msgstr ""
 
@@ -2288,28 +2288,28 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:158
+#: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:212
+#: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:291
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:303
+#: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:315
+#: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:327
+#: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
 msgstr ""
 
@@ -2388,7 +2388,7 @@ msgstr ""
 msgid "Fill range with {how_many} trees"
 msgstr ""
 
-#: horizons/gui/tabs/selectmultitab.py:46
+#: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
 msgstr ""
 
@@ -2458,15 +2458,15 @@ msgstr ""
 msgid "Limit: {amount}t per slot"
 msgstr ""
 
-#: horizons/gui/widgets/logbook.py:50
+#: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
 msgstr ""
 
-#: horizons/gui/widgets/logbook.py:188
+#: horizons/gui/widgets/logbook.py:190
 msgid "Emptiness"
 msgstr ""
 
-#: horizons/gui/widgets/logbook.py:191
+#: horizons/gui/widgets/logbook.py:193
 msgid "There is nothing written in your logbook yet!"
 msgstr ""
 

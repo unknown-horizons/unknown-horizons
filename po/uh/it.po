@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-12-26 00:09+0100\n"
+"POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: 2016-07-04 11:19+0000\n"
 "Last-Translator: mauro buscemi <buscemi.mauro@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
@@ -215,7 +215,7 @@ msgstr "Applica il nuovo nome"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
-#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:52
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
 msgstr "Chat"
 
@@ -312,7 +312,7 @@ msgstr "Annulla tutti costruzioni in corso"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:130
-#: horizons/gui/tabs/boatbuildertabs.py:345
+#: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
 msgstr "Confermare l'ordine"
 
@@ -437,7 +437,7 @@ msgid "Build ship:"
 msgstr "Costruisci questa nave!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
-#: horizons/gui/tabs/boatbuildertabs.py:255
+#: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
 msgstr "Costruisci questa nave!"
 
@@ -510,17 +510,17 @@ msgid "Happiness per house"
 msgstr "Felicità per casa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:64
+#: horizons/gui/util.py:65
 msgid "sad"
 msgstr "triste"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:67
+#: horizons/gui/util.py:68
 msgid "satisfied"
 msgstr "soddisfatto"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:70
+#: horizons/gui/util.py:71
 msgid "happy"
 msgstr "felice"
 
@@ -792,7 +792,7 @@ msgid "Read next entries"
 msgstr "Leggi le note seguenti"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#: horizons/gui/widgets/logbook.py:51
+#: horizons/gui/widgets/logbook.py:53
 msgid "Statistics"
 msgstr "Statistiche"
 
@@ -2397,28 +2397,28 @@ msgstr ""
 msgid "Overview"
 msgstr "Panoramica"
 
-#: horizons/gui/tabs/boatbuildertabs.py:158
+#: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (posizione in coda: {place}"
 
-#: horizons/gui/tabs/boatbuildertabs.py:212
+#: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
 msgstr "Panoramica Costruttore di barche"
 
-#: horizons/gui/tabs/boatbuildertabs.py:291
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
 msgstr "Barche da pesca"
 
-#: horizons/gui/tabs/boatbuildertabs.py:303
+#: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
 msgstr "Barche per commercio"
 
-#: horizons/gui/tabs/boatbuildertabs.py:315
+#: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
 msgstr "Barche da guerra"
 
-#: horizons/gui/tabs/boatbuildertabs.py:327
+#: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
 msgstr "Navi da guerra"
 
@@ -2504,7 +2504,7 @@ msgstr "Panoramica produzione"
 msgid "Fill range with {how_many} trees"
 msgstr ""
 
-#: horizons/gui/tabs/selectmultitab.py:46
+#: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
 msgstr "seleziona unità"
 
@@ -2574,15 +2574,15 @@ msgstr "{stored}/{limit}"
 msgid "Limit: {amount}t per slot"
 msgstr "Limite: {amount} pezzi per riquadro"
 
-#: horizons/gui/widgets/logbook.py:50
+#: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
 msgstr "Diario di bordo"
 
-#: horizons/gui/widgets/logbook.py:188
+#: horizons/gui/widgets/logbook.py:190
 msgid "Emptiness"
 msgstr "vuoto"
 
-#: horizons/gui/widgets/logbook.py:191
+#: horizons/gui/widgets/logbook.py:193
 msgid "There is nothing written in your logbook yet!"
 msgstr "Non c'è niente di scritto nel tuo diario di bordo ancora!"
 

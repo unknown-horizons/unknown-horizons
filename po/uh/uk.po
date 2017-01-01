@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-12-26 00:09+0100\n"
+"POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: 2016-12-26 05:58+0000\n"
 "Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/uh/uh/uk/>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.11-dev\n"
 
 #: run_uh.py:125
@@ -211,7 +211,7 @@ msgstr "Застосувати нове ім'я"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
-#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:52
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
 msgstr "Балачка"
 
@@ -304,7 +304,7 @@ msgstr "Скасувати усе будівництво"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:130
-#: horizons/gui/tabs/boatbuildertabs.py:345
+#: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
 msgstr "Підтвердити наказ"
 
@@ -418,7 +418,7 @@ msgid "Build ship:"
 msgstr "Побудувати корабель:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
-#: horizons/gui/tabs/boatbuildertabs.py:255
+#: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
 msgstr "Побудувати корабель!"
 
@@ -491,17 +491,17 @@ msgid "Happiness per house"
 msgstr "Щастя на будинок"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:64
+#: horizons/gui/util.py:65
 msgid "sad"
 msgstr "сумний"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:67
+#: horizons/gui/util.py:68
 msgid "satisfied"
 msgstr "задоволений"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:70
+#: horizons/gui/util.py:71
 msgid "happy"
 msgstr "щасливий"
 
@@ -765,7 +765,7 @@ msgid "Read next entries"
 msgstr "Читати наступний запис"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#: horizons/gui/widgets/logbook.py:51
+#: horizons/gui/widgets/logbook.py:53
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -2359,28 +2359,28 @@ msgstr "Мечник"
 msgid "Overview"
 msgstr "Перегляд"
 
-#: horizons/gui/tabs/boatbuildertabs.py:158
+#: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (місце в черзі: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:212
+#: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
 msgstr "Огляд суднобудівника"
 
-#: horizons/gui/tabs/boatbuildertabs.py:291
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
 msgstr "Рибальські судна"
 
-#: horizons/gui/tabs/boatbuildertabs.py:303
+#: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
 msgstr "Торгові судна"
 
-#: horizons/gui/tabs/boatbuildertabs.py:315
+#: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
 msgstr "Військові судна"
 
-#: horizons/gui/tabs/boatbuildertabs.py:327
+#: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
 msgstr "Військові кораблі"
 
@@ -2464,7 +2464,7 @@ msgstr "Огляд виробництва"
 msgid "Fill range with {how_many} trees"
 msgstr "Заповнити ділянку {how_many} деревами"
 
-#: horizons/gui/tabs/selectmultitab.py:46
+#: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
 msgstr "Вибрані юніти"
 
@@ -2534,15 +2534,15 @@ msgstr "{stored}/{limit}"
 msgid "Limit: {amount}t per slot"
 msgstr "Обмеження: {amount}т на слот"
 
-#: horizons/gui/widgets/logbook.py:50
+#: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
 msgstr "Бортовий журнал"
 
-#: horizons/gui/widgets/logbook.py:188
+#: horizons/gui/widgets/logbook.py:190
 msgid "Emptiness"
 msgstr "Порожнеча"
 
-#: horizons/gui/widgets/logbook.py:191
+#: horizons/gui/widgets/logbook.py:193
 msgid "There is nothing written in your logbook yet!"
 msgstr "У вашому журналі ще немає записів!"
 

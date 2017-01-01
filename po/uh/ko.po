@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-12-26 00:09+0100\n"
+"POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: 2016-07-31 15:05+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
@@ -211,7 +211,7 @@ msgstr "새 이름을 적용"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
-#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:52
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
 msgstr "채팅"
 
@@ -308,7 +308,7 @@ msgstr "모든 건물의 건설을 취소"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:130
-#: horizons/gui/tabs/boatbuildertabs.py:345
+#: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
 msgstr "명령 확인"
 
@@ -433,7 +433,7 @@ msgid "Build ship:"
 msgstr "이 배를 건조!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
-#: horizons/gui/tabs/boatbuildertabs.py:255
+#: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
 msgstr "이 배를 건조!"
 
@@ -506,17 +506,17 @@ msgid "Happiness per house"
 msgstr "가구 당 행복도"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:64
+#: horizons/gui/util.py:65
 msgid "sad"
 msgstr "슬픔"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:67
+#: horizons/gui/util.py:68
 msgid "satisfied"
 msgstr "만족"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:70
+#: horizons/gui/util.py:71
 msgid "happy"
 msgstr "행복"
 
@@ -780,7 +780,7 @@ msgid "Read next entries"
 msgstr "다음 항목들 읽기"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#: horizons/gui/widgets/logbook.py:51
+#: horizons/gui/widgets/logbook.py:53
 msgid "Statistics"
 msgstr "통계"
 
@@ -2346,28 +2346,28 @@ msgstr "칼"
 msgid "Overview"
 msgstr "요약"
 
-#: horizons/gui/tabs/boatbuildertabs.py:158
+#: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (대기열에에 배치: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:212
+#: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
 msgstr "선박 제조사 개요"
 
-#: horizons/gui/tabs/boatbuildertabs.py:291
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
 msgstr "어선"
 
-#: horizons/gui/tabs/boatbuildertabs.py:303
+#: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
 msgstr "상선"
 
-#: horizons/gui/tabs/boatbuildertabs.py:315
+#: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
 msgstr "전투선"
 
-#: horizons/gui/tabs/boatbuildertabs.py:327
+#: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
 msgstr "전함"
 
@@ -2452,7 +2452,7 @@ msgstr "생산 요약"
 msgid "Fill range with {how_many} trees"
 msgstr "{how_many} 그루의 나무를 범위에 채움"
 
-#: horizons/gui/tabs/selectmultitab.py:46
+#: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
 msgstr "선택한 유닛"
 
@@ -2522,15 +2522,15 @@ msgstr "{stored}/{limit}"
 msgid "Limit: {amount}t per slot"
 msgstr "제한: 슬롯당 {amount}t"
 
-#: horizons/gui/widgets/logbook.py:50
+#: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
 msgstr "일지"
 
-#: horizons/gui/widgets/logbook.py:188
+#: horizons/gui/widgets/logbook.py:190
 msgid "Emptiness"
 msgstr "텅 비어있음"
 
-#: horizons/gui/widgets/logbook.py:191
+#: horizons/gui/widgets/logbook.py:193
 msgid "There is nothing written in your logbook yet!"
 msgstr "아직 작성된 일지가 없습니다!"
 

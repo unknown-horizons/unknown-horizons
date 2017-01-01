@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-12-26 00:09+0100\n"
+"POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: 2016-07-31 14:39+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/uh/uh/sl/>\n"
@@ -212,7 +212,7 @@ msgstr "Pas de nieuwe naam toe"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
-#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:52
+#: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 #, fuzzy
 msgid "Chat"
 msgstr "Chat"
@@ -320,7 +320,7 @@ msgstr "Annuleer alle constructieve vooruitgang"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:130
-#: horizons/gui/tabs/boatbuildertabs.py:345
+#: horizons/gui/tabs/boatbuildertabs.py:342
 #, fuzzy
 msgid "Confirm order"
 msgstr "Opdracht bevestigen"
@@ -441,7 +441,7 @@ msgid "Build ship:"
 msgstr "Bouw dit schip!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
-#: horizons/gui/tabs/boatbuildertabs.py:255
+#: horizons/gui/tabs/boatbuildertabs.py:252
 #, fuzzy
 msgid "Build this ship!"
 msgstr "Bouw dit schip!"
@@ -528,17 +528,17 @@ msgid "Happiness per house"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:64
+#: horizons/gui/util.py:65
 msgid "sad"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:67
+#: horizons/gui/util.py:68
 msgid "satisfied"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:70
+#: horizons/gui/util.py:71
 msgid "happy"
 msgstr ""
 
@@ -855,7 +855,7 @@ msgid "Read next entries"
 msgstr "Lees volgende berichten"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#: horizons/gui/widgets/logbook.py:51
+#: horizons/gui/widgets/logbook.py:53
 #, fuzzy
 msgid "Statistics"
 msgstr "Statistik"
@@ -2655,32 +2655,32 @@ msgstr ""
 msgid "Overview"
 msgstr "Overzicht"
 
-#: horizons/gui/tabs/boatbuildertabs.py:158
+#: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (plaats in wachtrij: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:212
+#: horizons/gui/tabs/boatbuildertabs.py:209
 #, fuzzy
 msgid "Boat builder overview"
 msgstr "Scheepsbouwersoverzicht"
 
-#: horizons/gui/tabs/boatbuildertabs.py:291
+#: horizons/gui/tabs/boatbuildertabs.py:288
 #, fuzzy
 msgid "Fisher boats"
 msgstr "Vissersboten"
 
-#: horizons/gui/tabs/boatbuildertabs.py:303
+#: horizons/gui/tabs/boatbuildertabs.py:300
 #, fuzzy
 msgid "Trade boats"
 msgstr "Handelsschepen"
 
-#: horizons/gui/tabs/boatbuildertabs.py:315
+#: horizons/gui/tabs/boatbuildertabs.py:312
 #, fuzzy
 msgid "War boats"
 msgstr "Oorlogsboten"
 
-#: horizons/gui/tabs/boatbuildertabs.py:327
+#: horizons/gui/tabs/boatbuildertabs.py:324
 #, fuzzy
 msgid "War ships"
 msgstr "Oorlogsschepen"
@@ -2777,7 +2777,7 @@ msgstr "Productieoverzicht"
 msgid "Fill range with {how_many} trees"
 msgstr ""
 
-#: horizons/gui/tabs/selectmultitab.py:46
+#: horizons/gui/tabs/selectmultitab.py:47
 #, fuzzy
 msgid "Selected Units"
 msgstr "Geselecteerde Eenheden"
@@ -2859,18 +2859,18 @@ msgstr ""
 msgid "Limit: {amount}t per slot"
 msgstr "Limiet: {amount} ton per handelsvak"
 
-#: horizons/gui/widgets/logbook.py:50
+#: horizons/gui/widgets/logbook.py:52
 #, fuzzy
 msgid "Logbook"
 msgstr "Loggbok"
 
 # Rubriken när loggboken är tom. Något bättre alternativ?
-#: horizons/gui/widgets/logbook.py:188
+#: horizons/gui/widgets/logbook.py:190
 #, fuzzy
 msgid "Emptiness"
 msgstr "Leegte"
 
-#: horizons/gui/widgets/logbook.py:191
+#: horizons/gui/widgets/logbook.py:193
 #, fuzzy
 msgid "There is nothing written in your logbook yet!"
 msgstr "Er staat nog niks in je logboek!"
