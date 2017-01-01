@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -87,7 +87,7 @@ class VERSION:
 	RELEASE_VERSION = get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2013.3'
+	#RELEASE_VERSION = u'2017.1'
 
 	REQUIRED_FIFE_MAJOR_VERSION = 0
 	REQUIRED_FIFE_MINOR_VERSION = 4

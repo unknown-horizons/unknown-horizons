@@ -3,7 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
-| 2016.1 | XX |
+| 2017.1 | XX |
 | 2015.1 | 75 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
@@ -19,7 +19,7 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2016-XX-XX: Milestone 2016.1
+2017-XX-XX: Milestone 2017.1
 ----------------------------
 changelog date: 9th Oct 2016
 
