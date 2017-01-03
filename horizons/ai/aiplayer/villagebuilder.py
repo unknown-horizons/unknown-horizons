@@ -841,13 +841,13 @@ class VillageBuilder(AreaBuilder):
 		tile_colors = {
 			BUILDING_PURPOSE.MAIN_SQUARE:    (255,   0, 255),
 			BUILDING_PURPOSE.RESIDENCE:      (255, 255, 255),
-			BUILDING_PURPOSE.ROAD:           (+30,  30,  30),
+			BUILDING_PURPOSE.ROAD:           ( 30,  30,  30),
 			BUILDING_PURPOSE.VILLAGE_SCHOOL: (128, 128, 255),
 			BUILDING_PURPOSE.PAVILION:       (255, 128, 128),
 			BUILDING_PURPOSE.TAVERN:         (255, 255,   0),
 			BUILDING_PURPOSE.FIRE_STATION:   (255,  64,  64),
 			BUILDING_PURPOSE.DOCTOR:         (255, 128,  64),
-			BUILDING_PURPOSE.RESERVED:       (000,   0, 255),
+			BUILDING_PURPOSE.RESERVED:       (  0,   0, 255),
 		}
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
