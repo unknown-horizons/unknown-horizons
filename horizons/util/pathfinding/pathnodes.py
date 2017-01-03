@@ -80,11 +80,11 @@ class IslandPathNodes(PathNodes):
 
 	def register_road(self, road):
 		for i in road.position:
-			self.road_nodes[ (i.x, i.y) ] = self.NODE_DEFAULT_SPEED
+			self.road_nodes[(i.x, i.y)] = self.NODE_DEFAULT_SPEED
 
 	def unregister_road(self, road):
 		for i in road.position:
-			del self.road_nodes[ (i.x, i.y) ]
+			del self.road_nodes[(i.x, i.y)]
 
 	def is_road(self, x, y):
 		"""Return if there is a road on (x, y)"""
