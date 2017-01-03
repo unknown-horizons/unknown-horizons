@@ -190,11 +190,11 @@ class FindPath(object):
 				                 and (   i in path_nodes
 				                      or i in source_coords
 				                      or i in dest_coords_set)
-				                 and i not in blocked_coords )
+				                 and i not in blocked_coords)
 			else:
 				# all relevant vertical and horizontal neighbors
 				neighbors = (i for i in ((x-1, y), (x+1, y),
-				                          (x, y-1), (x, y+1) )
+				                         (x, y-1), (x, y+1))
 				             if (i in path_nodes
 				                 or i in source_coords
 				                 or i in dest_coords_set)
