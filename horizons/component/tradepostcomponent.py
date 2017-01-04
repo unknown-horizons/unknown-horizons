@@ -133,7 +133,7 @@ class TradePostComponent(ChangeListener, Component):
 		@param player_id: the worldid of the trade partner
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
-		if not res in self.buy_list or \
+		if res not in self.buy_list or \
 				self.get_owner_inventory()[RES.GOLD] < price or \
 				self.get_inventory().get_free_space_for(res) < amount or \
 				amount + self.get_inventory()[res] > self.slots[self.buy_list[res]].limit:
@@ -160,7 +160,7 @@ class TradePostComponent(ChangeListener, Component):
 		@param player_id: the worldid of the trade partner
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
-		if not res in self.sell_list or \
+		if res not in self.sell_list or \
 				self.get_inventory()[res] < amount or \
 				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit:
 			self._changed()

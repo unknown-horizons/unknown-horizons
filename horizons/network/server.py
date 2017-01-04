@@ -244,7 +244,7 @@ class Server(object):
 		# NOTE: ALWAYS initialize peer.data
 		event.peer.data = player.sid
 
-		if not player.protocol in PROTOCOLS:
+		if player.protocol not in PROTOCOLS:
 			logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(player))
 			self.fatalerror(player, __("Old or unsupported multiplayer protocol. Please check your game version"))
 			return

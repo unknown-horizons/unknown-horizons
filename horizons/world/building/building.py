@@ -294,7 +294,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		fife.InstanceVisual.create(instance)
 
 		action_set = ActionSetLoader.get_set(action_set_id)
-		if not action in action_set:
+		if action not in action_set:
 			if 'idle' in action_set:
 				action = 'idle'
 			elif 'idle_full' in action_set:

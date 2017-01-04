@@ -96,7 +96,7 @@ class FindPath(object):
 		# check if target is blocked
 		target_is_blocked = True
 		for coord in self.destination.tuple_iter():
-			if not coord in self.blocked_coords:
+			if coord not in self.blocked_coords:
 				target_is_blocked = False
 		if target_is_blocked:
 			#self.log.debug("FindPath: target is blocked")
@@ -205,7 +205,7 @@ class FindPath(object):
 			# Parts of this are actually spent in evaluating the generator expressions from the if above
 
 			for neighbor_node in neighbors:
-				if not neighbor_node in to_check:
+				if neighbor_node not in to_check:
 					# add neighbor to list of reachable nodes to check
 
 					# save previous node, calc distance to neighbor_node

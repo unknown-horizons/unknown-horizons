@@ -70,9 +70,9 @@ class StatusIconManager(object):
 		"""This is called by the message bus with AddStatusIcon messages"""
 		assert isinstance(message, AddStatusIcon)
 		icon_instance = message.icon.instance
-		if not icon_instance in self.icons:
+		if icon_instance not in self.icons:
 			self.icons[icon_instance] = []
-		assert not message.icon in self.icons[icon_instance]
+		assert message.icon not in self.icons[icon_instance]
 		self.icons[icon_instance].append(message.icon)
 		# Sort, make sure highest icon is at top
 		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key(), reverse=True)

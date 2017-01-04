@@ -262,7 +262,7 @@ class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 	def alter(self, res, amount):
 		if amount == 0:
 			return 0
-		if not res in self._storage and len(self._storage) >= self.slotnum:
+		if res not in self._storage and len(self._storage) >= self.slotnum:
 			return amount
 		ret = super(PositiveTotalNumSlotsStorage, self).alter(res, amount)
 		if self[res] == 0:
@@ -271,7 +271,7 @@ class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 		return ret
 
 	def get_free_space_for(self, res):
-		if not res in self._storage and len(self._storage) >= self.slotnum:
+		if res not in self._storage and len(self._storage) >= self.slotnum:
 			return 0
 		else:
 			return super(PositiveTotalNumSlotsStorage, self).get_free_space_for(res)
@@ -304,13 +304,13 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 	def alter(self, res, amount):
 		if amount == 0:
 			return 0
-		if not res in self._storage and len(self._storage) >= self.slotnum:
+		if res not in self._storage and len(self._storage) >= self.slotnum:
 			return amount
 		result = super(PositiveSizedNumSlotStorage, self).alter(res, amount)
 		return result
 
 	def get_free_space_for(self, res):
-		if not res in self._storage and len(self._storage) >= self.slotnum:
+		if res not in self._storage and len(self._storage) >= self.slotnum:
 			return 0
 		else:
 			return super(PositiveSizedNumSlotStorage, self).get_free_space_for(res)
