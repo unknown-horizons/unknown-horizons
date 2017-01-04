@@ -299,7 +299,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				if nose_captured:
 					if stdout:
 						print(stdout)
-					if not 'Traceback' in stderr:
+					if 'Traceback' not in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
 					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))
 				else:
