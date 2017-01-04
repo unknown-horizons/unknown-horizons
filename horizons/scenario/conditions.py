@@ -206,7 +206,7 @@ def game_started(session):
 def var_eq(session, variable, value):
 	"""Returns whether *variable* has a value equal to *value*.
 	Returns False if variable was never set in the current session."""
-	if not variable in _get_scenario_vars(session):
+	if variable not in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[variable] == value)
 
@@ -214,7 +214,7 @@ def var_eq(session, variable, value):
 def var_gt(session, variable, value):
 	"""Returns whether *variable* has a value greater than *value*.
 	Returns False if variable was never set in the current session."""
-	if not variable in _get_scenario_vars(session):
+	if variable not in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[variable] > value)
 
@@ -222,7 +222,7 @@ def var_gt(session, variable, value):
 def var_lt(session, variable, value):
 	"""Returns whether *variable* has a value less than *value*.
 	Returns False if variable was never set in the current session."""
-	if not variable in _get_scenario_vars(session):
+	if variable not in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[variable] < value)
 

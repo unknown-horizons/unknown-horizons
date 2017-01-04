@@ -84,7 +84,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		if (Fife.getVersion() >= (0, 4, 0)):
 			container_inactive.parent.hideChild(container_inactive)
 		else:
-			if not container_inactive in container_inactive.parent.hidden_children:
+			if container_inactive not in container_inactive.parent.hidden_children:
 				container_inactive.parent.hideChild(container_inactive)
 
 		self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
@@ -117,7 +117,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			if (Fife.getVersion() >= (0, 4, 0)):
 				w.parent.hideChild(w)
 			else:
-				if not w in w.parent.hidden_children:
+				if w not in w.parent.hidden_children:
 					w.parent.hideChild(w)
 
 	def update_buttons(self, container_active, cancel_container):
@@ -131,7 +131,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		if (Fife.getVersion() >= (0, 4, 0)):
 			button_active.parent.hideChild(button_active)
 		else:
-			if not button_active in button_active.parent.hidden_children:
+			if button_active not in button_active.parent.hidden_children:
 				button_active.parent.hideChild(button_active)
 		button_inactive.parent.showChild(button_inactive)
 

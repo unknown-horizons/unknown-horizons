@@ -99,7 +99,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 		for j in glob.glob('%s/*/*/%s.mo' % (i, domain)):
 			splited = j.split(os.sep)
 			key = splited[-3]
-			if not key in languages:
+			if key not in languages:
 				languages[key] = os.sep.join(splited[:-3])
 
 	# there's always a default, which is english

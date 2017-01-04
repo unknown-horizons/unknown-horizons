@@ -398,7 +398,7 @@ class ProductionBuilder(AreaBuilder):
 		unused_fields = set()
 		farms = self.settlement.buildings_by_id.get(BUILDINGS.FARM, [])
 		for coords in building.position.get_radius_coordinates(building.radius):
-			if not coords in self.plan:
+			if coords not in self.plan:
 				continue
 			object = self.island.ground_map[coords].object
 			if object is None or object.id not in self.field_building_classes:

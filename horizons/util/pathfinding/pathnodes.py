@@ -47,7 +47,7 @@ class ConsumerBuildingPathNodes(PathNodes):
 		ground_map = consumerbuilding.island.ground_map
 		self.nodes = {}
 		for coords in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
-			if coords in ground_map and not 'coastline' in ground_map[coords].classes:
+			if coords in ground_map and 'coastline' not in ground_map[coords].classes:
 				self.nodes[coords] = self.NODE_DEFAULT_SPEED
 
 
@@ -105,7 +105,7 @@ class IslandPathNodes(PathNodes):
 		# if it's not constructable, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
-		if not "constructible" in tile_object.classes:
+		if "constructible" not in tile_object.classes:
 			return False
 		if tile_object.blocked and not tile_object.object.walkable:
 			return False

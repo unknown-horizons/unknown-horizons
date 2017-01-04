@@ -242,7 +242,7 @@ class Fife(object):
 	def replace_key_for_action(self, action, oldkey, newkey):
 		"""Replaces key *oldkey* with key *newkey* for action *action*"""
 		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
-		if not oldkey in old_keys:
+		if oldkey not in old_keys:
 			return
 		index = old_keys.index(oldkey)
 		old_keys[index] = newkey

@@ -142,12 +142,12 @@ class Scheduler(LivingObject):
 		else: # default: run in future tick
 			interval = callback_obj.loop_interval if readd else callback_obj.run_in
 			tick_key = self.cur_tick + interval
-			if not tick_key in self.schedule:
+			if tick_key not in self.schedule:
 				self.schedule[tick_key] = deque()
 			callback_obj.tick = tick_key
 			self.schedule[tick_key].append(callback_obj)
 			if not readd:  # readded calls haven't been removed here
-				if not callback_obj.class_instance in self.calls_by_instance:
+				if callback_obj.class_instance not in self.calls_by_instance:
 					self.calls_by_instance[callback_obj.class_instance] = []
 				self.calls_by_instance[callback_obj.class_instance].append(callback_obj)
 

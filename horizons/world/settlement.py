@@ -228,7 +228,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
-		if not building in self.buildings:
+		if building not in self.buildings:
 			self.log.debug("Building %s can not be removed from settlement", building.id)
 			return
 		self.buildings.remove(building)

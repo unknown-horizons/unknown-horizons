@@ -88,7 +88,7 @@ class TearingTool(NavigationTool):
 			if self.selected:
 				for building in selection_list_copy:
 					self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
-					if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+					if (building.id not in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
 						Tear(building).execute(self.session)
 			elif self._hovering_over:
 				# we're hovering over a building, but none is selected, so this tear action isn't allowed

@@ -57,7 +57,7 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 
 	def infect(self, building, load=None):
 		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
-		if not building in self.healed_buildings:
+		if building not in self.healed_buildings:
 			super(BlackDeathDisaster, self).infect(building, load=load)
 
 	def wreak_havoc(self, building):
