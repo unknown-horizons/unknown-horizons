@@ -24,8 +24,8 @@ import logging
 from itertools import groupby
 
 from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label
 from fife.extensions.pychan.exceptions import InitializationError
+from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
