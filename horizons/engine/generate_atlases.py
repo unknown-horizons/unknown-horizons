@@ -341,6 +341,7 @@ class AtlasGenerator(object):
 
 	def _save_metadata(self):
 		self.log.info('Saving metadata')
+		os.makedirs(os.path.dirname(PATHS.ATLAS_METADATA_PATH))
 		with open(PATHS.ATLAS_METADATA_PATH, 'wb') as file:
 			pickle.dump(self, file)
 		self.log.info('Finished saving metadata')
