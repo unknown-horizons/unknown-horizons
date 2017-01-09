@@ -118,16 +118,17 @@ def excepthook_creator(outfilename):
 	to a file.
 	@param outfilename: a filename to append traceback to"""
 	def excepthook(exception_type, value, tb):
+		from horizons.i18n import gettext as T
 		with open(outfilename, 'a') as f:
 			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print('')
-		print(_('Unknown Horizons has crashed.'))
+		print(T('Unknown Horizons has crashed.'))
 		print('')
-		print(_('We are very sorry for this and want to fix the underlying error.'))
-		print(_('In order to do this, we need the information from the logfile:'))
+		print(T('We are very sorry for this and want to fix the underlying error.'))
+		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
-		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
+		print(T('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
 	return excepthook
 
 def exithandler(exitcode, signum, frame):
@@ -213,7 +214,8 @@ def main():
 	if logfile:
 		logfile.close()
 	if ret:
-		print(_('Thank you for using Unknown Horizons!'))
+		from horizons.i18n import gettext as T
+		print(T('Thank you for using Unknown Horizons!'))
 
 
 def setup_debugging(options):
