@@ -177,10 +177,10 @@ def main():
 	try:
 		import yaml
 	except ImportError:
-		headline = _('Error: Unable to find required library "PyYAML".')
-		msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
-		    _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
-		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
+		headline = 'Error: Unable to find required library "PyYAML".'
+		msg = 'PyYAML (a required library) is missing and needs to be installed.\n' + \
+		    'The Windows installer is available at http://pyyaml.org/wiki/PyYAML. ' + \
+		    'Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".'
 		exit_with_error(headline, msg)
 
 	# Start UH.
