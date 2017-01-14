@@ -1,4 +1,4 @@
-## UH-Team_2016 ##
+## UH-Team-2016/2017 ##
 
 #### Project Coordination
 * LinuxDonald (Thomas Kowaliczek)
@@ -15,9 +15,12 @@
 #### Graphics Artists
 * janexx (Jana Weigel)
 
+#### Windows Installer
+* jakoch (Jens A. Koch)
+
 - - - - -
 
-## UH-Team_2015 ##
+## UH-Team-2015 ##
 
 #### Project Coordination
 * Kilian] (Kilian Köppchen)
