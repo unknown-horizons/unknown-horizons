@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2016-07-31 15:13+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2017-01-16 02:08+0000\n"
+"Last-Translator: Manuela Silva <manuela.silva@sky.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
-msgstr "A execução de Unknown Horizons foi interrompida com erro."
+msgstr "Unknown Horizons crachou."
 
 #: run_uh.py:127
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -27,15 +27,15 @@ msgstr "Lamentamos o ocorrido e pretendemos corrigir o erro."
 
 #: run_uh.py:128
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Para o fazer necessitamos da informação no ficheiro de log:"
+msgstr "Para o fazer, nós necessitamos da informação no ficheiro de registo:"
 
 #: run_uh.py:130
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Por favor entre em contato via IRC ou nosso forum, para os dois veja http://"
-"unknown-horizons.org ."
+"Por favor, entre em contacto via IRC ou no nosso fórum, para ambos consulte "
+"http://unknown-horizons.org ."
 
 #: run_uh.py:179
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -49,15 +49,15 @@ msgstr ""
 #: run_uh.py:181
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
-"O instalador para o Windows está disponível em http://pyyaml.org/wiki/PyYAML."
+"O instalador para Windows está disponível em http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:182
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Usuários de Linux devem corrigir isto usando o gerenciador de pacotes "
-"procurando pelo nome \"pyyaml\" ou \"python-yaml\"."
+"Os utilizadores de Linux deverão corrigir isto utilizando o gestor de "
+"pacotes com o nome \"pyyaml\" ou \"python-yaml\"."
 
 #: run_uh.py:216
 msgid "Thank you for using Unknown Horizons!"
@@ -65,7 +65,7 @@ msgstr "Obrigado por utilizar o Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr "Retorne ao editor"
+msgstr "Voltar ao editor"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:55
