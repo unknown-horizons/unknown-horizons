@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2016-12-28 14:12+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2017-01-20 22:39+0000\n"
+"Last-Translator: Daniel Heße <hesse.daniel93@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Bitte lasst es uns über IRC oder unser Forum zukommen, beides findet Ihr "
+"Bitte lasst sie uns über IRC oder unser Forum zukommen, beides findet Ihr "
 "unter http://unknown-horizons.org ."
 
 #: run_uh.py:179
@@ -2726,10 +2726,8 @@ msgstr "Lehmmauer"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Fördert die Bildung Eurer Untertanen."
+msgstr "Fördert die Sicherheit Eurer Untertanen."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
