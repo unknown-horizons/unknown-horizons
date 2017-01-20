@@ -20,13 +20,13 @@
 						<ListBox name="screen_resolution" is_focusable="0" />
 					</ScrollArea>
 
-				<Spacer fixed_size="15,0" />
+				<Spacer fixed_size="15" />
 
 					<Label name="screen_fullscreen_text" text="Full screen:" />
 					<CheckBox min_size="24,24" name="enable_fullscreen" />
 				</VBox>
 
-			<Spacer fixed_size="35,0" />
+			<Spacer fixed_size="35" />
 
 				<VBox>
 					<Label name="fps_label" text="Frame rate limit:"
@@ -92,7 +92,7 @@
 				<CheckBox min_size="24,24" name="middle_mouse_pan" />
 			</HBox>
 
-			<Spacer fixed_size="5,0" />
+			<Spacer fixed_size="5" />
 			<HBox>
 				<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
 					wrap_text="1" max_size="250,40" min_size="250,20"
@@ -186,7 +186,7 @@
 					<CheckBox min_size="24,24" name="show_resource_icons" />
 				</HBox>
 
-			<Spacer fixed_size="10,0" />
+			<Spacer fixed_size="10" />
 				<HBox>
 					<Label name="scroll_speed_label" text="Scroll delay:"
 						wrap_text="1" max_size="250,40" min_size="250,20"
@@ -196,7 +196,7 @@
 				<Slider size="300,20" name="scrollspeed" is_focusable="0"
 					orientation="0" scale_start="0.1" scale_end="2.0" step_length="0.05" />
 
-			<Spacer fixed_size="15,0" />
+			<Spacer fixed_size="15" />
 				<HBox>
 					<Label name="quote_type_label" text="Choose a quote type:" min_size="160,0"
 					       helptext="What kind of quote to display while loading a game" />
@@ -223,7 +223,7 @@
 
 	<!-- General section -->
 	<HBox position="180,500" padding="245">
-		<Spacer fixed_size="60,0" />
+		<Spacer fixed_size="60" />
 	</HBox>
 
 	<!-- This dropdown is invisible, but required by fife to be here -->

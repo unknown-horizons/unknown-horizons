@@ -3,7 +3,7 @@
 	<TabBG amount="9" />
 	<Container position="0,70" size="245,500">
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0,0"  max_size="50,0" />
+		<Spacer min_size="0"  max_size="50" />
 			<Label name="headline"  text="Buy or sell resources" />
 		</HBox>
 

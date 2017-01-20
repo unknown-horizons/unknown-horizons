@@ -12,7 +12,7 @@
 		<ScrollArea max_size="300,400">
 			<ListBox name="savegamelist" is_focusable="0" />
 		</ScrollArea>
-	<Spacer fixed_size="20,0" />
+	<Spacer fixed_size="20" />
 		<VBox name="gamedetails_box">
 			<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
 				<Label text="Name of the game:" name="gamename_lbl"
@@ -26,7 +26,7 @@
 			</HBox>
 		</VBox>
 
-	<Spacer fixed_size="30,0" />
+	<Spacer fixed_size="30" />
 		<HBox max_size="34,40">
 			<!-- if no max_size is set, button reaction area expands to whole page -->
 			<CancelButton helptext="Cancel" />
@@ -57,7 +57,7 @@
 	<Spacer />
 		<HBox min_size="300,40">
 			<DeleteButton helptext="Delete selected savegame" />
-			<Spacer min_size="200,0" />
+			<Spacer min_size="200" />
 			<OkButton />
 		</HBox>
 	</VBox>
