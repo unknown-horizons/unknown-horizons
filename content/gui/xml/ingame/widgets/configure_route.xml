@@ -31,7 +31,7 @@
 			<Label name="lbl_route_activity" text="Route activity:" position="0,5" />
 		</HBox>
 		<HBox min_size="310,80" max_size="310,80">
-			<Spacer fixed_size="35,0" />
+			<Spacer fixed_size="35,35" />
 			<ImageButton name="start_route" max_size="52,52"
 				inactive_image="content/gui/icons/ship/traderoute.png"
 				up_image="content/gui/icons/ship/traderoute_disabled.png"

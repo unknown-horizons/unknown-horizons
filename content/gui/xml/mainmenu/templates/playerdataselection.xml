@@ -9,7 +9,7 @@
 		<Label name="color_label" text="Color:" max_size="100,20" min_size="100,20" />
 		<HBox padding="15">
 			<VBox>
-			<Spacer fixed_size="10,0" />
+			<Spacer fixed_size="10,10" />
 				<Label name="selectedcolor" min_size="50,50" max_size="50,50" text=" " comment="noi18n" />
 			</VBox>
 			<VBox name="playercolor" min_size="125,75" max_size="125,75" />
