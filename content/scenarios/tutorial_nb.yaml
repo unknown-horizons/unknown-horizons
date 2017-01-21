@@ -25,7 +25,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - Dette er din loggbok, der viktig informasjon om det gjeldende scenariet er lagret. Et sammendrag av hver ny aktivitet vises også som en "meldingsknapp" nær den venstre kanten av skjermen. Du kan holde musen over disse meldingene til å lese sammendraget eller klikke på selve knappen for å åpne loggboken.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - Du kan også åpne journalen på nytt når som helst ved å klikke på knappen under mini-kartet, i øvre høyre hjørne av skjermen din.  Fra nå av vil vi referere til dette område som inneholder mini-kartet, forskjellige knapper og faner som «Oversikten».
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -53,14 +53,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Når du klikker på denne knappen vil en forhåndsvisning av varehuset dukke opp.  Dette er den første byningen som kreves for å opprette en bosetning.  Mens du flytter muspekeren rundt vil du legge merke til at forhåndsvisningen blir farget rød når bygningen er i et område det ikke kan plasseres.
   - Varehuset må plasseres ved kysten for å la båter legge til kai.  Du bør finne en god plassering før du venstreklikker for å plassere denne viktige bygningen.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Oppgave: Bygg et varehus ved kysten.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Bygg et tømmerhuggertelt og koble det til varehuset.]
+  - [Headline, 'NY OPPGAVE: BYGG TØMMERHUGGERTELT']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - Forsyningene og konstruksjonsmaterialer er lastet ut av skipet ditt og trygt lagret i ditt nye varehus.  Nå er det på tide å konstruere noen grunnleggende bygninger, aller først et tømmerhuggertelt.
+  - Tømmerhuggere vil kutte ned trær fra skogområdene rundt teltene sine og gjøre tømmeret om til bord, som kan brukes i konstruksjon eller som en handelsvare.
   - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
@@ -390,10 +390,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Thanks for playing the tutorial!
+    Takk for at du spilte introduksjonen!
 
 
-    Your UH-Team'
+    Ditt UH-lag'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 15 translated messages, 173 untranslated messages.
+  translation_status: 22 translated messages, 166 untranslated messages.
