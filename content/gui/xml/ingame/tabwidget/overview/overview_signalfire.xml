@@ -5,7 +5,7 @@
 	<AutoResizeContainer position="0,70">
 		<!-- Name of building -->
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
+		<Spacer min_size="0,0"  max_size="50,0" />
 			<Label name='name' />
 		</HBox>
 

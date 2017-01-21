@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RELEASE_VERSION=2013.3
+RELEASE_VERSION=2017.1
 
 BUILD_DIR="../../build/build_$(date +%Y%m%d%H%M)/unknown-horizons"
 echo "Creating build folder: $BUILD_DIR"
