@@ -18,7 +18,7 @@
 		<Icon name="running_costs_label" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
 		<Label name="running_costs" helptext="Running costs" />
-	<Spacer max_size="50" />
+	<Spacer max_size="50,50" />
 		<Icon name="capacity_utilization_label"  helptext="Capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
 		<Label name="capacity_utilization" helptext="Capacity utilization" />
