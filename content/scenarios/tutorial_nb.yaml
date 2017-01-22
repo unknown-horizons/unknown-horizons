@@ -61,14 +61,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Forsyningene og konstruksjonsmaterialer er lastet ut av skipet ditt og trygt lagret i ditt nye varehus.  Nå er det på tide å konstruere noen grunnleggende bygninger, aller først et tømmerhuggertelt.
   - Tømmerhuggere vil kutte ned trær fra skogområdene rundt teltene sine og gjøre tømmeret om til bord, som kan brukes i konstruksjon eller som en handelsvare.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - For å bygge et tømmerhuggertelt, åpne bygge-menyen ved å klippe på knappen under mini-kartet eller trykk 'B', som er den vanlige hurtigtasten.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Byggemenyen er sortert i nivåkategorier, og ettersom ditt er en ny bosetning, så er førstenivås bygninger de eneste som er tilgjengelig for deg.  Etter hvert som sivilisasjonen din utvikler seg vil du få tilgang til høyere nivåer og bli i stand til å konstruere mange flere ulike bygninger.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Finn et fint skogområde der vår tømmerhugger kan jobbe og velg deretter «Tømmerhuggertelt» fra listen over bygninger i oversikten og plasser bygningen.
+  - Senere i spillet kan det hende du vil lage skogområder ved å plante trær, men siden dette koster penger bør du foreløpig bruke det naturen tilbyr!
   - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
@@ -382,7 +382,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Our forums are open to you as well!
   - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
   - [Pagebreak]
-  - [Headline, Thanks!]
+  - [Headline, Tusen takk!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 22 translated messages, 166 untranslated messages.
+  translation_status: 27 translated messages, 161 untranslated messages.
