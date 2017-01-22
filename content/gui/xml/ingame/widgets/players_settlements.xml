@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-	<VBox max_size="695,388" min_size="695,388" padding="5">
+	<VBox fixed_size="695,388" padding="5">
 		<HBox>
 			<Label name="headline" min_size="300,20" />
 		</HBox>
@@ -16,7 +16,7 @@
 			</HBox>
 		</VBox>
 
-		<ScrollArea min_size="650,300" max_size="650,300">
+		<ScrollArea fixed_size="650,300">
 			<VBox name="content_vbox" />
 		</ScrollArea>
 <!--TODO fix-->

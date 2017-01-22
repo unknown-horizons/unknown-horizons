@@ -87,7 +87,7 @@
 	</Container>
 </Container>
 <Container name="domestic" position="20,260" size="250,210"> <!-- Only one of international / domestic is displayed -->
-	<ScrollArea name="inventory_area_partner" max_size="216,150" min_size="216,150">
+	<ScrollArea name="inventory_area_partner" fixed_size="216,150">
 		<Inventory name="inventory_partner"  size="0,200"  uncached="1"  display_legend="0" />
 	</ScrollArea>
 </Container>

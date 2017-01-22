@@ -13,7 +13,7 @@
 
 	<hr position="20,30" />
 
-	<HBox size="225,20" max_size="225,20" position="25,43">
+	<HBox fixed_size="225,20" position="25,43">
 		<Label name="name_label" text="Name:" />
 		<Label name="name" />
 	</HBox>

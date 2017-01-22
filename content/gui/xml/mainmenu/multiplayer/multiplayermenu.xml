@@ -10,7 +10,7 @@
 		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="102,103" />
 		<hr position="52,230" />
 
-		<VBox position="42,370"  max_size="290,125"  min_size="290,125">
+		<VBox position="42,370"  fixed_size="290,125">
 
 
 			<HBox>
@@ -24,7 +24,7 @@
 
 	<VBox max_size="320,480"  min_size="320,480"  position="420,50"  name="right_side">
 
-		<HBox max_size="290,30"  min_size="290,30">
+		<HBox fixed_size="290,30">
 			<Label text="Active games:"  name="headline_active_games_lbl" />
 			<Spacer />
 			<Label name="refr_gamelist_lbl"  text="Refresh list:"  position="150,50" />

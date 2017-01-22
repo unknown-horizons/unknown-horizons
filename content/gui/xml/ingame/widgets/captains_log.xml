@@ -3,10 +3,10 @@
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container name="left_pickbelts" size="195,580" position="30,0" />
-<HBox name="logbook" max_size="700,508" min_size="700,508" padding="7" position="168,40">
+<HBox name="logbook" fixed_size="700,508" padding="7" position="168,40">
 	<!-- left page -->
-	<VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_left">
-		<ScrollArea name="transparent_scrollarea" min_size="325,468" max_size="325,468">
+	<VBox fixed_size="350,508" padding="5" name="logbook_left">
+		<ScrollArea name="transparent_scrollarea" fixed_size="325,468">
 			<VBox name="custom_widgets_left" max_size="310,1024" min_size="310,0"
 				comment="In here, widgets defined in yaml get added on runtime." />
 		</ScrollArea>
@@ -23,17 +23,17 @@
 	</VBox> <!-- closes VBox logbook left page -->
 
 	<!-- right page -->
-	<VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_right">
-		<ScrollArea name="transparent_scrollarea" min_size="325,468" max_size="325,468">
+	<VBox fixed_size="350,508" padding="5" name="logbook_right">
+		<ScrollArea name="transparent_scrollarea" fixed_size="325,468">
 			<VBox name="custom_widgets_right" max_size="310,1024" min_size="310,0"
 				comment="In here, widgets defined in yaml get added on runtime." />
 		</ScrollArea>
 	</VBox> <!-- closes VBox logbook right page -->
 </HBox> <!-- closes: <HBox name="logbook"> -->
 
-<VBox name="statistics" max_size="700,508" min_size="700,508" position="168,40">
+<VBox name="statistics" fixed_size="700,508" position="168,40">
 	<Label name="headline_statistics" text="Statistics"
-		wrap_text="0" max_size="323, 25" min_size="323, 25" />
+		wrap_text="0" fixed_size="323,25" />
 	<hr />
 	<HBox name="header_button_row_stats" padding="5">
 		<Button name="stats_players" text="Players" is_focusable="0" />
@@ -42,10 +42,10 @@
 	</HBox>
 </VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name="chat_overview" max_size="700,508" min_size="700,508" padding="0" position="168,40">
-	<VBox name="game_messages" comment="Left page" max_size="345,508" min_size="345,508">
+<HBox name="chat_overview" fixed_size="700,508" padding="0" position="168,40">
+	<VBox name="game_messages" comment="Left page" fixed_size="345,508">
 		<Label name="headline_game_messages" text="Game messages"
-			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+			wrap_text="0" fixed_size="323,25" />
 		<hr />
 		<HBox name="header_button_row_gamemsg" padding="5">
 			<Button name="weird_button_1" text="Whole world" is_focusable="0"
@@ -57,14 +57,14 @@
 			-->
 		</HBox>
 
-		<ScrollArea name="game_messages_scroll_area"  min_size="325,360"  max_size="325,360">
-			<ListBox name="game_messagebox"  min_size="325,360" max_size="325,360" is_focusable="0" />
+		<ScrollArea name="game_messages_scroll_area"  fixed_size="325,360">
+			<ListBox name="game_messagebox"  fixed_size="325,360" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 
-	<VBox name="chat" comment="Right page" max_size="345,508" min_size="345,508">
+	<VBox name="chat" comment="Right page" fixed_size="345,508">
 		<Label name="headline_chat" text="Chat"
-			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+			wrap_text="0" fixed_size="323,25" />
 		<hr />
 		<HBox name="header_button_row_chat" padding="5">
 			<Button name="weird_button_4" text="Everybody" is_focusable="0"
@@ -79,8 +79,8 @@
 			-->
 		</HBox>
 
-		<ScrollArea name="chat_scroll_area"  min_size="325,360"  max_size="325,360">
-			<ListBox name="chatbox"  min_size="325,360" max_size="325,360" is_focusable="0" />
+		<ScrollArea name="chat_scroll_area"  fixed_size="325,360">
+			<ListBox name="chatbox"  fixed_size="325,360" is_focusable="0" />
 		</ScrollArea>
 		<TextField name="chatTextField"
 			text="Enter your message here"  min_size="300,16" />

@@ -10,7 +10,7 @@
 	<Icon image="content/gui/images/buttons/msg_button.png" />
 </VBox>
 
-<VBox name="button_labels" padding="31" position="68,32" max_size="185,312" min_size="185,312">
+<VBox name="button_labels" padding="31" position="68,32" fixed_size="185,312">
 	<Label font="headline" name="start" text="Return to editor" />
 	<Label font="headline" name="savegame" text="Save map" />
 	<Label font="headline" name="loadgame" text="Load map" />
