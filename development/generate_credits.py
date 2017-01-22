@@ -113,11 +113,11 @@ def write_page(heading, content):
 	def write_page_header():
 		if heading in huge_pages:
 			write(f, 1, u'<ScrollArea name="%s" '
-					  u'max_size="310,500" min_size="310,500">' % heading.lower())
+					  u'fixed_size="310,500">' % heading.lower())
 			# Make sure there is no max_size set in this case!
 			write(f, 1, u'<VBox min_size="310,500">')
 		else:
-			write(f, 1, u'<VBox max_size="310,500" min_size="310,500">')
+			write(f, 1, u'<VBox fixed_size="310,500">')
 
 	def write_page_footer():
 		close_vbox(1)
