@@ -236,7 +236,7 @@ class RandomMapWidget(object):
 		)
 
 		for param, __, setting_name in parameters:
-			self._map_parameters[param] = horizons.globals.fife.get_uh_setting(setting_name)
+			self._map_parameters[param] = int(horizons.globals.fife.get_uh_setting(setting_name))
 
 		def make_on_change(param, text, setting_name):
 			# When a slider is changed, update the value displayed in the label, save the value
