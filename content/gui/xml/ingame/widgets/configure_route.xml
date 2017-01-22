@@ -21,7 +21,7 @@
 	<!-- right side -->
 
 	<VBox name="right_vbox" max_size="330,508" min_size="330,508" position="416,40" padding="2">
-		<Icon name="minimap" size="256,256" max_size="256,256" is_focusable="0" /> <!-- settlement selection in minimap -->
+		<Icon name="minimap" fixed_size="256,256" is_focusable="0" /> <!-- settlement selection in minimap -->
 
 		<!-- this box is only displayed on resource selection. -->
 		<!-- res selection box, filled with icons -->
