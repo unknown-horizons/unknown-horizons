@@ -11,7 +11,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
 <HBox name="credits_team_2016" position="185,45" padding="10">
-	<VBox fixed_size="310,500">
+	<ScrollArea name="uh-team-2016/2017" fixed_size="310,500">
+	<VBox min_size="310,500">
 		<Label text="UH-Team-2016/2017" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
@@ -48,12 +49,16 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
-	<VBox fixed_size="310,500">
+	</ScrollArea>
+	<ScrollArea name="uh-team-2016/2017" fixed_size="310,500">
+	<VBox min_size="310,500">
 	</VBox>
+	</ScrollArea>
 </HBox>
 
 <HBox name="credits_team_2015" position="185,45" padding="10">
-	<VBox fixed_size="310,500">
+	<ScrollArea name="uh-team-2015" fixed_size="310,500">
+	<VBox min_size="310,500">
 		<Label text="UH-Team-2015" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
@@ -87,7 +92,9 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
-	<VBox fixed_size="310,500">
+	</ScrollArea>
+	<ScrollArea name="uh-team-2015" fixed_size="310,500">
+	<VBox min_size="310,500">
 		<VBox> <Label text="Game-Play Design" name="headline" />
 			<VBox name="box">
 				<Label text="Andre (Andre Reichelt)" />
@@ -121,6 +128,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
+	</ScrollArea>
 </HBox>
 
 <HBox name="credits_patchers" position="185,45" padding="10">

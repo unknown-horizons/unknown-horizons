@@ -246,8 +246,8 @@ class RandomMapWidget(object):
 				self._gui.findChild(name=param + '_lbl').text = text + u' ' + unicode(int(slider.value))
 				horizons.globals.fife.set_uh_setting(setting_name, slider.value)
 				horizons.globals.fife.save_settings()
-				self._on_random_parameter_changed()
 				self._map_parameters[param] = int(slider.value)
+				self._on_random_parameter_changed()
 			return on_change
 
 		for param, text, setting_name in parameters:

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-12-17 23:52+0000\n"
+"PO-Revision-Date: 2017-01-22 05:59+0000\n"
 "Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/uh/tutorial/nb/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -61,6 +61,10 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Du kan også åpne journalen på nytt når som helst ved å klikke på knappen "
+"under mini-kartet, i øvre høyre hjørne av skjermen din.  Fra nå av vil vi "
+"referere til dette område som inneholder mini-kartet, forskjellige knapper "
+"og faner som «Oversikten»."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -145,15 +149,15 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr ""
+msgstr "Oppgave: Bygg et varehus ved kysten."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
+msgstr "Bygg et tømmerhuggertelt og koble det til varehuset."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG TØMMERHUGGERTELT"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -161,18 +165,26 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Forsyningene og konstruksjonsmaterialer er lastet ut av skipet ditt og trygt "
+"lagret i ditt nye varehus.  Nå er det på tide å konstruere noen "
+"grunnleggende bygninger, aller først et tømmerhuggertelt."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Tømmerhuggere vil kutte ned trær fra skogområdene rundt teltene sine og "
+"gjøre tømmeret om til bord, som kan brukes i konstruksjon eller som en "
+"handelsvare."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"For å bygge et tømmerhuggertelt, åpne bygge-menyen ved å klippe på knappen "
+"under mini-kartet eller trykk 'B', som er den vanlige hurtigtasten."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -181,12 +193,19 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Byggemenyen er sortert i nivåkategorier, og ettersom ditt er en ny "
+"bosetning, så er førstenivås bygninger de eneste som er tilgjengelig for "
+"deg.  Etter hvert som sivilisasjonen din utvikler seg vil du få tilgang til "
+"høyere nivåer og bli i stand til å konstruere mange flere ulike bygninger."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Finn et fint skogområde der vår tømmerhugger kan jobbe og velg deretter "
+"«Tømmerhuggertelt» fra listen over bygninger i oversikten og plasser "
+"bygningen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -194,6 +213,8 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Senere i spillet kan det hende du vil lage skogområder ved å plante trær, "
+"men siden dette koster penger bør du foreløpig bruke det naturen tilbyr!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1094,7 +1115,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Thanks!"
-msgstr ""
+msgstr "Tusen takk!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1107,3 +1128,11 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Takk for at du spilte introduksjonen!\n"
+"\n"
+"Ditt UH-lag"
