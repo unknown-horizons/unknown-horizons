@@ -72,11 +72,16 @@ class SQLiteAtlasLoader(object):
 		actionset, action, rotation = id.split('+')
 		commands = zip(commands[0::2], commands[1::2])
 
-		ani = fife.Animation.createAnimation()
+		animationmanager = horizons.globals.fife.animationmanager
+
+		# if we've loaded that animation before, we can finish early
+		if animationmanager.exits(id):
+			return animationmanager.getPtr(id)
+
+		ani = animationmanager.create(id)
 
 		# Set the correct loader based on the actionset
 		loader = self._get_loader(actionset)
-
 
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
