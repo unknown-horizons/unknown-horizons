@@ -125,7 +125,7 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		icon_path = icon_path + '{res:03d}.png'.format(res=res)
 
 	try:
-		Icon(image=icon_path)
+		Icon(image=icon_path).hide()
 	except fife.NotFound: # ImageManager: image not found, use placeholder or die
 		if res == 'placeholder':
 			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
