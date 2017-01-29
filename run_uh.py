@@ -66,12 +66,7 @@ def exit_with_error(title, message):
 	exit(1)
 
 def check_python_version():
-	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
-<<<<<<< HEAD
-    if float(sys.version[:3]) != 2.7:
-=======
-    if float(sys.version[:3]) < 2.7:
->>>>>>> c8bad97dd9c3dee63e50ff142b0eb45d4bd90e2c
+    if sys.version_info[:2] != (2, 7):
         exit_with_error('Unsupported Python version', 'Python 2.7 is required to run Unknown Horizons.')
 	
 check_python_version()
