@@ -339,7 +339,7 @@ def setup_fife():
 	log_sys_info()
 	if not find_fife():
 		#TODO useful error message anyone?
-		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
+		exit_with_error('Failed to find and/or load FIFE', 'Make sure FIFE was installed as a package/redistributable or compiled from source.')
 
 	from fife import fife
 	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
