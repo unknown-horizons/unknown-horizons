@@ -75,7 +75,7 @@ class SQLiteAtlasLoader(object):
 		animationmanager = horizons.globals.fife.animationmanager
 
 		# if we've loaded that animation before, we can finish early
-		if animationmanager.exits(id):
+		if animationmanager.exists(id):
 			return animationmanager.getPtr(id)
 
 		ani = animationmanager.create(id)
