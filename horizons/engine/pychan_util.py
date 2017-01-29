@@ -177,6 +177,9 @@ def setup_cursor_change_on_hover():
 			self.mapEvents({
 				self.name+'/mouseEntered/cursor' : set_cursor,
 				self.name+'/mouseExited/cursor' : unset_cursor,
+				# this changes the cursor if the widget is hidden while the
+				# cursor is still above the textfield
+				self.name+'/ancestorHidden/cursor': unset_cursor
 				})
 
 		def add_cursor_change_on_hover_init(func):
@@ -193,15 +196,6 @@ def setup_cursor_change_on_hover():
 	make_cursor_change_on_hover_class(pychan.widgets.WIDGETS['TextField'])
 	make_cursor_change_on_hover_class(RenameLabel)
 	make_cursor_change_on_hover_class(RenameImageButton)
-
-
-	# TODO: if the widget is hidden while the cursor is above it,
-	# there is no exited event. A possible workaround would be to check
-	# in short intervals whether the widget is still visible, possible also
-	# whether the mouse is still above it (the later would be necessary in
-	# case another widget is drawn above the original widget)
-	# Since that would be quite ugly, it should only be done when consulting
-	# pychan-savvy people yields no success.
 
 
 def setup_trigger_signals_on_action():

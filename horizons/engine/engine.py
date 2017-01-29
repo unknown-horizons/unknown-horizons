@@ -155,6 +155,7 @@ class Fife(object):
 		self.eventmanager = self.engine.getEventManager()
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
+		self.animationmanager = self.engine.getAnimationManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
 		self.animationloader = None
 

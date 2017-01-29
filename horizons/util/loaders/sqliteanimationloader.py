@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
 import horizons.globals
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -49,11 +47,16 @@ class SQLiteAnimationLoader(object):
 		actionset, action, rotation = id.split('+')
 		commands = zip(commands[0::2], commands[1::2])
 
+		animationmanager = horizons.globals.fife.animationmanager
+
+		# if we've loaded that animation before, we can finish early
+		if animationmanager.exists(id):
+			return animationmanager.getPtr(id)
+
 		# Set the correct loader based on the actionset
-		loader = None
 		loader = self._get_loader(actionset)
 
-		ani = fife.Animation.createAnimation()
+		ani = animationmanager.create(id)
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
 			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
@@ -84,7 +87,9 @@ class SQLiteAnimationLoader(object):
 
 			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
-		ani.setActionFrame(0)
+		# currently unused. would trigger onInstanceActionFrame of
+		# fife.InstanceActionListener instance
+		ani.setActionFrame(-1)
 		return ani
 
 	def _get_loader(self, actionset):

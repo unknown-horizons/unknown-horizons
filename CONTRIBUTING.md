@@ -42,6 +42,7 @@ Things that are handled differently:
 * **String formatting** should prefer the [Python3-style `format()`]
   (http://svn.python.org/view/sandbox/trunk/pep3101/doctests/basic_examples.txt?revision=54966&view=markup)
   over the `%` operator
+* The majority of inline comments use **one space** before the comment. In the end, what matters is the comment quality, not so much its indentation.
 
 Pull requests
 -------------
