@@ -121,9 +121,7 @@ def excepthook_creator(outfilename):
 		with open(outfilename, 'a') as f:
 			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
-		print('')
-		print(T('Unknown Horizons has crashed.'))
-		print('')
+		print('\n', T('Unknown Horizons has crashed.', '\n'))
 		print(T('We are very sorry for this and want to fix the underlying error.'))
 		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
@@ -134,9 +132,7 @@ def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
-	print('')
-	print('Oh my god! They killed UH.')
-	print('You bastards!')
+	print('\nOh my god! They killed UH. \nYou bastards!')
 	if logfile:
 		logfile.close()
 	sys.exit(exitcode)
