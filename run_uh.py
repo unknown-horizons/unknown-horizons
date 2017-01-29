@@ -93,7 +93,7 @@ def get_content_dir_parent_path():
 	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
 	# Try path for Mac Os X app container (Unknown Horizons.app).
 	# Unknown Horizons.app/Contents/Resources/contents
-	options.append(os.path.join(os.getcwd()))
+	options.append(os.getcwd())
 	# Try often-used paths on Linux.
 	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
 		options.append(os.path.join(path, u'unknown-horizons'))
