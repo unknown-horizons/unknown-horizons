@@ -29,9 +29,9 @@ import sys
 from tests.dummy import Dummy
 
 try:
-	import nose
+	import pytest
 except ImportError:
-	print('The nose package is needed to run the UH tests.')
+	print('The pytest package is needed to run the UH tests.')
 	sys.exit(1)
 
 
@@ -55,6 +55,7 @@ def mock_fife():
 			sys.modules.setdefault(module, Dummy())
 
 	sys.meta_path = [Finder]
+
 
 
 def setup_horizons():
@@ -83,6 +84,4 @@ if __name__ == '__main__':
 
 	setup_horizons()
 
-	from tests.gui import GuiTestPlugin
-	from tests.utils import ReRunInfoPlugin
-	sys.exit(not nose.run(defaultTest='tests', addplugins=[GuiTestPlugin(), ReRunInfoPlugin()]))
+	sys.exit(pytest.main())
