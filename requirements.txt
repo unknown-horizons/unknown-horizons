@@ -1,8 +1,8 @@
 greenlet
-nose
 PyYAML
 Pillow
 isort
+pytest
 polib
 pycodestyle
 future
