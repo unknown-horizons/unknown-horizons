@@ -3,7 +3,7 @@
 <Container name="load_game_window" size="800,580" position_technique="center:center"
 	 background_image="content/gui/images/background/book.png">
 
-	<VBox name="left_page" fixed_size="335,495" position="85,45" padding="12">
+	<VBox name="left_page" fixed_size="335,495" position="85,45" padding="0">
 		<Label name="headline" wrap_text="1" fixed_size="335,20" />
 		<hr />
 		<Label text="Your saved games:" name="headline_saved_games_label" wrap_text="1"
@@ -34,17 +34,17 @@
 	</VBox> <!-- left_page -->
 
 	<VBox name="right_page" position="420,75"
-		    fixed_size="380,465" padding="5">
+		    fixed_size="380,465" padding="0">
 		<VBox>
 
 			<HBox name="enter_filename">
 				<Label name="enter_filename_label" text="Enter filename:"
 					wrap_text="1" fixed_size="140,20" />
-				<TextField name="savegamefile" min_size="150,16" /> <Spacer />
+				<TextField name="savegamefile" min_size="150,16" />
 			</HBox>
 
 			<HBox>
-				<VBox name="savegame_details" padding="15">
+				<VBox name="savegame_details" padding="0">
 					<Icon name="screenshot" />
 					<Label name="headline_details_label"  text="Details:"
 						comment="More text describing the savegame" />

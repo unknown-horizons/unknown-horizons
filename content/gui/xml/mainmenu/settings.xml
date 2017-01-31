@@ -7,13 +7,13 @@
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
 <!-- Graphics section -->
-<HBox name="graphics_settings" position="185,45" padding="25">
+<HBox name="graphics_settings" position="185,45" padding="0">
 	<!-- Left pane -->
-	<VBox name="graphics_left" max_size="320,500" min_size="320,0" padding="25">
-		<VBox name="graphics" padding="2">
+	<VBox name="graphics_left" max_size="320,500" min_size="320,0" padding="0">
+		<VBox name="graphics" padding="0">
 			<Label text="Graphics" name="headline_graphics" font="headline" />
 			<hr />
-			<HBox max_size="320,445">
+			<HBox max_size="280,445">
 				<VBox>
 					<Label text="Screen resolution:" name="screen_resolution_label" wrap_text="1" />
 					<ScrollArea min_size="100,175">
@@ -41,7 +41,7 @@
 		</VBox>
 	</VBox>
 	<!-- Right pane -->
-	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="25">
+	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="0">
 		<VBox name="sound_settings" position="185,45">
 			<Label name="headline_sound" text="Sound" font="headline" />
 			<hr />
@@ -70,7 +70,7 @@
 			</HBox>
 		</VBox>
 
-		<VBox name="mouse_settings" padding="2">
+		<VBox name="mouse_settings" padding="0">
 			<Label name="headline_mouse" text="Mouse" font="headline" position_technique="center:center" />
 			<hr />
 
@@ -108,10 +108,10 @@
 
 
 <!-- Game section -->
-	<HBox name="game_settings" position="185,45" padding="25">
+	<HBox name="game_settings" position="185,45" padding="0">
 		<!-- Left pane -->
-		<VBox name="game_left" max_size="320,500" min_size="320,0" padding="20">
-			<VBox name="saving_settings" padding="2">
+		<VBox name="game_left" max_size="320,500" min_size="320,0" padding="0">
+			<VBox name="saving_settings" padding="0">
 				<Label name="headline_saving" text="Saving" font="headline" position_technique="center:center" />
 				<hr />
 
@@ -140,7 +140,7 @@
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
 			</VBox>
 
-			<VBox name="language_settings" padding="2">
+			<VBox name="language_settings" padding="0">
 				<Label text="Language" position_technique="center:center" name="headline_language" font="headline" />
 				<hr />
 
@@ -151,8 +151,8 @@
 		</VBox>
 
 		<!-- Right pane -->
-		<VBox name="game_right" max_size="320,500" min_size="320,0" padding="20">
-			<VBox name="misc_settings" padding="2">
+		<VBox name="game_right" max_size="320,500" min_size="320,0" padding="0">
+			<VBox name="misc_settings" padding="0">
 				<Label name="headline_misc" text="General" font="headline" position_technique="center:center" />
 				<hr />
 
@@ -206,7 +206,7 @@
 				</HBox>
 			</VBox>
 
-			<VBox name="network_settings" padding="2">
+			<VBox name="network_settings" padding="0">
 				<Label name="headline_network" text="Network" font="headline" position_technique="center:center" />
 				<hr />
 				<HBox max_size="320,60">
@@ -219,7 +219,7 @@
 	</HBox>
 
 	<!-- Hotkeys section -->
-	<HBox name="hotkeys_settings" position="185,45" padding="25" />
+	<HBox name="hotkeys_settings" position="185,45" padding="0" />
 
 	<!-- General section -->
 	<HBox position="180,500" padding="245">

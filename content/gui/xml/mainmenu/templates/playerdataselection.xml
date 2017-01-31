@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<VBox position="100,190" name="playerdataselection" padding="15">
+<VBox position="100,190" name="playerdataselection" padding="0">
 	<HBox min_size="250,20">
 		<Label name="player_label" text="Player name:" />
 		<TextField name="playername" max_size="250,20" min_size="150,20" />
@@ -7,7 +7,7 @@
 
 	<HBox>
 		<Label name="color_label" text="Color:" fixed_size="100,20" />
-		<HBox padding="15">
+		<HBox padding="0">
 			<VBox>
 			<Spacer fixed_size="10,10" />
 				<Label name="selectedcolor" fixed_size="50,50" text=" " comment="noi18n" />
