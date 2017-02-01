@@ -97,7 +97,7 @@ class ReRunInfoPlugin(Plugin):
 
 		_, module, call = test.address()
 
-		output = ['python2', 'run_tests.py', u'{0}:{1}'.format(module, call)]
+		output = ['python2', 'run_tests.py', u'{}:{}'.format(module, call)]
 
 		# add necessary flags
 		if 'tests.gui' in module:
