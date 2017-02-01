@@ -3,10 +3,10 @@
 	position_technique="center:center"
 	background_image="content/gui/images/background/notice230.png">
 
-<VBox position="50,30" padding="10">
+<VBox position="50,30" padding="0">
 	<Label name="headline_change_name" text="Change name" />
 	<hr />
-	<HBox padding="10">
+	<HBox padding="0">
 		<Label name="old_name_label" text="Old name:" />
 		<Label name="old_name" />
 	</HBox>

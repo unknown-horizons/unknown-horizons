@@ -47,7 +47,7 @@
 			<!-- Resources -->
 			<hr position="0,255" />
 			<Label position="0,265" name="needed_res_label" text="Needed resources:" />
-			<HBox name="needed_res" position="0,285" padding="8" />
+			<HBox name="needed_res" position="0,285" padding="0" />
 
 		</Container>
 	</Container>

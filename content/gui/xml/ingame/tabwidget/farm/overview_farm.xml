@@ -26,7 +26,7 @@
 	</HBox>
 
 	<ScrollArea name="transparent_scrollarea" fixed_size="210,320" position="20,87">
-		<VBox name="production_lines" position="20,87" padding="13" />
+		<VBox name="production_lines" position="20,87" padding="0" />
 	</ScrollArea>
 
 

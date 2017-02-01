@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<VBox name="editor_select_map" fixed_size="320,465" padding="10">
+<VBox name="editor_select_map" fixed_size="320,465" padding="0">
 	<Label text="Choose a saved game's map:" name="headline_choose_saved_game" />
 	<ScrollArea fixed_size="300,140" name="saved_game_list_area">
 		<ListBox fixed_size="300,140" name="saved_game_list" is_focusable="0" />

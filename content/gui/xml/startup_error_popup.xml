@@ -2,7 +2,7 @@
 <Container name="" size="569,350" position="225,175" base_color="0,0,0,0"
 	background_image="content/gui/images/background/notice350.png">
 
-<VBox position="50,40" padding="10" base_color="0,0,0,0">
+<VBox position="50,40" padding="0" base_color="0,0,0,0">
 	<Label name="headline" font="headline" min_size="300,0" />
 	<hr />
 	<Label name="msg" wrap_text="1" fixed_size="330,180" font="default" />

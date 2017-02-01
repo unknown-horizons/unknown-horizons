@@ -9,7 +9,7 @@
 				<hr position="50,30" />
 			</Container>
 
-			<VBox padding="5">
+			<VBox padding="0">
 				<RadioButton position="0,0" size="32,32" name="create_new_map" group="map_source" text="Create new map" />
 				<RadioButton position="0,30" size="32,32" name="load_existing_map" group="map_source" text="Load existing map" />
 				<RadioButton position="0,60" size="32,32" name="load_saved_game_map" group="map_source" text="Load saved game's map" />

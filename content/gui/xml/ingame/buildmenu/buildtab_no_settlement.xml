@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="tab0" size="250,500" padding="2">
+<Container name="tab0" size="250,500" padding="0">
 <TabBG amount="7" />
 
 <Container position="0,70" size="250,380">
@@ -10,7 +10,7 @@
 
 	<hr position="20,30" />
 
-	<VBox position="30,45" size="220,280" padding="10">
+	<VBox position="30,45" size="220,280" padding="0">
 		<Label name="howto_1_need_warehouse"  wrap_text="1"
 			fixed_size="210,60"
 			text="You need to found a settlement before you can construct buildings!" />

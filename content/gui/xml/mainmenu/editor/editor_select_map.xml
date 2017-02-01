@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<VBox name="editor_select_map" fixed_size="320,465" padding="10">
+<VBox name="editor_select_map" fixed_size="320,465" padding="0">
 	<Label text="Choose a map:" name="headline_choose_map_lbl" />
 	<ScrollArea fixed_size="300,140" name="map_list_area">
 		<ListBox fixed_size="300,140" name="map_list" is_focusable="0" />

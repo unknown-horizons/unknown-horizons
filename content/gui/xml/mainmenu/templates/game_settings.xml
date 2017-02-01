@@ -30,7 +30,7 @@
 		-->
 	</HBox>
 	<!--
-	<HBox name="param_catastrophes" padding="15">
+	<HBox name="param_catastrophes" padding="0">
 		<HBox name="map_param">
 			<CheckBox name="fire" min_size="15,15"  marked="1" />
 			<Label text="Fire" comment="Whether to enable this kind of catastrophe in the game." />

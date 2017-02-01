@@ -99,7 +99,7 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 		# Overwrite a few style pieces
 		for box in self.widget.findChildren(name='box'):
 			box.margins = (30, 0) # to get some indentation
-			box.padding = 3
+			box.padding = 0
 		for listbox in self.widget.findChildren(name='translators'):
 			listbox.background_color = NOTHING
 

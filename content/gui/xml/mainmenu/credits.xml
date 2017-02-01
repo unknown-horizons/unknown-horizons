@@ -10,7 +10,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
-<HBox name="credits_team_2016" position="185,45" padding="10">
+<HBox name="credits_team_2016" position="185,45" padding="0">
 	<ScrollArea name="uh-team-2016/2017" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="UH-Team-2016/2017" name="headline" />
@@ -56,7 +56,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_team_2015" position="185,45" padding="10">
+<HBox name="credits_team_2015" position="185,45" padding="0">
 	<ScrollArea name="uh-team-2015" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="UH-Team-2015" name="headline" />
@@ -131,7 +131,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_patchers" position="185,45" padding="10">
+<HBox name="credits_patchers" position="185,45" padding="0">
 	<ScrollArea name="patchers" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Patchers" name="headline" />
@@ -223,7 +223,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_translators" position="185,45" padding="10">
+<HBox name="credits_translators" position="185,45" padding="0">
 	<ScrollArea name="translators" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Translators" name="headline" />
@@ -625,7 +625,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_packagers" position="185,45" padding="10">
+<HBox name="credits_packagers" position="185,45" padding="0">
 	<VBox fixed_size="310,500">
 		<Label text="Packagers" name="headline" />
 		<hr />
@@ -648,7 +648,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</VBox>
 </HBox>
 
-<HBox name="credits_thanks" position="185,45" padding="10">
+<HBox name="credits_thanks" position="185,45" padding="0">
 	<VBox fixed_size="310,500">
 		<Label text="Special Thanks" name="headline" />
 		<hr />

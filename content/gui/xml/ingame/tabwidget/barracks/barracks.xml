@@ -53,7 +53,7 @@
 
 		<!-- Resources -->
 		<Label position="0,55" name="UB_needed_res_label" text="Resources still needed:" />
-		<HBox position="0,75" size="260,50" name="UB_needed_resources_container" padding="8">
+		<HBox position="0,75" size="260,50" name="UB_needed_resources_container" padding="0">
 			<!-- dynamical display of the three most wanted res with amount in one line, looking like this:
 			[ ] 11t	[ ] 8t	[ ] 2t -->
 		</HBox>

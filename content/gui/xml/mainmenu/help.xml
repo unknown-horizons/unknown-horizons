@@ -7,7 +7,7 @@
 	<hr />
 
 	<ScrollArea name="help_box" fixed_size="310,470">
-		<VBox name="tip_box" padding="10" />
+		<VBox name="tip_box" padding="0" />
 	</ScrollArea>
 </VBox>
 

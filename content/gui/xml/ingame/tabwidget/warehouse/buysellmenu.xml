@@ -9,7 +9,7 @@
 
 		<hr position="20,30" />
 		<!-- Replaced with the buy/sell boxes. -->
-		<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
+		<HBox size="250, 100"  position="23,47"  name="content"  padding="0" />
 		<hr position="20,105" />
 		<Label name="hint_label" position="17,120" wrap_text="1"
 			fixed_size="220,80" />

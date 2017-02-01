@@ -4,7 +4,7 @@
 
 	<!-- left side -->
 
-	<VBox name="left_vbox" fixed_size="350,508" position="75,40" padding="5" />
+	<VBox name="left_vbox" fixed_size="350,508" position="75,40" padding="0" />
 	<VBox position="250,495" name="wait_options">
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
@@ -20,7 +20,7 @@
 
 	<!-- right side -->
 
-	<VBox name="right_vbox" fixed_size="330,508" position="416,40" padding="2">
+	<VBox name="right_vbox" fixed_size="330,508" position="416,40" padding="0">
 		<Icon name="minimap" fixed_size="256,256" is_focusable="0" /> <!-- settlement selection in minimap -->
 
 		<!-- this box is only displayed on resource selection. -->
