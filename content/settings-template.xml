@@ -19,7 +19,7 @@
 		<Setting name="Lighting" type="int"> 0 </Setting>
 		<Setting name="GLUseFramebuffer" type="bool"> True </Setting>
 		<Setting name="GLUseNPOT" type="bool"> True </Setting>
-		<Setting name="MouseSensitivity" type="float"> 0.0 </Setting>
+		<Setting name="MouseSensitivity" type="float"> 1.0 </Setting>
 		<Setting name="FrameLimitEnabled" type="bool"> True </Setting>
 		<Setting name="FrameLimit" type="int"> 60 </Setting>
 		<Setting name="GLUseMonochrome" type="bool">False</Setting>
