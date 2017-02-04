@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-01-31 02:16+0000\n"
+"PO-Revision-Date: 2017-02-04 11:41+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 2.11\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -321,19 +321,16 @@ msgstr "(선택 탭 처럼)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:23
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
-#, fuzzy
 msgid "$res"
 msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
-#, fuzzy
 msgid "24t"
 msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
-#, fuzzy
 msgid "14t"
 msgstr "14t"
 
@@ -341,20 +338,18 @@ msgstr "14t"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
-#, fuzzy
 msgid "06t"
 msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
-#, fuzzy
 msgid "2500"
 msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "슬루프 오브 워"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
@@ -368,10 +363,8 @@ msgstr "업그레드 사기"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
-#, fuzzy
-#| msgid "cannon"
 msgid "Cannons"
-msgstr "캐논"
+msgstr "대포"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
@@ -380,13 +373,11 @@ msgstr "선체"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
-#, fuzzy
 msgid "+ 24t"
 msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
-#, fuzzy
 msgid "+ 14t"
 msgstr "+ 14t"
 
@@ -394,13 +385,11 @@ msgstr "+ 14t"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
-#, fuzzy
 msgid "+ 06t"
 msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
-#, fuzzy
 msgid "+ 1457"
 msgstr "+ 1457"
 
@@ -1793,28 +1782,31 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"종교 시설의 범위가 모든 천막에 포함되는지 쉽게 확인하려면 건설 메뉴에서 선택하고 기존 종교시설 위로 가져 가십시오. 포함되지않는 천막은 "
+"노란색으로 표시됩니다. 이웃에 새로운 종교 시설을 건설하는 것이 좋습니다."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
-msgstr ""
+msgstr "새로운 게임을 시작할 때 '인공지능 놀사람'을 증가시켜 컴퓨터 놀사람을 추가하여 혼자 놀사람과 즐기십시오."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
-msgstr ""
+msgstr "첫 번째 단계는 인공지능 놀사람이 정착을 설정하는 방법을 보면 더 쉽습니다."
 
 #: horizons/gui/modules/loadingscreen.py:85
+#, fuzzy
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
-msgstr ""
+msgstr "재미있는 시세만 원하십니까? 게임 페이지의 설정 메뉴에서 여기에 표시된 시세 유형을 변경하십시오."
 
 #: horizons/gui/modules/loadingscreen.py:86
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "장터는 길을 건설하여 연결 하십시오."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2174,12 +2166,10 @@ msgid "Restart required"
 msgstr "다시 시작이 필요"
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "변경사항중 일부는 게임의 재시작이 필요합니다."
+msgstr "변경 사항중 일부는 재시작이 필요합니다. 지금 게임을 다시 시작하시겠습니까?"
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
@@ -2319,16 +2309,12 @@ msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] "%s 의 추가 건물은 파괴 됩니다."
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "창고 개요"
+msgstr "병영 개요"
 
 #: horizons/gui/tabs/barrackstabs.py:116
-#, fuzzy
-#| msgid "sword"
 msgid "Swordman"
-msgstr "칼"
+msgstr "검투사"
 
 #: horizons/gui/tabs/barriertab.py:34 horizons/gui/tabs/buildingtabs.py:42
 #: horizons/gui/tabs/overviewtab.py:31
@@ -2651,22 +2637,18 @@ msgstr "지상전투를 위해 적당한 부대를 모집합니다."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "목조 탑"
+msgstr "나무 장벽"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "진흙 벽"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "교육을 제공합니다."
+msgstr "안전을 제공합니다."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2691,14 +2673,12 @@ msgstr "배와 소형선박을 건조합니다. 해안에 건설합니다."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Brewery"
-msgstr ""
+msgstr "양조장"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "밀가루 소비. 음식 생산."
+msgstr "호프를 사용하여 맥주를 제조합니다."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
@@ -2723,14 +2703,12 @@ msgstr "돼지나 소가 필요합니다. 음식을 생산합니다."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:114
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "대포 제작소"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "철에서 무기를 생산."
+msgstr "대포를 생산합니다."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:121
@@ -2839,17 +2817,13 @@ msgstr "약초를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "곡물 밭"
+msgstr "호프 밭"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "곡물을 얻습니다. 농장이 필요합니다."
+msgstr "맥주재료를 얻습니다. 농장이 필요합니다."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -3063,8 +3037,6 @@ msgstr "모든 광물을 정제합니다."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "석재 매장층"
 
@@ -3205,8 +3177,6 @@ msgstr "목재를 제공합니다. 벌목꾼에의해 베어짐."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
 msgstr "마을 학교"
 
@@ -3886,10 +3856,9 @@ msgid "corn"
 msgstr "곡물"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "{name}의 이름으로 새로운 배 생성 되었습니다."
+msgstr "{name}의 이름으로 병사가 전투 준비 되었습니다."
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
@@ -3991,7 +3960,7 @@ msgstr "동전"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "맥주"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -4122,10 +4091,9 @@ msgid "sword"
 msgstr "칼"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "{name}의 이름으로 새로운 배 생성 되었습니다."
+msgstr "{name} 호가 건조 되었습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
