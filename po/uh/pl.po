@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2016-07-31 15:07+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2017-02-05 12:34+0000\n"
+"Last-Translator: Adrian Labuda <adr.labuda@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.11\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -239,16 +239,12 @@ msgid "Running costs"
 msgstr "Koszty eksploatacji"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Aby wybudować łódź, kliknij na jedną z zakładek, zaznacz pożądany okręt i "
-"potwierdź swój wybór."
+"Aby wybudować jednostkę lądową, kliknij na jedną z zakładek, zaznacz "
+"pożądaną jednostkę i potwierdź swój wybór."
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -429,10 +425,8 @@ msgstr ""
 "potwierdź swój wybór."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "Zbuduj ten okręt!"
+msgstr "Zbuduj okręt:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -856,11 +850,11 @@ msgstr "Wyjdź"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "Idź do poprzedniej strony"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "Idź do następnej strony"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -1831,16 +1825,22 @@ msgid ""
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:83
+#, fuzzy
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Aby zapewnić większą rozrywkę, dodaj graczy AI kiedy rozpoczynasz nową "
+"rozgrywkę."
 
 #: horizons/gui/modules/loadingscreen.py:84
+#, fuzzy
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Pierwsze kroki są łatwiejsze jeśli zobaczysz jak gracz AI rozbudowuje swoją "
+"osadę."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid ""
@@ -1849,8 +1849,9 @@ msgid ""
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:86
+#, fuzzy
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Targowisko łączy twoje budynki podobnie jak droga."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
