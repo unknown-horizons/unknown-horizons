@@ -2,9 +2,9 @@
 
 <!-- Template for the build related fields submenu to be inserted to the farm overview -->
 <Container size="230,50" name="buildings_container">
-	<HBox padding="2" name="build_button_bg_container">
+	<HBox padding="0" name="build_button_bg_container">
 	</HBox>
 
-	<HBox position="0,2" padding="8" name="build_button_container">
+	<HBox position="0,2" padding="0" name="build_button_container">
 	</HBox>
 </Container>

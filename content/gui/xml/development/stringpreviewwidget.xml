@@ -7,10 +7,10 @@
 		<ListBox name="scenario_list" is_focusable="0" />
 	</ScrollArea>
 
-	<VBox position="325,45" min_size="200,300" max_size="200,300" padding="10">
+	<VBox position="325,45" fixed_size="200,300" padding="0">
 		<Button name="load" text="Load / Reload" />
-		<Label name="hintlbl" wrap_text="1" max_size="200,80" min_size="200,80"
+		<Label name="hintlbl" wrap_text="1" fixed_size="200,80"
 			text="Select a scenario and click on 'Load / Reload' to update the messages in the captain's log" />
-		<Label name="stats" wrap_text="1" max_size="200,80" min_size="200,80" />
+		<Label name="stats" wrap_text="1" fixed_size="200,80" />
 	</VBox>
 </Container>

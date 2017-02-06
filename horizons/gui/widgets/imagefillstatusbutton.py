@@ -32,7 +32,7 @@ class ImageFillStatusButton(Container):
 
 	ICON_SIZE = (32, 32)
 	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
-	PADDING = 3
+	PADDING = 0
 
 	def __init__(self, path, text, res_id, helptext="",
 	             filled=0, marker=0, uncached=False, **kwargs):

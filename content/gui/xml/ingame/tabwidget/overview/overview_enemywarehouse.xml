@@ -7,7 +7,7 @@
 	<Container position="0,70" size="600,400">
 
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
+		<Spacer min_size="0,0"  max_size="50,50" />
 			<Label name="headline" /> <!-- set to owner player name-->
 		</HBox>
 
@@ -16,7 +16,7 @@
 		<!-- Resources for sale in the settlement -->
 		<Container size="520,70" position="20,40">
 			<Label name="selling_label" text="Selling" />
-			<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
+			<HBox padding="0" fixed_size="160,50" position="0,20">
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
@@ -27,7 +27,7 @@
 		<!-- Resources being bought in the settlement -->
 		<Container size="520,70" position="20,110">
 			<Label name="buying_label" text="Buying" />
-			<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
+			<HBox padding="0" fixed_size="160,50" position="0,20">
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />

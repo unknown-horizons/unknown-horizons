@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
 <Container name="main_container" size="50,50">
-	<ImageButton name="unit_button" max_size="48,48" min_size="48,48" />
+	<ImageButton name="unit_button" fixed_size="48,48" />
 	<Label name="instance_number" />
 	<Icon name="health_background" image="content/gui/images/tabwidget/red_line.png" position="43,0" size="0,0" />
 	<Icon name="health" image="content/gui/images/tabwidget/green_line.png" position="43,0" size="0,0" />

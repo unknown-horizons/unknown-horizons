@@ -2,9 +2,9 @@
 
 <AutoResizeContainer name="hotkeys_window">
 <!-- Hotkeys section -->
-<HBox name="hotkeys" padding="10">
-	<ScrollArea name="hotkeys_list" max_size="600,450" min_size="600,450">
-		<HBox name="label_button_columns" padding="30">
+<HBox name="hotkeys" padding="0">
+	<ScrollArea name="hotkeys_list" fixed_size="600,450">
+		<HBox name="label_button_columns" padding="0">
 			<VBox name="keys_container">
 				<Label name="labels_headline" text="Actions" />
 				<Label name="lbl_LEFT" text="LEFT" comment="noi18n_text" helptext="Scroll left" />

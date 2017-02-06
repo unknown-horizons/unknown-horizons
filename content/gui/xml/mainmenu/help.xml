@@ -6,8 +6,8 @@
 	<Label name="headline" />
 	<hr />
 
-	<ScrollArea name="help_box" max_size="310,470" min_size="310,470">
-		<VBox name="tip_box" padding="10" />
+	<ScrollArea name="help_box" fixed_size="310,470">
+		<VBox name="tip_box" padding="0" />
 	</ScrollArea>
 </VBox>
 

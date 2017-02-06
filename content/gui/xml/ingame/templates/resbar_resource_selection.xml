@@ -8,7 +8,7 @@
 	<hr position="21,30" />
 
 	<!-- Displays list of resources to select one which is displayed in this slot. -->
-	<ScrollArea min_size="225,260" max_size="225,260" size="225,260" position="12,39">
+	<ScrollArea fixed_size="225,260" position="12,39">
 		<VBox name="resources" size="225,0">
 			<Spacer />
 		</VBox>

@@ -10,8 +10,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
-<HBox name="credits_team_2016" position="185,45" padding="10">
-	<ScrollArea name="uh-team-2016/2017" max_size="310,500" min_size="310,500">
+<HBox name="credits_team_2016" position="185,45" padding="0">
+	<ScrollArea name="uh-team-2016/2017" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="UH-Team-2016/2017" name="headline" />
 		<hr />
@@ -50,14 +50,14 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="uh-team-2016/2017" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team-2016/2017" fixed_size="310,500">
 	<VBox min_size="310,500">
 	</VBox>
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_team_2015" position="185,45" padding="10">
-	<ScrollArea name="uh-team-2015" max_size="310,500" min_size="310,500">
+<HBox name="credits_team_2015" position="185,45" padding="0">
+	<ScrollArea name="uh-team-2015" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="UH-Team-2015" name="headline" />
 		<hr />
@@ -93,7 +93,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="uh-team-2015" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team-2015" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<VBox> <Label text="Game-Play Design" name="headline" />
 			<VBox name="box">
@@ -131,8 +131,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_patchers" position="185,45" padding="10">
-	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
+<HBox name="credits_patchers" position="185,45" padding="0">
+	<ScrollArea name="patchers" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Patchers" name="headline" />
 		<hr />
@@ -167,7 +167,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
+	<ScrollArea name="patchers" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<VBox> <Label text="2011.2" name="headline" />
 			<VBox name="box">
@@ -223,8 +223,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_translators" position="185,45" padding="10">
-	<ScrollArea name="translators" max_size="310,500" min_size="310,500">
+<HBox name="credits_translators" position="185,45" padding="0">
+	<ScrollArea name="translators" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Translators" name="headline" />
 		<hr />
@@ -457,7 +457,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="translators" max_size="310,500" min_size="310,500">
+	<ScrollArea name="translators" fixed_size="310,500">
 	<VBox min_size="310,500">
 		<VBox> <Label text="Norwegian" name="headline" />
 			<VBox name="box">
@@ -625,8 +625,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_packagers" position="185,45" padding="10">
-	<VBox max_size="310,500" min_size="310,500">
+<HBox name="credits_packagers" position="185,45" padding="0">
+	<VBox fixed_size="310,500">
 		<Label text="Packagers" name="headline" />
 		<hr />
 		<VBox> <Label text="Debian" name="headline" />
@@ -648,8 +648,8 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</VBox>
 </HBox>
 
-<HBox name="credits_thanks" position="185,45" padding="10">
-	<VBox max_size="310,500" min_size="310,500">
+<HBox name="credits_thanks" position="185,45" padding="0">
+	<VBox fixed_size="310,500">
 		<Label text="Special Thanks" name="headline" />
 		<hr />
 		<VBox> <Label text="Thanks, all of you are awesome!" name="headline" />
@@ -675,7 +675,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
-	<VBox max_size="310,500" min_size="310,500">
+	<VBox fixed_size="310,500">
 		<VBox> <Label text="Portfolio Sites" name="headline" />
 			<VBox name="box">
 				<Label text="Matthew Pablo: http://matthewpablo.com/" />
