@@ -20,7 +20,7 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2017-XX-XX: Milestone 2017.2
+2017-02-07: Milestone 2017.2
 ----------------------------
 changelog date: 28th Jan 2017
 
