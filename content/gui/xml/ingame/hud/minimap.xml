@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <Container size="230,235" name="mainhud"> <!-- positioning happens in ingamegui#init -->
-<!-- This size only needs to be "210,230", but is larger to prevent accidental scrolling.
+<!-- This size only needs to be "210,235", but is larger to prevent accidental scrolling.
 In case you change the size of this Container, also adapt the ingamegui positioning value.  -->
 <!-- The actual minimap Icon is placed after everything else so that it gets focus  -->
 
