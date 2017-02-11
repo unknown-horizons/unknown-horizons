@@ -54,6 +54,5 @@
 
 <OkButton position="1640,500" helptext="Exit to main menu" />
 <Button name="reset_to_default" text="Reset to default keys" position="1540,450" helptext="Reset to default" />
-<!--
--->
+
 </AutoResizeContainer>

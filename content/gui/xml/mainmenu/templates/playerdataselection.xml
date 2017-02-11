@@ -9,7 +9,7 @@
 		<Label name="color_label" text="Color:" fixed_size="100,20" />
 		<HBox padding="0">
 			<VBox>
-			<Spacer fixed_size="10,10" />
+			<Spacer fixed_size="0,18" />
 				<Label name="selectedcolor" fixed_size="50,50" text=" " comment="noi18n" />
 			</VBox>
 			<VBox name="playercolor" fixed_size="125,75" />
