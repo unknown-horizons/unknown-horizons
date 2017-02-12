@@ -42,7 +42,7 @@
 	</HBox>
 </VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name="chat_overview" fixed_size="700,508" padding="0" position="168,40">
+<HBox name="chat_overview" fixed_size="700,508" padding="0" position="155,40">
 	<VBox name="game_messages" comment="Left page" fixed_size="345,508">
 		<Label name="headline_game_messages" text="Game messages"
 			wrap_text="0" fixed_size="323,25" />
