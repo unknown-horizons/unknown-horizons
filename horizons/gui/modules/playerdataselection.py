@@ -46,8 +46,7 @@ class PlayerDataSelection(object):
 		for color in (Color.get_defaults() if color_palette is None else color_palette):
 			label = Label(name = u'{color}'.format(color=color.name),
 			              text = u"    ",
-			              max_size = (20, 20),
-			              min_size = (20, 20),
+			              fixed_size = (20, 20),
 			              background_color = color)
 			events['{label}/mouseClicked'.format(label=color.name)] = \
 			                             Callback(self.set_color, color.id)
