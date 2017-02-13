@@ -5,7 +5,7 @@
 In case you change the size of this Container, also adapt the ingamegui positioning value.  -->
 <!-- The actual minimap Icon is placed after everything else so that it gets focus  -->
 
-<Container name="background_and_buttons" position="-30,0" size="240,240">
+<Container name="background_and_buttons" position="-32,-2" size="240,240">
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
 	<Label name="speed_text" position="50,90" font="default_bold" />
