@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="singleplayermenu"  size="800,580"  position_technique="center:center"
+<Container name="singleplayermenu"  size="800,580"  position_technique="center:center" outline_color="255, 0, 0, 255"
 	background_image="content/gui/images/background/book.png">
 
 	<Container size="340,510"  position="60,32">

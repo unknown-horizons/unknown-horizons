@@ -624,13 +624,10 @@ class ResourceOverviewBar(object):
 			box = HBox(padding=0, min_size=(70, 0))
 			box.name = "resbar_stats_line_%s" % num
 			box.helptext = helptext
-			box.addChild(Icon(image=image, fixed_size=(16,16)))
+			box.addChild(Icon(image=image))
 			box.addChild(Spacer())
 			box.addChild(Label(name="resbar_stats_entry_%s"%num))
-			#TODO This label is a workaround for some fife font bug,
-			# probably http://github.com/fifengine/fifengine/issues/666.
-			templabel = Label(name="resbar_stats_whatever_%s"%num)
-			box.addChild(templabel)
+			box.addChild(Label(name="resbar_stats_whatever_%s"%num))
 			if num == len(images) - 1:
 				# The balance line (last one) gets bold font.
 				box.stylize('resource_bar')
