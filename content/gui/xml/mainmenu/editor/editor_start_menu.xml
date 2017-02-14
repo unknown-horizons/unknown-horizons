@@ -18,7 +18,7 @@
 
 		<Container name="right_side" size="320,465" position="345,0" />
 
-		<HBox max_size="650,40" min_size="650,40" position="0,468">
+		<HBox fixed_size="650,40" position="0,468">
 			<CancelButton name="cancel"  helptext="Exit to main menu" />
 			<Spacer />
 			<OkButton name="okay"  helptext="Start editor" />

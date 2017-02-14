@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<VBox max_size="320,480"  min_size="320,480"  name="right_side">
+<VBox fixed_size="320,480"  name="right_side">
 	<Label text="Choose a map to play:"  name="headline_choose_map_lbl" />
-	<ScrollArea max_size="290,140" min_size="290,140" name="map_list_area">
+	<ScrollArea fixed_size="290,140" name="map_list_area">
 		<ListBox name="maplist" is_focusable="0" />
 	</ScrollArea>
 	<Label name="recommended_number_of_players_lbl" />
