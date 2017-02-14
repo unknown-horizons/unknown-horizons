@@ -60,6 +60,7 @@ class TradeRoute(ChangeListener):
 		self.waypoints.append({
 			'warehouse': warehouse,
 			'resource_list': {},
+			'is_unload_all': False,
 		})
 
 	def set_wait_at_load(self, flag):
@@ -117,15 +118,35 @@ class TradeRoute(ChangeListener):
 	def remove_from_resource_list(self, position, res_id):
 		self.waypoints[position]['resource_list'].pop(res_id)
 
+	def reset_resources(self, position):
+		self.waypoints[position]['resource_list'].clear()
+		self.waypoints[position]['is_unload_all'] = False
+
+	def unload_all(self, position):
+		self.waypoints[position]['resource_list'].clear()
+		self.waypoints[position]['is_unload_all'] = True
+
 	def on_route_warehouse_reached(self):
 		"""Transfer resources, wait if necessary and move to next warehouse when possible"""
 		warehouse = self.get_location()['warehouse']
-		resource_list = self.current_transfer or self.get_location()['resource_list']
+		resource_list = self.current_transfer
+		if not resource_list:
+			loc = self.get_location()
+			if loc['is_unload_all']:
+				ship_inv = self.ship.get_component(StorageComponent).inventory
+				resource_list = {}
+				for res in ship_inv.iterslots():
+					resource_list[res] = -ship_inv[res]
+			else:
+				resource_list = self.get_location()['resource_list']
 		suppress_messages = self.current_transfer is not None # no messages from second try on
 
-		if self.current_transfer is not None:
+		# make sure we don't keep trying to (un)load something when the
+		# decision about that resource has changed
+		# however, if the disposition is an unload-all, there's no need to look
+		# at individual resources to determine that, just keep trying to unload
+		if self.current_transfer is not None and not self.get_location()['is_unload_all']:
 			for res in copy.copy(self.current_transfer):
-				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
 				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
 				   cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
 					del self.current_transfer[res]
@@ -287,17 +308,18 @@ class TradeRoute(ChangeListener):
 		self.set_wait_at_load(wait_at_load)
 		self.set_wait_at_unload(wait_at_unload)
 
-		query = "SELECT warehouse_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
+		query = "SELECT warehouse_id, unload_all FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
 		offices_id = db(query, self.ship.worldid)
 
-		for office_id, in offices_id:
+		for office_id, unload_all in offices_id:
 			warehouse = WorldObject.get_object_by_id(office_id)
 			query = "SELECT res, amount FROM ship_route_resources WHERE ship_id = ? and waypoint_index = ?"
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
 				'warehouse' : warehouse,
-				'resource_list' : resource_list
+				'resource_list' : resource_list,
+				'is_unload_all': unload_all,
 			})
 
 		waiting = False
@@ -323,11 +345,13 @@ class TradeRoute(ChangeListener):
 
 		for entry in self.waypoints:
 			index = self.waypoints.index(entry)
-			db("INSERT INTO ship_route_waypoint(ship_id, warehouse_id, waypoint_index) VALUES(?, ?, ?)",
-			   worldid, entry['warehouse'].worldid, index)
-			for res in entry['resource_list']:
-				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
-				   worldid, index, res, entry['resource_list'][res])
+			db("INSERT INTO ship_route_waypoint(ship_id, warehouse_id, waypoint_index, unload_all) VALUES(?, ?, ?, ?)",
+			   worldid, entry['warehouse'].worldid, index, entry['is_unload_all'])
+
+			if not entry['is_unload_all']:
+				for res in entry['resource_list']:
+					db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
+					   worldid, index, res, entry['resource_list'][res])
 
 	def get_ship_status(self):
 		"""Return the current status of the ship."""

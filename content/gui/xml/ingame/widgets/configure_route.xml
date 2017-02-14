@@ -25,7 +25,7 @@
 
 		<!-- this box is only displayed on resource selection. -->
 		<!-- res selection box, filled with icons -->
-		<VBox name="traderoute_resources" max_size="330,100" min_size="330,100" />
+		<VBox name="traderoute_resources" max_size="330,155" min_size="330,155" />
 
 		<HBox min_size="310,30" max_size="310,30">
 			<Label name="lbl_route_activity" text="Route activity:" position="0,5" />

@@ -47,6 +47,7 @@ class RouteConfig(Window):
 	Widget that allows configurating a ship's trading route
 	"""
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
+	placeholder_icon_path = "content/gui/icons/resources/32/placeholder.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
 	MAX_ENTRIES = 7
@@ -134,6 +135,79 @@ class RouteConfig(Window):
 		else:
 			self.stop_route()
 
+	def get_capacity_per_slot_of_the_ship(self):
+		"""
+		Return how much you can load into one slot on the ship.
+		"""
+		return self.instance.get_component(StorageComponent).inventory.limit
+
+	def get_resource_id_from_slot(self, slot):
+		"""
+		Return the id of a resource currently displayed in the slot's widget.
+		Returns 0 if the slot is empty.
+		"""
+		res_button = slot.findChild(name="button")
+		return self.resource_for_icon[res_button.up_image.source]
+
+	def _is_resource_loaded_before(self, res_id, route_position):
+		# goes from route_position upward and looks for the same resource in all
+		# slots. The ship cycles the route so here when reaching zero, we start
+		# checking from the end.
+		found_at_slot = None
+		for position_offset in range(1, len(self.widgets)):
+			entry = self.widgets[route_position - position_offset]
+
+			if entry.is_unload_all:
+				return False
+
+			for slot in self.slots[entry].values():
+				if self.get_resource_id_from_slot(slot) == res_id:
+					found_at_slot = slot
+					break
+
+			if found_at_slot is not None:
+				break
+
+		return (found_at_slot and found_at_slot.action == "load")
+
+	def turn_entry_back_into_a_normal_one(self, entry):
+		for slot in self.slots[entry].values():
+			entry.removeChild(slot)
+		self.slots.pop(entry)
+		self.add_trade_slots(entry)
+		self._update_slots_to_reflect_resources(entry)
+		position = self.widgets.index(entry)
+		entry.is_unload_all = False
+		self._route_cmd("reset_resources", position)
+
+	def turn_entry_into_full_unload(self, entry):
+		entry.is_unload_all = True
+		for slot in self.slots[entry].values():
+			for child in slot.findChildren():
+				child.capture(
+					Callback(self.turn_entry_back_into_a_normal_one, entry))
+				child.capture(
+					Callback(self.turn_entry_back_into_a_normal_one, entry),
+						event_name='mouseClicked')
+
+			button = slot.findChild(name="button")
+			icon = self.placeholder_icon_path
+			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			button.max_size = button.min_size = button.size = (32, 32)
+
+			amount_lbl = slot.findChild(name="amount")
+			# This is shown in a small trading slot. Keep it short
+			amount_lbl.text = _("all")
+
+			slider = slot.findChild(name="slider")
+			slot.removeChild(slider)
+
+			self.show_unload_icon(slot)
+			slot.adaptLayout()
+
+		position = self.widgets.index(entry)
+		self._route_cmd("unload_all", position)
+
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
@@ -201,8 +275,7 @@ class RouteConfig(Window):
 
 	def toggle_load_unload(self, slot, entry):
 		position = self.widgets.index(entry)
-		res_button = slot.findChild(name="button")
-		res = self.resource_for_icon[res_button.up_image.source]
+		res = self.get_resource_id_from_slot(slot)
 
 		if res != 0:
 			self._route_cmd("toggle_load_unload", position, res)
@@ -284,7 +357,29 @@ class RouteConfig(Window):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 
-		on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
+		# When activated by clicking on an empty slot, default to loading that
+		# slot fully. Otherwise leave the amounts already set
+		if self.get_resource_id_from_slot(slot) == 0:
+			has_value = True
+			value = self.get_capacity_per_slot_of_the_ship()
+		else:
+			has_value = False
+			value = 0
+
+		def resource_picked(res_id):
+			# if the resource was loaded at the last stop, default to unloading
+			# it, and vice versa. if it was never mentioned, load it.
+			if self._is_resource_loaded_before(res_id, position):
+				v = -value
+				slot.action = "unload"
+			else:
+				v = value
+				slot.action = "load"
+
+			h = has_value
+			self.add_resource(res_id, slot=slot, entry=entry,
+				has_value=h, value=v)
+
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
 		widget = 'traderoute_resource_selection.xml'
@@ -294,7 +389,7 @@ class RouteConfig(Window):
 			already_listed = res_id in self.instance.route.waypoints[position]['resource_list']
 			return not (same_icon or already_listed)
 
-		dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
+		dlg = create_resource_selection_dialog(on_click=resource_picked, inventory=inventory,
 			db=self.session.db, widget=widget, amount_per_line=6, res_filter=res_filter)
 
 		self._gui.findChild(name="traderoute_resources").addChild(dlg)
@@ -313,7 +408,7 @@ class RouteConfig(Window):
 		self._gui.findChild(name="traderoute_resources").removeAllChildren()
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
-		x_position = 105
+		x_position = 77
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
@@ -325,7 +420,7 @@ class RouteConfig(Window):
 
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
-			slider.scale_end = float(self.instance.get_component(StorageComponent).inventory.limit)
+			slider.scale_end = float(self.get_capacity_per_slot_of_the_ship())
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
@@ -344,20 +439,7 @@ class RouteConfig(Window):
 			self.slots[entry][num] = slot
 			self.show_load_icon(slot)
 
-	def add_gui_entry(self, warehouse, resource_list=None):
-		vbox = self._gui.findChild(name="left_vbox")
-		entry = load_uh_widget("route_entry.xml")
-		entry.name = 'container_%s' % len(self.widgets)
-		entry.settlement = weakref.ref(warehouse.settlement)
-		self.widgets.append(entry)
-
-		settlement_name_label = entry.findChild(name="warehouse_name")
-		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
-		player_name_label = entry.findChild(name="player_name")
-		player_name_label.text = warehouse.owner.name
-
-		self.add_trade_slots(entry)
-
+	def _update_slots_to_reflect_resources(self, entry, resource_list=None):
 		index = 1
 		resource_list = resource_list or {}
 		for res_id in resource_list:
@@ -370,12 +452,32 @@ class RouteConfig(Window):
 			                  value=resource_list[res_id])
 			index += 1
 
+	def add_gui_entry(self, warehouse, resource_list=None, is_unload_all=False):
+		vbox = self._gui.findChild(name="left_vbox")
+		entry = load_uh_widget("route_entry.xml")
+		entry.name = 'container_%s' % len(self.widgets)
+		entry.settlement = weakref.ref(warehouse.settlement)
+		entry.is_unload_all = False
+		self.widgets.append(entry)
+
+		settlement_name_label = entry.findChild(name="warehouse_name")
+		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
+		player_name_label = entry.findChild(name="player_name")
+		player_name_label.text = warehouse.owner.name
+
+		self.add_trade_slots(entry)
+		self._update_slots_to_reflect_resources(entry, resource_list)
+
 		entry.mapEvents({
+		  'unload_all/mouseClicked': Callback(self.turn_entry_into_full_unload, entry),
 		  'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
 		  'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
 		  'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
+
+		if is_unload_all:
+			self.turn_entry_into_full_unload(entry)
 
 	def append_warehouse(self, warehouse):
 		"""Add a warehouse to the list on the left side.
@@ -443,7 +545,7 @@ class RouteConfig(Window):
 		# don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
 		for entry in self.instance.route.waypoints:
-			self.add_gui_entry(entry['warehouse'], entry['resource_list'])
+			self.add_gui_entry(entry['warehouse'], entry['resource_list'], entry['is_unload_all'])
 
 		self._check_no_entries_label()
 
