@@ -47,5 +47,5 @@ In case you change the size of this Container, also adapt the ingamegui position
 		path="icons/widgets/minimap/gamemenu" helptext="Game menu ({key})" />
 </Container>
 
-<Icon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />
+<Icon name="minimap"  fixed_size="120,120"  position="47,46" />
 </Container>
