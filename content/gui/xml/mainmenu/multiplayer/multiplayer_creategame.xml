@@ -5,7 +5,7 @@
 	<Container size="320,500"  position="55,32"  name="left_side">
 		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
 		<hr position="52,30" />
-		<Icon name="map_preview_minimap" size="128,128" max_size="128,128" position="50, 100" is_focusable="0" />
+		<Icon name="map_preview_minimap" fixed_size="128,128" position="50, 100" is_focusable="0" />
 
 		<VBox position="50,250">
 			<HBox>

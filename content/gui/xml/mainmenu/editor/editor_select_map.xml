@@ -4,5 +4,5 @@
 	<ScrollArea max_size="300,140" min_size="300,140" name="map_list_area">
 		<ListBox max_size="300,140" min_size="300,140" name="map_list" is_focusable="0" />
 	</ScrollArea>
-	<Icon name="map_preview_minimap" size="128,128" max_size="128,128" is_focusable="0" />
+	<Icon name="map_preview_minimap" fixed_size="128,128" is_focusable="0" />
 </VBox>
