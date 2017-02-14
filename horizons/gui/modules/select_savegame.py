@@ -65,7 +65,7 @@ class SelectSavegameDialog(Dialog):
 		w = self._gui.findChild(name='enter_filename')
 		if self._mode in ('save', 'editor-save'): # only show enter_filename on save
 			w.parent.showChild(w)
-		else::
+		else:
 			w.parent.hideChild(w)
 
 		self.last_click_event = None
