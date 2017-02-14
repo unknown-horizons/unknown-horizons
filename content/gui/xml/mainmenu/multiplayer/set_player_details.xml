@@ -2,7 +2,7 @@
 <Container name="set_player_details_dialog_window" size="374,290" position="325,235"
 	background_image="content/gui/images/background/notice290.png">
 
-<VBox position="50,30" padding="10">
+<VBox position="50,30">
 	<Label name="headline_set_player_details" text="Change player details" />
 	<hr />
 	<VBox name="playerdataselectioncontainer"  position="0,60" />

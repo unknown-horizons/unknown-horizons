@@ -3,7 +3,7 @@
 <Container name="load_game_window" size="800,580" position_technique="center:center"
 	 background_image="content/gui/images/background/book.png">
 
-	<VBox name="left_page" max_size="335,495" min_size="335,495" position="85,45" padding="12">
+	<VBox name="left_page" max_size="335,495" min_size="335,495" position="85,45">
 		<Label name="headline" wrap_text="1" max_size="335,20" min_size="335,20" />
 		<hr />
 		<Label text="Your saved games:" name="headline_saved_games_label" wrap_text="1"
@@ -12,7 +12,7 @@
 		<ScrollArea max_size="300,400">
 			<ListBox name="savegamelist" is_focusable="0" />
 		</ScrollArea>
-	<Spacer fixed_size="20" />
+	<Spacer fixed_size="20,0" />
 		<VBox name="gamedetails_box">
 			<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
 				<Label text="Name of the game:" name="gamename_lbl"
@@ -26,15 +26,15 @@
 			</HBox>
 		</VBox>
 
-	<Spacer fixed_size="30" />
-		<HBox max_size="34,40">
+	<Spacer fixed_size="30,0" />
+		<HBox max_size="40,40">
 			<!-- if no max_size is set, button reaction area expands to whole page -->
 			<CancelButton helptext="Cancel" />
 		</HBox>>
 	</VBox> <!-- left_page -->
 
 	<VBox name="right_page" position="420,75"
-		    max_size="380,465" min_size="380,465" padding="5">
+		    max_size="380,465" min_size="380,465">
 		<VBox>
 
 			<HBox name="enter_filename">
@@ -44,7 +44,7 @@
 			</HBox>
 
 			<HBox>
-				<VBox name="savegame_details" padding="15">
+				<VBox name="savegame_details">
 					<Icon name="screenshot" />
 					<Label name="headline_details_label"  text="Details:"
 						comment="More text describing the savegame" />
@@ -57,7 +57,7 @@
 	<Spacer />
 		<HBox min_size="300,40">
 			<DeleteButton helptext="Delete selected savegame" />
-			<Spacer min_size="200" />
+			<Spacer fixed_size="200,0" />
 			<OkButton />
 		</HBox>
 	</VBox>
