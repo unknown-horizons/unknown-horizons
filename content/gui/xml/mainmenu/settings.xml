@@ -212,7 +212,7 @@
 				<HBox max_size="320,60">
 					<Label text="Network port:" name="network_port_lbl"
 					       helptext="If set to 0, use the router default" />
-					<TextField name="network_port" min_size="50,16" />
+					<TextField name="network_port" min_size="50,20" />
 				</HBox>
 			</VBox>
 		</VBox>
