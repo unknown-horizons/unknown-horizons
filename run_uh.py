@@ -128,7 +128,7 @@ def excepthook_creator(outfilename):
 		print(T('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
 	return excepthook
 
-def exithandler(exitcode):
+def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
