@@ -121,7 +121,7 @@ def excepthook_creator(outfilename):
 		with open(outfilename, 'a') as f:
 			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
-		print('\n', T('Unknown Horizons has crashed.', '\n'))
+		print('\n', T('Unknown Horizons has crashed.'), '\n')
 		print(T('We are very sorry for this and want to fix the underlying error.'))
 		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
