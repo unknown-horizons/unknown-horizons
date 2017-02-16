@@ -56,7 +56,6 @@ class TileSetLoader(object):
 
 	@classmethod
 	def load(cls):
-		#print "called"
 		if not cls._loaded:
 			cls.log.debug("Loading tile_sets...")
 			if not horizons.globals.fife.use_atlases:
