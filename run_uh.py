@@ -93,7 +93,7 @@ def get_content_dir_parent_path():
 	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
 	# Try path for Mac Os X app container (Unknown Horizons.app).
 	# Unknown Horizons.app/Contents/Resources/contents
-	options.append(os.path.join(os.getcwd()))
+	options.append(os.getcwd())
 	# Try often-used paths on Linux.
 	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
 		options.append(os.path.join(path, u'unknown-horizons'))
@@ -121,9 +121,7 @@ def excepthook_creator(outfilename):
 		with open(outfilename, 'a') as f:
 			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
-		print('')
-		print(T('Unknown Horizons has crashed.'))
-		print('')
+		print('\n', T('Unknown Horizons has crashed.'), '\n')
 		print(T('We are very sorry for this and want to fix the underlying error.'))
 		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
@@ -134,9 +132,7 @@ def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
-	print('')
-	print('Oh my god! They killed UH.')
-	print('You bastards!')
+	print('\nOh my god! They killed UH. \nYou bastards!')
 	if logfile:
 		logfile.close()
 	sys.exit(exitcode)
@@ -343,7 +339,7 @@ def setup_fife():
 	log_sys_info()
 	if not find_fife():
 		#TODO useful error message anyone?
-		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
+		exit_with_error('Failed to find and/or load FIFE', 'Make sure FIFE was installed as a package/redistributable or compiled from source.')
 
 	from fife import fife
 	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
