@@ -282,7 +282,7 @@ def import_fife(paths):
 		try:
 			from fife import fife
 		except ImportError as e:
-			if str(e) != 'cannot import name fife':
+			if str(e) != "cannot import name 'fife'":
 				log().warning('Failed to use FIFE from %s', fife)
 				log().warning(str(e))
 				if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
