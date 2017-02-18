@@ -20,10 +20,10 @@
 # ###################################################
 
 
-from fife.extensions.pychan.widgets import Container
+from fife.extensions.pychan.widgets import ABox
 
 
-class AutoResizeContainer(Container):
+class AutoResizeContainer(ABox):
 	"""A regular pychan container, that implements resizeToContent"""
 
 	def resizeToContent(self):
