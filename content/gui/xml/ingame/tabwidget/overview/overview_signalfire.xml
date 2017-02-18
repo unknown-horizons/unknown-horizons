@@ -2,7 +2,7 @@
 <Container size="250,350" name="overview_signalfire">
 <TabBG amount="4" />
 
-	<AutoResizeContainer position="0,70">
+	<ABox position="0,70">
 		<!-- Name of building -->
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0,0"  max_size="50,0" />
@@ -18,5 +18,5 @@
 			text="The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 			wrap_text="1" max_size="175,300" />
 
-	</AutoResizeContainer>
+	</ABox>
 </Container>

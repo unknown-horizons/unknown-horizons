@@ -3,7 +3,7 @@
 	Gui to pop up below gold icon to show general stats
 -->
 
-<AutoResizeContainer name="resbar_stats_container">
+<ABox name="resbar_stats_container">
 	<!-- background -->
 	<VBox padding="0">
 		<Icon name="resbar_stats_bg" image="content/gui/images/background/widgets/resbar_stats_background.png" />
@@ -22,4 +22,4 @@
 		-->
 	</VBox>
 
-</AutoResizeContainer>
+</ABox>

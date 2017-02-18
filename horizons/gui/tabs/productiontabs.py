@@ -23,7 +23,7 @@
 import operator
 import weakref
 
-from fife.extensions.pychan.widgets import Icon, Label
+from fife.extensions.pychan.widgets import ABox, Icon, Label
 
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
@@ -31,7 +31,6 @@ from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED, PRODUCTION
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import gettext as T, gettext_lazy as LazyT
@@ -275,7 +274,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 	"""
 	def init_widget(self):
 		super(LumberjackOverviewTab, self).init_widget()
-		container = AutoResizeContainer(position=(20, 210))
+		container = ABox(position=(20, 210))
 		icon = Icon(name='build_all_bg')
 		button = ImageButton(name='build_all_button')
 		container.addChild(icon)

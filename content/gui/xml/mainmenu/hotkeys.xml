@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<AutoResizeContainer name="hotkeys_window">
+<ABox name="hotkeys_window">
 <!-- Hotkeys section -->
 <HBox name="hotkeys">
 	<ScrollArea name="hotkeys_list" fixed_size="600,450">
@@ -56,4 +56,4 @@
 <Button name="reset_to_default" text="Reset to default keys" position="1540,450" helptext="Reset to default" />
 <!--
 -->
-</AutoResizeContainer>
+</ABox>

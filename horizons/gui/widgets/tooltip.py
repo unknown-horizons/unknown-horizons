@@ -23,12 +23,11 @@ import re
 import textwrap
 
 from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import ABox, HBox, Icon, Label
 
 import horizons.globals
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
 
 
@@ -64,7 +63,7 @@ class _Tooltip(object):
 		self.tooltip_shown = False
 
 	def __init_gui(self):
-		self.gui = AutoResizeContainer()
+		self.gui = ABox()
 		self.label = Label(position=(10, 5))
 		self.bg = TooltipBG()
 		self.gui.addChildren(self.bg, self.label)

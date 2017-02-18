@@ -78,14 +78,13 @@ def init_pychan():
 	from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
-	from horizons.gui.widgets.container import AutoResizeContainer
 	from horizons.gui.widgets.tooltip import _Tooltip
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
 	           Inventory, BuySellInventory, ImageFillStatusButton,
 	           ProgressBar, StepSlider, TabBG,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
-	           AutoResizeContainer, RenameLabel, RenameImageButton,
+	           RenameLabel, RenameImageButton,
 	           TilingHBox, TilingProgressBar, hr,
 			 # This overwrites the ImageButton provided by FIFE!
 	           ImageButton,
@@ -113,10 +112,9 @@ def init_pychan():
 
 		widget.hide = catch_gcn_exception_decorator(widget.hide)
 
-	from fife.extensions.pychan import Label, Icon, VBox, HBox
+	from fife.extensions.pychan import ABox, HBox, Icon, Label, VBox
 	# this is white list of widgets with tooltip.
-	widgets_with_tooltip = [Label, Icon, HBox, VBox,
-	                        ImageButton, AutoResizeContainer]
+	widgets_with_tooltip = [ABox, HBox, Icon, ImageButton, Label, VBox]
 
 	for widget in widgets_with_tooltip:
 		# Copy everything we need from the tooltip class (manual mixin).

@@ -18,11 +18,11 @@
 	</Container>
 
 	<Label text="Select terrain:" name="headline_terrain" position="25,155" />
-	<AutoResizeContainer position="40,175">
+	<ABox position="40,175">
 		<ImageButton position="0,0" name="default_land" />
 		<ImageButton position="80,0" name="sand" />
 		<ImageButton position="0,40" name="shallow_water" />
 		<ImageButton position="80,40" name="water" />
-	</AutoResizeContainer>
+	</ABox>
 	<Label text="(right click to stop)" name="cursor_hint" position="25,255" />
 </Container>
