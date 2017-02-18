@@ -87,8 +87,7 @@ def init_pychan():
 	           RenameLabel, RenameImageButton,
 	           TilingHBox, TilingProgressBar, hr,
 			 # This overwrites the ImageButton provided by FIFE!
-	           ImageButton,
-	           ]
+	           ImageButton]
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
