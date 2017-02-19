@@ -333,12 +333,12 @@ def get_fife_paths():
 def setup_fife():
 	log_paths()
 	log_sys_info()
+    paths = get_fife_paths()
 
-	if not find_fife(get_fife_paths()):
+	if not find_fife(paths):
         try:
             from fife import fife
         except ImportError:
-            paths = get_fife_paths()
             exit_string = ""
             for path in paths:
                 exit_string += "{}\n"
