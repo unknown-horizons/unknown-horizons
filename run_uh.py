@@ -275,9 +275,9 @@ def setup_debugging(options):
 		log_sys_info()
 
 def find_fife(paths):
-    """Returns True if the fife module was found in one of the supplied paths."""
+	"""Returns True if the fife module was found in one of the supplied paths."""
 	try:
-        # If FIFE can't be found then this call will throw an ImportError exception:
+		# If FIFE can't be found then this call will throw an ImportError exception:
 		module_info = imp.find_module('fife', paths)
 		fife = imp.load_module('fife', *module_info)
 		try:
@@ -296,56 +296,55 @@ def find_fife(paths):
 	return True
 
 def get_fife_paths():
-    """Returns all possible paths to search for the fife module. New paths to be added as needed."""
-    # Use the path the user provided:
-    from horizons.util.cmdlineoptions import get_option_parser
-    options = get_option_parser().parse_args()[0]
-    # All paths collected in a list:
-    paths = []
-    # Check if path was provided by user:
-    if options.fife_path:
-        fife_path = os.path.abspath(options.fife_path)
-        paths.append(fife_path)
-        # Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
-        
-        if os.path.isfile(fife_path):
-            fife_path = os.path.dirname(fife_path)
-            paths.append(fife_path)
-            # Support giving the path to FIFE_ROOT/engine/python
-            paths.append(os.path.join(fife_path, 'python'))
-            # Support giving the path to FIFE_ROOT/engine
-            paths.append(os.path.join(fife_path, 'engine', 'python'))
-            # Support giving the path to FIFE_ROOT
-            paths.append(os.path.join(fife_path, '..'))
-            # Support giving the path to FIFE_ROOT/engine/python/fife
+	"""Returns all possible paths to search for the fife module. New paths to be added as needed."""
+	# Use the path the user provided:
+	from horizons.util.cmdlineoptions import get_option_parser
+	options = get_option_parser().parse_args()[0]
+	# All paths collected in a list:
+	paths = []
+	# Check if path was provided by user:
+	if options.fife_path:
+		fife_path = os.path.abspath(options.fife_path)
+		paths.append(fife_path)
+		# Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
 
-    # Look for FIFE in the neighborhood of the game dir:
-    for opt1 in ('.', '..', '..' + os.sep + '..'):
-        for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
-            for opt3 in ('.', 'trunk'):
-                path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
-                if os.path.exists(path):
-                    paths.append(path)
+		if os.path.isfile(fife_path):
+			fife_path = os.path.dirname(fife_path)
+			paths.append(fife_path)
+			# Support giving the path to FIFE_ROOT/engine/python
+			paths.append(os.path.join(fife_path, 'python'))
+			# Support giving the path to FIFE_ROOT/engine
+			paths.append(os.path.join(fife_path, 'engine', 'python'))
+			# Support giving the path to FIFE_ROOT
+			paths.append(os.path.join(fife_path, '..'))
+			# Support giving the path to FIFE_ROOT/engine/python/fife
 
-    # Return collected list of fife search paths:
-    return paths
+	# Look for FIFE in the neighborhood of the game dir:
+	for opt1 in ('.', '..', '..' + os.sep + '..'):
+		for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
+			for opt3 in ('.', 'trunk'):
+				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
+				if os.path.exists(path):
+					paths.append(path)
+
+	# Return collected list of fife search paths:
+	return paths
 
 def setup_fife():
 	log_paths()
 	log_sys_info()
-    paths = get_fife_paths()
-
+	paths = get_fife_paths()
 	if not find_fife(paths):
-        try:
-            from fife import fife
-        except ImportError:
-            exit_string = ""
-            for path in paths:
-                exit_string += "{}\n"
-            exit_with_error('Failed to find and/or load FIFE', 'Below directory paths were tested:\n' + exit_string.format(*paths))
+		try:
+			from fife import fife
+		except ImportError:
+			exit_string = ""
+			for path in paths:
+				exit_string += "{}\n"
+			exit_with_error('Failed to find and/or load FIFE', 'Below directory paths were tested:\n' + exit_string.format(*paths))
 
-    # Another import call still needed?
-    from fife import fife
+	# Another import call still needed?
+	from fife import fife
 	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
 	fife_version_minor = fife.getMinor() if hasattr(fife, 'getMinor') else 'unknown'
 	fife_version_patch = fife.getPatch() if hasattr(fife, 'getPatch') else 'unknown'
