@@ -11,7 +11,7 @@
 
 	<hr position="20,30" />
 
-	<VBox name="related_buildings" position="20,40"
-		max_size="230,360" min_size="230,360" size="230,360" />
+	<VBox name="related_buildings" position="20,40" fixed_size="230,360" />
+
 </Container>
 </Container>

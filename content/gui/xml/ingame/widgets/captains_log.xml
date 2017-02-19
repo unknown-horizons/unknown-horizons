@@ -3,7 +3,7 @@
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container name="left_pickbelts" size="195,580" position="30,0" />
-<HBox name="logbook" fixed_size="700,508" position="160,40">
+<HBox name="logbook" fixed_size="680,508" position="160,40">
 	<!-- left page -->
 	<VBox fixed_size="350,508" name="logbook_left">
 		<ScrollArea name="transparent_scrollarea" fixed_size="325,468">
@@ -31,7 +31,7 @@
 	</VBox> <!-- closes VBox logbook right page -->
 </HBox> <!-- closes: <HBox name="logbook"> -->
 
-<VBox name="statistics" fixed_size="700,508" position="160,40">
+<VBox name="statistics" fixed_size="680,508" position="160,40">
 	<Label name="headline_statistics" text="Statistics"
 		wrap_text="0" fixed_size="323,25" />
 	<hr />
@@ -42,7 +42,7 @@
 	</HBox>
 </VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name="chat_overview" fixed_size="700,508" position="160,40">
+<HBox name="chat_overview" fixed_size="680,508" position="160,40">
 	<VBox name="game_messages" comment="Left page" fixed_size="345,508">
 		<Label name="headline_game_messages" text="Game messages"
 			wrap_text="0" fixed_size="323,25" />

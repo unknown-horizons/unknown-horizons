@@ -278,7 +278,7 @@ class PasswordInput(Popup):
 
 	def prepare(self, **kwargs):
 		super(PasswordInput, self).prepare(**kwargs)
-		pw = TextField(name='password', max_size=(320, 20), min_size=(320, 20))
+		pw = TextField(name='password', fixed_size=(320, 20))
 		box = self._gui.findChild(name='message_box')
 		box.addChild(pw)
 

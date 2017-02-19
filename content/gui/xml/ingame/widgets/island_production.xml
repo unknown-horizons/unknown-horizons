@@ -4,10 +4,10 @@
 	<Label name="headline" min_size="300,20" position="70,33" />
 	<hr position="70,53" />
 
-	<VBox max_size="300,400" min_size="300,400" padding="12" name="page_left" position="100,100" />
-	<VBox max_size="300,400" min_size="300,400" padding="12" name="page_right" position="450,100" />
+	<VBox fixed_size="300,400" name="page_left" position="100,100" />
+	<VBox fixed_size="300,400" name="page_right" position="450,100" />
 
-	<HBox max_size="660,40" min_size="660,40" position="70,510">
+	<HBox fixed_size="660,40" position="70,510">
 		<HBox max_size="80,36">
 			<ImageButton name="backwardButton" helptext="Go to previous page"
 				path="images/buttons/parrow_left" />

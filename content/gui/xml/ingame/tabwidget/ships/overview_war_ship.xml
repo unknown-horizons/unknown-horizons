@@ -38,7 +38,7 @@
 		<hr position="20,100" />
 
 		<Container position="22,110" size="230,75">
-			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
+			<HBox min_size="215,50" max_size="215,50" position="3,2">
 				<Icon image="content/gui/images/background/inv_bg.png" />
 				<Icon image="content/gui/images/background/inv_bg.png" />
 				<Icon image="content/gui/images/background/inv_bg.png" />

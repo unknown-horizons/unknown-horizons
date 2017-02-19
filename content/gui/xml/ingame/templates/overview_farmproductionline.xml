@@ -2,7 +2,6 @@
 
 <!-- Template for a production line to be inserted to the production overview -->
 
-
 <!--
 	The container will be extended in height when multiple resources for either input_res or output_res
 	are added. This happens in UH code. The height attribute specified here is used as base value.

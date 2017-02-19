@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- Template for the build related fields submenu to be inserted to the farm overview -->
-<Container size="230,50" name="buildings_container">
+<Container size="230,60" name="buildings_container">
 	<HBox name="build_button_bg_container">
 	</HBox>
 

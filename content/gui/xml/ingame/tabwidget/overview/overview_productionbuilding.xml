@@ -12,7 +12,7 @@
 
 	<hr position="20,30" />
 
-	<HBox min_size="125,20" max_size="225,20" position="25,40">
+	<HBox min_size="125,30" max_size="225,30" position="25,40">
 		<!-- the widgets in this container have no text because it is set
 		dynamically at runtime. See e.g. overviewtab.py -->
 		<Icon name="running_costs_label" helptext="Running costs"
