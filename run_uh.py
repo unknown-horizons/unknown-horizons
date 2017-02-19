@@ -297,27 +297,25 @@ def find_fife(paths):
 
 def get_fife_paths():
 	"""Returns all possible paths to search for the fife module. New paths to be added as needed."""
-	# Use the path the user provided:
+	# Use the path the user provided.
 	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
-	# All paths collected in a list:
 	paths = []
-	# Check if path was provided by user:
+	# Check if path was provided by user.
 	if options.fife_path:
 		fife_path = os.path.abspath(options.fife_path)
 		paths.append(fife_path)
 		# Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
-
 		if os.path.isfile(fife_path):
+			# Support giving the path to FIFE_ROOT/engine/python
 			fife_path = os.path.dirname(fife_path)
 			paths.append(fife_path)
-			# Support giving the path to FIFE_ROOT/engine/python
-			paths.append(os.path.join(fife_path, 'python'))
 			# Support giving the path to FIFE_ROOT/engine
-			paths.append(os.path.join(fife_path, 'engine', 'python'))
+			paths.append(os.path.join(fife_path, 'python'))
 			# Support giving the path to FIFE_ROOT
-			paths.append(os.path.join(fife_path, '..'))
+			paths.append(os.path.join(fife_path, 'engine', 'python'))
 			# Support giving the path to FIFE_ROOT/engine/python/fife
+			paths.append(os.path.join(fife_path, '..'))
 
 	# Look for FIFE in the neighborhood of the game dir:
 	for opt1 in ('.', '..', '..' + os.sep + '..'):
@@ -327,7 +325,6 @@ def get_fife_paths():
 				if os.path.exists(path):
 					paths.append(path)
 
-	# Return collected list of fife search paths:
 	return paths
 
 def setup_fife():
@@ -338,10 +335,8 @@ def setup_fife():
 		try:
 			from fife import fife
 		except ImportError:
-			exit_string = ""
-			for path in paths:
-				exit_string += "{}\n"
-			exit_with_error('Failed to find and/or load FIFE', 'Below directory paths were tested:\n' + exit_string.format(*paths))
+			directories = '\n'.join(paths)
+			exit_with_error('Failed to load module fife', 'Below directory paths were tested:\n' + directories)
 
 	# Another import call still needed?
 	from fife import fife
