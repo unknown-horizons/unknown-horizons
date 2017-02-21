@@ -338,7 +338,6 @@ def setup_fife():
 			directories = '\n'.join(paths)
 			exit_with_error('Failed to load module fife', 'Below directory paths were tested:\n' + directories)
 
-	# Another import call still needed?
 	from fife import fife
 	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
 	fife_version_minor = fife.getMinor() if hasattr(fife, 'getMinor') else 'unknown'
