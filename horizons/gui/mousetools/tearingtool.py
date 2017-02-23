@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ import horizons.globals
 from horizons.command.building import Tear
 from horizons.constants import BUILDINGS
 from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.i18n import gettext as T, ngettext as NT
 from horizons.messaging import WorldObjectDeleted
 from horizons.util.python.weaklist import WeakList
 from horizons.util.shapes import Point
@@ -87,7 +88,7 @@ class TearingTool(NavigationTool):
 			if self.selected:
 				for building in selection_list_copy:
 					self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
-					if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+					if (building.id not in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
 						Tear(building).execute(self.session)
 			elif self._hovering_over:
 				# we're hovering over a building, but none is selected, so this tear action isn't allowed
@@ -110,11 +111,11 @@ class TearingTool(NavigationTool):
 			if buildings_to_destroy == 0:
 				return True
 
-			title = _("Destroy all buildings")
-			msg = _("This will destroy all the buildings that fall outside of"
+			title = T("Destroy all buildings")
+			msg = T("This will destroy all the buildings that fall outside of"
 		            " the settlement range.")
 			msg += u"\n\n"
-			msg += N_("%s additional building will be destroyed.",
+			msg += NT("%s additional building will be destroyed.",
 		              "%s additional buildings will be destroyed",
 		              buildings_to_destroy) % buildings_to_destroy
 			return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)

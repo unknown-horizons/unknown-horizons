@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -183,7 +183,7 @@ class SavegameAccessor(DbReader):
 			self._productions_by_worldid[rowid] = data
 			owner = int(row[2])
 			line = int(row[3])
-			if not line in self._productions_by_id_and_owner:
+			if line not in self._productions_by_id_and_owner:
 				self._productions_by_id_and_owner[line] = {}
 			# in the line dict, the owners are unique
 			self._productions_by_id_and_owner[line][owner] = data

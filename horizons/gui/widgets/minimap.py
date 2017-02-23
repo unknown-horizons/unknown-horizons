@@ -1,4 +1,4 @@
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -186,8 +186,7 @@ class Minimap(object):
 		self.rotation = 0
 		self.fixed_tooltip = tooltip
 
-		if on_click is not None:
-			self.on_click = on_click
+		self.click_handler = on_click if on_click is not None else self.default_on_click
 
 		self.cam_border = cam_border
 		self.use_rotation = use_rotation
@@ -352,7 +351,7 @@ class Minimap(object):
 			icon.name + '/mouseExited' : self._mouse_exited,
 		})
 
-	def on_click(self, event, drag):
+	def default_on_click(self, event, drag):
 		"""Handler for clicks (pressed and dragged)
 		Scrolls screen to the point, where the cursor points to on the minimap.
 		Overwrite this method to your convenience.
@@ -377,17 +376,17 @@ class Minimap(object):
 		if self.world is not None: # supply world coords if there is a world
 			event.map_coords = self._get_event_coords(event)
 			if event.map_coords:
-				self.on_click(event, drag=False)
+				self.click_handler(event, drag=False)
 		else:
-			self.on_click(event, drag=True)
+			self.click_handler(event, drag=True)
 
 	def _on_drag(self, event):
 		if self.world is not None: # supply world coords if there is a world
 			event.map_coords = self._get_event_coords(event)
 			if event.map_coords:
-				self.on_click(event, drag=True)
+				self.click_handler(event, drag=True)
 		else:
-			self.on_click(event, drag=True)
+			self.click_handler(event, drag=True)
 
 	def _get_event_coords(self, event):
 		"""Returns position of event as uh map coordinate tuple or None"""

@@ -81,42 +81,42 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Plaats een jagers-tent en een vissers-tent. Verbindt ze met het pakhuis.]
   - [Headline, 'OPDRACHT: AANVOER VAN VOEDSEL']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
+  - Je hebt een aantal voedselproducerende bedrijven nodig, want mensen in het algemeen (en zeker zeelui) zijn heel hongerig.
+  - Beschikbare bedrijven in het eerste beschavingsniveau zijn de jagerstent en de vissershut.
+  - Een jager jaagt op dieren in het bos, dus er moeten bomen in de omgeving staan.
+  - Merk op dat je een jagerstent dichtbij een houthakkershut kan plaatsen.
   - Het kan dus gebeuren dat er op eens niet genoeg dieren meer zijn of dat ze zich goed hebben verstopt.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - 'Conclusie: een jager is niet zo betrouwbaar voor een vaste aanvoer van voedsel.'
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
+    Een visser heeft een gebouw nodig aan de kust, net zoals een pakhuis, en een school vissen binnen bereik.'
   - Hij bouwt een klein roeibootje om wat vis te vangen.
   - Dit is een zeer stabiele aanvoer voor voedsel, maar met een wat langere productietijd.
   - Een zeer kleine nederzetting zoals die van jouw kan gebruik maken van beide bedrijven, zo kun je een betere vergelijking maken tussen de voor- en nadelen.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
-  - Don't forget to connect them to your Warehouse with Trails!
+  - [BoldLabel, 'Opdracht: Bouw een jagerstent en een vissershut.']
+  - Vergeet niet om deze te verbinden met het pakhuis door middel van padden!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
+  - [Message, Plaats een marktplein. Kies een gebied zonder al te veel economische gebouwen.]
   - [Headline, 'OPDRACHT: MARKTPLEIN']
   - [Image, content/gui/images/background/hr.png]
   - Uw bewoners hebben behoeften aan een plein om goederen te krijgen.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
+  - Dit betekend dat ze een pad nodig hebben van hun huis naar het marktplein. Weet dat het marktplein ook fungeert als pad, waardoor aangrenzende tenten geen apart pad nodig zijn.
+  - Alle goederen in uw pakhuis zijn beschikbaar op het 'marktplein', zodat de bewoners niet hoeven te lopen naar de vissershut of het pakhuis.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Probeer te vermeiden om je woontenten te dicht bij een houthakker te plaatsen, omdat je dan bomen moet kappen die een houthakker nodig heeft.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Bedrijven werken ook zonder deze te verbinden met een pad naar de tenten, dus je hoeft geen pad te bouwen naar het marktplein of naar de houthakkershut.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Opdracht: Bouw een marktplein.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Zo, laten we eens een kijkje nemen op het marktplein.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - In het 'Financiën' tabblad zie je een overzicht van al jouw inkomsten en uitgaven van dit eiland.
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In de verschillende beschavingsniveau tabbladen zijn statistieken te zien over jouw inwoners. Hier kunt je de algemene belasting voor elk niveau verhogen of verlagen en daarnaast kun je de inwoners verbieden om hun huisvesting te verbeteren naar het volgende niveau.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
+  - [Message, 'Plaats een tent en verbindt deze, indien nodig, met het marktplein.']
   - [Headline, 'OPDRACHT: WOONGEBOUWEN']
   - [Image, content/gui/images/background/hr.png]
   - Kolonisten willen een dak boven hun hoofd, anders zouden ze niet eens in je stad willen wonen! Je zult dus tenten moeten bouwen.
@@ -138,13 +138,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Overweeg om deze verbetering te verbieden als je te weinig van dit materiaal op voorraad hebt.
   - Bewoners lijken op het eerste oog niet erg nuttig, omdat ze alle goederen die u produceert proberen te consumeren. Maar ze betalen in ieder geval belasting, wat momenteel de enige manier is om aan geld te komen!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Opdracht: Bouw een tent en verbind deze met het marktplein (indien nodig). Tenten hoeven niet verbonden te worden naar een bedrijf.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, Plaats tenminste drie extra tenten en verbindt deze met het marktplein.]
   - '
 
-    Let''s have a look at the Tent overview tab.'
+    Laten we nu een kijkje nemen in het overzichtstabblad van een tent.'
   - 'Hier ziet u
 
     * de tevredenheid van deze bewoners,
@@ -156,46 +156,46 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Zo niet, dan zullen de tevredenheid en de belastinginkomen dalen. Op een gegeven moment zullen jouw inwoners het zat zijn en hun koffers pakken, waarbij ze een onbewoonbare ruïne achterlaten.
   - Merk op dat u ook hier het algemene belastingniveau veranderen kunt.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'Opdracht: Bouw op zijn minst drie extra tenten.']
   - '
 
     TIP: Met een ingedrukte SHIFT-toets wordt het makkelijker om meerdere gebouwen van het zelfde soort te bouwen.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
+  - [Message, Plaats een signaalvuur bij de kust nabij het pakhuis.]
   - [Headline, 'OPDRACHT: SIGNAALVUUR']
   - [Image, content/gui/images/background/hr.png]
   - Heb je het schip gezien dat af en toe lang je eiland vaart? Het behoord tot de Vrije Handelaars, een van de eerste kolonisten in deze archipel.
   - De handelaar zul je nederzetting voorzien van de noodzakelijke goederen die je nog niet zelf kunt produceren.
-  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
+  - Je kunt ook het productieoverschot verkopen, maar over het algemeen zal consumptie (door meer tenten te bouwen) meer geld opleveren dan de verkoop.
+  - Normaal zullen de handelaren gewoon wat rondvaren op zoek naar handelswaar, maar dit proces kan wat worden versneld.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
-  - The Signal Fire has to cover the area which the ships pass through to catch them.
+  - Voor dit doel bouw je langs de kust een signaalvuur, in de nabijheid van je pakhuis. Deze zal schepen de weg wijzen naar je nederzetting.
+  - Het signaalvuur moet het gebied afdekken, waar de af te vangen schepen doorheen varen.
   - [Pagebreak]
   - '
 
-    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
-  - You can propose deals via the Warehouse tab "Buy/Sell".
+    Na dit zetje in de goede richting, zal de handelaar langskomen om in jouw pakhuis te komen kijken, zelf als hij eerst van plan was om voorbij te varen.'
+  - Te verhandelen goederen kunnen worden ingesteld via het tabblad "Koop/Verkoop" in het pakhuis.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - In het "Zeeman's" niveau staan drie handelsvakken ter beschikking.
   - Klik op het icoontje in het handelsvak om van de modus 'Koop' naar 'Verkoop' en omgekeerd te wisselen.
   - Klik op het vak om het handelswaar te kiezen dat je wilt verhandelen. We zullen verder gaan met de uitleg, zodra een aantal voorbereidingen zijn gedaan.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'Opdracht: Plaats een signaalvuur bij de kust nabij het pakhuis.']
 
 - &TRADING
   - [Message, 'Bereik op dit eiland een voorraad van tenminste 30 stuks gereedschap. Let op, dit kan een tijdje duren.']
   - [Headline, 'OPDRACHT: LEER HANDELEN']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - 'Uitstekend! De Vrije Handelaars zal nu van tijd tot tijd bij je pakhuis stoppen.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+    Laten we nu verder gaan met de handelsinstructies.'
+  - Klik eerst op jouw eigen pakhuis en klik daarna op het derde tabblad.
+  - Klik dan op één van de de drie slots, selecteer vervolgens het product dat je wil kopen of verkopen.
   - Nadat een bepaald handelswaar is geselecteerd, zal een groene balk onderaan het vak laten zien hoeveel er van op voorraad is. Is er niets op voorraad, dan zal er ook geen balk verschijnen.
   - Het bewegen van de schuif aan de rechterkant van het vak bepaalt de 'doelstelling', wat een andere betekenis heeft bij 'Koop' en 'Verkoop'.
   - Bij het inkopen wordt niet meer aangeschaft dan in de 'doelstelling' is vastgelegd.
@@ -218,27 +218,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
+  - [Message, Plaats een paviljoen met verbinding naar de tenten.]
   - [Headline, 'OPDRACHT: PLAATS EEN PAVILJOEN']
   - [Image, content/gui/images/background/hr.png]
   - Dit is voorlopig genoeg gereedschap. Goed gedaan!
   - U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners.
   - 'Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben (dat kun je controleren door op een tent te klikken): De zeelui willen een simpel gebouw om te kunnen bidden.'
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
+  - De oplossing is een paviljoen die de dominee opzet als bescherming tegen de zon.
+  - Gebouwen ten behoeve van dienstverlening moeten met behulp van een pad verbonden worden met de tenten, anders kunnen je inwoners deze gebouwen niet bereiken.
   - [Pagebreak]
   - '
 
     Merk op dat geloof wordt behandeld als een fysiek consumptiegoed!'
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
+  - Dit betekend dat jouw inwoners een wegverbinding met het paviljoen moeten hebben om hun voorraad geloof aan te kunnen vullen.
   - Na een tijdje zullen ze het opgebruikt hebben en zullen ze opnieuw het product geloof op gaan halen.
-  - 'Important:
+  - 'Belangrijk:
 
-    It is NOT enough that the building is merely within a certain range of the Tents.
+    Het is NIET voldoende om het gebouw binnen een bepaald bereik van de tenten te zetten.
 
-    The road connection is required as well.'
+    Een wegverbinding is noodzakelijk.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Opdracht: Bouw een paviljoen met een pad naar de tenten om aan de vraag van de zeelieden te voldoen.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -246,15 +246,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Zet het belasting niveau op laag (linkerkant) en wacht totdat de zeelui promoveren.]
   - [Headline, 'OPDRACHT: VOLGENDE NIVEAU']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
+  - Alle eisen zijn ingewilligd als jouw inwoners de marktplein en het paviljoen regelmatig kunnen bezoeken en als er voldoende voedsel voorhanden is.
   - Als de zeelui voldoende tevreden zijn, zullen ze zich willen verbeteren naar het volgende beschavingsniveau, de Pioniers.
   - Om ze tevreden te krijgen, zit er niets anders op dan de belasting te verlagen, gezien je aan alle eisen van jouw inwoners hebt voldaan.
   - Je moet proberen het belastingniveau niet voor langere tijd op een laag niveau te laten, want dit zal vroeg of laat lijden tot faillissement. Voor een korte periode kan het echter geen kwaad en zelfs nuttig zijn.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Na een poosje zal de eerste mannetje naar de marktplein lopen en op zoek gaan naar nieuwe bouwmaterialen om een blokhut te bouwen. Dit huis zal de oude tent vervangen.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
+    Zulke verbeteringen van woonhuizen verbruiken goederen en kunnen daarom verhinderd worden in de tabbladen van de marktplein.'
   - Er zijn ook gebouwen die zonder verdere kosten zullen worden verbeterd, zoals je zult zien bij de houthakker. In dit geval zal alleen de weergave veranderen.
   - Verbeterde woningen bieden plaats aan meer inwoners, daarnaast betalen pioniers meer belasting als zeelui.
   - Zoals je misschien al hebt ondervonden, het nadeel is dat pioniers meer goederen eisen, die de zeelui niet nodig waren. Hierdoor moet je meer geld uitgeven om deze mensen tevreden te houden.
@@ -264,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
+  - [Message, 'Plaats een boerderij, zorg voor vrije ruimte eromheen.']
   - [Headline, 'OPDRACHT: BOUW EEN BOERDERIJ']
   - [Image, content/gui/images/background/hr.png]
   - Gefeliciteerd! Sommige inwoners hebben beschavingsniveau II bereikt!
@@ -272,19 +272,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Een prachtig nieuw tabblad is hier verschenen.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - Pioniers zijn kleding nodig, dus moet je hiervoor een productielijn opzetten. Deze begint met schapenwol, wat één van de producten van de boerderij is.
+  - De boerderij is een heel speciaal gebouw, omdat je er voor kunt kiezen niet één, maar meerdere verschillende producten te laten produceren.
+  - Welke producten boerderijen produceren, is afhankelijk van wat voor soort velden je er omheen bouwt.
   - [Pagebreak]
   - '
 
     Hier zullen we later verder op ingaan.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
+  - Bij boerderijen is het, net als alle andere bedrijven die grondstoffen produceren, niet noodzakelijk om ze met een opslaggebouw of pakhuis te verbinden.
+  - Zolang medewerkers van de verwerkende bedrijven de boerderij kunnen bereiken en deze bedrijven op hun beurt weer door de verzamelaars van het pakhuis of ander opslaggebouw kunnen worden bereikt, is alles in orde.
   - Echter, als je de verwerking wil laten plaatsnemen op andere delen van het eiland (wat zinvol kan zijn) of zelfs op een ander eiland, dan moeten de verzamelaars bij de boerderij kunnen komen, waarvoor een wegverbinding noodzakelijk is.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+  - Probeer een boerderij niet te dicht bij de kust of bestaande gebouwen te bouwen, omdat je eromheen werkruimte nodig bent.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Opdracht: Bouw een boerderij.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -292,26 +292,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Plaats tenminste een weiland en voeg aardappelvelden toe naar eigen inzicht.]
   - [Headline, 'OPDRACHT: PLAATS VELDEN']
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
+  - De boerderij zelf zal niet kunnen produceren zonder velden eromheen.
   - Momenteel heb je de keuze tussen drie soorten velden.
-  - 'Let''s have a short overview:
+  - 'Hieronder een kort overzicht.
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Weiland: onderkomen voor schapen, die wol produceren.
 
-    * Potato Field: Grows potatoes which are currently treated as food.
+    * Aardappelveld: verbouwt aardappelen, dat als voedsel dient.
 
-    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
+    * Suikerveld: verbouwt suiker, dat voor drank en de banketbakkerij gebruikt worden.'
   - We zijn alleen weilanden nodig, maar in het geval de voedselproductieketen niet toereikend is (bijvoorbeeld omdat je veel woonhuizen hebt) kun je ook wat aardappelen gaan verbouwen.
-  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
+  - Merk op, dat indien je boerderij aardappelen produceert, er een pad naar deze boerderij (niet naar het veld!) moet liggen.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
+    Let er op dat alle velden binnen het bereik van de boerderij worden gebouwd.'
+  - Gecombineerde productie is ook mogelijk - één weiland zal niet tot 100 procent efficiëntie leiden - maar je moet zelf uitzoeken hoeveel velden een boerderij kan verzorgen.
   - De hoeveelheid tijd die het bewerken van een veld benodigd (voor zaaien, oogsten, vee hoeden, enzovoort) verschilt per soort veld, waardoor het zo kan zijn dat de boerderij niet alle velden die je er om heen hebt gebouwd ook kan verzorgen.
   - Momenteel hoef jij je daar geen zorgen over te maken, omdat je nog niet veel velden gebouwd hebt. Laten we daar verandering in brengen!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'Opdracht: Bouw op zijn minst één weiland binnen het bereik van de boerderij en voeg als je dat wilt ook een aardappelveld toe.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -320,12 +320,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'OPDRACHT: OPSLAGRUIMTE']
   - [Image, content/gui/images/background/hr.png]
   - Heeft u uw houthakker nog in de gaten gehouden?
-  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
+  - Omdat je pakhuis niet oneindig ruimte heeft om goederen op te slaan, stoppen de verzamelaars met het verzamelen bij de bedrijven.
   - Als een zeeman zijn tent niet wil verbeteren, heb je straks teveel planken en raken de houthakkers werkeloos.
   - We kunnen de situatie op twee manieren verbeteren en we zullen nu beide methoden bekijken.
-  - 'All companies offer to do no work at all.
+  - 'Alle bedrijven bieden de mogelijkheid om hun productie te pauzeren.
 
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
+    Klik op het tandwiel dat te zien is in het overzichtstabblad van de houthakkershut.'
   - Als deze 'stilleg'-modus is geactiveerd, dan zullen de lopende kosten van het gebouw dalen. Niet altijd tot nul, maar zeker een stuk lager dan wanneer het bedrijf blijft produceren.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -333,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Dit betekend dat je geld kunt besparen als je tijdelijk geen bedrijf nodig hebt, en deze niet wilt slopen.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+  - 'Een andere oplossing is het laatste gebouw uit het eerste beschavingsniveau dat nog niet eerder genoemd is: de opslagtent.'
+  - 'Dit gebouw heeft twee doelen. het:
 
-    * Offers more storage for your goods, and
+    * Geeft je meer opslag ruimte, en
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+    * stuurt verzamelaars op pad om goederen te collecteren, net als het pakhuis.'
+  - Merk op dat bedrijven ook met een opslaggebouw verbonden kunnen worden om hun goederen te laten afhalen. Wanneer het pakhuis de aanvoer van goederen niet meer kan bijbenen, dan kan het bijplaatsen van een opslagtent uitkomst bieden.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Opdracht: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
+  - [Message, Bouw een weverij die op één of andere manier bij de wol kan komen op je boerderij.]
   - [Headline, 'OPDRACHT: BOUW KLEERMAKER']
   - [Image, content/gui/images/background/hr.png]
   - Nu de wol productie op gang is, heb je kleermakers nodig om kleren te maken van de wol.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - De weverij is waar de kleermaker woont. Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij of bij een opslagtent (of het pakhuis).
+  - In deze twee gevallen moet je er zeker van zijn dat er een verbinding is.
+  - Als je een weverij dicht bij een boerderij bouwt en alle paden er na toe afbreekt, dan zul je zien dat er nog steeds wol wordt afgehaald en stof wordt geproduceerd.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Opdracht: Bouw een weverij die bij het wol kan komen.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -364,7 +364,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Probeer 50 of meer bewoners in je stad te huisvesten door meer residentiële gebouwen te bouwen.
   - Zodra je in staat bent de economie draaiende te houden met dit aantal verbruikers, ben je klaar om nieuwe onbekende horizonnen te ontdekken!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - Je hebt ook genoeg geld nodig om de economie draaiende te houden, een positief balans (controleer in het pakhuis het tabblad 'Financiën') is aanbevolen.
   - ''
   - [BoldLabel, 'Opdracht: Bereik een totaal aantal inwoners van 50 en een positief balans om deze opdracht te voltooien.']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: nl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 123 translated messages, 65 fuzzy translations.
+  translation_status: 188 translated messages.

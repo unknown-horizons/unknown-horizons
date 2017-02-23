@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,6 +29,7 @@ from fife.extensions.pychan.widgets import Button
 
 from horizons.constants import NETWORK, VERSION
 from horizons.gui.windows import Popup
+from horizons.i18n import gettext as T
 
 
 class UpdateInfo(object):
@@ -84,8 +85,8 @@ class VersionHint(Popup):
 	def __init__(self, windows, info):
 		self.info = info
 
-		title = _("New version of Unknown Horizons")
-		text = _("There is a more recent release of Unknown Horizons ({new_version}) "
+		title = T("New version of Unknown Horizons")
+		text = T("There is a more recent release of Unknown Horizons ({new_version}) "
 				 "than the one you are currently using ({old_version}).").format(
 				new_version=info.version,
 				old_version=VERSION.RELEASE_VERSION)
@@ -95,11 +96,11 @@ class VersionHint(Popup):
 	def prepare(self, **kwargs):
 		super(VersionHint, self).prepare(**kwargs)
 
-		dl_btn = Button(name="dl", text=_("Click to download"))
+		dl_btn = Button(name="dl", text=T("Click to download"))
 		dl_btn.position = (48, 138) # i've tried, this button cannot be placed in a sane way
 		def do_dl():
 			webbrowser.open(self.info.link)
-			dl_btn.text = _("A page has been opened in your browser.")
+			dl_btn.text = T("A page has been opened in your browser.")
 			self._gui.adaptLayout()
 		dl_btn.capture(do_dl)
 

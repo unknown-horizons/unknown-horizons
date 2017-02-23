@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,11 +22,13 @@
 import logging
 import os
 
+from fife import fife
 from fife.extensions.pychan import loadXML
 from fife.extensions.pychan.widgets import Container, HBox, Icon
 
 from horizons.gui.i18n import translate_widget
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
@@ -60,13 +62,13 @@ def get_happiness_icon_and_helptext(value, session):
 	happy = session.db.get_upper_happiness_limit()
 	if value <= sad:
 		happiness_icon_path += "sad.png"
-		happiness_helptext = _("sad")
+		happiness_helptext = T("sad")
 	elif sad < value < happy:
 		happiness_icon_path += "average.png"
-		happiness_helptext = _("satisfied")
+		happiness_helptext = T("satisfied")
 	elif value >= happy:
 		happiness_icon_path += "happy.png"
-		happiness_helptext = _("happy")
+		happiness_helptext = T("happy")
 
 	return happiness_icon_path, happiness_helptext
 
@@ -123,8 +125,8 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		icon_path = icon_path + '{res:03d}.png'.format(res=res)
 
 	try:
-		Icon(image=icon_path)
-	except RuntimeError: # ImageManager: image not found, use placeholder or die
+		Icon(image=icon_path).hide()
+	except fife.NotFound: # ImageManager: image not found, use placeholder or die
 		if res == 'placeholder':
 			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
 		else:
@@ -144,6 +146,7 @@ def create_resource_icon(res_id, db):
 	@param db: dbreader for main db"""
 	widget = Icon(image=get_res_icon_path(res_id))
 	widget.helptext = db.get_res_name(res_id)
+	widget.scale = True
 	return widget
 
 

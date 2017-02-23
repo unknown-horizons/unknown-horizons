@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ import logging
 import operator
 
 from horizons.command.building import Build
+from horizons.i18n import gettext as T
 from horizons.network import CommandError, packets
 from horizons.scheduler import Scheduler
 from horizons.timer import Timer
@@ -173,8 +174,8 @@ class MPManager(LivingObject):
 				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
-				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
-				  _("We are very sorry and hope to have this bug fixed in a future version.")
+				msg = T("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
+				  T("We are very sorry and hope to have this bug fixed in a future version.")
 				self.session.ingame_gui.open_error_popup('Out of sync', msg)
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
@@ -216,7 +217,7 @@ class MPManager(LivingObject):
 		commandpackets = self.commandsmanager.get_packets_from_player(self.session.world.player.worldid)
 
 		# check commands already sent
-		l1 = itertools.chain.from_iterable( (pkg.commandlist for pkg in commandpackets) )
+		l1 = itertools.chain.from_iterable(pkg.commandlist for pkg in commandpackets)
 		# and the ones that haven't been sent yet (this are of course only commands by the local player)
 		commandlist = itertools.chain(l1, self.gamecommands)
 

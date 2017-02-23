@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,8 +30,9 @@ from fife import fife
 import horizons.globals
 import horizons.main
 from horizons.constants import PATHS
-from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
+
+from .keyconfig import KeyConfig
 
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):

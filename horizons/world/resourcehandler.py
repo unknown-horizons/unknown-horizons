@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -177,7 +177,7 @@ class ResourceHandler(ResourceTransferHandler):
 	def get_available_pickup_amount(self, res, collector):
 		"""Returns how much of res a collector may pick up. It's the stored amount minus the amount
 		that other collectors are getting"""
-		if not res in self.provided_resources:
+		if res not in self.provided_resources:
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
 			amount_from_collectors = sum((entry.amount

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -63,7 +63,7 @@ class PlayerDataSelection(object):
 		playertextfield = self.gui.findChild(name='playername')
 		def playertextfield_clicked():
 			if playertextfield.text == 'Unnamed Traveler':
-				playertextfield.text = "";
+				playertextfield.text = ""
 		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
 
 		self.gui.mapEvents(events)

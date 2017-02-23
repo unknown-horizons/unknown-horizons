@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ import itertools
 
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.pathfinding.pathfinder import a_star_find_path
 from horizons.util.python import ChainedContainer, decorators
 from horizons.util.shapes import Circle, Point, Rect
@@ -38,18 +39,18 @@ class BuildableErrorTypes(object):
 	NO_FLAT_LAND = range(13)
 
 	text = {
-	  NO_ISLAND : _("This building must be built on an island."),
-	  UNFIT_TILE : _("This ground is not suitable for this building."),
-	  NO_SETTLEMENT : _("This building has to be built within your settlement."),
-	  OTHER_PLAYERS_SETTLEMENT : _("This area is already occupied by another player."),
-	  OTHER_BUILDING_THERE : _("This area is already occupied by another building."),
-	  UNIT_THERE : _("This area is already occupied by a unit."),
-	  NO_COAST : _("This building must be built on the coastline."),
-	  NO_OCEAN_NEARBY : _("This building has to be placed at the ocean."),
-	  ONLY_NEAR_SHIP : _("This spot is too far away from your ship."),
-	  NEED_RES_SOURCE : _("This building can only be built on a resource source."),
-	  ISLAND_ALREADY_SETTLED : _("You have already settled this island."),
-	  NO_FLAT_LAND : _("This building must be partly on flat land.")
+	  NO_ISLAND : LazyT("This building must be built on an island."),
+	  UNFIT_TILE : LazyT("This ground is not suitable for this building."),
+	  NO_SETTLEMENT : LazyT("This building has to be built within your settlement."),
+	  OTHER_PLAYERS_SETTLEMENT : LazyT("This area is already occupied by another player."),
+	  OTHER_BUILDING_THERE : LazyT("This area is already occupied by another building."),
+	  UNIT_THERE : LazyT("This area is already occupied by a unit."),
+	  NO_COAST : LazyT("This building must be built on the coastline."),
+	  NO_OCEAN_NEARBY : LazyT("This building has to be placed at the ocean."),
+	  ONLY_NEAR_SHIP : LazyT("This spot is too far away from your ship."),
+	  NEED_RES_SOURCE : LazyT("This building can only be built on a resource source."),
+	  ISLAND_ALREADY_SETTLED : LazyT("You have already settled this island."),
+	  NO_FLAT_LAND : LazyT("This building must be partly on flat land.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
@@ -138,7 +139,7 @@ class Buildable(object):
 				cls._check_settlement(session, position, ship=ship, issuer=issuer)
 		except _NotBuildableError as e:
 			buildable = False
-			problem = (e.errortype, _(BuildableErrorTypes.text[e.errortype]))
+			problem = (e.errortype, BuildableErrorTypes.text[e.errortype])
 
 		return _BuildPosition(position, rotation, tearset, buildable, problem=problem)
 
@@ -318,7 +319,7 @@ class BuildableSingle(Buildable):
 
 class BuildableSingleEverywhere(BuildableSingle):
 	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""
-	terrain_type = None
+	terrain_type = None # type: None
 
 	@classmethod
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
@@ -545,7 +546,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 	the buildingclass.
 	"""
 	irregular_conditions = True
-	terrain_type = None
+	terrain_type = None # type: None
 
 	@classmethod
 	def _check_buildings(cls, session, position, island=None):

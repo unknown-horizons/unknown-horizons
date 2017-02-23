@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label, VBox
 from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+from horizons.i18n import gettext as T
 from horizons.world.storage import (
 	PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage, TotalStorage)
 
@@ -78,7 +79,7 @@ class Inventory(Container):
 				self.__icon.position = (130, 53)
 				self.legend.position = (150, 53)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				self.__icon.position = ( 0, 248)
+				self.__icon.position = (0, 248)
 				self.legend.position = (20, 248)
 
 		self.update()
@@ -100,7 +101,7 @@ class Inventory(Container):
 		"""Draws the inventory."""
 		# add res to res order in case there are new ones
 		# (never remove old ones for consistent positioning)
-		new_res = sorted( resid for resid in self._inventory.iterslots() if resid not in self._res_order )
+		new_res = sorted(resid for resid in self._inventory.iterslots() if resid not in self._res_order)
 
 		if isinstance(self._inventory, PositiveTotalNumSlotsStorage):
 			# limited number of slots. We have to switch unused slots with newly added ones on overflow
@@ -170,9 +171,9 @@ class Inventory(Container):
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored = self._inventory.get_sum_of_stored_resources()
-				self.legend.text = _('{stored}/{limit}').format(stored=sum_stored, limit=limit)
+				self.legend.text = T('{stored}/{limit}').format(stored=sum_stored, limit=limit)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				self.legend.text = _('Limit: {amount}t per slot').format(amount=limit)
+				self.legend.text = T('Limit: {amount}t per slot').format(amount=limit)
 
 	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory

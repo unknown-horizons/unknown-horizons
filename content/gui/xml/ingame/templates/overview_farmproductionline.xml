@@ -10,7 +10,7 @@
 -->
 <AutoResizeContainer position="25,110" name="production_line_container">
 
-	<Container name="centered_production_icons" size="200,52">
+	<Container name="centered_production_icons" size="200,44">
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton path="icons/templates/production/toggle_small_active"
 			position="82,-2" name="toggle_active_active" helptext="Pause production" />

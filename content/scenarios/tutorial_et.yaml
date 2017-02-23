@@ -78,15 +78,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Ehita jahimees ja kalur. Ühenda nad laohoonega.]
+  - [Message, Ehita jahimehe telk ja kaluri telk. Ühenda nad laohoonega.]
   - [Headline, 'UUS ÜLESANNE: TOIDUGA VARUSTAMINE']
   - [Image, content/gui/images/background/hr.png]
   - Sul on vaja ka mõningaid toitu tootvaid kompaniisid, sest inimesed on üldiselt (ja meremehed eriti) väga näljased.
-  - Esimesel tasemel on võimalik luua jahinduse ja kalurite kompaniisid.
-  - Jahimehed jahivad metsast ulukeid ning seetõttu peab nende lähedal olema puid.
-  - Tähelepanu, sa võid oma jahimehed paigutada saeveski metsa lähedale.
+  - Esimese taseme kompaniidest on võimalik luua jahimehe telk ja kaluri telk.
+  - Jahimees jahib metsast ulukeid ning seetõttu peab nende lähedal olema puid.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Võib juhtuda, et loomad ei paljune piisavalt kiiresti või oksavad lihtsalt hästi peituda.
-  - Järelikult ei ole jahimehed just väga usaldusväärsed, kui sul on vaja pidevat varustatust.
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
@@ -95,8 +95,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kalastamine on väga pidev varustus allikas, kuid selle hinnaks on natuke pikem tootmise aeg toiduühiku kohta.
   - Väike koloonia nagu sul on võib kasutada mõlemat, mis võimaldab sul paremini tasakaalustada nende eelised ja puudused.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita jahimees ja kalur.']
-  - Ära unusta ehitamast teerada oma laoni!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -105,8 +105,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'ÜLESANNE: PEAVÄLJAK']
   - [Image, content/gui/images/background/hr.png]
   - Su elanikud vajavad peaväljakut, kus nad saavad hankida omale kaupu.
-  - See tähendab, et nad vajavad teerada, mis ühendab nende kodu peaväljakuga. Peaväljak on kasutatav ka teena ning seetõttu ei vaja temaga ühendatud telgid eraldi teerada.
-  - Kõik kaubad su laos on sellel "turuplatsil" saadavad; seega ei pea su elanikud käima kaluri juures või isegi laos.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Peaksid vältima oma põhiasunduse telkide paigutamist saeveskitele väga lähedale, sest telkide püstitamisel kaovad puud, mida su saeveskida vajavad laudade tootmiseks.
@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kas sa näed laeva, mis möödub aeg-ajalt su saarest? See laev kuulub Vabale Kauplejale, selle arhipelaagi ühele esimesele asunikule.
   - Kauple varustab su kolooniat vajalike kaupadega, mida sa ise ei saa veel toota.
   - Samuti on sul võimalik müüa oma liigne toodang, kuid tavaliselt on toodangu ise tarbimine (täiendavaid telke ehitades) mõistlikum, sest nii on saadav kasum suurem.
-  - Tavaliselt seilavad kauplejate laevad niisama ringi ja otsivad häid tehinguid, kuid sa saad asju pisut kiirendada.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - Selleks on vaja ehitada su lao lähedale signaaltuli. See juhatab laevad su kolooniasse.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Selle väikese reklaami tulemusel teeb kaupleja su lao juures peatuse, kuigi tal oli alselt plaan mööda sõita.'
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
   - Lao kaardil "Müü/Osta" saad sa algatada tehinguid.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -223,22 +223,22 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Neist tööriistadest hetkel piisab. Hästi tehtud!
   - Nüüd võimaldad oma elanikele eluaseme, peaväljaku ja toidu.
-  - 'Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud (kontrolliks klõpsa ühel telkidest): su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.'
+  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
   - Lahenduseks on paviljon, mille küla hingekarjane püstitab kiirelt päikesevarjuks.
-  - Pühakodadest peavad samuti viima rajad telkideni, sest muidu ei jõua su elanikud nendeni.
+  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
     Arvesta sellega, et usku käsitletakse kui füüsilist resurssi!'
   - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - Mõne aja möödudes on nad selle ära tarbinud ja otsivad tootjat, kelle käest veel usku hankida.
-  - 'Tähtis:
+  - 'Important:
 
-    Sellest EI piisa, et ehitis on telkidest sobival kaugusel.
+    It is NOT enough that the building is merely within a certain range of the Tents.
 
-    Nõutav on ka ühendav tee.'
+    The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -246,7 +246,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 'Määra madal maksude tase (vasak serv) ja oota, et su meremehed jõuaks järgmisele tasemele.']
   - [Headline, 'UUS ÜLESANNE: JÄRGMINE TASE']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
   - Kui meremehed on piisavalt õnnelikud, siis soovivad nad jõuda järgmisele tasemele, mida kutsutakse Avastajad.
   - Nende õnnelikuks tegemiseks on sul vaja ainult alandada makse, sest sa oled täitnud oma elanike kõik nõudmised.
   - Sa ei tohiks jääda madalate maksude juurde pikaks ajaks, sest see viib su varem või hiljem üsna kindlalt pankrotti. Mõneks ajaks on teadlik maksude alandamine siiski mõistlik samm.
@@ -294,24 +294,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - The Farm itself is not going to produce anything without some fields.
   - Sul on hetkel valida karjamaa ning kartuli- ja suhkrupõllu vahel.
-  - 'Kiire ülevaade:
+  - 'Let''s have a short overview:
 
-    * Karjamaal on lambad, kes annavad villa.
+    * Pasture: Sheep live here, producing lamb wool.
 
-    * Kartulipõllult saab kartuleid, mida hetkel käsitletakse toiduna.
+    * Potato Field: Grows potatoes which are currently treated as food.
 
-    * Suhkrupõllult saab suhkrut, millest destillerritakse alkoholi ja (hiljem) valmistatakse maiustusi.'
+    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
   - Hetkel on vaja ainult karjamaad, kuid kui sul toidust on puudus (võib-olla on sul liiga palju elamuid), siis võid ehitada ka kartulipõlde.
-  - Selleks, et kartulid jõuaks tarbijateni, pead farmi ühendama teedega (mitte põllu), sest kaupadega tegeleb ainult kompanii.
+  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
   - [Pagebreak]
   - '
 
-    Veendu, et kõik rajatavad põllud on farmi maa-alal.'
-  - Sul võib olla kombineeritud tootmine - üks karjamaa ei taga farmi 100% efektiivsust - kuid sa pead kontrollima, mitut põldu suudab su farm teenindada.
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
   - Erinevad põldude liigid vajavad farmi üksustelt rohkem või vähem aega (külvamine, koristamine, karjatamine, jne.) ja seetõttu ei pruugi farm teenindada kõiki põlde, mis sa talle oled juba rajanud.
   - Praegu ei pea sa sellepärast muretsema, sest sa ei ole ehitanud mitte ühtegi põldu. Aga muutkem nüüd seda!
   - ''
-  - [BoldLabel, 'Ülesanne: ehita farmi maadele vähemalt üks karjamaa ja soovi korral ka kartulipõllud.']
+  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -351,8 +351,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Nüüd, kus villatootmine on käivitatud, on sul vaja veel kangrut, et toota villast kangast.
   - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - Mõlemal juhul pead rajama ka ühendava teeraja.
-  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
+  - In both cases you should ensure the connection to a Trail as well.
+  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
   - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 168 translated messages, 20 fuzzy translations.
+  translation_status: 151 translated messages, 37 fuzzy translations.

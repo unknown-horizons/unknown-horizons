@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,10 +30,6 @@ import os
 import glob
 import platform
 from shutil import rmtree, copytree
-
-# Install dummy gettext before any imports from horizons
-import gettext
-gettext.install("")
 
 from horizons.constants import VERSION
 

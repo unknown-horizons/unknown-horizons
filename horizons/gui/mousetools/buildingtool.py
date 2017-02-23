@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,6 +35,7 @@ from horizons.ext.typing import TYPE_CHECKING
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget
+from horizons.i18n import gettext as T
 from horizons.messaging import (
 	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -231,10 +232,10 @@ class BuildingTool(NavigationTool):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
 			self.__class__.gui.position_technique = "right-1:top+157"
-		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-		                                "rotate_right": self.rotate_right } )
+		self.__class__.gui.mapEvents({"rotate_left" : self.rotate_left,
+		                              "rotate_right": self.rotate_right})
 		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
+		self.__class__.gui.findChild(name='headline').text = T('Build {building}').format(building=T(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
@@ -441,13 +442,13 @@ class BuildingTool(NavigationTool):
 			if tile.object is not None and tile.object.id in ids:
 				related_building = tile.object
 				# check if it was actually this one's radius
-				if building.position.distance( (tile.x, tile.y) ) <= \
+				if building.position.distance((tile.x, tile.y)) <= \
 				   Entities.buildings[related_building.id].radius:
 					# found one
 					if related_building in self._highlighted_buildings:
 						continue
 
-					self._highlighted_buildings.add( (related_building, True) ) # True: was_selected, see _restore_highlighted_buildings
+					self._highlighted_buildings.add((related_building, True)) # True: was_selected, see _restore_highlighted_buildings
 					# currently same code as coloring normal related buildings (_color_preview_build())
 					inst = related_building.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ import logging
 from fife import fife
 
 import horizons.globals
+from horizons.i18n import gettext as T
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.world.ingametype import IngameType
 from horizons.world.production.producer import Producer
@@ -76,7 +77,7 @@ class BuildingClass(IngameType):
 		cls.log.debug("Loading building %s", cls.id)
 		try:
 			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'building')
-		except RuntimeError:
+		except fife.NameClash:
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
@@ -116,10 +117,10 @@ class BuildingClass(IngameType):
 	def get_tooltip(self):
 		"""Returns tooltip text of a building class.
 		ATTENTION: This text is automatically translated when loaded
-		already. DO NOT wrap the return value of this method in _()!
+		already. DO NOT wrap the return value of this method in T()!
 		@return: string tooltip_text
 		"""
 		# You usually do not need to change anything here when translating
-		tooltip = _("{building}: {description}")
+		tooltip = T("{building}: {description}")
 		return tooltip.format(building=self._name,
 		                      description=self.tooltip_text)

@@ -1,5 +1,5 @@
 # Korean translations for Unknown Horizons package.
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
 # Automatically generated, 2013.
 #
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-01-09 07:15+0000\n"
+"PO-Revision-Date: 2017-02-04 14:19+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.11\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -31,13 +31,9 @@ msgstr ""
 "정착지를 건설하고 게임플레이 방법을 배우세요!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid ""
-#| "Build a warehouse on the coast to allow trade ships to visit your "
-#| "settlement."
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
-msgstr "무역선이 정착지를 방문할 수 있도록 해안에 창고를 건설하세요."
+msgstr "무역선들이 정착지에 방문할 수 있도록 해안에 창고를 건설하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -51,6 +47,9 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"이것은 현재 시나리오에 대한 중요한 정보가 저장되는 일기입니다.\n"
+"새로운 작업의 요약은 화면의 왼쪽 가장자리 근처에 '알림 버튼'으로 나타납니다.\n"
+"이러한 알림 위에 마우스를 올려 놓으면 요약을 읽을 수 있고, 버튼을 클릭하면 일기가 열립니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -59,6 +58,8 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"화면 오른쪽 상단의 미니 맵 아래에있는 버튼을 클릭하여 언제든지 저널을 다시 열 수도 있습니다. 이제부터는 작은 지도, 다양한 버튼, "
+"'개요' 탭에 포함 된이 영역을 참조 할 것입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -76,6 +77,8 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"이 자습서의 개선 방안이나 오류가 발생할 경우 우리에게 알려주십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -97,7 +100,7 @@ msgstr "새로운 임무: 정착지 만들기"
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
-msgstr ""
+msgstr "배가 바다에있고, 새로운 정착촌을 세우는 데 필요한 공급품을 배에 적재 하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -119,12 +122,15 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"이 버튼을 클릭하면 창고의 미리보기가 표시되고, 첫 건물은 새로운 정착지가 필요합니다. 커서를 움직이다보면 건물이 부적합한 지역에있을 때 "
+"미리보기가 빨간색으로 나타납니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"창고는 배를 부두에 댈수있도록 해안에 위치해야합니다. 그래서 좋은 장소를 찾고, 왼쪽 버튼을 클릭하여 중요한 건물을 배치하십시오."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
@@ -135,10 +141,8 @@ msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
 msgstr "벌목꾼의 집을 건설하고, 창고와 연결하십시오."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "새로운 임무 : 벌목꾼의 집을 건설"
+msgstr "새로운 임무: 벌목꾼의 천막을 건설하십시오"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1298,8 +1302,6 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a weaver positioned so it can get wool."
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
 msgstr "임무: 양털을 얻을수있는 위치에 방직소를 건설."
 
@@ -1328,10 +1330,11 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the Warehouse tab 'Account') is required."
-msgstr ""
+msgstr "또한이 경제를 유지하기에 충분한 돈이 필요하므로 긍정적인 균형 (창고의 '계정'탭 에 체크인)이 필요합니다."
 
 #. This is the text body of a logbook page.
 msgid ""

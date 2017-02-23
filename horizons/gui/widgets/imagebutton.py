@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import ImageButton as FifeImageButton
-from fife.extensions.pychan.widgets import Icon
+from fife import fife
+from fife.extensions.pychan.widgets import Icon, ImageButton as FifeImageButton
 from fife.extensions.pychan.widgets.common import Attr
 
 
@@ -100,13 +100,13 @@ class ImageButton(FifeImageButton):
 		image_path = self.IMAGE.format(path=path)
 		try:
 			self.up_image = image_path.format(mode='')
-		except RuntimeError:
-			# RuntimeError: _[NotFound]_ , Something was searched, but not found
+		except fife.NotFound:
+			# NotFound: _[NotFound]_ , Something was searched, but not found
 			#TODO Temporarily try to find _u for the tabwidget
 			self.up_image = image_path.format(mode='_u')
 		try:
 			self.hover_image = image_path.format(mode='_h')
-		except RuntimeError:
+		except fife.NotFound:
 			# By default, guichan/pychan will set hover_image to be the same as
 			# up_image even if it is not explicitly set here (the following line
 			# just reading `pass` instead of setting hover_image to up_image).
@@ -116,7 +116,7 @@ class ImageButton(FifeImageButton):
 			self.hover_image = self.up_image
 		try:
 			self.down_image = image_path.format(mode='_d')
-		except RuntimeError:
+		except fife.NotFound:
 			self.down_image = self.up_image
 
 		# Since inactive_image is no image attribute in pychan, it would
@@ -128,12 +128,12 @@ class ImageButton(FifeImageButton):
 			image = image_path.format(mode='_bw')
 			Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
 			self.inactive_image = image
-		except RuntimeError:
+		except fife.NotFound:
 			try:
 				image = image_path.format(mode='_gr')
 				Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
 				self.inactive_image = image
-			except RuntimeError:
+			except fife.NotFound:
 				self.inactive_image = self.up_image
 
 	path = property(_get_path, _set_path)

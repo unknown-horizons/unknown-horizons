@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -229,7 +229,7 @@ The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
 .RE
 .SH "COPYRIGHT"
 .br
-Copyright \(co 2008-2016 The Unknown Horizons Team
+Copyright \(co 2008-2017 The Unknown Horizons Team
 .br
 .PP
 Permission is granted to copy, distribute and/or modify this document under the

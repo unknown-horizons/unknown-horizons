@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 from horizons.ext.enum import Enum
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext as T
 from horizons.messaging import NewPlayerSettlementHovered
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python import decorators
@@ -115,19 +116,19 @@ class BuildTab(TabInterface):
 			if not helptext and not headline:
 				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
-		self.headline = _(headline) if headline else headline # don't translate None
-		self.helptext = _(helptext) if helptext else self.headline
+		self.headline = T(headline) if headline else headline # don't translate None
+		self.helptext = T(helptext) if helptext else self.headline
 
 		#get build style
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		self.cur_build_menu_config = self.__class__.build_menus[ saved_build_style ]
+		self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
 
 		super(BuildTab, self).__init__(icon_path=icon_path)
 
 	@classmethod
 	def get_saved_buildstyle(cls):
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		return cls.build_menus[ saved_build_style ]
+		return cls.build_menus[saved_build_style]
 
 	def init_widget(self):
 		self.__current_settlement = None
@@ -135,7 +136,7 @@ class BuildTab(TabInterface):
 		if self.headline: # prefer specific headline
 			headline_lbl.text = self.headline
 		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
-			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
+			headline_lbl.text = T(self.session.db.get_settler_name(self.tabindex))
 
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
@@ -198,7 +199,7 @@ class BuildTab(TabInterface):
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
-					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
+					lbl.text = T(entry[2:]) if entry.startswith('_ ') else entry
 				elif isinstance(entry, int):
 					button = self.widget.child_finder('button_{position:02d}'.format(position=position))
 					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
@@ -252,9 +253,9 @@ class BuildTab(TabInterface):
 
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
-		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
+		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
 		new_index = (cur_index + 1) % len(self.__class__.build_menus)
-		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
+		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
 
 		# after switch set active tab to first
 		self.__class__.last_active_build_tab = 0
@@ -262,7 +263,7 @@ class BuildTab(TabInterface):
 
 		#save build style
 		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
-		horizons.globals.fife.save_settings();
+		horizons.globals.fife.save_settings()
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
@@ -271,14 +272,14 @@ class BuildTab(TabInterface):
 		"""
 		source = cls.get_saved_buildstyle()
 		# parse
-		data = YamlCache.get_file( source, game_data=True )
+		data = YamlCache.get_file(source, game_data=True)
 		if 'meta' not in data:
 			raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
 		metadata = data['meta']
 		if 'unlocking_strategy' not in metadata:
 			raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
 		try:
-			unlocking_strategy = cls.unlocking_strategies.get_item_for_string( metadata['unlocking_strategy'] )
+			unlocking_strategy = cls.unlocking_strategies.get_item_for_string(metadata['unlocking_strategy'])
 		except KeyError:
 			raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
 
@@ -293,11 +294,11 @@ class BuildTab(TabInterface):
 
 			try:
 				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
-				tabs.append( tab )
+				tabs.append(tab)
 			except Exception as e:
 				to_add = "\nThis error happened in %s of %s ." % (tab, source)
-				e.args = ( e.args[0] + to_add, ) + e.args[1:]
-				e.message = ( e.message + to_add )
+				e.args = (e.args[0] + to_add, ) + e.args[1:]
+				e.message = (e.message + to_add)
 				raise
 
 		return tabs
@@ -308,7 +309,7 @@ class BuildTab(TabInterface):
 		"""Returns a dictionary mapping building type ids to their tiers
 		@return cached dictionary (don't modify)"""
 		building_tiers = {}
-		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
+		data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
 		tier = -1
 		for tab, tabdata in sorted(data.iteritems()):
 			if tab == "meta":

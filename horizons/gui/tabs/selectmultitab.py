@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 import logging
 from collections import defaultdict
 
+from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.command.unit import SetStance
@@ -31,7 +32,7 @@ from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.constants import UNITS
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
@@ -43,7 +44,7 @@ class SelectMultiTab(TabInterface):
 	"""
 	widget = 'overview_select_multi.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
-	helptext = _lazy("Selected Units")
+	helptext = LazyT("Selected Units")
 
 	max_row_entry_number = 3
 	max_column_entry_number = 4
@@ -223,7 +224,7 @@ class UnitEntry(object):
 		path = template.format(unit_id=unit_id)
 		try:
 			Icon(image=path)
-		except RuntimeError:
+		except fife.NotFound:
 			self.log.warning('Missing unit thumbnail {0}'.format(path))
 			path = template.format(unit_id='unknown_unit')
 		return path

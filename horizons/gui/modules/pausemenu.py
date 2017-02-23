@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,6 +26,7 @@ from horizons.gui.modules.select_savegame import SelectSavegameDialog
 from horizons.gui.modules.settings import SettingsDialog
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.util.startgameoptions import StartGameOptions
 
 
@@ -85,8 +86,8 @@ class PauseMenu(Window):
 		UnPauseCommand(suggestion=True).execute(self._session)
 
 	def _do_quit(self):
-		message = _("Are you sure you want to abort the running session?")
-		if self._windows.open_popup(_("Quit Session"), message, show_cancel_button=True):
+		message = T("Are you sure you want to abort the running session?")
+		if self._windows.open_popup(T("Quit Session"), message, show_cancel_button=True):
 			self._session.quit()
 
 	def _save_game(self):
@@ -96,7 +97,7 @@ class PauseMenu(Window):
 			success = self._session.save()
 			if not success:
 				# There was a problem during the 'save game' procedure.
-				self._windows.open_popup(_('Error'), _('Failed to save.'))
+				self._windows.open_popup(T('Error'), T('Failed to save.'))
 
 	def _load_game(self):
 		if self._in_editor_mode:

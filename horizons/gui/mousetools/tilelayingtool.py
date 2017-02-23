@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,9 +24,10 @@ from fife import fife
 import horizons.globals
 from horizons.constants import GROUND
 from horizons.ext.typing import Tuple
-from horizons.gui.mousetools import NavigationTool
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.shapes import Circle, Point
+
+from .navigationtool import NavigationTool
 
 
 class TileLayingTool(NavigationTool):

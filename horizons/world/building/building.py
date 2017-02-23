@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -294,7 +294,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		fife.InstanceVisual.create(instance)
 
 		action_set = ActionSetLoader.get_set(action_set_id)
-		if not action in action_set:
+		if action not in action_set:
 			if 'idle' in action_set:
 				action = 'idle'
 			elif 'idle_full' in action_set:

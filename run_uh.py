@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,7 +32,6 @@ If you want to dig into the game, continue to horizons/main.py. """
 from __future__ import print_function
 
 import functools
-import gettext
 import imp
 import locale
 import logging
@@ -67,9 +66,8 @@ def exit_with_error(title, message):
 	exit(1)
 
 def check_python_version():
-	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
-	if platform.python_version_tuple()[0] not in (2,'2'):
-		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
+	if sys.version_info[:2] != (2, 7):
+		exit_with_error('Unsupported Python version', 'Python 2.7 is required to run Unknown Horizons.')
 
 
 check_python_version()
@@ -95,7 +93,7 @@ def get_content_dir_parent_path():
 	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
 	# Try path for Mac Os X app container (Unknown Horizons.app).
 	# Unknown Horizons.app/Contents/Resources/contents
-	options.append(os.path.join(os.getcwd()))
+	options.append(os.getcwd())
 	# Try often-used paths on Linux.
 	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
 		options.append(os.path.join(path, u'unknown-horizons'))
@@ -119,25 +117,22 @@ def excepthook_creator(outfilename):
 	to a file.
 	@param outfilename: a filename to append traceback to"""
 	def excepthook(exception_type, value, tb):
+		from horizons.i18n import gettext as T
 		with open(outfilename, 'a') as f:
 			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
-		print('')
-		print(_('Unknown Horizons has crashed.'))
-		print('')
-		print(_('We are very sorry for this and want to fix the underlying error.'))
-		print(_('In order to do this, we need the information from the logfile:'))
+		print('\n', T('Unknown Horizons has crashed.'), '\n')
+		print(T('We are very sorry for this and want to fix the underlying error.'))
+		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
-		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
+		print(T('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
 	return excepthook
 
 def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
-	print('')
-	print('Oh my god! They killed UH.')
-	print('You bastards!')
+	print('\nOh my god! They killed UH. \nYou bastards!')
 	if logfile:
 		logfile.close()
 	sys.exit(exitcode)
@@ -177,10 +172,10 @@ def main():
 	try:
 		import yaml
 	except ImportError:
-		headline = _('Error: Unable to find required library "PyYAML".')
-		msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
-		    _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
-		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
+		headline = 'Error: Unable to find required library "PyYAML".'
+		msg = 'PyYAML (a required library) is missing and needs to be installed.\n' + \
+		    'The Windows installer is available at http://pyyaml.org/wiki/PyYAML. ' + \
+		    'Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".'
 		exit_with_error(headline, msg)
 
 	# Start UH.
@@ -214,7 +209,8 @@ def main():
 	if logfile:
 		logfile.close()
 	if ret:
-		print(_('Thank you for using Unknown Horizons!'))
+		from horizons.i18n import gettext as T
+		print(T('Thank you for using Unknown Horizons!'))
 
 
 def setup_debugging(options):
@@ -278,11 +274,12 @@ def setup_debugging(options):
 
 		log_sys_info()
 
-def import_fife(paths):
+def find_fife(paths):
+	"""Returns True if the fife module was found in one of the supplied paths."""
 	try:
-		# If FIFE can't be found then this call will throw an exception.
-		settings = imp.find_module('fife', paths)
-		fife = imp.load_module('fife', *settings)
+		# If FIFE can't be found then this call will throw an ImportError exception:
+		module_info = imp.find_module('fife', paths)
+		fife = imp.load_module('fife', *module_info)
 		try:
 			from fife import fife
 		except ImportError as e:
@@ -298,52 +295,48 @@ def import_fife(paths):
 		return False
 	return True
 
-def find_fife():
+def get_fife_paths():
+	"""Returns all possible paths to search for the fife module. New paths to be added as needed."""
 	# Use the path the user provided.
 	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
+	paths = []
+	# Check if path was provided by user.
 	if options.fife_path:
 		fife_path = os.path.abspath(options.fife_path)
+		paths.append(fife_path)
 		# Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
 		if os.path.isfile(fife_path):
+			# Support giving the path to FIFE_ROOT/engine/python
 			fife_path = os.path.dirname(fife_path)
-		# Support giving the path to FIFE_ROOT/engine/python
-		if import_fife([fife_path]):
-			return True
-		# Support giving the path to FIFE_ROOT/engine
-		if import_fife([os.path.join(fife_path, 'python')]):
-			return True
-		# Support giving the path to FIFE_ROOT
-		if import_fife([os.path.join(fife_path, 'engine', 'python')]):
-			return True
-		# Support giving the path to FIFE_ROOT/engine/python/fife
-		if import_fife([os.path.join(fife_path, '..')]):
-			return True
+			paths.append(fife_path)
+			# Support giving the path to FIFE_ROOT/engine
+			paths.append(os.path.join(fife_path, 'python'))
+			# Support giving the path to FIFE_ROOT
+			paths.append(os.path.join(fife_path, 'engine', 'python'))
+			# Support giving the path to FIFE_ROOT/engine/python/fife
+			paths.append(os.path.join(fife_path, '..'))
 
-		# End the search to avoid using the wrong (non-user-specified) FIFE.
-		log().error('Unable to find FIFE in %s', fife_path)
-		exit(1)
-
-	# Try to use the default FIFE (equivalent of just trying to import it).
-	if import_fife(None):
-		return True
-
-	# Look for FIFE in the neighborhood of the game dir.
-	paths = []
+	# Look for FIFE in the neighborhood of the game dir:
 	for opt1 in ('.', '..', '..' + os.sep + '..'):
 		for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
 			for opt3 in ('.', 'trunk'):
 				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
 				if os.path.exists(path):
 					paths.append(path)
-	return import_fife(paths)
+
+	return paths
 
 def setup_fife():
 	log_paths()
 	log_sys_info()
-	if not find_fife():
-		#TODO useful error message anyone?
-		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
+	paths = get_fife_paths()
+	if not find_fife(paths):
+		try:
+			from fife import fife
+		except ImportError:
+			directories = '\n'.join(paths)
+			exit_with_error('Failed to load module fife', 'Below directory paths were tested:\n' + directories)
 
 	from fife import fife
 	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
@@ -360,8 +353,6 @@ def init_environment(use_fife):
 	"""Sets up everything.
 
 	Use in any program that requires access to FIFE and UH modules."""
-	# install dummy translation
-	gettext.install('', unicode=True)
 	if use_fife:
 		setup_fife()
 

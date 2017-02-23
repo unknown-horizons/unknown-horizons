@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -62,30 +62,30 @@ class Server(object):
 			'maxpacketsize' : 2 * 1024 * 1024,
 		}
 		self.callbacks = {
-			'onconnect':     [ self.onconnect ],
-			'ondisconnect':  [ self.ondisconnect ],
-			'onreceive':     [ self.onreceive ],
-			packets.cmd_error:                 [ self.onerror ],
-			packets.cmd_fatalerror:            [ self.onfatalerror ],
-			packets.client.cmd_sessionprops:   [ self.onsessionprops ],
-			packets.client.cmd_creategame:     [ self.oncreategame ],
-			packets.client.cmd_listgames:      [ self.onlistgames ],
-			packets.client.cmd_joingame:       [ self.onjoingame ],
-			packets.client.cmd_leavegame:      [ self.onleavegame ],
-			packets.client.cmd_chatmsg:        [ self.onchat ],
-			packets.client.cmd_changename:     [ self.onchangename ],
-			packets.client.cmd_changecolor:    [ self.onchangecolor ],
-			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
-			packets.client.cmd_toggleready:    [ self.ontoggleready ],
-			packets.client.cmd_kickplayer:     [ self.onkick ],
-			#TODO packets.client.cmd_fetch_game:     [ self.onfetchgame ],
-			#TODO packets.client.savegame_data:      [ self.onsavegamedata ],
-			'preparegame':   [ self.preparegame ],
-			'startgame':     [ self.startgame ],
-			'leavegame':     [ self.leavegame ],
-			'deletegame':    [ self.deletegame ],
-			'terminategame': [ self.terminategame ],
-			'gamedata':      [ self.gamedata ],
+			'onconnect':     [self.onconnect],
+			'ondisconnect':  [self.ondisconnect],
+			'onreceive':     [self.onreceive],
+			packets.cmd_error:                 [self.onerror],
+			packets.cmd_fatalerror:            [self.onfatalerror],
+			packets.client.cmd_sessionprops:   [self.onsessionprops],
+			packets.client.cmd_creategame:     [self.oncreategame],
+			packets.client.cmd_listgames:      [self.onlistgames],
+			packets.client.cmd_joingame:       [self.onjoingame],
+			packets.client.cmd_leavegame:      [self.onleavegame],
+			packets.client.cmd_chatmsg:        [self.onchat],
+			packets.client.cmd_changename:     [self.onchangename],
+			packets.client.cmd_changecolor:    [self.onchangecolor],
+			packets.client.cmd_preparedgame:   [self.onpreparedgame],
+			packets.client.cmd_toggleready:    [self.ontoggleready],
+			packets.client.cmd_kickplayer:     [self.onkick],
+			#TODO packets.client.cmd_fetch_game:     [self.onfetchgame],
+			#TODO packets.client.savegame_data:      [self.onsavegamedata],
+			'preparegame':   [self.preparegame],
+			'startgame':     [self.startgame],
+			'leavegame':     [self.leavegame],
+			'deletegame':    [self.deletegame],
+			'terminategame': [self.terminategame],
+			'gamedata':      [self.gamedata],
 		}
 		self.games   = [] # list of games
 		self.players = {} # sessionid => Player() dict
@@ -244,7 +244,7 @@ class Server(object):
 		# NOTE: ALWAYS initialize peer.data
 		event.peer.data = player.sid
 
-		if not player.protocol in PROTOCOLS:
+		if player.protocol not in PROTOCOLS:
 			logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(player))
 			self.fatalerror(player, __("Old or unsupported multiplayer protocol. Please check your game version"))
 			return

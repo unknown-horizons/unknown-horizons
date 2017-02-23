@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 import hashlib
 
 from horizons.constants import TIER
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 
 
 class IngameType(type):
@@ -72,7 +72,7 @@ class IngameType(type):
 		if not string:
 			return u''
 		if string.startswith("_ "):
-			return _lazy(string[2:])
+			return LazyT(string[2:])
 		else:
 			return string
 

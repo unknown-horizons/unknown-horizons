@@ -1,5 +1,5 @@
 # Slovak translations for Unknown Horizons package.
-# Copyright (C) 2016 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
 # Automatically generated, 2016.
 #
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9e3f16e\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-09-02 08:36+0000\n"
+"PO-Revision-Date: 2016-12-25 11:24+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/tutorial/sk/>\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -159,18 +159,25 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Zásoby a konštrukčné materiály boli vyložené z vašej lode a bezpečne "
+"uchované vo vašom novom prístave. Teraz je čas na to aby ste postavili "
+"niekoľko základných budov začnúc drevorubačskou chatou."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Drevorubači pokácajú stromy okolo ich stanov a spracovať ich na dosky, ktoré "
+"sa dajú použiť na výstavbu alebo ako položka pre obchod."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"Pre postavenie drevorubačského stanu, otvorte stavebné menu a kliknutím na "
+"tlačidlo pod minimapou alebo stlačením klávesy 'B', prednastavenou skratkou."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -179,12 +186,17 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Stavebné menu je zoradené do stupňov. Prvý stupeň je momentálne jediný "
+"prístupný vám. Ako sa vaša civilizácia bude vylepšovať dostanete prístup k "
+"budovám vyššieho stupňa."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Nájdite dobre zalesnenú plochu pre drevorubača potom kliknite 'Drevorubačský "
+"stan' z listu budov a postavte ho do tejto plochy."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -192,6 +204,8 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Neskôr v hre budete môcť vytvoriť zalesnenú plochu sadením stromov, ale "
+"keďže to stojí peanieze, mali by ste používať to čo vám príroda dá!"
 
 #. This is the text body of a logbook page.
 msgid ""

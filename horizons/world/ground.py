@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -150,7 +150,7 @@ class GroundClass(type):
 			fife_object = None
 			try:
 				fife_object = model.createObject(cls_name, 'ground_' + tile_set_id)
-			except RuntimeError:
+			except fife.NameClash:
 				cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
 				fife_object = model.getObject(cls_name, 'ground_' + tile_set_id)
 				return

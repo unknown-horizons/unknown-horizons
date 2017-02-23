@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-14 02:13+0200\n"
+"POT-Creation-Date: 2016-10-30 16:06+0100\n"
 "PO-Revision-Date: 2013-06-13 15:22+0200\n"
 "Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh-server/cs/>\n"
@@ -18,86 +18,86 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-#: horizons/network/server.py:250
+#: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Zastaralý či nepodporovaný protokol pro hru po síti. Prosím zkontrolujte "
 "verzi hry"
 
-#: horizons/network/server.py:285
+#: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
 msgstr "Překročil jsi globální maximální velikost packetu."
 
-#: horizons/network/server.py:286 horizons/network/server.py:305
+#: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
 "Toto by nikdy nemělo nastat. Prosím kontaktujte nás, nebo podejte hlášení o "
 "chybě."
 
-#: horizons/network/server.py:304
+#: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
 msgstr "Překročil jsi maximální velikost konkrétního packetu."
 
-#: horizons/network/server.py:312
+#: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr "Neznámý, či poškozený packet. Prosím zkontrolujte verzi vaší hry"
 
 #. this will trigger ondisconnect() for cleanup
-#: horizons/network/server.py:321
+#: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
 msgstr "Chybné/Neznámé sezení"
 
-#: horizons/network/server.py:404
+#: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
 msgstr "Nemůžete vstoupit do hry, pokud již v nějaké jste"
 
-#: horizons/network/server.py:409
+#: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
 msgstr "Neznámá hra, nebo hra běží na jiné verzi"
 
-#: horizons/network/server.py:412
+#: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
 msgstr "Hra začala. Již se nejde připojit"
 
-#: horizons/network/server.py:415
+#: horizons/network/server.py:414
 msgid "Game is full"
 msgstr "Hra je obsazena"
 
-#: horizons/network/server.py:418
+#: horizons/network/server.py:417
 msgid "Wrong password"
 msgstr "Nesprávné heslo"
 
-#: horizons/network/server.py:435 horizons/network/server.py:548
+#: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
 msgstr "V této hře již je hráč s vaším jménem."
 
-#: horizons/network/server.py:436
+#: horizons/network/server.py:435
 msgid "Please change your name."
 msgstr "Změňte si prosím své jméno."
 
-#: horizons/network/server.py:439 horizons/network/server.py:577
+#: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
 msgstr "V této hře již je hráč s vaší barvou."
 
-#: horizons/network/server.py:440
+#: horizons/network/server.py:439
 msgid "Please change your color."
 msgstr "Změňte si prosím svou barvu."
 
-#: horizons/network/server.py:443
+#: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr "Ve hře již je hráč s vaším unikátním ID. Toto by se nemělo nikdy stát."
 
-#: horizons/network/server.py:459
+#: horizons/network/server.py:458
 msgid "You are not inside a game"
 msgstr "Nejste ve hře"
 
-#: horizons/network/server.py:490
+#: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Hra byla ukončena. Zakládající hráč ji opustil."
 
-#: horizons/network/server.py:495
+#: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
@@ -105,15 +105,15 @@ msgstr ""
 "Jeden z hráčů ukončil hru. Z technických důvodů tato hra nemůže pokračovat, "
 "za což se velice omlouváme."
 
-#: horizons/network/server.py:549
+#: horizons/network/server.py:548
 msgid "Unable to change your name."
 msgstr "Vaše jméno nelze změnit."
 
-#: horizons/network/server.py:578
+#: horizons/network/server.py:577
 msgid "Unable to change your color."
 msgstr "Vaši barvu nelze změnit."
 
-#: horizons/network/server.py:666
+#: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
 msgstr "Nemůžete přeskočit do hry pokud již v nějaké jste"
 

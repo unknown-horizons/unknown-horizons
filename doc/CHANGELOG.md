@@ -3,7 +3,8 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
-| 2016.1 | XX |
+| 2017.2 | 76 |
+| 2017.1 | 76 |
 | 2015.1 | 75 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
@@ -19,9 +20,26 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2016-XX-XX: Milestone 2016.1
+2017-02-07: Milestone 2017.2
 ----------------------------
-changelog date: 9th Oct 2016
+changelog date: 28th Jan 2017
+
+### Codebase
+
+Bug fixes:
+ - Load slider settings as int in random map menu
+ - Fix random SP map re-generation triggering
+ - #2416 Cursor isn't changed back to normal when TextWidget is hidden
+ - #2606 cacaofield bm icon have wrong grey icon
+ - Fix small `get_res_icon_path()` widget leak
+ 
+Changes for Engine update:
+ - Adapt loading of animations to current fife interface
+ - Don't set an ActionFrame on animations
+ 
+2017-01-16: Milestone 2017.1
+----------------------------
+changelog date: 16th Jan 2017
 
 ### Gameplay and Balancing
 

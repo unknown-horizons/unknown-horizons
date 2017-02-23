@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -83,7 +83,7 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	def get_status_icons(self):
 		banned_classes = (InventoryFullStatus,)
 		return [ i for i in super(Warehouse, self).get_status_icons() if
-		         not i.__class__ in banned_classes ]
+		         i.__class__ not in banned_classes ]
 
 class MainSquare(Path, StorageBuilding, ProductionBuilding):
 	walkable = True

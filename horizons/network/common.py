@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -144,7 +144,7 @@ class Game(object):
 			self.state = state
 
 		def __str__(self):
-			strvals = [ "Open", "Prepare", "Running" ]
+			strvals = ["Open", "Prepare", "Running"]
 			return "%s" % (strvals[self.state])
 
 	def __init__(self, packet, creator):
@@ -249,7 +249,7 @@ class ErrorType(object):
 		self.state = state
 
 	def __str__(self):
-		strvals = [ "NotSet", "TerminateGame" ]
+		strvals = ["NotSet", "TerminateGame"]
 		return "%s" % (strvals[self.state])
 
 packets.SafeUnpickler.add('common', ErrorType)

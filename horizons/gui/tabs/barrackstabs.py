@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,16 +25,17 @@ from fife.extensions.pychan.widgets import Container, Icon, Label
 
 from horizons.command.production import AddProduction
 from horizons.constants import PRODUCTIONLINES, RES, UNITS
-from horizons.gui.tabs import ProducerOverviewTabBase, UnitbuilderTabBase
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.util.python.callback import Callback
+
+from .boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase
 
 
 class BarracksTab(UnitbuilderTabBase):
 	widget = 'barracks.xml'
-	helptext = _lazy("Barracks overview")
+	helptext = LazyT("Barracks overview")
 
 	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/{type_id}.png"
@@ -77,7 +78,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		#groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
 		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))
+			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=T('Build this groundunit!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
 			button = CancelButton(position=(60, 50), name='ok_%s'%index,
@@ -112,7 +113,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 
 class BarracksSwordmanTab(BarracksSelectTab):
 	icon_path = 'icons/tabwidget/barracks/swordman'
-	helptext = _lazy("Swordman")
+	helptext = LazyT("Swordman")
 
 	groundunits = [
 		(UNITS.SWORDSMAN, PRODUCTIONLINES.SWORDSMAN),
@@ -126,11 +127,11 @@ class BarracksSwordmanTab(BarracksSelectTab):
 
 class BarracksConfirmTab(ProducerOverviewTabBase):
 	widget = 'barracks_confirm.xml'
-	helptext = _lazy("Confirm order")
+	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
 		super(BarracksConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
+		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 
 	def start_production(self):

@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,11 +34,12 @@ import tempfile
 import horizons.globals
 import horizons.main
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
+from horizons.ext.typing import Optional, Tuple
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import InvalidScenarioFileFormat, ScenarioEventHandler
 from horizons.util.python.callback import Callback
@@ -46,6 +47,9 @@ from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
+
+from .aidataselection import AIDataSelection
+from .playerdataselection import PlayerDataSelection
 
 
 class SingleplayerMenu(Window):
@@ -108,7 +112,7 @@ class SingleplayerMenu(Window):
 		player_name = self._playerdata.get_player_name()
 
 		if not player_name:
-			self._windows.open_popup(_("Invalid player name"), _("You entered an invalid playername."))
+			self._windows.open_popup(T("Invalid player name"), T("You entered an invalid playername."))
 			return
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
@@ -119,8 +123,6 @@ class SingleplayerMenu(Window):
 
 class GameSettingsWidget(object):
 	"""Toggle trader/pirates/disasters and change resource density."""
-
-	resource_densities = [0.5, 0.7, 1, 1.4, 2]
 
 	def __init__(self):
 		self._gui = load_uh_widget('game_settings.xml')
@@ -150,11 +152,13 @@ class GameSettingsWidget(object):
 			self._gui.findChild(name=u'lbl_' + setting).capture(Callback(toggle, setting, setting_save_name))
 
 		resource_density_slider = self._gui.findChild(name='resource_density_slider')
+
 		def on_resource_density_slider_change():
-			self._gui.findChild(name='resource_density_lbl').text = _('Resource density:') + u' ' + \
-				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
+			self._gui.findChild(name='resource_density_lbl').text = T('Resource density:') + u' ' + \
+				unicode(resource_density_slider.value) + u'x'
 			horizons.globals.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
 			horizons.globals.fife.save_settings()
+
 		resource_density_slider.capture(on_resource_density_slider_change)
 		resource_density_slider.value = horizons.globals.fife.get_uh_setting("MapResourceDensity")
 
@@ -162,7 +166,7 @@ class GameSettingsWidget(object):
 
 	@property
 	def natural_resource_multiplier(self):
-		return self.resource_densities[int(self._gui.findChild(name='resource_density_slider').value)]
+		return self._gui.findChild(name='resource_density_slider').value
 
 	@property
 	def free_trader(self):
@@ -179,11 +183,6 @@ class GameSettingsWidget(object):
 
 class RandomMapWidget(object):
 	"""Create a random map, influence map generation with multiple sliders."""
-
-	map_sizes = [50, 100, 150, 200, 250]
-	water_percents = [20, 30, 40, 50, 60, 70, 80]
-	island_sizes = [30, 40, 50, 60, 70]
-	island_size_deviations = [5, 10, 20, 30, 40]
 
 	def __init__(self, windows, singleplayer_menu, aidata):
 		self._windows = windows
@@ -229,31 +228,31 @@ class RandomMapWidget(object):
 		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		parameters = (
-			('map_size', self.map_sizes, _('Map size:'), 'RandomMapSize'),
-			('water_percent', self.water_percents, _('Water:'), 'RandomMapWaterPercent'),
-			('max_island_size', self.island_sizes, _('Max island size:'), 'RandomMapMaxIslandSize'),
-			('preferred_island_size', self.island_sizes, _('Preferred island size:'), 'RandomMapPreferredIslandSize'),
-			('island_size_deviation', self.island_size_deviations, _('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
+			('map_size', T('Map size:'), 'RandomMapSize'),
+			('water_percent', T('Water:'), 'RandomMapWaterPercent'),
+			('max_island_size', T('Max island size:'), 'RandomMapMaxIslandSize'),
+			('preferred_island_size', T('Preferred island size:'), 'RandomMapPreferredIslandSize'),
+			('island_size_deviation', T('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
 		)
 
-		for param, __, __, setting_name in parameters:
-			self._map_parameters[param] = horizons.globals.fife.get_uh_setting(setting_name)
+		for param, __, setting_name in parameters:
+			self._map_parameters[param] = int(horizons.globals.fife.get_uh_setting(setting_name))
 
-		def make_on_change(param, values, text, setting_name):
+		def make_on_change(param, text, setting_name):
 			# When a slider is changed, update the value displayed in the label, save the value
 			# in the settings and store the value in self._map_parameters
 			def on_change():
 				slider = self._gui.findChild(name=param + '_slider')
-				self._gui.findChild(name=param + '_lbl').text = text + u' ' + unicode(values[int(slider.value)])
+				self._gui.findChild(name=param + '_lbl').text = text + u' ' + unicode(int(slider.value))
 				horizons.globals.fife.set_uh_setting(setting_name, slider.value)
 				horizons.globals.fife.save_settings()
+				self._map_parameters[param] = int(slider.value)
 				self._on_random_parameter_changed()
-				self._map_parameters[param] = values[int(slider.value)]
 			return on_change
 
-		for param, values, text, setting_name in parameters:
+		for param, text, setting_name in parameters:
 			slider = self._gui.findChild(name=param + '_slider')
-			on_change = make_on_change(param, values, text, setting_name)
+			on_change = make_on_change(param, text, setting_name)
 			slider.capture(on_change)
 			slider.value = horizons.globals.fife.get_uh_setting(setting_name)
 			on_change()
@@ -352,7 +351,7 @@ class RandomMapWidget(object):
 			imagemanager=horizons.globals.fife.imagemanager,
 			cam_border=False,
 			use_rotation=False,
-			tooltip=_("Click to generate a different random map"),
+			tooltip=T("Click to generate a different random map"),
 			on_click=self._on_preview_click,
 			preview=True)
 
@@ -414,7 +413,7 @@ class FreeMapsWidget(object):
 
 		number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
 		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
+		lbl.text = T("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(map_file)
 
@@ -454,6 +453,8 @@ class ScenarioMapWidget(object):
 		self._aidata = aidata
 		self._scenarios = {}
 
+		self._language_fallback_active = False
+
 		self._gui = load_uh_widget('sp_scenario.xml')
 
 	def end(self):
@@ -487,23 +488,11 @@ class ScenarioMapWidget(object):
 
 		self._gui.distributeInitialData({'maplist' : self.maps_display})
 		self._gui.distributeData({'maplist': 0})
-
-		# add all locales to lang list, select current locale as default and sort
-		scenario_langs = list(set(l for s in self._scenarios.values() for l, filename in s))
-		lang_list = self._gui.findChild(name="uni_langlist")
-		lang_list.items = sorted([LANGUAGENAMES[l] for l in scenario_langs])
-
-		cur_locale = horizons.globals.fife.get_locale()
-		if LANGUAGENAMES[cur_locale] in lang_list.items:
-			lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
-		else:
-			lang_list.selected = 0
-
 		self._gui.mapEvents({
-			'maplist/action': self._update_infos,
+			'maplist/action': self._on_map_change,
 			'uni_langlist/action': self._update_infos,
 		})
-		self._update_infos()
+		self._on_map_change()
 
 	def _show_invalid_scenario_file_popup(self, exception):
 		"""Shows a popup complaining about invalid scenario file.
@@ -512,34 +501,57 @@ class ScenarioMapWidget(object):
 		"""
 		logging.getLogger('gui.windows').error(u"Error: %s", exception)
 		self._windows.open_error_popup(
-			_("Invalid scenario file"),
-			description=_("The selected file is not a valid scenario file."),
-			details=_("Error message:") + u' ' + unicode(str(exception)),
-			advice=_("Please report this to the author."))
+			T("Invalid scenario file"),
+			description=T("The selected file is not a valid scenario file."),
+			details=T("Error message:") + u' ' + unicode(str(exception)),
+			advice=T("Please report this to the author."))
 
-	def _update_infos(self):
-		"""Fill in infos of selected scenario to label
-
-		TODO document the 100 side effects"""
-		scenario = self._gui.findChild(name="maplist").selected_item
+	def _on_map_change(self):
+		# type: () -> None
 		lang_list = self._gui.findChild(name="uni_langlist")
 		selected_language = lang_list.selected_item
 
-		lang_list.items = self._get_available_languages(scenario)
-		lang_list.selected = 0
-		if selected_language in lang_list.items:
-			lang_list.selected = lang_list.items.index(selected_language)
+		if (selected_language is None
+		    or self._language_fallback_active):
+			# Either no language is selected (this happens initially), or the previous
+			# map needed a fallback language: we want to choose a more appropriate
+			# one for the new map.
+			selected_language = LANGUAGENAMES[horizons.globals.fife.get_locale()]
+			self._language_fallback_active = False
 
-		cur_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
-		translated_scenario = self._find_map_filename(scenario, cur_locale)
+		self._update_infos(selected_language=selected_language)
 
+	def _update_infos(self, selected_language=None):
+		# type: (Optional[str]) -> None
+		"""
+		Check if selected language is available or pick a fallback language. Fill in infos
+		of selected scenario.
+		"""
+		scenario_idx = self._gui.findChild(name="maplist").selected_item
+		scenario = self._scenarios[scenario_idx]
+
+		lang_list = self._gui.findChild(name="uni_langlist")
+		selected_language = selected_language if selected_language is not None else lang_list.selected_item
+
+		available_languages = self.get_available_languages(scenario)
+		if selected_language not in available_languages:
+			selected_language = LANGUAGENAMES[self.guess_suitable_default_locale(available_languages)]
+			self._language_fallback_active = True
+		else:
+			self._language_fallback_active = False
+
+		lang_list.items = available_languages
+		lang_list.selected = available_languages.index(selected_language)
+
+		translated_scenario = self.find_map_filename(scenario, selected_language)
 		if translated_scenario is None:
-			translated_scenario = self._guess_suitable_default_locale(scenario)
-			if translated_scenario is None:
-				return
+			return
+
 		self._update_scenario_translation_infos(translated_scenario)
 
-	def _guess_suitable_default_locale(self, scenario):
+	@staticmethod
+	def guess_suitable_default_locale(available_languages):
+		# type: (List[str]) -> Optional[str]
 		"""Attempts to guess a reasonable localized scenario to preselect in SP menu.
 
 		If no filename was found so far for our scenario:
@@ -558,11 +570,9 @@ class ScenarioMapWidget(object):
 			default_locale.split('_')[0],
 			'en',
 		]
-		lang_list = self._gui.findChild(name="uni_langlist")
 		for lang in possibilities:
-			if LANGUAGENAMES[lang] in lang_list.items:
-				lang_list.selected = lang_list.items.index(LANGUAGENAMES[lang])
-				return self._find_map_filename(scenario, lang)
+			if LANGUAGENAMES[lang] in available_languages:
+				return lang
 
 	def _update_scenario_translation_infos(self, scenario):
 		"""Fill in translation infos of selected scenario to translation label."""
@@ -577,23 +587,26 @@ class ScenarioMapWidget(object):
 		lbl.text = translation_status
 
 		lbl = self._gui.findChild(name="uni_map_difficulty")
-		lbl.text = _("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
+		lbl.text = T("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
 
 		lbl = self._gui.findChild(name="uni_map_author")
-		lbl.text = _("Author: {author}").format(author=metadata['author'])
+		lbl.text = T("Author: {author}").format(author=metadata['author'])
 
 		lbl = self._gui.findChild(name="uni_map_desc")
-		lbl.text = _("Description: {desc}").format(desc=metadata['description'])
+		lbl.text = T("Description: {desc}").format(desc=metadata['description'])
 
-	def _find_map_filename(self, scenario_name, target_locale):
+	@staticmethod
+	def find_map_filename(scenario, target_locale):
+		# type: (List[Tuple[str, str]], str) -> Optional[str]
 		"""Finds the given map's filename with its locale."""
-		for language, mapfile in self._scenarios[scenario_name]:
+		for language, mapfile in scenario:
 			if language == target_locale and os.path.exists(mapfile):
 				return mapfile
 
-	def _get_available_languages(self, scenario):
-		sc = self._scenarios[scenario]
-		scenario_langs = list(set(language for language, filename in sc))
+	@staticmethod
+	def get_available_languages(scenario):
+		# type: (List[Tuple[str, str]]) -> List[str]
+		scenario_langs = list(set(language for language, filename in scenario))
 		return [LANGUAGENAMES[l] for l in sorted(scenario_langs)]
 
 	def _get_selected_map(self):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ from fife.extensions.pychan.widgets import Container, Icon, Label
 from horizons.constants import TRADER
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
@@ -42,7 +43,7 @@ class ImageFillStatusButton(Container):
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.path = path
 		self.text = text
-		self.helptext = _(helptext)
+		self.helptext = T(helptext)
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (9, 30)
@@ -68,14 +69,14 @@ class ImageFillStatusButton(Container):
 		if showprice:
 			value = db.get_res_value(res)
 			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
-				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
+				helptext = T('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
 				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
-				            + _('buy for {buyprice} gold').format(buyprice=buyprice)
+				            + T('buy for {buyprice} gold').format(buyprice=buyprice)
 				            + u'[br]'
-				            + _('sell for {sellprice} gold').format(sellprice=sellprice))
+				            + T('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
 			helptext = db.get_res_name(res)
 
@@ -94,7 +95,7 @@ class ImageFillStatusButton(Container):
 
 	filled = property(_get_filled, _set_filled)
 
-	__widget_cache = {}
+	__widget_cache = {} # type: Dict[Callback, ImageButton]
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call

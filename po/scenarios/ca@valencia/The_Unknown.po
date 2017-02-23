@@ -1,5 +1,5 @@
 # Catalan translations for Unknown Horizons package.
-# Copyright (C) 2016 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
 # Automatically generated, 2016.
 #

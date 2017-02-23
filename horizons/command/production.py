@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -38,7 +38,7 @@ class ToggleActive(GenericComponentCommand):
 		else:
 			production = None
 
-		return getattr(obj, self.method)( production )
+		return getattr(obj, self.method)(production)
 
 GenericComponentCommand.allow_network(ToggleActive)
 

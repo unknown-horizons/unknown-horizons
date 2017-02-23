@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,7 @@ from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import GUI
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.python.callback import Callback
 
 
@@ -38,7 +38,7 @@ class TradeTab(TabInterface):
 
 	widget = 'tradetab.xml'
 	icon_path = 'icons/tabwidget/warehouse/buysell'
-	helptext = _lazy('Trade')
+	helptext = LazyT('Trade')
 
 	scheduled_update_delay = 0.3
 

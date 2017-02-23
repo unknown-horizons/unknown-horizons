@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,21 +30,22 @@ from horizons.command.production import ToggleActive
 from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED, PRODUCTION
-from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.scheduler import Scheduler
 from horizons.util.pychananimation import PychanAnimation
 from horizons.util.python.callback import Callback
 from horizons.world.production.producer import Producer
 
+from .overviewtab import OverviewTab
+
 
 class ProductionOverviewTab(OverviewTab):
 	widget = 'overview_productionbuilding.xml'
-	helptext = _lazy("Production overview")
+	helptext = LazyT("Production overview")
 	production_line_gui_xml = 'overview_productionline.xml'
 
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
@@ -98,15 +99,15 @@ class ProductionOverviewTab(OverviewTab):
 
 			centered_container = container.findChild(name='centered_production_icons')
 			center_y = self._center_production_line(container, production)
-			centered_container.position = (centered_container.position[0], center_y)
+			centered_container.position = (centered_container.position[0], center_y - 44 // 2)
 			self._set_resource_amounts(container, production)
 
 			if production.is_paused():
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_active"))
 				toggle_icon = centered_container.findChild(name="toggle_active_inactive")
 				toggle_icon.name = "toggle_active"
 			else:
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_inactive") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_inactive"))
 				toggle_icon = centered_container.findChild(name="toggle_active_active")
 				toggle_icon.name = "toggle_active"
 
@@ -119,7 +120,7 @@ class ProductionOverviewTab(OverviewTab):
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					centered_container.anim = anim
 					anim.start(1.0/12, -1) # always start anew, people won't notice
-					self._animations.append( weakref.ref( anim ) )
+					self._animations.append(weakref.ref(anim))
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
@@ -161,7 +162,7 @@ class ProductionOverviewTab(OverviewTab):
 			self._draw_pretty_arrows(parent_container, input_amount, x=58, y=center_y, out=False)
 		if output_amount > 0:
 			self._draw_pretty_arrows(parent_container, output_amount, x=96, y=center_y, out=True)
-		return center_y
+		return center_y + self.ICON_HEIGHT // 2
 
 	def _draw_pretty_arrows(self, parent_container, amount, x=0, y=0, out=False):
 		"""Draws incoming or outgoing arrows for production line container."""
@@ -297,7 +298,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 			icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
 			button.path = 'icons/tabwidget/lumberjackcamp/no_area_build'
 		button.min_size = button.max_size = button.size = (46, 46)
-		button.helptext = _('Fill range with {how_many} trees').format(
+		button.helptext = T('Fill range with {how_many} trees').format(
 			how_many=field_comp.how_many)
 
 		res_bar = self.instance.session.ingame_gui.resource_overview
@@ -318,7 +319,7 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	Requires the building class using this tab to implement get_providers().
 	"""
 	widget = 'overview_farm.xml'
-	helptext = _lazy("Production overview")
+	helptext = LazyT("Production overview")
 	production_line_gui_xml = "overview_farmproductionline.xml"
 
 	# the farm uses small buttons

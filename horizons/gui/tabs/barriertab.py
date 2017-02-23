@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,14 +23,15 @@
 from horizons.component.depositcomponent import DepositComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.gui.tabs import OverviewTab
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.loaders.actionsetloader import ActionSetLoader
+
+from .overviewtab import OverviewTab
 
 
 class BarrierOverviewTab(OverviewTab):
 	widget = 'overview_barrier.xml'
-	helptext = _lazy("Overview")
+	helptext = LazyT("Overview")
 
 	def init_widget(self):
 		super(BarrierOverviewTab, self).init_widget()

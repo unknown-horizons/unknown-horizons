@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,14 +23,15 @@
 from horizons.component.depositcomponent import DepositComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.gui.tabs import OverviewTab
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.loaders.actionsetloader import ActionSetLoader
+
+from .overviewtab import OverviewTab
 
 
 class TowerOverviewTab(OverviewTab): # defensive tower
 	widget = 'overview_tower.xml'
-	helptext = _lazy("Tower overview")
+	helptext = LazyT("Tower overview")
 
 	def init_widget(self):
 		super(TowerOverviewTab, self).init_widget()
@@ -38,7 +39,7 @@ class TowerOverviewTab(OverviewTab): # defensive tower
 
 class SignalFireOverviewTab(OverviewTab):
 	widget = 'overview_signalfire.xml'
-	helptext = _lazy("Overview")
+	helptext = LazyT("Overview")
 
 	def init_widget(self):
 		super(SignalFireOverviewTab, self).init_widget()
@@ -55,7 +56,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
 		resources = self.instance.get_component(DepositComponent).get_res_ranges()
-		amounts = dict( (res, (0, max_amount)) for res, min_, max_amount in resources )
+		amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
 		self.widget.child_finder("inventory").init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory,
 		                                           ordinal=amounts)

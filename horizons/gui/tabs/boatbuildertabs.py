@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,19 +22,21 @@
 import math
 from operator import itemgetter
 
+from fife import fife
 from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
 
 from horizons.command.production import AddProduction, CancelCurrentProduction, RemoveFromQueue
 from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
 from horizons.engine import Fife
 from horizons.ext.typing import Tuple
-from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.world.production.producer import Producer
+
+from .overviewtab import OverviewTab
 
 
 class ProducerOverviewTabBase(OverviewTab):
@@ -82,7 +84,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		if (Fife.getVersion() >= (0, 4, 0)):
 			container_inactive.parent.hideChild(container_inactive)
 		else:
-			if not container_inactive in container_inactive.parent.hidden_children:
+			if container_inactive not in container_inactive.parent.hidden_children:
 				container_inactive.parent.hideChild(container_inactive)
 
 		self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
@@ -101,7 +103,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		produced_unit_id = production_line.get_produced_units().keys()[0]
 
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-		container_active.findChild(name="headline_UB_builtunit_label").text = _(name)
+		container_active.findChild(name="headline_UB_builtunit_label").text = T(name)
 
 		self.update_unit_icon(container_active, produced_unit_id)
 
@@ -115,7 +117,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			if (Fife.getVersion() >= (0, 4, 0)):
 				w.parent.hideChild(w)
 			else:
-				if not w in w.parent.hidden_children:
+				if w not in w.parent.hidden_children:
 					w.parent.hideChild(w)
 
 	def update_buttons(self, container_active, cancel_container):
@@ -129,7 +131,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		if (Fife.getVersion() >= (0, 4, 0)):
 			button_active.parent.hideChild(button_active)
 		else:
-			if not button_active in button_active.parent.hidden_children:
+			if button_active not in button_active.parent.hidden_children:
 				button_active.parent.hideChild(button_active)
 		button_inactive.parent.showChild(button_inactive)
 
@@ -154,7 +156,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		queue_container.removeAllChildren()
 		for place_in_queue, unit_type in enumerate(queue):
 			image = self.__class__.UNIT_THUMBNAIL.format(type_id=unit_type)
-			helptext = _("{ship} (place in queue: {place})").format(
+			helptext = T("{ship} (place in queue: {place})").format(
 		            ship=self.instance.session.db.get_unit_type_name(unit_type),
 		            place=place_in_queue+1)
 			# people don't count properly, always starting at 1..
@@ -162,14 +164,10 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 			try:
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
-			except RuntimeError,e:
+			except fife.NotFound as e:
 				# It's possible that this error was raised from a missing thumbnail asset,
 				# so we check against that now and use a fallback thumbnail instead
-
-				# TODO string matching for runtime errors is nightmare fuel
-				# Better: Replace RuntimeError in fife with a more precise error class if possible
-				# and only catch that class here
-				if e.message.startswith('_[NotFound]_ , Something was searched, but not found :: content/gui/icons/thumbnails/'):
+				if 'content/gui/icons/thumbnails/' in e.what():
 					# actually load the fallback unit image
 					image = self.__class__.UNIT_THUMBNAIL.format(type_id="unknown_unit")
 					icon = Icon(name=icon_name, image=image, helptext=helptext)
@@ -179,7 +177,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
 		                                self.instance.session)
 			icon.capture(rm_from_queue_cb, event_name="mouseClicked")
-			queue_container.addChild( icon )
+			queue_container.addChild(icon)
 
 	def update_needed_resources(self, needed_res_container):
 		""" Update needed resources """
@@ -208,7 +206,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 class BoatbuilderTab(UnitbuilderTabBase):
 	widget = 'boatbuilder.xml'
-	helptext = _lazy("Boat builder overview")
+	helptext = LazyT("Boat builder overview")
 
 	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/ships/116/{type_id}.png"
@@ -251,7 +249,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=T('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
 			button = CancelButton(position=(60, 50), name='ok_%s'%index,
@@ -287,7 +285,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
 class BoatbuilderFisherTab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/fisher'
-	helptext = _lazy("Fisher boats")
+	helptext = LazyT("Fisher boats")
 
 	ships = [
 		#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
@@ -299,7 +297,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/trade'
-	helptext = _lazy("Trade boats")
+	helptext = LazyT("Trade boats")
 
 	ships = [
 		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
@@ -311,7 +309,7 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/war1'
-	helptext = _lazy("War boats")
+	helptext = LazyT("War boats")
 
 	ships = [
 		#(UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
@@ -323,7 +321,7 @@ class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 	icon_path = 'icons/tabwidget/boatbuilder/war2'
-	helptext = _lazy("War ships")
+	helptext = LazyT("War ships")
 
 	ships = [
 		#(UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
@@ -341,11 +339,11 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 
 class BoatbuilderConfirmTab(ProducerOverviewTabBase):
 	widget = 'boatbuilder_confirm.xml'
-	helptext = _lazy("Confirm order")
+	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
 		super(BoatbuilderConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
+		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 
 	def start_production(self):

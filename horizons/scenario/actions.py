@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ import horizons.globals
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.command.unit import CreateUnit
 from horizons.constants import MESSAGES
+from horizons.i18n import gettext as T
 from horizons.messaging import SettlerUpdate
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -87,9 +88,9 @@ def do_win(session):
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
-	continue_playing = session.ingame_gui.open_popup(_("You have won!"),
-	                                                 _("You have completed this scenario.") + u" " +
-	                                                 _("Do you want to continue playing?"),
+	continue_playing = session.ingame_gui.open_popup(T("You have won!"),
+	                                                 T("You have completed this scenario.") + u" " +
+	                                                 T("Do you want to continue playing?"),
 	                                                 show_cancel_button=True)
 	if not continue_playing:
 		Scheduler().add_new_object(session.quit, session, run_in=0)

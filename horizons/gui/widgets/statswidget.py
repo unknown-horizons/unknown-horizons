@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,7 +29,8 @@ from horizons.util.python.callback import Callback
 class StatsWidget(object):
 	"""A widget that creates a large table with statistics."""
 
-	widget_file_name = None # name of the widget's XML file
+	# name of the widget's XML file
+	widget_file_name = None # type: str
 
 	def __init__(self, session, center_widget=False):
 		super(StatsWidget, self).__init__()

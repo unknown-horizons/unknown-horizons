@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -42,6 +42,7 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
+from horizons.i18n import gettext as T
 from horizons.messaging import (
 	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
 	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)
@@ -233,8 +234,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.windows.open_popup(_("No diplomacy possible"),
-			                        _("Cannot do diplomacy as there are no other players."))
+			self.windows.open_popup(T("No diplomacy possible"),
+			                        T("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -258,10 +259,10 @@ class IngameGui(LivingObject):
 		self.set_cursor() # set default cursor for build menu
 		self.deselect_all()
 
-		if not any( settlement.owner.is_local_player for settlement in self.session.world.settlements):
+		if not any(settlement.owner.is_local_player for settlement in self.session.world.settlements):
 			# player has not built any settlements yet. Accessing the build menu at such a point
 			# indicates a mistake in the mental model of the user. Display a hint.
-			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
+			tab = TabWidget(self, tabs=[TabInterface(widget="buildtab_no_settlement.xml")])
 		else:
 			btabs = BuildTab.create_tabs(self.session, self._build)
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget",
@@ -300,13 +301,13 @@ class IngameGui(LivingObject):
 		"""
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "remove_remove_listener"):
-				self._old_menu.remove_remove_listener( Callback(self.show_menu, None) )
+				self._old_menu.remove_remove_listener(Callback(self.show_menu, None))
 			self._old_menu.hide()
 
 		self._old_menu = menu
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "add_remove_listener"):
-				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
+				self._old_menu.add_remove_listener(Callback(self.show_menu, None))
 			self._old_menu.show()
 			self.minimap_to_front()
 
@@ -465,14 +466,14 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
-			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
+			gridrenderer.setEnabled(not gridrenderer.isEnabled())
 		elif action == _Actions.COORD_TOOLTIP:
 			self.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			message = _(u"Are you sure you want to delete these objects?")
-			if self.windows.open_popup(_(u"Delete"), message, show_cancel_button=True):
+			message = T(u"Are you sure you want to delete these objects?")
+			if self.windows.open_popup(T(u"Delete"), message, show_cancel_button=True):
 				self.session.remove_selected()
 			else:
 				self.deselect_all()
@@ -497,7 +498,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.LOGBOOK:
 			self.windows.toggle(self.logbook)
 		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
-			import pdb; pdb.set_trace()
+			import pdb
+			pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
 			self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
@@ -535,7 +537,7 @@ class IngameGui(LivingObject):
 			if self.session.selected_instances:
 				# Scroll to first one, we can never guarantee to display all selected units.
 				instance = iter(self.session.selected_instances).next()
-				self.session.view.center( * instance.position.center.to_tuple())
+				self.session.view.center(* instance.position.center.to_tuple())
 				for instance in self.session.selected_instances:
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.minimap.show_unit_path(instance)

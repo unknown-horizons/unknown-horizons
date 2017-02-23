@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -72,8 +72,8 @@ class TabWidget(object):
 		for index, tab in enumerate(self._tabs):
 			# don't add a reference to the
 			tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
-			container = Container(name="container_%s" % index)
-			background = Icon(name="bg_%s" % index)
+			container = Container(name="container_{}".format(index))
+			background = Icon(name="bg_{}".format(index))
 			button = ImageButton(name=str(index), size=(50, 50))
 			if self.current_tab is tab:
 				background.image = tab.button_background_image_active
@@ -97,7 +97,7 @@ class TabWidget(object):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
-		if not number in range(len(self._tabs)):
+		if number >= len(self._tabs):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
 			traceback.print_stack()
 			self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
@@ -105,13 +105,13 @@ class TabWidget(object):
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_bg = self.content.findChild(name = "bg_%s" % self._tabs.index(self.current_tab))
+		old_bg = self.content.findChild(name = "bg_{}".format(self._tabs.index(self.current_tab)))
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
 		old_button.path = self.current_tab.path
 
-		new_bg = self.content.findChild(name = "bg_%s" % number)
+		new_bg = self.content.findChild(name = "bg_{}".format(number))
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
 		new_button.path = new_tab.path_active

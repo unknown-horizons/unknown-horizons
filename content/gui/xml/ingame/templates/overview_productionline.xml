@@ -8,7 +8,7 @@
 	If there are n res in one column, the container will have the size n * height.
 -->
 <AutoResizeContainer position="25,110" name="production_line_container">
-	<Container name="centered_production_icons" size="200,55">
+	<Container name="centered_production_icons" size="200,44">
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton path="icons/templates/production/toggle_active"
 			position="80,0" name="toggle_active_active" helptext="Pause production" />

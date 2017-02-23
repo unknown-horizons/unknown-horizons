@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -97,7 +97,7 @@ class ReRunInfoPlugin(Plugin):
 
 		_, module, call = test.address()
 
-		output = ['python2', 'run_tests.py', u'%s:%s' % (module, call)]
+		output = ['python2', 'run_tests.py', u'{}:{}'.format(module, call)]
 
 		# add necessary flags
 		if 'tests.gui' in module:

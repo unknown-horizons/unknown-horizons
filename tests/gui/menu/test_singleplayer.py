@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -65,7 +65,7 @@ def test_start_random_map(gui):
 	gui.trigger('singleplayermenu/lbl_disasters')
 
 	gui.find('ai_players').select('3')
-	gui.find('resource_density_slider').slide(4)
+	gui.find('resource_density_slider').slide(2.0)
 
 	options = _start_game(gui)
 	assert not options.is_scenario

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -40,6 +40,7 @@ from horizons.constants import GAME_SPEED
 from horizons.entities import Entities
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.ingamegui import IngameGui
+from horizons.i18n import gettext as T
 from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
@@ -395,9 +396,9 @@ class Session(LivingObject):
 
 			db = DbReader(savegame)
 		except IOError as e: # usually invalid filename
-			headline = _("Failed to create savegame file")
-			descr = _("There has been an error while creating your savegame file.")
-			advice = _("This usually means that the savegame name contains unsupported special characters.")
+			headline = T("Failed to create savegame file")
+			descr = T("There has been an error while creating your savegame file.")
+			advice = T("This usually means that the savegame name contains unsupported special characters.")
 			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
 			# retry with new savegamename entered by the user
 			# (this must not happen with quicksave/autosave)
@@ -406,8 +407,8 @@ class Session(LivingObject):
 			if e.errno != errno.EACCES:
 				raise
 			self.ingame_gui.open_error_popup(
-				_("Access is denied"),
-				_("The savegame file could be read-only or locked by another process.")
+				T("Access is denied"),
+				T("The savegame file could be read-only or locked by another process.")
 			)
 			return self.save()
 

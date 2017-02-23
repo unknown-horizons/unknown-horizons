@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ import logging
 from fife import fife
 
 import horizons.globals
+from horizons.ext.typing import Sequence
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType
@@ -35,7 +36,7 @@ class UnitClass(IngameType):
 	basepackage = 'horizons.world.units.'
 	classstring = 'Unit[{id}]'
 
-	_action_load_callbacks = {}
+	_action_load_callbacks = {} # type: Dict[str, Dict[str, Sequence[Callback]]]
 
 	def __init__(self, id, yaml_data):
 		"""
@@ -61,7 +62,7 @@ class UnitClass(IngameType):
 		model = horizons.globals.fife.engine.getModel()
 		try:
 			cls._real_object = model.createObject(str(cls.id), 'unit')
-		except RuntimeError:
+		except fife.NameClash:
 			cls.log.debug('Already loaded unit %s', cls.id)
 			cls._real_object = model.getObject(str(cls.id), 'unit')
 			return
@@ -75,10 +76,10 @@ class UnitClass(IngameType):
 		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
 		for set_dict in cls.action_sets.itervalues():
 			for action_set in set_dict: # set1, set2, ...
-				if not action_set in cls._action_load_callbacks:
+				if action_set not in cls._action_load_callbacks:
 					cls._action_load_callbacks[action_set] = {}
 				for action_id in all_action_sets[action_set]: # idle, move, ...
-					if not action_id in cls._action_load_callbacks[action_set]:
+					if action_id not in cls._action_load_callbacks[action_set]:
 						cls._action_load_callbacks[action_set][action_id] = []
 					cls._action_load_callbacks[action_set][action_id].append(
 					  Callback(cls._do_load, all_action_sets, action_set, action_id))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -81,7 +81,7 @@ class DisasterManager(object):
 			return
 		for settlement in self.session.world.settlements:
 			for disaster in self.disasters:
-				if not settlement in self._active_disaster:
+				if settlement not in self._active_disaster:
 					if self.session.random.random() <= disaster.SEED_CHANCE:
 						if disaster.can_breakout(settlement):
 							self.log.debug("Seeding disaster: %s", disaster)

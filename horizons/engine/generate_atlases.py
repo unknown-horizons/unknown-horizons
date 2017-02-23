@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -54,8 +54,10 @@ except ImportError:
 	      ' is needed to run the atlas generator.')
 	sys.exit(1)
 
+# TODO We can probably remove the type ignore in the next release of typeshed/mypy
+#      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
 # make sure os.path.getmtime returns ints
-os.stat_float_times(False)
+os.stat_float_times(False) # type: ignore
 
 # make this script work both when started inside development and in the uh root dir
 if not os.path.exists('content'):
@@ -69,7 +71,7 @@ init_environment(False)
 class DummyFife:
 	use_atlases = False
 import horizons.globals # isort:skip
-horizons.globals.fife = DummyFife()
+horizons.globals.fife = DummyFife() # type: ignore
 
 from horizons.constants import PATHS # isort:skip
 from horizons.util.dbreader import DbReader # isort:skip
@@ -339,7 +341,10 @@ class AtlasGenerator(object):
 
 	def _save_metadata(self):
 		self.log.info('Saving metadata')
-		with open(PATHS.ATLAS_METADATA_PATH, 'wb') as file:
+		path = PATHS.ATLAS_METADATA_PATH
+		if not os.path.exists(os.path.dirname(path)):
+			os.makedirs(os.path.dirname(path))
+		with open(path, 'wb') as file:
 			pickle.dump(self, file)
 		self.log.info('Finished saving metadata')
 

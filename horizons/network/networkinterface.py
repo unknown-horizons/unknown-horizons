@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,9 +26,10 @@ import horizons.globals
 from horizons import network
 from horizons.constants import LANGUAGENAMES, NETWORK, VERSION
 from horizons.extscheduler import ExtScheduler
+from horizons.i18n import gettext as T
 from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import CommandError, FatalError, NetworkException, packets
-from horizons.network.common import Game
+from horizons.network.common import ErrorType, Game
 from horizons.network.connection import Connection
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
@@ -393,6 +394,11 @@ class NetworkInterface(object):
 			self.broadcast("error", e, fatal=True)
 			self.disconnect()
 			return True
+		except CommandError as e:
+			if e.type == ErrorType.TerminateGame:
+				self._game = None
+			self.broadcast("error", e, fatal=False)
+			return False
 		except NetworkException as e:
 			self.broadcast("error", e, fatal=False)
 			return False
@@ -522,7 +528,7 @@ class MPGame(object):
 		ret_players = []
 		for index, player in enumerate(self.players, start=1):
 			# TODO: add support for selecting difficulty levels to the GUI
-			status = _('Ready') if player.ready else _('Not Ready')
+			status = T('Ready') if player.ready else T('Not Ready')
 			ret_players.append({
 				'id':         index,
 				'sid':        player.sid,

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,13 +22,13 @@
 from horizons.component.storagecomponent import StorageComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 
 
 class InventoryTab(TabInterface):
 	widget = 'island_inventory.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
-	helptext = _lazy("Settlement inventory")
+	helptext = LazyT("Settlement inventory")
 
 	def __init__(self, instance=None):
 		self.instance = instance
