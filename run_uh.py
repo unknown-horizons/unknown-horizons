@@ -50,10 +50,6 @@ import traceback
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
 def exit_with_error(title, message):
-	if title + '.' != message:
-		print(title)
-	print(message)
-
 	try:
 		import Tkinter
 		import tkMessageBox
@@ -61,8 +57,7 @@ def exit_with_error(title, message):
 		window.wm_withdraw()
 		tkMessageBox.showerror(title, message)
 	except ImportError:
-		# tkinter may be missing
-		pass
+		print("Tkinter module missing. Install Tkinter for Python2.7 to view pop-up error dialogs");
 	exit(1)
 
 def check_python_version():
