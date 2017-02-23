@@ -68,6 +68,10 @@ class RouteConfig(Window):
 
 	@property
 	def session(self):
+		"""
+		@rtype session: horizons.session.Session
+		@return: session
+		"""
 		session = self.instance.session
 		assert isinstance(session, horizons.session.Session)
 		return session

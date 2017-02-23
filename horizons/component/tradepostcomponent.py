@@ -132,7 +132,8 @@ class TradePostComponent(ChangeListener, Component):
 		@param price: cumulative price for whole amount of res
 		@param player_id: the worldid of the trade partner
 		@return bool, whether we did buy it"""
-		assert price >= 0 and amount >= 0
+		assert price >= 0, "the price must be POSITIVE"
+		assert amount >= 0, "the amount must be POSITIVE"
 		if res not in self.buy_list or \
 				self.get_owner_inventory()[RES.GOLD] < price or \
 				self.get_inventory().get_free_space_for(res) < amount or \
@@ -159,7 +160,8 @@ class TradePostComponent(ChangeListener, Component):
 		@param price: cumulative price for whole amount of res
 		@param player_id: the worldid of the trade partner
 		@return bool, whether we did sell it"""
-		assert price >= 0 and amount >= 0
+		assert price >= 0, "the price must be POSITIVE"
+		assert amount >= 0, "the amount must be POSITIVE"
 		if res not in self.sell_list or \
 				self.get_inventory()[res] < amount or \
 				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit:

@@ -80,11 +80,10 @@ class World(BuildingOwner, WorldObject):
 
 	def __init__(self, session):
 		"""
+		@type session: horizons.session.Session
 		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
-		if False:
-			assert isinstance(session, horizons.session.Session)
 		self.session = session
 
 		# create playerlist

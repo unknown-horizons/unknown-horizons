@@ -49,6 +49,7 @@ class Player(ComponentHolder, WorldObject):
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
+		@type session: horizons.session.Session
 		@param session: Session instance
 		@param worldid: player's worldid
 		@param name: user-chosen name
@@ -56,8 +57,7 @@ class Player(ComponentHolder, WorldObject):
 		@param clientid: id of client
 		@param inventory: {res: value} that are put in the players inventory
 		"""
-		if False:
-			assert isinstance(session, horizons.session.Session)
+		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color, clientid, difficulty_level, 0)
