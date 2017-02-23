@@ -50,10 +50,7 @@ import traceback
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
 def exit_with_error(title, message):
-	if title + '.' != message:
-		print(title)
-	print(message)
-
+	print('Error: ' + title + '\n' + message);
 	try:
 		import Tkinter
 		import tkMessageBox
@@ -61,7 +58,6 @@ def exit_with_error(title, message):
 		window.wm_withdraw()
 		tkMessageBox.showerror(title, message)
 	except ImportError:
-		# tkinter may be missing
 		pass
 	exit(1)
 
