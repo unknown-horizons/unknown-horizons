@@ -243,7 +243,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):
-					raise Exception('Savegame %{} not found'.format(path))
+					raise Exception('Savegame {} not found'.format(path))
 				args.extend(['--load-game', path])
 			elif use_dev_map:
 				args.append('--start-dev-map')
