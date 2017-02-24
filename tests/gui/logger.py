@@ -266,7 +266,7 @@ class TestCodeGenerator(object):
 			if self._last_slider_event:
 				w = self._last_slider_event
 				if w.name != widget.name:
-					self._add(["gui.find('{}').slide({})".format(w.name, w.value), ""])
+					self._add(["gui.find('{}').slide({:f})".format(w.name, w.value), ""])
 					self._last_slider_event = None
 
 			if isinstance(widget, widgets.ListBox):
