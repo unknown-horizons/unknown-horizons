@@ -133,8 +133,8 @@ class Collector(Unit):
 			current_callback = self.finish_working
 		if current_callback is not None:
 			calls = Scheduler().get_classinst_calls(self, current_callback)
-			assert len(calls) == 1, 'Collector should have callback %s scheduled, but has %s' % \
-			        (current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
+			assert len(calls) == 1, 'Collector should have callback {} scheduled, but has {}'.format(
+			        current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
 			remaining_ticks = max(calls.values()[0], 1) # save a number > 0
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)",
@@ -354,7 +354,7 @@ class Collector(Unit):
 		"""Pretends that the collector works by waiting some time. finish_working is
 		called after that time."""
 		self.log.debug("%s begins working", self)
-		assert self.job is not None, '%s job is None in begin_working' % self
+		assert self.job is not None, '{} job is None in begin_working'.format(self)
 		Scheduler().add_new_object(self.finish_working, self, self.work_duration)
 		# play working sound
 		if self.has_component(AmbientSoundComponent):
@@ -396,8 +396,8 @@ class Collector(Unit):
 				new_reslist.append( entry )
 
 			remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
-			assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s" % \
-			       (self, entry.res, remnant, entry.amount)
+			assert remnant == 0, "{} couldn't take all of res {}; remnant: {}; planned: {amount}".format(
+			       self, entry.res, remnant, amount=entry.amount)
 		self.job.reslist = new_reslist
 
 	def transfer_res_to_home(self, res, amount):
@@ -406,8 +406,8 @@ class Collector(Unit):
 		remnant = self.get_home_inventory().alter(res, amount)
 		#assert remnant == 0, "Home building could not take all resources from collector."
 		remnant = self.get_component(StorageComponent).inventory.alter(res, -amount)
-		assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; inventory: %s" % \
-		       (self, res, remnant, self.get_component(StorageComponent).inventory)
+		assert remnant == 0, "{} couldn't give all of res {}; remnant: {}; inventory: {inv}".format(
+		       self, res, remnant, inv=self.get_component(StorageComponent).inventory)
 
 	# unused reroute code removed in 2aef7bba77536da333360566467d9a2f08d38cab
 
@@ -437,7 +437,7 @@ class Collector(Unit):
 			# clean up depending on state
 			if self.state == self.states.working:
 				removed_calls = Scheduler().rem_call(self, self.finish_working)
-				assert removed_calls == 1, 'removed %s calls instead of one' % removed_calls
+				assert removed_calls == 1, 'removed {} calls instead of one'.format(removed_calls)
 			self.job = None
 			self.state = self.states.idle
 		# NOTE:
@@ -451,7 +451,7 @@ class Collector(Unit):
 
 	def __str__(self):
 		try:
-			return super(Collector, self).__str__() + "(state=%s)" % self.state
+			return super(Collector, self).__str__() + "(state={})".format(self.state)
 		except AttributeError: # state has not been set
 			return super(Collector, self).__str__()
 
@@ -494,7 +494,7 @@ class Job(object):
 		return sum(1 for entry in self.reslist if entry.target_inventory_full)
 
 	def __str__(self):
-		return "Job(%s, %s)" % (self.object, self.reslist)
+		return "Job({}, {})".format(self.object, self.reslist)
 
 
 class JobList(list):
