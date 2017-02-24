@@ -37,7 +37,7 @@ def _build_farm(x, y, field_type, island, settlement, owner):
 	F   F
 	"""
 	farm = Build(BUILDINGS.FARM, x, y, island, settlement=settlement)(owner)
-	assert farm, "Failed to build a farm at (%d, %d)" % (x, y)
+	assert farm, "Failed to build a farm at ({:d}, {:d})".format(x, y)
 
 	for (x_off, y_off) in product([-3, 3], repeat=2):
 		fx = x + x_off

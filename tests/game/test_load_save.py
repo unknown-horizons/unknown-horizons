@@ -137,10 +137,10 @@ def test_hunter_save_load():
 		return hunter.get_component(CollectingComponent)._CollectingComponent__collectors[0]
 
 	def await_transition(session, collector, old_state, new_state):
-		assert collector.state == old_state, "expected old state %s, got %s" % (old_state, collector.state)
+		assert collector.state == old_state, "expected old state {}, got {}".format(old_state, collector.state)
 		while collector.state == old_state:
 			session.run(seconds=1)
-		assert collector.state == new_state, "expected new state %s, got %s" % (old_state, collector.state)
+		assert collector.state == new_state, "expected new state {}, got {}".format(old_state, collector.state)
 
 
 	sequence = [

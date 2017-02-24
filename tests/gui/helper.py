@@ -335,7 +335,7 @@ class GuiHelper(object):
 			widget_name = widget
 			widget = self.find(widget_name)
 			if not widget:
-				raise Exception("Widget '%s' not found" % widget_name)
+				raise Exception("Widget '{}' not found".format(widget_name))
 
 		self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
 		self.run()
@@ -348,7 +348,7 @@ class GuiHelper(object):
 		except KeyError:
 			if can_fail:
 				return False
-			raise Exception("No callbacks for event group '%s' for event '%s'" % (
+			raise Exception("No callbacks for event group '{}' for event '{}'".format(
 							group_name, widget.name))
 
 		# Unusual events are handled normally
@@ -356,7 +356,7 @@ class GuiHelper(object):
 			try:
 				callback = callbacks[event_name]
 			except KeyError:
-				raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
+				raise Exception("No callback for event '{}/{}' registered for widget '{}'".format(
 								event_name, group_name, widget.name))
 		# Treat action and mouseClicked as the same event. If a callback is not registered
 		# for one, try the other
@@ -366,8 +366,8 @@ class GuiHelper(object):
 				callback = callbacks.get(event_name == 'action' and 'mouseClicked' or 'action')
 
 			if not callback:
-				raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '%s'" % (
-								group_name, widget.name))
+				raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '{}'".format(
+								widget.name))
 
 		kwargs = {'widget': widget}
 		if mouse:
