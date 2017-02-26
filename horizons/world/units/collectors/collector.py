@@ -396,8 +396,8 @@ class Collector(Unit):
 				new_reslist.append( entry )
 
 			remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
-			assert remnant == 0, "{} couldn't take all of res {}; remnant: {}; planned: {amount}".format(
-			       self, entry.res, remnant, amount=entry.amount)
+			assert remnant == 0, "{} couldn't take all of res {}; remnant: {}; planned: {}".format(
+			       self, entry.res, remnant, entry.amount)
 		self.job.reslist = new_reslist
 
 	def transfer_res_to_home(self, res, amount):
@@ -406,8 +406,8 @@ class Collector(Unit):
 		remnant = self.get_home_inventory().alter(res, amount)
 		#assert remnant == 0, "Home building could not take all resources from collector."
 		remnant = self.get_component(StorageComponent).inventory.alter(res, -amount)
-		assert remnant == 0, "{} couldn't give all of res {}; remnant: {}; inventory: {inv}".format(
-		       self, res, remnant, inv=self.get_component(StorageComponent).inventory)
+		assert remnant == 0, "{} couldn't give all of res {}; remnant: {}; inventory: {}".format(
+		       self, res, remnant, self.get_component(StorageComponent).inventory)
 
 	# unused reroute code removed in 2aef7bba77536da333360566467d9a2f08d38cab
 
