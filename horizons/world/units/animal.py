@@ -256,5 +256,5 @@ class WildAnimal(CollectorAnimal, Collector):
 		super(WildAnimal, self).cancel(continue_action=continue_action)
 
 	def __str__(self):
-		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),
-		                          getattr(self, 'health', None))
+		return "{}(health={})".format(super(WildAnimal, self).__str__(),
+		                              getattr(self, 'health', None))

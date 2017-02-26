@@ -325,7 +325,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		pass
 
 	def __unicode__(self): # debug
-		return u'%s(id=%s;worldid=%s)' % (self.name, self.id, getattr(self, 'worldid', 'none'))
+		return u'{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):
