@@ -44,7 +44,8 @@ class Annulus(Shape):
 		return self.min_radius <= point.distance(self.center) <= self.max_radius
 
 	def __str__(self):
-		return "Annulus(center=%s,min_radius=%s,max_radius=%s)" % (self.center, self.min_radius, self.max_radius)
+		return ("Annulus(center={},min_radius={},max_radius={})"
+				.format(self.center, self.min_radius, self.max_radius))
 
 	def __eq__(self, other):
 		try:
