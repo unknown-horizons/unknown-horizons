@@ -26,6 +26,35 @@ from fife.extensions.pychan.widgets import Container
 class AutoResizeContainer(Container):
 	"""A regular pychan container, that implements resizeToContent"""
 
+	def clone(self, prefix):
+		# basically copied from Container
+		container_clone = AutoResizeContainer(None,
+				                     self._createNameWithPrefix(prefix),
+				                     self.size,
+				                     self.min_size,
+				                     self.max_size,
+				                     self.helptext,
+				                     self.position,
+				                     self.style,
+				                     self.hexpand,
+				                     self.vexpand,
+				                     self.font,
+				                     self.base_color,
+				                     self.background_color,
+				                     self.foreground_color,
+				                     self.selection_color,
+				                     self.border_size,
+				                     self.position_technique,
+				                     self.is_focusable,
+				                     self.comment,
+				                     self.padding,
+				                     self.background_image,
+				                     self.opaque,
+				                     self.margins)
+		container_clone.addChildren(self._cloneChildren(prefix))
+		return container_clone
+
+
 	def resizeToContent(self):
 		"""resizeToContent for unlayouted containers. Sets size to smallest box"""
 		for child in self.children:
