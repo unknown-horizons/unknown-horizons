@@ -369,7 +369,8 @@ class Production(ChangeListener):
 	def _produce(self):
 		"""Called when there are enough res in the inventory for starting production"""
 		self.log.debug("%s _produce", self)
-		assert self._check_available_res() and self._check_for_space_for_produced_res()
+		assert self._check_available_res()
+		assert self._check_for_space_for_produced_res()
 		# take the res we need
 		self._remove_res_to_expend()
 		# call finished in some time

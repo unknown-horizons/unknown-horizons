@@ -80,11 +80,10 @@ class World(BuildingOwner, WorldObject):
 
 	def __init__(self, session):
 		"""
+		@type session: horizons.session.Session
 		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
-		if False:
-			assert isinstance(session, horizons.session.Session)
 		self.session = session
 
 		# create playerlist
@@ -288,7 +287,7 @@ class World(BuildingOwner, WorldObject):
 
 		# big sea water tile class
 		if not preview:
-			default_grounds = Entities.grounds[self.properties.get('default_ground', '%d-straight' % GROUND.WATER[0])]
+			default_grounds = Entities.grounds[self.properties.get('default_ground', '{:d}-straight'.format(GROUND.WATER[0]))]
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10

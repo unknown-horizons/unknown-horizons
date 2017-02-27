@@ -234,7 +234,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		return self.session.db.get_unit_type_name(self.id)
 
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
+		return '{}(id={};worldid={})'.format(self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 
 
 decorators.bind_all(Unit)
