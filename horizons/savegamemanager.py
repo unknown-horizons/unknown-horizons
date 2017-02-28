@@ -399,8 +399,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):
 		"""Returns a displayable name, extracted from a filename"""
-		name = os.path.basename(savegamefile)
-		name = name.rsplit(".{}".format(cls.savegame_extension), 1)[0]
+		name = os.path.splitext(os.path.basename(savegamefile))[0]
 		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
 
