@@ -77,8 +77,8 @@ class GeneralLoader(object):
 			try:
 				rotations[int(dirname)] = cls._load_files(os.path.join(directory, dirname), time)
 			except Exception as e:
-				raise Exception("Failed to load action sets from %s with time %s: %s" %
-							 (os.path.join(directory, dirname), time, e))
+				raise Exception("Failed to load action sets from {} with time {}: {}"
+							    .format(os.path.join(directory, dirname), time, e))
 		return rotations
 
 	@classmethod

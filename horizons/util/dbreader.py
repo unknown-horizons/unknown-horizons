@@ -45,7 +45,7 @@ class DbReader(object):
 		@param args: tuple containing the values to add into the command.
 		"""
 		assert not command.endswith(";")
-		command = '%s;' % command
+		command = '{};'.format(command)
 		self.cur.execute(command, args)
 		return self.cur.fetchall()
 
