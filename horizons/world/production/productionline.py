@@ -62,7 +62,7 @@ class ProductionLine(object):
 		self._init_finished = True
 
 	def __str__(self):
-		return "ProductionLineData(lineid=%s)" % self.id
+		return "ProductionLineData(lineid={})".format(self.id)
 
 	def alter_production_time(self, modifier):
 		"""Sets time to original production time multiplied by modifier"""

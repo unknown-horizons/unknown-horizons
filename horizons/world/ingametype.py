@@ -92,8 +92,8 @@ class IngameType(type):
 					name = self._level_specific_names.get(lvl - 1)
 					assert name is not None, (
 						"Error in object file:\n"
-						"'name' attribute needs to at least describe tier %s. "
-						"Found:\n%s") % (name_data, start_tier)
+						"'name' attribute needs to at least describe tier {}. "
+						"Found:\n{}").format(name_data, start_tier)
 					self._level_specific_names[lvl] = name
 				else:
 					self._level_specific_names[lvl] = self._strip_translation_marks(name)
@@ -169,8 +169,8 @@ class IngameType(type):
 					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
 				if new_key in new_data:
 					raise Exception('Error: production line id conflict.'
-					                ' Please change "%s" to anything else for "%s"'
-					                % (old_key, self.name))
+					                ' Please change "{}" to anything else for "{}"'
+					                .format(old_key, self.name))
 				new_data[new_key] = v
 
 			producer_data['productionlines'] = new_data

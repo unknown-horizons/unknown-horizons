@@ -406,8 +406,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def __str__(self):
 		try:
-			return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level,
-			                                    self.inhabitants, self.happiness)
+			return "{}(l:{};ihab:{};hap:{})".format(
+				super(Settler, self).__str__(), self.level,
+			    self.inhabitants, self.happiness)
 		except AttributeError: # an attribute hasn't been set up
 			return super(Settler, self).__str__()
 
