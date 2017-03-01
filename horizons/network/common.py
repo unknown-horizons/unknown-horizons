@@ -145,7 +145,7 @@ class Game(object):
 
 		def __str__(self):
 			strvals = ["Open", "Prepare", "Running"]
-			return "{}".format(strvals[self.state])
+			return strvals[self.state]
 
 	def __init__(self, packet, creator):
 		# pickle doesn't use all of these attributes
@@ -251,6 +251,6 @@ class ErrorType(object):
 
 	def __str__(self):
 		strvals = ["NotSet", "TerminateGame"]
-		return "{}".format(strvals[self.state])
+		return strvals[self.state]
 
 packets.SafeUnpickler.add('common', ErrorType)
