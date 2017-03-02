@@ -380,7 +380,7 @@ class NetworkInterface(object):
 			while self._connection.ping(): # ping receives packets
 				pass
 		except NetworkException as e:
-			self.log.debug("ping in receive_all failed: %s ", e)
+			self.log.debug("ping in receive_all failed: %s ", unicode(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets
