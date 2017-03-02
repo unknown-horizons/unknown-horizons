@@ -35,7 +35,7 @@ class Address(object):
 			self.port = int(port)
 
 	def __str__(self):
-		return "{}:{:u}".format(self.host, self.port)
+		return "{}:{:d}".format(self.host, self.port)
 
 	def __hash__(self):
 		return hash((self.host, self.port))
