@@ -53,6 +53,7 @@ def exit_with_error(title, message):
 	print('Error: ' + title + '\n' + message)
 	try:
 		import tkinter
+		import tkinter.messagebox
 		window = tkinter.Tk()
 		window.wm_withdraw()
 		tkinter.messagebox.showerror(title, message)
