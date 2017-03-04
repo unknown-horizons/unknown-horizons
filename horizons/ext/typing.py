@@ -1756,7 +1756,7 @@ class io(object):
     TextIO = TextIO
     BinaryIO = BinaryIO
 
-io.__name__ = __name__ + b'.io'
+io.__name__ = __name__ + '.io'
 sys.modules[io.__name__] = io
 
 
@@ -1773,5 +1773,5 @@ class re(object):
     Pattern = Pattern
     Match = Match
 
-re.__name__ = __name__ + b'.re'
+re.__name__ = __name__ + '.re'
 sys.modules[re.__name__] = re
