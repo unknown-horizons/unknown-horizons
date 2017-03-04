@@ -120,7 +120,7 @@ files_to_skip = [
 
 def print_n_no_name(n, text):
 	print('\tWarning: ', end=' ')
-	print('%s without name. Add unique name if desired: text="%s"' % (n, text))
+	print('{} without name. Add unique name if desired: text="{}"'.format(n, text))
 
 def list_all_files():
 	result = []
@@ -128,7 +128,7 @@ def list_all_files():
 	for root, dirs, files in walker:
 		for filename in files:
 			if filename.endswith('.xml'):
-				result.append(('%s/%s' % (root, filename), filename not in files_to_skip))
+				result.append('{}/{}'.format(root, filename), filename not in files_to_skip)
 	return sorted(result)
 
 def content_from_element(element_name, parse_tree, attribute):
@@ -154,7 +154,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			# comment='noi18n' in widgets where translation is not desired
 			continue
 
-		if i18n == 'noi18n_%s' % attribute:
+		if i18n == 'noi18n_{}'.format(attribute):
 			# comment='noi18n_tooltip' in widgets where tooltip translation is not
 			# desired, but text should be translated.
 			continue
@@ -169,7 +169,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = 'T(u"%s")' % text
+				text = 'T(u"{}")'.format(text)
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
