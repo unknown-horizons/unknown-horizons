@@ -1,6 +1,6 @@
 # Imported from https://github.com/python/typing
 
-from __future__ import absolute_import, unicode_literals
+
 
 import abc
 from abc import abstractmethod, abstractproperty
@@ -136,7 +136,7 @@ class _ForwardRef(TypingMeta):
     """Wrapper to hold a forward reference."""
 
     def __new__(cls, arg):
-        if not isinstance(arg, basestring):
+        if not isinstance(arg, str):
             raise TypeError('ForwardRef must be a string -- got %r' % (arg,))
         try:
             code = compile(arg, '<string>', 'eval')
@@ -213,7 +213,7 @@ class _TypeAlias(object):
         someone tries to subclass a type alias (not a good idea).
         """
         if (len(args) == 3 and
-                isinstance(args[0], basestring) and
+                isinstance(args[0], str) and
                 isinstance(args[1], tuple)):
             # Close enough.
             raise TypeError("A type alias cannot be subclassed")
@@ -230,7 +230,7 @@ class _TypeAlias(object):
             type_checker: Function that takes an impl_type instance.
                 and returns a value that should be a type_var instance.
         """
-        assert isinstance(name, basestring), repr(name)
+        assert isinstance(name, str), repr(name)
         assert isinstance(type_var, type), repr(type_var)
         assert isinstance(impl_type, type), repr(impl_type)
         assert not isinstance(impl_type, TypingMeta), repr(impl_type)
@@ -303,9 +303,9 @@ def _type_check(arg, msg):
     """
     if arg is None:
         return type(None)
-    if isinstance(arg, basestring):
+    if isinstance(arg, str):
         arg = _ForwardRef(arg)
-    if not isinstance(arg, (type, _TypeAlias)) and not callable(arg):
+    if not isinstance(arg, (type, _TypeAlias)) and not isinstance(arg, collections.Callable):
         raise TypeError(msg + " Got %.100r." % (arg,))
     return arg
 
@@ -344,15 +344,13 @@ class AnyMeta(TypingMeta):
         return True
 
 
-class Any(Final):
+class Any(Final, metaclass=AnyMeta):
     """Special type indicating an unconstrained type.
 
     - Any object is an instance of Any.
     - Any class is a subclass of Any.
     - As a special case, Any and object are subclasses of each other.
     """
-
-    __metaclass__ = AnyMeta
     __slots__ = ()
 
 
@@ -362,7 +360,7 @@ class TypeVarMeta(TypingMeta):
         return super(TypeVarMeta, cls).__new__(cls, name, bases, namespace)
 
 
-class TypeVar(TypingMeta):
+class TypeVar(TypingMeta, metaclass=TypeVarMeta):
     """Type variable.
 
     Usage::
@@ -405,8 +403,6 @@ class TypeVar(TypingMeta):
       T.__contravariant__ = False
       A.__constraints__ == (str, bytes)
     """
-
-    __metaclass__ = TypeVarMeta
 
     def __new__(cls, name, *constraints, **kwargs):
         bound = kwargs.get('bound', None)
@@ -470,7 +466,7 @@ T_contra = TypeVar('T_contra', contravariant=True)  # Ditto contravariant.
 
 # A useful type variable with constraints.  This represents string types.
 # (This one *is* for export!)
-AnyStr = TypeVar('AnyStr', bytes, unicode)
+AnyStr = TypeVar('AnyStr', bytes, str)
 
 
 class UnionMeta(TypingMeta):
@@ -516,7 +512,7 @@ class UnionMeta(TypingMeta):
                 # _TypeAlias is not a real class.
                 continue
             if not isinstance(t1, type):
-                assert callable(t1)  # A callable might sneak through.
+                assert isinstance(t1, collections.Callable)  # A callable might sneak through.
                 continue
             if any(isinstance(t2, type) and issubclass(t1, t2)
                    for t2 in all_params - {t1} if not isinstance(t2, TypeVar)):
@@ -591,7 +587,7 @@ class UnionMeta(TypingMeta):
             return any(issubclass(cls, t) for t in self.__union_params__)
 
 
-class Union(Final):
+class Union(Final, metaclass=UnionMeta):
     """Union type; Union[X, Y] means either X or Y.
 
     To define a union, use e.g. Union[int, str].  Details:
@@ -643,8 +639,6 @@ class Union(Final):
     - You can use Optional[X] as a shorthand for Union[X, None].
     """
 
-    __metaclass__ = UnionMeta
-
     # Unsubscripted Union type has params set to None.
     __union_params__ = None
     __union_set_params__ = None
@@ -662,13 +656,11 @@ class OptionalMeta(TypingMeta):
         return Union[arg, type(None)]
 
 
-class Optional(Final):
+class Optional(Final, metaclass=OptionalMeta):
     """Optional type.
 
     Optional[X] is equivalent to Union[X, type(None)].
     """
-
-    __metaclass__ = OptionalMeta
     __slots__ = ()
 
 
@@ -762,7 +754,7 @@ class TupleMeta(TypingMeta):
                                     self.__tuple_params__)))
 
 
-class Tuple(Final):
+class Tuple(Final, metaclass=TupleMeta):
     """Tuple type; Tuple[X, Y] is the cross-product type of X and Y.
 
     Example: Tuple[T1, T2] is a tuple of two elements corresponding
@@ -771,8 +763,6 @@ class Tuple(Final):
 
     To specify a variable-length tuple of homogeneous type, use Sequence[T].
     """
-
-    __metaclass__ = TupleMeta
     __slots__ = ()
 
 
@@ -868,7 +858,7 @@ class CallableMeta(TypingMeta):
         return self == cls
 
 
-class Callable(Final):
+class Callable(Final, metaclass=CallableMeta):
     """Callable type; Callable[[int], str] is a function of (int) -> str.
 
     The subscription syntax must always be used with exactly two
@@ -878,8 +868,6 @@ class Callable(Final):
     There is no syntax to indicate optional or keyword arguments,
     such function types are rarely used as callback types.
     """
-
-    __metaclass__ = CallableMeta
     __slots__ = ()
 
 
@@ -1104,7 +1092,7 @@ class GenericMeta(TypingMeta, abc.ABCMeta):
 Generic = None
 
 
-class Generic(object):
+class Generic(object, metaclass=GenericMeta):
     """Abstract base class for generic types.
 
     A generic type is typically declared by inheriting from an
@@ -1124,8 +1112,6 @@ class Generic(object):
           except KeyError:
               return default
     """
-
-    __metaclass__ = GenericMeta
     __slots__ = ()
 
     def __new__(cls, *args, **kwds):
@@ -1180,7 +1166,7 @@ def no_type_check(arg):
     This mutates the function(s) in place.
     """
     if isinstance(arg, type):
-        for obj in arg.__dict__.values():
+        for obj in list(arg.__dict__.values()):
             if isinstance(obj, types.FunctionType):
                 obj.__no_type_check__ = True
     else:
@@ -1279,7 +1265,7 @@ class _ProtocolMeta(GenericMeta):
         # Get attributes included in protocol.
         attrs = set()
         for base in protocol_bases:
-            for attr in base.__dict__.keys():
+            for attr in list(base.__dict__.keys()):
                 # Include attributes not defined in any non-protocol bases.
                 for c in self.__mro__:
                     if (c is not base and attr in c.__dict__ and
@@ -1303,15 +1289,13 @@ class _ProtocolMeta(GenericMeta):
         return attrs
 
 
-class _Protocol(object):
+class _Protocol(object, metaclass=_ProtocolMeta):
     """Internal base class for protocol classes.
 
     This implements a simple-minded structural isinstance check
     (similar but more general than the one-offs in collections.abc
     such as Hashable).
     """
-
-    __metaclass__ = _ProtocolMeta
     __slots__ = ()
 
     _is_protocol = True
@@ -1460,8 +1444,7 @@ class _FrozenSetMeta(GenericMeta):
         return super(_FrozenSetMeta, self).__subclasscheck__(cls)
 
 
-class FrozenSet(frozenset, AbstractSet[T_co]):
-    __metaclass__ = _FrozenSetMeta
+class FrozenSet(frozenset, AbstractSet[T_co], metaclass=_FrozenSetMeta):
     __slots__ = ()
     __extra__ = frozenset
 
@@ -1618,7 +1601,7 @@ def NewType(name, tp):
 
 
 # Python-version-specific alias (Python 2: unicode; Python 3: str)
-Text = unicode
+Text = str
 
 
 # Constant that's True when type checking, but False here.
@@ -1735,7 +1718,7 @@ class BinaryIO(IO[bytes]):
         pass
 
 
-class TextIO(IO[unicode]):
+class TextIO(IO[str]):
     """Typed version of the return of open() in text mode."""
 
     __slots__ = ()
