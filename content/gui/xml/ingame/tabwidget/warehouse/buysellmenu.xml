@@ -3,16 +3,15 @@
 	<TabBG amount="9" />
 	<Container position="0,70" size="245,500">
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
+		<Spacer min_size="0,0"  max_size="50,0" />
 			<Label name="headline"  text="Buy or sell resources" />
 		</HBox>
 
 		<hr position="20,30" />
 		<!-- Replaced with the buy/sell boxes. -->
-		<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
+		<HBox size="250, 100"  position="23,47"  name="content" />
 		<hr position="20,105" />
-		<Label name="hint_label" position="17,120" wrap_text="1"
-			max_size="220,80" min_size="220,80" size="220,80" />
+		<Label name="hint_label" position="17,120" wrap_text="1" fixed_size="220,80" />
 
 		<hr position="20,180" />
 

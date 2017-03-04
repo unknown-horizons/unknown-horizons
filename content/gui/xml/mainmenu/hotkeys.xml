@@ -1,44 +1,44 @@
 <?xml version="1.0"?>
 
-<AutoResizeContainer name="hotkeys_window">
+<ABox name="hotkeys_window">
 <!-- Hotkeys section -->
-<HBox name="hotkeys" padding="10">
-	<ScrollArea name="hotkeys_list" max_size="600,450" min_size="600,450">
-		<HBox name="label_button_columns" padding="30">
+<HBox name="hotkeys">
+	<ScrollArea name="hotkeys_list" fixed_size="600,450">
+		<HBox name="label_button_columns">
 			<VBox name="keys_container">
 				<Label name="labels_headline" text="Actions" />
-				<Label name="lbl_LEFT" text="LEFT" comment="noi18n_text" helptext="Scroll left" />
-				<Label name="lbl_RIGHT" text="RIGHT" comment="noi18n_text" helptext="Scroll right" />
-				<Label name="lbl_UP" text="UP" comment="noi18n_text" helptext="Scroll up" />
-				<Label name="lbl_DOWN" text="DOWN" comment="noi18n_text" helptext="Scroll down" />
-				<Label name="lbl_ROTATE_RIGHT" text="ROTATE_RIGHT" comment="noi18n_text" helptext="Rotate building or map clockwise" />
-				<Label name="lbl_ROTATE_LEFT" text="ROTATE_LEFT" comment="noi18n_text" helptext="Rotate building or map counterclockwise" />
-				<Label name="lbl_SPEED_UP" text="SPEED_UP" comment="noi18n_text" helptext="Increase game speed" />
-				<Label name="lbl_SPEED_DOWN" text="SPEED_DOWN" comment="noi18n_text" helptext="Decrease game speed" />
-				<Label name="lbl_PAUSE" text="PAUSE" comment="noi18n_text" helptext="Pause game" />
-				<Label name="lbl_ZOOM_IN" text="ZOOM_IN" comment="noi18n_text" helptext="Zoom in" />
-				<Label name="lbl_ZOOM_OUT" text="ZOOM_OUT" comment="noi18n_text" helptext="Zoom out" />
-				<Label name="lbl_BUILD_TOOL" text="BUILD_TOOL" comment="noi18n_text" helptext="Show build menu" />
-				<Label name="lbl_DESTROY_TOOL" text="DESTROY_TOOL" comment="noi18n_text" helptext="Enable destruct mode" />
-				<Label name="lbl_ROAD_TOOL" text="ROAD_TOOL" comment="noi18n_text" helptext="Enable road building mode" />
-				<Label name="lbl_PIPETTE" text="PIPETTE" comment="noi18n_text" helptext="Enable pipette mode (clone buildings)" />
-				<Label name="lbl_PLAYERS_OVERVIEW" text="PLAYERS_OVERVIEW" comment="noi18n_text" helptext="Show player scores" />
-				<Label name="lbl_SETTLEMENTS_OVERVIEW" text="SETTLEMENTS_OVERVIEW" comment="noi18n_text" helptext="Show settlement list" />
-				<Label name="lbl_SHIPS_OVERVIEW" text="SHIPS_OVERVIEW" comment="noi18n_text" helptext="Show ship list" />
-				<Label name="lbl_LOGBOOK" text="LOGBOOK" comment="noi18n_text" helptext="Toggle Captain's log" />
-				<Label name="lbl_CHAT" text="CHAT" comment="noi18n_text" helptext="Chat" />
-				<Label name="lbl_QUICKSAVE" text="QUICKSAVE" comment="noi18n_text" helptext="Quicksave" />
-				<Label name="lbl_QUICKLOAD" text="QUICKLOAD" comment="noi18n_text" helptext="Quickload" />
-				<Label name="lbl_TRANSLUCENCY" text="TRANSLUCENCY" comment="noi18n_text" helptext="Toggle translucency of ambient buildings" />
-				<Label name="lbl_TILE_OWNER_HIGHLIGHT" text="TILE_OWNER_HIGHLIGHT" comment="noi18n_text" helptext="Highlight tile ownership" />
-				<Label name="lbl_HEALTH_BAR" text="HEALTH_BAR" comment="noi18n_text" helptext="Toggle health bars" />
-				<Label name="lbl_SHOW_SELECTED" text="SHOW_SELECTED" comment="noi18n_text" helptext="Focus camera on selection" />
-				<Label name="lbl_REMOVE_SELECTED" text="REMOVE_SELECTED" comment="noi18n_text" helptext="Remove selected units / buildings" />
-				<Label name="lbl_HELP" text="HELP" comment="noi18n_text" helptext="Display help" />
-				<Label name="lbl_SCREENSHOT" text="SCREENSHOT" comment="noi18n_text" helptext="Screenshot" />
-				<Label name="lbl_CONSOLE" text="SHOW_FPS" comment="noi18n_text" helptext="Toggle showing FPS on/off" />
-				<Label name="lbl_GRID" text="GRID" comment="noi18n_text" helptext="Toggle grid on/off" />
-				<Label name="lbl_COORD_TOOLTIP" text="COORD_TOOLTIP" comment="noi18n_text" helptext="Show coordinate values (Debug)" />
+				<Label name="lbl_LEFT" min_size="0,38" text="LEFT" comment="noi18n_text" helptext="Scroll left" />
+				<Label name="lbl_RIGHT" min_size="0,38" text="RIGHT" comment="noi18n_text" helptext="Scroll right" />
+				<Label name="lbl_UP" min_size="0,38" text="UP" comment="noi18n_text" helptext="Scroll up" />
+				<Label name="lbl_DOWN" min_size="0,38" text="DOWN" comment="noi18n_text" helptext="Scroll down" />
+				<Label name="lbl_ROTATE_RIGHT" min_size="0,38" text="ROTATE_RIGHT" comment="noi18n_text" helptext="Rotate building or map clockwise" />
+				<Label name="lbl_ROTATE_LEFT" min_size="0,38" text="ROTATE_LEFT" comment="noi18n_text" helptext="Rotate building or map counterclockwise" />
+				<Label name="lbl_SPEED_UP" min_size="0,38" text="SPEED_UP" comment="noi18n_text" helptext="Increase game speed" />
+				<Label name="lbl_SPEED_DOWN" min_size="0,38" text="SPEED_DOWN" comment="noi18n_text" helptext="Decrease game speed" />
+				<Label name="lbl_PAUSE" min_size="0,38" text="PAUSE" comment="noi18n_text" helptext="Pause game" />
+				<Label name="lbl_ZOOM_IN" min_size="0,38" text="ZOOM_IN" comment="noi18n_text" helptext="Zoom in" />
+				<Label name="lbl_ZOOM_OUT" min_size="0,38" text="ZOOM_OUT" comment="noi18n_text" helptext="Zoom out" />
+				<Label name="lbl_BUILD_TOOL" min_size="0,38" text="BUILD_TOOL" comment="noi18n_text" helptext="Show build menu" />
+				<Label name="lbl_DESTROY_TOOL" min_size="0,38" text="DESTROY_TOOL" comment="noi18n_text" helptext="Enable destruct mode" />
+				<Label name="lbl_ROAD_TOOL" min_size="0,38" text="ROAD_TOOL" comment="noi18n_text" helptext="Enable road building mode" />
+				<Label name="lbl_PIPETTE" min_size="0,38" text="PIPETTE" comment="noi18n_text" helptext="Enable pipette mode (clone buildings)" />
+				<Label name="lbl_PLAYERS_OVERVIEW" min_size="0,38" text="PLAYERS_OVERVIEW" comment="noi18n_text" helptext="Show player scores" />
+				<Label name="lbl_SETTLEMENTS_OVERVIEW" min_size="0,38" text="SETTLEMENTS_OVERVIEW" comment="noi18n_text" helptext="Show settlement list" />
+				<Label name="lbl_SHIPS_OVERVIEW" min_size="0,38" text="SHIPS_OVERVIEW" comment="noi18n_text" helptext="Show ship list" />
+				<Label name="lbl_LOGBOOK" min_size="0,38" text="LOGBOOK" comment="noi18n_text" helptext="Toggle Captain's log" />
+				<Label name="lbl_CHAT" min_size="0,38" text="CHAT" comment="noi18n_text" helptext="Chat" />
+				<Label name="lbl_QUICKSAVE" min_size="0,38" text="QUICKSAVE" comment="noi18n_text" helptext="Quicksave" />
+				<Label name="lbl_QUICKLOAD" min_size="0,38" text="QUICKLOAD" comment="noi18n_text" helptext="Quickload" />
+				<Label name="lbl_TRANSLUCENCY" min_size="0,38" text="TRANSLUCENCY" comment="noi18n_text" helptext="Toggle translucency of ambient buildings" />
+				<Label name="lbl_TILE_OWNER_HIGHLIGHT" min_size="0,38" text="TILE_OWNER_HIGHLIGHT" comment="noi18n_text" helptext="Highlight tile ownership" />
+				<Label name="lbl_HEALTH_BAR" min_size="0,38" text="HEALTH_BAR" comment="noi18n_text" helptext="Toggle health bars" />
+				<Label name="lbl_SHOW_SELECTED" min_size="0,38" text="SHOW_SELECTED" comment="noi18n_text" helptext="Focus camera on selection" />
+				<Label name="lbl_REMOVE_SELECTED" min_size="0,38" text="REMOVE_SELECTED" comment="noi18n_text" helptext="Remove selected units / buildings" />
+				<Label name="lbl_HELP" min_size="0,38" text="HELP" comment="noi18n_text" helptext="Display help" />
+				<Label name="lbl_SCREENSHOT" min_size="0,38" text="SCREENSHOT" comment="noi18n_text" helptext="Screenshot" />
+				<Label name="lbl_CONSOLE" min_size="0,38" text="SHOW_FPS" comment="noi18n_text" helptext="Toggle showing FPS on/off" />
+				<Label name="lbl_GRID" min_size="0,38" text="GRID" comment="noi18n_text" helptext="Toggle grid on/off" />
+				<Label name="lbl_COORD_TOOLTIP" min_size="0,38" text="COORD_TOOLTIP" comment="noi18n_text" helptext="Show coordinate values (Debug)" />
 			</VBox>
 
 			<VBox name="button_container" position="150, 0">
@@ -56,4 +56,4 @@
 <Button name="reset_to_default" text="Reset to default keys" position="1540,450" helptext="Reset to default" />
 <!--
 -->
-</AutoResizeContainer>
+</ABox>

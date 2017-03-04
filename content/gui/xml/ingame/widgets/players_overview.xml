@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-	<VBox max_size="695,388" min_size="695,388" padding="5">
+	<VBox fixed_size="695,388" >
 		<HBox>
 			<Label name="headline"  text="Player scores" />
 		</HBox>
 		<hr />
 
-		<VBox max_size="650,20">
+		<VBox max_size="650,30">
 			<HBox>
 				<Label min_size="12,20" name="emblem_area" />
 				<Label min_size="108,20" name="player_name" text="Name" helptext="Player Name" />

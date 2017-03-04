@@ -7,26 +7,26 @@
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
 <!-- Graphics section -->
-<HBox name="graphics_settings" position="185,45" padding="25">
+<HBox name="graphics_settings" position="185,45">
 	<!-- Left pane -->
-	<VBox name="graphics_left" max_size="320,500" min_size="320,0" padding="25">
-		<VBox name="graphics" padding="2">
+	<VBox name="graphics_left" max_size="320,500" min_size="320,0">
+		<VBox name="graphics">
 			<Label text="Graphics" name="headline_graphics" font="headline" />
 			<hr />
-			<HBox max_size="320,445">
+			<HBox max_size="280,445">
 				<VBox>
 					<Label text="Screen resolution:" name="screen_resolution_label" wrap_text="1" />
 					<ScrollArea min_size="100,175">
 						<ListBox name="screen_resolution" is_focusable="0" />
 					</ScrollArea>
 
-				<Spacer fixed_size="15" />
+				<Spacer fixed_size="15,0" />
 
 					<Label name="screen_fullscreen_text" text="Full screen:" />
 					<CheckBox min_size="24,24" name="enable_fullscreen" />
 				</VBox>
 
-			<Spacer fixed_size="35" />
+			<Spacer fixed_size="35,0" />
 
 				<VBox>
 					<Label name="fps_label" text="Frame rate limit:"
@@ -41,7 +41,7 @@
 		</VBox>
 	</VBox>
 	<!-- Right pane -->
-	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="25">
+	<VBox name="graphics_right" max_size="320,500" min_size="320,0">
 		<VBox name="sound_settings" position="185,45">
 			<Label name="headline_sound" text="Sound" font="headline" />
 			<hr />
@@ -70,7 +70,7 @@
 			</HBox>
 		</VBox>
 
-		<VBox name="mouse_settings" padding="2">
+		<VBox name="mouse_settings">
 			<Label name="headline_mouse" text="Mouse" font="headline" position_technique="center:center" />
 			<hr />
 
@@ -92,7 +92,7 @@
 				<CheckBox min_size="24,24" name="middle_mouse_pan" />
 			</HBox>
 
-			<Spacer fixed_size="5" />
+			<Spacer fixed_size="5,0" />
 			<HBox>
 				<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
 					wrap_text="1" max_size="250,40" min_size="250,20"
@@ -108,10 +108,10 @@
 
 
 <!-- Game section -->
-	<HBox name="game_settings" position="185,45" padding="25">
+	<HBox name="game_settings" position="185,45">
 		<!-- Left pane -->
-		<VBox name="game_left" max_size="320,500" min_size="320,0" padding="20">
-			<VBox name="saving_settings" padding="2">
+		<VBox name="game_left" max_size="320,500" min_size="320,0">
+			<VBox name="saving_settings">
 				<Label name="headline_saving" text="Saving" font="headline" position_technique="center:center" />
 				<hr />
 
@@ -140,7 +140,7 @@
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
 			</VBox>
 
-			<VBox name="language_settings" padding="2">
+			<VBox name="language_settings">
 				<Label text="Language" position_technique="center:center" name="headline_language" font="headline" />
 				<hr />
 
@@ -151,8 +151,8 @@
 		</VBox>
 
 		<!-- Right pane -->
-		<VBox name="game_right" max_size="320,500" min_size="320,0" padding="20">
-			<VBox name="misc_settings" padding="2">
+		<VBox name="game_right" max_size="320,500" min_size="320,0">
+			<VBox name="misc_settings">
 				<Label name="headline_misc" text="General" font="headline" position_technique="center:center" />
 				<hr />
 
@@ -186,7 +186,7 @@
 					<CheckBox min_size="24,24" name="show_resource_icons" />
 				</HBox>
 
-			<Spacer fixed_size="10" />
+			<Spacer fixed_size="10,0" />
 				<HBox>
 					<Label name="scroll_speed_label" text="Scroll delay:"
 						wrap_text="1" max_size="250,40" min_size="250,20"
@@ -196,7 +196,7 @@
 				<Slider size="300,20" name="scrollspeed" is_focusable="0"
 					orientation="0" scale_start="0.1" scale_end="2.0" step_length="0.05" />
 
-			<Spacer fixed_size="15" />
+			<Spacer fixed_size="15,0" />
 				<HBox>
 					<Label name="quote_type_label" text="Choose a quote type:" min_size="160,0"
 					       helptext="What kind of quote to display while loading a game" />
@@ -206,24 +206,24 @@
 				</HBox>
 			</VBox>
 
-			<VBox name="network_settings" padding="2">
+			<VBox name="network_settings">
 				<Label name="headline_network" text="Network" font="headline" position_technique="center:center" />
 				<hr />
 				<HBox max_size="320,60">
 					<Label text="Network port:" name="network_port_lbl"
 					       helptext="If set to 0, use the router default" />
-					<TextField name="network_port" min_size="50,16" />
+					<TextField name="network_port" min_size="50,20" />
 				</HBox>
 			</VBox>
 		</VBox>
 	</HBox>
 
 	<!-- Hotkeys section -->
-	<HBox name="hotkeys_settings" position="185,45" padding="25" />
+	<HBox name="hotkeys_settings" position="185,45"/>
 
 	<!-- General section -->
-	<HBox position="180,500" padding="245">
-		<Spacer fixed_size="60" />
+	<HBox position="180,500">
+		<Spacer fixed_size="60,0" />
 	</HBox>
 
 	<!-- This dropdown is invisible, but required by fife to be here -->

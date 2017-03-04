@@ -20,21 +20,20 @@
 # ###################################################
 
 
-from fife.extensions.pychan.widgets import Icon, Widget
+from fife.extensions.pychan.widgets import ABox, Icon, Widget
 from fife.extensions.pychan.widgets.common import Attr, IntAttr
 
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TilingHBox
 
 
-class ProgressBar(AutoResizeContainer):
+class ProgressBar(ABox):
 	"""The ProgressBar is a pychan widget. It can be used in xml files like this:
 	<ProgressBar />
 	It is used to display a ProgressBar with a certain progress ;). Set the
 	widgets progress attribute to set the progress. Pretty straight forward.
 	The progress is a value from 0 to 100. Think of it as percent.
 	"""
-	ATTRIBUTES = AutoResizeContainer.ATTRIBUTES + [
+	ATTRIBUTES = ABox.ATTRIBUTES + [
 		IntAttr('progress'), Attr('fill'), Attr('background'),
 	]
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<VBox name="editor_select_map" max_size="320,465" min_size="320,465" padding="10">
+<VBox name="editor_select_map" fixed_size="320,465">
 	<Label text="Choose a map size:" name="headline_choose_map_size_lbl" />
-	<VBox padding="5">
+	<VBox>
 		<!-- text for the RadioButtons is set on runtime -->
 		<RadioButton position="0,0" size="32,32" name="size_50" group="map_size" />
 		<RadioButton position="0,30" size="32,32" name="size_100" group="map_size" />

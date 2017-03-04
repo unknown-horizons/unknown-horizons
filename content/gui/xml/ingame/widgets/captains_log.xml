@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<Container name="captains_log" size="1000,580">
+<Container name="captains_log" fixed_size="1000,580">
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container name="left_pickbelts" size="195,580" position="30,0" />
-<HBox name="logbook" max_size="700,508" min_size="700,508" padding="-7" position="168,40">
+<HBox name="logbook" fixed_size="680,508" position="160,40">
 	<!-- left page -->
-	<VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_left">
-		<ScrollArea name="transparent_scrollarea" min_size="325,468" max_size="325,468">
-			<VBox name="custom_widgets_left" max_size="310,1024" min_size="310,0"
+	<VBox fixed_size="350,508" name="logbook_left">
+		<ScrollArea name="transparent_scrollarea" fixed_size="325,468">
+			<VBox name="custom_widgets_left" min_size="310,0" max_size="310,1024"
 				comment="In here, widgets defined in yaml get added on runtime." />
 		</ScrollArea>
 		<Spacer />
 
-		<HBox max_size="80,36">
+		<HBox fixed_size="80,36">
 			<ImageButton name="backwardButton" helptext="Read previous entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				path="images/buttons/parrow_left" />
@@ -23,31 +23,31 @@
 	</VBox> <!-- closes VBox logbook left page -->
 
 	<!-- right page -->
-	<VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_right">
-		<ScrollArea name="transparent_scrollarea" min_size="325,468" max_size="325,468">
-			<VBox name="custom_widgets_right" max_size="310,1024" min_size="310,0"
+	<VBox fixed_size="350,508" name="logbook_right">
+		<ScrollArea name="transparent_scrollarea" fixed_size="325,468">
+			<VBox name="custom_widgets_right" min_size="310,0" max_size="310,1024"
 				comment="In here, widgets defined in yaml get added on runtime." />
 		</ScrollArea>
 	</VBox> <!-- closes VBox logbook right page -->
 </HBox> <!-- closes: <HBox name="logbook"> -->
 
-<VBox name="statistics" max_size="700,508" min_size="700,508" position="168,40">
+<VBox name="statistics" fixed_size="680,508" position="160,40">
 	<Label name="headline_statistics" text="Statistics"
-		wrap_text="0" max_size="323, 25" min_size="323, 25" />
+		wrap_text="0" fixed_size="323,25" />
 	<hr />
-	<HBox name="header_button_row_stats" padding="5">
+	<HBox name="header_button_row_stats" >
 		<Button name="stats_players" text="Players" is_focusable="0" />
 		<Button name="stats_ships" text="My ships" is_focusable="0" />
 		<Button name="stats_settlements" text="My settlements" is_focusable="0" />
 	</HBox>
 </VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name="chat_overview" max_size="700,508" min_size="700,508" padding="0" position="168,40">
-	<VBox name="game_messages" comment="Left page" max_size="345,508" min_size="345,508">
+<HBox name="chat_overview" fixed_size="680,508" position="160,40">
+	<VBox name="game_messages" comment="Left page" fixed_size="345,508">
 		<Label name="headline_game_messages" text="Game messages"
-			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+			wrap_text="0" fixed_size="323,25" />
 		<hr />
-		<HBox name="header_button_row_gamemsg" padding="5">
+		<HBox name="header_button_row_gamemsg" >
 			<Button name="weird_button_1" text="Whole world" is_focusable="0"
 				comment="Displays all notifications and game messages" />
 			<!--
@@ -57,16 +57,16 @@
 			-->
 		</HBox>
 
-		<ScrollArea name="game_messages_scroll_area"  min_size="325,360"  max_size="325,360">
-			<ListBox name="game_messagebox"  min_size="325,360" max_size="325,360" is_focusable="0" />
+		<ScrollArea name="game_messages_scroll_area"  fixed_size="325,360">
+			<ListBox name="game_messagebox"  fixed_size="325,360" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 
-	<VBox name="chat" comment="Right page" max_size="345,508" min_size="345,508">
+	<VBox name="chat" comment="Right page" fixed_size="345,508">
 		<Label name="headline_chat" text="Chat"
-			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+			wrap_text="0" fixed_size="323,25" />
 		<hr />
-		<HBox name="header_button_row_chat" padding="5">
+		<HBox name="header_button_row_chat" >
 			<Button name="weird_button_4" text="Everybody" is_focusable="0"
 				helptext="Sends the chat messages to all players."
 				comment="Sends the chat messages to all players (default)" />
@@ -79,11 +79,11 @@
 			-->
 		</HBox>
 
-		<ScrollArea name="chat_scroll_area"  min_size="325,360"  max_size="325,360">
-			<ListBox name="chatbox"  min_size="325,360" max_size="325,360" is_focusable="0" />
+		<ScrollArea name="chat_scroll_area"  fixed_size="325,360">
+			<ListBox name="chatbox"  fixed_size="325,360" is_focusable="0" />
 		</ScrollArea>
 		<TextField name="chatTextField"
-			text="Enter your message here"  min_size="300,16" />
+			text="Enter your message here"  fixed_size="325,20" />
 	</VBox>
 </HBox> <!--closes: <VBox name="chat_overview">-->
 

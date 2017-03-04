@@ -1,26 +1,23 @@
 <?xml version="1.0"?>
-<Container name="tab0" size="250,500" padding="2">
+<Container name="tab0" size="250,500">
 <TabBG amount="7" />
 
 <Container position="0,70" size="250,380">
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
+	<Spacer min_size="0,0"  max_size="50,0" />
 		<Label name="headline"  text="Game start" />
 	</HBox>
 
 	<hr position="20,30" />
 
-	<VBox position="30,45" size="220,280" padding="10">
-		<Label name="howto_1_need_warehouse"  wrap_text="1"
-			min_size="210,60"  max_size="210,60"
+	<VBox position="30,45" size="220,280">
+		<Label name="howto_1_need_warehouse"  wrap_text="1" fixed_size="210,60"
 			text="You need to found a settlement before you can construct buildings!" />
 
-		<Label name="howto_2_navigate_ship"  wrap_text="1"
-			min_size="210,60"  max_size="210,60"
+		<Label name="howto_2_navigate_ship"  wrap_text="1" fixed_size="210,60"
 			text="Select your ship and approach the coast via right-click." />
 
-		<Label name="howto_3_build_warehouse"  wrap_text="1"
-			min_size="210,60"  max_size="210,60"
+		<Label name="howto_3_build_warehouse"  wrap_text="1" fixed_size="210,60"
 			text="Afterwards, press the large button in the ship overview tab." />
 
 		<Container size="50,50">

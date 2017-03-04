@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<VBox name="traderoute_resource_selection" position="0,5" max_size="330,155" min_size="330,155">
+<VBox name="traderoute_resource_selection" position="0,5" fixed_size="330,155">
 
 	<Label name='select_res_label'  text='Select a resource:' />
 
