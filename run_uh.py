@@ -35,8 +35,8 @@ import functools
 import imp
 import locale
 import logging
-import logging.config
-import logging.handlers
+import logging.config		# redundant, because "logging" already imported?
+import logging.handlers		# redundant, because "logging" already imported?
 import os
 import os.path
 import platform
