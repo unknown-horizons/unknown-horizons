@@ -180,8 +180,8 @@ trade and diplomacy.
 		if self.level == 0:
 			return u''
 		return r'''.TP
-\fB%s\fR
-''' % self._markup(text.upper())
+\fB{}\fR
+'''.format(self._markup(text.upper()))
 
 	def format_option(self, option, *args, **kwargs):
 		"""Format a single option.
@@ -193,9 +193,9 @@ trade and diplomacy.
 		result.append(r'''\
 .TP
 .B
-%s
-%s
-''' % (self.optmarkup(opts), self._markup(help_text)))
+{}
+{}
+'''.format(self.optmarkup(opts), self._markup(help_text)))
 
 		return ''.join(result)
 

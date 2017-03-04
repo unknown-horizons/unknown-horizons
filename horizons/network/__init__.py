@@ -55,12 +55,12 @@ def find_enet_module():
 		assert False, "Failed to detect system architecture!"
 
 	# Generic identifier, e.g. linux-64
-	directory = "%s-x%s" % (type, arch)
+	directory = "{}-x{}".format(type, arch)
 
 	# Python version-specific, e.g. linux-64-27. If this is not found, we fall
 	# back to the more generic version.
 	version = platform.python_version_tuple()
-	directory_pyversion = "%s-%s%s" % (directory, version[0], version[1])
+	directory_pyversion = "{}-{}{}".format(directory, version[0], version[1])
 
 	if os.path.exists(os.path.join(lib_path, directory_pyversion)):
 		path = os.path.join(lib_path, directory_pyversion)

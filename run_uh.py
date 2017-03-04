@@ -198,9 +198,9 @@ def main():
 			num += 1
 
 		outfilename = pattern % num
-		print('Starting in profile mode. Writing output to: %s' % outfilename)
+		print('Starting in profile mode. Writing output to: {}'.format(outfilename))
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
-		print('Program ended. Profiling output: %s' % outfilename)
+		print('Program ended. Profiling output: {}'.format(outfilename))
 
 	if logfile:
 		logfile.close()

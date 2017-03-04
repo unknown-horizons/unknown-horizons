@@ -145,6 +145,6 @@ if __name__ == '__main__':
 	from . import distances
 	shapes = ('rect', 'point', 'tuple', 'circle', 'annulus')
 	for s1, s2 in itertools.product(shapes, shapes):
-		if not (hasattr(distances, 'distance_%s_%s' % (s1, s2)) or
-		        hasattr(distances, 'distance_%s_%s' % (s2, s1))):
+		if not (hasattr(distances, 'distance_{}_{}'.format(s1, s2)) or
+		        hasattr(distances, 'distance_{}_{}'.format(s2, s1))):
 			print('missing distance between', s1, s2)

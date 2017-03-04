@@ -120,7 +120,7 @@ class GenericStorage(ChangeListener):
 		return self._storage.iteritems()
 
 	def __str__(self):
-		return "%s(%s)" % (self.__class__, self._storage if hasattr(self, "_storage") else None)
+		return "{}({})".format(self.__class__, self._storage if hasattr(self, "_storage") else None)
 
 class SpecializedStorage(GenericStorage):
 	"""Storage where only certain resources can be stored. If you want to store a resource here,

@@ -41,11 +41,14 @@ class DbReader(object):
 	@decorators.make_constants()
 	def __call__(self, command, *args):
 		"""Executes a sql command.
-		@param command: str containing the raw sql command, with ? as placeholders for values (eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
+		@param command: str containing the raw sql command, with ? as
+		                placeholders for values (eg. SELECT ? FROM ?).
+				command must not end with ';',
+				it's added automatically here.
 		@param args: tuple containing the values to add into the command.
 		"""
 		assert not command.endswith(";")
-		command = '%s;' % command
+		command = '{};'.format(command)
 		self.cur.execute(command, args)
 		return self.cur.fetchall()
 
