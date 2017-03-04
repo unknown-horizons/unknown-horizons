@@ -4,7 +4,7 @@
 
 <Container position="0,70" size="250,500">
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
+	<Spacer min_size="0,0"  max_size="50,0" />
 		<Label name="headline" text="Trade" />
 	</HBox>
 <hr position="20,30" />
@@ -14,7 +14,7 @@
 	<Icon image="content/gui/images/tabwidget/icon_trade_ship.png" position="160,0" />
 	<HBox position="0,3"  min_size="170,20"  size="230,20">
 		<Label name="ship_label"  text="Ship:" />
-	<Spacer min_size="0"  max_size="50" />
+	<Spacer min_size="0,0"  max_size="50,0" />
 		<Label name="ship_name" />
 	</HBox>
 
@@ -62,7 +62,7 @@
 	<Icon image="content/gui/images/tabwidget/icon_trade_settlement.png" position="160,0" />
 	<HBox position="0,3"  min_size="170,20"  size="230,20">
 		<Label name="trade_with_label" text="Trade partner:" />
-		<Spacer min_size="0"  max_size="50" />
+		<Spacer min_size="0,0"  max_size="50,0" />
 		<Label position="100,3" name="partners" />
 	</HBox>
 </Container>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container name="menu" size="250,350" background_image="content/gui/images/background/mainmenu/ingame.png">
 
-<VBox name="button_backgrounds"  padding="1"  position="15,15">
+<VBox name="button_backgrounds"  spacing="1,0"  position="15,15">
 	<Icon image="content/gui/images/buttons/msg_button.png" />
 	<Icon image="content/gui/images/buttons/msg_button.png" />
 	<Icon image="content/gui/images/buttons/msg_button.png" />
@@ -10,7 +10,7 @@
 	<Icon image="content/gui/images/buttons/msg_button.png" />
 </VBox>
 
-<VBox name="button_labels" padding="31" position="68,32" max_size="185,312" min_size="185,312">
+<VBox name="button_labels" spacing="31,0" position="68,32" max_size="185,312" min_size="185,312">
 	<Label font="headline" name="start" text="Return to game" />
 	<Label font="headline" name="savegame" text="Save game"  />
 	<Label font="headline" name="loadgame" text="Load game" />
@@ -19,7 +19,7 @@
 	<Label font="headline" name="quit" text="Cancel game" />
 </VBox>
 
-<VBox name="button_images"  padding="21"  position="25,25">
+<VBox name="button_images"  spacing="21,0"  position="25,25">
 	<MainmenuButton name="startGame" icon="compass" max_size="32,32" />
 	<MainmenuButton name="savegameButton" icon="save" max_size="32,32" />
 	<MainmenuButton name="loadgameButton" icon="load" max_size="32,32" />

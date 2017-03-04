@@ -6,7 +6,7 @@
 	<Label text="Chat" name="headline" />
 	<hr />
 	<Label name="chat_lbl" text="Enter your message:" />
-	<TextField name="msg" min_size="300,20" max_size="300,20" />
+	<TextField name="msg" fixed_size="300,20" />
 
 	<HBox>
 		<CancelButton />

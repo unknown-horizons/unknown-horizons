@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AutoResizeContainer name="city_info">
+<ABox name="city_info">
 	<TilingHBox amount="24" position="0,10" />
 <!-- City Info widget: Includes city name and number of inhabitants.
 	Displayed when hovering player settlement. -->
@@ -11,4 +11,4 @@
 	<RenameLabel name="city_name" position="45,14" />
 	<Label name="city_inhabitants" position="206,14" />
 	<!-- text for these two is set at runtime: horizons.gui.ingamegui.update_settlement -->
-</AutoResizeContainer>
+</ABox>

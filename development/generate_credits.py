@@ -124,7 +124,7 @@ def write_page(heading, content):
 		if heading in huge_pages:
 			write(f, 1, u'</ScrollArea>')
 
-	write(f, 0, u'\n<HBox name="{}" position="185,45" padding="10">'.format(section_widgets[heading]))
+	write(f, 0, u'\n<HBox name="{}" position="185,45">'.format(section_widgets[heading]))
 
 	write_page_header()
 

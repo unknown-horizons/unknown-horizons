@@ -133,7 +133,7 @@ class NetworkInterface(object):
 			self.sid = packet[1].sid
 			self.capabilities = packet[1].capabilities
 			self._mode = ClientMode.Server
-			self.log.debug("[CONNECT] done (session=%s)" % (self.sid))
+			self.log.debug("[CONNECT] done (session=%s)", self.sid)
 			self._set_client_language()
 		except NetworkException as e:
 			self.disconnect()
@@ -205,7 +205,7 @@ class NetworkInterface(object):
 		self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s", mapname, maphash, maxplayers, gamename)
 		try:
 			self._assert_connection()
-			self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
+			self.log.debug("[CREATE] mapname=%s maxplayers=%d", mapname, maxplayers)
 			self.send_packet(packets.client.cmd_creategame(
 				clientver=self._client_data.version,
 				clientid=self._client_data.id,
@@ -248,7 +248,7 @@ class NetworkInterface(object):
 
 	def _joingame(self, uuid, password="", fetch=False):
 		self._assert_connection()
-		self.log.debug("[JOIN] %s" % (uuid))
+		self.log.debug("[JOIN] %s", uuid)
 		self.send_packet(packets.client.cmd_joingame(
 			uuid=uuid,
 			clientver=self._client_data.version,
@@ -280,7 +280,7 @@ class NetworkInterface(object):
 		try:
 			self._assert_connection()
 			self._assert_lobby()
-			self.log.debug("[CHAT] %s" % (message))
+			self.log.debug("[CHAT] %s", message)
 			self.send_packet(packets.client.cmd_chatmsg(message))
 		except NetworkException as e:
 			self._handle_exception(e)
@@ -333,7 +333,7 @@ class NetworkInterface(object):
 		try:
 			if self._client_data.name == new_name:
 				return True
-			self.log.debug("[CHANGENAME] %s" % (new_name))
+			self.log.debug("[CHANGENAME] %s", new_name)
 			if self._mode is None or self._game is None:
 				self._client_data.name = new_name
 				return
@@ -342,7 +342,7 @@ class NetworkInterface(object):
 			self._handle_exception(e)
 
 	def _on_change_name(self, game, plold, plnew, myself):
-		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
+		self.log.debug("[ONCHANGENAME] %s -> %s", plold.name, plnew.name)
 		if myself:
 			self._client_data.name = plnew.name
 
@@ -356,7 +356,7 @@ class NetworkInterface(object):
 		try:
 			if self._client_data.color == new_color:
 				return
-			self.log.debug("[CHANGECOLOR] %s" % (new_color))
+			self.log.debug("[CHANGECOLOR] %s", new_color)
 			if self._mode is None or self._game is None:
 				self._client_data.color = new_color
 				return
@@ -365,7 +365,7 @@ class NetworkInterface(object):
 			self._handle_exception(e)
 
 	def _on_change_color(self, game, plold, plnew, myself):
-		self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
+		self.log.debug("[ONCHANGECOLOR] %s: %s -> %s", plnew.name, plold.color, plnew.color)
 		if myself:
 			self._client_data.color = plnew.color
 
@@ -380,7 +380,7 @@ class NetworkInterface(object):
 			while self._connection.ping(): # ping receives packets
 				pass
 		except NetworkException as e:
-			self.log.debug("ping in receive_all failed: "+unicode(e))
+			self.log.debug("ping in receive_all failed: %s ", unicode(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets
@@ -456,7 +456,7 @@ class NetworkInterface(object):
 				return True
 			self._on_game_start()
 		elif isinstance(packet[1], packets.client.game_data):
-			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
+			self.log.debug("[GAMEDATA] from %s", packet[0].address)
 			self._on_game_data(packet[1].data)
 		elif isinstance(packet[1], packets.server.cmd_kickplayer):
 			player = packet[1].player
@@ -543,4 +543,4 @@ class MPGame(object):
 		return ret_players
 
 	def __str__(self):
-		return "%s (%d/%d)" % (self.map_name, self.player_count, self.player_limit)
+		return "{} ({:d}/{:d})".format(self.map_name, self.player_count, self.player_limit)

@@ -6,7 +6,7 @@
 	<Container position="0,70" size="245,320">
 		<!-- Name of Ship -->
 		<HBox position="22,7" min_size="170,20" size="230,20">
-			<Spacer min_size="0" max_size="50" />
+			<Spacer min_size="0,0" max_size="50,0" />
 			<RenameLabel name="name" helptext="Click to change the name of this ship" />
 		</HBox>
 
@@ -36,7 +36,7 @@
 		<hr position="20,100" />
 
 		<Container position="22,110" size="230,75">
-			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
+			<HBox min_size="215,50" max_size="215,50" position="3,2">
 				<Icon image="content/gui/images/background/inv_bg.png" />
 				<Icon image="content/gui/images/background/inv_bg.png" />
 				<Icon image="content/gui/images/background/inv_bg.png" />

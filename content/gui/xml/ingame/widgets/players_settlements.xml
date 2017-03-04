@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-	<VBox max_size="695,388" min_size="695,388" padding="5">
+	<VBox fixed_size="695,388">
 		<HBox>
 			<Label name="headline" min_size="300,20" />
 		</HBox>
 		<hr />
 
-		<VBox max_size="650,20">
+		<VBox max_size="650,30">
 			<HBox>
 				<Label min_size="15,20" name="sequence_number" />
 				<Label min_size="200,20" name="settlement_name" text="Name" />
