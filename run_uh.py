@@ -85,7 +85,7 @@ def get_content_dir_parent_path():
 
 	options = []
 	# Try the directory this file is in. This should work in most cases.
-	options.append(os.path.dirname(os.path.realpath(str(__file__))))
+	options.append(os.path.dirname(os.path.realpath(__file__)))
 	# Try path for Mac Os X app container (Unknown Horizons.app).
 	# Unknown Horizons.app/Contents/Resources/contents
 	options.append(os.getcwd())
