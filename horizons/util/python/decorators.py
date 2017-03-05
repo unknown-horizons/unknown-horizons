@@ -25,7 +25,7 @@
 import functools
 import time
 from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
-from types import ClassType, FunctionType
+from types import FunctionType
 
 
 class cachedfunction(object):
@@ -234,10 +234,10 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 	except TypeError:
 		return
 	for k, v in list(d.items()):
-		if type(v) is FunctionType:
+		if isinstance(v, FunctionType):
 			newv = _make_constants(v, builtin_only, stoplist, verbose)
 			setattr(mc, k, newv)
-		elif type(v) in (type, ClassType):
+		elif isinstance(v, type):
 			bind_all(v, builtin_only, stoplist, verbose)
 
 @_make_constants
