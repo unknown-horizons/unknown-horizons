@@ -135,6 +135,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 			return f    # for simplicity, only optimize common cases
 		if opcode == LOAD_GLOBAL:
 			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
+			print(oparg, codelen)
 			name = co.co_names[oparg]
 			if name in env and name not in stoplist:
 				value = env[name]
