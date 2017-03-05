@@ -114,7 +114,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 		co = f.__code__
 	except AttributeError:
 		return f        # Jython doesn't have a func_code attribute.
-	newcode = list(map(ord, co.co_code))
+	newcode = list(map(ord, str(co.co_code)))
 	newconsts = list(co.co_consts)
 	names = co.co_names
 	codelen = len(newcode)
