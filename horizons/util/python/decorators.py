@@ -120,7 +120,7 @@ def _make_constants(f, builtin_only=False, stoplist=None, verbose=False):
 	codelen = len(newcode)
 
 	import builtins
-	env = vars(__builtin__).copy()
+	env = vars(builtins).copy()
 	if builtin_only:
 		stoplist = dict.fromkeys(stoplist)
 		stoplist.update(f.__globals__)
