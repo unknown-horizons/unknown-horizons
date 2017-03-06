@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class BUILD_RESULT:
@@ -126,7 +125,3 @@ class BUILDING_PURPOSE:
 		return cls.purpose_to_building[building_id]
 
 BUILDING_PURPOSE.init_translation()
-
-decorators.bind_all(BUILD_RESULT)
-decorators.bind_all(GOAL_RESULT)
-decorators.bind_all(BUILDING_PURPOSE)

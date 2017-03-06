@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import decorators
-
 
 class DifficultySettings(object):
 	EASY_LEVEL = 0
@@ -52,8 +50,3 @@ class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5
 
 DifficultySettings.register_levels()
-
-decorators.bind_all(DifficultySettings)
-decorators.bind_all(DifficultyClass)
-decorators.bind_all(DefaultSettings)
-decorators.bind_all(EasySettings)

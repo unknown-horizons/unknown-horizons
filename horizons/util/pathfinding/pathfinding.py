@@ -21,8 +21,6 @@
 
 import logging
 
-from horizons.util.python import decorators
-
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
@@ -37,7 +35,6 @@ class FindPath(object):
 	"""
 	log = logging.getLogger("world.pathfinding")
 
-	@decorators.make_constants()
 	def __call__(self, source, destination, path_nodes, blocked_coords=None,
 		        diagonal=False, make_target_walkable=True):
 		"""
@@ -80,7 +77,6 @@ class FindPath(object):
 		self.log.debug('found path: %s', path)
 		return path
 
-	@decorators.make_constants()
 	def setup(self):
 		"""Sets up variables for execution of algorithm
 		@return: bool, whether setup was successful"""
@@ -115,7 +111,6 @@ class FindPath(object):
 
 		return True
 
-	@decorators.make_constants()
 	def execute(self):
 		"""Executes algorithm"""
 		# nodes are the keys of the following dicts (x, y)

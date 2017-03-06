@@ -26,7 +26,6 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.i18n import gettext as T
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.world.units.fightingship import FightingShip
 
@@ -117,5 +116,3 @@ class PlayersShips(StatsWidget):
 		hbox.addChild(status)
 		self._content_vbox.addChild(hbox)
 		return (ship_name, rename_icon, status, status_position)
-
-decorators.bind_all(PlayersShips)

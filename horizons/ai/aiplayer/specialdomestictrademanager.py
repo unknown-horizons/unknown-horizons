@@ -23,8 +23,6 @@ import logging
 from collections import defaultdict
 
 from horizons.component.storagecomponent import StorageComponent
-from horizons.util.python import decorators
-
 from .mission.specialdomestictrade import SpecialDomesticTrade
 
 
@@ -120,5 +118,3 @@ class SpecialDomesticTradeManager(object):
 
 	def __str__(self):
 		return '%s.SpecialDomesticTradeManager' % self.owner
-
-decorators.bind_all(SpecialDomesticTradeManager)

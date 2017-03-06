@@ -31,7 +31,6 @@ from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import SettingChanged
-from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 
 
@@ -796,6 +795,3 @@ class _MinimapImage(object):
 		"""Always call this."""
 		targetname = self.rendertarget.getTarget().getName()
 		self.targetrenderer.setRenderTarget(targetname, False, 0)
-
-
-decorators.bind_all(Minimap)

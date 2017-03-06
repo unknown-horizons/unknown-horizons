@@ -29,7 +29,6 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect, distances
 
 
@@ -856,5 +855,3 @@ class VillageBuilder(AreaBuilder):
 
 	def __str__(self):
 		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
-
-decorators.bind_all(VillageBuilder, stoplist=['AI'])

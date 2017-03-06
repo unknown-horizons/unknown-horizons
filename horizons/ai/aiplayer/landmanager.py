@@ -25,7 +25,6 @@ from collections import defaultdict
 
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import AI, BUILDINGS, RES
-from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
 
 
@@ -328,5 +327,3 @@ class LandManager(WorldObject):
 	def __str__(self):
 		return '%s LandManager(%s)' % (getattr(self, 'owner', 'unknown player'),
 		                               getattr(self, 'worldid', 'none'))
-
-decorators.bind_all(LandManager, stoplist=['AI'])

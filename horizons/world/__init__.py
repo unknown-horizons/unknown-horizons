@@ -33,7 +33,6 @@ from horizons.world.player import HumanPlayer
 from horizons.scheduler import Scheduler
 from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.color import Color
-from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
@@ -742,7 +741,3 @@ def load_raw_world(map_file):
 	world.inited = True
 	world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
 	return world
-
-
-decorators.bind_all(World)
-decorators.bind_all(load_building)

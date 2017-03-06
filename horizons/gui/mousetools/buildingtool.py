@@ -39,7 +39,6 @@ from horizons.i18n import gettext as T
 from horizons.messaging import (
 	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.python import decorators
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 
@@ -842,9 +841,3 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 
 	def continue_build(self):
 		self._reshow_tab()
-
-
-decorators.bind_all(BuildingTool)
-decorators.bind_all(SettlementBuildingToolLogic)
-decorators.bind_all(ShipBuildingToolLogic)
-decorators.bind_all(BuildRelatedBuildingToolLogic)

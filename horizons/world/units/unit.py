@@ -28,7 +28,6 @@ from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.healthcomponent import HealthComponent
 from horizons.constants import LAYERS
 from horizons.extscheduler import ExtScheduler
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes import Point
@@ -235,6 +234,3 @@ class Unit(MovingObject, ResourceTransferHandler):
 
 	def __str__(self): # debug
 		return '{}(id={};worldid={})'.format(self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
-
-
-decorators.bind_all(Unit)

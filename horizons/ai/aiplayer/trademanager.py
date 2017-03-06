@@ -26,7 +26,6 @@ from collections import defaultdict
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES, STORAGE
-from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 
 from .building import AbstractBuilding
@@ -352,6 +351,3 @@ class SingleResourceTradeManager(WorldObject):
 				settlement_name = 'unknown'
 			result += '\n  import %.5f from %s' % (amount, settlement_name)
 		return result
-
-decorators.bind_all(TradeManager)
-decorators.bind_all(SingleResourceTradeManager)

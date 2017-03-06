@@ -81,7 +81,6 @@ from .goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
 from horizons.messaging import SettlementRangeChanged, NewDisaster, MineEmpty
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
@@ -513,5 +512,3 @@ class AIPlayer(GenericAI):
 		self.strategy_manager.end()
 		self.strategy_manager = None
 		super(AIPlayer, self).end()
-
-decorators.bind_all(AIPlayer)

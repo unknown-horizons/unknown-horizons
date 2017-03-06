@@ -25,7 +25,7 @@ from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.pathfinding.pathfinder import a_star_find_path
-from horizons.util.python import ChainedContainer, decorators
+from horizons.util.python import ChainedContainer
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.terraincache import TerrainRequirement
@@ -569,11 +569,3 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		# rotation fix code is only reached when building is buildable
 		mountain = WorldObject.get_object_by_id(iter(tearset).next())
 		return mountain.rotation
-
-
-decorators.bind_all(Buildable)
-decorators.bind_all(BuildableSingle)
-decorators.bind_all(BuildableRect)
-decorators.bind_all(BuildableSingleFromShip)
-decorators.bind_all(BuildableSingleOnCoast)
-decorators.bind_all(BuildableSingleOnDeposit)

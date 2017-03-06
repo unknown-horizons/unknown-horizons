@@ -26,7 +26,6 @@ import operator
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.entities import Entities
 from horizons.constants import GAME_SPEED, RES
-from horizons.util.python import decorators
 from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.producer import Producer
 
@@ -191,5 +190,3 @@ class AbstractBuilding(object):
 	def need_to_build_more_buildings(self, settlement_manager, resource_id):
 		"""Return a boolean showing whether another instance of the building should be built right now regardless of the production capacity."""
 		return False
-
-decorators.bind_all(AbstractBuilding)

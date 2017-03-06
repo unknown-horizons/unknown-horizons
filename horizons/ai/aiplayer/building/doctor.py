@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class AbstractDoctor(AbstractBuilding):
@@ -78,6 +77,3 @@ class DoctorEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.DOCTOR
 
 AbstractDoctor.register_buildings()
-
-decorators.bind_all(AbstractDoctor)
-decorators.bind_all(DoctorEvaluator)

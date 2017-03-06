@@ -263,7 +263,6 @@ class Collector(Unit):
 
 		return True
 
-	@decorators.make_constants()
 	def check_possible_job_target_for(self, target, res):
 		"""Checks out if we could get res from target.
 		Does _not_ check for anything else (e.g. if we are able to walk there).
@@ -566,6 +565,3 @@ class JobList(list):
 
 	def __str__(self):
 		return unicode([ unicode(i) for i in self ])
-
-
-decorators.bind_all(Collector)

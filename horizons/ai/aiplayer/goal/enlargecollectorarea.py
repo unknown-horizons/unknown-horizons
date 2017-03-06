@@ -27,7 +27,6 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.ext.typing import Tuple
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
 
@@ -138,5 +137,3 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		result = self._enlarge_collector_area()
 		self._log_generic_build_result(result, 'storage coverage building')
 		return self._translate_build_result(result)
-
-decorators.bind_all(EnlargeCollectorAreaGoal)

@@ -23,7 +23,6 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
@@ -106,5 +105,3 @@ class PrepareFoundationShip(ShipMission):
 	def cancel(self):
 		self.ship.stop()
 		super(PrepareFoundationShip, self).cancel()
-
-decorators.bind_all(PrepareFoundationShip)

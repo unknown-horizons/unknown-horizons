@@ -22,7 +22,6 @@
 import collections
 import heapq
 
-from horizons.util.python import decorators
 
 # the values are based on the configurations of the first two of the three sets of relative coordinates (previous, current, next)
 COUNTERCLOCKWISE_TURNS = [((0, 0), (0, 1)), ((0, 1), (1, 1)), ((1, 0), (0, 0)), ((1, 1), (1, 0))]
@@ -108,6 +107,3 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 			final_key = distance[final_key][1]
 		return path
 	return None
-
-
-decorators.bind_all(a_star_find_path)

@@ -28,7 +28,6 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.worldobject import WorldObject
 
@@ -296,4 +295,3 @@ class AreaBuilder(WorldObject):
 		for (x, y) in coords_list:
 			self.register_change(x, y, purpose, data)
 
-decorators.bind_all(AreaBuilder)

@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.entities import Entities
-from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
 from horizons.world.production.productionline import ProductionLine
 
@@ -72,5 +71,3 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 	@property
 	def ignore_production(self):
 		return True
-
-decorators.bind_all(AbstractFakeResourceDeposit)

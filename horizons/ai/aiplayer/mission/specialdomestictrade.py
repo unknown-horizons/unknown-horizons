@@ -23,7 +23,6 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
@@ -122,5 +121,3 @@ class SpecialDomesticTrade(ShipMission):
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
 		self.log.info('%s reached the destination warehouse area (%s)', self, self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
 		self.report_success('Unloaded resources')
-
-decorators.bind_all(SpecialDomesticTrade)

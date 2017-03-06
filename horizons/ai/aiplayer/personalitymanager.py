@@ -22,7 +22,6 @@
 import logging
 
 from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
-from horizons.util.python import decorators
 
 
 class PersonalityManager(object):
@@ -68,5 +67,3 @@ class PersonalityManager(object):
 		cls.available_personalities.append(OtherPersonality)
 
 PersonalityManager.prepare_personalities_list()
-
-decorators.bind_all(PersonalityManager)

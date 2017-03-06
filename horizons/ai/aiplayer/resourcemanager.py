@@ -28,7 +28,6 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import BUILDINGS, RES, TRADER
-from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
 from horizons.world.settlement import Settlement
 
@@ -550,8 +549,3 @@ class SimpleProductionChainSubtree(object):
 		if self.children:
 			return min(root_quota, min(child.get_quota(quota_holder) for child in self.children))
 		return root_quota
-
-decorators.bind_all(ResourceManager)
-decorators.bind_all(SingleResourceManager)
-decorators.bind_all(SimpleProductionChainSubtreeChoice)
-decorators.bind_all(SimpleProductionChainSubtree)

@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.decorators import bind_all
-
 from . import Shape
 from .point import Point
 
@@ -80,5 +78,3 @@ class Circle(Shape):
 			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
 				if (self.radius - bordersize) <= self.center.distance((x, y)) <= self.radius:
 					yield (x, y)
-
-bind_all(Circle)

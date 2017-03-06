@@ -22,7 +22,6 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS, RES
-from horizons.util.python import decorators
 
 
 class FireStationGoal(SettlementGoal):
@@ -48,5 +47,3 @@ class FireStationGoal(SettlementGoal):
 		result = AbstractBuilding.buildings[BUILDINGS.FIRE_STATION].build(self.settlement_manager, None)[0]
 		self._log_generic_build_result(result, 'fire station')
 		return self._translate_build_result(result)
-
-decorators.bind_all(FireStationGoal)

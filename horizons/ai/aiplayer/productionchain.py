@@ -24,7 +24,6 @@ import logging
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class ProductionChain(object):
@@ -345,7 +344,3 @@ class ProductionChainSubtree(object):
 		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		result = self.production_ratio if self.resource_id == resource_id else 0
 		return result + sum(child.get_ratio(resource_id) for child in self.children)
-
-decorators.bind_all(ProductionChain)
-decorators.bind_all(ProductionChainSubtreeChoice)
-decorators.bind_all(ProductionChainSubtree)

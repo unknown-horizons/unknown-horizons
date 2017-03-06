@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
@@ -143,5 +142,3 @@ class FoundSettlement(ShipMission):
 	def create(cls, ship, land_manager, success_callback, failure_callback):
 		coords = cls.find_warehouse_location(ship, land_manager)
 		return FoundSettlement(success_callback, failure_callback, land_manager, ship, coords)
-
-decorators.bind_all(FoundSettlement)

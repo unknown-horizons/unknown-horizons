@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class DepositCoverageGoal(SettlementGoal):
@@ -107,7 +106,3 @@ class MountainCoverageGoal(DepositCoverageGoal):
 	def get_personality_name(self):
 		return 'MountainCoverageGoal'
 
-decorators.bind_all(DepositCoverageGoal)
-decorators.bind_all(ClayDepositCoverageGoal)
-decorators.bind_all(StoneDepositCoverageGoal)
-decorators.bind_all(MountainCoverageGoal)

@@ -22,7 +22,6 @@
 from fife.extensions.pychan import widgets
 
 from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.util.python import decorators
 
 
 class PlayersOverview(StatsWidget):
@@ -90,5 +89,3 @@ class PlayersOverview(StatsWidget):
 		hbox.addChild(unit_score)
 		hbox.addChild(total_score)
 		self._content_vbox.addChild(hbox)
-
-decorators.bind_all(PlayersOverview)

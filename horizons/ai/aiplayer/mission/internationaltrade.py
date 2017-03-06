@@ -26,7 +26,6 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TRADER
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
@@ -169,5 +168,3 @@ class InternationalTrade(ShipMission):
 	def _returned_to_my_settlement(self):
 		self._unload_all_resources(self.settlement_manager.settlement)
 		self.report_success('Unloaded the bought resources at %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
-
-decorators.bind_all(InternationalTrade)

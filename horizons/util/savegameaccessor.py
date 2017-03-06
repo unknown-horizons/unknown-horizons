@@ -28,7 +28,6 @@ from collections import defaultdict, deque
 from horizons.constants import MAP, PATHS
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
-from horizons.util.python import decorators
 from horizons.util.random_map import create_random_island
 from horizons.util.savegameupgrader import SavegameUpgrader
 
@@ -329,5 +328,3 @@ class SavegameAccessor(DbReader):
 			h.update(f.read())
 			filehash = h.hexdigest()
 		return filehash
-
-decorators.bind_all(SavegameAccessor)

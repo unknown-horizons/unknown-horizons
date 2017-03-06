@@ -33,7 +33,6 @@ from yaml.parser import ParserError
 from horizons.constants import BUILDINGS, UNITS, VERSION
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.yamlcache import YamlCache
 
@@ -514,5 +513,3 @@ class SavegameUpgrader(object):
 			self.using_temp = False
 			os.unlink(self.final_path)
 		self.final_path = None
-
-decorators.bind_all(SavegameUpgrader)

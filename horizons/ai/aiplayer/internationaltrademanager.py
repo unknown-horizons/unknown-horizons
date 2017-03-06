@@ -25,7 +25,6 @@ from collections import defaultdict
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TRADER
-from horizons.util.python import decorators
 
 from .mission.internationaltrade import InternationalTrade
 
@@ -130,5 +129,3 @@ class InternationalTradeManager(object):
 
 	def tick(self):
 		self._add_route()
-
-decorators.bind_all(InternationalTradeManager)

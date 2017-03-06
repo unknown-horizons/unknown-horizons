@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.util.python import Const
-from horizons.util.python.decorators import bind_all
 
 from . import Shape
 from .point import Point
@@ -291,7 +290,3 @@ class ConstRect(Const, Rect):
 	"""An immutable Rect.
 	Can be used for manual const-only optimization"""
 	pass
-
-
-bind_all(Rect)
-bind_all(Const)

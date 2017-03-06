@@ -32,7 +32,6 @@ from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.gui.windows import Window
 from horizons.i18n import gettext as T
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
 
@@ -169,5 +168,3 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		hbox.addChild(label)
 		hbox.addChild(amount_label)
 		container.addChild(hbox)
-
-decorators.bind_all(ProductionOverview)

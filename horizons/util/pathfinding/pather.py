@@ -24,7 +24,6 @@ import weakref
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
-from horizons.util.python import decorators
 from horizons.util.shapes import Point
 
 
@@ -294,4 +293,3 @@ class StaticPather(object):
 		return FindPath()(source, destination, island.path_nodes.road_nodes)
 
 
-decorators.bind_all(AbstractPather)

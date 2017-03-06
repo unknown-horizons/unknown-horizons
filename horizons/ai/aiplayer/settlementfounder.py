@@ -27,7 +27,6 @@ from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
 from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundationShip
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class SettlementFounder(object):
@@ -213,5 +212,3 @@ class SettlementFounder(object):
 
 	def __str__(self):
 		return '%s SettlementFounder' % (self.owner)
-
-decorators.bind_all(SettlementFounder)

@@ -31,7 +31,6 @@ from horizons.constants import GAME, LAYERS, RES
 from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.python import decorators
 from horizons.util.shapes import ConstRect, Point, distances
 from horizons.util.worldobject import WorldObject
 from horizons.world.building.buildable import BuildableSingle
@@ -331,6 +330,3 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 class DefaultBuilding(BasicBuilding, BuildableSingle):
 	"""Building with default properties, that does nothing."""
 	pass
-
-
-decorators.bind_all(BasicBuilding)

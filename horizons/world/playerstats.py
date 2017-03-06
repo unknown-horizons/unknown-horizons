@@ -28,7 +28,6 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, PRODUCTION, RES, TIER, UNITS
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 
@@ -208,5 +207,3 @@ class PlayerStats(WorldObject):
 
 	def _calculate_total_score(self):
 		self.total_score = self.settler_score + self.building_score + self.resource_score + self.unit_score + self.land_score + self.money_score
-
-decorators.bind_all(PlayerStats)

@@ -32,7 +32,6 @@ from horizons.constants import PRODUCTION
 from horizons.messaging import AddStatusIcon, MineEmpty, RemoveStatusIcon
 from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.world.production.production import Production, SingleUseProduction
@@ -629,9 +628,3 @@ class GroundUnitProducer(ShipProducer):
 					found_tile = True
 					break
 			radius += 1
-
-decorators.bind_all(Producer)
-decorators.bind_all(MineProducer)
-decorators.bind_all(QueueProducer)
-decorators.bind_all(ShipProducer)
-decorators.bind_all(GroundUnitProducer)

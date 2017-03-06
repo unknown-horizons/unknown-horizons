@@ -28,7 +28,6 @@ from fife import fife
 import horizons.globals
 from horizons.component import Component
 from horizons.constants import GFX, LAYERS, RES
-from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
 
 
@@ -375,8 +374,3 @@ class SelectableFisherComponent(SelectableBuildingComponent):
 			#cls._selected_tiles.l.append(fish_deposit)
 			for pos in fish_deposit.position:
 				cls._add_fake_tile(pos.x, pos.y, layer, renderer)
-
-decorators.bind_all(SelectableFisherComponent)
-decorators.bind_all(SelectableBuildingComponent)
-decorators.bind_all(SelectableShipComponent)
-decorators.bind_all(SelectableUnitComponent)

@@ -30,7 +30,6 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import AI, BUILDINGS
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Rect, distances
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
@@ -496,5 +495,3 @@ class ProductionBuilder(AreaBuilder):
 	def __str__(self):
 		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
-
-decorators.bind_all(ProductionBuilder, stoplist=['AI'])

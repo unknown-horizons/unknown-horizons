@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
 
@@ -125,5 +124,3 @@ class AbstractVillageBuilding(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.TAVERN] = cls
 
 AbstractVillageBuilding.register_buildings()
-
-decorators.bind_all(AbstractVillageBuilding)

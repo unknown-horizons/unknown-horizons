@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class AbstractFireStation(AbstractBuilding):
@@ -78,6 +77,3 @@ class FireStationEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.FIRE_STATION
 
 AbstractFireStation.register_buildings()
-
-decorators.bind_all(AbstractFireStation)
-decorators.bind_all(FireStationEvaluator)

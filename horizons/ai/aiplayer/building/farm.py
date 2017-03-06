@@ -27,7 +27,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, RES
 from horizons.ext.typing import Tuple
-from horizons.util.python import decorators
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 
@@ -457,7 +456,3 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 
 AbstractFarm.register_buildings()
 FarmEvaluator.init_field_offsets()
-
-decorators.bind_all(AbstractFarm)
-decorators.bind_all(FarmEvaluator)
-decorators.bind_all(ModifiedFieldEvaluator)

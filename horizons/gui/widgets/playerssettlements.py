@@ -24,7 +24,6 @@ from fife.extensions.pychan import widgets
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.i18n import gettext as T
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
 
@@ -120,5 +119,3 @@ class PlayersSettlements(StatsWidget):
 		name.min_size = name.max_size = (200, 20)
 
 		self._add_generic_line_to_gui(0, [sequence_number_label, name], people, tax, costs)
-
-decorators.bind_all(PlayersSettlements)
