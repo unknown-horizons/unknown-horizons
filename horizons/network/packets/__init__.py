@@ -23,10 +23,7 @@ import pickle
 import inspect
 import sys
 
-try:
-	from io import StringIO
-except ImportError:
-	from io import StringIO # type: ignore
+from io import StringIO
 
 from horizons.network import NetworkException, PacketTooLarge
 
