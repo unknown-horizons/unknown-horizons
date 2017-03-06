@@ -32,12 +32,7 @@ from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
-# Find the best implementation available on this platform
-try:
-	from io import StringIO
-except ImportError:
-	from io import StringIO # type: ignore
-
+from io import StringIO
 
 
 @decorators.cachedfunction
