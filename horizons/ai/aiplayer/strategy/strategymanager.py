@@ -104,7 +104,7 @@ class StrategyManager(object):
 		min_balance = 10e-7
 		max_balance = 1000.0
 
-		ships = self.owner.ships.keys()
+		ships = list(self.owner.ships.keys())
 		ships = self.unit_manager.filter_ships(ships, (self.unit_manager.filtering_rules.fighting(),))
 		enemy_ships = self.unit_manager.get_player_ships(other_player)
 		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
@@ -181,8 +181,8 @@ class StrategyManager(object):
 			'power':power_balance,
 			'terrain':terrain_balance,
 		}
-		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.iteritems()))
-		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.iteritems()))
+		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.items()))
+		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.items()))
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 
@@ -190,7 +190,7 @@ class StrategyManager(object):
 		for mission in list(self.missions):
 			mission.save(db)
 
-		for condition, mission in self.conditions_being_resolved.iteritems():
+		for condition, mission in self.conditions_being_resolved.items():
 			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid)
 
 	@classmethod
@@ -202,7 +202,7 @@ class StrategyManager(object):
 		return self
 
 	def _load(self, db):
-		for class_name, db_table in self.missions_to_load.iteritems():
+		for class_name, db_table in self.missions_to_load.items():
 			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
@@ -239,7 +239,7 @@ class StrategyManager(object):
 
 	def unlock_condition(self, mission):
 		# values (FleetMission) are unique so it's possible to remove them this way:
-		for condition, value in self.conditions_being_resolved.iteritems():
+		for condition, value in self.conditions_being_resolved.items():
 			if mission == value:
 				del self.conditions_being_resolved[condition]
 				return
@@ -287,7 +287,7 @@ class StrategyManager(object):
 			self.log.debug("Conditions occurring against player %s", player.name)
 			environment['player'] = player
 
-			for condition in self.conditions.keys():
+			for condition in list(self.conditions.keys()):
 
 				# Check whether given condition is already being resolved
 				if condition.get_identifier(**environment) in self.conditions_being_resolved:
@@ -307,10 +307,10 @@ class StrategyManager(object):
 			# Choose the most important one
 
 			selected_condition, selected_outcome = max(occuring_conditions,
-				key=lambda (condition, outcome): self.conditions[condition] * outcome['certainty'])
+				key=lambda condition_outcome1: self.conditions[condition_outcome1[0]] * condition_outcome1[1]['certainty'])
 
 			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
-			for key, value in selected_outcome.iteritems():
+			for key, value in selected_outcome.items():
 				# Insert condition-gathered info into environment
 				environment[key] = value
 				self.log.debug(" %s: %s", key, value)
