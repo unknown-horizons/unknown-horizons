@@ -21,6 +21,8 @@
 
 import random
 
+from fife.fife import AudioSpaceCoordinate
+
 import horizons.globals
 from horizons.component import Component
 from horizons.extscheduler import ExtScheduler
@@ -91,7 +93,7 @@ class AmbientSoundComponent(Component):
 			if position is not None:
 				self.__emitter.setRolloff(1.9)
 				# set to current position
-				self.__emitter.setPosition(position.x, position.y, 1)
+				self.__emitter.setPosition(AudioSpaceCoordinate(position.x, position.y, 1))
 			else:
 				self.__emitter.setRolloff(0) # reset to default
 

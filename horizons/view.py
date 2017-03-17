@@ -23,6 +23,7 @@ import math
 import time
 
 from fife import fife
+from fife.fife import AudioSpaceCoordinate
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
@@ -166,9 +167,9 @@ class View(ChangeListener):
 		for i in ['speech', 'effects']:
 			emitter = horizons.globals.fife.sound.emitter[i]
 			if emitter is not None:
-				emitter.setPosition(pos.x, pos.y, 1)
+				emitter.setPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
-			horizons.globals.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+			horizons.globals.fife.sound.soundmanager.setListenerPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		self._changed()
 
 	def _prepare_zoom_to_cursor(self, zoom):
