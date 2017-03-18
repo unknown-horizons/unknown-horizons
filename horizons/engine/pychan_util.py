@@ -140,8 +140,10 @@ def init_pychan():
 	# the lazy string from horizons.i18n. we should be passing unicode to
 	# widgets all the time, therefore we don't need the additional check.
 	def text2gui(text):
-		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
-		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+		# Drop unicode encoding for now.
+		#unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+		#return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+		return text.replace("\t"," "*4).replace("[br]","\n")
 
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui
