@@ -294,4 +294,3 @@ class AreaBuilder(WorldObject):
 	def register_change_list(self, coords_list, purpose, data):
 		for (x, y) in coords_list:
 			self.register_change(x, y, purpose, data)
-

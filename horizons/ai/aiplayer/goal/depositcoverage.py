@@ -105,4 +105,3 @@ class MountainCoverageGoal(DepositCoverageGoal):
 
 	def get_personality_name(self):
 		return 'MountainCoverageGoal'
-

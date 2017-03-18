@@ -291,5 +291,3 @@ class StaticPather(object):
 		@param source, destination: Point or anything supported by FindPath
 		@return: list of tuples or None in case no path is found"""
 		return FindPath()(source, destination, island.path_nodes.road_nodes)
-
-
