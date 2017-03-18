@@ -8,35 +8,30 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2013-07-14 19:32+0200\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
-"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/the-unknown/tr/"
-">\n"
+"PO-Revision-Date: 2017-03-18 14:56+0000\n"
+"Last-Translator: monolifed <monolifed@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/uh/the-"
+"unknown/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.12\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "kolay"
 
 #. scenario description
-#, fuzzy
-#| msgid ""
-#| "You are the captain of a ship under the flag of England in 1740. You and "
-#| "your crew were on the way to a colony of England in the pacific ocean.\n"
-#| "Everything went fine until you came into a storm…"
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
-"1740'daki İngiliz bayrağı altındaki bir geminin kaptanısınız. Siz ve "
-"tayfanız pasifik okyanusundaki İngiliz kolonisi yolundaydınız.\n"
-"Her şey, bir fırtına ile karşılaşıncaya kadar güzel gidiyordu…"
+"1740'da İngiliz bayrağı altındaki bir geminin kaptanısınız. Siz ve tayfanız "
+"Pasifik Okyanusundaki bir İngiliz kolonisine doğru ilerliyordunuz.\n"
+"Her şey güzel gidiyordu, bir fırtına ile karşılaşıncaya kadar…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -131,16 +126,12 @@ msgstr ""
 "için küçük bir ana meydan yapmanın tam zamanı."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Task:\n"
-#| "Build a main square and at least 10 tents."
 msgid ""
 "Task:\n"
 "Build a Main Square and at least 10 Tents."
 msgstr ""
 "Görev:\n"
-"Ana meydan ve en az 10 çadır yap."
+"Bir ana meydan ve en az 10 çadır inşa et."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
