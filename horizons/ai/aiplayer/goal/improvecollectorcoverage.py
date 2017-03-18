@@ -29,7 +29,6 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, PRODUCTION, RES
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.world.production.producer import Producer
 
@@ -196,5 +195,3 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 					self.production_builder.last_collector_improvement_storage = Scheduler().cur_tick
 		self._log_generic_build_result(result, 'storage')
 		return self._translate_build_result(result)
-
-decorators.bind_all(ImproveCollectorCoverageGoal)
