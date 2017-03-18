@@ -40,6 +40,7 @@ class StrategyManager(object):
 	"""
 	log = logging.getLogger("ai.aiplayer.fleetmission")
 
+	# Redundant use of super()?
 	def __init__(self, owner):
 		super(StrategyManager, self).__init__()
 		self.__init(owner)
@@ -78,7 +79,7 @@ class StrategyManager(object):
 		resources_weight = 0.75
 
 		resource_values = []
-		for player in [self.owner, other_player]:
+		for player in (self.owner, other_player):
 			resources_value = 0.0
 			for settlement in player.settlements:
 				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount
@@ -109,11 +110,11 @@ class StrategyManager(object):
 		enemy_ships = self.unit_manager.get_player_ships(other_player)
 		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
 
-		# infinitely more powerful
+		# infinitely more powerful (is either or both expected to return None?)
 		if ships and not enemy_ships:
 			return max_balance
 
-		# infinitely less powerful
+		# infinitely less powerful (is either or both expected to return None?)
 		elif not ships and enemy_ships:
 			return min_balance
 		elif not ships and not enemy_ships:
@@ -132,7 +133,7 @@ class StrategyManager(object):
 
 		terrains = []
 		island_counts = []
-		for player in [self.owner, other_player]:
+		for player in (self.owner, other_player):
 			terrain_total = 0
 			islands = set()
 			for settlement in player.settlements:
@@ -144,7 +145,7 @@ class StrategyManager(object):
 		ai_terrain, enemy_terrain = terrains
 		ai_islands, enemy_islands = island_counts
 
-		# if not
+		# if not (is either or both expected to return None?)
 		if ai_islands and not enemy_islands:
 			return max_balance
 		if not ai_islands and enemy_islands:
@@ -196,7 +197,7 @@ class StrategyManager(object):
 	@classmethod
 	def load(cls, db, owner):
 		self = cls.__new__(cls)
-		super(StrategyManager, self).__init__()
+		super(StrategyManager, self).__init__()		# redundant use of super()?
 		self.__init(owner)
 		self._load(db)
 		return self
