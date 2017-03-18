@@ -22,7 +22,6 @@
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class ProductionChainGoal(SettlementGoal):
