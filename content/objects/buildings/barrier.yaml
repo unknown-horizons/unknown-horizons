@@ -22,3 +22,5 @@ components:
 actionsets:
   TIER.SAILORS:
     as_wall:
+  TIER.PIONEERS:
+    as_claywall:
