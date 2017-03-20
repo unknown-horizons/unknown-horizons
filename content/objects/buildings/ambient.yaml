@@ -1,0 +1,19 @@
+id: 67
+name: _ Ambient
+baseclass: nature.Ambient
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants: 0
+tooltip_text: _ Lookin fine dandelion.
+settler_level: TIER.NATURE
+buildingcosts: {RES.GOLD: 50}
+components:
+- HealthComponent: {maxhealth: 1000}
+show_status_icons: false
+translucent: true
+actionsets:
+  TIER.NATURE:
+    as_rock0:
