@@ -69,7 +69,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - ''
   - Nájdite dobre zalesnenú plochu pre drevorubača potom kliknite 'Drevorubačský stan' z listu budov a postavte ho do tejto plochy.
   - Neskôr v hre budete môcť vytvoriť zalesnenú plochu sadením stromov, ale keďže to stojí peanieze, mali by ste používať to čo vám príroda dá!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - Hociaké budovy, ktoré zbierajú materiál alebo niečo produkujú potrebujú cestu, ktorá je pripojená ku skladisku. Inak nebudú produkty vyzdvihnuté.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
   - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
@@ -657,4 +657,4 @@ metadata:
   locale: sk
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 25 translated messages, 163 untranslated messages.
+  translation_status: 26 translated messages, 162 untranslated messages.
