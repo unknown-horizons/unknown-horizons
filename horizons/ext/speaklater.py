@@ -112,7 +112,12 @@ class _LazyString(object):
         self._args = args
         self._kwargs = kwargs
 
-    value = property(lambda x: x._func(*x._args, **x._kwargs))
+    @property
+    def value(self):
+        try:
+            return self._func(*self._args,**self._kwargs)
+        except AttributeError as e:
+            raise RuntimeError("Suppressed AttributeError: " + str(e))
 
     def __contains__(self, key):
         return key in self.value
