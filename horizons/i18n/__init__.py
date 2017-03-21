@@ -112,7 +112,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return os.path.join('content', 'fonts', u'{0}.xml'.format(fontdef_file))
+	return os.path.join('content', 'fonts', '{0}.xml'.format(fontdef_file))
 
 
 def change_language(language=None):
