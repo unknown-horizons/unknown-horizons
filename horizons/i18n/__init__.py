@@ -20,18 +20,18 @@
 # ###################################################
 
 """
-Maps _ to gettext call. Use: T(string). N_ takes care of plural forms for
-different languages. It masks ngettext calls (str, plural-aware T() ) to create
-different translation strings depending on the counter value. Not all languages
-have only two plural forms "One" / "Anything else". Use: N_("{n} dungeon",
-"{n} dungeons", n).format(n=n) where n is a counter.
-
+Maps _ to the ugettext unicode gettext call. Use: T(string).
+N_ takes care of plural forms for different languages. It masks ungettext
+calls (unicode, plural-aware T() ) to create different translation strings
+depending on the counter value. Not all languages have only two plural forms
+"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
+where n is a counter.
 We will need to make gettext recognize namespaces some time, but hardcoded
 'unknown-horizons' works for now since we currently only use one namespace.
 """
 
 import platform
-import gettext
+import gettext as gettext_module
 import glob
 import os
 import logging
@@ -40,14 +40,43 @@ import locale
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES, FONTDEFS
+from horizons.ext.typing import Optional, Text
 from horizons.ext.speaklater import make_lazy_gettext
 from horizons.messaging import LanguageChanged
 
 log = logging.getLogger("i18n")
 
 
+# currently active translation object
+_trans = None # type: Optional[gettext_module.NullTranslations]
+
+
+def gettext(message):
+	# type: (Text) -> Text
+	if not _trans:
+		return message
+	return _trans.gettext(message)
+
+
+gettext_lazy = make_lazy_gettext(lambda: gettext)
+
+
+def ngettext(message1, message2, count):
+	# type: (Text, Text, int) -> Text
+	return _trans.ngettext(message1, message2, count)
+
 
 LANGCACHE = {} # type: Dict[str, str]
+
+
+def reset_language():
+	"""
+	Reset global state to initial.
+	"""
+	global _trans
+	global LANGCACHE
+	_trans = None
+	LANGCACHE = {}
 
 
 def find_available_languages(domain='unknown-horizons', update=False):
@@ -82,14 +111,14 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return os.path.join('content', 'fonts', '{0}.xml'.format(fontdef_file))
+	return os.path.join('content', 'fonts', u'{0}.xml'.format(fontdef_file))
 
 
 def change_language(language=None):
 	"""Load/change the language of Unknown Horizons.
-
 	Called on startup and when changing the language in the settings menu.
 	"""
+	global _trans
 
 	if language: # non-default
 		try:
@@ -97,9 +126,9 @@ def change_language(language=None):
 			# English is not shipped as .mo file, thus if English is
 			# selected we use NullTranslations to get English output.
 			fallback = (language == 'en')
-			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
+			trans = gettext_module.translation('unknown-horizons', find_available_languages()[language],
 			                                   languages=[language], fallback=fallback)
-			trans.install(names=['ngettext',])
+			_trans = trans
 		except (IOError, KeyError, ValueError) as err:
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
@@ -114,17 +143,12 @@ def change_language(language=None):
 		# default locale
 		if platform.system() == "Windows": # win doesn't set the language variable by default
 			os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
-		gettext.translation('unknown-horizons', 'content/lang', names=['ngettext',])
-
-	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
-	import builtins
-	builtins.__dict__['N_'] = builtins.__dict__['ngettext']
+		_trans = gettext_module.translation('unknown-horizons', 'content/lang',
+		                                   fallback=True)
 
 	# update fonts
 	new_locale = language or horizons.globals.fife.get_locale()
 	fontdef = get_fontdef_for_locale(new_locale)
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
-	LanguageChanged.broadcast(None)
-
-_lazy = make_lazy_gettext(lambda: lambda s: _(s))
+LanguageChanged.broadcast(None)
