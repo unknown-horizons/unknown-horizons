@@ -31,8 +31,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 from horizons.gui.windows import Dialog
-from horizons.i18n import gettext as T
-from gettext import ngettext as NT
+from horizons.i18n import gettext as T, ngettext as NT
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.savegameupgrader import SavegameUpgrader
