@@ -37,8 +37,8 @@ except ImportError:
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
-SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
-SafeLoader.add_constructor(u'tag:yaml.org,2002:str', construct_yaml_str)
+SafeLoader.add_constructor('tag:yaml.org,2002:python/unicode', construct_yaml_str)
+SafeLoader.add_constructor('tag:yaml.org,2002:str', construct_yaml_str)
 
 
 def parse_token(token, token_klass):
@@ -49,7 +49,7 @@ def parse_token(token, token_klass):
 	"""
 	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
 
-	if not isinstance(token, basestring):
+	if not isinstance(token, str):
 		# Probably numeric already
 		return token
 	if not token.startswith(token_klass):
@@ -67,7 +67,7 @@ def parse_token(token, token_klass):
 def convert_game_data(data):
 	"""Translates convenience symbols into actual game data usable by machines"""
 	if isinstance(data, dict):
-		return dict( [ convert_game_data(i) for i in data.iteritems() ] )
+		return dict( [ convert_game_data(i) for i in data.items() ] )
 	elif isinstance(data, (tuple, list)):
 		return type(data)( ( convert_game_data(i) for i in data) )
 	else: # leaf
