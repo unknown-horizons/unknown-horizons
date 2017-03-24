@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2016-10-21 01:54+0000\n"
+"PO-Revision-Date: 2017-03-24 01:17+0000\n"
 "Last-Translator: fliar <fliar@live.jp>\n"
-"Language-Team: Chinese (China) <https://hosted.weblate.org/projects/uh/uh/"
-"zh_CN/>\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/uh/uh/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.9-dev\n"
+"X-Generator: Weblate 2.12\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -117,7 +117,7 @@ msgstr "选择你的船只，并通过右键接近海岸。"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "然后按下船只总览标签下的“大”按钮"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
