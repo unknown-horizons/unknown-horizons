@@ -69,13 +69,13 @@ class SavegameManager(object):
 
 	multiplayersave_name_regex = r"^[0-9a-zA-Z _.-]+$" # don't just blindly allow everything
 
-	save_filename_timeformat = u"{prefix}%Y-%m-%d--%H-%M-%S"
+	save_filename_timeformat = "{prefix}%Y-%m-%d--%H-%M-%S"
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename)
 	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename)
 
 	# Use {{}} because this string is formatted twice and
 	# {} is replaced in the second format() call.
-	filename = u"{{directory}}{sep}{{name}}.{ext}".format(sep=os.path.sep, ext=savegame_extension)
+	filename = "{{directory}}{sep}{{name}}.{ext}".format(sep=os.path.sep, ext=savegame_extension)
 
 	savegame_screenshot_width = 290
 
@@ -102,24 +102,24 @@ class SavegameManager(object):
 		displaynames = []
 		def get_timestamp_string(savegameinfo):
 			if savegameinfo['timestamp'] == -1:
-				return u""
+				return ""
 			timestamp = time.localtime(savegameinfo['timestamp'])
 			try:
 				return time.strftime('%c', timestamp).decode('utf-8')
 			except UnicodeDecodeError:
 				# With non-utf8 system locales this would crash (#2221).
-				return u""
+				return ""
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
-				name = u"Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
+				name = "Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			elif f.startswith(cls.quicksave_dir):
-				name = u"Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
+				name = "Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
 
-			if not isinstance(name, unicode):
-				name = unicode(name, errors='replace') # only use unicode strings, guichan needs them
+			if not isinstance(name, str):
+				name = str(name, errors='replace') # only use unicode strings, guichan needs them
 			displaynames.append(name)
 		return displaynames
 
@@ -229,7 +229,7 @@ class SavegameManager(object):
 		db = DbReader(savegamefile)
 
 		try:
-			for key in metadata.iterkeys():
+			for key in metadata.keys():
 				result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
 				if result:
 					assert len(result) == 1
@@ -296,7 +296,7 @@ class SavegameManager(object):
 		metadata['savegamerev'] = VERSION.SAVEGAMEREVISION
 		metadata['rng_state'] = rng_state
 
-		for key, value in metadata.iteritems():
+		for key, value in metadata.items():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
 		cls._write_screenshot(db)
@@ -363,14 +363,14 @@ class SavegameManager(object):
 	def get_available_scenarios(cls, include_displaynames=True, locales=False):
 		"""Returns available scenarios."""
 		translated_scenarios = defaultdict(list)
-		scenarios = zip(*cls.get_scenarios(include_displaynames=True))
+		scenarios = list(zip(*cls.get_scenarios(include_displaynames=True)))
 		for filename, scenario in scenarios:
 			if not os.path.exists(filename):
 				continue
 			if not os.stat(filename).st_size:
 				# file seems empty
 				continue
-			_locale = cls.get_scenario_metadata(scenario=scenario).get('locale', u'en')
+			_locale = cls.get_scenario_metadata(scenario=scenario).get('locale', 'en')
 			# sort into dictionary by english filename (without language suffix)
 			english_name = scenario.split('_' + _locale)[0]
 			translated_scenarios[english_name].append((_locale, filename))
