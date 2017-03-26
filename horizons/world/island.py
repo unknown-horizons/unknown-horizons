@@ -151,10 +151,10 @@ class Island(BuildingOwner, WorldObject):
 		self.num_trees = 0
 
 		# define the rectangle with the smallest area that contains every island tile its position
-		min_x = min(zip(*list(self.ground_map.keys()))[0])
-		max_x = max(zip(*list(self.ground_map.keys()))[0])
-		min_y = min(zip(*list(self.ground_map.keys()))[1])
-		max_y = max(zip(*list(self.ground_map.keys()))[1])
+		min_x = min(list(zip(*self.ground_map.keys()))[0])
+		max_x = max(list(zip(*self.ground_map.keys()))[0])
+		min_y = min(list(zip(*self.ground_map.keys()))[1])
+		max_y = max(list(zip(*self.ground_map.keys()))[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
