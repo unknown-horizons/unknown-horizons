@@ -162,7 +162,7 @@ class ConcreteObject(WorldObject):
 			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(range(level+1)):
-				if possible_level in (action_sets.keys():
+				if possible_level in (action_sets.keys()):
 					action_set = cls.weighted_choice(action_sets[possible_level])
 					break
 			if action_set is None: # didn't find a suitable one
