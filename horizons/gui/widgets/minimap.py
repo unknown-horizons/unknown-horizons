@@ -18,7 +18,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import itertools
 import math
@@ -70,8 +70,8 @@ def iter_minimap_points(location, world, island_color, water_color, area=None):
 
 	# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 	# this facilitates calculating the real world coords
-	for x in xrange(area.left - location.left, area.left + area.width - location.left):
-		for y in xrange(area.top - location.top, area.top + area.height - location.top):
+	for x in range(area.left - location.left, area.left + area.width - location.left):
+		for y in range(area.top - location.top, area.top + area.height - location.top):
 			"""
 			This code should be here, but since python can't do inlining, we have to inline
 			ourselves for performance reasons
@@ -193,7 +193,7 @@ class Minimap(object):
 
 		self.location_center = self.location.center
 
-		self._id = str(self.__class__.__minimap_id_counter.next()) # internal identifier, used for allocating resources
+		self._id = str(next(self.__class__.__minimap_id_counter)) # internal identifier, used for allocating resources
 
 		self._image_size_cache = {} # internal detail
 
@@ -310,7 +310,7 @@ class Minimap(object):
 			minimap_corners_as_point.append(fife.Point(coords[0], coords[1]))
 
 
-		for i in xrange(0, 4):
+		for i in range(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
 			                                        minimap_corners_as_point[i],
 			                                        minimap_corners_as_point[(i+1) % 4],
@@ -502,7 +502,7 @@ class Minimap(object):
 		# draw every step-th coord
 		step = 1
 		relevant_coords = [path[0]]
-		for i in xrange(step, len(path), step):
+		for i in range(step, len(path), step):
 			relevant_coords.append(path[i])
 		relevant_coords.append(path[-1])
 
@@ -510,7 +510,7 @@ class Minimap(object):
 		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		p = fife.Point(0, 0)
-		render_name = self._get_render_name("ship_route") + str(self.__class__.__ship_route_counter.next())
+		render_name = self._get_render_name("ship_route") + str(next(self.__class__.__ship_route_counter))
 		color = unit.owner.color.to_tuple()
 		last_coord = None
 		draw_point = self.minimap_image.rendertarget.addPoint
