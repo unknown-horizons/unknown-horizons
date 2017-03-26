@@ -65,18 +65,18 @@ class Player(ComponentHolder, WorldObject):
 	def initialize(self, inventory):
 		super(Player, self).initialize()
 		if inventory:
-			for res, value in inventory.iteritems():
+			for res, value in inventory.items():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
 	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
 		assert isinstance(color, Color)
-		assert isinstance(name, basestring) and name
+		assert isinstance(name, str) and name
 		try:
-			self.name = unicode(name)
+			self.name = str(name)
 		except UnicodeDecodeError:
 			# WORKAROUND: this line should be the only unicode conversion here.
 			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
-			self.name = unicode(name, errors='ignore')
+			self.name = str(name, errors='ignore')
 		self.color = color
 		self.clientid = clientid
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
