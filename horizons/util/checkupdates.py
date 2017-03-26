@@ -21,8 +21,8 @@
 
 import platform
 import socket
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import webbrowser
 
 from fife.extensions.pychan.widgets import Button
@@ -33,7 +33,7 @@ from horizons.i18n import gettext as T
 
 
 class UpdateInfo(object):
-	INVALID, READY, UNINITIALIZED = range(3)
+	INVALID, READY, UNINITIALIZED = list(range(3))
 	def __init__(self):
 		self.status = UpdateInfo.UNINITIALIZED
 		self.version = None
@@ -53,11 +53,11 @@ def check_for_updates(info):
 	if (platform.system() == 'Windows' or platform.system() == 'Darwin'):
 		# retrieve current version w.r.t. the local version.
 		# this way, possible configurations of different most recent versions should be handleable in the future.
-		data = urllib.urlencode( {"my_version" : VERSION.RELEASE_VERSION} )
+		data = urllib.parse.urlencode( {"my_version" : VERSION.RELEASE_VERSION} )
 		url = NETWORK.UPDATE_FILE_URL
 		try:
-			u = urllib2.urlopen( url + "?" + data, timeout=TIMEOUT )
-		except (urllib2.URLError, socket.timeout):
+			u = urllib.request.urlopen( url + "?" + data, timeout=TIMEOUT )
+		except (urllib.error.URLError, socket.timeout):
 			# Silently ignore the failed update, printing stuff might crash the game
 			# if no console is available
 			info.status = UpdateInfo.INVALID
