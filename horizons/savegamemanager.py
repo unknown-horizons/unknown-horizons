@@ -134,7 +134,7 @@ class SavegameManager(object):
 		files = sorted((-os.path.getmtime(f) if order_by_date else 0, f)
 		               for p in dirs for f in glob.glob(p + '/*.' + filename_extension)
 		               if os.path.isfile(f))
-		files = zip(*files)[1] if files else []
+		files = list(zip(*files))[1] if files else []
 		if include_displaynames:
 			return (files, cls.__get_displaynames(files))
 		else:
