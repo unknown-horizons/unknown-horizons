@@ -84,7 +84,6 @@ class YamlCacheStorage(object):
 			obj._reload()
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
-			e = str(str(e), errors='replace')
 			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
 				"warning is expected when upgrading from "
 				"old versions.\n".format(filename, e))
