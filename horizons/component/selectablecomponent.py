@@ -63,8 +63,8 @@ class SelectableComponent(Component):
 		super(SelectableComponent, self).__init__()
 		# resolve tab
 		from horizons.gui.tabs import resolve_tab
-		self.tabs = map(resolve_tab, tabs)
-		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+		self.tabs = list(map(resolve_tab, tabs))
+		self.enemy_tabs = list(map(resolve_tab, enemy_tabs))
 		self.active_tab = resolve_tab(active_tab) if active_tab is not None else None
 		self._selected = False
 
