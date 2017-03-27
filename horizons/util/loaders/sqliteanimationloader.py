@@ -58,7 +58,7 @@ class SQLiteAnimationLoader(object):
 
 		ani = animationmanager.create(id)
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
 			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
 			img = horizons.globals.fife.imagemanager.load(file)
 			for command, arg in commands:
