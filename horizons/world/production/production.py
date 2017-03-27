@@ -258,7 +258,7 @@ class Production(ChangeListener):
 		first_relevant_tick = self._get_first_relevant_tick(ignore_pause)
 		num_entries = len(self._state_history)
 
-		for i in xrange(num_entries):
+		for i in range(num_entries):
 			if ignore_pause and self._state_history[i][1] == pause_state:
 				continue
 			tick = self._state_history[i][0]
@@ -274,7 +274,7 @@ class Production(ChangeListener):
 				relevant_ticks -= first_relevant_tick - tick
 			result[self._state_history[i][1]] += relevant_ticks
 
-		total_length = sum(result.itervalues())
+		total_length = sum(result.values())
 		if total_length == 0:
 			return result
 		for key in result:
@@ -287,7 +287,7 @@ class Production(ChangeListener):
 	def get_unstorable_produced_res(self):
 		"""Returns all produced res for whose there is no space"""
 		l = []
-		for res, amount in self._prod_line.produced_res.iteritems():
+		for res, amount in self._prod_line.produced_res.items():
 			if self.inventory.get_free_space_for(res) < amount:
 				l.append(res)
 		return l
@@ -312,7 +312,7 @@ class Production(ChangeListener):
 
 		# ignore paused time
 		pause_state = PRODUCTION.STATES.paused.index
-		for i in xrange(len(self._state_history) - 1, -1, -1):
+		for i in range(len(self._state_history) - 1, -1, -1):
 			if self._state_history[i][1] != pause_state:
 				continue
 			tick = self._state_history[i][0]
@@ -405,28 +405,28 @@ class Production(ChangeListener):
 
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
-		for res, amount in self._prod_line.produced_res.iteritems():
+		for res, amount in self._prod_line.produced_res.items():
 			self.inventory.alter(res, amount)
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.
 		@return: bool, True if we can start production
 		"""
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res, amount in self._prod_line.consumed_res.items():
 			if self.inventory[res] < (-amount): # consumed res have negative sign
 				return False
 		return True
 
 	def _remove_res_to_expend(self):
 		"""Removes the resources from the inventory, that production takes."""
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res, amount in self._prod_line.consumed_res.items():
 			remnant = self.inventory.alter(res, amount)
 			assert remnant == 0
 
 	def _check_for_space_for_produced_res(self):
 		"""Checks if there is enough space in the inventory for the res, we want to produce.
 		@return bool, True if everything can fit."""
-		for res, amount in self._prod_line.produced_res.iteritems():
+		for res, amount in self._prod_line.produced_res.items():
 			if self.inventory.get_free_space_for(res) < amount:
 				return False
 		return True
