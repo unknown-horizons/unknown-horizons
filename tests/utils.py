@@ -97,7 +97,7 @@ class ReRunInfoPlugin(Plugin):
 
 		_, module, call = test.address()
 
-		output = ['python2', 'run_tests.py', u'{}:{}'.format(module, call)]
+		output = ['python2', 'run_tests.py', '{}:{}'.format(module, call)]
 
 		# add necessary flags
 		if 'tests.gui' in module:
@@ -105,7 +105,7 @@ class ReRunInfoPlugin(Plugin):
 		elif 'tests.game.long' in module:
 			output.append('-a long')
 
-		output = u' '.join(output)
+		output = ' '.join(output)
 
 		ec, ev, tb = err
 		return (ec, self.addOutputToErr(ev, output), tb)
@@ -115,8 +115,8 @@ class ReRunInfoPlugin(Plugin):
 
 	def addOutputToErr(self, ev, output):
 		if isinstance(ev, Exception):
-			ev = unicode(ev)
-		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
+			ev = str(ev)
+		return '\n'.join([ev, '', ln('>> rerun the test <<'), output])
 
 
 def mark_expected_failure(func):

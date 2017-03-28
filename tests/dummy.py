@@ -36,7 +36,7 @@ class Dummy(object):
 				raise
 			else:
 				return self
-	def next(self):
+	def __next__(self):
 		raise StopIteration
 	def __repr__(self):
 		return 'Dummy()'
