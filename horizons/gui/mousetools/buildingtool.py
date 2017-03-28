@@ -235,7 +235,7 @@ class BuildingTool(NavigationTool):
 		                              "rotate_right": self.rotate_right})
 		# set translated building name in gui
 		self.__class__.gui.findChild(name='headline').text = T('Build {building}').format(building=T(self._class.name))
-		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
+		self.__class__.gui.findChild(name='running_costs').text = str(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
 		# calculate and set new center
@@ -257,7 +257,7 @@ class BuildingTool(NavigationTool):
 				action = action_option
 				break
 		else: # If no idle, idle_full or abcd animation found, use the first you find
-			action = action_sets[action_set].keys()[0]
+			action = list(action_sets[action_set].keys())[0]
 		rotation = (self.rotation + int(self.session.view.cam.getRotation()) - 45) % 360
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
 		if GFX.USE_ATLASES:
@@ -435,7 +435,7 @@ class BuildingTool(NavigationTool):
 			return
 
 		radii = dict((bid, Entities.buildings[bid].radius) for bid in ids)
-		max_radius = max(radii.itervalues())
+		max_radius = max(radii.values())
 
 		for tile in settlement.get_tiles_in_radius(building.position, max_radius, include_self=True):
 			if tile.object is not None and tile.object.id in ids:
@@ -680,7 +680,7 @@ class BuildingTool(NavigationTool):
 		for building in self._related_buildings:
 			# restore selection, removeOutline can destroy it
 			building.get_component(SelectableComponent).set_selection_outline()
-		for fife_instance in self.buildings_fife_instances.itervalues():
+		for fife_instance in self.buildings_fife_instances.values():
 			layer = fife_instance.getLocationRef().getLayer()
 			# layer might not exist, happens for some reason after a build
 			if layer is not None:
@@ -794,8 +794,8 @@ class SettlementBuildingToolLogic(object):
 			# Default build on island.
 			for settlement in session.world.settlements:
 				if settlement.owner == player:
-					island = session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
-					for tile in settlement.ground_map.itervalues():
+					island = session.world.get_island(Point(*next(iter(settlement.ground_map.keys()))))
+					for tile in settlement.ground_map.values():
 						if is_tile_buildable(session, tile, None, island, check_settlement=False):
 							building_tool._color_buildable_tile(tile)
 

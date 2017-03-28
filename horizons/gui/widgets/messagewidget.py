@@ -101,7 +101,7 @@ class MessageWidget(LivingObject):
 
 		sound = get_speech_file(string_id) if play_sound else None
 		return self._add_message(_IngameMessage(point=point, id=string_id, msg_type=msg_type,
-		                                        created=self.msgcount.next(), message_dict=message_dict),
+		                                        created=next(self.msgcount), message_dict=message_dict),
 		                         sound=sound)
 
 	def remove(self, messagetext):
@@ -122,7 +122,7 @@ class MessageWidget(LivingObject):
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
 		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
-		                                        display=visible_for, created=self.msgcount.next(),
+		                                        display=visible_for, created=next(self.msgcount.),
 		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):

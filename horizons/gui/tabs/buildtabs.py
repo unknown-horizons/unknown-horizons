@@ -90,7 +90,7 @@ class BuildTab(TabInterface):
 				# this is one key-value pair, e.g. "- icon: img/foo.png"
 				if len(entry) != 1:
 					raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: %s" % entry)
-				key, value = entry.items()[0]
+				key, value = list(entry.items())[0]
 				if key == "icon":
 					icon_path = value
 				elif key == "helptext":
@@ -196,7 +196,7 @@ class BuildTab(TabInterface):
 					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
 					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
 					raise InvalidBuildMenuFileFormat(err)
-				elif isinstance(entry, basestring):
+				elif isinstance(entry, str):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
 					lbl.text = T(entry[2:]) if entry.startswith('_ ') else entry
@@ -285,7 +285,7 @@ class BuildTab(TabInterface):
 
 		# create tab instances
 		tabs = []
-		for tab, tabdata in sorted(data.iteritems()):
+		for tab, tabdata in sorted(data.items()):
 			if tab == "meta":
 				continue # not a tab
 
@@ -311,7 +311,7 @@ class BuildTab(TabInterface):
 		building_tiers = {}
 		data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
 		tier = -1
-		for tab, tabdata in sorted(data.iteritems()):
+		for tab, tabdata in sorted(data.items()):
 			if tab == "meta":
 				continue # not a tab
 

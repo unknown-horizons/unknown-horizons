@@ -94,6 +94,7 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		"""
 		Returns number of pages the resources need.
 		"""
+		# int() and float() wrapping needed?
 		return int(math.ceil(len(self.displayed_resources) / float(self.LINES_PER_PAGE)))
 
 	def go_to_next_page(self):
@@ -161,7 +162,7 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		label.min_size = (100, 20)
 
 		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)
-		amount_label.text = unicode(amount)
+		amount_label.text = str(amount)
 
 		hbox = widgets.HBox()
 		hbox.addChild(icon)

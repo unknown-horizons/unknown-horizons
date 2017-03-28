@@ -55,7 +55,7 @@ class SelectionTool(NavigationTool):
 
 	def filter_selectable(self, instances):
 		"""Only keeps selectables from a list of world objects"""
-		return filter(self.is_selectable, instances)
+		return list(filter(self.is_selectable, instances))
 
 	def is_owned_by_player(self, instance):
 		"""Returns boolean if single world object is owned by local player"""
@@ -180,7 +180,7 @@ class SelectionTool(NavigationTool):
 			instances = self.get_hover_instances(evt)
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 
-			instances = filter(self.is_selectable, instances)
+			instances = list(filter(self.is_selectable, instances))
 			# On single click, only one building should be selected from the hover_instances.
 			# The if is for [] and [single_item] cases (they crashed).
 			# It acts as user would expect: instances[0] selects buildings in front first.
@@ -212,7 +212,7 @@ class SelectionTool(NavigationTool):
 		@param instances: uh instances
 		@param do_multi: True if selection rectangle on drag is used
 		"""
-		self.log.debug("update selection %s", [unicode(i) for i in instances])
+		self.log.debug("update selection %s", [str(i) for i in instances])
 
 		if do_multi: # add to selection
 			instances = self.select_old.union(instances)
@@ -226,7 +226,7 @@ class SelectionTool(NavigationTool):
 			if user_instances: # check at least one remaining
 				instances = user_instances
 			else:
-				instances = [iter(instances).next()]
+				instances = [next(iter(instances))]
 		selectable = frozenset( self.filter_component(SelectableComponent, instances))
 
 		# apply changes

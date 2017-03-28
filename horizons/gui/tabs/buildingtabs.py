@@ -44,8 +44,8 @@ class SignalFireOverviewTab(OverviewTab):
 	def init_widget(self):
 		super(SignalFireOverviewTab, self).init_widget()
 		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
-		action_gfx = action_set.items()[0][1]
-		image = action_gfx[45].keys()[0]
+		action_gfx = list(action_set.items())[0][1]
+		image = list(action_gfx[45].keys())[0]
 		self.widget.findChild(name="building_image").image = image
 
 class ResourceDepositOverviewTab(OverviewTab):

@@ -110,7 +110,7 @@ class SelectMultiTab(TabInterface):
 	def hide_selected_units_widget(self):
 		for entry in self.entries:
 			entry.remove()
-		for i in xrange(0, self.max_row_entry_number):
+		for i in range(0, self.max_row_entry_number):
 			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
 
 	def schedule_unit_widget_refresh(self):
@@ -200,15 +200,15 @@ class UnitEntry(object):
 		i = instances[0]
 		if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 			# A building. Generate dynamic thumbnail from its action set.
-			imgs = ActionSetLoader.get_set(i._action_set_id).items()[0][1]
-			thumbnail = imgs[45].keys()[0]
+			imgs = list(ActionSetLoader.get_set(i._action_set_id).items())[0][1]
+			thumbnail = list(imgs[45].keys())[0]
 		else:
 			# Units use manually created thumbnails because those need to be
 			# precise and recognizable in combat situations.
 			thumbnail = self.get_unit_thumbnail(i.id)
 		self.widget.findChild(name="unit_button").up_image = thumbnail
 		if show_number:
-			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
+			self.widget.findChild(name="instance_number").text = str(len(self.instances))
 		# only two callbacks are needed so drop unwanted changelistener inheritance
 		for i in instances:
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
@@ -237,7 +237,7 @@ class UnitEntry(object):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 
 		if self.instances:
-			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
+			self.widget.findChild(name="instance_number").text = str(len(self.instances))
 
 	def draw_health(self, caller=None):
 		health = 0
