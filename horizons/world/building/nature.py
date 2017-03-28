@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 from horizons.constants import BUILDINGS, LAYERS
 from horizons.scheduler import Scheduler
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere

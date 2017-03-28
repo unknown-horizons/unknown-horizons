@@ -300,7 +300,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				action = 'idle_full'
 			else:
 				# set first action
-				action = action_set.keys()[0]
+				action = list(action_set.keys())[0]
 
 		if (Fife.getVersion() >= (0, 3, 6)):
 			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
@@ -324,7 +324,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		pass
 
 	def __unicode__(self): # debug
-		return u'{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
+		return '{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):
