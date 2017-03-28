@@ -56,7 +56,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
 						# this is actually problematic
 						problematic_buildings[building.worldid] = building
-		return problematic_buildings.values()
+		return list(problematic_buildings.values())
 
 	def update(self):
 		if self.production_builder.last_collector_improvement_road + self.personality.collector_improvement_road_expires > Scheduler().cur_tick:
@@ -79,7 +79,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			return BUILD_RESULT.IMPOSSIBLE
 
 		cost = self.production_builder.get_road_cost(path)
-		for resource_id, amount in cost.iteritems():
+		for resource_id, amount in cost.items():
 			if resource_id == RES.GOLD:
 				if self.owner.get_component(StorageComponent).inventory[resource_id] < amount:
 					return BUILD_RESULT.NEED_RESOURCES
@@ -124,7 +124,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
-		for coords, (purpose, _) in self.production_builder.plan.iteritems():
+		for coords, (purpose, _) in self.production_builder.plan.items():
 			if purpose == BUILDING_PURPOSE.NONE:
 				reachable[coords] = []
 		for key in reachable:
@@ -149,7 +149,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 						distance[coords2] = distance[(x, y)] + 1
 						queue.append(coords2)
 
-			for coords, dist in distance.iteritems():
+			for coords, dist in distance.items():
 				if dist is not None:
 					if building.loading_area.distance(coords) <= storage_radius:
 						reachable[coords].append((building.worldid, dist))
@@ -158,7 +158,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		storage_class = Entities.buildings[BUILDINGS.STORAGE]
 		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
 		    storage_class.size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
-		for coords, building_distances in reachable.iteritems():
+		for coords, building_distances in reachable.items():
 			if coords not in storage_spots:
 				continue
 			builder = BasicBuilder.create(BUILDINGS.STORAGE, coords, 0)
@@ -172,7 +172,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				continue
 
 			usefulness = min(len(actual_distance), self.personality.max_reasonably_served_buildings)
-			for distance in actual_distance.itervalues():
+			for distance in actual_distance.values():
 				usefulness += 1.0 / (distance + self.personality.collector_extra_distance)
 
 			alignment = 1

@@ -67,7 +67,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 		# area_label contains free tiles in the production area and all road tiles
 		area_label = dict.fromkeys(self.land_manager.roads) # {(x, y): area_number, ...}
-		for coords, (purpose, _) in self.production_builder.plan.iteritems():
+		for coords, (purpose, _) in self.production_builder.plan.items():
 			if coords not in coastline and purpose == BUILDING_PURPOSE.NONE:
 				area_label[coords] = None
 
@@ -88,7 +88,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 			areas += 1
 
 		coords_set_by_area = defaultdict(set)
-		for coords, area_number in area_label.iteritems():
+		for coords, area_number in area_label.items():
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
 

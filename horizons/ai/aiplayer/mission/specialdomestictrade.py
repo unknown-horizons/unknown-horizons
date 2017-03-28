@@ -86,7 +86,7 @@ class SpecialDomesticTrade(ShipMission):
 		destination_inventory = self.destination_settlement_manager.settlement.get_component(StorageComponent).inventory
 
 		options = []
-		for resource_id, limit in destination_resource_manager.resource_requirements.iteritems():
+		for resource_id, limit in destination_resource_manager.resource_requirements.items():
 			if destination_inventory[resource_id] >= limit:
 				continue # the destination settlement doesn't need the resource
 			if source_inventory[resource_id] <= source_resource_manager.resource_requirements[resource_id]:

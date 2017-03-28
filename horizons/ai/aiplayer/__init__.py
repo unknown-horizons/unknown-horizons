@@ -203,22 +203,22 @@ class AIPlayer(GenericAI):
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback, calls)
-		remaining_ticks = max(calls.values()[0], 1)
+		remaining_ticks = max(list(calls.values())[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
 		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback_long, calls)
-		remaining_ticks_long = max(calls.values()[0], 1)
+		remaining_ticks_long = max(list(calls.values())[0], 1)
 
 		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
 			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long)
 
 		# save the ships
-		for ship, state in self.ships.iteritems():
+		for ship, state in self.ships.items():
 			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)", ship.worldid, self.worldid, state.index)
 
 		# save the land managers
-		for land_manager in self.islands.itervalues():
+		for land_manager in self.islands.values():
 			land_manager.save(db)
 
 		# save the settlement managers
@@ -281,7 +281,7 @@ class AIPlayer(GenericAI):
 			self.islands[land_manager.island.worldid] = land_manager
 
 		# load the settlement managers and settlement foundation missions
-		for land_manager in self.islands.itervalues():
+		for land_manager in self.islands.values():
 			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)
 			if db_result:
 				settlement_manager = SettlementManager.load(db, self, db_result[0][0])
@@ -437,7 +437,7 @@ class AIPlayer(GenericAI):
 		if not change_lists:
 			return  # no changes in land ownership on islands we care about
 
-		for island_id, changed_coords in change_lists.iteritems():
+		for island_id, changed_coords in change_lists.items():
 			affects_us = False
 			land_manager = self.islands[island_id]
 			for coords in changed_coords:

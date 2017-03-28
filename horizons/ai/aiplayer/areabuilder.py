@@ -91,7 +91,7 @@ class AreaBuilder(WorldObject):
 		"""
 
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		queue = deque([item for item in distance.iteritems()])
+		queue = deque([item for item in distance.items()])
 
 		while queue:
 			(coords, dist) = queue.popleft()
@@ -243,7 +243,7 @@ class AreaBuilder(WorldObject):
 
 		best_index = 0
 		best_value = options[0][0]
-		for i in xrange(1, len(options)):
+		for i in range(1, len(options)):
 			if options[i][0] > best_value:
 				best_index = i
 				best_value = options[i][0]

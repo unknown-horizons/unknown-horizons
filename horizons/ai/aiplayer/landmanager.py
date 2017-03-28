@@ -116,7 +116,7 @@ class LandManager(WorldObject):
 	def refresh_resource_deposits(self):
 		self.resource_deposits = defaultdict(list) # {resource_id: [tile, ...]} all resource deposits of a type on the island
 		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE],
-											RES.STONE_DEPOSIT: [BUILDINGS.STONE_DEPOSIT, BUILDINGS.STONE_PIT]}.iteritems():
+											RES.STONE_DEPOSIT: [BUILDINGS.STONE_DEPOSIT, BUILDINGS.STONE_PIT]}.items():
 			for building in self.island.buildings:
 				if building.id in building_ids:
 					if building.get_component(StorageComponent).inventory[resource_id] > 0:
@@ -162,7 +162,7 @@ class LandManager(WorldObject):
 			best_side1 = None
 			best_side2 = None
 
-			for side1 in xrange(9, max(10, chosen_area // 9 + 1)):
+			for side1 in range(9, max(10, chosen_area // 9 + 1)):
 				real_side1 = min(side1, width)
 				real_side2 = min(chosen_area // real_side1, height)
 				if real_side1 * real_side2 < min_village_area:
@@ -208,7 +208,7 @@ class LandManager(WorldObject):
 		"""
 
 		map = {}
-		for coords, tile in self.island.ground_map.iteritems():
+		for coords, tile in self.island.ground_map.items():
 			if 'constructible' not in tile.classes:
 				continue
 			if tile.object is not None and not tile.object.buildable_upon:
@@ -216,14 +216,14 @@ class LandManager(WorldObject):
 			if tile.settlement is None or tile.settlement.owner == self.owner:
 				map[coords] = 1
 
-		xs, ys = zip(*map.iterkeys())
+		xs, ys = list(zip(*map.keys()))
 		min_x = min(xs) - extra_space
 		max_x = max(xs)
 		min_y = min(ys) - extra_space
 		max_y = max(ys)
 
-		for x in xrange(min_x, max_x + 1):
-			for y in xrange(min_y, max_y + 1):
+		for x in range(min_x, max_x + 1):
+			for y in range(min_y, max_y + 1):
 				coords = (x, y)
 				if coords not in map:
 					map[coords] = 0
@@ -245,21 +245,21 @@ class LandManager(WorldObject):
 		for width, height in sizes:
 			horizontal_strip = {} # (x, y): number of usable tiles from (x - width + 1, y) to (x, y)
 			usable_area = {} # (x, y): number of usable tiles from (x - width + 1, y - height + 1) to (x, y)
-			for x in xrange(min_x, max_x + 1):
-				for dy in xrange(height):
+			for x in range(min_x, max_x + 1):
+				for dy in range(height):
 					horizontal_strip[(x, min_y + dy)] = 0
 					usable_area[(x, min_y + dy)] = 0
-			for y in xrange(min_y, max_y + 1):
-				for dx in xrange(width):
+			for y in range(min_y, max_y + 1):
+				for dx in range(width):
 					horizontal_strip[(min_x +dx, y)] = 0
 					usable_area[(min_x + dx, y)] = 0
 
-			for y in xrange(min_y + height, max_y + 1):
-				for x in xrange(min_x + width, max_x + 1):
+			for y in range(min_y + height, max_y + 1):
+				for x in range(min_x + width, max_x + 1):
 					horizontal_strip[(x, y)] = horizontal_strip[(x - 1, y)] + usability_map[(x, y)] - usability_map[(x - width, y)]
 
-			for x in xrange(min_x + width, max_x + 1):
-				for y in xrange(min_y + height, max_y + 1):
+			for x in range(min_x + width, max_x + 1):
+				for y in range(min_y + height, max_y + 1):
 					coords = (x, y)
 					usable_area[coords] = usable_area[(x, y - 1)] + horizontal_strip[(x, y)] - horizontal_strip[(x, y - height)]
 
@@ -271,13 +271,13 @@ class LandManager(WorldObject):
 		self.production = {}
 		self.village = {}
 
-		for dx in xrange(best_sides[0]):
-			for dy in xrange(best_sides[1]):
+		for dx in range(best_sides[0]):
+			for dy in range(best_sides[1]):
 				coords = (best_coords[0] + dx, best_coords[1] + dy)
 				if usability_map[coords] == 1:
 					self.village[coords] = self.island.ground_map[coords]
 
-		for coords, tile in self.island.ground_map.iteritems():
+		for coords, tile in self.island.ground_map.items():
 			if coords not in self.village and self.coords_usable(coords, use_coast=True):
 				self.production[coords] = tile
 
@@ -285,7 +285,7 @@ class LandManager(WorldObject):
 		"""Assign all the usable land of the island to the production area."""
 		self.production = {}
 		self.village = {}
-		for coords, tile in self.island.ground_map.iteritems():
+		for coords, tile in self.island.ground_map.items():
 			if self.coords_usable(coords, use_coast=True):
 				self.production[coords] = tile
 
@@ -315,10 +315,10 @@ class LandManager(WorldObject):
 		coastline_color = (0, 0, 255)
 		renderer = self.island.session.view.renderer['InstanceRenderer']
 
-		for tile in self.production.itervalues():
+		for tile in self.production.values():
 			renderer.addColored(tile._instance, *production_color)
 
-		for tile in self.village.itervalues():
+		for tile in self.village.values():
 			renderer.addColored(tile._instance, *village_color)
 
 		for coords in self.coastline:

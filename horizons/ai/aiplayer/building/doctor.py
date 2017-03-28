@@ -30,7 +30,7 @@ class AbstractDoctor(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		spots_in_settlement = settlement_manager.settlement.buildability_cache.cache[(2, 2)]
 		village_builder = settlement_manager.village_builder
-		for coords in village_builder.special_building_assignments[BUILDING_PURPOSE.DOCTOR].iterkeys():
+		for coords in village_builder.special_building_assignments[BUILDING_PURPOSE.DOCTOR].keys():
 			if coords not in spots_in_settlement or village_builder.plan[coords][1][0] > village_builder.current_section:
 				continue
 			object = settlement_manager.settlement.ground_map[coords].object

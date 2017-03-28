@@ -103,8 +103,8 @@ class FoundSettlement(ShipMission):
 		"""Return the coordinates of a location for the warehouse on the given island."""
 		warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
 		pos_offsets = []
-		for dx in xrange(warehouse_class.width):
-			for dy in xrange(warehouse_class.height):
+		for dx in range(warehouse_class.width):
+			for dy in range(warehouse_class.height):
 				pos_offsets.append((dx, dy))
 
 		island = land_manager.island
