@@ -20,10 +20,10 @@
 # ###################################################
 
 """
-Maps _ to the gettext call. Use: T(string). N_ takes care of plural forms for 
-different languages. It masks ngettext calls (str, plural-aware T() ) to create 
-different translation strings depending on the counter value. Not all languages 
-have only two plural forms "One" / "Anything else". Use: N_("{n} dungeon", "{n} 
+Maps _ to the gettext call. Use: T(string). N_ takes care of plural forms for
+different languages. It masks ngettext calls (str, plural-aware T() ) to create
+different translation strings depending on the counter value. Not all languages
+have only two plural forms "One" / "Anything else". Use: N_("{n} dungeon", "{n}
 dungeons", n).format(n=n) where n is a counter.
 
 We will need to make gettext recognize namespaces some time, but hardcoded
@@ -111,7 +111,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return os.path.join('content', 'fonts', u'{0}.xml'.format(fontdef_file))
+	return os.path.join('content', 'fonts', '{0}.xml'.format(fontdef_file))
 
 
 def change_language(language=None):
@@ -151,4 +151,4 @@ def change_language(language=None):
 	fontdef = get_fontdef_for_locale(new_locale)
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
-LanguageChanged.broadcast(None)
+	LanguageChanged.broadcast(None)
