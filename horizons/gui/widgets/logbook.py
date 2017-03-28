@@ -64,7 +64,7 @@ class LogBook(PickBeltWidget, Window):
 		self._message_log = [] # list of all messages that have been displayed
 		self._messages_to_display = [] # list messages to display on page close
 		self._displayed_messages = [] # list of messages that were already displayed
-		self._cur_entry = None # remember current location; 0 to len(messages)-1
+		self._cur_entry = 0 # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
 		self.last_stats_widget = 'players'
@@ -326,7 +326,7 @@ class LogBook(PickBeltWidget, Window):
 	def clear(self):
 		"""Remove all entries"""
 		self._parameters = []
-		self._cur_entry = None
+		self._cur_entry = 0
 
 	def get_cur_entry(self):
 		return self._cur_entry
