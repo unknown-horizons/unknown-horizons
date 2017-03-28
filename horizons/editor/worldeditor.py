@@ -64,7 +64,7 @@ class WorldEditor(object):
 
 	def _iter_islands(self):
 		ground = {}
-		for coords, tile in self.world.full_map.iteritems():
+		for coords, tile in self.world.full_map.items():
 			if tile.id <= 0:
 				continue
 			ground[coords] = None
@@ -72,7 +72,7 @@ class WorldEditor(object):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		for coords in sorted(ground.iterkeys()):
+		for coords in sorted(ground.keys()):
 			if ground[coords] is not None:
 				continue
 
