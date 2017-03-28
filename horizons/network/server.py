@@ -127,10 +127,10 @@ class Server(object):
 				self.i18n[lang] = gettext.translation(domain, dir, [lang])
 			except IOError:
 				pass
-		import __builtin__
-		__builtin__.__dict__['S_']   = self.gettext
-		__builtin__.__dict__['SN_']  = self.ngettext
-		__builtin__.__dict__['__']   = lambda x : x
+		import builtins
+		builtins.__dict__['S_']   = self.gettext
+		builtins.__dict__['SN_']  = self.ngettext
+		builtins.__dict__['__']   = lambda x : x
 
 
 	# uuid4() uses /dev/urandom when possible
@@ -499,7 +499,7 @@ class Server(object):
 
 	def preparegame(self, game):
 		logging.debug("[PREPARE] [{0!s}] Players: {1!s}".
-			format(game.uuid, [unicode(i) for i in game.players]))
+			format(game.uuid, [str(i) for i in game.players]))
 		game.state = Game.State.Prepare
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_preparegame())
@@ -507,7 +507,7 @@ class Server(object):
 
 	def startgame(self, game):
 		logging.debug("[START] [{0!s}] Players: {1!s}".
-			format(game.uuid, [unicode(i) for i in game.players]))
+			format(game.uuid, [str(i) for i in game.players]))
 		game.state = Game.State.Running
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_startgame())
