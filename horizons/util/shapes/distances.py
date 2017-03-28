@@ -101,7 +101,7 @@ def distance_rect_rect_sq(r1, r2):
 	return dx * dx + dy * dy
 
 def distance_rect_tuple(rect, coord_tuple):
-	x, y = xxx_todo_changeme2
+	x, y = coord_tuple
 	dx = 0
 	t = rect.left - x
 	if t > dx:
