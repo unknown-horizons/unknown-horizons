@@ -122,7 +122,7 @@ class MessageWidget(LivingObject):
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
 		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
-		                                        display=visible_for, created=next(self.msgcount.),
+		                                        display=visible_for, created=next(self.msgcount),
 		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
