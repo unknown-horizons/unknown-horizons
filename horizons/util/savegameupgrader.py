@@ -356,10 +356,10 @@ class SavegameUpgrader(object):
 
 		# save the new settlement tiles data
 		ground_map = defaultdict(list)
-		for (coords, settlement_id) in settlement_map.iteritems():
+		for (coords, settlement_id) in settlement_map.items():
 			ground_map[settlement_id].append(coords)
 
-		for (settlement_id, coords_list) in ground_map.iteritems():
+		for (settlement_id, coords_list) in ground_map.items():
 			data = json.dumps(coords_list)
 			db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", settlement_id, data)
 

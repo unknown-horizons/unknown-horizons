@@ -56,7 +56,7 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 
 	distance = {}
 	heap = []
-	for dir in xrange(2): # 0 -> changed x, 1 -> changed y
+	for dir in range(2): # 0 -> changed x, 1 -> changed y
 		# NOTE: all distances are in the form (actual distance, number of turns, number of non-preferred turns)
 		real_distance = (1, 0, 0)
 		expected_distance = (((source[0] - destination[0]) ** 2 + (source[1] - destination[1]) ** 2) ** 0.5, 0, 0)
@@ -79,7 +79,7 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 			final_key = key
 			break
 
-		for dir in xrange(4):
+		for dir in range(4):
 			coords = (key[0] + moves[dir][0], key[1] + moves[dir][1])
 			if coords not in nodes:
 				continue

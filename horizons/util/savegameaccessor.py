@@ -98,7 +98,7 @@ class SavegameAccessor(DbReader):
 				self("INSERT INTO map_properties VALUES(?, ?)", 'padding', options.map_padding)
 
 		if not os.path.exists(self._map_path):
-			raise MapFileNotFound("Map file " + unicode(self._map_path) + " not found!")
+			raise MapFileNotFound("Map file " + str(self._map_path) + " not found!")
 
 
 		self('ATTACH ? AS map_file', self._map_path)
