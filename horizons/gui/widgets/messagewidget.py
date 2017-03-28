@@ -215,7 +215,7 @@ class MessageWidget(LivingObject):
 		self.bg_middle.removeAllChildren()
 
 		line_count = len(text.splitlines()) - 1
-		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
+		for i in range(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
 			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
 
