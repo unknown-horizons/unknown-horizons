@@ -49,7 +49,7 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 	settlement.warehouse.get_component(StorageComponent).inventory.adjust_limit(sys.maxsize)
 
 	# Plant trees
-	for (x, y) in product(list(range(23, 38)), repeat=2):
+	for (x, y) in product(range(23, 38), repeat=2):
 		if s.random.randint(0, 1) == 1:
 			tree = Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(p)
 			assert tree
