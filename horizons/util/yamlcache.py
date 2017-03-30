@@ -105,7 +105,7 @@ class YamlCache(object):
 		@param filename: path to the file
 		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
 		"""
-		with open(filename, 'r') as f:
+		with open(filename, 'r', encoding="utf-8") as f:
 			filedata = f.read()
 
 		# calc the hash
