@@ -146,7 +146,7 @@ class MessageWidget(LivingObject):
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')
 
-		if message.x is not None and message.y is not None:
+		if message.x != 0 and message.y != 0:
 			self.session.ingame_gui.minimap.highlight((message.x, message.y))
 
 		self.draw_widget()
@@ -178,7 +178,7 @@ class MessageWidget(LivingObject):
 			}
 			# init callback to something callable to improve robustness
 			callback = Callback(lambda: None)
-			if message.x is not None and message.y is not None:
+			if message.x != 0 and message.y != 0:
 				# move camera to source of event on click, if there is a source
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
@@ -320,7 +320,7 @@ class _IngameMessage(object):
 	"""
 	def __init__(self, point, id, created,
 	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
-		self.x, self.y = None, None
+		self.x, self.y = 0, 0
 		if point is not None:
 			self.x, self.y = point.x, point.y
 		self.id = id
