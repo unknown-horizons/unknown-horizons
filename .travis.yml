@@ -11,13 +11,14 @@ addons:
 before_install:
   - "sudo apt-get update"
   - "export DISPLAY=:99.0"
+  - "export PYTHON_VERSION=python3.4"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 install:
   - "sudo apt-get install python-fife"
-  - "cp -a /usr/lib/python2.7/dist-packages/fife/ $VIRTUAL_ENV/lib/python2.7/site-packages/"
-  - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/python2.7/site-packages/fife/*.so"
+  - "cp -a /usr/lib/$PYTHON_VERSION/dist-packages/fife/ $VIRTUAL_ENV/lib/$PYTHON_VERSION/site-packages/"
+  - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/$PYTHON_VERSION/site-packages/fife/*.so"
   - "pip install -r requirements.txt"
   - "pip install coverage coveralls"
 script: 
