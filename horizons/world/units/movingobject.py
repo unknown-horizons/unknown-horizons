@@ -29,7 +29,6 @@ from horizons.engine import Fife
 from horizons.ext.typing import TYPE_CHECKING, Type
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
-from horizons.util.python import decorators
 from horizons.util.python.weakmethodlist import WeakMethodList
 from horizons.util.shapes import Point
 from horizons.world.concreteobject import ConcreteObject
@@ -160,7 +159,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self.__is_moving = False
 		self.move_callbacks.execute()
 
-	@decorators.make_constants()
 	def _move_tick(self, resume=False):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
@@ -300,5 +298,3 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			self.__is_moving = True
 			self._setup_move()
 			Scheduler().add_new_object(self._move_tick, self, run_in=0)
-
-decorators.bind_all(MovingObject)

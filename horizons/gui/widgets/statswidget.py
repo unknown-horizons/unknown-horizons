@@ -22,7 +22,6 @@
 from horizons.constants import GAME_SPEED, PLAYER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
 
@@ -86,5 +85,3 @@ class StatsWidget(object):
 
 	def _clear_entries(self):
 		self._content_vbox.removeAllChildren()
-
-decorators.bind_all(StatsWidget)

@@ -29,7 +29,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, COLLECTORS, GAME_SPEED, RES
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.shapes import distances
 
 
@@ -170,7 +169,3 @@ class FisherSimulator(object):
 		return float(fish_caught) / cls.simulation_time
 
 AbstractFisher.register_buildings()
-
-decorators.bind_all(AbstractFisher)
-decorators.bind_all(FisherEvaluator)
-decorators.bind_all(FisherSimulator)

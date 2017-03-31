@@ -35,7 +35,6 @@ dotted path to the test (along with other options), similar to this code:
 	def minimap(gui):
 		menu = gui.find(name='mainmenu')
 """
-from __future__ import print_function
 
 import os
 import shutil
@@ -278,7 +277,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
 			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
-			if isinstance(env['UH_USER_DIR'], unicode):
+			if isinstance(env['UH_USER_DIR'], str):
 				env['UH_USER_DIR'] = env['UH_USER_DIR'].encode('utf-8')
 
 			# Start game

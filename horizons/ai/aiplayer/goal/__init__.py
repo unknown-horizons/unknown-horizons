@@ -22,7 +22,6 @@
 import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, GOAL_RESULT
-from horizons.util.python import decorators
 
 class Goal(object):
 	"""An object of this class describes a goal that an AI player attempts to fulfil."""
@@ -83,5 +82,3 @@ class Goal(object):
 
 	def __str__(self):
 		return 'Goal(%d): %s(%d)' % (self.priority, self.__class__.__name__, self.sequence_number)
-
-decorators.bind_all(Goal)

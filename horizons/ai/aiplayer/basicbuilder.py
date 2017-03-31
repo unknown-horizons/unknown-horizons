@@ -25,7 +25,6 @@ from horizons.command.building import Build
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.ext.typing import Tuple
-from horizons.util.python import decorators
 from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
 
@@ -122,5 +121,3 @@ class BasicBuilder(object):
 		if key not in cls.__cache:
 			cls.__cache[key] = BasicBuilder(building_id, coords, orientation)
 		return cls.__cache[key]
-
-decorators.bind_all(BasicBuilder)

@@ -125,9 +125,9 @@ class _Tooltip(object):
 		# resource icons. Even supporting that is a pain (as you will see),
 		# so if you think you need icons in other tooltips, maybe reconsider.
 		# [These unicode() calls brought to you by status icon tooltip code.]
-		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
+		buildmenu_icons = self.icon_regexp.findall(str(self.helptext))
 		# Remove the weird stuff before displaying text.
-		replaced = self.icon_regexp.sub('', unicode(self.helptext))
+		replaced = self.icon_regexp.sub('', (str(self.helptext)))
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
 			hbox = HBox(position=(7, 5), padding=0)

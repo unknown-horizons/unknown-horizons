@@ -399,7 +399,7 @@ class Session(LivingObject):
 			headline = T("Failed to create savegame file")
 			descr = T("There has been an error while creating your savegame file.")
 			advice = T("This usually means that the savegame name contains unsupported special characters.")
-			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
+			self.ingame_gui.open_error_popup(headline, descr, advice, str(e))
 			# retry with new savegamename entered by the user
 			# (this must not happen with quicksave/autosave)
 			return self.save()

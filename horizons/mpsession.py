@@ -51,11 +51,11 @@ class MPSession(Session):
 		if fatal:
 			self.timer.ticks_per_second = 0
 			self.ingame_gui.windows.open_popup(T("Fatal Network Error"),
-		                                       T("Something went wrong with the network:") + u'\n' +
-		                                       unicode(exception) )
+		                                       T("Something went wrong with the network:") + '\n' +
+		                                       str(exception) )
 			self.quit()
 		else:
-			self.ingame_gui.open_popup(T("Error"), unicode(exception))
+			self.ingame_gui.open_popup(T("Error"), str(exception))
 
 	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""

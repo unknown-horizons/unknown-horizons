@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class TradingShipGoal(SettlementGoal):
@@ -38,5 +37,3 @@ class TradingShipGoal(SettlementGoal):
 	def execute(self):
 		self.settlement_manager.log.info('%s start building a ship', self)
 		self.owner.unit_builder.build_ship()
-
-decorators.bind_all(TradingShipGoal)

@@ -60,9 +60,9 @@ class IntermediateMap(object):
 		self._map = {}
 		width = self.world.max_x - self.world.min_x + 1
 		height = self.world.max_y - self.world.min_y + 1
-		for y in xrange(height + 2):
+		for y in range(height + 2):
 			orig_y = y + self.world.min_y - 1
-			for x in xrange(width + 2):
+			for x in range(width + 2):
 				orig_x = x + self.world.min_x - 1
 				self._map[(x, y)] = self._get_tile_repr((orig_x, orig_y))
 
@@ -72,7 +72,8 @@ class IntermediateMap(object):
 	def _get_intermediate_coords(self, coords):
 		return (coords[0] - self.world.min_x, coords[1] - self.world.min_y)
 
-	def distance_from_edge(self, (x, y)):
+	def distance_from_edge(self, coords):
+		x, y = coords
 		return min(min(x, self.max_x - x), min(y, self.max_y - y))
 
 	def _update_intermediate_coords(self, coords, new_type):
@@ -142,7 +143,7 @@ class IntermediateMap(object):
 			last_coords_list.append(coords)
 			self._update_intermediate_coords(coords, new_type)
 
-		for _ in xrange(3):
+		for _ in range(3):
 			surrounding_coords_list = self._get_surrounding_coords(last_coords_list)
 			for coords2 in surrounding_coords_list:
 				if coords2 not in self._map:
@@ -151,7 +152,7 @@ class IntermediateMap(object):
 				cur_type = self._map[coords2]
 				best_new_type = cur_type
 				best_dist = 10
-				for new_type2 in xrange(4):
+				for new_type2 in range(4):
 					if best_dist <= abs(new_type2 - cur_type):
 						continue
 
@@ -181,13 +182,13 @@ class IntermediateMap(object):
 			return
 
 		data = []
-		for dy in xrange(2):
-			for dx in xrange(2):
+		for dy in range(2):
+			for dx in range(2):
 				data.append(self._map[(x + dx, y + dy)])
 		coords = (x + self.world.min_x, y + self.world.min_y)
 
 		minimum = min(data)
-		for i in xrange(4):
+		for i in range(4):
 			data[i] -= minimum
 
 		if max(data) == 0:
@@ -221,8 +222,8 @@ class IntermediateMap(object):
 		res = ''
 		width = self.world.max_x - self.world.min_x + 1
 		height = self.world.max_y - self.world.min_y + 1
-		for y in xrange(height + 2):
-			for x in xrange(width + 2):
+		for y in range(height + 2):
+			for x in range(width + 2):
 				res += str(self._map[(x, y)])
 			res += '\n'
 		return res

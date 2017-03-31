@@ -41,7 +41,7 @@ def create_weakref(obj):
 	else:
 		return weakref.ref(obj)
 
-class LastActivePlayerSettlementManager(object):
+class LastActivePlayerSettlementManager(object, metaclass=ManualConstructionSingleton):
 	"""Keeps track of the last active (hovered over) player's settlement.
 	Provides it as global reference, but stores as weak reference as not to disturb anything.
 
@@ -49,7 +49,6 @@ class LastActivePlayerSettlementManager(object):
 	Retrieve settlement via get().
 	Hooks itself to view automatically.
 	"""
-	__metaclass__ = ManualConstructionSingleton
 
 	def __init__(self, session):
 		self.session = session

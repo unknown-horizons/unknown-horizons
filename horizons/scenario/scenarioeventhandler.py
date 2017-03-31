@@ -114,7 +114,7 @@ class ScenarioEventHandler(LivingObject):
 	def save(self, db):
 		if self.inited: # only save in case we have data applied
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
-		for key, value in self._scenario_variables.iteritems():
+		for key, value in self._scenario_variables.items():
 			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key,
 			   json.dumps(value))
 
@@ -226,7 +226,7 @@ class ScenarioEventHandler(LivingObject):
 		del data['events']
 		yaml_code = dump_dict_to_yaml(data)
 		# remove last } so we can add stuff
-		yaml_code = yaml_code.rsplit(u'}\n', 1)[0]
+		yaml_code = yaml_code.rsplit('}\n', 1)[0]
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
 		return yaml_code
 

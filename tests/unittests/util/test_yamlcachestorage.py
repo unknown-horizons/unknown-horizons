@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2017 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command import Command
+import os
+import tempfile
+import unittest
+
+from horizons.util.yamlcachestorage import YamlCacheStorage
 
 
-class Chat(Command):
-	def __init__(self, message):
-		self.message = message
+class YamlCacheStorageTest(unittest.TestCase):
 
-	def __call__(self, issuer):
-		issuer.session.ingame_gui.message_widget.add_chat(player=issuer.name, messagetext=self.message)
+	def setUp(self):
+		super().setUp()
+		self.tmp_file = tempfile.NamedTemporaryFile(delete=False)
 
-Command.allow_network(Chat)
+	def tearDown(self):
+		os.unlink(self.tmp_file.name)
+		super().tearDown()
+
+	def test_save_and_reopen(self):
+		cache = YamlCacheStorage(self.tmp_file.name)
+		cache['foo'] = 'bar'
+		cache.sync()
+
+		new_cache = YamlCacheStorage.open(self.tmp_file.name)
+		self.assertEqual(new_cache['foo'], 'bar')

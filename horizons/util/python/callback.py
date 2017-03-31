@@ -1,3 +1,4 @@
+import collections
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -26,7 +27,7 @@ class Callback(object):
 	more flexibility; e.g. you can compare callbacks, which can't be done with lambda functions.
 	"""
 	def __init__(self, callback_function, *args, **kwargs):
-		assert callable(callback_function), "Argument to for callback_f is {}".format(callback_function)
+		assert isinstance(callback_function, collections.Callable), "Argument to for callback_f is {}".format(callback_function)
 		self.callback = callback_function
 		self.args = args
 		self.kwargs = kwargs
@@ -62,7 +63,7 @@ class Callback(object):
 
 	def __hash__(self):
 		return hash((self.callback, self.args,
-		             tuple(self.kwargs.iteritems()))) # to tuple, dict is unhashable
+		             tuple(self.kwargs.items()))) # to tuple, dict is unhashable
 
 	def __str__(self):
 		return 'Callback({}, {}, {})'.format(self.callback, self.args, self.kwargs)

@@ -26,7 +26,6 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.ext.typing import Tuple
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
 
@@ -125,6 +124,3 @@ class LumberjackEvaluator(BuildingEvaluator):
 		return (BUILD_RESULT.OK, building)
 
 AbstractLumberjack.register_buildings()
-
-decorators.bind_all(AbstractLumberjack)
-decorators.bind_all(LumberjackEvaluator)

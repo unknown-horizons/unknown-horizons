@@ -73,14 +73,14 @@ class ImageFillStatusButton(Container):
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
-				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+				helptext = ('{resource_name}[br]'.format(resource_name=db.get_res_name(res))
 				            + T('buy for {buyprice} gold').format(buyprice=buyprice)
-				            + u'[br]'
+				            + '[br]'
 				            + T('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
 			helptext = db.get_res_name(res)
 
-		return cls(path=path, text=unicode(amount), helptext=helptext,
+		return cls(path=path, text=str(amount), helptext=helptext,
 		           size=cls.CELL_SIZE, res_id=res, filled=filled,
 		           max_size=cls.CELL_SIZE, min_size=cls.CELL_SIZE,
 		           marker=marker, uncached=uncached)

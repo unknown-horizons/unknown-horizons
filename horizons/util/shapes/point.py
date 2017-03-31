@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.util.python import Const
-from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Shape
 
 
@@ -89,7 +88,3 @@ class Point(Shape):
 class ConstPoint(Const, Point):
 	"""An immutable Point"""
 	pass
-
-
-bind_all(Point)
-bind_all(ConstPoint)

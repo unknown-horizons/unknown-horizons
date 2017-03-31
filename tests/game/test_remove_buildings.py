@@ -46,7 +46,7 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 	Called by test_removal with different parameters.
 	"""
 	settlement, island = settle(s)
-	settlement.warehouse.get_component(StorageComponent).inventory.adjust_limit(sys.maxint)
+	settlement.warehouse.get_component(StorageComponent).inventory.adjust_limit(sys.maxsize)
 
 	# Plant trees
 	for (x, y) in product(range(23, 38), repeat=2):

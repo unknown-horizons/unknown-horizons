@@ -94,7 +94,7 @@ def test_selection_groups(gui):
 
 	# check group
 	gui.press_key(gui.Key.NUM_2)
-	assert iter(gui.session.selected_instances).next() is ship
+	assert next(iter(gui.session.selected_instances)) is ship
 
 	gui.cursor_click(59, 1, 'right')
 	while (ship.position.x, ship.position.y) != (59, 1):
@@ -115,17 +115,17 @@ def test_selection_groups(gui):
 	# check group again
 	gui.press_key(gui.Key.NUM_2)
 	assert len(gui.session.selected_instances) == 1
-	assert iter(gui.session.selected_instances).next() is ship
+	assert next(iter(gui.session.selected_instances)) is ship
 
 	# now other one
 	gui.press_key(gui.Key.NUM_3)
 	assert len(gui.session.selected_instances) == 1
-	assert iter(gui.session.selected_instances).next() is wh
+	assert next(iter(gui.session.selected_instances)) is wh
 
 	# check group still once again
 	gui.press_key(gui.Key.NUM_2)
 	assert len(gui.session.selected_instances) == 1
-	assert iter(gui.session.selected_instances).next() is ship
+	assert next(iter(gui.session.selected_instances)) is ship
 
 	# no group
 	gui.press_key(gui.Key.NUM_0)

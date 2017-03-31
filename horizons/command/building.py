@@ -131,7 +131,7 @@ class Build(Command):
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 
 		if issuer: # issuer is None if it's a global game command, e.g. on world setup
-			for (resource, value) in building.costs.iteritems():
+			for (resource, value) in building.costs.items():
 				# remove from issuer, and remove rest from secondary source (settlement or ship)
 				inventory = issuer.get_component(StorageComponent).inventory
 				first_source_remnant = inventory.alter(resource, -value)
@@ -154,7 +154,7 @@ class Build(Command):
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory
 			# copy the inventory first because otherwise we would modify it while iterating
-			for res, amount in ship_inv.get_dump().iteritems():
+			for res, amount in ship_inv.get_dump().items():
 				amount = min(amount, settlement_inv.get_free_space_for(res))
 				# execute directly, we are already in a command
 				TransferResource(amount, res, ship, building.settlement)(issuer=issuer)

@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import glob
 import json
@@ -32,11 +32,7 @@ import os
 import os.path
 import sys
 import traceback
-
-try:
-	import cPickle as pickle
-except ImportError:
-	import pickle # type: ignore
+import pickle
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
 app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')
@@ -131,7 +127,7 @@ class AtlasBook(object):
 		im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
 
 		# place the sub-images in the right places
-		for path, entry in self.location.iteritems():
+		for path, entry in self.location.items():
 			with open(path, 'rb') as png_file:
 				sub_image = Image.open(png_file)
 				im.paste(sub_image, (entry.x, entry.y))

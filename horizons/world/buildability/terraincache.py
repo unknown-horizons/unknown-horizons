@@ -57,7 +57,7 @@ class TerrainBuildabilityCache(object):
 		land = set()
 		coast = set()
 
-		for coords, tile in self._island.ground_map.iteritems():
+		for coords, tile in self._island.ground_map.items():
 			if 'constructible' in tile.classes:
 				land.add(coords)
 			elif 'coastline' in tile.classes:
@@ -139,7 +139,7 @@ class TerrainBuildabilityCache(object):
 		self._init_squares()
 
 		sq2 = self.sq2
-		for coords, (has_land, has_coast) in sq2.iteritems():
+		for coords, (has_land, has_coast) in sq2.items():
 			x, y = coords
 			if has_land and has_coast:
 				# handle 2x2 coastal buildings
@@ -161,7 +161,7 @@ class TerrainBuildabilityCache(object):
 					land[(2, 3)].add(coords)
 
 		sq3 = self.sq3
-		for coords, (has_land, has_coast) in sq3.iteritems():
+		for coords, (has_land, has_coast) in sq3.items():
 			x, y = coords
 			if has_land and has_coast:
 				# handle 3x3 coastal buildings

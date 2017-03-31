@@ -157,7 +157,7 @@ def test_buildingtool(gui):
 	gui.trigger('tab/button_21')
 
 	# Build some paths
-	for i in xrange(6, 13):
+	for i in range(6, 13):
 		build_at( (57, i) )
 	gui.cursor_click(54, 7, 'right') # cancel
 

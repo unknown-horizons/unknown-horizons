@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import decorators
-
 
 class BuildingIndexer(object):
 	"""
@@ -194,8 +192,3 @@ class BuildingIndex(object):
 		if self._changed:
 			self._update()
 		return len(self._list)
-
-
-# apply make_constant to classes
-decorators.bind_all(BuildingIndexer)
-decorators.bind_all(BuildingIndex)
