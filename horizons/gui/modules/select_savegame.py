@@ -205,7 +205,7 @@ class SelectSavegameDialog(Dialog):
 						fd, filename = None, None
 
 				if fd:
-					with os.fdopen(fd, "w") as f:
+					with os.fdopen(fd, "wb") as f:
 						f.write(savegame_info['screenshot'])
 					# fife only supports relative paths
 					gui.findChild(name="screenshot").image = path_rel
@@ -218,7 +218,7 @@ class SelectSavegameDialog(Dialog):
 				details_label.text += T("Unknown savedate")
 			else:
 				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
-				details_label.text += T("Saved at {time}").format(time=savetime.decode('utf-8'))
+				details_label.text += T("Saved at {time}").format(time=savetime)
 			details_label.text += '\n'
 			counter = savegame_info['savecounter']
 			# NT takes care of plural forms for different languages
