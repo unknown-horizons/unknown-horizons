@@ -74,7 +74,7 @@ class Production(ChangeListener):
 		self.inventory = inventory
 		self.owner_inventory = owner_inventory
 
-		self._pause_remaining_ticks = None # only used in pause()
+		self._pause_remaining_ticks = 0 # only used in pause()
 		self._pause_old_state = None # only used in pause()
 
 		self._creation_tick = Scheduler().cur_tick
@@ -101,7 +101,7 @@ class Production(ChangeListener):
 		current_tick = Scheduler().cur_tick
 		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
 
-		remaining_ticks = None
+		remaining_ticks = 0
 		if self._state == PRODUCTION.STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
 		elif self._state == PRODUCTION.STATES.producing:
