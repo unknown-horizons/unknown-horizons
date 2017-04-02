@@ -35,11 +35,11 @@ import traceback
 import pickle
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
-app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')
+app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python3.4')
 if os.path.exists(app_python_lib_path):
-	# horizons path: Unknown Horizons.app/Contents/Resources/lib/python2.7/horizons
+	# horizons path: Unknown Horizons.app/Contents/Resources/lib/python3.3/horizons
 	sys.path.append(app_python_lib_path)
-	# PIL path: Unknown Horizons.app/Contents/Resources/lib/python2.7/lib-dynload/PIL
+	# PIL path: Unknown Horizons.app/Contents/Resources/lib/python3.3/lib-dynload/PIL
 	sys.path.append(os.path.join(app_python_lib_path, 'lib-dynload'))
 
 try:
@@ -411,7 +411,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print('Usage: python2 generate_atlases.py max_size')
+		print('Usage: python3 generate_atlases.py max_size')
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))

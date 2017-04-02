@@ -47,7 +47,7 @@ import re
 import Tkinter
 import tkMessageBox
 
-syntax_checker = "pyflakes-python2"
+syntax_checker = "pyflakes-python3"
 
 class bcolors:
 	"""Colors used to color the output"""
