@@ -36,11 +36,13 @@ import os.path
 import sys
 import threading
 import traceback
+
+from typing import TYPE_CHECKING, Optional
+
 from fife import fife as fife_module
 
 import horizons.globals
 from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLEPLAYER, VERSION
-from horizons.ext.typing import TYPE_CHECKING, Optional
 from horizons.extscheduler import ExtScheduler
 from horizons.gui import Gui
 from horizons.i18n import gettext as T

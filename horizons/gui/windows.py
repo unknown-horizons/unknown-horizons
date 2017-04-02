@@ -22,11 +22,12 @@
 import logging
 import traceback
 
+from typing import Any, Optional
+
 from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
-from horizons.ext.typing import Any, Optional
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.i18n import gettext as T

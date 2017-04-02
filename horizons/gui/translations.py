@@ -41,8 +41,9 @@
 #
 ###############################################################################
 
+from typing import Tuple
+
 from horizons.constants import VERSION
-from horizons.ext.typing import Tuple
 from horizons.i18n import gettext as T
 
 text_translations = {} # type: Dict[str, Dict[Tuple[str, str], str]]

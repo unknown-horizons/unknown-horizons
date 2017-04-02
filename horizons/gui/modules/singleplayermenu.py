@@ -31,10 +31,11 @@ import subprocess
 import sys
 import tempfile
 
+from typing import Optional, Tuple
+
 import horizons.globals
 import horizons.main
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
-from horizons.ext.typing import Optional, Tuple
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap, iter_minimap_points

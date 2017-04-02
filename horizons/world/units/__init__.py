@@ -24,7 +24,7 @@ import logging
 from fife import fife
 
 import horizons.globals
-from horizons.ext.typing import Sequence
+from typing import Sequence
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType

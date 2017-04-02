@@ -23,6 +23,8 @@ import logging
 import random
 import weakref
 
+from typing import TYPE_CHECKING
+
 from fife import fife
 
 import horizons.globals
@@ -31,7 +33,6 @@ from horizons.command.sounds import PlaySound
 from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.constants import BUILDINGS, GFX
 from horizons.entities import Entities
-from horizons.ext.typing import TYPE_CHECKING
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget

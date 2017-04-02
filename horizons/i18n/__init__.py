@@ -37,10 +37,11 @@ import os
 import logging
 import locale
 
+from typing import Optional, Text
+
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES, FONTDEFS
-from horizons.ext.typing import Optional, Text
 from horizons.ext.speaklater import make_lazy_gettext
 from horizons.messaging import LanguageChanged
 

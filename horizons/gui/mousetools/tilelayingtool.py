@@ -23,7 +23,7 @@ from fife import fife
 
 import horizons.globals
 from horizons.constants import GROUND
-from horizons.ext.typing import Tuple
+from typing import Tuple
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.shapes import Circle, Point
 

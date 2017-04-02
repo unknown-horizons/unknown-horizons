@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Tuple
+
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.ext.typing import Tuple
 from horizons.util.shapes import Rect
 
 

@@ -21,6 +21,7 @@
 
 import math
 from operator import itemgetter
+from typing import Tuple
 
 from fife import fife
 from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
@@ -28,7 +29,6 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
 from horizons.command.production import AddProduction, CancelCurrentProduction, RemoveFromQueue
 from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
 from horizons.engine import Fife
-from horizons.ext.typing import Tuple
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.i18n import gettext as T, gettext_lazy as LazyT

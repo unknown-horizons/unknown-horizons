@@ -21,10 +21,11 @@
 
 import copy
 
+from typing import Tuple
+
 from horizons.command.building import Build
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.ext.typing import Tuple
 from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
 

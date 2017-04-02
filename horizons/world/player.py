@@ -21,12 +21,13 @@
 
 import collections
 
+from typing import Any, Sequence, Union
+
 import horizons.main
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
-from horizons.ext.typing import Any, Sequence, Union
 from horizons.messaging import PlayerInventoryUpdated, PlayerLevelUpgrade, SettlerUpdate
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler

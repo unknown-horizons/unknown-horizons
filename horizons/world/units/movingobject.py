@@ -21,12 +21,13 @@
 
 import logging
 
+from typing import TYPE_CHECKING, Type
+
 from fife import fife
 
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import GAME_SPEED
 from horizons.engine import Fife
-from horizons.ext.typing import TYPE_CHECKING, Type
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python.weakmethodlist import WeakMethodList
