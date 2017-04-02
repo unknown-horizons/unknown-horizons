@@ -76,8 +76,8 @@ install:
   - sudo make install
   - cd ..
   # install python3 moduls
-  - "pip install -r requirements.txt"
-  - "pip install coverage coveralls"
+  - "pip3 install -r requirements.txt"
+  - "pip3 install coverage coveralls"
 script:
   - cd ..
   - git clone --quiet --depth 1 -b python3_futurize https://github.com/fifengine/fifengine.git
