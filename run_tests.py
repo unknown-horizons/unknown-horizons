@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
@@ -60,7 +60,7 @@ def mock_fife():
 			mod = sys.modules.setdefault(name, Dummy())
 			return mod
 
-	sys.meta_path = [Importer()]
+	#sys.meta_path = [Importer()]
 
 def setup_horizons():
 	"""
