@@ -1,5 +1,4 @@
 language: cpp
-language: python
 sudo: required
 dist: trusty
 matrix:
