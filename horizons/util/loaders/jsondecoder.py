@@ -25,16 +25,6 @@ import json
 class JsonDecoder:
 	@classmethod
 	def load(cls, path):
-		def _decode_list(lst):
-			newlist = []
-			for i in lst:
-				if isinstance(i, str):
-					i = i.encode('utf-8')
-				elif isinstance(i, list):
-					i = _decode_list(i)
-				newlist.append(i)
-			return newlist
-
 		def _decode_dict(dct):
 			newdict = {}
 			for k, v in dct.items():
@@ -42,13 +32,11 @@ class JsonDecoder:
 					try:
 						k = int(k)
 					except ValueError:
-						k = k.encode('utf-8')
+						k.encode('utf-8')
 				if isinstance(v, str):
 					v = v.encode('utf-8')
-				elif isinstance(v, list):
-					v = _decode_list(v)
 				newdict[k] = v
 			return newdict
 
-		with open(path, "rb") as f:
+		with open(path, "r") as f:
 			return json.load(f, encoding="ascii", object_hook=_decode_dict)
