@@ -26,8 +26,8 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-trusty-3.9
     packages:
-    - gcc-5
-    - g++-5
+#    - gcc-5
+#    - g++-5
     - clang-3.9
     - llvm-3.9-dev
     - libclang-3.9-dev
@@ -51,8 +51,8 @@ addons:
 before_install:
   - "sudo apt-get update"
     # change gcc to version 5
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 20; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --config gcc; sudo update-alternatives --config g++; fi
+#  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 20; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20; fi
+#  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --config gcc; sudo update-alternatives --config g++; fi
     # change clang to version 3.9
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.9 20; sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.9 20; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo rm -f /usr/local/clang-3.5.0/bin/clang; sudo rm -f /usr/local/clang-3.5.0/bin/clang++; sudo update-alternatives --config clang; sudo update-alternatives --config clang++; fi
