@@ -48,7 +48,7 @@ addons:
     - libglew-dev
 
 before_install:
-  - "sudo apt-get update"
+#  - "sudo apt-get update"
     # change gcc to version 5
 #  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 20; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20; fi
 #  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --config gcc; sudo update-alternatives --config g++; fi
@@ -71,7 +71,7 @@ before_install:
 install:
   - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
   # https://github.com/fifengine/fifechan/blob/master/INSTALL.md
-  - mkdir build_fifechan; cd build_fifechan; cmake ../fifechan
+  - mkdir build_fifechan; cd build_fifechan; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../fifechan
   - make -j2
   - sudo make install
   - cd ..
@@ -87,7 +87,7 @@ script:
   - sudo make install
   # import fife
   - python3 -c 'from fife import fife; print(fife.getVersion())'
-  - cd /home/travis/build/unknown-horizons
+  - cd /home/travis/build/unknown-horizons/unknown-horizons
   - isort -c -rc horizons tests run_*.py
   - pycodestyle --count horizons/ tests/ development/
   - COVERAGE_FILE=.coverage.nongui python3 run_tests.py --verbose --nologcapture --with-coverage
