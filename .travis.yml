@@ -16,7 +16,10 @@ before_install:
   #- "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 install:
-  - "sudo apt-get install python-fife"
+  - "sudo apt-get install y build-essential libalsa-ocaml-dev libsdl2-dev libboost-dev libsdl2-ttf-dev libsdl2-image-dev libvorbis-dev libalut-dev python3.4 python3-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev git python3-yaml python3-future libxcursor1 libxcursor-dev cmake cmake-data libtinyxml-dev libpng-dev libglew-dev"
+  - "git clone https://github.com/fifengine/fifechan.git && cd fifechan"
+  - "mkdir _build; cd _build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .."
+  - "make && sudo make install"
   - "cp -a /usr/lib/$PYTHON_VERSION/dist-packages/fife/ $VIRTUAL_ENV/lib/$PYTHON_VERSION/site-packages/"
   - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/$PYTHON_VERSION/site-packages/fife/*.so"
   - "pip install -r requirements.txt"
