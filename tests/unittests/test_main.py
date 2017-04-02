@@ -47,4 +47,4 @@ class TestHorizonsMain(TestCase):
 		try:
 			horizons.main.start(options)
 		except Exception as e:
-			assert e.message == 'i was called', "setup_gui_logger wasn't called"
+			assert str(e) == 'i was called', "setup_gui_logger wasn't called"
