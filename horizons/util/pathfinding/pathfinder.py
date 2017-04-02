@@ -73,7 +73,7 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 	# perform A*
 	while heap:
 		(_, distance_so_far, key) = heapq.heappop(heap)
-		if distance[key] < distance_so_far:
+		if distance[key][0] < distance_so_far:
 			continue
 		if (key[0], key[1]) == destination:
 			final_key = key
