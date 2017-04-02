@@ -81,6 +81,7 @@ install:
   - "pip install coverage coveralls"
 script:
   - cd ..
+  - git clone --quiet --depth 1 -b python3_futurize https://github.com/fifengine/fifengine.git
   - mkdir build; cd build; cmake ../fifengine
   - ls -alh .
   - make -j2
