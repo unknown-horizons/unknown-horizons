@@ -87,6 +87,7 @@ script:
   - sudo make install
   # import fife
   - python3 -c 'from fife import fife; print(fife.getVersion())'
+  - cd /home/travis/build/unknown-horizons
   - isort -c -rc horizons tests run_*.py
   - pycodestyle --count horizons/ tests/ development/
   - COVERAGE_FILE=.coverage.nongui python3 run_tests.py --verbose --nologcapture --with-coverage
