@@ -86,7 +86,7 @@ script:
   - make -j2
   - sudo make install
   # import fife
-  - python3 -c 'from fife import fife; print fife.getVersion()'
+  - python3 -c 'from fife import fife; print(fife.getVersion())'
   - isort -c -rc horizons tests run_*.py
   - pycodestyle --count horizons/ tests/ development/
   - COVERAGE_FILE=.coverage.nongui python run_tests.py --verbose --nologcapture --with-coverage
