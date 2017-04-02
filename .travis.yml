@@ -1,30 +1,91 @@
+language: cpp
 language: python
 sudo: required
 dist: trusty
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: trusty
+      compiler: clang
+#    - os: linux
+#      sudo: required
+#      dist: trusty
+#      compiler: gcc
+#    - os: osx
+#      compiler: clang
+#    - os: osx
+#      compiler: gcc
 python:
   - "3.4"
 # command to install dependencies
 addons:
   apt:
     sources:
-      - sourceline: 'deb [trusted=yes] http://joker.someserver.de/uh/trusty /'
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-trusty-3.9
+    packages:
+    - gcc-5
+    - g++-5
+    - clang-3.9
+    - llvm-3.9-dev
+    - libclang-3.9-dev
+    - mesa-common-dev
+    - libsdl2-dev
+    - libsdl2-image-dev
+    - libsdl2-ttf-dev
+    - libfreetype6-dev
+    - libxcursor-dev
+    - libopenal-dev
+    - libasound2-dev
+    - zlib1g-dev
+    - libboost-dev
+    - libboost-system-dev
+    - libboost-filesystem-dev
+    - libboost-test-dev
+    - libtinyxml-dev
+    - libc6
+    - libglew-dev
+
 before_install:
   - "sudo apt-get update"
+    # change gcc to version 5
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 20; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --config gcc; sudo update-alternatives --config g++; fi
+    # change clang to version 3.9
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.9 20; sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.9 20; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo rm -f /usr/local/clang-3.5.0/bin/clang; sudo rm -f /usr/local/clang-3.5.0/bin/clang++; sudo update-alternatives --config clang; sudo update-alternatives --config clang++; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get -qq update && sudo apt-get install -y libgle3-dev libvorbis-dev libalut-dev cppcheck; fi
+    # update swig to version 3.x
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo sh -c 'echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list'; sudo apt-get update -qq; sudo apt-get install -yqq swig3.0/trusty-backports; fi
+    # install newer version of pylint, the one fetched with apt-get is broken
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo pip install pylint; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis; fi
+  - cmake --version
+
   - "export DISPLAY=:99.0"
   - "export PYTHON_VERSION=python3.4"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 install:
-  - "sudo apt-get install y build-essential libalsa-ocaml-dev libsdl2-dev libboost-dev libsdl2-ttf-dev libsdl2-image-dev libvorbis-dev libalut-dev python3.4 python3-dev libboost-regex-dev libboost-filesystem-dev libboost-test-dev swig zlib1g-dev libopenal-dev git python3-yaml python3-future libxcursor1 libxcursor-dev cmake cmake-data libtinyxml-dev libpng-dev libglew-dev"
-  - "git clone https://github.com/fifengine/fifechan.git && cd fifechan"
-  - "mkdir _build; cd _build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .."
-  - "make && sudo make install"
-  - "cp -a /usr/lib/$PYTHON_VERSION/dist-packages/fife/ $VIRTUAL_ENV/lib/$PYTHON_VERSION/site-packages/"
-  - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/$PYTHON_VERSION/site-packages/fife/*.so"
+  - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
+  # https://github.com/fifengine/fifechan/blob/master/INSTALL.md
+  - mkdir build_fifechan; cd build_fifechan; cmake ../fifechan
+  - make -j2
+  - sudo make install
+  - cd ..
+  # install python3 moduls
   - "pip install -r requirements.txt"
   - "pip install coverage coveralls"
-script: 
+script:
+  - cd ..
+  - mkdir build; cd build; cmake ../fifengine
+  - ls -alh .
+  - make -j2
+  - sudo make install
+  # import fife
   - python -c 'from fife import fife; print fife.getVersion()'
   - isort -c -rc horizons tests run_*.py
   - pycodestyle --count horizons/ tests/ development/
