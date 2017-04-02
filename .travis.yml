@@ -8,6 +8,7 @@ matrix:
       sudo: required
       dist: trusty
       compiler: clang
+      python: "3.4"
 #    - os: linux
 #      sudo: required
 #      dist: trusty
@@ -16,8 +17,7 @@ matrix:
 #      compiler: clang
 #    - os: osx
 #      compiler: gcc
-python:
-  - "3.4"
+
 # command to install dependencies
 addons:
   apt:
