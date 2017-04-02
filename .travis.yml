@@ -59,7 +59,7 @@ before_install:
     # update swig to version 3.x
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo sh -c 'echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list'; sudo apt-get update -qq; sudo apt-get install -yqq swig3.0/trusty-backports; fi
     # install newer version of pylint, the one fetched with apt-get is broken
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo pip install pylint; fi
+#  - if [ $TRAVIS_OS_NAME == linux ]; then sudo pip3 install pylint; fi
   - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis; fi
   - cmake --version
 
