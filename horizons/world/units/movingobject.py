@@ -240,7 +240,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
 		# check if a conditional callback becomes true
-		for cond in self._conditional_callbacks.keys(): # iterate of copy of keys to be able to delete
+		for cond in list(self._conditional_callbacks.keys()): # iterate of copy of keys to be able to delete
 			if cond():
 				# start callback when this function is done
 				Scheduler().add_new_object(self._conditional_callbacks[cond], self)
