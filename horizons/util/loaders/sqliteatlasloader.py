@@ -84,8 +84,8 @@ class SQLiteAtlasLoader(object):
 		loader = self._get_loader(actionset)
 
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][rotation].keys()):
-			entry = loader.get_sets()[actionset][action][rotation][file]
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
+			entry = loader.get_sets()[actionset][action][int(rotation)][file]
 			# we don't need to load images at this point to query for its parameters
 			# such as width and height because we can get those from json file
 			xpos, ypos, width, height = entry[2:]

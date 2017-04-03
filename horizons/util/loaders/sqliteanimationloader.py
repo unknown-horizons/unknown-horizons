@@ -58,8 +58,8 @@ class SQLiteAnimationLoader(object):
 
 		ani = animationmanager.create(anim_id)
 		frame_start, frame_end = 0.0, 0.0
-		for f in sorted(loader.get_sets()[actionset][action][rotation].keys()):
-			frame_end = loader.get_sets()[actionset][action][rotation][f]
+		for f in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
+			frame_end = loader.get_sets()[actionset][action][int(rotation)][f]
 			img = horizons.globals.fife.imagemanager.load(f)
 			for command, arg in commands:
 				if command == 'shift':
@@ -103,7 +103,7 @@ class SQLiteAnimationLoader(object):
 
 	def load_image(self, f, actionset, action, rotation):
 		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][rotation][f]
+		entry = loader.get_sets()[actionset][action][int(rotation)][f]
 
 		if horizons.globals.fife.imagemanager.exists(f):
 			img = horizons.globals.fife.imagemanager.get(f)

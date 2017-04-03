@@ -92,5 +92,5 @@ class UnitClass(IngameType):
 			params['rot'] = rotation
 			path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
 			anim = horizons.globals.fife.animationloader.loadResource(path)
-			action.get2dGfxVisual().addAnimation(rotation, anim)
+			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())
