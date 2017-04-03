@@ -118,8 +118,8 @@ class SQLiteAtlasLoader(object):
 					else:
 						y = int(y)
 
-					img.setXShift(x)
-					img.setYShift(y)
+			img.setXShift(x)
+			img.setYShift(y)
 
 			frame_end = entry[0]
 			ani.addFrame(img, max(1, int((frame_end - frame_start)*1000)))
