@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-02-05 12:34+0000\n"
-"Last-Translator: Adrian Labuda <adr.labuda@gmail.com>\n"
+"PO-Revision-Date: 2017-04-07 08:01+0000\n"
+"Last-Translator: Łukasz Ch <antoni.chaluda@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.11\n"
+"X-Generator: Weblate 2.13-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -277,7 +277,7 @@ msgstr "Wznów"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Postęp prac budowlanych:"
+msgstr "Postęp prac konstrukcyjnych:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
@@ -2107,7 +2107,7 @@ msgstr "{player} został wyrzucony przez założyciela"
 # ook u aangepast
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
-msgstr "Czy na pewno chcesz zakończyć bierzącą sesję?"
+msgstr "Czy na pewno chcesz zakończyć bieżącą sesję?"
 
 #: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
@@ -2489,7 +2489,7 @@ msgstr "Przegląd produkcji"
 #: horizons/gui/tabs/productiontabs.py:301
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Wypełnij obszar {how_many} drzewami"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
