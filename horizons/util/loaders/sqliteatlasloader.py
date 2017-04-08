@@ -70,7 +70,7 @@ class SQLiteAtlasLoader(object):
 		commands = location.split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		commands = list(zip(commands[0::2], commands[1::2]))
 
 		animationmanager = horizons.globals.fife.animationmanager
 

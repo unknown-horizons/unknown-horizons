@@ -45,7 +45,7 @@ class SQLiteAnimationLoader(object):
 		commands = location.split(':')
 		anim_id = commands.pop(0)
 		actionset, action, rotation = anim_id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		commands = list(zip(commands[0::2], commands[1::2]))
 
 		animationmanager = horizons.globals.fife.animationmanager
 
