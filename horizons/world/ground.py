@@ -63,7 +63,7 @@ class SurfaceTile(object):
 	def act(self, rotation):
 		self._instance.setRotation(rotation)
 
-		(x, y) = (self.x, self.y)
+		x, y = self.x, self.y
 		layer_coords = {
 			45:  (x + 3, y,     0),
 			135: (x,     y - 3, 0),
