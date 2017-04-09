@@ -95,18 +95,19 @@ class BuildingClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
+			# Issue #1379: Make the offset system more dynamic or re-render object images better
 			if rotation == 45:
 				params['left'] = 32
-				params['botm'] = 20 * cls.size[0]
+				params['botm'] = 16 * cls.size[0]
 			elif rotation == 135:
 				params['left'] = 32 * cls.size[1]
-				params['botm'] = 28
+				params['botm'] = 16
 			elif rotation == 225:
 				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
 				params['botm'] = 16 * cls.size[1]
 			elif rotation == 315:
 				params['left'] = 32 * cls.size[0]
-				params['botm'] = 18 * (cls.size[0] + cls.size[1] - 1)
+				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
