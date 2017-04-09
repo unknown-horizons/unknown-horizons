@@ -241,7 +241,7 @@ class LogBook(PickBeltWidget, Window):
 					add.addChild(new_icon)
 		elif parameter_type == 'Headline':
 			add = HBox()
-			is_not_last_headline = self._parameters and self._cur_entry < (len(self._parameters) - 2)
+			is_not_last_headline = self._parameters and self._cur_entry is not None and self._cur_entry < (len(self._parameters) - 2)
 			if is_not_last_headline:
 				add.addChild(_icon("content/gui/images/tabwidget/done.png"))
 			add.addChild(_label(parameter[1], font='headline'))
