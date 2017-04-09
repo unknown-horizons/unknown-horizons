@@ -161,8 +161,7 @@ class IngameType(type):
 					new_key = old_key
 				else:
 					# hash the string
-					hashed_key = hashlib.sha1(old_key.encode())
-					new_key = int(hashed_key.hexdigest(), 16)
+					new_key = int(hashlib.sha1(old_key.encode('utf-8')).hexdigest(), 16)
 					# crop to integer. this might not be necessary, however the legacy code operated
 					# on this data type, so problems might occur, also with respect to performance.
 					# in principle, strings and longs should also be supported, but for the sake of
