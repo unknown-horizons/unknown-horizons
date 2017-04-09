@@ -113,10 +113,10 @@ class Server(object):
 	# SN_(player, ...)    ... same as N_(...)
 	# __(...)             ... noop for extracting the strings
 	def gettext(self, player, message):
-		return player.gettext.ugettext(message)
+		return player.gettext.gettext(message)
 
 	def ngettext(self, player, msgid1, msgid2, n):
-		return player.gettext.ungettext(msgid1, msgid2, n)
+		return player.gettext.ngettext(msgid1, msgid2, n)
 
 	def setup_i18n(self):
 		domain = 'unknown-horizons-server'
@@ -242,7 +242,8 @@ class Server(object):
 
 		# store session id inside enet.peer.data
 		# NOTE: ALWAYS initialize peer.data
-		event.peer.data = player.sid
+		session_id = bytes(player.sid, 'ascii')
+		event.peer.data = session_id
 
 		if player.protocol not in PROTOCOLS:
 			logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(player))
@@ -250,7 +251,7 @@ class Server(object):
 			return
 
 		# NOTE: copying bytes or int doesn't work here
-		self.players[player.sid] = player
+		self.players[session_id] = player
 		self.send(event.peer, packets.server.cmd_session(player.sid, self.capabilities))
 
 
