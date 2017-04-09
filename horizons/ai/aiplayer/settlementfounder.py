@@ -86,7 +86,7 @@ class SettlementFounder(object):
 		options = self._get_available_islands(min_land)
 		if not options:
 			return None
-		total_value = sum(zip(*options)[0])
+		total_value = sum(next(zip(*options)))
 
 		# choose a random big enough island with probability proportional to its value
 		choice = self.session.random.randint(0, total_value - 1)
