@@ -97,7 +97,7 @@ class BuildingClass(IngameType):
 			params['rot'] = rotation
 			if rotation == 45:
 				params['left'] = 32
-				params['botm'] = 16 * cls.size[0]
+				params['botm'] = 20 * cls.size[0]
 			elif rotation == 135:
 				params['left'] = 32 * cls.size[1]
 				params['botm'] = 28
