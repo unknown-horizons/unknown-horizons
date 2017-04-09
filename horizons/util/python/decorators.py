@@ -21,11 +21,8 @@
 
 """Save general python function decorators here"""
 
-
 import functools
 import time
-from opcode import EXTENDED_ARG, HAVE_ARGUMENT, opmap
-from types import FunctionType
 
 
 class cachedfunction(object):
