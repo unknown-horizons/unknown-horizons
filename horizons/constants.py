@@ -539,7 +539,7 @@ class LAYERS:
 if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
 	# running GUI tests.
-	_user_dir = str(os.environ['UH_USER_DIR'], encoding='utf-8')
+	_user_dir = os.environ['UH_USER_DIR']
 elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
