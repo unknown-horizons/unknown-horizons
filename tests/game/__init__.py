@@ -89,7 +89,7 @@ class SPTestSession(SPSession):
 
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
-		ExtScheduler.create_instance(Dummy)
+		ExtScheduler.create_instance(mock.Mock())
 		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
