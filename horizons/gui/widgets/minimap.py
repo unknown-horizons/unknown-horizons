@@ -40,7 +40,7 @@ def get_world_to_minimap_ratio(world_dimensions, minimap_dimensions):
 	Returns a tuple for x and y, in case they differ.
 	Accepts two tuples of (width, height) to compute the ratio on.
 	"""
-	return tuple(float(w) / m for w, m in zip(world_dimensions, minimap_dimensions))
+	return tuple(w / m for w, m in zip(world_dimensions, minimap_dimensions))
 
 
 def iter_minimap_points(location, world, island_color, water_color, area=None):
