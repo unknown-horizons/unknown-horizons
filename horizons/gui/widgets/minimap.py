@@ -177,6 +177,11 @@ class Minimap(object):
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
 			self.use_overlay_icon(self.icon)
+
+		# FIXME PY3 width / height of icon is sometimes zero. Why?
+		if self.location.height == 0 or self.location.width == 0:
+			self.location = Rect.init_from_topleft_and_size(0, 0, 128, 128)
+
 		self.session = session
 		self.world = world
 		if self.world:
