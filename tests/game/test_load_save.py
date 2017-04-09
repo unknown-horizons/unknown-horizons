@@ -139,8 +139,8 @@ def test_hunter_save_load():
 	def await_transition(session, collector, old_state, new_state):
 		assert collector.state == old_state, "expected old state {}, got {}".format(old_state, collector.state)
 		while collector.state == old_state:
-			session.run(seconds=1)
-		assert collector.state == new_state, "expected new state {}, got {}".format(old_state, collector.state)
+			session.run()
+		assert collector.state == new_state, "expected new state {}, got {}".format(new_state, collector.state)
 
 
 	sequence = [
