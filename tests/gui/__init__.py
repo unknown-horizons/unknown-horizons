@@ -36,6 +36,7 @@ dotted path to the test (along with other options), similar to this code:
 		menu = gui.find(name='mainmenu')
 """
 
+import io
 import os
 import shutil
 import subprocess
@@ -267,7 +268,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				stdout = sys.stdout
 				stderr = sys.stderr
 				nose_captured = False
-			except AttributeError:
+			except io.UnsupportedOperation:
 				# if nose captures stdout, we can't redirect to sys.stdout, as that was
 				# replaced by StringIO. Instead we capture it and return the data at the
 				# end.
