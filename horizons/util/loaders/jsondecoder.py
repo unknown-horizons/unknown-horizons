@@ -32,9 +32,7 @@ class JsonDecoder:
 					try:
 						k = int(k)
 					except ValueError:
-						k.encode('utf-8')
-				if isinstance(v, str):
-					v = v.encode('utf-8')
+						pass
 				newdict[k] = v
 			return newdict
 
