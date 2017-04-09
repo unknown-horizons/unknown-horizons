@@ -21,11 +21,7 @@
 
 import logging
 import os.path
-
-try:
-	import pickle as pickle
-except ImportError:
-	import pickle # type: ignore
+import pickle
 
 class YamlCacheStorage(object):
 	"""
@@ -84,9 +80,10 @@ class YamlCacheStorage(object):
 			obj._reload()
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
+			e = str(e)
 			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
 				"warning is expected when upgrading from "
-				"old versions.\n".format(filename, str(e)))
+				"old versions.\n".format(filename, e))
 			obj._clear()
 		return obj
 
