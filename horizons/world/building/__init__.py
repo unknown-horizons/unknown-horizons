@@ -106,7 +106,7 @@ class BuildingClass(IngameType):
 				params['botm'] = 16 * cls.size[1]
 			elif rotation == 315:
 				params['left'] = 32 * cls.size[0]
-				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
+				params['botm'] = 18 * (cls.size[0] + cls.size[1] - 1)
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
