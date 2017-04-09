@@ -100,7 +100,7 @@ class BuildingClass(IngameType):
 				params['botm'] = 16 * cls.size[0]
 			elif rotation == 135:
 				params['left'] = 32 * cls.size[1]
-				params['botm'] = 16
+				params['botm'] = 28
 			elif rotation == 225:
 				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
 				params['botm'] = 16 * cls.size[1]
