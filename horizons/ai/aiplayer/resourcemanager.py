@@ -303,7 +303,7 @@ class ResourceManager(WorldObject):
 
 		# discard the less important buy/sell wishes
 		buy_sell_list = sorted(buy_sell_list)[:num_slots]
-		bought_sold_resources = zip(*buy_sell_list)[1]
+		bought_sold_resources = list(zip(*buy_sell_list))[1]
 
 		# clear all slots we will no longer be needing
 		for resource_id in managed_resources:
@@ -394,7 +394,7 @@ class SingleResourceManager(WorldObject):
 
 	def refresh(self):
 		"""Adjust the quotas to take into account the current production levels."""
-		currently_used = sum(zip(*iter(self.quotas.values()))[0])
+		currently_used = sum(list(zip(*iter(self.quotas.values())))[0])
 		self.total = self._get_current_production()
 		if self.total + self.epsilon >= currently_used:
 			self.available = self.total - currently_used
