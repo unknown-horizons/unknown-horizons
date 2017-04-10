@@ -3,6 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
+| 2017.3 | 76 |
 | 2017.2 | 76 |
 | 2017.1 | 76 |
 | 2015.1 | 75 |
@@ -19,6 +20,13 @@ CHANGELOG Unknown Horizons
 | 2010.1 | 8 |
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+2017-XX-XX: Milestone 2017.3
+----------------------------
+changelog date: 10th April 2017
+
+### Codebase
+
+Port to Python3
 
 2017-02-07: Milestone 2017.2
 ----------------------------
