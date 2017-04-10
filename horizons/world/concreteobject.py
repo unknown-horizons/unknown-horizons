@@ -169,7 +169,7 @@ class ConcreteObject(WorldObject):
 				# fall back to one from a higher level.
 				# this does not happen in valid games, but can happen in tests, when level
 				# constraints are ignored.
-				action_set, weight = next(list(action_sets.values()).items())
+				action_set, weight = next(list(action_sets.values().items()))
 
 		return action_set
 
