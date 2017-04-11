@@ -32,8 +32,8 @@ class TestWorld(TestCase):
 
 	def setUp(self):
 		WorldObject.reset()
- 		self.session = Dummy()
+		self.session = Dummy()
 
- 	def test_world_end(self):
+	def test_world_end(self):
 		w = World(self.session)
 		w.end()
