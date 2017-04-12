@@ -44,7 +44,7 @@ def find_enet_module():
 
 	lib_path = os.path.join(os.path.dirname(__file__), "libs")
 
-	type = platform.system().lower()
+	sys_platform = platform.system().lower()
 
 	arch = platform.architecture()[0]
 	if arch == '32bit':
@@ -55,7 +55,7 @@ def find_enet_module():
 		assert False, "Failed to detect system architecture!"
 
 	# Generic identifier, e.g. linux-64
-	directory = "{}-x{}".format(type, arch)
+	directory = "{}-x{}".format(sys_platform, arch)
 
 	# Python version-specific, e.g. linux-64-27. If this is not found, we fall
 	# back to the more generic version.
@@ -114,9 +114,9 @@ class UnableToConnect(ClientException):
 	pass
 
 class CommandError(ClientException):
-	def __init__(self, message, type):
+	def __init__(self, message, sys_platform):
 		super(ClientException, self).__init__(message)
-		self.type = type
+		self.sys_platform = sys_platform
 
 class FatalError(ClientException):
 	pass
