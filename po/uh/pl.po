@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: 2017-04-07 08:01+0000\n"
-"Last-Translator: Łukasz Ch <antoni.chaluda@gmail.com>\n"
+"Last-Translator: Adrian Labuda <adr.labuda@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -2219,13 +2219,12 @@ msgid "Restart required"
 msgstr "Wymagane jest ponowne uruchomienie"
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
 msgstr ""
-"Niektóre z tych zmian wymagają ponownego uruchomienia Unknown Horizons."
+"Niektóre z Twoich zmian, wymagają ponownego uruchomienia Unknown Horizons. "
+"Czy chcesz wykonać restart Gry?"
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
