@@ -241,7 +241,7 @@ class Connection(object):
 		if isinstance(packet, packets.cmd_error):
 			# handle special errors here
 			# the game got terminated by the client
-			raise network.CommandError(packet.errorstr, type=packet.type)
+			raise network.CommandError(packet.errorstr, cmd_type=packet.type)
 		elif isinstance(packet, packets.cmd_fatalerror):
 			self.log.error("[FATAL] Network message: %s", packet.errorstr)
 			self.disconnect(server_may_disconnect=True)
