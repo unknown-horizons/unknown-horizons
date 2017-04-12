@@ -28,7 +28,7 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL
+from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL, GROUND
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
@@ -257,7 +257,8 @@ def add_nature_objects(world, natural_resource_multiplier):
 			for (dx, dy) in fish_directions:
 				position = Point(x+dx, y+dy)
 				newTile = world.get_tile(position)
-				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
+
+				if check_tile_for_tree(world, position, newTile) and newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
 					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
 					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
@@ -266,7 +267,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 
 			# add tree to every nth tile and an animal to one in every M trees
-			if world.session.random.randint(0, 20) == 0 and \
+			if check_tile_for_tree(world, position, newTile) and world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
@@ -289,6 +290,28 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 	# TODO HACK BAD THING revert hack so trees don't start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False
+
+
+def check_tile_for_tree(world, position, tile):
+	"""
+	Returns true if the current tile is a grass tile and a tree can be built there.
+	@param position: position of the to be checked tile
+	@param tile: tile object 
+	"""
+
+	## Make sure the given tile is a default ground tile
+	if tile.id is not GROUND.DEFAULT_LAND[0]:
+		return False
+
+	## In case the directly neighboring tiles are not default land,
+	## we don't want trees to be built.
+	radius = 1
+	neighbor_tiles = world.get_tiles_in_radius(position, radius)
+	for neighbor_tile in neighbor_tiles:
+		if neighbor_tile.id is not GROUND.DEFAULT_LAND[0]:
+			return False
+
+	return True
 
 
 def get_random_possible_ground_unit_position(world):
