@@ -341,7 +341,7 @@ class CreateGame(Window):
 		password = self._gui.collectData('password')
 		maphash = ""
 
-		password = hashlib.sha1(password).hexdigest() if password != "" else ""
+		password = hashlib.sha1(password.encode(encoding='utf-8')).hexdigest() if password != "" else ""
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, maphash, password)
 		if game:
 			# FIXME When canceling the lobby, I'd like the player to return to the main mp
