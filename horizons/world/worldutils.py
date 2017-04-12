@@ -267,7 +267,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 
 			# add tree to every nth tile and an animal to one in every M trees
-			if check_tile_for_tree(world, position, newTile) and newTile.id is not 4 and world.session.random.randint(0, 20) == 0 and \
+			if check_tile_for_tree(world, position, newTile) and world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
