@@ -296,7 +296,7 @@ class Server(object):
 		try:
 			packet = packets.unserialize(event.packet.data, True, player.protocol)
 		except network.SoftNetworkException as e:
-			self.error(player, e.message)
+			self.error(player, str(e))
 			return
 		except network.PacketTooLarge as e:
 			logging.warning("[RECEIVE] Per packet size exceeded from {0!s}: {1!s}".
