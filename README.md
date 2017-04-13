@@ -40,7 +40,7 @@ If you want to start hacking on Unknown Horizons, check out [this guide](https:/
 
 Technology     | Component
 ---------------|----------
-**Python 2**    | Used for everything
+**Python 3**   | Used for everything
 **SQLite**     | Maps
 **YAML**       | Object files storing component based information, easily scriptable
 **[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings

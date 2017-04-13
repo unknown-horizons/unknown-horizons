@@ -26,7 +26,11 @@ changelog date: 10th April 2017
 
 ### Codebase
 
-Port to Python3
+Port:
+ - Port to Python3
+
+Bugfixes:
+ - #2542 Don't place tress on sand tiles
 
 2017-02-07: Milestone 2017.2
 ----------------------------
