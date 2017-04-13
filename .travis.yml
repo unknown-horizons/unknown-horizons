@@ -35,7 +35,6 @@ addons:
     - libsdl2-image-dev
     - libsdl2-ttf-dev
     - libfreetype6-dev
-    - libxcursor-dev
     - libopenal-dev
     - libasound2-dev
     - zlib1g-dev
@@ -72,18 +71,17 @@ install:
   - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
   # https://github.com/fifengine/fifechan/blob/master/INSTALL.md
   - mkdir build_fifechan; cd build_fifechan; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../fifechan
-  - make -j2
+  - make -j3
   - sudo make install
   - cd ..
   # install python3 moduls
   - "pip3 install -r requirements.txt"
-  - "pip3 install coverage coveralls"
 script:
   - cd ..
   - git clone --quiet --depth 1 -b python3_futurize https://github.com/fifengine/fifengine.git
   - mkdir build; cd build; cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 ../fifengine
   - ls -alh .
-  - make -j2
+  - make -j3
   - sudo make install
   # import fife
   - python3 -c 'from fife import fife; print(fife.getVersion())'
