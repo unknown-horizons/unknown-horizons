@@ -233,9 +233,10 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 					return True
 				except CommandError as e:
 					self.log.debug("NetworkInterface: failed to join")
-					if 'name' in e.message:
+					e = str(e)
+					if 'name' in e:
 						self.change_name(self._client_data.name + str(i), save=False )
-					elif 'color' in e.message:
+					elif 'color' in e:
 						self.change_color(self._client_data.color + i, save=False)
 					else:
 						raise
