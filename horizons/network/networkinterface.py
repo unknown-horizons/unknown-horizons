@@ -395,7 +395,7 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 			self.disconnect()
 			return True
 		except CommandError as e:
-			if e.type == ErrorType.TerminateGame:
+			if e.cmd_type == ErrorType.TerminateGame:
 				self._game = None
 			self.broadcast("error", e, fatal=False)
 			return False
