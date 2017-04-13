@@ -467,7 +467,7 @@ class GameLobby(Window):
 		self._gui.show()
 
 	def _on_error(self, error, fatal=True):
-		if error.type == ErrorType.TerminateGame:
+		if error.cmd_type == ErrorType.TerminateGame:
 			# We can't use `_cancel` here, since that calls `leavegame`, which isn't
 			# possible since the game was terminated already.
 			self._windows.close()
