@@ -251,7 +251,7 @@ class MultiplayerMenu(Window):
 			password = self._windows.open(popup)
 			if password is None:
 				return
-			password = hashlib.sha1(password).hexdigest()
+			password = hashlib.sha1(password.encode(encoding='utf-8')).hexdigest()
 			success = NetworkInterface().joingame(game.uuid, password)
 			if not success:
 				return
