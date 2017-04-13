@@ -84,6 +84,7 @@ script:
   - make -j3
   - sudo make install
   # import fife
+  - cd
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - cd /home/travis/build/unknown-horizons/unknown-horizons
   - isort -c -rc horizons tests run_*.py
