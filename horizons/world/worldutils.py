@@ -28,7 +28,7 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL, GROUND
+from horizons.constants import BUILDINGS, GROUND, RES, UNITS, WILD_ANIMAL
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
@@ -296,7 +296,7 @@ def check_tile_for_tree(world, position, tile):
 	"""
 	Returns true if the current tile is a grass tile and a tree can be built there.
 	@param position: position of the to be checked tile
-	@param tile: tile object 
+	@param tile: tile object
 	"""
 
 	## Make sure the given tile is a default ground tile
