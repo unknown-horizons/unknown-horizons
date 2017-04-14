@@ -235,7 +235,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 
 			# when running under coverage, enable it for subprocesses too
 			if os.environ.get('RUNCOV'):
-				executable = ['coverage', 'run']
+				executable = ['python3-coverage', 'run']
 			else:
 				executable = [sys.executable]
 
