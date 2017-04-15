@@ -333,7 +333,7 @@ class LogBook(PickBeltWidget, Window):
 
 	def set_cur_entry(self, cur_entry):
 		if cur_entry < 0 or (cur_entry >= len(self._parameters) and len(self._parameters) != 0):
-			raise ValueError
+			raise ValueError("ERROR: Logbook entry out of Logbook bounds. This should never happen.")
 		self._cur_entry = cur_entry
 		self._redraw_captainslog()
 
