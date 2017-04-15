@@ -236,10 +236,6 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			# when running under coverage, enable it for subprocesses too
 			if os.environ.get('RUNCOV'):
 				executable = ['coverage', 'run']
-				# Ubuntu/Debian call "python3-coverage" instead of "coverage"
-				import platform
-				if platform.linux_distribution()[0] in ("debian", "ubuntu"):
-					executable[0] = "python3-coverage"
 			else:
 				executable = [sys.executable]
 
