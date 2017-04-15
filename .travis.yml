@@ -37,6 +37,7 @@ addons:
     - libglew-dev
     - libvorbis-dev
     - libalut-dev
+    - mesa-utils # for glxinfo
 
 before_install:
   - "sudo apt-get update"
@@ -49,6 +50,7 @@ before_install:
   - "export DISPLAY=:99.0"
   - "export PYTHON_VERSION=python3.4"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16 +extension GLX +extension RANDR +extension RENDER"
+  - glxinfo # to test GLX extension loading by xvfb
   #- "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 install:
