@@ -49,7 +49,6 @@ before_install:
   - "export DISPLAY=:99.0"
   - "export PYTHON_VERSION=python3.4"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16 +extension GLX +extension RANDR +extension RENDER"
-  - glxinfo     # test whether the GLX renderer works
   #- "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 install:
