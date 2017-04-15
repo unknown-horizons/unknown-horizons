@@ -332,7 +332,7 @@ class LogBook(PickBeltWidget, Window):
 		return self._cur_entry
 
 	def set_cur_entry(self, cur_entry):
-		if cur_entry < 0 or cur_entry >= len(self._parameters):
+		if cur_entry < 0 or (cur_entry >= len(self._parameters) and len(self._parameters) != 0):
 			raise ValueError
 		self._cur_entry = cur_entry
 		self._redraw_captainslog()
