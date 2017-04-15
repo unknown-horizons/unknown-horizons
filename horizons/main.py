@@ -157,7 +157,7 @@ def start(_command_line_arguments):
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
 	if command_line_arguments.gui_test:
-		horizons.globals.fife.engine.getSettings().setRenderBackend('SDL')
+		horizons.globals.fife.engine.getSettings().setRenderBackend('OpenGL')
 		horizons.globals.fife.set_fife_setting('PlaySounds', False)
 
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
