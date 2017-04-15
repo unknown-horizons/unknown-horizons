@@ -303,7 +303,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 					if stdout:
 						print(stdout)
 					if b'Traceback' not in stderr:
-						stderr += '\nNo usable error output received, possibly a segfault.'
+						stderr += b'\nNo usable error output received, possibly a segfault.'
 					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))
 				else:
 					raise TestFailed()
