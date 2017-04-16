@@ -70,7 +70,7 @@ class IngameType(type):
 		If `string` is None (not defined or empty in yaml), returns empty unicode.
 		"""
 		if not string:
-			return u''
+			return ''
 		if string.startswith("_ "):
 			return LazyT(string[2:])
 		else:
@@ -86,7 +86,7 @@ class IngameType(type):
 		if isinstance(name_data, dict): # { level_id : name }
 			# fill up dict (fall down to highest tier which has a name specified
 			self._level_specific_names = {}
-			for lvl in xrange(start_tier, TIER.CURRENT_MAX + 1):
+			for lvl in range(start_tier, TIER.CURRENT_MAX + 1):
 				name = name_data.get(lvl)
 				if name is None:
 					name = self._level_specific_names.get(lvl - 1)
@@ -146,7 +146,7 @@ class IngameType(type):
 	def _parse_component_templates(self):
 		"""Prepares misc data in self.component_templates"""
 		producer = [ comp for comp in self.component_templates if
-		             isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent' ]
+		             isinstance(comp, dict) and next(iter(comp.keys())) == 'ProducerComponent' ]
 		if producer:
 			# we want to support string production line ids, the code should still only see integers
 			# therefore we do a deterministic string -> int conversion here
@@ -156,12 +156,12 @@ class IngameType(type):
 
 			new_data = {}
 
-			for old_key, v in original_data.iteritems():
+			for old_key, v in original_data.items():
 				if isinstance(old_key, int):
 					new_key = old_key
 				else:
 					# hash the string
-					new_key = int(hashlib.sha1(old_key).hexdigest(), 16)
+					new_key = int(hashlib.sha1(old_key.encode('utf-8')).hexdigest(), 16)
 					# crop to integer. this might not be necessary, however the legacy code operated
 					# on this data type, so problems might occur, also with respect to performance.
 					# in principle, strings and longs should also be supported, but for the sake of

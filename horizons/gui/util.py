@@ -32,12 +32,7 @@ from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
-# Find the best implementation available on this platform
-try:
-	from cStringIO import StringIO
-except ImportError:
-	from StringIO import StringIO # type: ignore
-
+from io import BytesIO
 
 
 @decorators.cachedfunction
@@ -78,7 +73,7 @@ def get_widget_xml(filename):
 	This function reads the given widget file's content and returns the XML.
 	It is cached to avoid useless IO.
 	"""
-	with open(get_gui_files_map()[filename]) as open_file:
+	with open(get_gui_files_map()[filename], 'rb') as open_file:
 		return open_file.read()
 
 def load_uh_widget(filename, style=None, center_widget=False):
@@ -86,10 +81,10 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	"""
 	# load widget
 	try:
-		widget = loadXML(StringIO(get_widget_xml(filename)))
+		widget = loadXML(BytesIO(get_widget_xml(filename)))
 	except (IOError, ValueError) as error:
 		log = logging.getLogger('gui')
-		log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
+		log.error('PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
 		raise
 
 	# translate

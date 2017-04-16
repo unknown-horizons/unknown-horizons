@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 from .fakeresourcedeposit import AbstractFakeResourceDeposit
 
@@ -35,5 +34,3 @@ class AbstractIronDeposit(AbstractFakeResourceDeposit):
 		cls._available_buildings[BUILDINGS.MOUNTAIN] = cls
 
 AbstractIronDeposit.register_buildings()
-
-decorators.bind_all(AbstractIronDeposit)

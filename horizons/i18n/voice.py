@@ -19,15 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
-
 import glob
 import os.path
 from random import randrange
+from typing import Optional
 
 import horizons.globals
 from horizons.constants import PATHS
-from horizons.ext.typing import Optional
 
 
 """

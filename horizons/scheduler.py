@@ -28,7 +28,7 @@ from horizons.util.living import LivingObject
 from horizons.util.python.singleton import ManualConstructionSingleton
 
 
-class Scheduler(LivingObject):
+class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 	""""Class providing timed callbacks.
 	Master of time.
 
@@ -40,7 +40,6 @@ class Scheduler(LivingObject):
 
 	@param timer: Timer instance the schedular registers itself with.
 	"""
-	__metaclass__ = ManualConstructionSingleton
 
 	log = logging.getLogger("scheduler")
 
@@ -114,7 +113,7 @@ class Scheduler(LivingObject):
 		# run jobs added in the loop above
 		self._run_additional_jobs()
 
-		assert (not self.schedule) or self.schedule.iterkeys().next() > self.cur_tick
+		assert (not self.schedule) or next(iter(self.schedule.keys())) > self.cur_tick
 
 	def before_ticking(self):
 		"""Called after game load and before game has started.
@@ -208,7 +207,7 @@ class Scheduler(LivingObject):
 		removed_calls = 0
 		for key in self.schedule:
 			callback_objects = self.schedule[key]
-			for i in xrange(len(callback_objects) - 1, -1, -1):
+			for i in range(len(callback_objects) - 1, -1, -1):
 				if (callback_objects[i].class_instance is instance
 				    and callback_objects[i].callback == callback
 				    and not hasattr(callback_objects[i], "invalid")):
@@ -217,7 +216,7 @@ class Scheduler(LivingObject):
 
 		test = 0
 		if removed_calls > 0: # there also must be calls in the calls_by_instance dict
-			for i in xrange(len(self.calls_by_instance[instance]) - 1, -1, -1):
+			for i in range(len(self.calls_by_instance[instance]) - 1, -1, -1):
 				obj = self.calls_by_instance[instance][i]
 				if obj.callback == callback:
 					del self.calls_by_instance[instance][i]
@@ -226,7 +225,7 @@ class Scheduler(LivingObject):
 			if not self.calls_by_instance[instance]:
 				del self.calls_by_instance[instance]
 
-		for i in xrange(len(self.additional_cur_tick_schedule) - 1, -1, -1):
+		for i in range(len(self.additional_cur_tick_schedule) - 1, -1, -1):
 			if self.additional_cur_tick_schedule[i].class_instance is instance and \
 				self.additional_cur_tick_schedule[i].callback == callback:
 					del callback_objects[i]
@@ -258,9 +257,9 @@ class Scheduler(LivingObject):
 		if assert_present:
 			assert len(calls) == 1, 'got {:i} calls for {} {}: {}'\
 				.format(len(calls), instance, callback, [str(i) for i in calls])
-			return calls.itervalues().next()
+			return next(iter(calls.values()))
 		else:
-			return calls.itervalues().next() if calls else None
+			return next(iter(calls.values())) if calls else None
 
 	def get_ticks(self, seconds):
 		"""Call propagated to time instance"""

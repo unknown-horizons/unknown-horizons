@@ -23,7 +23,6 @@
 Cleaner interface to various game/gui functions to make tests easier.
 """
 
-from __future__ import print_function
 
 import contextlib
 import os
@@ -54,16 +53,18 @@ def get_player_ship(session):
 	raise Exception('Player ship not found')
 
 
-def move_ship(gui, ship, (x, y)):
+def move_ship(gui, ship, coords):
 	"""Move ship to coordinates and wait until it arrives."""
+	x, y = coords
 	gui.cursor_click(x, y, 'right')
 
 	while (ship.position.x, ship.position.y) != (x, y):
 		cooperative.schedule()
 
 
-def found_settlement(gui, ship_pos, (x, y)):
+def found_settlement(gui, ship_pos, coords):
 	"""Move ship to coordinates and build a warehouse."""
+	x, y = coords
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 	move_ship(gui, ship, ship_pos)
@@ -271,11 +272,11 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 				gui_helper.run()
 
-			match.select = types.MethodType(select, match, match.__class__)
+			match.select = types.MethodType(select, match)
 		elif isinstance(match, pychan.widgets.TextField):
 			def write(self, text):
 				"""Change text inside a textfield."""
-				self.text = unicode(text)
+				self.text = str(text)
 				return self # return self to allow chaining
 
 			def enter(self):
@@ -283,8 +284,8 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 				gui_helper.run()
 
-			match.write = types.MethodType(write, match, match.__class__)
-			match.enter = types.MethodType(enter, match, match.__class__)
+			match.write = types.MethodType(write, match)
+			match.enter = types.MethodType(enter, match)
 		elif isinstance(match, pychan.widgets.Slider):
 			def slide(self, value):
 				"""Set the slider to this value and trigger callbacks."""
@@ -296,7 +297,7 @@ class GuiHelper(object):
 					gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
 					gui_helper.run()
 
-			match.slide = types.MethodType(slide, match, match.__class__)
+			match.slide = types.MethodType(slide, match)
 
 		return match
 
@@ -331,7 +332,7 @@ class GuiHelper(object):
 			event_name, = parts
 
 		# if widget is given by name, look it up first
-		if isinstance(widget, basestring):
+		if isinstance(widget, str):
 			widget_name = widget
 			widget = self.find(widget_name)
 			if not widget:
@@ -450,8 +451,10 @@ class GuiHelper(object):
 		x, y = coords[-1]
 		self.cursor_click(x, y, 'right')
 
-	def cursor_drag(self, (start_x, start_y), (end_x, end_y), button):
+	def cursor_drag(self, start_coords, end_coords, button):
 		"""Press mouse button, move the mouse, release button."""
+		start_x, start_y = start_coords
+		end_x, end_y = end_coords
 		self.cursor_move(start_x, start_y)
 		self.cursor_press_button(start_x, start_y, button)
 		self.run()

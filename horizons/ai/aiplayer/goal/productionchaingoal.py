@@ -22,7 +22,6 @@
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class ProductionChainGoal(SettlementGoal):
@@ -152,16 +151,3 @@ class SaltGoal(ProductionChainGoal):
 
 	def get_personality_name(self):
 		return 'SaltGoal'
-
-decorators.bind_all(ProductionChainGoal)
-decorators.bind_all(FaithGoal)
-decorators.bind_all(TextileGoal)
-decorators.bind_all(BricksGoal)
-decorators.bind_all(EducationGoal)
-decorators.bind_all(GetTogetherGoal)
-decorators.bind_all(ToolsGoal)
-decorators.bind_all(BoardsGoal)
-decorators.bind_all(FoodGoal)
-decorators.bind_all(CommunityGoal)
-decorators.bind_all(TobaccoProductsGoal)
-decorators.bind_all(SaltGoal)

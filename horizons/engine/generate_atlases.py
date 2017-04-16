@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import glob
 import json
@@ -32,18 +32,14 @@ import os
 import os.path
 import sys
 import traceback
-
-try:
-	import cPickle as pickle
-except ImportError:
-	import pickle # type: ignore
+import pickle
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
-app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')
+app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python3.4')
 if os.path.exists(app_python_lib_path):
-	# horizons path: Unknown Horizons.app/Contents/Resources/lib/python2.7/horizons
+	# horizons path: Unknown Horizons.app/Contents/Resources/lib/python3.3/horizons
 	sys.path.append(app_python_lib_path)
-	# PIL path: Unknown Horizons.app/Contents/Resources/lib/python2.7/lib-dynload/PIL
+	# PIL path: Unknown Horizons.app/Contents/Resources/lib/python3.3/lib-dynload/PIL
 	sys.path.append(os.path.join(app_python_lib_path, 'lib-dynload'))
 
 try:
@@ -131,7 +127,7 @@ class AtlasBook(object):
 		im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
 
 		# place the sub-images in the right places
-		for path, entry in self.location.iteritems():
+		for path, entry in self.location.items():
 			with open(path, 'rb') as png_file:
 				sub_image = Image.open(png_file)
 				im.paste(sub_image, (entry.x, entry.y))
@@ -184,7 +180,7 @@ class ImageSetManager(object):
 						row.append(book_entry.height)
 						self._add_entry(set_id, action_id, rotation, path, row)
 
-		with open(self._path, 'wb') as json_file:
+		with open(self._path, 'w') as json_file:
 			json.dump(self._data, json_file, indent=1)
 
 
@@ -219,7 +215,7 @@ class AtlasGenerator(object):
 		pool.join()
 
 	def save(self):
-		with open(PATHS.ATLAS_DB_PATH, 'wb') as atlas_db_file:
+		with open(PATHS.ATLAS_DB_PATH, 'w') as atlas_db_file:
 			atlas_db_file.write("CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
 			for book in self.books:
 				atlas_db_file.write("INSERT INTO atlas VALUES({0:d}, "
@@ -415,7 +411,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print('Usage: python2 generate_atlases.py max_size')
+		print('Usage: python3 generate_atlases.py max_size')
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))

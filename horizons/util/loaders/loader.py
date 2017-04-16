@@ -101,7 +101,7 @@ class GeneralLoader(object):
 	@classmethod
 	def _load_mirrored_roads(cls, base_action, existing_files):
 		actions = defaultdict(dict)
-		for base_rotation, path in existing_files.iteritems():
+		for base_rotation, path in existing_files.items():
 			action = base_action
 			for iteration in range(1, 4):
 				rotation = (base_rotation + iteration * 90) % 360

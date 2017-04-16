@@ -61,7 +61,7 @@ class OverviewTab(TabInterface):
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
 			self.widget.child_finder('running_costs').text = \
-			    unicode(self.instance.running_costs)
+			    str(self.instance.running_costs)
 
 		self.widget.adaptLayout()
 

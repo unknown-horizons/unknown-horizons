@@ -25,7 +25,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class AbstractSignalFire(AbstractBuilding):
@@ -70,6 +69,3 @@ class SignalFireEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.SIGNAL_FIRE
 
 AbstractSignalFire.register_buildings()
-
-decorators.bind_all(AbstractSignalFire)
-decorators.bind_all(SignalFireEvaluator)

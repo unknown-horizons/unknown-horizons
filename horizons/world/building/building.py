@@ -31,7 +31,6 @@ from horizons.constants import GAME, LAYERS, RES
 from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.python import decorators
 from horizons.util.shapes import ConstRect, Point, distances
 from horizons.util.worldobject import WorldObject
 from horizons.world.building.buildable import BuildableSingle
@@ -301,7 +300,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				action = 'idle_full'
 			else:
 				# set first action
-				action = action_set.keys()[0]
+				action = list(action_set.keys())[0]
 
 		if (Fife.getVersion() >= (0, 3, 6)):
 			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
@@ -325,12 +324,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		pass
 
 	def __unicode__(self): # debug
-		return u'{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
+		return '{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):
 	"""Building with default properties, that does nothing."""
 	pass
-
-
-decorators.bind_all(BasicBuilding)

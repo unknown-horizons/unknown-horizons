@@ -9,7 +9,7 @@
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
 				comment="Trade route setting: Whether to wait until all goods could be loaded." />
-			<CheckBox name="wait_at_load" min_size="15,15" is_focusable="0" />
+			<CheckBox name="wait_at_load" fixed_size="15,15" is_focusable="0" />
 		</HBox>
 		<HBox>
 			<Label name="lbl_wait_at_unload"  text="Wait at unload:"

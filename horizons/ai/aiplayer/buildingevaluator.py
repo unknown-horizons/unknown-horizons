@@ -23,7 +23,6 @@ import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class BuildingEvaluator(object):
@@ -198,10 +197,8 @@ class BuildingEvaluator(object):
 
 		best_index = 0
 		best_value = evaluators[0].value
-		for i in xrange(1, len(evaluators)):
+		for i in range(1, len(evaluators)):
 			if evaluators[i].value > best_value:
 				best_index = i
 				best_value = evaluators[i].value
 		return evaluators[best_index]
-
-decorators.bind_all(BuildingEvaluator)

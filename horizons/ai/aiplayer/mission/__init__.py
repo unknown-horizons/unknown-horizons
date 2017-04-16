@@ -22,7 +22,6 @@
 import logging
 
 from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.util.python import decorators
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.constants import BUILDINGS
@@ -120,6 +119,3 @@ class ShipMission(Mission):
 
 	def __str__(self):
 		return super(ShipMission, self).__str__() + (' using %s' % (self.ship if hasattr(self, 'ship') else 'unknown ship'))
-
-decorators.bind_all(Mission)
-decorators.bind_all(ShipMission)

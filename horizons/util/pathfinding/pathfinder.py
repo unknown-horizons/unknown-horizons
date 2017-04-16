@@ -22,7 +22,6 @@
 import collections
 import heapq
 
-from horizons.util.python import decorators
 
 # the values are based on the configurations of the first two of the three sets of relative coordinates (previous, current, next)
 COUNTERCLOCKWISE_TURNS = [((0, 0), (0, 1)), ((0, 1), (1, 1)), ((1, 0), (0, 0)), ((1, 1), (1, 0))]
@@ -57,11 +56,11 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 
 	distance = {}
 	heap = []
-	for dir in xrange(2): # 0 -> changed x, 1 -> changed y
+	for direction in range(2): # 0 -> changed x, 1 -> changed y
 		# NOTE: all distances are in the form (actual distance, number of turns, number of non-preferred turns)
 		real_distance = (1, 0, 0)
 		expected_distance = (((source[0] - destination[0]) ** 2 + (source[1] - destination[1]) ** 2) ** 0.5, 0, 0)
-		key = (source[0], source[1], dir)
+		key = (source[0], source[1], direction)
 		# the value is (real distance so far, previous key)
 		distance[key] = (real_distance, None)
 		# (expected distance to the destination, current real distance, key)
@@ -74,17 +73,17 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 	# perform A*
 	while heap:
 		(_, distance_so_far, key) = heapq.heappop(heap)
-		if distance[key] < distance_so_far:
+		if distance[key][0] < distance_so_far:
 			continue
 		if (key[0], key[1]) == destination:
 			final_key = key
 			break
 
-		for dir in xrange(4):
-			coords = (key[0] + moves[dir][0], key[1] + moves[dir][1])
+		for direction in range(4):
+			coords = (key[0] + moves[direction][0], key[1] + moves[direction][1])
 			if coords not in nodes:
 				continue
-			reduced_dir = 0 if moves[dir][0] != 0 else 1
+			reduced_dir = 0 if moves[direction][0] != 0 else 1
 			next_key = (coords[0], coords[1], reduced_dir)
 
 			# determine whether this is a turn and if so then whether it is in the preferred direction
@@ -108,6 +107,3 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 			final_key = distance[final_key][1]
 		return path
 	return None
-
-
-decorators.bind_all(a_star_find_path)

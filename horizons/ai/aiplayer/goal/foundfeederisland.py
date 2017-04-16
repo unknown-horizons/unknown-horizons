@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
 
 
 class FoundFeederIslandGoal(SettlementGoal):
@@ -48,5 +47,3 @@ class FoundFeederIslandGoal(SettlementGoal):
 		self.settlement_manager.log.info('%s waiting for a feeder islands to be founded', self)
 		self.owner.settlement_founder.found_feeder_island()
 		return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
-
-decorators.bind_all(FoundFeederIslandGoal)

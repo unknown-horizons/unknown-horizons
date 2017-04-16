@@ -147,7 +147,7 @@ class CityInfo(object):
 		"""Update display of inhabitants count."""
 		foundlabel = self._child_finder('city_inhabitants')
 		old_amount = int(foundlabel.text) if foundlabel.text else 0
-		foundlabel.text = u' {amount:>4d}'.format(amount=old_amount + message.change)
+		foundlabel.text = ' {amount:>4d}'.format(amount=old_amount + message.change)
 		foundlabel.resizeToContent()
 
 	def _update_settlement(self):
@@ -161,7 +161,7 @@ class CityInfo(object):
 			city_name_label.enable_cursor_change_on_hover()
 		else: # no name changes
 			cb = lambda: AmbientSoundComponent.play_special('error')
-			helptext = u""
+			helptext = ""
 			city_name_label.disable_cursor_change_on_hover()
 
 		self._widget.mapEvents({
@@ -178,7 +178,7 @@ class CityInfo(object):
 		foundlabel.resizeToContent()
 
 		foundlabel = self._child_finder('city_inhabitants')
-		foundlabel.text = u' {amount:>4d}'.format(amount=self._settlement.inhabitants)
+		foundlabel.text = ' {amount:>4d}'.format(amount=self._settlement.inhabitants)
 		foundlabel.resizeToContent()
 
 		self._update_position()

@@ -21,7 +21,7 @@
 
 import logging
 import threading
-from thread import error as ThreadError  # raised by threading.Lock.release
+from _thread import error as ThreadError  # raised by threading.Lock.release
 
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader

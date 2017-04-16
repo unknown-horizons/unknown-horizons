@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
 
 import logging
 import time
@@ -86,7 +85,7 @@ class Connection(object):
 				self.server_address = enet.Address(*self.server_address_parameters)
 			self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
-			raise network.NetworkException(T("Unable to connect to server.") + u" " +
+			raise network.NetworkException(T("Unable to connect to server.") + " " +
 			                               T("Maybe invalid or irresolvable server address."))
 
 		event = self.host.service(SERVER_TIMEOUT)
@@ -242,7 +241,7 @@ class Connection(object):
 		if isinstance(packet, packets.cmd_error):
 			# handle special errors here
 			# the game got terminated by the client
-			raise network.CommandError(packet.errorstr, type=packet.type)
+			raise network.CommandError(packet.errorstr, cmd_type=packet.type)
 		elif isinstance(packet, packets.cmd_fatalerror):
 			self.log.error("[FATAL] Network message: %s", packet.errorstr)
 			self.disconnect(server_may_disconnect=True)

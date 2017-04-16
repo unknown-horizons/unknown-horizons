@@ -22,7 +22,6 @@
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
@@ -52,5 +51,3 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		result = self._build_extra_storage()
 		self._log_generic_build_result(result, 'storage space provider')
 		return self._translate_build_result(result)
-
-decorators.bind_all(StorageSpaceGoal)

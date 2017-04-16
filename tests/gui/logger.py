@@ -24,7 +24,7 @@ When activated, several hooks are installed into pychan/guichan and catch
 key presses and widget interactions.
 The results are formatted as code that can be used for writing GUI tests.
 """
-from __future__ import print_function
+
 
 import logging
 from functools import wraps

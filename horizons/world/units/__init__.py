@@ -24,7 +24,7 @@ import logging
 from fife import fife
 
 import horizons.globals
-from horizons.ext.typing import Sequence
+from typing import Sequence
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType
@@ -74,7 +74,7 @@ class UnitClass(IngameType):
 		#{ action_set : { action_id : [ load0, load1, ..., loadn ]}}
 		# (loadi are load functions of objects, there can be many per as_id and action)
 		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
-		for set_dict in cls.action_sets.itervalues():
+		for set_dict in cls.action_sets.values():
 			for action_set in set_dict: # set1, set2, ...
 				if action_set not in cls._action_load_callbacks:
 					cls._action_load_callbacks[action_set] = {}

@@ -27,9 +27,9 @@ class WeakMethod(object):
 	def __init__(self, function):
 		assert callable(function)
 
-		if isinstance(function, types.MethodType) and function.im_self is not None:
-			self.function = function.im_func
-			self.instance = weakref.ref(function.im_self)
+		if isinstance(function, types.MethodType) and function.__self__ is not None:
+			self.function = function.__func__
+			self.instance = weakref.ref(function.__self__)
 		else:
 			self.function = function
 			self.instance = None

@@ -113,10 +113,10 @@ class Server(object):
 	# SN_(player, ...)    ... same as N_(...)
 	# __(...)             ... noop for extracting the strings
 	def gettext(self, player, message):
-		return player.gettext.ugettext(message)
+		return player.gettext.gettext(message)
 
 	def ngettext(self, player, msgid1, msgid2, n):
-		return player.gettext.ungettext(msgid1, msgid2, n)
+		return player.gettext.ngettext(msgid1, msgid2, n)
 
 	def setup_i18n(self):
 		domain = 'unknown-horizons-server'
@@ -127,10 +127,10 @@ class Server(object):
 				self.i18n[lang] = gettext.translation(domain, dir, [lang])
 			except IOError:
 				pass
-		import __builtin__
-		__builtin__.__dict__['S_']   = self.gettext
-		__builtin__.__dict__['SN_']  = self.ngettext
-		__builtin__.__dict__['__']   = lambda x : x
+		import builtins
+		builtins.__dict__['S_']   = self.gettext
+		builtins.__dict__['SN_']  = self.ngettext
+		builtins.__dict__['__']   = lambda x : x
 
 
 	# uuid4() uses /dev/urandom when possible
@@ -242,7 +242,8 @@ class Server(object):
 
 		# store session id inside enet.peer.data
 		# NOTE: ALWAYS initialize peer.data
-		event.peer.data = player.sid
+		session_id = bytes(player.sid, 'ascii')
+		event.peer.data = session_id
 
 		if player.protocol not in PROTOCOLS:
 			logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(player))
@@ -250,7 +251,7 @@ class Server(object):
 			return
 
 		# NOTE: copying bytes or int doesn't work here
-		self.players[player.sid] = player
+		self.players[session_id] = player
 		self.send(event.peer, packets.server.cmd_session(player.sid, self.capabilities))
 
 
@@ -295,7 +296,7 @@ class Server(object):
 		try:
 			packet = packets.unserialize(event.packet.data, True, player.protocol)
 		except network.SoftNetworkException as e:
-			self.error(player, e.message)
+			self.error(player, str(e))
 			return
 		except network.PacketTooLarge as e:
 			logging.warning("[RECEIVE] Per packet size exceeded from {0!s}: {1!s}".
@@ -499,7 +500,7 @@ class Server(object):
 
 	def preparegame(self, game):
 		logging.debug("[PREPARE] [{0!s}] Players: {1!s}".
-			format(game.uuid, [unicode(i) for i in game.players]))
+			format(game.uuid, [str(i) for i in game.players]))
 		game.state = Game.State.Prepare
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_preparegame())
@@ -507,7 +508,7 @@ class Server(object):
 
 	def startgame(self, game):
 		logging.debug("[START] [{0!s}] Players: {1!s}".
-			format(game.uuid, [unicode(i) for i in game.players]))
+			format(game.uuid, [str(i) for i in game.players]))
 		game.state = Game.State.Running
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_startgame())
