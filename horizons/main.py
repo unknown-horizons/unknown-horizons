@@ -154,7 +154,7 @@ def start(_command_line_arguments):
 	if not setup_gui_logger(command_line_arguments):
 		return False
 
-	## Check if the no-audio flag has been set.
+	# Check if the no-audio flag has been set.
 	if command_line_arguments.no_audio:
 		horizons.globals.fife.set_fife_setting('PlaySounds', False)
 
