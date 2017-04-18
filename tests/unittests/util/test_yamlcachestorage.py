@@ -1,7 +1,5 @@
-#!/usr/bin/env python3
-
 # ###################################################
-# Copyright (C) 2008-2017 The Unknown Horizons Team
+# Copyright (C) 2008-2016 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,28 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
-import pstats
-import sys
+import os
+import tempfile
+import unittest
+
+from horizons.util.yamlcachestorage import YamlCacheStorage
 
 
-if not sys.argv:
-	print('profile_output.py file [ sortstats [ ( callees | callers ) ] ]')
-	sys.exit(1)
+class YamlCacheStorageTest(unittest.TestCase):
 
-p = pstats.Stats(sys.argv[1])
+	def setUp(self):
+		super().setUp()
+		self.tmp_file = tempfile.NamedTemporaryFile(delete=False)
 
-p.strip_dirs()
+	def tearDown(self):
+		os.unlink(self.tmp_file.name)
+		super().tearDown()
 
-arg2 = None if len(sys.argv) < 3 else sys.argv[2]
+	def test_save_and_reopen(self):
+		cache = YamlCacheStorage(self.tmp_file.name)
+		cache['foo'] = 'bar'
+		cache.sync()
 
-p.sort_stats(-1 if arg2 is None else arg2)
-
-if not len(sys.argv) > 3:
-	p.print_stats()
-elif sys.argv[3] == 'callees':
-	p.print_callees()
-elif sys.argv[3] == 'callers':
-	p.print_callers()
-else:
-	print('invalid arg')
+		new_cache = YamlCacheStorage.open(self.tmp_file.name)
+		self.assertEqual(new_cache['foo'], 'bar')

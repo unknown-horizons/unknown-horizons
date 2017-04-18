@@ -28,7 +28,7 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL
+from horizons.constants import BUILDINGS, GROUND, RES, UNITS, WILD_ANIMAL
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
@@ -128,7 +128,7 @@ def add_resource_deposits(world, resource_multiplier):
 	def get_valid_locations(usable_part, island, width, height):
 		"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
 		locations = []
-		offsets = list(itertools.product(xrange(width), xrange(height)))
+		offsets = list(itertools.product(range(width), range(height)))
 		for x, y in sorted(usable_part):
 			min_value = None
 			for dx, dy in offsets:
@@ -150,12 +150,12 @@ def add_resource_deposits(world, resource_multiplier):
 
 		total_sum = [0]
 		last_sum = 0
-		for value in zip(*locations)[0]:
+		for value in next(zip(*locations)):
 			last_sum += value
 			total_sum.append(last_sum)
 
-		for _unused1 in xrange(max_objects):
-			for _unused2 in xrange(7): # try to place the object 7 times
+		for _unused1 in range(max_objects):
+			for _unused2 in range(7): # try to place the object 7 times
 				object_sum = world.session.random.random() * last_sum
 				pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 				x, y = locations[pos][1]
@@ -169,7 +169,7 @@ def add_resource_deposits(world, resource_multiplier):
 		# mark island tiles that are next to the sea
 		queue = deque()
 		distance = {}
-		for (x, y), tile in island.ground_map.iteritems():
+		for (x, y), tile in island.ground_map.items():
 			if len(tile.classes) == 1: # could be a shallow to deep water tile
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
@@ -192,7 +192,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		# calculate tiles' values
 		usable_part = {}
-		for coords, dist in distance.iteritems():
+		for coords, dist in distance.items():
 			if coords in island.ground_map and 'constructible' in island.ground_map[coords].classes:
 				usable_part[coords] = (dist + 5) ** 2
 
@@ -246,18 +246,19 @@ def add_nature_objects(world, natural_resource_multiplier):
 	add_resource_deposits(world, natural_resource_multiplier)
 	Tree = Entities.buildings[BUILDINGS.TREE]
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
-	fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
+	fish_directions = [(i, j) for i in range(-1, 2) for j in range(-1, 2)]
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
 	# add trees, wild animals, and fish
 	for island in world.islands:
-		for (x, y), tile in sorted(island.ground_map.iteritems()):
+		for (x, y), tile in sorted(island.ground_map.items()):
 			# add trees based on adjacent trees
 			for (dx, dy) in fish_directions:
 				position = Point(x+dx, y+dy)
 				newTile = world.get_tile(position)
-				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
+
+				if check_tile_for_tree(world, position, newTile) and newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
 					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
 					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
@@ -266,7 +267,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 
 			# add tree to every nth tile and an animal to one in every M trees
-			if world.session.random.randint(0, 20) == 0 and \
+			if check_tile_for_tree(world, position, newTile) and world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
@@ -289,6 +290,28 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 	# TODO HACK BAD THING revert hack so trees don't start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False
+
+
+def check_tile_for_tree(world, position, tile):
+	"""
+	Returns true if the current tile is a grass tile and a tree can be built there.
+	@param position: position of the to be checked tile
+	@param tile: tile object
+	"""
+
+	## Make sure the given tile is a default ground tile
+	if tile.id is not GROUND.DEFAULT_LAND[0]:
+		return False
+
+	## In case the directly neighboring tiles are not default land,
+	## we don't want trees to be built.
+	radius = 1
+	neighbor_tiles = world.get_tiles_in_radius(position, radius)
+	for neighbor_tile in neighbor_tiles:
+		if neighbor_tile.id is not GROUND.DEFAULT_LAND[0]:
+			return False
+
+	return True
 
 
 def get_random_possible_ground_unit_position(world):

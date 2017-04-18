@@ -68,7 +68,7 @@ class EditorSession(Session):
 			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
 			headline = T("Failed to quicksave.")
-			descr = T("An error happened during quicksave.") + u"\n" + T("Your map has not been saved.")
+			descr = T("An error happened during quicksave.") + "\n" + T("Your map has not been saved.")
 			advice = T("If this error happens again, please contact the development team: "
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.ingame_gui.open_error_popup(headline, descr, advice)

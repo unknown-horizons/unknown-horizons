@@ -55,8 +55,8 @@ class CollectingComponent(Component):
 
 	def create_collector(self, collectors):
 		"""Creates collectors for building according to db."""
-		for collector_class, count in collectors.iteritems():
-			for i in xrange(0, count):
+		for collector_class, count in collectors.items():
+			for i in range(0, count):
 				self.add_collector(collector_class)
 
 	def add_collector(self, collector_class):

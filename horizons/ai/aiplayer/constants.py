@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class BUILD_RESULT:
@@ -114,7 +113,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.STONE_PIT] = BUILDINGS.STONE_PIT
 		cls.purpose_to_building[cls.STONEMASON] = BUILDINGS.STONEMASON
 
-		for purpose, building_id in cls.purpose_to_building.iteritems():
+		for purpose, building_id in cls.purpose_to_building.items():
 			cls.building_to_purpose[building_id] = purpose
 
 	@classmethod
@@ -126,7 +125,3 @@ class BUILDING_PURPOSE:
 		return cls.purpose_to_building[building_id]
 
 BUILDING_PURPOSE.init_translation()
-
-decorators.bind_all(BUILD_RESULT)
-decorators.bind_all(GOAL_RESULT)
-decorators.bind_all(BUILDING_PURPOSE)

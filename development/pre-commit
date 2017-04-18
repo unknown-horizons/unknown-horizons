@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 #-*- mode: python -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
@@ -47,7 +47,7 @@ import re
 import Tkinter
 import tkMessageBox
 
-syntax_checker = "pyflakes-python2"
+syntax_checker = "pyflakes-python3"
 
 class bcolors:
 	"""Colors used to color the output"""

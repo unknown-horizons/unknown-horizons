@@ -25,7 +25,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class AbstractSmeltery(AbstractBuilding):
@@ -62,6 +61,3 @@ class SmelteryEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.SMELTERY
 
 AbstractSmeltery.register_buildings()
-
-decorators.bind_all(AbstractSmeltery)
-decorators.bind_all(SmelteryEvaluator)

@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 from fife import fife
 from fife.extensions.pychan.widgets import Button
@@ -96,7 +96,7 @@ class HotkeyConfiguration(object):
 		self.listener.activate()
 		self.update_buttons_text()
 		button.font = 'default'
-		button.text = T(u"Press key…")
+		button.text = T("Press key…")
 
 	def _detect_keypress(self, event):
 		if not self.detecting:
@@ -119,12 +119,12 @@ class HotkeyConfiguration(object):
 				if bindings[j] == 'UNASSIGNED':
 					bindings[j] = ''
 			secondary_button = self.secondary_buttons[i]
-			button.text = unicode(bindings[0])
+			button.text = str(bindings[0])
 			if len(bindings) > 1:
 				secondary_button.font = 'default_bold'
-				secondary_button.text = unicode(bindings[1])
+				secondary_button.text = str(bindings[1])
 			else:
-				secondary_button.text = u''
+				secondary_button.text = ''
 
 	def apply_change(self):
 		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
@@ -146,7 +146,7 @@ class HotkeyConfiguration(object):
 				return
 
 			message = T("{key} is already set to {action}.").format(key=key_name, action=oldaction)
-			message += u" " + T("Would you like to overwrite it?")
+			message += " " + T("Would you like to overwrite it?")
 			confirmed = horizons.main._modules.gui.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
@@ -176,7 +176,7 @@ class HotkeyConfiguration(object):
 	def key_is_set(self, key):
 		key_name = self.key_name(key)
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
-		for k in custom_key_actions.itervalues():
+		for k in custom_key_actions.values():
 			if key_name in k:
 				return True
 		return False

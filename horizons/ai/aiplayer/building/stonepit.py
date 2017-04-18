@@ -26,7 +26,6 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class AbstractStonePit(AbstractBuilding):
@@ -59,6 +58,3 @@ class StonePitEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.STONE_PIT
 
 AbstractStonePit.register_buildings()
-
-decorators.bind_all(AbstractStonePit)
-decorators.bind_all(StonePitEvaluator)

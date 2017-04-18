@@ -5,6 +5,7 @@
 * Kilian] (Kilian Köppchen)
 
 #### Programming
+* AndyMender ()
 * MasterofJOKers ()
 * Kilian] (Kilian Köppchen)
 * squiddy (Reiner Gerecke)
@@ -17,6 +18,7 @@
 
 #### Windows Installer
 * jakoch (Jens A. Koch)
+* LinuxDonald (Thomas Kowaliczek)
 
 #### Web Coder
 * dwayne1988 (Dwayne Thorp)

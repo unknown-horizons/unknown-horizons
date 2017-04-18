@@ -43,24 +43,24 @@ class SQLiteAnimationLoader(object):
 		#TODO: complete documentation
 		"""
 		commands = location.split(':')
-		id = commands.pop(0)
-		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		anim_id = commands.pop(0)
+		actionset, action, rotation = anim_id.split('+')
+		commands = list(zip(commands[0::2], commands[1::2]))
 
 		animationmanager = horizons.globals.fife.animationmanager
 
 		# if we've loaded that animation before, we can finish early
-		if animationmanager.exists(id):
-			return animationmanager.getPtr(id)
+		if animationmanager.exists(anim_id):
+			return animationmanager.getPtr(anim_id)
 
 		# Set the correct loader based on the actionset
 		loader = self._get_loader(actionset)
 
-		ani = animationmanager.create(id)
+		ani = animationmanager.create(anim_id)
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
-			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
-			img = horizons.globals.fife.imagemanager.load(file)
+		for f in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
+			frame_end = loader.get_sets()[actionset][action][int(rotation)][f]
+			img = horizons.globals.fife.imagemanager.load(f)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -101,12 +101,12 @@ class SQLiteAnimationLoader(object):
 				assert False, "Invalid set being loaded: " + actionset
 			return loader
 
-	def load_image(self, file, actionset, action, rotation):
+	def load_image(self, f, actionset, action, rotation):
 		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][int(rotation)][file]
+		entry = loader.get_sets()[actionset][action][int(rotation)][f]
 
-		if horizons.globals.fife.imagemanager.exists(file):
-			img = horizons.globals.fife.imagemanager.get(file)
+		if horizons.globals.fife.imagemanager.exists(f):
+			img = horizons.globals.fife.imagemanager.get(f)
 		else:
-			img = horizons.globals.fife.imagemanager.create(file)
+			img = horizons.globals.fife.imagemanager.create(f)
 		return img

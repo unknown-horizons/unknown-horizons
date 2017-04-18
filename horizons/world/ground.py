@@ -63,7 +63,7 @@ class SurfaceTile(object):
 	def act(self, rotation):
 		self._instance.setRotation(rotation)
 
-		(x, y) = (self.x, self.y)
+		x, y = self.x, self.y
 		layer_coords = {
 			45:  (x + 3, y,     0),
 			135: (x,     y - 3, 0),
@@ -157,7 +157,7 @@ class GroundClass(type):
 
 			fife.ObjectVisual.create(fife_object)
 			visual = fife_object.get2dGfxVisual()
-			for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
+			for rotation, data in tile_sets[tile_set_id][cls.shape].items():
 				if not data:
 					raise KeyError('No data found for tile set `{}` in rotation `{}`. '
 						'Most likely the shape `{}` is missing.'
@@ -166,7 +166,7 @@ class GroundClass(type):
 					raise ValueError('Currently only static tiles are supported. '
 						'Found this data for tile set `{}` in rotation `{}`: '
 						'{}'.format(tile_set_id, rotation, data))
-				img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
+				img = load_image(list(data.keys())[0], tile_set_id, cls.shape, str(rotation))
 				visual.addStaticImage(rotation, img.getHandle())
 
 			# Save the object

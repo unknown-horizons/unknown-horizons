@@ -22,7 +22,7 @@
 
 import logging
 
-from horizons.ext.typing import Optional
+from typing import Optional
 from horizons.world.settlement import Settlement
 from horizons.util.worldobject import WorldObject
 from horizons.scheduler import Scheduler

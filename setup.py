@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,7 +21,6 @@
 # ###################################################
 
 
-from __future__ import print_function
 from distutils.core import setup
 from distutils.command.build import build
 from distutils.spawn import find_executable
@@ -54,7 +53,7 @@ data = [
   ('share/man/man6', ('content/packages/unknown-horizons.6', )),
 ]
 
-for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
+for root, dirs, files in [x for x in os.walk('content') if len(x[2])]:
 	data.append(('share/unknown-horizons/{0!s}'.format(root),
 		['{0!s}/{1!s}'.format(root, f) for f in files]))
 

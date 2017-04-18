@@ -30,7 +30,6 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import AI, BUILDINGS
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Rect, distances
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
@@ -83,7 +82,7 @@ class ProductionBuilder(AreaBuilder):
 	def _init_buildability_cache(self):
 		self.buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
 		free_coords_set = set()
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.items():
 			if purpose == BUILDING_PURPOSE.NONE:
 				free_coords_set.add(coords)
 		for coords in self.land_manager.coastline:
@@ -108,7 +107,7 @@ class ProductionBuilder(AreaBuilder):
 		translated_last_collector_improvement_road = self.last_collector_improvement_road - Scheduler().cur_tick # pre-translate for the loading process
 		db("INSERT INTO ai_production_builder(rowid, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road) VALUES(?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, translated_last_collector_improvement_storage, translated_last_collector_improvement_road)
-		for (x, y), (purpose, _) in self.plan.iteritems():
+		for (x, y), (purpose, _) in self.plan.items():
 			db("INSERT INTO ai_production_builder_plan(production_builder, x, y, purpose) VALUES(?, ?, ?, ?)", self.worldid, x, y, purpose)
 
 	def _load(self, db, settlement_manager):
@@ -208,7 +207,7 @@ class ProductionBuilder(AreaBuilder):
 		if key in self.__available_squares_cache and self.last_change_id == self.__available_squares_cache[key][0]:
 			return self.__available_squares_cache[key][1]
 
-		offsets = list(itertools.product(xrange(size), xrange(size)))
+		offsets = list(itertools.product(range(size), range(size)))
 		collector_area = self.get_collector_area()
 
 		available_squares = 0
@@ -242,10 +241,10 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.HERBARY: deque(),
 		}
 
-		for coords, (purpose, _) in sorted(self.plan.iteritems()):
+		for coords, (purpose, _) in sorted(self.plan.items()):
 			usable = True # is every tile of the field spot still usable for new normal buildings
-			for dx in xrange(3):
-				for dy in xrange(3):
+			for dx in range(3):
+				for dy in range(3):
 					coords2 = (coords[0] + dx, coords[1] + dy)
 					if coords2 not in self.island.ground_map:
 						usable = False
@@ -287,7 +286,7 @@ class ProductionBuilder(AreaBuilder):
 		unknown_color = (128, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.items():
 			tile = self.island.ground_map[coords]
 			color = tile_colors.get(purpose, misc_color)
 			if purpose == BUILDING_PURPOSE.NONE:
@@ -338,7 +337,7 @@ class ProductionBuilder(AreaBuilder):
 
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.items():
 			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
@@ -419,7 +418,7 @@ class ProductionBuilder(AreaBuilder):
 
 		# remove the planned but never built fields from the plan
 		self._refresh_unused_fields()
-		for unused_fields_list in self.unused_fields.itervalues():
+		for unused_fields_list in self.unused_fields.values():
 			for coords in unused_fields_list:
 				position = Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[BUILDINGS.POTATO_FIELD].size)
 				if building.position.distance(position) > building.radius:
@@ -468,7 +467,7 @@ class ProductionBuilder(AreaBuilder):
 				all_full = True
 
 				# inventory full of the produced resources?
-				for resource_id, min_amount in production.get_produced_resources().iteritems():
+				for resource_id, min_amount in production.get_produced_resources().items():
 					if production.inventory.get_free_space_for(resource_id) >= min_amount:
 						all_full = False
 						break
@@ -496,5 +495,3 @@ class ProductionBuilder(AreaBuilder):
 	def __str__(self):
 		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
-
-decorators.bind_all(ProductionBuilder, stoplist=['AI'])

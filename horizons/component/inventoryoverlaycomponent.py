@@ -74,13 +74,13 @@ class InventoryOverlayComponent(Component):
 			self.fife_instance.convertToOverlays(self.identifier, True)
 
 		animationmanager = horizons.globals.fife.animationmanager
-		for rotation, frames in overlay_set.iteritems():
+		for rotation, frames in overlay_set.items():
 			id = '{}+{}'.format(self.identifier, rotation)
 			if animationmanager.exists(id):
 				ov_anim = animationmanager.getPtr(id)
 			else:
 				ov_anim = animationmanager.create(id)
-				for frame_img, frame_data in frames.iteritems():
+				for frame_img, frame_data in frames.items():
 					try:
 						frame_length = frame_data[0]
 					except TypeError:
@@ -109,7 +109,7 @@ class InventoryOverlayComponent(Component):
 		Because it did not tell us which resources were added or removed, we
 		need to check everything in the inventory for possible updates.
 		"""
-		for res_id, new_amount in message.inventory.iteritems():
+		for res_id, new_amount in message.inventory.items():
 			self.update_overlay(res_id, new_amount)
 
 
@@ -181,7 +181,7 @@ class InventoryOverlayComponent(Component):
 		"""
 		InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
 
-		for (res_id, overlay) in self.current_overlays.iteritems():
+		for (res_id, overlay) in self.current_overlays.items():
 			if overlay is not None:
 				self.remove_overlay(res_id)
 

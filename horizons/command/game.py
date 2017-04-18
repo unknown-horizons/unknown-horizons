@@ -37,7 +37,7 @@ class SaveCommand(Command):
 		except RuntimeError as e:
 			headline = T("Invalid filename")
 			msg = T("Received an invalid filename for a save command.")
-			session.ingame_gui.open_error_popup(headline, msg, unicode(e))
+			session.ingame_gui.open_error_popup(headline, msg, str(e))
 			return
 
 		self.log.debug("SaveCommand: save to %s", path)

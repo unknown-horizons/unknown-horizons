@@ -138,7 +138,7 @@ class MultiplayerMenu(Window):
 				headline = T("Failed to initialize networking.")
 				descr = T("Network features could not be initialized with the current configuration.")
 				advice = T("Check the settings you specified in the network section.")
-				self._windows.open_error_popup(headline, descr, advice, unicode(e))
+				self._windows.open_error_popup(headline, descr, advice, str(e))
 				return False
 
 		if not NetworkInterface().is_connected:
@@ -150,7 +150,7 @@ class MultiplayerMenu(Window):
 				descr = T("Could not connect to master server.")
 				advice = T("Please check your Internet connection. If it is fine, "
 				           "it means our master server is temporarily down.")
-				self._windows.open_error_popup(headline, descr, advice, unicode(err))
+				self._windows.open_error_popup(headline, descr, advice, str(err))
 				return False
 
 		if NetworkInterface().is_joined:
@@ -163,25 +163,25 @@ class MultiplayerMenu(Window):
 	def _on_error(self, exception, fatal=True):
 		"""Error callback"""
 		if not fatal:
-			self._windows.open_popup(T("Error"), unicode(exception))
+			self._windows.open_popup(T("Error"), str(exception))
 		else:
 			self._windows.open_popup(T("Fatal Network Error"),
-		                             T("Something went wrong with the network:") + u'\n' +
-		                             unicode(exception) )
+		                             T("Something went wrong with the network:") + '\n' +
+		                             str(exception) )
 			# FIXME: this shouldn't be necessary, the main menu window is still somewhere
 			# in the stack and we just need to get rid of all MP related windows
 			self._mainmenu.show_main()
 
 	def _display_game_name(self, game):
 		same_version = game.version == NetworkInterface().get_clientversion()
-		template = u"{password}{gamename}: {name} ({players}, {limit}){version}"
+		template = "{password}{gamename}: {name} ({players}, {limit}){version}"
 		return template.format(
 			password="(Password!) " if game.has_password else "",
 			name=game.map_name,
 			gamename=game.name,
 			players=game.player_count,
 			limit=game.player_limit,
-			version=u" " + T("Version differs!") if not same_version else u"")
+			version=" " + T("Version differs!") if not same_version else "")
 
 	def _refresh(self, play_sound=False):
 		"""Refresh list of games.
@@ -251,7 +251,7 @@ class MultiplayerMenu(Window):
 			password = self._windows.open(popup)
 			if password is None:
 				return
-			password = hashlib.sha1(password).hexdigest()
+			password = hashlib.sha1(password.encode(encoding='utf-8')).hexdigest()
 			success = NetworkInterface().joingame(game.uuid, password)
 			if not success:
 				return
@@ -312,7 +312,7 @@ class CreateGame(Window):
 
 		self._gui.distributeInitialData({
 			'maplist': self._maps_display,
-			'playerlimit': range(2, MULTIPLAYER.MAX_PLAYER_COUNT)
+			'playerlimit': list(range(2, MULTIPLAYER.MAX_PLAYER_COUNT))
 		})
 
 		if self._maps_display: # select first entry
@@ -341,7 +341,7 @@ class CreateGame(Window):
 		password = self._gui.collectData('password')
 		maphash = ""
 
-		password = hashlib.sha1(password).hexdigest() if password != "" else ""
+		password = hashlib.sha1(password.encode(encoding='utf-8')).hexdigest() if password != "" else ""
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, maphash, password)
 		if game:
 			# FIXME When canceling the lobby, I'd like the player to return to the main mp
@@ -467,7 +467,7 @@ class GameLobby(Window):
 		self._gui.show()
 
 	def _on_error(self, error, fatal=True):
-		if error.type == ErrorType.TerminateGame:
+		if error.cmd_type == ErrorType.TerminateGame:
 			# We can't use `_cancel` here, since that calls `leavegame`, which isn't
 			# possible since the game was terminated already.
 			self._windows.close()
@@ -507,7 +507,7 @@ class GameLobby(Window):
 			if name == NetworkInterface().get_client_name():
 				pname.capture(Callback(self._show_change_player_details_popup, game))
 
-			pcolor = Label(name="pcolor_%s" % name, text=u"   ")
+			pcolor = Label(name="pcolor_%s" % name, text="   ")
 			pcolor.helptext = T("Click here to change your name and/or color")
 			pcolor.background_color = player['color']
 			pcolor.min_size = pcolor.max_size = (15, 15)
@@ -575,7 +575,7 @@ class GameLobby(Window):
 		"""Sends a chat message. Called when user presses enter in the input field"""
 		msg = self._gui.findChild(name="chatTextField").text
 		if msg:
-			self._gui.findChild(name="chatTextField").text = u""
+			self._gui.findChild(name="chatTextField").text = ""
 			NetworkInterface().chat(msg)
 
 	def _print_event(self, msg, wrap="*"):

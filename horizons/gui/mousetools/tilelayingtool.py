@@ -23,7 +23,7 @@ from fife import fife
 
 import horizons.globals
 from horizons.constants import GROUND
-from horizons.ext.typing import Tuple
+from typing import Tuple
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.shapes import Circle, Point
 
@@ -63,7 +63,7 @@ class TileLayingTool(NavigationTool):
 
 			ground_id, action_id, rotation = tile
 			set_id = horizons.globals.db.get_random_tile_set(ground_id)
-			filename = tile_sets[set_id][action_id][rotation].keys()[0]
+			filename = list(tile_sets[set_id][action_id][rotation].keys())[0]
 
 			image = horizons.globals.fife.imagemanager.load(filename)
 			TileLayingTool.tile_images[tile] = image

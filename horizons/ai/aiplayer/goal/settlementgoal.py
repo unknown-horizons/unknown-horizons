@@ -23,7 +23,6 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.ai.aiplayer.goal import Goal
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class SettlementGoal(Goal):
@@ -57,5 +56,3 @@ class SettlementGoal(Goal):
 			self.log.info('%s skipped building a %s', self, name)
 		else:
 			self.log.info('%s failed to build a %s (%d)', self, name, result)
-
-decorators.bind_all(SettlementGoal)

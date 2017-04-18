@@ -23,7 +23,6 @@ import logging
 
 from horizons.command.production import AddProduction
 from horizons.constants import BUILDINGS, PRODUCTIONLINES
-from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
 
 
@@ -71,5 +70,3 @@ class UnitBuilder(object):
 
 	def __str__(self):
 		return '%s UnitBuilder' % self.owner
-
-decorators.bind_all(UnitBuilder)

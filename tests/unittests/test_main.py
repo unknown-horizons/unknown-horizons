@@ -44,7 +44,5 @@ class TestHorizonsMain(TestCase):
 		mock_setup_gui_logger.side_effect = Exception('i was called')
 
 		options = get_option_parser().parse_args(['--gui-log', '--no-atlas-generation'])[0]
-		try:
+		with self.assertRaisesRegex(Exception, 'i was called'):
 			horizons.main.start(options)
-		except Exception as e:
-			assert e.message == 'i was called', "setup_gui_logger wasn't called"

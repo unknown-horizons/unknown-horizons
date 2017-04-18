@@ -1,4 +1,5 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -20,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import datetime
 import optparse
@@ -178,7 +179,7 @@ trade and diplomacy.
 	def format_heading(self, text):
 		"""Format an option group.."""
 		if self.level == 0:
-			return u''
+			return ''
 		return r'''.TP
 \fB{}\fR
 '''.format(self._markup(text.upper()))

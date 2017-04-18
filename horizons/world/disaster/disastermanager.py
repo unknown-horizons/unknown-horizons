@@ -58,7 +58,7 @@ class DisasterManager(object):
 	def save(self, db):
 		ticks = Scheduler().get_remaining_ticks(self, self.run, True)
 		db("INSERT INTO disaster_manager(remaining_ticks) VALUES(?)", ticks)
-		for disaster in self._active_disaster.itervalues():
+		for disaster in self._active_disaster.values():
 			disaster.save(db)
 
 	def load(self, db):
@@ -71,7 +71,7 @@ class DisasterManager(object):
 
 		for disaster_id, disaster_type, settlement_id in db("SELECT rowid, type, settlement FROM disaster"):
 			settlement = WorldObject.get_object_by_id(settlement_id)
-			klass = (i for i in  self.disasters if i.TYPE == disaster_type).next()
+			klass = next((i for i in  self.disasters if i.TYPE == disaster_type))
 			cata = klass(settlement, self)
 			self._active_disaster[settlement] = cata
 			cata.load(db, disaster_id)

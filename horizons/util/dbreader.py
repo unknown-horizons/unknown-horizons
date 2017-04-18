@@ -38,7 +38,6 @@ class DbReader(object):
 		self.connection.create_function("regexp", 2, regexp)
 		self.cur = self.connection.cursor()
 
-	@decorators.make_constants()
 	def __call__(self, command, *args):
 		"""Executes a sql command.
 		@param command: str containing the raw sql command, with ? as

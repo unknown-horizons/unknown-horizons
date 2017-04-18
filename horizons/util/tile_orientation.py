@@ -51,7 +51,7 @@ def get_tile_alignment_action(origin, is_similar_tile):
 	action = ''
 
 	# Order is important here.
-	ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.iteritems())
+	ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.items())
 	for action_part, (xoff, yoff) in ordered_actions:
 		if not is_similar_tile(origin.offset(xoff, yoff)):
 			continue

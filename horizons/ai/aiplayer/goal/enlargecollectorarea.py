@@ -20,14 +20,13 @@
 # ###################################################
 
 from collections import defaultdict, deque
+from typing import Tuple
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.ext.typing import Tuple
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
 
@@ -68,7 +67,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 		# area_label contains free tiles in the production area and all road tiles
 		area_label = dict.fromkeys(self.land_manager.roads) # {(x, y): area_number, ...}
-		for coords, (purpose, _) in self.production_builder.plan.iteritems():
+		for coords, (purpose, _) in self.production_builder.plan.items():
 			if coords not in coastline and purpose == BUILDING_PURPOSE.NONE:
 				area_label[coords] = None
 
@@ -89,7 +88,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 			areas += 1
 
 		coords_set_by_area = defaultdict(set)
-		for coords, area_number in area_label.iteritems():
+		for coords, area_number in area_label.items():
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
 
@@ -138,5 +137,3 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		result = self._enlarge_collector_area()
 		self._log_generic_build_result(result, 'storage coverage building')
 		return self._translate_build_result(result)
-
-decorators.bind_all(EnlargeCollectorAreaGoal)

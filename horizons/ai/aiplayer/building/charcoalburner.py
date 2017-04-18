@@ -25,7 +25,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class AbstractCharcoalBurner(AbstractBuilding):
@@ -63,6 +62,3 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.CHARCOAL_BURNER
 
 AbstractCharcoalBurner.register_buildings()
-
-decorators.bind_all(AbstractCharcoalBurner)
-decorators.bind_all(CharcoalBurnerEvaluator)

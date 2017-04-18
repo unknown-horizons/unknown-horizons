@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
 from horizons.world.units.unitexeptions import MoveNotPossible
@@ -104,5 +103,3 @@ class ScoutingMission(FleetMission):
 	@classmethod
 	def create(cls, success_callback, failure_callback, ships, target_point=None):
 		return ScoutingMission(success_callback, failure_callback, ships, target_point)
-
-decorators.bind_all(ScoutingMission)

@@ -101,7 +101,7 @@ class MessageWidget(LivingObject):
 
 		sound = get_speech_file(string_id) if play_sound else None
 		return self._add_message(_IngameMessage(point=point, id=string_id, msg_type=msg_type,
-		                                        created=self.msgcount.next(), message_dict=message_dict),
+		                                        created=next(self.msgcount), message_dict=message_dict),
 		                         sound=sound)
 
 	def remove(self, messagetext):
@@ -122,7 +122,7 @@ class MessageWidget(LivingObject):
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
 		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
-		                                        display=visible_for, created=self.msgcount.next(),
+		                                        display=visible_for, created=next(self.msgcount),
 		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
@@ -146,7 +146,7 @@ class MessageWidget(LivingObject):
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')
 
-		if message.x is not None and message.y is not None:
+		if message.x != 0 and message.y != 0:
 			self.session.ingame_gui.minimap.highlight((message.x, message.y))
 
 		self.draw_widget()
@@ -178,7 +178,7 @@ class MessageWidget(LivingObject):
 			}
 			# init callback to something callable to improve robustness
 			callback = Callback(lambda: None)
-			if message.x is not None and message.y is not None:
+			if message.x != 0 and message.y != 0:
 				# move camera to source of event on click, if there is a source
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
@@ -215,7 +215,7 @@ class MessageWidget(LivingObject):
 		self.bg_middle.removeAllChildren()
 
 		line_count = len(text.splitlines()) - 1
-		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
+		for i in range(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
 			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
 
@@ -320,7 +320,7 @@ class _IngameMessage(object):
 	"""
 	def __init__(self, point, id, created,
 	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
-		self.x, self.y = None, None
+		self.x, self.y = 0, 0
 		if point is not None:
 			self.x, self.y = point.x, point.y
 		self.id = id

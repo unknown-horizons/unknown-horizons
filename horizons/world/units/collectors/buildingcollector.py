@@ -27,7 +27,6 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, COLLECTORS
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import BuildingCollectorPather, RoadPather
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import RadiusRect
 from horizons.util.worldobject import WorldObject
@@ -144,7 +143,6 @@ class BuildingCollector(Collector):
 		colls = self.home_building.get_component(CollectingComponent).get_local_collectors()
 		return ( coll for coll in colls if coll is not self )
 
-	@decorators.make_constants()
 	def get_job(self):
 		"""Returns the next job or None"""
 		if self.home_building is None:
@@ -291,7 +289,7 @@ class BuildingCollector(Collector):
 		self._clean_job_history_log()
 		num_entries = len(self._job_history)
 		total_utilization = 0
-		for i in xrange(num_entries):
+		for i in range(num_entries):
 			tick = self._job_history[i][0]
 			if tick >= current_tick:
 				break
@@ -387,10 +385,3 @@ class DisasterRecoveryCollector(StorageCollector):
 			return None # not one disaster active, bail out
 
 		return super(DisasterRecoveryCollector, self).get_job()
-
-decorators.bind_all(BuildingCollector)
-decorators.bind_all(FieldCollector)
-decorators.bind_all(FisherShipCollector)
-decorators.bind_all(SettlerCollector)
-decorators.bind_all(StorageCollector)
-decorators.bind_all(DisasterRecoveryCollector)
