@@ -154,6 +154,10 @@ def start(_command_line_arguments):
 	if not setup_gui_logger(command_line_arguments):
 		return False
 
+	## Check if the no-audio flag has been set.
+	if command_line_arguments.no_audio:
+		horizons.globals.fife.set_fife_setting('PlaySounds', False)
+
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
 	if command_line_arguments.gui_test:

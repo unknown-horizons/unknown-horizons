@@ -64,7 +64,6 @@ def get_option_parser():
 	             help="Edit map <map>.")
 	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
 	             help="Edit the map from the saved game <game>.")
-	## FIXME: option needs to be added here.
 	start_uh.add_option("--no-audio", dest="no_audio", action= "store_true", help="Starts UH without sounds.")
 	p.add_option_group(start_uh)
 
