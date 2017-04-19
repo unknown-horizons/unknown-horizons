@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@ import logging
 
 from horizons.command.production import AddProduction
 from horizons.constants import BUILDINGS, PRODUCTIONLINES
-from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
 
 
@@ -71,5 +70,3 @@ class UnitBuilder(object):
 
 	def __str__(self):
 		return '%s UnitBuilder' % self.owner
-
-decorators.bind_all(UnitBuilder)

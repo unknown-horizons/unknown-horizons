@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +25,6 @@ from collections import defaultdict
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TRADER
-from horizons.util.python import decorators
 
 from .mission.internationaltrade import InternationalTrade
 
@@ -61,7 +60,7 @@ class InternationalTradeManager(object):
 	def _add_route(self):
 		"""Add a new international trade route if possible."""
 		ship = None
-		for possible_ship, state in self.owner.ships.iteritems():
+		for possible_ship, state in self.owner.ships.items():
 			if state is self.owner.shipStates.idle:
 				ship = possible_ship
 				break
@@ -81,7 +80,7 @@ class InternationalTradeManager(object):
 				resource_manager = settlement_manager.resource_manager
 
 				# add the options where we sell to the other player
-				for resource_id, limit in settlement.get_component(TradePostComponent).buy_list.iteritems():
+				for resource_id, limit in settlement.get_component(TradePostComponent).buy_list.items():
 					if resource_id not in resource_manager.resource_requirements:
 						continue # not a well-known resource: ignore it
 					if limit <= settlement.get_component(StorageComponent).inventory[resource_id]:
@@ -94,7 +93,7 @@ class InternationalTradeManager(object):
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
 
 				# add the options where we buy from the other player
-				for resource_id, limit in settlement.get_component(TradePostComponent).sell_list.iteritems():
+				for resource_id, limit in settlement.get_component(TradePostComponent).sell_list.items():
 					if resource_id not in resource_manager.resource_requirements:
 						continue # not a well-known resource: ignore it
 					if limit >= settlement.get_component(StorageComponent).inventory[resource_id]:
@@ -111,7 +110,7 @@ class InternationalTradeManager(object):
 
 		# make up final options where a route is limited to at most one resource bought and one resource sold
 		final_options = [] # [(value, bought resource id or None, sold resource id or None, settlement, settlement_manager), ...]
-		for (settlement, settlement_manager), option in sorted(options.iteritems()):
+		for (settlement, settlement_manager), option in sorted(options.items()):
 			best_buy = None # largest amount of resources
 			best_sale = None # most expensive sale
 			for total_price, tradable_amount, resource_id, selling in option:
@@ -125,10 +124,8 @@ class InternationalTradeManager(object):
 			total_value = (best_sale[0] if best_sale else 0) + (best_buy[1] if best_buy else 0) * buy_coefficient
 			final_options.append((total_value, best_buy[2] if best_buy else None, best_sale[2] if best_sale else None, settlement, settlement_manager))
 
-		bought_resource, sold_resource, settlement, settlement_manager = max(final_options)[1:]
+		bought_resource, sold_resource, settlement, settlement_manager = sorted(final_options, reverse=True, key=lambda x: x[0])[0][1:]
 		self.owner.start_mission(InternationalTrade(settlement_manager, settlement, ship, bought_resource, sold_resource, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
 		self._add_route()
-
-decorators.bind_all(InternationalTradeManager)

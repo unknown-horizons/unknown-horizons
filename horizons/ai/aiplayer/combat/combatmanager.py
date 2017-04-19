@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -76,7 +76,7 @@ class CombatManager(object):
 		return cls.combat_range - 1
 
 	def save(self, db):
-		for ship, state in self.ships.iteritems():
+		for ship, state in self.ships.items():
 			db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)", self.owner.worldid, ship.worldid, state.index)
 
 	def set_ship_state(self, ship, state):
@@ -192,7 +192,7 @@ class CombatManager(object):
 		self._clear_fake_tiles()
 		self._init_fake_tile()
 
-		for ship, state in self.ships.iteritems():
+		for ship, state in self.ships.items():
 			range = self.combat_range
 			self._highlight_circle(ship.position, range, combat_range_color)
 			self._highlight_circle(ship.position, self.close_range(ship), close_range_color)
@@ -336,7 +336,7 @@ class CombatManager(object):
 		# Log ship states every tick
 		if self.log.isEnabledFor(logging.DEBUG):
 			self.log.debug("Player:%s Ships combat states:", self.owner.name)
-			for ship, state in self.ships.iteritems():
+			for ship, state in self.ships.items():
 				self.log.debug(" %s: %s", ship.get_component(NamedComponent).name, state)
 
 	def tick(self):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -155,18 +155,23 @@ class ColorOverlayComponent(Component):
 				overlay_name, self.instance, self.identifier)
 			return
 
+		animationmanager = horizons.globals.fife.animationmanager
 		self.current_overlays[z_order] = overlay_set
-		for rotation, frames in overlay_set.iteritems():
-			ov_anim = fife.Animation.createAnimation()
-			for frame_img, frame_data in frames.iteritems():
-				try:
-					frame_length = frame_data[0]
-				except TypeError:
-					# not using atlases
-					frame_length = frame_data
-				pic = horizons.globals.fife.animationloader.load_image(frame_img, self.action_set, overlay_name, rotation)
-				frame_milliseconds = int(frame_length * 1000)
-				ov_anim.addFrame(pic, frame_milliseconds)
+		for rotation, frames in overlay_set.items():
+			id = '{}+{}'.format(self.identifier, rotation)
+			if animationmanager.exists(id):
+				ov_anim = animationmanager.getPtr(id)
+			else:
+				ov_anim = animationmanager.create(id)
+				for frame_img, frame_data in frames.items():
+					try:
+						frame_length = frame_data[0]
+					except TypeError:
+						# not using atlases
+						frame_length = frame_data
+					pic = horizons.globals.fife.animationloader.load_image(frame_img, self.action_set, overlay_name, rotation)
+					frame_milliseconds = int(frame_length * 1000)
+					ov_anim.addFrame(pic, frame_milliseconds)
 			overlay = fife.OverlayColors(ov_anim)
 			self.fife_instance.addColorOverlay(self.identifier, rotation, z_order, overlay)
 
@@ -182,7 +187,7 @@ class ColorOverlayComponent(Component):
 	def remove_overlay(self):
 		"""Removes color overlay recoloring the *color*-colored area from fife instance.
 		"""
-		for z_order, overlay_set in self.current_overlays.iteritems():
+		for z_order, overlay_set in self.current_overlays.items():
 			for rotation in overlay_set:
 				self.fife_instance.removeColorOverlay(self.identifier, rotation, z_order)
 

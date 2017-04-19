@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,6 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class AbstractClayPit(AbstractBuilding):
@@ -59,6 +58,3 @@ class ClayPitEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.CLAY_PIT
 
 AbstractClayPit.register_buildings()
-
-decorators.bind_all(AbstractClayPit)
-decorators.bind_all(ClayPitEvaluator)

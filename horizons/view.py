@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ import math
 import time
 
 from fife import fife
+from fife.fife import AudioSpaceCoordinate
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
@@ -51,7 +52,7 @@ class View(ChangeListener):
 		using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
 
 		self.layers = []
-		for layer_id in xrange(LAYERS.NUM):
+		for layer_id in range(LAYERS.NUM):
 			layer = self.map.createLayer(str(layer_id), cellgrid)
 			if layer_id == LAYERS.OBJECTS:
 				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
@@ -166,9 +167,9 @@ class View(ChangeListener):
 		for i in ['speech', 'effects']:
 			emitter = horizons.globals.fife.sound.emitter[i]
 			if emitter is not None:
-				emitter.setPosition(pos.x, pos.y, 1)
+				emitter.setPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
-			horizons.globals.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+			horizons.globals.fife.sound.soundmanager.setListenerPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		self._changed()
 
 	def _prepare_zoom_to_cursor(self, zoom):

@@ -1,5 +1,5 @@
 """
-Copyright (c) 2008-2016 nosklo
+Copyright (c) 2008-2017 nosklo
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -36,7 +36,7 @@ class Dummy(object):
 				raise
 			else:
 				return self
-	def next(self):
+	def __next__(self):
 		raise StopIteration
 	def __repr__(self):
 		return 'Dummy()'

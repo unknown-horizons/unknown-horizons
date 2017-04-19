@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,6 @@
 from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
@@ -125,5 +124,3 @@ class SurpriseAttack(FleetMission):
 	@classmethod
 	def create(cls, success_callback, failure_callback, fleet, target_point, return_point, enemy_player):
 		return SurpriseAttack(success_callback, failure_callback, fleet, target_point, return_point, enemy_player)
-
-decorators.bind_all(SurpriseAttack)

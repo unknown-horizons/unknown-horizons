@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -488,7 +488,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 		Calculate total relationship_score based on balances and their weights.
 		Count only balances that have weight defined (this way "default" weight is 0)
 		"""
-		return sum((getattr(balance, key) * value for key, value in weights.iteritems()))
+		return sum((getattr(balance, key) * value for key, value in weights.items()))
 
 	@classmethod
 	def _move_f(cls, f, v_x, v_y):

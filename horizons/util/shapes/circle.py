@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,8 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
-from horizons.util.python.decorators import bind_all
 
 from . import Shape
 from .point import Point
@@ -47,7 +45,7 @@ class Circle(Shape):
 		return rect.distance(self.center) > self.radius
 
 	def __str__(self):
-		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
+		return "Circle(center={},radius={})".format(self.center, self.radius)
 
 	def __eq__(self, other):
 		try:
@@ -66,8 +64,8 @@ class Circle(Shape):
 		cx = self.center.x
 		cy = self.center.y
 		radius_sq = self.radius * self.radius
-		for x in xrange(cx - self.radius, cx + self.radius + 1):
-			for y in xrange(cy - self.radius, cy + self.radius + 1):
+		for x in range(cx - self.radius, cx + self.radius + 1):
+			for y in range(cy - self.radius, cy + self.radius + 1):
 				dx = cx - x
 				dy = cy - y
 				dist_sq = dx * dx + dy * dy
@@ -76,9 +74,7 @@ class Circle(Shape):
 
 	def get_border_coordinates(self, bordersize=1):
 		"""Returns only coordinates at the border. Very naive implementation"""
-		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
-			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
+		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
+			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
 				if (self.radius - bordersize) <= self.center.distance((x, y)) <= self.radius:
 					yield (x, y)
-
-bind_all(Circle)

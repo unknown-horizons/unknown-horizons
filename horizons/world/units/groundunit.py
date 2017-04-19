@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -84,7 +84,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		names = self.session.db("SELECT name FROM groundunitnames")
 		# We need unicode strings as the name is displayed on screen.
-		self.name = map(lambda x: unicode(x[0], 'utf-8'), names)
+		self.name = [str(x[0], 'utf-8') for x in names]
 
 	def go(self, x, y):
 		self.get_component(SelectableComponent).go(x, y)
@@ -107,5 +107,5 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		else:
 			action = 'ranged'
 
-		self.act('attack_%s' % action, facing_location, repeating = False)
+		self.act('attack_{}'.format(action), facing_location, repeating = False)
 		self._action = 'idle'

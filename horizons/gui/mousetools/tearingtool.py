@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -88,7 +88,7 @@ class TearingTool(NavigationTool):
 			if self.selected:
 				for building in selection_list_copy:
 					self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
-					if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+					if (building.id not in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
 						Tear(building).execute(self.session)
 			elif self._hovering_over:
 				# we're hovering over a building, but none is selected, so this tear action isn't allowed
@@ -114,7 +114,7 @@ class TearingTool(NavigationTool):
 			title = T("Destroy all buildings")
 			msg = T("This will destroy all the buildings that fall outside of"
 		            " the settlement range.")
-			msg += u"\n\n"
+			msg += "\n\n"
 			msg += NT("%s additional building will be destroyed.",
 		              "%s additional buildings will be destroyed",
 		              buildings_to_destroy) % buildings_to_destroy
@@ -149,8 +149,8 @@ class TearingTool(NavigationTool):
 			self.oldedges = edges
 		if edges is not None:
 			self._hovering_over = WeakList()
-			for x in xrange(edges[0][0], edges[1][0] + 1):
-				for y in xrange(edges[0][1], edges[1][1] + 1):
+			for x in range(edges[0][0], edges[1][0] + 1):
+				for y in range(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
 					if b is not None:
 						if b not in self._hovering_over:

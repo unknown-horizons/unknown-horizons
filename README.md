@@ -22,6 +22,8 @@ Find more information about Unknown Horizons on [our website](http://www.unknown
 For installation instructions check the "Downloads" section on
 [our website](http://www.unknown-horizons.org/download/).
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/unknown-horizons.svg)](https://repology.org/metapackage/unknown-horizons)
+
 ## Building from source
 
 To get the latest version of the game, you have to build it from source:
@@ -38,7 +40,7 @@ If you want to start hacking on Unknown Horizons, check out [this guide](https:/
 
 Technology     | Component
 ---------------|----------
-**Python 2**    | Used for everything
+**Python 3**   | Used for everything
 **SQLite**     | Maps
 **YAML**       | Object files storing component based information, easily scriptable
 **[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings

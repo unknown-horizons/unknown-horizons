@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -67,11 +67,11 @@ class StepSlider(Slider):
 		"""
 		if self.value != self._last_step_value:
 			self._last_step_value = self.value
-			for callback in self._callbacks_by_group.itervalues():
+			for callback in self._callbacks_by_group.values():
 				callback()
 
 	def _set_steps(self, steps):
-		if isinstance(steps, basestring):
+		if isinstance(steps, str):
 			self._steps = [float(s.strip()) for s in steps.split(';')]
 		else:
 			self._steps = steps

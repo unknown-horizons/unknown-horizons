@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
 from horizons.world.units.unitexeptions import MoveNotPossible
 
@@ -106,7 +105,6 @@ class AnimalCollector(BuildingCollector):
 	def get_animals_in_range(self, reslist=None):
 		return self.home_building.animals
 
-	@decorators.make_constants()
 	def check_possible_job_target_for(self, target, res):
 		# An animal can only be collected by one collector.
 		# Since a collector only retrieves one type of res, and
@@ -154,7 +152,3 @@ class HunterCollector(AnimalCollector):
 		radius = self.home_building.radius
 		return [ animal for animal in self.home_building.island.wild_animals if
 		         dist(animal.position) <= radius ]
-
-
-decorators.bind_all(AnimalCollector)
-decorators.bind_all(HunterCollector)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -44,8 +44,8 @@ class SignalFireOverviewTab(OverviewTab):
 	def init_widget(self):
 		super(SignalFireOverviewTab, self).init_widget()
 		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
-		action_gfx = action_set.items()[0][1]
-		image = action_gfx[45].keys()[0]
+		action_gfx = list(action_set.items())[0][1]
+		image = list(action_gfx[45].keys())[0]
 		self.widget.findChild(name="building_image").image = image
 
 class ResourceDepositOverviewTab(OverviewTab):
@@ -56,7 +56,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
 		resources = self.instance.get_component(DepositComponent).get_res_ranges()
-		amounts = dict( (res, (0, max_amount)) for res, min_, max_amount in resources )
+		amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
 		self.widget.child_finder("inventory").init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory,
 		                                           ordinal=amounts)

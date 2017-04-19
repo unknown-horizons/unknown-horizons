@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -317,7 +317,7 @@ class TradeRoute(ChangeListener):
 		   worldid, self.enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload)
 
 		if self.current_transfer:
-			for res, amount in self.current_transfer.iteritems():
+			for res, amount in self.current_transfer.items():
 				db("INSERT INTO ship_route_current_transfer(ship_id, res, amount) VALUES(?, ?, ?)",
 				   worldid, res, amount)
 

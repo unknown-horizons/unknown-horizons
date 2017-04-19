@@ -1,5 +1,5 @@
 # Danish translations for Unknown Horizons Server package.
-# Copyright (C) 2016 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons Server package.
 # Automatically generated, 2016.
 #
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons Server e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-14 02:13+0200\n"
+"POT-Creation-Date: 2016-10-30 16:06+0100\n"
 "PO-Revision-Date: 2016-08-11 13:54+0000\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/uh/uh-server/da/"
@@ -19,70 +19,70 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.8-dev\n"
 
-#: horizons/network/server.py:250
+#: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Gammel eller ikke understøttet protokol for flere spillere. Kontroller din "
 "spilversion"
 
-#: horizons/network/server.py:285
+#: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
 msgstr "Du har overskredet den samlede pakkestørrelse."
 
-#: horizons/network/server.py:286 horizons/network/server.py:305
+#: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr "Dette bør aldrig ske. Kontakt os eller indsend en fejlrapport."
 
-#: horizons/network/server.py:304
+#: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
 msgstr "Du har overskredet den pr. pakkestørrelse."
 
-#: horizons/network/server.py:312
+#: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr "Ukendt eller forkert udformet pakke. Kontroller din spilversion"
 
 #. this will trigger ondisconnect() for cleanup
-#: horizons/network/server.py:321
+#: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
 msgstr "Ugyldig/ukendt session"
 
-#: horizons/network/server.py:404
+#: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
 msgstr "Du kan ikke slutte dig til et spil mens i et andet spil"
 
-#: horizons/network/server.py:409
+#: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
 msgstr "Ukendt spil eller spil afvikles i en anden version"
 
-#: horizons/network/server.py:412
+#: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
 msgstr "Spil er allerede startet. Ikke flere kan tilslutte sig"
 
-#: horizons/network/server.py:415
+#: horizons/network/server.py:414
 msgid "Game is full"
 msgstr "Spillet er fuldt op"
 
-#: horizons/network/server.py:418
+#: horizons/network/server.py:417
 msgid "Wrong password"
 msgstr "Forkert adgangskode"
 
-#: horizons/network/server.py:435 horizons/network/server.py:548
+#: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
 msgstr "Der er allerede en spiller med dit navn inde i dette spil."
 
-#: horizons/network/server.py:436
+#: horizons/network/server.py:435
 msgid "Please change your name."
 msgstr "Ændr venligst dit navn."
 
-#: horizons/network/server.py:439 horizons/network/server.py:577
+#: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
 msgstr "Der er allerede en spiller med din farve i spillet."
 
-#: horizons/network/server.py:440
+#: horizons/network/server.py:439
 msgid "Please change your color."
 msgstr "Ændr venligst din farve."
 
-#: horizons/network/server.py:443
+#: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
@@ -90,15 +90,15 @@ msgstr ""
 "Der er allerede en spiller med dit unikke spiller-id i dette spil. Dette bør "
 "ikke opstå."
 
-#: horizons/network/server.py:459
+#: horizons/network/server.py:458
 msgid "You are not inside a game"
 msgstr "Du er ikke i et spil"
 
-#: horizons/network/server.py:490
+#: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Spillet er blevet afsluttet. Opretteren har forladt spillet."
 
-#: horizons/network/server.py:495
+#: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
@@ -106,14 +106,14 @@ msgstr ""
 "En spiller har afsluttet sit spil. Af tekniske årsager betyder det i "
 "øjeblikket, at spillet ikke kan fortsætte. Det beklager vi."
 
-#: horizons/network/server.py:549
+#: horizons/network/server.py:548
 msgid "Unable to change your name."
 msgstr "Stand til at ændre dit navn."
 
-#: horizons/network/server.py:578
+#: horizons/network/server.py:577
 msgid "Unable to change your color."
 msgstr "Stand til at ændre din farve."
 
-#: horizons/network/server.py:666
+#: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
 msgstr "Du kan ikke hente et spil i et andet spil"

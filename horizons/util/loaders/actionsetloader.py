@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,11 +43,11 @@ class ActionSetLoader(object):
 	_loaded = False
 
 	@classmethod
-	def _find_action_sets(cls, dir):
+	def _find_action_sets(cls, Dir):
 		"""Traverses recursively starting from dir to find action sets.
 		It is similar to os.walk, but more optimized for this use case."""
-		for entry in os.listdir(dir):
-			full_path = os.path.join(dir, entry)
+		for entry in os.listdir(Dir):
+			full_path = os.path.join(Dir, entry)
 			if entry.startswith("as_"):
 				cls.action_sets[entry] = GeneralLoader._load_action(full_path)
 			else:

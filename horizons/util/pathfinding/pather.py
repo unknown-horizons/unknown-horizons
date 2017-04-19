@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,6 @@ import weakref
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
-from horizons.util.python import decorators
 from horizons.util.shapes import Point
 
 
@@ -187,7 +186,7 @@ class AbstractPather(object):
 		# just save each step of the path
 		# current position is calculated on loading through unit position
 		if self.path:
-			for step in xrange(len(self.path)):
+			for step in range(len(self.path)):
 				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)",
 				    unitid, step, self.path[step][0], self.path[step][1])
 
@@ -292,6 +291,3 @@ class StaticPather(object):
 		@param source, destination: Point or anything supported by FindPath
 		@return: list of tuples or None in case no path is found"""
 		return FindPath()(source, destination, island.path_nodes.road_nodes)
-
-
-decorators.bind_all(AbstractPather)

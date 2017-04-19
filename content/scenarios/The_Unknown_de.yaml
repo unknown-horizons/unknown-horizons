@@ -24,22 +24,22 @@ logbook-data:
 - &INTRO
   - [Headline, 20. November 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Nach vier Tagen hat der Sturm endlich nachgelassen und wir können uns etwas ausruhen. Allerdings haben wir nicht mehr viel Nahrung an Bord und das Schiff ist stark beschädigt. Die Navigationsinstrumente und die Seekarten sind verloren gegangen.
+  - Nach vier Tagen hatte der Sturm endlich nachgelassen und wir können uns etwas ausruhen. Allerdings haben wir nicht mehr viel Nahrung an Bord und das Schiff ist stark beschädigt. Die Navigationsinstrumente und die Seekarten gingen verloren.
   - Wir müssen festes Land erreichen. Einer meiner Matrosen hat ein paar Vögel beim Fischen beobachtet – Land kann also nicht all zu weit entfernt sein. Glücklicherweise haben wir immer einige Werkzeuge und Bretter an Bord, so dass wir einfache Hütten bauen können.
   - 'Aufgabe:
 
-    Findet Land und erbaut einen Hafen.'
+    Entdecke Land und baut einen Hafen.'
   - [Pagebreak]
   - ''
 
 - &FOOD_BOARDS
   - [Headline, 22. November 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Der Hafen ist gebaut und neue Hoffnung kommt auf. Trotzdem mache ich mir Sorgen über die nächsten Tage … Uns geht die Nahrung aus und es fehlt an Baumaterial.
-  - Um uns am Leben zu erhalten müssen wir unsere Grundbedürfnisse absichern. Es ist an der Zeit Leute auszuschicken, die Nahrung und Bauholz besorgen, so dass wir überleben und uns Unterkünfte bauen können.
+  - Ein Hafen wurde gebaut und neue Hoffnung keimt auf. Ich mache mir weiterhin Sorgen über die kommenden Tage … die Nahrung geht zuneige und es fehlt an Baumaterial.
+  - Um zu Überleben müssen wir unsere Grundversorgung absichern. Es ist nötig Leute auszusenden, um Nahrung und Bauholz zu sammeln, damit wir überleben und uns Unterkünfte bauen können.
   - 'Aufgabe:
 
-    Baue mindestens je einen:
+    Bilde mindestens je einen:
 
     * Holzfäller
 
@@ -47,7 +47,7 @@ logbook-data:
 
     * Jäger
 
-    Sammele außerdem 5 Nahrung und 5 Bretter.'
+    aus und sammele 5 Nahrung sowie 5 Bretter.'
   - [Pagebreak]
   - ''
 

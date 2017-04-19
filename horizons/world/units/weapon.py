@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -172,7 +172,7 @@ class Weapon(object):
 				ticks, weapon_id, damage, dest_x, dest_y)
 
 	def __str__(self):
-		return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id, self.weapon_type, self.weapon_range)
+		return "Weapon(id:{};type:{};rang:{})".format(self.weapon_id, self.weapon_type, self.weapon_range)
 
 
 class SetStackableWeaponNumberError(Exception):

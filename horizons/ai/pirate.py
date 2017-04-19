@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -69,7 +69,7 @@ class Pirate(GenericAI):
 		self.__init()
 
 		# create a ship and place it randomly (temporary hack)
-		for i in xrange(self.ship_count):
+		for i in range(self.ship_count):
 			self.create_ship_at_random_position()
 
 		Scheduler().add_new_object(Callback(self.tick), self, 1, -1, self.tick_interval)
@@ -114,7 +114,7 @@ class Pirate(GenericAI):
 		self.combat_manager.add_new_unit(ship)
 
 	def maintain_ship_count(self):
-		if len(self.ships.keys()) < self.ship_count:
+		if len(list(self.ships.keys())) < self.ship_count:
 			self.create_ship_at_random_position()
 
 	def save(self, db):
@@ -125,12 +125,12 @@ class Pirate(GenericAI):
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
-		remaining_ticks = max(calls.values()[0], 1)
+		remaining_ticks = max(list(calls.values())[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
-		remaining_ticks_long = max(calls.values()[0], 1)
+		remaining_ticks_long = max(list(calls.values())[0], 1)
 
 		db("INSERT INTO ai_pirate(rowid, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?)", self.worldid,
 			remaining_ticks, remaining_ticks_long)

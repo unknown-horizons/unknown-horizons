@@ -54,7 +54,9 @@ logbook-data:
   - [Image, content/gui/images/background/hr.png]
   - Oleme kindlustanud oma põhitoidu ja kogunud ja natukene puitu, et uue asunduse kasvamist kindlustada. Me rahvas nõuab kohta, kus elada ja kaubelda igapäevaste vajaduste rahuldamiseks.
   - On aeg ehitada mõned telgid, kus elada ja väike peaväljak, et varustada elanikka kaupadega.
-  - Ülesanne:Ehita peaväljak ja vähemalt 10 telki.
+  - 'Ülesanne:
+
+    Ehita Peaväljak ja vähemalt 10 telki.'
   - [Pagebreak]
   - ''
 

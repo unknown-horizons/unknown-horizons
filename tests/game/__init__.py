@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -89,7 +89,7 @@ class SPTestSession(SPSession):
 
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
-		ExtScheduler.create_instance(Dummy)
+		ExtScheduler.create_instance(mock.Mock())
 		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
@@ -179,7 +179,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 			'difficulty': human_difficulty,
 		})
 
-	for i in xrange(ai_players):
+	for i in range(ai_players):
 		id = i + human_player + 1
 		players.append({
 			'id': id,
@@ -232,7 +232,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 	"""
 
 	def handler(signum, frame):
-		raise Exception('Test run exceeded %ds time limit' % timeout)
+		raise Exception('Test run exceeded {:d}s time limit'.format(timeout))
 
 	def deco(func):
 		@wraps(func)
@@ -243,7 +243,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 			elif use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):
-					raise Exception('Savegame %s not found' % path)
+					raise Exception('Savegame {} not found'.format(path))
 				s = load_session(path)
 
 			timelimit = Timer(handler)

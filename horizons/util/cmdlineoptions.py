@@ -1,6 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import datetime
 import optparse
@@ -63,6 +64,7 @@ def get_option_parser():
 	             help="Edit map <map>.")
 	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
 	             help="Edit the map from the saved game <game>.")
+	start_uh.add_option("--no-audio", dest="no_audio", action= "store_true", help="Starts UH without sounds.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -178,10 +180,10 @@ trade and diplomacy.
 	def format_heading(self, text):
 		"""Format an option group.."""
 		if self.level == 0:
-			return u''
+			return ''
 		return r'''.TP
-\fB%s\fR
-''' % self._markup(text.upper())
+\fB{}\fR
+'''.format(self._markup(text.upper()))
 
 	def format_option(self, option, *args, **kwargs):
 		"""Format a single option.
@@ -193,9 +195,9 @@ trade and diplomacy.
 		result.append(r'''\
 .TP
 .B
-%s
-%s
-''' % (self.optmarkup(opts), self._markup(help_text)))
+{}
+{}
+'''.format(self.optmarkup(opts), self._markup(help_text)))
 
 		return ''.join(result)
 
@@ -229,7 +231,7 @@ The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
 .RE
 .SH "COPYRIGHT"
 .br
-Copyright \(co 2008-2016 The Unknown Horizons Team
+Copyright \(co 2008-2017 The Unknown Horizons Team
 .br
 .PP
 Permission is granted to copy, distribute and/or modify this document under the

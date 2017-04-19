@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,13 @@
 
 import collections
 
+from typing import Any, Sequence, Union
+
 import horizons.main
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
-from horizons.ext.typing import Any, Sequence, Union
 from horizons.messaging import PlayerInventoryUpdated, PlayerLevelUpgrade, SettlerUpdate
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
@@ -49,6 +50,7 @@ class Player(ComponentHolder, WorldObject):
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
+		@type session: horizons.session.Session
 		@param session: Session instance
 		@param worldid: player's worldid
 		@param name: user-chosen name
@@ -56,8 +58,7 @@ class Player(ComponentHolder, WorldObject):
 		@param clientid: id of client
 		@param inventory: {res: value} that are put in the players inventory
 		"""
-		if False:
-			assert isinstance(session, horizons.session.Session)
+		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color, clientid, difficulty_level, 0)
@@ -65,18 +66,18 @@ class Player(ComponentHolder, WorldObject):
 	def initialize(self, inventory):
 		super(Player, self).initialize()
 		if inventory:
-			for res, value in inventory.iteritems():
+			for res, value in inventory.items():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
 	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
 		assert isinstance(color, Color)
-		assert isinstance(name, basestring) and name
+		assert isinstance(name, str) and name
 		try:
-			self.name = unicode(name)
+			self.name = str(name)
 		except UnicodeDecodeError:
 			# WORKAROUND: this line should be the only unicode conversion here.
 			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
-			self.name = unicode(name, errors='ignore')
+			self.name = str(name, errors='ignore')
 		self.color = color
 		self.clientid = clientid
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)

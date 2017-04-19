@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -96,11 +96,11 @@ class AccountTab(MainSquareTab):
 		sell_income = self.settlement.get_component(TradePostComponent).sell_income
 		balance = self.settlement.balance
 		sign = '+' if balance >= 0 else '-'
-		self.widget.child_finder('taxes').text = unicode(taxes)
-		self.widget.child_finder('running_costs').text = unicode(running_costs)
-		self.widget.child_finder('buying').text = unicode(buy_expenses)
-		self.widget.child_finder('sale').text = unicode(sell_income)
-		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
+		self.widget.child_finder('taxes').text = str(taxes)
+		self.widget.child_finder('running_costs').text = str(running_costs)
+		self.widget.child_finder('buying').text = str(buy_expenses)
+		self.widget.child_finder('sale').text = str(sell_income)
+		self.widget.child_finder('balance').text = str(sign+' '+str(abs(balance)))
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
 		self.widget.mapEvents({'headline': rename})
@@ -108,9 +108,9 @@ class AccountTab(MainSquareTab):
 	def refresh_collector_utilization(self):
 		if self.instance.has_component(CollectingComponent):
 			utilization = int(round(self.instance.get_collector_utilization() * 100))
-			utilization = unicode(utilization) + u'%'
+			utilization = str(utilization) + '%'
 		else:
-			utilization = u'---'
+			utilization = '---'
 		self.widget.findChild(name="collector_utilization").text = utilization
 
 
@@ -141,7 +141,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
-		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
+		self.widget.child_finder('tax_val_label').text = str(self.settlement.tax_settings[self.__class__.LEVEL])
 		self.widget.child_finder('headline').text = T(self.instance.session.db.get_settler_name(self.__class__.LEVEL))
 
 		if self.__class__.LEVEL == TIER.CURRENT_MAX:
@@ -188,7 +188,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		})
 
 		# refresh taxes
-		self.widget.child_finder('taxes').text = unicode(self._get_last_tax_paid())
+		self.widget.child_finder('taxes').text = str(self._get_last_tax_paid())
 
 		# refresh upgrade permissions
 		upgrades_button = self.widget.child_finder('allow_upgrades')
@@ -207,32 +207,32 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		residents = 0
 		container = self.widget.child_finder('residents_per_house_table')
 		space_per_label = container.size[0] // 6
-		for number in xrange(self.min_inhabitants, self.max_inhabitants + 1):
+		for number in range(self.min_inhabitants, self.max_inhabitants + 1):
 			column = number - (self.min_inhabitants - 1 if self.min_inhabitants > 0 else 0)
 			house_count = resident_counts.get(number, 0)
 			houses += house_count
 			residents += house_count * number
 			position_x = (space_per_label * (column - 1)) + 10
 			if not container.findChild(name="resident_"+str(column)):
-				label = Label(name="resident_"+str(column), position=(position_x, 0), text=unicode(number))
+				label = Label(name="resident_"+str(column), position=(position_x, 0), text=str(number))
 				container.addChild(label)
-				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1, 20), text=unicode(house_count))
+				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1, 20), text=str(house_count))
 				container.addChild(count_label)
 			else:
-				container.findChild(name="resident_"+str(column)).text = unicode(number)
-				container.findChild(name="resident_count_"+str(column)).text = unicode(house_count)
+				container.findChild(name="resident_"+str(column)).text = str(number)
+				container.findChild(name="resident_count_"+str(column)).text = str(house_count)
 
 		sad = self.instance.session.db.get_lower_happiness_limit()
 		happy = self.instance.session.db.get_upper_happiness_limit()
 		inhabitants = partial(self.settlement.get_residentials_of_lvl_for_happiness,
 		                      self.__class__.LEVEL)
-		self.widget.child_finder('sad_amount').text = unicode(inhabitants(max_happiness=sad))
-		self.widget.child_finder('avg_amount').text = unicode(inhabitants(sad, happy))
-		self.widget.child_finder('happy_amount').text = unicode(inhabitants(happy))
+		self.widget.child_finder('sad_amount').text = str(inhabitants(max_happiness=sad))
+		self.widget.child_finder('avg_amount').text = str(inhabitants(sad, happy))
+		self.widget.child_finder('happy_amount').text = str(inhabitants(happy))
 
 		# refresh the summary
-		self.widget.child_finder('house_count').text = unicode(houses)
-		self.widget.child_finder('resident_count').text = unicode(residents)
+		self.widget.child_finder('house_count').text = str(houses)
+		self.widget.child_finder('resident_count').text = str(residents)
 
 		self.widget.adaptLayout()
 		super(MainSquareSettlerLevelTab, self).refresh()

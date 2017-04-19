@@ -8,27 +8,26 @@
 <Container position="0,70" size="250,450">
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
+	<Spacer />
 		<Label name="headline"  text="Building overview" />
 	</HBox>
 
 	<hr position="20,30" />
 
 	<Label name="name" position="25,40" />
-	<HBox min_size="125,20" max_size="225,20" position="25,63">
+	<HBox min_size="125,30" max_size="225,30" position="25,63">
 		<Icon name="running_costs_label" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
 		<Label name="running_costs" helptext="Running costs" />
-		<Spacer max_size="50" />
+		<Spacer />
 		<Icon name="capacity_utilization_label"  helptext="Capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
 		<Label name="capacity_utilization" helptext="Capacity utilization" />
 	</HBox>
 
-	<ScrollArea name="transparent_scrollarea" min_size="210,320" max_size="210,320" position="20,87">
-		<VBox name="production_lines" position="20,87" padding="-13" />
+	<ScrollArea name="transparent_scrollarea" fixed_size="210,320" position="20,87">
+		<VBox name="production_lines" position="20,87"/>
 	</ScrollArea>
-
 
 </Container>
 </Container>

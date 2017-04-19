@@ -15,8 +15,7 @@ fi
 #
 # horizons.ext.typing is our copy of typing, which should be ignore by mypy.
 
-mypy $args | grep -v -e horizons.ext.typing \
-                     -e horizons/world/building/storages.py \
+mypy $args | grep -v -e horizons/world/building/storages.py \
                      -e horizons/world/building/path.py \
                      -e horizons/world/building/unitproduction.py \
                      -e horizons/world/building/war.py \

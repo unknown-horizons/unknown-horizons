@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,7 @@ class AIDataSelection(object):
 	def __init__(self):
 		self.gui = load_uh_widget('aidataselection.xml')
 
-		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(MULTIPLAYER.MAX_PLAYER_COUNT)]})
+		self.gui.distributeInitialData({'ai_players': [str(n) for n in range(MULTIPLAYER.MAX_PLAYER_COUNT)]})
 		self.gui.distributeData({
 			'ai_players': int(horizons.globals.fife.get_uh_setting("AIPlayers"))
 		})

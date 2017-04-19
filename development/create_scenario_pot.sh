@@ -18,7 +18,7 @@
 # no need to call that script directly since it is integrated with Weblate.
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -47,10 +47,10 @@ elif [ ! -f content/scenarios/$1_en.yaml ]; then
     exit 1
 fi
 
-VERSION=$(python2 -c 'from horizons.constants import VERSION
+VERSION=$(python3 -c 'from horizons.constants import VERSION
 print "%s" % VERSION.RELEASE_VERSION')
 
-python2 << END > po/$1.py
+python3 << END > po/$1.py
 import yaml
 
 COMMENT_MESSAGEWIDGET = 'This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!'

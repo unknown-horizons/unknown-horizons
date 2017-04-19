@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -45,7 +45,7 @@ class DepositComponent(Component):
 		"""Generator for tuples (res_id, min, max) for each resource that the deposit
 		can contain (as defined in the object file)."""
 		return ((res, data.get('min_amount', 0), data['max_amount'])
-		        for res, data in self.resources.iteritems())
+		        for res, data in self.resources.items())
 
 	def get_random_res_amounts(self):
 		"""Generator for tuples (res_id, rand_amount) for each resource that the deposit

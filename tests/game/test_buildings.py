@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -181,7 +181,7 @@ def test_tree_production(s, p):
 	n = 20
 
 	inv = tree.get_component(StorageComponent).inventory
-	for i in xrange(n):  # we want n units
+	for i in range(n):  # we want n units
 
 		while not inv[RES.TREES]:
 			s.run(seconds=5)

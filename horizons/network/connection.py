@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
 
 import logging
 import time
@@ -79,14 +78,14 @@ class Connection(object):
 		if self.is_connected:
 			raise network.AlreadyConnected("We are already connected to a server")
 
-		self.log.debug("[CONNECT] to server %s" % (self.server_address))
+		self.log.debug("[CONNECT] to server {}".format(self.server_address))
 		try:
 			if self.server_address is None:
 				# can only construct address now, as it resolves the target and requires internet connection
 				self.server_address = enet.Address(*self.server_address_parameters)
 			self.server_peer = self.host.connect(self.server_address, 1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
-			raise network.NetworkException(T("Unable to connect to server.") + u" " +
+			raise network.NetworkException(T("Unable to connect to server.") + " " +
 			                               T("Maybe invalid or irresolvable server address."))
 
 		event = self.host.service(SERVER_TIMEOUT)
@@ -207,12 +206,12 @@ class Connection(object):
 				return None
 			elif event.type == enet.EVENT_TYPE_DISCONNECT:
 				self._reset()
-				self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
-				raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
+				self.log.warning("Unexpected disconnect from %s", event.peer.address)
+				raise network.CommandError("Unexpected disconnect from {}".format(event.peer.address))
 			elif event.type == enet.EVENT_TYPE_CONNECT:
 				self._reset()
-				self.log.warning("Unexpected connection from %s" % (event.peer.address))
-				raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
+				self.log.warning("Unexpected connection from %s", event.peer.address)
+				raise network.CommandError("Unexpected connection from {}".format(event.peer.address))
 
 			return event
 		except IOError as e:
@@ -232,19 +231,19 @@ class Connection(object):
 			except NameError:
 				pass
 			else:
-				self.log.error("Unknown packet from %s!" % (event.peer.address))
-			errstr = "Pickle/Security: %s" % (e)
-			print("[FATAL] %s" % (errstr)) # print that even when no logger is enabled!
-			self.log.error("[FATAL] %s" % (errstr))
+				self.log.error("Unknown packet from %s!", event.peer.address)
+			errstr = "Pickle/Security: {}".format(e)
+			print("[FATAL] {}".format(errstr)) # print that even when no logger is enabled!
+			self.log.error("[FATAL] %s", errstr)
 			self.disconnect()
 			raise network.FatalError(errstr)
 
 		if isinstance(packet, packets.cmd_error):
 			# handle special errors here
 			# the game got terminated by the client
-			raise network.CommandError(packet.errorstr, type=packet.type)
+			raise network.CommandError(packet.errorstr, cmd_type=packet.type)
 		elif isinstance(packet, packets.cmd_fatalerror):
-			self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
+			self.log.error("[FATAL] Network message: %s", packet.errorstr)
 			self.disconnect(server_may_disconnect=True)
 			raise network.FatalError(packet.errorstr)
 

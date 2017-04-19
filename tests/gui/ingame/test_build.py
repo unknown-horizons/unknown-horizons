@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -58,7 +58,7 @@ def test_found_settlement(gui):
 
 	# connect the lumberjack and storage using a road
 	gui.trigger('tab/button_21')
-	for y in xrange(7, 15):
+	for y in range(7, 15):
 		gui.cursor_click(55, y, 'left')
 		assert(ground_map[(55, y)].object.id == BUILDINGS.TRAIL)
 	gui.cursor_click(55, y, 'right')
@@ -99,7 +99,7 @@ def test_found_settlement(gui):
 
 	# connect the lumberjack and fisher using a road
 	gui.trigger('tab/button_21')
-	for x in xrange(57, 60):
+	for x in range(57, 60):
 		gui.cursor_click(x, 5, 'left')
 		assert(ground_map[(x, 5)].object.id == BUILDINGS.TRAIL)
 	gui.cursor_click(x, 5, 'right')

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,8 +21,6 @@
 
 import logging
 from collections import defaultdict
-
-from fife import fife
 
 import horizons.globals
 from horizons.component import Component
@@ -75,17 +73,22 @@ class InventoryOverlayComponent(Component):
 			# parameter True: also convert color overlays attached to base frame(s) into animation
 			self.fife_instance.convertToOverlays(self.identifier, True)
 
-		for rotation, frames in overlay_set.iteritems():
-			ov_anim = fife.Animation.createAnimation()
-			for frame_img, frame_data in frames.iteritems():
-				try:
-					frame_length = frame_data[0]
-				except TypeError:
-					# not using atlases
-					frame_length = frame_data
-				pic = horizons.globals.fife.imagemanager.load(frame_img)
-				frame_milliseconds = int(frame_length * 1000)
-				ov_anim.addFrame(pic, frame_milliseconds)
+		animationmanager = horizons.globals.fife.animationmanager
+		for rotation, frames in overlay_set.items():
+			id = '{}+{}'.format(self.identifier, rotation)
+			if animationmanager.exists(id):
+				ov_anim = animationmanager.getPtr(id)
+			else:
+				ov_anim = animationmanager.create(id)
+				for frame_img, frame_data in frames.items():
+					try:
+						frame_length = frame_data[0]
+					except TypeError:
+						# not using atlases
+						frame_length = frame_data
+					pic = horizons.globals.fife.imagemanager.load(frame_img)
+					frame_milliseconds = int(frame_length * 1000)
+					ov_anim.addFrame(pic, frame_milliseconds)
 			self.fife_instance.addAnimationOverlay(self.identifier, rotation, z_order, ov_anim)
 
 
@@ -106,7 +109,7 @@ class InventoryOverlayComponent(Component):
 		Because it did not tell us which resources were added or removed, we
 		need to check everything in the inventory for possible updates.
 		"""
-		for res_id, new_amount in message.inventory.iteritems():
+		for res_id, new_amount in message.inventory.items():
 			self.update_overlay(res_id, new_amount)
 
 
@@ -178,7 +181,7 @@ class InventoryOverlayComponent(Component):
 		"""
 		InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
 
-		for (res_id, overlay) in self.current_overlays.iteritems():
+		for (res_id, overlay) in self.current_overlays.items():
 			if overlay is not None:
 				self.remove_overlay(res_id)
 

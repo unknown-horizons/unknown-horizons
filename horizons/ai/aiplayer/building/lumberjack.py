@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Tuple
+
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.ext.typing import Tuple
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
 
@@ -125,6 +125,3 @@ class LumberjackEvaluator(BuildingEvaluator):
 		return (BUILD_RESULT.OK, building)
 
 AbstractLumberjack.register_buildings()
-
-decorators.bind_all(AbstractLumberjack)
-decorators.bind_all(LumberjackEvaluator)

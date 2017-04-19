@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,7 @@
 
 import logging
 import os.path
-
-try:
-	import cPickle as pickle
-except ImportError:
-	import pickle # type: ignore
+import pickle
 
 class YamlCacheStorage(object):
 	"""
@@ -61,7 +57,7 @@ class YamlCacheStorage(object):
 		"""Load the cache from disk if possible. Create an empty cache otherwise."""
 		if os.path.exists(self._filename):
 			self.log.debug('%s._reload(): loading cache from disk', self)
-			with open(self._filename) as f:
+			with open(self._filename, 'rb') as f:
 				data = pickle.load(f)
 			if not self._validate(data):
 				raise RuntimeError('Bad YamlCacheStorage data format')
@@ -84,7 +80,7 @@ class YamlCacheStorage(object):
 			obj._reload()
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
-			e = unicode(str(e), errors='replace')
+			e = str(e)
 			cls.log.warning("Warning: Failed to open {0!s} as cache: {1!s}\nThis "
 				"warning is expected when upgrading from "
 				"old versions.\n".format(filename, e))
@@ -100,7 +96,7 @@ class YamlCacheStorage(object):
 		except Exception as e:
 			# Ignore all exceptions because saving the cache on disk is not critical.
 			self.log.warning("Warning: Unable to save cache into {0!s}: {1!s}".
-				format(self._filename, unicode(e)))
+				format(self._filename, str(e)))
 
 	def close(self):
 		"""Write the file to disk if possible and then invalidate the object in memory."""

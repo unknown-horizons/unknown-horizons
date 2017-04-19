@@ -1,7 +1,7 @@
 # encoding=utf-8
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,7 @@ USER_DIR = None
 
 def setup():
 	global USER_DIR
-	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ')
+	USER_DIR = tempfile.mkdtemp(suffix='H߀ｒìｚｏԉｓ')
 
 
 def teardown():

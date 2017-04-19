@@ -9,7 +9,7 @@
 				<hr position="50,30" />
 			</Container>
 
-			<VBox padding="5">
+			<VBox>
 				<RadioButton position="0,0" size="32,32" name="create_new_map" group="map_source" text="Create new map" />
 				<RadioButton position="0,30" size="32,32" name="load_existing_map" group="map_source" text="Load existing map" />
 				<RadioButton position="0,60" size="32,32" name="load_saved_game_map" group="map_source" text="Load saved game's map" />
@@ -18,7 +18,7 @@
 
 		<Container name="right_side" size="320,465" position="345,0" />
 
-		<HBox max_size="660,40" min_size="660,40" position="0,468">
+		<HBox fixed_size="650,40" position="0,468">
 			<CancelButton name="cancel"  helptext="Exit to main menu" />
 			<Spacer />
 			<OkButton name="okay"  helptext="Start editor" />

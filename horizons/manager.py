@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -185,9 +185,9 @@ class MPManager(LivingObject):
 		self.log.error("Differences:")
 		if len(hash1) != len(hash2):
 			self.log.error("Different length")
-		items1 = sorted(hash1.iteritems())
-		items2 = sorted(hash2.iteritems())
-		for i in xrange(min(len(hash1), len(hash2))):
+		items1 = sorted(hash1.items())
+		items2 = sorted(hash2.items())
+		for i in range(min(len(hash1), len(hash2))):
 			if (items1[i] != items2[i]):
 				self.log.error(str(i)+": "+str(items1[i]))
 				self.log.error(str(i)+": "+str(items2[i]))
@@ -221,7 +221,7 @@ class MPManager(LivingObject):
 		# and the ones that haven't been sent yet (this are of course only commands by the local player)
 		commandlist = itertools.chain(l1, self.gamecommands)
 
-		return filter(lambda x: isinstance(x, Build), commandlist)
+		return [x for x in commandlist if isinstance(x, Build)]
 
 	def load(self, db):
 		"""Execute outstanding commands, loaded from db.
@@ -247,9 +247,9 @@ class MPPacketmanager(object):
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
 		"""Returns packets that are to be executed at a certain tick"""
-		command_packets = filter(lambda x: x.tick==tick, self.command_packet_list)
+		command_packets = [x for x in self.command_packet_list if x.tick==tick]
 		if remove_returned_commands:
-			self.command_packet_list = filter(lambda x: x.tick!=tick, self.command_packet_list)
+			self.command_packet_list = [x for x in self.command_packet_list if x.tick!=tick]
 		return command_packets
 
 	def get_packets_from_player(self, player_id):
@@ -257,7 +257,7 @@ class MPPacketmanager(object):
 		Returns all command this player has issued, that are not yet executed
 		@param player_id: worldid of player
 		"""
-		return filter(lambda x: x.player_id==player_id, self.command_packet_list)
+		return [x for x in self.command_packet_list if x.player_id==player_id]
 
 	def add_packet(self, command_packet):
 		"""Receive a packet"""

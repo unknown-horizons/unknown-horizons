@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 
-<Container size="230,230" name="mainhud"> <!-- positioning happens in ingamegui#init -->
-<!-- This size only needs to be "210,230", but is larger to prevent accidental scrolling.
+<Container size="230,235" name="mainhud"> <!-- positioning happens in ingamegui#init -->
+<!-- This size only needs to be "210,235", but is larger to prevent accidental scrolling.
 In case you change the size of this Container, also adapt the ingamegui positioning value.  -->
 <!-- The actual minimap Icon is placed after everything else so that it gets focus  -->
 
-<Container name="background_and_buttons" position="-30,0" size="240,240">
+<Container name="background_and_buttons" position="-32,-2" size="240,240">
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
 	<Label name="speed_text" position="50,90" font="default_bold" />
@@ -47,5 +47,5 @@ In case you change the size of this Container, also adapt the ingamegui position
 		path="icons/widgets/minimap/gamemenu" helptext="Game menu ({key})" />
 </Container>
 
-<Icon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />
+<Icon name="minimap"  fixed_size="120,120"  position="47,46" />
 </Container>

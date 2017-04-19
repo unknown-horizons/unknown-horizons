@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,6 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.i18n import gettext as T
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.world.units.fightingship import FightingShip
 
@@ -67,7 +66,7 @@ class PlayersShips(StatsWidget):
 
 	def _add_line_to_gui(self, ship, sequence_number):
 		sequence_number_label = Label(name='sequence_number_%d' % ship.worldid)
-		sequence_number_label.text = unicode(sequence_number)
+		sequence_number_label.text = str(sequence_number)
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		ship_name = Label(name='ship_name_%d' % ship.worldid)
@@ -90,7 +89,7 @@ class PlayersShips(StatsWidget):
 			for weapon_id, amount in sorted(ship.get_weapon_storage().itercontents()):
 				weapon_list.append('%d %s' % (amount, self.session.db.get_res_name(weapon_id)))
 			if weapon_list:
-				weapons.text = u', '.join(weapon_list)
+				weapons.text = ', '.join(weapon_list)
 			else:
 				#i18n There are no weapons equipped at the moment.
 				weapons.text = T('None')
@@ -100,7 +99,7 @@ class PlayersShips(StatsWidget):
 
 		health = Label(name='health_%d' % ship.worldid)
 		health_component = ship.get_component(HealthComponent)
-		health.text = u'%d/%d' % (health_component.health, health_component.max_health)
+		health.text = '%d/%d' % (health_component.health, health_component.max_health)
 		health.min_size = health.max_size = (65, 20)
 
 		status = Label(name='status_%d' % ship.worldid)
@@ -117,5 +116,3 @@ class PlayersShips(StatsWidget):
 		hbox.addChild(status)
 		self._content_vbox.addChild(hbox)
 		return (ship_name, rename_icon, status, status_position)
-
-decorators.bind_all(PlayersShips)

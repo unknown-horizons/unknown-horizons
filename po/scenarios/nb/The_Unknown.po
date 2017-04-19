@@ -1,5 +1,5 @@
 # Norwegian Bokmal translations for Unknown Horizons package.
-# Copyright (C) 2016 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
 # Automatically generated, 2016.
 #
@@ -8,18 +8,20 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2015-12-02 23:38+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2016-11-25 21:53+0000\n"
+"Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/the-"
+"unknown/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.10-dev\n"
 
 #. scenario difficulty
 msgid "easy"
-msgstr ""
+msgstr "enkel"
 
 #. scenario description
 msgid ""
@@ -27,10 +29,13 @@ msgid ""
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
+"Du er kaptein på et skip under engelsk flagg i 1740.  Du og manskapet ditt "
+"var på vei til en engelsk koloni i stillehavet.\n"
+"Alt gikk fint helt til du havnet i en storm…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr ""
+msgstr "20. november 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -38,6 +43,9 @@ msgid ""
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
 msgstr ""
+"Etter fire dager har stormen endelig løyet og vi kan slappe av.  Men vi har "
+"bare litt mat igjen og skipet vårt er i dårlig stand.  "
+"Navigasjonsinstrumentene og sjøkartene er tapt."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -45,22 +53,30 @@ msgid ""
 "fish, so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
 msgstr ""
+"Vi må i land snart.  En av våre utkikkere så noen fugler som jaktet på fisk, "
+"så det kan ikke være langt til land. Heldigvis har vi alltid noen enkle "
+"verktøy og planker ombord, så vi kan bygge noen enkle ly."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"Oppgave:\n"
+"Finn land og bygg en havn."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr ""
+msgstr "22. november 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
+"Havnen er bygget og nytt håp sprer seg.  Jeg er fortsatt bekymret for de "
+"kommende dager... vi går fri for mat og mangler grunnleggende "
+"byggematerialer."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -68,6 +84,9 @@ msgid ""
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
 msgstr ""
+"Vi må sikre våre grunnleggende behov for å holde oss i live.  Det er på tide "
+"å sende folk for å samle mat og tømmer slik at vi kan overlevere og bygge "
+"litt ly."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -78,10 +97,16 @@ msgid ""
 "* Hunter\n"
 "Collect 5 food and 5 boards."
 msgstr ""
+"Oppgave:\n"
+"Bygg minst en av hver av disse:\n"
+"* Tømmerhugger\n"
+"* Fisker\n"
+"* Jeger\n"
+"Samle 5 mat og 5 planker."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr ""
+msgstr "25. november 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -89,22 +114,29 @@ msgid ""
 "the growth of our new settlement. Our people demand a place to live and "
 "exchange goods for their everyday needs."
 msgstr ""
+"Vi har sikret våre grunnleggende behov for mat og samlet noe ved for å sikre "
+"veksten for vår nye bosetning. Folkene våre krever et sted å leve og å bytte "
+"varer for sine hverdagslige behov."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It is time to build some tents to live in and a small main square to supply "
 "our citizens with goods."
 msgstr ""
+"Det er på tide å bygge noen telt å bo i og en liten markedsplass for å sikre "
+"våre innbyggere varer."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Build a Main Square and at least 10 Tents."
 msgstr ""
+"Task:\n"
+"Bygg en markedsplass og minst 10 telt."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr ""
+msgstr "1. desember 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -112,6 +144,9 @@ msgid ""
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
 msgstr ""
+"Endelig har vi nok mat og et sted å bo igjen.  Teltet mitt er ikke veldig "
+"komfortabelt men holder meg tørr og jeg opplever å ha et tak over hodet om "
+"nettene."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -120,6 +155,10 @@ msgid ""
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
+"Jeg har forsket på stjernene om natten, men uten mine sjøkart og "
+"instrumenter forblir deres betydning ukjent.  Jeg har følelsen av at vi ikke "
+"kommer herfra på en stund, så vi får gjøre det beste ut av situasjonen.  Vi "
+"kan bare forsøke å bygge opp en sivilisasjon og finne en vei hjem…"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -127,10 +166,13 @@ msgid ""
 "Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"Task:\n"
+"Få landsbyen til å vokse til du har minst 250 innbyggere og en positiv "
+"balanse."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr ""
+msgstr "27. august 1745"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -138,6 +180,9 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
+"Landsbyen vår gjør det godt, og byen har vokst til over 250 innbyggere.  Jeg "
+"har begynt å venne meg til vårt nye hjem, men øyen er for liten til at vi "
+"kan bli til evig tid."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -146,6 +191,10 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
+"Vi bør laste opp i skipet vårt og dra ut for å finne en større øy med mer "
+"plass og ressurser for folket mitt.  Jeg har laget et grunnleggende "
+"navigasjonskart igjen, ved hjelp av stjernene jeg ser om natten.  Det er "
+"ikke perfekt, men jeg håper det gjør det mulig å finne veien tilbake hit."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -153,3 +202,6 @@ msgid ""
 "Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
 "how you can contribute to making this scenario longer and better!"
 msgstr ""
+"Task:\n"
+"Ta kontakt med Unknown Horizons-laget (www.unknown-horizons.org) og finn ut "
+"hvordan du kan bidra til å gjøre dette scenarioet lengre og bedre!"

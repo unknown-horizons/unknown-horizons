@@ -1,31 +1,81 @@
-language: python
+language: cpp
 sudo: required
 dist: trusty
-python:
-  - "2.7"
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: trusty
+      compiler: clang
+      python: "3.4"
+
 # command to install dependencies
 addons:
   apt:
     sources:
-      - sourceline: 'deb [trusted=yes] http://joker.someserver.de/uh/trusty /'
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-trusty-3.9
+    packages:
+    - clang-3.9
+    - llvm-3.9-dev
+    - libclang-3.9-dev
+    - mesa-common-dev
+    - libsdl2-dev
+    - libsdl2-image-dev
+    - libsdl2-ttf-dev
+    - libfreetype6-dev
+    - libopenal-dev
+    - libasound2-dev
+    - zlib1g-dev
+    - libboost-dev
+    - libboost-system-dev
+    - libboost-filesystem-dev
+    - libboost-test-dev
+    - libtinyxml-dev
+    - libc6
+    - libglew-dev
+    - libvorbis-dev
+    - libalut-dev
+#    - mesa-utils # for glxinfo
+
 before_install:
   - "sudo apt-get update"
-  - "export DISPLAY=:99.0"
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+    # change clang to version 3.9
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.9 20; sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.9 20; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo rm -f /usr/local/clang-3.5.0/bin/clang; sudo rm -f /usr/local/clang-3.5.0/bin/clang++; sudo update-alternatives --config clang; sudo update-alternatives --config clang++; fi
+    # update swig to version 3.x
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo sh -c 'echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list'; sudo apt-get update -qq; sudo apt-get install -yqq swig3.0/trusty-backports; fi
+
+#  - "export DISPLAY=:99.0"
+#  - "export PYTHON_VERSION=python3.4"
+#  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16 +extension GLX +extension RANDR +extension RENDER"
   #- "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
+#  - sleep 3 # give xvfb some time to start
 install:
-  - "sudo apt-get install python-fife"
-  - "cp -a /usr/lib/python2.7/dist-packages/fife/ $VIRTUAL_ENV/lib/python2.7/site-packages/"
-  - "prename 's/\\.x86_64-linux-gnu//' $VIRTUAL_ENV/lib/python2.7/site-packages/fife/*.so"
-  - "pip install -r requirements.txt"
-  - "pip install coverage coveralls"
-script: 
-  - python -c 'from fife import fife; print fife.getVersion()'
+  # install fifechan
+  - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
+  - mkdir build_fifechan; cd build_fifechan; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../fifechan
+  - make -j3
+  - sudo make install
+  - cd ..
+  # install fifengine
+  - git clone --quiet --depth 1 -b python3_futurize https://github.com/fifengine/fifengine.git
+  - mkdir build; cd build; cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 ../fifengine
+  - ls -alh .
+  - make -j3
+  - sudo make install
+  - cd ..
+  # install python3 modules
+  - "pip3 install -r requirements.txt"
+script:
+  # import fife
+  - python3 -c 'from fife import fife; print(fife.getVersion())'
+  - cd /home/travis/build/unknown-horizons/unknown-horizons
   - isort -c -rc horizons tests run_*.py
   - pycodestyle --count horizons/ tests/ development/
-  - COVERAGE_FILE=.coverage.nongui python run_tests.py --verbose --nologcapture --with-coverage
-  - RUNCOV=1 python run_tests.py -a gui tests/gui --verbose --nologcapture
+  - COVERAGE_FILE=.coverage.nongui python3 run_tests.py --verbose --nologcapture --with-coverage
+#  - RUNCOV=1 python3 run_tests.py -a gui tests/gui --verbose --nologcapture
 after_success:
   - coverage combine
   - coveralls

@@ -5,7 +5,7 @@
 	<Container size="320,500"  position="55,32"  name="left_side">
 		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
 		<hr position="52,30" />
-		<Icon name="map_preview_minimap" size="128,128" max_size="128,128" position="50, 100" is_focusable="0" />
+		<Icon name="map_preview_minimap" fixed_size="128,128" position="50, 100" is_focusable="0" />
 
 		<VBox position="50,250">
 			<HBox>
@@ -27,13 +27,13 @@
 	<VBox name="playerdataselectioncontainer"  position="100,190" />
 
 	<VBox size="320,500"  position="420,32"  name="right_side">
-		<Spacer fixed_size="50" />
+		<Spacer fixed_size="50,0" />
 		<Label text="Choose a map:"  name="headline" />
 		<ScrollArea  name="map_list_area"  min_size="290,250">
 			<ListBox name="maplist"  min_size="290,330" is_focusable="0" />
 		</ScrollArea>
 		<Label name="recommended_number_of_players_lbl" />
-		<Spacer fixed_size="30" />
+		<Spacer fixed_size="30,0" />
 		<HBox> <!-- keep sync with equivalent entry in select_savegame.xml -->
 			<Label text="Name of the game:" name="gamename_lbl"
 				helptext="This will be displayed to other players so they recognize the game." />

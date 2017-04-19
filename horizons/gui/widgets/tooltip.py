@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,12 +23,11 @@ import re
 import textwrap
 
 from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import ABox, HBox, Icon, Label
 
 import horizons.globals
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
 
 
@@ -64,7 +63,7 @@ class _Tooltip(object):
 		self.tooltip_shown = False
 
 	def __init_gui(self):
-		self.gui = AutoResizeContainer()
+		self.gui = ABox()
 		self.label = Label(position=(10, 5))
 		self.bg = TooltipBG()
 		self.gui.addChildren(self.bg, self.label)
@@ -126,9 +125,9 @@ class _Tooltip(object):
 		# resource icons. Even supporting that is a pain (as you will see),
 		# so if you think you need icons in other tooltips, maybe reconsider.
 		# [These unicode() calls brought to you by status icon tooltip code.]
-		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
+		buildmenu_icons = self.icon_regexp.findall(str(self.helptext))
 		# Remove the weird stuff before displaying text.
-		replaced = self.icon_regexp.sub('', unicode(self.helptext))
+		replaced = self.icon_regexp.sub('', (str(self.helptext)))
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
 			hbox = HBox(position=(7, 5), padding=0)

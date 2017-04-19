@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,6 @@ from fife import fife
 import horizons.globals
 from horizons.component import Component
 from horizons.constants import GFX, LAYERS, RES
-from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
 
 
@@ -64,8 +63,8 @@ class SelectableComponent(Component):
 		super(SelectableComponent, self).__init__()
 		# resolve tab
 		from horizons.gui.tabs import resolve_tab
-		self.tabs = map(resolve_tab, tabs)
-		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+		self.tabs = list(map(resolve_tab, tabs))
+		self.enemy_tabs = list(map(resolve_tab, enemy_tabs))
 		self.active_tab = resolve_tab(active_tab) if active_tab is not None else None
 		self._selected = False
 
@@ -375,8 +374,3 @@ class SelectableFisherComponent(SelectableBuildingComponent):
 			#cls._selected_tiles.l.append(fish_deposit)
 			for pos in fish_deposit.position:
 				cls._add_fake_tile(pos.x, pos.y, layer, renderer)
-
-decorators.bind_all(SelectableFisherComponent)
-decorators.bind_all(SelectableBuildingComponent)
-decorators.bind_all(SelectableShipComponent)
-decorators.bind_all(SelectableUnitComponent)

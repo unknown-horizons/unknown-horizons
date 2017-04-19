@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -64,7 +64,7 @@ class BuildingResourceHandler(ResourceHandler):
 		if not resources or not resources.keys():
 			return False
 
-		return resources.keys()[0] in \
+		return list(resources.keys())[0] in \
 		       self.island.session.db.get_res(only_tradeable=True, only_inventory=True)
 
 	def _set_running_costs_to_status(self, caller, activate):

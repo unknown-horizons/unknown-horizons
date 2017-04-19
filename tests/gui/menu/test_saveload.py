@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -42,7 +42,7 @@ def test_load_game(gui):
 	_copy_savegame()
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		with mock.patch('horizons.main.start_singleplayer') as start_mock:
 			gui.trigger('load_game_window/okButton')
@@ -98,7 +98,7 @@ def test_save_game_override(gui):
 	gui.trigger('mainhud/gameMenuButton')
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		# handle "do you want to override file" popup
 		def func2():
@@ -132,7 +132,7 @@ def test_delete_game(gui):
 			gui.trigger('popup_window/okButton')
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		with gui.handler(confirm_deletion):
 			gui.trigger('load_game_window/deleteButton')
@@ -159,7 +159,7 @@ def test_delete_game_abort(gui):
 			gui.trigger('popup_window/cancelButton')
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		with gui.handler(confirm_deletion):
 			gui.trigger('load_game_window/deleteButton')

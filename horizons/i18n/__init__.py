@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,11 @@
 # ###################################################
 
 """
-Maps _ to the ugettext unicode gettext call. Use: T(string).
-N_ takes care of plural forms for different languages. It masks ungettext
-calls (unicode, plural-aware T() ) to create different translation strings
-depending on the counter value. Not all languages have only two plural forms
-"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
-where n is a counter.
+Maps _ to the gettext call. Use: T(string). N_ takes care of plural forms for
+different languages. It masks ngettext calls (str, plural-aware T() ) to create
+different translation strings depending on the counter value. Not all languages
+have only two plural forms "One" / "Anything else". Use: N_("{n} dungeon", "{n}
+dungeons", n).format(n=n) where n is a counter.
 
 We will need to make gettext recognize namespaces some time, but hardcoded
 'unknown-horizons' works for now since we currently only use one namespace.
@@ -38,10 +37,11 @@ import os
 import logging
 import locale
 
+from typing import Optional, Text
+
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES, FONTDEFS
-from horizons.ext.typing import Optional, Text
 from horizons.ext.speaklater import make_lazy_gettext
 from horizons.messaging import LanguageChanged
 
@@ -56,7 +56,7 @@ def gettext(message):
 	# type: (Text) -> Text
 	if not _trans:
 		return message
-	return _trans.ugettext(message)
+	return _trans.gettext(message)
 
 
 gettext_lazy = make_lazy_gettext(lambda: gettext)
@@ -64,7 +64,7 @@ gettext_lazy = make_lazy_gettext(lambda: gettext)
 
 def ngettext(message1, message2, count):
 	# type: (Text, Text, int) -> Text
-	return _trans.ungettext(message1, message2, count)
+	return _trans.ngettext(message1, message2, count)
 
 
 LANGCACHE = {} # type: Dict[str, str]
@@ -99,7 +99,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 		for j in glob.glob('%s/*/*/%s.mo' % (i, domain)):
 			splited = j.split(os.sep)
 			key = splited[-3]
-			if not key in languages:
+			if key not in languages:
 				languages[key] = os.sep.join(splited[:-3])
 
 	# there's always a default, which is english
@@ -112,12 +112,11 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return os.path.join('content', 'fonts', u'{0}.fontdef'.format(fontdef_file))
+	return os.path.join('content', 'fonts', '{0}.xml'.format(fontdef_file))
 
 
 def change_language(language=None):
 	"""Load/change the language of Unknown Horizons.
-
 	Called on startup and when changing the language in the settings menu.
 	"""
 	global _trans

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -83,7 +83,7 @@ def test_traderoute(gui):
 
 	# Set the resources to be loaded from settlement on the left and the amount
 	gui.trigger('configure_route/container_1/slot_0/button', mouse='left') # Select the second warehouse's first slot
-	gui.trigger('configure_route/traderoute_resources/resource_%d' % RES.FOOD)
+	gui.trigger('configure_route/traderoute_resources/resource_{:d}'.format(RES.FOOD))
 	gui.find('configure_route/container_1/slot_0/slider').slide(120)
 
 	# Check if the ship obeys the state of "Wait at load" and "Wait at unload"

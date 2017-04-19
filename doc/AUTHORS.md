@@ -1,10 +1,11 @@
-## UH-Team_2016 ##
+## UH-Team-2016/2017 ##
 
 #### Project Coordination
 * LinuxDonald (Thomas Kowaliczek)
 * Kilian] (Kilian Köppchen)
 
 #### Programming
+* AndyMender ()
 * MasterofJOKers ()
 * Kilian] (Kilian Köppchen)
 * squiddy (Reiner Gerecke)
@@ -15,9 +16,16 @@
 #### Graphics Artists
 * janexx (Jana Weigel)
 
+#### Windows Installer
+* jakoch (Jens A. Koch)
+* LinuxDonald (Thomas Kowaliczek)
+
+#### Web Coder
+* dwayne1988 (Dwayne Thorp)
+
 - - - - -
 
-## UH-Team_2015 ##
+## UH-Team-2015 ##
 
 #### Project Coordination
 * Kilian] (Kilian Köppchen)

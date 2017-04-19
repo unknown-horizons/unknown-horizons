@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@ from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.messaging import ShipDestroyed
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
@@ -141,5 +140,3 @@ class ChaseShipsAndAttack(FleetMission):
 		if self.target_ship.in_ship_map:
 			ShipDestroyed.unsubscribe(self._on_ship_destroyed)
 		super(ChaseShipsAndAttack, self).end()
-
-decorators.bind_all(ChaseShipsAndAttack)

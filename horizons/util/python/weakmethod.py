@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,9 +27,9 @@ class WeakMethod(object):
 	def __init__(self, function):
 		assert callable(function)
 
-		if isinstance(function, types.MethodType) and function.im_self is not None:
-			self.function = function.im_func
-			self.instance = weakref.ref(function.im_self)
+		if isinstance(function, types.MethodType) and function.__self__ is not None:
+			self.function = function.__func__
+			self.instance = weakref.ref(function.__self__)
 		else:
 			self.function = function
 			self.instance = None
@@ -40,8 +40,8 @@ class WeakMethod(object):
 		elif self.instance() is not None:
 			return self.function(self.instance(), *args, **kwargs)
 		else:
-			raise ReferenceError("Instance: %s  Function: %s  Function from module: %s" %
-			                     (self.instance(), self.function, self.function.__module__))
+			raise ReferenceError("Instance: {}  Function: {}  Function from module: {}"
+			                     .format(self.instance(), self.function, self.function.__module__))
 
 	def __eq__(self, other):
 		if isinstance(other, WeakMethod):

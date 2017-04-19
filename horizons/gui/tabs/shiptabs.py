@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -74,9 +74,9 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').set_inactive()
 			self.widget.child_finder('found_settlement').helptext = helptext
 
-		cb = Callback( self.instance.session.ingame_gui.resource_overview.set_construction_mode,
-		               self.instance,
-		               Entities.buildings[BUILDINGS.WAREHOUSE].costs)
+		cb = Callback(self.instance.session.ingame_gui.resource_overview.set_construction_mode,
+		              self.instance,
+		              Entities.buildings[BUILDINGS.WAREHOUSE].costs)
 		events['found_settlement/mouseEntered'] = cb
 
 		cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)

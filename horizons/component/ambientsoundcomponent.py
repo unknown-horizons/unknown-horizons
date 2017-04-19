@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,8 @@
 # ###################################################
 
 import random
+
+from fife.fife import AudioSpaceCoordinate
 
 import horizons.globals
 from horizons.component import Component
@@ -91,7 +93,7 @@ class AmbientSoundComponent(Component):
 			if position is not None:
 				self.__emitter.setRolloff(1.9)
 				# set to current position
-				self.__emitter.setPosition(position.x, position.y, 1)
+				self.__emitter.setPosition(AudioSpaceCoordinate(position.x, position.y, 1))
 			else:
 				self.__emitter.setRolloff(0) # reset to default
 

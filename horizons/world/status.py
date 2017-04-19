@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -67,7 +67,7 @@ class StatusIcon(object):
 		return cmp(self.__class__, other.__class__)
 
 	def __str__(self):
-		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
+		return str(self.__class__) + "(prio:{},icon:{})".format(self.priority, self.icon)
 
 class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """

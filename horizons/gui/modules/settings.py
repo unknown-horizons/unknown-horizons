@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -72,7 +72,7 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	def _init_settings(self):
 		"""Init the settings with the stored values."""
-		languages = find_available_languages().keys()
+		languages = list(find_available_languages().keys())
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
 		fps = {0: LazyT("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
@@ -137,7 +137,7 @@ class SettingsDialog(PickBeltWidget, Window):
 	def set_defaults(self):
 		title = T("Restore default settings")
 		msg = T("Restoring the default settings will delete all changes to the settings you made so far.") + \
-				u" " + T("Do you want to continue?")
+				" " + T("Do you want to continue?")
 
 		if self._windows.open_popup(title, msg, show_cancel_button=True):
 			self.hotkey_interface.reset_to_default()
@@ -160,7 +160,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			if isinstance(initial_data, list):
 				new_value = initial_data[new_value]
 			elif isinstance(initial_data, dict):
-				new_value = initial_data.keys()[new_value]
+				new_value = list(initial_data.keys())[new_value]
 
 			old_value = self._settings.get(entry.module, entry.name)
 
@@ -198,8 +198,8 @@ class SettingsDialog(PickBeltWidget, Window):
 					initial_data = entry.initial_data
 
 				if isinstance(initial_data, dict):
-					widget.setInitialData(initial_data.values())
-					value = initial_data.keys().index(value)
+					widget.setInitialData(list(initial_data.values()))
+					value = list(initial_data.keys()).index(value)
 				elif isinstance(initial_data, list):
 					widget.setInitialData(initial_data)
 					value = initial_data.index(value)
@@ -223,13 +223,13 @@ class SettingsDialog(PickBeltWidget, Window):
 		a '%' suffix."""
 		value_label = self.widget.findChild(name=widget.name + '_value')
 		value = {
-			'volume_music':      lambda x: u'%s%%' % int(500 * x),
-			'volume_effects':    lambda x: u'%s%%' % int(200 * x),
-			'mousesensitivity':  lambda x: u'%+.1f%%' % (200 * x),
-			'autosaveinterval':  lambda x: u'%d' % x,
-			'autosavemaxcount':  lambda x: u'%d' % x,
-			'quicksavemaxcount': lambda x: u'%d' % x,
-			'scrollspeed':       lambda x: u'%.1f' % x,
+			'volume_music':      lambda x: '%s%%' % int(500 * x),
+			'volume_effects':    lambda x: '%s%%' % int(200 * x),
+			'mousesensitivity':  lambda x: '%+.1f%%' % (200 * x),
+			'autosaveinterval':  lambda x: '%d' % x,
+			'autosavemaxcount':  lambda x: '%d' % x,
+			'quicksavemaxcount': lambda x: '%d' % x,
+			'scrollspeed':       lambda x: '%.1f' % x,
 		}[widget.name](widget.value)
 		value_label.text = value
 
@@ -263,7 +263,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			advice = T("Please check the port you entered and make sure it is in the specified range.")
 			self._windows.open_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
-			self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', u"0")
+			self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', "0")
 		else:
 			# port is valid
 			try:
@@ -276,9 +276,9 @@ class SettingsDialog(PickBeltWidget, Window):
 				advice = T("Check the settings you specified in the network section.")
 				if 0 < parse_port(new) < 1024:
 					#i18n This is advice for players seeing a network error with the current config
-					advice += u" " + \
+					advice += " " + \
 						T("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
-				details = unicode(e)
+				details = str(e)
 				self._windows.open_error_popup(headline, descr, advice, details)
 
 	def _on_Language_changed(self, old, new):

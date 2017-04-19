@@ -1,6 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,10 +26,10 @@ from collections import OrderedDict
 
 sections = ['UH-Team_New', 'UH-Team_Old', 'Patchers', 'Translators', 'Packagers', 'Special Thanks']
 section_widgets = {s: 'credits_' + s.lower() for s in sections}
-section_widgets.update({'UH-Team_2016': 'credits_team_2016','UH-Team_2015': 'credits_team_2015', 'Special Thanks': 'credits_thanks'})
+section_widgets.update({'UH-Team-2016/2017': 'credits_team_2016','UH-Team-2015': 'credits_team_2015', 'Special Thanks': 'credits_thanks'})
 
 # Whether to add ScrollAreas around the page
-huge_pages = ['UH-Team_2016', 'UH-Team_2015', 'Patchers', 'Translators']
+huge_pages = ['UH-Team-2016/2017', 'UH-Team-2015', 'Patchers', 'Translators']
 
 INPUT = 'doc/AUTHORS.md'
 OUTPUT = 'content/gui/xml/mainmenu/credits.xml'
@@ -124,7 +125,7 @@ def write_page(heading, content):
 		if heading in huge_pages:
 			write(f, 1, u'</ScrollArea>')
 
-	write(f, 0, u'\n<HBox name="%s" position="185,45" padding="10">' % section_widgets[heading])
+	write(f, 0, u'\n<HBox name="%s" position="185,45">' % section_widgets[heading])
 
 	write_page_header()
 

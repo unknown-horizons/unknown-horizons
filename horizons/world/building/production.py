@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -88,7 +88,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def initialize(self, deposit_class, inventory, **kwargs):
 		super(Mine, self).initialize(**kwargs)
 		self.__init(deposit_class=deposit_class)
-		for res, amount in inventory.iteritems():
+		for res, amount in inventory.items():
 			# bury resources from mountain in mine
 			self.get_component(StorageComponent).inventory.alter(res, amount)
 

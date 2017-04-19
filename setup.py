@@ -1,6 +1,6 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 # ###################################################
 
 
-from __future__ import print_function
 from distutils.core import setup
 from distutils.command.build import build
 from distutils.spawn import find_executable
@@ -54,7 +53,7 @@ data = [
   ('share/man/man6', ('content/packages/unknown-horizons.6', )),
 ]
 
-for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
+for root, dirs, files in [x for x in os.walk('content') if len(x[2])]:
 	data.append(('share/unknown-horizons/{0!s}'.format(root),
 		['{0!s}/{1!s}'.format(root, f) for f in files]))
 
@@ -93,7 +92,7 @@ class _build_i18n(distutils.cmd.Command):
 	def generate_mo_files(self, domain, po_dir):
 		if not os.path.isdir(po_dir):
 			return []
-		po_files = glob.glob("%s/*.po" % po_dir)
+		po_files = glob.glob("{}/*.po".format(po_dir))
 		if po_files and not find_executable('msgfmt'):
 			raise RuntimeError(
 				"Can't generate language files, needs msgfmt. "
@@ -116,7 +115,7 @@ class _build_i18n(distutils.cmd.Command):
 			if selected_languages and lang not in selected_languages:
 				continue
 			mo_dir = os.path.join("content", "lang", lang, "LC_MESSAGES")
-			mo_file = os.path.join(mo_dir, "%s.mo" % domain)
+			mo_file = os.path.join(mo_dir, "{}.mo".format(domain))
 			if not os.path.exists(mo_dir):
 				os.makedirs(mo_dir)
 			cmd = ["msgfmt", po_file, "-o", mo_file]

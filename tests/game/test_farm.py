@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -37,13 +37,13 @@ def _build_farm(x, y, field_type, island, settlement, owner):
 	F   F
 	"""
 	farm = Build(BUILDINGS.FARM, x, y, island, settlement=settlement)(owner)
-	assert farm, "Failed to build a farm at (%d, %d)" % (x, y)
+	assert farm, "Failed to build a farm at ({:d}, {:d})".format(x, y)
 
 	for (x_off, y_off) in product([-3, 3], repeat=2):
 		fx = x + x_off
 		fy = x + y_off
 		field = Build(field_type, fx, fy, island, settlement=settlement)(owner)
-		assert field, "Failed to build a field (%d) at (%d, %d)" % (field_type, x, y)
+		assert field, "Failed to build a field ({:d}) at ({:d}, {:d})".format(field_type, x, y)
 
 	return farm
 

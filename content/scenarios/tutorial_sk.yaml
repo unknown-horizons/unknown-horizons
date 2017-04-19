@@ -59,17 +59,17 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Postavte drevorubačov stan a spojte ho s prístavom.]
   - [Headline, 'NOVÁ ÚLOHA: POSTAVTE DREVORUBAČSKÝ STAN']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Zásoby a konštrukčné materiály boli vyložené z vašej lode a bezpečne uchované vo vašom novom prístave. Teraz je čas na to aby ste postavili niekoľko základných budov začnúc drevorubačskou chatou.
+  - Drevorubači pokácajú stromy okolo ich stanov a spracovať ich na dosky, ktoré sa dajú použiť na výstavbu alebo ako položka pre obchod.
+  - Pre postavenie drevorubačského stanu, otvorte stavebné menu a kliknutím na tlačidlo pod minimapou alebo stlačením klávesy 'B', prednastavenou skratkou.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Stavebné menu je zoradené do stupňov. Prvý stupeň je momentálne jediný prístupný vám. Ako sa vaša civilizácia bude vylepšovať dostanete prístup k budovám vyššieho stupňa.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - Nájdite dobre zalesnenú plochu pre drevorubača potom kliknite 'Drevorubačský stan' z listu budov a postavte ho do tejto plochy.
+  - Neskôr v hre budete môcť vytvoriť zalesnenú plochu sadením stromov, ale keďže to stojí peanieze, mali by ste používať to čo vám príroda dá!
+  - Hociaké budovy, ktoré zbierajú materiál alebo niečo produkujú potrebujú cestu, ktorá je pripojená ku skladisku. Inak nebudú produkty vyzdvihnuté.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
   - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
   - The trader will supply your settlement with necessary goods which you can't produce yet.
   - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.'
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
   - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -657,4 +657,4 @@ metadata:
   locale: sk
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 19 translated messages, 169 untranslated messages.
+  translation_status: 26 translated messages, 162 untranslated messages.

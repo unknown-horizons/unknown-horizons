@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -196,10 +196,10 @@ class Ship(Unit):
 		warehouses = self.get_tradeable_warehouses(position)
 		if warehouses:
 			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
-			player_suffix = u''
+			player_suffix = ''
 			if warehouse.owner is not self.owner:
-				player_suffix = u' ({name})'.format(name=warehouse.owner.name)
-			return u'{name}{suffix}'.format(name=warehouse.settlement.get_component(NamedComponent).name,
+				player_suffix = ' ({name})'.format(name=warehouse.owner.name)
+			return '{name}{suffix}'.format(name=warehouse.settlement.get_component(NamedComponent).name,
 			                                suffix=player_suffix)
 		return None
 

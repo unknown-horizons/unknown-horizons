@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-08-28 10:43+0000\n"
-"Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
+"PO-Revision-Date: 2017-04-18 06:56+0000\n"
+"Last-Translator: Lukáš Doktor <ldoktor@redhat.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/uh/tutorial/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -48,6 +48,9 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"Toto je žurnál, kde se ukládají důležité zprávy o současné hře. Souhrn každé "
+"zprávy se také objeví blízko levého okraje obrazovky. Pro zjištění detailů "
+"můžete najet myší nad tuto zprávu, nebo na ni kliknout pro otevření žurnálu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -56,6 +59,9 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Pro otevření žurnálu můžete také kdykoliv kliknout tlačítko pod mini-mapou v "
+"pravém horním rohu obrazovky. Nadále budeme tuto oblast s mini-mapou a "
+"dalšími tlačítky jako přehled."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -98,6 +104,9 @@ msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Toto je deník, kde se ukládají důležité zprávy o současné hře. Souhrn každé "
+"zprávy se také objeví blízko levého okraje obrazovky. Pro zjištění detailů "
+"můžete najet myší nad tuto zprávu, nebo na ni kliknout pro otevření deníku."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -122,12 +131,19 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Kliknutím na toto tlačítko se zobrazí náhled budovy obchodního přístavu, "
+"která je první budovou potřebnou k založení nové osady. Při pohybu myší si "
+"můžete všimnout, že náhled budovy zčervená, pokud je místo nevhodné, k "
+"jejímu postavení."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Obchodní přístav musí být umístěn na pobřeží aby v něm mohly kotvit lodě. "
+"Najděte dobré místo pro tuto důležitou budovu a potvrďte stisknutím levého "
+"tlačítka."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
@@ -175,6 +191,8 @@ msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Najděte dobře zalesněnou oblast pro dřevorubce, pak vyberte 'Dřevorubcův "
+"stan' ze seznamu budov v přehledu a umístěte budovu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -189,6 +207,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Každá budova produkující suroviny musí být připojena cestou k obchodnímu "
+"přístavu, nebo jiné formě skladiště, jinak nebude produkované zboží "
+"odebíráno."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -212,6 +233,8 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"Jakmile jsou budovy propojeny, uvidíte nosiče vyzvedávat a odnášet nově "
+"vytvořené desky do skladiště, čímž je zpřístupní pro výstavbu či obchod."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -698,12 +721,14 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "Nejprve klikněte na váš obchodní přístav a vyberte třetí záložku."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Poté klikněte na jeden ze 3 slotů a vyberte zboží, které chcete nakoupit či "
+"prodat."
 
 #. This is the text body of a logbook page.
 msgid ""

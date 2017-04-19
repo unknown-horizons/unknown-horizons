@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,36 +26,36 @@ from tests.unittests import TestCase
 class TestConnectedAreaCache(TestCase):
 	def test(self):
 		cache = ConnectedAreaCache()
-		self.assertEquals(0, len(cache.areas))
+		self.assertEqual(0, len(cache.areas))
 
 		cache.add_area([(0, 0), (1, 1)])
-		self.assertEquals(2, len(cache.areas))
-		self.assertEquals(set([(0, 0)]), cache.areas[cache.area_numbers[(0, 0)]])
-		self.assertEquals(set([(1, 1)]), cache.areas[cache.area_numbers[(1, 1)]])
+		self.assertEqual(2, len(cache.areas))
+		self.assertEqual(set([(0, 0)]), cache.areas[cache.area_numbers[(0, 0)]])
+		self.assertEqual(set([(1, 1)]), cache.areas[cache.area_numbers[(1, 1)]])
 
 		cache.add_area([(1, 4), (1, 3), (1, 2)])
-		self.assertEquals(2, len(cache.areas))
-		self.assertEquals(set([(0, 0)]), cache.areas[cache.area_numbers[(0, 0)]])
-		self.assertEquals(set([(1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(1, 1)]])
+		self.assertEqual(2, len(cache.areas))
+		self.assertEqual(set([(0, 0)]), cache.areas[cache.area_numbers[(0, 0)]])
+		self.assertEqual(set([(1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(1, 1)]])
 
 		cache.add_area([(0, 1)])
-		self.assertEquals(1, len(cache.areas))
-		self.assertEquals(set([(0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(0, 0)]])
+		self.assertEqual(1, len(cache.areas))
+		self.assertEqual(set([(0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(0, 0)]])
 
 		cache.remove_area([(0, 1)])
-		self.assertEquals(2, len(cache.areas))
-		self.assertEquals(set([(0, 0)]), cache.areas[cache.area_numbers[(0, 0)]])
-		self.assertEquals(set([(1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(1, 1)]])
+		self.assertEqual(2, len(cache.areas))
+		self.assertEqual(set([(0, 0)]), cache.areas[cache.area_numbers[(0, 0)]])
+		self.assertEqual(set([(1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(1, 1)]])
 
 		cache.remove_area([(0, 0)])
 		self.assertFalse((0, 0) in cache.area_numbers)
-		self.assertEquals(1, len(cache.areas))
-		self.assertEquals(set([(1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(1, 1)]])
+		self.assertEqual(1, len(cache.areas))
+		self.assertEqual(set([(1, 1), (1, 2), (1, 3), (1, 4)]), cache.areas[cache.area_numbers[(1, 1)]])
 
 		cache.remove_area([(1, 2), (1, 3)])
-		self.assertEquals(2, len(cache.areas))
-		self.assertEquals(set([(1, 1)]), cache.areas[cache.area_numbers[(1, 1)]])
-		self.assertEquals(set([(1, 4)]), cache.areas[cache.area_numbers[(1, 4)]])
+		self.assertEqual(2, len(cache.areas))
+		self.assertEqual(set([(1, 1)]), cache.areas[cache.area_numbers[(1, 1)]])
+		self.assertEqual(set([(1, 4)]), cache.areas[cache.area_numbers[(1, 4)]])
 
 		cache.remove_area([(1, 1), (1, 4)])
-		self.assertEquals(0, len(cache.areas))
+		self.assertEqual(0, len(cache.areas))

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,6 @@
 # ###################################################
 
 import heapq
-
-from horizons.util.python import decorators
 
 
 class RoadPlanner(object):
@@ -61,7 +59,7 @@ class RoadPlanner(object):
 		heap = []
 		for coords in source:
 			if coords not in blocked_coords and coords in path_nodes:
-				for dir in xrange(2): # 0 -> changed x, 1 -> changed y
+				for dir in range(2): # 0 -> changed x, 1 -> changed y
 					real_distance = path_nodes[coords]
 					expected_distance = beacon_tuple_distance_func(destination_beacon, coords)
 					key = (coords[0], coords[1], dir)
@@ -77,13 +75,13 @@ class RoadPlanner(object):
 		# perform A*
 		while heap:
 			(_, distance_so_far, key) = heapq.heappop(heap)
-			if distance[key] < distance_so_far:
+			if distance[key][0] < distance_so_far:
 				continue
 			if (key[0], key[1]) in destination:
 				final_key = key
 				break
 
-			for dir in xrange(4):
+			for dir in range(4):
 				coords = (key[0] + moves[dir][0], key[1] + moves[dir][1])
 				if coords not in path_nodes or coords in blocked_coords:
 					continue
@@ -103,5 +101,3 @@ class RoadPlanner(object):
 				final_key = distance[final_key][1]
 			return path
 		return None
-
-decorators.bind_all(RoadPlanner)

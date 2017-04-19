@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -131,7 +131,7 @@ class Island(BuildingOwner, WorldObject):
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+				ground = Entities.grounds[str('{:d}-{}'.format(ground_id, action_id))](self.session, x, y)
 				ground.act(rotation)
 			else:
 				ground = MapPreviewTile(x, y, ground_id)
@@ -151,10 +151,10 @@ class Island(BuildingOwner, WorldObject):
 		self.num_trees = 0
 
 		# define the rectangle with the smallest area that contains every island tile its position
-		min_x = min(zip(*self.ground_map.keys())[0])
-		max_x = max(zip(*self.ground_map.keys())[0])
-		min_y = min(zip(*self.ground_map.keys())[1])
-		max_y = max(zip(*self.ground_map.keys())[1])
+		min_x = min(list(zip(*self.ground_map.keys()))[0])
+		max_x = max(list(zip(*self.ground_map.keys()))[0])
+		min_y = min(list(zip(*self.ground_map.keys()))[1])
+		max_y = max(list(zip(*self.ground_map.keys()))[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
@@ -181,7 +181,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""
-		return self.ground_map.keys()
+		return list(self.ground_map.keys())
 
 	def get_tile(self, point):
 		"""Returns whether a tile is on island or not.
@@ -419,7 +419,7 @@ class Island(BuildingOwner, WorldObject):
 				pass
 
 	def __iter__(self):
-		return self.ground_map.iterkeys()
+		return iter(self.ground_map.keys())
 
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""

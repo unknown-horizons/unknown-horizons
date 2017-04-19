@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import cPickle
+import pickle
 import inspect
 import sys
 
-try:
-	from cStringIO import StringIO
-except ImportError:
-	from StringIO import StringIO # type: ignore
+from io import BytesIO
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -86,13 +83,13 @@ class SafeUnpickler(object):
 	def find_class(cls, module, name):
 		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
 		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError(
+			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
 				format(module, name))
 		__import__(module)
 		mod = sys.modules[module]
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError(
+			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
 				format(name, module))
 		klass = getattr(mod, name)
@@ -100,10 +97,12 @@ class SafeUnpickler(object):
 
 	@classmethod
 	def loads(cls, str):
-		file = StringIO(str)
-		obj = cPickle.Unpickler(file)
-		obj.find_global = cls.find_class
-		return obj.load()
+		class CustomUnpickler(pickle.Unpickler):
+			find_global = cls.find_class
+
+		file = BytesIO(str)
+		return CustomUnpickler(file).load()
+
 
 #-------------------------------------------------------------------------------
 
@@ -118,7 +117,7 @@ class packet(object):
 		return True
 
 	def serialize(self):
-		return cPickle.dumps(self, PICKLE_PROTOCOL)
+		return pickle.dumps(self, PICKLE_PROTOCOL)
 
 #-------------------------------------------------------------------------------
 
@@ -164,7 +163,7 @@ def unserialize(data, validate=False, protocol=0):
 		if not inspect.isfunction(mypacket.validate):
 			raise NetworkException("Attempt to override packet.validate()")
 		if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
-			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
+			raise PacketTooLarge("packet={}, length={:d})".format(mypacket.__class__.__name__, len(data)))
 		mypacket.__class__.validate(mypacket, protocol)
 	return mypacket
 

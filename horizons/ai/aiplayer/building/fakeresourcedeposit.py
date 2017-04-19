@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.entities import Entities
-from horizons.util.python import decorators
 from horizons.world.production.producer import Producer
 from horizons.world.production.productionline import ProductionLine
 
@@ -39,16 +38,16 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 
 	def __init_production_lines(self):
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
-		for key, value in production_lines.iteritems():
+		for key, value in production_lines.items():
 			production_line = ProductionLine(key, value)
 			production_line.id = None
 			production_line.production = {}
 			production_line.produced_res = {}
-			for resource_id, amount in production_line.consumed_res.iteritems():
+			for resource_id, amount in production_line.consumed_res.items():
 				production_line.production[resource_id] = -amount
 				production_line.produced_res[resource_id] = -amount
 			production_line.consumed_res = {}
-			self.lines[production_line.produced_res.keys()[0]] = production_line
+			self.lines[list(production_line.produced_res.keys())[0]] = production_line
 
 	def _get_producer_building(self):
 		return Entities.buildings[self.get_higher_level_building_id()]
@@ -72,5 +71,3 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 	@property
 	def ignore_production(self):
 		return True
-
-decorators.bind_all(AbstractFakeResourceDeposit)

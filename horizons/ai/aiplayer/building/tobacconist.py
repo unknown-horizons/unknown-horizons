@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +25,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 
 class AbstractTobacconist(AbstractBuilding):
@@ -71,6 +70,3 @@ class TobacconistEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.TOBACCONIST
 
 AbstractTobacconist.register_buildings()
-
-decorators.bind_all(AbstractTobacconist)
-decorators.bind_all(TobacconistEvaluator)

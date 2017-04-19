@@ -1,0 +1,15 @@
+Pyenet libs that needed to rebuild with py3 support:
+
+darwin-x64-26/enet.so
+darwin-x64-27/enet.so
+darwin-x86/enet.so
+freebsd-x64/enet.so
+freebsd-x86/enet.so
+linux-x86/enet.so
+windows-x64-26/enet.pyd
+windows-x64-27/enet.pyd
+windows-x86-26/enet.pyd
+windows-x86-27/enet.pyd
+
+Pyenet libs that already are rebuilded:
+linux-x64/enet.so

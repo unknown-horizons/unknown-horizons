@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
 
 
 class TentGoal(SettlementGoal):
@@ -35,5 +34,3 @@ class TentGoal(SettlementGoal):
 		result = self.settlement_manager.village_builder.build_tent()
 		self._log_generic_build_result(result, 'tent')
 		return self._translate_build_result(result)
-
-decorators.bind_all(TentGoal)

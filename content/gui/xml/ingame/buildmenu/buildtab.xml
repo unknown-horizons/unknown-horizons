@@ -1,89 +1,89 @@
 <?xml version="1.0"?>
-<Container name="tab" size="250,500" padding="2">
+<Container name="tab" size="250,500">
 <TabBG amount="7" />
 
 <Container position="0,70" size="250,500">
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
+	<Spacer min_size="0,0"  max_size="50,0" />
 		<Label name="headline" />
 	</HBox>
 
 	<hr position="20,30" />
 
-	<Container position="20,32" size="250,80">
-		<Label position="0,11"   name="label_01" />
+	<Container position="20,32" size="250,90">
+		<Label position="10,11"   name="label_01" />
 		<Label position="54,11"  name="label_11" />
 		<Label position="108,11" name="label_21" />
 		<Label position="162,11" name="label_31" />
-		<HBox position="0,30" padding="2" name="iconbox_x1">
+		<HBox position="0,30" name="iconbox_x1">
 			<Icon name="icon_01" size="52,52" />
 			<Icon name="icon_11" size="52,52" />
 			<Icon name="icon_21" size="52,52" />
 			<Icon name="icon_31" size="52,52" />
 		</HBox>
-		<HBox position="0,32" padding="8" name="buttonbox_x1">
-			<ImageButton name="button_01" min_size="46,46" />
-			<ImageButton name="button_11" min_size="46,46" />
-			<ImageButton name="button_21" min_size="46,46" />
-			<ImageButton name="button_31" min_size="46,46" />
-		</HBox>
+		<Container position="0,32" name="buttonbox_x1" size="250,50">
+			<ImageButton position="0,0" name="button_01" min_size="44,44" />
+			<ImageButton position="52,0" name="button_11" min_size="44,44" />
+			<ImageButton position="104,0" name="button_21" min_size="44,44" />
+			<ImageButton position="156,0" name="button_31" min_size="44,44" />
+		</Container>
 	</Container>
 
-	<Container position="20,107" size="250,80">
+	<Container position="20,107" size="250,90">
 		<Label position="0,11"   name="label_02" />
 		<Label position="54,11"  name="label_12" />
 		<Label position="108,11" name="label_22" />
 		<Label position="162,11" name="label_32" />
-		<HBox position="0,30" padding="2" name="iconbox_x2">
+		<HBox position="0,30" name="iconbox_x2">
 			<Icon name="icon_02" size="52,52" />
 			<Icon name="icon_12" size="52,52" />
 			<Icon name="icon_22" size="52,52" />
 			<Icon name="icon_32" size="52,52" />
 		</HBox>
-		<HBox position="0,32" padding="8" name="buttonbox_x2">
-			<ImageButton name="button_02" min_size="46,46" />
-			<ImageButton name="button_12" min_size="46,46" />
-			<ImageButton name="button_22" min_size="46,46" />
-			<ImageButton name="button_32" min_size="46,46" />
-		</HBox>
+		<Container position="0,32" name="buttonbox_x2" size="250,50">
+			<ImageButton position="0,0" name="button_02" min_size="46,46" />
+			<ImageButton position="52,0" name="button_12" min_size="46,46" />
+			<ImageButton position="104,0" name="button_22" min_size="46,46" />
+			<ImageButton position="156,0" name="button_32" min_size="46,46" />
+		</Container>
 	</Container>
 
-	<Container position="20,182" size="250,80">
+	<Container position="20,182" size="250,90">
 		<Label position="0,11"   name="label_03" />
 		<Label position="54,11"  name="label_13" />
 		<Label position="108,11" name="label_23" />
 		<Label position="162,11" name="label_33" />
-		<HBox position="0,30" padding="2" name="iconbox_x3">
+		<HBox position="0,30" name="iconbox_x3">
 			<Icon name="icon_03" size="52,52" />
 			<Icon name="icon_13" size="52,52" />
 			<Icon name="icon_23" size="52,52" />
 			<Icon name="icon_33" size="52,52" />
 		</HBox>
-		<HBox position="0,32" padding="8" name="buttonbox_x3">
-			<ImageButton name="button_03" min_size="46,46" />
-			<ImageButton name="button_13" min_size="46,46" />
-			<ImageButton name="button_23" min_size="46,46" />
-			<ImageButton name="button_33" min_size="46,46" />
-		</HBox>
+		<Container position="0,32" name="buttonbox_x3" size="250,50">
+			<ImageButton position="0,0" name="button_03" min_size="46,46" />
+			<ImageButton position="52,0" name="button_13" min_size="46,46" />
+			<ImageButton position="104,0" name="button_23" min_size="46,46" />
+			<ImageButton position="156,0" name="button_33" min_size="46,46" />
+		</Container>
 	</Container>
 
-	<Container position="20,257" size="250,80">
+	<Container position="20,257" size="250,90">
 		<Label position="0,11"   name="label_04" />
 		<Label position="54,11"  name="label_14" />
 		<Label position="108,11" name="label_24" />
 		<Label position="162,11" name="label_34" />
-		<HBox position="0,30" padding="2" name="iconbox_x4">
+		<HBox position="0,30" name="iconbox_x4">
 			<Icon name="icon_04" size="52,52" />
 			<Icon name="icon_14" size="52,52" />
 			<Icon name="icon_24" size="52,52" />
 			<Icon name="icon_34" size="52,52" />
 		</HBox>
-		<HBox position="0,32" padding="8" name="buttonbox_x4">
-			<ImageButton name="button_04" min_size="46,46" />
-			<ImageButton name="button_14" min_size="46,46" />
-			<ImageButton name="button_24" min_size="46,46" />
-			<ImageButton name="button_34" min_size="46,46" />
-		</HBox>
+		<Container position="0,32" name="buttonbox_x4" size="250,50">
+			<ImageButton position="0,0" name="button_04" min_size="46,46" />
+			<ImageButton position="52,0" name="button_14" min_size="46,46" />
+			<ImageButton position="104,0" name="button_24" min_size="46,46" />
+			<ImageButton position="156,0" name="button_34" min_size="46,46" />
+		</Container>
 	</Container>
 
 	<ImageButton name="switch_build_menu_config_button" path="icons/tabwidget/buildmenu/tier" position="200,0" />

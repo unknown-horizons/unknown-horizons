@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -58,7 +58,7 @@ class BuySellInventory(Inventory):
 
 	def _draw(self, vbox, current_hbox, index=0):
 		"""Draws the inventory."""
-		for resid, limit in sorted(self._limits.iteritems()):
+		for resid, limit in sorted(self._limits.items()):
 			if self._selling:
 				amount = max(0, self._inventory[resid] - limit)
 			else:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import decorators
 from horizons.util.shapes import Point, RadiusRect
 from horizons.world.providerhandler import ProviderHandler
 
@@ -104,7 +103,6 @@ class BuildingOwner(object):
 		assert isinstance(point, Point)
 		raise NotImplementedError
 
-	@decorators.make_constants()
 	def get_providers_in_range(self, radiusrect, res=None, reslist=None, player=None):
 		"""Returns all instances of provider within the specified shape.
 		NOTE: Specifing the res parameter is usually a huge speed gain.

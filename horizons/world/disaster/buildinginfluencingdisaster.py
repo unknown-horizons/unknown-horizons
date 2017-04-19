@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013-2016 The Unknown Horizons Team
+# Copyright (C) 2013-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import TYPE_CHECKING, Type
+
 from horizons.constants import BUILDINGS, GAME_SPEED, TIER
-from horizons.ext.typing import TYPE_CHECKING, Type
 from horizons.messaging import AddStatusIcon, NewDisaster, RemoveStatusIcon
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback

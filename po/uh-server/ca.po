@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons Server 9a13287\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2016-08-14 02:13+0200\n"
+"POT-Creation-Date: 2016-10-30 16:06+0100\n"
 "PO-Revision-Date: 2015-08-24 22:26+0200\n"
 "Last-Translator: Joan Josep <juanjo.ng.83@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh-server/ca/"
@@ -18,89 +18,89 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4-dev\n"
 
-#: horizons/network/server.py:250
+#: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "El protocol multijugador és antic o no està suportat. Comproveu la vostra "
 "versió del joc."
 
-#: horizons/network/server.py:285
+#: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
 msgstr "Heu superat la mida global de paquet."
 
-#: horizons/network/server.py:286 horizons/network/server.py:305
+#: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
 "Això no hauria de passar. Contacteu amb nosaltres o envieu un informe de "
 "fallada."
 
-#: horizons/network/server.py:304
+#: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
 msgstr "Heu superat la mida màxima per paquet."
 
-#: horizons/network/server.py:312
+#: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
 "El paquet és desconegut o està mal construït. Comproveu la vostra versió del "
 "joc"
 
 #. this will trigger ondisconnect() for cleanup
-#: horizons/network/server.py:321
+#: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
 msgstr "Sessió no vàlida o desconeguda"
 
-#: horizons/network/server.py:404
+#: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
 msgstr "No us podeu unir a una partida mentre n'esteu jugant una altra."
 
-#: horizons/network/server.py:409
+#: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
 msgstr "La partida és desconeguda o fa servir una versió diferent"
 
-#: horizons/network/server.py:412
+#: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
 msgstr "La partida ja ha començat. No us hi podeu afegir"
 
-#: horizons/network/server.py:415
+#: horizons/network/server.py:414
 msgid "Game is full"
 msgstr "La partida està complerta"
 
-#: horizons/network/server.py:418
+#: horizons/network/server.py:417
 msgid "Wrong password"
 msgstr "La contrasenya no és correcta"
 
-#: horizons/network/server.py:435 horizons/network/server.py:548
+#: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
 msgstr "Ja hi ha un jugador que té aquest nom a la partida."
 
-#: horizons/network/server.py:436
+#: horizons/network/server.py:435
 msgid "Please change your name."
 msgstr "Trieu un nom diferent."
 
-#: horizons/network/server.py:439 horizons/network/server.py:577
+#: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
 msgstr "Ja hi ha un jugador amb aquest color a la partida."
 
-#: horizons/network/server.py:440
+#: horizons/network/server.py:439
 msgid "Please change your color."
 msgstr "Trieu un color diferent."
 
-#: horizons/network/server.py:443
+#: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
 "Ja hi ha un jugador amb aquest ID únic a la partida. No hauria de passar mai."
 
-#: horizons/network/server.py:459
+#: horizons/network/server.py:458
 msgid "You are not inside a game"
 msgstr "No sou dins cap partida"
 
-#: horizons/network/server.py:490
+#: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
 msgstr "La partida s'ha acabat. El creador ha abandonat la partida."
 
-#: horizons/network/server.py:495
+#: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
@@ -108,15 +108,15 @@ msgstr ""
 "Un jugador ha tancat la partida. Això vol dir que no es pot continuar per "
 "raons tècniques. Ho sentim."
 
-#: horizons/network/server.py:549
+#: horizons/network/server.py:548
 msgid "Unable to change your name."
 msgstr "No s'ha pogut canviar el vostre nom."
 
-#: horizons/network/server.py:578
+#: horizons/network/server.py:577
 msgid "Unable to change your color."
 msgstr "No s'ha pogut canviar el vostre color."
 
-#: horizons/network/server.py:666
+#: horizons/network/server.py:665
 #, fuzzy
 msgid "You can't fetch a game while in another game"
 msgstr "No podeu buscar una partida mentre n'esteu jugant una altra"

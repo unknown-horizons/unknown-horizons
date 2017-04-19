@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,13 +57,13 @@ class SurfaceTile(object):
 		fife.InstanceVisual.create(self._instance)
 
 	def __str__(self):
-		return "SurfaceTile(id=%s, shape=%s, x=%s, y=%s, water=%s, obj=%s)" % \
-		       (self.id, self.shape, self.x, self.y, self.is_water, self.object)
+		return ("SurfaceTile(id={}, shape={}, x={}, y={}, water={}, obj={})"
+		       .format(self.id, self.shape, self.x, self.y, self.is_water, self.object))
 
 	def act(self, rotation):
 		self._instance.setRotation(rotation)
 
-		(x, y) = (self.x, self.y)
+		x, y = self.x, self.y
 		layer_coords = {
 			45:  (x + 3, y,     0),
 			135: (x,     y - 3, 0),
@@ -130,11 +130,11 @@ class GroundClass(type):
 		@param shape: ground shape (straight, curve_in, curve_out).
 		"""
 		if id == GROUND.WATER[0]:
-			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (Water,), {})
+			return type.__new__(self, 'Ground[{:d}-{}]'.format(id, shape), (Water,), {})
 		elif id == -1:
-			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (WaterDummy,), {})
+			return type.__new__(self, 'Ground[{:d}-{}]'.format(id, shape), (WaterDummy,), {})
 		else:
-			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (Ground,), {})
+			return type.__new__(self, 'Ground[{:d}-{}]'.format(id, shape), (Ground,), {})
 
 	def _loadObject(cls, db):
 		"""Loads the ground object from the db (animations, etc)"""
@@ -145,28 +145,28 @@ class GroundClass(type):
 		tile_set_data = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)
 		for tile_set_row in tile_set_data:
 			tile_set_id = str(tile_set_row[0])
-			cls_name = '%d-%s' % (cls.id, cls.shape)
+			cls_name = '{:d}-{}'.format(cls.id, cls.shape)
 			cls.log.debug('Loading ground %s', cls_name)
 			fife_object = None
 			try:
 				fife_object = model.createObject(cls_name, 'ground_' + tile_set_id)
-			except RuntimeError:
+			except fife.NameClash:
 				cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
 				fife_object = model.getObject(cls_name, 'ground_' + tile_set_id)
 				return
 
 			fife.ObjectVisual.create(fife_object)
 			visual = fife_object.get2dGfxVisual()
-			for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
+			for rotation, data in tile_sets[tile_set_id][cls.shape].items():
 				if not data:
-					raise KeyError('No data found for tile set `%s` in rotation `%s`. '
-						'Most likely the shape `%s` is missing.' %
-						(tile_set_id, rotation, cls.shape))
+					raise KeyError('No data found for tile set `{}` in rotation `{}`. '
+						'Most likely the shape `{}` is missing.'
+						.format(tile_set_id, rotation, cls.shape))
 				if len(data) > 1:
 					raise ValueError('Currently only static tiles are supported. '
-						'Found this data for tile set `%s` in rotation `%s`: '
-						'%s' % (tile_set_id, rotation, data))
-				img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
+						'Found this data for tile set `{}` in rotation `{}`: '
+						'{}'.format(tile_set_id, rotation, data))
+				img = load_image(list(data.keys())[0], tile_set_id, cls.shape, str(rotation))
 				visual.addStaticImage(rotation, img.getHandle())
 
 			# Save the object

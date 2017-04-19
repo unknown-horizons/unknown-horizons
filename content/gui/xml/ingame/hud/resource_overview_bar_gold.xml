@@ -3,7 +3,7 @@
 	 Special resource overview bar protoype for gold.
 -->
 
-<AutoResizeContainer name="resbar_gold_container" position="10,10">
+<ABox name="resbar_gold_container" position="10,10">
 
 	<!-- define balance part before rest since it needs to be below -->
 	<!-- hovering this background will show the full stats, defined in resource_overview_bar_stats -->
@@ -20,5 +20,5 @@
 	<!-- positioning via magic in order to have support for centering -->
 	<Label name="gold_available" />
 	<Label name="balance" />
-</AutoResizeContainer>
+</ABox>
 

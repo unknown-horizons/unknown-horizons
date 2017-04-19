@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -120,7 +120,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
 			resources[resource] = amount
 
-		for res, amount in self._upgrade_production.get_consumed_resources().iteritems():
+		for res, amount in self._upgrade_production.get_consumed_resources().items():
 			# set limits to what we need
 			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			if res in resources:
@@ -139,7 +139,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self._upgrade_production.add_production_finished_listener(self.level_up)
 
 		# drive the car out of the garage to make space for the building material
-		for res, amount in self._upgrade_production.get_consumed_resources().iteritems():
+		for res, amount in self._upgrade_production.get_consumed_resources().items():
 			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
@@ -406,8 +406,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def __str__(self):
 		try:
-			return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level,
-			                                    self.inhabitants, self.happiness)
+			return "{}(l:{};ihab:{};hap:{})".format(
+				super(Settler, self).__str__(), self.level,
+			    self.inhabitants, self.happiness)
 		except AttributeError: # an attribute hasn't been set up
 			return super(Settler, self).__str__()
 
@@ -435,7 +436,7 @@ class SettlerUpgradeData(object):
 
 	def get_production_lines(self):
 		d = {}
-		for level, prod_line_id in self.__class__.production_line_ids.iteritems():
+		for level, prod_line_id in self.__class__.production_line_ids.items():
 			d[prod_line_id] = self.get_production_line_data(level)
 		return d
 

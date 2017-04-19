@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,6 @@ from collections import defaultdict, deque
 from horizons.constants import MAP, PATHS
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
-from horizons.util.python import decorators
 from horizons.util.random_map import create_random_island
 from horizons.util.savegameupgrader import SavegameUpgrader
 
@@ -99,7 +98,7 @@ class SavegameAccessor(DbReader):
 				self("INSERT INTO map_properties VALUES(?, ?)", 'padding', options.map_padding)
 
 		if not os.path.exists(self._map_path):
-			raise MapFileNotFound("Map file " + unicode(self._map_path) + " not found!")
+			raise MapFileNotFound("Map file " + str(self._map_path) + " not found!")
 
 
 		self('ATTACH ? AS map_file', self._map_path)
@@ -183,7 +182,7 @@ class SavegameAccessor(DbReader):
 			self._productions_by_worldid[rowid] = data
 			owner = int(row[2])
 			line = int(row[3])
-			if not line in self._productions_by_id_and_owner:
+			if line not in self._productions_by_id_and_owner:
 				self._productions_by_id_and_owner[line] = {}
 			# in the line dict, the owners are unique
 			self._productions_by_id_and_owner[line][owner] = data
@@ -329,5 +328,3 @@ class SavegameAccessor(DbReader):
 			h.update(f.read())
 			filehash = h.hexdigest()
 		return filehash
-
-decorators.bind_all(SavegameAccessor)

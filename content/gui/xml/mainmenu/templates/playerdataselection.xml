@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
-<VBox position="100,190" name="playerdataselection" padding="15">
+<VBox position="100,190" name="playerdataselection">
 	<HBox min_size="250,20">
 		<Label name="player_label" text="Player name:" />
-		<TextField name="playername" max_size="250,20" min_size="150,20" />
+		<TextField name="playername" fixed_size="150,20" />
 	</HBox>
 
 	<HBox>
-		<Label name="color_label" text="Color:" max_size="100,20" min_size="100,20" />
-		<HBox padding="15">
+		<Label name="color_label" text="Color:" fixed_size="100,20"/>
+		<HBox>
 			<VBox>
-			<Spacer fixed_size="10" />
-				<Label name="selectedcolor" min_size="50,50" max_size="50,50" text=" " comment="noi18n" />
+				<Label name="selectedcolor" fixed_size="50,50" text=" " comment="noi18n" />
 			</VBox>
-			<VBox name="playercolor" min_size="125,75" max_size="125,75" />
+			<VBox name="playercolor" fixed_size="125,75" />
 		</HBox>
 	</HBox>
 </VBox>

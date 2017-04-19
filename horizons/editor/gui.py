@@ -1,5 +1,6 @@
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +22,7 @@
 
 import horizons.globals
 from horizons.constants import EDITOR, GROUND, VIEW
+from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
@@ -35,14 +37,6 @@ from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSett
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
-
-
-class DummyLogbook(object):
-	"""
-	Dummy object that provides the minimal interface for the editor's ingame gui to work.
-	"""
-	def display_message_history(self):
-		pass
 
 
 class IngameGui(LivingObject):
@@ -60,10 +54,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.show_menu = lambda x: 0
-		self.hide_menu = lambda: 0
+		self.show_menu = Dummy
+		self.hide_menu = Dummy
 		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = DummyLogbook()
+		self.logbook = Dummy()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -258,7 +252,7 @@ class SettingsTab(TabInterface):
 
 		ground_id, action_id, rotation = tile
 		set_id = horizons.globals.db.get_random_tile_set(ground_id)
-		return tile_sets[set_id][action_id][rotation].keys()[0]
+		return list(tile_sets[set_id][action_id][rotation].keys())[0]
 
 	def _change_brush_size(self, size):
 		"""Change the brush size and update the gui."""

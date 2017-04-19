@@ -3,17 +3,17 @@
 <!--  /!\ WARNING /!\
 This document was auto-generated from doc/AUTHORS.md.
 Please edit doc/AUTHORS.md instead if you need to change something,
-afterwards run ./development/generate_credits.py to refresh this file.
+afterwards run development/generate_credits.py to refresh this file.
 -->
 
 <Container name="credits_window" size="1000,580">
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
-<HBox name="credits_team_2016" position="185,45" padding="10">
-	<ScrollArea name="uh-team_2016" max_size="310,500" min_size="310,500">
+<HBox name="credits_team_2016" position="185,45">
+	<ScrollArea name="uh-team-2016/2017" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
-		<Label text="UH-Team_2016" name="headline" />
+		<Label text="UH-Team-2016/2017" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
 			<VBox name="box">
@@ -25,6 +25,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			<VBox name="box">
 				<Label text="MasterofJOKers ()" />
 				<Label text="Kilian] (Kilian Köppchen)" />
+				<Label text="squiddy (Reiner Gerecke)" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Sound and Music Artists" name="headline" />
@@ -37,18 +38,28 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="janexx (Jana Weigel)" />
 			</VBox>
 		</VBox>
+		<VBox> <Label text="Windows Installer" name="headline" />
+			<VBox name="box">
+				<Label text="jakoch (Jens A. Koch)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Web Coder" name="headline" />
+			<VBox name="box">
+				<Label text="dwayne1988 (Dwayne Thorp)" />
+			</VBox>
+		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="uh-team_2016" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team-2016/2017" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 	</VBox>
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_team_2015" position="185,45" padding="10">
-	<ScrollArea name="uh-team_2015" max_size="310,500" min_size="310,500">
+<HBox name="credits_team_2015" position="185,45">
+	<ScrollArea name="uh-team-2015" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
-		<Label text="UH-Team_2015" name="headline" />
+		<Label text="UH-Team-2015" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
 			<VBox name="box">
@@ -82,7 +93,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="uh-team_2015" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team-2015" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 		<VBox> <Label text="Game-Play Design" name="headline" />
 			<VBox name="box">
@@ -120,7 +131,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_patchers" position="185,45" padding="10">
+<HBox name="credits_patchers" position="185,45">
 	<ScrollArea name="patchers" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Patchers" name="headline" />
@@ -212,7 +223,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_translators" position="185,45" padding="10">
+<HBox name="credits_translators" position="185,45">
 	<ScrollArea name="translators" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Translators" name="headline" />
@@ -614,7 +625,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</ScrollArea>
 </HBox>
 
-<HBox name="credits_packagers" position="185,45" padding="10">
+<HBox name="credits_packagers" position="185,45">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="Packagers" name="headline" />
 		<hr />
@@ -637,7 +648,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	</VBox>
 </HBox>
 
-<HBox name="credits_thanks" position="185,45" padding="10">
+<HBox name="credits_thanks" position="185,45">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="Special Thanks" name="headline" />
 		<hr />

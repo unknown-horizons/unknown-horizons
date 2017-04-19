@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,8 +18,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
-from horizons.util.python import decorators
 
 
 class DifficultySettings(object):
@@ -52,8 +50,3 @@ class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5
 
 DifficultySettings.register_levels()
-
-decorators.bind_all(DifficultySettings)
-decorators.bind_all(DifficultyClass)
-decorators.bind_all(DefaultSettings)
-decorators.bind_all(EasySettings)

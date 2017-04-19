@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -56,7 +56,11 @@ from horizons.world.managers.statusiconmanager import StatusIconManager
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
-	Assumes that only 1 instance is used (class variables)"""
+	Assumes that only 1 instance is used (class variables)
+
+	@type session: horizons.session.Session
+	@param session: instance of session the world belongs to.
+	"""
 
 	message_widget = livingProperty()
 	minimap = livingProperty()
@@ -255,10 +259,10 @@ class IngameGui(LivingObject):
 		self.set_cursor() # set default cursor for build menu
 		self.deselect_all()
 
-		if not any( settlement.owner.is_local_player for settlement in self.session.world.settlements):
+		if not any(settlement.owner.is_local_player for settlement in self.session.world.settlements):
 			# player has not built any settlements yet. Accessing the build menu at such a point
 			# indicates a mistake in the mental model of the user. Display a hint.
-			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
+			tab = TabWidget(self, tabs=[TabInterface(widget="buildtab_no_settlement.xml")])
 		else:
 			btabs = BuildTab.create_tabs(self.session, self._build)
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget",
@@ -297,13 +301,13 @@ class IngameGui(LivingObject):
 		"""
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "remove_remove_listener"):
-				self._old_menu.remove_remove_listener( Callback(self.show_menu, None) )
+				self._old_menu.remove_remove_listener(Callback(self.show_menu, None))
 			self._old_menu.hide()
 
 		self._old_menu = menu
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "add_remove_listener"):
-				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
+				self._old_menu.add_remove_listener(Callback(self.show_menu, None))
 			self._old_menu.show()
 			self.minimap_to_front()
 
@@ -363,8 +367,8 @@ class IngameGui(LivingObject):
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"{0!s}".format(a.name)
-			player2 = u"{0!s}".format(b.name)
+			player1 = "{0!s}".format(a.name)
+			player2 = "{0!s}".format(b.name)
 
 			data = {'player1' : player1, 'player2' : player2}
 
@@ -421,16 +425,16 @@ class IngameGui(LivingObject):
 		self._display_speed(message.new)
 
 	def _display_speed(self, tps):
-		text = u''
+		text = ''
 		up_icon = self.mainhud.findChild(name='speedUp')
 		down_icon = self.mainhud.findChild(name='speedDown')
 		if tps == 0: # pause
-			text = u'0x'
+			text = '0x'
 			up_icon.set_inactive()
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = u"{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = "{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -462,14 +466,14 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
-			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
+			gridrenderer.setEnabled(not gridrenderer.isEnabled())
 		elif action == _Actions.COORD_TOOLTIP:
 			self.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			message = T(u"Are you sure you want to delete these objects?")
-			if self.windows.open_popup(T(u"Delete"), message, show_cancel_button=True):
+			message = T("Are you sure you want to delete these objects?")
+			if self.windows.open_popup(T("Delete"), message, show_cancel_button=True):
 				self.session.remove_selected()
 			else:
 				self.deselect_all()
@@ -532,8 +536,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.SHOW_SELECTED:
 			if self.session.selected_instances:
 				# Scroll to first one, we can never guarantee to display all selected units.
-				instance = iter(self.session.selected_instances).next()
-				self.session.view.center( * instance.position.center.to_tuple())
+				instance = next(iter(self.session.selected_instances))
+				self.session.view.center(* instance.position.center.to_tuple())
 				for instance in self.session.selected_instances:
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.minimap.show_unit_path(instance)
@@ -680,7 +684,7 @@ class IngameGui(LivingObject):
 			'gameMenuButton': 'ESCAPE',
 			'logbook': 'LOGBOOK',
 		}
-		for (widgetname, action) in hotkey_replacements.iteritems():
+		for (widgetname, action) in hotkey_replacements.items():
 			widget = self.mainhud.findChild(name=widgetname)
 			keys = horizons.globals.fife.get_keys_for_action(action)
 			# No `.upper()` here: "Pause" looks better than "PAUSE".

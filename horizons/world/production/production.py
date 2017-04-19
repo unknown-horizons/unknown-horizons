@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -74,7 +74,7 @@ class Production(ChangeListener):
 		self.inventory = inventory
 		self.owner_inventory = owner_inventory
 
-		self._pause_remaining_ticks = None # only used in pause()
+		self._pause_remaining_ticks = 0 # only used in pause()
 		self._pause_old_state = None # only used in pause()
 
 		self._creation_tick = Scheduler().cur_tick
@@ -101,12 +101,13 @@ class Production(ChangeListener):
 		current_tick = Scheduler().cur_tick
 		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
 
-		remaining_ticks = None
+		remaining_ticks = 0
 		if self._state == PRODUCTION.STATES.paused:
 			remaining_ticks = self._pause_remaining_ticks
 		elif self._state == PRODUCTION.STATES.producing:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 		# use a number > 0 for ticks
+		remaining_ticks = remaining_ticks or 0
 		if remaining_ticks < 1:
 			remaining_ticks = 1
 		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
@@ -212,7 +213,7 @@ class Production(ChangeListener):
 				Scheduler().add_new_object(self._get_producing_callback(), self,
 				                           self._pause_remaining_ticks)
 			else:
-				assert False, 'Unhandled production state: %s' % self._pause_old_state
+				assert False, 'Unhandled production state: {}'.format(self._pause_old_state)
 		else: # do pause
 			# switch state
 			self._pause_old_state = self._state
@@ -228,7 +229,7 @@ class Production(ChangeListener):
 						Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 				Scheduler().rem_call(self, self._get_producing_callback())
 			else:
-				assert False, 'Unhandled production state: %s' % self._pause_old_state
+				assert False, 'Unhandled production state: {}'.format(self._pause_old_state)
 
 		self._changed()
 
@@ -258,7 +259,7 @@ class Production(ChangeListener):
 		first_relevant_tick = self._get_first_relevant_tick(ignore_pause)
 		num_entries = len(self._state_history)
 
-		for i in xrange(num_entries):
+		for i in range(num_entries):
 			if ignore_pause and self._state_history[i][1] == pause_state:
 				continue
 			tick = self._state_history[i][0]
@@ -274,7 +275,7 @@ class Production(ChangeListener):
 				relevant_ticks -= first_relevant_tick - tick
 			result[self._state_history[i][1]] += relevant_ticks
 
-		total_length = sum(result.itervalues())
+		total_length = sum(result.values())
 		if total_length == 0:
 			return result
 		for key in result:
@@ -287,7 +288,7 @@ class Production(ChangeListener):
 	def get_unstorable_produced_res(self):
 		"""Returns all produced res for whose there is no space"""
 		l = []
-		for res, amount in self._prod_line.produced_res.iteritems():
+		for res, amount in self._prod_line.produced_res.items():
 			if self.inventory.get_free_space_for(res) < amount:
 				l.append(res)
 		return l
@@ -312,7 +313,7 @@ class Production(ChangeListener):
 
 		# ignore paused time
 		pause_state = PRODUCTION.STATES.paused.index
-		for i in xrange(len(self._state_history) - 1, -1, -1):
+		for i in range(len(self._state_history) - 1, -1, -1):
 			if self._state_history[i][1] != pause_state:
 				continue
 			tick = self._state_history[i][0]
@@ -369,7 +370,8 @@ class Production(ChangeListener):
 	def _produce(self):
 		"""Called when there are enough res in the inventory for starting production"""
 		self.log.debug("%s _produce", self)
-		assert self._check_available_res() and self._check_for_space_for_produced_res()
+		assert self._check_available_res()
+		assert self._check_for_space_for_produced_res()
 		# take the res we need
 		self._remove_res_to_expend()
 		# call finished in some time
@@ -404,35 +406,35 @@ class Production(ChangeListener):
 
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
-		for res, amount in self._prod_line.produced_res.iteritems():
+		for res, amount in self._prod_line.produced_res.items():
 			self.inventory.alter(res, amount)
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.
 		@return: bool, True if we can start production
 		"""
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res, amount in self._prod_line.consumed_res.items():
 			if self.inventory[res] < (-amount): # consumed res have negative sign
 				return False
 		return True
 
 	def _remove_res_to_expend(self):
 		"""Removes the resources from the inventory, that production takes."""
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res, amount in self._prod_line.consumed_res.items():
 			remnant = self.inventory.alter(res, amount)
 			assert remnant == 0
 
 	def _check_for_space_for_produced_res(self):
 		"""Checks if there is enough space in the inventory for the res, we want to produce.
 		@return bool, True if everything can fit."""
-		for res, amount in self._prod_line.produced_res.iteritems():
+		for res, amount in self._prod_line.produced_res.items():
 			if self.inventory.get_free_space_for(res) < amount:
 				return False
 		return True
 
 	def __str__(self): # debug
 		if hasattr(self, "_state"):
-			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
+			return 'Production(state={};prodline={})'.format(self._state, self._prod_line)
 		else:
 			return "UninitializedProduction()"
 

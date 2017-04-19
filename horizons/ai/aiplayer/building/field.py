@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +25,6 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, RES
-from horizons.util.python import decorators
 
 
 class AbstractField(AbstractBuilding):
@@ -98,5 +97,3 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.HERBARY] = cls
 
 AbstractField.register_buildings()
-
-decorators.bind_all(AbstractField)

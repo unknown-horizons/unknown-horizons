@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -70,16 +70,21 @@ class SQLiteAtlasLoader(object):
 		commands = location.split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		commands = list(zip(commands[0::2], commands[1::2]))
 
-		ani = fife.Animation.createAnimation()
+		animationmanager = horizons.globals.fife.animationmanager
+
+		# if we've loaded that animation before, we can finish early
+		if animationmanager.exists(id):
+			return animationmanager.getPtr(id)
+
+		ani = animationmanager.create(id)
 
 		# Set the correct loader based on the actionset
 		loader = self._get_loader(actionset)
 
-
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
+		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
 			entry = loader.get_sets()[actionset][action][int(rotation)][file]
 			# we don't need to load images at this point to query for its parameters
 			# such as width and height because we can get those from json file
@@ -117,9 +122,11 @@ class SQLiteAtlasLoader(object):
 					img.setYShift(y)
 
 			frame_end = entry[0]
-			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
-			frame_start = float(frame_end)
-		ani.setActionFrame(0)
+			ani.addFrame(img, max(1, int((frame_end - frame_start)*1000)))
+			frame_start = frame_end
+		# currently unused. would trigger onInstanceActionFrame of
+		# fife.InstanceActionListener instance
+		ani.setActionFrame(-1)
 		return ani
 
 	def _get_loader(self, actionset):

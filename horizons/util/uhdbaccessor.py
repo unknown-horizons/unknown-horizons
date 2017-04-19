@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -77,7 +77,7 @@ class UhDbAccessor(DbReader):
 		if only_inventory:
 			sql += " AND shown_in_inventory = 1"
 		db_data = self.cached_query(sql)
-		return map(lambda x: x[0], db_data)
+		return [x[0] for x in db_data]
 
 	# Sound table
 
@@ -100,7 +100,7 @@ class UhDbAccessor(DbReader):
 		@return list of building class ids
 		"""
 		sql = "SELECT related_building FROM related_buildings WHERE building = ?"
-		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+		return [x[0] for x in self.cached_query(sql, building_class_id)]
 
 	@decorators.cachedmethod
 	def get_related_building_ids_for_menu(self, building_class_id):
@@ -110,7 +110,7 @@ class UhDbAccessor(DbReader):
 		@return list of building class ids
 		"""
 		sql = "SELECT related_building FROM related_buildings WHERE building = ? and show_in_menu = 1"
-		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+		return [x[0] for x in self.cached_query(sql, building_class_id)]
 
 	@decorators.cachedmethod
 	def get_inverse_related_building_ids(self, building_class_id):
@@ -119,13 +119,13 @@ class UhDbAccessor(DbReader):
 		@return list of building class ids
 		"""
 		sql = "SELECT building FROM related_buildings WHERE related_building = ?"
-		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+		return [x[0] for x in self.cached_query(sql, building_class_id)]
 
 	@decorators.cachedmethod
 	def get_buildings_with_related_buildings(self):
 		"""Returns all buildings that have related buildings"""
 		sql = "SELECT DISTINCT building FROM related_buildings"
-		return map(lambda x: x[0], self.cached_query(sql))
+		return [x[0] for x in self.cached_query(sql)]
 
 	# Messages
 
@@ -252,7 +252,7 @@ class UhDbAccessor(DbReader):
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
-		return frozenset( id for (id, b) in Entities.buildings.iteritems() if b.translucent )
+		return frozenset( id for (id, b) in Entities.buildings.items() if b.translucent )
 
 	# Weapon table
 
@@ -293,7 +293,7 @@ class UhDbAccessor(DbReader):
 			helptexts.append(helptext)
 		except KeyError: # Component not found, ignore this part
 			pass
-		return u'\\n'.join(helptexts)
+		return '\\n'.join(helptexts)
 
 
 def read_savegame_template(db):

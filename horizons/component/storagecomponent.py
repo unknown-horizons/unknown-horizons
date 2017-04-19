@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -88,7 +88,7 @@ class StorageComponent(Component):
 
 	@classmethod
 	def get_instance(cls, arguments):
-		key, value = arguments.iteritems().next()
+		key, value = next(iter(arguments.items()))
 		storage = cls.storage_mapping[key]
 		inventory = storage(**value)
 		return cls(inventory=inventory)

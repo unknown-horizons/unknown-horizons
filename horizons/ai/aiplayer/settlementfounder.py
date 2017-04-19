@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,7 +27,6 @@ from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
 from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundationShip
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class SettlementFounder(object):
@@ -46,8 +45,8 @@ class SettlementFounder(object):
 	def _evaluate_island(self, island):
 		"""Return (flat land, utility value) of the given island."""
 		resources = defaultdict(int)
-		for deposit_dict in island.deposits.itervalues():
-			for deposit in deposit_dict.itervalues():
+		for deposit_dict in island.deposits.values():
+			for deposit in deposit_dict.values():
 				if deposit.settlement is None:
 					for resource_id, amount in deposit.get_component(StorageComponent).inventory.itercontents():
 						resources[resource_id] += amount
@@ -87,7 +86,7 @@ class SettlementFounder(object):
 		options = self._get_available_islands(min_land)
 		if not options:
 			return None
-		total_value = sum(zip(*options)[0])
+		total_value = sum(next(zip(*options)))
 
 		# choose a random big enough island with probability proportional to its value
 		choice = self.session.random.randint(0, total_value - 1)
@@ -119,7 +118,7 @@ class SettlementFounder(object):
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 
-		for missing in min_resources.itervalues():
+		for missing in min_resources.values():
 			if missing > 0:
 				return False
 		return True
@@ -149,7 +148,7 @@ class SettlementFounder(object):
 	def tick(self):
 		"""Found a new settlement or prepare a foundation ship if possible and required."""
 		ship = None
-		for possible_ship, state in self.owner.ships.iteritems():
+		for possible_ship, state in self.owner.ships.items():
 			if state is self.owner.shipStates.idle:
 				# TODO: make sure the ship is actually usable for founding a settlement
 				ship = possible_ship
@@ -213,5 +212,3 @@ class SettlementFounder(object):
 
 	def __str__(self):
 		return '%s SettlementFounder' % (self.owner)
-
-decorators.bind_all(SettlementFounder)

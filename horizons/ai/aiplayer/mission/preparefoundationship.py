@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
@@ -84,7 +83,7 @@ class PrepareFoundationShip(ShipMission):
 		else:
 			max_amounts = {RES.BOARDS: personality.max_new_island_boards, RES.FOOD: personality.max_new_island_food, RES.TOOLS: personality.max_new_island_tools}
 
-		for resource_id, max_amount in max_amounts.iteritems():
+		for resource_id, max_amount in max_amounts.items():
 			self.move_resource(self.ship, self.settlement_manager.settlement, resource_id, self.ship.get_component(StorageComponent).inventory[resource_id] - max_amount)
 
 	def _reached_destination_area(self):
@@ -106,5 +105,3 @@ class PrepareFoundationShip(ShipMission):
 	def cancel(self):
 		self.ship.stop()
 		super(PrepareFoundationShip, self).cancel()
-
-decorators.bind_all(PrepareFoundationShip)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,11 +29,10 @@ from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
 
-class KeyConfig(object):
+class KeyConfig(object, metaclass=Singleton):
 	"""Class for storing key bindings.
 	The central function is translate().
 	"""
-	__metaclass__ = Singleton
 
 	_Actions = Enum('LEFT', 'RIGHT', 'UP', 'DOWN',
 	                'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE',
@@ -98,7 +97,7 @@ class KeyConfig(object):
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys))
-		return dict((k, v) for k, v in fife.Key.__dict__.iteritems()
+		return dict((k, v) for k, v in fife.Key.__dict__.items()
 		                   if is_available(k))
 
 	def get_keys_by_value(self):
@@ -107,7 +106,7 @@ class KeyConfig(object):
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys))
-		return dict((v, k) for k, v in fife.Key.__dict__.iteritems()
+		return dict((v, k) for k, v in fife.Key.__dict__.items()
 		                   if is_available(k))
 
 	def get_keyval_to_actionid_map(self):

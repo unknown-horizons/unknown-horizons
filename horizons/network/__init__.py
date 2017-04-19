@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -44,7 +44,7 @@ def find_enet_module():
 
 	lib_path = os.path.join(os.path.dirname(__file__), "libs")
 
-	type = platform.system().lower()
+	sys_platform = platform.system().lower()
 
 	arch = platform.architecture()[0]
 	if arch == '32bit':
@@ -55,12 +55,12 @@ def find_enet_module():
 		assert False, "Failed to detect system architecture!"
 
 	# Generic identifier, e.g. linux-64
-	directory = "%s-x%s" % (type, arch)
+	directory = "{}-x{}".format(sys_platform, arch)
 
 	# Python version-specific, e.g. linux-64-27. If this is not found, we fall
 	# back to the more generic version.
 	version = platform.python_version_tuple()
-	directory_pyversion = "%s-%s%s" % (directory, version[0], version[1])
+	directory_pyversion = "{}-{}{}".format(directory, version[0], version[1])
 
 	if os.path.exists(os.path.join(lib_path, directory_pyversion)):
 		path = os.path.join(lib_path, directory_pyversion)
@@ -114,9 +114,9 @@ class UnableToConnect(ClientException):
 	pass
 
 class CommandError(ClientException):
-	def __init__(self, message, type):
+	def __init__(self, message, cmd_type):
 		super(ClientException, self).__init__(message)
-		self.type = type
+		self.cmd_type = cmd_type
 
 class FatalError(ClientException):
 	pass

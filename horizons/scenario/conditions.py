@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -206,7 +206,7 @@ def game_started(session):
 def var_eq(session, variable, value):
 	"""Returns whether *variable* has a value equal to *value*.
 	Returns False if variable was never set in the current session."""
-	if not variable in _get_scenario_vars(session):
+	if variable not in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[variable] == value)
 
@@ -214,7 +214,7 @@ def var_eq(session, variable, value):
 def var_gt(session, variable, value):
 	"""Returns whether *variable* has a value greater than *value*.
 	Returns False if variable was never set in the current session."""
-	if not variable in _get_scenario_vars(session):
+	if variable not in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[variable] > value)
 
@@ -222,7 +222,7 @@ def var_gt(session, variable, value):
 def var_lt(session, variable, value):
 	"""Returns whether *variable* has a value less than *value*.
 	Returns False if variable was never set in the current session."""
-	if not variable in _get_scenario_vars(session):
+	if variable not in _get_scenario_vars(session):
 		return False
 	return (_get_scenario_vars(session)[variable] < value)
 
@@ -278,6 +278,6 @@ def _building_in_range_of(session, building_class, *classes):
 		for building in settlement.buildings_by_id[building_class]: # iterate through all buildings of building_class
 			for other_class in classes: # iterate through all given other classes
 				for building2 in settlement.buildings_by_id[other_class]: # iterate through all buildings of other_class
-					if building.position.distance( building2.position ) <= building.radius: # building in range of building2
+					if building.position.distance(building2.position) <= building.radius: # building in range of building2
 						return True
 	return False # building not found in range

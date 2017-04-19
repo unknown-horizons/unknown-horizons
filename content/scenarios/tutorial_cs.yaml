@@ -24,8 +24,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - Toto je žurnál, kde se ukládají důležité zprávy o současné hře. Souhrn každé zprávy se také objeví blízko levého okraje obrazovky. Pro zjištění detailů můžete najet myší nad tuto zprávu, nebo na ni kliknout pro otevření žurnálu.
+  - Pro otevření žurnálu můžete také kdykoliv kliknout tlačítko pod mini-mapou v pravém horním rohu obrazovky. Nadále budeme tuto oblast s mini-mapou a dalšími tlačítky jako přehled.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -45,13 +45,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - [Headline, 'NOVÝ ÚKOL: VYTVOŘTE OSADU']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - Toto je deník, kde se ukládají důležité zprávy o současné hře. Souhrn každé zprávy se také objeví blízko levého okraje obrazovky. Pro zjištění detailů můžete najet myší nad tuto zprávu, nebo na ni kliknout pro otevření deníku.
   - Pro pohyb lodí jí nejprve vyberte pomocí levého tlačítka myši a pravým tlačítkem zadejte místo, kam chcete plout.
   - Jakmile budete v blízkosti pobřeží, tlačítko postavit osadu na kartě přehledu, bude aktivní.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Kliknutím na toto tlačítko se zobrazí náhled budovy obchodního přístavu, která je první budovou potřebnou k založení nové osady. Při pohybu myší si můžete všimnout, že náhled budovy zčervená, pokud je místo nevhodné, k jejímu postavení.
+  - Obchodní přístav musí být umístěn na pobřeží aby v něm mohly kotvit lodě. Najděte dobré místo pro tuto důležitou budovu a potvrďte stisknutím levého tlačítka.
   - ''
   - [BoldLabel, 'Úkol: Vybuduj na pobřeží obchodní přístav.']
 
@@ -67,26 +67,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Najděte dobře zalesněnou oblast pro dřevorubce, pak vyberte 'Dřevorubcův stan' ze seznamu budov v přehledu a umístěte budovu.
   - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - Každá budova produkující suroviny musí být připojena cestou k obchodnímu přístavu, nebo jiné formě skladiště, jinak nebude produkované zboží odebíráno.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
   - [BoldLabel, 'Úkol: Postavte dřevorubcuv stan v zalesněné oblasti a propojte ho cestou k Obchodnímu přístavu.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - Jakmile jsou budovy propojeny, uvidíte nosiče vyzvedávat a odnášet nově vytvořené desky do skladiště, čímž je zpřístupní pro výstavbu či obchod.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Postavte lovce a rybáře. Spojte je s budovou obchodního přístavu.]
+  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
   - [Headline, 'NOVÝ ÚKOL: ZÁSOBOVÁNÍ JÍDLEM']
   - [Image, content/gui/images/background/hr.png]
   - Dále budete muset postavit některé základní budovy, které budou produkovat jídlo, protože všichni lidé (a námořníci obzvláště) jsou velmi hladoví.
-  - Dostupné budovy pro první úroveň jsou Lovec a Rybář.
-  - Lovec loví v lesích zvířata, proto potřebuje být blízko lesa.
-  - Všimněte si, že lovce můžete umístit blízko dřevorubcova lesa.
+  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Stává se, že zvířata se nemnoží dostatečně rychle nebo se umí dobře schovat.
-  - 'Závěr: Lovec není příliš spolehlivý zdroj potravy, pokud potřebujete nepřerušované zásobování.'
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
@@ -95,8 +95,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jedná se o nepřetržitý zdroj potravy, cenou za to je delší produkční čas každé jednotky jídla.
   - Malá osada, jakou je ta Vaše, může využít obě společnosti. Pokud je uvidíte v přímém srovnání, můžete lépe porovnat jejich výhody a nevýhody.
   - ''
-  - [BoldLabel, 'Úkol: Postavte lovce a rybáře.']
-  - Nezapomeňte je připojit k Vašemu obchodnímu přístavu pomocí stezek!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -105,8 +105,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVÝ ÚKOL: TRŽIŠTĚ']
   - [Image, content/gui/images/background/hr.png]
   - Vaši obyvatelé potřebují tržiště, kde si mohou vyzvednout zboží.
-  - To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště. Všimnete si to že, tržiště se chová také jako stezka, to znamená že stany okolo tržiště nepotřebují osobitní stezku.
-  - Všechno zboží v obchodním přístavu je dostupné na tomto 'tržišti', takže obyvatelé nemusí chodit k rybáři nebo až do obchodního přístavu.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Měli byste se vyvarovat výstavby stanů příliš blízko Vašemu dřevorubci,protože postavením stanů budou zničeny stromy, které dřevorubec potřebuje k produkci prken.
@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto souostroví.
   - Obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím nemůžete sami produkovat.
   - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní příležitosti, ale my můžeme věci trochu urychlit.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your Warehouse if it planned to sail past it.'
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
   - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -194,8 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+  - Nejprve klikněte na váš obchodní přístav a vyberte třetí záložku.
+  - Poté klikněte na jeden ze 3 slotů a vyberte zboží, které chcete nakoupit či prodat.
   - Po vybrání konkrétního typu zboží, zelený ukazatel napravo od slotu (pokud je viditelný) ukazuje, kolik jednotek zboží máte aktuálně ve skladu.
   - Tažením posuvníku na pravé straně každého slotu určíte "cílovou hodnotu", která má různé významy pro "Prodej" a "Nákup".
   - Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena "cílová hodnota" zásob.
@@ -225,20 +225,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Vašim obyvatelům nyní poskytujete bydlení, tržiště a jídlo.
   - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
   - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a trail, else your inhabitants feel unable to reach them.
+  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
     Všimněte si, že víra se chová jako fyzikální zdroj!'
   - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - Po určité době tuto víru zkonzumují a potom znovu vyhledají producenta, aby dostali více víry.
-  - 'Důležité:
+  - 'Important:
 
-    NENÍ dostačující, že se budova nachází v dostatečné vzdálenosti od stanů.
+    It is NOT enough that the building is merely within a certain range of the Tents.
 
-    Spojení pomocí stezky je rovněž vyžadováno.'
+    The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -246,7 +246,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Nastavte výši daní na nízkou hodnotu (levý okraj) a počkejte na vylepšení.]
   - [Headline, 'NOVÝ ÚKOL: DALŠÍ ÚROVEŇ']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square & Pavilion and your food supply is adequate.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
   - Pokud jsou námořníci dostatečně šťastní, chtějí postoupit na další úroveň zvanou Průkopníci.
   - Abyste je učinili šťastnými, není nic jednoduššího než nastavit daně na nižší úroveň, dokud nebudou naplněny všechny požadavky Vašich obyvatel.
   - Nízké daně je potřeba využívat obezřetně. Pokud je necháte na nízké úrovni, přivedete svůj ostrov, dříve nebo později, k bankrotu. Pokud ale víte, co děláte, fungují skvěle.
@@ -294,24 +294,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - The Farm itself is not going to produce anything without some fields.
   - Nyní máte možnost výběru mezi pastvinami, bramborovými poli a plantážemi s cukrovou třtinou.
-  - 'Proveďme krátké shrnutí:
+  - 'Let''s have a short overview:
 
-    * Pastviny - žijí zde ovce, produkují ovčí vlnu.
+    * Pasture: Sheep live here, producing lamb wool.
 
-    * Bramborové pole - pěstují se zde brambory, ty slouží jako potrava.
+    * Potato Field: Grows potatoes which are currently treated as food.
 
-    * Plantáž cukrové třtiny - pěstuje se zde třtina, která je dále použita k destilaci kořalky a (později) produkci cukrovinek.'
+    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
   - Nyní potřebujeme pouze pastviny, ale v případě, že Vaše zásobení jídlem je příliš malé (díky mnoha obytným budovám), můžete také postavit bramborové pole.
-  - Všimněte si, že brambory potřebujete propojit s farmou (nikoli s poli!), což je jediná budova, která pracuje se zbožím.
+  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
   - [Pagebreak]
   - '
 
-    Ujistěte se, že všechna pole, která stavíte, leží v oblasti, která je pokryta farmou.'
-  - Můžete mít kombinovanou produkci - jedna jednotka pastvin nepovede ke stoprocentní efektivnosti farmy, ale na druhou stranu, počet polí, které jedna farma může zabezpečit je omezen.
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
   - Různé druhy polí mají různé časové požadavky (k vysetí, sklizni, pastvě, atd.) a kvůli tomu nemusí být farma schopna obsloužit všechna pole včas.
   - Nyní se tím nemusíte příliš zabývat, protože jste nevybudovali žádné pole. Pojďme to změnit!
   - ''
-  - [BoldLabel, 'Úkol: Vybudujte alespoň jednu pastvinu v okolí farmy a přidejte bramborové pole, pokud chcete.']
+  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -351,8 +351,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Nyní je nastavena produkce vlny, ale stále potřebujete tkalcovnu pro produkci látky z vlny.
   - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - V obou případech se ujistěte, jestli je propojená stezkou.
-  - You can place the Weaver's Hut close to the Farm and tear down any trail to the Farm to see that it will still fetch the wool and produce.
+  - In both cases you should ensure the connection to a Trail as well.
+  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
   - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: cs
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 131 translated messages, 42 fuzzy translations, 15 untranslated messages.
+  translation_status: 124 translated messages, 59 fuzzy translations, 5 untranslated messages.

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -69,7 +69,7 @@ def new_settlement(session, pos=Point(30, 20)):
 	where it was created on, to avoid making function-baed tests too verbose.
 	"""
 	island = session.world.get_island(pos)
-	assert island, "No island found at %s" % pos
+	assert island, "No island found at {}".format(pos)
 	player = session.world.player
 
 	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
@@ -77,7 +77,7 @@ def new_settlement(session, pos=Point(30, 20)):
 		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
 	building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island, ship=ship)(player)
-	assert building, "Could not build warehouse at %s" % pos
+	assert building, "Could not build warehouse at {}".format(pos)
 
 	return (building.settlement, island)
 

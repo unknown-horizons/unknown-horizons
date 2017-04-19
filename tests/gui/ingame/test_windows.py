@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -45,7 +45,7 @@ def test_settings_dialog_crash(gui):
 	# start a new game (development map)
 	gui.trigger('menu/single_button')
 	gui.trigger('singleplayermenu/free_maps')
-	gui.find('maplist').select(u'development')
+	gui.find('maplist').select('development')
 	gui.trigger('singleplayermenu/okay')
 
 	# open pause menu

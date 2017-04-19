@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,6 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.worldobject import WorldObject
 
@@ -92,7 +91,7 @@ class AreaBuilder(WorldObject):
 		"""
 
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		queue = deque([item for item in distance.iteritems()])
+		queue = deque([item for item in distance.items()])
 
 		while queue:
 			(coords, dist) = queue.popleft()
@@ -244,7 +243,7 @@ class AreaBuilder(WorldObject):
 
 		best_index = 0
 		best_value = options[0][0]
-		for i in xrange(1, len(options)):
+		for i in range(1, len(options)):
 			if options[i][0] > best_value:
 				best_index = i
 				best_value = options[i][0]
@@ -295,5 +294,3 @@ class AreaBuilder(WorldObject):
 	def register_change_list(self, coords_list, purpose, data):
 		for (x, y) in coords_list:
 			self.register_change(x, y, purpose, data)
-
-decorators.bind_all(AreaBuilder)

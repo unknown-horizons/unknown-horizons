@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import os
 import subprocess
@@ -36,7 +36,7 @@ def generate_atlases():
 	Generate atlases in dev mode. Shows a TK window during the process.
 	"""
 	try:
-		import Tkinter
+		import tkinter
 		from PIL import Image, ImageTk
 	except ImportError:
 		# tkinter or PIL may be missing, abort
@@ -48,7 +48,7 @@ def generate_atlases():
 	process = subprocess.Popen(args, stdout=None, stderr=subprocess.STDOUT)
 
 	try:
-		window = Tkinter.Tk()
+		window = tkinter.Tk()
 		# iconify window instead of closing
 		window.protocol("WM_DELETE_WINDOW", window.iconify)
 		window.wm_withdraw()
@@ -59,9 +59,9 @@ def generate_atlases():
 		logo = Image.open(PATHS.UH_LOGO_FILE)
 		res_logo = logo.resize((116, 99), Image.ANTIALIAS)
 		res_logo_image = ImageTk.PhotoImage(res_logo)
-		logo_label = Tkinter.Label(window, image=res_logo_image)
+		logo_label = tkinter.Label(window, image=res_logo_image)
 		logo_label.pack(side="left")
-		label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
+		label = tkinter.Label(window, padx = 10, text = "Generating atlases!")
 		label.pack(side="right")
 
 		# wait a second to give the process time to check if a generation is necessary at all
@@ -82,6 +82,6 @@ def generate_atlases():
 		else:
 			GFX.USE_ATLASES = True
 			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-	except Tkinter.TclError:
+	except tkinter.TclError:
 		# catch #2298
 		pass

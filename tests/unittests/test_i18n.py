@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -51,7 +51,7 @@ class Testi18n(TestCase):
 		po = polib.POFile()
 		po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
 		po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
-					msgstr=u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'))
+					msgstr='McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'))
 		po.save_as_mofile(os.path.join(de_mo_dir, 'unknown-horizons.mo'))
 
 		self.fr_dir = tempfile.mkdtemp()
@@ -61,7 +61,7 @@ class Testi18n(TestCase):
 		po = polib.POFile()
 		po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
 		po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
-					msgstr=u'McAvoy ou Stewart? Ces délais sont confus.'))
+					msgstr='McAvoy ou Stewart? Ces délais sont confus.'))
 		po.save_as_mofile(os.path.join(fr_mo_dir, 'unknown-horizons.mo'))
 
 		languages = {
@@ -89,16 +89,16 @@ class Testi18n(TestCase):
 	def test_active_translation(self):
 		change_language('de')
 		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
-		                 u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
+		                 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
 
 		change_language('fr')
 		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
-		                 u'McAvoy ou Stewart? Ces délais sont confus.')
+		                 'McAvoy ou Stewart? Ces délais sont confus.')
 
 	def test_gettext_lazy(self):
 		text = LazyT('McAvoy or Stewart? These timelines are confusing.')
 
-		self.assertEqual(unicode(text), u'McAvoy or Stewart? These timelines are confusing.')
+		self.assertEqual(str(text), 'McAvoy or Stewart? These timelines are confusing.')
 
 		change_language('de')
-		self.assertEqual(unicode(text), u'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
+		self.assertEqual(str(text), 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')

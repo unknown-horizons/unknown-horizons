@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.mission import ShipMission
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
@@ -92,5 +91,3 @@ class DomesticTrade(ShipMission):
 		self.log.info('%s reached destination warehouse area', self)
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
 		self.report_success('Unloaded resources')
-
-decorators.bind_all(DomesticTrade)

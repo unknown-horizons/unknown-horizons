@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
@@ -104,8 +103,8 @@ class FoundSettlement(ShipMission):
 		"""Return the coordinates of a location for the warehouse on the given island."""
 		warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
 		pos_offsets = []
-		for dx in xrange(warehouse_class.width):
-			for dy in xrange(warehouse_class.height):
+		for dx in range(warehouse_class.width):
+			for dy in range(warehouse_class.height):
 				pos_offsets.append((dx, dy))
 
 		island = land_manager.island
@@ -143,5 +142,3 @@ class FoundSettlement(ShipMission):
 	def create(cls, ship, land_manager, success_callback, failure_callback):
 		coords = cls.find_warehouse_location(ship, land_manager)
 		return FoundSettlement(success_callback, failure_callback, land_manager, ship, coords)
-
-decorators.bind_all(FoundSettlement)

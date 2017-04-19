@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RELEASE_VERSION=2013.3
+RELEASE_VERSION=2017.2
 
 BUILD_DIR="../../build/build_$(date +%Y%m%d%H%M)/unknown-horizons"
 echo "Creating build folder: $BUILD_DIR"
@@ -23,8 +23,8 @@ cd ..
 
 echo "Running Setup..."
 cd development
-python2 compile_translation_win.py
-python2 ../horizons/engine/generate_atlases.py 1024
+python3 compile_translation_win.py
+python3 ../horizons/engine/generate_atlases.py 1024
 cd ..
 
 echo "Cleaning up..."

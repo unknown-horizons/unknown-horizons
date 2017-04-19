@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -82,7 +82,7 @@ def test_fire_station(s):
 	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
 
-	for i in xrange(5): # 5 fires
+	for i in range(5): # 5 fires
 		while not dis_man._active_disaster:
 			dis_man.run() # try to seed until we have a fire
 

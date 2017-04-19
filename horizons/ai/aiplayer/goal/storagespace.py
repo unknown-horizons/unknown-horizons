@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,6 @@
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
@@ -52,5 +51,3 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		result = self._build_extra_storage()
 		self._log_generic_build_result(result, 'storage space provider')
 		return self._translate_build_result(result)
-
-decorators.bind_all(StorageSpaceGoal)

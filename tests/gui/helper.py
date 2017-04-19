@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,6 @@
 Cleaner interface to various game/gui functions to make tests easier.
 """
 
-from __future__ import print_function
 
 import contextlib
 import os
@@ -54,16 +53,18 @@ def get_player_ship(session):
 	raise Exception('Player ship not found')
 
 
-def move_ship(gui, ship, (x, y)):
+def move_ship(gui, ship, coords):
 	"""Move ship to coordinates and wait until it arrives."""
+	x, y = coords
 	gui.cursor_click(x, y, 'right')
 
 	while (ship.position.x, ship.position.y) != (x, y):
 		cooperative.schedule()
 
 
-def found_settlement(gui, ship_pos, (x, y)):
+def found_settlement(gui, ship_pos, coords):
 	"""Move ship to coordinates and build a warehouse."""
+	x, y = coords
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 	move_ship(gui, ship, ship_pos)
@@ -271,11 +272,11 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 				gui_helper.run()
 
-			match.select = types.MethodType(select, match, match.__class__)
+			match.select = types.MethodType(select, match)
 		elif isinstance(match, pychan.widgets.TextField):
 			def write(self, text):
 				"""Change text inside a textfield."""
-				self.text = unicode(text)
+				self.text = str(text)
 				return self # return self to allow chaining
 
 			def enter(self):
@@ -283,8 +284,8 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 				gui_helper.run()
 
-			match.write = types.MethodType(write, match, match.__class__)
-			match.enter = types.MethodType(enter, match, match.__class__)
+			match.write = types.MethodType(write, match)
+			match.enter = types.MethodType(enter, match)
 		elif isinstance(match, pychan.widgets.Slider):
 			def slide(self, value):
 				"""Set the slider to this value and trigger callbacks."""
@@ -296,7 +297,7 @@ class GuiHelper(object):
 					gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
 					gui_helper.run()
 
-			match.slide = types.MethodType(slide, match, match.__class__)
+			match.slide = types.MethodType(slide, match)
 
 		return match
 
@@ -331,11 +332,11 @@ class GuiHelper(object):
 			event_name, = parts
 
 		# if widget is given by name, look it up first
-		if isinstance(widget, basestring):
+		if isinstance(widget, str):
 			widget_name = widget
 			widget = self.find(widget_name)
 			if not widget:
-				raise Exception("Widget '%s' not found" % widget_name)
+				raise Exception("Widget '{}' not found".format(widget_name))
 
 		self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
 		self.run()
@@ -348,7 +349,7 @@ class GuiHelper(object):
 		except KeyError:
 			if can_fail:
 				return False
-			raise Exception("No callbacks for event group '%s' for event '%s'" % (
+			raise Exception("No callbacks for event group '{}' for event '{}'".format(
 							group_name, widget.name))
 
 		# Unusual events are handled normally
@@ -356,7 +357,7 @@ class GuiHelper(object):
 			try:
 				callback = callbacks[event_name]
 			except KeyError:
-				raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
+				raise Exception("No callback for event '{}/{}' registered for widget '{}'".format(
 								event_name, group_name, widget.name))
 		# Treat action and mouseClicked as the same event. If a callback is not registered
 		# for one, try the other
@@ -366,8 +367,8 @@ class GuiHelper(object):
 				callback = callbacks.get(event_name == 'action' and 'mouseClicked' or 'action')
 
 			if not callback:
-				raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '%s'" % (
-								group_name, widget.name))
+				raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '{}'".format(
+								widget.name))
 
 		kwargs = {'widget': widget}
 		if mouse:
@@ -450,8 +451,10 @@ class GuiHelper(object):
 		x, y = coords[-1]
 		self.cursor_click(x, y, 'right')
 
-	def cursor_drag(self, (start_x, start_y), (end_x, end_y), button):
+	def cursor_drag(self, start_coords, end_coords, button):
 		"""Press mouse button, move the mouse, release button."""
+		start_x, start_y = start_coords
+		end_x, end_y = end_coords
 		self.cursor_move(start_x, start_y)
 		self.cursor_press_button(start_x, start_y, button)
 		self.run()

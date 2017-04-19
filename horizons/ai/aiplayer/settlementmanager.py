@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -53,7 +53,6 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, GAME_SPEED, RES, TIER
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.production.producer import Producer
@@ -473,5 +472,3 @@ class SettlementManager(WorldObject):
 
 	def __str__(self):
 		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
-
-decorators.bind_all(SettlementManager)

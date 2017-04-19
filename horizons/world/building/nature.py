@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 from horizons.constants import BUILDINGS, LAYERS
 from horizons.scheduler import Scheduler
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
@@ -9,7 +7,7 @@ from horizons.world.production.producer import Producer
 
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #

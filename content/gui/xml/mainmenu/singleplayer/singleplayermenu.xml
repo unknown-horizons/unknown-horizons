@@ -18,7 +18,7 @@
 		which might be the source of this bug
 		-->
 		<VBox name="playerdataselectioncontainer"  position="10,185" />
-		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="112,228" />
+		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="116,216" />
 
 		<hr position="52,300" />
 		<VBox name="aidataselectioncontainer"  position="10,310" />
@@ -27,7 +27,7 @@
 	</Container>
 
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
-	<VBox max_size="320,480"  min_size="320,480"  position="415,52"  name="right_side_box" />
+	<VBox fixed_size="320,480"  position="415,52"  name="right_side_box" />
 
 	<OkButton name="okay"  helptext="Start game" position="695, 500"/>
 </Container>

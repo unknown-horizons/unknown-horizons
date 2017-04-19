@@ -58,7 +58,7 @@ logbook-data:
   - Artık içinde yaşanması için birkaç çadır ve halkımıza eşya desteği vermek için küçük bir ana meydan yapmanın tam zamanı.
   - 'Görev:
 
-    Ana meydan ve en az 10 çadır yap.'
+    Bir ana meydan ve en az 10 çadır inşa et.'
   - [Pagebreak]
   - ''
 
@@ -142,9 +142,9 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: '1740''daki İngiliz bayrağı altındaki bir geminin kaptanısınız. Siz ve tayfanız pasifik okyanusundaki İngiliz kolonisi yolundaydınız.
+  description: '1740''da İngiliz bayrağı altındaki bir geminin kaptanısınız. Siz ve tayfanız Pasifik Okyanusundaki bir İngiliz kolonisine doğru ilerliyordunuz.
 
-    Her şey, bir fırtına ile karşılaşıncaya kadar güzel gidiyordu…'
+    Her şey güzel gidiyordu, bir fırtına ile karşılaşıncaya kadar…'
   difficulty: kolay
   locale: tr
   mapfile: development.sqlite

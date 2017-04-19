@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,7 +27,7 @@ The functions below are used to start different kinds of games.
 TUTORIAL:
 Continue to horizons.session for further ingame digging.
 """
-from __future__ import print_function
+
 
 import json
 import logging
@@ -37,11 +37,12 @@ import sys
 import threading
 import traceback
 
+from typing import TYPE_CHECKING, Optional
+
 from fife import fife as fife_module
 
 import horizons.globals
 from horizons.constants import AI, GAME, GAME_SPEED, GFX, NETWORK, PATHS, SINGLEPLAYER, VERSION
-from horizons.ext.typing import TYPE_CHECKING, Optional
 from horizons.extscheduler import ExtScheduler
 from horizons.gui import Gui
 from horizons.i18n import gettext as T
@@ -153,10 +154,14 @@ def start(_command_line_arguments):
 	if not setup_gui_logger(command_line_arguments):
 		return False
 
+	# Check if the no-audio flag has been set.
+	if command_line_arguments.no_audio:
+		horizons.globals.fife.set_fife_setting('PlaySounds', False)
+
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
 	if command_line_arguments.gui_test:
-		horizons.globals.fife.engine.getSettings().setRenderBackend('SDL')
+		horizons.globals.fife.engine.getSettings().setRenderBackend('OpenGL')
 		horizons.globals.fife.set_fife_setting('PlaySounds', False)
 
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
@@ -359,7 +364,7 @@ def start_singleplayer(options):
 				print("Additionally to failing when loading, cleanup afterwards also failed")
 		_modules.gui.show_main()
 		headline = T("Failed to start/load the game")
-		descr = T("The game you selected could not be started.") + u" " + \
+		descr = T("The game you selected could not be started.") + " " + \
 		        T("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.open_error_popup(headline, descr)
 		_modules.gui.load_game()
@@ -453,7 +458,7 @@ def _find_matching_map(name_or_path, savegames):
 		if name.startswith(name_or_path): # check for partial match
 			if map_file is not None:
 				# multiple matches, collect all for output
-				map_file += u'\n' + filename
+				map_file += '\n' + filename
 			else:
 				map_file = filename
 	if map_file is not None:
@@ -468,7 +473,7 @@ def _find_matching_map(name_or_path, savegames):
 		if os.path.exists(name_or_path):
 			return name_or_path
 		else:
-			print(u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
+			print("Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
 			return
 
 def _load_last_quicksave(session=None, force_player_id=None):

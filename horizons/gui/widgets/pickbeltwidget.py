@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -84,12 +84,12 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
 	sections = (
-		('credits_team_2016', u'UH-Team New'),
-		('credits_team_2015', u'UH-Team Old'),
-		('credits_patchers', u'Patchers'),
-		('credits_translators', u'Translators'),
-		('credits_packagers', u'Packagers'),
-		('credits_thanks', u'Thanks'),
+		('credits_team_2016', 'UH-Team New'),
+		('credits_team_2015', 'UH-Team Old'),
+		('credits_patchers', 'Patchers'),
+		('credits_translators', 'Translators'),
+		('credits_packagers', 'Packagers'),
+		('credits_thanks', 'Thanks'),
 	)
 
 	def __init__(self, windows):

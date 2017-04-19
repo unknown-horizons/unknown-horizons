@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.util.python import Const
-from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Shape
 
 
@@ -56,7 +55,7 @@ class Point(Shape):
 
 	def __str__(self):
 		""" nice representation for debugging purposes """
-		return 'Point(%s, %s)' % (self.x, self.y)
+		return 'Point({}, {})'.format(self.x, self.y)
 
 	def __eq__(self, other):
 		if other is None:
@@ -89,7 +88,3 @@ class Point(Shape):
 class ConstPoint(Const, Point):
 	"""An immutable Point"""
 	pass
-
-
-bind_all(Point)
-bind_all(ConstPoint)

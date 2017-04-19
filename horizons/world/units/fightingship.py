@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,7 +35,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 	def __init__(self, x, y, **kwargs):
 		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
 		# add default weapons
-		for i in xrange(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
+		for i in range(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):
@@ -73,7 +73,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		side = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
 		# calculate x4 y4 the new facing location coords
 		# they are calculated by rotating 90' the target location
-		if side > 0:
+		if (side or 0) > 0:
 			x4 = y1 - y2 + x1
 			y4 = x2 - x1 + y1
 			direction = 'left'
@@ -87,5 +87,5 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 		facing_location.setMapCoordinates(facing_coords)
 		self._instance.setFacingLocation(facing_location)
-		self.act('fire_%s' % direction, facing_location, repeating=False)
+		self.act('fire_{}'.format(direction), facing_location, repeating=False)
 		self._action = 'idle'

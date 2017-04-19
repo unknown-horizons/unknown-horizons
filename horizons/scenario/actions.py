@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -89,7 +89,7 @@ def do_win(session):
 	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
 	continue_playing = session.ingame_gui.open_popup(T("You have won!"),
-	                                                 T("You have completed this scenario.") + u" " +
+	                                                 T("You have completed this scenario.") + " " +
 	                                                 T("Do you want to continue playing?"),
 	                                                 show_cancel_button=True)
 	if not continue_playing:

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,28 +57,16 @@ class SelectSavegameDialog(Dialog):
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
 
 		w = self._gui.findChild(name="gamename_box")
-		if (Fife.getVersion() >= (0, 4, 0)):
-			w.parent.hideChild(w)
-		else:
-			if w not in w.parent.hidden_children:
-				w.parent.hideChild(w)
+		w.parent.hideChild(w)
 
 		w = self._gui.findChild(name="gamepassword_box")
-		if (Fife.getVersion() >= (0, 4, 0)):
-			w.parent.hideChild(w)
-		else:
-			if w not in w.parent.hidden_children:
-				w.parent.hideChild(w)
+		w.parent.hideChild(w)
 
 		w = self._gui.findChild(name='enter_filename')
 		if self._mode in ('save', 'editor-save'): # only show enter_filename on save
 			w.parent.showChild(w)
 		else:
-			if (Fife.getVersion() >= (0, 4, 0)):
-				w.parent.hideChild(w)
-			else:
-				if w not in w.parent.hidden_children:
-					w.parent.hideChild(w)
+			w.parent.hideChild(w)
 
 		self.last_click_event = None
 
@@ -102,7 +90,7 @@ class SelectSavegameDialog(Dialog):
 			def selected_changed():
 				"""Fills in the name of the savegame in the textbox when selected in the list"""
 				if self._gui.collectData('savegamelist') == -1: # set blank if nothing is selected
-					self._gui.findChild(name="savegamefile").text = u""
+					self._gui.findChild(name="savegamefile").text = ""
 				else:
 					savegamefile = self._map_file_display[self._gui.collectData('savegamelist')]
 					self._gui.distributeData({'savegamefile': savegamefile})
@@ -164,7 +152,7 @@ class SelectSavegameDialog(Dialog):
 				elif self._mode == 'editor-save':
 					message = T("A map with the name {name} already exists.")
 				message = message.format(name=selected_savegame)
-				message += u"\n" + T('Overwrite it?')
+				message += "\n" + T('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True):
 					return self._windows.open(self)
@@ -188,11 +176,7 @@ class SelectSavegameDialog(Dialog):
 			savegame_details_box = gui.findChild(name="savegame_details")
 			savegame_details_parent = savegame_details_box.parent
 			if map_file_index == -1:
-				if (Fife.getVersion() >= (0, 4, 0)):
-					savegame_details_parent.hideChild(savegame_details_box)
-				else:
-					if savegame_details_box not in savegame_details_parent.hidden_children:
-						savegame_details_parent.hideChild(savegame_details_box)
+				savegame_details_parent.hideChild(savegame_details_box)
 				return
 			else:
 				savegame_details_parent.showChild(savegame_details_box)
@@ -221,7 +205,7 @@ class SelectSavegameDialog(Dialog):
 						fd, filename = None, None
 
 				if fd:
-					with os.fdopen(fd, "w") as f:
+					with os.fdopen(fd, "wb") as f:
 						f.write(savegame_info['screenshot'])
 					# fife only supports relative paths
 					gui.findChild(name="screenshot").image = path_rel
@@ -229,19 +213,19 @@ class SelectSavegameDialog(Dialog):
 
 			# savegamedetails
 			details_label = gui.findChild(name="savegamedetails_lbl")
-			details_label.text = u""
+			details_label.text = ""
 			if savegame_info['timestamp'] == -1:
 				details_label.text += T("Unknown savedate")
 			else:
 				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
-				details_label.text += T("Saved at {time}").format(time=savetime.decode('utf-8'))
-			details_label.text += u'\n'
+				details_label.text += T("Saved at {time}").format(time=savetime)
+			details_label.text += '\n'
 			counter = savegame_info['savecounter']
 			# NT takes care of plural forms for different languages
 			details_label.text += NT("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
-			details_label.text += u'\n'
+			details_label.text += '\n'
 
 			from horizons.constants import VERSION
 			try:
@@ -249,11 +233,11 @@ class SelectSavegameDialog(Dialog):
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
 					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
-						details_label.text += u" " + T("(probably incompatible)")
+						details_label.text += " " + T("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += u" " + T("Incompatible version")
+				details_label.text += " " + T("Incompatible version")
 
 			gui.adaptLayout()
 		return tmp_show_details

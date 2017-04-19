@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -64,7 +64,7 @@ class SPSession(Session):
 			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
 			headline = T("Failed to quicksave.")
-			descr = T("An error happened during quicksave.") + u"\n" + T("Your game has not been saved.")
+			descr = T("An error happened during quicksave.") + "\n" + T("Your game has not been saved.")
 			advice = T("If this error happens again, please contact the development team: "
 			           "{website}").format(website="http://unknown-horizons.org/support/")
 			self.ingame_gui.open_error_popup(headline, descr, advice)

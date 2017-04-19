@@ -6,19 +6,19 @@
 <Container position="0,70" size="250,400">
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
+	<Spacer min_size="0,0"  max_size="50,0" />
 		<Label name="name" />
 	</HBox>
 
 	<hr position="20,30" />
 
-	<HBox min_size="125,20" max_size="225,20" position="25,40">
+	<HBox min_size="125,30" max_size="225,30" position="25,40">
 		<!-- the widgets in this container have no text because it is set
 		dynamically at runtime. See e.g. overviewtab.py -->
 		<Icon name="running_costs_label" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
 		<Label name="running_costs" helptext="Running costs" />
-	<Spacer max_size="50" />
+	<Spacer max_size="50,0" />
 		<Icon name="capacity_utilization_label"  helptext="Capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
 		<Label name="capacity_utilization" helptext="Capacity utilization" />

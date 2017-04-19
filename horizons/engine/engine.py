@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
 
 import locale
 import logging
@@ -155,6 +154,7 @@ class Fife(object):
 		self.eventmanager = self.engine.getEventManager()
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
+		self.animationmanager = self.engine.getAnimationManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
 		self.animationloader = None
 
@@ -167,7 +167,7 @@ class Fife(object):
 			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
 		}
-		self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems())
+		self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in  cursor_images.items())
 		self.cursor.set(self.cursor_images['default'])
 
 		# Init pychan.
@@ -242,7 +242,7 @@ class Fife(object):
 	def replace_key_for_action(self, action, oldkey, newkey):
 		"""Replaces key *oldkey* with key *newkey* for action *action*"""
 		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
-		if not oldkey in old_keys:
+		if oldkey not in old_keys:
 			return
 		index = old_keys.index(oldkey)
 		old_keys[index] = newkey

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -85,7 +85,7 @@ def test_create_game(gui):
 	assert len(games) == 1
 
 	# send a chat message
-	gui.find('chatTextField').write(u'Text').enter()
+	gui.find('chatTextField').write('Text').enter()
 
 	# change player color (click on color)
 	gui.trigger('multiplayer_gamelobby/pcolor_' + NetworkInterface().get_client_name())
@@ -95,7 +95,7 @@ def test_create_game(gui):
 	gui.run(1)
 	# change player name (click on name)
 	gui.trigger('multiplayer_gamelobby/pname_' + NetworkInterface().get_client_name())
-	gui.find('set_player_details_dialog_window/playername').write(u'Darkwing')
+	gui.find('set_player_details_dialog_window/playername').write('Darkwing')
 	gui.trigger('set_player_details_dialog_window/okButton')
 
 	# run some time to wait for the server's acknowledgment of the new name

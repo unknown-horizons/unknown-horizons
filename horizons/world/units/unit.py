@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,6 @@ from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.healthcomponent import HealthComponent
 from horizons.constants import LAYERS
 from horizons.extscheduler import ExtScheduler
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes import Point
@@ -205,7 +204,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		randint = self.session.random.randint
 		# pick a sample, try tries times
 		tries = range_squared // 2
-		for i in xrange(tries):
+		for i in range(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
 			x_diff = randint(1, in_range) # always go at least 1 field
 			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
@@ -234,7 +233,4 @@ class Unit(MovingObject, ResourceTransferHandler):
 		return self.session.db.get_unit_type_name(self.id)
 
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
-
-
-decorators.bind_all(Unit)
+		return '{}(id={};worldid={})'.format(self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')

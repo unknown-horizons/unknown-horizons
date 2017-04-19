@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -56,15 +56,15 @@ class WorldEditor(object):
 			RemoveUnit(ship).execute(self.session)
 
 	def _center_view(self):
-		min_x = min(zip(*self.world.full_map.keys())[0])
-		max_x = max(zip(*self.world.full_map.keys())[0])
-		min_y = min(zip(*self.world.full_map.keys())[1])
-		max_y = max(zip(*self.world.full_map.keys())[1])
+		min_x = min(list(zip(*self.world.full_map.keys()))[0])
+		max_x = max(list(zip(*self.world.full_map.keys()))[0])
+		min_y = min(list(zip(*self.world.full_map.keys()))[1])
+		max_y = max(list(zip(*self.world.full_map.keys()))[1])
 		self.session.view.center((min_x + max_x) // 2, (min_y + max_y) // 2)
 
 	def _iter_islands(self):
 		ground = {}
-		for coords, tile in self.world.full_map.iteritems():
+		for coords, tile in self.world.full_map.items():
 			if tile.id <= 0:
 				continue
 			ground[coords] = None
@@ -72,7 +72,7 @@ class WorldEditor(object):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		for coords in sorted(ground.iterkeys()):
+		for coords in sorted(ground.keys()):
 			if ground[coords] is not None:
 				continue
 

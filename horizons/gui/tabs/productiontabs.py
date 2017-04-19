@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,7 @@
 import operator
 import weakref
 
-from fife.extensions.pychan.widgets import Icon, Label
+from fife.extensions.pychan.widgets import ABox, Icon, Label
 
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
@@ -31,7 +31,6 @@ from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED, PRODUCTION
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import gettext as T, gettext_lazy as LazyT
@@ -103,11 +102,11 @@ class ProductionOverviewTab(OverviewTab):
 			self._set_resource_amounts(container, production)
 
 			if production.is_paused():
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_active"))
 				toggle_icon = centered_container.findChild(name="toggle_active_inactive")
 				toggle_icon.name = "toggle_active"
 			else:
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_inactive") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_inactive"))
 				toggle_icon = centered_container.findChild(name="toggle_active_active")
 				toggle_icon.name = "toggle_active"
 
@@ -120,7 +119,7 @@ class ProductionOverviewTab(OverviewTab):
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					centered_container.anim = anim
 					anim.start(1.0/12, -1) # always start anew, people won't notice
-					self._animations.append( weakref.ref( anim ) )
+					self._animations.append(weakref.ref(anim))
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
@@ -175,7 +174,7 @@ class ProductionOverviewTab(OverviewTab):
 			mid_arrow.position = (x, 17 + y)
 			parent_container.insertChild(mid_arrow, 0)
 
-		for res in xrange(amount // 2):
+		for res in range(amount // 2):
 			# --\                      <= placed for res = 1
 			# --\| <= place connector  <= placed for res = 0
 			# ---O-->                  <= placed above (mid_arrow)
@@ -218,13 +217,13 @@ class ProductionOverviewTab(OverviewTab):
 				parent_container.insertChild(up_connector, 0)
 
 	def _set_resource_amounts(self, container, production):
-		for res, amount in production.get_consumed_resources().iteritems():
+		for res, amount in production.get_consumed_resources().items():
 			# consumed resources are negative!
-			label = Label(text=unicode(-amount), margins=(0, 16))
+			label = Label(text=str(-amount), margins=(0, 16))
 			container.findChild(name='input_box').addChild(label)
 
-		for res, amount in production.get_produced_resources().iteritems():
-			label = Label(text=unicode(amount).rjust(2), margins=(0, 16))
+		for res, amount in production.get_produced_resources().items():
+			label = Label(text=str(amount).rjust(2), margins=(0, 16))
 			container.findChild(name='output_box').addChild(label)
 
 	def destruct_building(self):
@@ -235,7 +234,7 @@ class ProductionOverviewTab(OverviewTab):
 		utilization = 0
 		if self.instance.has_component(Producer):
 			utilization = int(round(self.instance.get_component(Producer).capacity_utilization * 100))
-		self.widget.child_finder('capacity_utilization').text = unicode(utilization) + u'%'
+		self.widget.child_finder('capacity_utilization').text = str(utilization) + '%'
 
 	def _add_resource_icons(self, container, resources, marker=False):
 		calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
@@ -275,7 +274,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 	"""
 	def init_widget(self):
 		super(LumberjackOverviewTab, self).init_widget()
-		container = AutoResizeContainer(position=(20, 210))
+		container = ABox(position=(20, 210))
 		icon = Icon(name='build_all_bg')
 		button = ImageButton(name='build_all_button')
 		container.addChild(icon)
@@ -330,7 +329,5 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 		possible_res = set(res for field in self.instance.get_providers()
 		                       for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
-		productions = {p for p in all_farm_productions
-		                     for res in p.get_consumed_resources().keys()
-		                   if res in possible_res}
+		productions = {p for p in all_farm_productions for res in p.get_consumed_resources().keys() if res in possible_res}
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

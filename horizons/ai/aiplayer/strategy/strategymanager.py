@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -40,6 +40,7 @@ class StrategyManager(object):
 	"""
 	log = logging.getLogger("ai.aiplayer.fleetmission")
 
+	# Redundant use of super()?
 	def __init__(self, owner):
 		super(StrategyManager, self).__init__()
 		self.__init(owner)
@@ -78,7 +79,7 @@ class StrategyManager(object):
 		resources_weight = 0.75
 
 		resource_values = []
-		for player in [self.owner, other_player]:
+		for player in (self.owner, other_player):
 			resources_value = 0.0
 			for settlement in player.settlements:
 				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount
@@ -104,16 +105,16 @@ class StrategyManager(object):
 		min_balance = 10e-7
 		max_balance = 1000.0
 
-		ships = self.owner.ships.keys()
+		ships = list(self.owner.ships.keys())
 		ships = self.unit_manager.filter_ships(ships, (self.unit_manager.filtering_rules.fighting(),))
 		enemy_ships = self.unit_manager.get_player_ships(other_player)
 		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
 
-		# infinitely more powerful
+		# infinitely more powerful (is either or both expected to return None?)
 		if ships and not enemy_ships:
 			return max_balance
 
-		# infinitely less powerful
+		# infinitely less powerful (is either or both expected to return None?)
 		elif not ships and enemy_ships:
 			return min_balance
 		elif not ships and not enemy_ships:
@@ -132,7 +133,7 @@ class StrategyManager(object):
 
 		terrains = []
 		island_counts = []
-		for player in [self.owner, other_player]:
+		for player in (self.owner, other_player):
 			terrain_total = 0
 			islands = set()
 			for settlement in player.settlements:
@@ -144,7 +145,7 @@ class StrategyManager(object):
 		ai_terrain, enemy_terrain = terrains
 		ai_islands, enemy_islands = island_counts
 
-		# if not
+		# if not (is either or both expected to return None?)
 		if ai_islands and not enemy_islands:
 			return max_balance
 		if not ai_islands and enemy_islands:
@@ -181,8 +182,8 @@ class StrategyManager(object):
 			'power':power_balance,
 			'terrain':terrain_balance,
 		}
-		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.iteritems()))
-		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.iteritems()))
+		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.items()))
+		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.items()))
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 
@@ -190,19 +191,19 @@ class StrategyManager(object):
 		for mission in list(self.missions):
 			mission.save(db)
 
-		for condition, mission in self.conditions_being_resolved.iteritems():
+		for condition, mission in self.conditions_being_resolved.items():
 			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid)
 
 	@classmethod
 	def load(cls, db, owner):
 		self = cls.__new__(cls)
-		super(StrategyManager, self).__init__()
+		super(StrategyManager, self).__init__()		# redundant use of super()?
 		self.__init(owner)
 		self._load(db)
 		return self
 
 	def _load(self, db):
-		for class_name, db_table in self.missions_to_load.iteritems():
+		for class_name, db_table in self.missions_to_load.items():
 			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
@@ -239,7 +240,7 @@ class StrategyManager(object):
 
 	def unlock_condition(self, mission):
 		# values (FleetMission) are unique so it's possible to remove them this way:
-		for condition, value in self.conditions_being_resolved.iteritems():
+		for condition, value in self.conditions_being_resolved.items():
 			if mission == value:
 				del self.conditions_being_resolved[condition]
 				return
@@ -287,7 +288,7 @@ class StrategyManager(object):
 			self.log.debug("Conditions occurring against player %s", player.name)
 			environment['player'] = player
 
-			for condition in self.conditions.keys():
+			for condition in list(self.conditions.keys()):
 
 				# Check whether given condition is already being resolved
 				if condition.get_identifier(**environment) in self.conditions_being_resolved:
@@ -307,10 +308,10 @@ class StrategyManager(object):
 			# Choose the most important one
 
 			selected_condition, selected_outcome = max(occuring_conditions,
-				key=lambda (condition, outcome): self.conditions[condition] * outcome['certainty'])
+				key=lambda condition_outcome1: self.conditions[condition_outcome1[0]] * condition_outcome1[1]['certainty'])
 
 			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
-			for key, value in selected_outcome.iteritems():
+			for key, value in selected_outcome.items():
 				# Insert condition-gathered info into environment
 				environment[key] = value
 				self.log.debug(" %s: %s", key, value)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,7 +32,7 @@ class Timer(LivingObject):
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is especially important for multiplayer, to allow synchronous play.
 	"""
-	TEST_PASS, TEST_SKIP = xrange(0, 2)
+	TEST_PASS, TEST_SKIP = range(0, 2)
 
 	ACCEPTABLE_TICK_DELAY = 0.2 # sec
 	DEFER_TICK_ON_DELAY_BY = 0.4 # sec

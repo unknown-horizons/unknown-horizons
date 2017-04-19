@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -61,7 +61,7 @@ class OverviewTab(TabInterface):
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
 			self.widget.child_finder('running_costs').text = \
-			    unicode(self.instance.running_costs)
+			    str(self.instance.running_costs)
 
 		self.widget.adaptLayout()
 

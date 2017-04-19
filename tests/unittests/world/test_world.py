@@ -1,7 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,13 +23,15 @@
 
 from unittest import TestCase
 
+from horizons.ext.dummy import Dummy
 from horizons.world import World
-from tests.dummy import Dummy
+from horizons.util.worldobject import WorldObject
 
 
 class TestWorld(TestCase):
 
 	def setUp(self):
+		WorldObject.reset()
 		self.session = Dummy()
 
 	def test_world_end(self):

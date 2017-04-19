@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -77,14 +77,14 @@ class BuildingClass(IngameType):
 		cls.log.debug("Loading building %s", cls.id)
 		try:
 			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'building')
-		except RuntimeError:
+		except fife.NameClash:
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
 		all_action_sets = ActionSetLoader.get_sets()
 
 		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
-		for action_set_list in cls.action_sets.itervalues():
+		for action_set_list in cls.action_sets.values():
 			for action_set in action_set_list: # set1, set2, ...
 				for action_id in all_action_sets[action_set]: # idle, move, ...
 					cls._do_load(all_action_sets, action_set, action_id)
@@ -95,6 +95,7 @@ class BuildingClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
+			# Issue #1379: Make the offset system more dynamic or re-render object images better
 			if rotation == 45:
 				params['left'] = 32
 				params['botm'] = 16 * cls.size[0]

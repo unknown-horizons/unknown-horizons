@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 import functools
 import traceback
@@ -61,7 +61,7 @@ def init_pychan():
 
 	def patch_imageproperty(func):
 		def wrapper(self, obj, image):
-			if isinstance(image, unicode):
+			if isinstance(image, str):
 				image = str(image)
 			return func(self, obj, image)
 		return wrapper
@@ -78,28 +78,26 @@ def init_pychan():
 	from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
-	from horizons.gui.widgets.container import AutoResizeContainer
 	from horizons.gui.widgets.tooltip import _Tooltip
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
 	           Inventory, BuySellInventory, ImageFillStatusButton,
 	           ProgressBar, StepSlider, TabBG,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
-	           AutoResizeContainer, RenameLabel, RenameImageButton,
+	           RenameLabel, RenameImageButton,
 	           TilingHBox, TilingProgressBar, hr,
 			 # This overwrites the ImageButton provided by FIFE!
-	           ImageButton,
-	           ]
+	           ImageButton]
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
 
 	# add uh styles
-	for name, stylepart in STYLES.iteritems():
+	for name, stylepart in STYLES.items():
 		pychan.manager.addStyle(name, stylepart)
 
 	# patch default widgets
-	for name, widget in pychan.widgets.WIDGETS.items():
+	for name, widget in list(pychan.widgets.WIDGETS.items()):
 
 		def catch_gcn_exception_decorator(func):
 			@functools.wraps(func)
@@ -113,16 +111,15 @@ def init_pychan():
 
 		widget.hide = catch_gcn_exception_decorator(widget.hide)
 
-	from fife.extensions.pychan import Label, Icon, VBox, HBox
+	from fife.extensions.pychan import ABox, HBox, Icon, Label, VBox
 	# this is white list of widgets with tooltip.
-	widgets_with_tooltip = [Label, Icon, HBox, VBox,
-	                        ImageButton, AutoResizeContainer]
+	widgets_with_tooltip = [ABox, HBox, Icon, ImageButton, Label, VBox]
 
 	for widget in widgets_with_tooltip:
 		# Copy everything we need from the tooltip class (manual mixin).
 		# TODO: Figure out if it is safe to use this instead:
 		# widget.__bases__ += (_Tooltip, )
-		for key, value in _Tooltip.__dict__.iteritems():
+		for key, value in _Tooltip.__dict__.items():
 			if not key.startswith("__"):
 				setattr(widget, key, value)
 
@@ -143,8 +140,10 @@ def init_pychan():
 	# the lazy string from horizons.i18n. we should be passing unicode to
 	# widgets all the time, therefore we don't need the additional check.
 	def text2gui(text):
-		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
-		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+		# Drop unicode encoding for now.
+		#unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+		#return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+		return text.replace("\t"," "*4).replace("[br]","\n")
 
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui
@@ -177,6 +176,9 @@ def setup_cursor_change_on_hover():
 			self.mapEvents({
 				self.name+'/mouseEntered/cursor' : set_cursor,
 				self.name+'/mouseExited/cursor' : unset_cursor,
+				# this changes the cursor if the widget is hidden while the
+				# cursor is still above the textfield
+				self.name+'/ancestorHidden/cursor': unset_cursor
 				})
 
 		def add_cursor_change_on_hover_init(func):
@@ -193,15 +195,6 @@ def setup_cursor_change_on_hover():
 	make_cursor_change_on_hover_class(pychan.widgets.WIDGETS['TextField'])
 	make_cursor_change_on_hover_class(RenameLabel)
 	make_cursor_change_on_hover_class(RenameImageButton)
-
-
-	# TODO: if the widget is hidden while the cursor is above it,
-	# there is no exited event. A possible workaround would be to check
-	# in short intervals whether the widget is still visible, possible also
-	# whether the mouse is still above it (the later would be necessary in
-	# case another widget is drawn above the original widget)
-	# Since that would be quite ugly, it should only be done when consulting
-	# pychan-savvy people yields no success.
 
 
 def setup_trigger_signals_on_action():

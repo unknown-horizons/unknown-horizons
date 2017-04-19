@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,7 +33,6 @@ from yaml.parser import ParserError
 from horizons.constants import BUILDINGS, UNITS, VERSION
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
-from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.yamlcache import YamlCache
 
@@ -294,7 +293,7 @@ class SavegameUpgrader(object):
 		# random map
 		island_strings = []
 		for island_x, island_y, island_string in db('SELECT x, y, file FROM island ORDER BY rowid'):
-			island_strings.append(island_string + ':%d:%d' % (island_x, island_y))
+			island_strings.append(island_string + ':{:d}:{:d}'.format(island_x, island_y))
 		db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence', ' '.join(island_strings))
 
 	def _upgrade_to_rev66(self, db):
@@ -357,10 +356,10 @@ class SavegameUpgrader(object):
 
 		# save the new settlement tiles data
 		ground_map = defaultdict(list)
-		for (coords, settlement_id) in settlement_map.iteritems():
+		for (coords, settlement_id) in settlement_map.items():
 			ground_map[settlement_id].append(coords)
 
-		for (settlement_id, coords_list) in ground_map.iteritems():
+		for (settlement_id, coords_list) in ground_map.items():
 			data = json.dumps(coords_list)
 			db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", settlement_id, data)
 
@@ -426,8 +425,8 @@ class SavegameUpgrader(object):
 			if not SavegameUpgrader.can_upgrade(rev):
 				raise SavegameTooOld(revision=rev)
 
-			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
-						     (rev, VERSION.SAVEGAMEREVISION))
+			self.log.warning('Discovered old savegame file, auto-upgrading: {} -> {}'
+						     .format(rev, VERSION.SAVEGAMEREVISION))
 			db = DbReader(self.final_path)
 			db('BEGIN TRANSACTION')
 
@@ -514,5 +513,3 @@ class SavegameUpgrader(object):
 			self.using_temp = False
 			os.unlink(self.final_path)
 		self.final_path = None
-
-decorators.bind_all(SavegameUpgrader)

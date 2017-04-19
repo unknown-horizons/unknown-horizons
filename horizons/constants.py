@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,8 +26,9 @@ import os.path
 import platform
 import subprocess
 
+from typing import Optional
+
 from horizons.ext.enum import Enum
-from horizons.ext.typing import Optional
 
 
 """This file keeps track of the constants that are used in Unknown Horizons.
@@ -43,7 +44,7 @@ def get_git_version():
 		from run_uh import get_content_dir_parent_path
 		uh_path = get_content_dir_parent_path()
 	except ImportError:
-		return u"<unknown>"
+		return "<unknown>"
 
 	# Try git describe
 	try:
@@ -52,9 +53,11 @@ def get_git_version():
 			git = "git.exe"
 
 		# Note that this uses glob patterns, not regular expressions.
-		TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
-		describe = [git, "describe", "--tags", "--match", TAG_STRUCTURE]
-		return subprocess.check_output(describe, cwd=uh_path)
+		# TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
+		# describe = [git, "describe", "--tags", TAG_STRUCTURE]
+		describe = [git, "describe", "--tags"]
+		git_string = subprocess.check_output(describe, cwd=uh_path, universal_newlines=True).rstrip('\n')
+		return git_string
 	except (subprocess.CalledProcessError, RuntimeError):
 		pass
 
@@ -68,17 +71,17 @@ def get_git_version():
 			else:
 				head_file = git_head_path
 			if os.path.exists(head_file):
-				return unicode(open(head_file).readline().strip()[0:7])
+				return str(open(head_file).readline().strip()[0:7])
 	except ImportError:
 		pass
 
 	# Try gitversion.txt
 	try:
-		return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
+		return str(open(os.path.join("content", "packages", "gitversion.txt")).read())
 	except IOError:
 		pass
 
-	return u"<unknown>"
+	return "<unknown>"
 
 
 ##Versioning
@@ -87,11 +90,11 @@ class VERSION:
 	RELEASE_VERSION = get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2013.3'
+	#RELEASE_VERSION = u'2017.2'
 
 	REQUIRED_FIFE_MAJOR_VERSION = 0
-	REQUIRED_FIFE_MINOR_VERSION = 3
-	REQUIRED_FIFE_PATCH_VERSION = 4
+	REQUIRED_FIFE_MINOR_VERSION = 4
+	REQUIRED_FIFE_PATCH_VERSION = 0
 
 	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
@@ -540,7 +543,7 @@ class LAYERS:
 if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
 	# running GUI tests.
-	_user_dir = unicode(os.environ['UH_USER_DIR'], encoding='utf-8')
+	_user_dir = os.environ['UH_USER_DIR']
 elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
@@ -643,7 +646,7 @@ class _LanguageNameDict(dict):
 		return self.get(key, [key])[1]
 
 	def get_by_value(self, value, english=False):
-		for code, (own, eng) in self.iteritems():
+		for code, (own, eng) in self.items():
 			if english and eng == value:
 				return code
 			elif not english and own == value:
@@ -652,52 +655,52 @@ class _LanguageNameDict(dict):
 
 
 LANGUAGENAMES = _LanguageNameDict({
-	""      : (u'System default', u''),
-	"af"    : (u'Afrikaans', u'Afrikaans'),
-	"bg"    : (u'Български', u'Bulgarian'),
-	"ca"    : (u'Català', u'Catalan'),
-	'ca@valencia' : (u'Català de València', u'Catalan (Valencia)'),
-	"cs"    : (u'Čeština', u'Czech'),
-	"da"    : (u'Danske', u'Danish'),
-	"de"    : (u'Deutsch', u'German'),
-	"en"    : (u'English', u'English'),
-	"eo"    : (u'Esperanto', u'Esperanto'),
-	"es"    : (u'Español', u'Spanish'),
-	"et"    : (u'Eesti', u'Estonian'),
-	"el"    : (u'Ελληνικά', u'Greek'),
-	"fi"    : (u'Suomi', u'Finnish'),
-	"fr"    : (u'Français', u'French'),
-	"frp"   : (u'Francoprovençâl', u'Franco-Provencal'),
-	"ga"    : (u'Gaeilge', u'Irish'),
-	"gl"    : (u'Galego', u'Galician'),
-	"hi"    : (u'मानक हिन्दी', u'Hindi'),
-	"hr"    : (u'Hrvatski', u'Croatian'),
-	"hu"    : (u'Magyar', u'Hungarian'),
-	"id"    : (u'Bahasa Indonesia', u'Indonesian'),
-	"it"    : (u'Italiano', u'Italian'),
-	"ja"    : (u'日本語', u'Japanese'),
-	"ko"    : (u'한국말/조선말', u'Korean'),
-	"lt"    : (u'Lietuvių', u'Lithuanian'),
-	"lv"    : (u'Latviešu', u'Latvian'),
-	"ml"    : (u'മലയാളം', u'Malayalam'),
-	"nb"    : (u'Bokmål', u'Norwegian'),
-	"nl"    : (u'Nederlands', u'Dutch'),
-	"pl"    : (u'Polski', u'Polish'),
-	"pt_BR" : (u'Português Br.', u'Brazilian Portuguese'),
-	"pt"    : (u'Português', u'Portuguese'),
-	"ro"    : (u'Română', u'Romanian'),
-	"ru"    : (u'Русский', u'Russian'),
-	"sk"    : (u'Slovenský', u'Slovak'),
-	"sl"    : (u'Slovenski', u'Slovenian'),
-	"sr"    : (u'Cрпски', u'Serbian'),
-	"sv"    : (u'Svenska', u'Swedish'),
-	"th"    : (u'ภาษาไทย', u'Thai'),
-	"tr"    : (u'Türkçe', u'Turkish'),
-	"uk"    : (u'Українська', u'Ukrainian'),
-	"vi"    : (u'Tiếng Việt', u'Vietnamese'),
-	"zh_CN" : (u'简化字', u'Simplified Chinese'),
-	"zh_TW" : (u'繁體字', u'Traditional Chinese'),
-	"zu"    : (u'IsiZulu', u'Zulu'),
+	""      : ('System default', ''),
+	"af"    : ('Afrikaans', 'Afrikaans'),
+	"bg"    : ('Български', 'Bulgarian'),
+	"ca"    : ('Català', 'Catalan'),
+	'ca@valencia' : ('Català de València', 'Catalan (Valencia)'),
+	"cs"    : ('Čeština', 'Czech'),
+	"da"    : ('Danske', 'Danish'),
+	"de"    : ('Deutsch', 'German'),
+	"en"    : ('English', 'English'),
+	"eo"    : ('Esperanto', 'Esperanto'),
+	"es"    : ('Español', 'Spanish'),
+	"et"    : ('Eesti', 'Estonian'),
+	"el"    : ('Ελληνικά', 'Greek'),
+	"fi"    : ('Suomi', 'Finnish'),
+	"fr"    : ('Français', 'French'),
+	"frp"   : ('Francoprovençâl', 'Franco-Provencal'),
+	"ga"    : ('Gaeilge', 'Irish'),
+	"gl"    : ('Galego', 'Galician'),
+	"hi"    : ('मानक हिन्दी', 'Hindi'),
+	"hr"    : ('Hrvatski', 'Croatian'),
+	"hu"    : ('Magyar', 'Hungarian'),
+	"id"    : ('Bahasa Indonesia', 'Indonesian'),
+	"it"    : ('Italiano', 'Italian'),
+	"ja"    : ('日本語', 'Japanese'),
+	"ko"    : ('한국말/조선말', 'Korean'),
+	"lt"    : ('Lietuvių', 'Lithuanian'),
+	"lv"    : ('Latviešu', 'Latvian'),
+	"ml"    : ('മലയാളം', 'Malayalam'),
+	"nb"    : ('Bokmål', 'Norwegian'),
+	"nl"    : ('Nederlands', 'Dutch'),
+	"pl"    : ('Polski', 'Polish'),
+	"pt_BR" : ('Português Br.', 'Brazilian Portuguese'),
+	"pt"    : ('Português', 'Portuguese'),
+	"ro"    : ('Română', 'Romanian'),
+	"ru"    : ('Русский', 'Russian'),
+	"sk"    : ('Slovenský', 'Slovak'),
+	"sl"    : ('Slovenski', 'Slovenian'),
+	"sr"    : ('Cрпски', 'Serbian'),
+	"sv"    : ('Svenska', 'Swedish'),
+	"th"    : ('ภาษาไทย', 'Thai'),
+	"tr"    : ('Türkçe', 'Turkish'),
+	"uk"    : ('Українська', 'Ukrainian'),
+	"vi"    : ('Tiếng Việt', 'Vietnamese'),
+	"zh_CN" : ('简化字', 'Simplified Chinese'),
+	"zh_TW" : ('繁體字', 'Traditional Chinese'),
+	"zu"    : ('IsiZulu', 'Zulu'),
 })
 
 FONTDEFS = {

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.goal.productionchaingoal import ProductionChainGoal
 from horizons.constants import RES
-from horizons.util.python import decorators
 
 
 class FeederChainGoal(ProductionChainGoal):
@@ -107,11 +106,3 @@ class FeederSaltGoal(FeederChainGoal):
 
 	def get_personality_name(self):
 		return 'FeederSaltGoal'
-
-decorators.bind_all(FeederChainGoal)
-decorators.bind_all(FeederFoodGoal)
-decorators.bind_all(FeederTextileGoal)
-decorators.bind_all(FeederLiquorGoal)
-decorators.bind_all(FeederTobaccoProductsGoal)
-decorators.bind_all(FeederMedicalProductsGoal)
-decorators.bind_all(FeederSaltGoal)

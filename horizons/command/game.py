@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -37,7 +37,7 @@ class SaveCommand(Command):
 		except RuntimeError as e:
 			headline = T("Invalid filename")
 			msg = T("Received an invalid filename for a save command.")
-			session.ingame_gui.open_error_popup(headline, msg, unicode(e))
+			session.ingame_gui.open_error_popup(headline, msg, str(e))
 			return
 
 		self.log.debug("SaveCommand: save to %s", path)

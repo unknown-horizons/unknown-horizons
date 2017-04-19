@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -65,7 +65,7 @@ class TradeTab(TabInterface):
 
 	def init_widget(self):
 		events = {}
-		for k, v in self.exchange_size_buttons.iteritems():
+		for k, v in self.exchange_size_buttons.items():
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.partner = None

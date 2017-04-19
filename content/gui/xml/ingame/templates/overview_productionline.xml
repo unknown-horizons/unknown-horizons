@@ -7,24 +7,25 @@
 	are added. This happens in UH code. The height attribute specified here is used as base value.
 	If there are n res in one column, the container will have the size n * height.
 -->
-<AutoResizeContainer position="25,110" name="production_line_container">
-	<Container name="centered_production_icons" size="200,44">
+<ABox position="25,110" name="production_line_container">
+
+	<Container name="centered_production_icons" fixed_size="200,60">
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton path="icons/templates/production/toggle_active"
-			position="80,0" name="toggle_active_active" helptext="Pause production" />
+			position="80,-2" name="toggle_active_active" helptext="Pause production" />
 
 		<ImageButton path="icons/templates/production/toggle_inactive"
-			position="80,0" name="toggle_active_inactive" helptext="Start production" />
+			position="80,-2" name="toggle_active_inactive" helptext="Start production" />
 	</Container>
 
-	<AutoResizeContainer position="1,0" name="input_container">
+	<ABox position="1,0" name="input_container">
 		<VBox name="input_res" position="1,0" />
-		<VBox name="input_box" position="60,17" />
-	</AutoResizeContainer>
+		<VBox name="input_box" position="60,15" />
+	</ABox>
 
-	<AutoResizeContainer position="140,0" name="output_container">
+	<ABox position="140,0" name="output_container">
 		<VBox name="output_res" position="20,0" />
-		<VBox name="output_box" position="0,17" />
-	</AutoResizeContainer>
+		<VBox name="output_box" position="0,15" />
+	</ABox>
 
-</AutoResizeContainer>
+</ABox>

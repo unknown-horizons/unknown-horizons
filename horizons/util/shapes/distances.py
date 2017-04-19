@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
+
 
 
 # Point
@@ -27,7 +27,8 @@ from __future__ import print_function
 def distance_point_point(p1, p2):
 	return ((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2) ** 0.5
 
-def distance_point_tuple(point, (x, y)):
+def distance_point_tuple(point, coord_tuple):
+	x, y = coord_tuple
 	return ((point.x - x) ** 2 + (point.y - y) ** 2) ** 0.5
 
 def distance_point_circle(point, circle):
@@ -52,7 +53,8 @@ def distance_circle_circle(c1, c2):
 	dist = c1.distance(c2.center) - c1.radius - c2.radius
 	return dist if dist >= 0 else 0
 
-def distance_circle_tuple(circle, (x, y)):
+def distance_circle_tuple(circle, coord_tuple):
+	x, y = coord_tuple
 	dist = ((circle.center.x - x) ** 2 + (circle.center.y - y) ** 2) ** 0.5 - circle.radius
 	return dist if dist >= 0 else 0
 
@@ -98,7 +100,8 @@ def distance_rect_rect_sq(r1, r2):
 		dy = t
 	return dx * dx + dy * dy
 
-def distance_rect_tuple(rect, (x, y)):
+def distance_rect_tuple(rect, coord_tuple):
+	x, y = coord_tuple
 	dx = 0
 	t = rect.left - x
 	if t > dx:
@@ -130,7 +133,8 @@ def distance_annulus_annulus(a1, a2):
 	dist = a1.distance(a2.center) - a1.max_radius - a2.max_radius
 	return dist if dist >= 0 else 0
 
-def distance_annulus_tuple(annulus, (x, y)):
+def distance_annulus_tuple(annulus, coord_tuple):
+	(x, y) = coord_tuple
 	dist = ((annulus.center.x - x) ** 2 + (annulus.center.y - y) ** 2) ** 0.5
 	if dist < annulus.min_radius:
 		return annulus.min_radius - dist
@@ -145,6 +149,6 @@ if __name__ == '__main__':
 	from . import distances
 	shapes = ('rect', 'point', 'tuple', 'circle', 'annulus')
 	for s1, s2 in itertools.product(shapes, shapes):
-		if not (hasattr(distances, 'distance_%s_%s' % (s1, s2)) or
-		        hasattr(distances, 'distance_%s_%s' % (s2, s1))):
+		if not (hasattr(distances, 'distance_{}_{}'.format(s1, s2)) or
+		        hasattr(distances, 'distance_{}_{}'.format(s2, s1))):
 			print('missing distance between', s1, s2)

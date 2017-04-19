@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 
 
 class AbstractFishDeposit(AbstractBuilding):
@@ -43,5 +42,3 @@ class AbstractFishDeposit(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.FISH_DEPOSIT] = cls
 
 AbstractFishDeposit.register_buildings()
-
-decorators.bind_all(AbstractFishDeposit)
