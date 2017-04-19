@@ -193,7 +193,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			button.name = "resource_%d" % res_id
 		else:
 			amount = inventory[res_id]
-			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
+			filled = int(inventory[res_id] / inventory.get_limit(res_id) * 100)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
 						                                amount=amount, filled=filled, uncached=True,
 						                                use_inactive_icon=False, showprice=True)
