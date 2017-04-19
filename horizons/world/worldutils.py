@@ -299,12 +299,12 @@ def check_tile_for_tree(world, position, tile):
 	@param tile: tile object
 	"""
 
-	## Make sure the given tile is a default ground tile
+	# Make sure the given tile is a default ground tile
 	if tile.id is not GROUND.DEFAULT_LAND[0]:
 		return False
 
-	## In case the directly neighboring tiles are not default land,
-	## we don't want trees to be built.
+	# In case the directly neighboring tiles are not default land,
+	# we don't want trees to be built.
 	radius = 1
 	neighbor_tiles = world.get_tiles_in_radius(position, radius)
 	for neighbor_tile in neighbor_tiles:
