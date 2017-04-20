@@ -22,7 +22,6 @@
 import logging
 import random
 import weakref
-
 from typing import TYPE_CHECKING
 
 from fife import fife

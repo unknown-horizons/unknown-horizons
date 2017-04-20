@@ -20,7 +20,6 @@
 # ###################################################
 
 import copy
-
 from typing import Tuple
 
 from horizons.command.building import Build

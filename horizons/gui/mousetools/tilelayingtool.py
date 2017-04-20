@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Tuple
+
 from fife import fife
 
 import horizons.globals
 from horizons.constants import GROUND
-from typing import Tuple
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.shapes import Circle, Point
 

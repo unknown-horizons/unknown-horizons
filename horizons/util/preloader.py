@@ -21,12 +21,11 @@
 
 import logging
 import threading
-from _thread import error as ThreadError  # raised by threading.Lock.release
 
+from _thread import error as ThreadError  # raised by threading.Lock.release
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
-
 
 log = logging.getLogger("preload")
 

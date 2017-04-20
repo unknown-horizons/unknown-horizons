@@ -30,9 +30,9 @@ import math
 import multiprocessing
 import os
 import os.path
+import pickle
 import sys
 import traceback
-import pickle
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
 app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python3.4')

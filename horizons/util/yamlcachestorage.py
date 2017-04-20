@@ -23,6 +23,7 @@ import logging
 import os.path
 import pickle
 
+
 class YamlCacheStorage(object):
 	"""
 	Store the YamlCache data in a cache.

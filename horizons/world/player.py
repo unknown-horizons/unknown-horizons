@@ -20,7 +20,6 @@
 # ###################################################
 
 import collections
-
 from typing import Any, Sequence, Union
 
 import horizons.main

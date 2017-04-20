@@ -22,10 +22,9 @@
 import logging
 import os
 import threading
+from typing import Optional
 
 import yaml
-
-from typing import Optional
 
 from horizons.constants import BUILDINGS, PATHS, RES, TIER, UNITS
 from horizons.util.yamlcachestorage import YamlCacheStorage

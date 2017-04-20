@@ -22,7 +22,6 @@
 import collections
 import heapq
 
-
 # the values are based on the configurations of the first two of the three sets of relative coordinates (previous, current, next)
 COUNTERCLOCKWISE_TURNS = [((0, 0), (0, 1)), ((0, 1), (1, 1)), ((1, 0), (0, 0)), ((1, 1), (1, 0))]
 

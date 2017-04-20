@@ -23,6 +23,7 @@ import logging
 from collections import defaultdict
 
 from horizons.component.storagecomponent import StorageComponent
+
 from .mission.specialdomestictrade import SpecialDomesticTrade
 
 

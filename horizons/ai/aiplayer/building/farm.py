@@ -20,7 +20,6 @@
 # ###################################################
 
 from collections import defaultdict
-
 from typing import Tuple
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder

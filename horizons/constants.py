@@ -25,7 +25,6 @@ import os
 import os.path
 import platform
 import subprocess
-
 from typing import Optional
 
 from horizons.ext.enum import Enum

@@ -36,7 +36,6 @@ import os.path
 import sys
 import threading
 import traceback
-
 from typing import TYPE_CHECKING, Optional
 
 from fife import fife as fife_module

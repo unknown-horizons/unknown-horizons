@@ -21,7 +21,6 @@
 
 import logging
 import traceback
-
 from typing import Any, Optional
 
 from fife import fife

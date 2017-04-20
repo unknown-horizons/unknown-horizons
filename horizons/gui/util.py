@@ -21,6 +21,7 @@
 
 import logging
 import os
+from io import BytesIO
 
 from fife import fife
 from fife.extensions.pychan import loadXML
@@ -31,8 +32,6 @@ from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-
-from io import BytesIO
 
 
 @decorators.cachedfunction

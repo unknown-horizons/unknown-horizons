@@ -21,7 +21,9 @@
 
 import platform
 import socket
-import urllib.request, urllib.parse, urllib.error
+import urllib.error
+import urllib.parse
+import urllib.request
 import webbrowser
 
 from fife.extensions.pychan.widgets import Button
