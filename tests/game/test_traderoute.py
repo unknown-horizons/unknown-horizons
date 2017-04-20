@@ -24,8 +24,10 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 from tests.game import game_test
+from tests.utils import mark_expected_failure
 
 
+@mark_expected_failure
 @game_test(use_fixture='traderoute')
 def test_traderoute_basic(s):
 	"""
