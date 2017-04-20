@@ -20,37 +20,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
-import json
 import copy
-
+import json
+import logging
 from collections import deque
 from functools import partial
 
 import horizons.globals
-from horizons.world.island import Island
-from horizons.world.player import HumanPlayer
-from horizons.scheduler import Scheduler
-from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.color import Color
-from horizons.util.shapes import Circle, Point, Rect
-from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
-from horizons.ai.trader import Trader
-from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
-from horizons.entities import Entities
-from horizons.world.buildingowner import BuildingOwner
-from horizons.world.diplomacy import Diplomacy
-from horizons.world.units.weapon import Weapon
+from horizons.ai.pirate import Pirate
+from horizons.ai.trader import Trader
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.disaster.disastermanager import DisasterManager
-from horizons.world import worldutils
-from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.constants import BUILDINGS, GAME, GROUND, MAP, PATHS, RES, UNITS
+from horizons.entities import Entities
 from horizons.messaging import LoadingProgress
+from horizons.scheduler import Scheduler
+from horizons.util.buildingindexer import BuildingIndexer
+from horizons.util.color import Color
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.worldobject import WorldObject
+from horizons.world import worldutils
+from horizons.world.buildingowner import BuildingOwner
+from horizons.world.diplomacy import Diplomacy
+from horizons.world.disaster.disastermanager import DisasterManager
+from horizons.world.island import Island
+from horizons.world.player import HumanPlayer
+from horizons.world.units.weapon import Weapon
 
 
 class World(BuildingOwner, WorldObject):

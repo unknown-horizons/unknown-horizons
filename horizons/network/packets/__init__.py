@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import pickle
 import inspect
+import pickle
 import sys
-
 from io import BytesIO
 from typing import Dict, Set
 
@@ -170,5 +169,5 @@ def unserialize(data, validate=False, protocol=0):
 
 #-------------------------------------------------------------------------------
 
-import horizons.network.packets.server
-import horizons.network.packets.client
+import horizons.network.packets.server # isort:skip
+import horizons.network.packets.client # isort:skip

@@ -21,12 +21,12 @@
 
 """Modules for gui/ingamegui"""
 
-from .playerdataselection import PlayerDataSelection
 from .aidataselection import AIDataSelection
-from .singleplayermenu import SingleplayerMenu
-from .multiplayermenu import MultiplayerMenu
 from .help import HelpDialog
-from .select_savegame import SelectSavegameDialog
 from .loadingscreen import LoadingScreen
+from .multiplayermenu import MultiplayerMenu
 from .pausemenu import PauseMenu
+from .playerdataselection import PlayerDataSelection
+from .select_savegame import SelectSavegameDialog
 from .settings import SettingsDialog
+from .singleplayermenu import SingleplayerMenu

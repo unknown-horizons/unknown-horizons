@@ -21,13 +21,14 @@
 # ###################################################
 
 import logging
-
 from typing import Optional
-from horizons.world.settlement import Settlement
-from horizons.util.worldobject import WorldObject
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
+
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.worldobject import WorldObject
+from horizons.world.settlement import Settlement
+
 
 class Disaster(WorldObject):
 	"""Prototype class for disasters."""

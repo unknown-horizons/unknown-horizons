@@ -21,11 +21,12 @@
 
 import logging
 
-from horizons.world.units.unitexeptions import MoveNotPossible
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.constants import BUILDINGS
-from horizons.component.storagecomponent import StorageComponent
+from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class Mission(WorldObject):
 	"""

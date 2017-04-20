@@ -20,6 +20,6 @@
 # ###################################################
 
 
-from .conditions import CONDITIONS
 from .actions import ACTIONS
-from .scenarioeventhandler import ScenarioEventHandler, InvalidScenarioFileFormat
+from .conditions import CONDITIONS
+from .scenarioeventhandler import InvalidScenarioFileFormat, ScenarioEventHandler

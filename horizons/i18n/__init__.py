@@ -39,8 +39,7 @@ import platform
 from typing import Dict, Optional, Text
 
 import horizons.globals
-
-from horizons.constants import LANGUAGENAMES, FONTDEFS
+from horizons.constants import FONTDEFS, LANGUAGENAMES
 from horizons.ext.speaklater import make_lazy_gettext
 from horizons.messaging import LanguageChanged
 

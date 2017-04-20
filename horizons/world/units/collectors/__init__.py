@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from .buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
 from .animalcollector import AnimalCollector, HunterCollector
+from .buildingcollector import (
+	BuildingCollector, DisasterRecoveryCollector, FieldCollector, FisherShipCollector,
+	SettlerCollector, StorageCollector)
 from .collector import Collector, Job, JobList

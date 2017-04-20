@@ -28,6 +28,7 @@ import collections
 
 from .decorators import *
 
+
 class Const(object):
 	"""An immutable type. Think C++-like const"""
 	def __setattr__(self, name, value):

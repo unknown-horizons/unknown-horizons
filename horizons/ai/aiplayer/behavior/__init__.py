@@ -21,6 +21,7 @@
 
 
 import logging
+
 from horizons.ext.enum import Enum
 
 

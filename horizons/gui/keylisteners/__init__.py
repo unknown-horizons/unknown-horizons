@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from .keyconfig import KeyConfig
-
-from .mainlistener import MainListener
 from .ingamekeylistener import IngameKeyListener
+from .keyconfig import KeyConfig
+from .mainlistener import MainListener
