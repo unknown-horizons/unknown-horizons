@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict
+
 
 class DifficultySettings(object):
 	EASY_LEVEL = 0
@@ -44,7 +46,7 @@ class DifficultyClass(object):
 class DefaultSettings(DifficultyClass):
 	extra_happiness_constant = 0
 	happiness_multiplier = 1
-	tax_multiplier = 1
+	tax_multiplier = 1.0
 
 class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5

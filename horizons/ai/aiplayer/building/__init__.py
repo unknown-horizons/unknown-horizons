@@ -22,6 +22,7 @@
 import math
 import logging
 import operator
+from typing import Dict
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.entities import Entities

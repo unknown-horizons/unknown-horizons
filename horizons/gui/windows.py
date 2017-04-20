@@ -21,7 +21,7 @@
 
 import logging
 import traceback
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 
 from fife import fife
 from fife.extensions.pychan.widgets import Icon

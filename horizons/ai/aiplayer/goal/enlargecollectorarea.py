@@ -20,7 +20,7 @@
 # ###################################################
 
 from collections import defaultdict, deque
-from typing import Tuple
+from typing import List, Tuple
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE

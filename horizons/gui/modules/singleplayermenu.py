@@ -30,7 +30,7 @@ import re
 import subprocess
 import sys
 import tempfile
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 
 import horizons.globals
 import horizons.main

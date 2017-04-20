@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from typing import List
 
 from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
 

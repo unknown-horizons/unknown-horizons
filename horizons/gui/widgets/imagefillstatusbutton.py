@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict
+
 from fife.extensions.pychan.widgets import Container, Icon, Label
 
 from horizons.constants import TRADER

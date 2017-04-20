@@ -21,7 +21,7 @@
 
 import math
 from operator import itemgetter
-from typing import Tuple
+from typing import List, Tuple
 
 from fife import fife
 from fife.extensions.pychan.widgets import Container, HBox, Icon, Label

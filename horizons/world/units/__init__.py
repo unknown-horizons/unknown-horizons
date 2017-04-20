@@ -20,11 +20,11 @@
 # ###################################################
 
 import logging
+from typing import Dict, Sequence
 
 from fife import fife
 
 import horizons.globals
-from typing import Sequence
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType

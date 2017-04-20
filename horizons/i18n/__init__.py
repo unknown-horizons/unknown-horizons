@@ -30,14 +30,13 @@ We will need to make gettext recognize namespaces some time, but hardcoded
 'unknown-horizons' works for now since we currently only use one namespace.
 """
 
-import platform
 import gettext as gettext_module
 import glob
-import os
-import logging
 import locale
-
-from typing import Optional, Text
+import logging
+import os
+import platform
+from typing import Dict, Optional, Text
 
 import horizons.globals
 

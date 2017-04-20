@@ -20,7 +20,7 @@
 # ###################################################
 
 import collections
-from typing import Any, Sequence, Union
+from typing import Any, Dict, Sequence, Union
 
 import horizons.main
 from horizons.component.componentholder import ComponentHolder

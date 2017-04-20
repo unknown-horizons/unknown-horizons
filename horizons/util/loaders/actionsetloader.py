@@ -21,6 +21,7 @@
 
 import logging
 import os
+from typing import Dict
 
 import horizons.globals
 from horizons.constants import PATHS

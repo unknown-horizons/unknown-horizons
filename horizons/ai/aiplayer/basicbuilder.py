@@ -20,7 +20,7 @@
 # ###################################################
 
 import copy
-from typing import Tuple
+from typing import Dict, Tuple
 
 from horizons.command.building import Build
 from horizons.constants import BUILDINGS

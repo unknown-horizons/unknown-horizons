@@ -22,7 +22,7 @@
 import logging
 import random
 import weakref
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from fife import fife
 

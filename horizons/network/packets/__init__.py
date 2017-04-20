@@ -24,6 +24,7 @@ import inspect
 import sys
 
 from io import BytesIO
+from typing import Dict, Set
 
 from horizons.network import NetworkException, PacketTooLarge
 
