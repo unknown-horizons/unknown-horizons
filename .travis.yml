@@ -73,7 +73,7 @@ script:
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - cd /home/travis/build/unknown-horizons/unknown-horizons
   - isort -c -rc horizons tests run_*.py
-  - pycodestyle --count horizons/ tests/ development/
+  - pycodestyle
   - COVERAGE_FILE=.coverage.nongui python3 run_tests.py --verbose --nologcapture --with-coverage
 #  - RUNCOV=1 python3 run_tests.py -a gui tests/gui --verbose --nologcapture
 after_success:
