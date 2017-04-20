@@ -10,3 +10,4 @@ pycodestyle
 future
 coverage
 coveralls
+mypy
