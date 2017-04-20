@@ -61,7 +61,7 @@ install:
   - cd ..
   # install fifengine
   - git clone --quiet --depth 1 -b python3_futurize https://github.com/fifengine/fifengine.git
-  - mkdir build; cd build; cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 ../fifengine
+  - mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/usr/bin/python3 ../fifengine
   - ls -alh .
   - make -j3
   - sudo make install
