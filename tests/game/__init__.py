@@ -28,16 +28,15 @@ import mock
 
 import horizons.globals
 import horizons.main
-import horizons.world	# needs to be imported before session
+import horizons.world  # needs to be imported before session
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
+from horizons.util.color import Color
 from horizons.util.dbreader import DbReader
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.util.color import Color
-
 from tests import RANDOM_SEED
 from tests.dummy import Dummy
 from tests.utils import Timer
@@ -155,7 +154,7 @@ class SPTestSession(SPSession):
 
 
 # import helper functions here, so tests can import from tests.game directly
-from tests.game.utils import create_map, new_settlement, settle
+from tests.game.utils import create_map, new_settlement, settle # isort:skip
 
 
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):
