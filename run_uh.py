@@ -224,7 +224,7 @@ def setup_debugging(options):
 	if options.debug or options.debug_log_only:
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
-		if not module in logging.Logger.manager.loggerDict:
+		if module not in logging.Logger.manager.loggerDict:
 			print('No such logger: %s' % module)
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
