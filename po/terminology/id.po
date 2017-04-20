@@ -15,37 +15,37 @@ msgstr ""
 "X-POOTLE-MTIME: 1367757812.0\n"
 
 msgid "game"
-msgstr "Permainan"
+msgstr "permainan"
 
 msgid "building"
-msgstr "Bangunan"
+msgstr "bangunan"
 
 msgid "build"
-msgstr "Bangun"
+msgstr "bangun"
 
 msgid "player"
 msgstr ""
 
 msgid "settlement"
-msgstr "Pemukiman"
+msgstr "pemukiman"
 
 msgid "ship"
-msgstr "Kapal"
+msgstr "kapal"
 
 msgid "tent"
-msgstr "Tenda"
+msgstr "tenda"
 
 msgid "farm"
-msgstr "Lahan Pertanian"
+msgstr "lahan pertanian"
 
 msgid "map"
 msgstr "peta"
 
 msgid "resource"
-msgstr "Sumberdaya"
+msgstr "sumberdaya"
 
 msgid "warehouse"
-msgstr "Gudang"
+msgstr "gudang"
 
 msgid "inhabitants"
 msgstr "penduduk"
@@ -57,7 +57,7 @@ msgid "unknown"
 msgstr ""
 
 msgid "produce"
-msgstr "Menghasilkan"
+msgstr "menghasilkan"
 
 msgid "no"
 msgstr ""
@@ -90,7 +90,7 @@ msgid "running"
 msgstr "Berjalan"
 
 msgid "square"
-msgstr "Kotak"
+msgstr "kotak"
 
 msgid "lumberjack"
 msgstr "penebang pohon"
@@ -216,10 +216,10 @@ msgid "wool"
 msgstr "wol"
 
 msgid "boards"
-msgstr "Papan"
+msgstr "papan"
 
 msgid "built"
-msgstr "Bangun"
+msgstr "bangun"
 
 msgid "button"
 msgstr "tombol"
@@ -246,7 +246,7 @@ msgid "tree"
 msgstr "pohon"
 
 msgid "amount"
-msgstr "Jumlah"
+msgstr "jumlah"
 
 msgid "reach"
 msgstr ""
@@ -273,7 +273,7 @@ msgid "mode"
 msgstr "mode"
 
 msgid "password"
-msgstr "Kata sandi"
+msgstr "kata sandi"
 
 msgid "pasture"
 msgstr ""
@@ -303,13 +303,13 @@ msgid "enabled"
 msgstr "aktif"
 
 msgid "fetch"
-msgstr "Ambil"
+msgstr "ambil"
 
 msgid "help"
 msgstr "bantutolong"
 
 msgid "income"
-msgstr "Penghasilan"
+msgstr "penghasilan"
 
 msgid "join"
 msgstr "bergabung"
@@ -408,7 +408,7 @@ msgid "animals"
 msgstr "hewan"
 
 msgid "Captain's log"
-msgstr "catatan kapten"
+msgstr "Catatan kapten"
 
 msgid "cloth"
 msgstr ""
@@ -573,7 +573,7 @@ msgid "playing"
 msgstr "memainkan"
 
 msgid "produced"
-msgstr "Menghasilkan"
+msgstr "menghasilkan"
 
 msgid "report"
 msgstr ""
@@ -900,7 +900,7 @@ msgid "saved games"
 msgstr ""
 
 msgid "source"
-msgstr "Sumberdaya"
+msgstr "sumberdaya"
 
 msgid "trade partner"
 msgstr ""
