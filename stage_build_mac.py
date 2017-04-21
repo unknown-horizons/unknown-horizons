@@ -22,11 +22,12 @@
 # ###################################################
 
 from __future__ import print_function
+
+import getopt
+import glob
+import os
 import shutil
 import sys
-import getopt
-import os
-import glob
 
 verbose = False
 

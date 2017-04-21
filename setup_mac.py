@@ -28,6 +28,8 @@
 
 import os
 
+from setuptools import setup
+
 # Sets what directory to crawl for files to include
 # Relative to location of setup.py; leave off trailing slash
 includes_dir = 'content'
@@ -52,7 +54,6 @@ for root, dirs, filenames in os.walk(includes_dir):
     data_includes.append((final, files))
 
 
-from setuptools import setup
 
 packages = []
 packages.append('horizons')

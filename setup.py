@@ -21,14 +21,14 @@
 # ###################################################
 
 
-from distutils.core import setup
-from distutils.command.build import build
-from distutils.spawn import find_executable
 import distutils.cmd
-import os
 import glob
+import os
 import platform
-from shutil import rmtree, copytree
+from distutils.command.build import build
+from distutils.core import setup
+from distutils.spawn import find_executable
+from shutil import copytree, rmtree
 
 from horizons.constants import VERSION
 
