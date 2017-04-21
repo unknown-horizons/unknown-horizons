@@ -130,14 +130,12 @@ class _Tooltip(object):
 		replaced = self.icon_regexp.sub('', (str(self.helptext)))
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
-			hbox = HBox(position=(7, 5), padding=0)
+			hbox = HBox(position=(7, 5))
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
 				label = Label(text=amount+'  ')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16),
 				            scale=True)
-				# For compatibility with FIFE 0.3.5 and older, also set min/max.
-				icon.max_size = icon.min_size = (16, 16)
 				hbox.addChildren(icon, label)
 			hbox.adaptLayout()
 			# Now display the 16x16px "required resources" icons in the last line.
