@@ -208,7 +208,7 @@ class BUILDINGS:
 	HOP_FIELD        = 69
 
 	STONE_DEPOSIT    = 70
-	
+
 	BARRIER	         = 71
 
 	COTTON_FIELD     = 72
