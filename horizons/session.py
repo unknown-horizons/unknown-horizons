@@ -122,6 +122,18 @@ class Session(LivingObject):
 
 	def start(self):
 		"""Actually starts the game."""
+
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		def f():
+			for i in xrange(3000):
+				Scheduler().tick(i)
+		c = "f()"
+		profile.runctx(c, globals(), locals(), outfilename)
+		import sys; sys.exit()
+
 		self.timer.activate()
 		self.scenario_eventhandler.start()
 		self.reset_autosave()
