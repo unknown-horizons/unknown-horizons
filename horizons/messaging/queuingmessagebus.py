@@ -20,6 +20,7 @@
 # ###################################################
 
 from collections import defaultdict, deque
+from typing import DefaultDict
 
 from horizons.messaging.messagebus import MessageBus
 
@@ -32,7 +33,7 @@ class QueuingMessageBus(MessageBus):
 	def __init__(self):
 		MessageBus.__init__(self)
 		# Queue up messages if there is no registered subscriber
-		self.message_queue = defaultdict(deque)
+		self.message_queue = defaultdict(deque) # type: DefaultDict[str, deque]
 
 	def subscribe_globally(self, messagetype, callback):
 		MessageBus.subscribe_globally(self, messagetype, callback)

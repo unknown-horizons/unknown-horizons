@@ -20,6 +20,7 @@
 # ###################################################
 
 from collections import defaultdict
+from typing import Callable, DefaultDict, List
 
 
 class SimpleMessageBus(object):
@@ -35,7 +36,7 @@ class SimpleMessageBus(object):
 
 	def __init__(self, message_types):
 		self._message_types = message_types
-		self._callbacks = defaultdict(list)
+		self._callbacks = defaultdict(list) # type: DefaultDict[str, List[Callable]]
 
 	def subscribe(self, type, callback):
 		if type not in self._message_types:
