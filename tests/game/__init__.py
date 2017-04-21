@@ -71,11 +71,11 @@ def _dbreader_convert_dummy_objects():
 	def deco(func):
 		@wraps(func)
 		def wrapper(self, command, *args):
-			args = list(args)
-			for i in range(len(args)):
-				if args[i].__class__.__name__ == 'Dummy':
-					args[i] = 0
-			return func(self, command, *args)
+			mapped_args = [
+				arg if arg.__class__.__name__ != 'Dummy' else 0
+				for arg in args
+			]
+			return func(self, command, *mapped_args)
 		return wrapper
 
 	original = DbReader.__call__
@@ -275,7 +275,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 		return wrapped
 	return deco
 
-game_test.__test__ = False
+game_test.__test__ = False # type: ignore
 
 
 def set_trace():

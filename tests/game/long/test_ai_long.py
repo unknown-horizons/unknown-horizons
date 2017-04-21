@@ -40,4 +40,4 @@ def run_ai_long(seed):
 
 # this disables the test in general and only makes it being run when
 # called like this: run_tests.py -a long
-test_ai_long.long = True
+test_ai_long.long = True # type: ignore

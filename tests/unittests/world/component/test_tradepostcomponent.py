@@ -20,6 +20,7 @@
 # ###################################################
 
 
+from typing import Optional
 from unittest import TestCase
 
 from horizons.component.tradepostcomponent import TradePostComponent
@@ -40,6 +41,7 @@ class TestTradePostComponent(TestCase):
 		class Instance(object):
 			def __init__(self, comp):
 				self.comp = comp
+				self.owner = None # type: Optional[Instance]
 			def get_component(self, x):
 				class Comp(object):
 					inventory = self.comp

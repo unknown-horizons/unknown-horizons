@@ -105,10 +105,8 @@ class ReRunInfoPlugin(Plugin):
 		elif 'tests.game.long' in module:
 			output.append('-a long')
 
-		output = ' '.join(output)
-
 		ec, ev, tb = err
-		return (ec, self.addOutputToErr(ev, output), tb)
+		return (ec, self.addOutputToErr(ev, ' '.join(output)), tb)
 
 	def formatFailure(self, test, err):
 		return self.formatError(test, err)

@@ -20,6 +20,7 @@
 # ###################################################
 
 import unittest
+from typing import Optional, Set
 
 import mock
 
@@ -33,7 +34,7 @@ class Widget(object):
 	"""
 	def __init__(self, name, children=None):
 		self.name = name
-		self.parent = None
+		self.parent = None # type: Optional[Widget]
 		self.children = children or []
 		for c in self.children:
 			c.parent = self
@@ -50,7 +51,7 @@ class FindWidgetTest(unittest.TestCase):
 	Tests about finding widgets in pychan's internal lists.
 	"""
 	def setUp(self):
-		self.widgets = set()
+		self.widgets = set() # type: Set[Widget]
 
 		def w(name, children=None):
 			widget = Widget(name, children)

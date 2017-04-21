@@ -58,7 +58,7 @@ def expected_failure(func):
 			pass
 		else:
 			raise AssertionError('Expected failure')
-	wrapper.__original__ = func.__original__
+	setattr(wrapper, '__original__', func.__original__)
 	return wrapper
 
 

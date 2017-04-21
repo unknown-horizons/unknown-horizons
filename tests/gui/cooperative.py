@@ -23,6 +23,7 @@ from __future__ import print_function
 
 import sys
 from collections import deque
+from typing import Any, Callable, Dict, List, Tuple
 
 try:
 	import greenlet
@@ -31,7 +32,7 @@ except ImportError:
 	sys.exit(1)
 
 
-_scheduled = deque()
+_scheduled = deque() # type: deque[Tuple[Tasklet, Tuple[Any, ...], Dict[str, Any]]]
 _current = greenlet.getcurrent()
 
 
@@ -42,7 +43,7 @@ class Tasklet(greenlet.greenlet):
 	"""
 	def __init__(self, *args, **kwargs):
 		super(Tasklet, self).__init__(*args, **kwargs)
-		self.links = []
+		self.links = [] # type: List[Callable]
 
 	def link(self, func):
 		"""Call func once this greenlet finished execution."""
@@ -76,7 +77,7 @@ def schedule():
 	global _current
 
 	if not _current.dead:
-		_scheduled.append((_current, [], {}))
+		_scheduled.append((_current, tuple(), {}))
 	else:
 		[l(_current) for l in _current.links]
 
