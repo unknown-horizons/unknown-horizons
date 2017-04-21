@@ -123,7 +123,26 @@ def print_production_lines():
 def print_verbose_lines():
 	print('Data has been moved, this view is unavailable for now')
 	return
+    def _output_helper_prodlines(string, list):
+            if len(list) == 1:
+                    for res, amount in list:
+                            print('      ' + str(string) + ':\t%s %s(%s)' % (abs(amount), get_res_name(res), res))
+            elif len(list) > 1:
+                    print('      ' + str(string) + ': ')
+                    for res, amount in list:
+                            print('\t\t%s %s (%s)' % (abs(amount), get_res_name(res), res))
 
+    print('Production Lines:')
+    for prod_line in db("SELECT id, object_id, time, enabled_by_default FROM production_line \
+                         WHERE object_id != 3 ORDER BY object_id"):
+            # do not include tent production lines here
+            id = prod_line[0]
+            object = prod_line[1]
+            (consumption,production) = get_prod_line(id, list)
+
+            print('%2s: %s(%s) needs %s seconds to' % (id, get_obj_name(object), object, prod_line[2]))
+            _output_helper_prodlines('consume', consumption)
+            _output_helper_prodlines('produce', production)
 
 def print_res():
 	print('Resources\n{:2s}: {:-15s} {:5s} {:10s} {19s}'
