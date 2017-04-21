@@ -60,7 +60,7 @@ db = horizons.main._create_main_db()
 from horizons.extscheduler import ExtScheduler
 from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
-from horizons.ext.dummy import Dummy
+from tests.dummy import Dummy
 ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subsequent calls
 Entities.load_buildings(db, load_now=True)
 Entities.load_units(load_now=True)
