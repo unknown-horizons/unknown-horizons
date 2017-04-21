@@ -102,7 +102,7 @@ tab5:
 -
   - _ Workshops
   - BUILDINGS.WEAPONSMITH
-  - BUILDINGS.CANNONFOUNDRY
+  - BUILDINGS.CANNON_FOUNDRY
 -
   - _ Fortifications
   - BUILDINGS.WOODEN_TOWER
@@ -116,7 +116,6 @@ tab5:
 #- headline: _ Aesthetics
 #-
 #  -
-
 
 meta:
   unlocking_strategy: single_per_tier
