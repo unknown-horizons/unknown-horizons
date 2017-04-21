@@ -74,7 +74,7 @@ def setup_paths():
 		language_path = PO_INPUT_PATH.format(scenario=scenario, language=language)
 
 	yaml_output = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario, language=language)
-	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '%s.mo' % scenario
+	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '{}.mo'.format(scenario)
 
 	# If path for compiled translations does not exist yet, create it
 	subprocess.call(['mkdir', '-p', MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language)])
@@ -90,8 +90,8 @@ def setup_gettext(scenario, language):
 		translation = gettext.translation(scenario, MO_OUTPUT, [language])
 	except IOError:
 		# IOError: [Errno 2] No translation file found for domain
-		print('No compiled translation for domain `%s` and language `%s` in `%s`. '
-		      'Exiting.' % (scenario, language, MO_OUTPUT))
+		print('No compiled translation for domain `{}` and language `{}` in `{}`. '
+		      'Exiting.'.format(scenario, language, MO_OUTPUT))
 		sys.exit(1)
 	else:
 		translation.install(unicode=True)
@@ -100,7 +100,7 @@ def setup_gettext(scenario, language):
 def compile_scenario_po(output_mo):
 	input_po = sys.argv[1]
 	if not os.path.exists(input_po):
-		print('Input file does not exist: %s' % input_po)
+		print('Input file does not exist: {}'.format(input_po))
 		sys.exit(1)
 	try:
 		stats = subprocess.check_output([
@@ -112,8 +112,8 @@ def compile_scenario_po(output_mo):
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
-		print('Error while compiling translation `%s`, probably malformed `.po`. '
-		      'Exiting.' % input_po)
+		print('Error while compiling translation `{}`, probably malformed `.po`. '
+		      'Exiting.'.format(input_po))
 		sys.exit(1)
 	else:
 		return stats
