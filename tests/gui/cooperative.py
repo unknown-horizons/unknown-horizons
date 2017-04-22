@@ -51,17 +51,15 @@ class Tasklet(greenlet.greenlet):
 
 	def join(self):
 		"""Blocks until this greenlet finished execution."""
-
-		# little hack because we don't have Python3's nonlocal
-		class Flag:
-			running = True
+		running = True
 
 		def stop(_):
-			Flag.running = False
+			nonlocal running
+			running = False
 
 		self.link(stop)
 
-		while Flag.running:
+		while running:
 			schedule()
 
 

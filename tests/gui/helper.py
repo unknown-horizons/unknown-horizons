@@ -496,12 +496,11 @@ class GuiHelper:
 		if not seconds:
 			cooperative.schedule()
 		else:
-			# little hack because we don't have Python3's nonlocal
-			class Flag:
-				running = True
+			running = True
 
 			def stop():
-				Flag.running = False
+				nonlocal running
+				running = False
 
 			# Scheduler only exists inside games, use ExtScheduler in the mainmenu
 			if Scheduler():
@@ -510,7 +509,7 @@ class GuiHelper:
 			else:
 				ExtScheduler().add_new_object(stop, None, run_in=seconds)
 
-			while Flag.running:
+			while running:
 				cooperative.schedule()
 
 	def disable_autoscroll(self):
