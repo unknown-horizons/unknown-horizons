@@ -48,7 +48,9 @@ class _Tooltip:
 		self.mapEvents({
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
-			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
+			# Below causes frequent Segmentation Faults due to too many
+			# self.position_tooltip() calls.
+			# self.name + '/mouseMoved/tooltip' : self.position_tooltip,
 
 			# TIP: the mousePressed event is especially useful when such as click
 			# will trigger this tooltip's parent widget to be hidden (or destroyed),
