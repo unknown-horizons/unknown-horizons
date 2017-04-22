@@ -25,6 +25,7 @@ but rather a generic enhancement of the programming language.
 """
 
 import collections
+from typing import Any, Set, Type
 
 from .decorators import *
 
@@ -50,7 +51,7 @@ def parse_port(port, allow_zero=True):
 
 def get_all_subclasses(cls):
 	"""Recursivly find all subclasses of a given class."""
-	result = set()
+	result = set() # type: Set[type]
 	for subclass in cls.__class__.__subclasses__(cls):
 		if subclass not in result:
 			result.add(subclass)

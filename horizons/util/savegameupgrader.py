@@ -27,6 +27,7 @@ import shutil
 import tempfile
 from collections import defaultdict
 from sqlite3 import OperationalError
+from typing import Any, DefaultDict, List, Optional, Tuple
 
 from yaml.parser import ParserError
 
@@ -54,7 +55,7 @@ class SavegameUpgrader(object):
 		super(SavegameUpgrader, self).__init__()
 		self.original_path = path
 		self.using_temp = False
-		self.final_path = None
+		self.final_path = None # type: Optional[str]
 
 	def _upgrade_to_rev49(self, db):
 		db('CREATE TABLE "resource_overview_bar" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL)')
@@ -355,7 +356,7 @@ class SavegameUpgrader(object):
 					db("UPDATE building SET location = ? WHERE rowid = ?", settlement_id, worldid)
 
 		# save the new settlement tiles data
-		ground_map = defaultdict(list)
+		ground_map = defaultdict(list) # type: DefaultDict[int, List[Tuple[Any, ...]]]
 		for (coords, settlement_id) in settlement_map.items():
 			ground_map[settlement_id].append(coords)
 

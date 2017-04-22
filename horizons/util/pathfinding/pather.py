@@ -21,6 +21,7 @@
 
 import logging
 import weakref
+from typing import List, Tuple
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
@@ -53,8 +54,8 @@ class AbstractPather(object):
 		self.destination_in_building = False
 		self.source_in_building = False
 
-		self.path = None
-		self.cur = None
+		self.path = None # type: List[Tuple[int, int]]
+		self.cur = None # type: int
 
 	@property
 	def unit(self):

@@ -26,17 +26,19 @@ Warning:
 	Please make sure that this is really the best solution before using this code!
 '''
 
+from typing import Any, Optional
+
 
 class Singleton(type):
 	"""Traditional Singleton design pattern.
 
 	USAGE:
-	class MyClass(object):
+	class MyClass:
 		__metaclass__ = Singleton
 	"""
 	def __init__(self, name, bases, dict):
 		super(Singleton, self).__init__(name, bases, dict)
-		self.instance = None
+		self.instance = None # type: Optional[Any]
 
 	def __call__(self, *args, **kwargs):
 		if self.instance is None:

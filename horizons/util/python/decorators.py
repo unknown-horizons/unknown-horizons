@@ -23,6 +23,10 @@
 
 import functools
 import time
+from typing import Any, Dict, Tuple
+
+FuncArgs = Tuple[Any, ...]
+FuncKwargsTuple = Tuple[Tuple[str, Any]]
 
 
 class cachedfunction(object):
@@ -32,7 +36,7 @@ class cachedfunction(object):
 	"""
 	def __init__(self, func):
 		self.func = func
-		self.cache = {}
+		self.cache = {} # type: Dict[Tuple[FuncArgs, FuncKwargsTuple], Any]
 
 	def __call__(self, *args, **kwargs):
 		# dicts are not hashable, convert kwargs to a tuple
@@ -50,7 +54,7 @@ class cachedfunction(object):
 class cachedmethod(object):
 	"""Same as cachedfunction, but works also for methods. Results are saved per instance"""
 	def __init__(self, func):
-		self.cache = {}
+		self.cache = {} # type: Dict[Tuple[Any, FuncArgs, FuncKwargsTuple], Any]
 		self.func = func
 
 	def __get__(self, instance, cls=None):
@@ -81,7 +85,7 @@ def temporary_cachedmethod(timeout):
 		def __init__(self, func, timeout):
 			super(_temporary_cachedmethod, self).__init__(func)
 			self.timeout = timeout
-			self.cache_dates = {}
+			self.cache_dates = {} # type: Dict[Tuple[Any, FuncArgs, FuncKwargsTuple], Any]
 
 		def __call__(self, *args, **kwargs):
 			key = self.instance, args, tuple(sorted(kwargs.items()))
