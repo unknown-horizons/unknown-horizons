@@ -20,9 +20,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest import mock
+
 import horizons.globals
 from horizons.constants import EDITOR, GROUND, VIEW
-from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
@@ -54,10 +55,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.show_menu = Dummy
-		self.hide_menu = Dummy
-		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy()
+		self.show_menu = mock.Mock()
+		self.hide_menu = mock.Mock()
+		# this is necessary for message_widget to work
+		self.logbook = mock.Mock()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
