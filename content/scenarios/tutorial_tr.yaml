@@ -194,8 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+  - İlk önce kendi ambarınıza tıklayın ve üçüncü sekmeye tıklayın.
+  - Sonra 3 slottan birine tıklayın, sonra satın almak veya satmak istediğiniz ürünü seçin.
   - Özel bir mal türü seçtikten sonra, alanın altındaki yeşil çubuk (görünüyorsa) bu malın stoğunuzda ne kadar olduğunu gösterecek.
   - Her alanın sağındaki kaydırıcıyı sürüklemek 'Alma' ve 'Satma'da farklı anlamlara gelen 'hedef değere' karar verir.
   - Satın alırken, deponuzdaki 'hedef değer'i tutturacak kadar alacaksınız.
@@ -657,4 +657,4 @@ metadata:
   locale: tr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 118 translated messages, 68 fuzzy translations, 2 untranslated messages.
+  translation_status: 120 translated messages, 68 fuzzy translations.
