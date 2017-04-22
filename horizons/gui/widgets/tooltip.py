@@ -30,6 +30,8 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.icongroup import TooltipBG
 
+import time
+
 
 class _Tooltip:
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -63,6 +65,7 @@ class _Tooltip:
 			# self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
+		self.cooldown = time.time()		# initial timer value
 
 	def __init_gui(self):
 		self.gui = ABox()
@@ -71,11 +74,12 @@ class _Tooltip:
 		self.gui.addChildren(self.bg, self.label)
 
 	def position_tooltip(self, event):
-		if not self.helptext:
-			return
 		"""Calculates a nice position for the tooltip.
 		@param event: mouse event from fife or tuple screenpoint
 		"""
+		if not self.helptext:
+			return
+
 		# TODO: think about nicer way of handling the polymorphism here,
 		# e.g. a position_tooltip_event and a position_tooltip_tuple
 		where = event # fife forces this to be called event, but here it can also be a tuple
@@ -121,6 +125,12 @@ class _Tooltip:
 			return
 		if self.gui is None:
 			self.__init_gui()
+
+		# Compare and reset timer value if difference from current time shorter than X sec.
+		if (time.time() - self.cooldown) < 1:
+			return
+		else:
+			self.cooldown = time.time()
 
 		#HACK: support icons in build menu
 		# Code below exists for the sole purpose of build menu tooltips showing
