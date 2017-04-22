@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-03-18 15:01+0000\n"
+"PO-Revision-Date: 2017-04-22 10:58+0000\n"
 "Last-Translator: monolifed <monolifed@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.12\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -236,16 +236,12 @@ msgid "Running costs"
 msgstr "İşletme giderleri"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Bir tekne inşa etmek için bir sınıf sekmesine tıklayıp istediğiniz gemiyi "
-"seçin ve siparişi doğrulayın."
+"Bir yer birimi inşa etmek için bir sınıf sekmesine tıklayıp istediğiniz yer "
+"birimini seçin ve siparişi doğrulayın."
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -314,10 +310,8 @@ msgstr "Siparişi doğrula"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Seçili oyuna katıl"
+msgstr "(seçim sekmesinde olduğu gibi)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -357,26 +351,22 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Şalopa"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "Üç direkli en yaygın sınıflandırılan tek top güverteli savaş gemisi."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Güncellemeye için ver"
+msgstr "Yükseltmeleri Satın Al"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
-#, fuzzy
-#| msgid "cannon"
 msgid "Cannons"
-msgstr "top"
+msgstr "Toplar"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
@@ -406,17 +396,13 @@ msgid "+ 1457"
 msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Geri adım atma"
+msgstr "Yer birimi inşa et:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Bu gemiyi inşa et!"
+msgstr "Bu yer birimini inşa et!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -427,10 +413,8 @@ msgstr ""
 "seçin ve siparişi doğrulayın."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "Bu gemiyi inşa et!"
+msgstr "Gemi inşa et:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -499,7 +483,7 @@ msgstr "Vergi oranı"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "Geliştirme izinleri:"
+msgstr "Yükseltme izinleri:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
@@ -549,10 +533,8 @@ msgid "residents"
 msgstr "sakinler"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Provides security for your settlement."
-msgstr "Köyünüzü korur."
+msgstr "Köyünüz için koruma sağlar."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -1800,18 +1782,17 @@ msgstr "Depo kapasitesini arttırmak için ambar çadırları kurunuz."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
-"Tüm evlerin pazar yerinin yayılma alanı içerisinde olduğundan emin olunuz."
+msgstr "Tüm evlerin pazar yerinin alanı içerisinde olduğundan emin olun."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Press 'T' to make trees transparent."
 msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız."
 
 #: horizons/gui/modules/loadingscreen.py:81
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "Depo kapasitesini arttırmak için ambar çadırları kurunuz."
+msgstr ""
+"Yerleşim alanınızı genişletmek için depolama çadırları ve gözcü kuleleri "
+"inşa edit."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
@@ -1820,28 +1801,38 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"İbadet çadırı alanının tüm çadırlarınızı kapsayıp kapsamadığını kolayca "
+"görmek için, yapı menüsünden onu seçin ve mevcut ibadet çadırının üzerine "
+"götürün. Kapsanmayanlar sarı renkte gösterilir. Onların çevresinde yeni bir "
+"ibadet çadırı inşa edebilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Yeni bir oyun başlatırken 'AI players'ı artırarak ek bilgisayar oyuncuları "
+"ile tekli oyunu daha eğlenceli hale getirin."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"İlk adımlar, AI oyuncularının yerleşimlerini nasıl kurduklarına bakarak daha "
+"kolaydır."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Sadece komik alıntılar mı istiyorsunuz? Oyun sayfasındaki ayarlar menüsünden "
+"burada gösterilen alıntı türünü değiştirin."
 
 #: horizons/gui/modules/loadingscreen.py:86
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Bir pazar yeri binalarınızı bir yol gibi birbirine bağlar."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2203,12 +2194,12 @@ msgid "Restart required"
 msgstr "Yeniden başlatma gerekiyor"
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Değişiklerinizin etkin olması için oyunu yeniden başlatınız."
+msgstr ""
+"Değişiklerinizin etkin olması için oyunu yeniden başlatınız. Unknown "
+"Horizons'ı şimdi yeniden başlatmak ister misiniz?"
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
@@ -2340,7 +2331,7 @@ msgstr "tüm binaları yık"
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr "Bu yerleşim aralığının dışında kalan tüm binalar yok olacak."
+msgstr "Bu yerleşim alanının dışında kalan tüm binalar yok olacak."
 
 #: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
@@ -2350,16 +2341,12 @@ msgstr[0] "%s ek binayı yık.."
 msgstr[1] "%s ek binaları yık"
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Depo genel gönünümü"
+msgstr "Kışla genel gönünümü"
 
 #: horizons/gui/tabs/barrackstabs.py:116
-#, fuzzy
-#| msgid "sword"
 msgid "Swordman"
-msgstr "kılıç"
+msgstr "Kılıç Eri"
 
 #: horizons/gui/tabs/barriertab.py:34 horizons/gui/tabs/buildingtabs.py:42
 #: horizons/gui/tabs/overviewtab.py:31
@@ -2452,11 +2439,11 @@ msgstr "Bu şimdilik en yüksek oynanabilecek aşama!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr "Güncellemeleri kapat"
+msgstr "Yükseltmelere izin verme"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr "Güncellemeye için ver"
+msgstr "Yükseltmelere izin ver"
 
 #: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
@@ -2470,7 +2457,7 @@ msgstr "Üretim genel görünümü"
 #: horizons/gui/tabs/productiontabs.py:301
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr "Dolgu {how_many} ağaçların aralığı"
+msgstr "Alanı {how_many} ağaçla doldur"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
@@ -2685,27 +2672,23 @@ msgstr "Kara savaşı için birimler yetiştirir."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Ahşam Kule"
+msgstr "Ahşap Engel"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "Kil duvar"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Eğitim verir."
+msgstr "Koruma sağlar."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
 msgid "Blender"
-msgstr "Karıştırıcı"
+msgstr "Harmancı"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:81
@@ -2725,19 +2708,17 @@ msgstr "Sallar ve küçük gemiler inşa eder. Sahile inşa edilir."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Brewery"
-msgstr ""
+msgstr "Bira Fabrikası"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Un tüketir. Yemek üretir."
+msgstr "Şerbetçiotu tüketir. Bira üretir."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
 msgid "Brickyard"
-msgstr "Tuğla fabrikası"
+msgstr "Tuğla Fabrikası"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:102
@@ -2757,19 +2738,17 @@ msgstr "Domuz ya da sığırlardan yemek üretir."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:114
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Top Dökümhanesi"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Demir silah üreten."
+msgstr "Top üretir."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:121
 msgid "Charcoal Burning"
-msgstr "Odun Kömürü Torakçısı"
+msgstr "Odun Kömürcü"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:123
@@ -2779,7 +2758,7 @@ msgstr "Odunları yakarak, odun kömürü üretir."
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:128
 msgid "Clay Deposit"
-msgstr "Kill Yatağı"
+msgstr "Kil Yatağı"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:133
@@ -2794,7 +2773,7 @@ msgstr "Kil yataklarından kil getirir."
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:140
 msgid "Distillery"
-msgstr "İçki fabrikası"
+msgstr "İçki Fabrikası"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -2824,13 +2803,13 @@ msgstr "Ekinleri büyütür ve çiftlik hayvanı yetiştirir."
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:161
 msgid "Alvearies"
-msgstr "Arı kovanları"
+msgstr "Arı Kovanları"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:163
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
-"Arıları korur. Şekerlermeler için bak petekleri üretir. Çiftlik gerektirir."
+"Arıları korur. Tatlıcılık için bal petekleri üretir. Çiftlik gerektirir."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:168
@@ -2845,18 +2824,17 @@ msgstr "Büyükbaş hayvan yetiştirir. Çiftlik gerektirir."
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:175
 msgid "Cocoa Field"
-msgstr "Kakao Ekim Alanı"
+msgstr "Kakao Alanı"
 
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:177
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
-"Şekerleme yapımında kullanılan kakao tanesi üretir. Çiftlik gerektirir."
+msgstr "Tatlıcılıkta kullanılan kakao tanelerini üretir. Çiftlik gerektirir."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:182
 msgid "Corn Field"
-msgstr "Mısır Ekim Alanı"
+msgstr "Mısır Tarlası"
 
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:184
@@ -2866,7 +2844,7 @@ msgstr "Mısır sağlar. Çiftlik gerektirir."
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:189
 msgid "Herbary"
-msgstr "Şifalı bitkici"
+msgstr "Aktar"
 
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:191
@@ -2875,17 +2853,13 @@ msgstr "Şifalı bitki üretir. Çiftlik gerektirir."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Mısır Ekim Alanı"
+msgstr "Şerbetçiotu Tarlası"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Mısır sağlar. Çiftlik gerektirir."
+msgstr "Şerbetçiotu sağlar. Çiftlik gerektirir."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -2910,7 +2884,7 @@ msgstr "Domuz yetiştirmek için. Çiftlik gerektirir."
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:217
 msgid "Potato Field"
-msgstr "Patates Ekim Alanı"
+msgstr "Patates Tarlası"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:219
@@ -2920,7 +2894,7 @@ msgstr "Yemek sağlar. Çiftlik gerektirir."
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:224
 msgid "Spice Field"
-msgstr "Bahahat Ekim Alanı"
+msgstr "Bahahat Tarlası"
 
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:226
@@ -2930,7 +2904,7 @@ msgstr "Baharat yetiştirir. Çiftlik gerektirir."
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:231
 msgid "Sugar Field"
-msgstr "Şeker Ekim Alanı"
+msgstr "Şeker Tarlası"
 
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:233
@@ -2940,7 +2914,7 @@ msgstr "İçki üretiminde kullanılır. Çiftlik gerektirir."
 #. name of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:238
 msgid "Tobacco Field"
-msgstr "Tütün Ekim Alanı"
+msgstr "Tütün Tarlası"
 
 #. tooltip_text of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:240
@@ -2950,12 +2924,13 @@ msgstr "Tütün üretir. Çiftlik gerektirir."
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:245
 msgid "Vineyard"
-msgstr "Üzüm bağı"
+msgstr "Üzüm Bağı"
 
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:247
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr "Şarap ve pastahanecilik için üzün üretir. Çiftlik gerektirir."
+msgstr ""
+"Şarapta ve tatlıcılıkta kullanılmak için üzüm üretir. Çiftlik gerektirir."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:252
@@ -2995,12 +2970,12 @@ msgstr "Yabani orman hayvanlarını avlar, yemek üretir."
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:278
 msgid "Lookout"
-msgstr "Gözetleme Kulesi"
+msgstr "Gözcü Kulesi"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:280
 msgid "Expands settlement range."
-msgstr "Yerleşim aralığını genişletir."
+msgstr "Yerleşim alanını genişletir."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:285
@@ -3045,17 +3020,17 @@ msgstr "Dağ"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:313
 msgid "Pastry Shop"
-msgstr "Hamur Dükkanı"
+msgstr "Pastane"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:315
 msgid "Produces all kinds of confectionery."
-msgstr "Her çeşit pasta türü üretir."
+msgstr "Her çeşit tatlı üretir."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:320
 msgid "Pavilion"
-msgstr "kilise"
+msgstr "İbadet Çadırı"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:322
@@ -3065,7 +3040,7 @@ msgstr "Denizcilerin dini ihtiyaçlarını karşılar."
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:327
 msgid "Ruined Tent"
-msgstr "Delinmiş Çadır"
+msgstr "Dökük Çadır"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:332
@@ -3099,10 +3074,8 @@ msgstr "Her türlü madeni rafine eder."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "taş yatağı"
+msgstr "Taş Yatağı"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:358
@@ -3137,13 +3110,13 @@ msgstr "Ambar Çadırı"
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:376
 msgid "Storage Hut"
-msgstr "Ambar Kulübesi"
+msgstr "Ambar Çadırı"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:378
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr ""
-"Depo kapasitesini arttırır, yerleşim aralığı genişletir ve toplayıcılar "
+"Depo kapasitesini arttırır, yerleşim alanını genişletir ve toplayıcılar "
 "sağlar."
 
 #. name of buildings:tavern
@@ -3154,7 +3127,7 @@ msgstr "Meyhane"
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:385
 msgid "Provides get-together."
-msgstr "Birliktelik sağlar."
+msgstr "Toplanma sağlar."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:390
@@ -3164,7 +3137,7 @@ msgstr "Çadır"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:392
 msgid "Hut"
-msgstr "Barınak"
+msgstr "Çadır"
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:394
@@ -3199,7 +3172,7 @@ msgstr "Tütüncü"
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:409
 msgid "Produces tobaccos out of tobacco."
-msgstr "Tütünden, tütün oluşturur."
+msgstr "Tütünden, tütün üretir."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:414
@@ -3243,15 +3216,13 @@ msgstr "Odun sağlar. Ağaçlar oduncular tarafından kesilir."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
-msgstr "Köy okulu"
+msgstr "Köy Okulu"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:441
 msgid "Provides education."
-msgstr "Eğitim verir."
+msgstr "Eğitim sağlar."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:446
@@ -3261,17 +3232,17 @@ msgstr "Ambar"
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:451
 msgid "Weaponsmith"
-msgstr "Silahçı"
+msgstr "Silah Ustası"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:453
 msgid "Produces weapons out of iron."
-msgstr "Demir silah üreten."
+msgstr "Demir silah üretir."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:458
 msgid "Weaver's Hut"
-msgstr "Dokumacı Barınağı"
+msgstr "Dokumacı Çadırı"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:460
@@ -3291,7 +3262,7 @@ msgstr "Mısırı una eler."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:472
 msgid "Winery"
-msgstr "şaraphane"
+msgstr "Şaraphane"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:474
@@ -3301,7 +3272,7 @@ msgstr "Üzümlerden şarap üretir."
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:479
 msgid "Wooden Tower"
-msgstr "Ahşam Kule"
+msgstr "Ahşap Kule"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:481
@@ -3897,7 +3868,7 @@ msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
-"Geçerli en yüksek seviyeye ulaştınız. Halkınız artık yükseltilemeyecek."
+"Geçerli en yüksek seviyeye ulaştınız. Halkınız daha fazla yükseltilmeyecek."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
@@ -3921,10 +3892,9 @@ msgid "corn"
 msgstr "mısır"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "{name} adında yeni bir gemi oluşturuldu."
+msgstr "{name} adındaki asker savaşa hazır."
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
@@ -4014,7 +3984,7 @@ msgstr "geyik eti"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr "şekerleme fabrikası"
+msgstr "tatlıcılık"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
@@ -4026,7 +3996,7 @@ msgstr "bozukluklar"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "bira"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -4155,10 +4125,9 @@ msgid "sword"
 msgstr "kılıç"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "{name} adında yeni bir gemi oluşturuldu."
+msgstr "{name} adındaki sakin hizmete hazır."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
