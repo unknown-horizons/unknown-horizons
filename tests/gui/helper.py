@@ -95,7 +95,7 @@ def saveload(gui):
 	gui.setup()
 
 
-class CursorToolsPatch(object):
+class CursorToolsPatch:
 	"""Temporarly changes CursorTool to interpret mouse event coordinates
 	as map coordinates instead of window coordinates. Makes it easier to
 	write tests.
@@ -155,7 +155,7 @@ class CursorToolsPatch(object):
 		NavigationTool.get_hover_instances = NavigationTool._orig_get_hover_instances
 
 
-class GuiHelper(object):
+class GuiHelper:
 
 	Key = fife.Key
 
@@ -497,7 +497,7 @@ class GuiHelper(object):
 			cooperative.schedule()
 		else:
 			# little hack because we don't have Python3's nonlocal
-			class Flag(object):
+			class Flag:
 				running = True
 
 			def stop():

@@ -191,7 +191,7 @@ class SelectMultiTab(TabInterface):
 		self.widget.findChild(name=stance.NAME).set_active()
 
 
-class UnitEntry(object):
+class UnitEntry:
 	def __init__(self, instances, show_number=True):
 		self.log = logging.getLogger("gui.tabs")
 		self.instances = instances

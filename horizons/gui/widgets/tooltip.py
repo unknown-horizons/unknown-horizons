@@ -31,7 +31,7 @@ from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.icongroup import TooltipBG
 
 
-class _Tooltip(object):
+class _Tooltip:
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
 	# Character count after which we start new line.

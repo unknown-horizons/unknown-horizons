@@ -42,7 +42,7 @@ PROTOCOLS = [0, 1]
 logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 		level = logging.DEBUG)
 
-class Server(object):
+class Server:
 	def __init__(self, hostname, port, statistic_file=None):
 		packets.SafeUnpickler.set_mode(client=False)
 		self.host     = None

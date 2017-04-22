@@ -35,7 +35,7 @@ from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictiona
 from horizons.util.worldobject import WorldObject
 
 
-class CombatManager(object):
+class CombatManager:
 	"""
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior

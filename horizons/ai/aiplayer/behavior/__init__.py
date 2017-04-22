@@ -25,7 +25,7 @@ import logging
 from horizons.ext.enum import Enum
 
 
-class BehaviorManager(object):
+class BehaviorManager:
 	"""
 	BehaviorManager holds BehaviorComponents.
 	Entities such as CombatManager or StrategyManager ask BehaviorManager to perform

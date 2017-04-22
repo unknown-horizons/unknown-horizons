@@ -26,7 +26,7 @@ import re
 from horizons.extscheduler import ExtScheduler
 
 
-class PychanAnimation(object):
+class PychanAnimation:
 	"""Displays images in short succession in a pychan icon."""
 
 	def __init__(self, icon, directory):

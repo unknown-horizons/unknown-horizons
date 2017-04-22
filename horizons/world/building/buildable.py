@@ -31,7 +31,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 
-class BuildableErrorTypes(object):
+class BuildableErrorTypes:
 	"""Killjoy class. Collection of reasons why you can't build."""
 	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
 	OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
@@ -54,7 +54,7 @@ class BuildableErrorTypes(object):
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
-class _BuildPosition(object):
+class _BuildPosition:
 	"""A possible build position in form of a data structure.
 	Don't use directly outside of this file"""
 	def __init__(self, position, rotation, tearset, buildable, action='idle',
@@ -98,7 +98,7 @@ class _NotBuildableError(Exception):
 		super(_NotBuildableError, self).__init__()
 		self.errortype = errortype
 
-class Buildable(object):
+class Buildable:
 	"""Interface for every kind of buildable objects.
 	Contains methods to determine whether a building can be placed on a coordinate, regarding
 	island, settlement, ground requirements etc. Does not care about building costs."""

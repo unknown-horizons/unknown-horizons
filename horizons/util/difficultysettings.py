@@ -22,7 +22,7 @@
 from typing import Dict
 
 
-class DifficultySettings(object):
+class DifficultySettings:
 	EASY_LEVEL = 0
 	DEFAULT_LEVEL = 1
 
@@ -39,7 +39,7 @@ class DifficultySettings(object):
 		cls.levels[cls.EASY_LEVEL] = EasySettings
 		cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
 
-class DifficultyClass(object):
+class DifficultyClass:
 	def __init__(self, level):
 		self.level = level
 

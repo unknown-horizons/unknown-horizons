@@ -25,7 +25,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.util.python.callback import Callback
 
 
-class StatsWidget(object):
+class StatsWidget:
 	"""A widget that creates a large table with statistics."""
 
 	# name of the widget's XML file

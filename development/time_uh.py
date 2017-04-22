@@ -59,7 +59,7 @@ def get_length(r):
 
 dev_null = open(os.devnull, 'w')
 
-class GameTimer(object):
+class GameTimer:
 	def __init__(self, name, args):
 		self.name = name
 		self.args = args

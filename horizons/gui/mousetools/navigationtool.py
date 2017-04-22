@@ -67,7 +67,7 @@ class NavigationTool(CursorTool):
 			self.session.view.add_change_listener(self._schedule_hover_instance_update)
 			self._schedule_hover_instance_update()
 
-		class CoordsTooltip(object):
+		class CoordsTooltip:
 			@classmethod
 			def get_instance(cls, cursor_tool):
 				if cursor_tool.session.ingame_gui.coordinates_tooltip is not None:

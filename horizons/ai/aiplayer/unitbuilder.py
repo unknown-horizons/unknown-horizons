@@ -26,7 +26,7 @@ from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.world.production.producer import Producer
 
 
-class UnitBuilder(object):
+class UnitBuilder:
 	"""An object of this class builds the units of one player."""
 
 	log = logging.getLogger("ai.aiplayer.unit_builder")

@@ -22,7 +22,7 @@
 from .rect import Rect
 
 
-class RadiusShape(object):
+class RadiusShape:
 	"""Class for generic shapes with a radius.
 	The shape includes everything, that the center contains plus every point,
 	for which this holds: distance(point, center) <= radius

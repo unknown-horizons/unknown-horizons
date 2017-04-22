@@ -29,7 +29,7 @@ from horizons.messaging import (
 from horizons.world.status import StatusIcon
 
 
-class StatusIconManager(object):
+class StatusIconManager:
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
 	and RemoveStatusIcon messages on the main message bus"""
 

@@ -33,7 +33,7 @@ from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
-class Window(object):
+class Window:
 
 	def __init__(self, windows=None):
 		# Reference to the window manager. Use it to open new windows or close
@@ -298,7 +298,7 @@ class Popup(Dialog):
 			cancel_button.parent.removeChild(cancel_button)
 
 
-class WindowManager(object):
+class WindowManager:
 
 	def __init__(self):
 		self._windows = []

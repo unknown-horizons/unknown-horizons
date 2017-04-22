@@ -709,7 +709,7 @@ class BuildingTool(NavigationTool):
 		self.renderer.removeAllColored()
 
 
-class ShipBuildingToolLogic(object):
+class ShipBuildingToolLogic:
 	"""Helper class to separate the logic needed when building from a ship from
 	the main building tool."""
 
@@ -764,7 +764,7 @@ class ShipBuildingToolLogic(object):
 		pass
 
 
-class SettlementBuildingToolLogic(object):
+class SettlementBuildingToolLogic:
 	"""Helper class to separate the logic needed when building from a settlement
 	from the main building tool"""
 

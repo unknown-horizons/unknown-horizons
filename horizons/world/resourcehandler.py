@@ -29,7 +29,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 
 
-class ResourceTransferHandler(object):
+class ResourceTransferHandler:
 	"""Objects that can transfer resources. ResourceHandler and units with storages"""
 	def transfer_to_storageholder(self, amount, res_id, transfer_to, signal_errors=False):
 		"""Transfers amount of res_id to transfer_to.

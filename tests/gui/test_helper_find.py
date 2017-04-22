@@ -27,7 +27,7 @@ import mock
 from tests.gui.helper import GuiHelper
 
 
-class Widget(object):
+class Widget:
 	"""
 	Fake widget with a name, children and possible a parent. All children of this widget will
 	get their parent attribute set to this widget.

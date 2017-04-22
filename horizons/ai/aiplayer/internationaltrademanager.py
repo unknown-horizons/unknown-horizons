@@ -29,7 +29,7 @@ from horizons.constants import RES, TRADER
 from .mission.internationaltrade import InternationalTrade
 
 
-class InternationalTradeManager(object):
+class InternationalTradeManager:
 	"""
 	An object of this class manages the international trade routes of one AI player.
 

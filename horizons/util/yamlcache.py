@@ -78,7 +78,7 @@ def convert_game_data(data):
 		return data
 
 
-class YamlCache(object):
+class YamlCache:
 	"""Loads and caches YAML files in a persistent cache.
 	Threadsafe.
 

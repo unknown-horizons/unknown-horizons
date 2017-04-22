@@ -22,7 +22,7 @@
 from typing import List
 
 
-class Component(object):
+class Component:
 	"""
 	Base class for all components. Something like an interface.
 

@@ -24,7 +24,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.gui.util import load_uh_widget
 
 
-class AIDataSelection(object):
+class AIDataSelection:
 	"""Subwidget for selecting AI settings."""
 
 	def __init__(self):

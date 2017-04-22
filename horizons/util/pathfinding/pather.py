@@ -34,7 +34,7 @@ We just call this interface Pather. It is used by unit to hide implementation de
 of the pathfinding algorithm.
 """
 
-class AbstractPather(object):
+class AbstractPather:
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
@@ -282,7 +282,7 @@ class SoldierPather(AbstractPather):
 			return super(SoldierPather, self)._check_for_obstacles(point)
 
 
-class StaticPather(object):
+class StaticPather:
 	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
 	@classmethod

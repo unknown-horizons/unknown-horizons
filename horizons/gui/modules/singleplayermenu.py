@@ -121,7 +121,7 @@ class SingleplayerMenu(Window):
 		self._mode.act(player_name, player_color)
 
 
-class GameSettingsWidget(object):
+class GameSettingsWidget:
 	"""Toggle trader/pirates/disasters and change resource density."""
 
 	def __init__(self):
@@ -181,7 +181,7 @@ class GameSettingsWidget(object):
 		return self._gui.findChild(name='disasters').marked
 
 
-class RandomMapWidget(object):
+class RandomMapWidget:
 	"""Create a random map, influence map generation with multiple sliders."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -362,7 +362,7 @@ class RandomMapWidget(object):
 		self._gui.findChild(name="map_preview_status_label").text = text
 
 
-class FreeMapsWidget(object):
+class FreeMapsWidget:
 	"""Start a game by selecting an existing map."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -444,7 +444,7 @@ class FreeMapsWidget(object):
 		self._map_preview.draw()
 
 
-class ScenarioMapWidget(object):
+class ScenarioMapWidget:
 	"""Start a scenario (with a specific language)."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):

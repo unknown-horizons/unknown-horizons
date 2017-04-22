@@ -53,7 +53,7 @@ class Tasklet(greenlet.greenlet):
 		"""Blocks until this greenlet finished execution."""
 
 		# little hack because we don't have Python3's nonlocal
-		class Flag(object):
+		class Flag:
 			running = True
 
 		def stop(_):

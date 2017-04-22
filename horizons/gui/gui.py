@@ -95,7 +95,7 @@ class MainMenu(Window):
 		w = self._gui.findChildByName('changeBackground')
 		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[0]
 
-class Gui(object):
+class Gui:
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 	"""
 	log = logging.getLogger("gui")

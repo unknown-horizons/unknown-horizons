@@ -240,7 +240,7 @@ def assert_type(var, expected_type, name):
 			name, expected_type.__name__, str(var)))
 
 
-class _Event(object):
+class _Event:
 	"""Internal data structure representing an event."""
 	def __init__(self, session, event_dict):
 		self.session = session
@@ -268,7 +268,7 @@ class _Event(object):
 				', '.join(cond.to_yaml() for cond in self.conditions))
 
 
-class _Action(object):
+class _Action:
 	"""Internal data structure representing an ingame scenario action"""
 	def __init__(self, action_dict):
 		assert_type(action_dict, dict, "action specification")
@@ -294,7 +294,7 @@ class _Action(object):
 		return "{arguments: %s, type: %s}" % (arguments_yaml, self.action_type)
 
 
-class _Condition(object):
+class _Condition:
 	"""Internal data structure representing a condition"""
 
 	def __init__(self, session, cond_dict):

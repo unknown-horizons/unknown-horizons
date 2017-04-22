@@ -106,7 +106,7 @@ def iter_minimap_points(location, world, island_color, water_color, area=None):
 			yield ((x, y), color)
 
 
-class Minimap(object):
+class Minimap:
 	"""A basic minimap.
 
 	USAGE:
@@ -771,7 +771,7 @@ class Minimap(object):
 		return (self.location.height, self.location.width)
 
 
-class _MinimapImage(object):
+class _MinimapImage:
 	"""Encapsulates handling of fife Image.
 	Provides:
 	- self.rendertarget: instance of fife.RenderTarget

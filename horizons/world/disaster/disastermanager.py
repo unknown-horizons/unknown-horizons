@@ -29,7 +29,7 @@ from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.world.disaster.firedisaster import FireDisaster
 
 
-class DisasterManager(object):
+class DisasterManager:
 	"""The disaster manager manages disasters. It seeds them into the
 	game world and makes all requirements for a disaster are met before
 	seeding it."""

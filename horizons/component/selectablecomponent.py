@@ -127,7 +127,7 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	# these smell like instance attributes, but sometimes have to be used in non-instance
 	# contexts (e.g. building tool).
-	class ListHolder(object):
+	class ListHolder:
 		def __init__(self):
 			self.l = []
 

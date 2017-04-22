@@ -35,7 +35,7 @@ from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
 
 
-class Fife(object):
+class Fife:
 	"""
 	Basic initiation of engine. Followed later by init().
 	"""

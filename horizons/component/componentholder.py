@@ -41,7 +41,7 @@ from horizons.world.production.producer import (
 	GroundUnitProducer, Producer, QueueProducer, ShipProducer)
 
 
-class ComponentHolder(object):
+class ComponentHolder:
 	"""
 	Class that manages Component plug-ins
 	It can be inherited by all objects that can hold components

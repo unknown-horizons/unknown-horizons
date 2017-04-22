@@ -29,7 +29,7 @@ from fife import fife
 from horizons.extscheduler import ExtScheduler
 
 
-class Sound(object):
+class Sound:
 	"""Stuff related to engine & sound"""
 
 	def __init__(self, engine):

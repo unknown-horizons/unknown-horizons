@@ -23,7 +23,7 @@
 from horizons.constants import UNITS
 
 
-class ProductionLine(object):
+class ProductionLine:
 	"""Class that collects the production line data."""
 
 	def __init__(self, id, data):

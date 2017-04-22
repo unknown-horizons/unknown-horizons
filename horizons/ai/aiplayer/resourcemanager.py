@@ -492,7 +492,7 @@ class SingleResourceManager(WorldObject):
 			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)
 		return result
 
-class SimpleProductionChainSubtreeChoice(object):
+class SimpleProductionChainSubtreeChoice:
 	"""This is a simple version of ProductionChainSubtreeChoice used to make recursive quotas possible."""
 
 	def __init__(self, options):
@@ -516,7 +516,7 @@ class SimpleProductionChainSubtreeChoice(object):
 	def get_quota(self, quota_holder):
 		return sum(option.get_quota(quota_holder) for option in self.options)
 
-class SimpleProductionChainSubtree(object):
+class SimpleProductionChainSubtree:
 	"""This is a simple version of ProductionChainSubtree used to make recursive quotas possible."""
 
 	def __init__(self, resource_manager, resource_id, production_line, abstract_building, children, production_ratio):

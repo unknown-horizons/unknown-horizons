@@ -25,7 +25,7 @@ from horizons.messaging.messagebus import MessageBus
 from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
 
-class Message(object):
+class Message:
 	"""Message class for the MessageBus. Every Message that is supposed to be
 	sent through the MessageBus has to subclass this base class, to ensure proper
 	setting of base attributes and inheriting the interface.

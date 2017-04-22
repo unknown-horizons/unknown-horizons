@@ -23,7 +23,7 @@ import collections
 # ###################################################
 
 
-class Callback(object):
+class Callback:
 	"""This class basically provides just callbacks with arguments.
 	The same can be achieved via 'lambda: f(arg1, arg2)', but this class has
 	more flexibility; e.g. you can compare callbacks, which can't be done with lambda functions.

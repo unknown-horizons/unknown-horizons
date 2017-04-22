@@ -25,7 +25,7 @@ from typing import List
 from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
 
 
-class PersonalityManager(object):
+class PersonalityManager:
 	"""This class handles the loading of personality data for the AI players."""
 
 	log = logging.getLogger("ai.aiplayer.personality_manager")

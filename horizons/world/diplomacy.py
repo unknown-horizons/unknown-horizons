@@ -23,7 +23,7 @@ from horizons.util.changelistener import metaChangeListenerDecorator
 
 
 @metaChangeListenerDecorator("diplomacy_status_changed")
-class Diplomacy(object):
+class Diplomacy:
 	"""
 	Diplomacy class
 	handles diplomacy between players

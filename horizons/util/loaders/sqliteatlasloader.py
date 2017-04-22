@@ -28,7 +28,7 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
-class SQLiteAtlasLoader(object):
+class SQLiteAtlasLoader:
 	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database.
 	"""
 	def __init__(self):

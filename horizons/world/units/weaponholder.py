@@ -40,7 +40,7 @@ from horizons.world.units.weapon import SetStackableWeaponNumberError, Stackable
 
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")
-class WeaponHolder(object):
+class WeaponHolder:
 	log = logging.getLogger("world.combat")
 
 	def __init__(self, **kwargs):

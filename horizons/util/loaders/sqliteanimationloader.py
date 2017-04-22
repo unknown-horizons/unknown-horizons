@@ -24,7 +24,7 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
-class SQLiteAnimationLoader(object):
+class SQLiteAnimationLoader:
 	"""Loads animations from a SQLite database.
 	"""
 	def __init__(self):

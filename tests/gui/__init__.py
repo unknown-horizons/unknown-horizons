@@ -126,7 +126,7 @@ class GuiTestPlugin(Plugin):
 		return exc_type, value, traceback
 
 
-class TestRunner(object):
+class TestRunner:
 	"""Manages test execution.
 
 	Tests have to be generators. With generators, we can give control back to the

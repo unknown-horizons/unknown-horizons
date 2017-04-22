@@ -77,7 +77,7 @@ class EditorStartMenu(Window):
 		self._right_side.act()
 
 
-class EditorCreateMapWidget(object):
+class EditorCreateMapWidget:
 	sizes = [50, 100, 150, 200, 250]
 
 	def __init__(self, windows, parent_widget):
@@ -108,7 +108,7 @@ class EditorCreateMapWidget(object):
 				return
 
 
-class EditorSelectMapWidget(object):
+class EditorSelectMapWidget:
 	def __init__(self, windows, parent_widget):
 		self._windows = windows
 		self._parent_widget = parent_widget
@@ -131,7 +131,7 @@ class EditorSelectMapWidget(object):
 		horizons.main.edit_map(self._map_data[0][selected_map_index])
 
 
-class EditorSelectSavedGameWidget(object):
+class EditorSelectSavedGameWidget:
 	def __init__(self, windows, parent_widget):
 		self._windows = windows
 		self._parent_widget = parent_widget

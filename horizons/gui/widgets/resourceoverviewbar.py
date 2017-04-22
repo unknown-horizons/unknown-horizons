@@ -44,7 +44,7 @@ from horizons.util.python.decorators import cachedmethod
 from horizons.world.player import Player
 
 
-class ResourceOverviewBar(object):
+class ResourceOverviewBar:
 	"""The thing on the top left.
 
 	http://wiki.unknown-horizons.org/w/HUD

@@ -116,7 +116,7 @@ class FisherEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.FISHER
 
-class FisherSimulator(object):
+class FisherSimulator:
 	# TODO: get these values the right way
 	move_time = 12 # in ticks
 	fish_respawn_time = 480 # 30 seconds in ticks

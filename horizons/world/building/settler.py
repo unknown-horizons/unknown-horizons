@@ -422,7 +422,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 
 
-class SettlerUpgradeData(object):
+class SettlerUpgradeData:
 	"""This is used as glue between the old upgrade system based on sqlite data used in a non-component environment
 	and the current component version with data in yaml"""
 

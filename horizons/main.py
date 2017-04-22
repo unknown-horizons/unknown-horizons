@@ -62,7 +62,7 @@ if TYPE_CHECKING:
 
 
 # private module pointers of this module
-class Modules(object):
+class Modules:
 	gui = None # type: Optional[Gui]
 	session = None # type: Optional[Session]
 _modules = Modules()
@@ -561,7 +561,7 @@ def set_debug_log(enabled, startup=False):
 			# log file is already set up, just make sure everything is logged
 			logging.getLogger().setLevel(logging.DEBUG)
 		else: # set up all anew
-			class Data(object):
+			class Data:
 				debug = False
 				debug_log_only = True
 				logfile = None

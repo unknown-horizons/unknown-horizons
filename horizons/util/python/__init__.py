@@ -30,7 +30,7 @@ from typing import Any, Set, Type
 from .decorators import *
 
 
-class Const(object):
+class Const:
 	"""An immutable type. Think C++-like const"""
 	def __setattr__(self, name, value):
 		"""Disallow changing an already set attribute.

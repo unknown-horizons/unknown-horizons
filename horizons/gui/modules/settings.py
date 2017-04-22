@@ -38,7 +38,7 @@ from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 
 
-class Setting(object):
+class Setting:
 	def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
 		self.module = module
 		self.name = name

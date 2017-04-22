@@ -24,7 +24,7 @@ import os.path
 import pickle
 
 
-class YamlCacheStorage(object):
+class YamlCacheStorage:
 	"""
 	Store the YamlCache data in a cache.
 

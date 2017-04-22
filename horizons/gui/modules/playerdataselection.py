@@ -27,7 +27,7 @@ from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 
 
-class PlayerDataSelection(object):
+class PlayerDataSelection:
 	"""Subwidget for selecting player name and color.
 	Used by Multiplayer and Singleplayer menu."""
 

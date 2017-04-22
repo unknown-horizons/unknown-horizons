@@ -33,7 +33,7 @@ from horizons.gui.windows import Popup
 from horizons.i18n import gettext as T
 
 
-class UpdateInfo(object):
+class UpdateInfo:
 	INVALID, READY, UNINITIALIZED = list(range(3))
 	def __init__(self):
 		self.status = UpdateInfo.UNINITIALIZED

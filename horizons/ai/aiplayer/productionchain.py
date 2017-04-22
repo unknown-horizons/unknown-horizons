@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.constants import RES
 
 
-class ProductionChain(object):
+class ProductionChain:
 	"""
 	A production chain handles the building of buildings required to produce a resource.
 
@@ -109,7 +109,7 @@ class ProductionChain(object):
 		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		return self.chain.get_ratio(resource_id)
 
-class ProductionChainSubtreeChoice(object):
+class ProductionChainSubtreeChoice:
 	"""An object of this class represents a choice between N >= 1 ways of producing the required resource."""
 
 	log = logging.getLogger("ai.aiplayer.productionchain")
@@ -217,7 +217,7 @@ class ProductionChainSubtreeChoice(object):
 		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		return sum(option.get_ratio(resource_id) for option in self.options)
 
-class ProductionChainSubtree(object):
+class ProductionChainSubtree:
 	"""An object of this type represents a subtree of buildings that need to be built in order to produce the given resource."""
 
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):

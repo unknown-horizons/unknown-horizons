@@ -35,7 +35,7 @@ except ImportError:
 	SUPPORTED = False
 
 
-class Timer(object):
+class Timer:
 	"""
 	Example
 

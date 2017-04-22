@@ -29,7 +29,7 @@ FuncArgs = Tuple[Any, ...]
 FuncKwargsTuple = Tuple[Tuple[str, Any]]
 
 
-class cachedfunction(object):
+class cachedfunction:
 	"""Decorator that caches a function's return value each time it is called.
 	If called later with the same arguments, the cached value is returned, and
 	not re-evaluated.
@@ -51,7 +51,7 @@ class cachedfunction(object):
 			assert False, "Supplied invalid argument to cache decorator"
 
 
-class cachedmethod(object):
+class cachedmethod:
 	"""Same as cachedfunction, but works also for methods. Results are saved per instance"""
 	def __init__(self, func):
 		self.cache = {} # type: Dict[Tuple[Any, FuncArgs, FuncKwargsTuple], Any]

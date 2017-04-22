@@ -25,7 +25,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.entities import Entities
 
 
-class BuildingEvaluator(object):
+class BuildingEvaluator:
 	"""Class representing a set of instructions for building a building complex along with its value."""
 
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")

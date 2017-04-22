@@ -36,7 +36,7 @@ from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
 
 
-class SavegameManager(object):
+class SavegameManager:
 	"""Controls savegamefiles.
 
 	This class is rather a namespace than a "real" object, since it has no members.

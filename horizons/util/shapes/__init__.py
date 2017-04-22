@@ -22,7 +22,7 @@
 from horizons.util.shapes import distances
 
 
-class Shape(object):
+class Shape:
 
 	def get_coordinates(self):
 		"""Return all coordinates in the shape."""

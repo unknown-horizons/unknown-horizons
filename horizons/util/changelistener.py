@@ -26,7 +26,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethodlist import WeakMethodList
 
 
-class ChangeListener(object):
+class ChangeListener:
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
 	An object calls _changed every time something has changed, obviously.

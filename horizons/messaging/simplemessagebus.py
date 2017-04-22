@@ -23,7 +23,7 @@ from collections import defaultdict
 from typing import Callable, DefaultDict, List
 
 
-class SimpleMessageBus(object):
+class SimpleMessageBus:
 	"""Manages registration and calling of callbacks when events (strings) occur.
 
 	Example:

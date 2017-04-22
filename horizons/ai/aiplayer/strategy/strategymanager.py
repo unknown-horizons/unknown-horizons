@@ -33,7 +33,7 @@ from horizons.util.python import map_balance, trim_value
 from horizons.util.worldobject import WorldObject
 
 
-class StrategyManager(object):
+class StrategyManager:
 	"""
 	StrategyManager object is responsible for handling major decisions in game such as
 	sending fleets to battle, keeping track of diplomacy between players, declare wars.

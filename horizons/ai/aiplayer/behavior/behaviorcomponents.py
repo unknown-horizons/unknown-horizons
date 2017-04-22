@@ -38,7 +38,7 @@ from horizons.util.shapes import Circle
 from horizons.world.units.unitexeptions import MoveNotPossible
 
 
-class BehaviorComponent(object):
+class BehaviorComponent:
 	"""
 	This is an abstract BehaviorComponent - a building block for AI Behavior.
 	"""

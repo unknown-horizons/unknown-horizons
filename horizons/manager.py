@@ -232,7 +232,7 @@ class MPManager(LivingObject):
 # Packagemanagers storing Packages for later use
 ################################################
 
-class MPPacketmanager(object):
+class MPPacketmanager:
 	log = logging.getLogger("mpmanager")
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
@@ -295,7 +295,7 @@ class MPCheckupHashManager(MPPacketmanager):
 # Packages transmitted over the network
 #######################################
 
-class MPPacket(object):
+class MPPacket:
 	"""Packet to be sent from every player to every player"""
 	def __init__(self, tick, player_id):
 		"""

@@ -28,7 +28,7 @@ from horizons.constants import LANGUAGENAMES, SETTINGS
 from horizons.i18n import change_language
 
 
-class Settings(object):
+class Settings:
 
 	# Settings key storing the SettingsVersion used to upgrade settings
 	SETTINGS_VERSION = "SettingsVersion"

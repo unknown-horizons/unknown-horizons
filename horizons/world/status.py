@@ -39,7 +39,7 @@ Priority:
 [2000-3000[: high
 Keep the numbers unique to avoid confusion when sorting.
 """
-class StatusIcon(object):
+class StatusIcon:
 	# integer
 	priority = None # type: int
 	# fife identifier for animations or icons. Must be supported by either the animationloader

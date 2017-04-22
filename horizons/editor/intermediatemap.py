@@ -26,7 +26,7 @@ SHALLOW_WATER = 1
 SAND = 2
 GRASS = 3
 
-class IntermediateMap(object):
+class IntermediateMap:
 
 	def __init__(self, world):
 		self.world = world

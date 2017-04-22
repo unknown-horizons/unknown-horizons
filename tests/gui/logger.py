@@ -47,7 +47,7 @@ for keyname in [k for k in dir(fife.Key) if k.upper() == k]:
 	KEY_NAME_LOOKUP[getattr(fife.Key, keyname)] = keyname
 
 
-class GuiHooks(object):
+class GuiHooks:
 	"""
 	Install hooks for several events and pass events to a logger.
 	"""
@@ -191,7 +191,7 @@ class GuiHooks(object):
 		Dialog._execute = deco4(Dialog._execute)
 
 
-class TestCodeGenerator(object):
+class TestCodeGenerator:
 	"""
 	Receives events from GuiHooks and creates test code from it.
 	"""

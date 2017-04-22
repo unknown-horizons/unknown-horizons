@@ -251,7 +251,7 @@ def setup_debugging(options):
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
 		# FIFE python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
-		class StdOutDuplicator(object):
+		class StdOutDuplicator:
 			def write(self, line):
 				line = str(line)
 				sys.__stdout__.write(line)

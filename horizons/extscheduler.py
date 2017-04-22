@@ -25,7 +25,7 @@ import time
 from horizons.util.python.singleton import ManualConstructionSingleton
 
 
-class _ExtCallbackObject(object):
+class _ExtCallbackObject:
 	"""Class used by the ExtScheduler Class to organize callbacks."""
 
 	def __init__(self, callback, class_instance, run_in=1, loops=1):

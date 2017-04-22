@@ -32,7 +32,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
 
-class ProductionFinishedIconManager(object):
+class ProductionFinishedIconManager:
 	"""Manager class that manages all production finished icons. It listens to
 	 ResourceProduced messages on the main message bus"""
 

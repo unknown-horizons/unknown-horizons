@@ -23,7 +23,7 @@ from fife.extensions.pychan.widgets import HBox, Icon, VBox
 from fife.extensions.pychan.widgets.common import IntAttr
 
 
-class TilingBackground(object):
+class TilingBackground:
 	"""The TilingBackground is a shortcut for several Icons combined to one group.
 	It usually serves as auxiliary widget if a tiling background image is desired,
 	but the layout also requires some kind of border around those tiling panels.

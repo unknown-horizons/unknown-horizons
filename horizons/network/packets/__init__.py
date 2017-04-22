@@ -36,7 +36,7 @@ PICKLE_SAFE = {
 	'server' : {},
 } # type: Dict[str, Dict[str, Set[str]]]
 
-class SafeUnpickler(object):
+class SafeUnpickler:
 	"""
 	NOTE: this is a security related method and may lead to
 	execution of arbritary code if used in a wrong way
@@ -106,7 +106,7 @@ class SafeUnpickler(object):
 
 #-------------------------------------------------------------------------------
 
-class packet(object):
+class packet:
 	maxpacketsize = 0
 
 	def __init__(self):

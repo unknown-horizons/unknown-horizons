@@ -96,7 +96,7 @@ class TestJobList(TestCase):
 		self.assertTrue(self.distance(test_list, 1) <= self.distance(test_list, 2))
 
 
-class TestCollector(object):
+class TestCollector:
 	"""Dummy collector that only provides what we need to run the tests."""
 
 	def __init__(self, x, y):

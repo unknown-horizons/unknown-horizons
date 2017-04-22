@@ -32,7 +32,7 @@ from horizons.util.python.callback import Callback
 
 
 @metaChangeListenerDecorator('remove')
-class TabWidget(object):
+class TabWidget:
 	"""The TabWidget class handles widgets which consist of many
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""

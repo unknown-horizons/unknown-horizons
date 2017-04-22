@@ -33,7 +33,7 @@ from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
-class HotkeyConfiguration(object):
+class HotkeyConfiguration:
 
 	def __init__(self):
 		super(HotkeyConfiguration, self).__init__()

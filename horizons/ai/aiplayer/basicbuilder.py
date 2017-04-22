@@ -29,7 +29,7 @@ from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
 
 
-class BasicBuilder(object):
+class BasicBuilder:
 	"""An object of this class represents a non-checked plan to build a building at a specific place."""
 
 	rotations = [45, 135, 225, 315]

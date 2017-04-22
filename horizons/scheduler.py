@@ -269,7 +269,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		return self.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 
 
-class _CallbackObject(object):
+class _CallbackObject:
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval, finish_callback=None):
 		"""Creates the CallbackObject instance.

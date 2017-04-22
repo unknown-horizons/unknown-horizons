@@ -28,13 +28,13 @@ from horizons.util.changelistener import ChangeListener
 from horizons.util.worldobject import WorldObject
 
 
-class TRADE_ERROR_TYPE(object):
+class TRADE_ERROR_TYPE:
 	"""Machine controlled entities need to know the difference. On this basis, they decide
 	whether to retry the trade in a few seconds.
 	"""
 	NO_ERROR, TEMPORARY, PERMANENT = range(3)
 
-class TradeSlotInfo(object):
+class TradeSlotInfo:
 	def __init__(self, resource_id, selling, limit):
 		self.resource_id = resource_id
 		self.selling = selling
