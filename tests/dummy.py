@@ -31,13 +31,13 @@ class Dummy:
 					pass
 				return A
 			elif attr == 'ICommandListener':
-				class A(Dummy):
+				class B(Dummy):
 					pass
-				return A
+				return B
 			elif attr == 'VBox' or  attr == 'HBox':
-				class A(Dummy):
+				class C(Dummy):
 					ATTRIBUTES = Dummy()
-				return A
+				return C
 			return super(self.__class__, self).__getattr__(attr)
 		except AttributeError:
 			if attr in ('__base__', '__bases__', '__basicsize__', '__cmp__',

@@ -146,7 +146,6 @@ class TestRunner:
 
 	def __init__(self, engine, test_path):
 		self._engine = engine
-		self._gui_handlers = []
 
 		self._custom_setup()
 		#self._filter_traceback()
