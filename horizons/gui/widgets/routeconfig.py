@@ -282,6 +282,13 @@ class RouteConfig(Window):
 				self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
 
 	def show_resource_menu(self, slot, entry):
+		"""
+		Displays a menu where players can choose which resource to add in the
+		selected slot. Available resources are all possible resources and a
+		'None' resource which allows to delete slot actions.
+		The resources are ordered by their res_id.
+		"""
+		
 		position = self.widgets.index(entry)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
