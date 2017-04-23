@@ -21,6 +21,7 @@
 
 import re
 import textwrap
+import time
 
 from fife import fife
 from fife.extensions.pychan.widgets import ABox, HBox, Icon, Label
@@ -29,8 +30,6 @@ import horizons.globals
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.icongroup import TooltipBG
-
-import time
 
 
 class _Tooltip:
