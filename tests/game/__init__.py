@@ -23,8 +23,7 @@ import contextlib
 import os
 import tempfile
 from functools import wraps
-
-import mock
+from unittest import mock
 
 import horizons.globals
 import horizons.main

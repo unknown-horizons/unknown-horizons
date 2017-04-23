@@ -20,8 +20,7 @@
 # ###################################################
 
 from unittest import TestCase
-
-from mock import Mock
+from unittest.mock import Mock
 
 from horizons.scheduler import Scheduler
 

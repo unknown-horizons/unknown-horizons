@@ -20,8 +20,7 @@
 # ###################################################
 
 from unittest import TestCase
-
-from mock import MagicMock, Mock, patch
+from unittest.mock import MagicMock, Mock, patch
 
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler

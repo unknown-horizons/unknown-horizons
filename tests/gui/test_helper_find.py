@@ -21,8 +21,7 @@
 
 import unittest
 from typing import Optional, Set
-
-import mock
+from unittest import mock
 
 from tests.gui.helper import GuiHelper
 

@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest.mock import Mock
+
 from fife import fife
-from mock import Mock
 
 from horizons.constants import RES
 from horizons.manager import MPManager

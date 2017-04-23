@@ -24,8 +24,8 @@
 import os
 import shutil
 import tempfile
+from unittest import mock
 
-import mock
 import polib
 
 import horizons.i18n

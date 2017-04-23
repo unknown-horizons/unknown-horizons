@@ -28,8 +28,8 @@ import contextlib
 import os
 import tempfile
 import types
+from unittest import mock
 
-import mock
 from fife import fife
 from fife.extensions import pychan
 

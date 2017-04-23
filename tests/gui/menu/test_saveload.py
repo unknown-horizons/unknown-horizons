@@ -21,8 +21,7 @@
 
 import os
 import shutil
-
-import mock
+from unittest import mock
 
 from horizons.savegamemanager import SavegameManager
 from tests.gui import TEST_FIXTURES_DIR, gui_test
