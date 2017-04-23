@@ -189,7 +189,6 @@ class RouteConfig(Window):
 		vbox.addChildren(self.widgets)
 
 		self._gui.adaptLayout()
-		self._resource_selection_area_layout_hack_fix()
 
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
@@ -237,7 +236,7 @@ class RouteConfig(Window):
 
 		icon = self.icon_for_resource[res_id]
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
-		button.max_size = button.min_size = button.size = (32, 32)
+		button.fixed_size = (32, 32)
 
 		# Hide the resource menu.
 		self.hide_resource_menu()
@@ -303,14 +302,6 @@ class RouteConfig(Window):
 
 		self._gui.findChild(name="traderoute_resources").addChild(dlg)
 		self._gui.adaptLayout()
-		self._resource_selection_area_layout_hack_fix()
-
-	def _resource_selection_area_layout_hack_fix(self):
-		# no one knows why this is necessary, but sometimes we need to set the values anew
-		vbox = self._gui.findChild(name="traderoute_resources")
-		scrollarea = vbox.findChild(name="resources_scrollarea")
-		if scrollarea:
-			scrollarea.max_width = scrollarea.width = vbox.max_width = vbox.width = 320
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
