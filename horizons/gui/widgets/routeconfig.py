@@ -298,7 +298,7 @@ class RouteConfig(Window):
 			return not (same_icon or already_listed)
 
 		dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
-			db=self.session.db, widget=widget, amount_per_line=6, res_filter=res_filter)
+			db=self.session.db, widget=widget, amount_per_line=5, res_filter=res_filter)
 
 		self._gui.findChild(name="traderoute_resources").addChild(dlg)
 		self._gui.adaptLayout()
