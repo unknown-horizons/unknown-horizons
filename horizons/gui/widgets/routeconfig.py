@@ -297,7 +297,7 @@ class RouteConfig(Window):
 		on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
-		# widget = 'traderoute_resource_selection.xml'
+		widget = 'configure_route.xml'
 
 		def res_filter(res_id):
 			same_icon = slot.findChild(name='button').up_image.source == self.icon_for_resource[res_id]
@@ -305,7 +305,7 @@ class RouteConfig(Window):
 			return not (same_icon or already_listed)
 
 		self.dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
-			db=self.session.db, amount_per_line=5, res_filter=res_filter)
+			db=self.session.db, widget=widget, amount_per_line=5, res_filter=res_filter)
 
 		self._gui.addChild(self.dlg)
 		self._gui.adaptLayout()
