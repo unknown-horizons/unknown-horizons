@@ -78,45 +78,45 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
+  - [Message, Bir Avcı Çadırı ve bir Balıkçı Çadırı inşa edin. Bunları Depoya bağlayın.]
   - [Headline, 'YENİ GÖREV: YEMEK TEDARİĞİ']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
+  - Yiyecek üreten şirketlere de ihtiyacınız olacak çünkü genel olarak insanlar (ve özellikle denizciler) çok açtır.
+  - İlk seviyedeki kullanılabilir binalar Avcı Çadırı ve Balıkçı Çadırı.
+  - Avcı, ormandaki hayvanları avladığından yakınında ağaçlar olmalıdır.
+  - Avcı Çadırını oduncunun ormanına yakın yerleştirebileceğinizi unutmayın.
   - Hayvanların yeterince hızlı çoğalmadığı veya iyi gizlendiği anlar olabilir.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - 'Sonuç: devamlı kaynağa ihtiyacınız varsa Avcı Çadırı çok güvenilir değildir.'
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
+    Balıkçı, alanı içinde Depo gibi bir sahil yapı sitesine ve bir balık okuluna ihtiyaç duyar.'
   - Küçük, kürekli bir tekne yapacak ve balık yakalayacaktır.
   - Bu, az zamanda daha uzun süren yiyecek üretimi için oldukça sabit bir kaynaktır.
   - Sizinki gibi bir yeni yerleşim birimi, her iki şirketi de kullanabilir, ve doğrudan karşılaştırma görürseniz olumlu ve olumsuz yanları daha iyi dengeleyebilirsiniz.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
-  - Don't forget to connect them to your Warehouse with Trails!
+  - [BoldLabel, 'Görev: Bir Avcı Çadırı ve bir Balıkçı Çadırı inşa edin.']
+  - Bunları Yollarla Deponuza bağlamayı unutmayın!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
+  - [Message, Bir Ana Meydan kurun. Bunun için ticari binalardan uzak bir alan tercih edin.]
   - [Headline, 'YENİ GÖREV: ANA MEYDAN']
   - [Image, content/gui/images/background/hr.png]
   - Halkınız, ürünleri alıp evlerine götürmek için bir ana meydana gereksinim duyarlar.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - Bu evlerinden Ana Meydana bir Patikaya ihtiyaçları duyuyorlar demektir. Ana Meydanın da bir Patika gibi davrandığını unutmayın, bu nedenle bitişik çadırlar ayrı bir Patikaya gerek duymaz.
   - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Ana köy çadırlarınızı oduncunuza yakın tutmaktan kaçınmalısınız çünkü çadırları bu alanlara yapmak, oduncunuzun tahta üretimi için ihtiyacı olan ağaçları yok edecektir.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Şirketler çadırlara bağlanmadan çalışır, bu yüzden, örneğin; Ana Meydan ve Oduncu Çadırı arası gibi yerlere yol yapmanıza gerek yoktur.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Görev: Ana Meydan inşa et.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Şimdi Ana Meydana daha yakından bakalım.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - '''Hesap'' sekmesinde, bu adanın bakiye evrağına ulaşabileceksiniz. Burada ödediğiniz tüm masraflar ve kazandığınız vergiler gösterilecek.'
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Farklı seviye görünüm sekmelerinde, halkınızın istatistiklerini görebilirsiniz. Ayrıca burada, seviyeye bağlı genel vergiyi ayarlayabilir ve bu seviyenin sonraki daha yüksek seviyeye yükseltilmesine izin verebilir ve engelleyebilirsiniz.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
+  - [Message, Bir Çadır inşa edin ve gerekiyorsa Ana Meydana bağlayın.]
   - [Headline, 'YENİ GÖREV: YERLEŞİMSEL BİNALAR']
   - [Image, content/gui/images/background/hr.png]
   - Göçmenler başlarının üstünde bir çatı istiyorlar. Aksi takdirde şehrinizde yaşamayı bile düşünmeyecekler! Çadır sağlaman gerek.
@@ -138,13 +138,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Eğer bu maddeler stoğunuzda az bulunuyorsa, yükseltmeyi devre dışı bırakmayı düşünün.
   - Göçmenler, ürettiğiniz tüm malları yok etmeye çalıştıklarından yararlı görünmeyebilirler, ancak en azından vergi veriyorlar ve şimdilik para kazanmanızın tek yolu bu!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Görev: Bir Çadır inşa edin ve gerekiyorsa Ana Meydana bağlayın. Çadırların şirketlere bağlanmaları gerekmez.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, En az üç tane daha Çadır inşa edin ve Ana Meydana bağlayın.]
   - '
 
-    Let''s have a look at the Tent overview tab.'
+    Şimdi Çadır genel görünüm sekmesine bakalım.'
   - 'Burada:
 
     * bu sakinlerin mutluluğunu,
@@ -156,13 +156,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Getirilmezse, mutluluk ve gelir düşer. Bir süre sonra halkınız sizden soğur ve köyünüze sırtlarını dönerler. Arkalarında çökük yıkıntıları bırakırlar.
   - Ayrıca evrensel vergi ayarlarını buradan da değiştirebileceğinizi unutmayın.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'Görev: En az üç adet daha Çadır inşa et.']
   - '
 
     İPUCU: SHIFT tuşunu basılı tutmak, aynı türdeki binaların inşasını kolaylaştırır.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
+  - [Message, Deponuza yakın sahilde bir İşaret Ateşi yakın.]
   - [Headline, 'YENİ GÖREV: İŞARET ATEŞİ YAP']
   - [Image, content/gui/images/background/hr.png]
   - Adanızdan zaman zaman geçen gemiyi görüyor musunuz? Bu gemi Özgür Tüccar. Bu takımadalarda yaşayan ilk halklardan.
@@ -184,7 +184,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ayraç kipini 'Al' ile 'Sat' arasında değiştirmek için küçük simgeye tıklayın.
   - Ticaret yapmak istediğiniz malı seçmek için alanda tıklayın. Ticarete hazır olduğunuzda bunu daha ayrıntılı açıklayacağız.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'Görev: Deponuza yakın sahilde bir işaret ateşi inşa edin.']
 
 - &TRADING
   - [Message, En az 30 aletlik bir ada stoğuna ulaş. Bu biraz zaman alabilir.]
@@ -218,14 +218,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
+  - [Message, Çadırlara bağlantısı olan bir İbadet Çadırı inşa edin.]
   - [Headline, 'YENİ GÖREV: BİR İBADET ÇADIRI YAP']
   - [Image, content/gui/images/background/hr.png]
   - Bu aletler şimdilik yeterli olacak. Tebrikler!
   - Artık halkınıza; barınma, ana meydan ve yiyecek sağlıyorsunuz.
   - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
   - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
+  - Buna benzer hizmet binaları da Çadırlara bir Patika ile bağlanmalıdır, aksi takdirde halkınız onlara ulaşamaz.
   - [Pagebreak]
   - '
 
@@ -238,7 +238,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Görev: Denizcilerinizin inanç talebini yerine getirmek için bu Çadırlarla Patika ile bağlı bir İbadet Çadırı inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -250,7 +250,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Eğer denizciler yeterince mutluysa, Öncüler olarak adlandırılan sonraki seviyeye ilerlemek isteyeceklerdir.
   - Onları mutlu etmek için, tüm halkınızın isteklerini yerine getirdiğinizden, artık vergi seviyesini düşürmek dışında başka bir şey kalmadı.
   - Er geç iflas etmenize yol açabilecek düşük vergileri her zaman uygulamaktan kaçınmalısınız. Bir süre için ve ne yaptığınızı bildiğiniz sürece sorun olmayacak.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Bir süre sonra, ilk birlik Ana Meydana yürüyüp, kütük evi inşa etmek için yeni yapı malzemesi arayacaktır. Bu ev eski çadırın yerini alacak.
   - [Pagebreak]
   - '
 
@@ -264,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
+  - [Message, Bir Çiftlik inşa edin ve çevresinde biraz boş alan bırakın.]
   - [Headline, 'YENİ GÖREV: BİR ÇİFTLİK İNŞA EDİN']
   - [Image, content/gui/images/background/hr.png]
   - Tebrikler! Halkınızın bir bölümü seviye II'ye ulaştı!
@@ -273,8 +273,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Yeni parlak bir sekme göründü.
   - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - Çiftlik, seçtiğiniz sürece bir taneden fazla (ve farklı) mal üretebilen özel bir üretim binasıdır.
+  - Çiftliğin üretim çıktısı, çevresine inşa ettiğiniz alanların türüne göre değişir.
   - [Pagebreak]
   - '
 
@@ -282,9 +282,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
   - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
   - Eğer adanın diğer bölümlerinde (faydalı bir şey olabilir) veya diğer adalarda işlem yapmayı planlıyorsanız, toplayıcılara bir bağlantı gerekecek.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+  - Çiftlik, düzgün çalışabilmesi için ek alan gerektirdiğinden sahile veya mevcut binalarınızın yakınına inşa etmemeye çalışın.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Görev: Bir Çiftlik inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -292,26 +292,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, En az bir otlak inşa edin ve isterseniz patates ekim alanı ekleyin.]
   - [Headline, 'YENİ GÖREV: ALAN İNŞA EDİN']
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
+  - Tek başına Çiftlik, tarlaları olmadan hiçbir şey üretmeyecek.
   - Şimdilik otlak, patates ve şeker ekim alanı aralarında seçim yapabilirsiniz.
-  - 'Let''s have a short overview:
+  - 'Kısaca bir özet geçelim:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Otlak: Koyunlar burada yaşar ve koyun yünü üretir.
 
-    * Potato Field: Grows potatoes which are currently treated as food.
+    * Patates Tarlası: Yiyecek olarak kullanılabilecek patates yetiştirir.
 
-    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
+    * Şeker Tarlası: Likör damıtmak ve (ileride) şekerleme ürünleri üretmek üzere şeker yetiştirir.'
   - Şimdi sadece otlağa ihtiyacımız olacak. Ancak besin depo zinciriniz çok küçükse (belki çok sayıda yerleşim binası var), ayrıca patates de üretebilirsiniz.
-  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
+  - Patatesler için, ürünler üzerinde çalışmak için tek şirket olacak olan Çiftliğe (tarlaya değil!) yol bağlantısı gerektiğini unutmayın.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
+    İnşa ettiğiniz tüm alanların Çiftlik tarafından kapsandığından emin olun.'
+  - Birleşik üretime sahip olabilirsiniz - bir otlak çiftliğin yüzde 100 verimli olmasını sağlamayacaktır - fakat bir Çiftliğin sunabileceği tarla sayısını kontrol etmeniz gerekir.
   - Alanların farklı sınıfları, çiftlik birimlerinin daha fazla veya az zaman harcamasına ihtiyaç duyacak (beslemek, hasat etmek, üretmek vb… için). Bu yüzden bir çiftlik için inşa edilen alanların tümüne zamanında hizmet edemeyebilir.
   - Şimdilik hiç alan inşa etmediğiniz için bu durumları önemsemeniz gerekmiyor. Bunu değiştirelim!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'Görev: Çiftliğin menzili içerisinde en az bir Otlak inşa edin ve isterseniz Patates Tarlaları ekleyin.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -333,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Bu, geçici olarak yıkmak istemediğiniz ancak ihtiyacınız da olmayan bir şirketten para kurtarmanızı sağlar.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+  - 'Diğer çözüm de burada şimdiye kadar bahsedilmeyen bir son seviye-I binası inşa etmektir: Ambar Çadırı.'
+  - 'Bu binanın iki amacı var. Bina:
 
-    * Offers more storage for your goods, and
+    * Mallarınız için daha fazla depo alanı sunar ve
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
+    * kendi toplayıcılarını Depoda olduğu gibi mal getirmesi için gönderir.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir Ambar Çadırı inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
+  - [Message, Çiftliğinizdeki yüne bir şekilde ulaşabilecek bir Dokumacı Çadırı inşa edin.]
   - [Headline, 'YENİ GÖREV: BİR DOKUMACI İNŞA ET']
   - [Image, content/gui/images/background/hr.png]
   - Artık yün üretimi hazır ancak hala bu yünden kıyafet üretmek için bir dokumacıya ihtiyacınız var.
   - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - İki durumda da Patikaya bağlantılarından emin olmalısınız.
+  - Dokumacı Çadırı Çiftliğe yakın yerleştirebilir ve hala yün alıp üretebileceğini görmek için tüm Patikaları yok edebilirsiniz.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Görev: Yün alabilmesi için konumlandırılmış bir Dokumacı Çadırı inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -657,4 +657,4 @@ metadata:
   locale: tr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 120 translated messages, 68 fuzzy translations.
+  translation_status: 163 translated messages, 25 fuzzy translations.
