@@ -297,22 +297,22 @@ class RouteConfig(Window):
 		on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
-		widget = 'traderoute_resource_selection.xml'
+		# widget = 'traderoute_resource_selection.xml'
 
 		def res_filter(res_id):
 			same_icon = slot.findChild(name='button').up_image.source == self.icon_for_resource[res_id]
 			already_listed = res_id in self.instance.route.waypoints[position]['resource_list']
 			return not (same_icon or already_listed)
 
-		dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
-			db=self.session.db, widget=widget, amount_per_line=5, res_filter=res_filter)
+		self.dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
+			db=self.session.db, amount_per_line=5, res_filter=res_filter)
 
-		self._gui.findChild(name="traderoute_resources").addChild(dlg)
+		self._gui.addChild(self.dlg)
 		self._gui.adaptLayout()
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
-		self._gui.findChild(name="traderoute_resources").removeAllChildren()
+		self._gui.removeChild(self.dlg)
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
 		x_position = 105
