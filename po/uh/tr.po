@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-04-22 10:58+0000\n"
+"PO-Revision-Date: 2017-04-25 22:53+0000\n"
 "Last-Translator: monolifed <monolifed@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -1778,7 +1778,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Depo kapasitesini arttırmak için ambar çadırları kurunuz."
+msgstr "Depo kapasitesini arttırmak için ambar çadırları kurun."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Make sure every house is in range of a marketplace."
@@ -1792,7 +1792,7 @@ msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
 "Yerleşim alanınızı genişletmek için depolama çadırları ve gözcü kuleleri "
-"inşa edit."
+"inşa edin."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
