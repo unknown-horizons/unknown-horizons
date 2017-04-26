@@ -36,6 +36,7 @@ dotted path to the test (along with other options), similar to this code:
 		menu = gui.find(name='mainmenu')
 """
 
+import importlib
 import io
 import os
 import shutil
@@ -185,8 +186,7 @@ class TestRunner:
 			tests.gui.test_example.example
 		"""
 		path, name = test_name.rsplit('.', 1)
-		__import__(path)
-		module = sys.modules[path]
+		module = importlib.import_module(path)
 		test_function = getattr(module, name)
 
 		# __original__ is the real test function that was

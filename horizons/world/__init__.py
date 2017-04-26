@@ -21,6 +21,7 @@
 # ###################################################
 
 import copy
+import importlib
 import json
 import logging
 from collections import deque
@@ -323,7 +324,7 @@ class World(BuildingOwner, WorldObject):
 			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
+				module = importlib.import_module('horizons.ai.' + class_package)
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai
