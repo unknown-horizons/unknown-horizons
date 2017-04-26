@@ -49,7 +49,7 @@ class RouteConfig(Window):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	MAX_ENTRIES = 7
+	MAX_ENTRIES = 6
 	MIN_ENTRIES = 2
 	SLOTS_PER_ENTRY = 3
 
