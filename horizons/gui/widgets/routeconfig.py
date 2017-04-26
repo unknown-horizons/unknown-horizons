@@ -49,7 +49,7 @@ class RouteConfig(Window):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	MAX_ENTRIES = 7
+	MAX_ENTRIES = 6
 	MIN_ENTRIES = 2
 	SLOTS_PER_ENTRY = 3
 
@@ -189,7 +189,6 @@ class RouteConfig(Window):
 		vbox.addChildren(self.widgets)
 
 		self._gui.adaptLayout()
-		self._resource_selection_area_layout_hack_fix()
 
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
@@ -237,7 +236,7 @@ class RouteConfig(Window):
 
 		icon = self.icon_for_resource[res_id]
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
-		button.max_size = button.min_size = button.size = (32, 32)
+		button.fixed_size = (32, 32)
 
 		# Hide the resource menu.
 		self.hide_resource_menu()
@@ -283,6 +282,13 @@ class RouteConfig(Window):
 				self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
 
 	def show_resource_menu(self, slot, entry):
+		"""
+		Displays a menu where players can choose which resource to add in the
+		selected slot. Available resources are all possible resources and a
+		'None' resource which allows to delete slot actions.
+		The resources are ordered by their res_id.
+		"""
+
 		position = self.widgets.index(entry)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
@@ -291,7 +297,7 @@ class RouteConfig(Window):
 		on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
-		widget = 'traderoute_resource_selection.xml'
+		widget = "scrollbar_resource_selection.xml"
 
 		def res_filter(res_id):
 			same_icon = slot.findChild(name='button').up_image.source == self.icon_for_resource[res_id]
@@ -299,31 +305,24 @@ class RouteConfig(Window):
 			return not (same_icon or already_listed)
 
 		dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
-			db=self.session.db, widget=widget, amount_per_line=6, res_filter=res_filter)
+			db=self.session.db, widget=widget, amount_per_line=5, res_filter=res_filter)
 
-		self._gui.findChild(name="traderoute_resources").addChild(dlg)
+		self._gui.findChild(name="resources_scrollarea").addChild(dlg)
 		self._gui.adaptLayout()
-		self._resource_selection_area_layout_hack_fix()
-
-	def _resource_selection_area_layout_hack_fix(self):
-		# no one knows why this is necessary, but sometimes we need to set the values anew
-		vbox = self._gui.findChild(name="traderoute_resources")
-		scrollarea = vbox.findChild(name="resources_scrollarea")
-		if scrollarea:
-			scrollarea.max_width = scrollarea.width = vbox.max_width = vbox.width = 320
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
-		self._gui.findChild(name="traderoute_resources").removeAllChildren()
+		self._gui.findChild(name="resources_scrollarea").removeAllChildren()
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
-		x_position = 105
+		x_position = 110
+		y_position = 0
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')
 			slot.name = 'slot_%d' % num
-			slot.position = (x_position, 0)
+			slot.position = (x_position, y_position)
 
 			slot.action = "load"
 
