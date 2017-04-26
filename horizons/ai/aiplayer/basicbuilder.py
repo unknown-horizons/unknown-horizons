@@ -94,10 +94,6 @@ class BasicBuilder:
 		inventories = [land_manager.settlement, ship]
 		return Build.check_resources(extra_resources, Entities.buildings[self.building_id].costs, land_manager.owner, inventories)[0]
 
-	def __cmp__(self, other):
-		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
-		raise NotImplementedError()
-
 	def __str__(self):
 		return 'BasicBuilder of building {0:d} at {1!s}, orientation {2:d}'. \
 			format(self.building_id, self.coords, self.orientation)

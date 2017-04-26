@@ -63,9 +63,6 @@ class StatusIcon:
 		"""
 		return operator.attrgetter("priority")
 
-	def __cmp__(self, other):
-		return cmp(self.__class__, other.__class__)
-
 	def __str__(self):
 		return str(self.__class__) + "(prio:{},icon:{})".format(self.priority, self.icon)
 

@@ -40,7 +40,7 @@ class Dummy:
 				return C
 			return super(self.__class__, self).__getattr__(attr)
 		except AttributeError:
-			if attr in ('__base__', '__bases__', '__basicsize__', '__cmp__',
+			if attr in ('__base__', '__bases__', '__basicsize__',
 				'__dictoffset__', '__flags__', '__itemsize__',
 				'__members__', '__methods__', '__mro__', '__name__',
 				'__subclasses__', '__weakrefoffset__',

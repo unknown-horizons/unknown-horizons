@@ -140,10 +140,6 @@ class BuildingEvaluator:
 		"""Return an alignment value based on the outline of the given coordinates list."""
 		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
 
-	def __cmp__(self, other):
-		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
-		raise NotImplementedError()
-
 	@property
 	def purpose(self):
 		"""Return the BUILDING_PURPOSE constant relevant to the builder."""
