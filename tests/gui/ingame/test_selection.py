@@ -82,7 +82,7 @@ def test_selection_groups(gui):
 
 	# Starting a new game assigns player ship to group 1
 	ship = get_player_ship(gui.session)
-	assert gui.session.selected_instances == set([ship])
+	assert gui.session.selected_instances == {ship}
 
 	gui.select([ship])
 

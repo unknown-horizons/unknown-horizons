@@ -326,8 +326,9 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 
 	def get_displayed_productions(self):
-		possible_res = set(res for field in self.instance.get_providers()
-		                       for res in field.provided_resources)
+		possible_res = {res
+		                for field in self.instance.get_providers()
+		                for res in field.provided_resources}
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
 		productions = {p for p in all_farm_productions for res in p.get_consumed_resources().keys() if res in possible_res}
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

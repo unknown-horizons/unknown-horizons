@@ -237,4 +237,4 @@ class SelectionTool(NavigationTool):
 		for sel_comp in selectable - selected_components:
 			sel_comp.select()
 
-		self.session.selected_instances = set( i.instance for i in selectable )
+		self.session.selected_instances = {i.instance for i in selectable}

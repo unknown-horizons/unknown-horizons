@@ -560,7 +560,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 			   (deposit is not None and tile.object != deposit): # only build on 1 deposit
 				raise _NotBuildableError(BuildableErrorTypes.NEED_RES_SOURCE)
 			deposit = tile.object
-		return set([deposit.worldid])
+		return {deposit.worldid}
 
 	@classmethod
 	def _check_rotation(cls, session, position, rotation):

@@ -347,7 +347,7 @@ class SingleResourceManager(WorldObject):
 	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
 
 	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
-	virtual_resources = set([RES.FISH, RES.RAW_CLAY, RES.RAW_IRON]) # resources that are not actually produced by player owned buildings
+	virtual_resources = {RES.FISH, RES.RAW_CLAY, RES.RAW_IRON} # resources that are not actually produced by player owned buildings
 	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
 
 	def __init__(self, settlement_manager, resource_id, building_id):

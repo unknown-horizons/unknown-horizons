@@ -184,7 +184,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		production = self.producer.get_productions()[0]
 		needed_res = production.get_consumed_resources()
 		# Now sort! -amount is the positive value, drop unnecessary res (amount 0)
-		needed_res = dict((res, -amount) for res, amount in needed_res.items() if amount < 0)
+		needed_res = {res: -amount for res, amount in needed_res.items() if amount < 0}
 		needed_res = sorted(needed_res.items(), key=itemgetter(1), reverse=True)
 		needed_res_container.removeAllChildren()
 		for i, (res, amount) in enumerate(needed_res):

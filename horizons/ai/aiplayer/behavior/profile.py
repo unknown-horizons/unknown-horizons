@@ -40,8 +40,8 @@ class BehaviorProfile:
 		e.g. self.strategies is a dict of Enum => {}, each of such items is later filled by concrete BehaviorProfile.
 		"""
 		super(BehaviorProfile, self).__init__()
-		self.actions = dict(((action_type, {}) for action_type in BehaviorManager.action_types))
-		self.strategies = dict(((strategy_type, {}) for strategy_type in BehaviorManager.strategy_types))
+		self.actions = {action_type: {} for action_type in BehaviorManager.action_types}
+		self.strategies = {strategy_type: {} for strategy_type in BehaviorManager.strategy_types}
 		self.conditions = {}
 
 

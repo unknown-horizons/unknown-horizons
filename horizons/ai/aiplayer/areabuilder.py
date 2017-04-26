@@ -72,7 +72,7 @@ class AreaBuilder(WorldObject):
 	def iter_possible_road_coords(self, rect, blocked_rect):
 		"""Iterate over the possible road tiles that share a side with
 		the given Rect and are not in the blocked Rect."""
-		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
+		blocked_coords_set = {coords for coords in blocked_rect.tuple_iter()}
 		for tile in self.iter_neighbor_tiles(rect):
 			if tile is None:
 				continue

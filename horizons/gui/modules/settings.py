@@ -293,7 +293,7 @@ def get_screen_resolutions(selected_default):
 
 	NOTE: This call only works if the engine is inited.
 	"""
-	possible_resolutions = set([selected_default])
+	possible_resolutions = {selected_default}
 
 	MIN_X = 800
 	MIN_Y = 600

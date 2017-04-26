@@ -144,7 +144,7 @@ class FindPath:
 		if not self.make_target_walkable:
 			# restrict destination coords to walkable tiles, by default they are counted as walkable
 			# the manual set intersection is used because set.intersection(dict) doesn't take advantage of the fast lookup
-			dest_coords_set = set(coords for coords in dest_coords_set if coords in self.path_nodes)
+			dest_coords_set = {coords for coords in dest_coords_set if coords in self.path_nodes}
 		if not dest_coords_set:
 			return None
 

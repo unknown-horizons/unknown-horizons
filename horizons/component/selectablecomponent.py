@@ -234,9 +234,9 @@ class SelectableBuildingComponent(SelectableComponent):
 			for building in buildings:
 				building.get_component(SelectableComponent).set_selection_outline()
 
-			coords = set( coord for
-			              building in buildings for
-			              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
+			coords = {coord for
+			          building in buildings for
+			          coord in building.position.get_radius_coordinates(building.radius, include_self=True)}
 
 			for coord in coords:
 				tile = settlement.ground_map.get(coord)

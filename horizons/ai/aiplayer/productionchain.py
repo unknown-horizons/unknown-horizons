@@ -113,7 +113,7 @@ class ProductionChainSubtreeChoice:
 	"""An object of this class represents a choice between N >= 1 ways of producing the required resource."""
 
 	log = logging.getLogger("ai.aiplayer.productionchain")
-	coverage_resources = set([RES.COMMUNITY, RES.FAITH, RES.EDUCATION, RES.GET_TOGETHER])
+	coverage_resources = {RES.COMMUNITY, RES.FAITH, RES.EDUCATION, RES.GET_TOGETHER}
 
 	def __init__(self, options):
 		super(ProductionChainSubtreeChoice, self).__init__()

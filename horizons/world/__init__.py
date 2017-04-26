@@ -171,7 +171,7 @@ class World(BuildingOwner, WorldObject):
 
 		# use a dict because it's directly supported by the pathfinding algo
 		LoadingProgress.broadcast(self, 'world_init_water')
-		self.water = dict((tile, 1.0) for tile in self.ground_map)
+		self.water = {tile: 1.0 for tile in self.ground_map}
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 		for island in self.islands:
@@ -447,7 +447,7 @@ class World(BuildingOwner, WorldObject):
 				def _preselect_player_ship(player_ship):
 					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = set([player_ship])
+					self.session.selected_instances = {player_ship}
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
 				select_ship = partial(_preselect_player_ship, ship)

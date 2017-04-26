@@ -558,8 +558,8 @@ class IngameGui(LivingObject):
 		"""
 		if ctrl_pressed:
 			# Only consider units owned by the player.
-			units = set(u for u in self.session.selected_instances
-			            if u.owner.is_local_player)
+			units = {u for u in self.session.selected_instances
+			         if u.owner.is_local_player}
 			self.session.selection_groups[num] = units
 			# Drop units of the new group from all other groups.
 			for group in self.session.selection_groups:

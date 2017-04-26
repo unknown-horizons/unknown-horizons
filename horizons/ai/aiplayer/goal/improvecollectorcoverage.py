@@ -68,8 +68,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			self._is_active = bool(self._problematic_buildings)
 
 	def _build_extra_road_connection(self, building, collector_building):
-		collector_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(collector_building.position, collector_building.position))
-		destination_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(building.loading_area, building.position))
+		collector_coords = {coords for coords in self.production_builder.iter_possible_road_coords(collector_building.position, collector_building.position)}
+		destination_coords = {coords for coords in self.production_builder.iter_possible_road_coords(building.loading_area, building.position)}
 		pos = building.loading_area
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 

@@ -606,7 +606,7 @@ class ScenarioMapWidget:
 	@staticmethod
 	def get_available_languages(scenario):
 		# type: (List[Tuple[str, str]]) -> List[str]
-		scenario_langs = list(set(language for language, filename in scenario))
+		scenario_langs = {language for language, filename in scenario}
 		return [LANGUAGENAMES[l] for l in sorted(scenario_langs)]
 
 	def _get_selected_map(self):
