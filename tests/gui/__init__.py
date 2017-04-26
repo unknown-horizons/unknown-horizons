@@ -280,6 +280,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
 			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
+			env['PYTHONFAULTHANDLER'] = '1'
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
