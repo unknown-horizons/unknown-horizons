@@ -315,13 +315,14 @@ class RouteConfig(Window):
 		self._gui.findChild(name="resources_scrollarea").removeAllChildren()
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
-		x_position = 105
+		x_position = 110
+		y_position = 0
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')
 			slot.name = 'slot_%d' % num
-			slot.position = (x_position, 0)
+			slot.position = (x_position, y_position)
 
 			slot.action = "load"
 
