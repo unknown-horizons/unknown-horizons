@@ -297,5 +297,5 @@ class UhDbAccessor(DbReader):
 
 
 def read_savegame_template(db):
-	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script(savegame_template.read())
+	with open(PATHS.SAVEGAME_TEMPLATE, "r") as f:
+		db.execute_script(f.read())
