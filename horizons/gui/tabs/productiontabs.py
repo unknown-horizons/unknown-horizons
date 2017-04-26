@@ -236,9 +236,10 @@ class ProductionOverviewTab(OverviewTab):
 		self.widget.child_finder('capacity_utilization').text = str(utilization) + '%'
 
 	def _add_resource_icons(self, container, resources, marker=False):
-		calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
 		for res in resources:
 			inventory = self.instance.get_component(StorageComponent).inventory
+			calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
+
 			filled = calculate_position(inventory[res])
 			marker_level = calculate_position(-resources[res]) if marker else 0
 			image_button = ImageFillStatusButton.init_for_res(self.instance.session.db, res,
