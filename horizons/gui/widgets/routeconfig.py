@@ -355,9 +355,20 @@ class RouteConfig(Window):
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name="warehouse_name")
-		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
+		warehouse_name = warehouse.settlement.get_component(NamedComponent).name
+		
+		# Limit displayed settlement name length to avoid collision with trade slots
+		if len(warehouse_name) > 14:
+			warehouse_name = warehouse_name[:14] + "..."
+		settlement_name_label.text = warehouse_name
+		
 		player_name_label = entry.findChild(name="player_name")
-		player_name_label.text = warehouse.owner.name
+		player_name = warehouse.owner.name
+		
+		# Limit displayed player name length to avoid collision with trade slots
+		if len(player_name) > 14:
+			player_name = player_name[:14] + "..."
+		player_name_label.text = player_name
 
 		self.add_trade_slots(entry)
 
