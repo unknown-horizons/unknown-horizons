@@ -20,12 +20,12 @@
 # ###################################################
 
 import itertools
+from collections import ChainMap
 
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.pathfinding.pathfinder import a_star_find_path
-from horizons.util.python import ChainedContainer
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.terraincache import TerrainRequirement
@@ -388,7 +388,7 @@ class BuildableLine(Buildable):
 		elif cls.id == BUILDINGS.BARRIER:
 			# Allow nodes that can be walked upon and existing barriers when finding a
 			# build path
-			nodes = ChainedContainer(island.path_nodes.nodes, island.barrier_nodes.nodes)
+			nodes = ChainMap(island.path_nodes.nodes, island.barrier_nodes.nodes)
 		else:
 			raise Exception('BuildableLine does not support building id {0}'.format(cls.id))
 

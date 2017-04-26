@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import collections
 import os
 import sys
 
@@ -152,7 +151,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			widget = self.widget.findChild(name=entry.widget_name)
 			new_value = widget.getData()
 
-			if isinstance(entry.initial_data, collections.Callable):
+			if callable(entry.initial_data):
 				initial_data = entry.initial_data()
 			else:
 				initial_data = entry.initial_data
@@ -192,7 +191,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			widget = self.widget.findChild(name=entry.widget_name)
 
 			if entry.initial_data:
-				if isinstance(entry.initial_data, collections.Callable):
+				if callable(entry.initial_data):
 					initial_data = entry.initial_data()
 				else:
 					initial_data = entry.initial_data
