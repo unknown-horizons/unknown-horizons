@@ -366,8 +366,8 @@ class RouteConfig(Window):
 		player_name = warehouse.owner.name
 		
 		# Limit displayed player name length to avoid collision with trade slots
-		if len(player_name) > 14:
-			player_name = player_name[:14] + "..."
+		if len(player_name) > 18:
+			player_name = player_name[:18] + "..."
 		player_name_label.text = player_name
 
 		self.add_trade_slots(entry)
