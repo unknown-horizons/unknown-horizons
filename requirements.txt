@@ -10,3 +10,4 @@ future
 coverage
 coveralls
 mypy
+typing

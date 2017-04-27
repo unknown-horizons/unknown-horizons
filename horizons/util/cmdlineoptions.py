@@ -166,7 +166,7 @@ unknown-horizons \- real-time strategy/simulation game
 \fBunknown\-horizons\fR [{\fB\-h\fR\ |\ \fB\-\-help\fR}]
 .SH "DESCRIPTION"
 .PP
-\fBUnknown Horizons\fR: isometric 2D real-time strategy/simulation fun.
+Isometric 2D real-time strategy/simulation fun.
 .br
 It puts emphasis on the economy and city building aspects.
 .br
@@ -223,7 +223,7 @@ if __name__ == '__main__':
 	print(r'''\
 .SH "BUGS"
 .PP
-The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
+The bugtracker can be found at \fBhttps://github.com/unknown-horizons/unknown-horizons/issues\fR\&.
 .SH "AUTHOR"
 .PP
 \fBThe Unknown Horizons Team\fR <\&team@unknown-horizons\&.org\&>
