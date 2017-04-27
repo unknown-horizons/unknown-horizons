@@ -49,9 +49,9 @@ class RouteConfig(Window):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	MAX_ENTRIES = 6
+	MAX_ENTRIES = 5
 	MIN_ENTRIES = 2
-	SLOTS_PER_ENTRY = 3
+	SLOTS_PER_ENTRY = 4
 
 	def __init__(self, windows, instance):
 		super(RouteConfig, self).__init__(windows)
@@ -315,8 +315,8 @@ class RouteConfig(Window):
 		self._gui.findChild(name="resources_scrollarea").removeAllChildren()
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
-		x_position = 110
-		y_position = 0
+		x_position = 0
+		y_position = 20
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
