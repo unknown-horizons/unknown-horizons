@@ -15,7 +15,7 @@ python:
 addons:
   apt:
     sources:
-     - sourceline: 'deb [trusted=yes] https://debian.unknown-horizons.org/travis/ /
+     - sourceline: 'deb [trusted=yes] https://debian.unknown-horizons.org/travis/ /'
     # add PPAs with more up-to-date toolchains
     #- ubuntu-toolchain-r-test
     #- llvm-toolchain-trusty-3.9
