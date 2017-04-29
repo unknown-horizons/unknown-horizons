@@ -449,8 +449,6 @@ def _find_matching_map(name_or_path, savegames):
 	@param name_or_path: either a map/savegame name or path to a map/savegame file
 	@return: str with the path to the map/savegame file on success"""
 	game_language = horizons.globals.fife.get_locale()
-	# now we have "_en.yaml" which is set to language_extension variable
-	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
 
 	# Check if name_or_path is a path
 	if os.path.exists(name_or_path):
@@ -478,15 +476,11 @@ def _find_matching_map(name_or_path, savegames):
 		print(found_names)
 		return
 
-	# Look up name in savegames defaultdict
-	map_file = None
-	for locale_name, filename in dict(savegames[name]).items():
-		if locale_name == game_language:
-			map_file = filename
-
-	if map_file is not None:
+	# Get map/savegame name from savegames based on name and locale setting
+	try:
+		map_file = dict(savegames[name])[game_language]
 		return map_file
-	else:
+	except KeyError:
 		print("Error: Cannot find savegame or map '{name}'.".format(name=name))
 		return
 
