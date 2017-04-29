@@ -1,17 +1,19 @@
 <?xml version="1.0"?>
 <Container size="350,90">
-	<Label name="warehouse_name" text="Island Name:" position="0,0" />
-	<Label name="player_name" text="Player Name:" position="100,0" />
+	<Label name="warehouse_name_label" text="Island Name:" position="0,0" />
+	<Label name="warehouse_name" text="" position="0,15" />
+	<Label name="warehouse_name_label" text="Player Name:" position="100,0" />
+	<Label name="player_name" text="" position="100,15" />
 
-	<ImageButton name="move_up" position="280,26"
+	<ImageButton name="move_up" position="280,36"
 		path="images/buttons/up_15"
 		helptext="Move up"  comment="Trade route entry" />
 
-	<ImageButton name="delete_warehouse" position="280,43"
+	<ImageButton name="delete_warehouse" position="280,53"
 		path="images/buttons/delete_small"
 		helptext="Delete entry"  comment="Trade route entry" />
 
-	<ImageButton name="move_down" position="280,64"
+	<ImageButton name="move_down" position="280,74"
 		path="images/buttons/down_15"
 		helptext="Move down"  comment="Trade route entry" />
 </Container>

@@ -316,7 +316,7 @@ class RouteConfig(Window):
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
 		x_position = 0
-		y_position = 20
+		y_position = 30
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
@@ -356,15 +356,15 @@ class RouteConfig(Window):
 
 		settlement_name_label = entry.findChild(name="warehouse_name")
 		warehouse_name = warehouse.settlement.get_component(NamedComponent).name
-		
+
 		# Limit displayed settlement name length to avoid collision with trade slots
 		if len(warehouse_name) > 14:
 			warehouse_name = warehouse_name[:14] + "..."
 		settlement_name_label.text = warehouse_name
-		
+
 		player_name_label = entry.findChild(name="player_name")
 		player_name = warehouse.owner.name
-		
+
 		# Limit displayed player name length to avoid collision with trade slots
 		if len(player_name) > 18:
 			player_name = player_name[:18] + "..."
