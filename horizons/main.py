@@ -445,7 +445,9 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	return True
 
 def _find_matching_map(name_or_path, savegames):
-	"""*name_or_path* is either a map/savegame name or path to a map/savegame file."""
+	"""Find a map by name or path specifiec by user.
+	@param name_or_path: either a map/savegame name or path to a map/savegame file
+	@return: str with the path to the map/savegame file on success"""
 	game_language = horizons.globals.fife.get_locale()
 	# now we have "_en.yaml" which is set to language_extension variable
 	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
