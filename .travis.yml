@@ -73,8 +73,10 @@ install:
   # install python3 modules
   - "pip3 install -r requirements.txt"
 script:
+  - "cp -a /usr/lib/python3/dist-packages/fife/ $VIRTUAL_ENV/lib/python3.4/site-packages/"
+  - "prename 's/\\.cpython-34m-x86_64-linux-gnu/.cpython-34m/' $VIRTUAL_ENV/lib/python3.4/site-packages/fife/*.so"
   # import fife
-  - export PYTHONPATH=/usr/lib/python3/dist-packages:$PYTHONPATH
+  #- export PYTHONPATH=/usr/lib/python3/dist-packages:$PYTHONPATH
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - cd /home/travis/build/unknown-horizons/unknown-horizons
   - isort -c -rc horizons tests *.py
