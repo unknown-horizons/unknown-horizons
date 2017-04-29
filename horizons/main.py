@@ -461,7 +461,7 @@ def _find_matching_map(name_or_path, savegames):
 			print("Error: '{name}' is not a valid Unknown Horizons map or savegame file.".format(name=name_or_path))
 			return
 
-	name = name_or_path	# name_or_path is a possible name of a savegame
+	name = name_or_path	# name_or_path is a name of a map/savegame
 
 	# Check if name matches any map/savegame name
 	if name not in savegames.keys():
