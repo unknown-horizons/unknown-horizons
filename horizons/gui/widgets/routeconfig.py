@@ -316,7 +316,7 @@ class RouteConfig(Window):
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
 		x_position = 0
-		y_position = 30
+		y_position = 40
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):

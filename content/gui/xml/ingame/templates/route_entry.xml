@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<Container size="350,90">
+<Container size="350,100">
 	<Label name="warehouse_name_label" text="Island Name:" position="0,0" />
-	<Label name="warehouse_name" text="" position="0,15" />
+	<Label name="warehouse_name" text="" position="0,20" />
 	<Label name="warehouse_name_label" text="Player Name:" position="100,0" />
-	<Label name="player_name" text="" position="100,15" />
+	<Label name="player_name" text="" position="100,20" />
 
 	<ImageButton name="move_up" position="280,36"
 		path="images/buttons/up_15"
