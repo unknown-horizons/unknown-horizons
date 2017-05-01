@@ -402,7 +402,7 @@ class BuildableLine(Buildable):
 		for x, y in path:
 			action = ''
 			for action_char, (xoff, yoff) in \
-			    sorted(BUILDINGS.ACTION.action_offset_dict.items()): # order is important here
+					sorted(BUILDINGS.ACTION.action_offset_dict.items()): # order is important here
 				if action_char in 'abcd' and (xoff + x, yoff + y) in path:
 					action += action_char
 			if action == '':
