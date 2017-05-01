@@ -66,9 +66,9 @@ class Speech:
 	BUILDING_ON_FIRE = None # type: Optional[str]
 	BUILDING_INFECTED_BY_BLACK_DEATH = None # type: Optional[str]
 
-DEFAULT_LANG="en"
-DEFAULT_VARIATION=0
-DEFAULT_SPEAKER=0
+DEFAULT_LANG = "en"
+DEFAULT_VARIATION = 0
+DEFAULT_SPEAKER = 0
 
 def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	#TODO expand this docstring

@@ -251,7 +251,7 @@ class LandManager(WorldObject):
 					usable_area[(x, min_y + dy)] = 0
 			for y in range(min_y, max_y + 1):
 				for dx in range(width):
-					horizontal_strip[(min_x +dx, y)] = 0
+					horizontal_strip[(min_x + dx, y)] = 0
 					usable_area[(min_x + dx, y)] = 0
 
 			for y in range(min_y + height, max_y + 1):

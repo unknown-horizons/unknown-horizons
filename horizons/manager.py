@@ -247,9 +247,9 @@ class MPPacketmanager:
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
 		"""Returns packets that are to be executed at a certain tick"""
-		command_packets = [x for x in self.command_packet_list if x.tick==tick]
+		command_packets = [x for x in self.command_packet_list if x.tick == tick]
 		if remove_returned_commands:
-			self.command_packet_list = [x for x in self.command_packet_list if x.tick!=tick]
+			self.command_packet_list = [x for x in self.command_packet_list if x.tick != tick]
 		return command_packets
 
 	def get_packets_from_player(self, player_id):
@@ -257,7 +257,7 @@ class MPPacketmanager:
 		Returns all command this player has issued, that are not yet executed
 		@param player_id: worldid of player
 		"""
-		return [x for x in self.command_packet_list if x.player_id==player_id]
+		return [x for x in self.command_packet_list if x.player_id == player_id]
 
 	def add_packet(self, command_packet):
 		"""Receive a packet"""
@@ -285,9 +285,9 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id),
+					cb_diff("local" if pkges[0].player_id == localplayerid else "pl#%02d" % (pkges[0].player_id),
 						pkges[0].checkup_hash,
-						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id),
+						"local" if pkg.player_id == localplayerid else "pl#%02d" % (pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True

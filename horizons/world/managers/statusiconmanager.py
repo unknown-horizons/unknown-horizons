@@ -140,7 +140,7 @@ class StatusIconManager:
 
 	def get_status_string(self, instance):
 		"""Returns render name for status icons of this instance"""
-		status_string = "status_"+ str(id(instance))
+		status_string = "status_" + str(id(instance))
 		return status_string
 
 	def on_hover_instances_changed(self, msg):

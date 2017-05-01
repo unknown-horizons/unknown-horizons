@@ -59,9 +59,9 @@ class ChangeListener:
 			else:
 				listener_list[listener_list.index(listener)] = None
 		except ValueError as e: # nicer error:
-			raise ValueError(str(e)+
-			                 "\nTried to remove: "+str(listener)+"\nat "+str(self)+
-			                 "\nList: "+str([str(i) for i in listener_list]))
+			raise ValueError(str(e) +
+			                 "\nTried to remove: " + str(listener) + "\nat " + str(self) +
+			                 "\nList: " + str([str(i) for i in listener_list]))
 
 	def __call_listeners(self, listener_list):
 		# instead of removing from list, switch the listener in position to None
