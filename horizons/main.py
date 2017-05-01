@@ -463,18 +463,15 @@ def _find_matching_map(name_or_path, savegames):
 	name = name_or_path	# name_or_path is a name of a map/savegame
 
 	# Check if name matches any map/savegame name
-	if name not in savegames.keys():
+	if name not in savegames:
 		print("Error: map/savegame {name} doesn't exist.".format(name=name))
 		return
 
 	# Check if name is ambiguous
-	found_names = ""
-	for test_name in savegames.keys():
-		if test_name.startswith(name):
-			found_names += name + "\n"
-	if len(found_names.splitlines()) > 1:
+	found_names = [test_name for test_name in savegames if test_name.startswith(name)]
+	if len(found_names) > 1:
 		print("Error: {name} is too ambiguous.".format(name=name))
-		print(found_names)
+		print("\n".join(found_names))
 		return
 
 	# Get map/savegame name from savegames based on name and locale setting
