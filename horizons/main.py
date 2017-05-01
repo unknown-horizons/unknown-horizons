@@ -452,7 +452,6 @@ def _find_matching_map(name_or_path, savegames):
 	@return: str with the path to the map/savegame file on success"""
 	game_language = horizons.globals.fife.get_locale()
 
-	# Check if name_or_path is a path
 	if os.path.exists(name_or_path):
 		# Check if name_or_path is a valid map/savegame
 		if os.path.splitext(name_or_path) in (".yaml", ".sqlite"):
