@@ -445,35 +445,42 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	return True
 
 def _find_matching_map(name_or_path, savegames):
-	"""*name_or_path* is either a map/savegame name or path to a map/savegame file."""
+	"""Find a map by name or path specifiec by user.
+	@param name_or_path: either a map/savegame name or path to a map/savegame file
+	@param savegames: defaultdict object of the format:
+	{ <map/savegame name> : [ (<locale 1>, <map path 1>), (<locale 2>, <map path 2>), ... ] }
+	@return: str with the path to the map/savegame file on success"""
 	game_language = horizons.globals.fife.get_locale()
-	# now we have "_en.yaml" which is set to language_extension variable
-	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
-	map_file = None
-	for filename, name in zip(*savegames):
-		if name in (name_or_path, name_or_path + language_extension):
-			# exact match or "tutorial" matching "tutorial_en.yaml"
-			return filename
-		if name.startswith(name_or_path): # check for partial match
-			if map_file is not None:
-				# multiple matches, collect all for output
-				map_file += '\n' + filename
-			else:
-				map_file = filename
-	if map_file is not None:
-		if len(map_file.splitlines()) > 1:
-			print("Error: Found multiple matches:")
-			for name_or_path in map_file.splitlines():
-				print(os.path.basename(name_or_path))
-			return
-		else:
-			return map_file
-	else: # not a savegame, check for path to file or fail
-		if os.path.exists(name_or_path):
+
+	if os.path.exists(name_or_path):
+		# Check if name_or_path is a valid map/savegame
+		if os.path.splitext(name_or_path) in (".yaml", ".sqlite"):
 			return name_or_path
 		else:
-			print("Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
+			print("Error: '{name}' is not a valid Unknown Horizons map or savegame file.".format(name=name_or_path))
 			return
+
+	name = name_or_path	# name_or_path is a name of a map/savegame
+
+	# Check if name matches any map/savegame name
+	if name not in savegames:
+		print("Error: map/savegame {name} doesn't exist.".format(name=name))
+		return
+
+	# Check if name is ambiguous
+	found_names = [test_name for test_name in savegames if test_name.startswith(name)]
+	if len(found_names) > 1:
+		print("Error: {name} is too ambiguous.".format(name=name))
+		print("\n".join(found_names))
+		return
+
+	# Get map/savegame name from savegames based on name and locale setting
+	try:
+		map_file = dict(savegames[name])[game_language]
+		return map_file
+	except KeyError:
+		print("Error: Cannot find savegame or map '{name}'.".format(name=name))
+		return
 
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
