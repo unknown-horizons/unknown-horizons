@@ -87,5 +87,10 @@ after_success:
   - coverage combine
   - coveralls
 notifications:
-  irc: "irc.freenode.org#unknown-horizons"
   email: false
+  irc:
+    channels:
+      - "chat.freenode.net#unknown-horizons"
+      - "chat.freenode.net#unknown-horizons-de"
+    skip_join: false
+    use_notice: false
