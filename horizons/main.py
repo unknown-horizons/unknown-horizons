@@ -447,6 +447,8 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 def _find_matching_map(name_or_path, savegames):
 	"""Find a map by name or path specifiec by user.
 	@param name_or_path: either a map/savegame name or path to a map/savegame file
+	@param savegames: defaultdict object of the format:
+	{ <map/savegame name> : [ (<locale 1>, <map path 1>), (<locale 2>, <map path 2>), ... ] }
 	@return: str with the path to the map/savegame file on success"""
 	game_language = horizons.globals.fife.get_locale()
 
