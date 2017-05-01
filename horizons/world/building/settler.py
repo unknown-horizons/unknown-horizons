@@ -242,7 +242,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		difference = 1.0 - self.settlement.tax_settings[self.level]
-		happiness_decrease = 10 * difference - 6* abs(difference)
+		happiness_decrease = 10 * difference - 6 * abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
 		# NOTE: this formula was actually designed for a different use case, where the happiness
 		# is calculated from the number of available goods -/+ a certain tax factor.
