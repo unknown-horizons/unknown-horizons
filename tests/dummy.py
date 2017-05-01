@@ -68,6 +68,10 @@ class Dummy:
 		return 0
 	def __gt__(self, other):
 		return 0
+	def __lt__(self, other):
+		return 0
+	def __le__(self, other):
+		return 0
 	__sub__ = __div__ = __mul__ = __floordiv__ = __mod__ = __and__ = __or__ = \
 	__xor__ = __rsub__ = __rdiv__ = __rmul__ = __rfloordiv__ = __rmod__ = \
 	__rand__ = __rxor__ = __ror__ = __radd__ = __pow__ = __rpow__ = \
