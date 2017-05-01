@@ -6,6 +6,7 @@
  [![Bountysource](https://www.bountysource.com/badge/team?team_id=9261&style=bounties_received)](https://www.bountysource.com/teams/unknown-horizons/issues?utm_source=unknown-horizons&utm_medium=shield&utm_campaign=bounties_received)
  [![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)](https://hosted.weblate.org/engage/uh/?utm_source=widget)
  [![#unknown-horizons on Freenode](https://img.shields.io/badge/freenode-%23unknown--horizons-green.svg)](https://webchat.freenode.net/?channels=unknown-horizons)
+ [![Requirements Status](https://requires.io/github/MarkusHackspacher/unknown-horizons/requirements.svg?branch=master)](https://requires.io/github/MarkusHackspacher/unknown-horizons/requirements/?branch=master)
 
 _Unknown Horizons_ is a 2D real time strategy simulation with an
 emphasis on economy and city building. Expand your small
