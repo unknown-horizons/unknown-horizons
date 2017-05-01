@@ -576,7 +576,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 			if item[1] + counter >= random_value:
 				return item[0]
 			else:
-				counter+= item[1]
+				counter += item[1]
 
 	def _get_action(self, relationship_score, **parameters):
 		possible_actions = []
