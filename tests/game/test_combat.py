@@ -69,8 +69,6 @@ def one_dead(wid1, wid2):
 
 @game_test()
 def test_noncombat_units(s, p):
-	raise SkipTest()
-
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP)
 
 	# healthy before
@@ -89,8 +87,6 @@ def test_noncombat_units(s, p):
 
 @game_test()
 def test_equip(s, p):
-	raise SkipTest()
-
 	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, (
 	        "This test only makes sense with default cannons."
 	        " Adapt this if you don't want default cannons.")
