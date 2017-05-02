@@ -30,10 +30,26 @@ class TestHorizonsMain(TestCase):
 	"""
 	Test all things related to the horizons.main module.
 	"""
-	@mock.patch('horizons.engine.Fife')
-	@mock.patch('horizons.main.set_debug_log')
+	def setUp(self):
+		self.mock_fife_patcher = mock.patch('horizons.engine.Fife')
+		self.mock_fife = self.mock_fife_patcher.start()
+		self.mock_set_debug_log_patcher = mock.patch('horizons.main.set_debug_log')
+		self.mock_set_debug_log_patcher.start()
+		self.mock_gui_patcher = mock.patch('horizons.main.Gui')
+		self.mock_gui_patcher.start()
+
+	def tearDown(self):
+		self.mock_gui_patcher.stop()
+		self.mock_set_debug_log_patcher.stop()
+		self.mock_fife_patcher.stop()
+
+	@staticmethod
+	def start_game(*args):
+		options = get_option_parser().parse_args(list(args) + ['--no-atlas-generation'])[0]
+		horizons.main.start(options)
+
 	@mock.patch('tests.gui.logger.setup_gui_logger')
-	def test_sets_up_gui_logger(self, mock_setup_gui_logger, mock_set_debug_log, mock_fife):
+	def test_sets_up_gui_logger(self, mock_setup_gui_logger):
 		"""
 		Make sure the gui logger is setup when starting UH with --gui-log.
 
@@ -43,6 +59,20 @@ class TestHorizonsMain(TestCase):
 		"""
 		mock_setup_gui_logger.side_effect = Exception('i was called')
 
-		options = get_option_parser().parse_args(['--gui-log', '--no-atlas-generation'])[0]
 		with self.assertRaisesRegex(Exception, 'i was called'):
-			horizons.main.start(options)
+			self.start_game('--gui-log')
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_start_scenario(self, mock_start_singleplayer):
+		"""
+		Test that a specific scenario can be started from the command line.
+		"""
+		instance = self.mock_fife.return_value
+		instance.get_locale.return_value = 'de'
+
+		self.start_game('--start-scenario', 'tutorial')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert options.is_scenario
+		assert not options.is_map
+		assert options.game_identifier == 'content/scenarios/tutorial_de.yaml'
