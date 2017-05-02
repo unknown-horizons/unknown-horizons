@@ -76,3 +76,15 @@ class TestHorizonsMain(TestCase):
 		assert options.is_scenario
 		assert not options.is_map
 		assert options.game_identifier == 'content/scenarios/tutorial_de.yaml'
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_edit_map(self, mock_start_singleplayer):
+		"""
+		Test that a specific map can be loaded into the editor from the command line.
+		"""
+		self.start_game('--edit-map', 'development')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert options.is_map
+		assert options.is_editor
+		assert options.game_identifier == 'content/maps/development.sqlite'
