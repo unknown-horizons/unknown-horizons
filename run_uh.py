@@ -207,6 +207,9 @@ def main():
 	if ret:
 		from horizons.i18n import gettext as T
 		print(T('Thank you for using Unknown Horizons!'))
+	else:
+		# Game didn't end successfully
+		sys.exit(1)
 
 
 def setup_debugging(options):

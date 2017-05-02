@@ -249,6 +249,7 @@ def start(_command_line_arguments):
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	horizons.globals.fife.run()
+	return True
 
 def setup_update_check():
 	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
