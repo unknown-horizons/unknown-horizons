@@ -21,8 +21,11 @@
 
 from unittest import mock
 
+from nose.plugins.skip import SkipTest
+
 import horizons.main
 from horizons.util.cmdlineoptions import get_option_parser
+from horizons.util.random_map import generate_map_from_seed
 from tests.unittests import TestCase
 
 
@@ -63,9 +66,9 @@ class TestHorizonsMain(TestCase):
 			self.start_game('--gui-log')
 
 	@mock.patch('horizons.main.start_singleplayer')
-	def test_start_scenario(self, mock_start_singleplayer):
+	def test_start_scenario_by_name(self, mock_start_singleplayer):
 		"""
-		Test that a specific scenario can be started from the command line.
+		Test that a specific scenario given by name can be started from the command line.
 		"""
 		instance = self.mock_fife.return_value
 		instance.get_locale.return_value = 'de'
@@ -75,16 +78,126 @@ class TestHorizonsMain(TestCase):
 		options = mock_start_singleplayer.call_args[0][0]
 		assert options.is_scenario
 		assert not options.is_map
+		assert not options.is_editor
 		assert options.game_identifier == 'content/scenarios/tutorial_de.yaml'
 
 	@mock.patch('horizons.main.start_singleplayer')
-	def test_edit_map(self, mock_start_singleplayer):
+	def test_start_scenario_by_path(self, mock_start_singleplayer):
 		"""
-		Test that a specific map can be loaded into the editor from the command line.
+		Test that a specific scenario given by path can be started from the command line.
+		"""
+		self.start_game('--start-scenario', 'content/scenarios/tutorial_uk.yaml')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert options.is_scenario
+		assert not options.is_map
+		assert not options.is_editor
+		assert options.game_identifier == 'content/scenarios/tutorial_uk.yaml'
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_start_map_by_name(self, mock_start_singleplayer):
+		"""
+		Test that a game with a specific map given by name can be started from the command line.
+		"""
+		self.start_game('--start-map', 'development')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
+		assert options.is_map
+		assert not options.is_editor
+		assert options.game_identifier == 'content/maps/development.sqlite'
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_start_map_by_path(self, mock_start_singleplayer):
+		"""
+		Test that a game with a specific map given by path can be started from the command line.
+		"""
+		self.start_game('--start-map', 'content/maps/full-house.sqlite')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
+		assert options.is_map
+		assert not options.is_editor
+		assert options.game_identifier == 'content/maps/full-house.sqlite'
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_start_dev_map(self, mock_start_singleplayer):
+		"""
+		Test that a game with the development map can be started from the command line.
+		"""
+		self.start_game('--start-dev-map')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
+		assert options.is_map
+		assert not options.is_editor
+		assert options.game_identifier == 'content/maps/development.sqlite'
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_start_random_map(self, mock_start_singleplayer):
+		"""
+		Test that a game with a random map can be started from the command line.
+		"""
+		self.start_game('--start-random-map')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
+		assert options.is_map
+		assert not options.is_editor
+		assert options.game_identifier == generate_map_from_seed(None)
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_start_specific_random_map(self, mock_start_singleplayer):
+		"""
+		Test that a game with a random map and a specific seed can be started from the command line.
+		"""
+		self.start_game('--start-specific-random-map', 'custom-seed')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
+		assert options.is_map
+		assert not options.is_editor
+		assert options.game_identifier == generate_map_from_seed('custom-seed')
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_edit_map_by_name(self, mock_start_singleplayer):
+		"""
+		Test that a specific map given by name can be loaded into the editor from the command line.
 		"""
 		self.start_game('--edit-map', 'development')
 
 		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
 		assert options.is_map
 		assert options.is_editor
 		assert options.game_identifier == 'content/maps/development.sqlite'
+
+	@mock.patch('horizons.main.start_singleplayer')
+	def test_edit_map_by_path(self, mock_start_singleplayer):
+		"""
+		Test that a specific map given by path can be loaded into the editor from the command line.
+		"""
+		self.start_game('--edit-map', 'content/maps/full-house.sqlite')
+
+		options = mock_start_singleplayer.call_args[0][0]
+		assert not options.is_scenario
+		assert options.is_map
+		assert options.is_editor
+		assert options.game_identifier == 'content/maps/full-house.sqlite'
+
+	# NOTE These tests are a bit tricky since we need to place a save file into
+	# the user directory. SavegameManager initializes the paths during import,
+	# therefore we can't just override the user dir to point to a temporary
+	# directory.
+
+	def test_load_game_by_name(self):
+		raise SkipTest("Not implemented")
+
+	def test_load_game_by_path(self):
+		raise SkipTest("Not implemented")
+
+	def test_edit_game_map_by_name(self):
+		raise SkipTest("Not implemented")
+
+	def test_edit_game_map_by_path(self):
+		raise SkipTest("Not implemented")
