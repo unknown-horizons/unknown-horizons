@@ -471,14 +471,14 @@ def _find_matching_map(name_or_path, savegames):
 		if name_or_path not in savegames:
 			print("Error: savegame '{name}' not in savegame database.".format(name=name_or_path))
 			return
-		
+
 		# Check if name is ambiguous
 		found_names = [test_name for test_name in savegames if test_name.startswith(name_or_path)]
 		if len(found_names) > 1:
 			print("Error: search for savegame '{name}' returned multiple results.".format(name=name_or_path))
 			print("\n".join(found_names))
-			return	
-	
+			return
+
 		# Get savegame name from savegames based on name and locale setting
 		try:
 			savegame_file = dict(savegames[name_or_path])[game_language]
@@ -488,7 +488,7 @@ def _find_matching_map(name_or_path, savegames):
 		
 	# Search fell through and failed
 	print("Error: Could not find savegame nor map '{name}'.".format(name=name_or_path))
-	return	
+	return
 
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
