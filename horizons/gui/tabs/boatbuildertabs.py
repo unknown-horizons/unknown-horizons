@@ -236,12 +236,12 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		size = (260, 90)
 		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
 		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{}'.format(index))
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_unit_tooltip(ship)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_{}'.format(index), position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
@@ -249,10 +249,10 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=T('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_{}'.format(index), helptext=T('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			button = CancelButton(position=(60, 50), name='ok_{}'.format(index),
 			helptext=ship_unbuildable)
 
 		widget.addChild(button)
