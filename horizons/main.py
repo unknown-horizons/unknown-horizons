@@ -485,7 +485,7 @@ def _find_matching_map(name_or_path, savegames):
 			return savegame_file
 		except KeyError:
 			print("Error: could not find savegame '{name}'. The locale '{locale}' may be wrong.".format(name=name_or_path, locale=game_language))
-		
+
 	# Search fell through and failed
 	print("Error: Could not find savegame nor map '{name}'.".format(name=name_or_path))
 	return
