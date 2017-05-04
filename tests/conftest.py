@@ -19,21 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from functools import partial
-
 import pytest
 
-from horizons.util.random_map import generate_map_from_seed
-from tests.game import game_test
+
+def pytest_addoption(parser):
+	parser.addoption('--long-tests', action='store_true', help='include long-running tests')
 
 
-@pytest.mark.long
-@pytest.mark.parametrize("seed", [1, 2, 3])
-def test_ai_long(seed):
-	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=60 * 60)
-	def test(session, _):
-		"""Let 2 AI players play for 40 minutes."""
-		session.run(seconds=40 * 60)
-		assert session.world.settlements
+def pytest_configure(config):
+	config.addinivalue_line('markers', 'long: mark test as long-running')
 
-	test()
+
+def pytest_runtest_setup(item):
+	# Skip tests marked as long unless specified otherwise on the command line
+	envmarker = item.get_marker('long')
+	if envmarker is not None:
+		if not item.config.getoption('--long-tests'):
+			pytest.skip('test is long running')
