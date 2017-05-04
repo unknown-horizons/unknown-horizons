@@ -3,6 +3,7 @@ PyYAML
 Pillow
 isort
 pytest
+pytest-cov
 polib
 pycodestyle
 future
