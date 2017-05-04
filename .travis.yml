@@ -80,7 +80,7 @@ script:
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - isort -c -rc horizons tests *.py
   - pycodestyle horizons tests *.py development
-  - COVERAGE_FILE=.coverage.nongui pytest --verbose --cov --cov-report=
+  - COVERAGE_FILE=.coverage.nongui pytest --verbose --cov --cov-report= -rs
 #  - RUNCOV=1 python3 run_tests.py -a gui tests/gui --verbose --nologcapture
 after_success:
   - coverage combine
