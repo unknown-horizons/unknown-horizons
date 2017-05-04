@@ -4,6 +4,7 @@ Pillow
 isort
 pytest
 pytest-cov
+pytest-warnings
 polib
 pycodestyle
 future
