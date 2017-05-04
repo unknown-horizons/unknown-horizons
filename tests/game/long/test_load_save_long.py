@@ -23,11 +23,14 @@ import os
 import tempfile
 from functools import partial
 
+import pytest
+
 from horizons.util.random_map import generate_map_from_seed
 from horizons.util.savegameaccessor import SavegameAccessor
 from tests.game import game_test
 
 
+@pytest.mark.long
 @game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=2 * 60)
 def test_save_trivial(session, _):
 	"""
@@ -46,7 +49,3 @@ def test_save_trivial(session, _):
 	SavegameAccessor(filename, False)
 
 	os.unlink(filename)
-
-# this disables the test in general and only makes it being run when
-# called like this: run_tests.py -a long
-test_save_trivial.long = True
