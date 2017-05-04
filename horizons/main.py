@@ -459,7 +459,7 @@ def _find_matching_map(name_or_path, savegames):
 	if isinstance(savegames, tuple):
 		if name_or_path.endswith(".sqlite"):
 			# The savegames database handles only relative paths
-			if name_or_path is not os.path.relpath(name_or_path):
+			if name_or_path is not os.path.relpath(name_or_path) and os.path.exists(name_or_path):
 				name_or_path = os.path.relpath(name_or_path)
 				for path in savegames[0]:
 					if path == name_or_path:
@@ -472,7 +472,7 @@ def _find_matching_map(name_or_path, savegames):
 	if isinstance(savegames, dict):
 		if name_or_path.endswith(".yaml"):
 			# The savegames database handles only relative paths
-			if name_or_path is not os.path.relpath(name_or_path):
+			if name_or_path is not os.path.relpath(name_or_path) and os.path.exists(name_or_path):
 				name_or_path = os.path.relpath(name_or_path)
 				name_or_path, game_language = os.path.splitext(os.path.basename(name_or_path))[0].split("_")
 
