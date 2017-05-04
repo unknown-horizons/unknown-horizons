@@ -309,12 +309,9 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 		# we need to store the original function, otherwise the new process will execute
 		# this decorator, thus spawning a new process..
 		setattr(wrapped, '__original__', func)
-		setattr(wrapped, 'gui', True) # mark as gui for test selection
 		return wrapped
 
 	return deco
-
-gui_test.__test__ = False # type: ignore
 
 # FIXME GUI tests still don't work in parallel, this is needed for game/unit tests to work
 _multiprocess_can_split_ = True
