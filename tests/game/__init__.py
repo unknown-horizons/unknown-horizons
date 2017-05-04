@@ -44,17 +44,6 @@ from tests.utils import Timer
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fixtures')
 
 
-db = None
-
-def setup_package():
-	"""
-	Setup read-only database. This might have to change in the future, tests should not
-	fail only because a production now takes 1 second more in the game.
-	"""
-	global db
-	db = horizons.main._create_main_db()
-
-
 @contextlib.contextmanager
 def _dbreader_convert_dummy_objects():
 	"""
@@ -233,9 +222,7 @@ def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=
 		raise Exception('Test run exceeded {:d}s time limit'.format(timeout))
 
 	def deco(func):
-		@wraps(func)
 		def wrapped(*args):
-			horizons.globals.db = db
 			if not manual_session and not use_fixture:
 				s, p = new_session(mapgen=mapgen, human_player=human_player, ai_players=ai_players)
 			elif use_fixture:
