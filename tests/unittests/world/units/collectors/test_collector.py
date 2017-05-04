@@ -33,10 +33,10 @@ class TestJobList(TestCase):
 		return test_list.collector.position.distance(test_list[ident].object.loading_area)
 
 	def create_list(self, order):
-		test_list = JobList(TestCollector(0, 0), order)
-		test_list.append(Job(TestObject(1, 3, 3), [Job.ResListEntry(3, 4, False)]))
-		test_list.append(Job(TestObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
-		test_list.append(Job(TestObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
+		test_list = JobList(DummyCollector(0, 0), order)
+		test_list.append(Job(DummyObject(1, 3, 3), [Job.ResListEntry(3, 4, False)]))
+		test_list.append(Job(DummyObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
+		test_list.append(Job(DummyObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
 		return test_list
 
 	def test_sort_distance(self):
@@ -61,11 +61,11 @@ class TestJobList(TestCase):
 		self.assertEqual(test_list[2].object.id, 2)
 
 	def test_sort_fewest_available_and_distance(self):
-		test_list = JobList(TestCollector(0, 0), JobList.order_by.fewest_available_and_distance)
+		test_list = JobList(DummyCollector(0, 0), JobList.order_by.fewest_available_and_distance)
 
-		test_list.append(Job(TestObject(1, 3, 3), [Job.ResListEntry(2, 4, False)]))
-		test_list.append(Job(TestObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
-		test_list.append(Job(TestObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
+		test_list.append(Job(DummyObject(1, 3, 3), [Job.ResListEntry(2, 4, False)]))
+		test_list.append(Job(DummyObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
+		test_list.append(Job(DummyObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
 		test_list._sort_jobs_fewest_available_and_distance()
 
 		# Make sure everything was sorted in order of distance with secondary
@@ -75,13 +75,13 @@ class TestJobList(TestCase):
 		self.assertEqual(test_list[2].object.id, 1)
 
 	def test_sort_for_storage(self):
-		test_list = JobList(TestCollector(0, 0), JobList.order_by.for_storage_collector)
+		test_list = JobList(DummyCollector(0, 0), JobList.order_by.for_storage_collector)
 
-		test_list.append(Job(TestObject(1, 3, 3), [Job.ResListEntry(2, 4, False)]))
-		test_list.append(Job(TestObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
-		test_list.append(Job(TestObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
-		test_list.append(Job(TestObject(4, 9, 0), [Job.ResListEntry(4, 9, target_inventory_full=True)]))
-		test_list.append(Job(TestObject(BUILDINGS.CLAY_DEPOSIT, 10, 5), [Job.ResListEntry(4, 9, False)]))
+		test_list.append(Job(DummyObject(1, 3, 3), [Job.ResListEntry(2, 4, False)]))
+		test_list.append(Job(DummyObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
+		test_list.append(Job(DummyObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
+		test_list.append(Job(DummyObject(4, 9, 0), [Job.ResListEntry(4, 9, target_inventory_full=True)]))
+		test_list.append(Job(DummyObject(BUILDINGS.CLAY_DEPOSIT, 10, 5), [Job.ResListEntry(4, 9, False)]))
 		test_list.sort_jobs()
 
 		# Make sure everything was sorted in order of distance with secondary
@@ -92,11 +92,11 @@ class TestJobList(TestCase):
 		self.assertEqual(test_list[3].object.id, 1)
 		self.assertEqual(test_list[4].object.id, BUILDINGS.CLAY_DEPOSIT)
 
-		# Both give res 2, but TestObject with id 3 is closer
+		# Both give res 2, but DummyObject with id 3 is closer
 		self.assertTrue(self.distance(test_list, 1) <= self.distance(test_list, 2))
 
 
-class TestCollector:
+class DummyCollector:
 	"""Dummy collector that only provides what we need to run the tests."""
 
 	def __init__(self, x, y):
@@ -111,13 +111,13 @@ class TestCollector:
 		        5: 4}
 
 
-class TestObject(ProductionBuilding):
+class DummyObject(ProductionBuilding):
 	"""Dummy object that acts as building as far as we need it to"""
 
 	def __init__(self, id, x, y):
 		self.id = id
 		self.loading_area = Point(x, y)
-		self.island = TestIsland()
+		self.island = DummyIsland()
 		self.position = Rect(x, y, 10, 10)
 
 	def get_produced_resources(self):
@@ -137,6 +137,6 @@ class ClayPit(ProductionBuilding):
 		return (RES.RAW_CLAY,)
 
 
-class TestIsland(Island):
+class DummyIsland(Island):
 	def __init__(self):
 		self.buildings = [ClayPit(BUILDINGS.CLAY_PIT, 10, 6)]
