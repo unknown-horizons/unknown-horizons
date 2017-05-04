@@ -289,8 +289,8 @@ class World(BuildingOwner, WorldObject):
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10
-		for x in range(self.min_x-MAP.BORDER, self.max_x+MAP.BORDER, fake_tile_size):
-			for y in range(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
+		for x in range(self.min_x - MAP.BORDER, self.max_x + MAP.BORDER, fake_tile_size):
+			for y in range(self.min_y - MAP.BORDER, self.max_y + MAP.BORDER, fake_tile_size):
 				fake_tile_x = x - 1
 				fake_tile_y = y + fake_tile_size - 1
 				if not preview:
@@ -300,7 +300,7 @@ class World(BuildingOwner, WorldObject):
 					if self.min_x <= x + x_offset < self.max_x:
 						for y_offset in range(fake_tile_size):
 							if self.min_y <= y + y_offset < self.max_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
+								self.ground_map[(x + x_offset, y + y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# Remove parts that are occupied by islands, create the island map and the full map.

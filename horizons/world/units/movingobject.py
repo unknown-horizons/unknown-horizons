@@ -222,7 +222,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# TODO/HACK the *5 provides slightly less flickery behavior of the moving
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
-		location_list = fife.LocationList([self._fife_location2]*5)
+		location_list = fife.LocationList([self._fife_location2] * 5)
 		# It exists for FIFE 0.3.4 compat. See #1993.
 		if Fife.getVersion() == (0,3,4):
 			location_list.thisown = 0

@@ -81,7 +81,7 @@ class Disaster(WorldObject):
 		building.disaster = self
 		if self.DISASTER_RES is not None and not load: # in load, storage save/load will kick in
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
-			assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+			assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def recover(self, building):
 		"""Inverse of infect(). Is also called when buildings are torn down by the user."""
@@ -92,7 +92,7 @@ class Disaster(WorldObject):
 			inv = building.get_component(StorageComponent).inventory
 			if inv[self.DISASTER_RES] > 0:
 				remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
-				assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+				assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout."""

@@ -150,7 +150,7 @@ class Inventory(Container):
 		if index <= self.items_per_line: # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
 			if len(icons) > self.items_per_line:
-				self.parent.removeChildren(icons[self.items_per_line-1:])
+				self.parent.removeChildren(icons[self.items_per_line - 1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.items_per_line

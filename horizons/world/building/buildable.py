@@ -296,7 +296,7 @@ class Buildable:
 			for build in builds_in_construction:
 				(sizex, sizey) = Entities.buildings[build.building_class].size
 				for (neededx, neededy) in position.tuple_iter():
-					if neededx in range(build.x, build.x+sizex) and neededy in range(build.y, build.y+sizey):
+					if neededx in range(build.x, build.x + sizex) and neededy in range(build.y, build.y + sizey):
 						raise _NotBuildableError(BuildableErrorTypes.OTHER_BUILDING_THERE)
 		return tearset
 
@@ -466,7 +466,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 				is_coastline = ('coastline' in session.world.get_tile(point).classes)
 			else:
 				is_coastline = False
-			coastline[point.x-x, point.y-y] = is_coastline
+			coastline[point.x - x, point.y - y] = is_coastline
 
 		""" coastline looks something like this:
 		111

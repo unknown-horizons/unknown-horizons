@@ -52,7 +52,7 @@ class GeneralLoader:
 
 		anim_length = {} # dict containing 'file: anim_end' items
 		for i, filename in enumerate(files, start=1):
-			anim_length[filename] = i * (time/1000.0) / len(files)
+			anim_length[filename] = i * (time / 1000.0) / len(files)
 		return anim_length
 
 	@classmethod

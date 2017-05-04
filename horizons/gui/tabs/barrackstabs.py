@@ -63,7 +63,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 
 	def build_groundunit_info(self, index, groundunit, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_{}'.format(index), position=(0, 20 + index*90),
+		widget = Container(name='showcase_{}'.format(index), position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
 		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{}'.format(index))
 		widget.addChild(bg_icon)

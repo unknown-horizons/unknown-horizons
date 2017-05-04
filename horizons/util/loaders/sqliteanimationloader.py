@@ -85,7 +85,7 @@ class SQLiteAnimationLoader:
 					img.setXShift(x)
 					img.setYShift(y)
 
-			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
 			frame_start = float(frame_end)
 		# currently unused. would trigger onInstanceActionFrame of
 		# fife.InstanceActionListener instance

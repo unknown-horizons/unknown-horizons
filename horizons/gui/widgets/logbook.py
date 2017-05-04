@@ -181,8 +181,8 @@ class LogBook(PickBeltWidget, Window):
 		"""Redraws gui. Necessary when current message has changed."""
 		if self._parameters: # there is something to display if this has items
 			self._display_parameters_on_page(self._parameters[self._cur_entry], 'left')
-			if self._cur_entry+1 < len(self._parameters): # check for content on right page
-				self._display_parameters_on_page(self._parameters[self._cur_entry+1], 'right')
+			if self._cur_entry + 1 < len(self._parameters): # check for content on right page
+				self._display_parameters_on_page(self._parameters[self._cur_entry + 1], 'right')
 			else:
 				self._display_parameters_on_page([], 'right') # display empty page
 		else:

@@ -114,11 +114,11 @@ class ConcreteObject(WorldObject):
 		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
 		if (Fife.getVersion() >= (0, 3, 6)):
 			if repeating:
-				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
+				self._instance.actRepeat(action + "_" + str(self._action_set_id), facing_loc)
 			else:
-				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+				self._instance.actOnce(action + "_" + str(self._action_set_id), facing_loc)
 		else:
-			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+			self._instance.act(action + "_" + str(self._action_set_id), facing_loc, repeating)
 		ActionChanged.broadcast(self, action)
 
 	def has_action(self, action):
@@ -161,7 +161,7 @@ class ConcreteObject(WorldObject):
 				action_set = cls.weighted_choice(action_sets[level])
 			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
-			for possible_level in reversed(range(level+1)):
+			for possible_level in reversed(range(level + 1)):
 				if possible_level in (action_sets.keys()):
 					action_set = cls.weighted_choice(action_sets[possible_level])
 					break

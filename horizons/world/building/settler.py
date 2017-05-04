@@ -108,7 +108,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
-		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
+		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level + 1)
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
 
@@ -134,7 +134,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		Add a production line that gets the necessary upgrade material.
 		When the production finishes, it calls upgrade_materials_collected.
 		"""
-		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
+		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level + 1)
 		self._upgrade_production = self.get_component(Producer).add_production_by_id( upgrade_material_prodline )
 		self._upgrade_production.add_production_finished_listener(self.level_up)
 
@@ -232,7 +232,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# see http://wiki.unknown-horizons.org/w/Settler_taxing
 
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
-		happiness_tax_modifier = 0.5 + (float(self.happiness)/70.0)
+		happiness_tax_modifier = 0.5 + (float(self.happiness) / 70.0)
 		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
@@ -268,7 +268,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		if change != 0:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
-			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.get_component(Producer).alter_production_time( 6.0 / 7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self.inhabitants += change
 			SettlerInhabitantsChanged.broadcast(self, change)
 			self._changed()

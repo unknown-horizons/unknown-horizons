@@ -26,7 +26,7 @@ from tests.gui.scenarios.helper import (
 	assert_win, settlement_res_stored_greater, settler_level_greater, var_eq, wait_and_close_logbook)
 
 
-@gui_test(use_scenario='content/scenarios/tutorial_en', timeout=7*60)
+@gui_test(use_scenario='content/scenarios/tutorial_en', timeout=7 * 60)
 def test_tutorial(gui):
 	"""Test the tutorial scenario."""
 

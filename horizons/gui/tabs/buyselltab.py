@@ -230,7 +230,7 @@ class BuySellTab(TabInterface):
 			inventory = self.trade_post.get_inventory()
 			filled = (100 * inventory[resource_id]) // inventory.get_limit(resource_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
-			                    icon.height - int(icon.height*filled))
+			                    icon.height - int(icon.height * filled))
 			# reuse code from toggle to finish setup (must switch state before, it will reset it)
 			slot.action = "sell" if slot.action == "buy" else "buy"
 			self.toggle_buysell(slot_id, keep_hint=keep_hint)

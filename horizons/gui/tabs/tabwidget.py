@@ -88,7 +88,7 @@ class TabWidget:
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.widget.size = (54, 55*len(self._tabs))
+		self.widget.size = (54, 55 * len(self._tabs))
 		self.widget.adaptLayout()
 
 		self._apply_layout_hack()

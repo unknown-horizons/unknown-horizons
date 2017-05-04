@@ -158,9 +158,9 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			image = self.__class__.UNIT_THUMBNAIL.format(type_id=unit_type)
 			helptext = T("{ship} (place in queue: {place})").format(
 		            ship=self.instance.session.db.get_unit_type_name(unit_type),
-		            place=place_in_queue+1)
+		            place=place_in_queue + 1)
 			# people don't count properly, always starting at 1..
-			icon_name = "queue_elem_"+str(place_in_queue)
+			icon_name = "queue_elem_" + str(place_in_queue)
 
 			try:
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
@@ -234,7 +234,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
 	def build_ship_info(self, index, ship, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
 		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{}'.format(index))
 		widget.addChild(bg_icon)

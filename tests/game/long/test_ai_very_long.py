@@ -30,10 +30,10 @@ def test_ai_very_long():
 	yield run_ai_very_long, 4
 
 def run_ai_very_long(seed):
-	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=6*60*60)
+	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=6 * 60 * 60)
 	def test(session, _):
 		"""Let 2 AI players play for 4 hours."""
-		session.run(seconds=4*60*60)
+		session.run(seconds=4 * 60 * 60)
 		assert session.world.settlements
 
 	test()

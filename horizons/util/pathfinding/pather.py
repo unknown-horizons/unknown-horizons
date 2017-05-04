@@ -160,7 +160,7 @@ class AbstractPather:
 				raise PathBlockedError
 
 		# check if we have to change visibility because of entering or leaving a building
-		if self.destination_in_building and self.cur == len(self.path)-1:
+		if self.destination_in_building and self.cur == len(self.path) - 1:
 			self.destination_in_building = False
 			self.unit.hide()
 		elif self.source_in_building and self.cur == 2:
@@ -181,7 +181,7 @@ class AbstractPather:
 
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
-		del self.path[self.cur+1:]
+		del self.path[self.cur + 1:]
 
 	def save(self, db, unitid):
 		# just save each step of the path

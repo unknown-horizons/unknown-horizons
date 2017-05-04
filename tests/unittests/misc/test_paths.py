@@ -42,7 +42,7 @@ class TestPaths(TestCase):
 
 		outer = tempfile.mkdtemp( self.__class__.odd_characters )
 		inner = str(os.path.join(outer, self.__class__.odd_characters))
-		inner2 = str(os.path.join(outer, self.__class__.odd_characters+"2"))
+		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 
 		PATHS.USER_DIR = inner
 
