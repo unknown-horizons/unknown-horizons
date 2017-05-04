@@ -29,6 +29,7 @@ import pytest
 
 def pytest_addoption(parser):
 	parser.addoption('--long-tests', action='store_true', help='include long-running tests')
+	parser.addoption('--gui-tests', action='store_true', help='include gui tests')
 
 
 def pytest_configure(config):
@@ -37,10 +38,25 @@ def pytest_configure(config):
 
 def pytest_runtest_setup(item):
 	# Skip tests marked as long unless specified otherwise on the command line
-	envmarker = item.get_marker('long')
-	if envmarker is not None:
+	marker = item.get_marker('long')
+	if marker is not None:
 		if not item.config.getoption('--long-tests'):
 			pytest.skip('test is long running')
+
+	# Skip gui tests unless specified otherwise on the command line
+	marker = item.get_marker('gui')
+	if marker is not None:
+		if not item.config.getoption('--gui-tests'):
+			pytest.skip('test is gui test')
+
+
+def pytest_collection_modifyitems(items):
+	"""
+	Mark all tests in gui directory.
+	"""
+	for item in items:
+		if 'tests/gui/' in item.parent.name:
+			item.add_marker(pytest.mark.gui)
 
 
 # Basic test setup, installs global mock for fife so we can run gui/game tests.
