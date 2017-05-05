@@ -218,7 +218,7 @@ def saveload(session):
 	return game_session
 
 
-def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
+def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=0,
               manual_session=False, use_fixture=False):
 	"""
 	Decorator that is needed for each test in this package. setup/teardown of function

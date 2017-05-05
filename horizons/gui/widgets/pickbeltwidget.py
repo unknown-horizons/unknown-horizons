@@ -54,7 +54,7 @@ class PickBeltWidget:
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 
 				start_x, start_y = self.pickbelt_start_pos
-				pickbelt.position = (start_x + 5*i, start_y + 70*i)
+				pickbelt.position = (start_x + 5 * i, start_y + 70 * i)
 
 				container = self.widget.findChild(name="%s_pickbelts" % side)
 				container.addChild(pickbelt)

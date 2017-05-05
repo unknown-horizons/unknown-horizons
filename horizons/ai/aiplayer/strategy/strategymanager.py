@@ -182,7 +182,7 @@ class StrategyManager:
 			'power':power_balance,
 			'terrain':terrain_balance,
 		}
-		balance = {key: trim_value(value, 1./trimming_factor, trimming_factor) for key, value in balance.items()}
+		balance = {key: trim_value(value, 1. / trimming_factor, trimming_factor) for key, value in balance.items()}
 		balance = {key: map_balance(value, trimming_factor, linear_boundary) for key, value in balance.items()}
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)

@@ -46,7 +46,7 @@ for root, dirs, filenames in os.walk(includes_dir):
     if root is includes_dir:
         final = includes_target
     else:
-        final = includes_target + root[len(includes_dir)+1:] + '/'
+        final = includes_target + root[len(includes_dir) + 1:] + '/'
     files = []
     for file in filenames:
         if (file[0] != '.'):

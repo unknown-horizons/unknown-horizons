@@ -89,7 +89,7 @@ def diplomacy_graph():
 
 		# always print upper boundary
 		x = [-10, 10]
-		y = [upper_boundary]*2
+		y = [upper_boundary] * 2
 		pylab.plot (x,y,color='y', marker=None)
 
 		functions = []
@@ -101,7 +101,7 @@ def diplomacy_graph():
 			functions.append((get_neutral_function(**parameters['neutral']), 'b'))
 
 		for f, c in functions:
-			gen = [(x/10.0, f(x/10.0)) for x in xrange(-100, 100) ]
+			gen = [(x / 10.0, f(x / 10.0)) for x in xrange(-100, 100) ]
 			x = [item[0] for item in gen]
 			y = [item[1] for item in gen]
 			pylab.plot(x,y, color=c,marker=None)

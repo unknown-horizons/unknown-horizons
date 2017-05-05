@@ -75,7 +75,7 @@ def map_balance(value, n, m):
 	# normally we'd need to have special cases for value < 1.0 and value > 1.0
 	# but we turn cases of 1/n into n instead
 	if value < 1.0:
-		value = 1./value
+		value = 1. / value
 		m *= -1
 	return ((value - 1.0) / (n - 1.0)) * m
 

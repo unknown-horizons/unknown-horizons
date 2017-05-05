@@ -117,7 +117,7 @@ class ProductionOverviewTab(OverviewTab):
 					centered_container.addChild(toggle_icon)
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					centered_container.anim = anim
-					anim.start(1.0/12, -1) # always start anew, people won't notice
+					anim.start(1.0 / 12, -1) # always start anew, people won't notice
 					self._animations.append(weakref.ref(anim))
 
 			# fill it with input and output resources

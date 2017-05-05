@@ -284,7 +284,7 @@ class ResourceOverviewBar:
 		for res, amount in build_costs.items():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = Label(text="-"+str(amount))
+			cost_label = Label(text="-" + str(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
 			if res in res_list:

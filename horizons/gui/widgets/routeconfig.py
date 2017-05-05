@@ -62,7 +62,7 @@ class RouteConfig(Window):
 			CreateRoute(instance).execute(self.session)
 
 			# We must make sure that the createRoute command has successfully finished, even in network games.
-			Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
+			Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY + 2)
 		else:
 			self._init_gui()
 

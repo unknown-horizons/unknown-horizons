@@ -189,7 +189,7 @@ def content_from_file(filename):
 
 	if strings:
 		return ('\n\t"{}" : {'.format(filename) +
-		       (ROWINDENT + '{},'.format(','+ROWINDENT).join(strings)) + ROWINDENT + '},')
+		       (ROWINDENT + '{},'.format(',' + ROWINDENT).join(strings)) + ROWINDENT + '},')
 	else:
 		return ''
 

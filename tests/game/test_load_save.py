@@ -154,13 +154,13 @@ def test_hunter_save_load():
 
 	# do full run without saveload
 	collector = get_hunter_collector(session)
-	for i in range(len(sequence)-1):
-		await_transition(session, collector, sequence[i], sequence[i+1])
+	for i in range(len(sequence) - 1):
+		await_transition(session, collector, sequence[i], sequence[i + 1])
 
 	# do full run with saveload
-	for i in range(len(sequence)-1):
+	for i in range(len(sequence) - 1):
 		collector = get_hunter_collector(session)
-		await_transition(session, collector, sequence[i], sequence[i+1])
+		await_transition(session, collector, sequence[i], sequence[i + 1])
 		session = saveload(session)
 
 	# last state reached successfully 2 times -> finished

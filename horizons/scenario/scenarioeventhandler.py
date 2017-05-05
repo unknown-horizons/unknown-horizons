@@ -276,7 +276,7 @@ class _Action:
 		try:
 			self.action_type = action_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat('Encountered action without type\n'+str(action_dict))
+			raise InvalidScenarioFileFormat('Encountered action without type\n' + str(action_dict))
 		try:
 			self.callback = ACTIONS.get(self.action_type)
 		except KeyError:
@@ -304,7 +304,7 @@ class _Condition:
 		try:
 			self.cond_type = cond_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat("Encountered condition without type\n"+str(cond_dict))
+			raise InvalidScenarioFileFormat("Encountered condition without type\n" + str(cond_dict))
 		try:
 			self.callback = CONDITIONS.get(self.cond_type)
 		except KeyError:

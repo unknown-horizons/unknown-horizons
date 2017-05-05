@@ -89,13 +89,13 @@ def get_settler_name(tier):
 
 def format_prodline(line_list, depth):
 	for res, amount in line_list:
-		print(' '*depth, '{amount:>4} {name:16} ({id:2})'.format(
+		print(' ' * depth, '{amount:>4} {name:16} ({id:2})'.format(
 			amount=abs(amount), name=get_res_name(res), id=res))
 
 def print_production_lines():
 	print('Production lines per building:')
 	for b in Entities.buildings.itervalues():
-		print('\n', b.name, '\n', '='*len(b.name))
+		print('\n', b.name, '\n', '=' * len(b.name))
 		for comp in b.component_templates:
 			if not isinstance(comp, dict):
 				continue
@@ -110,7 +110,7 @@ def print_production_lines():
 					disabled_by_default = dct.get('enabled_by_default') is not None
 					enabled_text = (disabled_by_default and 'not ' or '') + 'enabled by default'
 					time = dct.get('time') or 1
-					print('{time:>3}s'.format(time=time), '('+changes_anim_text+',', enabled_text+')')
+					print('{time:>3}s'.format(time=time), '(' + changes_anim_text + ',', enabled_text + ')')
 					consumes = dct.get('consumes')
 					if consumes:
 						print('   consumes')
@@ -236,13 +236,13 @@ def print_collector_restrictions():
 def print_tier_data():
 	print('Data has been moved, this view is unavailable for now')
 	return
-	upgrade_tiers = xrange(1, TIER.CURRENT_MAX+1)
+	upgrade_tiers = xrange(1, TIER.CURRENT_MAX + 1)
 	print('{:15s} {} {}  {}'.format('tier', 'max_inh', 'base_tax', 'upgrade_prod_line'))
 	print('=' * 64)
 	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM tier'):
-		str = '{:3s} {:11s} {:5s}    {:4s}'.format((inc+1), name, inh, tax)
-		if inc+1 in upgrade_tiers:
-			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]
+		str = '{:3s} {:11s} {:5s}    {:4s}'.format((inc + 1), name, inh, tax)
+		if inc + 1 in upgrade_tiers:
+			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc + 1)[0][0]
 			str += 5 * ' ' + '{:2s}: '.format(line)
 			(consumption, _) = get_prod_line(line, list)
 			for (res, amount) in consumption:
@@ -255,7 +255,7 @@ def print_colors():
 	print('=' * 45)
 	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
 		print('{:2s}: {:12s}  {:3s}  {:3s}  {:3s}  {:3s}  #'
-			  .format(id_, name, R, G, B, alpha) + 3*'{:02x}'.format(R, G, B))
+			  .format(id_, name, R, G, B, alpha) + 3 * '{:02x}'.format(R, G, B))
 
 def print_scenario_actions():
 	print('Available scenario actions and their arguments:')
@@ -293,14 +293,14 @@ def print_settler_needs():
 	print("Needed resources per tier")
 	pprint.pprint(data)
 	print('\nChanges per level:')
-	for i in xrange(len(data)-2):
-		s = str(i)+"/"+str(i+1)+": "
-		for r in data[i+1]:
+	for i in xrange(len(data) - 2):
+		s = str(i) + "/" + str(i + 1) + ": "
+		for r in data[i + 1]:
 			if r not in data[i]:
-				s += "+"+r+", "
+				s += "+" + r + ", "
 		for r in data[i]:
-			if r not in data[i+1]:
-				s += "-"+r+", "
+			if r not in data[i + 1]:
+				s += "-" + r + ", "
 		print(s)
 
 

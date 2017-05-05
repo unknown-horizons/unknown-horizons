@@ -434,7 +434,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = "{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = "{0:1g}x".format(tps * 1.0 / GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):

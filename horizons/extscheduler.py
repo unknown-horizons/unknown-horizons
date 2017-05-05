@@ -50,7 +50,7 @@ class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	@param pump: pump list the scheduler registers itself with.
 	"""
 
-	NOOP = _ExtCallbackObject(lambda : 42*1337-3.14, None)
+	NOOP = _ExtCallbackObject(lambda : 42 * 1337 - 3.14, None)
 
 	def __init__(self, pump):
 		super(ExtScheduler, self).__init__()

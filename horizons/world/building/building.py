@@ -84,9 +84,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.level = level
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
-			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
+			self.position = ConstRect(origin, self.size[1] - 1, self.size[0] - 1)
 		else:
-			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
+			self.position = ConstRect(origin, self.size[0] - 1, self.size[1] - 1)
 
 	def __init(self, remaining_ticks_of_month=None):
 		self.loading_area = self.position # shape where collector get resources
@@ -303,9 +303,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				action = list(action_set.keys())[0]
 
 		if (Fife.getVersion() >= (0, 3, 6)):
-			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
+			instance.actRepeat(action + "_" + str(action_set_id), facing_loc)
 		else:
-			instance.act(action+"_"+str(action_set_id), facing_loc, True)
+			instance.act(action + "_" + str(action_set_id), facing_loc, True)
 		return (instance, action_set_id)
 
 	@classmethod

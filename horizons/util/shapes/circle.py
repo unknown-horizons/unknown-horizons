@@ -74,7 +74,7 @@ class Circle(Shape):
 
 	def get_border_coordinates(self, bordersize=1):
 		"""Returns only coordinates at the border. Very naive implementation"""
-		for x in range(self.center.x-self.radius, self.center.x+self.radius+1):
-			for y in range(self.center.y-self.radius, self.center.y+self.radius+1):
+		for x in range(self.center.x - self.radius, self.center.x + self.radius + 1):
+			for y in range(self.center.y - self.radius, self.center.y + self.radius + 1):
 				if (self.radius - bordersize) <= self.center.distance((x, y)) <= self.radius:
 					yield (x, y)

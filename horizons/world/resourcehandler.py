@@ -47,9 +47,9 @@ class ResourceTransferHandler:
 		# check if we were able to get the planned amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
-		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount - ret)
 		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
-		actually_transfered = amount-ret
+		actually_transfered = amount - ret
 		if signal_errors and actually_transfered == 0:
 			AmbientSoundComponent.play_special('error')
 		return actually_transfered

@@ -61,7 +61,7 @@ for db_file in PATHS.DB_FILES:
 
 conn.commit()
 
-engine = sqlalchemy.create_engine('sqlite:///'+filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
+engine = sqlalchemy.create_engine('sqlite:///' + filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
 
 Session = sqlalchemy.orm.sessionmaker(bind=engine)
 db_session = Session()

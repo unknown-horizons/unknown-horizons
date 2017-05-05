@@ -142,7 +142,7 @@ def init_pychan():
 		# Drop unicode encoding for now.
 		#unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
 		#return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
-		return text.replace("\t"," "*4).replace("[br]","\n")
+		return text.replace("\t"," " * 4).replace("[br]","\n")
 
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui
@@ -167,17 +167,17 @@ def setup_cursor_change_on_hover():
 		# this can't be a regular class since vanilla TextFields should have it by default
 		def disable_cursor_change_on_hover(self):
 			self.mapEvents({
-				self.name+'/mouseEntered/cursor' : None,
-				self.name+'/mouseExited/cursor' : None,
+				self.name + '/mouseEntered/cursor' : None,
+				self.name + '/mouseExited/cursor' : None,
 				})
 
 		def enable_cursor_change_on_hover(self):
 			self.mapEvents({
-				self.name+'/mouseEntered/cursor' : set_cursor,
-				self.name+'/mouseExited/cursor' : unset_cursor,
+				self.name + '/mouseEntered/cursor' : set_cursor,
+				self.name + '/mouseExited/cursor' : unset_cursor,
 				# this changes the cursor if the widget is hidden while the
 				# cursor is still above the textfield
-				self.name+'/ancestorHidden/cursor': unset_cursor
+				self.name + '/ancestorHidden/cursor': unset_cursor
 				})
 
 		def add_cursor_change_on_hover_init(func):

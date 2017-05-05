@@ -189,8 +189,8 @@ class MPManager(LivingObject):
 		items2 = sorted(hash2.items())
 		for i in range(min(len(hash1), len(hash2))):
 			if (items1[i] != items2[i]):
-				self.log.error(str(i)+": "+str(items1[i]))
-				self.log.error(str(i)+": "+str(items2[i]))
+				self.log.error(str(i) + ": " + str(items1[i]))
+				self.log.error(str(i) + ": " + str(items2[i]))
 		self.log.error("------------------")
 
 	def calculate_execution_tick(self, tick):
@@ -203,7 +203,7 @@ class MPManager(LivingObject):
 		"""Receive commands to be executed from local player
 		@param command: Command instance
 		@param local: commands that don't need to be sent over the wire"""
-		self.log.debug('MPManager: adding command (next tick: ' + str(self.session.timer.tick_next_id) + ')'+str(command))
+		self.log.debug('MPManager: adding command (next tick: ' + str(self.session.timer.tick_next_id) + ')' + str(command))
 		if local:
 			self.localcommands.append(command)
 		else:

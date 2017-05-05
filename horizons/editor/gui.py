@@ -228,13 +228,13 @@ class SettingsTab(TabInterface):
 			image.capture(Callback(self._set_cursor_tile, tile))
 
 		self.widget.mapEvents({
-			self.widget.name+'/mouseEntered/cursor': self._cursor_inside,
-			self.widget.name+'/mouseExited/cursor': self._cursor_outside,
+			self.widget.name + '/mouseEntered/cursor': self._cursor_inside,
+			self.widget.name + '/mouseExited/cursor': self._cursor_outside,
 		})
 
 		self._ingame_gui.mainhud.mapEvents({
-			self._ingame_gui.mainhud.name+'/mouseEntered/cursor': self._cursor_inside,
-			self._ingame_gui.mainhud.name+'/mouseExited/cursor': self._cursor_outside,
+			self._ingame_gui.mainhud.name + '/mouseEntered/cursor': self._cursor_inside,
+			self._ingame_gui.mainhud.name + '/mouseExited/cursor': self._cursor_outside,
 		})
 
 	def _set_cursor_tile(self, tile):

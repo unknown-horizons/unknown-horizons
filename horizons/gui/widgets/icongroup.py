@@ -50,9 +50,9 @@ class TilingBackground:
 		start_img = Icon(image=self.start_img, name=self.name + '0')
 		self.addChild(start_img)
 		for i in range(self.amount):
-			mid = Icon(image=self.tiles_img, name=self.name + str(i+1))
+			mid = Icon(image=self.tiles_img, name=self.name + str(i + 1))
 			self.addChild(mid)
-		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount+1)))
+		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount + 1)))
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 

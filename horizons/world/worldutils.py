@@ -255,7 +255,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 		for (x, y), tile in sorted(island.ground_map.items()):
 			# add trees based on adjacent trees
 			for (dx, dy) in fish_directions:
-				position = Point(x+dx, y+dy)
+				position = Point(x + dx, y + dy)
 				newTile = world.get_tile(position)
 
 				if check_tile_for_tree(world, position, newTile) and newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
@@ -342,7 +342,7 @@ def get_random_possible_ship_position(world):
 		position_possible = True
 		for first_sign in (-1, 0, 1):
 			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + offset*first_sign, y + offset*second_sign )
+				point_to_check = Point( x + offset * first_sign, y + offset * second_sign )
 				if world.get_island(point_to_check) is not None:
 					position_possible = False
 					break

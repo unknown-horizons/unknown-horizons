@@ -172,10 +172,10 @@ class FindPath:
 			# optimization TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
-				x_p1 = x+1
-				x_m1 = x-1
-				y_p1 = y+1
-				y_m1 = y-1
+				x_p1 = x + 1
+				x_m1 = x - 1
+				y_p1 = y + 1
+				y_m1 = y - 1
 				neighbors = (i for i in ((x_m1, y_m1), (x_m1, y),
 				                         (x_m1, y_p1), (x, y_m1),
 				                         (x, y_p1), (x_p1, y_m1),
@@ -188,8 +188,8 @@ class FindPath:
 				                 and i not in blocked_coords)
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = (i for i in ((x-1, y), (x+1, y),
-				                         (x, y-1), (x, y+1))
+				neighbors = (i for i in ((x - 1, y), (x + 1, y),
+				                         (x, y - 1), (x, y + 1))
 				             if (i in path_nodes
 				                 or i in source_coords
 				                 or i in dest_coords_set)
