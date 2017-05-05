@@ -416,7 +416,7 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
 	if is_scenario:
 		map_file = _find_scenario(map_name, SavegameManager.get_available_scenarios(locales=True))
 	else:
-		map_file = _find_matching_map(map_name, SavegameManager.get_maps())
+		map_file = _find_map(map_name, SavegameManager.get_maps())
 
 	if not map_file:
 		return False
@@ -437,7 +437,7 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	@return: bool, whether loading succeeded"""
 	# first check for partial or exact matches in the normal savegame list
 	savegames = SavegameManager.get_saves()
-	map_file = _find_matching_map(savegame, savegames)
+	map_file = _find_map(savegame, savegames)
 	if not map_file:
 		return False
 
@@ -456,12 +456,12 @@ def _find_scenario(name_or_path, scenario_db):
 	# extract name and game_language locale from the path if in correct format
 	if os.path.exists(name_or_path) and name_or_path.endswith(".yaml") and "_" in os.path.basename(name_or_path):
 		name, game_language = os.path.splitext(os.path.basename(name_or_path))[0].split("_")
-	# name_or_path may be a custom scenario path
+	# name_or_path may be a custom scenario path without specified locale
 	elif os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
-		return os.path.relpath(os.path.abspath(name_or_path)) # hack for valid name_or_path.yaml cases
+		return name_or_path
 	# name_or_path has correct .yaml extension, but the path is invalid
 	elif not os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
-		print("Error: name or path '{name}' is invalid.".format(name=name_or_path))
+		print("Error: name or path '{name}' does not exist.".format(name=name_or_path))
 		return
 	# assume name_or_path is a scenario name if no extension was specified
 	else:
@@ -486,59 +486,33 @@ def _find_scenario(name_or_path, scenario_db):
 	except KeyError:
 		print("Error: could not find scenario '{name}' in scenario database. The locale '{locale}' may be wrong.".format(name=name, locale=game_language))
 
-def _find_matching_map(name_or_path, savegames):
-	"""Find a map by name or path specifiec by user.
-	@param name_or_path: either a map/savegame name or path to a map/savegame file
-	@param savegames: defaultdict of the format:
-	{ <savegame name> : [ (<locale 1>, <map path 1>), (<locale 2>, <map path 2>), ... ] }
-	OR
-	tuple of the format: ( (<map path 1>, <map path 2>, ...), [ <map 1>, <map 2>, ...] )
-	@return: str with the path to the map/savegame file on success"""
-	game_language = horizons.globals.fife.get_locale()
+def _find_map(name_or_path, map_db):
+	"""Find a map by name or path specified by user.
+	@param name_or_path: map name or path to thereof
+	@param map_db: tuple of the format: ( (<map path 1>, <map path 2>, ...), [ <map 1>, <map 2>, ...] )
+	@return: path to the map file as string"""
 
-	# Map look-up with given relative path or map name
-	if isinstance(savegames, tuple):
-		if name_or_path.endswith(".sqlite"):
-			# The savegames database handles only relative paths
-			if name_or_path is not os.path.relpath(name_or_path) and os.path.exists(name_or_path):
-				name_or_path = os.path.relpath(name_or_path)
-				for path in savegames[0]:
-					if path == name_or_path:
-						return path
-		else:
-			for path, name in zip(*savegames):
-				if name == name_or_path:
-					return path
-
-	if isinstance(savegames, dict):
-		if name_or_path.endswith(".yaml"):
-			# The savegames database handles only relative paths
-			if name_or_path is not os.path.relpath(name_or_path) and os.path.exists(name_or_path):
-				name_or_path = os.path.relpath(name_or_path)
-				name_or_path, game_language = os.path.splitext(os.path.basename(name_or_path))[0].split("_")
-
-		# Check if name matches any savegame name
-		if name_or_path not in savegames:
-			print("Error: savegame '{name}' not in savegame database.".format(name=name_or_path))
+	# map look-up with given valid path
+	if os.path.exists(name_or_path) and name_or_path.endswith(".sqlite"):
+		# name_or_path may be a custom map path
+		if os.path.relpath(name_or_path) not in map_db[0]:
+			return name_or_path
+		name_or_path = os.path.relpath(name_or_path)
+		for path in map_db[0]:
+			if path == name_or_path:
+				return path
+	# name_or_path has correct .sqlite extension, but the path is invalid
+	elif not os.path.exists(name_or_path) and name_or_path.endswith(".sqlite"):
+		print("Error: name or path '{name}' does not exist.".format(name=name_or_path))
+		return
+	# assume name_or_path is a map name if no extension specified
+	else:
+		if name_or_path not in map_db[1]:
+			print("Error: map '{name}' not in map database.".format(name=name_or_path))
 			return
-
-		# Check if name is ambiguous
-		found_names = [test_name for test_name in savegames if test_name.startswith(name_or_path)]
-		if len(found_names) > 1:
-			print("Error: search for savegame '{name}' returned multiple results.".format(name=name_or_path))
-			print("\n".join(found_names))
-			return
-
-		# Get savegame name from savegames based on name and locale setting
-		try:
-			savegame_file = dict(savegames[name_or_path])[game_language]
-			return savegame_file
-		except KeyError:
-			print("Error: could not find savegame '{name}'. The locale '{locale}' may be wrong.".format(name=name_or_path, locale=game_language))
-
-	# Search fell through and failed
-	print("Error: Could not find savegame nor map '{name}'.".format(name=name_or_path))
-	return
+		for path, name in zip(*map_db):
+			if name == name_or_path:
+				return path
 
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
@@ -581,7 +555,7 @@ def edit_map(map_name):
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeeded
 	"""
-	return _edit_map(_find_matching_map(map_name, SavegameManager.get_maps()))
+	return _edit_map(_find_map(map_name, SavegameManager.get_maps()))
 
 def edit_game_map(saved_game_name):
 	"""
@@ -591,7 +565,7 @@ def edit_game_map(saved_game_name):
 	@return: bool, whether loading succeeded
 	"""
 	saved_games = SavegameManager.get_saves()
-	saved_game_path = _find_matching_map(saved_game_name, saved_games)
+	saved_game_path = _find_map(saved_game_name, saved_games)
 	if not saved_game_path:
 		return False
 
