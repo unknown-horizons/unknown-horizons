@@ -414,10 +414,10 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeeded"""
 	if is_scenario:
-		savegames = SavegameManager.get_available_scenarios(locales=True)
+		map_file = _find_scenario(map_name, SavegameManager.get_available_scenarios(locales=True))
 	else:
-		savegames = SavegameManager.get_maps()
-	map_file = _find_matching_map(map_name, savegames)
+		map_file = _find_matching_map(map_name, SavegameManager.get_maps())
+
 	if not map_file:
 		return False
 
@@ -444,6 +444,47 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	options = StartGameOptions.create_load_game(map_file, force_player_id)
 	start_singleplayer(options)
 	return True
+
+def _find_scenario(name_or_path, scenario_db):
+	"""Find a scenario by name or path specified by user.
+	@param name_or_path: scenario name or path to thereof
+	@param scenario_db: defaultdict of the format:
+	{ <scenario name> : [ (<locale 1>, <path 1>), (<locale 2>, <path 2>), ... ] }
+	@return: path to the scenario file as string"""
+	game_language = horizons.globals.fife.get_locale()
+
+	# extract name and game_language locale from the path if in correct format
+	if os.path.exists(name_or_path) and name_or_path.endswith(".yaml") and "_" in os.path.basename(name_or_path):
+		name, game_language = os.path.splitext(os.path.basename(name_or_path))[0].split("_")
+	# name_or_path may be a custom scenario path
+	elif os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
+		return os.path.relpath(os.path.abspath(name_or_path)) # hack for valid name_or_path.yaml cases
+	# name_or_path has correct .yaml extension, but the path is invalid
+	elif not os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
+		print("Error: name or path '{name}' is invalid.".format(name=name_or_path))
+		return
+	# assume name_or_path is a scenario name if no extension was specified
+	else:
+		name = name_or_path
+
+	# check if name is a valid scenario name
+	if name not in scenario_db:
+		print("Error: scenario '{name}' not in scenario database.".format(name=name))
+		return
+
+	# check if name is ambiguous
+	found_names = [test_name for test_name in scenario_db if test_name.startswith(name)]
+	if len(found_names) > 1:
+		print("Error: search for scenario '{name}' returned multiple results.".format(name=name))
+		print("\n".join(found_names))
+		return
+
+	# get path to scenario by name and game_language locale
+	try:
+		path_to_scenario = dict(scenario_db[name])[game_language]
+		return path_to_scenario
+	except KeyError:
+		print("Error: could not find scenario '{name}' in scenario database. The locale '{locale}' may be wrong.".format(name=name, locale=game_language))
 
 def _find_matching_map(name_or_path, savegames):
 	"""Find a map by name or path specifiec by user.
