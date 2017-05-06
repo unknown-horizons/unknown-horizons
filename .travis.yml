@@ -78,7 +78,6 @@ script:
   # import fife
   #- export PYTHONPATH=/usr/lib/python3/dist-packages:$PYTHONPATH
   - python3 -c 'from fife import fife; print(fife.getVersion())'
-  - cd /home/travis/build/unknown-horizons/unknown-horizons
   - isort -c -rc horizons tests *.py
   - pycodestyle horizons tests *.py development
   - COVERAGE_FILE=.coverage.nongui python3 -Wd run_tests.py --verbose --nologcapture --with-coverage
