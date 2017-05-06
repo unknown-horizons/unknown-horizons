@@ -459,7 +459,6 @@ def _find_scenario(name_or_path, scenario_db):
 	# name_or_path may be a custom scenario path without specified locale
 	elif os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
 		return name_or_path
-	# name_or_path has correct .yaml extension, but the path is invalid
 	elif not os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
 		print("Error: name or path '{name}' does not exist.".format(name=name_or_path))
 		return
@@ -494,14 +493,7 @@ def _find_map(name_or_path, map_db):
 
 	# map look-up with given valid path
 	if os.path.exists(name_or_path) and name_or_path.endswith(".sqlite"):
-		# name_or_path may be a custom map path
-		if os.path.relpath(name_or_path) not in map_db[0]:
-			return name_or_path
-		name_or_path = os.path.relpath(name_or_path)
-		for path in map_db[0]:
-			if path == name_or_path:
-				return path
-	# name_or_path has correct .sqlite extension, but the path is invalid
+		return name_or_path
 	elif not os.path.exists(name_or_path) and name_or_path.endswith(".sqlite"):
 		print("Error: name or path '{name}' does not exist.".format(name=name_or_path))
 		return
