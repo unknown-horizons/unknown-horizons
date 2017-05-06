@@ -94,19 +94,24 @@ class BuildingClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
-			# Issue #1379: Make the offset system more dynamic or re-render object images better
 			if rotation == 45:
 				params['left'] = 32
-				params['botm'] = 16 * cls.size[0]
+				params['botm'] = cls.size[0] ** 2 + cls.size[0] * 14 + 15
+				if cls.size[0] == 1:
+					params["botm"] = 29	# hack for trail tiles
 			elif rotation == 135:
 				params['left'] = 32 * cls.size[1]
-				params['botm'] = 16
+				params['botm'] = 30
 			elif rotation == 225:
 				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
-				params['botm'] = 16 * cls.size[1]
+				params['botm'] = cls.size[1] ** 2 + cls.size[1] * 13 + 12
+				if cls.size[1] == 1:
+					params["botm"] = 29 # hack for trail tiles
 			elif rotation == 315:
 				params['left'] = 32 * cls.size[0]
-				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
+				params['botm'] = cls.size[1] ** 2 + cls.size[0] * 35 - 18
+				if cls.size[0] == 1:
+					params["botm"] = 30 # hack for trail tiles
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
