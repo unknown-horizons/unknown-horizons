@@ -5,6 +5,7 @@ isort
 pytest
 pytest-cov
 pytest-warnings
+pytest-mock
 polib
 pycodestyle
 future
