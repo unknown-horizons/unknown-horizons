@@ -286,7 +286,10 @@ class Fife:
 				print(e.getMessage())
 				break
 			except RuntimeError:
-				pass
+				import sys
+				print("Unknown Horizons exited uncleanly via SIGINT")
+				self._log.log_warn("Unknown Horizons exited uncleanly via SIGINT")
+				sys.exit(1)
 			for f in self.pump:
 				f()
 			if self.break_requested:
