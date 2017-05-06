@@ -263,7 +263,7 @@ class _Event:
 
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
-		return '{ actions: [ {} ] , conditions: [ {} ]  }'.format(
+		return  '{ actions: [ %s ] , conditions: [ %s ]  }' % (
 			    ', '.join(action.to_yaml() for action in self.actions),
 				', '.join(cond.to_yaml() for cond in self.conditions))
 
