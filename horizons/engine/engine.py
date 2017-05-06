@@ -285,6 +285,8 @@ class Fife:
 			except fife.Exception as e:
 				print(e.getMessage())
 				break
+			except RuntimeError:
+				pass
 			for f in self.pump:
 				f()
 			if self.break_requested:
