@@ -40,7 +40,7 @@ class Message:
 	def __init__(self, sender, *args):
 		self.sender = sender
 		if len(self.arguments) != len(args):
-			raise Exception('Unexpected number of arguments. Expected %d, received %d' % (
+			raise Exception('Unexpected number of arguments. Expected {:d}, received {:d}'.format(
 				len(self.arguments), len(args)))
 
 		for arg, value in zip(self.arguments, args):
