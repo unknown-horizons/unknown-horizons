@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-10-21 18:20+0000\n"
-"Last-Translator: David <arch.chaos.i@gmail.com>\n"
+"PO-Revision-Date: 2017-05-07 10:15+0000\n"
+"Last-Translator: Polshakov Dmitry <polsha3@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/tutorial/ru/>"
 "\n"
 "Language: ru\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.9-dev\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -50,6 +50,11 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"Это ваш Журнал, в котором хранится важная информация о текущем сценарии. "
+"Сводка по каждой новой задаче также будет отображаться как «уведомление» "
+"рядом с левым краем экрана. Вы можете навести указатель мыши на эти "
+"уведомления, чтобы прочитать сводку, или щелкнуть по самому уведомлению, "
+"чтобы открыть Журнал."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -58,6 +63,9 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Вы также можете повторно открыть Журнал в любое время, нажав на кнопку под "
+"мини-картой в правом верхнем углу экрана. С этого момента мы будем называть "
+"эту область, содержащую мини-карту, различные кнопки и вкладки - «Обзор»."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -80,6 +88,9 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"Если у вас есть предложения о том, как этот урок можно улучшить, или если вы "
+"столкнулись с какими-либо ошибками, сообщите нам."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -110,6 +121,8 @@ msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Ваш корабль, загруженный припасами, необходимыми для создания нового "
+"поселения, находится в море."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -142,12 +155,19 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Нажатие этой кнопки покажет предварительный просмотр Склада, первого здания, "
+"которое необходимо для поиска нового поселения. Когда вы перемещаете курсор, "
+"вы заметите, что предварительный просмотр становится красным, когда здание "
+"находится в непригодной для использования области."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Склад должен быть расположен на побережье, чтобы суда могли пришвартоваться. "
+"Итак, найдите хорошее место, затем щелкните левой кнопкой мыши, чтобы "
+"разместить это важное здание."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -173,12 +193,18 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Припасы и строительные материалы были выгружены с вашего судна на ваш склад. "
+"Теперь пришло время построить несколько базовых зданий, начиная с Палатки "
+"Лесоруба."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Лесорубы будут валить деревья из леса вокруг своей палатки и обрабатывать "
+"древесину для производства досок, которые будут использоваться в "
+"строительстве или в качестве торгового ресурса."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -199,12 +225,18 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Меню строительства отсортировано по уровням, и, поскольку у вас новое "
+"поселение, здания первого уровня являются единственными доступными для вас; "
+"по мере продвижения вашей цивилизации вы получите доступ к более высоким "
+"уровням и сможете построить более широкий набор зданий."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Найдите подходящую лесистую местность, чтобы наш лесоруб работал, затем "
+"выберите «Палатку лесоруба» из списка зданий в обзоре и постройте здание."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -212,6 +244,8 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Позже в игре вы, возможно, захотите посадить лес, но так как это стоит "
+"денег, сначала стоит использовать то, что предоставило природа!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -219,6 +253,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Любой сборке ресурсов или производственному зданию необходима дорога, "
+"соединяющий его со складом или другим хранилищем. Иначе товары, которые он "
+"производит, невозможно будет собрать."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -227,6 +264,10 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Итак, как только ваша Палатка Лесоруба будет построена, соедините её с вашем "
+"складом. Для этого откройте меню сборки, а затем нажмите кнопку «Путь». "
+"Теперь перетащите мышь с зажатой левой кнопкой, чтобы проложить дорогу между "
+"палаткой дровосека и складом."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -242,6 +283,9 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"Через некоторое время после того, как здания будут соединены, вы увидите, "
+"как придет собиратель, чтобы забрать произведенные доски, готовые для "
+"использования в строительстве или торговле, и доставить их на склад."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -752,12 +796,14 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "Сначала нажмите на свой Склад и выберите третью вкладку."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Затем нажмите на один из трех слотов и выберите товар, который вы хотите "
+"купить или продать."
 
 #. This is the text body of a logbook page.
 msgid ""
