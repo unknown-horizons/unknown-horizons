@@ -103,7 +103,7 @@ class VERSION:
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 76
-	SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
+	SAVEGAME_LEAST_UPGRADABLE_REVISION = 76
 
 	@staticmethod
 	def string():
