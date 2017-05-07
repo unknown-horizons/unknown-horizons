@@ -30,7 +30,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Чтобы увидеть свою первую задачу, перейдите на следующую страницу Журнала, используя кнопку внизу соответствующей страницы - она выглядит так:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -39,21 +39,21 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Если у вас есть предложения о том, как этот урок можно улучшить, или если вы столкнулись с какими-либо ошибками, сообщите нам.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Посетите www.unknown-horizons.org что бы узнать, как связаться с командой.'
   - ''
-  - And now, let's start the game!
+  - А теперь - приступим к игре!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'НОВАЯ ЗАДАЧА: ОСНОВАТЬ ПОСЕЛЕНИЕ']
   - [Image, content/gui/images/background/hr.png]
   - Ваш корабль, загруженный припасами, необходимыми для создания нового поселения, находится в море.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - Чтобы переместить корабль, выберите его левой кнопкой мыши, а затем правой кнопкой укажите, куда ему направиться.
+  - Когда Вы достигнете побережья, кнопка «Основать поселение» в обзоре станет активной.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - Нажатие этой кнопки покажет предварительный просмотр Склада, первого здания, которое необходимо для поиска нового поселения. Когда вы перемещаете курсор, вы заметите, что предварительный просмотр становится красным, когда здание находится в непригодной для использования области.
   - Склад должен быть расположен на побережье, чтобы суда могли пришвартоваться. Итак, найдите хорошее место, затем щелкните левой кнопкой мыши, чтобы разместить это важное здание.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Задача: Постройте Склад на побережье.']
 
 - &LUMBERJACK
   - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
@@ -657,4 +657,4 @@ metadata:
   locale: ru
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 111 translated messages, 77 fuzzy translations.
+  translation_status: 118 translated messages, 70 fuzzy translations.

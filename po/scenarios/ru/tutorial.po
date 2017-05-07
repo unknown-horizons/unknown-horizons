@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-05-07 10:15+0000\n"
+"PO-Revision-Date: 2017-05-07 20:08+0000\n"
 "Last-Translator: Polshakov Dmitry <polsha3@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/tutorial/ru/>"
 "\n"
@@ -68,19 +68,14 @@ msgstr ""
 "эту область, содержащую мини-карту, различные кнопки и вкладки - «Обзор»."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To see your first task, click on the button \"Read next entries\" in the "
-#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
 "To see your first task, turn to the next page of the Journal using the "
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"Нажмите кнопку \"Читать следующую запись\" на навигационной панели, чтобы "
-"увидеть Ваше первое задание! Она выглядит так:"
+"Чтобы увидеть свою первую задачу, перейдите на следующую страницу Журнала, "
+"используя кнопку внизу соответствующей страницы - она выглядит так:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -93,28 +88,20 @@ msgstr ""
 "столкнулись с какими-либо ошибками, сообщите нам."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"Посетите www.unknown-horizons.org для помощи в связи с командой!"
+"Посетите www.unknown-horizons.org что бы узнать, как связаться с командой."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
-msgstr "А теперь - приступим к игре."
+msgstr "А теперь - приступим к игре!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "НОВАЯ ЗАДАЧА: ОБЖИТЬ ОСТРОВ"
+msgstr "НОВАЯ ЗАДАЧА: ОСНОВАТЬ ПОСЕЛЕНИЕ"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -125,10 +112,6 @@ msgstr ""
 "поселения, находится в море."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "To move your ship, select it with a left click and right click on the "
-#| "location you want it to go to."
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
@@ -137,16 +120,12 @@ msgstr ""
 "кнопкой укажите, куда ему направиться."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Once you are near the coast, the anchor-like button you see in the "
-#| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
-"Когда Вы достигнете побережья, кнопка в виде якоря на информационной вкладке "
-"станет активна."
+"Когда Вы достигнете побережья, кнопка «Основать поселение» в обзоре станет "
+"активной."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -170,10 +149,8 @@ msgstr ""
 "разместить это важное здание."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
-msgstr "Задача: Постройте на побережье склад."
+msgstr "Задача: Постройте Склад на побережье."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
