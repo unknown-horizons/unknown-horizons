@@ -90,6 +90,7 @@ class UnitClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
+			# for more fine-tuned adjustments see horizons/world/building/__init__.py
 			path = '{id}+{action}+{rot}:shift:center+0,bottom+20'.format(**params)
 			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)

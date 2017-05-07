@@ -94,6 +94,7 @@ class BuildingClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
+			# hacks to solve issue #1379
 			if rotation == 45:
 				params['left'] = 32
 				if cls.size[0] == 3:
