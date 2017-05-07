@@ -282,14 +282,14 @@ class Fife:
 		while not self.quit_requested:
 			try:
 				self.engine.pump()
-			except fife.Exception as e:
-				print(e.getMessage())
-				break
 			except RuntimeError:
 				import sys
 				print("Unknown Horizons exited uncleanly via SIGINT")
 				self._log.log_warn("Unknown Horizons exited uncleanly via SIGINT")
 				sys.exit(1)
+			except fife.Exception as e:
+				print(e.getMessage())
+				break
 			for f in self.pump:
 				f()
 			if self.break_requested:
