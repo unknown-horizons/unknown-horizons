@@ -131,6 +131,8 @@ def exithandler(exitcode, signum, frame):
 	print('\nOh my god! They killed UH. \nYou bastards!')
 	if logfile:
 		logfile.close()
+	else:
+		sys.tracebacklimit = 0 # hack for issue #1974 - silence "dirty" SIGINT traceback
 	sys.exit(exitcode)
 
 def setup_streams():
