@@ -24,8 +24,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - Это ваш Журнал, в котором хранится важная информация о текущем сценарии. Сводка по каждой новой задаче также будет отображаться как «уведомление» рядом с левым краем экрана. Вы можете навести указатель мыши на эти уведомления, чтобы прочитать сводку, или щелкнуть по самому уведомлению, чтобы открыть Журнал.
+  - Вы также можете повторно открыть Журнал в любое время, нажав на кнопку под мини-картой в правом верхнем углу экрана. С этого момента мы будем называть эту область, содержащую мини-карту, различные кнопки и вкладки - «Обзор».
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -36,7 +36,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Если у вас есть предложения о том, как этот урок можно улучшить, или если вы столкнулись с какими-либо ошибками, сообщите нам.'
   - '
 
     Visit www.unknown-horizons.org to find out how to contact the team.'
@@ -45,13 +45,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - Ваш корабль, загруженный припасами, необходимыми для создания нового поселения, находится в море.
   - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
   - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Нажатие этой кнопки покажет предварительный просмотр Склада, первого здания, которое необходимо для поиска нового поселения. Когда вы перемещаете курсор, вы заметите, что предварительный просмотр становится красным, когда здание находится в непригодной для использования области.
+  - Склад должен быть расположен на побережье, чтобы суда могли пришвартоваться. Итак, найдите хорошее место, затем щелкните левой кнопкой мыши, чтобы разместить это важное здание.
   - ''
   - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
@@ -59,21 +59,21 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
   - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - Припасы и строительные материалы были выгружены с вашего судна на ваш склад. Теперь пришло время построить несколько базовых зданий, начиная с Палатки Лесоруба.
+  - Лесорубы будут валить деревья из леса вокруг своей палатки и обрабатывать древесину для производства досок, которые будут использоваться в строительстве или в качестве торгового ресурса.
   - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Меню строительства отсортировано по уровням, и, поскольку у вас новое поселение, здания первого уровня являются единственными доступными для вас; по мере продвижения вашей цивилизации вы получите доступ к более высоким уровням и сможете построить более широкий набор зданий.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Найдите подходящую лесистую местность, чтобы наш лесоруб работал, затем выберите «Палатку лесоруба» из списка зданий в обзоре и постройте здание.
+  - Позже в игре вы, возможно, захотите посадить лес, но так как это стоит денег, сначала стоит использовать то, что предоставило природа!
+  - Любой сборке ресурсов или производственному зданию необходима дорога, соединяющий его со складом или другим хранилищем. Иначе товары, которые он производит, невозможно будет собрать.
+  - Итак, как только ваша Палатка Лесоруба будет построена, соедините её с вашем складом. Для этого откройте меню сборки, а затем нажмите кнопку «Путь». Теперь перетащите мышь с зажатой левой кнопкой, чтобы проложить дорогу между палаткой дровосека и складом.
   - ''
   - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - Через некоторое время после того, как здания будут соединены, вы увидите, как придет собиратель, чтобы забрать произведенные доски, готовые для использования в строительстве или торговле, и доставить их на склад.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -194,8 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+  - Сначала нажмите на свой Склад и выберите третью вкладку.
+  - Затем нажмите на один из трех слотов и выберите товар, который вы хотите купить или продать.
   - После выбора определённого типа товара зелёный столбик в нижней части ячейки (если он видим) укажет количество данного товара у Вас в запасе.
   - Перемещая бегунок в правой части ячейки, Вы можете задать искомое количество, значение которого различается при покупке и продаже.
   - При покупке Ваш запас товара будет пополняться до достижения искомого количества.
@@ -657,4 +657,4 @@ metadata:
   locale: ru
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 95 translated messages, 77 fuzzy translations, 16 untranslated messages.
+  translation_status: 111 translated messages, 77 fuzzy translations.
