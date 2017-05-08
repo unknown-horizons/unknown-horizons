@@ -88,7 +88,6 @@ def pytest_namespace():
 			def find_spec(cls, fullname, path, target=None):
 				if fullname.startswith('fife'):
 					return ModuleSpec(fullname, DummyLoader())
-				return PathFinder.find_spec(fullname, path, target)
 
 		class DummyLoader(Loader):
 			def load_module(self, module):
