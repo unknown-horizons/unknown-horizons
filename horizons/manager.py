@@ -120,7 +120,7 @@ class MPManager(LivingObject):
 					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
-			self.log.debug("sending command for tick %d" % (commandpacket.tick))
+			self.log.debug("sending command for tick %d", commandpacket.tick)
 			self.networkinterface.send_packet(commandpacket)
 
 			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
@@ -134,7 +134,7 @@ class MPManager(LivingObject):
 				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick),
 			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
-				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
+				self.log.debug("sending checkuphash for tick %d", checkuphashpacket.tick)
 				self.networkinterface.send_packet(checkuphashpacket)
 
 		# decide if tick can be calculated
@@ -171,7 +171,8 @@ class MPManager(LivingObject):
 	def hash_value_check(self, tick):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
 			if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
-				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
+				self.log.error("MPManager: Hash values generated in tick %s are not equal",
+							   str(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
 				msg = T("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
@@ -180,7 +181,7 @@ class MPManager(LivingObject):
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
 		"""Called when a divergence has been detected"""
-		self.log.error("MPManager: Hash diff:\n%s hash1: %s\n%s hash2: %s" % (player1, hash1, player2, hash2))
+		self.log.error("MPManager: Hash diff:\n%s hash1: %s\n%s hash2: %s", player1, hash1, player2, hash2)
 		self.log.error("------------------")
 		self.log.error("Differences:")
 		if len(hash1) != len(hash2):
@@ -203,7 +204,7 @@ class MPManager(LivingObject):
 		"""Receive commands to be executed from local player
 		@param command: Command instance
 		@param local: commands that don't need to be sent over the wire"""
-		self.log.debug('MPManager: adding command (next tick: ' + str(self.session.timer.tick_next_id) + ')' + str(command))
+		self.log.debug('MPManager: adding command (next tick: %d) %s', self.session.timer.tick_next_id, str(command))
 		if local:
 			self.localcommands.append(command)
 		else:
@@ -242,7 +243,7 @@ class MPPacketmanager:
 		"""Check if packets from all players have arrived (necessary for tick to begin)"""
 		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
 		if not ready:
-			self.log.debug("tick not ready, packets: " + str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
+			self.log.debug("tick not ready, packets: %s", str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
 		return ready
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
@@ -285,9 +286,9 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id == localplayerid else "pl#%02d" % (pkges[0].player_id),
+					cb_diff("local" if pkges[0].player_id == localplayerid else "pl#{:02d}".format(pkges[0].player_id),
 						pkges[0].checkup_hash,
-						"local" if pkg.player_id == localplayerid else "pl#%02d" % (pkg.player_id),
+						"local" if pkg.player_id == localplayerid else "pl#{:02d}".format(pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True

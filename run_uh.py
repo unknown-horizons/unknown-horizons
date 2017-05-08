@@ -230,7 +230,7 @@ def setup_debugging(options):
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
 		if module not in logging.Logger.manager.loggerDict:
-			print('No such logger: %s' % module)
+			print('No such logger: {}'.format(module))
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 	if options.debug or options.debug_module or options.debug_log_only:
@@ -241,8 +241,8 @@ def setup_debugging(options):
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
-			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-{}.log".
+			                           format(time.strftime("%Y-%m-%d_%H-%M-%S")))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
 			fife=os.path.join(os.getcwd(), 'fife.log')) )
