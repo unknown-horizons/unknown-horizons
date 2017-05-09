@@ -286,7 +286,7 @@ def find_fife(paths):
 		except ImportError:
 			pass
 	else:
-		log().warning("Module FIFE not found in supplied paths: {}.".format("\n".join(paths))
+		log().warning("Module FIFE not found in supplied paths: {}.".format("\n".join(paths)))
 
 	# restore sys.path
 	sys.path = default_sys_path
@@ -294,7 +294,7 @@ def find_fife(paths):
 	# check if fife import was registered
 	if "fife" not in sys.modules:
 		return False
-			      
+
 	try:
 		from fife import fife
 	except ImportError as e:
