@@ -285,17 +285,22 @@ def find_fife(paths):
 		sys.path.insert(0, path)
 
 		try:
-			from fife import fife
-			break
-		except ImportError as e:
+			import fife
+			try:
+				from fife import fife
+				break
+			except ImportError as e:
 				if str(e) != 'cannot import name fife':
 					log().warning('Failed to use FIFE from %s', fife)
 					log().warning(str(e))
 					if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
 						# We found FIFE but the Python and FIFE architectures don't match (Windows).
 						exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 3.')
+				return False
+		except ImportError:
+			pass
 	else:
-		sys.path = default_sys_path
+		sys.path = default_sys_path	# restore sys.path if all imports failed
 		return False
 	return True
 
