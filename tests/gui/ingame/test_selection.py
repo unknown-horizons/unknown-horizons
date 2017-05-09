@@ -23,7 +23,6 @@ from horizons.command.unit import CreateUnit
 from horizons.constants import UNITS
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
-from tests.utils import mark_expected_failure
 
 
 @gui_test(use_dev_map=True, timeout=60)
