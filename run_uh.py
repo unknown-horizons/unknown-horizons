@@ -279,7 +279,8 @@ def find_fife(paths):
 	"""Returns True if the fife module was found in one of the supplied paths."""
 	default_sys_path = sys.path # to restore sys.path later
 	for path in paths:
-		if path.endswith("fife"):
+		# extract parent directory to FIFE module
+		if path.endswith("fife") and os.path.isdir(path):
 			path = os.path.dirname(path)
 		sys.path.insert(0, path)
 		try:
