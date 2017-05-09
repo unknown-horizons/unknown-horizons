@@ -117,21 +117,6 @@ class ReRunInfoPlugin(Plugin):
 		return '\n'.join([ev, '', ln('>> rerun the test <<'), output])
 
 
-def mark_expected_failure(func):
-	"""
-	Marks a test as expected failure. If it suddenly succeeds, the test will fail.
-	"""
-	@functools.wraps(func)
-	def wrapped(*args, **kwargs):
-		try:
-			func(*args, **kwargs)
-		except Exception:
-			raise nose.SkipTest
-		else:
-			raise AssertionError('Failure expected')
-	return wrapped
-
-
 def mark_flaky(func):
 	"""
 	Ignore test failures marked with this decorator. We have some tests that sometimes fail
