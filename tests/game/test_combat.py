@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from nose.plugins.skip import SkipTest
-
 from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 from horizons.command.unit import Attack, CreateUnit
