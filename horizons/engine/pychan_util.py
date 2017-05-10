@@ -142,7 +142,7 @@ def init_pychan():
 		# Drop unicode encoding for now.
 		#unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
 		#return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
-		return text.replace("\t"," " * 4).replace("[br]","\n")
+		return text.replace("\t", " " * 4).replace("[br]", "\n")
 
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui

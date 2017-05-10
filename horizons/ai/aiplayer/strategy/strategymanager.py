@@ -178,9 +178,9 @@ class StrategyManager:
 		power_balance = self.owner.strategy_manager.calculate_player_power_balance(player)
 		terrain_balance = self.owner.strategy_manager.calculate_player_terrain_balance(player)
 		balance = {
-			'wealth':wealth_balance,
-			'power':power_balance,
-			'terrain':terrain_balance,
+			'wealth': wealth_balance,
+			'power': power_balance,
+			'terrain': terrain_balance,
 		}
 		balance = {key: trim_value(value, 1. / trimming_factor, trimming_factor) for key, value in balance.items()}
 		balance = {key: map_balance(value, trimming_factor, linear_boundary) for key, value in balance.items()}

@@ -262,7 +262,7 @@ class BuildTab(TabInterface):
 		self.session.ingame_gui.show_build_menu(update=True)
 
 		#save build style
-		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
+		horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
 		horizons.globals.fife.save_settings()
 
 	@classmethod

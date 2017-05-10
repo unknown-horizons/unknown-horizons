@@ -138,7 +138,7 @@ def print_verbose_lines():
 			# do not include tent production lines here
 			id = prod_line[0]
 			object = prod_line[1]
-			(consumption,production) = get_prod_line(id, list)
+			(consumption, production) = get_prod_line(id, list)
 
 			print('%2s: %s(%s) needs %s seconds to' % (id, get_obj_name(object), object, prod_line[2]))
 			_output_helper_prodlines('consume', consumption)
@@ -155,7 +155,7 @@ def print_res():
 def print_building():
 	print('Buildings\nRunning costs scheme:')
 	print('=' * 2 + 'Running===Paused' + '=' * 2)
-	for (cost, cost_inactive) in [('0-10',0),('11-24',5),('25-40',10),('>40',15)]:
+	for (cost, cost_inactive) in [('0-10', 0), ('11-24', 5), ('25-40', 10), ('>40', 15)]:
 		print("   {:5s} :   {:2s}".format(cost or '--', cost_inactive or '--'))
 	print('\n' + '=' * 23 + 'R===P' + '=' * 50)
 	for b in Entities.buildings.itervalues():
@@ -214,7 +214,7 @@ def print_building_costs():
 			continue
 		s = ''
 		for res, amount in b.costs.iteritems():
-			s += "{:4i} {}({}) ".format(amount, get_res_name(res),res)
+			s += "{:4i} {}({}) ".format(amount, get_res_name(res), res)
 		print("{:2s}: {-18s} {s}".format(b.id, b.name, s))
 
 	print("\nBuildings without building costs:")
@@ -271,7 +271,8 @@ def print_scenario_conditions():
 
 def print_names():
 	text = ''
-	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship','player'), ('ship','pirate'), ('ship','fisher'), ('ship','trader')]:
+	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship', 'player'),
+						  ('ship', 'pirate'), ('ship', 'fisher'), ('ship', 'trader')]:
 		sql = "SELECT name FROM {}names WHERE for_{} = 1".format(table, type)
 		names = db(sql)
 		text += '\n' + "{} {} names[list]\n".format(type, table)
@@ -289,7 +290,7 @@ def print_settler_needs():
 		level = line_data.get("level", [-1])
 		for l in level:
 			per_level[l].extend( [ res for (res, num) in line_data[u'consumes'] ] )
-	data = dict( (k, sorted(db.get_res_name(i) for i in v)) for k,v in per_level.iteritems())
+	data = dict( (k, sorted(db.get_res_name(i) for i in v)) for k, v in per_level.iteritems())
 	print("Needed resources per tier")
 	pprint.pprint(data)
 	print('\nChanges per level:')
@@ -341,7 +342,7 @@ abbrevs = {
 		}
 
 flags = dict(functions)
-for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible flags
+for (x, y) in abbrevs.iteritems(): # add convenience abbreviations to possible flags
 	flags[x] = functions[y]
 
 args = sys.argv

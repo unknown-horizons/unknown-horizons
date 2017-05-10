@@ -280,7 +280,7 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled in [['s', 'se', 'sw'],['s']]:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.COAST_NORTH
 		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.COAST_WEST
@@ -334,7 +334,7 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled in [['s', 'se', 'sw'],['s']]:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.DEEP_WATER_NORTH
 		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.DEEP_WATER_WEST

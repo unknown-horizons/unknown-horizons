@@ -76,7 +76,7 @@ class Fife:
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 
 		# introduced in fife 0.4.0
-		if self.getVersion() >= (0,4,0):
+		if self.getVersion() >= (0, 4, 0):
 			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
 			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
 			if self._finalSetting['GLTextureFiltering'] == 'None':
@@ -103,7 +103,9 @@ class Fife:
 			pass
 
 		try:
-			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
+			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],
+											 self._finalSetting['ColorKey'][1],
+											 self._finalSetting['ColorKey'][2])
 		except:
 			pass
 

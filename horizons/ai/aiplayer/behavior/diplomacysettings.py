@@ -31,15 +31,15 @@ class DiplomacySettings:
 		}
 
 		parameters_hostile = {
-			'neutral': {'mid':0.0, 'root':2.0, 'peek':0.2}, # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
-			'ally': {'root':7.0, },
+			'neutral': {'mid': 0.0, 'root': 2.0, 'peek': 0.2}, # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
+			'ally': {'root': 7.0, },
 		}
 		parameters_neutral = {
-			'enemy': {'root':-2.5, },
-			'ally': {'root':5.0, 'peek':0.7, },
+			'enemy': {'root': -2.5, },
+			'ally': {'root': 5.0, 'peek': 0.7, },
 		}
 		parameters_allied = {
-			'neutral': {'mid':-2.0, 'root':-0.5, 'peek':0.2, }, # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
+			'neutral': {'mid': -2.0, 'root': -0.5, 'peek': 0.2, }, # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
 			'enemy': {'root': -3.5, }, # smaller chance to go straight from allied to hostile
 		}
 	class Good:
@@ -56,7 +56,7 @@ class DiplomacySettings:
 
 		parameters_neutral = {
 			'ally': {'root': 4.0, },
-			'enemy': {'root': -6.7, 'peek':0.4 },
+			'enemy': {'root': -6.7, 'peek': 0.4 },
 		}
 
 		parameters_allied = {
@@ -81,6 +81,6 @@ class DiplomacySettings:
 		}
 
 		parameters_allied = {
-			'neutral':{'mid': -1.0, 'root': 0.0, 'peek': 0.3, },
+			'neutral': {'mid': -1.0, 'root': 0.0, 'peek': 0.3, },
 			'enemy': {'root': -7.0, },
 		}

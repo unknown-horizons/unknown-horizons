@@ -156,12 +156,12 @@ class TearingTool(NavigationTool):
 						if b not in self._hovering_over:
 							self._hovering_over.append(b)
 							self._make_surrounding_transparent(b)
-							self._remove_object_transparency(Point(x,y))
+							self._remove_object_transparency(Point(x, y))
 						if b.tearable and b.owner is not None and b.owner.is_local_player:
 							if b not in self.selected:
 								self._make_surrounding_transparent(b)
 								self.selected.append(b)
-								self._remove_object_transparency(Point(x,y))
+								self._remove_object_transparency(Point(x, y))
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance,
 				                                                          *self.tear_selection_color)

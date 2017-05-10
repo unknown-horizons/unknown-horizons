@@ -84,7 +84,7 @@ class TabWidget:
 			button.capture(Callback(self.show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
-			container.size = (50,52)
+			container.size = (50, 52)
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
