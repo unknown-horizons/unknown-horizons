@@ -277,22 +277,30 @@ def setup_debugging(options):
 
 def find_fife(paths):
 	"""Returns True if the fife module was found in one of the supplied paths."""
-	try:
-		# If FIFE can't be found then this call will throw an ImportError exception:
-		module_info = imp.find_module('fife', paths)
-		fife = imp.load_module('fife', *module_info)
+	default_sys_path = sys.path # to restore sys.path later
+	for path in paths:
+		# extract parent directory to FIFE module
+		if path.endswith("fife") and os.path.isdir(path):
+			path = os.path.dirname(path)
+		sys.path.insert(0, path)
+
 		try:
-			from fife import fife
-		except ImportError as e:
-			if str(e) != 'cannot import name fife':
-				log().warning('Failed to use FIFE from %s', fife)
-				log().warning(str(e))
-				if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
-					# We found FIFE but the Python and FIFE architectures don't match (Windows).
-					exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
-			return False
-	except ImportError:
-		# FIFE couldn't be found in any of the paths.
+			import fife
+			try:
+				from fife import fife
+				break
+			except ImportError as e:
+				if str(e) != 'cannot import name fife':
+					log().warning('Failed to use FIFE from %s', fife)
+					log().warning(str(e))
+					if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
+						# We found FIFE but the Python and FIFE architectures don't match (Windows).
+						exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 3.')
+				return False
+		except ImportError:
+			pass
+	else:
+		sys.path = default_sys_path	# restore sys.path if all imports failed
 		return False
 	return True
 
