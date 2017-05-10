@@ -47,8 +47,8 @@ class PickBeltWidget:
 		for i, (name, text) in enumerate(self.sections):
 			for side in self.buttons:
 				pickbelt = ImageButton(text=text)
-				pickbelt.name = name + '_' + side
-				pickbelt.path = 'images/background/pickbelt_%s' % side
+				pickbelt.name = '{}_{}'.format(name, side)
+				pickbelt.path = 'images/background/pickbelt_{}'.format(side)
 				pickbelt.font = "pickbelt"
 
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
@@ -56,7 +56,7 @@ class PickBeltWidget:
 				start_x, start_y = self.pickbelt_start_pos
 				pickbelt.position = (start_x + 5 * i, start_y + 70 * i)
 
-				container = self.widget.findChild(name="%s_pickbelts" % side)
+				container = self.widget.findChild(name="{}_pickbelts".format(side))
 				container.addChild(pickbelt)
 				self.buttons[side].append(pickbelt)
 
