@@ -321,7 +321,7 @@ class RouteConfig(Window):
 		self.slots[entry] = {}
 		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')
-			slot.name = 'slot_%d' % num
+			slot.name = 'slot_{:d}'.format(num)
 			slot.position = (x_position, y_position)
 
 			slot.action = "load"
@@ -350,7 +350,7 @@ class RouteConfig(Window):
 	def add_gui_entry(self, warehouse, resource_list=None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
-		entry.name = 'container_%s' % len(self.widgets)
+		entry.name = 'container_{:d}'.format(len(self.widgets))
 		entry.settlement = weakref.ref(warehouse.settlement)
 		self.widgets.append(entry)
 

@@ -44,7 +44,7 @@ class FPSDisplay(ABox):
 
 	def _update(self):
 		fps = 1000 / self._timemanager.getAverageFrameTime()
-		self._label.text = "FPS: %.1f" % fps
+		self._label.text = "FPS: {:.1f}".format(fps)
 		self.resizeToContent()
 		self.toggle()  # hide and show again to fix position (pychan...)
 		self.toggle()
