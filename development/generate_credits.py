@@ -26,9 +26,10 @@ from collections import OrderedDict
 
 sections = ['UH-Team_New', 'UH-Team_Old', 'Patchers', 'Translators', 'Packagers', 'Special Thanks']
 section_widgets = {s: 'credits_' + s.lower() for s in sections}
-section_widgets.update({'UH-Team-2016/2017': 'credits_team_2016',
-						'UH-Team-2015': 'credits_team_2015',
-						'Special Thanks': 'credits_thanks'})
+section_widgets.update({
+	'UH-Team-2016/2017': 'credits_team_2016',
+	'UH-Team-2015': 'credits_team_2015',
+	'Special Thanks': 'credits_thanks'})
 
 # Whether to add ScrollAreas around the page
 huge_pages = ['UH-Team-2016/2017', 'UH-Team-2015', 'Patchers', 'Translators']

@@ -103,9 +103,10 @@ class Fife:
 			pass
 
 		try:
-			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],
-											 self._finalSetting['ColorKey'][1],
-											 self._finalSetting['ColorKey'][2])
+			self.engine_settings.setColorKey(
+				self._finalSetting['ColorKey'][0],
+				self._finalSetting['ColorKey'][1],
+				self._finalSetting['ColorKey'][2])
 		except:
 			pass
 

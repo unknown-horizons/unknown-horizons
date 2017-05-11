@@ -271,8 +271,9 @@ def print_scenario_conditions():
 
 def print_names():
 	text = ''
-	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship', 'player'),
-						  ('ship', 'pirate'), ('ship', 'fisher'), ('ship', 'trader')]:
+	for (table, type) in [
+			('city', 'player'), ('city', 'pirate'), ('ship', 'player'),
+			('ship', 'pirate'), ('ship', 'fisher'), ('ship', 'trader')]:
 		sql = "SELECT name FROM {}names WHERE for_{} = 1".format(table, type)
 		names = db(sql)
 		text += '\n' + "{} {} names[list]\n".format(type, table)
@@ -290,7 +291,7 @@ def print_settler_needs():
 		level = line_data.get("level", [-1])
 		for l in level:
 			per_level[l].extend( [ res for (res, num) in line_data[u'consumes'] ] )
-	data = dict( (k, sorted(db.get_res_name(i) for i in v)) for k, v in per_level.iteritems())
+	data = dict((k, sorted(db.get_res_name(i) for i in v)) for k, v in per_level.iteritems())
 	print("Needed resources per tier")
 	pprint.pprint(data)
 	print('\nChanges per level:')
