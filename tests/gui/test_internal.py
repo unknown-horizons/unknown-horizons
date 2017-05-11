@@ -31,7 +31,7 @@ def test_trivial(gui):
 	"""Does nothing to see if test setup works."""
 	pass
 
-@gui_test(use_dev_map=True, _user_dir=os.path.join("test_settings",".unknown-horizons"))
+@gui_test(use_dev_map=True, _user_dir=os.path.join("test_settings", ".unknown-horizons"))
 def test_update_settings(gui):
 	"""Does nothing to see if the settings update works."""
 	pass

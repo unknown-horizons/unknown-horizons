@@ -72,7 +72,7 @@ plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
 		}
 
 APP = ['run_uh.py']
-OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist':plist}
+OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist': plist}
 
 setup(
     app=APP,

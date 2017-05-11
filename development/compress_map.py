@@ -45,5 +45,5 @@ for filename in args:
 		print("Error:", e.message)
 		continue
 
-	outfile = open(filename.replace('.sqlite','.map'), 'w')
+	outfile = open(filename.replace('.sqlite', '.map'), 'w')
 	outfile.write( bz2.compress( infile.read() ) )

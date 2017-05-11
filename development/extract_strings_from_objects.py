@@ -163,7 +163,7 @@ def content_from_file(filename):
 		if value.startswith('_ '):
 			text = u'T("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
-			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
+			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/', ':')
 			comment = '{} of {}'.format(component, filename)
 			object_strings.append('# {}{}"{:-30s}": {}'.format(comment, ROWINDENT, component, text))
 

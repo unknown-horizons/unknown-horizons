@@ -110,7 +110,7 @@ class MSGID_collect:
 		return '\n'.join(s).strip()
 
 def build_msgid(msgid):
-	return 'msgid "{}"\nmsgstr ""\n'.format(msgid.replace('"','\\"'))
+	return 'msgid "{}"\nmsgstr ""\n'.format(msgid.replace('"', '\\"'))
 
 def collect_all():
 	collector = MSGID_collect()

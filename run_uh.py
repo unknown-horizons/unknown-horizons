@@ -62,7 +62,7 @@ def exit_with_error(title, message):
 	exit(1)
 
 def check_python_version():
-	if sys.version_info[:2] < (3,4):
+	if sys.version_info[:2] < (3, 4):
 		exit_with_error('Unsupported Python version', 'Python3.4 or higher is required to run Unknown Horizons.')
 
 
