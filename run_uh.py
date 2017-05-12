@@ -62,7 +62,7 @@ def exit_with_error(title, message):
 	exit(1)
 
 def check_python_version():
-	if sys.version_info[:2] < (3,4):
+	if sys.version_info[:2] < (3, 4):
 		exit_with_error('Unsupported Python version', 'Python3.4 or higher is required to run Unknown Horizons.')
 
 
@@ -131,6 +131,8 @@ def exithandler(exitcode, signum, frame):
 	print('\nOh my god! They killed UH. \nYou bastards!')
 	if logfile:
 		logfile.close()
+	else:
+		sys.tracebacklimit = 0 # hack for issue #1974 - silence "dirty" SIGINT traceback
 	sys.exit(exitcode)
 
 def setup_streams():
@@ -207,6 +209,9 @@ def main():
 	if ret:
 		from horizons.i18n import gettext as T
 		print(T('Thank you for using Unknown Horizons!'))
+	else:
+		# Game didn't end successfully
+		sys.exit(1)
 
 
 def setup_debugging(options):
@@ -225,7 +230,7 @@ def setup_debugging(options):
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
 		if module not in logging.Logger.manager.loggerDict:
-			print('No such logger: %s' % module)
+			print('No such logger: {}'.format(module))
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 	if options.debug or options.debug_module or options.debug_log_only:
@@ -236,8 +241,8 @@ def setup_debugging(options):
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
-			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-{}.log".
+			                           format(time.strftime("%Y-%m-%d_%H-%M-%S")))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
 			fife=os.path.join(os.getcwd(), 'fife.log')) )
@@ -251,7 +256,7 @@ def setup_debugging(options):
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
 		# FIFE python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
-		class StdOutDuplicator(object):
+		class StdOutDuplicator:
 			def write(self, line):
 				line = str(line)
 				sys.__stdout__.write(line)
@@ -272,22 +277,30 @@ def setup_debugging(options):
 
 def find_fife(paths):
 	"""Returns True if the fife module was found in one of the supplied paths."""
-	try:
-		# If FIFE can't be found then this call will throw an ImportError exception:
-		module_info = imp.find_module('fife', paths)
-		fife = imp.load_module('fife', *module_info)
+	default_sys_path = sys.path # to restore sys.path later
+	for path in paths:
+		# extract parent directory to FIFE module
+		if path.endswith("fife") and os.path.isdir(path):
+			path = os.path.dirname(path)
+		sys.path.insert(0, path)
+
 		try:
-			from fife import fife
-		except ImportError as e:
-			if str(e) != 'cannot import name fife':
-				log().warning('Failed to use FIFE from %s', fife)
-				log().warning(str(e))
-				if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
-					# We found FIFE but the Python and FIFE architectures don't match (Windows).
-					exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
-			return False
-	except ImportError:
-		# FIFE couldn't be found in any of the paths.
+			import fife
+			try:
+				from fife import fife
+				break
+			except ImportError as e:
+				if str(e) != 'cannot import name fife':
+					log().warning('Failed to use FIFE from %s', fife)
+					log().warning(str(e))
+					if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
+						# We found FIFE but the Python and FIFE architectures don't match (Windows).
+						exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 3.')
+				return False
+		except ImportError:
+			pass
+	else:
+		sys.path = default_sys_path	# restore sys.path if all imports failed
 		return False
 	return True
 

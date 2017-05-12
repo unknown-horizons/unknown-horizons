@@ -165,8 +165,8 @@ class BuildTab(TabInterface):
 				res_overview = self.session.ingame_gui.resource_overview
 				show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
 				button.mapEvents({
-				  button.name+"/mouseEntered/buildtab" : show_costs,
-				  button.name+"/mouseExited/buildtab" : res_overview.close_construction_mode
+				  button.name + "/mouseEntered/buildtab" : show_costs,
+				  button.name + "/mouseExited/buildtab" : res_overview.close_construction_mode
 				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
@@ -191,7 +191,7 @@ class BuildTab(TabInterface):
 			column = -1 # can't use enumerate, not always incremented
 			for entry in row:
 				column += 1
-				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
+				position = (10 * column) + (row_num + 1) # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
 				elif (column + 1) > self.MAX_COLS:
@@ -270,7 +270,7 @@ class BuildTab(TabInterface):
 		self.session.ingame_gui.show_build_menu(update=True)
 
 		#save build style
-		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
+		horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
 		horizons.globals.fife.save_settings()
 
 	@classmethod

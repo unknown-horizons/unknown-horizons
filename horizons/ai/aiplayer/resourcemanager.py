@@ -347,7 +347,7 @@ class SingleResourceManager(WorldObject):
 	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
 
 	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
-	virtual_resources = set([RES.FISH, RES.RAW_CLAY, RES.RAW_IRON]) # resources that are not actually produced by player owned buildings
+	virtual_resources = {RES.FISH, RES.RAW_CLAY, RES.RAW_IRON} # resources that are not actually produced by player owned buildings
 	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
 
 	def __init__(self, settlement_manager, resource_id, building_id):
@@ -492,7 +492,7 @@ class SingleResourceManager(WorldObject):
 			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)
 		return result
 
-class SimpleProductionChainSubtreeChoice(object):
+class SimpleProductionChainSubtreeChoice:
 	"""This is a simple version of ProductionChainSubtreeChoice used to make recursive quotas possible."""
 
 	def __init__(self, options):
@@ -516,7 +516,7 @@ class SimpleProductionChainSubtreeChoice(object):
 	def get_quota(self, quota_holder):
 		return sum(option.get_quota(quota_holder) for option in self.options)
 
-class SimpleProductionChainSubtree(object):
+class SimpleProductionChainSubtree:
 	"""This is a simple version of ProductionChainSubtree used to make recursive quotas possible."""
 
 	def __init__(self, resource_manager, resource_id, production_line, abstract_building, children, production_ratio):

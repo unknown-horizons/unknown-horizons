@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import errno
 import json
 import logging
 import os
@@ -403,9 +402,7 @@ class Session(LivingObject):
 			# retry with new savegamename entered by the user
 			# (this must not happen with quicksave/autosave)
 			return self.save()
-		except OSError as e:
-			if e.errno != errno.EACCES:
-				raise
+		except PermissionError:
 			self.ingame_gui.open_error_popup(
 				T("Access is denied"),
 				T("The savegame file could be read-only or locked by another process.")

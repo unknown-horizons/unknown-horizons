@@ -38,7 +38,7 @@ from horizons.util.shapes import Circle
 from horizons.world.units.unitexeptions import MoveNotPossible
 
 
-class BehaviorComponent(object):
+class BehaviorComponent:
 	"""
 	This is an abstract BehaviorComponent - a building block for AI Behavior.
 	"""
@@ -576,7 +576,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 			if item[1] + counter >= random_value:
 				return item[0]
 			else:
-				counter+= item[1]
+				counter += item[1]
 
 	def _get_action(self, relationship_score, **parameters):
 		possible_actions = []

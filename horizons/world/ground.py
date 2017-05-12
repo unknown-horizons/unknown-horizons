@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -29,7 +28,7 @@ from horizons.constants import GROUND, LAYERS
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
-class SurfaceTile(object):
+class SurfaceTile:
 	is_water = False
 	layer = LAYERS.GROUND
 
@@ -173,7 +172,7 @@ class GroundClass(type):
 			cls._fife_objects[tile_set_id] = fife_object
 
 
-class MapPreviewTile(object):
+class MapPreviewTile:
 	"""This class provides the minimal tile implementation for map preview."""
 
 	def __init__(self, x, y, id):

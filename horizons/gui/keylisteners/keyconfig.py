@@ -55,7 +55,7 @@ class KeyConfig(object, metaclass=Singleton):
 		self.keyval_action_mappings = {}
 		self.loadKeyConfiguration()
 
-		self.requires_shift = set([_Actions.DEBUG])
+		self.requires_shift = {_Actions.DEBUG}
 
 	def loadKeyConfiguration(self):
 		self.keyval_action_mappings = {}
@@ -97,8 +97,8 @@ class KeyConfig(object, metaclass=Singleton):
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys))
-		return dict((k, v) for k, v in fife.Key.__dict__.items()
-		                   if is_available(k))
+		return {k: v for k, v in fife.Key.__dict__.items()
+				if is_available(k)}
 
 	def get_keys_by_value(self):
 		def is_available(key):
@@ -106,8 +106,8 @@ class KeyConfig(object, metaclass=Singleton):
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys))
-		return dict((v, k) for k, v in fife.Key.__dict__.items()
-		                   if is_available(k))
+		return {v: k for k, v in fife.Key.__dict__.items()
+				if is_available(k)}
 
 	def get_keyval_to_actionid_map(self):
 		return self.keyval_action_mappings

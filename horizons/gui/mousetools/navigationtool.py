@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -67,7 +66,7 @@ class NavigationTool(CursorTool):
 			self.session.view.add_change_listener(self._schedule_hover_instance_update)
 			self._schedule_hover_instance_update()
 
-		class CoordsTooltip(object):
+		class CoordsTooltip:
 			@classmethod
 			def get_instance(cls, cursor_tool):
 				if cursor_tool.session.ingame_gui.coordinates_tooltip is not None:
@@ -148,7 +147,7 @@ class NavigationTool(CursorTool):
 		# Status menu update
 		current = self.get_exact_world_location(evt)
 
-		distance_ge = lambda a, b, epsilon : abs((a.x-b.x)**2 + (a.y-b.y)**2) >= epsilon**2
+		distance_ge = lambda a, b, epsilon : abs((a.x - b.x) ** 2 + (a.y - b.y) ** 2) >= epsilon ** 2
 
 		if distance_ge(current, self.last_exact_world_location, 4): # update every 4 tiles for settlement info
 			self.last_exact_world_location = current
@@ -163,11 +162,11 @@ class NavigationTool(CursorTool):
 		x, y = 0, 0
 		if mousepoint.x < VIEW.AUTOSCROLL_WIDTH:
 			x -= VIEW.AUTOSCROLL_WIDTH - mousepoint.x
-		elif mousepoint.x > (self.session.view.cam.getViewPort().right()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.x > (self.session.view.cam.getViewPort().right() - VIEW.AUTOSCROLL_WIDTH):
 			x += VIEW.AUTOSCROLL_WIDTH + mousepoint.x - self.session.view.cam.getViewPort().right()
 		if mousepoint.y < VIEW.AUTOSCROLL_WIDTH:
 			y -= VIEW.AUTOSCROLL_WIDTH - mousepoint.y
-		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom() - VIEW.AUTOSCROLL_WIDTH):
 			y += VIEW.AUTOSCROLL_WIDTH + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10

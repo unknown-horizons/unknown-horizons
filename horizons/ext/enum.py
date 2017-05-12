@@ -119,7 +119,7 @@ def _comparator(func):
 	return comparator_wrapper
 
 
-class EnumValue(object):
+class EnumValue:
 	""" A specific value of an enumerated type. """
 
 	def __init__(self, enumtype, index, key):
@@ -174,7 +174,7 @@ class EnumValue(object):
 		return (self >= other)
 
 
-class Enum(object):
+class Enum:
 	""" Enumerated type. """
 
 	def __init__(self, *keys, **kwargs):

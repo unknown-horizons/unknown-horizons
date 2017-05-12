@@ -29,7 +29,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 
 
-class SettlementFounder(object):
+class SettlementFounder:
 	"""This class handles the settlement founding activities of an AI player."""
 
 	log = logging.getLogger("ai.aiplayer.settlement_founder")

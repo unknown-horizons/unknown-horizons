@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,6 +20,7 @@
 # ###################################################
 
 import copy
+import importlib
 import json
 import logging
 from collections import deque
@@ -171,7 +171,7 @@ class World(BuildingOwner, WorldObject):
 
 		# use a dict because it's directly supported by the pathfinding algo
 		LoadingProgress.broadcast(self, 'world_init_water')
-		self.water = dict((tile, 1.0) for tile in self.ground_map)
+		self.water = {tile: 1.0 for tile in self.ground_map}
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 		for island in self.islands:
@@ -289,8 +289,8 @@ class World(BuildingOwner, WorldObject):
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10
-		for x in range(self.min_x-MAP.BORDER, self.max_x+MAP.BORDER, fake_tile_size):
-			for y in range(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
+		for x in range(self.min_x - MAP.BORDER, self.max_x + MAP.BORDER, fake_tile_size):
+			for y in range(self.min_y - MAP.BORDER, self.max_y + MAP.BORDER, fake_tile_size):
 				fake_tile_x = x - 1
 				fake_tile_y = y + fake_tile_size - 1
 				if not preview:
@@ -300,7 +300,7 @@ class World(BuildingOwner, WorldObject):
 					if self.min_x <= x + x_offset < self.max_x:
 						for y_offset in range(fake_tile_size):
 							if self.min_y <= y + y_offset < self.max_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
+								self.ground_map[(x + x_offset, y + y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# Remove parts that are occupied by islands, create the island map and the full map.
@@ -323,7 +323,7 @@ class World(BuildingOwner, WorldObject):
 			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
+				module = importlib.import_module('horizons.ai.' + class_package)
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai
@@ -447,7 +447,7 @@ class World(BuildingOwner, WorldObject):
 				def _preselect_player_ship(player_ship):
 					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = set([player_ship])
+					self.session.selected_instances = {player_ship}
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
 				select_ship = partial(_preselect_player_ship, ship)

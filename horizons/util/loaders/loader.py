@@ -28,7 +28,7 @@ from collections import defaultdict
 from horizons.constants import ACTION_SETS
 
 
-class GeneralLoader(object):
+class GeneralLoader:
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
 	begin with 'as_' to tell tell the loader that they are an action set. directory
 	structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png
@@ -52,7 +52,7 @@ class GeneralLoader(object):
 
 		anim_length = {} # dict containing 'file: anim_end' items
 		for i, filename in enumerate(files, start=1):
-			anim_length[filename] = i * (time/1000.0) / len(files)
+			anim_length[filename] = i * (time / 1000.0) / len(files)
 		return anim_length
 
 	@classmethod

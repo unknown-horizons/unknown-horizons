@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import collections
 import os
 import sys
 
@@ -38,7 +37,7 @@ from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 
 
-class Setting(object):
+class Setting:
 	def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
 		self.module = module
 		self.name = name
@@ -152,7 +151,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			widget = self.widget.findChild(name=entry.widget_name)
 			new_value = widget.getData()
 
-			if isinstance(entry.initial_data, collections.Callable):
+			if callable(entry.initial_data):
 				initial_data = entry.initial_data()
 			else:
 				initial_data = entry.initial_data
@@ -192,7 +191,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			widget = self.widget.findChild(name=entry.widget_name)
 
 			if entry.initial_data:
-				if isinstance(entry.initial_data, collections.Callable):
+				if callable(entry.initial_data):
 					initial_data = entry.initial_data()
 				else:
 					initial_data = entry.initial_data
@@ -293,7 +292,7 @@ def get_screen_resolutions(selected_default):
 
 	NOTE: This call only works if the engine is inited.
 	"""
-	possible_resolutions = set([selected_default])
+	possible_resolutions = {selected_default}
 
 	MIN_X = 800
 	MIN_Y = 600

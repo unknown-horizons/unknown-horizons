@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -23,7 +22,7 @@
 from horizons.constants import UNITS
 
 
-class ProductionLine(object):
+class ProductionLine:
 	"""Class that collects the production line data."""
 
 	def __init__(self, id, data):

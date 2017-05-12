@@ -66,9 +66,9 @@ class Speech:
 	BUILDING_ON_FIRE = None # type: Optional[str]
 	BUILDING_INFECTED_BY_BLACK_DEATH = None # type: Optional[str]
 
-DEFAULT_LANG="en"
-DEFAULT_VARIATION=0
-DEFAULT_SPEAKER=0
+DEFAULT_LANG = "en"
+DEFAULT_VARIATION = 0
+DEFAULT_SPEAKER = 0
 
 def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	#TODO expand this docstring
@@ -119,6 +119,6 @@ def eval_category_name(category):
 	try:
 		cat_name = getattr(Speech, category)
 	except:
-		print("Incorrect name of speech category: %s" % category)
+		print("Incorrect name of speech category: {}".format(category))
 		print("You might want to add this here in voice.py.")
 	return cat_name

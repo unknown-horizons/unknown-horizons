@@ -1,4 +1,3 @@
-# -.- coding: utf-8 -.-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -25,6 +24,7 @@ import os
 import os.path
 import platform
 import subprocess
+from pathlib import Path
 from typing import List, Optional
 
 from horizons.ext.enum import Enum
@@ -62,21 +62,25 @@ def get_git_version():
 
 	# Read current HEAD out of .git manually
 	try:
-		git_head_path = os.path.join(uh_path, '.git', 'HEAD')
-		if os.path.exists(git_head_path):
-			head = open(git_head_path).readline().strip().partition(' ')
+		git_head_path = Path(uh_path, '.git', 'HEAD')
+		if git_head_path.exists():
+			with git_head_path.open() as f:
+				head = f.readline().strip().partition(' ')
 			if head[2]:
-				head_file = os.path.join(uh_path, '.git', head[2])
+				head_file = Path(uh_path, '.git', head[2])
 			else:
 				head_file = git_head_path
-			if os.path.exists(head_file):
-				return str(open(head_file).readline().strip()[0:7])
+
+			if head_file.exists():
+				with head_file.open() as f:
+					return str(f.readline().strip()[0:7])
 	except ImportError:
 		pass
 
 	# Try gitversion.txt
 	try:
-		return str(open(os.path.join("content", "packages", "gitversion.txt")).read())
+		with open(os.path.join("content", "packages", "gitversion.txt")) as f:
+			return f.read()
 	except IOError:
 		pass
 
@@ -99,7 +103,7 @@ class VERSION:
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 76
-	SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
+	SAVEGAME_LEAST_UPGRADABLE_REVISION = 76
 
 	@staticmethod
 	def string():
@@ -122,7 +126,7 @@ class UNITS:
 
 	WILD_ANIMAL          = 1000013
 	HUNTER_COLLECTOR     = 1000014
-	FARM_ANIMAL_COLLECTOR= 1000015
+	FARM_ANIMAL_COLLECTOR = 1000015
 	USABLE_FISHER_BOAT   = 1000016
 
 	FRIGATE              = 1000020
@@ -209,7 +213,7 @@ class BUILDINGS:
 
 	STONE_DEPOSIT    = 70
 
-	BARRIER	         = 71
+	BARRIER          = 71
 
 	COTTON_FIELD     = 72
 	COFFEE_FIELD     = 73

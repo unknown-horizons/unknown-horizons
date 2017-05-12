@@ -61,7 +61,7 @@ def parse_token(token, token_klass):
 		err = ("This means that you either have to add an entry in horizons/constants.py "
 		       "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".
 		       format(token_klass, token, token))
-		raise Exception( str(e) + "\n\n" + err +"\n" )
+		raise Exception( str(e) + "\n\n" + err + "\n" )
 
 
 def convert_game_data(data):
@@ -78,7 +78,7 @@ def convert_game_data(data):
 		return data
 
 
-class YamlCache(object):
+class YamlCache:
 	"""Loads and caches YAML files in a persistent cache.
 	Threadsafe.
 

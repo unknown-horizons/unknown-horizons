@@ -37,7 +37,7 @@ def setup_combat(s, ship):
 	worldid = 10000000
 
 	p0 = Player(s, worldid, "p1", Color.get(1))
-	p1 = Player(s, worldid+1, "p2", Color.get(2))
+	p1 = Player(s, worldid + 1, "p2", Color.get(2))
 
 	for p in (p0, p1):
 		p.initialize(None)
@@ -69,8 +69,6 @@ def one_dead(wid1, wid2):
 
 @game_test()
 def test_noncombat_units(s, p):
-	raise SkipTest()
-
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP)
 
 	# healthy before
@@ -89,8 +87,6 @@ def test_noncombat_units(s, p):
 
 @game_test()
 def test_equip(s, p):
-	raise SkipTest()
-
 	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, (
 	        "This test only makes sense with default cannons."
 	        " Adapt this if you don't want default cannons.")

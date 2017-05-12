@@ -23,7 +23,7 @@ from fife.extensions.pychan.widgets import HBox, Icon, VBox
 from fife.extensions.pychan.widgets.common import IntAttr
 
 
-class TilingBackground(object):
+class TilingBackground:
 	"""The TilingBackground is a shortcut for several Icons combined to one group.
 	It usually serves as auxiliary widget if a tiling background image is desired,
 	but the layout also requires some kind of border around those tiling panels.
@@ -50,9 +50,9 @@ class TilingBackground(object):
 		start_img = Icon(image=self.start_img, name=self.name + '0')
 		self.addChild(start_img)
 		for i in range(self.amount):
-			mid = Icon(image=self.tiles_img, name=self.name + str(i+1))
+			mid = Icon(image=self.tiles_img, name=self.name + str(i + 1))
 			self.addChild(mid)
-		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount+1)))
+		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount + 1)))
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 

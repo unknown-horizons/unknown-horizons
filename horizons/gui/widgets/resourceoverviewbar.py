@@ -44,7 +44,7 @@ from horizons.util.python.decorators import cachedmethod
 from horizons.world.player import Player
 
 
-class ResourceOverviewBar(object):
+class ResourceOverviewBar:
 	"""The thing on the top left.
 
 	http://wiki.unknown-horizons.org/w/HUD
@@ -286,7 +286,7 @@ class ResourceOverviewBar(object):
 		for res, amount in build_costs.items():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = Label(text="-"+str(amount))
+			cost_label = Label(text="-" + str(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
 			if res in res_list:
@@ -592,8 +592,8 @@ class ResourceOverviewBar(object):
 			data.balance
 		]
 		for (i, numbers) in enumerate(figures):
-			label = self.stats_gui.child_finder("resbar_stats_entry_%s" % i)
-			label.text = "%+d" % numbers
+			label = self.stats_gui.child_finder("resbar_stats_entry_{}".format(i))
+			label.text = "{:+d}".format(numbers)
 
 	def _hide_stats(self):
 		"""Inverse of show_stats"""
@@ -624,15 +624,15 @@ class ResourceOverviewBar(object):
 			# Keep in sync with comment there until we can use that data:
 			# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
 			box = HBox(padding=0, min_size=(70, 0))
-			box.name = "resbar_stats_line_%s" % num
+			box.name = "resbar_stats_line_{}".format(num)
 			box.helptext = helptext
 			#TODO Fix icon size; looks like not 16x16 a surprising amount of times.
 			box.addChild(Icon(image=image))
 			box.addChild(Spacer())
-			box.addChild(Label(name="resbar_stats_entry_%s"%num))
+			box.addChild(Label(name="resbar_stats_entry_{}".format(num)))
 			#TODO This label is a workaround for some fife font bug,
 			# probably http://github.com/fifengine/fifengine/issues/666.
-			templabel = Label(name="resbar_stats_whatever_%s"%num)
+			templabel = Label(name="resbar_stats_whatever_{}".format(num))
 			box.addChild(templabel)
 			if num == len(images) - 1:
 				# The balance line (last one) gets bold font.

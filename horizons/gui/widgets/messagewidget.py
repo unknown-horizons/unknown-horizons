@@ -301,7 +301,7 @@ class MessageWidget(LivingObject):
 		self.draw_widget()
 
 
-class _IngameMessage(object):
+class _IngameMessage:
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string template, meaning it can contain placeholders
 	like the following: {player}, {gold}. The *message_dict* needed to fill in

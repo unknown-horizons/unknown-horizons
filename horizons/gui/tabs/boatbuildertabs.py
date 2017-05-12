@@ -158,9 +158,9 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 			image = self.__class__.UNIT_THUMBNAIL.format(type_id=unit_type)
 			helptext = T("{ship} (place in queue: {place})").format(
 		            ship=self.instance.session.db.get_unit_type_name(unit_type),
-		            place=place_in_queue+1)
+		            place=place_in_queue + 1)
 			# people don't count properly, always starting at 1..
-			icon_name = "queue_elem_"+str(place_in_queue)
+			icon_name = "queue_elem_" + str(place_in_queue)
 
 			try:
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
@@ -184,7 +184,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		production = self.producer.get_productions()[0]
 		needed_res = production.get_consumed_resources()
 		# Now sort! -amount is the positive value, drop unnecessary res (amount 0)
-		needed_res = dict((res, -amount) for res, amount in needed_res.items() if amount < 0)
+		needed_res = {res: -amount for res, amount in needed_res.items() if amount < 0}
 		needed_res = sorted(needed_res.items(), key=itemgetter(1), reverse=True)
 		needed_res_container.removeAllChildren()
 		for i, (res, amount) in enumerate(needed_res):
@@ -234,14 +234,14 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
 	def build_ship_info(self, index, ship, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{}'.format(index))
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_unit_tooltip(ship)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_{}'.format(index), position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
@@ -249,10 +249,10 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=T('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_{}'.format(index), helptext=T('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			button = CancelButton(position=(60, 50), name='ok_{}'.format(index),
 			helptext=ship_unbuildable)
 
 		widget.addChild(button)

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<!-- Displays list of resources to select one which is displayed in this slot. -->
+<ScrollArea fixed_size="290,130" name="resources_scrollarea">
+	<VBox name="resources" max_size="300,42000" min_size="300,0">
+		<Spacer />
+	</VBox>
+</ScrollArea>

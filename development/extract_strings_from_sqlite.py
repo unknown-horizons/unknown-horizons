@@ -61,7 +61,7 @@ for db_file in PATHS.DB_FILES:
 
 conn.commit()
 
-engine = sqlalchemy.create_engine('sqlite:///'+filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
+engine = sqlalchemy.create_engine('sqlite:///' + filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
 
 Session = sqlalchemy.orm.sessionmaker(bind=engine)
 db_session = Session()
@@ -105,12 +105,12 @@ class MSGID_collect:
 	def __str__(self):
 		s = []
 		for text, locations in self.msgids.items():
-			comment = '#. This is a database entry: %s\n' % ','.join(locations)
+			comment = '#. This is a database entry: {}\n'.format(','.join(locations))
 			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
 def build_msgid(msgid):
-	return 'msgid "%s"\nmsgstr ""\n' % msgid.replace('"','\\"')
+	return 'msgid "{}"\nmsgstr ""\n'.format(msgid.replace('"', '\\"'))
 
 def collect_all():
 	collector = MSGID_collect()

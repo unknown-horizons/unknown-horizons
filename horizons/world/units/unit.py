@@ -207,7 +207,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		for i in range(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
 			x_diff = randint(1, in_range) # always go at least 1 field
-			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
+			y_max_diff = int( math.sqrt(range_squared - x_diff * x_diff) )
 			y_diff = randint(0, y_max_diff)
 			# use randomness of x/y_diff below, randint calls are expensive
 			# this results in a higher chance for x > y than y < x, so equalize

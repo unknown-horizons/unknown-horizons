@@ -23,7 +23,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.world.buildability.connectedareacache import ConnectedAreaCache
 
 
-class PotentialRoadConnectivityCache(object):
+class PotentialRoadConnectivityCache:
 	"""
 	Query whether a toad connection between two sets of coordinates is possible.
 

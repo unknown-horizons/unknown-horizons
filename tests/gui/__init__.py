@@ -36,6 +36,7 @@ dotted path to the test (along with other options), similar to this code:
 		menu = gui.find(name='mainmenu')
 """
 
+import importlib
 import io
 import os
 import shutil
@@ -126,7 +127,7 @@ class GuiTestPlugin(Plugin):
 		return exc_type, value, traceback
 
 
-class TestRunner(object):
+class TestRunner:
 	"""Manages test execution.
 
 	Tests have to be generators. With generators, we can give control back to the
@@ -146,7 +147,6 @@ class TestRunner(object):
 
 	def __init__(self, engine, test_path):
 		self._engine = engine
-		self._gui_handlers = []
 
 		self._custom_setup()
 		#self._filter_traceback()
@@ -186,8 +186,7 @@ class TestRunner(object):
 			tests.gui.test_example.example
 		"""
 		path, name = test_name.rsplit('.', 1)
-		__import__(path)
-		module = sys.modules[path]
+		module = importlib.import_module(path)
 		test_function = getattr(module, name)
 
 		# __original__ is the real test function that was
@@ -281,8 +280,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
 			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
-			if isinstance(env['UH_USER_DIR'], str):
-				env['UH_USER_DIR'] = env['UH_USER_DIR'].encode('utf-8')
+			env['PYTHONFAULTHANDLER'] = '1'
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
@@ -310,13 +308,13 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 
 		# we need to store the original function, otherwise the new process will execute
 		# this decorator, thus spawning a new process..
-		wrapped.__original__ = func
-		wrapped.gui = True # mark as gui for test selection
+		setattr(wrapped, '__original__', func)
+		setattr(wrapped, 'gui', True) # mark as gui for test selection
 		return wrapped
 
 	return deco
 
-gui_test.__test__ = False
+gui_test.__test__ = False # type: ignore
 
 # FIXME GUI tests still don't work in parallel, this is needed for game/unit tests to work
 _multiprocess_can_split_ = True

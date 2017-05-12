@@ -27,7 +27,7 @@ from horizons.util.python.callback import Callback
 
 
 @metaChangeListenerDecorator('remove')
-class TabInterface(object):
+class TabInterface:
 	"""
 	The TabInterface should be used by all classes that represent Tabs for the
 	TabWidget.

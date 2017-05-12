@@ -20,9 +20,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest import mock
+
 import horizons.globals
 from horizons.constants import EDITOR, GROUND, VIEW
-from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
@@ -54,10 +55,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.show_menu = Dummy
-		self.hide_menu = Dummy
-		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy()
+		self.show_menu = mock.Mock()
+		self.hide_menu = mock.Mock()
+		# this is necessary for message_widget to work
+		self.logbook = mock.Mock()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -227,13 +228,13 @@ class SettingsTab(TabInterface):
 			image.capture(Callback(self._set_cursor_tile, tile))
 
 		self.widget.mapEvents({
-			self.widget.name+'/mouseEntered/cursor': self._cursor_inside,
-			self.widget.name+'/mouseExited/cursor': self._cursor_outside,
+			self.widget.name + '/mouseEntered/cursor': self._cursor_inside,
+			self.widget.name + '/mouseExited/cursor': self._cursor_outside,
 		})
 
 		self._ingame_gui.mainhud.mapEvents({
-			self._ingame_gui.mainhud.name+'/mouseEntered/cursor': self._cursor_inside,
-			self._ingame_gui.mainhud.name+'/mouseExited/cursor': self._cursor_outside,
+			self._ingame_gui.mainhud.name + '/mouseEntered/cursor': self._cursor_inside,
+			self._ingame_gui.mainhud.name + '/mouseExited/cursor': self._cursor_outside,
 		})
 
 	def _set_cursor_tile(self, tile):

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -35,7 +34,7 @@ from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
 
 
-class Fife(object):
+class Fife:
 	"""
 	Basic initiation of engine. Followed later by init().
 	"""
@@ -77,7 +76,7 @@ class Fife(object):
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 
 		# introduced in fife 0.4.0
-		if self.getVersion() >= (0,4,0):
+		if self.getVersion() >= (0, 4, 0):
 			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
 			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
 			if self._finalSetting['GLTextureFiltering'] == 'None':
@@ -104,7 +103,10 @@ class Fife(object):
 			pass
 
 		try:
-			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
+			self.engine_settings.setColorKey(
+				self._finalSetting['ColorKey'][0],
+				self._finalSetting['ColorKey'][1],
+				self._finalSetting['ColorKey'][2])
 		except:
 			pass
 
@@ -167,7 +169,7 @@ class Fife(object):
 			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
 		}
-		self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in  cursor_images.items())
+		self.cursor_images = {k: self.imagemanager.load(v) for k, v in  cursor_images.items()}
 		self.cursor.set(self.cursor_images['default'])
 
 		# Init pychan.
@@ -283,6 +285,11 @@ class Fife(object):
 		while not self.quit_requested:
 			try:
 				self.engine.pump()
+			except RuntimeError:
+				import sys
+				print("Unknown Horizons exited uncleanly via SIGINT")
+				self._log.log_warn("Unknown Horizons exited uncleanly via SIGINT")
+				sys.exit(1)
 			except fife.Exception as e:
 				print(e.getMessage())
 				break

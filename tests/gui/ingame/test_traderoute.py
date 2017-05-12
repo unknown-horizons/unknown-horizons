@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest.mock import Mock
+
 from fife import fife
-from mock import Mock
 
 from horizons.constants import RES
 from horizons.manager import MPManager
@@ -66,15 +67,13 @@ def test_traderoute(gui):
 	assert not ship.route.waypoints
 
 	# Select the first waypoint for the trade route
-	event = Mock()
+	event = Mock(map_coords=(38, 39))
 	event.getButton.return_value = fife.MouseEvent.LEFT
-	event.map_coords = 38, 39
 	route_widget.on_map_click(event, False)
 
 	# Select the other waypoint for the trade route
-	event = Mock()
+	event = Mock(map_coords=(15, 26))
 	event.getButton.return_value = fife.MouseEvent.LEFT
-	event.map_coords = 15, 26
 	route_widget.on_map_click(event, False)
 
 	# need to give control to the rest of the code, these clicks will trigger new gui widgets

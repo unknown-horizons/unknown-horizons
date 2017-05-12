@@ -100,7 +100,7 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('running_costs').text = str(running_costs)
 		self.widget.child_finder('buying').text = str(buy_expenses)
 		self.widget.child_finder('sale').text = str(sell_income)
-		self.widget.child_finder('balance').text = str(sign+' '+str(abs(balance)))
+		self.widget.child_finder('balance').text = str(sign + ' ' + str(abs(balance)))
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
 		self.widget.mapEvents({'headline': rename})
@@ -213,14 +213,14 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 			houses += house_count
 			residents += house_count * number
 			position_x = (space_per_label * (column - 1)) + 10
-			if not container.findChild(name="resident_"+str(column)):
-				label = Label(name="resident_"+str(column), position=(position_x, 0), text=str(number))
+			if not container.findChild(name="resident_" + str(column)):
+				label = Label(name="resident_" + str(column), position=(position_x, 0), text=str(number))
 				container.addChild(label)
-				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1, 20), text=str(house_count))
+				count_label = Label(name="resident_count_" + str(column), position=(position_x - 1, 20), text=str(house_count))
 				container.addChild(count_label)
 			else:
-				container.findChild(name="resident_"+str(column)).text = str(number)
-				container.findChild(name="resident_count_"+str(column)).text = str(house_count)
+				container.findChild(name="resident_" + str(column)).text = str(number)
+				container.findChild(name="resident_count_" + str(column)).text = str(house_count)
 
 		sad = self.instance.session.db.get_lower_happiness_limit()
 		happy = self.instance.session.db.get_upper_happiness_limit()

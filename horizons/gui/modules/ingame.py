@@ -95,7 +95,7 @@ class ChangeNameDialog(Dialog):
 			RenameObject(namedcomp, new_name).execute(self._session)
 
 
-class CityInfo(object):
+class CityInfo:
 	"""Display city name and inhabitant count at top of the screen."""
 	# FIXME updating the position of this widget should be the responsibility of the
 	# FIXME ingamegui, as it needs to take the resource overview bar into account as

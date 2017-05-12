@@ -25,7 +25,7 @@ import time
 from horizons.util.python.singleton import ManualConstructionSingleton
 
 
-class _ExtCallbackObject(object):
+class _ExtCallbackObject:
 	"""Class used by the ExtScheduler Class to organize callbacks."""
 
 	def __init__(self, callback, class_instance, run_in=1, loops=1):
@@ -50,7 +50,7 @@ class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	@param pump: pump list the scheduler registers itself with.
 	"""
 
-	NOOP = _ExtCallbackObject(lambda : 42*1337-3.14, None)
+	NOOP = _ExtCallbackObject(lambda : 42 * 1337 - 3.14, None)
 
 	def __init__(self, pump):
 		super(ExtScheduler, self).__init__()

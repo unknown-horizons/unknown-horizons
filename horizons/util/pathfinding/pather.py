@@ -21,6 +21,7 @@
 
 import logging
 import weakref
+from typing import List, Tuple
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
@@ -33,7 +34,7 @@ We just call this interface Pather. It is used by unit to hide implementation de
 of the pathfinding algorithm.
 """
 
-class AbstractPather(object):
+class AbstractPather:
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
@@ -53,8 +54,8 @@ class AbstractPather(object):
 		self.destination_in_building = False
 		self.source_in_building = False
 
-		self.path = None
-		self.cur = None
+		self.path = None # type: List[Tuple[int, int]]
+		self.cur = None # type: int
 
 	@property
 	def unit(self):
@@ -159,7 +160,7 @@ class AbstractPather(object):
 				raise PathBlockedError
 
 		# check if we have to change visibility because of entering or leaving a building
-		if self.destination_in_building and self.cur == len(self.path)-1:
+		if self.destination_in_building and self.cur == len(self.path) - 1:
 			self.destination_in_building = False
 			self.unit.hide()
 		elif self.source_in_building and self.cur == 2:
@@ -180,7 +181,7 @@ class AbstractPather(object):
 
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
-		del self.path[self.cur+1:]
+		del self.path[self.cur + 1:]
 
 	def save(self, db, unitid):
 		# just save each step of the path
@@ -281,7 +282,7 @@ class SoldierPather(AbstractPather):
 			return super(SoldierPather, self)._check_for_obstacles(point)
 
 
-class StaticPather(object):
+class StaticPather:
 	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
 	@classmethod

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -56,7 +55,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
 		resources = self.instance.get_component(DepositComponent).get_res_ranges()
-		amounts = dict((res, (0, max_amount)) for res, min_, max_amount in resources)
+		amounts = {res: (0, max_amount) for res, min_, max_amount in resources}
 		self.widget.child_finder("inventory").init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory,
 		                                           ordinal=amounts)

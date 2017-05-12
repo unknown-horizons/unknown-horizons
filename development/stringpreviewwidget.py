@@ -71,7 +71,7 @@ class StringPreviewWidget(Window):
 		else:
 			# Old scenario syntax version without metadata
 			stats = data.get('translation_status', '')
-		self.statslabel.text = unicode(stats)
+		self.statslabel.text = str(stats)
 
 	def load(self):
 		"""Load selected scenario and show strings"""

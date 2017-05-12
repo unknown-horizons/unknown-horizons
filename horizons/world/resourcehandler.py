@@ -29,7 +29,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 
 
-class ResourceTransferHandler(object):
+class ResourceTransferHandler:
 	"""Objects that can transfer resources. ResourceHandler and units with storages"""
 	def transfer_to_storageholder(self, amount, res_id, transfer_to, signal_errors=False):
 		"""Transfers amount of res_id to transfer_to.
@@ -47,9 +47,9 @@ class ResourceTransferHandler(object):
 		# check if we were able to get the planned amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
-		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount - ret)
 		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
-		actually_transfered = amount-ret
+		actually_transfered = amount - ret
 		if signal_errors and actually_transfered == 0:
 			AmbientSoundComponent.play_special('error')
 		return actually_transfered

@@ -35,7 +35,7 @@ from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
 
 
-class WorldEditor(object):
+class WorldEditor:
 	def __init__(self, world):
 		super(WorldEditor, self).__init__()
 		self.world = world

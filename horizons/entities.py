@@ -47,7 +47,7 @@ class _EntitiesLazyDict(dict):
 			return elem
 
 
-class Entities(object):
+class Entities:
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
 	Loads grounds from the db.

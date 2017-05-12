@@ -100,7 +100,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 			elif rotation == 135:
 				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
 			elif rotation == 225:
-				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 1, 3)
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width - 1, pos.origin.y + 1, 1, 3)
 			elif rotation == 315:
 				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
 			assert False

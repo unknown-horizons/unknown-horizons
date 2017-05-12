@@ -36,7 +36,7 @@ from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
 
 
-class SavegameManager(object):
+class SavegameManager:
 	"""Controls savegamefiles.
 
 	This class is rather a namespace than a "real" object, since it has no members.
@@ -248,9 +248,9 @@ class SavegameManager(object):
 
 	@classmethod
 	def _write_screenshot(cls, db):
-		# special handling for screenshot (as blob)
-		screenshot_fd, screenshot_filename = tempfile.mkstemp()
-
+		"""
+		special handling for screenshot (as blob)
+		"""
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		height = horizons.globals.fife.engine_settings.getScreenHeight()
 
@@ -268,16 +268,17 @@ class SavegameManager(object):
 		factor = float(cls.savegame_screenshot_width) / width
 		new_width = int(float(width) * factor)
 		new_height = int(float(height) * factor)
-		backend = horizons.globals.fife.engine.getRenderBackend()
-		backend.captureScreen(screenshot_filename, new_width, new_height)
+
+		with tempfile.NamedTemporaryFile() as f:
+			backend = horizons.globals.fife.engine.getRenderBackend()
+			backend.captureScreen(f.name, new_width, new_height)
+
+			data = f.read()
+			db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(data))
 
 		if dialog_hidden:
 			windows.show_all()
 			horizons.globals.fife.engine.pump()
-
-		screenshot_data = os.fdopen(screenshot_fd, "rb").read()
-		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
-		os.unlink(screenshot_filename)
 
 	@classmethod
 	def write_metadata(cls, db, savecounter, rng_state):

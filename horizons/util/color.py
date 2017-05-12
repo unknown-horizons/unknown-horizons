@@ -22,7 +22,7 @@
 import horizons.globals
 
 
-class Color(object):
+class Color:
 	"""Class for saving a color.
 
 	Colors are saved in 32 bit rgb-format with an alpha value (for transparency). 32bit mean

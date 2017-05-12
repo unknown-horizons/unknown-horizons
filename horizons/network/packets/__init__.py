@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
+import importlib
 import inspect
 import pickle
 import sys
@@ -36,7 +37,7 @@ PICKLE_SAFE = {
 	'server' : {},
 } # type: Dict[str, Dict[str, Set[str]]]
 
-class SafeUnpickler(object):
+class SafeUnpickler:
 	"""
 	NOTE: this is a security related method and may lead to
 	execution of arbritary code if used in a wrong way
@@ -86,8 +87,7 @@ class SafeUnpickler(object):
 			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
 				format(module, name))
-		__import__(module)
-		mod = sys.modules[module]
+		mod = importlib.import_module(module)
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
 			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
@@ -106,7 +106,7 @@ class SafeUnpickler(object):
 
 #-------------------------------------------------------------------------------
 
-class packet(object):
+class packet:
 	maxpacketsize = 0
 
 	def __init__(self):

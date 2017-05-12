@@ -20,7 +20,7 @@
 # ###################################################
 
 
-class BuildingIndexer(object):
+class BuildingIndexer:
 	"""
 	Indexes a subset of the buildings on an island to improve nearby building
 	lookup performance.
@@ -125,7 +125,7 @@ class BuildingIndexer(object):
 
 
 
-class BuildingIndex(object):
+class BuildingIndex:
 	"""
 	Indexes buildings around a tile to improve nearby building lookup speed.
 	The code isn't particularly pretty for performance reasons.

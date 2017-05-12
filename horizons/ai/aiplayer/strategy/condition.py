@@ -24,7 +24,7 @@ import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
 
 
-class Condition(object):
+class Condition:
 	"""
 	Condition's goal is to aid StrategyManager in figuring out what kind of strategy/mission
 	is applicable to given state of world, e.g. instead of having a really long method that decides what kind of reasoning

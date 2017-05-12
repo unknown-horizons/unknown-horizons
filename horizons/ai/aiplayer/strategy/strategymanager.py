@@ -33,7 +33,7 @@ from horizons.util.python import map_balance, trim_value
 from horizons.util.worldobject import WorldObject
 
 
-class StrategyManager(object):
+class StrategyManager:
 	"""
 	StrategyManager object is responsible for handling major decisions in game such as
 	sending fleets to battle, keeping track of diplomacy between players, declare wars.
@@ -178,12 +178,12 @@ class StrategyManager(object):
 		power_balance = self.owner.strategy_manager.calculate_player_power_balance(player)
 		terrain_balance = self.owner.strategy_manager.calculate_player_terrain_balance(player)
 		balance = {
-			'wealth':wealth_balance,
-			'power':power_balance,
-			'terrain':terrain_balance,
+			'wealth': wealth_balance,
+			'power': power_balance,
+			'terrain': terrain_balance,
 		}
-		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.items()))
-		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.items()))
+		balance = {key: trim_value(value, 1. / trimming_factor, trimming_factor) for key, value in balance.items()}
+		balance = {key: map_balance(value, trimming_factor, linear_boundary) for key, value in balance.items()}
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 

@@ -62,7 +62,7 @@ if TYPE_CHECKING:
 
 
 # private module pointers of this module
-class Modules(object):
+class Modules:
 	gui = None # type: Optional[Gui]
 	session = None # type: Optional[Session]
 _modules = Modules()
@@ -242,13 +242,14 @@ def start(_command_line_arguments):
 		if _modules.session is None:
 			print("You can only set the speed via command line in combination with a game start parameter such as --start-map, etc.")
 			return False
-		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
+		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND * command_line_arguments.gamespeed)
 
 	if command_line_arguments.gui_test:
 		from tests.gui import TestRunner
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	horizons.globals.fife.run()
+	return True
 
 def setup_update_check():
 	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
@@ -413,10 +414,10 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeeded"""
 	if is_scenario:
-		savegames = SavegameManager.get_available_scenarios(locales=True)
+		map_file = _find_scenario(map_name, SavegameManager.get_available_scenarios(locales=True))
 	else:
-		savegames = SavegameManager.get_maps()
-	map_file = _find_matching_map(map_name, savegames)
+		map_file = _find_map(map_name, SavegameManager.get_maps())
+
 	if not map_file:
 		return False
 
@@ -436,7 +437,7 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	@return: bool, whether loading succeeded"""
 	# first check for partial or exact matches in the normal savegame list
 	savegames = SavegameManager.get_saves()
-	map_file = _find_matching_map(savegame, savegames)
+	map_file = _find_map(savegame, savegames)
 	if not map_file:
 		return False
 
@@ -444,36 +445,66 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	start_singleplayer(options)
 	return True
 
-def _find_matching_map(name_or_path, savegames):
-	"""*name_or_path* is either a map/savegame name or path to a map/savegame file."""
+def _find_scenario(name_or_path, scenario_db):
+	"""Find a scenario by name or path specified by user.
+	@param name_or_path: scenario name or path to thereof
+	@param scenario_db: defaultdict of the format:
+	{ <scenario name> : [ (<locale 1>, <path 1>), (<locale 2>, <path 2>), ... ] }
+	@return: path to the scenario file as string"""
 	game_language = horizons.globals.fife.get_locale()
-	# now we have "_en.yaml" which is set to language_extension variable
-	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
-	map_file = None
-	for filename, name in zip(*savegames):
-		if name in (name_or_path, name_or_path + language_extension):
-			# exact match or "tutorial" matching "tutorial_en.yaml"
-			return filename
-		if name.startswith(name_or_path): # check for partial match
-			if map_file is not None:
-				# multiple matches, collect all for output
-				map_file += '\n' + filename
-			else:
-				map_file = filename
-	if map_file is not None:
-		if len(map_file.splitlines()) > 1:
-			print("Error: Found multiple matches:")
-			for name_or_path in map_file.splitlines():
-				print(os.path.basename(name_or_path))
+
+	# extract name and game_language locale from the path if in correct format
+	if os.path.exists(name_or_path) and name_or_path.endswith(".yaml") and "_" in os.path.basename(name_or_path):
+		name, game_language = os.path.splitext(os.path.basename(name_or_path))[0].split("_")
+	# name_or_path may be a custom scenario path without specified locale
+	elif os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
+		return name_or_path
+	elif not os.path.exists(name_or_path) and name_or_path.endswith(".yaml"):
+		print("Error: name or path '{name}' does not exist.".format(name=name_or_path))
+		return
+	# assume name_or_path is a scenario name if no extension was specified
+	else:
+		name = name_or_path
+
+	# check if name is a valid scenario name
+	if name not in scenario_db:
+		print("Error: scenario '{name}' not in scenario database.".format(name=name))
+		return
+
+	# check if name is ambiguous
+	found_names = [test_name for test_name in scenario_db if test_name.startswith(name)]
+	if len(found_names) > 1:
+		print("Error: search for scenario '{name}' returned multiple results.".format(name=name))
+		print("\n".join(found_names))
+		return
+
+	# get path to scenario by name and game_language locale
+	try:
+		path_to_scenario = dict(scenario_db[name])[game_language]
+		return path_to_scenario
+	except KeyError:
+		print("Error: could not find scenario '{name}' in scenario database. The locale '{locale}' may be wrong.".format(name=name, locale=game_language))
+
+def _find_map(name_or_path, map_db):
+	"""Find a map by name or path specified by user.
+	@param name_or_path: map name or path to thereof
+	@param map_db: tuple of the format: ( (<map path 1>, <map path 2>, ...), [ <map 1>, <map 2>, ...] )
+	@return: path to the map file as string"""
+
+	# map look-up with given valid path
+	if os.path.exists(name_or_path) and name_or_path.endswith(".sqlite"):
+		return name_or_path
+	elif not os.path.exists(name_or_path) and name_or_path.endswith(".sqlite"):
+		print("Error: name or path '{name}' does not exist.".format(name=name_or_path))
+		return
+	# assume name_or_path is a map name if no extension specified
+	else:
+		if name_or_path not in map_db[1]:
+			print("Error: map '{name}' not in map database.".format(name=name_or_path))
 			return
-		else:
-			return map_file
-	else: # not a savegame, check for path to file or fail
-		if os.path.exists(name_or_path):
-			return name_or_path
-		else:
-			print("Error: Cannot find savegame or map '{name}'.".format(name=name_or_path))
-			return
+		for path, name in zip(*map_db):
+			if name == name_or_path:
+				return path
 
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
@@ -516,7 +547,7 @@ def edit_map(map_name):
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeeded
 	"""
-	return _edit_map(_find_matching_map(map_name, SavegameManager.get_maps()))
+	return _edit_map(_find_map(map_name, SavegameManager.get_maps()))
 
 def edit_game_map(saved_game_name):
 	"""
@@ -526,7 +557,7 @@ def edit_game_map(saved_game_name):
 	@return: bool, whether loading succeeded
 	"""
 	saved_games = SavegameManager.get_saves()
-	saved_game_path = _find_matching_map(saved_game_name, saved_games)
+	saved_game_path = _find_map(saved_game_name, saved_games)
 	if not saved_game_path:
 		return False
 
@@ -561,7 +592,7 @@ def set_debug_log(enabled, startup=False):
 			# log file is already set up, just make sure everything is logged
 			logging.getLogger().setLevel(logging.DEBUG)
 		else: # set up all anew
-			class Data(object):
+			class Data:
 				debug = False
 				debug_log_only = True
 				logfile = None

@@ -26,12 +26,12 @@ from horizons.network.packets import SafeUnpickler, packet
 
 
 class cmd_creategame(packet):
-	clientversion = None # type: unicode
+	clientversion = None # type: str
 	clientid      = None # type: str
-	playername    = None # type: unicode
+	playername    = None # type: str
 	playercolor   = None # type: int
 	gamename      = "Unnamed Game"
-	mapname       = None # type: unicode
+	mapname       = None # type: str
 	maxplayers    = None # type: int
 	maphash       = ""
 	password      = ""
@@ -106,7 +106,7 @@ SafeUnpickler.add('client', cmd_creategame)
 
 class cmd_listgames(packet):
 	clientversion = 0
-	mapname       = None # type: unicode
+	mapname       = None # type: str
 	maxplayers    = None # type: int
 
 	def __init__(self, clientver, mapname=None, maxplayers=None):
@@ -130,8 +130,8 @@ SafeUnpickler.add('client', cmd_listgames)
 class cmd_joingame(packet):
 	uuid          = None # type: str
 	clientid      = None # type: str
-	clientversion = None # type: unicode
-	playername    = None # type: unicode
+	clientversion = None # type: str
+	playername    = None # type: str
 	playercolor   = None # type: int
 	password      = ""
 	fetch         = False
@@ -197,7 +197,7 @@ SafeUnpickler.add('client', cmd_leavegame)
 #-------------------------------------------------------------------------------
 
 class cmd_chatmsg(packet):
-	chatmsg = None # type: unicode
+	chatmsg = None # type: str
 
 	def __init__(self, msg):
 		self.chatmsg = msg
@@ -214,7 +214,7 @@ SafeUnpickler.add('client', cmd_chatmsg)
 #-------------------------------------------------------------------------------
 
 class cmd_changename(packet):
-	playername = None # type: unicode
+	playername = None # type: str
 
 	def __init__(self, playername):
 		self.playername = playername

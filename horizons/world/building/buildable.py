@@ -20,18 +20,18 @@
 # ###################################################
 
 import itertools
+from collections import ChainMap
 
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.pathfinding.pathfinder import a_star_find_path
-from horizons.util.python import ChainedContainer
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 
-class BuildableErrorTypes(object):
+class BuildableErrorTypes:
 	"""Killjoy class. Collection of reasons why you can't build."""
 	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
 	OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
@@ -54,7 +54,7 @@ class BuildableErrorTypes(object):
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
-class _BuildPosition(object):
+class _BuildPosition:
 	"""A possible build position in form of a data structure.
 	Don't use directly outside of this file"""
 	def __init__(self, position, rotation, tearset, buildable, action='idle',
@@ -98,7 +98,7 @@ class _NotBuildableError(Exception):
 		super(_NotBuildableError, self).__init__()
 		self.errortype = errortype
 
-class Buildable(object):
+class Buildable:
 	"""Interface for every kind of buildable objects.
 	Contains methods to determine whether a building can be placed on a coordinate, regarding
 	island, settlement, ground requirements etc. Does not care about building costs."""
@@ -296,7 +296,7 @@ class Buildable(object):
 			for build in builds_in_construction:
 				(sizex, sizey) = Entities.buildings[build.building_class].size
 				for (neededx, neededy) in position.tuple_iter():
-					if neededx in range(build.x, build.x+sizex) and neededy in range(build.y, build.y+sizey):
+					if neededx in range(build.x, build.x + sizex) and neededy in range(build.y, build.y + sizey):
 						raise _NotBuildableError(BuildableErrorTypes.OTHER_BUILDING_THERE)
 		return tearset
 
@@ -388,7 +388,7 @@ class BuildableLine(Buildable):
 		elif cls.id == BUILDINGS.BARRIER:
 			# Allow nodes that can be walked upon and existing barriers when finding a
 			# build path
-			nodes = ChainedContainer(island.path_nodes.nodes, island.barrier_nodes.nodes)
+			nodes = ChainMap(island.path_nodes.nodes, island.barrier_nodes.nodes)
 		else:
 			raise Exception('BuildableLine does not support building id {0}'.format(cls.id))
 
@@ -402,7 +402,7 @@ class BuildableLine(Buildable):
 		for x, y in path:
 			action = ''
 			for action_char, (xoff, yoff) in \
-			    sorted(BUILDINGS.ACTION.action_offset_dict.items()): # order is important here
+					sorted(BUILDINGS.ACTION.action_offset_dict.items()): # order is important here
 				if action_char in 'abcd' and (xoff + x, yoff + y) in path:
 					action += action_char
 			if action == '':
@@ -466,7 +466,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 				is_coastline = ('coastline' in session.world.get_tile(point).classes)
 			else:
 				is_coastline = False
-			coastline[point.x-x, point.y-y] = is_coastline
+			coastline[point.x - x, point.y - y] = is_coastline
 
 		""" coastline looks something like this:
 		111
@@ -560,7 +560,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 			   (deposit is not None and tile.object != deposit): # only build on 1 deposit
 				raise _NotBuildableError(BuildableErrorTypes.NEED_RES_SOURCE)
 			deposit = tile.object
-		return set([deposit.worldid])
+		return {deposit.worldid}
 
 	@classmethod
 	def _check_rotation(cls, session, position, rotation):

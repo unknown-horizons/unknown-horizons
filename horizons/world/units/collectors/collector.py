@@ -455,7 +455,7 @@ class Collector(Unit):
 			return super(Collector, self).__str__()
 
 
-class Job(object):
+class Job:
 	"""Data structure for storing information of collector jobs"""
 	ResListEntry = namedtuple("ResListEntry", ["res", "amount", "target_inventory_full"])
 	def __init__(self, obj, reslist):

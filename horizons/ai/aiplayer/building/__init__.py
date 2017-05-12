@@ -31,7 +31,7 @@ from horizons.world.production.producer import Producer
 from horizons.world.production.productionline import ProductionLine
 
 
-class AbstractBuilding(object):
+class AbstractBuilding:
 	"""
 	An object of this class tells the AI how to build a specific type of building.
 

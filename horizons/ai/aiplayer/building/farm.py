@@ -30,7 +30,7 @@ from horizons.constants import BUILDINGS, RES
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 
-class FarmOptionCache(object):
+class FarmOptionCache:
 	def __init__(self, settlement_manager):
 		self.settlement_manager = settlement_manager
 		abstract_farm =  AbstractBuilding.buildings[BUILDINGS.FARM]

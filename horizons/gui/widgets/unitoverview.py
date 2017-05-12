@@ -41,7 +41,7 @@ class StanceWidget(Container):
 	def init(self, instance):
 		self.instance = instance
 		self.toggle_stance()
-		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
+		events = {i.NAME: Callback(self.set_stance, i) for i in DEFAULT_STANCES}
 		self.mapEvents( events )
 
 	def beforeShow(self):

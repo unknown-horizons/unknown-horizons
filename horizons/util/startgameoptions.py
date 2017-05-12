@@ -27,7 +27,7 @@ from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
 
-class StartGameOptions(object):
+class StartGameOptions:
 
 	def __init__(self, game_identifier):
 		super(StartGameOptions, self).__init__()

@@ -54,7 +54,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		self.schedule = {}
 		self.additional_cur_tick_schedule = [] # jobs to be executed at the same tick they were added
 		self.calls_by_instance = {} # for get_classinst_calls
-		self.cur_tick = self.__class__.FIRST_TICK_ID-1 # before ticking
+		self.cur_tick = self.__class__.FIRST_TICK_ID - 1 # before ticking
 		self.timer = timer
 		self.timer.add_call(self.tick)
 
@@ -269,7 +269,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		return self.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 
 
-class _CallbackObject(object):
+class _CallbackObject:
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval, finish_callback=None):
 		"""Creates the CallbackObject instance.

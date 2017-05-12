@@ -24,7 +24,7 @@ from copy import deepcopy
 from horizons.scheduler import Scheduler
 
 
-class InventoryChecker(object):
+class InventoryChecker:
 
 	def __init__(self, message_class, storage_component, check_interval):
 		"""Message class is a subclass of message that this checker will broadcast when the storage_component given has change in its inventory.

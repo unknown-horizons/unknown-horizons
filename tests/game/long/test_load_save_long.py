@@ -28,7 +28,7 @@ from horizons.util.savegameaccessor import SavegameAccessor
 from tests.game import game_test
 
 
-@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=2*60)
+@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=2 * 60)
 def test_save_trivial(session, _):
 	"""
 	Let 2 AI players play for a while, then attempt to save the game.
@@ -36,7 +36,7 @@ def test_save_trivial(session, _):
 	Be aware, this is a pretty simple test and it doesn't actually check what is
 	being saved.
 	"""
-	session.run(seconds=4*60)
+	session.run(seconds=4 * 60)
 
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)

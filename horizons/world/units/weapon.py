@@ -31,7 +31,7 @@ from horizons.util.shapes import Point
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
-class Weapon(object):
+class Weapon:
 	"""
 	Generic Weapon class
 	it has the modifiers:

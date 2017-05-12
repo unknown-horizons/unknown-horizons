@@ -35,7 +35,7 @@ from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictiona
 from horizons.util.worldobject import WorldObject
 
 
-class CombatManager(object):
+class CombatManager:
 	"""
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior
@@ -66,7 +66,7 @@ class CombatManager(object):
 		"""
 		Range used when wanting to get close to ships.
 		"""
-		return (2*ship._max_range + ship._min_range)/3 + 1
+		return (2 * ship._max_range + ship._min_range) / 3 + 1
 
 	@classmethod
 	def fallback_range(cls, ship):
@@ -173,8 +173,8 @@ class CombatManager(object):
 
 	def _highlight_circle(self, position, radius, color):
 		points = set(self.session.world.get_points_in_radius(position, radius))
-		points2 = set(self.session.world.get_points_in_radius(position, radius-1))
-		self._highlight_points(list(points-points2), color)
+		points2 = set(self.session.world.get_points_in_radius(position, radius - 1))
+		self._highlight_points(list(points - points2), color)
 
 	def display(self):
 		"""

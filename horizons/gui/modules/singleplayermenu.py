@@ -1,4 +1,3 @@
-# Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -121,7 +120,7 @@ class SingleplayerMenu(Window):
 		self._mode.act(player_name, player_color)
 
 
-class GameSettingsWidget(object):
+class GameSettingsWidget:
 	"""Toggle trader/pirates/disasters and change resource density."""
 
 	def __init__(self):
@@ -181,7 +180,7 @@ class GameSettingsWidget(object):
 		return self._gui.findChild(name='disasters').marked
 
 
-class RandomMapWidget(object):
+class RandomMapWidget:
 	"""Create a random map, influence map generation with multiple sliders."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -362,7 +361,7 @@ class RandomMapWidget(object):
 		self._gui.findChild(name="map_preview_status_label").text = text
 
 
-class FreeMapsWidget(object):
+class FreeMapsWidget:
 	"""Start a game by selecting an existing map."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -444,7 +443,7 @@ class FreeMapsWidget(object):
 		self._map_preview.draw()
 
 
-class ScenarioMapWidget(object):
+class ScenarioMapWidget:
 	"""Start a scenario (with a specific language)."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -606,7 +605,7 @@ class ScenarioMapWidget(object):
 	@staticmethod
 	def get_available_languages(scenario):
 		# type: (List[Tuple[str, str]]) -> List[str]
-		scenario_langs = list(set(language for language, filename in scenario))
+		scenario_langs = {language for language, filename in scenario}
 		return [LANGUAGENAMES[l] for l in sorted(scenario_langs)]
 
 	def _get_selected_map(self):

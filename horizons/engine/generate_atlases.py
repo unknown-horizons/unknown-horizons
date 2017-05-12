@@ -75,7 +75,7 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader # isort:skip
 from horizons.util.loaders.tilesetloader import TileSetLoader # isort:skip
 
 
-class AtlasEntry(object):
+class AtlasEntry:
 	def __init__(self, x, y, width, height, last_modified):
 		self.x = x
 		self.y = y
@@ -83,7 +83,7 @@ class AtlasEntry(object):
 		self.height = height
 		self.last_modified = last_modified
 
-class AtlasBook(object):
+class AtlasBook:
 	log = logging.getLogger("generate_atlases")
 
 	def __init__(self, id, max_size):
@@ -141,7 +141,7 @@ def save_atlas_book(book):
 	book.save()
 
 
-class ImageSetManager(object):
+class ImageSetManager:
 	def __init__(self, initial_data, path):
 		self._data = {}
 		self._path = path
@@ -184,7 +184,7 @@ class ImageSetManager(object):
 			json.dump(self._data, json_file, indent=1)
 
 
-class AtlasGenerator(object):
+class AtlasGenerator:
 	log = logging.getLogger("generate_atlases")
 	# increment this when the structure of the atlases changes
 	current_version = 1

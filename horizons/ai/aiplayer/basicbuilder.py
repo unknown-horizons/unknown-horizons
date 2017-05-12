@@ -29,7 +29,7 @@ from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
 
 
-class BasicBuilder(object):
+class BasicBuilder:
 	"""An object of this class represents a non-checked plan to build a building at a specific place."""
 
 	rotations = [45, 135, 225, 315]
@@ -93,10 +93,6 @@ class BasicBuilder(object):
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
 		inventories = [land_manager.settlement, ship]
 		return Build.check_resources(extra_resources, Entities.buildings[self.building_id].costs, land_manager.owner, inventories)[0]
-
-	def __cmp__(self, other):
-		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
-		raise NotImplementedError()
 
 	def __str__(self):
 		return 'BasicBuilder of building {0:d} at {1!s}, orientation {2:d}'. \

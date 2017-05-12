@@ -30,14 +30,14 @@ def test_ai_long():
 		yield run_ai_long, seed
 
 def run_ai_long(seed):
-	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=60*60)
+	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=60 * 60)
 	def test(session, _):
 		"""Let 2 AI players play for 40 minutes."""
-		session.run(seconds=40*60)
+		session.run(seconds=40 * 60)
 		assert session.world.settlements
 
 	test()
 
 # this disables the test in general and only makes it being run when
 # called like this: run_tests.py -a long
-test_ai_long.long = True
+test_ai_long.long = True # type: ignore

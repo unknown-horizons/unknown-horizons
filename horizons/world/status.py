@@ -39,7 +39,7 @@ Priority:
 [2000-3000[: high
 Keep the numbers unique to avoid confusion when sorting.
 """
-class StatusIcon(object):
+class StatusIcon:
 	# integer
 	priority = None # type: int
 	# fife identifier for animations or icons. Must be supported by either the animationloader
@@ -62,9 +62,6 @@ class StatusIcon(object):
 		mylist.sort(key=mylist.get_sorting_key())
 		"""
 		return operator.attrgetter("priority")
-
-	def __cmp__(self, other):
-		return cmp(self.__class__, other.__class__)
 
 	def __str__(self):
 		return str(self.__class__) + "(prio:{},icon:{})".format(self.priority, self.icon)

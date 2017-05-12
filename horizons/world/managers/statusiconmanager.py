@@ -29,7 +29,7 @@ from horizons.messaging import (
 from horizons.world.status import StatusIcon
 
 
-class StatusIconManager(object):
+class StatusIconManager:
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
 	and RemoveStatusIcon messages on the main message bus"""
 
@@ -140,7 +140,7 @@ class StatusIconManager(object):
 
 	def get_status_string(self, instance):
 		"""Returns render name for status icons of this instance"""
-		status_string = "status_"+ str(id(instance))
+		status_string = "status_" + str(id(instance))
 		return status_string
 
 	def on_hover_instances_changed(self, msg):

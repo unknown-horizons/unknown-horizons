@@ -230,7 +230,7 @@ class UhDbAccessor(DbReader):
 		"""Returns a random name compatible with the given locale. If there are
 		no unused names left, None is returned.
 		"""
-		used_names_placeholder = ', '.join(['?']*len(used_names))
+		used_names_placeholder = ', '.join(['?'] * len(used_names))
 		sql = "SELECT name FROM ainames \
 				WHERE name NOT IN ({0}) AND \
 					  (locale IS NULL OR locale = ?) \
@@ -297,5 +297,5 @@ class UhDbAccessor(DbReader):
 
 
 def read_savegame_template(db):
-	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script(savegame_template.read())
+	with open(PATHS.SAVEGAME_TEMPLATE, "r") as f:
+		db.execute_script(f.read())

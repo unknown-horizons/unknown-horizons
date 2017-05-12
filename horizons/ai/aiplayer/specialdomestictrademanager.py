@@ -27,7 +27,7 @@ from horizons.component.storagecomponent import StorageComponent
 from .mission.specialdomestictrade import SpecialDomesticTrade
 
 
-class SpecialDomesticTradeManager(object):
+class SpecialDomesticTradeManager:
 	"""
 	An object of this class manages the special domestic trade routes of one AI player.
 

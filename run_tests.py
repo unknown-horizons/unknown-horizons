@@ -26,21 +26,13 @@
 import gettext
 import sys
 
-from horizons.ext.dummy import Dummy
+from tests.dummy import Dummy
 
 try:
 	import nose
 except ImportError:
 	print('The nose package is needed to run the UH tests.')
 	sys.exit(1)
-
-try:
-	import mock
-except ImportError:
-	print('The mock package is needed to run the UH tests.')
-	sys.exit(1)
-
-
 
 
 def mock_fife():

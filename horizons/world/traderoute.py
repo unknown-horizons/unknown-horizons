@@ -150,7 +150,7 @@ class TradeRoute(ChangeListener):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
-		class TransferStatus(object):
+		class TransferStatus:
 			def __init__(self):
 				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
 				self.remaining_transfers = {}

@@ -147,7 +147,7 @@ class Producer(Component):
 
 		# not really fancy way of selecting special production class
 		if self.settler_upgrade_lines:
-			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
+			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level + 1):
 				production_class = SingleUseProduction
 
 		return production_class(inventory=self.instance.get_component(StorageComponent).inventory,

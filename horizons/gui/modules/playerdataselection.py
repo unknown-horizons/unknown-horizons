@@ -27,7 +27,7 @@ from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 
 
-class PlayerDataSelection(object):
+class PlayerDataSelection:
 	"""Subwidget for selecting player name and color.
 	Used by Multiplayer and Singleplayer menu."""
 
@@ -57,7 +57,7 @@ class PlayerDataSelection(object):
 		# right now there are 14 different colors to choose from.
 		for i in range(0, len(colorlabels), 5):
 			hbox = HBox(name='line_{index}'.format(index=i))
-			hbox.addChildren(colorlabels[i:i+5])
+			hbox.addChildren(colorlabels[i:i + 5])
 			self.colors.addChild(hbox)
 
 		playertextfield = self.gui.findChild(name='playername')

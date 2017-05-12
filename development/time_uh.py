@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -59,7 +58,7 @@ def get_length(r):
 
 dev_null = open(os.devnull, 'w')
 
-class GameTimer(object):
+class GameTimer:
 	def __init__(self, name, args):
 		self.name = name
 		self.args = args
@@ -94,7 +93,7 @@ def show_data(games):
 		s %= 3600
 		m = s // 60
 		s %= 60
-		print(game.name, '%d:%02d:%06.3fs' % (h, m, s), game.returncode)
+		print(game.name, '[:d}:{:02d}:{:06.3f}s'.format(h, m, s), game.returncode)
 
 if __name__ == '__main__':
 	parser = PassThroughOptionParser()

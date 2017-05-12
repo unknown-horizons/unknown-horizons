@@ -32,7 +32,7 @@ from horizons.util.python.callback import Callback
 
 
 @metaChangeListenerDecorator('remove')
-class TabWidget(object):
+class TabWidget:
 	"""The TabWidget class handles widgets which consist of many
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
@@ -84,11 +84,11 @@ class TabWidget(object):
 			button.capture(Callback(self.show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
-			container.size = (50,52)
+			container.size = (50, 52)
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.widget.size = (54, 55*len(self._tabs))
+		self.widget.size = (54, 55 * len(self._tabs))
 		self.widget.adaptLayout()
 
 		self._apply_layout_hack()

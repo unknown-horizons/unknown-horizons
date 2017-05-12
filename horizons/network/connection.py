@@ -39,7 +39,7 @@ SERVER_PROTOCOL = 1
 SERVER_TIMEOUT = 5000
 
 
-class Connection(object):
+class Connection:
 	"""Low-level interface to enet.
 
 	Handles sending and receiving packets.

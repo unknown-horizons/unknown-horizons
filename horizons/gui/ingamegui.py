@@ -434,7 +434,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = "{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = "{0:1g}x".format(tps * 1.0 / GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -558,8 +558,8 @@ class IngameGui(LivingObject):
 		"""
 		if ctrl_pressed:
 			# Only consider units owned by the player.
-			units = set(u for u in self.session.selected_instances
-			            if u.owner.is_local_player)
+			units = {u for u in self.session.selected_instances
+			         if u.owner.is_local_player}
 			self.session.selection_groups[num] = units
 			# Drop units of the new group from all other groups.
 			for group in self.session.selection_groups:

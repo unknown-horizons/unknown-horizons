@@ -34,7 +34,7 @@ class TestNamedComponent(TestCase):
 
 	@classmethod
 	def make_component(cls, name=None):
-		class Instance(object):
+		class Instance:
 			def __init__(self):
 				super(Instance, self).__init__()
 				self.instance = self

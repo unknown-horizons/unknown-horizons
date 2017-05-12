@@ -26,7 +26,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethodlist import WeakMethodList
 
 
-class ChangeListener(object):
+class ChangeListener:
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
 	An object calls _changed every time something has changed, obviously.
@@ -59,9 +59,9 @@ class ChangeListener(object):
 			else:
 				listener_list[listener_list.index(listener)] = None
 		except ValueError as e: # nicer error:
-			raise ValueError(str(e)+
-			                 "\nTried to remove: "+str(listener)+"\nat "+str(self)+
-			                 "\nList: "+str([str(i) for i in listener_list]))
+			raise ValueError(str(e) +
+			                 "\nTried to remove: " + str(listener) + "\nat " + str(self) +
+			                 "\nList: " + str([str(i) for i in listener_list]))
 
 	def __call_listeners(self, listener_list):
 		# instead of removing from list, switch the listener in position to None
@@ -159,9 +159,9 @@ production_finished listener.
 """
 def metaChangeListenerDecorator(event_name):
 	def decorator(clas):
-		list_name = "__"+event_name+"_listeners"
-		event_call_number = "__"+event_name+"call_number"
-		hard_remove_event = "__hard_remove"+event_name
+		list_name = "__" + event_name + "_listeners"
+		event_call_number = "__" + event_name + "call_number"
+		hard_remove_event = "__hard_remove" + event_name
 		# trivial changelistener operations
 		def add(self, listener):
 			assert callable(listener)
@@ -196,10 +196,10 @@ def metaChangeListenerDecorator(event_name):
 				setattr(self, list_name, [ l for l in getattr(self, list_name) if l ])
 
 		# add methods to class
-		setattr(clas, "add_"+event_name+"_listener", add)
-		setattr(clas, "remove_"+event_name+"_listener", rem)
-		setattr(clas, "has_"+event_name+"_listener", has)
-		setattr(clas, "on_"+event_name, on)
+		setattr(clas, "add_" + event_name + "_listener", add)
+		setattr(clas, "remove_" + event_name + "_listener", rem)
+		setattr(clas, "has_" + event_name + "_listener", has)
+		setattr(clas, "on_" + event_name, on)
 
 		# use black __new__ magic to add the methods to the instances
 		# think of it as being executed in __init__

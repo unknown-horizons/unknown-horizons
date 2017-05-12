@@ -99,7 +99,7 @@ def make_lazy_gettext(lookup_func):
     return lazy_gettext
 
 
-class _LazyString(object):
+class _LazyString:
     """Class for strings created by a function call.
 
     The proxy implementation attempts to be as complete as possible, so that
