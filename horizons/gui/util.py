@@ -189,7 +189,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			# capture a mouse click on the container. It's possible to click on the
 			# image itself or into the empty area (below or to the right of the image)
 			button.capture(cb, event_name="mouseClicked")
-			button.name = "resource_%d" % res_id
+			button.name = "resource_{:d}".format(res_id)
 		else:
 			amount = inventory[res_id]
 			filled = int(inventory[res_id] / inventory.get_limit(res_id) * 100)
@@ -197,13 +197,13 @@ def create_resource_selection_dialog(on_click, inventory, db,
 						                                amount=amount, filled=filled, uncached=True,
 						                                use_inactive_icon=False, showprice=True)
 			button.capture(cb, event_name="mouseClicked")
-			button.name = "resource_%d" % res_id
+			button.name = "resource_{:d}".format(res_id)
 
 		current_hbox.addChild(button)
 		if index % amount_per_line == 0:
 			vbox.addChild(current_hbox)
 			box_id = index // amount_per_line
-			current_hbox = HBox(name="hbox_%s" % box_id, padding=0)
+			current_hbox = HBox(name="hbox_{}".format(box_id), padding=0)
 		index += 1
 	vbox.addChild(current_hbox)
 	vbox.adaptLayout()
