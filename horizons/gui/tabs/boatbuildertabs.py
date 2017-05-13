@@ -190,9 +190,9 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		for i, (res, amount) in enumerate(needed_res):
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
-			label = Label(name="needed_res_lbl_%s" % i)
+			label = Label(name="needed_res_lbl_{}".format(i))
 			label.text = '{amount}t'.format(amount=amount)
-			new_hbox = HBox(name="needed_res_box_%s" % i)
+			new_hbox = HBox(name="needed_res_box_{}".format(i))
 			new_hbox.addChildren(icon, label)
 			needed_res_container.addChild(new_hbox)
 
@@ -234,7 +234,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 
 	def build_ship_info(self, index, ship, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
+		widget = Container(name='showcase_{}'.format(index), position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
 		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{}'.format(index))
 		widget.addChild(bg_icon)
@@ -267,7 +267,7 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
 			icon.position = (xoffset, yoffset)
-			label = Label(name='cost_%s_%s' % (index, i))
+			label = Label(name='cost_{}_{}'.format(index, i))
 			if res == RES.GOLD:
 				label.text = str(-amount)
 			else:
