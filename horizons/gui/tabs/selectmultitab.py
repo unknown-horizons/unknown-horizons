@@ -89,7 +89,7 @@ class SelectMultiTab(TabInterface):
 			self.row_number = 2
 			return
 		self.column_number += 1
-		self.widget.findChild(name="hbox_{}".format(self.row_number).addChild(entry.widget))
+		self.widget.findChild(name="hbox_{}".format(self.row_number)).addChild(entry.widget)
 		self.entries.append(entry)
 
 	def draw_selected_units_widget(self):
