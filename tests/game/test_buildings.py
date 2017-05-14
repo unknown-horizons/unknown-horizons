@@ -171,23 +171,30 @@ def test_build_tear(s, p):
 	else:
 		assert False
 
-
 @game_test(timeout=60)
-def test_tree_production(s, p):
-	"""Check whether trees produce wood"""
+def test_tree_wood_production(s, p):
+	"""
+	Check whether trees produce wood
+	"""
 	settlement, island = settle(s)
+
+	# create building tree at coordinates (30,35)
 	tree = Build(BUILDINGS.TREE, 30, 35, island, settlement=settlement)(p)
 
+	# number of wood units to produce
 	n = 20
 
+	# create inventory for building tree
 	inv = tree.get_component(StorageComponent).inventory
+
 	for i in range(n):  # we want n units
 
-		while not inv[RES.TREES]:
+		# wait for a ton of wood to get produced
+		while inv[RES.TREES] < 1:
 			s.run(seconds=5)
 
-		# take one away to free storage space
-		#from tests import set_trace ; set_trace()
+		# take one away to free inventory storage space
 		inv.alter(RES.TREES, -1)
 
-	# here, n tons of wood have been produced
+	# after producing n tons of wood inventory should be empty
+	assert inv[RES.TREES] == 0
