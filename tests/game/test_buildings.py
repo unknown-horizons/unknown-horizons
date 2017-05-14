@@ -172,7 +172,6 @@ def test_build_tear(s, p):
 	else:
 		assert False
 
-
 @game_test(timeout=60)
 def test_tree_wood_production(s, p):
 	"""
