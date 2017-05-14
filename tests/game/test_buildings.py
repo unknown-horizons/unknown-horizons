@@ -200,7 +200,6 @@ def test_tree_wood_production(s, p):
 	# after producing n tons of wood inventory should be empty
 	assert inv[RES.TREES] == 0
 
-
 @game_test(timeout=60)
 def test_tree_wildanimalfood_production(s, p):
 	"""
