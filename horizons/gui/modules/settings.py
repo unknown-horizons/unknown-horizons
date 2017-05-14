@@ -222,9 +222,9 @@ class SettingsDialog(PickBeltWidget, Window):
 		a '%' suffix."""
 		value_label = self.widget.findChild(name=widget.name + '_value')
 		value = {
-			'volume_music':      lambda x: '{:d}%%'.format(int(500 * x)),
-			'volume_effects':    lambda x: '{:d}%%'.format(int(200 * x)),
-			'mousesensitivity':  lambda x: '{:+.1f}%%'.format(200 * x),
+			'volume_music':      lambda x: '{:d}%'.format(int(500 * x)),
+			'volume_effects':    lambda x: '{:d}%'.format(int(200 * x)),
+			'mousesensitivity':  lambda x: '{:+.1f}%'.format(200 * x),
 			'autosaveinterval':  lambda x: '{:d}'.format(x),
 			'autosavemaxcount':  lambda x: '{:d}'.format(x),
 			'quicksavemaxcount': lambda x: '{:d}'.format(x),

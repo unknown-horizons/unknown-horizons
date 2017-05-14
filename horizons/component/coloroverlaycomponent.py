@@ -130,9 +130,9 @@ class ColorOverlayComponent(Component):
 				if isinstance(color, UtilColor) or isinstance(color, fife.Color):
 					fife_to = fife.Color(color.r, color.g, color.b, alpha)
 				else:
-					raise TypeError('Unknown color `%s` as attribute `%s`: '
+					raise TypeError('Unknown color `{}` as attribute `{}`: '
 						'Expected either fife.Color or horizons.util.Color.'
-						% (color, to_color))
+						.format(color, to_color))
 			self.change_color(z_order, fife_from, fife_to)
 
 	def add_overlay(self, overlay_name, z_order):
