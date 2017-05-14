@@ -99,7 +99,7 @@ class PlayersShips(StatsWidget):
 
 		health = Label(name='health_{:d}'.format(ship.worldid))
 		health_component = ship.get_component(HealthComponent)
-		health.text = '{:d}/{:d}'.format(health_component.health, health_component.max_health)
+		health.text = '{:.1f}/{:.1f}'.format(health_component.health, health_component.max_health)
 		health.min_size = health.max_size = (65, 20)
 
 		status = Label(name='status_{:d}'.format(ship.worldid))

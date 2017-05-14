@@ -225,9 +225,9 @@ class SettingsDialog(PickBeltWidget, Window):
 			'volume_music':      lambda x: '{:d}%'.format(int(500 * x)),
 			'volume_effects':    lambda x: '{:d}%'.format(int(200 * x)),
 			'mousesensitivity':  lambda x: '{:+.1f}%'.format(200 * x),
-			'autosaveinterval':  lambda x: '{:d}'.format(x),
-			'autosavemaxcount':  lambda x: '{:d}'.format(x),
-			'quicksavemaxcount': lambda x: '{:d}'.format(x),
+			'autosaveinterval':  lambda x: '{:.1f}'.format(x),
+			'autosavemaxcount':  lambda x: '{:d}'.format(int(x)),
+			'quicksavemaxcount': lambda x: '{:d}'.format(int(x)),
 			'scrollspeed':       lambda x: '{:.1f}'.format(x),
 		}[widget.name](widget.value)
 		value_label.text = value
