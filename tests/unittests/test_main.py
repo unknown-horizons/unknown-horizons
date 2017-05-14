@@ -204,9 +204,19 @@ def test_load_game_by_name(self):
 	pass
 
 
-@skip_todo
-def test_load_game_by_path(self):
-	pass
+@mock.patch('horizons.main.start_singleplayer')
+def test_load_game_by_path(mock_start_singleplayer):
+	"""
+	Test that a specific savegame entry can be loaded from the command line.
+	An in-game map is used instead of an actual savegame file - see NOTE.
+	"""
+	start_game("--load-game", "content/maps/development.sqlite")
+
+	options = mock_start_singleplayer.call_args[0][0]
+	assert not options.is_scenario
+	assert not options.is_map	# here the savegame is not treated as a loadable map
+	assert not options.is_editor
+	assert options.game_identifier == 'content/maps/development.sqlite'
 
 
 @skip_todo
