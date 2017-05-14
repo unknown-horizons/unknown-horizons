@@ -440,13 +440,8 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	map_file = _find_map(savegame, savegames)
 	if not map_file:
 		return False
-	
-	# for testing savegame revision
-	accessor = SavegameAccessor(map_file, False)
-	map_name = accessor.map_name
-	accessor.close()
 
-	options = StartGameOptions.create_load_game(map_name, force_player_id)
+	options = StartGameOptions.create_load_game(map_file, force_player_id)
 	start_singleplayer(options)
 	return True
 
