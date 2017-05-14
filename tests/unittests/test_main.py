@@ -216,7 +216,7 @@ def test_load_game_by_path(mock_start_singleplayer):
 	assert not options.is_scenario
 	assert not options.is_map	# here the savegame is not treated as a loadable map
 	assert not options.is_editor
-	assert options.game_identifier == "development"  # SavegameManager loads only a bare fixture
+	assert options.game_identifier == "content/save/savegame_test.sqlite"
 
 
 @skip_todo
