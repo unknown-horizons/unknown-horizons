@@ -227,7 +227,6 @@ def test_edit_game_map_by_name(self):
 	pass
 
 
-@skip_todo	#  this test will fail because of the SavegameManager accessor
 @mock.patch('horizons.main.start_singleplayer')
 def test_edit_game_map_by_path(mock_start_singleplayer):
 	"""

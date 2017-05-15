@@ -557,13 +557,10 @@ def edit_game_map(saved_game_name):
 	@return: bool, whether loading succeeded
 	"""
 	saved_games = SavegameManager.get_saves()
-	saved_game_path = _find_map(saved_game_name, saved_games)
-	if not saved_game_path:
+	map_name = _find_map(saved_game_name, saved_games)
+	if not map_name:
 		return False
 
-	accessor = SavegameAccessor(saved_game_path, False)
-	map_name = accessor.map_name
-	accessor.close()
 	if isinstance(map_name, list):
 		# a random map represented by a list of island strings
 		return _edit_map(map_name)
