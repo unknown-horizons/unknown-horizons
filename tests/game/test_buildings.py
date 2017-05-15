@@ -180,16 +180,11 @@ def test_tree_wood_production(s, p):
 	"""
 	settlement, island = settle(s)
 
-	# create building tree at coordinates (30,35)
 	tree = Build(BUILDINGS.TREE, 30, 35, island, settlement=settlement)(p)
 
-	# number of wood units to produce
-	n = 20
-
-	# create inventory for building tree
 	inv = tree.get_component(StorageComponent).inventory
 
-	for i in range(n):  # we want n units
+	for i in range(20):  # we want to produce 20 tons of wood
 
 		# wait for a ton of wood to get produced
 		while inv[RES.TREES] < 1:
@@ -198,7 +193,7 @@ def test_tree_wood_production(s, p):
 		# take one away to free inventory storage space
 		inv.alter(RES.TREES, -1)
 
-	# after producing n tons of wood inventory should be empty
+	# after producing 20 tons of wood inventory should be empty
 	assert inv[RES.TREES] == 0
 
 
@@ -209,16 +204,11 @@ def test_tree_wildanimalfood_production(s, p):
 	"""
 	settlement, island = settle(s)
 
-	# create building tree at coordinates (30,35)
 	tree = Build(BUILDINGS.TREE, 30, 35, island, settlement=settlement)(p)
 
-	# number of food units to produce
-	n = 20
-
-	# create inventory for building tree
 	inv = tree.get_component(StorageComponent).inventory
 
-	for i in range(n):  # we want n units
+	for i in range(20):  # we want to produce 20 units of food
 
 		# wait for a unit of food to get produced
 		while inv[RES.WILDANIMALFOOD] < 1:
@@ -227,5 +217,5 @@ def test_tree_wildanimalfood_production(s, p):
 		# take one away to free inventory storage space
 		inv.alter(RES.WILDANIMALFOOD, -1)
 
-	# after producing n units of wood inventory should be empty
+	# after producing 20 units of food inventory should be empty
 	assert inv[RES.WILDANIMALFOOD] == 0
