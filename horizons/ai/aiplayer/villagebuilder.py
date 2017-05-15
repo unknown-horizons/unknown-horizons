@@ -854,4 +854,6 @@ class VillageBuilder(AreaBuilder):
 			renderer.addColored(tile._instance, *color)
 
 	def __str__(self):
-		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
+		return '{} VillageBuilder{})'.format(
+			self.settlement_manager,
+			self.worldid if hasattr(self, 'worldid') else 'none')
