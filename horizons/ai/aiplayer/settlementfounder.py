@@ -211,4 +211,4 @@ class SettlementFounder:
 			self.owner.need_feeder_island = True
 
 	def __str__(self):
-		return '%s SettlementFounder' % (self.owner)
+		return '{} SettlementFounder'.format(self.owner)

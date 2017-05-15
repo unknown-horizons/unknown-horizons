@@ -69,4 +69,4 @@ class UnitBuilder:
 		return sum(len(boat_builder.get_component(Producer).get_production_lines()) for boat_builder in self._get_boat_builders())
 
 	def __str__(self):
-		return '%s UnitBuilder' % self.owner
+		return '{} UnitBuilder'.format(self.owner)

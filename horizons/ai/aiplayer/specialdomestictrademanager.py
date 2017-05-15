@@ -118,4 +118,4 @@ class SpecialDomesticTradeManager:
 		self._add_route()
 
 	def __str__(self):
-		return '%s.SpecialDomesticTradeManager' % self.owner
+		return '{}.SpecialDomesticTradeManager'.format(self.owner)
