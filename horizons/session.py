@@ -41,6 +41,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.ingamegui import IngameGui
 from horizons.i18n import gettext as T
 from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
+from horizons.messaging.queuingmessagebus import QueuingMessageBus
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.scheduler import Scheduler
@@ -194,6 +195,7 @@ class Session(LivingObject):
 		# discard() in case loading failed and we did not yet subscribe
 		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
+		QueuingMessageBus().reset()
 
 	def quit(self):
 		self.end()
