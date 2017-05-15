@@ -488,7 +488,7 @@ class SingleResourceManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "resource_id"):
 			return 'UninitializedSingleResourceManager'
-		result = 'Resource {:d} production {:.5f}/{:.5f] ({:.5f} low priority)'.format(
+		result = 'Resource {:d} production {:.5f}/{:.5f} ({:.5f} low priority)'.format(
 			self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.items():
 			result += '\n  {}quota assignment {:.5f} to {}'.format(
