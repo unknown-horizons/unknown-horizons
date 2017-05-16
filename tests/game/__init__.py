@@ -262,18 +262,3 @@ def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=
 	return deco
 
 game_test.__test__ = False # type: ignore
-
-
-def set_trace():
-	"""
-	Use this function instead of directly importing if from pdb. The test run
-	time limit will be disabled and stdout restored (so the debugger actually
-	works).
-	"""
-	Timer.stop()
-
-	from nose.tools import set_trace
-	set_trace()
-
-
-_multiprocess_can_split_ = True
