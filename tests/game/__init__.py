@@ -260,5 +260,3 @@ def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=
 				timelimit.stop()
 		return wrapped
 	return deco
-
-game_test.__test__ = False # type: ignore

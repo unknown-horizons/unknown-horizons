@@ -99,8 +99,6 @@ class TestRunner:
 	hold in list used as stack - only the last added handler will be continued
 	until it has finished.
 	"""
-	__test__ = False
-
 	def __init__(self, engine, test_path):
 		self._engine = engine
 
