@@ -40,6 +40,3 @@ class TestCase(unittest.TestCase):
 
 	def tearDown(self):
 		self.db.close()
-
-
-_multiprocess_can_split_ = True
