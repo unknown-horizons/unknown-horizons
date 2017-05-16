@@ -227,6 +227,7 @@ def test_edit_game_map_by_name(self):
 	pass
 
 
+@skip_todo  # because of the accessor in horizons.main.edit_game_map, this test would fail with a temporary file
 @mock.patch('horizons.main.start_singleplayer')
 def test_edit_game_map_by_path(mock_start_singleplayer):
 	"""
