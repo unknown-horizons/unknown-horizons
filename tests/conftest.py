@@ -37,17 +37,18 @@ def pytest_configure(config):
 
 
 def pytest_runtest_setup(item):
+	"""
+	Called for every test, here we skip expensive tests from the default test run.
+	"""
 	# Skip tests marked as long unless specified otherwise on the command line
 	marker = item.get_marker('long')
-	if marker is not None:
-		if not item.config.getoption('--long-tests'):
-			pytest.skip('test is long running')
+	if marker is not None and not item.config.getoption('--long-tests'):
+		pytest.skip('test is long running')
 
 	# Skip gui tests unless specified otherwise on the command line
 	marker = item.get_marker('gui')
-	if marker is not None:
-		if not item.config.getoption('--gui-tests'):
-			pytest.skip('test is gui test')
+	if marker is not None and not item.config.getoption('--gui-tests'):
+		pytest.skip('test is gui test')
 
 
 def pytest_collection_modifyitems(items):
@@ -84,13 +85,14 @@ def pytest_namespace():
 		from tests.dummy import Dummy
 
 		class Finder(PathFinder):
-			@classmethod
-			def find_spec(cls, fullname, path, target=None):
+			@staticmethod
+			def find_spec(fullname, path, target=None):
 				if fullname.startswith('fife'):
 					return ModuleSpec(fullname, DummyLoader())
 
 		class DummyLoader(Loader):
-			def load_module(self, module):
+			@staticmethod
+			def load_module(module):
 				sys.modules.setdefault(module, Dummy())
 
 		sys.meta_path.insert(0, Finder)
