@@ -21,6 +21,8 @@
 
 from textwrap import dedent
 
+import pytest
+
 from horizons.util.shapes import Point
 from horizons.util.tile_orientation import get_tile_alignment_action
 
@@ -40,13 +42,60 @@ def make_tiles(tiles):
 	return tiles, accessor
 
 
-def check_alignment(expected_action, tiles):
-	tiles, accessor = make_tiles(tiles)
-	aligned = get_tile_alignment_action(Point(0, 0), accessor)
-	assert aligned == expected_action, 'Expected {0}, got {1} instead'.format(expected_action, aligned)
+@pytest.mark.parametrize('expected,tiles', [
+	('single', '''
+		_ _ _
+		_ . _
+		_ _ _
+	'''),
+	('d', '''
+		_ _ _
+		x . _
+		_ _ _
+	'''),
+	('bd', '''
+		_ _ _
+		x . x
+		_ _ _
+	'''),
+	('bd', '''
+		x _ _
+		x . x
+		_ _ x
+	'''),
+	('abdh', '''
+		x x _
+		x . x
+		_ _ _
+	'''),
+	('single', '''
+		x _ _
+		_ . _
+		_ _ x
+	'''),
+	('ac', '''
+		_ x _
+		_ . _
+		_ x _
+	'''),
+	('abcd', '''
+		_ x _
+		x . x
+		_ x _
+	'''),
+	('abcdeg', '''
+		_ x x
+		x . x
+		x x _
+	'''),
+	('abcdefgh', '''
+		x x x
+		x . x
+		x x x
+	''')
 
-
-def test_combinations():
+])
+def test_get_tile_alignment_action(expected, tiles):
 	"""Tests for the road/wall orientation code.
 
 	Basically `get_tile_alignment_action` returns the sorted list of fields that the tile in
@@ -59,54 +108,6 @@ def test_combinations():
 		d . b
 		g c f
 	"""
-
-	yield check_alignment, 'single', '''
-		_ _ _
-		_ . _
-		_ _ _
-	'''
-	yield check_alignment, 'd', '''
-		_ _ _
-		x . _
-		_ _ _
-	'''
-	yield check_alignment, 'bd', '''
-		_ _ _
-		x . x
-		_ _ _
-	'''
-	yield check_alignment, 'bd', '''
-		x _ _
-		x . x
-		_ _ x
-	'''
-	yield check_alignment, 'abdh', '''
-		x x _
-		x . x
-		_ _ _
-	'''
-	yield check_alignment, 'single', '''
-		x _ _
-		_ . _
-		_ _ x
-	'''
-	yield check_alignment, 'ac', '''
-		_ x _
-		_ . _
-		_ x _
-	'''
-	yield check_alignment, 'abcd', '''
-		_ x _
-		x . x
-		_ x _
-	'''
-	yield check_alignment, 'abcdeg', '''
-		_ x x
-		x . x
-		x x _
-	'''
-	yield check_alignment, 'abcdefgh', '''
-		x x x
-		x . x
-		x x x
-	'''
+	tiles, accessor = make_tiles(tiles)
+	aligned = get_tile_alignment_action(Point(0, 0), accessor)
+	assert aligned == expected

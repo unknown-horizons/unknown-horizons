@@ -19,4 +19,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# this file is needed just to appease nose
+import pytest
+
+import horizons.globals
+import horizons.main
+
+
+@pytest.fixture
+def s():
+	# FIXME For now this is necessary for the game_test decorator to work with pytest.
+	# Otherwise it complains about unknown fixtures `s` and `p` (the arguments injected by the
+	# decorator).
+	pass
+
+
+@pytest.fixture
+def p():
+	# FIXME For now this is necessary for the game_test decorator to work with pytest.
+	# Otherwise it complains about unknown fixtures `s` and `p` (the arguments injected by the
+	# decorator).
+	pass
+
+
+@pytest.fixture(autouse=True)
+def database(request):
+	"""
+	Provide each tests with a fresh database automatically.
+	"""
+	db = horizons.main._create_main_db()
+	horizons.globals.db = db
+
+	yield db
+
+	db.close()

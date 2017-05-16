@@ -22,7 +22,7 @@
 """
 How GUI tests are run:
 
-A test marked with the `gui_test` decorator will be collected by nose.
+A test marked with the `gui_test` decorator will be collected by pytest.
 When this test is run, it will launch the game in a subprocess, passing it the
 dotted path to the test (along with other options), similar to this code:
 
@@ -44,8 +44,6 @@ import subprocess
 import sys
 import tempfile
 from functools import wraps
-
-from nose.plugins import Plugin
 
 from tests import RANDOM_SEED
 from tests.gui import cooperative
@@ -85,48 +83,6 @@ def recreate_userdir():
 	TEST_USER_DIR = tempfile.mkdtemp()
 
 
-class GuiTestPlugin(Plugin):
-	"""This plugin is used to improve the test failure display for gui tests.
-
-	Because nose runs in a different process than the real test, we cannot easily
-	show the traceback as if the exception occured here. The real traceback will
-	be used as message in a `TestFailed` exception, which we capture here and
-	remove the traceback (from the TestFailed raise) entirely, leaving us just
-	with the exception.
-
-	This:
-
-		------------------------
-		Traceback (most recent call last):
-			File "/path/to/nose/case.py", line 197, in runTest
-				self.test(*self.arg)
-			File "/path/to/tests/gui/__init__.py", line 273, in wrapped
-				raise TestFailed("\n\n" + error)
-		TestFailed:
-
-		[Real traceback]
-
-	Becomes:
-
-		------------------------
-		TestFailed:
-
-		[Real traceback]
-	"""
-	name = 'guitest'
-	enabled = True
-
-	def configure(self, options, conf):
-		pass
-
-	def formatError(self, test, err):
-		exc_type, value, traceback = err
-		if exc_type == TestFailed:
-			traceback = None
-
-		return exc_type, value, traceback
-
-
 class TestRunner:
 	"""Manages test execution.
 
@@ -143,8 +99,6 @@ class TestRunner:
 	hold in list used as stack - only the last added handler will be continued
 	until it has finished.
 	"""
-	__test__ = False
-
 	def __init__(self, engine, test_path):
 		self._engine = engine
 
@@ -215,7 +169,7 @@ class TestRunner:
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
 			 _user_dir=None, use_scenario=None, additional_cmdline=None):
-	"""Magic nose integration.
+	"""Magic pytest integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
 	use_fixture		-	starts the game with --load-game=fixture_name
@@ -225,7 +179,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 	cleanup_userdir	-	whether the userdir should be cleaned after the test
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
-	printed. That way it will appear in the nose failure listing.
+	printed. That way it will appear in the pytest failure listing.
 	"""
 	def deco(func):
 		@wraps(func)
@@ -309,12 +263,6 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 		# we need to store the original function, otherwise the new process will execute
 		# this decorator, thus spawning a new process..
 		setattr(wrapped, '__original__', func)
-		setattr(wrapped, 'gui', True) # mark as gui for test selection
 		return wrapped
 
 	return deco
-
-gui_test.__test__ = False # type: ignore
-
-# FIXME GUI tests still don't work in parallel, this is needed for game/unit tests to work
-_multiprocess_can_split_ = True

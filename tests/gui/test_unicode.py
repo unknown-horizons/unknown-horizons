@@ -22,6 +22,8 @@
 import shutil
 import tempfile
 
+import pytest
+
 from tests.gui import gui_test
 
 USER_DIR = None
@@ -46,8 +48,8 @@ def dummy(gui):
 dummy.__original__ = dummy # type: ignore
 
 
+@pytest.mark.gui
 def test_user_dir_contains_non_ascii():
 	# NOTE we have to create the test this way because if it were defined globally,
 	# USER_DIR would not be defined yet at the time the decorator is evaluated
-	yield gui_test(timeout=60, use_dev_map=True, _user_dir=USER_DIR)(dummy)
-test_user_dir_contains_non_ascii.gui = True # type: ignore
+	gui_test(timeout=60, use_dev_map=True, _user_dir=USER_DIR)(dummy)()

@@ -22,9 +22,7 @@
 import functools
 import signal
 
-import nose
-from nose.plugins import Plugin
-from nose.util import ln
+from pytest import skip
 
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
@@ -79,59 +77,6 @@ class Timer:
 		signal.alarm(0)
 
 
-class ReRunInfoPlugin(Plugin):
-	"""Print information on how to rerun a test after each failed test.
-
-	Code to add additional output taken from the Collect plugin.
-	"""
-	name = 'reruninfo'
-	enabled = True
-
-	def configure(self, options, conf):
-		pass
-
-	def formatError(self, test, err):
-		import nose.case
-		if not isinstance(test, nose.case.Test):
-			return err
-
-		_, module, call = test.address()
-
-		output = ['python3', 'run_tests.py', '{}:{}'.format(module, call)]
-
-		# add necessary flags
-		if 'tests.gui' in module:
-			output.append('-a gui')
-		elif 'tests.game.long' in module:
-			output.append('-a long')
-
-		ec, ev, tb = err
-		return (ec, self.addOutputToErr(ev, ' '.join(output)), tb)
-
-	def formatFailure(self, test, err):
-		return self.formatError(test, err)
-
-	def addOutputToErr(self, ev, output):
-		if isinstance(ev, Exception):
-			ev = str(ev)
-		return '\n'.join([ev, '', ln('>> rerun the test <<'), output])
-
-
-def mark_expected_failure(func):
-	"""
-	Marks a test as expected failure. If it suddenly succeeds, the test will fail.
-	"""
-	@functools.wraps(func)
-	def wrapped(*args, **kwargs):
-		try:
-			func(*args, **kwargs)
-		except Exception:
-			raise nose.SkipTest
-		else:
-			raise AssertionError('Failure expected')
-	return wrapped
-
-
 def mark_flaky(func):
 	"""
 	Ignore test failures marked with this decorator. We have some tests that sometimes fail
@@ -142,5 +87,5 @@ def mark_flaky(func):
 		try:
 			func(*args, **kwargs)
 		except Exception:
-			raise nose.SkipTest
+			skip()
 	return wrapped

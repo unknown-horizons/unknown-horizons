@@ -19,12 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from tests.game import game_test
-from tests.utils import mark_expected_failure
 
 
 # FIXTURE is a savegame revision 49
-@mark_expected_failure
+@pytest.mark.xfail(strict=True)
 @game_test(use_fixture='savegame-rev-49')
 def test_upgrade(s):
 	"""

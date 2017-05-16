@@ -49,4 +49,4 @@ proj.launch-config = {loc('run_uh.py'): ('project',
 proj.main-file = loc('run_uh.py')
 testing.auto-test-file-specs = [('glob',
                                  'test_')]
-testing.test-framework = {None: 'nose'}
+testing.test-framework = {None: 'pytest'}
