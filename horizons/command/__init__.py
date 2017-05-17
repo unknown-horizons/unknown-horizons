@@ -76,7 +76,8 @@ class GenericCommand(Command):
 		return WorldObject.get_object_by_id(self.obj_id)
 
 	def __str__(self):
-		return "GenericCommand(%s, %s, %s, %s, %s)" % (self.__class__, self._get_object(), self.method, self.args, self.kwargs)
+		return "GenericCommand({}, {}, {}, {}, {})".format(
+			self.__class__, self._get_object(), self.method, self.args, self.kwargs)
 
 class GenericComponentCommand(Command):
 	"""Code generator for trivial commands on a component."""

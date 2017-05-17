@@ -200,7 +200,7 @@ class _LazyString:
         try:
             return 'l' + repr(self.value)
         except Exception:
-            return '<%s broken>' % self.__class__.__name__
+            return '<{} broken>'.format(self.__class__.__name__)
 
 
 if __name__ == '__main__':
