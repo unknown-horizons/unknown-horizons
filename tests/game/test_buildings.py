@@ -196,3 +196,25 @@ def test_tree_wood_production(s, p):
 	assert inv[RES.TREES] == 0
 
 
+@game_test(timeout=60)
+def test_tree_wildanimalfood_production(s, p):
+	"""
+	Check whether trees produce wild animal food
+	"""
+	settlement, island = settle(s)
+
+	tree = Build(BUILDINGS.TREE, 30, 35, island, settlement=settlement)(p)
+
+	inv = tree.get_component(StorageComponent).inventory
+
+	for i in range(20):  # we want to produce 20 units of food
+
+		# wait for a unit of food to get produced
+		while inv[RES.WILDANIMALFOOD] < 1:
+			s.run(seconds=5)
+
+		# take one away to free inventory storage space
+		inv.alter(RES.WILDANIMALFOOD, -1)
+
+	# after producing 20 units of food inventory should be empty
+	assert inv[RES.WILDANIMALFOOD] == 0
