@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
 from unittest import mock
 
 import pytest
@@ -205,19 +204,21 @@ def test_load_game_by_name(self):
 
 
 @mock.patch('horizons.main.start_singleplayer')
-def test_load_game_by_path(mock_start_singleplayer):
+def test_load_game_by_path(mock_start_singleplayer, tmpdir):
 	"""
 	Test that a specific savegame file given by path can be loaded from the command line.
 	A temporary file is used instead of an actual savegame file.
 	"""
-	with tempfile.NamedTemporaryFile(suffix=".sqlite") as f:
-		start_game("--load-game", f.name)
+	savegame = tmpdir.join('savegame.sqlite')
+	savegame.write('foo')
 
-		options = mock_start_singleplayer.call_args[0][0]
-		assert not options.is_scenario
-		assert not options.is_map	# here the savegame is not treated as a loadable map
-		assert not options.is_editor
-		assert options.game_identifier == f.name
+	start_game("--load-game", str(savegame))
+
+	options = mock_start_singleplayer.call_args[0][0]
+	assert not options.is_scenario
+	assert not options.is_map	# here the savegame is not treated as a loadable map
+	assert not options.is_editor
+	assert options.game_identifier == savegame
 
 
 @skip_todo
