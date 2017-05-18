@@ -198,9 +198,27 @@ def test_edit_map_by_path(mock_start_singleplayer):
 # therefore we can't just override the user dir to point to a temporary
 # directory.
 
-@skip_todo
-def test_load_game_by_name(self):
-	pass
+@mock.patch('horizons.main.start_singleplayer')
+def test_load_game_by_name(mock_start_singleplayer, tmpdir, mocker):
+	"""
+	Test that a specific savegame given by name can be loaded from the command line.
+	A temporary file is used instead of an actual savegame file.
+	"""
+	savegame_dir = tmpdir.mkdir('saves')
+	savegame_path = savegame_dir.join('foo.sqlite')
+	savegame_path.write('barbaz')
+
+	mocker.patch('horizons.savegamemanager.SavegameManager.savegame_dir',
+	             new_callable=mock.PropertyMock,
+	             return_value=str(savegame_dir))
+
+	start_game('--load-game', 'foo')
+
+	options = mock_start_singleplayer.call_args[0][0]
+	assert not options.is_scenario
+	assert not options.is_map
+	assert not options.is_editor
+	assert options.game_identifier == savegame_path
 
 
 @mock.patch('horizons.main.start_singleplayer')
