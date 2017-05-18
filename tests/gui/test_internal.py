@@ -49,27 +49,6 @@ def test_run_for_x_seconds(gui):
 	assert (difference - expected) / difference < 0.05
 
 
-def expected_failure(func):
-	@functools.wraps(func)
-	def wrapper(*args, **kwargs):
-		try:
-			func(*args, **kwargs)
-		except Exception:
-			pass
-		else:
-			raise AssertionError('Expected failure')
-	setattr(wrapper, '__original__', func.__original__)
-	return wrapper
-
-
-@expected_failure
-@gui_test(use_dev_map=True)
-def test_expected_failure(gui):
-	"""Test that failures in tests are detected."""
-
-	1 / 0
-
-
 @gui_test(use_fixture='boatbuilder')
 def test_trigger(gui):
 	"""Test the different ways to trigger an action in a gui."""
