@@ -206,6 +206,6 @@ def content_from_file(filename, parse=True):
 filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)
 
-output = '%s%s%s' % (header, filesnippets, FOOTER)
+output = '{}{}{}'.format(header, filesnippets, FOOTER)
 
 file(sys.argv[1], 'w').write(output.encode('utf-8'))
