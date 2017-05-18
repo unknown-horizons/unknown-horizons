@@ -49,6 +49,7 @@ from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
 from horizons.util.atlasloading import generate_atlases
+from horizons.util.checkupdates import setup_async_update_check
 from horizons.util.preloader import PreloadingThread
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
@@ -228,7 +229,7 @@ def start(_command_line_arguments):
 
 		# initialize update checker
 		if not command_line_arguments.gui_test:
-			setup_update_check()
+			setup_async_update_check()
 
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
@@ -251,21 +252,6 @@ def start(_command_line_arguments):
 	horizons.globals.fife.run()
 	return True
 
-def setup_update_check():
-	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
-	update_info = UpdateInfo()
-	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
-	update_check_thread.start()
-
-	def update_info_handler(info):
-		if info.status == UpdateInfo.UNINITIALIZED:
-			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
-		elif info.status == UpdateInfo.READY:
-			show_new_version_hint(_modules.gui, info)
-		elif info.status == UpdateInfo.INVALID:
-			pass # couldn't retrieve file or nothing relevant in there
-
-	update_info_handler(update_info) # schedules checks by itself
 
 def setup_AI_settings(command_line_arguments):
 	if command_line_arguments.ai_highlights:
