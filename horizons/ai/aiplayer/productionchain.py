@@ -238,7 +238,7 @@ class ProductionChainSubtree:
 
 	def assign_identifier(self, prefix):
 		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
-		self.identifier = '{}/{:d},{:d}'.index(
+		self.identifier = '{}/{:d},{:d}'.format(
 			prefix, self.resource_id, self.abstract_building.id)
 		for child in self.children:
 			child.assign_identifier(self.identifier)
