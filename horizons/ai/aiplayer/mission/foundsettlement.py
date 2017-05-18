@@ -86,7 +86,7 @@ class FoundSettlement(ShipMission):
 
 		builder = BasicBuilder(BUILDINGS.WAREHOUSE, self.coords, 0)
 		if not builder.have_resources(self.land_manager, ship=self.ship):
-			self.report_failure('Not enough resources for a warehouse at %s' % str(self.coords))
+			self.report_failure('Not enough resources for a warehouse at {}'.format(str(self.coords)))
 			return
 
 		self.warehouse = builder.execute(self.land_manager, ship=self.ship)

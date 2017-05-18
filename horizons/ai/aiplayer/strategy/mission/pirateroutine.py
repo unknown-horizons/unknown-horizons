@@ -86,7 +86,8 @@ class PirateRoutine(FleetMission):
 			self.fleet.move(self.owner.home_point, self._state_fleet_callbacks[self.missionStates.going_home])
 			self.state = self.missionStates.going_home
 		except MoveNotPossible:
-			self.report_failure("Pirate: %s, Mission: %s, Pirate ship couldn't go home." % (self.owner.name, self.__class__.__name__))
+			self.report_failure("Pirate: {}, Mission: {}, Pirate ship couldn't go home.".format(
+				self.owner.name, self.__class__.__name__))
 
 	def chase_ship(self):
 		pass
@@ -98,7 +99,8 @@ class PirateRoutine(FleetMission):
 				self.fleet.move(self.owner.home_point, self._state_fleet_callbacks[self.missionStates.fleeing_home])
 				self.state = self.missionStates.fleeing_home
 			except MoveNotPossible:
-				self.report_failure("Pirate: %s, Mission: %s, Pirate ship couldn't flee home after combat" % (self.owner.name, self.__class__.__name__))
+				self.report_failure("Pirate: {}, Mission: {}, Pirate ship couldn't flee home after combat".format(
+					self.owner.name, self.__class__.__name__))
 		else:
 			self.report_failure("Combat was lost, all ships were wiped out")
 

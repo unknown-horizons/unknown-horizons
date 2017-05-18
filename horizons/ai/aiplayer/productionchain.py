@@ -53,7 +53,8 @@ class ProductionChain:
 		self.settlement_manager = settlement_manager
 		self.resource_id = resource_id
 		self.chain = self._get_chain(resource_id, resource_producer, 1.0)
-		self.chain.assign_identifier('/%d,%d' % (self.settlement_manager.worldid, self.resource_id))
+		self.chain.assign_identifier('/{:d},{:d}'.format(
+			self.settlement_manager.worldid, self.resource_id))
 
 	def _get_chain(self, resource_id, resource_producer, production_ratio):
 		"""Return a ProductionChainSubtreeChoice if it is possible to produce the resource, None otherwise."""
@@ -87,7 +88,8 @@ class ProductionChain:
 		return ProductionChain(settlement_manager, resource_id, resource_producer)
 
 	def __str__(self):
-		return 'ProductionChain(%d): %.5f\n%s' % (self.resource_id, self.get_final_production_level(), self.chain)
+		return 'ProductionChain({:d}): {:.5f}\n{}'.format(
+			self.resource_id, self.get_final_production_level(), self.chain)
 
 	def build(self, amount):
 		"""Build a building that gets it closer to producing at least the given amount of resource per tick."""
@@ -131,11 +133,13 @@ class ProductionChainSubtreeChoice:
 			option.assign_identifier(self.identifier)
 
 	def __str__(self, level=0):
-		result = '%sChoice between %d options: %.5f\n' % ('  ' * level, len(self.options), self.get_final_production_level())
+		result = '{}Choice between {:d} options: {:.5f}\n'.format(
+			'  ' * level, len(self.options), self.get_final_production_level())
 		for option in self.options:
 			result += option.__str__(level + 1)
 		if self.get_root_import_level() > 1e-9:
-			result += '\n%sImport %.5f' % ('  ' * (level + 1), self.get_root_import_level())
+			result += '\n{}Import {:.5f}'.format(
+				'  ' * (level + 1), self.get_root_import_level())
 		return result
 
 	def get_root_import_level(self):
@@ -234,7 +238,8 @@ class ProductionChainSubtree:
 
 	def assign_identifier(self, prefix):
 		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
-		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
+		self.identifier = '{}/{:d},{:d}'.index(
+			prefix, self.resource_id, self.abstract_building.id)
 		for child in self.children:
 			child.assign_identifier(self.identifier)
 
@@ -244,8 +249,10 @@ class ProductionChainSubtree:
 		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
 
 	def __str__(self, level=0):
-		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id,
-			self.production_ratio, self.abstract_building.name, self.get_root_production_level(), self.get_final_production_level())
+		result = '{}Produce {:d} (ratio {:.2f}) in {} ({:.5f}, {:.5f})\n'.format(
+			'  ' * level, self.resource_id,
+			self.production_ratio, self.abstract_building.name,
+			self.get_root_production_level(), self.get_final_production_level())
 		for child in self.children:
 			result += child.__str__(level + 1)
 		return result
