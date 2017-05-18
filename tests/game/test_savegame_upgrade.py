@@ -19,14 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pytest
-
 from tests.game import game_test
 
 
-# FIXTURE is a savegame revision 49
-@pytest.mark.xfail(strict=True)
-@game_test(use_fixture='savegame-rev-49')
+@game_test(use_fixture='savegame-rev-76')
 def test_upgrade(s):
 	"""
 	Simply let's do nothing except loading the fixture
