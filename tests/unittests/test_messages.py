@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import unittest
 from unittest import mock
+
+import pytest
 
 from horizons.messaging import Message
 
@@ -28,85 +29,109 @@ from horizons.messaging import Message
 class ExampleMessage(Message):
 	pass
 
+
 class FooMessage(Message):
 	arguments = ('a', 'b', )
 
 
-class TestMessageBus(unittest.TestCase):
-
-	def setUp(self):
-		self.cb = mock.Mock()
-
-	def assert_called_once_with(self, cb, message_type, **arguments):
-		assert cb.call_count == 1
-		msg = cb.call_args[0][0]
-		for name, value in arguments.items():
-			assert getattr(msg, name) == value
-
-	def test_global_subscribe(self):
-		ExampleMessage.subscribe(self.cb)
-
-		# correct message type, cb is called
-		ExampleMessage.broadcast(self)
-		self.assert_called_once_with(self.cb, ExampleMessage, sender=self)
-		self.cb.reset_mock()
-
-		# wrong message type, cb is not called
-		Message.broadcast(self)
-		self.assertFalse(self.cb.called)
-
-	def test_local_subscribe(self):
-		ExampleMessage.subscribe(self.cb, sender=self)
-
-		# correct message type, correct sender, cb is called
-		ExampleMessage.broadcast(self)
-		self.assert_called_once_with(self.cb, ExampleMessage, sender=self)
-		self.cb.reset_mock()
-
-		# correct message type, wrong sender, cb is not called
-		ExampleMessage.broadcast(1)
-		self.assertFalse(self.cb.called)
-		self.cb.reset_mock()
-
-		# wrong message type, correct sender, cb is not called
-		Message.broadcast(self)
-		self.assertFalse(self.cb.called)
-
-	def test_unsubscribe(self):
-		ExampleMessage.subscribe(self.cb)
-		Message.subscribe(self.cb, sender=self)
-
-		# broadcast local and global message, cb called two times
-		ExampleMessage.broadcast(self)
-		Message.broadcast(self)
-		assert self.cb.call_count == 2
-		self.cb.reset_mock()
-
-		# after unsubscribing globally, only the local message is received
-		ExampleMessage.unsubscribe(self.cb)
-		ExampleMessage.broadcast(self)
-		Message.broadcast(self)
-		self.assert_called_once_with(self.cb, Message, sender=self)
-		self.cb.reset_mock()
-
-		# after unsubscribing locally, all subscriptions should be gone, cb not called
-		Message.unsubscribe(self.cb, sender=self)
-		ExampleMessage.broadcast(self)
-		Message.broadcast(self)
-		self.assertFalse(self.cb.called)
+def test_message_sender_argument():
+	sender = object()
+	msg = Message(sender)
+	assert msg.sender == sender
 
 
-class TestMessage(unittest.TestCase):
+def test_message_additional_arguments():
+	sender = object()
+	msg = FooMessage(sender, 1, 2)
+	assert msg.sender == sender
+	assert msg.a == 1
+	assert msg.b == 2
 
-	def test_sender_argument(self):
-		msg = Message(self)
-		self.assertEqual(msg.sender, self)
 
-	def test_additional_arguments(self):
-		msg = FooMessage(self, 1, 2)
-		self.assertEqual(msg.sender, self)
-		self.assertEqual(msg.a, 1)
-		self.assertEqual(msg.b, 2)
+def test_wrong_arguments():
+	with pytest.raises(Exception):
+		FooMessage(None, 1)
 
-	def test_wrong_arguments(self):
-		self.assertRaises(Exception, FooMessage, self, 1)
+
+def assert_called_once_with_message(cb, message_type, **arguments):
+	"""
+	Check whether mock `cb` was called with an instance of `message_type` and the given
+	`arguments`.
+	"""
+	assert cb.call_count == 1
+	msg = cb.call_args[0][0]
+	for name, value in arguments.items():
+		assert getattr(msg, name) == value
+
+
+def test_messagebus_global_subscribe():
+	"""
+	Test global (sender-independent) subscription to messages.
+	"""
+	cb = mock.Mock()
+	sender = object()
+
+	ExampleMessage.subscribe(cb)
+
+	# correct message type, cb is called
+	ExampleMessage.broadcast(sender)
+	assert_called_once_with_message(cb, ExampleMessage, sender=sender)
+	cb.reset_mock()
+
+	# wrong message type, cb is not called
+	Message.broadcast(sender)
+	assert not cb.called
+
+
+def test_messagebus_local_subscribe():
+	"""
+	Test local (sender-specific) subscription to messages.
+	"""
+	cb = mock.Mock()
+	sender = object()
+
+	ExampleMessage.subscribe(cb, sender=sender)
+
+	# correct message type, correct sender, cb is called
+	ExampleMessage.broadcast(sender)
+	assert_called_once_with_message(cb, ExampleMessage, sender=sender)
+	cb.reset_mock()
+
+	# correct message type, wrong sender, cb is not called
+	ExampleMessage.broadcast(1)
+	assert not cb.called
+	cb.reset_mock()
+
+	# wrong message type, correct sender, cb is not called
+	Message.broadcast(sender)
+	assert not cb.called
+
+
+def test_messagebus_unsubscribe():
+	"""
+	Test unsubscribe from messages.
+	"""
+	cb = mock.Mock()
+	sender = object()
+
+	ExampleMessage.subscribe(cb)
+	Message.subscribe(cb, sender=sender)
+
+	# broadcast local and global message, cb called two times
+	ExampleMessage.broadcast(sender)
+	Message.broadcast(sender)
+	assert cb.call_count == 2
+	cb.reset_mock()
+
+	# after unsubscribing globally, only the local message is received
+	ExampleMessage.unsubscribe(cb)
+	ExampleMessage.broadcast(sender)
+	Message.broadcast(sender)
+	assert_called_once_with_message(cb, Message, sender=sender)
+	cb.reset_mock()
+
+	# after unsubscribing locally, all subscriptions should be gone, cb not called
+	Message.unsubscribe(cb, sender=sender)
+	ExampleMessage.broadcast(sender)
+	Message.broadcast(sender)
+	assert not cb.called

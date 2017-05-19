@@ -21,34 +21,23 @@
 
 import pytest
 
-from horizons.util.shapes import Circle, Point, Rect
+import horizons.globals
+import horizons.main
 
 
-def test_point():
-	p1 = Point(0, 0)
-	p2 = Point(0, 2)
-	assert p1.distance(p2) == 2
-	assert p1.distance((0, 1)) == 1
-	assert p1.get_coordinates() == [(0, 0)]
-	assert p1 == p1.copy()
+@pytest.fixture
+def db():
+	"""
+	For each test, set up a new database.
+	"""
+	db = horizons.main._create_main_db()
 
+	# Truncate all tables. We don't want to rely on existing data.
+	for (table_name, ) in db("SELECT name FROM sqlite_master WHERE type = 'table'"):
+		db('DELETE FROM {}'.format(table_name))
 
-def test_rect():
-	r1 = Rect(Point(0, 0), 1, 1)
-	r2 = Rect(0, 0, 1, 1)
-	r3 = Rect(Point(2, 2), 1, 1)
-	assert r1 == r2
-	assert not r1.contains(Point(-1, -1))
-	assert r2.contains(Point(0, 0))
-	assert r2.contains(Point(1, 1))
-	assert r1.intersects(r2)
-	assert not r1.intersects(r3)
+	horizons.globals.db = db
 
-def test_circle():
-	c1 = Circle(Point(0, 0), 1)
-	c2 = Circle(Point(0, 0), 2)
-	c3 = Circle(Point(0, 0), 0)
-	assert not (c1 == c2)
-	assert c1 != c2
-	assert c1.get_coordinates() == [(-1, 0), (0, -1), (0, 0), (0, 1), (1, 0)]
-	assert c3.get_coordinates() == [(0, 0)]
+	yield db
+
+	db.close()
