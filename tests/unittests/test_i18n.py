@@ -55,8 +55,8 @@ def i18n(tmpdir, mocker):
 	po.save_as_mofile(str(fr_mo_dir.join('unknown-horizons.mo')))
 
 	languages = {
-		'de': de_dir,
-		'fr': fr_dir
+		'de': str(de_dir),
+		'fr': str(fr_dir)
 	}
 	mocker.patch('horizons.i18n.find_available_languages', return_value=languages)
 
