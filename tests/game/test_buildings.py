@@ -238,3 +238,16 @@ def test_weaver_textile_production(s, p):
 	weaver.get_component(StorageComponent).inventory.alter(RES.WOOL, 5)
 	s.run(seconds=30)
 	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] > 0
+
+@game_test()
+def test_pavilion_faith_production(s, p):
+	"""
+	Check whether the pavilion produces faith
+	"""
+	settlement, island = settle(s)
+	pavilion = Build(BUILDINGS.PAVILION, 30, 30, island, settlement=settlement)(p)
+
+	assert pavilion
+	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] == 0
+	s.run(seconds=30)
+	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] > 0
