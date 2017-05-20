@@ -221,7 +221,7 @@ def test_tree_wildanimalfood_production(s, p):
 
 
 @game_test()
-def test_weaver_textile_production(s, p):
+def test_weaver_production(s, p):
 	"""
 	Check whether the weaver hut produces textile
 	"""
@@ -240,7 +240,7 @@ def test_weaver_textile_production(s, p):
 	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] > 0
 
 @game_test()
-def test_pavilion_faith_production(s, p):
+def test_pavilion_production(s, p):
 	"""
 	Check whether the pavilion produces faith
 	"""
@@ -277,5 +277,3 @@ def test_farm_production(s, p):
 		s.run(seconds=5)
 		
 		farm.get_component(StorageComponent).inventory[b] > 0
-	
-	
