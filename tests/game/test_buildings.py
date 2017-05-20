@@ -218,3 +218,23 @@ def test_tree_wildanimalfood_production(s, p):
 
 	# after producing 20 units of food inventory should be empty
 	assert inv[RES.WILDANIMALFOOD] == 0
+
+
+@game_test()
+def test_weaver_textile_production(s, p):
+	"""
+	Check whether the weaver hut produces textile
+	"""
+	settlement, island = settle(s)
+	weaver = Build(BUILDINGS.WEAVER, 30, 30, island, settlement=settlement)(p)
+	
+	assert weaver
+	
+	# weaver hut inventory should be empty
+	assert weaver.get_component(StorageComponent).inventory[RES.WOOL] == 0
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] == 0
+	
+	# wool needed for textile production
+	weaver.get_component(StorageComponent).inventory.alter(RES.WOOL, 5)
+	s.run(seconds=30)
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] > 0
