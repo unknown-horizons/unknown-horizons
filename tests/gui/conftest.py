@@ -59,6 +59,7 @@ def pytest_pyfunc_call(pyfuncitem):
 	ai_players = info.kwargs.get('ai_players', 0)
 	additional_cmdline = info.kwargs.get('additional_cmdline', None)
 	timeout = info.kwargs.get('timeout', 15 * 60)
+	modify_user_dir = info.kwargs.get('_modify_user_dir', lambda v: v)
 
 	test_name = '{}.{}'.format(pyfuncitem.module.__name__, pyfuncitem.name)
 
@@ -86,9 +87,11 @@ def pytest_pyfunc_call(pyfuncitem):
 	if additional_cmdline:
 		args.extend(additional_cmdline)
 
+	user_dir = modify_user_dir(tmpdir.join('user_dir'))
+
 	env = os.environ.copy()
 	# Setup temporary user directory for each test
-	env['UH_USER_DIR'] = str(tmpdir.join('user_dir'))
+	env['UH_USER_DIR'] = str(user_dir)
 	# Activate fail-fast, this way the game will stop running when for example the savegame
 	# could not be loaded (instead of showing an error popup)
 	env['FAIL_FAST'] = '1'
