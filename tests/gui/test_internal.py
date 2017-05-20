@@ -22,6 +22,8 @@
 import functools
 import os
 
+import pytest
+
 from horizons.scheduler import Scheduler
 from tests.gui import gui_test
 
@@ -103,3 +105,15 @@ def test_dialog(gui):
 
 	with gui.handler(func):
 		gui.trigger('menu/quit_button')
+
+
+@pytest.mark.xfail(strict=True)
+@gui_test(timeout=60)
+def test_failing(gui):
+	"""
+	Test whether a failure of the test is correctly detected.
+
+	NOTE: We're using XFAIL here, since the failure of the test is expected. If suddenly this
+	test passes, the test suite will fail.
+	"""
+	1 / 0
