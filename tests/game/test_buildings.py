@@ -251,3 +251,31 @@ def test_pavilion_faith_production(s, p):
 	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] == 0
 	s.run(seconds=30)
 	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] > 0
+	
+@game_test()
+def test_farm_production(s, p):
+	"""
+	Check whether fields produce resources and the farm transforms them actual goods
+	"""
+	
+	settlement, island = settle(s)
+	farm = Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	
+	assert farm
+	
+	primary_resources = (RES.LAMB_WOOL, RES.RAW_SUGAR, RES.TOBACCO_PLANTS, RES.CATTLE, RES.PIGS, RES.HERBS, 
+						 RES.GRAIN, RES.SPICE_PLANTS, RES.COCOA_BEANS, RES.VINES, RES.ALVEARIES, RES.HOP_PLANTS)
+
+	secondary_resources = (RES.WOOL, RES.FOOD, RES.SUGAR, RES.TOBACCO_LEAVES, RES.CATTLE_SLAUGHTER, RES.PIGS_SLAUGHTER, 
+						   RES.MEDICAL_HERBS, RES.CORN, RES.SPICES, RES.COCOA, RES.GRAPES, RES.HONEYCOMBS, RES.HOPS)
+
+	# TODO: add collectors for handling primary resources from fields
+	for a, b in zip(primary_resources, secondary_resources):
+		assert farm.get_component(StorageComponent).inventory[a] == 0
+		farm.get_component(StorageComponent).inventory.alter(a, 1)
+		
+		s.run(seconds=5)
+		
+		farm.get_component(StorageComponent).inventory[b] > 0
+	
+	
