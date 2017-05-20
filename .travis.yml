@@ -11,6 +11,9 @@ addons:
 
 before_install:
   - "sudo apt-get update"
+  - "export DISPLAY=:99.0"
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+  - sleep 3 # give xvfb some time to start
 
 install:
   - "sudo apt-get install python3-fife" # libfifechan0.1.4 not avalibale yet
@@ -23,6 +26,7 @@ script:
   - isort -c -rc horizons tests *.py
   - pycodestyle horizons tests *.py development
   - COVERAGE_FILE=.coverage.nongui pytest --verbose --cov --cov-report= -rs
+  - RUNCOV=1 pytest --gui-tests tests/gui --verbose --cov --cov-report= -rs
 
 after_success:
   - coverage combine
