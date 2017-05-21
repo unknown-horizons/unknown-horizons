@@ -303,6 +303,26 @@ def test_saltpond_production(s, p):
 	saltpond = Build(BUILDINGS.SALT_PONDS, 25, 20, island, settlement=settlement)(p)
 	
 	assert saltpond
+	
 	assert saltpond.get_component(StorageComponent).inventory[RES.SALT] == 0
 	s.run(seconds=60)
 	assert saltpond.get_component(StorageComponent).inventory[RES.SALT] >= 2 # ponds produce salt in units of 2
+	
+
+@game_test()
+def test_distillery_production(s, p):
+	"""
+	Check whether the distillery produces liquor
+	"""
+	settlement, island = settle(s)
+	distillery = Build(BUILDINGS.DISTILLERY, 30, 30, island, settlement=settlement)(p)
+	
+	assert distillery
+	
+	assert distillery.get_component(StorageComponent).inventory[RES.SUGAR] == 0
+	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR] == 0
+
+	# sugar needed for liquor production
+	distillery.get_component(StorageComponent).inventory.alter(RES.SUGAR, 1)
+	s.run(seconds=30)
+	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR]
