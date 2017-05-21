@@ -457,3 +457,23 @@ def test_doctor_curing_chain(s, p):
 	s.run(seconds=120) # 2x 30s herbary, 60s doctor
 	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS]
 	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0 # Black Death eliminated
+	
+
+@game_test()
+def test_winery_production_chain(s, p):
+	"""
+	Grapes are grown in a vineyard processed into liquor at a winery
+	"""
+	settlement, island = settle(s)
+	
+	assert Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.VINEYARD, 26, 30, island, settlement=settlement)(p)
+	
+	winery = Build(BUILDINGS.WINERY, 30, 26, island, settlement=settlement)(p)
+	
+	assert winery
+	
+	assert winery.get_component(StorageComponent).inventory[RES.GRAPES] == 0
+	assert winery.get_component(StorageComponent).inventory[RES.LIQUOR] == 0
+	s.run(seconds=120) # 2x 30s vineyard, 15s winery
+	assert winery.get_component(StorageComponent).inventory[RES.LIQUOR]
