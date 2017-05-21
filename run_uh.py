@@ -97,7 +97,8 @@ def get_content_dir_parent_path():
 		content_path = os.path.join(path, 'content')
 		if os.path.exists(content_path):
 			return path
-	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
+
+	exit_with_error('Error', 'Unable to find the path to the Unknown Horizons content dir.')
 
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
