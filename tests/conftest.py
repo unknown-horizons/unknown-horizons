@@ -95,7 +95,7 @@ def pytest_namespace():
 	import fife
 	horizons.globals.fife = fife.fife
 
-	from run_uh import create_user_dirs
+	from horizons.util import create_user_dirs
 	create_user_dirs()
 
 	import horizons.i18n

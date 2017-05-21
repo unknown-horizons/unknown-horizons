@@ -100,12 +100,6 @@ def get_content_dir_parent_path():
 
 	exit_with_error('Error', 'Unable to find the path to the Unknown Horizons content dir.')
 
-def create_user_dirs():
-	"""Creates the userdir and subdirs. Includes from horizons."""
-	from horizons.constants import PATHS
-	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
-		if not os.path.isdir(directory):
-			os.makedirs(directory)
 
 def excepthook_creator(outfilename):
 	"""Returns an excepthook function to replace sys.excepthook.
@@ -159,6 +153,8 @@ def main():
 	# Change the working directory to the parent of the content directory
 	os.chdir(get_content_dir_parent_path())
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
+
+	from horizons.util import create_user_dirs
 	create_user_dirs()
 
 	from horizons.util.cmdlineoptions import get_option_parser
