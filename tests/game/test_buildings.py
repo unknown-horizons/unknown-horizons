@@ -230,7 +230,6 @@ def test_weaver_production(s, p):
 	
 	assert weaver
 	
-	# weaver hut inventory should be empty
 	assert weaver.get_component(StorageComponent).inventory[RES.WOOL] == 0
 	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] == 0
 	
@@ -269,7 +268,7 @@ def test_farm_production(s, p):
 	secondary_resources = (RES.WOOL, RES.FOOD, RES.SUGAR, RES.TOBACCO_LEAVES, RES.CATTLE_SLAUGHTER, RES.PIGS_SLAUGHTER, 
 						   RES.MEDICAL_HERBS, RES.CORN, RES.SPICES, RES.COCOA, RES.GRAPES, RES.HONEYCOMBS, RES.HOPS)
 
-	# TODO: add collectors for handling primary resources from fields
+	# TODO: add collectors for handling primary resources transport from fields
 	for a, b in zip(primary_resources, secondary_resources):
 		assert farm.get_component(StorageComponent).inventory[a] == 0
 		farm.get_component(StorageComponent).inventory.alter(a, 1)
@@ -277,3 +276,17 @@ def test_farm_production(s, p):
 		s.run(seconds=5)
 		
 		farm.get_component(StorageComponent).inventory[b] > 0
+
+@game_test()
+def test_school_production(s, p):
+	"""
+	Check whether schools produce education
+	"""
+	settlement, island = settle(s)
+	school = Build(BUILDINGS.VILLAGE_SCHOOL, 30, 30, island, settlement=settlement)(p)
+	
+	assert school
+	
+	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] == 0
+	s.run(seconds=30)
+	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] > 0
