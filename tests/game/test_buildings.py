@@ -345,3 +345,22 @@ def test_brewery_production(s, p):
 	brewery.get_component(StorageComponent).inventory.alter(RES.HOPS, 1)
 	s.run(seconds=30)
 	assert brewery.get_component(StorageComponent).inventory[RES.BEER]
+
+
+@game_test()
+def test_tobbaconist_production(s, p):
+	"""
+	Check whether the tabacconist produces tobacco
+	"""
+	settlement, island = settle(s)
+	tobacconist = Build(BUILDINGS.TOBACCONIST, 30, 30, island, settlement=settlement)(p)
+	
+	assert tobacconist
+	
+	assert tobacconist.get_component(StorageComponent).inventory[RES.TOBACCO_LEAVES] == 0
+	assert tobacconist.get_component(StorageComponent).inventory[RES.TOBACCO_PRODUCTS] == 0
+
+	# tobacco leaves needed for tobacco production
+	tobacconist.get_component(StorageComponent).inventory.alter(RES.TOBACCO_LEAVES, 2)
+	s.run(seconds=30)
+	assert tobacconist.get_component(StorageComponent).inventory[RES.TOBACCO_PRODUCTS]
