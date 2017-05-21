@@ -396,21 +396,23 @@ def test_butchery_production_chain(s, p):
 	
 
 @game_test()
-def test_bakery_production(s, p):
+def test_bakery_production_chain(s, p):
 	"""
-	Check whether the bakery produces food from flour
+	Corn is grown in cornfields, milled into flour in a windmill and finally turned into food by a bakery
 	"""
 	settlement, island = settle(s)
-	bakery = Build(BUILDINGS.BAKERY, 30, 30, island, settlement=settlement)(p)
+	
+	assert Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.CORN_FIELD, 26, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.WINDMILL, 30, 34, island, settlement=settlement)(p)
+	
+	bakery = Build(BUILDINGS.BAKERY, 30, 26, island, settlement=settlement)(p)
 	
 	assert bakery
 	
 	assert bakery.get_component(StorageComponent).inventory[RES.FLOUR] == 0
 	assert bakery.get_component(StorageComponent).inventory[RES.FOOD] == 0
-	
-	# flour needed for food production
-	bakery.get_component(StorageComponent).inventory.alter(RES.FLOUR, 1)
-	s.run(seconds=30)
+	s.run(seconds=120) # 26s cornfield, 15s windmill, 15s bakery
 	assert bakery.get_component(StorageComponent).inventory[RES.FOOD]
 	
 @game_test()
