@@ -177,31 +177,7 @@ def main():
 
 	# Start UH.
 	import horizons.main
-	ret = True
-	if not options.profile:
-		# start normal
-		ret = horizons.main.start(options)
-	else:
-		# start with profiling
-		try:
-			import cProfile as profile
-		except ImportError:
-			import profile
-
-		from horizons.constants import PATHS
-		profiling_dir = os.path.join(PATHS.USER_DIR, 'profiling')
-		if not os.path.exists(profiling_dir):
-			os.makedirs(profiling_dir)
-
-		pattern = os.path.join(profiling_dir, time.strftime('%Y-%m-%d') + '.%02d.prof')
-		num = 1
-		while os.path.exists(pattern % num):
-			num += 1
-
-		outfilename = pattern % num
-		print('Starting in profile mode. Writing output to: {}'.format(outfilename))
-		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
-		print('Program ended. Profiling output: {}'.format(outfilename))
+	ret = horizons.main.start(options)
 
 	if logfile:
 		logfile.close()

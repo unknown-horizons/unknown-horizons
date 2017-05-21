@@ -90,8 +90,6 @@ def get_option_parser():
 	             help="Enable logging for a certain logging module (for developing only).")
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
 	             help="Writes log to <filename> instead of to the uh-userdir")
-	dev_group.add_option("--profile", dest="profile", action="store_true",
-	             default=False, help="Enable profiling (for developing only).")
 	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
 	             help="Run the game for <max_ticks> ticks.")
 	dev_group.add_option("--no-freeze-protection", dest="freeze_protection", action="store_false",
