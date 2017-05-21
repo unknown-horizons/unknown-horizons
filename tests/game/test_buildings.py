@@ -374,23 +374,24 @@ def test_tobbaconist_production_chain(s, p):
 	
 
 @game_test()
-def test_butchery_production(s, p):
+def test_butchery_production_chain(s, p):
 	"""
-	Check whether the butchery produces food from animal meat
+	Pigs and cattle are herded at a farm and processed into meat at the butchery
 	"""
 	settlement, island = settle(s)
-	butchery = Build(BUILDINGS.BUTCHERY, 30, 30, island, settlement=settlement)(p)
+	
+	assert Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.CATTLE_RUN, 26, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.PIGSTY, 30, 34, island, settlement=settlement)(p)
+	
+	butchery = Build(BUILDINGS.BUTCHERY, 30, 26, island, settlement=settlement)(p)
 	
 	assert butchery
 	
 	assert butchery.get_component(StorageComponent).inventory[RES.PIGS_SLAUGHTER] == 0
 	assert butchery.get_component(StorageComponent).inventory[RES.CATTLE_SLAUGHTER] == 0
 	assert butchery.get_component(StorageComponent).inventory[RES.FOOD] == 0
-	
-	# pig and cattle meat needed for food production
-	butchery.get_component(StorageComponent).inventory.alter(RES.PIGS_SLAUGHTER, 1)
-	butchery.get_component(StorageComponent).inventory.alter(RES.CATTLE_SLAUGHTER, 1)
-	s.run(seconds=30)
+	s.run(seconds=200) # 40s cattlerun, 60s pigsty, 2x 15s butchery
 	assert butchery.get_component(StorageComponent).inventory[RES.FOOD] >= 4 # each meat gives 2 units of food
 	
 
