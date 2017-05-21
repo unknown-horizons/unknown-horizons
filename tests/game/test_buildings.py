@@ -416,21 +416,22 @@ def test_bakery_production_chain(s, p):
 	assert bakery.get_component(StorageComponent).inventory[RES.FOOD]
 	
 @game_test()
-def test_blender_production(s, p):
+def test_blender_production_chain(s, p):
 	"""
-	Check whether the blender produces condiments
+	Spices are grown in spice fields and processed by the blender into condiments
 	"""
 	settlement, island = settle(s)
-	blender = Build(BUILDINGS.BLENDER, 30, 30, island, settlement=settlement)(p)
+	
+	assert Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.SPICE_FIELD, 26, 30, island, settlement=settlement)(p)
+	
+	blender = Build(BUILDINGS.BLENDER, 30, 26, island, settlement=settlement)(p)
 	
 	assert blender
 	
 	assert blender.get_component(StorageComponent).inventory[RES.CONDIMENTS] == 0
 	assert blender.get_component(StorageComponent).inventory[RES.SPICES] == 0
-	
-	# spices needed for condiment production
-	blender.get_component(StorageComponent).inventory.alter(RES.SPICES, 2)
-	s.run(seconds=30)
+	s.run(seconds=120) # 2x 30s spicefield, 15s blender
 	assert blender.get_component(StorageComponent).inventory[RES.CONDIMENTS]
 
 
