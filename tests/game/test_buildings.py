@@ -385,3 +385,22 @@ def test_butchery_production(s, p):
 	butchery.get_component(StorageComponent).inventory.alter(RES.CATTLE_SLAUGHTER, 1)
 	s.run(seconds=30)
 	assert butchery.get_component(StorageComponent).inventory[RES.FOOD] >= 4 # each meat gives 2 units of food
+	
+
+@game_test()
+def test_bakery_production(s, p):
+	"""
+	Check whether the bakery produces food from flour
+	"""
+	settlement, island = settle(s)
+	bakery = Build(BUILDINGS.BAKERY, 30, 30, island, settlement=settlement)(p)
+	
+	assert bakery
+	
+	assert bakery.get_component(StorageComponent).inventory[RES.FLOUR] == 0
+	assert bakery.get_component(StorageComponent).inventory[RES.FOOD] == 0
+	
+	# flour needed for food production
+	bakery.get_component(StorageComponent).inventory.alter(RES.FLOUR, 1)
+	s.run(seconds=30)
+	assert bakery.get_component(StorageComponent).inventory[RES.FOOD]
