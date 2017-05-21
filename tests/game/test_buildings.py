@@ -422,3 +422,24 @@ def test_blender_production(s, p):
 	blender.get_component(StorageComponent).inventory.alter(RES.SPICES, 2)
 	s.run(seconds=30)
 	assert blender.get_component(StorageComponent).inventory[RES.CONDIMENTS]
+
+
+@game_test()
+def test_doctor_curing(s, p):
+	"""
+	Check whether the doctor cures the Black Death with medical herbs
+	"""
+	settlement, island = settle(s)
+	doctor = Build(BUILDINGS.DOCTOR, 30, 30, island, settlement=settlement)(p)
+	
+	assert doctor
+	
+	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS] == 0
+	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0
+	
+	# 2 units of medical herbs needed to cure 1 occurence of the Black Death
+	doctor.get_component(StorageComponent).inventory.alter(RES.MEDICAL_HERBS, 2)
+	doctor.get_component(StorageComponent).inventory.alter(RES.BLACKDEATH, 1)
+	s.run(seconds=60)
+	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS] == 0
+	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0
