@@ -46,6 +46,9 @@ import time
 import traceback
 
 
+logger = logging.getLogger("run_uh")
+
+
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
@@ -68,10 +71,6 @@ def check_python_version():
 
 check_python_version()
 
-
-def log():
-	"""Returns Logger"""
-	return logging.getLogger("run_uh")
 
 logfilename = None
 logfile = None
@@ -291,8 +290,8 @@ def find_fife(paths):
 				break
 			except ImportError as e:
 				if str(e) != 'cannot import name fife':
-					log().warning('Failed to use FIFE from %s', fife)
-					log().warning(str(e))
+					logger.warning('Failed to use FIFE from %s', fife)
+					logger.warning(str(e))
 					if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
 						# We found FIFE but the Python and FIFE architectures don't match (Windows).
 						exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 3.')
@@ -354,9 +353,9 @@ def setup_fife():
 
 	from horizons.constants import VERSION
 	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
-		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		logger.warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		logger.debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
 def init_environment(use_fife):
 	"""Sets up everything.
@@ -367,16 +366,16 @@ def init_environment(use_fife):
 
 def log_paths():
 	"""Prints debug info about paths to log"""
-	log().debug("SYS.PATH: %s", sys.path)
-	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
-	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
-	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
+	logger.debug("SYS.PATH: %s", sys.path)
+	logger.debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
+	logger.debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
+	logger.debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
+	logger.debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
-	log().debug("Python version: %s", sys.version_info)
-	log().debug("Platform: %s", platform.platform())
+	logger.debug("Python version: %s", sys.version_info)
+	logger.debug("Platform: %s", platform.platform())
 
 if __name__ == '__main__':
 	main()
