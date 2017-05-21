@@ -404,3 +404,21 @@ def test_bakery_production(s, p):
 	bakery.get_component(StorageComponent).inventory.alter(RES.FLOUR, 1)
 	s.run(seconds=30)
 	assert bakery.get_component(StorageComponent).inventory[RES.FOOD]
+	
+@game_test()
+def test_blender_production(s, p):
+	"""
+	Check whether the blender produces condiments
+	"""
+	settlement, island = settle(s)
+	blender = Build(BUILDINGS.BLENDER, 30, 30, island, settlement=settlement)(p)
+	
+	assert blender
+	
+	assert blender.get_component(StorageComponent).inventory[RES.CONDIMENTS] == 0
+	assert blender.get_component(StorageComponent).inventory[RES.SPICES] == 0
+	
+	# spices needed for condiment production
+	blender.get_component(StorageComponent).inventory.alter(RES.SPICES, 2)
+	s.run(seconds=30)
+	assert blender.get_component(StorageComponent).inventory[RES.CONDIMENTS]
