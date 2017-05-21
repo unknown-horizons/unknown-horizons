@@ -436,21 +436,24 @@ def test_blender_production_chain(s, p):
 
 
 @game_test()
-def test_doctor_curing(s, p):
+def test_doctor_curing_chain(s, p):
 	"""
-	Check whether the doctor cures the Black Death with medical herbs
+	Medical herbs are grown in herbaries and later used for curing the Black Death by the doctor
 	"""
 	settlement, island = settle(s)
-	doctor = Build(BUILDINGS.DOCTOR, 30, 30, island, settlement=settlement)(p)
+	
+	assert Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.HERBARY, 26, 30, island, settlement=settlement)(p)
+	
+	doctor = Build(BUILDINGS.DOCTOR, 30, 26, island, settlement=settlement)(p)
 	
 	assert doctor
 	
 	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS] == 0
 	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0
 	
-	# 2 units of medical herbs needed to cure 1 occurence of the Black Death
-	doctor.get_component(StorageComponent).inventory.alter(RES.MEDICAL_HERBS, 2)
+	# simulate a Black Death occurence
 	doctor.get_component(StorageComponent).inventory.alter(RES.BLACKDEATH, 1)
-	s.run(seconds=60)
-	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS] == 0
-	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0
+	s.run(seconds=120) # 2x 30s herbary, 60s doctor
+	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS]
+	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0 # Black Death eliminated
