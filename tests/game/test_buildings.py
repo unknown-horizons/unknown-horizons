@@ -290,3 +290,16 @@ def test_school_production(s, p):
 	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] == 0
 	s.run(seconds=30)
 	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] > 0
+
+@game_test()
+def test_saltpond_production(s, p):
+	"""
+	Check whether saltponds produce salt
+	"""
+	settlement, island = settle(s)
+	saltpond = Build(BUILDINGS.SALT_PONDS, 25, 20, island, settlement=settlement)(p)
+	
+	assert saltpond
+	assert saltpond.get_component(StorageComponent).inventory[RES.SALT] == 0
+	s.run(seconds=60)
+	assert saltpond.get_component(StorageComponent).inventory[RES.SALT] >= 2 # ponds produce salt in units of 2
