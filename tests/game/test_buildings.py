@@ -236,7 +236,7 @@ def test_weaver_production(s, p):
 	# wool needed for textile production
 	weaver.get_component(StorageComponent).inventory.alter(RES.WOOL, 5)
 	s.run(seconds=30)
-	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] > 0
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE]
 
 @game_test()
 def test_pavilion_production(s, p):
@@ -249,7 +249,7 @@ def test_pavilion_production(s, p):
 	assert pavilion
 	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] == 0
 	s.run(seconds=30)
-	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] > 0
+	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH]
 	
 @game_test()
 def test_farm_production(s, p):
@@ -275,7 +275,7 @@ def test_farm_production(s, p):
 		
 		s.run(seconds=5)
 		
-		farm.get_component(StorageComponent).inventory[b] > 0
+		assert farm.get_component(StorageComponent).inventory[b]
 
 @game_test()
 def test_school_production(s, p):
@@ -289,7 +289,7 @@ def test_school_production(s, p):
 	
 	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] == 0
 	s.run(seconds=30)
-	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] > 0
+	assert school.get_component(StorageComponent).inventory[RES.EDUCATION]
 
 @game_test()
 def test_saltpond_production(s, p):
