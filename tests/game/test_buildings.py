@@ -326,3 +326,22 @@ def test_distillery_production(s, p):
 	distillery.get_component(StorageComponent).inventory.alter(RES.SUGAR, 1)
 	s.run(seconds=30)
 	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR]
+	
+
+@game_test()
+def test_brewery_production(s, p):
+	"""
+	Check whether the brewery produces beer
+	"""
+	settlement, island = settle(s)
+	brewery = Build(BUILDINGS.BREWERY, 30, 30, island, settlement=settlement)(p)
+	
+	assert brewery
+	
+	assert brewery.get_component(StorageComponent).inventory[RES.HOPS] == 0
+	assert brewery.get_component(StorageComponent).inventory[RES.BEER] == 0
+
+	# hops needed for beer production
+	brewery.get_component(StorageComponent).inventory.alter(RES.HOPS, 1)
+	s.run(seconds=30)
+	assert brewery.get_component(StorageComponent).inventory[RES.BEER]
