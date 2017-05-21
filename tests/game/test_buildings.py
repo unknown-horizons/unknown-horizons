@@ -364,3 +364,24 @@ def test_tobbaconist_production(s, p):
 	tobacconist.get_component(StorageComponent).inventory.alter(RES.TOBACCO_LEAVES, 2)
 	s.run(seconds=30)
 	assert tobacconist.get_component(StorageComponent).inventory[RES.TOBACCO_PRODUCTS]
+	
+
+@game_test()
+def test_butchery_production(s, p):
+	"""
+	Check whether the butchery produces food from animal meat
+	"""
+	settlement, island = settle(s)
+	butchery = Build(BUILDINGS.BUTCHERY, 30, 30, island, settlement=settlement)(p)
+	
+	assert butchery
+	
+	assert butchery.get_component(StorageComponent).inventory[RES.PIGS_SLAUGHTER] == 0
+	assert butchery.get_component(StorageComponent).inventory[RES.CATTLE_SLAUGHTER] == 0
+	assert butchery.get_component(StorageComponent).inventory[RES.FOOD] == 0
+	
+	# pig and cattle meat needed for food production
+	butchery.get_component(StorageComponent).inventory.alter(RES.PIGS_SLAUGHTER, 1)
+	butchery.get_component(StorageComponent).inventory.alter(RES.CATTLE_SLAUGHTER, 1)
+	s.run(seconds=30)
+	assert butchery.get_component(StorageComponent).inventory[RES.FOOD] >= 4 # each meat gives 2 units of food
