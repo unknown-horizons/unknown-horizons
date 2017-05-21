@@ -238,6 +238,7 @@ def test_weaver_production(s, p):
 	s.run(seconds=30)
 	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE]
 
+
 @game_test()
 def test_pavilion_production(s, p):
 	"""
@@ -250,7 +251,8 @@ def test_pavilion_production(s, p):
 	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH] == 0
 	s.run(seconds=30)
 	assert pavilion.get_component(StorageComponent).inventory[RES.FAITH]
-	
+
+
 @game_test()
 def test_farm_production(s, p):
 	"""
@@ -262,7 +264,7 @@ def test_farm_production(s, p):
 	
 	assert farm
 	
-	primary_resources = (RES.LAMB_WOOL, RES.RAW_SUGAR, RES.TOBACCO_PLANTS, RES.CATTLE, RES.PIGS, RES.HERBS, 
+	primary_resources = (RES.LAMB_WOOL, RES.POTATOES, RES.RAW_SUGAR, RES.TOBACCO_PLANTS, RES.CATTLE, RES.PIGS, RES.HERBS, 
 						 RES.GRAIN, RES.SPICE_PLANTS, RES.COCOA_BEANS, RES.VINES, RES.ALVEARIES, RES.HOP_PLANTS)
 
 	secondary_resources = (RES.WOOL, RES.FOOD, RES.SUGAR, RES.TOBACCO_LEAVES, RES.CATTLE_SLAUGHTER, RES.PIGS_SLAUGHTER, 
@@ -271,11 +273,11 @@ def test_farm_production(s, p):
 	# TODO: add collectors for handling primary resources transport from fields
 	for a, b in zip(primary_resources, secondary_resources):
 		assert farm.get_component(StorageComponent).inventory[a] == 0
-		farm.get_component(StorageComponent).inventory.alter(a, 1)
+		farm.get_component(StorageComponent).inventory.alter(a, 2) # 2 potatoes give 1 unit of food
 		
 		s.run(seconds=5)
-		
 		assert farm.get_component(StorageComponent).inventory[b]
+
 
 @game_test()
 def test_school_production(s, p):
@@ -290,6 +292,7 @@ def test_school_production(s, p):
 	assert school.get_component(StorageComponent).inventory[RES.EDUCATION] == 0
 	s.run(seconds=30)
 	assert school.get_component(StorageComponent).inventory[RES.EDUCATION]
+
 
 @game_test()
 def test_saltpond_production(s, p):
