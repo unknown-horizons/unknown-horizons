@@ -480,7 +480,7 @@ def test_winery_production_chain(s, p):
 
 
 @game_test()
-def test_stonebrick_production_chain(s, p):
+def test_stonemason_production_chain(s, p):
 	"""
 	Stone tops are collected at a stone pit from a stone deposit and processed into bricks by a stonemason
 	"""
@@ -497,3 +497,32 @@ def test_stonebrick_production_chain(s, p):
 	assert stonemason.get_component(StorageComponent).inventory[RES.BRICKS] == 0
 	s.run(seconds=60) # 15s stone pit, 30s stonemason
 	assert stonemason.get_component(StorageComponent).inventory[RES.BRICKS]
+
+
+@game_test()
+def test_pastryshop_production_chain(s, p):
+	"""
+	The pastryshop makes candles and sugar out of honeycombs. Sugar is later used in combination with
+	grapes and cocoa to produce confectioneries. Honeycombs, cocoa and grapes are generated at a farm.
+	"""
+	settlement, island = settle(s)
+	
+	assert Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.COCOA_FIELD, 26, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.VINEYARD, 30, 34, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.ALVEARIES, 34, 30, island, settlement=settlement)(p)
+	
+	pastryshop = Build(BUILDINGS.PASTRY_SHOP, 30, 26, island, settlement=settlement)(p)
+	
+	assert pastryshop
+	
+	assert pastryshop.get_component(StorageComponent).inventory[RES.HONEYCOMBS] == 0
+	assert pastryshop.get_component(StorageComponent).inventory[RES.SUGAR] == 0
+	assert pastryshop.get_component(StorageComponent).inventory[RES.COCOA] == 0
+	assert pastryshop.get_component(StorageComponent).inventory[RES.GRAPES] == 0
+	assert pastryshop.get_component(StorageComponent).inventory[RES.CANDLES] == 0
+	assert pastryshop.get_component(StorageComponent).inventory[RES.CONFECTIONERY] == 0
+	s.run(seconds=120) # 30s alvearies, 30s vineyard, 30s cocoa field, 45s pastry shop
+	assert pastryshop.get_component(StorageComponent).inventory[RES.CANDLES]
+	assert pastryshop.get_component(StorageComponent).inventory[RES.CONFECTIONERY] >= 2 
+	# 1 unit of confectioneries per production chain  
