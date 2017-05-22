@@ -27,7 +27,7 @@ from unittest import TestCase
 
 from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
-from run_uh import create_user_dirs
+from horizons.util import create_user_dirs
 
 
 class TestPaths(TestCase):
