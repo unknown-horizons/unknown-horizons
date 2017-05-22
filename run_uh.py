@@ -96,7 +96,21 @@ def main():
 
 	# Change the working directory to the parent of the content directory
 	os.chdir(get_content_dir_parent_path())
-	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
+
+	logging.config.dictConfig({
+		'version': 1,
+		'disable_existing_loggers': False,
+		'handlers': {
+			'default': {
+				'class': 'logging.StreamHandler',
+				'level': 'WARN',
+				'stream': 'ext://sys.stderr'
+			}
+		},
+		'root': {
+			'handlers': ['default']
+		}
+	})
 
 	import horizons.main
 	from horizons.i18n import gettext as T
@@ -213,9 +227,6 @@ def setup_debugging(options):
 	if options.debug or options.debug_log_only:
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
-		if module not in logging.Logger.manager.loggerDict:
-			print('No such logger: {}'.format(module))
-			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 	if options.debug or options.debug_module or options.debug_log_only:
 		options.debug = True
