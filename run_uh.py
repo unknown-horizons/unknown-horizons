@@ -35,8 +35,8 @@ import functools
 import imp
 import locale
 import logging
-import logging.config  # redundant, because "logging" already imported?
-import logging.handlers  # redundant, because "logging" already imported?
+import logging.config
+import logging.handlers
 import os
 import os.path
 import platform
@@ -46,13 +46,19 @@ import time
 import traceback
 
 
-logger = logging.getLogger("run_uh")
-
-
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
+
+logger = logging.getLogger("run_uh")
+logfilename = None
+logfile = None
+
+
 def exit_with_error(title, message):
+	"""
+	Print an error (optionally showing a window using TK), and exit the game.
+	"""
 	print('Error: ' + title + '\n' + message)
 	try:
 		import tkinter
@@ -62,18 +68,68 @@ def exit_with_error(title, message):
 		tkinter.messagebox.showerror(title, message)
 	except ImportError:
 		pass
-	exit(1)
-
-def check_python_version():
-	if sys.version_info[:2] < (3, 4):
-		exit_with_error('Unsupported Python version', 'Python3.4 or higher is required to run Unknown Horizons.')
+	sys.exit(1)
 
 
-check_python_version()
+if sys.version_info[:2] < (3, 4):
+	exit_with_error('Unsupported Python version', 'Python3.4 or higher is required to run Unknown Horizons.')
 
 
-logfilename = None
-logfile = None
+def main():
+	# abort silently on signal
+	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
+	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
+
+	# avoid crashing when writing to unavailable standard streams
+	setup_streams()
+
+	# use locale-specific time.strftime handling
+	try:
+		locale.setlocale(locale.LC_TIME, '')
+	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
+		pass
+
+	# Change the working directory to the parent of the content directory
+	os.chdir(get_content_dir_parent_path())
+	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
+
+	import horizons.main
+	from horizons.i18n import gettext as T
+	from horizons.util import create_user_dirs
+	from horizons.util.cmdlineoptions import get_option_parser
+
+	check_requirements()
+	create_user_dirs()
+
+	options = get_option_parser().parse_args()[0]
+	setup_debugging(options)
+	init_environment(True)
+
+	# Start UH.
+	ret = horizons.main.start(options)
+
+	if logfile:
+		logfile.close()
+	if ret:
+		print(T('Thank you for using Unknown Horizons!'))
+	else:
+		# Game didn't end successfully
+		sys.exit(1)
+
+
+def check_requirements():
+	"""
+	Test if required libs can be found or display specific error message.
+	"""
+	try:
+		import yaml
+	except ImportError:
+		headline = 'Error: Unable to find required library "PyYAML".'
+		msg = 'PyYAML (a required library) is missing and needs to be installed.\n' + \
+		    'The Windows installer is available at http://pyyaml.org/wiki/PyYAML. ' + \
+		    'Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".'
+		exit_with_error(headline, msg)
+
 
 def get_content_dir_parent_path():
 	"""
@@ -135,55 +191,6 @@ def setup_streams():
 		sys.stderr = open(os.devnull, 'w')
 	if sys.__stdout__.fileno() < 0:
 		sys.stdout = open(os.devnull, 'w')
-
-def main():
-	# abort silently on signal
-	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
-	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
-
-	# avoid crashing when writing to unavailable standard streams
-	setup_streams()
-
-	# use locale-specific time.strftime handling
-	try:
-		locale.setlocale(locale.LC_TIME, '')
-	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
-		pass
-
-	# Change the working directory to the parent of the content directory
-	os.chdir(get_content_dir_parent_path())
-	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
-
-	from horizons.util import create_user_dirs
-	create_user_dirs()
-
-	from horizons.util.cmdlineoptions import get_option_parser
-	options = get_option_parser().parse_args()[0]
-	setup_debugging(options)
-	init_environment(True)
-
-	# test if required libs can be found or display specific error message
-	try:
-		import yaml
-	except ImportError:
-		headline = 'Error: Unable to find required library "PyYAML".'
-		msg = 'PyYAML (a required library) is missing and needs to be installed.\n' + \
-		    'The Windows installer is available at http://pyyaml.org/wiki/PyYAML. ' + \
-		    'Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".'
-		exit_with_error(headline, msg)
-
-	# Start UH.
-	import horizons.main
-	ret = horizons.main.start(options)
-
-	if logfile:
-		logfile.close()
-	if ret:
-		from horizons.i18n import gettext as T
-		print(T('Thank you for using Unknown Horizons!'))
-	else:
-		# Game didn't end successfully
-		sys.exit(1)
 
 
 def setup_debugging(options):
