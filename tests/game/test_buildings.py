@@ -525,4 +525,31 @@ def test_pastryshop_production_chain(s, p):
 	s.run(seconds=120) # 30s alvearies, 30s vineyard, 30s cocoa field, 45s pastry shop
 	assert pastryshop.get_component(StorageComponent).inventory[RES.CANDLES]
 	assert pastryshop.get_component(StorageComponent).inventory[RES.CONFECTIONERY] >= 2 
-	# 1 unit of confectioneries per production chain  
+	# 1 unit of confectioneries per production chain
+
+
+@game_test()
+def test_cannonfoundry_production_chain(s, p):
+	"""
+	The mine generates iron ore. The charcoal burner produces charcoal out of wooden boards.
+	Later the smeltery produces iron ingots out of iron ore and charcoal. Finally, the cannon
+	foundry makes cannons out of charcoal, iron ingots and wooden boards.
+	"""
+	settlement, island = settle(s)
+
+	assert Build(BUILDINGS.MOUNTAIN, 30, 35, island, ownerless=True)(None)
+	assert Build(BUILDINGS.MINE, 30, 35, island, settlement=settlement)(p)
+
+	charcoal = Build(BUILDINGS.CHARCOAL_BURNER, 25, 35, island, settlement=settlement)(p)
+	assert charcoal
+	charcoal.get_component(StorageComponent).inventory.alter(RES.BOARDS, 10) # give him boards directly
+
+	assert Build(BUILDINGS.SMELTERY, 25, 30, island, settlement=settlement)(p)
+
+	cannonfoundry = Build(BUILDINGS.CANNON_FOUNDRY, 22, 32, island, settlement=settlement)(p)
+	assert cannonfoundry
+	cannonfoundry.get_component(StorageComponent).inventory.alter(RES.BOARDS, 10) # give him boards directly
+
+	assert cannonfoundry.get_component(StorageComponent).inventory[RES.CANNON] == 0
+	s.run(seconds=150)
+	assert cannonfoundry.get_component(StorageComponent).inventory[RES.CANNON]
