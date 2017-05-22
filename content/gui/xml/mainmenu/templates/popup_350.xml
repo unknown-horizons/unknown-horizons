@@ -5,7 +5,7 @@
 <VBox position="30,0"  name="message_box" padding="20,0">
 	<Label name="headline" />
 	<hr />
-	<Label name="popup_message" wrap_text="1" fixed_size="520,320" />
+	<Label name="popup_message" wrap_text="1" fixed_size="500,220" />
 </VBox>
 
 <CancelButton position="25,280" />
