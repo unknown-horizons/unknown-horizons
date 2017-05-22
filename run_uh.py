@@ -51,7 +51,6 @@ import traceback
 
 
 logger = logging.getLogger("run_uh")
-logfilename = None
 logfile = None
 
 
@@ -203,7 +202,7 @@ def setup_debugging(options):
 	"""Parses and applies options
 	@param options: parameters: debug, debug_module, debug_log_only, logfile
 	"""
-	global logfilename, logfile
+	global logfile
 
 	# not too nice way of sharing code, but it is necessary because code from this file
 	# can't be accessed elsewhere on every distribution, and we can't just access other code.
