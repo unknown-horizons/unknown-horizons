@@ -82,7 +82,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVÝ ÚKOL: ZÁSOBOVÁNÍ JÍDLEM']
   - [Image, content/gui/images/background/hr.png]
   - Dále budete muset postavit některé základní budovy, které budou produkovat jídlo, protože všichni lidé (a námořníci obzvláště) jsou velmi hladoví.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - Dostupné budovy pro první úroveň jsou lovec a rybář.
   - The hunter hunts animals in the forest, thus needs trees nearby.
   - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Stává se, že zvířata se nemnoží dostatečně rychle nebo se umí dobře schovat.
@@ -156,22 +156,22 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Pokud nebudou splněny, štěstí a příjem poklesne. Po určité době se obyvatelé stanou nevrlými, opustí Vaši vesnici a zanechají za sebou rozpadající se trosky.
   - Všimněte si, že i zde můžete změnit nastavení celkové daně.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'Úkol: Postavte alespoň tři další stany.']
   - '
 
     TIP: Přidržení klávesy SHIFT Vám zjednoduší hromadnou výstavbu budov stejného druhu.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
+  - [Message, Postavte signální oheň na pobřeží v blízkosti obchodního přístavu.]
   - [Headline, 'NOVÝ ÚKOL: POSTAVTE SIGNÁLNÍ OHEŇ']
   - [Image, content/gui/images/background/hr.png]
   - Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto souostroví.
   - Obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím nemůžete sami produkovat.
-  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
+  - Také můžete prodávat přebytky z Vaší produkce. Obecně je ale výhodnější tyto přebytky spotřebovat (tak, že postavíte více stanů). Příjem z daní bude vyšší než by byl příjem z prodeje.
+  - Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní příležitosti, ale my můžeme věci trochu urychlit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
+  - Pro tento účel postavte signální oheň na pobřeží poblíž obchodního přístavu. Tak ukážete lodím cestu do Vaší osady.
   - The Signal Fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - '
@@ -657,4 +657,4 @@ metadata:
   locale: cs
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 124 translated messages, 59 fuzzy translations, 5 untranslated messages.
+  translation_status: 130 translated messages, 53 fuzzy translations, 5 untranslated messages.
