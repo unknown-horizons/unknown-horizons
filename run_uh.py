@@ -62,12 +62,18 @@ def exit_with_error(title, message):
 	print('Error: ' + title + '\n' + message)
 	try:
 		import tkinter
-		import tkinter.messagebox
-		window = tkinter.Tk()
-		window.wm_withdraw()
-		tkinter.messagebox.showerror(title, message)
+		import tkinter.messagebox as messagebox
 	except ImportError:
-		pass
+		try:
+			# try python2 imports
+			import Tkinter as tkinter
+			import tkMessageBox as messagebox
+		except ImportError:
+			sys.exit(1)
+
+	window = tkinter.Tk()
+	window.wm_withdraw()
+	messagebox.showerror(title, message)
 	sys.exit(1)
 
 
