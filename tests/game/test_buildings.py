@@ -477,3 +477,23 @@ def test_winery_production_chain(s, p):
 	assert winery.get_component(StorageComponent).inventory[RES.LIQUOR] == 0
 	s.run(seconds=120) # 2x 30s vineyard, 15s winery
 	assert winery.get_component(StorageComponent).inventory[RES.LIQUOR]
+
+
+@game_test()
+def test_stonebrick_production_chain(s, p):
+	"""
+	Stone tops are collected at a stone pit from a stone deposit and processed into bricks by a stonemason
+	"""
+	settlement, island = settle(s)
+
+	assert Build(BUILDINGS.STONE_DEPOSIT, 30, 30, island, ownerless=True)(None)
+	assert Build(BUILDINGS.STONE_PIT, 30, 30, island, settlement=settlement)(p)
+	
+	stonemason = Build(BUILDINGS.STONEMASON, 30, 25, island, settlement=settlement)(p)
+	
+	assert stonemason
+	
+	assert stonemason.get_component(StorageComponent).inventory[RES.STONE_TOPS] == 0
+	assert stonemason.get_component(StorageComponent).inventory[RES.BRICKS] == 0
+	s.run(seconds=60) # 15s stone pit, 30s stonemason
+	assert stonemason.get_component(StorageComponent).inventory[RES.BRICKS]
