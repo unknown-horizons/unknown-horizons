@@ -29,6 +29,8 @@ from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.world.production.producer import Producer
 from tests.game import game_test, settle
 
+import pytest
+
 
 @game_test()
 def test_lumberjack(s, p):
@@ -578,3 +580,32 @@ def test_weaponsmith_production_chain(s, p):
 	assert weaponsmith.get_component(StorageComponent).inventory[RES.SWORD] == 0
 	s.run(seconds=120)
 	assert weaponsmith.get_component(StorageComponent).inventory[RES.SWORD]
+
+
+@pytest.mark.xfail(strict=True)
+@game_test()
+def test_barracks_production_chain(s, p):
+	"""
+	The weaponsmith produces swords, which are later used to equip soldiers in the barracks.
+	"""
+	settlement, island = settle(s)
+	
+	weaponsmith = Build(BUILDINGS.WEAPONSMITH, 30, 30, island, settlement=settlement)(p)
+	assert weaponsmith
+
+	barracks = Build(BUILDINGS.BARRACKS, 26, 30, island, settlement=settlement)(p)
+	assert barracks
+
+	assert weaponsmith.get_component(StorageComponent).inventory[RES.CHARCOAL] == 0
+	assert weaponsmith.get_component(StorageComponent).inventory[RES.IRON_INGOTS] == 0
+
+	assert barracks.get_component(StorageComponent).inventory[RES.GOLD] == 0
+	assert barracks.get_component(StorageComponent).inventory[UNITS.SWORDSMAN] == 0
+	
+	# weaponsmith production chain tested already so supply resources directly
+	weaponsmith.get_component(StorageComponent).inventory.alter(RES.CHARCOAL, 10)
+	weaponsmith.get_component(StorageComponent).inventory.alter(RES.IRON_INGOTS, 10)
+	barracks.get_component(StorageComponent).inventory.alter(RES.GOLD, 1000)
+	s.run(seconds=200)
+	assert barracks.get_component(StorageComponent).inventory[UNITS.SWORDSMAN]
+	#TODO: expand test when more units are added to the game
