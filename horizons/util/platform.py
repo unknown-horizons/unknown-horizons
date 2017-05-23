@@ -20,12 +20,32 @@
 # ###################################################
 
 import os
+import platform
+from pathlib import PurePath
+
+CSIDL_PERSONAL = 5 # 'My documents' folder for win32 API
 
 
-def create_user_dirs():
-	"""Creates the userdir and subdirs. Includes from horizons."""
-	from horizons.constants import PATHS
+def get_home_directory():
+	"""
+	Returns the home directory of the user running UH.
+	"""
+	if platform.system() != "Windows":
+		return PurePath(os.path.expanduser('~'))
+	else:
+		import ctypes.wintypes
+		buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
+		# get the My Documents folder into buf.value
+		ctypes.windll.shell32.SHGetFolderPathW(0, CSIDL_PERSONAL, 0, 0, buf)
+		return PurePath(buf.value)
 
-	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
-		if not os.path.isdir(directory):
-			os.makedirs(directory)
+
+def get_user_game_directory():
+	"""
+	Returns the directory where we store game-related data, such as savegames.
+	"""
+	home_directory = get_home_directory()
+	if platform.system() != "Windows":
+		return home_directory.joinpath('.unknown-horizons')
+	else:
+		return home_directory.joinpath('My Games', 'unknown-horizons')

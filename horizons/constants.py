@@ -28,6 +28,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from horizons.ext.enum import Enum
+from horizons.util.platform import get_user_game_directory
 
 
 """This file keeps track of the constants that are used in Unknown Horizons.
@@ -545,17 +546,10 @@ if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
 	# running GUI tests.
 	_user_dir = os.environ['UH_USER_DIR']
-elif platform.system() != "Windows":
-	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
-	import ctypes.wintypes
-	buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
-	# get the My Documents folder into buf.value
-	ctypes.windll.shell32.SHGetFolderPathW(0, 5, 0, 0, buf)
-	my_games = os.path.join(buf.value, 'My Games')
-	if not os.path.exists(my_games):
-		os.makedirs(my_games)
-	_user_dir = os.path.join(my_games, 'unknown-horizons')
+	_user_dir = str(get_user_game_directory())
+	if not os.path.exists(_user_dir):
+		os.makedirs(_user_dir)
 
 
 class GFX:
