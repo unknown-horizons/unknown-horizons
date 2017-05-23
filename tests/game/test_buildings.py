@@ -553,3 +553,28 @@ def test_cannonfoundry_production_chain(s, p):
 	assert cannonfoundry.get_component(StorageComponent).inventory[RES.CANNON] == 0
 	s.run(seconds=150)
 	assert cannonfoundry.get_component(StorageComponent).inventory[RES.CANNON]
+	
+@game_test()
+def test_weaponsmith_production_chain(s, p):
+	"""
+	The mine generates iron ore. The charcoal burner produces charcoal out of wooden boards.
+	Later the smeltery produces iron ingots out of iron ore and charcoal. Finally, the weaponsmith
+	produces swords out of charcoal and iron ingots.
+	"""
+	settlement, island = settle(s)
+
+	assert Build(BUILDINGS.MOUNTAIN, 30, 35, island, ownerless=True)(None)
+	assert Build(BUILDINGS.MINE, 30, 35, island, settlement=settlement)(p)
+
+	charcoal = Build(BUILDINGS.CHARCOAL_BURNER, 25, 35, island, settlement=settlement)(p)
+	assert charcoal
+	charcoal.get_component(StorageComponent).inventory.alter(RES.BOARDS, 10) # give him boards directly
+
+	assert Build(BUILDINGS.SMELTERY, 25, 30, island, settlement=settlement)(p)
+
+	weaponsmith = Build(BUILDINGS.WEAPONSMITH, 22, 32, island, settlement=settlement)(p)
+	assert weaponsmith
+	
+	assert weaponsmith.get_component(StorageComponent).inventory[RES.SWORD] == 0
+	s.run(seconds=120)
+	assert weaponsmith.get_component(StorageComponent).inventory[RES.SWORD]
