@@ -78,7 +78,8 @@ class FoundSettlement(ShipMission):
 			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_warehouse_area(Point(*self.coords), Callback(self._reached_destination_area),
+		self._move_to_warehouse_area(
+			Point(*self.coords), Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _reached_destination_area(self):

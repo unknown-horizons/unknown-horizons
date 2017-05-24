@@ -73,7 +73,8 @@ class PrepareFoundationShip(ShipMission):
 		self._move_to_destination_area()
 
 	def _move_to_destination_area(self):
-		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_destination_area),
+		self._move_to_warehouse_area(
+			self.warehouse.position, Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _load_foundation_resources(self):
