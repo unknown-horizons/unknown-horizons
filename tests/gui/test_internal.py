@@ -22,6 +22,8 @@
 import functools
 import os
 
+import pytest
+
 from horizons.scheduler import Scheduler
 from tests.gui import gui_test
 
@@ -47,27 +49,6 @@ def test_run_for_x_seconds(gui):
 	expected = Scheduler().get_ticks(20)
 
 	assert (difference - expected) / difference < 0.05
-
-
-def expected_failure(func):
-	@functools.wraps(func)
-	def wrapper(*args, **kwargs):
-		try:
-			func(*args, **kwargs)
-		except Exception:
-			pass
-		else:
-			raise AssertionError('Expected failure')
-	setattr(wrapper, '__original__', func.__original__)
-	return wrapper
-
-
-@expected_failure
-@gui_test(use_dev_map=True)
-def test_expected_failure(gui):
-	"""Test that failures in tests are detected."""
-
-	1 / 0
 
 
 @gui_test(use_fixture='boatbuilder')
@@ -124,3 +105,15 @@ def test_dialog(gui):
 
 	with gui.handler(func):
 		gui.trigger('menu/quit_button')
+
+
+@pytest.mark.xfail(strict=True)
+@gui_test(timeout=60)
+def test_failing(gui):
+	"""
+	Test whether a failure of the test is correctly detected.
+
+	NOTE: We're using XFAIL here, since the failure of the test is expected. If suddenly this
+	test passes, the test suite will fail.
+	"""
+	1 / 0

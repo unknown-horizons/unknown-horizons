@@ -2,10 +2,10 @@
 <Container name="popup_window"  size="569,350"  position_technique="center:center"
 	background_image="content/gui/images/background/notice350.png">
 
-<VBox position="30,0"  name="message_box">
+<VBox position="30,0"  name="message_box" padding="20,0">
 	<Label name="headline" />
 	<hr />
-	<Label name="popup_message" wrap_text="1" fixed_size="520,320" />
+	<Label name="popup_message" wrap_text="1" fixed_size="500,220" />
 </VBox>
 
 <CancelButton position="25,280" />

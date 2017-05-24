@@ -2,13 +2,13 @@
 <Container name="popup_window"  size="472,290"  position_technique="center:center"
 	background_image="content/gui/images/background/notice290.png">
 
-<VBox position="30,0"  name="message_box">
+<VBox position="30,0"  name="message_box" padding="20,0">
 	<Label name="headline" />
 	<hr />
-	<Label name="popup_message" wrap_text="1" fixed_size="420,260" />
+	<Label name="popup_message" wrap_text="1" fixed_size="402,160" />
 </VBox>
 
 <CancelButton position="25,220" />
-<OkButton position="410,220" is_focusable="1" /> <!-- needed to be able to trigger this on enter -->
+<OkButton position="400,220" is_focusable="1" /> <!-- needed to be able to trigger this on enter -->
 
 </Container>

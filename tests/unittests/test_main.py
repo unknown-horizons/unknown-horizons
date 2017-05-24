@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
 from unittest import mock
 
 import pytest
@@ -199,25 +198,45 @@ def test_edit_map_by_path(mock_start_singleplayer):
 # therefore we can't just override the user dir to point to a temporary
 # directory.
 
-@skip_todo
-def test_load_game_by_name(self):
-	pass
+@mock.patch('horizons.main.start_singleplayer')
+def test_load_game_by_name(mock_start_singleplayer, tmpdir, mocker):
+	"""
+	Test that a specific savegame given by name can be loaded from the command line.
+	A temporary file is used instead of an actual savegame file.
+	"""
+	savegame_dir = tmpdir.mkdir('saves')
+	savegame_path = savegame_dir.join('foo.sqlite')
+	savegame_path.write('barbaz')
+
+	mocker.patch('horizons.savegamemanager.SavegameManager.savegame_dir',
+	             new_callable=mock.PropertyMock,
+	             return_value=str(savegame_dir))
+
+	start_game('--load-game', 'foo')
+
+	options = mock_start_singleplayer.call_args[0][0]
+	assert not options.is_scenario
+	assert not options.is_map
+	assert not options.is_editor
+	assert options.game_identifier == savegame_path
 
 
 @mock.patch('horizons.main.start_singleplayer')
-def test_load_game_by_path(mock_start_singleplayer):
+def test_load_game_by_path(mock_start_singleplayer, tmpdir):
 	"""
 	Test that a specific savegame file given by path can be loaded from the command line.
 	A temporary file is used instead of an actual savegame file.
 	"""
-	with tempfile.NamedTemporaryFile(suffix=".sqlite") as f:
-		start_game("--load-game", f.name)
+	savegame = tmpdir.join('savegame.sqlite')
+	savegame.write('foo')
 
-		options = mock_start_singleplayer.call_args[0][0]
-		assert not options.is_scenario
-		assert not options.is_map	# here the savegame is not treated as a loadable map
-		assert not options.is_editor
-		assert options.game_identifier == f.name
+	start_game("--load-game", str(savegame))
+
+	options = mock_start_singleplayer.call_args[0][0]
+	assert not options.is_scenario
+	assert not options.is_map	# here the savegame is not treated as a loadable map
+	assert not options.is_editor
+	assert options.game_identifier == savegame
 
 
 @skip_todo

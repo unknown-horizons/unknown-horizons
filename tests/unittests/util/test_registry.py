@@ -19,39 +19,42 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import unittest
+import pytest
 
 from horizons.util.python.registry import Registry
 
 
-class RegistryTest(unittest.TestCase):
+def test_simple():
+	class Example(Registry):
+		def register_function(self, func):
+			self.registry[func.__name__] = func
 
-	def test_simple(self):
-		class Example(Registry):
-			def register_function(self, func):
-				self.registry[func.__name__] = func
+	instance = Example()
+	with pytest.raises(KeyError):
+		instance.get('foo')
 
-		instance = Example()
-		self.assertRaises(KeyError, instance.get, 'foo')
+	@instance.register()
+	def foo(a, b):
+		return a + b
 
-		@instance.register()
-		def foo(a, b):
-			return a + b
+	assert instance.get('foo') == foo
 
-		self.assertEqual(instance.get('foo'), foo)
 
-	def test_with_arguments(self):
-		"""Test arguments in the register decorator."""
-		class Example(Registry):
-			def register_function(self, func, name):
-				self.registry[name] = func
+def test_with_arguments():
+	"""Test arguments in the register decorator."""
+	class Example(Registry):
+		def register_function(self, func, name):
+			self.registry[name] = func
 
-		instance = Example()
-		self.assertRaises(KeyError, instance.get, 'foo')
+	instance = Example()
+	with pytest.raises(KeyError):
+		instance.get('foo')
 
-		@instance.register(name='bar')
-		def foo(a, b):
-			return a + b
+	@instance.register(name='bar')
+	def foo(a, b):
+		return a + b
 
-		self.assertRaises(KeyError, instance.get, 'foo')
-		self.assertEqual(instance.get('bar'), foo)
+	with pytest.raises(KeyError):
+		instance.get('foo')
+
+	assert instance.get('bar') == foo

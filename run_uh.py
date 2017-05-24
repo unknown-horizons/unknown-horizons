@@ -35,8 +35,8 @@ import functools
 import imp
 import locale
 import logging
-import logging.config  # redundant, because "logging" already imported?
-import logging.handlers  # redundant, because "logging" already imported?
+import logging.config
+import logging.handlers
 import os
 import os.path
 import platform
@@ -49,32 +49,106 @@ import traceback
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
+
+logger = logging.getLogger("run_uh")
+logfile = None
+
+
 def exit_with_error(title, message):
+	"""
+	Print an error (optionally showing a window using TK), and exit the game.
+	"""
 	print('Error: ' + title + '\n' + message)
 	try:
 		import tkinter
-		import tkinter.messagebox
-		window = tkinter.Tk()
-		window.wm_withdraw()
-		tkinter.messagebox.showerror(title, message)
+		import tkinter.messagebox as messagebox
 	except ImportError:
+		try:
+			# try python2 imports
+			import Tkinter as tkinter
+			import tkMessageBox as messagebox
+		except ImportError:
+			sys.exit(1)
+
+	window = tkinter.Tk()
+	window.wm_withdraw()
+	messagebox.showerror(title, message)
+	sys.exit(1)
+
+
+if sys.version_info[:2] < (3, 4):
+	exit_with_error('Unsupported Python version', 'Python3.4 or higher is required to run Unknown Horizons.')
+
+
+def main():
+	# abort silently on signal
+	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
+	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
+
+	# avoid crashing when writing to unavailable standard streams
+	setup_streams()
+
+	# use locale-specific time.strftime handling
+	try:
+		locale.setlocale(locale.LC_TIME, '')
+	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
-	exit(1)
 
-def check_python_version():
-	if sys.version_info[:2] < (3, 4):
-		exit_with_error('Unsupported Python version', 'Python3.4 or higher is required to run Unknown Horizons.')
+	# Change the working directory to the parent of the content directory
+	os.chdir(get_content_dir_parent_path())
+
+	logging.config.dictConfig({
+		'version': 1,
+		'disable_existing_loggers': False,
+		'handlers': {
+			'default': {
+				'class': 'logging.StreamHandler',
+				'level': 'WARN',
+				'stream': 'ext://sys.stderr'
+			}
+		},
+		'root': {
+			'handlers': ['default']
+		}
+	})
+
+	import horizons.main
+	from horizons.i18n import gettext as T
+	from horizons.util import create_user_dirs
+	from horizons.util.cmdlineoptions import get_option_parser
+
+	check_requirements()
+	create_user_dirs()
+
+	options = get_option_parser().parse_args()[0]
+	setup_debugging(options)
+	init_environment(True)
+
+	# Start UH.
+	ret = horizons.main.start(options)
+
+	if logfile:
+		logfile.close()
+	if ret:
+		print(T('Thank you for using Unknown Horizons!'))
+	else:
+		# Game didn't end successfully
+		sys.exit(1)
 
 
-check_python_version()
+def check_requirements():
+	"""
+	Test if required libs can be found or display specific error message.
+	"""
+	try:
+		import yaml
+	except ImportError:
+		headline = 'Error: Unable to find required library "PyYAML".'
+		msg = 'PyYAML (a required library) is missing and needs to be installed.\n' + \
+		    'The Windows installer is available at http://pyyaml.org/wiki/PyYAML. ' + \
+		    'Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".'
+		exit_with_error(headline, msg)
 
-
-def log():
-	"""Returns Logger"""
-	return logging.getLogger("run_uh")
-
-logfilename = None
-logfile = None
 
 def get_content_dir_parent_path():
 	"""
@@ -98,14 +172,9 @@ def get_content_dir_parent_path():
 		content_path = os.path.join(path, 'content')
 		if os.path.exists(content_path):
 			return path
-	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
 
-def create_user_dirs():
-	"""Creates the userdir and subdirs. Includes from horizons."""
-	from horizons.constants import PATHS
-	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
-		if not os.path.isdir(directory):
-			os.makedirs(directory)
+	exit_with_error('Error', 'Unable to find the path to the Unknown Horizons content dir.')
+
 
 def excepthook_creator(outfilename):
 	"""Returns an excepthook function to replace sys.excepthook.
@@ -142,83 +211,12 @@ def setup_streams():
 	if sys.__stdout__.fileno() < 0:
 		sys.stdout = open(os.devnull, 'w')
 
-def main():
-	# abort silently on signal
-	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
-	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
-
-	# avoid crashing when writing to unavailable standard streams
-	setup_streams()
-
-	# use locale-specific time.strftime handling
-	try:
-		locale.setlocale(locale.LC_TIME, '')
-	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
-		pass
-
-	# Change the working directory to the parent of the content directory
-	os.chdir(get_content_dir_parent_path())
-	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
-	create_user_dirs()
-
-	from horizons.util.cmdlineoptions import get_option_parser
-	options = get_option_parser().parse_args()[0]
-	setup_debugging(options)
-	init_environment(True)
-
-	# test if required libs can be found or display specific error message
-	try:
-		import yaml
-	except ImportError:
-		headline = 'Error: Unable to find required library "PyYAML".'
-		msg = 'PyYAML (a required library) is missing and needs to be installed.\n' + \
-		    'The Windows installer is available at http://pyyaml.org/wiki/PyYAML. ' + \
-		    'Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".'
-		exit_with_error(headline, msg)
-
-	# Start UH.
-	import horizons.main
-	ret = True
-	if not options.profile:
-		# start normal
-		ret = horizons.main.start(options)
-	else:
-		# start with profiling
-		try:
-			import cProfile as profile
-		except ImportError:
-			import profile
-
-		from horizons.constants import PATHS
-		profiling_dir = os.path.join(PATHS.USER_DIR, 'profiling')
-		if not os.path.exists(profiling_dir):
-			os.makedirs(profiling_dir)
-
-		pattern = os.path.join(profiling_dir, time.strftime('%Y-%m-%d') + '.%02d.prof')
-		num = 1
-		while os.path.exists(pattern % num):
-			num += 1
-
-		outfilename = pattern % num
-		print('Starting in profile mode. Writing output to: {}'.format(outfilename))
-		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
-		print('Program ended. Profiling output: {}'.format(outfilename))
-
-	if logfile:
-		logfile.close()
-	if ret:
-		from horizons.i18n import gettext as T
-		print(T('Thank you for using Unknown Horizons!'))
-	else:
-		# Game didn't end successfully
-		sys.exit(1)
-
 
 def setup_debugging(options):
 	"""Parses and applies options
 	@param options: parameters: debug, debug_module, debug_log_only, logfile
 	"""
-	global logfilename, logfile
+	global logfile
 
 	# not too nice way of sharing code, but it is necessary because code from this file
 	# can't be accessed elsewhere on every distribution, and we can't just access other code.
@@ -229,9 +227,6 @@ def setup_debugging(options):
 	if options.debug or options.debug_log_only:
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
-		if module not in logging.Logger.manager.loggerDict:
-			print('No such logger: {}'.format(module))
-			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 	if options.debug or options.debug_module or options.debug_log_only:
 		options.debug = True
@@ -291,8 +286,8 @@ def find_fife(paths):
 				break
 			except ImportError as e:
 				if str(e) != 'cannot import name fife':
-					log().warning('Failed to use FIFE from %s', fife)
-					log().warning(str(e))
+					logger.warning('Failed to use FIFE from %s', fife)
+					logger.warning(str(e))
 					if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
 						# We found FIFE but the Python and FIFE architectures don't match (Windows).
 						exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 3.')
@@ -354,9 +349,9 @@ def setup_fife():
 
 	from horizons.constants import VERSION
 	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
-		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		logger.warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		logger.debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
 def init_environment(use_fife):
 	"""Sets up everything.
@@ -367,16 +362,16 @@ def init_environment(use_fife):
 
 def log_paths():
 	"""Prints debug info about paths to log"""
-	log().debug("SYS.PATH: %s", sys.path)
-	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
-	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
-	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
+	logger.debug("SYS.PATH: %s", sys.path)
+	logger.debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
+	logger.debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
+	logger.debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
+	logger.debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
-	log().debug("Python version: %s", sys.version_info)
-	log().debug("Platform: %s", platform.platform())
+	logger.debug("Python version: %s", sys.version_info)
+	logger.debug("Platform: %s", platform.platform())
 
 if __name__ == '__main__':
 	main()

@@ -46,18 +46,9 @@ def pytest_runtest_setup(item):
 		pytest.skip('test is long running')
 
 	# Skip gui tests unless specified otherwise on the command line
-	marker = item.get_marker('gui')
+	marker = item.get_marker('gui_test')
 	if marker is not None and not item.config.getoption('--gui-tests'):
 		pytest.skip('test is gui test')
-
-
-def pytest_collection_modifyitems(items):
-	"""
-	Mark all tests in gui directory.
-	"""
-	for item in items:
-		if 'tests/gui/' in item.parent.name:
-			item.add_marker(pytest.mark.gui)
 
 
 # Basic test setup, installs global mock for fife so we can run gui/game tests.
@@ -104,7 +95,7 @@ def pytest_namespace():
 	import fife
 	horizons.globals.fife = fife.fife
 
-	from run_uh import create_user_dirs
+	from horizons.util import create_user_dirs
 	create_user_dirs()
 
 	import horizons.i18n
