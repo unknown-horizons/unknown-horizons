@@ -36,7 +36,7 @@ def _build_farm(x, y, island, settlement, owner, *field_type):
 	Build a farm at (x, y) and 9 fields of field_type.
 
 	F F F
-	F X	F	  (X - farm, F - field)
+	F X F	  (X - farm, F - field)
 	F F F
 	"""
 	farm = Build(BUILDINGS.FARM, x, y, island, settlement=settlement)(owner)
