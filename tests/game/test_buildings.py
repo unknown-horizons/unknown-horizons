@@ -31,6 +31,30 @@ from horizons.world.production.producer import Producer
 from tests.game import game_test, settle
 
 
+def _build_farm(x, y, island, settlement, owner, *field_type):
+	"""
+	Build a farm at (x, y) and 9 fields of field_type.
+
+	F F F
+	F X	F	  (X - farm, F - field)
+	F F F
+	"""
+	farm = Build(BUILDINGS.FARM, x, y, island, settlement=settlement)(owner)
+	assert farm, "Failed to build a farm at ({:d}, {:d})".format(x, y)
+
+	field_offsets = ((-3, -3), (-3, 0), (-3, 3), (0, 3), (3, 3), (3, 0), (3, -3), (0, -3))
+
+	assert len(field_type) <= 8, "Too many field types supplied {:d}.".format(len(field_type)
+	
+	for (x_off, y_off), field_t in zip(field_offsets, field_type):
+		fx = x + x_off
+		fy = x + y_off
+		field = Build(field_type, fx, fy, island, settlement=settlement)(owner)
+		assert field, "Failed to build a field ({:d}) at ({:d}, {:d})".format(field_type, x, y)
+
+	return farm
+
+
 @game_test()
 def test_lumberjack(s, p):
 	"""
@@ -266,6 +290,9 @@ def test_farm_production(s, p):
 	farm = Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
 
 	assert farm
+
+
+	farm1 = _build_farm(30, 30, 
 
 	primary_resources = (RES.LAMB_WOOL, RES.POTATOES, RES.RAW_SUGAR, RES.TOBACCO_PLANTS, RES.CATTLE, RES.PIGS, RES.HERBS,
 						 RES.GRAIN, RES.SPICE_PLANTS, RES.COCOA_BEANS, RES.VINES, RES.ALVEARIES, RES.HOP_PLANTS)
