@@ -44,12 +44,12 @@ def _build_farm(x, y, island, settlement, owner, *field_type):
 
 	field_offsets = ((-3, -3), (-3, 0), (-3, 3), (0, 3), (3, 3), (3, 0), (3, -3), (0, -3))
 
-	assert len(field_type) <= 8, "Too many field types supplied {:d}.".format(len(field_type)
+	assert len(field_type) <= 8, "Too many field types supplied {:d}.".format(len(field_type))
 	
 	for (x_off, y_off), field_t in zip(field_offsets, field_type):
 		fx = x + x_off
 		fy = x + y_off
-		field = Build(field_type, fx, fy, island, settlement=settlement)(owner)
+		field = Build(field_t, fx, fy, island, settlement=settlement)(owner)
 		assert field, "Failed to build a field ({:d}) at ({:d}, {:d})".format(field_type, x, y)
 
 	return farm
@@ -281,32 +281,32 @@ def test_pavilion_production(s, p):
 
 
 @game_test()
-def test_farm_production(s, p):
+def test_farm_crop_production(s, p):
 	"""
-	Check whether fields produce resources and the farm transforms them actual goods
+	Check whether the fields produce crops and the crops are collected at the farm
 	"""
 
 	settlement, island = settle(s)
-	farm = Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
 
+	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.HERBARY, BUILDINGS.SUGARCANE_FIELD,
+					   BUILDINGS.VINEYARD, BUILDINGS.TOBACCO_FIELD, BUILDINGS.SPICE_FIELD,
+					   BUILDINGS.HOP_FIELD, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD)
+	
 	assert farm
-
-
-	farm1 = _build_farm(30, 30, 
-
-	primary_resources = (RES.LAMB_WOOL, RES.POTATOES, RES.RAW_SUGAR, RES.TOBACCO_PLANTS, RES.CATTLE, RES.PIGS, RES.HERBS,
-						 RES.GRAIN, RES.SPICE_PLANTS, RES.COCOA_BEANS, RES.VINES, RES.ALVEARIES, RES.HOP_PLANTS)
-
-	secondary_resources = (RES.WOOL, RES.FOOD, RES.SUGAR, RES.TOBACCO_LEAVES, RES.CATTLE_SLAUGHTER, RES.PIGS_SLAUGHTER,
-						   RES.MEDICAL_HERBS, RES.CORN, RES.SPICES, RES.COCOA, RES.GRAPES, RES.HONEYCOMBS, RES.HOPS)
-
-	# TODO: add collectors for handling primary resources transport from fields
-	for a, b in zip(primary_resources, secondary_resources):
-		assert farm.get_component(StorageComponent).inventory[a] == 0
-		farm.get_component(StorageComponent).inventory.alter(a, 2) # 2 potatoes give 1 unit of food
-
-		s.run(seconds=5)
-		assert farm.get_component(StorageComponent).inventory[b]
+	
+	primary_resources = (RES.HERBS, RES.RAW_SUGAR, RES.VINES, RES.TOBACCO_PLANTS, RES.SPICE_PLANTS,
+						 RES.HOP_PLANTS, RES.COCOA_BEANS, RES.GRAIN)
+	secondary_resources = (RES.MEDICAL_HERBS, RES.SUGAR, RES.GRAPES, RES.TOBACCO_LEAVES, RES.SPICES,
+						   RES.HOPS, RES.COCOA, RES.CORN)
+	
+	for p_res, s_res in zip(primary_resources, secondary_resources):
+		assert farm.get_component(StorageComponent).inventory[p_res] == 0
+		assert farm.get_component(StorageComponent).inventory[s_res] == 0
+	
+	s.run(seconds=60)
+	
+	for s_res in secondary_resources:
+		assert farm.get_component(StorageComponent).inventory[s_res]
 
 
 @game_test()
