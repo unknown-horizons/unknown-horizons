@@ -310,6 +310,30 @@ def test_farm_crop_production(s, p):
 
 
 @game_test()
+def test_farm_animal_production(s, p):
+	"""
+	Check whether the pastures herd animals and the farm converts them to meat or honey
+	"""
+
+	settlement, island = settle(s)
+
+	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE,
+					   BUILDINGS.PIGSTY, BUILDINGS.CATTLE_RUN, BUILDINGS.ALVEARIES)
+	
+	primary_resources = (RES.POTATOES, RES.LAMB_WOOL, RES.PIGS, RES.CATTLE, RES.ALVEARIES)
+	secondary_resources = (RES.FOOD, RES.WOOL, RES.PIGS_SLAUGHTER, RES.CATTLE_SLAUGHTER, RES.HONEYCOMBS)
+
+	for p_res, s_res in zip(primary_resources, secondary_resources):
+		assert farm.get_component(StorageComponent).inventory[p_res] == 0
+		assert farm.get_component(StorageComponent).inventory[s_res] == 0
+	
+	s.run(seconds=120)
+	
+	for s_res in secondary_resources:
+		assert farm.get_component(StorageComponent).inventory[s_res]
+
+
+@game_test()
 def test_school_production(s, p):
 	"""
 	Check whether schools produce education
