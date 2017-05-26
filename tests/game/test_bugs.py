@@ -212,7 +212,8 @@ def test_ticket_1427():
 def test_ticket_1523(s, p):
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD)
+	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD, BUILDINGS.POTATO_FIELD, BUILDINGS.POTATO_FIELD,
+			   BUILDINGS.POTATO_FIELD)
 
 	# Let it work for a bit
 	s.run(seconds=60)
