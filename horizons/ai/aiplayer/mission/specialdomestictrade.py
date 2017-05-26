@@ -72,12 +72,18 @@ class SpecialDomesticTrade(ShipMission):
 	def start(self):
 		self.state = self.missionStates.moving_to_source_settlement
 		self._move_to_source_settlement()
-		self.log.info('%s started a special domestic trade mission from %s to %s using %s', self,
-			self.source_settlement_manager.settlement.get_component(NamedComponent).name, self.destination_settlement_manager.settlement.get_component(NamedComponent).name, self.ship)
+		self.log.info(
+			'%s started a special domestic trade mission from %s to %s using %s', self,
+			self.source_settlement_manager.settlement.get_component(NamedComponent).name,
+			self.destination_settlement_manager.settlement.get_component(NamedComponent).name, self.ship)
 
 	def _move_to_source_settlement(self):
-		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_settlement),
-			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement ({})'.format(self.source_settlement_manager.settlement.get_component(NamedComponent).name))
+		self._move_to_warehouse_area(
+			self.source_settlement_manager.settlement.warehouse.position,
+			Callback(self._reached_source_settlement),
+			Callback(self._move_to_source_settlement),
+			'Unable to move to the source settlement ({})'.format(
+				self.source_settlement_manager.settlement.get_component(NamedComponent).name))
 
 	def _load_resources(self):
 		source_resource_manager = self.source_settlement_manager.resource_manager
@@ -106,7 +112,9 @@ class SpecialDomesticTrade(ShipMission):
 		return True
 
 	def _reached_source_settlement(self):
-		self.log.info('%s reached the first warehouse area (%s)', self, self.source_settlement_manager.settlement.get_component(NamedComponent).name)
+		self.log.info(
+			'%s reached the first warehouse area (%s)', self,
+			self.source_settlement_manager.settlement.get_component(NamedComponent).name)
 		if self._load_resources():
 			self.state = self.missionStates.moving_to_destination_settlement
 			self._move_to_destination_settlement()
@@ -114,10 +122,16 @@ class SpecialDomesticTrade(ShipMission):
 			self.report_failure('No resources to transport')
 
 	def _move_to_destination_settlement(self):
-		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_settlement),
-			Callback(self._move_to_destination_settlement), 'Unable to move to the destination settlement ({})'.format(self.destination_settlement_manager.settlement.get_component(NamedComponent).name))
+		self._move_to_warehouse_area(
+			self.destination_settlement_manager.settlement.warehouse.position,
+			Callback(self._reached_destination_settlement),
+			Callback(self._move_to_destination_settlement),
+			'Unable to move to the destination settlement ({})'.format(
+				self.destination_settlement_manager.settlement.get_component(NamedComponent).name))
 
 	def _reached_destination_settlement(self):
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
-		self.log.info('%s reached the destination warehouse area (%s)', self, self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
+		self.log.info(
+			'%s reached the destination warehouse area (%s)', self,
+			self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
 		self.report_success('Unloaded resources')
