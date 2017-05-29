@@ -20,11 +20,14 @@
 # ###################################################
 
 import json
+import os
 import platform
 import threading
 import urllib.error
 import urllib.request
 import webbrowser
+from pathlib import PurePath
+from typing import Optional
 
 from fife.extensions.pychan.widgets import Button
 
@@ -33,10 +36,27 @@ from horizons.constants import NETWORK, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.windows import Popup
 from horizons.i18n import gettext as T
+from horizons.util.platform import get_home_directory
 from horizons.util.python.callback import Callback
 
-
 TIMEOUT = 5.0 # we should be done before the user can start a game
+
+
+def is_system_installed(uh_path: Optional[PurePath]) -> bool:
+	"""
+	Returns whether UH is likely to have been installed with the systems package manager.
+
+	In typical usage, you don't need to pass any parameters.
+	"""
+	if uh_path is None:
+		uh_path = PurePath(os.path.abspath(__file__))
+
+	home_directory = get_home_directory()
+	try:
+		uh_path.relative_to(home_directory)
+		return False
+	except ValueError:
+		return True
 
 
 def is_version_newer(original, candidate):
@@ -44,7 +64,8 @@ def is_version_newer(original, candidate):
 	Returns whether the version identifier `candidate` is a newer version than `original`.
 	"""
 	def parse(value):
-		return tuple(map(int, value.split('.')))
+		version = value.split('-')[0]
+		return tuple(map(int, version.split('.')))
 
 	try:
 		return parse(candidate) > parse(original)
@@ -56,17 +77,13 @@ def check_for_updates():
 	"""
 	Check if there's a new version, returns the data from the server, otherwise None.
 	"""
-	# no updates for git version
-	if VERSION.IS_DEV_VERSION:
-		return
-
-	# only updates for operating systems missing a package management
-	if platform.system() not in ('Windows', 'Darwin'):
+	# skip check for platforms that have proper package managements
+	if platform.system() not in ('Windows', 'Darwin') and is_system_installed():
 		return
 
 	try:
 		with urllib.request.urlopen(NETWORK.UPDATE_FILE_URL, timeout=TIMEOUT) as f:
-			data = json.loads(f.read())
+			data = json.loads(f.read().decode('ascii'))
 			if is_version_newer(VERSION.RELEASE_VERSION, data['version']):
 				return data
 	except (urllib.error.URLError, ValueError, KeyError):
