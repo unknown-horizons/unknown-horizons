@@ -151,6 +151,53 @@ class Fife:
 	def init(self):
 		"""Second initialization stage of engine"""
 		self.engine.init()
+		
+		# There is no default value for the LatestBackground setting inside the
+		# settings-template.xml file. As this file is used to populate settings.xml
+		# when the game is first run, we will examine the LatestBackground setting
+		# to determine if the game has run before
+		if not self.get_uh_setting('LatestBackground'):
+			# The game hasn't run before (or the settings.xml file has been deleted)
+			# set the game's resolution to the resolution that is closest to the
+			# desktop's resolution and supported by the renderer
+			
+			# Get_screen_resolutions() returns all supported resolutions, sorted by width
+			available_resolutions = get_screen_resolutions(self.get_fife_setting('ScreenResolution'))
+			
+			# Use the resolution that the game is currently set to as a baseline
+			current_width = self.engine.getRenderBackend().getWidth()
+			current_height = self.engine.getRenderBackend().getHeight()
+			closest_width = current_width
+			closest_height = current_height
+			
+			# Compare the desktop's resolution with the game's current resolution
+			desktop_width = self.engine.getDeviceCaps().getDesktopWidth()
+			desktop_height = self.engine.getDeviceCaps().getDesktopHeight()
+			closest_width_difference = abs(desktop_width - current_width)
+			closest_height_difference = abs(desktop_height - current_height)
+			
+			# Compare all available resolutions with the game's current resolution
+			for available_resolution in available_resolutions:
+				(width, height) = available_resolution.split('x')
+				width_difference = abs(desktop_width - int(width))
+				height_difference = abs(desktop_height - int(height))
+				
+				# If another available resolution is closer to the desktop's resolution
+				if (width_difference <= closest_width_difference and
+					height_difference <= closest_height_difference):
+					# Update the closest resolution
+					closest_width = width
+					closest_width_difference = width_difference
+					closest_height = height
+					closest_height_difference = height_difference
+			
+			# We need to destroy and re-initialize the engine to force the change
+			self.engine.destroy()
+			self.set_fife_setting('ScreenResolution',str(closest_width)+'x'+str(closest_height))
+			self.save_settings()
+			self.engine_settings.setScreenWidth(int(closest_width))
+			self.engine_settings.setScreenHeight(int(closest_height))
+			self.engine.init()
 
 		# Init stuff.
 		self.eventmanager = self.engine.getEventManager()
