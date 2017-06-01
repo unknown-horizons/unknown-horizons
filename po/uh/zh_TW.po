@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2016-09-28 13:54+0000\n"
+"PO-Revision-Date: 2017-06-01 12:34+0000\n"
 "Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) <https://hosted.weblate.org/projects/uh/uh/"
-"zh_TW/>\n"
+"Language-Team: Chinese (Traditional) "
+"<https://hosted.weblate.org/projects/uh/uh/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.9-dev\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #: run_uh.py:125
 #, fuzzy
@@ -550,8 +550,9 @@ msgid "residents"
 msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
+#, fuzzy
 msgid "Provides security for your settlement."
-msgstr ""
+msgstr "為您的殖民地提供保障。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -849,11 +850,11 @@ msgstr "離開"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "返回上一頁"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "前往下一頁"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -1124,44 +1125,51 @@ msgid "Quickload"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
+#, fuzzy
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "切換背景建築物的透視度"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "突出方塊擁有權"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
+#, fuzzy
 msgid "Toggle health bars"
-msgstr ""
+msgstr "切換生命條"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
+#, fuzzy
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "聚焦鏡頭於所選物品上"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
+#, fuzzy
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "移除所選人物/建築物"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Display help"
-msgstr ""
+msgstr "顯示幫助"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Screenshot"
-msgstr ""
+msgstr "截圖"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
+#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr ""
+msgstr "切換顯示FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:40
+#, fuzzy
 msgid "Toggle grid on/off"
-msgstr ""
+msgstr "切換格線顯示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:41
+#, fuzzy
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "顯示坐標值(開發者選項)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:45
