@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-02-23 18:20+0000\n"
-"Last-Translator: Kleyton Carlos <Kleyton.carlos@hotmail.com.br>\n"
+"PO-Revision-Date: 2017-06-02 18:38+0000\n"
+"Last-Translator: André Ludovico <alms21@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/uh/tutorial/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.12-dev\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -113,6 +113,8 @@ msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"A sua embarcação está no mar, carregada com suprimentos que você precisará "
+"para estabelecer um novo assentamento."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -144,12 +146,19 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Ao clicar neste botão será apresentado uma prévia do Armazém, a primeira "
+"construção requerido para fundar uma nova colônia. A medida que mova o "
+"cursor, notará que a prévia se sombreia de tons vermelhos quando a "
+"construção está em uma zona inadequada."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"O armazém precisa ser posicionado na costa para permitir que barcos "
+"atraquem. Então, encontre uma localização boa e clique com o botão esquerdo "
+"para colocar esta construção importante."
 
 #. This is the text body of a logbook page.
 #, fuzzy

@@ -45,13 +45,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - A sua embarcação está no mar, carregada com suprimentos que você precisará para estabelecer um novo assentamento.
   - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
   - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Ao clicar neste botão será apresentado uma prévia do Armazém, a primeira construção requerido para fundar uma nova colônia. A medida que mova o cursor, notará que a prévia se sombreia de tons vermelhos quando a construção está em uma zona inadequada.
+  - O armazém precisa ser posicionado na costa para permitir que barcos atraquem. Então, encontre uma localização boa e clique com o botão esquerdo para colocar esta construção importante.
   - ''
   - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
@@ -657,4 +657,4 @@ metadata:
   locale: pt_BR
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 96 translated messages, 77 fuzzy translations, 15 untranslated messages.
+  translation_status: 99 translated messages, 77 fuzzy translations, 12 untranslated messages.
