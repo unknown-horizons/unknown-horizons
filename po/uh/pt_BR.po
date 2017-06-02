@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-02-23 18:17+0000\n"
-"Last-Translator: Kleyton Carlos <Kleyton.carlos@hotmail.com.br>\n"
+"PO-Revision-Date: 2017-06-02 17:18+0000\n"
+"Last-Translator: André Ludovico <alms21@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.12-dev\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -365,12 +365,13 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Chalupa canhoneira"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
 msgstr ""
+"Mais comum barco de guerra de três mastros, com um único canhão no convés."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -1859,10 +1860,13 @@ msgid ""
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:84
+#, fuzzy
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Os primeiros passos são mais fáceis ao observar em como os Jogadores da IA "
+"configuram sua colônia."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid ""
