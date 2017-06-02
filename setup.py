@@ -62,10 +62,10 @@ for root, dirs, files in os.walk('horizons'):
 	packages.append(root)
 
 # Add enet files for build platform
-type = platform.system().lower()
+systemtype = platform.system().lower()
 arch = platform.machine()
-dir = "horizons/network/{0!s}-x{1!s}".format(type, arch[-2:])
-package_data = {dir: ['*.so']}
+enetdir = "horizons/network/{0!s}-x{1!s}".format(systemtype, arch[-2:])
+package_data = {enetdir: ['*.so']}
 
 
 class _build_i18n(distutils.cmd.Command):
