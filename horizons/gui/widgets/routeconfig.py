@@ -219,7 +219,7 @@ class RouteConfig(Window):
 		position = self.widgets.index(entry)
 		slider = slot.findChild(name="slider")
 		amount_lbl = slot.findChild(name="amount")
-		amount = int(slider.value / 3) # hack: the default increment is 3
+		amount = int(slider.value / 3) # hack: adjusts the slider increment to 1
 		amount_lbl.text = '{amount}t'.format(amount=amount)
 		if slot.action == "unload":
 			amount = -amount
@@ -245,7 +245,7 @@ class RouteConfig(Window):
 		slider = slot.findChild(name="slider")
 
 		if not has_value:
-			value = int(slider.value)
+			value = int(slider.value / 3) # hack: prevents 3x compensation for the increment adjustment
 			if slot.action == "unload":
 				value = -value
 
