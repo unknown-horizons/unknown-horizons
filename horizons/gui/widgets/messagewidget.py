@@ -343,7 +343,7 @@ class _IngameMessage:
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s %s %s%s" % (self.created, self.id,
-			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+		return "{:4d}: {} {} {}{}".format(self.created, self.id,
+			'({},{}) '.format(self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')
