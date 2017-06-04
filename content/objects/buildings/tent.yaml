@@ -32,7 +32,7 @@ components:
         produces:
         - [RES.HAPPINESS, 1]
         changes_animation: false
-        level: [TIER.SAILORS, TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SAILORS, TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -50,7 +50,7 @@ components:
         produces:
         - [RES.HAPPINESS, 3]
         changes_animation: false
-        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -77,7 +77,7 @@ components:
         produces:
         - [RES.HAPPINESS, 12]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 75
         consumes:
@@ -95,7 +95,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -104,7 +104,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 180
         consumes:
@@ -113,7 +113,7 @@ components:
         produces:
         - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -122,7 +122,7 @@ components:
         produces:
         - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -131,7 +131,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 180
         consumes:

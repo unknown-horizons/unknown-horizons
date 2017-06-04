@@ -95,7 +95,12 @@ tab4:
   - _ Military
   - BUILDINGS.WEAPONSMITH
   - BUILDINGS.CANNON_FOUNDRY
-  - BUILDINGS.BARRACKS 
+  - BUILDINGS.BARRACKS
+
+tab5:
+- icon: icons/tabwidget/buildmenu/tier/tier5
+-
+  - _ Companies
 
 meta:
   unlocking_strategy: tab_per_tier
