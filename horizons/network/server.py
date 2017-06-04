@@ -28,10 +28,6 @@ from horizons.i18n import find_available_languages
 from horizons.network import enet, packets
 from horizons.network.common import ErrorType, Game, Player
 
-if not enet:
-	raise Exception("Could not find enet module.")
-
-
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500
 # protocols used by uh versions:

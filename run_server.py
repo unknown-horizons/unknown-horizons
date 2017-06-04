@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import getopt
+import argparse
 import os
 import sys
 
@@ -29,7 +29,10 @@ from horizons import network
 from horizons.network.server import Server
 
 
-def fork():
+def daemonize() -> int:
+	"""
+	POSIX compliant daemonize.
+	"""
 	try:
 		pid = os.fork()
 		if pid > 0:
@@ -51,88 +54,87 @@ def fork():
 		sys.exit(1)
 	return os.getpid()
 
+
 def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
+	"""
+	TODO: No clue what this is about.
+	"""
 	for f in sys.stdout, sys.stderr:
 		f.flush()
-	ifd = file(stdin,  'r')
-	ofd = file(stdout, 'a+')
-	efd = ofd if (stdout == stderr) else file(stderr, 'a+')
+
+	ifd = open(stdin,  'r')
+	ofd = open(stdout, 'a+')
+	efd = ofd if (stdout == stderr) else open(stderr, 'a+')
+
 	os.dup2(ifd.fileno(), sys.stdin.fileno())
 	os.dup2(ofd.fileno(), sys.stdout.fileno())
 	os.dup2(efd.fileno(), sys.stderr.fileno())
 
-def usage(fd=sys.stdout):
-	fd.write("Usage: {}".format(sys.argv[0]))
-	if os.name == "posix":
-		fd.write(" [-d]")
-	fd.write(" -h host [-p port] [-s statistic_file]")
-	if os.name == "posix":
-		fd.write(" [-l logfile] [-P pidfile] ")
-	fd.write("\n")
 
-host = None
-port = 2002
-statfile = None
-daemonize = False
-logfile = None
-pidfile = None
+def port(value: str) -> int:
+	"""
+	Check whether the given string is a valid port.
+	"""
+	port = int(value)
+	max_port = 2**16
 
-try:
-	options = 'h:p:s:'
-	if os.name == "posix":
-		options += 'dl:P:'
-	opts, args = getopt.getopt(sys.argv[1:], options)
-except getopt.GetoptError as err:
-	sys.stderr.write(str(err))
-	usage()
-	sys.exit(1)
+	if not (1 <= port < max_port):
+		raise argparse.ArgumentTypeError(
+			'{} is not between 1 and {}'.format(port, max_port))
+	return port
 
-try:
-	for (key, value) in opts:
-		if key == '-h':
-			host = value
-		if key == '-p':
-			port = int(value)
-		if key == '-s':
-			statfile = value
-		if os.name == "posix":
-			if key == '-d':
-				daemonize = True
-			if key == '-l':
-				logfile = value
-			if key == '-P':
-				pidfile = value
-except (ValueError, IndexError):
-	port = 0
 
-if host is None or port is None or port <= 0:
-	usage()
-	sys.exit(1)
+def main(args):
+	"""
+	Main entry point of the script. Parses command line options and starts the server.
+	"""
+	if not network.enet:
+		sys.stderr.write('Could not find enet module.\n')
+		sys.exit(1)
 
-if pidfile and os.path.isfile(pidfile):
-	sys.stderr.write("Error: Pidfile '{}' already exists.\n".format(pidfile))
-	sys.stderr.write("Please make sure no other server is running and remove this file\n")
-	sys.exit(1)
+	parser = argparse.ArgumentParser()
+	parser.add_argument('host', help='Host to listen on')
+	parser.add_argument('-p', dest='port', type=port,
+	                    help='Port to listen on, default 2002', default=2002)
+	parser.add_argument('-s', dest='statistic_file', default=None)
 
-pid = os.getpid()
-if daemonize:
-	pid = fork()
-	# daemon must redirect!
-	if logfile is None:
-		logfile = '/dev/null'
+	if os.name == 'posix':
+		parser.add_argument('-d', dest='daemonize', action='store_true',
+		                    help='Daemonize the server.', default=False)
+		parser.add_argument('-l', dest='log_file', default=None)
+		parser.add_argument('-P', dest='pid_file', default=None)
 
-if logfile is not None:
-	redirect('/dev/null', logfile, logfile)
+	config = parser.parse_args(args)
 
-if pidfile:
-	file(pidfile, 'w').write(str(pid))
+	if config.pid_file and os.path.isfile(config.pid_file):
+		sys.stderr.write("Error: Pidfile '{}' already exists.\n".format(config.pid_file))
+		sys.stderr.write("Please make sure no other server is running and remove this file\n")
+		sys.exit(1)
 
-try:
-	server = Server(host, port, statfile)
-	server.run()
-except network.NetworkException as e:
-	sys.stderr.write("Error: {}\n".format(e))
-	sys.exit(2)
+	pid = os.getpid()
+	if config.daemonize:
+		pid = daemonize()
+		# daemon must redirect!
+		if config.log_file is None:
+			config.log_file = '/dev/null'
 
-if pidfile:
-	os.unlink(pidfile)
+	if config.log_file:
+		redirect('/dev/null', config.log_file, config.log_file)
+
+	if config.pid_file:
+		with open(config.pid_file, 'w') as f:
+			f.write(str(pid))
+
+	try:
+		server = Server(config.host, config.port, config.statistic_file)
+		server.run()
+	except network.NetworkException as e:
+		sys.stderr.write("Error: {}\n".format(e))
+		sys.exit(2)
+
+	if config.pid_file:
+		os.unlink(config.pid_file)
+
+
+if __name__ == '__main__':
+	main(sys.argv[:1])
