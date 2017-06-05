@@ -25,6 +25,7 @@ import uuid
 
 from horizons import network
 from horizons.i18n import find_available_languages
+from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import enet, packets
 from horizons.network.common import ErrorType, Game, Player
 
@@ -57,32 +58,63 @@ class Server:
 			# individual packet classes
 			'maxpacketsize' : 2 * 1024 * 1024,
 		}
-		self.callbacks = {
-			'onconnect':     [self.onconnect],
-			'ondisconnect':  [self.ondisconnect],
-			'onreceive':     [self.onreceive],
-			packets.cmd_error:                 [self.onerror],
-			packets.cmd_fatalerror:            [self.onfatalerror],
-			packets.client.cmd_sessionprops:   [self.onsessionprops],
-			packets.client.cmd_creategame:     [self.oncreategame],
-			packets.client.cmd_listgames:      [self.onlistgames],
-			packets.client.cmd_joingame:       [self.onjoingame],
-			packets.client.cmd_leavegame:      [self.onleavegame],
-			packets.client.cmd_chatmsg:        [self.onchat],
-			packets.client.cmd_changename:     [self.onchangename],
-			packets.client.cmd_changecolor:    [self.onchangecolor],
-			packets.client.cmd_preparedgame:   [self.onpreparedgame],
-			packets.client.cmd_toggleready:    [self.ontoggleready],
-			packets.client.cmd_kickplayer:     [self.onkick],
-			#TODO packets.client.cmd_fetch_game:     [self.onfetchgame],
-			#TODO packets.client.savegame_data:      [self.onsavegamedata],
-			'preparegame':   [self.preparegame],
-			'startgame':     [self.startgame],
-			'leavegame':     [self.leavegame],
-			'deletegame':    [self.deletegame],
-			'terminategame': [self.terminategame],
-			'gamedata':      [self.gamedata],
+		self.events = SimpleMessageBus([
+			'onconnect',
+			'ondisconnect',
+			'onreceive',
+			packets.cmd_error,
+			packets.cmd_fatalerror,
+			packets.client.cmd_sessionprops,
+			packets.client.cmd_creategame,
+			packets.client.cmd_listgames,
+			packets.client.cmd_joingame,
+			packets.client.cmd_leavegame,
+			packets.client.cmd_chatmsg,
+			packets.client.cmd_changename,
+			packets.client.cmd_changecolor,
+			packets.client.cmd_preparedgame,
+			packets.client.cmd_toggleready,
+			packets.client.cmd_kickplayer,
+			#TODO packets.client.cmd_fetch_game,
+			#TODO packets.client.savegame_data,
+			'preparegame',
+			'startgame',
+			'leavegame',
+			'deletegame',
+			'terminategame',
+			'gamedata'
+		])
+
+		callbacks = {
+			'onconnect': self.onconnect,
+			'ondisconnect': self.ondisconnect,
+			'onreceive': self.onreceive,
+			packets.cmd_error: self.onerror,
+			packets.cmd_fatalerror: self.onfatalerror,
+			packets.client.cmd_sessionprops: self.onsessionprops,
+			packets.client.cmd_creategame: self.oncreategame,
+			packets.client.cmd_listgames: self.onlistgames,
+			packets.client.cmd_joingame: self.onjoingame,
+			packets.client.cmd_leavegame: self.onleavegame,
+			packets.client.cmd_chatmsg: self.onchat,
+			packets.client.cmd_changename: self.onchangename,
+			packets.client.cmd_changecolor: self.onchangecolor,
+			packets.client.cmd_preparedgame: self.onpreparedgame,
+			packets.client.cmd_toggleready: self.ontoggleready,
+			packets.client.cmd_kickplayer: self.onkick,
+			#TODO packets.client.cmd_fetch_game: self.onfetchgame,
+			#TODO packets.client.savegame_data: self.onsavegamedata,
+			'preparegame': self.preparegame,
+			'startgame': self.startgame,
+			'leavegame': self.leavegame,
+			'deletegame': self.deletegame,
+			'terminategame': self.terminategame,
+			'gamedata': self.gamedata,
 		}
+
+		for event_name, callback in callbacks.items():
+			self.events.subscribe(event_name, callback)
+
 		self.games   = [] # list of games
 		self.players = {} # sessionid => Player() dict
 		self.i18n    = {} # lang => gettext dict
@@ -133,29 +165,6 @@ class Server:
 	def generate_session_id(self):
 		return uuid.uuid4().hex
 
-
-	def register_callback(self, type, callback, prepend=False):
-		if type in self.callbacks:
-			if prepend:
-				self.callbacks[type].insert(0, callback)
-			else:
-				self.callbacks[type].append(callback)
-		else:
-			raise TypeError("Unsupported type")
-
-
-	def call_callbacks(self, type, *args):
-		if type not in self.callbacks:
-			return
-		ret = True
-		for callback in self.callbacks[type]:
-			tmp = callback(*args)
-			if tmp is None:
-				tmp = True
-			ret &= tmp
-		return ret
-
-
 	def run(self):
 		logging.info("Starting up server on {0!s}:{1:d}".format(self.hostname, self.port))
 		try:
@@ -177,11 +186,11 @@ class Server:
 			if event.type == enet.EVENT_TYPE_NONE:
 				continue
 			elif event.type == enet.EVENT_TYPE_CONNECT:
-				self.call_callbacks("onconnect", event)
+				self.events.broadcast("onconnect", event)
 			elif event.type == enet.EVENT_TYPE_DISCONNECT:
-				self.call_callbacks("ondisconnect", event)
+				self.events.broadcast("ondisconnect", event)
 			elif event.type == enet.EVENT_TYPE_RECEIVE:
-				self.call_callbacks("onreceive", event)
+				self.events.broadcast("onreceive", event)
 			else:
 				logging.warning("Invalid packet ({0})".format(event.type))
 
@@ -259,7 +268,7 @@ class Server:
 		player = self.players[peer.data]
 		logging.debug("[DISCONNECT] {0!s} disconnected".format(player))
 		if player.game is not None:
-			self.call_callbacks("leavegame", player)
+			self.events.broadcast("leavegame", player)
 		del self.players[peer.data]
 
 
@@ -285,7 +294,7 @@ class Server:
 
 		# shortpath if game is running
 		if player.game is not None and player.game.state is Game.State.Running:
-			self.call_callbacks('gamedata', player, event.packet.data)
+			self.events.broadcast('gamedata', player, event.packet.data)
 			return
 
 		packet = None
@@ -317,11 +326,11 @@ class Server:
 			self.fatalerror(player, __("Invalid/Unknown session"))
 			return
 
-		if packet.__class__ not in self.callbacks:
+		if not self.events.is_message_type_known(packet.__class__):
 			logging.warning("[RECEIVE] Unhandled network packet from {0!s} - Ignoring!".
 				format(peer.address))
 			return
-		self.call_callbacks(packet.__class__, player, packet)
+		self.events.broadcast(packet.__class__, player, packet)
 
 
 	def onerror(self, player, packet):
@@ -447,14 +456,14 @@ class Server:
 
 		if player.protocol == 0:
 			if game.is_full():
-				self.call_callbacks("preparegame", game)
+				self.events.broadcast("preparegame", game)
 
 
 	def onleavegame(self, player, packet):
 		if player.game is None:
 			self.error(player, __("You are not inside a game"))
 			return
-		self.call_callbacks("leavegame", player)
+		self.events.broadcast("leavegame", player)
 		self.send(player.peer, packets.cmd_ok())
 
 
@@ -462,18 +471,18 @@ class Server:
 		game = player.game
 		# leaving the game if game has already started is a hard error
 		if not game.is_open():
-			self.call_callbacks('terminategame', game, player)
+			self.events.broadcast('terminategame', game, player)
 			return
 		logging.debug("[LEAVE] [{0!s}] {1!s} left {2!s}".format(game.uuid, player, game))
 		game.remove_player(player)
 		if game.is_empty():
-			self.call_callbacks('deletegame', game)
+			self.events.broadcast('deletegame', game)
 			return
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
 		# the creator leaving the game is a hard error too
 		if player.protocol >= 1 and player == game.creator:
-			self.call_callbacks('terminategame', game, player)
+			self.events.broadcast('terminategame', game, player)
 			return
 
 
@@ -491,7 +500,7 @@ class Server:
 						__("One player has terminated their game. "
 						"For technical reasons, this currently means the game cannot continue. "
 						"We are very sorry about that."))
-		self.call_callbacks('deletegame', game)
+		self.events.broadcast('deletegame', game)
 
 
 	def preparegame(self, game):
@@ -605,7 +614,7 @@ class Server:
 				count += 1
 		if count != game.playercnt:
 			return
-		self.call_callbacks('startgame', game)
+		self.events.broadcast('startgame', game)
 
 
 	def ontoggleready(self, player, packet):
@@ -625,7 +634,7 @@ class Server:
 
 		# start the game after the ACK
 		if game.is_ready():
-			self.call_callbacks("preparegame", game)
+			self.events.broadcast("preparegame", game)
 
 
 	def onkick(self, player, packet):
@@ -651,7 +660,7 @@ class Server:
 		logging.debug("[KICK] [{0!s}] {1!s} got kicked".format(game.uuid, kickplayer.name))
 		for _player in game.players:
 			self.send(_player.peer, packets.server.cmd_kickplayer(kickplayer))
-		self.call_callbacks("leavegame", kickplayer)
+		self.events.broadcast("leavegame", kickplayer)
 
 
 	#TODO fix
