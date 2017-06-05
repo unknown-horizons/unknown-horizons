@@ -499,7 +499,7 @@ class GameLobby(Window):
 
 		def _add_player_line(player):
 			name = player['name']
-			pname = Label(name="pname_%s" % name)
+			pname = Label(name="pname_{}".format(name))
 			pname.helptext = T("Click here to change your name and/or color")
 			pname.text = name
 			pname.min_size = pname.max_size = (130, 15)
@@ -507,7 +507,7 @@ class GameLobby(Window):
 			if name == NetworkInterface().get_client_name():
 				pname.capture(Callback(self._show_change_player_details_popup, game))
 
-			pcolor = Label(name="pcolor_%s" % name, text="   ")
+			pcolor = Label(name="pcolor_{}".format(name), text="   ")
 			pcolor.helptext = T("Click here to change your name and/or color")
 			pcolor.background_color = player['color']
 			pcolor.min_size = pcolor.max_size = (15, 15)
@@ -515,17 +515,17 @@ class GameLobby(Window):
 			if name == NetworkInterface().get_client_name():
 				pcolor.capture(Callback(self._show_change_player_details_popup, game))
 
-			pstatus = Label(name="pstatus_%s" % name)
+			pstatus = Label(name="pstatus_{}".format(name))
 			pstatus.text = "\t\t\t" + player['status']
 			pstatus.min_size = pstatus.max_size = (120, 15)
 
-			picon = HRule(name="picon_%s" % name)
+			picon = HRule(name="picon_{}".format(name))
 
 			hbox = HBox()
 			hbox.addChildren(pname, pcolor, pstatus)
 
 			if NetworkInterface().get_client_name() == game.creator and name != game.creator:
-				pkick = CancelButton(name="pkick_%s" % name)
+				pkick = CancelButton(name="pkick_{}".format(name))
 				pkick.helptext = T("Kick {player}").format(player=name)
 				pkick.capture(Callback(NetworkInterface().kick, player['sid']))
 				pkick.path = "images/buttons/delete_small"
@@ -581,7 +581,7 @@ class GameLobby(Window):
 	def _print_event(self, msg, wrap="*"):
 		line_max_length = 40
 		if wrap:
-			msg = "%s %s %s" % (wrap, msg, wrap)
+			msg = "{} {} {}".format(wrap, msg, wrap)
 
 		lines = textwrap.wrap(msg, line_max_length)
 

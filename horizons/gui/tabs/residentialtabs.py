@@ -75,7 +75,7 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.child_finder('happiness_label').image = image
 		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = "%s/%s" % (
+		self.widget.child_finder('inhabitants').text = "{}/{}".format(
 		                                               self.instance.inhabitants,
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = str(self.instance.last_tax_payed)

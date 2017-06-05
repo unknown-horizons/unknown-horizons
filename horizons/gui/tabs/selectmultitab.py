@@ -89,7 +89,7 @@ class SelectMultiTab(TabInterface):
 			self.row_number = 2
 			return
 		self.column_number += 1
-		self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
+		self.widget.findChild(name="hbox_{}".format(self.row_number)).addChild(entry.widget)
 		self.entries.append(entry)
 
 	def draw_selected_units_widget(self):
@@ -111,7 +111,7 @@ class SelectMultiTab(TabInterface):
 		for entry in self.entries:
 			entry.remove()
 		for i in range(0, self.max_row_entry_number):
-			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
+			self.widget.findChild(name="hbox_{}".format(i)).removeAllChildren()
 
 	def schedule_unit_widget_refresh(self):
 		if not self._scheduled_refresh:
