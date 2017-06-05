@@ -84,7 +84,7 @@ def port(value: str) -> int:
 	return port
 
 
-def main(args):
+def main(args=None):
 	"""
 	Main entry point of the script. Parses command line options and starts the server.
 	"""
@@ -137,4 +137,4 @@ def main(args):
 
 
 if __name__ == '__main__':
-	main(sys.argv[:1])
+	main()
