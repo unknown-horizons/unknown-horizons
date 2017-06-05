@@ -39,6 +39,28 @@ PROTOCOLS = [0, 1]
 logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 		level = logging.DEBUG)
 
+
+def print_statistic(players, games, output_file):
+	"""
+	Writes information about the current state of the server (players / games).
+	"""
+	lines = []
+
+	games_playing = len([game for game in games if game.state is Game.State.Running])
+	lines.append("Games.Total: {}".format(len(games)))
+	lines.append("Games.Playing: {}".format(games_playing))
+
+	active_players = [p for p in players if p.game is not None]
+	players_playing = len([p for p in active_players if p.game.state is Game.State.Running])
+	players_inlobby = len(active_players) - players_playing
+
+	lines.append("Players.Total: {}".format(len(players)))
+	lines.append("Players.Lobby: {}".format(players_inlobby))
+	lines.append("Players.Playing: {}".format(players_playing))
+
+	output_file.write('\n'.join(lines))
+
+
 class Server:
 	def __init__(self, hostname, port, statistic_file=None):
 		packets.SafeUnpickler.set_mode(client=False)
@@ -177,7 +199,13 @@ class Server:
 		while True:
 			if self.statistic['file'] is not None:
 				if self.statistic['timestamp'] <= 0:
-					self.print_statistic(self.statistic['file'])
+					try:
+						with open(self.statistic['file'], 'w') as f:
+							print_statistic(self.players.values(), self.games, f)
+					except IOError as e:
+						logging.error("[STATISTIC] Unable to open statistic file: {}".format(e))
+					else:
+						logging.info('wrote stats')
 					self.statistic['timestamp'] = self.statistic['interval']
 				else:
 					self.statistic['timestamp'] -= CONNECTION_TIMEOUT
@@ -683,37 +711,3 @@ class Server:
 		for _player in game.players:
 			if _player.sid == packet.psid:
 				self.send(_player.peer, packets.server.savegame_data(packet.data, player.sid, game.mapname))
-
-
-	def print_statistic(self, file):
-		lines = []
-		lines.append("Games.Total: {0:d}\n".format(len(self.games)))
-		games_playing = 0
-		for game in self.games:
-			if game.state is Game.State.Running:
-				games_playing += 1
-		lines.append("Games.Playing: {0:d}\n".format(games_playing))
-
-		lines.append("Players.Total: {0:d}\n".format(len(self.players)))
-		players_inlobby = 0
-		players_playing = 0
-		players_oldprotocol = 0
-		for player in self.players.values():
-			if player.game is None:
-				continue
-			if player.game.state is Game.State.Running:
-				players_playing += 1
-			else:
-				players_inlobby += 1
-			if player.protocol < PROTOCOLS[-1]:
-				players_oldprotocol += 1
-		lines.append("Players.Lobby: {0:d}\n".format(players_inlobby))
-		lines.append("Players.Playing: {0:d}\n".format(players_playing))
-		lines.append("Players.OldProtocol: {0:d}\n".format(players_oldprotocol))
-
-		try:
-			with open(file, "w") as fd:
-				fd.write('\n'.join(lines))
-		except IOError as e:
-			logging.error("[STATISTIC] Unable to open statistic file: {0}".format(e))
-		return
