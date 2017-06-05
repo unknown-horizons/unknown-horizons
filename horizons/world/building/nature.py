@@ -5,7 +5,6 @@ from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.producer import Producer
 
-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org

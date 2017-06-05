@@ -26,7 +26,6 @@ import pytest
 from horizons.network import enet
 from run_server import main
 
-
 pytestmark = pytest.mark.skipif(enet == None, reason='No enet bindings available')
 
 

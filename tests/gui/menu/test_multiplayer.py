@@ -29,7 +29,6 @@ import pytest
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
 
-
 pytestmark = pytest.mark.skipif('CI' in os.environ, reason='Tests hang on Travis CI')
 
 

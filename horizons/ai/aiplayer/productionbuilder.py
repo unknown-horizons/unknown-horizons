@@ -33,8 +33,8 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Rect, distances
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
-from horizons.world.buildability.potentialroadconnectivitycache import \
-	PotentialRoadConnectivityCache
+from horizons.world.buildability.potentialroadconnectivitycache import (
+	PotentialRoadConnectivityCache)
 from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
 from horizons.world.building.production import Mine
 from horizons.world.production.producer import Producer

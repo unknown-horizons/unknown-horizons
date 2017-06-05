@@ -47,7 +47,6 @@ from tests import RANDOM_SEED
 from tests.gui import cooperative
 from tests.gui.helper import GuiHelper
 
-
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 

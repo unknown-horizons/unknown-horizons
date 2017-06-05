@@ -20,6 +20,7 @@
 # ###################################################
 
 from itertools import product
+
 import pytest
 
 from horizons.command.building import Build, Tear
