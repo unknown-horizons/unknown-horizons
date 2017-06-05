@@ -12,3 +12,5 @@ pytest-mock==1.6.0
 pytest-warnings==0.3.0
 PyYAML==3.12
 typing==3.6.1
+
+future # temporary, see issue 2704
