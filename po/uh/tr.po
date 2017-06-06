@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-04-26 22:35+0000\n"
+"PO-Revision-Date: 2017-06-06 16:25+0000\n"
 "Last-Translator: monolifed <monolifed@gmail.com>\n"
-"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -142,7 +142,7 @@ msgstr "Halk"
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Oyun hızını arttır ({key})"
+msgstr "Oyun hızını artır ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
@@ -1048,7 +1048,7 @@ msgstr "Binayı veya haritayı saatin tersi yönünde döndür"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr "Oyun hızını arttır"
+msgstr "Oyun hızını artır"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
@@ -1766,7 +1766,7 @@ msgstr "'SHIFT' tuşunu basılı tutarak birden fazla bina kurabilirsiniz."
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr "Halkınızın refahını vergileri düşürerek arttırabilirsiniz."
+msgstr "Halkınızın refahını vergileri düşürerek artırabilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid ""
@@ -1778,7 +1778,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Depo kapasitesini arttırmak için ambar çadırları kurun."
+msgstr "Depo kapasitesini artırmak için ambar çadırları kurun."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Make sure every house is in range of a marketplace."
@@ -3116,7 +3116,7 @@ msgstr "Ambar Çadırı"
 #: horizons/i18n/objecttranslations.py:378
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr ""
-"Depo kapasitesini arttırır, yerleşim alanını genişletir ve toplayıcılar "
+"Depo kapasitesini artırır, yerleşim alanını genişletir ve toplayıcılar "
 "sağlar."
 
 #. name of buildings:tavern
