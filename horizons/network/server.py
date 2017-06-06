@@ -22,6 +22,7 @@
 import gettext
 import logging
 import uuid
+from typing import Dict, List
 
 from horizons import network
 from horizons.i18n import find_available_languages
@@ -39,6 +40,33 @@ PROTOCOLS = [0, 1]
 logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 		level = logging.DEBUG)
 
+
+EVENTS = [
+	'onconnect',
+	'ondisconnect',
+	'onreceive',
+	packets.cmd_error,
+	packets.cmd_fatalerror,
+	packets.client.cmd_sessionprops,
+	packets.client.cmd_creategame,
+	packets.client.cmd_listgames,
+	packets.client.cmd_joingame,
+	packets.client.cmd_leavegame,
+	packets.client.cmd_chatmsg,
+	packets.client.cmd_changename,
+	packets.client.cmd_changecolor,
+	packets.client.cmd_preparedgame,
+	packets.client.cmd_toggleready,
+	packets.client.cmd_kickplayer,
+	#TODO packets.client.cmd_fetch_game,
+	#TODO packets.client.savegame_data,
+	'preparegame',
+	'startgame',
+	'leavegame',
+	'deletegame',
+	'terminategame',
+	'gamedata'
+]
 
 
 def T(text):
@@ -88,32 +116,7 @@ class Server:
 			# individual packet classes
 			'maxpacketsize' : 2 * 1024 * 1024,
 		}
-		self.events = SimpleMessageBus([
-			'onconnect',
-			'ondisconnect',
-			'onreceive',
-			packets.cmd_error,
-			packets.cmd_fatalerror,
-			packets.client.cmd_sessionprops,
-			packets.client.cmd_creategame,
-			packets.client.cmd_listgames,
-			packets.client.cmd_joingame,
-			packets.client.cmd_leavegame,
-			packets.client.cmd_chatmsg,
-			packets.client.cmd_changename,
-			packets.client.cmd_changecolor,
-			packets.client.cmd_preparedgame,
-			packets.client.cmd_toggleready,
-			packets.client.cmd_kickplayer,
-			#TODO packets.client.cmd_fetch_game,
-			#TODO packets.client.savegame_data,
-			'preparegame',
-			'startgame',
-			'leavegame',
-			'deletegame',
-			'terminategame',
-			'gamedata'
-		])
+		self.events = SimpleMessageBus(EVENTS)
 
 		callbacks = {
 			'onconnect': self.onconnect,
@@ -145,9 +148,9 @@ class Server:
 		for event_name, callback in callbacks.items():
 			self.events.subscribe(event_name, callback)
 
-		self.games   = [] # list of games
-		self.players = {} # sessionid => Player() dict
-		self.i18n    = {} # lang => gettext dict
+		self.games   = [] # type: List[Game]
+		self.players = {} # type: Dict[str, Player]
+		self.i18n    = {} # type: Dict[str, gettext.GNUTranslations]
 		self.setup_i18n()
 
 	def setup_i18n(self):
@@ -167,7 +170,29 @@ class Server:
 	def generate_session_id():
 		return uuid.uuid4().hex
 
+	def collect_statistics(self):
+		"""
+		Regularly collect statistics about the server (only when enabled explicitly).
+		"""
+		if self.statistic['file'] is None:
+			return
+
+		if self.statistic['timestamp'] > 0:
+			self.statistic['timestamp'] -= CONNECTION_TIMEOUT
+			return
+
+		try:
+			with open(self.statistic['file'], 'w') as f:
+				print_statistic(self.players.values(), self.games, f)
+		except IOError as e:
+			logging.error("[STATISTIC] Unable to open statistic file: {}".format(e))
+
+		self.statistic['timestamp'] = self.statistic['interval']
+
 	def run(self):
+		"""
+		Main loop of the server
+		"""
 		logging.info("Starting up server on {0!s}:{1:d}".format(self.hostname, self.port))
 		try:
 			self.host = enet.Host(enet.Address(self.hostname, self.port), MAX_PEERS, 0, 0, 0)
@@ -177,18 +202,7 @@ class Server:
 
 		logging.debug("Entering the main loop...")
 		while True:
-			if self.statistic['file'] is not None:
-				if self.statistic['timestamp'] <= 0:
-					try:
-						with open(self.statistic['file'], 'w') as f:
-							print_statistic(self.players.values(), self.games, f)
-					except IOError as e:
-						logging.error("[STATISTIC] Unable to open statistic file: {}".format(e))
-					else:
-						logging.info('wrote stats')
-					self.statistic['timestamp'] = self.statistic['interval']
-				else:
-					self.statistic['timestamp'] -= CONNECTION_TIMEOUT
+			self.collect_statistics()
 
 			event = self.host.service(CONNECTION_TIMEOUT)
 			if event.type == enet.EVENT_TYPE_NONE:
@@ -202,21 +216,25 @@ class Server:
 			else:
 				logging.warning("Invalid packet ({0})".format(event.type))
 
-
-	def send(self, peer, packet, channelid=0):
+	def send(self, peer: enet.Peer, packet: packets.packet):
+		"""
+		Sends a packet to a client.
+		"""
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
 
-		self.sendraw(peer, packet.serialize(), channelid)
+		self.send_raw(peer, packet.serialize())
 
-	def sendraw(self, peer, data, channelid=0):
+	def send_raw(self, peer: enet.Peer, data: bytes):
+		"""
+		Sends raw data to a client.
+		"""
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
 
 		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
-		peer.send(channelid, packet)
+		peer.send(0, packet)
 		self.host.flush()
-
 
 	def disconnect(self, peer, later=True):
 		logging.debug("[DISCONNECT] Disconnecting client {0!s}".format(peer.address))
@@ -605,7 +623,7 @@ class Server:
 		for _player in game.players:
 			if _player is player:
 				continue
-			self.sendraw(_player.peer, data)
+			self.send_raw(_player.peer, data)
 
 
 	# this event happens after a player is done with loading
