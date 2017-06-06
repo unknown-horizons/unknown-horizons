@@ -97,7 +97,10 @@ class BuildingClass(IngameType):
 			# hacks to solve issue #1379
 			if rotation == 45:
 				params['left'] = 32
-				if cls.size[0] == 3:
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
 					params["botm"] = 66
 				# hack for charcoal_burning
 				elif cls.size[0] == 2 and cls.size[1] == 3:
@@ -119,7 +122,10 @@ class BuildingClass(IngameType):
 					params['botm'] = 30
 			elif rotation == 225:
 				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
-				if cls.size[0] == 3:
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
 					params["botm"] = 60
 				# hack for brickyard
 				elif cls.size[0] == 2 and cls.size[1] == 4:
@@ -136,7 +142,11 @@ class BuildingClass(IngameType):
 					params['botm'] = 16 * cls.size[1]
 			elif rotation == 315:
 				params['left'] = 32 * cls.size[0]
-				if cls.size[0] == 3:
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 125
+					params["left"] = 135
+				elif cls.size[0] == 3:
 					params["botm"] = 96
 				# hack for brickyard
 				elif cls.size[0] == 2 and cls.size[1] == 4:
