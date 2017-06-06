@@ -22,8 +22,6 @@
 from io import StringIO
 from unittest import mock
 
-import pytest
-
 from horizons.network.common import Game
 from horizons.network.server import print_statistic
 
