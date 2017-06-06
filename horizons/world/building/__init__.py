@@ -96,56 +96,71 @@ class BuildingClass(IngameType):
 			params['rot'] = rotation
 			# hacks to solve issue #1379
 			if rotation == 45:
+				# default values
+				params['botm'] = 16 * cls.size[0]
 				params['left'] = 32
-				if cls.size[0] == 3:
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
 					params["botm"] = 66
 				# hack for charcoal_burning
 				elif cls.size[0] == 2 and cls.size[1] == 3:
-					params["left"] = 0
-					params["botm"] = 42
+					params["botm"] = 55
+					params["left"] = 25
 				elif cls.size[0] == 2:
 					params["botm"] = 40
 				elif cls.size[0] == 1:
 					params["botm"] = 29
-				else:
-					params['botm'] = 16 * cls.size[0]
 			elif rotation == 135:
+				# default values
+				params['botm'] = 30
 				params['left'] = 32 * cls.size[1]
 				# hack for charcoal_burning
 				if cls.size[0] == 2 and cls.size[1] == 3:
-					params["botm"] = 10
-				else:
-					params['botm'] = 30
+					params["botm"] = 35
+					params["left"] = 65
 			elif rotation == 225:
+				# default values
+				params['botm'] = 16 * cls.size[1]
 				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
-				if cls.size[0] == 3:
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
 					params["botm"] = 60
 				# hack for brickyard
 				elif cls.size[0] == 2 and cls.size[1] == 4:
 					params["botm"] = 73
 				# hack for charcoal_burning
 				elif cls.size[0] == 2 and cls.size[1] == 3:
-					params["botm"] = 58
-					params["left"] = 160
+					params["botm"] = 42
+					params["left"] = 130
 				elif cls.size[0] == 2:
 					params["botm"] = 40
 				elif cls.size[0] == 1:
 					params["botm"] = 29
-				else:
-					params['botm'] = 16 * cls.size[1]
 			elif rotation == 315:
+				# default values
 				params['left'] = 32 * cls.size[0]
-				if cls.size[0] == 3:
+				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 125
+					params["left"] = 135
+				elif cls.size[0] == 3:
 					params["botm"] = 96
-				# hack for brickyard and charcoal_burning
-				elif cls.size[0] == 2 and cls.size[1] in (3, 4):
+				# hack for brickyard
+				elif cls.size[0] == 2 and cls.size[1] == 4:
 					params["botm"] = 92
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 75
+					params["left"] = 100
 				elif cls.size[0] == 2:
 					params["botm"] = 56
 				elif cls.size[0] == 1:
 					params["botm"] = 30
-				else:
-					params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
