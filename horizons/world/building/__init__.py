@@ -101,8 +101,8 @@ class BuildingClass(IngameType):
 					params["botm"] = 66
 				# hack for charcoal_burning
 				elif cls.size[0] == 2 and cls.size[1] == 3:
-					params["left"] = 0
-					params["botm"] = 42
+					params["left"] = 25
+					params["botm"] = 55
 				elif cls.size[0] == 2:
 					params["botm"] = 40
 				elif cls.size[0] == 1:
@@ -113,7 +113,8 @@ class BuildingClass(IngameType):
 				params['left'] = 32 * cls.size[1]
 				# hack for charcoal_burning
 				if cls.size[0] == 2 and cls.size[1] == 3:
-					params["botm"] = 10
+					params["botm"] = 35
+					params["left"] = 65
 				else:
 					params['botm'] = 30
 			elif rotation == 225:
@@ -125,8 +126,8 @@ class BuildingClass(IngameType):
 					params["botm"] = 73
 				# hack for charcoal_burning
 				elif cls.size[0] == 2 and cls.size[1] == 3:
-					params["botm"] = 58
-					params["left"] = 160
+					params["botm"] = 42
+					params["left"] = 130
 				elif cls.size[0] == 2:
 					params["botm"] = 40
 				elif cls.size[0] == 1:
@@ -137,9 +138,13 @@ class BuildingClass(IngameType):
 				params['left'] = 32 * cls.size[0]
 				if cls.size[0] == 3:
 					params["botm"] = 96
-				# hack for brickyard and charcoal_burning
-				elif cls.size[0] == 2 and cls.size[1] in (3, 4):
+				# hack for brickyard
+				elif cls.size[0] == 2 and cls.size[1] == 4:
 					params["botm"] = 92
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 75
+					params["left"] = 100
 				elif cls.size[0] == 2:
 					params["botm"] = 56
 				elif cls.size[0] == 1:
