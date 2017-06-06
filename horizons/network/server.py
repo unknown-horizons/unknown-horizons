@@ -148,19 +148,7 @@ class Server:
 		self.games   = [] # list of games
 		self.players = {} # sessionid => Player() dict
 		self.i18n    = {} # lang => gettext dict
-		self.check_urandom()
 		self.setup_i18n()
-
-
-	def check_urandom(self):
-		try:
-			import os
-			os.urandom(1)
-		except NotImplementedError:
-			import random
-			import time
-			random.seed(uuid.getnode() + int(time.time() * 1e3))
-			logging.warning("[INIT] Your system doesn't support /dev/urandom")
 
 	def setup_i18n(self):
 		"""
@@ -175,8 +163,8 @@ class Server:
 			except IOError:
 				pass
 
-	# uuid4() uses /dev/urandom when possible
-	def generate_session_id(self):
+	@staticmethod
+	def generate_session_id():
 		return uuid.uuid4().hex
 
 	def run(self):
