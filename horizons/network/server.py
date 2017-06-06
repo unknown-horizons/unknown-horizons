@@ -216,7 +216,7 @@ class Server:
 			else:
 				logging.warning("Invalid packet ({0})".format(event.type))
 
-	def send(self, peer: enet.Peer, packet: packets.packet):
+	def send(self, peer: 'enet.Peer', packet: packets.packet):
 		"""
 		Sends a packet to a client.
 		"""
@@ -225,7 +225,7 @@ class Server:
 
 		self.send_raw(peer, packet.serialize())
 
-	def send_raw(self, peer: enet.Peer, data: bytes):
+	def send_raw(self, peer: 'enet.Peer', data: bytes):
 		"""
 		Sends raw data to a client.
 		"""
