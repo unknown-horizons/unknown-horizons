@@ -482,8 +482,8 @@ class MovingWeaponHolder(WeaponHolder):
 			assert callable(in_range_callback)
 
 		try:
-			self.move(destination, callback = self.try_attack_target,
-				blocked_callback = self.try_attack_target)
+			self.move(destination, callback=self.try_attack_target,
+				blocked_callback=self.try_attack_target)
 			if in_range_callback:
 				self.add_conditional_callback(self.attack_in_range, in_range_callback)
 

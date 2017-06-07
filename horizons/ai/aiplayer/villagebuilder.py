@@ -511,7 +511,7 @@ class VillageBuilder(AreaBuilder):
 			for position in planned_tents:
 				if position not in blocked:
 					positions.append((distance_rect_tuple(position, centroid), position))
-			positions.sort(reverse = True)
+			positions.sort(reverse=True)
 			return positions
 
 		for _ in range(max_buildings):
@@ -596,7 +596,7 @@ class VillageBuilder(AreaBuilder):
 					distance = distance_rect_rect(producer_position, position)
 					if distance <= range:
 						options.append((distance, producer_position.origin.to_tuple(), position.origin.to_tuple()))
-			options.sort(reverse = True)
+			options.sort(reverse=True)
 
 			assigned_residence_coords = set()
 			for _, producer_coords, residence_coords in options:

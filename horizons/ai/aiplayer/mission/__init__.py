@@ -115,7 +115,7 @@ class ShipMission(Mission):
 	def _move_to_warehouse_area(self, position, success_callback, blocked_callback, failure_msg):
 		area = Circle(position.center, BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
 		try:
-			self.ship.move(area, success_callback, blocked_callback = blocked_callback)
+			self.ship.move(area, success_callback, blocked_callback=blocked_callback)
 		except MoveNotPossible:
 			self.report_failure(failure_msg)
 

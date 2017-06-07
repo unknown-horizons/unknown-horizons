@@ -131,7 +131,7 @@ class Player(ComponentHolder, WorldObject):
 		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
 			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
 			" FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
+		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel=settlerlevel)
 
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player."""
@@ -168,11 +168,11 @@ class Player(ComponentHolder, WorldObject):
 		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
 		trade_posts = [ s.get_component(TradePostComponent) for s in self.settlements ]
 		return Data(
-		  running_costs = get_sum(self.settlements, 'cumulative_running_costs'),
-		  taxes = get_sum(self.settlements, 'cumulative_taxes'),
-		  sell_income = get_sum(trade_posts, 'sell_income'),
-		  buy_expenses = get_sum(trade_posts, 'buy_expenses'),
-		  balance = get_sum(self.settlements, 'balance'),
+		  running_costs=get_sum(self.settlements, 'cumulative_running_costs'),
+		  taxes=get_sum(self.settlements, 'cumulative_taxes'),
+		  sell_income=get_sum(trade_posts, 'sell_income'),
+		  buy_expenses=get_sum(trade_posts, 'buy_expenses'),
+		  balance=get_sum(self.settlements, 'balance'),
 		)
 
 

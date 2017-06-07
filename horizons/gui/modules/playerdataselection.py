@@ -44,11 +44,11 @@ class PlayerDataSelection:
 
 		# need the id to save it as int in settings file.
 		for color in (Color.get_defaults() if color_palette is None else color_palette):
-			label = Label(name = '{color}'.format(color=color.name),
-			              text = "    ",
-			              max_size = (20, 20),
-			              min_size = (20, 20),
-			              background_color = color)
+			label = Label(name='{color}'.format(color=color.name),
+			              text="    ",
+			              max_size=(20, 20),
+			              min_size=(20, 20),
+			              background_color=color)
 			events['{label}/mouseClicked'.format(label=color.name)] = \
 			                             Callback(self.set_color, color.id)
 			colorlabels.append(label)

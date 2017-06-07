@@ -233,7 +233,7 @@ class TradeRoute(ChangeListener):
 
 		try:
 			self.ship.move(Circle(warehouse.position.center, self.ship.radius), self.on_route_warehouse_reached,
-			               blocked_callback = self.on_ship_blocked)
+			               blocked_callback=self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)

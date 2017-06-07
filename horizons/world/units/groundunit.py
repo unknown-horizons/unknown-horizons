@@ -107,5 +107,5 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		else:
 			action = 'ranged'
 
-		self.act('attack_{}'.format(action), facing_location, repeating = False)
+		self.act('attack_{}'.format(action), facing_location, repeating=False)
 		self._action = 'idle'

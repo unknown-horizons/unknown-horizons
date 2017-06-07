@@ -206,7 +206,7 @@ class LimitedMoveStance(StanceComponent):
 		if not enemies:
 			return None
 
-		return min(enemies, key = lambda e: self.instance.position.distance(e.position))
+		return min(enemies, key=lambda e: self.instance.position.distance(e.position))
 
 class AggressiveStance(LimitedMoveStance):
 	"""

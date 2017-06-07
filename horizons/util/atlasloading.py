@@ -61,7 +61,7 @@ def generate_atlases():
 		res_logo_image = ImageTk.PhotoImage(res_logo)
 		logo_label = tkinter.Label(window, image=res_logo_image)
 		logo_label.pack(side="left")
-		label = tkinter.Label(window, padx = 10, text = "Generating atlases!")
+		label = tkinter.Label(window, padx=10, text="Generating atlases!")
 		label.pack(side="right")
 
 		# wait a second to give the process time to check if a generation is necessary at all

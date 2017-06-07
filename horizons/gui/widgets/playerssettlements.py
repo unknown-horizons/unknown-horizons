@@ -41,7 +41,7 @@ class PlayersSettlements(StatsWidget):
 
 		sequence_number = 0
 		events = {}
-		for settlement in sorted(self.session.world.settlements, key = lambda settlement: (settlement.get_component(NamedComponent).name, settlement.worldid)):
+		for settlement in sorted(self.session.world.settlements, key=lambda settlement: (settlement.get_component(NamedComponent).name, settlement.worldid)):
 			if settlement.owner is self.session.world.player:
 				sequence_number += 1
 				name_label, rename_icon = self._add_line_to_gui(settlement, sequence_number)

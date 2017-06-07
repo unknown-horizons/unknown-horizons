@@ -331,8 +331,8 @@ class Collector(Unit):
 		if job_location is None:
 			job_location = self.job.object.loading_area
 		self.move(job_location, self.begin_working,
-		          destination_in_building = self.destination_always_in_building,
-		          blocked_callback = self.handle_path_to_job_blocked, path=self.job.path)
+		          destination_in_building=self.destination_always_in_building,
+		          blocked_callback=self.handle_path_to_job_blocked, path=self.job.path)
 		self.state = self.states.moving_to_target
 
 	def resume_movement(self):

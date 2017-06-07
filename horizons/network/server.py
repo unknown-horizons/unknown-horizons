@@ -37,8 +37,8 @@ CONNECTION_TIMEOUT = 500
 # 1 ... >2012.1
 PROTOCOLS = [0, 1]
 
-logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
-		level = logging.DEBUG)
+logging.basicConfig(format='[%(asctime)-15s] [%(levelname)s] %(message)s',
+		level=logging.DEBUG)
 
 
 EVENTS = [

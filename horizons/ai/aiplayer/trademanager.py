@@ -293,7 +293,7 @@ class SingleResourceTradeManager(WorldObject):
 				resource_manager = settlement_manager.resource_manager
 				amount = resource_manager.get_deep_quota(self.identifier, self.resource_id)
 				options.append((amount, resource_manager.worldid, resource_manager, settlement_manager))
-		options.sort(reverse = True)
+		options.sort(reverse=True)
 
 		self.partners = defaultdict(float)
 		needed_amount = self.total - self.available

@@ -378,7 +378,7 @@ class Producer(Component):
 				self.toggle_active(production)
 		else:
 			active = self.is_active(production)
-			self.set_active(production, active = not active)
+			self.set_active(production, active=not active)
 
 	def _on_production_change(self):
 		"""Makes the instance act according to the producers
