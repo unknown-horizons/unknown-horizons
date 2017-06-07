@@ -19,8 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import os
+import tempfile
 from unittest import mock
 
+import yaml
+
+from horizons.savegamemanager import SavegameManager
 from tests.gui import gui_test
 
 
@@ -98,3 +103,37 @@ def test_start_map(gui):
 	assert not options.trader_enabled
 	assert options.disasters_enabled
 	assert options.ai_players == 1
+
+
+@gui_test()
+def test_scenario_selection_extra_information(gui):
+	"""Selecting a scenario shows additional information."""
+
+	with tempfile.TemporaryDirectory() as tmpdir:
+		with mock.patch.object(SavegameManager, 'scenarios_dir', new_callable=mock.PropertyMock) as m:
+			m.return_value = tmpdir
+
+			# Create a small temporary scenario
+			with open(os.path.join(tmpdir, 'test_en.yaml'), 'w') as f:
+				data = {
+					'events': [],
+					'metadata': {
+						'author': 'Tester',
+						'description': 'A test',
+						'difficulty': 'Impossible',
+						'translation_status': 'Something something status'
+					}
+				}
+				yaml.dump(data, f)
+
+			gui.trigger('menu/single_button')
+			gui.trigger('singleplayermenu/scenario')
+
+			# trigger update of scenario infos
+			gui.find('maplist').select('test')
+			gui.find('uni_langlist').select('English')
+
+			assert gui.find('uni_map_author').text == 'Author: Tester'
+			assert gui.find('uni_map_difficulty').text == 'Difficulty: Impossible'
+			assert gui.find('uni_map_desc').text == 'Description: A test'
+			assert gui.find('translation_status').text == 'Something something status'
