@@ -36,6 +36,7 @@ import locale
 import logging
 import os
 import platform
+from contextlib import contextmanager
 from typing import Dict, Optional, Text
 
 import horizons.globals
@@ -64,6 +65,18 @@ def ngettext(message1: Text, message2: Text, count: int) -> Text:
 
 
 LANGCACHE = {} # type: Dict[str, str]
+
+
+@contextmanager
+def disable_translations():
+	"""
+	Temporarily disables translations. Affects gettext and lazy gettext objects.
+	"""
+	global _trans
+	original_translation = _trans
+	_trans = None
+	yield
+	_trans = original_translation
 
 
 def reset_language():
