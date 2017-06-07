@@ -21,6 +21,7 @@
 
 import uuid
 from gettext import NullTranslations
+from typing import Optional
 
 from horizons.network import enet, packets
 
@@ -206,6 +207,11 @@ class Game:
 		self.playercnt -= 1
 		player.game = None
 		return player
+
+	def find_player_by_sid(self, sid: str) -> Optional[Player]:
+		for player in self.players:
+			if player.sid == packet.kicksid:
+				return player
 
 	def is_full(self):
 		return (self.playercnt == self.maxplayers)
