@@ -323,7 +323,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		to start production for example."""
 		pass
 
-	def __unicode__(self): # debug
+	def __str__(self):
 		return '{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
