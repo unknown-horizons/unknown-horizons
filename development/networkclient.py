@@ -33,7 +33,6 @@ import logging.config
 import logging.handlers
 
 sys.path.append(os.getcwd())
-from horizons.network.client import Client, ClientMode
 import horizons.network
 
 #-------------------------------------------------------------------------------
