@@ -31,7 +31,8 @@ from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.i18n import (
-	change_language, find_available_languages, gettext as T, gettext_lazy as LazyT)
+	change_language, find_available_languages, get_language_translation_stats, gettext as T,
+	gettext_lazy as LazyT)
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
@@ -105,7 +106,8 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH, 'AutosaveInterval', 'autosaveinterval', on_change=self._on_slider_changed),
 			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount', on_change=self._on_slider_changed),
 			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount', on_change=self._on_slider_changed),
-			Setting(UH, 'Language', 'uni_language', language_names, callback=self._apply_Language),
+			Setting(UH, 'Language', 'uni_language', language_names,
+				callback=self._apply_Language, on_change=self._on_Language_changed),
 
 			Setting(UH, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
@@ -287,6 +289,19 @@ class SettingsDialog(PickBeltWidget, Window):
 	def _apply_Language(self, old, new):
 		language = LANGUAGENAMES.get_by_value(new)
 		change_language(language)
+
+	def _on_Language_changed(self, widget):
+		value = widget.items[widget.getData()]
+		language_code = LANGUAGENAMES.get_by_value(value)
+
+		status_label = self.widget.findChild(name='language_translation_status')
+		if language_code == 'en':
+			status_label.text = ''
+		elif not language_code:
+			status_label.text = ''
+		else:
+			percentage_complete = get_language_translation_stats(language_code)
+			status_label.text = T('Translation {percentage}% completed').format(percentage=percentage_complete)
 
 	def _apply_DebugLog(self, old, new):
 		horizons.main.set_debug_log(new)
