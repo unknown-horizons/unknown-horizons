@@ -53,7 +53,7 @@ from horizons.constants import PATHS
 # sqlalchemy doesn't support importing sql files,
 # therefore we work around this by using sqlite3
 
-filename = tempfile.mkstemp(text = True)[1]
+filename = tempfile.mkstemp(text=True)[1]
 conn = sqlite3.connect(filename)
 
 for db_file in PATHS.DB_FILES:
