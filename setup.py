@@ -23,6 +23,7 @@
 
 import distutils.cmd
 import glob
+import json
 import os
 import platform
 from distutils.command.build import build
@@ -31,6 +32,7 @@ from distutils.spawn import find_executable
 from shutil import copytree, rmtree
 
 from horizons.constants import VERSION
+from horizons.ext import polib
 
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
@@ -109,6 +111,7 @@ class _build_i18n(distutils.cmd.Command):
 		if "LINGUAS" in os.environ:
 			selected_languages = os.environ["LINGUAS"].split()
 
+		translation_stats = {}
 		mo_files = []
 		for po_file in po_files:
 			lang = os.path.basename(po_file[:-3])
@@ -125,8 +128,19 @@ class _build_i18n(distutils.cmd.Command):
 			if po_mtime > mo_mtime:
 				self.spawn(cmd)
 
+			percent_translated = polib.pofile(po_file).percent_translated()
+			translation_stats[lang] = percent_translated
+
 			targetpath = os.path.join("share/locale", lang, "LC_MESSAGES")
 			mo_files.append((targetpath, [mo_file]))
+
+		# Write translation stats to file and have it included in package
+		stats_filename = os.path.join('content', 'lang', 'stats.json')
+		with open(stats_filename, 'w') as f:
+			json.dump(translation_stats, f)
+
+		self.distribution.data_files.append((os.path.join('share', 'locale'), [stats_filename]))
+
 		return mo_files
 
 	def run(self):
