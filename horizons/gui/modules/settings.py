@@ -86,11 +86,11 @@ class SettingsDialog(PickBeltWidget, Window):
 			# Graphics/Sound/Input
 			Setting(FIFE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
 			Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
-			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
+			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._apply_FrameLimit),
 
-			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
-			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
-			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
+			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._apply_VolumeMusic),
+			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._apply_VolumeEffects),
+			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._apply_PlaySounds),
 			Setting(UH, 'EdgeScrolling', 'edgescrolling'),
 			Setting(UH, 'CursorCenteredZoom', 'cursor_centered_zoom'),
 			Setting(UH, 'MiddleMousePan', 'middle_mouse_pan'),
@@ -100,16 +100,16 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH, 'AutosaveInterval', 'autosaveinterval'),
 			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount'),
 			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount'),
-			Setting(UH, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
+			Setting(UH, 'Language', 'uni_language', language_names, callback=self._apply_Language),
 
 			Setting(UH, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
 			Setting(UH, 'AutoUnload', 'auto_unload'),
-			Setting(UH, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
+			Setting(UH, 'DebugLog', 'debug_log', callback=self._apply_DebugLog),
 			Setting(UH, 'ShowResourceIcons', 'show_resource_icons'),
 			Setting(UH, 'ScrollSpeed', 'scrollspeed'),
 			Setting(UH, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
-			Setting(UH, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
+			Setting(UH, 'NetworkPort', 'network_port', callback=self._apply_NetworkPort),
 		]
 
 		self._fill_widgets()
@@ -234,23 +234,23 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	# callbacks for changes of settings
 
-	def _on_PlaySounds_changed(self, old, new):
+	def _apply_PlaySounds(self, old, new):
 		horizons.globals.fife.sound.setup_sound()
 
-	def _on_VolumeMusic_changed(self, old, new):
+	def _apply_VolumeMusic(self, old, new):
 		horizons.globals.fife.sound.set_volume_bgmusic(new)
 
-	def _on_VolumeEffects_changed(self, old, new):
+	def _apply_VolumeEffects(self, old, new):
 		horizons.globals.fife.sound.set_volume_effects(new)
 
-	def _on_FrameLimit_changed(self, old, new):
+	def _apply_FrameLimit(self, old, new):
 		# handling value 0 for framelimit to disable limiter
 		if new == 0:
 			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', False)
 		else:
 			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', True)
 
-	def _on_NetworkPort_changed(self, old, new):
+	def _apply_NetworkPort(self, old, new):
 		"""Sets a new value for client network port"""
 		# port is saved as string due to pychan limitations
 		try:
@@ -280,11 +280,11 @@ class SettingsDialog(PickBeltWidget, Window):
 				details = str(e)
 				self._windows.open_error_popup(headline, descr, advice, details)
 
-	def _on_Language_changed(self, old, new):
+	def _apply_Language(self, old, new):
 		language = LANGUAGENAMES.get_by_value(new)
 		change_language(language)
 
-	def _on_DebugLog_changed(self, old, new):
+	def _apply_DebugLog(self, old, new):
 		horizons.main.set_debug_log(new)
 
 def get_screen_resolutions(selected_default):
