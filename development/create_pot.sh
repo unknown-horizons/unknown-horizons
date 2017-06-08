@@ -51,8 +51,7 @@ import re; FORMAT = re.compile(r'{.*}')
 try:
   import polib
 except ImportError:
-  print('The polib package is needed to run the create_pot.sh.')
-  sys.exit(1)
+  from horizons.ext import polib
 po = polib.pofile('$1', wrapwidth=80)
 for entry in [e for e in po if not e.obsolete]:
   if FORMAT.search(entry.msgid) and 'python-brace-format' not in entry.flags:
