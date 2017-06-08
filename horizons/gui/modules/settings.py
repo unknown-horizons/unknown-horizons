@@ -38,13 +38,15 @@ from horizons.util.python.callback import Callback
 
 
 class Setting:
-	def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
+	def __init__(self, module, name, widget_name, initial_data=None, restart=False,
+			callback=None, on_change=None):
 		self.module = module
 		self.name = name
 		self.widget_name = widget_name
 		self.initial_data = initial_data
 		self.restart = restart
 		self.callback = callback
+		self.on_change = on_change
 
 
 class SettingsDialog(PickBeltWidget, Window):
@@ -88,18 +90,21 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
 			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._apply_FrameLimit),
 
-			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._apply_VolumeMusic),
-			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._apply_VolumeEffects),
+			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._apply_VolumeMusic,
+				on_change=self._on_slider_changed),
+			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._apply_VolumeEffects,
+				on_change=self._on_slider_changed),
 			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._apply_PlaySounds),
 			Setting(UH, 'EdgeScrolling', 'edgescrolling'),
 			Setting(UH, 'CursorCenteredZoom', 'cursor_centered_zoom'),
 			Setting(UH, 'MiddleMousePan', 'middle_mouse_pan'),
-			Setting(FIFE, 'MouseSensitivity', 'mousesensitivity', restart=True),
+			Setting(FIFE, 'MouseSensitivity', 'mousesensitivity', restart=True,
+				on_change=self._on_slider_changed),
 
 			# Game
-			Setting(UH, 'AutosaveInterval', 'autosaveinterval'),
-			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount'),
-			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount'),
+			Setting(UH, 'AutosaveInterval', 'autosaveinterval', on_change=self._on_slider_changed),
+			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount', on_change=self._on_slider_changed),
+			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount', on_change=self._on_slider_changed),
 			Setting(UH, 'Language', 'uni_language', language_names, callback=self._apply_Language),
 
 			Setting(UH, 'MinimapRotation', 'minimaprotation'),
@@ -107,7 +112,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH, 'AutoUnload', 'auto_unload'),
 			Setting(UH, 'DebugLog', 'debug_log', callback=self._apply_DebugLog),
 			Setting(UH, 'ShowResourceIcons', 'show_resource_icons'),
-			Setting(UH, 'ScrollSpeed', 'scrollspeed'),
+			Setting(UH, 'ScrollSpeed', 'scrollspeed', on_change=self._on_slider_changed),
 			Setting(UH, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
 			Setting(UH, 'NetworkPort', 'network_port', callback=self._apply_NetworkPort),
 		]
@@ -207,13 +212,12 @@ class SettingsDialog(PickBeltWidget, Window):
 
 			widget.setData(value)
 
-			# For sliders, there also is a label showing the current value
-			if isinstance(widget, horizons.globals.fife.pychan.widgets.Slider):
-				cb = Callback(self.slider_change, widget)
+			if entry.on_change:
+				cb = Callback(entry.on_change, widget)
 				cb()
 				widget.capture(cb)
 
-	def slider_change(self, widget):
+	def _on_slider_changed(self, widget):
 		"""Callback for updating value label of a slider after dragging it.
 
 		As the numeric values under the hood often do not represent mental
