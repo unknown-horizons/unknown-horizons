@@ -32,6 +32,7 @@ We will need to make gettext recognize namespaces some time, but hardcoded
 
 import gettext as gettext_module
 import glob
+import json
 import locale
 import logging
 import os
@@ -162,3 +163,18 @@ def change_language(language=None):
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
 	LanguageChanged.broadcast(None)
+
+
+def get_language_translation_stats(language_code: str) -> int:
+	"""
+	Return percentage of translated strings for given language.
+	"""
+	if language_code not in LANGCACHE:
+		raise Exception('Unknown language "{}"'.format(language_code))
+
+	try:
+		with open(os.path.join('content', 'lang', 'stats.json')) as f:
+			data = json.load(f)
+			return data[language_code]
+	except FileNotFoundError:
+		return

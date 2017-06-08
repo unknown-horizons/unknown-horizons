@@ -147,6 +147,9 @@
 				<ScrollArea min_size="165,206">
 					<ListBox name="uni_language" is_focusable="0" />
 				</ScrollArea>
+
+				<Spacer fixed_size="0,5" />
+				<Label text="translation" name="language_translation_status" min_size="165, 20" />
 			</VBox>
 		</VBox>
 
