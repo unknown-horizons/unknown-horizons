@@ -1,5 +1,6 @@
 coverage==4.4.1
 coveralls==1.1
+crayons==0.1.2
 greenlet==0.4.12
 isort==4.2.13
 mypy==0.511
