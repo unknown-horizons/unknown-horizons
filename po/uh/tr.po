@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-06-09 21:01+0000\n"
+"PO-Revision-Date: 2017-06-09 21:25+0000\n"
 "Last-Translator: monolifed <monolifed@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -39,8 +39,8 @@ msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Lütfen bu dosyayı bize IRC yoluyla ya da forumumuz üzerinden gönderiniz. "
-"Detaylı bilgi için bakınız: http://unknown-horizons.org ."
+"Lütfen bu dosyayı bize IRC yoluyla ya da forumumuz üzerinden gönderin. "
+"Detaylı bilgi için bakın: http://unknown-horizons.org ."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -174,19 +174,19 @@ msgstr "Oyun menüsü ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:6
 msgid "Change name"
-msgstr "İsmi değiştir"
+msgstr "Adı değiştir"
 
 #: content/gui/xml/ingame/popups/change_name.xml:9
 msgid "Old name:"
-msgstr "Eski isim:"
+msgstr "Eski ad:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
-msgstr "Yeni isim giriniz:"
+msgstr "Yeni ad girin:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:18
 msgid "Apply the new name"
-msgstr "Yeni ismi uygula"
+msgstr "Yeni adı uygula"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
@@ -229,7 +229,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "Mevcut inşaat:"
+msgstr "Şu anki inşaat:"
 
 #. Pauses the current ship production, can be resumed later
 #. Pauses the current groundunit production, can be resumed later
@@ -531,7 +531,7 @@ msgstr "Alınan"
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 msgid "Name:"
-msgstr "İsim:"
+msgstr "Ad:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
@@ -838,7 +838,7 @@ msgstr "Oyuncu puanları"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
@@ -850,7 +850,7 @@ msgstr "Para"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Oyuncunun mevcut hazinesi + yakın gelecekte beklenen gelir"
+msgstr "Oyuncunun o anki hazinesi + yakın gelecekte beklenen gelir"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -991,7 +991,7 @@ msgstr "Yeni harita oluştur"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "Mevcut haritayı yükle"
+msgstr "Var olan harita yükle"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
@@ -1217,7 +1217,7 @@ msgstr "Bu, diğer oyuncuların oyunu tanıyabilmesi için gösterilecek."
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Unnamed Game"
-msgstr "İsimsiz Oyun"
+msgstr "Adsız Oyun"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
@@ -1513,7 +1513,7 @@ msgstr "İptal"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
-msgstr "Dosya adı gir:"
+msgstr "Dosya adı girin:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:46
@@ -1726,11 +1726,11 @@ msgstr "Oyun tüyoları"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Ana menüye dönmek için 'ESC' tuşuna basınız."
+msgstr "Ana menüye dönmek için 'ESC' tuşuna basın."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Birden fazla bina yerleştirmek için 'SHIFT' tuşuna basınız."
+msgstr "Birden fazla bina yerleştirmek için 'SHIFT' tuşuna basın."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
@@ -1761,7 +1761,7 @@ msgid ""
 "disease."
 msgstr ""
 "Sakinlerinizi yangından ve hastalıklardan korumak için itfaiye ve doktor "
-"binası kurunuz."
+"binası kurun."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
@@ -1773,7 +1773,7 @@ msgstr "Tüm evlerin pazar yerinin alanı içerisinde olduğundan emin olun."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız."
+msgstr "Ağaçları saydamlaştırmak için 'T' ye basın."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
@@ -1789,7 +1789,7 @@ msgid ""
 "neighborhood."
 msgstr ""
 "İbadet çadırı alanının tüm çadırlarınızı kapsayıp kapsamadığını kolayca "
-"görmek için, yapı menüsünden onu seçin ve mevcut ibadet çadırının üzerine "
+"görmek için, yapı menüsünden onu seçin ve var olan ibadet çadırının üzerine "
 "götürün. Kapsanmayanlar sarı renkte gösterilir. Onların çevresinde yeni bir "
 "ibadet çadırı inşa edebilirsiniz."
 
@@ -1898,7 +1898,7 @@ msgstr "Ağ oluşturma başarısız."
 #: horizons/gui/modules/settings.py:274
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr "Mevcut konfigürasyonla network özellikleri başlatılamıyor."
+msgstr "Şu anki yapılandırmayla ağ özellikleri başlatılamıyor."
 
 #: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:275
@@ -1977,7 +1977,7 @@ msgstr "Oyunun parolası"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr "Parola gir:"
+msgstr "Parola girin:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
@@ -2002,7 +2002,7 @@ msgstr "Mesajınızı girin"
 #: horizons/gui/modules/multiplayermenu.py:503
 #: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
-msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayınız"
+msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayın"
 
 #: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
@@ -2096,12 +2096,12 @@ msgstr "Lütfen geçerli bir dosya adı girin."
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "{name} isminde başka bir kayıtlı oyun zaten mevcut."
+msgstr "{name} adında kayıtlı başka bir oyun zaten var."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "{name} adındaki başka bir harita zaten mevcut."
+msgstr "{name} adındaki başka bir harita zaten var."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
@@ -2185,8 +2185,8 @@ msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
 msgstr ""
-"Değişiklerinizin etkin olması için oyunu yeniden başlatınız. Unknown "
-"Horizons'ı şimdi yeniden başlatmak ister misiniz?"
+"Bazı değişikleriniz Unknown Horizons'ın yeniden başlatılmasını gerektiriyor. "
+"Unknown Horizons'ı şimdi yeniden başlatmak ister misiniz?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
@@ -2216,7 +2216,9 @@ msgstr "Belirlediğiniz port geçersiz. 1 ile 65535 arasında bir sayı olmalı.
 #: horizons/gui/modules/settings.py:262
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr "Lütfen portu doğrulayın ve belirtilen aralıkta olduğundan emin olunuz."
+msgstr ""
+"Lütfen girdiğiniz portu doğrulayın ve belirtilen aralıkta olduğundan emin "
+"olun."
 
 #: horizons/gui/modules/settings.py:273
 msgid "Failed to apply new network settings."
@@ -2307,7 +2309,7 @@ msgstr "{building} inşa et"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "Bu ipucunu kaldırmak için H tuşuna basınız"
+msgstr "Bu ipucunu kaldırmak için H tuşuna basın"
 
 #: horizons/gui/mousetools/tearingtool.py:114
 msgid "Destroy all buildings"
@@ -2562,7 +2564,7 @@ msgstr "Yeni bir raf eklemek için tıklayın"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Fabrika ayarlarına geri dön."
+msgstr "Bu yapılandırmayı fabrika ayarlarına sıfırla."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
@@ -2602,7 +2604,7 @@ msgstr "Rotanızda en az iki yerleşim yeri olmalı."
 
 #: horizons/gui/widgets/routeconfig.py:159
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Uğrama noktası seçmek için bir yerleşim yerine tıklayınız!"
+msgstr "Uğrama noktası seçmek için bir yerleşim yerine tıklayın!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
@@ -3477,7 +3479,7 @@ msgstr ""
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr "Tek paket boyunu aştınız."
+msgstr "Tek paket boyutunu aştınız."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
@@ -3546,7 +3548,7 @@ msgstr "Renginiz değiştirilemiyor."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
-msgstr "Başka bir oyundayken başka bir oyunu alamazsınız"
+msgstr "Başka bir oyundayken bir oyunu alamazsınız"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
@@ -3615,8 +3617,8 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
-"Unknown Horizons'un şuan kullandığınız sürümünden ({old_version}) daha yeni "
-"bir sürümü ({new_version}) mevcut."
+"Unknown Horizons'un şu an kullandığınız sürümünden ({old_version}) daha yeni "
+"bir sürümü ({new_version}) var."
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
@@ -3909,7 +3911,7 @@ msgstr "Kazandın!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr "Senaryoyu tamamlayamadınız."
+msgstr "Senaryoda başarısız oldunuz."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
