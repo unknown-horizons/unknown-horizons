@@ -48,7 +48,8 @@ def test_run_for_x_seconds(gui):
 
 	expected = Scheduler().get_ticks(20)
 
-	assert (difference - expected) / difference < 0.05
+	deviation = (difference - expected) / difference
+	assert deviation < 0.05, 'Expected max 0.05 deviation, got {}'.format(deviation)
 
 
 @gui_test(use_fixture='boatbuilder')
