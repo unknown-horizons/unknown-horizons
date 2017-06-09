@@ -17,7 +17,7 @@ before_install:
   - sleep 3 # give xvfb some time to start
 
 install:
-  - "sudo apt-get install python3-fife libenet7" # libfifechan0.1.4 not avalibale yet
+  - "sudo apt-get install python3-fife" # libfifechan0.1.4 not avalibale yet
   - "pip3 install -r requirements.txt"
 
 script:
