@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-06-09 11:53+0000\n"
+"PO-Revision-Date: 2017-06-09 13:03+0000\n"
 "Last-Translator: Richard Luso <aleixogames@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
@@ -237,16 +237,12 @@ msgid "Running costs"
 msgstr "Despesas de funcionamento"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Para construir um barco, pressione num dos separadores de classe, seleccione "
-"o barco desejado e confirme a ordem."
+"Para construir groundunit, pressione num dos separadores de classe, "
+"selecione groundunit desejada e confirme a ordem."
 
 #. Information about the groundunit currently under construction at the
 #. groundunit builder
@@ -283,7 +279,7 @@ msgstr "Progresso da construção:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr "Recursos em falta:"
+msgstr "Recursos ainda em falta:"
 
 #. abort construction of a groundunit, lose invested resources
 #. abort construction of a ship, lose invested resources
@@ -367,10 +363,8 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Permitir melhorias"
+msgstr "Comprar Melhorias"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -405,17 +399,13 @@ msgid "+ 1457"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Manter posição"
+msgstr "Construir groundunit:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Construir este navio!"
+msgstr "Construir este groundunit!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -426,10 +416,8 @@ msgstr ""
 "o barco desejado e confirme a ordem."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "Construir este navio!"
+msgstr "Construir navio:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -548,10 +536,8 @@ msgid "residents"
 msgstr "residentes"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Provides security for your settlement."
-msgstr "Defende a povoação."
+msgstr "Providencia segurança para a tua povoação."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -752,7 +738,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Restabelecer a configuração padrão para todas as colónias."
+msgstr "Restabelecer a configuração padrão para todas as povoações."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -1637,7 +1623,7 @@ msgstr "Erro"
 
 #: horizons/command/game.py:50 horizons/gui/modules/pausemenu.py:100
 msgid "Failed to save."
-msgstr "Não foi possível gravar o jogo."
+msgstr "Falha ao gravar o jogo."
 
 #: horizons/component/tradepostcomponent.py:192
 msgid "The trade partner does not sell this."
@@ -2192,12 +2178,12 @@ msgid "Restart required"
 msgstr "É necessário reiniciar"
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Algumas das suas alterações requerem que reinicie Unknown Horizons."
+msgstr ""
+"Algumas das suas alterações requerem que reinicie Unknown Horizons. Quer "
+"reiniciar Unknown Horizons agora?"
 
 #: horizons/gui/modules/settings.py:138
 msgid "Restore default settings"
@@ -2342,10 +2328,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Resumo do mercado"
+msgstr "Resumo do quartel"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
@@ -2665,10 +2649,8 @@ msgstr "Unidades de recuta adequadas para combate terrestre."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Torre de Madeira"
+msgstr "Barreira de Madeira"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
@@ -2677,10 +2659,8 @@ msgstr ""
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Fornece educação."
+msgstr "Fornece segurança."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2710,10 +2690,8 @@ msgstr ""
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Gastos de farinha. Produzir comida."
+msgstr "Consome lúpulo. Produz Cerveja."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
@@ -2742,10 +2720,8 @@ msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Produz ferramentas a partir do ferro."
+msgstr "Produz Canhões."
 
 # Needs correct context
 #. name of buildings:charcoalburning
@@ -2856,17 +2832,13 @@ msgstr "Produz tabaco. Necessita de uma quinta."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Plantação de milho"
+msgstr "Plantação de lúpulo"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Produz milho. Requer uma quinta."
+msgstr "Produz lúpulo. Requer uma quinta."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -3082,10 +3054,8 @@ msgstr "Refina todos os tipos de minério."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "depósito de ferro"
+msgstr "Depósito de Pedra"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:358
@@ -3193,7 +3163,7 @@ msgstr "Ferreiro"
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:416
 msgid "Produces tools out of iron."
-msgstr "Produz ferramentas a partir do ferro."
+msgstr "Produz ferramentas a partir de ferro."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:421
@@ -3421,7 +3391,7 @@ msgstr "Não foi possível iniciar/carregar o jogo"
 
 #: horizons/main.py:362
 msgid "The game you selected could not be started."
-msgstr "O jogo seleccionado não pôde ser iniciado."
+msgstr "O jogo selecionado não pôde ser iniciado."
 
 #: horizons/main.py:363
 msgid "The savegame might be broken or has been saved with an earlier version."
