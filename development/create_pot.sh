@@ -29,8 +29,7 @@ set -e
 # script assumes working dir to be our base directory
 cd "$(dirname "$0")"/..
 
-VERSION=$(python3 -c 'from horizons.constants import VERSION
-print "%s" % VERSION.RELEASE_VERSION')
+VERSION=$(python3 -c 'from horizons.constants import VERSION;print("%s" % VERSION.RELEASE_VERSION)')
 
 RESULT_FILE=po/uh/unknown-horizons.pot
 RESULT_FILE_SERVER=po/uh-server/unknown-horizons-server.pot

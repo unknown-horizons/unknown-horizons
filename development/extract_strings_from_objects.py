@@ -133,7 +133,7 @@ def parse_token(token, token_klass):
 	"""
 	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
 
-	if not isinstance(token, basestring):
+	if not isinstance(token, str):
 		return token # probably numeric already
 	if not token.startswith(token_klass):
 		return token
@@ -155,7 +155,8 @@ def list_all_files():
 	return sorted(result)
 
 def content_from_file(filename):
-	parsed = load(file(filename, 'r'), Loader=Loader)
+	with open(filename, 'r') as f:
+		parsed = load(f, Loader=Loader)
 	object_strings = []
 	if not parsed:
 		return ''
@@ -165,31 +166,32 @@ def content_from_file(filename):
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/', ':')
 			comment = '{} of {}'.format(component, filename)
-			object_strings.append('# {}{}"{:-30s}": {}'.format(comment, ROWINDENT, component, text))
+			component_key = '"{}"'.format(component)
+			object_strings.append('# {}{}{:<30s}: {}'.format(comment, ROWINDENT, component_key, text))
 
-	for component, value in parsed.iteritems():
-		if isinstance(value, basestring):
+	for component, value in parsed.items():
+		if isinstance(value, str):
 			add_line(value, component, '', '', filename)
 		elif isinstance(value, dict):
-			for key, subvalue in value.iteritems():
-				if isinstance(subvalue, basestring):
+			for key, subvalue in value.items():
+				if isinstance(subvalue, str):
 					add_line(subvalue, component, "_", str(key), filename)
 		elif isinstance(value, list): # build menu definitions
 			for attrlist in value:
 				if isinstance(attrlist, dict):
-					for key, subvalue in attrlist.iteritems():
-						if isinstance(subvalue, basestring):
+					for key, subvalue in attrlist.items():
+						if isinstance(subvalue, str):
 							add_line(subvalue, component, "_", str(key), filename)
 				else:
 					for subvalue in attrlist:
-						if isinstance(subvalue, basestring):
+						if isinstance(subvalue, str):
 							add_line(subvalue, 'headline', '', '', filename)
 
 	strings = sorted(object_strings)
 
 	if strings:
-		return ('\n\t"{}" : {'.format(filename) +
-		       (ROWINDENT + '{},'.format(',' + ROWINDENT).join(strings)) + ROWINDENT + '},')
+		return ('\n\t"{}" : {{'.format(filename) +
+		       (ROWINDENT + ',{}'.format(ROWINDENT).join(strings)) + ',' + ROWINDENT + '},')
 	else:
 		return ''
 
@@ -199,6 +201,7 @@ filesnippets = (content for content in filesnippets if content != '')
 output = '{}{}{}'.format(HEADER, '\n'.join(filesnippets), FOOTER)
 
 if len(sys.argv) > 1:
-	file(sys.argv[1], 'w').write(output)
+	with open(sys.argv[1], 'w') as f:
+		f.write(output)
 else:
 	print(output)
