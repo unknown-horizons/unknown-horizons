@@ -23,7 +23,7 @@ import glob
 import logging
 from collections import deque
 
-from fife.extensions.pychan.widgets import Icon
+from fife.extensions.pychan.widgets import Container, Icon
 
 import horizons.globals
 import horizons.main
@@ -66,7 +66,7 @@ class MainMenu(Window):
 			'credits_label' : gui.show_credits,
 			'load_button': gui.load_game,
 			'load_label' : gui.load_game,
-			'changeBackground' : gui.rotate_background,
+			'changeBackground' : gui._background.rotate_image,
 			'changeBackground/mouseEntered' : self.mouse_entered_changebackground,
 			'changeBackground/mouseExited': self.mouse_exited_changebackground,
 		})
@@ -95,6 +95,56 @@ class MainMenu(Window):
 		w = self._gui.findChildByName('changeBackground')
 		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[0]
 
+class Background:
+	"""
+	Display a centered background image on top of a black screen.
+	"""
+	def __init__(self):
+		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
+		self.bg_images = deque(available_images)
+
+		latest_bg = horizons.globals.fife.get_uh_setting("LatestBackground")
+		try:
+			# If we know the current background from an earlier session,
+			# show all other available ones before picking that one again.
+			self.bg_images.remove(latest_bg)
+			self.bg_images.append(latest_bg)
+		except ValueError:
+			pass
+
+		(res_width, res_height) = horizons.globals.fife.get_fife_setting('ScreenResolution').split('x')
+		self._black_box = Container()
+		self._black_box.size = int(res_width), int(res_height)
+		self._black_box.base_color = (0, 0, 0, 255)
+
+		self._image = Icon(position_technique='center:center')
+		self.rotate_image()
+
+	def rotate_image(self):
+		"""Select next background image to use in the game menu.
+
+		Triggered by the "Change background" main menu button.
+		"""
+		self.bg_images.rotate(1)
+		self._image.image = self.bg_images[0]
+		# Save current background choice to settings.
+		# This keeps the background image consistent between sessions.
+		horizons.globals.fife.set_uh_setting("LatestBackground", self.bg_images[0])
+		horizons.globals.fife.save_settings()
+
+	def show(self):
+		self._black_box.show()
+		self._image.show()
+
+	def hide(self):
+		self._image.hide()
+		self._black_box.hide()
+
+	@property
+	def visible(self):
+		return self._image.isVisible()
+
+
 class Gui:
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 	"""
@@ -108,20 +158,7 @@ class Gui:
 		self.open_popup = self.windows.open_popup
 		self.open_error_popup = self.windows.open_error_popup
 
-		# Main menu background image setup.
-		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
-		self.bg_images = deque(available_images)
-
-		latest_bg = horizons.globals.fife.get_uh_setting("LatestBackground")
-		try:
-			# If we know the current background from an earlier session,
-			# show all other available ones before picking that one again.
-			self.bg_images.remove(latest_bg)
-			self.bg_images.append(latest_bg)
-		except ValueError:
-			pass
-		self._background = Icon(position_technique='center:center')
-		self.rotate_background()
+		self._background = Background()
 		self._background.show()
 
 		# Initialize menu dialogs and widgets that are accessed from `gui`.
@@ -139,7 +176,7 @@ class Gui:
 		GuiHover.subscribe(self._on_gui_hover_action)
 		GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
-		if not self._background.isVisible():
+		if not self._background.visible:
 			self._background.show()
 
 		self.windows.open(self.mainmenu)
@@ -179,22 +216,9 @@ class Gui:
 		self._background.hide()
 
 	def show_loading_screen(self):
-		if not self._background.isVisible():
+		if not self._background.visible:
 			self._background.show()
 		self.windows.open(self.loadingscreen)
-
-	def rotate_background(self):
-		"""Select next background image to use in the game menu.
-
-		Triggered by the "Change background" main menu button.
-		"""
-		# Note: bg_images is a deque.
-		self.bg_images.rotate(1)
-		self._background.image = self.bg_images[0]
-		# Save current background choice to settings.
-		# This keeps the background image consistent between sessions.
-		horizons.globals.fife.set_uh_setting("LatestBackground", self.bg_images[0])
-		horizons.globals.fife.save_settings()
 
 	def _on_gui_click_action(self, msg):
 		"""Make a sound when a button is clicked"""
