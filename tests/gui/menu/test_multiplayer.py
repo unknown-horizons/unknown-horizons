@@ -30,7 +30,7 @@ from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
 
-pytestmark = pytest.mark.skipif(enet == None, reason='No enet bindings available')
+pytestmark = pytest.mark.skipif(enet is None, reason='No enet bindings available')
 
 
 @pytest.fixture(autouse=True)
