@@ -25,7 +25,7 @@ logbook-data:
   - [Headline, 20 de Novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Após quatro dias, a tempestade finalmente acalmou e podemos descansar. Mas temos pouca comida e o nosso barco está em mau estado. Os instrumentos de navegação e as cartas marítimas estão perdidos.
-  - 'Temos de chegar à costa cedo. Um dos meus jacks viu alguns pássaros a caçar peixe, logo a terra não pode estar longe. Felizmente temos sempre algumas ferramentas e tábuas a bordo, para que possamos construir um abrigo básico. '
+  - Temos de chegar à costa cedo. Um dos meus jacks viu alguns pássaros a caçar peixe, logo a terra não pode estar longe. Felizmente temos sempre algumas ferramentas e tábuas a bordo, para que possamos construir um abrigo básico.
   - 'Tarefa
 
     Encontra terra e constrói um porto.'
@@ -35,7 +35,7 @@ logbook-data:
 - &FOOD_BOARDS
   - [Headline, 22 de Novembro 1740]
   - [Image, content/gui/images/background/hr.png]
-  - O porto foi construido e com ele chegou uma nova esperança. Os próximos dias ainda me preocupam... estamos a ficar sem comida e faltam-nos materiais básicos de construção.
+  - O porto está construido e ergue-se uma nova esperança. Ainda estou preocupado com os próximos dias... estamos a ficar sem comida e temos falta de materiais básicos de construção.
   - Precisamos de assegurar as nossas necessidades básicas para nos mantermos vivos. É tempo de enviar pessoas para recolher comida e madeira para que possamos sobreviver e construir algum abrigo.
   - 'Tarefa:
 
