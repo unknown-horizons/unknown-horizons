@@ -39,7 +39,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Eğer bu yazının geliştirilebilir hakkında herhangi bir öneriniz varsa veya herhangi bir hata ile karşılaşırsanız, lütfen bize bildirin.'
   - '
 
-    Oyun ekibine danışmak ve öğrenmek için www.unknown-horizons.org adresini ziyaret edin.'
+    Oyun ekibiyle nasıl iletişime geçileceğini öğrenmek için www.unknown-horizons.org adresine uğrayın.'
   - ''
   - Ve şimdi, oyun başlasın!
   - [Pagebreak]
@@ -307,7 +307,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     İnşa ettiğiniz tüm alanların Çiftlik tarafından kapsandığından emin olun.'
-  - Birleşik üretime sahip olabilirsiniz - bir otlak çiftliğin yüzde 100 verimli olmasını sağlamayacaktır - fakat bir Çiftliğin sunabileceği tarla sayısını kontrol etmeniz gerekir.
+  - Birleşik üretime sahip olabilirsiniz - bir otlak çiftliğin yüzde 100 verimli olmasını sağlamayacaktır - fakat bir Çiftliğin sunabileceği tarla sayısını denetlemeniz gerekir.
   - Alanların farklı sınıfları, çiftlik birimlerinin daha fazla veya az zaman harcamasına ihtiyaç duyacak (beslemek, hasat etmek, üretmek vb… için). Bu yüzden bir çiftlik için inşa edilen alanların tümüne zamanında hizmet edemeyebilir.
   - Şimdilik hiç alan inşa etmediğiniz için bu durumları önemsemeniz gerekmiyor. Bunu değiştirelim!
   - ''
