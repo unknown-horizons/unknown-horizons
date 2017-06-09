@@ -35,7 +35,6 @@
 ###############################################################################
 
 
-from __future__ import print_function
 HEADER = '''\
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
@@ -81,21 +80,7 @@ HEADER = '''\
 
 T = lambda s: s
 
-
-
-
-
-
-
-
-object_translations = {
 '''
-
-FOOTER = '''
-}
-'''
-ROWINDENT = '''
-		'''
 
 OBJECT_PATH = 'content/objects/'
 
@@ -162,12 +147,11 @@ def content_from_file(filename):
 		return ''
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
-			text = u'T("{value}")'.format(value=value[2:])
+			text = 'T("{value}")'.format(value=value[2:])
 			component = component + sep + str(parse_token(key, 'TIER'))
 			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/', ':')
 			comment = '{} of {}'.format(component, filename)
-			component_key = '"{}"'.format(component)
-			object_strings.append('# {}{}{:<30s}: {}'.format(comment, ROWINDENT, component_key, text))
+			object_strings.append('# {}\n{}'.format(comment, text))
 
 	for component, value in parsed.items():
 		if isinstance(value, str):
@@ -190,15 +174,14 @@ def content_from_file(filename):
 	strings = sorted(object_strings)
 
 	if strings:
-		return ('\n\t"{}" : {{'.format(filename) +
-		       (ROWINDENT + ',{}'.format(ROWINDENT).join(strings)) + ',' + ROWINDENT + '},')
+		return '"""{}"""\n{}\n'.format(filename, '\n'.join(strings))
 	else:
 		return ''
 
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 
-output = '{}{}{}'.format(HEADER, '\n'.join(filesnippets), FOOTER)
+output = HEADER + '\n'.join(filesnippets)
 
 if len(sys.argv) > 1:
 	with open(sys.argv[1], 'w') as f:

@@ -42,6 +42,7 @@
 ###############################################################################
 
 from typing import Dict, Tuple
+
 from horizons.constants import VERSION
 from horizons.i18n import gettext as T
 
