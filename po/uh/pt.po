@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-01-16 02:08+0000\n"
-"Last-Translator: Manuela Silva <manuela.silva@sky.com>\n"
+"PO-Revision-Date: 2017-06-09 11:53+0000\n"
+"Last-Translator: Richard Luso <aleixogames@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #: run_uh.py:125
 msgid "Unknown Horizons has crashed."
@@ -27,7 +27,7 @@ msgstr "Lamentamos o ocorrido e pretendemos corrigir o erro."
 
 #: run_uh.py:128
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Para o fazer, nós necessitamos da informação no ficheiro de registo:"
+msgstr "Para o fazer, necessitamos da informação no ficheiro de registo:"
 
 #: run_uh.py:130
 msgid ""
@@ -44,7 +44,7 @@ msgstr "Erro: Não foi possível localizar a biblioteca requerida \"PyYAML\"."
 #: run_uh.py:180
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr ""
-"PyYAML (uma biblioteca requerida) está faltando e precisa ser instalada."
+"PyYAML (uma biblioteca requerida) está em falta e precisa de ser instalada."
 
 #: run_uh.py:181
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
