@@ -2,26 +2,35 @@ id: BUILDINGS.SALINE
 name: _ Saline
 baseclass: production.ProductionBuilding
 radius: 0
-cost: 0
+cost: 10
 cost_inactive: 0
-size_x: 0
-size_y: 0
-inhabitants: 0
-tooltip_text:
-tier: TIER.CITIZENS
-buildingcosts: {}
+size_x: 2
+size_y: 2
+inhabitants: 2
+tooltip_text: Brine + Charcoal = Salt
+tier: TIER.MERCHANTS
+buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
     tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      SALT:
+        produces:
+        - [RES.SALT, 2]
+        consumes:
+        - [RES.BRINE, -2]
+        - [RES.CHARCOAL, -1]
+        time: 15
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
+        slot_sizes: {RES.BRINE: 6, RES.CHARCOAL: 6, RES.SALT: 6}
 - CollectingComponent:
     collectors:
-      UNITS.BUILDING_COLLECTOR: 0
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  TIER.CITIZENS:
+  TIER.MERCHANTS:
     as_2x2:

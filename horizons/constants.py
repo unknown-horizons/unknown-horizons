@@ -344,7 +344,7 @@ class RES:
 	SOCIETY          = GOLD # 93
 	FAITH_2          = GOLD # 94
 	EDUCATION_2      = GOLD # 95
-	HYGIENE          = GOLD # 96
+	HYGIENE          = 96
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
 	FIRE             = 99

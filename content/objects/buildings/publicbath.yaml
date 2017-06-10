@@ -2,14 +2,14 @@ id: BUILDINGS.PUBLIC_BATH
 name: _ Public Bath
 baseclass: production.ProductionBuilding
 radius: 0
-cost: 0
+cost: 10
 cost_inactive: 0
-size_x: 0
-size_y: 0
-inhabitants: 0
+size_x: 2
+size_y: 2
+inhabitants: 2
 tooltip_text:
-tier: TIER.CITIZENS
-buildingcosts: {}
+tier: TIER.MERCHANTS
+buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4, RES.TOOLS: 2}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -27,5 +27,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.HYGIENE: 10}
 actionsets:
-  TIER.CITIZENS:
+  TIER.MERCHANTS:
     as_2x2:
