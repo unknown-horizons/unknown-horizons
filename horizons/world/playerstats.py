@@ -117,14 +117,14 @@ class PlayerStats(WorldObject):
 			TIER.PIONEERS: 3,
 			TIER.SETTLERS: 7,
 			TIER.CITIZENS: 15,
-			TIER.MERCHANTS: 20, # FIXME: dont know what valve must be here
+			TIER.MERCHANTS: 20,
 			}
 	settler_building_values = {
 			TIER.SAILORS: 3,
 			TIER.PIONEERS: 5,
 			TIER.SETTLERS: 11,
 			TIER.CITIZENS: 19,
-			TIER.MERCHANTS: 26, # FIXME: dont know what valve must be here
+			TIER.MERCHANTS: 25,
 			}
 	settler_resource_provided_coefficient = 0.1
 	settler_score_coefficient = 0.3
