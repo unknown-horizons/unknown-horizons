@@ -429,7 +429,7 @@ class Server:
 		Send the client a list of all available games on this server.
 		"""
 		logging.debug("[LIST]")
-		packet = packets.server.data_gameslist()
+		response = packets.server.data_gameslist()
 		for game in self.games:
 			if game.creator.protocol != player.protocol:
 				continue
@@ -443,9 +443,9 @@ class Server:
 				continue
 			if packet.maxplayers and packet.maxplayers != game.maxplayers:
 				continue
-			packet.addgame(game)
+			response.addgame(game)
 
-		self.send(player.peer, packet)
+		self.send(player.peer, response)
 
 	def on_joingame(self, player: Player, packet: packets.client.cmd_joingame):
 		"""
