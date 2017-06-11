@@ -19,13 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
+from pathlib import PurePath
+
+from horizons.util.platform import get_user_game_directory
 
 
-def create_user_dirs():
-	"""Creates the userdir and subdirs. Includes from horizons."""
-	from horizons.constants import PATHS
+def test_get_user_game_directory_windows(mocker, tmpdir):
+	mocker.patch('horizons.util.platform.get_home_directory',
+	             return_value=PurePath(str(tmpdir)))
+	mocker.patch('platform.system', return_value='Windows')
 
-	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
-		if not os.path.isdir(directory):
-			os.makedirs(directory)
+	assert str(get_user_game_directory()) == tmpdir.join('My Games', 'unknown-horizons')
+
+
+def test_get_user_game_directory_unix(mocker, tmpdir):
+	mocker.patch('horizons.util.platform.get_home_directory',
+	             return_value=PurePath(str(tmpdir)))
+	mocker.patch('platform.system', return_value='Linux')
+
+	assert str(get_user_game_directory()) == tmpdir.join('.unknown-horizons')
