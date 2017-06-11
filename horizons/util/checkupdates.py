@@ -42,7 +42,7 @@ from horizons.util.python.callback import Callback
 TIMEOUT = 5.0 # we should be done before the user can start a game
 
 
-def is_system_installed(uh_path: Optional[PurePath]) -> bool:
+def is_system_installed(uh_path: Optional[PurePath]=None) -> bool:
 	"""
 	Returns whether UH is likely to have been installed with the systems package manager.
 
