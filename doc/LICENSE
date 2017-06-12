@@ -44,6 +44,11 @@ is licensed by Armin Ronacher under the terms of the 3-clause BSD license. See
 BSD_speaklater.
 
 
+/horizons/ext/polib.py
+
+is licensed by David Jean Louis under the terms of the MIT license. See
+MIT_polib.
+
 The files
 
 /horizons/network/darwin-x64/enet.so
