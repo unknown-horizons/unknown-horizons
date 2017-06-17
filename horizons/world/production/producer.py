@@ -219,8 +219,8 @@ class Producer(Component):
 		# This would be called multiple times during init, just add it later this tick.
 		# It also ensures that the changelistener would stick, we used to readd
 		# the listener in load(), which was explained by this comment:
-			# Listener has been removed in the productions.load(), because the
-			# changelistener's load is called
+		# Listener has been removed in the productions.load(), because the
+		# changelistener's load is called
 		Scheduler().add_new_object(
 		  Callback(production.add_change_listener, self._on_production_change, call_listener_now=True), self, run_in=0
 		)
