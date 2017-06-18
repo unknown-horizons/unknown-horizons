@@ -18,8 +18,8 @@ tab1:
   - BUILDINGS.HUNTER
   - BUILDINGS.FISHER
 - # forth row
-  - _ Military
-  - BUILDINGS.BARRIER
+  - _ Military		
+#  - BUILDINGS.BARRIER # not implemented yet
 
 
 tab2:
@@ -93,9 +93,9 @@ tab4:
   - BUILDINGS.PIGSTY
 -
   - _ Military
-  - BUILDINGS.WEAPONSMITH
+#  - BUILDINGS.WEAPONSMITH # not implemented yet
   - BUILDINGS.CANNON_FOUNDRY
-  - BUILDINGS.BARRACKS 
+#  - BUILDINGS.BARRACKS # not implemented yet
 
 meta:
   unlocking_strategy: tab_per_tier
