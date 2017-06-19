@@ -18,7 +18,7 @@ tab1:
   - BUILDINGS.HUNTER
   - BUILDINGS.FISHER
 - # forth row
-  - _ Military		
+  - _ Military
 #  - BUILDINGS.BARRIER # not implemented yet
 
 
