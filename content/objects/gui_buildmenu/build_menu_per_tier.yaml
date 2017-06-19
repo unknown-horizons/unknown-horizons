@@ -94,7 +94,7 @@ tab4:
 -
   - _ Military
 #  - BUILDINGS.WEAPONSMITH # not implemented yet
-  - BUILDINGS.CANNON_FOUNDRY
+#  - BUILDINGS.CANNON_FOUNDRY # not implemented yet 
 #  - BUILDINGS.BARRACKS # not implemented yet
 
 meta:
