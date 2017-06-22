@@ -178,10 +178,10 @@ class Collector(Unit):
 
 		# apply state when job object is loaded for sure
 		Scheduler().add_new_object(
-		  Callback.ChainedCallbacks(
-		    fix_job_object,
-		    Callback(self.apply_state, self.state, remaining_ticks)),
-		    self, run_in=0
+			Callback.ChainedCallbacks(
+				fix_job_object,
+				Callback(self.apply_state, self.state, remaining_ticks)),
+			self, run_in=0
 		)
 
 	def apply_state(self, state, remaining_ticks=None):

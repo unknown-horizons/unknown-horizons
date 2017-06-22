@@ -361,7 +361,7 @@ class BuildingTool(NavigationTool):
 
 		self.session.ingame_gui.resource_overview.set_construction_mode(
 			self.ship if self.ship is not None else settlement,
-		  needed_resources
+			needed_resources
 		)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
