@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-06-09 13:03+0000\n"
+"PO-Revision-Date: 2017-06-22 14:44+0000\n"
 "Last-Translator: Richard Luso <aleixogames@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
@@ -3468,7 +3468,7 @@ msgstr ""
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Sessão inválida/desconhecida"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
@@ -3488,7 +3488,7 @@ msgstr ""
 
 #: horizons/network/server.py:469
 msgid "Wrong password"
-msgstr ""
+msgstr "Palavra-passe errada"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
@@ -3496,7 +3496,7 @@ msgstr ""
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Por favor, altere o seu nome."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
@@ -3504,7 +3504,7 @@ msgstr ""
 
 #: horizons/network/server.py:480
 msgid "Please change your color."
-msgstr ""
+msgstr "Por favor, altere a sua cor."
 
 #: horizons/network/server.py:483
 msgid ""
@@ -3519,14 +3519,12 @@ msgid "You are not inside a game"
 msgstr "Introduziu um nome de jogador inválido"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to find pyenet"
 msgid "Unable to change your name."
-msgstr "Não foi possível encontrar a biblioteca pyenet"
+msgstr "Impossível alterar o seu nome."
 
 #: horizons/network/server.py:573
 msgid "Unable to change your color."
-msgstr ""
+msgstr "Impossível alterar a sua cor."
 
 #: horizons/network/server.py:649
 #, fuzzy
