@@ -162,7 +162,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
+  - [Message, Constrói um Sinal de Fogo na costa próxima do Armazém.]
   - [Headline, 'NOVA TAREFA: O SINAL DE FOGO']
   - [Image, content/gui/images/background/hr.png]
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
@@ -184,7 +184,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'Tarefa: Constrói um Sinal de Fogo na costa próxima do Armazém.']
 
 - &TRADING
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
@@ -218,7 +218,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
+  - [Message, Constrói um Pavilhão com ligação às Tendas.]
   - [Headline, CONSTRÓI UM PAVILHÃO]
   - [Image, content/gui/images/background/hr.png]
   - Those tools will be enough for the moment. Well done!
@@ -259,12 +259,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Tarefa: Baixa os impostos (lado esquerdo) e espera pela promoção dos marinheiros.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
+  - [Message, Constrói uma Quinta e deixa algum espaço livre à sua volta.]
   - [Headline, 'NOVA TAREFA: CONSTRÓI UMA QUINTA']
   - [Image, content/gui/images/background/hr.png]
   - Congratulations! Some of your inhabitants have reached tier II!
@@ -284,7 +284,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Tarefa: Constrói uma Quinta.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -311,7 +311,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'Tarefa: Constrói pelo menos uma Pastagem ao alcance da Quinta e adiciona-lhe uma Plantação de Batatas se quiseres.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -341,12 +341,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * sends its own collectors to fetch goods, just like the Warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Tarefa: Constrói uma Tenda de Armazenamento , preferencialmente onde necessitares de coletores.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
+  - [Message, Adiciona um Tecelão posicionado de modo a conseguir recolher a lã produzida na Quinta.]
   - [Headline, 'NOVA TAREFA: CRIA UM TECELÃO']
   - [Image, content/gui/images/background/hr.png]
   - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
@@ -657,4 +657,4 @@ metadata:
   locale: pt
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 68 translated messages, 13 fuzzy translations, 107 untranslated messages.
+  translation_status: 77 translated messages, 4 fuzzy translations, 107 untranslated messages.
