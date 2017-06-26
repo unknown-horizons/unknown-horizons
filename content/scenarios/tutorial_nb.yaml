@@ -78,15 +78,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Bygg et jegertelt og et fiskertelt.  Koble dem til varehuset.]
+  - [Headline, 'NY OPPGAVE: MATFORSYNING']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - Du kommer også til å trenge noen som produserer mat, da folk generelt (og sjøfolk spesielt) er veldig sultne.
+  - Tilgjengelige kompanjonger i det første nivået er jegerteltet og fiskerteltet.
+  - Jegeren jakter på dyr i skogen, og trenger dermed trær i nærheten.
+  - Merk at dukan plassere jegerteltet ditt nær tømmerhuggerens skog.
+  - Det hender at dyr ikke reproduserer seg selv raskt nok eller ganske enkelt skjuler seg godt.
+  - 'Konklusjon: Jegerteltet er ikke veldig pålitelig hvis du trenger kontinuerlig levering.'
   - [Pagebreak]
   - '
 
@@ -379,7 +379,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
+  - Forumene våre er også åpne for deg!
   - De beste resultatene er hittil oppnådd ved å bli med på IRC-kanalen vår, så du kan forsøke det først. (-;
   - [Pagebreak]
   - [Headline, Tusen takk!]
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 32 translated messages, 156 untranslated messages.
+  translation_status: 44 translated messages, 144 untranslated messages.
