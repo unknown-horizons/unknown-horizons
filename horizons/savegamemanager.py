@@ -209,8 +209,8 @@ class SavegameManager:
 	@classmethod
 	def get_recommended_number_of_players(cls, mapfile):
 		"""Returns amount of players recommended for a map *mapfile*."""
-		dbdata = DbReader(mapfile) \
-			("SELECT value FROM properties WHERE name = ?", "players_recommended")
+		dbdata = DbReader(mapfile)(
+			"SELECT value FROM properties WHERE name = ?", "players_recommended")
 		if dbdata:
 			return dbdata[0][0]
 		else:

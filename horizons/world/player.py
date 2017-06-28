@@ -165,7 +165,7 @@ class Player(ComponentHolder, WorldObject):
 		# can be used independently and the one here is always perfectly in sync
 		# with the other values here
 
-		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
+		get_sum = lambda l, attr : sum( getattr(obj, attr) for obj in l )
 		trade_posts = [ s.get_component(TradePostComponent) for s in self.settlements ]
 		return Data(
 		  running_costs=get_sum(self.settlements, 'cumulative_running_costs'),

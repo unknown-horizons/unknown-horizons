@@ -51,7 +51,7 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
 
 	def __init__(self, settlement, manager):
-		super (BlackDeathDisaster, self).__init__(settlement, manager)
+		super(BlackDeathDisaster, self).__init__(settlement, manager)
 		self.healed_buildings = []
 
 	def infect(self, building, load=None):
