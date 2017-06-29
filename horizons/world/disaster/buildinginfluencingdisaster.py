@@ -64,7 +64,7 @@ class BuildingInfluencingDisaster(Disaster):
 
 
 	def __init__(self, settlement, manager):
-		super (BuildingInfluencingDisaster, self).__init__(settlement, manager)
+		super(BuildingInfluencingDisaster, self).__init__(settlement, manager)
 		self._affected_buildings = []
 
 	def save(self, db):
