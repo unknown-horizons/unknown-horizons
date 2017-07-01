@@ -28,4 +28,4 @@ components:
         slot_sizes: {RES.HYGIENE: 10}
 actionsets:
   TIER.MERCHANTS:
-    as_2x2:
+    as_bath:
