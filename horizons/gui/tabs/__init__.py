@@ -34,7 +34,7 @@ from .diplomacytab import DiplomacyTab
 from .enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
 from .inventorytab import InventoryTab
 from .mainsquaretabs import (
-	AccountTab, MainSquareCitizensTab, MainSquareOverviewTab, MainSquarePioneersTab,
+	AccountTab, MainSquareCitizensTab, MainSquareMerchantsTab, MainSquareOverviewTab, MainSquarePioneersTab,
 	MainSquareSailorsTab, MainSquareSettlersTab)
 from .overviewtab import GenericOverviewTab, GroundUnitOverviewTab, OverviewTab
 from .productiontabs import LumberjackOverviewTab, ProductionOverviewTab, SmallProductionOverviewTab
