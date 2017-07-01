@@ -69,24 +69,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - ''
   - Finn et fint skogområde der vår tømmerhugger kan jobbe og velg deretter «Tømmerhuggertelt» fra listen over bygninger i oversikten og plasser bygningen.
   - Senere i spillet kan det hende du vil lage skogområder ved å plante trær, men siden dette koster penger bør du foreløpig bruke det naturen tilbyr!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Enhver ressursinnsamlende eller produserende bygning trenger en sti som forbinder det til et varehus eller en annen type lagring.  Ellers vil ikke varene den produserer bli samlet inn.
+  - Dermed, når tømmerhugger-teltet ditt er på plass må du koble det til varehuset ditt ved å åpne bygge-menyen og der trykke på «sti»-knappen.  Der kan du nå klikke og dra med musen for å tegne ruten til din sti mellom tømmerhuggertelstet og varehuset.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - [BoldLabel, 'Oppgave: Bygg et tømmerhuggertelt i et skoglagt område og koble det til varehuset ditt.']
+  - Så snart bygningene er koblet sammen vil du se en innsamler som ankommer for å hente dine nyproduserte plater og levere dem til varehuset, klar til bruk i konstruksjon eller handel.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Bygg et jegertelt og et fiskertelt.  Koble dem til varehuset.]
+  - [Headline, 'NY OPPGAVE: MATFORSYNING']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - Du kommer også til å trenge noen som produserer mat, da folk generelt (og sjøfolk spesielt) er veldig sultne.
+  - Tilgjengelige kompanjonger i det første nivået er jegerteltet og fiskerteltet.
+  - Jegeren jakter på dyr i skogen, og trenger dermed trær i nærheten.
+  - Merk at dukan plassere jegerteltet ditt nær tømmerhuggerens skog.
+  - Det hender at dyr ikke reproduserer seg selv raskt nok eller ganske enkelt skjuler seg godt.
+  - 'Konklusjon: Jegerteltet er ikke veldig pålitelig hvis du trenger kontinuerlig levering.'
   - [Pagebreak]
   - '
 
@@ -379,8 +379,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
-  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
+  - Forumene våre er også åpne for deg!
+  - De beste resultatene er hittil oppnådd ved å bli med på IRC-kanalen vår, så du kan forsøke det først. (-;
   - [Pagebreak]
   - [Headline, Tusen takk!]
   - [Image, content/gui/images/background/hr.png]
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 27 translated messages, 161 untranslated messages.
+  translation_status: 44 translated messages, 144 untranslated messages.

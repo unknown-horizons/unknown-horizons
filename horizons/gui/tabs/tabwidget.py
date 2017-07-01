@@ -105,13 +105,13 @@ class TabWidget:
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_bg = self.content.findChild(name = "bg_{}".format(self._tabs.index(self.current_tab)))
+		old_bg = self.content.findChild(name="bg_{}".format(self._tabs.index(self.current_tab)))
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
 		old_button.path = self.current_tab.path
 
-		new_bg = self.content.findChild(name = "bg_{}".format(number))
+		new_bg = self.content.findChild(name="bg_{}".format(number))
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
 		new_button.path = new_tab.path_active

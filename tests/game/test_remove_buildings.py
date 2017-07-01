@@ -34,7 +34,6 @@ from horizons.util.shapes import Point
 from horizons.world.production.producer import Producer
 from tests.game import RANDOM_SEED, game_test, settle
 
-
 rng = random.Random(RANDOM_SEED)
 cases = [(rng.randint(1, 200), rng.randint(1, 200), rng.randint(0, 8)) for _ in range(10)]
 

@@ -23,7 +23,7 @@ import polib
 import pytest
 
 import horizons.i18n
-from horizons.i18n import change_language, gettext as T, gettext_lazy as LazyT
+from horizons.i18n import change_language, disable_translations, gettext as T, gettext_lazy as LazyT
 
 
 @pytest.fixture(autouse=True)
@@ -84,3 +84,16 @@ def test_gettext_lazy():
 
 	change_language('de')
 	assert str(text) == 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
+
+
+def test_disable_translations():
+	change_language('de')
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
+
+	with disable_translations():
+		assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+			 'McAvoy or Stewart? These timelines are confusing.'
+
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'

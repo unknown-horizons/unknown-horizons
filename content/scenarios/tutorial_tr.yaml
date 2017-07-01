@@ -39,7 +39,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Eğer bu yazının geliştirilebilir hakkında herhangi bir öneriniz varsa veya herhangi bir hata ile karşılaşırsanız, lütfen bize bildirin.'
   - '
 
-    Oyun ekibine danışmak ve öğrenmek için www.unknown-horizons.org adresini ziyaret edin.'
+    Oyun ekibiyle nasıl iletişime geçileceğini öğrenmek için www.unknown-horizons.org adresine uğrayın.'
   - ''
   - Ve şimdi, oyun başlasın!
   - [Pagebreak]
@@ -106,7 +106,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Halkınız, ürünleri alıp evlerine götürmek için bir ana meydana gereksinim duyarlar.
   - Bu evlerinden Ana Meydana bir Patikaya ihtiyaçları duyuyorlar demektir. Ana Meydanın da bir Patika gibi davrandığını unutmayın, bu nedenle bitişik çadırlar ayrı bir Patikaya gerek duymaz.
-  - Ambarınızdaki tüm ürünler bu 'pazar yeri'nde mevcuttur, halkınızın Balıkçı Çadırına veya Ambara yürümesine gerek kalmaz.
+  - Ambarınızdaki tüm ürünler bu 'pazar yeri'nde bulunabilir, halkınızın Balıkçı Çadırına veya Ambara yürümesine gerek kalmaz.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Ana köy çadırlarınızı oduncunuza yakın tutmaktan kaçınmalısınız çünkü çadırları bu alanlara yapmak, oduncunuzun tahta üretimi için ihtiyacı olan ağaçları yok edecektir.
@@ -255,7 +255,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Benzer yerleşim yükseltmeleri kaynak tükettiğinden, Ana Meydanda kısıtlanabilir.'
-  - Ayrıca, oduncu'da da görebileceğiniz, masrafsız yükseltilebilen binalar da mevcut. Bu durumda, sadece grafik değişecektir.
+  - Ayrıca, oduncu'da da görebileceğiniz, masrafsız yükseltilebilen binalar da vardır. Bu durumda, sadece grafik değişecektir.
   - Yükseltilmiş konaklama daha fazla halk barındırabilir ve öncüler denizcilerden daha fazla vergi verir.
   - Daha önce de farketmiş olabileceğiniz gibi öncüler denizcilerin gerektirmediği ek ihtiyaçlar ister. Bu yüzden onları da mutlu edebilmeniz için bu ek parayı harcamanız gerekiyor.
   - ''
@@ -282,7 +282,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Çiftliklerin, ham madde üreten diğer tüm şirketler gibi, depoya veya bir Ambara bağlı olması gerekmez.
   - Son üretim şirketinin birimleri Çiftliğe ulaşabildiği ve Ambardan veya Depo Çadırından toplayıcılar son şirkete ulaşabildiği sürece her şey normaldir.
   - Eğer adanın diğer bölümlerinde (faydalı bir şey olabilir) veya diğer adalarda işlem yapmayı planlıyorsanız, toplayıcılara bir bağlantı gerekecek.
-  - Çiftlik, düzgün çalışabilmesi için ek alan gerektirdiğinden sahile veya mevcut binalarınızın yakınına inşa etmemeye çalışın.
+  - Çiftlik, düzgün çalışabilmesi için ek alan gerektirdiğinden sahile veya var olan binalarınızın yakınına inşa etmemeye çalışın.
   - ''
   - [BoldLabel, 'Görev: Bir Çiftlik inşa edin.']
   - - Gallery
@@ -307,7 +307,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     İnşa ettiğiniz tüm alanların Çiftlik tarafından kapsandığından emin olun.'
-  - Birleşik üretime sahip olabilirsiniz - bir otlak çiftliğin yüzde 100 verimli olmasını sağlamayacaktır - fakat bir Çiftliğin sunabileceği tarla sayısını kontrol etmeniz gerekir.
+  - Birleşik üretime sahip olabilirsiniz - bir otlak çiftliğin yüzde 100 verimli olmasını sağlamayacaktır - fakat bir Çiftliğin sunabileceği tarla sayısını denetlemeniz gerekir.
   - Alanların farklı sınıfları, çiftlik birimlerinin daha fazla veya az zaman harcamasına ihtiyaç duyacak (beslemek, hasat etmek, üretmek vb… için). Bu yüzden bir çiftlik için inşa edilen alanların tümüne zamanında hizmet edemeyebilir.
   - Şimdilik hiç alan inşa etmediğiniz için bu durumları önemsemeniz gerekmiyor. Bunu değiştirelim!
   - ''
@@ -652,7 +652,7 @@ metadata:
   author: The UH team
   description: 'Öğretici Oyun:
 
-    İlk yerleşim yerinizi kurun ve oyunu öğrenin!'
+    İlk yerleşim yerini kur ve oyunu öğren!'
   difficulty: Öğretici Oyun
   locale: tr
   mapfile: development.sqlite

@@ -24,8 +24,8 @@ logbook-data:
 - &INTRO
   - [Headline, 20 Kasım 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Dört günlük fırtına dinmeye başlarken dinlenebiliriz. Fakat, çok az yiyeceğimiz kaldı ve gemimizin durumu kötü. Yönlendirme aygıtları ve deniz haritaları kayıp.
-  - Yakında bir karaya çıkmalıyız. Adamlarından biri, balık için avlanan birkaç kuş gördü. Yani kara uzakta olamaz. Şanslıyız ki, gemimizde, basit birkaç barınak yapılabilecek kadar aletimiz var.
+  - Dört günlük fırtına dinmeye başlarken dinlenebiliriz. Fakat, çok az yiyeceğimiz kaldı ve gemimizin durumu kötü. Seyrüsefer aygıtları ve deniz haritaları kayıp.
+  - Yakında bir karaya çıkmalıyız. Adamlarından biri, balık için avlanan birkaç kuş gördü. Yani kara uzakta olamaz. Şanslıyız ki, gemimizde, birkaç basit barınak yapabilecek kadar aletimiz var.
   - 'Görev:
 
     Karayı bul ve bir iskele inşa et.'
@@ -71,15 +71,15 @@ logbook-data:
     Sadece bir medeniyet kurmayı ve eve bir yol bulmayı deneyebiliriz…'
   - 'Görev:
 
-    Köyü en az 250 nüfus ve pozitif bakiye elde edinceye kadar genişlet.'
+    Köyü en az 250 nüfus ve artı bakiye elde edinceye kadar genişlet.'
   - [Pagebreak]
   - ''
 
 - &WON
   - [Headline, 27 Ağustos 1745]
   - [Image, content/gui/images/background/hr.png]
-  - Köyümüz güzel gidiyor. Şehirde 250 sakin var. Yeni evime alışmaya başladım ama bu ada üzerinde sonsuza dek kalınmak için çok küçük.
-  - Gemimizi yüklemeli ve insanlarım için kaynak ve oda sağlayabilecek daha büyük bir ada bulmak için yola çıkmalıyız. Gece gördüğüm yıldızları kullanarak, temel yön haritamı tekrar oluşturdum. Mükemmel değil ancak umarım buraya dönmemizi sağlayacak.
+  - Köyümüz güzel gidiyor. Şehirde 250 sakin var. Yeni evime alışmaya başladım ama bu ada burada sonsuza kadar kalmak için çok küçük.
+  - Gemimizi yüklemeli ve insanlarım için kaynak ve oda sağlayabilecek daha büyük bir ada bulmak için yola çıkmalıyız. Gece gördüğüm yıldızları kullanarak, temel seyrüsefer haritamı tekrar oluşturdum. Mükemmel değil ancak umarım buraya dönmemizi sağlayacak.
   - 'Görev:
 
     Unkown Horizons Takımı (www.unknown-horizons.org) ile iletişime geç ve bu senaryoyu daha uzun ve daha iyi yapmak için nasıl katkıda bulunabileceğini öğren!'

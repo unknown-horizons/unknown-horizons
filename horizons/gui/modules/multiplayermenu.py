@@ -586,7 +586,7 @@ class GameLobby(Window):
 		lines = textwrap.wrap(msg, line_max_length)
 
 		chatbox = self._gui.findChild(name="chatbox")
-		chatbox.items.extend(lines)
+		chatbox.items = chatbox.items + lines
 		chatbox.selected = len(chatbox.items) - 1
 
 	def _on_chat_message(self, game, player, msg):

@@ -59,3 +59,6 @@ class SimpleMessageBus:
 
 		for cb in self._callbacks[type]:
 			cb(*args, **kwargs)
+
+	def is_message_type_known(self, type):
+		return type in self._message_types

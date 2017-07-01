@@ -21,11 +21,11 @@
 
 import os
 
-from horizons.constants import PATHS
-
 
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
+	from horizons.constants import PATHS
+
 	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
 		if not os.path.isdir(directory):
 			os.makedirs(directory)

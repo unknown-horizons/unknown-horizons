@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#-*- mode: python -*-
+
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -41,92 +41,125 @@ updated automatically.
 
 """
 
-from subprocess import Popen, PIPE
-import sys
 import re
-import Tkinter
-import tkMessageBox
+import sys
+import tkinter
+import tkinter.messagebox
+from subprocess import PIPE, Popen
 
-syntax_checker = "pyflakes-python3"
+import crayons
 
-class bcolors:
-	"""Colors used to color the output"""
-	HEADER = '\033[95m'
-	OKBLUE = '\033[94m'
-	OKGREEN = '\033[92m'
-	WARNING = '\033[93m'
-	FAIL = '\033[91m'
-	ENDC = '\033[0m'
-
-def cleanup(pyflakeserrorlist):
-	"""Methode used to filter bad errors from pyflakes"""
-	for line in list(pyflakeserrorlist):
-		if "undefined name '_'" in line or "undefined name 'N_'" in line:
-			# These messages are produced because of gettext and cannot be removed
-			# Therefore we ignore the error
-			del pyflakeserrorlist[pyflakeserrorlist.index(line)]
-	return pyflakeserrorlist
 
 def run(command):
 	"""Runs a command and returns a triple with the output: (returnvalue, stdout, stderr)"""
 	p = Popen(command.split(), stdout=PIPE, stderr=PIPE)
 	p.wait()
-	return p.returncode, [ line.strip() for line in p.stdout.readlines()], [line.strip() for line in p.stderr.readlines()]
+	return (
+		p.returncode,
+		[line.strip().decode('utf-8') for line in p.stdout.readlines()],
+		[line.strip().decode('utf-8') for line in p.stderr.readlines()]
+	)
 
-_, files_modified, _= run("git diff-index --name-only HEAD")
 
-exitcode = 0
-# Find words not suitable to be included in commits
-invalid_regexes = [
-	'print ',
-	'pdb',
-	'set_trace']
+def output(*args, **kwargs):
+	kwargs['file'] = sys.stderr
+	print(*args, **kwargs)
+	sys.stderr.flush()
 
-for fname in files_modified:
-	if fname.strip().endswith(".py"):
-		# Check using pyflakes
-		exit_code, stderrors, errors = run("%s %s"%(syntax_checker, fname))
-		stderrors = cleanup(stderrors)
-		errors = cleanup(errors)
-		stderrors.extend(errors)
 
-		if stderrors:
-			print >>sys.stderr, "\rChecking syntax on %s:" %(fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
-			for line in stderrors:
-				print >>sys.stderr, "\t", line
-			exitcode = exit_code
+def check_syntax(filename):
+	syntax_checker = "pycodestyle"
+	output('Checking syntax on {}: '.format(filename), end='')
+
+	exit_code, stdout, stderr = run('{} {}'.format(syntax_checker, filename))
+	errors = stdout + stderr
+	if errors:
+		output(crayons.red('FAILED!'))
+		for line in errors[:-1]:
+			output("\t", line)
+
+		return False
+	else:
+		output(crayons.green('OK!'))
+		return True
+
+
+def check_debug_statements(filename):
+	"""
+	Check for added prints or other stuff
+	"""
+	invalid_regexes = ['print\(', 'pdb', 'set_trace']
+
+	output("Checking for 'print', 'pdb' and 'set_trace' on {}: ".format(filename), end='')
+
+	_, result, _ = run('git diff-index -u HEAD {}'.format(filename))
+
+	found_statement = False
+	for i, line in enumerate(result):
+		if not line.startswith('+'):
+			continue
+
+		for r in invalid_regexes:
+			if re.search(r, line):
+				if not found_statement:
+					output(crayons.red('FAILED!'))
+					found_statement = True
+
+				if i > 0:
+					output("\t", result[i - 1])
+				output("\t", crayons.red(line))
+				if len(result) > i + 1:
+					output("\t", result[i + 1])
+
+	if found_statement:
+		return False
+	else:
+		output(crayons.green('OK!'))
+		return True
+
+
+def check_isort(filename):
+	output('Checking isort on {}: '.format(filename), end='')
+
+	exit_code, stdout, stderr = run('isort -c {}'.format(filename))
+	errors = stdout + stderr
+	if errors:
+		output(crayons.red('FAILED!'))
+		for line in errors:
+			output("\t", line)
+
+		return False
+	else:
+		output(crayons.green('OK!'))
+		return True
+
+
+def main():
+	found_problems = False
+	_, files_modified, _ = run("git diff-index --cached --name-only HEAD")
+
+	for fname in files_modified:
+		if fname.strip().endswith(".py"):
+			if not check_syntax(fname):
+				found_problems = True
+
+			if not check_debug_statements(fname):
+				found_problems = True
+
+			if not check_isort(fname):
+				found_problems = True
+
+	if found_problems:
+		# Hide root Tk window that is always created
+		window = tkinter.Tk()
+		window.wm_withdraw()
+
+		if not tkinter.messagebox.askyesno("Errors have been detected", "Cancel Commit?"):
+			sys.exit(0)
 		else:
-			print >>sys.stderr, "\rChecking syntax on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
-
-		# Check for added prints or other stuff
-		print >>sys.stderr, "Checking for 'print', 'pdb' and 'set_trace' on %s: ... " %(fname),
-		_, output, _ = run("git diff-index -u HEAD %s" %(fname))
-		found_re = False
-		for i, line in enumerate(output):
-			if not line.startswith('+'):
-				continue
-
-			for r in invalid_regexes:
-				if re.search(r, line):
-					if not found_re:
-						print >>sys.stderr, "\rChecking for '%s' on %s:" % (r, fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
-						found_re = True
-					if i > 0:
-						print "\t", output[i-1]
-					print "\t", bcolors.FAIL, line, bcolors.ENDC
-					if len(output) > i + 1:
-						print "\t", output[i+1]
-		if found_re:
-			exitcode = 1
-		else:
-			print >>sys.stderr, "\rChecking for 'print', 'pdb' and 'set_trace' on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
+			sys.exit(1)
+	else:
+		sys.exit(0)
 
 
-if exitcode == 1:
-	# Hide root Tk window that is always created
-	window = Tkinter.Tk()
-	window.wm_withdraw()
-
-	if not tkMessageBox.askyesno("Errors have been detected", "Cancel Commit?"):
-		exitcode = 0
-sys.exit(exitcode)
+main()

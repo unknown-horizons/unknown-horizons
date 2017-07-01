@@ -90,7 +90,7 @@ def diplomacy_graph():
 		# always print upper boundary
 		x = [-10, 10]
 		y = [upper_boundary] * 2
-		pylab.plot (x, y, color='y', marker=None)
+		pylab.plot(x, y, color='y', marker=None)
 
 		functions = []
 		if 'enemy' in parameters:

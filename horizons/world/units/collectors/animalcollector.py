@@ -134,7 +134,7 @@ class AnimalCollector(BuildingCollector):
 			self.job.object.die()
 			self.job.object = None # there is no target anymore now
 		else:
-			self.job.object.move(self.home_building.position, destination_in_building = True,
+			self.job.object.move(self.home_building.position, destination_in_building=True,
 			                     action='move_full')
 
 	def release_animal(self):

@@ -89,6 +89,7 @@ header = u'''\
 ###############################################################################
 
 from typing import Dict, Tuple
+
 from horizons.constants import VERSION
 from horizons.i18n import gettext as T
 
@@ -109,7 +110,7 @@ FILE = u'''
 '''
 
 ENTRY = u'''\
-		({widget!r:<32}, {attribute!r:<10}): {text},
+		({widget!r:<31}, {attribute!r:<10}): {text},
 '''
 
 files_to_skip = [
@@ -129,7 +130,7 @@ def list_all_files():
 	for root, dirs, files in walker:
 		for filename in files:
 			if filename.endswith('.xml'):
-				result.append('{}/{}'.format(root, filename), filename not in files_to_skip)
+				result.append(('{}/{}'.format(root, filename), filename not in files_to_skip))
 	return sorted(result)
 
 def content_from_element(element_name, parse_tree, attribute):
@@ -170,7 +171,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = 'T(u"{}")'.format(text)
+				text = 'T("{}")'.format(text)
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
@@ -208,4 +209,5 @@ filesnippets = ''.join(content for content in filesnippets if content)
 
 output = '{}{}{}'.format(header, filesnippets, FOOTER)
 
-file(sys.argv[1], 'w').write(output.encode('utf-8'))
+with open(sys.argv[1], 'w') as f:
+	f.write(output)

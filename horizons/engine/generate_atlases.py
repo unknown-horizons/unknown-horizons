@@ -61,8 +61,6 @@ if not os.path.exists('content'):
 assert os.path.exists('content'), 'Content dir not found.'
 
 sys.path.append('.')
-from run_uh import init_environment # isort:skip
-init_environment(False)
 
 class DummyFife:
 	use_atlases = False

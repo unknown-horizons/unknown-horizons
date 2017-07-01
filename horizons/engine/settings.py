@@ -41,7 +41,7 @@ class Settings:
 		self._settings_serializer.load(settings_file)
 		self._settings_template_serializer = SimpleXMLSerializer()
 		self._settings_template_serializer.load(settings_template_file)
-		if not hasattr (self._settings_template_serializer, 'getModuleName'):
+		if not hasattr(self._settings_template_serializer, 'getModuleName'):
 			# Renamed after 0.3.5: https://github.com/fifengine/fifengine/issues/819.
 			new_api = self._settings_template_serializer.getModuleNameList
 			self._settings_template_serializer.getModuleName = new_api

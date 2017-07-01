@@ -106,7 +106,7 @@ class SpecialDomesticTrade(ShipMission):
 		if not options:
 			return False # no resources to transport
 
-		options.sort(reverse = True)
+		options.sort(reverse=True)
 		for _, amount, resource_id in options:
 			self.move_resource(self.source_settlement_manager.settlement, self.ship, resource_id, amount)
 		return True

@@ -45,7 +45,6 @@ import sys
 import time
 import traceback
 
-
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 

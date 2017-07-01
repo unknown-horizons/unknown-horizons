@@ -78,7 +78,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		#groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
 		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_{}'.index(index), helptext=T('Build this groundunit!'))
+			button = OkButton(position=(60, 50), name='ok_{}'.format(index), helptext=T('Build this groundunit!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
 			button = CancelButton(position=(60, 50), name='ok_{}'.format(index),

@@ -19,27 +19,33 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scenario import ACTIONS
+import os
+import platform
+from pathlib import PurePath
 
-# Patch scenario actions for easier detection
-
-def do_win(session):
-	session._scenariotest_won = True
-
-
-def do_lose(session):
-	session._scenariotest_lose = True
+CSIDL_PERSONAL = 5 # 'My documents' folder for win32 API
 
 
-def goal_reached(session, goal):
-	if hasattr(session, '_scenariotest_goals'):
-		session._scenariotest_goals.append(goal)
+def get_home_directory():
+	"""
+	Returns the home directory of the user running UH.
+	"""
+	if platform.system() != "Windows":
+		return PurePath(os.path.expanduser('~'))
 	else:
-		session._scenariotest_goals = [goal]
+		import ctypes.wintypes
+		buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
+		# get the My Documents folder into buf.value
+		ctypes.windll.shell32.SHGetFolderPathW(0, CSIDL_PERSONAL, 0, 0, buf)
+		return PurePath(buf.value)
 
 
-# We replace the code object on the original functions because replacing all
-# references on these functions in the scenario manager is too cumbersome
-ACTIONS.get('win').__code__ = do_win.__code__
-ACTIONS.get('lose').__code__ = do_lose.__code__
-ACTIONS.get('goal_reached').__code__ = goal_reached.__code__
+def get_user_game_directory():
+	"""
+	Returns the directory where we store game-related data, such as savegames.
+	"""
+	home_directory = get_home_directory()
+	if platform.system() != "Windows":
+		return home_directory.joinpath('.unknown-horizons')
+	else:
+		return home_directory.joinpath('My Games', 'unknown-horizons')

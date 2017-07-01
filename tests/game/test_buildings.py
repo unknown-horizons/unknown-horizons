@@ -20,6 +20,7 @@
 # ###################################################
 
 from itertools import product
+
 import pytest
 
 from horizons.command.building import Build, Tear
@@ -45,7 +46,7 @@ def _build_farm(x, y, island, settlement, owner, *field_type):
 	field_offsets = ((-3, -3), (-3, 0), (-3, 3), (0, 3), (3, 3), (3, 0), (3, -3), (0, -3))
 
 	assert len(field_type) <= 8, "Too many field types supplied {:d}.".format(len(field_type))
-	
+
 	for (x_off, y_off), field_t in zip(field_offsets, field_type):
 		fx = x + x_off
 		fy = x + y_off
@@ -291,20 +292,20 @@ def test_farm_crop_production(s, p):
 	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.HERBARY, BUILDINGS.SUGARCANE_FIELD,
 					   BUILDINGS.VINEYARD, BUILDINGS.TOBACCO_FIELD, BUILDINGS.SPICE_FIELD,
 					   BUILDINGS.HOP_FIELD, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD)
-	
+
 	assert farm
-	
+
 	primary_resources = (RES.HERBS, RES.RAW_SUGAR, RES.VINES, RES.TOBACCO_PLANTS, RES.SPICE_PLANTS,
 						 RES.HOP_PLANTS, RES.COCOA_BEANS, RES.GRAIN)
 	secondary_resources = (RES.MEDICAL_HERBS, RES.SUGAR, RES.GRAPES, RES.TOBACCO_LEAVES, RES.SPICES,
 						   RES.HOPS, RES.COCOA, RES.CORN)
-	
+
 	for p_res, s_res in zip(primary_resources, secondary_resources):
 		assert farm.get_component(StorageComponent).inventory[p_res] == 0
 		assert farm.get_component(StorageComponent).inventory[s_res] == 0
-	
+
 	s.run(seconds=60)
-	
+
 	for s_res in secondary_resources:
 		assert farm.get_component(StorageComponent).inventory[s_res]
 
@@ -319,16 +320,16 @@ def test_farm_animal_production(s, p):
 
 	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE,
 					   BUILDINGS.PIGSTY, BUILDINGS.CATTLE_RUN, BUILDINGS.ALVEARIES)
-	
+
 	primary_resources = (RES.POTATOES, RES.LAMB_WOOL, RES.PIGS, RES.CATTLE, RES.ALVEARIES)
 	secondary_resources = (RES.FOOD, RES.WOOL, RES.PIGS_SLAUGHTER, RES.CATTLE_SLAUGHTER, RES.HONEYCOMBS)
 
 	for p_res, s_res in zip(primary_resources, secondary_resources):
 		assert farm.get_component(StorageComponent).inventory[p_res] == 0
 		assert farm.get_component(StorageComponent).inventory[s_res] == 0
-	
+
 	s.run(seconds=120)
-	
+
 	for s_res in secondary_resources:
 		assert farm.get_component(StorageComponent).inventory[s_res]
 

@@ -32,10 +32,12 @@ We will need to make gettext recognize namespaces some time, but hardcoded
 
 import gettext as gettext_module
 import glob
+import json
 import locale
 import logging
 import os
 import platform
+from contextlib import contextmanager
 from typing import Dict, Optional, Text
 
 import horizons.globals
@@ -64,6 +66,18 @@ def ngettext(message1: Text, message2: Text, count: int) -> Text:
 
 
 LANGCACHE = {} # type: Dict[str, str]
+
+
+@contextmanager
+def disable_translations():
+	"""
+	Temporarily disables translations. Affects gettext and lazy gettext objects.
+	"""
+	global _trans
+	original_translation = _trans
+	_trans = None
+	yield
+	_trans = original_translation
 
 
 def reset_language():
@@ -149,3 +163,18 @@ def change_language(language=None):
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
 	LanguageChanged.broadcast(None)
+
+
+def get_language_translation_stats(language_code: str) -> int:
+	"""
+	Return percentage of translated strings for given language.
+	"""
+	if language_code not in LANGCACHE:
+		raise Exception('Unknown language "{}"'.format(language_code))
+
+	try:
+		with open(os.path.join('content', 'lang', 'stats.json')) as f:
+			data = json.load(f)
+			return data[language_code]
+	except FileNotFoundError:
+		return

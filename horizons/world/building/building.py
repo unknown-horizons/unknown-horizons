@@ -29,6 +29,7 @@ from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME, LAYERS, RES
 from horizons.engine import Fife
+from horizons.i18n import disable_translations
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.shapes import ConstRect, Point, distances
@@ -323,8 +324,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		to start production for example."""
 		pass
 
-	def __unicode__(self): # debug
-		return '{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
+	def __str__(self):
+		with disable_translations():
+			return '{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):

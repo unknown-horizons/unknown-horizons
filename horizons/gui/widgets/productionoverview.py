@@ -157,11 +157,11 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		icon.name = 'icon_{}'.format(resource_id)
 		icon.max_size = icon.min_size = icon.size = (20, 20)
 
-		label = widgets.Label(name = 'resource_{}'.format(resource_id))
+		label = widgets.Label(name='resource_{}'.format(resource_id))
 		label.text = res_name
 		label.min_size = (100, 20)
 
-		amount_label = widgets.Label(name = 'produced_sum_{}'.format(resource_id))
+		amount_label = widgets.Label(name='produced_sum_{}'.format(resource_id))
 		amount_label.text = str(amount)
 
 		hbox = widgets.HBox()

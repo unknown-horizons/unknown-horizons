@@ -80,7 +80,7 @@ class Entities:
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
 			tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", ground_id)[0][0]
 			for shape in tile_sets[tile_set_id].keys():
-				cls_name = '%d-%s' % (ground_id, shape)
+				cls_name = '{:d}-{}'.format(ground_id, shape)
 				cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
 				if load_now:
 					cls.grounds[cls_name]

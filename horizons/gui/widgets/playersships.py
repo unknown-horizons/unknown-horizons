@@ -46,7 +46,7 @@ class PlayersShips(StatsWidget):
 
 		sequence_number = 0
 		events = {}
-		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.get_component(NamedComponent).name, ship.worldid)):
+		for ship in sorted(self.session.world.ships, key=lambda ship: (ship.get_component(NamedComponent).name, ship.worldid)):
 			if ship.owner is player and ship.has_component(SelectableComponent):
 				sequence_number += 1
 				name_label, rename_icon, status_label, status_position = \

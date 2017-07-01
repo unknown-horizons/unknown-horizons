@@ -542,7 +542,8 @@ class ScenarioMapWidget:
 		lang_list.items = available_languages
 		lang_list.selected = available_languages.index(selected_language)
 
-		translated_scenario = self.find_map_filename(scenario, selected_language)
+		selected_language_code = LANGUAGENAMES.get_by_value(selected_language)
+		translated_scenario = self.find_map_filename(scenario, selected_language_code)
 		if translated_scenario is None:
 			return
 

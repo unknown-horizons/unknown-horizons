@@ -22,9 +22,11 @@
 import gettext
 import logging
 import uuid
+from typing import Dict, List, Optional, Text
 
 from horizons import network
 from horizons.i18n import find_available_languages
+from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import enet, packets
 from horizons.network.common import ErrorType, Game, Player
 
@@ -35,13 +37,70 @@ CONNECTION_TIMEOUT = 500
 # 1 ... >2012.1
 PROTOCOLS = [0, 1]
 
-logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
-		level = logging.DEBUG)
+logging.basicConfig(format='[%(asctime)-15s] [%(levelname)s] %(message)s',
+		level=logging.DEBUG)
+
+
+EVENTS = [
+	'on_connect',
+	'on_disconnect',
+	'on_receive_data',
+	packets.cmd_error,
+	packets.cmd_fatalerror,
+	packets.client.cmd_sessionprops,
+	packets.client.cmd_creategame,
+	packets.client.cmd_listgames,
+	packets.client.cmd_joingame,
+	packets.client.cmd_leavegame,
+	packets.client.cmd_chatmsg,
+	packets.client.cmd_changename,
+	packets.client.cmd_changecolor,
+	packets.client.cmd_preparedgame,
+	packets.client.cmd_toggleready,
+	packets.client.cmd_kickplayer,
+	#TODO packets.client.cmd_fetch_game,
+	#TODO packets.client.savegame_data,
+	'preparegame',
+	'startgame',
+	'leavegame',
+	'deletegame',
+	'terminategame',
+	'gamedata'
+]
+
+
+def T(text):
+	"""
+	No-op for extracting strings for translation.
+	"""
+	return text
+
+
+def print_statistic(players, games, output_file):
+	"""
+	Writes information about the current state of the server (players / games).
+	"""
+	lines = []
+
+	games_playing = len([game for game in games if game.state is Game.State.Running])
+	lines.append("Games.Total: {}".format(len(games)))
+	lines.append("Games.Playing: {}".format(games_playing))
+
+	active_players = [p for p in players if p.game is not None]
+	players_playing = len([p for p in active_players if p.game.state is Game.State.Running])
+	players_inlobby = len(active_players) - players_playing
+
+	lines.append("Players.Total: {}".format(len(players)))
+	lines.append("Players.Lobby: {}".format(players_inlobby))
+	lines.append("Players.Playing: {}".format(players_playing))
+
+	output_file.write('\n'.join(lines))
+
 
 class Server:
 	def __init__(self, hostname, port, statistic_file=None):
 		packets.SafeUnpickler.set_mode(client=False)
-		self.host     = None
+		self.host     = None # type: Optional[enet.Host]
 		self.hostname = hostname
 		self.port     = port
 		self.statistic = {
@@ -57,64 +116,47 @@ class Server:
 			# individual packet classes
 			'maxpacketsize' : 2 * 1024 * 1024,
 		}
-		self.callbacks = {
-			'onconnect':     [self.onconnect],
-			'ondisconnect':  [self.ondisconnect],
-			'onreceive':     [self.onreceive],
-			packets.cmd_error:                 [self.onerror],
-			packets.cmd_fatalerror:            [self.onfatalerror],
-			packets.client.cmd_sessionprops:   [self.onsessionprops],
-			packets.client.cmd_creategame:     [self.oncreategame],
-			packets.client.cmd_listgames:      [self.onlistgames],
-			packets.client.cmd_joingame:       [self.onjoingame],
-			packets.client.cmd_leavegame:      [self.onleavegame],
-			packets.client.cmd_chatmsg:        [self.onchat],
-			packets.client.cmd_changename:     [self.onchangename],
-			packets.client.cmd_changecolor:    [self.onchangecolor],
-			packets.client.cmd_preparedgame:   [self.onpreparedgame],
-			packets.client.cmd_toggleready:    [self.ontoggleready],
-			packets.client.cmd_kickplayer:     [self.onkick],
-			#TODO packets.client.cmd_fetch_game:     [self.onfetchgame],
-			#TODO packets.client.savegame_data:      [self.onsavegamedata],
-			'preparegame':   [self.preparegame],
-			'startgame':     [self.startgame],
-			'leavegame':     [self.leavegame],
-			'deletegame':    [self.deletegame],
-			'terminategame': [self.terminategame],
-			'gamedata':      [self.gamedata],
+		self.events = SimpleMessageBus(EVENTS)
+
+		callbacks = {
+			'on_connect': self.on_connect,
+			'on_disconnect': self.on_disconnect,
+			'on_receive_data': self.on_receive_data,
+			packets.cmd_error: self.on_error,
+			packets.cmd_fatalerror: self.on_fatalerror,
+			packets.client.cmd_sessionprops: self.on_sessionprops,
+			packets.client.cmd_creategame: self.on_creategame,
+			packets.client.cmd_listgames: self.on_listgames,
+			packets.client.cmd_joingame: self.on_joingame,
+			packets.client.cmd_leavegame: self.on_leavegame,
+			packets.client.cmd_chatmsg: self.on_chat,
+			packets.client.cmd_changename: self.on_changename,
+			packets.client.cmd_changecolor: self.on_changecolor,
+			packets.client.cmd_preparedgame: self.on_preparedgame,
+			packets.client.cmd_toggleready: self.on_toggleready,
+			packets.client.cmd_kickplayer: self.on_kick,
+			#TODO packets.client.cmd_fetch_game: self.on_fetchgame,
+			#TODO packets.client.savegame_data: self.on_savegamedata,
+			'preparegame': self.preparegame,
+			'startgame': self.startgame,
+			'leavegame': self.leavegame,
+			'deletegame': self.deletegame,
+			'terminategame': self.terminategame,
+			'gamedata': self.gamedata,
 		}
-		self.games   = [] # list of games
-		self.players = {} # sessionid => Player() dict
-		self.i18n    = {} # lang => gettext dict
-		self.check_urandom()
+
+		for event_name, callback in callbacks.items():
+			self.events.subscribe(event_name, callback)
+
+		self.games   = [] # type: List[Game]
+		self.players = {} # type: Dict[bytes, Player]
+		self.i18n    = {} # type: Dict[str, gettext.GNUTranslations]
 		self.setup_i18n()
 
-
-	def check_urandom(self):
-		try:
-			import os
-			os.urandom(1)
-		except NotImplementedError:
-			import random
-			import time
-			random.seed(uuid.getnode() + int(time.time() * 1e3))
-			logging.warning("[INIT] Your system doesn't support /dev/urandom")
-
-
-	# we use the following custom prefixes/functions to distinguish
-	# between server side messages (domain=unknown-horizons-server) and
-	# client side messages (domain=unknown-horizons):
-	#
-	# S_(player,  ...)    ... same as _(...)
-	# SN_(player, ...)    ... same as N_(...)
-	# __(...)             ... noop for extracting the strings
-	def gettext(self, player, message):
-		return player.gettext.gettext(message)
-
-	def ngettext(self, player, msgid1, msgid2, n):
-		return player.gettext.ngettext(msgid1, msgid2, n)
-
 	def setup_i18n(self):
+		"""
+		Load available translations for server messages.
+		"""
 		domain = 'unknown-horizons-server'
 		for lang, dir in find_available_languages(domain).items():
 			if len(dir) <= 0:
@@ -123,40 +165,34 @@ class Server:
 				self.i18n[lang] = gettext.translation(domain, dir, [lang])
 			except IOError:
 				pass
-		import builtins
-		builtins.__dict__['S_']   = self.gettext
-		builtins.__dict__['SN_']  = self.ngettext
-		builtins.__dict__['__']   = lambda x : x
 
-
-	# uuid4() uses /dev/urandom when possible
-	def generate_session_id(self):
+	@staticmethod
+	def generate_session_id():
 		return uuid.uuid4().hex
 
-
-	def register_callback(self, type, callback, prepend=False):
-		if type in self.callbacks:
-			if prepend:
-				self.callbacks[type].insert(0, callback)
-			else:
-				self.callbacks[type].append(callback)
-		else:
-			raise TypeError("Unsupported type")
-
-
-	def call_callbacks(self, type, *args):
-		if type not in self.callbacks:
+	def collect_statistics(self):
+		"""
+		Regularly collect statistics about the server (only when enabled explicitly).
+		"""
+		if self.statistic['file'] is None:
 			return
-		ret = True
-		for callback in self.callbacks[type]:
-			tmp = callback(*args)
-			if tmp is None:
-				tmp = True
-			ret &= tmp
-		return ret
 
+		if self.statistic['timestamp'] > 0:
+			self.statistic['timestamp'] -= CONNECTION_TIMEOUT
+			return
+
+		try:
+			with open(self.statistic['file'], 'w') as f:
+				print_statistic(self.players.values(), self.games, f)
+		except IOError as e:
+			logging.error("[STATISTIC] Unable to open statistic file: {}".format(e))
+
+		self.statistic['timestamp'] = self.statistic['interval']
 
 	def run(self):
+		"""
+		Main loop of the server
+		"""
 		logging.info("Starting up server on {0!s}:{1:d}".format(self.hostname, self.port))
 		try:
 			self.host = enet.Host(enet.Address(self.hostname, self.port), MAX_PEERS, 0, 0, 0)
@@ -166,42 +202,51 @@ class Server:
 
 		logging.debug("Entering the main loop...")
 		while True:
-			if self.statistic['file'] is not None:
-				if self.statistic['timestamp'] <= 0:
-					self.print_statistic(self.statistic['file'])
-					self.statistic['timestamp'] = self.statistic['interval']
-				else:
-					self.statistic['timestamp'] -= CONNECTION_TIMEOUT
+			self.collect_statistics()
 
 			event = self.host.service(CONNECTION_TIMEOUT)
 			if event.type == enet.EVENT_TYPE_NONE:
 				continue
 			elif event.type == enet.EVENT_TYPE_CONNECT:
-				self.call_callbacks("onconnect", event)
+				self.events.broadcast("on_connect", event)
 			elif event.type == enet.EVENT_TYPE_DISCONNECT:
-				self.call_callbacks("ondisconnect", event)
+				self.events.broadcast("on_disconnect", event)
 			elif event.type == enet.EVENT_TYPE_RECEIVE:
-				self.call_callbacks("onreceive", event)
+				self.events.broadcast("on_receive_data", event)
 			else:
 				logging.warning("Invalid packet ({0})".format(event.type))
 
-
-	def send(self, peer, packet, channelid=0):
+	def send(self, peer: 'enet.Peer', packet: packets.packet):
+		"""
+		Sends a packet to a client.
+		"""
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
 
-		self.sendraw(peer, packet.serialize(), channelid)
+		self.send_raw(peer, packet.serialize())
 
-	def sendraw(self, peer, data, channelid=0):
+	def send_raw(self, peer: 'enet.Peer', data: bytes):
+		"""
+		Sends raw data to a client.
+		"""
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
 
 		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
-		peer.send(channelid, packet)
+		peer.send(0, packet)
 		self.host.flush()
 
+	def send_to_game(self, game: Game, packet: packets.packet):
+		"""
+		Send a packet to all players of a game.
+		"""
+		for player in game.players:
+			self.send(player.peer, packet)
 
-	def disconnect(self, peer, later=True):
+	def disconnect(self, peer: 'enet.Peer', later=True):
+		"""
+		Disconnect a client.
+		"""
 		logging.debug("[DISCONNECT] Disconnecting client {0!s}".format(peer.address))
 		try:
 			if later:
@@ -211,81 +256,94 @@ class Server:
 		except IOError:
 			peer.reset()
 
+	def error(self, player: Player, message: Text, _type=ErrorType.NotSet):
+		"""
+		Send an error message to a player.
+		"""
+		self._error(player.peer, player.gettext(message), _type)
 
-	def error(self, player, message, _type=ErrorType.NotSet):
-		self._error(player.peer, S_(player, message), _type)
-
-	def _error(self, peer, message, _type=ErrorType.NotSet):
+	def _error(self, peer: 'enet.Peer', message: Text, _type=ErrorType.NotSet):
+		"""
+		Send an error message to a client.
+		"""
 		self.send(peer, packets.cmd_error(message, _type))
 
-	def fatalerror(self, player, message, later=True):
-		self._fatalerror(player.peer, S_(player, message), later)
+	def fatal_error(self, player: Player, message: Text):
+		"""
+		Send an error message to a player and disconnect.
+		"""
+		self._fatal_error(player.peer, player.gettext(message))
 
-	def _fatalerror(self, peer, message, later=True):
+	def _fatal_error(self, peer: 'enet.Peer', message: Text):
+		"""
+		Send an error message to a client and disconnect.
+		"""
 		self.send(peer, packets.cmd_fatalerror(message))
-		self.disconnect(peer, later)
+		self.disconnect(peer, later=True)
 
+	# Basic event handling
 
-	def onconnect(self, event):
+	def on_connect(self, event: 'enet.Event'):
+		"""
+		When a client connect, add it to the list of players.
+
+		NOTE: We can't look at `event.peer.data` to figure out whether or not we know this
+		      client already since the access will segfault the interpreter.
+		"""
 		peer = event.peer
-		# disable that check as peer.data may be uninitialized which segfaults then
-		#if peer.data in self.players:
-		#	logging.warning("[CONNECT] Already known player %s!" % (peer.address))
-		#	self._fatalerror(event.peer, "You can't connect more than once")
-		#	return
 		player = Player(event.peer, self.generate_session_id(), event.data)
-		logging.debug("[CONNECT] New Client: {0!s}".format(player))
+		logging.debug("[CONNECT] New Client: {}".format(player))
 
-		# store session id inside enet.peer.data
 		# NOTE: ALWAYS initialize peer.data
 		session_id = bytes(player.sid, 'ascii')
 		event.peer.data = session_id
 
 		if player.protocol not in PROTOCOLS:
-			logging.warning("[CONNECT] {0!s} runs old or unsupported protocol".format(player))
-			self.fatalerror(player, __("Old or unsupported multiplayer protocol. Please check your game version"))
+			logging.warning("[CONNECT] {} runs old or unsupported protocol".format(player))
+			self.fatal_error(player, T("Old or unsupported multiplayer protocol. Please check your game version"))
 			return
 
 		# NOTE: copying bytes or int doesn't work here
 		self.players[session_id] = player
 		self.send(event.peer, packets.server.cmd_session(player.sid, self.capabilities))
 
-
-	def ondisconnect(self, event):
+	def on_disconnect(self, event: 'enet.Event'):
+		"""
+		When a client closes the connection, remove it from the player list.
+		"""
 		peer = event.peer
 		# check need for early disconnects (e.g. old protocol)
 		if peer.data not in self.players:
 			return
-		player = self.players[peer.data]
-		logging.debug("[DISCONNECT] {0!s} disconnected".format(player))
+		player = self.players.pop(peer.data)
+		logging.debug("[DISCONNECT] {} disconnected".format(player))
 		if player.game is not None:
-			self.call_callbacks("leavegame", player)
-		del self.players[peer.data]
+			self.events.broadcast("leavegame", player)
 
-
-	def onreceive(self, event):
+	def on_receive_data(self, event: 'enet.Event'):
+		"""
+		Handle received packets from the client.
+		"""
 		peer = event.peer
-		#logging.debug("[RECEIVE] Got data from %s" % (peer.address))
-		# check player is known by server
 		if peer.data not in self.players:
-			logging.warning("[RECEIVE] Packet from unknown player {0!s}!".format(peer.address))
-			self._fatalerror(event.peer, "I don't know you")
+			logging.warning("[RECEIVE] Packet from unknown player {}!".format(peer.address))
+			self._fatal_error(event.peer, "I don't know you")
 			return
 
 		player = self.players[peer.data]
 
 		# check packet size
 		if len(event.packet.data) > self.capabilities['maxpacketsize']:
-			logging.warning("[RECEIVE] Global packet size exceeded from {0!s}: size={1:d}".
+			logging.warning("[RECEIVE] Global packet size exceeded from {}: size={}".
 				format(peer.address, len(event.packet.data)))
-			self.fatalerror(player, __("You've exceeded the global packet size.") + " " +
-			                        __("This should never happen. "
+			self.fatal_error(player, T("You've exceeded the global packet size.") + " " +
+			                         T("This should never happen. "
 			                           "Please contact us or file a bug report."))
 			return
 
 		# shortpath if game is running
-		if player.game is not None and player.game.state is Game.State.Running:
-			self.call_callbacks('gamedata', player, event.packet.data)
+		if player.game and player.game.state is Game.State.Running:
+			self.events.broadcast('gamedata', player, event.packet.data)
 			return
 
 		packet = None
@@ -295,340 +353,275 @@ class Server:
 			self.error(player, str(e))
 			return
 		except network.PacketTooLarge as e:
-			logging.warning("[RECEIVE] Per packet size exceeded from {0!s}: {1!s}".
+			logging.warning("[RECEIVE] Per packet size exceeded from {}: {}".
 				format(player, e))
-			self.fatalerror(player, __("You've exceeded the per packet size.") + " " +
-			                        __("This should never happen. "
+			self.fatal_error(player, T("You've exceeded the per packet size.") + " " +
+			                         T("This should never happen. "
 			                           "Please contact us or file a bug report.") +
-			                        " " + str(e))
+			                           " " + str(e))
 			return
 		except Exception as e:
-			logging.warning("[RECEIVE] Unknown or malformed packet from {0!s}: {1!s}".
+			logging.warning("[RECEIVE] Unknown or malformed packet from {}: {}".
 				format(player, e))
-			self.fatalerror(player, __("Unknown or malformed packet. Please check your game version"))
+			self.fatal_error(player, T("Unknown or malformed packet. Please check your game version"))
 			return
 
 		# session id check
 		if packet.sid != player.sid:
 			logging.warning(
-				"[RECEIVE] Invalid session id for player {0!s} ({1!s} vs {2!s})!".
+				"[RECEIVE] Invalid session id for player {} ({} vs {})!".
 				format(peer.address, packet.sid, player.sid))
-			# this will trigger ondisconnect() for cleanup
-			self.fatalerror(player, __("Invalid/Unknown session"))
+			self.fatal_error(player, T("Invalid/Unknown session"))
 			return
 
-		if packet.__class__ not in self.callbacks:
-			logging.warning("[RECEIVE] Unhandled network packet from {0!s} - Ignoring!".
+		if not self.events.is_message_type_known(packet.__class__):
+			logging.warning("[RECEIVE] Unhandled network packet from {} - Ignoring!".
 				format(peer.address))
 			return
-		self.call_callbacks(packet.__class__, player, packet)
 
+		self.events.broadcast(packet.__class__, player, packet)
 
-	def onerror(self, player, packet):
-		# we shouldn't receive any errors from client
-		# so ignore them all
-		logging.debug("[ERROR] Client Message: {0!s}".format(packet.errorstr))
+	def on_error(self, player: Player, packet: packets.cmd_error):
+		"""
+		We shouldn't receive any errors from client, so ignore them all.
+		"""
+		logging.debug("[ERROR] Client Message: {}".format(packet.errorstr))
 
-
-	def onfatalerror(self, player, packet):
-		# we shouldn't receive any fatala errors from client
-		# so just disconnect them
-		logging.debug("[FATAL] Client Message: {0!s}".format(packet.errorstr))
+	def on_fatalerror(self, player: Player, packet: packets.cmd_fatalerror):
+		"""
+		We shouldn't receive any fatal errors from client, so just disconnect them.
+		"""
+		logging.debug("[FATAL] Client Message: {}".format(packet.errorstr))
 		self.disconnect(player.peer)
 
+	# Game specific event handling
 
-	def onsessionprops(self, player, packet):
-		logging.debug("[PROPS] {0!s}".format(player))
+	def on_sessionprops(self, player: Player, packet: packets.client.cmd_sessionprops):
+		"""
+		Client sends us specific settings / preferences for this session, for example the
+		language.
+		"""
+		logging.debug("[PROPS] {}".format(player))
 		if hasattr(packet, 'lang'):
 			if packet.lang in self.i18n:
-				player.gettext = self.i18n[packet.lang]
+				player.gettext = self.i18n[packet.lang].gettext
 		self.send(player.peer, packets.cmd_ok())
 
-	def oncreategame(self, player, packet):
+	def on_creategame(self, player: Player, packet: packets.client.cmd_creategame):
+		"""
+		A client wants to create a new game.
+		"""
 		if packet.maxplayers < self.capabilities['minplayers']:
 			raise network.SoftNetworkException(
-				"You can't run a game with less than {0:d} players".
+				"You can't run a game with less than {} players".
 				format(self.capabilities['minplayers']))
 		if packet.maxplayers > self.capabilities['maxplayers']:
 			raise network.SoftNetworkException(
-				"You can't run a game with more than {0:d} players".
+				"You can't run a game with more than {} players".
 				format(self.capabilities['maxplayers']))
 		game = Game(packet, player)
-		logging.debug("[CREATE] [{0!s}] {1!s} created {2!s}".format(game.uuid, player, game))
+		logging.debug("[CREATE] [{}] {} created {}".format(game.uuid, player, game))
 		self.games.append(game)
 		self.send(player.peer, packets.server.data_gamestate(game))
 
-	def deletegame(self, game):
-		logging.debug("[REMOVE] [{0!s}] {1!s} removed".format(game.uuid, game))
-		game.clear()
-		self.games.remove(game)
-
-	def onlistgames(self, player, packet):
+	def on_listgames(self, player: Player, packet: packets.client.cmd_listgames):
+		"""
+		Send the client a list of all available games on this server.
+		"""
 		logging.debug("[LIST]")
-		gameslist = packets.server.data_gameslist()
-		for _game in self.games:
-			if _game.creator.protocol != player.protocol:
+		response = packets.server.data_gameslist()
+		for game in self.games:
+			if game.creator.protocol != player.protocol:
 				continue
-			if not _game.is_open():
+			if not game.is_open():
 				continue
-			if _game.is_full():
+			if game.is_full():
 				continue
-			if packet.clientversion != -1 and packet.clientversion != _game.creator.version:
+			if packet.clientversion != -1 and packet.clientversion != game.creator.version:
 				continue
-			if packet.mapname and packet.mapname != _game.mapname:
+			if packet.mapname and packet.mapname != game.mapname:
 				continue
-			if packet.maxplayers and packet.maxplayers != _game.maxplayers:
+			if packet.maxplayers and packet.maxplayers != game.maxplayers:
 				continue
-			gameslist.addgame(_game)
-		self.send(player.peer, gameslist)
+			response.addgame(game)
 
+		self.send(player.peer, response)
 
-	def __find_game_from_uuid(self, packet):
-		game = None
-		for _game in self.games:
-			if packet.clientversion != _game.creator.version:
-				continue
-			if packet.uuid != _game.uuid:
-				continue
-			game = _game
-			break
-		return game
-
-
-	def onjoingame(self, player, packet):
+	def on_joingame(self, player: Player, packet: packets.client.cmd_joingame):
+		"""
+		A player wants to join a game.
+		"""
 		if player.game is not None:
-			self.error(player, __("You can't join a game while in another game"))
+			self.error(player, T("You can't join a game while in another game"))
 			return
 
-		game = self.__find_game_from_uuid(packet)
+		game = self._find_game_from_uuid(packet.uuid, packet.clientversion)
 		if game is None:
-			self.error(player, __("Unknown game or game is running a different version"))
+			self.error(player, T("Unknown game or game is running a different version"))
 			return
 		if not game.is_open():
-			self.error(player, __("Game has already started. No more joining"))
+			self.error(player, T("Game has already started. No more joining"))
 			return
 		if game.is_full():
-			self.error(player, __("Game is full"))
+			self.error(player, T("Game is full"))
 			return
 		if game.has_password() and packet.password != game.password:
-			self.error(player, __("Wrong password"))
+			self.error(player, T("Wrong password"))
 			return
-
-		# protocol=0
-		# assign free color
-		if packet.playercolor is None:
-			colors = []
-			for _player in game.players:
-				colors.append(_player.color)
-			for color in range(1, len(colors) + 2):
-				if color not in colors:
-					break
-			packet.playercolor = color
 
 		# make sure player names, colors and clientids are unique
-		for _player in game.players:
-			if _player.name == packet.playername:
-				self.error(player, __("There's already a player with your name inside this game.") + " " +
-				                   __("Please change your name."))
+		for player in game.players:
+			if player.name == packet.playername:
+				self.error(player, T("There's already a player with your name inside this game.") + " " +
+				                   T("Please change your name."))
 				return
-			if _player.color == packet.playercolor:
-				self.error(player, __("There's already a player with your color inside this game.") + " " +
-				                   __("Please change your color."))
+			if player.color == packet.playercolor:
+				self.error(player, T("There's already a player with your color inside this game.") + " " +
+				                   T("Please change your color."))
 				return
-			if _player.clientid == packet.clientid:
-				self.error(player, __("There's already a player with your unique player ID inside this game. "
-				                      "This should never occur."))
+			if player.clientid == packet.clientid:
+				self.error(player, T("There's already a player with your unique player ID inside this game. "
+				                     "This should never occur."))
 				return
 
-		logging.debug("[JOIN] [{0!s}] {1!s} joined {2!s}".format(game.uuid, player, game))
+		logging.debug("[JOIN] [{}] {} joined {}".format(game.uuid, player, game))
 		game.add_player(player, packet)
-		for _player in game.players:
-			self.send(_player.peer, packets.server.data_gamestate(game))
+		self.send_to_game(game, packets.server.data_gamestate(game))
 
-		if player.protocol == 0:
-			if game.is_full():
-				self.call_callbacks("preparegame", game)
-
-
-	def onleavegame(self, player, packet):
+	def on_leavegame(self, player: Player, packet: packets.client.cmd_leavegame):
+		"""
+		Player wants to leave the current game.
+		"""
 		if player.game is None:
-			self.error(player, __("You are not inside a game"))
+			self.error(player, T("You are not inside a game"))
 			return
-		self.call_callbacks("leavegame", player)
+		self.events.broadcast("leavegame", player)
 		self.send(player.peer, packets.cmd_ok())
 
-
-	def leavegame(self, player):
-		game = player.game
-		# leaving the game if game has already started is a hard error
-		if not game.is_open():
-			self.call_callbacks('terminategame', game, player)
-			return
-		logging.debug("[LEAVE] [{0!s}] {1!s} left {2!s}".format(game.uuid, player, game))
-		game.remove_player(player)
-		if game.is_empty():
-			self.call_callbacks('deletegame', game)
-			return
-		for _player in game.players:
-			self.send(_player.peer, packets.server.data_gamestate(game))
-		# the creator leaving the game is a hard error too
-		if player.protocol >= 1 and player == game.creator:
-			self.call_callbacks('terminategame', game, player)
-			return
-
-
-	def terminategame(self, game, player=None):
-		logging.debug("[TERMINATE] [{0!s}] (by {1!s})".
-			format(game.uuid, player if player is not None else None))
-		if game.creator.protocol >= 1 and game.is_open():
-			# NOTE: works with protocol >= 1
-			for _player in game.players:
-				self.error(_player, __("The game has been terminated. The creator has left the game."), ErrorType.TerminateGame)
-		else:
-			for _player in game.players:
-				if _player.peer.state == enet.PEER_STATE_CONNECTED:
-					self.fatalerror(_player,
-						__("One player has terminated their game. "
-						"For technical reasons, this currently means the game cannot continue. "
-						"We are very sorry about that."))
-		self.call_callbacks('deletegame', game)
-
-
-	def preparegame(self, game):
-		logging.debug("[PREPARE] [{0!s}] Players: {1!s}".
-			format(game.uuid, [str(i) for i in game.players]))
-		game.state = Game.State.Prepare
-		for _player in game.players:
-			self.send(_player.peer, packets.server.cmd_preparegame())
-
-
-	def startgame(self, game):
-		logging.debug("[START] [{0!s}] Players: {1!s}".
-			format(game.uuid, [str(i) for i in game.players]))
-		game.state = Game.State.Running
-		for _player in game.players:
-			self.send(_player.peer, packets.server.cmd_startgame())
-
-
-	def onchat(self, player, packet):
+	def on_chat(self, player: Player, packet: packets.client.cmd_chatmsg):
+		"""
+		Player send a chat message.
+		"""
 		if player.game is None:
 			# just ignore if not inside a game
 			self.send(player.peer, packets.cmd_ok())
 			return
+
 		game = player.game
 		# don't send packets to already started games
 		if not game.is_open():
 			return
-		logging.debug("[CHAT] [{0!s}] {1!s}: {2!s}".format(game.uuid, player, packet.chatmsg))
-		for _player in game.players:
-			self.send(_player.peer, packets.server.cmd_chatmsg(player.name, packet.chatmsg))
 
+		logging.debug("[CHAT] [{}] {}: {}".format(game.uuid, player, packet.chatmsg))
+		self.send_to_game(game, packets.server.cmd_chatmsg(player.name, packet.chatmsg))
 
-	def onchangename(self, player, packet):
-		# NOTE: that event _only_ happens inside a lobby
+	def on_changename(self, player: Player, packet: packets.client.cmd_changename):
+		"""
+		Player wants to change its name.
+
+		NOTE: that event _only_ happens inside a lobby
+		"""
 		if player.game is None:
 			# just ignore if not inside a game
 			self.send(player.peer, packets.cmd_ok())
 			return
+
 		# ignore change to existing name
 		if player.name == packet.playername:
 			return
+
 		game = player.game
 		# don't send packets to already started games
 		if not game.is_open():
 			return
 
 		# make sure player names are unique
-		for _player in game.players:
-			if _player.name == packet.playername:
-				self.error(player, __("There's already a player with your name inside this game.") + " " +
-				                   __("Unable to change your name."))
-				return
+		if packet.playername in [p.name for p in game.players]:
+			self.error(player, T("There's already a player with your name inside this game.") + " " +
+					   T("Unable to change your name."))
+			return
 
 		# ACK the change
-		logging.debug("[CHANGENAME] [{0!s}] {1!s} -> {2!s}".
+		logging.debug("[CHANGENAME] [{}] {} -> {}".
 			format(game.uuid, player.name, packet.playername))
 		player.name = packet.playername
-		for _player in game.players:
-			self.send(_player.peer, packets.server.data_gamestate(game))
+		self.send_to_game(game, packets.server.data_gamestate(game))
 
+	def on_changecolor(self, player: Player, packet: packets.client.cmd_changecolor):
+		"""
+		Player wants to change its color.
 
-	def onchangecolor(self, player, packet):
-		# NOTE: that event _only_ happens inside a lobby
+		NOTE: that event _only_ happens inside a lobby
+		"""
 		if player.game is None:
 			# just ignore if not inside a game
 			self.send(player.peer, packets.cmd_ok())
 			return
+
 		# ignore change to same color
 		if player.color == packet.playercolor:
 			return
+
 		game = player.game
 		# don't send packets to already started games
 		if not game.is_open():
 			return
 
 		# make sure player colors are unique
-		for _player in game.players:
-			if _player.color == packet.playercolor:
-				self.error(player, __("There's already a player with your color inside this game.") + " " +
-				                   __("Unable to change your color."))
-				return
+		if packet.playercolor in [p.color for p in game.players]:
+			self.error(player, T("There's already a player with your color inside this game.") + " " +
+					   T("Unable to change your color."))
+			return
 
 		# ACK the change
-		logging.debug("[CHANGECOLOR] [{0!s}] Player:{1!s} {2!s} -> {3!s}".
+		logging.debug("[CHANGECOLOR] [{}] Player:{} {} -> {}".
 			format(game.uuid, player.name, player.color, packet.playercolor))
 		player.color = packet.playercolor
-		for _player in game.players:
-			self.send(_player.peer, packets.server.data_gamestate(game))
+		self.send_to_game(game, packets.server.data_gamestate(game))
 
-
-	def gamedata(self, player, data):
-		game = player.game
-		#logging.debug("[GAMEDATA] [%s] %s" % (game.uuid, player))
-		for _player in game.players:
-			if _player is player:
-				continue
-			self.sendraw(_player.peer, data)
-
-
-	# this event happens after a player is done with loading
-	# and ready to start the game. we need to wait for all players
-	def onpreparedgame(self, player, packet):
+	def on_preparedgame(self, player: Player, packet: packets.client.cmd_preparedgame):
+		"""
+		This event happens after a player is done with loading and ready to start the
+		game. We need to wait for all players.
+		"""
 		game = player.game
 		if game is None:
 			return
-		logging.debug("[PREPARED] [{0!s}] {1!s}".format(game.uuid, player))
+
+		logging.debug("[PREPARED] [{}] {}".format(game.uuid, player))
 		player.prepared = True
-		count = 0
-		for _player in game.players:
-			if _player.prepared:
-				count += 1
-		if count != game.playercnt:
+
+		if not all(p.prepared for p in game.players):
 			return
-		self.call_callbacks('startgame', game)
 
+		self.events.broadcast('startgame', game)
 
-	def ontoggleready(self, player, packet):
+	def on_toggleready(self, player: Player, packet: packets.client.cmd_toggleready):
+		"""
+		Player signals whether it is ready to start the game.
+		"""
 		game = player.game
 		if game is None:
 			return
+
 		# don't send packets to already started games
 		if not game.is_open():
 			return
 
 		# ACK the change
 		player.toggle_ready()
-		logging.debug("[TOGGLEREADY] [{0!s}] Player:{1!s} {2!s} ready".
+		logging.debug("[TOGGLEREADY] [{}] Player:{} is{} ready".
 			format(game.uuid, player.name, "is not" if not player.ready else "is"))
-		for _player in game.players:
-			self.send(_player.peer, packets.server.data_gamestate(game))
+		self.send_to_game(game, packets.server.data_gamestate(game))
 
 		# start the game after the ACK
 		if game.is_ready():
-			self.call_callbacks("preparegame", game)
+			self.events.broadcast("preparegame", game)
 
-
-	def onkick(self, player, packet):
+	def on_kick(self, player: Player, packet: packets.client.cmd_kickplayer):
+		"""
+		A player should should be kicked from the game.
+		"""
 		game = player.game
 		if game is None:
 			return
@@ -638,34 +631,27 @@ class Server:
 		if player is not game.creator:
 			return
 
-		kickplayer = None
-		for _player in game.players:
-			if _player.sid == packet.kicksid:
-				kickplayer = _player
-				break
+		kickplayer = game.find_player_by_sid(packet.kicksid)
 		if kickplayer is None:
 			return
 		if kickplayer is game.creator:
 			return
 
-		logging.debug("[KICK] [{0!s}] {1!s} got kicked".format(game.uuid, kickplayer.name))
-		for _player in game.players:
-			self.send(_player.peer, packets.server.cmd_kickplayer(kickplayer))
-		self.call_callbacks("leavegame", kickplayer)
-
+		logging.debug("[KICK] [{}] {} got kicked".format(game.uuid, kickplayer.name))
+		self.send_to_game(game, packets.server.cmd_kickplayer(kickplayer))
+		self.events.broadcast("leavegame", kickplayer)
 
 	#TODO fix
 	def onfetchgame(self, player, packet):
 		game = player.game
 
 		if game is not None:
-			self.error(player, __("You can't fetch a game while in another game"))
+			self.error(player, T("You can't fetch a game while in another game"))
 
-		fetch_game = self.__find_game_from_uuid(packet)
+		fetch_game = self._find_game_from_uuid(packet.uuid, packet.clientversion)
 		for _player in fetch_game.players:
 			if _player.name == fetch_game.creator: #TODO
 				self.send(_player.peer, packets.server.cmd_fetch_game(player.sid))
-
 
 	#TODO fix
 	def onsavegamedata(self, player, packet):
@@ -675,36 +661,92 @@ class Server:
 			if _player.sid == packet.psid:
 				self.send(_player.peer, packets.server.savegame_data(packet.data, player.sid, game.mapname))
 
-
-	def print_statistic(self, file):
-		lines = []
-		lines.append("Games.Total: {0:d}\n".format(len(self.games)))
-		games_playing = 0
+	def _find_game_from_uuid(self, uuid: str, client_version: str) -> Optional[Game]:
+		"""
+		Returns a game with a given uuid.
+		"""
 		for game in self.games:
-			if game.state is Game.State.Running:
-				games_playing += 1
-		lines.append("Games.Playing: {0:d}\n".format(games_playing))
-
-		lines.append("Players.Total: {0:d}\n".format(len(self.players)))
-		players_inlobby = 0
-		players_playing = 0
-		players_oldprotocol = 0
-		for player in self.players.values():
-			if player.game is None:
+			if client_version != game.creator.version:
 				continue
-			if player.game.state is Game.State.Running:
-				players_playing += 1
-			else:
-				players_inlobby += 1
-			if player.protocol < PROTOCOLS[-1]:
-				players_oldprotocol += 1
-		lines.append("Players.Lobby: {0:d}\n".format(players_inlobby))
-		lines.append("Players.Playing: {0:d}\n".format(players_playing))
-		lines.append("Players.OldProtocol: {0:d}\n".format(players_oldprotocol))
+			if uuid != game.uuid:
+				continue
 
-		try:
-			with open(file, "w") as fd:
-				fd.write('\n'.join(lines))
-		except IOError as e:
-			logging.error("[STATISTIC] Unable to open statistic file: {0}".format(e))
-		return
+			return game
+
+	def deletegame(self, game: Game):
+		"""
+		Remove the game from the server.
+		"""
+		logging.debug("[REMOVE] [{}] {} removed".format(game.uuid, game))
+		game.clear()
+		self.games.remove(game)
+
+	def leavegame(self, player: Player):
+		"""
+		Remove player from the active game.
+		"""
+		game = player.game
+		# leaving the game if game has already started is a hard error
+		if not game.is_open():
+			self.events.broadcast('terminategame', game, player)
+			return
+
+		logging.debug("[LEAVE] [{}] {} left {}".format(game.uuid, player, game))
+		game.remove_player(player)
+		if game.is_empty():
+			self.events.broadcast('deletegame', game)
+			return
+		for player in game.players:
+			self.send(player.peer, packets.server.data_gamestate(game))
+
+		# the creator leaving the game is a hard error too
+		if player.protocol >= 1 and player == game.creator:
+			self.events.broadcast('terminategame', game, player)
+			return
+
+	def terminategame(self, game: Game, player=None):
+		"""
+		Forcefully end the game.
+		"""
+		logging.debug("[TERMINATE] [{}] (by {})".
+			format(game.uuid, player if player is not None else None))
+		if game.creator.protocol >= 1 and game.is_open():
+			# NOTE: works with protocol >= 1
+			for p in game.players:
+				self.error(p, T("The game has been terminated. The creator has left the game."), ErrorType.TerminateGame)
+		else:
+			for p in game.players:
+				if p.peer.state == enet.PEER_STATE_CONNECTED:
+					self.fatal_error(p,
+						T("One player has terminated their game. "
+						"For technical reasons, this currently means the game cannot continue. "
+						"We are very sorry about that."))
+		self.events.broadcast('deletegame', game)
+
+	def preparegame(self, game: Game):
+		"""
+		Instruct all players to start loading the game.
+		"""
+		logging.debug("[PREPARE] [{}] Players: {}".
+			format(game.uuid, [str(i) for i in game.players]))
+		game.state = Game.State.Prepare
+		self.send_to_game(game, packets.server.cmd_preparegame())
+
+	def startgame(self, game: Game):
+		"""
+		Instruct all players to start the game.
+		"""
+		logging.debug("[START] [{}] Players: {}".
+			format(game.uuid, [str(i) for i in game.players]))
+		game.state = Game.State.Running
+		self.send_to_game(game, packets.server.cmd_startgame())
+
+	def gamedata(self, player: Player, data: bytes):
+		"""
+		Broadcast game data from a single client to all others in the game.
+		"""
+		game = player.game
+		for p in game.players:
+			if p is player:
+				continue
+			self.send_raw(p.peer, data)

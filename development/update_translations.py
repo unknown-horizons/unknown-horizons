@@ -60,7 +60,6 @@ for s in ALL_SCENARIOS:
 VOICES_TRANSLATIONS = glob('po/voices/*.po')
 VOICES_TEMPLATE = 'po/voices/unknown-horizons-voices.pot'
 
-JUST_NAME = re.compile(r'^\s*[0-9]*\s(\S.*)$')
 GLOBAL_AUTHORS = ('Translators', 'Chris Oelmueller', 'Michal Čihař', 'Michal Čihař Čihař')
 language_authors = defaultdict(set)
 
@@ -88,21 +87,19 @@ def update_from_template(input_po, input_template):
 def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..', pushed_by='Weblate'):
 	authors = subprocess.check_output([
 		'git',
-		'shortlog',
+		'log',
 		since,
 		'--committer',
 		pushed_by,
-		'-sn', # Use 'sne' to include email (if that is ever needed)
-		'--',
+		'--format=%an',
 		input_po,
 	], stderr=subprocess.STDOUT)
 
 	#TODO Clearly the above can never fail, ever. But what if it did?
 	lang = regexp.search(input_po).groups()[0]
-	for author_line in authors.split('\n'):
-		if not author_line:
+	for author in authors.decode('utf-8').split('\n'):
+		if not author:
 			continue
-		author = JUST_NAME.search(author_line).groups()[0]
 		if author in GLOBAL_AUTHORS:
 			continue
 		english_lang = LANGUAGENAMES.get_english(lang)
@@ -138,7 +135,7 @@ def main():
 
 	# Output data ready for AUTHORS.md copy/paste
 	print('-- New translation contributors since last update:')
-	sort_order = lambda (lang, _): LANGUAGENAMES.get_by_value(lang, english=True)
+	sort_order = lambda e: LANGUAGENAMES.get_by_value(e[0], english=True)
 	for language, authors in sorted(language_authors.items(), key=sort_order):
 		print('\n####', language)
 		#TODO

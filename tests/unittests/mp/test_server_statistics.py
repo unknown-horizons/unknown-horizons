@@ -19,27 +19,42 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scenario import ACTIONS
+from io import StringIO
+from unittest import mock
 
-# Patch scenario actions for easier detection
-
-def do_win(session):
-	session._scenariotest_won = True
-
-
-def do_lose(session):
-	session._scenariotest_lose = True
+from horizons.network.common import Game
+from horizons.network.server import print_statistic
 
 
-def goal_reached(session, goal):
-	if hasattr(session, '_scenariotest_goals'):
-		session._scenariotest_goals.append(goal)
-	else:
-		session._scenariotest_goals = [goal]
+def test_stats_empty_server():
+	f = StringIO()
+	print_statistic([], [], f)
+
+	assert f.getvalue() == '''
+Games.Total: 0
+Games.Playing: 0
+Players.Total: 0
+Players.Lobby: 0
+Players.Playing: 0
+'''.strip()
 
 
-# We replace the code object on the original functions because replacing all
-# references on these functions in the scenario manager is too cumbersome
-ACTIONS.get('win').__code__ = do_win.__code__
-ACTIONS.get('lose').__code__ = do_lose.__code__
-ACTIONS.get('goal_reached').__code__ = goal_reached.__code__
+def test_stats_busy_server(mocker):
+	p1 = mock.Mock()
+	p2 = mock.Mock()
+	p2.game = mock.Mock()
+	p3 = mock.Mock()
+	p3.game = mock.Mock(state=Game.State.Running)
+
+	g1 = mock.Mock()
+	g2 = mock.Mock(state=Game.State.Running)
+
+	f = StringIO()
+	print_statistic([p1, p2, p3], [g1, g2], f)
+	assert f.getvalue() == '''
+Games.Total: 2
+Games.Playing: 1
+Players.Total: 3
+Players.Lobby: 2
+Players.Playing: 1
+'''.strip()

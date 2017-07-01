@@ -26,11 +26,11 @@ import sys
 
 import pytest
 
+from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
 
-
-pytestmark = pytest.mark.skipif('CI' in os.environ, reason='Tests hang on Travis CI')
+pytestmark = pytest.mark.skipif(enet is None, reason='No enet bindings available')
 
 
 @pytest.fixture(autouse=True)
@@ -39,8 +39,8 @@ def master_server():
 	Start our own master server for the multiplayer test because the official one is probably
 	too old.
 	"""
-	args = [sys.executable, "run_server.py", "-h", "localhost", "-p", "2002"]
-	process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	args = [sys.executable, "run_server.py", "-p", "2002", "localhost"]
+	process = subprocess.Popen(args, stdout=sys.stdout, stderr=sys.stderr)
 	yield
 	process.terminate()
 
