@@ -2,7 +2,6 @@
 # Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
 # Automatically generated, 2013.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
@@ -142,7 +141,7 @@ msgstr "벌목꾼의 집을 건설하고, 창고와 연결하십시오."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "새로운 임무: 벌목꾼의 천막을 건설하십시오"
+msgstr "새로운 임무 : 나무꾼의 집을 건설하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""

@@ -61,7 +61,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &LUMBERJACK
   - [Message, '벌목꾼의 집을 건설하고, 창고와 연결하십시오.']
-  - [Headline, '새로운 임무: 벌목꾼의 천막을 건설하십시오']
+  - [Headline, '새로운 임무 : 나무꾼의 집을 건설하십시오.']
   - [Image, content/gui/images/background/hr.png]
   - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
   - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
