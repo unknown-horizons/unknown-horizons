@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2013-07-13 19:06+0200\n"
+"PO-Revision-Date: 2017-07-02 03:03+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
-"Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh-server/ko/>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh-server/ko/>"
+"\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -30,9 +31,7 @@ msgstr "전체 패킷 크기를 초과 했습니다."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
-"이것은 결코 일어나서는 안되어야합니다. 저희에게 버그 보고서를 파일을 보내주세"
-"요."
+msgstr "이것은 결코 일어나서는 안됩니다. 저희에게 버그 보고서를 보내주세요."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
@@ -57,11 +56,11 @@ msgstr "알수 없는 게임이거나 다른버전의 게임이 실행중입니�
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "이판은 이미 시작되었습니다. 더 이상 참여할수 없습니다"
+msgstr "이 판은 이미 시작되었습니다. 더 이상 참여할수 없습니다"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
-msgstr "이판의 정원이 채워졌습니다"
+msgstr "이 판의 정원이 채워졌습니다"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
@@ -69,7 +68,7 @@ msgstr "비밀번호가 틀렸습니다"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr "이판에 같은 이름의 플레이어가 이미 있습니다."
+msgstr "이 판에 이미 같은 이름의 사용자가 있습니다."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
@@ -77,7 +76,7 @@ msgstr "이름을 바꿔주세요."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr "이판에 같은 색상의 플레이어가 이미 있습니다."
+msgstr "이 판에 이미 같은 색상의 사용자가 있습니다."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
@@ -87,7 +86,7 @@ msgstr "색상을 바꿔주세요."
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr "게임에서 유일해야되는 플레이어 ID가 이미 있습니다. 발생하면 안됩니다."
+msgstr "게임에서 이미 유일해야되는 플레이어 ID가 있습니다. 발생하면 안됩니다."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
@@ -101,9 +100,7 @@ msgstr "이 판 게임이 종료 되었습니다. 방장이 이 게임을 떠났
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr ""
-"한 플레이어가 그게임을 종료하였습니다. 기술적인 이유로 현재 이판을 더 이상 지"
-"속할수 없음을 의미합니다. 죄송합니다."
+msgstr "한 사용자가 그게임을 종료하였습니다. 기술적인 이유로 지금은 이 판을 더 이상 지속할수 없음을 의미합니다. 죄송합니다."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
