@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 建造一间仓库在海岸上已应许贸易商船来光顾你的殖民地。]
+  - [Message, 在沿岸建一间仓库以允许商船来光顾你的领地。]
   - '
 
 
@@ -18,7 +18,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, 欢迎来到未知水平线！]
+  - [Headline, 欢迎来到未知地平线！]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -30,7 +30,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    要查看你的第一项任务，请点击旁边页面下方的图标来翻到日志的下一页。图标如下：'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -650,11 +650,11 @@ events:
 
 metadata:
   author: The UH team
-  description: '教学：
+  description: '教程：
 
-    建造第一个殖民地并学习怎样开始游戏！'
-  difficulty: 教学
+    建造第一个殖民地，教你怎么玩！'
+  difficulty: 教程
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 5 translated messages, 183 untranslated messages.
+  translation_status: 6 translated messages, 182 untranslated messages.
