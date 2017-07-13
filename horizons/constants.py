@@ -501,7 +501,8 @@ class TIER:
 
 	LOWEST = SAILORS
 	HIGHEST = ARISTOCRATS
-	CURRENT_MAX = MERCHANTS
+	CURRENT_MAX = CITIZENS
+	# CURRENT_MAX = MERCHANTS # settler level up to MERCHANTS tier not fully implemented yet
 
 class SETTLER:
 	TAX_SETTINGS_MIN = 0.5
