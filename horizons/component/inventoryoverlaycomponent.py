@@ -38,7 +38,7 @@ class InventoryOverlayComponent(Component):
 	log = logging.getLogger('component.overlays')
 
 	def __init__(self, overlays=None):
-		super(InventoryOverlayComponent, self).__init__()
+		super().__init__()
 		self.overlays = overlays or {}
 
 		# Stores {resource_id: amount that is currently used as overlay, or None if no overlay}
@@ -59,7 +59,7 @@ class InventoryOverlayComponent(Component):
 		return self.fife_instance.getCurrentAction().getId()
 
 	def initialize(self):
-		super(InventoryOverlayComponent, self).initialize()
+		super().initialize()
 		InstanceInventoryUpdated.subscribe(self.inventory_changed, sender=self.instance)
 
 
@@ -169,7 +169,7 @@ class InventoryOverlayComponent(Component):
 
 
 	def load(self, db, worldid):
-		super(InventoryOverlayComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
 
 
@@ -191,4 +191,4 @@ class InventoryOverlayComponent(Component):
 		# is called again.
 		self.remove_overlay(0)
 
-		super(InventoryOverlayComponent, self).remove()
+		super().remove()

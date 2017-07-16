@@ -31,7 +31,7 @@ class EnemyBuildingOverviewTab(OverviewTab):
 	widget = 'overview_enemybuilding.xml'
 
 	def init_widget(self):
-		super(EnemyBuildingOverviewTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
 
 class EnemyWarehouseOverviewTab(OverviewTab):
@@ -39,7 +39,7 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 	helptext = LazyT("Warehouse overview")
 
 	def init_widget(self):
-		super(EnemyWarehouseOverviewTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 
 	def refresh(self):
@@ -52,4 +52,4 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 		buying_inventory = self.widget.findChild(name='buying_inventory')
 		buying_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).buy_list, False)
 
-		super(EnemyWarehouseOverviewTab, self).refresh()
+		super().refresh()

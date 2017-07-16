@@ -97,11 +97,11 @@ class World(BuildingOwner, WorldObject):
 
 		self.islands = []
 
-		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
+		super().__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
 		# destructor-like thing.
-		super(World, self).end()
+		super().end()
 
 		# let the AI players know that the end is near to speed up destruction
 		for player in self.players:
@@ -648,7 +648,7 @@ class World(BuildingOwner, WorldObject):
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
-		super(World, self).save(db)
+		super().save(db)
 		if isinstance(self.map_name, list):
 			db("INSERT INTO metadata VALUES(?, ?)", 'random_island_sequence', ' '.join(self.map_name))
 		else:

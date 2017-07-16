@@ -38,7 +38,7 @@ class ConditionsRegistry(Registry):
 	  2. condition is checked periodically
 	"""
 	def __init__(self):
-		super(ConditionsRegistry, self).__init__()
+		super().__init__()
 		self.check_periodically = []
 
 	def register_function(self, func, periodically=False):

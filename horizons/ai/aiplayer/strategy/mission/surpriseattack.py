@@ -40,7 +40,7 @@ class SurpriseAttack(FleetMission):
 	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
-		super(SurpriseAttack, self).__init__(success_callback, failure_callback, ships)
+		super().__init__(success_callback, failure_callback, ships)
 		self.__init(target_point, return_point, enemy_player)
 
 	def __init(self, target_point, return_point, enemy_player):
@@ -64,13 +64,13 @@ class SurpriseAttack(FleetMission):
 		}
 
 	def save(self, db):
-		super(SurpriseAttack, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_surprise_attack (rowid, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
 			"return_point_x, return_point_y) VALUES(?, ?, ?, ?, ?, ?, ?)", self.worldid, self.enemy_player.worldid, self.target_point.center.x,
 			self.target_point.center.y, self.target_point.radius, self.return_point.x, self.return_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		super(SurpriseAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
+		super()._load(db, worldid, success_callback, failure_callback, owner)
 		db_result = db("SELECT enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y "
 						"FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
 		enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y = db_result

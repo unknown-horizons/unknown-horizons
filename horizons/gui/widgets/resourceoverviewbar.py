@@ -663,7 +663,7 @@ class ResBarMouseTool(NavigationTool):
 	"""Temporary mousetool for resource selection.
 	Terminates self on mousePressed and restores old tool"""
 	def __init__(self, session, old_tool, on_click):
-		super(ResBarMouseTool, self).__init__(session)
+		super().__init__(session)
 		if old_tool: # can be None in corner cases
 			old_tool.disable()
 		self.old_tool = old_tool

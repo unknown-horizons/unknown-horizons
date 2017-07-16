@@ -43,7 +43,7 @@ class ConsumerBuildingPathNodes(PathNodes):
 	self.nodes: {(x, y): speed, ...} of the home_building, where the collectors can walk
 	"""
 	def __init__(self, consumerbuilding):
-		super(ConsumerBuildingPathNodes, self).__init__()
+		super().__init__()
 		ground_map = consumerbuilding.island.ground_map
 		self.nodes = {}
 		for coords in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
@@ -63,7 +63,7 @@ class IslandPathNodes(PathNodes):
 	is_walkable rechecks the walkability status of a coordinate
 	"""
 	def __init__(self, island):
-		super(IslandPathNodes, self).__init__()
+		super().__init__()
 
 		self.island = island
 
@@ -133,7 +133,7 @@ class IslandBarrierNodes(PathNodes):
 	dragging.
 	"""
 	def __init__(self, island):
-		super(IslandBarrierNodes, self).__init__()
+		super().__init__()
 
 		self.island = island
 

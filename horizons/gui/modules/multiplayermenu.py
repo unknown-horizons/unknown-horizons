@@ -48,7 +48,7 @@ from .playerdataselection import PlayerDataSelection
 class MultiplayerMenu(Window):
 
 	def __init__(self, mainmenu, windows):
-		super(MultiplayerMenu, self).__init__(windows)
+		super().__init__(windows)
 		self._mainmenu = mainmenu
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
@@ -274,10 +274,10 @@ class PasswordInput(Popup):
 	def __init__(self, windows):
 		title = T('Password of the game')
 		text = T('Enter password:')
-		super(PasswordInput, self).__init__(windows, title, text, show_cancel_button=True)
+		super().__init__(windows, title, text, show_cancel_button=True)
 
 	def prepare(self, **kwargs):
-		super(PasswordInput, self).prepare(**kwargs)
+		super().prepare(**kwargs)
 		pw = TextField(name='password', fixed_size=(320, 20))
 		box = self._gui.findChild(name='message_box')
 		box.addChild(pw)
@@ -292,7 +292,7 @@ class CreateGame(Window):
 	"""Interface for creating a multiplayer game"""
 
 	def __init__(self, windows):
-		super(CreateGame, self).__init__(windows)
+		super().__init__(windows)
 
 		self._gui = load_uh_widget('multiplayer_creategame.xml')
 		self._gui.mapEvents({
@@ -387,7 +387,7 @@ class GameLobby(Window):
 	"""Chat with other players, change name, wait for the game to begin."""
 
 	def __init__(self, windows):
-		super(GameLobby, self).__init__(windows)
+		super().__init__(windows)
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
 

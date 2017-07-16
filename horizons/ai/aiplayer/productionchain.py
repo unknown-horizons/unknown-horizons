@@ -49,7 +49,7 @@ class ProductionChain:
 	log = logging.getLogger("ai.aiplayer.productionchain")
 
 	def __init__(self, settlement_manager, resource_id, resource_producer):
-		super(ProductionChain, self).__init__()
+		super().__init__()
 		self.settlement_manager = settlement_manager
 		self.resource_id = resource_id
 		self.chain = self._get_chain(resource_id, resource_producer, 1.0)
@@ -118,7 +118,7 @@ class ProductionChainSubtreeChoice:
 	coverage_resources = {RES.COMMUNITY, RES.FAITH, RES.EDUCATION, RES.GET_TOGETHER}
 
 	def __init__(self, options):
-		super(ProductionChainSubtreeChoice, self).__init__()
+		super().__init__()
 		self.options = options # [ProductionChainSubtree, ...]
 		self.resource_id = options[0].resource_id # the required resource
 		self.production_ratio = options[0].production_ratio # given that 1 unit has to be produced at the root of the tree, how much has to be produced here?
@@ -225,7 +225,7 @@ class ProductionChainSubtree:
 	"""An object of this type represents a subtree of buildings that need to be built in order to produce the given resource."""
 
 	def __init__(self, settlement_manager, resource_id, production_line, abstract_building, children, production_ratio):
-		super(ProductionChainSubtree, self).__init__()
+		super().__init__()
 		self.settlement_manager = settlement_manager # SettlementManager instance
 		self.resource_manager = settlement_manager.resource_manager # ResourceManager instance
 		self.trade_manager = settlement_manager.trade_manager # TradeManager instance

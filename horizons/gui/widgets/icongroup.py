@@ -30,7 +30,7 @@ class TilingBackground:
 	Default attributes are set in the widgets inheriting from TilingBackground.
 	"""
 	def __init__(self, amount, base_path, start_img, tiles_img, final_img, **kwargs):
-		super(TilingBackground, self).__init__()
+		super().__init__()
 		# Note: Don't set the tile amount in the constructor,
 		# as it will not layout correctly, blame pychan for it :-)
 		self.__tile_amount = amount
@@ -98,4 +98,4 @@ class TilingHBox(HBox, TilingBackground):
 
 class hr(Icon):
 	def __init__(self, **kwargs):
-		super(hr, self).__init__(image="content/gui/images/background/hr.png", **kwargs)
+		super().__init__(image="content/gui/images/background/hr.png", **kwargs)

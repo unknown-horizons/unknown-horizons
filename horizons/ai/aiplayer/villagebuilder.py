@@ -52,7 +52,7 @@ class VillageBuilder(AreaBuilder):
 	log = logging.getLogger("ai.aiplayer")
 
 	def __init__(self, settlement_manager):
-		super(VillageBuilder, self).__init__(settlement_manager)
+		super().__init__(settlement_manager)
 		self.__init(settlement_manager)
 		if not self.land_manager.feeder_island:
 			self._create_plan()
@@ -69,7 +69,7 @@ class VillageBuilder(AreaBuilder):
 			self.current_section = 0
 
 	def save(self, db):
-		super(VillageBuilder, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_village_builder(rowid, settlement_manager, num_sections, current_section) VALUES(?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.num_sections, self.current_section)
 
@@ -80,7 +80,7 @@ class VillageBuilder(AreaBuilder):
 	def _load(self, db, settlement_manager):
 		db_result = db("SELECT rowid, num_sections, current_section FROM ai_village_builder WHERE settlement_manager = ?", settlement_manager.worldid)
 		worldid, self.num_sections, self.current_section = db_result[0]
-		super(VillageBuilder, self)._load(db, settlement_manager, worldid)
+		super()._load(db, settlement_manager, worldid)
 		self.__init(settlement_manager)
 
 		db_result = db("SELECT x, y, purpose, section, seq_no FROM ai_village_builder_plan WHERE village_builder = ?", worldid)
@@ -820,14 +820,14 @@ class VillageBuilder(AreaBuilder):
 		# TODO: create a new plan with village producers
 		self._return_unused_space()
 		self._create_special_village_building_assignments()
-		super(VillageBuilder, self).handle_lost_area(coords_list)
+		super().handle_lost_area(coords_list)
 
 	def remove_building(self, building):
 		"""Called when a building is removed from the area (the building still exists during the call)."""
 		if building.id == BUILDINGS.RESIDENTIAL:
 			self._recreate_tent_queue(building.position.origin.to_tuple())
 
-		super(VillageBuilder, self).remove_building(building)
+		super().remove_building(building)
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""

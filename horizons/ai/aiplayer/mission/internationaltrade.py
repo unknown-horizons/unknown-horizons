@@ -40,7 +40,7 @@ class InternationalTrade(ShipMission):
 	missionStates = Enum('created', 'moving_to_my_settlement', 'moving_to_other_settlement', 'returning_to_my_settlement')
 
 	def __init__(self, settlement_manager, settlement, ship, bought_resource, sold_resource, success_callback, failure_callback):
-		super(InternationalTrade, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		assert sold_resource is not None or bought_resource is not None
 		self.settlement_manager = settlement_manager
 		self.settlement = settlement
@@ -49,7 +49,7 @@ class InternationalTrade(ShipMission):
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(InternationalTrade, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.settlement.worldid, self.ship.worldid, self.bought_resource, self.sold_resource, self.state.index)
 
@@ -66,7 +66,7 @@ class InternationalTrade(ShipMission):
 		self.bought_resource = db_result[3]
 		self.sold_resource = db_result[4]
 		self.state = self.missionStates[db_result[5]]
-		super(InternationalTrade, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
+		super().load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
 
 		if self.state is self.missionStates.moving_to_my_settlement:
 			self.ship.add_move_callback(Callback(self._reached_my_settlement))

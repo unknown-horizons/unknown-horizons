@@ -38,7 +38,7 @@ class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
 			msg = "Invalid scenario file."
-		super(InvalidScenarioFileFormat, self).__init__(msg)
+		super().__init__(msg)
 
 
 class ScenarioEventHandler(LivingObject):

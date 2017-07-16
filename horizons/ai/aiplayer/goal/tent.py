@@ -28,7 +28,7 @@ class TentGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(TentGoal, self).active and len(self.settlement_manager.village_builder.tent_queue) > 0
+		return super().active and len(self.settlement_manager.village_builder.tent_queue) > 0
 
 	def execute(self):
 		result = self.settlement_manager.village_builder.build_tent()

@@ -39,7 +39,7 @@ class CollectingComponent(Component):
 
 	## INIT/DESTRUCT
 	def __init__(self, collectors):
-		super(CollectingComponent, self).__init__()
+		super().__init__()
 		self.__collector_templates = collectors
 
 	def initialize(self):
@@ -77,12 +77,12 @@ class CollectingComponent(Component):
 				#TODO remove the remove call() #2123
 				collector.remove()
 		assert not [c for c in self.__collectors]
-		super(CollectingComponent, self).remove()
+		super().remove()
 		self.__collectors = None
 		self.path_nodes = None
 
 	def save(self, db):
-		super(CollectingComponent, self).save(db)
+		super().save(db)
 		for collector in self.__collectors:
 			# collectors, that are ship (e.g. fisher ship) are viewed as independent
 			# units, and therefore managed by world. This is justified, since they survive
@@ -93,7 +93,7 @@ class CollectingComponent(Component):
 
 
 	def load(self, db, worldid):
-		super(CollectingComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 
 

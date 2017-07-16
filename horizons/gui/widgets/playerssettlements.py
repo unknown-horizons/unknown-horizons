@@ -33,10 +33,10 @@ class PlayersSettlements(StatsWidget):
 	widget_file_name = 'players_settlements.xml'
 
 	def __init__(self, session):
-		super(PlayersSettlements, self).__init__(session)
+		super().__init__(session)
 
 	def refresh(self):
-		super(PlayersSettlements, self).refresh()
+		super().refresh()
 		self._gui.findChild(name='headline').text = T("Settlements of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0

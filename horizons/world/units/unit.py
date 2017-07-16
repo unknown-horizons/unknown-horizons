@@ -45,7 +45,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 	AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10 # show health for 10 sec after damage has been taken
 
 	def __init__(self, x, y, owner=None, **kwargs):
-		super(Unit, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		self.__init(x, y, owner)
 
 	def __init(self, x, y, owner):
@@ -81,7 +81,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
 		ExtScheduler().rem_all_classinst_calls(self)
-		super(Unit, self).remove()
+		super().remove()
 		self.log.debug("Unit.remove finished")
 
 	def onInstanceActionFinished(self, instance, action):
@@ -177,14 +177,14 @@ class Unit(MovingObject, ResourceTransferHandler):
 		vis.setVisible(True)
 
 	def save(self, db):
-		super(Unit, self).save(db)
+		super().save(db)
 
 		owner_id = 0 if self.owner is None else self.owner.worldid
 		db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.__class__.id, self.position.x, self.position.y, owner_id)
 
 	def load(self, db, worldid):
-		super(Unit, self).load(db, worldid)
+		super().load(db, worldid)
 
 		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
 		if owner_id == 0:

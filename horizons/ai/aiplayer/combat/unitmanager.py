@@ -43,7 +43,7 @@ class UnitManager:
 	log = logging.getLogger("ai.aiplayer.unitmanager")
 
 	def __init__(self, owner):
-		super(UnitManager, self).__init__()
+		super().__init__()
 		self.__init(owner)
 
 	def __init(self, owner):

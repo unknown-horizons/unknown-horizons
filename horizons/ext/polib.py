@@ -344,7 +344,7 @@ class _BaseFile(list):
         """
         if self.check_for_duplicates and entry in self:
             raise ValueError('Entry "%s" already exists' % entry.msgid)
-        super(_BaseFile, self).append(entry)
+        super().append(entry)
 
     def insert(self, index, entry):
         """
@@ -362,7 +362,7 @@ class _BaseFile(list):
         """
         if self.check_for_duplicates and entry in self:
             raise ValueError('Entry "%s" already exists' % entry.msgid)
-        super(_BaseFile, self).insert(index, entry)
+        super().insert(index, entry)
 
     def metadata_as_entry(self):
         """

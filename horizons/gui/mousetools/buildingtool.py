@@ -103,7 +103,7 @@ class BuildingTool(NavigationTool):
 	gui = None # type: Widget
 
 	def __init__(self, session, building, ship=None, build_related=None):
-		super(BuildingTool, self).__init__(session)
+		super().__init__(session)
 		assert not (ship and build_related)
 		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship
@@ -215,7 +215,7 @@ class BuildingTool(NavigationTool):
 		ExtScheduler().rem_all_classinst_calls(self)
 		SettlementInventoryUpdated.discard(self.update_preview)
 		PlayerInventoryUpdated.discard(self.update_preview)
-		super(BuildingTool, self).remove()
+		super().remove()
 
 	def _on_worldobject_deleted(self, message):
 		# remove references to this object
@@ -480,7 +480,7 @@ class BuildingTool(NavigationTool):
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
-		super(BuildingTool, self).mouseMoved(evt)
+		super().mouseMoved(evt)
 		point = self.get_world_location(evt)
 		if self.start_point != point:
 			self.start_point = point
@@ -490,20 +490,20 @@ class BuildingTool(NavigationTool):
 	def mousePressed(self, evt):
 		self.log.debug("BuildingTool mousePressed")
 		if evt.isConsumedByWidgets():
-			super(BuildingTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 			return
 		if evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			pass
 		else:
-			super(BuildingTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 			return
 		evt.consume()
 
 	def mouseDragged(self, evt):
 		self.log.debug("BuildingTool mouseDragged")
-		super(BuildingTool, self).mouseDragged(evt)
+		super().mouseDragged(evt)
 		point = self.get_world_location(evt)
 		if self.start_point is not None:
 			self._check_update_preview(point)
@@ -513,7 +513,7 @@ class BuildingTool(NavigationTool):
 		"""Actually build."""
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
-			super(BuildingTool, self).mouseReleased(evt)
+			super().mouseReleased(evt)
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			point = self.get_world_location(evt)
 
@@ -555,7 +555,7 @@ class BuildingTool(NavigationTool):
 				self.on_escape()
 			evt.consume()
 		elif evt.getButton() != fife.MouseEvent.RIGHT:
-			super(BuildingTool, self).mouseReleased(evt)
+			super().mouseReleased(evt)
 
 	def do_build(self):
 		"""Actually builds the previews
@@ -827,7 +827,7 @@ class SettlementBuildingToolLogic:
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 	"""Same as normal build, except quitting it drops to the build related tab."""
 	def __init__(self, building_tool, instance):
-		super(BuildRelatedBuildingToolLogic, self).__init__(building_tool)
+		super().__init__(building_tool)
 		# instance must be weakref
 		self.instance = instance
 
@@ -836,7 +836,7 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 		self.instance().get_component(SelectableComponent).show_menu(jump_to_tabclass=BuildRelatedTab)
 
 	def on_escape(self, session):
-		super(BuildRelatedBuildingToolLogic, self).on_escape(session)
+		super().on_escape(session)
 		self._reshow_tab()
 
 	def continue_build(self):

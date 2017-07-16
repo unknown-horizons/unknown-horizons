@@ -36,7 +36,7 @@ class MapFileNotFound(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
 			msg = "Map file not found."
-		super(MapFileNotFound, self).__init__(msg)
+		super().__init__(msg)
 
 class SavegameAccessor(DbReader):
 	"""
@@ -51,7 +51,7 @@ class SavegameAccessor(DbReader):
 			self.upgrader = None
 			handle, self._temp_path = tempfile.mkstemp()
 			os.close(handle)
-			super(SavegameAccessor, self).__init__(dbfile=self._temp_path)
+			super().__init__(dbfile=self._temp_path)
 			with open('content/savegame_template.sql') as savegame_template:
 				self.execute_script(savegame_template.read())
 
@@ -64,7 +64,7 @@ class SavegameAccessor(DbReader):
 			self.upgrader = SavegameUpgrader(game_identifier)
 			self._temp_path = None
 			game_identifier = self.upgrader.get_path()
-			super(SavegameAccessor, self).__init__(dbfile=game_identifier)
+			super().__init__(dbfile=game_identifier)
 
 			map_name_data = self('SELECT value FROM metadata WHERE name = ?', 'map_name')
 			if not map_name_data:
@@ -128,7 +128,7 @@ class SavegameAccessor(DbReader):
 		self._hash = None
 
 	def close(self):
-		super(SavegameAccessor, self).close()
+		super().close()
 		if self.upgrader is not None:
 			self.upgrader.close()
 		if self._temp_path is not None:

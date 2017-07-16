@@ -38,14 +38,14 @@ class FoundSettlement(ShipMission):
 	missionStates = Enum('created', 'moving')
 
 	def __init__(self, success_callback, failure_callback, land_manager, ship, coords):
-		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		self.land_manager = land_manager
 		self.coords = coords
 		self.warehouse = None
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(FoundSettlement, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
 			self.worldid, self.land_manager.worldid, self.ship.worldid, self.coords[0], self.coords[1], self.state.index)
 
@@ -61,7 +61,7 @@ class FoundSettlement(ShipMission):
 		self.coords = (int(db_result[2]), int(db_result[3]))
 		self.warehouse = None
 		self.state = self.missionStates[db_result[4]]
-		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
+		super().load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_destination_area))

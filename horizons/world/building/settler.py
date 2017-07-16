@@ -64,7 +64,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
-		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
+		super().__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def __init(self, loading=False, last_tax_payed=0):
 		self.level_max = TIER.CURRENT_MAX # for now
@@ -74,7 +74,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self._upgrade_production = None # referenced here for quick access
 
 	def initialize(self):
-		super(Settler, self).initialize()
+		super().initialize()
 		SettlerInhabitantsChanged.broadcast(self, self.inhabitants)
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
@@ -88,7 +88,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.run()
 
 	def save(self, db):
-		super(Settler, self).save(db)
+		super().save(db)
 		db("INSERT INTO settler(rowid, inhabitants, last_tax_payed) VALUES (?, ?, ?)",
 		   self.worldid, self.inhabitants, self.last_tax_payed)
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
@@ -96,7 +96,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		   self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
-		super(Settler, self).load(db, worldid)
+		super().load(db, worldid)
 		self.inhabitants, last_tax_payed = \
 		    db("SELECT inhabitants, last_tax_payed FROM settler WHERE rowid=?", worldid)[0]
 		remaining_ticks = \
@@ -150,7 +150,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		SettlerInhabitantsChanged.broadcast(self, -self.inhabitants)
 
 		UpgradePermissionsChanged.unsubscribe(self._on_change_upgrade_permissions, sender=self.settlement)
-		super(Settler, self).remove()
+		super().remove()
 
 	@property
 	def upgrade_allowed(self):
@@ -407,10 +407,10 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def __str__(self):
 		try:
 			return "{}(l:{};ihab:{};hap:{})".format(
-				super(Settler, self).__str__(), self.level,
+				super().__str__(), self.level,
 				self.inhabitants, self.happiness)
 		except AttributeError: # an attribute hasn't been set up
-			return super(Settler, self).__str__()
+			return super().__str__()
 
 	#@decorators.cachedmethod TODO: replace this with a version that doesn't leak
 	def __get_data(self, key):

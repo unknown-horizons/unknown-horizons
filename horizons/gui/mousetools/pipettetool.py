@@ -37,14 +37,14 @@ class PipetteTool(NavigationTool):
 	HIGHLIGHT_NOT_POSSIBLE_COLOR = (200, 90, 90)
 
 	def __init__(self, session):
-		super(PipetteTool, self).__init__(session)
+		super().__init__(session)
 		self.renderer = session.view.renderer['InstanceRenderer']
 		horizons.globals.fife.set_cursor_image('pipette')
 
 	def remove(self):
 		self._remove_coloring()
 		horizons.globals.fife.set_cursor_image('default')
-		super(PipetteTool, self).remove()
+		super().remove()
 
 	def on_escape(self):
 		self.session.ingame_gui.set_cursor()
@@ -67,7 +67,7 @@ class PipetteTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(PipetteTool, self).mouseClicked(evt)
+			super().mouseClicked(evt)
 
 	def _get_object(self, evt):
 		for obj in self.get_hover_instances(evt, layers=[LAYERS.FIELDS, LAYERS.OBJECTS]):

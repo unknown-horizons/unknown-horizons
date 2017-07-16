@@ -45,7 +45,7 @@ class MainSquareTab(OverviewTab):
 		return self.instance.settlement
 
 	def show(self):
-		super(MainSquareTab, self).show()
+		super().show()
 		PlayerLevelUpgrade.subscribe(self.on_player_level_upgrade)
 		# update self when a building of the settlement changes.
 		for building in self.settlement.buildings:
@@ -53,7 +53,7 @@ class MainSquareTab(OverviewTab):
 				building.add_change_listener(self._schedule_refresh)
 
 	def hide(self):
-		super(MainSquareTab, self).hide()
+		super().hide()
 		PlayerLevelUpgrade.discard(self.on_player_level_upgrade)
 		for building in self.settlement.buildings:
 			building.discard_change_listener(self._schedule_refresh)
@@ -69,7 +69,7 @@ class AccountTab(MainSquareTab):
 	helptext = LazyT("Account")
 
 	def init_widget(self):
-		super(AccountTab, self).init_widget()
+		super().init_widget()
 		self.widget.mapEvents({
 		  'show_production_overview/mouseClicked': self.show_production_overview,
 		})
@@ -88,7 +88,7 @@ class AccountTab(MainSquareTab):
 		self._windows.toggle(self.prod_overview)
 
 	def refresh(self):
-		super(AccountTab, self).refresh()
+		super().refresh()
 		self.refresh_collector_utilization()
 		taxes = self.settlement.cumulative_taxes
 		running_costs = self.settlement.cumulative_running_costs
@@ -118,7 +118,7 @@ class MainSquareOverviewTab(AccountTab):
 	helptext = LazyT('Main square overview')
 
 	def init_widget(self):
-		super(MainSquareOverviewTab, self).init_widget()
+		super().init_widget()
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		self.widget.child_finder('headline').helptext = T('Click to change the name of your settlement')
 
@@ -134,10 +134,10 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
 
 		icon_path = 'icons/tabwidget/mainsquare/inhabitants{tier}'.format(tier=self.__class__.LEVEL)
-		super(MainSquareSettlerLevelTab, self).__init__(instance=instance, icon_path=icon_path)
+		super().__init__(instance=instance, icon_path=icon_path)
 
 	def init_widget(self):
-		super(MainSquareSettlerLevelTab, self).init_widget()
+		super().init_widget()
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
@@ -157,11 +157,11 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		return instance.owner.settler_level >= cls.LEVEL
 
 	def show(self):
-		super(MainSquareSettlerLevelTab, self).show()
+		super().show()
 		UpgradePermissionsChanged.subscribe(self.refresh_via_message, sender=self.settlement)
 
 	def hide(self):
-		super(MainSquareSettlerLevelTab, self).hide()
+		super().hide()
 		UpgradePermissionsChanged.discard(self.refresh_via_message, sender=self.settlement)
 
 	def _get_last_tax_paid(self):
@@ -235,7 +235,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		self.widget.child_finder('resident_count').text = str(residents)
 
 		self.widget.adaptLayout()
-		super(MainSquareSettlerLevelTab, self).refresh()
+		super().refresh()
 
 	def toggle_upgrades(self):
 		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)

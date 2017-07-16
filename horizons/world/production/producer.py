@@ -72,7 +72,7 @@ class Producer(Component):
 		"""
 		if productionlines is None:
 			productionlines = {}
-		super(Producer, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
@@ -189,7 +189,7 @@ class Producer(Component):
 		# Call this before super, because we have to make sure this is called before the
 		# ConcreteObject's callback which is added during loading
 		Scheduler().add_new_object(self._on_production_change, self, run_in=0)
-		super(Producer, self).load(db, worldid)
+		super().load(db, worldid)
 		# load all productions
 		self.__init()
 		for line_id in db.get_production_lines_by_owner(worldid):
@@ -201,7 +201,7 @@ class Producer(Component):
 		self._update_decommissioned_icon()
 
 	def save(self, db):
-		super(Producer, self).save(db)
+		super().save(db)
 		for production in self.get_productions():
 			production.save(db, self.instance.worldid)
 
@@ -281,7 +281,7 @@ class Producer(Component):
 			self.remove_production(production)
 		# call super() after removing all productions since it removes the instance (make it invalid)
 		# which can be needed by changelisteners' actions (e.g. in remove_production method)
-		super(Producer, self).remove()
+		super().remove()
 		assert not self.get_productions(), 'Failed to remove {} '.format(self.get_productions())
 
 
@@ -407,7 +407,7 @@ class Producer(Component):
 				del self._producer_status_icon
 
 	def get_status_icons(self):
-		l = super(Producer, self).get_status_icons()
+		l = super().get_status_icons()
 		if self.capacity_utilization_below(ProductivityLowStatus.threshold):
 			l.append( ProductivityLowStatus() )
 		return l
@@ -452,14 +452,14 @@ class Producer(Component):
 class MineProducer(Producer):
 	"""Normal producer that can irrecoverably run out of resources and handles this case"""
 	def set_active(self, production=None, active=True):
-		super(MineProducer, self).set_active(production, active)
+		super().set_active(production, active)
 		# check if the user set it to waiting_for_res (which doesn't do anything)
 		if active and self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
-			super(MineProducer, self).set_active(production, active=False)
+			super().set_active(production, active=False)
 			AmbientSoundComponent.play_special('error')
 
 	def _on_production_change(self):
-		super(MineProducer, self)._on_production_change()
+		super()._on_production_change()
 		if self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
 			# this is never going to change, the building is useless now.
 			if self.is_active():
@@ -474,21 +474,21 @@ class QueueProducer(Producer):
 	production_class = SingleUseProduction
 
 	def __init__(self, **kwargs):
-		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
+		super().__init__(auto_init=False, **kwargs)
 		self.__init()
 
 	def __init(self):
 		self.production_queue = [] # queue of production line ids
 
 	def save(self, db):
-		super(QueueProducer, self).save(db)
+		super().save(db)
 		for i in enumerate(self.production_queue):
 			position, prod_line_id = i
 			db("INSERT INTO production_queue (object, position, production_line_id) VALUES(?, ?, ?)",
 			   self.instance.worldid, position, prod_line_id)
 
 	def load(self, db, worldid):
-		super(QueueProducer, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE object = ? ORDER by position", worldid):
 			self.production_queue.append(prod_line_id)
@@ -574,7 +574,7 @@ class ShipProducer(QueueProducer):
 
 	def on_queue_element_finished(self, production):
 		self.__create_unit()
-		super(ShipProducer, self).on_queue_element_finished(production)
+		super().on_queue_element_finished(production)
 
 	def __create_unit(self):
 		"""Create the produced unit now."""

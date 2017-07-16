@@ -45,7 +45,7 @@ class TabWidget:
 		@param name: optional name for the tabwidget
 		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
-		super(TabWidget, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.name = name
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs

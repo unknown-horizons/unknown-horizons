@@ -95,7 +95,7 @@ class _BuildPosition:
 class _NotBuildableError(Exception):
 	"""Internal exception."""
 	def __init__(self, errortype):
-		super(_NotBuildableError, self).__init__()
+		super().__init__()
 		self.errortype = errortype
 
 class Buildable:
