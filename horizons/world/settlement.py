@@ -163,7 +163,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	def load(cls, db, worldid, session, island):
 		self = cls.__new__(cls)
 		self.session = session
-		super().load(db, worldid)
+		super(Settlement, self).load(db, worldid)
 
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
