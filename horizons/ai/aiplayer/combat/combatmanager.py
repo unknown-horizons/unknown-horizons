@@ -49,7 +49,7 @@ class CombatManager:
 	combat_range = 18
 
 	def __init__(self, owner):
-		super().__init__()
+		super().__init__()	# TODO: check if this call is needed
 		self.__init(owner)
 
 	def __init(self, owner):
