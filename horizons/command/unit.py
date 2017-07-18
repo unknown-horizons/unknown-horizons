@@ -116,7 +116,7 @@ class SetStance(GenericUnitCommand):
 	@param stance: stance as string representation
 	"""
 	def __init__(self, unit, stance):
-		super(f).__init__(unit, "set_stance", stance.NAME)
+		super().__init__(unit, "set_stance", stance.NAME)
 
 	def __call__(self, issuer):
 		# we need the stance component, so resolve the name
