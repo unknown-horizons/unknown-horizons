@@ -196,8 +196,9 @@ class StrategyManager:
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean up below super() call; it is a hack
 		self = cls.__new__(cls)
-		super().__init__()		# TODO: check whether this line is necessary
+		super(StrategyManager, self).__init__()
 		self.__init(owner)
 		self._load(db)
 		return self
