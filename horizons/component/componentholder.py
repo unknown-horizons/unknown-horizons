@@ -92,7 +92,7 @@ class ComponentHolder:
 	}
 
 	def __init__(self, *args, **kwargs):
-		super().__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs) # TODO: check if this line is needed
 		self.components = {}
 
 	def initialize(self, **kwargs):
