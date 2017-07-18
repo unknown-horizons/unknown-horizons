@@ -39,7 +39,7 @@ class BehaviorProfile:
 		Init actions and strategies with required types.
 		e.g. self.strategies is a dict of Enum => {}, each of such items is later filled by concrete BehaviorProfile.
 		"""
-		super().__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.actions = {action_type: {} for action_type in BehaviorManager.action_types}
 		self.strategies = {strategy_type: {} for strategy_type in BehaviorManager.strategy_types}
 		self.conditions = {}
