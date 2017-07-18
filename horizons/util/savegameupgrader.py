@@ -52,7 +52,7 @@ class SavegameUpgrader:
 	log = logging.getLogger("util.savegameupgrader")
 
 	def __init__(self, path):
-		super().__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.original_path = path
 		self.using_temp = False
 		self.final_path = None # type: Optional[str]
