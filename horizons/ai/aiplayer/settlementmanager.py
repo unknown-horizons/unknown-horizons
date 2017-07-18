@@ -108,7 +108,7 @@ class SettlementManager(WorldObject):
 		self.production_chain = {}
 		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
-						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]:
+						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.HYGIENE]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialize caches
@@ -228,11 +228,13 @@ class SettlementManager(WorldObject):
 		pioneer_taxes = getattr(self.personality, '{}_pioneer_taxes'.format(prefix))
 		settler_taxes = getattr(self.personality, '{}_settler_taxes'.format(prefix))
 		citizen_taxes = getattr(self.personality, '{}_citizen_taxes'.format(prefix))
+		merchants_taxes = getattr(self.personality, '{}_merchants_taxes'.format(prefix))
 		sailor_upgrades = getattr(self.personality, '{}_sailor_upgrades'.format(prefix))
 		pioneer_upgrades = getattr(self.personality, '{}_pioneer_upgrades'.format(prefix))
 		settler_upgrades = getattr(self.personality, '{}_settler_upgrades'.format(prefix))
-		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes,
-			sailor_upgrades, pioneer_upgrades, settler_upgrades)
+		citizen_upgrades = getattr(self.personality, '{}_citizen_upgrades'.format(prefix))
+		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes
+			sailor_upgrades, pioneer_upgrades, settler_upgrades, citizen_upgrades)
 
 	def can_provide_resources(self):
 		"""Return a boolean showing whether this settlement is complete enough to concentrate on building a new settlement."""
