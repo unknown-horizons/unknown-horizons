@@ -499,7 +499,7 @@ class SimpleProductionChainSubtreeChoice:
 	"""This is a simple version of ProductionChainSubtreeChoice used to make recursive quotas possible."""
 
 	def __init__(self, options):
-		super().__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.options = options # [SimpleProductionChainSubtree, ...]
 		self.resource_id = options[0].resource_id
 
@@ -523,7 +523,7 @@ class SimpleProductionChainSubtree:
 	"""This is a simple version of ProductionChainSubtree used to make recursive quotas possible."""
 
 	def __init__(self, resource_manager, resource_id, production_line, abstract_building, children, production_ratio):
-		super().__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.resource_manager = resource_manager
 		self.resource_id = resource_id
 		self.production_line = production_line
