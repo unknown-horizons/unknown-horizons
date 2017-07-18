@@ -35,7 +35,7 @@ class SettlementFounder:
 	log = logging.getLogger("ai.aiplayer.settlement_founder")
 
 	def __init__(self, owner):
-		super().__init__()
+		super().__init__() # TODO: check if this call needed
 		self.owner = owner
 		self.session = owner.session
 		self.world = owner.world
