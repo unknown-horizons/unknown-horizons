@@ -90,13 +90,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
-  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
-  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
+    Fiskeren må bygges ved kysten et sted innen rekkevidden til varehuset og en fiskeskole.'
+  - Han kommer til å bygge en liten robåt og fanger noen fiks.
+  - Dette gir kontinuerlig forsyning der kostnaden er litt lengre produksjonstid per enhet mat.
+  - En liten bosetting som din kan bruke begge selskapene, og du kan enklere balansere fordeler og ulemper hvis du ser en direkte sammenligning.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
-  - Don't forget to connect them to your Warehouse with Trails!
+  - [BoldLabel, 'Oppgave: Bygg et jegertelt og et fiskertelt.']
+  - Husk å koble dem sammen med varehuset ditt med stier!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -375,7 +375,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, NO TASKS LEFT]
   - [Image, content/gui/images/background/hr.png]
   - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
+  - 'Hvis du har noen forslag om hva vi kan eller bør forbedre, legge til eller ta bort:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 44 translated messages, 144 untranslated messages.
+  translation_status: 51 translated messages, 137 untranslated messages.

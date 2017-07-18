@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-06-26 05:49+0000\n"
+"PO-Revision-Date: 2017-07-18 10:39+0000\n"
 "Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/uh/tutorial/nb/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -312,30 +312,37 @@ msgid ""
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"Fiskeren må bygges ved kysten et sted innen rekkevidden til varehuset og en "
+"fiskeskole."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Han kommer til å bygge en liten robåt og fanger noen fiks."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Dette gir kontinuerlig forsyning der kostnaden er litt lengre produksjonstid "
+"per enhet mat."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"En liten bosetting som din kan bruke begge selskapene, og du kan enklere "
+"balansere fordeler og ulemper hvis du ser en direkte sammenligning."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr ""
+msgstr "Oppgave: Bygg et jegertelt og et fiskertelt."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
-msgstr ""
+msgstr "Husk å koble dem sammen med varehuset ditt med stier!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Main Square. Choose an area without many economy buildings."
@@ -1110,6 +1117,8 @@ msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
+"Hvis du har noen forslag om hva vi kan eller bør forbedre, legge til eller "
+"ta bort:"
 
 #. This is the text body of a logbook page.
 msgid "www.unknown-horizons.org"
