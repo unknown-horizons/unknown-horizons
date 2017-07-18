@@ -352,8 +352,9 @@ class PirateStrategyManager(StrategyManager):
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean below code; it is a _very_ dirty hack
 		self = cls.__new__(cls)
-		super().__init__(owner)
+		super(PirateStrategyManager, self).__init__(owner)
 		self.__init(owner)
 		self._load(db)
 		return self
