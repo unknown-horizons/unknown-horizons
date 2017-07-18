@@ -45,7 +45,7 @@ class TerrainBuildabilityCache:
 	sea_radius = 3
 
 	def __init__(self, island):
-		super().__init__()
+		super().__init__() # TODO: check if this call is needed
 		self._island = island
 		self._land = None
 		self._coast = None
