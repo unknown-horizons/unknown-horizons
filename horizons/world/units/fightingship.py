@@ -26,7 +26,7 @@ from horizons.world.units.weaponholder import MovingWeaponHolder
 
 
 class FightingShip(MovingWeaponHolder, Ship):
-	"""Class representing a fighting ship ship
+	"""Class representing a fighting ship
 	@param x: int x position
 	@param y: int y position
 	"""
