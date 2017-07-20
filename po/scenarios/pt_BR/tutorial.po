@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-07-20 17:33+0000\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2017-07-20 21:48+0000\n"
+"Last-Translator: André Ludovico <alms21@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/uh/tutorial/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -127,15 +127,12 @@ msgstr ""
 "então clique com o botão direito sobre o local onde você deseja que ele vá."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Once you are near the coast, the anchor-like button you see in the "
-#| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
-"Uma vez perto da costa, o botão de âncora na aba de visão geral ficará ativo."
+"Uma vez perto da costa, o botão de fundar colônia na visão geral ficará "
+"ativo."
 
 #. This is the text body of a logbook page.
 msgid ""

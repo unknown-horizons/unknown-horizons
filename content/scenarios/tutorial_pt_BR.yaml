@@ -47,7 +47,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - A sua embarcação está no mar, carregada com suprimentos que você precisará para estabelecer um novo assentamento.
   - Para moveres o teu navio, seleciona-o com um clique-esquerdo seguido de um clique-direito na localização para onde pretendes navegar.
-  - Assim que estiveres perto da costa, o botão 'Construir Povoação' na vista geral ficará ativo.
+  - Uma vez perto da costa, o botão de fundar colônia na visão geral ficará ativo.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - Ao clicar neste botão será apresentado uma prévia do Armazém, a primeira construção requerido para fundar uma nova colônia. A medida que mova o cursor, notará que a prévia se sombreia de tons vermelhos quando a construção está em uma zona inadequada.
@@ -657,4 +657,4 @@ metadata:
   locale: pt_BR
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 100 translated messages, 76 fuzzy translations, 12 untranslated messages.
+  translation_status: 101 translated messages, 75 fuzzy translations, 12 untranslated messages.
