@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-06-02 17:19+0000\n"
-"Last-Translator: Pablo Pereira <pablopereira27@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/uh/"
-"uh/pt_BR/>\n"
+"PO-Revision-Date: 2017-07-20 21:50+0000\n"
+"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"Language-Team: Portuguese (Brazil) "
+"<https://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -353,8 +353,6 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
 msgstr "Comprar melhorias"
 
@@ -395,17 +393,13 @@ msgid "+ 1457"
 msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Manter terreno"
+msgstr "Construir unidade terrestre"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Construir este navio!"
+msgstr "Construa esta unidade terrestre!"
 
 # #############
 # #  no need to translate the following (until next comment)
@@ -3555,106 +3549,105 @@ msgstr "Não está pronto"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Protocolo multijogador antigo ou não suportado. Por favor, verifique sua "
+"versão do jogo"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Você excedeu o tamanho máximo do pacote."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Isso não deveria acontecer nunca. Por favor, entre em contato conosco ou "
+"preencha um relatório de erro."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Você excedeu o tamanho por pacote."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
+"Pacote desconhecido ou corrompido. Por favor, verifique sua versão do jogo"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Sessão inválida/desconhecida"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Você não pode juntar-se à uma partida enquanto permanecer em outra"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Jogo desconhecido ou executando uma versão diferente"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Partida já iniciada. Não é mais possível juntar-se a ela"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "A partida está lotada"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Digite a senha:"
+msgstr "Senha incorreta"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "Já existe um jogador com seu nome neste jogo."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Por favor, altere o seu nome."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "Já existe um jogador com sua cor neste jogo."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Você mudou sua cor"
+msgstr "Por favor, altere sua cor."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"Já existe um jogador com o seu ID dentro desta partida. Isto nunca deveria "
+"ocorrer."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Você não esta pronto"
+msgstr "Você não está participando de nenhuma partida"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Incapaz de conectar no servidor."
+msgstr "Não foi possível alterar seu nome."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Você mudou sua cor"
+msgstr "Não foi possível alterar sua cor."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "De snelheid van een multiplayer spel kan niet worden gewijzigd"
+msgstr ""
+"Você não pode solicitar informações sobre uma partida enquanto permanecer em "
+"outra"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "A partida foi encerrada. O criador retirou-se."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Desculpe-nos, por motivos técnicos um jogador precisou retirar-se e isto "
+"significa que a partida não pode continuar."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3800,7 +3793,7 @@ msgstr "Estes residentes estão infelizes."
 
 #: horizons/world/status.py:92
 msgid "These residents don't have access to a main square."
-msgstr "Os habitantes estão sem acesso ao parque principal."
+msgstr "Os habitantes estão sem acesso à praça principal."
 
 #: horizons/world/status.py:98
 msgid "The inventory of this building is full."
@@ -3965,7 +3958,7 @@ msgstr "Um novo mundo foi criado."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Alguns dos seus habitantes não tem acesso ao parque principal."
+msgstr "Alguns dos seus habitantes não tem acesso à praça principal."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
