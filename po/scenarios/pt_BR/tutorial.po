@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-06-02 18:38+0000\n"
-"Last-Translator: André Ludovico <alms21@gmail.com>\n"
+"PO-Revision-Date: 2017-07-20 17:33+0000\n"
+"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/uh/tutorial/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -97,10 +97,8 @@ msgstr ""
 "contato com a equipe de desenvolvimento!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
-msgstr "Agora, vamos iniciar a partida."
+msgstr "Agora, vamos iniciar a partida!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #, fuzzy
