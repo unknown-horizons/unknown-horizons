@@ -8,22 +8,21 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2014-09-25 22:21+0200\n"
+"PO-Revision-Date: 2017-07-20 06:58+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh-server/"
-"hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh-"
+"server/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Régi vagy nem támogatott többjátékos protokoll. Kérjük egyeztesd a "
-"játékverziót."
+"Régi vagy nem támogatott többjátékos protokoll. Ellenőrizd a játék verzióját"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
@@ -32,7 +31,7 @@ msgstr "Túllépted a globális csomagméretet."
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Ennek nem lett volna szabad megtörténnie. Kérjük lépj kapcsolatba velünk "
+"Ennek nem lett volna szabad megtörténnie. Kérjük, lépj kapcsolatba velünk "
 "vagy tegyél hibabejelentést."
 
 #: horizons/network/server.py:303
@@ -41,7 +40,7 @@ msgstr "Túllépted a csomagonkénti méretet."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Ismeretlen vagy hibás csomag. Kérjük egyeztesd a játékverziót."
+msgstr "Ismeretlen vagy hibás csomag. Kérjük, egyeztesd a játékverziót."
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
@@ -58,7 +57,7 @@ msgstr "Ismeretlen játék vagy a játék más verziója fut"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "A játék már elindult, csatlakozásra nincs lehetőség."
+msgstr "A játék már elindult. Csatlakozásra nincs lehetőség."
 
 #: horizons/network/server.py:414
 msgid "Game is full"
@@ -74,7 +73,7 @@ msgstr "A játékban már van egy ilyen nevű játékos."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr "Kérjük változtass nevet."
+msgstr "Kérjük, változtass nevet."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
@@ -82,14 +81,15 @@ msgstr "A játékban már van egy ilyen színű játékos."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr "Kérjük változtass színt."
+msgstr "Változtasd meg a színezésed."
 
 #: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"A játékban már van ezzel az ID-vel játékos. Ennek nem szabadna megtörténnie."
+"Már van egy ilyen azonosítóval ellátott játékos ebben játékban. Ennek nem "
+"szabadna megtörténnie."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
@@ -97,7 +97,7 @@ msgstr "Nem vagy játékban"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr "A játék törölve. A létrehozó kilépett a játékból."
+msgstr "A játéknak vége. A létrehozó kilépett a játékból."
 
 #: horizons/network/server.py:494
 msgid ""
