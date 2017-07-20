@@ -18,14 +18,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, Bem-vindo à Unknown Horizons!]
+  - [Headline, Bem-vindo ao Unknown Horizons!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
 
     '
-  - Este é o teu Diário, onde informação importante sobre o cenário atual é armazenada. O sumário de cada tarefa nova irá também aparecer como um 'botão de notificação' perto do canto esquerdo do ecrã. Podes passar com o cursor do rato por cima destas notificações para ler o resumo, ou clica no próprio botão para abrir o Diário.
-  - Também podes voltar a abrir o Diário a qualquer momento ao clicar no botão debaixo do mini-mapa, no canto superior direito do teu ecrã. Daqui em diante, iremos referir-nos a esta área que contém o mini-mapa, vários botões e separadores como a 'Visão Geral'.
+  - Este é seu diário, onde as informações importantes sobre o cenário atual está armazenado. Um resumo de cada nova tarefa também irá aparecer como um 'botão de notificação' perto da borda esquerda da tela. Você também pode passar o mouse sobre essas notificações para ler o resumo, ou clicar no botão para abrir o diário.
+  - Você também pode reabrir o diário a qualquer hora clicando no botão abaixo do mini-mapa, no canto superior direito da tela. A partir de agora, iremos nos referir a esta área contendo o mini-mapa, vários botões e abas como a 'Visão geral'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -657,4 +657,4 @@ metadata:
   locale: pt_BR
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 101 translated messages, 75 fuzzy translations, 12 untranslated messages.
+  translation_status: 103 translated messages, 75 fuzzy translations, 10 untranslated messages.
