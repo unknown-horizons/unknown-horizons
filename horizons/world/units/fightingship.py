@@ -37,16 +37,19 @@ class FightingShip(MovingWeaponHolder, Ship):
 		# add default weapons
 		for i in range(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
+		print("Ship created and weapons loaded.")
 
 	def go(self, x, y):
 		self.get_component(CommandableComponent).go(x, y)
 		self.stop_attack()
+		print("Moving ship.")
 
 	def fire_all_weapons(self, dest, rotate=True):
 		"""
 		Fire weapons at rotated coordinates
 		"""
 		super(FightingShip, self).fire_all_weapons(dest, rotate)
+		print("Weapons fired!")
 
 	def act_attack(self, dest):
 		"""
@@ -89,3 +92,4 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self._instance.setFacingLocation(facing_location)
 		self.act('fire_{}'.format(direction), facing_location, repeating=False)
 		self._action = 'idle'
+		print("Ship rotated and ready for combat.")
