@@ -101,83 +101,83 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Message, Bygg et hovedtorg.  Velg et område uten for mange økonomibygg.]
+  - [Headline, 'NY OPPGAVE: HOVEDTORG']
   - [Image, content/gui/images/background/hr.png]
-  - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
+  - Innbyggerne dine trenger et hovedtorg der de kan hente varer fra.
+  - Dette betyr at de trenger en stiforbindelse fra hjemmene sine til hovedmarkedet.  Merk at hovedtorget også fungerer som en sti, slik at telt som står inntil torget ikke trenger en egen sti.
+  - Alle varene i varehuset ditt er tilgjengelig på dette «markedet», slik at dine innbyggere ikke trenger å gå til fiskerteltet eller til varehuset.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Du bør unngå å plassere bosetningteltene dine for nære tømmerhuggerne dine, da teltbygninger vil fjerne trærne som tømmerhuggerne dine trenger for å lage bord.
+  - Selskaper virker uten å være koblet til teltene, så du trenger for eksempel ikke bygge en vei mellom hovedtorget og dine tømmerhuggertelt.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Oppgave: Bygg et hovedtorg.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Nå er det på tide å ta en nærmere titt på hovedtorget.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - I «Regnskap»-fanen får du frem balansen for denne øya, som viser alle kostnadene du betaler og alle skattene du tjener.
+  - Oppføringene for «Salg» og  «Kjøp» refererer til din handelsbalanse og vil bli forklart senere.
+  - Hvis balansen din er positiv, så har du alt i alt et overskudd.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Message, Bygg et telt og koble det til hovedtorget hvis det trengs.]
+  - [Headline, 'NY OPPGAVE: BOLIGHUS']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - Bosettere ønsker tak over hodene sine, ellers vil de ikke en gang vurdere å bo i byen din.  Du må tilby dem telt.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
+  - Telt er grunnleggende bolighus.  Dine innbyggere kommer til å ønske å oppgradere dem når de når høyere nivå.
+  - Merk at oppgraderingen av hver bygning krever byggematerialer, som treverk for første oppgradering.
+  - Vurder om du vil fjerne muligheten for å oppgradere hvis lageret ditt har lite av disse materialene.
+  - Bosettere virker kanskje ikke veldig nyttige i og med at de forbruker alle varene du produserer - men de betaler i hvert fall skatt, og det er nå den eneste måten du kan skaffe penger!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Oppgave: Bygg et telt og koble det til hovedtorget hvis det trengs.  Telt trenger ikke være koblet til noen av selskapene.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, Bygg mist tre ekstra telt og koble dem til hovedtorget.]
   - '
 
-    Let''s have a look at the Tent overview tab.'
-  - 'You can see
+    La oss ta en titt på oversikts-fanen for telt.'
+  - 'Her ser du
 
-    * the happiness of these residents,
+    * hvor glade innbyggerne er,
 
-    * the taxes they pay and
+    * avgiftene de betaler og
 
-    * the resources they demand.'
-  - If their demands are fulfilled, happiness and thus your tax income increase.
-  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
-  - Note that you can also change the global tax settings here, too.
+    * ressursene de krever.'
+  - Hvis kravene deres er oppfylt, så vil glede og dermed dine avgiftsinntekter øke.
+  - Hvis ikke vil glede og inntekt reduseres.  På et punkt vil innbyggerne dine bli virkelige sure og ganske enkelt snu ryggen til landsbyen din og forlate en forfallende ruin.
+  - Merk at du også kan endre det globale avgiftsnivået her.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'Oppgave: Bygg minst tre ekstra telt.']
   - '
 
-    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
+    TIPS: Ved å holde nede SHIFT kan en enkelt sette opp flere bygninger av samme type.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
-  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - [Message, Bygg et signalbål ved kysten nær varehuset ditt.]
+  - [Headline, 'NY OPPGAVE: BYGG SIGNALBÅL']
   - [Image, content/gui/images/background/hr.png]
-  - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
-  - The trader will supply your settlement with necessary goods which you can't produce yet.
-  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
+  - Har du sett skipet som passerer øya de av og til?  Skipet tilhører den frie handelsmann, en av de første bosetterne i denne øygruppen.
+  - Handelsmannen kan forsyne din bosetning med nødvendige varer som du ennå ikke kan produsere.
+  - Du kan også selge produksjonsoverskudd, men generelt sett vil det gi større overskudd å forbruke varene (ved å bygge flere telt) i stedet for å selge dem.
+  - Vanligvis seiler bare handelsmannen rundt og ser etter gode avtaler, men du kan sette opp farten litt.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
-  - The Signal Fire has to cover the area which the ships pass through to catch them.
+  - Dette er formålet med å bygge et signalbål på kysten nær varehuset ditt.  Det vil vise skip veien til bosetningen din.
+  - Signalbålet må dekke området som skipene passerer igjennom for å få tak i dem.
   - [Pagebreak]
   - '
 
-    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
-  - You can propose deals via the Warehouse tab "Buy/Sell".
+    Etter denne lille markedsføringen, så vil handelsmannen stoppe opp og ta en titt i varehuset ditt, selv om han hadde planlagt å seile forbi det.'
+  - Du kan foreslå avtaler via varehusets fane «Kjøp/selg».
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - At the 'sailors' tier, you are equipped with three trading slots.
@@ -372,9 +372,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &WON
   - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
-  - [Headline, NO TASKS LEFT]
+  - [Headline, INGEN OPPGAVER IGJEN]
   - [Image, content/gui/images/background/hr.png]
-  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
+  - Du har lykkes med å fullføre alle oppgaver du har fått utlevert.  Verden er nå under ditt styre, og venter på dine frie planer og modige ekspedisjoner!
   - 'Hvis du har noen forslag om hva vi kan eller bør forbedre, legge til eller ta bort:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 51 translated messages, 137 untranslated messages.
+  translation_status: 91 translated messages, 97 untranslated messages.
