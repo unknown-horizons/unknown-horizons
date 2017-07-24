@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-07-21 15:57+0000\n"
+"PO-Revision-Date: 2017-07-24 19:41+0000\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
@@ -1754,7 +1754,7 @@ msgstr "Use \"SHIFT\" para colocar várias construções."
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Atualmente apenas a primeira{tier} é jogável."
+msgstr "Atualmente apenas o primeiro {tier} é jogável."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
@@ -3019,7 +3019,7 @@ msgstr "Praça principal"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:296
 msgid "Supplies citizens with goods. Provides community."
-msgstr "Suprimir cidadãos com bens. Fornece comunidade."
+msgstr "Supre os cidadãos com bens. Fornece comunidade."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:301
@@ -3866,7 +3866,7 @@ msgstr "Sua mina está sem recursos."
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr "Você atingiu o level máximo. Seus habitantes não iram evoluir mais."
+msgstr "Você atingiu o nível máximo. Seus habitantes não iram evoluir mais."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
