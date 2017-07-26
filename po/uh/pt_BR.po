@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-07-24 19:41+0000\n"
+"PO-Revision-Date: 2017-07-26 12:23+0000\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese (Brazil) "
 "<https://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
@@ -2420,7 +2420,7 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
-"Ira comprar {resource_name} por {price} ouro/t sempre que o estoque tiver "
+"Irá comprar {resource_name} por {price} ouro/t sempre que o estoque tiver "
 "menos de {limit}."
 
 #: horizons/gui/tabs/buyselltab.py:325
@@ -2441,7 +2441,7 @@ msgstr "Visão geral do armazém"
 # #############
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr "Conta"
+msgstr "Finanças"
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
@@ -3079,7 +3079,7 @@ msgstr "Sinalizar fogo"
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:341
 msgid "Allows the player to trade with the free trader."
-msgstr "Permite o jogador negociar com os mercadores livres."
+msgstr "Permite o jogador negociar com os comerciantes livres."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:346
