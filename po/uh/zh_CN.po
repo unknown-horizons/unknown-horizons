@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-07-12 05:37+0000\n"
+"PO-Revision-Date: 2017-07-30 06:01+0000\n"
 "Last-Translator: Felix <icyvapor@gmail.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<https://hosted.weblate.org/projects/uh/uh/zh_Hans/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "感谢您使用未知地平线！"
+msgstr "感谢您玩Unknown Horizons！"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
@@ -288,7 +288,7 @@ msgstr "确认指令"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
 msgid "(like in the selection tabs)"
-msgstr ""
+msgstr "（像在选择标签里一样）"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -333,7 +333,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "最常见的装有一个炮台的三桅战船"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -385,7 +385,7 @@ msgstr "建造这个陆地单位！"
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr ""
+msgstr "要造一艘船，先点击其中一个级别标签，再选择想要的船型，最后确定造船命令"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -425,24 +425,24 @@ msgstr "容量采用"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr ""
+msgstr "点击更改这个陆地单位的名字"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
 msgid "Settlement inventory"
-msgstr ""
+msgstr "驻地库存"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr ""
+msgstr "开拓者概述"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr ""
+msgstr "已缴税款"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
@@ -454,15 +454,15 @@ msgstr "税额:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr ""
+msgstr "税率"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "升级许可："
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "每户幸福指数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:59
@@ -481,11 +481,11 @@ msgstr "开心"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "达到此幸福指数的房屋数量"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr ""
+msgstr "每户人口"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
@@ -493,7 +493,7 @@ msgstr "各家房屋的居民数量"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "达到这个人口数的房屋"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -509,7 +509,7 @@ msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
-msgstr ""
+msgstr "维护你驻地的治安。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -558,16 +558,16 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
-msgstr ""
+msgstr "幸福"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr ""
+msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
-msgstr ""
+msgstr "所需资源："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
@@ -594,44 +594,44 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:89 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr ""
+msgstr "贸易"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:69
 msgid "Build settlement"
-msgstr ""
+msgstr "建设驻地"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr ""
+msgstr "设置通商路线"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
 msgid "Discard all resources"
-msgstr ""
+msgstr "丢弃所有资源"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr ""
+msgstr "舰船："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr ""
+msgstr "交换："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr ""
+msgstr "交易伙伴："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "买卖资源"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:18
 msgid "Trade history"
-msgstr ""
+msgstr "贸易历史"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
