@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-05-25 18:39+0000\n"
-"Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
+"PO-Revision-Date: 2017-08-05 09:51+0000\n"
+"Last-Translator: juan juan juan <vespejo3@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14.1\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -283,7 +283,7 @@ msgstr "(perder todos los recursos)"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:70
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Cancelar todo el progreso"
+msgstr "Cancelar todo el progreso de construcción"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
@@ -294,10 +294,8 @@ msgstr "Confirmar la orden"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Unirse a la partida seleccionada"
+msgstr "(como en las barras de selección)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -309,7 +307,6 @@ msgstr "Unirse a la partida seleccionada"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:23
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
-#, fuzzy
 msgid "$res"
 msgstr "$res"
 
@@ -521,10 +518,8 @@ msgid "residents"
 msgstr "residentes"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Defiende tu asentamiento."
+msgstr "Proporciona seguridad para tu asentamiento."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -800,16 +795,12 @@ msgid "Return to game"
 msgstr "Regresar a la partida"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Anterior nombre:"
+msgstr "Nombre de la isla:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Nombre de jugador"
+msgstr "Nombre del jugador:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -926,7 +917,7 @@ msgstr "Unidades"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Valor de todas la unidades propiedad del jugador"
+msgstr "Valor de todas la unidades adquiridas por el  jugador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
@@ -1808,11 +1799,10 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Presiona 'T' para hacer los árboles transparentes."
 
 #: horizons/gui/modules/loadingscreen.py:80
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
-"Construye tiendas de almacenaje para incrementar tu capacidad de almacenaje."
+"Construye tiendas de almacenaje y centinelas para expandir el alcance de tu "
+"asentamiento."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1821,12 +1811,19 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Para ver fácilmente si el alcance de su pabellón cubre todas tus tiendas, "
+"selecciónalo desde el menú de construcción y pasa sobre tu existente "
+"pabellón. Las tiendas que no estén cubiertas se mostrarán en amarillo. Es "
+"una buena idea construir un nuevo pabellón en su urbanización."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Haz que un jugador sea más divertido añadiendo jugadores de la máquina "
+"mediante el incremento de 'jugadores de la IA' cuando empieces una nueva "
+"partida."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
@@ -1841,10 +1838,12 @@ msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"¿Quieres solo citaciones graciosas? Cambia los tipos de citaciones mostradas "
+"aquí en el menú de ajustes en la página del juego."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Un mercado vincula tus construcciones como una carretera."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2359,14 +2358,10 @@ msgstr[0] "%s edificio adicional será destruido."
 msgstr[1] "%s edificios adicionales serán destruidos"
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Visión general del almacén"
+msgstr "Visión general de los barracones"
 
 #: horizons/gui/tabs/barrackstabs.py:116
-#, fuzzy
-#| msgid "sword"
 msgid "Swordman"
 msgstr "Espadachín"
 
@@ -2402,7 +2397,7 @@ msgstr "Navíos de guerra"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr "Información de la Torre"
+msgstr "visión general de la torre"
 
 #: horizons/gui/tabs/buildrelatedtab.py:43
 msgid "Build related buildings"
@@ -2695,22 +2690,18 @@ msgstr "Recluta unidades adecuadas para el combate terrestre."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Torre de madera"
+msgstr "empalizada de madera"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "muro de arcilla"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Provee de educación."
+msgstr "provee seguridad."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2764,8 +2755,6 @@ msgstr "Necesita cerdos o ganado. Produce alimento."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:114
-#, fuzzy
-#| msgid "Cannon foundry"
 msgid "Cannon Foundry"
 msgstr "Fundición de Cañones"
 
@@ -3439,7 +3428,7 @@ msgstr "Fallo al comenzar/cargar el juego"
 
 #: horizons/main.py:367
 msgid "The game you selected could not be started."
-msgstr "El juego seleccionado no puede comenzar."
+msgstr "El juego seleccionado no pudo ser iniciado."
 
 #: horizons/main.py:368
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3513,106 +3502,103 @@ msgstr "No está listo"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Protocolo multijugador desactualizado o no soportado. Por favor revisa tu "
+"versión del juego"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Has excedido el tamaño global de paquetes."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Esto no debería ocurrir nunca. Por favor contáctanos o reporta el error."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Has excedido el tamaño por paquete."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
+"Paquete desconocido o mal formado. Por favor, comprueba la versión de tu "
+"juego"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Sesión inválida/desconocida"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "No puede unirse a una partida estando en otra distinta"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Partida desconocida o el juego corre una versión diferente"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "La partida ha comenzado. No se aceptan más ingresos"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "La partida está llena"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Introduzca contraseña:"
+msgstr "Contraseña incorrecta"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "Ya se encuentra registrado un jugador con su nombre en esta partida."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Por favor cambie su nombre."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "Ya hay un jugador con su color en esta partida."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Has cambiado to color"
+msgstr "Por favor cambie su color."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"Ya hay un jugador con su ID personal de jugador en esta partida. Esto no "
+"debería de ocurrir nunca."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Ya no estás preparado"
+msgstr "No estas dentro de una partida"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Incapaz de conectar con el servidor."
+msgstr "No se pudo cambiar el nombre."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Has cambiado to color"
+msgstr "No se ha podido cambiar su color."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "No puedes cambiar la velocidad de una partida multijugador"
+msgstr "No puedes buscar una partida mientras estés en otra"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "La partida ha finalizado. El creador ha abandonado la partida."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Un jugador ha terminado su partida. Por razones técnicas, esto significa que "
+"el juego no puede continuar. Sentimos mucho lo ocurrido."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3914,10 +3900,9 @@ msgid "The Soldier by the name of {name} is ready to battle."
 msgstr "El soldado con el nombre de {name} ha está listo para la batalla."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "El nuevo barco con el nombre de {name} ha sido construido."
+msgstr "El habitante por el nombre de  {name} está disponible."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
