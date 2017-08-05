@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Après cette annonce, le marchand fera une escale chez vous pour regarder votre entrepôt, même s''il avait prévu de passer tout droit.'
+    Après cette annonce, le marchand fera une escale chez vous pour regarder votre entrepôt, même s''il avait prévu de l''ignorer.'
   - Vous pouvez faire des offres dans l'onglet « Achat/vente » de votre entrepôt.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
