@@ -70,7 +70,10 @@ class Fife:
 		self.engine_settings.setDefaultFontPath(self._finalSetting['Font'])
 		self.engine_settings.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
 		self.engine_settings.setInitialVolume(self._finalSetting['InitialVolume'])
-		self.engine_settings.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
+		is_sdl_remove_fake_alpha = False
+		if self._finalSetting['SDLRemoveFakeAlpha']:
+			is_sdl_remove_fake_alpha = True
+		self.engine_settings.setSDLRemoveFakeAlpha(is_sdl_remove_fake_alpha)
 		self.engine_settings.setGLCompressImages(self._finalSetting['GLCompressImages'])
 		self.engine_settings.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
