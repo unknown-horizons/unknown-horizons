@@ -216,6 +216,7 @@ class AbstractFarm(AbstractBuilding):
 		return options
 
 	__cache = {} # type: Dict[int, Tuple[Tuple[int, int], FarmOptionCache]]
+
 	def _get_option_cache(self, settlement_manager):
 		production_builder = settlement_manager.production_builder
 		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)

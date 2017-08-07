@@ -705,6 +705,7 @@ class Minimap:
 				         2 : math.pi,
 				         3 : math.pi / 2
 				         }
+
 	def _get_rotated_coords(self, tup):
 		"""Rotates according to current rotation settings.
 		Input coord must be relative to screen origin, not minimap origin"""
@@ -715,6 +716,7 @@ class Minimap:
 				              2 : math.pi,
 				              3 : 3 * math.pi / 2
 				              }
+
 	def _get_from_rotated_coords(self, tup):
 		return self._rotate(tup, self._from_rotations)
 

@@ -818,8 +818,10 @@ class SettlementBuildingToolLogic:
 	# Using messages now.
 	def add_change_listener(self, instance, building_tool):
 		pass
+
 	def remove_change_listener(self, instance, building_tool):
 		pass
+
 	def continue_build(self):
 		pass
 

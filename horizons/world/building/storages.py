@@ -74,6 +74,7 @@ class StorageTent(StorageBuilding, BuildableSingle):
 
 class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
+
 	def __init__(self, *args, **kwargs):
 		super(Warehouse, self).__init__(*args, **kwargs)
 		self.settlement.warehouse = self

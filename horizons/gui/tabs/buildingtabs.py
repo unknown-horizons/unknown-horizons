@@ -59,6 +59,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 		self.widget.child_finder("inventory").init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory,
 		                                           ordinal=amounts)
+
 	def refresh(self):
 		super(ResourceDepositOverviewTab, self).refresh()
 		self.widget.child_finder("inventory").update()

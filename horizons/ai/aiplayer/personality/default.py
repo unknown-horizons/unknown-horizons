@@ -222,6 +222,7 @@ class DefaultPersonality:
 		min_tier = TIER.PIONEERS
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
+
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing

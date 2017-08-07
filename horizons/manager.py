@@ -235,6 +235,7 @@ class MPManager(LivingObject):
 
 class MPPacketmanager:
 	log = logging.getLogger("mpmanager")
+
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []

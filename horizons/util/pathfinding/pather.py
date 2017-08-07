@@ -38,6 +38,7 @@ class AbstractPather:
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
+
 	def __init__(self, unit, move_diagonal, session, make_target_walkable=True):
 		"""
 		@param unit: instance of unit, to which the pather belongs
