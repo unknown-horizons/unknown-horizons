@@ -27,6 +27,7 @@ class TerrainRequirement:
 	LAND_AND_COAST = 2 # buildings that have to be partially on the coast
 	LAND_AND_COAST_NEAR_SEA = 3 # coastal buildings that have to be near the sea
 
+
 class TerrainBuildabilityCache:
 	"""
 	Keep track of the locations where buildings of specific types can be built.

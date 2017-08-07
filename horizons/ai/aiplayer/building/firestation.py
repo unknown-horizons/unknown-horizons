@@ -50,6 +50,7 @@ class AbstractFireStation(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.FIRE_STATION] = cls
 
+
 class FireStationEvaluator(BuildingEvaluator):
 	need_collector_connection = False
 	record_plan_change = False

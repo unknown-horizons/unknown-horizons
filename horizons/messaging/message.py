@@ -142,11 +142,13 @@ class QueuingMessage(Message):
 class AddStatusIcon(QueuingMessage):
 	arguments = ('icon', )
 
+
 class RemoveStatusIcon(Message):
 	arguments = (
 		'instance',		# the instance from which to remove the icon
 		'icon_class'	# class object of the icon that is to be removed
 	)
+
 
 class SettlerUpdate(Message):
 	"""Sent when the level of a settler building changes. Message includes the new
@@ -154,22 +156,27 @@ class SettlerUpdate(Message):
 	"""
 	arguments = ('level', 'change', )
 
+
 class PlayerLevelUpgrade(Message):
 	"""Sent when the settler level of a player increases."""
 	arguments = ('level', 'building', )
+
 
 class SettlerInhabitantsChanged(Message):
 	"""Class to signal that the number of inhabitants in a settler building
 	have changed."""
 	arguments = ('change', )
 
+
 class ResourceBarResize(Message):
 	"""Signals a change in resource bar size (not slot changes, but number of slot changes)."""
 	pass
 
+
 class UpgradePermissionsChanged(Message):
 	"""In a settlement."""
 	pass
+
 
 class SettlementRangeChanged(Message):
 	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
@@ -177,6 +184,7 @@ class SettlementRangeChanged(Message):
 	arguments = (
 		'changed_tiles', # Actual tile objects
 	)
+
 
 class WorldObjectDeleted(Message):
 	"""Called when a world object is being deleted.
@@ -186,22 +194,27 @@ class WorldObjectDeleted(Message):
 	"""
 	arguments = ('worldobject', 'worldid', )
 
+
 class ShipDestroyed(Message):
 	"""Sent just when a ship is destroyed."""
 	pass
+
 
 class NewPlayerSettlementHovered(Message):
 	"""Sent when the mouse hovers over a different settlement than before,
 	and it belongs to the local player or is None."""
 	arguments = ('settlement', )
 
+
 class HoverSettlementChanged(Message):
 	"""Sent when hovering over any different settlement, or no settlement."""
 	arguments = ('settlement', )
 
+
 class NewSettlement(Message):
 	"""Sent when a new settlement is created."""
 	arguments = ('settlement', 'warehouse_position', )
+
 
 class HoverInstancesChanged(Message):
 	"""Sent when hovering over a different set of instances.
@@ -209,30 +222,37 @@ class HoverInstancesChanged(Message):
 	computation without risk of delays."""
 	arguments = ('instances', )
 
+
 class NewDisaster(Message):
 	"""Sent when a building is affected by a disaster."""
 	arguments = ('building', 'disaster_class', 'disaster')
+
 
 class TabWidgetChanged(Message):
 	"""Sent when the ingamegui displays a different set of tabs, i.e. the tabwidget is exchanged.
 	The tabs are not necessarily different from the old ones."""
 	pass
 
+
 class GuiAction(Message):
 	"""Sent on events pychan classifies as "action"."""
 	pass
+
 
 class GuiCancelAction(Message):
 	"""Sent on events that originate from the cancelButton."""
 	pass
 
+
 class GuiHover(Message):
 	"""Sent on mouseEntered events"""
 	pass
 
+
 class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )
+
 
 class InstanceInventoryUpdated(Message):
 	"""Message sent whenever an inventory of any instance is updated.
@@ -241,37 +261,46 @@ class InstanceInventoryUpdated(Message):
 	"""
 	arguments = ('inventory', )
 
+
 class SettlementInventoryUpdated(Message):
 	"""Message sent whenever a settlement's inventory is updated."""
 	pass
+
 
 class PlayerInventoryUpdated(Message):
 	"""Message sent whenever a player's inventory is updated."""
 	pass
 
+
 class LanguageChanged(Message):
 	"""Sent when the language has changed."""
 	pass
+
 
 class SpeedChanged(Message):
 	"""Sent when the ingame speed has changed."""
 	arguments = ('old', 'new', )
 
+
 class SettingChanged(Message):
 	"""Sent when a setting is changed in the dialog."""
 	arguments = ('setting_name', 'old_value', 'new_value', )
+
 
 class MineEmpty(Message):
 	"""Sent when there are no more resources left in a mine."""
 	arguments = ('mine', )
 
+
 class LoadingProgress(Message):
 	"""Sent when loading screen is updated with a new progress hint."""
 	arguments = ('stage', )
 
+
 class ZoomChanged(Message):
 	"""Sent when map zoom has changed."""
 	arguments = ('zoom', )
+
 
 class ActionChanged(Message):
 	"""Sent when a ConcreteObject changed its action"""

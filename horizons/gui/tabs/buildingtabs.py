@@ -36,6 +36,7 @@ class TowerOverviewTab(OverviewTab): # defensive tower
 		super(TowerOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 
+
 class SignalFireOverviewTab(OverviewTab):
 	widget = 'overview_signalfire.xml'
 	helptext = LazyT("Overview")
@@ -46,6 +47,7 @@ class SignalFireOverviewTab(OverviewTab):
 		action_gfx = list(action_set.items())[0][1]
 		image = list(action_gfx[45].keys())[0]
 		self.widget.findChild(name="building_image").image = image
+
 
 class ResourceDepositOverviewTab(OverviewTab):
 	widget = 'overview_resourcedeposit.xml'

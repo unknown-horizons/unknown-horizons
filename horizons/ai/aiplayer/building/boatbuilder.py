@@ -41,6 +41,7 @@ class AbstractBoatBuilder(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.BOAT_BUILDER] = cls
 
+
 class BoatBuilderEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):

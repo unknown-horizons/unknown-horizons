@@ -70,6 +70,7 @@ class Mission(WorldObject):
 	def end(self):
 		pass
 
+
 class ShipMission(Mission):
 	def __init__(self, success_callback, failure_callback, ship):
 		super(ShipMission, self).__init__(success_callback, failure_callback, ship.owner)

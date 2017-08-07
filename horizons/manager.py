@@ -60,6 +60,7 @@ class SPManager(LivingObject):
 		self.commands = None
 		super(SPManager, self).end()
 
+
 class MPManager(LivingObject):
 	"""Handler for commands.
 	Initiates sending commands over the network for multiplayer games and their correct
@@ -233,6 +234,7 @@ class MPManager(LivingObject):
 # Packagemanagers storing Packages for later use
 ################################################
 
+
 class MPPacketmanager:
 	log = logging.getLogger("mpmanager")
 
@@ -265,8 +267,10 @@ class MPPacketmanager:
 		"""Receive a packet"""
 		self.command_packet_list.append(command_packet)
 
+
 class MPCommandsManager(MPPacketmanager):
 	pass
+
 
 class MPCheckupHashManager(MPPacketmanager):
 	def is_tick_ready(self, tick):
@@ -297,6 +301,7 @@ class MPCheckupHashManager(MPPacketmanager):
 # Packages transmitted over the network
 #######################################
 
+
 class MPPacket:
 	"""Packet to be sent from every player to every player"""
 	def __init__(self, tick, player_id):
@@ -318,6 +323,7 @@ class MPPacket:
 	def __str__(self):
 		return "packet " + str(self.__class__)  + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
 
+
 class CommandPacket(MPPacket):
 	"""Packet to be sent from every player to every player every tick.
 	Contains list of packets to be executed as well as the designated execution time.
@@ -327,6 +333,7 @@ class CommandPacket(MPPacket):
 		self.commandlist = commandlist
 
 MPPacket.allow_network(CommandPacket)
+
 
 class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):

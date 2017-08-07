@@ -109,6 +109,7 @@ def temporary_cachedmethod(timeout):
 # A cached property is a read-only property that is calculated on demand and automatically cached.
 # If the value has already been calculated, the cached value is returned.
 
+
 def cachedproperty(f):
 	"""returns a cached property that is calculated by function f"""
 	def get(self):

@@ -122,6 +122,7 @@ class GenericStorage(ChangeListener):
 	def __str__(self):
 		return "{}({})".format(self.__class__, self._storage if hasattr(self, "_storage") else None)
 
+
 class SpecializedStorage(GenericStorage):
 	"""Storage where only certain resources can be stored. If you want to store a resource here,
 	you have to call add_resource_slot() before calling alter()."""
@@ -138,6 +139,7 @@ class SpecializedStorage(GenericStorage):
 
 	def has_resource_slot(self, res):
 		return (res in self._storage)
+
 
 class SizedSpecializedStorage(SpecializedStorage):
 	"""Just like SpecializedStorage, but each res has an own limit.
@@ -182,6 +184,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 	def load(self, db, ownerid):
 		super(SizedSpecializedStorage, self).load(db, ownerid)
 
+
 class GlobalLimitStorage(GenericStorage):
 	"""Storage with some kind of global limit. This limit has to be
 	interpreted in the subclass, it has no predefined meaning here.
@@ -215,6 +218,7 @@ class GlobalLimitStorage(GenericStorage):
 	def get_limit(self, res=None):
 		return self.limit
 
+
 class TotalStorage(GlobalLimitStorage):
 	"""The TotalStorage represents a storage with a general limit to the sum of resources
 	that can be stored in it. The limit is a general limit, not specialized to one resource.
@@ -233,6 +237,7 @@ class TotalStorage(GlobalLimitStorage):
 	def get_free_space_for(self, res):
 		return self.limit - self.get_sum_of_stored_resources()
 
+
 class PositiveStorage(GenericStorage):
 	"""The positive storage doesn't allow to have negative values for resources."""
 	def alter(self, res, amount):
@@ -241,6 +246,7 @@ class PositiveStorage(GenericStorage):
 			subtractable_amount = - self[res] # only amount where we keep a positive value
 		ret = super(PositiveStorage, self).alter(res, subtractable_amount)
 		return (amount - subtractable_amount) + ret
+
 
 class PositiveTotalStorage(PositiveStorage, TotalStorage):
 	"""A combination of the Total and Positive storage. Used to set a limit and ensure
@@ -251,6 +257,7 @@ class PositiveTotalStorage(PositiveStorage, TotalStorage):
 			# remove empty slots, cause else they will get displayed in the ship inventory
 			del self._storage[res]
 		return ret
+
 
 class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 	"""A combination of the Total and Positive storage which only has a limited number of slots.
@@ -276,6 +283,7 @@ class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 		else:
 			return super(PositiveTotalNumSlotsStorage, self).get_free_space_for(res)
 
+
 class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
 	Used by the warehouse for example. So with a limit of 30 you could have a max of
@@ -290,8 +298,10 @@ class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 			del self._storage[res]
 		return check + ret
 
+
 class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass
+
 
 class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 	"""A storage consisting of a number of slots, all slots have the same size 'limit'.
@@ -314,6 +324,7 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 			return 0
 		else:
 			return super(PositiveSizedNumSlotStorage, self).get_free_space_for(res)
+
 
 ########################################################################
 class SettlementStorage:

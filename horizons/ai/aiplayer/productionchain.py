@@ -111,6 +111,7 @@ class ProductionChain:
 		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		return self.chain.get_ratio(resource_id)
 
+
 class ProductionChainSubtreeChoice:
 	"""An object of this class represents a choice between N >= 1 ways of producing the required resource."""
 
@@ -220,6 +221,7 @@ class ProductionChainSubtreeChoice:
 	def get_ratio(self, resource_id):
 		"""Return the ratio of the given resource needed given that 1 unit of the root resource is required."""
 		return sum(option.get_ratio(resource_id) for option in self.options)
+
 
 class ProductionChainSubtree:
 	"""An object of this type represents a subtree of buildings that need to be built in order to produce the given resource."""

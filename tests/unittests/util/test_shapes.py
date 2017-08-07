@@ -44,6 +44,7 @@ def test_rect():
 	assert r1.intersects(r2)
 	assert not r1.intersects(r3)
 
+
 def test_circle():
 	c1 = Circle(Point(0, 0), 1)
 	c2 = Circle(Point(0, 0), 2)

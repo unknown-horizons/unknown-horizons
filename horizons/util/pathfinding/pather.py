@@ -34,6 +34,7 @@ We just call this interface Pather. It is used by unit to hide implementation de
 of the pathfinding algorithm.
 """
 
+
 class AbstractPather:
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""

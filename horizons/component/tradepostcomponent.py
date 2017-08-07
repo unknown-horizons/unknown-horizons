@@ -34,11 +34,13 @@ class TRADE_ERROR_TYPE:
 	"""
 	NO_ERROR, TEMPORARY, PERMANENT = range(3)
 
+
 class TradeSlotInfo:
 	def __init__(self, resource_id, selling, limit):
 		self.resource_id = resource_id
 		self.selling = selling
 		self.limit = limit
+
 
 class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with

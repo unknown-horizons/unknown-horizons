@@ -36,6 +36,7 @@ class AbstractBrickyard(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.BRICKYARD] = cls
 
+
 class BrickyardEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):

@@ -68,6 +68,7 @@ class LazyBinaryBuildabilityCacheElement:
 		self._init_size_cache()
 		return iter(self._cache)
 
+
 class BinaryBuildabilityCache:
 	"""
 	A cache that knows where rectangles can be placed such that they are entirely inside the area.

@@ -27,6 +27,7 @@ from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.windows import Window, WindowManager
 from horizons.scheduler import Scheduler
 
+
 class StringPreviewWidget(Window):
 	"""Widget for testing Logbook strings.
 	It provides a list of scenarios, of which the user can select one and display

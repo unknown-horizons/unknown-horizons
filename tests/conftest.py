@@ -59,6 +59,7 @@ def pytest_runtest_setup(item):
 
 FIFE_MOCK_INSTALLED = False
 
+
 def pytest_namespace():
 	"""
 	This needs to run at first to avoid that other code gets a reference to the real fife

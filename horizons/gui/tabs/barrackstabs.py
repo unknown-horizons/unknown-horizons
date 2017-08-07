@@ -49,6 +49,7 @@ class BarracksTab(UnitbuilderTabBase):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
+
 class BarracksSelectTab(ProducerOverviewTabBase):
 	widget = 'barracks_showcase.xml'
 
@@ -111,6 +112,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
+
 class BarracksSwordmanTab(BarracksSelectTab):
 	icon_path = 'icons/tabwidget/barracks/swordman'
 	helptext = LazyT("Swordman")
@@ -124,6 +126,7 @@ class BarracksSwordmanTab(BarracksSelectTab):
 #	need to provide information about the selected groundunit (which of the 4 buttons clicked)
 # * check: mark those groundunit's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
+
 
 class BarracksConfirmTab(ProducerOverviewTabBase):
 	widget = 'barracks_confirm.xml'

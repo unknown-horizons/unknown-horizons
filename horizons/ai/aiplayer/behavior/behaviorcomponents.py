@@ -767,6 +767,7 @@ class BehaviorAggressivePirate(BehaviorComponent):
 			ship.attack(target_ship)
 		BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 
+
 class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""
 	Temporary action for breaking diplomacy with other players.

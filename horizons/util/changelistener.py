@@ -157,6 +157,8 @@ These methods get added automatically (eventname is the name you pass to the dec
 The goal is to simplify adding special listeners, as for example used in the
 production_finished listener.
 """
+
+
 def metaChangeListenerDecorator(event_name):
 	def decorator(clas):
 		list_name = "__" + event_name + "_listeners"

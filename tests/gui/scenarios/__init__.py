@@ -23,6 +23,7 @@ from horizons.scenario import ACTIONS
 
 # Patch scenario actions for easier detection
 
+
 def do_win(session):
 	session._scenariotest_won = True
 

@@ -338,6 +338,7 @@ class StrategyManager:
 		for mission in self.missions:
 			mission.end()
 
+
 class PirateStrategyManager(StrategyManager):
 
 	def __init__(self, owner):

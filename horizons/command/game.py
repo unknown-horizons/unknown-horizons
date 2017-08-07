@@ -62,6 +62,7 @@ class SpeedUpCommand(Command):
 
 Command.allow_network(SpeedUpCommand)
 
+
 class SpeedDownCommand(Command):
 	"""Used to change the game speed"""
 
@@ -70,6 +71,7 @@ class SpeedDownCommand(Command):
 		session.speed_down()
 
 Command.allow_network(SpeedDownCommand)
+
 
 class TogglePauseCommand(Command):
 	"""Used to change the game speed"""
@@ -80,10 +82,12 @@ class TogglePauseCommand(Command):
 
 Command.allow_network(TogglePauseCommand)
 
+
 class _SpeedCommand(Command):
 
 	def __init__(self, suggestion=False):
 		self.suggestion = suggestion
+
 
 class UnPauseCommand(_SpeedCommand):
 	"""Used to change the game speed"""
@@ -93,6 +97,7 @@ class UnPauseCommand(_SpeedCommand):
 		session.speed_unpause(self.suggestion)
 
 Command.allow_network(UnPauseCommand)
+
 
 class PauseCommand(_SpeedCommand):
 	"""Used to change the game speed"""

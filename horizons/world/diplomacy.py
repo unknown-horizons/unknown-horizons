@@ -134,6 +134,7 @@ class Diplomacy:
 			db("INSERT INTO diplomacy_enemies(player1, player2) VALUES(?, ?)",
 				tup[0].worldid, tup[1].worldid)
 
+
 def make_tup(a, b):
 	"""
 	Utility function that returns x,y tuple with x.worldid < y.worldid

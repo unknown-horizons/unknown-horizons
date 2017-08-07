@@ -62,6 +62,7 @@ class MainSquareTab(OverviewTab):
 		self.hide()
 		self.instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(self))
 
+
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	widget = 'tab_account.xml'
@@ -244,14 +245,18 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS
 
+
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.PIONEERS
+
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SETTLERS
 
+
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.CITIZENS
+
 
 class MainSquareMerchantsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.MERCHANTS

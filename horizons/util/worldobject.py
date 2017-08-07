@@ -30,6 +30,7 @@ from horizons.util.changelistener import ChangeListener
 class WorldObjectNotFound(KeyError):
 	pass
 
+
 class WorldObject(ChangeListener):
 	"""Gives every instance a unique id.
 	"""

@@ -46,6 +46,7 @@ class SavegameTooOld(Exception):
 			msg += " Revision: " + str(revision)
 		super(SavegameTooOld, self).__init__(msg)
 
+
 class SavegameUpgrader:
 	"""The class that prepares saved games to be loaded by the current version."""
 

@@ -53,6 +53,7 @@ class FeederChainGoal(ProductionChainGoal):
 		super(FeederChainGoal, self).update()
 		self.chain.reserve(0, False)
 
+
 class FeederFoodGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederFoodGoal, self).__init__(settlement_manager, RES.FOOD, 'food producer')
@@ -60,12 +61,14 @@ class FeederFoodGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FoodGoal'
 
+
 class FeederTextileGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederTextileGoal, self).__init__(settlement_manager, RES.TEXTILE, 'textile producer')
 
 	def get_personality_name(self):
 		return 'TextileGoal'
+
 
 class FeederLiquorGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
@@ -78,6 +81,7 @@ class FeederLiquorGoal(FeederChainGoal):
 	def can_be_activated(self):
 		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
+
 class FeederTobaccoProductsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederTobaccoProductsGoal, self).__init__(settlement_manager, RES.TOBACCO_PRODUCTS, 'tobacco products producer')
@@ -89,6 +93,7 @@ class FeederTobaccoProductsGoal(FeederChainGoal):
 	def can_be_activated(self):
 		return super(FeederTobaccoProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
+
 class FeederMedicalProductsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederMedicalProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs producer')
@@ -99,6 +104,7 @@ class FeederMedicalProductsGoal(FeederChainGoal):
 	@property
 	def can_be_activated(self):
 		return super(FeederMedicalProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
 
 class FeederSaltGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):

@@ -62,6 +62,7 @@ assert os.path.exists('content'), 'Content dir not found.'
 
 sys.path.append('.')
 
+
 class DummyFife:
 	use_atlases = False
 import horizons.globals # isort:skip
@@ -80,6 +81,7 @@ class AtlasEntry:
 		self.width = width
 		self.height = height
 		self.last_modified = last_modified
+
 
 class AtlasBook:
 	log = logging.getLogger("generate_atlases")

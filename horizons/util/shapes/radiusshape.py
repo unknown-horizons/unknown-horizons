@@ -33,6 +33,7 @@ class RadiusShape:
 		self.center = center
 		self.radius = radius
 
+
 class RadiusRect(RadiusShape):
 	"""Specialization of RadiusShape with a Rect as center"""
 	def __init__(self, center, radius):

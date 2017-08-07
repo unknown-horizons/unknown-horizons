@@ -62,6 +62,7 @@ class TestProductionLineData(TestBase):
 		self.assertEqual(line.consumed_res, {19: -1})
 		#self.assertEqual(line.unit_production, {10: 4, 12: 8})
 
+
 class TestProductionLine(TestBase):
 
 	def setUp(self):

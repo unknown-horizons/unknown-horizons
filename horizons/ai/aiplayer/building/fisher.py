@@ -58,6 +58,7 @@ class AbstractFisher(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.FISHER] = cls
 
+
 class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation
 
@@ -115,6 +116,7 @@ class FisherEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.FISHER
+
 
 class FisherSimulator:
 	# TODO: get these values the right way

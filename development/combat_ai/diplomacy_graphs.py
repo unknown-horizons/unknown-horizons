@@ -59,6 +59,7 @@ get_enemy_function = BehaviorDiplomatic.get_enemy_function
 get_ally_function = BehaviorDiplomatic.get_ally_function
 get_neutral_function = BehaviorDiplomatic.get_neutral_function
 
+
 def diplomacy_graph():
 	header = "Diplomacy function"
 	x_label = "relationship_score"

@@ -286,6 +286,7 @@ class Rect(Shape):
 		rect = cls.init_from_topleft_and_size_tuples((0, 0), size)
 		return list(rect.get_surrounding())
 
+
 class ConstRect(Const, Rect):
 	"""An immutable Rect.
 	Can be used for manual const-only optimization"""

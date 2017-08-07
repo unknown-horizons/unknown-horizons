@@ -43,6 +43,7 @@ class _CopyDocFromParentClass(type):
 			except AttributeError:
 				pass
 
+
 class WeakList(list, metaclass=_CopyDocFromParentClass):
 	"""
     A Weak_list can store objects but without keeping them

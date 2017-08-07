@@ -47,6 +47,7 @@ class ProducerOverviewTabBase(OverviewTab):
 		"""The current instance's Producer compontent."""
 		return self.instance.get_component(Producer)
 
+
 class UnitbuilderTabBase(ProducerOverviewTabBase):
 	"""Tab Baseclass that can be used by unit builders."""
 
@@ -204,6 +205,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		progress_perc = self.widget.findChild(name='UB_progress_perc')
 		progress_perc.text = '{progress}%'.format(progress=progress)
 
+
 class BoatbuilderTab(UnitbuilderTabBase):
 	widget = 'boatbuilder.xml'
 	helptext = LazyT("Boat builder overview")
@@ -219,6 +221,7 @@ class BoatbuilderTab(UnitbuilderTabBase):
 #	(b) how many? sort by amount, display (amount, overall amount needed of them, image)
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
+
 
 class BoatbuilderSelectTab(ProducerOverviewTabBase):
 	widget = 'boatbuilder_showcase.xml'
