@@ -145,6 +145,7 @@ class OkButton(ImageButton):
 	name="okButton" path="images/buttons/ok"
 	"""
 	DEFAULT_NAME = 'okButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
@@ -161,6 +162,7 @@ class CancelButton(ImageButton):
 	name="cancelButton" path="images/buttons/close"
 	"""
 	DEFAULT_NAME = 'cancelButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
@@ -176,6 +178,7 @@ class DeleteButton(ImageButton):
 	name="deleteButton" path="images/buttons/delete"
 	"""
 	DEFAULT_NAME = 'deleteButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME

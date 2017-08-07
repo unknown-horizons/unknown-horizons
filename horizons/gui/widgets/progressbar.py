@@ -101,6 +101,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_progress(self):
 		return self.__progress
+
 	def _set_progress(self, progress):
 		self.__progress = progress
 		fill_width = (progress / 100.0) * (self.max_size[0] / self.tiles_width)
@@ -109,6 +110,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_left_image(self):
 		return self.__left
+
 	def _set_left_image(self, image):
 		self.__left = image
 		self.left_width = Icon(image=image).size[0]
@@ -116,6 +118,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_fill_image(self):
 		return self.__fill
+
 	def _set_fill_image(self, image):
 		self.__fill = image
 		self.tiles_width = Icon(image=image).size[0]
@@ -123,6 +126,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_right_image(self):
 		return self.__right
+
 	def _set_right_image(self, image):
 		self.__right = image
 		self.right_width = Icon(image=image).size[0]

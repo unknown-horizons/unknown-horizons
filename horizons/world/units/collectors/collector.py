@@ -458,6 +458,7 @@ class Collector(Unit):
 class Job:
 	"""Data structure for storing information of collector jobs"""
 	ResListEntry = namedtuple("ResListEntry", ["res", "amount", "target_inventory_full"])
+
 	def __init__(self, obj, reslist):
 		"""
 		@param obj: ResourceHandler that provides res

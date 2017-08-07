@@ -48,28 +48,40 @@ class Dummy:
 				raise
 			else:
 				return self
+
 	def __next__(self):
 		raise StopIteration
+
 	def __repr__(self):
 		return 'Dummy()'
+
 	def __init__(self, *args, **kwargs):
 		pass
+
 	def __len__(self):
 		return 0
+
 	def __eq__(self, other):
 		return self is other
+
 	def __hash__(self):
 		return hash(None)
+
 	def __call__(self, *args, **kwargs):
 		return self
+
 	def __trunc__(self):
 		return 0
+
 	def __ge__(self, other):
 		return 0
+
 	def __gt__(self, other):
 		return 0
+
 	def __lt__(self, other):
 		return 0
+
 	def __le__(self, other):
 		return 0
 	__sub__ = __div__ = __mul__ = __floordiv__ = __mod__ = __and__ = __or__ = \

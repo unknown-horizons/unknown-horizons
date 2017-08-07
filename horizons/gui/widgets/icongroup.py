@@ -72,6 +72,7 @@ class TabBG(VBox, TilingBackground):
 	@param amount: amount of 50px tiles/panels in between top and bottom icon
 	"""
 	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
+
 	def __init__(self, **kwargs):
 		VBox.__init__(self, name='tab_background_icons', padding=0)
 		TilingBackground.__init__(self,
@@ -87,6 +88,7 @@ class TilingHBox(HBox, TilingBackground):
 	@param amount: amount of 10px tiles/panels in between left and right icon
 	"""
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
+
 	def __init__(self, **kwargs):
 		HBox.__init__(self, name='city_info_background', padding=0)
 		TilingBackground.__init__(self,

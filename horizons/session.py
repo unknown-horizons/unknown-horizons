@@ -203,10 +203,13 @@ class Session(LivingObject):
 
 	def autosave(self):
 		raise NotImplementedError
+
 	def quicksave(self):
 		raise NotImplementedError
+
 	def quickload(self):
 		raise NotImplementedError
+
 	def save(self, savegame=None):
 		raise NotImplementedError
 
@@ -336,6 +339,7 @@ class Session(LivingObject):
 	_pause_stack = 0 # this saves the level of pausing
 	# e.g. if two dialogs are displayed, that pause the game,
 	# unpause needs to be called twice to unpause the game. cf. #876
+
 	def speed_pause(self, suggestion=False):
 		self.log.debug("Session: Pausing")
 		self._pause_stack += 1
