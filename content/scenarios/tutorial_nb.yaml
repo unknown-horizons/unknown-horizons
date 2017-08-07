@@ -124,7 +124,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Hvis balansen din er positiv, så har du alt i alt et overskudd.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - I de ulike nivåoversiktsfaner kan du se statistikk om dine innbyggere.  Du kan også sette den nivåspesifikk globale skatten her og tillate eller nekte innbyggerne på dette nivået å oppgradere til neste høyere nivå.
 
 - &FIRSTTENT
   - [Message, Bygg et telt og koble det til hovedtorget hvis det trengs.]
@@ -166,7 +166,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NY OPPGAVE: BYGG SIGNALBÅL']
   - [Image, content/gui/images/background/hr.png]
   - Har du sett skipet som passerer øya de av og til?  Skipet tilhører den frie handelsmann, en av de første bosetterne i denne øygruppen.
-  - Handelsmannen kan forsyne din bosetning med nødvendige varer som du ennå ikke kan produsere.
+  - Handelsmannen kan forsyne bosetningen din med nødvendige varer som du ennå ikke kan produsere.
   - Du kan også selge produksjonsoverskudd, men generelt sett vil det gi større overskudd å forbruke varene (ved å bygge flere telt) i stedet for å selge dem.
   - Vanligvis seiler bare handelsmannen rundt og ser etter gode avtaler, men du kan sette opp farten litt.
   - - Gallery
@@ -180,198 +180,198 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Du kan foreslå avtaler via varehusets fane «Kjøp/selg».
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
-  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
-  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
+  - I «seiler»-nivået er du utstyrt med tre handelsfelter.
+  - Klikk på det lille ikonet for å bytte spormodus fra «Kjøp» til «Selg» og visa versa.
+  - Klikk på feltet for å velge hvilke varer du ønsker å handle med.  Vi forklarer mer om dette når du er klar til å handle.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'Oppgave: Bygg et signaltårn ved kysten i nærheten av varehuset ditt.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
-  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - [Message, Oppnå en lagerstatus på minst 30 verktøy på øya.  Merk at dette kan ta en stund.]
+  - [Headline, 'NY OPPGAVE: LÆR DEG HANDEL']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - 'Utmerket!  Den frie handelsmann vil nå stikke innom varehuset ditt fra tid til annen.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
-  - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
-  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
-  - When buying, you will buy sufficient to hold your 'target value' in stock.
-  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
+    La oss fortsette vår introduksjon med hvordan handle.'
+  - Klikk først på varehuset ditt, og klikk så på den tredje fanen.
+  - Klikk deretter på en av de tre feltene og velg hvilken vare du ønsker å kjøpe eller selge.
+  - Etter at du har valgt en bestemt type vare vil den grønne streken på tvers av bunnen på feltet (hvis synlig) vise hvor mye du har på lager av denne varen.
+  - Ved å dra på drafeltet på høyre siden av hvert felt bestemmer du din «målverdi», hvilket betyr forskjellige ting for «kjøp» og «selg».
+  - Når du kjøper vil du kjøpe tilstrekkelig til å ha din «målverdi» på lager.
+  - Når du selger er «målverdien» det nivået på varebeholdningen som gjør at du slutter å selge inntil du har mer igjen av denne ressursen.
   - [Pagebreak]
   - '
 
-    For example:
+    For eksempel:
 
-    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
-  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+    Med et «Kjøp»-felt og 5 tonn på lager, vil et skyvefelt plassert på 9 tonn føre til at du ikke kjøper mer enn 4 ekstra tonn.'
+  - Salg virker tilsvarende.  Et «selg»-felt med 18 tonn på lager og skyvefeltet plassert på 13 vil selge inntil 5 tonn.
+  - Hvis derimot den frie handelsmann kun ønsker å kjøpe eller selge mindre enn dine innstillinger lar ham, så må du leve med det og vente til han kommer tilbake.
+  - 'Unknown Horizons har smart prissetting, slik at verdien av en enhet kan variere.
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+    Det er IKKE mulig å endre prisene manuelt!'
+  - Du kan se handelsbalansen din i «Regnskap»-fanen ved å sammenligne «Salg»- og «Kjøp»-verdiene der.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Oppgave: Kjøp så mange verktøy du trenger for å ha 30 verktøy på lager!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
-  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - [Message, Bygg en paviljong med forbindelse til teltene.]
+  - [Headline, 'NY OPPGAVE: BYGG EN PAVILJONG']
   - [Image, content/gui/images/background/hr.png]
-  - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
+  - De verktøyene er tilstrekkelig for øyeblikket.  Godt gjort!
+  - Du sørger nå for husly, hovedtorg og mat til dine innbyggere.
+  - 'Men det er fortsatt ett behov vi ikke har oppfylt så langt (du kan se det ved å klikke på et av teltene): dine seilere ønsker en enkel bygning der de kan be.'
+  - Løsningen er en paviljong som landsbypastoren kjapt setter opp som ly for solen.
+  - Tjenestebygninger som denne trenger også å kobles til telt med en sti, for at innbyggerne dine skal føle at de kan nå dem.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
-  - 'Important:
+    Merk at religiøs tro behandles som en fysisk ressurs!'
+  - Dette betyr at innbyggerne dine trenger en veiforbindelse til produsenten (paviljongen) for å hente religiøs tro der.
+  - Etter en viss tid vil de ha forbrukt den og se seg om etter en produsent for å hente mer religiøs tro.
+  - 'Viktig:
 
-    It is NOT enough that the building is merely within a certain range of the Tents.
+    Det er IKKE tilstrekkelig at bygningen er i en gitt avstand fra teltene.
 
-    The road connection is required as well.'
+    Det trengs en veiforbindelse i tillegg.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Oppgave: Bygg en paviljong med en sti til teltene for å fylle seilerne dines behov for religiøs tro.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Message, Endre avgiftsnivået til Lavt (helt til venstre) og vent til dine seilere har oppgradert.]
+  - [Headline, 'NY OPPGAVE: NESTE NIVÅ']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
-  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Alle behov er oppfylt nå hvis innbyggerne dine regelmessig kan besøke hovedtorget og paviljongen samt når matforsyningen din er tilstrekkelig.
+  - Hvis seilerne er nok fornøyde så ønsker de å gå videre til neste nivå som heter Pionerene.
+  - For å gjøre dem fornøyde er det intet annet du kan gjøre enn å sette ned avgiftene til et lavere nivå siden du har oppfylt alle behovene til innbyggerne dine.
+  - Du bør forsøke å ikke ha lave avgifter hele tiden siden det antagelig vil føre til konkurs før eller senere.  Det går greit i en kort periode og når du vet hva du gjør.
+  - Etter litt tid vil den første enheten gå innom hovedtorget og se etter nye konstruksjonsmaterialer der for å bygge et tømmerhus.  Dette huset vil erstatte det gamle teltet.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
-  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
-  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
+    Slike bostedsoppgraderinger koster ressurser og kan dermed begrenset fra hovedtorget.'
+  - Det finnes også oppgraderinger av bygninger uten kostnader, slik du vil se hos tømmerhuggeren.  I slike tilfeller er det kun grafikken som endrer seg.
+  - Oppgraderte boliger kan ta imot flere innbyggere, og pionerene betaler i tillegg mer skatt enn seilere.
+  - Som du kanskje har oppdaget allerede, er ulempen at pionerer krever ekstra varer som sjøfolk ikke grenger - så du må i tillegg bruke mer penger på å gjøre dem fornøyde.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Oppgave: Sett skattenivået til Lavt (helt til venstre) og vent til sjøfolkene oppgraderer.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, 'NEW TASK: BUILD A FARM']
+  - [Message, Bygg en gård og behold noe ubrukt areal rundt den.]
+  - [Headline, 'NY OPPGAVE: BYGG EN GÅRD']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
-  - Now you have access to new buildings, take a look at the Build menu again.
+  - Gratulerer!  Noen av dine innbyggere har oppnådd nivået!!!
+  - Nå har du tilgang til to nye bygninger.  Ta en ny titt på byggemenyen.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - En skinnende ny fane har dukket opp der.
+  - Pionerene vil kreve tøy.  Du må dermet sette opp en produksjonslinje for tøy som starter med saueull (som er en av varene som produseres av gården).
+  - Gården er en veldig spesiell produksjonsbygning siden den kan produsere ikke bare én, men mange (og forskjellige) varer hvis du velger det.
+  - Produksjonen til gårder er avhengig av hvilke jorder du bygger rundt den.
   - [Pagebreak]
   - '
 
-    We will have a closer look at this later.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
-  - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+    Vi vil ta en nærmere titt på dette senere.'
+  - Gårder, slik alle kompanjonger som produserer råmaterialer, trenger ikke nødvendigvis å være koblet til lager eller varehus.
+  - Så lenge enheter fra selskapet som lager sluttproduktet kan nå gården, og innsamlere fra varehuset eller lagerteltene kan nå sluttprodusenten vil alt være fint.
+  - Hvis du derimot planlegger å gjøre noe foredling i andre deler av øya (hvilket kan gi mening), eller på andre øyer, så vil du trenge en forbindelse til innsamlere.
+  - Forsøk å bygge gården et stykke unna kysten og dine eksisterende bygninger, siden den trenger litt plass rundt seg for å fungere godt.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Oppgave: Bygg en gård.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Build at least one pasture and add potato fields if you like.]
-  - [Headline, 'NEW TASK: BUILD FIELDS']
+  - [Message, Bygg minst ett beiteland og legg til en potetåker hvis du har lyst.]
+  - [Headline, 'NY OPPGAVE: BYGG JORDER']
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
-  - You currently have the choice between pastures, potato and sugar fields.
-  - 'Let''s have a short overview:
+  - Gården produserer ikke noe av seg selv uten noen jorder.
+  - Du kan nå velge mellom beiteland, potet- og sukkeråker.
+  - 'Her er en kort oversikt:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Beiteland: Her lever sauer som produserer saueull.
 
-    * Potato Field: Grows potatoes which are currently treated as food.
+    * Potetåker: Gror poteter som nå håndteres som mat.
 
-    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
-  - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
-  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
+    * Sukkeråker: Gror sukker som brukes til å destillere sprit og (senere) produsere konfekt.'
+  - Nå trenger vi kun beiteland, men hvis matforsyningskapasiteten din er for liten (kanskje mange bolighus) sa kan du også produsere noen poteter.
+  - Merk at for poteter vil du trenge en veiforbindelse til gården (ikke til åkeren!), da det vil være det eneste kompaniet som arbeider på varene.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
-  - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
-  - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
+    Påse at alle jordene du bygger er i innenfor rekkevidden til gården.'
+  - Du kan ha kombinasjonsproduksjon - ett beiteland vil ikke føre til 100 prosent effektivitet på gården - men du må sjekke hvor mange jorder en gård kan håndtere.
+  - Ulike klasser av jorder krever at gårdens enheter tilbringer mer eller mindre tid der (for å så, høste, vokte, etc...) og på grunn av dette kan det hende gården ikke er i stand til å håndtere i tide alle jordene som du bygger til den.
+  - Så langt har du ikke trengt å bry deg spesielt mye om disse tingene, siden du ikke har bygget noen jorder.  La oss gjøre noe med det!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'Oppgave: Bygg minst et beiteland innenfor gårdens rekkevidde og legg til potetåkre hvis du har lyst.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
-  - [Headline, 'NEW TASK: BUILD STORAGE']
+  - [Message, Bygg et lagertelt (nivå I-fane) der det virker fornuftig.]
+  - [Headline, 'NY OPPGAVE: BYGG LAGRING']
   - [Image, content/gui/images/background/hr.png]
-  - Did you watch your lumberjack recently?
-  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
-  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
-  - We can improve this situation in two different ways, and we will have a look at both of them below.
-  - 'All companies offer to do no work at all.
+  - Har du sjekket dine tømmerhuggere i det siste?
+  - Siden varehuset ditt ikke har ubegrenset med plass til å lagre varer, så vil innsamlerne slutte å hente varer fra kompanjonger når varelageret er fullt.
+  - Dermed, med mindre noen seilere ønsket å oppgradere sine telt nylig, har du antagelig mye planger og i det tilfellet jobber kanskje ikke tømmerhuggerne.
+  - Vi kan forbedre denne situasjonen på to ulike måter, og vi skal ta en titt på begge nedenfor.
+  - 'Alle kompanjonger tilbyr å ikke jobbe i det hele tatt.
 
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
-  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+    Dette høres kanskje rart ut, men klikk på tannhjulet du ser i tømmerhuggerhyttens oversikt.'
+  - Hvis denne «bremse»-modusen er aktiv (vi kaller den «å ta ut av drift»), så vil de løpende kostnadene du betaler for bygningen reduseres.  De vil ikke bli null, men de er uansett lavere enn om du lot kompanjongene fortsatt produsere.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+    Dette betyr at du kan spare penger når du midlertidig ikke trenger en bedrift og heller ikke ønsker å rive den.'
+  - 'En annen løsning er å bygge den siste nivå-I-bygningen som ikke har vært nevnt så langt: Lagerteltet.'
+  - 'Denne bygningen har to formål.  Den:
 
-    * Offers more storage for your goods, and
+    * Tilbyr mer lagringsplass for varene dine, og
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+    * sender sine egne innsamlere for å hente varer, akkurat slik varehuset gjør.'
+  - Merk at kompanjonger kan også kobles til lagring for å få sine produkter samlet inn, og hvis varehuset er overbelastet med innsamlingsoppgaver kan du plassere ut et lagertelt for å avhjelpe.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Oppgave: Bygg et lagertelt, fortrinnsvis der du trenger innsamlere.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
-  - [Headline, 'NEW TASK: BUILD A WEAVER']
+  - [Message, Bygg en veverhytte som kan nå ullen til gården din på en eller annen måte.]
+  - [Headline, 'NY OPPGAVE: BYGG EN VEVER']
   - [Image, content/gui/images/background/hr.png]
-  - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - Nå som ullproduksjonen er satt opp trenger du fortsatt en vever for å produsere tøy av denne ullen.
+  - Veverhytten er stedet der veverne bor.  Det er to steder du kan bygge den - enten nær gården eller nær et lagertelt (eller varehuset).
+  - I begge tilfeller bør du sikre en forbindelse til en sti.
+  - Du kan plassere veverhytten nær gården og fjerne alle stier til gården for å se at den fortsatt skaffer seg ull og produserer.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Oppgave: Bygg en veverhytte plassert slik at den får tak i ull.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance.]
-  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
+  - [Message, Gi husrom til minst 50 innbyggere i byen din for å fullføre introduksjonen.  Du trenger en positiv balanse.]
+  - [Headline, 'NY OPPGAVE: FULLFØR INTRODUKSJONEN']
   - [Image, content/gui/images/background/hr.png]
-  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
-  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - Forsøk å gi husrom til minst 50 innbyggere i byen din ved å tilby flere bolighus.
+  - Så snart du klarer å holde en økonomi i gang som kan tilfredsstille en slik mengde forbrukere er du klar til å oppdage nye ukjente horisonter!
+  - Du trenger også nok penger til å holde denne økonomien gående, slik at en positiv balanse (sjekk varehus-fanen «Regnskap») er nødvendig.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Oppgave: Oppnå totalt 50 innbyggere og en positiv balanse for å fullføre denne introduksjonen.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
+  - [Message, Gratulerer! Du har nådd slutten av denne introduksjonen og er klar til å møte nye utfordringer!]
   - [Headline, INGEN OPPGAVER IGJEN]
   - [Image, content/gui/images/background/hr.png]
   - Du har lykkes med å fullføre alle oppgaver du har fått utlevert.  Verden er nå under ditt styre, og venter på dine frie planer og modige ekspedisjoner!
@@ -657,4 +657,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 91 translated messages, 97 untranslated messages.
+  translation_status: 188 translated messages.
