@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-08-05 13:13+0000\n"
-"Last-Translator: juan juan juan <vespejo3@gmail.com>\n"
+"PO-Revision-Date: 2017-08-08 20:06+0000\n"
+"Last-Translator: Lyz Lach'lan <jminscri@liev.re>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1807,22 +1807,19 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Appuyez «T» afin de rendre les arbres transparents."
 
 #: horizons/gui/modules/loadingscreen.py:80
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
 "Érigez des dépôts et des tours de guet afin d'étendre la portée de votre "
 "colonie."
 
 #: horizons/gui/modules/loadingscreen.py:81
-#, fuzzy
 msgid ""
 "To easily see whether the pavilion's range cover all your tents, select it "
 "from the build menu and hover it over your existing pavilion. Uncovered "
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
-"Pour facilement voir si la portée de l'étendard couvre toutes vos tentes, "
+"Pour voir facilement si la portée de l'étendard couvre toutes vos tentes, "
 "sélectionnez-le depuis le menu de construction et survolez l'étendard "
 "existant avec. Les tentes non couvertes apparaissent en jaune ; c'est une "
 "bonne idée d'en construire un nouveau près d'elles."
@@ -2220,13 +2217,12 @@ msgid "Restart required"
 msgstr "Redémarrage nécessaire"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
 msgstr ""
-"Certains de vos changements nécessitent un redémarrage de Unknown Horizons."
+"Certains de vos changements nécessitent un redémarrage de Unknown Horizons. "
+"Souhaitez-vous redémarrer Unknown Horizons maintenant ?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
@@ -2378,10 +2374,8 @@ msgid "Barracks overview"
 msgstr "Sommaire de la caserne"
 
 #: horizons/gui/tabs/barrackstabs.py:116
-#, fuzzy
-#| msgid "sword"
 msgid "Swordman"
-msgstr "épée"
+msgstr "Épéiste"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
@@ -2712,10 +2706,8 @@ msgstr "Recrute des unités capable de combat au sol."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Tour de Bois"
+msgstr "Barrière de Bois"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
@@ -2724,10 +2716,8 @@ msgstr "mur d'argile"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Assure l'éducation."
+msgstr "Assure la sécurité."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2757,10 +2747,8 @@ msgstr "Brasserie"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Consomme de la farine. Produit de la nourriture."
+msgstr "Consomme du houblon. Produit de la Bière."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
@@ -2789,10 +2777,8 @@ msgstr "Fonderie de Canons"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Forge des armes à partir de fer."
+msgstr "Produit des Canons."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:121
@@ -2904,17 +2890,13 @@ msgstr "Produit des plantes médicinales. Nécessite une ferme."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Champ de maïs"
+msgstr "Champ de houblon"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Produit du maïs. Nécessite une ferme."
+msgstr "Produit du houblon. Nécessite une ferme."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -3132,10 +3114,8 @@ msgstr "Raffine tout type de minerai."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "gisement de pierre"
+msgstr "Gisement de Pierre"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:358
@@ -3277,8 +3257,6 @@ msgstr "Fournit du bois. Abattu par les bûcherons."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
 msgstr "École de village"
 
@@ -3951,16 +3929,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Un nouveau navire nommé {name} a été construit."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Un nouveau navire nommé {name} a été construit."
+msgstr "Le Soldat nommé {name} est prêt pour la bataille."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Un nouveau navire nommé {name} a été construit."
+msgstr "L'habitant nommé {name} est disponible."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
