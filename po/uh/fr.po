@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-08-08 20:06+0000\n"
+"PO-Revision-Date: 2017-08-08 20:11+0000\n"
 "Last-Translator: Lyz Lach'lan <jminscri@liev.re>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
@@ -23,11 +23,13 @@ msgstr "Merci d'utiliser Unknown Horizons !"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons s'est detenu."
+msgstr "Unknown Horizons a planté."
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Nous sommes désolé pour cela et nous voulons solucioner cette erreur."
+msgstr ""
+"Nous sommes désolé pour cela et nous  allons faire notre possible afin de "
+"corriger cette erreur."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
@@ -835,7 +837,7 @@ msgstr "Quitter"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr "Aller à la page antérieur"
+msgstr "Aller à la page précédente"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
@@ -2748,7 +2750,7 @@ msgstr "Brasserie"
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
 msgid "Consumes hops. Produces Beer."
-msgstr "Consomme du houblon. Produit de la Bière."
+msgstr "Utilise du houblon. Produit de la Bière."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
