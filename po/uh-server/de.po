@@ -22,7 +22,7 @@ msgstr ""
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Altes oder nicht unterstütztes Mehrspielerprotokoll. Bitte überprüfe deine "
-"Spielversion."
+"Spielversion"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
