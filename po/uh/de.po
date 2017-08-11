@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-08-11 14:55+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2017-08-11 14:59+0000\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -801,7 +801,7 @@ msgstr "Zurück zum Spiel"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
 msgid "Island Name:"
-msgstr "Insel Name:"
+msgstr "Inselname:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
 msgid "Player Name:"
@@ -1496,7 +1496,7 @@ msgstr "Scrollverzögerung:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr "Zitat-Typ:"
+msgstr "Zitat-Typ auswählen:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
@@ -1862,7 +1862,7 @@ msgstr "Gemischt"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr "Motor anwerfen …"
+msgstr "Basissystem wird gestartet …"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
@@ -2440,7 +2440,7 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"Verkaufe für {price} Gold {resource_name}, solange mehr als {limit} t auf "
+"Verkaufe {resource_name} für {price} Gold, solange mehr als {limit} t auf "
 "Lager sind."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
@@ -2483,7 +2483,7 @@ msgstr "Produktions-Übersicht"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr "Fülle den Bereich mit {how_many} Bäume"
+msgstr "Fülle den Bereich mit {how_many} Bäumen."
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
@@ -2788,7 +2788,7 @@ msgstr "Kohlemeiler"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:123
 msgid "Burns a lot of boards."
-msgstr "Ein Köhler stellt hier Holzkohle her."
+msgstr "Ein Köhler stellt hier Holzkohle aus Brettern her."
 
 # Building
 #. name of buildings:claydeposit
@@ -3527,12 +3527,12 @@ msgstr "Nicht Bereit"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Veraltetes oder nicht unterstütztes Multiplayer Protokoll. Überprüft bitte "
-"Eure Spielversion"
+"Altes oder nicht unterstütztes Mehrspielerprotokoll. Bitte überprüfe deine "
+"Spielversion."
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr "Die globale Datenpaket Größe wurde überschritten."
+msgstr "Sie haben die maximale globale Paketgröße überschritten."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
@@ -3542,12 +3542,13 @@ msgstr ""
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr "Die Maximalgröße pro Datenpaket wurde überschritten."
+msgstr "Sie haben die zulässige Größe pro Paket überschritten."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
-"Unbekanntes oder falsch aufgebautes Paket. Überprüft bitte Eure Spielversion"
+"Unbekanntes oder fehlerhaftes Paket. Bitte überprüfen Sie die Version Ihres "
+"Spiels."
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
@@ -3706,7 +3707,7 @@ msgstr "Eine Seite wurde in Eurem Browser geöffnet."
 #: horizons/util/uhdbaccessor.py:283
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr "{slotnum} Slots, {limit}t"
+msgstr "{slotnum} Frachtbereiche, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:291
 #, python-brace-format
@@ -4294,7 +4295,7 @@ msgstr "Tee"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr "Blütenblätter"
+msgstr "Blumenwiese"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
