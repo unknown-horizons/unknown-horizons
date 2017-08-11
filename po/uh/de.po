@@ -3528,7 +3528,7 @@ msgstr "Nicht Bereit"
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Altes oder nicht unterstütztes Mehrspielerprotokoll. Bitte überprüfe deine "
-"Spielversion."
+"Spielversion"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
