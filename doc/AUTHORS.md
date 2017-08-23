@@ -475,6 +475,9 @@
 * nmarques (Nelson Marques)
 * gryffus (Lukáš Krejza)
 
+#### Slackware
+* dslackw (Dimitris Zlatanidis)
+
 #### OS X
 * hoffi (Stefan Hoffmann)
 
