@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
-"PO-Revision-Date: 2017-07-02 03:03+0000\n"
+"PO-Revision-Date: 2017-08-28 05:26+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -783,16 +783,12 @@ msgid "Return to game"
 msgstr "게임으로 돌아가기"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "이전 이름:"
+msgstr "섬 이름:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "플레이어 이름"
+msgstr "플레이어 이름:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -1795,13 +1791,10 @@ msgstr ""
 "첫 번째 단계는 인공지능 놀사람이 정착을 설정하는 방법을 보면 더 쉽습니다."
 
 #: horizons/gui/modules/loadingscreen.py:84
-#, fuzzy
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
-msgstr ""
-"재미있는 시세만 원하십니까? 게임 페이지의 설정 메뉴에서 여기에 표시된 시세 유"
-"형을 변경하십시오."
+msgstr "재미있는 따옴표만 원하십니까? 게임 페이지의 설정 메뉴에서 여기에 표시된 따옴표 유형을 변경하십시오."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
@@ -3476,10 +3469,8 @@ msgid "Game is full"
 msgstr "이 판의 정원이 채워졌습니다"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "암호 입력:"
+msgstr "잘못된 암호"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
@@ -3494,10 +3485,8 @@ msgid "There's already a player with your color inside this game."
 msgstr "이 판에 이미 같은 색상의 사용자가 있습니다."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "색상을 변경했습니다"
+msgstr "색상을 바꿔주십시오."
 
 #: horizons/network/server.py:483
 msgid ""
@@ -3506,22 +3495,16 @@ msgid ""
 msgstr "게임에서 이미 유일해야되는 플레이어 ID가 있습니다. 발생하면 안됩니다."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "요즘 준비되지 않았습니다"
+msgstr "게임을 하고 있지 않습니다"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "서버에 연결할 수 없습니다."
+msgstr "이름을 바꿀수 없습니다."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "색상을 변경했습니다"
+msgstr "색상을 바꿀수 없습니다."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
