@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-07-02 03:03+0000\n"
+"PO-Revision-Date: 2017-08-29 07:47+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh-server/ko/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -64,7 +64,7 @@ msgstr "이 판의 정원이 채워졌습니다"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
-msgstr "비밀번호가 틀렸습니다"
+msgstr "잘못된 암호"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
@@ -80,7 +80,7 @@ msgstr "이 판에 이미 같은 색상의 사용자가 있습니다."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr "색상을 바꿔주세요."
+msgstr "색상을 바꿔주십시오."
 
 #: horizons/network/server.py:442
 msgid ""
