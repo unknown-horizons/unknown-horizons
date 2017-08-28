@@ -63,15 +63,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, '벌목꾼의 집을 건설하고, 창고와 연결하십시오.']
   - [Headline, '새로운 임무 : 나무꾼의 집을 건설하십시오.']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - 물품 및 건축 자재는 선박에서 하역되어 새로운 창고에 안전하게 보관되었습니다. 이제 나무꾼의 천막을 시작으로 몇 가지 기본적인 건물을 건설 할 차례입니다.
+  - 나무꾼은 천막 주변의 삼림 지대에서 벌목하고 판자를 생산하기위해 목재를 가공하고, 건축물이나 무역 자원으로 사용합니다.
   - 벌목꾼의 집을 지으려면, 작은지도 아래 버튼을 클릭거나  기본 단축키인 'B' 키를 눌러하여 건설 차림판을 여십시오.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - 건설 메뉴는 계층별로 정렬되고, 새로운 정착지이므로 첫번째 계층 건물 만 사용할 수 있습니다. 문명이 발전함에 따라 상위 계층에 대한 접근 권한을 얻고 훨씬 더 넓은 범위의 건물을 건설 할 수 있게 됩니다.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - 나무꾼이 제대로 일을 하려면 먼저 나무가 울창한 지역을 찾고, 다음 개요에있는 건물 목록에서 '나무꾼의 천막'을 선택하고 건물을 배치하십시오.
   - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
   - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
@@ -661,4 +661,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 101 translated messages, 51 fuzzy translations, 36 untranslated messages.
+  translation_status: 105 translated messages, 51 fuzzy translations, 32 untranslated messages.

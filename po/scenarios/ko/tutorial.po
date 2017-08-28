@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-02-04 14:19+0000\n"
+"PO-Revision-Date: 2017-08-29 19:46+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.11\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -149,12 +149,14 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"물품 및 건축 자재는 선박에서 하역되어 새로운 창고에 안전하게 보관되었습니다. 이제 나무꾼의 천막을 시작으로 몇 가지 기본적인 건물을 "
+"건설 할 차례입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
-msgstr ""
+msgstr "나무꾼은 천막 주변의 삼림 지대에서 벌목하고 판자를 생산하기위해 목재를 가공하고, 건축물이나 무역 자원으로 사용합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -171,12 +173,16 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"건설 메뉴는 계층별로 정렬되고, 새로운 정착지이므로 첫번째 계층 건물 만 사용할 수 있습니다. 문명이 발전함에 따라 상위 계층에 대한 "
+"접근 권한을 얻고 훨씬 더 넓은 범위의 건물을 건설 할 수 있게 됩니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"나무꾼이 제대로 일을 하려면 먼저 나무가 울창한 지역을 찾고, 다음 개요에있는 건물 목록에서 '나무꾼의 천막'을 선택하고 건물을 "
+"배치하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
