@@ -144,7 +144,7 @@ metadata:
   author: Kikody, UH-Team
   description: 'Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Você e sua tripulação estavam a caminho de uma colônia da Inglaterra no Oceano Pacífico.
 
-    Tudo correu bem até que você entrou em uma tempestade …'
+    Tudo corria bem até que você entrou em uma tempestade …'
   difficulty: fácil
   locale: pt_BR
   mapfile: development.sqlite
