@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-08-31 04:51+0000\n"
+"PO-Revision-Date: 2017-09-01 07:46+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh-server/ko/>"
 "\n"
@@ -30,7 +30,7 @@ msgstr "전체 패킷 크기를 초과 했습니다."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr "이것은 결코 일어나서는 안됩니다. 저희에게 버그 보고서를 보내주세요."
+msgstr "이것은 결코 일어나서는 안됩니다. 저희에게 버그 보고서를 보내주십시오."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
@@ -43,7 +43,7 @@ msgstr "알 수 없거나 잘못된 패킷입니다. 게임 버전을 확인 하
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr "잘못되었거나 알 수 없는 세션"
+msgstr "잘못되었거나 알수없는 세션"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
@@ -51,7 +51,7 @@ msgstr "다른 판에는 참여할수 없습니다"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr "알수 없는 게임이거나 다른버전의 게임이 실행중입니다"
+msgstr "알수없는 게임이거나 다른버전의 게임이 실행중입니다"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
@@ -71,7 +71,7 @@ msgstr "이 판에 이미 같은 이름의 사용자가 있습니다."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr "이름을 바꿔주세요."
+msgstr "이름을 바꿔주십시오."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
