@@ -2,13 +2,12 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-08-29 07:47+0000\n"
+"PO-Revision-Date: 2017-08-31 04:51+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh-server/ko/>"
 "\n"
@@ -64,7 +63,7 @@ msgstr "이 판의 정원이 채워졌습니다"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
-msgstr "잘못된 암호"
+msgstr "잘못된 암호입니다"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
@@ -100,7 +99,7 @@ msgstr "이 판 게임이 종료 되었습니다. 방장이 이 게임을 떠났
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr "한 사용자가 그게임을 종료하였습니다. 기술적인 이유로 지금은 이 판을 더 이상 지속할수 없음을 의미합니다. 죄송합니다."
+msgstr "한 플레이어가 게임을 종료하였습니다. 기술적인 이유로 지금은 이 판을 더 이상 지속할수 없음을 의미합니다. 죄송합니다."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
