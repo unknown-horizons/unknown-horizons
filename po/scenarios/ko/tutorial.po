@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-08-31 17:20+0000\n"
+"PO-Revision-Date: 2017-09-01 19:46+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -36,7 +36,7 @@ msgstr "무역선들이 정착지에 방문할 수 있도록 해안에 창고를
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr "미지의 지평선에 오신것을 환영합니다!"
+msgstr "이곳에 오신것을 환영합니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -92,7 +92,7 @@ msgstr "그러면 이제, 게임을 시작합니다!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "새로운 임무: 정착지 만들기"
+msgstr "새로운 임무: 정착지 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -132,7 +132,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr "임무: 해안선 근처에서 창고를 건설하기."
+msgstr "임무: 해안선 근처에 창고 건설하십시오."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
@@ -140,7 +140,7 @@ msgstr "나무꾼의 천막을 건설하고, 창고와 연결하십시오."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "새로운 임무: 나무꾼의 천막을 건설하십시오"
+msgstr "새로운 임무: 나무꾼의 천막 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -212,7 +212,7 @@ msgstr ""
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
-msgstr "임무: 나무꾼의 천막을 숲속지역에 건설하고 그곳을 창고와 길을 연결하십시오."
+msgstr "임무: 나무꾼의 천막을 숲속지역에 건설하고 창고와 길을 연결하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -229,7 +229,7 @@ msgstr "사냥꾼의 천막과 낚시꾼의 천막을 건설하고, 창고와 �
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "새로운 임무: 식량 조달"
+msgstr "새로운 임무: 식량 공급"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -291,7 +291,7 @@ msgstr "이같은 소규모 정착지는 생산시설 모두를 사용할 수 �
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr "임무: 사냥꾼의 천막과 낚시꾼의 천막을 건설."
+msgstr "임무: 사냥꾼의 천막과 낚시꾼의 천막을 건설하십시오."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
@@ -343,7 +343,7 @@ msgstr "나무꾼의 천막같은 생산시설들은 천막과 연결되지 않�
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Main Square."
-msgstr "임무: 중앙광장을 건설하시오."
+msgstr "임무: 중앙광장을 건설하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -385,7 +385,7 @@ msgstr "필요하다면 천막을 건설하고 중앙광장과 연결하십시�
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "새로운 임무: 주택 건설"
+msgstr "새로운 임무: 주택"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -491,7 +491,7 @@ msgstr "창고 근처 해안에 봉화대를 건설하십시오."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "새로운 임무: 봉화대를 건설"
+msgstr "새로운 임무: 봉화대 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -564,7 +564,7 @@ msgstr "무역하고자하는 칸의 물품을 선택하십시오. 무역 준비
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
-msgstr "임무: 창고 근처 해안에 봉화대를 건설."
+msgstr "임무: 창고 근처 해안에 봉화대를 건설하십시오."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -667,7 +667,7 @@ msgstr "'구매'와 '판매''회계'탭에서 무역수지를 볼 수 있습니�
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
-msgstr "임무: 도구의 재고가 30개가 될때까지 구입!"
+msgstr "임무: 도구의 재고가 30개가 될때까지 구입하십시오!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Pavilion with connection to the Tents."
@@ -826,8 +826,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
-msgstr ""
-"임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다릴것."
+msgstr "임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 재건축할 선원을 기다리십시오."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Farm and keep some empty space around it."
@@ -1077,15 +1076,13 @@ msgstr "어떻게든 농장의 양털을 생산할 수 있도록 방직공의 �
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "새로운 임무: 방직소를 건설"
+msgstr "새로운 임무: 방직소 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
-msgstr ""
-"이제 양모 생산을 할수 있으므로, 이 양모에서 천을 생산하는데 직물 공만드는 데는 직공이 필요합니다.\n"
-"양모 생산을 할 수 있었으므로,이 양모에서 천을 생산하는 직물 공간이 필요합니다."
+msgstr "이제 양모 생산을 할 수 있으므로, 이 양모에서 천을 생산하는데 방직공이 필요합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1106,7 +1103,7 @@ msgstr "방직공의 오두막을 농장 근처에 짓고 농장과 연결된 �
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
-msgstr "임무: 양털을 얻을수있는 위치에 방직소를 건설."
+msgstr "임무: 양털을 얻을 수 있는 위치에 방직소를 건설하십시오."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -1141,7 +1138,7 @@ msgstr "또한 이 경제를 유지하기에 충분한 돈이 필요하므로 �
 msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
-msgstr "임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야함."
+msgstr "임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야합니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
