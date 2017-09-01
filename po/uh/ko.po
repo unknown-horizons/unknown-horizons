@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-01-01 17:43+0100\n"
 "PO-Revision-Date: 2017-09-01 02:27+0000\n"
-"Last-Translator: k ks <kmshts@naver.com>\n"
+"Last-Translator: Cyan K <arewecy@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -492,9 +492,8 @@ msgid "Number of inhabitants per house"
 msgstr "가구 당 주민들수"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
-#, fuzzy
 msgid "Houses with this amount of inhabitants"
-msgstr "이 인구를 가진 집의 수"
+msgstr "이 인구를 가진 집들"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
