@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-09-01 19:46+0000\n"
+"PO-Revision-Date: 2017-09-03 16:47+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -32,7 +32,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
-msgstr "무역선들이 정착지에 방문할 수 있도록 해안에 창고를 건설하십시오."
+msgstr "무역상선들이 정착지에 방문할 수 있도록 해안에 창고를 건설하십시오."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -148,7 +148,7 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
-"물품 및 건축 자재는 선박에서 하역되어 새로운 창고에 안전하게 보관되었습니다. 이제 나무꾼의 천막을 시작으로 몇 가지 기본적인 건물을 "
+"공급품 및 건축 자재는 선박에서 하역되어 새로운 창고에 안전하게 보관되었습니다. 이제 나무꾼의 천막을 시작으로 몇 가지 기본적인 건물을 "
 "건설 할 차례입니다."
 
 #. This is the text body of a logbook page.
@@ -195,8 +195,7 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
-"자원을 모으거나 생산하는 건물은 창고 또는 다른 형태의 저장소와 연결되는 경로가 필요합니다. 그렇지 않으면 생산 한 물건이 수집되지 "
-"않습니다."
+"자원을 모으거나 생산 시설은 창고 또는 다른 형태의 저장소와 연결되는 경로가 필요합니다. 그렇지 않으면 생산한 물품이 수집되지 않습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -308,7 +307,7 @@ msgstr "새로운 임무: 중앙광장"
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr "주민들은 그들의 제품을 가져올 수 있는 중앙광장을 필요로 합니다."
+msgstr "주민들은 그들의 물품을 가져올 수 있는 중앙광장을 필요로 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -324,7 +323,7 @@ msgid ""
 "All goods in your Warehouse are available at this 'market place', so your "
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
-msgstr "주민들은 낚시꾼의 천막이나 창고까지 걸어갈 필요 없이 창고에 있는 모든 제품들은 '시장'에서 이용할 수 있습니다."
+msgstr "주민들은 낚시꾼의 천막이나 창고까지 걸어갈 필요 없이 창고에 있는 모든 물품들은 '시장'에서 이용할 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -420,7 +419,7 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
-"정착민들은 생산하는 모든 제품을 소비하려하기 때문에 정착민들은 매우 유용해 보이지 않을수 있습니다. -하지만 그들은 최소한의 세금을 "
+"정착민들은 생산하는 모든 물품을 소비하려하기 때문에 정착민들은 매우 유용해 보이지 않을수 있습니다. -하지만 그들은 최소한의 세금을 "
 "지불하므로 지금 돈을 벌 수있는 유일한 방법입니다!"
 
 #. This is the text body of a logbook page.
@@ -505,21 +504,21 @@ msgstr ""
 msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
-msgstr "무역선은 아직 생산할수 없는 필수 제품과 정착지를 제공 할 것입니다."
+msgstr "무역상선은 아직 생산할수 없는 필수 물품과 정착지를 제공 할 것입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
 msgstr ""
-"또한 생산하고 남은 제품은 판매할수 있지만, 일반적으로 (더 많은 천막을 세워서) 소비하는것이 판매하는것 보다 더 많은 이익을 줄수 "
+"또한 생산하고 남은 물품은 판매할수 있지만, 일반적으로 (더 많은 천막을 세워서) 소비하는것이 판매하는것 보다 더 많은 이익을 줄수 "
 "있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
-msgstr "일반적으로 무역선은 주변을 항해하고 거래처를 찾고있지만 이를 좀 더 빠르게 할 수 있습니다."
+msgstr "일반적으로 무역상선은 주변을 항해하고 거래처를 찾고있지만 이를 좀 더 빠르게 할 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -540,7 +539,7 @@ msgid ""
 "your Warehouse, even if he had planned to sail past it."
 msgstr ""
 "\n"
-"이 작은 광고 후에 무역선이 지나가고 항해 할 계획이 있다 하더라도 창고에 잠시들러 들여다 보게됩니다."
+"이 작은 광고 후에 무역상선이 지나가고 항해 할 계획이 있다 하더라도 창고에 잠시들러 들여다 보게됩니다."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
@@ -583,7 +582,7 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
-"훌륭합니다! 자유 무역선이 창고에 자주 들를 것입니다.\n"
+"훌륭합니다! 자유 무역상선이 창고에 자주 들를 것입니다.\n"
 "\n"
 "무역하는 방법에 대한 자습서를 계속 진행 해보겠습니다."
 
@@ -594,15 +593,13 @@ msgstr "먼저 자신의 창고를 클릭하고 세 번째 탭을 클릭하십�
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
-msgstr "그런 다음 3 개의 슬롯 중 하나를 클릭 한 다음 구매하거나 판매 할 제품을 선택하십시오."
+msgstr "그런 다음 3 개의 슬롯 중 하나를 클릭 한 다음 구매하거나 판매 할 물품을 선택하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After selecting a particular type of good, the green bar across the bottom "
 "of the slot (if visible) shows you how much you have in stock of this good."
-msgstr ""
-"특정 제품의 종류를 선택한후, 칸 아래에 걸친 녹색 막대 (표시된 경우)는 보유하"
-"신 이물건의 재고가 얼마나 있는지 보여 줍니다."
+msgstr "특정 물품의 종류를 선택한후, 칸 아래에 걸친 녹색 막대 (표시된 경우)는 보유하신 이물건의 재고가 얼마나 있는지 보여 줍니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -648,7 +645,7 @@ msgid ""
 "If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
-"어쨌거나 자유 무역선이 당신이 설정한 값보다 더 적은 양만을 구입하거나 판매하려 한다면, 무역선이 다시 돌아올때까지 기다려야합니다."
+"어쨌거나 자유 무역상선이 당신이 설정한 값보다 더 적은 양만을 구입하거나 판매하려 한다면, 무역상선이 다시 돌아올때까지 기다려야합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -820,7 +817,7 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
-"이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 제품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 "
+"이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 물품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 "
 "할뿐만아니라 이 여분의 돈을 소비해야합니다."
 
 #. This is the text body of a logbook page.
@@ -854,13 +851,13 @@ msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for "
 "cloth starting with lambs wool (which is one of the goods produced at the "
 "Farm)."
-msgstr "개척자들이 옷감을 요구하기 때문에 양털실(농장에서 생산되는 제품중의 하나)로 만든 천의 생산라인을 구축 해야합니다."
+msgstr "개척자들이 옷감을 요구하기 때문에 양털(농장에서 생산되는 물품중의 하나)로 만드는 옷감 생산라인을 구축해야 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Farm is a very special production building since it can produce not only "
 "one, but many (and different) goods if you choose."
-msgstr "농장은 하나만 생산하지 않고 귀하가 원하는 많은 (그리고 다양한) 제품을 생산하기 때문에 매우 특별한 생산 건물입니다."
+msgstr "농장은 한가지만 생산하지 않고 다양한 물품을 생산할 수 있기때문에 매우 특별한 생산시설입니다."
 
 #. This is the text body of a logbook page.
 msgid "The output of Farms depends on what kind of fields you build around it."
@@ -945,7 +942,7 @@ msgstr "이제는 목장만 있으면 되지만 식량 공급 과정이 소규�
 msgid ""
 "Note that for potatoes you will need a road connection to the Farm (not to "
 "the field!), as it will be the only company to work on the goods."
-msgstr "감자에 대해서는 농산물을 다루는 생산시설이 유일하므로 농장(밭이 아니라!)에 대한 길의 연결이 필요합니다."
+msgstr "감자에 대해서는 이 물품을 취급하는 생산시설은 농장이 유일하므로 농장(밭이 아니라!)에 길이 연결되어야 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -953,7 +950,7 @@ msgid ""
 "Make sure that all fields you build are in the area covered by the Farm."
 msgstr ""
 "\n"
-"밭들은 농장의 범위 내에 만들도록 하십시오."
+"밭들은 농장의 범위 내에 만들어야 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1001,7 +998,7 @@ msgstr "최근에 나무꾼을 본적 있습니까?"
 msgid ""
 "Since your Warehouse does not have unlimited space to store goods, "
 "collectors will stop fetching goods from companies when stock is full."
-msgstr "창고는 물품 보관 장소가 한정되어 있기 때문에, 재고가 가득 차면, 수집자는 생산시설에서 제품을 가져오는것을 멈춥니다."
+msgstr "창고는 물품 보관 장소가 한정되어 있기 때문에, 재고가 가득 차면, 수집자는 생산시설에서 물품을 가져오는것을 멈춥니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1056,15 +1053,15 @@ msgid ""
 "* sends its own collectors to fetch goods, just like the Warehouse does."
 msgstr ""
 "이 건물에는 두 가지 목적이 있습니다. 그것은:\n"
-"* 당신의 제품에 더 많은 저장 공간을 제공합니다.\n"
-"* 창고처럼 자체 수집자가 제품을 가져옵니다."
+"* 당신의 물품에 더 많은 저장 공간을 제공합니다.\n"
+"* 창고처럼 자체 수집자가 물품을 가져옵니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that companies can also be connected to a storage in order to get their "
 "products collected, and if the Warehouse is overwhelmed with collector "
 "tasks, you can place a Storage Tent to help out there."
-msgstr "생산시설은 제품을 수집하기 위해 저장소와 연결할 수 있으며 창고가 가득차면 그것을 돕기위해 저장소 천막을 배치할 수 있습니다."
+msgstr "생산시설은 물품을 수집하기 위해 저장소와 연결할 수 있으며 창고가 가득차면 그것을 돕기위해 저장소 천막을 배치할 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Storage Tent, preferably where you need collectors."
@@ -1082,14 +1079,14 @@ msgstr "새로운 임무: 방직소 건설"
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
-msgstr "이제 양모 생산을 할 수 있으므로, 이 양모에서 천을 생산하는데 방직공이 필요합니다."
+msgstr "이제 양털을 생산 할 수 있으므로, 이 양털로 옷감을 만드는데 방직공이 필요합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Weaver's Hut is the place where the weaver lives. There are two spots "
 "where you can build it - either close to the Farm or close to a Storage Tent "
 "(or the Warehouse)."
-msgstr "방직공의 오두막은 방직공이 사는 곳입니다. 농장 근처나 저장소 천막(또는 창고) 근처 두곳이 있습니다."
+msgstr "방직공의 오두막은 방직공이 사는 곳입니다. 농장 근처나 저장소 천막(또는 창고) 근처 두 곳에 지을수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid "In both cases you should ensure the connection to a Trail as well."
