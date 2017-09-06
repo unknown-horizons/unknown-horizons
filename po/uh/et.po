@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-08-16 16:45+0000\n"
+"PO-Revision-Date: 2017-09-06 19:27+0000\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -214,16 +214,12 @@ msgid "Running costs"
 msgstr "Jooksvad kulud"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Laeva ehitamiseks klõpsa laeva klassi kaardil, vali soovitud laev ja kinnita "
-"tellimus."
+"Maaüksuse ehitamiseks klõpsa ühel klassi sakkidest, vali soovitud üksus ja "
+"kinnita tellimus."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -292,10 +288,8 @@ msgstr "Kinnita tellimus"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Liitu valitud mänguga"
+msgstr "(nagu valiku vahelehtedel)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -345,10 +339,8 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "Luba uuendused"
+msgstr "Osta uuendused"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -383,17 +375,13 @@ msgid "+ 1457"
 msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Hoia positsiooni"
+msgstr "Ehita maaüksus:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Ehita see laev!"
+msgstr "Ehita see maaüksus!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -404,10 +392,8 @@ msgstr ""
 "tellimus."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "Ehita see laev!"
+msgstr "Ehita laev:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -526,10 +512,8 @@ msgid "residents"
 msgstr "elanikke"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Kaitseb sinu kolooniat."
+msgstr "Turvab sinu kolooniat."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -800,16 +784,12 @@ msgid "Return to game"
 msgstr "Tagasi mängu"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Vana nimi:"
+msgstr "Saare nimi:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Mängija Nimi"
+msgstr "Mängija nimi:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -1792,10 +1772,8 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Vajuta 'T', et muuta puud läbipaistvaks."
 
 #: horizons/gui/modules/loadingscreen.py:80
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "Ehita laotelke, et suurendada ladustamise pinda."
+msgstr "Ehita laotelke ja vahiposte, et laiendada oma koloonia ulatust."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1804,28 +1782,37 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Selleks, et lihtsalt näha, kas paviljon katab kõik su telgid, vali ta "
+"ehitiste menüüst ja lase tal hõljuda vana paviljoni kphal. Katmata telgid "
+"kuvatakse kollaselt. Uus paviljon on mõistlis ehitada nende naabrusesse."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Muuda ühe mängija režiim huvitavamaks lisades uut mängu alustades "
+"täiendavaid arvuti juhitud tehisintellektiga mängureid."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Alustamine on lihtsam, kui vaatad tehisintellekti juhitud asunduse "
+"kujunemist."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Soovid ainult naljakaid tsitaate? Vali siia kuvatavate tsitaatide tüüp mängu "
+"lehe seadete menüüst."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Turuplats ühendab su ehitisi nagu tee."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2186,12 +2173,12 @@ msgid "Restart required"
 msgstr "Vaja on taaskäivitust"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Mõned sinu muudatused vajavad Unknown Horizons'i taaskäivitamist."
+msgstr ""
+"Mõned sinu muudatused vajavad Unknown Horizons'i taaskäivitamist. Kas sa "
+"soovid mängu taaskäivitada nüüd?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
@@ -2334,16 +2321,12 @@ msgstr[0] "Lisaks hävitatakse veel %s ehitis."
 msgstr[1] "Lisaks hävitatakse veel %s ehitist"
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Harukontori ülevaade"
+msgstr "Barakkide ülevaade"
 
 #: horizons/gui/tabs/barrackstabs.py:116
-#, fuzzy
-#| msgid "sword"
 msgid "Swordman"
-msgstr "mõõk"
+msgstr "Mõõgamees"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
@@ -2667,22 +2650,18 @@ msgstr "Värbab maapealseks võitluseks sobiva üksuse."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Puittorn"
+msgstr "Puidust tõke"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "Savist sein"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Annab haridust."
+msgstr "Annab turvalisust."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2707,14 +2686,12 @@ msgstr "Ehitab paate ja väikseid laevu. Ehitatakse rannikule."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Brewery"
-msgstr ""
+msgstr "Pruulikoda"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Tarbib jahu. Toodab toitu."
+msgstr "Tarbib humalaid. Toodab õlut."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
@@ -2739,14 +2716,12 @@ msgstr "Vajab sigu või kariloomi. Toodab toitu."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:114
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Suurtüki valukoda"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Toodab rauast relvi."
+msgstr "Toodab suurtükke."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:121
@@ -2856,17 +2831,13 @@ msgstr "Toodab tubakat. Vajab talu."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Maisipõld"
+msgstr "Humala põld"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Toodab maisi. Vajab talu."
+msgstr "Toodab humalaid. Vajab talu."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -3080,10 +3051,8 @@ msgstr "Puhastab erinevaid maake."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "kivimurd"
+msgstr "Kivimurd"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:358
@@ -3222,8 +3191,6 @@ msgstr "Varustab puiduga. Puuraidurid lõikavad laudadeks."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Külakool"
 
@@ -3878,16 +3845,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Uus laev nimega {name} sai valmis."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Uus laev nimega {name} sai valmis."
+msgstr "Sõdur nimega {name} on lahinguks valmis."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Uus laev nimega {name} sai valmis."
+msgstr "Asunik nimega {name} on saadaval."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -4294,7 +4259,7 @@ msgstr "humalad"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "õlu"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
