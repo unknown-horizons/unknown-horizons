@@ -40,7 +40,7 @@ class AmbientSoundComponent(Component):
 		"""
 		@param soundfiles: list of paths
 		"""
-		super(AmbientSoundComponent, self).__init__()
+		super().__init__()
 		self.soundfiles = soundfiles or []
 		self.__init()
 
@@ -64,7 +64,7 @@ class AmbientSoundComponent(Component):
 				                  position=self.instance.position.center)
 
 	def load(self, db, worldid):
-		super(AmbientSoundComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 		# don't start playing all at once
 
@@ -74,7 +74,7 @@ class AmbientSoundComponent(Component):
 		ExtScheduler().add_new_object(self._init_playing, self, run_in=run_in)
 
 	def remove(self):
-		super(AmbientSoundComponent, self).remove()
+		super().remove()
 		self.stop_sound()
 		self.__emitter = None
 

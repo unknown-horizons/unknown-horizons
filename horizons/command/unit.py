@@ -35,7 +35,7 @@ class GenericUnitCommand(GenericCommand):
 		if unit.owner.worldid != issuer.worldid:
 			return # don't move enemy units
 		else:
-			return super(GenericUnitCommand, self).__call__(issuer)
+			return super().__call__(issuer)
 
 
 class Act(GenericUnitCommand):
@@ -44,7 +44,7 @@ class Act(GenericUnitCommand):
 	@param x, y: float coordinates where the unit is to be moved.
 	"""
 	def __init__(self, unit, x, y):
-		super(Act, self).__init__(unit, "go", x, y)
+		super().__init__(unit, "go", x, y)
 
 GenericCommand.allow_network(Act)
 
@@ -55,7 +55,7 @@ class Attack(GenericUnitCommand):
 	@param target: Instance of Target
 	"""
 	def __init__(self, unit, target):
-		super(Attack, self).__init__(unit, "user_attack", target.worldid)
+		super().__init__(unit, "user_attack", target.worldid)
 
 GenericCommand.allow_network(Attack)
 
@@ -66,7 +66,7 @@ class RemoveUnit(GenericUnitCommand):
 	@param unit: Instance of Unit
 	"""
 	def __init__(self, unit):
-		super(RemoveUnit, self).__init__(unit, "remove")
+		super().__init__(unit, "remove")
 
 GenericCommand.allow_network(RemoveUnit)
 
@@ -77,7 +77,7 @@ class CreateRoute(GenericUnitCommand):
 	@param x, y: float coordinates where the unit is to be moved.
 	"""
 	def __init__(self, unit):
-		super(CreateRoute, self).__init__(unit, "create_route")
+		super().__init__(unit, "create_route")
 
 GenericCommand.allow_network(CreateRoute)
 
@@ -121,11 +121,11 @@ class SetStance(GenericUnitCommand):
 	@param stance: stance as string representation
 	"""
 	def __init__(self, unit, stance):
-		super(SetStance, self).__init__(unit, "set_stance", stance.NAME)
+		super().__init__(unit, "set_stance", stance.NAME)
 
 	def __call__(self, issuer):
 		# we need the stance component, so resolve the name
 		self.args = (self._get_object().get_component_by_name(self.args[0]), )
-		return super(SetStance, self).__call__(issuer)
+		return super().__call__(issuer)
 
 GenericCommand.allow_network(SetStance)

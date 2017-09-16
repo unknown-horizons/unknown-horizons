@@ -44,7 +44,7 @@ class Timer(LivingObject):
 		@param tick_next_id: int next tick id
 		@param freeze_protection: whether to check for tick delay and strech time in case (breaks mp)
 		"""
-		super(Timer, self).__init__()
+		super().__init__()
 		self._freeze_protection = freeze_protection
 		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
@@ -59,7 +59,7 @@ class Timer(LivingObject):
 	def end(self):
 		if self.check_tick in horizons.globals.fife.pump:
 			horizons.globals.fife.pump.remove(self.check_tick)
-		super(Timer, self).end()
+		super().end()
 
 	def add_test(self, call):
 		"""Adds a call to the test list

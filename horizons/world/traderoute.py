@@ -44,7 +44,7 @@ class TradeRoute(ChangeListener):
 	"""
 
 	def __init__(self, ship):
-		super(TradeRoute, self).__init__()
+		super().__init__()
 		self.ship = ship
 		self.waypoints = []
 		self.current_waypoint = -1

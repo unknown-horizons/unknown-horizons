@@ -36,10 +36,10 @@ class PlayersShips(StatsWidget):
 	widget_file_name = 'ships_list.xml'
 
 	def __init__(self, session):
-		super(PlayersShips, self).__init__(session)
+		super().__init__(session)
 
 	def refresh(self):
-		super(PlayersShips, self).refresh()
+		super().refresh()
 		player = self.session.world.player
 		self._clear_entries()
 		self._gui.findChild(name='headline').text = T("Ships of {player}").format(player=self.session.world.player.name)

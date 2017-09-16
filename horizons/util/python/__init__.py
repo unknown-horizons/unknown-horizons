@@ -37,7 +37,7 @@ class Const:
 		An asymptote to const behavior, which is not supported by python"""
 		if name in self.__dict__:
 			raise Exception("Can't change a Const object")
-		super(Const, self).__setattr__(name, value)
+		super().__setattr__(name, value)
 
 
 def parse_port(port, allow_zero=True):

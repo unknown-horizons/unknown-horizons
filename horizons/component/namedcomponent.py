@@ -33,7 +33,7 @@ class NamedComponent(Component):
 	names_used = [] # type: List[str]
 
 	def __init__(self, name=None):
-		super(NamedComponent, self).__init__()
+		super().__init__()
 		self.name = name
 
 	def initialize(self):
@@ -66,11 +66,11 @@ class NamedComponent(Component):
 			return "{newname} {index}".format(newname=newname, index=index)
 
 	def save(self, db):
-		super(NamedComponent, self).save(db)
+		super().save(db)
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.instance.worldid, self.name)
 
 	def load(self, db, worldid):
-		super(NamedComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.name = None
 		name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		# We need unicode strings as the name is displayed on screen.

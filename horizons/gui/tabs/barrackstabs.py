@@ -54,7 +54,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 	widget = 'barracks_showcase.xml'
 
 	def init_widget(self):
-		super(BarracksSelectTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
@@ -133,7 +133,7 @@ class BarracksConfirmTab(ProducerOverviewTabBase):
 	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
-		super(BarracksConfirmTab, self).init_widget()
+		super().init_widget()
 		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 

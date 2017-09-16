@@ -38,7 +38,7 @@ class AreaBuilder(WorldObject):
 	log = logging.getLogger("ai.aiplayer.area_builder")
 
 	def __init__(self, settlement_manager):
-		super(AreaBuilder, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager)
 
 	def __init(self, settlement_manager):
@@ -58,7 +58,7 @@ class AreaBuilder(WorldObject):
 
 	def _load(self, db, settlement_manager, worldid):
 		self.__init(settlement_manager)
-		super(AreaBuilder, self).load(db, worldid)
+		super().load(db, worldid)
 
 	def iter_neighbor_tiles(self, rect):
 		"""Iterate over the tiles that share a side with the given Rect."""

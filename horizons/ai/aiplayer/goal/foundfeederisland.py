@@ -40,7 +40,7 @@ class FoundFeederIslandGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(FoundFeederIslandGoal, self).active and self._need_feeder_island() and not self._have_feeder_island() and \
+		return super().active and self._need_feeder_island() and not self._have_feeder_island() and \
 			self.owner.settlement_founder.can_found_feeder_island()
 
 	def execute(self):

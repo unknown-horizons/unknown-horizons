@@ -41,7 +41,7 @@ class UhDbAccessor(DbReader):
 	places, that are data access routines (e.g. unit/building class)."""
 
 	def __init__(self, dbfile):
-		super(UhDbAccessor, self).__init__(dbfile=dbfile)
+		super().__init__(dbfile=dbfile)
 
 
 	# ------------------------------------------------------------------

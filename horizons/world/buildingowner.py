@@ -35,7 +35,7 @@ The instances need to provide a get_tile function.
 
 class BuildingOwner:
 	def __init__(self, *args, **kwargs):
-		super(BuildingOwner, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs) # TODO: check if call is needed
 		self.provider_buildings = ProviderHandler()
 		self.buildings = []
 

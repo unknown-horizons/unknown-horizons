@@ -90,7 +90,7 @@ class Session(LivingObject):
 	log = logging.getLogger('session')
 
 	def __init__(self, db, rng_seed=None, ingame_gui_class=IngameGui):
-		super(Session, self).__init__()
+		super().__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
 		self.db = db # main db for game data (game.sql)

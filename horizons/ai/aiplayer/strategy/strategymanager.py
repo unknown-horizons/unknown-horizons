@@ -42,7 +42,7 @@ class StrategyManager:
 
 	# Redundant use of super()?
 	def __init__(self, owner):
-		super(StrategyManager, self).__init__()
+		super().__init__() # TODO: figure out whether this is needed
 		self.__init(owner)
 
 	def __init(self, owner):
@@ -196,8 +196,9 @@ class StrategyManager:
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean up below super() call; it is a hack
 		self = cls.__new__(cls)
-		super(StrategyManager, self).__init__()		# redundant use of super()?
+		super(StrategyManager, self).__init__()
 		self.__init(owner)
 		self._load(db)
 		return self
@@ -342,7 +343,7 @@ class StrategyManager:
 class PirateStrategyManager(StrategyManager):
 
 	def __init__(self, owner):
-		super(PirateStrategyManager, self).__init__(owner)
+		super().__init__(owner)
 		self.__init(owner)
 
 	def get_ships_for_mission(self):
@@ -353,6 +354,7 @@ class PirateStrategyManager(StrategyManager):
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean below code; it is a _very_ dirty hack
 		self = cls.__new__(cls)
 		super(PirateStrategyManager, self).__init__(owner)
 		self.__init(owner)

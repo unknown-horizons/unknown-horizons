@@ -39,7 +39,7 @@ class _EntitiesLazyDict(dict):
 
 	def __getitem__(self, key):
 		try:
-			return super(_EntitiesLazyDict, self).__getitem__(key)
+			return super().__getitem__(key)
 		except KeyError:
 			fun = self._future_entries.pop(key)
 			elem = fun()

@@ -190,7 +190,7 @@ class StackableWeapon(Weapon):
 	This is used for cannons, reducing the number of instances and bullets fired
 	"""
 	def __init__(self, session, id):
-		super(StackableWeapon, self).__init__(session, id)
+		super().__init__(session, id)
 		self.__init()
 
 	def __init(self):
@@ -229,4 +229,4 @@ class StackableWeapon(Weapon):
 			self.number_of_weapons -= number
 
 	def get_damage_modifier(self):
-		return self.number_of_weapons * super(StackableWeapon, self).get_damage_modifier()
+		return self.number_of_weapons * super().get_damage_modifier()

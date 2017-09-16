@@ -124,7 +124,7 @@ class UnableToConnect(ClientException):
 
 class CommandError(ClientException):
 	def __init__(self, message, cmd_type):
-		super(ClientException, self).__init__(message)
+		super().__init__(message)
 		self.cmd_type = cmd_type
 
 

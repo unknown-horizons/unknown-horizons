@@ -27,7 +27,7 @@ from horizons.world.production.productionline import ProductionLine
 
 class AbstractFakeResourceDeposit(AbstractBuilding):
 	def __init__(self, building_id, name, settler_level):
-		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level)
+		super().__init__(building_id, name, settler_level)
 		self.lines = {} # output_resource_id: ProductionLine
 		self.__init_production_lines()
 

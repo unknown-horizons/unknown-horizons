@@ -49,7 +49,7 @@ class BuildingCollector(Collector):
 	def __init__(self, home_building, **kwargs):
 		kwargs['x'] = home_building.position.origin.x
 		kwargs['y'] = home_building.position.origin.y
-		super(BuildingCollector, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self._job_history = deque()
 		self._creation_tick = Scheduler().cur_tick + 1 # adjusted for the initial delay
 		self.__init(home_building)
@@ -63,7 +63,7 @@ class BuildingCollector(Collector):
 		self._target_possible_cache = weakref.WeakKeyDictionary()
 
 	def save(self, db):
-		super(BuildingCollector, self).save(db)
+		super().save(db)
 		self._clean_job_history_log()
 		current_tick = Scheduler().cur_tick
 
@@ -89,7 +89,7 @@ class BuildingCollector(Collector):
 		home_building_id, self._creation_tick = db.get_building_collectors_data(worldid)
 		self.__init(None if home_building_id is None else WorldObject.get_object_by_id(home_building_id))
 
-		super(BuildingCollector, self).load(db, worldid)
+		super().load(db, worldid)
 
 		if home_building_id is None:
 			self.show() # make sure that homebuildingsless units are visible on startup
@@ -115,7 +115,7 @@ class BuildingCollector(Collector):
 				self.home_building.get_component(CollectingComponent).add_local_collector(self)
 
 	def apply_state(self, state, remaining_ticks=None):
-		super(BuildingCollector, self).apply_state(state, remaining_ticks)
+		super().apply_state(state, remaining_ticks)
 		if state == self.states.moving_home:
 			# collector is on its way home
 			self.add_move_callback(self.reached_home)
@@ -125,7 +125,7 @@ class BuildingCollector(Collector):
 	def remove(self):
 		self.register_at_home_building(unregister=True)
 		self.home_building = None
-		super(BuildingCollector, self).remove()
+		super().remove()
 
 	def decouple_from_home_building(self):
 		"""Makes collector survive deletion of home building."""
@@ -178,17 +178,17 @@ class BuildingCollector(Collector):
 
 	def search_job(self):
 		self._clean_job_history_log()
-		super(BuildingCollector, self).search_job()
+		super().search_job()
 
 
 	def handle_no_possible_job(self):
-		super(BuildingCollector, self).handle_no_possible_job()
+		super().handle_no_possible_job()
 		# only append a new element if it is different from the last one
 		if not self._job_history or abs(self._job_history[-1][1]) > 1e-9:
 			self._job_history.append((Scheduler().cur_tick, 0))
 
 	def begin_current_job(self, job_location=None):
-		super(BuildingCollector, self).begin_current_job(job_location)
+		super().begin_current_job(job_location)
 		# Sum up the utilization for all res
 		utilization = 0.0
 		for entry in self.job.reslist:
@@ -209,7 +209,7 @@ class BuildingCollector(Collector):
 		@param collector_already_home: whether collector has moved home before."""
 		if not collector_already_home:
 			self.move_home(callback=self.reached_home)
-		super(BuildingCollector, self).finish_working()
+		super().finish_working()
 
 	# unused reroute code removed in 2aef7bba77536da333360566467d9a2f08d38cab
 
@@ -267,7 +267,7 @@ class BuildingCollector(Collector):
 		self.log.debug("%s cancel", self)
 		if continue_action is None:
 			continue_action = Callback(self.move_home, callback=self.end_job, action='move')
-		super(BuildingCollector, self).cancel(continue_action=continue_action)
+		super().cancel(continue_action=continue_action)
 
 	def get_utilization_history_length(self):
 		return min(COLLECTORS.STATISTICAL_WINDOW, Scheduler().cur_tick - self._creation_tick)
@@ -346,9 +346,9 @@ class FisherShipCollector(BuildingCollector):
 		if not args:
 			# We haven't preset a home_building, so search for one!
 			home_building = self.get_smallest_fisher(kwargs['session'], kwargs['owner'])
-			super(FisherShipCollector, self).__init__(home_building=home_building, *args, **kwargs)
+			super().__init__(home_building=home_building, *args, **kwargs)
 		else:
-			super(FisherShipCollector, self).__init__(*args, **kwargs)
+			super().__init__(*args, **kwargs)
 
 	def get_smallest_fisher(self, session, owner):
 		"""Returns the fisher with the least amount of boats"""
@@ -374,7 +374,7 @@ class FisherShipCollector(BuildingCollector):
 class DisasterRecoveryCollector(StorageCollector):
 	"""Collects disasters such as fire or pestilence."""
 	def finish_working(self, collector_already_home=False):
-		super(DisasterRecoveryCollector, self).finish_working(collector_already_home=collector_already_home)
+		super().finish_working(collector_already_home=collector_already_home)
 		building = self.job.object
 		if hasattr(building, "disaster"): # make sure that building hasn't recovered any other way
 			building.disaster.recover(building)
@@ -384,4 +384,4 @@ class DisasterRecoveryCollector(StorageCollector):
 		   not self.session.world.disaster_manager.is_affected( self.home_building.settlement ):
 			return None # not one disaster active, bail out
 
-		return super(DisasterRecoveryCollector, self).get_job()
+		return super().get_job()

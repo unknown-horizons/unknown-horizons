@@ -106,7 +106,7 @@ class InventoryFullStatus(StatusIcon):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__(instance)
+		super().__init__(instance)
 		self.reslist = reslist
 
 

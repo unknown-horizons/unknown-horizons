@@ -34,7 +34,7 @@ class Path(ComponentHolder):
 	# no __init__
 
 	def load(self, db, worldid):
-		super(Path, self).load(db, worldid)
+		super().load(db, worldid)
 
 	def init(self):
 		# this does not belong in __init__, it's just here that all the data should be consistent
@@ -51,7 +51,7 @@ class Path(ComponentHolder):
 			Scheduler().add_new_object(self.recalculate_orientation, self, run_in=0)
 
 	def remove(self):
-		super(Path, self).remove()
+		super().remove()
 		self.island.path_nodes.unregister_road(self)
 		self.recalculate_surrounding_tile_orientation()
 

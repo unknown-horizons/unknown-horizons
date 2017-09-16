@@ -29,7 +29,7 @@ class DepositComponent(Component):
 	DEPENDENCIES = ['StorageComponent']
 
 	def __init__(self, resources):
-		super(DepositComponent, self).__init__()
+		super().__init__()
 		self.resources = resources
 
 	def initialize(self, inventory=None):

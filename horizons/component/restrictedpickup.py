@@ -31,7 +31,7 @@ class RestrictedPickup(Component):
 	NAME = 'restricted'
 
 	def __init__(self, allowed=None):
-		super(RestrictedPickup, self).__init__()
+		super().__init__()
 		self.allowed = allowed or []
 
 	def pickup_allowed_at(self, target_class):

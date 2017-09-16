@@ -37,7 +37,7 @@ class SPManager(LivingObject):
 	over the network, and synchronization of network games."""
 
 	def __init__(self, session):
-		super(SPManager, self).__init__()
+		super().__init__()
 		self.session = session
 		self.commands = []
 
@@ -58,7 +58,7 @@ class SPManager(LivingObject):
 
 	def end(self):
 		self.commands = None
-		super(SPManager, self).end()
+		super().end()
 
 
 class MPManager(LivingObject):
@@ -73,7 +73,7 @@ class MPManager(LivingObject):
 
 	def __init__(self, session, networkinterface):
 		"""Initialize the Multiplayer Manager"""
-		super(MPManager, self).__init__()
+		super().__init__()
 		self.session = session
 		self.networkinterface = networkinterface
 		self.commandsmanager = MPCommandsManager(self)
@@ -278,7 +278,7 @@ class MPCheckupHashManager(MPPacketmanager):
 		# if the current tick isn't checked we don't need any packets and are always ready
 		if tick % self.mpmanager.HASH_EVAL_DISTANCE != 0:
 			return True
-		return super(MPCheckupHashManager, self).is_tick_ready(tick)
+		return super().is_tick_ready(tick)
 
 	def are_checkup_hash_values_equal(self, tick, cb_diff=None):
 		"""
@@ -329,7 +329,7 @@ class CommandPacket(MPPacket):
 	Contains list of packets to be executed as well as the designated execution time.
 	Also acts as ping (game will stop if a packet for a certain tick hasn't arrived)"""
 	def __init__(self, tick, player_id, commandlist):
-		super(CommandPacket, self).__init__(tick, player_id)
+		super().__init__(tick, player_id)
 		self.commandlist = commandlist
 
 MPPacket.allow_network(CommandPacket)
@@ -337,7 +337,7 @@ MPPacket.allow_network(CommandPacket)
 
 class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):
-		super(CheckupHashPacket, self).__init__(tick, player_id)
+		super().__init__(tick, player_id)
 		self.checkup_hash = checkup_hash
 
 MPPacket.allow_network(CheckupHashPacket)

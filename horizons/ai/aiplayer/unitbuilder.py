@@ -32,7 +32,7 @@ class UnitBuilder:
 	log = logging.getLogger("ai.aiplayer.unit_builder")
 
 	def __init__(self, owner):
-		super(UnitBuilder, self).__init__()
+		super().__init__() # TODO: is this call needed?
 		self.owner = owner
 
 	def _get_boat_builders(self):

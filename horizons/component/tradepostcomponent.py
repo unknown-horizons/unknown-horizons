@@ -50,7 +50,7 @@ class TradePostComponent(ChangeListener, Component):
 	yaml_tag = '!TradePostComponent'
 
 	def __init__(self):
-		super(TradePostComponent, self).__init__()
+		super().__init__()
 
 	def initialize(self):
 		self.slots = [None, None, None] # [TradeSlotInfo, ...]
@@ -94,7 +94,7 @@ class TradePostComponent(ChangeListener, Component):
 		return None
 
 	def save(self, db):
-		super(TradePostComponent, self).save(db)
+		super().save(db)
 
 		for slot_id in range(len(self.slots)):
 			if self.slots[slot_id] is not None:
@@ -110,7 +110,7 @@ class TradePostComponent(ChangeListener, Component):
 				self.instance.worldid, translated_tick, row[1], row[2], row[3], row[4])
 
 	def load(self, db, worldid):
-		super(TradePostComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.initialize()
 
 		for (slot_id, resource_id, selling, limit) in db("SELECT slot_id, resource_id, selling, trade_limit FROM trade_slots WHERE trade_post = ?", worldid):

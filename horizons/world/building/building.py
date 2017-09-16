@@ -60,7 +60,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""
 	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
-		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner,
+		super().__init__(x=x, y=y, rotation=rotation, owner=owner,
 		                                    island=island, **kwargs)
 		self.__init()
 		self.island = island
@@ -120,11 +120,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
 		self.island.remove_building(self)
-		super(BasicBuilding, self).remove()
+		super().remove()
 		# NOTE: removing layers from the renderer here will affect others players too!
 
 	def save(self, db):
-		super(BasicBuilding, self).save(db)
+		super().save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?)",
 		                                self.worldid, self.__class__.id, self.position.origin.x,
@@ -143,7 +143,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		# early init before super() call
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
 
-		super(BasicBuilding, self).load(db, worldid)
+		super().load(db, worldid)
 
 		remaining_ticks_of_month = None
 		if self.has_running_costs:

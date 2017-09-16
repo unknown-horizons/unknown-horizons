@@ -32,7 +32,7 @@ class StatsWidget:
 	widget_file_name = None # type: str
 
 	def __init__(self, session, center_widget=False):
-		super(StatsWidget, self).__init__()
+		super().__init__()
 		self.session = session
 		self.center_widget = center_widget
 		self._initialized = False

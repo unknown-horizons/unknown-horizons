@@ -41,7 +41,7 @@ class DepositCoverageGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(DepositCoverageGoal, self).active and not self.production_builder.have_deposit(self._deposit_resource_id) and \
+		return super().active and not self.production_builder.have_deposit(self._deposit_resource_id) and \
 			self._have_reachable_deposit(self._deposit_resource_id)
 
 	def _improve_deposit_coverage(self):

@@ -92,7 +92,7 @@ class ComponentHolder:
 	}
 
 	def __init__(self, *args, **kwargs):
-		super(ComponentHolder, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs) # TODO: check if this line is needed
 		self.components = {}
 
 	def initialize(self, **kwargs):
@@ -126,10 +126,10 @@ class ComponentHolder:
 	def remove(self):
 		for component in list(self.components.values()):
 			component.remove()
-		super(ComponentHolder, self).remove()
+		super().remove()
 
 	def load(self, db, worldid):
-		super(ComponentHolder, self).load(db, worldid)
+		super().load(db, worldid)
 		self.components = {}
 		for component in self.__create_components():
 			component.instance = self
@@ -137,7 +137,7 @@ class ComponentHolder:
 			self.components[component.NAME] = component
 
 	def save(self, db):
-		super(ComponentHolder, self).save(db)
+		super().save(db)
 		for component in self.components.values():
 			component.save(db)
 

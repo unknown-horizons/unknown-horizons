@@ -50,7 +50,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(EnlargeCollectorAreaGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def update(self):
 		available_squares, total_squares = self.settlement_manager.production_builder.count_available_squares(3, self.personality.max_interesting_collector_area)

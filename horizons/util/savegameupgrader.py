@@ -44,7 +44,7 @@ class SavegameTooOld(Exception):
 			msg = "The savegame is too old!"
 		if revision is not None:
 			msg += " Revision: " + str(revision)
-		super(SavegameTooOld, self).__init__(msg)
+		super().__init__(msg)
 
 
 class SavegameUpgrader:
@@ -53,7 +53,7 @@ class SavegameUpgrader:
 	log = logging.getLogger("util.savegameupgrader")
 
 	def __init__(self, path):
-		super(SavegameUpgrader, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.original_path = path
 		self.using_temp = False
 		self.final_path = None # type: Optional[str]

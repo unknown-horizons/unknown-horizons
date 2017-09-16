@@ -38,7 +38,7 @@ class ChangeListener:
 	log = logging.getLogger('changelistener')
 
 	def __init__(self, *args, **kwargs):
-		super(ChangeListener, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.__init()
 
 	def __init(self):

@@ -37,7 +37,7 @@ from horizons.util.python.callback import Callback
 
 class WorldEditor:
 	def __init__(self, world):
-		super(WorldEditor, self).__init__()
+		super().__init__() # TODO: check whether this call is needed
 		self.world = world
 		self.session = world.session
 		self.intermediate_map = IntermediateMap(world)

@@ -58,7 +58,7 @@ class Pirate(GenericAI):
 	tick_long_interval = 128
 
 	def __init__(self, session, id, name, color, **kwargs):
-		super(Pirate, self).__init__(session, id, name, color, **kwargs)
+		super().__init__(session, id, name, color, **kwargs)
 
 		# choose a random water tile on the coast and call it home
 		self.home_point = self.session.world.get_random_possible_coastal_ship_position()
@@ -118,7 +118,7 @@ class Pirate(GenericAI):
 			self.create_ship_at_random_position()
 
 	def save(self, db):
-		super(Pirate, self).save(db)
+		super().save(db)
 		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.worldid)
 		db("INSERT INTO pirate_home_point(x, y) VALUES(?, ?)", self.home_point.x, self.home_point.y)
 
@@ -155,7 +155,7 @@ class Pirate(GenericAI):
 		self.behavior_manager.save(db)
 
 	def _load(self, db, worldid):
-		super(Pirate, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.__init()
 
 		remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
@@ -198,4 +198,4 @@ class Pirate(GenericAI):
 
 	def end(self):
 		self.strategy_manager.end()
-		super(Pirate, self).end()
+		super().end()

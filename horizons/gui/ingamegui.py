@@ -67,7 +67,7 @@ class IngameGui(LivingObject):
 	keylistener = livingProperty()
 
 	def __init__(self, session):
-		super(IngameGui, self).__init__()
+		super().__init__()
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.settlement = None
@@ -209,7 +209,7 @@ class IngameGui(LivingObject):
 		self.status_icon_manager.end()
 		self.status_icon_manager = None
 
-		super(IngameGui, self).end()
+		super().end()
 
 	def show_select_savegame(self, mode):
 		window = SelectSavegameDialog(mode, self.windows)

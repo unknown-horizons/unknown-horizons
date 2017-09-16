@@ -29,7 +29,7 @@ class TradeHistoryItem(Container):
 	"""Widget that shows the last few trades that have taken place in the settlement."""
 
 	def __init__(self, player, resource_id, amount, gold, **kwargs):
-		super(TradeHistoryItem, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.widget = load_uh_widget('trade_history_item.xml')
 		self.addChild(self.widget)
 

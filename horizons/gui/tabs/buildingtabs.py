@@ -33,7 +33,7 @@ class TowerOverviewTab(OverviewTab): # defensive tower
 	helptext = LazyT("Tower overview")
 
 	def init_widget(self):
-		super(TowerOverviewTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 
 
@@ -42,7 +42,7 @@ class SignalFireOverviewTab(OverviewTab):
 	helptext = LazyT("Overview")
 
 	def init_widget(self):
-		super(SignalFireOverviewTab, self).init_widget()
+		super().init_widget()
 		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
 		action_gfx = list(action_set.items())[0][1]
 		image = list(action_gfx[45].keys())[0]
@@ -53,7 +53,7 @@ class ResourceDepositOverviewTab(OverviewTab):
 	widget = 'overview_resourcedeposit.xml'
 
 	def init_widget(self):
-		super(ResourceDepositOverviewTab, self).init_widget()
+		super().init_widget()
 		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
 		resources = self.instance.get_component(DepositComponent).get_res_ranges()
@@ -63,5 +63,5 @@ class ResourceDepositOverviewTab(OverviewTab):
 		                                           ordinal=amounts)
 
 	def refresh(self):
-		super(ResourceDepositOverviewTab, self).refresh()
+		super().refresh()
 		self.widget.child_finder("inventory").update()

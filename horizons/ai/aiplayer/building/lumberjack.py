@@ -101,7 +101,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 	def execute(self):
 		# TODO Add a check that figures out if all trees that should be planted are in range of the settlement.
 		# If not, return range missing result
-		(result, building) = super(LumberjackEvaluator, self).execute()
+		(result, building) = super().execute()
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 

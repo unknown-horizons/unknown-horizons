@@ -38,7 +38,7 @@ class ProgressBar(ABox):
 	]
 
 	def __init__(self, progress=0, fill=None, background=None, **kwargs):
-		super(ProgressBar, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		if self.max_size == Widget.DEFAULT_MAX_SIZE:
 			self.max_size = (100, 16)
 		self.__progress = progress
@@ -90,7 +90,7 @@ class TilingProgressBar(ProgressBar):
 	ATTRIBUTES = ProgressBar.ATTRIBUTES + [Attr('left'), Attr('right')]
 
 	def __init__(self, left=None, right=None, **kwargs):
-		super(TilingProgressBar, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.__left = left
 		self.__right = right
 		self.tiles = TilingHBox()

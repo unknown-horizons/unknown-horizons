@@ -77,7 +77,7 @@ class SettlementManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer")
 
 	def __init__(self, owner, land_manager):
-		super(SettlementManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.resource_manager = ResourceManager(self)
 		self.trade_manager = TradeManager(self)
@@ -153,7 +153,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(MedicalHerbsProductsGoal(self))
 
 	def save(self, db):
-		super(SettlementManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)",
 			self.worldid, self.land_manager.worldid)
 
@@ -170,7 +170,7 @@ class SettlementManager(WorldObject):
 
 	def _load(self, db, owner, worldid):
 		self.owner = owner
-		super(SettlementManager, self).load(db, worldid)
+		super().load(db, worldid)
 
 		# load the main part
 		land_manager_id = db("SELECT land_manager FROM ai_settlement_manager WHERE rowid = ?", worldid)[0][0]

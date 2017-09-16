@@ -36,7 +36,7 @@ class CommandableComponent(Component):
 	NAME = 'commandable'
 
 	def __init__(self):
-		super(CommandableComponent, self).__init__()
+		super().__init__()
 
 	def go(self, x, y):
 		"""Moves the unit.

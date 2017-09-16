@@ -94,7 +94,7 @@ class AIPlayer(GenericAI):
 	tick_long_interval = 128
 
 	def __init__(self, session, id, name, color, clientid, difficulty_level, **kwargs):
-		super(AIPlayer, self).__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
+		super().__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
 		self.need_more_ships = False
 		self.need_more_combat_ships = True
 		self.need_feeder_island = False
@@ -192,7 +192,7 @@ class AIPlayer(GenericAI):
 			del self.islands[mission.land_manager.island.worldid]
 
 	def save(self, db):
-		super(AIPlayer, self).save(db)
+		super().save(db)
 
 		# save the player
 		db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?", self.worldid)
@@ -242,7 +242,7 @@ class AIPlayer(GenericAI):
 		self.behavior_manager.save(db)
 
 	def _load(self, db, worldid):
-		super(AIPlayer, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
 		self.__init()
 
@@ -508,4 +508,4 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager = None
 		self.strategy_manager.end()
 		self.strategy_manager = None
-		super(AIPlayer, self).end()
+		super().end()

@@ -37,7 +37,7 @@ class BuildingClass(IngameType):
 	classstring = 'Building[{id}]'
 
 	def __new__(self, db, id, yaml_data):
-		return super(BuildingClass, self).__new__(self, id, yaml_data)
+		return super().__new__(self, id, yaml_data)
 
 	def __init__(self, db, id, yaml_data):
 		"""
@@ -45,7 +45,7 @@ class BuildingClass(IngameType):
 		@param id: building id.
 		@param db: DbReader
 		"""
-		super(BuildingClass, self).__init__(id, yaml_data)
+		super().__init__(id, yaml_data)
 
 		self.settler_level = yaml_data['tier']
 		self.tooltip_text = self._strip_translation_marks(yaml_data['tooltip_text'])

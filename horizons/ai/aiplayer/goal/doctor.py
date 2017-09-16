@@ -30,14 +30,14 @@ class DoctorGoal(SettlementGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(DoctorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super().can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 	@property
 	def active(self):
-		return super(DoctorGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def update(self):
-		super(DoctorGoal, self).update()
+		super().update()
 		if self.can_be_activated:
 			self._is_active = any(AbstractBuilding.buildings[BUILDINGS.DOCTOR].iter_potential_locations(self.settlement_manager))
 		else:
