@@ -156,6 +156,7 @@ class OkButton(ImageButton):
 		self.path = "images/buttons/ok"
 		self.inactive_image = "content/gui/images/buttons/close.png"
 
+
 class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close
 	icon. Its default attributes are:
@@ -171,6 +172,7 @@ class CancelButton(ImageButton):
 			name=name, is_focusable=False,
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/close"
+
 
 class DeleteButton(ImageButton):
 	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear

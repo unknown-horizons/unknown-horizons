@@ -95,6 +95,7 @@ class OverviewTab(TabInterface):
 			stance_widget.init(self.instance)
 			self.add_remove_listener(stance_widget.remove)
 
+
 class GroundUnitOverviewTab(OverviewTab):
 	widget = 'overview_groundunit.xml'
 	helptext = LazyT("Unit overview")
@@ -110,6 +111,7 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
 
+
 #added from old groundunittabs.py
 #class GroundUnitOverviewTab(OverviewTab):
 #	widget = 'overview_war_groundunit.xml'
@@ -117,6 +119,7 @@ class GroundUnitOverviewTab(OverviewTab):
 #
 #	def init_widget(self):
 #		super(GroundUnitOverviewTab, self).init_widget()
+
 
 class GenericOverviewTab(OverviewTab):
 	"""Name and running costs."""

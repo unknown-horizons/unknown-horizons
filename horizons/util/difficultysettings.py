@@ -39,14 +39,17 @@ class DifficultySettings:
 		cls.levels[cls.EASY_LEVEL] = EasySettings
 		cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
 
+
 class DifficultyClass:
 	def __init__(self, level):
 		self.level = level
+
 
 class DefaultSettings(DifficultyClass):
 	extra_happiness_constant = 0
 	happiness_multiplier = 1
 	tax_multiplier = 1.0
+
 
 class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5

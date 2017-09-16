@@ -104,6 +104,7 @@ class SettlerOverviewTab(OverviewTab):
 
 		container.adaptLayout()
 
+
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""
 	step_count = int((SETTLER.TAX_SETTINGS_MAX - SETTLER.TAX_SETTINGS_MIN) / SETTLER.TAX_SETTINGS_STEP)

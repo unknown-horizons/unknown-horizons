@@ -38,6 +38,7 @@ class MapFileNotFound(Exception):
 			msg = "Map file not found."
 		super(MapFileNotFound, self).__init__(msg)
 
+
 class SavegameAccessor(DbReader):
 	"""
 	SavegameAccessor is the class used for loading saved games.

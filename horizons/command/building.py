@@ -202,6 +202,7 @@ class Build(Command):
 Command.allow_network(Build)
 Command.allow_network(set)
 
+
 class Tear(Command):
 	"""Command class that tears an object."""
 	def __init__(self, building):

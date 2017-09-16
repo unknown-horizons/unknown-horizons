@@ -65,6 +65,7 @@ def test_load_inactive_production():
 
 	session.end()
 
+
 def create_lumberjack_production_session():
 	"""Create a saved game with a producing production and then load it."""
 	session, player = new_session()

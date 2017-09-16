@@ -28,6 +28,7 @@ called FindPath. You should never ever use this class directly, just through the
 interface.
 """
 
+
 class FindPath:
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which

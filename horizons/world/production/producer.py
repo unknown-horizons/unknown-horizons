@@ -607,6 +607,7 @@ class ShipProducer(QueueProducer):
 					break
 			radius += 1
 
+
 class GroundUnitProducer(ShipProducer):
 	"""Uses queues to produce groundunits"""
 

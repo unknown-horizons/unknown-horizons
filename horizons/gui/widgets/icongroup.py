@@ -56,6 +56,7 @@ class TilingBackground:
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 
+
 class TooltipBG(VBox, TilingBackground):
 	"""Not usable from xml!"""
 	def __init__(self, **kwargs):
@@ -65,6 +66,7 @@ class TooltipBG(VBox, TilingBackground):
 			base_path="content/gui/images/background/widgets/tooltip_bg_",
 			start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
 			**kwargs)
+
 
 class TabBG(VBox, TilingBackground):
 	"""Intended to be used for any tab we display.
@@ -80,6 +82,8 @@ class TabBG(VBox, TilingBackground):
 			base_path="content/gui/images/tabwidget/main_bg_",
 			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
 			**kwargs)
+
+
 
 class TilingHBox(HBox, TilingBackground):
 	"""Currently mostly used by cityinfo, thus using its arguments as defaults.

@@ -39,6 +39,7 @@ class AbstractLumberjack(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.LUMBERJACK] = cls
 
+
 class LumberjackEvaluator(BuildingEvaluator):
 	__template_outline = None # type: List[Set[Tuple[int, int]]]
 	__radius_offsets = None # type: List[Tuple[int, int]]

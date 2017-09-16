@@ -37,6 +37,7 @@ class PathNodes:
 		# by the pathfinding algo
 		pass
 
+
 class ConsumerBuildingPathNodes(PathNodes):
 	"""List of path nodes for a consumer, that is a building
 	Interface:

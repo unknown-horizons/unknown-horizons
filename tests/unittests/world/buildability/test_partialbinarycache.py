@@ -30,6 +30,7 @@ class MockTerrainBuildabilityCache:
 	def __init__(self, land_or_coast):
 		self.land_or_coast = land_or_coast
 
+
 class TestPartialBinaryBuildabilityCache(TestCase):
 	def setUp(self):
 		super(TestPartialBinaryBuildabilityCache, self).setUp()

@@ -209,6 +209,7 @@ class TradeManager(WorldObject):
 			result += '\n' + resource_manager.__str__()
 		return result
 
+
 class SingleResourceTradeManager(WorldObject):
 	"""An object of this class keeps track of both parties of the resource import/export deal for one resource."""
 

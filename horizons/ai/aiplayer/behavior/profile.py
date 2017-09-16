@@ -90,6 +90,7 @@ class BehaviorProfileBalanced(BehaviorProfile):
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 0.9
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 0.05
 
+
 class BehaviorProfileCautious(BehaviorProfile):
 
 	def __init__(self, player):
@@ -199,6 +200,7 @@ def get_available_player_profiles():
 		(BehaviorProfileBalanced, 0.6),
 		#(BehaviorProfileDebug, 1.0),
 	)
+
 
 def get_available_pirate_profiles():
 	return (

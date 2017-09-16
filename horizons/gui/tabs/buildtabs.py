@@ -36,6 +36,7 @@ from horizons.util.yamlcache import YamlCache
 class InvalidBuildMenuFileFormat(Exception):
 	pass
 
+
 class BuildTab(TabInterface):
 	"""
 	Layout data is defined in image_data and text_data.

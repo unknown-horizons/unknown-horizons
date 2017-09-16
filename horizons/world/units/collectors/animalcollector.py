@@ -144,6 +144,7 @@ class AnimalCollector(BuildingCollector):
 			Scheduler().add_new_object(self.job.object.search_job, self.job.object,
 			                           GAME_SPEED.TICKS_PER_SECOND)
 
+
 class HunterCollector(AnimalCollector):
 	kill_animal = True
 

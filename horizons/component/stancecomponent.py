@@ -208,6 +208,7 @@ class LimitedMoveStance(StanceComponent):
 
 		return min(enemies, key=lambda e: self.instance.position.distance(e.position))
 
+
 class AggressiveStance(LimitedMoveStance):
 	"""
 	Stance that attacks units in close range when doing movement
@@ -239,6 +240,7 @@ class AggressiveStance(LimitedMoveStance):
 		if target:
 			self.instance.fire_all_weapons(target.position.center)
 
+
 class HoldGroundStance(LimitedMoveStance):
 	"""Stance in radius and not attacks units in close range
 	"""
@@ -250,10 +252,12 @@ class HoldGroundStance(LimitedMoveStance):
 		self.stance_radius = 5
 		self.move_range = 15
 
+
 class NoneStance(StanceComponent):
 	"""No settings for stance
 	"""
 	NAME = 'none_stance'
+
 
 class FleeStance(StanceComponent):
 	"""

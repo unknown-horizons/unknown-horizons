@@ -36,6 +36,7 @@ class Barracks(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 		super(Barracks, self).initialize(**kwargs)
 		self.get_component(StorageComponent).inventory.limit = 5
 
+
 class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
 
 	def __init__(self, **kwargs):

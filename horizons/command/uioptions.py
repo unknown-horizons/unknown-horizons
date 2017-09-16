@@ -29,12 +29,14 @@ class SetTaxSetting(GenericCommand):
 
 GenericCommand.allow_network(SetTaxSetting)
 
+
 class SetSettlementUpgradePermissions(GenericCommand):
 	"""Sets the new upgrade permissions for a level in a settlement."""
 	def __init__(self, settlement, level, allowed):
 		super(SetSettlementUpgradePermissions, self).__init__(settlement, 'set_upgrade_permissions', level, allowed)
 
 GenericCommand.allow_network(SetSettlementUpgradePermissions)
+
 
 class SetTradeSlot(GenericComponentCommand):
 	"""Set status of a trade post's buy/sell slot."""
@@ -43,12 +45,14 @@ class SetTradeSlot(GenericComponentCommand):
 
 GenericComponentCommand.allow_network(SetTradeSlot)
 
+
 class ClearTradeSlot(GenericComponentCommand):
 	"""Clear a trade post's buy/sell slot."""
 	def __init__(self, trade_post, slot_id):
 		super(ClearTradeSlot, self).__init__(trade_post, 'clear_slot', slot_id, True)
 
 GenericComponentCommand.allow_network(ClearTradeSlot)
+
 
 class TransferResource(GenericCommand):
 	"""Transfers an amount of a resource from one Storage to another"""
@@ -57,12 +61,14 @@ class TransferResource(GenericCommand):
 
 GenericCommand.allow_network(TransferResource)
 
+
 class SellResource(GenericComponentCommand):
 	"""The given trade post attempts to sell the given amount of resource to the ship"""
 	def __init__(self, trade_post, ship, resource_id, amount):
 		super(SellResource, self).__init__(trade_post, 'sell_resource', ship.worldid, resource_id, amount)
 
 GenericComponentCommand.allow_network(SellResource)
+
 
 class BuyResource(GenericComponentCommand):
 	"""The given trade post attempts to buy the given amount of resource from the ship"""
@@ -71,12 +77,14 @@ class BuyResource(GenericComponentCommand):
 
 GenericComponentCommand.allow_network(BuyResource)
 
+
 class RenameObject(GenericComponentCommand):
 	"""Rename a NamedComponent"""
 	def __init__(self, namedcomponent, new_name):
 		super(RenameObject, self).__init__(namedcomponent, "set_name", new_name)
 
 GenericComponentCommand.allow_network(RenameObject)
+
 
 class EquipWeaponFromInventory(GenericCommand):
 	"""Equips a weapon to weapon storage from resource inventory"""
@@ -85,12 +93,14 @@ class EquipWeaponFromInventory(GenericCommand):
 
 GenericCommand.allow_network(EquipWeaponFromInventory)
 
+
 class UnequipWeaponToInventory(GenericCommand):
 	"""Equips a weapon to weapon storage from resource inventory"""
 	def __init__(self, obj, weapon_id, number):
 		super(UnequipWeaponToInventory, self).__init__(obj, "unequip_to_inventory", weapon_id, number)
 
 GenericCommand.allow_network(UnequipWeaponToInventory)
+
 
 class RouteConfigCommand(GenericCommand):
 	"""Use this for routeconfig actions.

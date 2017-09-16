@@ -54,6 +54,7 @@ class ResourceTransferHandler:
 			AmbientSoundComponent.play_special('error')
 		return actually_transfered
 
+
 class ResourceHandler(ResourceTransferHandler):
 	"""The ResourceHandler class acts as a basic class for describing objects
 	that handle resources. This means the objects can provide resources for
@@ -205,6 +206,7 @@ class ResourceHandler(ResourceTransferHandler):
 			produced_resources.add(res)
 
 		return produced_resources
+
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as warehouses.

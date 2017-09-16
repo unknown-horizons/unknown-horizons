@@ -32,9 +32,11 @@ class NatureBuilding(BuildableRect, BasicBuilding):
 	walkable = True
 	layer = LAYERS.OBJECTS
 
+
 class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
 	# sorry, but this class is to be removed soon anyway
 	pass
+
 
 class Field(NatureBuildingResourceHandler):
 	walkable = False
@@ -67,11 +69,13 @@ class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
+
 class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False
+
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 	def __init__(self, *args, **kwargs):

@@ -344,6 +344,7 @@ class ResourceManager(WorldObject):
 			result += '\n' + resource_manager.__str__()
 		return result
 
+
 class SingleResourceManager(WorldObject):
 	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
 
@@ -495,6 +496,7 @@ class SingleResourceManager(WorldObject):
 				'priority ' if priority else '', quota, quota_holder)
 		return result
 
+
 class SimpleProductionChainSubtreeChoice:
 	"""This is a simple version of ProductionChainSubtreeChoice used to make recursive quotas possible."""
 
@@ -518,6 +520,7 @@ class SimpleProductionChainSubtreeChoice:
 
 	def get_quota(self, quota_holder):
 		return sum(option.get_quota(quota_holder) for option in self.options)
+
 
 class SimpleProductionChainSubtree:
 	"""This is a simple version of ProductionChainSubtree used to make recursive quotas possible."""

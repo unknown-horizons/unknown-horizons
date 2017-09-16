@@ -71,6 +71,7 @@ class StanceWidget(Container):
 			self.findChild(name=stance.NAME).set_inactive()
 		self.findChild(name=self.instance.stance.NAME).set_active()
 
+
 class HealthWidget(Container):
 	"""Widget that shows a health bar for an unit"""
 	def __init__(self, **kwargs):
@@ -97,6 +98,7 @@ class HealthWidget(Container):
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None
+
 
 class WeaponStorageWidget(HBox):
 	"""Widget that shows a small overview for one instance weapons"""

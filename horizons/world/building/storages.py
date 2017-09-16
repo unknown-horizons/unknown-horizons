@@ -68,9 +68,11 @@ class StorageBuilding(StorageResourceHandler,
 			return None
 		return sum(collector.get_utilization() for collector in collectors) / float(len(collectors))
 
+
 class StorageTent(StorageBuilding, BuildableSingle):
 	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
 	pass
+
 
 class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
@@ -85,6 +87,7 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 		banned_classes = (InventoryFullStatus,)
 		return [ i for i in super(Warehouse, self).get_status_icons() if
 		         i.__class__ not in banned_classes ]
+
 
 class MainSquare(Path, StorageBuilding, ProductionBuilding):
 	walkable = True

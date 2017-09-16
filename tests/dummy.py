@@ -23,6 +23,7 @@ SOFTWARE.
 # http://code.activestate.com/recipes/576447-dummy-object/
 # with some modifications
 
+
 class Dummy:
 	def __getattr__(self, attr):
 		try:

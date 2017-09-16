@@ -34,6 +34,7 @@ class EnemyBuildingOverviewTab(OverviewTab):
 		super(EnemyBuildingOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
 
+
 class EnemyWarehouseOverviewTab(OverviewTab):
 	widget = 'overview_enemywarehouse.xml'
 	helptext = LazyT("Warehouse overview")

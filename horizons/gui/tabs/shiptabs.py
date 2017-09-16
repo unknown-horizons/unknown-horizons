@@ -172,6 +172,7 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		self.weapon_inventory = None
 		super(FightingShipOverviewTab, self).on_instance_removed()
 
+
 class TradeShipOverviewTab(ShipOverviewTab):
 	widget = 'overview_trade_ship.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
@@ -199,10 +200,12 @@ class TradeShipOverviewTab(ShipOverviewTab):
 		self._refresh_discard_resources()
 		super(TradeShipOverviewTab, self).refresh()
 
+
 class TraderShipOverviewTab(OverviewTab):
 	widget = 'overview_tradership.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = LazyT("Ship overview")
+
 
 class EnemyShipOverviewTab(OverviewTab):
 	widget = 'overview_enemyunit.xml'

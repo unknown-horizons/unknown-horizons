@@ -54,6 +54,7 @@ class BuildableErrorTypes:
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
+
 class _BuildPosition:
 	"""A possible build position in form of a data structure.
 	Don't use directly outside of this file"""
@@ -92,11 +93,13 @@ class _BuildPosition:
 	def __hash__(self):
 		return hash((self.position, self.rotation, self.action))
 
+
 class _NotBuildableError(Exception):
 	"""Internal exception."""
 	def __init__(self, errortype):
 		super(_NotBuildableError, self).__init__()
 		self.errortype = errortype
+
 
 class Buildable:
 	"""Interface for every kind of buildable objects.
@@ -306,6 +309,7 @@ class Buildable:
 			if tup in session.world.ground_unit_map:
 				raise _NotBuildableError(BuildableErrorTypes.UNIT_THERE)
 
+
 class BuildableSingle(Buildable):
 	"""Buildings one can build single. """
 	@classmethod
@@ -316,6 +320,7 @@ class BuildableSingle(Buildable):
 		point2.x -= (cls.size[0] - 1) // 2
 		point2.y -= (cls.size[1] - 1) // 2
 		return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
+
 
 class BuildableSingleEverywhere(BuildableSingle):
 	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""

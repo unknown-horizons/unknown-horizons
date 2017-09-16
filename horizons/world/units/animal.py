@@ -39,6 +39,7 @@ class Animal(ResourceHandler):
 	def __init__(self, *args, **kwargs):
 		super(Animal, self).__init__(*args, **kwargs)
 
+
 class CollectorAnimal(Animal):
 	"""Animals that will inherit from collector"""
 	def __init__(self, **kwargs):
@@ -94,6 +95,7 @@ class CollectorAnimal(Animal):
 
 	def get_collectable_res(self):
 		return self.get_needed_resources()
+
 
 class WildAnimal(CollectorAnimal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.

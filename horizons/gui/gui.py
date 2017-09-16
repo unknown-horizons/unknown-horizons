@@ -95,6 +95,7 @@ class MainMenu(Window):
 		w = self._gui.findChildByName('changeBackground')
 		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[0]
 
+
 class Background:
 	"""
 	Display a centered background image on top of a black screen.
