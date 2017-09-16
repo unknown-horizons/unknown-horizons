@@ -653,6 +653,7 @@ class _LanguageNameDict(dict):
 LANGUAGENAMES = _LanguageNameDict({
 	""      : ('System default', ''),
 	"af"    : ('Afrikaans', 'Afrikaans'),
+	"ar"    : ('اَللُّغَةُ اَلْعَرَبِيَّة', 'Arabic'),
 	"bg"    : ('Български', 'Bulgarian'),
 	"ca"    : ('Català', 'Catalan'),
 	'ca@valencia' : ('Català de València', 'Catalan (Valencia)'),
@@ -701,6 +702,7 @@ LANGUAGENAMES = _LanguageNameDict({
 
 FONTDEFS = {
 	# "af"
+	# "ar"
 	"bg"    : 'libertine',
 	# "ca"
 	"ca@valencia" : 'libertine',
@@ -713,6 +715,7 @@ FONTDEFS = {
 	"el"    : 'libertine',
 	"fi"    : 'libertine',
 	"fr"    : 'libertine',
+	# "frp"
 	"ga"    : 'libertine',
 	"gl"    : 'libertine',
 	# "hi"
@@ -721,9 +724,10 @@ FONTDEFS = {
 	"id"    : 'libertine',
 	"it"    : 'libertine',
 	# "ja"
+	# "ko"
 	"lt"    : 'libertine',
 	"lv"    : 'libertine',
-	# "ko"
+	# "ml"
 	"nb"    : 'libertine',
 	"nl"    : 'libertine',
 	"pl"    : 'libertine',
@@ -740,6 +744,7 @@ FONTDEFS = {
 	"uk"    : 'libertine',
 	# "vi"
 	# "zh_CN"
+	# "zh_TW"
 	"zu"    : 'libertine',
 }
 
