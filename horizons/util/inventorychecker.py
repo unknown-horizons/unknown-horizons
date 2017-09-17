@@ -45,7 +45,6 @@ class InventoryChecker:
 			self.__message_class.broadcast(self)
 			self.__inventory_copy = deepcopy(inventory)
 
-
 	def remove(self):
 		"""Clean up"""
 		Scheduler().rem_all_classinst_calls(self)

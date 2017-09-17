@@ -391,7 +391,6 @@ class GameLobby(Window):
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
 
-
 		self._gui.mapEvents({
 			'cancel': self._cancel,
 			'ready_btn': self._on_ready_button_pressed,

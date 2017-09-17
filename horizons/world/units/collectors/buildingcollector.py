@@ -180,7 +180,6 @@ class BuildingCollector(Collector):
 		self._clean_job_history_log()
 		super().search_job()
 
-
 	def handle_no_possible_job(self):
 		super().handle_no_possible_job()
 		# only append a new element if it is different from the last one

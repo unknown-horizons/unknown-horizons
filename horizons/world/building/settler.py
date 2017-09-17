@@ -144,8 +144,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 
-
-
 	def remove(self):
 		SettlerInhabitantsChanged.broadcast(self, -self.inhabitants)
 
@@ -419,7 +417,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		return int(
 		  self.session.db("SELECT value FROM balance_values WHERE name = ?", key)[0][0]
 		  )
-
 
 
 class SettlerUpgradeData:

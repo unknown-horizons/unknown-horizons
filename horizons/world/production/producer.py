@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import logging
 
 from horizons.command.unit import CreateUnit
@@ -87,7 +85,6 @@ class Producer(Component):
 			self.production_lines.update(self.settler_upgrade_lines.get_production_lines())
 		else:
 			self.settler_upgrade_lines = None
-
 
 	def __init(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
@@ -283,7 +280,6 @@ class Producer(Component):
 		# which can be needed by changelisteners' actions (e.g. in remove_production method)
 		super().remove()
 		assert not self.get_productions(), 'Failed to remove {} '.format(self.get_productions())
-
 
 	# PROTECTED METHODS
 	def _get_current_state(self):
@@ -505,7 +501,6 @@ class QueueProducer(Producer):
 			Scheduler().rem_call(self, self.start_next_production)
 
 			self.start_next_production()
-
 
 	def check_next_production_startable(self):
 		# See if we can start the next production, this only works if the current

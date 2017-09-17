@@ -95,7 +95,6 @@ class Component:
 		arguments = arguments or {}
 		return cls(**arguments)
 
-
 	def __gt__(self, other):
 		return other.__class__ in self.DEPENDENCIES
 

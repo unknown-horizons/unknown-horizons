@@ -84,7 +84,6 @@ class TabBG(VBox, TilingBackground):
 			**kwargs)
 
 
-
 class TilingHBox(HBox, TilingBackground):
 	"""Currently mostly used by cityinfo, thus using its arguments as defaults.
 

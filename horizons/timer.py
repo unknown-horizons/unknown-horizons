@@ -37,7 +37,6 @@ class Timer(LivingObject):
 	ACCEPTABLE_TICK_DELAY = 0.2 # sec
 	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
 
-
 	def __init__(self, tick_next_id=Scheduler.FIRST_TICK_ID, freeze_protection=False):
 		"""
 		NOTE: timer will not start until activate() is called

@@ -138,7 +138,6 @@ class ConditionAllied(Condition):
 		else:
 			return None
 
-
 	def get_identifier(self, **environment):
 		return super().get_identifier(**environment) + str(environment['player'].worldid)
 

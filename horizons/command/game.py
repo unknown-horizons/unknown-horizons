@@ -52,7 +52,6 @@ class SaveCommand(Command):
 Command.allow_network(SaveCommand)
 
 
-
 class SpeedUpCommand(Command):
 	"""Used to change the game speed"""
 

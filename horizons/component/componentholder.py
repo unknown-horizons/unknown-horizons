@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 from horizons.component import Component
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent

@@ -36,7 +36,6 @@ from horizons.util.worldobject import WorldObject
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
-
 	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
 
 	send_hover_instances_update = True

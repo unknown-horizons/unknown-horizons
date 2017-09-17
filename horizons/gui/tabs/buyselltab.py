@@ -161,7 +161,6 @@ class BuySellTab(TabInterface):
 			content.addChild(slot)
 		self.widget.adaptLayout()
 
-
 	def add_resource(self, resource_id, slot_id, value=None):
 		"""
 		Adds a resource to the specified slot
@@ -310,7 +309,6 @@ class BuySellTab(TabInterface):
 		self.session.ingame_gui.minimap_to_front()
 
 		self.resources.show() # show selection widget, still display old tab icons
-
 
 	def _update_hint(self, slot_id):
 		"""Sets default hint for last updated slot"""

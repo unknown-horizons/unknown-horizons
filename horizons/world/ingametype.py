@@ -176,7 +176,6 @@ class IngameType(type):
 
 			producer_data['productionlines'] = new_data
 
-
 	@property
 	def _fife_object(self):
 		if self._real_object is None:

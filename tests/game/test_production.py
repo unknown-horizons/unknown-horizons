@@ -41,7 +41,6 @@ def test_basic_wood_production(session, player):
 	producer = lj.get_component(Producer)
 	assert isinstance(producer, Producer)
 
-
 	# Make sure wood production is added
 	assert PRODUCTIONLINES.TREES in producer.get_production_lines()
 	assert producer.has_production_line(PRODUCTIONLINES.TREES)

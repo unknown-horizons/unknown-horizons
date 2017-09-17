@@ -85,7 +85,6 @@ def diplomacy_graph():
 
 	)
 
-
 	for parameter_name, parameters in parameter_sets:
 
 		# always print upper boundary

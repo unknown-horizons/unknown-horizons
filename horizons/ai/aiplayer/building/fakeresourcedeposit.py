@@ -35,7 +35,6 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 	def get_higher_level_building_id(cls):
 		raise NotImplementedError('This function has to be overridden.')
 
-
 	def __init_production_lines(self):
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
 		for key, value in production_lines.items():

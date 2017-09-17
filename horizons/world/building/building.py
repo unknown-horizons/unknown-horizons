@@ -160,7 +160,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		self.__init(remaining_ticks_of_month=remaining_ticks_of_month)
 
-
 		# island.add_building handles registration of building for island and settlement
 		self.island.add_building(self, self.owner, load=True)
 

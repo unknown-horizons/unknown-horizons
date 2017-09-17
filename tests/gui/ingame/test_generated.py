@@ -144,7 +144,6 @@ def test_buildingtool(gui):
 	# Place fisher
 	build_at( (52, 3) )
 
-
 	# Build lumberjack
 	gui.trigger('tab/button_03')
 	build_at( (52, 6) )

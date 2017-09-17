@@ -108,7 +108,6 @@ class TestTradePostComponent(TestCase):
 		self.inventory.alter(1, 1)
 		self.assertTrue(self.tradepost.sell(1, 1, 1, 100))
 
-
 		self.tradepost.clear_slot(0, True)
 		# not selling any more
 		self.assertFalse(self.tradepost.sell(1, 1, 1, 100))
