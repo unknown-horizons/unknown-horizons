@@ -415,7 +415,6 @@ class LogBook(PickBeltWidget, Window):
 		self.stats_visible = None
 
 
-
 ########
 #        MESSAGE  AND  CHAT  HISTORY  SUBWIDGET
 ########

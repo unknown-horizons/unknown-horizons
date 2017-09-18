@@ -564,7 +564,6 @@ class VillageBuilder(AreaBuilder):
 		num_doctors = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) // self.personality.normal_doctor_capacity)))
 		self._replace_planned_residence(BUILDING_PURPOSE.DOCTOR, num_doctors, self.personality.max_doctor_capacity)
 
-
 		self._create_special_village_building_assignments()
 
 	def _create_special_village_building_assignments(self):

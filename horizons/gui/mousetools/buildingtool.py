@@ -139,7 +139,6 @@ class BuildingTool(NavigationTool):
 		SettlementInventoryUpdated.subscribe(self.update_preview)
 		PlayerInventoryUpdated.subscribe(self.update_preview)
 
-
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent
 		try:
@@ -336,7 +335,6 @@ class BuildingTool(NavigationTool):
 				if settlement is None:
 					building.buildable = False
 
-
 			# check required resources
 			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
 			                                                  self.session.world.player, [settlement, self.ship])
@@ -404,7 +402,6 @@ class BuildingTool(NavigationTool):
 					inst = obj.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)
 					self.renderer.addColored(inst, *self.related_building_color)
-
 
 	def _make_surrounding_transparent(self, building):
 		"""Makes the surrounding of building_position transparent and hide buildings

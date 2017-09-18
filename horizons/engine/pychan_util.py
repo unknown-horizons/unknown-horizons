@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import functools
 import traceback
 
@@ -150,7 +148,6 @@ def init_pychan():
 
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui
-
 
 	setup_cursor_change_on_hover()
 

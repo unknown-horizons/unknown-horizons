@@ -169,7 +169,6 @@ class Rect(Shape):
 				for x in range(x_range[0], x_range[1] + 1):
 					yield (x, y)
 
-
 	@property
 	def center(self):
 		"""Returns the center point of the rect.

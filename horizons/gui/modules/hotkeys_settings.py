@@ -20,7 +20,6 @@
 # ###################################################
 
 
-
 from fife import fife
 from fife.extensions.pychan.widgets import Button
 

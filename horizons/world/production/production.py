@@ -246,7 +246,6 @@ class Production(ChangeListener):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
-
 	def get_state_history_times(self, ignore_pause):
 		"""
 		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.

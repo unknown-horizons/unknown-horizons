@@ -87,7 +87,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		_Actions = KeyConfig._Actions
 		action = KeyConfig().translate(evt)
 
-
 		if action == _Actions.UP:
 			self.up_key_pressed = False
 		if action == _Actions.DOWN:

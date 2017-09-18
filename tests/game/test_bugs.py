@@ -220,7 +220,6 @@ def test_ticket_1523(s, p):
 	s.run(seconds=60)
 	assert farm.get_component(StorageComponent).inventory[RES.FOOD]
 
-
 	assert isinstance(farm.get_component(Producer)._Producer__utilization, FieldUtilization)
 	# Should be 0.5
 	assert not farm.get_component(Producer).capacity_utilization_below(0.4)

@@ -238,8 +238,6 @@ class World(BuildingOwner, WorldObject):
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map."""
 
-
-
 	def _load_combat(self, savegame_db):
 		# load ongoing attacks
 		if self.session.is_game_loaded():
@@ -312,7 +310,6 @@ class World(BuildingOwner, WorldObject):
 					self.full_map[coords] = island.ground_map[coords]
 					del self.ground_map[coords]
 					self.island_map[coords] = island
-
 
 	def _load_players(self, savegame_db, force_player_id):
 		human_players = []

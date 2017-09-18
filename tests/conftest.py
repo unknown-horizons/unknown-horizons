@@ -89,7 +89,6 @@ def pytest_namespace():
 
 		sys.meta_path.insert(0, Finder)
 
-
 	mock_fife()
 
 	import horizons.globals

@@ -222,7 +222,6 @@ class Buildable:
 			# No match found, fail with specified parameters.
 			return check_pos(point)
 
-
 	# PRIVATE PARTS
 
 	@classmethod

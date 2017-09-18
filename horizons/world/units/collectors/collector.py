@@ -20,7 +20,6 @@
 # ###################################################
 
 
-
 import logging
 import operator
 from collections import namedtuple
@@ -75,7 +74,6 @@ class Collector(Unit):
 	              # TODO: merge no_job_waiting with idle
 	              'decommissioned', # fisher ship: When home building got demolished. No more collecting.
 	              )
-
 
 	# INIT/DESTRUCT
 
@@ -206,7 +204,6 @@ class Collector(Unit):
 			# job finishes in remaining_ticks ticks
 			Scheduler().add_new_object(self.finish_working, self, remaining_ticks)
 
-
 	# GETTER
 
 	def get_home_inventory(self):
@@ -226,7 +223,6 @@ class Collector(Unit):
 	def get_job(self):
 		"""Returns the next job or None"""
 		raise NotImplementedError
-
 
 	# BEHAVIOR
 	def search_job(self):

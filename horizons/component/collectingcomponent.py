@@ -66,7 +66,6 @@ class CollectingComponent(Component):
 		collector = entities.Entities.units[collector_class](self.instance, session=self.session, owner=self.instance.owner)
 		collector.initialize()
 
-
 	def remove(self):
 		# remove every non-ship collectors (those are independent)
 		for collector in self.__collectors[:]:
@@ -91,11 +90,9 @@ class CollectingComponent(Component):
 			if not collector.is_ship:
 				collector.save(db)
 
-
 	def load(self, db, worldid):
 		super().load(db, worldid)
 		self.__init()
-
 
 	## INTERFACE
 	def add_local_collector(self, collector):

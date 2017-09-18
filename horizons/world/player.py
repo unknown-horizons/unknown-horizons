@@ -46,7 +46,6 @@ class Player(ComponentHolder, WorldObject):
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},) # type: Sequence[Union[str, Dict[str, Any]]]
 
-
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
 		@type session: horizons.session.Session

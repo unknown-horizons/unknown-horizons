@@ -256,7 +256,6 @@ def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=
 				finally:
 					SPTestSession.cleanup()
 
-
 				timelimit.stop()
 		return wrapped
 	return deco

@@ -306,7 +306,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_fake_tiles.l.append(inst)
 		renderer.addColored(inst, *cls.selection_color)
 
-
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
 		"""

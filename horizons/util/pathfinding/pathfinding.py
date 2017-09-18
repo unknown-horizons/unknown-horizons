@@ -228,7 +228,6 @@ class FindPath:
 						            distance_to_neighbor,
 						            distance_to_neighbor + (neighbor[2] - neighbor[1]))
 
-
 			# done processing cur_node
 			checked[cur_node_coords] = cur_node_data
 			del to_check[cur_node_coords]

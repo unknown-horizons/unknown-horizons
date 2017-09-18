@@ -143,7 +143,6 @@ def test_hunter_save_load():
 			session.run()
 		assert collector.state == new_state, "expected new state {}, got {}".format(new_state, collector.state)
 
-
 	sequence = [
 	  Collector.states.idle,
 	  Collector.states.waiting_for_animal_to_stop,

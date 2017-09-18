@@ -282,7 +282,6 @@ class Minimap:
 			point.set(x, y)
 			draw_point(render_name, point, r, g, b)
 
-
 	def _get_render_name(self, key):
 		return self.RENDER_NAMES[key] + self._id
 
@@ -313,7 +312,6 @@ class Minimap:
 
 			coords = self._world_to_minimap(corner, use_rotation)
 			minimap_corners_as_point.append(fife.Point(coords[0], coords[1]))
-
 
 		for i in range(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),

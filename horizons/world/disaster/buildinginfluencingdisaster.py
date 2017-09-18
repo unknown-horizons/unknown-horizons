@@ -62,7 +62,6 @@ class BuildingInfluencingDisaster(Disaster):
 	# By default, try twice before disasterying
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1
 
-
 	def __init__(self, settlement, manager):
 		super().__init__(settlement, manager)
 		self._affected_buildings = []

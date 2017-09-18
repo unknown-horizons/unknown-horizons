@@ -266,7 +266,6 @@ def add_nature_objects(world, natural_resource_multiplier):
 					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 
-
 			# add tree to every nth tile and an animal to one in every M trees
 			if check_tile_for_tree(world, position, newTile) and world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):

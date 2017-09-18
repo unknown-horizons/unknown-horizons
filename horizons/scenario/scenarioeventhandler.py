@@ -83,7 +83,6 @@ class ScenarioEventHandler(LivingObject):
 
 		self.sleep_ticks_remaining = 0
 
-
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		self.check_events("game_started")
