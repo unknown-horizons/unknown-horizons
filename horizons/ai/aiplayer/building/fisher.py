@@ -170,4 +170,5 @@ class FisherSimulator:
 				heapq.heappush(heap, (tick + COLLECTORS.DEFAULT_WAIT_TICKS, fisher_coords))
 		return float(fish_caught) / cls.simulation_time
 
+
 AbstractFisher.register_buildings()

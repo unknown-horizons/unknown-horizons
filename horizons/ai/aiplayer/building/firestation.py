@@ -77,4 +77,5 @@ class FireStationEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.FIRE_STATION
 
+
 AbstractFireStation.register_buildings()

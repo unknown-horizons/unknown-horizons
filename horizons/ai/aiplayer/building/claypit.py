@@ -58,4 +58,5 @@ class ClayPitEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.CLAY_PIT
 
+
 AbstractClayPit.register_buildings()

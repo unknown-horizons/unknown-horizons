@@ -68,6 +68,7 @@ class Speech:
 	BUILDING_ON_FIRE = None # type: Optional[str]
 	BUILDING_INFECTED_BY_BLACK_DEATH = None # type: Optional[str]
 
+
 DEFAULT_LANG = "en"
 DEFAULT_VARIATION = 0
 DEFAULT_SPEAKER = 0

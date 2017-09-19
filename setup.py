@@ -220,6 +220,7 @@ class _build_i18n(distutils.cmd.Command):
 				rmtree(os.path.join("content", "lang"))
 			copytree(os.path.join("build", "mo"), os.path.join("content", "lang"))
 
+
 build.sub_commands.append(('build_i18n', None))
 
 cmdclass = {

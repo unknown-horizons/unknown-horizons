@@ -62,4 +62,5 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.CHARCOAL_BURNER
 
+
 AbstractCharcoalBurner.register_buildings()

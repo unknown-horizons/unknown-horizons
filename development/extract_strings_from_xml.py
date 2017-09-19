@@ -207,6 +207,7 @@ def content_from_file(filename, parse=True):
 
 	return FILE.format(filename=printname, entries=strings)
 
+
 filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)
 

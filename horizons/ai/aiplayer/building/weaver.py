@@ -69,4 +69,5 @@ class WeaverEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.WEAVER
 
+
 AbstractWeaver.register_buildings()

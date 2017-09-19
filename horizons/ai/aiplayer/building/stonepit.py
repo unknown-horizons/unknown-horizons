@@ -58,4 +58,5 @@ class StonePitEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.STONE_PIT
 
+
 AbstractStonePit.register_buildings()

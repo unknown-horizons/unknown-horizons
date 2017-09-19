@@ -33,4 +33,5 @@ class AbstractStoneDeposit(AbstractFakeResourceDeposit):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.STONE_DEPOSIT] = cls
 
+
 AbstractStoneDeposit.register_buildings()

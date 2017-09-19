@@ -49,6 +49,7 @@ class SaveCommand(Command):
 		else:
 			session.ingame_gui.open_popup(T('Error'), T('Failed to save.'))
 
+
 Command.allow_network(SaveCommand)
 
 
@@ -58,6 +59,7 @@ class SpeedUpCommand(Command):
 	def __call__(self, issuer):
 		session = issuer.session
 		session.speed_up()
+
 
 Command.allow_network(SpeedUpCommand)
 
@@ -69,6 +71,7 @@ class SpeedDownCommand(Command):
 		session = issuer.session
 		session.speed_down()
 
+
 Command.allow_network(SpeedDownCommand)
 
 
@@ -78,6 +81,7 @@ class TogglePauseCommand(Command):
 	def __call__(self, issuer):
 		session = issuer.session
 		session.ingame_gui.toggle_pause()
+
 
 Command.allow_network(TogglePauseCommand)
 
@@ -95,6 +99,7 @@ class UnPauseCommand(_SpeedCommand):
 		session = issuer.session
 		session.speed_unpause(self.suggestion)
 
+
 Command.allow_network(UnPauseCommand)
 
 
@@ -104,5 +109,6 @@ class PauseCommand(_SpeedCommand):
 	def __call__(self, issuer):
 		session = issuer.session
 		session.speed_pause(self.suggestion)
+
 
 Command.allow_network(PauseCommand)

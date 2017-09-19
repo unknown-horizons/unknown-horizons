@@ -59,6 +59,7 @@ def get_range(expr):
 def get_length(r):
 	return max(len(str(min(r))), len(str(max(r))))
 
+
 dev_null = open(os.devnull, 'w')
 
 
@@ -100,6 +101,7 @@ def show_data(games):
 		m = s // 60
 		s %= 60
 		print(game.name, '[:d}:{:02d}:{:06.3f}s'.format(h, m, s), game.returncode)
+
 
 if __name__ == '__main__':
 	parser = PassThroughOptionParser()
