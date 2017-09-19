@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Server b829058\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-09-19 21:53+0000\n"
+"PO-Revision-Date: 2017-09-20 22:49+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh-server/sk/>"
 "\n"
@@ -50,7 +50,7 @@ msgstr "Nemôžeš sa pripojiť do hry pokiaľ si v druhej"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr "Neznáma hra alebo hra bežiaca na inej verzií hry."
+msgstr "Neznáma hra alebo hra bežiaca na inej verzií hry"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
@@ -92,15 +92,15 @@ msgstr "Nie ste účastníkom hry"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Hra bola ukončená. Zakladajúci hráč ju opustil."
+msgstr "Hra bola vypnutá. Tvorca odišiel z hry."
 
 #: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Jeden z hráčov ukončil hru. Z technických dôvodov táto hra nemôže "
-"pokračovať, za čo sa veľmi ospravedlňujeme."
+"Jeden hráč odišiel z hry. Z technických príčin nemôže momentálna hra "
+"pokračovať. Ospravedlňujeme sa."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
@@ -112,4 +112,4 @@ msgstr "Neviem zmeniť tvoju farbu."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr "Nemôžete preskočiť do hry pokiaľ už v nejakej ste"
+msgstr "Nemôžeš sa pripojiť do ďalšej hry pokiaľ si v jednej pripojený"
