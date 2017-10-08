@@ -523,8 +523,7 @@ class TIER:
 
 	LOWEST = SAILORS
 	HIGHEST = ARISTOCRATS
-	CURRENT_MAX = CITIZENS
-	# CURRENT_MAX = MERCHANTS # settler level up to MERCHANTS tier not fully implemented yet
+	CURRENT_MAX = MERCHANTS
 
 
 class SETTLER:
