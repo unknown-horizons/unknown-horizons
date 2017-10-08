@@ -99,11 +99,6 @@ tab5:
 - icon: icons/tabwidget/buildmenu/tier/tier5
 -
   - _ Companies
-
-tab5:
-- icon: icons/tabwidget/buildmenu/tier/tier5
--
-  - _ Companies
 #  - BUILDINGS.SALINE
 #  - # empty slot
 #  - # empty slot

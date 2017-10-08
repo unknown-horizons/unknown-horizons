@@ -233,7 +233,7 @@ class SettlementManager(WorldObject):
 		pioneer_upgrades = getattr(self.personality, '{}_pioneer_upgrades'.format(prefix))
 		settler_upgrades = getattr(self.personality, '{}_settler_upgrades'.format(prefix))
 		citizen_upgrades = getattr(self.personality, '{}_citizen_upgrades'.format(prefix))
-		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes
+		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes,
 			sailor_upgrades, pioneer_upgrades, settler_upgrades, citizen_upgrades)
 
 	def can_provide_resources(self):
