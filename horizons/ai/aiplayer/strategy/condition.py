@@ -66,7 +66,7 @@ class ConditionSharingSettlement(Condition):
 	Raises "attack_enemy_player" strategy
 	"""
 	def __init__(self, owner):
-		super(ConditionSharingSettlement, self).__init__(owner)
+		super().__init__(owner)
 
 	def check(self, **environment):
 		other_player = environment['player']
@@ -81,7 +81,7 @@ class ConditionSharingSettlement(Condition):
 			return None
 
 	def get_identifier(self, **environment):
-		return super(ConditionSharingSettlement, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super().get_identifier(**environment) + str(environment['player'].worldid)
 
 
 class ConditionHostile(Condition):
@@ -89,7 +89,7 @@ class ConditionHostile(Condition):
 	States whether there is a hostile player that can be attacked (i.e. has ships that can be destroyed)
 	"""
 	def __init__(self, owner):
-		super(ConditionHostile, self).__init__(owner)
+		super().__init__(owner)
 
 	def check(self, **environment):
 		player = environment['player']
@@ -104,7 +104,7 @@ class ConditionHostile(Condition):
 			return None
 
 	def get_identifier(self, **environment):
-		return super(ConditionHostile, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super().get_identifier(**environment) + str(environment['player'].worldid)
 
 
 class ConditionNeutral(Condition):
@@ -123,7 +123,7 @@ class ConditionNeutral(Condition):
 			return None
 
 	def get_identifier(self, **environment):
-		return super(ConditionNeutral, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super().get_identifier(**environment) + str(environment['player'].worldid)
 
 
 class ConditionAllied(Condition):
@@ -138,9 +138,8 @@ class ConditionAllied(Condition):
 		else:
 			return None
 
-
 	def get_identifier(self, **environment):
-		return super(ConditionAllied, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super().get_identifier(**environment) + str(environment['player'].worldid)
 
 
 class ConditionDebug(Condition):
@@ -154,7 +153,7 @@ class ConditionDebug(Condition):
 		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
 
 	def get_identifier(self, **environment):
-		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super().get_identifier(**environment) + str(environment['player'].worldid)
 
 
 class ConditionPirateRoutinePossible(Condition):
@@ -162,11 +161,11 @@ class ConditionPirateRoutinePossible(Condition):
 	Currently always occurs, when pirate has more conditions/strategies to work on, this may change.
 	"""
 	def __init__(self, owner):
-		super(ConditionPirateRoutinePossible, self).__init__(owner)
+		super().__init__(owner)
 		self.lockable = False
 
 	def check(self, **environment):
 		return {'certainty': self.default_certainty, 'strategy_name': 'pirate_routine', 'type': BehaviorManager.strategy_types.idle}
 
 	def get_identifier(self, **environment):
-		return super(ConditionPirateRoutinePossible, self).get_identifier(**environment)
+		return super().get_identifier(**environment)

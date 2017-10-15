@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-06-02 17:19+0000\n"
-"Last-Translator: Pablo Pereira <pablopereira27@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/uh/"
-"uh/pt_BR/>\n"
+"PO-Revision-Date: 2017-07-26 12:23+0000\n"
+"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"Language-Team: Portuguese (Brazil) "
+"<https://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -295,10 +295,8 @@ msgstr "Confirmar ordem"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Entrar no jogo selecionado"
+msgstr "(como na seleção de abas)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -310,19 +308,16 @@ msgstr "Entrar no jogo selecionado"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:23
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
-#, fuzzy
 msgid "$res"
 msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
-#, fuzzy
 msgid "24t"
 msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
-#, fuzzy
 msgid "14t"
 msgstr "14t"
 
@@ -330,13 +325,11 @@ msgstr "14t"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
-#, fuzzy
 msgid "06t"
 msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
-#, fuzzy
 msgid "2500"
 msgstr "2500"
 
@@ -353,8 +346,6 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
 msgstr "Comprar melhorias"
 
@@ -366,17 +357,15 @@ msgstr "Canhões"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
 msgid "Hull"
-msgstr "casco"
+msgstr "Casco"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
-#, fuzzy
 msgid "+ 24t"
 msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
-#, fuzzy
 msgid "+ 14t"
 msgstr "+ 14t"
 
@@ -384,28 +373,22 @@ msgstr "+ 14t"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
-#, fuzzy
 msgid "+ 06t"
 msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
-#, fuzzy
 msgid "+ 1457"
 msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Manter terreno"
+msgstr "Construir unidade terrestre:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Construir este navio!"
+msgstr "Construa esta unidade terrestre!"
 
 # #############
 # #  no need to translate the following (until next comment)
@@ -421,7 +404,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
-msgstr "Construir este navio:"
+msgstr "Construir navio:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -456,10 +439,8 @@ msgid "Capacity utilization"
 msgstr "Capacidade de utilização"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
-#| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Clique para alterar o nome deste navio"
+msgstr "Clique para alterar o nome desta unidade terrestre"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
@@ -542,10 +523,8 @@ msgid "residents"
 msgstr "residentes"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Verdedigd je nederzetting."
+msgstr "Fornece segurança para sua colônia."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -612,8 +591,8 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"O sinal de fogo mostra o livre comércio como chegar até a sua liquidação no "
-"caso de você querer comprar ou vender bens."
+"O sinal de fogo mostra ao comerciante livre como chegar até sua colônia caso "
+"você queira comprar ou vender bens."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
@@ -652,10 +631,8 @@ msgid "Configure trading route"
 msgstr "Configurar rota comercial"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
-#| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(perder todos os recursos)"
+msgstr "Descartar todos os recursos"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -747,7 +724,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Redefinir configuração de recurso padrão para toda colônia."
+msgstr "Redefinir configuração de recurso padrão para todas as colônias."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -822,16 +799,12 @@ msgid "Return to game"
 msgstr "Retornar ao jogo"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Antigo nome:"
+msgstr "Nome da ilha:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Nome do jogador"
+msgstr "Nome do jogador:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -915,7 +888,7 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Quantidade de recursos gerados de todas possíveis fontes na(s) colônia(s) do "
+"Quantidade de recursos gerados de todas possíveis fontes nas colônias do "
 "jogador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
@@ -924,7 +897,7 @@ msgstr "Edifícios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Quantidade de edifícios na(s) colônia(s) do jogador"
+msgstr "Quantidade de edifícios nas colônias do jogador"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -938,8 +911,8 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Valor denotando o progresso da(s) colônia(s) em termos de habitantes, "
-"edifícios e felicidade global"
+"Valor denotando o progresso das colônias em termos de habitantes, edifícios "
+"e felicidade global"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -1733,10 +1706,8 @@ msgid "Are you sure you want to delete these objects?"
 msgstr "Você tem certeza que deseja deletar estes objetos?"
 
 #: horizons/gui/ingamegui.py:476
-#, fuzzy
-#| msgid "Delete entry"
 msgid "Delete"
-msgstr "Apagar entrada"
+msgstr "Apagar"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
@@ -1745,10 +1716,8 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} assentamentos"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
-#, fuzzy
-#| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Pressione a tecla desejada"
+msgstr "Pressionar tecla…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
@@ -1785,7 +1754,7 @@ msgstr "Use \"SHIFT\" para colocar várias construções."
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Atualmente apenas a primeira{tier} é jogável."
+msgstr "Atualmente apenas o primeiro {tier} é jogável."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
@@ -1828,12 +1797,10 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Pressione \"T\" para tornar as árvores transparentes."
 
 #: horizons/gui/modules/loadingscreen.py:80
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
-"Construir tendas de armazenamento para aumentar sua capacidade de "
-"armazenamento."
+"Construir tendas de armazenamento e vigias para expandir o alcance da "
+"colônia."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1842,20 +1809,25 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Para melhor ver se o alcance do pavilhão cobre todas as suas tendas, "
+"selecione-o no menu de construção e sobreponha sobre pavilhão existente. "
+"Tendas não cobertas são apresentadas em amarelo. Seria uma boa ideia "
+"construir um novo pavilhão nas cercanias."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Torne o jogo para um jogador mais divertido com adicionais jogadores do "
+"computador, ao aumentar 'Jogadores de IA' quando iniciar um novo jogo."
 
 #: horizons/gui/modules/loadingscreen.py:83
-#, fuzzy
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
-"Os primeiros passos são mais fáceis ao observar em como os Jogadores da IA "
+"Os primeiros passos são mais fáceis ao observar como os Jogadores de IA "
 "configuram sua colônia."
 
 #: horizons/gui/modules/loadingscreen.py:84
@@ -1863,6 +1835,8 @@ msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Quer apenas citações divertidas? Altere os tipos de citações exibidos aqui "
+"no menu de configurações na página do jogo."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
@@ -1878,7 +1852,7 @@ msgstr "Misturado"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr "Iniciando a engine…"
+msgstr "Iniciando o mecanismo…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
@@ -2232,12 +2206,12 @@ msgid "Restart required"
 msgstr "Necessário reiniciar"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Algumas das suas mudanças requerem reiniciar o Unknown Horizons."
+msgstr ""
+"Algumas das suas mudanças requerem reiniciar o Unknown Horizons. Quer "
+"reiniciar o Unknown Horizons agora?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
@@ -2269,8 +2243,8 @@ msgstr ""
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
-"Por favor check a porta que você colocou e tenha certeza que especificou um "
-"range."
+"Por favor verifique a porta que você digitou e certifique-se de que está na "
+"faixa especificada."
 
 #: horizons/gui/modules/settings.py:273
 msgid "Failed to apply new network settings."
@@ -2364,35 +2338,30 @@ msgid "Press H to remove this hint"
 msgstr "Pressione H para remover esta dica"
 
 #: horizons/gui/mousetools/tearingtool.py:114
-#, fuzzy
-#| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Vernietig gebouw"
+msgstr "Destruir todas as construções"
 
 #: horizons/gui/mousetools/tearingtool.py:115
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
-"Isto irá destruir todos os edifícios que estão fora do alcance do "
-"assentamento."
+"Isto irá destruir todos os edifícios que estão fora do alcance da colônia."
 
 #: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s construção adicional será destruída."
+msgstr[1] "%s construções adicionais serão destruídas"
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Visão geral do armazém"
+msgstr "Visão geral do quartel"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
-msgstr ""
+msgstr "Espadachim"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
@@ -2451,7 +2420,7 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
-"Ira comprar {resource_name} por {price} ouro/t sempre que o estoque tiver "
+"Irá comprar {resource_name} por {price} ouro/t sempre que o estoque tiver "
 "menos de {limit}."
 
 #: horizons/gui/tabs/buyselltab.py:325
@@ -2472,7 +2441,7 @@ msgstr "Visão geral do armazém"
 # #############
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr "Conta"
+msgstr "Finanças"
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
@@ -2506,7 +2475,7 @@ msgstr "Visão geral da produção"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Preencha o alcance com {how_many} árvores"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
@@ -2593,7 +2562,7 @@ msgstr "Não existe nada escrito em seu Diário de Bordo ainda!"
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-brace-format
 msgid "Settlements of {player}"
-msgstr "Colônia de {player}"
+msgstr "Colônias de {player}"
 
 #: horizons/gui/widgets/playersships.py:45
 #, python-brace-format
@@ -2631,16 +2600,16 @@ msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
-"Restabelecer os recursos mostrados para a configuração padrão que você "
-"salvou."
+"Redefinir os recursos mostrados desta colônia para a configuração padrão que "
+"você salvou."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
-"Restabelecer a configuração padrão (que você vera aqui) para a configuração "
-"de fabrica padrão para todas as colônias."
+"Redefinir a configuração padrão (que você verá aqui) para a configuração de "
+"fábrica padrão para todas as colônias."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2656,15 +2625,15 @@ msgstr "Parar rota"
 
 #: horizons/gui/widgets/routeconfig.py:129
 msgid "Need at least two settlements"
-msgstr "Precisa no minimo duas colonizações"
+msgstr "Precisa no minimo de duas colônias"
 
 #: horizons/gui/widgets/routeconfig.py:130
 msgid "You need at least two different settlements in your route."
-msgstr "Você precisa no minimo duas colonizações diferentes em sua rota."
+msgstr "Você precisa no minimo duas colônias diferentes em sua rota."
 
 #: horizons/gui/widgets/routeconfig.py:159
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Clique na colonização para adicionar um waypoint!"
+msgstr "Clique na colônia para adicionar um ponto de rota!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
@@ -2706,7 +2675,7 @@ msgstr "Padaria"
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
-msgstr "Consume farinha. Produz comida."
+msgstr "Consome farinha. Produz comida."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:63
@@ -2720,22 +2689,18 @@ msgstr "Recrutar unidades adequadas para combate terrestre."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Torre de madeira"
+msgstr "Barreira de madeira"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "Parede de argila"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Fornece educação."
+msgstr "Fornece segurança."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2764,10 +2729,8 @@ msgstr "Cervejaria"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Consume farinha. Produz comida."
+msgstr "Consome lúpulo. Produz cerveja."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
@@ -2792,14 +2755,12 @@ msgstr "Precisa de porcos ou gado. Produz comida."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:114
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Fundição de canhões"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces tools out of iron."
 msgid "Produces Cannons."
-msgstr "Produz ferramentas de ferro."
+msgstr "Produz canhões."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:121
@@ -2844,7 +2805,7 @@ msgstr "Doutor"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:149
 msgid "Treats diseases. Consumes herbs."
-msgstr "Trata doenças. Consume ervas."
+msgstr "Trata doenças. Consome ervas."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:154
@@ -2912,17 +2873,13 @@ msgstr "Produz ervas. Precisa de uma fazenda."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Campo de milho"
+msgstr "Campo de lúpulo"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Produz milho. Precisa de uma fazenda."
+msgstr "Produz lúpulo. Precisa de uma fazenda."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -3036,10 +2993,8 @@ msgstr "Vigia"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:280
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Defende sua colonização."
+msgstr "Expande o alcance da colônia."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:285
@@ -3064,7 +3019,7 @@ msgstr "Praça principal"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:296
 msgid "Supplies citizens with goods. Provides community."
-msgstr "Suprimir cidadãos com bens. Fornece comunidade."
+msgstr "Supre os cidadãos com bens. Fornece comunidade."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:301
@@ -3124,7 +3079,7 @@ msgstr "Sinalizar fogo"
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:341
 msgid "Allows the player to trade with the free trader."
-msgstr "Permite o jogador negociar com os mercadores livres."
+msgstr "Permite o jogador negociar com os comerciantes livres."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:346
@@ -3138,10 +3093,8 @@ msgstr "Refina todo tipo de minério."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "deposito de pedra"
+msgstr "Depósito de pedra"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:358
@@ -3180,10 +3133,8 @@ msgstr "Cabana de armazenamento"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:378
-#, fuzzy
-#| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Estende o estoque e fornece coletores."
+msgstr "Expande o estoque, o alcance da colônia e fornece coletores."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:383
@@ -3283,8 +3234,6 @@ msgstr "Fornece madeiras. Cortada por lenhadores."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
 msgstr "Escola da vila"
 
@@ -3300,17 +3249,13 @@ msgstr "Armazém"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:451
-#, fuzzy
-#| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Armas"
+msgstr "Armeiro"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:453
-#, fuzzy
-#| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Produz ferramentas de ferro."
+msgstr "Produz armas feitas com ferro."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:458
@@ -3350,7 +3295,7 @@ msgstr "Torre de madeira"
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:481
 msgid "Defends your settlement."
-msgstr "Defende sua colonização."
+msgstr "Defende sua colônia."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3555,106 +3500,105 @@ msgstr "Não está pronto"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Protocolo multijogador antigo ou não suportado. Por favor, verifique sua "
+"versão do jogo"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Você excedeu o tamanho máximo do pacote."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Isso não deveria acontecer nunca. Por favor, entre em contato conosco ou "
+"preencha um relatório de erro."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Você excedeu o tamanho por pacote."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
+"Pacote desconhecido ou corrompido. Por favor, verifique sua versão do jogo"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Sessão inválida/desconhecida"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Você não pode juntar-se à uma partida enquanto permanecer em outra"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Jogo desconhecido ou executando uma versão diferente"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Partida já iniciada. Não é mais possível juntar-se a ela"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "A partida está lotada"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Digite a senha:"
+msgstr "Senha incorreta"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "Já existe um jogador com seu nome neste jogo."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Por favor, altere o seu nome."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "Já existe um jogador com sua cor neste jogo."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Você mudou sua cor"
+msgstr "Por favor, altere sua cor."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"Já existe um jogador com o seu ID dentro desta partida. Isto nunca deveria "
+"ocorrer."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Você não esta pronto"
+msgstr "Você não está participando de nenhuma partida"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Incapaz de conectar no servidor."
+msgstr "Não foi possível alterar seu nome."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Você mudou sua cor"
+msgstr "Não foi possível alterar sua cor."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "De snelheid van een multiplayer spel kan niet worden gewijzigd"
+msgstr ""
+"Você não pode solicitar informações sobre uma partida enquanto permanecer em "
+"outra"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "A partida foi encerrada. O criador retirou-se."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Desculpe-nos, por motivos técnicos um jogador precisou retirar-se e isto "
+"significa que a partida não pode continuar."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3748,7 +3692,7 @@ msgstr "Este terreno não é adequado para este edifício."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building has to be built within your settlement."
-msgstr "Este edifício tem que ser construido em sua colonização."
+msgstr "Este edifício tem que ser construído em sua colônia."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by another player."
@@ -3800,7 +3744,7 @@ msgstr "Estes residentes estão infelizes."
 
 #: horizons/world/status.py:92
 msgid "These residents don't have access to a main square."
-msgstr "Os habitantes estão sem acesso ao parque principal."
+msgstr "Os habitantes estão sem acesso à praça principal."
 
 #: horizons/world/status.py:98
 msgid "The inventory of this building is full."
@@ -3922,7 +3866,7 @@ msgstr "Sua mina está sem recursos."
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr "Você atingiu o level máximo. Seus habitantes não iram evoluir mais."
+msgstr "Você atingiu o nível máximo. Seus habitantes não iram evoluir mais."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3948,16 +3892,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Um novo navio de nome {name} foi criado."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Um novo navio de nome {name} foi criado."
+msgstr "O soldado de nome {name} está pronto para a batalha."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Um novo navio de nome {name} foi criado."
+msgstr "O habitante de nome {name} está disponível."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -3965,7 +3907,7 @@ msgstr "Um novo mundo foi criado."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Alguns dos seus habitantes não tem acesso ao parque principal."
+msgstr "Alguns dos seus habitantes não tem acesso à praça principal."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
@@ -3999,7 +3941,7 @@ msgstr "Alguns dos seu habitantes seus saíram."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Você não pode destruir o armazém, sua colonização precisa dele."
+msgstr "Você não pode destruir o armazém, sua colônia precisa dele."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"

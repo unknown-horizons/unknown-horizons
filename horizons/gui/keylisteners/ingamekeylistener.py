@@ -31,7 +31,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
 	def __init__(self, session):
-		super(IngameKeyListener, self).__init__()
+		super().__init__()
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
@@ -47,7 +47,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		self.session = None
-		super(IngameKeyListener, self).end()
+		super().end()
 
 	def updateAutoscroll(self):
 		self.key_scroll = [0, 0]
@@ -86,7 +86,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		keyval = evt.getKey().getValue()
 		_Actions = KeyConfig._Actions
 		action = KeyConfig().translate(evt)
-
 
 		if action == _Actions.UP:
 			self.up_key_pressed = False

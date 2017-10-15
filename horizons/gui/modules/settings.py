@@ -307,6 +307,7 @@ class SettingsDialog(PickBeltWidget, Window):
 	def _apply_DebugLog(self, old, new):
 		horizons.main.set_debug_log(new)
 
+
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
 

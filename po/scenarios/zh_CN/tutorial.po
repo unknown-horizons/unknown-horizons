@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-07-12 05:57+0000\n"
+"PO-Revision-Date: 2017-07-15 08:30+0000\n"
 "Last-Translator: Felix <icyvapor@gmail.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<https://hosted.weblate.org/projects/uh/tutorial/zh_Hans/>\n"
@@ -72,12 +72,16 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"如果你有任何改善这个教程的建议，或者你遇到了任何问题，请告诉我们。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
+"\n"
+"请访问www.unknown-horizons.org查找开发团队的联系方式。"
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
@@ -85,25 +89,25 @@ msgstr "现在，让我们开始游戏吧！"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr ""
+msgstr "新任务：创建驻地"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
-msgstr ""
+msgstr "你的船在海上漂泊，满载你开拓新驻地所需的物资。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
-msgstr ""
+msgstr "要移动你的船，按鼠标左键选定它，然后在目的地的位置点右键。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
-msgstr ""
+msgstr "当你的船靠近海岸，在概况显示栏中的“修建驻地”按钮会被激活。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -121,7 +125,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr ""
+msgstr "任务：在海岸上建一间仓库。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
@@ -129,7 +133,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr ""
+msgstr "新任务：建伐木工帐篷"
 
 #. This is the text body of a logbook page.
 msgid ""

@@ -313,7 +313,6 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 		self.log.debug("[KICK]")
 		self.send_packet(packets.client.cmd_kickplayer(player_sid))
 
-
 	# Client
 
 	def get_client_name(self):

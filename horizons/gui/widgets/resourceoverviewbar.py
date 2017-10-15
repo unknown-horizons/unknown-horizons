@@ -421,7 +421,6 @@ class ResourceOverviewBar:
 		height = self.ENTRY_Y_OFFSET + self.ENTRY_Y_HEIGHT
 		return (width, height)
 
-
 	###
 	# Resource slot selection
 
@@ -441,7 +440,6 @@ class ResourceOverviewBar:
 		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
 			self.session.ingame_gui.cursor = ResBarMouseTool(self.session, self.session.ingame_gui.cursor,
 			                                      self.close_resource_selection_mode)
-
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
@@ -663,7 +661,7 @@ class ResBarMouseTool(NavigationTool):
 	"""Temporary mousetool for resource selection.
 	Terminates self on mousePressed and restores old tool"""
 	def __init__(self, session, old_tool, on_click):
-		super(ResBarMouseTool, self).__init__(session)
+		super().__init__(session)
 		if old_tool: # can be None in corner cases
 			old_tool.disable()
 		self.old_tool = old_tool

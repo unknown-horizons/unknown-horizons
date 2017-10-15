@@ -21,6 +21,7 @@ tab1:
   - _ Precaution #TODO better name?
   - BUILDINGS.FIRE_STATION
   - BUILDINGS.DOCTOR
+  - BUILDINGS.PUBLIC_BATH
 
 tab2:
 - icon: icons/tabwidget/buildmenu/class/fields
@@ -55,6 +56,7 @@ tab3:
   - _ Sea
   - BUILDINGS.FISHER
   - BUILDINGS.SALT_PONDS
+#  - BUILDINGS.SALINE
 -
   - _ Food
   - BUILDINGS.HUNTER

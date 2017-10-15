@@ -40,7 +40,7 @@ class PirateRoutine(FleetMission):
 	caught_range = 5
 
 	def __init__(self, success_callback, failure_callback, ships):
-		super(PirateRoutine, self).__init__(success_callback, failure_callback, ships)
+		super().__init__(success_callback, failure_callback, ships)
 		self.target_point = self.owner.session.world.get_random_possible_ship_position()
 
 	def _setup_state_callbacks(self):
@@ -59,12 +59,12 @@ class PirateRoutine(FleetMission):
 		}
 
 	def save(self, db):
-		super(PirateRoutine, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_pirate_routine (rowid, target_point_x, target_point_y) VALUES(?, ?, ?)", self.worldid,
 			self.target_point.x, self.target_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		super(PirateRoutine, self)._load(db, worldid, success_callback, failure_callback, owner)
+		super()._load(db, worldid, success_callback, failure_callback, owner)
 		db_result = db("SELECT target_point_x, target_point_y FROM ai_mission_pirate_routine WHERE rowid = ?", worldid)[0]
 
 		self.target_point = Point(*db_result)

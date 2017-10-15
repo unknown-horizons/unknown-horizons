@@ -130,7 +130,7 @@ class Dialog(Window):
 	return_events = {} # type: Dict[str, Any]
 
 	def __init__(self, windows):
-		super(Dialog, self).__init__(windows)
+		super().__init__(windows)
 
 		self._gui = None
 		self._hidden = False
@@ -270,7 +270,7 @@ class Popup(Dialog):
 		self.message = message
 		self.show_cancel_button = show_cancel_button
 		self.size = size
-		super(Popup, self).__init__(windows)
+		super().__init__(windows)
 
 	def prepare(self):
 		if self.size == 0:

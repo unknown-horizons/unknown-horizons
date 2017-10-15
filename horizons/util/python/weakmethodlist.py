@@ -29,7 +29,7 @@ class WeakMethodList(list):
 		"""
 		@param callbacks: None, a function, a list of functions, or a tuple of functions
 		"""
-		super(WeakMethodList, self).__init__()
+		super().__init__()
 		self.append(callbacks)
 
 	def append(self, callback):

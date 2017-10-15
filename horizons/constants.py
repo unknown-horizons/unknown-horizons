@@ -36,6 +36,7 @@ NOTE: Using magic constants in code is generally a bad style, so avoid where
 possible and instead import the proper classes of this file.
 """
 
+
 def get_git_version():
 	"""Function gets latest revision of the working copy.
 	It only works in git repositories, and is actually a hack.
@@ -110,6 +111,7 @@ class VERSION:
 	def string():
 		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
 
+
 ## WORLD
 class UNITS:
 	# ./development/print_db_data.py unit
@@ -140,6 +142,7 @@ class UNITS:
 	PLAYER_SHIP          = HUKER_SHIP
 
 	DIFFERENCE_BUILDING_UNIT_ID = 1000000
+
 
 class BUILDINGS:
 	# ./development/print_db_data.py building
@@ -215,6 +218,9 @@ class BUILDINGS:
 
 	BARRIER          = 71
 
+	SALINE           = 86
+	PUBLIC_BATH      = 87
+
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
 	TRANSPARENCY_VALUE = 180
@@ -238,6 +244,7 @@ class BUILDINGS:
 
 	class BUILD:
 		MAX_BUILDING_SHIP_DISTANCE = 5 # max distance ship-building when building from ship
+
 
 class RES:
 	# ./development/print_db_data.py res
@@ -337,17 +344,19 @@ class RES:
 	SOCIETY          = GOLD # 93
 	FAITH_2          = GOLD # 94
 	EDUCATION_2      = GOLD # 95
-	HYGIENE          = GOLD # 96
+	HYGIENE          = 96
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
 	FIRE             = 99
 	# 92-99 reserved for services
+
 
 class WEAPONS:
 	CANNON = RES.CANNON
 	SWORD  = RES.SWORD
 
 	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
+
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
@@ -397,9 +406,11 @@ class GROUND:
 	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 45)
 	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 
+
 class ACTION_SETS:
 	DEFAULT_ANIMATION_LENGTH = 500
 	DEFAULT_WEIGHT = 10
+
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
@@ -407,8 +418,10 @@ class GAME_SPEED:
 
 GAME_SPEED.TICK_RATES = [int(i * GAME_SPEED.TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
 
+
 class COLORS:
 	BLACK = 9
+
 
 class VIEW:
 	ZOOM_MAX = 1.5
@@ -420,6 +433,7 @@ class VIEW:
 	TILT = -60
 	AUTOSCROLL_WIDTH = 10
 
+
 ## The Production States available in the game sorted by importance from least
 ## to most important
 class PRODUCTION:
@@ -428,6 +442,7 @@ class PRODUCTION:
 	# NOTE: 'done' is only for SingleUseProductions
 	# NOTE: 'none' is not used by an actual production, just for a producer
 	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for keeping track of how busy a production is
+
 
 class PRODUCTIONLINES:
 	HUKER = 15
@@ -448,14 +463,17 @@ class GAME:
 	# exit after on tick MAX_TICKS (disabled by setting to None)
 	MAX_TICKS = None # type: Optional[int]
 
+
 # Map related constants
 class MAP:
 	PADDING = 10 # extra usable water around the map edges
 	BORDER = 30 # extra unusable water around the padding (to keep the black void at bay)
 
+
 class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
 	DEFAULT_EXCHANGE_AMOUNT = 50  # tons
+
 
 # Editor
 class EDITOR:
@@ -463,17 +481,20 @@ class EDITOR:
 	MAX_BRUSH_SIZE = 3
 	DEFAULT_BRUSH_SIZE = 1
 
+
 # Messagewidget and Logbook
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
 	LOGBOOK_DEFAULT_DELAY = 1 # delay between condition fulfilled and logbook popping up
 
+
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
 	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
 	HIGHLIGHT_COMBAT = False # whether to show the AI players' combat ranges around each unit
 	HUMAN_AI = False # whether the human player is controlled by the AI
+
 
 class TRADER: # check resource values: ./development/print_db_data.py res
 	TILES_PER_TRADER = 100 # create one ship per 100 tiles
@@ -488,6 +509,7 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 	BUY_AMOUNT_MAX = 10
 	SELL_AMOUNT_MIN = 2
 	SELL_AMOUNT_MAX = 10
+
 
 # Taxes and Restrictions
 class TIER:
@@ -504,10 +526,12 @@ class TIER:
 	CURRENT_MAX = CITIZENS
 	# CURRENT_MAX = MERCHANTS # settler level up to MERCHANTS tier not fully implemented yet
 
+
 class SETTLER:
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5
 	TAX_SETTINGS_STEP = 0.1
+
 
 class WILD_ANIMAL:
 	HEALTH_INIT_VALUE = 50 # animals start with this value
@@ -518,11 +542,13 @@ class WILD_ANIMAL:
 	FOOD_AVAILABLE_ON_START = 0.5 # probability that a tree has wild animal food in the beginning
 	POPULATION_INIT_RATIO = 15 # every N-th tree gets an animal in the beginning
 
+
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
 	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
 	DEFAULT_STORAGE_SIZE = 8
 	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for calculating how busy a collector is
+
 
 class STORAGE:
 	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big
@@ -531,6 +557,7 @@ class STORAGE:
 	# this value, you can't load further in any of the slots even if empty.
 	SHIP_TOTAL_STORAGE = 120
 	SHIP_TOTAL_SLOTS_NUMBER = 4
+
 
 ## ENGINE
 class LAYERS:
@@ -566,6 +593,7 @@ class GFX:
 	# this is modified by the game starting process.
 	USE_ATLASES = False
 
+
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
@@ -590,7 +618,6 @@ class PATHS:
 	SETTINGS_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
-
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
@@ -607,23 +634,28 @@ class PATHS:
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 	UH_LOGO_FILE = os.path.join("content", "gfx", "uh.png")
 
+
 class SETTINGS:
 	UH_MODULE = "unknownhorizons"
 	FIFE_MODULE = "FIFE"
 	KEY_MODULE = "keys"
 	META_MODULE = "meta"
 
+
 class PLAYER:
 	STATS_UPDATE_FREQUENCY = GAME_SPEED.TICKS_PER_SECOND
+
 
 ## SINGLEPLAYER
 class SINGLEPLAYER:
 	FREEZE_PROTECTION = True
 	SEED = None # type: int
 
+
 ## MULTIPLAYER
 class MULTIPLAYER:
 	MAX_PLAYER_COUNT = 8
+
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
@@ -653,6 +685,7 @@ class _LanguageNameDict(dict):
 LANGUAGENAMES = _LanguageNameDict({
 	""      : ('System default', ''),
 	"af"    : ('Afrikaans', 'Afrikaans'),
+	"ar"    : ('اَللُّغَةُ اَلْعَرَبِيَّة', 'Arabic'),
 	"bg"    : ('Български', 'Bulgarian'),
 	"ca"    : ('Català', 'Catalan'),
 	'ca@valencia' : ('Català de València', 'Catalan (Valencia)'),
@@ -701,6 +734,7 @@ LANGUAGENAMES = _LanguageNameDict({
 
 FONTDEFS = {
 	# "af"
+	# "ar"
 	"bg"    : 'libertine',
 	# "ca"
 	"ca@valencia" : 'libertine',
@@ -713,6 +747,7 @@ FONTDEFS = {
 	"el"    : 'libertine',
 	"fi"    : 'libertine',
 	"fr"    : 'libertine',
+	# "frp"
 	"ga"    : 'libertine',
 	"gl"    : 'libertine',
 	# "hi"
@@ -721,9 +756,10 @@ FONTDEFS = {
 	"id"    : 'libertine',
 	"it"    : 'libertine',
 	# "ja"
+	# "ko"
 	"lt"    : 'libertine',
 	"lv"    : 'libertine',
-	# "ko"
+	# "ml"
 	"nb"    : 'libertine',
 	"nl"    : 'libertine',
 	"pl"    : 'libertine',
@@ -740,8 +776,10 @@ FONTDEFS = {
 	"uk"    : 'libertine',
 	# "vi"
 	# "zh_CN"
+	# "zh_TW"
 	"zu"    : 'libertine',
 }
+
 
 class HOTKEYS:
 	DISPLAY_KEY = {

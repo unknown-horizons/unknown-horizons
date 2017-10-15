@@ -177,6 +177,7 @@ def test_tool_production_chain(s, p):
 	s.run(seconds=120)
 	assert toolmaker.get_component(StorageComponent).inventory[RES.TOOLS]
 
+
 @game_test()
 def test_build_tear(s, p):
 	"""
@@ -467,6 +468,7 @@ def test_bakery_production_chain(s, p):
 	assert bakery.get_component(StorageComponent).inventory[RES.FOOD] == 0
 	s.run(seconds=120) # 26s cornfield, 15s windmill, 15s bakery
 	assert bakery.get_component(StorageComponent).inventory[RES.FOOD]
+
 
 @game_test()
 def test_blender_production_chain(s, p):

@@ -65,6 +65,7 @@ def test_load_inactive_production():
 
 	session.end()
 
+
 def create_lumberjack_production_session():
 	"""Create a saved game with a producing production and then load it."""
 	session, player = new_session()
@@ -141,7 +142,6 @@ def test_hunter_save_load():
 		while collector.state == old_state:
 			session.run()
 		assert collector.state == new_state, "expected new state {}, got {}".format(new_state, collector.state)
-
 
 	sequence = [
 	  Collector.states.idle,

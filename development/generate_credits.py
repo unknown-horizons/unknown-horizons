@@ -59,16 +59,22 @@ XML_MESS = [  # (search, replace) list of stuff we need to replace before writin
 	('&', '&amp;'),
 ]
 
+
 def write(f, level, text, newline=True):
 	wtext = u'\n' * newline + u'\t' * level + text
 	for search, replace in XML_MESS:
 		wtext = wtext.replace(search, replace)
 	f.write(wtext.encode('utf8'))
 
+
 def close_box(box, level):
 	write(f, level, u'</{}Box>'.format(box))
+
+
 def close_vbox(level):
 	close_box('V', level)
+
+
 def close_hbox(level):
 	close_box('H', level)
 

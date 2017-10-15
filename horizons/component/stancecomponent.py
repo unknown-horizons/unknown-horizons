@@ -43,7 +43,7 @@ class StanceComponent(Component):
 	NAME = 'stance'
 
 	def __init__(self):
-		super(StanceComponent, self).__init__()
+		super().__init__()
 		self.state = 'idle'
 		self.action = {
 		    'idle' : self.act_idle,
@@ -69,7 +69,7 @@ class StanceComponent(Component):
 			self.instance.remove_user_move_issued_listener(Callback(self.set_state, 'user_move'))
 		except AttributeError:
 			pass # temporary workaround to make it work for towers
-		super(StanceComponent, self).remove()
+		super().remove()
 
 	def set_state(self, state):
 		self.state = state
@@ -137,7 +137,7 @@ class LimitedMoveStance(StanceComponent):
 	"""
 
 	def __init__(self):
-		super(LimitedMoveStance, self).__init__()
+		super().__init__()
 		#TODO get range from db
 		self.stance_radius = 0
 		self.move_range = 0
@@ -208,6 +208,7 @@ class LimitedMoveStance(StanceComponent):
 
 		return min(enemies, key=lambda e: self.instance.position.distance(e.position))
 
+
 class AggressiveStance(LimitedMoveStance):
 	"""
 	Stance that attacks units in close range when doing movement
@@ -216,7 +217,7 @@ class AggressiveStance(LimitedMoveStance):
 	NAME = 'aggressive_stance'
 
 	def __init__(self):
-		super(AggressiveStance, self).__init__()
+		super().__init__()
 		#TODO get range from db
 		self.stance_radius = 15
 		self.move_range = 25
@@ -225,7 +226,7 @@ class AggressiveStance(LimitedMoveStance):
 		"""
 		Check if it can attack while moving
 		"""
-		super(AggressiveStance, self).act_user_move()
+		super().act_user_move()
 		target = self.get_target(self.instance._max_range)
 		if target:
 			self.instance.fire_all_weapons(target.position.center)
@@ -234,10 +235,11 @@ class AggressiveStance(LimitedMoveStance):
 		"""
 		Check if can attack while moving to another attack
 		"""
-		super(AggressiveStance, self).act_user_attack()
+		super().act_user_attack()
 		target = self.get_target(self.instance._max_range)
 		if target:
 			self.instance.fire_all_weapons(target.position.center)
+
 
 class HoldGroundStance(LimitedMoveStance):
 	"""Stance in radius and not attacks units in close range
@@ -246,14 +248,16 @@ class HoldGroundStance(LimitedMoveStance):
 	NAME = 'hold_ground_stance'
 
 	def __init__(self):
-		super(HoldGroundStance, self).__init__()
+		super().__init__()
 		self.stance_radius = 5
 		self.move_range = 15
+
 
 class NoneStance(StanceComponent):
 	"""No settings for stance
 	"""
 	NAME = 'none_stance'
+
 
 class FleeStance(StanceComponent):
 	"""
@@ -263,7 +267,7 @@ class FleeStance(StanceComponent):
 	NAME = 'flee_stance'
 
 	def __init__(self):
-		super(FleeStance, self).__init__()
+		super().__init__()
 		self.lookout_distance = 20
 
 	def act_idle(self):

@@ -77,7 +77,7 @@ class SPTestSession(SPSession):
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
 		ExtScheduler.create_instance(mock.Mock())
-		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
+		super().__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
@@ -90,7 +90,7 @@ class SPTestSession(SPSession):
 			# We need to covert Dummy() objects to a sensible value that can be stored
 			# in the database
 			with _dbreader_convert_dummy_objects():
-				return super(SPTestSession, self).save(*args, **kwargs)
+				return super().save(*args, **kwargs)
 
 	def load(self, savegame, players, is_ai_test, is_map):
 		# keep a reference on the savegame, so we can cleanup in `end`
@@ -103,13 +103,13 @@ class SPTestSession(SPSession):
 			# disable the above in usual game tests for simplicity.
 			options = StartGameOptions.create_game_test(savegame, players)
 			options.is_map = is_map
-		super(SPTestSession, self).load(options)
+		super().load(options)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
 		Clean up temporary files.
 		"""
-		super(SPTestSession, self).end()
+		super().end()
 
 		# remove the saved game
 		savegame_db = SavegameAccessor(self.savegame, self.started_from_map)
@@ -255,7 +255,6 @@ def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=
 					# Therefore only use failsafe cleanup:
 				finally:
 					SPTestSession.cleanup()
-
 
 				timelimit.stop()
 		return wrapped

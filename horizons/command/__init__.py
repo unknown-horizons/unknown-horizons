@@ -79,6 +79,7 @@ class GenericCommand(Command):
 		return "GenericCommand({}, {}, {}, {}, {})".format(
 			self.__class__, self._get_object(), self.method, self.args, self.kwargs)
 
+
 class GenericComponentCommand(Command):
 	"""Code generator for trivial commands on a component."""
 	def __init__(self, component, method, *args, **kwargs):

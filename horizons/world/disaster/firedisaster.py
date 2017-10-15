@@ -49,5 +49,5 @@ class FireDisaster(BuildingInfluencingDisaster):
 	RESCUE_BUILDING_TYPE = BUILDINGS.FIRE_STATION
 
 	def wreak_havoc(self, building):
-		super(FireDisaster, self).wreak_havoc(building)
+		super().wreak_havoc(building)
 		building.make_ruin()

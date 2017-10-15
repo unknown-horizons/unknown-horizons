@@ -46,7 +46,7 @@ class MainMenu(Window):
 	CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR = [(0, 0, 0, 70), (0, 0, 0, 175)]
 
 	def __init__(self, gui, windows):
-		super(MainMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._gui = load_uh_widget('mainmenu.xml', 'menu')
 		self._gui.mapEvents({
@@ -94,6 +94,7 @@ class MainMenu(Window):
 	def mouse_exited_changebackground(self):
 		w = self._gui.findChildByName('changeBackground')
 		w.background_color = self.CHANGE_BACKGROUND_LABEL_BACKGROUND_COLOR[0]
+
 
 class Background:
 	"""

@@ -216,6 +216,7 @@ class AbstractFarm(AbstractBuilding):
 		return options
 
 	__cache = {} # type: Dict[int, Tuple[Tuple[int, int], FarmOptionCache]]
+
 	def _get_option_cache(self, settlement_manager):
 		production_builder = settlement_manager.production_builder
 		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)
@@ -248,7 +249,7 @@ class FarmEvaluator(BuildingEvaluator):
 	__slots__ = ('farm_plan', 'field_purpose')
 
 	def __init__(self, area_builder, builder, value, farm_plan, fields, field_purpose):
-		super(FarmEvaluator, self).__init__(area_builder, builder, value)
+		super().__init__(area_builder, builder, value)
 		self.farm_plan = farm_plan
 		self.field_purpose = field_purpose
 
@@ -406,7 +407,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 	__slots__ = ('_old_field_purpose')
 
 	def __init__(self, area_builder, builder, value, old_field_purpose):
-		super(ModifiedFieldEvaluator, self).__init__(area_builder, builder, value)
+		super().__init__(area_builder, builder, value)
 		self._old_field_purpose = old_field_purpose
 
 	@classmethod

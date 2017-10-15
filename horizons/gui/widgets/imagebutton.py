@@ -52,7 +52,7 @@ class ImageButton(FifeImageButton):
 	INACTIVE = 1
 
 	def __init__(self, path='', inactive_image=None, is_focusable=False, **kwargs):
-		super(ImageButton, self).__init__(is_focusable=is_focusable, **kwargs)
+		super().__init__(is_focusable=is_focusable, **kwargs)
 		self.old_images = (None, None, None)
 		if path:
 			# initializing from python, not xml, so path is available here
@@ -145,15 +145,17 @@ class OkButton(ImageButton):
 	name="okButton" path="images/buttons/ok"
 	"""
 	DEFAULT_NAME = 'okButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
 		size = (34, 40)
-		super(OkButton, self).__init__(
+		super().__init__(
 			name=name, is_focusable=False,
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/ok"
 		self.inactive_image = "content/gui/images/buttons/close.png"
+
 
 class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close
@@ -161,14 +163,16 @@ class CancelButton(ImageButton):
 	name="cancelButton" path="images/buttons/close"
 	"""
 	DEFAULT_NAME = 'cancelButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
 		size = (34, 40)
-		super(CancelButton, self).__init__(
+		super().__init__(
 			name=name, is_focusable=False,
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/close"
+
 
 class DeleteButton(ImageButton):
 	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear
@@ -176,11 +180,12 @@ class DeleteButton(ImageButton):
 	name="deleteButton" path="images/buttons/delete"
 	"""
 	DEFAULT_NAME = 'deleteButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
 		size = (34, 40)
-		super(DeleteButton, self).__init__(
+		super().__init__(
 			name=name, is_focusable=False,
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/delete"
@@ -193,7 +198,7 @@ class MainmenuButton(ImageButton):
 	ICON = "content/gui/icons/mainmenu/{icon}{bw}.png"
 
 	def __init__(self, icon='door', **kwargs):
-		super(MainmenuButton, self).__init__(is_focusable=False, **kwargs)
+		super().__init__(is_focusable=False, **kwargs)
 		self.icon = icon
 
 	def _get_icon(self):

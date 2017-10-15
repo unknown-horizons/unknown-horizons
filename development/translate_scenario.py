@@ -46,6 +46,7 @@ WEBLATE_PATH = re.compile(r'''
 	([^\.]*)\.po   # \3 == 'The_Unknown'
 	''', re.VERBOSE)
 
+
 def setup_paths():
 	match = WEBLATE_PATH.match(sys.argv[1])
 	path_prefix = match.group(1)

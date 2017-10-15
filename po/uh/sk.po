@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d2bbe58\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2016-12-25 23:41+0000\n"
+"PO-Revision-Date: 2017-09-20 22:49+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh/sk/>\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -28,7 +28,7 @@ msgstr "Unknown Horizons spadol."
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Veľmi sa za toto ospravedlňujeme a chceme túto chybu opraviť."
+msgstr "Úprimne sa za to ospravedlňujeme a chceme túto chybu opraviť."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
@@ -786,16 +786,12 @@ msgid "Return to game"
 msgstr "Návrat do hry"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Pôvodné meno:"
+msgstr "Názov ostrova:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Meno hráča"
+msgstr "Meno hráča:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -3451,105 +3447,97 @@ msgstr "Nepripravený"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "Starý alebo nepodporovaný protokol. Prosím skontrolujte verziu hry"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Prekročil si velkosť packetu."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "Toto by sa nemalo stať. Kontaktuj nás."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Prekročil si velkosť packetu."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Neznámy alebo znefunkčnený packet. Prosím skontrolujte verziu hry"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Neplatné/Neznámé sedenie"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Nemôžeš sa pripojiť do hry pokiaľ si v druhej"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Neznáma hra alebo hra bežiaca na inej verzií hry"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Hra už začala. Nedá sa pripojiť"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "Hra je plná"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Zadajte heslo:"
+msgstr "Nesprávne heslo"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "Už je pripojený hráč s rovnakým menom."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Prosím zmeň si meno."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "Už existuje hráč s rovnakou farbou ako máš ty."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Zmenili ste farbu"
+msgstr "Prosím zmeň svoju farbu."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "Už sa v hre nachádza hráč s rovnakým ID v hre. Toto by sa nemalo stať."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Už nie ste pripravený"
+msgstr "Nie ste účastníkom hry"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Nepodarilo sa pripojiť k serveru."
+msgstr "Neviem zmeniť tvoje meno."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Zmenili ste farbu"
+msgstr "Neviem zmeniť tvoju farbu."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "Nemôžeš sa pripojiť do ďalšej hry pokiaľ si v jednej pripojený"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "Hra bola vypnutá. Tvorca odišiel z hry."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Jeden hráč odišiel z hry. Z technických príčin nemôže momentálna hra "
+"pokračovať. Ospravedlňujeme sa."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"

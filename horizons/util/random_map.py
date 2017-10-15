@@ -377,6 +377,7 @@ def create_random_island(map_db, island_id, id_string):
 
 	map_db("COMMIT")
 
+
 def _simplify_seed(seed):
 	"""
 	Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally.
@@ -391,6 +392,7 @@ def _simplify_seed(seed):
 	h = hashlib.md5(seed)
 	h.update(seed)
 	return int('0x' + h.hexdigest(), 16) % 1000000007
+
 
 def generate_random_map(seed, map_size, water_percent, max_island_size,
                         preferred_island_size, island_size_deviation):
@@ -472,6 +474,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 		island_strings.append(island_string)
 	return island_strings
 
+
 def generate_random_seed(seed):
 	rand = random.Random(seed)
 	if rand.randint(0, 1) == 0:
@@ -497,6 +500,7 @@ def generate_random_seed(seed):
 				parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
 			return '-'.join(parts)
 
+
 def generate_map_from_seed(seed):
 	"""
 	Generates a random map with the given seed and default parameters.
@@ -506,6 +510,7 @@ def generate_map_from_seed(seed):
 	"""
 
 	return generate_random_map(seed, 150, 50, 70, 70, 30)
+
 
 def generate_huge_map_from_seed(seed):
 	"""Same as generate_map_from_seed, but making it as big as it is still reasonable"""

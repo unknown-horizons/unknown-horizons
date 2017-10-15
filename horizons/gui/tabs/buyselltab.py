@@ -60,7 +60,7 @@ class BuySellTab(TabInterface):
 		self.trade_post = instance.settlement.get_component(TradePostComponent)
 		assert isinstance(self.trade_post, TradePostComponent)
 
-		super(BuySellTab, self).__init__()
+		super().__init__()
 
 	def init_widget(self):
 		# don't access instance beyond this point, only components
@@ -106,7 +106,7 @@ class BuySellTab(TabInterface):
 	def is_visible(self):
 		# this tab sometimes is made up an extra widget, so it must also be considered
 		# when checking for visibility
-		return super(BuySellTab, self).is_visible() or \
+		return super().is_visible() or \
 		       (self.resources is not None and self.resources.isVisible())
 
 	def _refresh_trade_history(self):
@@ -160,7 +160,6 @@ class BuySellTab(TabInterface):
 			fillbar.position = (icon.width - fillbar.width - 1, icon.height)
 			content.addChild(slot)
 		self.widget.adaptLayout()
-
 
 	def add_resource(self, resource_id, slot_id, value=None):
 		"""
@@ -310,7 +309,6 @@ class BuySellTab(TabInterface):
 		self.session.ingame_gui.minimap_to_front()
 
 		self.resources.show() # show selection widget, still display old tab icons
-
 
 	def _update_hint(self, slot_id):
 		"""Sets default hint for last updated slot"""

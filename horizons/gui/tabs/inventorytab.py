@@ -32,7 +32,7 @@ class InventoryTab(TabInterface):
 
 	def __init__(self, instance=None):
 		self.instance = instance
-		super(InventoryTab, self).__init__()
+		super().__init__()
 
 	def init_widget(self):
 		self.widget.child_finder('inventory').init(self.instance.session.db,
@@ -47,8 +47,8 @@ class InventoryTab(TabInterface):
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0, loops=1)
 		# and every sec later
 		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
-		super(InventoryTab, self).show()
+		super().show()
 
 	def hide(self):
 		ExtScheduler().rem_call(self, self.refresh)
-		super(InventoryTab, self).hide()
+		super().hide()

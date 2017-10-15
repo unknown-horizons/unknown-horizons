@@ -37,10 +37,10 @@ class StorageBuilding(StorageResourceHandler,
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
 	def __init__(self, x, y, owner, instance=None, **kwargs):
-		super(StorageBuilding, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
+		super().__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def initialize(self):
-		super(StorageBuilding, self).initialize()
+		super().initialize()
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 		# add limit, it will be saved so don't set on load()
 		inv = self.get_component(StorageComponent).inventory
@@ -50,10 +50,10 @@ class StorageBuilding(StorageResourceHandler,
 		inv = self.get_component(StorageComponent).inventory
 		inv.remove_change_listener(self._changed)
 		inv.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
-		super(StorageBuilding, self).remove()
+		super().remove()
 
 	def load(self, db, worldid):
-		super(StorageBuilding, self).load(db, worldid)
+		super().load(db, worldid)
 		# limit will be save/loaded by the storage, don't do anything here
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 
@@ -68,22 +68,26 @@ class StorageBuilding(StorageResourceHandler,
 			return None
 		return sum(collector.get_utilization() for collector in collectors) / float(len(collectors))
 
+
 class StorageTent(StorageBuilding, BuildableSingle):
 	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
 	pass
 
+
 class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
+
 	def __init__(self, *args, **kwargs):
-		super(Warehouse, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.settlement.warehouse = self
 		# we never need to unset this since warehouses are indestructible
 		# settlement warehouse setting is done at the settlement for loading
 
 	def get_status_icons(self):
 		banned_classes = (InventoryFullStatus,)
-		return [ i for i in super(Warehouse, self).get_status_icons() if
+		return [ i for i in super().get_status_icons() if
 		         i.__class__ not in banned_classes ]
+
 
 class MainSquare(Path, StorageBuilding, ProductionBuilding):
 	walkable = True

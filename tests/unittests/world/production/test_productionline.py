@@ -62,11 +62,12 @@ class TestProductionLineData(TestBase):
 		self.assertEqual(line.consumed_res, {19: -1})
 		#self.assertEqual(line.unit_production, {10: 4, 12: 8})
 
+
 class TestProductionLine(TestBase):
 
 	def setUp(self):
 		"""Clear ProductionLine cache."""
-		super(TestProductionLine, self).setUp()
+		super().setUp()
 
 	def test_alter_production_time(self):
 		data = { 'time': 10 }

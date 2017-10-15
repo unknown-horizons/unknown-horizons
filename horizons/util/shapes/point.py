@@ -85,6 +85,7 @@ class Point(Shape):
 	def iter_without_border(self):
 		yield self
 
+
 class ConstPoint(Const, Point):
 	"""An immutable Point"""
 	pass

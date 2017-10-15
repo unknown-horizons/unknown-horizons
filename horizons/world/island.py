@@ -78,7 +78,7 @@ class Island(BuildingOwner, WorldObject):
 		@param session: reference to Session instance
 		@param preview: flag, map preview mode
 		"""
-		super(Island, self).__init__(worldid=island_id)
+		super().__init__(worldid=island_id)
 
 		self.session = session
 
@@ -173,7 +173,7 @@ class Island(BuildingOwner, WorldObject):
 		"""
 
 	def save(self, db):
-		super(Island, self).save(db)
+		super().save(db)
 		for settlement in self.settlements:
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
@@ -337,7 +337,7 @@ class Island(BuildingOwner, WorldObject):
 			# it is ok to skip in that case because the cache's constructor will take the deposits into account anyway
 			self.deposits[building.id][building.position.origin.to_tuple()] = building
 			self.available_land_cache.remove_area(list(building.position.tuple_iter()))
-		super(Island, self).add_building(building, player, load=load)
+		super().add_building(building, player, load=load)
 		if not load and building.settlement is not None:
 			# Note: (In case we do not require all building tiles to lay inside settlement
 			# range at some point.) `include_self` is True in get_radius_coordinates()
@@ -376,7 +376,7 @@ class Island(BuildingOwner, WorldObject):
 			settlement.remove_building(building)
 			assert building not in settlement.buildings
 
-		super(Island, self).remove_building(building)
+		super().remove_building(building)
 		if building.id in self.building_indexers:
 			self.building_indexers[building.id].remove(building)
 
@@ -452,7 +452,7 @@ class Island(BuildingOwner, WorldObject):
 		# keep searching for new trees every time a tree is torn down.
 		for wild_animal in (wild_animal for wild_animal in self.wild_animals):
 			wild_animal.remove()
-		super(Island, self).end()
+		super().end()
 		for settlement in self.settlements:
 			settlement.end()
 		self.wild_animals = None

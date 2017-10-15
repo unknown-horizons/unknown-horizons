@@ -61,7 +61,7 @@ class ProductionBuilder(AreaBuilder):
 	coastal_building_classes = [BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER, BUILDINGS.SALT_PONDS]
 
 	def __init__(self, settlement_manager):
-		super(ProductionBuilder, self).__init__(settlement_manager)
+		super().__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		self._init_buildability_cache()
@@ -102,7 +102,7 @@ class ProductionBuilder(AreaBuilder):
 		self.road_connectivity_cache.modify_area(list(sorted(coords_set)))
 
 	def save(self, db):
-		super(ProductionBuilder, self).save(db)
+		super().save(db)
 		translated_last_collector_improvement_storage = self.last_collector_improvement_storage - Scheduler().cur_tick # pre-translate for the loading process
 		translated_last_collector_improvement_road = self.last_collector_improvement_road - Scheduler().cur_tick # pre-translate for the loading process
 		db("INSERT INTO ai_production_builder(rowid, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road) VALUES(?, ?, ?, ?)",
@@ -114,7 +114,7 @@ class ProductionBuilder(AreaBuilder):
 		worldid, last_storage, last_road = \
 			db("SELECT rowid, last_collector_improvement_storage, last_collector_improvement_road FROM ai_production_builder WHERE settlement_manager = ?",
 			settlement_manager.worldid)[0]
-		super(ProductionBuilder, self)._load(db, settlement_manager, worldid)
+		super()._load(db, settlement_manager, worldid)
 		self.__init(settlement_manager, last_storage, last_road)
 
 		db_result = db("SELECT x, y, purpose FROM ai_production_builder_plan WHERE production_builder = ?", worldid)
@@ -295,13 +295,13 @@ class ProductionBuilder(AreaBuilder):
 
 	def _init_cache(self):
 		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""
-		super(ProductionBuilder, self)._init_cache()
+		super()._init_cache()
 		self.__collector_area_cache = None
 		self.__available_squares_cache = {}
 
 	def register_change(self, x, y, purpose, data):
 		"""Register the possible buildability change of a rectangle on this island."""
-		super(ProductionBuilder, self).register_change(x, y, purpose, data)
+		super().register_change(x, y, purpose, data)
 		coords = (x, y)
 		if coords in self.land_manager.village or (coords not in self.plan and coords not in self.land_manager.coastline):
 			return
@@ -322,7 +322,7 @@ class ProductionBuilder(AreaBuilder):
 		if remove_list:
 			self.buildability_cache.remove_area(remove_list)
 
-		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
+		super().register_change_list(coords_list, purpose, data)
 		self.road_connectivity_cache.modify_area(coords_list)
 		self.display()
 
@@ -349,7 +349,7 @@ class ProductionBuilder(AreaBuilder):
 			rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 			self.register_change_list(list(rect.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 		self._refresh_unused_fields()
-		super(ProductionBuilder, self).handle_lost_area(coords_list)
+		super().handle_lost_area(coords_list)
 		self.road_connectivity_cache.modify_area(lost_coords_list)
 
 	def handle_new_area(self):
@@ -374,7 +374,7 @@ class ProductionBuilder(AreaBuilder):
 		elif building.id in self.production_building_classes:
 			self.production_buildings.append(building)
 
-		super(ProductionBuilder, self).add_building(building)
+		super().add_building(building)
 
 	def _handle_lumberjack_removal(self, building):
 		"""Release the unused trees around the lumberjack building being removed."""
@@ -438,7 +438,7 @@ class ProductionBuilder(AreaBuilder):
 		if building.id in self.field_building_classes:
 			# this can't be handled right now because the building still exists
 			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in=0)
-			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in=0)
+			Scheduler().add_new_object(Callback(partial(super().remove_building, building)), self, run_in=0)
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:
@@ -455,7 +455,7 @@ class ProductionBuilder(AreaBuilder):
 			elif building.id == BUILDINGS.FARM:
 				self._handle_farm_removal(building)
 
-			super(ProductionBuilder, self).remove_building(building)
+			super().remove_building(building)
 
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""

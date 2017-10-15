@@ -54,8 +54,9 @@ class Address:
 		return NotImplemented
 
 #-----------------------------------------------------------------------------
-
 nulltranslation = NullTranslations()
+
+
 class Player:
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
@@ -133,8 +134,8 @@ class Player:
 
 packets.SafeUnpickler.add('server', Player)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 class Game:
 	class State:
 		Open      = 0
@@ -244,8 +245,8 @@ class Game:
 
 packets.SafeUnpickler.add('server', Game)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 # types of soft errors used by cmd_error
 # this way we don't have to create a new packet for every type of error
 class ErrorType:

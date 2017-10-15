@@ -51,7 +51,7 @@ class Disaster(WorldObject):
 		@param settlement: Settlement instance this disaster operates on
 		@param manager: The disaster manager that initiated this disaster
 		"""
-		super(Disaster, self).__init__()
+		super().__init__()
 		assert isinstance(settlement, Settlement), "Not a settlement!"
 		self._settlement = settlement
 		self._manager = manager

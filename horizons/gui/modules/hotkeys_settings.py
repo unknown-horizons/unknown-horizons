@@ -20,7 +20,6 @@
 # ###################################################
 
 
-
 from fife import fife
 from fife.extensions.pychan.widgets import Button
 
@@ -35,7 +34,7 @@ from horizons.util.python.callback import Callback
 class HotkeyConfiguration:
 
 	def __init__(self):
-		super(HotkeyConfiguration, self).__init__()
+		super().__init__() # TODO: check whether this call is needed
 
 		self.widget = load_uh_widget('hotkeys.xml')
 		self.buttons = []
@@ -221,7 +220,7 @@ class HotkeysListener(fife.IKeyListener):
 	"""HotkeysListener Class to process events of hotkeys binding interface"""
 
 	def __init__(self, detect_keypress):
-		super(HotkeysListener, self).__init__()
+		super().__init__()
 		fife.IKeyListener.__init__(self)
 
 		self.detect = detect_keypress
@@ -234,7 +233,7 @@ class HotkeysListener(fife.IKeyListener):
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
-		super(HotkeysListener, self).end()
+		super().end()
 
 	def keyPressed(self, evt):
 		self.detect(evt)

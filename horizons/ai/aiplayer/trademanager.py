@@ -64,7 +64,7 @@ class TradeManager(WorldObject):
 	legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]
 
 	def __init__(self, settlement_manager):
-		super(TradeManager, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager)
 
 	def __init(self, settlement_manager):
@@ -74,7 +74,7 @@ class TradeManager(WorldObject):
 		self.ships_sent = defaultdict(int) # {settlement_manager_id: num_sent, ...}
 
 	def save(self, db):
-		super(TradeManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_trade_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
 		for resource_manager in self.data.values():
 			resource_manager.save(db, self.worldid)
@@ -84,7 +84,7 @@ class TradeManager(WorldObject):
 		self.__init(settlement_manager)
 		for db_row in db("SELECT rowid, resource_id FROM ai_single_resource_trade_manager WHERE trade_manager = ?", worldid):
 			self.data[db_row[1]] = SingleResourceTradeManager.load(db, settlement_manager, db_row[0])
-		super(TradeManager, self).load(db, worldid)
+		super().load(db, worldid)
 
 	@classmethod
 	def load(cls, db, settlement_manager):
@@ -209,11 +209,12 @@ class TradeManager(WorldObject):
 			result += '\n' + resource_manager.__str__()
 		return result
 
+
 class SingleResourceTradeManager(WorldObject):
 	"""An object of this class keeps track of both parties of the resource import/export deal for one resource."""
 
 	def __init__(self, settlement_manager, resource_id):
-		super(SingleResourceTradeManager, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager, resource_id)
 		self.available = 0.0 # unused resource production available per tick
 		self.total = 0.0 # total resource production imported per tick
@@ -230,7 +231,7 @@ class SingleResourceTradeManager(WorldObject):
 				self.building_ids.append(abstract_building.id)
 
 	def save(self, db, trade_manager_id):
-		super(SingleResourceTradeManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_single_resource_trade_manager(rowid, trade_manager, resource_id, available, total) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, trade_manager_id, self.resource_id, self.available, self.total)
 		for identifier, quota in self.quotas.items():
@@ -241,7 +242,7 @@ class SingleResourceTradeManager(WorldObject):
 				self.worldid, settlement_manager_id, amount)
 
 	def _load(self, db, settlement_manager, worldid):
-		super(SingleResourceTradeManager, self).load(db, worldid)
+		super().load(db, worldid)
 		resource_id, self.available, self.total = \
 			db("SELECT resource_id, available, total FROM ai_single_resource_trade_manager WHERE rowid = ?", worldid)[0]
 		self.__init(settlement_manager, resource_id)

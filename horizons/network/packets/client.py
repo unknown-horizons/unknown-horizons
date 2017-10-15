@@ -102,8 +102,8 @@ class cmd_creategame(packet):
 
 SafeUnpickler.add('client', cmd_creategame)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_listgames(packet):
 	clientversion = 0
 	mapname       = None # type: str
@@ -125,8 +125,8 @@ class cmd_listgames(packet):
 
 SafeUnpickler.add('client', cmd_listgames)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_joingame(packet):
 	uuid          = None # type: str
 	clientid      = None # type: str
@@ -186,16 +186,16 @@ class cmd_joingame(packet):
 
 SafeUnpickler.add('client', cmd_joingame)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_leavegame(packet):
 	def __init__(self):
 		"""ctor"""
 
 SafeUnpickler.add('client', cmd_leavegame)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_chatmsg(packet):
 	chatmsg = None # type: str
 
@@ -211,8 +211,8 @@ class cmd_chatmsg(packet):
 
 SafeUnpickler.add('client', cmd_chatmsg)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_changename(packet):
 	playername = None # type: str
 
@@ -228,8 +228,8 @@ class cmd_changename(packet):
 
 SafeUnpickler.add('client', cmd_changename)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_changecolor(packet):
 	playercolor = None # type: int
 
@@ -245,16 +245,16 @@ class cmd_changecolor(packet):
 
 SafeUnpickler.add('client', cmd_changecolor)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_preparedgame(packet):
 	def __init__(self):
 		"""ctor"""
 
 SafeUnpickler.add('client', cmd_preparedgame)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class game_data(packet):
 	def __init__(self, data):
 		self.data = data
@@ -262,16 +262,16 @@ class game_data(packet):
 # origin is 'server' as clients will send AND receive them
 SafeUnpickler.add('server', game_data)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_toggleready(packet):
 	def __init__(self):
 		"""ctor"""
 
 SafeUnpickler.add('client', cmd_toggleready)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_kickplayer(packet):
 	def __init__(self, kicksid):
 		# NOTE: self.sid is used for session mgmt
@@ -286,8 +286,8 @@ class cmd_kickplayer(packet):
 
 SafeUnpickler.add('client', cmd_kickplayer)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_sessionprops(packet):
 	def __init__(self, props):
 		if 'lang' in props:
@@ -303,8 +303,8 @@ class cmd_sessionprops(packet):
 
 SafeUnpickler.add('client', cmd_sessionprops)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 #TODO
 class cmd_mapdata(packet):
 	def __init__(self, data):

@@ -36,7 +36,7 @@ class Mission(WorldObject):
 	log = logging.getLogger("ai.aiplayer.mission")
 
 	def __init__(self, success_callback, failure_callback, owner):
-		super(Mission, self).__init__()
+		super().__init__()
 		self.__init(success_callback, failure_callback, owner)
 
 	def __init(self, success_callback, failure_callback, owner):
@@ -56,7 +56,7 @@ class Mission(WorldObject):
 		pass
 
 	def load(self, db, worldid, success_callback, failure_callback, owner):
-		super(Mission, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init(success_callback, failure_callback, owner)
 
 	def cancel(self):
@@ -70,9 +70,10 @@ class Mission(WorldObject):
 	def end(self):
 		pass
 
+
 class ShipMission(Mission):
 	def __init__(self, success_callback, failure_callback, ship):
-		super(ShipMission, self).__init__(success_callback, failure_callback, ship.owner)
+		super().__init__(success_callback, failure_callback, ship.owner)
 		self.__init(ship)
 
 	def __init(self, ship):
@@ -80,20 +81,20 @@ class ShipMission(Mission):
 		self.ship.add_remove_listener(self.cancel)
 
 	def load(self, db, worldid, success_callback, failure_callback, ship):
-		super(ShipMission, self).load(db, worldid, success_callback, failure_callback, ship.owner)
+		super().load(db, worldid, success_callback, failure_callback, ship.owner)
 		self.__init(ship)
 
 	def report_success(self, msg):
 		self.ship.remove_remove_listener(self.cancel)
-		super(ShipMission, self).report_success(msg)
+		super().report_success(msg)
 
 	def report_failure(self, msg):
 		self.ship.remove_remove_listener(self.cancel)
-		super(ShipMission, self).report_failure(msg)
+		super().report_failure(msg)
 
 	def cancel(self):
 		self.ship.stop()
-		super(ShipMission, self).cancel()
+		super().cancel()
 
 	@classmethod
 	def move_resource(cls, ship, settlement, resource_id, amount):
@@ -120,5 +121,5 @@ class ShipMission(Mission):
 			self.report_failure(failure_msg)
 
 	def __str__(self):
-		return super(ShipMission, self).__str__() + (' using {}'.format(
+		return super().__str__() + (' using {}'.format(
 			self.ship if hasattr(self, 'ship') else 'unknown ship'))

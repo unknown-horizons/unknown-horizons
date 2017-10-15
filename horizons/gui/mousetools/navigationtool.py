@@ -36,7 +36,6 @@ from horizons.util.worldobject import WorldObject
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
-
 	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
 
 	send_hover_instances_update = True
@@ -44,7 +43,7 @@ class NavigationTool(CursorTool):
 	last_hover_instances = WeakList()
 
 	def __init__(self, session):
-		super(NavigationTool, self).__init__(session)
+		super().__init__(session)
 		self._last_mmb_scroll_point = [0, 0]
 		# coordinates of last mouse positions
 		self.last_exact_world_location = fife.ExactModelCoordinate()
@@ -77,7 +76,7 @@ class NavigationTool(CursorTool):
 					return CoordsTooltip(cursor_tool)
 
 			def __init__(self, cursor_tool, **kwargs):
-				super(CoordsTooltip, self).__init__(**kwargs)
+				super().__init__(**kwargs)
 				cursor_tool.session.ingame_gui.coordinates_tooltip = self
 				self.cursor_tool = cursor_tool
 				self.enabled = False
@@ -105,7 +104,7 @@ class NavigationTool(CursorTool):
 			ExtScheduler().rem_call(self, self._send_hover_instance_upate)
 
 		horizons.globals.fife.eventmanager.removeCommandListener(self.cmdlist)
-		super(NavigationTool, self).remove()
+		super().remove()
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
@@ -244,7 +243,7 @@ class NavigationTool(CursorTool):
 		return hover_instances
 
 	def end(self):
-		super(NavigationTool, self).end()
+		super().end()
 		if self._hover_instances_update_scheduled:
 			ExtScheduler().rem_all_classinst_calls(self)
 		self.helptext = None

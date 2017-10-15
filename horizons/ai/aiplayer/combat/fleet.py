@@ -52,7 +52,7 @@ class Fleet(WorldObject):
 	fleetStates = Enum('idle', 'moving')
 
 	def __init__(self, ships, destroy_callback=None):
-		super(Fleet, self).__init__()
+		super().__init__()
 
 		assert ships, "request to create a fleet from  {} ships".format(len(ships))
 		self.__init(ships, destroy_callback)
@@ -70,7 +70,7 @@ class Fleet(WorldObject):
 		self.destroy_callback = destroy_callback
 
 	def save(self, db):
-		super(Fleet, self).save(db)
+		super().save(db)
 		# save the fleet
 		# save destination if fleet is moving somewhere
 		db("INSERT INTO fleet (fleet_id, owner_id, state_id) VALUES(?, ?, ?)", self.worldid, self.owner.worldid, self.state.index)
@@ -95,7 +95,7 @@ class Fleet(WorldObject):
 			   ship.worldid, self.worldid, self._ships[ship].index)
 
 	def _load(self, worldid, owner, db, destroy_callback):
-		super(Fleet, self).load(db, worldid)
+		super().load(db, worldid)
 		self.owner = owner
 		state_id, dest_x, dest_y, radius, ratio = db("SELECT state_id, dest_x, dest_y, radius, ratio FROM fleet WHERE fleet_id = ?", worldid)[0]
 

@@ -36,7 +36,7 @@ class ScoutingMission(FleetMission):
 	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'going_back')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point):
-		super(ScoutingMission, self).__init__(success_callback, failure_callback, ships)
+		super().__init__(success_callback, failure_callback, ships)
 		self.__init(target_point, ships[0].position.copy())
 
 	def __init(self, target_point, starting_point):
@@ -59,12 +59,12 @@ class ScoutingMission(FleetMission):
 		self.sail_to_target()
 
 	def save(self, db):
-		super(ScoutingMission, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_scouting_mission (rowid, starting_point_x, starting_point_y, target_point_x, target_point_y) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		super(ScoutingMission, self)._load(db, worldid, success_callback, failure_callback, owner)
+		super()._load(db, worldid, success_callback, failure_callback, owner)
 		db_result = db("SELECT target_point_x, target_point_y, starting_point_x, starting_point_y FROM ai_scouting_mission WHERE rowid = ?", worldid)[0]
 		self.__init(Point(*db_result[:2]), Point(*db_result[2:]))
 

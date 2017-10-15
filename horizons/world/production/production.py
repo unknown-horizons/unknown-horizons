@@ -63,7 +63,7 @@ class Production(ChangeListener):
 		@param start_finished: Whether to start at the final state of a production
 		@param load: set to True if this production is supposed to load a saved production
 		"""
-		super(Production, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		# this has grown to be a bit weird compared to other init/loads
 		# __init__ is always called before load, therefore load just overwrites some of the values here
 		self._state_history = deque()
@@ -125,7 +125,7 @@ class Production(ChangeListener):
 	def load(self, db, worldid):
 		# NOTE: __init__ must have been called with load=True
 		# worldid is the world id of the producer component instance calling this
-		super(Production, self).load(db, worldid)
+		super().load(db, worldid)
 
 		db_data = db.get_production_by_id_and_owner(self.prod_id, worldid)
 		self._creation_tick = db_data[5]
@@ -146,7 +146,7 @@ class Production(ChangeListener):
 	def remove(self):
 		self._remove_listeners()
 		Scheduler().rem_all_classinst_calls(self)
-		super(Production, self).remove()
+		super().remove()
 
 	## INTERFACE METHODS
 	def get_production_line_id(self):
@@ -246,7 +246,6 @@ class Production(ChangeListener):
 		except AttributeError: # production line doesn't have this alter method
 			pass
 
-
 	def get_state_history_times(self, ignore_pause):
 		"""
 		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
@@ -329,7 +328,7 @@ class Production(ChangeListener):
 			self._state_history.popleft()
 
 	def _changed(self):
-		super(Production, self)._changed()
+		super()._changed()
 		if not self._prod_line.save_statistics:
 			return
 
@@ -442,11 +441,11 @@ class ChangingProduction(Production):
 	"""Same as Production, but can changes properties of the production line"""
 
 	def save(self, db, owner_id):
-		super(ChangingProduction, self).save(db, owner_id)
+		super().save(db, owner_id)
 		self._prod_line.save(db, owner_id)
 
 	def load(self, db, worldid):
-		super(ChangingProduction, self).load(db, worldid)
+		super().load(db, worldid)
 		self._prod_line.load(db, worldid)
 
 
@@ -459,9 +458,9 @@ class SettlerProduction(ChangingProduction):
 		pass # don't give any resources, when they actually should be given
 
 	def _remove_res_to_expend(self):
-		super(SettlerProduction, self)._remove_res_to_expend()
+		super()._remove_res_to_expend()
 		# give the resources when taking away the consumed goods at prod start
-		super(SettlerProduction, self)._give_produced_res()
+		super()._give_produced_res()
 
 
 class SingleUseProduction(Production):
@@ -472,9 +471,9 @@ class SingleUseProduction(Production):
 	# TODO: it seems that these kinds of productions are never removed (for settlers and unit productions)
 
 	def __init__(self, inventory, owner_inventory, prod_id, prod_data, **kwargs):
-		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory,
+		super().__init__(inventory=inventory, owner_inventory=owner_inventory,
 		                                          prod_id=prod_id, prod_data=prod_data, **kwargs)
 
 	def _finished_producing(self, **kwargs):
-		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
+		super()._finished_producing(continue_producing=False, **kwargs)
 		self._state = PRODUCTION.STATES.done

@@ -71,7 +71,7 @@ class TabInterface:
 		@param widget: filename of a widget. Set this to None if you create your
 		               widget in `get_widget`.
 		"""
-		super(TabInterface, self).__init__()
+		super().__init__()
 		if widget or self.__class__.widget:
 			self.widget = widget or self.__class__.widget
 			if not self.__class__.lazy_loading:

@@ -43,6 +43,7 @@ class _CopyDocFromParentClass(type):
 			except AttributeError:
 				pass
 
+
 class WeakList(list, metaclass=_CopyDocFromParentClass):
 	"""
     A Weak_list can store objects but without keeping them
@@ -75,7 +76,6 @@ class WeakList(list, metaclass=_CopyDocFromParentClass):
 
     """
 
-
 	## Basic custom
 
 	def __init__(self, items=None):
@@ -89,7 +89,6 @@ class WeakList(list, metaclass=_CopyDocFromParentClass):
 
 	def __repr__(self):
 		return 'Weak_list((' + ', '.join((repr(i) for i in self)) + '))'
-
 
 	## Special method
 
@@ -108,7 +107,6 @@ class WeakList(list, metaclass=_CopyDocFromParentClass):
         """
 
 		list.remove(self, ref)
-
 
 	## list method
 
@@ -140,7 +138,6 @@ class WeakList(list, metaclass=_CopyDocFromParentClass):
 	def insert(self, index, obj):
 		list.insert(self, index, self.__new_weakref(obj))
 
-
 	## Emulating container types
 
 	def __getitem__(self, index):
@@ -168,7 +165,6 @@ class WeakList(list, metaclass=_CopyDocFromParentClass):
 	def __reversed__(self):
 		return iter([i() for i in list.__reversed__(self)])
 
-
 	## Emulating numeric types
 
 	def __iadd__(self, other):
@@ -177,7 +173,6 @@ class WeakList(list, metaclass=_CopyDocFromParentClass):
 
 	def __add__(self, other):
 		return self.__class__(list(self) + list(other))
-
 
 	## Rich comparison
 

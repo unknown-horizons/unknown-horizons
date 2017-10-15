@@ -53,7 +53,7 @@ class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	NOOP = _ExtCallbackObject(lambda : 42 * 1337 - 3.14, None)
 
 	def __init__(self, pump):
-		super(ExtScheduler, self).__init__()
+		super().__init__()
 		self.schedule = []
 		self.pump = pump
 		self.pump.append(self.tick)

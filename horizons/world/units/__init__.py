@@ -42,7 +42,7 @@ class UnitClass(IngameType):
 		"""
 		@param id: unit id.
 		"""
-		super(UnitClass, self).__init__(id, yaml_data)
+		super().__init__(id, yaml_data)
 
 	@classmethod
 	def ensure_action_loaded(cls, action_set_id, action):

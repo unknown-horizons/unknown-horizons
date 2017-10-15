@@ -36,28 +36,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    如果你有任何改善这个教程的建议，或者你遇到了任何问题，请告诉我们。'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    请访问www.unknown-horizons.org查找开发团队的联系方式。'
   - ''
   - 现在，让我们开始游戏吧！
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 新任务：创建驻地]
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - 你的船在海上漂泊，满载你开拓新驻地所需的物资。
+  - 要移动你的船，按鼠标左键选定它，然后在目的地的位置点右键。
+  - 当你的船靠近海岸，在概况显示栏中的“修建驻地”按钮会被激活。
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
   - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 任务：在海岸上建一间仓库。]
 
 - &LUMBERJACK
   - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Headline, 新任务：建伐木工帐篷]
   - [Image, content/gui/images/background/hr.png]
   - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
   - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
@@ -657,4 +657,4 @@ metadata:
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 6 translated messages, 182 untranslated messages.
+  translation_status: 14 translated messages, 174 untranslated messages.

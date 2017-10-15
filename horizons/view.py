@@ -36,7 +36,7 @@ class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
 	def __init__(self):
-		super(View, self).__init__()
+		super().__init__()
 		self.world = None
 		self.model = horizons.globals.fife.engine.getModel()
 		self.map = self.model.createMap("map")
@@ -100,7 +100,7 @@ class View(ChangeListener):
 	def end(self):
 		horizons.globals.fife.pump.remove(self.do_autoscroll)
 		self.model.deleteMaps()
-		super(View, self).end()
+		super().end()
 
 	def center(self, x, y):
 		"""Sets the camera position

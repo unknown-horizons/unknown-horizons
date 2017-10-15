@@ -39,7 +39,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 	"""MainListener Class to process events of main window"""
 
 	def __init__(self, gui):
-		super(MainListener, self).__init__()
+		super().__init__()
 		self.gui = gui
 		fife.IKeyListener.__init__(self)
 		horizons.globals.fife.eventmanager.addKeyListener(self)
@@ -48,7 +48,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
-		super(MainListener, self).end()
+		super().end()
 
 	def keyPressed(self, evt):
 		if evt.isConsumed():

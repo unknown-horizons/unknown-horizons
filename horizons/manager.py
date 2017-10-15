@@ -37,7 +37,7 @@ class SPManager(LivingObject):
 	over the network, and synchronization of network games."""
 
 	def __init__(self, session):
-		super(SPManager, self).__init__()
+		super().__init__()
 		self.session = session
 		self.commands = []
 
@@ -58,7 +58,8 @@ class SPManager(LivingObject):
 
 	def end(self):
 		self.commands = None
-		super(SPManager, self).end()
+		super().end()
+
 
 class MPManager(LivingObject):
 	"""Handler for commands.
@@ -72,7 +73,7 @@ class MPManager(LivingObject):
 
 	def __init__(self, session, networkinterface):
 		"""Initialize the Multiplayer Manager"""
-		super(MPManager, self).__init__()
+		super().__init__()
 		self.session = session
 		self.networkinterface = networkinterface
 		self.commandsmanager = MPCommandsManager(self)
@@ -233,8 +234,10 @@ class MPManager(LivingObject):
 # Packagemanagers storing Packages for later use
 ################################################
 
+
 class MPPacketmanager:
 	log = logging.getLogger("mpmanager")
+
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []
@@ -264,8 +267,10 @@ class MPPacketmanager:
 		"""Receive a packet"""
 		self.command_packet_list.append(command_packet)
 
+
 class MPCommandsManager(MPPacketmanager):
 	pass
+
 
 class MPCheckupHashManager(MPPacketmanager):
 	def is_tick_ready(self, tick):
@@ -273,7 +278,7 @@ class MPCheckupHashManager(MPPacketmanager):
 		# if the current tick isn't checked we don't need any packets and are always ready
 		if tick % self.mpmanager.HASH_EVAL_DISTANCE != 0:
 			return True
-		return super(MPCheckupHashManager, self).is_tick_ready(tick)
+		return super().is_tick_ready(tick)
 
 	def are_checkup_hash_values_equal(self, tick, cb_diff=None):
 		"""
@@ -296,6 +301,7 @@ class MPCheckupHashManager(MPPacketmanager):
 # Packages transmitted over the network
 #######################################
 
+
 class MPPacket:
 	"""Packet to be sent from every player to every player"""
 	def __init__(self, tick, player_id):
@@ -317,19 +323,21 @@ class MPPacket:
 	def __str__(self):
 		return "packet " + str(self.__class__)  + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
 
+
 class CommandPacket(MPPacket):
 	"""Packet to be sent from every player to every player every tick.
 	Contains list of packets to be executed as well as the designated execution time.
 	Also acts as ping (game will stop if a packet for a certain tick hasn't arrived)"""
 	def __init__(self, tick, player_id, commandlist):
-		super(CommandPacket, self).__init__(tick, player_id)
+		super().__init__(tick, player_id)
 		self.commandlist = commandlist
 
 MPPacket.allow_network(CommandPacket)
 
+
 class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):
-		super(CheckupHashPacket, self).__init__(tick, player_id)
+		super().__init__(tick, player_id)
 		self.checkup_hash = checkup_hash
 
 MPPacket.allow_network(CheckupHashPacket)

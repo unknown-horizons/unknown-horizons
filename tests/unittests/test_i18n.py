@@ -68,6 +68,7 @@ def test_null_translations():
 	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
 		'McAvoy or Stewart? These timelines are confusing.'
 
+
 def test_active_translation():
 	change_language('de')
 	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
@@ -76,6 +77,7 @@ def test_active_translation():
 	change_language('fr')
 	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
 		 'McAvoy ou Stewart? Ces délais sont confus.'
+
 
 def test_gettext_lazy():
 	text = LazyT('McAvoy or Stewart? These timelines are confusing.')

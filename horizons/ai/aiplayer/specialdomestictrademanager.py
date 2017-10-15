@@ -42,7 +42,7 @@ class SpecialDomesticTradeManager:
 	log = logging.getLogger("ai.aiplayer.specialdomestictrade")
 
 	def __init__(self, owner):
-		super(SpecialDomesticTradeManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session

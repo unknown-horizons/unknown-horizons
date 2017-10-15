@@ -47,7 +47,7 @@ class ConcreteObject(WorldObject):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
-		super(ConcreteObject, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
@@ -71,12 +71,12 @@ class ConcreteObject(WorldObject):
 		return self._instance
 
 	def save(self, db):
-		super(ConcreteObject, self).save(db)
+		super().save(db)
 		db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid,
 			 self._instance.getActionRuntime(), self._action_set_id)
 
 	def load(self, db, worldid):
-		super(ConcreteObject, self).load(db, worldid)
+		super().load(db, worldid)
 		runtime, action_set_id = db.get_concrete_object_data(worldid)
 		# action_set_id should never be None in regular games,
 		# but this information was lacking in savegames before rev 59.
@@ -130,7 +130,7 @@ class ConcreteObject(WorldObject):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
-		super(ConcreteObject, self).remove()
+		super().remove()
 
 	@classmethod
 	def weighted_choice(cls, weighted_dict):

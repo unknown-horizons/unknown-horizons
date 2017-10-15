@@ -41,7 +41,7 @@ class DepositCoverageGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(DepositCoverageGoal, self).active and not self.production_builder.have_deposit(self._deposit_resource_id) and \
+		return super().active and not self.production_builder.have_deposit(self._deposit_resource_id) and \
 			self._have_reachable_deposit(self._deposit_resource_id)
 
 	def _improve_deposit_coverage(self):
@@ -88,17 +88,20 @@ class DepositCoverageGoal(SettlementGoal):
 		self._log_generic_build_result(result, 'deposit coverage storage')
 		return self._translate_build_result(result)
 
+
 class ClayDepositCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_CLAY
 
 	def get_personality_name(self):
 		return 'ClayDepositCoverageGoal'
 
+
 class StoneDepositCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.STONE_DEPOSIT
 
 	def get_personality_name(self):
 		return 'StoneDepositCoverageGoal'
+
 
 class MountainCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_IRON

@@ -261,6 +261,7 @@ def setup_AI_settings(command_line_arguments):
 	if command_line_arguments.human_ai:
 		AI.HUMAN_AI = True
 
+
 def setup_debug_mode(command_line_arguments):
 	if not (command_line_arguments.debug_module
 	        and 'fife' not in command_line_arguments.debug_module):
@@ -273,6 +274,7 @@ def setup_debug_mode(command_line_arguments):
 		# in the current directory. See #1782 for background information.
 		horizons.globals.fife._log.logToPrompt = False
 		horizons.globals.fife._log.logToFile = True
+
 
 def setup_gui_logger(command_line_arguments):
 	"""
@@ -292,15 +294,18 @@ def setup_gui_logger(command_line_arguments):
 			return False
 	return True
 
+
 def quit():
 	"""Quits the game"""
 	preloader.wait_for_finish()
 	horizons.globals.fife.quit()
 
+
 def quit_session():
 	"""Quits the current game."""
 	_modules.session = None
 	_modules.gui.show_main()
+
 
 def start_singleplayer(options):
 	"""Starts a singleplayer game."""
@@ -356,6 +361,7 @@ def start_singleplayer(options):
 		_modules.gui.load_game()
 	return _modules.session
 
+
 def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_resource_multiplier=1):
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
@@ -388,6 +394,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	options = StartGameOptions.create_start_multiplayer(map_file, game.get_player_list(), not game.is_savegame)
 	_modules.session.load(options)
 
+
 def start_multiplayer(game):
 	_modules.gui.close_all()
 	_modules.session.start()
@@ -412,10 +419,12 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
 	start_singleplayer(options)
 	return True
 
+
 def _start_random_map(ai_players, seed=None, force_player_id=None):
 	options = StartGameOptions.create_start_random_map(ai_players, seed, force_player_id)
 	start_singleplayer(options)
 	return True
+
 
 def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	"""Load a map specified by user.
@@ -430,6 +439,7 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	options = StartGameOptions.create_load_game(map_file, force_player_id)
 	start_singleplayer(options)
 	return True
+
 
 def _find_scenario(name_or_path, scenario_db):
 	"""Find a scenario by name or path specified by user.
@@ -471,6 +481,7 @@ def _find_scenario(name_or_path, scenario_db):
 	except KeyError:
 		print("Error: could not find scenario '{name}' in scenario database. The locale '{locale}' may be wrong.".format(name=name, locale=game_language))
 
+
 def _find_map(name_or_path, map_db):
 	"""Find a map by name or path specified by user.
 	@param name_or_path: map name or path to thereof
@@ -492,6 +503,7 @@ def _find_map(name_or_path, map_db):
 			if name == name_or_path:
 				return path
 
+
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
 	@param session: value of session
@@ -512,6 +524,7 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	start_singleplayer(options)
 	return True
 
+
 def _edit_map(map_file):
 	"""
 	Start editing the specified map file.
@@ -526,6 +539,7 @@ def _edit_map(map_file):
 	start_singleplayer(options)
 	return True
 
+
 def edit_map(map_name):
 	"""
 	Start editing the map file specified by the name.
@@ -534,6 +548,7 @@ def edit_map(map_name):
 	@return: bool, whether loading succeeded
 	"""
 	return _edit_map(_find_map(map_name, SavegameManager.get_maps()))
+
 
 def edit_game_map(saved_game_name):
 	"""
@@ -554,6 +569,7 @@ def edit_game_map(saved_game_name):
 		# a random map represented by a list of island strings
 		return _edit_map(map_name)
 	return edit_map(map_name)
+
 
 def _create_main_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.

@@ -38,7 +38,7 @@ class ProgressBar(ABox):
 	]
 
 	def __init__(self, progress=0, fill=None, background=None, **kwargs):
-		super(ProgressBar, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		if self.max_size == Widget.DEFAULT_MAX_SIZE:
 			self.max_size = (100, 16)
 		self.__progress = progress
@@ -90,7 +90,7 @@ class TilingProgressBar(ProgressBar):
 	ATTRIBUTES = ProgressBar.ATTRIBUTES + [Attr('left'), Attr('right')]
 
 	def __init__(self, left=None, right=None, **kwargs):
-		super(TilingProgressBar, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.__left = left
 		self.__right = right
 		self.tiles = TilingHBox()
@@ -101,6 +101,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_progress(self):
 		return self.__progress
+
 	def _set_progress(self, progress):
 		self.__progress = progress
 		fill_width = (progress / 100.0) * (self.max_size[0] / self.tiles_width)
@@ -109,6 +110,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_left_image(self):
 		return self.__left
+
 	def _set_left_image(self, image):
 		self.__left = image
 		self.left_width = Icon(image=image).size[0]
@@ -116,6 +118,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_fill_image(self):
 		return self.__fill
+
 	def _set_fill_image(self, image):
 		self.__fill = image
 		self.tiles_width = Icon(image=image).size[0]
@@ -123,6 +126,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_right_image(self):
 		return self.__right
+
 	def _set_right_image(self, image):
 		self.__right = image
 		self.right_width = Icon(image=image).size[0]

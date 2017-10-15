@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
 class MoveNotPossible(Exception):
 	"""Gets thrown when the unit should move some where, but there is no possible path"""
 	pass

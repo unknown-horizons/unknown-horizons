@@ -34,6 +34,7 @@ try:
 except ImportError:
 	from yaml import SafeLoader # type: ignore
 
+
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)

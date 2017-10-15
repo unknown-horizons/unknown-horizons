@@ -27,6 +27,7 @@ class TerrainRequirement:
 	LAND_AND_COAST = 2 # buildings that have to be partially on the coast
 	LAND_AND_COAST_NEAR_SEA = 3 # coastal buildings that have to be near the sea
 
+
 class TerrainBuildabilityCache:
 	"""
 	Keep track of the locations where buildings of specific types can be built.
@@ -45,7 +46,7 @@ class TerrainBuildabilityCache:
 	sea_radius = 3
 
 	def __init__(self, island):
-		super(TerrainBuildabilityCache, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self._island = island
 		self._land = None
 		self._coast = None
