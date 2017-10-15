@@ -140,7 +140,7 @@ def setup_async_update_check():
 			ExtScheduler().add_new_object(wait_for_task, None)
 		else:
 			if result:
-				gui = horizons.main._modules.gui
+				gui = horizons.main.gui
 				window = VersionHint(gui.windows, result)
 				gui.windows.open(window)
 			else:

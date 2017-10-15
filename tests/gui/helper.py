@@ -175,7 +175,7 @@ class GuiHelper:
 
 	@property
 	def session(self):
-		return horizons.main._modules.session
+		return horizons.main.session
 
 	@property
 	def cursor(self):
@@ -409,7 +409,7 @@ class GuiHelper:
 		if self.session:
 			keylistener = self.session.ingame_gui.keylistener
 		else:
-			keylistener = horizons.main._modules.gui.mainlistener
+			keylistener = horizons.main.gui.mainlistener
 
 		keylistener.keyPressed(evt)
 		keylistener.keyReleased(evt)
