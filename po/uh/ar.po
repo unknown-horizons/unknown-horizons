@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2017.2-731-g533abe7eb\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-10-03 07:44+0000\n"
+"PO-Revision-Date: 2017-10-15 23:02+0000\n"
 "Last-Translator: omar anwar aglan <omar.aglan91@yahoo.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/uh/uh/ar/>\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.17\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1426,320 +1426,325 @@ msgstr "إخلاء تلقائي للسفينة:"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "هل يتم إخلاء السفينة بعد تأسيس المستعمرة"
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"لا تستخدم في وضع اللعب العادي، يقرر هل يتم كتابة معلومات التصحيح في وجهة "
+"التسجيل في مجلد المستخدم. يبطئ اللعبة."
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
-msgstr ""
+msgstr "تفعيل التسجيل:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid "Production indicators:"
-msgstr ""
+msgstr "مؤشرات الإنتاج:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr ""
+msgstr "هل يتم إظهار أيقونات الموارد في المباني حينما يتم إنهاء الإنتاج أم لا"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "القيم الأعلي تبطئ التمرير."
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Scroll delay:"
-msgstr ""
+msgstr "تأخير التمرير:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "إختر نوع الإقتباس:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "ما نوع الإقتباس الظاهر في حين تحميل اللعبة"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
-msgstr ""
+msgstr "الشبكة"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "إذا تم وضعه علي 0، إستخدم الإعدادات الإفتراضية للروتر"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
-msgstr ""
+msgstr "منفذ الشبكة:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr ""
+msgstr "تجاهل التغييرات الحالية"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr ""
+msgstr "إرجع إلي الإعدادات الإفتراضية"
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr ""
+msgstr "إحفظ التغييرات"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
-msgstr ""
+msgstr "ألعابك المحفوظه:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "الرقم السري للعبة. مطلوب للإنضمام لهذه اللعبة"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
-msgstr ""
+msgstr "أدخل أسم الملف:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:46
 msgid "Details:"
-msgstr ""
+msgstr "التفاصيل:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:53
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "إمسح ملف الحفظ المحدد"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "لعبة جديدة - اللعب الفردي"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "السيناريو"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr ""
+msgstr "خريطة عشوائية"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr ""
+msgstr "لعب حر"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr ""
+msgstr "إبدء اللعبة"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "إختر خريطة للعب:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "إعدادات الخريطة:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "البذرة:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "حدد اللغة:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr ""
+msgstr "لاعبي ااذكاء الأصطناعي:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "إعدادات اللعبة:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr ""
+msgstr "تاجر حر"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
-msgstr ""
+msgstr "قراصنة"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "الكوارث"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr ""
+msgstr "إسم اللاعب:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr ""
+msgstr "اللون:"
 
 #: horizons/command/game.py:38
 msgid "Invalid filename"
-msgstr ""
+msgstr "إسم ملف غير صالح"
 
 #: horizons/command/game.py:39
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "إستقبل إسم ملف غير صالح من إجل أمر الحفظ."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:50 horizons/gui/modules/multiplayermenu.py:166
 #: horizons/gui/modules/pausemenu.py:100 horizons/mpsession.py:58
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 #: horizons/command/game.py:50 horizons/gui/modules/pausemenu.py:100
 msgid "Failed to save."
-msgstr ""
+msgstr "فشل في الحفظ."
 
 #: horizons/component/tradepostcomponent.py:194
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "زميل التجارة لا يبيع هذا."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not store this."
-msgstr ""
+msgstr "لا يمكنك تخزين هذا."
 
 #: horizons/component/tradepostcomponent.py:206
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "لا يمكنك تحمل شراء هذا."
 
 #: horizons/component/tradepostcomponent.py:212
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "زميل التجارة لا يبيع المزيد من هذا."
 
 #: horizons/component/tradepostcomponent.py:236
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "زميل التجارة لا يشتري هذا."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr ""
+msgstr "أنت لا تملك هذا."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "زميل التجارة لا يمكنه تخزين المزيد من هذا."
 
 #: horizons/component/tradepostcomponent.py:252
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "زميل التجارة لا يمكنه تحمل شراء هذا."
 
 #: horizons/component/tradepostcomponent.py:257
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "زميل التجارة لا يشتري المزيد من هذا."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:66
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "فشل في إجراء الحفظ السريع."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:67
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "حصل خطأ في خلال إجراء الحفظ السريع."
 
 #: horizons/editor/session.py:71
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "خريطتك لم يتم حفظها."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"إذا حدث هذا الخطأ مجدداً، من فضلك إتصل بفريق التطوير الخاص بنا: {website}"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "هل أنت متأكد من الخروج من اللعبة؟"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "أخرج من اللعبة"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "لا دبلوماسية ممكنة"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "لا يمكن تفعيل الدبلوماسية في حيث أنه ليس هناك لاعبين أخرين."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
-msgstr ""
+msgstr "هل أنت متأكد من أنك تود مسح هذه العناصر؟"
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
-msgstr ""
+msgstr "إمسح"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} رقعة"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
-msgstr ""
+msgstr "إضغط زر…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} هو في الأساس مخصص إلي {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:148
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "هل تو إستبداله بالأتي؟"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:149
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "التأكيد علي الإستبدال"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
-msgstr ""
+msgstr "الإقتباسات"
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "نصائح أسلوب اللعب"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "إضغط 'ESC' لكي تصل إلي قائمة اللعبة."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "إستخدم 'SHIFT' لكي تضع مباني متعددة في نفس الوقت."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "حالياً الأول {tier}  مستوي قابل للعب."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "يمكنك إيقاف اللعبة مؤقتاً بواسطة زر 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "يمكنك سحب الطرق عن طريق الإبقاء ضاغطاً علي زر الفأرة الأيسر."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
+"يمكنك بناء مباني متعددة عن طريق الإستمرار في الضغط علي مفتاح 'SHIFT' في حين "
+"البناء."
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "يمكنك زيادة سعادة مواطنيك عن طريق تقليل الضرائب."
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
