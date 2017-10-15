@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Server e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-10-15 23:02+0000\n"
+"PO-Revision-Date: 2017-10-15 23:16+0000\n"
 "Last-Translator: Felix <icyvapor@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh"
 "/uh-server/zh_Hans/>\n"
@@ -25,19 +25,19 @@ msgstr "多玩家协议已更新。 请检查你的游戏版本"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "你全部网络包 (packet)大小总和超标了。"
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "系统出现严重问题。 请联系我们或者报告这个bug。"
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "你的单个网络包(packet)大小超标了。"
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "网络包格式不兼容。请检查你的游戏版本"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
@@ -46,11 +46,11 @@ msgstr "无效联络阶段"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "你不能同时加入另一个游戏"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "游戏不兼容，或者当前游戏用另一个版本运行"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
@@ -110,4 +110,4 @@ msgstr "无法修改你的颜色。"
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "加入游戏以后不能调取另一个游戏"
