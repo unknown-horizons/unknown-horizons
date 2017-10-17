@@ -60,4 +60,5 @@ class BoatBuilderEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.BOAT_BUILDER
 
+
 AbstractBoatBuilder.register_buildings()

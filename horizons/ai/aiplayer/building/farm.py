@@ -455,5 +455,6 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 
 		return (BUILD_RESULT.OK, building)
 
+
 AbstractFarm.register_buildings()
 FarmEvaluator.init_field_offsets()

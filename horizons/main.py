@@ -66,6 +66,8 @@ if TYPE_CHECKING:
 class Modules:
 	gui = None # type: Optional[Gui]
 	session = None # type: Optional[Session]
+
+
 _modules = Modules()
 
 # used to save a reference to the string previewer to ensure it is not removed by

@@ -47,4 +47,5 @@ class SaltPondsEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.SALT_PONDS
 
+
 AbstractSaltPonds.register_buildings()

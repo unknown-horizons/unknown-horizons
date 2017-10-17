@@ -54,6 +54,8 @@ class Address:
 		return NotImplemented
 
 #-----------------------------------------------------------------------------
+
+
 nulltranslation = NullTranslations()
 
 
@@ -131,6 +133,7 @@ class Player:
 	def toggle_ready(self):
 		self.ready = not self.ready
 		return self.ready
+
 
 packets.SafeUnpickler.add('server', Player)
 
@@ -243,6 +246,7 @@ class Game:
 		return "Game(uuid={};maxpl={:d};plcnt={:d};pw={:d};state={})" \
 			.format(self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
 
+
 packets.SafeUnpickler.add('server', Game)
 
 
@@ -259,5 +263,6 @@ class ErrorType:
 	def __str__(self):
 		strvals = ["NotSet", "TerminateGame"]
 		return strvals[self.state]
+
 
 packets.SafeUnpickler.add('common', ErrorType)

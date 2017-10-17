@@ -63,4 +63,5 @@ class ToolmakerEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.BRICKYARD
 
+
 AbstractToolmaker.register_buildings()

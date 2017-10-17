@@ -63,6 +63,8 @@ sys.path.append('.')
 
 class DummyFife:
 	use_atlases = False
+
+
 import horizons.globals # isort:skip
 horizons.globals.fife = DummyFife() # type: ignore
 

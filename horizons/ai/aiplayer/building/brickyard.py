@@ -59,4 +59,5 @@ class BrickyardEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.BRICKYARD
 
+
 AbstractBrickyard.register_buildings()

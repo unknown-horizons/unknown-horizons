@@ -46,6 +46,7 @@ class Act(GenericUnitCommand):
 	def __init__(self, unit, x, y):
 		super().__init__(unit, "go", x, y)
 
+
 GenericCommand.allow_network(Act)
 
 
@@ -56,6 +57,7 @@ class Attack(GenericUnitCommand):
 	"""
 	def __init__(self, unit, target):
 		super().__init__(unit, "user_attack", target.worldid)
+
 
 GenericCommand.allow_network(Attack)
 
@@ -68,6 +70,7 @@ class RemoveUnit(GenericUnitCommand):
 	def __init__(self, unit):
 		super().__init__(unit, "remove")
 
+
 GenericCommand.allow_network(RemoveUnit)
 
 
@@ -78,6 +81,7 @@ class CreateRoute(GenericUnitCommand):
 	"""
 	def __init__(self, unit):
 		super().__init__(unit, "create_route")
+
 
 GenericCommand.allow_network(CreateRoute)
 
@@ -112,6 +116,7 @@ class CreateUnit(Command):
 		unit.initialize()
 		return unit
 
+
 GenericCommand.allow_network(CreateUnit)
 
 
@@ -127,5 +132,6 @@ class SetStance(GenericUnitCommand):
 		# we need the stance component, so resolve the name
 		self.args = (self._get_object().get_component_by_name(self.args[0]), )
 		return super().__call__(issuer)
+
 
 GenericCommand.allow_network(SetStance)

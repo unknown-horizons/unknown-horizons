@@ -70,4 +70,5 @@ class TobacconistEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.TOBACCONIST
 
+
 AbstractTobacconist.register_buildings()
