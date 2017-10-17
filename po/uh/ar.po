@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2017.2-731-g533abe7eb\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-10-15 23:02+0000\n"
+"PO-Revision-Date: 2017-10-18 11:58+0000\n"
 "Last-Translator: omar anwar aglan <omar.aglan91@yahoo.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/uh/uh/ar/>\n"
 "Language: ar\n"
@@ -1751,22 +1751,23 @@ msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"إبني مراكز الإطفاء و عيادات الدكاتره لكي تحمي مواطنيك من الحرائق والأمراض."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "إبني مباني التخزين لكي تزيد سعة التخزين."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "تأكد من أن كل منزل في حدود أي متجر."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "إضغط علي 'T' لكي تجعل الشجر شفاف."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr ""
+msgstr "إبني مباني التخزين و الكشافة لكي تزيد حد مستعمرتك."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1781,154 +1782,161 @@ msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"إجعل اللعب الفردي أكثر متعة بإضافة المزيد من لاعبي الكمبيوتر حين بدء لعبه "
+"جديدة."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
-msgstr ""
+msgstr "الخطوات الأولي سهلة بالنظر إلي كيف يبدء لاعب الكمبيوتر بتجهيز مستعمرته."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"هل تريد إقتباسات ممتعة؟ غير نوع الإقتباسات الظاهرة في قائمة الإعدادات في "
+"صفحة اللعبة."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "المتجر يربط مبانيك مثل الطريق."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:91
 msgid "Mixed"
-msgstr ""
+msgstr "مختلط"
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr ""
+msgstr "بدء المحرك…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
-msgstr ""
+msgstr "يُمسك السمك…"
 
 #: horizons/gui/modules/loadingscreen.py:113
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "يرسم واجهة المستخدم…"
 
 #: horizons/gui/modules/loadingscreen.py:114
 msgid "Activating timer…"
-msgstr ""
+msgstr "يُفعل المؤقت…"
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Chomping game data…"
-msgstr ""
+msgstr "تقليم بيانات اللعبة…"
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Shaping islands…"
-msgstr ""
+msgstr "يُشكل الجُزر…"
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "يُجهز المخططات…"
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Filling world with water…"
-msgstr ""
+msgstr "يملئ العالم بالمياه…"
 
 #: horizons/gui/modules/loadingscreen.py:119
 msgid "Raising animals…"
-msgstr ""
+msgstr "يُربي الحيوانات…"
 
 #: horizons/gui/modules/loadingscreen.py:120
 msgid "Convincing AI…"
-msgstr ""
+msgstr "يقنع الكمبيوتر…"
 
 #: horizons/gui/modules/loadingscreen.py:121
 msgid "Burying treasures…"
-msgstr ""
+msgstr "يدفن الكنوز…"
 
 #: horizons/gui/modules/multiplayermenu.py:126
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "غير قادر علي إيجاد \"pyenet\""
 
 #: horizons/gui/modules/multiplayermenu.py:127
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"خاصية اللعب الجماعي تتطلب المكتبة \"pyenet\"، حيث لا يمكن إيجادها علي نظامك."
 
 #: horizons/gui/modules/multiplayermenu.py:129
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "مستخدمي اللينكس: جرب تثبيت pyenet من خلال مدير الحزم في جهازك."
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "فشل في إقامة الشبكات."
 
 #: horizons/gui/modules/multiplayermenu.py:139
 #: horizons/gui/modules/settings.py:274
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "خصائص الشبكة لا يمكن إطلاقها مع إعدادات الظبط الحالية."
 
 #: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:275
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "تحقق من الإعدادات التي وضعتها في منطقة الشبكة."
 
 #: horizons/gui/modules/multiplayermenu.py:149
 #: horizons/gui/modules/multiplayermenu.py:168 horizons/mpsession.py:53
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "خطأ كارثي في الشبكة"
 
 #: horizons/gui/modules/multiplayermenu.py:150
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "لا يمكن الإتصال بالسرفر الأساسي."
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
+"من فضلك تحقق من إتصالك بالأنترنت. إذا كان بخير، هذا يعني أن السرفر الأساسي "
+"قد تعطل."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "حدث شئ خاطئ مع الشبكة:"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Version differs!"
-msgstr ""
+msgstr "النسخة مختلفة!"
 
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/gui/modules/multiplayermenu.py:482
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "الخريطة: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/gui/modules/multiplayermenu.py:483
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "الأسم: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:215
 #: horizons/gui/modules/multiplayermenu.py:484
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "المُنشئ: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:216
 #: horizons/gui/modules/multiplayermenu.py:485
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "اللاعبين: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Wrong version"
-msgstr ""
+msgstr "النسخة خاطئة"
 
 #: horizons/gui/modules/multiplayermenu.py:237
 #, python-brace-format
@@ -1938,151 +1946,154 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
+"نسخة اللعبة تختلف عن نسختك. كل اللاعبين في اللعبة يجب أن يكونوا يستخدمون نفس "
+"النسخة. هذا يمكن إصلاحه بأن كل لاعب يُحدث نسخته من اللعبه إلي الأخيرة. نسخة "
+"اللعبة: {game_version} نسختك: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
-msgstr ""
+msgstr "كلمة السر للعبة"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr ""
+msgstr "أدخل كلمة السر:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "العدد المُفضل من اللاعبين: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:407
 #: horizons/network/networkinterface.py:531
 msgid "Ready"
-msgstr ""
+msgstr "جاهز"
 
 #: horizons/gui/modules/multiplayermenu.py:409
 msgid "Not ready"
-msgstr ""
+msgstr "ليس جاهز"
 
 #: horizons/gui/modules/multiplayermenu.py:445
 msgid "Enter your message"
-msgstr ""
+msgstr "أدخل رسالتك"
 
 #: horizons/gui/modules/multiplayermenu.py:503
 #: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "إضغط هنا لكي تغير إسمك أو لونك"
 
 #: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "طرد اللاعب {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} قد إنضم للعبة"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} قد خرج من اللعبة"
 
 #: horizons/gui/modules/multiplayermenu.py:605
 msgid "You are now ready"
-msgstr ""
+msgstr "أنت الأن جاهز"
 
 #: horizons/gui/modules/multiplayermenu.py:607
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "أنت لست جاهزا بعد"
 
 #: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} هو الأن جاهز"
 
 #: horizons/gui/modules/multiplayermenu.py:612
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} لم يعد جاهز"
 
 #: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "أنت الأن معروف بـ {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:618
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} معروف الأن بـ {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:622
 msgid "You changed your color"
-msgstr ""
+msgstr "لقد غير لونك"
 
 #: horizons/gui/modules/multiplayermenu.py:624
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} قد غير لونه"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "Kicked"
-msgstr ""
+msgstr "طُرد"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "لقد تم طردك من اللعبة عن طريق المُنشئ"
 
 #: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} قد تم طرده عن طريق المُنشئ"
 
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "هل أنت متأكد من إغلاق الموسم الشغال الحالي؟"
 
 #: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
-msgstr ""
+msgstr "أخرج من الموسم"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "No saved games"
-msgstr ""
+msgstr "لا ألعاب محفوظة"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "ليس هناك ألعاب محفوظة لتحميلها."
 
 #: horizons/gui/modules/select_savegame.py:146
 msgid "No filename given"
-msgstr ""
+msgstr "لا أسم ملف قد أعطي"
 
 #: horizons/gui/modules/select_savegame.py:147
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "من فضلك أدخل أسم ملف صالح."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "لعبة محفوظة بالأسم {name} موجودة مسبقاً."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "خريطة بالأسم {name} موجودة مسبقاً."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
-msgstr ""
+msgstr "كتابه عليه؟"
 
 #: horizons/gui/modules/select_savegame.py:218
 msgid "Unknown savedate"
-msgstr ""
+msgstr "تاريخ حفظ غير معروف"
 
 #: horizons/gui/modules/select_savegame.py:221
 #, python-brace-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "حُفظت عند {time}"
 
 #. NT takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:225
