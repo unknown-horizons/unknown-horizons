@@ -123,4 +123,5 @@ class AbstractVillageBuilding(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL] = cls
 		cls._available_buildings[BUILDINGS.TAVERN] = cls
 
+
 AbstractVillageBuilding.register_buildings()

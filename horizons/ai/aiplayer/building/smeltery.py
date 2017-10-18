@@ -61,4 +61,5 @@ class SmelteryEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.SMELTERY
 
+
 AbstractSmeltery.register_buildings()

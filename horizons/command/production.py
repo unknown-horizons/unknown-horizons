@@ -40,6 +40,7 @@ class ToggleActive(GenericComponentCommand):
 
 		return getattr(obj, self.method)(production)
 
+
 GenericComponentCommand.allow_network(ToggleActive)
 
 
@@ -47,6 +48,7 @@ class AddProduction(GenericComponentCommand):
 	"""Add a production to a producer"""
 	def __init__(self, producer, production_line_id):
 		super().__init__(producer, "add_production_by_id", production_line_id)
+
 
 GenericComponentCommand.allow_network(AddProduction)
 
@@ -56,6 +58,7 @@ class RemoveFromQueue(GenericComponentCommand):
 	def __init__(self, producer, production_line_id):
 		super().__init__(producer, "remove_from_queue", production_line_id)
 
+
 GenericComponentCommand.allow_network(RemoveFromQueue)
 
 
@@ -64,5 +67,6 @@ class CancelCurrentProduction(GenericComponentCommand):
 	Makes it proceed to the next one."""
 	def __init__(self, producer):
 		super().__init__(producer, "cancel_current_production")
+
 
 GenericCommand.allow_network(CancelCurrentProduction)

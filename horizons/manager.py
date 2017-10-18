@@ -332,6 +332,7 @@ class CommandPacket(MPPacket):
 		super().__init__(tick, player_id)
 		self.commandlist = commandlist
 
+
 MPPacket.allow_network(CommandPacket)
 
 
@@ -339,5 +340,6 @@ class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):
 		super().__init__(tick, player_id)
 		self.checkup_hash = checkup_hash
+
 
 MPPacket.allow_network(CheckupHashPacket)

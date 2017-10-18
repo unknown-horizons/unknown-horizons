@@ -125,4 +125,5 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 		return (BUILD_RESULT.OK, building)
 
+
 AbstractLumberjack.register_buildings()

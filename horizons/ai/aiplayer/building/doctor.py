@@ -77,4 +77,5 @@ class DoctorEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.DOCTOR
 
+
 AbstractDoctor.register_buildings()

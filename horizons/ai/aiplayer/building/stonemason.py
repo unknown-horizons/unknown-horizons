@@ -59,4 +59,5 @@ class StonemasonEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.STONE_PIT
 
+
 AbstractStonemason.register_buildings()

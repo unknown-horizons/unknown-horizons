@@ -380,5 +380,6 @@ def log_sys_info():
 	logger.debug("Python version: %s", sys.version_info)
 	logger.debug("Platform: %s", platform.platform())
 
+
 if __name__ == '__main__':
 	main()

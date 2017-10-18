@@ -67,4 +67,5 @@ class PersonalityManager:
 		cls.available_personalities.append(DefaultPersonality)
 		cls.available_personalities.append(OtherPersonality)
 
+
 PersonalityManager.prepare_personalities_list()

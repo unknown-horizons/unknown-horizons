@@ -70,4 +70,5 @@ class DistilleryEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.DISTILLERY
 
+
 AbstractDistillery.register_buildings()

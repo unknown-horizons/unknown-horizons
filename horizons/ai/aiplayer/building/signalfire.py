@@ -69,4 +69,5 @@ class SignalFireEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.SIGNAL_FIRE
 
+
 AbstractSignalFire.register_buildings()

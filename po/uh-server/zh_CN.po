@@ -8,53 +8,53 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Server e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2016-08-26 10:10+0000\n"
-"Last-Translator: Arm Coon <armcoon@gmail.com>\n"
-"Language-Team: Chinese (China) <https://hosted.weblate.org/projects/uh/uh-"
-"server/zh_CN/>\n"
+"PO-Revision-Date: 2017-10-15 23:16+0000\n"
+"Last-Translator: Felix <icyvapor@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh"
+"/uh-server/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.17\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr "老旧或已不支持的多人协议。 请检查你的游戏版本"
+msgstr "多玩家协议已更新。 请检查你的游戏版本"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "你全部网络包 (packet)大小总和超标了。"
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "系统出现严重问题。 请联系我们或者报告这个bug。"
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "你的单个网络包(packet)大小超标了。"
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "网络包格式不兼容。请检查你的游戏版本"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr "无效/未知的会话"
+msgstr "无效联络阶段"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "你不能同时加入另一个游戏"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "游戏不兼容，或者当前游戏用另一个版本运行"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "游戏已经开始。不能加入"
+msgstr "游戏已经开始。不能再加入"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
@@ -66,7 +66,7 @@ msgstr "密码错误"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr "有玩家已经使用你的名字在游戏里了。"
+msgstr "你的名字在游戏里已被占用了。"
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
@@ -74,7 +74,7 @@ msgstr "请修改你的名字。"
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr "有玩家已经使用你的颜色在游戏里了。"
+msgstr "你的颜色在游戏里已被占用了。"
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
@@ -84,11 +84,11 @@ msgstr "请修改你的颜色。"
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr "有玩家已经使用你唯一的玩家ID在游戏里了。这应该不会发生的。"
+msgstr "你的玩家ID已经在游戏里了。系统可能出现故障了。"
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
-msgstr "你不在游戏里"
+msgstr "你没有加入一局游戏"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
@@ -98,18 +98,16 @@ msgstr "游戏已终止。创建者已退出游戏。"
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr ""
-"有一个玩家终止游戏。在技术问题上，这当前表示游戏不能继续。我们对此感到非常抱"
-"歉。"
+msgstr "有一个玩家终止游戏。由于技术原因游戏不能继续了。我们对此感到非常抱歉。"
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr "不能修改你的名字。"
+msgstr "无法修改你的名字。"
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr "不能修改你的颜色。"
+msgstr "无法修改你的颜色。"
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "加入游戏以后不能调取另一个游戏"

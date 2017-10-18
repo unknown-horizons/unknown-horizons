@@ -54,4 +54,5 @@ class DefaultSettings(DifficultyClass):
 class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5
 
+
 DifficultySettings.register_levels()

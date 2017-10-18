@@ -125,6 +125,7 @@ class packet:
 class cmd_ok(packet):
 	"""simple ok message"""
 
+
 SafeUnpickler.add('common', cmd_ok)
 
 
@@ -141,6 +142,7 @@ class cmd_error(packet):
 		if not isinstance(pkt.type, int):
 			raise NetworkException("Invalid datatype: type")
 
+
 SafeUnpickler.add('common', cmd_error)
 
 
@@ -153,6 +155,7 @@ class cmd_fatalerror(packet):
 	def validate(pkt, protocol):
 		if not isinstance(pkt.errorstr, str):
 			raise NetworkException("Invalid datatype: errorstr")
+
 
 SafeUnpickler.add('common', cmd_fatalerror)
 
@@ -169,6 +172,7 @@ def unserialize(data, validate=False, protocol=0):
 	return mypacket
 
 #-------------------------------------------------------------------------------
+
 
 import horizons.network.packets.server # isort:skip
 import horizons.network.packets.client # isort:skip

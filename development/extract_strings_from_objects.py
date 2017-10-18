@@ -181,6 +181,7 @@ def content_from_file(filename):
 	else:
 		return ''
 
+
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 

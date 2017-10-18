@@ -56,4 +56,5 @@ class IronMineEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.MINE
 
+
 AbstractIronMine.register_buildings()

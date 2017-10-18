@@ -128,4 +128,5 @@ class BUILDING_PURPOSE:
 	def get_purpose(cls, building_id):
 		return cls.purpose_to_building[building_id]
 
+
 BUILDING_PURPOSE.init_translation()
