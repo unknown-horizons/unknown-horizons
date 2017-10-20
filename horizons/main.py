@@ -70,7 +70,6 @@ See: http://python-textbok.readthedocs.io/en/1.0/Variables_and_Scope.html
 """
 gui = None # type: Optional[Gui]
 session = None # type: Optional[Session]
->>>>>>> 529cd0ca5... Remove _modules construct in main.py, and fix some global variable usage.
 
 # used to save a reference to the string previewer to ensure it is not removed by
 # garbage collection
