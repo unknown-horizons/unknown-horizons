@@ -69,12 +69,13 @@ class CollectingComponent(Component):
 	def remove(self):
 		# remove every non-ship collectors (those are independent)
 		for collector in self.__collectors[:]:
-			if not collector.is_ship:
-				collector.remove()
-			else:
+			if type(collector) is Ship:
 				collector.decouple_from_home_building()
 				#TODO remove the remove call() #2123
 				collector.remove()
+			else:
+				collector.remove()
+	
 		assert not [c for c in self.__collectors]
 		super().remove()
 		self.__collectors = None
@@ -87,7 +88,7 @@ class CollectingComponent(Component):
 			# units, and therefore managed by world. This is justified, since they survive
 			# the removal of their assigned fisher hut, and therefore require their own
 			# saving mechanism
-			if not collector.is_ship:
+			if type(collector) is not Ship:
 				collector.save(db)
 
 	def load(self, db, worldid):

@@ -72,7 +72,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 	def __init(self, x, y):
 		self.position = Point(x, y)
 		self.last_position = Point(x, y)
-		self._next_target = Point(x, y)
+		self.next_target = Point(x, y)
 
 		self.move_callbacks = WeakMethodList()
 		self.blocked_callbacks = WeakMethodList()
@@ -155,14 +155,14 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 	def _movement_finished(self):
 		self.log.debug("%s: movement finished. calling callbacks %s", self, self.move_callbacks)
-		self._next_target = self.position
+		self.next_target = self.position
 		self.__is_moving = False
 		self.move_callbacks.execute()
 
 	def _move_tick(self, resume=False):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
-		assert self._next_target is not None
+		assert self.next_target is not None
 
 		if self._fife_location1 is None:
 			# this data structure is needed multiple times, only create once
@@ -172,15 +172,15 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		if resume:
 			self.__is_moving = True
 		else:
-			#self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
+			#self.log.debug("%s move tick from %s to %s", self, self.last_position, self.next_target)
 			self.last_position = self.position
-			self.position = self._next_target
+			self.position = self.next_target
 			self._changed()
 
 		# try to get next step, handle a blocked path
-		while self._next_target == self.position:
+		while self.next_target == self.position:
 			try:
-				self._next_target = self.path.get_next_step()
+				self.next_target = self.path.get_next_step()
 			except PathBlockedError:
 				# if we are trying to resume and it isn't possible then we need to raise it again
 				if resume:
@@ -189,7 +189,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 				self.log.debug("path is blocked")
 				self.log.debug("owner: %s", self.owner)
 				self.__is_moving = False
-				self._next_target = self.position
+				self.next_target = self.position
 				if self.blocked_callbacks:
 					self.log.debug('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
 					self.blocked_callbacks.execute()
@@ -204,7 +204,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return
 
-		if self._next_target is None:
+		if self.next_target is None:
 			self._movement_finished()
 			return
 		else:
@@ -216,7 +216,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 		self._exact_model_coords1.set(self.position.x, self.position.y, 0)
 		self._fife_location1.setExactLayerCoordinates(self._exact_model_coords1)
-		self._exact_model_coords2.set(self._next_target.x, self._next_target.y, 0)
+		self._exact_model_coords2.set(self.next_target.x, self.next_target.y, 0)
 		self._fife_location2.setExactLayerCoordinates(self._exact_model_coords2)
 		self._route = fife.Route(self._fife_location1, self._fife_location2)
 		# TODO/HACK the *5 provides slightly less flickery behavior of the moving
@@ -230,7 +230,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self._route.setPath(location_list)
 
 		self.act(self._move_action)
-		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
+		diagonal = self.next_target.x != self.position.x and self.next_target.y != self.position.y
 		speed = float(self.session.timer.get_ticks(1)) / move_time[0]
 		action = self._instance.getCurrentAction().getId()
 		self._instance.follow(action, self._route, speed)
@@ -298,3 +298,19 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			self.__is_moving = True
 			self._setup_move()
 			Scheduler().add_new_object(self._move_tick, self, run_in=0)
+
+	@property
+	def position(self):
+		return self._position
+
+	@position.setter
+	def position(self, pos):
+		self._position = pos
+
+	@property
+	def next_target(self):
+		return self._next_target
+
+	@next_target.setter
+	def next_target(self, new_target):
+		self._next_target = new_target

@@ -38,8 +38,6 @@ from horizons.world.units.movingobject import MovingObject
 
 class Unit(MovingObject, ResourceTransferHandler):
 	log = logging.getLogger("world.units")
-	is_unit = True
-	is_ship = False
 	health_bar_y = -30
 
 	AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10 # show health for 10 sec after damage has been taken

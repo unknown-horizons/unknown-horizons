@@ -65,7 +65,7 @@ class GroundUnit(Unit):
 			raise
 
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
-		self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
+		self.session.world.ground_unit_map[self.next_target.to_tuple()] = weakref.ref(self)
 
 	def load(self, db, worldid):
 		super().load(db, worldid)

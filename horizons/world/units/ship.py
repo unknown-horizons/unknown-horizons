@@ -45,13 +45,16 @@ class Ship(Unit):
 	"""
 	pather_class = ShipPather
 	health_bar_y = -150
-	is_ship = True
 
 	in_ship_map = True # (#1023)
 
 	def __init__(self, x, y, **kwargs):
 		super().__init__(x=x, y=y, **kwargs)
-		self.__init()
+		self.__init(x, y)
+
+	def __init(self, x, y):
+		# register ship in world
+		self.session.world.ships.append(self)
 
 	def save(self, db):
 		super().save(db)
@@ -67,12 +70,6 @@ class Ship(Unit):
 			self.create_route()
 			self.route.load(db)
 
-	def __init(self):
-		# register ship in world
-		self.session.world.ships.append(self)
-		if self.in_ship_map:
-			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-
 	def set_name(self, name):
 		self.get_component(ShipNameComponent).set_name(name)
 
@@ -82,12 +79,8 @@ class Ship(Unit):
 		if self.in_ship_map:
 			if self.position.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self.position.to_tuple()]
-			else:
-				self.log.error("Ship %s had in_ship_map flag set as True "
-				               "but tuple %s was not found in world.ship_map",
-				               self, self.position.to_tuple())
-			if self._next_target.to_tuple() in self.session.world.ship_map:
-				del self.session.world.ship_map[self._next_target.to_tuple()]
+			if self.next_target.to_tuple() in self.session.world.ship_map:
+				del self.session.world.ship_map[self.next_target.to_tuple()]
 			self.in_ship_map = False
 		ShipDestroyed.broadcast(self)
 		super().remove()
@@ -96,39 +89,16 @@ class Ship(Unit):
 		self.route = TradeRoute(self)
 
 	def _move_tick(self, resume=False):
-		"""Keeps track of the ship's position in the global ship_map"""
-
-		# TODO: Originally, only self.in_ship_map should suffice here,
-		# but KeyError is raised during combat.
-		if self.in_ship_map and self.position.to_tuple() in self.session.world.ship_map:
-			del self.session.world.ship_map[self.position.to_tuple()]
-		elif self.in_ship_map:  # logging purposes only
-			self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was "
-			               "not found in world.ship_map", self, self.position.to_tuple())
-
+		"""The ship's position in the global ship_map is taken care of by the property setter"""
 		try:
 			super()._move_tick(resume)
 		except PathBlockedError:
 			# if we fail to resume movement then the ship should still be on the map
 			# but the exception has to be raised again.
 			if resume:
-				if self.in_ship_map:
-					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+				self.log.error("Ship %s is blocked in her path at %s",
+				               self, self.position.to_tuple())
 				raise
-
-		if self.in_ship_map:
-			# save current and next position for ship, since it will be between them
-			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
-
-	def _movement_finished(self):
-		if self.in_ship_map:
-			# if the movement somehow stops, the position sticks, and the unit isn't at next_target any more
-			if self._next_target is not None:
-				ship = self.session.world.ship_map.get(self._next_target.to_tuple())
-				if ship is not None and ship() is self:
-					del self.session.world.ship_map[self._next_target.to_tuple()]
-		super()._movement_finished()
 
 	def go(self, x, y):
 		# Disable trade route, direct commands overwrite automated ones.
@@ -218,6 +188,21 @@ class Ship(Unit):
 			if location_based_status is not None:
 				return (T('Idle at {location}').format(location=location_based_status), self.position)
 			return (T('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
+
+	@Unit.position.setter
+	def position(self, pos):
+		if self.in_ship_map:
+			del self.session.world.ship_map[self.position.to_tuple()]
+			self.session.world.ship_map[pos.to_tuple()] = weakref.ref(self)
+		position.fset(self, pos)
+
+	@Unit.next_target.setter
+	def next_target(self, new_target):
+		if self.in_ship_map:
+			del self.session.world.ship_map[self.next_target.to_tuple()]
+			self.session.world.ship_map[new_target.to_tuple()] = weakref.ref(self)
+		next_target.fset(self, new_target)
+
 
 
 class TradeShip(Ship):
