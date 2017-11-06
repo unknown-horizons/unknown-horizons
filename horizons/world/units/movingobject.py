@@ -299,18 +299,4 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			self._setup_move()
 			Scheduler().add_new_object(self._move_tick, self, run_in=0)
 
-	@property
-	def position(self):
-		return self._position
 
-	@position.setter
-	def position(self, pos):
-		self._position = pos
-
-	@property
-	def next_target(self):
-		return self._next_target
-
-	@next_target.setter
-	def next_target(self, new_target):
-		self._next_target = new_target

@@ -182,7 +182,7 @@ def spawn_ships(session, owner_id, ship_id, number, *position):
 	radius = int(math.sqrt(number))
 	while number != 0:
 		for point in Circle(center, radius):
-			if (point.x, point.y) in session.world.ship_map \
+			if not session.world.is_ship_position_available(point.x, point.y) \
 				or session.world.get_island(point) is not None:
 				continue
 			CreateUnit(owner_id, ship_id, point.x, point.y)(issuer=player)

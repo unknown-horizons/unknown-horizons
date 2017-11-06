@@ -36,6 +36,7 @@ from horizons.util.pathfinding.pather import FisherShipPather, ShipPather
 from horizons.world.traderoute import TradeRoute
 from horizons.world.units.collectors import FisherShipCollector
 from horizons.world.units.unit import Unit
+from horizons.world.units.movingobject import MovingObject 
 
 
 class Ship(Unit):
@@ -50,9 +51,9 @@ class Ship(Unit):
 
 	def __init__(self, x, y, **kwargs):
 		super().__init__(x=x, y=y, **kwargs)
-		self.__init(x, y)
+		self.__init()
 
-	def __init(self, x, y):
+	def __init(self):
 		# register ship in world
 		self.session.world.ships.append(self)
 
@@ -76,12 +77,6 @@ class Ship(Unit):
 	def remove(self):
 		self.session.world.ships.remove(self)
 		self.session.view.discard_change_listener(self.draw_health)
-		if self.in_ship_map:
-			if self.position.to_tuple() in self.session.world.ship_map:
-				del self.session.world.ship_map[self.position.to_tuple()]
-			if self.next_target.to_tuple() in self.session.world.ship_map:
-				del self.session.world.ship_map[self.next_target.to_tuple()]
-			self.in_ship_map = False
 		ShipDestroyed.broadcast(self)
 		super().remove()
 
@@ -89,7 +84,6 @@ class Ship(Unit):
 		self.route = TradeRoute(self)
 
 	def _move_tick(self, resume=False):
-		"""The ship's position in the global ship_map is taken care of by the property setter"""
 		try:
 			super()._move_tick(resume)
 		except PathBlockedError:
@@ -189,19 +183,6 @@ class Ship(Unit):
 				return (T('Idle at {location}').format(location=location_based_status), self.position)
 			return (T('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
-	@Unit.position.setter
-	def position(self, pos):
-		if self.in_ship_map:
-			del self.session.world.ship_map[self.position.to_tuple()]
-			self.session.world.ship_map[pos.to_tuple()] = weakref.ref(self)
-		position.fset(self, pos)
-
-	@Unit.next_target.setter
-	def next_target(self, new_target):
-		if self.in_ship_map:
-			del self.session.world.ship_map[self.next_target.to_tuple()]
-			self.session.world.ship_map[new_target.to_tuple()] = weakref.ref(self)
-		next_target.fset(self, new_target)
 
 
 

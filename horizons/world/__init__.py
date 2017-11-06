@@ -68,7 +68,6 @@ class World(BuildingOwner, WorldObject):
 	                 This is important for pathfinding and quick tile fetching.
 	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
-	   * ship_map - same as ground_map, but for ships
 	   * session - reference to horizons.session.Session instance of the current game
 	   * trader - The world's ingame free trader player instance (can control multiple ships)
 	   * pirate - The world's ingame pirate player instance
@@ -125,7 +124,6 @@ class World(BuildingOwner, WorldObject):
 		self.island_map = None
 		self.water = None
 		self.ships = None
-		self.ship_map = None
 		self.fish_indexer = None
 		self.ground_units = None
 
@@ -189,8 +187,6 @@ class World(BuildingOwner, WorldObject):
 		self._init_shallow_water_bodies()
 		self.shallow_sea_number = self.shallow_water_body[(self.min_x, self.min_y)]
 
-		# create ship position list. entries: ship_map[(x, y)] = ship
-		self.ship_map = {}
 		self.ground_unit_map = {}
 
 		if self.session.is_game_loaded():
@@ -486,6 +482,10 @@ class World(BuildingOwner, WorldObject):
 		but on the coast of an island.
 		@return: Point"""
 		return worldutils.get_random_possible_coastal_ship_position(self)
+
+	def is_ship_position_available(self, x, y):
+		return worldutils.is_ship_position_available(self, x, y)
+
 
 	#----------------------------------------------------------------------
 	def get_tiles_in_radius(self, position, radius, shuffle=False):

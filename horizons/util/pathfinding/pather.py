@@ -219,8 +219,22 @@ class ShipPather(AbstractPather):
 	def _get_path_nodes(self):
 		return self.session.world.water
 
+	def _check_for_obstacles(self, point):
+		"""Check if the position 'point' is blocked by another ship.
+		Note overriding this function makes it unnecessary to override _get_blocked_coords()
+		@param point: tuple: (x, y)
+		@return: bool, True if path is blocked"""
+		return not self.session.world.is_ship_position_available(point[0], point[1])
+
 	def _get_blocked_coords(self):
-		return self.session.world.ship_map
+		blockedCoords = []
+		for ship in self.session.world.ships:
+			if ship.position:
+				blockedCoords.append((ship.position.x, ship.position.y))
+			if ship.next_target:
+				blockedCoords.append((ship.next_target.x, ship.next_target.y))
+		return blockedCoords
+
 
 
 class FisherShipPather(ShipPather):

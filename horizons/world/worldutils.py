@@ -328,6 +328,22 @@ def get_random_possible_ground_unit_position(world):
 			if (x, y) in island.path_nodes.nodes:
 				return Point(x, y)
 
+def is_ship_position_available(world, x, y):
+	"""Returns True if position(x,y) is avaiable for a ship """
+	for ship in world.ships: 
+		# first check whether this is non-blocking(fishing) ship.
+		if not ship.in_ship_map:
+			continue
+
+		position = ship.position
+		if position and position.x==x and position.y==y: 
+			return False
+
+		next_target = ship.next_target
+		if next_target and next_target.x==x and next_target.y==y:
+			return False
+	return True
+
 
 def get_random_possible_ship_position(world):
 	"""Returns a random position in water, that is not at the border of the world"""
@@ -336,7 +352,7 @@ def get_random_possible_ship_position(world):
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
 		y = world.session.random.randint(world.min_y + offset, world.max_y - offset)
 
-		if (x, y) in world.ship_map:
+		if not is_ship_position_available(world, x, y):
 			continue # don't place ship where there is already a ship
 
 		# check if there is an island nearby (check only important coords)
@@ -354,7 +370,7 @@ def get_random_possible_ship_position(world):
 
 	return Point(x, y)
 
-
+#TODO:[Felix] refactor this with function above
 def get_random_possible_coastal_ship_position(world):
 	"""Returns a random position in water, that is not at the border of the world
 	but on the coast of an island"""
@@ -366,7 +382,7 @@ def get_random_possible_coastal_ship_position(world):
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
 		y = world.session.random.randint(world.min_y + offset, world.max_y - offset)
 
-		if (x, y) in world.ship_map:
+		if not is_ship_position_available(world, x, y):
 			continue # don't place ship where there is already a ship
 
 		result = Point(x, y)

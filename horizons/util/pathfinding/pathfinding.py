@@ -66,8 +66,8 @@ class FindPath:
 		self.diagonal = diagonal
 		self.make_target_walkable = make_target_walkable
 
-		#self.log.debug('searching path from %s to %s. blocked: %s',
-		#							 source, destination, blocked_coords)
+		self.log.debug('searching path from %s to %s. blocked: %s',
+									 source, destination, blocked_coords)
 
 		# prepare args
 		if not self.setup():

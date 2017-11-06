@@ -591,7 +591,8 @@ class ShipProducer(QueueProducer):
 				if self.instance.island.get_tile(point) is not None:
 					continue
 				tile = self.session.world.get_tile(point)
-				if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
+				# [Felix]
+				if tile is not None and tile.is_water and self.session.world.is_ship_position_available(coord.x, coord.y):
 					# execute bypassing the manager, it's simulated on every machine
 					u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 					# Fire a message indicating that the ship has been created
