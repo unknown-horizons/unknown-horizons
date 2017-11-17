@@ -53,8 +53,6 @@ for root, dirs, filenames in os.walk(includes_dir):
             files.append(os.path.join(root, file))
     data_includes.append((final, files))
 
-
-
 packages = []
 packages.append('horizons')
 packages.append('fife')

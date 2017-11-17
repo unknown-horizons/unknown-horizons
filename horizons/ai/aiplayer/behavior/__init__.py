@@ -38,7 +38,7 @@ class BehaviorManager:
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
 	def __init__(self, owner):
-		super(BehaviorManager, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.__init(owner)
 
 		self.profile_token = self.get_profile_token()

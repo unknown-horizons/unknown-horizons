@@ -192,6 +192,7 @@ def excepthook_creator(outfilename):
 		print(T('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
 	return excepthook
 
+
 def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
@@ -202,6 +203,7 @@ def exithandler(exitcode, signum, frame):
 	else:
 		sys.tracebacklimit = 0 # hack for issue #1974 - silence "dirty" SIGINT traceback
 	sys.exit(exitcode)
+
 
 def setup_streams():
 	"""Ignore output to stderr and stdout if writing to them is not possible."""
@@ -269,6 +271,7 @@ def setup_debugging(options):
 
 		log_sys_info()
 
+
 def find_fife(paths):
 	"""Returns True if the fife module was found in one of the supplied paths."""
 	default_sys_path = sys.path # to restore sys.path later
@@ -297,6 +300,7 @@ def find_fife(paths):
 		sys.path = default_sys_path	# restore sys.path if all imports failed
 		return False
 	return True
+
 
 def get_fife_paths():
 	"""Returns all possible paths to search for the fife module. New paths to be added as needed."""
@@ -330,6 +334,7 @@ def get_fife_paths():
 
 	return paths
 
+
 def setup_fife():
 	log_paths()
 	log_sys_info()
@@ -352,12 +357,14 @@ def setup_fife():
 	else:
 		logger.debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
+
 def init_environment(use_fife):
 	"""Sets up everything.
 
 	Use in any program that requires access to FIFE and UH modules."""
 	if use_fife:
 		setup_fife()
+
 
 def log_paths():
 	"""Prints debug info about paths to log"""
@@ -367,10 +374,12 @@ def log_paths():
 	logger.debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
 	logger.debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
+
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	logger.debug("Python version: %s", sys.version_info)
 	logger.debug("Platform: %s", platform.platform())
+
 
 if __name__ == '__main__':
 	main()

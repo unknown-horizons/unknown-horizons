@@ -55,7 +55,10 @@ class Address:
 
 #-----------------------------------------------------------------------------
 
+
 nulltranslation = NullTranslations()
+
+
 class Player:
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
@@ -131,10 +134,11 @@ class Player:
 		self.ready = not self.ready
 		return self.ready
 
+
 packets.SafeUnpickler.add('server', Player)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 class Game:
 	class State:
 		Open      = 0
@@ -242,10 +246,11 @@ class Game:
 		return "Game(uuid={};maxpl={:d};plcnt={:d};pw={:d};state={})" \
 			.format(self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
 
+
 packets.SafeUnpickler.add('server', Game)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 # types of soft errors used by cmd_error
 # this way we don't have to create a new packet for every type of error
 class ErrorType:
@@ -258,5 +263,6 @@ class ErrorType:
 	def __str__(self):
 		strvals = ["NotSet", "TerminateGame"]
 		return strvals[self.state]
+
 
 packets.SafeUnpickler.add('common', ErrorType)

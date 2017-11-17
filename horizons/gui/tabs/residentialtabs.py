@@ -36,7 +36,7 @@ class SettlerOverviewTab(OverviewTab):
 	helptext = LazyT("Settler overview")
 
 	def init_widget(self):
-		super(SettlerOverviewTab, self).init_widget()
+		super().init_widget()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
@@ -63,12 +63,12 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.findChild(name="building_image").image = list(imgs[45].keys())[0]
 
 	def show(self):
-		super(SettlerOverviewTab, self).show()
+		super().show()
 		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
 		SettlerUpdate.discard(self.on_settler_level_change, sender=self.instance)
-		super(SettlerOverviewTab, self).hide()
+		super().hide()
 
 	def refresh(self):
 		image, helptext = get_happiness_icon_and_helptext(self.instance.happiness, self.instance.session)
@@ -87,7 +87,7 @@ class SettlerOverviewTab(OverviewTab):
 				                     self.instance.settlement)
 		         }
 		self.widget.mapEvents(events)
-		super(SettlerOverviewTab, self).refresh()
+		super().refresh()
 
 	def update_consumed_res(self):
 		"""Updates the container that displays the needed resources of the settler"""
@@ -103,6 +103,7 @@ class SettlerOverviewTab(OverviewTab):
 			container.addChild(icon)
 
 		container.adaptLayout()
+
 
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""

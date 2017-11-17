@@ -37,7 +37,7 @@ class Const:
 		An asymptote to const behavior, which is not supported by python"""
 		if name in self.__dict__:
 			raise Exception("Can't change a Const object")
-		super(Const, self).__setattr__(name, value)
+		super().__setattr__(name, value)
 
 
 def parse_port(port, allow_zero=True):
@@ -49,6 +49,7 @@ def parse_port(port, allow_zero=True):
 		raise ValueError('Requires a port between 1 and 65535.')
 	return port_int
 
+
 def get_all_subclasses(cls):
 	"""Recursivly find all subclasses of a given class."""
 	result = set() # type: Set[type]
@@ -57,6 +58,7 @@ def get_all_subclasses(cls):
 			result.add(subclass)
 			result.update(get_all_subclasses(subclass))
 	return result
+
 
 def map_balance(value, n, m):
 	"""
@@ -78,6 +80,7 @@ def map_balance(value, n, m):
 		value = 1. / value
 		m *= -1
 	return ((value - 1.0) / (n - 1.0)) * m
+
 
 def trim_value(value, min, max):
 	if value < min:

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2016-12-27 09:23+0000\n"
+"PO-Revision-Date: 2017-07-20 06:58+0000\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -797,16 +797,12 @@ msgid "Return to game"
 msgstr "Vissza a játékba"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Régi név:"
+msgstr "Sziget neve:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Játékos neve"
+msgstr "Játékos neve:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -3488,106 +3484,101 @@ msgstr "Nem áll készen"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Régi vagy nem támogatott többjátékos protokoll. Ellenőrizd a játék verzióját"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Túllépted a globális csomagméretet."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Ennek nem lett volna szabad megtörténnie. Kérjük, lépj kapcsolatba velünk "
+"vagy tegyél hibabejelentést."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Túllépted a csomagonkénti méretet."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Ismeretlen vagy hibás csomag. Kérjük, egyeztesd a játékverziót."
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Hibás/Ismeretlen játék"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Nem csatlakozhatsz másik játékhoz játék közben"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Ismeretlen játék vagy a játék más verziója fut"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "A játék már elindult. Csatlakozásra nincs lehetőség."
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "A játék megtelt"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Add meg a jelszót:"
+msgstr "Hibás jelszó"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "A játékban már van egy ilyen nevű játékos."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Kérjük, változtass nevet."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "A játékban már van egy ilyen színű játékos."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Megváltoztattad a színed"
+msgstr "Változtasd meg a színezésed."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"Már van egy ilyen azonosítóval ellátott játékos ebben játékban. Ennek nem "
+"szabadna megtörténnie."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Még nem állsz készen"
+msgstr "Nem vagy játékban"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Nem sikerült csatlakozni a szerverhez."
+msgstr "A név megváltoztatása nem sikerült."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Megváltoztattad a színed"
+msgstr "A szín megváltoztatása nem sikerült."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "Nem lehet változtatni a multiplayer játék sebességét"
+msgstr "Nem kérhetsz le játékadatokat, amíg egy másikban vagy."
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "A játéknak vége. A létrehozó kilépett a játékból."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Egy játékos kilépett a játékból. Technikai okokból a játék nem folytatódhat. "
+"Nagyon sajnáljuk."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-06-16 20:55+0000\n"
+"PO-Revision-Date: 2017-08-07 05:28+0000\n"
 "Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/uh/uh/nb/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1162,7 +1162,7 @@ msgstr "Avbryt spill"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr "Laster …"
+msgstr "Laster inn…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1766,7 +1766,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Bygg oppbevaringstelt for å øke lagringskapasiteten."
+msgstr "Bygg lagertelt for å øke lagringskapasiteten."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
@@ -1779,8 +1779,7 @@ msgstr "Trykk 'T' for å gjøre trær gjennomsiktige."
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
-"Bygg oppbevaringstelt og utkikkstårn for å utvide rekkevidden til "
-"bosetningen din."
+"Bygg lagertelt og utkikkstårn for å utvide rekkevidden til bosetningen din."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -2416,7 +2415,7 @@ msgstr "Oversikt over varehus"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr "Konto"
+msgstr "Regnskap"
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"

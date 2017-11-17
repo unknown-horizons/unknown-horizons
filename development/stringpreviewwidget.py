@@ -27,12 +27,13 @@ from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.windows import Window, WindowManager
 from horizons.scheduler import Scheduler
 
+
 class StringPreviewWidget(Window):
 	"""Widget for testing Logbook strings.
 	It provides a list of scenarios, of which the user can select one and display
 	its strings in a logbook"""
 	def __init__(self, session):
-		super(StringPreviewWidget, self).__init__()
+		super().__init__()
 		self._init_gui(session)
 		# allow for misc delayed initialization to finish before pausing
 		Scheduler().add_new_object(session.speed_pause, self, 2)

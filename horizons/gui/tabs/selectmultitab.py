@@ -69,7 +69,7 @@ class SelectMultiTab(TabInterface):
 
 		self._scheduled_refresh = False
 
-		super(SelectMultiTab, self).__init__()
+		super().__init__()
 
 	def init_widget(self):
 		if self.stance_unit_number != 0:

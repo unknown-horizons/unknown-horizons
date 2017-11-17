@@ -40,7 +40,7 @@ from horizons.util.savegameupgrader import SavegameUpgrader
 class SelectSavegameDialog(Dialog):
 
 	def __init__(self, mode, windows):
-		super(SelectSavegameDialog, self).__init__(windows)
+		super().__init__(windows)
 
 		assert mode in ('load', 'save', 'editor-save')
 		self._mode = mode

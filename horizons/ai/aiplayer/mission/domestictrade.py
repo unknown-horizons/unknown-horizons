@@ -34,13 +34,13 @@ class DomesticTrade(ShipMission):
 	missionStates = Enum('created', 'moving_to_source_warehouse', 'moving_to_destination_warehouse')
 
 	def __init__(self, source_settlement_manager, destination_settlement_manager, ship, success_callback, failure_callback):
-		super(DomesticTrade, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		self.source_settlement_manager = source_settlement_manager
 		self.destination_settlement_manager = destination_settlement_manager
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(DomesticTrade, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.source_settlement_manager.worldid, self.destination_settlement_manager.worldid, self.ship.worldid, self.state.index)
 
@@ -55,7 +55,7 @@ class DomesticTrade(ShipMission):
 		self.source_settlement_manager = WorldObject.get_object_by_id(db_result[0])
 		self.destination_settlement_manager = WorldObject.get_object_by_id(db_result[1])
 		self.state = self.missionStates[db_result[3]]
-		super(DomesticTrade, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
+		super().load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
 
 		if self.state == self.missionStates.moving_to_source_warehouse:
 			self.ship.add_move_callback(Callback(self._reached_source_warehouse_area))

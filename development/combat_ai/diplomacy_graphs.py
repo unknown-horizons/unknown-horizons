@@ -59,6 +59,7 @@ get_enemy_function = BehaviorDiplomatic.get_enemy_function
 get_ally_function = BehaviorDiplomatic.get_ally_function
 get_neutral_function = BehaviorDiplomatic.get_neutral_function
 
+
 def diplomacy_graph():
 	header = "Diplomacy function"
 	x_label = "relationship_score"
@@ -83,7 +84,6 @@ def diplomacy_graph():
 		("BehaviorEvil.hostile_player", DiplomacySettings.Evil.parameters_hostile),
 
 	)
-
 
 	for parameter_name, parameters in parameter_sets:
 
@@ -110,6 +110,7 @@ def diplomacy_graph():
 			pylab.title(parameter_name)
 			pylab.grid(True)
 		pylab.show()
+
 
 if __name__ == "__main__" :
 	diplomacy_graph()

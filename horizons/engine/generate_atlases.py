@@ -21,8 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import glob
 import json
 import logging
@@ -62,8 +60,11 @@ assert os.path.exists('content'), 'Content dir not found.'
 
 sys.path.append('.')
 
+
 class DummyFife:
 	use_atlases = False
+
+
 import horizons.globals # isort:skip
 horizons.globals.fife = DummyFife() # type: ignore
 
@@ -80,6 +81,7 @@ class AtlasEntry:
 		self.width = width
 		self.height = height
 		self.last_modified = last_modified
+
 
 class AtlasBook:
 	log = logging.getLogger("generate_atlases")

@@ -4,8 +4,8 @@ if '%1' == '--debug' goto debugMode
 if '%1' == '--help' goto help
 
 echo output will be written to logfile "unknownhorizons-DATETIME.log"
-IF EXIST ..\python\pythonw.exe (
-  ..\python\pythonw.exe run_uh.py --debug-log-only
+IF EXIST ..\python\python.exe (
+  ..\python\python.exe run_uh.py --debug-log-only
 ) ELSE (
   run_uh.py --debug-log-only
 )

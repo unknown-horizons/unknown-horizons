@@ -35,6 +35,7 @@ class AbstractSaltPonds(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SALT_PONDS] = cls
 
+
 class SaltPondsEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -45,5 +46,6 @@ class SaltPondsEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.SALT_PONDS
+
 
 AbstractSaltPonds.register_buildings()

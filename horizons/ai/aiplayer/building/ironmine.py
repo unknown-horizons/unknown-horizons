@@ -45,6 +45,7 @@ class AbstractIronMine(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.MINE] = cls
 
+
 class IronMineEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -54,5 +55,6 @@ class IronMineEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.MINE
+
 
 AbstractIronMine.register_buildings()

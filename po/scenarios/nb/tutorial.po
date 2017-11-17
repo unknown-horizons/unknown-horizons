@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-06-26 05:49+0000\n"
+"PO-Revision-Date: 2017-08-07 22:34+0000\n"
 "Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/uh/tutorial/nb/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -312,43 +312,50 @@ msgid ""
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"Fiskeren må bygges ved kysten et sted innen rekkevidden til varehuset og en "
+"fiskeskole."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Han kommer til å bygge en liten robåt og fanger noen fiks."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Dette gir kontinuerlig forsyning der kostnaden er litt lengre produksjonstid "
+"per enhet mat."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"En liten bosetting som din kan bruke begge selskapene, og du kan enklere "
+"balansere fordeler og ulemper hvis du ser en direkte sammenligning."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr ""
+msgstr "Oppgave: Bygg et jegertelt og et fiskertelt."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
-msgstr ""
+msgstr "Husk å koble dem sammen med varehuset ditt med stier!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Main Square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "Bygg et hovedtorg.  Velg et område uten for mange økonomibygg."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NY OPPGAVE: HOVEDTORG"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "Innbyggerne dine trenger et hovedtorg der de kan hente varer fra."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -356,6 +363,9 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
+"Dette betyr at de trenger en stiforbindelse fra hjemmene sine til "
+"hovedmarkedet.  Merk at hovedtorget også fungerer som en sti, slik at telt "
+"som står inntil torget ikke trenger en egen sti."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -363,6 +373,8 @@ msgid ""
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
+"Alle varene i varehuset ditt er tilgjengelig på dette «markedet», slik at "
+"dine innbyggere ikke trenger å gå til fiskerteltet eller til varehuset."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -370,38 +382,49 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Du bør unngå å plassere bosetningteltene dine for nære tømmerhuggerne dine, "
+"da teltbygninger vil fjerne trærne som tømmerhuggerne dine trenger for å "
+"lage bord."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the Main Square and e.g. your Lumberjack's Tent."
 msgstr ""
+"Selskaper virker uten å være koblet til teltene, så du trenger for eksempel "
+"ikke bygge en vei mellom hovedtorget og dine tømmerhuggertelt."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Main Square."
-msgstr ""
+msgstr "Oppgave: Bygg et hovedtorg."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
 msgstr ""
+"\n"
+"Nå er det på tide å ta en nærmere titt på hovedtorget."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"I «Regnskap»-fanen får du frem balansen for denne øya, som viser alle "
+"kostnadene du betaler og alle skattene du tjener."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Oppføringene for «Salg» og  «Kjøp» refererer til din handelsbalanse og vil "
+"bli forklart senere."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Hvis balansen din er positiv, så har du alt i alt et overskudd."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -409,37 +432,48 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"I de ulike nivåoversiktsfaner kan du se statistikk om dine innbyggere.  Du "
+"kan også sette den nivåspesifikk globale skatten her og tillate eller nekte "
+"innbyggerne på dette nivået å oppgradere til neste høyere nivå."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Tent and connect it to the Main Square if necessary."
-msgstr ""
+msgstr "Bygg et telt og koble det til hovedtorget hvis det trengs."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NY OPPGAVE: BOLIGHUS"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Bosettere ønsker tak over hodene sine, ellers vil de ikke en gang vurdere å "
+"bo i byen din.  Du må tilby dem telt."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
+"Telt er grunnleggende bolighus.  Dine innbyggere kommer til å ønske å "
+"oppgradere dem når de når høyere nivå."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Merk at oppgraderingen av hver bygning krever byggematerialer, som treverk "
+"for første oppgradering."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Vurder om du vil fjerne muligheten for å oppgradere hvis lageret ditt har "
+"lite av disse materialene."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -447,23 +481,30 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Bosettere virker kanskje ikke veldig nyttige i og med at de forbruker alle "
+"varene du produserer - men de betaler i hvert fall skatt, og det er nå den "
+"eneste måten du kan skaffe penger!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Tent and connect it to the Main Square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
+"Oppgave: Bygg et telt og koble det til hovedtorget hvis det trengs.  Telt "
+"trenger ikke være koblet til noen av selskapene."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional Tents and connect them to the Main Square."
-msgstr ""
+msgstr "Bygg mist tre ekstra telt og koble dem til hovedtorget."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Let's have a look at the Tent overview tab."
 msgstr ""
+"\n"
+"La oss ta en titt på oversikts-fanen for telt."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -472,11 +513,17 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Her ser du\n"
+"* hvor glade innbyggerne er,\n"
+"* avgiftene de betaler og\n"
+"* ressursene de krever."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Hvis kravene deres er oppfylt, så vil glede og dermed dine avgiftsinntekter "
+"øke."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -484,14 +531,17 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Hvis ikke vil glede og inntekt reduseres.  På et punkt vil innbyggerne dine "
+"bli virkelige sure og ganske enkelt snu ryggen til landsbyen din og forlate "
+"en forfallende ruin."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Merk at du også kan endre det globale avgiftsnivået her."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build at least three additional Tents."
-msgstr ""
+msgstr "Oppgave: Bygg minst tre ekstra telt."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -499,50 +549,66 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"TIPS: Ved å holde nede SHIFT kan en enkelt sette opp flere bygninger av "
+"samme type."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Signal Fire at the coast close to your Warehouse."
-msgstr ""
+msgstr "Bygg et signalbål ved kysten nær varehuset ditt."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG SIGNALBÅL"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Can you see the ship passing your island from time to time? That ship "
 "belongs to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Har du sett skipet som passerer øya de av og til?  Skipet tilhører den frie "
+"handelsmann, en av de første bosetterne i denne øygruppen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Handelsmannen kan forsyne bosetningen din med nødvendige varer som du ennå "
+"ikke kan produsere."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
 msgstr ""
+"Du kan også selge produksjonsoverskudd, men generelt sett vil det gi større "
+"overskudd å forbruke varene (ved å bygge flere telt) i stedet for å selge "
+"dem."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
+"Vanligvis seiler bare handelsmannen rundt og ser etter gode avtaler, men du "
+"kan sette opp farten litt."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"Dette er formålet med å bygge et signalbål på kysten nær varehuset ditt.  "
+"Det vil vise skip veien til bosetningen din."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Signal Fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Signalbålet må dekke området som skipene passerer igjennom for å få tak i "
+"dem."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -550,40 +616,49 @@ msgid ""
 "After this little advertisement, the trader will also stop by and look into "
 "your Warehouse, even if he had planned to sail past it."
 msgstr ""
+"\n"
+"Etter denne lille markedsføringen, så vil handelsmannen stoppe opp og ta en "
+"titt i varehuset ditt, selv om han hadde planlagt å seile forbi det."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
-msgstr ""
+msgstr "Du kan foreslå avtaler via varehusets fane «Kjøp/selg»."
 
 #. This is the text body of a logbook page.
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
-msgstr ""
+msgstr "I «seiler»-nivået er du utstyrt med tre handelsfelter."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
 "vice versa."
 msgstr ""
+"Klikk på det lille ikonet for å bytte spormodus fra «Kjøp» til «Selg» og "
+"visa versa."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Klikk på feltet for å velge hvilke varer du ønsker å handle med.  Vi "
+"forklarer mer om dette når du er klar til å handle."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
-msgstr ""
+msgstr "Oppgave: Bygg et signaltårn ved kysten i nærheten av varehuset ditt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
 msgstr ""
+"Oppnå en lagerstatus på minst 30 verktøy på øya.  Merk at dette kan ta en "
+"stund."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NY OPPGAVE: LÆR DEG HANDEL"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -592,38 +667,52 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Utmerket!  Den frie handelsmann vil nå stikke innom varehuset ditt fra tid "
+"til annen.\n"
+"\n"
+"La oss fortsette vår introduksjon med hvordan handle."
 
 #. This is the text body of a logbook page.
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "Klikk først på varehuset ditt, og klikk så på den tredje fanen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Klikk deretter på en av de tre feltene og velg hvilken vare du ønsker å "
+"kjøpe eller selge."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After selecting a particular type of good, the green bar across the bottom "
 "of the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"Etter at du har valgt en bestemt type vare vil den grønne streken på tvers "
+"av bunnen på feltet (hvis synlig) vise hvor mye du har på lager av denne "
+"varen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"Ved å dra på drafeltet på høyre siden av hvert felt bestemmer du din "
+"«målverdi», hvilket betyr forskjellige ting for «kjøp» og «selg»."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"Når du kjøper vil du kjøpe tilstrekkelig til å ha din «målverdi» på lager."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When selling, the 'target value' is the stock amount at which you will "
 "always stop selling until you get more of that resource again."
 msgstr ""
+"Når du selger er «målverdien» det nivået på varebeholdningen som gjør at du "
+"slutter å selge inntil du har mer igjen av denne ressursen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -632,50 +721,64 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"For eksempel:\n"
+"Med et «Kjøp»-felt og 5 tonn på lager, vil et skyvefelt plassert på 9 tonn "
+"føre til at du ikke kjøper mer enn 4 ekstra tonn."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"Salg virker tilsvarende.  Et «selg»-felt med 18 tonn på lager og skyvefeltet "
+"plassert på 13 vil selge inntil 5 tonn."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"Hvis derimot den frie handelsmann kun ønsker å kjøpe eller selge mindre enn "
+"dine innstillinger lar ham, så må du leve med det og vente til han kommer "
+"tilbake."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"Unknown Horizons har smart prissetting, slik at verdien av en enhet kan "
+"variere.\n"
+"Det er IKKE mulig å endre prisene manuelt!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"Du kan se handelsbalansen din i «Regnskap»-fanen ved å sammenligne «Salg»- "
+"og «Kjøp»-verdiene der."
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
-msgstr ""
+msgstr "Oppgave: Kjøp så mange verktøy du trenger for å ha 30 verktøy på lager!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Pavilion with connection to the Tents."
-msgstr ""
+msgstr "Bygg en paviljong med forbindelse til teltene."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG EN PAVILJONG"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "De verktøyene er tilstrekkelig for øyeblikket.  Godt gjort!"
 
 #. This is the text body of a logbook page.
 msgid "You now provide housing, a main square and food to your inhabitants."
-msgstr ""
+msgstr "Du sørger nå for husly, hovedtorg og mat til dine innbyggere."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -683,36 +786,49 @@ msgid ""
 "that by clicking on any Tent): your sailors want a basic building where they "
 "can pray."
 msgstr ""
+"Men det er fortsatt ett behov vi ikke har oppfylt så langt (du kan se det "
+"ved å klikke på et av teltene): dine seilere ønsker en enkel bygning der de "
+"kan be."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The solution is a Pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"Løsningen er en paviljong som landsbypastoren kjapt setter opp som ly for "
+"solen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Service buildings like this also need to be connected to the Tents with a "
 "Trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Tjenestebygninger som denne trenger også å kobles til telt med en sti, for "
+"at innbyggerne dine skal føle at de kan nå dem."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"Merk at religiøs tro behandles som en fysisk ressurs!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(Pavilion) to pick up faith there."
 msgstr ""
+"Dette betyr at innbyggerne dine trenger en veiforbindelse til produsenten "
+"(paviljongen) for å hente religiøs tro der."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"Etter en viss tid vil de ha forbrukt den og se seg om etter en produsent for "
+"å hente mer religiøs tro."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -721,39 +837,53 @@ msgid ""
 "Tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Viktig:\n"
+"Det er IKKE tilstrekkelig at bygningen er i en gitt avstand fra teltene.\n"
+"Det trengs en veiforbindelse i tillegg."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"Oppgave: Bygg en paviljong med en sti til teltene for å fylle seilerne dines "
+"behov for religiøs tro."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Endre avgiftsnivået til Lavt (helt til venstre) og vent til dine seilere har "
+"oppgradert."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: NEXT TIER"
-msgstr ""
+msgstr "NY OPPGAVE: NESTE NIVÅ"
 
 #. This is the text body of a logbook page.
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square and the Pavilion and your food supply is adequate."
 msgstr ""
+"Alle behov er oppfylt nå hvis innbyggerne dine regelmessig kan besøke "
+"hovedtorget og paviljongen samt når matforsyningen din er tilstrekkelig."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
 msgstr ""
+"Hvis seilerne er nok fornøyde så ønsker de å gå videre til neste nivå som "
+"heter Pionerene."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
 msgstr ""
+"For å gjøre dem fornøyde er det intet annet du kan gjøre enn å sette ned "
+"avgiftene til et lavere nivå siden du har oppfylt alle behovene til "
+"innbyggerne dine."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -761,6 +891,9 @@ msgid ""
 "to bankruptcy sooner or later. For a period of time and if you know what you "
 "are doing, it is fine though."
 msgstr ""
+"Du bør forsøke å ikke ha lave avgifter hele tiden siden det antagelig vil "
+"føre til konkurs før eller senere.  Det går greit i en kort periode og når "
+"du vet hva du gjør."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -768,6 +901,9 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"Etter litt tid vil den første enheten gå innom hovedtorget og se etter nye "
+"konstruksjonsmaterialer der for å bygge et tømmerhus.  Dette huset vil "
+"erstatte det gamle teltet."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -775,18 +911,25 @@ msgid ""
 "Such residential upgrades cost resources and can thus be restricted at the "
 "Main Square."
 msgstr ""
+"\n"
+"Slike bostedsoppgraderinger koster ressurser og kan dermed begrenset fra "
+"hovedtorget."
 
 #. This is the text body of a logbook page.
 msgid ""
 "There also are upgrades of buildings without costs, as you will see with the "
 "lumberjack. In this case, only the graphics change."
 msgstr ""
+"Det finnes også oppgraderinger av bygninger uten kostnader, slik du vil se "
+"hos tømmerhuggeren.  I slike tilfeller er det kun grafikken som endrer seg."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
 "than sailors, too."
 msgstr ""
+"Oppgraderte boliger kan ta imot flere innbyggere, og pionerene betaler i "
+"tillegg mer skatt enn seilere."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -794,32 +937,37 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
+"Som du kanskje har oppdaget allerede, er ulempen at pionerer krever ekstra "
+"varer som sjøfolk ikke grenger - så du må i tillegg bruke mer penger på å "
+"gjøre dem fornøyde."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"Oppgave: Sett skattenivået til Lavt (helt til venstre) og vent til "
+"sjøfolkene oppgraderer."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Farm and keep some empty space around it."
-msgstr ""
+msgstr "Bygg en gård og behold noe ubrukt areal rundt den."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG EN GÅRD"
 
 #. This is the text body of a logbook page.
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
-msgstr ""
+msgstr "Gratulerer!  Noen av dine innbyggere har oppnådd nivået!!!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
-msgstr ""
+msgstr "Nå har du tilgang til to nye bygninger.  Ta en ny titt på byggemenyen."
 
 #. This is the text body of a logbook page.
 msgid "A shiny new tab appeared there."
-msgstr ""
+msgstr "En skinnende ny fane har dukket opp der."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -827,28 +975,37 @@ msgid ""
 "cloth starting with lambs wool (which is one of the goods produced at the "
 "Farm)."
 msgstr ""
+"Pionerene vil kreve tøy.  Du må dermet sette opp en produksjonslinje for tøy "
+"som starter med saueull (som er en av varene som produseres av gården)."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Farm is a very special production building since it can produce not only "
 "one, but many (and different) goods if you choose."
 msgstr ""
+"Gården er en veldig spesiell produksjonsbygning siden den kan produsere ikke "
+"bare én, men mange (og forskjellige) varer hvis du velger det."
 
 #. This is the text body of a logbook page.
 msgid "The output of Farms depends on what kind of fields you build around it."
 msgstr ""
+"Produksjonen til gårder er avhengig av hvilke jorder du bygger rundt den."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "We will have a closer look at this later."
 msgstr ""
+"\n"
+"Vi vil ta en nærmere titt på dette senere."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need "
 "to be connected to storage or a Warehouse."
 msgstr ""
+"Gårder, slik alle kompanjonger som produserer råmaterialer, trenger ikke "
+"nødvendigvis å være koblet til lager eller varehus."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -856,6 +1013,9 @@ msgid ""
 "collectors from the Warehouse or Storage Tent can reach the final company "
 "everything's fine."
 msgstr ""
+"Så lenge enheter fra selskapet som lager sluttproduktet kan nå gården, og "
+"innsamlere fra varehuset eller lagerteltene kan nå sluttprodusenten vil alt "
+"være fint."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -863,33 +1023,38 @@ msgid ""
 "(which can make sense) or even on different islands, you will need a "
 "connection to collectors."
 msgstr ""
+"Hvis du derimot planlegger å gjøre noe foredling i andre deler av øya ("
+"hvilket kan gi mening), eller på andre øyer, så vil du trenge en forbindelse "
+"til innsamlere."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Try to build the Farm not too close to the coast or your existing buildings "
 "since it will need some space around it to work well."
 msgstr ""
+"Forsøk å bygge gården et stykke unna kysten og dine eksisterende bygninger, "
+"siden den trenger litt plass rundt seg for å fungere godt."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Farm."
-msgstr ""
+msgstr "Oppgave: Bygg en gård."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
+msgstr "Bygg minst ett beiteland og legg til en potetåker hvis du har lyst."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG JORDER"
 
 #. This is the text body of a logbook page.
 msgid "The Farm itself is not going to produce anything without some fields."
-msgstr ""
+msgstr "Gården produserer ikke noe av seg selv uten noen jorder."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You currently have the choice between pastures, potato and sugar fields."
-msgstr ""
+msgstr "Du kan nå velge mellom beiteland, potet- og sukkeråker."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -899,24 +1064,35 @@ msgid ""
 "* Sugar Field: Grows sugar which is used to distill liquor and (later) "
 "produce confectionery."
 msgstr ""
+"Her er en kort oversikt:\n"
+"* Beiteland: Her lever sauer som produserer saueull.\n"
+"* Potetåker: Gror poteter som nå håndteres som mat.\n"
+"* Sukkeråker: Gror sukker som brukes til å destillere sprit og (senere) "
+"produsere konfekt."
 
 #. This is the text body of a logbook page.
 msgid ""
 "We now only need pastures, but in case your food supply chain is too small "
 "(maybe many residential buildings) you can also produce some potatoes."
 msgstr ""
+"Nå trenger vi kun beiteland, men hvis matforsyningskapasiteten din er for "
+"liten (kanskje mange bolighus) sa kan du også produsere noen poteter."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that for potatoes you will need a road connection to the Farm (not to "
 "the field!), as it will be the only company to work on the goods."
 msgstr ""
+"Merk at for poteter vil du trenge en veiforbindelse til gården (ikke til "
+"åkeren!), da det vil være det eneste kompaniet som arbeider på varene."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Make sure that all fields you build are in the area covered by the Farm."
 msgstr ""
+"\n"
+"Påse at alle jordene du bygger er i innenfor rekkevidden til gården."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -924,6 +1100,9 @@ msgid ""
 "efficiency of the Farm - but you need to check how many fields one Farm can "
 "serve."
 msgstr ""
+"Du kan ha kombinasjonsproduksjon - ett beiteland vil ikke føre til 100 "
+"prosent effektivitet på gården - men du må sjekke hvor mange jorder en gård "
+"kan håndtere."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -931,48 +1110,62 @@ msgid ""
 "time there (to seed, harvest, herd, etc…) and because of that, the farm may "
 "be unable to serve all of the fields you built for it in time."
 msgstr ""
+"Ulike klasser av jorder krever at gårdens enheter tilbringer mer eller "
+"mindre tid der (for å så, høste, vokte, etc...) og på grunn av dette kan det "
+"hende gården ikke er i stand til å håndtere i tide alle jordene som du "
+"bygger til den."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For now, you do not need to care about these issues a lot since you haven't "
 "built any fields. Let's change that!"
 msgstr ""
+"Så langt har du ikke trengt å bry deg spesielt mye om disse tingene, siden "
+"du ikke har bygget noen jorder.  La oss gjøre noe med det!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build at least one Pasture in the Farm's range and add Potato Fields "
 "if you like."
 msgstr ""
+"Oppgave: Bygg minst et beiteland innenfor gårdens rekkevidde og legg til "
+"potetåkre hvis du har lyst."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a storage tent (tier I tab) where it makes sense."
-msgstr ""
+msgstr "Bygg et lagertelt (nivå I-fane) der det virker fornuftig."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG LAGRING"
 
 #. This is the text body of a logbook page.
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "Har du sjekket dine tømmerhuggere i det siste?"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Since your Warehouse does not have unlimited space to store goods, "
 "collectors will stop fetching goods from companies when stock is full."
 msgstr ""
+"Siden varehuset ditt ikke har ubegrenset med plass til å lagre varer, så vil "
+"innsamlerne slutte å hente varer fra kompanjonger når varelageret er fullt."
 
 #. This is the text body of a logbook page.
 msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"Dermed, med mindre noen seilere ønsket å oppgradere sine telt nylig, har du "
+"antagelig mye planger og i det tilfellet jobber kanskje ikke tømmerhuggerne."
 
 #. This is the text body of a logbook page.
 msgid ""
 "We can improve this situation in two different ways, and we will have a look "
 "at both of them below."
 msgstr ""
+"Vi kan forbedre denne situasjonen på to ulike måter, og vi skal ta en titt "
+"på begge nedenfor."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -980,6 +1173,9 @@ msgid ""
 "This may sound strange, but click on the gear wheel you see in the "
 "Lumberjack Hut's overview."
 msgstr ""
+"Alle kompanjonger tilbyr å ikke jobbe i det hele tatt.\n"
+"Dette høres kanskje rart ut, men klikk på tannhjulet du ser i "
+"tømmerhuggerhyttens oversikt."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -987,6 +1183,10 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"Hvis denne «bremse»-modusen er aktiv (vi kaller den «å ta ut av drift»), så "
+"vil de løpende kostnadene du betaler for bygningen reduseres.  De vil ikke "
+"bli null, men de er uansett lavere enn om du lot kompanjongene fortsatt "
+"produsere."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -994,12 +1194,17 @@ msgid ""
 "This means that you can save money when you temporarily do not need a "
 "company and do not want to tear it down, either."
 msgstr ""
+"\n"
+"Dette betyr at du kan spare penger når du midlertidig ikke trenger en "
+"bedrift og heller ikke ønsker å rive den."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the Storage Tent."
 msgstr ""
+"En annen løsning er å bygge den siste nivå-I-bygningen som ikke har vært "
+"nevnt så langt: Lagerteltet."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1007,6 +1212,9 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the Warehouse does."
 msgstr ""
+"Denne bygningen har to formål.  Den:\n"
+"* Tilbyr mer lagringsplass for varene dine, og\n"
+"* sender sine egne innsamlere for å hente varer, akkurat slik varehuset gjør."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1014,24 +1222,30 @@ msgid ""
 "products collected, and if the Warehouse is overwhelmed with collector "
 "tasks, you can place a Storage Tent to help out there."
 msgstr ""
+"Merk at kompanjonger kan også kobles til lagring for å få sine produkter "
+"samlet inn, og hvis varehuset er overbelastet med innsamlingsoppgaver kan du "
+"plassere ut et lagertelt for å avhjelpe."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Storage Tent, preferably where you need collectors."
-msgstr ""
+msgstr "Oppgave: Bygg et lagertelt, fortrinnsvis der du trenger innsamlere."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
 msgstr ""
+"Bygg en veverhytte som kan nå ullen til gården din på en eller annen måte."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "NY OPPGAVE: BYGG EN VEVER"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"Nå som ullproduksjonen er satt opp trenger du fortsatt en vever for å "
+"produsere tøy av denne ullen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1039,64 +1253,80 @@ msgid ""
 "where you can build it - either close to the Farm or close to a Storage Tent "
 "(or the Warehouse)."
 msgstr ""
+"Veverhytten er stedet der veverne bor.  Det er to steder du kan bygge den - "
+"enten nær gården eller nær et lagertelt (eller varehuset)."
 
 #. This is the text body of a logbook page.
 msgid "In both cases you should ensure the connection to a Trail as well."
-msgstr ""
+msgstr "I begge tilfeller bør du sikre en forbindelse til en sti."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can place the Weaver's Hut close to the Farm and tear down any Trail to "
 "the Farm to see that it will still fetch the wool and produce."
 msgstr ""
+"Du kan plassere veverhytten nær gården og fjerne alle stier til gården for å "
+"se at den fortsatt skaffer seg ull og produserer."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
-msgstr ""
+msgstr "Oppgave: Bygg en veverhytte plassert slik at den får tak i ull."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
+"Gi husrom til minst 50 innbyggere i byen din for å fullføre introduksjonen.  "
+"Du trenger en positiv balanse."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "NY OPPGAVE: FULLFØR INTRODUKSJONEN"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing "
 "more residential buildings."
 msgstr ""
+"Forsøk å gi husrom til minst 50 innbyggere i byen din ved å tilby flere "
+"bolighus."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you are able to keep an economy running which can satisfy this amount "
 "of consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
+"Så snart du klarer å holde en økonomi i gang som kan tilfredsstille en slik "
+"mengde forbrukere er du klar til å oppdage nye ukjente horisonter!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the Warehouse tab 'Account') is required."
 msgstr ""
+"Du trenger også nok penger til å holde denne økonomien gående, slik at en "
+"positiv balanse (sjekk varehus-fanen «Regnskap») er nødvendig."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"Oppgave: Oppnå totalt 50 innbyggere og en positiv balanse for å fullføre "
+"denne introduksjonen."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
+"Gratulerer! Du har nådd slutten av denne introduksjonen og er klar til å "
+"møte nye utfordringer!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "INGEN OPPGAVER IGJEN"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1104,12 +1334,16 @@ msgid ""
 "is now at your command, waiting for your free aspirations and brave "
 "explorations!"
 msgstr ""
+"Du har lykkes med å fullføre alle oppgaver du har fått utlevert.  Verden er "
+"nå under ditt styre, og venter på dine frie planer og modige ekspedisjoner!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
+"Hvis du har noen forslag om hva vi kan eller bør forbedre, legge til eller "
+"ta bort:"
 
 #. This is the text body of a logbook page.
 msgid "www.unknown-horizons.org"

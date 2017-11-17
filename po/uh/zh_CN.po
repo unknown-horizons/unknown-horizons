@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-07-12 05:37+0000\n"
+"PO-Revision-Date: 2017-10-17 00:45+0000\n"
 "Last-Translator: Felix <icyvapor@gmail.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<https://hosted.weblate.org/projects/uh/uh/zh_Hans/>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 2.17\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "感谢您使用未知地平线！"
+msgstr "感谢您玩Unknown Horizons！"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
@@ -29,18 +29,17 @@ msgstr "未知地平线已崩溃。"
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "对此我们表示非常抱歉，我们会尽快修复潜在的错误。"
+msgstr "很抱歉程序发生了错误，我们需要查出并修复错误。"
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "所以我们需要日志文件中的相关信息："
+msgstr "为了修复错误，我们需要日志文件（logfile）中的信息："
 
 #: run_uh.py:192
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
-msgstr ""
-"请通过IRC或我们的论坛发送给我们，相关信息请参阅http://unknown-horizons.org。"
+msgstr "请把日志文件的内容通过IRC或者论坛发送给我们，你可以通过http://unknown-horizons.org获得IRC和论坛的地址。"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -99,7 +98,7 @@ msgstr "选择你的船只，并通过右键接近海岸。"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:21
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "然后,按下船只概述标签页中的大按钮."
+msgstr "然后,按下船只总览标签中的大按钮。"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -218,7 +217,7 @@ msgstr "运行开销"
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
-msgstr ""
+msgstr "要建造陆地设施，点击一个级别标签，选择想建造的设施并确认。"
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -288,7 +287,7 @@ msgstr "确认指令"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
 msgid "(like in the selection tabs)"
-msgstr ""
+msgstr "（像在选择标签里一样）"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -301,7 +300,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
@@ -328,12 +327,12 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "皇家海军战船"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "最常见的装有一个炮台的三桅战船。"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -385,7 +384,7 @@ msgstr "建造这个陆地单位！"
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr ""
+msgstr "要造一艘船，先点击其中一个级别标签，再选择想要的船型，最后确定造船命令。"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -425,24 +424,24 @@ msgstr "容量采用"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr ""
+msgstr "点击更改这个陆地单位的名字"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
 msgid "Settlement inventory"
-msgstr ""
+msgstr "驻地库存"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr ""
+msgstr "开拓者概述"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr ""
+msgstr "已缴税款"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
@@ -454,15 +453,15 @@ msgstr "税额:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr ""
+msgstr "税率"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "升级许可："
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "每户幸福指数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:59
@@ -481,11 +480,11 @@ msgstr "开心"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "达到此幸福指数的房屋数量"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr ""
+msgstr "每户人口"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
@@ -493,7 +492,7 @@ msgstr "各家房屋的居民数量"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "达到这个人口数的房屋"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -509,7 +508,7 @@ msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
-msgstr ""
+msgstr "维护你驻地的治安。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -535,17 +534,17 @@ msgstr "武器:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr ""
+msgstr "资源储藏"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr ""
+msgstr "这里是资源储藏地，你可以在这里建矿场来挖掘资源。"
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr ""
+msgstr "这里有如下资源："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -553,40 +552,40 @@ msgstr ""
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "点击更改你的驻地名"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
-msgstr ""
+msgstr "幸福"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr ""
+msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
-msgstr ""
+msgstr "所需资源："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
-msgstr ""
+msgstr "信号火堆会吸引自由贸易船来到你的驻地进行买卖。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
-msgstr ""
+msgstr "这是自由贸易船。它会时常到访来买卖货物。"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "点击更改船名"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -594,97 +593,97 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:89 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr ""
+msgstr "贸易"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:69
 msgid "Build settlement"
-msgstr ""
+msgstr "建设驻地"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr ""
+msgstr "设置通商路线"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
 msgid "Discard all resources"
-msgstr ""
+msgstr "丢弃所有资源"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr ""
+msgstr "舰船："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr ""
+msgstr "交换："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr ""
+msgstr "交易伙伴："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "买卖资源"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:18
 msgid "Trade history"
-msgstr ""
+msgstr "贸易历史"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr ""
+msgstr "选择资源："
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr ""
+msgstr "采集者效率"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
-msgstr ""
+msgstr "收入："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
-msgstr ""
+msgstr "税"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Sale"
-msgstr ""
+msgstr "销售"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 msgid "Expenses:"
-msgstr ""
+msgstr "费用："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
-msgstr ""
+msgstr "总计："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "显示这个驻地产生的资源"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:15
 #: content/gui/xml/ingame/templates/overview_productionline.xml:15
 msgid "Pause production"
-msgstr ""
+msgstr "暂停生产"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:18
 #: content/gui/xml/ingame/templates/overview_productionline.xml:18
 msgid "Start production"
-msgstr ""
+msgstr "开始生产"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr ""
+msgstr "选择资源："
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -692,86 +691,86 @@ msgstr ""
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr ""
+msgstr "已暂时显示你选择的资源。清空请点X。"
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "保存当前资源配置为所有驻地默认配置。"
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "重置所有的定居点默认资源配置。"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
-msgstr ""
+msgstr "向上移动"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr ""
+msgstr "删除航线"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
-msgstr ""
+msgstr "向下移动"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:18
 msgid "Read previous entries"
-msgstr ""
+msgstr "阅读上一条目"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:21
 msgid "Read next entries"
-msgstr ""
+msgstr "阅读下一条目"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 #: horizons/gui/widgets/logbook.py:53
 msgid "Statistics"
-msgstr ""
+msgstr "统计数据"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:39
 msgid "Players"
-msgstr ""
+msgstr "玩家"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:40
 msgid "My ships"
-msgstr ""
+msgstr "我的船只"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:41
 msgid "My settlements"
-msgstr ""
+msgstr "我的驻地"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:48
 msgid "Game messages"
-msgstr ""
+msgstr "游戏消息"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:52
 msgid "Whole world"
-msgstr ""
+msgstr "全部消息"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:72
 msgid "Everybody"
-msgstr ""
+msgstr "所有人"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:72
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "给所有玩家发送消息。"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr ""
+msgstr "输入你的消息"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr ""
+msgstr "返回游戏"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
 msgid "Island Name:"
@@ -779,35 +778,35 @@ msgstr "岛名:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
 msgid "Player Name:"
-msgstr ""
+msgstr "玩家姓名："
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
 msgid "Wait at load:"
-msgstr ""
+msgstr "是否等待所有货物装船："
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:20
 msgid "Wait at unload:"
-msgstr ""
+msgstr "是否等待所有货物卸船："
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Select a resource:"
-msgstr ""
+msgstr "选择一种资源："
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 msgid "Route activity:"
-msgstr ""
+msgstr "航线事件："
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:47
 #: horizons/gui/widgets/routeconfig.py:118
 msgid "Start route"
-msgstr ""
+msgstr "开始航线"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:49
 msgid "Exit"
-msgstr ""
+msgstr "离开"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
@@ -3387,95 +3386,95 @@ msgstr ""
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "多玩家协议已更新。 请检查你的游戏版本"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "你全部网络包 (packet)大小总和超标了。"
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "系统出现严重问题。 请联系我们或者报告这个bug。"
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "你的单个网络包(packet)大小超标了。"
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "网络包格式不兼容。请检查你的游戏版本"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "无效联络阶段"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "你不能同时加入另一个游戏"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "游戏不兼容，或者当前游戏用另一个版本运行"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "游戏已经开始。不能再加入"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "游戏已满"
 
 #: horizons/network/server.py:469
 msgid "Wrong password"
-msgstr ""
+msgstr "密码错误"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "你的名字在游戏里已被占用了。"
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "请修改你的名字。"
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "你的颜色在游戏里已被占用了。"
 
 #: horizons/network/server.py:480
 msgid "Please change your color."
-msgstr ""
+msgstr "请修改你的颜色。"
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "你的玩家ID已经在游戏里了。系统可能出现故障了。"
 
 #: horizons/network/server.py:496
 msgid "You are not inside a game"
-msgstr ""
+msgstr "你没有加入一局游戏"
 
 #: horizons/network/server.py:541
 msgid "Unable to change your name."
-msgstr ""
+msgstr "无法修改你的名字。"
 
 #: horizons/network/server.py:573
 msgid "Unable to change your color."
-msgstr ""
+msgstr "无法修改你的颜色。"
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "加入游戏以后不能调取另一个游戏"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "游戏已终止。创建者已退出游戏。"
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr ""
+msgstr "有一个玩家终止游戏。由于技术原因游戏不能继续了。我们对此感到非常抱歉。"
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"

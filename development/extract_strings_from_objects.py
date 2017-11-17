@@ -108,6 +108,7 @@ if cmd_folder not in sys.path:
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS
 
+
 # cannot import parse_token from horizons.util.yamlcache here!
 #TODO Make sure to keep both in sync and/or fix the import trouble!
 def parse_token(token, token_klass):
@@ -130,6 +131,7 @@ def parse_token(token, token_klass):
 		      .format(token_klass, token, token)
 		raise Exception("{}\n\n{}\n".format(str(e), err))
 
+
 def list_all_files():
 	result = []
 	for folder in locations_to_translate:
@@ -138,6 +140,7 @@ def list_all_files():
 				if filename.endswith('.yaml') and filename not in files_to_skip:
 					result.append(os.path.join(directory, filename))
 	return sorted(result)
+
 
 def content_from_file(filename):
 	with open(filename, 'r') as f:
@@ -177,6 +180,7 @@ def content_from_file(filename):
 		return '"""{}"""\n{}\n'.format(filename, '\n'.join(strings))
 	else:
 		return ''
+
 
 filesnippets = (content_from_file(filename) for filename in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')

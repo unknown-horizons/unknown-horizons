@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2015-01-09 21:00+0200\n"
-"Last-Translator: Vlad Topala <topalavlad@gmail.com>\n"
+"PO-Revision-Date: 2017-09-17 23:08+0000\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/uh/voices/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -49,11 +49,11 @@ msgstr "Un jucător isi creează o nouă asezare."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr ""
+msgstr "Unul dintre amicii tai a fondat un asezamant"
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr ""
+msgstr "Un rival a fondat o nouă așezare!"
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
@@ -61,11 +61,11 @@ msgstr ""
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Unul dintre oponenți se află in expansiune."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr ""
+msgstr "Aliatul nostru a descălecat pe o altă insulă."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."

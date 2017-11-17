@@ -124,7 +124,6 @@ class BuildingIndexer:
 			return self._map[coords].get_num_buildings_in_range()
 
 
-
 class BuildingIndex:
 	"""
 	Indexes buildings around a tile to improve nearby building lookup speed.

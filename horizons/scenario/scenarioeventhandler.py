@@ -38,7 +38,7 @@ class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
 			msg = "Invalid scenario file."
-		super(InvalidScenarioFileFormat, self).__init__(msg)
+		super().__init__(msg)
 
 
 class ScenarioEventHandler(LivingObject):
@@ -82,7 +82,6 @@ class ScenarioEventHandler(LivingObject):
 			self._apply_data(self._parse_yaml_file(scenariofile))
 
 		self.sleep_ticks_remaining = 0
-
 
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds

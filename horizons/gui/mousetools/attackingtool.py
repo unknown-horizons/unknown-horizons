@@ -37,7 +37,7 @@ class AttackingTool(SelectionTool):
 	send_hover_instances_update = False
 
 	def __init__(self, session):
-		super(AttackingTool, self).__init__(session)
+		super().__init__(session)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
@@ -59,10 +59,10 @@ class AttackingTool(SelectionTool):
 			evt.consume()
 		else:
 			self.deselect_at_end = False
-			super(AttackingTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 
 	def mouseMoved(self, evt):
-		super(AttackingTool, self).mouseMoved(evt)
+		super().mouseMoved(evt)
 		target = self._get_attackable_instance(evt)
 		if target:
 			horizons.globals.fife.set_cursor_image("attacking")

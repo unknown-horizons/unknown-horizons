@@ -75,6 +75,8 @@ class Shape:
 		raise TypeError("No distance defined between {} and {}".format(co1, co2))
 
 # Convenience methods so you can use 'from horizons.util.shapes import Circle, Rect'
+
+
 from horizons.util.shapes.point import ConstPoint, Point # isort:skip
 from horizons.util.shapes.rect import ConstRect, Rect # isort:skip
 from horizons.util.shapes.annulus import Annulus # isort:skip

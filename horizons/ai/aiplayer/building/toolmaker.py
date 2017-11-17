@@ -36,6 +36,7 @@ class AbstractToolmaker(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.TOOLMAKER] = cls
 
+
 class ToolmakerEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -61,5 +62,6 @@ class ToolmakerEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.BRICKYARD
+
 
 AbstractToolmaker.register_buildings()

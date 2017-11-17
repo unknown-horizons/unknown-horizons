@@ -34,7 +34,7 @@ from horizons.world.production.producer import Producer
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):
-		super(PlayerStats, self).__init__()
+		super().__init__()
 		self.player = player
 		self.db = player.session.db
 		self._collect_info()

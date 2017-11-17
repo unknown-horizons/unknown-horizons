@@ -45,6 +45,7 @@ class AbstractClayPit(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.CLAY_PIT] = cls
 
+
 class ClayPitEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -56,5 +57,6 @@ class ClayPitEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.CLAY_PIT
+
 
 AbstractClayPit.register_buildings()

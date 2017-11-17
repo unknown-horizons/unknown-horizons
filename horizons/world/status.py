@@ -39,6 +39,8 @@ Priority:
 [2000-3000[: high
 Keep the numbers unique to avoid confusion when sorting.
 """
+
+
 class StatusIcon:
 	# integer
 	priority = None # type: int
@@ -66,11 +68,13 @@ class StatusIcon:
 	def __str__(self):
 		return str(self.__class__) + "(prio:{},icon:{})".format(self.priority, self.icon)
 
+
 class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """
 	priority = 3000
 	icon = 'as_pestilence+idle+45'
 	_helptext = LazyT("The inhabitants are infected by the Black Death!")
+
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
@@ -84,6 +88,7 @@ class SettlerUnhappyStatus(StatusIcon):
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
 	helptext = LazyT("These residents are unhappy.")
+
 
 class SettlerNotConnectedStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
@@ -101,7 +106,7 @@ class InventoryFullStatus(StatusIcon):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__(instance)
+		super().__init__(instance)
 		self.reslist = reslist
 
 

@@ -36,6 +36,7 @@ class AbstractTobacconist(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.TOBACCONIST] = cls
 
+
 class TobacconistEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -68,5 +69,6 @@ class TobacconistEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.TOBACCONIST
+
 
 AbstractTobacconist.register_buildings()

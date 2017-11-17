@@ -33,7 +33,7 @@ class FPSDisplay(ABox):
 	"""
 
 	def __init__(self):
-		super(FPSDisplay, self).__init__()
+		super().__init__()
 
 		self._label = Label(text="- - -")
 		self.addChild(self._label)
@@ -51,11 +51,11 @@ class FPSDisplay(ABox):
 
 	def show(self):
 		ExtScheduler().add_new_object(self._update, self, loops=-1)
-		return super(FPSDisplay, self).show()
+		return super().show()
 
 	def hide(self):
 		ExtScheduler().rem_call(self, self._update)
-		return super(FPSDisplay, self).hide()
+		return super().hide()
 
 	def toggle(self):
 		if (Fife.getVersion() <= (0, 3, 5)):

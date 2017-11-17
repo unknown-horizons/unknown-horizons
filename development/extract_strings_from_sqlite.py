@@ -69,20 +69,20 @@ db_session = Session()
 Base = sqlalchemy.ext.declarative.declarative_base()
 
 
-
 #
 # Classes
 #
-
 class Message(Base):
 	__tablename__ = 'message_text'
 
 	text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
+
 class Resource(Base):
 	__tablename__ = 'resource'
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+
 
 class Tier(Base):
 	__tablename__ = 'tier'
@@ -92,6 +92,7 @@ class Tier(Base):
 #
 # print it
 #
+
 
 class MSGID_collect:
 	msgids = defaultdict(list)
@@ -109,8 +110,10 @@ class MSGID_collect:
 			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
+
 def build_msgid(msgid):
 	return 'msgid "{}"\nmsgstr ""\n'.format(msgid.replace('"', '\\"'))
+
 
 def collect_all():
 	collector = MSGID_collect()

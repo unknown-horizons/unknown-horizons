@@ -39,7 +39,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(ImproveCollectorCoverageGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}

@@ -35,7 +35,7 @@ class DoNothingGoal(Goal):
 
 	@property
 	def active(self):
-		return super(DoNothingGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def update(self):
 		""" whether to do nothing and if so then how important it is """

@@ -62,7 +62,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def  __init__(self, instance):
 		self._animations = []
-		super(ProductionOverviewTab, self).__init__(instance=instance)
+		super().__init__(instance=instance)
 
 	def get_displayed_productions(self):
 		"""List all possible productions of a buildings sorted by production line id.
@@ -133,7 +133,7 @@ class ProductionOverviewTab(OverviewTab):
 			})
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			parent_container.addChild(container)
-		super(ProductionOverviewTab, self).refresh()
+		super().refresh()
 
 	def _center_production_line(self, parent_container, production):
 		"""Centers in/out production line display for amount of resources each.
@@ -247,17 +247,17 @@ class ProductionOverviewTab(OverviewTab):
 			container.addChild(image_button)
 
 	def show(self):
-		super(ProductionOverviewTab, self).show()
+		super().show()
 		Scheduler().add_new_object(Callback(self._refresh_utilization),
 		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
-		super(ProductionOverviewTab, self).hide()
+		super().hide()
 		self._cleanup()
 
 	def on_instance_removed(self):
 		self._cleanup()
-		super(ProductionOverviewTab, self).on_instance_removed()
+		super().on_instance_removed()
 
 	def _cleanup(self):
 		Scheduler().rem_all_classinst_calls(self)
@@ -273,7 +273,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 	"""Same as ProductionOverviewTab but add a button to fill range with trees.
 	"""
 	def init_widget(self):
-		super(LumberjackOverviewTab, self).init_widget()
+		super().init_widget()
 		container = ABox(position=(20, 210))
 		icon = Icon(name='build_all_bg')
 		button = ImageButton(name='build_all_button')

@@ -30,7 +30,7 @@ from horizons.util.difficultysettings import DifficultySettings
 class StartGameOptions:
 
 	def __init__(self, game_identifier):
-		super(StartGameOptions, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.game_identifier = game_identifier
 		self._player_list = None
 

@@ -38,4 +38,5 @@ class AbstractTree(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.TREE] = cls
 
+
 AbstractTree.register_buildings()

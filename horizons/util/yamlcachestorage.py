@@ -39,7 +39,7 @@ class YamlCacheStorage:
 	version = 1
 
 	def __init__(self, filename):
-		super(YamlCacheStorage, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self._filename = filename
 		self._data = {}
 

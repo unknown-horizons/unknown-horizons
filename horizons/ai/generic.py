@@ -35,14 +35,14 @@ class GenericAI(Player):
 	shipStates = Enum('idle', 'moving_random')
 
 	def __init__(self, *args, **kwargs):
-		super(GenericAI, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.__init()
 
 	def __init(self):
 		self.ships = weakref.WeakValueDictionary() # {ship : state}. used as list of ships and structure to know their state
 
 	def _load(self, db, worldid):
-		super(GenericAI, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.__init()
 
 	def send_ship(self, ship):
@@ -73,4 +73,4 @@ class GenericAI(Player):
 
 	def end(self):
 		self.ships = None
-		super(GenericAI, self).end()
+		super().end()

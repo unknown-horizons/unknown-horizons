@@ -30,7 +30,7 @@ from horizons.util.startgameoptions import StartGameOptions
 
 class EditorStartMenu(Window):
 	def __init__(self, windows):
-		super(EditorStartMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._gui = load_uh_widget('editor_start_menu.xml')
 		self._gui.position_technique = "center:center"

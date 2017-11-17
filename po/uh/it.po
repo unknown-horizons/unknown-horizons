@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2016-07-04 11:19+0000\n"
-"Last-Translator: mauro buscemi <buscemi.mauro@gmail.com>\n"
+"PO-Revision-Date: 2017-08-20 13:46+0000\n"
+"Last-Translator: Idesmi <idesmi@protonmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.7-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -220,16 +220,12 @@ msgid "Running costs"
 msgstr "Costi ricorrenti"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Per costruire una barca cliccare su una delle schede di classe, selezionare "
-"la nave desiderata e confermare l'ordine."
+"Per costruire un'unità di terra, clicca su una delle schede di classe, "
+"seleziona l'unità di terra desiderata e conferma l'ordine."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -298,10 +294,8 @@ msgstr "Confermare l'ordine"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Accedi alla partita selezionata"
+msgstr "(come nelle schede di selezione)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -314,24 +308,24 @@ msgstr "Accedi alla partita selezionata"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
@@ -3552,106 +3546,100 @@ msgstr "Non Pronto"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Protocollo multigiocatore antiquato o non supportato. Controlla la tua "
+"versione del gioco"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Hai superato la dimensione del pacchetto globale."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "Questo non dovrebbe mai succedere. Contattaci o invia un bug report."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Hai superato la dimensione del pacchetto."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Pacchetto sconosciuto o malformato. Controlla la tua versione del gioco"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Sessione invalida/sconosciuta"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Non puoi partecipare a una partita mentre sei in un'altra partita"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Partita sconosciuta o la partita sta eseguendo una versione diversa"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "La partita è già comiciata. Non puoi più unirti"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "La partita è piena"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Inserire la password:"
+msgstr "Password errata"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "C'è già un giocatore col tuo nome nella partita"
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Cambia il tuo nome"
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "C'è già un giocatore col tuo colore nella partita."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Hai cambiato colore"
+msgstr "Cambia il tuo colore."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"C'è già un giocatore col tuo unico ID giocatore in questa partita. Non "
+"dovrebbe mai accadere."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Non sei più pronto"
+msgstr "Non sei in partita"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Impossibile connettersi al server."
+msgstr "Impossibile cambiare il tuo nome."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Hai cambiato colore"
+msgstr "Impossibile cambiare il tuo colore."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "Non è possibile cambiare la velocità di una partita a più giocatori"
+msgstr "Non puoi recuperare una partita mentre sei in un'altra partita"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "La partita è stata terminata. Il creatore ha lasciato il gioco."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Un giocatore ha terminato la sua partita. Per ragioni tecniche, questo "
+"significa che il gioco non può continuare. Siamo spiacenti."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3951,16 +3939,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Una nuova nave chiamata {name} è stata creata."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Una nuova nave chiamata {name} è stata creata."
+msgstr "Il Soldato col nome di {name} è pronto a combattere."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Una nuova nave chiamata {name} è stata creata."
+msgstr "L'abitante col nome di {name} è disponibile."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -4187,7 +4173,7 @@ msgstr "cannone"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "spada"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -4378,7 +4364,7 @@ msgstr "Luppolo"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "birra"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"

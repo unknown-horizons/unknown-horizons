@@ -20,7 +20,6 @@
 # ###################################################
 
 
-
 import logging
 import operator
 from collections import namedtuple
@@ -76,11 +75,10 @@ class Collector(Unit):
 	              'decommissioned', # fisher ship: When home building got demolished. No more collecting.
 	              )
 
-
 	# INIT/DESTRUCT
 
 	def __init__(self, x, y, slots=1, start_hidden=True, **kwargs):
-		super(Collector, self).__init__(slots=slots,
+		super().__init__(slots=slots,
 		                                x=x, y=y,
 		                                **kwargs)
 
@@ -105,7 +103,7 @@ class Collector(Unit):
 		self._abort_collector_job()
 		self.hide()
 		self.job = None
-		super(Collector, self).remove()
+		super().remove()
 
 	def _abort_collector_job(self):
 		if self.job is None or self.state == self.states.moving_home:
@@ -121,7 +119,7 @@ class Collector(Unit):
 	# SAVE/LOAD
 
 	def save(self, db):
-		super(Collector, self).save(db)
+		super().save(db)
 
 		# save state and remaining ticks for next callback
 		# retrieve remaining ticks according current callback according to state
@@ -150,7 +148,7 @@ class Collector(Unit):
 				   self.worldid, obj_id, entry.res, entry.amount)
 
 	def load(self, db, worldid):
-		super(Collector, self).load(db, worldid)
+		super().load(db, worldid)
 
 		# load collector properties
 		state_id, remaining_ticks, start_hidden = \
@@ -206,7 +204,6 @@ class Collector(Unit):
 			# job finishes in remaining_ticks ticks
 			Scheduler().add_new_object(self.finish_working, self, remaining_ticks)
 
-
 	# GETTER
 
 	def get_home_inventory(self):
@@ -226,7 +223,6 @@ class Collector(Unit):
 	def get_job(self):
 		"""Returns the next job or None"""
 		raise NotImplementedError
-
 
 	# BEHAVIOR
 	def search_job(self):
@@ -450,14 +446,15 @@ class Collector(Unit):
 
 	def __str__(self):
 		try:
-			return super(Collector, self).__str__() + "(state={})".format(self.state)
+			return super().__str__() + "(state={})".format(self.state)
 		except AttributeError: # state has not been set
-			return super(Collector, self).__str__()
+			return super().__str__()
 
 
 class Job:
 	"""Data structure for storing information of collector jobs"""
 	ResListEntry = namedtuple("ResListEntry", ["res", "amount", "target_inventory_full"])
+
 	def __init__(self, obj, reslist):
 		"""
 		@param obj: ResourceHandler that provides res
@@ -507,7 +504,7 @@ class JobList(list):
 		@param collector: collector instance
 		@param job_order: instance of order_by-Enum
 		"""
-		super(JobList, self).__init__()
+		super().__init__()
 		self.collector = collector
 		# choose actual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)

@@ -37,7 +37,7 @@ class FleetMission(Mission):
 
 	def __init__(self, success_callback, failure_callback, ships):
 		assert ships, "Attempt to create a fleet mission out of 0 ships"
-		super(FleetMission, self).__init__(success_callback, failure_callback, ships[0].owner)
+		super().__init__(success_callback, failure_callback, ships[0].owner)
 		self.__init()
 		self._init_fleet(ships)
 
@@ -67,7 +67,7 @@ class FleetMission(Mission):
 			self.owner.ships[ship] = self.owner.shipStates.on_a_mission
 
 	def save(self, db):
-		super(FleetMission, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_fleet_mission (rowid, owner_id, fleet_id, state_id, combat_phase) VALUES(?, ?, ?, ?, ?)", self.worldid,
 			self.owner.worldid, self.fleet.worldid, self.state.index, self.combat_phase)
 
@@ -79,7 +79,7 @@ class FleetMission(Mission):
 		return self
 
 	def _load(self, db, worldid, success_callback, failure_callback, owner):
-		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, owner)
+		super().load(db, worldid, success_callback, failure_callback, owner)
 		self.__init()
 
 		fleet_id, state_id, combat_phase = db("SELECT fleet_id, state_id, combat_phase FROM ai_fleet_mission WHERE rowid = ?", worldid)[0]
@@ -144,7 +144,7 @@ class FleetMission(Mission):
 		self.report_failure(msg)
 
 	def __str__(self):
-		return super(FleetMission, self).__str__() + \
+		return super().__str__() + \
 		(' using {}'.format(self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
 		('(mission state:{},'.format(self.state if hasattr(self, 'state') else 'unknown state')) + \
 		('combat_phase:{})'.format(self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))

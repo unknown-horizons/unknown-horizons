@@ -53,6 +53,7 @@ class Utilization:
 						                      limit, capac < limit )
 		return self._old_capacity_utilization[2]
 
+
 class FullUtilization(Utilization):
 	"""Used for producers where no utilization calculation is necessary"""
 

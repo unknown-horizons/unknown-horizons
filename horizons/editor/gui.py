@@ -115,7 +115,7 @@ class IngameGui(LivingObject):
 			self.cursor.end()
 			self.cursor = None
 
-		super(IngameGui, self).end()
+		super().end()
 
 	def handle_selection_group(self, num, ctrl_pressed):
 		# Someday, maybe cool stuff will be possible here.
@@ -205,7 +205,7 @@ class SettingsTab(TabInterface):
 	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
-		super(SettingsTab, self).__init__(widget=self.widget)
+		super().__init__(widget=self.widget)
 
 		self._world_editor = world_editor
 		self._current_tile = 'sand'

@@ -124,6 +124,7 @@ def print_n_no_name(n, text):
 	print('\tWarning: ', end=' ')
 	print('{} without name. Add unique name if desired: text="{}"'.format(n, text))
 
+
 def list_all_files():
 	result = []
 	walker = os.walk('content/gui/xml')
@@ -132,6 +133,7 @@ def list_all_files():
 			if filename.endswith('.xml'):
 				result.append(('{}/{}'.format(root, filename), filename not in files_to_skip))
 	return sorted(result)
+
 
 def content_from_element(element_name, parse_tree, attribute):
 	"""Extracts text content of one attribute from a widget in the DOM.
@@ -177,6 +179,7 @@ def content_from_element(element_name, parse_tree, attribute):
 
 	return ''.join(sorted(element_strings))
 
+
 def content_from_file(filename, parse=True):
 	"""Set parse=False if you want to list the widget in guitranslations,
 	but not the strings. Usually because those strings are not reasonable
@@ -203,6 +206,7 @@ def content_from_file(filename, parse=True):
 		return empty()
 
 	return FILE.format(filename=printname, entries=strings)
+
 
 filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)

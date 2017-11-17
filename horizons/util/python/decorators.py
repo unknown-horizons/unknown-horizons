@@ -83,7 +83,7 @@ def temporary_cachedmethod(timeout):
 	"""
 	class _temporary_cachedmethod(cachedmethod):
 		def __init__(self, func, timeout):
-			super(_temporary_cachedmethod, self).__init__(func)
+			super().__init__(func)
 			self.timeout = timeout
 			self.cache_dates = {} # type: Dict[Tuple[Any, FuncArgs, FuncKwargsTuple], Any]
 
@@ -100,7 +100,7 @@ def temporary_cachedmethod(timeout):
 			else:
 				self.cache_dates[key] = time.time() # new entry
 
-			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
+			return super().__call__(*args, **kwargs)
 
 	return functools.partial(_temporary_cachedmethod, timeout=timeout)
 
@@ -108,6 +108,7 @@ def temporary_cachedmethod(timeout):
 # Licensed under MIT
 # A cached property is a read-only property that is calculated on demand and automatically cached.
 # If the value has already been calculated, the cached value is returned.
+
 
 def cachedproperty(f):
 	"""returns a cached property that is calculated by function f"""

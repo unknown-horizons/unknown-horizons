@@ -33,7 +33,7 @@ from horizons.util.startgameoptions import StartGameOptions
 class PauseMenu(Window):
 
 	def __init__(self, session, ingame_gui, windows, in_editor_mode=False):
-		super(PauseMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._session = session
 		self._ingame_gui = ingame_gui
@@ -72,7 +72,7 @@ class PauseMenu(Window):
 		})
 
 	def open(self):
-		super(PauseMenu, self).open()
+		super().open()
 		PauseCommand(suggestion=True).execute(self._session)
 
 	def show(self):
@@ -82,7 +82,7 @@ class PauseMenu(Window):
 		self._gui.hide()
 
 	def close(self):
-		super(PauseMenu, self).close()
+		super().close()
 		UnPauseCommand(suggestion=True).execute(self._session)
 
 	def _do_quit(self):

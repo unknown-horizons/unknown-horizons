@@ -30,11 +30,11 @@ class PlayersOverview(StatsWidget):
 	widget_file_name = 'players_overview.xml'
 
 	def __init__(self, session):
-		super(PlayersOverview, self).__init__(session)
+		super().__init__(session)
 		# this is supposed to run on the tick after the stats update
 
 	def refresh(self):
-		super(PlayersOverview, self).refresh()
+		super().refresh()
 		for player in sorted(self.session.world.players, key=lambda player: (-player.get_latest_stats().total_score, player.worldid)):
 			self._add_line_to_gui(player)
 		self._content_vbox.adaptLayout()

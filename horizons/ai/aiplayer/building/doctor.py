@@ -50,6 +50,7 @@ class AbstractDoctor(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.DOCTOR] = cls
 
+
 class DoctorEvaluator(BuildingEvaluator):
 	need_collector_connection = False
 	record_plan_change = False
@@ -75,5 +76,6 @@ class DoctorEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.DOCTOR
+
 
 AbstractDoctor.register_buildings()

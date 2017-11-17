@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-10-21 11:54+0000\n"
+"PO-Revision-Date: 2017-08-05 12:43+0000\n"
 "Last-Translator: Mayeul Cantan <mayeul.cantan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/tutorial/fr/>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.9-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -644,7 +644,7 @@ msgid ""
 msgstr ""
 "\n"
 "Après cette annonce, le marchand fera une escale chez vous pour regarder "
-"votre entrepôt, même s'il avait prévu de passer tout droit."
+"votre entrepôt, même s'il avait prévu de l'ignorer."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
@@ -1251,10 +1251,6 @@ msgstr ""
 "pour l'instant."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Another solution is to build the last tier-I building which has not been "
-#| "mentioned so far: the storage tent."
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the Storage Tent."
@@ -1430,7 +1426,7 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
-"Les meilleurs résultats ont été obtenus jusqu'à présent en joignant notre "
+"Les meilleurs résultats ont jusqu'à présent été obtenus en joignant notre "
 "canal IRC, essayez-le en premier (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).

@@ -60,7 +60,7 @@ class SelectableComponent(Component):
 		return TYPES[t](**arguments)
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None):
-		super(SelectableComponent, self).__init__()
+		super().__init__()
 		# resolve tab
 		from horizons.gui.tabs import resolve_tab
 		self.tabs = list(map(resolve_tab, tabs))
@@ -118,7 +118,7 @@ class SelectableComponent(Component):
 			group.discard(self)
 		if self._selected:
 			self.deselect()
-		super(SelectableComponent, self).remove()
+		super().remove()
 
 
 class SelectableBuildingComponent(SelectableComponent):
@@ -142,7 +142,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_fake_tiles.l = []
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None, range_applies_only_on_island=True):
-		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs, active_tab=active_tab)
+		super().__init__(tabs, enemy_tabs, active_tab=active_tab)
 		self.range_applies_only_on_island = range_applies_only_on_island
 
 	def initialize(self):
@@ -157,7 +157,7 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
-		super(SelectableBuildingComponent, self).select(reset_cam)
+		super().select(reset_cam)
 		self.set_selection_outline()
 		if self.instance.owner is None or not self.instance.owner.is_local_player:
 			return # don't show enemy ranges
@@ -177,7 +177,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""Runs neccassary steps to deselect the building.
 		Only deselects if this building has been selected."""
 		if self._selected:
-			super(SelectableBuildingComponent, self).deselect()
+			super().deselect()
 			renderer = self.session.view.renderer['InstanceRenderer']
 			renderer.removeOutlined(self.instance._instance)
 			renderer.removeAllColored()
@@ -306,7 +306,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_fake_tiles.l.append(inst)
 		renderer.addColored(inst, *cls.selection_color)
 
-
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
 		"""
@@ -325,7 +324,7 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
-		super(SelectableUnitComponent, self).select(reset_cam)
+		super().select(reset_cam)
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
 		self.session.view.add_change_listener(self.instance.draw_health)
@@ -334,7 +333,7 @@ class SelectableUnitComponent(SelectableComponent):
 		"""Runs necessary steps to deselect the unit."""
 		if not self._selected:
 			return
-		super(SelectableUnitComponent, self).deselect()
+		super().deselect()
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
 		self.instance.draw_health(remove_only=True)
 		# this is necessary to make deselect idempotent
@@ -345,7 +344,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the ship."""
-		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
+		super().select(reset_cam=reset_cam)
 
 		# add a buoy at the ship's target if the player owns the ship
 		if self.instance.owner.is_local_player:
@@ -355,7 +354,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 	def deselect(self):
 		"""Runs necessary steps to deselect the ship."""
 		if self._selected:
-			super(SelectableShipComponent, self).deselect()
+			super().deselect()
 			self.instance._update_buoy(remove_only=True)
 
 

@@ -32,18 +32,18 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 	POSSIBLE_WEAPONS = [ WEAPONS.CANNON ]
 
 	def __init__(self, *args, **kwargs):
-		super(Tower, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		# apply cannons already paid for
 		for weapon_type in self.__class__.POSSIBLE_WEAPONS:
 			for i in range(self.costs.get(weapon_type, 0)):
 				self.add_weapon_to_storage(weapon_type)
 
 	def fire_all_weapons(self, dest, rotate=True):
-		super(Tower, self).fire_all_weapons(dest, rotate)
+		super().fire_all_weapons(dest, rotate)
 
 	def update_range(self, caller=None):
 		self._fix_weapon_range()
-		super(Tower, self).update_range(caller=caller)
+		super().update_range(caller=caller)
 
 	def _fix_weapon_range(self):
 		"""Set all min weapon ranges to 0.
@@ -72,7 +72,7 @@ class Barrier(BasicBuilding, BuildableLine):
 			self.recalculate_orientation()
 
 	def remove(self):
-		super(Barrier, self).remove()
+		super().remove()
 		self.island.barrier_nodes.unregister(self)
 		self.recalculate_surrounding_tile_orientation()
 

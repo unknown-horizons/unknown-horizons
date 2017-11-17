@@ -39,13 +39,13 @@ class AnimalCollector(BuildingCollector):
 	kill_animal = False # whether we kill the animals
 
 	def __init__(self, *args, **kwargs):
-		super(AnimalCollector, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 
 	def load(self, db, worldid):
-		super(AnimalCollector, self).load(db, worldid)
+		super().load(db, worldid)
 
 	def apply_state(self, state, remaining_ticks=None):
-		super(AnimalCollector, self).apply_state(state, remaining_ticks)
+		super().apply_state(state, remaining_ticks)
 		if state == self.states.waiting_for_animal_to_stop:
 			# register at target
 			self.setup_new_job()
@@ -61,7 +61,7 @@ class AnimalCollector(BuildingCollector):
 					# when loading a game fails and the world is destructed again, the
 					# worldid may not yet have been resolved to an actual in-game object
 					self.job.object.remove_stop_after_job()
-		super(AnimalCollector, self).cancel(continue_action=continue_action)
+		super().cancel(continue_action=continue_action)
 
 	def begin_current_job(self):
 		"""Tell the animal to stop."""
@@ -86,7 +86,7 @@ class AnimalCollector(BuildingCollector):
 		"""Called when collector arrives at the animal. Move home with the animal"""
 		if self.__class__.kill_animal:
 			# get res now, and kill animal right after
-			super(AnimalCollector, self).finish_working()
+			super().finish_working()
 		else:
 			self.move_home(callback=self.reached_home)
 		self.get_animal() # get or kill animal
@@ -95,9 +95,9 @@ class AnimalCollector(BuildingCollector):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
 		if not self.__class__.kill_animal:
 			# sheep and herder are inside the building now, pretending to work.
-			super(AnimalCollector, self).finish_working(collector_already_home=True)
+			super().finish_working(collector_already_home=True)
 			self.release_animal()
-		super(AnimalCollector, self).reached_home()
+		super().reached_home()
 
 	def get_buildings_in_range(self, reslist=None):
 		return self.get_animals_in_range(reslist)
@@ -121,7 +121,7 @@ class AnimalCollector(BuildingCollector):
 		if target.has_collectors():
 			return None
 		else:
-			return super(AnimalCollector, self).check_possible_job_target_for(target, res)
+			return super().check_possible_job_target_for(target, res)
 
 	def stop_animal(self):
 		"""Tell animal to stop at the next occasion"""
@@ -143,6 +143,7 @@ class AnimalCollector(BuildingCollector):
 			self.log.debug("%s releasing animal %s", self, self.job.object)
 			Scheduler().add_new_object(self.job.object.search_job, self.job.object,
 			                           GAME_SPEED.TICKS_PER_SECOND)
+
 
 class HunterCollector(AnimalCollector):
 	kill_animal = True

@@ -114,7 +114,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		# TODO: remove this hack; introduced to battle the community Production moving from main squares to the warehouse
 		if self.id == BUILDINGS.MAIN_SQUARE:
 			return Entities.buildings[BUILDINGS.WAREHOUSE]
-		return super(AbstractVillageBuilding, self)._get_producer_building()
+		return super()._get_producer_building()
 
 	@classmethod
 	def register_buildings(cls):
@@ -122,5 +122,6 @@ class AbstractVillageBuilding(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.PAVILION] = cls
 		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL] = cls
 		cls._available_buildings[BUILDINGS.TAVERN] = cls
+
 
 AbstractVillageBuilding.register_buildings()

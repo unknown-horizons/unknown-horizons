@@ -48,6 +48,7 @@ from horizons.i18n import gettext as T
 
 text_translations = {} # type: Dict[str, Dict[Tuple[str, str], str]]
 
+
 def set_translations():
 	global text_translations
 	text_translations = {

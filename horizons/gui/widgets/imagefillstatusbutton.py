@@ -42,7 +42,7 @@ class ImageFillStatusButton(Container):
 		the inventory is for that resource. Derives from Container and also takes
 		all arguments of Imagebutton in order to display the resource icon.
 		This is meant to be used with the Inventory widget."""
-		super(ImageFillStatusButton, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.path = path
 		self.text = text
 		self.helptext = T(helptext)
@@ -98,6 +98,7 @@ class ImageFillStatusButton(Container):
 	filled = property(_get_filled, _set_filled)
 
 	__widget_cache = {} # type: Dict[Callback, ImageButton]
+
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call

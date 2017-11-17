@@ -234,6 +234,7 @@ def test_unfair(s, p):
 
 # TODO: stances
 
+
 @game_test(manual_session=True)
 def test_combat_save_load():
 	"""

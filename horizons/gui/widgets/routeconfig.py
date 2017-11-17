@@ -54,7 +54,7 @@ class RouteConfig(Window):
 	SLOTS_PER_ENTRY = 4
 
 	def __init__(self, windows, instance):
-		super(RouteConfig, self).__init__(windows)
+		super().__init__(windows)
 
 		self.instance = instance
 

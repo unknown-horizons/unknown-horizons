@@ -34,9 +34,12 @@ try:
 except ImportError:
 	from yaml import SafeLoader # type: ignore
 
+
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
+
+
 SafeLoader.add_constructor('tag:yaml.org,2002:python/unicode', construct_yaml_str)
 SafeLoader.add_constructor('tag:yaml.org,2002:str', construct_yaml_str)
 

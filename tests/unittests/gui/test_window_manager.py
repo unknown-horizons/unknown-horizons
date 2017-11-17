@@ -39,6 +39,7 @@ def test_trivial():
 	windows = WindowManager()
 	assert not windows.visible
 
+
 def test_open_hide():
 	windows = WindowManager()
 	window1 = DummyWindow(windows)
@@ -51,6 +52,7 @@ def test_open_hide():
 	assert windows.visible
 	assert not window1.visible
 	assert window2.visible
+
 
 def test_close():
 	windows = WindowManager()
@@ -70,6 +72,7 @@ def test_close():
 	assert not window2.visible
 	assert not windows.visible
 
+
 def test_toggle_single_window():
 	windows = WindowManager()
 	window1 = DummyWindow(windows)
@@ -79,6 +82,7 @@ def test_toggle_single_window():
 	assert window1.visible
 	windows.toggle(window1)
 	assert not window1.visible
+
 
 def test_toggle_multiple():
 	"""

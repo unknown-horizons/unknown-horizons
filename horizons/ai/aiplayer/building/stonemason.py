@@ -36,6 +36,7 @@ class AbstractStonemason(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.STONEMASON] = cls
 
+
 class StonemasonEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -57,5 +58,6 @@ class StonemasonEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.STONE_PIT
+
 
 AbstractStonemason.register_buildings()

@@ -96,4 +96,5 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.TOBACCO_FIELD] = cls
 		cls._available_buildings[BUILDINGS.HERBARY] = cls
 
+
 AbstractField.register_buildings()

@@ -47,20 +47,21 @@ class ProducerOverviewTabBase(OverviewTab):
 		"""The current instance's Producer compontent."""
 		return self.instance.get_component(Producer)
 
+
 class UnitbuilderTabBase(ProducerOverviewTabBase):
 	"""Tab Baseclass that can be used by unit builders."""
 
 	def show(self):
-		super(UnitbuilderTabBase, self).show()
+		super().show()
 		Scheduler().add_new_object(Callback(self.refresh), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
-		super(UnitbuilderTabBase, self).hide()
+		super().hide()
 		Scheduler().rem_all_classinst_calls(self)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		super(UnitbuilderTabBase, self).refresh()
+		super().refresh()
 
 		main_container = self.widget.findChild(name="UB_main_tab")
 		container_active = main_container.findChild(name="container_active")
@@ -204,6 +205,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		progress_perc = self.widget.findChild(name='UB_progress_perc')
 		progress_perc.text = '{progress}%'.format(progress=progress)
 
+
 class BoatbuilderTab(UnitbuilderTabBase):
 	widget = 'boatbuilder.xml'
 	helptext = LazyT("Boat builder overview")
@@ -220,11 +222,12 @@ class BoatbuilderTab(UnitbuilderTabBase):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
+
 class BoatbuilderSelectTab(ProducerOverviewTabBase):
 	widget = 'boatbuilder_showcase.xml'
 
 	def init_widget(self):
-		super(BoatbuilderSelectTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
@@ -342,7 +345,7 @@ class BoatbuilderConfirmTab(ProducerOverviewTabBase):
 	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
-		super(BoatbuilderConfirmTab, self).init_widget()
+		super().init_widget()
 		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 

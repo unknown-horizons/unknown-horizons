@@ -20,7 +20,6 @@
 # ###################################################
 
 
-
 import json
 import locale
 import logging
@@ -54,7 +53,7 @@ from .playerdataselection import PlayerDataSelection
 class SingleplayerMenu(Window):
 
 	def __init__(self, windows):
-		super(SingleplayerMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._mode = None
 

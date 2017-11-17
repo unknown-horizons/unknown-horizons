@@ -33,7 +33,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 	health_bar_y = -190
 
 	def __init__(self, x, y, **kwargs):
-		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		# add default weapons
 		for i in range(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
@@ -41,6 +41,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 	def go(self, x, y):
 		self.get_component(CommandableComponent).go(x, y)
+		print("Ship moved to coordinates: ({}, {})".format(x, y))
 		self.stop_attack()
 		print("Moving ship to ({},{}).".format(x, y))
 
@@ -48,8 +49,9 @@ class FightingShip(MovingWeaponHolder, Ship):
 		"""
 		Fire weapons at rotated coordinates
 		"""
-		super(FightingShip, self).fire_all_weapons(dest, rotate)
-		print("Weapons fired!")
+
+		super().fire_all_weapons(dest, rotate)
+    print("Weapons fired!")
 
 	def act_attack(self, dest):
 		"""

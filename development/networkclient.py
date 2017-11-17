@@ -38,11 +38,14 @@ import horizons.network
 
 #-------------------------------------------------------------------------------
 
+
 class AlarmException(Exception):
 	pass
 
+
 def alarmhandler(signum, frame):
 	raise AlarmException
+
 
 def nbrawinput(prompt='', timeout=1):
 	signal.signal(signal.SIGALRM, alarmhandler)
@@ -58,8 +61,10 @@ def nbrawinput(prompt='', timeout=1):
 
 #-------------------------------------------------------------------------------
 
+
 def usage():
 	print("Usage: {} -h host -p port".format(sys.argv[0]))
+
 
 def onquit(*args):
 	try:
@@ -68,13 +73,16 @@ def onquit(*args):
 		"""ignore the errors"""
 	sys.exit(0)
 
+
 def onconnect(*args):
 	global client
 	client.connect()
 
+
 def ondisconnect(*args):
 	global client
 	client.disconnect()
+
 
 def onlist(*args):
 	global client
@@ -86,6 +94,7 @@ def onlist(*args):
 				.format(game.uuid, game.mapname, game.maxplayers, game.playercnt, game.name))
 	else:
 		print("No games available")
+
 
 def oncreate(*args):
 	global client
@@ -102,6 +111,7 @@ def oncreate(*args):
 	except (ValueError, IndexError):
 		print("Maxplayers must be an integer")
 
+
 def onjoin(*args):
 	global client
 	if len(args) != 1:
@@ -116,22 +126,28 @@ def onjoin(*args):
 	except ValueError:
 		print("Invalid UUID")
 
+
 def onleave(*args):
 	global client
 	client.leavegame()
+
 
 def onchat(*args):
 	global client
 	client.chat(u' '.join(args))
 
+
 def cb_onchat(game, player, msg):
 	print("[ONCHAT] [{}] {}: {}".format(game.uuid, player, msg))
+
 
 def cb_onjoin(game, player):
 	print("[ONJOIN] [{}] {} joins".format(game.uuid, player))
 
+
 def cb_onleave(game, player):
 	print("[ONLEAVE] [{}] {} leaves".format(game.uuid, player))
+
 
 def cb_onchangename(game, oldplayer, newplayer, myself):
 	global name
@@ -141,14 +157,18 @@ def cb_onchangename(game, oldplayer, newplayer, myself):
 		name = newplayer.name
 		print("[NAME] My new name is {}".format(name))
 
+
 def cb_ongameprepare(game):
 	print("[ONGAMEPREPARE]")
+
 
 def cb_ongamestarts(game):
 	print("[ONGAMESTART]")
 
+
 def cb_ongamedata(data):
 	print("[ONGAMEDATA]: {}".format(data))
+
 
 def onauto(*args):
 	global client
@@ -175,12 +195,14 @@ def onauto(*args):
 		print("  Player: {}".format(player.name))
 	client.chat("I am here guys. Game can start")
 
+
 def ongamedata(*args):
 	global client
 	if client.mode is not ClientMode.Game:
 		print("[ERROR] Client not in game mode")
 		return
 	client.send(u' '.join(args))
+
 
 def onname(*args):
 	global name, client
@@ -190,6 +212,7 @@ def onname(*args):
 			return
 		name = unicode(args[0])
 	print("[NAME] My name is {}".format(name))
+
 
 def onstatus(*args):
 	global name, client
@@ -204,6 +227,7 @@ def onstatus(*args):
 		for player in client.game.players:
 			print("[STATUS]  Player: {}".format(player.name))
 
+
 def onhelp(*args):
 	global commands, prompt
 	print("Available commands:")
@@ -211,6 +235,7 @@ def onhelp(*args):
 		print("  {}".format(command))
 
 #-------------------------------------------------------------------------------
+
 
 host = None
 port = 0

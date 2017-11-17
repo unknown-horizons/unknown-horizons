@@ -105,9 +105,8 @@ class UnitProduction(ChangingProduction):
 		# do part of production and call this again when done
 		Scheduler().add_new_object(self._produce, self, prod_time)
 
-
 	def _finished_producing(self, **kwargs):
-		super(UnitProduction, self)._finished_producing(continue_producing=False, **kwargs)
+		super()._finished_producing(continue_producing=False, **kwargs)
 		self._state = PRODUCTION.STATES.done
 		# reset prodline
 		self._prod_line = self._prod_line.get_original_copy()

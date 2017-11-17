@@ -25,7 +25,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - Questo è il tuo Diario, dove troverai informazioni importanti riguardo lo scenario attuale. Un sommario con le notifiche delle nuove missioni apparirà nella parte sinistra della schermata. Potrai muoverti col mouse su queste notifiche per leggerne il contenuto, o cliccarci di sopra per aprire il Diario.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - Puoi anche aprire il Diario ogni volta che vuoi cliccando sul bottone sotto la mini-mappa, in alto a destra sullo schermo. Da adesso faremo riferimento a quest'area che contiene la mini-mappa, i vari bottoni e le schede come "Panoramica".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -655,4 +655,4 @@ metadata:
   locale: it
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 114 translated messages, 68 fuzzy translations, 6 untranslated messages.
+  translation_status: 115 translated messages, 67 fuzzy translations, 6 untranslated messages.
