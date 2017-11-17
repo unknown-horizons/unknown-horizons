@@ -49,7 +49,6 @@ class FightingShip(MovingWeaponHolder, Ship):
 		"""
 		Fire weapons at rotated coordinates
 		"""
-
 		super().fire_all_weapons(dest, rotate)
     print("Weapons fired!")
 
