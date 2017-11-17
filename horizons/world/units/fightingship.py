@@ -77,7 +77,8 @@ class FightingShip(MovingWeaponHolder, Ship):
 		side = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
 		# calculate x4 y4 the new facing location coords
 		# they are calculated by rotating 90' the target location
-		if side > 0:
+		#if side > 0: check if it should be: if side > 0: or if (side or 0) > 0:
+		if (side or 0) > 0:
 			x4 = y1 - y2 + x1
 			y4 = x2 - x1 + y1
 			direction = 'left'
