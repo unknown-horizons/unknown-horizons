@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Построй склад на брега, така че да е лесно достъпен за други кораби като Свободен Търговец.']
+  - [Message, 'Построй Склад на брега, за да позволиш на корабите да посещават твоето селище.']
   - '
 
 
@@ -24,370 +24,365 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Това е капитанският ти дневник в който се съхранява всяка важна информация. Кратко описание за всяка предстояща задача ще се появява в лявата част на екрана.
-  - Ако се нуждаеш от по-подробно описание, капитанския дневник ще ти окаже нужната помощ.
-  - След затваряне на дневника, той може да бъде отворен отново чрез икона "Дневник на капитана" в горния десен ъгъл (под мини-картата, представляваща свитък с перо).
+  - Това е твоят Дневник, където се съдържа важната информация за сегащният сценарий. Резюме на всяка задача ще се появява също като 'бутон с известие' на левата страна на екрана. Можете да задържите мивката върху тях, за да прочетете резюмето или да натиснете бутона, за да отворите директно Дневника.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    За да видиш първата си задача, натисни бутон "Чети следващ запис" в навигационния панел! Той изглежда така:'
+    За да видите своята първа задача, обърнете на следващата страница от Дневника, използвайки бутона в дъното на съседната страница - той изглежда по този начин:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    За всякакви предложения с по-добро описание, действия които желаете да бъдат описани или забелязани "бъгове" : Моля уведомете ни и ще се опитаме да подобрим учебника!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Посетете www.unknown-horizons.org за помощ как да се свържете с екипа!'
-  - А сега, нека започне истинската игра.
+    Посетете www.unknown-horizons.org, за да видите как можете да се свържете с екипа ни.'
+  - ''
+  - И сега, нека играта започне!
   - [Pagebreak]
-  - [Headline, 'НОВА ЗАДАЧА: ЗАСЕЛЕТЕ СЕ НА ОСТРОВА']
+  - [Headline, 'НОВА ЗАДАЧА: СЪЗДАЙ СЕЛИЩЕ']
   - [Image, content/gui/images/background/hr.png]
-  - За да придвижите кораба го изберете с ляв клик на мишката, а с десен клик посочете мястото на което искате да отиде.
-  - След като се доближите до брега, бутона "котва" който виждате в полето за описание ще стане активен.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - За да придвижите своя кораб, изберете го със натискане на левия бутон на мишката и после натиснете с десния бутон на мишката върху мястото към което искате да отплава.
+  - Когато сте близо до брега, бутонът 'Построи Селище" в прегледа ще стане активен.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Това показва че можете да построите склад с натискането на този бутон (наречен "правене на заселване").
-  - Сега икона на постройката се появява на екрана и се движи когато местите курсора.
-  - 'Можете да строите на място където иконата↵
-
-    не е червена. Кликнете където желаете.'
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Постройте дърводелна и я свържете със склада като използвате "път".]
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙТЕ ДЪРВОДЕЛНА']
+  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - Строителните материали от кораба ви ще се разтоварят автоматично. Вече можете да строите някои оснонви сгради.
-  - Да започнем със строежа на дърводелна.
-  - Това е важно защото на този етап моряците могат да направят само палатки от клони покрити с платно.
-  - Рибарите също се нуждаят от дъски за да сглобят своите лодки.
-  - За да построите дърводелна, отворете меню "постройки" или с кликване на иконата под мини-картата или чрез натискане на бутон "B".
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Менюто "постройки" е йерархично.
-  - Вие се намирате на първо ниво (Моряци) затова имате достъп само до основните постройки.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    С напредъка на цивилизацията, ще достигате до по-сложни постройки.'
-  - За сега изберете дърводелна от "Компании" и я постройте в район с дървета около нея.
-  - Можете да засадите дървета по-късно - но това струва пари. Възползвайте се от това което ви дава приридата!
-  - Компанията винаги се нуждае от пътна връзка със склада, иначе стоките ще се натрупват в нея без да се разпространяват.
-  - Това означава че трябва да построите път свързващ склада с дърводелната.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Вижте как събирачът ще вземе вашите първи самостоятелно добити дъски. Не се грижете за обучаването на дърводелци. То става автоматично.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Постройте ловна хижа и рибарска хижа. Свържете ги със склада.]
-  - [Headline, 'НОВА ЗАДАЧА: ДОСТАВКА НА ХРАНА']
+  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
+  - [Headline, 'NEW TASK: FOOD SUPPLY']
   - [Image, content/gui/images/background/hr.png]
-  - Трябва да имате няколко хранителни компании, достатъчно понеже хората (особено моряците) са много гладни.
-  - Достъпни хранителни компании за първо ниво са Ловна и Риболовна хижа.
-  - Ловецът ловува животни в гората, затова се нуждае от дървета наблизо.
-  - Можете да разположите Ловната хижа близо до гората с дърводелната.
-  - Може да се получи така че животните да не се възпроизвеждат достатъчно бързо или да се крият добре.
-  - 'Заключение: Ловецът не е много надежден ако ви трябва дългосрочно снабдяване.'
+  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
+  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
+  - It can happen that the animals don't reproduce fast enough or simply hide well.
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
-    Риболовецът се нуждае от крайбрежна постройка подобна на склада и рибарско училище наблизо.'
-  - Той ще си построи малка гребна лодка и ще лови риба.
-  - Това е много постоянно снабдяване но с по-бавно добиване на единица храна.
-  - Малък заселник като вас трябва да използва и двете компании и ще може да балансира предимствата и недостатъците им.
+    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
+  - He will build a small rowing vessel and catch some fish.
+  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
+  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Не забравяйте да ги свържете с пътища до склада!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Постройте главен площад. Изберете област без много икономически постройки.]
-  - [Headline, 'НОВА ЗАДАЧА: ГЛАВЕН ПЛОЩАД']
+  - [Message, Build a Main Square. Choose an area without many economy buildings.]
+  - [Headline, 'NEW TASK: MAIN SQUARE']
   - [Image, content/gui/images/background/hr.png]
-  - Вашите жители се нуждаят от главен площад където могат да се снабдяват със стоки.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - Всички стоки от склада са достъпни и на това "пазарно място", така че жителите ви не трябва да ходят чак до рибарите или склада.
+  - Your residents need a main square where they can fetch their goods from.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Трябва да избягвате да строите колибите на заселниците много близо до дърводелни защото палатките препречват пътя до гората от която се нуждае дърводелеца.
-  - Компаниите работят без да са свързани с палатките , така че не ви е нужен път от площада до дърводелната например.
+  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
+  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Task: Build a Main Square.']
   - [Pagebreak]
   - '
 
-    Нека сега го погледнем отблизо.'
+    Now let''s have a closer look at the Main Square.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - В полето "Сметка" имате таблица баланс за този остров, включваща всички направени разходи и всички получени приходи.
-  - Точки "Продажби" и "Покупки" показват търговския ви баланс и ще бъдат обяснени по-късно.
-  - Ако балансът ви е положителен, вие общо взето сте на печалба.
+  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
+  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
+  - If your balance is positive, you all-in-all make a profit.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - В различните полета можете да видите статистики за заселниците. Можете да изберете с какъв данък да ги обложите да позволите или забраните да се развият до следващо по-високо ниво.
+  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
-  - [Headline, 'НОВА ЗАДАЧА: ЖИЛИЩНИ СГРАДИ']
+  - [Message, Build a Tent and connect it to the Main Square if necessary.]
+  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
   - [Image, content/gui/images/background/hr.png]
-  - Заселниците искат да имат покрив над главите си, иначе дори няма да си помислят да живеят във вашият град! Трябва да им предложите палатки.
+  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Палатките са основни жилищни сгради. Вашите жители ще искат да ги подобрявате когато преминават в по-високо ниво.
-  - Подобряването на всяка постройка изисква строителни материали, като дъски за техното първо подобряване.
-  - Ако нямате добри запаси от материали, може да изключите подобряването на постройките.
-  - Жителите може да не изглеждат много полезни защото консумират всички стоки които произведете - но те плащат данъци, а това е единственият начин да правите пари засега!
+  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
+  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
+  - Consider to disable the upgrade if your stock of these materials is low.
+  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
-  - [Message, Постройте поне три допълнителни палатки и ги свържете с главния площад.]
+  - [Message, Build at least three additional Tents and connect them to the Main Square.]
   - '
 
-    Погледнете полето за палатки.'
-  - 'Можете да видите:
+    Let''s have a look at the Tent overview tab.'
+  - 'You can see
 
-    *щастието на жителите
+    * the happiness of these residents,
 
-    *данъците които плащат
+    * the taxes they pay and
 
-    *стоките които търсят.'
-  - Ако търсенето им е удовлетворено, щастието им а и вашите данъци нарастват.
-  - Ако не, щастието и приходите намаляват. По някое време ще се разсърдят и просто ще напуснат града ви и ще заминат накъдето те си решат.
-  - От тук можете да променяте настройките за данъците.
+    * the resources they demand.'
+  - If their demands are fulfilled, happiness and thus your tax income increase.
+  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
+  - Note that you can also change the global tax settings here, too.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Task: Build at least three additional Tents.']
   - '
 
-    Подсказка: Натискането на SHIFT улеснява строенето на няколко еднакви постройки.'
+    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
 
 - &SIGNALFIRE
-  - [Message, Постройте морски фар на брега близо до склада.]
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙТЕ МОРСКИ ФАР']
+  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
+  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
   - [Image, content/gui/images/background/hr.png]
-  - Виждате ли кораб да преминава близо до острова отвреме на време? Този кораб принадлежи на Свободен Търговец, един от първите заселници на този архипелаг.
-  - Търговецът ще снабдява заселниците със стоки които вие все още не можете да произвеждате.
-  - Можете да продадете излишъкът от продукцията си, но общо взето по-печелившо е да построите повече палатки и да си ги консумирате вие.
-  - Обикновено търговецът само плава наоколо и следи за сделки, но вие можете да ускорите малко нещата.
+  - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
+  - The trader will supply your settlement with necessary goods which you can't produce yet.
+  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - За целта постройте морски фар на брега близо до склада. Той ще показва пътя на кораба към вашите заселници.
-  - Морсият фар има разстояние на което действа и насочва корабите които навлезнат в него.
+  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
+  - The Signal Fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - '
 
-    След тази малка реклама, търговецът ще спре и ще огледа склада ако планира да се отбива до него.'
-  - Можете да предложите сделка чрез полето на склада "Купи/Продай".
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
+  - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - В полето "моряци" имате три слота за търгуване.
-  - Кликнете върху малката икона за да промените режима от "Купи" на "Продай" и обратно.
-  - Кликнете в някой от слотовете за да изберете стока която да търгувате. По-късно ще ви обясним как да търгувате.
+  - At the 'sailors' tier, you are equipped with three trading slots.
+  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
+  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
 
 - &TRADING
-  - [Message, 'Достигнете количество 30 от стока, произвеждана на острова.']
-  - [Headline, 'НОВА ЗАДАЧА: НАУЧЕТЕ СЕ ДА ТЪГУВАТЕ']
+  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Headline, 'NEW TASK: LEARN TO TRADE']
   - [Image, content/gui/images/background/hr.png]
-  - 'Чудесно! Свободният Търговец сега ще спира от време на време при склада ви.
+  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
 
-    Нека продължим с урока как да търгуваме.'
-  - След избирането на определена стока, под слота се появява зелена лента показваща колко имате за продан от избраната стока.
-  - Местейки плъзгача отдясно на всеки слот, определяте вашата "целева стойност" която има различно значение за "Купи" и "Продай".
-  - Когато купувате, ще купите толкова че да постигнете тази стойност налице в склада.
-  - Когато продавате, ще можете да продадете само количеството в повече от "целевата стойност". Няма да можете да направите следваща продажба докато не произведете излишък над нея.
+    Let''s continue our tutorial on how to trade.'
+  - First click on your own Warehouse and click on the third tab.
+  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+  - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
+  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
+  - When buying, you will buy sufficient to hold your 'target value' in stock.
+  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
   - [Pagebreak]
   - '
 
-    Например:
+    For example:
 
-    Имаме "Купи" слот и наличност от 5 тона на склад, плъзгачът е поставен на 9 тона. Това означава че ще купиме 4 тона от стоката.'
-  - Продажбата работи по подобен начин. Слот "Продай" с 18 тона на склад и плъзгач поставен на 13 тона ще предизвика продажба на 5 тона.
-  - Ако свободният търговец иска да търгува по-малки количества от настройките ви, Ще трябва да почакате следващото му посещение.
-  - 'Unknown Horizons поддържа интелигентно ценообразуване, така че цените на стоките се променят.
+    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
+  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
+  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
+  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
 
-    НЕ Е ВЪЗМОЖНО ръчно да се променят цените на стоките!'
-  - Можете да следите търговския си баланс в поле "Сметка" съдържащо стойностите за "Покупки" и "Продажби".
+    It is NOT possible to change prices manually!'
+  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
   - ''
   - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Построй шатра свързана с път до палатките.]
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙ ШАТРА']
+  - [Message, Build a Pavilion with connection to the Tents.]
+  - [Headline, 'NEW TASK: BUILD A PAVILION']
   - [Image, content/gui/images/background/hr.png]
-  - Тези инструменти ще са достатъчни за монента. Добра работа!
-  - Сега предлагате жилища, главен площад и храна на жителите си.
-  - Остава още една необходимост която не е удовлетворена за сега, можете да проверите в пазара или полето за палатките - вашите моряци се нуждаят от място за молитви.
-  - Решението е шатра, която селският пастор бързо може да разпъне като заслон от слънцето.
-  - Обслужващи постройки като тази също трябва да се свържат с палатките чрез път. Иначе жителите няма да могат да стигнат до нея.
+  - Those tools will be enough for the moment. Well done!
+  - You now provide housing, a main square and food to your inhabitants.
+  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
+  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
+  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
-    Имайте в предвид, че вярата се третира като физически ресурс!'
-  - Това означава че вашите жители се нуждаят от пътна връзка до производителя (шатрата) за да се молят там.
-  - След време, те ще изконсумират ресурса и ще се нуждаят отново да отидат до производителя и да вземат още вяра.
-  - 'Важно:
+    Note that faith is treated like a physical resource!'
+  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
+  - After some time, they will have consumed it and then again look for a producer to collect more faith.
+  - 'Important:
 
-    Не е достатъчно шатрата да е близо до палатките.
+    It is NOT enough that the building is merely within a certain range of the Tents.
 
-    Необходим е път който да ги свързва.'
+    The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Нагласете нивото на данъци на Ниско (левия край) и чакайте вашите моряци да се усъвършенстват.]
-  - [Headline, 'СЛЕДВАЩА ЗАДАЧА: СЛЕДВАЩО НИВО']
+  - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
+  - [Headline, 'NEW TASK: NEXT TIER']
   - [Image, content/gui/images/background/hr.png]
-  - Всички нужди са удовлетворени, жителите ви могат редовно да посещават площада и шатрата, снабдяването с храна е достаъчно и редовно.
-  - Ако моряците са достатъчно щастливи, те ще поискат да се издигнат до следващо ниво наречено Пионери.
-  - За да ги направиш щастливи трябва само да намалиш данъците до най-ниското им ниво след като си удовлетворил всичките им други потребности.
-  - Не трябва постоянно да опитваш да намаляваш данъците защото рано или късно това ще те доведе до фалит. За известно време и ако знаеш какво правиш това е добра идея.
-  - След известно време, първият жител ще отиде до площада и ще потърси нови строителни материали за да построи дървена къща. Тази къща ще замени палатката.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
+  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
+  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
+  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
+  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - '
 
-    За тези жилищни усъвършенствания са необходими ресурси и по тази причина трябва да се ограничават от главния площад.'
-  - Има усъвършенствания на сградите без стойност, както ще видите при дърводелните. При тях се променя само изгледа на постройката.
-  - Усъвършенстваните постройки приютяват повече жители, освен това пионерите плащат повече данъци от моряците.
-  - Както сте забелязали вече, недостатък е че пионерите се нуждаят от допълнителни стоки които не са нужни на моряците - така че ще трябва да харчите повече пари за да ги направите щастливи.
+    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
+  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
+  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
+  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
   - ''
   - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Постройте ферма и оставете свободно място около нея.]
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙТЕ ФЕРМА']
+  - [Message, Build a Farm and keep some empty space around it.]
+  - [Headline, 'NEW TASK: BUILD A FARM']
   - [Image, content/gui/images/background/hr.png]
-  - Поздравления! Някои от жителите ви преминаха във второ ниво!
-  - Сега имате достъп до нови постройки, погледнете в меню "Построй".
+  - Congratulations! Some of your inhabitants have reached tier II!
+  - Now you have access to new buildings, take a look at the Build menu again.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - Бляскащо ново поле се появява там.
-  - Пионерите се нуждаят от дрехи, затова трябва да организирате производството им започвайки с  вълна (една от стоките произвеждани във фермата).
-  - Фермата е много специална производствена сграда понеже може да произвежда много (и различни) стоки ако изберете тази възможност.
-  - Продукцията на фермата зависи от това какви полета ще разположите около нея.
+  - A shiny new tab appeared there.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
+  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
+  - The output of Farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - '
 
-    По-късно ще направим подробно описание.'
-  - Фермите, като всички компании произвеждащи суровини, не се нуждаят на всяка цена от пътна връзка със склада.
-  - Но доколкото компаниите за крайна продукция трябва да я достигат и събирачите от склада то тя се нуждае от пътна връзка.
-  - Ако планирате производства в различни части от острова или на различни острови, ще ви е нужна връзка за събирачите.
-  - Постройте фермата не много близо д брега или съществуващи сгради понеже тя се нуждае от пространство за да работи.
+    We will have a closer look at this later.'
+  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
+  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
+  - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
+  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Task: Build a Farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Построй поне едно пасище и добави картофени ниви ако желаеш.]
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙ ФЕРМА']
+  - [Message, Build at least one pasture and add potato fields if you like.]
+  - [Headline, 'NEW TASK: BUILD FIELDS']
   - [Image, content/gui/images/background/hr.png]
-  - Фермата сама по себе си няма да произвежда нищо докато не добавим някои полета около нея.
-  - За сега имате избор между пасища, картофени или захарни ниви.
-  - 'Нека направим кратко описание:
+  - The Farm itself is not going to produce anything without some fields.
+  - You currently have the choice between pastures, potato and sugar fields.
+  - 'Let''s have a short overview:
 
-    *Пасище: Отглеждат се овце, произвежда се вълна.
+    * Pasture: Sheep live here, producing lamb wool.
 
-    *Картофена нива: Отглеждат се картофи които са храна.
+    * Potato Field: Grows potatoes which are currently treated as food.
 
-    *Захарни полета: Добива се захар която се използва за дестилиране на ликьор и (по-късно) за производство на сладкарски изделия.'
-  - За сега се нуждаем само от пасища, но ако не ви достига храна (много жилищни сгради) може да отглеждате и картофи.
-  - Имайте в предвид че ако отглеждате картофи ще ви е нужна пътна връзка (не с полето!) защото тогава тя ще е единствената компания която работи с тази стока.
+    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
+  - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
+  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
   - [Pagebreak]
   - '
 
-    Внимавайте всички полета които строите за фермата да са в нейния обхват.'
-  - Можете да имате комбинирано производство- едно пасище не може да натовари фермата ефективно (на 100%), ще трябва да проверявате колко полета може да обслужи една ферма.
-  - Различните видове полета натоварват фермата по раличен начин, за едни е нужно повече време за други по-малко. Поради това на моменти фермата не може да обслужва едновременно всички полета.
-  - За сега това не трябва да те притеснява тъй като са не са построени никакви полета. Нека го променим!
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
+  - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
+  - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Построй шатра склад (за ниво 1) на подходящо място.]
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙ СКЛАД']
+  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Headline, 'NEW TASK: BUILD STORAGE']
   - [Image, content/gui/images/background/hr.png]
-  - Поглеждал ли си скоро дърводелната си?
-  - Понеже склада няма неограничено място за съхранение на стоки, събирачите ще спрат да пренасят стоките от компаниите когато се запълни.
-  - Ако моряците не желаят да си усъвършенстват палатките, може да се натрупат много дъски и дърводелната да спре да работи.
-  - Можем да подобрим положението по два начина. Ще ги разгледаме и двата.
-  - 'Всички компании предлагат възможност да не работят.
+  - Did you watch your lumberjack recently?
+  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
+  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
+  - We can improve this situation in two different ways, and we will have a look at both of them below.
+  - 'All companies offer to do no work at all.
 
-    Това е странно, но кликване по иконата зъбно колело предлага описание.'
-  - Ако този режим "прекъсване" е активиран (наричаме го "Извеждане"), разходите за сградата намаляват значително. Не стават нула но са много по-ниски от активно състояние.
+    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
+  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    Това означава че можеш да спестиш пари когато не се нуждаеш от компанията а не искаш да я разрушиш.'
-  - 'Другото решение е да построиш последната постройка за ниво 1: Шатра склад.'
-  - 'Тази постройка има две предназначения. Тя:
+    This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
+  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
+  - 'This building has two purposes. It:
 
-    *Предлага повече складово място за стоки, и
+    * Offers more storage for your goods, and
 
-    *изпраща свои събирачи за пренасяне на стоки както прави и склада.'
-  - Когато склада се претовари с задачи за пренасяне от компаниите, можеш да го облекчиш като построиш шатра склад която да поеме част от работата.
+    * sends its own collectors to fetch goods, just like the Warehouse does.'
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, 'Построй тъкачница, така че да може да достига до вълната от фермата.']
-  - [Headline, 'НОВА ЗАДАЧА: ПОСТРОЙ ТЪКАЧНИЦА']
+  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
+  - [Headline, 'NEW TASK: BUILD A WEAVER']
   - [Image, content/gui/images/background/hr.png]
-  - След като има производство на вълна, има нужда от тъкачница за да се произведат дрехи от вълната.
-  - Има две места на които може да се построи. Или близо до фермата, или близо до шатрата склад (или склада).
-  - И в двата случая трябва да свързана с път.
-  - Можеш да разположиш тъкачницата близо до фермата и да я свържеш с път с фермата и да видиш как ше взема вълната и ще произвежда.
+  - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
+  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
+  - In both cases you should ensure the connection to a Trail as well.
+  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, Настани 50 или повече жители в града за да завършиш урока. Нуждаеш се от положителен баланс.]
-  - [Headline, 'НОВА ЗАДАЧА: ЗАВЪРШИ УРОКА']
+  - [Message, House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance.]
+  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
   - [Image, content/gui/images/background/hr.png]
-  - Опитай да настаниш 50 или повече жители в града чрез предлагане на повече жилищни сгради.
-  - След като си в състояние да поддържаш работеща икономика която да удовлетворява потребителите, вече си готов да откриеш нови Unknown Horizons!
-  - Също така се нуждаеш от достатъчно пари за да поддържаш икономиката работеща, така че е нужен положителен баланс (провери в полето "Сметка" на склада).
+  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
+  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
+  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
   - ''
   - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Поздравления! Вие достигнахте краят на този урок и сте готови да срещнете нови предизвикателства!]
-  - [Headline, НЯМА ДРУГИ ЗАДАЧИ]
+  - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
+  - [Headline, NO TASKS LEFT]
   - [Image, content/gui/images/background/hr.png]
-  - Ти изпълни всички задачи които ти бяхме приготвили. Светът сега е в твое разпореждане очакващ твоите волни стремежи и смели изследвания!
-  - 'ако имаш някакви предложения за това какво може или би трябвало да се подобри, свържи се с нас на:'
+  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
+  - 'If you have any suggestions on what we could or should improve, add or leave out:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Форумите ни са отворени!
-  - Най-добрите резултати за сега се постигат чрез нашия IRC канал, така че опитайте първо с него (-;
+  - Our forums are open to you as well!
+  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
   - [Pagebreak]
-  - [Headline, Благодаря!]
+  - [Headline, Thanks!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -395,10 +390,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Благодаря за изучаването на урока!
+    Thanks for playing the tutorial!
 
 
-    Ваш UH-Team'
+    Your UH-Team'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -655,11 +650,11 @@ events:
 
 metadata:
   author: The UH team
-  description: 'Урок:
+  description: 'The tutorial:
 
-    Построй твоята първа колония и се научи как да играеш!'
-  difficulty: Урок
+    Build your first settlement and learn how to play!'
+  difficulty: Tutorial
   locale: bg
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 9 translated messages, 5 fuzzy translations, 174 untranslated messages.
