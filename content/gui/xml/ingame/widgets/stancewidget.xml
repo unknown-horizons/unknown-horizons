@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--Stance widget, used by fighting ship and multi tab-->
-<AutoResizeContainer>
+<ABox>
 	<HBox>
 		<ToggleImageButton name="aggressive_stance"
 			path="icons/units/stances/aggressive" helptext="Aggressive"
@@ -15,4 +15,4 @@
 			path="icons/units/stances/flee" helptext="Flee"
 			comment="Description of combat stance (how units behave when fighting)" />
 	</HBox>
-</AutoResizeContainer>
+</ABox>
