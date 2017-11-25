@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-11-25 11:44+0000\n"
-"Last-Translator: Miro <chipcharlie@abv.bg>\n"
+"PO-Revision-Date: 2017-11-26 20:44+0000\n"
+"Last-Translator: Kornelijus <kornelijus.github@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/uh/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -303,7 +303,7 @@ msgstr "(както в разделите за избор)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr "$рес"
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
