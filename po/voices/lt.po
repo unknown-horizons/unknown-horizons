@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2017-11-25 20:29+0000\n"
+"PO-Revision-Date: 2017-11-26 20:48+0000\n"
 "Last-Translator: Kornelijus <kornelijus.github@gmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/uh/voices/lt/>"
 "\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
-msgstr "Stenkitės, kad jūsų gyvenvietė  vystytųsi ramiai."
+msgstr "Stenkitės, kad jūsų gyvenvietė vystytųsi ramiai."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
@@ -50,7 +50,7 @@ msgstr "Žaidėjas plėtoja naują gyvenvietę."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr "Vienas iš tavo kolegų įkūrė naują gyvenvietę."
+msgstr "Vienas iš jūsų kolegų įkūrė naują gyvenvietę."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
