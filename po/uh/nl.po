@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-12-13 18:48+0000\n"
+"PO-Revision-Date: 2017-12-13 18:50+0000\n"
 "Last-Translator: anonymous <>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -3524,7 +3524,7 @@ msgstr "Je kunt niet meedoen aan een spel terwijl je in een ander spel zit"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr "Onbekend spel of het spel heeft een andere versie"
+msgstr "Onbekend spel of spel draait een andere versie"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
@@ -3572,7 +3572,7 @@ msgstr "Kan je naam niet wijzigen."
 
 #: horizons/network/server.py:573
 msgid "Unable to change your color."
-msgstr "Kan je kleur niet veranderen."
+msgstr "Kleur aanpassing niet mogelijk."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
