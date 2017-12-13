@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-11-12 13:45+0000\n"
-"Last-Translator: Edgar <Edgar@anotherfoxguy.com>\n"
+"PO-Revision-Date: 2017-12-13 18:45+0000\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh-server/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -19,31 +19,26 @@ msgstr ""
 "X-Generator: Weblate 2.18-dev\n"
 
 #: horizons/network/server.py:249
-#, fuzzy
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Oud of niet ondersteund multiplayer protocol. Controleer alsjeblieft de "
+"Oud of niet ondersteund multiplayer-protocol. Controleer alsjeblieft de "
 "versie van je spel"
 
 #: horizons/network/server.py:284
-#, fuzzy
 msgid "You've exceeded the global packet size."
 msgstr "Je hebt de globale pakketgrootte overschreden."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
-#, fuzzy
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Dit had niet mogen gebeuren. Neem contact met ons op of stuur een bugrapport "
-"op."
+"Dit had niet mogen gebeuren. Neem alsjeblieft contact met ons op of stuur "
+"een bugrapport op."
 
 #: horizons/network/server.py:303
-#, fuzzy
 msgid "You've exceeded the per packet size."
 msgstr "Je hebt de pakketgrootte overschreden."
 
 #: horizons/network/server.py:311
-#, fuzzy
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
 "Onbekend of verkeerd pakket. Controleer alsjeblieft de versie van je spel"
@@ -62,7 +57,6 @@ msgid "Unknown game or game is running a different version"
 msgstr "Onbekend spel of het spel heeft een andere versie"
 
 #: horizons/network/server.py:411
-#, fuzzy
 msgid "Game has already started. No more joining"
 msgstr "Het spel is al begonnen. Je kunt niet meer meedoen"
 
@@ -79,7 +73,6 @@ msgid "There's already a player with your name inside this game."
 msgstr "Er is al een speler met je naam in dit spel."
 
 #: horizons/network/server.py:435
-#, fuzzy
 msgid "Please change your name."
 msgstr "Wijzig alstublieft je naam."
 
@@ -88,12 +81,10 @@ msgid "There's already a player with your color inside this game."
 msgstr "Er is al een speler met jouw kleur in dit spel."
 
 #: horizons/network/server.py:439
-#, fuzzy
 msgid "Please change your color."
 msgstr "Verander alstublieft van kleur."
 
 #: horizons/network/server.py:442
-#, fuzzy
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
@@ -102,17 +93,14 @@ msgstr ""
 "mogen gebeuren."
 
 #: horizons/network/server.py:458
-#, fuzzy
 msgid "You are not inside a game"
 msgstr "Je bent niet in een spel"
 
 #: horizons/network/server.py:489
-#, fuzzy
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Het spel is beëindigd. De eigenaar heeft het spel verlaten."
+msgstr "Het spel is beëindigd. De maker heeft het spel verlaten."
 
 #: horizons/network/server.py:494
-#, fuzzy
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
@@ -121,12 +109,10 @@ msgstr ""
 "momenteel dat het spel kan niet worden voortgezet. Het spijt ons heel erg."
 
 #: horizons/network/server.py:548
-#, fuzzy
 msgid "Unable to change your name."
 msgstr "Kan je naam niet wijzigen."
 
 #: horizons/network/server.py:577
-#, fuzzy
 msgid "Unable to change your color."
 msgstr "Kan je kleur niet veranderen."
 
