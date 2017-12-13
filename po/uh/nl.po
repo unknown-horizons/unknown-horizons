@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-11-11 21:06+0000\n"
-"Last-Translator: Edgar <Edgar@anotherfoxguy.com>\n"
+"PO-Revision-Date: 2017-12-13 18:46+0000\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -512,10 +512,8 @@ msgid "residents"
 msgstr "inwoners"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Zorg voor bewaking van je nederzetting."
+msgstr "Verdedigd je nederzetting."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -790,16 +788,12 @@ msgid "Return to game"
 msgstr "Keer terug naar het spel"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Oude naam:"
+msgstr "Eilandnaam:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Spelersnaam"
+msgstr "Spelersnaam:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -2683,23 +2677,18 @@ msgstr "Recruteerd eenheden geschikt voor grondgevechten."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
 msgstr "Houten muur"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
-#, fuzzy
 msgid "Clay wall"
 msgstr "Muur van klei"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Levert bewaking."
+msgstr "Verdedigd je onderdanen."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -3501,31 +3490,26 @@ msgid "Not Ready"
 msgstr "Niet gereed"
 
 #: horizons/network/server.py:303
-#, fuzzy
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Oud of niet ondersteund multiplayer protocol. Controleer alsjeblieft de "
+"Oud of niet ondersteund multiplayer-protocol. Controleer alsjeblieft de "
 "versie van je spel"
 
 #: horizons/network/server.py:339
-#, fuzzy
 msgid "You've exceeded the global packet size."
 msgstr "Je hebt de globale pakketgrootte overschreden."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
-#, fuzzy
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Dit had niet mogen gebeuren. Neem contact met ons op of stuur een bugrapport "
-"op."
+"Dit had niet mogen gebeuren. Neem alsjeblieft contact met ons op of stuur "
+"een bugrapport op."
 
 #: horizons/network/server.py:358
-#, fuzzy
 msgid "You've exceeded the per packet size."
 msgstr "Je hebt de pakketgrootte overschreden."
 
 #: horizons/network/server.py:366
-#, fuzzy
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
 "Onbekend of verkeerd pakket. Controleer alsjeblieft de versie van je spel"
@@ -3543,7 +3527,6 @@ msgid "Unknown game or game is running a different version"
 msgstr "Onbekend spel of het spel heeft een andere versie"
 
 #: horizons/network/server.py:463
-#, fuzzy
 msgid "Game has already started. No more joining"
 msgstr "Het spel is al begonnen. Je kunt niet meer meedoen"
 
@@ -3560,7 +3543,6 @@ msgid "There's already a player with your name inside this game."
 msgstr "Er is al een speler met je naam in dit spel."
 
 #: horizons/network/server.py:476
-#, fuzzy
 msgid "Please change your name."
 msgstr "Wijzig alstublieft je naam."
 
@@ -3569,13 +3551,10 @@ msgid "There's already a player with your color inside this game."
 msgstr "Er is al een speler met jouw kleur in dit spel."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
 msgstr "Verander alstublieft van kleur."
 
 #: horizons/network/server.py:483
-#, fuzzy
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
@@ -3584,36 +3563,26 @@ msgstr ""
 "mogen gebeuren."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
 msgstr "Je bent niet in een spel"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
 msgstr "Kan je naam niet wijzigen."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
 msgstr "Kan je kleur niet veranderen."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "De snelheid van een multiplayer spel kan niet worden gewijzigd"
+msgstr "Je kunt geen spel laden wanneer je nog met een ander spel bezig bent"
 
 #: horizons/network/server.py:716
-#, fuzzy
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Het spel is beëindigd. De eigenaar heeft het spel verlaten."
+msgstr "Het spel is beëindigd. De maker heeft het spel verlaten."
 
 #: horizons/network/server.py:721
-#, fuzzy
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
@@ -3634,15 +3603,13 @@ msgid "Do you want to continue playing?"
 msgstr "Wil je doorgaan met spelen?"
 
 #: horizons/scenario/scenarioeventhandler.py:173
-#, fuzzy
 msgid "unknown"
 msgstr "onbekend"
 
 #. usually invalid filename
 #: horizons/session.py:400
-#, fuzzy
 msgid "Failed to create savegame file"
-msgstr "Het maken van het savegame bestand is mislukt"
+msgstr "Het maken van het savegame-bestand is mislukt"
 
 #: horizons/session.py:401
 msgid "There has been an error while creating your savegame file."
@@ -3661,7 +3628,6 @@ msgid "Access is denied"
 msgstr "De toegang is geweigerd"
 
 #: horizons/session.py:410
-#, fuzzy
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 "Het savegame-bestand kan alleen-lezen zijn of is vergrendeld door een ander "
@@ -3750,14 +3716,12 @@ msgid "This building can only be built on a resource source."
 msgstr "Dit gebouw kan alleen gebouwd worden op een locatie met grondstoffen."
 
 #: horizons/world/building/buildable.py:52
-#, fuzzy
 msgid "You have already settled this island."
 msgstr "Je hebt al een nederzetting op dit eiland."
 
 #: horizons/world/building/buildable.py:53
-#, fuzzy
 msgid "This building must be partly on flat land."
-msgstr "Dit gebouw moet gedeeltelijk op vlak land zijn."
+msgstr "Dit gebouw moet gedeeltelijk op vlak land worden geplaatst."
 
 #: horizons/world/status.py:73
 msgid "The inhabitants are infected by the Black Death!"
@@ -3808,7 +3772,7 @@ msgid "Going to {x}, {y}"
 msgstr "Gaat naar coördinaten {x}, {y}"
 
 #: horizons/world/units/ship.py:219
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Idle at {location}"
 msgstr "Inactief bij {location}"
 
@@ -3832,7 +3796,6 @@ msgid "Attacking {owner}"
 msgstr "Valt {owner} aan"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been autosaved."
 msgstr "Je spel is automatisch opgeslagen."
 
