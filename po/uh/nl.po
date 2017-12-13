@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-12-13 18:46+0000\n"
+"PO-Revision-Date: 2017-12-13 18:47+0000\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -513,7 +513,7 @@ msgstr "inwoners"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
-msgstr "Verdedigd je nederzetting."
+msgstr "Zorgt voor bewaking van je nederzetting."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -3520,7 +3520,7 @@ msgstr "Ongeldige/onbekende sessie"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr "Je kunt niet meedoen aan een spel terwijl je in een ander spel zit."
+msgstr "Je kunt niet meedoen aan een spel terwijl je in een ander spel zit"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
