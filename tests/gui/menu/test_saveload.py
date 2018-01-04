@@ -23,6 +23,8 @@ import os
 import shutil
 from unittest import mock
 
+import pytest  # For skipping tests
+
 from horizons.savegamemanager import SavegameManager
 from tests.gui import TEST_FIXTURES_DIR, gui_test
 
@@ -67,6 +69,7 @@ def test_load_game_no_savegames(gui):
 		gui.trigger('menu/load_button')
 
 
+@pytest.mark.skip(reason="See fixme?")
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
 def test_save_game_new_file(gui):
 	"""Test saving a game."""
@@ -85,6 +88,7 @@ def test_save_game_new_file(gui):
 	assert os.path.exists(SavegameManager.create_filename('testsave'))
 
 
+@pytest.mark.skip(reason="See fixme?")
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
 def test_save_game_override(gui):
 	"""Test saving a game."""
