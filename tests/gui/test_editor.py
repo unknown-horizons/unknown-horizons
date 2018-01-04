@@ -20,6 +20,7 @@
 # ###################################################
 
 import os
+
 import pytest
 
 from horizons.constants import EDITOR, GROUND, PATHS

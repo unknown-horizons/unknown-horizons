@@ -20,6 +20,7 @@
 # ###################################################
 
 import pytest
+
 from horizons.constants import RES, TIER
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship, saveload

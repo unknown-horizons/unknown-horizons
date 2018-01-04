@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from tests.gui import gui_test
 
-import pytest
 
 @pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)

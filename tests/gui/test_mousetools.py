@@ -20,6 +20,7 @@
 # ###################################################
 
 import pytest
+
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 

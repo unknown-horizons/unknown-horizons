@@ -20,6 +20,7 @@
 # ###################################################
 
 import time
+
 import pytest
 
 from horizons.component.collectingcomponent import CollectingComponent

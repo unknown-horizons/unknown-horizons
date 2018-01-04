@@ -20,6 +20,7 @@
 # ###################################################
 
 import itertools
+
 import pytest
 
 from tests.gui import gui_test

@@ -19,12 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS
 from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import saveload
 
-import pytest
 
 @pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)

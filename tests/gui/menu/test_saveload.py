@@ -20,9 +20,10 @@
 # ###################################################
 
 import os
-import pytest
 import shutil
 from unittest import mock
+
+import pytest
 
 from horizons.savegamemanager import SavegameManager
 from tests.gui import TEST_FIXTURES_DIR, gui_test
