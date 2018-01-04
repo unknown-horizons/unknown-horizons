@@ -19,10 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_tearing(gui):
 	found_settlement(gui, (11, 1), (11, 6))
@@ -42,6 +44,7 @@ def test_tearing(gui):
 	gui.cursor_drag((5, 15), (15, 3), 'left')
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_pipette(gui):
 	found_settlement(gui, (11, 1), (11, 6))

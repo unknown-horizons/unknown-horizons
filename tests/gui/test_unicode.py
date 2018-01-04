@@ -28,6 +28,7 @@ def modify_user_dir(path):
 	return path.join('H߀ｒìｚｏԉｓ')
 
 
+@pytest.mark.fixme()
 @gui_test(timeout=60, use_dev_map=True, _modify_user_dir=modify_user_dir)
 def test_user_dir_contains_non_ascii(gui):
 	"""This test will end the game immediately."""

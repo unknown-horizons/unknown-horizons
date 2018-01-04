@@ -28,7 +28,9 @@ from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship, move_ship
 
+import pytest
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1352(gui):
 	"""
@@ -51,6 +53,7 @@ def test_ticket_1352(gui):
 	gui.select([ship])
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, ai_players=3, timeout=120)
 def test_ticket_1368(gui):
 	"""
@@ -70,6 +73,7 @@ def test_ticket_1368(gui):
 	gui.select([ai_warehouse])
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='ai_settlement', timeout=60)
 def test_ticket_1369(gui):
 	"""
@@ -106,6 +110,7 @@ def test_ticket_1369(gui):
 #	assert gui.find(name='overview_trade_ship')
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1362(gui):
 	"""
@@ -128,6 +133,7 @@ def test_ticket_1362(gui):
 		gui.press_key(gui.Key.F5)
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain', timeout=120)
 def test_ticket_1371(gui):
 	"""
@@ -170,6 +176,7 @@ def test_ticket_1371(gui):
 	assert gui.find(name='overview_buildrelated')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='fife_exception_not_found', timeout=60)
 def test_ticket_1447(gui):
 	"""
@@ -195,6 +202,7 @@ def test_ticket_1447(gui):
 	gui.run()
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1515(gui):
 	"""
@@ -204,6 +212,7 @@ def test_ticket_1515(gui):
 	gui.cursor_click(6, 17, 'left')
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1520(gui):
 	"""
@@ -233,6 +242,7 @@ def test_ticket_1520(gui):
 	gui.cursor_release_button(13, 11, 'left')
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1509(gui):
 	"""
@@ -257,6 +267,7 @@ def test_ticket_1509(gui):
 	gui.trigger('tab_base/1')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1526(gui):
 	"""
@@ -272,6 +283,7 @@ def test_ticket_1526(gui):
 	gui.cursor_click(52, 12, 'left', ctrl=True)
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain', timeout=120)
 def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	"""
@@ -299,6 +311,7 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	# if we survive until here, the bug hasn't happened
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1848(gui):
 	"""Settlement production overview crashes if ships were produced"""
@@ -320,6 +333,7 @@ def test_ticket_1848(gui):
 	gui.trigger('tab_account/show_production_overview')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain')
 def test_ticket_1948(gui):
 	"""Triggers a crash that happens when building a storage tent on the border of the settlement"""
@@ -336,6 +350,7 @@ def test_ticket_1948(gui):
 	gui.cursor_click(37, 20, 'left')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='fife_exception_not_found', timeout=60)
 def test_ticket_2117(gui):
 	"""Changing language with active production overview tab crashes game"""
@@ -353,6 +368,7 @@ def test_ticket_2117(gui):
 	gui.trigger('settings_window/okButton')
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_ticket_2419(gui):
 	"""Game crashes when setting speed to zero and pressing pause twice"""
@@ -362,6 +378,7 @@ def test_ticket_2419(gui):
 	gui.press_key(gui.Key.P)
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_ticket_2475(gui):
 	"""Game crashes when two resources are produced in the same tick and the production
@@ -389,6 +406,7 @@ def test_ticket_2475(gui):
 	producer.on_production_finished({RES.BOARDS: 1})
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_ticket_2500(gui):
 	"""Game crashes when exiting the game while the building tool is still active."""

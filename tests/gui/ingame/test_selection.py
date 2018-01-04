@@ -24,7 +24,9 @@ from horizons.constants import UNITS
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
+import pytest
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_select_ship(gui):
 	"""
@@ -43,6 +45,7 @@ def test_select_ship(gui):
 	assert gui.find('overview_trade_ship')
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_selectmultitab(gui):
 	"""
@@ -75,6 +78,7 @@ def test_selectmultitab(gui):
 	gui.run(seconds=0.1)
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain', timeout=120)
 def test_selection_groups(gui):
 	"""Check group selection using ctrl-NUM"""

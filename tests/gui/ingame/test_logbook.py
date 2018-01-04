@@ -21,7 +21,9 @@
 
 from tests.gui import gui_test
 
+import pytest
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_logbook(gui):
 	"""
@@ -38,6 +40,7 @@ def test_logbook(gui):
 	assert gui.find(name='captains_log') is None
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_logbook_statistics(gui):
 	"""Open the 3 three different statistic tabs in the logbook."""

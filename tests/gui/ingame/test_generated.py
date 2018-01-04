@@ -20,11 +20,13 @@
 # ###################################################
 
 import itertools
+import pytest
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain', timeout=120)
 def test_build_a_settlement(gui):
 	"""
@@ -104,6 +106,7 @@ def test_build_a_settlement(gui):
 	gui.cursor_click(58, 5, 'left')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain', timeout=120)
 def test_buildingtool(gui):
 	"""

@@ -20,8 +20,9 @@
 # ###################################################
 
 from tests.gui import gui_test
+import pytest
 
-
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1342(gui):
 	"""

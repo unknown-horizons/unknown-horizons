@@ -20,6 +20,7 @@
 # ###################################################
 
 import os
+import pytest
 
 from horizons.constants import EDITOR, GROUND, PATHS
 from tests.gui import gui_test
@@ -28,6 +29,7 @@ from tests.utils import mark_flaky
 editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
 
 
+@pytest.mark.fixme()
 @editor_test
 def test_place_tiles(gui):
 	"""Place different tiles with different tile sizes."""
@@ -50,6 +52,7 @@ def test_place_tiles(gui):
 	gui.cursor_click(-8, 78, 'left')
 
 
+@pytest.mark.fixme()
 @editor_test
 def test_save_map(gui):
 	"""Save a map in the editor."""
@@ -68,6 +71,7 @@ def test_save_map(gui):
 	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, "test_map.sqlite"))
 
 
+@pytest.mark.fixme()
 @editor_test
 def test_drag_mouse(gui):
 	"""Test that tiles are placed while dragging the mouse."""

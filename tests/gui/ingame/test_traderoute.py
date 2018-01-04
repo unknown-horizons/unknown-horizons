@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from unittest.mock import Mock
 
 from fife import fife
@@ -30,6 +32,7 @@ from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship
 
 
+@pytest.mark.fixme()
 @gui_test(additional_cmdline=['--start-map', 'mp-dev'])
 def test_traderoute(gui):
 	"""Check that a ship's route is configured correctly after setting it up using the GUI."""

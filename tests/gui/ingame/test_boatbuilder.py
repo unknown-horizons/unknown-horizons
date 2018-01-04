@@ -24,7 +24,9 @@ from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import saveload
 
+import pytest
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1224(gui):
 	"""
@@ -59,6 +61,7 @@ def test_ticket_1224(gui):
 	assert running_costs() == '25', "Expected 25, got {}".format(running_costs())
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1294(gui):
 	"""
@@ -98,6 +101,7 @@ def test_ticket_1294(gui):
 		gui.run()
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1830(gui):
 	"""
@@ -135,6 +139,7 @@ def test_ticket_1830(gui):
 	assert len(producer.production_queue) == 1
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_remove_from_queue(gui):
 	"""
@@ -160,6 +165,7 @@ def test_remove_from_queue(gui):
 	gui.trigger('UB_main_tab/queue_elem_0')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_cancel_ticket_1424(gui):
 	"""
@@ -187,6 +193,7 @@ def test_cancel_ticket_1424(gui):
 	gui.trigger('UB_main_tab/UB_cancel_button')
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_save_load_ticket_1421(gui):
 	"""
@@ -212,6 +219,7 @@ def test_save_load_ticket_1421(gui):
 	saveload(gui)
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1513(gui):
 	"""
@@ -254,6 +262,7 @@ def test_ticket_1513(gui):
 	assert running_costs() == '10', "Expected 10, got {}".format(running_costs())
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1514(gui):
 	"""

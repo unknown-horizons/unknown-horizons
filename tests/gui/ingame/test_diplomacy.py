@@ -19,9 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
 from tests.gui import gui_test
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, ai_players=1)
 def test_diplomacy(gui):
 	"""Test changing diplomacy status."""
