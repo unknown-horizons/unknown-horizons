@@ -27,9 +27,7 @@ import pytest
 from horizons.scheduler import Scheduler
 from tests.gui import gui_test
 
-
 ##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 #... the simple trivial one doesn't.. that's..
 #I'm just ignoring this.

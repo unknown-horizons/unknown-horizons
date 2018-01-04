@@ -21,12 +21,12 @@
 
 import itertools
 
+##SKIP TEST
+import pytest
+
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
-
-##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
 

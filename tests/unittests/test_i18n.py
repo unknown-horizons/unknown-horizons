@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import polib
 import pytest
 
 import horizons.i18n
+import polib
 from horizons.i18n import change_language, disable_translations, gettext as T, gettext_lazy as LazyT
 
 

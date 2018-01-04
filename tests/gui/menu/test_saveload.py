@@ -23,11 +23,10 @@ import os
 import shutil
 from unittest import mock
 
+import pytest  # For skipping tests
+
 from horizons.savegamemanager import SavegameManager
 from tests.gui import TEST_FIXTURES_DIR, gui_test
-
-
-import pytest #For skipping tests
 
 
 def _copy_savegame(filename='boatbuilder'):

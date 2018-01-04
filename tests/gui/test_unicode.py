@@ -23,9 +23,7 @@ import pytest
 
 from tests.gui import gui_test
 
-
 ##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
 

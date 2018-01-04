@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+##SKIP TEST
+import pytest
+
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS
 from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import saveload
 
-
-##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
 

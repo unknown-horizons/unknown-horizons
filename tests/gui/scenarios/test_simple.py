@@ -21,13 +21,13 @@
 
 # Example tests
 
+##SKIP TEST
+import pytest
+
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
 from tests.gui.scenarios.helper import assert_defeat, assert_goal_reached, assert_win
 
-
-##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("Example tests")
 
 

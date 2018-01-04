@@ -21,15 +21,15 @@
 
 import time
 
+##SKIP TEST
+import pytest
+
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.constants import BUILDINGS
 from horizons.world.units.collectors.collector import Collector
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 
-
-##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
 

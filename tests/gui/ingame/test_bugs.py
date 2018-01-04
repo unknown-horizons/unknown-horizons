@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+##SKIP TEST
+import pytest
+
 from horizons.command.building import Tear
 from horizons.command.unit import CreateUnit
 from horizons.component.storagecomponent import StorageComponent
@@ -28,9 +31,6 @@ from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship, move_ship
 
-
-##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
 

@@ -19,15 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+##SKIP TEST
+import pytest
+
 from horizons.constants import RES, TIER
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship, saveload
 from tests.gui.scenarios.helper import (
 	assert_win, settlement_res_stored_greater, settler_level_greater, var_eq, wait_and_close_logbook)
 
-
-##SKIP TEST
-import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
 
