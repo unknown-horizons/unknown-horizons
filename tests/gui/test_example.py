@@ -21,9 +21,11 @@
 
 from tests.gui import gui_test
 
+
 ##SKIP TEST
 import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
+
 
 # The `gui_test` decorator is needed to identify gui tests. You can use it
 # without argument, but is has to be `@gui_test()` (notice the parantheses).

@@ -32,6 +32,7 @@ editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
 import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
 
+
 @editor_test
 def test_place_tiles(gui):
 	"""Place different tiles with different tile sizes."""

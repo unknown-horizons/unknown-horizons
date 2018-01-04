@@ -28,9 +28,11 @@ from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship, move_ship
 
+
 ##SKIP TEST
 import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
+
 
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1352(gui):

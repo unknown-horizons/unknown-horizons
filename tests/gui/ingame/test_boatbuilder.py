@@ -24,9 +24,11 @@ from horizons.world.production.producer import Producer
 from tests.gui import gui_test
 from tests.gui.helper import saveload
 
+
 ##SKIP TEST
 import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
+
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1224(gui):

@@ -24,10 +24,10 @@ import pytest
 from tests.gui import gui_test
 
 
-
 ##SKIP TEST
 import pytest
 pytestmark = pytest.mark.skip("TODO/Always fails")
+
 
 def modify_user_dir(path):
 	return path.join('H߀ｒìｚｏԉｓ')
