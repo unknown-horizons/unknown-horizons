@@ -27,6 +27,12 @@ from tests.gui.scenarios.helper import assert_defeat, assert_goal_reached, asser
 # Example tests
 
 
+##SKIP TEST
+import pytest
+pytestmark = pytest.mark.skip("Example tests")
+
+
+
 @gui_test(use_scenario='tests/gui/scenarios/win', timeout=20)
 def test_win(gui):
 	"""Simple test that detects a win in a game."""
