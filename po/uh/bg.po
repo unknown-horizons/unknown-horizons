@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2017-12-07 18:44+0000\n"
+"PO-Revision-Date: 2018-01-18 00:27+0000\n"
 "Last-Translator: Miro <chipcharlie@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/uh/bg/>\n"
 "Language: bg\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1619,163 +1619,168 @@ msgstr "Търговският партньор не продава това."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not store this."
-msgstr ""
+msgstr "Не може да слакдираш това."
 
 #: horizons/component/tradepostcomponent.py:206
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Нямаш достатъчно средства за покупка."
 
 #: horizons/component/tradepostcomponent.py:212
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Търговският партньор не продава повече от това."
 
 #: horizons/component/tradepostcomponent.py:236
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Търговският партньор не изкупува това."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr ""
+msgstr "Не притежаваш това."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Търговският партньор не може да складира повече от това."
 
 #: horizons/component/tradepostcomponent.py:252
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Търговският партньор не може да си позволи да изкупи това."
 
 #: horizons/component/tradepostcomponent.py:257
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Търговският партньор не купува повече от това."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:66
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Неуспешен бърз запис."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:67
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Възникна грешка при бързото запазване."
 
 #: horizons/editor/session.py:71
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "Картата не беше запазена."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Ако тази грешка се повтори, молим да се свържете с разработчиците: {website}"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да излезете от Unknown Horizons?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "Излез от играта"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Няма възможност за дипломация"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Не може да използвате дипломация, защото няма други играчи."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да изтриете тези обекти?"
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
-msgstr ""
+msgstr "Изтрий"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}х{size} полета"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
-msgstr ""
+msgstr "Натисни клавиш…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} е вече назначен за {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:148
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Искате ли да презапишете файла?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:149
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Потвърждение за презаписване"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
-msgstr ""
+msgstr "Цитати"
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Съвети за игра"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Натисни 'ESC' за достъп до игровото меню."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Натисни 'SHIFT' за да поставите множество сгради."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Към момента може да играте само с първите {tier} класа."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Може да паузирате играта с  'P'."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Можете да влачите пътищата, като задържите левия бутон на мишката."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Може да построите множество сгради като задържите 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "Може да увеличите щастието на заселниците си като намалите данъците."
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Постройте пожарни и лечебници за да защитите вашите заселници от пожари и "
+"болести."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Постройте складови палатки за да увеличите складовия капацитет."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Уверете се, че вдяка къща е вобхвата на пазар."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "Натиснете 'Т' за прозрачни дървета."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
+"Постройте складови палатки и наблюдателници, за да разширите обхвата на "
+"селището."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1784,98 +1789,109 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"За да проверите дали обхвата на павилиона покрива всички платки изберете го "
+"от менюто за строеж и го задръжте над съществуващия павилион. Палатките "
+"извън обхвата се виждат в жълто. Добре е да построите нов павилион в техния "
+"квартал."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Направете соловата игра по-забавна с допълнителни играчи контролирани от "
+"компютъра като увеличите броя на 'AI players' при започване на играта."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Началните стъпки са по-лесни ако наблюдавате как AI играчите изграждат "
+"селището си."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Искате забавни цитати? Променете типа на цитатите в менюто за настройки."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Пазарът свързва сградите като път."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:91
 msgid "Mixed"
-msgstr ""
+msgstr "Общи"
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr ""
+msgstr "Двигателят пали…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
-msgstr ""
+msgstr "Рибата се наловява…"
 
 #: horizons/gui/modules/loadingscreen.py:113
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Интерфейса се боядисва…"
 
 #: horizons/gui/modules/loadingscreen.py:114
 msgid "Activating timer…"
-msgstr ""
+msgstr "Активиране на таймера…"
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Предъвкване на данни…"
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Оформяне на острови…"
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Подготвяне на чертежи…"
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Пълнене на света с вода…"
 
 #: horizons/gui/modules/loadingscreen.py:119
 msgid "Raising animals…"
-msgstr ""
+msgstr "Отглеждане на животни…"
 
 #: horizons/gui/modules/loadingscreen.py:120
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Убеждаване на AI…"
 
 #: horizons/gui/modules/loadingscreen.py:121
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Заравяне на съкровища…"
 
 #: horizons/gui/modules/multiplayermenu.py:126
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Не може да намери pyеnet"
 
 #: horizons/gui/modules/multiplayermenu.py:127
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"Играта в мрежа изисква библиотеката \"pyenet\", която не е открита на вашия "
+"компютър."
 
 #: horizons/gui/modules/multiplayermenu.py:129
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linux юзъри: Инсталирайте pyenet чрез package manager."
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Не може да инициализира мрежа."
 
 #: horizons/gui/modules/multiplayermenu.py:139
 #: horizons/gui/modules/settings.py:274
