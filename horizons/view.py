@@ -73,7 +73,7 @@ class View(ChangeListener):
 
 		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
 		                       horizons.globals.fife.engine_settings.getScreenHeight())
-		self.cam = self.map.addCamera("main", rect)
+		self.cam = self.map.addCamera("main", self.layers[-1], rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
