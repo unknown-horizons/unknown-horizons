@@ -28,18 +28,21 @@ from horizons.scheduler import Scheduler
 from tests.gui import gui_test
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_trivial(gui):
 	"""Does nothing to see if test setup works."""
 	pass
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, _user_dir=os.path.join("test_settings", ".unknown-horizons"))
 def test_update_settings(gui):
 	"""Does nothing to see if the settings update works."""
 	pass
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True)
 def test_run_for_x_seconds(gui):
 	"""Test that running the game X seconds works."""
@@ -54,6 +57,7 @@ def test_run_for_x_seconds(gui):
 	assert deviation < 0.05, 'Expected max 0.05 deviation, got {}'.format(deviation)
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder')
 def test_trigger(gui):
 	"""Test the different ways to trigger an action in a gui."""
@@ -96,6 +100,7 @@ def test_trigger(gui):
 	assert not gui.find('production_overview')
 
 
+@pytest.mark.fixme()
 @gui_test(timeout=60)
 def test_dialog(gui):
 	"""Test handling of a dialog."""
@@ -111,6 +116,7 @@ def test_dialog(gui):
 
 
 @pytest.mark.xfail(strict=True)
+@pytest.mark.fixme()
 @gui_test(timeout=60)
 def test_failing(gui):
 	"""

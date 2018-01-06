@@ -19,11 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from horizons.component.namedcomponent import NamedComponent
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_change_name(gui):
 	"""Rename a ship."""
@@ -48,6 +51,7 @@ def test_change_name(gui):
 	assert new_name == 'Dagobert'
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_change_name_empty_not_allowed(gui):
 	"""Make sure an object's name can't be changed to some empty string.
@@ -82,6 +86,7 @@ def test_change_name_empty_not_allowed(gui):
 	assert old_name == new_name
 
 
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_chat(gui):
 	"""Opens chat dialog.

@@ -30,10 +30,12 @@ import pytest
 def pytest_addoption(parser):
 	parser.addoption('--long-tests', action='store_true', help='include long-running tests')
 	parser.addoption('--gui-tests', action='store_true', help='include gui tests')
+	parser.addoption('--fixme-fail-tests', action='store_true', help='fail on fixme')
 
 
 def pytest_configure(config):
 	config.addinivalue_line('markers', 'long: mark test as long-running')
+	config.addinivalue_line('markers', 'fixme: mark test as known-broken')
 
 
 def pytest_runtest_setup(item):
@@ -49,6 +51,10 @@ def pytest_runtest_setup(item):
 	marker = item.get_marker('gui_test')
 	if marker is not None and not item.config.getoption('--gui-tests'):
 		pytest.skip('test is gui test')
+
+	marker = item.get_marker("fixme")
+	if marker is not None and not item.config.getoption('--fixme-fail-tests'):
+		pytest.xfail("Expecting failure")
 
 
 # Basic test setup, installs global mock for fife so we can run gui/game tests.

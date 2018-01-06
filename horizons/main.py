@@ -64,7 +64,7 @@ if TYPE_CHECKING:
 """
 Following are a list of global variables. Their scope is this module.
 Since this is not a class, in each function where these variables are
-referenced, they need to be declared with 'global' keyword. 
+referenced, they need to be declared with 'global' keyword.
 
 See: http://python-textbok.readthedocs.io/en/1.0/Variables_and_Scope.html
 """
@@ -596,7 +596,7 @@ def set_debug_log(enabled, startup=False):
 	@param startup: True if on startup to apply settings. Won't show popup
 	"""
 	global gui, command_line_arguments
- 
+
 	options = command_line_arguments
 
 	if enabled: # enable logging

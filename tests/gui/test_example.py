@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from tests.gui import gui_test
 
 
@@ -32,6 +34,7 @@ from tests.gui import gui_test
 # 	ai_players=1			- Game launches with --ai-players=1
 # 	timeout=3				- Game will be killed after 3 seconds
 #
+@pytest.mark.fixme()
 @gui_test(timeout=60)
 def test_example(gui):
 	"""

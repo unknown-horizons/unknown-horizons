@@ -19,11 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from tests.gui import gui_test
 from tests.utils import mark_flaky
 
 
 @mark_flaky
+@pytest.mark.fixme()
 @gui_test(use_dev_map=True, timeout=60)
 def test_settings_dialog_crash(gui):
 	"""Opening&closing the settings dialog in two different games crashes."""
@@ -56,6 +59,7 @@ def test_settings_dialog_crash(gui):
 	gui.trigger('settings_window/okButton')  # this crashes
 
 
+@pytest.mark.fixme()
 @gui_test(timeout=60)
 def test_settings_dialog_crash2(gui):
 	# open settings in main menu

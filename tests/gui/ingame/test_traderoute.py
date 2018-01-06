@@ -21,6 +21,7 @@
 
 from unittest.mock import Mock
 
+import pytest
 from fife import fife
 
 from horizons.constants import RES
@@ -30,6 +31,7 @@ from tests.gui import gui_test
 from tests.gui.helper import found_settlement, get_player_ship
 
 
+@pytest.mark.fixme()
 @gui_test(additional_cmdline=['--start-map', 'mp-dev'])
 def test_traderoute(gui):
 	"""Check that a ship's route is configured correctly after setting it up using the GUI."""

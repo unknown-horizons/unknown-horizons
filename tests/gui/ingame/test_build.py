@@ -21,6 +21,8 @@
 
 import time
 
+import pytest
+
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.constants import BUILDINGS
 from horizons.world.units.collectors.collector import Collector
@@ -28,6 +30,7 @@ from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='plain', timeout=60)
 def test_found_settlement(gui):
 	"""

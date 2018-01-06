@@ -19,9 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from tests.gui import gui_test
 
 
+@pytest.mark.fixme()
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_production_overview(gui):
 

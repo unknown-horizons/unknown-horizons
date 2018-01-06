@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
 
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
@@ -27,6 +28,7 @@ from tests.gui.scenarios.helper import assert_defeat, assert_goal_reached, asser
 # Example tests
 
 
+@pytest.mark.fixme()
 @gui_test(use_scenario='tests/gui/scenarios/win', timeout=20)
 def test_win(gui):
 	"""Simple test that detects a win in a game."""
@@ -34,6 +36,7 @@ def test_win(gui):
 	assert_win(gui)
 
 
+@pytest.mark.fixme()
 @gui_test(use_scenario='tests/gui/scenarios/defeat', timeout=20)
 def test_defeat(gui):
 	"""Simple test that detects a defeat in a game."""
@@ -41,6 +44,7 @@ def test_defeat(gui):
 	assert_defeat(gui)
 
 
+@pytest.mark.fixme()
 @gui_test(use_scenario='tests/gui/scenarios/mission1', timeout=40)
 def test_mission1(gui):
 	"""Sample mission which requires multiple buildings to win."""
