@@ -17,7 +17,7 @@ before_install:
   - sleep 3 # give xvfb some time to start
 
 install:
-  - "sudo apt-get install python3-fife libfifechan0.1.3" #libfifechan0.1.3 is version 0.14 on the repo
+  - "sudo apt-get install python3-fife python3-enet libfifechan0.1.3" #libfifechan0.1.3 is version 0.14 on the repo
   - "pip3 install -r requirements.txt"
 
 script:
