@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2018-01-08 16:29+0000\n"
+"PO-Revision-Date: 2018-01-08 16:32+0000\n"
 "Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
@@ -3565,11 +3565,11 @@ msgstr "Password errata"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr "C'è già un giocatore col tuo nome nella partita"
+msgstr "È già presente un giocatore con il tuo nome in questa partita."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr "Cambia il tuo nome"
+msgstr "Si prega di cambiare il proprio nome."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
