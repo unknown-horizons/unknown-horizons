@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2018-01-08 16:04+0000\n"
+"PO-Revision-Date: 2018-01-08 16:26+0000\n"
 "Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
@@ -1820,28 +1820,40 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Per vedere facilmente se la portata del tendone copre tutte le tende, "
+"selezionalo dal menù di costruzione e trascinalo sopra il tendone già "
+"esistente. Le tende non presenti nel raggio saranno mostrate in giallo. Una "
+"buona idea è quella di costruire un nuovo tendone per coprire tutte le tende "
+"di quella zona."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Rendi le partite in singolo più divertenti con l'aggiunta di giocatori "
+"controllati dal computer aumentando 'Giocatori COM' quando si inizia una "
+"nuova partita."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"I primi passi diventano più facili osservando come i giocatori gestiti dal "
+"computer creano e gestiscono il proprio insediamento."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Vuoi solo citazioni divertenti? Cambia il tipo di citazioni mostrate qui nel "
+"menù delle impostazioni dalla pagina principale del gioco."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "L'edificio del mercato collega i tuoi edifici come una strada."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2204,12 +2216,12 @@ msgid "Restart required"
 msgstr "Riavvio necessario"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr "Alcuni dei tuoi cambiamenti richiedono un riavvio di Unknown Horizons."
+msgstr ""
+"Alcuni dei tuoi cambiamenti richiedono un riavvio di Unknown Horizons. Vuoi "
+"riavviare Unknown Horizons adesso?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
@@ -2355,14 +2367,12 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Panoramica del magazzino"
+msgstr "Panoramica della caserma"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
-msgstr ""
+msgstr "Spadaccino"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
@@ -2474,7 +2484,7 @@ msgstr "Panoramica produzione"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Riempi selezione con {how_many} alberi"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
@@ -2689,22 +2699,18 @@ msgstr "Recluta unità adatte per il combattimento a terra."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Torre di Legno"
+msgstr "Barriera di legno"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:72
 msgid "Clay wall"
-msgstr ""
+msgstr "Muro d'argilla"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:74
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Fornisce educazione."
+msgstr "Fornisce sicurezza."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:79
@@ -2729,14 +2735,12 @@ msgstr "Costruisce imbarcazioni e piccole navi. Da costruire sulla costa."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Brewery"
-msgstr ""
+msgstr "Birrificio"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:95
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Consuma farina. Produce cibo."
+msgstr "Consuma luppolo. Produce birra."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:100
@@ -2761,14 +2765,12 @@ msgstr "Necessita di suini o bovini. Produce cibo."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:114
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Fonderia di cannoni"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
-#| msgid "Produces tools out of iron."
 msgid "Produces Cannons."
-msgstr "Produce utensili dal ferro."
+msgstr "Produce cannoni."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:121
@@ -2882,17 +2884,13 @@ msgstr "Produce erbe. Ha bisogno di una fattoria."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Campo di grano"
+msgstr "Campo di luppolo"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:198
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Produce granturco. Necessita di una fattoria."
+msgstr "Produce luppolo. Necessita di una fattoria."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:203
@@ -3009,10 +3007,8 @@ msgstr "Belvedere"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:280
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Difende la tua base."
+msgstr "Estendi l'area dell'insediamento."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:285
@@ -3112,10 +3108,8 @@ msgstr "Raffina tutti i tipi di minerali."
 # 1st one if it's a deposit as warehouse, 2nd if is a cave, a mine of stone
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:353
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "deposito di roccia"
+msgstr "Deposito di pietra"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:358
@@ -3154,10 +3148,10 @@ msgstr "Tenda magazzino"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:378
-#, fuzzy
-#| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Amplia le scorte e fornisce esattori."
+msgstr ""
+"Aumenta la capacità di immagazzinaggio, estende l'area dell'insediamento e "
+"fornisce raccoglitori."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:383
@@ -3257,10 +3251,8 @@ msgstr "Fornisce legname. Abbattuto da boscaioli."
 # Building
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
-msgstr "Villagio scolastico"
+msgstr "Scuola del villaggio"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:441
