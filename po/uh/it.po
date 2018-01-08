@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 20:49+0200\n"
-"PO-Revision-Date: 2018-01-08 16:26+0000\n"
+"PO-Revision-Date: 2018-01-08 16:29+0000\n"
 "Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
@@ -335,7 +335,7 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Corvetta da guerra"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
@@ -2363,8 +2363,8 @@ msgstr ""
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s costruzione aggiuntiva sarà distrutta."
+msgstr[1] "%s costruzioni aggiuntive saranno distrutte"
 
 #: horizons/gui/tabs/barrackstabs.py:38
 msgid "Barracks overview"
@@ -3266,17 +3266,13 @@ msgstr "Magazzino"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:451
-#, fuzzy
-#| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Armi"
+msgstr "Fabbricante d'armi"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:453
-#, fuzzy
-#| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Produce utensili dal ferro."
+msgstr "Produce armi utilizzando ferro."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:458
@@ -3301,7 +3297,7 @@ msgstr "Macina il grano per farne farina."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:472
 msgid "Winery"
-msgstr ""
+msgstr "Cantina"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:474
