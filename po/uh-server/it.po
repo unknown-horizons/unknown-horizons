@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-08-20 13:46+0000\n"
-"Last-Translator: Idesmi <idesmi@protonmail.com>\n"
+"PO-Revision-Date: 2018-01-18 00:27+0000\n"
+"Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh-server/it/>"
 "\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -68,11 +68,11 @@ msgstr "Password errata"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr "C'è già un giocatore col tuo nome nella partita"
+msgstr "È già presente un giocatore con il tuo nome in questa partita."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr "Cambia il tuo nome"
+msgstr "Si prega di cambiare il proprio nome."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
