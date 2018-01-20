@@ -164,12 +164,14 @@ class SaltGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'SaltGoal'
 
+
 class BeerGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
 		super(BeerGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
 
 	def get_personality_name(self):
 		return 'BeerGoal'
+
 
 class CannonGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
@@ -178,12 +180,14 @@ class CannonGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'CannonGoal'
 
+
 class FlourGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
 		super(FlourGoal, self).__init__(settlement_manager, RES.FLOUR, 'flour producer')
 
 	def get_personality_name(self):
 		return 'FlourGoal'
+
 
 class CondimentsGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
@@ -192,12 +196,14 @@ class CondimentsGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'CondimentsGoal'
 
+
 class ConfectioneryGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
 		super(ConfectioneryGoal, self).__init__(settlement_manager, RES.CONFECTIONERY, 'confectionery producer')
 
 	def get_personality_name(self):
 		return 'ConfectioneryGoal'
+
 
 class CandlesGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
@@ -206,21 +212,9 @@ class CandlesGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'CandlesGoal'
 
-decorators.bind_all(ProductionChainGoal)
-decorators.bind_all(FaithGoal)
-decorators.bind_all(TextileGoal)
-decorators.bind_all(BricksGoal)
-decorators.bind_all(EducationGoal)
-decorators.bind_all(GetTogetherGoal)
-decorators.bind_all(ToolsGoal)
-decorators.bind_all(BoardsGoal)
-decorators.bind_all(FoodGoal)
-decorators.bind_all(CommunityGoal)
-decorators.bind_all(TobaccoProductsGoal)
-decorators.bind_all(SaltGoal)
-decorators.bind_all(BeerGoal)
-decorators.bind_all(CannonGoal)
-decorators.bind_all(FlourGoal)
-decorators.bind_all(CondimentsGoal)
-decorators.bind_all(ConfectioneryGoal)
-decorators.bind_all(CandlesGoal)
+class HygieneGoal(ProductionChainGoal):
+        def __init__(self, settlement_manager):
+                super().__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
+
+        def get_personality_name(self):
+                return 'FeederGoal'

@@ -123,12 +123,14 @@ class FeederSaltGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FeederSaltGoal'
 
+
 class FeederCannonGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederCannonGoal, self).__init__(settlement_manager, RES.CANNON, 'cannon producer')
 
 	def get_personality_name(self):
 		return 'FeederCannonGoal'
+
 
 class FeederFlourGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
@@ -137,12 +139,14 @@ class FeederFlourGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FeederFlourGoal'
 
+
 class FeederCondimentsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederCondimentsGoal, self).__init__(settlement_manager, RES.CONDIMENTS, 'condiments producer')
 
 	def get_personality_name(self):
 		return 'FeederCondimentsGoal'
+
 
 class FeederConfectioneryGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
@@ -151,6 +155,7 @@ class FeederConfectioneryGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FeederConfectioneryGoal'
 
+
 class FeederCandlesGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederCandlesGoal, self).__init__(settlement_manager, RES.CANDLES, 'candles producer')
@@ -158,16 +163,10 @@ class FeederCandlesGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FeederCandlesGoal'
 
-decorators.bind_all(FeederChainGoal)
-decorators.bind_all(FeederFoodGoal)
-decorators.bind_all(FeederTextileGoal)
-decorators.bind_all(FeederLiquorGoal)
-decorators.bind_all(FeederBeerGoal)
-decorators.bind_all(FeederTobaccoProductsGoal)
-decorators.bind_all(FeederMedicalProductsGoal)
-decorators.bind_all(FeederSaltGoal)
-decorators.bind_all(FeederCannonGoal)
-decorators.bind_all(FeederFlourGoal)
-decorators.bind_all(FeederCondimentsGoal)
-decorators.bind_all(FeederConfectioneryGoal)
-decorators.bind_all(FeederCandlesGoal)
+
+class FeederHygieneGoal(FeederChainGoal):
+        def __init__(self, settlement_manager):
+                super().__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
+
+        def get_personality_name(self):
+                return 'FeederHygieneGoal'
