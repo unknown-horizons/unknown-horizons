@@ -24,7 +24,6 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
 
 class AbstractWindmill(AbstractBuilding):
@@ -61,6 +60,3 @@ class WindmillEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.WINDMILL
 
 AbstractWindmill.register_buildings()
-
-decorators.bind_all(AbstractWindmill)
-decorators.bind_all(WindmillEvaluator)
