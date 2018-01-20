@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import decorators
+from typing import Dict
 
-class DifficultySettings(object):
+
+class DifficultySettings:
 	EASY_LEVEL = 0
 	DEFAULT_LEVEL = 1
 
-	levels = {}
+	levels = {} # type: Dict[int, DifficultySettings]
 
 	@classmethod
 	def get_settings(cls, level):
@@ -38,21 +39,20 @@ class DifficultySettings(object):
 		cls.levels[cls.EASY_LEVEL] = EasySettings
 		cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
 
-class DifficultyClass(object):
+
+class DifficultyClass:
 	def __init__(self, level):
 		self.level = level
+
 
 class DefaultSettings(DifficultyClass):
 	extra_happiness_constant = 0
 	happiness_multiplier = 1
-	tax_multiplier = 1
+	tax_multiplier = 1.0
+
 
 class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5
 
-DifficultySettings.register_levels()
 
-decorators.bind_all(DifficultySettings)
-decorators.bind_all(DifficultyClass)
-decorators.bind_all(DefaultSettings)
-decorators.bind_all(EasySettings)
+DifficultySettings.register_levels()

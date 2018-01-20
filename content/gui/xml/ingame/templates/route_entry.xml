@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<Container size="350,60">
-	<Label name="warehouse_name" position="0,7" />
-	<Label name="player_name" position="0,27" />
+<Container size="350,90">
+	<Label name="warehouse_name" text="" position="0,5" />
+	<Label name="player_name" text="" position="100,5" />
 
-	<ImageButton name="move_up" position="290,6"
+	<ImageButton name="move_up" position="280,31"
 		path="images/buttons/up_15"
 		helptext="Move up"  comment="Trade route entry" />
 
-	<ImageButton name="delete_warehouse" position="290,23"
+	<ImageButton name="delete_warehouse" position="280,48"
 		path="images/buttons/delete_small"
 		helptext="Delete entry"  comment="Trade route entry" />
 
-	<ImageButton name="move_down" position="290,44"
+	<ImageButton name="move_down" position="280,69"
 		path="images/buttons/down_15"
 		helptext="Move down"  comment="Trade route entry" />
 </Container>

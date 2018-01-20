@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,23 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.callback import Callback
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.constants import SETTLER
 from horizons.command.uioptions import SetTaxSetting
-from horizons.gui.tabs import OverviewTab
-from horizons.gui.util import create_resource_icon, get_happiness_icon_and_helptext
-from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import SETTLER
+from horizons.gui.util import create_resource_icon, get_happiness_icon_and_helptext
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.messaging import SettlerUpdate
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
+
+from .overviewtab import OverviewTab
 
 
 class SettlerOverviewTab(OverviewTab):
 	widget = 'overview_settler.xml'
-	helptext = _lazy("Settler overview")
+	helptext = LazyT("Settler overview")
 
 	def init_widget(self):
-		super(SettlerOverviewTab, self).init_widget()
+		super().init_widget()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
@@ -45,10 +45,10 @@ class SettlerOverviewTab(OverviewTab):
 		                 self.instance.level)
 
 		taxes = self.instance.settlement.tax_settings[self.instance.level]
-		self.widget.child_finder('tax_val_label').text = unicode(taxes)
+		self.widget.child_finder('tax_val_label').text = str(taxes)
 		action_set = ActionSetLoader.get_set(self.instance._action_set_id)
-		action_gfx = action_set.items()[0][1]
-		image = action_gfx[45].keys()[0]
+		action_gfx = list(action_set.items())[0][1]
+		image = list(action_gfx[45].keys())[0]
 		self.widget.findChild(name="building_image").image = image
 
 	def on_settler_level_change(self, message):
@@ -58,27 +58,27 @@ class SettlerOverviewTab(OverviewTab):
 		                 self.instance.settlement,
 		                 message.level)
 		taxes = self.instance.settlement.tax_settings[self.instance.level]
-		self.widget.child_finder('tax_val_label').text = unicode(taxes)
-		imgs = ActionSetLoader.get_set(self.instance._action_set_id).items()[0][1]
-		self.widget.findChild(name="building_image").image = imgs[45].keys()[0]
+		self.widget.child_finder('tax_val_label').text = str(taxes)
+		imgs = list(ActionSetLoader.get_set(self.instance._action_set_id).items())[0][1]
+		self.widget.findChild(name="building_image").image = list(imgs[45].keys())[0]
 
 	def show(self):
-		super(SettlerOverviewTab, self).show()
+		super().show()
 		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
 		SettlerUpdate.discard(self.on_settler_level_change, sender=self.instance)
-		super(SettlerOverviewTab, self).hide()
+		super().hide()
 
 	def refresh(self):
 		image, helptext = get_happiness_icon_and_helptext(self.instance.happiness, self.instance.session)
 		self.widget.child_finder('happiness_label').image = image
 		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
+		self.widget.child_finder('inhabitants').text = "{}/{}".format(
 		                                               self.instance.inhabitants,
 		                                               self.instance.inhabitants_max)
-		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
+		self.widget.child_finder('taxes').text = str(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
@@ -87,7 +87,7 @@ class SettlerOverviewTab(OverviewTab):
 				                     self.instance.settlement)
 		         }
 		self.widget.mapEvents(events)
-		super(SettlerOverviewTab, self).refresh()
+		super().refresh()
 
 	def update_consumed_res(self):
 		"""Updates the container that displays the needed resources of the settler"""
@@ -104,14 +104,15 @@ class SettlerOverviewTab(OverviewTab):
 
 		container.adaptLayout()
 
+
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""
-	slider.scale_start = SETTLER.TAX_SETTINGS_MIN
-	slider.scale_end = SETTLER.TAX_SETTINGS_MAX
-	slider.step_length = SETTLER.TAX_SETTINGS_STEP
+	step_count = int((SETTLER.TAX_SETTINGS_MAX - SETTLER.TAX_SETTINGS_MIN) / SETTLER.TAX_SETTINGS_STEP)
+	slider.steps = [SETTLER.TAX_SETTINGS_MIN + SETTLER.TAX_SETTINGS_STEP * i for i in
+			range(step_count)]
 	slider.value = settlement.tax_settings[level]
 	def on_slider_change():
-		val_label.text = unicode(slider.value)
+		val_label.text = str(slider.value)
 		if settlement.tax_settings[level] != slider.value:
 			SetTaxSetting(settlement, level, slider.value).execute(settlement.session)
 	slider.capture(on_slider_change)

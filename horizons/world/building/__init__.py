@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +24,7 @@ import logging
 from fife import fife
 
 import horizons.globals
+from horizons.i18n import gettext as T
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.world.ingametype import IngameType
 from horizons.world.production.producer import Producer
@@ -34,10 +34,10 @@ class BuildingClass(IngameType):
 	log = logging.getLogger('world.building')
 
 	basepackage = 'horizons.world.building.'
-	classstring = 'Building['
+	classstring = 'Building[{id}]'
 
 	def __new__(self, db, id, yaml_data):
-		return super(BuildingClass, self).__new__(self, id, yaml_data)
+		return super().__new__(self, id, yaml_data)
 
 	def __init__(self, db, id, yaml_data):
 		"""
@@ -45,7 +45,7 @@ class BuildingClass(IngameType):
 		@param id: building id.
 		@param db: DbReader
 		"""
-		super(BuildingClass, self).__init__(id, yaml_data)
+		super().__init__(id, yaml_data)
 
 		self.settler_level = yaml_data['tier']
 		self.tooltip_text = self._strip_translation_marks(yaml_data['tooltip_text'])
@@ -76,14 +76,14 @@ class BuildingClass(IngameType):
 		cls.log.debug("Loading building %s", cls.id)
 		try:
 			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'building')
-		except RuntimeError:
+		except fife.NameClash:
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
 		all_action_sets = ActionSetLoader.get_sets()
 
 		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
-		for action_set_list in cls.action_sets.itervalues():
+		for action_set_list in cls.action_sets.values():
 			for action_set in action_set_list: # set1, set2, ...
 				for action_id in all_action_sets[action_set]: # idle, move, ...
 					cls._do_load(all_action_sets, action_set, action_id)
@@ -94,18 +94,73 @@ class BuildingClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
+			# hacks to solve issue #1379
 			if rotation == 45:
-				params['left'] = 32
+				# default values
 				params['botm'] = 16 * cls.size[0]
+				params['left'] = 32
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
+					params["botm"] = 66
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 55
+					params["left"] = 25
+				elif cls.size[0] == 2:
+					params["botm"] = 40
+				elif cls.size[0] == 1:
+					params["botm"] = 29
 			elif rotation == 135:
+				# default values
+				params['botm'] = 30
 				params['left'] = 32 * cls.size[1]
-				params['botm'] = 16
+				# hack for charcoal_burning
+				if cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 35
+					params["left"] = 65
 			elif rotation == 225:
-				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
+				# default values
 				params['botm'] = 16 * cls.size[1]
+				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
+					params["botm"] = 60
+				# hack for brickyard
+				elif cls.size[0] == 2 and cls.size[1] == 4:
+					params["botm"] = 73
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 42
+					params["left"] = 130
+				elif cls.size[0] == 2:
+					params["botm"] = 40
+				elif cls.size[0] == 1:
+					params["botm"] = 29
 			elif rotation == 315:
+				# default values
 				params['left'] = 32 * cls.size[0]
 				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 125
+					params["left"] = 135
+				elif cls.size[0] == 3:
+					params["botm"] = 96
+				# hack for brickyard
+				elif cls.size[0] == 2 and cls.size[1] == 4:
+					params["botm"] = 92
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 75
+					params["left"] = 100
+				elif cls.size[0] == 2:
+					params["botm"] = 56
+				elif cls.size[0] == 1:
+					params["botm"] = 30
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
@@ -116,10 +171,10 @@ class BuildingClass(IngameType):
 	def get_tooltip(self):
 		"""Returns tooltip text of a building class.
 		ATTENTION: This text is automatically translated when loaded
-		already. DO NOT wrap the return value of this method in _()!
+		already. DO NOT wrap the return value of this method in T()!
 		@return: string tooltip_text
 		"""
 		# You usually do not need to change anything here when translating
-		tooltip = _("{building}: {description}")
+		tooltip = T("{building}: {description}")
 		return tooltip.format(building=self._name,
 		                      description=self.tooltip_text)

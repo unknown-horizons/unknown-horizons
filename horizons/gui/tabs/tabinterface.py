@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
-from horizons.extscheduler import ExtScheduler
+
 
 @metaChangeListenerDecorator('remove')
-class TabInterface(object):
+class TabInterface:
 	"""
 	The TabInterface should be used by all classes that represent Tabs for the
 	TabWidget.
@@ -60,7 +61,7 @@ class TabInterface(object):
 	# Override these in your subclass either as class attribute, or by passing it
 	# to the constructor. The value of the constructor has preference over the
 	# class attribute.
-	widget = None
+	widget = None # type: str
 	icon_path = 'images/tabwidget/tab'
 
 	scheduled_update_delay = 0.4 # seconds, update after this time when an update is scheduled
@@ -70,7 +71,7 @@ class TabInterface(object):
 		@param widget: filename of a widget. Set this to None if you create your
 		               widget in `get_widget`.
 		"""
-		super(TabInterface, self).__init__()
+		super().__init__()
 		if widget or self.__class__.widget:
 			self.widget = widget or self.__class__.widget
 			if not self.__class__.lazy_loading:

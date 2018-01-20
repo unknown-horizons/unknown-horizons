@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,8 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+
 
 class AbstractBoatBuilder(AbstractBuilding):
 	@property
@@ -40,6 +40,7 @@ class AbstractBoatBuilder(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.BOAT_BUILDER] = cls
+
 
 class BoatBuilderEvaluator(BuildingEvaluator):
 	@classmethod
@@ -59,7 +60,5 @@ class BoatBuilderEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.BOAT_BUILDER
 
-AbstractBoatBuilder.register_buildings()
 
-decorators.bind_all(AbstractBoatBuilder)
-decorators.bind_all(BoatBuilderEvaluator)
+AbstractBoatBuilder.register_buildings()

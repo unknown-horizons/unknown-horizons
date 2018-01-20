@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import List
 
-class Component(object):
+
+class Component:
 	"""
 	Base class for all components. Something like an interface.
 
@@ -35,16 +37,16 @@ class Component(object):
 	"""
 
 	#  Store the name of this component. This has to be overwritten in subclasses
-	NAME = None
+	NAME = None # type: str
 
 	# Store dependencies to other components here
-	DEPENDENCIES = []
+	DEPENDENCIES = [] # type: List[str]
 
 	def __init__(self):
 		"""
 		Used for initialization code that does not require any other components.
 		This is always called first, on construction and on load."""
-		super(Component, self).__init__()
+		super().__init__()
 		self.instance = None # Has to be set by the componentholder
 
 	@property
@@ -92,7 +94,6 @@ class Component(object):
 		"""
 		arguments = arguments or {}
 		return cls(**arguments)
-
 
 	def __gt__(self, other):
 		return other.__class__ in self.DEPENDENCIES

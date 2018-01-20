@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,16 +24,20 @@ Put all code here that is not directly related to the game,
 but rather a generic enhancement of the programming language.
 """
 
-import decorators
+import collections
+from typing import Any, Set, Type
 
-class Const(object):
+from .decorators import *
+
+
+class Const:
 	"""An immutable type. Think C++-like const"""
 	def __setattr__(self, name, value):
 		"""Disallow changing an already set attribute.
 		An asymptote to const behavior, which is not supported by python"""
 		if name in self.__dict__:
 			raise Exception("Can't change a Const object")
-		super(Const, self).__setattr__(name, value)
+		super().__setattr__(name, value)
 
 
 def parse_port(port, allow_zero=True):
@@ -45,14 +49,16 @@ def parse_port(port, allow_zero=True):
 		raise ValueError('Requires a port between 1 and 65535.')
 	return port_int
 
+
 def get_all_subclasses(cls):
 	"""Recursivly find all subclasses of a given class."""
-	result = set()
+	result = set() # type: Set[type]
 	for subclass in cls.__class__.__subclasses__(cls):
 		if subclass not in result:
 			result.add(subclass)
 			result.update(get_all_subclasses(subclass))
 	return result
+
 
 def map_balance(value, n, m):
 	"""
@@ -71,9 +77,10 @@ def map_balance(value, n, m):
 	# normally we'd need to have special cases for value < 1.0 and value > 1.0
 	# but we turn cases of 1/n into n instead
 	if value < 1.0:
-		value = 1./value
+		value = 1. / value
 		m *= -1
 	return ((value - 1.0) / (n - 1.0)) * m
+
 
 def trim_value(value, min, max):
 	if value < min:

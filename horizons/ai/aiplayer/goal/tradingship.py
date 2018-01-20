@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+
 
 class TradingShipGoal(SettlementGoal):
 	def get_personality_name(self):
@@ -29,7 +29,7 @@ class TradingShipGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(TradingShipGoal, self).active \
+		return super().active \
 			and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
 			and self.owner.need_more_ships \
 			and not self.owner.unit_builder.num_ships_being_built
@@ -37,5 +37,3 @@ class TradingShipGoal(SettlementGoal):
 	def execute(self):
 		self.settlement_manager.log.info('%s start building a ship', self)
 		self.owner.unit_builder.build_ship()
-
-decorators.bind_all(TradingShipGoal)

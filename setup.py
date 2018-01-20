@@ -1,6 +1,6 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,20 +21,18 @@
 # ###################################################
 
 
-from distutils.core import setup
-from distutils.command.build import build
-from distutils.spawn import find_executable
 import distutils.cmd
-import os
 import glob
+import json
+import os
 import platform
-from shutil import rmtree, copytree
-
-# Install dummy gettext before any imports from horizons
-import gettext
-gettext.install("")
+from distutils.command.build import build
+from distutils.core import setup
+from distutils.spawn import find_executable
+from shutil import copytree, rmtree
 
 from horizons.constants import VERSION
+from horizons.ext import polib
 
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
@@ -57,7 +55,7 @@ data = [
   ('share/man/man6', ('content/packages/unknown-horizons.6', )),
 ]
 
-for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
+for root, dirs, files in [x for x in os.walk('content') if len(x[2])]:
 	data.append(('share/unknown-horizons/{0!s}'.format(root),
 		['{0!s}/{1!s}'.format(root, f) for f in files]))
 
@@ -66,10 +64,10 @@ for root, dirs, files in os.walk('horizons'):
 	packages.append(root)
 
 # Add enet files for build platform
-type = platform.system().lower()
+systemtype = platform.system().lower()
 arch = platform.machine()
-dir = "horizons/network/{0!s}-x{1!s}".format(type, arch[-2:])
-package_data = {dir: ['*.so']}
+enetdir = "horizons/network/{0!s}-x{1!s}".format(systemtype, arch[-2:])
+package_data = {enetdir: ['*.so']}
 
 
 class _build_i18n(distutils.cmd.Command):
@@ -96,7 +94,7 @@ class _build_i18n(distutils.cmd.Command):
 	def generate_mo_files(self, domain, po_dir):
 		if not os.path.isdir(po_dir):
 			return []
-		po_files = glob.glob("%s/*.po" % po_dir)
+		po_files = glob.glob("{}/*.po".format(po_dir))
 		if po_files and not find_executable('msgfmt'):
 			raise RuntimeError(
 				"Can't generate language files, needs msgfmt. "
@@ -113,13 +111,14 @@ class _build_i18n(distutils.cmd.Command):
 		if "LINGUAS" in os.environ:
 			selected_languages = os.environ["LINGUAS"].split()
 
+		translation_stats = {}
 		mo_files = []
 		for po_file in po_files:
 			lang = os.path.basename(po_file[:-3])
 			if selected_languages and lang not in selected_languages:
 				continue
 			mo_dir = os.path.join("content", "lang", lang, "LC_MESSAGES")
-			mo_file = os.path.join(mo_dir, "%s.mo" % domain)
+			mo_file = os.path.join(mo_dir, "{}.mo".format(domain))
 			if not os.path.exists(mo_dir):
 				os.makedirs(mo_dir)
 			cmd = ["msgfmt", po_file, "-o", mo_file]
@@ -129,8 +128,19 @@ class _build_i18n(distutils.cmd.Command):
 			if po_mtime > mo_mtime:
 				self.spawn(cmd)
 
+			percent_translated = polib.pofile(po_file).percent_translated()
+			translation_stats[lang] = percent_translated
+
 			targetpath = os.path.join("share/locale", lang, "LC_MESSAGES")
 			mo_files.append((targetpath, [mo_file]))
+
+		# Write translation stats to file and have it included in package
+		stats_filename = os.path.join('content', 'lang', 'stats.json')
+		with open(stats_filename, 'w') as f:
+			json.dump(translation_stats, f)
+
+		self.distribution.data_files.append((os.path.join('share', 'locale'), [stats_filename]))
+
 		return mo_files
 
 	def run(self):
@@ -169,7 +179,7 @@ class _build_i18n(distutils.cmd.Command):
 					mo_files_generated = True
 				data_files.extend(mo_files)
 			except RuntimeError as e:
-				print(e.message)
+				print(str(e))
 				return
 
 		# merge .in with translation
@@ -209,6 +219,7 @@ class _build_i18n(distutils.cmd.Command):
 			if os.path.exists(os.path.join("content", "lang")):
 				rmtree(os.path.join("content", "lang"))
 			copytree(os.path.join("build", "mo"), os.path.join("content", "lang"))
+
 
 build.sub_commands.append(('build_i18n', None))
 

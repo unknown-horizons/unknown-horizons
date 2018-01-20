@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,15 +21,15 @@
 
 import logging
 
-from horizons.constants import GUI
-from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.command.uioptions import SellResource, BuyResource, TransferResource
-from horizons.util.python.callback import Callback
-from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.component.storagecomponent import StorageComponent
+from horizons.command.uioptions import BuyResource, SellResource, TransferResource
 from horizons.component.namedcomponent import NamedComponent
-from horizons.i18n import _lazy
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import GUI
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+from horizons.i18n import gettext_lazy as LazyT
+from horizons.util.python.callback import Callback
 
 
 class TradeTab(TabInterface):
@@ -38,7 +38,7 @@ class TradeTab(TabInterface):
 
 	widget = 'tradetab.xml'
 	icon_path = 'icons/tabwidget/warehouse/buysell'
-	helptext = _lazy('Trade')
+	helptext = LazyT('Trade')
 
 	scheduled_update_delay = 0.3
 
@@ -65,7 +65,7 @@ class TradeTab(TabInterface):
 
 	def init_widget(self):
 		events = {}
-		for k, v in self.exchange_size_buttons.iteritems():
+		for k, v in self.exchange_size_buttons.items():
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.partner = None

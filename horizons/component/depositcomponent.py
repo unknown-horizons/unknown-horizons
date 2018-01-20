@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -23,12 +23,13 @@ from horizons.component import Component
 from horizons.component.storagecomponent import StorageComponent
 from horizons.util.python.decorators import cachedmethod
 
+
 class DepositComponent(Component):
 	NAME = 'resource_deposit'
 	DEPENDENCIES = ['StorageComponent']
 
 	def __init__(self, resources):
-		super(DepositComponent, self).__init__()
+		super().__init__()
 		self.resources = resources
 
 	def initialize(self, inventory=None):
@@ -43,11 +44,11 @@ class DepositComponent(Component):
 	def get_res_ranges(self):
 		"""Generator for tuples (res_id, min, max) for each resource that the deposit
 		can contain (as defined in the object file)."""
-		return ( (res, data.get('min_amount', 0), data['max_amount'])
-		         for res, data in self.resources.iteritems() )
+		return ((res, data.get('min_amount', 0), data['max_amount'])
+		        for res, data in self.resources.items())
 
 	def get_random_res_amounts(self):
 		"""Generator for tuples (res_id, rand_amount) for each resource that the deposit
 		can contain (as defined in the object file)."""
-		return ( (res, self.session.random.randint(min_amount, max_amount))
-		         for res, min_amount, max_amount in self.get_res_ranges() )
+		return ((res, self.session.random.randint(min_amount, max_amount))
+		        for res, min_amount, max_amount in self.get_res_ranges())

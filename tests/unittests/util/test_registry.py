@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,41 +19,42 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import unittest
+import pytest
 
 from horizons.util.python.registry import Registry
 
 
-class RegistryTest(unittest.TestCase):
+def test_simple():
+	class Example(Registry):
+		def register_function(self, func):
+			self.registry[func.__name__] = func
 
-	def test_simple(self):
-		class Example(object):
-			__metaclass__ = Registry
-			@classmethod
-			def register_function(cls, func):
-				cls.registry[func.__name__] = func
+	instance = Example()
+	with pytest.raises(KeyError):
+		instance.get('foo')
 
-		self.assertRaises(KeyError, Example.get, 'foo')
+	@instance.register()
+	def foo(a, b):
+		return a + b
 
-		@Example.register()
-		def foo(a, b):
-			return a + b
+	assert instance.get('foo') == foo
 
-		self.assertEqual(Example.get('foo'), foo)
 
-	def test_with_arguments(self):
-		"""Test arguments in the register decorator."""
-		class Example(object):
-			__metaclass__ = Registry
-			@classmethod
-			def register_function(cls, func, name):
-				cls.registry[name] = func
+def test_with_arguments():
+	"""Test arguments in the register decorator."""
+	class Example(Registry):
+		def register_function(self, func, name):
+			self.registry[name] = func
 
-		self.assertRaises(KeyError, Example.get, 'foo')
+	instance = Example()
+	with pytest.raises(KeyError):
+		instance.get('foo')
 
-		@Example.register(name='bar')
-		def foo(a, b):
-			return a + b
+	@instance.register(name='bar')
+	def foo(a, b):
+		return a + b
 
-		self.assertRaises(KeyError, Example.get, 'foo')
-		self.assertEqual(Example.get('bar'), foo)
+	with pytest.raises(KeyError):
+		instance.get('foo')
+
+	assert instance.get('bar') == foo

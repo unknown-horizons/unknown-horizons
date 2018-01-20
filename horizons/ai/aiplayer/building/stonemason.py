@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,8 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+
 
 class AbstractStonemason(AbstractBuilding):
 	@property
@@ -35,6 +35,7 @@ class AbstractStonemason(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.STONEMASON] = cls
+
 
 class StonemasonEvaluator(BuildingEvaluator):
 	@classmethod
@@ -58,7 +59,5 @@ class StonemasonEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.STONE_PIT
 
-AbstractStonemason.register_buildings()
 
-decorators.bind_all(AbstractStonemason)
-decorators.bind_all(StonemasonEvaluator)
+AbstractStonemason.register_buildings()

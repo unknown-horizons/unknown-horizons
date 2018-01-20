@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,12 @@
 
 import logging
 
+from horizons.network.packets import SafeUnpickler
 from horizons.util.python import get_all_subclasses
 from horizons.util.worldobject import WorldObject
-from horizons.network.packets import SafeUnpickler
 
 
-class Command(object):
+class Command:
 	"""Base class for every Command."""
 	log = logging.getLogger("command")
 
@@ -76,7 +76,9 @@ class GenericCommand(Command):
 		return WorldObject.get_object_by_id(self.obj_id)
 
 	def __str__(self):
-		return "GenericCommand(%s, %s, %s, %s, %s)" % (self.__class__, self._get_object(), self.method, self.args, self.kwargs)
+		return "GenericCommand({}, {}, {}, {}, {})".format(
+			self.__class__, self._get_object(), self.method, self.args, self.kwargs)
+
 
 class GenericComponentCommand(Command):
 	"""Code generator for trivial commands on a component."""
@@ -94,4 +96,6 @@ class GenericComponentCommand(Command):
 		return WorldObject.get_object_by_id(self.obj_id)
 
 	def __str__(self):
-		return "GenericCompCommand(%s, %s, %s, %s, %s, %s)" % (self.__class__, self._get_object(), self.component_name, self.method, self.args, self.kwargs)
+		return "GenericCompCommand({}, {}, {}, {}, {}, {})".format(
+			self.__class__, self._get_object(), self.component_name,
+			self.method, self.args, self.kwargs)

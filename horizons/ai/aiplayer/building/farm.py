@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,17 +20,17 @@
 # ###################################################
 
 from collections import defaultdict
+from typing import Dict, List, Tuple
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
-from horizons.constants import RES, BUILDINGS
-from horizons.util.python import decorators
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
+from horizons.constants import BUILDINGS, RES
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 
-class FarmOptionCache(object):
+class FarmOptionCache:
 	def __init__(self, settlement_manager):
 		self.settlement_manager = settlement_manager
 		abstract_farm =  AbstractBuilding.buildings[BUILDINGS.FARM]
@@ -132,7 +132,7 @@ class FarmOptionCache(object):
 		if self._positive_alignment is None:
 			land_manager = self.settlement_manager.land_manager
 			village_builder = self.settlement_manager.village_builder
-			positive_alignment = land_manager.coastline.union(land_manager.roads, village_builder.plan.iterkeys())
+			positive_alignment = land_manager.coastline.union(land_manager.roads, iter(village_builder.plan.keys()))
 			production_builder_plan = self.settlement_manager.production_builder.plan
 			for (coords, purpose) in production_builder_plan:
 				if purpose != BUILDING_PURPOSE.NONE:
@@ -179,7 +179,7 @@ class AbstractFarm(AbstractBuilding):
 			return []
 
 		farm_field_buckets = []
-		for _ in xrange(9):
+		for _ in range(9):
 			farm_field_buckets.append([])
 
 		for option in raw_options:
@@ -188,7 +188,7 @@ class AbstractFarm(AbstractBuilding):
 		personality = settlement_manager.owner.personality_manager.get('FarmEvaluator')
 		options_left = personality.max_options
 		chosen_raw_options = []
-		for i in xrange(8, 0, -1):
+		for i in range(8, 0, -1):
 			if len(farm_field_buckets[i]) > options_left:
 				chosen_raw_options.extend(settlement_manager.session.random.sample(farm_field_buckets[i], options_left))
 				options_left = 0
@@ -215,14 +215,15 @@ class AbstractFarm(AbstractBuilding):
 				options.append(evaluator)
 
 		# create evaluators for modified farms (change unused field type)
-		for coords_list in production_builder.unused_fields.itervalues():
+		for coords_list in production_builder.unused_fields.values():
 			for x, y in coords_list:
 				evaluator = ModifiedFieldEvaluator.create(production_builder, x, y, field_purpose)
 				if evaluator is not None:
 					options.append(evaluator)
 		return options
 
-	__cache = {}
+	__cache = {} # type: Dict[int, Tuple[Tuple[int, int], FarmOptionCache]]
+
 	def _get_option_cache(self, settlement_manager):
 		production_builder = settlement_manager.production_builder
 		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)
@@ -250,12 +251,12 @@ class AbstractFarm(AbstractBuilding):
 class FarmEvaluator(BuildingEvaluator):
 	__field_pos_offsets = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-	__field_offsets = None
+	__field_offsets = None # type: List[Tuple[int, int]]
 
 	__slots__ = ('farm_plan', 'field_purpose')
 
 	def __init__(self, area_builder, builder, value, farm_plan, fields, field_purpose):
-		super(FarmEvaluator, self).__init__(area_builder, builder, value)
+		super().__init__(area_builder, builder, value)
 		self.farm_plan = farm_plan
 		self.field_purpose = field_purpose
 
@@ -282,7 +283,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 		# place the farm area road
 		existing_roads = 0
-		for other_offset in xrange(-3, 6):
+		for other_offset in range(-3, 6):
 			coords = None
 			if road_dx == 0:
 				coords = (farm_x + other_offset, farm_y + road_dy)
@@ -361,7 +362,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return FarmEvaluator(area_builder, builder, value, farm_plan, fields, field_purpose)
 
 	def _register_changes(self, changes, just_roads):
-		for (purpose, data), coords_list in changes.iteritems():
+		for (purpose, data), coords_list in changes.items():
 			if just_roads == (purpose == BUILDING_PURPOSE.ROAD):
 				self.area_builder.register_change_list(coords_list, purpose, data)
 
@@ -372,7 +373,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 		changes = defaultdict(list)
 		reverse_changes = defaultdict(list)
-		for coords, purpose in self.farm_plan.iteritems():
+		for coords, purpose in self.farm_plan.items():
 			# completely ignore the road in the plan for now
 			if purpose == BUILDING_PURPOSE.ROAD:
 				continue
@@ -400,7 +401,7 @@ class FarmEvaluator(BuildingEvaluator):
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
-		for coords, purpose in self.farm_plan.iteritems():
+		for coords, purpose in self.farm_plan.items():
 			if purpose == self.field_purpose:
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self._register_changes(changes, True)
@@ -413,7 +414,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 	__slots__ = ('_old_field_purpose')
 
 	def __init__(self, area_builder, builder, value, old_field_purpose):
-		super(ModifiedFieldEvaluator, self).__init__(area_builder, builder, value)
+		super().__init__(area_builder, builder, value)
 		self._old_field_purpose = old_field_purpose
 
 	@classmethod
@@ -482,9 +483,6 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 
 		return (BUILD_RESULT.OK, building)
 
+
 AbstractFarm.register_buildings()
 FarmEvaluator.init_field_offsets()
-
-decorators.bind_all(AbstractFarm)
-decorators.bind_all(FarmEvaluator)
-decorators.bind_all(ModifiedFieldEvaluator)

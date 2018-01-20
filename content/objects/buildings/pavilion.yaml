@@ -14,8 +14,8 @@ show_status_icons: false
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab,]
-    enemy_tabs: [EnemyBuildingOverviewTab,]
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

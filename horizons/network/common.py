@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,12 @@
 
 import uuid
 from gettext import NullTranslations
+from typing import Optional
 
-from horizons.network import packets, enet
+from horizons.network import enet, packets
 
 
-class Address(object):
+class Address:
 	def __init__(self, address, port=None):
 		if isinstance(address, enet.Address):
 			self.host = address.host
@@ -35,7 +36,7 @@ class Address(object):
 			self.port = int(port)
 
 	def __str__(self):
-		return "%s:%u" % (self.host, self.port)
+		return "{}:{:d}".format(self.host, self.port)
 
 	def __hash__(self):
 		return hash((self.host, self.port))
@@ -54,8 +55,11 @@ class Address(object):
 
 #-----------------------------------------------------------------------------
 
+
 nulltranslation = NullTranslations()
-class Player(object):
+
+
+class Player:
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
@@ -109,9 +113,9 @@ class Player(object):
 
 	def __str__(self):
 		if self.name:
-			return "Player(addr=%s;proto=%d;name=%s)" % (self.address, self.protocol, self.name)
+			return "Player(addr={};proto={:d};name={})".format(self.address, self.protocol, self.name)
 		else:
-			return "Player(addr=%s;proto=%d)" % (self.address, self.protocol)
+			return "Player(addr={};proto={:d})".format(self.address, self.protocol)
 
 	def join(self, game, packet):
 		""" assigns player data sent by create/join-command to the player """
@@ -130,12 +134,13 @@ class Player(object):
 		self.ready = not self.ready
 		return self.ready
 
+
 packets.SafeUnpickler.add('server', Player)
 
-#-----------------------------------------------------------------------------
 
-class Game(object):
-	class State(object):
+#-----------------------------------------------------------------------------
+class Game:
+	class State:
 		Open      = 0
 		Prepare   = 1
 		Running   = 2
@@ -144,8 +149,8 @@ class Game(object):
 			self.state = state
 
 		def __str__(self):
-			strvals = [ "Open", "Prepare", "Running" ]
-			return "%s" % (strvals[self.state])
+			strvals = ["Open", "Prepare", "Running"]
+			return strvals[self.state]
 
 	def __init__(self, packet, creator):
 		# pickle doesn't use all of these attributes
@@ -207,6 +212,11 @@ class Game(object):
 		player.game = None
 		return player
 
+	def find_player_by_sid(self, sid: str) -> Optional[Player]:
+		for player in self.players:
+			if player.sid == packet.kicksid:
+				return player
+
 	def is_full(self):
 		return (self.playercnt == self.maxplayers)
 
@@ -233,15 +243,17 @@ class Game(object):
 		self.playercnt = 0
 
 	def __str__(self):
-		return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
+		return "Game(uuid={};maxpl={:d};plcnt={:d};pw={:d};state={})" \
+			.format(self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
+
 
 packets.SafeUnpickler.add('server', Game)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 # types of soft errors used by cmd_error
 # this way we don't have to create a new packet for every type of error
-class ErrorType(object):
+class ErrorType:
 	NotSet = 0
 	TerminateGame = 1
 
@@ -249,7 +261,8 @@ class ErrorType(object):
 		self.state = state
 
 	def __str__(self):
-		strvals = [ "NotSet", "TerminateGame" ]
-		return "%s" % (strvals[self.state])
+		strvals = ["NotSet", "TerminateGame"]
+		return strvals[self.state]
+
 
 packets.SafeUnpickler.add('common', ErrorType)

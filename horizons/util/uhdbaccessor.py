@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,9 +22,11 @@
 import random
 
 from horizons.constants import PATHS, TIER
-from horizons.util.python import decorators
-from horizons.util.dbreader import DbReader
 from horizons.entities import Entities
+from horizons.i18n import gettext as T
+from horizons.util.dbreader import DbReader
+from horizons.util.python import decorators
+
 
 ########################################################################
 class UhDbAccessor(DbReader):
@@ -39,8 +41,7 @@ class UhDbAccessor(DbReader):
 	places, that are data access routines (e.g. unit/building class)."""
 
 	def __init__(self, dbfile):
-		super(UhDbAccessor, self).__init__(dbfile=dbfile)
-
+		super().__init__(dbfile=dbfile)
 
 	# ------------------------------------------------------------------
 	# Db Access Functions start here
@@ -52,7 +53,7 @@ class UhDbAccessor(DbReader):
 		"""Returns the translated name for a specific resource id.
 		@param id: int resource's id, of which the name is returned """
 		name = self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
-		return _(name)
+		return T(name)
 
 	def get_res_inventory_display(self, id):
 		sql = "SELECT shown_in_inventory FROM resource WHERE id = ?"
@@ -75,7 +76,7 @@ class UhDbAccessor(DbReader):
 		if only_inventory:
 			sql += " AND shown_in_inventory = 1"
 		db_data = self.cached_query(sql)
-		return map(lambda x: x[0], db_data)
+		return [x[0] for x in db_data]
 
 	# Sound table
 
@@ -98,7 +99,7 @@ class UhDbAccessor(DbReader):
 		@return list of building class ids
 		"""
 		sql = "SELECT related_building FROM related_buildings WHERE building = ?"
-		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+		return [x[0] for x in self.cached_query(sql, building_class_id)]
 
 	@decorators.cachedmethod
 	def get_related_building_ids_for_menu(self, building_class_id):
@@ -108,7 +109,7 @@ class UhDbAccessor(DbReader):
 		@return list of building class ids
 		"""
 		sql = "SELECT related_building FROM related_buildings WHERE building = ? and show_in_menu = 1"
-		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+		return [x[0] for x in self.cached_query(sql, building_class_id)]
 
 	@decorators.cachedmethod
 	def get_inverse_related_building_ids(self, building_class_id):
@@ -117,13 +118,13 @@ class UhDbAccessor(DbReader):
 		@return list of building class ids
 		"""
 		sql = "SELECT building FROM related_buildings WHERE related_building = ?"
-		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
+		return [x[0] for x in self.cached_query(sql, building_class_id)]
 
 	@decorators.cachedmethod
 	def get_buildings_with_related_buildings(self):
 		"""Returns all buildings that have related buildings"""
 		sql = "SELECT DISTINCT building FROM related_buildings"
-		return map(lambda x: x[0], self.cached_query(sql))
+		return [x[0] for x in self.cached_query(sql)]
 
 	# Messages
 
@@ -228,7 +229,7 @@ class UhDbAccessor(DbReader):
 		"""Returns a random name compatible with the given locale. If there are
 		no unused names left, None is returned.
 		"""
-		used_names_placeholder = ', '.join(['?']*len(used_names))
+		used_names_placeholder = ', '.join(['?'] * len(used_names))
 		sql = "SELECT name FROM ainames \
 				WHERE name NOT IN ({0}) AND \
 					  (locale IS NULL OR locale = ?) \
@@ -250,7 +251,7 @@ class UhDbAccessor(DbReader):
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
-		return frozenset( id for (id, b) in Entities.buildings.iteritems() if b.translucent )
+		return frozenset( id for (id, b) in Entities.buildings.items() if b.translucent )
 
 	# Weapon table
 
@@ -261,7 +262,6 @@ class UhDbAccessor(DbReader):
 	def get_weapon_attack_radius(self, weapon_id):
 		"""Returns weapon's attack radius modifier."""
 		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
-
 
 	# Units
 
@@ -278,7 +278,7 @@ class UhDbAccessor(DbReader):
 			comp = unit.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
 			# Ship storage properties
-			helptext = _('{slotnum} slots, {limit}t')
+			helptext = T('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
 			                           limit=storage['limit'])
 			helptexts.append(helptext)
@@ -286,14 +286,14 @@ class UhDbAccessor(DbReader):
 			pass
 		try:
 			comp = unit.get_component_template('HealthComponent')
-			helptext = _('Health: {health}')
+			helptext = T('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
 		except KeyError: # Component not found, ignore this part
 			pass
-		return u'\\n'.join(helptexts)
+		return '\\n'.join(helptexts)
 
 
 def read_savegame_template(db):
-	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script(savegame_template.read())
+	with open(PATHS.SAVEGAME_TEMPLATE, "r") as f:
+		db.execute_script(f.read())

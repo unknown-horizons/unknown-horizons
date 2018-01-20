@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
+import getopt
+import glob
+import os
 import shutil
 import sys
-import getopt
-import os
-import glob
 
 verbose = False
 
@@ -52,48 +54,48 @@ def setup(fife_dir):
     Setup files and directories
     """
     if verbose:
-        print "Setting up environment"
+        print("Setting up environment")
     # If these two exists we remove them for a clean build
     if os.path.exists('./build'):
         if verbose:
-            print "Cleaning build path"
+            print("Cleaning build path")
         shutil.rmtree('./build')
     if os.path.exists('./dist'):
         if verbose:
-            print "Cleaning dist path"
+            print("Cleaning dist path")
         shutil.rmtree('./dist')
 
     # These should have cleaned out, else we remove them
     if os.path.exists('./src'):
         if verbose:
-            print "Cleaning src path"
+            print("Cleaning src path")
         shutil.rmtree('./src')
     if os.path.exists('./fife'):
         if verbose:
-            print "Cleaning fife path"
+            print("Cleaning fife path")
         shutil.rmtree('./fife')
 
     if verbose:
-        print "Create src directory"
+        print("Create src directory")
     # The source files, for building app correctly
     os.makedirs('./src/Contents/Resources/')
 
     # Copy fife and content
     if verbose:
-        print "Copying Icon.icns"
+        print("Copying Icon.icns")
     shutil.copy('./content/gui/icons/Icon.icns', './src/Contents/Resources/')
 
     if verbose:
-        print "Copying fife source from " + fife_dir + "engine/python/fife"
+        print("Copying fife source from " + fife_dir + "engine/python/fife")
     while shutil.copytree(fife_dir + 'engine/python/fife', './fife'):
         if verbose:
-            print "..."
+            print("...")
 
     if verbose:
-        print "Copying content into src"
+        print("Copying content into src")
     while shutil.copytree('./content', './src/Contents/Resources/content'):
         if verbose:
-            print "..."
+            print("...")
 
 
 def tearDown(run):
@@ -149,13 +151,14 @@ def main(argv=None):
             raise Usage(help_message)
 
     except Usage, err:
-        print >> sys.stderr, sys.argv[0].split("/")[-1] + ": " + str(err.msg)
-        print >> sys.stderr, "\t for help use --help"
+        print(sys.argv[0].split("/")[-1] + ": " + str(err.msg), file=sys.stderr)
+        print("\t for help use --help", file=sys.stderr)
         return 2
 
     setup(fife_dir)
     build(pyver)
     tearDown(run)
+
 
 if __name__ == "__main__":
     sys.exit(main())

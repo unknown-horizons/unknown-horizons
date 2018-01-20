@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,8 +22,9 @@
 import functools
 import os
 
-from horizons.scheduler import Scheduler
+import pytest
 
+from horizons.scheduler import Scheduler
 from tests.gui import gui_test
 
 
@@ -32,10 +33,12 @@ def test_trivial(gui):
 	"""Does nothing to see if test setup works."""
 	pass
 
-@gui_test(use_dev_map=True, _user_dir=os.path.join("test_settings",".unknown-horizons"))
+
+@gui_test(use_dev_map=True, _user_dir=os.path.join("test_settings", ".unknown-horizons"))
 def test_update_settings(gui):
 	"""Does nothing to see if the settings update works."""
 	pass
+
 
 @gui_test(use_dev_map=True)
 def test_run_for_x_seconds(gui):
@@ -47,28 +50,8 @@ def test_run_for_x_seconds(gui):
 
 	expected = Scheduler().get_ticks(20)
 
-	assert (difference - expected) / difference < 0.05
-
-
-def expected_failure(func):
-	@functools.wraps(func)
-	def wrapper(*args, **kwargs):
-		try:
-			func(*args, **kwargs)
-		except Exception:
-			pass
-		else:
-			raise AssertionError('Expected failure')
-	wrapper.__original__ = func.__original__
-	return wrapper
-
-
-@expected_failure
-@gui_test(use_dev_map=True)
-def test_expected_failure(gui):
-	"""Test that failures in tests are detected."""
-
-	1 / 0
+	deviation = (difference - expected) / difference
+	assert deviation < 0.05, 'Expected max 0.05 deviation, got {}'.format(deviation)
 
 
 @gui_test(use_fixture='boatbuilder')
@@ -78,21 +61,21 @@ def test_trigger(gui):
 	assert not gui.find('captains_log')
 
 	# Specify event name and group name
-	gui.trigger('mainhud', 'logbook/action/default')
+	gui.trigger('mainhud/logbook', 'action/default')
 	assert gui.find('captains_log')
-	gui.trigger('captains_log', 'okButton/action/default')
+	gui.trigger('captains_log/okButton', 'action/default')
 	assert not gui.find('captains_log')
 
 	# Leave out group name
-	gui.trigger('mainhud', 'logbook/action')
+	gui.trigger('mainhud/logbook', 'action')
 	assert gui.find('captains_log')
-	gui.trigger('captains_log', 'okButton/action')
+	gui.trigger('captains_log/okButton', 'action')
 	assert not gui.find('captains_log')
 
 	# Leave out event name
-	gui.trigger('mainhud', 'logbook')
+	gui.trigger('mainhud/logbook')
 	assert gui.find('captains_log')
-	gui.trigger('captains_log', 'okButton')
+	gui.trigger('captains_log/okButton')
 	assert not gui.find('captains_log')
 
 	# Select mainsquare and show production overview to test
@@ -100,16 +83,16 @@ def test_trigger(gui):
 	assert not gui.find('production_overview')
 
 	gui.cursor_click(53, 12, 'left')
-	gui.trigger('tab_account', 'show_production_overview/mouseClicked')
+	gui.trigger('tab_account/show_production_overview', 'mouseClicked')
 	assert gui.find('production_overview')
-	gui.trigger('production_overview', 'okButton/action')
+	gui.trigger('production_overview/okButton', 'action')
 	assert not gui.find('production_overview')
 
 	# Leave out event name, it will try action at first and fallback
 	# to mouseClicked
-	gui.trigger('tab_account', 'show_production_overview')
+	gui.trigger('tab_account/show_production_overview')
 	assert gui.find('production_overview')
-	gui.trigger('production_overview', 'okButton')
+	gui.trigger('production_overview/okButton')
 	assert not gui.find('production_overview')
 
 
@@ -121,7 +104,19 @@ def test_dialog(gui):
 
 	def func():
 		assert gui.find('popup_window')
-		gui.trigger('popup_window', 'okButton')
+		gui.trigger('popup_window/okButton')
 
 	with gui.handler(func):
-		gui.trigger('menu', 'quit_button')
+		gui.trigger('menu/quit_button')
+
+
+@pytest.mark.xfail(strict=True)
+@gui_test(timeout=60)
+def test_failing(gui):
+	"""
+	Test whether a failure of the test is correctly detected.
+
+	NOTE: We're using XFAIL here, since the failure of the test is expected. If suddenly this
+	test passes, the test suite will fail.
+	"""
+	1 / 0

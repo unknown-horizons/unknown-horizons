@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict
+
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+
 
 class BUILD_RESULT:
 	OK = 0
@@ -32,10 +34,12 @@ class BUILD_RESULT:
 	SKIP = 6
 	OUT_OF_SETTLEMENT = 7
 
+
 class GOAL_RESULT:
 	SKIP = 0 # just execute the next goal
 	BLOCK_SETTLEMENT_RESOURCE_USAGE = 1 # don't execute any goal that uses resources in this settlement
 	BLOCK_ALL_BUILDING_ACTIONS = 2 # no more building during this tick
+
 
 class BUILDING_PURPOSE:
 	NONE = 1
@@ -92,8 +96,8 @@ class BUILDING_PURPOSE:
 	#WOODEN_TOWER = 52
 	WEAPONSMITH = 53
 
-	purpose_to_building = {}
-	building_to_purpose = {}
+	purpose_to_building = {} # type: Dict[int, int]
+	building_to_purpose = {} # type: Dict[int, int]
 
 	@classmethod
 	def init_translation(cls):
@@ -149,7 +153,7 @@ class BUILDING_PURPOSE:
 		#cls.purpose_to_building[cls.WOODEN_TOWER] = BUILDINGS.WOODEN_TOWER
 		cls.purpose_to_building[cls.WEAPONSMITH] = BUILDINGS.WEAPONSMITH
 
-		for purpose, building_id in cls.purpose_to_building.iteritems():
+		for purpose, building_id in cls.purpose_to_building.items():
 			cls.building_to_purpose[building_id] = purpose
 
 	@classmethod
@@ -160,8 +164,5 @@ class BUILDING_PURPOSE:
 	def get_purpose(cls, building_id):
 		return cls.purpose_to_building[building_id]
 
-BUILDING_PURPOSE.init_translation()
 
-decorators.bind_all(BUILD_RESULT)
-decorators.bind_all(GOAL_RESULT)
-decorators.bind_all(BUILDING_PURPOSE)
+BUILDING_PURPOSE.init_translation()

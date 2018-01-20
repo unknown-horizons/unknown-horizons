@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,36 +19,38 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
+
 from horizons.util.color import Color
-from tests.unittests import TestCase
 
 
-class TestColor(TestCase):
+@pytest.fixture(autouse=True)
+def colors(db):
+	db.execute_many(
+		"INSERT INTO colors VALUES(?, ?, ?, ?, ?, ?)",
+		[('black', 0, 0, 0, 255, 1),
+		 ('red', 255, 0, 0, 255, 2)]
+	)
 
-	def setUp(self):
-		super(TestColor, self).setUp()
 
-		self.db.execute_many(
-			"INSERT INTO colors VALUES(?, ?, ?, ?, ?, ?)",
-			[('black', 0, 0, 0, 255, 1),
-			 ('red', 255, 0, 0, 255, 2)]
-		)
+def test_iter():
+	colors = list(Color.get_defaults())
+	assert len(colors) == 2
+	assert all(c.is_default_color for c in colors)
+	assert colors[0] == Color(0, 0, 0, 255)
+	assert colors[1] == Color(255, 0, 0, 255)
 
-	def test_iter(self):
-		colors = list(Color)
-		self.assertEqual(len(colors), 2)
-		self.assertTrue(all(c.is_default_color for c in colors))
-		self.assertEqual(colors[0], Color(0, 0, 0, 255))
-		self.assertEqual(colors[1], Color(255, 0, 0, 255))
 
-	def test_default_color(self):
-		self.assertTrue(Color(0, 0, 0, 255).is_default_color)
-		self.assertFalse(Color(1, 2, 3, 255).is_default_color)
+def test_default_color():
+	assert Color(0, 0, 0, 255).is_default_color
+	assert not Color(1, 2, 3, 255).is_default_color
 
-	def test_comparison(self):
-		self.assertEqual(Color(0, 0, 0, 255), Color(0, 0, 0, 255))
-		self.assertNotEqual(Color(0, 0, 0, 255), Color(1, 2, 3, 255))
 
-	def test_indexing(self):
-		self.assertEqual(Color[1], Color(0, 0, 0, 255))
-		self.assertEqual(Color['black'], Color(0, 0, 0, 255))
+def test_comparison():
+	assert Color(0, 0, 0, 255) == Color(0, 0, 0, 255)
+	assert Color(0, 0, 0, 255) != Color(1, 2, 3, 255)
+
+
+def test_indexing():
+	assert Color.get(1) == Color(0, 0, 0, 255)
+	assert Color.get('black') == Color(0, 0, 0, 255)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,13 @@
 # ###################################################
 
 import weakref
+from typing import Optional
 
+from horizons.messaging import HoverSettlementChanged, NewPlayerSettlementHovered, NewSettlement
 from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
+
 
 def resolve_weakref(ref):
 	"""Resolves a weakref to a hardref, where the ref itself can be None"""
@@ -33,6 +35,7 @@ def resolve_weakref(ref):
 	else:
 		return ref()
 
+
 def create_weakref(obj):
 	"""Safe create weakref, that supports None"""
 	if obj is None:
@@ -40,7 +43,8 @@ def create_weakref(obj):
 	else:
 		return weakref.ref(obj)
 
-class LastActivePlayerSettlementManager(object):
+
+class LastActivePlayerSettlementManager(object, metaclass=ManualConstructionSingleton):
 	"""Keeps track of the last active (hovered over) player's settlement.
 	Provides it as global reference, but stores as weak reference as not to disturb anything.
 
@@ -48,17 +52,16 @@ class LastActivePlayerSettlementManager(object):
 	Retrieve settlement via get().
 	Hooks itself to view automatically.
 	"""
-	__metaclass__ = ManualConstructionSingleton
 
 	def __init__(self, session):
 		self.session = session
 		self.session.view.add_change_listener(self._on_scroll)
 
 		# settlement mouse currently is above or None
-		self._cur_settlement = None
+		self._cur_settlement = None # type: Optional[weakref.ref[WorldObject]]
 
 		# last settlement of player mouse was on, only None at startup
-		self._last_player_settlement = None
+		self._last_player_settlement = None # type: Optional[weakref.ref[WorldObject]]
 
 		# whether last known event was not on a player settlement
 		# can be used to detect reentering the area of _last_player_settlement

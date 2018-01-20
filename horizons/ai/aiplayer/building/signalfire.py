@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,8 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+
 
 class AbstractSignalFire(AbstractBuilding):
 	@classmethod
@@ -46,6 +46,7 @@ class AbstractSignalFire(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SIGNAL_FIRE] = cls
+
 
 class SignalFireEvaluator(BuildingEvaluator):
 	need_collector_connection = False
@@ -68,7 +69,5 @@ class SignalFireEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.SIGNAL_FIRE
 
-AbstractSignalFire.register_buildings()
 
-decorators.bind_all(AbstractSignalFire)
-decorators.bind_all(SignalFireEvaluator)
+AbstractSignalFire.register_buildings()

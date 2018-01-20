@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.component import Component
-
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.coloroverlaycomponent import ColorOverlayComponent
@@ -29,17 +28,18 @@ from horizons.component.depositcomponent import DepositComponent
 from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
-from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, \
-     ShipNameComponent, PirateShipNameComponent, SoldierNameComponent, InhabitantNameComponent
+from horizons.component.namedcomponent import (
+	InhabitantNameComponent, NamedComponent, PirateShipNameComponent, SettlementNameComponent,
+	ShipNameComponent, SoldierNameComponent)
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.world.production.producer import (
+	GroundUnitProducer, Producer, QueueProducer, ShipProducer)
 
-from horizons.world.production.producer import Producer, QueueProducer, GroundUnitProducer, ShipProducer
 
-
-class ComponentHolder(object):
+class ComponentHolder:
 	"""
 	Class that manages Component plug-ins
 	It can be inherited by all objects that can hold components
@@ -90,7 +90,7 @@ class ComponentHolder(object):
 	}
 
 	def __init__(self, *args, **kwargs):
-		super(ComponentHolder, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs) # TODO: check if this line is needed
 		self.components = {}
 
 	def initialize(self, **kwargs):
@@ -108,7 +108,7 @@ class ComponentHolder(object):
 		if hasattr(self, 'component_templates'):
 			for entry in self.component_templates:
 				if isinstance(entry, dict):
-					for key, value in entry.iteritems():
+					for key, value in entry.items():
 						# TODO: try to pass read-only data to get_instance, since it's usually
 						# cached and changes would apply to all instances
 						# dict views of python2.7 could be a start.
@@ -122,12 +122,12 @@ class ComponentHolder(object):
 		return tmp_comp
 
 	def remove(self):
-		for component in self.components.values():
+		for component in list(self.components.values()):
 			component.remove()
-		super(ComponentHolder, self).remove()
+		super().remove()
 
 	def load(self, db, worldid):
-		super(ComponentHolder, self).load(db, worldid)
+		super().load(db, worldid)
 		self.components = {}
 		for component in self.__create_components():
 			component.instance = self
@@ -135,8 +135,8 @@ class ComponentHolder(object):
 			self.components[component.NAME] = component
 
 	def save(self, db):
-		super(ComponentHolder, self).save(db)
-		for component in self.components.itervalues():
+		super().save(db)
+		for component in self.components.values():
 			component.save(db)
 
 	def add_component(self, component):
@@ -146,7 +146,7 @@ class ComponentHolder(object):
 			all components will have the init only with instance attribute
 		"""
 		if not isinstance(component, Component):
-			print component, type(component), component.__class__
+			print(component, type(component), component.__class__)
 		assert isinstance(component, Component)
 		component.instance = self
 		self.components[component.NAME] = component
@@ -177,7 +177,7 @@ class ComponentHolder(object):
 		"""Returns the component template data given a component NAME"""
 		for entry in cls.component_templates:
 			if isinstance(entry, dict):
-				for key, value in entry.iteritems():
+				for key, value in entry.items():
 					if cls.class_mapping[key] == component or key == component:
 						return value
 		raise KeyError("This class does not contain a component with name: {0}".format(component))

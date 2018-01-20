@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,12 @@
 # ###################################################
 
 from unittest import TestCase
-from mock import Mock, MagicMock, patch
+from unittest.mock import MagicMock, Mock, patch
 
-from horizons.timer import Timer
-from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.timer import Timer
+
 
 class TestTimer(TestCase):
 
@@ -107,7 +108,7 @@ class TestTimer(TestCase):
 		self.callback.reset_mock()
 		self.timer.check_tick()
 		expected = [((self.TICK_START + 1,),), ((self.TICK_START + 2,),), ((self.TICK_START + 3,),)]
-		self.assertEquals(expected, self.callback.call_args_list)
+		self.assertEqual(expected, self.callback.call_args_list)
 
 	def test_paused_pump_then_no_ticks(self):
 		self.timer.check_tick()

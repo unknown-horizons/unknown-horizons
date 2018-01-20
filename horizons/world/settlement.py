@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,21 +21,21 @@
 
 import json
 import logging
-
 from collections import defaultdict
 
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import BUILDINGS, TIER
-from horizons.util.worldobject import WorldObject
-from horizons.messaging import UpgradePermissionsChanged, SettlementInventoryUpdated
+from horizons.messaging import SettlementInventoryUpdated, UpgradePermissionsChanged
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.inventorychecker import InventoryChecker
-from horizons.component.componentholder import ComponentHolder
-from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.component.storagecomponent import StorageComponent
+from horizons.util.worldobject import WorldObject
 from horizons.world.buildability.settlementcache import SettlementBuildabilityCache
-from horizons.world.production.producer import Producer, GroundUnitProducer, ShipProducer
+from horizons.world.production.producer import GroundUnitProducer, Producer, ShipProducer
 from horizons.world.resourcehandler import ResourceHandler
-from horizons.scheduler import Scheduler
+
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -59,7 +59,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		super(Settlement, self).__init__()
+		super().__init__()
 		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
@@ -83,7 +83,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
-		for level in xrange(TIER.CURRENT_MAX):
+		for level in range(TIER.CURRENT_MAX):
 			upgrade_permissions[level] = True
 		upgrade_permissions[TIER.CURRENT_MAX] = False
 		return upgrade_permissions
@@ -91,7 +91,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@classmethod
 	def make_default_tax_settings(cls):
 		tax_settings = {}
-		for level in xrange(TIER.CURRENT_MAX + 1):
+		for level in range(TIER.CURRENT_MAX + 1):
 			tax_settings[level] = 1.0
 		return tax_settings
 
@@ -124,7 +124,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		is_valid_residential = lambda building: (hasattr(building, 'happiness') and
 		                                         min_happiness <= building.happiness < max_happiness) and \
 		                                        (hasattr(building, 'level') and building.level == level)
-		return len(filter(is_valid_residential, self.buildings))
+		return len(list(filter(is_valid_residential, self.buildings)))
 
 	@property
 	def balance(self):
@@ -144,19 +144,19 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			building.level_upgrade(lvl)
 
 	def save(self, db, islandid):
-		super(Settlement, self).save(db)
+		super().save(db)
 
 		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
 			self.worldid, islandid, self.owner.worldid)
-		for res, amount in self.produced_res.iteritems():
+		for res, amount in self.produced_res.items():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)",
 			   self.worldid, res, amount)
-		for level in xrange(TIER.CURRENT_MAX + 1):
+		for level in range(TIER.CURRENT_MAX + 1):
 			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)",
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
 		# dump ground data via json, it's orders of magnitude faster than sqlite
-		data = json.dumps(self.ground_map.keys())
+		data = json.dumps(list(self.ground_map.keys()))
 		db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", self.worldid, data)
 
 	@classmethod
@@ -216,8 +216,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.buildings_by_id[building.id].append(building)
 		else:
 			self.buildings_by_id[building.id] = [building]
-		if building.has_component(Producer) and not \
-		   building.has_component(ShipProducer) and not building.has_component(GroundUnitProducer):
+		component = building.get_component(Producer)
+		if component and component.produces_resource:
 			finished = self.settlement_building_production_finished
 			building.get_component(Producer).add_production_finished_listener(finished)
 		if not load and not building.buildable_upon and self.buildability_cache:
@@ -228,13 +228,13 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
-		if not building in self.buildings:
+		if building not in self.buildings:
 			self.log.debug("Building %s can not be removed from settlement", building.id)
 			return
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
-		if building.has_component(Producer) and not \
-		   building.has_component(ShipProducer) and not building.has_component(GroundUnitProducer):
+		component = building.get_component(Producer)
+		if component and component.produces_resource:
 			finished = self.settlement_building_production_finished
 			building.get_component(Producer).remove_production_finished_listener(finished)
 		if not building.buildable_upon and self.buildability_cache:
@@ -249,7 +249,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""
-		for res, amount in produced_res.iteritems():
+		for res, amount in produced_res.items():
 			self.produced_res[res] += amount
 
 	def __init_inventory_checker(self):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.ext.enum import Enum
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
 from horizons.world.units.unitexeptions import MoveNotPossible
@@ -37,7 +36,7 @@ class ScoutingMission(FleetMission):
 	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'going_back')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point):
-		super(ScoutingMission, self).__init__(success_callback, failure_callback, ships)
+		super().__init__(success_callback, failure_callback, ships)
 		self.__init(target_point, ships[0].position.copy())
 
 	def __init(self, target_point, starting_point):
@@ -60,12 +59,12 @@ class ScoutingMission(FleetMission):
 		self.sail_to_target()
 
 	def save(self, db):
-		super(ScoutingMission, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_scouting_mission (rowid, starting_point_x, starting_point_y, target_point_x, target_point_y) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		super(ScoutingMission, self)._load(db, worldid, success_callback, failure_callback, owner)
+		super()._load(db, worldid, success_callback, failure_callback, owner)
 		db_result = db("SELECT target_point_x, target_point_y, starting_point_x, starting_point_y FROM ai_scouting_mission WHERE rowid = ?", worldid)[0]
 		self.__init(Point(*db_result[:2]), Point(*db_result[2:]))
 
@@ -104,5 +103,3 @@ class ScoutingMission(FleetMission):
 	@classmethod
 	def create(cls, success_callback, failure_callback, ships, target_point=None):
 		return ScoutingMission(success_callback, failure_callback, ships, target_point)
-
-decorators.bind_all(ScoutingMission)

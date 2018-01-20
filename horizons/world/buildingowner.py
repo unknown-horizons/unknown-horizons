@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.providerhandler import ProviderHandler
-from horizons.util.python import decorators
 from horizons.util.shapes import Point, RadiusRect
+from horizons.world.providerhandler import ProviderHandler
+
 
 """
 Simple building management functionality.
@@ -31,9 +31,11 @@ this implementation can be viewed as the the common denominator of building hand
 required by World and Island.
 The instances need to provide a get_tile function.
 """
-class BuildingOwner(object):
+
+
+class BuildingOwner:
 	def __init__(self, *args, **kwargs):
-		super(BuildingOwner, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs) # TODO: check if call is needed
 		self.provider_buildings = ProviderHandler()
 		self.buildings = []
 
@@ -103,7 +105,6 @@ class BuildingOwner(object):
 		assert isinstance(point, Point)
 		raise NotImplementedError
 
-	@decorators.make_constants()
 	def get_providers_in_range(self, radiusrect, res=None, reslist=None, player=None):
 		"""Returns all instances of provider within the specified shape.
 		NOTE: Specifing the res parameter is usually a huge speed gain.

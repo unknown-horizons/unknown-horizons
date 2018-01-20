@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013-2016 The Unknown Horizons Team
+# Copyright (C) 2013-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +20,11 @@
 # ###################################################
 
 from horizons.constants import BUILDINGS, RES, TIER
-from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.status import BlackDeathStatusIcon
+
 
 class BlackDeathDisaster(BuildingInfluencingDisaster):
 	"""Simulates the Black Death.
@@ -51,17 +51,17 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
 
 	def __init__(self, settlement, manager):
-		super (BlackDeathDisaster, self).__init__(settlement, manager)
+		super().__init__(settlement, manager)
 		self.healed_buildings = []
 
 	def infect(self, building, load=None):
 		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
-		if not building in self.healed_buildings:
-			super(BlackDeathDisaster, self).infect(building, load=load)
+		if building not in self.healed_buildings:
+			super().infect(building, load=load)
 
 	def wreak_havoc(self, building):
 		"""Some inhabitants have to die."""
-		super(BlackDeathDisaster, self)
+		super()
 		if building.inhabitants > 1:
 			inhabitants_that_will_die = self._manager.session.random.randint(1, building.inhabitants)
 			building.inhabitants -= inhabitants_that_will_die
@@ -72,4 +72,4 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 
 	def recover(self, building):
 		self.healed_buildings.append(building)
-		super(BlackDeathDisaster, self).recover(building)
+		super().recover(building)

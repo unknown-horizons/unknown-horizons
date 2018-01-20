@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,15 +20,14 @@
 # ###################################################
 
 
-from horizons.constants import RES, BUILDINGS
 from horizons.command.building import Build, Tear
 from horizons.component.storagecomponent import StorageComponent
-
+from horizons.constants import BUILDINGS, RES
 from tests.game import game_test
-
 
 # FIXTURE is settlement with some food, main square and ~8 settlers
 # a lumberjack is placed somewhere, where a fire station would be useful
+
 
 @game_test(use_fixture='fire')
 def test_fire_destroy(s):
@@ -83,7 +82,7 @@ def test_fire_station(s):
 	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
 
-	for i in xrange(5): # 5 fires
+	for i in range(5): # 5 fires
 		while not dis_man._active_disaster:
 			dis_man.run() # try to seed until we have a fire
 

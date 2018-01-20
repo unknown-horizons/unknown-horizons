@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013-2016 The Unknown Horizons Team
+# Copyright (C) 2013-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,6 +30,7 @@ log = logging.getLogger("i18n")
 # save translated widgets
 translated_widgets = {}
 
+
 def translate_widget(untranslated, filename):
 	"""
 	Load widget translations from guitranslations.py file.
@@ -39,10 +40,10 @@ def translate_widget(untranslated, filename):
 	"""
 	global translated_widgets
 	if filename in translations.text_translations:
-		for entry in translations.text_translations[filename].iteritems():
-			widget = untranslated.findChild(name=entry[0][0])
+		for (element_name, attribute), translation in translations.text_translations[filename].items():
+			widget = untranslated.findChild(name=element_name)
 			if widget is not None:
-				replace_attribute(widget, entry[0][1], entry[1])
+				replace_attribute(widget, attribute, translation)
 				widget.adaptLayout()
 	else:
 		log.debug('No translation key in i18n.guitranslations for file %s', filename)
@@ -64,12 +65,12 @@ def update_translations(message):
 	global translated_widgets
 	translations.set_translations()
 
-	for (filename, widget) in translated_widgets.iteritems():
+	for (filename, widget) in translated_widgets.items():
 		widget = widget() # resolve weakref
 		if not widget:
 			continue
 		all_widgets = translations.text_translations.get(filename, {})
-		for (element_name, attribute), translation in all_widgets.iteritems():
+		for (element_name, attribute), translation in all_widgets.items():
 			element = widget.findChild(name=element_name)
 			if element is None:
 				# something hidden by pychan currently, we cannot find it

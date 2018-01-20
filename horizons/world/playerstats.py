@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,22 +20,21 @@
 # ###################################################
 
 import math
-
 from collections import defaultdict
 
-from horizons.util.worldobject import WorldObject
-from horizons.entities import Entities
-from horizons.constants import TIER, BUILDINGS, PRODUCTION, RES, UNITS
-from horizons.util.python import decorators
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.world.production.producer import Producer
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, RES, TIER, UNITS
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
+from horizons.util.worldobject import WorldObject
+from horizons.world.production.producer import Producer
+
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):
-		super(PlayerStats, self).__init__()
+		super().__init__()
 		self.player = player
 		self.db = player.session.db
 		self._collect_info()
@@ -86,7 +85,7 @@ class PlayerStats(WorldObject):
 				available_resources[resource_id] += amount
 
 			# land that could be built on (the building on it may need to be destroyed first)
-			for tile in settlement.ground_map.itervalues():
+			for tile in settlement.ground_map.values():
 				if 'constructible' in tile.classes:
 					usable_land += 1
 
@@ -102,7 +101,7 @@ class PlayerStats(WorldObject):
 					for resource_id, amount in ship.get_component(StorageComponent).inventory.itercontents():
 						available_resources[resource_id] += amount
 
-		for resource_id, amount in available_resources.iteritems():
+		for resource_id, amount in available_resources.items():
 			total_resources[resource_id] += amount
 
 		self._calculate_settler_score(settlers, settler_buildings, settler_resources_provided)
@@ -118,23 +117,25 @@ class PlayerStats(WorldObject):
 			TIER.PIONEERS: 3,
 			TIER.SETTLERS: 7,
 			TIER.CITIZENS: 15,
+			TIER.MERCHANTS: 20,
 			}
 	settler_building_values = {
 			TIER.SAILORS: 3,
 			TIER.PIONEERS: 5,
 			TIER.SETTLERS: 11,
 			TIER.CITIZENS: 19,
+			TIER.MERCHANTS: 25,
 			}
 	settler_resource_provided_coefficient = 0.1
 	settler_score_coefficient = 0.3
 
 	def _calculate_settler_score(self, settlers, settler_buildings, settler_resources_provided):
 		total = 0
-		for level, number in settlers.iteritems():
+		for level, number in settlers.items():
 			total += self.settler_values[level] * number
-		for level, number in settler_buildings.iteritems():
+		for level, number in settler_buildings.items():
 			total += self.settler_building_values[level] * number
-		for amount in settler_resources_provided.itervalues():
+		for amount in settler_resources_provided.values():
 			total += amount * self.settler_resource_provided_coefficient
 		self.settler_score = int(total * self.settler_score_coefficient)
 
@@ -143,10 +144,10 @@ class PlayerStats(WorldObject):
 	def _calculate_building_score(self, buildings):
 		total = 0
 		resources = defaultdict(int)
-		for building_id, amount in buildings.iteritems():
-			for resource_id, res_amount in Entities.buildings[building_id].costs.iteritems():
+		for building_id, amount in buildings.items():
+			for resource_id, res_amount in Entities.buildings[building_id].costs.items():
 				resources[resource_id] += amount * res_amount
-		for resource_id, amount in resources.iteritems():
+		for resource_id, amount in resources.items():
 			if resource_id == RES.GOLD:
 				total += amount # for some reason the value of gold is 0 by default
 			else:
@@ -159,14 +160,14 @@ class PlayerStats(WorldObject):
 
 	def _calculate_resource_score(self, available_resources, total_resources):
 		total = 0
-		for resource_id, amount in available_resources.iteritems():
+		for resource_id, amount in available_resources.items():
 			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default
 				total += amount * self.overridden_resource_values[resource_id]
 			else:
 				value = self.db.get_res_value(resource_id)
 				if value is not None: # happiness and some coverage resources have no value
 					total += amount * value
-		for resource_id, amount in total_resources.iteritems():
+		for resource_id, amount in total_resources.items():
 			extra_amount = (amount - available_resources[resource_id])
 			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default
 				total += extra_amount * self.overridden_resource_values[resource_id] * self.unavailable_resource_coefficient
@@ -181,7 +182,7 @@ class PlayerStats(WorldObject):
 
 	def _calculate_unit_score(self, ships):
 		total = 0
-		for unit_id, amount in ships.iteritems():
+		for unit_id, amount in ships.items():
 			total += self.unit_value[unit_id] * amount
 		self.unit_score = int(total * self.unit_score_coefficient)
 
@@ -208,5 +209,3 @@ class PlayerStats(WorldObject):
 
 	def _calculate_total_score(self):
 		self.total_score = self.settler_score + self.building_score + self.resource_score + self.unit_score + self.land_score + self.money_score
-
-decorators.bind_all(PlayerStats)

@@ -99,7 +99,7 @@ def make_lazy_gettext(lookup_func):
     return lazy_gettext
 
 
-class _LazyString(object):
+class _LazyString:
     """Class for strings created by a function call.
 
     The proxy implementation attempts to be as complete as possible, so that
@@ -112,16 +112,21 @@ class _LazyString(object):
         self._args = args
         self._kwargs = kwargs
 
-    value = property(lambda x: x._func(*x._args, **x._kwargs))
+    @property
+    def value(self):
+        try:
+            return self._func(*self._args,**self._kwargs)
+        except AttributeError as e:
+            raise RuntimeError("Suppressed AttributeError: " + str(e))
 
     def __contains__(self, key):
         return key in self.value
 
-    def __nonzero__(self):
+    def __bool__(self):
         return bool(self.value)
 
     def __dir__(self):
-        return dir(unicode)
+        return dir(str)
 
     def __iter__(self):
         return iter(self.value)
@@ -133,7 +138,7 @@ class _LazyString(object):
         return str(self.value)
 
     def __unicode__(self):
-        return unicode(self.value)
+        return str(self.value)
 
     def __add__(self, other):
         return self.value + other

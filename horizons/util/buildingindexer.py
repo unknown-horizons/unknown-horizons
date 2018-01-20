@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import decorators
 
-
-class BuildingIndexer(object):
+class BuildingIndexer:
 	"""
 	Indexes a subset of the buildings on an island to improve nearby building
 	lookup performance.
@@ -126,8 +124,7 @@ class BuildingIndexer(object):
 			return self._map[coords].get_num_buildings_in_range()
 
 
-
-class BuildingIndex(object):
+class BuildingIndex:
 	"""
 	Indexes buildings around a tile to improve nearby building lookup speed.
 	The code isn't particularly pretty for performance reasons.
@@ -194,8 +191,3 @@ class BuildingIndex(object):
 		if self._changed:
 			self._update()
 		return len(self._list)
-
-
-# apply make_constant to classes
-decorators.bind_all(BuildingIndexer)
-decorators.bind_all(BuildingIndex)

@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.util.python.callback import Callback
-from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
 
 
 class PlayerDiplomacyTab(TabInterface):
@@ -39,7 +38,7 @@ class PlayerDiplomacyTab(TabInterface):
 		self.player = player
 		self.diplomacy = player.session.world.diplomacy
 
-		super(PlayerDiplomacyTab, self).__init__()
+		super().__init__()
 
 		color = self.player.color.name
 		# Set these here to override the defaults in TabInterface.__init__
@@ -60,12 +59,12 @@ class PlayerDiplomacyTab(TabInterface):
 		self.helptext = self.player.name
 
 	def show(self):
-		super(PlayerDiplomacyTab, self).show()
+		super().show()
 		# if diplomacy is changed by any player, change the checkbox
 		self.diplomacy.add_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def hide(self):
-		super(PlayerDiplomacyTab, self).hide()
+		super().hide()
 		self.diplomacy.remove_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def add_ally(self):
@@ -111,7 +110,7 @@ class PlayerDiplomacyTab(TabInterface):
 			state = 'enemy'
 
 		# Check the selected box.
-		self.widget.distributeData({'%s_check_box' % state : True})
+		self.widget.distributeData({'{}_check_box'.format(state): True})
 
 
 class DiplomacyTab(TabWidget):
@@ -126,7 +125,7 @@ class DiplomacyTab(TabWidget):
 
 		tabs = [PlayerDiplomacyTab(p) for p in players]
 
-		super(DiplomacyTab, self).__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
+		super().__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
 
 	@classmethod
 	def is_useable(cls, world):

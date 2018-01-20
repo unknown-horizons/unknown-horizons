@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,32 +19,32 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import functools
+import itertools
 import json
 import weakref
-import itertools
-import functools
 
 from fife import fife
 from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 
 import horizons.globals
-
-from horizons.constants import TIER, RES
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES, TIER
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
+from horizons.i18n import gettext as T
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 from horizons.util.python.decorators import cachedmethod
-from horizons.extscheduler import ExtScheduler
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
 from horizons.world.player import Player
 
 
-class ResourceOverviewBar(object):
+class ResourceOverviewBar:
 	"""The thing on the top left.
 
 	http://wiki.unknown-horizons.org/w/HUD
@@ -89,10 +89,11 @@ class ResourceOverviewBar(object):
 
 	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = { # per inhabitant tier
-	  TIER.SAILORS:  [ RES.TOOLS, RES.BOARDS ],
-	  TIER.PIONEERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.SETTLERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.CITIZENS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.SAILORS:   [ RES.TOOLS, RES.BOARDS ],
+	  TIER.PIONEERS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.SETTLERS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.CITIZENS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.MERCHANTS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
 	}
 
 	def __init__(self, session):
@@ -110,7 +111,7 @@ class ResourceOverviewBar(object):
 		self.gold_gui.mapEvents({
 		  "resbar_gold_container/mouseClicked/stats" : self._toggle_stats,
 		  })
-		self.gold_gui.helptext = _("Click to show statistics")
+		self.gold_gui.helptext = T("Click to show statistics")
 		self.stats_gui = None
 
 		self.gui = [] # list of slots
@@ -159,7 +160,7 @@ class ResourceOverviewBar(object):
 				self._custom_default_resources = config
 
 	def save(self, db):
-		for obj, config in self.resource_configurations.iteritems():
+		for obj, config in self.resource_configurations.items():
 			for position, res in enumerate(config):
 				db("INSERT INTO resource_overview_bar(object, position, resource) VALUES(?, ?, ?)",
 				   obj.worldid, position, res)
@@ -242,7 +243,7 @@ class ResourceOverviewBar(object):
 				icon.max_size = icon.min_size = icon.size = (24, 24)
 				icon.capture(self._on_res_slot_click, event_name='mouseClicked')
 			else:
-				helptext = _("Click to add a new slot")
+				helptext = T("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
 			background_icon.helptext = helptext
 
@@ -281,10 +282,10 @@ class ResourceOverviewBar(object):
 		# remove old one before, avoids duplicates
 		self._drop_cost_labels()
 
-		for res, amount in build_costs.iteritems():
+		for res, amount in build_costs.items():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = Label(text=u"-"+unicode(amount))
+			cost_label = Label(text="-" + str(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
 			if res in res_list:
@@ -350,7 +351,7 @@ class ResourceOverviewBar(object):
 		# set gold amount
 		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
-		gold_available_lbl.text = unicode(gold)
+		gold_available_lbl.text = str(gold)
 		# reposition according to magic formula passed down from the elders in order to support centering
 		gold_available_lbl.resizeToContent() # this sets new size values
 		gold_available_lbl.position = (42 - (gold_available_lbl.size[0] // 2), 51)
@@ -361,7 +362,7 @@ class ResourceOverviewBar(object):
 		"""Updates balance info below gold icon"""
 		balance = self.session.world.player.get_balance_estimation()
 		balance_lbl = self.gold_gui.child_finder("balance")
-		balance_lbl.text = u"{balance:+}".format(balance=balance)
+		balance_lbl.text = "{balance:+}".format(balance=balance)
 		balance_lbl.resizeToContent()
 		# 38
 		balance_lbl.position = (70 - balance_lbl.size[0],  74) # see _update_gold
@@ -379,7 +380,7 @@ class ResourceOverviewBar(object):
 
 			# set amount
 			label = cur_gui.findChild(name="res_available")
-			label.text = unicode( inv[res] )
+			label.text = str( inv[res] )
 
 			# reposition according to magic formula passed down from the elders in order to support centering
 			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
@@ -420,7 +421,6 @@ class ResourceOverviewBar(object):
 		height = self.ENTRY_Y_OFFSET + self.ENTRY_Y_HEIGHT
 		return (width, height)
 
-
 	###
 	# Resource slot selection
 
@@ -440,7 +440,6 @@ class ResourceOverviewBar(object):
 		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
 			self.session.ingame_gui.cursor = ResBarMouseTool(self.session, self.session.ingame_gui.cursor,
 			                                      self.close_resource_selection_mode)
-
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
@@ -464,15 +463,15 @@ class ResourceOverviewBar(object):
 		# the button should be disabled, but the first case below is shown because
 		# we can't disable it
 		if self._custom_default_resources is None:
-			reset_default_btn.helptext = _("Reset this configuration to the factory default.")
+			reset_default_btn.helptext = T("Reset this configuration to the factory default.")
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		elif self._custom_default_resources != self._get_current_resources():
-			reset_default_btn.helptext = _("Reset this settlement's displayed resources to the default configuration you have saved.")
+			reset_default_btn.helptext = T("Reset this settlement's displayed resources to the default configuration you have saved.")
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		else:
-			reset_default_btn.helptext = _("Reset the default configuration (which you see here) to the factory default for all settlements.")
+			reset_default_btn.helptext = T("Reset the default configuration (which you see here) to the factory default for all settlements.")
 			cb = Callback.ChainedCallbacks(
 			  self._drop_settlement_resource_configuration, # remove specific config
 			  Callback(self._make_configuration_default, reset=True) # remove global config
@@ -590,8 +589,8 @@ class ResourceOverviewBar(object):
 			data.balance
 		]
 		for (i, numbers) in enumerate(figures):
-			label = self.stats_gui.child_finder("resbar_stats_entry_%s" % i)
-			label.text = u"%+d" % numbers
+			label = self.stats_gui.child_finder("resbar_stats_entry_{}".format(i))
+			label.text = "{:+d}".format(numbers)
 
 	def _hide_stats(self):
 		"""Inverse of show_stats"""
@@ -611,26 +610,26 @@ class ResourceOverviewBar(object):
 
 		# This list must correspond to `figures` in _update_stats
 		images = [
-			("content/gui/images/resbar_stats/expense.png",     _("Running costs")),
-			("content/gui/images/resbar_stats/income.png",      _("Taxes")),
-			("content/gui/images/resbar_stats/buy.png",         _("Buy expenses")),
-			("content/gui/images/resbar_stats/sell.png",        _("Sell income")),
-			("content/gui/images/resbar_stats/scales_icon.png", _("Balance")),
+			("content/gui/images/resbar_stats/expense.png",     T("Running costs")),
+			("content/gui/images/resbar_stats/income.png",      T("Taxes")),
+			("content/gui/images/resbar_stats/buy.png",         T("Buy expenses")),
+			("content/gui/images/resbar_stats/sell.png",        T("Sell income")),
+			("content/gui/images/resbar_stats/scales_icon.png", T("Balance")),
 		]
 
 		for num, (image, helptext) in enumerate(images):
 			# Keep in sync with comment there until we can use that data:
 			# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
 			box = HBox(padding=0, min_size=(70, 0))
-			box.name = "resbar_stats_line_%s" % num
+			box.name = "resbar_stats_line_{}".format(num)
 			box.helptext = helptext
 			#TODO Fix icon size; looks like not 16x16 a surprising amount of times.
 			box.addChild(Icon(image=image))
-			box.addSpacer(Spacer())
-			box.addChild(Label(name="resbar_stats_entry_%s"%num))
+			box.addChild(Spacer())
+			box.addChild(Label(name="resbar_stats_entry_{}".format(num)))
 			#TODO This label is a workaround for some fife font bug,
 			# probably http://github.com/fifengine/fifengine/issues/666.
-			templabel = Label(name="resbar_stats_whatever_%s"%num)
+			templabel = Label(name="resbar_stats_whatever_{}".format(num))
 			box.addChild(templabel)
 			if num == len(images) - 1:
 				# The balance line (last one) gets bold font.
@@ -662,7 +661,7 @@ class ResBarMouseTool(NavigationTool):
 	"""Temporary mousetool for resource selection.
 	Terminates self on mousePressed and restores old tool"""
 	def __init__(self, session, old_tool, on_click):
-		super(ResBarMouseTool, self).__init__(session)
+		super().__init__(session)
 		if old_tool: # can be None in corner cases
 			old_tool.disable()
 		self.old_tool = old_tool

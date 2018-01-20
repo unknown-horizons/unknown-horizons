@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,10 @@
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.constants import RES, BUILDINGS
-from horizons.util.python import decorators
-from horizons.util.shapes import Rect
+from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
+from horizons.util.shapes import Rect
+
 
 class AbstractVillageBuilding(AbstractBuilding):
 	@classmethod
@@ -64,7 +64,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		building_id = BUILDING_PURPOSE.get_building(building_purpose)
 		building_class = Entities.buildings[building_id]
 
-		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
+		for coords, (purpose, (section, _)) in village_builder.plan.items():
 			if section > village_builder.current_section or purpose != building_purpose:
 				continue
 
@@ -93,7 +93,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
 
-		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
+		for coords, (purpose, (section, _)) in village_builder.plan.items():
 			if section > village_builder.current_section:
 				continue
 			if purpose == building_purpose:
@@ -114,7 +114,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 		# TODO: remove this hack; introduced to battle the community Production moving from main squares to the warehouse
 		if self.id == BUILDINGS.MAIN_SQUARE:
 			return Entities.buildings[BUILDINGS.WAREHOUSE]
-		return super(AbstractVillageBuilding, self)._get_producer_building()
+		return super()._get_producer_building()
 
 	@classmethod
 	def register_buildings(cls):
@@ -123,6 +123,5 @@ class AbstractVillageBuilding(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.VILLAGE_SCHOOL] = cls
 		cls._available_buildings[BUILDINGS.TAVERN] = cls
 
-AbstractVillageBuilding.register_buildings()
 
-decorators.bind_all(AbstractVillageBuilding)
+AbstractVillageBuilding.register_buildings()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.i18n import _lazy
-from horizons.extscheduler import ExtScheduler
 from horizons.component.storagecomponent import StorageComponent
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext_lazy as LazyT
+
 
 class InventoryTab(TabInterface):
 	widget = 'island_inventory.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
-	helptext = _lazy("Settlement inventory")
+	helptext = LazyT("Settlement inventory")
 
 	def __init__(self, instance=None):
 		self.instance = instance
-		super(InventoryTab, self).__init__()
+		super().__init__()
 
 	def init_widget(self):
 		self.widget.child_finder('inventory').init(self.instance.session.db,
@@ -46,8 +47,8 @@ class InventoryTab(TabInterface):
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0, loops=1)
 		# and every sec later
 		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
-		super(InventoryTab, self).show()
+		super().show()
 
 	def hide(self):
 		ExtScheduler().rem_call(self, self.refresh)
-		super(InventoryTab, self).hide()
+		super().hide()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,11 +27,12 @@ from fife.extensions.pychan.widgets import Container, Icon
 
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python.callback import Callback
+
 
 @metaChangeListenerDecorator('remove')
-class TabWidget(object):
+class TabWidget:
 	"""The TabWidget class handles widgets which consist of many
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
@@ -44,7 +45,7 @@ class TabWidget(object):
 		@param name: optional name for the tabwidget
 		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
-		super(TabWidget, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.name = name
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
@@ -71,8 +72,8 @@ class TabWidget(object):
 		for index, tab in enumerate(self._tabs):
 			# don't add a reference to the
 			tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
-			container = Container(name="container_%s" % index)
-			background = Icon(name="bg_%s" % index)
+			container = Container(name="container_{}".format(index))
+			background = Icon(name="bg_{}".format(index))
 			button = ImageButton(name=str(index), size=(50, 50))
 			if self.current_tab is tab:
 				background.image = tab.button_background_image_active
@@ -83,11 +84,11 @@ class TabWidget(object):
 			button.capture(Callback(self.show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
-			container.size = background.size
+			container.size = (50, 52)
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.widget.size = (50, 55*len(self._tabs))
+		self.widget.size = (54, 55 * len(self._tabs))
 		self.widget.adaptLayout()
 
 		self._apply_layout_hack()
@@ -96,7 +97,7 @@ class TabWidget(object):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
-		if not number in range(len(self._tabs)):
+		if number >= len(self._tabs):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
 			traceback.print_stack()
 			self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
@@ -104,13 +105,13 @@ class TabWidget(object):
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_bg = self.content.findChild(name = "bg_%s" % self._tabs.index(self.current_tab))
+		old_bg = self.content.findChild(name="bg_{}".format(self._tabs.index(self.current_tab)))
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
 		old_button.path = self.current_tab.path
 
-		new_bg = self.content.findChild(name = "bg_%s" % number)
+		new_bg = self.content.findChild(name="bg_{}".format(number))
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
 		new_button.path = new_tab.path_active
@@ -150,4 +151,3 @@ class TabWidget(object):
 		"""Hides current tab and this widget"""
 		self.current_tab.hide()
 		self.widget.hide()
-

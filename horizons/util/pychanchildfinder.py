@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,7 @@ class PychanChildFinder(dict):
 	"""Caches child references of a gui object, since pychan's findChild function is expensive.
 	Init it with your gui and use like a dictionary or call object directly (__call__)"""
 	def __init__(self, gui):
-		super(PychanChildFinder, self).__init__()
+		super().__init__()
 		self.gui = gui
 
 	def __getitem__(self, key):

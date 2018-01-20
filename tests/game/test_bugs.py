@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,18 +20,17 @@
 # ###################################################
 
 from horizons.command.building import Build, Tear
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.world.production.producer import Producer, QueueProducer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
-from horizons.util.worldobject import WorldObject
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTIONLINES, RES
 from horizons.util.shapes import Point
-from horizons.world.production.utilization import FieldUtilization
+from horizons.util.worldobject import WorldObject
 from horizons.world.building.settler import SettlerRuin
-
-from tests.game import settle, game_test, new_session, saveload
-from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
-from tests.game.test_farm import _build_farm
+from horizons.world.production.producer import Producer, QueueProducer
+from horizons.world.production.utilization import FieldUtilization
+from tests.game import game_test, new_session, saveload, settle
+from tests.game.test_buildings import (
+	_build_farm, test_brick_production_chain, test_tool_production_chain)
 
 
 @game_test()
@@ -39,7 +38,7 @@ def test_ticket_979(s, p):
 	settlement, island = settle(s)
 	storage_collectors = settlement.warehouse.get_component(CollectingComponent).get_local_collectors()
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
+	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD)
 
 	# Let it work for a bit
 	s.run(seconds=60)
@@ -71,7 +70,7 @@ def test_ticket_979(s, p):
 def test_ticket_1016(s, p):
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
+	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD)
 
 	# tear down job target, then home building (in the same tick)
 
@@ -214,12 +213,12 @@ def test_ticket_1427():
 def test_ticket_1523(s, p):
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
+	farm = _build_farm(30, 30, island, settlement, p, BUILDINGS.POTATO_FIELD, BUILDINGS.POTATO_FIELD, BUILDINGS.POTATO_FIELD,
+			   BUILDINGS.POTATO_FIELD)
 
 	# Let it work for a bit
 	s.run(seconds=60)
 	assert farm.get_component(StorageComponent).inventory[RES.FOOD]
-
 
 	assert isinstance(farm.get_component(Producer)._Producer__utilization, FieldUtilization)
 	# Should be 0.5

@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, Изградите складиште на обали да омогућите приступ трговачким бродовима.]
   - '
 
 
@@ -25,7 +25,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -73,50 +73,50 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
   - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a hunter and a fisher. Connect them to the warehouse.]
+  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
   - [Headline, 'NEW TASK: FOOD SUPPLY']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter and Fisher.
-  - The Hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter close to the lumberjack's forest.
+  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
+  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the warehouse and a fish school in range.'
+    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
   - He will build a small rowing vessel and catch some fish.
   - This is a very constant supply at the cost of a slightly longer production time per unit of food.
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Don't forget to connect them to your warehouse with trails!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a main square. Choose an area without many economy buildings.]
+  - [Message, Build a Main Square. Choose an area without many economy buildings.]
   - [Headline, 'NEW TASK: MAIN SQUARE']
   - [Image, content/gui/images/background/hr.png]
   - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
+  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Task: Build a Main Square.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    Now let''s have a closer look at the Main Square.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
+  - [Message, Build a Tent and connect it to the Main Square if necessary.]
   - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
   - [Image, content/gui/images/background/hr.png]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
@@ -138,13 +138,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Consider to disable the upgrade if your stock of these materials is low.
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
-  - [Message, Build at least three additional tents and connect them to the main square.]
+  - [Message, Build at least three additional Tents and connect them to the Main Square.]
   - '
 
-    Let''s have a look at the tent overview tab.'
+    Let''s have a look at the Tent overview tab.'
   - 'You can see
 
     * the happiness of these residents,
@@ -156,44 +156,46 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
   - Note that you can also change the global tax settings here, too.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Task: Build at least three additional Tents.']
   - '
 
     TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
 
 - &SIGNALFIRE
-  - [Message, Build a signal fire at the coast close to your warehouse.]
+  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
   - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
   - [Image, content/gui/images/background/hr.png]
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
   - The trader will supply your settlement with necessary goods which you can't produce yet.
-  - You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling them yields more profit.
-  - Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
+  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a signal fire at the coast near your warehouse. It will show ships the way to your settlement.
-  - The signal fire has to cover the area which the ships pass through to catch them.
+  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
+  - The Signal Fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your warehouse if it planned to sail past it.'
-  - You can propose deals via the warehouse tab "Buy/Sell".
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
+  - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - At the 'sailors' tier, you are equipped with three trading slots.
   - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
 
 - &TRADING
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
   - [Headline, 'NEW TASK: LEARN TO TRADE']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your warehouse from time to time.
+  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
 
     Let''s continue our tutorial on how to trade.'
+  - First click on your own Warehouse and click on the third tab.
+  - Then click on one of the 3 slots, then select a good you want to buy or sell.
   - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
   - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
   - When buying, you will buy sufficient to hold your 'target value' in stock.
@@ -205,7 +207,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
   - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
+  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
   - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
 
     It is NOT possible to change prices manually!'
@@ -216,27 +218,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a pavilion with connection to the tents.]
+  - [Message, Build a Pavilion with connection to the Tents.]
   - [Headline, 'NEW TASK: BUILD A PAVILION']
   - [Image, content/gui/images/background/hr.png]
   - Those tools will be enough for the moment. Well done!
   - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
-  - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
+  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
+  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
+  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
     Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
+  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - After some time, they will have consumed it and then again look for a producer to collect more faith.
   - 'Important:
 
-    It is NOT enough that the building is merely within a certain range of the tents.
+    It is NOT enough that the building is merely within a certain range of the Tents.
 
     The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -244,15 +246,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
   - [Headline, 'NEW TASK: NEXT TIER']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
   - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
   - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
   - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the main square.'
+    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
   - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
@@ -262,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a farm and keep some empty space around it.]
+  - [Message, Build a Farm and keep some empty space around it.]
   - [Headline, 'NEW TASK: BUILD A FARM']
   - [Image, content/gui/images/background/hr.png]
   - Congratulations! Some of your inhabitants have reached tier II!
@@ -270,19 +272,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
-  - The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.
-  - The output of farms depends on what kind of fields you build around it.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
+  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
+  - The output of Farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - '
 
     We will have a closer look at this later.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a warehouse.
-  - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
+  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
+  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Task: Build a Farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -290,26 +292,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Build at least one pasture and add potato fields if you like.]
   - [Headline, 'NEW TASK: BUILD FIELDS']
   - [Image, content/gui/images/background/hr.png]
-  - The farm itself is not going to produce anything without some fields.
+  - The Farm itself is not going to produce anything without some fields.
   - You currently have the choice between pastures, potato and sugar fields.
   - 'Let''s have a short overview:
 
     * Pasture: Sheep live here, producing lamb wool.
 
-    * Potato field: Grows potatoes which are currently treated as food.
+    * Potato Field: Grows potatoes which are currently treated as food.
 
-    * Sugar field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
+    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
   - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
-  - Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods.
+  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -318,12 +320,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NEW TASK: BUILD STORAGE']
   - [Image, content/gui/images/background/hr.png]
   - Did you watch your lumberjack recently?
-  - Since your warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
+  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
   - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
   - We can improve this situation in two different ways, and we will have a look at both of them below.
   - 'All companies offer to do no work at all.
 
-    This may sound strange, but click on the gear wheel you see in a lumberjack hut''s overview.'
+    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
   - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -331,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
+  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
   - 'This building has two purposes. It:
 
     * Offers more storage for your goods, and
 
-    * sends its own collectors to fetch goods, just like the warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
+    * sends its own collectors to fetch goods, just like the Warehouse does.'
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a weaver that can somehow reach the wool of your farm.]
+  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
   - [Headline, 'NEW TASK: BUILD A WEAVER']
   - [Image, content/gui/images/background/hr.png]
   - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
-  - In both cases you should ensure the connection to a trail as well.
-  - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
+  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
+  - In both cases you should ensure the connection to a Trail as well.
+  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -362,7 +364,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
+  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
   - ''
   - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
@@ -655,4 +657,4 @@ metadata:
   locale: sr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 20 translated messages, 171 untranslated messages.
+  translation_status: 4 translated messages, 19 fuzzy translations, 165 untranslated messages.

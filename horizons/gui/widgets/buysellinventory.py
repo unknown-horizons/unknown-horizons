@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ from fife.extensions.pychan.widgets import HBox
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
 
+
 class BuySellInventory(Inventory):
 	"""The buy/sell inventory widget displays an inventory of goods
 	where the available resources are restricted. It makes use of the
@@ -37,7 +38,7 @@ class BuySellInventory(Inventory):
 	where Inventory has True.
 	"""
 	def __init__(self, display_legend=False, **kwargs):
-		super(BuySellInventory, self).__init__(display_legend=display_legend, **kwargs)
+		super().__init__(display_legend=display_legend, **kwargs)
 
 	def init(self, db, inventory, limits, selling):
 		if self.init_needed(inventory, limits, selling):
@@ -52,12 +53,12 @@ class BuySellInventory(Inventory):
 		self.update()
 
 	def init_needed(self, inventory, limits, selling):
-		return super(BuySellInventory, self).init_needed(inventory) or \
+		return super().init_needed(inventory) or \
 		       self._limits != limits or self._selling != selling
 
 	def _draw(self, vbox, current_hbox, index=0):
 		"""Draws the inventory."""
-		for resid, limit in sorted(self._limits.iteritems()):
+		for resid, limit in sorted(self._limits.items()):
 			if self._selling:
 				amount = max(0, self._inventory[resid] - limit)
 			else:
@@ -66,7 +67,7 @@ class BuySellInventory(Inventory):
 			# check if this res should be displayed
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
 			                                            filled=0, uncached=self.uncached)
-			button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index) # for tests
+			button.button.name = "buy_sell_inventory_{}_entry_{}".format(self._selling, index) # for tests
 			current_hbox.addChild(button)
 
 			if index % self.items_per_line == self.items_per_line - 1:

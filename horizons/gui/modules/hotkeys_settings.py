@@ -1,6 +1,5 @@
-# Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,21 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
 from fife import fife
 from fife.extensions.pychan.widgets import Button
 
 import horizons.globals
-
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
-class HotkeyConfiguration(object):
+class HotkeyConfiguration:
 
 	def __init__(self):
-		super(HotkeyConfiguration, self).__init__()
+		super().__init__() # TODO: check whether this call is needed
 
 		self.widget = load_uh_widget('hotkeys.xml')
 		self.buttons = []
@@ -94,7 +94,7 @@ class HotkeyConfiguration(object):
 		self.listener.activate()
 		self.update_buttons_text()
 		button.font = 'default'
-		button.text = _(u"Press key…")
+		button.text = T("Press key…")
 
 	def _detect_keypress(self, event):
 		if not self.detecting:
@@ -117,12 +117,12 @@ class HotkeyConfiguration(object):
 				if bindings[j] == 'UNASSIGNED':
 					bindings[j] = ''
 			secondary_button = self.secondary_buttons[i]
-			button.text = unicode(bindings[0])
+			button.text = str(bindings[0])
 			if len(bindings) > 1:
 				secondary_button.font = 'default_bold'
-				secondary_button.text = unicode(bindings[1])
+				secondary_button.text = str(bindings[1])
 			else:
-				secondary_button.text = u''
+				secondary_button.text = ''
 
 	def apply_change(self):
 		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
@@ -143,9 +143,9 @@ class HotkeyConfiguration(object):
 				self.last_combination = []
 				return
 
-			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
-			message += u" " + _("Would you like to overwrite it?")
-			confirmed = horizons.main._modules.gui.open_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
+			message = T("{key} is already set to {action}.").format(key=key_name, action=oldaction)
+			message += " " + T("Would you like to overwrite it?")
+			confirmed = horizons.main.gui.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			else:
@@ -174,7 +174,7 @@ class HotkeyConfiguration(object):
 	def key_is_set(self, key):
 		key_name = self.key_name(key)
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
-		for k in custom_key_actions.itervalues():
+		for k in custom_key_actions.values():
 			if key_name in k:
 				return True
 		return False
@@ -194,7 +194,7 @@ class HotkeyConfiguration(object):
 			k = custom_key_actions[action]
 			if key_name in k:
 				return action
-		print "Action name not found. Key name (" + key_name + ") must be wrong. This is not supposed to ever happen"
+		print("Action name not found. Key name (" + key_name + ") must be wrong. This is not supposed to ever happen")
 
 	def reset_to_default(self):
 		"""Resets all bindings to default"""
@@ -220,7 +220,7 @@ class HotkeysListener(fife.IKeyListener):
 	"""HotkeysListener Class to process events of hotkeys binding interface"""
 
 	def __init__(self, detect_keypress):
-		super(HotkeysListener, self).__init__()
+		super().__init__()
 		fife.IKeyListener.__init__(self)
 
 		self.detect = detect_keypress
@@ -233,7 +233,7 @@ class HotkeysListener(fife.IKeyListener):
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
-		super(HotkeysListener, self).end()
+		super().end()
 
 	def keyPressed(self, evt):
 		self.detect(evt)

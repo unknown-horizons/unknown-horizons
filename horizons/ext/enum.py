@@ -74,7 +74,7 @@ class EnumException(Exception):
 			class_name = self.__class__.__name__
 			raise NotImplementedError(
 				"%(class_name)s is an abstract base class" % vars())
-		super(EnumException, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 
 
 class EnumEmptyError(AssertionError, EnumException):
@@ -119,7 +119,7 @@ def _comparator(func):
 	return comparator_wrapper
 
 
-class EnumValue(object):
+class EnumValue:
 	""" A specific value of an enumerated type. """
 
 	def __init__(self, enumtype, index, key):
@@ -174,7 +174,7 @@ class EnumValue(object):
 		return (self >= other)
 
 
-class Enum(object):
+class Enum:
 	""" Enumerated type. """
 
 	def __init__(self, *keys, **kwargs):
@@ -192,7 +192,7 @@ class Enum(object):
 			value = value_type(self, i, key)
 			values[i] = value
 			try:
-				super(Enum, self).__setattr__(key, value)
+				super().__setattr__(key, value)
 			except TypeError:
 				raise EnumBadKeyError(key)
 
@@ -227,7 +227,7 @@ class Enum(object):
 
 	def __contains__(self, value):
 		is_member = False
-		if isinstance(value, basestring):
+		if isinstance(value, str):
 			is_member = (value in self._keys)
 		else:
 			is_member = (value in self._values)

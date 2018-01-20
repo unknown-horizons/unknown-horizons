@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,9 +28,11 @@ from horizons.component import Component
 class A(Component):
 	NAME = 'A'
 
+
 class B(Component):
 	NAME = 'B'
 	DEPENDENCIES = [A]
+
 
 class C(Component):
 	NAME = 'C'

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,3 +18,14 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import os
+
+
+def create_user_dirs():
+	"""Creates the userdir and subdirs. Includes from horizons."""
+	from horizons.constants import PATHS
+
+	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
+		if not os.path.isdir(directory):
+			os.makedirs(directory)

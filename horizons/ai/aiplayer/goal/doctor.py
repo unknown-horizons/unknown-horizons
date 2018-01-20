@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS, RES
-from horizons.util.python import decorators
+
 
 class DoctorGoal(SettlementGoal):
 	def get_personality_name(self):
@@ -30,14 +30,14 @@ class DoctorGoal(SettlementGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(DoctorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super().can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 	@property
 	def active(self):
-		return super(DoctorGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def update(self):
-		super(DoctorGoal, self).update()
+		super().update()
 		if self.can_be_activated:
 			self._is_active = any(AbstractBuilding.buildings[BUILDINGS.DOCTOR].iter_potential_locations(self.settlement_manager))
 		else:
@@ -47,5 +47,3 @@ class DoctorGoal(SettlementGoal):
 		result = AbstractBuilding.buildings[BUILDINGS.DOCTOR].build(self.settlement_manager, None)[0]
 		self._log_generic_build_result(result, 'doctor')
 		return self._translate_build_result(result)
-
-decorators.bind_all(DoctorGoal)

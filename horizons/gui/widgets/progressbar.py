@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,26 +20,25 @@
 # ###################################################
 
 
-from fife.extensions.pychan.widgets import Icon, Widget
+from fife.extensions.pychan.widgets import ABox, Icon, Widget
 from fife.extensions.pychan.widgets.common import Attr, IntAttr
 
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TilingHBox
 
 
-class ProgressBar(AutoResizeContainer):
+class ProgressBar(ABox):
 	"""The ProgressBar is a pychan widget. It can be used in xml files like this:
 	<ProgressBar />
 	It is used to display a ProgressBar with a certain progress ;). Set the
 	widgets progress attribute to set the progress. Pretty straight forward.
 	The progress is a value from 0 to 100. Think of it as percent.
 	"""
-	ATTRIBUTES = AutoResizeContainer.ATTRIBUTES + [
+	ATTRIBUTES = ABox.ATTRIBUTES + [
 		IntAttr('progress'), Attr('fill'), Attr('background'),
 	]
 
 	def __init__(self, progress=0, fill=None, background=None, **kwargs):
-		super(ProgressBar, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		if self.max_size == Widget.DEFAULT_MAX_SIZE:
 			self.max_size = (100, 16)
 		self.__progress = progress
@@ -62,7 +61,7 @@ class ProgressBar(AutoResizeContainer):
 
 	def _set_fill_image(self, image):
 		self.__fill = image
-		self.tiles = Icon(image=image)
+		self.tiles = Icon(image=image, scale=True)
 		self.addChild(self.tiles)
 
 	def _get_fill_image(self):
@@ -70,7 +69,7 @@ class ProgressBar(AutoResizeContainer):
 
 	def _set_background(self, background):
 		self.__background = background
-		self.bg_icon = Icon(image=background)
+		self.bg_icon = Icon(image=background, scale=True)
 		self.bg_icon.min_size = self.bg_icon.size = self.max_size
 		self.addChild(self.bg_icon)
 
@@ -91,7 +90,7 @@ class TilingProgressBar(ProgressBar):
 	ATTRIBUTES = ProgressBar.ATTRIBUTES + [Attr('left'), Attr('right')]
 
 	def __init__(self, left=None, right=None, **kwargs):
-		super(TilingProgressBar, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.__left = left
 		self.__right = right
 		self.tiles = TilingHBox()
@@ -102,6 +101,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_progress(self):
 		return self.__progress
+
 	def _set_progress(self, progress):
 		self.__progress = progress
 		fill_width = (progress / 100.0) * (self.max_size[0] / self.tiles_width)
@@ -110,6 +110,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_left_image(self):
 		return self.__left
+
 	def _set_left_image(self, image):
 		self.__left = image
 		self.left_width = Icon(image=image).size[0]
@@ -117,6 +118,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_fill_image(self):
 		return self.__fill
+
 	def _set_fill_image(self, image):
 		self.__fill = image
 		self.tiles_width = Icon(image=image).size[0]
@@ -124,6 +126,7 @@ class TilingProgressBar(ProgressBar):
 
 	def _get_right_image(self):
 		return self.__right
+
 	def _set_right_image(self, image):
 		self.__right = image
 		self.right_width = Icon(image=image).size[0]

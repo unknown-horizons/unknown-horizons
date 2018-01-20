@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,8 @@
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.world.buildability.connectedareacache import ConnectedAreaCache
 
-class PotentialRoadConnectivityCache(object):
+
+class PotentialRoadConnectivityCache:
 	"""
 	Query whether a toad connection between two sets of coordinates is possible.
 

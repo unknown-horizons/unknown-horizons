@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
 from horizons.util.shapes import Shape
+
 
 class Point(Shape):
 	def __init__(self, x, y):
@@ -55,7 +55,7 @@ class Point(Shape):
 
 	def __str__(self):
 		""" nice representation for debugging purposes """
-		return 'Point(%s, %s)' % (self.x, self.y)
+		return 'Point({}, {})'.format(self.x, self.y)
 
 	def __eq__(self, other):
 		if other is None:
@@ -70,11 +70,11 @@ class Point(Shape):
 
 	def __add__(self, other):
 		assert isinstance(other, Point)
-		return Point(self.x+other.x, self.y+other.y)
+		return Point(self.x + other.x, self.y + other.y)
 
 	def __sub__(self, other):
 		assert isinstance(other, Point)
-		return Point(self.x-other.x, self.y-other.y)
+		return Point(self.x - other.x, self.y - other.y)
 
 	def __hash__(self):
 		return hash((self.x, self.y))
@@ -85,10 +85,7 @@ class Point(Shape):
 	def iter_without_border(self):
 		yield self
 
+
 class ConstPoint(Const, Point):
 	"""An immutable Point"""
 	pass
-
-
-bind_all(Point)
-bind_all(ConstPoint)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import time
 import heapq
+import time
 
 from horizons.util.python.singleton import ManualConstructionSingleton
 
 
-class _ExtCallbackObject(object):
+class _ExtCallbackObject:
 	"""Class used by the ExtScheduler Class to organize callbacks."""
 
 	def __init__(self, callback, class_instance, run_in=1, loops=1):
@@ -44,17 +44,16 @@ class _ExtCallbackObject(object):
 		return "ExtSchedCb(%s on %s)" % (self.callback, self.class_instance)
 
 
-class ExtScheduler(object):
+class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	"""The ExtScheduler is used for time based events that are not part of the simulation(gui, menu, scrolling).
 	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
 	@param pump: pump list the scheduler registers itself with.
 	"""
-	__metaclass__ = ManualConstructionSingleton
 
-	NOOP = _ExtCallbackObject(lambda : 42*1337-3.14, None)
+	NOOP = _ExtCallbackObject(lambda : 42 * 1337 - 3.14, None)
 
 	def __init__(self, pump):
-		super(ExtScheduler, self).__init__()
+		super().__init__()
 		self.schedule = []
 		self.pump = pump
 		self.pump.append(self.tick)

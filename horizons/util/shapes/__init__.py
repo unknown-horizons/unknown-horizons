@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,8 @@
 
 from horizons.util.shapes import distances
 
-class Shape(object):
+
+class Shape:
 
 	def get_coordinates(self):
 		"""Return all coordinates in the shape."""
@@ -44,15 +45,15 @@ class Shape(object):
 		co1 = co1.replace('const', '')
 		co2 = co2.replace('const', '')
 
-		dist = getattr(distances, "distance_%s_%s" % (co1, co2), None)
+		dist = getattr(distances, "distance_{}_{}".format(co1, co2), None)
 		if dist:
 			return dist(self, other)
 		else:
-			dist = getattr(distances, "distance_%s_%s" % (co2, co1), None)
+			dist = getattr(distances, "distance_{}_{}".format(co2, co1), None)
 			if dist:
 				return dist(other, self)
 
-		raise TypeError("No distance defined between %s and %s" % (co1, co2))
+		raise TypeError("No distance defined between {} and {}".format(co1, co2))
 
 	def get_distance_function(self, other):
 		# TODO pre-build a dictionary for fast function lookup
@@ -63,19 +64,21 @@ class Shape(object):
 		co1 = co1.replace('const', '')
 		co2 = co2.replace('const', '')
 
-		dist_func = getattr(distances, "distance_%s_%s" % (co1, co2), None)
+		dist_func = getattr(distances, "distance_{}_{}".format(co1, co2), None)
 		if dist_func:
 			return dist_func
 
-		dist_func = getattr(distances, "distance_%s_%s" % (co2, co1), None)
+		dist_func = getattr(distances, "distance_{}_{}".format(co2, co1), None)
 		if dist_func:
 			return dist_func
 
-		raise TypeError("No distance defined between %s and %s" % (co1, co2))
+		raise TypeError("No distance defined between {} and {}".format(co1, co2))
 
 # Convenience methods so you can use 'from horizons.util.shapes import Circle, Rect'
-from horizons.util.shapes.point import ConstPoint, Point
-from horizons.util.shapes.rect import ConstRect, Rect
-from horizons.util.shapes.annulus import Annulus
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.radiusshape import RadiusRect, RadiusShape
+
+
+from horizons.util.shapes.point import ConstPoint, Point # isort:skip
+from horizons.util.shapes.rect import ConstRect, Rect # isort:skip
+from horizons.util.shapes.annulus import Annulus # isort:skip
+from horizons.util.shapes.circle import Circle # isort:skip
+from horizons.util.shapes.radiusshape import RadiusRect, RadiusShape # isort:skip

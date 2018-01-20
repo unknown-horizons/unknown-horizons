@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,11 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS
+from horizons.ai.aiplayer.goal import Goal
 from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import BUILDINGS
+
 
 class SettlementGoal(Goal):
 	"""
@@ -31,7 +31,7 @@ class SettlementGoal(Goal):
 	"""
 
 	def __init__(self, settlement_manager):
-		super(SettlementGoal, self).__init__(settlement_manager.owner)
+		super().__init__(settlement_manager.owner)
 		self.settlement_manager = settlement_manager
 		self.land_manager = settlement_manager.land_manager
 		self.production_builder = settlement_manager.production_builder
@@ -42,10 +42,10 @@ class SettlementGoal(Goal):
 
 	@property
 	def can_be_activated(self):
-		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL)
+		return super().can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL)
 
 	def __str__(self):
-		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.get_component(NamedComponent).name
+		return super().__str__() + ', ' + self.settlement_manager.settlement.get_component(NamedComponent).name
 
 	def _log_generic_build_result(self, result, name):
 		if result == BUILD_RESULT.OK:
@@ -56,5 +56,3 @@ class SettlementGoal(Goal):
 			self.log.info('%s skipped building a %s', self, name)
 		else:
 			self.log.info('%s failed to build a %s (%d)', self, name, result)
-
-decorators.bind_all(SettlementGoal)

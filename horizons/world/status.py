@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,8 @@
 
 import operator
 
-from horizons.i18n import _lazy
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
+
 
 """Classes used for StatusIcon.
 
@@ -38,12 +39,14 @@ Priority:
 [2000-3000[: high
 Keep the numbers unique to avoid confusion when sorting.
 """
-class StatusIcon(object):
+
+
+class StatusIcon:
 	# integer
-	priority = None
+	priority = None # type: int
 	# fife identifier for animations or icons. Must be supported by either the animationloader
 	# or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
-	icon = None
+	icon = None # type: str
 	# use _lazy
 	helptext = ""
 
@@ -62,48 +65,48 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
-	def __cmp__(self, other):
-		return cmp(self.__class__, other.__class__)
-
 	def __str__(self):
-		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
+		return str(self.__class__) + "(prio:{},icon:{})".format(self.priority, self.icon)
+
 
 class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """
 	priority = 3000
 	icon = 'as_pestilence+idle+45'
-	_helptext = _("The inhabitants are infected by the Black Death!")
+	_helptext = LazyT("The inhabitants are infected by the Black Death!")
+
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
 	priority = 3000
 	icon = 'as_on_fire+idle+45'
-	helptext = _lazy("This building is on fire!")
+	helptext = LazyT("This building is on fire!")
 
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
-	helptext = _lazy("These residents are unhappy.")
+	helptext = LazyT("These residents are unhappy.")
+
 
 class SettlerNotConnectedStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_mainsquare_access+idle+45'
-	helptext = _lazy("These residents don't have access to a main square.")
+	helptext = LazyT("These residents don't have access to a main square.")
 
 
 class InventoryFullStatus(StatusIcon):
 	priority = 1200
 	icon = 'as_inventory_full+idle+45'
-	helptext = _lazy("The inventory of this building is full.")
+	helptext = LazyT("The inventory of this building is full.")
 
 	def __init__(self, instance, reslist):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__(instance)
+		super().__init__(instance)
 		self.reslist = reslist
 
 
@@ -112,10 +115,10 @@ class ProductivityLowStatus(StatusIcon):
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
-	helptext = _lazy("This building has a very low productivity.")
+	helptext = LazyT("This building has a very low productivity.")
 
 
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
-	helptext = _lazy("This building is decommissioned.")
+	helptext = LazyT("This building is decommissioned.")

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,12 @@
 
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 
+
 class SettlementBuildabilityCache(BinaryBuildabilityCache):
 	"""A specialized BinaryBuildabilityCache for settlements."""
 
 	def __init__(self, terrain_cache, settlement_ground_map):
-		super(SettlementBuildabilityCache, self).__init__(terrain_cache)
+		super().__init__(terrain_cache)
 		self.settlement_ground_map = settlement_ground_map
 
 	def add_area(self, coords_list):
@@ -36,7 +37,7 @@ class SettlementBuildabilityCache(BinaryBuildabilityCache):
 			if coords in land_or_coast:
 				add_list.append(coords)
 		if add_list:
-			super(SettlementBuildabilityCache, self).add_area(add_list)
+			super().add_area(add_list)
 
 	def modify_area(self, coords_list):
 		"""
@@ -65,4 +66,4 @@ class SettlementBuildabilityCache(BinaryBuildabilityCache):
 		if remove_list:
 			self.remove_area(remove_list)
 		if add_list:
-			super(SettlementBuildabilityCache, self).add_area(add_list)
+			super().add_area(add_list)

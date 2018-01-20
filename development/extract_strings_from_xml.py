@@ -1,6 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,19 +34,20 @@
 #
 ###############################################################################
 
+from __future__ import print_function
 import os
 import sys
 from xml.dom import minidom
 
 
 if len(sys.argv) != 2:
-	print 'Error: Provide a file to write strings to as argument. Exiting.'
+	print('Error: Provide a file to write strings to as argument. Exiting.')
 	sys.exit(1)
 
 header = u'''\
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -86,9 +88,12 @@ header = u'''\
 #
 ###############################################################################
 
-from horizons.constants import VERSION
+from typing import Dict, Tuple
 
-text_translations = {}
+from horizons.constants import VERSION
+from horizons.i18n import gettext as T
+
+text_translations = {} # type: Dict[str, Dict[Tuple[str, str], str]]
 
 def set_translations():
 	global text_translations
@@ -105,7 +110,7 @@ FILE = u'''
 '''
 
 ENTRY = u'''\
-		({widget!r:<32}, {attribute!r:<10}): {text},
+		({widget!r:<31}, {attribute!r:<10}): {text},
 '''
 
 files_to_skip = [
@@ -116,8 +121,9 @@ files_to_skip = [
 
 
 def print_n_no_name(n, text):
-	print '\tWarning: ',
-	print '%s without name. Add unique name if desired: text="%s"' % (n, text)
+	print('\tWarning: ', end=' ')
+	print('{} without name. Add unique name if desired: text="{}"'.format(n, text))
+
 
 def list_all_files():
 	result = []
@@ -125,8 +131,9 @@ def list_all_files():
 	for root, dirs, files in walker:
 		for filename in files:
 			if filename.endswith('.xml'):
-				result.append(('%s/%s' % (root, filename), filename not in files_to_skip))
+				result.append(('{}/{}'.format(root, filename), filename not in files_to_skip))
 	return sorted(result)
+
 
 def content_from_element(element_name, parse_tree, attribute):
 	"""Extracts text content of one attribute from a widget in the DOM.
@@ -151,7 +158,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			# comment='noi18n' in widgets where translation is not desired
 			continue
 
-		if i18n == 'noi18n_%s' % attribute:
+		if i18n == 'noi18n_{}'.format(attribute):
 			# comment='noi18n_tooltip' in widgets where tooltip translation is not
 			# desired, but text should be translated.
 			continue
@@ -166,11 +173,12 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = '_(u"%s")' % text
+				text = 'T("{}")'.format(text)
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
 	return ''.join(sorted(element_strings))
+
 
 def content_from_file(filename, parse=True):
 	"""Set parse=False if you want to list the widget in guitranslations,
@@ -199,9 +207,11 @@ def content_from_file(filename, parse=True):
 
 	return FILE.format(filename=printname, entries=strings)
 
+
 filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = ''.join(content for content in filesnippets if content)
 
-output = '%s%s%s' % (header, filesnippets, FOOTER)
+output = '{}{}{}'.format(header, filesnippets, FOOTER)
 
-file(sys.argv[1], 'w').write(output.encode('utf-8'))
+with open(sys.argv[1], 'w') as f:
+	f.write(output)

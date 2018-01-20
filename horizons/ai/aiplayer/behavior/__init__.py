@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,11 @@
 
 
 import logging
+
 from horizons.ext.enum import Enum
 
 
-class BehaviorManager(object):
+class BehaviorManager:
 	"""
 	BehaviorManager holds BehaviorComponents.
 	Entities such as CombatManager or StrategyManager ask BehaviorManager to perform
@@ -37,7 +38,7 @@ class BehaviorManager(object):
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
 	def __init__(self, owner):
-		super(BehaviorManager, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.__init(owner)
 
 		self.profile_token = self.get_profile_token()
@@ -68,7 +69,7 @@ class BehaviorManager(object):
 
 	def request_behavior(self, type, action_name, behavior_list, **environment):
 		possible_behaviors = []
-		for behavior, probability in behavior_list[type].iteritems():
+		for behavior, probability in behavior_list[type].items():
 			if hasattr(behavior, action_name):
 				certainty = behavior.certainty(action_name, **environment)
 				# final probability is the one defined in profile multiplied by it's certainty

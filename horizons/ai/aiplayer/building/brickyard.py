@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,8 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
 from horizons.entities import Entities
+
 
 class AbstractBrickyard(AbstractBuilding):
 	@property
@@ -35,6 +35,7 @@ class AbstractBrickyard(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.BRICKYARD] = cls
+
 
 class BrickyardEvaluator(BuildingEvaluator):
 	@classmethod
@@ -58,7 +59,5 @@ class BrickyardEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.BRICKYARD
 
-AbstractBrickyard.register_buildings()
 
-decorators.bind_all(AbstractBrickyard)
-decorators.bind_all(BrickyardEvaluator)
+AbstractBrickyard.register_buildings()

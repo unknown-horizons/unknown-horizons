@@ -22,10 +22,10 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 de Novembro de 1740]
+  - [Headline, 20 de novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Após quatro dias a tempestade finalmente acaba e podemos descansar. Mas resta-nos pouca comida e nosso navio encontra-se em más condições. Os instrumentos e cartas de navegação foram perdidos.
-  - Temos de chegar em terra firme logo. Um de meus homens avistou alguns pássaros pescadores, portanto a costa não deve estar longe. Felizmente trazemos algumas ferramentas e tábuas a bordo, de modo que podemos construir um abrigo básico.
+  - Temos de chegar em terra firme logo. Um de meus homens avistou alguns pássaros pescadores, portanto a costa não deve estar longe. Felizmente sempre trazemos algumas ferramentas e tábuas a bordo, de modo que podemos construir um abrigo básico.
   - 'Tarefa:
 
     Encontrar a costa e construir um porto.'
@@ -33,10 +33,10 @@ logbook-data:
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22 de Novembro de 1740]
+  - [Headline, 22 de novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
   - O porto foi construído e uma nova esperança surge. Os próximos dias ainda me preocupam... estamos ficando sem comida e sem material básico de construção.
-  - Precisamos proteger nossas necessidades básicas para nos mantermos vivos. É hora de enviar algumas pessoas para coletar alimento e madeira.
+  - Precisamos proteger nossas necessidades básicas para nos mantermos vivos. É hora de enviar algumas pessoas para coletar alimento e madeira para podermos sobreviver e construir abrigo.
   - 'Tarefa:
 
     Construir ao menos um de cada:
@@ -52,10 +52,10 @@ logbook-data:
   - ''
 
 - &TENTS
-  - [Headline, 25 de Novembro de 1740]
+  - [Headline, 25 de novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Garantimos nossas necessidades básicas de alimentação e reunimos um pouco de madeira para continuar o desenvolvimento de nossa nova colônia. O povo exige um local para habitação e troca de bens de consumo diário.
-  - É hora de construir algumas tendas e uma pequena praça principal para suprir seus cidadãos com mercadorias.
+  - É hora de construir algumas tendas e uma pequena praça principal para suprir nossos cidadãos com mercadorias.
   - 'Tarefa:
 
     Construir uma praça principal e ao menos 10 tendas.'
@@ -63,7 +63,7 @@ logbook-data:
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1 de Dezembro de 1740]
+  - [Headline, 1 de dezembro de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Finalmente temos algo para comer e um local para se abrigar. Minha tenda não é muito confortável mas me manterá seco e durante a noite me dá uma sensação de ter um teto sobre a cabeça.
   - 'Estive observando as estrelas à noite, mas sem minhas cartas de navegação e instrumentos a interpretação fica impossível. Tenho a sensação de que ficaremos presos aqui por algum tempo, então é melhor nos esforçarmos para melhorar nossas condições.
@@ -76,13 +76,13 @@ logbook-data:
   - ''
 
 - &WON
-  - [Headline, 27 de Agosto de 1745]
+  - [Headline, 27 de agosto de 1745]
   - [Image, content/gui/images/background/hr.png]
   - Nosso vilarejo está indo bem, a cidade cresceu para mais de 250 habitantes. Eu comecei a me acostumar com minha nova casa, mas esta ilha é pequena demais para ficarmos aqui para sempre.
   - Nós deveríamos carregar nossa embarcação e sair para procurar uma ilha maior que ofereça espaço e recursos para meu povo. Eu criei um mapa de navegação básico novamente, usando as estrelas que eu vi à noite. Não é perfeito, mas espero que seja suficiente para retornar aqui.
   - 'Tarefa:
 
-    Entre em contato com a equipe Unknown Horizons (www.unknown-horizons.org) e veja como você pode contribuir com a criação de cenários maiores e melhores!'
+    Entre em contato com a equipe do Unknown Horizons (www.unknown-horizons.org) e veja como você pode contribuir com a criação de cenários maiores e melhores!'
   - [Pagebreak]
   - ''
 
@@ -142,9 +142,9 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Junto de sua tripulação, estava a caminho de uma colônia Inglesa no oceano Pacífico.
+  description: 'Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Você e sua tripulação estavam a caminho de uma colônia da Inglaterra no Oceano Pacífico.
 
-    Tudo correu bem até que chegou uma tempestade…'
+    Tudo corria bem até que você entrou em uma tempestade …'
   difficulty: fácil
   locale: pt_BR
   mapfile: development.sqlite

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,10 +21,9 @@
 
 
 from horizons.command.building import Build
-from horizons.constants import RES, BUILDINGS, PRODUCTIONLINES
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTIONLINES, RES
 from horizons.world.production.producer import Producer
-
 from tests.game import game_test, settle
 
 
@@ -51,7 +50,8 @@ def test_example(s, p):
 	# 30s to produce wool.
 	p1 = Build(BUILDINGS.PASTURE, 27, 30, island, settlement=settlement)(p)
 	p2 = Build(BUILDINGS.PASTURE, 33, 30, island, settlement=settlement)(p)
-	assert p1 and p2
+	assert p1
+	assert p2
 
 	s.run(seconds=31)
 
@@ -68,4 +68,3 @@ def test_example(s, p):
 	production.pause(pause=False)
 	s.run(seconds=1)
 	assert farm.get_component(StorageComponent).inventory[RES.WOOL]
-

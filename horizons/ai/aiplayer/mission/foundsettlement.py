@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.mission import ShipMission
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
+from horizons.ai.aiplayer.mission import ShipMission
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+from horizons.entities import Entities
+from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
-from horizons.entities import Entities
+
 
 class FoundSettlement(ShipMission):
 	"""
@@ -38,14 +38,14 @@ class FoundSettlement(ShipMission):
 	missionStates = Enum('created', 'moving')
 
 	def __init__(self, success_callback, failure_callback, land_manager, ship, coords):
-		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		self.land_manager = land_manager
 		self.coords = coords
 		self.warehouse = None
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(FoundSettlement, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
 			self.worldid, self.land_manager.worldid, self.ship.worldid, self.coords[0], self.coords[1], self.state.index)
 
@@ -61,7 +61,7 @@ class FoundSettlement(ShipMission):
 		self.coords = (int(db_result[2]), int(db_result[3]))
 		self.warehouse = None
 		self.state = self.missionStates[db_result[4]]
-		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
+		super().load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_destination_area))
@@ -78,7 +78,8 @@ class FoundSettlement(ShipMission):
 			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_warehouse_area(Point(*self.coords), Callback(self._reached_destination_area),
+		self._move_to_warehouse_area(
+			Point(*self.coords), Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _reached_destination_area(self):
@@ -86,7 +87,7 @@ class FoundSettlement(ShipMission):
 
 		builder = BasicBuilder(BUILDINGS.WAREHOUSE, self.coords, 0)
 		if not builder.have_resources(self.land_manager, ship=self.ship):
-			self.report_failure('Not enough resources for a warehouse at %s' % str(self.coords))
+			self.report_failure('Not enough resources for a warehouse at {}'.format(str(self.coords)))
 			return
 
 		self.warehouse = builder.execute(self.land_manager, ship=self.ship)
@@ -103,14 +104,16 @@ class FoundSettlement(ShipMission):
 		"""Return the coordinates of a location for the warehouse on the given island."""
 		warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
 		pos_offsets = []
-		for dx in xrange(warehouse_class.width):
-			for dy in xrange(warehouse_class.height):
+		for dx in range(warehouse_class.width):
+			for dy in range(warehouse_class.height):
 				pos_offsets.append((dx, dy))
 
 		island = land_manager.island
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
 
 		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
+		available_spots_list = [x for x in available_spots_list
+								if warehouse_class.check_build(land_manager.session, Point(*x), check_settlement=False)]
 		if not available_spots_list:
 			return None
 
@@ -140,5 +143,3 @@ class FoundSettlement(ShipMission):
 	def create(cls, ship, land_manager, success_callback, failure_callback):
 		coords = cls.find_warehouse_location(ship, land_manager)
 		return FoundSettlement(success_callback, failure_callback, land_manager, ship, coords)
-
-decorators.bind_all(FoundSettlement)

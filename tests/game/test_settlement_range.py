@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +20,11 @@
 # ###################################################
 
 
-from horizons.constants import RES, BUILDINGS
 from horizons.command.building import Build, Tear
-
+from horizons.constants import BUILDINGS, RES
 from tests.game import game_test
-		
+
+
 # FIXTURE is settlement with a lookout, some tents and some trees
 @game_test(use_fixture='settlement-range')
 def test_settlement_decrease(s):

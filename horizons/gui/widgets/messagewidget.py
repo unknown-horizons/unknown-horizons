@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,23 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import itertools
 import logging
 import textwrap
-import itertools
 
 from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
-
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
+from horizons.i18n.voice import get_speech_file
+from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
-from horizons.scheduler import Scheduler
-from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.i18n.voice import get_speech_file
 
 
 class MessageWidget(LivingObject):
@@ -60,7 +60,7 @@ class MessageWidget(LivingObject):
 	log = logging.getLogger('gui.widgets.messagewidget')
 
 	def __init__(self, session):
-		super(MessageWidget, self).__init__()
+		super().__init__()
 		self.session = session
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
@@ -101,7 +101,7 @@ class MessageWidget(LivingObject):
 
 		sound = get_speech_file(string_id) if play_sound else None
 		return self._add_message(_IngameMessage(point=point, id=string_id, msg_type=msg_type,
-		                                        created=self.msgcount.next(), message_dict=message_dict),
+		                                        created=next(self.msgcount), message_dict=message_dict),
 		                         sound=sound)
 
 	def remove(self, messagetext):
@@ -113,6 +113,7 @@ class MessageWidget(LivingObject):
 				break
 		if index > -1:
 			del self.active_messages[index]
+			self.draw_widget()
 
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
@@ -121,7 +122,7 @@ class MessageWidget(LivingObject):
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
 		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
-		                                        display=visible_for, created=self.msgcount.next(),
+		                                        display=visible_for, created=next(self.msgcount),
 		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
@@ -145,8 +146,8 @@ class MessageWidget(LivingObject):
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')
 
-		if message.x is not None and message.y is not None:
-			self.session.ingame_gui.minimap.highlight( (message.x, message.y) )
+		if message.x != 0 and message.y != 0:
+			self.session.ingame_gui.minimap.highlight((message.x, message.y))
 
 		self.draw_widget()
 		self.show_text(0)
@@ -177,7 +178,7 @@ class MessageWidget(LivingObject):
 			}
 			# init callback to something callable to improve robustness
 			callback = Callback(lambda: None)
-			if message.x is not None and message.y is not None:
+			if message.x != 0 and message.y != 0:
 				# move camera to source of event on click, if there is a source
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
@@ -205,16 +206,7 @@ class MessageWidget(LivingObject):
 		# stop hiding if a new text has been shown
 		ExtScheduler().rem_call(self, self.hide_text)
 
-		try:
-			text = self.active_messages[index].message
-		except IndexError:
-			# Something went wrong, try to find out what. Also see #2273.
-			self.log.error(u'Tried to access message at index %s, only have %s. Messages:',
-			               index, len(self.active_messages))
-			self.log.error(u'\n'.join(unicode(m) for m in self.active_messages))
-			text = (u'Error trying to access message!\n'
-			        u'Please report a bug. Thanks!')
-
+		text = self.active_messages[index].message
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
@@ -223,7 +215,7 @@ class MessageWidget(LivingObject):
 		self.bg_middle.removeAllChildren()
 
 		line_count = len(text.splitlines()) - 1
-		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
+		for i in range(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
 			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
 
@@ -267,7 +259,7 @@ class MessageWidget(LivingObject):
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
-		super(MessageWidget, self).end()
+		super().end()
 
 	def save(self, db):
 		for message in self.active_messages:
@@ -309,7 +301,7 @@ class MessageWidget(LivingObject):
 		self.draw_widget()
 
 
-class _IngameMessage(object):
+class _IngameMessage:
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string template, meaning it can contain placeholders
 	like the following: {player}, {gold}. The *message_dict* needed to fill in
@@ -328,7 +320,7 @@ class _IngameMessage(object):
 	"""
 	def __init__(self, point, id, created,
 	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
-		self.x, self.y = None, None
+		self.x, self.y = 0, 0
 		if point is not None:
 			self.x, self.y = point.x, point.y
 		self.id = id
@@ -339,27 +331,19 @@ class _IngameMessage(object):
 		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
-			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
 		else:
-			msg = _(horizons.globals.db.get_msg_text(id))
+			msg = T(horizons.globals.db.get_msg_text(id))
 			#TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
-				self.log.warning(u'Unsubstituted string %s in %s message "%s", dict %s',
+				self.log.warning('Unsubstituted string %s in %s message "%s", dict %s',
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s %s %s%s" % (self.created, self.id,
-			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
-			'R' if self.read else ' ',
-			'D' if self.display else ' ')
-
-	def __unicode__(self):
-		return u"% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
-			self.message,
-			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+		return "{:4d}: {} {} {}{}".format(self.created, self.id,
+			'({},{}) '.format(self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')

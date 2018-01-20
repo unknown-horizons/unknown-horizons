@@ -1,7 +1,6 @@
-#!/usr/bin/env python2
-# Encoding: utf-8
+#!/usr/bin/env python3
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import re
 import subprocess
 import os
@@ -54,13 +54,12 @@ SCENARIO_TRANSLATIONS = {}
 SCENARIO_TEMPLATE = {}
 ALL_SCENARIOS = ('tutorial', 'The_Unknown')
 for s in ALL_SCENARIOS:
-	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
-	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
+	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/{}.po'.format(s))
+	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/{}.pot'.format(s)
 
 VOICES_TRANSLATIONS = glob('po/voices/*.po')
 VOICES_TEMPLATE = 'po/voices/unknown-horizons-voices.pot'
 
-JUST_NAME = re.compile(r'^\s*[0-9]*\s(\S.*)$')
 GLOBAL_AUTHORS = ('Translators', 'Chris Oelmueller', 'Michal Čihař', 'Michal Čihař Čihař')
 language_authors = defaultdict(set)
 
@@ -70,7 +69,7 @@ def update_from_template(input_po, input_template):
 	@param input_po: the translation to be updated against new template
 	@param input_template: the reference .pot template catalog
 	"""
-	print('Updating %s:' % input_po)
+	print('Updating {}:'.format(input_po))
 	try:
 		subprocess.call([
 			'msgmerge',
@@ -81,28 +80,26 @@ def update_from_template(input_po, input_template):
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
-		print('Error while updating translation `%s`. Exiting.' % input_po)
+		print('Error while updating translation `{}`. Exiting.'.format(input_po))
 		sys.exit(1)
 
 
 def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..', pushed_by='Weblate'):
 	authors = subprocess.check_output([
 		'git',
-		'shortlog',
+		'log',
 		since,
 		'--committer',
 		pushed_by,
-		'-sn', # Use 'sne' to include email (if that is ever needed)
-		'--',
+		'--format=%an',
 		input_po,
 	], stderr=subprocess.STDOUT)
 
 	#TODO Clearly the above can never fail, ever. But what if it did?
 	lang = regexp.search(input_po).groups()[0]
-	for author_line in authors.split('\n'):
-		if not author_line:
+	for author in authors.decode('utf-8').split('\n'):
+		if not author:
 			continue
-		author = JUST_NAME.search(author_line).groups()[0]
 		if author in GLOBAL_AUTHORS:
 			continue
 		english_lang = LANGUAGENAMES.get_english(lang)
@@ -112,7 +109,7 @@ def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..',
 def main():
 	# Main interface translation (old 'uh' project in pootle)
 	for f in INTERFACE_TRANSLATIONS:
-		#update_from_template(f, INTERFACE_TEMPLATE)
+		update_from_template(f, INTERFACE_TEMPLATE)
 		update_authors_per_file(f)
 
 	# MP server message translation (old 'mp-server' project in pootle)
@@ -137,17 +134,17 @@ def main():
 		update_authors_per_file(f)
 
 	# Output data ready for AUTHORS.md copy/paste
-	print '-- New translation contributors since last update:'
-	sort_order = lambda (lang, _): LANGUAGENAMES.get_by_value(lang, english=True)
+	print('-- New translation contributors since last update:')
+	sort_order = lambda e: LANGUAGENAMES.get_by_value(e[0], english=True)
 	for language, authors in sorted(language_authors.items(), key=sort_order):
-		print '\n####', language
+		print('\n####', language)
 		#TODO
 		# The sorted() below will not correctly sort names containing non-ascii.
 		# You'll need to rely on manual copy/paste and ordering anyways, so just
 		# keep your eyes open a bit more than usual.
 		for author in sorted(authors):
 			print_ready = map(str.capitalize, author.split())
-			print '*', ' '.join(print_ready)
+			print('*', ' '.join(print_ready))
 
 
 if __name__ == '__main__':

@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,18 +20,20 @@
 # ###################################################
 
 import logging
+from typing import Optional
 
-from horizons.world.settlement import Settlement
-from horizons.util.worldobject import WorldObject
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.worldobject import WorldObject
+from horizons.world.settlement import Settlement
+
 
 class Disaster(WorldObject):
 	"""Prototype class for disasters."""
 	log = logging.getLogger("world.disaster")
 
-	TYPE = None # string to identify type
+	TYPE = None # type: str
 
 	# Chance this disaster is seeded into a settlement in a tick of the
 	# disaster manager
@@ -43,14 +44,14 @@ class Disaster(WorldObject):
 
 	# Resource to distribute to infected buildings
 	#	This is how preventory units (doctors) spot affected buildings.
-	DISASTER_RES = None
+	DISASTER_RES = None # type: Optional[int]
 
 	def __init__(self, settlement, manager):
 		"""
 		@param settlement: Settlement instance this disaster operates on
 		@param manager: The disaster manager that initiated this disaster
 		"""
-		super(Disaster, self).__init__()
+		super().__init__()
 		assert isinstance(settlement, Settlement), "Not a settlement!"
 		self._settlement = settlement
 		self._manager = manager
@@ -80,7 +81,7 @@ class Disaster(WorldObject):
 		building.disaster = self
 		if self.DISASTER_RES is not None and not load: # in load, storage save/load will kick in
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
-			assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+			assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def recover(self, building):
 		"""Inverse of infect(). Is also called when buildings are torn down by the user."""
@@ -91,7 +92,7 @@ class Disaster(WorldObject):
 			inv = building.get_component(StorageComponent).inventory
 			if inv[self.DISASTER_RES] > 0:
 				remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
-				assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+				assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout."""

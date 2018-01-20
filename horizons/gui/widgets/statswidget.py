@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import PLAYER, GAME_SPEED
+from horizons.constants import GAME_SPEED, PLAYER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
 
-class StatsWidget(object):
+class StatsWidget:
 	"""A widget that creates a large table with statistics."""
 
-	widget_file_name = None # name of the widget's XML file
+	# name of the widget's XML file
+	widget_file_name = None # type: str
 
 	def __init__(self, session, center_widget=False):
-		super(StatsWidget, self).__init__()
+		super().__init__()
 		self.session = session
 		self.center_widget = center_widget
 		self._initialized = False
@@ -85,5 +85,3 @@ class StatsWidget(object):
 
 	def _clear_entries(self):
 		self._content_vbox.removeAllChildren()
-
-decorators.bind_all(StatsWidget)

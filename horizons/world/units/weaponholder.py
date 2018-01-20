@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,27 +22,29 @@
 import logging
 import math
 
+from horizons.component.stancecomponent import (
+	AggressiveStance, FleeStance, HoldGroundStance, NoneStance)
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
+from horizons.i18n import gettext as T
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Annulus, Point
 from horizons.util.worldobject import WorldObject
-from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
-from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \
-	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
-from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
-from horizons.component.storagecomponent import StorageComponent
+from horizons.world.units.unitexeptions import MoveNotPossible
+from horizons.world.units.weapon import SetStackableWeaponNumberError, StackableWeapon, Weapon
+
 
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")
-class WeaponHolder(object):
+class WeaponHolder:
 	log = logging.getLogger("world.combat")
 
 	def __init__(self, **kwargs):
-		super(WeaponHolder, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.__init()
 
 	def __init(self):
@@ -60,7 +62,7 @@ class WeaponHolder(object):
 			weapon.remove_attack_ready_listener(Callback(self._add_to_fireable, weapon))
 			weapon.remove_weapon_fired_listener(Callback(self._remove_from_fireable, weapon))
 			weapon.remove_weapon_fired_listener(self._increase_fired_weapons_number)
-		super(WeaponHolder, self).remove()
+		super().remove()
 
 	def create_weapon_storage(self):
 		self._weapon_storage = []
@@ -377,7 +379,7 @@ class WeaponHolder(object):
 		return self._target
 
 	def save(self, db):
-		super(WeaponHolder, self).save(db)
+		super().save(db)
 		# save weapon storage
 		for weapon in self._weapon_storage:
 			number = 1
@@ -401,7 +403,7 @@ class WeaponHolder(object):
 			self.attack(target)
 
 	def load(self, db, worldid):
-		super(WeaponHolder, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 		weapons = db("SELECT weapon_id, number, remaining_ticks FROM weapon_storage WHERE owner_id = ?", worldid)
 		for weapon_id, number, ticks in weapons:
@@ -431,19 +433,19 @@ class WeaponHolder(object):
 		if self.is_attacking():
 			target = self.get_attack_target()
 			if isinstance(target, Ship):
-				string = _("Attacking {target} '{name}' ({owner})")
+				string = T("Attacking {target} '{name}' ({owner})")
 				return (string.format(target=target.classname.lower(), name=target.name,
 				                      owner=target.owner.name),
 				        target.position)
-			return (_('Attacking {owner}').format(owner=target.owner.name),
+			return (T('Attacking {owner}').format(owner=target.owner.name),
 			        target.position)
-		return super(WeaponHolder, self).get_status()
+		return super().get_status()
 
 
 @metaChangeListenerDecorator("user_move_issued")
 class MovingWeaponHolder(WeaponHolder):
 	def __init__(self, **kwargs):
-		super(MovingWeaponHolder, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.__init()
 
 	def __init(self):
@@ -480,8 +482,8 @@ class MovingWeaponHolder(WeaponHolder):
 			assert callable(in_range_callback)
 
 		try:
-			self.move(destination, callback = self.try_attack_target,
-				blocked_callback = self.try_attack_target)
+			self.move(destination, callback=self.try_attack_target,
+				blocked_callback=self.try_attack_target)
 			if in_range_callback:
 				self.add_conditional_callback(self.attack_in_range, in_range_callback)
 
@@ -546,23 +548,23 @@ class MovingWeaponHolder(WeaponHolder):
 		self.get_component(stance).set_state(state)
 
 	def go(self, x, y):
-		super(MovingWeaponHolder, self).go(x, y)
+		super().go(x, y)
 		self.on_user_move_issued()
 
 	def save(self, db):
-		super(MovingWeaponHolder, self).save(db)
+		super().save(db)
 		db("INSERT INTO stance(worldid, stance, state) VALUES(?, ?, ?)",
 			self.worldid, self.stance.NAME, self.get_component(self.stance).get_state())
 
 	def load(self, db, worldid):
-		super(MovingWeaponHolder, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 		stance, state = db("SELECT stance, state FROM stance WHERE worldid = ?", worldid)[0]
 		self.stance = self.get_component_by_name(stance)
 		self.stance.set_state(state)
 
 	def user_attack(self, targetid):
-		super(MovingWeaponHolder, self).user_attack(targetid)
+		super().user_attack(targetid)
 		if self.owner.is_local_player:
 			self.session.ingame_gui.minimap.show_unit_path(self)
 
@@ -572,7 +574,7 @@ class StationaryWeaponHolder(WeaponHolder):
 	# TODO: stances (shoot on sight, don't do anything)
 
 	def __init__(self, *args, **kwargs):
-		super(StationaryWeaponHolder, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.__init()
 
 	def __init(self):
@@ -580,5 +582,5 @@ class StationaryWeaponHolder(WeaponHolder):
 		self.stance = HoldGroundStance
 
 	def load(self, db, worldid):
-		super(StationaryWeaponHolder, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()

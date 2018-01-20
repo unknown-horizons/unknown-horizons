@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,7 @@ from horizons.gui.windows import Window
 from horizons.util.python.callback import Callback
 
 
-class PickBeltWidget(object):
+class PickBeltWidget:
 	"""Base class for widget with sections behaving as pages"""
 	sections = () # Tuple with widget name and Label
 	widget_xml = '' # xml to load for the widget
@@ -47,16 +47,16 @@ class PickBeltWidget(object):
 		for i, (name, text) in enumerate(self.sections):
 			for side in self.buttons:
 				pickbelt = ImageButton(text=text)
-				pickbelt.name = name + '_' + side
-				pickbelt.path = 'images/background/pickbelt_%s' % side
+				pickbelt.name = '{}_{}'.format(name, side)
+				pickbelt.path = 'images/background/pickbelt_{}'.format(side)
 				pickbelt.font = "pickbelt"
 
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 
 				start_x, start_y = self.pickbelt_start_pos
-				pickbelt.position = (start_x + 5*i, start_y + 70*i)
+				pickbelt.position = (start_x + 5 * i, start_y + 70 * i)
 
-				container = self.widget.findChild(name="%s_pickbelts" % side)
+				container = self.widget.findChild(name="{}_pickbelts".format(side))
 				container.addChild(pickbelt)
 				self.buttons[side].append(pickbelt)
 
@@ -84,11 +84,12 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
 	sections = (
-		('credits_team', u'UH-Team'),
-		('credits_patchers', u'Patchers'),
-		('credits_translators', u'Translators'),
-		('credits_packagers', u'Packagers'),
-		('credits_thanks', u'Thanks'),
+		('credits_team_2016', 'UH-Team New'),
+		('credits_team_2015', 'UH-Team Old'),
+		('credits_patchers', 'Patchers'),
+		('credits_translators', 'Translators'),
+		('credits_packagers', 'Packagers'),
+		('credits_thanks', 'Thanks'),
 	)
 
 	def __init__(self, windows):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,22 +20,22 @@
 # ###################################################
 
 import time
-import horizons.globals
 
-from horizons.util.living import LivingObject
+import horizons.globals
 from horizons.constants import GAME, GAME_SPEED
 from horizons.scheduler import Scheduler
+from horizons.util.living import LivingObject
+
 
 class Timer(LivingObject):
 	"""
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is especially important for multiplayer, to allow synchronous play.
 	"""
-	TEST_PASS, TEST_SKIP = xrange(0, 2)
+	TEST_PASS, TEST_SKIP = range(0, 2)
 
 	ACCEPTABLE_TICK_DELAY = 0.2 # sec
 	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
-
 
 	def __init__(self, tick_next_id=Scheduler.FIRST_TICK_ID, freeze_protection=False):
 		"""
@@ -43,7 +43,7 @@ class Timer(LivingObject):
 		@param tick_next_id: int next tick id
 		@param freeze_protection: whether to check for tick delay and strech time in case (breaks mp)
 		"""
-		super(Timer, self).__init__()
+		super().__init__()
 		self._freeze_protection = freeze_protection
 		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
@@ -58,7 +58,7 @@ class Timer(LivingObject):
 	def end(self):
 		if self.check_tick in horizons.globals.fife.pump:
 			horizons.globals.fife.pump.remove(self.check_tick)
-		super(Timer, self).end()
+		super().end()
 
 	def add_test(self, call):
 		"""Adds a call to the test list
@@ -89,7 +89,7 @@ class Timer(LivingObject):
 		@param seconds: number of seconds that are to be converted into ticks
 		@return: int
 		"""
-		return int(round( seconds*GAME_SPEED.TICKS_PER_SECOND))
+		return int(round(seconds * GAME_SPEED.TICKS_PER_SECOND))
 
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""

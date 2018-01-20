@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,8 +21,8 @@
 
 from horizons.scenario import ACTIONS
 
-
 # Patch scenario actions for easier detection
+
 
 def do_win(session):
 	session._scenariotest_won = True
@@ -41,6 +41,6 @@ def goal_reached(session, goal):
 
 # We replace the code object on the original functions because replacing all
 # references on these functions in the scenario manager is too cumbersome
-ACTIONS.get('win').func_code = do_win.func_code
-ACTIONS.get('lose').func_code = do_lose.func_code
-ACTIONS.get('goal_reached').func_code = goal_reached.func_code
+ACTIONS.get('win').__code__ = do_win.__code__
+ACTIONS.get('lose').__code__ = do_lose.__code__
+ACTIONS.get('goal_reached').__code__ = goal_reached.__code__

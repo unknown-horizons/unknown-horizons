@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
 import locale
 import logging
 
 from fife import fife
-from fife.extensions import pychan, fifelog
+from fife.extensions import fifelog, pychan
 
 from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS
 from horizons.engine.pychan_util import init_pychan
@@ -34,7 +34,7 @@ from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
 
 
-class Fife(object):
+class Fife:
 	"""
 	Basic initiation of engine. Followed later by init().
 	"""
@@ -76,7 +76,7 @@ class Fife(object):
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 
 		# introduced in fife 0.4.0
-		if self.getVersion >= (0,4,0):
+		if self.getVersion() >= (0, 4, 0):
 			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
 			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
 			if self._finalSetting['GLTextureFiltering'] == 'None':
@@ -103,7 +103,10 @@ class Fife(object):
 			pass
 
 		try:
-			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
+			self.engine_settings.setColorKey(
+				self._finalSetting['ColorKey'][0],
+				self._finalSetting['ColorKey'][1],
+				self._finalSetting['ColorKey'][2])
 		except:
 			pass
 
@@ -153,6 +156,7 @@ class Fife(object):
 		self.eventmanager = self.engine.getEventManager()
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
+		self.animationmanager = self.engine.getAnimationManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
 		self.animationloader = None
 
@@ -165,7 +169,7 @@ class Fife(object):
 			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
 		}
-		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
+		self.cursor_images = {k: self.imagemanager.load(v) for k, v in  cursor_images.items()}
 		self.cursor.set(self.cursor_images['default'])
 
 		# Init pychan.
@@ -240,7 +244,7 @@ class Fife(object):
 	def replace_key_for_action(self, action, oldkey, newkey):
 		"""Replaces key *oldkey* with key *newkey* for action *action*"""
 		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
-		if not oldkey in old_keys:
+		if oldkey not in old_keys:
 			return
 		index = old_keys.index(oldkey)
 		old_keys[index] = newkey
@@ -281,8 +285,13 @@ class Fife(object):
 		while not self.quit_requested:
 			try:
 				self.engine.pump()
+			except RuntimeError:
+				import sys
+				print("Unknown Horizons exited uncleanly via SIGINT")
+				self._log.log_warn("Unknown Horizons exited uncleanly via SIGINT")
+				sys.exit(1)
 			except fife.Exception as e:
-				print e.getMessage()
+				print(e.getMessage())
 				break
 			for f in self.pump:
 				f()

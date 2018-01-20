@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,20 +22,20 @@
 import logging
 
 from fife import fife
-import horizons.globals
 
+import horizons.globals
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.component.namedcomponent import NamedComponent
-from horizons.constants import LAYERS, AI
+from horizons.constants import AI, LAYERS
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
 from horizons.util.worldobject import WorldObject
 
 
-class CombatManager(object):
+class CombatManager:
 	"""
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior
@@ -49,7 +49,7 @@ class CombatManager(object):
 	combat_range = 18
 
 	def __init__(self, owner):
-		super(CombatManager, self).__init__()
+		super().__init__()	# TODO: check if this call is needed
 		self.__init(owner)
 
 	def __init(self, owner):
@@ -66,7 +66,7 @@ class CombatManager(object):
 		"""
 		Range used when wanting to get close to ships.
 		"""
-		return (2*ship._max_range + ship._min_range)/3 + 1
+		return (2 * ship._max_range + ship._min_range) / 3 + 1
 
 	@classmethod
 	def fallback_range(cls, ship):
@@ -76,7 +76,7 @@ class CombatManager(object):
 		return cls.combat_range - 1
 
 	def save(self, db):
-		for ship, state in self.ships.iteritems():
+		for ship, state in self.ships.items():
 			db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)", self.owner.worldid, ship.worldid, state.index)
 
 	def set_ship_state(self, ship, state):
@@ -173,8 +173,8 @@ class CombatManager(object):
 
 	def _highlight_circle(self, position, radius, color):
 		points = set(self.session.world.get_points_in_radius(position, radius))
-		points2 = set(self.session.world.get_points_in_radius(position, radius-1))
-		self._highlight_points(list(points-points2), color)
+		points2 = set(self.session.world.get_points_in_radius(position, radius - 1))
+		self._highlight_points(list(points - points2), color)
 
 	def display(self):
 		"""
@@ -192,7 +192,7 @@ class CombatManager(object):
 		self._clear_fake_tiles()
 		self._init_fake_tile()
 
-		for ship, state in self.ships.iteritems():
+		for ship, state in self.ships.items():
 			range = self.combat_range
 			self._highlight_circle(ship.position, range, combat_range_color)
 			self._highlight_circle(ship.position, self.close_range(ship), close_range_color)
@@ -336,7 +336,7 @@ class CombatManager(object):
 		# Log ship states every tick
 		if self.log.isEnabledFor(logging.DEBUG):
 			self.log.debug("Player:%s Ships combat states:", self.owner.name)
-			for ship, state in self.ships.iteritems():
+			for ship, state in self.ships.items():
 				self.log.debug(" %s: %s", ship.get_component(NamedComponent).name, state)
 
 	def tick(self):
@@ -354,7 +354,7 @@ class PirateCombatManager(CombatManager):
 	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')
 
 	def __init__(self, owner):
-		super(PirateCombatManager, self).__init__(owner)
+		super().__init__(owner)
 
 	def handle_mission_combat(self, mission):
 		"""

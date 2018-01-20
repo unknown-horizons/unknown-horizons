@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,14 +20,14 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
-from mission.specialdomestictrade import SpecialDomesticTrade
-from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
 
-class SpecialDomesticTradeManager(object):
+from .mission.specialdomestictrade import SpecialDomesticTrade
+
+
+class SpecialDomesticTradeManager:
 	"""
 	An object of this class manages the special domestic trade routes of one AI player.
 
@@ -42,7 +42,7 @@ class SpecialDomesticTradeManager(object):
 	log = logging.getLogger("ai.aiplayer.specialdomestictrade")
 
 	def __init__(self, owner):
-		super(SpecialDomesticTradeManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -66,7 +66,7 @@ class SpecialDomesticTradeManager(object):
 		"""
 
 		ship = None
-		for possible_ship, state in self.owner.ships.iteritems():
+		for possible_ship, state in self.owner.ships.items():
 			if state is self.owner.shipStates.idle:
 				ship = possible_ship
 				break
@@ -86,7 +86,7 @@ class SpecialDomesticTradeManager(object):
 				destination_resource_manager = destination_settlement_manager.resource_manager
 				destination_inventory = destination_settlement_manager.settlement.get_component(StorageComponent).inventory
 
-				for resource_id, limit in destination_resource_manager.resource_requirements.iteritems():
+				for resource_id, limit in destination_resource_manager.resource_requirements.items():
 					if destination_inventory[resource_id] >= limit:
 						continue # the destination settlement doesn't need the resource
 					if source_inventory[resource_id] <= source_resource_manager.resource_requirements[resource_id]:
@@ -102,7 +102,7 @@ class SpecialDomesticTradeManager(object):
 			return
 
 		final_options = []
-		for (source_settlement_manager, destination_settlement_manager), option in sorted(options.iteritems()):
+		for (source_settlement_manager, destination_settlement_manager), option in sorted(options.items()):
 			total_amount = 0
 			total_value = 0
 			for _, amount, price, resource_id in option:
@@ -118,6 +118,4 @@ class SpecialDomesticTradeManager(object):
 		self._add_route()
 
 	def __str__(self):
-		return '%s.SpecialDomesticTradeManager' % self.owner
-
-decorators.bind_all(SpecialDomesticTradeManager)
+		return '{}.SpecialDomesticTradeManager'.format(self.owner)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import functools
 import signal
 
-from nose.plugins import Plugin
-from nose.util import ln
+from pytest import skip
 
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
@@ -33,7 +33,7 @@ except ImportError:
 	SUPPORTED = False
 
 
-class Timer(object):
+class Timer:
 	"""
 	Example
 
@@ -77,41 +77,15 @@ class Timer(object):
 		signal.alarm(0)
 
 
-class ReRunInfoPlugin(Plugin):
-	"""Print information on how to rerun a test after each failed test.
-
-	Code to add additional output taken from the Collect plugin.
+def mark_flaky(func):
 	"""
-	name = 'reruninfo'
-	enabled = True
-
-	def configure(self, options, conf):
-		pass
-
-	def formatError(self, test, err):
-		import nose.case
-		if not isinstance(test, nose.case.Test):
-			return err
-
-		_, module, call = test.address()
-
-		output = ['python2', 'run_tests.py', u'%s:%s' % (module, call)]
-
-		# add necessary flags
-		if 'tests.gui' in module:
-			output.append('-a gui')
-		elif 'tests.game.long' in module:
-			output.append('-a long')
-
-		output = u' '.join(output)
-
-		ec, ev, tb = err
-		return (ec, self.addOutputToErr(ev, output), tb)
-
-	def formatFailure(self, test, err):
-		return self.formatError(test, err)
-
-	def addOutputToErr(self, ev, output):
-		if isinstance(ev, Exception):
-			ev = unicode(ev)
-		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
+	Ignore test failures marked with this decorator. We have some tests that sometimes fail
+	unfortunately.
+	"""
+	@functools.wraps(func)
+	def wrapped(*args, **kwargs):
+		try:
+			func(*args, **kwargs)
+		except Exception:
+			skip()
+	return wrapped

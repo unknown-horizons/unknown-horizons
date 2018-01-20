@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,10 +23,10 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.constants import BUILDINGS, RES
-from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES
 from horizons.entities import Entities
+
 
 class AbstractClayPit(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
@@ -45,6 +45,7 @@ class AbstractClayPit(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.CLAY_PIT] = cls
 
+
 class ClayPitEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -57,7 +58,5 @@ class ClayPitEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.CLAY_PIT
 
-AbstractClayPit.register_buildings()
 
-decorators.bind_all(AbstractClayPit)
-decorators.bind_all(ClayPitEvaluator)
+AbstractClayPit.register_buildings()

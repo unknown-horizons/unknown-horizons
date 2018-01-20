@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import GOAL_RESULT
-from horizons.util.python import decorators
+from horizons.ai.aiplayer.goal import Goal
+
 
 class DoNothingGoal(Goal):
 	"""This goal makes the AI not do anything during a tick."""
@@ -35,7 +35,7 @@ class DoNothingGoal(Goal):
 
 	@property
 	def active(self):
-		return super(DoNothingGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def update(self):
 		""" whether to do nothing and if so then how important it is """
@@ -51,5 +51,3 @@ class DoNothingGoal(Goal):
 	def execute(self):
 		# do nothing
 		return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
-
-decorators.bind_all(DoNothingGoal)

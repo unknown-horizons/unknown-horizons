@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,13 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
 from collections import defaultdict
+from typing import Callable, DefaultDict, List
 
-from horizons.util.python.singleton import Singleton
-from horizons.messaging.messagebus import MessageBus
 
-class SimpleMessageBus(object):
+class SimpleMessageBus:
 	"""Manages registration and calling of callbacks when events (strings) occur.
 
 	Example:
@@ -38,13 +36,13 @@ class SimpleMessageBus(object):
 
 	def __init__(self, message_types):
 		self._message_types = message_types
-		self._callbacks = defaultdict(list)
+		self._callbacks = defaultdict(list) # type: DefaultDict[str, List[Callable]]
 
 	def subscribe(self, type, callback):
 		if type not in self._message_types:
 			raise TypeError("Unsupported type")
 		if callback in self._callbacks[type]:
-			raise Exception("Callback %s already subscribed to %s" % (callback, type))
+			raise Exception("Callback {} already subscribed to {}".format(callback, type))
 
 		self._callbacks[type].append(callback)
 
@@ -61,3 +59,6 @@ class SimpleMessageBus(object):
 
 		for cb in self._callbacks[type]:
 			cb(*args, **kwargs)
+
+	def is_message_type_known(self, type):
+		return type in self._message_types

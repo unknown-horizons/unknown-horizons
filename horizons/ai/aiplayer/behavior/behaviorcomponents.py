@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,11 +25,10 @@ from collections import defaultdict
 from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
-from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import BUILDINGS
@@ -39,7 +38,7 @@ from horizons.util.shapes import Circle
 from horizons.world.units.unitexeptions import MoveNotPossible
 
 
-class BehaviorComponent(object):
+class BehaviorComponent:
 	"""
 	This is an abstract BehaviorComponent - a building block for AI Behavior.
 	"""
@@ -88,7 +87,7 @@ class BehaviorDoNothing(BehaviorComponent):
 	"""
 
 	def __init__(self, owner):
-		super(BehaviorDoNothing, self).__init__(owner)
+		super().__init__(owner)
 
 	def no_one_in_sight(self, **environment):
 		pass
@@ -106,7 +105,7 @@ class BehaviorPirateRoutine(BehaviorComponent):
 	pirate_home_radius = 2
 
 	def __init__(self, owner):
-		super(BehaviorPirateRoutine, self).__init__(owner)
+		super().__init__(owner)
 
 	def no_one_in_sight(self, **environment):
 		"""
@@ -217,7 +216,7 @@ class BehaviorRegular(BehaviorComponent):
 	power_balance_threshold = 1.0
 
 	def __init__(self, owner):
-		super(BehaviorRegular, self).__init__(owner)
+		super().__init__(owner)
 		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['player_shares_island'] = self._certainty_player_shares_island
@@ -351,7 +350,7 @@ class BehaviorAggressive(BehaviorComponent):
 	power_balance_threshold = 0.8 # allow to attack targets that are slightly stronger
 
 	def __init__(self, owner):
-		super(BehaviorAggressive, self).__init__(owner)
+		super().__init__(owner)
 		self._certainty['neutral_player'] = self._certainty_neutral_player
 		self._certainty['fighting_ships_in_sight'] = self._certainty_fighting_ships_in_sight
 
@@ -417,7 +416,7 @@ class BehaviorAggressive(BehaviorComponent):
 class BehaviorCautious(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorCautious, self).__init__(owner)
+		super().__init__(owner)
 
 	def neutral_player(self, **environment):
 		"""
@@ -489,7 +488,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 		Calculate total relationship_score based on balances and their weights.
 		Count only balances that have weight defined (this way "default" weight is 0)
 		"""
-		return sum((getattr(balance, key) * value for key, value in weights.iteritems()))
+		return sum((getattr(balance, key) * value for key, value in weights.items()))
 
 	@classmethod
 	def _move_f(cls, f, v_x, v_y):
@@ -577,7 +576,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 			if item[1] + counter >= random_value:
 				return item[0]
 			else:
-				counter+= item[1]
+				counter += item[1]
 
 	def _get_action(self, relationship_score, **parameters):
 		possible_actions = []
@@ -636,7 +635,7 @@ class BehaviorEvil(BehaviorDiplomatic):
 	"""
 
 	def __init__(self, owner):
-		super(BehaviorEvil, self).__init__(owner)
+		super().__init__(owner)
 		self._certainty['hostile_player'] = self._certainty_has_fleet
 		self._certainty['neutral_player'] = self._certainty_has_boat_builder
 
@@ -685,7 +684,7 @@ class BehaviorNeutral(BehaviorDiplomatic):
 class BehaviorDebug(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorDebug, self).__init__(owner)
+		super().__init__(owner)
 
 	def debug(self, **environment):
 		"""
@@ -700,7 +699,7 @@ class BehaviorRegularPirate(BehaviorComponent):
 	power_balance_threshold = 1.0
 
 	def __init__(self, owner):
-		super(BehaviorRegularPirate, self).__init__(owner)
+		super().__init__(owner)
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['pirate_routine'] = self._certainty_pirate_routine
 
@@ -748,7 +747,7 @@ class BehaviorRegularPirate(BehaviorComponent):
 class BehaviorAggressivePirate(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorAggressivePirate, self).__init__(owner)
+		super().__init__(owner)
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 
 	def fighting_ships_in_sight(self, **environment):
@@ -768,13 +767,14 @@ class BehaviorAggressivePirate(BehaviorComponent):
 			ship.attack(target_ship)
 		BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 
+
 class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""
 	Temporary action for breaking diplomacy with other players.
 	"""
 
 	def __init__(self, owner):
-		super(BehaviorBreakDiplomacy, self).__init__(owner)
+		super().__init__(owner)
 
 	def fighting_ships_in_sight(self, **environment):
 		enemies = environment['enemies']
@@ -789,7 +789,7 @@ class BehaviorBreakDiplomacy(BehaviorComponent):
 class BehaviorCoward(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorCoward, self).__init__(owner)
+		super().__init__(owner)
 		# Certainty here is a hyperbolic function from power_balance
 		# (higher power_balance -> lesser chance of doing nothing)
 		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_inverse
@@ -816,7 +816,7 @@ def certainty_are_enemies(**environment):
 class BehaviorPirateHater(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorPirateHater, self).__init__(owner)
+		super().__init__(owner)
 		self._certainty['pirate_ships_in_sight'] = certainty_are_enemies
 
 	def pirate_ships_in_sight(self, **environment):

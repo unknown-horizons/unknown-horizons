@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
-
 import json
+import logging
 from itertools import groupby
+
+from fife import fife
+from fife.extensions.pychan.exceptions import InitializationError
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
-from horizons.util.python.callback import Callback
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
-from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.scenario.actions import show_message
+from horizons.util.python.callback import Callback
 
 
 class LogBook(PickBeltWidget, Window):
@@ -46,22 +49,22 @@ class LogBook(PickBeltWidget, Window):
 
 	widget_xml = 'captains_log.xml'
 	page_pos = (170, 38)
-	sections = (('logbook', _('Logbook')),
-	            ('statistics', _('Statistics')),
-	            ('chat_overview', _('Chat')))
+	sections = (('logbook', LazyT('Logbook')),
+	            ('statistics', LazyT('Statistics')),
+	            ('chat_overview', LazyT('Chat')))
 
 	def __init__(self, session, windows):
 		self.statistics_index = [i for i, sec in self.sections].index('statistics')
 		self.logbook_index = [i for i, sec in self.sections].index('logbook')
 		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
-		super(LogBook, self).__init__()
+		super().__init__()
 		self.session = session
 		self._windows = windows
 		self._parameters = [] # list of lists of all parameters added to a logbook page
 		self._message_log = [] # list of all messages that have been displayed
 		self._messages_to_display = [] # list messages to display on page close
 		self._displayed_messages = [] # list of messages that were already displayed
-		self._cur_entry = None # remember current location; 0 to len(messages)-1
+		self._cur_entry = 0 # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
 		self.last_stats_widget = 'players'
@@ -111,7 +114,7 @@ class LogBook(PickBeltWidget, Window):
 			self._hide_statswidgets()
 		if self.statistics_index == number:
 			self.show_statswidget(self.last_stats_widget)
-		super(LogBook, self).update_view(number)
+		super().update_view(number)
 
 	def save(self, db):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
@@ -178,16 +181,16 @@ class LogBook(PickBeltWidget, Window):
 		"""Redraws gui. Necessary when current message has changed."""
 		if self._parameters: # there is something to display if this has items
 			self._display_parameters_on_page(self._parameters[self._cur_entry], 'left')
-			if self._cur_entry+1 < len(self._parameters): # check for content on right page
-				self._display_parameters_on_page(self._parameters[self._cur_entry+1], 'right')
+			if self._cur_entry + 1 < len(self._parameters): # check for content on right page
+				self._display_parameters_on_page(self._parameters[self._cur_entry + 1], 'right')
 			else:
 				self._display_parameters_on_page([], 'right') # display empty page
 		else:
 			self._display_parameters_on_page([
-			  ['Headline', _("Emptiness")],
+			  ['Headline', T("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
-			  ['Label', u"\n\n"],
-			  ['Label', _('There is nothing written in your logbook yet!')],
+			  ['Label', "\n\n"],
+			  ['Label', T('There is nothing written in your logbook yet!')],
 				], 'left')
 		self.backward_button.set_active()
 		self.forward_button.set_active()
@@ -211,40 +214,40 @@ class LogBook(PickBeltWidget, Window):
 				# Pychan can only use str objects as file path.
 				# json.loads() however returns unicode.
 				return Icon(image=str(image))
-			except RuntimeError:
+			except fife.NotFound:
 				return None
 
 		def _label(text, font='default'):
 			try:
-				return Label(text=unicode(text), wrap_text=True,
-				             min_size=(335, 0), max_size=(335, 508),
+				return Label(text=str(text), wrap_text=True,
+				             min_size=(325, 0), max_size=(325, 1024),
 				             font=font)
-			except RuntimeError:
+			except InitializationError:
 				return None
 
 		if parameter and parameter[0]: # allow empty Labels
 			parameter_type = parameter[0]
-		if isinstance(parameter, basestring):
+		if isinstance(parameter, str):
 			add = _label(parameter)
-		elif parameter_type == u'Label':
+		elif parameter_type == 'Label':
 			add = _label(parameter[1])
-		elif parameter_type == u'Image':
+		elif parameter_type == 'Image':
 			add = _icon(parameter[1])
-		elif parameter_type == u'Gallery':
+		elif parameter_type == 'Gallery':
 			add = HBox()
 			for image in parameter[1]:
 				new_icon = _icon(image)
 				if new_icon is not None:
 					add.addChild(new_icon)
-		elif parameter_type == u'Headline':
+		elif parameter_type == 'Headline':
 			add = HBox()
-			is_not_last_headline = self._parameters and self._cur_entry < (len(self._parameters) - 2)
+			is_not_last_headline = self._parameters and self._cur_entry is not None and self._cur_entry < (len(self._parameters) - 2)
 			if is_not_last_headline:
 				add.addChild(_icon("content/gui/images/tabwidget/done.png"))
 			add.addChild(_label(parameter[1], font='headline'))
-		elif parameter_type == u'BoldLabel':
+		elif parameter_type == 'BoldLabel':
 			add = _label(parameter[1], font='default_bold')
-		elif parameter_type == u'Message':
+		elif parameter_type == 'Message':
 			add = None
 			# parameters are re-read on page reload.
 			# duplicate_message stops messages from
@@ -323,14 +326,14 @@ class LogBook(PickBeltWidget, Window):
 	def clear(self):
 		"""Remove all entries"""
 		self._parameters = []
-		self._cur_entry = None
+		self._cur_entry = 0
 
 	def get_cur_entry(self):
 		return self._cur_entry
 
 	def set_cur_entry(self, cur_entry):
-		if cur_entry < 0 or cur_entry >= len(self._parameters):
-			raise ValueError
+		if cur_entry < 0 or (cur_entry >= len(self._parameters) and len(self._parameters) != 0):
+			raise ValueError("ERROR: Logbook entry out of Logbook bounds. This should never happen.")
 		self._cur_entry = cur_entry
 		self._redraw_captainslog()
 
@@ -412,7 +415,6 @@ class LogBook(PickBeltWidget, Window):
 		self.stats_visible = None
 
 
-
 ########
 #        MESSAGE  AND  CHAT  HISTORY  SUBWIDGET
 ########
@@ -430,7 +432,7 @@ class LogBook(PickBeltWidget, Window):
 		msg = self.textfield.text
 		if msg:
 			Chat(msg).execute(self.session)
-			self.textfield.text = u''
+			self.textfield.text = ''
 		self._display_chat_history()
 
 	def display_message_history(self):
@@ -451,5 +453,5 @@ class LogBook(PickBeltWidget, Window):
 
 	def _chatfield_onfocus(self):
 		"""Removes text in chat input field when it gets focused."""
-		self.textfield.text = u''
+		self.textfield.text = ''
 		self.textfield.capture(None, 'mouseReleased', 'default')

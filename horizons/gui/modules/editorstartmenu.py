@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,16 +20,17 @@
 # ###################################################
 
 import horizons.main
-
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
 
+
 class EditorStartMenu(Window):
 	def __init__(self, windows):
-		super(EditorStartMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._gui = load_uh_widget('editor_start_menu.xml')
 		self._gui.position_technique = "center:center"
@@ -76,7 +77,7 @@ class EditorStartMenu(Window):
 		self._right_side.act()
 
 
-class EditorCreateMapWidget(object):
+class EditorCreateMapWidget:
 	sizes = [50, 100, 150, 200, 250]
 
 	def __init__(self, windows, parent_widget):
@@ -86,9 +87,9 @@ class EditorCreateMapWidget(object):
 		self._gui.findChild(name='size_150').marked = True
 
 		for size in self.sizes:
-			option_name = 'size_%d' % size
+			option_name = 'size_{:d}'.format(size)
 			# size of empty map in map editor
-			self._gui.findChild(name=option_name).text = _('{size}x{size} tiles').format(size=size)
+			self._gui.findChild(name=option_name).text = T('{size}x{size} tiles').format(size=size)
 
 	def show(self):
 		self._parent_widget.removeAllChildren()
@@ -96,7 +97,7 @@ class EditorCreateMapWidget(object):
 
 	def act(self):
 		for size in self.sizes:
-			option_name = 'size_%d' % size
+			option_name = 'size_{:d}'.format(size)
 			if self._gui.findChild(name=option_name).marked:
 				self._windows.close()
 
@@ -107,7 +108,7 @@ class EditorCreateMapWidget(object):
 				return
 
 
-class EditorSelectMapWidget(object):
+class EditorSelectMapWidget:
 	def __init__(self, windows, parent_widget):
 		self._windows = windows
 		self._parent_widget = parent_widget
@@ -130,7 +131,7 @@ class EditorSelectMapWidget(object):
 		horizons.main.edit_map(self._map_data[0][selected_map_index])
 
 
-class EditorSelectSavedGameWidget(object):
+class EditorSelectSavedGameWidget:
 	def __init__(self, windows, parent_widget):
 		self._windows = windows
 		self._parent_widget = parent_widget

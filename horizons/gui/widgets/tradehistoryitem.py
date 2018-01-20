@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,14 +21,15 @@
 
 from fife.extensions.pychan.widgets import Container
 
-from horizons.gui.util import load_uh_widget, get_res_icon_path
 from horizons.constants import RES
+from horizons.gui.util import get_res_icon_path, load_uh_widget
+
 
 class TradeHistoryItem(Container):
 	"""Widget that shows the last few trades that have taken place in the settlement."""
 
 	def __init__(self, player, resource_id, amount, gold, **kwargs):
-		super(TradeHistoryItem, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.widget = load_uh_widget('trade_history_item.xml')
 		self.addChild(self.widget)
 
@@ -36,7 +37,7 @@ class TradeHistoryItem(Container):
 		self.findChild(name='player_name').text = player.name
 
 		gold_amount_label = self.findChild(name='gold_amount')
-		gold_amount_label.text = u'{gold:+5d}'.format(gold=gold)
+		gold_amount_label.text = '{gold:+5d}'.format(gold=gold)
 
 		gold_icon = self.findChild(name='gold_icon')
 		gold_icon.image = get_res_icon_path(RES.GOLD)
@@ -44,7 +45,7 @@ class TradeHistoryItem(Container):
 		gold_icon.helptext = player.session.db.get_res_name(RES.GOLD)
 
 		resource_amount_label = self.findChild(name='resource_amount')
-		resource_amount_label.text = u'{amount:+5d}'.format(amount=amount)
+		resource_amount_label.text = '{amount:+5d}'.format(amount=amount)
 
 		resource_icon = self.findChild(name='resource_icon')
 		resource_icon.image = get_res_icon_path(resource_id)

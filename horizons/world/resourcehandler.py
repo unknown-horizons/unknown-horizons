@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,15 +21,15 @@
 
 from copy import copy
 
-from horizons.gui.tabs import ProductionOverviewTab, InventoryTab
-from horizons.constants import PRODUCTION
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import PRODUCTION
+from horizons.gui.tabs import InventoryTab, ProductionOverviewTab
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 
 
-class ResourceTransferHandler(object):
+class ResourceTransferHandler:
 	"""Objects that can transfer resources. ResourceHandler and units with storages"""
 	def transfer_to_storageholder(self, amount, res_id, transfer_to, signal_errors=False):
 		"""Transfers amount of res_id to transfer_to.
@@ -47,12 +47,13 @@ class ResourceTransferHandler(object):
 		# check if we were able to get the planned amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
-		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount - ret)
 		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
-		actually_transfered = amount-ret
+		actually_transfered = amount - ret
 		if signal_errors and actually_transfered == 0:
 			AmbientSoundComponent.play_special('error')
 		return actually_transfered
+
 
 class ResourceHandler(ResourceTransferHandler):
 	"""The ResourceHandler class acts as a basic class for describing objects
@@ -102,8 +103,8 @@ class ResourceHandler(ResourceTransferHandler):
 			productions = copy(prod_comp._productions)
 			if include_inactive:
 				productions.update(prod_comp._inactive_productions)
-			for production in productions.itervalues():
-				needed_res.update(production.get_consumed_resources().iterkeys())
+			for production in productions.values():
+				needed_res.update(production.get_consumed_resources().keys())
 		return list(needed_res)
 
 	def get_produced_resources(self):
@@ -111,8 +112,8 @@ class ResourceHandler(ResourceTransferHandler):
 		produced_resources = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			for production in prod_comp._productions.itervalues():
-				produced_resources.update(production.get_produced_resources().iterkeys())
+			for production in prod_comp._productions.values():
+				produced_resources.update(production.get_produced_resources().keys())
 		return list(produced_resources)
 
 	def get_stocked_provided_resources(self):
@@ -124,9 +125,9 @@ class ResourceHandler(ResourceTransferHandler):
 		consumed_res = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			for production in prod_comp._productions.itervalues():
+			for production in prod_comp._productions.values():
 				if production.get_state() == PRODUCTION.STATES.producing:
-					consumed_res.update(production.get_consumed_resources().iterkeys())
+					consumed_res.update(production.get_consumed_resources().keys())
 		return list(consumed_res)
 
 	def get_currently_not_consumed_resources(self):
@@ -177,7 +178,7 @@ class ResourceHandler(ResourceTransferHandler):
 	def get_available_pickup_amount(self, res, collector):
 		"""Returns how much of res a collector may pick up. It's the stored amount minus the amount
 		that other collectors are getting"""
-		if not res in self.provided_resources:
+		if res not in self.provided_resources:
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
 			amount_from_collectors = sum((entry.amount
@@ -205,6 +206,7 @@ class ResourceHandler(ResourceTransferHandler):
 			produced_resources.add(res)
 
 		return produced_resources
+
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as warehouses.

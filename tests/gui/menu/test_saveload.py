@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,10 @@
 
 import os
 import shutil
-
-import mock
+from unittest import mock
 
 from horizons.savegamemanager import SavegameManager
-from tests.gui import gui_test, TEST_FIXTURES_DIR
+from tests.gui import TEST_FIXTURES_DIR, gui_test
 
 
 def _copy_savegame(filename='boatbuilder'):
@@ -42,10 +41,10 @@ def test_load_game(gui):
 	_copy_savegame()
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		with mock.patch('horizons.main.start_singleplayer') as start_mock:
-			gui.trigger('load_game_window', 'okButton')
+			gui.trigger('load_game_window/okButton')
 
 			# we need to run the game for a bit, because start_singleplayer isn't
 			# called right away, probably because load/save is a dialog
@@ -55,17 +54,17 @@ def test_load_game(gui):
 			assert options.game_identifier == SavegameManager.create_filename('boatbuilder')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'load_button')
+		gui.trigger('menu/load_button')
 
 
 @gui_test(timeout=60)
 def test_load_game_no_savegames(gui):
 	"""Trying to load a game with no save games available will show a popup."""
 	def func1():
-		gui.trigger('popup_window', 'okButton')
+		gui.trigger('popup_window/okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'load_button')
+		gui.trigger('menu/load_button')
 
 
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
@@ -74,14 +73,14 @@ def test_save_game_new_file(gui):
 
 	# FIXME escape doesn't work
 	#gui.press_key(gui.Key.ESCAPE)
-	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('mainhud/gameMenuButton')
 
 	def func1():
 		gui.find('savegamefile').write('testsave')
-		gui.trigger('load_game_window', 'okButton')
+		gui.trigger('load_game_window/okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'savegameButton')
+		gui.trigger('menu/button_images/savegameButton')
 
 	assert os.path.exists(SavegameManager.create_filename('testsave'))
 
@@ -95,20 +94,20 @@ def test_save_game_override(gui):
 
 	# FIXME escape doesn't work
 	#gui.press_key(gui.Key.ESCAPE)
-	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('mainhud/gameMenuButton')
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		# handle "do you want to override file" popup
 		def func2():
-			gui.trigger('popup_window', 'okButton')
+			gui.trigger('popup_window/okButton')
 
 		with gui.handler(func2):
-			gui.trigger('load_game_window', 'okButton')
+			gui.trigger('load_game_window/okButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'savegameButton')
+		gui.trigger('menu/button_images/savegameButton')
 
 	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
 	new_size = os.path.getsize(SavegameManager.create_filename('boatbuilder'))
@@ -126,19 +125,19 @@ def test_delete_game(gui):
 
 	def confirm_deletion():
 		def close_dialog():
-			gui.trigger('load_game_window', 'cancelButton')
+			gui.trigger('load_game_window/cancelButton')
 
 		with gui.handler(close_dialog):
-			gui.trigger('popup_window', 'okButton')
+			gui.trigger('popup_window/okButton')
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		with gui.handler(confirm_deletion):
-			gui.trigger('load_game_window', 'deleteButton')
+			gui.trigger('load_game_window/deleteButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'load_button')
+		gui.trigger('menu/load_button')
 
 	assert not os.path.exists(SavegameManager.create_filename('boatbuilder'))
 	assert os.path.exists(SavegameManager.create_filename('ai_settlement'))
@@ -153,18 +152,18 @@ def test_delete_game_abort(gui):
 
 	def confirm_deletion():
 		def close_dialog():
-			gui.trigger('load_game_window', 'cancelButton')
+			gui.trigger('load_game_window/cancelButton')
 
 		with gui.handler(close_dialog):
-			gui.trigger('popup_window', 'cancelButton')
+			gui.trigger('popup_window/cancelButton')
 
 	def func1():
-		gui.find('savegamelist').select(u'boatbuilder')
+		gui.find('savegamelist').select('boatbuilder')
 
 		with gui.handler(confirm_deletion):
-			gui.trigger('load_game_window', 'deleteButton')
+			gui.trigger('load_game_window/deleteButton')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'load_button')
+		gui.trigger('menu/load_button')
 
 	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,9 +22,9 @@
 import logging
 
 from horizons.ai.generic import GenericAI
-from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.command.unit import CreateUnit
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.constants import BUILDINGS, TRADER, UNITS
 from horizons.ext.enum import Enum
 from horizons.messaging import NewSettlement
 from horizons.scheduler import Scheduler
@@ -50,7 +50,7 @@ class Trader(GenericAI):
 	regular_player = False
 
 	def __init__(self, session, id, name, color, **kwargs):
-		super(Trader, self).__init__(session, id, name, color, **kwargs)
+		super().__init__(session, id, name, color, **kwargs)
 		self.__init()
 		map_size = self.session.world.map_dimensions.width
 		while map_size > 0:
@@ -77,7 +77,7 @@ class Trader(GenericAI):
 			self.create_ship()
 
 	def save(self, db):
-		super(Trader, self).save(db)
+		super().save(db)
 
 		# mark self as a trader
 		db("UPDATE player SET is_trader = 1 WHERE rowid = ?", self.worldid)
@@ -95,8 +95,9 @@ class Trader(GenericAI):
 			if current_callback is not None:
 				# current state has a callback
 				calls = Scheduler().get_classinst_calls(self, current_callback)
-				assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
-				remaining_ticks = max(calls.values()[0], 1)
+				assert len(calls) == 1, "got {} calls for saving {}: {}".format(
+					len(calls), current_callback, calls)
+				remaining_ticks = max(list(calls.values())[0], 1)
 
 			targeted_warehouse = None if ship.worldid not in self.warehouse else self.warehouse[ship.worldid].worldid
 
@@ -105,7 +106,7 @@ class Trader(GenericAI):
 			   VALUES(?, ?, ?, ?)", ship.worldid, ship_state.index, remaining_ticks, targeted_warehouse)
 
 	def _load(self, db, worldid):
-		super(Trader, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.__init()
 
 	def load_ship_states(self, db):
@@ -136,7 +137,7 @@ class Trader(GenericAI):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		super(Trader, self).send_ship_random(ship)
+		super().send_ship_random(ship)
 		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship),
 		                              callback=Callback(self._ship_found_signal_fire, ship))
 
@@ -179,7 +180,7 @@ class Trader(GenericAI):
 		#TODO maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		warehouses = self.session.world.get_warehouses()
 		# Remove all warehouses that are not safe to visit
-		warehouses = filter(self.is_warehouse_safe, warehouses)
+		warehouses = list(filter(self.is_warehouse_safe, warehouses))
 		if not warehouses: # there aren't any warehouses, move randomly
 			self.send_ship_random(ship)
 		else: # select a warehouse
@@ -205,11 +206,11 @@ class Trader(GenericAI):
 		settlement = self.warehouse[ship.worldid].settlement
 		# NOTE: must be sorted for mp games (same order everywhere)
 		trade_comp = settlement.get_component(TradePostComponent)
-		for res in sorted(trade_comp.buy_list.iterkeys()): # check for resources that the settlement wants to buy
+		for res in sorted(trade_comp.buy_list.keys()): # check for resources that the settlement wants to buy
 			# select a random amount to sell
 			amount = self.session.random.randint(TRADER.SELL_AMOUNT_MIN, TRADER.SELL_AMOUNT_MAX)
 			# try to sell all, else try smaller pieces
-			for try_amount in xrange(amount, 0, -1):
+			for try_amount in range(amount, 0, -1):
 				price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * try_amount)
 				trade_successful = trade_comp.buy(res, try_amount, price, self.worldid)
 				self.log.debug("Trader %s: offered sell %s tons of res %s, success: %s", self.worldid, try_amount, res, trade_successful)
@@ -217,11 +218,11 @@ class Trader(GenericAI):
 					break
 
 		# NOTE: must be sorted for mp games (same order everywhere)
-		for res in sorted(trade_comp.sell_list.iterkeys()):
+		for res in sorted(trade_comp.sell_list.keys()):
 			# select a random amount to buy from the settlement
 			amount = self.session.random.randint(TRADER.BUY_AMOUNT_MIN, TRADER.BUY_AMOUNT_MAX)
 			# try to buy all, else try smaller pieces
-			for try_amount in xrange(amount, 0, -1):
+			for try_amount in range(amount, 0, -1):
 				price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * try_amount)
 				trade_successful = trade_comp.sell(res, try_amount, price, self.worldid)
 				self.log.debug("Trader %s: offered buy %s tons of res %s, success: %s", self.worldid, try_amount, res, trade_successful)
@@ -247,5 +248,5 @@ class Trader(GenericAI):
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)
 
 	def end(self):
-		super(Trader, self).end()
+		super().end()
 		NewSettlement.unsubscribe(self._on_new_settlement)

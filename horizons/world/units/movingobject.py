@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,20 +20,24 @@
 # ###################################################
 
 import logging
+from typing import TYPE_CHECKING, Type
+
 from fife import fife
 
-from horizons.scheduler import Scheduler
-
-from horizons.engine import Fife
-from horizons.util.shapes import Point
-from horizons.util.pathfinding import PathBlockedError
-from horizons.util.python import decorators
-from horizons.util.python.weakmethodlist import WeakMethodList
-from horizons.world.concreteobject import ConcreteObject
-from horizons.constants import GAME_SPEED
 from horizons.component.componentholder import ComponentHolder
+from horizons.constants import GAME_SPEED
+from horizons.engine import Fife
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding import PathBlockedError
+from horizons.util.python.weakmethodlist import WeakMethodList
+from horizons.util.shapes import Point
+from horizons.world.concreteobject import ConcreteObject
 from horizons.world.units import UnitClass
 from horizons.world.units.unitexeptions import MoveNotPossible
+
+if TYPE_CHECKING:
+	from horizons.util.pathfinding.pather import AbstractPather
+
 
 class MovingObject(ComponentHolder, ConcreteObject):
 	"""This class provides moving functionality and is to be inherited by Unit.
@@ -58,10 +62,11 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 	log = logging.getLogger("world.units")
 
-	pather_class = None # overwrite this with a descendant of AbstractPather
+	# overwrite this with a descendant of AbstractPather
+	pather_class = None # type: Type[AbstractPather]
 
 	def __init__(self, x, y, **kwargs):
-		super(MovingObject, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		self.__init(x, y)
 
 	def __init(self, x, y):
@@ -154,7 +159,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self.__is_moving = False
 		self.move_callbacks.execute()
 
-	@decorators.make_constants()
 	def _move_tick(self, resume=False):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
@@ -218,9 +222,9 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# TODO/HACK the *5 provides slightly less flickery behavior of the moving
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
-		location_list = fife.LocationList([self._fife_location2]*5)
+		location_list = fife.LocationList([self._fife_location2] * 5)
 		# It exists for FIFE 0.3.4 compat. See #1993.
-		if Fife.getVersion() == (0,3,4):
+		if Fife.getVersion() == (0, 3, 4):
 			location_list.thisown = 0
 			self._route.thisown = 0
 		self._route.setPath(location_list)
@@ -235,7 +239,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
 		# check if a conditional callback becomes true
-		for cond in self._conditional_callbacks.keys(): # iterate of copy of keys to be able to delete
+		for cond in list(self._conditional_callbacks.keys()): # iterate of copy of keys to be able to delete
 			if cond():
 				# start callback when this function is done
 				Scheduler().add_new_object(self._conditional_callbacks[cond], self)
@@ -281,12 +285,12 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		return self.path.get_move_target()
 
 	def save(self, db):
-		super(MovingObject, self).save(db)
+		super().save(db)
 		# NOTE: _move_action is currently not yet saved and neither is blocked_callback.
 		self.path.save(db, self.worldid)
 
 	def load(self, db, worldid):
-		super(MovingObject, self).load(db, worldid)
+		super().load(db, worldid)
 		x, y = db("SELECT x, y FROM unit WHERE rowid = ?", worldid)[0]
 		self.__init(x, y)
 		path_loaded = self.path.load(db, worldid)
@@ -294,5 +298,3 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			self.__is_moving = True
 			self._setup_move()
 			Scheduler().add_new_object(self._move_tick, self, run_in=0)
-
-decorators.bind_all(MovingObject)

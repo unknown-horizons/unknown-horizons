@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +21,7 @@
 
 from collections import defaultdict
 
+
 class ProviderHandler(list):
 	"""Class to keep track of providers of an area, especially an island.
 	It acts as a data structure for quick retrieval of special properties, that only resource
@@ -30,20 +30,16 @@ class ProviderHandler(list):
 	Precondition: Provider never change their provided resources."""
 
 	def __init__(self):
-		super(ProviderHandler, self).__init__()
+		super().__init__()
 		self.provider_by_resources = defaultdict(list)
 
 	def append(self, provider):
 		# NOTE: appended elements need to be removed, else there will be a memory leak
 		for res in provider.provided_resources:
 			self.provider_by_resources[res].append(provider)
-		super(ProviderHandler, self).append(provider)
+		super().append(provider)
 
 	def remove(self, provider):
 		for res in provider.provided_resources:
 			self.provider_by_resources[res].remove(provider)
-		super(ProviderHandler, self).remove(provider)
-
-
-
-
+		super().remove(provider)

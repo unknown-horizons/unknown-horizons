@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, 'Építs raktárat a tengerpartra, ezáltal a település elérhetővé válik a kereskedőhajók számára.']
   - '
 
 
@@ -24,363 +24,365 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - Ez a Te naplód, amelyben minden fontos információt megtalálsz a küldetésről. Az új feladatok összegzése megtalálható a képernyő bal szélén található 'értesítés gomb' alatt. Mutass az egérrel ezekre az értesítésekre az összegzés elolvasásához, vagy klikkelj a napló megnyitásához.
+  - Bármikor újra megnyithatod a naplót a minitérkép alatti gombra klikkelve a képernyő jobb felső részén. Innentől kezdve erre a részre, amely tartalmazza a minitérképet, a különböző gombokat és füleket, 'Áttekintés'-ként fogunk hivatkozni.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Az első feladatod megtekintéséhez a naplóban lapozz a következő oldalra a lap alján található gombra kattintva - így néz ki:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Ha bármilyen javaslatod van, miként lehetne javítani ezt az oktató játékot, vagy bármilyen hibába futottál, kérünk, jelezd felénk.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Látogasd meg a www.unknown-horizons.org oldalt, hogy kapcsolatba lépj a csapattal.'
   - ''
-  - And now, let's start the game!
+  - És most kezdődjön a játék!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'ÚJ FELADAT: ÉPÍTS TELEPÜLÉST']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - A hajód a tengeren várakozik, megtöltve az új település megalapításához szükséges rakománnyal.
+  - A hajó mozgatásához válaszd ki bal egérgombbal, majd jobb egérgombbal klikkelj a célterületre.
+  - Amint egy part közelébe érsz, a 'Település alapítása' gomb aktívvá válik az áttekintésben.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Erre a gombra klikkelve a raktár előnézetét láthatod, ez az első épület, amely a település alapításához szükséges. A kurzor mozgatásával láthatod, hogy az előnézet piros színre vált, ha az adott terület alkalmatlan az építkezésre.
+  - A raktárat a tengerparton kell elhelyezni, így a hajók dokkolni tudnak. Keress egy megfelelő helyet, majd klikkelj a bal egérgombbal ennek a fontos épületnek az elhelyezéséhez.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Feladat: Építs egy raktárat a tengerpartra.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Építs egy favágó sátrat és kösd össze a raktárral.]
+  - [Headline, 'ÚJ FELADAT: ÉPÍTS EGY FAVÁGÓ SÁTRAT']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Az árukat és építési anyagokat kirakodták a hajódról és biztonságba helyezték az új raktáradban. Itt az ideje néhány alapvető épület felhúzásához, kezdve a favágó sátorral.
+  - A favágók a sátraik közelében található erdőben kivágják a fákat és abból deszkát állítanak elő, amelyet építésre vagy kereskedésre lehet felhasználni.
+  - Favágó sátor építéséhez nyisd meg az építési menüt a minitérkép alatt található gombra klikkelve vagy a 'B' billentyű lenyomásával.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Az építési menü szintek szerint tagolt, és mivel a Te esetedben egy új településról van szó, jelenleg csak az első szint épületei érhetők el; ahogy a civilizációd fejlődik, lehetőséged lesz számos magasabb szintű épület megépítéséhez is.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Keress egy fákkal sűrűn borított területet a favágónak, majd az épületek listájából válaszd a 'Favágó sátor' lehetőséget és helyezd el a terület mellé.
+  - A későbbiekben létrehozhatsz új erdőt fák ültetésével, de mivel az pénzbe kerül, jelenleg a természet adta lehetőségeket kell kiaknáznod!
+  - Minden nyersanyag-begyűjtő vagy termelő épületnek összeköttetésben kell lennie egy raktárral vagy más tároló épülettel, különben a megtermelt áruk nem kerülnek begyűjtésre.
+  - Miután a favágó sátor a helyére került, össze kell kötnöd a raktárraddal, ehhez az építési menüből válaszd az 'Út' lehetőséget. Ehhez klikkelj az egérrel és húzd meg az utat a favágó sátor és a raktár között.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
+  - [BoldLabel, 'FELADAT: Építs favágó sátrat egy fás területre, majd úttal kapcsold a raktárépülethez.']
+  - Miután az épületek összeköttetésben állnak, látni fogod, hogy árubegyűjtő érkezik az újonnan elkészített deszkák elszállításához, amelyet a raktárba visz, ezáltal felhasználható építéshez vagy kereskedéshez.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Építs egy Vadászt és egy Halászt. Csatlakoztasd őket a raktárba.]
+  - [Message, Építs egy vadász és egy halász sátrat. Kösd össze ezeket a raktárral.]
   - [Headline, 'ÚJ FELADAT: ÉLELMISZER ELLÁTÁS']
   - [Image, content/gui/images/background/hr.png]
-  - Szükséged lesz pár élelmet termelő vállalkozásra, mert az emberek általában (speciel most a hajósok) nagyon éhesek.
-  - Available companies in the first tier are the Hunter and Fisher.
-  - A Vadász vadakat vadászik az erdőben, tehát fákra van szüksége a közelben.
-  - Tehát a Vadászt helyezd közel a favágó erdejéhez.
-  - Megtörténhet, hogy az állatok nem szaporodnak elég gyorsan, vagy szimplán elrejtőznek.
-  - 'Végeredményben: a vadász nem a legjobb a folyamatos élelmiszer ellátás biztosításához.'
+  - Szükséged lesz pár élelmiszert termelő vállalkozásra, mivel az emberek általában (a mi helyzetünkben a tengerészek) nagyon éhesek.
+  - Az első szinten elérhető ilyen vállalkozások a Vadász sátor és a Halász sátor.
+  - A vadász vadakra vadászik az erdőben, fákra van szüksége a közelben.
+  - Érdemes megjegyezni, hogy a vadász sátrat elhelyezhezed a favágó sátor közelében is.
+  - Előfordulhat, hogy az állatok nem szaporodnak elég gyorsan, vagy szimplán elrejtőznek.
+  - 'Következtetés: a vadász sátor nem túl megbízható a folyamatos élelmiszer ellátás biztosításához.'
   - [Pagebreak]
   - '
 
-    A Halásznak egy parton épített épületre van szüksége, mint a raktárház, és egy hal lelőhelyre a közelben.'
-  - Egy kis evezős csónakot épít és némi halat fog ki.
-  - A folyamatos ellátás miatt egy egység élelmiszernek kicsit hosszabb a gyártási ideje.
-  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
+    Mint a raktár épületének, a halásznak is egy tengerparti épületre van szüksége, továbbá egy hal lelőhelyre a közelben.'
+  - Egy kis evezős csónakot épít és kifog néhány halat.
+  - A folyamatos ellátás miatt egy egység élelmiszernek az előállítási ideje valamennyivel tovább tart.
+  - Egy kis településben, mint amilyen a Tiéd is, mind a két lehetőséget használhatod és a későbbiekben eldöntheted, melyik éri meg jobban.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Ne felejtsd el úttal összekötni őket a raktárépületekkel!
+  - [BoldLabel, 'Feladat: Építs egy vadász és egy halász sátrat.']
+  - Ne felejtsd el úttal összekötni azokat a raktárépületekkel!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, 'Építs egy főteret. Válassz egy olyan helyet, ahol a környéken kevés a gazdasági épület.']
+  - [Message, 'Építs egy főteret. Válassz olyan helyet, ahol a környéken kevés a gazdasági épület.']
   - [Headline, 'ÚJ FELADAT: FŐTÉR']
   - [Image, content/gui/images/background/hr.png]
-  - A lakosoknak egy főtérre van szükségük, ahonnan termékeket tudnak hazavinni.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - Az összes termék a raktárházadból elérhetővé válik ezzel a 'piactérrel', tehát a lakosoknak nem kell elsétálniuk a halászhoz vagy a raktárházakhoz.
+  - A lakosoknak főtérre van szükségük, ahol beszerezhetik a szükséges termékeket.
+  - Ez annyit jelent, hogy össze kell kötni az otthonaikat és a főteret egy úttal. A főtér útként is viselkedik, így a szomszédos sátraknak nincs szükségük külön útra.
+  - A raktáradban található összes termék a elérhető 'piactéren', tehát a lakosoknak nem kell elsétálniuk a halász sátorhoz vagy a raktárhoz.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Figyelj arra, hogy ne építsd fel a gyarmatod lakóépületeit túl közel a favágókhoz, mert a lakóépületek miatt a fák eltűnnek, amelyből a favágónak kellene a deszkákat készítenie.
-  - A vállalkozásoknak nem szükséges az összeköttetés a lakó épületekkel, tehát nem kell utat építened a főtér és például a favágó közé.
+  - Figyelj arra, hogy ne építsd a településed lakóépületeit túl közel a favágókhoz, mivel a lakóépületek miatt a fák eltűnnek, amelyből a favágónak kellene deszkákat készítenie.
+  - A vállalkozásoknak nincs szüksége összeköttetésre a lakóépületekkel, tehát nem kell például utat építened a főtér és a favágó sátor közé.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Feladat: Építs egy főteret.']
   - [Pagebreak]
   - '
 
-    Most nézz szét jobban a főterednél.'
+    Most vess egy közelebbi pillantást a főteredre.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - A 'Fiók' fülön láthatod az egyensúlyi kimutatást a szigetednek, megmutatva az összes árat, amelyet fizetsz, és az adókat amelyeket kapsz.
-  - A tételek "Eladás" és a "Vétel" kifejezés a kereskedési egyensúlyt alkotják, ezt elmagyarázzuk a későbbiekben.
-  - Hogyha pozitív az egyensúly, minden egy az egyben profitot termel.
+  - A 'Kimutatás' fülön láthatod a szigeted egyenlegéd, megmutatva az összes költséget, amit kifizetsz, és az adókat, amiket beszedsz.
+  - Az "Eladás" és a "Vásárlás" kifejezések a kereskedési egyenleget alkotják, erről a későbbiekben lesz szó.
+  - Ha az egyenleged pozitív, egy az egyben profitot termelsz.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - A különböző szintek áttekintő fülein statisztikát láthatsz a lakosaidról. Itt beállíthatod a szintekre vonatkozó globális adót, és engedélyezheted vagy tilthatod egy adott szinten lévő lakosaidatnak, hogy fejlesszenek a következő szintre.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
-  - [Headline, 'ÚJ FELADAT: LAKÓ ÉPÜLETEK']
+  - [Message, 'Építs egy sátrat, és csatlakoztasd a főtérhez, ha szükséges.']
+  - [Headline, 'ÚJ FELADAT: LAKÓÉPÜLETEK']
   - [Image, content/gui/images/background/hr.png]
-  - A telepesek tetőt szeretnének a fejük fülé, ellenkező esetben úgy fogják gondolni, hogy nem ebben a városban akarnak élni! Lakóházakat kell biztosítanod.
+  - A telepesek tetőt szeretnének a fejük fölé, ellenkező esetben még úgy gondolhatják, hogy nem is akarnak ebben a városban élni! Lakóházakat kell biztosítanod.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - A telepesek nem a leghasznosabbak a termékek termelésében - de ők azok, akik fizetik az adót és jelenleg még ők az egyetlen egy lehetőséged a pénz szerzésére.
+  - A sátrak az alapvető lakóépületek. A lakosaid szeretnék a későbbiekben továbbfejleszteni, amint elérnek egy nagyobb szintet.
+  - Minden épület fejlesztése építési alapanyagba kerül, az első fejlesztéshez például fa szükséges.
+  - Érdemes letiltani a fejlesztést, ha kevés a rendelkezésre álló alapanyag.
+  - Bár a telepesek nem tűnnek hasznosak, hiszen fogyasztják az általad megtermelt javakat - de legalább fizetik az adót, és jelen pillanatban ez az egyetlen lehetőséget pénzt termelni!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Feladat: Építs egy sátrat és kösd össze a főtérrel, ha szükséges. A sátraknak nem kell összeköttetésben lenniük a gazdasági épületekkel.']
 
 - &MORETENTS
-  - [Message, Építs legalább három további sátrat és kösd be a főtérre.]
+  - [Message, Építs legalább három további sátrat és kösd össze azokat a főtérrel.]
   - '
 
-    Nézz rá a sátrak áttekintő fülére.'
+    Vess egy pillantást a sátrak áttekintő fülére.'
   - 'Amit láthatsz
 
-    * az elégedettsége ezeknek a lakosoknak,
+    * a lakosoknak elégedettsége,
 
-    * az adókat amelyeket fizetnek és
+    * mennyi adót fizetnek és
 
     * a készletek, amelyre szükségük van.'
-  - Hogyha a szükségleteik ki vannak elégítve, az elégedettségük és az adóbevétel növekszik.
-  - Hogyha nem, az elégedettség és a bevétel csökken. Néha a lakosok nagyon elégedetlenek lehetnek, ekkor szimplán hátra hagyják a faludat, maguk mögött hagyva egy lepusztult romos házat.
-  - Itt szintén tudod állítani a globális adót.
+  - Ha kielégíted a szükségleteiket, az elégedettségük és az adóbevétel növekszik.
+  - Ha nem, az elégedettség és a bevétel csökkenni fog. Olykor a lakosok annyira elégedetlenek, hogy szimplán hátat fordítanak a falunak, maguk mögött hagyva egy lepusztult, romos házat.
+  - Itt tudod állítani a globális adó mértékét is.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Feladat: Építsd legalább három sátrat.']
   - '
 
-    TIP: A SHIFT billentyű lenyomásával több épületet is építhetsz ugyan abból a típusból.'
+    JAVASLAT: A SHIFT billentyű lenyomásával több épületet is építhetsz a adott típusból.'
 
 - &SIGNALFIRE
-  - [Message, 'Építs egy jelző tüzet a parton, közel a raktárhoz.']
-  - [Headline, 'ÚJ FELADAT: ÉPÍTS EGY JELZŐTÜZET']
+  - [Message, 'Építs egy jelzőtüzet a tengerparton, közel a raktárhoz.']
+  - [Headline, 'ÚJ FELADAT: JELZŐTŰZ ÉPÍTÉSE']
   - [Image, content/gui/images/background/hr.png]
-  - Észrevetted, hogy egy hajó érkezik a szigetedre időről időre? Ez a hajó a Szabad Kereskedőkhöz tartozik, az első telepesek ezen a szigetvilágon.
-  - A kereskedő ellátja majd a gyarmatodat a szükséges nyersanyagokkal, amelyeket nem tudsz még termelni.
-  - Viszont a felesleget el is adhatod a termékeidből, de általában a felhasználásuk (több lakósátor építése) az eladás helyett több bevételt termel.
-  - Normál esetben a kereskedő hajó csak hajózik körbe és keresi az ajánlatokat, de ezt felgyorsíthatod egy kicsit.
+  - Észrevetted már, hogy időről időre hajó halad el a szigeted mellett? Ez a hajó a Szabad Kereskedőkhöz tartozik, az első telepesek egyike ezen a szigetvilágon.
+  - A kereskedő ellátja majd a településed olyan szükséges nyersanyagokkal, amelyeket még nem tudsz előállítani.
+  - Viszont a termékfelesleget el is adhatod, de általában a felhasználásuk (több sátor építése) az eladás helyett több bevételt termel.
+  - Normál esetben a kereskedő csak hajózik közbe, keresve az ajánlatokat, de ezt valamelyest meggyorsíthatod.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Erre a célra, építs egy jelzőtüzet a partra, a raktárházad közelébe. Ez mutatja a hajóknak az utat a gyarmatod felé.
-  - A jelzőtűz fedezi a területet, amely felé a hajók haladnak, hogy elkapják azt.
+  - Ehhez építened kell egy jelzőtüzet a tengerpartra, a raktárad közelébe. Ez jelzi majd az utat a hajóknak a településed felé.
+  - A jelzőtűznek le kell fednie azt a területet, ahol a hajók elhaladnak.
   - [Pagebreak]
   - '
 
-    Ezután a kis reklám után, a kereskedő hajó meg fog állni és körbenéz a raktárházadban hogyha tervezte hogy arra vitorlázzon.'
-  - Megtervezheted az ajánlataidat a raktárház "Vétel/Eladás" fülén.
+    A figyelemfelhívást követően a kereskedő be fog térni a raktáradba, hogy körbenézzen, még akkor is, ha eredetileg csak elhajózott volna mellette.'
+  - Üzleti ajánlataidat előkészítheted a raktár "Vásárlás/Eladás" fülén.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
-  - Klikk a kis ikonra, hogy megváltoztasd a hely típusát 'Eladás' -ról 'Vétel' -re és fordítva.
-  - Klikk a helyre, hogy kiválaszd azt a terméket, amellyel kereskedni szeretnél. Ezt még jobban bemutatjuk, hogyha készen állsz a kereskedésre.
+  - A 'tengerész' szinten mindössze három kereskedelmi helyed van.
+  - Klikkelj a kis ikonra, hogy megváltoztasd az adott hely típusát 'Eladás'-ról 'Vétel'-re és fordítva.
+  - Klikkelj a helyre, hogy kiválaszd a kereskedésre szánt terméket. Erről a későbbiekben fog szó esni, ha már készen állsz a kereskedelemre.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Feladat: Építs egy jelző tüzet a tengerparton, közel a raktárhoz.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Message, Legyen a szigeten legalább 30 eszköz elérhető. Ez eltarthat egy ideig.]
   - [Headline, 'ÚJ FELADAT: KERESKEDELEM']
   - [Image, content/gui/images/background/hr.png]
-  - 'Kitűnő! A Szabad Kereskedő most már meg fog állni a raktárházadnál időről időre.
+  - 'Kitűnő! A Szabad Kereskedő mostantól időről időre megáll a raktáradnál.
 
 
-    Folytassuk a bemutatót a kereskedelemmel.'
-  - Kiválasztása után adott típusú jó, a zöld sávban az alul (látható) azt mutatja, hogy mennyi van raktáron ez jó.
-  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
-  - When buying, you will buy sufficient to hold your 'target value' in stock.
-  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
+    Folytassuk az oktatást a kereskedelemmel.'
+  - Első lépésként klikkelj a raktáradra és nyisd meg a harmadik fület.
+  - Klikkelj a három elérhető hely valamelyikére, válaszd ki az árut, amelyet venni vagy eladni szeretnél.
+  - Egy adott áru kiválasztása után, a zöld sáv a hely alján (amennyiben látható) azt jelzi, mennyi van nálad raktáron az adott áruból.
+  - Mindegyik hely jobb oldalán található csúszka állításával megadhatod a 'célérték'-et, mennyit szeretnél vásárolni és eladni.
+  - Vásárláskor mindig annyit veszel, amennyivel eléred a raktáradban a 'célérték'-et.
+  - Eladáskor a 'célérték' azt jelöli, mi az a mennyiség a raktáradban, amely alá nem mehetsz a kereskedés során.
   - [Pagebreak]
   - '
 
     Például:
 
     Van egy ''Vásárlás'' helyed és 5 tonna a raktárban, a csúszka 9 tonnára van állítva, ez azt eredményezi, hogy 4 tonnát fogsz vásárolni.'
-  - Az eladás hasonlóan működik. Az "Eladás", amennyiben 18 tonna van raktáron és a csúszka 13-ra van állítva, azt eredményezi, hogy eladsz 5 tonnát a raktárból.
-  - If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+  - Az eladás hasonlóan működik. Az "Eladás", amennyiben 18 tonna van raktáron és a csúszka 13-ra van állítva, azt eredményezi, hogy 5 tonnát fogsz eladni a raktárból.
+  - Viszont, ha a Szabad Kereskedő kevesebbet akar vásárolni vagy eladni, mint amennyit Te engedélyeztél, várnod kell, amíg újra vissza nem tér.
+  - 'Az Unknown Horizonsban okos árazó rendszer működik, egyes típusok árai eltérhetnek.
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+    Manuálisan NEM lehetséges ezeket az árakat módosítani!'
+  - A kereskedelmi egyenleged megtekintheted a 'Kimutatás' fül alatt, összehasonlítva az 'Eladás' és 'Vásárlás' értékeket.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Feladat: Vegyél annyi eszközt, amennyit csak kell, hogy 30 szerszám legyen raktáron!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Építs egy pavilont és kapcsold össze a sátrakkal.]
-  - [Headline, 'Új feladat: Építs egy pavilont']
+  - [Message, Építs egy kerti házat és kösd össze a sátrakkal.]
+  - [Headline, 'ÚJ FELADAT: ÉPÍTS KERTI HÁZAT']
   - [Image, content/gui/images/background/hr.png]
-  - Ennyi eszköz elég lesz most. Szép volt!
-  - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
-  - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
+  - Ennyi eszköz egyelőre elég lesz. Szép munka!
+  - Jelen állás szerint biztosítasz lakóhelyet, főteret és élelmet a lakosok számára.
+  - 'De van még egy igény, amelyet nem sikerült eddig kielégíteni (klikkelj a sátorra, hogy kiderítsd, mi hiányzik): a tengerészeknek kell egy épület, ahol imádkozhatnak.'
+  - A megoldás egy kerti ház, amelyet a település lelkésze gyorsan felépít és véd a napsugaraktól.
+  - A szolgáltató épületeket, mint ezt is, úttal össze kell kötni a sátrakkal, ennek hiányában a lakosok nem tudják látogatni.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
-  - 'Important:
+    A hitet úgy kezeljük, mint fizikai nyersanyagot!'
+  - Ez azt jelenti, hogy a lakosaidnak útösszeköttetésre van szüksége a termelőhöz (kerti ház), hogy begyűjtsék a hitet.
+  - Az idő múlásával felhasználják azt és újra a termelőhöz fordulnak hitért.
+  - 'Fontos:
 
-    It is NOT enough that the building is merely within a certain range of the tents.
+    NEM elég, hogy az épület a sátrak közelében van.
 
-    The road connection is required as well.'
+    Útösszeköttetésre is szükség van.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Feladat: Építs egy kerti házat, kösd össze azt a sátrakkal, így kielégíted a tengerészek hit iránti igényét.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok frissítik.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Message, 'Állítsd az adó mértékét alacsonyra (bal szélen) és várj, amíg a tengerészek fejlődnek.']
+  - [Headline, 'ÚJ FELADAT: KÖVETKEZŐ SZINT']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
-  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - A lakosok minden alapvető igényét kielégítetted, látogatják a főteret és a kerti házat, az élelmészer mennyisége elegendő.
+  - Ha a tengerészek boldogok, szeretnének fejlődni a következő szintre, amelyet Felfedezőknek nevezünk.
+  - A boldogságukhoz már csak annyi kell, hogy alacsonyabb szintre állítsd az adó mértékét, a lakosok minden más igényét kielégítetted.
+  - Arra is figyelned kell, hogy ne tartsd az adó mértékét mindig alacsonyan, ez előbb-utóbb csődhöz vezet. Néha persze ezzel sincs gond, ha tudod, mit miért csinálsz.
+  - Egy kis idő után az első emberek elindulnak a főtér felé és magukhoz veszik az új ház megépítéséhez szükséges fát. A ház a régi sátor helyére kerül.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the main square.'
-  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
-  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
+    Az ilyen lakossági fejlesztések nyersanyagba kerülnek, amelyek felhasználása korlátozható a főtéren.'
+  - Vannak díjmentes fejlesztések is, ezt észre fogod venni például a favágó esetében is. Ilyenkor csak az épület kinézete változik.
+  - A fejlesztett lakóépületek több lakost tudnak elszállásolni, ráadásul a felfedezők több adót fizetnek, mint a tengerészek.
+  - Valószínűleg már rájöttél, hogy ennek van árnyoldala is, a felfedezők további javakat követelnek, amelyekre a tengerészeknek nincs szükségük - több pénzt kell elköltened ahhoz, hogy ők is boldogok legyenek.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Feladat: Állítsd az adó mértékét alacsonyra (bal szélen) és várj, amíg a tengerészek fejlődnek.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, 'Építs egy farmot, legyen néhány üres hely körülötte.']
-  - [Headline, 'Új feladat: Építs egy farmot']
+  - [Message, 'Építs egy farmot, de legyen néhány üres hely körülötte.']
+  - [Headline, 'ÚJ FELADAT: ÉPÍTS EGY FARMOT']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
-  - Now you have access to new buildings, take a look at the Build menu again.
+  - Gratulálunk! Néhányan a lakosaid közül elérték a második szintet!
+  - Mostantól új épületek érhetők el, vess egy pillantást az építési menüre.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
-  - The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.
-  - The output of farms depends on what kind of fields you build around it.
+  - Egy szép új fül jelent meg.
+  - A felfedezőknek ruhára van szüksége, ehhez új gyártási folyamatokat kell életbe léptetned, kezdve a bárány gyapjúval (a farm által előállított áruk egyike).
+  - A farm egy nagyon különleges termelő épület, ugyanis nem csupán egy, hanem több (és eltérő) árut is előállít a döntésed alapján.
+  - A farmok végterméke a köré elhelyezett mezők típusától függ.
   - [Pagebreak]
   - '
 
-    We will have a closer look at this later.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a warehouse.
-  - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
-  - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+    Erről a későbbiekben részletesen beszélünk.'
+  - A farm, a többi céghez hasonlóan nyersanyagot állít elő, így nem szükséges összekötni a raktárral vagy más tároló épülettel.
+  - Amíg a gyártó cégek egységei elérik a farmot, és a raktár vagy a tároló sátor árubegyűjtői elérik a gyártó céget, minden rendben van.
+  - Viszont, ha a feldolgozást a sziget egy másik részén, vagy egy teljesen másik szigeten tervezet (teljesen érthető), akkor kelleni fog az összeköttetés az árubegyűjtők miatt.
+  - Próbáld a farmot távolabb építeni a tengerparttól és a már meglévő épületektől, mivel sok helyre van szükség körülötte, hogy jól működjön.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Feladat: Építs egy farmot.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, 'Építs legalább egy legelőt, és ha úgy tetszik adj hozzá burgonyamezőket.']
-  - [Headline, 'Új feladat: Építs mezőket']
+  - [Message, 'Építs legalább egy legelőt, és ha úgy tetszik, adj hozzá burgonya ültetvényeket.']
+  - [Headline, 'ÚJ FELADAT: MEZŐK ÉPÍTÉSE']
   - [Image, content/gui/images/background/hr.png]
-  - The farm itself is not going to produce anything without some fields.
-  - You currently have the choice between pastures, potato and sugar fields.
-  - 'Let''s have a short overview:
+  - A farm önmagában nem fog előállítani semmit mezők nélkül.
+  - Jelenleg legelő, burgonya és cukornád ültetvény közül választhatsz.
+  - 'Rövid áttekintés:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Legelő: birkát nevel, bárány gyapjút állít elő.
 
-    * Potato field: Grows potatoes which are currently treated as food.
+    * Burgonya ültetvény: burgonyát termeszt, amelyet élelmiszerként kezelünk.
 
-    * Sugar field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
-  - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
-  - Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods.
+    * Cukornád ültetvény: cukrot termeszt, amelyből alkoholt és (később) édességet állít elő.'
+  - Most csak legelőre van szükségünk, viszont, ha az élelmiszer ellátás alacsony (talán túl sok lakóépületed van), termeszthetsz burgonyát is.
+  - Burgonya termesztéshez szükség van útösszeköttetésre a farmhoz (nem a mezőhöz), hiszen az állítja elő az árut.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
-  - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
-  - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
+    Ügyelj arra, hogy minden mezőt lefedjen a farm hatósugara.'
+  - Kombinálhatod is a termelést - egy legelő nem fogja 100 százalékban kihasználni a farm lehetőségeit -, viszont figyelj arra, hány mezőt képes a farm ellátni.
+  - A különböző típusú mezők kevesebb/több időt igényelnek a munkásoktól (ültetés, aratás, pásztorkodás, stb...), emiatt a farm nem képes minden mezőt időben ellátni.
+  - Eddig nem kellett ezekkel a problémákkal foglalkoznod, hiszen nem tettél le még mezőket. Változtassunk ezen!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Feladat: Építs legalább egy legelőt a farm hatósugarában, és ha úgy tetszik, adj hozzá burgonya ültetvényeket is.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
-  - [Headline, 'Új feladat: Építs raktárat']
+  - [Message, 'Építs egy tároló sátrat (egyes szintű épület), ahol szükség van rá.']
+  - [Headline, 'ÚJ FELADAT: ÉPÍTS TÁROLÓT']
   - [Image, content/gui/images/background/hr.png]
-  - Did you watch your lumberjack recently?
-  - Since your warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
-  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
-  - We can improve this situation in two different ways, and we will have a look at both of them below.
-  - 'All companies offer to do no work at all.
+  - Ránéztél mostanában a favágódra?
+  - Mivel a raktárad kapacitása nem végtelen, az árubegyűjtők abbahagyják a munkát, ha teli van a raktárad.
+  - Tehát, ha a tengerészek nem szeretnék fejleszteni a sátraikat, valószínűleg sok deszka áll a rendelkezésedre, a favágód pedig tétlenül áll.
+  - Két módon is kezelhetjük ezt a helyzetet, mind a kettőt átnézzük.
+  - 'Minden cégnél lehetőség van arra, hogy ne dolgozzanak.
 
-    This may sound strange, but click on the gear wheel you see in a lumberjack hut''s overview.'
-  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+    Ez elsőre furcsán hangzik, de azért klikkelj a favágó kunyhó áttekintésénél a fogaskerékre.'
+  - Ha ez a 'szünet' mód aktiválásra kerül (ezt hívjuk 'kihasználatlanság'-nak), az adott épület működéséhez szükséges költségek csökkennek. Nem csökken nullára, de még így is alacsonyabb, mint ha hagynád továbbra is dolgozni.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
-  - 'This building has two purposes. It:
+    Ez azt jelenti, hogy pénzt spórolhatsz, amennyiben ideiglenesen nincs szükséged a cég szolgáltatására, de nem is szeretnéd lerombolni az épületet.'
+  - 'A másik megoldás, amelyről még nem esett szó: felépítheted az első szintű épületek közül az utolsót, a tároló sátrat.'
+  - 'Ennek az épületnek két célja can:
 
-    * Offers more storage for your goods, and
+    * Több szabad helyed van az áruk tárolására, és
 
-    * sends its own collectors to fetch goods, just like the warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
+    * saját árubegyűjtője van, akár csak a raktárnak.'
+  - A cégek által előállított árukat begyűjtheted, ha útösszeköttetést létesítesz a tároló sátorral, ha pedig a raktárad árubegyűjtője leterhelt, a raktár sátor ezt a problémát is orvosolni tudja.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Feladat: Építs egy tároló sátrat (egyes szintű épület), ahol szükség van begyűjtőkre.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Építs egy szövőt amely eléri a farmon lévő gyapjút!]
-  - [Headline, 'Új feladat: Építs egy szövőt']
+  - [Message, 'Építs egy takács kunyhót, amely hozzáfér a farm által előállított gyapjúhoz.']
+  - [Headline, 'ÚJ FELADAT: ÉPÍTS TAKÁCS KUNYHÓT']
   - [Image, content/gui/images/background/hr.png]
-  - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
-  - In both cases you should ensure the connection to a trail as well.
-  - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
+  - Most, hogy a gyapjú termelése biztosítva van, szükséged van egy takácsra, hogy a gyapjúból ruhát szőjön.
+  - A takács kunyhóban él a szövőmester. Két helyre építheted fel ezt az épületet - vagy a farm közelébe, vagy a tároló sátor (akár raktár) mellé.
+  - Mindkét esetben biztosítanod kell az útösszeköttetést.
+  - Helyezd a takács kunyhót a farm közelébe, de egyelőre ne építs utat, hogy lásd, vajon a felhasználja-e a farm által előállított gyapjút a termeléshez.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Feladat: Építs egy takács kunyhót úgy helyezve, hogy elérje a gyapjú készletet.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, 'Legalább 50 lakosnodnak kell lennie és pozitív egyenlegednek, hogy befejezd a gyakorlást.']
-  - [Headline, 'Új feladat: Végezz a gyakorlással']
+  - [Message, 'Legalább 50 lakosnodnak és pozitív egyenlegednek kell lennie ahhoz, hogy befejezd az oktató módot.']
+  - [Headline, 'ÚJ FELADAT: OKTATÓ MÓD VÉGE']
   - [Image, content/gui/images/background/hr.png]
-  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
-  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
+  - Szállásolj el legalább 50 lakost a városodban további lakóépületek építésével.
+  - Ha sikerül olyan gazdaságot felépítened, amely ki tudja szolgálni az ekkora lakossággal járó igényeket, készen állsz felfedezni az Unknown Horizonst!
+  - Ennek a gazdaságnak a fenntartásához sok pénzre van szükséged, az egyenleged mindig legyen pozitív (ezt folyamatosan ellenőrizheted a raktár 'Kimutatás' füle alatt).
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Feladat: Szállásolj el legalább 50 lakost és legyen pozitív egyenleged az oktató mód befejezéséhez.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, 'Gratulálok! Elértél a gyakorlás végéhez, most már megfelesz az új kihívásoknak!']
-  - [Headline, Nincs feladat hátra]
+  - [Message, 'Gratulálunk! Az oktató mód végéhez értél, készen állsz az új megmérettetésekre!']
+  - [Headline, NINCS ÚJABB FELADAT]
   - [Image, content/gui/images/background/hr.png]
-  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
+  - Sikeresen elvégeztél minden rád háruló feladatot. A világ a rendelkezésedre áll, valósítsd meg ötleteidet, fedezz fel bátran mindent!
+  - 'Ha bármilyen javaslatod lenne, min kellene változtatnunk vagy javítanunk, hozzáadnunk vagy kivennünk a játékból:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
-  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
+  - A játék fóruma is nyitva áll előtted!
+  - Az eddigi tapasztalataink alapján a legtöbb eredményt az IRC csatornánknak köszönhetjük, próbálkozz először ott. (-;
   - [Pagebreak]
-  - [Headline, Köszönöm!]
+  - [Headline, Köszönjük!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -388,10 +390,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Köszönöm hogy végigjátszottad a gyakorlást!
+    Köszönjük, hogy végigjátszottad az oktató módot!
 
 
-    A te UH-Csapatod'
+    A Te UH-csapatod'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -650,9 +652,9 @@ metadata:
   author: The UH team
   description: 'Gyakorlás:
 
-    Építsd fel az első telepedet és tanuld meg hogyan kell játszani!'
-  difficulty: Bemutató
+    Építsd fel az első telepedet és tanuld meg, hogyan kell játszani!'
+  difficulty: Oktatás
   locale: hu
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 97 translated messages, 20 fuzzy translations, 74 untranslated messages.
+  translation_status: 188 translated messages.

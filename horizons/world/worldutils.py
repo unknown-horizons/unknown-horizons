@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,18 +22,18 @@
 import bisect
 import itertools
 import os
-
 from collections import deque
 
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL
+from horizons.constants import BUILDINGS, GROUND, RES, UNITS, WILD_ANIMAL
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
+
 
 """
 This is used for random features required by world,
@@ -56,6 +56,7 @@ def toggle_health_for_all_health_instances(world):
 			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
+
 
 def toggle_translucency(world):
 	"""Make certain building types translucent"""
@@ -90,7 +91,7 @@ def save_map(world, path, prefix):
 	read_savegame_template(db)
 	db('BEGIN')
 	for island in world.islands:
-		island_name = '%s_island_%d_%d.sqlite' % (prefix, island.origin.x, island.origin.y)
+		island_name = '{}_island_{:d}_{:d}.sqlite'.format(prefix, island.origin.x, island.origin.y)
 		island_db_path = os.path.join(path, island_name)
 		if os.path.exists(island_db_path):
 			os.unlink(island_db_path) # the process relies on having an empty file
@@ -128,7 +129,7 @@ def add_resource_deposits(world, resource_multiplier):
 	def get_valid_locations(usable_part, island, width, height):
 		"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
 		locations = []
-		offsets = list(itertools.product(xrange(width), xrange(height)))
+		offsets = list(itertools.product(range(width), range(height)))
 		for x, y in sorted(usable_part):
 			min_value = None
 			for dx, dy in offsets:
@@ -150,12 +151,12 @@ def add_resource_deposits(world, resource_multiplier):
 
 		total_sum = [0]
 		last_sum = 0
-		for value in zip(*locations)[0]:
+		for value in next(zip(*locations)):
 			last_sum += value
 			total_sum.append(last_sum)
 
-		for _unused1 in xrange(max_objects):
-			for _unused2 in xrange(7): # try to place the object 7 times
+		for _unused1 in range(max_objects):
+			for _unused2 in range(7): # try to place the object 7 times
 				object_sum = world.session.random.random() * last_sum
 				pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 				x, y = locations[pos][1]
@@ -169,7 +170,7 @@ def add_resource_deposits(world, resource_multiplier):
 		# mark island tiles that are next to the sea
 		queue = deque()
 		distance = {}
-		for (x, y), tile in island.ground_map.iteritems():
+		for (x, y), tile in island.ground_map.items():
 			if len(tile.classes) == 1: # could be a shallow to deep water tile
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
@@ -192,7 +193,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		# calculate tiles' values
 		usable_part = {}
-		for coords, dist in distance.iteritems():
+		for coords, dist in distance.items():
 			if coords in island.ground_map and 'constructible' in island.ground_map[coords].classes:
 				usable_part[coords] = (dist + 5) ** 2
 
@@ -209,7 +210,7 @@ def add_resource_deposits(world, resource_multiplier):
 		local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
 		num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
 		place_objects(local_mountain_locations, num_local_mountains, Mountain)
-		
+
 		# place the local stone deposits
 		local_stone_deposit_locations = get_valid_locations(usable_part, island, *StoneDeposit.size)
 		stone_deposit_locations.extend(local_stone_deposit_locations)
@@ -221,7 +222,7 @@ def add_resource_deposits(world, resource_multiplier):
 	extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
 	num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_clay_base + abs(world.session.random.gauss(0, 1))))))
 	place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
-	
+
 	# place some extra stone deposits
 	extra_stone_base = len(stone_deposit_locations) ** 0.8 / 400.0
 	num_extra_stone_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_stone_base + abs(world.session.random.gauss(0, 1))))))
@@ -246,27 +247,27 @@ def add_nature_objects(world, natural_resource_multiplier):
 	add_resource_deposits(world, natural_resource_multiplier)
 	Tree = Entities.buildings[BUILDINGS.TREE]
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
-	fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
+	fish_directions = [(i, j) for i in range(-1, 2) for j in range(-1, 2)]
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
 	# add trees, wild animals, and fish
 	for island in world.islands:
-		for (x, y), tile in sorted(island.ground_map.iteritems()):
+		for (x, y), tile in sorted(island.ground_map.items()):
 			# add trees based on adjacent trees
 			for (dx, dy) in fish_directions:
-				position = Point(x+dx, y+dy)
+				position = Point(x + dx, y + dy)
 				newTile = world.get_tile(position)
-				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
+
+				if check_tile_for_tree(world, position, newTile) and newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
 					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
 					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-				
-				
+
 			# add tree to every nth tile and an animal to one in every M trees
-			if world.session.random.randint(0, 20) == 0 and \
+			if check_tile_for_tree(world, position, newTile) and world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
@@ -274,7 +275,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-			
+
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice
 				for (x_dir, y_dir) in world.session.random.sample(fish_directions, 2):
@@ -291,6 +292,28 @@ def add_nature_objects(world, natural_resource_multiplier):
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False
 
 
+def check_tile_for_tree(world, position, tile):
+	"""
+	Returns true if the current tile is a grass tile and a tree can be built there.
+	@param position: position of the to be checked tile
+	@param tile: tile object
+	"""
+
+	# Make sure the given tile is a default ground tile
+	if tile.id is not GROUND.DEFAULT_LAND[0]:
+		return False
+
+	# In case the directly neighboring tiles are not default land,
+	# we don't want trees to be built.
+	radius = 1
+	neighbor_tiles = world.get_tiles_in_radius(position, radius)
+	for neighbor_tile in neighbor_tiles:
+		if neighbor_tile.id is not GROUND.DEFAULT_LAND[0]:
+			return False
+
+	return True
+
+
 def get_random_possible_ground_unit_position(world):
 	"""Returns a random position upon an island"""
 	offset = 2
@@ -304,6 +327,7 @@ def get_random_possible_ground_unit_position(world):
 		for island in world.islands:
 			if (x, y) in island.path_nodes.nodes:
 				return Point(x, y)
+
 
 def get_random_possible_ship_position(world):
 	"""Returns a random position in water, that is not at the border of the world"""
@@ -319,7 +343,7 @@ def get_random_possible_ship_position(world):
 		position_possible = True
 		for first_sign in (-1, 0, 1):
 			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + offset*first_sign, y + offset*second_sign )
+				point_to_check = Point( x + offset * first_sign, y + offset * second_sign )
 				if world.get_island(point_to_check) is not None:
 					position_possible = False
 					break
@@ -329,6 +353,7 @@ def get_random_possible_ship_position(world):
 		break # all checks successful
 
 	return Point(x, y)
+
 
 def get_random_possible_coastal_ship_position(world):
 	"""Returns a random position in water, that is not at the border of the world
@@ -354,4 +379,3 @@ def get_random_possible_coastal_ship_position(world):
 				point_to_check = Point( x + first_sign, y + second_sign )
 				if world.get_island(point_to_check) is not None:
 					return result
-

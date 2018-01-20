@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,16 +20,18 @@
 # ###################################################
 
 from fife import fife
-import horizons.globals
 
+import horizons.globals
 from horizons.util.living import LivingObject
-from horizons.gui.keylisteners import KeyConfig
+
+from .keyconfig import KeyConfig
+
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
 	def __init__(self, session):
-		super(IngameKeyListener, self).__init__()
+		super().__init__()
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
@@ -45,18 +47,18 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		self.session = None
-		super(IngameKeyListener, self).end()
+		super().end()
 
 	def updateAutoscroll(self):
 		self.key_scroll = [0, 0]
 		if self.up_key_pressed:
-			self.key_scroll[1] -= self.key_scroll_speed;
+			self.key_scroll[1] -= self.key_scroll_speed
 		if self.down_key_pressed:
-			self.key_scroll[1] += self.key_scroll_speed;
+			self.key_scroll[1] += self.key_scroll_speed
 		if self.left_key_pressed:
-			self.key_scroll[0] -= self.key_scroll_speed;
+			self.key_scroll[0] -= self.key_scroll_speed
 		if self.right_key_pressed:
-			self.key_scroll[0] += self.key_scroll_speed;
+			self.key_scroll[0] += self.key_scroll_speed
 
 		self.session.view.autoscroll_keys(*self.key_scroll)
 
@@ -85,7 +87,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		_Actions = KeyConfig._Actions
 		action = KeyConfig().translate(evt)
 
-
 		if action == _Actions.UP:
 			self.up_key_pressed = False
 		if action == _Actions.DOWN:
@@ -94,5 +95,5 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.left_key_pressed = False
 		if action == _Actions.RIGHT:
 			self.right_key_pressed = False
-		
+
 		self.updateAutoscroll()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,17 +24,17 @@ import traceback
 from fife import fife
 
 from horizons.command.unit import Act
-from horizons.util.worldobject import WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
-from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
+
 
 class SelectionTool(NavigationTool):
 	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important
 
 	def __init__(self, session):
-		super(SelectionTool, self).__init__(session)
+		super().__init__(session)
 		self.deselect_at_end = True # Set this to deselect selections while exiting SelectionTool
 
 	def remove(self):
@@ -43,7 +43,7 @@ class SelectionTool(NavigationTool):
 			selectables = self.filter_selectable( self.session.selected_instances )
 			for i in self.filter_component(SelectableComponent, selectables):
 				i.deselect()
-		super(SelectionTool, self).remove()
+		super().remove()
 
 	def is_selectable(self, entity):
 		# also enemy entities are selectable, but the selection representation will differ
@@ -55,7 +55,7 @@ class SelectionTool(NavigationTool):
 
 	def filter_selectable(self, instances):
 		"""Only keeps selectables from a list of world objects"""
-		return filter(self.is_selectable, instances)
+		return list(filter(self.is_selectable, instances))
 
 	def is_owned_by_player(self, instance):
 		"""Returns boolean if single world object is owned by local player"""
@@ -120,7 +120,7 @@ class SelectionTool(NavigationTool):
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
 		else:
-			super(SelectionTool, self).mouseDragged(evt)
+			super().mouseDragged(evt)
 			return
 		evt.consume()
 
@@ -132,7 +132,7 @@ class SelectionTool(NavigationTool):
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
 		else:
-			super(SelectionTool, self).mouseReleased(evt)
+			super().mouseReleased(evt)
 			return
 		evt.consume()
 
@@ -148,7 +148,7 @@ class SelectionTool(NavigationTool):
 		if not selected:
 			return
 		if len(selected) == 1:
-			iter(selected).next().get_component(SelectableComponent).show_menu()
+			next(iter(selected)).get_component(SelectableComponent).show_menu()
 		else:
 			self.session.ingame_gui.show_multi_select_tab(selected)
 
@@ -167,7 +167,7 @@ class SelectionTool(NavigationTool):
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
-			super(SelectionTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			if self.session.selected_instances is None:
@@ -180,7 +180,7 @@ class SelectionTool(NavigationTool):
 			instances = self.get_hover_instances(evt)
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 
-			instances = filter(self.is_selectable, instances)
+			instances = list(filter(self.is_selectable, instances))
 			# On single click, only one building should be selected from the hover_instances.
 			# The if is for [] and [single_item] cases (they crashed).
 			# It acts as user would expect: instances[0] selects buildings in front first.
@@ -196,7 +196,7 @@ class SelectionTool(NavigationTool):
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
 		else:
-			super(SelectionTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 			return
 		evt.consume()
 
@@ -212,7 +212,7 @@ class SelectionTool(NavigationTool):
 		@param instances: uh instances
 		@param do_multi: True if selection rectangle on drag is used
 		"""
-		self.log.debug("update selection %s", [unicode(i) for i in instances])
+		self.log.debug("update selection %s", [str(i) for i in instances])
 
 		if do_multi: # add to selection
 			instances = self.select_old.union(instances)
@@ -226,7 +226,7 @@ class SelectionTool(NavigationTool):
 			if user_instances: # check at least one remaining
 				instances = user_instances
 			else:
-				instances = [iter(instances).next()]
+				instances = [next(iter(instances))]
 		selectable = frozenset( self.filter_component(SelectableComponent, instances))
 
 		# apply changes
@@ -237,4 +237,4 @@ class SelectionTool(NavigationTool):
 		for sel_comp in selectable - selected_components:
 			sel_comp.select()
 
-		self.session.selected_instances = set( i.instance for i in selectable )
+		self.session.selected_instances = {i.instance for i in selectable}

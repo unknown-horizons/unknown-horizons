@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,78 +19,86 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from unittest import TestCase
+from unittest import mock
+
+import pytest
 
 from horizons.component.namedcomponent import NamedComponent
 
-class MockNameComponent(NamedComponent):
-	def _possible_names(self):
-		return [u'Test']
 
-class TestNamedComponent(TestCase):
-	def tearDown(self):
-		NamedComponent.reset()
+@pytest.fixture(autouse=True)
+def prepare_component(request, mocker):
+	mocker.patch.object(NamedComponent, '_possible_names', return_value=['Test'])
+	request.addfinalizer(NamedComponent.reset)
 
-	@classmethod
-	def make_component(cls, name=None):
-		class Instance(object):
-			def __init__(self):
-				super(Instance, self).__init__()
-				self.instance = self
-				self.session = self
-				self.random = self
 
-			def choice(self, seq):
-				return seq[0]
+def make_component(name=None):
+	instance = mock.Mock()
+	instance.session.random.choice = lambda seq: seq[0]
 
-		component = MockNameComponent(name)
-		component.instance = Instance()
-		component.initialize()
-		return component
+	component = NamedComponent(name)
+	component.instance = instance
+	component.initialize()
+	return component
 
-	def test_new_default_name(self):
-		component = self.make_component()
-		self.assertEquals(component.name, u'Test')
-		component2 = self.make_component()
-		self.assertEquals(component2.name, u'Test 2')
-		component3 = self.make_component()
-		self.assertEquals(component3.name, u'Test 3')
 
-	def test_duplicates(self):
-		component = self.make_component()
-		self.assertEquals(component.name, u'Test')
-		component2 = self.make_component()
-		self.assertEquals(component2.name, u'Test 2')
-		component2.set_name('Test')
-		self.assertEquals(component.name, u'Test')
-		self.assertEquals(component2.name, u'Test')
+def test_new_default_name():
+	component = make_component()
+	assert component.name == 'Test'
+	component2 = make_component()
+	assert component2.name == 'Test 2'
+	component3 = make_component()
+	assert component3.name == 'Test 3'
 
-		component.set_name(u'Test name')
-		component3 = self.make_component()
-		self.assertEquals(component3.name, u'Test 2')
 
-		component2.set_name(u'Test name')
-		component4 = self.make_component()
-		self.assertEqual(component4.name, u'Test')
+def test_duplicates():
+	component = make_component()
+	component2 = make_component()
+	component2.set_name('Test')
 
-	def test_rename_none(self):
-		component = self.make_component()
-		self.assertEquals(component.name, u'Test')
-		component.set_name(u'Test name')
-		self.assertEquals(component.name, u'Test name')
-		component.set_name(None)
-		self.assertEquals(component.name, u'Test')
+	assert component.name == 'Test'
+	assert component2.name == 'Test'
 
-	def test_new_named_object(self):
-		component = self.make_component(u'Test name')
-		self.assertEquals(component.name, u'Test name')
-		component2 = self.make_component(u'Test name')
-		self.assertEqual(component2.name, u'Test name')
+	component.set_name('Test name')
+	component3 = make_component()
+	assert component3.name == 'Test 2'
 
-	def test_unchanged_rename(self):
-		component = self.make_component()
-		self.assertEquals(component.name, u'Test')
-		component.set_name(u'Test')
-		self.assertEquals(component.name, u'Test')
-		component2 = self.make_component()
-		self.assertEquals(component2.name, u'Test 2')
+	component2.set_name('Test name')
+	component4 = make_component()
+	assert component4.name == 'Test'
+
+
+def test_rename_none():
+	component = make_component()
+	assert component.name == 'Test'
+	component.set_name('Test name')
+	assert component.name == 'Test name'
+	component.set_name(None)
+	assert component.name == 'Test'
+
+
+def test_new_named_object():
+	component = make_component('Test name')
+	assert component.name == 'Test name'
+	component2 = make_component('Test name')
+	assert component2.name == 'Test name'
+
+
+def test_unchanged_rename():
+	component = make_component()
+	assert component.name == 'Test'
+	component.set_name('Test')
+	assert component.name == 'Test'
+	component2 = make_component()
+	assert component2.name == 'Test 2'
+
+
+def test_reset():
+	component = make_component()
+	component2 = make_component()
+
+	assert NamedComponent.names_used == ['Test', 'Test 2']
+	NamedComponent.reset()
+
+	assert NamedComponent.names_used == []
+	assert make_component().name == 'Test'

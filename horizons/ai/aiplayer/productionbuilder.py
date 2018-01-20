@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,28 +20,28 @@
 # ###################################################
 
 import itertools
-
 from collections import deque
 from functools import partial
 
-from areabuilder import AreaBuilder
-from constants import BUILD_RESULT, BUILDING_PURPOSE
-
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.world.building.production import Mine
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
-from horizons.constants import AI, BUILDINGS
-from horizons.scheduler import Scheduler
-from horizons.util.python import decorators
-from horizons.util.python.callback import Callback
-from horizons.util.shapes import distances, Rect
-from horizons.entities import Entities
-from horizons.world.production.producer import Producer
-from horizons.world.buildability.binarycache import BinaryBuildabilityCache
-from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
-from horizons.world.buildability.potentialroadconnectivitycache import PotentialRoadConnectivityCache
 from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import AI, BUILDINGS
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Rect, distances
+from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+from horizons.world.buildability.potentialroadconnectivitycache import (
+	PotentialRoadConnectivityCache)
+from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
+from horizons.world.building.production import Mine
+from horizons.world.production.producer import Producer
+
+from .areabuilder import AreaBuilder
+from .constants import BUILD_RESULT, BUILDING_PURPOSE
+
 
 class ProductionBuilder(AreaBuilder):
 	"""
@@ -61,7 +61,7 @@ class ProductionBuilder(AreaBuilder):
 	coastal_building_classes = [BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER, BUILDINGS.SALT_PONDS]
 
 	def __init__(self, settlement_manager):
-		super(ProductionBuilder, self).__init__(settlement_manager)
+		super().__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		self._init_buildability_cache()
@@ -82,7 +82,7 @@ class ProductionBuilder(AreaBuilder):
 	def _init_buildability_cache(self):
 		self.buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
 		free_coords_set = set()
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.items():
 			if purpose == BUILDING_PURPOSE.NONE:
 				free_coords_set.add(coords)
 		for coords in self.land_manager.coastline:
@@ -102,19 +102,19 @@ class ProductionBuilder(AreaBuilder):
 		self.road_connectivity_cache.modify_area(list(sorted(coords_set)))
 
 	def save(self, db):
-		super(ProductionBuilder, self).save(db)
+		super().save(db)
 		translated_last_collector_improvement_storage = self.last_collector_improvement_storage - Scheduler().cur_tick # pre-translate for the loading process
 		translated_last_collector_improvement_road = self.last_collector_improvement_road - Scheduler().cur_tick # pre-translate for the loading process
 		db("INSERT INTO ai_production_builder(rowid, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road) VALUES(?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, translated_last_collector_improvement_storage, translated_last_collector_improvement_road)
-		for (x, y), (purpose, _) in self.plan.iteritems():
+		for (x, y), (purpose, _) in self.plan.items():
 			db("INSERT INTO ai_production_builder_plan(production_builder, x, y, purpose) VALUES(?, ?, ?, ?)", self.worldid, x, y, purpose)
 
 	def _load(self, db, settlement_manager):
 		worldid, last_storage, last_road = \
 			db("SELECT rowid, last_collector_improvement_storage, last_collector_improvement_road FROM ai_production_builder WHERE settlement_manager = ?",
 			settlement_manager.worldid)[0]
-		super(ProductionBuilder, self)._load(db, settlement_manager, worldid)
+		super()._load(db, settlement_manager, worldid)
 		self.__init(settlement_manager, last_storage, last_road)
 
 		db_result = db("SELECT x, y, purpose FROM ai_production_builder_plan WHERE production_builder = ?", worldid)
@@ -207,7 +207,7 @@ class ProductionBuilder(AreaBuilder):
 		if key in self.__available_squares_cache and self.last_change_id == self.__available_squares_cache[key][0]:
 			return self.__available_squares_cache[key][1]
 
-		offsets = list(itertools.product(xrange(size), xrange(size)))
+		offsets = list(itertools.product(range(size), range(size)))
 		collector_area = self.get_collector_area()
 
 		available_squares = 0
@@ -248,10 +248,10 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.CATTLE_RUN: deque(),
 		}
 
-		for coords, (purpose, _) in sorted(self.plan.iteritems()):
+		for coords, (purpose, _) in sorted(self.plan.items()):
 			usable = True # is every tile of the field spot still usable for new normal buildings
-			for dx in xrange(3):
-				for dy in xrange(3):
+			for dx in range(3):
+				for dy in range(3):
 					coords2 = (coords[0] + dx, coords[1] + dy)
 					if coords2 not in self.island.ground_map:
 						usable = False
@@ -306,7 +306,7 @@ class ProductionBuilder(AreaBuilder):
 		unknown_color = (128, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
-		for coords, (purpose, _) in self.plan.iteritems():
+		for coords, (purpose, _) in self.plan.items():
 			tile = self.island.ground_map[coords]
 			color = tile_colors.get(purpose, misc_color)
 			if purpose == BUILDING_PURPOSE.NONE:
@@ -315,13 +315,13 @@ class ProductionBuilder(AreaBuilder):
 
 	def _init_cache(self):
 		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""
-		super(ProductionBuilder, self)._init_cache()
+		super()._init_cache()
 		self.__collector_area_cache = None
 		self.__available_squares_cache = {}
 
 	def register_change(self, x, y, purpose, data):
 		"""Register the possible buildability change of a rectangle on this island."""
-		super(ProductionBuilder, self).register_change(x, y, purpose, data)
+		super().register_change(x, y, purpose, data)
 		coords = (x, y)
 		if coords in self.land_manager.village or (coords not in self.plan and coords not in self.land_manager.coastline):
 			return
@@ -342,7 +342,7 @@ class ProductionBuilder(AreaBuilder):
 		if remove_list:
 			self.buildability_cache.remove_area(remove_list)
 
-		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
+		super().register_change_list(coords_list, purpose, data)
 		self.road_connectivity_cache.modify_area(coords_list)
 		self.display()
 
@@ -357,9 +357,10 @@ class ProductionBuilder(AreaBuilder):
 
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
+<<<<<<< HEAD
 		for coords, (purpose, _) in self.plan.iteritems():
 			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY,
-							BUILDINGS.ALVEARIES, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD, BUILDINGS.HOP_FIELD,BUILDINGS.SPICE_FIELD,BUILDINGS.VINEYARD, BUILDINGS.CATTLE_RUN]:
+					BUILDINGS.ALVEARIES, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD, BUILDINGS.HOP_FIELD,BUILDINGS.SPICE_FIELD,BUILDINGS.VINEYARD, BUILDINGS.CATTLE_RUN]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:
@@ -370,7 +371,7 @@ class ProductionBuilder(AreaBuilder):
 			rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 			self.register_change_list(list(rect.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 		self._refresh_unused_fields()
-		super(ProductionBuilder, self).handle_lost_area(coords_list)
+		super().handle_lost_area(coords_list)
 		self.road_connectivity_cache.modify_area(lost_coords_list)
 
 	def handle_new_area(self):
@@ -399,7 +400,7 @@ class ProductionBuilder(AreaBuilder):
 		elif building.id in self.production_building_classes:
 			self.production_buildings.append(building)
 
-		super(ProductionBuilder, self).add_building(building)
+		super().add_building(building)
 
 	def _handle_lumberjack_removal(self, building):
 		"""Release the unused trees around the lumberjack building being removed."""
@@ -422,7 +423,7 @@ class ProductionBuilder(AreaBuilder):
 		unused_fields = set()
 		farms = self.settlement.buildings_by_id.get(BUILDINGS.FARM, [])
 		for coords in building.position.get_radius_coordinates(building.radius):
-			if not coords in self.plan:
+			if coords not in self.plan:
 				continue
 			object = self.island.ground_map[coords].object
 			if object is None or object.id not in self.field_building_classes:
@@ -443,7 +444,7 @@ class ProductionBuilder(AreaBuilder):
 
 		# remove the planned but never built fields from the plan
 		self._refresh_unused_fields()
-		for unused_fields_list in self.unused_fields.itervalues():
+		for unused_fields_list in self.unused_fields.values():
 			for coords in unused_fields_list:
 				position = Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[BUILDINGS.POTATO_FIELD].size)
 				if building.position.distance(position) > building.radius:
@@ -463,7 +464,7 @@ class ProductionBuilder(AreaBuilder):
 		if building.id in self.field_building_classes:
 			# this can't be handled right now because the building still exists
 			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in=0)
-			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in=0)
+			Scheduler().add_new_object(Callback(partial(super().remove_building, building)), self, run_in=0)
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:
@@ -480,7 +481,7 @@ class ProductionBuilder(AreaBuilder):
 			elif building.id == BUILDINGS.FARM:
 				self._handle_farm_removal(building)
 
-			super(ProductionBuilder, self).remove_building(building)
+			super().remove_building(building)
 
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""
@@ -492,7 +493,7 @@ class ProductionBuilder(AreaBuilder):
 				all_full = True
 
 				# inventory full of the produced resources?
-				for resource_id, min_amount in production.get_produced_resources().iteritems():
+				for resource_id, min_amount in production.get_produced_resources().items():
 					if production.inventory.get_free_space_for(resource_id) >= min_amount:
 						all_full = False
 						break
@@ -518,7 +519,8 @@ class ProductionBuilder(AreaBuilder):
 		self.land_manager.refresh_resource_deposits()
 
 	def __str__(self):
-		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown',
+		return '{}.PB({}/{})'.format(
+			self.owner,
+			self.settlement.get_component(NamedComponent).name if hasattr(
+				self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
-
-decorators.bind_all(ProductionBuilder, builtin_only=True)

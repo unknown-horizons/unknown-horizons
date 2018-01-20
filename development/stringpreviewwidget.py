@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,12 +27,13 @@ from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.windows import Window, WindowManager
 from horizons.scheduler import Scheduler
 
+
 class StringPreviewWidget(Window):
 	"""Widget for testing Logbook strings.
 	It provides a list of scenarios, of which the user can select one and display
 	its strings in a logbook"""
 	def __init__(self, session):
-		super(StringPreviewWidget, self).__init__()
+		super().__init__()
 		self._init_gui(session)
 		# allow for misc delayed initialization to finish before pausing
 		Scheduler().add_new_object(session.speed_pause, self, 2)
@@ -71,7 +72,7 @@ class StringPreviewWidget(Window):
 		else:
 			# Old scenario syntax version without metadata
 			stats = data.get('translation_status', '')
-		self.statslabel.text = unicode(stats)
+		self.statslabel.text = str(stats)
 
 	def load(self):
 		"""Load selected scenario and show strings"""

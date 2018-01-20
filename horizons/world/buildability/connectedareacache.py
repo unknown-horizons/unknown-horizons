@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,8 @@
 
 from collections import deque
 
-class ConnectedAreaCache(object):
+
+class ConnectedAreaCache:
 	"""
 	Query whether (x1, y1) and (x2, y2) are connected.
 
@@ -48,7 +49,7 @@ class ConnectedAreaCache(object):
 
 		area_numbers = self.area_numbers
 		area_numbers[seed_coords] = area_id
-		new_area = set([seed_coords])
+		new_area = {seed_coords}
 		self.areas[area_id] = new_area
 
 		moves = self.__moves
@@ -93,7 +94,7 @@ class ConnectedAreaCache(object):
 				area_id = self._next_area_id
 				self._next_area_id += 1
 				self.area_numbers[coords] = area_id
-				self.areas[area_id] = set([coords])
+				self.areas[area_id] = {coords}
 			else:
 				# add to one of the nearby areas
 				area_id = nearby_areas[0]

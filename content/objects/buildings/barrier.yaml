@@ -1,0 +1,26 @@
+id: BUILDINGS.BARRIER
+name:
+  TIER.SAILORS: _ Wooden barrier
+  TIER.PIONEERS: _ Clay wall
+baseclass: war.Barrier
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants: 0
+tooltip_text: _ Provides security.
+tier: TIER.SAILORS
+buildingcosts: {RES.GOLD: 10, RES.BOARDS: 1}
+show_status_icons: false
+components:
+- SelectableComponent:
+    type: building
+    tabs: [BarrierOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 200}
+actionsets:
+  TIER.SAILORS:
+    as_wall:
+  TIER.PIONEERS:
+    as_claywall:

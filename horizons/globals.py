@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+	from horizons.engine import Fife
+	from horizons.util.uhdbaccessor import UhDbAccessor
+
 # The global Fife instance. This is used both inside a game session and in the menus.
-fife = None
+fife = None # type: Fife
 
 # The global read-only data database (includes most content/*.sql)
-db = None
+db = None # type: UhDbAccessor

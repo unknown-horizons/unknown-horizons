@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,24 +19,29 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import yaml
-import threading
 import logging
+import os
+import threading
+from typing import Optional
 
-from horizons.constants import TIER, RES, UNITS, BUILDINGS, PATHS
+import yaml
+
+from horizons.constants import BUILDINGS, PATHS, RES, TIER, UNITS
 from horizons.util.yamlcachestorage import YamlCacheStorage
 
 try:
-	from yaml import CSafeLoader as SafeLoader
+	from yaml import CSafeLoader as SafeLoader # type: ignore
 except ImportError:
-	from yaml import SafeLoader
+	from yaml import SafeLoader # type: ignore
+
 
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
-SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
-SafeLoader.add_constructor(u'tag:yaml.org,2002:str', construct_yaml_str)
+
+
+SafeLoader.add_constructor('tag:yaml.org,2002:python/unicode', construct_yaml_str)
+SafeLoader.add_constructor('tag:yaml.org,2002:str', construct_yaml_str)
 
 
 def parse_token(token, token_klass):
@@ -47,7 +52,7 @@ def parse_token(token, token_klass):
 	"""
 	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
 
-	if not isinstance(token, basestring):
+	if not isinstance(token, str):
 		# Probably numeric already
 		return token
 	if not token.startswith(token_klass):
@@ -59,13 +64,13 @@ def parse_token(token, token_klass):
 		err = ("This means that you either have to add an entry in horizons/constants.py "
 		       "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".
 		       format(token_klass, token, token))
-		raise Exception( str(e) + "\n\n" + err +"\n" )
+		raise Exception( str(e) + "\n\n" + err + "\n" )
 
 
 def convert_game_data(data):
 	"""Translates convenience symbols into actual game data usable by machines"""
 	if isinstance(data, dict):
-		return dict( [ convert_game_data(i) for i in data.iteritems() ] )
+		return dict( [ convert_game_data(i) for i in data.items() ] )
 	elif isinstance(data, (tuple, list)):
 		return type(data)( ( convert_game_data(i) for i in data) )
 	else: # leaf
@@ -76,14 +81,14 @@ def convert_game_data(data):
 		return data
 
 
-class YamlCache(object):
+class YamlCache:
 	"""Loads and caches YAML files in a persistent cache.
 	Threadsafe.
 
 	Use get_file for files to cache (default case) or load_yaml_data for special use cases (behaves like yaml.load).
 	"""
 
-	cache = None
+	cache = None # type: Optional[YamlCacheStorage]
 	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
 
 	sync_scheduled = False
@@ -103,7 +108,7 @@ class YamlCache(object):
 		@param filename: path to the file
 		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
 		"""
-		with open(filename, 'r') as f:
+		with open(filename, 'r', encoding="utf-8") as f:
 			filedata = f.read()
 
 		# calc the hash

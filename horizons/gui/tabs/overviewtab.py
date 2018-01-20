@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,21 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 
 
 class OverviewTab(TabInterface):
 	widget = 'overviewtab.xml'
 	icon_path = 'icons/tabwidget/common/building_overview'
-	helptext = _lazy("Overview")
+	helptext = LazyT("Overview")
 
 	has_stance = False
 
 	def __init__(self, instance, widget=None, icon_path=None):
 		self.instance = instance
-		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
+		super().__init__(widget=widget, icon_path=icon_path)
 
 	def init_widget(self):
 		# set player emblem
@@ -56,17 +55,17 @@ class OverviewTab(TabInterface):
 			if self.instance.has_component(NamedComponent):
 				name_widget.text = self.instance.get_component(NamedComponent).name
 			else:
-				name_widget.text = _(self.instance.name)
+				name_widget.text = T(self.instance.name)
 
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
 			self.widget.child_finder('running_costs').text = \
-			    unicode(self.instance.running_costs)
+			    str(self.instance.running_costs)
 
 		self.widget.adaptLayout()
 
 	def show(self):
-		super(OverviewTab, self).show()
+		super().show()
 		if not self.instance.has_change_listener(self.refresh):
 			self.instance.add_change_listener(self.refresh)
 		if not self.instance.has_remove_listener(self.on_instance_removed):
@@ -78,7 +77,7 @@ class OverviewTab(TabInterface):
 			self.instance.settlement.add_change_listener(self._schedule_refresh)
 
 	def hide(self):
-		super(OverviewTab, self).hide()
+		super().hide()
 		if self.instance is not None:
 			self.instance.discard_change_listener(self.refresh)
 			self.instance.discard_remove_listener(self.on_instance_removed)
@@ -96,14 +95,15 @@ class OverviewTab(TabInterface):
 			stance_widget.init(self.instance)
 			self.add_remove_listener(stance_widget.remove)
 
+
 class GroundUnitOverviewTab(OverviewTab):
 	widget = 'overview_groundunit.xml'
-	helptext = _lazy("Unit overview")
+	helptext = LazyT("Unit overview")
 
 	has_stance = True
 
 	def init_widget(self):
-		super(GroundUnitOverviewTab, self).init_widget()
+		super().init_widget()
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
@@ -111,14 +111,16 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
 
+
 #added from old groundunittabs.py
 #class GroundUnitOverviewTab(OverviewTab):
 #	widget = 'overview_war_groundunit.xml'
-#	helptext = _lazy("Groundunit overview")
+#	helptext = LazyT("Groundunit overview")
 #
 #	def init_widget(self):
 #		super(GroundUnitOverviewTab, self).init_widget()
-		
+
+
 class GenericOverviewTab(OverviewTab):
 	"""Name and running costs."""
 	widget = 'overview_generic.xml'

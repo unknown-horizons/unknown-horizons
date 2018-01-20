@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,26 +23,26 @@ import collections
 import logging
 
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
-from horizons.util.python import trim_value, map_balance
+from horizons.util.python import map_balance, trim_value
 from horizons.util.worldobject import WorldObject
 
 
-class StrategyManager(object):
+class StrategyManager:
 	"""
 	StrategyManager object is responsible for handling major decisions in game such as
 	sending fleets to battle, keeping track of diplomacy between players, declare wars.
 	"""
 	log = logging.getLogger("ai.aiplayer.fleetmission")
 
+	# Redundant use of super()?
 	def __init__(self, owner):
-		super(StrategyManager, self).__init__()
+		super().__init__() # TODO: figure out whether this is needed
 		self.__init(owner)
 
 	def __init(self, owner):
@@ -79,7 +79,7 @@ class StrategyManager(object):
 		resources_weight = 0.75
 
 		resource_values = []
-		for player in [self.owner, other_player]:
+		for player in (self.owner, other_player):
 			resources_value = 0.0
 			for settlement in player.settlements:
 				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount
@@ -105,16 +105,16 @@ class StrategyManager(object):
 		min_balance = 10e-7
 		max_balance = 1000.0
 
-		ships = self.owner.ships.keys()
+		ships = list(self.owner.ships.keys())
 		ships = self.unit_manager.filter_ships(ships, (self.unit_manager.filtering_rules.fighting(),))
 		enemy_ships = self.unit_manager.get_player_ships(other_player)
 		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
 
-		# infinitely more powerful
+		# infinitely more powerful (is either or both expected to return None?)
 		if ships and not enemy_ships:
 			return max_balance
 
-		# infinitely less powerful
+		# infinitely less powerful (is either or both expected to return None?)
 		elif not ships and enemy_ships:
 			return min_balance
 		elif not ships and not enemy_ships:
@@ -133,7 +133,7 @@ class StrategyManager(object):
 
 		terrains = []
 		island_counts = []
-		for player in [self.owner, other_player]:
+		for player in (self.owner, other_player):
 			terrain_total = 0
 			islands = set()
 			for settlement in player.settlements:
@@ -145,7 +145,7 @@ class StrategyManager(object):
 		ai_terrain, enemy_terrain = terrains
 		ai_islands, enemy_islands = island_counts
 
-		# if not
+		# if not (is either or both expected to return None?)
 		if ai_islands and not enemy_islands:
 			return max_balance
 		if not ai_islands and enemy_islands:
@@ -178,12 +178,12 @@ class StrategyManager(object):
 		power_balance = self.owner.strategy_manager.calculate_player_power_balance(player)
 		terrain_balance = self.owner.strategy_manager.calculate_player_terrain_balance(player)
 		balance = {
-			'wealth':wealth_balance,
-			'power':power_balance,
-			'terrain':terrain_balance,
+			'wealth': wealth_balance,
+			'power': power_balance,
+			'terrain': terrain_balance,
 		}
-		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.iteritems()))
-		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.iteritems()))
+		balance = {key: trim_value(value, 1. / trimming_factor, trimming_factor) for key, value in balance.items()}
+		balance = {key: map_balance(value, trimming_factor, linear_boundary) for key, value in balance.items()}
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 
@@ -191,11 +191,12 @@ class StrategyManager(object):
 		for mission in list(self.missions):
 			mission.save(db)
 
-		for condition, mission in self.conditions_being_resolved.iteritems():
+		for condition, mission in self.conditions_being_resolved.items():
 			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid)
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean up below super() call; it is a hack
 		self = cls.__new__(cls)
 		super(StrategyManager, self).__init__()
 		self.__init(owner)
@@ -203,8 +204,8 @@ class StrategyManager(object):
 		return self
 
 	def _load(self, db):
-		for class_name, db_table in self.missions_to_load.iteritems():
-			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
+		for class_name, db_table in self.missions_to_load.items():
+			db_result = db("SELECT m.rowid FROM {} m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid".format(db_table), self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
@@ -240,7 +241,7 @@ class StrategyManager(object):
 
 	def unlock_condition(self, mission):
 		# values (FleetMission) are unique so it's possible to remove them this way:
-		for condition, value in self.conditions_being_resolved.iteritems():
+		for condition, value in self.conditions_being_resolved.items():
 			if mission == value:
 				del self.conditions_being_resolved[condition]
 				return
@@ -288,7 +289,7 @@ class StrategyManager(object):
 			self.log.debug("Conditions occurring against player %s", player.name)
 			environment['player'] = player
 
-			for condition in self.conditions.keys():
+			for condition in list(self.conditions.keys()):
 
 				# Check whether given condition is already being resolved
 				if condition.get_identifier(**environment) in self.conditions_being_resolved:
@@ -308,10 +309,10 @@ class StrategyManager(object):
 			# Choose the most important one
 
 			selected_condition, selected_outcome = max(occuring_conditions,
-				key=lambda (condition, outcome): self.conditions[condition] * outcome['certainty'])
+				key=lambda condition_outcome1: self.conditions[condition_outcome1[0]] * condition_outcome1[1]['certainty'])
 
 			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
-			for key, value in selected_outcome.iteritems():
+			for key, value in selected_outcome.items():
 				# Insert condition-gathered info into environment
 				environment[key] = value
 				self.log.debug(" %s: %s", key, value)
@@ -338,10 +339,11 @@ class StrategyManager(object):
 		for mission in self.missions:
 			mission.end()
 
+
 class PirateStrategyManager(StrategyManager):
 
 	def __init__(self, owner):
-		super(PirateStrategyManager, self).__init__(owner)
+		super().__init__(owner)
 		self.__init(owner)
 
 	def get_ships_for_mission(self):
@@ -352,6 +354,7 @@ class PirateStrategyManager(StrategyManager):
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean below code; it is a _very_ dirty hack
 		self = cls.__new__(cls)
 		super(PirateStrategyManager, self).__init__(owner)
 		self.__init(owner)

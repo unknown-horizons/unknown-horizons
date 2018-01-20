@@ -78,13 +78,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Plaats een jager en een visser. Verbindt ze met het pakhuis.]
+  - [Message, Plaats een jagers-tent en een vissers-tent. Verbindt ze met het pakhuis.]
   - [Headline, 'OPDRACHT: AANVOER VAN VOEDSEL']
   - [Image, content/gui/images/background/hr.png]
-  - Je hebt voedsel producerende bedrijven nodig, want mensen in het algemeen (en zeker zeelui) zijn heel hongerig.
-  - Beschikbare bedrijven in het eerste beschavingsniveau zijn jagers en vissers.
+  - Je hebt een aantal voedselproducerende bedrijven nodig, want mensen in het algemeen (en zeker zeelui) zijn heel hongerig.
+  - Beschikbare bedrijven in het eerste beschavingsniveau zijn de jagerstent en de vissershut.
   - Een jager jaagt op dieren in het bos, dus er moeten bomen in de omgeving staan.
-  - Merk op dat je een jagers hut dichtbij een houthakkershut kan plaatsen.
+  - Merk op dat je een jagerstent dichtbij een houthakkershut kan plaatsen.
   - Het kan dus gebeuren dat er op eens niet genoeg dieren meer zijn of dat ze zich goed hebben verstopt.
   - 'Conclusie: een jager is niet zo betrouwbaar voor een vaste aanvoer van voedsel.'
   - [Pagebreak]
@@ -95,8 +95,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dit is een zeer stabiele aanvoer voor voedsel, maar met een wat langere productietijd.
   - Een zeer kleine nederzetting zoals die van jouw kan gebruik maken van beide bedrijven, zo kun je een betere vergelijking maken tussen de voor- en nadelen.
   - ''
-  - [BoldLabel, 'Opdracht: Bouw een jager en een visser.']
-  - Vergeet niet om deze te verbinden met het pakhuis door middel van een pad!
+  - [BoldLabel, 'Opdracht: Bouw een jagerstent en een vissershut.']
+  - Vergeet niet om deze te verbinden met het pakhuis door middel van padden!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -106,11 +106,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Uw bewoners hebben behoeften aan een plein om goederen te krijgen.
   - Dit betekend dat ze een pad nodig hebben van hun huis naar het marktplein. Weet dat het marktplein ook fungeert als pad, waardoor aangrenzende tenten geen apart pad nodig zijn.
-  - Alle goederen in uw pakhuis zijn beschikbaar op het 'marktplein', zodat de bewoners niet hoeven te lopen naar de visser of het pakhuis.
+  - Alle goederen in uw pakhuis zijn beschikbaar op het 'marktplein', zodat de bewoners niet hoeven te lopen naar de vissershut of het pakhuis.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Probeer te vermeiden om je woontenten te dicht bij een houthakker te plaatsen, omdat je dan bomen moet kappen die een houthakker nodig heeft.
-  - Bedrijven werken ook zonder deze te verbinden met een pad naar de tenten, dus je hoeft geen pad te bouwen naar het plein of naar de houthakkershut.
+  - Bedrijven werken ook zonder deze te verbinden met een pad naar de tenten, dus je hoeft geen pad te bouwen naar het marktplein of naar de houthakkershut.
   - ''
   - [BoldLabel, 'Opdracht: Bouw een marktplein.']
   - [Pagebreak]
@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Heb je het schip gezien dat af en toe lang je eiland vaart? Het behoord tot de Vrije Handelaars, een van de eerste kolonisten in deze archipel.
   - De handelaar zul je nederzetting voorzien van de noodzakelijke goederen die je nog niet zelf kunt produceren.
   - Je kunt ook het productieoverschot verkopen, maar over het algemeen zal consumptie (door meer tenten te bouwen) meer geld opleveren dan de verkoop.
-  - Normaal zullen de handelsschepen gewoon wat rondvaren op zoek naar handelswaar, maar dit proces kan wat worden versneld.
+  - Normaal zullen de handelaren gewoon wat rondvaren op zoek naar handelswaar, maar dit proces kan wat worden versneld.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - Voor dit doel bouw je langs de kust een signaalvuur, in de nabijheid van je pakhuis. Deze zal schepen de weg wijzen naar je nederzetting.
@@ -176,8 +176,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Wanneer voorbijvarende handelaren het vuur gezien hebben, zullen ze je pakhuis bezoeken.'
-  - Te verhandelen goederen kunnen worden ingesteld via het tabblad "Koop/Verkoop".
+    Na dit zetje in de goede richting, zal de handelaar langskomen om in jouw pakhuis te komen kijken, zelf als hij eerst van plan was om voorbij te varen.'
+  - Te verhandelen goederen kunnen worden ingesteld via het tabblad "Koop/Verkoop" in het pakhuis.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - In het "Zeeman's" niveau staan drie handelsvakken ter beschikking.
@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Laten we nu verder gaan met de handelsinstructies.'
+  - Klik eerst op jouw eigen pakhuis en klik daarna op het derde tabblad.
+  - Klik dan op één van de de drie slots, selecteer vervolgens het product dat je wil kopen of verkopen.
   - Nadat een bepaald handelswaar is geselecteerd, zal een groene balk onderaan het vak laten zien hoeveel er van op voorraad is. Is er niets op voorraad, dan zal er ook geen balk verschijnen.
   - Het bewegen van de schuif aan de rechterkant van het vak bepaalt de 'doelstelling', wat een andere betekenis heeft bij 'Koop' en 'Verkoop'.
   - Bij het inkopen wordt niet meer aangeschaft dan in de 'doelstelling' is vastgelegd.
@@ -221,7 +223,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Dit is voorlopig genoeg gereedschap. Goed gedaan!
   - U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners.
-  - 'Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben, dat kunt je controleren in de tabbladen van de marktplein of een tent: De zeelui willen een simpel gebouw om te kunnen bidden.'
+  - 'Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben (dat kun je controleren door op een tent te klikken): De zeelui willen een simpel gebouw om te kunnen bidden.'
   - De oplossing is een paviljoen die de dominee opzet als bescherming tegen de zon.
   - Gebouwen ten behoeve van dienstverlening moeten met behulp van een pad verbonden worden met de tenten, anders kunnen je inwoners deze gebouwen niet bereiken.
   - [Pagebreak]
@@ -271,7 +273,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Een prachtig nieuw tabblad is hier verschenen.
   - Pioniers zijn kleding nodig, dus moet je hiervoor een productielijn opzetten. Deze begint met schapenwol, wat één van de producten van de boerderij is.
-  - De boerderij is een heel speciaal gebouw, omdat je er voor kunt kiezen niet één, meer meerdere verschillende producten te laten produceren.
+  - De boerderij is een heel speciaal gebouw, omdat je er voor kunt kiezen niet één, maar meerdere verschillende producten te laten produceren.
   - Welke producten boerderijen produceren, is afhankelijk van wat voor soort velden je er omheen bouwt.
   - [Pagebreak]
   - '
@@ -344,11 +346,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Bouw een kleermaker die op een of andere manier bij de wol kan komen op je boerderij.]
+  - [Message, Bouw een weverij die op één of andere manier bij de wol kan komen op je boerderij.]
   - [Headline, 'OPDRACHT: BOUW KLEERMAKER']
   - [Image, content/gui/images/background/hr.png]
   - Nu de wol productie op gang is, heb je kleermakers nodig om kleren te maken van de wol.
-  - Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij, opslag tent of pakhuis.
+  - De weverij is waar de kleermaker woont. Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij of bij een opslagtent (of het pakhuis).
   - In deze twee gevallen moet je er zeker van zijn dat er een verbinding is.
   - Als je een weverij dicht bij een boerderij bouwt en alle paden er na toe afbreekt, dan zul je zien dat er nog steeds wol wordt afgehaald en stof wordt geproduceerd.
   - ''
@@ -655,4 +657,4 @@ metadata:
   locale: nl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 188 translated messages.

@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import BUILDINGS, RES, TIER
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.status import FireStatusIcon
-from horizons.constants import BUILDINGS, RES, TIER
+
 
 class FireDisaster(BuildingInfluencingDisaster):
 	"""Simulates a fire.
@@ -49,5 +49,5 @@ class FireDisaster(BuildingInfluencingDisaster):
 	RESCUE_BUILDING_TYPE = BUILDINGS.FIRE_STATION
 
 	def wreak_havoc(self, building):
-		super(FireDisaster, self).wreak_havoc(building)
+		super().wreak_havoc(building)
 		building.make_ruin()

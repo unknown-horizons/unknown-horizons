@@ -25,7 +25,7 @@ logbook-data:
   - [Headline, 20 de Noviembre de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Tras cuatro días la tormenta amainó y pudimos tomar un descanso. Pero nos queda poca comida y nuestro navío se encuentra en mal estado. Hemos perdido los instrumentos de navegación y las cartas de navegación.
-  - Tenemos que llegar a tierra pronto. Uno de mis hombres vió aves pescando peces así que la tierra no puede estar lejos. Afortunadamente, siempre llevamos algunas herramientas y tablas de madera a bordo para construir un refugio.
+  - Tenemos que llegar a tierra pronto. Uno de mis hombres vio aves pescando peces así que la tierra no puede estar lejos. Afortunadamente, siempre llevamos algunas herramientas y tablas de madera a bordo para construir un refugio.
   - 'Tarea:
 
     Encuentra la costa y construye un puerto.'
@@ -58,7 +58,7 @@ logbook-data:
   - Es hora de construir algunas tiendas de campaña donde vivir y una plaza principal para proporcionar bienes a nuestros ciudadanos.
   - 'Tarea:
 
-    Construye una plaza principal y al menos 10 tiendas de campaña.'
+    Construye una Plaza Principal y al menos 10 Tiendas.'
   - [Pagebreak]
   - ''
 
@@ -142,7 +142,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Eres el capitán de un navío bajo bandera de Inglaterra en 1740. Tú y tu tripulación navegáis hacia una colonia inglesa en el océano Pacífico.
+  description: 'Eres el capitán de un navío bajo la bandera de Inglaterra en 1740. Tú y tu tripulación os dirigíais hacia una colonia inglesa en el océano Pacífico.
 
     Todo iba bien hasta que entraste en una tormenta…'
   difficulty: fácil

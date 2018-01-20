@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,21 +20,23 @@
 # ###################################################
 
 import weakref
+
 from fife import fife
 
 import horizons.globals
-
-from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.namedcomponent import NamedComponent, ShipNameComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import LAYERS
+from horizons.i18n import gettext as T
+from horizons.messaging import ShipDestroyed
+from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pather import FisherShipPather, ShipPather
+from horizons.world.traderoute import TradeRoute
 from horizons.world.units.collectors import FisherShipCollector
 from horizons.world.units.unit import Unit
-from horizons.constants import LAYERS
-from horizons.scheduler import Scheduler
-from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.component.commandablecomponent import CommandableComponent
-from horizons.messaging import ShipDestroyed
-from horizons.world.traderoute import TradeRoute
+
 
 class Ship(Unit):
 	"""Class representing a ship
@@ -48,16 +50,16 @@ class Ship(Unit):
 	in_ship_map = True # (#1023)
 
 	def __init__(self, x, y, **kwargs):
-		super(Ship, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		self.__init()
 
 	def save(self, db):
-		super(Ship, self).save(db)
+		super().save(db)
 		if hasattr(self, 'route'):
 			self.route.save(db)
 
 	def load(self, db, worldid):
-		super(Ship, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 
 		# if ship did not have route configured, do not add attribute
@@ -88,7 +90,7 @@ class Ship(Unit):
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
 		ShipDestroyed.broadcast(self)
-		super(Ship, self).remove()
+		super().remove()
 
 	def create_route(self):
 		self.route = TradeRoute(self)
@@ -105,7 +107,7 @@ class Ship(Unit):
 			               "not found in world.ship_map", self, self.position.to_tuple())
 
 		try:
-			super(Ship, self)._move_tick(resume)
+			super()._move_tick(resume)
 		except PathBlockedError:
 			# if we fail to resume movement then the ship should still be on the map
 			# but the exception has to be raised again.
@@ -126,7 +128,7 @@ class Ship(Unit):
 				ship = self.session.world.ship_map.get(self._next_target.to_tuple())
 				if ship is not None and ship() is self:
 					del self.session.world.ship_map[self._next_target.to_tuple()]
-		super(Ship, self)._movement_finished()
+		super()._movement_finished()
 
 	def go(self, x, y):
 		# Disable trade route, direct commands overwrite automated ones.
@@ -136,7 +138,7 @@ class Ship(Unit):
 			self._update_buoy()
 
 	def move(self, *args, **kwargs):
-		super(Ship, self).move(*args, **kwargs)
+		super().move(*args, **kwargs)
 		if self.has_component(SelectableComponent) and \
 		   self.get_component(SelectableComponent).selected and \
 		   self.owner.is_local_player: # handle buoy
@@ -194,10 +196,10 @@ class Ship(Unit):
 		warehouses = self.get_tradeable_warehouses(position)
 		if warehouses:
 			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
-			player_suffix = u''
+			player_suffix = ''
 			if warehouse.owner is not self.owner:
-				player_suffix = u' ({name})'.format(name=warehouse.owner.name)
-			return u'{name}{suffix}'.format(name=warehouse.settlement.get_component(NamedComponent).name,
+				player_suffix = ' ({name})'.format(name=warehouse.owner.name)
+			return '{name}{suffix}'.format(name=warehouse.settlement.get_component(NamedComponent).name,
 			                                suffix=player_suffix)
 		return None
 
@@ -209,13 +211,13 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				return (_('Going to {location}').format(location=location_based_status), target)
-			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
+				return (T('Going to {location}').format(location=location_based_status), target)
+			return (T('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				return (_('Idle at {location}').format(location=location_based_status), self.position)
-			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
+				return (T('Idle at {location}').format(location=location_based_status), self.position)
+			return (T('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 
 class TradeShip(Ship):
@@ -223,10 +225,10 @@ class TradeShip(Ship):
 	health_bar_y = -220
 
 	def __init__(self, x, y, **kwargs):
-		super(TradeShip, self).__init__(x, y, **kwargs)
+		super().__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [_('Trader')]
+		return [T('Trader')]
 
 
 class FisherShip(FisherShipCollector, Ship):

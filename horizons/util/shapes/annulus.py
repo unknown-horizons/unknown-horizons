@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.decorators import bind_all
-from horizons.util.shapes import Point, Shape
+from . import Shape
+from .point import Point
+
 
 class Annulus(Shape):
 	"""Class for the shape of an annulus
@@ -41,7 +42,8 @@ class Annulus(Shape):
 		return self.min_radius <= point.distance(self.center) <= self.max_radius
 
 	def __str__(self):
-		return "Annulus(center=%s,min_radius=%s,max_radius=%s)" % (self.center, self.min_radius, self.max_radius)
+		return ("Annulus(center={},min_radius={},max_radius={})"
+				.format(self.center, self.min_radius, self.max_radius))
 
 	def __eq__(self, other):
 		try:
@@ -58,9 +60,7 @@ class Annulus(Shape):
 		return hash((self.center, self.min_radius, self.max_radius))
 
 	def tuple_iter(self):
-		for x in xrange(self.center.x-self.max_radius, self.center.x+self.max_radius+1):
-			for y in xrange(self.center.y-self.max_radius, self.center.y+self.max_radius+1):
+		for x in range(self.center.x - self.max_radius, self.center.x + self.max_radius + 1):
+			for y in range(self.center.y - self.max_radius, self.center.y + self.max_radius + 1):
 				if self.min_radius <= self.center.distance((x, y)) <= self.max_radius:
 					yield (x, y)
-
-bind_all(Annulus)

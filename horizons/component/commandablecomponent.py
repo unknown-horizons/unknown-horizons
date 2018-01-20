@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -25,6 +25,7 @@ from horizons.component import Component
 from horizons.util.shapes import Circle, Point
 from horizons.world.units.unitexeptions import MoveNotPossible
 
+
 class CommandableComponent(Component):
 	"""
 	Class that handles the Commandable component of units
@@ -35,7 +36,7 @@ class CommandableComponent(Component):
 	NAME = 'commandable'
 
 	def __init__(self):
-		super(CommandableComponent, self).__init__()
+		super().__init__()
 
 	def go(self, x, y):
 		"""Moves the unit.

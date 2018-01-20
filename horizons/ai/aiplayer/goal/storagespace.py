@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +20,9 @@
 # ###################################################
 
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from horizons.util.python import decorators
-from horizons.constants import RES
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES
+
 
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 	def get_personality_name(self):
@@ -40,7 +40,7 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 
 	def update(self):
 		if self._need_more_storage():
-			super(StorageSpaceGoal, self).update()
+			super().update()
 			if not self._is_active:
 				self._is_active = True
 				self._problematic_buildings = self.production_builder.production_buildings
@@ -51,5 +51,3 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		result = self._build_extra_storage()
 		self._log_generic_build_result(result, 'storage space provider')
 		return self._translate_build_result(result)
-
-decorators.bind_all(StorageSpaceGoal)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Annulus
 from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class BehaviorMoveCallback:
 	"""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,19 +21,20 @@
 
 import logging
 import math
+
 from fife import fife
 
-from horizons.world.units.movingobject import MovingObject
-from horizons.util.python import decorators
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.constants import LAYERS
+from horizons.extscheduler import ExtScheduler
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.constants import LAYERS
-from horizons.component.commandablecomponent import CommandableComponent
-from horizons.component.healthcomponent import HealthComponent
-from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
+from horizons.world.units.movingobject import MovingObject
+
 
 class Unit(MovingObject, ResourceTransferHandler):
 	log = logging.getLogger("world.units")
@@ -44,7 +45,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 	AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10 # show health for 10 sec after damage has been taken
 
 	def __init__(self, x, y, owner=None, **kwargs):
-		super(Unit, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		self.__init(x, y, owner)
 
 	def __init(self, x, y, owner):
@@ -80,7 +81,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
 		ExtScheduler().rem_all_classinst_calls(self)
-		super(Unit, self).remove()
+		super().remove()
 		self.log.debug("Unit.remove finished")
 
 	def onInstanceActionFinished(self, instance, action):
@@ -176,14 +177,14 @@ class Unit(MovingObject, ResourceTransferHandler):
 		vis.setVisible(True)
 
 	def save(self, db):
-		super(Unit, self).save(db)
+		super().save(db)
 
 		owner_id = 0 if self.owner is None else self.owner.worldid
 		db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.__class__.id, self.position.x, self.position.y, owner_id)
 
 	def load(self, db, worldid):
-		super(Unit, self).load(db, worldid)
+		super().load(db, worldid)
 
 		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
 		if owner_id == 0:
@@ -203,10 +204,10 @@ class Unit(MovingObject, ResourceTransferHandler):
 		randint = self.session.random.randint
 		# pick a sample, try tries times
 		tries = range_squared // 2
-		for i in xrange(tries):
+		for i in range(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
 			x_diff = randint(1, in_range) # always go at least 1 field
-			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
+			y_max_diff = int( math.sqrt(range_squared - x_diff * x_diff) )
 			y_diff = randint(0, y_max_diff)
 			# use randomness of x/y_diff below, randint calls are expensive
 			# this results in a higher chance for x > y than y < x, so equalize
@@ -232,7 +233,4 @@ class Unit(MovingObject, ResourceTransferHandler):
 		return self.session.db.get_unit_type_name(self.id)
 
 	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
-
-
-decorators.bind_all(Unit)
+		return '{}(id={};worldid={})'.format(self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')

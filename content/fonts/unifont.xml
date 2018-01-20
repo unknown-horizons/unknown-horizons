@@ -1,0 +1,13 @@
+<fonts>
+	<font name="pickbelt" type="truetype" source="content/fonts/Unifont.ttf" size="13" antialias="1" color="255,255,255"/>
+	<font name="default" type="truetype" source="content/fonts/Unifont.ttf" size="15" antialias="1" color="68,42,2"/>
+	<font name="default_bold" type="truetype" source="content/fonts/Unifont.ttf" size="15" antialias="1" color="68,42,2"/>
+	<font name="default_load" type="truetype" source="content/fonts/Unifont.ttf" size="15" antialias="1" color="188,154,114"/>
+	<font name="message" type="truetype" source="content/fonts/Unifont.ttf" size="15" antialias="1" color="255,255,255"/>
+	<font name="resourcebar" type="truetype" source="content/fonts/Unifont.ttf" size="16" antialias="1" color="68,42,2"/>
+	<font name="unifont" type="truetype" source="content/fonts/Unifont.ttf" size="16" antialias="1" color="68,42,2"/>
+	<font name="headline" type="truetype" source="content/fonts/Unifont.ttf" size="18" antialias="1" color="68,42,2"/>
+	<font name="headline_light" type="truetype" source="content/fonts/Unifont.ttf" size="18" antialias="1" color="188,154,114"/>
+	<font name="mainmenu" type="truetype" source="content/fonts/Unifont.ttf" size="22" antialias="1" color="255,255,255"/>
+	<font name="large_load" type="truetype" source="content/fonts/Unifont.ttf" size="34" antialias="1" color="120,100,65"/>
+</fonts>

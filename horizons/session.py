@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,39 +19,40 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import errno
+import json
+import logging
 import os
 import os.path
-import logging
-import json
-import traceback
 import time
+import traceback
 from random import Random
 
 import horizons.globals
 import horizons.main
-
 from horizons.ai.aiplayer import AIPlayer
-from horizons.gui.ingamegui import IngameGui
 from horizons.command.building import Tear
-from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
-from horizons.scheduler import Scheduler
-from horizons.extscheduler import ExtScheduler
-from horizons.view import View
-from horizons.world import World
-from horizons.entities import Entities
-from horizons.util.living import LivingObject, livingProperty
-from horizons.util.savegameaccessor import SavegameAccessor
-from horizons.util.worldobject import WorldObject
-from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableBuildingComponent
+from horizons.constants import GAME_SPEED
+from horizons.entities import Entities
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.ingamegui import IngameGui
+from horizons.i18n import gettext as T
+from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
+from horizons.messaging.queuingmessagebus import QueuingMessageBus
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED
-from horizons.messaging import SettingChanged, MessageBus, SpeedChanged, LoadingProgress
+from horizons.scheduler import Scheduler
+from horizons.util.dbreader import DbReader
+from horizons.util.living import LivingObject, livingProperty
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.uhdbaccessor import read_savegame_template
+from horizons.util.worldobject import WorldObject
+from horizons.view import View
+from horizons.world import World
+
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -89,13 +90,14 @@ class Session(LivingObject):
 	log = logging.getLogger('session')
 
 	def __init__(self, db, rng_seed=None, ingame_gui_class=IngameGui):
-		super(Session, self).__init__()
+		super().__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
 		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True
+		self.paused_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 
 		self._clear_caches()
 
@@ -114,7 +116,7 @@ class Session(LivingObject):
 
 		self.selected_instances = set()
 		# List of sets that holds the player assigned unit groups.
-		self.selection_groups = [set()] * 10
+		self.selection_groups = [set() for _unused in range(10)]
 
 		self._old_autosave_interval = None
 
@@ -193,6 +195,7 @@ class Session(LivingObject):
 		# discard() in case loading failed and we did not yet subscribe
 		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
+		QueuingMessageBus().reset()
 
 	def quit(self):
 		self.end()
@@ -200,10 +203,13 @@ class Session(LivingObject):
 
 	def autosave(self):
 		raise NotImplementedError
+
 	def quicksave(self):
 		raise NotImplementedError
+
 	def quickload(self):
 		raise NotImplementedError
+
 	def save(self, savegame=None):
 		raise NotImplementedError
 
@@ -333,6 +339,7 @@ class Session(LivingObject):
 	_pause_stack = 0 # this saves the level of pausing
 	# e.g. if two dialogs are displayed, that pause the game,
 	# unpause needs to be called twice to unpause the game. cf. #876
+
 	def speed_pause(self, suggestion=False):
 		self.log.debug("Session: Pausing")
 		self._pause_stack += 1
@@ -367,18 +374,18 @@ class Session(LivingObject):
 		for instance in [inst for inst in self.selected_instances]:
 			if instance.is_building:
 				if instance.tearable and instance.owner is self.world.player:
-					self.log.debug('Attempting to remove building %s', inst)
+					self.log.debug('Attempting to remove building %s', instance)
 					Tear(instance).execute(self)
 					self.selected_instances.discard(instance)
 				else:
-					self.log.debug('Unable to remove building %s', inst)
+					self.log.debug('Unable to remove building %s', instance)
 			elif instance.is_unit:
 				if instance.owner is self.world.player:
-					self.log.debug('Attempting to remove unit %s', inst)
+					self.log.debug('Attempting to remove unit %s', instance)
 					RemoveUnit(instance).execute(self)
 					self.selected_instances.discard(instance)
 				else:
-					self.log.debug('Unable to remove unit %s', inst)
+					self.log.debug('Unable to remove unit %s', instance)
 			else:
 				self.log.error('Unable to remove unknown object %s', instance)
 
@@ -394,19 +401,17 @@ class Session(LivingObject):
 
 			db = DbReader(savegame)
 		except IOError as e: # usually invalid filename
-			headline = _("Failed to create savegame file")
-			descr = _("There has been an error while creating your savegame file.")
-			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
+			headline = T("Failed to create savegame file")
+			descr = T("There has been an error while creating your savegame file.")
+			advice = T("This usually means that the savegame name contains unsupported special characters.")
+			self.ingame_gui.open_error_popup(headline, descr, advice, str(e))
 			# retry with new savegamename entered by the user
 			# (this must not happen with quicksave/autosave)
 			return self.save()
-		except OSError as e:
-			if e.errno != errno.EACCES:
-				raise
+		except PermissionError:
 			self.ingame_gui.open_error_popup(
-				_("Access is denied"),
-				_("The savegame file could be read-only or locked by another process.")
+				T("Access is denied"),
+				T("The savegame file could be read-only or locked by another process.")
 			)
 			return self.save()
 

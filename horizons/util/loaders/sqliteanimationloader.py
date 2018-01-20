@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
-class SQLiteAnimationLoader(object):
+
+class SQLiteAnimationLoader:
 	"""Loads animations from a SQLite database.
 	"""
 	def __init__(self):
@@ -45,19 +43,24 @@ class SQLiteAnimationLoader(object):
 		#TODO: complete documentation
 		"""
 		commands = location.split(':')
-		id = commands.pop(0)
-		actionset, action, rotation = id.split('+')
-		commands = zip(commands[0::2], commands[1::2])
+		anim_id = commands.pop(0)
+		actionset, action, rotation = anim_id.split('+')
+		commands = list(zip(commands[0::2], commands[1::2]))
+
+		animationmanager = horizons.globals.fife.animationmanager
+
+		# if we've loaded that animation before, we can finish early
+		if animationmanager.exists(anim_id):
+			return animationmanager.getPtr(anim_id)
 
 		# Set the correct loader based on the actionset
-		loader = None
 		loader = self._get_loader(actionset)
 
-		ani = fife.Animation.createAnimation()
+		ani = animationmanager.create(anim_id)
 		frame_start, frame_end = 0.0, 0.0
-		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
-			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
-			img = horizons.globals.fife.imagemanager.load(file)
+		for f in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
+			frame_end = loader.get_sets()[actionset][action][int(rotation)][f]
+			img = horizons.globals.fife.imagemanager.load(f)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
@@ -82,9 +85,11 @@ class SQLiteAnimationLoader(object):
 					img.setXShift(x)
 					img.setYShift(y)
 
-			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
 			frame_start = float(frame_end)
-		ani.setActionFrame(0)
+		# currently unused. would trigger onInstanceActionFrame of
+		# fife.InstanceActionListener instance
+		ani.setActionFrame(-1)
 		return ani
 
 	def _get_loader(self, actionset):
@@ -96,12 +101,12 @@ class SQLiteAnimationLoader(object):
 				assert False, "Invalid set being loaded: " + actionset
 			return loader
 
-	def load_image(self, file, actionset, action, rotation):
+	def load_image(self, f, actionset, action, rotation):
 		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][int(rotation)][file]
+		entry = loader.get_sets()[actionset][action][int(rotation)][f]
 
-		if horizons.globals.fife.imagemanager.exists(file):
-			img = horizons.globals.fife.imagemanager.get(file)
+		if horizons.globals.fife.imagemanager.exists(f):
+			img = horizons.globals.fife.imagemanager.get(f)
 		else:
-			img = horizons.globals.fife.imagemanager.create(file)
+			img = horizons.globals.fife.imagemanager.create(f)
 		return img

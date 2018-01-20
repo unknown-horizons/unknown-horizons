@@ -191,14 +191,14 @@ INSERT INTO "related_buildings" VALUES(20, 19, 1);
 INSERT INTO "related_buildings" VALUES(20, 22, 1);
 INSERT INTO "related_buildings" VALUES(20, 36, 1);
 INSERT INTO "related_buildings" VALUES(20, 38, 1);
-INSERT INTO "related_buildings" VALUES(20, 39, 0);
+INSERT INTO "related_buildings" VALUES(20, 39, 1);
 INSERT INTO "related_buildings" VALUES(20, 40, 1);
 INSERT INTO "related_buildings" VALUES(20, 46, 1);
 INSERT INTO "related_buildings" VALUES(20, 49, 1);
 INSERT INTO "related_buildings" VALUES(20, 60, 1);
 INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
---INSERT INTO "related_buildings" VALUES(20, 69, 1); --out of space
+INSERT INTO "related_buildings" VALUES(20, 69, 1);
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
 CREATE TABLE "tile_set" (
@@ -262,9 +262,9 @@ INSERT INTO "resource" VALUES(30, 'tobacco plants',  2,     0,    1);
 INSERT INTO "resource" VALUES(31, 'tobacco leaves',  2.5,   1,    1);
 INSERT INTO "resource" VALUES(32, 'tobaccos',       10,     1,    1);
 INSERT INTO "resource" VALUES(33, 'cattle',          0,     0,    1);
-INSERT INTO "resource" VALUES(34, 'pigs',            0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(34, 'pigs',            0,     0,    0);
 INSERT INTO "resource" VALUES(35, 'cattle for slaughter',2, 0,    1);
-INSERT INTO "resource" VALUES(36, 'pigs for slaughter',2,   0,    0); -- unused
+INSERT INTO "resource" VALUES(36, 'pigs for slaughter',2,   0,    0);
 INSERT INTO "resource" VALUES(37, 'herbs',           0,     0,    1);
 INSERT INTO "resource" VALUES(38, 'medical herbs',   2.5,   1,    1);
 INSERT INTO "resource" VALUES(39, 'acorns',          0,     0,    0); -- unused

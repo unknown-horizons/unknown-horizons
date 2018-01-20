@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
+
 import fnmatch
+import logging
 import os
 
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
+
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -36,7 +38,7 @@ class _EntitiesLazyDict(dict):
 
 	def __getitem__(self, key):
 		try:
-			return super(_EntitiesLazyDict, self).__getitem__(key)
+			return super().__getitem__(key)
 		except KeyError:
 			fun = self._future_entries.pop(key)
 			elem = fun()
@@ -44,7 +46,7 @@ class _EntitiesLazyDict(dict):
 			return elem
 
 
-class Entities(object):
+class Entities:
 	"""Class that stores all the special classes for buildings, grounds etc.
 	Stores class objects, not instances.
 	Loads grounds from the db.
@@ -76,8 +78,8 @@ class Entities(object):
 		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
 			tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", ground_id)[0][0]
-			for shape in tile_sets[tile_set_id].iterkeys():
-				cls_name = '%d-%s' % (ground_id, shape)
+			for shape in tile_sets[tile_set_id].keys():
+				cls_name = '{:d}-{}'.format(ground_id, shape)
 				cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
 				if load_now:
 					cls.grounds[cls_name]
@@ -98,7 +100,7 @@ class Entities(object):
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file, game_data=True)
 				if result is None: # discard empty yaml files
-					print "Empty yaml file {file} found, not loading!".format(file=full_file)
+					print("Empty yaml file {file} found, not loading!".format(file=full_file))
 					continue
 
 				result['yaml_file'] = full_file

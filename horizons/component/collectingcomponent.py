@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +20,10 @@
 # ###################################################
 
 
-from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons import entities
 from horizons.component import Component
+from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
+
 
 class CollectingComponent(Component):
 	"""The CollectingBuilding class represents a object that uses collectors
@@ -38,7 +39,7 @@ class CollectingComponent(Component):
 
 	## INIT/DESTRUCT
 	def __init__(self, collectors):
-		super(CollectingComponent, self).__init__()
+		super().__init__()
 		self.__collector_templates = collectors
 
 	def initialize(self):
@@ -54,8 +55,8 @@ class CollectingComponent(Component):
 
 	def create_collector(self, collectors):
 		"""Creates collectors for building according to db."""
-		for collector_class, count in collectors.iteritems():
-			for i in xrange(0, count):
+		for collector_class, count in collectors.items():
+			for i in range(0, count):
 				self.add_collector(collector_class)
 
 	def add_collector(self, collector_class):
@@ -64,7 +65,6 @@ class CollectingComponent(Component):
 		"""
 		collector = entities.Entities.units[collector_class](self.instance, session=self.session, owner=self.instance.owner)
 		collector.initialize()
-
 
 	def remove(self):
 		# remove every non-ship collectors (those are independent)
@@ -76,12 +76,12 @@ class CollectingComponent(Component):
 				#TODO remove the remove call() #2123
 				collector.remove()
 		assert not [c for c in self.__collectors]
-		super(CollectingComponent, self).remove()
+		super().remove()
 		self.__collectors = None
 		self.path_nodes = None
 
 	def save(self, db):
-		super(CollectingComponent, self).save(db)
+		super().save(db)
 		for collector in self.__collectors:
 			# collectors, that are ship (e.g. fisher ship) are viewed as independent
 			# units, and therefore managed by world. This is justified, since they survive
@@ -90,11 +90,9 @@ class CollectingComponent(Component):
 			if not collector.is_ship:
 				collector.save(db)
 
-
 	def load(self, db, worldid):
-		super(CollectingComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
-
 
 	## INTERFACE
 	def add_local_collector(self, collector):

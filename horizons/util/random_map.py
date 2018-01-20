@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import copy
 import hashlib
 import random
 import re
 import string
-import copy
+from typing import List
 
-from horizons.util.shapes import Circle, Point, Rect
 from horizons.constants import GROUND
+from horizons.util.shapes import Circle, Point, Rect
 
 # this is how a random island id looks like (used for creation)
 _random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}:${island_x}:${island_y}"
@@ -43,14 +44,14 @@ def create_random_island(map_db, island_id, id_string):
 	"""
 	match_obj = re.match(_random_island_id_regexp, id_string)
 	assert match_obj
-	creation_method, width, height, seed, island_x, island_y = [long(i) for i in match_obj.groups()]
+	creation_method, width, height, seed, island_x, island_y = [int(i) for i in match_obj.groups()]
 	assert creation_method == 2, 'The only supported island creation method is 2.'
 
 	rand = random.Random(seed)
 	map_set = set()
 
 	# place this number of shapes
-	for i in xrange(15 + width * height // 45):
+	for i in range(15 + width * height // 45):
 		# place shape determined by shape_id on (x, y)
 		add = True
 		shape_id = rand.randint(2, 8)
@@ -132,7 +133,7 @@ def create_random_island(map_db, island_id, id_string):
 					# (x2, y2) is now a point just off the island
 
 					neighbors_dirs = 0
-					for i in xrange(len(neighbors)):
+					for i in range(len(neighbors)):
 						x3 = x2 + neighbors[i][0]
 						y3 = y2 + neighbors[i][1]
 						if (x3, y3) not in map_set:
@@ -207,7 +208,7 @@ def create_random_island(map_db, island_id, id_string):
 		"""
 		result = set()
 		for x, y in map_set:
-			for offset_x, offset_y in all_moves.itervalues():
+			for offset_x, offset_y in all_moves.values():
 				coords = (x + offset_x, y + offset_y)
 				if coords not in map_set:
 					result.add(coords)
@@ -225,22 +226,22 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.SAND_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.SAND_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.SAND_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.SAND_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.SAND_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.SAND_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.SAND_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.SAND_NORTH
 		# sandy corner
 		elif filled == ['se']:
@@ -279,22 +280,22 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.COAST_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.COAST_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.COAST_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.COAST_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.COAST_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.COAST_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.COAST_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.COAST_NORTH
 		# mostly wet corner
 		elif filled == ['se']:
@@ -333,22 +334,22 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.DEEP_WATER_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
+		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.DEEP_WATER_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		elif filled in [['n', 'ne', 'nw'], ['n']]:
 			tile = GROUND.DEEP_WATER_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif filled in [['nw', 'sw', 'w'], ['w']]:
 			tile = GROUND.DEEP_WATER_EAST
 		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
+		elif filled in [['e', 'se'], ['e', 'ne']]:
 			tile = GROUND.DEEP_WATER_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
+		elif filled in [['n', 'ne'], ['n', 'nw']]:
 			tile = GROUND.DEEP_WATER_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
+		elif filled in [['nw', 'w'], ['sw', 'w']]:
 			tile = GROUND.DEEP_WATER_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif filled in [['s', 'sw'], ['s', 'se']]:
 			tile = GROUND.DEEP_WATER_NORTH
 		# mostly deep corner
 		elif filled == ['se']:
@@ -376,6 +377,7 @@ def create_random_island(map_db, island_id, id_string):
 
 	map_db("COMMIT")
 
+
 def _simplify_seed(seed):
 	"""
 	Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally.
@@ -386,10 +388,11 @@ def _simplify_seed(seed):
 	depending on the platform which we don't want to happen.
 	"""
 
-	seed = str(seed).lower().strip()
+	seed = str(seed).lower().strip().encode('utf-8')
 	h = hashlib.md5(seed)
 	h.update(seed)
 	return int('0x' + h.hexdigest(), 16) % 1000000007
+
 
 def generate_random_map(seed, map_size, water_percent, max_island_size,
                         preferred_island_size, island_size_deviation):
@@ -410,7 +413,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 	min_island_separation = 3 + map_size // 100 # minimum distance between two islands
 	max_island_side_coefficient = 4 # maximum value of island's max(side length) / min(side length)
 
-	islands = []
+	islands = [] # type: List[Rect]
 	estimated_land = 0
 	max_land_amount = map_size * map_size * (100 - water_percent) // 100
 
@@ -425,7 +428,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 		if estimated_land + size > max_land_amount:
 			continue
 
-		for _ in xrange(13):
+		for _ in range(13):
 			x = rand.randint(0, map_size - width)
 			y = rand.randint(0, map_size - height)
 
@@ -471,30 +474,32 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 		island_strings.append(island_string)
 	return island_strings
 
+
 def generate_random_seed(seed):
 	rand = random.Random(seed)
 	if rand.randint(0, 1) == 0:
 		# generate a random string of 1-5 letters a-z with a dash if there are 4 or more letters
 		seq = ''
-		for i in xrange(rand.randint(1, 5)):
+		for i in range(rand.randint(1, 5)):
 			seq += chr(97 + rand.randint(0, 25))
 		if len(seq) > 3:
 			split = rand.randint(2, len(seq) - 2)
 			seq = seq[:split] + '-' + seq[split:]
-		return unicode(seq)
+		return seq
 	else:
 		# generate a numeric seed
 		fields = rand.randint(1, 3)
 		if fields == 1:
 			# generate a five digit integer
-			return unicode(rand.randint(10000, 99999))
+			return str(rand.randint(10000, 99999))
 		else:
 			# generate a sequence of 2 or 3 dash separated fields of integers 10-9999
 			parts = []
-			for i in xrange(fields):
+			for i in range(fields):
 				power = rand.randint(1, 3)
 				parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
-			return unicode('-'.join(parts))
+			return '-'.join(parts)
+
 
 def generate_map_from_seed(seed):
 	"""
@@ -505,6 +510,7 @@ def generate_map_from_seed(seed):
 	"""
 
 	return generate_random_map(seed, 150, 50, 70, 70, 30)
+
 
 def generate_huge_map_from_seed(seed):
 	"""Same as generate_map_from_seed, but making it as big as it is still reasonable"""

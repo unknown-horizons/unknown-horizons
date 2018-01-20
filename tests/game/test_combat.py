@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,26 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from nose.plugins.skip import SkipTest
-
+from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
+from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
+from horizons.command.unit import Attack, CreateUnit
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import UNITS, WEAPONS
 from horizons.util.color import Color
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
-from horizons.command.unit import CreateUnit, Attack
-from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
-from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.player import Player
-from horizons.constants import UNITS, WEAPONS
-from horizons.component.healthcomponent import HealthComponent
-
 from tests.game import game_test, new_session, saveload
 
 
 def setup_combat(s, ship):
 	worldid = 10000000
 
-	p0 = Player(s, worldid, "p1", Color[1])
-	p1 = Player(s, worldid+1, "p2", Color[2])
+	p0 = Player(s, worldid, "p1", Color.get(1))
+	p1 = Player(s, worldid + 1, "p2", Color.get(2))
 
 	for p in (p0, p1):
 		p.initialize(None)
@@ -70,8 +67,6 @@ def one_dead(wid1, wid2):
 
 @game_test()
 def test_noncombat_units(s, p):
-	raise SkipTest()
-
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP)
 
 	# healthy before
@@ -90,8 +85,6 @@ def test_noncombat_units(s, p):
 
 @game_test()
 def test_equip(s, p):
-	raise SkipTest()
-
 	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, (
 	        "This test only makes sense with default cannons."
 	        " Adapt this if you don't want default cannons.")
@@ -240,6 +233,7 @@ def test_unfair(s, p):
 	assert health(s0_1) > 0
 
 # TODO: stances
+
 
 @game_test(manual_session=True)
 def test_combat_save_load():

@@ -29,8 +29,7 @@ set -e
 # script assumes working dir to be our base directory
 cd "$(dirname "$0")"/..
 
-VERSION=$(python2 -c 'from horizons.constants import VERSION
-print "%s" % VERSION.RELEASE_VERSION')
+VERSION=$(python3 -c 'from horizons.constants import VERSION;print("%s" % VERSION.RELEASE_VERSION)')
 
 RESULT_FILE=po/uh/unknown-horizons.pot
 RESULT_FILE_SERVER=po/uh-server/unknown-horizons-server.pot
@@ -47,7 +46,7 @@ function strip_itstool()
   sed -i '/^#\. noi18n_\(help\)\?text$/d' $1
   # Now do more complicated magic that we need python's polib for:
   # Fixup extracted python {format} strings from xml files (add right flag)
-  python2 << END
+  python3 << END
 import re; FORMAT = re.compile(r'{.*}')
 try:
   import polib
@@ -73,7 +72,7 @@ function reset_if_empty()
 }
 
 # XML files
-python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
+python3 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
 find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
   itstool -i development/its-rule-pychan.xml \
@@ -82,7 +81,7 @@ find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
 echo "   * Wrote xml translation template to $RESULT_FILE."
 
 # YAML files
-python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
+python3 development/extract_strings_from_objects.py "$YAML_PY_FILE"
 echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
 
 echo "=> Creating UH gettext pot template file at $RESULT_FILE."
@@ -99,12 +98,12 @@ echo "=> Creating UH gettext pot template file at $RESULT_FILE."
              --package-name='Unknown Horizons' \
              --package-version="$VERSION" \
              --msgid-bugs-address='team@unknown-horizons.org' \
-             --keyword=N_:1,2 \
-             --keyword=_lazy
-# --keyword=N_ also catches N_() plural-aware ngettext calls
+             --keyword=NT:1,2 \
+             --keyword=LazyT \
+             --keyword=T
 
 # SQL files
-python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
+python3 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
 echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 # Merge with python+xml file RESULT_FILE, do not update header
 xgettext --output="$RESULT_FILE" \

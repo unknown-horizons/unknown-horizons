@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,11 @@
 from fife import fife
 
 import horizons.globals
-from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
+from horizons.command.unit import Act, Attack
 from horizons.component.healthcomponent import HealthComponent
 from horizons.gui.mousetools.selectiontool import SelectionTool
+
 
 class AttackingTool(SelectionTool):
 	"""
@@ -36,7 +37,7 @@ class AttackingTool(SelectionTool):
 	send_hover_instances_update = False
 
 	def __init__(self, session):
-		super(AttackingTool, self).__init__(session)
+		super().__init__(session)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
@@ -58,10 +59,10 @@ class AttackingTool(SelectionTool):
 			evt.consume()
 		else:
 			self.deselect_at_end = False
-			super(AttackingTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 
 	def mouseMoved(self, evt):
-		super(AttackingTool, self).mouseMoved(evt)
+		super().mouseMoved(evt)
 		target = self._get_attackable_instance(evt)
 		if target:
 			horizons.globals.fife.set_cursor_image("attacking")

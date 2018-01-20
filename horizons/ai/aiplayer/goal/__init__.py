@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,9 +22,9 @@
 import logging
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT, GOAL_RESULT
-from horizons.util.python import decorators
 
-class Goal(object):
+
+class Goal:
 	"""An object of this class describes a goal that an AI player attempts to fulfil."""
 
 	log = logging.getLogger("ai.aiplayer.goal")
@@ -74,7 +74,7 @@ class Goal(object):
 			return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
 		elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR, BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
 			return GOAL_RESULT.SKIP
-		assert False, 'Unable to translate BUILD_RESULT %d to a GOAL_RESULT' % result
+		assert False, 'Unable to translate BUILD_RESULT {:d} to a GOAL_RESULT'.format(result)
 
 	def __lt__(self, other):
 		if self.priority != other.priority:
@@ -82,6 +82,5 @@ class Goal(object):
 		return self.sequence_number < other.sequence_number
 
 	def __str__(self):
-		return 'Goal(%d): %s(%d)' % (self.priority, self.__class__.__name__, self.sequence_number)
-
-decorators.bind_all(Goal)
+		return 'Goal({:d}): {}({:d})'.format(
+			self.priority, self.__class__.__name__, self.sequence_number)

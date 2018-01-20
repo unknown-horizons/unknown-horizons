@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,16 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import copy
 import itertools
 import operator
 
-import horizons.globals
+from fife import fife
 
+import horizons.globals
 from horizons.component import Component
 from horizons.constants import GFX, LAYERS, RES
-from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
 
 
@@ -58,14 +57,14 @@ class SelectableComponent(Component):
 		          'fisher'   : SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
-		return TYPES[ t ]( **arguments )
+		return TYPES[t](**arguments)
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None):
-		super(SelectableComponent, self).__init__()
+		super().__init__()
 		# resolve tab
 		from horizons.gui.tabs import resolve_tab
-		self.tabs = map(resolve_tab, tabs)
-		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+		self.tabs = list(map(resolve_tab, tabs))
+		self.enemy_tabs = list(map(resolve_tab, enemy_tabs))
 		self.active_tab = resolve_tab(active_tab) if active_tab is not None else None
 		self._selected = False
 
@@ -119,7 +118,7 @@ class SelectableComponent(Component):
 			group.discard(self)
 		if self._selected:
 			self.deselect()
-		super(SelectableComponent, self).remove()
+		super().remove()
 
 
 class SelectableBuildingComponent(SelectableComponent):
@@ -128,7 +127,7 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	# these smell like instance attributes, but sometimes have to be used in non-instance
 	# contexts (e.g. building tool).
-	class ListHolder(object):
+	class ListHolder:
 		def __init__(self):
 			self.l = []
 
@@ -143,7 +142,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_fake_tiles.l = []
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None, range_applies_only_on_island=True):
-		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs, active_tab=active_tab)
+		super().__init__(tabs, enemy_tabs, active_tab=active_tab)
 		self.range_applies_only_on_island = range_applies_only_on_island
 
 	def initialize(self):
@@ -158,7 +157,7 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
-		super(SelectableBuildingComponent, self).select(reset_cam)
+		super().select(reset_cam)
 		self.set_selection_outline()
 		if self.instance.owner is None or not self.instance.owner.is_local_player:
 			return # don't show enemy ranges
@@ -178,7 +177,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""Runs neccassary steps to deselect the building.
 		Only deselects if this building has been selected."""
 		if self._selected:
-			super(SelectableBuildingComponent, self).deselect()
+			super().deselect()
 			renderer = self.session.view.renderer['InstanceRenderer']
 			renderer.removeOutlined(self.instance._instance)
 			renderer.removeAllColored()
@@ -235,9 +234,9 @@ class SelectableBuildingComponent(SelectableComponent):
 			for building in buildings:
 				building.get_component(SelectableComponent).set_selection_outline()
 
-			coords = set( coord for
-			              building in buildings for
-			              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
+			coords = {coord for
+			          building in buildings for
+			          coord in building.position.get_radius_coordinates(building.radius, include_self=True)}
 
 			for coord in coords:
 				tile = settlement.ground_map.get(coord)
@@ -307,7 +306,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_fake_tiles.l.append(inst)
 		renderer.addColored(inst, *cls.selection_color)
 
-
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
 		"""
@@ -326,7 +324,7 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
-		super(SelectableUnitComponent, self).select(reset_cam)
+		super().select(reset_cam)
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
 		self.session.view.add_change_listener(self.instance.draw_health)
@@ -335,7 +333,7 @@ class SelectableUnitComponent(SelectableComponent):
 		"""Runs necessary steps to deselect the unit."""
 		if not self._selected:
 			return
-		super(SelectableUnitComponent, self).deselect()
+		super().deselect()
 		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
 		self.instance.draw_health(remove_only=True)
 		# this is necessary to make deselect idempotent
@@ -346,7 +344,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the ship."""
-		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
+		super().select(reset_cam=reset_cam)
 
 		# add a buoy at the ship's target if the player owns the ship
 		if self.instance.owner.is_local_player:
@@ -356,7 +354,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 	def deselect(self):
 		"""Runs necessary steps to deselect the ship."""
 		if self._selected:
-			super(SelectableShipComponent, self).deselect()
+			super().deselect()
 			self.instance._update_buoy(remove_only=True)
 
 
@@ -375,8 +373,3 @@ class SelectableFisherComponent(SelectableBuildingComponent):
 			#cls._selected_tiles.l.append(fish_deposit)
 			for pos in fish_deposit.position:
 				cls._add_fake_tile(pos.x, pos.y, layer, renderer)
-
-decorators.bind_all(SelectableFisherComponent)
-decorators.bind_all(SelectableBuildingComponent)
-decorators.bind_all(SelectableShipComponent)
-decorators.bind_all(SelectableUnitComponent)

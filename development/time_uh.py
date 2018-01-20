@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import ctypes
 import multiprocessing
 import os
@@ -36,6 +36,7 @@ if not os.path.exists('content'):
 assert os.path.exists('content'), 'Content dir not found.'
 sys.path.append('.')
 
+
 class PassThroughOptionParser(OptionParser):
 	"""Consider unrecognised options to be arguments."""
 	def _process_args(self, largs, rargs, values):
@@ -45,6 +46,7 @@ class PassThroughOptionParser(OptionParser):
 			except (AmbiguousOptionError, BadOptionError), e:
 				largs.append(e.opt_str)
 
+
 def get_range(expr):
 	if not expr:
 		return [None]
@@ -53,12 +55,15 @@ def get_range(expr):
 		parts.append(int(part.strip()))
 	return range(*tuple(parts))
 
+
 def get_length(r):
 	return max(len(str(min(r))), len(str(max(r))))
 
+
 dev_null = open(os.devnull, 'w')
 
-class GameTimer(object):
+
+class GameTimer:
 	def __init__(self, name, args):
 		self.name = name
 		self.args = args
@@ -80,20 +85,23 @@ class GameTimer(object):
 			return 0
 		return -1 if self.time < other.time else 1
 
+
 def run_game_timer(game, queue, counter):
 	game.run()
 	queue.put_nowait(game)
 	counter.value -= 1
 
+
 def show_data(games):
-	print
+	print()
 	for game in sorted(games):
 		s = game.time
 		h = s // 3600
 		s %= 3600
 		m = s // 60
 		s %= 60
-		print game.name, '%d:%02d:%06.3fs' % (h, m, s), game.returncode
+		print(game.name, '[:d}:{:02d}:{:06.3f}s'.format(h, m, s), game.returncode)
+
 
 if __name__ == '__main__':
 	parser = PassThroughOptionParser()

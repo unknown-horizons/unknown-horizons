@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,18 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
+import math
 import operator
+from typing import Dict
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT
-from horizons.entities import Entities
 from horizons.constants import GAME_SPEED, RES
-from horizons.util.python import decorators
-from horizons.world.production.productionline import ProductionLine
+from horizons.entities import Entities
 from horizons.world.production.producer import Producer
+from horizons.world.production.productionline import ProductionLine
 
-class AbstractBuilding(object):
+
+class AbstractBuilding:
 	"""
 	An object of this class tells the AI how to build a specific type of building.
 
@@ -41,7 +42,7 @@ class AbstractBuilding(object):
 	log = logging.getLogger("ai.aiplayer.building")
 
 	def __init__(self, building_id, name, settler_level):
-		super(AbstractBuilding, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.id = building_id
 		self.name = name
 		self.settler_level = settler_level
@@ -55,15 +56,15 @@ class AbstractBuilding(object):
 			self.__init_production_lines()
 
 	__loaded = False
-	buildings = {} # building_id: AbstractBuilding instance
-	_available_buildings = {} # building_id: subclass of AbstractBuilding
+	buildings = {} # type: Dict[int, AbstractBuilding]
+	_available_buildings = {} # type: Dict[int, AbstractBuilding]
 
 	def __init_production_lines(self):
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
-		for key, value in production_lines.iteritems():
+		for key, value in production_lines.items():
 			production_line = ProductionLine(key, value)
 			assert len(production_line.produced_res) == 1
-			self.lines[production_line.produced_res.keys()[0]] = production_line
+			self.lines[list(production_line.produced_res.keys())[0]] = production_line
 
 	def _get_producer_building(self):
 		return Entities.buildings[self.id]
@@ -74,7 +75,7 @@ class AbstractBuilding(object):
 		if cls.__loaded:
 			return
 
-		for building_id, class_ref in cls._available_buildings.iteritems():
+		for building_id, class_ref in cls._available_buildings.items():
 			cls.buildings[building_id] = class_ref.load(db, building_id)
 		cls.__loaded = True
 
@@ -98,7 +99,7 @@ class AbstractBuilding(object):
 	def get_expected_building_cost(self):
 		"""Return a value representing the utility cost of building the building."""
 		total = 0
-		for resource_id, amount in Entities.buildings[self.id].costs.iteritems():
+		for resource_id, amount in Entities.buildings[self.id].costs.items():
 			total += self.resource_cost[resource_id] * amount
 		total += self.monthly_gold_cost * Entities.buildings[self.id].running_costs
 		return total
@@ -191,5 +192,3 @@ class AbstractBuilding(object):
 	def need_to_build_more_buildings(self, settlement_manager, resource_id):
 		"""Return a boolean showing whether another instance of the building should be built right now regardless of the production capacity."""
 		return False
-
-decorators.bind_all(AbstractBuilding)

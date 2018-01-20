@@ -5,10 +5,10 @@
 	The idea behind it is to keep everything separated so that we can fix values here, and pychan will leave them like that. It's still pixel positioning, that is ugly in principle, but we only have to position these 3 elements.
 -->
 
-<AutoResizeContainer name="entry">
+<ABox name="entry">
 	<Icon name="background_icon" image="content/gui/images/background/widgets/res_bg.png" />
 	<Icon name="res_icon" position="12,12" /> <!-- changed in python automatically -->
 	<Label name="res_available" /> <!-- positioning via magic in order to have support for centering -->
 	<Label name="res_needed" />
-</AutoResizeContainer>
+</ABox>
 

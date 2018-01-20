@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +21,8 @@
 
 from horizons.constants import UNITS
 
-class ProductionLine(object):
+
+class ProductionLine:
 	"""Class that collects the production line data."""
 
 	def __init__(self, id, data):
@@ -61,7 +61,7 @@ class ProductionLine(object):
 		self._init_finished = True
 
 	def __str__(self):
-		return "ProductionLineData(lineid=%s)" % self.id
+		return "ProductionLineData(lineid={})".format(self.id)
 
 	def alter_production_time(self, modifier):
 		"""Sets time to original production time multiplied by modifier"""
@@ -78,22 +78,21 @@ class ProductionLine(object):
 
 	def save(self, db, for_worldid):
 		# we don't have a worldid, we load it for another world id
-		for res, amount in self.production.iteritems():
+		for res, amount in self.production.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "NORMAL", res, amount)
-		for res, amount in self.consumed_res.iteritems():
+		for res, amount in self.consumed_res.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "CONSUMED", res, amount)
-		for res, amount in self.produced_res.iteritems():
+		for res, amount in self.produced_res.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "PRODUCED", res, amount)
-		for unit, amount in self.unit_production.iteritems():
+		for unit, amount in self.unit_production.items():
 			db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "UNIT", unit, amount)
 
 		db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "TIME", self.time, None)
-
 
 	def load(self, db, for_worldid):
 		# we don't have a worldid, we load it for another world id
@@ -109,7 +108,6 @@ class ProductionLine(object):
 				  "CONSUMED" : self.consumed_res,
 				  "PRODUCED" : self.produced_res,
 				  "UNIT"     : self.unit_production }[t][res] = amount
-
 
 	def get_original_copy(self):
 		"""Returns a copy of this production, in its original state, no changes

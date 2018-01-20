@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,14 +25,14 @@ from fife import fife
 
 from horizons.command.building import Build
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.component.componentholder import ComponentHolder
-from horizons.constants import RES, LAYERS, GAME
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME, LAYERS, RES
 from horizons.engine import Fife
+from horizons.i18n import disable_translations
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.python import decorators
-from horizons.util.shapes import ConstRect, distances, Point
+from horizons.util.shapes import ConstRect, Point, distances
 from horizons.util.worldobject import WorldObject
 from horizons.world.building.buildable import BuildableSingle
 from horizons.world.concreteobject import ConcreteObject
@@ -60,7 +60,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""
 	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
-		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner,
+		super().__init__(x=x, y=y, rotation=rotation, owner=owner,
 		                                    island=island, **kwargs)
 		self.__init()
 		self.island = island
@@ -85,9 +85,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.level = level
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
-			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
+			self.position = ConstRect(origin, self.size[1] - 1, self.size[0] - 1)
 		else:
-			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
+			self.position = ConstRect(origin, self.size[0] - 1, self.size[1] - 1)
 
 	def __init(self, remaining_ticks_of_month=None):
 		self.loading_area = self.position # shape where collector get resources
@@ -120,11 +120,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
 		self.island.remove_building(self)
-		super(BasicBuilding, self).remove()
+		super().remove()
 		# NOTE: removing layers from the renderer here will affect others players too!
 
 	def save(self, db):
-		super(BasicBuilding, self).save(db)
+		super().save(db)
 		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
 		   VALUES (?, ?, ?, ?, ?, ?, ?)",
 		                                self.worldid, self.__class__.id, self.position.origin.x,
@@ -143,7 +143,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		# early init before super() call
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
 
-		super(BasicBuilding, self).load(db, worldid)
+		super().load(db, worldid)
 
 		remaining_ticks_of_month = None
 		if self.has_running_costs:
@@ -159,7 +159,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				remaining_ticks_of_month = db_data[0][0]
 
 		self.__init(remaining_ticks_of_month=remaining_ticks_of_month)
-
 
 		# island.add_building handles registration of building for island and settlement
 		self.island.add_building(self, self.owner, load=True)
@@ -294,19 +293,19 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		fife.InstanceVisual.create(instance)
 
 		action_set = ActionSetLoader.get_set(action_set_id)
-		if not action in action_set:
+		if action not in action_set:
 			if 'idle' in action_set:
 				action = 'idle'
 			elif 'idle_full' in action_set:
 				action = 'idle_full'
 			else:
 				# set first action
-				action = action_set.keys()[0]
+				action = list(action_set.keys())[0]
 
 		if (Fife.getVersion() >= (0, 3, 6)):
-			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
+			instance.actRepeat(action + "_" + str(action_set_id), facing_loc)
 		else:
-			instance.act(action+"_"+str(action_set_id), facing_loc, True)
+			instance.act(action + "_" + str(action_set_id), facing_loc, True)
 		return (instance, action_set_id)
 
 	@classmethod
@@ -324,13 +323,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		to start production for example."""
 		pass
 
-	def __unicode__(self): # debug
-		return u'%s(id=%s;worldid=%s)' % (self.name, self.id, getattr(self, 'worldid', 'none'))
+	def __str__(self):
+		with disable_translations():
+			return '{}(id={};worldid={})'.format(self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):
 	"""Building with default properties, that does nothing."""
 	pass
-
-
-decorators.bind_all(BasicBuilding)

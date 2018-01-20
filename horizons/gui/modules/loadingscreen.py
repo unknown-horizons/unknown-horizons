@@ -1,6 +1,5 @@
-# Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,17 +23,17 @@ import random
 
 import horizons.globals
 from horizons.constants import TIER
-from horizons.i18n import _lazy
+from horizons.ext.speaklater import make_lazy_string
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.messaging import LoadingProgress
-
 
 # list of quotes and gameplay tips that are displayed while loading a game
 # NOTE: Try to use not more than 4 lines in a quote/gameplay tip !
 
 FUN_QUOTES = {
-	'name': _lazy("Quotes"),
+	'name': LazyT("Quotes"),
 	# Fun Quotes should not be translated...
 	'items': [
 		"Beer, the cause and solution to all problems of humanity.",
@@ -49,7 +48,7 @@ FUN_QUOTES = {
 		"If one does not know to which port one is sailing, no wind is favorable.",
 		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails.",
 		"Travel beyond the horizon and discover unknown worlds!",
-		u"War… war never changes.",
+		"War… war never changes.",
 		"Support Unknown Horizons with Cookies!",
 		"Wow, looks nearly completed. \n(Neomex)",
 		"Anchor is missing ...",
@@ -64,33 +63,32 @@ FUN_QUOTES = {
 
 
 GAMEPLAY_TIPS = {
-	'name': _lazy("Gameplay Tips"),
+	'name': LazyT("Gameplay Tips"),
 	'items': [
-		_lazy("Press 'ESC' to access Game Menu."),
-		_lazy("Use 'SHIFT' to place multiple buildings."),
+		LazyT("Press 'ESC' to access Game Menu."),
+		LazyT("Use 'SHIFT' to place multiple buildings."),
 		#TODO: This tip should be removed when all tiers are playable!!
-		_lazy("Currently only the first {tier} tiers are playable.").format(
-				tier=TIER.CURRENT_MAX + 1),
-		_lazy("You can pause the game with 'P'."),
-		_lazy("You can drag roads by holding the left mouse button."),
-		_lazy("You can build multiple buildings by holding the 'SHIFT' key."),
-		_lazy("You can increase the happiness of your inhabitants by lowering the taxes."),
-		_lazy("Build fire stations and doctors to protect your inhabitants from fire and disease."),
-		_lazy("Build storage tents to increase your storage capacity."),
-		_lazy("Make sure every house is in range of a marketplace."),
-		_lazy("Press 'T' to make trees transparent."),
-		_lazy("Build storage tents and lookouts to expand your settlement range."),
-		_lazy("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
-		_lazy("Make singleplayer more fun with additional computer players by increasing 'AI players' when starting a new game."),
-		_lazy("First steps are easier by looking at how AI players are setting up their settlement."),
-		_lazy("Want funny quotes only? Change the quote types shown here in the settings menu on the game page."),
-		_lazy("A marketplace links your buildings like a road.")
+		make_lazy_string(lambda: T("Currently only the first {tier} tiers are playable.").format(tier=TIER.CURRENT_MAX + 1)),
+		LazyT("You can pause the game with 'P'."),
+		LazyT("You can drag roads by holding the left mouse button."),
+		LazyT("You can build multiple buildings by holding the 'SHIFT' key."),
+		LazyT("You can increase the happiness of your inhabitants by lowering the taxes."),
+		LazyT("Build fire stations and doctors to protect your inhabitants from fire and disease."),
+		LazyT("Build storage tents to increase your storage capacity."),
+		LazyT("Make sure every house is in range of a marketplace."),
+		LazyT("Press 'T' to make trees transparent."),
+		LazyT("Build storage tents and lookouts to expand your settlement range."),
+		LazyT("To easily see whether the pavilion's range cover all your tents, select it from the build menu and hover it over your existing pavilion. Uncovered tents are shown in yellow. It's a good idea to build a new pavilion in their neighborhood."),
+		LazyT("Make singleplayer more fun with additional computer players by increasing 'AI players' when starting a new game."),
+		LazyT("First steps are easier by looking at how AI players are setting up their settlement."),
+		LazyT("Want funny quotes only? Change the quote types shown here in the settings menu on the game page."),
+		LazyT("A marketplace links your buildings like a road.")
 	]
 }
 
 # This are the options you can select in the Settings what type of quotes should be
 # displayed during load
-QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _lazy("Mixed"))
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], LazyT("Mixed"))
 
 
 def get_random_quote():
@@ -110,17 +108,17 @@ def get_random_quote():
 
 stage_text = {
 	# translators: these are descriptions of the current task while loading a game
-	'session_create_world': _lazy(u'Starting engine…'),
-	'session_index_fish': _lazy(u'Catching fish…'),
-	'session_load_gui': _lazy(u'Drawing user interface…'),
-	'session_finish': _lazy(u'Activating timer…'),
-	'load_objects': _lazy(u'Chomping game data…'),
-	'world_load_map': _lazy(u'Shaping islands…'),
-	'world_load_buildings': _lazy(u'Preparing blueprints…'),
-	'world_init_water': _lazy(u'Filling world with water…'),
-	'world_load_units': _lazy(u'Raising animals…'),
-	'world_setup_ai': _lazy(u'Convincing AI…'),
-	'world_load_stuff': _lazy(u'Burying treasures…'),
+	'session_create_world': LazyT('Starting engine…'),
+	'session_index_fish': LazyT('Catching fish…'),
+	'session_load_gui': LazyT('Drawing user interface…'),
+	'session_finish': LazyT('Activating timer…'),
+	'load_objects': LazyT('Chomping game data…'),
+	'world_load_map': LazyT('Shaping islands…'),
+	'world_load_buildings': LazyT('Preparing blueprints…'),
+	'world_init_water': LazyT('Filling world with water…'),
+	'world_load_units': LazyT('Raising animals…'),
+	'world_setup_ai': LazyT('Convincing AI…'),
+	'world_load_stuff': LazyT('Burying treasures…'),
 }
 
 
@@ -132,18 +130,61 @@ class LoadingScreen(Window):
 	total_steps = len(stage_text)
 
 	def __init__(self):
+		(width, height) = horizons.globals.fife.get_fife_setting('ScreenResolution').split('x')
+
+		res_width = int(width)
+		res_height = int(height)
+
 		self._widget = load_uh_widget('loadingscreen.xml')
-		self._widget.position_technique = "center:center"
+
+		loadingscreen = self._widget.findChild(name='loadingscreen')
+		loadingscreen.size = res_width, res_height
+
+		# centered vertically and horizontally
+		loading_box = self._widget.findChild(name='loading_box')
+		loading_box.position = (
+			(res_width - loading_box.size[0]) // 2,
+			(res_height - loading_box.size[1]) // 2
+		)
+
+		# centered horizontally, aligned at bottom
+		quote_area = self._widget.findChild(name='quote_area')
+
+		# set size to visible size, to make aligning children resolution independent
+		quote_area.size = (
+			min(res_width, quote_area.size[0]),
+			min(res_height, quote_area.size[1])
+		)
+
+		quote_area.position = (
+			(res_width - quote_area.size[0]) // 2,
+			res_height - quote_area.size[1]
+		)
+
+		loading_stage = self._widget.findChild(name='loading_stage')
+		loading_stage.position = 150, 90
+
+		quote_type_label = self._widget.findChild(name='quote_type_label')
+		quote_label = self._widget.findChild(name='quote_label')
+
+		quote_type_label.position = (
+			quote_area.size[0] - 600,
+			80
+		)
+		quote_label.position = (
+			quote_area.size[0] - 600,
+			90
+		)
 
 		self._current_step = 0
 
 	def show(self):
-		qotl_type_label = self._widget.findChild(name='qotl_type_label')
-		qotl_label = self._widget.findChild(name='qotl_label')
+		quote_type_label = self._widget.findChild(name='quote_type_label')
+		quote_label = self._widget.findChild(name='quote_label')
 
 		name, quote = get_random_quote()
-		qotl_type_label.text = name
-		qotl_label.text = quote
+		quote_type_label.text = name
+		quote_label.text = quote
 
 		self._widget.show()
 		LoadingProgress.subscribe(self._update)
@@ -166,6 +207,6 @@ class LoadingScreen(Window):
 		label.text = stage_text.get(message.stage, message.stage)
 		label.adaptLayout()
 
-		self._widget.findChild(name='loading_progress').progress = (100 * self._current_step) // self.total_steps
+		self._widget.findChild(name='loading_box_progress').progress = (100 * self._current_step) // self.total_steps
 
 		horizons.globals.fife.engine.pump()

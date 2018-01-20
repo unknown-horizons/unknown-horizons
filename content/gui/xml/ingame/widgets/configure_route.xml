@@ -3,42 +3,49 @@
 	background_image="content/gui/images/background/book.png">
 
 	<!-- left side -->
+	
+	<Label name="warehouse_name_label" text="Island Name:" position="80,40" />
+	<Label name="player_name_label" text="Player Name:" position="180,40" />
 
-	<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="75,40" padding="5" />
-	<VBox position="250,495">
+	<VBox name="left_vbox" fixed_size="350,508" position="75,55" />
+
+	<VBox position="250,505" name="wait_options">
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
 				comment="Trade route setting: Whether to wait until all goods could be loaded." />
-			<CheckBox name="wait_at_load" min_size="15,15" is_focusable="0" />
+			<CheckBox name="wait_at_load" fixed_size="15,15" is_focusable="0" />
 		</HBox>
 		<HBox>
 			<Label name="lbl_wait_at_unload"  text="Wait at unload:"
 				comment="Trade route setting: Whether to wait until all goods could be unloaded." />
-			<CheckBox name="wait_at_unload" min_size="15,15" is_focusable="0" />
+			<CheckBox name="wait_at_unload" fixed_size="15,15" is_focusable="0" />
 		</HBox>
 	</VBox>
 
 	<!-- right side -->
 
-	<VBox name="right_vbox" max_size="330,508" min_size="330,508" position="416,40" padding="2">
-		<Icon name="minimap" size="256,256" max_size="256,256" is_focusable="0" /> <!-- settlement selection in minimap -->
+	<VBox name="right_vbox" fixed_size="330,508" position="416,40" >
+		<Icon name="minimap" fixed_size="256,256" is_focusable="0" /> <!-- settlement selection in minimap -->
 
 		<!-- this box is only displayed on resource selection. -->
 		<!-- res selection box, filled with icons -->
-		<VBox name="traderoute_resources" max_size="330,155" min_size="330,155" />
+		<Label name='select_res_label'  text='Select a resource:' />
 
-		<HBox min_size="310,60" max_size="310,60">
-			<Spacer min_size="60" max_size="60" />
-			<Label name="lbl_route_activity" text="Route activity:" position="0,7" />
-			<ImageButton name="start_route" max_size="52,52"
+		<!-- Displays list of resources to select one which is displayed in this slot. -->
+		<ScrollArea fixed_size="290,130" name="resources_scrollarea" />
+
+		<HBox fixed_size="310,30">
+			<Label name="lbl_route_activity" text="Route activity:" position="0,5" />
+		</HBox>
+		<HBox fixed_size="310,80">
+			<Spacer fixed_size="35,0" />
+			<ImageButton name="start_route" fixed_size="52,52"
 				inactive_image="content/gui/icons/ship/traderoute.png"
 				up_image="content/gui/icons/ship/traderoute_disabled.png"
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
 				hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
 				helptext="Start route" comment="Trade route" />
-
-			<Spacer fixed_size="58" />
-
+			<Spacer fixed_size="120,0" />
 			<OkButton helptext="Exit" />
 		</HBox>
 	</VBox>

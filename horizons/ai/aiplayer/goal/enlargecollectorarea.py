@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import deque, defaultdict
+from collections import defaultdict, deque
+from typing import List, Tuple
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
-from horizons.util.shapes import Rect
 from horizons.entities import Entities
+from horizons.util.shapes import Rect
+
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
-	_radius_offsets = None
+	_radius_offsets = None # type: List[Tuple[int, int]]
 
 	@classmethod
 	def _init_radius_offsets(cls):
@@ -49,7 +50,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(EnlargeCollectorAreaGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def update(self):
 		available_squares, total_squares = self.settlement_manager.production_builder.count_available_squares(3, self.personality.max_interesting_collector_area)
@@ -66,7 +67,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 		# area_label contains free tiles in the production area and all road tiles
 		area_label = dict.fromkeys(self.land_manager.roads) # {(x, y): area_number, ...}
-		for coords, (purpose, _) in self.production_builder.plan.iteritems():
+		for coords, (purpose, _) in self.production_builder.plan.items():
 			if coords not in coastline and purpose == BUILDING_PURPOSE.NONE:
 				area_label[coords] = None
 
@@ -87,7 +88,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 			areas += 1
 
 		coords_set_by_area = defaultdict(set)
-		for coords, area_number in area_label.iteritems():
+		for coords, area_number in area_label.items():
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
 
@@ -136,5 +137,3 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		result = self._enlarge_collector_area()
 		self._log_generic_build_result(result, 'storage coverage building')
 		return self._translate_build_result(result)
-
-decorators.bind_all(EnlargeCollectorAreaGoal)

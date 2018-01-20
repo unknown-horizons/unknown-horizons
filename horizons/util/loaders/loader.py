@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import defaultdict
-import os
-import re
 import glob
 import logging
+import os
+import re
+from collections import defaultdict
 
 from horizons.constants import ACTION_SETS
 
-class GeneralLoader(object):
+
+class GeneralLoader:
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
 	begin with 'as_' to tell tell the loader that they are an action set. directory
 	structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png
@@ -51,7 +52,7 @@ class GeneralLoader(object):
 
 		anim_length = {} # dict containing 'file: anim_end' items
 		for i, filename in enumerate(files, start=1):
-			anim_length[filename] = i * (time/1000.0) / len(files)
+			anim_length[filename] = i * (time / 1000.0) / len(files)
 		return anim_length
 
 	@classmethod
@@ -76,8 +77,8 @@ class GeneralLoader(object):
 			try:
 				rotations[int(dirname)] = cls._load_files(os.path.join(directory, dirname), time)
 			except Exception as e:
-				raise Exception("Failed to load action sets from %s with time %s: %s" %
-							 (os.path.join(directory, dirname), time, e))
+				raise Exception("Failed to load action sets from {} with time {}: {}"
+							    .format(os.path.join(directory, dirname), time, e))
 		return rotations
 
 	@classmethod
@@ -93,14 +94,14 @@ class GeneralLoader(object):
 			basedir = os.path.join(directory, dirname)
 			if os.path.isdir(basedir):
 				actions[dirname] = cls._load_rotation(basedir)
-				if 'streets' in directory:
+				if any(folder in directory for folder in ['streets', 'wall']):
 					actions.update(cls._load_mirrored_roads(dirname, actions[dirname]))
 		return actions
 
 	@classmethod
 	def _load_mirrored_roads(cls, base_action, existing_files):
 		actions = defaultdict(dict)
-		for base_rotation, path in existing_files.iteritems():
+		for base_rotation, path in existing_files.items():
 			action = base_action
 			for iteration in range(1, 4):
 				rotation = (base_rotation + iteration * 90) % 360

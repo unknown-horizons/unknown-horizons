@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,19 +21,21 @@
 
 from operator import itemgetter
 
-from fife.extensions.pychan.widgets import Icon, Label, Container
+from fife.extensions.pychan.widgets import Container, Icon, Label
 
 from horizons.command.production import AddProduction
-from horizons.gui.tabs import ProducerOverviewTabBase, UnitbuilderTabBase
-from horizons.gui.util import create_resource_icon
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
-from horizons.i18n import _lazy
-from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS
+from horizons.gui.util import create_resource_icon
+from horizons.gui.widgets.imagebutton import CancelButton, OkButton
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
+from horizons.util.python.callback import Callback
+
+from .boatbuildertabs import ProducerOverviewTabBase, UnitbuilderTabBase
+
 
 class BarracksTab(UnitbuilderTabBase):
 	widget = 'barracks.xml'
-	helptext = _lazy("Barracks overview")
+	helptext = LazyT("Barracks overview")
 
 	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/groundunit/116/{type_id}.png"
@@ -47,11 +49,12 @@ class BarracksTab(UnitbuilderTabBase):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
+
 class BarracksSelectTab(ProducerOverviewTabBase):
 	widget = 'barracks_showcase.xml'
 
 	def init_widget(self):
-		super(BarracksSelectTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
@@ -61,14 +64,14 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 
 	def build_groundunit_info(self, index, groundunit, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		widget = Container(name='showcase_{}'.format(index), position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_{}'.format(index))
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/groundunit/76/{unit_id}.png'.format(unit_id=groundunit)
 		helptext = self.instance.session.db.get_unit_tooltip(groundunit)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_{}'.format(index), position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
@@ -76,10 +79,10 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		#groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
 		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this groundunit!'))
+			button = OkButton(position=(60, 50), name='ok_{}'.format(index), helptext=T('Build this groundunit!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			button = CancelButton(position=(60, 50), name='ok_{}'.format(index),
 			helptext=groundunit_unbuildable)
 
 		widget.addChild(button)
@@ -87,18 +90,18 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		# Get production line info
 		production = self.producer.create_production_line(prodline)
 		# consumed == negative, reverse to sort in *ascending* order:
-		costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
+		costs = sorted(production.consumed_res.items(), key=itemgetter(1))
 		for i, (res, amount) in enumerate(costs):
 			xoffset = 103 + (i  % 2) * 55
 			yoffset =  20 + (i // 2) * 20
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
 			icon.position = (xoffset, yoffset)
-			label = Label(name='cost_%s_%s' % (index, i))
+			label = Label(name='cost_{}_{}'.format(index, i))
 			if res == RES.GOLD:
-				label.text = unicode(-amount)
+				label.text = str(-amount)
 			else:
-				label.text = u'{amount:02}t'.format(amount=-amount)
+				label.text = '{amount:02}t'.format(amount=-amount)
 			label.position = (22 + xoffset, yoffset)
 			widget.addChild(icon)
 			widget.addChild(label)
@@ -109,9 +112,10 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
+
 class BarracksSwordmanTab(BarracksSelectTab):
 	icon_path = 'icons/tabwidget/barracks/swordman'
-	helptext = _lazy("Swordman")
+	helptext = LazyT("Swordman")
 
 	groundunits = [
 		(UNITS.SWORDSMAN, PRODUCTIONLINES.SWORDSMAN),
@@ -123,13 +127,14 @@ class BarracksSwordmanTab(BarracksSelectTab):
 # * check: mark those groundunit's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
 
+
 class BarracksConfirmTab(ProducerOverviewTabBase):
 	widget = 'barracks_confirm.xml'
-	helptext = _lazy("Confirm order")
+	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
-		super(BarracksConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
+		super().init_widget()
+		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 
 	def start_production(self):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,13 +24,13 @@ import logging
 from collections import deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
+from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
-from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+from horizons.entities import Entities
 from horizons.util.shapes import Rect
 from horizons.util.worldobject import WorldObject
-from horizons.entities import Entities
+
 
 class AreaBuilder(WorldObject):
 	"""A class governing the use of a specific type of area of a settlement."""
@@ -38,7 +38,7 @@ class AreaBuilder(WorldObject):
 	log = logging.getLogger("ai.aiplayer.area_builder")
 
 	def __init__(self, settlement_manager):
-		super(AreaBuilder, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager)
 
 	def __init(self, settlement_manager):
@@ -58,7 +58,7 @@ class AreaBuilder(WorldObject):
 
 	def _load(self, db, settlement_manager, worldid):
 		self.__init(settlement_manager)
-		super(AreaBuilder, self).load(db, worldid)
+		super().load(db, worldid)
 
 	def iter_neighbor_tiles(self, rect):
 		"""Iterate over the tiles that share a side with the given Rect."""
@@ -72,7 +72,7 @@ class AreaBuilder(WorldObject):
 	def iter_possible_road_coords(self, rect, blocked_rect):
 		"""Iterate over the possible road tiles that share a side with
 		the given Rect and are not in the blocked Rect."""
-		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
+		blocked_coords_set = {coords for coords in blocked_rect.tuple_iter()}
 		for tile in self.iter_neighbor_tiles(rect):
 			if tile is None:
 				continue
@@ -91,7 +91,7 @@ class AreaBuilder(WorldObject):
 		"""
 
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		queue = deque([item for item in distance.iteritems()])
+		queue = deque([item for item in distance.items()])
 
 		while queue:
 			(coords, dist) = queue.popleft()
@@ -176,7 +176,7 @@ class AreaBuilder(WorldObject):
 			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(collector_coords, destination_coords):
 				return None
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
+		blocked_coords = {coords for coords in builder.position.tuple_iter()}.union(self.land_manager.coastline)
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
 		                                loading_area.right + 1, loading_area.bottom + 1)
 
@@ -197,7 +197,7 @@ class AreaBuilder(WorldObject):
 
 	def build_road_connection(self, builder):
 		"""Build a road connecting the builder to a building with general collectors.
-		
+
 		Return True if it worked, False if the path was None."""
 		path = self._get_road_to_builder(builder)
 		return self.build_road(path)
@@ -243,7 +243,7 @@ class AreaBuilder(WorldObject):
 
 		best_index = 0
 		best_value = options[0][0]
-		for i in xrange(1, len(options)):
+		for i in range(1, len(options)):
 			if options[i][0] > best_value:
 				best_index = i
 				best_value = options[i][0]
@@ -257,7 +257,7 @@ class AreaBuilder(WorldObject):
 
 	def extend_settlement(self, position):
 		"""Build a storage to extend the settlement towards the given position.
-		
+
 		Return a BUILD_RESULT constant."""
 		return self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 
@@ -294,5 +294,3 @@ class AreaBuilder(WorldObject):
 	def register_change_list(self, coords_list, purpose, data):
 		for (x, y) in coords_list:
 			self.register_change(x, y, purpose, data)
-
-decorators.bind_all(AreaBuilder)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,17 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import uuid
+
 from fife import fife
-from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import GAME_SPEED
 
 import horizons.globals
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
 from horizons.gui.util import get_res_icon_path
 from horizons.messaging import ResourceProduced, SettingChanged
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
-class ProductionFinishedIconManager(object):
+
+class ProductionFinishedIconManager:
 	"""Manager class that manages all production finished icons. It listens to
 	 ResourceProduced messages on the main message bus"""
 
@@ -137,7 +140,7 @@ class ProductionFinishedIconManager(object):
 
 		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 24, 24)
-		self.renderer.addText(group, node, font, ' '*9 + '{amount:>2d}'.format(amount=amount))
+		self.renderer.addText(group, node, font, ' ' * 9 + '{amount:>2d}'.format(amount=amount))
 
 	def remove_icon(self, group):
 		""" Remove the icon after the animation finished
@@ -150,5 +153,4 @@ class ProductionFinishedIconManager(object):
 		"""Returns the render name for resource icons of this instance
 		This key MUST be unique!
 		"""
-		return "produced_resource_" + str(res) + "_" + str(instance.position.origin)\
-		       + "_" + str(Scheduler().cur_tick)
+		return "produced_resource_" + str(res) + "_" + str(uuid.uuid4())

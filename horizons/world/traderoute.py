@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,14 +21,15 @@
 
 import copy
 
-from horizons.world.units.unitexeptions import MoveNotPossible
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TRADE_ERROR_TYPE, TradePostComponent
+from horizons.constants import GAME_SPEED
+from horizons.i18n import gettext as T
+from horizons.scheduler import Scheduler
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.constants import GAME_SPEED
-from horizons.scheduler import Scheduler
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
+from horizons.world.units.unitexeptions import MoveNotPossible
 
 
 class TradeRoute(ChangeListener):
@@ -43,7 +44,7 @@ class TradeRoute(ChangeListener):
 	"""
 
 	def __init__(self, ship):
-		super(TradeRoute, self).__init__()
+		super().__init__()
 		self.ship = ship
 		self.waypoints = []
 		self.current_waypoint = -1
@@ -149,7 +150,7 @@ class TradeRoute(ChangeListener):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
-		class TransferStatus(object):
+		class TransferStatus:
 			def __init__(self):
 				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
 				self.remaining_transfers = {}
@@ -232,7 +233,7 @@ class TradeRoute(ChangeListener):
 
 		try:
 			self.ship.move(Circle(warehouse.position.center, self.ship.radius), self.on_route_warehouse_reached,
-			               blocked_callback = self.on_ship_blocked)
+			               blocked_callback=self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
@@ -316,7 +317,7 @@ class TradeRoute(ChangeListener):
 		   worldid, self.enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload)
 
 		if self.current_transfer:
-			for res, amount in self.current_transfer.iteritems():
+			for res, amount in self.current_transfer.items():
 				db("INSERT INTO ship_route_current_transfer(ship_id, res, amount) VALUES(?, ?, ?)",
 				   worldid, res, amount)
 
@@ -332,9 +333,9 @@ class TradeRoute(ChangeListener):
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
 			location = self.ship.get_location_based_status(self.ship.get_move_target())
-			status_msg = _('Trade route: going to {location}').format(location=location)
+			status_msg = T('Trade route: going to {location}').format(location=location)
 			return (status_msg, self.ship.get_move_target())
 		else:
 			position = self.ship.get_location_based_status(self.ship.position)
-			status_msg = _('Trade route: waiting at {position}').format(position=position)
+			status_msg = T('Trade route: waiting at {position}').format(position=position)
 			return (status_msg, self.ship.position)

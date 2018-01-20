@@ -24,7 +24,7 @@
 		<Setting name="FrameLimit" type="int"> 60 </Setting>
 		<Setting name="GLUseMonochrome" type="bool">False</Setting>
 		<Setting name="GLUseMipmapping" type="bool">False</Setting>
-		<Setting name="GLTextureFiltering" type="string">None</Setting>
+		<Setting name="GLTextureFiltering" type="str">None</Setting>
 		<Setting name="GLUseDepthBuffer" type="bool">True</Setting>
 		<Setting name="GLAlphaTestValue" type="float">0.8</Setting>
 	</Module>

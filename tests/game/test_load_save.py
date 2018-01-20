@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,25 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import bz2
+import os
 import tempfile
 
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, GAME, PRODUCTION, RES, TIER, UNITS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
-from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
-
-from tests.game import (
-	game_test, new_session, settle, load_session, saveload,
-	TEST_FIXTURES_DIR,
-)
+from tests.game import TEST_FIXTURES_DIR, game_test, load_session, new_session, saveload, settle
 
 
 @game_test(manual_session=True)
@@ -68,6 +64,7 @@ def test_load_inactive_production():
 	ToggleActive(producer).execute(session)
 
 	session.end()
+
 
 def create_lumberjack_production_session():
 	"""Create a saved game with a producing production and then load it."""
@@ -128,8 +125,8 @@ def test_hunter_save_load():
 	hunter_worldid = hunter.worldid
 	del hunter # invalid after save/load
 
-	for x in xrange(27, 29):
-		for y in xrange(25, 28):
+	for x in range(27, 29):
+		for y in range(25, 28):
 			assert Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(player)
 
 	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 27, 27)(issuer=None)
@@ -141,11 +138,10 @@ def test_hunter_save_load():
 		return hunter.get_component(CollectingComponent)._CollectingComponent__collectors[0]
 
 	def await_transition(session, collector, old_state, new_state):
-		assert collector.state == old_state, "expected old state %s, got %s" % (old_state, collector.state)
+		assert collector.state == old_state, "expected old state {}, got {}".format(old_state, collector.state)
 		while collector.state == old_state:
-			session.run(seconds=1)
-		assert collector.state == new_state, "expected new state %s, got %s" % (old_state, collector.state)
-
+			session.run()
+		assert collector.state == new_state, "expected new state {}, got {}".format(new_state, collector.state)
 
 	sequence = [
 	  Collector.states.idle,
@@ -158,13 +154,13 @@ def test_hunter_save_load():
 
 	# do full run without saveload
 	collector = get_hunter_collector(session)
-	for i in xrange(len(sequence)-1):
-		await_transition(session, collector, sequence[i], sequence[i+1])
+	for i in range(len(sequence) - 1):
+		await_transition(session, collector, sequence[i], sequence[i + 1])
 
 	# do full run with saveload
-	for i in xrange(len(sequence)-1):
+	for i in range(len(sequence) - 1):
 		collector = get_hunter_collector(session)
-		await_transition(session, collector, sequence[i], sequence[i+1])
+		await_transition(session, collector, sequence[i], sequence[i + 1])
 		session = saveload(session)
 
 	# last state reached successfully 2 times -> finished
@@ -226,7 +222,7 @@ def test_settler_level_save_load(s, p):
 	Verify that settler level up with save/load works
 	"""
 	# test all available upgrades: 0->1, 1->2, 2->3...
-	for test_level in xrange(TIER.CURRENT_MAX):
+	for test_level in range(TIER.CURRENT_MAX):
 		session, player = new_session()
 		settlement, island = settle(s)
 

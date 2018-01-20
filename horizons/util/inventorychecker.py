@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,10 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scheduler import Scheduler
 from copy import deepcopy
 
-class InventoryChecker(object):
+from horizons.scheduler import Scheduler
+
+
+class InventoryChecker:
 
 	def __init__(self, message_class, storage_component, check_interval):
 		"""Message class is a subclass of message that this checker will broadcast when the storage_component given has change in its inventory.
@@ -42,7 +44,6 @@ class InventoryChecker(object):
 		if inventory != self.__inventory_copy:
 			self.__message_class.broadcast(self)
 			self.__inventory_copy = deepcopy(inventory)
-
 
 	def remove(self):
 		"""Clean up"""

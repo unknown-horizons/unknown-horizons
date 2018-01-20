@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013-2016 The Unknown Horizons Team
+# Copyright (C) 2013-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +24,8 @@ from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 from horizons.constants import LANGUAGENAMES, SETTINGS
 from horizons.i18n import change_language
 
-class Settings(object):
+
+class Settings:
 
 	# Settings key storing the SettingsVersion used to upgrade settings
 	SETTINGS_VERSION = "SettingsVersion"
@@ -39,7 +39,7 @@ class Settings(object):
 		self._settings_serializer.load(settings_file)
 		self._settings_template_serializer = SimpleXMLSerializer()
 		self._settings_template_serializer.load(settings_template_file)
-		if not hasattr (self._settings_template_serializer, 'getModuleName'):
+		if not hasattr(self._settings_template_serializer, 'getModuleName'):
 			# Renamed after 0.3.5: https://github.com/fifengine/fifengine/issues/819.
 			new_api = self._settings_template_serializer.getModuleNameList
 			self._settings_template_serializer.getModuleName = new_api
@@ -74,7 +74,7 @@ class Settings(object):
 	def get_module_settings(self, module):
 		self._module_settings[module] = self._settings_serializer.getAllSettings(module)
 		self._module_settings_template[module] = self._settings_template_serializer.getAllSettings(module)
-		for name, value in self._module_settings_template[module].iteritems():
+		for name, value in self._module_settings_template[module].items():
 			if name not in self._module_settings[module]:
 				self._module_settings[module][name] = value
 		return self._module_settings[module]
@@ -104,8 +104,8 @@ class Settings(object):
 		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION, 1)
 		template_version = self._settings_template_serializer.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
 		if current_version != template_version:
-			print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
-		          (current_version, template_version)
+			print('Discovered old settings file, auto-upgrading: {} -> {}'.format(
+		          current_version, template_version))
 			for module in self._settings_template_serializer.getModuleName():
 				for setting_name in self._settings_template_serializer.getAllSettings(module):
 					default_value = self._settings_template_serializer.get(module, setting_name)

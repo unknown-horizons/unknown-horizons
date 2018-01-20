@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,8 @@
 
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
-class LazyBinaryBuildabilityCacheElement(object):
+
+class LazyBinaryBuildabilityCacheElement:
 	"""
 	Lazily computed cache element of a BinaryBuildabilityCache instance.
 
@@ -67,7 +68,8 @@ class LazyBinaryBuildabilityCacheElement(object):
 		self._init_size_cache()
 		return iter(self._cache)
 
-class BinaryBuildabilityCache(object):
+
+class BinaryBuildabilityCache:
 	"""
 	A cache that knows where rectangles can be placed such that they are entirely inside the area.
 

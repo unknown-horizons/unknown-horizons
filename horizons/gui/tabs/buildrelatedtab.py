@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,13 +21,15 @@
 
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.gui.tabs import OverviewTab
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.entities import Entities
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.i18n import _lazy
+from horizons.i18n import gettext_lazy as LazyT
 from horizons.util.python.callback import Callback
-from horizons.entities import Entities
-from horizons.component.selectablecomponent import SelectableComponent
+
+from .overviewtab import OverviewTab
+
 
 class BuildRelatedTab(OverviewTab):
 	"""
@@ -39,7 +40,7 @@ class BuildRelatedTab(OverviewTab):
 	"""
 	widget = 'related_buildings.xml'
 	icon_path = 'icons/tabwidget/production/related'
-	helptext = _lazy("Build related buildings")
+	helptext = LazyT("Build related buildings")
 	template_gui_xml = 'related_buildings_container.xml'
 
 	def refresh(self):
@@ -55,21 +56,21 @@ class BuildRelatedTab(OverviewTab):
 		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
 		sorted_ids = sorted([(b, Entities.buildings[b].settler_level) for b in building_ids], key=lambda x : x[1])
 		container = self.__get_new_container()
-		self.current_row = min(building[1] for building in sorted_ids)
-		for building_id, level in sorted_ids:
-			if level <= self.instance.owner.settler_level: # available in build menu?
-				button = self._create_build_buttons(building_id, container)
-				# check whether to start new line (for new tier row)
-				if level > self.current_row:
-					self.current_row = level
-					parent_container.addChild(container)
-					container = self.__get_new_container()
-				container.findChild(name="build_button_container").addChild(button)
-				button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
-				container.findChild(name="build_button_bg_container").addChild(button_bg)
+		for i, (building_id, level) in enumerate(sorted_ids):
+			if level > self.instance.owner.settler_level:
+				break
+
+			button = self._create_build_buttons(building_id, container)
+			# check whether to start new line (currently only 4 fit per line)
+			if i and i % 4 == 0:
+				parent_container.addChild(container)
+				container = self.__get_new_container()
+			container.findChild(name="build_button_container").addChild(button)
+			button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
+			container.findChild(name="build_button_bg_container").addChild(button_bg)
 		# Still need to add last container
 		parent_container.addChild(container)
-		super(BuildRelatedTab, self).refresh()
+		super().refresh()
 
 	def __get_new_container(self):
 		"""

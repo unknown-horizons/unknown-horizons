@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,17 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
+
 import sys
 from collections import deque
+from typing import Any, Callable, Dict, List, Tuple
 
 try:
 	import greenlet
 except ImportError:
-	print 'The greenlet package is needed to run the UH gui tests.'
+	print('The greenlet package is needed to run the UH gui tests.')
 	sys.exit(1)
 
 
-_scheduled = deque()
+_scheduled = deque() # type: deque[Tuple[Tasklet, Tuple[Any, ...], Dict[str, Any]]]
 _current = greenlet.getcurrent()
 
 
@@ -39,8 +42,8 @@ class Tasklet(greenlet.greenlet):
 	Let's you add callbacks when the greenlet finished and wait for it to finish.
 	"""
 	def __init__(self, *args, **kwargs):
-		super(Tasklet, self).__init__(*args, **kwargs)
-		self.links = []
+		super().__init__(*args, **kwargs)
+		self.links = [] # type: List[Callable]
 
 	def link(self, func):
 		"""Call func once this greenlet finished execution."""
@@ -48,17 +51,15 @@ class Tasklet(greenlet.greenlet):
 
 	def join(self):
 		"""Blocks until this greenlet finished execution."""
-
-		# little hack because we don't have Python3's nonlocal
-		class Flag(object):
-			running = True
+		running = True
 
 		def stop(_):
-			Flag.running = False
+			nonlocal running
+			running = False
 
 		self.link(stop)
 
-		while Flag.running:
+		while running:
 			schedule()
 
 
@@ -74,7 +75,7 @@ def schedule():
 	global _current
 
 	if not _current.dead:
-		_scheduled.append((_current, [], {}))
+		_scheduled.append((_current, tuple(), {}))
 	else:
 		[l(_current) for l in _current.links]
 

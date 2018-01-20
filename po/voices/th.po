@@ -1,5 +1,5 @@
 # Thai translations for Unknown Horizons Voices package.
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons Voices package.
 # Automatically generated, 2013.
 #

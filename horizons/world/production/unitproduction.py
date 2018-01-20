@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.production.production import ChangingProduction
 from horizons.constants import PRODUCTION, RES
 from horizons.scheduler import Scheduler
+from horizons.world.production.production import ChangingProduction
+
 
 class UnitProduction(ChangingProduction):
 	"""Production, that produces units."""
@@ -31,7 +31,7 @@ class UnitProduction(ChangingProduction):
 
 	@property
 	def progress(self):
-		get_amount = lambda items: sum(amount for res, amount in items.iteritems() if res != RES.GOLD)
+		get_amount = lambda items: sum(amount for res, amount in items.items() if res != RES.GOLD)
 
 		still_needed = get_amount(self._prod_line.consumed_res)
 		all_needed = get_amount(self.original_prod_line.consumed_res)
@@ -45,7 +45,7 @@ class UnitProduction(ChangingProduction):
 		# Gold must be available from the beginning
 		if self._prod_line.consumed_res.get(RES.GOLD, 0) > 0: # check if gold is needed
 			amount = self._prod_line.consumed_res[RES.GOLD]
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res, amount in self._prod_line.consumed_res.items():
 			# we change the production, so the amount can become 0
 			# in this case, we must no consider this resource, as it has already been fully provided
 			if amount == 0:
@@ -62,7 +62,7 @@ class UnitProduction(ChangingProduction):
 		@param return_without_gold: return not an integer but a tuple, where the second value is without gold"""
 		taken = 0
 		taken_without_gold = 0
-		for res, amount in self._prod_line.consumed_res.iteritems():
+		for res, amount in self._prod_line.consumed_res.items():
 			if res == RES.GOLD:
 				inventory = self.owner_inventory
 			else:
@@ -79,7 +79,7 @@ class UnitProduction(ChangingProduction):
 
 	def _produce(self):
 		# check if we're done
-		still_needed_res = sum(self._prod_line.consumed_res.itervalues())
+		still_needed_res = sum(self._prod_line.consumed_res.values())
 		if still_needed_res == 0:
 			self._finished_producing()
 			return
@@ -97,7 +97,7 @@ class UnitProduction(ChangingProduction):
 
 		# calculate how much of the whole production process we can produce now
 		# and set the scheduler waiting time accordingly (e.g. half of res => wait half of prod time)
-		all_needed_res = sum(amount for res, amount in self.original_prod_line.consumed_res.iteritems()
+		all_needed_res = sum(amount for res, amount in self.original_prod_line.consumed_res.items()
 		                            if res != RES.GOLD)
 		part_of_whole_production = float(removed_res_without_gold) / all_needed_res
 		prod_time = Scheduler().get_ticks( part_of_whole_production * self._prod_line.time )
@@ -105,9 +105,8 @@ class UnitProduction(ChangingProduction):
 		# do part of production and call this again when done
 		Scheduler().add_new_object(self._produce, self, prod_time)
 
-
 	def _finished_producing(self, **kwargs):
-		super(UnitProduction, self)._finished_producing(continue_producing=False, **kwargs)
+		super()._finished_producing(continue_producing=False, **kwargs)
 		self._state = PRODUCTION.STATES.done
 		# reset prodline
 		self._prod_line = self._prod_line.get_original_copy()

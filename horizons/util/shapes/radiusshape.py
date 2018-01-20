@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.shapes import Rect
+from .rect import Rect
 
-class RadiusShape(object):
+
+class RadiusShape:
 	"""Class for generic shapes with a radius.
 	The shape includes everything, that the center contains plus every point,
 	for which this holds: distance(point, center) <= radius
@@ -32,8 +33,9 @@ class RadiusShape(object):
 		self.center = center
 		self.radius = radius
 
+
 class RadiusRect(RadiusShape):
 	"""Specialization of RadiusShape with a Rect as center"""
 	def __init__(self, center, radius):
 		assert isinstance(center, Rect)
-		super(RadiusRect, self).__init__(center, radius)
+		super().__init__(center, radius)

@@ -1,5 +1,12 @@
+from horizons.constants import BUILDINGS, LAYERS
+from horizons.scheduler import Scheduler
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.world.production.producer import Producer
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,36 +26,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.entities import Entities
-from horizons.scheduler import Scheduler
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
 	walkable = True
 	layer = LAYERS.OBJECTS
 
+
 class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
 	# sorry, but this class is to be removed soon anyway
 	pass
+
 
 class Field(NatureBuildingResourceHandler):
 	walkable = False
 	layer = LAYERS.FIELDS
 
 	def initialize(self, **kwargs):
-		super(Field, self).initialize(**kwargs)
+		super().initialize(**kwargs)
 
 		if self.owner.is_local_player:
 			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
 			prod_comp = self.get_component(Producer)
 			productions = prod_comp.get_productions()
 			if not productions:
-				print "Warning: Field is assumed to always produce, but doesn't.", self
+				print("Warning: Field is assumed to always produce, but doesn't.", self)
 			else:
 				run_in = Scheduler().get_ticks(productions[0].get_production_time())
 				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)
@@ -67,15 +69,17 @@ class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
+
 class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False
 
+
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 	def __init__(self, *args, **kwargs):
-		super(Fish, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.last_usage_tick = -1000000 # a long time ago
 
 		# Make the fish run at different speeds
@@ -83,14 +87,14 @@ class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 		self._instance.setTimeMultiplier(multiplier)
 
 	def load(self, db, worldid):
-		super(Fish, self).load(db, worldid)
+		super().load(db, worldid)
 		self.last_usage_tick = db.get_last_fish_usage_tick(worldid)
 
 	def save(self, db):
-		super(Fish, self).save(db)
+		super().save(db)
 		translated_tick = self.last_usage_tick - Scheduler().cur_tick # pre-translate for the loading process
 		db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", self.worldid, translated_tick)
 
 	def remove_incoming_collector(self, collector):
-		super(Fish, self).remove_incoming_collector(collector)
+		super().remove_incoming_collector(collector)
 		self.last_usage_tick = Scheduler().cur_tick

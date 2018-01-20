@@ -1,7 +1,6 @@
-#!/usr/bin/env python2
-# Encoding: utf-8
+#!/usr/bin/env python3
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import gettext
 import os
 import re
@@ -46,6 +46,7 @@ WEBLATE_PATH = re.compile(r'''
 	([^\.]*)\.po   # \3 == 'The_Unknown'
 	''', re.VERBOSE)
 
+
 def setup_paths():
 	match = WEBLATE_PATH.match(sys.argv[1])
 	path_prefix = match.group(1)
@@ -57,7 +58,7 @@ def setup_paths():
 	if not os.path.exists(scenario_path):
 		scenario_path = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario_path, language='en')
 	if not os.path.exists(scenario_path):
-		print 'Scenario file not found:', scenario_path
+		print('Scenario file not found:', scenario_path)
 		sys.exit(1)
 
 	# drop [_en].yaml suffix and paths to file to obtain base scenario name
@@ -73,7 +74,7 @@ def setup_paths():
 		language_path = PO_INPUT_PATH.format(scenario=scenario, language=language)
 
 	yaml_output = YAML_PATH.format(path_prefix=path_prefix, scenario=scenario, language=language)
-	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '%s.mo' % scenario
+	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '{}.mo'.format(scenario)
 
 	# If path for compiled translations does not exist yet, create it
 	subprocess.call(['mkdir', '-p', MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language)])
@@ -89,8 +90,8 @@ def setup_gettext(scenario, language):
 		translation = gettext.translation(scenario, MO_OUTPUT, [language])
 	except IOError:
 		# IOError: [Errno 2] No translation file found for domain
-		print('No compiled translation for domain `%s` and language `%s` in `%s`. '
-		      'Exiting.' % (scenario, language, MO_OUTPUT))
+		print('No compiled translation for domain `{}` and language `{}` in `{}`. '
+		      'Exiting.'.format(scenario, language, MO_OUTPUT))
 		sys.exit(1)
 	else:
 		translation.install(unicode=True)
@@ -99,7 +100,7 @@ def setup_gettext(scenario, language):
 def compile_scenario_po(output_mo):
 	input_po = sys.argv[1]
 	if not os.path.exists(input_po):
-		print('Input file does not exist: %s' % input_po)
+		print('Input file does not exist: {}'.format(input_po))
 		sys.exit(1)
 	try:
 		stats = subprocess.check_output([
@@ -111,8 +112,8 @@ def compile_scenario_po(output_mo):
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
-		print('Error while compiling translation `%s`, probably malformed `.po`. '
-		      'Exiting.' % input_po)
+		print('Error while compiling translation `{}`, probably malformed `.po`. '
+		      'Exiting.'.format(input_po))
 		sys.exit(1)
 	else:
 		return stats
@@ -267,9 +268,9 @@ def main():
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print 'Usage: {0} scenario_translation_file'.format(os.path.basename(__file__))
-		print '\tscenario_translation_file: `po/scenarios/sv/tutorial.po`'
-		print 'Run from main UH directory!'
+		print('Usage: {0} scenario_translation_file'.format(os.path.basename(__file__)))
+		print('\tscenario_translation_file: `po/scenarios/sv/tutorial.po`')
+		print('Run from main UH directory!')
 		sys.exit(1)
 	else:
 		main()

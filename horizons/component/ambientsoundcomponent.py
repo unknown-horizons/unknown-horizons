@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,8 +21,9 @@
 
 import random
 
-import horizons.globals
+from fife.fife import AudioSpaceCoordinate
 
+import horizons.globals
 from horizons.component import Component
 from horizons.extscheduler import ExtScheduler
 
@@ -39,7 +40,7 @@ class AmbientSoundComponent(Component):
 		"""
 		@param soundfiles: list of paths
 		"""
-		super(AmbientSoundComponent, self).__init__()
+		super().__init__()
 		self.soundfiles = soundfiles or []
 		self.__init()
 
@@ -56,24 +57,24 @@ class AmbientSoundComponent(Component):
 		if hasattr(self.instance.owner, "is_local_player") and self.instance.owner.is_local_player:
 			# don't use session random, this is player dependent
 			play_every = self.__class__.AMBIENT_SOUND_INTERVAL + \
-												random.randint( * self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE )
+												random.randint(* self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE)
 			for soundfile in self.soundfiles:
 				#TODO remove str() -- http://github.com/fifengine/fifengine/issues/701
 				self.play_ambient(str(soundfile), loop_interval=play_every,
 				                  position=self.instance.position.center)
 
 	def load(self, db, worldid):
-		super(AmbientSoundComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 		# don't start playing all at once
 
 		interval = (0, self.__class__.AMBIENT_SOUND_INTERVAL +
 		            self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE[1])
-		run_in = random.randint( *interval )
+		run_in = random.randint(*interval)
 		ExtScheduler().add_new_object(self._init_playing, self, run_in=run_in)
 
 	def remove(self):
-		super(AmbientSoundComponent, self).remove()
+		super().remove()
 		self.stop_sound()
 		self.__emitter = None
 
@@ -92,7 +93,7 @@ class AmbientSoundComponent(Component):
 			if position is not None:
 				self.__emitter.setRolloff(1.9)
 				# set to current position
-				self.__emitter.setPosition(position.x, position.y, 1)
+				self.__emitter.setPosition(AudioSpaceCoordinate(position.x, position.y, 1))
 			else:
 				self.__emitter.setRolloff(0) # reset to default
 

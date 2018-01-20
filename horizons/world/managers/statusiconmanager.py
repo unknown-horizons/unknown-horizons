@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -19,16 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
-
 from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.world.status import StatusIcon
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
+import horizons.globals
 from horizons.gui.mousetools import NavigationTool
+from horizons.messaging import (
+	AddStatusIcon, HoverInstancesChanged, RemoveStatusIcon, WorldObjectDeleted)
+from horizons.world.status import StatusIcon
 
-class StatusIconManager(object):
+
+class StatusIconManager:
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
 	and RemoveStatusIcon messages on the main message bus"""
 
@@ -69,9 +70,9 @@ class StatusIconManager(object):
 		"""This is called by the message bus with AddStatusIcon messages"""
 		assert isinstance(message, AddStatusIcon)
 		icon_instance = message.icon.instance
-		if not icon_instance in self.icons:
+		if icon_instance not in self.icons:
 			self.icons[icon_instance] = []
-		assert not message.icon in self.icons[icon_instance]
+		assert message.icon not in self.icons[icon_instance]
 		self.icons[icon_instance].append(message.icon)
 		# Sort, make sure highest icon is at top
 		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key(), reverse=True)
@@ -139,7 +140,7 @@ class StatusIconManager(object):
 
 	def get_status_string(self, instance):
 		"""Returns render name for status icons of this instance"""
-		status_string = "status_"+ str(id(instance))
+		status_string = "status_" + str(id(instance))
 		return status_string
 
 	def on_hover_instances_changed(self, msg):

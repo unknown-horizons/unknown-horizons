@@ -58,7 +58,7 @@ logbook-data:
   - Il est temps de construire quelques tentes où vivre et une place principale afin d'approvisionner nos citoyens en biens.
   - 'Mission:
 
-    Édifiez une place principale et au moins 10 tentes.'
+    Édifiez une Place Principale et au moins 10 tentes.'
   - [Pagebreak]
   - ''
 
@@ -142,7 +142,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Vous êtes le capitaine d''un navire sous pavillon Anglais en 1740. Votre équipage et vous étiez en chemin vers une colonie d''Angleterre dans l''océan Pacifique.
+  description: 'Vous êtes le capitaine d''un navire sous pavillon Anglais en 1740. Votre équipage et vous étiez en chemin vers une colonie d''Angleterre dans l''Océan Pacifique.
 
     Tout se passait bien jusqu’à ce que vous subissiez une tempête…'
   difficulty: facile

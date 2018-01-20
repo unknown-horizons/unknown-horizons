@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,12 +21,13 @@
 
 import weakref
 
-from horizons.world.player import Player
-from horizons.scheduler import Scheduler
-from horizons.ext.enum import Enum
-from horizons.world.units.unitexeptions import MoveNotPossible
-from horizons.util.python.callback import Callback
 from horizons.constants import GAME_SPEED
+from horizons.ext.enum import Enum
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.world.player import Player
+from horizons.world.units.unitexeptions import MoveNotPossible
+
 
 class GenericAI(Player):
 	"""Class for AI players implementing generic stuff."""
@@ -34,14 +35,14 @@ class GenericAI(Player):
 	shipStates = Enum('idle', 'moving_random')
 
 	def __init__(self, *args, **kwargs):
-		super(GenericAI, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.__init()
 
 	def __init(self):
 		self.ships = weakref.WeakValueDictionary() # {ship : state}. used as list of ships and structure to know their state
 
 	def _load(self, db, worldid):
-		super(GenericAI, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.__init()
 
 	def send_ship(self, ship):
@@ -72,4 +73,4 @@ class GenericAI(Player):
 
 	def end(self):
 		self.ships = None
-		super(GenericAI, self).end()
+		super().end()

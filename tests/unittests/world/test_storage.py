@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,9 @@
 import sys
 from unittest import TestCase
 
-from horizons.world.storage import (GenericStorage, SpecializedStorage, SizedSpecializedStorage,
-                                    TotalStorage, GlobalLimitStorage, PositiveStorage,
-                                    PositiveTotalStorage, PositiveSizedSlotStorage,
-                                    PositiveSizedNumSlotStorage)
+from horizons.world.storage import (
+	GenericStorage, GlobalLimitStorage, PositiveSizedNumSlotStorage, PositiveSizedSlotStorage,
+	PositiveStorage, PositiveTotalStorage, SizedSpecializedStorage, SpecializedStorage, TotalStorage)
 
 
 class TestGenericStorage(TestCase):
@@ -58,8 +57,8 @@ class TestGenericStorage(TestCase):
 
 	def test_limit(self):
 		s = GenericStorage()
-		self.assertEqual(s.get_limit(), sys.maxint)
-		self.assertEqual(s.get_limit(1), sys.maxint)
+		self.assertEqual(s.get_limit(), sys.maxsize)
+		self.assertEqual(s.get_limit(1), sys.maxsize)
 
 	def test_sum_of_stored_resources(self):
 		s = GenericStorage()

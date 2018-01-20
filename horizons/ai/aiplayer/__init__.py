@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,84 +20,80 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
+
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
+from horizons.ai.generic import GenericAI
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.stancecomponent import NoneStance
+from horizons.ext.enum import Enum
+from horizons.messaging import MineEmpty, NewDisaster, SettlementRangeChanged
+from horizons.scheduler import Scheduler
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.weaponholder import MovingWeaponHolder
 
-from mission.foundsettlement import FoundSettlement
-from mission.preparefoundationship import PrepareFoundationShip
-from mission.domestictrade import DomesticTrade
-from mission.specialdomestictrade import SpecialDomesticTrade
-from mission.internationaltrade import InternationalTrade
-
-from personalitymanager import PersonalityManager
-from landmanager import LandManager
-from settlementmanager import SettlementManager
-from unitbuilder import UnitBuilder
-from constants import GOAL_RESULT
-from basicbuilder import BasicBuilder
-from specialdomestictrademanager import SpecialDomesticTradeManager
-from internationaltrademanager import InternationalTradeManager
-from settlementfounder import SettlementFounder
-from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-
+from .basicbuilder import BasicBuilder
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
-from building import AbstractBuilding
-from building.farm import AbstractFarm, FarmEvaluator
-from building.field import AbstractField
-from building.weaver import AbstractWeaver
-from building.distillery import AbstractDistillery
-from building.villagebuilding import AbstractVillageBuilding
-from building.claydeposit import AbstractClayDeposit
-from building.claypit import AbstractClayPit
-from building.doctor import AbstractDoctor
-from building.brickyard import AbstractBrickyard
-from building.firestation import AbstractFireStation
-from building.fishdeposit import AbstractFishDeposit
-from building.fisher import AbstractFisher
-from building.tree import AbstractTree
-from building.lumberjack import AbstractLumberjack
-from building.irondeposit import AbstractIronDeposit
-from building.ironmine import AbstractIronMine
-from building.charcoalburner import AbstractCharcoalBurner
-from building.smeltery import AbstractSmeltery
-from building.toolmaker import AbstractToolmaker
-from building.boatbuilder import AbstractBoatBuilder
-from building.signalfire import AbstractSignalFire
-from building.tobacconist import AbstractTobacconist
-from building.saltponds import AbstractSaltPonds
-from building.pastryshop import AbstractPastryShop
-from building.bakery import AbstractBakery
-from building.blender import AbstractBlender
-from building.windmill import AbstractWindmill
-from building.brewery import AbstractBrewery
-from building.butchery import AbstractButchery
-from building.cannonfoundry import AbstractCannonfoundry
-#from building.hunter import AbstractHunter
-from building.winery import AbstractWinery
-#from building.woodentower import AbstractWoodenTower
-from building.weaponsmith import AbstractWeaponsmith
-from building.stonedeposit import AbstractStoneDeposit
-from building.stonepit import AbstractStonePit
-from building.stonemason import AbstractStonemason
+from .building import AbstractBuilding
+from .building.bakery import AbstractBakery
+from .building.blender import AbstractBlender
+from .building.boatbuilder import AbstractBoatBuilder
+from .building.brickyard import AbstractBrickyard
+from .building.brewery import AbstractBrewery
+from .building.butchery import AbstractButchery
+from .building.cannonfoundry import AbstractCannonfoundry
+from .building.charcoalburner import AbstractCharcoalBurner
+from .building.claydeposit import AbstractClayDeposit
+from .building.claypit import AbstractClayPit
+from .building.distillery import AbstractDistillery
+from .building.doctor import AbstractDoctor
+from .building.farm import AbstractFarm, FarmEvaluator
+from .building.field import AbstractField
+from .building.firestation import AbstractFireStation
+from .building.fishdeposit import AbstractFishDeposit
+from .building.fisher import AbstractFisher
+#from .building.hunter import AbstractHunter
+from .building.irondeposit import AbstractIronDeposit
+from .building.ironmine import AbstractIronMine
+from .building.lumberjack import AbstractLumberjack
+from .building.pastryshop import AbstractPastryShop
+from .building.saltponds import AbstractSaltPonds
+from .building.signalfire import AbstractSignalFire
+from .building.smeltery import AbstractSmeltery
+from .building.stonedeposit import AbstractStoneDeposit
+from .building.stonemason import AbstractStonemason
+from .building.stonepit import AbstractStonePit
+from .building.tobacconist import AbstractTobacconist
+from .building.toolmaker import AbstractToolmaker
+from .building.tree import AbstractTree
+from .building.villagebuilding import AbstractVillageBuilding
+from .building.weaponsmith import AbstractWeaponsmith
+from .building.weaver import AbstractWeaver
+from .building.windmill import AbstractWindmill
+from .building.winery import AbstractWinery
+#from .building.woodentower import AbstractWoodenTower
+from .constants import GOAL_RESULT
+from .goal.donothing import DoNothingGoal
+from .goal.settlementgoal import SettlementGoal
+from .internationaltrademanager import InternationalTradeManager
+from .landmanager import LandManager
+from .mission.domestictrade import DomesticTrade
+from .mission.foundsettlement import FoundSettlement
+from .mission.internationaltrade import InternationalTrade
+from .mission.preparefoundationship import PrepareFoundationShip
+from .mission.specialdomestictrade import SpecialDomesticTrade
+from .personalitymanager import PersonalityManager
+from .settlementfounder import SettlementFounder
+from .settlementmanager import SettlementManager
+from .specialdomestictrademanager import SpecialDomesticTradeManager
+from .unitbuilder import UnitBuilder
 
-from goal.settlementgoal import SettlementGoal
-from goal.donothing import DoNothingGoal
-
-from horizons.scheduler import Scheduler
-from horizons.messaging import SettlementRangeChanged, NewDisaster, MineEmpty
-from horizons.util.python import decorators
-from horizons.util.python.callback import Callback
-from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
-from horizons.ai.generic import GenericAI
-from horizons.component.selectablecomponent import SelectableComponent
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -109,7 +105,7 @@ class AIPlayer(GenericAI):
 	tick_long_interval = 128
 
 	def __init__(self, session, id, name, color, clientid, difficulty_level, **kwargs):
-		super(AIPlayer, self).__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
+		super().__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
 		self.need_more_ships = False
 		self.need_more_combat_ships = True
 		self.need_feeder_island = False
@@ -207,7 +203,7 @@ class AIPlayer(GenericAI):
 			del self.islands[mission.land_manager.island.worldid]
 
 	def save(self, db):
-		super(AIPlayer, self).save(db)
+		super().save(db)
 
 		# save the player
 		db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?", self.worldid)
@@ -215,22 +211,22 @@ class AIPlayer(GenericAI):
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback, calls)
-		remaining_ticks = max(calls.values()[0], 1)
+		remaining_ticks = max(list(calls.values())[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
 		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback_long, calls)
-		remaining_ticks_long = max(calls.values()[0], 1)
+		remaining_ticks_long = max(list(calls.values())[0], 1)
 
 		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
 			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long)
 
 		# save the ships
-		for ship, state in self.ships.iteritems():
+		for ship, state in self.ships.items():
 			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)", ship.worldid, self.worldid, state.index)
 
 		# save the land managers
-		for land_manager in self.islands.itervalues():
+		for land_manager in self.islands.values():
 			land_manager.save(db)
 
 		# save the settlement managers
@@ -257,7 +253,7 @@ class AIPlayer(GenericAI):
 		self.behavior_manager.save(db)
 
 	def _load(self, db, worldid):
-		super(AIPlayer, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
 		self.__init()
 
@@ -293,7 +289,7 @@ class AIPlayer(GenericAI):
 			self.islands[land_manager.island.worldid] = land_manager
 
 		# load the settlement managers and settlement foundation missions
-		for land_manager in self.islands.itervalues():
+		for land_manager in self.islands.values():
 			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)
 			if db_result:
 				settlement_manager = SettlementManager.load(db, self, db_result[0][0])
@@ -449,7 +445,7 @@ class AIPlayer(GenericAI):
 		if not change_lists:
 			return  # no changes in land ownership on islands we care about
 
-		for island_id, changed_coords in change_lists.iteritems():
+		for island_id, changed_coords in change_lists.items():
 			affects_us = False
 			land_manager = self.islands[island_id]
 			for coords in changed_coords:
@@ -523,6 +519,4 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager = None
 		self.strategy_manager.end()
 		self.strategy_manager = None
-		super(AIPlayer, self).end()
-
-decorators.bind_all(AIPlayer)
+		super().end()

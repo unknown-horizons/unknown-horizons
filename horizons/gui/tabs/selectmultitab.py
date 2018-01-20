@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,19 +22,20 @@
 import logging
 from collections import defaultdict
 
+from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.util.python.callback import Callback
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.util import load_uh_widget
-from horizons.i18n import _lazy
-from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
-from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.constants import UNITS
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.util import load_uh_widget
+from horizons.i18n import gettext_lazy as LazyT
+from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
 
 
 class SelectMultiTab(TabInterface):
@@ -43,7 +44,7 @@ class SelectMultiTab(TabInterface):
 	"""
 	widget = 'overview_select_multi.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
-	helptext = _lazy("Selected Units")
+	helptext = LazyT("Selected Units")
 
 	max_row_entry_number = 3
 	max_column_entry_number = 4
@@ -68,7 +69,7 @@ class SelectMultiTab(TabInterface):
 
 		self._scheduled_refresh = False
 
-		super(SelectMultiTab, self).__init__()
+		super().__init__()
 
 	def init_widget(self):
 		if self.stance_unit_number != 0:
@@ -88,7 +89,7 @@ class SelectMultiTab(TabInterface):
 			self.row_number = 2
 			return
 		self.column_number += 1
-		self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
+		self.widget.findChild(name="hbox_{}".format(self.row_number)).addChild(entry.widget)
 		self.entries.append(entry)
 
 	def draw_selected_units_widget(self):
@@ -109,8 +110,8 @@ class SelectMultiTab(TabInterface):
 	def hide_selected_units_widget(self):
 		for entry in self.entries:
 			entry.remove()
-		for i in xrange(0, self.max_row_entry_number):
-			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
+		for i in range(0, self.max_row_entry_number):
+			self.widget.findChild(name="hbox_{}".format(i)).removeAllChildren()
 
 	def schedule_unit_widget_refresh(self):
 		if not self._scheduled_refresh:
@@ -161,7 +162,7 @@ class SelectMultiTab(TabInterface):
 		stance_widget = load_uh_widget('stancewidget.xml')
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
-		events = dict((i.NAME, Callback(self.set_stance, i)) for i in DEFAULT_STANCES)
+		events = {i.NAME: Callback(self.set_stance, i) for i in DEFAULT_STANCES}
 		self.widget.mapEvents(events)
 
 	def hide_stance_widget(self):
@@ -190,7 +191,7 @@ class SelectMultiTab(TabInterface):
 		self.widget.findChild(name=stance.NAME).set_active()
 
 
-class UnitEntry(object):
+class UnitEntry:
 	def __init__(self, instances, show_number=True):
 		self.log = logging.getLogger("gui.tabs")
 		self.instances = instances
@@ -199,15 +200,15 @@ class UnitEntry(object):
 		i = instances[0]
 		if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 			# A building. Generate dynamic thumbnail from its action set.
-			imgs = ActionSetLoader.get_set(i._action_set_id).items()[0][1]
-			thumbnail = imgs[45].keys()[0]
+			imgs = list(ActionSetLoader.get_set(i._action_set_id).items())[0][1]
+			thumbnail = list(imgs[45].keys())[0]
 		else:
 			# Units use manually created thumbnails because those need to be
 			# precise and recognizable in combat situations.
 			thumbnail = self.get_unit_thumbnail(i.id)
 		self.widget.findChild(name="unit_button").up_image = thumbnail
 		if show_number:
-			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
+			self.widget.findChild(name="instance_number").text = str(len(self.instances))
 		# only two callbacks are needed so drop unwanted changelistener inheritance
 		for i in instances:
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
@@ -223,7 +224,7 @@ class UnitEntry(object):
 		path = template.format(unit_id=unit_id)
 		try:
 			Icon(image=path)
-		except RuntimeError:
+		except fife.NotFound:
 			self.log.warning('Missing unit thumbnail {0}'.format(path))
 			path = template.format(unit_id='unknown_unit')
 		return path
@@ -236,7 +237,7 @@ class UnitEntry(object):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 
 		if self.instances:
-			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
+			self.widget.findChild(name="instance_number").text = str(len(self.instances))
 
 	def draw_health(self, caller=None):
 		health = 0

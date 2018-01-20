@@ -1,6 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -61,6 +62,7 @@ def get_option_parser():
 	             help="Edit map <map>.")
 	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
 	             help="Edit the map from the saved game <game>.")
+	start_uh.add_option("--no-audio", dest="no_audio", action="store_true", help="Starts UH without sounds.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -86,8 +88,6 @@ def get_option_parser():
 	             help="Enable logging for a certain logging module (for developing only).")
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
 	             help="Writes log to <filename> instead of to the uh-userdir")
-	dev_group.add_option("--profile", dest="profile", action="store_true",
-	             default=False, help="Enable profiling (for developing only).")
 	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
 	             help="Run the game for <max_ticks> ticks.")
 	dev_group.add_option("--no-freeze-protection", dest="freeze_protection", action="store_false",
@@ -162,7 +162,7 @@ unknown-horizons \- real-time strategy/simulation game
 \fBunknown\-horizons\fR [{\fB\-h\fR\ |\ \fB\-\-help\fR}]
 .SH "DESCRIPTION"
 .PP
-\fBUnknown Horizons\fR: isometric 2D real-time strategy/simulation fun.
+Isometric 2D real-time strategy/simulation fun.
 .br
 It puts emphasis on the economy and city building aspects.
 .br
@@ -176,10 +176,10 @@ trade and diplomacy.
 	def format_heading(self, text):
 		"""Format an option group.."""
 		if self.level == 0:
-			return u''
+			return ''
 		return r'''.TP
-\fB%s\fR
-''' % self._markup(text.upper())
+\fB{}\fR
+'''.format(self._markup(text.upper()))
 
 	def format_option(self, option, *args, **kwargs):
 		"""Format a single option.
@@ -191,9 +191,9 @@ trade and diplomacy.
 		result.append(r'''\
 .TP
 .B
-%s
-%s
-''' % (self.optmarkup(opts), self._markup(help_text)))
+{}
+{}
+'''.format(self.optmarkup(opts), self._markup(help_text)))
 
 		return ''.join(result)
 
@@ -205,7 +205,7 @@ if __name__ == '__main__':
 	p.formatter = formatter
 
 	today = datetime.date.today()
-	print r'''\
+	print(r'''\
 '\" t
 .\"     Title: unknown-horizons
 .\"    Author: The Unknown Horizons Team <team@unknown-horizons.org>
@@ -213,13 +213,13 @@ if __name__ == '__main__':
 .\"  Language: English
 .\"
 .TH "UNKNOWN\-HORIZONS" "6" "{0}" "unknown-horizons" "Unknown Horizons User Commands"
-'''.format(datetime.date.today())
+'''.format(datetime.date.today()))
 	p.print_help()
 
-	print r'''\
+	print(r'''\
 .SH "BUGS"
 .PP
-The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
+The bugtracker can be found at \fBhttps://github.com/unknown-horizons/unknown-horizons/issues\fR\&.
 .SH "AUTHOR"
 .PP
 \fBThe Unknown Horizons Team\fR <\&team@unknown-horizons\&.org\&>
@@ -227,11 +227,11 @@ The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
 .RE
 .SH "COPYRIGHT"
 .br
-Copyright \(co 2008-2016 The Unknown Horizons Team
+Copyright \(co 2008-2017 The Unknown Horizons Team
 .br
 .PP
 Permission is granted to copy, distribute and/or modify this document under the
 terms of the GNU General Public License, Version 3 or (at your option) any later
 version published by the Free Software Foundation\&.
 .sp
-'''
+''')

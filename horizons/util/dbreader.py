@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import sqlite3
 import re
+import sqlite3
 
 from horizons.util.python import decorators
 
-class DbReader(object):
+
+class DbReader:
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
 	def __init__(self, dbfile):
@@ -37,14 +38,16 @@ class DbReader(object):
 		self.connection.create_function("regexp", 2, regexp)
 		self.cur = self.connection.cursor()
 
-	@decorators.make_constants()
 	def __call__(self, command, *args):
 		"""Executes a sql command.
-		@param command: str containing the raw sql command, with ? as placeholders for values (eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
+		@param command: str containing the raw sql command, with ? as
+		                placeholders for values (eg. SELECT ? FROM ?).
+				command must not end with ';',
+				it's added automatically here.
 		@param args: tuple containing the values to add into the command.
 		"""
 		assert not command.endswith(";")
-		command = '%s;' % command
+		command = '{};'.format(command)
 		self.cur.execute(command, args)
 		return self.cur.fetchall()
 

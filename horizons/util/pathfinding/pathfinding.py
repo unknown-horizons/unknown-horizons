@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,6 @@
 
 import logging
 
-from horizons.util.python import decorators
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
@@ -29,14 +28,14 @@ called FindPath. You should never ever use this class directly, just through the
 interface.
 """
 
-class FindPath(object):
+
+class FindPath:
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which
 	is not necessarily the shortest path (cause roads have different speeds)
 	"""
 	log = logging.getLogger("world.pathfinding")
 
-	@decorators.make_constants()
 	def __call__(self, source, destination, path_nodes, blocked_coords=None,
 		        diagonal=False, make_target_walkable=True):
 		"""
@@ -79,7 +78,6 @@ class FindPath(object):
 		self.log.debug('found path: %s', path)
 		return path
 
-	@decorators.make_constants()
 	def setup(self):
 		"""Sets up variables for execution of algorithm
 		@return: bool, whether setup was successful"""
@@ -95,7 +93,7 @@ class FindPath(object):
 		# check if target is blocked
 		target_is_blocked = True
 		for coord in self.destination.tuple_iter():
-			if not coord in self.blocked_coords:
+			if coord not in self.blocked_coords:
 				target_is_blocked = False
 		if target_is_blocked:
 			#self.log.debug("FindPath: target is blocked")
@@ -114,7 +112,6 @@ class FindPath(object):
 
 		return True
 
-	@decorators.make_constants()
 	def execute(self):
 		"""Executes algorithm"""
 		# nodes are the keys of the following dicts (x, y)
@@ -148,13 +145,13 @@ class FindPath(object):
 		if not self.make_target_walkable:
 			# restrict destination coords to walkable tiles, by default they are counted as walkable
 			# the manual set intersection is used because set.intersection(dict) doesn't take advantage of the fast lookup
-			dest_coords_set = set(coords for coords in dest_coords_set if coords in self.path_nodes)
+			dest_coords_set = {coords for coords in dest_coords_set if coords in self.path_nodes}
 		if not dest_coords_set:
 			return None
 
 		from heapq import heappush, heappop
 		heap = []
-		for coords, data in to_check.iteritems():
+		for coords, data in to_check.items():
 			heappush(heap, (data[2], coords))
 
 		# pull dereferencing out of loop
@@ -176,36 +173,35 @@ class FindPath(object):
 			# optimization TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
-				x_p1 = x+1
-				x_m1 = x-1
-				y_p1 = y+1
-				y_m1 = y-1
-				neighbors = ( i for i in ((x_m1, y_m1), (x_m1, y),
-				                          (x_m1, y_p1), (x, y_m1),
-				                          (x, y_p1), (x_p1, y_m1),
-				                          (x_p1, y), (x_p1, y_p1) )
+				x_p1 = x + 1
+				x_m1 = x - 1
+				y_p1 = y + 1
+				y_m1 = y - 1
+				neighbors = (i for i in ((x_m1, y_m1), (x_m1, y),
+				                         (x_m1, y_p1), (x, y_m1),
+				                         (x, y_p1), (x_p1, y_m1),
+				                         (x_p1, y), (x_p1, y_p1))
 				              if # conditions are sorted by likelihood in ship worst case
 				                 i not in checked
 				                 and (   i in path_nodes
 				                      or i in source_coords
 				                      or i in dest_coords_set)
-				                 and i not in blocked_coords )
+				                 and i not in blocked_coords)
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = ( i for i in ((x-1, y), (x+1, y),
-				                          (x, y-1), (x, y+1) )
-				              if
-				                   (   i in path_nodes
-				                    or i in source_coords
-				                    or i in dest_coords_set )
-			                      and i not in checked
-			                      and i not in blocked_coords )
+				neighbors = (i for i in ((x - 1, y), (x + 1, y),
+				                         (x, y - 1), (x, y + 1))
+				             if (i in path_nodes
+				                 or i in source_coords
+				                 or i in dest_coords_set)
+			                     and i not in checked
+			                     and i not in blocked_coords)
 
 			# Profiling info: In the worst case, this for-loop takes 80% of the time.
 			# Parts of this are actually spent in evaluating the generator expressions from the if above
 
 			for neighbor_node in neighbors:
-				if not neighbor_node in to_check:
+				if neighbor_node not in to_check:
 					# add neighbor to list of reachable nodes to check
 
 					# save previous node, calc distance to neighbor_node
@@ -228,10 +224,9 @@ class FindPath(object):
 
 					if neighbor[1] > distance_to_neighbor:
 						# found better path to neighbor, update values
-						neighbor = ( cur_node_coords,
-						             distance_to_neighbor,
-						             distance_to_neighbor + ( neighbor[2]-neighbor[1] ) )
-
+						neighbor = (cur_node_coords,
+						            distance_to_neighbor,
+						            distance_to_neighbor + (neighbor[2] - neighbor[1]))
 
 			# done processing cur_node
 			checked[cur_node_coords] = cur_node_data
@@ -241,7 +236,7 @@ class FindPath(object):
 			if cur_node_coords in dest_coords_set:
 				# we're done.
 				# insert steps of path to a list and return it
-				path = [ cur_node_coords ]
+				path = [cur_node_coords]
 				previous_node = cur_node_data[0]
 				while previous_node is not None:
 					path.insert(0, previous_node)

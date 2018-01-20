@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,19 +21,18 @@
 
 import logging
 import os
-# Find the best implementation available on this platform
-try:
-	from cStringIO import StringIO
-except:
-	from StringIO import StringIO
+from io import BytesIO
 
+from fife import fife
 from fife.extensions.pychan import loadXML
 from fife.extensions.pychan.widgets import Container, HBox, Icon
 
 from horizons.gui.i18n import translate_widget
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
+
 
 @decorators.cachedfunction
 def get_gui_files_map():
@@ -51,40 +50,43 @@ def get_gui_files_map():
 			xml_files[f] = os.path.join(root, f)
 	return xml_files
 
+
 def get_happiness_icon_and_helptext(value, session):
 	happiness_icon_path = "content/gui/icons/templates/happiness/"
 	sad = session.db.get_lower_happiness_limit()
 	happy = session.db.get_upper_happiness_limit()
 	if value <= sad:
 		happiness_icon_path += "sad.png"
-		happiness_helptext = _("sad")
+		happiness_helptext = T("sad")
 	elif sad < value < happy:
 		happiness_icon_path += "average.png"
-		happiness_helptext = _("satisfied")
+		happiness_helptext = T("satisfied")
 	elif value >= happy:
 		happiness_icon_path += "happy.png"
-		happiness_helptext = _("happy")
+		happiness_helptext = T("happy")
 
 	return happiness_icon_path, happiness_helptext
+
 
 @decorators.cachedfunction
 def get_widget_xml(filename):
 	"""
-	This function reads the given widget file's content and returns the XML. 
+	This function reads the given widget file's content and returns the XML.
 	It is cached to avoid useless IO.
 	"""
-	with open(get_gui_files_map()[filename]) as open_file:
+	with open(get_gui_files_map()[filename], 'rb') as open_file:
 		return open_file.read()
+
 
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
 	"""
 	# load widget
 	try:
-		widget = loadXML(StringIO(get_widget_xml(filename)))
+		widget = loadXML(BytesIO(get_widget_xml(filename)))
 	except (IOError, ValueError) as error:
 		log = logging.getLogger('gui')
-		log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
+		log.error('PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
 		raise
 
 	# translate
@@ -105,6 +107,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
+
 @decorators.cachedfunction
 def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
@@ -120,8 +123,8 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		icon_path = icon_path + '{res:03d}.png'.format(res=res)
 
 	try:
-		Icon(image=icon_path)
-	except RuntimeError: # ImageManager: image not found, use placeholder or die
+		Icon(image=icon_path).hide()
+	except fife.NotFound: # ImageManager: image not found, use placeholder or die
 		if res == 'placeholder':
 			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
 		else:
@@ -135,12 +138,14 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		# remove 'content/gui/' and '.png'
 		return icon_path[12:][:-4]
 
+
 def create_resource_icon(res_id, db):
 	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
 	@param res_id: resource id
 	@param db: dbreader for main db"""
 	widget = Icon(image=get_res_icon_path(res_id))
 	widget.helptext = db.get_res_name(res_id)
+	widget.scale = True
 	return widget
 
 
@@ -189,21 +194,21 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			# capture a mouse click on the container. It's possible to click on the
 			# image itself or into the empty area (below or to the right of the image)
 			button.capture(cb, event_name="mouseClicked")
-			button.name = "resource_%d" % res_id
+			button.name = "resource_{:d}".format(res_id)
 		else:
 			amount = inventory[res_id]
-			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
+			filled = int(inventory[res_id] / inventory.get_limit(res_id) * 100)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
 						                                amount=amount, filled=filled, uncached=True,
 						                                use_inactive_icon=False, showprice=True)
-			button.button.capture(cb)
-			button.button.name = "resource_%d" % res_id
+			button.capture(cb, event_name="mouseClicked")
+			button.name = "resource_{:d}".format(res_id)
 
 		current_hbox.addChild(button)
 		if index % amount_per_line == 0:
 			vbox.addChild(current_hbox)
 			box_id = index // amount_per_line
-			current_hbox = HBox(name="hbox_%s" % box_id, padding=0)
+			current_hbox = HBox(name="hbox_{}".format(box_id), padding=0)
 		index += 1
 	vbox.addChild(current_hbox)
 	vbox.adaptLayout()

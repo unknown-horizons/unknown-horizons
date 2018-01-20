@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,24 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict, Tuple
+
 from fife import fife
 
 import horizons.globals
-
 from horizons.constants import GROUND
-from horizons.gui.mousetools import NavigationTool
-from horizons.util.shapes import Circle, Point
 from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.shapes import Circle, Point
+
+from .navigationtool import NavigationTool
 
 
 class TileLayingTool(NavigationTool):
 	"""Tool to lay ground tiles."""
 	HIGHLIGHT_COLOR = (0, 200, 90)
 
-	tile_images = {}
+	tile_images = {} # type: Dict[Tuple[int, str, int], fife.SharedImagePointer]
 
 	def __init__(self, session, tile_details):
-		super(TileLayingTool, self).__init__(session)
+		super().__init__(session)
 		self.renderer = session.view.renderer['InstanceRenderer']
 		self._tile_details = (None, None, None)
 		if tile_details[0] in [0, 2]:
@@ -62,7 +64,7 @@ class TileLayingTool(NavigationTool):
 
 			ground_id, action_id, rotation = tile
 			set_id = horizons.globals.db.get_random_tile_set(ground_id)
-			filename = tile_sets[set_id][action_id][rotation].keys()[0]
+			filename = list(tile_sets[set_id][action_id][rotation].keys())[0]
 
 			image = horizons.globals.fife.imagemanager.load(filename)
 			TileLayingTool.tile_images[tile] = image
@@ -72,7 +74,7 @@ class TileLayingTool(NavigationTool):
 	def remove(self):
 		self._remove_coloring()
 		horizons.globals.fife.set_cursor_image('default')
-		super(TileLayingTool, self).remove()
+		super().remove()
 
 	def on_escape(self):
 		self.session.ingame_gui.set_cursor()
@@ -98,7 +100,7 @@ class TileLayingTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(TileLayingTool, self).mouseClicked(evt)
+			super().mouseClicked(evt)
 
 	def mouseDragged(self, evt):
 		"""Allow placing tiles continusly while moving the mouse."""

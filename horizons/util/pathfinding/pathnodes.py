@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,8 @@
 
 import logging
 
-class PathNodes(object):
+
+class PathNodes:
 	"""
 	Abstract class; used to derive list of path nodes from, which is used for pathfinding.
 	We encapsulate this code here to keep it centralized.
@@ -36,17 +37,18 @@ class PathNodes(object):
 		# by the pathfinding algo
 		pass
 
+
 class ConsumerBuildingPathNodes(PathNodes):
 	"""List of path nodes for a consumer, that is a building
 	Interface:
 	self.nodes: {(x, y): speed, ...} of the home_building, where the collectors can walk
 	"""
 	def __init__(self, consumerbuilding):
-		super(ConsumerBuildingPathNodes, self).__init__()
+		super().__init__()
 		ground_map = consumerbuilding.island.ground_map
 		self.nodes = {}
 		for coords in consumerbuilding.position.get_radius_coordinates(consumerbuilding.radius, include_self=False):
-			if coords in ground_map and not 'coastline' in ground_map[coords].classes:
+			if coords in ground_map and 'coastline' not in ground_map[coords].classes:
 				self.nodes[coords] = self.NODE_DEFAULT_SPEED
 
 
@@ -62,7 +64,7 @@ class IslandPathNodes(PathNodes):
 	is_walkable rechecks the walkability status of a coordinate
 	"""
 	def __init__(self, island):
-		super(IslandPathNodes, self).__init__()
+		super().__init__()
 
 		self.island = island
 
@@ -79,11 +81,11 @@ class IslandPathNodes(PathNodes):
 
 	def register_road(self, road):
 		for i in road.position:
-			self.road_nodes[ (i.x, i.y) ] = self.NODE_DEFAULT_SPEED
+			self.road_nodes[(i.x, i.y)] = self.NODE_DEFAULT_SPEED
 
 	def unregister_road(self, road):
 		for i in road.position:
-			del self.road_nodes[ (i.x, i.y) ]
+			del self.road_nodes[(i.x, i.y)]
 
 	def is_road(self, x, y):
 		"""Return if there is a road on (x, y)"""
@@ -104,7 +106,7 @@ class IslandPathNodes(PathNodes):
 		# if it's not constructable, it is usually also not walkable
 		# NOTE: this isn't really a clean implementation, but it works for now
 		# it eliminates e.g. water and beaches, that shouldn't be walked on
-		if not "constructible" in tile_object.classes:
+		if "constructible" not in tile_object.classes:
 			return False
 		if tile_object.blocked and not tile_object.object.walkable:
 			return False
@@ -124,3 +126,25 @@ class IslandPathNodes(PathNodes):
 			self.nodes[coord] = self.NODE_DEFAULT_SPEED
 		if in_list and not actually_walkable:
 			del self.nodes[coord]
+
+
+class IslandBarrierNodes(PathNodes):
+	"""
+	List of barriers on an island. Used for pathfinding when constructing barriers by
+	dragging.
+	"""
+	def __init__(self, island):
+		super().__init__()
+
+		self.island = island
+
+		# nodes where a barrier is built on.
+		self.nodes = set()
+
+	def register(self, barrier):
+		for i in barrier.position:
+			self.nodes.add((i.x, i.y))
+
+	def unregister(self, barrier):
+		for i in barrier.position:
+			self.nodes.remove((i.x, i.y))

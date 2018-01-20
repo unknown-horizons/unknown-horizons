@@ -1,36 +1,36 @@
 <?xml version="1.0"?>
-<VBox max_size="320,480"  min_size="320,480"  name="right_side"  padding="15">
+<VBox fixed_size="320,480"  name="right_side">
 	<Label name="headline_map_settings_lbl" text="Map settings:" />
 
-	<VBox name="map_settings"  padding="8">
+	<VBox name="map_settings">
 		<HBox name="seed_string">
 			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" comment="String to initialize random number generator with" />
-			<TextField name="seed_string_field" max_size="250,20" min_size="125,20" />
+			<TextField name="seed_string_field" min_size="125,20" max_size="250,20" />
 		</HBox>
 		<HBox name="map_size">
 			<Label name="map_size_lbl" min_size="150,20" />
-			<StepSlider name="map_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" is_focusable="0" />
+			<StepSlider name="map_size_slider" size="125,20" steps="50 ; 100 ; 150 ; 200 ; 250" marker_length="25" is_focusable="0" />
 		</HBox>
 		<HBox name="water_percent">
 			<Label name="water_percent_lbl" min_size="150,20" />
-			<StepSlider name="water_percent_slider" size="125,20" scale_start="0" scale_end="6" step_length="1" marker_length="22" is_focusable="0" />
+			<StepSlider name="water_percent_slider" size="125,20" steps="20 ; 30 ; 40 ; 50 ; 60 ; 70 ; 80" marker_length="22" is_focusable="0" />
 		</HBox>
 		<HBox name="max_island_size">
 			<Label name="max_island_size_lbl" min_size="150,20" />
-			<StepSlider name="max_island_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" is_focusable="0" />
+			<StepSlider name="max_island_size_slider" size="125,20" steps="30 ; 40 ; 50 ; 60 ; 70 ; 80" marker_length="25" is_focusable="0" />
 		</HBox>
 		<HBox name="preferred_island_size">
 			<Label name="preferred_island_size_lbl" min_size="150,20" />
-			<StepSlider name="preferred_island_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" is_focusable="0" />
+			<StepSlider name="preferred_island_size_slider" size="125,20" steps="30 ; 40 ; 50 ; 60 ; 70 ; 80" marker_length="25" is_focusable="0" />
 		</HBox>
 		<HBox name="island_size_deviation">
 			<Label name="island_size_deviation_lbl" min_size="150,20" />
-			<StepSlider name="island_size_deviation_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" is_focusable="0" />
+			<StepSlider name="island_size_deviation_slider" size="125,20" steps="5 ; 10 ; 20 ; 30 ; 40" marker_length="25" is_focusable="0" />
 		</HBox>
 	</VBox>
 
 	<HBox>
-		<Icon name="map_preview_minimap" size="128,128" max_size="128,128" is_focusable="0" />
+		<Icon name="map_preview_minimap" fixed_size="128,128" is_focusable="0" />
 		<VBox>
 			<Spacer />
 			<Label name="map_preview_status_label" is_focusable="0" />
@@ -39,5 +39,5 @@
 
 	<VBox name="game_settings_box" />
 
-	<Spacer min_size="4200" />
+	<Spacer/>
 </VBox>

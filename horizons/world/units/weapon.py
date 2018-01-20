@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -21,17 +21,17 @@
 
 import logging
 
+from horizons.component.healthcomponent import HealthComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
-from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.component.healthcomponent import HealthComponent
 
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
-class Weapon(object):
+class Weapon:
 	"""
 	Generic Weapon class
 	it has the modifiers:
@@ -172,7 +172,7 @@ class Weapon(object):
 				ticks, weapon_id, damage, dest_x, dest_y)
 
 	def __str__(self):
-		return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id, self.weapon_type, self.weapon_range)
+		return "Weapon(id:{};type:{};rang:{})".format(self.weapon_id, self.weapon_type, self.weapon_range)
 
 
 class SetStackableWeaponNumberError(Exception):
@@ -190,7 +190,7 @@ class StackableWeapon(Weapon):
 	This is used for cannons, reducing the number of instances and bullets fired
 	"""
 	def __init__(self, session, id):
-		super(StackableWeapon, self).__init__(session, id)
+		super().__init__(session, id)
 		self.__init()
 
 	def __init(self):
@@ -229,4 +229,4 @@ class StackableWeapon(Weapon):
 			self.number_of_weapons -= number
 
 	def get_damage_modifier(self):
-		return self.number_of_weapons * super(StackableWeapon, self).get_damage_modifier()
+		return self.number_of_weapons * super().get_damage_modifier()

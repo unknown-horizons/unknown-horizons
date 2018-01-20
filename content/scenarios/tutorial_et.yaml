@@ -78,15 +78,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Ehita jahimees ja kalur. Ühenda nad laohoonega.]
+  - [Message, Ehita jahimehe telk ja kaluri telk. Ühenda nad laohoonega.]
   - [Headline, 'UUS ÜLESANNE: TOIDUGA VARUSTAMINE']
   - [Image, content/gui/images/background/hr.png]
   - Sul on vaja ka mõningaid toitu tootvaid kompaniisid, sest inimesed on üldiselt (ja meremehed eriti) väga näljased.
-  - Esimesel tasemel on võimalik luua jahinduse ja kalurite kompaniisid.
-  - Jahimehed jahivad metsast ulukeid ning seetõttu peab nende lähedal olema puid.
-  - Tähelepanu, sa võid oma jahimehed paigutada saeveski metsa lähedale.
+  - Esimese taseme kompaniidest on võimalik luua jahimehe telk ja kaluri telk.
+  - Jahimees jahib metsast ulukeid ning seetõttu peab nende lähedal olema puid.
+  - Tähelepanu, sa võid oma jahimeeste telgi paigutada puuraiduri metsa lähedale.
   - Võib juhtuda, et loomad ei paljune piisavalt kiiresti või oksavad lihtsalt hästi peituda.
-  - Järelikult ei ole jahimehed just väga usaldusväärsed, kui sul on vaja pidevat varustatust.
+  - Järelikult ei ole jahimeeeste telk just väga usaldusväärne, kui vajad pidevat varustatust.
   - [Pagebreak]
   - '
 
@@ -95,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kalastamine on väga pidev varustus allikas, kuid selle hinnaks on natuke pikem tootmise aeg toiduühiku kohta.
   - Väike koloonia nagu sul on võib kasutada mõlemat, mis võimaldab sul paremini tasakaalustada nende eelised ja puudused.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita jahimees ja kalur.']
+  - [BoldLabel, 'Ülesanne: ehita jahimeeste telk ja kaluri telk.']
   - Ära unusta ehitamast teerada oma laoni!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -106,7 +106,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Su elanikud vajavad peaväljakut, kus nad saavad hankida omale kaupu.
   - See tähendab, et nad vajavad teerada, mis ühendab nende kodu peaväljakuga. Peaväljak on kasutatav ka teena ning seetõttu ei vaja temaga ühendatud telgid eraldi teerada.
-  - Kõik kaubad su laos on sellel "turuplatsil" saadavad; seega ei pea su elanikud käima kaluri juures või isegi laos.
+  - Kõik kaubad su laos on sellel "turuplatsil" saadavad; seega ei pea su elanikud käima kaluri telgi juures või isegi laos.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Peaksid vältima oma põhiasunduse telkide paigutamist saeveskitele väga lähedale, sest telkide püstitamisel kaovad puud, mida su saeveskida vajavad laudade tootmiseks.
@@ -168,7 +168,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kas sa näed laeva, mis möödub aeg-ajalt su saarest? See laev kuulub Vabale Kauplejale, selle arhipelaagi ühele esimesele asunikule.
   - Kauple varustab su kolooniat vajalike kaupadega, mida sa ise ei saa veel toota.
   - Samuti on sul võimalik müüa oma liigne toodang, kuid tavaliselt on toodangu ise tarbimine (täiendavaid telke ehitades) mõistlikum, sest nii on saadav kasum suurem.
-  - Tavaliselt seilavad kauplejate laevad niisama ringi ja otsivad häid tehinguid, kuid sa saad asju pisut kiirendada.
+  - Tavaliselt seilab kaupleja niisama ringi ja otsib häid tehinguid, kuid sa saad asju pisut kiirendada.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
   - Selleks on vaja ehitada su lao lähedale signaaltuli. See juhatab laevad su kolooniasse.
@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Selle väikese reklaami tulemusel teeb kaupleja su lao juures peatuse, kuigi tal oli alselt plaan mööda sõita.'
+    Selle väikese reklaami tulemusel teeb kaupleja su lao juures peatuse, kuigi tal oli algselt plaan mööda sõita.'
   - Lao kaardil "Müü/Osta" saad sa algatada tehinguid.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -194,6 +194,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Järgmisena õpime kauplema.'
+  - Esmalt tee klõps oma laol ja seejärel klõpsa kolmandal kaardil.
+  - Nüüd klõpsa ühel kolmest pesast ja vali kaup, mida soovid osta või müüa.
   - Kaubagrupi valimisel järel näitab pesa alumises servas olev roheline riba (kui ta on nähtav) laos oleva kauba kogust.
   - Sikutades liuguri iga pesa parempoolsesse serva määrab "vajaliku koguse", mis omab erinevat tähendust kaartidel "Ost" ja "Müük".
   - Ostmisel ostad sa piisavalt, et hoida laos oleks varus "vajalik kogus" kaupa.
@@ -221,7 +223,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Neist tööriistadest hetkel piisab. Hästi tehtud!
   - Nüüd võimaldad oma elanikele eluaseme, peaväljaku ja toidu.
-  - Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud; sa võid vaadata seda lao või telgi kaardilt - su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.
+  - 'Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud (kontrolliks klõpsa ühel telkidest): su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.'
   - Lahenduseks on paviljon, mille küla hingekarjane püstitab kiirelt päikesevarjuks.
   - Pühakodadest peavad samuti viima rajad telkideni, sest muidu ei jõua su elanikud nendeni.
   - [Pagebreak]
@@ -271,7 +273,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Sinna on lisandunud uus vahekaart.
   - Avastajad vajavad kangast. Seega pead üles seadma kanga tootmisliini, mille sisendiks on lambavill (see on üks kaupadest, mida farm toodab).
-  - Farm on väga eriline tootmishoone, sest ta saab soovi korral toota mitte ühte, vaid paljusid (ja erinevaid) kaupu.
+  - Farm on väga eriline tootmishoone, sest ta saab soovi korral toota mitte ühte, vaid mitmeid (ja erinevaid) kaupu.
   - Farmi toodang sõltub tema ümber rajatud põldudest.
   - [Pagebreak]
   - '
@@ -323,7 +325,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sellist olukorda saab parandada kahel viisil ja järgnevalt tutvume mõlemaga.
   - 'Kõik kompaniid ei pruugi alati tööd pakkuda.
 
-    See võib kõlada imelikult, kuid klõpsa hammasrattal, mis on saeveski ülevaatel.'
+    See võib kõlada imelikult, kuid klõpsa hammasrattal, mis on puuraiduri hüti ülevaatel.'
   - Kui seal on "puhkuse" olek lubatud, siis on ehitise käituskulud madalamad. Need ei lange nulli, kuid nad on siiski väiksemad, kui sa hoiad kompanii kaupu tootmas.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -344,15 +346,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, 'Ehita ketrusvabrik, mis saab kuidagi töödelda su farmi villa.']
+  - [Message, 'Ehita kangru hütt, mis saab kuidagi töödelda su farmi villa.']
   - [Headline, 'UUS ÜLESANNE: EHITA KETRUSVABRIK']
   - [Image, content/gui/images/background/hr.png]
   - Nüüd, kus villatootmine on käivitatud, on sul vaja veel kangrut, et toota villast kangast.
-  - 'Ehitamiseks mõistlikke kohti on kaks: kas farmi või lao (-telgi) naabrusesse.'
+  - 'Kangru hütt on koht, kus elab kangur. Ehitamiseks mõistlikke kohti on kaks: kas farmi või lao (-telgi) naabrusesse.'
   - Mõlemal juhul pead rajama ka ühendava teeraja.
-  - Ketrusvabriku võid paigutada farmi lähedale ja samas hävitada farmi ühendusteed, kuid villa varumine ja töötlemine jätkub ikkagi.
+  - Kangru hüti võid paigutada farmi lähedale ja samas hävitada farmi ühendusteed, kuid villa varumine ja töötlemine jätkub ikkagi.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita ketrusvabrik nii, et ta saaks hankida villa.']
+  - [BoldLabel, 'Ülesanne: ehita kangru hütt nii, et ta saaks hankida villa.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -655,4 +657,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 188 translated messages.

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict
+
 from fife.extensions.pychan.widgets import Container, Icon, Label
 
 from horizons.constants import TRADER
-from horizons.util.python.callback import Callback
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import gettext as T
+from horizons.util.python.callback import Callback
+
 
 class ImageFillStatusButton(Container):
 
@@ -38,10 +42,10 @@ class ImageFillStatusButton(Container):
 		the inventory is for that resource. Derives from Container and also takes
 		all arguments of Imagebutton in order to display the resource icon.
 		This is meant to be used with the Inventory widget."""
-		super(ImageFillStatusButton, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.path = path
 		self.text = text
-		self.helptext = _(helptext)
+		self.helptext = T(helptext)
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (9, 30)
@@ -67,18 +71,18 @@ class ImageFillStatusButton(Container):
 		if showprice:
 			value = db.get_res_value(res)
 			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
-				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
+				helptext = T('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
-				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
-				            + _('buy for {buyprice} gold').format(buyprice=buyprice)
-				            + u'[br]'
-				            + _('sell for {sellprice} gold').format(sellprice=sellprice))
+				helptext = ('{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+				            + T('buy for {buyprice} gold').format(buyprice=buyprice)
+				            + '[br]'
+				            + T('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
 			helptext = db.get_res_name(res)
 
-		return cls(path=path, text=unicode(amount), helptext=helptext,
+		return cls(path=path, text=str(amount), helptext=helptext,
 		           size=cls.CELL_SIZE, res_id=res, filled=filled,
 		           max_size=cls.CELL_SIZE, min_size=cls.CELL_SIZE,
 		           marker=marker, uncached=uncached)
@@ -93,7 +97,8 @@ class ImageFillStatusButton(Container):
 
 	filled = property(_get_filled, _set_filled)
 
-	__widget_cache = {}
+	__widget_cache = {} # type: Dict[Callback, ImageButton]
+
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call

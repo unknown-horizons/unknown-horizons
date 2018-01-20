@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,20 +21,22 @@
 
 import math
 import time
+
 from fife import fife
+from fife.fife import AudioSpaceCoordinate
 
 import horizons.globals
-
+from horizons.constants import GAME_SPEED, LAYERS, VIEW
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-from horizons.constants import LAYERS, VIEW, GAME_SPEED
+
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
 	def __init__(self):
-		super(View, self).__init__()
+		super().__init__()
 		self.world = None
 		self.model = horizons.globals.fife.engine.getModel()
 		self.map = self.model.createMap("map")
@@ -50,7 +52,7 @@ class View(ChangeListener):
 		using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
 
 		self.layers = []
-		for layer_id in xrange(LAYERS.NUM):
+		for layer_id in range(LAYERS.NUM):
 			layer = self.map.createLayer(str(layer_id), cellgrid)
 			if layer_id == LAYERS.OBJECTS:
 				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
@@ -71,7 +73,7 @@ class View(ChangeListener):
 
 		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
 		                       horizons.globals.fife.engine_settings.getScreenHeight())
-		self.cam = self.map.addCamera("main", self.layers[-1], rect)
+		self.cam = self.map.addCamera("main", rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
@@ -98,16 +100,17 @@ class View(ChangeListener):
 	def end(self):
 		horizons.globals.fife.pump.remove(self.do_autoscroll)
 		self.model.deleteMaps()
-		super(View, self).end()
+		super().end()
 
 	def center(self, x, y):
 		"""Sets the camera position
 		@param center: tuple with x and y coordinate (float or int) of tile to center
 		"""
-		loc = self.cam.getLocationRef()
+		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
 		pos.x = x
 		pos.y = y
+		self.cam.setLocation(loc)
 		self.cam.refresh()
 		self._changed()
 
@@ -165,9 +168,9 @@ class View(ChangeListener):
 		for i in ['speech', 'effects']:
 			emitter = horizons.globals.fife.sound.emitter[i]
 			if emitter is not None:
-				emitter.setPosition(pos.x, pos.y, 1)
+				emitter.setPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
-			horizons.globals.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
+			horizons.globals.fife.sound.soundmanager.setListenerPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		self._changed()
 
 	def _prepare_zoom_to_cursor(self, zoom):
@@ -221,7 +224,7 @@ class View(ChangeListener):
 
 	def get_displayed_area(self):
 		"""Returns the coords of what is displayed on the screen as Rect"""
-		coords = self.cam.getLocationRef().getLayerCoordinates()
+		coords = self.cam.getLocation().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
 		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
 		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1

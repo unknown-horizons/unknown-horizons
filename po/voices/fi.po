@@ -1,5 +1,5 @@
 # Finnish translations for Unknown Horizons Voices package.
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons Voices package.
 # Automatically generated, 2013.
 #
@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-07-31 11:46+0200\n"
-"Last-Translator: Aleksi Kinnunen <aleksi.kinnunen@outlook.com>\n"
+"PO-Revision-Date: 2016-12-27 05:55+0000\n"
+"Last-Translator: Lari Oesch <lari@oesch.me>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/voices/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -60,68 +60,71 @@ msgstr "Kilpailijamme on kuulemma valloittanut uuden maan."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Yhden vihollisistamme on sanottu laajentuneen."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr ""
+msgstr "Liittolaisemme asetuu toiselle saarelle."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr ""
+msgstr "Yks liittolaisistamme kehittää saarta."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
-msgstr ""
+msgstr "Liittolaisemme kertoi onnistuneensa siirtokunnan pystyttämisessä."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr ""
+msgstr "Tämä saari ei ole enää kokonaan hallinassamme."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
 msgstr ""
+"Tiedustelijamme huomasivat, että vieraita on asettunut yhdelle saaristamme."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
-msgstr ""
+msgstr "Meillä on seuraa tällä saarella!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Scouts report that uninvited guests beleaguer our island!"
 msgstr ""
+"Tiedustelijamme ilmoitivat, että kutsumattomat vieraat piirittävät saartamme!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Should we really accept our rival as new neighbor?"
-msgstr ""
+msgstr "Oletko varma, että meidän kannattaa ottaa vihollisemme naapureiksemme?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr ""
+msgstr "Yksi vihollisistamme asettui meidän alueellemme!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
-msgstr ""
+msgstr "Eräs liittolaisistamme kaipaa toivottomasti maa-aluettasi."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
-msgstr ""
+msgstr "Tämä alue on nyt meidän ja liittolaisemme yhteinen."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr ""
+msgstr "Liittolaisemme asettui yhdelle saaristamme."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr ""
+msgstr "Tarvitset enemmän resursseja tämän rakentamiseen."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
-msgstr ""
+msgstr "Tämä rakennusprojekti vaatii lisää resursseja."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "Rakentaminen on mahdotonta ilman riittäviä materiaaleja."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
 msgstr ""
+"Varastossasi olevat materiaalit eivät sovellu tämän kohteen rakentamiseen."

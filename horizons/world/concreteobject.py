@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,6 +30,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.units import UnitClass
 
+
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
 	"Concrete" here means "you can touch it", e.g. a Warehouse is a ConcreteObject,
@@ -46,7 +47,7 @@ class ConcreteObject(WorldObject):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
-		super(ConcreteObject, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
@@ -70,12 +71,12 @@ class ConcreteObject(WorldObject):
 		return self._instance
 
 	def save(self, db):
-		super(ConcreteObject, self).save(db)
+		super().save(db)
 		db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid,
 			 self._instance.getActionRuntime(), self._action_set_id)
 
 	def load(self, db, worldid):
-		super(ConcreteObject, self).load(db, worldid)
+		super().load(db, worldid)
 		runtime, action_set_id = db.get_concrete_object_data(worldid)
 		# action_set_id should never be None in regular games,
 		# but this information was lacking in savegames before rev 59.
@@ -113,11 +114,11 @@ class ConcreteObject(WorldObject):
 		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
 		if (Fife.getVersion() >= (0, 3, 6)):
 			if repeating:
-				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
+				self._instance.actRepeat(action + "_" + str(self._action_set_id), facing_loc)
 			else:
-				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+				self._instance.actOnce(action + "_" + str(self._action_set_id), facing_loc)
 		else:
-			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+			self._instance.act(action + "_" + str(self._action_set_id), facing_loc, repeating)
 		ActionChanged.broadcast(self, action)
 
 	def has_action(self, action):
@@ -129,7 +130,7 @@ class ConcreteObject(WorldObject):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
-		super(ConcreteObject, self).remove()
+		super().remove()
 
 	@classmethod
 	def weighted_choice(cls, weighted_dict):
@@ -137,11 +138,11 @@ class ConcreteObject(WorldObject):
 		"""
 		# usually we do not need any magic because there only is one set:
 		if len(weighted_dict) == 1:
-			return weighted_dict.keys()[0]
+			return list(weighted_dict.keys())[0]
 		weights = sum(ACTION_SETS.DEFAULT_WEIGHT if w is None else w
-		              for i, w in weighted_dict.iteritems())
+		              for i, w in weighted_dict.items())
 		rnd = random.random() * weights
-		for action_set, weight in weighted_dict.iteritems():
+		for action_set, weight in weighted_dict.items():
 			rnd -= ACTION_SETS.DEFAULT_WEIGHT if weight is None else weight
 			if rnd < 0:
 				return action_set
@@ -160,15 +161,15 @@ class ConcreteObject(WorldObject):
 				action_set = cls.weighted_choice(action_sets[level])
 			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
-			for possible_level in reversed(xrange(level+1)):
-				if possible_level in action_sets.iterkeys():
+			for possible_level in reversed(range(level + 1)):
+				if possible_level in (action_sets.keys()):
 					action_set = cls.weighted_choice(action_sets[possible_level])
 					break
 			if action_set is None: # didn't find a suitable one
 				# fall back to one from a higher level.
 				# this does not happen in valid games, but can happen in tests, when level
 				# constraints are ignored.
-				action_set, weight = action_sets.values()[0].items()[0]
+				action_set, weight = list(list(action_sets.values())[0].items())[0]
 
 		return action_set
 
@@ -178,4 +179,3 @@ class ConcreteObject(WorldObject):
 			return self._level_specific_names[self.level]
 		else:
 			return self._name
-

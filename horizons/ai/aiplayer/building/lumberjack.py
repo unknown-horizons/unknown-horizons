@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import List, Set, Tuple
+
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.entities import Entities
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+from horizons.entities import Entities
 from horizons.util.shapes import Rect
+
 
 class AbstractLumberjack(AbstractBuilding):
 	@property
@@ -37,9 +39,10 @@ class AbstractLumberjack(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.LUMBERJACK] = cls
 
+
 class LumberjackEvaluator(BuildingEvaluator):
-	__template_outline = None
-	__radius_offsets = None
+	__template_outline = None # type: List[Set[Tuple[int, int]]]
+	__radius_offsets = None # type: List[Tuple[int, int]]
 
 	@classmethod
 	def __init_outline(cls):
@@ -98,7 +101,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 	def execute(self):
 		# TODO Add a check that figures out if all trees that should be planted are in range of the settlement.
 		# If not, return range missing result
-		(result, building) = super(LumberjackEvaluator, self).execute()
+		(result, building) = super().execute()
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 
@@ -122,7 +125,5 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 		return (BUILD_RESULT.OK, building)
 
-AbstractLumberjack.register_buildings()
 
-decorators.bind_all(AbstractLumberjack)
-decorators.bind_all(LumberjackEvaluator)
+AbstractLumberjack.register_buildings()

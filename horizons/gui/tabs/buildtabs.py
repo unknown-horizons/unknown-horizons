@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,20 +20,22 @@
 # ###################################################
 
 import horizons.globals
-
-from horizons.entities import Entities
-from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
+from horizons.component.storagecomponent import StorageComponent
+from horizons.entities import Entities
+from horizons.ext.enum import Enum
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.i18n import gettext as T
+from horizons.messaging import NewPlayerSettlementHovered
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import NewPlayerSettlementHovered
-from horizons.ext.enum import Enum
+
 
 class InvalidBuildMenuFileFormat(Exception):
 	pass
+
 
 class BuildTab(TabInterface):
 	"""
@@ -70,7 +72,7 @@ class BuildTab(TabInterface):
 	                            "single_per_tier" # each single building unlocked if tier is unlocked
 	                            )
 
-	last_active_build_tab = None
+	last_active_build_tab = None # type: int
 
 	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy, build_menu_config):
 		"""
@@ -88,8 +90,8 @@ class BuildTab(TabInterface):
 			if isinstance(entry, dict):
 				# this is one key-value pair, e.g. "- icon: img/foo.png"
 				if len(entry) != 1:
-					raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: %s" % entry)
-				key, value = entry.items()[0]
+					raise InvalidBuildMenuFileFormat("Invalid entry in buildmenuconfig: {}".format(entry))
+				key, value = list(entry.items())[0]
 				if key == "icon":
 					icon_path = value
 				elif key == "helptext":
@@ -97,12 +99,13 @@ class BuildTab(TabInterface):
 				elif key == "headline":
 					headline = value[2:] if value.startswith('_ ') else value
 				else:
-					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon, helptext or headline." % key)
+					raise InvalidBuildMenuFileFormat(
+						"Invalid key: {}\nMust be either icon, helptext or headline.".format(key))
 			elif isinstance(entry, list):
 				# this is a line of data
 				rows.append(entry) # parse later on demand
 			else:
-				raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
+				raise InvalidBuildMenuFileFormat("Invalid entry: {}".format(entry))
 
 		if not icon_path:
 			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
@@ -115,19 +118,19 @@ class BuildTab(TabInterface):
 			if not helptext and not headline:
 				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
-		self.headline = _(headline) if headline else headline # don't translate None
-		self.helptext = _(helptext) if helptext else self.headline
+		self.headline = T(headline) if headline else headline # don't translate None
+		self.helptext = T(helptext) if helptext else self.headline
 
 		#get build style
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		self.cur_build_menu_config = self.__class__.build_menus[ saved_build_style ]
+		self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
 
-		super(BuildTab, self).__init__(icon_path=icon_path)
+		super().__init__(icon_path=icon_path)
 
 	@classmethod
 	def get_saved_buildstyle(cls):
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		return cls.build_menus[ saved_build_style ]
+		return cls.build_menus[saved_build_style]
 
 	def init_widget(self):
 		self.__current_settlement = None
@@ -135,7 +138,7 @@ class BuildTab(TabInterface):
 		if self.headline: # prefer specific headline
 			headline_lbl.text = self.headline
 		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
-			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
+			headline_lbl.text = T(self.session.db.get_settler_name(self.tabindex))
 
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
@@ -153,8 +156,8 @@ class BuildTab(TabInterface):
 			# tooltip.py will then place icons from this information.
 			required_resources = ''
 			for resource_id, amount_needed in sorted(building.costs.items()):
-				required_resources += ' %s:%s' % (resource_id, amount_needed)
-			required_text = '[[Buildmenu%s]]' % (required_resources)
+				required_resources += ' {}:{}'.format(resource_id, amount_needed)
+			required_text = '[[Buildmenu{}]]'.format(required_resources)
 			button.helptext = required_text + button.helptext
 
 			enough_res = False # don't show building by default
@@ -162,8 +165,8 @@ class BuildTab(TabInterface):
 				res_overview = self.session.ingame_gui.resource_overview
 				show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
 				button.mapEvents({
-				  button.name+"/mouseEntered/buildtab" : show_costs,
-				  button.name+"/mouseExited/buildtab" : res_overview.close_construction_mode
+				  button.name + "/mouseEntered/buildtab" : show_costs,
+				  button.name + "/mouseExited/buildtab" : res_overview.close_construction_mode
 				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
@@ -182,29 +185,29 @@ class BuildTab(TabInterface):
 			column = -1 # can't use enumerate, not always incremented
 			for entry in row:
 				column += 1
-				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
+				position = (10 * column) + (row_num + 1) # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
 				elif (column + 1) > self.MAX_COLS:
 					# out of 4x4 bounds
-					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
-					err += " Max. column amount in current layout is %s." % self.MAX_COLS
+					err = "Invalid entry '{}': column {} does not exist.".format(entry, column + 1)
+					err += " Max. column amount in current layout is {}.".format(self.MAX_COLS)
 					raise InvalidBuildMenuFileFormat(err)
 				elif row_num > self.MAX_ROWS:
 					# out of 4x4 bounds
-					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
-					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
+					err = "Invalid entry '{}': row {} does not exist.".format(entry, row_num)
+					err += " Max. row amount in current layout is {}.".format(self.MAX_ROWS)
 					raise InvalidBuildMenuFileFormat(err)
-				elif isinstance(entry, basestring):
+				elif isinstance(entry, str):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
-					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
+					lbl.text = T(entry[2:]) if entry.startswith('_ ') else entry
 				elif isinstance(entry, int):
 					button = self.widget.child_finder('button_{position:02d}'.format(position=position))
 					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
 					_set_entry(button, icon, entry)
 				else:
-					raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
+					raise InvalidBuildMenuFileFormat("Invalid entry: {}".format(entry))
 
 	def refresh(self):
 		self.set_content()
@@ -232,7 +235,7 @@ class BuildTab(TabInterface):
 		self.__current_settlement = LastActivePlayerSettlementManager().get()
 		self.__add_changelisteners()
 		self.__class__.last_active_build_tab = self.tabindex
-		super(BuildTab, self).show()
+		super().show()
 
 		button = self.widget.child_finder("switch_build_menu_config_button")
 		self._set_switch_layout_button_image(button)
@@ -240,7 +243,7 @@ class BuildTab(TabInterface):
 
 	def hide(self):
 		self.__remove_changelisteners()
-		super(BuildTab, self).hide()
+		super().hide()
 
 	def _set_switch_layout_button_image(self, button):
 		image_path = "content/gui/icons/tabwidget/buildmenu/"
@@ -252,17 +255,17 @@ class BuildTab(TabInterface):
 
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
-		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
+		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
 		new_index = (cur_index + 1) % len(self.__class__.build_menus)
-		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
+		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
 
 		# after switch set active tab to first
 		self.__class__.last_active_build_tab = 0
 		self.session.ingame_gui.show_build_menu(update=True)
 
 		#save build style
-		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
-		horizons.globals.fife.save_settings();
+		horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
+		horizons.globals.fife.save_settings()
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
@@ -271,20 +274,20 @@ class BuildTab(TabInterface):
 		"""
 		source = cls.get_saved_buildstyle()
 		# parse
-		data = YamlCache.get_file( source, game_data=True )
+		data = YamlCache.get_file(source, game_data=True)
 		if 'meta' not in data:
 			raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
 		metadata = data['meta']
 		if 'unlocking_strategy' not in metadata:
 			raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
 		try:
-			unlocking_strategy = cls.unlocking_strategies.get_item_for_string( metadata['unlocking_strategy'] )
+			unlocking_strategy = cls.unlocking_strategies.get_item_for_string(metadata['unlocking_strategy'])
 		except KeyError:
 			raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
 
 		# create tab instances
 		tabs = []
-		for tab, tabdata in sorted(data.iteritems()):
+		for tab, tabdata in sorted(data.items()):
 			if tab == "meta":
 				continue # not a tab
 
@@ -293,11 +296,11 @@ class BuildTab(TabInterface):
 
 			try:
 				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
-				tabs.append( tab )
+				tabs.append(tab)
 			except Exception as e:
-				to_add = "\nThis error happened in %s of %s ." % (tab, source)
-				e.args = ( e.args[0] + to_add, ) + e.args[1:]
-				e.message = ( e.message + to_add )
+				to_add = "\nThis error happened in {} of {} .".format(tab, source)
+				e.args = (e.args[0] + to_add, ) + e.args[1:]
+				e.message = (e.message + to_add)
 				raise
 
 		return tabs
@@ -308,9 +311,9 @@ class BuildTab(TabInterface):
 		"""Returns a dictionary mapping building type ids to their tiers
 		@return cached dictionary (don't modify)"""
 		building_tiers = {}
-		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
+		data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
 		tier = -1
-		for tab, tabdata in sorted(data.iteritems()):
+		for tab, tabdata in sorted(data.items()):
 			if tab == "meta":
 				continue # not a tab
 

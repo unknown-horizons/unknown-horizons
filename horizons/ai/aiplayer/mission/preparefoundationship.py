@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,12 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import ShipMission
-from horizons.util.python import decorators
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES
+from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.ext.enum import Enum
-from horizons.constants import RES
-from horizons.component.storagecomponent import StorageComponent
+
 
 class PrepareFoundationShip(ShipMission):
 	"""
@@ -36,14 +36,14 @@ class PrepareFoundationShip(ShipMission):
 	missionStates = Enum('created', 'moving')
 
 	def __init__(self, settlement_manager, ship, feeder_island, success_callback, failure_callback):
-		super(PrepareFoundationShip, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		self.settlement_manager = settlement_manager
 		self.feeder_island = feeder_island
 		self.warehouse = self.settlement_manager.settlement.warehouse
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(PrepareFoundationShip, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_prepare_foundation_ship(rowid, settlement_manager, ship, feeder_island, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.ship.worldid, self.feeder_island, self.state.index)
 
@@ -59,7 +59,7 @@ class PrepareFoundationShip(ShipMission):
 		self.warehouse = self.settlement_manager.settlement.warehouse
 		self.feeder_island = db_result[2]
 		self.state = self.missionStates[db_result[3]]
-		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback,
+		super().load(db, worldid, success_callback, failure_callback,
 			WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
@@ -73,7 +73,8 @@ class PrepareFoundationShip(ShipMission):
 		self._move_to_destination_area()
 
 	def _move_to_destination_area(self):
-		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_destination_area),
+		self._move_to_warehouse_area(
+			self.warehouse.position, Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _load_foundation_resources(self):
@@ -83,7 +84,7 @@ class PrepareFoundationShip(ShipMission):
 		else:
 			max_amounts = {RES.BOARDS: personality.max_new_island_boards, RES.FOOD: personality.max_new_island_food, RES.TOOLS: personality.max_new_island_tools}
 
-		for resource_id, max_amount in max_amounts.iteritems():
+		for resource_id, max_amount in max_amounts.items():
 			self.move_resource(self.ship, self.settlement_manager.settlement, resource_id, self.ship.get_component(StorageComponent).inventory[resource_id] - max_amount)
 
 	def _reached_destination_area(self):
@@ -104,6 +105,4 @@ class PrepareFoundationShip(ShipMission):
 
 	def cancel(self):
 		self.ship.stop()
-		super(PrepareFoundationShip, self).cancel()
-
-decorators.bind_all(PrepareFoundationShip)
+		super().cancel()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,10 +22,7 @@
 import logging
 from collections import defaultdict
 
-from fife import fife
-
 import horizons.globals
-
 from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
@@ -41,7 +38,7 @@ class InventoryOverlayComponent(Component):
 	log = logging.getLogger('component.overlays')
 
 	def __init__(self, overlays=None):
-		super(InventoryOverlayComponent, self).__init__()
+		super().__init__()
 		self.overlays = overlays or {}
 
 		# Stores {resource_id: amount that is currently used as overlay, or None if no overlay}
@@ -62,9 +59,8 @@ class InventoryOverlayComponent(Component):
 		return self.fife_instance.getCurrentAction().getId()
 
 	def initialize(self):
-		super(InventoryOverlayComponent, self).initialize()
+		super().initialize()
 		InstanceInventoryUpdated.subscribe(self.inventory_changed, sender=self.instance)
-
 
 	def add_overlay(self, overlay_set, z_order=10):
 		"""Creates animation overlay from action set *overlay_set* and adds it to fife instance.
@@ -76,19 +72,23 @@ class InventoryOverlayComponent(Component):
 			# parameter True: also convert color overlays attached to base frame(s) into animation
 			self.fife_instance.convertToOverlays(self.identifier, True)
 
-		for rotation, frames in overlay_set.iteritems():
-			ov_anim = fife.Animation.createAnimation()
-			for frame_img, frame_data in frames.iteritems():
-				try:
-					frame_length = frame_data[0]
-				except TypeError:
-					# not using atlases
-					frame_length = frame_data
-				pic = horizons.globals.fife.imagemanager.load(frame_img)
-				frame_milliseconds = int(frame_length * 1000)
-				ov_anim.addFrame(pic, frame_milliseconds)
+		animationmanager = horizons.globals.fife.animationmanager
+		for rotation, frames in overlay_set.items():
+			id = '{}+{}'.format(self.identifier, rotation)
+			if animationmanager.exists(id):
+				ov_anim = animationmanager.getPtr(id)
+			else:
+				ov_anim = animationmanager.create(id)
+				for frame_img, frame_data in frames.items():
+					try:
+						frame_length = frame_data[0]
+					except TypeError:
+						# not using atlases
+						frame_length = frame_data
+					pic = horizons.globals.fife.imagemanager.load(frame_img)
+					frame_milliseconds = int(frame_length * 1000)
+					ov_anim.addFrame(pic, frame_milliseconds)
 			self.fife_instance.addAnimationOverlay(self.identifier, rotation, z_order, ov_anim)
-
 
 	def remove_overlay(self, res_id):
 		"""Removes animation overlay associated with resource *res_id* from fife instance.
@@ -100,16 +100,14 @@ class InventoryOverlayComponent(Component):
 		for rotation in range(45, 360, 90):
 			self.fife_instance.removeAnimationOverlay(self.identifier, rotation, res_id)
 
-
 	def inventory_changed(self, message):
 		"""A changelistener notified the StorageComponent of this instance.
 
 		Because it did not tell us which resources were added or removed, we
 		need to check everything in the inventory for possible updates.
 		"""
-		for res_id, new_amount in message.inventory.iteritems():
+		for res_id, new_amount in message.inventory.items():
 			self.update_overlay(res_id, new_amount)
-
 
 	def update_overlay(self, res_id, new_amount):
 		"""Called when inventory amount of one resource changes.
@@ -165,11 +163,9 @@ class InventoryOverlayComponent(Component):
 			self.current_overlays[res_id] = amount
 			return
 
-
 	def load(self, db, worldid):
-		super(InventoryOverlayComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
-
 
 	def remove(self):
 		"""Removes all animation overlays from the fife instance.
@@ -179,7 +175,7 @@ class InventoryOverlayComponent(Component):
 		"""
 		InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
 
-		for (res_id, overlay) in self.current_overlays.iteritems():
+		for (res_id, overlay) in self.current_overlays.items():
 			if overlay is not None:
 				self.remove_overlay(res_id)
 
@@ -189,12 +185,4 @@ class InventoryOverlayComponent(Component):
 		# is called again.
 		self.remove_overlay(0)
 
-		super(InventoryOverlayComponent, self).remove()
-
-
-# If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
-if not hasattr(fife, 'AnimationOverlayMap'):
-	class InventoryOverlayComponent(Component):
-
-		def __init__(self, overlays=None):
-			super(InventoryOverlayComponent, self).__init__()
+		super().remove()

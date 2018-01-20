@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-class livingProperty(object):
+from typing import Any, Optional
+
+
+class livingProperty:
 	"""livingProperty's are used to assign properties to a class, similar to python properties.
 	The extra benefit with livingPropertys is, that they will call the previously assigned
 	instances' end() function one being replaced. Note that all classes that are assigned
@@ -31,7 +34,7 @@ class livingProperty(object):
 	other references to it exist (which should not!).
 	Here is a small example on the usage:
 
-	class Livetest(object):
+	class Livetest:
 	    prop1 = new livingProperty()
 
 	    def __init__(self):
@@ -53,7 +56,7 @@ class livingProperty(object):
 	"""
 
 	def __init__(self):
-		self.__value = None
+		self.__value = None # type: Optional[Any]
 
 	def __get__(self, obj, cls=None):
 		return self.__value
@@ -67,7 +70,7 @@ class livingProperty(object):
 		self.__set__(obj, None)
 
 
-class LivingObject(object):
+class LivingObject:
 	"""This class is intended to be used with the livingProperty to ensure all variables
 	are safely deinited when intended by the programmer. The livingProperty calls the
 	livingObject's end() function to deinit the object. This mostly replacing the __del__

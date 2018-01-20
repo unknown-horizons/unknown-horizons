@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
+import math
 
 from fife import fife
+
 import horizons.globals
-
 from horizons.util.shapes import Point
-
 
 # round half towards plus infinity
 # http://en.wikipedia.org/wiki/Rounding#Round_half_up
@@ -38,7 +37,7 @@ class CursorTool(fife.IMouseListener):
 	log = logging.getLogger("gui.mousetools")
 
 	def __init__(self, session):
-		super(CursorTool, self).__init__()
+		super().__init__()
 		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		self.enable()
@@ -56,20 +55,28 @@ class CursorTool(fife.IMouseListener):
 
 	def mousePressed(self, evt):
 		pass
+
 	def mouseReleased(self, evt):
 		pass
+
 	def mouseEntered(self, evt):
 		pass
+
 	def mouseExited(self, evt):
 		pass
+
 	def mouseClicked(self, evt):
 		pass
+
 	def mouseWheelMovedUp(self, evt):
 		pass
+
 	def mouseWheelMovedDown(self, evt):
 		pass
+
 	def mouseMoved(self, evt):
 		pass
+
 	def mouseDragged(self, evt):
 		pass
 

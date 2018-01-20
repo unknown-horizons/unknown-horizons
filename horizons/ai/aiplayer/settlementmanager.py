@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,21 +21,16 @@
 
 import logging
 
-from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
-from horizons.ai.aiplayer.villagebuilder import VillageBuilder
-from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
-from horizons.ai.aiplayer.productionchain import ProductionChain
-from horizons.ai.aiplayer.resourcemanager import ResourceManager
-from horizons.ai.aiplayer.trademanager import TradeManager
-
 from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
-from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, StoneDepositCoverageGoal, MountainCoverageGoal
+from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
+from horizons.ai.aiplayer.goal.depositcoverage import (
+	ClayDepositCoverageGoal, MountainCoverageGoal, StoneDepositCoverageGoal)
+from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
 	FeederTobaccoProductsGoal, FeederSaltGoal, FeederMedicalProductsGoal, FeederBeerGoal, FeederCannonGoal, \
 	FeederFlourGoal, FeederCondimentsGoal, FeederConfectioneryGoal, FeederCandlesGoal
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
-from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
@@ -46,19 +41,23 @@ from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal
 from horizons.ai.aiplayer.goal.tradingship import TradingShipGoal
-
+from horizons.ai.aiplayer.productionbuilder import ProductionBuilder
+from horizons.ai.aiplayer.productionchain import ProductionChain
+from horizons.ai.aiplayer.resourcemanager import ResourceManager
+from horizons.ai.aiplayer.trademanager import TradeManager
+from horizons.ai.aiplayer.villagebuilder import VillageBuilder
+from horizons.command.building import Tear
+from horizons.command.production import ToggleActive
+from horizons.command.uioptions import SetSettlementUpgradePermissions, SetTaxSetting
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, GAME_SPEED, RES, TIER
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.util.worldobject import WorldObject
-from horizons.util.python import decorators
-from horizons.command.building import Tear
-from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
-from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, RES, GAME_SPEED, TIER
-from horizons.entities import Entities
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.namedcomponent import NamedComponent
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.production.producer import Producer
+
 
 class SettlementManager(WorldObject):
 	"""
@@ -79,7 +78,7 @@ class SettlementManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer")
 
 	def __init__(self, owner, land_manager):
-		super(SettlementManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.resource_manager = ResourceManager(self)
 		self.trade_manager = TradeManager(self)
@@ -168,7 +167,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(CandlesGoal(self))
 
 	def save(self, db):
-		super(SettlementManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)",
 			self.worldid, self.land_manager.worldid)
 
@@ -185,7 +184,7 @@ class SettlementManager(WorldObject):
 
 	def _load(self, db, owner, worldid):
 		self.owner = owner
-		super(SettlementManager, self).load(db, worldid)
+		super().load(db, worldid)
 
 		# load the main part
 		land_manager_id = db("SELECT land_manager FROM ai_settlement_manager WHERE rowid = ?", worldid)[0][0]
@@ -239,15 +238,17 @@ class SettlementManager(WorldObject):
 
 	def _set_taxes_and_permissions_prefix(self, prefix):
 		"""Set new tax settings and building permissions according to the prefix used in the personality file."""
-		sailor_taxes = getattr(self.personality, '%s_sailor_taxes' % prefix)
-		pioneer_taxes = getattr(self.personality, '%s_pioneer_taxes' % prefix)
-		settler_taxes = getattr(self.personality, '%s_settler_taxes' % prefix)
-		citizen_taxes = getattr(self.personality, '%s_citizen_taxes' % prefix)
-		sailor_upgrades = getattr(self.personality, '%s_sailor_upgrades' % prefix)
-		pioneer_upgrades = getattr(self.personality, '%s_pioneer_upgrades' % prefix)
-		settler_upgrades = getattr(self.personality, '%s_settler_upgrades' % prefix)
-		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes,
-			sailor_upgrades, pioneer_upgrades, settler_upgrades)
+		sailor_taxes = getattr(self.personality, '{}_sailor_taxes'.format(prefix))
+		pioneer_taxes = getattr(self.personality, '{}_pioneer_taxes'.format(prefix))
+		settler_taxes = getattr(self.personality, '{}_settler_taxes'.format(prefix))
+		citizen_taxes = getattr(self.personality, '{}_citizen_taxes'.format(prefix))
+		merchants_taxes = getattr(self.personality, '{}_merchants_taxes'.format(prefix))
+		sailor_upgrades = getattr(self.personality, '{}_sailor_upgrades'.format(prefix))
+		pioneer_upgrades = getattr(self.personality, '{}_pioneer_upgrades'.format(prefix))
+		settler_upgrades = getattr(self.personality, '{}_settler_upgrades'.format(prefix))
+		citizen_upgrades = getattr(self.personality, '{}_citizen_upgrades'.format(prefix))
+		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes,
+			sailor_upgrades, pioneer_upgrades, settler_upgrades, citizen_upgrades)
 
 	def can_provide_resources(self):
 		"""Return a boolean showing whether this settlement is complete enough to concentrate on building a new settlement."""
@@ -505,6 +506,8 @@ class SettlementManager(WorldObject):
 			Tear(message.building).execute(self.session)
 
 	def __str__(self):
-		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
-
-decorators.bind_all(SettlementManager)
+		return '{}.SM({}/{})'.format(
+			self.owner,
+			self.settlement.get_component(NamedComponent).name if hasattr(
+				self, 'settlement') else 'unknown',
+			self.worldid if hasattr(self, 'worldid') else 'none')

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,54 +19,60 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import glob
+import os.path
+from random import randrange
+from typing import Optional
 
 import horizons.globals
-import os.path
-import glob
 from horizons.constants import PATHS
-from random import randrange
+
 
 """
 Internationalization for speech|voice files
 """
+
+
 class Speech:
 	"""Definition of category names, those names are the name of directory where speech should be"""
-	CHAT = None
+	CHAT = None # type: Optional[str]
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
-	SAVED_GAME = None
-	QUICKSAVE = None
-	AUTOSAVE = None
-	SCREENSHOT = None
-	SETTLER_LEVEL_UP = None
-	NEED_MORE_RES = None
-	NO_MAIN_SQUARE_IN_RANGE = None
-	SETTLERS_MOVED_OUT = None
-	MINE_EMPTY = None
-	DRAG_ROADS_HINT = None
-	DIPLOMACY_STATUS_ALLY_NEUTRAL = None
-	DIPLOMACY_STATUS_ALLY_ENEMY = None
-	DIPLOMACY_STATUS_ENEMY_ALLY = None
-	DIPLOMACY_STATUS_ENEMY_NEUTRAL = None
-	DIPLOMACY_STATUS_NEUTRAL_ALLY = None
-	DIPLOMACY_STATUS_NEUTRAL_ENEMY = None
-	MAX_TIER_REACHED = None
-	YOU_HAVE_WON = None
-	FIELD_NEEDS_FARM = None
-	WAREHOUSE_NOT_TEARABLE = None
-	ROUTE_DISABLED = None
-	MOVE_OUTSIDE_OF_WORLD = None
-	MOVE_INVALID_LOCATION = None
-	NEW_SHIP = None
-	NEW_SOLDIER = None
-	NEW_INHABITANT = None
-	YOU_LOST = None
-	BUILDING_ON_FIRE = None
-	BUILDING_INFECTED_BY_BLACK_DEATH = None
+	SAVED_GAME = None # type: Optional[str]
+	QUICKSAVE = None # type: Optional[str]
+	AUTOSAVE = None # type: Optional[str]
+	SCREENSHOT = None # type: Optional[str]
+	SETTLER_LEVEL_UP = None # type: Optional[str]
+	NEED_MORE_RES = None # type: Optional[str]
+	NO_MAIN_SQUARE_IN_RANGE = None # type: Optional[str]
+	SETTLERS_MOVED_OUT = None # type: Optional[str]
+	MINE_EMPTY = None # type: Optional[str]
+	DRAG_ROADS_HINT = None # type: Optional[str]
+	DIPLOMACY_STATUS_ALLY_NEUTRAL = None # type: Optional[str]
+	DIPLOMACY_STATUS_ALLY_ENEMY = None # type: Optional[str]
+	DIPLOMACY_STATUS_ENEMY_ALLY = None # type: Optional[str]
+	DIPLOMACY_STATUS_ENEMY_NEUTRAL = None # type: Optional[str]
+	DIPLOMACY_STATUS_NEUTRAL_ALLY = None # type: Optional[str]
+	DIPLOMACY_STATUS_NEUTRAL_ENEMY = None # type: Optional[str]
+	MAX_TIER_REACHED = None # type: Optional[str]
+	YOU_HAVE_WON = None # type: Optional[str]
+	FIELD_NEEDS_FARM = None # type: Optional[str]
+	WAREHOUSE_NOT_TEARABLE = None # type: Optional[str]
+	ROUTE_DISABLED = None # type: Optional[str]
+	MOVE_OUTSIDE_OF_WORLD = None # type: Optional[str]
+	MOVE_INVALID_LOCATION = None # type: Optional[str]
+	NEW_SHIP = None # type: Optional[str]
+	NEW_SOLDIER = None # type: Optional[str]
+	NEW_INHABITANT = None # type: Optional[str]
+	YOU_LOST = None # type: Optional[str]
+	BUILDING_ON_FIRE = None # type: Optional[str]
+	BUILDING_INFECTED_BY_BLACK_DEATH = None # type: Optional[str]
 
-DEFAULT_LANG="en"
-DEFAULT_VARIATION=0
-DEFAULT_SPEAKER=0
+
+DEFAULT_LANG = "en"
+DEFAULT_VARIATION = 0
+DEFAULT_SPEAKER = 0
+
 
 def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	#TODO expand this docstring
@@ -84,6 +90,7 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 		path = prepare_path(DEFAULT_LANG, category_name, DEFAULT_VARIATION, DEFAULT_SPEAKER)
 	return path
 
+
 def prepare_path(lang, category_name, var_id, spkr_id):
 	dir_path = get_dir_path(lang, category_name, spkr_id)
 	if not os.path.isdir(dir_path):
@@ -92,31 +99,35 @@ def prepare_path(lang, category_name, var_id, spkr_id):
 	if file_path is not None and os.path.isfile(file_path):
 		return file_path
 
+
 def get_file_path(dir_name, var_id):
 	"""If var_id is None we get random variation from directory
 	"""
 	if var_id is not None:
-		for infile in glob.glob( os.path.join(dir_name, str(var_id) + '.*') ):
+		for infile in glob.glob(os.path.join(dir_name, str(var_id) + '.*')):
 			return infile
 	variation_count = count_variations(dir_name)
 	if variation_count > 0:
 		rand = randrange(0, variation_count)
-		filelist = glob.glob( os.path.join(dir_name, '*.*') )
+		filelist = glob.glob(os.path.join(dir_name, '*.*'))
 		return filelist[rand]
 	else:
 		return None
 
+
 def get_dir_path(lang, category_name, spkr_id):
 	return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(category_name))
 
+
 def count_variations(dir_name):
 	return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name, file))])
+
 
 def eval_category_name(category):
 	cat_name = None
 	try:
 		cat_name = getattr(Speech, category)
 	except:
-		print "Incorrect name of speech category: %s" % category
-		print "You might want to add this here in voice.py."
+		print("Incorrect name of speech category: {}".format(category))
+		print("You might want to add this here in voice.py.")
 	return cat_name

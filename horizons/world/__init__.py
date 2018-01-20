@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,38 +19,37 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
-import json
 import copy
-
+import importlib
+import json
+import logging
 from collections import deque
 from functools import partial
 
 import horizons.globals
-from horizons.world.island import Island
-from horizons.world.player import HumanPlayer
-from horizons.scheduler import Scheduler
-from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.color import Color
-from horizons.util.python import decorators
-from horizons.util.shapes import Circle, Point, Rect
-from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
-from horizons.ai.trader import Trader
-from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
-from horizons.entities import Entities
-from horizons.world.buildingowner import BuildingOwner
-from horizons.world.diplomacy import Diplomacy
-from horizons.world.units.weapon import Weapon
+from horizons.ai.pirate import Pirate
+from horizons.ai.trader import Trader
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.disaster.disastermanager import DisasterManager
-from horizons.world import worldutils
-from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.constants import BUILDINGS, GAME, GROUND, MAP, PATHS, RES, UNITS
+from horizons.entities import Entities
 from horizons.messaging import LoadingProgress
+from horizons.scheduler import Scheduler
+from horizons.util.buildingindexer import BuildingIndexer
+from horizons.util.color import Color
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.worldobject import WorldObject
+from horizons.world import worldutils
+from horizons.world.buildingowner import BuildingOwner
+from horizons.world.diplomacy import Diplomacy
+from horizons.world.disaster.disastermanager import DisasterManager
+from horizons.world.island import Island
+from horizons.world.player import HumanPlayer
+from horizons.world.units.weapon import Weapon
 
 
 class World(BuildingOwner, WorldObject):
@@ -80,11 +78,10 @@ class World(BuildingOwner, WorldObject):
 
 	def __init__(self, session):
 		"""
+		@type session: horizons.session.Session
 		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
-		if False:
-			assert isinstance(session, horizons.session.Session)
 		self.session = session
 
 		# create playerlist
@@ -100,11 +97,11 @@ class World(BuildingOwner, WorldObject):
 
 		self.islands = []
 
-		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
+		super().__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
 		# destructor-like thing.
-		super(World, self).end()
+		super().end()
 
 		# let the AI players know that the end is near to speed up destruction
 		for player in self.players:
@@ -156,7 +153,7 @@ class World(BuildingOwner, WorldObject):
 		self.properties = {}
 		for (name, value) in savegame_db("SELECT name, value FROM map_properties"):
 			self.properties[name] = json.loads(value)
-		if not 'disasters_enabled' in self.properties:
+		if 'disasters_enabled' not in self.properties:
 			# set on first init
 			self.properties['disasters_enabled'] = disasters_enabled
 
@@ -174,7 +171,7 @@ class World(BuildingOwner, WorldObject):
 
 		# use a dict because it's directly supported by the pathfinding algo
 		LoadingProgress.broadcast(self, 'world_init_water')
-		self.water = dict((tile, 1.0) for tile in self.ground_map)
+		self.water = {tile: 1.0 for tile in self.ground_map}
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 		for island in self.islands:
@@ -186,7 +183,7 @@ class World(BuildingOwner, WorldObject):
 		# are added to this list as well, which will contain a few too many
 		self.water_and_coastline = copy.copy(self.water)
 		for island in self.islands:
-			for coord, tile in island.ground_map.iteritems():
+			for coord, tile in island.ground_map.items():
 				if 'coastline' in tile.classes or 'constructible' not in tile.classes:
 					self.water_and_coastline[coord] = 1.0
 		self._init_shallow_water_bodies()
@@ -241,8 +238,6 @@ class World(BuildingOwner, WorldObject):
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map."""
 
-
-
 	def _load_combat(self, savegame_db):
 		# load ongoing attacks
 		if self.session.is_game_loaded():
@@ -288,22 +283,22 @@ class World(BuildingOwner, WorldObject):
 
 		# big sea water tile class
 		if not preview:
-			default_grounds = Entities.grounds[self.properties.get('default_ground', '%d-straight' % GROUND.WATER[0])]
+			default_grounds = Entities.grounds[self.properties.get('default_ground', '{:d}-straight'.format(GROUND.WATER[0]))]
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10
-		for x in xrange(self.min_x-MAP.BORDER, self.max_x+MAP.BORDER, fake_tile_size):
-			for y in xrange(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
+		for x in range(self.min_x - MAP.BORDER, self.max_x + MAP.BORDER, fake_tile_size):
+			for y in range(self.min_y - MAP.BORDER, self.max_y + MAP.BORDER, fake_tile_size):
 				fake_tile_x = x - 1
 				fake_tile_y = y + fake_tile_size - 1
 				if not preview:
 					# we don't need no references, we don't need no mem control
 					default_grounds(self.session, fake_tile_x, fake_tile_y)
-				for x_offset in xrange(fake_tile_size):
+				for x_offset in range(fake_tile_size):
 					if self.min_x <= x + x_offset < self.max_x:
-						for y_offset in xrange(fake_tile_size):
+						for y_offset in range(fake_tile_size):
 							if self.min_y <= y + y_offset < self.max_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
+								self.ground_map[(x + x_offset, y + y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# Remove parts that are occupied by islands, create the island map and the full map.
@@ -316,7 +311,6 @@ class World(BuildingOwner, WorldObject):
 					del self.ground_map[coords]
 					self.island_map[coords] = island
 
-
 	def _load_players(self, savegame_db, force_player_id):
 		human_players = []
 		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0 ORDER BY rowid"):
@@ -326,7 +320,7 @@ class World(BuildingOwner, WorldObject):
 			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
+				module = importlib.import_module('horizons.ai.' + class_package)
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai
@@ -368,7 +362,7 @@ class World(BuildingOwner, WorldObject):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		for coords, num in map_dict.iteritems():
+		for coords, num in map_dict.items():
 			if num is not None:
 				continue
 
@@ -426,12 +420,12 @@ class World(BuildingOwner, WorldObject):
 			self._add_nature_objects(natural_resource_multiplier)
 
 		# reset loggers, see above
-		for logger_name, level in loggers_to_silence.iteritems():
+		for logger_name, level in loggers_to_silence.items():
 			logging.getLogger(logger_name).setLevel(level)
 
 		# add free trader
 		if trader_enabled:
-			self.trader = Trader(self.session, 99999, u"Free Trader", Color())
+			self.trader = Trader(self.session, 99999, "Free Trader", Color())
 
 		ret_coords = None
 		for player in self.players:
@@ -450,7 +444,7 @@ class World(BuildingOwner, WorldObject):
 				def _preselect_player_ship(player_ship):
 					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = set([player_ship])
+					self.session.selected_instances = {player_ship}
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
 				select_ship = partial(_preselect_player_ship, ship)
@@ -651,7 +645,7 @@ class World(BuildingOwner, WorldObject):
 	def save(self, db):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
-		super(World, self).save(db)
+		super().save(db)
 		if isinstance(self.map_name, list):
 			db("INSERT INTO metadata VALUES(?, ?)", 'random_island_sequence', ' '.join(self.map_name))
 		else:
@@ -689,7 +683,7 @@ class World(BuildingOwner, WorldObject):
 			# dicts usually aren't hashable, this makes them
 			# since defaultdicts appear, we discard values that can be autogenerated
 			# (those are assumed to default to something evaluating False)
-			dict_hash = lambda d : sorted(i for i in d.iteritems() if i[1])
+			dict_hash = lambda d : sorted(i for i in d.items() if i[1])
 			for settlement in island.settlements:
 				storage_dict = settlement.get_component(StorageComponent).inventory._storage
 				entry = {
@@ -718,7 +712,7 @@ class World(BuildingOwner, WorldObject):
 				green = player.color.g
 				blue = player.color.b
 				for settlement in player.settlements:
-					for tile in settlement.ground_map.itervalues():
+					for tile in settlement.ground_map.values():
 						renderer.addColored(tile._instance, red, green, blue)
 		else:
 			# "Hide": Do nothing after removing color highlights.
@@ -743,7 +737,3 @@ def load_raw_world(map_file):
 	world.inited = True
 	world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
 	return world
-
-
-decorators.bind_all(World)
-decorators.bind_all(load_building)

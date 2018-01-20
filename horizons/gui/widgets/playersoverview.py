@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 from fife.extensions.pychan import widgets
 
 from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.util.python import decorators
+
 
 class PlayersOverview(StatsWidget):
 	"""Widget that shows the scores of every player in the game."""
@@ -30,52 +30,52 @@ class PlayersOverview(StatsWidget):
 	widget_file_name = 'players_overview.xml'
 
 	def __init__(self, session):
-		super(PlayersOverview, self).__init__(session)
+		super().__init__(session)
 		# this is supposed to run on the tick after the stats update
 
 	def refresh(self):
-		super(PlayersOverview, self).refresh()
-		for player in sorted(self.session.world.players, key = lambda player: (-player.get_latest_stats().total_score, player.worldid)):
+		super().refresh()
+		for player in sorted(self.session.world.players, key=lambda player: (-player.get_latest_stats().total_score, player.worldid)):
 			self._add_line_to_gui(player)
 		self._content_vbox.adaptLayout()
 
 	def _add_line_to_gui(self, player):
 		stats = player.get_latest_stats()
 
-		emblem = widgets.Label(name = 'emblem_%d' % player.worldid, text=u"   ")
+		emblem = widgets.Label(name='emblem_{:d}'.format(player.worldid), text="   ")
 		emblem.background_color = player.color
 		emblem.min_size = (12, 20)
 
-		name = widgets.Label(name = 'player_%d' % player.worldid)
+		name = widgets.Label(name='player_{:d}'.format(player.worldid))
 		name.text = player.name
 		name.min_size = (108, 20)
 
-		money_score = widgets.Label(name = 'money_score_%d' % player.worldid)
-		money_score.text = unicode(stats.money_score)
+		money_score = widgets.Label(name='money_score_{:d}'.format(player.worldid))
+		money_score.text = str(stats.money_score)
 		money_score.min_size = (60, 20)
 
-		land_score = widgets.Label(name = 'land_score_%d' % player.worldid)
-		land_score.text = unicode(stats.land_score)
+		land_score = widgets.Label(name='land_score_{:d}'.format(player.worldid))
+		land_score.text = str(stats.land_score)
 		land_score.min_size = (50, 20)
 
-		resource_score = widgets.Label(name = 'resource_score_%d' % player.worldid)
-		resource_score.text = unicode(stats.resource_score)
+		resource_score = widgets.Label(name='resource_score_{:d}'.format(player.worldid))
+		resource_score.text = str(stats.resource_score)
 		resource_score.min_size = (90, 20)
 
-		building_score = widgets.Label(name = 'building_score_%d' % player.worldid)
-		building_score.text = unicode(stats.building_score)
+		building_score = widgets.Label(name='building_score_{:d}'.format(player.worldid))
+		building_score.text = str(stats.building_score)
 		building_score.min_size = (70, 20)
 
-		settler_score = widgets.Label(name = 'settler_score_%d' % player.worldid)
-		settler_score.text = unicode(stats.settler_score)
+		settler_score = widgets.Label(name='settler_score_{:d}'.format(player.worldid))
+		settler_score.text = str(stats.settler_score)
 		settler_score.min_size = (60, 20)
 
-		unit_score = widgets.Label(name = 'unit_score_%d' % player.worldid)
-		unit_score.text = unicode(stats.unit_score)
+		unit_score = widgets.Label(name='unit_score_{:d}'.format(player.worldid))
+		unit_score.text = str(stats.unit_score)
 		unit_score.min_size = (50, 20)
 
-		total_score = widgets.Label(name = 'total_score_%d' % player.worldid)
-		total_score.text = unicode(stats.total_score)
+		total_score = widgets.Label(name='total_score_{:d}'.format(player.worldid))
+		total_score.text = str(stats.total_score)
 		total_score.min_size = (70, 20)
 
 		hbox = widgets.HBox()
@@ -89,5 +89,3 @@ class PlayersOverview(StatsWidget):
 		hbox.addChild(unit_score)
 		hbox.addChild(total_score)
 		self._content_vbox.addChild(hbox)
-
-decorators.bind_all(PlayersOverview)

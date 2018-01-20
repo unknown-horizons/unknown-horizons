@@ -1,7 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import print_function
 import re
 import sys
 
@@ -31,7 +32,7 @@ is_empty = re.compile(r'^(\s*)(?:#.*)?$')
 
 files = sys.argv[1:]
 for filename in files:
-	print 'Adding documentation stubs to:', filename
+	print('Adding documentation stubs to:', filename)
 	file = open(filename, 'r+')
 	funk_reg = None
 	newfile = []
@@ -48,7 +49,7 @@ for filename in files:
 			docstub = [(indent + '"""\n')]
 			for i in params:
 				if i[0] != 'self' and i[0] != 'cls':
-					docstub.append(("%s@param %s:\n" % (indent, i[0])))
+					docstub.append(("{}@param {}:\n".format(indent, i[0])))
 			docstub.append((indent + '"""\n'))
 			if funk_reg.group(2) == '__init__':
 				newfile.extend(docstub)
@@ -63,4 +64,4 @@ for filename in files:
 	file.seek(0)
 	file.writelines(newfile)
 	file.close()
-	print 'Done'
+	print('Done')

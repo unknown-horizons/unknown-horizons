@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.command import Command
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.shapes import Point
-from horizons.command import Command
+
 
 class PlaySound(Command):
 	"""Command class that plays the build sound. This has been moved to a separate
@@ -42,5 +43,6 @@ class PlaySound(Command):
 			AmbientSoundComponent.play_special(self.sound)
 		else:
 			AmbientSoundComponent.play_special(self.sound, Point(self.position[0], self.position[1]))
+
 
 Command.allow_network(PlaySound)

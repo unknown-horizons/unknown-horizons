@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import cPickle
+import importlib
 import inspect
+import pickle
 import sys
-
-try:
-	from cStringIO import StringIO
-except ImportError:
-	from StringIO import StringIO
+from io import BytesIO
+from typing import Dict, Set
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -37,9 +35,10 @@ PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
 	'client' : {},
 	'server' : {},
-}
+} # type: Dict[str, Dict[str, Set[str]]]
 
-class SafeUnpickler(object):
+
+class SafeUnpickler:
 	"""
 	NOTE: this is a security related method and may lead to
 	execution of arbritary code if used in a wrong way
@@ -86,13 +85,12 @@ class SafeUnpickler(object):
 	def find_class(cls, module, name):
 		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
 		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError(
+			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
 				format(module, name))
-		__import__(module)
-		mod = sys.modules[module]
+		mod = importlib.import_module(module)
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError(
+			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
 				format(name, module))
 		klass = getattr(mod, name)
@@ -100,14 +98,16 @@ class SafeUnpickler(object):
 
 	@classmethod
 	def loads(cls, str):
-		file = StringIO(str)
-		obj = cPickle.Unpickler(file)
-		obj.find_global = cls.find_class
-		return obj.load()
+		class CustomUnpickler(pickle.Unpickler):
+			find_global = cls.find_class
+
+		file = BytesIO(str)
+		return CustomUnpickler(file).load()
+
 
 #-------------------------------------------------------------------------------
 
-class packet(object):
+class packet:
 	maxpacketsize = 0
 
 	def __init__(self):
@@ -118,17 +118,18 @@ class packet(object):
 		return True
 
 	def serialize(self):
-		return cPickle.dumps(self, PICKLE_PROTOCOL)
+		return pickle.dumps(self, PICKLE_PROTOCOL)
+
 
 #-------------------------------------------------------------------------------
-
 class cmd_ok(packet):
 	"""simple ok message"""
 
+
 SafeUnpickler.add('common', cmd_ok)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_error(packet):
 	def __init__(self, errorstr, _type=0):
 		self.errorstr = errorstr
@@ -141,10 +142,11 @@ class cmd_error(packet):
 		if not isinstance(pkt.type, int):
 			raise NetworkException("Invalid datatype: type")
 
+
 SafeUnpickler.add('common', cmd_error)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_fatalerror(packet):
 	def __init__(self, errorstr):
 		self.errorstr = errorstr
@@ -154,22 +156,23 @@ class cmd_fatalerror(packet):
 		if not isinstance(pkt.errorstr, str):
 			raise NetworkException("Invalid datatype: errorstr")
 
+
 SafeUnpickler.add('common', cmd_fatalerror)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
 	if validate:
 		if not inspect.isfunction(mypacket.validate):
 			raise NetworkException("Attempt to override packet.validate()")
 		if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
-			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
+			raise PacketTooLarge("packet={}, length={:d})".format(mypacket.__class__.__name__, len(data)))
 		mypacket.__class__.validate(mypacket, protocol)
 	return mypacket
 
 #-------------------------------------------------------------------------------
 
-import horizons.network.packets.server
-import horizons.network.packets.client
 
+import horizons.network.packets.server # isort:skip
+import horizons.network.packets.client # isort:skip

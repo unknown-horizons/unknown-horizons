@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import platform
 import os
+import platform
 import sys
 
 
@@ -44,7 +44,7 @@ def find_enet_module():
 
 	lib_path = os.path.join(os.path.dirname(__file__), "libs")
 
-	type = platform.system().lower()
+	sys_platform = platform.system().lower()
 
 	arch = platform.architecture()[0]
 	if arch == '32bit':
@@ -55,12 +55,12 @@ def find_enet_module():
 		assert False, "Failed to detect system architecture!"
 
 	# Generic identifier, e.g. linux-64
-	directory = "%s-x%s" % (type, arch)
+	directory = "{}-x{}".format(sys_platform, arch)
 
 	# Python version-specific, e.g. linux-64-27. If this is not found, we fall
 	# back to the more generic version.
 	version = platform.python_version_tuple()
-	directory_pyversion = "%s-%s%s" % (directory, version[0], version[1])
+	directory_pyversion = "{}-{}{}".format(directory, version[0], version[1])
 
 	if os.path.exists(os.path.join(lib_path, directory_pyversion)):
 		path = os.path.join(lib_path, directory_pyversion)
@@ -88,33 +88,45 @@ if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DI
 class NetworkException(Exception):
 	pass
 
+
 class SoftNetworkException(NetworkException):
 	pass
 
+
 class PacketTooLarge(NetworkException):
 	pass
+
 
 class NotConnected(NetworkException):
 	def __str__(self):
 		return "Client is not connected"
 
+
 class ClientException(NetworkException):
 	pass
+
 
 class AlreadyConnected(ClientException):
 	pass
 
+
 class NotInGameLobby(ClientException):
 	pass
+
 
 class NotInServerMode(ClientException):
 	pass
 
+
 class UnableToConnect(ClientException):
 	pass
 
+
 class CommandError(ClientException):
-	pass
+	def __init__(self, message, cmd_type):
+		super().__init__(message)
+		self.cmd_type = cmd_type
+
 
 class FatalError(ClientException):
 	pass

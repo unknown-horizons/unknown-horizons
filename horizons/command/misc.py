@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,11 +21,13 @@
 
 from horizons.command import Command
 
+
 class Chat(Command):
 	def __init__(self, message):
-		self.message = unicode(message)
+		self.message = message
 
 	def __call__(self, issuer):
 		issuer.session.ingame_gui.message_widget.add_chat(player=issuer.name, messagetext=self.message)
+
 
 Command.allow_network(Chat)

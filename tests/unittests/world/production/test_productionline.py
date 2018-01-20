@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.unittests import TestCase
-
 from horizons.world.production.productionline import ProductionLine
+from tests.unittests import TestCase
 
 
 class TestBase(TestCase):
@@ -55,19 +54,20 @@ class TestProductionLineData(TestBase):
 		        'produces': [[14, 1]],
 		        'consumes': [[19, -1]]
 		}
-		data = ProductionLine(1, data)
-		self.assertEqual(data.time, 90)
-		self.assertEqual(data.changes_animation, False)
-		self.assertEqual(data.production, {14: 1, 19: -1})
-		self.assertEqual(data.produced_res, {14: 1})
-		self.assertEqual(data.consumed_res, {19: -1})
-		#self.assertEqual(data.unit_production, {10: 4, 12: 8})
+		line = ProductionLine(1, data)
+		self.assertEqual(line.time, 90)
+		self.assertEqual(line.changes_animation, False)
+		self.assertEqual(line.production, {14: 1, 19: -1})
+		self.assertEqual(line.produced_res, {14: 1})
+		self.assertEqual(line.consumed_res, {19: -1})
+		#self.assertEqual(line.unit_production, {10: 4, 12: 8})
+
 
 class TestProductionLine(TestBase):
 
 	def setUp(self):
 		"""Clear ProductionLine cache."""
-		super(TestProductionLine, self).setUp()
+		super().setUp()
 
 	def test_alter_production_time(self):
 		data = { 'time': 10 }

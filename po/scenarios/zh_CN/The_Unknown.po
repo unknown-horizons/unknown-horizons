@@ -1,5 +1,5 @@
 # Chinese translations for Unknown Horizons package.
-# Copyright (C) 2016 The Unknown Horizons Team
+# Copyright (C) 2017 The Unknown Horizons Team
 # This file is distributed under the same license as the Unknown Horizons package.
 # Automatically generated, 2016.
 #
@@ -7,25 +7,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-12-02 23:38+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2016-08-25 19:10+0200\n"
+"PO-Revision-Date: 2016-09-02 09:42+0000\n"
+"Last-Translator: Arm Coon <armcoon@gmail.com>\n"
+"Language-Team: Chinese (China) <https://hosted.weblate.org/projects/uh/the-"
+"unknown/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.8\n"
 
 #. scenario difficulty
 msgid "easy"
-msgstr ""
+msgstr "简单"
 
 #. scenario description
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
-"your crew were on the way to a colony of England in the pacific ocean.\n"
+"your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
+"你是一位1740年英格兰旗下的船长。你和你的水手前往到太平洋的英格兰殖民地。\n"
+"一开始一切正常直到暴风来临的那一刻…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -50,6 +55,8 @@ msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"任务：\n"
+"寻找陆地和建立一个港口。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
@@ -77,6 +84,12 @@ msgid ""
 "* Hunter\n"
 "Collect 5 food and 5 boards."
 msgstr ""
+"任务：\n"
+"建立每个至少一个：\n"
+"*伐木工\n"
+"*渔夫\n"
+"*猎人\n"
+"收集5样食物和5块木板。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
@@ -98,8 +111,10 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
-"Build a main square and at least 10 tents."
+"Build a Main Square and at least 10 Tents."
 msgstr ""
+"任务：\n"
+"建造一座主要广场和至少10间的帐篷。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"

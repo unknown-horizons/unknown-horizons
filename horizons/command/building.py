@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,15 +22,15 @@
 from collections import defaultdict
 
 import horizons.globals
-
-from horizons.entities import Entities
 from horizons.command import Command
 from horizons.command.uioptions import TransferResource
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES
+from horizons.entities import Entities
+from horizons.scenario import CONDITIONS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
-from horizons.scenario import CONDITIONS
-from horizons.constants import BUILDINGS, RES
-from horizons.component.storagecomponent import StorageComponent
+
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -131,7 +131,7 @@ class Build(Command):
 			secondary_resource_source = island.get_settlement(Point(self.x, self.y))
 
 		if issuer: # issuer is None if it's a global game command, e.g. on world setup
-			for (resource, value) in building.costs.iteritems():
+			for (resource, value) in building.costs.items():
 				# remove from issuer, and remove rest from secondary source (settlement or ship)
 				inventory = issuer.get_component(StorageComponent).inventory
 				first_source_remnant = inventory.alter(resource, -value)
@@ -154,7 +154,7 @@ class Build(Command):
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory
 			# copy the inventory first because otherwise we would modify it while iterating
-			for res, amount in ship_inv.get_dump().iteritems():
+			for res, amount in ship_inv.get_dump().items():
 				amount = min(amount, settlement_inv.get_free_space_for(res))
 				# execute directly, we are already in a command
 				TransferResource(amount, res, ship, building.settlement)(issuer=issuer)
@@ -199,8 +199,10 @@ class Build(Command):
 				return (False, resource)
 		return (True, None)
 
+
 Command.allow_network(Build)
 Command.allow_network(set)
+
 
 class Tear(Command):
 	"""Command class that tears an object."""
@@ -232,7 +234,7 @@ class Tear(Command):
 			new_settlement_coords.update(range_coords)
 		obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(new_settlement_coords)
 
-		# Find the buildings that need to be destroyed 
+		# Find the buildings that need to be destroyed
 		buildings_to_destroy = []
 		for building in settlement.buildings:
 			if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT, BUILDINGS.STONE_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
@@ -260,5 +262,6 @@ class Tear(Command):
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()
+
 
 Command.allow_network(Tear)

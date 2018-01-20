@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,12 +34,9 @@ class TestCase(unittest.TestCase):
 
 		# Truncate all tables. We don't want to rely on existing data.
 		for (table_name, ) in self.db("SELECT name FROM sqlite_master WHERE type = 'table'"):
-			self.db('DELETE FROM %s' % table_name)
+			self.db('DELETE FROM {}'.format(table_name))
 
 		horizons.globals.db = self.db
 
 	def tearDown(self):
 		self.db.close()
-
-
-_multiprocess_can_split_ = True

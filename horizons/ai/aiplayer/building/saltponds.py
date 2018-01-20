@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,7 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+
 
 class AbstractSaltPonds(AbstractBuilding):
 	@property
@@ -34,6 +34,7 @@ class AbstractSaltPonds(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SALT_PONDS] = cls
+
 
 class SaltPondsEvaluator(BuildingEvaluator):
 	@classmethod
@@ -46,7 +47,5 @@ class SaltPondsEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.SALT_PONDS
 
-AbstractSaltPonds.register_buildings()
 
-decorators.bind_all(AbstractSaltPonds)
-decorators.bind_all(SaltPondsEvaluator)
+AbstractSaltPonds.register_buildings()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,8 +24,8 @@ import math
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
-from horizons.constants import RES, BUILDINGS
-from horizons.util.python import decorators
+from horizons.constants import BUILDINGS, RES
+
 
 class AbstractField(AbstractBuilding):
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
@@ -117,6 +117,5 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.VINEYARD] = cls
 		cls._available_buildings[BUILDINGS.CATTLE_RUN] = cls
 
-AbstractField.register_buildings()
 
-decorators.bind_all(AbstractField)
+AbstractField.register_buildings()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,25 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 import datetime
-import shutil
 import os
 import os.path
+import shutil
 import tempfile
+
+from fife import fife
 
 import horizons.globals
 import horizons.main
-
-from horizons.gui.keylisteners import KeyConfig
-from horizons.util.living import LivingObject
 from horizons.constants import PATHS
+from horizons.util.living import LivingObject
+
+from .keyconfig import KeyConfig
+
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 	"""MainListener Class to process events of main window"""
 
 	def __init__(self, gui):
-		super(MainListener, self).__init__()
+		super().__init__()
 		self.gui = gui
 		fife.IKeyListener.__init__(self)
 		horizons.globals.fife.eventmanager.addKeyListener(self)
@@ -46,7 +48,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
-		super(MainListener, self).end()
+		super().end()
 
 	def keyPressed(self, evt):
 		if evt.isConsumed():
@@ -79,7 +81,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 			# ingame message if there is a session and it is fully initialized:
 			# pressing S on loading screen finds a session but no gui usually.
-			session = horizons.main._modules.session
+			session = horizons.main.session
 			if session and hasattr(session, 'ingame_gui'):
 				session.ingame_gui.message_widget.add('SCREENSHOT',
 				                                      message_dict={'file': final_path})
@@ -96,5 +98,8 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def onCommand(self, command):
 		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.quit()
+			# NOTE Sometimes we get two quit events from FIFE, ignore the second
+			#      if we are already shutting down the game
+			if not horizons.globals.fife.quit_requested:
+				horizons.main.quit()
 			command.consume()

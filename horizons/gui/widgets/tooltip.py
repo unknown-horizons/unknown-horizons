@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,18 +21,18 @@
 
 import re
 import textwrap
+import time
 
 from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import ABox, HBox, Icon, Label
 
 import horizons.globals
-
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
-from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
 
-class _Tooltip(object):
+
+class _Tooltip:
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
 	# Character count after which we start new line.
@@ -49,11 +49,13 @@ class _Tooltip(object):
 		self.mapEvents({
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
-			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
+			# Below causes frequent Segmentation Faults due to too many
+			# self.position_tooltip() calls.
+			# self.name + '/mouseMoved/tooltip' : self.position_tooltip,
 
 			# TIP: the mousePressed event is especially useful when such as click
-			# will trigger this tooltip's parent widget to be hidden (or destroyed), 
-			# which hides this tooltip first before hides the parent widget. 
+			# will trigger this tooltip's parent widget to be hidden (or destroyed),
+			# which hides this tooltip first before hides the parent widget.
 			# Otherwise the tooltip will show forever.
 			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
 
@@ -62,19 +64,21 @@ class _Tooltip(object):
 			# self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
+		self.cooldown = time.time()		# initial timer value
 
 	def __init_gui(self):
-		self.gui = AutoResizeContainer()
+		self.gui = ABox()
 		self.label = Label(position=(10, 5))
 		self.bg = TooltipBG()
 		self.gui.addChildren(self.bg, self.label)
 
 	def position_tooltip(self, event):
-		if not self.helptext:
-			return
 		"""Calculates a nice position for the tooltip.
 		@param event: mouse event from fife or tuple screenpoint
 		"""
+		if not self.helptext:
+			return
+
 		# TODO: think about nicer way of handling the polymorphism here,
 		# e.g. a position_tooltip_event and a position_tooltip_tuple
 		where = event # fife forces this to be called event, but here it can also be a tuple
@@ -121,23 +125,28 @@ class _Tooltip(object):
 		if self.gui is None:
 			self.__init_gui()
 
+		# Compare and reset timer value if difference from current time shorter than X sec.
+		if (time.time() - self.cooldown) < 1:
+			return
+		else:
+			self.cooldown = time.time()
+
 		#HACK: support icons in build menu
 		# Code below exists for the sole purpose of build menu tooltips showing
 		# resource icons. Even supporting that is a pain (as you will see),
 		# so if you think you need icons in other tooltips, maybe reconsider.
 		# [These unicode() calls brought to you by status icon tooltip code.]
-		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
+		buildmenu_icons = self.icon_regexp.findall(str(self.helptext))
 		# Remove the weird stuff before displaying text.
-		replaced = self.icon_regexp.sub('', unicode(self.helptext))
+		replaced = self.icon_regexp.sub('', str(self.helptext))
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
-			hbox = HBox(position=(7, 5), padding=0)
+			hbox = HBox(position=(7, 5))
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
-				label = Label(text=amount+'  ')
-				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
-				# For compatibility with FIFE 0.3.5 and older, also set min/max.
-				icon.max_size = icon.min_size = (16, 16)
+				label = Label(text=amount + '  ')
+				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16),
+				            scale=True)
 				hbox.addChildren(icon, label)
 			hbox.adaptLayout()
 			# Now display the 16x16px "required resources" icons in the last line.
@@ -177,7 +186,7 @@ class _Tooltip(object):
 		target_widget = self
 		# traverse the widget chain again
 		while target_widget:
-			# none of ancestors of this widget gets removed, 
+			# none of ancestors of this widget gets removed,
 			# just do nothing and let the tooltip shown
 			if target_widget == self.topmost_widget:
 				return

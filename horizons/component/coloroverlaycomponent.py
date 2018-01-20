@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,6 @@ from operator import attrgetter
 from fife import fife
 
 import horizons.globals
-
 from horizons.component import Component
 from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
@@ -83,7 +82,7 @@ class ColorOverlayComponent(Component):
 	log = logging.getLogger('component.overlays')
 
 	def __init__(self, overlays=None):
-		super(ColorOverlayComponent, self).__init__()
+		super().__init__()
 		self.overlays = overlays or {}
 		self.current_overlays = defaultdict(dict)
 
@@ -102,7 +101,7 @@ class ColorOverlayComponent(Component):
 		return self.fife_instance.getCurrentAction().getId()
 
 	def initialize(self):
-		super(ColorOverlayComponent, self).initialize()
+		super().initialize()
 		ActionChanged.subscribe(self.update_overlay, self.instance)
 		ActionChanged.broadcast(self.instance, self.instance._action)
 
@@ -131,9 +130,9 @@ class ColorOverlayComponent(Component):
 				if isinstance(color, UtilColor) or isinstance(color, fife.Color):
 					fife_to = fife.Color(color.r, color.g, color.b, alpha)
 				else:
-					raise TypeError('Unknown color `%s` as attribute `%s`: '
+					raise TypeError('Unknown color `{}` as attribute `{}`: '
 						'Expected either fife.Color or horizons.util.Color.'
-						% (color, to_color))
+						.format(color, to_color))
 			self.change_color(z_order, fife_from, fife_to)
 
 	def add_overlay(self, overlay_name, z_order):
@@ -156,18 +155,23 @@ class ColorOverlayComponent(Component):
 				overlay_name, self.instance, self.identifier)
 			return
 
+		animationmanager = horizons.globals.fife.animationmanager
 		self.current_overlays[z_order] = overlay_set
-		for rotation, frames in overlay_set.iteritems():
-			ov_anim = fife.Animation.createAnimation()
-			for frame_img, frame_data in frames.iteritems():
-				try:
-					frame_length = frame_data[0]
-				except TypeError:
-					# not using atlases
-					frame_length = frame_data
-				pic = horizons.globals.fife.animationloader.load_image(frame_img, self.action_set, overlay_name, rotation)
-				frame_milliseconds = int(frame_length * 1000)
-				ov_anim.addFrame(pic, frame_milliseconds)
+		for rotation, frames in overlay_set.items():
+			id = '{}+{}'.format(self.identifier, rotation)
+			if animationmanager.exists(id):
+				ov_anim = animationmanager.getPtr(id)
+			else:
+				ov_anim = animationmanager.create(id)
+				for frame_img, frame_data in frames.items():
+					try:
+						frame_length = frame_data[0]
+					except TypeError:
+						# not using atlases
+						frame_length = frame_data
+					pic = horizons.globals.fife.animationloader.load_image(frame_img, self.action_set, overlay_name, rotation)
+					frame_milliseconds = int(frame_length * 1000)
+					ov_anim.addFrame(pic, frame_milliseconds)
 			overlay = fife.OverlayColors(ov_anim)
 			self.fife_instance.addColorOverlay(self.identifier, rotation, z_order, overlay)
 
@@ -183,23 +187,15 @@ class ColorOverlayComponent(Component):
 	def remove_overlay(self):
 		"""Removes color overlay recoloring the *color*-colored area from fife instance.
 		"""
-		for z_order, overlay_set in self.current_overlays.iteritems():
+		for z_order, overlay_set in self.current_overlays.items():
 			for rotation in overlay_set:
 				self.fife_instance.removeColorOverlay(self.identifier, rotation, z_order)
 
 	def load(self, db, worldid):
-		super(ColorOverlayComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
 
 	def remove(self):
 		"""Removes all color overlays from the fife instance. """
 		self.remove_overlay()
-		super(ColorOverlayComponent, self).remove()
-
-
-# If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
-if not hasattr(fife, 'OverlayColors'):
-	class ColorOverlayComponent(Component):
-
-		def __init__(self, overlays=None):
-			super(ColorOverlayComponent, self).__init__()
+		super().remove()

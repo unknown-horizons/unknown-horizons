@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,23 +22,24 @@
 import logging
 import math
 
-from horizons.scheduler import Scheduler
-
-from horizons.gui.tabs import SettlerOverviewTab
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingle
-from horizons.constants import RES, BUILDINGS, GAME, TIER
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.production.production import SettlerProduction
 from horizons.command.building import Build
-from horizons.util.python.callback import Callback
-from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.status import SettlerUnhappyStatus, SettlerNotConnectedStatus
+from horizons.constants import BUILDINGS, GAME, RES, TIER
+from horizons.gui.tabs import SettlerOverviewTab
+from horizons.messaging import (
+	AddStatusIcon, RemoveStatusIcon, SettlerInhabitantsChanged, SettlerUpdate,
+	UpgradePermissionsChanged)
+from horizons.scheduler import Scheduler
+from horizons.util.pathfinding.pather import StaticPather
+from horizons.util.python.callback import Callback
+from horizons.world.building.buildable import BuildableRect, BuildableSingle
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.producer import Producer
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
+from horizons.world.production.production import SettlerProduction
+from horizons.world.status import SettlerNotConnectedStatus, SettlerUnhappyStatus
 
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
@@ -63,7 +64,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
-		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
+		super().__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def __init(self, loading=False, last_tax_payed=0):
 		self.level_max = TIER.CURRENT_MAX # for now
@@ -73,7 +74,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self._upgrade_production = None # referenced here for quick access
 
 	def initialize(self):
-		super(Settler, self).initialize()
+		super().initialize()
 		SettlerInhabitantsChanged.broadcast(self, self.inhabitants)
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
@@ -87,7 +88,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.run()
 
 	def save(self, db):
-		super(Settler, self).save(db)
+		super().save(db)
 		db("INSERT INTO settler(rowid, inhabitants, last_tax_payed) VALUES (?, ?, ?)",
 		   self.worldid, self.inhabitants, self.last_tax_payed)
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
@@ -95,7 +96,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		   self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
-		super(Settler, self).load(db, worldid)
+		super().load(db, worldid)
 		self.inhabitants, last_tax_payed = \
 		    db("SELECT inhabitants, last_tax_payed FROM settler WHERE rowid=?", worldid)[0]
 		remaining_ticks = \
@@ -107,7 +108,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
-		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
+		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level + 1)
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
 
@@ -119,7 +120,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
 			resources[resource] = amount
 
-		for res, amount in self._upgrade_production.get_consumed_resources().iteritems():
+		for res, amount in self._upgrade_production.get_consumed_resources().items():
 			# set limits to what we need
 			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			if res in resources:
@@ -133,23 +134,21 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		Add a production line that gets the necessary upgrade material.
 		When the production finishes, it calls upgrade_materials_collected.
 		"""
-		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
+		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level + 1)
 		self._upgrade_production = self.get_component(Producer).add_production_by_id( upgrade_material_prodline )
 		self._upgrade_production.add_production_finished_listener(self.level_up)
 
 		# drive the car out of the garage to make space for the building material
-		for res, amount in self._upgrade_production.get_consumed_resources().iteritems():
+		for res, amount in self._upgrade_production.get_consumed_resources().items():
 			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
-
-
 
 	def remove(self):
 		SettlerInhabitantsChanged.broadcast(self, -self.inhabitants)
 
 		UpgradePermissionsChanged.unsubscribe(self._on_change_upgrade_permissions, sender=self.settlement)
-		super(Settler, self).remove()
+		super().remove()
 
 	@property
 	def upgrade_allowed(self):
@@ -231,7 +230,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# see http://wiki.unknown-horizons.org/w/Settler_taxing
 
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
-		happiness_tax_modifier = 0.5 + (float(self.happiness)/70.0)
+		happiness_tax_modifier = 0.5 + (float(self.happiness) / 70.0)
 		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
@@ -241,7 +240,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		difference = 1.0 - self.settlement.tax_settings[self.level]
-		happiness_decrease = 10 * difference - 6* abs(difference)
+		happiness_decrease = 10 * difference - 6 * abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
 		# NOTE: this formula was actually designed for a different use case, where the happiness
 		# is calculated from the number of available goods -/+ a certain tax factor.
@@ -267,7 +266,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		if change != 0:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
-			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.get_component(Producer).alter_production_time( 6.0 / 7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self.inhabitants += change
 			SettlerInhabitantsChanged.broadcast(self, change)
 			self._changed()
@@ -405,10 +404,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def __str__(self):
 		try:
-			return "%s(l:%s;ihab:%s;hap:%s)" % (super(Settler, self).__str__(), self.level,
-			                                    self.inhabitants, self.happiness)
+			return "{}(l:{};ihab:{};hap:{})".format(
+				super().__str__(), self.level,
+				self.inhabitants, self.happiness)
 		except AttributeError: # an attribute hasn't been set up
-			return super(Settler, self).__str__()
+			return super().__str__()
 
 	#@decorators.cachedmethod TODO: replace this with a version that doesn't leak
 	def __get_data(self, key):
@@ -419,8 +419,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		  )
 
 
-
-class SettlerUpgradeData(object):
+class SettlerUpgradeData:
 	"""This is used as glue between the old upgrade system based on sqlite data used in a non-component environment
 	and the current component version with data in yaml"""
 
@@ -434,7 +433,7 @@ class SettlerUpgradeData(object):
 
 	def get_production_lines(self):
 		d = {}
-		for level, prod_line_id in self.__class__.production_line_ids.iteritems():
+		for level, prod_line_id in self.__class__.production_line_ids.items():
 			d[prod_line_id] = self.get_production_line_data(level)
 		return d
 
@@ -453,4 +452,3 @@ class SettlerUpgradeData(object):
 	def get_production_line_id(cls, level):
 		"""Returns production line id for the upgrade to this level"""
 		return cls.production_line_ids[level]
-

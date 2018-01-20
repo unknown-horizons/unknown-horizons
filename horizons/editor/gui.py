@@ -1,5 +1,6 @@
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
+from unittest import mock
 
+import horizons.globals
 from horizons.constants import EDITOR, GROUND, VIEW
-from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
+from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -54,10 +55,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.show_menu = Dummy
-		self.hide_menu = Dummy
-		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy
+		self.show_menu = mock.Mock()
+		self.hide_menu = mock.Mock()
+		# this is necessary for message_widget to work
+		self.logbook = mock.Mock()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -114,7 +115,7 @@ class IngameGui(LivingObject):
 			self.cursor.end()
 			self.cursor = None
 
-		super(IngameGui, self).end()
+		super().end()
 
 	def handle_selection_group(self, num, ctrl_pressed):
 		# Someday, maybe cool stuff will be possible here.
@@ -204,13 +205,15 @@ class SettingsTab(TabInterface):
 	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
-		super(SettingsTab, self).__init__(widget=self.widget)
+		super().__init__(widget=self.widget)
 
 		self._world_editor = world_editor
+		self._current_tile = 'sand'
+		self._ingame_gui = ingame_gui
 
 		# Brush size
 		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
-			b = self.widget.findChild(name='size_%d' % i)
+			b = self.widget.findChild(name='size_{:d}'.format(i))
 			b.capture(Callback(self._change_brush_size, i))
 
 		# Activate radio button for default brush size
@@ -222,7 +225,27 @@ class SettingsTab(TabInterface):
 			tile = getattr(GROUND, tile_type.upper())
 			image.up_image = self._get_tile_image(tile)
 			image.size = image.min_size = image.max_size = (64, 32)
-			image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
+			image.capture(Callback(self._set_cursor_tile, tile))
+
+		self.widget.mapEvents({
+			self.widget.name + '/mouseEntered/cursor': self._cursor_inside,
+			self.widget.name + '/mouseExited/cursor': self._cursor_outside,
+		})
+
+		self._ingame_gui.mainhud.mapEvents({
+			self._ingame_gui.mainhud.name + '/mouseEntered/cursor': self._cursor_inside,
+			self._ingame_gui.mainhud.name + '/mouseExited/cursor': self._cursor_outside,
+		})
+
+	def _set_cursor_tile(self, tile):
+		self._current_tile = tile
+		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
+
+	def _cursor_inside(self):
+		horizons.globals.fife.set_cursor_image('default')
+
+	def _cursor_outside(self):
+		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place
@@ -230,7 +253,7 @@ class SettingsTab(TabInterface):
 
 		ground_id, action_id, rotation = tile
 		set_id = horizons.globals.db.get_random_tile_set(ground_id)
-		return tile_sets[set_id][action_id][rotation].keys()[0]
+		return list(tile_sets[set_id][action_id][rotation].keys())[0]
 
 	def _change_brush_size(self, size):
 		"""Change the brush size and update the gui."""
@@ -239,9 +262,9 @@ class SettingsTab(TabInterface):
 		  'box': 'content/gui/icons/ship/smallbutton.png',
 		}
 
-		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b = self.widget.findChild(name='size_{:d}'.format(self._world_editor.brush_size))
 		b.up_image = images['box']
 
 		self._world_editor.brush_size = size
-		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b = self.widget.findChild(name='size_{:d}'.format(self._world_editor.brush_size))
 		b.up_image = images['box_highlighted']

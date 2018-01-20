@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,17 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.network.packets import packet, SafeUnpickler
+from horizons.network.packets import SafeUnpickler, packet
+
 
 class cmd_session(packet):
 	def __init__(self, sid, capabilities):
 		self.sid = sid
 		self.capabilities = capabilities
 
+
 SafeUnpickler.add('server', cmd_session)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class data_gameslist(packet):
 	def __init__(self):
 		self.games = []
@@ -38,45 +40,51 @@ class data_gameslist(packet):
 		newgame = game.make_public_copy()
 		self.games.append(newgame)
 
+
 SafeUnpickler.add('server', data_gameslist)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class data_gamestate(packet):
 	def __init__(self, game):
 		self.game = game
 
+
 SafeUnpickler.add('server', data_gamestate)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_chatmsg(packet):
 	def __init__(self, playername, msg):
 		self.playername = playername
 		self.chatmsg    = msg
 
+
 SafeUnpickler.add('server', cmd_chatmsg)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_preparegame(packet):
 	def __init__(self):
 		"""prepare game packet"""
 
+
 SafeUnpickler.add('server', cmd_preparegame)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_startgame(packet):
 	def __init__(self):
 		"""start game packet"""
 
+
 SafeUnpickler.add('server', cmd_startgame)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_kickplayer(packet):
 	def __init__(self, player):
 		self.player = player
+
 
 SafeUnpickler.add('server', cmd_kickplayer)

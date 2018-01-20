@@ -1,4 +1,31 @@
-## UH-Team ##
+## UH-Team-2016/2017 ##
+
+#### Project Coordination
+* LinuxDonald (Thomas Kowaliczek)
+* Kilian] (Kilian Köppchen)
+
+#### Programming
+* AndyMender ()
+* MasterofJOKers ()
+* Kilian] (Kilian Köppchen)
+* squiddy (Reiner Gerecke)
+
+#### Sound and Music Artists
+* Ollo123 ()
+
+#### Graphics Artists
+* janexx (Jana Weigel)
+
+#### Windows Installer
+* jakoch (Jens A. Koch)
+* LinuxDonald (Thomas Kowaliczek)
+
+#### Web Coder
+* dwayne1988 (Dwayne Thorp)
+
+- - - - -
+
+## UH-Team-2015 ##
 
 #### Project Coordination
 * Kilian] (Kilian Köppchen)
@@ -111,6 +138,14 @@
 
 #### 2015
 * Gladius1 (add Sounds to menu)
+
+#### 2016
+* konstin (doc fixes)
+* jorgesumle (text fixes)
+* MarkusHackspacher (code fixes)
+* xseanl (tooltips added)
+* martingeiger (added new inhabitant grafics)
+* CrafterSvK (added some patches)
 
 ## Translators
 
@@ -439,6 +474,9 @@
 #### Fedora & openSUSE
 * nmarques (Nelson Marques)
 * gryffus (Lukáš Krejza)
+
+#### Slackware
+* dslackw (Dimitris Zlatanidis)
 
 #### OS X
 * hoffi (Stefan Hoffmann)

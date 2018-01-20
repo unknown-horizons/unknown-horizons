@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,19 +20,18 @@
 # ###################################################
 
 
+import os
+import shutil
+import tempfile
 from unittest import TestCase
 
-import tempfile
-import shutil
-import os
-
-from run_uh import create_user_dirs
 from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
+from horizons.util import create_user_dirs
 
 
 class TestPaths(TestCase):
-	odd_characters = u"u\xfc\xdf\xfau"
+	odd_characters = "u\xfc\xdf\xfau"
 
 	def test_normal(self):
 
@@ -42,8 +41,8 @@ class TestPaths(TestCase):
 		"""Make paths have special characters and check some basic operations"""
 
 		outer = tempfile.mkdtemp( self.__class__.odd_characters )
-		inner = unicode(os.path.join(outer, self.__class__.odd_characters))
-		inner2 = unicode(os.path.join(outer, self.__class__.odd_characters+u"2"))
+		inner = str(os.path.join(outer, self.__class__.odd_characters))
+		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 
 		PATHS.USER_DIR = inner
 
@@ -67,10 +66,3 @@ class TestPaths(TestCase):
 		os.rmdir(inner)
 		os.rmdir(inner2)
 		os.rmdir(outer)
-
-
-
-
-
-
-

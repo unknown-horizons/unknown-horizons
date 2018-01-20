@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,8 @@
 # ###################################################
 
 from horizons.messaging import ResourceProduced
-from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.production.producer import Producer
+from horizons.world.resourcehandler import ResourceHandler
 
 
 class BuildingResourceHandler(ResourceHandler):
@@ -29,11 +29,11 @@ class BuildingResourceHandler(ResourceHandler):
 	This class exists because we keep a list of all buildings, that provide something at the island.
 	"""
 	def __init__(self, island, **kwargs):
-		super(BuildingResourceHandler, self).__init__(island=island, **kwargs)
+		super().__init__(island=island, **kwargs)
 		self.island = island
 
 	def initialize(self):
-		super(BuildingResourceHandler, self).initialize()
+		super().initialize()
 		self.__init()
 
 	def __init(self):
@@ -44,11 +44,11 @@ class BuildingResourceHandler(ResourceHandler):
 			self._set_running_costs_to_status(None, self.get_component(Producer).is_active())
 
 	def load(self, db, worldid):
-		super(BuildingResourceHandler, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init()
 
 	def remove(self):
-		super(BuildingResourceHandler, self).remove()
+		super().remove()
 		self.island.provider_buildings.remove(self)
 		if self.has_component(Producer):
 			self.get_component(Producer).remove_activity_changed_listener(self._set_running_costs_to_status)
@@ -64,7 +64,7 @@ class BuildingResourceHandler(ResourceHandler):
 		if not resources or not resources.keys():
 			return False
 
-		return resources.keys()[0] in \
+		return list(resources.keys())[0] in \
 		       self.island.session.db.get_res(only_tradeable=True, only_inventory=True)
 
 	def _set_running_costs_to_status(self, caller, activate):

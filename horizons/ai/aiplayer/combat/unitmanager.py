@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@ import collections
 import logging
 import weakref
 from operator import itemgetter
+
 from horizons.ai.aiplayer.combat.fleet import Fleet
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
@@ -31,7 +32,7 @@ from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 
 
-class UnitManager(object):
+class UnitManager:
 	"""
 	UnitManager objects is responsible for handling units in game.
 	1.Grouping combat ships into easy to handle fleets,
@@ -42,7 +43,7 @@ class UnitManager(object):
 	log = logging.getLogger("ai.aiplayer.unitmanager")
 
 	def __init__(self, owner):
-		super(UnitManager, self).__init__()
+		super().__init__()
 		self.__init(owner)
 
 	def __init(self, owner):

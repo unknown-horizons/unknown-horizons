@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,24 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Label
+from fife.extensions.pychan.widgets import ABox, Label
 
 import horizons.globals
 from horizons.engine import Fife
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.widgets.container import AutoResizeContainer
 
 
-class FPSDisplay(AutoResizeContainer):
+class FPSDisplay(ABox):
 	"""Display the frames per second.
 
 	Updates once a second if visible.
 	"""
 
 	def __init__(self):
-		super(FPSDisplay, self).__init__()
+		super().__init__()
 
-		self._label = Label(text=u"- - -")
+		self._label = Label(text="- - -")
 		self.addChild(self._label)
 		self.stylize('menu')
 		self.position_technique = "left:bottom"
@@ -45,18 +44,18 @@ class FPSDisplay(AutoResizeContainer):
 
 	def _update(self):
 		fps = 1000 / self._timemanager.getAverageFrameTime()
-		self._label.text = u"FPS: %.1f" % fps
+		self._label.text = "FPS: {:.1f}".format(fps)
 		self.resizeToContent()
 		self.toggle()  # hide and show again to fix position (pychan...)
 		self.toggle()
 
 	def show(self):
 		ExtScheduler().add_new_object(self._update, self, loops=-1)
-		return super(FPSDisplay, self).show()
+		return super().show()
 
 	def hide(self):
 		ExtScheduler().rem_call(self, self._update)
-		return super(FPSDisplay, self).hide()
+		return super().hide()
 
 	def toggle(self):
 		if (Fife.getVersion() <= (0, 3, 5)):

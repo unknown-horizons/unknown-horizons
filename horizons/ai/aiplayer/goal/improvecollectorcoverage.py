@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,16 +22,16 @@
 from collections import deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
-from horizons.util.python import decorators
-from horizons.constants import BUILDINGS, RES, PRODUCTION
+from horizons.ai.aiplayer.roadplanner import RoadPlanner
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Rect
-from horizons.entities import Entities
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
+
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
 	def get_personality_name(self):
@@ -39,7 +39,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(ImproveCollectorCoverageGoal, self).active and self._is_active
+		return super().active and self._is_active
 
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}
@@ -56,7 +56,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
 						# this is actually problematic
 						problematic_buildings[building.worldid] = building
-		return problematic_buildings.values()
+		return list(problematic_buildings.values())
 
 	def update(self):
 		if self.production_builder.last_collector_improvement_road + self.personality.collector_improvement_road_expires > Scheduler().cur_tick:
@@ -68,8 +68,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			self._is_active = bool(self._problematic_buildings)
 
 	def _build_extra_road_connection(self, building, collector_building):
-		collector_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(collector_building.position, collector_building.position))
-		destination_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(building.loading_area, building.position))
+		collector_coords = {coords for coords in self.production_builder.iter_possible_road_coords(collector_building.position, collector_building.position)}
+		destination_coords = {coords for coords in self.production_builder.iter_possible_road_coords(building.loading_area, building.position)}
 		pos = building.loading_area
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
@@ -79,7 +79,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			return BUILD_RESULT.IMPOSSIBLE
 
 		cost = self.production_builder.get_road_cost(path)
-		for resource_id, amount in cost.iteritems():
+		for resource_id, amount in cost.items():
 			if resource_id == RES.GOLD:
 				if self.owner.get_component(StorageComponent).inventory[resource_id] < amount:
 					return BUILD_RESULT.NEED_RESOURCES
@@ -124,7 +124,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
-		for coords, (purpose, _) in self.production_builder.plan.iteritems():
+		for coords, (purpose, _) in self.production_builder.plan.items():
 			if purpose == BUILDING_PURPOSE.NONE:
 				reachable[coords] = []
 		for key in reachable:
@@ -149,7 +149,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 						distance[coords2] = distance[(x, y)] + 1
 						queue.append(coords2)
 
-			for coords, dist in distance.iteritems():
+			for coords, dist in distance.items():
 				if dist is not None:
 					if building.loading_area.distance(coords) <= storage_radius:
 						reachable[coords].append((building.worldid, dist))
@@ -158,7 +158,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		storage_class = Entities.buildings[BUILDINGS.STORAGE]
 		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
 		    storage_class.size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
-		for coords, building_distances in reachable.iteritems():
+		for coords, building_distances in reachable.items():
 			if coords not in storage_spots:
 				continue
 			builder = BasicBuilder.create(BUILDINGS.STORAGE, coords, 0)
@@ -172,7 +172,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				continue
 
 			usefulness = min(len(actual_distance), self.personality.max_reasonably_served_buildings)
-			for distance in actual_distance.itervalues():
+			for distance in actual_distance.values():
 				usefulness += 1.0 / (distance + self.personality.collector_extra_distance)
 
 			alignment = 1
@@ -195,5 +195,3 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 					self.production_builder.last_collector_improvement_storage = Scheduler().cur_tick
 		self._log_generic_build_result(result, 'storage')
 		return self._translate_build_result(result)
-
-decorators.bind_all(ImproveCollectorCoverageGoal)

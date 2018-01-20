@@ -1,6 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,6 +34,7 @@
 #
 ###############################################################################
 
+from __future__ import print_function
 import os
 import sqlalchemy
 import sqlalchemy.orm
@@ -51,7 +53,7 @@ from horizons.constants import PATHS
 # sqlalchemy doesn't support importing sql files,
 # therefore we work around this by using sqlite3
 
-filename = tempfile.mkstemp(text = True)[1]
+filename = tempfile.mkstemp(text=True)[1]
 conn = sqlite3.connect(filename)
 
 for db_file in PATHS.DB_FILES:
@@ -59,7 +61,7 @@ for db_file in PATHS.DB_FILES:
 
 conn.commit()
 
-engine = sqlalchemy.create_engine('sqlite:///'+filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
+engine = sqlalchemy.create_engine('sqlite:///' + filename) # must be 4 slashes total, sqlalchemy breaks the unixoid conventions here
 
 Session = sqlalchemy.orm.sessionmaker(bind=engine)
 db_session = Session()
@@ -67,20 +69,20 @@ db_session = Session()
 Base = sqlalchemy.ext.declarative.declarative_base()
 
 
-
 #
 # Classes
 #
-
 class Message(Base):
 	__tablename__ = 'message_text'
 
 	text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
+
 class Resource(Base):
 	__tablename__ = 'resource'
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+
 
 class Tier(Base):
 	__tablename__ = 'tier'
@@ -90,6 +92,7 @@ class Tier(Base):
 #
 # print it
 #
+
 
 class MSGID_collect:
 	msgids = defaultdict(list)
@@ -103,12 +106,14 @@ class MSGID_collect:
 	def __str__(self):
 		s = []
 		for text, locations in self.msgids.items():
-			comment = '#. This is a database entry: %s\n' % ','.join(locations)
+			comment = '#. This is a database entry: {}\n'.format(','.join(locations))
 			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
+
 def build_msgid(msgid):
-	return 'msgid "%s"\nmsgstr ""\n' % msgid.replace('"','\\"')
+	return 'msgid "{}"\nmsgstr ""\n'.format(msgid.replace('"', '\\"'))
+
 
 def collect_all():
 	collector = MSGID_collect()
@@ -125,5 +130,5 @@ def collect_all():
 	return collector
 
 
-print collect_all()
+print(collect_all())
 os.unlink(filename)

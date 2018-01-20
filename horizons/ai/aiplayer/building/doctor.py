@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013-2016 The Unknown Horizons Team
+# Copyright (C) 2013-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,13 +24,13 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
-from horizons.util.python import decorators
+
 
 class AbstractDoctor(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		spots_in_settlement = settlement_manager.settlement.buildability_cache.cache[(2, 2)]
 		village_builder = settlement_manager.village_builder
-		for coords in village_builder.special_building_assignments[BUILDING_PURPOSE.DOCTOR].iterkeys():
+		for coords in village_builder.special_building_assignments[BUILDING_PURPOSE.DOCTOR].keys():
 			if coords not in spots_in_settlement or village_builder.plan[coords][1][0] > village_builder.current_section:
 				continue
 			object = settlement_manager.settlement.ground_map[coords].object
@@ -49,6 +49,7 @@ class AbstractDoctor(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.DOCTOR] = cls
+
 
 class DoctorEvaluator(BuildingEvaluator):
 	need_collector_connection = False
@@ -76,7 +77,5 @@ class DoctorEvaluator(BuildingEvaluator):
 	def purpose(self):
 		return BUILDING_PURPOSE.DOCTOR
 
-AbstractDoctor.register_buildings()
 
-decorators.bind_all(AbstractDoctor)
-decorators.bind_all(DoctorEvaluator)
+AbstractDoctor.register_buildings()

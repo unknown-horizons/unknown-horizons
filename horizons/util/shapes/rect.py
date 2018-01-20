@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2016 The Unknown Horizons Team
+# Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,10 @@
 # ###################################################
 
 from horizons.util.python import Const
-from horizons.util.python.decorators import bind_all
-from horizons.util.shapes import Shape, Point
+
+from . import Shape
+from .point import Point
+
 
 class Rect(Shape):
 	__slots__ = ('top', 'left', 'right', 'bottom', 'origin')
@@ -134,13 +136,13 @@ class Rect(Shape):
 		borders[self.bottom + radius] = ( self.left, self.right )
 
 		# left, right
-		for y in xrange( self.top, self.bottom+1 ):
+		for y in range( self.top, self.bottom + 1 ):
 			borders[y] = ( self.left - radius, self.right + radius)
 
 		x = radius
 		radius_squared = radius ** 2
 		# calculate border for line y (y = 0 and y = radius are special cases handled above)
-		for y in xrange( 1, radius ):
+		for y in range( 1, radius ):
 			test_val = radius_squared - y ** 2
 			# TODO: check if it's possible if x is decreased more than once here.
 			#       if not, change the while to an if
@@ -153,20 +155,19 @@ class Rect(Shape):
 
 		if not include_self:
 			self_coords = frozenset(self.get_coordinates())
-			for y, x_range in borders.iteritems():
+			for y, x_range in borders.items():
 				if self.top <= y <= self.bottom: # we have to sort out the self_coords here
-					for x in xrange(x_range[0], x_range[1]+1):
+					for x in range(x_range[0], x_range[1] + 1):
 						t = (x, y)
 						if t not in self_coords:
 							yield t
 				else: # coords of this rect cannot appear here
-					for x in xrange(x_range[0], x_range[1]+1):
+					for x in range(x_range[0], x_range[1] + 1):
 						yield (x, y)
 		else:
-			for y, x_range in borders.iteritems():
-				for x in xrange(x_range[0], x_range[1]+1):
+			for y, x_range in borders.items():
+				for x in range(x_range[0], x_range[1] + 1):
 					yield (x, y)
-
 
 	@property
 	def center(self):
@@ -222,13 +223,13 @@ class Rect(Shape):
 		# top and bottom
 		surrounding_top = self.top - 1
 		surrounding_bottom = self.bottom + 1
-		for x in xrange(self.left, self.right + 1):
+		for x in range(self.left, self.right + 1):
 			yield (x, surrounding_bottom)
 			yield (x, surrounding_top)
 		# left and right
 		surrounding_left = self.left - 1
 		surrounding_right = self.right + 1
-		for y in xrange(self.top, self.bottom + 1):
+		for y in range(self.top, self.bottom + 1):
 			yield (surrounding_left, y)
 			yield (surrounding_right, y)
 
@@ -239,7 +240,7 @@ class Rect(Shape):
 			yield (self.right + 1, self.bottom + 1)
 
 	def __str__(self):
-		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.left, self.top, self.width, self.height)
+		return "Rect(o:({},{}),w:{},h:{})".format(self.left, self.top, self.width, self.height)
 
 	def __eq__(self, other):
 		if not isinstance(other, Rect):
@@ -264,8 +265,8 @@ class Rect(Shape):
 
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""
-		for x in xrange(self.left, self.right+1):
-			for y in xrange(self.top, self.bottom+1):
+		for x in range(self.left, self.right + 1):
+			for y in range(self.top, self.bottom + 1):
 				yield x, y
 
 	def iter_without_border(self):
@@ -275,8 +276,8 @@ class Rect(Shape):
 		This method iterates over the points without extensions, while the
 		default iteration behavior in other methods is to include said area.
 		"""
-		for x in xrange(self.left, self.right):
-			for y in xrange(self.top, self.bottom):
+		for x in range(self.left, self.right):
+			for y in range(self.top, self.bottom):
 				yield Point(x, y)
 
 	@classmethod
@@ -284,11 +285,8 @@ class Rect(Shape):
 		rect = cls.init_from_topleft_and_size_tuples((0, 0), size)
 		return list(rect.get_surrounding())
 
+
 class ConstRect(Const, Rect):
 	"""An immutable Rect.
 	Can be used for manual const-only optimization"""
 	pass
-
-
-bind_all(Rect)
-bind_all(Const)
