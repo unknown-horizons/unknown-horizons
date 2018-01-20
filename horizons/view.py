@@ -110,6 +110,7 @@ class View(ChangeListener):
 		pos = loc.getExactLayerCoordinatesRef()
 		pos.x = x
 		pos.y = y
+		self.cam.setLocation(loc)
 		self.cam.refresh()
 		self._changed()
 
