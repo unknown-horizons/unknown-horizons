@@ -25,7 +25,6 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.python import decorators
 
 class AbstractWinery(AbstractBuilding):
 	@property
@@ -61,6 +60,3 @@ class WineryEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.WINERY
 
 AbstractWinery.register_buildings()
-
-decorators.bind_all(AbstractWinery)
-decorators.bind_all(WineryEvaluator)
