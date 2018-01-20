@@ -29,14 +29,14 @@ from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
 	FeederTobaccoProductsGoal, FeederSaltGoal, FeederMedicalProductsGoal, FeederBeerGoal, FeederCannonGoal, \
-	FeederFlourGoal, FeederCondimentsGoal, FeederConfectioneryGoal, FeederCandlesGoal
+	FeederFlourGoal, FeederCondimentsGoal, FeederConfectioneryGoal, FeederCandlesGoal, FeederHygieneGoal
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
 	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal, \
 	SaltGoal, MedicalHerbsProductsGoal, BeerGoal, CannonGoal, FlourGoal, CondimentsGoal, ConfectioneryGoal, \
-	CandlesGoal
+	CandlesGoal, HygieneGoal
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal
@@ -107,7 +107,7 @@ class SettlementManager(WorldObject):
 
 		# create a production chain for every building material, settler consumed resource, and resources that have to be imported from feeder islands
 		self.production_chain = {}
-		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
+		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH, RES.HYGIENE,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
 						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.BEER, RES.CANNON,
 						RES.FLOUR, RES.CONDIMENTS, RES.CONFECTIONERY, RES.CANDLES]:
@@ -138,6 +138,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederCondimentsGoal(self))
 			self._goals.append(FeederConfectionery(self))
 			self._goals.append(FeederCandlesGoal(self))
+                        self._goals.append(FeederHygieneGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
@@ -165,6 +166,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(CondimentsGoal(self))
 			self._goals.append(ConfectioneryGoal(self))
 			self._goals.append(CandlesGoal(self))
+                        self._goals.append(HygieneGoal(self))
 
 	def save(self, db):
 		super().save(db)
