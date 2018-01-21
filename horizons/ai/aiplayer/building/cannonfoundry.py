@@ -33,13 +33,13 @@ class AbstractCannonfoundry(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.CANNONFOUNDRY] = cls
+		cls._available_buildings[BUILDINGS.CANNON_FOUNDRY] = cls
 
 class CannonfoundryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.CANNONFOUNDRY, (x, y), orientation)
-		
+		builder = BasicBuilder.create(BUILDINGS.CANNON_FOUNDRY, (x, y), orientation)
+
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
 			return None
@@ -48,15 +48,15 @@ class CannonfoundryEvaluator(BuildingEvaluator):
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 
 		personality = area_builder.owner.personality_manager.get('CannonfoundryEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.CANNONFOUNDRY].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.CANNON_FOUNDRY].radius * personality.distance_penalty
 
 		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_smeltery)],
 			distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.CANNONFOUNDRY].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.CANNON_FOUNDRY].radius) / distance + alignment * personality.alignment_importance
 		return CannonfoundryEvaluator(area_builder, builder, value)
 
 	@property
 	def purpose(self):
-		return BUILDING_PURPOSE.CANNONFOUNDRY
+		return BUILDING_PURPOSE.CANNON_FOUNDRY
 
 AbstractCannonfoundry.register_buildings()
