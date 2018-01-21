@@ -214,8 +214,8 @@ class CandlesGoal(ProductionChainGoal):
 
 
 class HygieneGoal(ProductionChainGoal):
-        def __init__(self, settlement_manager):
-                super().__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
+	def __init__(self, settlement_manager):
+		super().__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
 
-        def get_personality_name(self):
-                return 'FeederGoal'
+	def get_personality_name(self):
+		return 'FeederGoal'

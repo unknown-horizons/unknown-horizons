@@ -163,8 +163,8 @@ class FeederCandlesGoal(FeederChainGoal):
 
 
 class FeederHygieneGoal(FeederChainGoal):
-        def __init__(self, settlement_manager):
-                super().__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
+	def __init__(self, settlement_manager):
+		super().__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
 
-        def get_personality_name(self):
-                return 'FeederHygieneGoal'
+	def get_personality_name(self):
+		return 'FeederHygieneGoal'
