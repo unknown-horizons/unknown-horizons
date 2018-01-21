@@ -36,6 +36,7 @@ class AbstractPastryShop(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.PASTRY_SHOP] = cls
 
+
 class PastryShopEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -50,7 +51,7 @@ class PastryShopEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('PastryShopEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.PASTRY_SHOP].radius * personality.distance_penalty
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm),],
+		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm), ],
 		distance_penalty)
 
 		value = float(Entities.buildings[BUILDINGS.PASTRY_SHOP].radius) / distance + alignment * personality.alignment_importance
@@ -59,5 +60,6 @@ class PastryShopEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.PASTRY_SHOP
+
 
 AbstractPastryShop.register_buildings()

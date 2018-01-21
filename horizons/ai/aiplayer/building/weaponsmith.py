@@ -36,6 +36,7 @@ class AbstractWeaponsmith(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.WEAPONSMITH] = cls
 
+
 class WeaponsmithEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -60,5 +61,6 @@ class WeaponsmithEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.WEAPONSMITH
+
 
 AbstractWeaponsmith.register_buildings()

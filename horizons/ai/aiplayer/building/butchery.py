@@ -36,6 +36,7 @@ class AbstractButchery(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.BUTCHERY] = cls
 
+
 class ButcheryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -59,5 +60,6 @@ class ButcheryEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.BUTCHERY
+
 
 AbstractButchery.register_buildings()

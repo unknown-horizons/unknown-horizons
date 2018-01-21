@@ -36,6 +36,7 @@ class AbstractWoodenTower(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.WOODEN_TOWER] = cls
 
+
 class WoodenTowerEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -59,5 +60,6 @@ class WoodenTowerEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.WOODEN_TOWER
+
 
 AbstractWoodenTower.register_buildings()

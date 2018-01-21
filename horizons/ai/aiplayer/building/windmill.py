@@ -36,6 +36,7 @@ class AbstractWindmill(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.WINDMILL] = cls
 
+
 class WindmillEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -59,5 +60,6 @@ class WindmillEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.WINDMILL
+
 
 AbstractWindmill.register_buildings()
