@@ -197,7 +197,7 @@ class DefaultPersonality:
 		final_sailor_upgrades = True
 		final_pioneer_upgrades = True
 		final_settler_upgrades = True
-		final_citizen_upgrades = False # Set to true to enable merchant level
+		final_citizen_upgrades = True
 
 	class FoundSettlement:
 		# use a penalty for warehouse being too close to the village area
@@ -487,7 +487,7 @@ class DefaultPersonality:
 		residences_required = 0
 		min_tier = TIER.CITIZENS
 
-	class FeederHygieneGoal:
+	class HygieneGoal:
 		enabled = True
 		default_priority = 230
 		residences_required = 0

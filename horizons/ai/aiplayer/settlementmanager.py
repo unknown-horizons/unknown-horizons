@@ -29,7 +29,7 @@ from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
 	FeederTobaccoProductsGoal, FeederSaltGoal, FeederMedicalProductsGoal, FeederBeerGoal, FeederCannonGoal, \
-	FeederFlourGoal, FeederCondimentsGoal, FeederConfectioneryGoal, FeederCandlesGoal, FeederHygieneGoal
+	FeederFlourGoal, FeederCondimentsGoal, FeederConfectioneryGoal, FeederCandlesGoal
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
@@ -134,11 +134,10 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederTobaccoProductsGoal(self))
 			self._goals.append(FeederMedicalProductsGoal(self))
 			self._goals.append(FeederCannonGoal(self))
-			self._goals.append(FeederFloarGoal(self))
+			self._goals.append(FeederFlourGoal(self))
 			self._goals.append(FeederCondimentsGoal(self))
-			self._goals.append(FeederConfectionery(self))
+			self._goals.append(FeederConfectioneryGoal(self))
 			self._goals.append(FeederCandlesGoal(self))
-			self._goals.append(FeederHygieneGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
