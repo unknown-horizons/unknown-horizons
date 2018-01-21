@@ -27,16 +27,17 @@ from horizons.ai.aiplayer.goal.depositcoverage import (
 	ClayDepositCoverageGoal, MountainCoverageGoal, StoneDepositCoverageGoal)
 from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
-from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
-	FeederTobaccoProductsGoal, FeederSaltGoal, FeederMedicalProductsGoal, FeederBeerGoal, FeederCannonGoal, \
-	FeederFlourGoal, FeederCondimentsGoal, FeederConfectioneryGoal, FeederCandlesGoal
+from horizons.ai.aiplayer.goal.feederchaingoal import (
+	FeederBeerGoal, FeederCandlesGoal, FeederCannonGoal, FeederCondimentsGoal, FeederConfectioneryGoal,
+	FeederFlourGoal, FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal,
+	FeederTextileGoal, FeederTobaccoProductsGoal)
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
-from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
-	EducationGoal, GetTogetherGoal, ToolsGoal, BoardsGoal, FoodGoal, CommunityGoal, TobaccoProductsGoal, \
-	SaltGoal, MedicalHerbsProductsGoal, BeerGoal, CannonGoal, FlourGoal, CondimentsGoal, ConfectioneryGoal, \
-	CandlesGoal, HygieneGoal
+from horizons.ai.aiplayer.goal.productionchaingoal import (
+	BeerGoal, BoardsGoal, BricksGoal, CandlesGoal, CannonGoal, CommunityGoal, CondimentsGoal,
+	ConfectioneryGoal, EducationGoal, FaithGoal, FlourGoal, FoodGoal, GetTogetherGoal, HygieneGoal,
+	MedicalHerbsProductsGoal, SaltGoal, TextileGoal, TobaccoProductsGoal, ToolsGoal)
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal

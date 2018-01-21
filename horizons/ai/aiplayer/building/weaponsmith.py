@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
+
 class AbstractWeaponsmith(AbstractBuilding):
 	@property
 	def evaluator_class(self):
