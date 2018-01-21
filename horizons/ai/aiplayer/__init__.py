@@ -78,7 +78,7 @@ from .building.weaponsmith import AbstractWeaponsmith
 from .building.weaver import AbstractWeaver
 from .building.windmill import AbstractWindmill
 from .building.winery import AbstractWinery
-#from .building.woodentower import AbstractWoodenTower
+from .building.woodentower import AbstractWoodenTower
 from .constants import GOAL_RESULT
 from .goal.donothing import DoNothingGoal
 from .goal.settlementgoal import SettlementGoal
