@@ -107,7 +107,7 @@ tab5:
 #  - BUILDINGS.CANNON_FOUNDRY # not implemented yet
 -
   - _ Fortifications
-#  - BUILDINGS.WOODEN_TOWER # not implemented yet
+  - BUILDINGS.WOODEN_TOWER # not implemented yet
 -
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
