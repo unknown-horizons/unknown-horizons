@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2017-06-09 20:49+0200\n"
+"POT-Creation-Date: 2017-06-09 23:33+0200\n"
 "PO-Revision-Date: 2015-12-22 00:49+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/uh/uh/gl/>\n"
@@ -921,7 +921,7 @@ msgstr "Valor dos edificios dos asentamentos do xogador"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:545
+#: horizons/i18n/objecttranslations.py:475
 msgid "Settlers"
 msgstr "Colonos"
 
@@ -1195,7 +1195,7 @@ msgstr "Cargar unha partida"
 msgid "Cancel game"
 msgstr "Cancelar a partida"
 
-#: content/gui/xml/mainmenu/loadingscreen.xml:7
+#: content/gui/xml/mainmenu/loadingscreen.xml:6
 msgid "Loading…"
 msgstr "Cargando…"
 
@@ -2688,778 +2688,778 @@ msgid "Error: {error_message}"
 msgstr "Produciuse un erro: {error_message}"
 
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:56
+#: horizons/i18n/objecttranslations.py:47
 msgid "Bakery"
 msgstr "Panadería"
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:58
+#: horizons/i18n/objecttranslations.py:49
 msgid "Consumes flour. Produces food."
 msgstr "Consume fariña. Produce alimento."
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:63
+#: horizons/i18n/objecttranslations.py:53
 msgid "Barracks"
 msgstr "Cuartel"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:65
+#: horizons/i18n/objecttranslations.py:55
 msgid "Recruits units suitable for ground combat."
 msgstr "Recruta unidades para combater en terra."
 
 #. name_0 of buildings:barrier
-#: horizons/i18n/objecttranslations.py:70
+#: horizons/i18n/objecttranslations.py:59
 #, fuzzy
 #| msgid "Wooden Tower"
 msgid "Wooden barrier"
 msgstr "Torre de madeira"
 
 #. name_1 of buildings:barrier
-#: horizons/i18n/objecttranslations.py:72
+#: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
 msgstr ""
 
 #. tooltip_text of buildings:barrier
-#: horizons/i18n/objecttranslations.py:74
+#: horizons/i18n/objecttranslations.py:63
 #, fuzzy
 #| msgid "Provides education."
 msgid "Provides security."
 msgstr "Fornece educación."
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:79
+#: horizons/i18n/objecttranslations.py:67
 msgid "Blender"
 msgstr "Mesturador"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:81
+#: horizons/i18n/objecttranslations.py:69
 msgid "Produces condiments out of spices."
 msgstr "Produce condimentos a partir de especias."
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:86
+#: horizons/i18n/objecttranslations.py:73
 msgid "Boat Builder"
 msgstr "Construtor de barcos"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:88
+#: horizons/i18n/objecttranslations.py:75
 msgid "Builds boats and small ships. Built on coast."
 msgstr "Constrúe barcos de varios tipos. Constrúese na costa."
 
 #. name of buildings:brewery
-#: horizons/i18n/objecttranslations.py:93
+#: horizons/i18n/objecttranslations.py:79
 msgid "Brewery"
 msgstr ""
 
 #. tooltip_text of buildings:brewery
-#: horizons/i18n/objecttranslations.py:95
+#: horizons/i18n/objecttranslations.py:81
 #, fuzzy
 #| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
 msgstr "Consume fariña. Produce alimento."
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:100
+#: horizons/i18n/objecttranslations.py:85
 msgid "Brickyard"
 msgstr "Oleiro"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:102
+#: horizons/i18n/objecttranslations.py:87
 msgid "Turns clay into bricks."
 msgstr "Usa arxila para facer tixolos."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:107
+#: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
 msgstr "Matadoiro"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:109
+#: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Necesita porcos ou gando. Produce alimento."
 
 #. name of buildings:cannonfoundry
-#: horizons/i18n/objecttranslations.py:114
+#: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
 msgstr ""
 
 #. tooltip_text of buildings:cannonfoundry
-#: horizons/i18n/objecttranslations.py:116
+#: horizons/i18n/objecttranslations.py:99
 #, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces Cannons."
 msgstr "Produce ferramentas con ferro."
 
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:121
+#: horizons/i18n/objecttranslations.py:103
 msgid "Charcoal Burning"
 msgstr "Fábrica de carbón"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:123
+#: horizons/i18n/objecttranslations.py:105
 msgid "Burns a lot of boards."
 msgstr "Queima moitos taboleiros."
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:128
+#: horizons/i18n/objecttranslations.py:109
 msgid "Clay Deposit"
 msgstr "Depósito de arxila"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:133
+#: horizons/i18n/objecttranslations.py:113
 msgid "Clay Pit"
 msgstr "Canteira de arxila"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:135
+#: horizons/i18n/objecttranslations.py:115
 msgid "Gets clay from deposit."
 msgstr "Obtén arxila dun depósito."
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:140
+#: horizons/i18n/objecttranslations.py:119
 msgid "Distillery"
 msgstr "Destilaría"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:142
+#: horizons/i18n/objecttranslations.py:121
 msgid "Turns sugar into liquor."
 msgstr "Converte azucre en licor."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:147
+#: horizons/i18n/objecttranslations.py:125
 msgid "Doctor"
 msgstr "Doutor"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:149
+#: horizons/i18n/objecttranslations.py:127
 msgid "Treats diseases. Consumes herbs."
 msgstr "Trata enfermidades. Consume herbas."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
 msgstr "Granxa"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:156
+#: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
 msgstr "Cultiva campos e cría animais."
 
 #. name of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:137
 msgid "Alvearies"
 msgstr "Colmeas"
 
 #. tooltip_text of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:163
+#: horizons/i18n/objecttranslations.py:139
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
 "Cría abellas. Produce panais que se usan para elaborar doces. Necesita unha "
 "granxa."
 
 #. name of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:143
 msgid "Cattle Run"
 msgstr "Terreo para gando"
 
 #. tooltip_text of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:170
+#: horizons/i18n/objecttranslations.py:145
 msgid "Raises cattle. Needs a farm."
 msgstr "Cría gando. Necesita unha granxa."
 
 #. name of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py:149
 msgid "Cocoa Field"
 msgstr "Campo de cacao"
 
 #. tooltip_text of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:177
+#: horizons/i18n/objecttranslations.py:151
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
 "Produce sementes de cacao que se usan para elaborar doces. Necesita unha "
 "granxa."
 
 #. name of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:182
+#: horizons/i18n/objecttranslations.py:155
 msgid "Corn Field"
 msgstr "Campo de millo"
 
 #. tooltip_text of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:184
+#: horizons/i18n/objecttranslations.py:157
 msgid "Yields corn. Needs a farm."
 msgstr "Produce millo. Necesita unha granxa."
 
 #. name of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py:161
 msgid "Herbary"
 msgstr "Prado"
 
 #. tooltip_text of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:191
+#: horizons/i18n/objecttranslations.py:163
 msgid "Produces herbs. Needs a farm."
 msgstr "Produce herba. Necesita unha granxa."
 
 #. name of buildings:fields:hopfield
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py:167
 #, fuzzy
 #| msgid "Corn Field"
 msgid "Hop Field"
 msgstr "Campo de millo"
 
 #. tooltip_text of buildings:fields:hopfield
-#: horizons/i18n/objecttranslations.py:198
+#: horizons/i18n/objecttranslations.py:169
 #, fuzzy
 #| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
 msgstr "Produce millo. Necesita unha granxa."
 
 #. name of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py:173
 msgid "Pasture"
 msgstr "Terreo para ovellas"
 
 #. tooltip_text of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:205
+#: horizons/i18n/objecttranslations.py:175
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Cría ovellas. Produce la. Necesita unha granxa."
 
 #. name of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:210
+#: horizons/i18n/objecttranslations.py:179
 msgid "Pigsty"
 msgstr "Cortello"
 
 #. tooltip_text of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:212
+#: horizons/i18n/objecttranslations.py:181
 msgid "Raises pigs. Needs a farm."
 msgstr "Cría porcos. Necesita unha granxa."
 
 #. name of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:185
 msgid "Potato Field"
 msgstr "Horta de patacas"
 
 #. tooltip_text of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:219
+#: horizons/i18n/objecttranslations.py:187
 msgid "Yields food. Needs a farm."
 msgstr "Produce alimento. Necesita unha granxa."
 
 #. name of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:191
 msgid "Spice Field"
 msgstr "Campo de especias"
 
 #. tooltip_text of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:226
+#: horizons/i18n/objecttranslations.py:193
 msgid "Grows spices. Needs a farm."
 msgstr "Cultiva especias. Necesita unha granxa."
 
 #. name of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:231
+#: horizons/i18n/objecttranslations.py:197
 msgid "Sugar Field"
 msgstr "Campo de azucre"
 
 #. tooltip_text of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:233
+#: horizons/i18n/objecttranslations.py:199
 msgid "Used in liquor production. Needs a farm."
 msgstr "Usado para a produción de licor. Necesita unha granxa."
 
 #. name of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:238
+#: horizons/i18n/objecttranslations.py:203
 msgid "Tobacco Field"
 msgstr "Campo de tabaco"
 
 #. tooltip_text of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:240
+#: horizons/i18n/objecttranslations.py:205
 msgid "Produces tobacco. Needs a farm."
 msgstr "Produce tabaco. Necesita unha granxa."
 
 #. name of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:245
+#: horizons/i18n/objecttranslations.py:209
 msgid "Vineyard"
 msgstr "Viñedo"
 
 #. tooltip_text of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:247
+#: horizons/i18n/objecttranslations.py:211
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr "Produce uvas para elaborar viño e doces. Necesita unha granxa."
 
 #. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:252
+#: horizons/i18n/objecttranslations.py:215
 msgid "Fire Station"
 msgstr "Estación de bombeiros"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:254
+#: horizons/i18n/objecttranslations.py:217
 msgid "Extinguishes fires."
 msgstr "Apaga incendios."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:259
+#: horizons/i18n/objecttranslations.py:221
 msgid "Fish Deposit"
 msgstr "Banco de peixes"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py:225
 msgid "Fisherman's Tent"
 msgstr "Tenda dun pescador"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:266
+#: horizons/i18n/objecttranslations.py:227
 msgid "Fishes the sea, produces food."
 msgstr "Pesca no mar, produce alimento."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py:231
 msgid "Hunter's Tent"
 msgstr "Tenda dun cazador"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:273
+#: horizons/i18n/objecttranslations.py:233
 msgid "Hunts wild forest animals, produces food."
 msgstr "Caza animais salvaxes no bosque, produce alimento."
 
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:278
+#: horizons/i18n/objecttranslations.py:237
 msgid "Lookout"
 msgstr "Posto de vixilancia"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:280
+#: horizons/i18n/objecttranslations.py:239
 #, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
 msgstr "Defende o asentamento."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py:243
 msgid "Lumberjack Tent"
 msgstr "Tenda dun leñador"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:287
+#: horizons/i18n/objecttranslations.py:245
 msgid "Lumberjack Hut"
 msgstr "Cabana dun leñador"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:289
+#: horizons/i18n/objecttranslations.py:247
 msgid "Chops down trees and turns them into boards."
 msgstr "Talla árbores e fai taboleiros coa súa madeira."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:294
+#: horizons/i18n/objecttranslations.py:251
 msgid "Main Square"
 msgstr "Praza principal"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:296
+#: horizons/i18n/objecttranslations.py:253
 msgid "Supplies citizens with goods. Provides community."
 msgstr "Fornece bens aos cidadáns. Xera comunidade."
 
 #. name of buildings:mine
-#: horizons/i18n/objecttranslations.py:301
+#: horizons/i18n/objecttranslations.py:257
 msgid "Mine"
 msgstr "Mina"
 
 #. tooltip_text of buildings:mine
-#: horizons/i18n/objecttranslations.py:303
+#: horizons/i18n/objecttranslations.py:259
 msgid "Gets iron ore from deposit."
 msgstr "Obtén mineral de ferro dun depósito."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:308
+#: horizons/i18n/objecttranslations.py:263
 msgid "Mountain"
 msgstr "Montaña"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py:267
 msgid "Pastry Shop"
 msgstr "Confeitaría"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:315
+#: horizons/i18n/objecttranslations.py:269
 msgid "Produces all kinds of confectionery."
 msgstr "Produce todo tipo de doces."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:320
+#: horizons/i18n/objecttranslations.py:273
 msgid "Pavilion"
 msgstr "Pavillón"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:322
+#: horizons/i18n/objecttranslations.py:275
 msgid "Fulfills religious needs of sailors."
 msgstr "Satisfai as necesidades relixiosas dos mariñeiros."
 
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:327
+#: horizons/i18n/objecttranslations.py:279
 msgid "Ruined Tent"
 msgstr "Tenda en ruínas"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:332
+#: horizons/i18n/objecttranslations.py:283
 msgid "Salt Ponds"
 msgstr "Salinas"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py:285
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Evapora sal. Constrúese na costa."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:339
+#: horizons/i18n/objecttranslations.py:289
 msgid "Signal Fire"
 msgstr "Sinal de lume"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py:291
 msgid "Allows the player to trade with the free trader."
 msgstr "Permite comerciar co comerciante libre."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:346
+#: horizons/i18n/objecttranslations.py:295
 msgid "Smeltery"
 msgstr "Fundición"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:348
+#: horizons/i18n/objecttranslations.py:297
 msgid "Refines all kind of ores."
 msgstr "Funde e coa todo tipo de minerais."
 
 #. name of buildings:stonedeposit
-#: horizons/i18n/objecttranslations.py:353
+#: horizons/i18n/objecttranslations.py:301
 #, fuzzy
 #| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "depósito de rocha"
 
 #. name_3 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:358
+#: horizons/i18n/objecttranslations.py:305
 msgid "Stonemason"
 msgstr "Canteiro"
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:360
+#: horizons/i18n/objecttranslations.py:307
 msgid "Carver"
 msgstr "Tallista"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:362
+#: horizons/i18n/objecttranslations.py:309
 msgid "Carves stone tops into bricks."
 msgstr "Talla en bloques a pedra."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py:313
 msgid "Stone Pit"
 msgstr "Canteira"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:369
+#: horizons/i18n/objecttranslations.py:315
 msgid "Gets stone from a mountain."
 msgstr "Obtén pedra dunha montaña."
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py:319
 msgid "Storage Tent"
 msgstr "Tenda de almacenamento"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:376
+#: horizons/i18n/objecttranslations.py:321
 msgid "Storage Hut"
 msgstr "Cabana de almacenamento"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:378
+#: horizons/i18n/objecttranslations.py:323
 #, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr "Aumenta o almacenamento dispoñíbel e fornece transportistas."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:383
+#: horizons/i18n/objecttranslations.py:327
 msgid "Tavern"
 msgstr "Taberna"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:385
+#: horizons/i18n/objecttranslations.py:329
 msgid "Provides get-together."
 msgstr "Lugar de xuntanza."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:390
+#: horizons/i18n/objecttranslations.py:333
 msgid "Tent"
 msgstr "Tenda"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:392
+#: horizons/i18n/objecttranslations.py:335
 msgid "Hut"
 msgstr "Cabana"
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:394
+#: horizons/i18n/objecttranslations.py:337
 msgid "House"
 msgstr "Casa"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:396
+#: horizons/i18n/objecttranslations.py:339
 msgid "Stone house"
 msgstr "Casa de pedra"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:398
+#: horizons/i18n/objecttranslations.py:341
 msgid "Estate"
 msgstr "Vivenda"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:400
+#: horizons/i18n/objecttranslations.py:343
 msgid "Manor"
 msgstr "Mansión"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:402
+#: horizons/i18n/objecttranslations.py:345
 msgid "Houses your inhabitants."
 msgstr "Aloxamento para os habitantes."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:407
+#: horizons/i18n/objecttranslations.py:349
 msgid "Tobacconist"
 msgstr "Tabaqueiro"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:409
+#: horizons/i18n/objecttranslations.py:351
 msgid "Produces tobaccos out of tobacco."
 msgstr "Usa tabaco para producir cigarros."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:414
+#: horizons/i18n/objecttranslations.py:355
 msgid "Toolmaker"
 msgstr "Ferreiro"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:416
+#: horizons/i18n/objecttranslations.py:357
 msgid "Produces tools out of iron."
 msgstr "Produce ferramentas con ferro."
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:421
+#: horizons/i18n/objecttranslations.py:361
 msgid "Trail"
 msgstr "Sendeiro"
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:363
 msgid "Gravel Path"
 msgstr "Camiño de grava"
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:365
 msgid "Cobblestone Street"
 msgstr "Rúa empedrada"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:427
+#: horizons/i18n/objecttranslations.py:367
 msgid "Needed for collecting goods."
 msgstr "Necesario para recoller bens."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:432
+#: horizons/i18n/objecttranslations.py:371
 msgid "Tree"
 msgstr "Árbore"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:434
+#: horizons/i18n/objecttranslations.py:373
 msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr "Fornece madeira. Tállano os leñadores."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:439
+#: horizons/i18n/objecttranslations.py:377
 #, fuzzy
 #| msgid "Village school"
 msgid "Village School"
 msgstr "Escola"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:441
+#: horizons/i18n/objecttranslations.py:379
 msgid "Provides education."
 msgstr "Fornece educación."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:446
+#: horizons/i18n/objecttranslations.py:383
 msgid "Warehouse"
 msgstr "Almacén"
 
 #. name of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:451
+#: horizons/i18n/objecttranslations.py:387
 #, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
 msgstr "Armas"
 
 #. tooltip_text of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:453
+#: horizons/i18n/objecttranslations.py:389
 #, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
 msgstr "Produce ferramentas con ferro."
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:458
+#: horizons/i18n/objecttranslations.py:393
 msgid "Weaver's Hut"
 msgstr "Cabana do tecelán"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:460
+#: horizons/i18n/objecttranslations.py:395
 msgid "Turns lamb wool into cloth."
 msgstr "Tece roupa a partir de la de año."
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:465
+#: horizons/i18n/objecttranslations.py:399
 msgid "Windmill"
 msgstr "Muíño de vento"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:467
+#: horizons/i18n/objecttranslations.py:401
 msgid "Grinds corn into flour."
 msgstr "Transforma o millo en fariña."
 
 #. name of buildings:winery
-#: horizons/i18n/objecttranslations.py:472
+#: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
 msgstr ""
 
 #. tooltip_text of buildings:winery
-#: horizons/i18n/objecttranslations.py:474
+#: horizons/i18n/objecttranslations.py:407
 msgid "Produces wine out of grapes."
 msgstr "Produce vino a partir de uvas."
 
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:411
 msgid "Wooden Tower"
 msgstr "Torre de madeira"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:413
 msgid "Defends your settlement."
 msgstr "Defende o asentamento."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:486
-#: horizons/i18n/objecttranslations.py:488
-#: horizons/i18n/objecttranslations.py:490
-#: horizons/i18n/objecttranslations.py:492
-#: horizons/i18n/objecttranslations.py:565
+#: horizons/i18n/objecttranslations.py:417
+#: horizons/i18n/objecttranslations.py:419
+#: horizons/i18n/objecttranslations.py:421
+#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:495
 msgid "Companies"
 msgstr "Negocios"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:494
-#: horizons/i18n/objecttranslations.py:496
-#: horizons/i18n/objecttranslations.py:498
-#: horizons/i18n/objecttranslations.py:500
-#: horizons/i18n/objecttranslations.py:561
+#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:427
+#: horizons/i18n/objecttranslations.py:429
+#: horizons/i18n/objecttranslations.py:431
+#: horizons/i18n/objecttranslations.py:491
 msgid "Fields"
 msgstr "Campos"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab5_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:502
-#: horizons/i18n/objecttranslations.py:504
-#: horizons/i18n/objecttranslations.py:567
+#: horizons/i18n/objecttranslations.py:433
+#: horizons/i18n/objecttranslations.py:435
+#: horizons/i18n/objecttranslations.py:497
 msgid "Military"
 msgstr "Militar"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:506
-#: horizons/i18n/objecttranslations.py:533
+#: horizons/i18n/objecttranslations.py:437
+#: horizons/i18n/objecttranslations.py:463
 msgid "Mining"
 msgstr "Minaría"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:508
-#: horizons/i18n/objecttranslations.py:559
+#: horizons/i18n/objecttranslations.py:439
+#: horizons/i18n/objecttranslations.py:489
 msgid "Residents and infrastructure"
 msgstr "Residentes e infraestrutura"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:510
-#: horizons/i18n/objecttranslations.py:512
-#: horizons/i18n/objecttranslations.py:514
-#: horizons/i18n/objecttranslations.py:543
+#: horizons/i18n/objecttranslations.py:441
+#: horizons/i18n/objecttranslations.py:443
+#: horizons/i18n/objecttranslations.py:445
+#: horizons/i18n/objecttranslations.py:473
 msgid "Services"
 msgstr "Servizos"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:519
-#: horizons/i18n/objecttranslations.py:521
+#: horizons/i18n/objecttranslations.py:449
+#: horizons/i18n/objecttranslations.py:451
 msgid "Citizens"
 msgstr "Cidadáns"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:523
+#: horizons/i18n/objecttranslations.py:453
 msgid "Food"
 msgstr "Alimento"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:525
+#: horizons/i18n/objecttranslations.py:455
 msgid "Fortifications"
 msgstr "Fortificacións"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:527
-#: horizons/i18n/objecttranslations.py:529
+#: horizons/i18n/objecttranslations.py:457
+#: horizons/i18n/objecttranslations.py:459
 msgid "Infrastructure"
 msgstr "Infraestrutura"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:531
+#: horizons/i18n/objecttranslations.py:461
 msgid "Military Service"
 msgstr "Servizo militar"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:535
+#: horizons/i18n/objecttranslations.py:465
 msgid "Pioneers"
 msgstr "Colonizadores"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:537
+#: horizons/i18n/objecttranslations.py:467
 msgid "Precaution"
 msgstr "Precaución"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:539
+#: horizons/i18n/objecttranslations.py:469
 msgid "Residential"
 msgstr "Residencial"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:541
+#: horizons/i18n/objecttranslations.py:471
 msgid "Sea"
 msgstr "Mar"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:547
+#: horizons/i18n/objecttranslations.py:477
 msgid "Wood"
 msgstr "Madeira"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:549
-#: horizons/i18n/objecttranslations.py:551
-#: horizons/i18n/objecttranslations.py:553
-#: horizons/i18n/objecttranslations.py:555
+#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:483
+#: horizons/i18n/objecttranslations.py:485
 msgid "Workshops"
 msgstr "Talleres"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:557
+#: horizons/i18n/objecttranslations.py:487
 msgid "Settlement"
 msgstr "Asentamento"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:563
+#: horizons/i18n/objecttranslations.py:493
 msgid "Agriculture"
 msgstr "Agricultura"
 

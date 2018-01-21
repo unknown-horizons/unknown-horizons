@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2017-01-01 17:43+0100\n"
+"POT-Creation-Date: 2017-06-09 23:33+0200\n"
 "PO-Revision-Date: 2017-09-03 16:47+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
@@ -39,8 +39,8 @@ msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"그것을 IRC나 홈페이지 포럼 게시판을 통해 우리에게 주십시오. 자세한 방법은 http://unknown-horizons.org 를 "
-"참조하십시오."
+"그것을 IRC나 홈페이지 포럼 게시판을 통해 우리에게 주십시오. 자세한 방법은 "
+"http://unknown-horizons.org 를 참조하십시오."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -218,7 +218,9 @@ msgstr "운영 비용"
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
-msgstr "지상 건물을 건설하기 위해서, 계층 탭중 하나를 클릭하고, 원하는 지상 건물을 선택하고 명령을 확인하십시오."
+msgstr ""
+"지상 건물을 건설하기 위해서, 계층 탭중 하나를 클릭하고, 원하는 지상 건물을 선"
+"택하고 명령을 확인하십시오."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -385,7 +387,9 @@ msgstr "이 건물을 건설하십시오!"
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr "선박을 건설하기 위해서, 계층 탭중 하나를 클릭하고, 원하는 배를 선택하고 주문을 확인하십시오."
+msgstr ""
+"선박을 건설하기 위해서, 계층 탭중 하나를 클릭하고, 원하는 배를 선택하고 주문"
+"을 확인하십시오."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -573,13 +577,17 @@ msgstr "필요한 자원:"
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
-msgstr "봉화대는 무역상선을 정착지에 도착하는 방법을 보여줍니다. 무역상선은 물품을 구매 또는 판매합니다."
+msgstr ""
+"봉화대는 무역상선을 정착지에 도착하는 방법을 보여줍니다. 무역상선은 물품을 구"
+"매 또는 판매합니다."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
-msgstr "이것은 자유 무역상선입니다. 물품을 구매하거나 판매하기위해 수시로 방문할 것입니다."
+msgstr ""
+"이것은 자유 무역상선입니다. 물품을 구매하거나 판매하기위해 수시로 방문할 것입"
+"니다."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
@@ -874,7 +882,7 @@ msgstr "플레이어의 정착지에 있는 모든 건물의 점수"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:545
+#: horizons/i18n/objecttranslations.py:475
 msgid "Settlers"
 msgstr "정착민"
 
@@ -1143,7 +1151,7 @@ msgstr "게임 불러오기"
 msgid "Cancel game"
 msgstr "게임 취소"
 
-#: content/gui/xml/mainmenu/loadingscreen.xml:7
+#: content/gui/xml/mainmenu/loadingscreen.xml:6
 msgid "Loading…"
 msgstr "불러오는 중…"
 
@@ -1737,7 +1745,8 @@ msgstr "세금을 낮춰 주민들의 행복도를 올릴 수 있습니다."
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
-msgstr "화재와 질병으로부터 주민들을 보호하기위해 소방서와 진료소를 건설하십시오."
+msgstr ""
+"화재와 질병으로부터 주민들을 보호하기위해 소방서와 진료소를 건설하십시오."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
@@ -1785,7 +1794,9 @@ msgstr ""
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
-msgstr "재미있는 따옴표만 원하십니까? 게임 페이지의 설정 메뉴에서 여기에 표시된 따옴표 유형을 변경하십시오."
+msgstr ""
+"재미있는 따옴표만 원하십니까? 게임 페이지의 설정 메뉴에서 여기에 표시된 따옴"
+"표 유형을 변경하십시오."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
@@ -1887,7 +1898,9 @@ msgstr "마스터 서버에 연결할 수 없습니다."
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
-msgstr "인터넷 연결을 확인하십시오. 인터넷 연결이 좋으면, 우리의 주 서버가 일시적으로 다운된것입니다."
+msgstr ""
+"인터넷 연결을 확인하십시오. 인터넷 연결이 좋으면, 우리의 주 서버가 일시적으"
+"로 다운된것입니다."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
@@ -2193,7 +2206,9 @@ msgstr "새로운 네트워크 설정을 적용하기 실패."
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
-msgstr "때로 낮은 포트 번호는 특별한 접근 권한을 요구합니다, 0 또는 1024보다 더 큰 수를 사용하십시오."
+msgstr ""
+"때로 낮은 포트 번호는 특별한 접근 권한을 요구합니다, 0 또는 1024보다 더 큰 수"
+"를 사용하십시오."
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "Invalid player name"
@@ -2343,7 +2358,9 @@ msgstr "무역 매물을 추가하기 위해 자원 슬롯 중 하나에 클릭�
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
-msgstr "라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽 슬라이더를 통해 양을 조정하십시오."
+msgstr ""
+"라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽 슬라이더를 통해 양을 조정"
+"하십시오."
 
 #: horizons/gui/tabs/buyselltab.py:322
 #, python-brace-format
@@ -2594,750 +2611,750 @@ msgid "Error: {error_message}"
 msgstr "오류: {error_message}"
 
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:56
+#: horizons/i18n/objecttranslations.py:47
 msgid "Bakery"
 msgstr "빵집"
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:58
+#: horizons/i18n/objecttranslations.py:49
 msgid "Consumes flour. Produces food."
 msgstr "밀가루 소비. 식량 생산."
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:63
+#: horizons/i18n/objecttranslations.py:53
 msgid "Barracks"
 msgstr "병영"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:65
+#: horizons/i18n/objecttranslations.py:55
 msgid "Recruits units suitable for ground combat."
 msgstr "지상전투를 위해 적당한 부대를 모집합니다."
 
 #. name_0 of buildings:barrier
-#: horizons/i18n/objecttranslations.py:70
+#: horizons/i18n/objecttranslations.py:59
 msgid "Wooden barrier"
 msgstr "나무 장벽"
 
 #. name_1 of buildings:barrier
-#: horizons/i18n/objecttranslations.py:72
+#: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
 msgstr "진흙 벽"
 
 #. tooltip_text of buildings:barrier
-#: horizons/i18n/objecttranslations.py:74
+#: horizons/i18n/objecttranslations.py:63
 msgid "Provides security."
 msgstr "안전을 제공합니다."
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:79
+#: horizons/i18n/objecttranslations.py:67
 msgid "Blender"
 msgstr "혼합소"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:81
+#: horizons/i18n/objecttranslations.py:69
 msgid "Produces condiments out of spices."
 msgstr "향신료없이 양념을 생산합니다."
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:86
+#: horizons/i18n/objecttranslations.py:73
 msgid "Boat Builder"
 msgstr "선박 건조자"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:88
+#: horizons/i18n/objecttranslations.py:75
 msgid "Builds boats and small ships. Built on coast."
 msgstr "배와 소형선박을 건조합니다. 해안에 건설합니다."
 
 #. name of buildings:brewery
-#: horizons/i18n/objecttranslations.py:93
+#: horizons/i18n/objecttranslations.py:79
 msgid "Brewery"
 msgstr "양조장"
 
 #. tooltip_text of buildings:brewery
-#: horizons/i18n/objecttranslations.py:95
+#: horizons/i18n/objecttranslations.py:81
 msgid "Consumes hops. Produces Beer."
 msgstr "호프를 사용하여 맥주를 제조합니다."
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:100
+#: horizons/i18n/objecttranslations.py:85
 msgid "Brickyard"
 msgstr "벽돌공장"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:102
+#: horizons/i18n/objecttranslations.py:87
 msgid "Turns clay into bricks."
 msgstr "점토로 벽돌을 만듬."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:107
+#: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
 msgstr "도축장"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:109
+#: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
 msgstr "돼지나 소가 필요합니다. 식량을 생산합니다."
 
 #. name of buildings:cannonfoundry
-#: horizons/i18n/objecttranslations.py:114
+#: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
 msgstr "대포 제작소"
 
 #. tooltip_text of buildings:cannonfoundry
-#: horizons/i18n/objecttranslations.py:116
+#: horizons/i18n/objecttranslations.py:99
 msgid "Produces Cannons."
 msgstr "대포를 생산합니다."
 
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:121
+#: horizons/i18n/objecttranslations.py:103
 msgid "Charcoal Burning"
 msgstr "숯 굽기"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:123
+#: horizons/i18n/objecttranslations.py:105
 msgid "Burns a lot of boards."
 msgstr "많은 판을 굽습니다."
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:128
+#: horizons/i18n/objecttranslations.py:109
 msgid "Clay Deposit"
 msgstr "점토 매장층"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:133
+#: horizons/i18n/objecttranslations.py:113
 msgid "Clay Pit"
 msgstr "점토 채취장"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:135
+#: horizons/i18n/objecttranslations.py:115
 msgid "Gets clay from deposit."
 msgstr "매장층에서 점토를 채취합니다."
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:140
+#: horizons/i18n/objecttranslations.py:119
 msgid "Distillery"
 msgstr "양조장"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:142
+#: horizons/i18n/objecttranslations.py:121
 msgid "Turns sugar into liquor."
 msgstr "설탕을 술로 바꿉니다."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:147
+#: horizons/i18n/objecttranslations.py:125
 msgid "Doctor"
 msgstr "의사"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:149
+#: horizons/i18n/objecttranslations.py:127
 msgid "Treats diseases. Consumes herbs."
 msgstr "질병을 치료합니다. 약초를 소비합니다."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
 msgstr "농장"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:156
+#: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
 msgstr "밭 작물을 기르고 가축을 사육합니다."
 
 #. name of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:137
 msgid "Alvearies"
 msgstr "벌집"
 
 #. tooltip_text of buildings:fields:alvearies
-#: horizons/i18n/objecttranslations.py:163
+#: horizons/i18n/objecttranslations.py:139
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr "꿀벌을 지킵니다. 과자에 사용되는 벌집을 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:143
 msgid "Cattle Run"
 msgstr "목장"
 
 #. tooltip_text of buildings:fields:cattlerun
-#: horizons/i18n/objecttranslations.py:170
+#: horizons/i18n/objecttranslations.py:145
 msgid "Raises cattle. Needs a farm."
 msgstr "소를 사육합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py:149
 msgid "Cocoa Field"
 msgstr "코코아 밭"
 
 #. tooltip_text of buildings:fields:cocoafield
-#: horizons/i18n/objecttranslations.py:177
+#: horizons/i18n/objecttranslations.py:151
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr "과자에 사용되는 코코아 열매를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:182
+#: horizons/i18n/objecttranslations.py:155
 msgid "Corn Field"
 msgstr "곡물 밭"
 
 #. tooltip_text of buildings:fields:cornfield
-#: horizons/i18n/objecttranslations.py:184
+#: horizons/i18n/objecttranslations.py:157
 msgid "Yields corn. Needs a farm."
 msgstr "곡물을 얻습니다. 농장이 필요합니다."
 
 #. name of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py:161
 msgid "Herbary"
 msgstr "약초밭"
 
 #. tooltip_text of buildings:fields:herbary
-#: horizons/i18n/objecttranslations.py:191
+#: horizons/i18n/objecttranslations.py:163
 msgid "Produces herbs. Needs a farm."
 msgstr "약초를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:hopfield
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py:167
 msgid "Hop Field"
 msgstr "호프 밭"
 
 #. tooltip_text of buildings:fields:hopfield
-#: horizons/i18n/objecttranslations.py:198
+#: horizons/i18n/objecttranslations.py:169
 msgid "Yields hop. Needs a farm."
 msgstr "맥주재료를 얻습니다. 농장이 필요합니다."
 
 #. name of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py:173
 msgid "Pasture"
 msgstr "초원"
 
 #. tooltip_text of buildings:fields:pasture
-#: horizons/i18n/objecttranslations.py:205
+#: horizons/i18n/objecttranslations.py:175
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "양을 사육합니다. 양모를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:210
+#: horizons/i18n/objecttranslations.py:179
 msgid "Pigsty"
 msgstr "양돈장"
 
 #. tooltip_text of buildings:fields:pigsty
-#: horizons/i18n/objecttranslations.py:212
+#: horizons/i18n/objecttranslations.py:181
 msgid "Raises pigs. Needs a farm."
 msgstr "돼지를 사육합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:185
 msgid "Potato Field"
 msgstr "감자밭"
 
 #. tooltip_text of buildings:fields:potatofield
-#: horizons/i18n/objecttranslations.py:219
+#: horizons/i18n/objecttranslations.py:187
 msgid "Yields food. Needs a farm."
 msgstr "식량을 수확합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:191
 msgid "Spice Field"
 msgstr "향신료 밭"
 
 #. tooltip_text of buildings:fields:spicefield
-#: horizons/i18n/objecttranslations.py:226
+#: horizons/i18n/objecttranslations.py:193
 msgid "Grows spices. Needs a farm."
 msgstr "향신료를 기릅니다. 농장이 필요합니다."
 
 #. name of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:231
+#: horizons/i18n/objecttranslations.py:197
 msgid "Sugar Field"
 msgstr "설탕 밭"
 
 #. tooltip_text of buildings:fields:sugarfield
-#: horizons/i18n/objecttranslations.py:233
+#: horizons/i18n/objecttranslations.py:199
 msgid "Used in liquor production. Needs a farm."
 msgstr "주류 생산에 사용됩니다. 농장이 필요합니다."
 
 #. name of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:238
+#: horizons/i18n/objecttranslations.py:203
 msgid "Tobacco Field"
 msgstr "담배 밭"
 
 #. tooltip_text of buildings:fields:tobaccofield
-#: horizons/i18n/objecttranslations.py:240
+#: horizons/i18n/objecttranslations.py:205
 msgid "Produces tobacco. Needs a farm."
 msgstr "담배잎을 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:245
+#: horizons/i18n/objecttranslations.py:209
 msgid "Vineyard"
 msgstr "포도원"
 
 #. tooltip_text of buildings:fields:vineyard
-#: horizons/i18n/objecttranslations.py:247
+#: horizons/i18n/objecttranslations.py:211
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr "포도주와 과자에 사용되는 포도를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:252
+#: horizons/i18n/objecttranslations.py:215
 msgid "Fire Station"
 msgstr "소방서"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:254
+#: horizons/i18n/objecttranslations.py:217
 msgid "Extinguishes fires."
 msgstr "화재를 진화합니다."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:259
+#: horizons/i18n/objecttranslations.py:221
 msgid "Fish Deposit"
 msgstr "어장"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py:225
 msgid "Fisherman's Tent"
 msgstr "어부의 천막"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:266
+#: horizons/i18n/objecttranslations.py:227
 msgid "Fishes the sea, produces food."
 msgstr "바다에서 낚시합니다. 식량을 생산합니다."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py:231
 msgid "Hunter's Tent"
 msgstr "사냥꾼의 천막"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:273
+#: horizons/i18n/objecttranslations.py:233
 msgid "Hunts wild forest animals, produces food."
 msgstr "숲속 야생 동물을 사냥하여, 식량을 생산합니다."
 
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:278
+#: horizons/i18n/objecttranslations.py:237
 msgid "Lookout"
 msgstr "전망대"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:280
+#: horizons/i18n/objecttranslations.py:239
 msgid "Expands settlement range."
 msgstr "정착지 범위를 확장합니다."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py:243
 msgid "Lumberjack Tent"
 msgstr "나무꾼 천막"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:287
+#: horizons/i18n/objecttranslations.py:245
 msgid "Lumberjack Hut"
 msgstr "나무꾼 오두막"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:289
+#: horizons/i18n/objecttranslations.py:247
 msgid "Chops down trees and turns them into boards."
 msgstr "나무를 자르고 판자로 만듭니다."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:294
+#: horizons/i18n/objecttranslations.py:251
 msgid "Main Square"
 msgstr "중앙광장"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:296
+#: horizons/i18n/objecttranslations.py:253
 msgid "Supplies citizens with goods. Provides community."
 msgstr "시민들에게 물품을 공급하고, 공동체를 제공합니다."
 
 #. name of buildings:mine
-#: horizons/i18n/objecttranslations.py:301
+#: horizons/i18n/objecttranslations.py:257
 msgid "Mine"
 msgstr "광산"
 
 #. tooltip_text of buildings:mine
-#: horizons/i18n/objecttranslations.py:303
+#: horizons/i18n/objecttranslations.py:259
 msgid "Gets iron ore from deposit."
 msgstr "매장층에서 철광석을 가져옵니다."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:308
+#: horizons/i18n/objecttranslations.py:263
 msgid "Mountain"
 msgstr "산"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py:267
 msgid "Pastry Shop"
 msgstr "제과점"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:315
+#: horizons/i18n/objecttranslations.py:269
 msgid "Produces all kinds of confectionery."
 msgstr "모든 종류의 과자를 생산합니다."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:320
+#: horizons/i18n/objecttranslations.py:273
 msgid "Pavilion"
 msgstr "종교건물"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:322
+#: horizons/i18n/objecttranslations.py:275
 msgid "Fulfills religious needs of sailors."
 msgstr "선원들의 종교적 요구를 충족시킵니다."
 
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:327
+#: horizons/i18n/objecttranslations.py:279
 msgid "Ruined Tent"
 msgstr "폐허 천막"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:332
+#: horizons/i18n/objecttranslations.py:283
 msgid "Salt Ponds"
 msgstr "염전"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py:285
 msgid "Evaporates salt. Built on sea coast."
 msgstr "소금을 증발시킵니다. 해안에 건설합니다."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:339
+#: horizons/i18n/objecttranslations.py:289
 msgid "Signal Fire"
 msgstr "봉화대"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py:291
 msgid "Allows the player to trade with the free trader."
 msgstr "플레이어가 자유 무역상선과의 무역을 허용합니다."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:346
+#: horizons/i18n/objecttranslations.py:295
 msgid "Smeltery"
 msgstr "용광로"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:348
+#: horizons/i18n/objecttranslations.py:297
 msgid "Refines all kind of ores."
 msgstr "모든 광물을 정제합니다."
 
 #. name of buildings:stonedeposit
-#: horizons/i18n/objecttranslations.py:353
+#: horizons/i18n/objecttranslations.py:301
 msgid "Stone Deposit"
 msgstr "석재 매장층"
 
 #. name_3 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:358
+#: horizons/i18n/objecttranslations.py:305
 msgid "Stonemason"
 msgstr "석수"
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:360
+#: horizons/i18n/objecttranslations.py:307
 msgid "Carver"
 msgstr "조각가"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:362
+#: horizons/i18n/objecttranslations.py:309
 msgid "Carves stone tops into bricks."
 msgstr "벽돌에 돌 탑을 새겨놓다."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py:313
 msgid "Stone Pit"
 msgstr "채석장"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:369
+#: horizons/i18n/objecttranslations.py:315
 msgid "Gets stone from a mountain."
 msgstr "산에서 돌을 채취합니다."
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py:319
 msgid "Storage Tent"
 msgstr "저장소 천막"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:376
+#: horizons/i18n/objecttranslations.py:321
 msgid "Storage Hut"
 msgstr "저장소 오두막"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:378
+#: horizons/i18n/objecttranslations.py:323
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr "재고와 정착지를 확장하고 수집자을 제공합니다."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:383
+#: horizons/i18n/objecttranslations.py:327
 msgid "Tavern"
 msgstr "선술집"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:385
+#: horizons/i18n/objecttranslations.py:329
 msgid "Provides get-together."
 msgstr "먹고 마시며 즐길 수 있는 대중적 모임을 위한 장소를 제공합니다."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:390
+#: horizons/i18n/objecttranslations.py:333
 msgid "Tent"
 msgstr "천막"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:392
+#: horizons/i18n/objecttranslations.py:335
 msgid "Hut"
 msgstr "오두막"
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:394
+#: horizons/i18n/objecttranslations.py:337
 msgid "House"
 msgstr "집"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:396
+#: horizons/i18n/objecttranslations.py:339
 msgid "Stone house"
 msgstr "석조 가옥"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:398
+#: horizons/i18n/objecttranslations.py:341
 msgid "Estate"
 msgstr "사유지"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:400
+#: horizons/i18n/objecttranslations.py:343
 msgid "Manor"
 msgstr "영주의 저택"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:402
+#: horizons/i18n/objecttranslations.py:345
 msgid "Houses your inhabitants."
 msgstr "주민들 주택."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:407
+#: horizons/i18n/objecttranslations.py:349
 msgid "Tobacconist"
 msgstr "연초장"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:409
+#: horizons/i18n/objecttranslations.py:351
 msgid "Produces tobaccos out of tobacco."
 msgstr "담배잎으로 담배를 만듭니다."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:414
+#: horizons/i18n/objecttranslations.py:355
 msgid "Toolmaker"
 msgstr "도구 제작자"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:416
+#: horizons/i18n/objecttranslations.py:357
 msgid "Produces tools out of iron."
 msgstr "철 없이 도구 제작."
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:421
+#: horizons/i18n/objecttranslations.py:361
 msgid "Trail"
 msgstr "오솔 길"
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:363
 msgid "Gravel Path"
 msgstr "비포장 길"
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:365
 msgid "Cobblestone Street"
 msgstr "조약돌 거리"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:427
+#: horizons/i18n/objecttranslations.py:367
 msgid "Needed for collecting goods."
 msgstr "물품을 모우는데 필요합니다."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:432
+#: horizons/i18n/objecttranslations.py:371
 msgid "Tree"
 msgstr "나무"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:434
+#: horizons/i18n/objecttranslations.py:373
 msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr "목재를 제공합니다. 나무꾼이 베어 생산합니다."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:439
+#: horizons/i18n/objecttranslations.py:377
 msgid "Village School"
 msgstr "마을 학교"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:441
+#: horizons/i18n/objecttranslations.py:379
 msgid "Provides education."
 msgstr "교육을 제공합니다."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:446
+#: horizons/i18n/objecttranslations.py:383
 msgid "Warehouse"
 msgstr "창고"
 
 #. name of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:451
+#: horizons/i18n/objecttranslations.py:387
 msgid "Weaponsmith"
 msgstr "무기 제작소"
 
 #. tooltip_text of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:453
+#: horizons/i18n/objecttranslations.py:389
 msgid "Produces weapons out of iron."
 msgstr "철에서 무기를 생산."
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:458
+#: horizons/i18n/objecttranslations.py:393
 msgid "Weaver's Hut"
 msgstr "직공의 오두막"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:460
+#: horizons/i18n/objecttranslations.py:395
 msgid "Turns lamb wool into cloth."
 msgstr "양털을 옷감으로 만듭니다."
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:465
+#: horizons/i18n/objecttranslations.py:399
 msgid "Windmill"
 msgstr "풍차"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:467
+#: horizons/i18n/objecttranslations.py:401
 msgid "Grinds corn into flour."
 msgstr "곡물을 밀가루로 빻기."
 
 #. name of buildings:winery
-#: horizons/i18n/objecttranslations.py:472
+#: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
 msgstr "양조장"
 
 #. tooltip_text of buildings:winery
-#: horizons/i18n/objecttranslations.py:474
+#: horizons/i18n/objecttranslations.py:407
 msgid "Produces wine out of grapes."
 msgstr "포도 없이 포도주 제조."
 
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:411
 msgid "Wooden Tower"
 msgstr "목조 탑"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:413
 msgid "Defends your settlement."
 msgstr "정착지를 방어."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:486
-#: horizons/i18n/objecttranslations.py:488
-#: horizons/i18n/objecttranslations.py:490
-#: horizons/i18n/objecttranslations.py:492
-#: horizons/i18n/objecttranslations.py:565
+#: horizons/i18n/objecttranslations.py:417
+#: horizons/i18n/objecttranslations.py:419
+#: horizons/i18n/objecttranslations.py:421
+#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:495
 msgid "Companies"
 msgstr "생산시설"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:494
-#: horizons/i18n/objecttranslations.py:496
-#: horizons/i18n/objecttranslations.py:498
-#: horizons/i18n/objecttranslations.py:500
-#: horizons/i18n/objecttranslations.py:561
+#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:427
+#: horizons/i18n/objecttranslations.py:429
+#: horizons/i18n/objecttranslations.py:431
+#: horizons/i18n/objecttranslations.py:491
 msgid "Fields"
 msgstr "밭"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab5_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:502
-#: horizons/i18n/objecttranslations.py:504
-#: horizons/i18n/objecttranslations.py:567
+#: horizons/i18n/objecttranslations.py:433
+#: horizons/i18n/objecttranslations.py:435
+#: horizons/i18n/objecttranslations.py:497
 msgid "Military"
 msgstr "군대"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:506
-#: horizons/i18n/objecttranslations.py:533
+#: horizons/i18n/objecttranslations.py:437
+#: horizons/i18n/objecttranslations.py:463
 msgid "Mining"
 msgstr "광산업"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:508
-#: horizons/i18n/objecttranslations.py:559
+#: horizons/i18n/objecttranslations.py:439
+#: horizons/i18n/objecttranslations.py:489
 msgid "Residents and infrastructure"
 msgstr "주민들과 기반시설"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:510
-#: horizons/i18n/objecttranslations.py:512
-#: horizons/i18n/objecttranslations.py:514
-#: horizons/i18n/objecttranslations.py:543
+#: horizons/i18n/objecttranslations.py:441
+#: horizons/i18n/objecttranslations.py:443
+#: horizons/i18n/objecttranslations.py:445
+#: horizons/i18n/objecttranslations.py:473
 msgid "Services"
 msgstr "봉사"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:519
-#: horizons/i18n/objecttranslations.py:521
+#: horizons/i18n/objecttranslations.py:449
+#: horizons/i18n/objecttranslations.py:451
 msgid "Citizens"
 msgstr "시민"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:523
+#: horizons/i18n/objecttranslations.py:453
 msgid "Food"
 msgstr "식량"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:525
+#: horizons/i18n/objecttranslations.py:455
 msgid "Fortifications"
 msgstr "축성 공사"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:527
-#: horizons/i18n/objecttranslations.py:529
+#: horizons/i18n/objecttranslations.py:457
+#: horizons/i18n/objecttranslations.py:459
 msgid "Infrastructure"
 msgstr "기반 시설"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:531
+#: horizons/i18n/objecttranslations.py:461
 msgid "Military Service"
 msgstr "군 복무"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
-#: horizons/i18n/objecttranslations.py:535
+#: horizons/i18n/objecttranslations.py:465
 msgid "Pioneers"
 msgstr "개척자"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:537
+#: horizons/i18n/objecttranslations.py:467
 msgid "Precaution"
 msgstr "예방책"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:539
+#: horizons/i18n/objecttranslations.py:469
 msgid "Residential"
 msgstr "주택"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:541
+#: horizons/i18n/objecttranslations.py:471
 msgid "Sea"
 msgstr "바다"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:547
+#: horizons/i18n/objecttranslations.py:477
 msgid "Wood"
 msgstr "목재"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:549
-#: horizons/i18n/objecttranslations.py:551
-#: horizons/i18n/objecttranslations.py:553
-#: horizons/i18n/objecttranslations.py:555
+#: horizons/i18n/objecttranslations.py:479
+#: horizons/i18n/objecttranslations.py:481
+#: horizons/i18n/objecttranslations.py:483
+#: horizons/i18n/objecttranslations.py:485
 msgid "Workshops"
 msgstr "작업장"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:557
+#: horizons/i18n/objecttranslations.py:487
 msgid "Settlement"
 msgstr "정착"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py:563
+#: horizons/i18n/objecttranslations.py:493
 msgid "Agriculture"
 msgstr "농업"
 
@@ -3415,7 +3432,9 @@ msgstr "준비 안됨"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr "오래 되었거나 지원 되지 않는 다중 플레이어 프로토콜입니다. 게임 버전을 확인 하시기 바랍니다"
+msgstr ""
+"오래 되었거나 지원 되지 않는 다중 플레이어 프로토콜입니다. 게임 버전을 확인 "
+"하시기 바랍니다"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
@@ -3503,7 +3522,9 @@ msgstr "이 판 게임이 종료 되었습니다. 방장이 이 게임을 떠났
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr "한 플레이어가 게임을 종료하였습니다. 기술적인 이유로 지금은 이 판을 더 이상 지속할수 없음을 의미합니다. 죄송합니다."
+msgstr ""
+"한 플레이어가 게임을 종료하였습니다. 기술적인 이유로 지금은 이 판을 더 이상 "
+"지속할수 없음을 의미합니다. 죄송합니다."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
