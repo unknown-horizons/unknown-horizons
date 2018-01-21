@@ -81,7 +81,7 @@ class Player:
 		self.ready    = False
 		self.prepared = False
 		self.fetch    = False
-		self.gettext  = nulltranslation
+		self.gettext  = nulltranslation.gettext
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):

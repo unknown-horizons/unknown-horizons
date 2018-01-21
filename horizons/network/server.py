@@ -470,16 +470,16 @@ class Server:
 			return
 
 		# make sure player names, colors and clientids are unique
-		for player in game.players:
-			if player.name == packet.playername:
+		for other_player in game.players:
+			if other_player.name == packet.playername:
 				self.error(player, T("There's already a player with your name inside this game.") + " " +
 				                   T("Please change your name."))
 				return
-			if player.color == packet.playercolor:
+			if other_player.color == packet.playercolor:
 				self.error(player, T("There's already a player with your color inside this game.") + " " +
 				                   T("Please change your color."))
 				return
-			if player.clientid == packet.clientid:
+			if other_player.clientid == packet.clientid:
 				self.error(player, T("There's already a player with your unique player ID inside this game. "
 				                     "This should never occur."))
 				return

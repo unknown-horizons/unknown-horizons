@@ -92,9 +92,9 @@ class SettlementManager(WorldObject):
 		self.__init_goals()
 
 		if not self.feeder_island:
-			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes,
-				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades,
-				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades)
+			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, self.personality.initial_settler_taxes,
+				self.personality.initial_citizen_taxes, self.personality.initial_merchants_taxes, self.personality.initial_sailor_upgrades,
+				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades, self.personality.initial_citizen_upgrades)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
@@ -214,7 +214,7 @@ class SettlementManager(WorldObject):
 		for building in self.settlement.buildings:
 			self.add_building(building)
 
-	def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, sailor_upgrades, pioneer_upgrades, settler_upgrades):
+	def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes, sailor_upgrades, pioneer_upgrades, settler_upgrades, citizen_upgrades):
 		"""Set new tax settings and building permissions."""
 		if abs(self.settlement.tax_settings[TIER.SAILORS] - sailor_taxes) > 1e-9:
 			self.log.info("%s set sailors' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.SAILORS], sailor_taxes)
@@ -228,6 +228,9 @@ class SettlementManager(WorldObject):
 		if abs(self.settlement.tax_settings[TIER.CITIZENS] - citizen_taxes) > 1e-9:
 			self.log.info("%s set citizens' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.CITIZENS], citizen_taxes)
 			SetTaxSetting(self.settlement, TIER.CITIZENS, citizen_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[TIER.MERCHANTS] - merchants_taxes) > 1e-9:
+			self.log.info("%s set merchants' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.MERCHANTS], merchants_taxes)
+			SetTaxSetting(self.settlement, TIER.MERCHANTS, merchants_taxes).execute(self.land_manager.session)
 		if self.settlement.upgrade_permissions[TIER.SAILORS] != sailor_upgrades:
 			self.log.info('%s set sailor upgrade permissions to %s', self, sailor_upgrades)
 			SetSettlementUpgradePermissions(self.settlement, TIER.SAILORS, sailor_upgrades).execute(self.land_manager.session)
@@ -237,6 +240,9 @@ class SettlementManager(WorldObject):
 		if self.settlement.upgrade_permissions[TIER.SETTLERS] != settler_upgrades:
 			self.log.info('%s set settler upgrade permissions to %s', self, settler_upgrades)
 			SetSettlementUpgradePermissions(self.settlement, TIER.SETTLERS, settler_upgrades).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[TIER.CITIZENS] != citizen_upgrades:
+			self.log.info('%s set citizen upgrade permissions to %s', self, citizen_upgrades)
+			SetSettlementUpgradePermissions(self.settlement, TIER.CITIZENS, citizen_upgrades).execute(self.land_manager.session)
 
 	def _set_taxes_and_permissions_prefix(self, prefix):
 		"""Set new tax settings and building permissions according to the prefix used in the personality file."""

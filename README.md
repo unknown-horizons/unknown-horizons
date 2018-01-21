@@ -51,7 +51,6 @@ Technology     | Component
 Type         | Where?
 -------------|-----------------------------------------------------------------------
 Forum        | http://forum.unknown-horizons.org/
-Mailing list | http://lists.unknown-horizons.org/cgi-bin/mailman/listinfo/uh-dev
 Bug Tracker  | https://github.com/unknown-horizons/unknown-horizons/issues
 IRC Channel  | irc://irc.freenode.net/unknown-horizons
 
