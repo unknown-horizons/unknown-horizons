@@ -368,6 +368,7 @@ class SettlementManager(WorldObject):
 		self.log.info('%s condiments requirement %.5f', self, self.get_ideal_production_level(RES.CONDIMENTS))
 		self.log.info('%s confectionery requirement %.5f', self, self.get_ideal_production_level(RES.CONFECTIONERY))
 		self.log.info('%s candles requirement %.5f', self, self.get_ideal_production_level(RES.CANDLES))
+		self.log.info('%s hygiene requirement %.5f', self, self.get_ideal_production_level(RES.HYGIENE))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -402,6 +403,8 @@ class SettlementManager(WorldObject):
 			self.get_resource_production_requirement(RES.CONFECTIONERY))
 		self.log.info('%s candles production %.5f / %.5f', self, self.get_resource_production(RES.CANDLES),
 			self.get_resource_production_requirement(RES.CANDLES))
+		self.log.info('%s hygiene production %.5f / %.5f', self, self.get_resource_production(RES.HYGIENE),
+			self.get_resource_production_requirement(RES.HYGIENE))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()

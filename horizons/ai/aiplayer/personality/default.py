@@ -487,6 +487,12 @@ class DefaultPersonality:
 		residences_required = 0
 		min_tier = TIER.CITIZENS
 
+	class FeederHygieneGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_tier = TIER.MERCHANTS
+
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
 
@@ -628,11 +634,20 @@ class DefaultPersonality:
 		residences_required = 5
 		min_tier = TIER.SETTLERS
 
+	class PublicBathEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+
+	class PublicBathGoal:
+		enabled = True
+		default_priority = 650
+		residences_required = 0
+		min_tier = TIER.MERCHANTS
+
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
 
 	class AbstractDoctor:
-		fraction_of_assigned_residences_built = 0.4 # build a doctor if at least this amount of       the assigned residences have been built
+		fraction_of_assigned_residences_built = 0.4 # build a doctor if at least this amount of the assigned residences have been built
 
 	class AbstractFisher:
 		max_options = 30 # maximum number of farm options to consider

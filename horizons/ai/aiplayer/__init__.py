@@ -62,6 +62,7 @@ from .building.irondeposit import AbstractIronDeposit
 from .building.ironmine import AbstractIronMine
 from .building.lumberjack import AbstractLumberjack
 from .building.pastryshop import AbstractPastryShop
+from .building.publicbath import AbstractPublicBath
 from .building.saltponds import AbstractSaltPonds
 from .building.signalfire import AbstractSignalFire
 from .building.smeltery import AbstractSmeltery
