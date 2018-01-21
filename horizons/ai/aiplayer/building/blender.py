@@ -36,6 +36,7 @@ class AbstractBlender(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.BLENDER] = cls
 
+
 class BlenderEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -59,5 +60,6 @@ class BlenderEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.BLENDER
+
 
 AbstractBlender.register_buildings()

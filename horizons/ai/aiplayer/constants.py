@@ -90,7 +90,7 @@ class BUILDING_PURPOSE:
 	WINDMILL        = 46
 	BREWERY         = 47
 	BUTCHERY        = 48
-	CANNON_FOUNDRY	= 49
+	CANNON_FOUNDRY  = 49
 	#HUNTER         = 50
 	WINERY          = 51
 	#WOODEN_TOWER   = 52

@@ -36,6 +36,7 @@ class AbstractCannonfoundry(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.CANNON_FOUNDRY] = cls
 
+
 class CannonfoundryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -59,5 +60,6 @@ class CannonfoundryEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.CANNON_FOUNDRY
+
 
 AbstractCannonfoundry.register_buildings()
