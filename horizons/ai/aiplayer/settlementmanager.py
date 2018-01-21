@@ -138,7 +138,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederCondimentsGoal(self))
 			self._goals.append(FeederConfectionery(self))
 			self._goals.append(FeederCandlesGoal(self))
-                        self._goals.append(FeederHygieneGoal(self))
+			self._goals.append(FeederHygieneGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
@@ -166,7 +166,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(CondimentsGoal(self))
 			self._goals.append(ConfectioneryGoal(self))
 			self._goals.append(CandlesGoal(self))
-                        self._goals.append(HygieneGoal(self))
+			self._goals.append(HygieneGoal(self))
 
 	def save(self, db):
 		super().save(db)
