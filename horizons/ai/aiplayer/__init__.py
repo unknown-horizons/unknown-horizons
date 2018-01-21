@@ -58,6 +58,7 @@ from .building.field import AbstractField
 from .building.firestation import AbstractFireStation
 from .building.fishdeposit import AbstractFishDeposit
 from .building.fisher import AbstractFisher
+#from .building.hunter import AbstractHunter
 from .building.irondeposit import AbstractIronDeposit
 from .building.ironmine import AbstractIronMine
 from .building.lumberjack import AbstractLumberjack
@@ -73,12 +74,11 @@ from .building.tobacconist import AbstractTobacconist
 from .building.toolmaker import AbstractToolmaker
 from .building.tree import AbstractTree
 from .building.villagebuilding import AbstractVillageBuilding
-#from .building.woodentower import AbstractWoodenTower
 from .building.weaponsmith import AbstractWeaponsmith
 from .building.weaver import AbstractWeaver
 from .building.windmill import AbstractWindmill
-#from .building.hunter import AbstractHunter
 from .building.winery import AbstractWinery
+from .building.woodentower import AbstractWoodenTower
 from .constants import GOAL_RESULT
 from .goal.donothing import DoNothingGoal
 from .goal.settlementgoal import SettlementGoal
