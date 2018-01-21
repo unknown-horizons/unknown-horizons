@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
+
 class AbstractPastryShop(AbstractBuilding):
 	@property
 	def evaluator_class(self):
@@ -51,7 +52,7 @@ class PastryShopEvaluator(BuildingEvaluator):
 
 		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm),],
 		distance_penalty)
-		
+
 		value = float(Entities.buildings[BUILDINGS.PASTRY_SHOP].radius) / distance + alignment * personality.alignment_importance
 		return PastryShopEvaluator(area_builder, builder, value)
 

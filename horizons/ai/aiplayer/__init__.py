@@ -44,8 +44,8 @@ from .building import AbstractBuilding
 from .building.bakery import AbstractBakery
 from .building.blender import AbstractBlender
 from .building.boatbuilder import AbstractBoatBuilder
-from .building.brickyard import AbstractBrickyard
 from .building.brewery import AbstractBrewery
+from .building.brickyard import AbstractBrickyard
 from .building.butchery import AbstractButchery
 from .building.cannonfoundry import AbstractCannonfoundry
 from .building.charcoalburner import AbstractCharcoalBurner

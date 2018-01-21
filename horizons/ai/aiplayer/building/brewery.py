@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
+
 class AbstractBrewery(AbstractBuilding):
 	@property
 	def evaluator_class(self):
@@ -39,7 +40,7 @@ class BreweryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
 		builder = BasicBuilder.create(BUILDINGS.BREWERY, (x, y), orientation)
-		
+
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
 			return None
