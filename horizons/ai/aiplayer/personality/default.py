@@ -643,6 +643,10 @@ class DefaultPersonality:
 		residences_required = 0
 		min_tier = TIER.MERCHANTS
 
+	class WoodenTowerEvaluator:
+		alignment_importance = 0.0 # TODO the larger this value, the larger the effect of alignment on the placement
+		distance_penalty = 2 # TODO when no main square is in reach then apply a penalty of this times the radius
+
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
 

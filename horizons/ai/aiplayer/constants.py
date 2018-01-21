@@ -93,7 +93,7 @@ class BUILDING_PURPOSE:
 	CANNON_FOUNDRY  = 49
 	#HUNTER         = 50
 	WINERY          = 51
-	#WOODEN_TOWER   = 52
+	WOODEN_TOWER    = 52
 	WEAPONSMITH     = 53
 	PUBLIC_BATH     = 54
 
@@ -151,7 +151,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.CANNON_FOUNDRY] = BUILDINGS.CANNON_FOUNDRY
 		#cls.purpose_to_building[cls.HUNTER] = BUILDINGS.HUNTER
 		cls.purpose_to_building[cls.WINERY] = BUILDINGS.WINERY
-		#cls.purpose_to_building[cls.WOODEN_TOWER] = BUILDINGS.WOODEN_TOWER
+		cls.purpose_to_building[cls.WOODEN_TOWER] = BUILDINGS.WOODEN_TOWER
 		cls.purpose_to_building[cls.WEAPONSMITH] = BUILDINGS.WEAPONSMITH
 		cls.purpose_to_building[cls.PUBLIC_BATH] = BUILDINGS.PUBLIC_BATH
 
