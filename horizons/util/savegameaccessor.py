@@ -36,7 +36,8 @@ class MapFileNotFound(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
 			msg = "Map file not found."
-		super(MapFileNotFound, self).__init__(msg)
+		super().__init__(msg)
+
 
 class SavegameAccessor(DbReader):
 	"""
@@ -51,7 +52,7 @@ class SavegameAccessor(DbReader):
 			self.upgrader = None
 			handle, self._temp_path = tempfile.mkstemp()
 			os.close(handle)
-			super(SavegameAccessor, self).__init__(dbfile=self._temp_path)
+			super().__init__(dbfile=self._temp_path)
 			with open('content/savegame_template.sql') as savegame_template:
 				self.execute_script(savegame_template.read())
 
@@ -64,7 +65,7 @@ class SavegameAccessor(DbReader):
 			self.upgrader = SavegameUpgrader(game_identifier)
 			self._temp_path = None
 			game_identifier = self.upgrader.get_path()
-			super(SavegameAccessor, self).__init__(dbfile=game_identifier)
+			super().__init__(dbfile=game_identifier)
 
 			map_name_data = self('SELECT value FROM metadata WHERE name = ?', 'map_name')
 			if not map_name_data:
@@ -100,7 +101,6 @@ class SavegameAccessor(DbReader):
 		if not os.path.exists(self._map_path):
 			raise MapFileNotFound("Map file " + str(self._map_path) + " not found!")
 
-
 		self('ATTACH ? AS map_file', self._map_path)
 		if is_random_map:
 			self.map_name = random_island_sequence
@@ -128,7 +128,7 @@ class SavegameAccessor(DbReader):
 		self._hash = None
 
 	def close(self):
-		super(SavegameAccessor, self).close()
+		super().close()
 		if self.upgrader is not None:
 			self.upgrader.close()
 		if self._temp_path is not None:
@@ -148,7 +148,6 @@ class SavegameAccessor(DbReader):
 	def get_building_location(self, worldid):
 		return self._building[int(worldid)][2]
 
-
 	def _load_settlement(self):
 		self._settlement = {}
 		for row in self("SELECT rowid, owner, island FROM settlement"):
@@ -161,7 +160,6 @@ class SavegameAccessor(DbReader):
 	def get_settlement_island(self, worldid):
 		return self._settlement[int(worldid)][1]
 
-
 	def _load_concrete_object(self):
 		self._concrete_object = {}
 		for row in self("SELECT id, action_runtime, action_set_id FROM concrete_object"):
@@ -169,7 +167,6 @@ class SavegameAccessor(DbReader):
 
 	def get_concrete_object_data(self, worldid):
 		return self._concrete_object[int(worldid)]
-
 
 	def _load_production(self):
 		self._productions_by_worldid = {}
@@ -213,7 +210,6 @@ class SavegameAccessor(DbReader):
 	def get_production_state_history(self, worldid, prod_id):
 		return self._production_state_history[int(worldid), int(prod_id)]
 
-
 	def _load_storage(self):
 		self._storage = {}
 		for row in self("SELECT object, resource, amount FROM storage"):
@@ -227,7 +223,6 @@ class SavegameAccessor(DbReader):
 		"""Returns potentially empty list of worldids referencing storages"""
 		return self._storage.get(int(ownerid), [])
 
-
 	def _load_wildanimal(self):
 		self._wildanimal = {}
 		for row in self("SELECT rowid, health, can_reproduce FROM wildanimal"):
@@ -237,7 +232,6 @@ class SavegameAccessor(DbReader):
 		"""Returns (health, can_reproduce)"""
 		return self._wildanimal[int(worldid)]
 
-
 	def _load_unit(self):
 		self._unit = {}
 		for row in self("SELECT rowid, owner FROM unit"):
@@ -245,7 +239,6 @@ class SavegameAccessor(DbReader):
 
 	def get_unit_owner(self, worldid):
 		return self._unit[int(worldid)]
-
 
 	def _load_building_collector(self):
 		self._building_collector = {}
@@ -263,7 +256,6 @@ class SavegameAccessor(DbReader):
 	def get_building_collector_job_history(self, worldid):
 		return self._building_collector_job_history[int(worldid)]
 
-
 	def _load_production_line(self):
 		self._production_line = {}
 		for row in self("SELECT for_worldid, type, res, amount FROM production_line"):
@@ -274,7 +266,6 @@ class SavegameAccessor(DbReader):
 
 	def get_production_line_row(self, for_worldid):
 		return self._production_line[int(for_worldid)]
-
 
 	def _load_unit_path(self):
 		self._unit_path = {}
@@ -287,7 +278,6 @@ class SavegameAccessor(DbReader):
 	def get_unit_path(self, worldid):
 		return self._unit_path.get(int(worldid))
 
-
 	def _load_storage_global_limit(self):
 		self._storage_global_limit = {}
 		for row in self("SELECT object, value FROM storage_global_limit"):
@@ -296,13 +286,11 @@ class SavegameAccessor(DbReader):
 	def get_storage_global_limit(self, worldid):
 		return self._storage_global_limit[int(worldid)]
 
-
 	def _load_health(self):
 		self._health = dict( self("SELECT owner_id, health FROM unit_health") )
 
 	def get_health(self, owner):
 		return self._health[owner]
-
 
 	def _load_fish_data(self):
 		self._fish_data = {}

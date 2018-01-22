@@ -154,6 +154,15 @@ components:
         time: 90
         consumes:
         - [RES.CONFECTIONERY, -1]
+      HYGIENE:
+        produces:
+        - [RES.HAPPINESS, 5]
+        changes_animation: false
+        level: [TIER.MERCHANTS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.HYGIENE, -1]
     settler_upgrade_lines:
       TIER.PIONEERS:
         - [RES.BOARDS, -3]
@@ -175,7 +184,7 @@ components:
                      RES.FAITH: 1, RES.HAPPINESS: 100, RES.EDUCATION: 1,
                      RES.COMMUNITY: 1, RES.GET_TOGETHER: 1, RES.SALT: 1,
                      RES.FIRE: 1, RES.BLACKDEATH: 1, RES.CANDLES: 1,
-                     RES.CONFECTIONERY: 1}
+                     RES.CONFECTIONERY: 1, RES.HYGIENE: 1}
 - CollectingComponent:
     collectors:
       UNITS.SETTLER_COLLECTOR: 1
@@ -202,3 +211,4 @@ actionsets:
     as_stonehouse3:
   TIER.MERCHANTS:
     as_estate0:
+    as_estate1:

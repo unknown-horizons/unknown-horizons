@@ -36,7 +36,7 @@ class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
 	def __init__(self):
-		super(View, self).__init__()
+		super().__init__()
 		self.world = None
 		self.model = horizons.globals.fife.engine.getModel()
 		self.map = self.model.createMap("map")
@@ -73,7 +73,7 @@ class View(ChangeListener):
 
 		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
 		                       horizons.globals.fife.engine_settings.getScreenHeight())
-		self.cam = self.map.addCamera("main", self.layers[-1], rect)
+		self.cam = self.map.addCamera("main", rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
@@ -100,16 +100,17 @@ class View(ChangeListener):
 	def end(self):
 		horizons.globals.fife.pump.remove(self.do_autoscroll)
 		self.model.deleteMaps()
-		super(View, self).end()
+		super().end()
 
 	def center(self, x, y):
 		"""Sets the camera position
 		@param center: tuple with x and y coordinate (float or int) of tile to center
 		"""
-		loc = self.cam.getLocationRef()
+		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
 		pos.x = x
 		pos.y = y
+		self.cam.setLocation(loc)
 		self.cam.refresh()
 		self._changed()
 
@@ -223,7 +224,7 @@ class View(ChangeListener):
 
 	def get_displayed_area(self):
 		"""Returns the coords of what is displayed on the screen as Rect"""
-		coords = self.cam.getLocationRef().getLayerCoordinates()
+		coords = self.cam.getLocation().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
 		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
 		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1

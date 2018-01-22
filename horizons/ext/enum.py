@@ -74,7 +74,7 @@ class EnumException(Exception):
 			class_name = self.__class__.__name__
 			raise NotImplementedError(
 				"%(class_name)s is an abstract base class" % vars())
-		super(EnumException, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 
 
 class EnumEmptyError(AssertionError, EnumException):
@@ -192,7 +192,7 @@ class Enum:
 			value = value_type(self, i, key)
 			values[i] = value
 			try:
-				super(Enum, self).__setattr__(key, value)
+				super().__setattr__(key, value)
 			except TypeError:
 				raise EnumBadKeyError(key)
 

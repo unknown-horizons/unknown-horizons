@@ -68,12 +68,14 @@ Entities.load_units(load_now=True)
 building_name_mapping = dict( (b.id, b.name) for b in Entities.buildings.itervalues() )
 unit_name_mapping = dict( (u.id, u.name) for u in Entities.units.itervalues() )
 
+
 def get_obj_name(obj):
 	global db
 	if obj < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 		return db("SELECT name FROM building where id = ?", obj)[0][0]
 	else:
 		return unit_name_mapping[obj]
+
 
 def get_res_name(res):
 	global db
@@ -83,14 +85,17 @@ def get_res_name(res):
 		name = get_obj_name(res)
 	return name
 
+
 def get_settler_name(tier):
 	global db
 	return db("SELECT name FROM tier WHERE level = ?", tier)[0][0]
+
 
 def format_prodline(line_list, depth):
 	for res, amount in line_list:
 		print(' ' * depth, '{amount:>4} {name:16} ({id:2})'.format(
 			amount=abs(amount), name=get_res_name(res), id=res))
+
 
 def print_production_lines():
 	print('Production lines per building:')
@@ -120,6 +125,7 @@ def print_production_lines():
 						print('   produces')
 						format_prodline(produces, 4)
 
+
 def print_verbose_lines():
 	print('Data has been moved, this view is unavailable for now')
 	return
@@ -144,6 +150,7 @@ def print_verbose_lines():
 			_output_helper_prodlines('consume', consumption)
 			_output_helper_prodlines('produce', production)
 
+
 def print_res():
 	print('Resources\n{:2s}: {:-15s} {:5s} {:10s} {19s}'
 		  .format('id', 'resource', 'value', 'tradeable', 'shown_in_inventory'))
@@ -151,6 +158,7 @@ def print_res():
 	for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, shown_in_inventory FROM resource"):
 		print("{:2s}: {:-16s} {:4s} {:6s} {:13s} "
 			  .format(id, name[0:16], value or '-', trade or '-', inventory or '-'))
+
 
 def print_building():
 	print('Buildings\nRunning costs scheme:')
@@ -164,6 +172,7 @@ def print_building():
 					  b.running_costs_inactive or '--', b.size[0], b.size[1],
 					  b.radius, b.baseclass))
 
+
 def print_unit():
 	print("Units (id: name (radius) from class)")
 	for u in Entities.units.itervalues():
@@ -172,6 +181,7 @@ def print_unit():
 					  u.name, u.radius, u.baseclass))
 	print("Add {} to each ID if you want to use them."
 		  .format(UNITS.DIFFERENCE_BUILDING_UNIT_ID))
+
 
 def print_storage():
 	for b in Entities.buildings.itervalues():
@@ -192,6 +202,7 @@ def print_storage():
 	print("\nAll others can store 30 tons of each res.")
 	#TODO show buildings with default storage here
 
+
 def print_collectors():
 	print('Collectors: (building amount collector)')
 	for b in Entities.buildings.itervalues():
@@ -204,6 +215,7 @@ def print_collectors():
 				for id, amount in data.get('collectors').iteritems():
 					print("{:2s}: {:-18s} {} {} ({})"
 						  .format(b.id, b.name, amount, get_obj_name(id), id))
+
 
 def print_building_costs():
 	print('Building costs:')
@@ -221,6 +233,7 @@ def print_building_costs():
 	for b in no_costs:
 		print("{2i}: {}".format(b.id, b.name))
 
+
 def print_collector_restrictions():
 	for u in Entities.units.itervalues():
 		for comp in u.component_templates:
@@ -232,6 +245,7 @@ def print_collector_restrictions():
 				print('{}({}) is restricted to:'.format(u.class_name, u.id))
 				for building in data.get('allowed'):
 					print('\t{}({})'.format(building_name_mapping[building], building))
+
 
 def print_tier_data():
 	print('Data has been moved, this view is unavailable for now')
@@ -249,6 +263,7 @@ def print_tier_data():
 				str += '{i[ {}({}), '.format(-amount, get_res_name(res), res)
 		print(str)
 
+
 def print_colors():
 	print('Colors\n{:2s}: {:12s}  {:3s}  {:3s}  {:3s}  {:3s}  #{:6s}'
 		  .format('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   '))
@@ -257,17 +272,20 @@ def print_colors():
 		print('{:2s}: {:12s}  {:3s}  {:3s}  {:3s}  {:3s}  #'
 			  .format(id_, name, R, G, B, alpha) + 3 * '{:02x}'.format(R, G, B))
 
+
 def print_scenario_actions():
 	print('Available scenario actions and their arguments:')
 	for action in ACTIONS.registry:
 		arguments = inspect.getargspec(ACTIONS.get(action))[0][1:] # exclude session
 		print('{:-12s}  {}'.format(action, arguments or ''))
 
+
 def print_scenario_conditions():
 	print('Available scenario conditions and their arguments:')
 	for condition in CONDITIONS.registry:
 		arguments = inspect.getargspec(CONDITIONS.get(condition))[0][1:] # exclude session
 		print('{:-36s}  {}'.format(condition, arguments or ''))
+
 
 def print_names():
 	text = ''
@@ -281,6 +299,7 @@ def print_names():
 			text += '[*] {}\n'.format(name)
 		text += '[/list]' + '\n'
 	print(text)
+
 
 def print_settler_needs():
 	klass = Entities.buildings[ BUILDINGS.RESIDENTIAL ]

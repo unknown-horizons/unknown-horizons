@@ -37,7 +37,7 @@ class CursorTool(fife.IMouseListener):
 	log = logging.getLogger("gui.mousetools")
 
 	def __init__(self, session):
-		super(CursorTool, self).__init__()
+		super().__init__()
 		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		self.enable()
@@ -55,20 +55,28 @@ class CursorTool(fife.IMouseListener):
 
 	def mousePressed(self, evt):
 		pass
+
 	def mouseReleased(self, evt):
 		pass
+
 	def mouseEntered(self, evt):
 		pass
+
 	def mouseExited(self, evt):
 		pass
+
 	def mouseClicked(self, evt):
 		pass
+
 	def mouseWheelMovedUp(self, evt):
 		pass
+
 	def mouseWheelMovedDown(self, evt):
 		pass
+
 	def mouseMoved(self, evt):
 		pass
+
 	def mouseDragged(self, evt):
 		pass
 

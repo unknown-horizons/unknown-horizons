@@ -46,7 +46,6 @@ class Player(ComponentHolder, WorldObject):
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},) # type: Sequence[Union[str, Dict[str, Any]]]
 
-
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
 		@type session: horizons.session.Session
@@ -59,11 +58,11 @@ class Player(ComponentHolder, WorldObject):
 		"""
 		assert isinstance(session, horizons.session.Session)
 		self.session = session
-		super(Player, self).__init__(worldid=worldid)
+		super().__init__(worldid=worldid)
 		self.__init(name, color, clientid, difficulty_level, 0)
 
 	def initialize(self, inventory):
-		super(Player, self).initialize()
+		super().initialize()
 		if inventory:
 			for res, value in inventory.items():
 				self.get_component(StorageComponent).inventory.alter(res, value)
@@ -104,7 +103,7 @@ class Player(ComponentHolder, WorldObject):
 		         settlement.owner == self ]
 
 	def save(self, db):
-		super(Player, self).save(db)
+		super().save(db)
 		client_id = None
 		if self.clientid is not None or self is self.session.world.player:
 			client_id = self.clientid
@@ -126,12 +125,12 @@ class Player(ComponentHolder, WorldObject):
 	def _load(self, db, worldid):
 		"""This function makes it possible to load playerdata into an already allocated
 		Player instance, which is used e.g. in Trader.load"""
-		super(Player, self).load(db, worldid)
+		super().load(db, worldid)
 
 		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
 			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
 			" FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
+		self.__init(name, Color.get(color), client_id, difficulty_level, max_tier_notification, settlerlevel=settlerlevel)
 
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player."""
@@ -165,14 +164,14 @@ class Player(ComponentHolder, WorldObject):
 		# can be used independently and the one here is always perfectly in sync
 		# with the other values here
 
-		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
+		get_sum = lambda l, attr : sum( getattr(obj, attr) for obj in l )
 		trade_posts = [ s.get_component(TradePostComponent) for s in self.settlements ]
 		return Data(
-		  running_costs = get_sum(self.settlements, 'cumulative_running_costs'),
-		  taxes = get_sum(self.settlements, 'cumulative_taxes'),
-		  sell_income = get_sum(trade_posts, 'sell_income'),
-		  buy_expenses = get_sum(trade_posts, 'buy_expenses'),
-		  balance = get_sum(self.settlements, 'balance'),
+		  running_costs=get_sum(self.settlements, 'cumulative_running_costs'),
+		  taxes=get_sum(self.settlements, 'cumulative_taxes'),
+		  sell_income=get_sum(trade_posts, 'sell_income'),
+		  buy_expenses=get_sum(trade_posts, 'buy_expenses'),
+		  balance=get_sum(self.settlements, 'balance'),
 		)
 
 
@@ -180,10 +179,10 @@ class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
 
 	def __init(self, *args, **kwargs):
-		super(HumanPlayer, self).__init(*args, **kwargs)
+		super().__init(*args, **kwargs)
 		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
 
 	def end(self):
 		if hasattr(self, '__inventory_checker'):
 			self.__inventory_checker.remove()
-		super(HumanPlayer, self).end()
+		super().end()

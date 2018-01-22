@@ -41,7 +41,7 @@ class ChatDialog(Dialog):
 	focus = 'msg'
 
 	def __init__(self, windows, session):
-		super(ChatDialog, self).__init__(windows)
+		super().__init__(windows)
 		self._session = session
 
 	def prepare(self):
@@ -65,7 +65,7 @@ class ChangeNameDialog(Dialog):
 	focus = 'new_name'
 
 	def __init__(self, windows, session):
-		super(ChangeNameDialog, self).__init__(windows)
+		super().__init__(windows)
 		self._session = session
 
 	def prepare(self, instance):

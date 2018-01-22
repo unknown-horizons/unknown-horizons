@@ -22,6 +22,7 @@ tab1:
   - _ Precaution #TODO better name?
   - BUILDINGS.FIRE_STATION
   - BUILDINGS.DOCTOR
+  - BUILDINGS.PUBLIC_BATH
 
 tab2:
 - icon: icons/tabwidget/buildmenu/class/fields
@@ -56,6 +57,7 @@ tab3:
   - _ Sea
   - BUILDINGS.FISHER
   - BUILDINGS.SALT_PONDS
+#  - BUILDINGS.SALINE
 -
   - _ Food
   - BUILDINGS.HUNTER
@@ -99,18 +101,18 @@ tab5:
 - headline: _ Military
 -
   - _ Infrastructure
-  - BUILDINGS.BARRIER
+#  - BUILDINGS.BARRIER # not implemented yet
 -
   - _ Workshops
-  - BUILDINGS.WEAPONSMITH
-  - BUILDINGS.CANNON_FOUNDRY
+#  - BUILDINGS.WEAPONSMITH # not implemented yet
+#  - BUILDINGS.CANNON_FOUNDRY # not implemented yet
 -
   - _ Fortifications
-  - BUILDINGS.WOODEN_TOWER
+#  - BUILDINGS.WOODEN_TOWER # not implemented yet
 -
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
-  - BUILDINGS.BARRACKS
+#  - BUILDINGS.BARRACKS # not implemented yet
 
 #tab6:
 #- icon: icons/tabwidget/buildmenu/class/aesthetics

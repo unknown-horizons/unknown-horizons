@@ -38,7 +38,7 @@ class FieldBuilder(Component):
 	NAME = 'FieldBuilder'
 
 	def __init__(self, field):
-		super(FieldBuilder, self).__init__()
+		super().__init__()
 		self.field = Entities.buildings[field]
 
 	@property

@@ -40,7 +40,7 @@ class InternationalTrade(ShipMission):
 	missionStates = Enum('created', 'moving_to_my_settlement', 'moving_to_other_settlement', 'returning_to_my_settlement')
 
 	def __init__(self, settlement_manager, settlement, ship, bought_resource, sold_resource, success_callback, failure_callback):
-		super(InternationalTrade, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		assert sold_resource is not None or bought_resource is not None
 		self.settlement_manager = settlement_manager
 		self.settlement = settlement
@@ -49,7 +49,7 @@ class InternationalTrade(ShipMission):
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(InternationalTrade, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.settlement.worldid, self.ship.worldid, self.bought_resource, self.sold_resource, self.state.index)
 
@@ -66,7 +66,7 @@ class InternationalTrade(ShipMission):
 		self.bought_resource = db_result[3]
 		self.sold_resource = db_result[4]
 		self.state = self.missionStates[db_result[5]]
-		super(InternationalTrade, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
+		super().load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
 
 		if self.state is self.missionStates.moving_to_my_settlement:
 			self.ship.add_move_callback(Callback(self._reached_my_settlement))
@@ -91,8 +91,12 @@ class InternationalTrade(ShipMission):
 			self.settlement_manager.settlement.get_component(NamedComponent).name, self.settlement.get_component(NamedComponent).name, self.sold_resource, self.bought_resource, self.ship)
 
 	def _move_to_my_settlement(self):
-		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._reached_my_settlement),
-			Callback(self._move_to_my_settlement), 'Unable to move to my settlement (%s)' % self.settlement_manager.settlement.get_component(NamedComponent).name)
+		self._move_to_warehouse_area(
+			self.settlement_manager.settlement.warehouse.position,
+			Callback(self._reached_my_settlement),
+			Callback(self._move_to_my_settlement),
+			'Unable to move to my settlement ({})'.format(
+				self.settlement_manager.settlement.get_component(NamedComponent).name))
 
 	def _get_max_sellable_amount(self, available_amount):
 		if self.sold_resource not in self.settlement.get_component(TradePostComponent).buy_list:
@@ -121,8 +125,12 @@ class InternationalTrade(ShipMission):
 		self._move_to_other_settlement()
 
 	def _move_to_other_settlement(self):
-		self._move_to_warehouse_area(self.settlement.warehouse.position, Callback(self._reached_other_settlement),
-			Callback(self._move_to_other_settlement), 'Unable to move to the other settlement (%s)' % self.settlement.get_component(NamedComponent).name)
+		self._move_to_warehouse_area(
+			self.settlement.warehouse.position,
+			Callback(self._reached_other_settlement),
+			Callback(self._move_to_other_settlement),
+			'Unable to move to the other settlement ({})'.format(
+				self.settlement.get_component(NamedComponent).name))
 
 	def _get_max_buyable_amount(self):
 		if self.bought_resource is None:
@@ -146,7 +154,7 @@ class InternationalTrade(ShipMission):
 			if sellable_amount > 0:
 				BuyResource(self.settlement.get_component(TradePostComponent), self.ship, self.sold_resource, sellable_amount).execute(self.owner.session)
 				if self.bought_resource is None:
-					self.report_success('Sold %d of resource %d' % (sellable_amount, self.sold_resource))
+					self.report_success('Sold {:d} of resource {:d}'.format(sellable_amount, self.sold_resource))
 					return
 				else:
 					self.log.info('%s sold %d of resource %d', self, sellable_amount, self.sold_resource)
@@ -162,9 +170,14 @@ class InternationalTrade(ShipMission):
 		self._return_to_my_settlement()
 
 	def _return_to_my_settlement(self):
-		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._returned_to_my_settlement),
-			Callback(self._return_to_my_settlement), 'Unable to return to %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
+		self._move_to_warehouse_area(
+			self.settlement_manager.settlement.warehouse.position,
+			Callback(self._returned_to_my_settlement),
+			Callback(self._return_to_my_settlement),
+			'Unable to return to {}'.format(
+				self.settlement_manager.settlement.get_component(NamedComponent).name))
 
 	def _returned_to_my_settlement(self):
 		self._unload_all_resources(self.settlement_manager.settlement)
-		self.report_success('Unloaded the bought resources at %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
+		self.report_success('Unloaded the bought resources at {}'.format(
+			self.settlement_manager.settlement.get_component(NamedComponent).name))

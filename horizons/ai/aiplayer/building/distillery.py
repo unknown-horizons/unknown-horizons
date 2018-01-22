@@ -36,6 +36,7 @@ class AbstractDistillery(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.DISTILLERY] = cls
 
+
 class DistilleryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -68,5 +69,6 @@ class DistilleryEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.DISTILLERY
+
 
 AbstractDistillery.register_buildings()

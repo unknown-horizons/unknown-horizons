@@ -62,20 +62,19 @@ class BuildingInfluencingDisaster(Disaster):
 	# By default, try twice before disasterying
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1
 
-
 	def __init__(self, settlement, manager):
-		super (BuildingInfluencingDisaster, self).__init__(settlement, manager)
+		super().__init__(settlement, manager)
 		self._affected_buildings = []
 
 	def save(self, db):
-		super( BuildingInfluencingDisaster, self).save(db)
+		super().save(db)
 		for building in self._affected_buildings:
 			ticks = Scheduler().get_remaining_ticks(self, Callback(self.wreak_havoc, building), True)
 			db("INSERT INTO building_influencing_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
 			   self.worldid, building.worldid, ticks)
 
 	def load(self, db, worldid):
-		super(BuildingInfluencingDisaster, self).load(db, worldid)
+		super().load(db, worldid)
 		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM building_influencing_disaster WHERE disaster = ?", worldid):
 			# do half of infect()
 			building = WorldObject.get_object_by_id(building_id)
@@ -84,7 +83,7 @@ class BuildingInfluencingDisaster(Disaster):
 
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
-		super(BuildingInfluencingDisaster, self).breakout()
+		super().breakout()
 		possible_buildings = self._settlement.buildings_by_id[self.BUILDING_TYPE]
 		building = self._settlement.session.random.choice(possible_buildings)
 		self.infect(building)
@@ -117,7 +116,7 @@ class BuildingInfluencingDisaster(Disaster):
 
 	def infect(self, building, load=None):
 		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
-		super(BuildingInfluencingDisaster, self).infect(building, load=load)
+		super().infect(building, load=load)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
 		# keep in sync with load()
@@ -129,7 +128,7 @@ class BuildingInfluencingDisaster(Disaster):
 		NewDisaster.broadcast(building.owner, building, self.__class__, self)
 
 	def recover(self, building):
-		super(BuildingInfluencingDisaster, self).recover(building)
+		super().recover(building)
 		RemoveStatusIcon.broadcast(self, building, self.STATUS_ICON)
 		callback = Callback(self.wreak_havoc, building)
 		Scheduler().rem_call(self, callback)
@@ -139,5 +138,5 @@ class BuildingInfluencingDisaster(Disaster):
 		return len(self._affected_buildings) > 0
 
 	def wreak_havoc(self, building):
-		super(BuildingInfluencingDisaster, self).wreak_havoc(building)
+		super().wreak_havoc(building)
 		self._affected_buildings.remove(building)

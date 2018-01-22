@@ -57,6 +57,7 @@ def toggle_health_for_all_health_instances(world):
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
 
+
 def toggle_translucency(world):
 	"""Make certain building types translucent"""
 	if not hasattr(world, "_translucent_buildings"):
@@ -265,7 +266,6 @@ def add_nature_objects(world, natural_resource_multiplier):
 					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 
-
 			# add tree to every nth tile and an animal to one in every M trees
 			if check_tile_for_tree(world, position, newTile) and world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
@@ -328,6 +328,7 @@ def get_random_possible_ground_unit_position(world):
 			if (x, y) in island.path_nodes.nodes:
 				return Point(x, y)
 
+
 def get_random_possible_ship_position(world):
 	"""Returns a random position in water, that is not at the border of the world"""
 	offset = 2
@@ -352,6 +353,7 @@ def get_random_possible_ship_position(world):
 		break # all checks successful
 
 	return Point(x, y)
+
 
 def get_random_possible_coastal_ship_position(world):
 	"""Returns a random position in water, that is not at the border of the world

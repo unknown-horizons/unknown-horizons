@@ -40,7 +40,7 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 
 	def update(self):
 		if self._need_more_storage():
-			super(StorageSpaceGoal, self).update()
+			super().update()
 			if not self._is_active:
 				self._is_active = True
 				self._problematic_buildings = self.production_builder.production_buildings

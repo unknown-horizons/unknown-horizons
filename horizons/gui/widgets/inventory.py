@@ -49,7 +49,7 @@ class Inventory(Container):
 
 	def __init__(self, uncached=False, display_legend=True, items_per_line=4, **kwargs):
 		# this inits the gui part of the inventory. @see init().
-		super(Inventory, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self._inventory = None
 		self._inited = False
 		self.uncached = uncached

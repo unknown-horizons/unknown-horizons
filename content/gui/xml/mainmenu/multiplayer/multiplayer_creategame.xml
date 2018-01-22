@@ -30,7 +30,7 @@
 		<Spacer fixed_size="50,0" />
 		<Label text="Choose a map:"  name="headline" />
 		<ScrollArea  name="map_list_area"  min_size="290,250">
-			<ListBox name="maplist"  min_size="290,330" is_focusable="0" />
+			<ListBox name="maplist" is_focusable="0" />
 		</ScrollArea>
 		<Label name="recommended_number_of_players_lbl" />
 		<Spacer fixed_size="30,0" />

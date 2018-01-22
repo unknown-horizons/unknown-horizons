@@ -74,7 +74,7 @@ class Goal:
 			return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
 		elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR, BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
 			return GOAL_RESULT.SKIP
-		assert False, 'Unable to translate BUILD_RESULT %d to a GOAL_RESULT' % result
+		assert False, 'Unable to translate BUILD_RESULT {:d} to a GOAL_RESULT'.format(result)
 
 	def __lt__(self, other):
 		if self.priority != other.priority:
@@ -82,4 +82,5 @@ class Goal:
 		return self.sequence_number < other.sequence_number
 
 	def __str__(self):
-		return 'Goal(%d): %s(%d)' % (self.priority, self.__class__.__name__, self.sequence_number)
+		return 'Goal({:d}): {}({:d})'.format(
+			self.priority, self.__class__.__name__, self.sequence_number)

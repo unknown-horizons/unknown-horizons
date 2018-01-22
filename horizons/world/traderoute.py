@@ -44,7 +44,7 @@ class TradeRoute(ChangeListener):
 	"""
 
 	def __init__(self, ship):
-		super(TradeRoute, self).__init__()
+		super().__init__()
 		self.ship = ship
 		self.waypoints = []
 		self.current_waypoint = -1
@@ -233,7 +233,7 @@ class TradeRoute(ChangeListener):
 
 		try:
 			self.ship.move(Circle(warehouse.position.center, self.ship.radius), self.on_route_warehouse_reached,
-			               blocked_callback = self.on_ship_blocked)
+			               blocked_callback=self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)

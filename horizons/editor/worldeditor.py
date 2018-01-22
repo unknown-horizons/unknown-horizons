@@ -37,7 +37,7 @@ from horizons.util.python.callback import Callback
 
 class WorldEditor:
 	def __init__(self, world):
-		super(WorldEditor, self).__init__()
+		super().__init__() # TODO: check whether this call is needed
 		self.world = world
 		self.session = world.session
 		self.intermediate_map = IntermediateMap(world)
@@ -135,7 +135,7 @@ class WorldEditor:
 
 		(ground_id, shape, rotation) = tile_details
 		if ground_id != 0:
-			ground = Entities.grounds['%d-%s' % (ground_id, shape)](self.session, *coords)
+			ground = Entities.grounds['{:d}-{}'.format(ground_id, shape)](self.session, *coords)
 			ground.act(rotation)
 			self.world.full_map[coords] = ground
 		else:

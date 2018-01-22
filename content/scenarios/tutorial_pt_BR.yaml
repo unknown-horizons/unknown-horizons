@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Construa um armazém na costa, assim ele será de fácil acesso à outras embarcações como a do mercador livre.']
+  - [Message, Construa um armazém na costa para permitir aos navios de comércio visitarem sua colônia.]
   - '
 
 
@@ -18,19 +18,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, Bem-vindo à Unknown Horizons!]
+  - [Headline, Bem-vindo ao Unknown Horizons!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - Este é seu diário, onde as informações importantes sobre o cenário atual está armazenado. Um resumo de cada nova tarefa também irá aparecer como um 'botão de notificação' perto da borda esquerda da tela. Você também pode passar o mouse sobre essas notificações para ler o resumo, ou clicar no botão para abrir o diário.
+  - Você também pode reabrir o diário a qualquer hora clicando no botão abaixo do mini-mapa, no canto superior direito da tela. A partir de agora, iremos nos referir a esta área contendo o mini-mapa, vários botões e abas como a 'Visão geral'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Para conferir sua primeira tarefa, vire a próxima página do diário usando o botão na parte inferior da página oposta - ele se parece com isto:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -39,84 +39,84 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Se você tem alguma sugestão que possa melhorar esse tutorial, ou se você encontrar qualquer erro, por favor, nos avise.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Visite www.unknown-horizons.org para saber como entrar em contato com a equipe.'
   - ''
-  - And now, let's start the game!
+  - Agora, vamos iniciar a partida!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'NOVA TAREFA: CRIAR UMA COLÔNIA']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - A sua embarcação está no mar, carregada com suprimentos que você precisará para estabelecer uma nova colônia.
+  - Para mover sua embarcação, selecione-a com um clique esquerdo do mouse e então clique com o botão direito sobre o local onde você deseja navegar.
+  - Uma vez perto da costa, o botão de fundar colônia ficará ativo na visão geral.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Ao clicar neste botão será apresentado uma prévia do Armazém, a primeira construção requerida para fundar uma nova colônia. A medida que mover o cursor, você notará que a prévia se sombreia de tons vermelhos quando a construção está em uma zona inadequada.
+  - O armazém precisa ser posicionado na costa para permitir que barcos atraquem. Então, encontre uma localização boa e clique com o botão esquerdo para colocar esta construção importante.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Tarefa: Construir um armazém no litoral.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Construa uma tenda do lenhador e conecte-a ao armazém.]
+  - [Headline, 'NOVA TAREFA: CONSTRUIR UMA TENDA DO LENHADOR']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Os bens e materiais de construção foram descarregados de sua embarcação e armazenados com segurança em seu novo armazém. Agora é hora de construir algumas construções básicas, começando com uma tenda de lenhador.
+  - Os lenhadores irão derrubar árvores da floresta ao redor da tenda e processarão a madeira para produzir tábuas, para usar na construção ou como recurso de comércio.
+  - Para construir uma tenda de lenhadores; abra o menu de construção clicando no botão abaixo do mini-mapa ou pressionando a tecla B, a tecla de atalho padrão.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - O menu de construção é organizado por níveis, e como o seu é uma colônia nova, as construções de primeiro nível são as únicas disponíveis; conforme sua civilização avançar, você terá acesso a níveis mais altos e poderá construir uma gama muito maior de construções.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Encontre uma área bem arborizada para seus lenhadores trabalharem, selecione 'Tenda do lenhador' da lista de construções na visão geral e coloque a construção.
+  - Mais tarde no jogo você pode querer criar florestas plantando árvores, mas já que isto tem um custo, você deveria usar o que a natureza forneceu por enquanto!
+  - Qualquer construção de produção ou recolha de recursos necessita um caminho conectando-o ao armazém ou outra forma de armazenamento, do contrário os bens produzidos não serão coletados.
+  - Então, uma vez que sua tenda do lenhador esteja na posição, conecte-a ao seu armazém abrindo o menu de construção e clicando no botão 'Caminho'. Você pode agora clicar e arrastar com o mouse para desenhar o caminho entre a tenda do lenhador e o armazém.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - [BoldLabel, 'Tarefa: Construir uma tenda de lenhador em uma área arborizada e conectá-la a um armazém.']
+  - Uma vez que as construções estão conectadas, você verá um coletor chegar para pegar suas tábuas recém produzidas e entregá-las no armazém, prontas para usar na construção ou comércio.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
+  - [Message, Construa uma tenda de caçador e uma tenda de pescador. Conecte-os ao armazém.]
   - [Headline, 'NOVA TAREFA: ABASTECIMENTO DE ALIMENTOS']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
+  - Você precisará de algumas empresas para produção de alimento, até porque as pessoas em geral (e especialmente os marinheiros) tem muita fome.
+  - As empresas disponíveis no primeiro nível são tenda de caçador e tenda de pescador.
+  - O caçador abate animais da floresta, portanto, necessita de árvores nas proximidades.
+  - Note que você pode posicionar sua tenda de caçador perto da floresta do lenhador.
   - Pode acontecer dos animais não se reproduzirem rápido o bastante ou simplesmente permanecerem escondidos.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - 'Conclusão: a tenda do caçador não é uma fonte confiável se você precisar de abastecimento contínuo.'
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
+    O pescador necessita de uma construção costeira como o armazém e um cardume de peixes nas proximidades.'
   - Ele irá construir uma pequena embarcação a remo e pescará alguns peixes.
   - Esta é uma fonte muito constante ao custo de uma produção mais lenta por unidade de alimento.
-  - Um pequeno povoado como o seu pode usufruir de ambas as companhias, e você poderá equilibrar melhor os prós e contras observando a comparação direta.
+  - Uma pequena colônia como a sua pode usufruir de ambas as empresas, e você poderá equilibrar melhor os prós e contras observando a comparação direta.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
-  - Don't forget to connect them to your Warehouse with Trails!
+  - [BoldLabel, 'Tarefa: Construir uma tenda de caçador e uma tenda de pescador.']
+  - Não se esqueça de conectá-los ao armazém utilizando trilhas!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
+  - [Message, Construa uma praça principal. Escolha uma área sem muitos edifícios comerciais.]
   - [Headline, 'NOVA TAREFA: PRAÇA PRINCIPAL']
   - [Image, content/gui/images/background/hr.png]
   - Seus residentes necessitam de uma praça principal onde podem obter mercadorias.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
+  - Isto significa que eles precisam de uma trilha entre suas moradias e a praça principal. Note que a praça principal atua também como uma trilha, portanto tendas adjacentes não necessitam de uma trilha separada.
+  - Todas as mercadorias de seu armazém estarão disponíveis no 'mercado', para que seus residentes não precisem caminhar até o pescador ou mesmo o armazém.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Evite posicionar as tendas de sua colônia muito próximas aos lenhadores, já que a construção das mesmas remove as árvores que estão obstruindo o lote e que poderiam ser aproveitadas na produção de tábuas.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Evite posicionar as tendas principais de sua colônia muito próximas aos lenhadores, já que a construção das mesmas remove as árvores que estão obstruindo o lote e que poderiam ser aproveitadas na produção de tábuas.
+  - As empresas trabalham sem a necessidade de uma trilha com as tendas, de modo que você não necessita construir uma trilha entre a praça principal e uma tenda de lenhador, por exemplo.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Tarefa: Construir uma praça principal.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Agora vamos observar mais atentamente a praça principal.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - Na aba 'Finanças' você dispõe de um balanço desta ilha, contendo todos os gastos empregados e impostos recebidos.
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nos diferentes níveis da aba de visão geral você pode conferir estatísticas sobre seus habitantes. Também é possível definir a taxa global de impostos e permitir ou negar os habitantes de realizarem aprimoramentos.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
+  - [Message, Construa uma tenda e conecte-a à praça principal se necessário.]
   - [Headline, 'NOVA TAREFA: CONSTRUÇÕES RESIDENCIAIS']
   - [Image, content/gui/images/background/hr.png]
   - Colonos querem ter um teto sobre suas cabeças, do contrário não irão sequer pensar em viver em sua cidade! Você precisa então fornecê-los tendas.
@@ -138,13 +138,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Considere desativar melhorias se seus estoques destes matériais estão baixos.
   - Colonos podem parecer um tanto inúteis, já que tentam consumir todos os recursos produzidos - mas ao menos eles pagam impostos, e esta é a única maneira de fazer dinheiro por hora!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Tarefa: Construir uma tenda e conectá-la à praça principal se necessário. As tendas não necessitam de trilhas para quaisquer empresas.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, Construa pelo menos três tendas adicionais e conecte-as à praça principal.]
   - '
 
-    Let''s have a look at the Tent overview tab.'
+    Vamos dar uma olhada na aba de visão geral da tenda.'
   - 'Podemos conferir
 
     * O nível de satisfação destes residentes,
@@ -156,46 +156,46 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Senão, o nível de satisfação e o montante de impostos decaem. Algumas vezes seus residentes poderão ficar tão descontentes que simplesmente se mudarão de sua aldeia, deixando para trás uma habitação em ruínas.
   - Lembre-se que você também pode alterar as configurações de impostos globais aqui.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'Tarefa: Construa ao menos três tendas adicionais.']
   - '
 
     DICA: Segurar a tecla SHIFT facilita a construção de várias edificações do mesmo tipo.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
+  - [Message, Construa um sinal de fogo na costa próximo ao seu armazém.]
   - [Headline, 'NOVA TAREFA: CONSTRUIR UM SINAL DE FOGO']
   - [Image, content/gui/images/background/hr.png]
-  - Consegue ver uma embarcação passando por sua ilha de vez em quando? Este navio pertence ao Mercador livre, um dos primeiros colonos neste arquipélago.
-  - Ele irá suprir sua colônia com mercadorias necessárias que você ainda não é capaz de produzir.
-  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
+  - Consegues ver uma embarcação passando por sua ilha de vez em quando? Este navio pertence ao comerciante livre, um dos primeiros colonos neste arquipélago.
+  - O comerciante irá suprir sua colônia com mercadorias necessárias que você ainda não é capaz de produzir.
+  - Também é possível vender os excedentes de sua produção, mas, em geral, consumi-los (através da construção de mais tendas) ao invés de vendê-los irá fornecer mais lucro.
+  - Normalmente os comerciantes apenas navegam nas proximidades em busca de ofertas, mas você pode aumentar suas chances um pouco.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
-  - The Signal Fire has to cover the area which the ships pass through to catch them.
+  - Para este fim, construa um sinal de fogo na costa, perto de seu armazém. Ele irá guiar as embarcações até sua colônia.
+  - O sinal de fogo deve cobrir a área por onde as embarcações passam afim de alertá-las.
   - [Pagebreak]
   - '
 
-    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
-  - You can propose deals via the Warehouse tab "Buy/Sell".
+    Após este pequeno alerta, o comerciante também irá parar e dar uma olhada em seu armazém, mesmo que ele tivesse planejado navegar além dele.'
+  - Você pode propor ofertas através da aba 'Comprar/Vender' do armazém.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - No nível 'Marinheiros' você dispõe de três slots para comércio.
   - Clique no ícone pequeno para cambiar o modo do slot entre 'Comprar' ou 'Vender'.
   - Clique no slot para escolher o recurso que deseja negociar. Iremos explicar isto mais detalhadamente quando você estiver preparado.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'Tarefa: Construa um sinal de fogo na costa próximo ao seu armazém.']
 
 - &TRADING
   - [Message, Atinja um estoque na ilha de ao menos 30 ferramentas. Isso talvez demore.]
   - [Headline, 'NOVA TAREFA: APRENDER A NEGOCIAR']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - 'Excelente! O comerciante livre irá agora passar em seu armazém de vez em quando.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
+    Vamos continuar nosso tutorial sobre como negociar.'
+  - Primeiro, clique no seu armazém e então clique na terceira aba.
+  - Então clique em um dos 3 slots e selecione um bem que você queira comprar ou vender.
   - Depois de selecionar um determinado recurso, a barra verde abaixo do slot (se visível) exibirá a quantidade estocada do mesmo.
   - Mover o controle deslizante à direita deste slot irá determinar o 'valor limite', que funciona diferentemente para 'compra' e 'venda'.
   - Ao comprar, você irá adquirir o suficiente para manter o 'valor limite' em estoque.
@@ -207,7 +207,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Se você tiver um slot ''Comprar'' com 5 toneladas daquele recurso em estoque e posicionar o controle deslizante em 9 toneladas, 4 toneladas adicionais será o máximo que você irá comprar.'
   - A venda funciona da mesma maneira. Um slot 'Vender' com 18 toneladas em estoque e o controle deslizante posicionado em 13 irá permitir a venda daquele recurso em até 5 toneladas no máximo.
-  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
+  - Se no entanto o comerciante livre desejar comprar ou vender menos do que sua configuração estabelece, você terá de conviver com isso e esperar que ele retorne.
   - 'Unknown Horizons apresenta custos inteligentes, de modo que o valor de uma unidade pode variar.
 
     NÃO é possível alterar os preços manualmente!'
@@ -218,27 +218,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
+  - [Message, Construa um pavilhão conectado às tendas.]
   - [Headline, 'NOVA TAREFA: CONSTRUIR UM PAVILHÃO']
   - [Image, content/gui/images/background/hr.png]
   - Muito bem! Estas ferramentas são suficientes por hora.
   - Você agora fornece habitação, uma praça principal e comida para seus habitantes.
-  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
+  - 'Ainda há uma demanda a ser satisfeita (você pode conferi-la clicando em qualquer tenda): seus marinheiros desejam um edifício básico onde possam rezar.'
+  - A solução é um pavilhão para refugiar do sol o pastor da aldeia.
+  - Os edifícios de serviços como este necessitam estar conectados às tendas por uma trilha, do contrário seus habitantes não poderão chegar a ele.
   - [Pagebreak]
   - '
 
     Tenha em mente que a fé é tratada como um recurso físico!'
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
+  - Isto significa que seus habitantes necessitam uma estrada de ligação ao produtor (pavilhão) para obter fé lá.
   - Após algum tempo a fé é consumida então retornarão para obter mais.
-  - 'Important:
+  - 'Importante:
 
-    It is NOT enough that the building is merely within a certain range of the Tents.
+    Não é suficiente que a construção abranja uma certa porção de tendas.
 
-    The road connection is required as well.'
+    Uma conexão com estrada é necessária.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Tarefa: Construir um pavilhão com uma trilha para as tendas afim de satisfazer a demanda de fé dos marinheiros.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -246,15 +246,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Reduza os impostos ao máximo (esquerda) e aguarde que seus marinheiros avancem ao próximo nível.]
   - [Headline, 'NOVA TAREFA: PRÓXIMO NÍVEL']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
+  - Agora, todas as necessidades serão supridas se seus habitantes puderem visitar regularmente a praça principal e o pavilhão, e se seu suprimento de alimentos for adequado.
   - Se os marinheiros estiverem contentes o suficiente, desejarão avançar para o próximo nível chamado Pioneiros.
   - Após suprir todas as necessidades de seus habitantes não haverá mais nada a fazer para deixá-los mais contentes, exceto baixar ao máximo os impostos.
   - Procure não baixar demasiadamente os impostos pois isto poderá levá-lo à falência mais cedo ou mais tarde. Entretanto, durante curtos períodos e se você souber o que está fazendo, é uma prática válida.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Depois de algum tempo, a primeira unidade caminhará até a praça principal à procura de materiais de construção para erguer uma casa de madeira. Esta casa irá substituir a velha tenda.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
+    Tais aprimoramentos residenciais consomem recursos e, portanto, podem ser restringidos na praça principal.'
   - Existem também aprimoramentos sem custo, como poderá ver no caso do lenhador onde há apenas uma troca na representação gráfica do edifício.
   - Habitações aprimoradas podem acomodar mais residentes, além de que pioneiros podem pagar impostos mais altos que marinheiros.
   - Como você já deve supor, a desvantagem é que os pioneiros necessitam de mais mercadorias - sendo assim você deverá então investir a receita extra para satisfazê-los.
@@ -264,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
+  - [Message, Construa uma fazenda mantendo espaço livre disponível ao redor.]
   - [Headline, 'NOVA TAREFA: CONSTRUIR UMA FAZENDA']
   - [Image, content/gui/images/background/hr.png]
   - Parabéns! Alguns de seus habitantes atingiram o nível 2!
@@ -272,19 +272,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Uma nova aba brilhante apareceu por lá.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - Os pioneiros necessitam de tecido, então você precisa formar uma linha de produção à começar com a lã de ovelha (um dos recursos produzidos na fazenda).
+  - A fazenda é um edifício de produção muito especial, já que pode gerar não apenas uma, mas várias (e diferentes) mercadorias, caso deseje.
+  - A produção das fazendas depende do tipo de plantações que adicionar ao seu redor.
   - [Pagebreak]
   - '
 
     Daremos uma olhada melhor nisso adiante.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
+  - Fazendas, assim como todas as empresas produtoras de matéria prima, não necessitam obrigatoriamente uma estrada de ligação à um armazém ou depósito.
+  - Tudo correrá bem enquanto os trabalhadores do produto final puderem chegar até a fazenda, assim como os coletores do armazém ou tenda de armazenamento puderem chegar até o produto final.
   - Se no entanto você desejar montar sua cadeia de produção em diferentes partes da ilha (o que faz sentido) ou até mesmo em diferentes ilhas, deverá criar conexões de estrada para os coletores.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+  - Procure construir a fazenda não muito próxima da costa ou de outros edifícios, uma vez que ela necessita de espaço livre ao redor.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Tarefa: Construir uma fazenda.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -292,26 +292,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construa ao menos uma pastagem e adicione uma plantação de batatas se desejar.]
   - [Headline, 'NOVA TAREFA: CONSTRUIR PLANTAÇÕES']
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
+  - A fazenda em si não irá produzir nada sem as plantações.
   - Atualmente você pode optar entre pastagens, plantações de batata e de cana-de-açúcar.
-  - 'Let''s have a short overview:
+  - 'Vejamos um breve resumo:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Pastagem: Aqui vivem as ovelhas que produzem lã.
 
-    * Potato Field: Grows potatoes which are currently treated as food.
+    * Plantação de batatas: Fornecem alimento.
 
-    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
+    * Plantação de cana-de-açúcar: Fornecem álcool para a destilação de bebidas e (posteriormente) produtos de confeitaria.'
   - No momento precisamos apenas de pastagens, mas caso sua produção de alimento for insuficiente (talvez por haver muitas habitações) também é possível cultivar batatas.
-  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
+  - Repare que para cultivar batatas é necessário levar uma estrada até a fazenda (não a plantação!), pois é a única empresa a trabalhar nesse bem.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
+    Certifique-se de que todas as plantações estejam dentro da área de abrangência da fazenda.'
+  - Você pode montar uma produção combinada - uma única pastagem não irá tornar a fazenda 100% eficiente - mas é necessário verificar quantas plantações ela pode servir.
   - Diferentes tipos de cultivo requerem maior ou menor tempo de produção (para semear, colher, ordenhar e etc) e, por isto, a fazenda pode ser incapaz de atender a todos os cultivos que você adicionou a ela.
   - Por hora, não se preocupe muito com isso desde que não tenha construído nenhuma plantação. Vamos mudar esse quadro!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'Tarefa: Construir ao menos uma pastagem na área de abrangência da fazenda e adicionar uma plantação de batatas caso deseje.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -320,41 +320,41 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVA TAREFA: CONSTRUIR UM DEPÓSITO']
   - [Image, content/gui/images/background/hr.png]
   - Você tem observado o lenhador recentemente?
-  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
+  - Como o armazém possui um espaço limitado os coletores irão parar de buscar mercadorias quando o estoque estiver cheio.
   - Então se não houverem marinheiros interessados em aprimorar suas tendas no momento, você provavelmente possuirá uma grande quantidade de tábuas, e neste caso o lenhador ficará ocioso.
   - Podemos resolver esta situação de duas maneiras diferentes, e iremos dar uma olhada melhor em ambas.
-  - 'All companies offer to do no work at all.
+  - 'Todas as empresas possuem uma opção para parar a produção.
 
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
-  - Se este modo de 'pausa' for ativado (chamaremos isto de 'Desativação'), os custos de operação que você paga neste edifício irão reduzir. Eles não irão zerar, mas ainda será mais barato que manter a companhia produzindo.
+    Isto pode soar estranho, mas clique na engrenagem que você vê na visão geral da cabana do lenhador.'
+  - Se este modo de 'pausa' for ativado (chamaremos isto de 'Desativação'), os custos de operação que você paga neste edifício irão reduzir. Eles não irão zerar, mas ainda será mais barato do que manter a empresa produzindo.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    Isto significa que você pode poupar dinheiro quando uma companhia ficar temporariamente improdutiva e você não quiser demoli-la.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+    Isto significa que você pode poupar dinheiro quando uma empresa ficar temporariamente improdutiva e você não quiser demoli-la.'
+  - 'Outra solução seria construir o último edifício de nível 1 que havíamos mencionado antes: a tenda de armazenamento.'
+  - 'Este edifício possui dois propósitos, ele:
 
-    * Offers more storage for your goods, and
+    * Oferece mais capacidade de estocagem para suas mercadorias, e
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+    * Envia coletores próprios para buscá-las, assim como o armazém.'
+  - Repare que estas empresas também podem ser conectadas a um depósito afim de recolher suas produções, e se os coletores do armazém estiverem sobrecarregados você pode adicionar uma tenda de armazenamento para ajudar lá fora.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Tarefa: Construir uma tenda de armazenamento, preferencialmente onde há maior necessidade de coletores.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
+  - [Message, Construa uma cabana do tecelão de modo que possa obter lã de sua fazenda.]
   - [Headline, 'NOVA TAREFA: CONSTRUIR UM TECELÃO']
   - [Image, content/gui/images/background/hr.png]
   - Agora que sua produção de lã está OK, você ainda precisa de um tecelão para fabricar tecido dela.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - A cabana do tecelão é o lugar onde o tecelão mora. Há dois locais onde você pode construí-lo - próximo da fazenda ou próximo de uma tenda de armazenamento (ou um armazém).
+  - Em ambos os casos, certifique-se de que ele esteja conectado a uma trilha.
+  - Você pode posicionar a cabana do tecelão ao lado da fazenda sem uma trilhae observar que mesmo assim ele irá buscar a lã e começará a produção de tecido.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Tarefa: Construir uma cabana de tecelão posicionada em um local onde possa obter lã.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -364,7 +364,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Tente abrigar um total de 50 residentes ou mais em sua cidade provendo mais edifícios residenciais.
   - Uma vez que você seja capaz de manter a economia correndo e satisfazer as necessidades dos consumidores, estará pronto para descobrir novos horizontes desconhecidos!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - Você também precisará de dinheiro suficiente para manter a economia correndo, portanto, um saldo positivo (verifique a aba 'Finanças' no armazém) é necessário.
   - ''
   - [BoldLabel, 'Tarefa: Atinja um total de 50 habitantes e um balanço comercial positivo para completar este tutorial.']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: pt_BR
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 96 translated messages, 77 fuzzy translations, 15 untranslated messages.
+  translation_status: 188 translated messages.

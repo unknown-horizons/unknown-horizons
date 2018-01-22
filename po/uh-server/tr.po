@@ -8,39 +8,41 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2013-07-14 19:36+0200\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
-"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh-server/tr/"
-">\n"
+"PO-Revision-Date: 2017-06-09 21:12+0000\n"
+"Last-Translator: monolifed <monolifed@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/uh/uh-server/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Eski veya desteklenmeyen çoklu oyuncu protokolü. Lütfen oyun sürümünüzü "
-"kontrol edin"
+"doğrulayın"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr "Evrensel paket boyutunu doldurdunuz."
+msgstr "Genel paket boyutunu aştınız."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Bu olmamalıydı. Lütfen bizimle ileitşime geçin veya bir hata kaydı yollayın."
+"Bu asla olmamalı. Lütfen bizimle iletişime geçin ve bir hata bildirimi "
+"oluşturun."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Paket başına boyutu doldurdunuz."
+msgstr "Tek paket boyutunu aştınız."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Bilinmeyen veya bozuk paket. Lütfen oyun sürümünüzü kontrol edin"
+msgstr ""
+"Bilinmeyen veya hatalı biçimlendirilmiş paket. Oyun sürümünüzü doğrulayın"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
@@ -57,7 +59,7 @@ msgstr "Bilinmeyen oyun veya oyun farklı bir sürüm çalıştırıyor"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "Oyun başlamış. Artık katılmak mümkün değil"
+msgstr "Oyun zaten başladı. Artık katılma yok"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
@@ -65,11 +67,11 @@ msgstr "Oyun dolu"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
-msgstr "Hatalı şifre"
+msgstr "Yanlış parola"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr "Bu oyunda sizin adınızda başka bir oyuncu var."
+msgstr "Bu oyun içinde zaten sizin adınızla bir oyuncu var."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
@@ -77,7 +79,7 @@ msgstr "Lütfen adınızı değiştirin."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr "Bu oyunda sizin adınızda başka bir oyuncu var."
+msgstr "Bu oyun içinde zaten sizin renginizde bir oyuncu var."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
@@ -88,32 +90,33 @@ msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"Bu oyunda sizin benzersiz no'nuzla başka bir oyuncu var. Bu olmamalıydı."
+"Bu oyun içinde zaten sizin benzersiz oyuncu kimliğinizde bir oyuncu var. Bu "
+"asla olmamalı."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
-msgstr "Oyunda değilsiniz"
+msgstr "Bir oyun içinde değilsiniz"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Oyun sonlandırıldı. Oyunu oluşturan oyunu terketti."
+msgstr "Oyun sonlandırıldı. Yaratıcı oyunu bıraktı."
 
 #: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Bir oyuncu oyunu sonlandırdı. Şimdilik teknik sebeplerden dolayı oyun devam "
-"edemeyecek. Bundan dolayı çok üzgünüz."
+"Bir oyuncu oyununu sonlandırdı. Teknik nedenlerden, bu şu anda oyunun devam "
+"edemeyeceği anlamına geliyor. Bunun için çok üzgünüz."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr "İsminiz değiştirilemedi."
+msgstr "Adınız değiştirilemiyor."
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr "Renginiz değiştirilemedi."
+msgstr "Renginiz değiştirilemiyor."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr "Farklı bir oyundayken bir oyun alamazsınız"
+msgstr "Başka bir oyundayken bir oyunu alamazsınız"

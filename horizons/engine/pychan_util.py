@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import functools
 import traceback
 
@@ -36,8 +34,11 @@ from horizons.util.python.callback import Callback
 class RenameLabel(pychan.widgets.Label):
 	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
 	pass # implementation added dynamically below
+
+
 class RenameImageButton(ImageButton):
 	pass # as above
+
 
 def handle_gcn_exception(e, msg=None):
 	"""Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
@@ -48,6 +49,7 @@ def handle_gcn_exception(e, msg=None):
 	print('Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.')
 	if msg:
 		print(msg)
+
 
 def init_pychan():
 	"""General pychan initiation for uh"""
@@ -147,7 +149,6 @@ def init_pychan():
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui
 
-
 	setup_cursor_change_on_hover()
 
 	setup_trigger_signals_on_action()
@@ -212,6 +213,7 @@ def setup_trigger_signals_on_action():
 		cls.__init__ = add_action_triggers_a_signal(cls.__init__)
 
 	make_action_trigger_a_signal(pychan.widgets.Widget)
+
 
 def setup_trigger_signals_on_hover():
 	"""Make sure that the widgets specified below send a signal when a mouseOver event occurs"""

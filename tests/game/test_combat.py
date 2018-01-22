@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from nose.plugins.skip import SkipTest
-
 from horizons.command.diplomacy import AddAllyPair, AddEnemyPair, AddNeutralPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 from horizons.command.unit import Attack, CreateUnit
@@ -235,6 +233,7 @@ def test_unfair(s, p):
 	assert health(s0_1) > 0
 
 # TODO: stances
+
 
 @game_test(manual_session=True)
 def test_combat_save_load():

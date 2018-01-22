@@ -44,12 +44,12 @@ class GroundUnit(Unit):
 	health_bar_y = -70
 
 	def __init__(self, x, y, **kwargs):
-		super(GroundUnit, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
-		super(GroundUnit, self).remove()
+		super().remove()
 		self.session.world.ground_units.remove(self)
 		self.session.view.discard_change_listener(self.draw_health)
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
@@ -58,7 +58,7 @@ class GroundUnit(Unit):
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
 
 		try:
-			super(GroundUnit, self)._move_tick(resume)
+			super()._move_tick(resume)
 		except PathBlockedError:
 			if resume:
 				self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
@@ -68,7 +68,7 @@ class GroundUnit(Unit):
 		self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def load(self, db, worldid):
-		super(GroundUnit, self).load(db, worldid)
+		super().load(db, worldid)
 
 		# register unit in world
 		self.session.world.ground_units.append(self)
@@ -78,7 +78,7 @@ class GroundUnit(Unit):
 class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 	"""Weapon Holder Ground Unit"""
 	def __init__(self, x, y, **kwargs):
-		super(FightingGroundUnit, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		#NOTE weapons
 		self.add_weapon_to_storage(WEAPONS.SWORD)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
@@ -107,5 +107,5 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		else:
 			action = 'ranged'
 
-		self.act('attack_{}'.format(action), facing_location, repeating = False)
+		self.act('attack_{}'.format(action), facing_location, repeating=False)
 		self._action = 'idle'

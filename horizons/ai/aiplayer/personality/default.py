@@ -149,45 +149,55 @@ class DefaultPersonality:
 		initial_pioneer_taxes = 0.8
 		initial_settler_taxes = 0.8
 		initial_citizen_taxes = 0.8
+		initial_merchants_taxes = 0.8
 		initial_sailor_upgrades = False
 		initial_pioneer_upgrades = False
 		initial_settler_upgrades = False
+		initial_citizen_upgrades = False
 
 		# tax rates and upgrade rights in settlements where the first sailors have been given the right to upgrade
 		early_sailor_taxes = 0.9
 		early_pioneer_taxes = 0.8
 		early_settler_taxes = 0.8
 		early_citizen_taxes = 0.8
+		early_merchants_taxes = 0.8
 		early_sailor_upgrades = False
 		early_pioneer_upgrades = False
 		early_settler_upgrades = False
+		early_citizen_upgrades = False
 
 		# tax rates and upgrade rights in settlements where bricks production exists but there is no school
 		no_school_sailor_taxes = 0.9
 		no_school_pioneer_taxes = 0.8
 		no_school_settler_taxes = 0.8
 		no_school_citizen_taxes = 0.8
+		no_school_merchants_taxes = 0.8
 		no_school_sailor_upgrades = True
 		no_school_pioneer_upgrades = True
 		no_school_settler_upgrades = False
+		no_school_citizen_upgrades = False
 
 		# tax rates and upgrade rights in settlements where there is a school but not enough resources to build something
 		school_sailor_taxes = 0.9
 		school_pioneer_taxes = 1.0
 		school_settler_taxes = 0.8
 		school_citizen_taxes = 0.8
+		school_merchants_taxes = 0.8
 		school_sailor_upgrades = False
 		school_pioneer_upgrades = False
 		school_settler_upgrades = False
+		school_citizen_upgrades = False
 
 		# tax rates and upgrade rights in settlements with a school and none of the above problems
 		final_sailor_taxes = 0.9
 		final_pioneer_taxes = 1.0
 		final_settler_taxes = 1.0
 		final_citizen_taxes = 0.8
+		final_merchants_taxes = 0.8
 		final_sailor_upgrades = True
 		final_pioneer_upgrades = True
 		final_settler_upgrades = True
+		final_citizen_upgrades = False # Set to true to enable merchant level
 
 	class FoundSettlement:
 		# use a penalty for warehouse being too close to the village area
@@ -222,6 +232,7 @@ class DefaultPersonality:
 		min_tier = TIER.PIONEERS
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
+
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing

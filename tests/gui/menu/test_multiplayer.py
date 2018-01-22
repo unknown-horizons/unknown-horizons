@@ -20,34 +20,34 @@
 # ###################################################
 
 import functools
+import os
 import subprocess
 import sys
 
-from nose.tools import with_setup
+import pytest
 
+from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from tests.gui import gui_test
 
-# Start our own master server for the multiplayer test because the official one
-# is probably too old.
-
-_master_server = None
-
-def start_server():
-	global _master_server
-	args = [sys.executable, "run_server.py", "-h", "localhost", "-p", "2002"]
-	_master_server = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+pytestmark = pytest.mark.skipif(enet is None, reason='No enet bindings available')
 
 
-def stop_server():
-	global _master_server
-	_master_server.terminate()
+@pytest.fixture(autouse=True)
+def master_server():
+	"""
+	Start our own master server for the multiplayer test because the official one is probably
+	too old.
+	"""
+	args = [sys.executable, "run_server.py", "-p", "2002", "localhost"]
+	process = subprocess.Popen(args, stdout=sys.stdout, stderr=sys.stderr)
+	yield
+	process.terminate()
 
 
 mpmenu_test = functools.partial(gui_test, additional_cmdline=["--mp-master", "localhost:2002"])
 
 
-@with_setup(start_server, stop_server)
 @mpmenu_test()
 def test_show_menu(gui):
 	"""Test that the multiplayer page shows up and closes correctly."""
@@ -55,7 +55,6 @@ def test_show_menu(gui):
 	gui.trigger('multiplayermenu/cancel')
 
 
-@with_setup(start_server, stop_server)
 @mpmenu_test()
 def test_games_list(gui):
 	"""Test refreshing of active games list."""
@@ -66,7 +65,6 @@ def test_games_list(gui):
 	gui.trigger('multiplayermenu/refresh')
 
 
-@with_setup(start_server, stop_server)
 @mpmenu_test()
 def test_create_game(gui):
 	"""Create a game, join the lobby, change player details, send chat message."""

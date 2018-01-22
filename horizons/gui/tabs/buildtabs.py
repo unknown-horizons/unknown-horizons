@@ -38,6 +38,7 @@ from horizons.util.yamlcache import YamlCache
 class InvalidBuildMenuFileFormat(Exception):
 	pass
 
+
 class BuildTab(TabInterface):
 	"""
 	Layout data is defined in image_data and text_data.
@@ -126,7 +127,7 @@ class BuildTab(TabInterface):
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
 		self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
 
-		super(BuildTab, self).__init__(icon_path=icon_path)
+		super().__init__(icon_path=icon_path)
 
 	@classmethod
 	def get_saved_buildstyle(cls):
@@ -242,7 +243,7 @@ class BuildTab(TabInterface):
 		self.__current_settlement = LastActivePlayerSettlementManager().get()
 		self.__add_changelisteners()
 		self.__class__.last_active_build_tab = self.tabindex
-		super(BuildTab, self).show()
+		super().show()
 
 		button = self.widget.child_finder("switch_build_menu_config_button")
 		self._set_switch_layout_button_image(button)
@@ -250,7 +251,7 @@ class BuildTab(TabInterface):
 
 	def hide(self):
 		self.__remove_changelisteners()
-		super(BuildTab, self).hide()
+		super().hide()
 
 	def _set_switch_layout_button_image(self, button):
 		image_path = "content/gui/icons/tabwidget/buildmenu/"

@@ -26,27 +26,31 @@ from horizons.world.units.weaponholder import MovingWeaponHolder
 
 
 class FightingShip(MovingWeaponHolder, Ship):
-	"""Class representing a fighting ship ship
+	"""Class representing a fighting ship
 	@param x: int x position
 	@param y: int y position
 	"""
 	health_bar_y = -190
 
 	def __init__(self, x, y, **kwargs):
-		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		# add default weapons
 		for i in range(WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
+		print("Ship created and weapons loaded.")
 
 	def go(self, x, y):
 		self.get_component(CommandableComponent).go(x, y)
+		print("Ship moved to coordinates: ({}, {})".format(x, y))
 		self.stop_attack()
+		print("Moving ship to ({},{}).".format(x, y))
 
 	def fire_all_weapons(self, dest, rotate=True):
 		"""
 		Fire weapons at rotated coordinates
 		"""
-		super(FightingShip, self).fire_all_weapons(dest, rotate)
+		super().fire_all_weapons(dest, rotate)
+		print("Weapons fired!")
 
 	def act_attack(self, dest):
 		"""
@@ -73,6 +77,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		side = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)
 		# calculate x4 y4 the new facing location coords
 		# they are calculated by rotating 90' the target location
+		#if side > 0: check if it should be: if side > 0: or if (side or 0) > 0:
 		if (side or 0) > 0:
 			x4 = y1 - y2 + x1
 			y4 = x2 - x1 + y1
@@ -89,3 +94,4 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self._instance.setFacingLocation(facing_location)
 		self.act('fire_{}'.format(direction), facing_location, repeating=False)
 		self._action = 'idle'
+		print("Ship rotated and ready for combat.")

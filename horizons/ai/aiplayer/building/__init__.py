@@ -42,7 +42,7 @@ class AbstractBuilding:
 	log = logging.getLogger("ai.aiplayer.building")
 
 	def __init__(self, building_id, name, settler_level):
-		super(AbstractBuilding, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.id = building_id
 		self.name = name
 		self.settler_level = settler_level

@@ -54,6 +54,7 @@ class BuildableErrorTypes:
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
+
 class _BuildPosition:
 	"""A possible build position in form of a data structure.
 	Don't use directly outside of this file"""
@@ -92,11 +93,13 @@ class _BuildPosition:
 	def __hash__(self):
 		return hash((self.position, self.rotation, self.action))
 
+
 class _NotBuildableError(Exception):
 	"""Internal exception."""
 	def __init__(self, errortype):
-		super(_NotBuildableError, self).__init__()
+		super().__init__()
 		self.errortype = errortype
+
 
 class Buildable:
 	"""Interface for every kind of buildable objects.
@@ -219,7 +222,6 @@ class Buildable:
 			# No match found, fail with specified parameters.
 			return check_pos(point)
 
-
 	# PRIVATE PARTS
 
 	@classmethod
@@ -306,6 +308,7 @@ class Buildable:
 			if tup in session.world.ground_unit_map:
 				raise _NotBuildableError(BuildableErrorTypes.UNIT_THERE)
 
+
 class BuildableSingle(Buildable):
 	"""Buildings one can build single. """
 	@classmethod
@@ -316,6 +319,7 @@ class BuildableSingle(Buildable):
 		point2.x -= (cls.size[0] - 1) // 2
 		point2.y -= (cls.size[1] - 1) // 2
 		return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
+
 
 class BuildableSingleEverywhere(BuildableSingle):
 	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""
@@ -480,10 +484,10 @@ class BuildableSingleOnCoast(BuildableSingle):
 		   225
 		"""
 		coast_line_points_per_side = {
-		   45: sum(coastline[(x, 0)] for x in range(0, cls.size[0]) ),
-		  135: sum(coastline[(0, y)] for y in range(0, cls.size[1]) ),
-		  225: sum(coastline[(x, cls.size[1] - 1)] for x in range(0, cls.size[0]) ),
-		  315: sum(coastline[(cls.size[0] - 1, y)] for y in range(0, cls.size[1]) ),
+			45: sum(coastline[(x, 0)] for x in range(0, cls.size[0]) ),
+			135: sum(coastline[(0, y)] for y in range(0, cls.size[1]) ),
+			225: sum(coastline[(x, cls.size[1] - 1)] for x in range(0, cls.size[0]) ),
+			315: sum(coastline[(cls.size[0] - 1, y)] for y in range(0, cls.size[1]) ),
 		}
 
 		# return rotation with biggest value

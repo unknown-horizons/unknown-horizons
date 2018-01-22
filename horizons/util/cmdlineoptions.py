@@ -21,8 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import datetime
 import optparse
 import re
@@ -64,7 +62,7 @@ def get_option_parser():
 	             help="Edit map <map>.")
 	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
 	             help="Edit the map from the saved game <game>.")
-	start_uh.add_option("--no-audio", dest="no_audio", action= "store_true", help="Starts UH without sounds.")
+	start_uh.add_option("--no-audio", dest="no_audio", action="store_true", help="Starts UH without sounds.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -90,8 +88,6 @@ def get_option_parser():
 	             help="Enable logging for a certain logging module (for developing only).")
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
 	             help="Writes log to <filename> instead of to the uh-userdir")
-	dev_group.add_option("--profile", dest="profile", action="store_true",
-	             default=False, help="Enable profiling (for developing only).")
 	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
 	             help="Run the game for <max_ticks> ticks.")
 	dev_group.add_option("--no-freeze-protection", dest="freeze_protection", action="store_false",

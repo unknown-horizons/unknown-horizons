@@ -60,7 +60,7 @@ class MessageWidget(LivingObject):
 	log = logging.getLogger('gui.widgets.messagewidget')
 
 	def __init__(self, session):
-		super(MessageWidget, self).__init__()
+		super().__init__()
 		self.session = session
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
@@ -259,7 +259,7 @@ class MessageWidget(LivingObject):
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
-		super(MessageWidget, self).end()
+		super().end()
 
 	def save(self, db):
 		for message in self.active_messages:
@@ -343,7 +343,7 @@ class _IngameMessage:
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s %s %s%s" % (self.created, self.id,
-			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+		return "{:4d}: {} {} {}{}".format(self.created, self.id,
+			'({},{}) '.format(self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')

@@ -20,7 +20,6 @@
 # ###################################################
 
 
-
 import json
 import locale
 import logging
@@ -54,7 +53,7 @@ from .playerdataselection import PlayerDataSelection
 class SingleplayerMenu(Window):
 
 	def __init__(self, windows):
-		super(SingleplayerMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._mode = None
 
@@ -542,7 +541,8 @@ class ScenarioMapWidget:
 		lang_list.items = available_languages
 		lang_list.selected = available_languages.index(selected_language)
 
-		translated_scenario = self.find_map_filename(scenario, selected_language)
+		selected_language_code = LANGUAGENAMES.get_by_value(selected_language)
+		translated_scenario = self.find_map_filename(scenario, selected_language_code)
 		if translated_scenario is None:
 			return
 

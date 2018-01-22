@@ -36,6 +36,7 @@ class AbstractCharcoalBurner(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.CHARCOAL_BURNER] = cls
 
+
 class CharcoalBurnerEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -60,5 +61,6 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.CHARCOAL_BURNER
+
 
 AbstractCharcoalBurner.register_buildings()

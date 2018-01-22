@@ -38,7 +38,7 @@ class PlayerDiplomacyTab(TabInterface):
 		self.player = player
 		self.diplomacy = player.session.world.diplomacy
 
-		super(PlayerDiplomacyTab, self).__init__()
+		super().__init__()
 
 		color = self.player.color.name
 		# Set these here to override the defaults in TabInterface.__init__
@@ -59,12 +59,12 @@ class PlayerDiplomacyTab(TabInterface):
 		self.helptext = self.player.name
 
 	def show(self):
-		super(PlayerDiplomacyTab, self).show()
+		super().show()
 		# if diplomacy is changed by any player, change the checkbox
 		self.diplomacy.add_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def hide(self):
-		super(PlayerDiplomacyTab, self).hide()
+		super().hide()
 		self.diplomacy.remove_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
 	def add_ally(self):
@@ -125,7 +125,7 @@ class DiplomacyTab(TabWidget):
 
 		tabs = [PlayerDiplomacyTab(p) for p in players]
 
-		super(DiplomacyTab, self).__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
+		super().__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
 
 	@classmethod
 	def is_useable(cls, world):

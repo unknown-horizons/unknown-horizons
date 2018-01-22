@@ -94,7 +94,6 @@ class ProductionLine:
 		db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
 			   for_worldid, "TIME", self.time, None)
 
-
 	def load(self, db, for_worldid):
 		# we don't have a worldid, we load it for another world id
 		self.production = {}
@@ -109,7 +108,6 @@ class ProductionLine:
 				  "CONSUMED" : self.consumed_res,
 				  "PRODUCED" : self.produced_res,
 				  "UNIT"     : self.unit_production }[t][res] = amount
-
 
 	def get_original_copy(self):
 		"""Returns a copy of this production, in its original state, no changes

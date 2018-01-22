@@ -282,7 +282,6 @@ class Minimap:
 			point.set(x, y)
 			draw_point(render_name, point, r, g, b)
 
-
 	def _get_render_name(self, key):
 		return self.RENDER_NAMES[key] + self._id
 
@@ -313,7 +312,6 @@ class Minimap:
 
 			coords = self._world_to_minimap(corner, use_rotation)
 			minimap_corners_as_point.append(fife.Point(coords[0], coords[1]))
-
 
 		for i in range(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
@@ -705,6 +703,7 @@ class Minimap:
 				         2 : math.pi,
 				         3 : math.pi / 2
 				         }
+
 	def _get_rotated_coords(self, tup):
 		"""Rotates according to current rotation settings.
 		Input coord must be relative to screen origin, not minimap origin"""
@@ -715,6 +714,7 @@ class Minimap:
 				              2 : math.pi,
 				              3 : 3 * math.pi / 2
 				              }
+
 	def _get_from_rotated_coords(self, tup):
 		return self._rotate(tup, self._from_rotations)
 

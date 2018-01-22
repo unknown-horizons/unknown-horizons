@@ -176,7 +176,7 @@ class MapPreviewTile:
 	"""This class provides the minimal tile implementation for map preview."""
 
 	def __init__(self, x, y, id):
-		super(MapPreviewTile, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.x = x
 		self.y = y
 		self.id = id

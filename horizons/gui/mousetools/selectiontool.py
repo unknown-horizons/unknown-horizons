@@ -34,7 +34,7 @@ class SelectionTool(NavigationTool):
 	_SELECTION_RECTANGLE_NAME = "_select" # GenericRenderer objects are sorted by name, so first char is important
 
 	def __init__(self, session):
-		super(SelectionTool, self).__init__(session)
+		super().__init__(session)
 		self.deselect_at_end = True # Set this to deselect selections while exiting SelectionTool
 
 	def remove(self):
@@ -43,7 +43,7 @@ class SelectionTool(NavigationTool):
 			selectables = self.filter_selectable( self.session.selected_instances )
 			for i in self.filter_component(SelectableComponent, selectables):
 				i.deselect()
-		super(SelectionTool, self).remove()
+		super().remove()
 
 	def is_selectable(self, entity):
 		# also enemy entities are selectable, but the selection representation will differ
@@ -120,7 +120,7 @@ class SelectionTool(NavigationTool):
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
 		else:
-			super(SelectionTool, self).mouseDragged(evt)
+			super().mouseDragged(evt)
 			return
 		evt.consume()
 
@@ -132,7 +132,7 @@ class SelectionTool(NavigationTool):
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
 		else:
-			super(SelectionTool, self).mouseReleased(evt)
+			super().mouseReleased(evt)
 			return
 		evt.consume()
 
@@ -167,7 +167,7 @@ class SelectionTool(NavigationTool):
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
-			super(SelectionTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
 			if self.session.selected_instances is None:
@@ -196,7 +196,7 @@ class SelectionTool(NavigationTool):
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
 		else:
-			super(SelectionTool, self).mousePressed(evt)
+			super().mousePressed(evt)
 			return
 		evt.consume()
 

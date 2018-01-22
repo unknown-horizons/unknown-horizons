@@ -21,6 +21,7 @@
 
 import uuid
 from gettext import NullTranslations
+from typing import Optional
 
 from horizons.network import enet, packets
 
@@ -54,7 +55,10 @@ class Address:
 
 #-----------------------------------------------------------------------------
 
+
 nulltranslation = NullTranslations()
+
+
 class Player:
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
@@ -77,7 +81,7 @@ class Player:
 		self.ready    = False
 		self.prepared = False
 		self.fetch    = False
-		self.gettext  = nulltranslation
+		self.gettext  = nulltranslation.gettext
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
@@ -130,10 +134,11 @@ class Player:
 		self.ready = not self.ready
 		return self.ready
 
+
 packets.SafeUnpickler.add('server', Player)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 class Game:
 	class State:
 		Open      = 0
@@ -207,6 +212,11 @@ class Game:
 		player.game = None
 		return player
 
+	def find_player_by_sid(self, sid: str) -> Optional[Player]:
+		for player in self.players:
+			if player.sid == packet.kicksid:
+				return player
+
 	def is_full(self):
 		return (self.playercnt == self.maxplayers)
 
@@ -236,10 +246,11 @@ class Game:
 		return "Game(uuid={};maxpl={:d};plcnt={:d};pw={:d};state={})" \
 			.format(self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
 
+
 packets.SafeUnpickler.add('server', Game)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 # types of soft errors used by cmd_error
 # this way we don't have to create a new packet for every type of error
 class ErrorType:
@@ -252,5 +263,6 @@ class ErrorType:
 	def __str__(self):
 		strvals = ["NotSet", "TerminateGame"]
 		return strvals[self.state]
+
 
 packets.SafeUnpickler.add('common', ErrorType)

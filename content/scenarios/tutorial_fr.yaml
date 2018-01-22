@@ -176,7 +176,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Après cette annonce, le marchand fera une escale chez vous pour regarder votre entrepôt, même s''il avait prévu de passer tout droit.'
+    Après cette annonce, le marchand fera une escale chez vous pour regarder votre entrepôt, même s''il avait prévu de l''ignorer.'
   - Vous pouvez faire des offres dans l'onglet « Achat/vente » de votre entrepôt.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -333,7 +333,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Cela veut dire que vous pouvez économiser de l''argent en désactivant des bâtiments que vous ne voulez pas détruire mais dont vous n''avez pas besoin pour l''instant.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
+  - 'Une autre solution est de construire le dernier bâtiment de niveau 1 qui n''a pas encore été mentionné : le dépôt.'
   - "Ce bâtiment a deux fonctions :\n* il offre plus d'espace de stockage pour vos biens ; \n* il envoie ses propres collecteurs pour aller chercher des biens, tout comme le entrepôt."
   - Notez que les entreprises peuvent également être connectées à un dépôt à la place d'un entrepôt et, si l'entrepôt est surchargé, vous pouvez l'aider à tout collecter en construisant un dépôt.
   - ''
@@ -376,7 +376,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Nos forums vous sont également ouvert !
-  - Les meilleurs résultats ont été obtenus jusqu'à présent en joignant notre canal IRC, essayez-le en premier (-;
+  - Les meilleurs résultats ont jusqu'à présent été obtenus en joignant notre canal IRC, essayez-le en premier (-;
   - [Pagebreak]
   - [Headline, Merci !]
   - [Image, content/gui/images/background/hr.png]
@@ -653,4 +653,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 187 translated messages, 1 fuzzy translation.
+  translation_status: 188 translated messages.

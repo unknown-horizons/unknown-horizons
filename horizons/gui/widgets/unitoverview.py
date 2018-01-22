@@ -33,7 +33,7 @@ from horizons.util.python.callback import Callback
 class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
 	def __init__(self, **kwargs):
-		super(StanceWidget, self).__init__(size=(245, 50), **kwargs)
+		super().__init__(size=(245, 50), **kwargs)
 		widget = load_uh_widget('stancewidget.xml')
 		self.addChild(widget)
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0.3, loops=-1)
@@ -45,7 +45,7 @@ class StanceWidget(Container):
 		self.mapEvents( events )
 
 	def beforeShow(self):
-		super(StanceWidget, self).beforeShow()
+		super().beforeShow()
 		ExtScheduler().rem_all_classinst_calls(self)
 		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
 
@@ -71,10 +71,11 @@ class StanceWidget(Container):
 			self.findChild(name=stance.NAME).set_inactive()
 		self.findChild(name=self.instance.stance.NAME).set_active()
 
+
 class HealthWidget(Container):
 	"""Widget that shows a health bar for an unit"""
 	def __init__(self, **kwargs):
-		super(HealthWidget, self).__init__(size=(50, 25), **kwargs)
+		super().__init__(size=(50, 25), **kwargs)
 		widget = load_uh_widget('healthwidget.xml')
 		self.addChild(widget)
 
@@ -97,6 +98,7 @@ class HealthWidget(Container):
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None
+
 
 class WeaponStorageWidget(HBox):
 	"""Widget that shows a small overview for one instance weapons"""

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-10-21 12:53+0000\n"
-"Last-Translator: Michele Adduci <info@micheleadduci.net>\n"
+"PO-Revision-Date: 2018-01-18 00:27+0000\n"
+"Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/tutorial/it/>"
 "\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.9-dev\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -34,8 +34,8 @@ msgstr ""
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
-"Costruisci un deposito presso la costa, per permettere alle navi commerciali "
-"di visitare il tuo insediamento"
+"Costruisci un deposito sulla la costa, per permettere alle navi commerciali "
+"di visitare il tuo insediamento."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -56,12 +56,6 @@ msgstr ""
 "Diario."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You can also re-open the Journal at any time by clicking the button below "
-#| "the mini-map, at the top right of your screen. From now on we'll refer to "
-#| "this area containing the mini-map and various buttons and tabs as the "
-#| "'Overview'."
 msgid ""
 "You can also re-open the Journal at any time by clicking the button below "
 "the mini-map, at the top right of your screen. From now on, we'll refer to "
@@ -70,7 +64,8 @@ msgid ""
 msgstr ""
 "Puoi anche aprire il Diario ogni volta che vuoi cliccando sul bottone sotto "
 "la mini-mappa, in alto a destra sullo schermo. Da adesso faremo riferimento "
-"a quest'aria che contiene la mini-mappa e i vari bottoni come \"Panoramica\"."
+"a quest'area che contiene la mini-mappa, i vari bottoni e le schede come \""
+"Panoramica\"."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -218,6 +213,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Avanzando nella partita potresti voler creare una zona boschiva piantando "
+"alberi, ma dato che fare ciò ti verrebbe a costare, dovresti usare quello "
+"che la natura ha messo a disposizione da tempo!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -225,6 +223,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Ogni edificio di raccolta o di produzione ha bisogno di una strada che lo "
+"connetta ad un magazzino o ad un'altra forma di deposito, altrimenti i beni "
+"prodotti non saranno raccolti."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -233,16 +234,18 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Allora, una volta che la tenda del taglialegna è in posizione, connettila al "
+"tuo magazzino aprendo il menù di costruzione e poi cliccando il pulsante \""
+"sentiero\". Adesso puoi cliccare e trascinare con il mouse per disegnare il "
+"percorso tra la tenda del taglialegna e il magazzino."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
-"OBIETTIVO: Costruisci una capanna del boscaiolo in una zona boschiva e "
-"cllegala ad una strada."
+"Obiettivo: Costruisci una tenda del taglialegna in una zona boschiva e "
+"collegala al tuo magazzino."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -250,55 +253,49 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"Una volta che gli edifici saranno connessi vedrai un raccoglitore arrivare "
+"per prelevare i tuoi nuovi beni prodotti e consegnarli al magazzino, pronti "
+"per essere usati per costruire o commerciati."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a hunter and a fisher. Connect them to the warehouse."
 msgid ""
 "Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
-msgstr "Costruisci un cacciatore ed un pescatore. Connettili alla filiale."
+msgstr ""
+"Costruisci una tenda del cacciatore ed una tenda del pescatore. Connettili "
+"al magazzino."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
 msgstr "OBIETTIVO: RIFORNIMENTI DI CIBO"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You will need to have some food-producing companies, too, because people "
-#| "in general (and especially sailors) are very hungry."
 msgid ""
 "You will need to have some food-producing companies too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
-"Ti serviranno alcune strutture per produrre cibo poichè la popolazione (e "
-"specialmente i marinai) è molto affamata."
+"Ti serviranno anche alcune strutture che producano cibo, perché la "
+"popolazione (e specialmente i marinai) è molto affamata."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Available companies in the first tier are the Hunter and Fisher."
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
 msgstr ""
-"Nel primo livello le strutture disponibili sono Cacciatore e Pescatore."
+"Le strutture disponibili nella prima fascia sono la tenda del cacciatore e "
+"la tenda del pescatore."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
-"Il Cacciatore caccia gli animali selvatici nei boschi, perciò deve essere "
-"posizionato in una foresta."
+"Il cacciatore caccia gli animali nella foresta, perciò richiede alberi nelle "
+"vicinanze."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Note that you can place your Hunter close to the lumberjack's forest."
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
 msgstr ""
-"Per esempio puoi mettere la falegnameria e la capanna del Cacciatore vicine."
+"Nota che puoi piazzare la tenda del cacciatore vicino alla foresta del "
+"taglialegna."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -309,30 +306,22 @@ msgstr ""
 "nascondano."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgid ""
 "Conclusion: the Hunter's Tent is not too reliable if you need continuous "
 "supply."
 msgstr ""
-"Conclusione: il cacciatore non è troppo affidabile se avete bisogno di "
-"alimentazione continua."
+"Conclusione: la tenda del cacciatore non è molto affidabile se vi è una "
+"richiesta costante di beni."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "The Fisher needs a coastal building site like the warehouse and a fish "
-#| "school in range."
 msgid ""
 "\n"
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
 "\n"
-"Il Pescatore ha bisogno di un cantiere costiero come il magazzino e un "
-"branco di pesci vicino."
+"Il Pescatore ha bisogno di una costruzione costiera come il magazzino e un "
+"branco di pesci nelle vicinanze."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
@@ -356,20 +345,15 @@ msgstr ""
 "si può meglio bilanciare i pro e i contro, se si vede il confronto diretto."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a hunter and a fisher."
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr "OBIETTIVO: Costruisci un cacciatore e un pescatore."
+msgstr ""
+"Obiettivo: Costruisci una Tenda del cacciatore e una Tenda del pescatore."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Don't forget to connect them to your warehouse with trails!"
 msgid "Don't forget to connect them to your Warehouse with Trails!"
-msgstr "Non dimenticare di collegarli al magazzino con dei percorsi!"
+msgstr "Non dimenticare di collegarli al tuo Magazzino con dei Sentieri!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a main square. Choose an area without many economy buildings."
 msgid "Build a Main Square. Choose an area without many economy buildings."
 msgstr ""
 "Costruisci una piazza principale. Scegli un'area senza troppi edifici "
@@ -387,30 +371,25 @@ msgstr ""
 "approvvigionarsi di beni."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "This means that they need a trail connection from their home to the main "
-#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the Main "
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
-"Perciò serve un collegamento con un sentiero tra le case e la piazza "
-"principale."
+"Questo significa che hanno bisogno di un collegamento dalla propria "
+"abitazione alla piazza principale. Nota che la piazza principale si comporta "
+"anche come un sentiero,  tende adiacenti non hanno bisogno di sentieri "
+"aggiuntivi."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "All goods in your warehouse are available at this 'market place', so your "
-#| "residents do not need to walk to the fisher or even to the warehouse."
 msgid ""
 "All goods in your Warehouse are available at this 'market place', so your "
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
-"Tutti i beni raccolti sono disponibili nella piazza del mercato, così i "
-"cittadini non saranno costretti ad andare dal pescatore o al magazzino."
+"Tutti i beni raccolti sono disponibili in questo Edificio del mercato, così "
+"i tuoi abitanti non dovranno camminare fino alla Tenda del pescatore o fino "
+"al Magazzino."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -423,35 +402,25 @@ msgstr ""
 
 # Ambiguous, didnt another unit earlier say the opposite?
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Companies work without being connected to the tents, so you don't need to "
-#| "build a road between the main square and e.g. your lumberjack tent."
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the Main Square and e.g. your Lumberjack's Tent."
 msgstr ""
-"Le industrie lavorano anche senza essere collegate alle tende, quindi non "
-"serve costruire un percorso tra la piazza principale e (per esempio) la "
-"capanna del falegname."
+"Gli edifici produttivi lavorano anche senza essere collegati alle tende, "
+"quindi non serve costruire una strada tra la piazza principale e (per "
+"esempio) la tenda del taglialegna."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a main square."
 msgid "Task: Build a Main Square."
 msgstr "Obiettivo: Costruisci una piazza principale."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Now let's have a closer look at the main square."
 msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
 msgstr ""
 "\n"
-"Ora osserviamo con attenzione la piazza principale."
+"Ora diamo uno sguardo ravvicinato alla piazza principale."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -485,10 +454,8 @@ msgstr ""
 "passare a quello successivo."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a tent and connect it to the main square."
 msgid "Build a Tent and connect it to the Main Square if necessary."
-msgstr "Costruisci una tenda e collegala alla piazza principale."
+msgstr "Costruisci una tenda e collegala alla piazza principale se necessario."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
@@ -536,37 +503,27 @@ msgstr ""
 "l'unico modo in cui puoi fare soldi per ora!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Task: Build a tent and connect it to the main square. Tents dont need to "
-#| "be connected to any of the companies."
 msgid ""
 "Task: Build a Tent and connect it to the Main Square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
-"Obiettivo: Costruisci una tenda e collegala alla piazza principale. Le tende "
-"non hanno bisogno di essere collegate a nessuna compagnia."
+"Obiettivo: Costruisci una tenda e collegala alla piazza principale se "
+"necessario. Le tende non hanno bisogno di essere collegate a nessun edificio "
+"produttivo."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid ""
-#| "Build at least three additional tents and connect them to the main square."
 msgid ""
 "Build at least three additional Tents and connect them to the Main Square."
 msgstr ""
 "Costruisci almeno tre tende aggiuntive e collegale alla piazza principale."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Let's have a look at the tent overview tab."
 msgid ""
 "\n"
 "Let's have a look at the Tent overview tab."
 msgstr ""
 "\n"
-"Diamo un'occhiata alla scheda panoramica della tenda."
+"Diamo un'occhiata alla finestra panoramica della tenda."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -603,8 +560,6 @@ msgstr ""
 "Nota che è possibile modificare le impostazioni fiscali globali anche qui."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build at least three additional tents."
 msgid "Task: Build at least three additional Tents."
 msgstr "Obiettivo: Costruisci almeno tre tende aggiuntive."
 
@@ -619,10 +574,8 @@ msgstr ""
 "tipo."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a signal fire at the coast close to your warehouse."
 msgid "Build a Signal Fire at the coast close to your Warehouse."
-msgstr "Costruisci un segnale di fuoco sulla costa vicino alla tua filiale."
+msgstr "Costruisci un segnale di fuoco sulla costa vicino al tuo magazzino."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
@@ -646,74 +599,52 @@ msgstr ""
 "che non si può ancora produrre."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You can also sell surpluses of your production, but in general consuming "
-#| "them (by building more tents) instead of selling them yields more profit."
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
 msgstr ""
 "Si possono anche vendere le eccedenze di produzione, ma in generale "
-"consumarli (con la costruzione di più tende) invece di venderli produce più "
-"profitto."
+"consumarle (costruendo più tende) invece di venderle genera più profitti."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Normally the trader ships just sail around and look for deals, but you "
-#| "can speed things up a bit."
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
-"Di solito le navi mercantili semplicemente navigane in giro per il mondo in "
-"cerca di occasioni, ma è possibile accelerare un po ' le cose."
+"Normalmente le navi commerciali navigano in giro in cerca di occasioni, ma "
+"puoi velocizzare un po' le cose."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "For this purpose, build a signal fire at the coast near your warehouse. "
-#| "It will show ships the way to your settlement."
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
-"A questo scopo, costruisci un fuoco segnaletico sulla costa vicino al vostro "
-"magazzino. Mostra alle navi la strada per il vostro insediamento."
+"A questo scopo, costruisci un fuoco segnaletico sulla costa vicino al "
+"magazzino. Mostrerà alle navi la strada per il tuo insediamento."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "The signal fire has to cover the area which the ships pass through to "
-#| "catch them."
 msgid ""
 "The Signal Fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
-"Il fuoco segnaletico deve coprire l'area dove passano le navi per attirarle."
+"Il fuoco segnaletico deve coprire l'area dove passano le navi per poterle "
+"attirare."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this little advertisment, the trader will also stop by and look "
-#| "into your warehouse if it planned to sail past it."
 msgid ""
 "\n"
 "After this little advertisement, the trader will also stop by and look into "
 "your Warehouse, even if he had planned to sail past it."
 msgstr ""
 "\n"
-"Dopo questa piccola pubblicità, il commerciante potrebbe fermarsi e guardare "
-"nel vostro magazzino se prevedeva di navigare da quelle parti."
+"Dopo questa piccola pubblicità, il commerciante si fermerà e guarderà nel "
+"vostro magazzino, anche se non prevedeva di fermarsi da quelle parti."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
 msgstr ""
-"Puoi proporre offerte attraverso il tab \"Compra/Vendi\" nel tuo magazzino."
+"Puoi proporre offerte attraverso la scheda \"Compra/Vendi\" dal tuo "
+"magazzino."
 
 #. This is the text body of a logbook page.
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
@@ -737,11 +668,10 @@ msgstr ""
 "commercio."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a signal fire at the coast close to your warehouse."
 msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
 msgstr ""
-"Obiettivo:Costruisci un segnale di fuoco sulla costa vicino alla tua filiale."
+"Obiettivo: Costruisci un segnale di fuoco sulla costa vicino al tuo "
+"magazzino."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -756,31 +686,27 @@ msgid "NEW TASK: LEARN TO TRADE"
 msgstr "OBIETTIVO: IL COMMERCIO"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Excellent! The Free Trader will now stop by at your warehouse from time "
-#| "to time.\n"
-#| "\n"
-#| "Let's continue our tutorial on how to trade."
 msgid ""
 "Excellent! The Free Trader will now stop by at your Warehouse from time to "
 "time.\n"
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
-"Eccellente! Il commerciante ora si fermerà passera dal vostro magazzino di "
-"tanto in tanto.\n"
+"Eccellente! Il libero commerciante ora si fermerà nel tuo magazzino di tanto "
+"in tanto.\n"
 "\n"
-"Continuiamo col tutorial sul commercio."
+"Continuiamo con il tutorial sul commercio."
 
 #. This is the text body of a logbook page.
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "Prima clicca sul tuo magazzino e clicca sulla terza linguetta."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Poi clicca su uno dei 3 slot, infine seleziona un bene che vuoi comprare o "
+"vendere."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -872,10 +798,8 @@ msgstr ""
 "magazzino!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a pavilion with connection to the tents."
 msgid "Build a Pavilion with connection to the Tents."
-msgstr "Costruisci un padiglione con connessioni alle tende."
+msgstr "Costruisci un padiglione con connessione alle tende."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
@@ -891,19 +815,14 @@ msgstr ""
 "È ora di fornire alloggi, una piazza principale e cibo per i tuoi abitanti."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Still there is one demand which we have not satisfied so far, you may "
-#| "check that in the marketplace or tent tab - your sailors want a basic "
-#| "building where they can pray."
 msgid ""
 "Still there is one demand which we have not satisfied so far (you may check "
 "that by clicking on any Tent): your sailors want a basic building where they "
 "can pray."
 msgstr ""
-"Eppure c'è una richiesta che non abbiamo soddisfatto finora, quale si può "
-"verificare che nella scheda mercato o tenda - i tuoi marinai vogliono una "
-"costruzione in cui possono pregare."
+"Eppure c'è una richiesta che non abbiamo soddisfatto finora (puoi "
+"verificarla cliccando su una qualunque tenda): i tuoi marinai richiedono una "
+"costruzione in cui possano pregare."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -918,16 +837,12 @@ msgstr ""
 "come riparo dal sole."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Service buildings like this also need to be connected to the tents with a "
-#| "trail, else your inhabitants feel unable to reach them."
 msgid ""
 "Service buildings like this also need to be connected to the Tents with a "
 "Trail, else your inhabitants feel unable to reach them."
 msgstr ""
-"Edifici di servizio come questo hanno bisogno di essere collegato con un "
-"percorso alle tende, altrimenti i vostri abitanti non possono raggiungerli."
+"Edifici di servizio come questo hanno bisogno di essere collegati alle tende "
+"con un sentiero, altrimenti gli abitanti non saranno in grado raggiungerli."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -938,16 +853,12 @@ msgstr ""
 "Si noti che la fede è trattata come una risorsa fisica!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "This means that your inhabitants need a road connection to the producer "
-#| "(pavilion) to pick up faith there."
 msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(Pavilion) to pick up faith there."
 msgstr ""
-"Ciò significa che i vosri abitanti hanno bisogno di un collegamento stradale "
-"al produttore (padiglione) per prendere la fede."
+"Ciò significa che gli abitanti hanno bisogno di un collegamento stradale al "
+"produttore (padiglione) per rifornirsi di fede."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -958,12 +869,6 @@ msgstr ""
 "un produttore per raccogliere più fede."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Important:\n"
-#| "It is NOT enough that the building is merely within a certain range of "
-#| "the tents.\n"
-#| "The road connection is required as well."
 msgid ""
 "Important:\n"
 "It is NOT enough that the building is merely within a certain range of the "
@@ -971,21 +876,17 @@ msgid ""
 "The road connection is required as well."
 msgstr ""
 "Importante:\n"
-"NON è sufficiente che l'edificio è solo all'interno di una determinata gamma "
-"di tende.\n"
+"NON è sufficiente che l'edificio sia solo all'interno di una determinata "
+"area di tende.\n"
 "È anche necessario il collegamento stradale."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Task: Build a pavilion with a trail to the tents in order to fulfill your "
-#| "sailors' demand for faith."
 msgid ""
 "Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
-"Obiettivo:Costruisci un padiglione con un sentiero per le tende in modo da "
-"soddisfare la domanda di fede dei vostri marinai."
+"Obiettivo: Costruisci un padiglione con un sentiero per le tende in modo da "
+"soddisfare la richiesta di fede dei tuoi marinai."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -999,17 +900,13 @@ msgid "NEW TASK: NEXT TIER"
 msgstr "NUOVO OBIETTIVO:AVANZA ALL' LIVELLO SUCCESSIVO"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "All demands are fulfilled now if your inhabitants can regularly visit the "
-#| "main square & pavilion and your food supply is adequate."
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square and the Pavilion and your food supply is adequate."
 msgstr ""
-"Tutte le richieste ora sono soddisfatte se i tuoi abitanti possono visitare "
-"regolarmente la piazza principale, il padiglione e se il vostro "
-"approvvigionamento alimentare è adeguato."
+"Tutte le richieste ora sono soddisfatte se i tuoi abitanti sono in grado di "
+"visitare regolarmente la piazza principale ed il padiglione, e se le scorte "
+"di cibo sono adeguate."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1039,26 +936,16 @@ msgstr ""
 "cosa si sta facendo e per un breve periodo puo essere utile."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "After some time, the first unit should walk to the main square and have a "
-#| "look for new construction material there to build a log house. This house "
-#| "will replace the old tent."
 msgid ""
 "After some time, the first unit should walk to the Main Square and have a "
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
 "Dopo qualche tempo, la prima unità dovrebbe raggiungere a piedi la piazza "
-"principale per avere nuovo materiale da costruzione per costruire una casa "
-"di tronchi. Questa casa andrà a sostituire la vecchia tenda."
+"principale per avere nuovo materiale da costruzione per costruire una "
+"capanna di tronchi. Questa costruzione andrà a sostituire la vecchia tenda."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Such residential upgrades cost resources and can thus be restricted at "
-#| "the main square."
 msgid ""
 "\n"
 "Such residential upgrades cost resources and can thus be restricted at the "
@@ -1066,7 +953,7 @@ msgid ""
 msgstr ""
 "\n"
 "Tali aggiornamenti residenziali costano risorse e possono quindi essere "
-"limitate nella piazza principale."
+"limitati nella piazza principale."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1102,10 +989,9 @@ msgstr ""
 "l'aggiornamento dei marinai."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a farm and keep some empty space around it."
 msgid "Build a Farm and keep some empty space around it."
-msgstr "Costruisci una fattoria mantenendo dello spazio disponibile intorno."
+msgstr ""
+"Costruisci una fattoria e mantieni dello spazio disponibile intorno ad essa."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A FARM"
@@ -1128,11 +1014,6 @@ msgid "A shiny new tab appeared there."
 msgstr "Apparira' una nuova scheda brillante."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Pioneers will demand cloth, so you need to set up a production line for "
-#| "cloth starting with lambs wool (which is one of the goods produced at the "
-#| "farm)."
 msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for "
 "cloth starting with lambs wool (which is one of the goods produced at the "
@@ -1140,24 +1021,17 @@ msgid ""
 msgstr ""
 "I pionieri richiederanno stoffa, quindi è necessario impostare una linea di "
 "produzione per la stoffa partendo con lana di agnello (che è uno dei beni "
-"prodotti nelle fattorie)."
+"prodotto nelle fattorie)."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "The farm is a very special production building since it can produce not "
-#| "only one, but very many (and different) goods if you choose."
 msgid ""
 "The Farm is a very special production building since it can produce not only "
 "one, but many (and different) goods if you choose."
 msgstr ""
-"La fattoria è un edificio di produzione particolare in quanto può produrre "
-"non uno, ma molti (e diverse) merci."
+"La fattoria è uno speciale edificio di produzione in quanto può produrre non "
+"uno, ma molti (e diverse) merci se si vuole."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "The output of farms depends on what kind of fields you build around it."
 msgid "The output of Farms depends on what kind of fields you build around it."
 msgstr ""
 "La produzione delle fattorie dipende da che tipo di campi si costruiscono "
@@ -1172,31 +1046,22 @@ msgstr ""
 "Piu' tardi daremo uno sguardo piu' approfondito a questo."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Farms, like all companies producing raw materials, do not necessarily "
-#| "need to be connected to storage or a warehouse."
 msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need "
 "to be connected to storage or a Warehouse."
 msgstr ""
-"Le fattorie, come tutte le aziende produttrici di materie prime, non devono "
-"essere necessariamente collegati allo stoccaggio o a un magazzino."
+"Le fattorie, come tutti gli edifici produttori di materie prime, non devono "
+"essere necessariamente collegati al deposito o a un magazzino."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "As long as units of the final production company can reach the farm, and "
-#| "collectors from the warehouse or storage tent can reach the final company "
-#| "everything's fine."
 msgid ""
 "As long as units of the final production company can reach the Farm, and "
 "collectors from the Warehouse or Storage Tent can reach the final company "
 "everything's fine."
 msgstr ""
-"Finché un unità della società di produzione puo' raggiungere la fattoria, e "
-"i raccoglitori del magazzino o stoccaggio possono raggiungere l'azienda  "
-"tutto funzionera bene."
+"Finché le unità dell'edificio di produzione finale possono raggiungere la "
+"fattoria, e i raccoglitori dal magazzino o da una tenda di deposito possono "
+"raggiungere l'edificio di produzione finale tutto andrà bene."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1209,21 +1074,15 @@ msgstr ""
 "collegamento per i raccoglitori."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Try to build the farm not too close to the coast or your existing "
-#| "buildings since it will need some space around it to work well."
 msgid ""
 "Try to build the Farm not too close to the coast or your existing buildings "
 "since it will need some space around it to work well."
 msgstr ""
 "Prova a costruire la fattoria non troppo vicino alla costa o a edifici "
-"esistenti in quanto avrà bisogno di un po ' di spazio intorno per funzionare "
+"esistenti in quanto avrà bisogno di un po' di spazio intorno per funzionare "
 "bene."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a farm."
 msgid "Task: Build a Farm."
 msgstr "Obiettivo: Costruisci una fattoria."
 
@@ -1237,11 +1096,8 @@ msgid "NEW TASK: BUILD FIELDS"
 msgstr "NUOVO OBIETTIVO: I CAMPI"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "The farm itself is not going to produce anything without some fields."
 msgid "The Farm itself is not going to produce anything without some fields."
-msgstr "La fattoria non produce niente senza campi."
+msgstr "La fattoria non produrrà niente senza dei campi."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1249,13 +1105,6 @@ msgid ""
 msgstr "Attualmente puoi scegliere tra pascoli, campi di patate o zucchero."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Let's have a short overview:\n"
-#| "* Pasture: Sheep live here, producing lamb wool.\n"
-#| "* Potato field: Grows potatoes which are currently treated as food.\n"
-#| "* Sugar field: Grows sugar which is used to distill liquor and (later) "
-#| "produce confectionery."
 msgid ""
 "Let's have a short overview:\n"
 "* Pasture: Sheep live here, producing lamb wool.\n"
@@ -1264,11 +1113,10 @@ msgid ""
 "produce confectionery."
 msgstr ""
 "Facciamo una breve panoramica:\n"
-"* Pascolo: Pecore, producono lana di agnello.\n"
-"* Campo di patate: coltiva patate che vengono attualmente trattate come "
-"alimento. \n"
-"* Campi di Zucchero: coltiva zucchero che viene utilizzato per distillare "
-"liquori e (più tardi) produrre pasticceria."
+"* Pascolo: Le pecore pascolano qui, producendo lana.\n"
+"* Campo di patate: Coltiva patate che vengono trattate come alimento. \n"
+"* Campi di Zucchero: Coltiva zucchero che viene utilizzato per distillare "
+"liquori e (più tardi) produrre dolciumi."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1280,44 +1128,32 @@ msgstr ""
 "edifici residenziali) si possono produrre anche alcune patate."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Note that for potatoes you will need a road connection to the farm (not "
-#| "to the field!) as it will be the only company to work on the goods."
 msgid ""
 "Note that for potatoes you will need a road connection to the Farm (not to "
 "the field!), as it will be the only company to work on the goods."
 msgstr ""
-"Nota che per le patate avrete bisogno di un collegamento stradale alla "
-"fattoria (non al campo!), in quanto sarà l'unica azienda a lavorare le merci."
+"Nota che per le patate avrai bisogno di un collegamento stradale alla "
+"fattoria (non al campo!), in quanto sarà l'unico edificio produttivo a "
+"lavorare le merci."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Make sure that all fields you build are in the area covered by the farm."
 msgid ""
 "\n"
 "Make sure that all fields you build are in the area covered by the Farm."
 msgstr ""
 "\n"
-"Assicurati che tutti i campi che costruisci si trovino nella zona coperta "
-"della fattoria."
+"Assicurati che tutti i campi che costruisci si trovino nell'area di "
+"influenza della fattoria."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You can have combined production - one pasture will not lead to 100 "
-#| "percent efficiency of the farm - but you need to check how many fields "
-#| "one farm can serve."
 msgid ""
 "You can have combined production - one pasture will not lead to 100 percent "
 "efficiency of the Farm - but you need to check how many fields one Farm can "
 "serve."
 msgstr ""
 "È possibile avere produzioni combinate - un pascolo non porterà la fattoria "
-"ad un'efficienza del 100 per cento - è necessario controllare quanti campi "
-"un'azienda agricola può servire."
+"ad un'efficienza del 100% - è necessario però controllare quanti campi una "
+"fattoria può servire."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1338,16 +1174,12 @@ msgstr ""
 "non avete costruito alcun campo. Cambiamo questo!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Task: Build at least one pasture in the farm's range and add potato "
-#| "fields if you like."
 msgid ""
 "Task: Build at least one Pasture in the Farm's range and add Potato Fields "
 "if you like."
 msgstr ""
-"Obiettivo: Costruisci almeno un pascolo nel campo della fattoria e aggiungi "
-"campi di patate se lo desideri."
+"Obiettivo: Costruisci almeno un pascolo nell'area di influenza della "
+"fattoria e aggiungi campi di patate se lo desideri."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a storage tent (tier I tab) where it makes sense."
@@ -1362,16 +1194,12 @@ msgid "Did you watch your lumberjack recently?"
 msgstr "Hai guardato il tuo boscaiolo di recente?"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Since your warehouse does not have unlimited space to store goods, "
-#| "collectors will stop fetching goods from companies when stock is full."
 msgid ""
 "Since your Warehouse does not have unlimited space to store goods, "
 "collectors will stop fetching goods from companies when stock is full."
 msgstr ""
-"Dal momento che il magazzino non ha spazio illimitato per le merci, i "
-"raccoglitori interomperanno il loro lavoro se il magazzino è pieno."
+"Dal momento che il magazzino non ha spazio illimitato per conservare beni, i "
+"raccoglitori non raccoglieranno più beni quando il magazzino sarà pieno."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1390,19 +1218,14 @@ msgstr ""
 "sguardo a ciascuno di loro di seguito."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "All companies offer to do no work at all.\n"
-#| "This may sound strange, but click on the gear wheel you see in a "
-#| "lumberjack hut's overview."
 msgid ""
 "All companies offer to do no work at all.\n"
 "This may sound strange, but click on the gear wheel you see in the "
 "Lumberjack Hut's overview."
 msgstr ""
-"Le aziende non lavorano affatto.\n"
-"Questo può sembrare strano, ma clicca sulla ruota dentata che si vede alla "
-"capanna del boscaiolo."
+"Gli edifici produttivi non lavorano affatto.\n"
+"Questo può sembrare strano, ma clicca sulla ruota dentata che si vede nella "
+"finestra panoramica della capanna del boscaiolo."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1426,60 +1249,45 @@ msgstr ""
 "società e non la vuoi abbattere."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Another solution is to build the last tier-I building which has not been "
-#| "mentioned so far: the storage tent."
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the Storage Tent."
 msgstr ""
-"Un'altra soluzione è quella di costruire l'ultimo edificio di primo livello "
-"che non è stato menzionato finora: la tenda di stoccaggio."
+"Un'altra soluzione è quella di costruire l'ultimo edificio di prima fascia "
+"che non è stato menzionato finora: la tenda di deposito."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "This building has two purposes. It:\n"
-#| "* Offers more storage for your goods, and\n"
-#| "* sends its own collectors to fetch goods, just like the warehouse does."
 msgid ""
 "This building has two purposes. It:\n"
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the Warehouse does."
 msgstr ""
 "Questo edificio ha due scopi:\n"
-"* Offre più spazio di archiviazione per le vostre merci, e\n"
-"* Invia i propri raccoglitori a prendere le merci, è simile al magazzino."
+"* Offre più spazio di deposito per le vostre merci, e\n"
+"* invia i propri raccoglitori a ritirare i beni, è simile al magazzino."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Note that companies can also be connected to a storage in order to get "
-#| "their products collected, and if the warehouse is overwhelmed with "
-#| "collector tasks, you can place a storage tent to help out there."
 msgid ""
 "Note that companies can also be connected to a storage in order to get their "
 "products collected, and if the Warehouse is overwhelmed with collector "
 "tasks, you can place a Storage Tent to help out there."
 msgstr ""
-"Le aziende possono anche essere collegate a un magazzino per far si che i "
-"loro prodotti vengono raccolti, se il magazzino è sopraffatto dai compiti di "
-"raccolta, è possibile inserire una tenda di stoccaggio per aiutare."
+"Nota che gli edifici produttivi possono anche essere collegati a un "
+"magazzino per far si che i loro prodotti vengano raccolti, se il magazzino è "
+"sopraffatto dai compiti di raccolta, è possibile inserire una tenda di "
+"stoccaggio per aiutare."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a storage tent, preferably where you need collectors."
 msgid "Task: Build a Storage Tent, preferably where you need collectors."
 msgstr ""
-"Obiettivo: Costruisci una tenda magazzino (livello I) preferibilmente la "
-"dove ti servono dei raccoglitori."
+"Obiettivo: Costruisci una tenda di deposito, preferibilmente laddove ci sia "
+"bisogno di raccoglitori."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a weaver that can somehow reach the wool of your farm."
 msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
-msgstr "Costruisci un tessitore che possa raggiungere la lana della fattoria."
+msgstr ""
+"Costruisci una capanna del tessitore che possa raggiungere la lana della "
+"fattoria."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A WEAVER"
@@ -1494,44 +1302,34 @@ msgstr ""
 "produrre del tessuto da questa lana."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "There are two spots where you can build it - either close to the farm or "
-#| "close to a Storage Tent (or the warehouse)."
 msgid ""
 "The Weaver's Hut is the place where the weaver lives. There are two spots "
 "where you can build it - either close to the Farm or close to a Storage Tent "
 "(or the Warehouse)."
 msgstr ""
-"Ci sono due punti in cui si può costruire - vicino alla fattoria o vicino ad "
-"una tenda di stoccaggio (o il magazzino)."
+"La tenda del tessitore è il posto dove vivono i tessitori. Ci sono due punti "
+"in cui si può costruire - vicino alla fattoria o vicino ad una tenda di "
+"deposito (o il magazzino)."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "In both cases you should ensure the connection to a trail as well."
 msgid "In both cases you should ensure the connection to a Trail as well."
 msgstr ""
-"In entrambi i casi è necessario verificare il collegamento ad una strada."
+"In entrambi i casi è necessario garantire il collegamento ad un Sentiero."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You can place the weaver close to the farm and tear down any trail to the "
-#| "farm to see that it will still fetch the wool and produce."
 msgid ""
 "You can place the Weaver's Hut close to the Farm and tear down any Trail to "
 "the Farm to see that it will still fetch the wool and produce."
 msgstr ""
-"È possibile inserire il tessitore vicino alla fattoria e abbattere ogni "
-"sentiero alla fattoria per vedere che può ancora prendere la lana e produrre."
+"È possibile inserire una capanna del tessitore vicino alla fattoria e "
+"abbattere ogni sentiero alla fattoria per vedere che può ancora prendere la "
+"lana e produrre."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a weaver positioned so it can get wool."
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
 msgstr ""
-"Obiettivo: Costruire un tessitore posizionato in modo tale che possa "
-"ottenere la lana."
+"Obiettivo: Costruire una capanna del tessitore posizionata in modo tale che "
+"possa ottenere la lana."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -1563,16 +1361,12 @@ msgstr ""
 "orizzonti sconosciuti!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You also need enough money to keep this economy running, so a positive "
-#| "balance (check in the warehouse tab 'Account') is required."
 msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the Warehouse tab 'Account') is required."
 msgstr ""
-"È inoltre necessario possedere abbastanza soldi per alimentare l`economia, "
-"quindi è richiesto un saldo positivo (guarda  la scheda 'Account' del "
+"È inoltre necessario possedere abbastanza soldi per alimentare l'economia, "
+"quindi è richiesto un saldo positivo (guarda la scheda 'Account' del "
 "magazzino)."
 
 #. This is the text body of a logbook page.

@@ -101,7 +101,7 @@
 			</HBox>
 
 			<Slider size="300,20" name="mousesensitivity" is_focusable="0"
-				orientation="0" scale_start="-0.1" scale_end="0.5" step_length="1.0" />
+				orientation="0" scale_start="-0.2" scale_end="0.5" step_length="1.0" />
 		</VBox>
 	</VBox>
 </HBox>
@@ -147,6 +147,9 @@
 				<ScrollArea min_size="165,206">
 					<ListBox name="uni_language" is_focusable="0" />
 				</ScrollArea>
+
+				<Spacer fixed_size="0,5" />
+				<Label text="translation" name="language_translation_status" min_size="165, 20" />
 			</VBox>
 		</VBox>
 

@@ -20,12 +20,9 @@
 # ###################################################
 
 from tests.game import game_test
-from tests.utils import mark_expected_failure
 
 
-# FIXTURE is a savegame revision 49
-@mark_expected_failure
-@game_test(use_fixture='savegame-rev-49')
+@game_test(use_fixture='savegame-rev-76')
 def test_upgrade(s):
 	"""
 	Simply let's do nothing except loading the fixture

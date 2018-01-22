@@ -58,7 +58,7 @@ class Pirate(GenericAI):
 	tick_long_interval = 128
 
 	def __init__(self, session, id, name, color, **kwargs):
-		super(Pirate, self).__init__(session, id, name, color, **kwargs)
+		super().__init__(session, id, name, color, **kwargs)
 
 		# choose a random water tile on the coast and call it home
 		self.home_point = self.session.world.get_random_possible_coastal_ship_position()
@@ -118,18 +118,20 @@ class Pirate(GenericAI):
 			self.create_ship_at_random_position()
 
 	def save(self, db):
-		super(Pirate, self).save(db)
+		super().save(db)
 		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.worldid)
 		db("INSERT INTO pirate_home_point(x, y) VALUES(?, ?)", self.home_point.x, self.home_point.y)
 
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
+		assert len(calls) == 1, "got {} calls for saving {}: {}".format(
+			len(calls), current_callback, calls)
 		remaining_ticks = max(list(calls.values())[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
+		assert len(calls) == 1, "got {} calls for saving {}: {}".format(
+			len(calls), current_callback_long, calls)
 		remaining_ticks_long = max(list(calls.values())[0], 1)
 
 		db("INSERT INTO ai_pirate(rowid, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?)", self.worldid,
@@ -153,7 +155,7 @@ class Pirate(GenericAI):
 		self.behavior_manager.save(db)
 
 	def _load(self, db, worldid):
-		super(Pirate, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.__init()
 
 		remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
@@ -196,4 +198,4 @@ class Pirate(GenericAI):
 
 	def end(self):
 		self.strategy_manager.end()
-		super(Pirate, self).end()
+		super().end()

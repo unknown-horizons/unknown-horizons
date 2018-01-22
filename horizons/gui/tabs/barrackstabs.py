@@ -49,11 +49,12 @@ class BarracksTab(UnitbuilderTabBase):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
+
 class BarracksSelectTab(ProducerOverviewTabBase):
 	widget = 'barracks_showcase.xml'
 
 	def init_widget(self):
-		super(BarracksSelectTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
@@ -78,7 +79,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		#groundunit_unbuildable = self.is_groundunit_unbuildable(groundunit)
 		groundunit_unbuildable = False
 		if not groundunit_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_{}'.index(index), helptext=T('Build this groundunit!'))
+			button = OkButton(position=(60, 50), name='ok_{}'.format(index), helptext=T('Build this groundunit!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
 			button = CancelButton(position=(60, 50), name='ok_{}'.format(index),
@@ -111,6 +112,7 @@ class BarracksSelectTab(ProducerOverviewTabBase):
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
+
 class BarracksSwordmanTab(BarracksSelectTab):
 	icon_path = 'icons/tabwidget/barracks/swordman'
 	helptext = LazyT("Swordman")
@@ -125,12 +127,13 @@ class BarracksSwordmanTab(BarracksSelectTab):
 # * check: mark those groundunit's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
 
+
 class BarracksConfirmTab(ProducerOverviewTabBase):
 	widget = 'barracks_confirm.xml'
 	helptext = LazyT("Confirm order")
 
 	def init_widget(self):
-		super(BarracksConfirmTab, self).init_widget()
+		super().init_widget()
 		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 

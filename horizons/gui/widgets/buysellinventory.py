@@ -38,7 +38,7 @@ class BuySellInventory(Inventory):
 	where Inventory has True.
 	"""
 	def __init__(self, display_legend=False, **kwargs):
-		super(BuySellInventory, self).__init__(display_legend=display_legend, **kwargs)
+		super().__init__(display_legend=display_legend, **kwargs)
 
 	def init(self, db, inventory, limits, selling):
 		if self.init_needed(inventory, limits, selling):
@@ -53,7 +53,7 @@ class BuySellInventory(Inventory):
 		self.update()
 
 	def init_needed(self, inventory, limits, selling):
-		return super(BuySellInventory, self).init_needed(inventory) or \
+		return super().init_needed(inventory) or \
 		       self._limits != limits or self._selling != selling
 
 	def _draw(self, vbox, current_hbox, index=0):

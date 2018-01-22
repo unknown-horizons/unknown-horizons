@@ -51,7 +51,7 @@ class LandManager(WorldObject):
 		@param feeder_island: boolean showing whether this is a feeder island (no village area)
 		"""
 
-		super(LandManager, self).__init__()
+		super().__init__()
 		self.__init(island, owner, feeder_island)
 		if self.feeder_island:
 			self._prepare_feeder_island()
@@ -72,7 +72,7 @@ class LandManager(WorldObject):
 		self.refresh_resource_deposits()
 
 	def save(self, db):
-		super(LandManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid,
 			self.owner.worldid, self.island.worldid, self.feeder_island)
 		for (x, y) in self.production:
@@ -89,7 +89,7 @@ class LandManager(WorldObject):
 		return self
 
 	def _load(self, db, owner, worldid):
-		super(LandManager, self).load(db, worldid)
+		super().load(db, worldid)
 		island_id, feeder_island = db("SELECT island, feeder_island FROM ai_land_manager WHERE rowid = ?", worldid)[0]
 		self.__init(WorldObject.get_object_by_id(island_id), owner, feeder_island)
 
@@ -325,5 +325,6 @@ class LandManager(WorldObject):
 			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_color)
 
 	def __str__(self):
-		return '%s LandManager(%s)' % (getattr(self, 'owner', 'unknown player'),
-		                               getattr(self, 'worldid', 'none'))
+		return '{} LandManager({})'.format(
+			getattr(self, 'owner', 'unknown player'),
+			getattr(self, 'worldid', 'none'))

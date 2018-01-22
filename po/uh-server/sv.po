@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2016-03-14 15:04+0000\n"
-"Last-Translator: Emil Hemdal <emil.hemdal.em@gmail.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh-server/sv/"
-">\n"
+"PO-Revision-Date: 2018-01-18 00:27+0000\n"
+"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh-server/sv/>"
+"\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Detta multiplayer-protokoll stöds inte. Vänligen och kontrollera spelets "
-"version"
+"Gammalt multiplayer-protokoll eller så stöds det inte. Vänligen kontrollera "
+"spelets version"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
@@ -36,20 +36,20 @@ msgstr ""
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Du har överskridit per paketstorleken."
+msgstr "Du har överskridit storleken per paket."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Okänt eller felaktigt paket. Vänligen kontrollera spelversionen"
+msgstr "Okänt eller felaktigt paket. Vänligen kontrollera din spelversion"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr "Ogiltig/Okänd session"
+msgstr "Ogiltig/okänd session"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr "Du kan inte gå med i ett spel medans du är i ett annat spel"
+msgstr "Du kan inte gå med i ett spel medan du är i ett annat spel"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
@@ -73,7 +73,7 @@ msgstr "Det finns redan en spelare med ditt namn i detta spel."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr "Vänligen att ändra ditt namn."
+msgstr "Vänligen ändra ditt namn."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
@@ -88,7 +88,7 @@ msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"Det finns redan en spelare med ditt unika spelare ID i detta spel. Detta ska "
+"Det finns redan en spelare med ditt unika spelar-ID i detta spel. Detta ska "
 "inte inträffa."
 
 #: horizons/network/server.py:458
@@ -117,4 +117,4 @@ msgstr "Det gick inte att ändra din färg."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr "Du kan inte hämta ett spel medans du deltar i ett annat spel"
+msgstr "Du kan inte hämta ett spel medan du deltar i ett annat spel"

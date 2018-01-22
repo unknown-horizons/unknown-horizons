@@ -42,7 +42,7 @@ class Tasklet(greenlet.greenlet):
 	Let's you add callbacks when the greenlet finished and wait for it to finish.
 	"""
 	def __init__(self, *args, **kwargs):
-		super(Tasklet, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.links = [] # type: List[Callable]
 
 	def link(self, func):

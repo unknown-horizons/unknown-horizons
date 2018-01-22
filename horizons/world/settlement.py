@@ -59,7 +59,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""
 		@param owner: Player object that owns the settlement
 		"""
-		super(Settlement, self).__init__()
+		super().__init__()
 		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
@@ -144,7 +144,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			building.level_upgrade(lvl)
 
 	def save(self, db, islandid):
-		super(Settlement, self).save(db)
+		super().save(db)
 
 		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
 			self.worldid, islandid, self.owner.worldid)

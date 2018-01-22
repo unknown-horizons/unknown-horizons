@@ -49,7 +49,7 @@ class CombatManager:
 	combat_range = 18
 
 	def __init__(self, owner):
-		super(CombatManager, self).__init__()
+		super().__init__()	# TODO: check if this call is needed
 		self.__init(owner)
 
 	def __init(self, owner):
@@ -354,7 +354,7 @@ class PirateCombatManager(CombatManager):
 	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')
 
 	def __init__(self, owner):
-		super(PirateCombatManager, self).__init__(owner)
+		super().__init__(owner)
 
 	def handle_mission_combat(self, mission):
 		"""

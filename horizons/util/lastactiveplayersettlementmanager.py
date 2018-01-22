@@ -35,12 +35,14 @@ def resolve_weakref(ref):
 	else:
 		return ref()
 
+
 def create_weakref(obj):
 	"""Safe create weakref, that supports None"""
 	if obj is None:
 		return None
 	else:
 		return weakref.ref(obj)
+
 
 class LastActivePlayerSettlementManager(object, metaclass=ManualConstructionSingleton):
 	"""Keeps track of the last active (hovered over) player's settlement.

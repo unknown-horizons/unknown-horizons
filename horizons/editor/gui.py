@@ -115,7 +115,7 @@ class IngameGui(LivingObject):
 			self.cursor.end()
 			self.cursor = None
 
-		super(IngameGui, self).end()
+		super().end()
 
 	def handle_selection_group(self, num, ctrl_pressed):
 		# Someday, maybe cool stuff will be possible here.
@@ -205,7 +205,7 @@ class SettingsTab(TabInterface):
 	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
-		super(SettingsTab, self).__init__(widget=self.widget)
+		super().__init__(widget=self.widget)
 
 		self._world_editor = world_editor
 		self._current_tile = 'sand'
@@ -213,7 +213,7 @@ class SettingsTab(TabInterface):
 
 		# Brush size
 		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
-			b = self.widget.findChild(name='size_%d' % i)
+			b = self.widget.findChild(name='size_{:d}'.format(i))
 			b.capture(Callback(self._change_brush_size, i))
 
 		# Activate radio button for default brush size
@@ -262,9 +262,9 @@ class SettingsTab(TabInterface):
 		  'box': 'content/gui/icons/ship/smallbutton.png',
 		}
 
-		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b = self.widget.findChild(name='size_{:d}'.format(self._world_editor.brush_size))
 		b.up_image = images['box']
 
 		self._world_editor.brush_size = size
-		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b = self.widget.findChild(name='size_{:d}'.format(self._world_editor.brush_size))
 		b.up_image = images['box_highlighted']

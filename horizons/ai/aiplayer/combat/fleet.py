@@ -52,9 +52,9 @@ class Fleet(WorldObject):
 	fleetStates = Enum('idle', 'moving')
 
 	def __init__(self, ships, destroy_callback=None):
-		super(Fleet, self).__init__()
+		super().__init__()
 
-		assert ships, "request to create a fleet from  %s ships" % (len(ships))
+		assert ships, "request to create a fleet from  {} ships".format(len(ships))
 		self.__init(ships, destroy_callback)
 
 	def __init(self, ships, destroy_callback=None):
@@ -70,7 +70,7 @@ class Fleet(WorldObject):
 		self.destroy_callback = destroy_callback
 
 	def save(self, db):
-		super(Fleet, self).save(db)
+		super().save(db)
 		# save the fleet
 		# save destination if fleet is moving somewhere
 		db("INSERT INTO fleet (fleet_id, owner_id, state_id) VALUES(?, ?, ?)", self.worldid, self.owner.worldid, self.state.index)
@@ -83,7 +83,8 @@ class Fleet(WorldObject):
 				x, y, radius = self.destination.center.x, self.destination.center.y, self.destination.radius
 				db("UPDATE fleet SET dest_x = ?, dest_y = ?, radius = ? WHERE fleet_id = ?", x, y, radius, self.worldid)
 			else:
-				assert False, "destination is neither a Circle nor a Point: %s" % self.destination.__class__.__name__
+				assert False, "destination is neither a Circle nor a Point: {}".format(
+					self.destination.__class__.__name__)
 
 		if hasattr(self, "ratio"):
 			db("UPDATE fleet SET ratio = ? WHERE fleet_id = ?", self.ratio, self.worldid)
@@ -94,7 +95,7 @@ class Fleet(WorldObject):
 			   ship.worldid, self.worldid, self._ships[ship].index)
 
 	def _load(self, worldid, owner, db, destroy_callback):
-		super(Fleet, self).load(db, worldid)
+		super().load(db, worldid)
 		self.owner = owner
 		state_id, dest_x, dest_y, radius, ratio = db("SELECT state_id, dest_x, dest_y, radius, ratio FROM fleet WHERE fleet_id = ?", worldid)[0]
 
@@ -254,7 +255,10 @@ class Fleet(WorldObject):
 
 	def __str__(self):
 		if hasattr(self, '_ships'):
-			ships_str = "\n   " + "\n   ".join(["%s (fleet state:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship]) for ship in self._ships.keys()])
+			ships_str = "\n   " + "\n   ".join(["{} (fleet state:{})".format(
+				ship.get_component(NamedComponent).name,
+				self._ships[ship]) for ship in self._ships.keys()])
 		else:
 			ships_str = 'N/A'
-		return "Fleet: %s , state: %s, ships:%s" % (self.worldid, (self.state if hasattr(self, 'state') else 'unknown state'), ships_str)
+		return "Fleet: {} , state: {}, ships:{}".format(
+			self.worldid, (self.state if hasattr(self, 'state') else 'unknown state'), ships_str)

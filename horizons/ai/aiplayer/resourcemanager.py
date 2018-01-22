@@ -56,7 +56,7 @@ class ResourceManager(WorldObject):
 	"""
 
 	def __init__(self, settlement_manager):
-		super(ResourceManager, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager)
 
 	def __init(self, settlement_manager):
@@ -70,7 +70,7 @@ class ResourceManager(WorldObject):
 		self.personality = self.settlement_manager.owner.personality_manager.get('ResourceManager')
 
 	def save(self, db):
-		super(ResourceManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_resource_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
 		for resource_manager in self._data.values():
 			resource_manager.save(db, self.worldid)
@@ -84,7 +84,7 @@ class ResourceManager(WorldObject):
 
 	def _load(self, db, settlement_manager):
 		worldid = db("SELECT rowid FROM ai_resource_manager WHERE settlement_manager = ?", settlement_manager.worldid)[0][0]
-		super(ResourceManager, self).load(db, worldid)
+		super().load(db, worldid)
 		self.__init(settlement_manager)
 		for db_row in db("SELECT rowid, resource_id, building_id FROM ai_single_resource_manager WHERE resource_manager = ?", worldid):
 			self._data[(db_row[1], db_row[2])] = SingleResourceManager.load(db, settlement_manager, db_row[0])
@@ -335,13 +335,15 @@ class ResourceManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "settlement_manager"):
 			return 'UninitializedResourceManager'
-		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
+		result = 'ResourceManager({}, {:d})'.format(
+			self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
 		for resource_manager in self._data.values():
 			res = resource_manager.resource_id
 			if res not in [RES.FOOD, RES.TEXTILE, RES.BRICKS]:
 				continue
 			result += '\n' + resource_manager.__str__()
 		return result
+
 
 class SingleResourceManager(WorldObject):
 	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
@@ -351,7 +353,7 @@ class SingleResourceManager(WorldObject):
 	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
 
 	def __init__(self, settlement_manager, resource_id, building_id):
-		super(SingleResourceManager, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager, resource_id, building_id)
 		self.low_priority = 0.0 # used resource production per tick assigned to low priority holders
 		self.available = 0.0 # unused resource production per tick
@@ -364,14 +366,14 @@ class SingleResourceManager(WorldObject):
 		self.quotas = {} # {quota_holder: (amount, priority), ...}
 
 	def save(self, db, resource_manager_id):
-		super(SingleResourceManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)",
 		   self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
 		for identifier, (quota, priority) in self.quotas.items():
 			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota, priority) VALUES(?, ?, ?, ?)", self.worldid, identifier, quota, priority)
 
 	def _load(self, db, settlement_manager, worldid):
-		super(SingleResourceManager, self).load(db, worldid)
+		super().load(db, worldid)
 		(resource_id, building_id, self.low_priority, self.available, self.total) = \
 		    db("SELECT resource_id, building_id, low_priority, available, total FROM ai_single_resource_manager WHERE rowid = ?", worldid)[0]
 		self.__init(settlement_manager, resource_id, building_id)
@@ -487,16 +489,19 @@ class SingleResourceManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "resource_id"):
 			return 'UninitializedSingleResourceManager'
-		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)
+		result = 'Resource {:d} production {:.5f}/{:.5f} ({:.5f} low priority)'.format(
+			self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.items():
-			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)
+			result += '\n  {}quota assignment {:.5f} to {}'.format(
+				'priority ' if priority else '', quota, quota_holder)
 		return result
+
 
 class SimpleProductionChainSubtreeChoice:
 	"""This is a simple version of ProductionChainSubtreeChoice used to make recursive quotas possible."""
 
 	def __init__(self, options):
-		super(SimpleProductionChainSubtreeChoice, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.options = options # [SimpleProductionChainSubtree, ...]
 		self.resource_id = options[0].resource_id
 
@@ -516,11 +521,12 @@ class SimpleProductionChainSubtreeChoice:
 	def get_quota(self, quota_holder):
 		return sum(option.get_quota(quota_holder) for option in self.options)
 
+
 class SimpleProductionChainSubtree:
 	"""This is a simple version of ProductionChainSubtree used to make recursive quotas possible."""
 
 	def __init__(self, resource_manager, resource_id, production_line, abstract_building, children, production_ratio):
-		super(SimpleProductionChainSubtree, self).__init__()
+		super().__init__() # TODO: check if this call is needed
 		self.resource_manager = resource_manager
 		self.resource_id = resource_id
 		self.production_line = production_line
@@ -530,7 +536,7 @@ class SimpleProductionChainSubtree:
 
 	def assign_identifier(self, prefix):
 		"""Recursively assign an identifier to this subtree to know which subtree owns which resource quota."""
-		self.identifier = '%s/%d,%d' % (prefix, self.resource_id, self.abstract_building.id)
+		self.identifier = '{}/{:d},{:d}'.format(prefix, self.resource_id, self.abstract_building.id)
 		for child in self.children:
 			child.assign_identifier(self.identifier)
 

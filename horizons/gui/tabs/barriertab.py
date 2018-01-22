@@ -33,7 +33,7 @@ class BarrierOverviewTab(OverviewTab):
 	helptext = LazyT("Overview")
 
 	def init_widget(self):
-		super(BarrierOverviewTab, self).init_widget()
+		super().init_widget()
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.get('single', 'abcd')
 		image = list(action_gfx[45].keys())[0]

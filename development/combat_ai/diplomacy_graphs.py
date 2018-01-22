@@ -59,6 +59,7 @@ get_enemy_function = BehaviorDiplomatic.get_enemy_function
 get_ally_function = BehaviorDiplomatic.get_ally_function
 get_neutral_function = BehaviorDiplomatic.get_neutral_function
 
+
 def diplomacy_graph():
 	header = "Diplomacy function"
 	x_label = "relationship_score"
@@ -84,13 +85,12 @@ def diplomacy_graph():
 
 	)
 
-
 	for parameter_name, parameters in parameter_sets:
 
 		# always print upper boundary
 		x = [-10, 10]
 		y = [upper_boundary] * 2
-		pylab.plot (x, y, color='y', marker=None)
+		pylab.plot(x, y, color='y', marker=None)
 
 		functions = []
 		if 'enemy' in parameters:
@@ -110,6 +110,7 @@ def diplomacy_graph():
 			pylab.title(parameter_name)
 			pylab.grid(True)
 		pylab.show()
+
 
 if __name__ == "__main__" :
 	diplomacy_graph()

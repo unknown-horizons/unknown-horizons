@@ -29,7 +29,7 @@ class TradingShipGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(TradingShipGoal, self).active \
+		return super().active \
 			and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
 			and self.owner.need_more_ships \
 			and not self.owner.unit_builder.num_ships_being_built

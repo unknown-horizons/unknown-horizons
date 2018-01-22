@@ -75,7 +75,7 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def _init_gui(self):
-		super(ProductionOverview, self)._init_gui()
+		super()._init_gui()
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 		self._gui.findChild(name='forwardButton').capture(self.go_to_next_page)
 		self._gui.findChild(name='backwardButton').capture(self.go_to_previous_page)
@@ -115,7 +115,7 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		self.refresh()
 
 	def refresh(self):
-		super(ProductionOverview, self).refresh()
+		super().refresh()
 
 		name = self.settlement.get_component(NamedComponent).name
 		text = T('Production overview of {settlement}').format(settlement=name)
@@ -157,11 +157,11 @@ class ProductionOverview(MultiPageStatsWidget, Window):
 		icon.name = 'icon_{}'.format(resource_id)
 		icon.max_size = icon.min_size = icon.size = (20, 20)
 
-		label = widgets.Label(name = 'resource_{}'.format(resource_id))
+		label = widgets.Label(name='resource_{}'.format(resource_id))
 		label.text = res_name
 		label.min_size = (100, 20)
 
-		amount_label = widgets.Label(name = 'produced_sum_{}'.format(resource_id))
+		amount_label = widgets.Label(name='produced_sum_{}'.format(resource_id))
 		amount_label.text = str(amount)
 
 		hbox = widgets.HBox()

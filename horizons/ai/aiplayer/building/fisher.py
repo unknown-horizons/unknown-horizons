@@ -46,7 +46,7 @@ class AbstractFisher(AbstractBuilding):
 		return extra_buildings_needed * self.get_expected_building_cost()
 
 	def iter_potential_locations(self, settlement_manager):
-		options = list(super(AbstractFisher, self).iter_potential_locations(settlement_manager))
+		options = list(super().iter_potential_locations(settlement_manager))
 		personality = settlement_manager.owner.personality_manager.get('AbstractFisher')
 		return settlement_manager.session.random.sample(options, min(len(options), personality.max_options))
 
@@ -58,13 +58,14 @@ class AbstractFisher(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.FISHER] = cls
 
+
 class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation
 
 	__slots__ = ('__production_level', )
 
 	def __init__(self, area_builder, builder, value):
-		super(FisherEvaluator, self).__init__(area_builder, builder, value)
+		super().__init__(area_builder, builder, value)
 		self.__production_level = None
 
 	def get_expected_production_level(self, resource_id):
@@ -115,6 +116,7 @@ class FisherEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.FISHER
+
 
 class FisherSimulator:
 	# TODO: get these values the right way
@@ -167,5 +169,6 @@ class FisherSimulator:
 			if not found_fish:
 				heapq.heappush(heap, (tick + COLLECTORS.DEFAULT_WAIT_TICKS, fisher_coords))
 		return float(fish_caught) / cls.simulation_time
+
 
 AbstractFisher.register_buildings()

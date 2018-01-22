@@ -19,35 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import shutil
-import tempfile
+import pytest
 
 from tests.gui import gui_test
 
-USER_DIR = None
 
-def setup():
-	global USER_DIR
-	USER_DIR = tempfile.mkdtemp(suffix='H߀ｒìｚｏԉｓ')
+def modify_user_dir(path):
+	return path.join('H߀ｒìｚｏԉｓ')
 
 
-def teardown():
-	global USER_DIR
-	try:
-		shutil.rmtree(USER_DIR)
-	except:
-		pass
-	USER_DIR = None
-
-
-def dummy(gui):
+@gui_test(timeout=60, use_dev_map=True, _modify_user_dir=modify_user_dir)
+def test_user_dir_contains_non_ascii(gui):
 	"""This test will end the game immediately."""
 	pass
-dummy.__original__ = dummy # type: ignore
-
-
-def test_user_dir_contains_non_ascii():
-	# NOTE we have to create the test this way because if it were defined globally,
-	# USER_DIR would not be defined yet at the time the decorator is evaluated
-	yield gui_test(timeout=60, use_dev_map=True, _user_dir=USER_DIR)(dummy)
-test_user_dir_contains_non_ascii.gui = True # type: ignore

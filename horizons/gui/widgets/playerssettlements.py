@@ -33,15 +33,15 @@ class PlayersSettlements(StatsWidget):
 	widget_file_name = 'players_settlements.xml'
 
 	def __init__(self, session):
-		super(PlayersSettlements, self).__init__(session)
+		super().__init__(session)
 
 	def refresh(self):
-		super(PlayersSettlements, self).refresh()
+		super().refresh()
 		self._gui.findChild(name='headline').text = T("Settlements of {player}").format(player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
-		for settlement in sorted(self.session.world.settlements, key = lambda settlement: (settlement.get_component(NamedComponent).name, settlement.worldid)):
+		for settlement in sorted(self.session.world.settlements, key=lambda settlement: (settlement.get_component(NamedComponent).name, settlement.worldid)):
 			if settlement.owner is self.session.world.player:
 				sequence_number += 1
 				name_label, rename_icon = self._add_line_to_gui(settlement, sequence_number)

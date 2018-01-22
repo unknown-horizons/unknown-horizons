@@ -37,13 +37,13 @@ class SpecialDomesticTrade(ShipMission):
 	missionStates = Enum('created', 'moving_to_source_settlement', 'moving_to_destination_settlement')
 
 	def __init__(self, source_settlement_manager, destination_settlement_manager, ship, success_callback, failure_callback):
-		super(SpecialDomesticTrade, self).__init__(success_callback, failure_callback, ship)
+		super().__init__(success_callback, failure_callback, ship)
 		self.source_settlement_manager = source_settlement_manager
 		self.destination_settlement_manager = destination_settlement_manager
 		self.state = self.missionStates.created
 
 	def save(self, db):
-		super(SpecialDomesticTrade, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_special_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.source_settlement_manager.worldid, self.destination_settlement_manager.worldid, self.ship.worldid, self.state.index)
 
@@ -58,7 +58,7 @@ class SpecialDomesticTrade(ShipMission):
 		self.source_settlement_manager = WorldObject.get_object_by_id(db_result[0])
 		self.destination_settlement_manager = WorldObject.get_object_by_id(db_result[1])
 		self.state = self.missionStates[db_result[3]]
-		super(SpecialDomesticTrade, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
+		super().load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[2]))
 
 		if self.state is self.missionStates.moving_to_source_settlement:
 			self.ship.add_move_callback(Callback(self._reached_source_settlement))
@@ -72,12 +72,18 @@ class SpecialDomesticTrade(ShipMission):
 	def start(self):
 		self.state = self.missionStates.moving_to_source_settlement
 		self._move_to_source_settlement()
-		self.log.info('%s started a special domestic trade mission from %s to %s using %s', self,
-			self.source_settlement_manager.settlement.get_component(NamedComponent).name, self.destination_settlement_manager.settlement.get_component(NamedComponent).name, self.ship)
+		self.log.info(
+			'%s started a special domestic trade mission from %s to %s using %s', self,
+			self.source_settlement_manager.settlement.get_component(NamedComponent).name,
+			self.destination_settlement_manager.settlement.get_component(NamedComponent).name, self.ship)
 
 	def _move_to_source_settlement(self):
-		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_settlement),
-			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.get_component(NamedComponent).name)
+		self._move_to_warehouse_area(
+			self.source_settlement_manager.settlement.warehouse.position,
+			Callback(self._reached_source_settlement),
+			Callback(self._move_to_source_settlement),
+			'Unable to move to the source settlement ({})'.format(
+				self.source_settlement_manager.settlement.get_component(NamedComponent).name))
 
 	def _load_resources(self):
 		source_resource_manager = self.source_settlement_manager.resource_manager
@@ -100,13 +106,15 @@ class SpecialDomesticTrade(ShipMission):
 		if not options:
 			return False # no resources to transport
 
-		options.sort(reverse = True)
+		options.sort(reverse=True)
 		for _, amount, resource_id in options:
 			self.move_resource(self.source_settlement_manager.settlement, self.ship, resource_id, amount)
 		return True
 
 	def _reached_source_settlement(self):
-		self.log.info('%s reached the first warehouse area (%s)', self, self.source_settlement_manager.settlement.get_component(NamedComponent).name)
+		self.log.info(
+			'%s reached the first warehouse area (%s)', self,
+			self.source_settlement_manager.settlement.get_component(NamedComponent).name)
 		if self._load_resources():
 			self.state = self.missionStates.moving_to_destination_settlement
 			self._move_to_destination_settlement()
@@ -114,10 +122,16 @@ class SpecialDomesticTrade(ShipMission):
 			self.report_failure('No resources to transport')
 
 	def _move_to_destination_settlement(self):
-		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_settlement),
-			Callback(self._move_to_destination_settlement), 'Unable to move to the destination settlement (%s)' % self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
+		self._move_to_warehouse_area(
+			self.destination_settlement_manager.settlement.warehouse.position,
+			Callback(self._reached_destination_settlement),
+			Callback(self._move_to_destination_settlement),
+			'Unable to move to the destination settlement ({})'.format(
+				self.destination_settlement_manager.settlement.get_component(NamedComponent).name))
 
 	def _reached_destination_settlement(self):
 		self._unload_all_resources(self.destination_settlement_manager.settlement)
-		self.log.info('%s reached the destination warehouse area (%s)', self, self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
+		self.log.info(
+			'%s reached the destination warehouse area (%s)', self,
+			self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
 		self.report_success('Unloaded resources')

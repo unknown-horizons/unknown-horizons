@@ -45,7 +45,7 @@ class TabWidget:
 		@param name: optional name for the tabwidget
 		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
-		super(TabWidget, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.name = name
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
@@ -105,13 +105,13 @@ class TabWidget:
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_bg = self.content.findChild(name = "bg_{}".format(self._tabs.index(self.current_tab)))
+		old_bg = self.content.findChild(name="bg_{}".format(self._tabs.index(self.current_tab)))
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
 		old_button.path = self.current_tab.path
 
-		new_bg = self.content.findChild(name = "bg_{}".format(number))
+		new_bg = self.content.findChild(name="bg_{}".format(number))
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
 		new_button.path = new_tab.path_active

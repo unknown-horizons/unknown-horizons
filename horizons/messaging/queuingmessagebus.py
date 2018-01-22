@@ -64,3 +64,7 @@ class QueuingMessageBus(MessageBus):
 
 	def queue_len(self, messagetype):
 		return len(self.message_queue[messagetype])
+
+	def reset(self):
+		self.message_queue.clear()
+		super().reset()

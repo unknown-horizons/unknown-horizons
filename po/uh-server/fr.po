@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2015-12-19 00:46+0000\n"
-"Last-Translator: clément arondel <clement.arondel@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/uh/uh-server/fr/"
-">\n"
+"PO-Revision-Date: 2017-08-05 13:12+0000\n"
+"Last-Translator: juan juan juan <vespejo3@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/uh/uh-server/fr/>"
+"\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -27,17 +27,17 @@ msgstr ""
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr "Excès de la taille globale des paquets."
+msgstr "Tu a excedé la taille globale du paquet."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Cela n'aurait jamais dû se produire. Contactez-nous ou faites un rapport de "
+"Cela n'aurait jamais dû se produire. Contactez-nous ou faites un rapport du "
 "bug."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Excès de la taille par paquet."
+msgstr "Tu a excedé  la taille par paquet."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr "Jeu inconnu ou version différente du jeu"
+msgstr "Jeu inconnu ou le jeu utilise une version différente"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
@@ -64,7 +64,7 @@ msgstr "La partie a déjà débuté. Impossible de s'y joindre"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
-msgstr "Nombre de joueurs maximal atteint"
+msgstr "la partie est pleine"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
@@ -84,7 +84,7 @@ msgstr "Il y a déjà un joueur avec votre couleur dans cette partie."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr "S'il vous plaît, changez de couleur."
+msgstr "S'il vous plaît changez de couleur."
 
 #: horizons/network/server.py:442
 msgid ""
@@ -100,7 +100,7 @@ msgstr "Vous n'êtes pas dans une partie"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr "La partie est terminée. L'hôte a quitté."
+msgstr "La partie est terminée. le createur a quitté."
 
 #: horizons/network/server.py:494
 msgid ""
@@ -121,8 +121,8 @@ msgstr "Impossible de changer de couleur."
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
 msgstr ""
-"Vous ne pouvez vous informer sur d'autres parties lorsque vous êtes déjà "
-"dans une partie"
+"Vous ne pouvez pas chercher une partie lorsque vous êtes déjà dans une autre "
+"partie"
 
 #~ msgid ""
 #~ "There's already a player with your name inside this game. Unable to "

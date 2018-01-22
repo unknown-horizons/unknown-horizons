@@ -19,84 +19,83 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import shutil
-import tempfile
-from unittest import mock
-
 import polib
+import pytest
 
 import horizons.i18n
-from horizons.i18n import change_language, gettext as T, gettext_lazy as LazyT
-from tests.unittests import TestCase
+from horizons.i18n import change_language, disable_translations, gettext as T, gettext_lazy as LazyT
 
 
-class Testi18n(TestCase):
+@pytest.fixture(autouse=True)
+def i18n(tmpdir, mocker):
 	"""
-	Test all things related to the horizons.i18n.
+	Create temporary MO files, so we don't have to rely on them beeing build outside of tests,
+	or have to build all of them by running setup.py build_i18n
 	"""
-	def setUp(self):
-		super(Testi18n, self).setUp()
+	horizons.i18n.reset_language()
 
-		horizons.i18n.reset_language()
+	de_dir = tmpdir.mkdir('de')
+	de_dir.mkdir('de')
+	de_mo_dir = de_dir.mkdir('de', 'LC_MESSAGES')
 
-		# Create temporary MO files, so we don't have to rely on them beeing build outside
-		# of tests, or have to build all of them by running setup.py build_i18n
-		self.de_dir = tempfile.mkdtemp()
-		de_mo_dir = os.path.join(self.de_dir, 'de', 'LC_MESSAGES')
-		os.makedirs(de_mo_dir)
+	po = polib.POFile()
+	po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
+	po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
+				msgstr='McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'))
+	po.save_as_mofile(str(de_mo_dir.join('unknown-horizons.mo')))
 
-		po = polib.POFile()
-		po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
-		po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
-					msgstr='McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'))
-		po.save_as_mofile(os.path.join(de_mo_dir, 'unknown-horizons.mo'))
+	fr_dir = tmpdir.mkdir('fr')
+	fr_dir.mkdir('fr')
+	fr_mo_dir = fr_dir.mkdir('fr', 'LC_MESSAGES')
 
-		self.fr_dir = tempfile.mkdtemp()
-		fr_mo_dir = os.path.join(self.fr_dir, 'fr', 'LC_MESSAGES')
-		os.makedirs(fr_mo_dir)
+	po = polib.POFile()
+	po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
+	po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
+				msgstr='McAvoy ou Stewart? Ces délais sont confus.'))
+	po.save_as_mofile(str(fr_mo_dir.join('unknown-horizons.mo')))
 
-		po = polib.POFile()
-		po.metadata = {'Content-Type': 'text/plain; charset=utf-8'}
-		po.append(polib.POEntry(msgid='McAvoy or Stewart? These timelines are confusing.',
-					msgstr='McAvoy ou Stewart? Ces délais sont confus.'))
-		po.save_as_mofile(os.path.join(fr_mo_dir, 'unknown-horizons.mo'))
+	languages = {
+		'de': str(de_dir),
+		'fr': str(fr_dir)
+	}
+	mocker.patch('horizons.i18n.find_available_languages', return_value=languages)
 
-		languages = {
-			'de': self.de_dir,
-			'fr': self.fr_dir
-		}
-		self.find_languages_patcher = mock.patch('horizons.i18n.find_available_languages',
-		                                         return_value=languages)
-		self.find_languages_patcher.start()
 
-	def tearDown(self):
-		super(Testi18n, self).tearDown()
+def test_null_translations():
+	"""
+	Without active language, the message will be returned untranslated.
+	"""
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		'McAvoy or Stewart? These timelines are confusing.'
 
-		self.find_languages_patcher.stop()
-		shutil.rmtree(self.fr_dir)
-		shutil.rmtree(self.de_dir)
 
-	def test_null_translations(self):
-		"""
-		Without active language, the message will be returned untranslated.
-		"""
-		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
-		                'McAvoy or Stewart? These timelines are confusing.')
+def test_active_translation():
+	change_language('de')
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
 
-	def test_active_translation(self):
-		change_language('de')
-		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
-		                 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
+	change_language('fr')
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		 'McAvoy ou Stewart? Ces délais sont confus.'
 
-		change_language('fr')
-		self.assertEqual(T('McAvoy or Stewart? These timelines are confusing.'),
-		                 'McAvoy ou Stewart? Ces délais sont confus.')
 
-	def test_gettext_lazy(self):
-		text = LazyT('McAvoy or Stewart? These timelines are confusing.')
+def test_gettext_lazy():
+	text = LazyT('McAvoy or Stewart? These timelines are confusing.')
 
-		self.assertEqual(str(text), 'McAvoy or Stewart? These timelines are confusing.')
+	assert str(text) == 'McAvoy or Stewart? These timelines are confusing.'
 
-		change_language('de')
-		self.assertEqual(str(text), 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.')
+	change_language('de')
+	assert str(text) == 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
+
+
+def test_disable_translations():
+	change_language('de')
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
+
+	with disable_translations():
+		assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+			 'McAvoy or Stewart? These timelines are confusing.'
+
+	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
+		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'

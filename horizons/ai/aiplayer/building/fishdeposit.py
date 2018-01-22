@@ -41,4 +41,5 @@ class AbstractFishDeposit(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.FISH_DEPOSIT] = cls
 
+
 AbstractFishDeposit.register_buildings()

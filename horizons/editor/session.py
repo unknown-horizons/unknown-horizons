@@ -34,7 +34,7 @@ class EditorSession(Session):
 
 	def __init__(self, *args, **kwargs):
 		kwargs['ingame_gui_class'] = IngameGui
-		super(EditorSession, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.world_editor = None
 
 	def create_manager(self):
@@ -47,7 +47,7 @@ class EditorSession(Session):
 		return Timer()
 
 	def load(self, *args, **kwargs):
-		super(EditorSession, self).load(*args, **kwargs)
+		super().load(*args, **kwargs)
 		self.world_editor = WorldEditor(self.world)
 		self.ingame_gui.setup()
 		# editor "games" start right away

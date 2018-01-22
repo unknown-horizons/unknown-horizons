@@ -31,20 +31,23 @@ from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.i18n import (
-	change_language, find_available_languages, gettext as T, gettext_lazy as LazyT)
+	change_language, find_available_languages, get_language_translation_stats, gettext as T,
+	gettext_lazy as LazyT)
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 
 
 class Setting:
-	def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
+	def __init__(self, module, name, widget_name, initial_data=None, restart=False,
+			callback=None, on_change=None):
 		self.module = module
 		self.name = name
 		self.widget_name = widget_name
 		self.initial_data = initial_data
 		self.restart = restart
 		self.callback = callback
+		self.on_change = on_change
 
 
 class SettingsDialog(PickBeltWidget, Window):
@@ -86,30 +89,34 @@ class SettingsDialog(PickBeltWidget, Window):
 			# Graphics/Sound/Input
 			Setting(FIFE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
 			Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
-			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
+			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._apply_FrameLimit),
 
-			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
-			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
-			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
+			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._apply_VolumeMusic,
+				on_change=self._on_slider_changed),
+			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._apply_VolumeEffects,
+				on_change=self._on_slider_changed),
+			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._apply_PlaySounds),
 			Setting(UH, 'EdgeScrolling', 'edgescrolling'),
 			Setting(UH, 'CursorCenteredZoom', 'cursor_centered_zoom'),
 			Setting(UH, 'MiddleMousePan', 'middle_mouse_pan'),
-			Setting(FIFE, 'MouseSensitivity', 'mousesensitivity', restart=True),
+			Setting(FIFE, 'MouseSensitivity', 'mousesensitivity', restart=True,
+				on_change=self._on_slider_changed),
 
 			# Game
-			Setting(UH, 'AutosaveInterval', 'autosaveinterval'),
-			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount'),
-			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount'),
-			Setting(UH, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
+			Setting(UH, 'AutosaveInterval', 'autosaveinterval', on_change=self._on_slider_changed),
+			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount', on_change=self._on_slider_changed),
+			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount', on_change=self._on_slider_changed),
+			Setting(UH, 'Language', 'uni_language', language_names,
+				callback=self._apply_Language, on_change=self._on_Language_changed),
 
 			Setting(UH, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
 			Setting(UH, 'AutoUnload', 'auto_unload'),
-			Setting(UH, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
+			Setting(UH, 'DebugLog', 'debug_log', callback=self._apply_DebugLog),
 			Setting(UH, 'ShowResourceIcons', 'show_resource_icons'),
-			Setting(UH, 'ScrollSpeed', 'scrollspeed'),
+			Setting(UH, 'ScrollSpeed', 'scrollspeed', on_change=self._on_slider_changed),
 			Setting(UH, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
-			Setting(UH, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
+			Setting(UH, 'NetworkPort', 'network_port', callback=self._apply_NetworkPort),
 		]
 
 		self._fill_widgets()
@@ -207,13 +214,12 @@ class SettingsDialog(PickBeltWidget, Window):
 
 			widget.setData(value)
 
-			# For sliders, there also is a label showing the current value
-			if isinstance(widget, horizons.globals.fife.pychan.widgets.Slider):
-				cb = Callback(self.slider_change, widget)
+			if entry.on_change:
+				cb = Callback(entry.on_change, widget)
 				cb()
 				widget.capture(cb)
 
-	def slider_change(self, widget):
+	def _on_slider_changed(self, widget):
 		"""Callback for updating value label of a slider after dragging it.
 
 		As the numeric values under the hood often do not represent mental
@@ -224,7 +230,7 @@ class SettingsDialog(PickBeltWidget, Window):
 		value = {
 			'volume_music':      lambda x: '{:d}%'.format(int(500 * x)),
 			'volume_effects':    lambda x: '{:d}%'.format(int(200 * x)),
-			'mousesensitivity':  lambda x: '{:+.1f}%'.format(200 * x),
+			'mousesensitivity':  lambda x: '{:.1f}x'.format(10 * x),
 			'autosaveinterval':  lambda x: '{:.1f}'.format(x),
 			'autosavemaxcount':  lambda x: '{:d}'.format(int(x)),
 			'quicksavemaxcount': lambda x: '{:d}'.format(int(x)),
@@ -234,23 +240,23 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	# callbacks for changes of settings
 
-	def _on_PlaySounds_changed(self, old, new):
+	def _apply_PlaySounds(self, old, new):
 		horizons.globals.fife.sound.setup_sound()
 
-	def _on_VolumeMusic_changed(self, old, new):
+	def _apply_VolumeMusic(self, old, new):
 		horizons.globals.fife.sound.set_volume_bgmusic(new)
 
-	def _on_VolumeEffects_changed(self, old, new):
+	def _apply_VolumeEffects(self, old, new):
 		horizons.globals.fife.sound.set_volume_effects(new)
 
-	def _on_FrameLimit_changed(self, old, new):
+	def _apply_FrameLimit(self, old, new):
 		# handling value 0 for framelimit to disable limiter
 		if new == 0:
 			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', False)
 		else:
 			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', True)
 
-	def _on_NetworkPort_changed(self, old, new):
+	def _apply_NetworkPort(self, old, new):
 		"""Sets a new value for client network port"""
 		# port is saved as string due to pychan limitations
 		try:
@@ -280,12 +286,27 @@ class SettingsDialog(PickBeltWidget, Window):
 				details = str(e)
 				self._windows.open_error_popup(headline, descr, advice, details)
 
-	def _on_Language_changed(self, old, new):
+	def _apply_Language(self, old, new):
 		language = LANGUAGENAMES.get_by_value(new)
 		change_language(language)
 
-	def _on_DebugLog_changed(self, old, new):
+	def _on_Language_changed(self, widget):
+		value = widget.items[widget.getData()]
+		language_code = LANGUAGENAMES.get_by_value(value)
+
+		status_label = self.widget.findChild(name='language_translation_status')
+		if not language_code or language_code == 'en':
+			status_label.text = ''
+		else:
+			value = get_language_translation_stats(language_code)
+			if value:
+				status_label.text = T('Translation {percentage}% completed').format(percentage=value)
+			else:
+				status_label.text = ''
+
+	def _apply_DebugLog(self, old, new):
 		horizons.main.set_debug_log(new)
+
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
