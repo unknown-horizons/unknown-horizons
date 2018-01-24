@@ -108,7 +108,7 @@ class SettlementManager(WorldObject):
 		self.production_chain = {}
 		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
-						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.HYGIENE]:
+						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialize caches
