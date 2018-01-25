@@ -27,6 +27,7 @@ from fife.fife import AudioSpaceCoordinate
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
+from horizons.engine import Fife
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
@@ -73,7 +74,10 @@ class View(ChangeListener):
 
 		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
 		                       horizons.globals.fife.engine_settings.getScreenHeight())
-		self.cam = self.map.addCamera("main", rect)
+		if Fife.getVersion() > (0, 4, 1):
+			self.cam = self.map.addCamera("main", rect)
+		else:
+			self.cam = self.map.addCamera("main", self.layers[-1], rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
@@ -106,7 +110,10 @@ class View(ChangeListener):
 		"""Sets the camera position
 		@param center: tuple with x and y coordinate (float or int) of tile to center
 		"""
-		loc = self.cam.getLocation()
+		if Fife.getVersion() > (0, 4, 1):
+			loc = self.cam.getLocation()
+		else:
+			loc = self.cam.getLocationRef()
 		pos = loc.getExactLayerCoordinatesRef()
 		pos.x = x
 		pos.y = y
@@ -223,7 +230,10 @@ class View(ChangeListener):
 
 	def get_displayed_area(self):
 		"""Returns the coords of what is displayed on the screen as Rect"""
-		coords = self.cam.getLocation().getLayerCoordinates()
+		if Fife.getVersion() > (0, 4, 1):
+			coords = self.cam.getLocation().getLayerCoordinates()
+		else:
+			coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
 		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
 		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
