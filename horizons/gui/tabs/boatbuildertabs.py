@@ -82,11 +82,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 	def show_production_is_active_container(self, container_active, container_inactive, progress_container, cancel_container, production_lines):
 		"""Show the container containing the active production."""
 		container_active.parent.showChild(container_active)
-		if (Fife.getVersion() >= (0, 4, 0)):
-			container_inactive.parent.hideChild(container_inactive)
-		else:
-			if container_inactive not in container_inactive.parent.hidden_children:
-				container_inactive.parent.hideChild(container_inactive)
+		container_inactive.parent.hideChild(container_inactive)
 
 		self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
 
@@ -115,11 +111,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		"""Hides all information on progress etc, and displays something to signal that the production is inactive."""
 		container_inactive.parent.showChild(container_inactive)
 		for w in (container_active, progress_container, cancel_container):
-			if (Fife.getVersion() >= (0, 4, 0)):
-				w.parent.hideChild(w)
-			else:
-				if w not in w.parent.hidden_children:
-					w.parent.hideChild(w)
+			w.parent.hideChild(w)
 
 	def update_buttons(self, container_active, cancel_container):
 		"""Show the correct active and inactive buttons, update cancel button"""

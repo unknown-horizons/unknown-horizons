@@ -112,14 +112,10 @@ class ConcreteObject(WorldObject):
 		if facing_loc is None:
 			facing_loc = self._instance.getFacingLocation()
 		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
-		if (Fife.getVersion() >= (0, 3, 6)):
-			if repeating:
-				self._instance.actRepeat(action + "_" + str(self._action_set_id), facing_loc)
-			else:
-				self._instance.actOnce(action + "_" + str(self._action_set_id), facing_loc)
+		if repeating:
+			self._instance.actRepeat(action + "_" + str(self._action_set_id), facing_loc)
 		else:
-			self._instance.act(action + "_" + str(self._action_set_id), facing_loc, repeating)
-		ActionChanged.broadcast(self, action)
+			self._instance.actOnce(action + "_" + str(self._action_set_id), facing_loc)
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.

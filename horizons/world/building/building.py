@@ -302,10 +302,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				# set first action
 				action = list(action_set.keys())[0]
 
-		if (Fife.getVersion() >= (0, 3, 6)):
-			instance.actRepeat(action + "_" + str(action_set_id), facing_loc)
-		else:
-			instance.act(action + "_" + str(action_set_id), facing_loc, True)
+		instance.actRepeat(action + "_" + str(action_set_id), facing_loc)
 		return (instance, action_set_id)
 
 	@classmethod
