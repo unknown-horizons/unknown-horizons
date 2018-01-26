@@ -38,7 +38,6 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 
 
-
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
