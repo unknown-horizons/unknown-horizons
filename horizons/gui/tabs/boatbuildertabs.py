@@ -28,7 +28,6 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
 
 from horizons.command.production import AddProduction, CancelCurrentProduction, RemoveFromQueue
 from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
-from horizons.engine import Fife
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.i18n import gettext as T, gettext_lazy as LazyT
@@ -284,9 +283,9 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	ships = [
 		#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
-		#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
-		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
-		#(UNITS.WHALER, PRODUCTIONLINES.xxx),
+		#(UNITS.CUTTER, PRODUCTIONLINES.CUTTER),
+		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.HERRING_FISHER),
+		#(UNITS.WHALER, PRODUCTIONLINES.WHALER),
 	] # type: List[Tuple[int, int]]
 
 
@@ -296,9 +295,9 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	ships = [
 		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
-		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
-		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
-		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
+		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.COURIER_BOAT),
+		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.SMALL_MERCHANT),
+		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.BIG_MERCHANT),
 	]
 
 

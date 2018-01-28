@@ -28,7 +28,6 @@ from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME, LAYERS, RES
-from horizons.engine import Fife
 from horizons.i18n import disable_translations
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader

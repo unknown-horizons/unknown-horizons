@@ -22,7 +22,6 @@
 import random
 
 from horizons.constants import ACTION_SETS
-from horizons.engine import Fife
 from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
