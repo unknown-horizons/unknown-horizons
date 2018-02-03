@@ -127,7 +127,7 @@ class TradeRoute(ChangeListener):
 			for res in copy.copy(self.current_transfer):
 				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
 				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
-				   cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
+				   ((self.current_transfer[res] < 0) != (self.get_location()['resource_list'][res] < 0)): #If unload/load has changed, (based on signs)
 					del self.current_transfer[res]
 
 		settlement = warehouse.settlement
