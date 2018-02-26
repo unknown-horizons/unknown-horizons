@@ -23,6 +23,7 @@ install:
 script:
   - "cp -a /usr/lib/python3/dist-packages/fife/ $VIRTUAL_ENV/lib/python3.4/site-packages/"
   - "cp -a /usr/lib/python3/dist-packages/enet* $VIRTUAL_ENV/lib/python3.4/site-packages/"
+  - "cp -a /usr/lib/python3/dist-packages/future/ /usr/lib/python3/dist-packages/past/ /usr/lib/python3/dist-packages/libfuturize/ /usr/lib/python3/dist-packages/libpasteurize/ $VIRTUAL_ENV/lib/python3.4/site-packages/"
   - "prename 's/\\.cpython-34m-x86_64-linux-gnu/.cpython-34m/' $VIRTUAL_ENV/lib/python3.4/site-packages/enet*.so"
   - "prename 's/\\.cpython-34m-x86_64-linux-gnu/.cpython-34m/' $VIRTUAL_ENV/lib/python3.4/site-packages/fife/*.so"
   - python3 -c 'from fife import fife; print(fife.getVersion())'

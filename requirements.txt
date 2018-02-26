@@ -12,5 +12,3 @@ pytest-cov==2.5.1
 pytest-mock==1.6.0
 PyYAML==3.12
 typing==3.6.1
-
-future # temporary, see issue 2704
