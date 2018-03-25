@@ -120,11 +120,8 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 		if not to_active: # swap what we want to show and hide
 			button_active, button_inactive = button_inactive, button_active
-		if (Fife.getVersion() >= (0, 4, 0)):
 			button_active.parent.hideChild(button_active)
-		else:
-			if button_active not in button_active.parent.hidden_children:
-				button_active.parent.hideChild(button_active)
+
 		button_inactive.parent.showChild(button_inactive)
 
 		set_active_cb = Callback(self.producer.set_active, active=to_active)
