@@ -61,7 +61,7 @@ class _Tooltip:
 
 			# TODO: not sure if below are useful or not
 			# self.name + '/mouseReleased/tooltip' : self.position_tooltip,
-			# self.name + '/mouseDragged/tooltip' : self.hide_tooltip
+			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
 		self.cooldown = time.time()		# initial timer value
