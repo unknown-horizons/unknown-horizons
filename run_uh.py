@@ -57,17 +57,13 @@ def exit_with_error(title, message):
 	"""
 	Print an error (optionally showing a window using TK), and exit the game.
 	"""
-	print('Error: ' + title + '\n' + message)
+	print('Error: {0}\n{1}'.format(title, message))
 	try:
 		import tkinter
 		import tkinter.messagebox as messagebox
 	except ImportError:
-		try:
-			# try python2 imports
-			import Tkinter as tkinter
-			import tkMessageBox as messagebox
-		except ImportError:
-			sys.exit(1)
+		print('Module tkinter not found.')
+		sys.exit(1)
 
 	window = tkinter.Tk()
 	window.wm_withdraw()
