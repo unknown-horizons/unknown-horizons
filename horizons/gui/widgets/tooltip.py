@@ -113,12 +113,11 @@ class _Tooltip:
 			self.tooltip_shown = True
 
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
-		self.gui.y = widget_position[1] + self.height + 5
-		#offset = x + 10
-		#if (widget_position[0] + self.gui.size[0] + offset) > screen_width:
-			## right screen edge, position to the left of cursor instead
-			#offset = x - self.gui.size[0] - 5
-		self.gui.x = int(widget_position[0] + self.width/2 - self.gui.size[0]/2)
+		self.gui.y = widget_position[1] + self.height + 10
+		xpos = int(widget_position[0] + self.width/2 - self.gui.size[0]/2)
+		xpos = max(xpos, 5)
+		xpos = min(xpos, screen_width - self.gui.size[0] - 5)
+		self.gui.x = xpos
 
 	def show_tooltip(self):
 		if not self.helptext:
