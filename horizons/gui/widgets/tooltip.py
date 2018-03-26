@@ -107,6 +107,11 @@ class _Tooltip:
 		if top_pos == (0, 0):
 			return
 
+		if not self.tooltip_shown:
+			self.show_tooltip()
+			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
+			self.tooltip_shown = True
+
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + y + 5
 		offset = x + 10
@@ -114,10 +119,6 @@ class _Tooltip:
 			# right screen edge, position to the left of cursor instead
 			offset = x - self.gui.size[0] - 5
 		self.gui.x = widget_position[0] + offset
-		if not self.tooltip_shown:
-			self.show_tooltip()
-			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
-			self.tooltip_shown = True
 
 	def show_tooltip(self):
 		if not self.helptext:
