@@ -47,11 +47,9 @@ class _Tooltip:
 		self.bg = None
 		self.label = None
 		self.mapEvents({
-			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
+			self.name + '/mouseEntered/tooltip' : self.show_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
-			# Below causes frequent Segmentation Faults due to too many
-			# self.position_tooltip() calls.
-			# self.name + '/mouseMoved/tooltip' : self.position_tooltip,
+			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
 
 			# TIP: the mousePressed event is especially useful when such as click
 			# will trigger this tooltip's parent widget to be hidden (or destroyed),
@@ -64,6 +62,7 @@ class _Tooltip:
 			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
+		self.properly_positioned = False
 		self.cooldown = time.time()		# initial timer value
 
 	def __init_gui(self):
@@ -78,6 +77,17 @@ class _Tooltip:
 		"""
 		if not self.helptext:
 			return
+		# Initially the tooltip doesn't know its width. Only try to position
+		# it once the width is known
+		if self.gui is None or not (self.gui.size[0] > 0):
+			return
+
+		# Appearently positioning the tooltip too often causes frequent
+		# segmentation faults.
+		# This makes sure that the tooltip is only positioned once
+		if self.properly_positioned:
+			return
+		self.properly_positioned = True
 
 		# TODO: think about nicer way of handling the polymorphism here,
 		# e.g. a position_tooltip_event and a position_tooltip_tuple
@@ -89,9 +99,6 @@ class _Tooltip:
 				return
 
 			x, y = where.getX(), where.getY()
-
-		if self.gui is None:
-			self.__init_gui()
 
 		widget_position = self.getAbsolutePos()
 
@@ -114,14 +121,17 @@ class _Tooltip:
 			# right screen edge, position to the left of cursor instead
 			offset = x - self.gui.size[0] - 5
 		self.gui.x = widget_position[0] + offset
-		if not self.tooltip_shown:
-			self.show_tooltip()
-			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
-			self.tooltip_shown = True
 
 	def show_tooltip(self):
-		if not self.helptext:
+
+		# This function is more some kind of initialization. It is not
+		# actually shown properly until position_tooltip has finished
+
+		# Don't try to show it again when it's shown already
+		if self.tooltip_shown or not self.helptext:
 			return
+		self.tooltip_shown = True
+
 		if self.gui is None:
 			self.__init_gui()
 
@@ -206,3 +216,4 @@ class _Tooltip:
 		ExtScheduler().rem_call(self, self._check_hover_alive)
 		self.topmost_widget = None
 		self.tooltip_shown = False
+		self.properly_positioned = False
