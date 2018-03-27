@@ -154,7 +154,7 @@ class _Tooltip:
 			self.__init_gui()
 
 		# Compare and reset timer value if difference from current time shorter than X sec.
-		if (time.time() - self.cooldown) < 1:
+		if (time.time() - self.cooldown) < .1:
 			return
 		else:
 			self.cooldown = time.time()
