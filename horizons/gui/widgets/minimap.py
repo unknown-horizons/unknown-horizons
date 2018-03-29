@@ -698,7 +698,7 @@ class Minimap:
 			self.draw()
 
 	def _get_rotation(self):
-		return self.rotation * math.pi / 2
+		return (-self.rotation - 0.5) * math.pi / 2
 
 	def _get_rotated_coords(self, tup):
 		"""Rotates according to current rotation settings.
