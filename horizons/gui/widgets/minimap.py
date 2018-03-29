@@ -557,8 +557,7 @@ class Minimap:
 		for (x, y), color in iter_minimap_points(self.location, self.world,
 						self.COLORS["island"], self.COLORS["water"], where):
 			if use_rotation:
-				# inlined _get_rotated_coords
-				rot_x, rot_y = self._rotate((location_left + x, location_top + y), self._rotations)
+				rot_x, rot_y = self._get_rotated_coords((location_left + x, location_top + y))
 				fife_point.set(rot_x - location_left, rot_y - location_top)
 			else:
 				fife_point.set(x, y)
@@ -698,28 +697,18 @@ class Minimap:
 			self._rotation_setting = message.new_value
 			self.draw()
 
-	_rotations = { 0 : 0,
-				         1 : 3 * math.pi / 2,
-				         2 : math.pi,
-				         3 : math.pi / 2
-				         }
+	def _get_rotation(self):
+		return self.rotation * math.pi / 2
 
 	def _get_rotated_coords(self, tup):
 		"""Rotates according to current rotation settings.
 		Input coord must be relative to screen origin, not minimap origin"""
-		return self._rotate(tup, self._rotations)
-
-	_from_rotations = { 0 : 0,
-				              1 : math.pi / 2,
-				              2 : math.pi,
-				              3 : 3 * math.pi / 2
-				              }
+		return self._rotate(tup, self._get_rotation())
 
 	def _get_from_rotated_coords(self, tup):
-		return self._rotate(tup, self._from_rotations)
+		return self._rotate(tup, self._get_rotation())
 
-	def _rotate(self, tup, rotations):
-		rotation = rotations[self.rotation]
+	def _rotate(self, tup, rotation):
 
 		x = tup[0]
 		y = tup[1]
