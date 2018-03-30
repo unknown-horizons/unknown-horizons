@@ -24,12 +24,15 @@ import time
 
 from fife import fife
 from fife.fife import AudioSpaceCoordinate
+from fife.fife import Point3D
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
+
+
 
 
 class View(ChangeListener):
@@ -223,15 +226,22 @@ class View(ChangeListener):
 		self._changed()
 
 	def get_displayed_area(self):
-		"""Returns the coords of what is displayed on the screen as Rect"""
-		coords = self.cam.getLocation().getLayerCoordinates()
-		cell_dim = self.cam.getCellImageDimensions()
-		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
-		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
-		screen_width_as_coords = (width_x // self.zoom, width_y // self.zoom)
-		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0] // 2),
-		                                       coords.y - (screen_width_as_coords[1] // 2),
-		                                       *screen_width_as_coords)
+		"""
+		Returns the coords (clockwise, beginning in the top-left corner) of what is
+		displayed on the screen.
+		"""
+		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
+		screen_height = horizons.globals.fife.engine_settings.getScreenHeight()
+
+		points = []
+		for screen_x, screen_y in [
+				(0,0),
+				(screen_width, 0),
+				(screen_width, screen_height),
+				(0, screen_height)]:
+			map_point = self.cam.toMapCoordinates(Point3D(screen_x, screen_y), False)
+			points.append((map_point.x, map_point.y))
+		return points
 
 	def save(self, db):
 		loc = self.cam.getLocation().getExactLayerCoordinates()
