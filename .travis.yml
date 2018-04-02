@@ -4,7 +4,6 @@ language: bash
 
 before_install:
   - pwd
-  - cd ../
 
 install:
   - HOMEBREW_NO_AUTO_UPDATE=1 brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew upgrade swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew outdated swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis  python3 python
