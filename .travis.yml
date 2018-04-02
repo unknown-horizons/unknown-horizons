@@ -8,8 +8,8 @@ before_install:
 
 install:
   - HOMEBREW_NO_AUTO_UPDATE=1 brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew upgrade swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew outdated swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis  python3 python
-  - pip install --upgrade pip
-  - pip install -r requirements.txt
+  - pip3 install --upgrade pip setuptools wheel
+  - pip3 install -r requirements.txt
   - git clone --quiet --depth 1 https://github.com/fifengine/fifechan.git
   - mkdir build_fifechan || ls
   - cd build_fifechan
