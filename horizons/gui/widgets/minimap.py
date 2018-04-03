@@ -209,7 +209,6 @@ class Minimap:
 			SettingChanged.subscribe(self._on_setting_changed)
 
 		if self.world:
-			self._update_world_to_minimap_ratio()
 			self._update_transform_values()
 
 
@@ -238,7 +237,6 @@ class Minimap:
 		"""
 		if self.world is None and self.session.world is not None:
 			self.world = self.session.world # in case minimap has been constructed before the world
-			self._update_world_to_minimap_ratio()
 			self._update_transform_values()
 		if not self.world.inited:
 			return # don't draw while loading
@@ -391,12 +389,6 @@ class Minimap:
 			if not self.location.contains(abs_mouse_position):
 				# mouse click was on icon but not actually on minimap
 				return None
-			#abs_mouse_position = abs_mouse_position.to_tuple()
-		#else:
-			#abs_mouse_position = mouse_position.to_tuple()
-		#if self._get_rotation_setting():
-			#abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
-		#return self._minimap_coords_to_world_coords(abs_mouse_position)
 		return self._minimap_to_world((event.getX(), event.getY()))
 
 	def _mouse_entered(self, event):
@@ -541,18 +533,12 @@ class Minimap:
 		if where is None:
 			rt.removeAll(render_name)
 
-		#location_left = self.location.left
-		#location_top = self.location.top
 		# Is this really worth it?
 		draw_point = rt.addPoint
 		fife_point = fife.Point(0, 0)
 		#use_rotation = self._get_rotation_setting()
 
 		for (x, y), color in self.iter_points(where):
-			#if use_rotation:
-				#rot_x, rot_y = self._get_rotated_coords((location_left + x, location_top + y))
-				#fife_point.set(rot_x - location_left, rot_y - location_top)
-			#else:
 			fife_point.set(x, y)
 			draw_point(render_name, fife_point, *color)
 
@@ -671,17 +657,7 @@ class Minimap:
 
 	## CALC UTILITY
 	def _world_to_minimap(self, coords):
-		"""Complete coord transformation, batteries included.
-		The methods below are for more specialized purposes."""
-
-		#coords = self._world_coords_to_minimap_coords(coords)
-
-		#if self._get_rotation_setting():
-			#coords = self._get_rotated_coords(coords)
-		## transform from screen coords to minimap coords
-		#coords = (coords[0] - self.location.left,
-		          #coords[1] - self.location.top)
-		#return coords
+		"""Complete coord transformation, batteries included."""
 
 		# all steps in one function to improve optimization overview
 		x, y = coords
@@ -712,13 +688,6 @@ class Minimap:
 		return (int(x), int(y))
 
 	def _minimap_to_world(self, coords):
-		#coords = (coords[0] + self.location.left,
-		          #coords[1] + self.location.top)
-
-		#if self._get_rotation_setting():
-			#coords = self._get_from_rotated_coords(coords)
-		#coords = self._minimap_coords_to_world_coords(coords)
-		#return coords
 		x, y = coords
 
 		# center on 0,0
@@ -744,7 +713,7 @@ class Minimap:
 
 
 	def _update_transform_values(self):
-		self._rotation_rad = (-self.rotation - 0.5) * math.pi / 2
+		self._rotation_rad = self._get_rotation()
 		self._sin_rotation = sin(self._rotation_rad)
 		self._cos_rotation = cos(self._rotation_rad)
 
@@ -763,64 +732,11 @@ class Minimap:
 			self.draw()
 
 	def _get_rotation(self):
-		return (-self.rotation - 0.5) * math.pi / 2
+		if self._get_rotation_setting():
+			return (-self.rotation - 0.5) * math.pi / 2
+		else:
+			return 0
 
-	def _get_rotated_coords(self, tup):
-		"""Rotates according to current rotation settings.
-		Input coord must be relative to screen origin, not minimap origin"""
-		return self._rotate(tup, self._get_rotation())
-
-	def _get_from_rotated_coords(self, tup):
-		return self._rotate(tup, -self._get_rotation())
-
-	def _rotate(self, tup, rotation):
-
-		x = tup[0]
-		y = tup[1]
-
-		# Rotate around center of minimap.
-		x -= self.location_center.x
-		y -= self.location_center.y
-
-		new_x = x * self._cos_rotation - y * self._sin_rotation
-		new_y = x * self._sin_rotation + y * self._cos_rotation
-
-		new_x += self.location_center.x
-		new_y += self.location_center.y
-
-		new_x = int(round(new_x))
-		new_y = int(round(new_y))
-
-		## Some points may get out of range.
-		#new_x = max(self.location.left, new_x)
-		#new_x = min(self.location.right, new_x)
-		#new_y = max(self.location.top, new_y)
-		#new_y = min(self.location.bottom, new_y)
-
-		return (new_x, new_y)
-
-	def _update_world_to_minimap_ratio(self):
-		world_dimensions = (self.world.map_dimensions.width, self.world.map_dimensions.height)
-		minimap_dimensions = (self.location.width, self.location.height)
-		self._world_to_minimap_ratio = get_world_to_minimap_ratio(world_dimensions, minimap_dimensions)
-
-	#TODO: rename this. Minimap coords are rotated.
-	def _world_coords_to_minimap_coords(self, tup):
-		"""Calculates which pixel in the minimap contains a coord in the real map.
-		@param tup: (x, y) as ints
-		@return tuple"""
-		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
-		return (
-			int(round(float(tup[0] - self.world.min_x) / pixel_per_coord_x)) + self.location.left,
-			int(round(float(tup[1] - self.world.min_y) / pixel_per_coord_y)) + self.location.top
-		)
-
-	def _minimap_coords_to_world_coords(self, tup):
-		"""Inverse to _world_coords_to_minimap_coords"""
-		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
-		world_x = round(pixel_per_coord_x * (tup[0] - self.location.left))
-		world_y = round(pixel_per_coord_y * (tup[1] - self.location.top))
-		return (int(world_x) + self.world.min_x, int(world_y) + self.world.min_y)
 
 	def get_size(self):
 		return (self.location.height, self.location.width)
