@@ -184,8 +184,6 @@ class Minimap:
 
 		self.session = session
 		self.world = world
-		if self.world:
-			self._update_world_to_minimap_ratio()
 		self.view = view
 		self.rotation = 0
 		self.fixed_tooltip = tooltip
@@ -209,6 +207,10 @@ class Minimap:
 		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
 		if self.use_rotation:
 			SettingChanged.subscribe(self._on_setting_changed)
+
+		if self.world:
+			self._update_world_to_minimap_ratio()
+			self._update_transform_values()
 
 
 	def end(self):
@@ -237,6 +239,7 @@ class Minimap:
 		if self.world is None and self.session.world is not None:
 			self.world = self.session.world # in case minimap has been constructed before the world
 			self._update_world_to_minimap_ratio()
+			self._update_transform_values()
 		if not self.world.inited:
 			return # don't draw while loading
 
@@ -653,6 +656,7 @@ class Minimap:
 	def _update_rotation(self, direction):
 		self.rotation += direction
 		self.rotation %= 4
+		self._update_transform_values()
 		if self._get_rotation_setting():
 			self.draw()
 
@@ -688,16 +692,16 @@ class Minimap:
 
 		# rotate
 		rotation = self._get_rotation()
-		x_ = x * cos(rotation) - y * sin(rotation)
-		y_ = x * sin(rotation) + y * cos(rotation)
+		x_ = x * self._cos_rotation - y * self._sin_rotation
+		y_ = x * self._sin_rotation + y * self._cos_rotation
 		x = x_
 		y = y_
 
 		# TODO: account for change in width and height after rotation
 
 		# scale to minimap size
-		x *= self.location.width / self.world.map_dimensions.width
-		y *= self.location.height / self.world.map_dimensions.height
+		x *= self._world_minimap_ratio_x
+		y *= self._world_minimap_ratio_y
 
 
 		# undo centering and translate to correct position
@@ -723,14 +727,14 @@ class Minimap:
 
 		# rotate
 		rotation = self._get_rotation()
-		x_ =  x * cos(rotation) + y * sin(rotation)
-		y_ = -x * sin(rotation) + y * cos(rotation)
+		x_ =  x * self._cos_rotation + y * self._sin_rotation
+		y_ = -x * self._sin_rotation + y * self._cos_rotation
 		x = x_
 		y = y_
 
 		# scale to world size
-		x *= self.world.map_dimensions.width / self.location.width
-		y *= self.world.map_dimensions.height / self.location.height
+		x /= self._world_minimap_ratio_x
+		y /= self._world_minimap_ratio_y
 
 		# undo centering and translate to correct position
 		x += self.world.map_dimensions.center.x
@@ -738,6 +742,14 @@ class Minimap:
 
 		return (int(x), int(y))
 
+
+	def _update_transform_values(self):
+		self._rotation_rad = (-self.rotation - 0.5) * math.pi / 2
+		self._sin_rotation = sin(self._rotation_rad)
+		self._cos_rotation = cos(self._rotation_rad)
+
+		self._world_minimap_ratio_x = self.location.width / self.world.map_dimensions.width
+		self._world_minimap_ratio_y = self.location.height / self.world.map_dimensions.height
 
 
 	def _get_rotation_setting(self):
@@ -770,8 +782,8 @@ class Minimap:
 		x -= self.location_center.x
 		y -= self.location_center.y
 
-		new_x = x * cos(rotation) - y * sin(rotation)
-		new_y = x * sin(rotation) + y * cos(rotation)
+		new_x = x * self._cos_rotation - y * self._sin_rotation
+		new_y = x * self._sin_rotation + y * self._cos_rotation
 
 		new_x += self.location_center.x
 		new_y += self.location_center.y
@@ -930,5 +942,4 @@ class _MinimapImage:
 		"""Always call this."""
 		targetname = self.rendertarget.getTarget().getName()
 		self.targetrenderer.setRenderTarget(targetname, False, 0)
-
 
