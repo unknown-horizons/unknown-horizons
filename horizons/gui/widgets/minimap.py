@@ -42,6 +42,9 @@ def iter_minimap_points(location, world, island_color, water_color, area=None):
 
 	If `area` is set, it's supposed to be a part of `location`, that is to be
 	returned.
+
+	This function is not used anymore in the in-game minimap, but it is necessary
+	for the minimap preview.
 	"""
 
 	if area is None:
@@ -528,10 +531,31 @@ class Minimap:
 
 		# Is this really worth it?
 		draw_point = rt.addPoint
-		fife_point = fife.Point(0, 0)
-		#use_rotation = self._get_rotation_setting()
 
-		for (x, y), color in self.iter_points(where):
+		fife_point = fife.Point(0, 0)
+		full_map = self.world.full_map
+		island_color = self.COLORS["island"]
+		water_color = self.COLORS["water"]
+
+		for (x, y) in self.transform.iter_points(where):
+			real_map_coords = self._minimap_to_world((x, y))
+
+			# check what's at the covered_area
+			if real_map_coords in full_map:
+				# this pixel is an island
+				tile = full_map[real_map_coords]
+				settlement = tile.settlement
+				if settlement is None:
+					# island without settlement
+					if tile.id <= 0:
+						color = water_color
+					else:
+						color = island_color
+				else:
+					# pixel belongs to a player
+					color = settlement.owner.color.to_tuple()
+			else:
+				color = water_color
 			fife_point.set(x, y)
 			draw_point(render_name, fife_point, *color)
 
@@ -632,24 +656,49 @@ class Minimap:
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
 
-	def _update_rotation(self, direction):
-		self.rotation += direction
-		self.rotation %= 4
-		self._update_transform_values()
-		if self._get_rotation_setting():
-			self.draw()
-
 	def rotate_right(self):
 		# keep track of rotation at any time, but only apply
 		# if it's actually used
-		self._update_rotation(-1)
+		self.transform.update_rotation(-1)
+		if self._get_rotation_setting():
+			self.draw()
 
 	def rotate_left(self):
 		# see above
-		self._update_rotation(1)
+		self.transform.update_rotation(1)
+		if self._get_rotation_setting():
+			self.draw()
 
-	## CALC UTILITY
-	def _world_to_minimap(self, coords):
+
+	def _get_rotation_setting(self):
+		return self.use_rotation and self._rotation_setting
+
+
+	def _on_setting_changed(self, message):
+		if message.setting_name == "MinimapRotation":
+			self._rotation_setting = message.new_value
+			self.transform.set_use_rotation(self._get_rotation_setting())
+			self.draw()
+
+
+class _MinimapTransform:
+
+	def __init__(self, world_dimensions, location, rotation=0, use_rotation=True):
+		self.world_dimensions = worlds_dimensions
+		self.location = location
+		self.rotation = rotation
+		self.use_rotation = use_rotation
+
+	def update_rotation(self, direction):
+		self.rotation += direction
+		self.rotation %= 4
+		self._update_transform_values()
+
+	def set_use_rotation(self, use_rotation):
+		self.use_rotation = use_rotation
+		self._update_transform_values()
+
+	def world_to_minimap(self, coords):
 		"""Complete coord transformation, batteries included."""
 
 		x, y = coords
@@ -668,7 +717,7 @@ class Minimap:
 
 		return (int(x), int(y))
 
-	def _minimap_to_world(self, coords):
+	def minimap_to_world(self, coords):
 		x, y = coords
 
 		# center on 0,0 and scale to world size
@@ -687,7 +736,7 @@ class Minimap:
 		return (int(x), int(y))
 
 
-	def _update_transform_values(self):
+	def _update_parameters(self):
 		""" Update the transformation parameters.
 		This is only executed at the begin and when the map rotation changes.
 		This should improve performance """
@@ -701,16 +750,10 @@ class Minimap:
 		self._world_minimap_ratio_y = self.location.height / self.world.map_dimensions.height * self._scale_correction
 
 
-	def _get_rotation_setting(self):
-		return self.use_rotation and self._rotation_setting
 
-	def _on_setting_changed(self, message):
-		if message.setting_name == "MinimapRotation":
-			self._rotation_setting = message.new_value
-			self.draw()
 
 	def _get_rotation(self):
-		if self._get_rotation_setting():
+		if self.use_rotation:
 			return (-self.rotation - 0.5) * math.pi / 2
 		else:
 			return 0
@@ -730,28 +773,9 @@ class Minimap:
 		returned.
 		"""
 		location = self.location
-		world = self.world
-		island_color = self.COLORS["island"]
-		water_color = self.COLORS["water"]
-
-		use_rotation = self._get_rotation_setting()
-
 
 		if area is None:
-			area = location
-
-		# calculate which area of the real map is mapped to which pixel on the minimap
-		pixel_per_coord_x = self._world_minimap_ratio_x
-		pixel_per_coord_y = self._world_minimap_ratio_y
-
-		# calculate values here so we don't have to do it in the loop
-		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
-		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y / 2)
-
-		world_min_x = world.min_x
-		world_min_y = world.min_y
-		full_map = world.full_map
-
+			area = self.location
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this facilitates calculating the real world coords
@@ -761,29 +785,7 @@ class Minimap:
 			for y_i in range(max(area.top, asdf), min(location.height - asdf, area.height)):
 				y = y_i + area.top
 
-				#TODO Does this even belong here?
-				real_map_coords = self._minimap_to_world((x, y))
-
-				# check what's at the covered_area
-				if real_map_coords in full_map:
-					# this pixel is an island
-					tile = full_map[real_map_coords]
-					settlement = tile.settlement
-					if settlement is None:
-						# island without settlement
-						if tile.id <= 0:
-							color = water_color
-						else:
-							color = island_color
-					else:
-						# pixel belongs to a player
-						color = settlement.owner.color.to_tuple()
-				else:
-					color = water_color
-
-				pos = (x, y)
-
-				yield (pos, color)
+				yield (x, y)
 
 
 class _MinimapImage:
