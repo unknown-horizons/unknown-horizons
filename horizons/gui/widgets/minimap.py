@@ -528,10 +528,32 @@ class Minimap:
 
 		# Is this really worth it?
 		draw_point = rt.addPoint
-		fife_point = fife.Point(0, 0)
-		#use_rotation = self._get_rotation_setting()
 
-		for (x, y), color in self.iter_points(where):
+		fife_point = fife.Point(0, 0)
+		island_color = self.COLORS["island"]
+		water_color = self.COLORS["water"]
+		full_map = self.world.full_map
+
+		for (x, y) in self.iter_points(where):
+
+			real_map_coords = self._minimap_to_world((x, y))
+
+			# check what's at the covered_area
+			if real_map_coords in full_map:
+				# this pixel is an island
+				tile = full_map[real_map_coords]
+				settlement = tile.settlement
+				if settlement is None:
+					# island without settlement
+					if tile.id <= 0:
+						color = water_color
+					else:
+						color = island_color
+				else:
+					# pixel belongs to a player
+					color = settlement.owner.color.to_tuple()
+			else:
+				color = water_color
 			fife_point.set(x, y)
 			draw_point(render_name, fife_point, *color)
 
@@ -730,28 +752,9 @@ class Minimap:
 		returned.
 		"""
 		location = self.location
-		world = self.world
-		island_color = self.COLORS["island"]
-		water_color = self.COLORS["water"]
-
-		use_rotation = self._get_rotation_setting()
-
 
 		if area is None:
 			area = location
-
-		# calculate which area of the real map is mapped to which pixel on the minimap
-		pixel_per_coord_x = self._world_minimap_ratio_x
-		pixel_per_coord_y = self._world_minimap_ratio_y
-
-		# calculate values here so we don't have to do it in the loop
-		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
-		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y / 2)
-
-		world_min_x = world.min_x
-		world_min_y = world.min_y
-		full_map = world.full_map
-
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this facilitates calculating the real world coords
@@ -761,29 +764,7 @@ class Minimap:
 			for y_i in range(max(area.top, asdf), min(location.height - asdf, area.height)):
 				y = y_i + area.top
 
-				#TODO Does this even belong here?
-				real_map_coords = self._minimap_to_world((x, y))
-
-				# check what's at the covered_area
-				if real_map_coords in full_map:
-					# this pixel is an island
-					tile = full_map[real_map_coords]
-					settlement = tile.settlement
-					if settlement is None:
-						# island without settlement
-						if tile.id <= 0:
-							color = water_color
-						else:
-							color = island_color
-					else:
-						# pixel belongs to a player
-						color = settlement.owner.color.to_tuple()
-				else:
-					color = water_color
-
-				pos = (x, y)
-
-				yield (pos, color)
+				yield (x, y)
 
 
 class _MinimapImage:
