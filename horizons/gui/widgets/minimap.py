@@ -662,8 +662,6 @@ class Minimap:
 		x_ = x * self._cos_rotation - y * self._sin_rotation
 		y_ = x * self._sin_rotation + y * self._cos_rotation
 
-		# TODO: account for change in width and height after rotation
-
 		# scale to minimap size and translate to correct position
 		x = x_ * self._world_minimap_ratio_x + self.location.center.x
 		y = y_ * self._world_minimap_ratio_y + self.location.center.y
@@ -697,8 +695,10 @@ class Minimap:
 		self._sin_rotation = sin(self._rotation_rad)
 		self._cos_rotation = cos(self._rotation_rad)
 
-		self._world_minimap_ratio_x = self.location.width / self.world.map_dimensions.width
-		self._world_minimap_ratio_y = self.location.height / self.world.map_dimensions.height
+		self._scale_correction = max(abs(self._sin_rotation), abs(self._cos_rotation))
+
+		self._world_minimap_ratio_x = self.location.width / self.world.map_dimensions.width * self._scale_correction
+		self._world_minimap_ratio_y = self.location.height / self.world.map_dimensions.height * self._scale_correction
 
 
 	def _get_rotation_setting(self):
