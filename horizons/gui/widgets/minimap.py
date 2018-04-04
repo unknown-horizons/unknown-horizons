@@ -533,11 +533,12 @@ class Minimap:
 		draw_point = rt.addPoint
 
 		fife_point = fife.Point(0, 0)
-		full_map = self.world.full_map
 		island_color = self.COLORS["island"]
 		water_color = self.COLORS["water"]
+		full_map = self.world.full_map
 
-		for (x, y) in self.transform.iter_points(where):
+		for (x, y) in self.iter_points(where):
+
 			real_map_coords = self._minimap_to_world((x, y))
 
 			# check what's at the covered_area
@@ -775,7 +776,7 @@ class _MinimapTransform:
 		location = self.location
 
 		if area is None:
-			area = self.location
+			area = location
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this facilitates calculating the real world coords
