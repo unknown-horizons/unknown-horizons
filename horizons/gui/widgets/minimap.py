@@ -34,15 +34,6 @@ from horizons.messaging import SettingChanged
 from horizons.util.shapes import Circle, Point, Rect
 
 
-def get_world_to_minimap_ratio(world_dimensions, minimap_dimensions):
-	"""Compute the number of pixels of the world needed for one pixel on the minimap.
-
-	Returns a tuple for x and y, in case they differ.
-	Accepts two tuples of (width, height) to compute the ratio on.
-	"""
-	return tuple(w / m for w, m in zip(world_dimensions, minimap_dimensions))
-
-
 def iter_minimap_points(location, world, island_color, water_color, area=None):
 	"""Return an iterator over the pixels of a minimap of the given world.
 
@@ -52,13 +43,15 @@ def iter_minimap_points(location, world, island_color, water_color, area=None):
 	If `area` is set, it's supposed to be a part of `location`, that is to be
 	returned.
 	"""
+
 	if area is None:
 		area = location
 
 	# calculate which area of the real map is mapped to which pixel on the minimap
 	world_dimensions = (world.map_dimensions.width, world.map_dimensions.height)
 	minimap_dimensions = (location.width, location.height)
-	pixel_per_coord_x, pixel_per_coord_y = get_world_to_minimap_ratio(world_dimensions, minimap_dimensions)
+	pixel_per_coord_x = world.map_dimensions.width / location.width
+	pixel_per_coord_y = world.map_dimensions.height / location.height
 
 	# calculate values here so we don't have to do it in the loop
 	pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
@@ -659,7 +652,6 @@ class Minimap:
 	def _world_to_minimap(self, coords):
 		"""Complete coord transformation, batteries included."""
 
-		# all steps in one function to improve optimization overview
 		x, y = coords
 
 		# center on 0,0
@@ -667,52 +659,40 @@ class Minimap:
 		y -= self.world.map_dimensions.center.y
 
 		# rotate
-		rotation = self._get_rotation()
 		x_ = x * self._cos_rotation - y * self._sin_rotation
 		y_ = x * self._sin_rotation + y * self._cos_rotation
-		x = x_
-		y = y_
 
 		# TODO: account for change in width and height after rotation
 
-		# scale to minimap size
-		x *= self._world_minimap_ratio_x
-		y *= self._world_minimap_ratio_y
-
-
-		# undo centering and translate to correct position
-		x += self.location.center.x
-		y += self.location.center.y
-
+		# scale to minimap size and translate to correct position
+		x = x_ * self._world_minimap_ratio_x + self.location.center.x
+		y = y_ * self._world_minimap_ratio_y + self.location.center.y
 
 		return (int(x), int(y))
 
 	def _minimap_to_world(self, coords):
 		x, y = coords
 
-		# center on 0,0
-		x -= self.location.center.x
-		y -= self.location.center.y
+		# center on 0,0 and scale to world size
+		x = (x - self.location.center.x) / self._world_minimap_ratio_x
+		y = (y - self.location.center.y) / self._world_minimap_ratio_y
 
 		# rotate
-		rotation = self._get_rotation()
 		x_ =  x * self._cos_rotation + y * self._sin_rotation
 		y_ = -x * self._sin_rotation + y * self._cos_rotation
-		x = x_
-		y = y_
-
-		# scale to world size
-		x /= self._world_minimap_ratio_x
-		y /= self._world_minimap_ratio_y
 
 		# undo centering and translate to correct position
-		x += self.world.map_dimensions.center.x
-		y += self.world.map_dimensions.center.y
+		x = x_ + self.world.map_dimensions.center.x
+		y = y_ + self.world.map_dimensions.center.y
+
 
 		return (int(x), int(y))
 
 
 	def _update_transform_values(self):
+		""" Update the transformation parameters.
+		This is only executed at the begin and when the map rotation changes.
+		This should improve performance """
 		self._rotation_rad = self._get_rotation()
 		self._sin_rotation = sin(self._rotation_rad)
 		self._cos_rotation = cos(self._rotation_rad)
@@ -722,9 +702,7 @@ class Minimap:
 
 
 	def _get_rotation_setting(self):
-		if not self.use_rotation:
-			return False
-		return self._rotation_setting
+		return self.use_rotation and self._rotation_setting
 
 	def _on_setting_changed(self, message):
 		if message.setting_name == "MinimapRotation":
@@ -756,8 +734,6 @@ class Minimap:
 		island_color = self.COLORS["island"]
 		water_color = self.COLORS["water"]
 
-		location_left = self.location.left
-		location_top = self.location.top
 		use_rotation = self._get_rotation_setting()
 
 
@@ -765,9 +741,8 @@ class Minimap:
 			area = location
 
 		# calculate which area of the real map is mapped to which pixel on the minimap
-		world_dimensions = (world.map_dimensions.width, world.map_dimensions.height)
-		minimap_dimensions = (location.width, location.height)
-		pixel_per_coord_x, pixel_per_coord_y = get_world_to_minimap_ratio(world_dimensions, minimap_dimensions)
+		pixel_per_coord_x = self._world_minimap_ratio_x
+		pixel_per_coord_y = self._world_minimap_ratio_y
 
 		# calculate values here so we don't have to do it in the loop
 		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
@@ -781,26 +756,12 @@ class Minimap:
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this facilitates calculating the real world coords
 		for x_i in range(0, area.width):
-			x = x_i + area.left - location.left
-			asdf = int(abs(x / area.width - 0.5) * area.height)
-			for y_i in range(asdf, area.height - asdf - 1):
-				y = y_i + area.top - location.top
-				"""
-				This code should be here, but since python can't do inlining, we have to inline
-				ourselves for performance reasons
-				covered_area = Rect.init_from_topleft_and_size(
-				int(x * pixel_per_coord_x)+world_min_x,
-				int(y * pixel_per_coord_y)+world_min_y),
-				int(pixel_per_coord_x), int(pixel_per_coord_y))
-				real_map_point = covered_area.center
-				"""
-				# use center of the rect that the pixel covers
-				#unrot_x , unrot_y = self._get_from_rotated_coords((x, y))
-				#real_map_x = int(unrot_x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
-				#real_map_y = int(unrot_y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
-				#real_map_coords = (real_map_x, real_map_y)
+			x = x_i + area.left
+			asdf = int(abs(x / location.width - 0.5) * location.height)
+			for y_i in range(max(area.top, asdf), min(location.height - asdf, area.height)):
+				y = y_i + area.top
 
-				#TODO optimizations
+				#TODO Does this even belong here?
 				real_map_coords = self._minimap_to_world((x, y))
 
 				# check what's at the covered_area
@@ -820,10 +781,6 @@ class Minimap:
 				else:
 					color = water_color
 
-				#if use_rotation:
-					#rot_x, rot_y = self._get_rotated_coords((location_left + x, location_top + y))
-					#pos = (rot_x - location_left, rot_y - location_top)
-				#else:
 				pos = (x, y)
 
 				yield (pos, color)
