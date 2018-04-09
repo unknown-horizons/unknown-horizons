@@ -30,6 +30,7 @@ import horizons.globals
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.icongroup import TooltipBG
+from horizons.gui.widgets.imagebutton import ImageButton
 
 
 class _Tooltip:
@@ -113,12 +114,38 @@ class _Tooltip:
 			self.tooltip_shown = True
 
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
-		self.gui.y = widget_position[1] + y + 5
-		offset = x + 10
-		if (widget_position[0] + self.gui.size[0] + offset) > screen_width:
-			# right screen edge, position to the left of cursor instead
-			offset = x - self.gui.size[0] - 5
-		self.gui.x = widget_position[0] + offset
+
+		if isinstance(self, ImageButton):
+			# If the a button spawn a tooltip and the cursor hovers over that
+			# tooltip the tooltip will disappear and the button becomes
+			# unclickable. (see issue #2776: https://git.io/vxRrn)
+			# This is a workaround for that problem, by making tooltips for
+			# buttons always display below the button.
+			# There is a small chance that it still happens if you move the
+			# cursor very fast, but that seems unlikely to be such a major
+			# problem as it used to be.
+			# The underlying problem is that the cursor can not be repositioned
+			# on every mousemove because that causes frequent segfaults.
+			# If that problem would be fixed this workaround wouldn't be
+			# neccessary anymore.
+
+			ypos = widget_position[1] + self.height + 10
+
+			xpos = int(widget_position[0] + self.width/2 - self.gui.size[0]/2)
+			xpos = max(xpos, 5)
+			xpos = min(xpos, screen_width - self.gui.size[0] - 5)
+
+		else:
+
+			ypos = widget_position[1] + y + 5
+			offset = x + 10
+			if (widget_position[0] + self.gui.size[0] + offset) > screen_width:
+				# right screen edge, position to the left of cursor instead
+				offset = x - self.gui.size[0] - 5
+			xpos = widget_position[0] + offset
+
+		self.gui.x = xpos
+		self.gui.y = ypos
 
 	def show_tooltip(self):
 		if not self.helptext:
@@ -127,7 +154,7 @@ class _Tooltip:
 			self.__init_gui()
 
 		# Compare and reset timer value if difference from current time shorter than X sec.
-		if (time.time() - self.cooldown) < 1:
+		if (time.time() - self.cooldown) < .1:
 			return
 		else:
 			self.cooldown = time.time()
