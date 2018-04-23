@@ -771,14 +771,19 @@ class _MinimapTransform:
 		location = self.location
 
 		# loop through map coordinates
-		# TODO: make this work with any rotation (maybe use scanline algorithm?)
-		for x_i in range(0, location.width):
-			x = x_i + location.left
-			asdf = int(abs(x / location.width - 0.5) * location.height)
-			for y_i in range(asdf, location.height - asdf):
-				y = y_i + location.top
-
-				yield (x, y)
+		# TODO: make this work with any rotation
+		if self.use_rotation:
+			for x_i in range(0, location.width):
+				x = x_i + location.left
+				# TODO: better name
+				asdf = int(abs(x / location.width - 0.5) * location.height)
+				for y_i in range(asdf, location.height - asdf):
+					y = y_i + location.top
+					yield (x, y)
+		else:
+			for x in range(location.left, location.width + location.left):
+				for y in range(location.top, location.height + location.top):
+					yield (x, y)
 
 
 class _MinimapImage:
