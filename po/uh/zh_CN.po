@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-10-17 00:45+0000\n"
-"Last-Translator: Felix <icyvapor@gmail.com>\n"
+"PO-Revision-Date: 2018-04-17 08:34+0000\n"
+"Last-Translator: Ramon <g.luolei@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh/"
 "uh/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.17\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -813,33 +813,33 @@ msgstr "离开"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "上一页"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "下一页"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
-msgstr ""
+msgstr "玩家得分"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
-msgstr ""
+msgstr "玩家名称"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
-msgstr ""
+msgstr "金钱"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
@@ -847,7 +847,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
-msgstr ""
+msgstr "国土"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
@@ -856,7 +856,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
-msgstr ""
+msgstr "资源"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
@@ -866,7 +866,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
-msgstr ""
+msgstr "建筑物"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
@@ -877,7 +877,7 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:475
 msgid "Settlers"
-msgstr ""
+msgstr "殖民者"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
@@ -887,7 +887,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
-msgstr ""
+msgstr "单位"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
@@ -901,7 +901,7 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
 msgid "Total"
-msgstr ""
+msgstr "合计"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
@@ -914,36 +914,36 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
-msgstr ""
+msgstr "武器"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
-msgstr ""
+msgstr "健康"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
-msgstr ""
+msgstr "好斗的"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr ""
+msgstr "善守的"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr ""
+msgstr "被动的"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
-msgstr ""
+msgstr "逃避的"
 
 #: content/gui/xml/mainmenu/credits.xml:688
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -951,48 +951,48 @@ msgstr ""
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr ""
+msgstr "退出到主菜单"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "选择地图大小:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr ""
+msgstr "选择地图:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "选择一个保存的游戏地图："
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "选择地图源"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "创建新地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "加载已存在的地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "加载已保存的游戏地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "开始编辑"
 
 #: content/gui/xml/mainmenu/help.xml:14
 msgid "Return"
-msgstr ""
+msgstr "返回"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 msgid "Actions"
-msgstr ""
+msgstr "动作"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
