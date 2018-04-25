@@ -233,7 +233,8 @@ class ResourceOverviewBar:
 			entry.findChild(name="entry").position = (self.INITIAL_X_OFFSET + i * self.ENTRY_X_OFFSET,
 			                                          self.ENTRY_Y_OFFSET)
 			background_icon = entry.findChild(name="entry")
-			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
+			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseClicked', 'resbar')
+			background_icon.capture(self._show_dummy_slot, 'mouseEntered', 'resbar')
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
@@ -433,8 +434,6 @@ class ResourceOverviewBar:
 		inv = self._get_current_inventory()
 		if inv is None:
 			return
-
-		self._show_dummy_slot()
 
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
