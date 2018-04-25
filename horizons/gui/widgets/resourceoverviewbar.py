@@ -47,7 +47,7 @@ from horizons.world.player import Player
 class ResourceOverviewBar:
 	"""The thing on the top left.
 
-	http://wiki.unknown-horizons.org/w/HUD
+	https://github.com/unknown-horizons/unknown-horizons/wiki/HUD
 
 	Features:
 	- display contents of currently relevant inventory (settlement/ship)
@@ -222,11 +222,11 @@ class ResourceOverviewBar:
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
-			try: # get old slot
+			if i < len(self.gui): # get old slot
 				entry = self.gui[i]
 				if res == -1: # can't reuse dummy slot, need default data
 					self.gui[i] = entry = load_entry()
-			except IndexError: # need new one
+			else: # need new one
 				entry = load_entry()
 				self.gui.append(entry)
 
