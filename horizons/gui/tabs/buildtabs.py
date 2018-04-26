@@ -258,14 +258,13 @@ class BuildTab(TabInterface):
 		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
 		new_index = (cur_index + 1) % len(self.__class__.build_menus)
 		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
-
 		# after switch set active tab to first
 		self.__class__.last_active_build_tab = 0
-		self.session.ingame_gui.show_build_menu(update=True)
 
 		#save build style
 		horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
 		horizons.globals.fife.save_settings()
+		self.session.ingame_gui.show_build_menu(update=True)
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
