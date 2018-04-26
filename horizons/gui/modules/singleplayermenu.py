@@ -35,7 +35,7 @@ import horizons.main
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
+from horizons.gui.widgets.minimap import Minimap, iter_minimap_points_colors
 from horizons.gui.windows import Window
 from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
@@ -645,5 +645,5 @@ def generate_random_minimap(size, parameters):
 	# communicate via stdout. Sometimes the process seems to print more information, therefore
 	# we add markers around our data so it's easier for the caller to get to the data.
 	args = (location, world, Minimap.COLORS['island'], Minimap.COLORS['water'])
-	data = [(x, y, r, g, b) for (x, y), (r, g, b) in iter_minimap_points(*args)]
+	data = [(x, y, r, g, b) for (x, y), (r, g, b) in iter_minimap_points_colors(*args)]
 	print('DATA', json.dumps(data), 'ENDDATA')

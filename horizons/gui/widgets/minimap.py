@@ -34,70 +34,44 @@ from horizons.messaging import SettingChanged
 from horizons.util.shapes import Circle, Point, Rect
 
 
-def iter_minimap_points(location, world, island_color, water_color, area=None):
+def get_minimap_color(world_coords, world, island_color, water_color):
+
+	full_map = world.full_map
+
+	# check what's at the covered_area
+	if world_coords in full_map:
+		# this pixel is an island
+		tile = full_map[world_coords]
+		settlement = tile.settlement
+		if settlement is None:
+			# island without settlement
+			if tile.id <= 0:
+				color = water_color
+			else:
+				color = island_color
+		else:
+			# pixel belongs to a player
+			color = settlement.owner.color.to_tuple()
+	else:
+		color = water_color
+	return color
+
+def iter_minimap_points_colors(location, world, island_color, water_color):
 	"""Return an iterator over the pixels of a minimap of the given world.
 
 	For every pixel, a tuple ((x, y), (r, g, b)) is returned. These are the x and y
 	coordinated and the color of the pixel in RGB.
 
-	If `area` is set, it's supposed to be a part of `location`, that is to be
-	returned.
-
 	This function is not used anymore in the in-game minimap, but it is necessary
 	for the minimap preview.
 	"""
 
-	if area is None:
-		area = location
+	transform = _MinimapTransform(world.map_dimensions, location, 0, False)
 
-	# calculate which area of the real map is mapped to which pixel on the minimap
-	world_dimensions = (world.map_dimensions.width, world.map_dimensions.height)
-	minimap_dimensions = (location.width, location.height)
-	pixel_per_coord_x = world.map_dimensions.width / location.width
-	pixel_per_coord_y = world.map_dimensions.height / location.height
+	for x, y in transform.iter_points():
+			world_coords = transform.minimap_to_world((x, y))
 
-	# calculate values here so we don't have to do it in the loop
-	pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
-	pixel_per_coord_y_half_as_int = int(pixel_per_coord_y / 2)
-
-	world_min_x = world.min_x
-	world_min_y = world.min_y
-	full_map = world.full_map
-
-	# loop through map coordinates, assuming (0, 0) is the origin of the minimap
-	# this facilitates calculating the real world coords
-	for x in range(area.left - location.left, area.left + area.width - location.left):
-		for y in range(area.top - location.top, area.top + area.height - location.top):
-			"""
-			This code should be here, but since python can't do inlining, we have to inline
-			ourselves for performance reasons
-			covered_area = Rect.init_from_topleft_and_size(
-			  int(x * pixel_per_coord_x)+world_min_x,
-			  int(y * pixel_per_coord_y)+world_min_y),
-			  int(pixel_per_coord_x), int(pixel_per_coord_y))
-			real_map_point = covered_area.center
-			"""
-			# use center of the rect that the pixel covers
-			real_map_x = int(x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
-			real_map_y = int(y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
-			real_map_coords = (real_map_x, real_map_y)
-
-			# check what's at the covered_area
-			if real_map_coords in full_map:
-				# this pixel is an island
-				tile = full_map[real_map_coords]
-				settlement = tile.settlement
-				if settlement is None:
-					# island without settlement
-					if tile.id <= 0:
-						color = water_color
-					else:
-						color = island_color
-				else:
-					# pixel belongs to a player
-					color = settlement.owner.color.to_tuple()
-			else:
-				color = water_color
+			color = get_minimap_color(world_coords, world, island_color, water_color)
 
 			yield ((x, y), color)
 
@@ -533,28 +507,11 @@ class Minimap:
 		fife_point = fife.Point(0, 0)
 		island_color = self.COLORS["island"]
 		water_color = self.COLORS["water"]
-		full_map = self.world.full_map
 
 		for (x, y) in points:
 
-			real_map_coords = self.transform.minimap_to_world((x, y))
-
-			# check what's at the covered_area
-			if real_map_coords in full_map:
-				# this pixel is an island
-				tile = full_map[real_map_coords]
-				settlement = tile.settlement
-				if settlement is None:
-					# island without settlement
-					if tile.id <= 0:
-						color = water_color
-					else:
-						color = island_color
-				else:
-					# pixel belongs to a player
-					color = settlement.owner.color.to_tuple()
-			else:
-				color = water_color
+			world_coords = self.transform.minimap_to_world((x, y))
+			color = get_minimap_color(world_coords, self.world, island_color, water_color)
 			fife_point.set(x, y)
 			draw_point(render_name, fife_point, *color)
 
