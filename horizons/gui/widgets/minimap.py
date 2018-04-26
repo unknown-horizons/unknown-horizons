@@ -266,7 +266,6 @@ class Minimap:
 			return
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 		# draw rect for current screen
@@ -460,7 +459,6 @@ class Minimap:
 		relevant_coords.append(path[-1])
 
 		# get coords, actual drawing
-		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		p = fife.Point(0, 0)
 		render_name = self._get_render_name("ship_route") + str(next(self.__class__.__ship_route_counter))
@@ -523,7 +521,6 @@ class Minimap:
 		self.minimap_image.set_drawing_enabled()
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll(render_name)
-		use_rotation = self._get_rotation_setting()
 		# Make use of these dummy points instead of creating fife.Point instances
 		# (which are consuming a lot of resources).
 		dummy_point0 = fife.Point(0, 0)
