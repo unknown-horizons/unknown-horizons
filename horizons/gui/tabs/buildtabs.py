@@ -59,12 +59,10 @@ class BuildTab(TabInterface):
 	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
 	  ]
 
-	build_menu_config_per_tier = build_menus[0]
-	build_menu_config_per_type = build_menus[1]
-
-	default_build_menu_config = build_menu_config_per_tier
-
-	cur_build_menu_config = default_build_menu_config
+	layout_per_tier_index = 0
+	layout_per_type_index = 1
+	build_menu_config_per_tier = build_menus[layout_per_tier_index]
+	build_menu_config_per_type = build_menus[layout_per_type_index]
 
 	# NOTE: check for occurrences of this when adding one, you might want to
 	#       add respective code there as well
@@ -120,10 +118,6 @@ class BuildTab(TabInterface):
 		self.row_definitions = rows
 		self.headline = T(headline) if headline else headline # don't translate None
 		self.helptext = T(helptext) if helptext else self.headline
-
-		#get build style
-		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
 
 		super().__init__(icon_path=icon_path)
 
@@ -247,7 +241,7 @@ class BuildTab(TabInterface):
 
 	def _set_switch_layout_button_image(self, button):
 		image_path = "content/gui/icons/tabwidget/buildmenu/"
-		if self.__class__.cur_build_menu_config is self.build_menu_config_per_type:
+		if horizons.globals.fife.get_uh_setting("Buildstyle") == self.layout_per_type_index:
 			button.up_image = image_path + "tier.png"
 		else:
 			button.up_image = image_path + "class.png"
@@ -255,9 +249,9 @@ class BuildTab(TabInterface):
 
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
-		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
+		cur_index = horizons.globals.fife.get_uh_setting("Buildstyle")
 		new_index = (cur_index + 1) % len(self.__class__.build_menus)
-		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
+
 		# after switch set active tab to first
 		self.__class__.last_active_build_tab = 0
 

@@ -83,8 +83,7 @@ class TestRunner:
 	def _custom_setup(self):
 		"""Change build menu to 'per tier' for tests."""
 		from horizons.gui.tabs import BuildTab
-
-		BuildTab.default_build_menu_config = BuildTab.cur_build_menu_config = BuildTab.build_menu_config_per_tier
+		horizons.globals.fife.set_uh_setting("Buildstyle", BuildTab.layer_per_tier_index)
 
 	def _filter_traceback(self):
 		"""Remove test internals from exception tracebacks.
