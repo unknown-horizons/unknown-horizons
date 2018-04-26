@@ -131,8 +131,7 @@ class _Tooltip:
 
 			ypos = widget_position[1] + self.height + 10
 
-			xpos = int(widget_position[0] + self.width/2 - self.gui.size[0]/2)
-			xpos = max(xpos, 5)
+			xpos = int(widget_position[0])
 			xpos = min(xpos, screen_width - self.gui.size[0] - 5)
 
 		else:
