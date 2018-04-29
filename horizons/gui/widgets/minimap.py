@@ -35,6 +35,17 @@ from horizons.util.shapes import Circle, Point, Rect
 
 
 def get_minimap_color(world_coords, world, island_color, water_color):
+	"""Return the color that the minimap would have for given world coordinates
+
+	The color is a (r, g, b) tuple.
+	The world_coords should be a (x, y) tuple of integer coordinates, giving
+	the location on the real_world map.
+
+	If you only have the minimap coords you have to use
+	_MinimapTransform.minimap_to_world() first
+
+	island_color is the color used for unclaimed parts of islands
+	"""
 
 	full_map = world.full_map
 
