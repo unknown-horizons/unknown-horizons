@@ -576,19 +576,6 @@ class LAYERS:
 
 	NUM = 4 # number of layers
 
-## PATHS
-# workaround, so it can be used to create paths within PATHS
-
-
-if 'UH_USER_DIR' in os.environ:
-	# Prefer the value from the environment. Used to override user dir when
-	# running GUI tests.
-	_user_dir = os.environ['UH_USER_DIR']
-else:
-	_user_dir = str(get_user_game_directory())
-	if not os.path.exists(_user_dir):
-		os.makedirs(_user_dir)
-
 
 class GFX:
 	BUILDING_OUTLINE_THRESHOLD = 96
@@ -604,6 +591,20 @@ class GFX:
 	USE_ATLASES = False
 
 
+## PATHS
+# workaround, so it can be used to create paths within PATHS
+
+
+if 'UH_USER_DIR' in os.environ:
+	# Prefer the value from the environment. Used to override user dir when
+	# running GUI tests.
+	_user_dir = os.environ['UH_USER_DIR']
+else:
+	_user_dir = str(get_user_game_directory())
+	if not os.path.exists(_user_dir):
+		os.makedirs(_user_dir)
+
+
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
@@ -611,7 +612,7 @@ class PATHS:
 	USER_MAPS_DIR = os.path.join(USER_DIR, "maps")
 	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
 	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
-	SAVEGAME_DIR = os.path.join(PATHS.USER_DIR, "save")
+	SAVEGAME_DIR = os.path.join(USER_DIR, "save")
 	CACHE_DIR = USER_DIR
 	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
 	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
