@@ -62,12 +62,10 @@ def generate_atlases():
 		label = tkinter.Label(window, padx=10, text="Generating atlases!")
 		label.pack(side="right")
 
-		# wait a second to give the process time to check if a generation is necessary at all
-		time.sleep(1.0)
 		window.deiconify()
+		window.attributes("-topmost", 0)
 		while process.poll() is None:
 			if not window.state() == "iconic":
-				window.attributes("-topmost", 0)
 				window.update()
 			time.sleep(0.1)
 		window.destroy()
