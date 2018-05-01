@@ -611,9 +611,11 @@ class PATHS:
 	USER_MAPS_DIR = os.path.join(USER_DIR, "maps")
 	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
 	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
+	SAVEGAME_DIR = os.path.join(PATHS.USER_DIR, "save")
+	CACHE_DIR = USER_DIR
 	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
 	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
-	ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
+	ATLAS_METADATA_PATH = os.path.join(CACHE_DIR, "atlas-metadata.cache")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
