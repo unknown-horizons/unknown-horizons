@@ -92,6 +92,7 @@ class UnitClass(IngameType):
 			params['rot'] = rotation
 			# for more fine-tuned adjustments see horizons/world/building/__init__.py
 			path = '{id}+{action}+{rot}:shift:center+0,bottom+20'.format(**params)
+			# incorrect shift; to be done later
 			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())
