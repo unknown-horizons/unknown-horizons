@@ -96,11 +96,7 @@ class BuildingClass(IngameType):
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
 			assert rotation == 45 or rotation == 135 or rotation == 225 or rotation == 315, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
-			# (cls.size[1] + cls.size[0]) * VIEW.CELL_IMAGE_DIMENSIONS[1] / 4 == image.width / 4
-			# this is the distance between the bottom of the image and the point in the image
-			# representing the center of the object
-			params["botm"] = int((cls.size[1] + cls.size[0]) * VIEW.CELL_IMAGE_DIMENSIONS[1] / 4)
-			path = '{id}+{action}+{rot}:shift:center+0,bottom+{botm}'.format(**params)
+			path = '{id}+{action}+{rot}'.format(**params)
 			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())
