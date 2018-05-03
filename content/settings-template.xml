@@ -83,8 +83,8 @@
 		<Setting name="DESTROY_TOOL" type="list"> X </Setting>
 		<Setting name="ROTATE_RIGHT" type="list"> PERIOD </Setting>
 		<Setting name="ROTATE_LEFT" type="list"> COMMA </Setting>
-		<Setting name="SPEED_UP" type="list"> PLUS ; EQUALS </Setting>
-		<Setting name="SPEED_DOWN" type="list"> MINUS </Setting>
+		<Setting name="SPEED_UP" type="list"> PLUS ; EQUALS ; KP_PLUS</Setting>
+		<Setting name="SPEED_DOWN" type="list"> MINUS ;  ; KP_MINUS</Setting>
 		<Setting name="ZOOM_IN" type="list"> PAGE_DOWN </Setting>
 		<Setting name="ZOOM_OUT" type="list"> PAGE_UP </Setting>
 		<Setting name="REMOVE_SELECTED" type="list"> DELETE </Setting>

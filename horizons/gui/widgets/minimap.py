@@ -34,70 +34,55 @@ from horizons.messaging import SettingChanged
 from horizons.util.shapes import Circle, Point, Rect
 
 
-def iter_minimap_points(location, world, island_color, water_color, area=None):
+def get_minimap_color(world_coords, world, island_color, water_color):
+	"""Return the color that the minimap would have for given world coordinates
+
+	The color is a (r, g, b) tuple.
+	The world_coords should be a (x, y) tuple of integer coordinates, giving
+	the location on the real_world map.
+
+	If you only have the minimap coords you have to use
+	_MinimapTransform.minimap_to_world() first
+
+	island_color is the color used for unclaimed parts of islands
+	"""
+
+	full_map = world.full_map
+
+	# check what's at the covered_area
+	if world_coords in full_map:
+		# this pixel is an island
+		tile = full_map[world_coords]
+		settlement = tile.settlement
+		if settlement is None:
+			# island without settlement
+			if tile.id <= 0:
+				color = water_color
+			else:
+				color = island_color
+		else:
+			# pixel belongs to a player
+			color = settlement.owner.color.to_tuple()
+	else:
+		color = water_color
+	return color
+
+def iter_minimap_points_colors(location, world, island_color, water_color):
 	"""Return an iterator over the pixels of a minimap of the given world.
 
 	For every pixel, a tuple ((x, y), (r, g, b)) is returned. These are the x and y
 	coordinated and the color of the pixel in RGB.
 
-	If `area` is set, it's supposed to be a part of `location`, that is to be
-	returned.
-
 	This function is not used anymore in the in-game minimap, but it is necessary
 	for the minimap preview.
 	"""
 
-	if area is None:
-		area = location
+	transform = _MinimapTransform(world.map_dimensions, location, 0, False)
 
-	# calculate which area of the real map is mapped to which pixel on the minimap
-	world_dimensions = (world.map_dimensions.width, world.map_dimensions.height)
-	minimap_dimensions = (location.width, location.height)
-	pixel_per_coord_x = world.map_dimensions.width / location.width
-	pixel_per_coord_y = world.map_dimensions.height / location.height
+	for x, y in transform.iter_points():
+			world_coords = transform.minimap_to_world((x, y))
 
-	# calculate values here so we don't have to do it in the loop
-	pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
-	pixel_per_coord_y_half_as_int = int(pixel_per_coord_y / 2)
-
-	world_min_x = world.min_x
-	world_min_y = world.min_y
-	full_map = world.full_map
-
-	# loop through map coordinates, assuming (0, 0) is the origin of the minimap
-	# this facilitates calculating the real world coords
-	for x in range(area.left - location.left, area.left + area.width - location.left):
-		for y in range(area.top - location.top, area.top + area.height - location.top):
-			"""
-			This code should be here, but since python can't do inlining, we have to inline
-			ourselves for performance reasons
-			covered_area = Rect.init_from_topleft_and_size(
-			  int(x * pixel_per_coord_x)+world_min_x,
-			  int(y * pixel_per_coord_y)+world_min_y),
-			  int(pixel_per_coord_x), int(pixel_per_coord_y))
-			real_map_point = covered_area.center
-			"""
-			# use center of the rect that the pixel covers
-			real_map_x = int(x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
-			real_map_y = int(y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
-			real_map_coords = (real_map_x, real_map_y)
-
-			# check what's at the covered_area
-			if real_map_coords in full_map:
-				# this pixel is an island
-				tile = full_map[real_map_coords]
-				settlement = tile.settlement
-				if settlement is None:
-					# island without settlement
-					if tile.id <= 0:
-						color = water_color
-					else:
-						color = island_color
-				else:
-					# pixel belongs to a player
-					color = settlement.owner.color.to_tuple()
-			else:
-				color = water_color
+			color = get_minimap_color(world_coords, world, island_color, water_color)
 
 			yield ((x, y), color)
 
@@ -292,7 +277,6 @@ class Minimap:
 			return
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 		# draw rect for current screen
@@ -486,7 +470,6 @@ class Minimap:
 		relevant_coords.append(path[-1])
 
 		# get coords, actual drawing
-		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		p = fife.Point(0, 0)
 		render_name = self._get_render_name("ship_route") + str(next(self.__class__.__ship_route_counter))
@@ -533,28 +516,11 @@ class Minimap:
 		fife_point = fife.Point(0, 0)
 		island_color = self.COLORS["island"]
 		water_color = self.COLORS["water"]
-		full_map = self.world.full_map
 
 		for (x, y) in points:
 
-			real_map_coords = self.transform.minimap_to_world((x, y))
-
-			# check what's at the covered_area
-			if real_map_coords in full_map:
-				# this pixel is an island
-				tile = full_map[real_map_coords]
-				settlement = tile.settlement
-				if settlement is None:
-					# island without settlement
-					if tile.id <= 0:
-						color = water_color
-					else:
-						color = island_color
-				else:
-					# pixel belongs to a player
-					color = settlement.owner.color.to_tuple()
-			else:
-				color = water_color
+			world_coords = self.transform.minimap_to_world((x, y))
+			color = get_minimap_color(world_coords, self.world, island_color, water_color)
 			fife_point.set(x, y)
 			draw_point(render_name, fife_point, *color)
 
@@ -566,7 +532,6 @@ class Minimap:
 		self.minimap_image.set_drawing_enabled()
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll(render_name)
-		use_rotation = self._get_rotation_setting()
 		# Make use of these dummy points instead of creating fife.Point instances
 		# (which are consuming a lot of resources).
 		dummy_point0 = fife.Point(0, 0)

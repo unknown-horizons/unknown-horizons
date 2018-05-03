@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-07-15 08:30+0000\n"
-"Last-Translator: Felix <icyvapor@gmail.com>\n"
-"Language-Team: Chinese (Simplified) "
-"<https://hosted.weblate.org/projects/uh/tutorial/zh_Hans/>\n"
+"PO-Revision-Date: 2018-04-27 09:44+0000\n"
+"Last-Translator: Ramon <g.luolei@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh/"
+"tutorial/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -48,6 +48,8 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"这是您的日志，其中存储了关于当前场景的重要信息。每个新任务的总结也会出现在屏幕左边的“通知按钮”上。您可以将鼠标停留在这些通知上，以阅读摘要，或者单击按钮"
+"本身打开日志。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -56,6 +58,7 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"你也可以在任何时候通过点击迷你地图下面的按钮来重新打开日志，在屏幕的右上角。从现在开始，我们将把包含迷你地图、各种按钮和标签的区域称为“概述”。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -115,13 +118,13 @@ msgid ""
 "building required to found a new settlement. As you move the cursor around, "
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
-msgstr ""
+msgstr "点击这个按钮将显示仓库的预览，第一个建筑要找到一个新的定居点。当你移动光标的时候，你会注意到当建筑物在一个不合适的区域时，预览会被阴影所覆盖。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
-msgstr ""
+msgstr "仓库需要安置在海岸上，以便船只停靠。所以，找到一个好的位置，然后左键点击来放置这个重要的建筑。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
@@ -129,7 +132,7 @@ msgstr "任务：在海岸上建一间仓库。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
+msgstr "建造一个伐木工人的帐篷并把它与仓库相连。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
@@ -140,19 +143,19 @@ msgid ""
 "The supplies and construction materials have been unloaded from your ship "
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
-msgstr ""
+msgstr "物资和建筑材料已从你的船上卸下，并安全储存在你的新仓库里。现在是建造一些基本建筑的时候了，从一个伐木工人的帐篷开始。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
-msgstr ""
+msgstr "伐木工人会从他们的帐篷周围的林地上砍伐树木，并加工木材来生产木板，用于建筑或贸易资源。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
-msgstr ""
+msgstr "要建立一个伐木工人的帐篷，通过点击迷你地图下方的按钮或按下“B”键打开构建菜单，这是默认的快捷键。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -161,19 +164,20 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"建筑菜单按层次排序，因为您的是一个新的殖民地，第一级的建筑物是您唯一可用的;随着你的文明进步，你将获得更高级的建筑物，并能够建造更大范围的建筑。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
-msgstr ""
+msgstr "找一个树木繁茂的地区，让我们的伐木工人工作，然后从概述的建筑物列表中选择“伐木工人的帐篷”，然后把房子建好。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Later in the game you might want to create woodland by planting trees, but "
 "since that costs money, you should use what nature has provided for the time "
 "being!"
-msgstr ""
+msgstr "在游戏后期，你可能想要通过植树来创造林地，但由于这需要花钱，你应该用自然时间！"
 
 #. This is the text body of a logbook page.
 msgid ""
