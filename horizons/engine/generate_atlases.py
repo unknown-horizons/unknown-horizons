@@ -348,9 +348,9 @@ class AtlasGenerator:
 	def check_files(cls):
 		"""Check that the required atlas files exist."""
 		paths = [
-			'content' + os.sep + 'actionsets.json',
-			'content' + os.sep + 'atlas.sql',
-			'content' + os.sep + 'tilesets.json',
+			PATHS.ACTION_SETS_JSON_FILE,
+			PATHS.ATLAS_DB_PATH,
+			PATHS.TILE_SETS_JSON_FILE,
 		]
 		for path in paths:
 			if not os.path.exists(path):
@@ -358,7 +358,7 @@ class AtlasGenerator:
 
 		# verify that the combined images exist
 		db = DbReader(':memory:')
-		with open('content' + os.sep + 'atlas.sql') as f:
+		with open(PATHS.ATLAS_DB_PATH) as f:
 			db.execute_script(f.read())
 		for db_row in db("SELECT atlas_path FROM atlas"):
 			if not os.path.exists(db_row[0]):
@@ -398,7 +398,7 @@ class AtlasGenerator:
 		paths.append(PATHS.ATLAS_DB_PATH)
 		paths.append(PATHS.ACTION_SETS_JSON_FILE)
 		paths.append(PATHS.TILE_SETS_JSON_FILE)
-		paths.extend(glob.glob('content/gfx/atlas/*.png'))
+		paths.extend(glob.glob(os.path.join(PATHS.ATLAS_FILES_DIR, '*.png')))
 
 		# delete everything
 		for path in paths:

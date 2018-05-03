@@ -623,13 +623,13 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
-	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", d)
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content", "gfx", d)
 	                                 for d in (
-	                                 "/base",
-	                                 "/buildings",
-	                                 "/misc",
-	                                 "/terrain",
-	                                 "/units",
+	                                 "base",
+	                                 "buildings",
+	                                 "misc",
+	                                 "terrain",
+	                                 "units",
 	                                ))
 
 	#voice paths
