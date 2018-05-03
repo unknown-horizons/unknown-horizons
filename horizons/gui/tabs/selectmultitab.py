@@ -47,7 +47,6 @@ class SelectMultiTab(TabInterface):
 	helptext = LazyT("Selected Units")
 
 	max_row_entry_number = 3
-
 	max_column_entry_number = 4
 
 	def __init__(self, selected_instances=None):
@@ -73,26 +72,30 @@ class SelectMultiTab(TabInterface):
 		super().__init__()
 
 	def init_widget(self):
-		if self.stance_unit_number > 0:
+		if self.stance_unit_number != 0:
 			self.show_stance_widget()
 
 		self.draw_selected_units_widget()
 
 	def add_entry(self, entry):
-		if self.row_number == 1 or self.column_number >= self.max_column_entry_number:
-			self.hbox = HBox(name="hbox_%s" % self.row_number)
-			self.widget.findChild(name="selected_units").addChild(self.hbox)
-			self.column_number = 1
+		if self.column_number > self.max_column_entry_number - 1:
+			self.column_number = 0
 			self.row_number += 1
-
-		self.hbox.addChild(entry.widget)
-		self.entries.append(entry)
+		if self.row_number >= 3:
+			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+			# This crashes when more than 2 rows are needed.
+			# There just aren't any hboxes in the xml.
+			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+			self.row_number = 2
+			return
 		self.column_number += 1
+		self.widget.findChild(name="hbox_{}".format(self.row_number)).addChild(entry.widget)
+		self.entries.append(entry)
 
 	def draw_selected_units_widget(self):
 		self.entries = []
-		self.row_number = 1
-		self.column_number = 1
+		self.row_number = 0
+		self.column_number = 0
 		# if only one type of units is selected draw individual widgets for selected units
 		if len(self.type_number) == 1:
 			for instance in self.instances:
@@ -107,7 +110,8 @@ class SelectMultiTab(TabInterface):
 	def hide_selected_units_widget(self):
 		for entry in self.entries:
 			entry.remove()
-		self.widget.findChild(name="selected_units").removeAllChildren()
+		for i in range(0, self.max_row_entry_number):
+			self.widget.findChild(name="hbox_{}".format(i)).removeAllChildren()
 
 	def schedule_unit_widget_refresh(self):
 		if not self._scheduled_refresh:
@@ -155,13 +159,15 @@ class SelectMultiTab(TabInterface):
 			self.hide_stance_widget()
 
 	def show_stance_widget(self):
-		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
-		self.widget.mapEvents( events )
-		self.widget.findChild(name='stance').show()
+		stance_widget = load_uh_widget('stancewidget.xml')
+		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
+		events = {i.NAME: Callback(self.set_stance, i) for i in DEFAULT_STANCES}
+		self.widget.mapEvents(events)
 
 	def hide_stance_widget(self):
-		self.widget.findChild(name='stance').hide()
+		Scheduler().rem_all_classinst_calls(self)
+		self.widget.findChild(name='stance').removeAllChildren()
 
 	def set_stance(self, stance):
 		for i in self.instances:
