@@ -23,7 +23,7 @@ import logging
 from collections import defaultdict
 
 from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon
+from fife.extensions.pychan.widgets import Icon
 
 from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
