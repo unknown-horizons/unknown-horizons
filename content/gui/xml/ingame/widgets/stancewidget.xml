@@ -2,16 +2,16 @@
 <!--Stance widget, used by fighting ship and multi tab-->
 <ABox>
 	<HBox>
-		<ImageButton name="aggressive_stance"
+		<ToggleImageButton name="aggressive_stance"
 			path="icons/units/stances/aggressive" helptext="Aggressive"
 			comment="Description of combat stance (how units behave when fighting)" />
-		<ImageButton name="hold_ground_stance"
+		<ToggleImageButton name="hold_ground_stance"
 			path="icons/units/stances/hold_ground" helptext="Hold ground"
 			comment="Description of combat stance (how units behave when fighting)" />
-		<ImageButton name="none_stance"
+		<ToggleImageButton name="none_stance"
 			path="icons/units/stances/none" helptext="Passive"
 			comment="Description of combat stance (how units behave when fighting)" />
-		<ImageButton name="flee_stance"
+		<ToggleImageButton name="flee_stance"
 			path="icons/units/stances/flee" helptext="Flee"
 			comment="Description of combat stance (how units behave when fighting)" />
 	</HBox>
