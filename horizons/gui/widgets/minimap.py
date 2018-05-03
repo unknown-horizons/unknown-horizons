@@ -166,7 +166,6 @@ class Minimap:
 		self.session = session
 		self.world = world
 		self.view = view
-		self.rotation = 0
 		self.fixed_tooltip = tooltip
 
 		self.click_handler = on_click if on_click is not None else self.default_on_click
@@ -222,8 +221,9 @@ class Minimap:
 		if self.transform is None:
 			self.transform = _MinimapTransform(self.world.map_dimensions,
 									  self.location,
-									  self.rotation,
+									  0,
 									  self._get_rotation_setting())
+			self.update_rotation()
 
 		self.__class__._instances.append(self)
 
@@ -620,19 +620,10 @@ class Minimap:
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
 
-	def rotate_right(self):
-		# keep track of rotation at any time, but only apply
-		# if it's actually used
-		self.transform.update_rotation(-1)
-		if self._get_rotation_setting():
-			self.draw()
-
-	def rotate_left(self):
-		# see above
-		self.transform.update_rotation(1)
-		if self._get_rotation_setting():
-			self.draw()
-
+	def update_rotation(self):
+		# ensure the minimap rotation matches the main view rotation
+		self.transform.set_rotation(self.view.cam.getRotation())
+		self.draw()
 
 	def _get_rotation_setting(self):
 		return self.use_rotation and self._rotation_setting
@@ -651,15 +642,25 @@ class Minimap:
 class _MinimapTransform:
 
 	def __init__(self, world_dimensions, location, rotation=0, use_rotation=True):
+		"""
+		@param world_dimensions: Rect, specifying the size of the world
+		@param location: Rect, specifying the place and size of the area to draw to
+		@param rotation: integer giving minimap rotation in degrees.
+		                 Might act weird with other values than 45, 135, 225 and 315
+		@param use_rotation: boolean, if this is false no rotation is used
+		"""
 		self.world_dimensions = world_dimensions
 		self.location = location
 		self.rotation = rotation
 		self.use_rotation = use_rotation
 		self._update_parameters()
 
-	def update_rotation(self, direction):
-		self.rotation += direction
-		self.rotation %= 4
+	def set_rotation(self, rotation):
+		"""
+		@param rotation: integer giving rotation in degrees
+		the rotation only does something when use_rotation is True
+		"""
+		self.rotation = rotation
 		self._update_parameters()
 
 	def set_use_rotation(self, use_rotation):
@@ -667,7 +668,9 @@ class _MinimapTransform:
 		self._update_parameters()
 
 	def world_to_minimap(self, coords):
-		"""Complete coord transformation, batteries included."""
+		"""Complete coord transformation, batteries included.
+		@param coords: tuple of two numbers representing a coordinate in the world
+		"""
 
 		x, y = coords
 
@@ -686,6 +689,9 @@ class _MinimapTransform:
 		return (int(x), int(y))
 
 	def minimap_to_world(self, coords):
+		"""
+		@param coords: tuple of two numbers representing a point in the minimap
+		"""
 		x, y = coords
 
 		# center on 0,0 and scale to world size
@@ -722,8 +728,11 @@ class _MinimapTransform:
 
 
 	def _get_rotation(self):
+		# keep track of rotation at any time, but only apply
+		# if it's actually used
 		if self.use_rotation:
-			return (-self.rotation - 0.5) * math.pi / 2
+			# convert to radians
+			return -self.rotation / 180 * math.pi
 		else:
 			return 0
 
