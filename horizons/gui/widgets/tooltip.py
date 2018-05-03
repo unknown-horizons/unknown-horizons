@@ -115,7 +115,9 @@ class _Tooltip:
 
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
 
-		if isinstance(self, ImageButton):
+		if not isinstance(self, Icon):
+			# exclude building statusicons (eg low productivity) and minimap
+
 			# If the a button spawn a tooltip and the cursor hovers over that
 			# tooltip the tooltip will disappear and the button becomes
 			# unclickable. (see issue #2776: https://git.io/vxRrn)
@@ -131,8 +133,7 @@ class _Tooltip:
 
 			ypos = widget_position[1] + self.height + 10
 
-			xpos = int(widget_position[0] + self.width/2 - self.gui.size[0]/2)
-			xpos = max(xpos, 5)
+			xpos = int(widget_position[0])
 			xpos = min(xpos, screen_width - self.gui.size[0] - 5)
 
 		else:
